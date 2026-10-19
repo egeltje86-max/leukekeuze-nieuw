@@ -92,7 +92,7 @@ window.LK_CATEGORIEEN = [
     ] },
   { slug: 'dieren', naam: 'Dieren', kort: 'Dieren', icoon: 'poot',
     tekst: 'Verwen je trouwe vriend.', tegel: 'images/categorieen/categorie-dieren.webp', banner: 'images/banners/banner-cat-dieren.webp',
-    subs: [ { slug: 'hond', naam: 'Hond' }, { slug: 'kat', naam: 'Kat' }, { slug: 'klein-dier', naam: 'Klein dier' }, { slug: 'vogels', naam: 'Vogels' } ] },
+    subs: [ { slug: 'hond', naam: 'Hond', beeld: 'images/sub/sub-dieren-hond.webp' }, { slug: 'kat', naam: 'Kat', beeld: 'images/sub/sub-dieren-kat.webp' }, { slug: 'klein-dier', naam: 'Klein dier', beeld: 'images/sub/sub-dieren-klein-dier.webp' }, { slug: 'vogels', naam: 'Vogels', beeld: 'images/sub/sub-dieren-vogels.webp' } ] },
   { slug: 'hobby', naam: 'Hobby & Creatief', kort: 'Hobby & Creatief', icoon: 'palet',
     tekst: 'Zelf iets moois maken.', tegel: 'images/categorieen/categorie-hobby.webp', banner: 'images/banners/banner-cat-hobby.webp',
     subs: [
