@@ -55,6 +55,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 
 ## Echte producten
 - Ronde 1 (19-10-2026): 32 producten van Ditverzinjeniet (Daisycon 11208), allemaal goedgekeurd door Marius.
+- Ronde 2 (19-10-2026): 44 producten van 999Games, Bloompost, Teufel en La Redoute, allemaal goedgekeurd. La Redoute-foto's komen rechtstreeks van hun CDN (zij blokkeren downloaden).
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
