@@ -1,0 +1,7 @@
+# Oude adressen van de vorige site naar de nieuwe pagina's
+/christelijke-cadeaus   /#/c/christelijk   301
+/cadeaus-voor-kinderen  /#/c/cadeaus/voor-kinderen   301
+/cadeaugidsen           /   301
+/cadeaugids/*           /   301
+/cadeauzoeker           /#/vonk   301
+/keurkamer/*            /   301

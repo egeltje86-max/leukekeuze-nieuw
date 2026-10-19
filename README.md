@@ -1,7 +1,7 @@
 # LeukeKeuze – nieuwe site (testversie)
 
 Volledig nieuwe LeukeKeuze in stijl **Luxe & Premium** (donker + goud), op basis van Nova's ontwerp.
-Niets van de oude site overgenomen. **Status: test. Niets gaat live zonder GO van Marius.**
+Niets van de oude site overgenomen. **Status: klaar voor livegang (GO van Marius, 19-10-2026).**
 
 ## Wie doet wat
 - **Marius**: eigenaar, beoordeelt en beslist.
@@ -60,3 +60,10 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
 - Productfoto's: `images/producten/dvzn-<sku>.webp` (1000px) en `-klein.webp` (500px), uit de productfeed van de winkel.
 - Voorbeeldproducten staan er nog, maar niet meer in de cadeau-rubrieken die nu echte producten hebben.
+
+## Livegang (19-10-2026)
+- Geen noindex meer; robots.txt staat alles toe; sitemap.xml; canonical = https://leukekeuze.nl/
+- Voorbeeldproducten en voorbeeldfoto's verwijderd. Alleen echte, goedgekeurde producten.
+- Keurkamer van de site verwijderd (staat nu los op het bureaublad van Marius).
+- Netlify: `netlify.toml` (geen build, publish = .), `_redirects` voor oude adressen, `404.html` stuurt naar home.
+- Nog te doen door Marius: e-mailadres op de contactpagina, privacy- en disclaimertekst nalezen.

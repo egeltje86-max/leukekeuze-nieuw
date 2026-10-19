@@ -360,7 +360,7 @@
   }
 
   /* ---------- Tekstpagina's ---------- */
-  var CONCEPT = '<p class="let-op">Concepttekst. Marius controleert deze tekst nog voordat de site live gaat.</p>';
+  var CONCEPT = '';
   var INFO = {
     'hoe-werkt-het': ['Hoe werkt LeukeKeuze?',
       '<p>LeukeKeuze is geen webwinkel. Wij zoeken mooie cadeaus en producten uit bij bekende winkels en zetten ze overzichtelijk bij elkaar.</p>' +
@@ -373,7 +373,7 @@
       '<p>Iets moois gevonden of een tip voor ons? We horen het graag via de <a href="#/info/contact">contactpagina</a>.</p>' + CONCEPT],
     'contact': ['Contact',
       '<p>Vragen over een bestelling? Neem dan contact op met de winkel waar je het product hebt gekocht. Die regelt bezorging en retour.</p>' +
-      '<p>Vragen of tips voor LeukeKeuze zelf? Mail ons op: <strong>[e-mailadres volgt]</strong></p>' + CONCEPT],
+      '<p>Vragen of tips voor LeukeKeuze zelf? Een e-mailadres volgt binnenkort.</p>' + CONCEPT],
     'privacy': ['Privacy & cookies',
       '<p>LeukeKeuze heeft geen accounts en vraagt geen persoonlijke gegevens.</p>' +
       '<h2>Wat bewaren we op je apparaat?</h2><p>Je favorieten worden alleen op je eigen apparaat bewaard (in je browser). Wij kunnen die niet zien. Wis je je browsergegevens, dan zijn ze weg.</p>' +

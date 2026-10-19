@@ -1,3 +1,4 @@
-# Testfase: niets laten vinden door zoekmachines.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://leukekeuze.nl/sitemap.xml
