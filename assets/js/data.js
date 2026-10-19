@@ -75,8 +75,8 @@ window.LK_CATEGORIEEN = [
   { slug: 'mode-beauty', naam: 'Mode & Beauty', kort: 'Mode & Beauty', icoon: 'tas',
     tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
     subs: [
-      { slug: 'sieraden', naam: 'Sieraden' }, { slug: 'geuren', naam: 'Geuren' }, { slug: 'verzorging', naam: 'Verzorging' },
-      { slug: 'tassen', naam: 'Tassen' }, { slug: 'accessoires', naam: 'Accessoires' }
+      { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-mode-beauty-sieraden.webp' }, { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp' },
+      { slug: 'tassen', naam: 'Tassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
     ] },
   { slug: 'sport-outdoor', naam: 'Sport, Outdoor & Reizen', kort: 'Sport & Outdoor', icoon: 'bal',
     tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
