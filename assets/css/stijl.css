@@ -472,3 +472,8 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 
 /* Mobiel: 4 populaire categorieën (2x2), desktop alle 5 */
 @media (max-width: 759px) { .home-cats .catkaart:nth-child(5) { display: none; } }
+
+/* Echte productfoto's (van de winkel): witte achtergrond, niets afsnijden */
+.prodkaart .beeld.echt, .product-beeld.echt { background: #fff; }
+.prodkaart .beeld.echt img, .product-beeld.echt img { object-fit: contain; padding: 7%; }
+.prijs s.oud { color: var(--tekst-zacht, #8b93a7); font-weight: 400; font-size: .8em; margin-left: 6px; }

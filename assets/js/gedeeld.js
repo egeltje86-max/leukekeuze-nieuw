@@ -106,12 +106,12 @@
     var fav = isFavoriet(p.id);
     var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : (p.nieuw ? '<span class="label vol">Nieuw</span>' : '');
     return '<article class="prodkaart">' +
-      '<div class="beeld">' + productBeeld(p) + label + '</div>' +
+      '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + icoon('hart') + '</button>' +
       '<div class="info">' +
         '<span class="shop">' + esc(p.shop) + '</span>' +
         '<h3><a href="#/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +
-        '<div class="prijs">' + euro(p.prijs) + '</div>' +
+        '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
       '</div></article>';
   }
 

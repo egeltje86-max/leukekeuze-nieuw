@@ -234,7 +234,7 @@
     zetTitel(p.titel);
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
-      ? '<a class="knop knop-goud" href="' + esc(p.url) + '" target="_blank" rel="sponsored noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
+      ? '<a class="knop knop-goud" href="' + esc(p.url) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
       : '<span class="knop knop-goud uit" aria-disabled="true">Voorbeeld – nog geen winkellink</span>';
 
     var ookIn = (p.ookIn || []).map(function (x) {
@@ -250,12 +250,12 @@
     return '<div class="binnen">' +
       '<div style="padding-top:16px">' + kruimel([{ tekst: c.naam, naar: '#/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '#/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
       '<div class="product">' +
-        '<div class="product-beeld">' + LK.productBeeld(p, true) + (p.voorbeeld ? '<span class="label">Voorbeeld</span>' : '') + '</div>' +
+        '<div class="product-beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + '">' + LK.productBeeld(p, true) + (p.voorbeeld ? '<span class="label">Voorbeeld</span>' : '') + '</div>' +
         '<div class="product-info">' +
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
-          '<div class="prijs">' + LK.euro(p.prijs) + '</div>' +
-          '<p class="prijsnoot">Prijs zoals laatst bij ons bekend. De actuele prijs zie je bij de winkel.</p>' +
+          '<div class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+          '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           '<div class="product-acties">' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + ic('hart') + '</button>' +
           '</div>' +

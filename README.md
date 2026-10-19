@@ -52,3 +52,11 @@ Let op: het adres in og:url/og:image is nu het testadres; bij livegang aanpassen
 - Neutrale homebanners voor na de feestdagen
 
 Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = bestandsnaam invullen in `data.js`.
+
+## Echte producten
+- Ronde 1 (19-10-2026): 32 producten van Ditverzinjeniet (Daisycon 11208), allemaal goedgekeurd door Marius.
+- Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
+- `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
+- Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
+- Productfoto's: `images/producten/dvzn-<sku>.webp` (1000px) en `-klein.webp` (500px), uit de productfeed van de winkel.
+- Voorbeeldproducten staan er nog, maar niet meer in de cadeau-rubrieken die nu echte producten hebben.

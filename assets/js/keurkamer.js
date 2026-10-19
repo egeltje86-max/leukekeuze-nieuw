@@ -62,7 +62,7 @@
       return;
     }
     var open = l.filter(function (x) { return x.status === 'nieuw' || x.status === 'overgeslagen'; }).length;
-    var bron = p.url ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">Openen bij winkel</a>' : (p.voorbeeld ? 'Voorbeeld (geen link)' : '—');
+    var bron = (p.winkelUrl || p.url) ? '<a href="' + esc(p.winkelUrl || p.url) + '" target="_blank" rel="noreferrer noopener">Openen bij winkel</a>' : (p.voorbeeld ? 'Voorbeeld (geen link)' : '—');
     el.innerHTML =
       '<div><div class="kk-vb">Zo ziet het eruit op de site</div>' + LK.productKaart(p) + '</div>' +
       '<div class="kk-details">' +
