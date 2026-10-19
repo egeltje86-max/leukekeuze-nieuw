@@ -39,7 +39,7 @@ window.LK_CATEGORIEEN = [
     ] },
   { slug: 'christelijk', naam: 'Christelijke cadeaus', kort: 'Christelijke cadeaus', icoon: 'kruis', uitgelicht: true,
     tekst: 'Geloof, hoop en liefde in mooie geschenken.',
-    tegel: 'images/categorieen/categorie-christelijk.webp', banner: '',
+    tegel: 'images/categorieen/categorie-christelijk.webp', banner: 'images/banners/banner-cat-christelijk.webp',
     subs: [
       { slug: 'bijbels', naam: 'Bijbels' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters' },
       { slug: 'sieraden', naam: 'Sieraden' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie' },
@@ -47,66 +47,66 @@ window.LK_CATEGORIEEN = [
     ] },
   { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
     tekst: 'Spelen, ontdekken en groeien.',
-    tegel: 'images/categorieen/categorie-speelgoed.webp', banner: '',
+    tegel: 'images/categorieen/categorie-speelgoed.webp', banner: 'images/banners/banner-cat-speelgoed.webp',
     subs: [
       { slug: 'baby-peuter', naam: 'Baby & peuter' }, { slug: 'bouwen', naam: 'Bouwen' },
       { slug: 'bordspellen', naam: 'Bordspellen' }, { slug: 'puzzels', naam: 'Puzzels' },
       { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed' }, { slug: 'knutselen', naam: 'Knutselen' }
     ] },
   { slug: 'wonen', naam: 'Wonen & Decoratie', kort: 'Wonen & Deco', icoon: 'huis',
-    tekst: 'Maak van je huis een warm thuis.', tegel: '', banner: '',
+    tekst: 'Maak van je huis een warm thuis.', tegel: 'images/categorieen/categorie-wonen.webp', banner: 'images/banners/banner-cat-wonen.webp',
     subs: [
       { slug: 'kaarsen-geur', naam: 'Kaarsen & geur' }, { slug: 'woonaccessoires', naam: 'Woonaccessoires' },
       { slug: 'verlichting', naam: 'Verlichting' }, { slug: 'plaids-kussens', naam: 'Plaids & kussens' },
       { slug: 'kerstdecoratie', naam: 'Kerstdecoratie' }
     ] },
   { slug: 'elektronica', naam: 'Elektronica & Gadgets', kort: 'Elektronica', icoon: 'koptelefoon',
-    tekst: 'Slimme gadgets voor elke dag.', tegel: '', banner: '',
+    tekst: 'Slimme gadgets voor elke dag.', tegel: 'images/categorieen/categorie-elektronica.webp', banner: 'images/banners/banner-cat-elektronica.webp',
     subs: [
       { slug: 'audio', naam: 'Audio' }, { slug: 'slimme-gadgets', naam: 'Slimme gadgets' },
       { slug: 'telefoon', naam: 'Telefoon' }, { slug: 'gaming', naam: 'Gaming' }, { slug: 'foto-video', naam: 'Foto & video' }
     ] },
   { slug: 'keuken', naam: 'Keuken & Tafelen', kort: 'Keuken', icoon: 'kop',
-    tekst: 'Mooi koken, gezellig tafelen.', tegel: '', banner: '',
+    tekst: 'Mooi koken, gezellig tafelen.', tegel: 'images/categorieen/categorie-keuken.webp', banner: 'images/banners/banner-cat-keuken.webp',
     subs: [
       { slug: 'koken', naam: 'Koken' }, { slug: 'bakken', naam: 'Bakken' }, { slug: 'serveren', naam: 'Serveren' },
       { slug: 'koffie-thee', naam: 'Koffie & thee' }, { slug: 'opbergen', naam: 'Opbergen' }
     ] },
   { slug: 'mode-beauty', naam: 'Mode & Beauty', kort: 'Mode & Beauty', icoon: 'tas',
-    tekst: 'Mooie accessoires en verzorging.', tegel: '', banner: '',
+    tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
     subs: [
       { slug: 'sieraden', naam: 'Sieraden' }, { slug: 'geuren', naam: 'Geuren' }, { slug: 'verzorging', naam: 'Verzorging' },
       { slug: 'tassen', naam: 'Tassen' }, { slug: 'accessoires', naam: 'Accessoires' }
     ] },
   { slug: 'sport-outdoor', naam: 'Sport, Outdoor & Reizen', kort: 'Sport & Outdoor', icoon: 'bal',
-    tekst: 'Erop uit, in beweging.', tegel: '', banner: '',
+    tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
     subs: [
       { slug: 'fitness', naam: 'Fitness' }, { slug: 'wandelen', naam: 'Wandelen' }, { slug: 'fietsen', naam: 'Fietsen' },
       { slug: 'kamperen', naam: 'Kamperen' }, { slug: 'reizen', naam: 'Reizen' }
     ] },
   { slug: 'tuin-klussen', naam: 'Tuin & Klussen', kort: 'Tuin & Klussen', icoon: 'blad',
-    tekst: 'Voor de tuin en de handige klusser.', tegel: '', banner: '',
+    tekst: 'Voor de tuin en de handige klusser.', tegel: 'images/categorieen/categorie-tuin-klussen.webp', banner: 'images/banners/banner-cat-tuin-klussen.webp',
     subs: [
       { slug: 'tuingereedschap', naam: 'Tuingereedschap' }, { slug: 'planten-zaden', naam: 'Planten & zaden' },
       { slug: 'gereedschap', naam: 'Gereedschap' }, { slug: 'buitenverlichting', naam: 'Buitenverlichting' }
     ] },
   { slug: 'dieren', naam: 'Dieren', kort: 'Dieren', icoon: 'poot',
-    tekst: 'Verwen je trouwe vriend.', tegel: '', banner: '',
+    tekst: 'Verwen je trouwe vriend.', tegel: 'images/categorieen/categorie-dieren.webp', banner: 'images/banners/banner-cat-dieren.webp',
     subs: [ { slug: 'hond', naam: 'Hond' }, { slug: 'kat', naam: 'Kat' }, { slug: 'klein-dier', naam: 'Klein dier' }, { slug: 'vogels', naam: 'Vogels' } ] },
   { slug: 'hobby', naam: 'Hobby & Creatief', kort: 'Hobby & Creatief', icoon: 'palet',
-    tekst: 'Zelf iets moois maken.', tegel: '', banner: '',
+    tekst: 'Zelf iets moois maken.', tegel: 'images/categorieen/categorie-hobby.webp', banner: 'images/banners/banner-cat-hobby.webp',
     subs: [
       { slug: 'tekenen-schilderen', naam: 'Tekenen & schilderen' }, { slug: 'haken-breien', naam: 'Haken & breien' },
       { slug: 'knutselen', naam: 'Knutselen' }, { slug: 'modelbouw', naam: 'Modelbouw' }
     ] },
   { slug: 'boeken-media', naam: 'Boeken & Media', kort: 'Boeken & Media', icoon: 'boek',
-    tekst: 'Verhalen, films en muziek.', tegel: '', banner: '',
+    tekst: 'Verhalen, films en muziek.', tegel: 'images/categorieen/categorie-boeken-media.webp', banner: 'images/banners/banner-cat-boeken-media.webp',
     subs: [
       { slug: 'romans', naam: 'Romans' }, { slug: 'kinderboeken', naam: 'Kinderboeken' }, { slug: 'kookboeken', naam: 'Kookboeken' },
       { slug: 'films-series', naam: 'Films & series' }, { slug: 'muziek', naam: 'Muziek' }
     ] },
   { slug: 'eten-drinken', naam: 'Eten & Drinken', kort: 'Eten & Drinken', icoon: 'taart',
-    tekst: 'Lekkers om te geven.', tegel: '', banner: '',
+    tekst: 'Lekkers om te geven.', tegel: 'images/categorieen/categorie-eten-drinken.webp', banner: 'images/banners/banner-cat-eten-drinken.webp',
     subs: [
       { slug: 'chocolade-snoep', naam: 'Chocolade & snoep' }, { slug: 'pakketten', naam: 'Pakketten' },
       { slug: 'koffie-thee', naam: 'Koffie & thee' }, { slug: 'lekkernijen', naam: 'Lekkernijen' }
