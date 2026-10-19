@@ -56,9 +56,9 @@ window.LK_CATEGORIEEN = [
   { slug: 'wonen', naam: 'Wonen & Decoratie', kort: 'Wonen & Deco', icoon: 'huis',
     tekst: 'Maak van je huis een warm thuis.', tegel: 'images/categorieen/categorie-wonen.webp', banner: 'images/banners/banner-cat-wonen.webp',
     subs: [
-      { slug: 'kaarsen-geur', naam: 'Kaarsen & geur' }, { slug: 'woonaccessoires', naam: 'Woonaccessoires' },
-      { slug: 'verlichting', naam: 'Verlichting' }, { slug: 'plaids-kussens', naam: 'Plaids & kussens' },
-      { slug: 'kerstdecoratie', naam: 'Kerstdecoratie' }
+      { slug: 'kaarsen-geur', naam: 'Kaarsen & geur', beeld: 'images/sub/sub-wonen-kaarsen-geur.webp' }, { slug: 'woonaccessoires', naam: 'Woonaccessoires', beeld: 'images/sub/sub-wonen-woonaccessoires.webp' },
+      { slug: 'verlichting', naam: 'Verlichting', beeld: 'images/sub/sub-wonen-verlichting.webp' }, { slug: 'plaids-kussens', naam: 'Plaids & kussens', beeld: 'images/sub/sub-wonen-plaids-kussens.webp' },
+      { slug: 'kerstdecoratie', naam: 'Kerstdecoratie', beeld: 'images/sub/sub-wonen-kerstdecoratie.webp' }
     ] },
   { slug: 'elektronica', naam: 'Elektronica & Gadgets', kort: 'Elektronica', icoon: 'koptelefoon',
     tekst: 'Slimme gadgets voor elke dag.', tegel: 'images/categorieen/categorie-elektronica.webp', banner: 'images/banners/banner-cat-elektronica.webp',
