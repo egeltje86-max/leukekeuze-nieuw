@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LeukeKeuze – de mooiste cadeaus voor elk moment</title>
+  <meta name="description" content="LeukeKeuze zoekt met de hand mooie cadeaus en producten uit. Kies op moment, persoon of budget en koop bij bekende winkels.">
+  <!-- TESTFASE: niet laten vinden door zoekmachines. Weghalen bij livegang. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0A1020">
+  <link rel="icon" href="assets/logo-icoon.svg" type="image/svg+xml">
+  <!-- Lettertypes: later op de eigen site zetten (beter voor privacy) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/banners/banner-home-mobiel.webp" media="(max-width: 759px)">
+  <link rel="preload" as="image" href="images/banners/banner-home-desktop.webp" media="(min-width: 760px)">
+  <link rel="stylesheet" href="assets/css/stijl.css">
+</head>
+<body>
+
+  <div class="topbalk">
+    <div class="binnen">
+      <span data-ic="cadeau">Met de hand uitgekozen</span>
+      <span data-ic="winkel">Je koopt bij bekende winkels</span>
+      <span class="alleen-desktop" data-ic="vink">Gratis voor jou</span>
+      <span class="alleen-desktop" data-ic="hart">Bewaar je favorieten</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="binnen">
+      <button class="icoonknop menuknop" type="button" data-open-lade aria-controls="lade" aria-expanded="false" aria-label="Menu openen" data-ic="menu"></button>
+
+      <a class="logo" href="#/" aria-label="LeukeKeuze, naar de homepage">
+        <img src="assets/logo-icoon.svg" alt="" width="30" height="30">
+        <span>Leuke<span class="k">Keuze</span></span>
+      </a>
+
+      <nav class="hoofdnav" aria-label="Hoofdmenu">
+        <a href="#/c/cadeaus" data-nav="cadeaus">Cadeaus</a>
+        <a href="#/c/christelijk" data-nav="christelijk">Christelijk</a>
+        <a href="#/c/speelgoed" data-nav="speelgoed">Speelgoed</a>
+        <a href="#/c/wonen" data-nav="wonen">Wonen &amp; Deco</a>
+        <a href="#/vonk" data-nav="vonk">VONK</a>
+        <button type="button" data-mega aria-expanded="false" aria-controls="megamenu">Alle categorieën <span data-ic="omlaag"></span></button>
+      </nav>
+
+      <div class="header-rechts">
+        <a class="icoonknop alleen-desk" href="#/zoek" aria-label="Zoeken" data-ic="zoek"></a>
+        <a class="icoonknop" href="#/favorieten" aria-label="Favorieten">
+          <span data-ic="hart"></span>
+          <span class="teller" data-favteller hidden>0</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="megamenu" id="megamenu" data-megamenu></div>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="binnen">
+      <div>
+        <a class="logo" href="#/"><img src="assets/logo-icoon.svg" alt="" width="30" height="30"><span>Leuke<span class="k">Keuze</span></span></a>
+        <p>Wij zoeken mooie cadeaus en producten voor je uit. Je koopt ze bij de winkel zelf. Via onze links krijgen wij soms een kleine vergoeding; jij betaalt niets extra.</p>
+      </div>
+      <div>
+        <h4>Ontdekken</h4>
+        <ul>
+          <li><a href="#/c/cadeaus">Cadeaus</a></li>
+          <li><a href="#/c/christelijk">Christelijke cadeaus</a></li>
+          <li><a href="#/c/speelgoed">Speelgoed</a></li>
+          <li><a href="#/vonk">VONK cadeauzoeker</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>LeukeKeuze</h4>
+        <ul>
+          <li><a href="#/info/hoe-werkt-het">Hoe werkt het?</a></li>
+          <li><a href="#/info/over-ons">Over ons</a></li>
+          <li><a href="#/info/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Goed om te weten</h4>
+        <ul>
+          <li><a href="#/info/privacy">Privacy &amp; cookies</a></li>
+          <li><a href="#/info/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-onder"><div class="binnen">© LeukeKeuze · Testversie, nog niet live</div></div>
+  </footer>
+
+  <nav class="onderbalk" aria-label="Snelmenu">
+    <a href="#/" data-onder="home"><span data-ic="home"></span>Home</a>
+    <button type="button" data-open-lade data-onder="categorieen"><span data-ic="raster"></span>Categorieën</button>
+    <a href="#/vonk" data-onder="vonk"><span data-ic="vonk"></span>VONK</a>
+    <a href="#/favorieten" data-onder="favorieten"><span data-ic="hart"></span>Favorieten<span class="teller" data-favteller hidden>0</span></a>
+  </nav>
+
+  <div class="lade-bg" data-sluit-lade></div>
+  <aside class="lade" id="lade" aria-label="Categorieën" aria-hidden="true">
+    <div class="lade-kop">
+      <a class="logo" href="#/"><img src="assets/logo-icoon.svg" alt="" width="28" height="28"><span>Leuke<span class="k">Keuze</span></span></a>
+      <button class="icoonknop" type="button" data-sluit-lade aria-label="Menu sluiten" data-ic="sluit"></button>
+    </div>
+    <div class="lade-inhoud" data-lade></div>
+  </aside>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/producten.js"></script>
+  <script src="assets/js/gedeeld.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

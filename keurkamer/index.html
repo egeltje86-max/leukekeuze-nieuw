@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="../">
+  <title>Keurkamer – LeukeKeuze</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0A1020">
+  <link rel="icon" href="assets/logo-icoon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/stijl.css">
+  <link rel="stylesheet" href="assets/css/keurkamer.css">
+</head>
+<body class="kk">
+
+  <header class="header">
+    <div class="binnen">
+      <a class="logo" href="./"><img src="assets/logo-icoon.svg" alt="" width="30" height="30"><span>Leuke<span class="k">Keuze</span></span></a>
+      <span class="kk-label">Keurkamer</span>
+    </div>
+  </header>
+
+  <main class="binnen kk-pagina">
+    <div class="kk-balk">
+      <div class="chips" role="tablist" data-tabs></div>
+      <div class="kk-acties">
+        <button class="knop knop-rand" type="button" data-export>Exporteren</button>
+        <label class="knop knop-rand">Importeren<input type="file" accept="application/json,.json" data-import hidden></label>
+      </div>
+    </div>
+
+    <div class="kk-voortgang" data-voortgang></div>
+    <section class="kk-keuring" data-keuring></section>
+
+    <section class="kk-lijst-sectie">
+      <h2 class="kop-serif">Overzicht</h2>
+      <div class="kk-lijst" data-lijst></div>
+    </section>
+
+    <p class="kk-uitleg">
+      Je keuringen worden op dit apparaat bewaard. Met <strong>Exporteren</strong> sla je ze op als bestand
+      (keuringslijst.json). Geef dat bestand aan Claude, dan wordt het op de echte site verwerkt.
+      Afwijzen verwijdert niets: het product blijft bewaard en je kunt het later opnieuw keuren.
+    </p>
+  </main>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/producten.js"></script>
+  <script src="assets/js/gedeeld.js"></script>
+  <script src="assets/js/keurkamer.js"></script>
+</body>
+</html>

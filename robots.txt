@@ -1,0 +1,3 @@
+# Testfase: niets laten vinden door zoekmachines.
+User-agent: *
+Disallow: /

@@ -1,0 +1,56 @@
+/* Keurkamer – privé beoordelingsruimte (zelfde luxe stijl) */
+body.kk { padding-bottom: 0; }
+.kk .header .binnen { justify-content: space-between; }
+.kk-label { background: var(--goud-verloop); color: var(--navy); font: 800 12px/1 var(--f-ui); padding: 8px 14px; border-radius: 999px; letter-spacing: .04em; }
+.kk-pagina { padding-top: 18px; padding-bottom: 48px; }
+.kk-balk { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+.kk-balk .chips { margin: 0; padding: 2px 0; }
+.kk-balk .chip .n { opacity: .65; margin-left: 5px; }
+.kk-acties { display: flex; gap: 8px; }
+.kk-acties .knop { padding: 10px 16px; font-size: 13.5px; cursor: pointer; }
+
+.kk-voortgang { margin: 16px 0; height: 6px; border-radius: 3px; background: rgba(255,255,255,.08); overflow: hidden; }
+.kk-voortgang span { display: block; height: 100%; background: var(--goud-verloop); transition: width .3s; }
+
+.kk-keuring { background: var(--kaart); border: 1px solid var(--lijn); border-radius: var(--r-l); padding: 18px; display: grid; gap: 22px; }
+@media (min-width: 760px) { .kk-keuring { grid-template-columns: 270px 1fr; padding: 26px; } }
+.kk-vb { font: 700 11px/1 var(--f-ui); letter-spacing: .14em; text-transform: uppercase; color: var(--goud); margin-bottom: 10px; }
+.kk-keuring .prodkaart { max-width: 270px; pointer-events: none; }
+.kk-details h2 { font-family: var(--f-kop); font-weight: 500; font-size: 26px; line-height: 1.15; margin-bottom: 6px; }
+.kk-teller { color: var(--tekst-2); font-size: 14px; margin-bottom: 16px; }
+.kk-gegevens { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 14px; margin: 0 0 18px; }
+.kk-gegevens dt { color: var(--tekst-3); }
+.kk-gegevens dd { margin: 0; font-weight: 600; word-break: break-word; }
+.kk-gegevens a { color: var(--goud-licht); }
+.kk-veld { display: block; margin-bottom: 14px; }
+.kk-veld span { display: block; font: 700 13px/1 var(--f-ui); margin-bottom: 7px; }
+.kk-veld select { width: 100%; padding: 12px; border-radius: var(--r-s); border: 1px solid var(--lijn); background: var(--bg-2); color: var(--tekst); font: 500 15px/1.2 var(--f-tekst); }
+.kk-vink { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 20px; cursor: pointer; }
+.kk-vink input { width: 20px; height: 20px; accent-color: var(--goud); }
+.kk-knoppen { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kk-knoppen .knop { padding: 14px; }
+.kk-knoppen .goed { grid-column: 1 / -1; font-size: 15.5px; }
+.kk-knoppen .af { border: 1px solid rgba(232, 112, 92, .5); color: #F1A091; }
+.kk-knoppen .af:hover { background: rgba(232, 112, 92, .1); }
+@media (min-width: 760px) { .kk-knoppen { grid-template-columns: 2fr 1fr 1fr; } .kk-knoppen .goed { grid-column: auto; } }
+.kk-sneltoets { font-size: 12px; color: var(--tekst-3); margin-top: 10px; }
+.kk-klaar { grid-column: 1 / -1; text-align: center; padding: 30px 10px; color: var(--tekst-2); }
+.kk-klaar strong { display: block; font-family: var(--f-kop); font-weight: 500; font-size: 24px; color: var(--tekst); margin-bottom: 6px; }
+
+.kk-lijst-sectie { margin-top: 34px; }
+.kk-lijst-sectie h2 { font-size: 22px; margin-bottom: 12px; }
+.kk-lijst { border: 1px solid var(--lijn-zacht); border-radius: var(--r-m); overflow: hidden; background: var(--kaart); }
+.kk-rij { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; align-items: center; padding: 12px 14px; text-align: left; border-top: 1px solid var(--lijn-zacht); }
+.kk-rij:first-child { border-top: 0; }
+.kk-rij:hover { background: var(--kaart-2); }
+.kk-rij .naam { font: 700 14px/1.3 var(--f-ui); }
+.kk-rij .info { grid-column: 1; font-size: 12px; color: var(--tekst-3); }
+.kk-rij .status { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 6px; }
+.pil { font: 800 10px/1 var(--f-ui); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; white-space: nowrap; }
+.pil-nieuw { background: rgba(120, 160, 255, .15); color: #A9C2FF; }
+.pil-goedgekeurd { background: rgba(92, 200, 140, .15); color: #8FE0B2; }
+.pil-afgewezen { background: rgba(232, 112, 92, .15); color: #F1A091; }
+.pil-overgeslagen { background: rgba(255,255,255,.08); color: var(--tekst-2); }
+.pil-tekst { background: rgba(217,168,72,.15); color: var(--goud-licht); }
+.kk-uitleg { margin-top: 22px; font-size: 13px; color: var(--tekst-3); max-width: 680px; }
+.kk .toast { bottom: 24px; }

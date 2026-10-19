@@ -1,0 +1,141 @@
+/* =========================================================
+   LeukeKeuze – categorieën, subcategorieën en instellingen
+   Hier pas je de indeling van de site aan.
+   ========================================================= */
+
+window.LK_INSTELLINGEN = {
+  seizoen: 'kerst',            // 'kerst' of '' (neutraal)
+  heroKicker: 'Bijzondere momenten',
+  heroTitel: 'De mooiste cadeaus',
+  heroTitelGoud: 'voor elk moment',
+  heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
+  heroDesktop: 'images/banners/banner-home-desktop.webp',
+  heroMobiel: 'images/banners/banner-home-mobiel.webp',
+  populair: [
+    { label: 'Kerst', naar: '#/c/cadeaus/kerst' },
+    { label: 'Sinterklaas', naar: '#/c/cadeaus/sinterklaas' },
+    { label: 'Voor haar', naar: '#/c/cadeaus/voor-haar' },
+    { label: 'Voor hem', naar: '#/c/cadeaus/voor-hem' },
+    { label: 'Onder €10', naar: '#/c/cadeaus/onder-10' },
+    { label: 'Met naam', naar: '#/c/cadeaus/met-naam' }
+  ]
+};
+
+/* Afbeeldingen: laat leeg ('') als Nova ze nog niet heeft gemaakt.
+   Dan toont de site een gouden icoon in de stijl van de site. */
+window.LK_CATEGORIEEN = [
+  { slug: 'cadeaus', naam: 'Cadeaus', kort: 'Cadeaus', icoon: 'cadeau',
+    tekst: 'Voor elke gelegenheid een bijzonder cadeau.',
+    tegel: 'images/categorieen/categorie-cadeaus.webp', banner: 'images/banners/banner-cat-cadeaus.webp',
+    subs: [
+      { slug: 'voor-haar', naam: 'Voor haar', beeld: 'images/sub/sub-cadeaus-voor-haar.webp' },
+      { slug: 'voor-hem', naam: 'Voor hem', beeld: 'images/sub/sub-cadeaus-voor-hem.webp' },
+      { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
+      { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
+      { slug: 'kerst', naam: 'Kerstcadeaus', beeld: 'images/sub/sub-cadeaus-kerst.webp' },
+      { slug: 'sinterklaas', naam: 'Sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
+      { slug: 'onder-10', naam: 'Onder €10', beeld: 'images/sub/sub-cadeaus-onder-10.webp' },
+      { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' }
+    ] },
+  { slug: 'christelijk', naam: 'Christelijke cadeaus', kort: 'Christelijke cadeaus', icoon: 'kruis', uitgelicht: true,
+    tekst: 'Geloof, hoop en liefde in mooie geschenken.',
+    tegel: 'images/categorieen/categorie-christelijk.webp', banner: '',
+    subs: [
+      { slug: 'bijbels', naam: 'Bijbels' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters' },
+      { slug: 'sieraden', naam: 'Sieraden' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie' },
+      { slug: 'voor-kinderen', naam: 'Voor kinderen' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek' }
+    ] },
+  { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
+    tekst: 'Spelen, ontdekken en groeien.',
+    tegel: 'images/categorieen/categorie-speelgoed.webp', banner: '',
+    subs: [
+      { slug: 'baby-peuter', naam: 'Baby & peuter' }, { slug: 'bouwen', naam: 'Bouwen' },
+      { slug: 'bordspellen', naam: 'Bordspellen' }, { slug: 'puzzels', naam: 'Puzzels' },
+      { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed' }, { slug: 'knutselen', naam: 'Knutselen' }
+    ] },
+  { slug: 'wonen', naam: 'Wonen & Decoratie', kort: 'Wonen & Deco', icoon: 'huis',
+    tekst: 'Maak van je huis een warm thuis.', tegel: '', banner: '',
+    subs: [
+      { slug: 'kaarsen-geur', naam: 'Kaarsen & geur' }, { slug: 'woonaccessoires', naam: 'Woonaccessoires' },
+      { slug: 'verlichting', naam: 'Verlichting' }, { slug: 'plaids-kussens', naam: 'Plaids & kussens' },
+      { slug: 'kerstdecoratie', naam: 'Kerstdecoratie' }
+    ] },
+  { slug: 'elektronica', naam: 'Elektronica & Gadgets', kort: 'Elektronica', icoon: 'koptelefoon',
+    tekst: 'Slimme gadgets voor elke dag.', tegel: '', banner: '',
+    subs: [
+      { slug: 'audio', naam: 'Audio' }, { slug: 'slimme-gadgets', naam: 'Slimme gadgets' },
+      { slug: 'telefoon', naam: 'Telefoon' }, { slug: 'gaming', naam: 'Gaming' }, { slug: 'foto-video', naam: 'Foto & video' }
+    ] },
+  { slug: 'keuken', naam: 'Keuken & Tafelen', kort: 'Keuken', icoon: 'kop',
+    tekst: 'Mooi koken, gezellig tafelen.', tegel: '', banner: '',
+    subs: [
+      { slug: 'koken', naam: 'Koken' }, { slug: 'bakken', naam: 'Bakken' }, { slug: 'serveren', naam: 'Serveren' },
+      { slug: 'koffie-thee', naam: 'Koffie & thee' }, { slug: 'opbergen', naam: 'Opbergen' }
+    ] },
+  { slug: 'mode-beauty', naam: 'Mode & Beauty', kort: 'Mode & Beauty', icoon: 'tas',
+    tekst: 'Mooie accessoires en verzorging.', tegel: '', banner: '',
+    subs: [
+      { slug: 'sieraden', naam: 'Sieraden' }, { slug: 'geuren', naam: 'Geuren' }, { slug: 'verzorging', naam: 'Verzorging' },
+      { slug: 'tassen', naam: 'Tassen' }, { slug: 'accessoires', naam: 'Accessoires' }
+    ] },
+  { slug: 'sport-outdoor', naam: 'Sport, Outdoor & Reizen', kort: 'Sport & Outdoor', icoon: 'bal',
+    tekst: 'Erop uit, in beweging.', tegel: '', banner: '',
+    subs: [
+      { slug: 'fitness', naam: 'Fitness' }, { slug: 'wandelen', naam: 'Wandelen' }, { slug: 'fietsen', naam: 'Fietsen' },
+      { slug: 'kamperen', naam: 'Kamperen' }, { slug: 'reizen', naam: 'Reizen' }
+    ] },
+  { slug: 'tuin-klussen', naam: 'Tuin & Klussen', kort: 'Tuin & Klussen', icoon: 'blad',
+    tekst: 'Voor de tuin en de handige klusser.', tegel: '', banner: '',
+    subs: [
+      { slug: 'tuingereedschap', naam: 'Tuingereedschap' }, { slug: 'planten-zaden', naam: 'Planten & zaden' },
+      { slug: 'gereedschap', naam: 'Gereedschap' }, { slug: 'buitenverlichting', naam: 'Buitenverlichting' }
+    ] },
+  { slug: 'dieren', naam: 'Dieren', kort: 'Dieren', icoon: 'poot',
+    tekst: 'Verwen je trouwe vriend.', tegel: '', banner: '',
+    subs: [ { slug: 'hond', naam: 'Hond' }, { slug: 'kat', naam: 'Kat' }, { slug: 'klein-dier', naam: 'Klein dier' }, { slug: 'vogels', naam: 'Vogels' } ] },
+  { slug: 'hobby', naam: 'Hobby & Creatief', kort: 'Hobby & Creatief', icoon: 'palet',
+    tekst: 'Zelf iets moois maken.', tegel: '', banner: '',
+    subs: [
+      { slug: 'tekenen-schilderen', naam: 'Tekenen & schilderen' }, { slug: 'haken-breien', naam: 'Haken & breien' },
+      { slug: 'knutselen', naam: 'Knutselen' }, { slug: 'modelbouw', naam: 'Modelbouw' }
+    ] },
+  { slug: 'boeken-media', naam: 'Boeken & Media', kort: 'Boeken & Media', icoon: 'boek',
+    tekst: 'Verhalen, films en muziek.', tegel: '', banner: '',
+    subs: [
+      { slug: 'romans', naam: 'Romans' }, { slug: 'kinderboeken', naam: 'Kinderboeken' }, { slug: 'kookboeken', naam: 'Kookboeken' },
+      { slug: 'films-series', naam: 'Films & series' }, { slug: 'muziek', naam: 'Muziek' }
+    ] },
+  { slug: 'eten-drinken', naam: 'Eten & Drinken', kort: 'Eten & Drinken', icoon: 'taart',
+    tekst: 'Lekkers om te geven.', tegel: '', banner: '',
+    subs: [
+      { slug: 'chocolade-snoep', naam: 'Chocolade & snoep' }, { slug: 'pakketten', naam: 'Pakketten' },
+      { slug: 'koffie-thee', naam: 'Koffie & thee' }, { slug: 'lekkernijen', naam: 'Lekkernijen' }
+    ] }
+];
+
+window.LK_PRIJZEN = [
+  { id: 'alle', label: 'Alles', min: 0, max: Infinity },
+  { id: 'tot10', label: 'Tot €10', min: 0, max: 10 },
+  { id: 'tot25', label: 'Tot €25', min: 0, max: 25 },
+  { id: 'tot50', label: 'Tot €50', min: 0, max: 50 },
+  { id: 'boven50', label: '€50+', min: 50.01, max: Infinity }
+];
+
+/* VONK: de vragen. De antwoorden matchen met 'voor' en 'moment' bij elk product. */
+window.LK_VONK = {
+  voor: [
+    { id: 'haar', label: 'Haar' }, { id: 'hem', label: 'Hem' }, { id: 'kind', label: 'Een kind' },
+    { id: 'opa-oma', label: 'Opa of oma' }, { id: 'iedereen', label: 'Maakt niet uit' }
+  ],
+  moment: [
+    { id: 'kerst', label: 'Kerst' }, { id: 'sinterklaas', label: 'Sinterklaas' }, { id: 'verjaardag', label: 'Verjaardag' },
+    { id: 'zomaar', label: 'Zomaar' }, { id: 'iedereen', label: 'Maakt niet uit' }
+  ]
+};
+
+window.LK_CAT = function (slug) {
+  return window.LK_CATEGORIEEN.find(function (c) { return c.slug === slug; });
+};
+window.LK_SUB = function (cat, slug) {
+  return cat && cat.subs.find(function (s) { return s.slug === slug; });
+};
