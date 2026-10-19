@@ -41,9 +41,9 @@ window.LK_CATEGORIEEN = [
     tekst: 'Geloof, hoop en liefde in mooie geschenken.',
     tegel: 'images/categorieen/categorie-christelijk.webp', banner: 'images/banners/banner-cat-christelijk.webp',
     subs: [
-      { slug: 'bijbels', naam: 'Bijbels' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters' },
-      { slug: 'sieraden', naam: 'Sieraden' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie' },
-      { slug: 'voor-kinderen', naam: 'Voor kinderen' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek' }
+      { slug: 'bijbels', naam: 'Bijbels', beeld: 'images/sub/sub-christelijk-bijbels.webp' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters', beeld: 'images/sub/sub-christelijk-kaarten-posters.webp' },
+      { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-christelijk-sieraden.webp' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp' },
+      { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-christelijk-voor-kinderen.webp' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-christelijk-boeken-muziek.webp' }
     ] },
   { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
     tekst: 'Spelen, ontdekken en groeien.',
