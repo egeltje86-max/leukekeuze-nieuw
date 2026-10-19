@@ -81,8 +81,8 @@ window.LK_CATEGORIEEN = [
   { slug: 'sport-outdoor', naam: 'Sport, Outdoor & Reizen', kort: 'Sport & Outdoor', icoon: 'bal',
     tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
     subs: [
-      { slug: 'fitness', naam: 'Fitness' }, { slug: 'wandelen', naam: 'Wandelen' }, { slug: 'fietsen', naam: 'Fietsen' },
-      { slug: 'kamperen', naam: 'Kamperen' }, { slug: 'reizen', naam: 'Reizen' }
+      { slug: 'fitness', naam: 'Fitness', beeld: 'images/sub/sub-sport-outdoor-fitness.webp' }, { slug: 'wandelen', naam: 'Wandelen', beeld: 'images/sub/sub-sport-outdoor-wandelen.webp' }, { slug: 'fietsen', naam: 'Fietsen', beeld: 'images/sub/sub-sport-outdoor-fietsen.webp' },
+      { slug: 'kamperen', naam: 'Kamperen', beeld: 'images/sub/sub-sport-outdoor-kamperen.webp' }, { slug: 'reizen', naam: 'Reizen', beeld: 'images/sub/sub-sport-outdoor-reizen.webp' }
     ] },
   { slug: 'tuin-klussen', naam: 'Tuin & Klussen', kort: 'Tuin & Klussen', icoon: 'blad',
     tekst: 'Voor de tuin en de handige klusser.', tegel: 'images/categorieen/categorie-tuin-klussen.webp', banner: 'images/banners/banner-cat-tuin-klussen.webp',
