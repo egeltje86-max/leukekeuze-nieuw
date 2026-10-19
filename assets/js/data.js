@@ -96,8 +96,8 @@ window.LK_CATEGORIEEN = [
   { slug: 'hobby', naam: 'Hobby & Creatief', kort: 'Hobby & Creatief', icoon: 'palet',
     tekst: 'Zelf iets moois maken.', tegel: 'images/categorieen/categorie-hobby.webp', banner: 'images/banners/banner-cat-hobby.webp',
     subs: [
-      { slug: 'tekenen-schilderen', naam: 'Tekenen & schilderen' }, { slug: 'haken-breien', naam: 'Haken & breien' },
-      { slug: 'knutselen', naam: 'Knutselen' }, { slug: 'modelbouw', naam: 'Modelbouw' }
+      { slug: 'tekenen-schilderen', naam: 'Tekenen & schilderen', beeld: 'images/sub/sub-hobby-tekenen-schilderen.webp' }, { slug: 'haken-breien', naam: 'Haken & breien', beeld: 'images/sub/sub-hobby-haken-breien.webp' },
+      { slug: 'knutselen', naam: 'Knutselen', beeld: 'images/sub/sub-hobby-knutselen.webp' }, { slug: 'modelbouw', naam: 'Modelbouw', beeld: 'images/sub/sub-hobby-modelbouw.webp' }
     ] },
   { slug: 'boeken-media', naam: 'Boeken & Media', kort: 'Boeken & Media', icoon: 'boek',
     tekst: 'Verhalen, films en muziek.', tegel: 'images/categorieen/categorie-boeken-media.webp', banner: 'images/banners/banner-cat-boeken-media.webp',
