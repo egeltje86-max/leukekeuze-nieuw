@@ -49,9 +49,9 @@ window.LK_CATEGORIEEN = [
     tekst: 'Spelen, ontdekken en groeien.',
     tegel: 'images/categorieen/categorie-speelgoed.webp', banner: 'images/banners/banner-cat-speelgoed.webp',
     subs: [
-      { slug: 'baby-peuter', naam: 'Baby & peuter' }, { slug: 'bouwen', naam: 'Bouwen' },
-      { slug: 'bordspellen', naam: 'Bordspellen' }, { slug: 'puzzels', naam: 'Puzzels' },
-      { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed' }, { slug: 'knutselen', naam: 'Knutselen' }
+      { slug: 'baby-peuter', naam: 'Baby & peuter', beeld: 'images/sub/sub-speelgoed-baby-peuter.webp' }, { slug: 'bouwen', naam: 'Bouwen', beeld: 'images/sub/sub-speelgoed-bouwen.webp' },
+      { slug: 'bordspellen', naam: 'Bordspellen', beeld: 'images/sub/sub-speelgoed-bordspellen.webp' }, { slug: 'puzzels', naam: 'Puzzels', beeld: 'images/sub/sub-speelgoed-puzzels.webp' },
+      { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed', beeld: 'images/sub/sub-speelgoed-buitenspeelgoed.webp' }, { slug: 'knutselen', naam: 'Knutselen', beeld: 'images/sub/sub-speelgoed-knutselen.webp' }
     ] },
   { slug: 'wonen', naam: 'Wonen & Decoratie', kort: 'Wonen & Deco', icoon: 'huis',
     tekst: 'Maak van je huis een warm thuis.', tegel: 'images/categorieen/categorie-wonen.webp', banner: 'images/banners/banner-cat-wonen.webp',
