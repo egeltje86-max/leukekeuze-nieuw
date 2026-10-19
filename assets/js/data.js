@@ -87,8 +87,8 @@ window.LK_CATEGORIEEN = [
   { slug: 'tuin-klussen', naam: 'Tuin & Klussen', kort: 'Tuin & Klussen', icoon: 'blad',
     tekst: 'Voor de tuin en de handige klusser.', tegel: 'images/categorieen/categorie-tuin-klussen.webp', banner: 'images/banners/banner-cat-tuin-klussen.webp',
     subs: [
-      { slug: 'tuingereedschap', naam: 'Tuingereedschap' }, { slug: 'planten-zaden', naam: 'Planten & zaden' },
-      { slug: 'gereedschap', naam: 'Gereedschap' }, { slug: 'buitenverlichting', naam: 'Buitenverlichting' }
+      { slug: 'tuingereedschap', naam: 'Tuingereedschap', beeld: 'images/sub/sub-tuin-klussen-tuingereedschap.webp' }, { slug: 'planten-zaden', naam: 'Planten & zaden', beeld: 'images/sub/sub-tuin-klussen-planten-zaden.webp' },
+      { slug: 'gereedschap', naam: 'Gereedschap', beeld: 'images/sub/sub-tuin-klussen-gereedschap.webp' }, { slug: 'buitenverlichting', naam: 'Buitenverlichting', beeld: 'images/sub/sub-tuin-klussen-buitenverlichting.webp' }
     ] },
   { slug: 'dieren', naam: 'Dieren', kort: 'Dieren', icoon: 'poot',
     tekst: 'Verwen je trouwe vriend.', tegel: 'images/categorieen/categorie-dieren.webp', banner: 'images/banners/banner-cat-dieren.webp',
