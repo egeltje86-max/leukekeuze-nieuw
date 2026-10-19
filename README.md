@@ -37,13 +37,15 @@ Stijl: donker, warm goudlicht, geen tekst, geen merken/logo's, onderwerp in het 
 banners home (desktop + mobiel), banner Cadeaus, tegels Cadeaus/Christelijk/Speelgoed,
 8 subcategorieën Cadeaus, 8 voorbeeld-productfoto's.
 
-**Ronde 2: nodig**
-Per categorie een tegel `categorie-<naam>.webp` (800×800) en een banner `banner-cat-<naam>.webp` (1920×640):
-wonen · elektronica · keuken · mode-beauty · sport-outdoor · tuin-klussen · dieren · hobby · boeken-media · eten-drinken
-Plus: `banner-cat-christelijk.webp` en `banner-cat-speelgoed.webp`.
+**Ronde 2: binnen ✔**
+Alle 13 categorieën: tegel (`categorie-<naam>.webp`, 800×800) en banner (`banner-cat-<naam>.webp`, 1920×640).
+Nova's originelen staan in `images/nova-origineel/`.
 
-**Ronde 3: later**
-Subcategorie-rondjes (600×600) voor de andere categorieën, neutrale homebanners (na de feestdagen),
-`deel-afbeelding.webp` (1200×630).
+**Ronde 3: subcategorieën binnen ✔**
+Alle 66 subcategorie-rondjes (`images/sub/sub-<categorie>-<sub>.webp`, 600×600).
+
+**Nog open**
+- `deel-afbeelding.webp` (1200×630): plaatje bij delen via WhatsApp/Facebook
+- Neutrale homebanners voor na de feestdagen
 
 Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = bestandsnaam invullen in `data.js`.

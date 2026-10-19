@@ -108,8 +108,8 @@ window.LK_CATEGORIEEN = [
   { slug: 'eten-drinken', naam: 'Eten & Drinken', kort: 'Eten & Drinken', icoon: 'taart',
     tekst: 'Lekkers om te geven.', tegel: 'images/categorieen/categorie-eten-drinken.webp', banner: 'images/banners/banner-cat-eten-drinken.webp',
     subs: [
-      { slug: 'chocolade-snoep', naam: 'Chocolade & snoep' }, { slug: 'pakketten', naam: 'Pakketten' },
-      { slug: 'koffie-thee', naam: 'Koffie & thee' }, { slug: 'lekkernijen', naam: 'Lekkernijen' }
+      { slug: 'chocolade-snoep', naam: 'Chocolade & snoep', beeld: 'images/sub/sub-eten-drinken-chocolade-snoep.webp' }, { slug: 'pakketten', naam: 'Pakketten', beeld: 'images/sub/sub-eten-drinken-pakketten.webp' },
+      { slug: 'koffie-thee', naam: 'Koffie & thee', beeld: 'images/sub/sub-eten-drinken-koffie-thee.webp' }, { slug: 'lekkernijen', naam: 'Lekkernijen', beeld: 'images/sub/sub-eten-drinken-lekkernijen.webp' }
     ] }
 ];
 
