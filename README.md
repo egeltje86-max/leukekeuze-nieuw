@@ -44,8 +44,11 @@ Nova's originelen staan in `images/nova-origineel/`.
 **Ronde 3: subcategorieën binnen ✔**
 Alle 66 subcategorie-rondjes (`images/sub/sub-<categorie>-<sub>.webp`, 600×600).
 
+**Deelplaatje binnen ✔**
+`images/deel-afbeelding.jpg` (1200×630), gekoppeld in index.html (og:image).
+Let op: het adres in og:url/og:image is nu het testadres; bij livegang aanpassen naar leukekeuze.nl.
+
 **Nog open**
-- `deel-afbeelding.webp` (1200×630): plaatje bij delen via WhatsApp/Facebook
 - Neutrale homebanners voor na de feestdagen
 
 Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = bestandsnaam invullen in `data.js`.
