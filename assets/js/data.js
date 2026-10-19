@@ -102,8 +102,8 @@ window.LK_CATEGORIEEN = [
   { slug: 'boeken-media', naam: 'Boeken & Media', kort: 'Boeken & Media', icoon: 'boek',
     tekst: 'Verhalen, films en muziek.', tegel: 'images/categorieen/categorie-boeken-media.webp', banner: 'images/banners/banner-cat-boeken-media.webp',
     subs: [
-      { slug: 'romans', naam: 'Romans' }, { slug: 'kinderboeken', naam: 'Kinderboeken' }, { slug: 'kookboeken', naam: 'Kookboeken' },
-      { slug: 'films-series', naam: 'Films & series' }, { slug: 'muziek', naam: 'Muziek' }
+      { slug: 'romans', naam: 'Romans', beeld: 'images/sub/sub-boeken-media-romans.webp' }, { slug: 'kinderboeken', naam: 'Kinderboeken', beeld: 'images/sub/sub-boeken-media-kinderboeken.webp' }, { slug: 'kookboeken', naam: 'Kookboeken', beeld: 'images/sub/sub-boeken-media-kookboeken.webp' },
+      { slug: 'films-series', naam: 'Films & series', beeld: 'images/sub/sub-boeken-media-films-series.webp' }, { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }
     ] },
   { slug: 'eten-drinken', naam: 'Eten & Drinken', kort: 'Eten & Drinken', icoon: 'taart',
     tekst: 'Lekkers om te geven.', tegel: 'images/categorieen/categorie-eten-drinken.webp', banner: 'images/banners/banner-cat-eten-drinken.webp',
