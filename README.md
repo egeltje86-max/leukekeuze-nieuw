@@ -66,4 +66,4 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Voorbeeldproducten en voorbeeldfoto's verwijderd. Alleen echte, goedgekeurde producten.
 - Keurkamer van de site verwijderd (staat nu los op het bureaublad van Marius).
 - Netlify: `netlify.toml` (geen build, publish = .), `_redirects` voor oude adressen, `404.html` stuurt naar home.
-- Nog te doen door Marius: e-mailadres op de contactpagina, privacy- en disclaimertekst nalezen.
+- Contact: leukekeuze.nl@gmail.com. Nog te doen door Marius: privacy- en disclaimertekst nalezen.
