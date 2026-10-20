@@ -328,8 +328,13 @@
 
     if (stap === 4) {
       var past = function (lijst, waarde) { return waarde === 'iedereen' || (lijst || []).indexOf(waarde) !== -1 || (lijst || []).indexOf('iedereen') !== -1; };
-      var alle = LK.zichtbaar().filter(nietChristelijk);
+      var alle = LK.zichtbaar().filter(nietChristelijk).filter(function (p) {
+        /* dierenspullen alleen tonen als je niet voor een bepaald persoon zoekt */
+        return q.voor === 'iedereen' || p.cat !== 'dieren';
+      });
+      var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
       var precies = alle.filter(function (p) { return past(p.voor, q.voor) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
+      precies.sort(function (a, b) { return echt(a) - echt(b); });
       var bijna = alle.filter(function (p) {
         if (precies.indexOf(p) !== -1) return false;
         var score = (past(p.voor, q.voor) ? 1 : 0) + (past(p.moment, q.moment) ? 1 : 0) + (binnenPrijs(p, q.budget) ? 1 : 0);
