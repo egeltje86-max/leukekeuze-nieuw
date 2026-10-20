@@ -82,6 +82,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 25 (20-10-2026): 3 fietsproducten (bol, Ditverzinjeniet).
 - Ronde 26 (20-10-2026): 21 producten baby & kraam, agenda's 2027, pakketten & borrel (19 via Daisycon).
 - Ronde 27 (20-10-2026): 24 producten filmavond, foto, gaming, zelf maken, tuin (Daisycon). Afgewezen: teckel-markeerstiften, houten kerstboompjes, rotan lantaarn, verplantschepje (niet mooi/stevig).
+- Ronde 28 (20-10-2026): 10 producten klein dier, christelijk, horloge, telefoon (7 bol, 3 Ditverzinjeniet).
 - Herindeling (20-10-2026, goedgekeurd door Marius): nieuwe subs Adventskalenders, Baby & kraam (Cadeaus), Kaart- & dobbelspellen, Huisgeuren, Keukenapparaten (gasstellen), Horloges, Rugzakken & reistassen, Drop & snoep, Agenda's & notitieboeken. Hernoemd: Films & series → Filmavond, Tassen → Hand- & schoudertassen, Kaarsen & geur → Kaarsen & kandelaars, Chocolade & snoep → Chocolade, Pakketten → Pakketten & borrel, Knutselen → Knutselen voor kinderen / Zelf maken. Lege subs (bv. Met naam) worden automatisch verborgen. Nieuwe subs hebben nog geen plaatje (gouden icoon) tot Nova ze maakt: images/sub/sub-<cat>-<sub>.webp, 600x600. La Redoute-foto's staan nu lokaal.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
