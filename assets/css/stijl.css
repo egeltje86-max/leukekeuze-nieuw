@@ -400,9 +400,13 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .product-acties .hartknop { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--lijn-sterk); display: grid; place-items: center; color: var(--goud-licht); flex: none; }
 .product-acties .hartknop svg { width: 22px; height: 22px; }
 .product-acties .hartknop[aria-pressed="true"] svg { fill: currentColor; }
-.waarom { margin-top: 24px; padding: 18px; border-radius: var(--r-m); background: var(--kaart); border: 1px solid var(--lijn-zacht); }
-.waarom h2 { font: 700 13px/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; color: var(--goud); margin-bottom: 8px; }
-.waarom p { margin: 0; color: var(--tekst-2); }
+.waarom { margin-top: 24px; padding: 18px 20px; border-radius: var(--r-m);
+  background: linear-gradient(135deg, rgba(217,168,72,.20) 0%, rgba(217,168,72,.07) 100%);
+  border: 1px solid rgba(217,168,72,.45); border-left: 4px solid var(--goud);
+  box-shadow: 0 6px 24px rgba(217,168,72,.10); }
+.waarom h2 { display: flex; align-items: center; gap: 8px; font: 700 13px/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; color: var(--goud-licht); margin-bottom: 10px; }
+.waarom h2 svg { width: 16px; height: 16px; flex: none; }
+.waarom p { margin: 0; color: var(--tekst); font-size: 17px; line-height: 1.55; }
 .feiten { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; font-size: 14px; color: var(--tekst-2); }
 .feiten li { display: flex; gap: 10px; align-items: flex-start; }
 .feiten svg { width: 17px; height: 17px; color: var(--goud); flex: none; margin-top: 2px; }
