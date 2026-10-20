@@ -57,6 +57,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 1 (19-10-2026): 32 producten van Ditverzinjeniet (Daisycon 11208), allemaal goedgekeurd door Marius.
 - Ronde 2 (19-10-2026): 44 producten van 999Games, Bloompost, Teufel en La Redoute, allemaal goedgekeurd. La Redoute-foto's komen rechtstreeks van hun CDN (zij blokkeren downloaden).
 - Ronde 3 (19-10-2026): 21 christelijke cadeaus via bol (partnerprogramma, site 1545784) en Kaartje2go (Daisycon 19520). 3 afgewezen. Bol-links: partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=<bol-pagina>.
+- Ronde 4 (20-10-2026): 37 producten Keuken & Tafelen via bol, allemaal goedgekeurd.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
