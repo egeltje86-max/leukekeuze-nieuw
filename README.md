@@ -72,6 +72,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 15 (20-10-2026): 25 producten van Dille & Kamille (Daisycon 7059): eten & drinken, speelgoed, hobby. Verzendnoot: €5,95, ophalen in winkel gratis.
 - Ronde 16 (20-10-2026): 21 producten Dille & Kamille: wonen, verzorging, tuin. Adventskrans: titel "(zonder kaarsjes)" omdat de foto kaarsjes toont.
 - Ronde 17 (20-10-2026): 20 producten (films, hobby, gadgets, klussen, christelijk; Ditverzinjeniet + bol). Mini-hamertje 7-in-1 weggelaten: lijkt te veel op de 10-in-1 houten hamer.
+- Ronde 18 (20-10-2026): 11 producten geuren, sieraden, accessoires (bol). Regel van Marius: alleen positieve extra info vermelden (bv. "ook voor touchscreen"), niet wat iets níet kan als dat duidelijk is; materiaal/metaal wel vermelden.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
