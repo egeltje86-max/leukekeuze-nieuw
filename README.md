@@ -61,6 +61,8 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 5 (20-10-2026): 32 producten Sport, Outdoor & Reizen via bol, allemaal goedgekeurd. Nieuwe subcategorie Darts (plaatje van Marius/Nova).
 - Ronde 6 (20-10-2026): 12 darts-producten via bol, allemaal goedgekeurd.
 - Ronde 7 (20-10-2026): 19 producten Eten & Drinken via Dropwinkel (Daisycon 18019), allemaal goedgekeurd. Veld verzendNoot = klein regeltje op productpagina.
+- Ronde 8 (20-10-2026): 31 producten Ditverzinjeniet (Dieren, Tuin & Klussen, Hobby, Wonen, Gadgets), allemaal goedgekeurd.
+- "Onder €10" vult zich nu vanzelf op prijs (gedeeld.js, hoortBij). Nooit meer handmatig onder-10 zetten.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
