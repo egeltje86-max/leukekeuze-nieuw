@@ -410,10 +410,10 @@
 
   /* ================== MENU'S ================== */
   function bouwLade() {
-    var uit = window.LK_CAT('christelijk');
+    var uit = CATS.filter(function (c) { return c.uitgelicht; })[0];
     var rest = CATS.filter(function (c) { return !c.uitgelicht; });
     $('[data-lade]').innerHTML =
-      '<a class="lade-uitgelicht" href="#/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' +
+      (uit ? '<a class="lade-uitgelicht" href="#/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
       '<div class="lade-label">Alle categorieën</div><ul>' +
       rest.map(function (c) {
         return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +

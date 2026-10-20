@@ -8,6 +8,9 @@
   --bg-2: #0E1628;
   --kaart: #121B2F;
   --kaart-2: #172238;
+  --knop-bg: #1F2B45;
+  --knop-bg-hover: #283858;
+  --knop-lijn: rgba(255, 255, 255, .16);
   --lijn: rgba(217, 168, 72, .26);
   --lijn-sterk: rgba(217, 168, 72, .55);
   --lijn-zacht: rgba(255, 255, 255, .08);
@@ -254,12 +257,12 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 /* ---------- Categorieknoppen met icoon ---------- */
 .catknoppen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
 .catknop {
-  border: 1px solid var(--lijn-zacht); background: var(--kaart); border-radius: var(--r-m);
+  border: 1px solid var(--knop-lijn); background: var(--knop-bg); border-radius: var(--r-m);
   padding: 14px 6px 12px; display: flex; flex-direction: column; align-items: center; gap: 9px; text-align: center;
   font: 600 12.5px/1.2 var(--f-ui); min-height: 86px; transition: border-color .2s, box-shadow .2s;
 }
 .catknop svg { width: 30px; height: 30px; color: var(--goud-licht); }
-.catknop:hover { border-color: var(--lijn-sterk); }
+.catknop:hover { border-color: var(--lijn-sterk); background: var(--knop-bg-hover); }
 .catknop.actief { border-color: var(--goud); box-shadow: var(--gloed); color: var(--goud-licht); }
 .catknop.desk { display: none; }
 @media (min-width: 760px) {
@@ -421,10 +424,10 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .keuzes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 @media (min-width: 640px) { .keuzes { grid-template-columns: repeat(3, 1fr); } }
 .keuze {
-  padding: 18px 14px; border-radius: var(--r-m); border: 1px solid var(--lijn-zacht); background: var(--kaart);
+  padding: 18px 14px; border-radius: var(--r-m); border: 1px solid var(--knop-lijn); background: var(--knop-bg);
   font: 700 15px/1.25 var(--f-ui); text-align: center; transition: border-color .2s, box-shadow .2s;
 }
-.keuze:hover { border-color: var(--lijn-sterk); }
+.keuze:hover { border-color: var(--lijn-sterk); background: var(--knop-bg-hover); }
 .keuze[aria-pressed="true"] { border-color: var(--goud); box-shadow: var(--gloed); color: var(--goud-licht); }
 .vonk-terug { margin-top: 18px; font: 600 14px/1 var(--f-ui); color: var(--tekst-2); display: inline-flex; align-items: center; gap: 6px; }
 .vonk-terug svg { width: 15px; height: 15px; }
