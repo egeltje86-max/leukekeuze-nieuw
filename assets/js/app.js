@@ -262,6 +262,7 @@
           '<div class="waarom"><h2>Waarom wij dit kozen</h2><p>' + esc(p.waarom || '') + '</p></div>' +
           '<ul class="feiten">' +
             '<li>' + ic('winkel') + '<span>Je bestelt en betaalt bij ' + esc(p.shop) + '. Bezorging en retour regelt de winkel.</span></li>' +
+            (p.verzendNoot ? '<li>' + ic('info') + '<span>' + esc(p.verzendNoot) + '</span></li>' : '') +
             '<li>' + ic('vink') + '<span>Met de hand gekozen door LeukeKeuze.</span></li>' +
             (ookIn.length ? '<li>' + ic('cadeau') + '<span>Ook te vinden bij: ' + ookIn.join(', ') + '</span></li>' : '') +
             (p.voorbeeld ? '<li>' + ic('info') + '<span>Dit is een voorbeeldproduct om de site te testen. De foto is een sfeerbeeld.</span></li>' : '') +
