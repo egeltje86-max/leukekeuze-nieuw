@@ -152,8 +152,9 @@
       '<div class="beeld">' + catBeeld(c, true) + '</div>' +
       '<div class="tekst"><h3>' + esc(c.naam) + '</h3><p>' + esc(c.tekst) + '</p><span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
   }
+  function nietChristelijk(p) { return p.cat !== 'christelijk'; }
   function uitgelicht(tab) {
-    var l = LK.zichtbaar();
+    var l = LK.zichtbaar().filter(nietChristelijk);
     if (tab === 'populair') l = l.filter(function (p) { return p.populair; });
     if (tab === 'onder25') l = l.filter(function (p) { return p.prijs <= 25; });
     if (tab === 'nieuw') l = l.filter(function (p) { return p.nieuw; });
@@ -243,7 +244,7 @@
     }).filter(Boolean);
 
     var verwant = LK.zichtbaar().filter(function (x) {
-      return x.id !== p.id && (x.cat === p.cat || (x.ookIn || []).some(function (o) { return (p.ookIn || []).indexOf(o) !== -1; }));
+      return x.id !== p.id && (p.cat === 'christelijk') === (x.cat === 'christelijk') && (x.cat === p.cat || (x.ookIn || []).some(function (o) { return (p.ookIn || []).indexOf(o) !== -1; }));
     });
     verwant = sorteer(verwant).slice(0, 4);
 
@@ -327,7 +328,7 @@
 
     if (stap === 4) {
       var past = function (lijst, waarde) { return waarde === 'iedereen' || (lijst || []).indexOf(waarde) !== -1 || (lijst || []).indexOf('iedereen') !== -1; };
-      var alle = LK.zichtbaar();
+      var alle = LK.zichtbaar().filter(nietChristelijk);
       var precies = alle.filter(function (p) { return past(p.voor, q.voor) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
       var bijna = alle.filter(function (p) {
         if (precies.indexOf(p) !== -1) return false;

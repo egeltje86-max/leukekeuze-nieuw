@@ -27,6 +27,8 @@
 
   /* Hoort product bij categorie (en evt. sub)? Kijkt ook naar 'ookIn'. */
   function hoortBij(p, cat, sub) {
+    /* Christelijke producten staan alleen in de categorie Christelijke cadeaus (wens van Marius). */
+    if (p.cat === 'christelijk' && cat !== 'christelijk') return false;
     /* 'Onder €10' gaat automatisch op prijs: alles onder de 10 euro, nooit iets duurders. */
     if (cat === 'cadeaus' && sub === 'onder-10') return typeof p.prijs === 'number' && p.prijs < 10;
     if (p.cat === cat && (!sub || p.sub === sub)) return true;
