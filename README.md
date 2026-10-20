@@ -20,7 +20,6 @@ Niets van de oude site overgenomen. **Status: klaar voor livegang (GO van Marius
 | `#/vonk` | VONK cadeauzoeker (3 vragen) |
 | `#/favorieten` | Bewaarde producten (hartje) |
 | `#/info/...` | Hoe werkt het, Over ons, Contact, Privacy, Disclaimer |
-| `keurkamer/` | Keurkamer (verborgen, nog niet op slot) |
 
 ## Bestanden
 | Bestand | Wat |
@@ -99,6 +98,6 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 ## Livegang (19-10-2026)
 - Geen noindex meer; robots.txt staat alles toe; sitemap.xml; canonical = https://leukekeuze.nl/
 - Voorbeeldproducten en voorbeeldfoto's verwijderd. Alleen echte, goedgekeurde producten.
-- Keurkamer van de site verwijderd (staat nu los op het bureaublad van Marius).
+- Keurkamer van de site verwijderd. Het keurprogramma heet nu de Productstudio en staat los op het bureaublad van Marius (map "Productstudio LeukeKeuze (nieuw)").
 - Netlify: `netlify.toml` (geen build, publish = .), `_redirects` voor oude adressen, `404.html` stuurt naar home.
 - Contact: leukekeuze.nl@gmail.com. Nog te doen door Marius: privacy- en disclaimertekst nalezen.

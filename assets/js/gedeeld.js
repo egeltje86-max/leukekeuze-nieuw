@@ -1,4 +1,4 @@
-/* Gedeelde hulpjes voor de site en de Keurkamer */
+/* Gedeelde hulpjes voor de site en de Productstudio */
 (function () {
   var K_KEUR = 'lk-keuringen-v2';
   var K_FAV = 'lk-favorieten-v1';
@@ -6,7 +6,7 @@
   function lees(k, leeg) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? leeg : v; } catch (e) { return leeg; } }
   function bewaar(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
 
-  /* ---------- Keuringen (Keurkamer) ---------- */
+  /* ---------- Keuringen (Productstudio) ---------- */
   function leesKeuringen() { return lees(K_KEUR, {}); }
   function bewaarKeuringen(k) { return bewaar(K_KEUR, k); }
 
