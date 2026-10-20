@@ -77,6 +77,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 20 (20-10-2026): 6 gasstellen (bol), 3 inbouw en 3 los, in Keuken > Koken.
 - Ronde 21 (20-10-2026): 8 producten (gaming, telefoon, foto, tekenen, tuinlicht) via bol.
 - Ronde 22 (20-10-2026): 10 producten christelijk, knutselen, konijn & cavia (bol).
+- Ronde 23 (20-10-2026): 14 boeken (6 kookboeken, 8 romans) via bol.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
