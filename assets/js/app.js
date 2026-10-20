@@ -191,7 +191,7 @@
 
     var subs = '<div class="subkaarten">' +
       '<a class="subkaart' + (s ? '' : ' actief') + '" href="#/c/' + c.slug + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
-      c.subs.map(function (x) {
+      volleSubs(c).map(function (x) {
         var beeld = x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
         return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="#/c/' + c.slug + '/' + x.slug + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
           '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
@@ -399,6 +399,14 @@
       '<div class="binnen"><section class="sectie">' + leegBlok('Even kwijt?', 'Ga terug naar de homepage of kies een categorie.', '<a class="knop knop-goud" href="#/">Naar home</a>') + '</section></div>';
   }
 
+  /* Subcategorieën die echt iets bevatten. Lege subs (bv. 'Met naam') blijven verborgen tot er producten in staan. */
+  function volleSubs(c) {
+    var z = LK.zichtbaar();
+    return c.subs.filter(function (s) {
+      return s.slug === 'onder-10' || z.some(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
+    });
+  }
+
   /* ================== MENU'S ================== */
   function bouwLade() {
     var uit = window.LK_CAT('christelijk');
@@ -409,14 +417,14 @@
       rest.map(function (c) {
         return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +
           '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="#/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
-          c.subs.map(function (s) { return '<a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
+          volleSubs(c).map(function (s) { return '<a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
       }).join('') + '</ul>' +
       '<div class="lade-extra"><a href="#/vonk">VONK cadeauzoeker</a><a href="#/favorieten">Mijn favorieten</a><a href="#/zoek">Zoeken</a><a href="#/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
       return '<div><h3><a href="#/c/' + c.slug + '">' + ic(c.icoon) + esc(c.naam) + '</a></h3><ul>' +
-        c.subs.slice(0, 6).map(function (s) { return '<li><a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
+        volleSubs(c).slice(0, 6).map(function (s) { return '<li><a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
     }).join('') + '</div>';
   }
   var laatsteFocus = null;

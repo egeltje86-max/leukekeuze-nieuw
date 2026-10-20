@@ -80,6 +80,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 23 (20-10-2026): 14 boeken (6 kookboeken, 8 romans) via bol.
 - Ronde 24 (20-10-2026): 7 producten tekenen, modelbouw, buitenspel (bol).
 - Ronde 25 (20-10-2026): 3 fietsproducten (bol, Ditverzinjeniet).
+- Herindeling (20-10-2026, goedgekeurd door Marius): nieuwe subs Adventskalenders, Baby & kraam (Cadeaus), Kaart- & dobbelspellen, Huisgeuren, Keukenapparaten (gasstellen), Horloges, Rugzakken & reistassen, Drop & snoep, Agenda's & notitieboeken. Hernoemd: Films & series → Filmavond, Tassen → Hand- & schoudertassen, Kaarsen & geur → Kaarsen & kandelaars, Chocolade & snoep → Chocolade, Pakketten → Pakketten & borrel, Knutselen → Knutselen voor kinderen / Zelf maken. Lege subs (bv. Met naam) worden automatisch verborgen. Nieuwe subs hebben nog geen plaatje (gouden icoon) tot Nova ze maakt: images/sub/sub-<cat>-<sub>.webp, 600x600. La Redoute-foto's staan nu lokaal.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
