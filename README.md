@@ -70,6 +70,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 13 (20-10-2026): 9 tassen voor heren via bol, allemaal goedgekeurd. De Samsonite-tas stond er al (bij Reizen) en is nu ook bij Tassen te zien.
 - Ronde 14 (20-10-2026): 17 producten Dieren, Elektronica en Tuinlampen (Ditverzinjeniet, bol), allemaal goedgekeurd. Nieuw veld "letOp": een "Let op:"-regel op de productpagina (bv. beamer alleen voor Android).
 - Ronde 15 (20-10-2026): 25 producten van Dille & Kamille (Daisycon 7059): eten & drinken, speelgoed, hobby. Verzendnoot: €5,95, ophalen in winkel gratis.
+- Ronde 16 (20-10-2026): 21 producten Dille & Kamille: wonen, verzorging, tuin. Adventskrans: titel "(zonder kaarsjes)" omdat de foto kaarsjes toont.
 - Keuren gebeurt in de losse Keurkamer op Marius' bureaublad ("Keurkamer LeukeKeuze (nieuw)"). Die exporteert een keuringen-bestand; Claude zet de goedgekeurde producten in `assets/js/producten.js`.
 - `url` = partnerlink (telt als klik). `winkelUrl` = gewone winkelpagina, gebruikt voor controles en in de Keurkamer (telt niet als klik).
 - Alle partnerlinks hebben `rel="sponsored nofollow noopener"`, zodat robots ze niet volgen.
