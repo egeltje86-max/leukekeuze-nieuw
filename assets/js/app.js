@@ -458,6 +458,7 @@
   }
 
   /* ================== ROUTER ================== */
+  var vorigeCat = null;
   function toon() {
     var a = leesAdres(), d = a.delen, html;
     if (!d.length) html = home();
@@ -470,8 +471,24 @@
     else if (d[0] === 'info') html = info(d[1]);
     else html = nietGevonden();
 
+    // Onthoud waar de schuifbalk met subcategorieën stond (mobiel), zodat hij niet terugspringt.
+    var oudeRij = $('.subkaarten', app), oudeScroll = oudeRij ? oudeRij.scrollLeft : 0;
+    var zelfdeCat = d[0] === 'c' && vorigeCat === d[1];
+
     app.innerHTML = html;
     vulIconen(app);
+
+    var rij = $('.subkaarten', app);
+    if (rij) {
+      if (zelfdeCat) rij.scrollLeft = oudeScroll;
+      var actief = $('.subkaart.actief', rij);
+      if (actief && rij.scrollWidth > rij.clientWidth) {
+        var r1 = rij.getBoundingClientRect(), r2 = actief.getBoundingClientRect();
+        var doel = rij.scrollLeft + (r2.left - r1.left) - (r1.width - r2.width) / 2;
+        try { rij.scrollTo({ left: Math.max(0, doel), behavior: zelfdeCat ? 'smooth' : 'auto' }); } catch (e) { rij.scrollLeft = Math.max(0, doel); }
+      }
+    }
+    vorigeCat = d[0] === 'c' ? d[1] : null;
     sluitLade(); sluitMega();
 
     // Actieve menu-items
