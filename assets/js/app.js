@@ -441,6 +441,8 @@
     $('#lade').setAttribute('aria-hidden', 'false');
     $$('.menuknop').forEach(function (b) { b.setAttribute('aria-expanded', 'true'); });
     setTimeout(function () { var b = $('.lade [data-sluit-lade]'); if (b) b.focus(); }, 60);
+    /* extra stap in de geschiedenis: de terugknop van de telefoon sluit dan eerst het menu */
+    try { if (!(history.state && history.state.lade)) history.pushState({ lade: 1 }, ''); } catch (e) {}
   }
   function sluitLade() {
     if (!document.body.classList.contains('lade-open')) return;
@@ -448,7 +450,11 @@
     $('#lade').setAttribute('aria-hidden', 'true');
     $$('.menuknop').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
     if (laatsteFocus && document.contains(laatsteFocus)) laatsteFocus.focus();
+    /* menu met de hand gesloten: de extra geschiedenis-stap weer weghalen */
+    if (!sluitDoorTerug && history.state && history.state.lade) { negeerPop = true; history.back(); }
+    sluitDoorTerug = false;
   }
+  var sluitDoorTerug = false, negeerPop = false;
   function sluitMega() {
     $('[data-megamenu]').classList.remove('open');
     var b = $('[data-mega]'); if (b) b.setAttribute('aria-expanded', 'false');
@@ -540,6 +546,7 @@
       if (vorigPad !== null) app.focus({ preventScroll: true });
     }
     vorigPad = a.pad;
+    if (typeof bewaakHome === 'function') bewaakHome();
   }
 
   /* ================== TERUG NAAR BOVEN ================== */
@@ -564,6 +571,32 @@
     });
     bijwerken();
   })();
+
+  /* ================== TERUGKNOP ================== */
+  /* 1. Staat het menu open? Dan sluit de terugknop het menu (je blijft op de site).
+     2. Op de homepage (als je daar binnenkwam): twee keer snel op terug om de site te verlaten. */
+  var startOpHome = !leesAdres().delen.length, laatsteTerug = 0;
+  function bewaakHome() {
+    if (!startOpHome || leesAdres().delen.length) return;
+    try {
+      if (!(history.state && (history.state.wacht || history.state.lade))) {
+        history.replaceState({ basis: 1 }, '');
+        history.pushState({ wacht: 1 }, '');
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('popstate', function (e) {
+    if (negeerPop) { negeerPop = false; return; }
+    if (document.body.classList.contains('lade-open')) { sluitDoorTerug = true; sluitLade(); return; }
+    var st = e.state || {};
+    if (st.basis && startOpHome && !leesAdres().delen.length) {
+      var nu = Date.now();
+      if (nu - laatsteTerug < 2000) { history.back(); return; }
+      laatsteTerug = nu;
+      toast('Tik nog een keer op terug om LeukeKeuze te verlaten');
+      try { history.pushState({ wacht: 1 }, ''); } catch (err) {}
+    }
+  });
 
   /* ================== KLIKKEN ================== */
   document.addEventListener('click', function (e) {
