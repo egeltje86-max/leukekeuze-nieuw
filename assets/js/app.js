@@ -453,7 +453,7 @@
     var inhoud = '';
     if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor');
     if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
-    if (stap === 3) inhoud = vraag('Wat is je budget?', PRIJZEN.map(function (p) { return { id: p.id, label: p.id === 'alle' ? 'Maakt niet uit' : p.label }; }), 'budget');
+    if (stap === 3) inhoud = vraag('Wat is je budget?', PRIJZEN.map(function (p) { return { id: p.id === 'alle' ? 'geen' : p.id, label: p.id === 'alle' ? 'Maakt niet uit' : p.label }; }), 'budget');
 
     if (stap === 4) {
       var past = function (lijst, waarde) { return waarde === 'iedereen' || (lijst || []).indexOf(waarde) !== -1 || (lijst || []).indexOf('iedereen') !== -1; };
