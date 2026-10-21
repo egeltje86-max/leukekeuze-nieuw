@@ -466,8 +466,16 @@
   /* ================== ROUTER ================== */
   var vorigeCat = null;
   /* ---------- Partnerwinkels ---------- */
+  function winkelFotos(w) {
+    if (w.beeld) return '<span class="winkelfotos een"><img src="' + esc(w.beeld) + '" alt="" loading="lazy" decoding="async"></span>';
+    var shop = (w.shop || w.naam).toLowerCase();
+    var ps = LK.zichtbaar().filter(function (p) { return (p.shop || '').toLowerCase() === shop; });
+    ps = ps.slice(-3).reverse(); /* de nieuwste (mooiste) producten van die winkel */
+    if (!ps.length) return '';
+    return '<span class="winkelfotos">' + ps.map(function (p) { return '<img src="' + esc(p.beeld) + '-klein.webp" alt="" loading="lazy" decoding="async">'; }).join('') + '</span>';
+  }
   function winkelKaart(w) {
-    return '<a class="winkelkaart" href="' + esc(w.url) + '" target="_blank" rel="sponsored noopener">' +
+    return '<a class="winkelkaart" href="' + esc(w.url) + '" target="_blank" rel="sponsored noopener">' + winkelFotos(w) +
       '<strong>' + esc(w.naam) + '</strong><span>' + esc(w.tekst) + '</span><em>Naar ' + esc(w.naam) + ' ' + ic('pijl') + '</em></a>';
   }
   function winkelsMet(slug) {
