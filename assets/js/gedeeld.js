@@ -112,7 +112,7 @@
 
   function productKaart(p) {
     var fav = isFavoriet(p.id);
-    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : (p.nieuw ? '<span class="label vol">Nieuw</span>' : '');
+    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : (p.nieuw ? '<span class="label vol">Nieuw</span>' : ''));
     return '<article class="prodkaart">' +
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + icoon('hart') + '</button>' +

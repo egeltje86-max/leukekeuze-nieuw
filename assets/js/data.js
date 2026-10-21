@@ -20,6 +20,16 @@ window.LK_INSTELLINGEN = {
     { label: 'Onder €10', naar: '#/c/cadeaus/onder-10' },
     { label: 'Adventskalenders', naar: '#/c/cadeaus/adventskalenders' }
   ],
+  /* 'Voor wie zoek je een cadeau?' op de homepage. */
+  voorWie: [
+    { label: 'Voor haar', naar: '#/c/cadeaus/voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar.webp' },
+    { label: 'Voor hem', naar: '#/c/cadeaus/voor-hem', beeld: 'images/sub/sub-cadeaus-voor-hem.webp' },
+    { label: 'Voor kinderen', naar: '#/c/cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
+    { label: 'Opa & oma', naar: '#/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
+    { label: 'Baby & kraam', naar: '#/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
+    { label: 'Met naam', naar: '#/c/cadeaus/met-naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' },
+    { label: 'Onder €10', naar: '#/c/cadeaus/onder-10', beeld: 'images/sub/sub-cadeaus-onder-10.webp' }
+  ],
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [
     { kicker: 'Proost op de feestdagen', titel: 'Whisky, champagne & meer', tekst: 'Topflessen om te geven of samen te openen.', knop: 'Naar de dranken', naar: '#/c/dranken', beeld: 'images/categorieen/categorie-dranken.webp', tot: '2027-01-01' },

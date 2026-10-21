@@ -197,7 +197,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero picture img { object-position: center top; }
 .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,16,32,0) 22%, rgba(10,16,32,.75) 48%, var(--bg) 70%); }
-.hero-inhoud { position: relative; z-index: 1; padding: 245px 0 26px; }
+.hero-inhoud { position: relative; z-index: 1; padding: 150px 0 18px; }
 .kicker { font: 700 11.5px/1 var(--f-ui); letter-spacing: .32em; text-transform: uppercase; color: var(--goud); margin-bottom: 14px; }
 .hero h1 { font-family: var(--f-kop); font-weight: 500; font-size: clamp(34px, 9vw, 60px); line-height: 1.06; letter-spacing: -.015em; }
 .hero h1 em { font-style: normal; color: var(--goud-licht); }
@@ -206,10 +206,10 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .populair > span { font: 700 13px/1 var(--f-ui); color: var(--goud-licht); flex: none; }
 .populair .chips { margin: 0 -16px 0 0; padding-left: 0; }
 @media (min-width: 760px) {
-  .hero { min-height: 520px; display: flex; align-items: center; }
+  .hero { min-height: 400px; display: flex; align-items: center; }
   .hero picture img { object-position: center; }
   .hero::after { background: linear-gradient(90deg, rgba(10,16,32,.96) 0%, rgba(10,16,32,.82) 36%, rgba(10,16,32,.15) 68%, rgba(10,16,32,0) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(10,16,32,0) 22%); }
-  .hero-inhoud { padding: 70px 0 80px; width: 100%; }
+  .hero-inhoud { padding: 50px 0 50px; width: 100%; }
   .hero p { font-size: 17px; }
   .populair .chips { margin: 0; }
 }
@@ -563,3 +563,47 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   .vonk-kaart.vonk-klein h2 { font-size: 20px; margin: 0; }
   .vonk-kaart.vonk-klein p { font-size: 14px; }
 }
+
+
+/* =========================================================
+   Verbouwing 21-10: overzichtelijker
+   ========================================================= */
+.sectie.eerste { padding-top: 18px; }
+/* Voor wie: kleinere rondjes */
+.subkaarten.voorwie { grid-auto-columns: 84px; }
+.subkaarten.voorwie .rond { width: 72px; height: 72px; }
+@media (min-width: 1024px) { .subkaarten.voorwie { grid-template-columns: repeat(7, 1fr); } .subkaarten.voorwie .rond { width: 96px; height: 96px; } }
+
+/* Alle categorieën compact: rondje + naam + aantal */
+.catmini { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+@media (min-width: 640px) { .catmini { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .catmini { grid-template-columns: repeat(5, 1fr); gap: 10px; } }
+.catmini a { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: var(--r-m); background: var(--kaart); border: 1px solid var(--lijn-zacht); transition: border-color .2s; }
+.catmini a:hover { border-color: var(--lijn-sterk); }
+.catmini .rond { width: 44px; height: 44px; flex: none; border-radius: 50%; overflow: hidden; border: 1px solid var(--lijn); display: grid; place-items: center; background: var(--kaart-2); }
+.catmini .rond img { width: 100%; height: 100%; object-fit: cover; }
+.catmini .rond svg { width: 22px; height: 22px; color: var(--goud); }
+.catmini .naam { font: 700 13.5px/1.2 var(--f-ui); color: var(--tekst); display: flex; flex-direction: column; gap: 2px; }
+.catmini small { font: 500 11.5px/1 var(--f-ui); color: var(--tekst-3); }
+
+/* Productrij om doorheen te vegen */
+.prodgrid.rij { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 46%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 2px 16px 6px; }
+.prodgrid.rij::-webkit-scrollbar { display: none; }
+.prodgrid.rij > * { scroll-snap-align: start; }
+@media (min-width: 760px) { .prodgrid.rij { grid-auto-columns: calc((100% - 48px) / 4); } }
+@media (min-width: 1100px) { .prodgrid.rij { grid-auto-columns: calc((100% - 80px) / 6); margin: 0; padding: 2px 0 6px; } }
+
+/* Toon meer */
+.prodkaart.later { display: none; }
+.meer-knop { display: flex; justify-content: center; margin: 22px 0 6px; }
+.meer-knop .knop small { opacity: .7; font-weight: 500; margin-left: 4px; }
+
+/* Onze favoriet */
+.label.favo { background: var(--goud-verloop); color: var(--navy); }
+
+/* Zo werkt het, compact */
+.stappen.klein .stap { padding: 12px 14px; }
+.stappen.klein .stap .nr { width: 30px; height: 30px; font-size: 15px; }
+.stappen.klein .stap h3 { font-size: 14px; }
+.stappen.klein .stap p { font-size: 13px; }
+@media (min-width: 1100px) { .catmini { grid-template-columns: repeat(7, 1fr); } }
