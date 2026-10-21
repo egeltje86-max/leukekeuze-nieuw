@@ -14,11 +14,21 @@ window.LK_INSTELLINGEN = {
   populair: [
     { label: 'Kerst', naar: '#/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '#/c/cadeaus/sinterklaas' },
+    { label: 'Dranken', naar: '#/c/dranken' },
     { label: 'Voor haar', naar: '#/c/cadeaus/voor-haar' },
     { label: 'Voor hem', naar: '#/c/cadeaus/voor-hem' },
     { label: 'Onder €10', naar: '#/c/cadeaus/onder-10' },
     { label: 'Adventskalenders', naar: '#/c/cadeaus/adventskalenders' }
-  ]
+  ],
+  /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
+  acties: [
+    { kicker: 'Proost op de feestdagen', titel: 'Whisky, champagne & meer', tekst: 'Topflessen om te geven of samen te openen.', knop: 'Naar de dranken', naar: '#/c/dranken', beeld: 'images/categorieen/categorie-dranken.webp', tot: '2027-01-01' },
+    { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '#/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst.webp', tot: '2026-12-25' },
+    { kicker: 'Pakjesavond 5 december', titel: 'Sinterklaas', tekst: 'Leuke surprises en cadeautjes voor in de zak.', knop: 'Bekijk Sinterklaas', naar: '#/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', tot: '2026-12-05' }
+  ],
+  /* Etalage op de homepage: een rij uitgekozen producten. Leeg laten (ids: []) om te verbergen. */
+  etalage: { titel: 'Proost! Topflessen voor de feestdagen', naar: '#/c/dranken', knop: 'Alle dranken',
+    ids: ['dc-2468345961', 'dc-1665638250', 'dc-2518147005', 'dc-1652149584', 'dc-1141534911', 'dc-1159542840', 'dc-2491446455', 'dc-1090238013', 'dc-391537950', 'dc-1096238052'] }
 };
 
 /* Afbeeldingen: laat leeg ('') als Nova ze nog niet heeft gemaakt.

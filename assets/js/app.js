@@ -88,7 +88,7 @@
   /* ---------- Home ---------- */
   function home() {
     zetTitel('');
-    var hoofd = ['cadeaus', 'christelijk', 'speelgoed', 'wonen', 'elektronica'].map(window.LK_CAT);
+    var hoofd = ['cadeaus', 'dranken', 'speelgoed', 'wonen', 'elektronica'].map(window.LK_CAT);
     return '' +
       '<section class="hero">' +
         '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
@@ -115,6 +115,8 @@
             '<div class="vonk-punten"><span>' + ic('cadeau') + 'Persoonlijk</span><span>' + ic('klok') + 'In 3 klikken</span><span>' + ic('ster') + 'Met de hand gekozen</span></div></div>' +
         '</a>' +
 
+        actieBlokken() +
+
         '<nav class="catknoppen" aria-label="Categorieën">' +
           CATS.map(function (c, i) {
             return '<a class="catknop' + (i >= 5 ? ' desk' : '') + (i === 0 ? ' actief' : '') + '" href="#/c/' + c.slug + '">' + ic(c.icoon) + '<span>' + esc(c.kort) + '</span></a>';
@@ -126,6 +128,8 @@
           '<div class="sectie-kop"><div><h2>Populaire categorieën</h2></div><a class="meer" href="#/categorieen">Bekijk alle ' + ic('pijl') + '</a></div>' +
           '<div class="catkaarten home-cats">' + hoofd.map(catKaart).join('') + '</div>' +
         '</section>' +
+
+        etalage() +
 
         '<section class="sectie">' +
           '<div class="sectie-kop"><div><h2>Uitgelichte cadeaus</h2></div><a class="meer" href="#/c/cadeaus">Bekijk alle cadeaus ' + ic('pijl') + '</a></div>' +
@@ -146,6 +150,27 @@
           '</div>' +
         '</section>' +
       '</div>';
+  }
+  /* Reclameblokken (seizoen/acties) uit LK_INSTELLINGEN.acties; verlopen blokken vallen vanzelf weg. */
+  function actieBlokken() {
+    var vandaag = new Date().toISOString().slice(0, 10);
+    var l = (INST.acties || []).filter(function (a) { return !a.tot || vandaag <= a.tot; });
+    if (!l.length) return '';
+    return '<section class="acties">' + l.map(function (a) {
+      return '<a class="actie" href="' + esc(a.naar) + '">' +
+        '<img src="' + esc(a.beeld) + '" alt="" loading="lazy" decoding="async">' +
+        '<div class="actie-tekst"><span class="kicker">' + esc(a.kicker) + '</span><h3>' + esc(a.titel) + '</h3><p>' + esc(a.tekst) + '</p>' +
+        '<span class="knop knop-goud">' + esc(a.knop) + ' ' + ic('pijl') + '</span></div></a>';
+    }).join('') + '</section>';
+  }
+  function etalage() {
+    var e = INST.etalage; if (!e || !(e.ids || []).length) return '';
+    var z = LK.zichtbaar();
+    var l = e.ids.map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+    if (!l.length) return '';
+    return '<section class="sectie etalage">' +
+      '<div class="sectie-kop"><div><h2>' + esc(e.titel) + '</h2></div><a class="meer" href="' + esc(e.naar) + '">' + esc(e.knop) + ' ' + ic('pijl') + '</a></div>' +
+      grid(l, '', 'vijf') + '</section>';
   }
   function catKaart(c) {
     return '<a class="catkaart" href="#/c/' + c.slug + '">' +
