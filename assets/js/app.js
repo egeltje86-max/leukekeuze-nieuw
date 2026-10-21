@@ -93,7 +93,7 @@
     return '<form class="zoek" role="search" data-zoek>' +
       ic('zoek', 'lp') +
       '<label class="verborgen" for="zk-' + (zoekForm.n = (zoekForm.n || 0) + 1) + '">Zoek een cadeau</label>' +
-      '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="Zoek iets leuks…" autocomplete="off" enterkeyhint="search">' +
+      '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="Zoek in alle winkels…" autocomplete="off" enterkeyhint="search">' +
       '<button type="submit" aria-label="Zoeken">' + ic('zoek') + '</button></form>';
   }
   function zetTitel(t) { document.title = t ? t + ' | LeukeKeuze' : 'LeukeKeuze – de mooiste cadeaus voor elk moment'; }
@@ -131,6 +131,13 @@
         '<a class="vonk-kaart vonk-klein" href="#/vonk">' +
           ic('vonk', 'staf') +
           '<div><h2>VONK</h2><p>Geen idee wat je moet geven? Vind het in 3 klikken.</p></div>' +
+          '<span class="rond-pijl">' + ic('rechts') + '</span>' +
+        '</a>' +
+
+        /* 2b. Zoeken in alle winkels (smalle balk, geen grote zoekbalk) */
+        '<a class="vonk-kaart vonk-klein zoek-alle" href="#/zoek">' +
+          ic('zoek', 'staf') +
+          '<div><h2>Zoek in alle winkels</h2><p>Duizenden producten van al onze winkels op één plek.</p></div>' +
           '<span class="rond-pijl">' + ic('rechts') + '</span>' +
         '</a>' +
 
@@ -361,7 +368,8 @@
   var AW = { data: null, laden: null };
   function laadWinkels() {
     if (!AW.laden) AW.laden = fetch('assets/zoek/winkels.json').then(function (r) { return r.json(); }).then(function (j) {
-      AW.data = j.producten.map(function (x) { return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' ') }; });
+      var W = j.winkels;
+      AW.data = j.producten.map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' ') }; });
       return AW.data;
     });
     return AW.laden;
@@ -372,7 +380,14 @@
     var doel = $('.aw-inhoud', sec);
     laadWinkels().then(function (alles) {
       var hits = alles.filter(function (x) { return x.p >= pf.min && x.p <= pf.max && woorden.every(function (w) { return x.z.indexOf(' ' + w) !== -1; }); });
-      hits.forEach(function (x) { x.s = woorden.filter(function (w) { return x.tl.indexOf(' ' + w) !== -1; }).length; });
+      hits.forEach(function (x) {
+        /* score: los woord in de titel telt het zwaarst, begin van een woord in de titel minder, elders het minst */
+        x.s = woorden.reduce(function (s, w) {
+          if ((x.tl + ' ').indexOf(' ' + w + ' ') !== -1) return s + 4;
+          if (x.tl.indexOf(' ' + w) !== -1) return s + 2;
+          return s + ((x.z + ' ').indexOf(' ' + w + ' ') !== -1 ? 1 : 0);
+        }, 0);
+      });
       var st = { winkel: 'alle', sort: 'relevant' };
       function teken() {
         var l = hits.filter(function (x) { return st.winkel === 'alle' || x.w === st.winkel; }).slice();
