@@ -278,6 +278,7 @@
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       werkbalk + gridMeer(lijst, leeg) +
+      winkelSectie(c.slug, s && s.slug, q.prijs) +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="#/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
         '<nav class="catknoppen" style="display:flex;overflow-x:auto;scrollbar-width:none">' + anderen.map(function (x) {
@@ -366,6 +367,20 @@
       '</div>';
   }
 
+  /* 'Meer in onze winkels' onder een (sub)categorie. */
+  function winkelSectie(cat, sub, prijs) {
+    if (cat === 'christelijk') return '';
+    var ZW = window.LK_ZOEKWOORDEN || {}, sleutel = sub ? cat + '/' + sub : cat;
+    var attr = '';
+    if (sleutel === 'cadeaus/voor-haar') attr = ' data-geslacht="v"';
+    else if (sleutel === 'cadeaus/voor-hem') attr = ' data-geslacht="m"';
+    else if (sleutel === 'cadeaus/onder-10') attr = ' data-max="10"';
+    else if (ZW[sleutel]) attr = ' data-woorden="' + esc(ZW[sleutel]) + '"';
+    else return '';
+    return '<section class="sectie alle-winkels" data-alle-winkels data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
+      '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Uit het hele aanbod van onze partnerwinkels. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
+      '<div class="aw-inhoud"><p class="aw-laden">Even kijken in alle winkels…</p></div></section>';
+  }
   /* Zoekresultaten op bol.com via de bol-partnerlink van LeukeKeuze. */
   function bolZoek(q) {
     return 'https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=' + encodeURIComponent('https://www.bol.com/nl/nl/s/?searchtext=' + encodeURIComponent(q));
@@ -375,17 +390,27 @@
   function laadWinkels() {
     if (!AW.laden) AW.laden = fetch('assets/zoek/winkels.json').then(function (r) { return r.json(); }).then(function (j) {
       var W = j.winkels;
-      AW.data = j.producten.map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' ') }; });
+      AW.data = j.producten.map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
       return AW.data;
     });
     return AW.laden;
   }
   function vulAlleWinkels(sec) {
-    var q = sec.getAttribute('data-q'), pf = prijsFilter(sec.getAttribute('data-prijs'));
+    var q = sec.getAttribute('data-q') || '', pf = prijsFilter(sec.getAttribute('data-prijs'));
     var woorden = q.toLowerCase().split(/\s+/).filter(Boolean);
     var doel = $('.aw-inhoud', sec);
     laadWinkels().then(function (alles) {
-      var hits = alles.filter(function (x) { return x.p >= pf.min && x.p <= pf.max && woorden.every(function (w) { return x.z.indexOf(' ' + w) !== -1; }); });
+      var ofW = (sec.getAttribute('data-woorden') || '').split(' ').filter(Boolean), gesl = sec.getAttribute('data-geslacht') || '', maxP = +sec.getAttribute('data-max') || 0;
+      function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }
+      var hits = alles.filter(function (x) {
+        if (x.p < pf.min || x.p > pf.max) return false;
+        if (maxP && x.p >= maxP) return false;
+        if (gesl && x.g !== gesl) return false;
+        if (ofW.length) return ofW.some(function (w) { return heeftWoord(x, w); });
+        if (gesl || maxP) return true;
+        return woorden.every(function (w) { return x.z.indexOf(' ' + w) !== -1; });
+      });
+      if (ofW.length) woorden = ofW;
       hits.forEach(function (x) {
         /* score: los woord in de titel telt het zwaarst, begin van een woord in de titel minder, elders het minst */
         x.s = woorden.reduce(function (s, w) {
@@ -394,12 +419,13 @@
           return s + ((x.z + ' ').indexOf(' ' + w + ' ') !== -1 ? 1 : 0);
         }, 0);
       });
+      if (!hits.length && !q) { sec.remove(); return; }
       var st = { winkel: 'alle', sort: 'relevant' };
       function teken() {
         var l = hits.filter(function (x) { return st.winkel === 'alle' || x.w === st.winkel; }).slice();
         if (st.sort === 'prijs-op') l.sort(function (a, b) { return a.p - b.p; });
         else if (st.sort === 'prijs-af') l.sort(function (a, b) { return b.p - a.p; });
-        else l.sort(function (a, b) { return b.s - a.s || a.p - b.p; });
+        else l.sort(function (a, b) { return b.s - a.s || b.p - a.p; });
         var per = {}; hits.forEach(function (x) { per[x.w] = (per[x.w] || 0) + 1; });
         var chips = '<div class="chips aw-winkels" role="group" aria-label="Winkel">' +
           [['alle', 'Alle winkels (' + hits.length + ')']].concat(Object.keys(per).sort(function (a, b) { return per[b] - per[a]; }).map(function (w) { return [w, w + ' (' + per[w] + ')']; }))

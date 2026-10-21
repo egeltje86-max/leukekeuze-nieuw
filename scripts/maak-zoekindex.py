@@ -53,7 +53,8 @@ for bestand, winkel, b in WINKELS:
         cat = (x.get('cat') or '').strip()
         if winkel == 'Zadig & Voltaire':
             cat = ' '.join(nl for fr, nl in FR if re.search(fr, x['titel'], re.I)) or cat
-        uit.append([basis(x['titel'])[:120], round(prijs, 2), winkel, x['link'], foto, cat[:40], (x.get('merk') or '')[:40]])
+        g = (x.get('gender') or '').lower(); g = 'v' if g == 'female' else ('m' if g == 'male' else '')
+        uit.append([basis(x['titel'])[:120], round(prijs, 2), winkel, x['link'], foto, cat[:40], (x.get('merk') or '')[:40], g])
     per[winkel] = len(gezien)
 # Kleiner maken: per winkel het gezamenlijke begin van links en foto's maar één keer opslaan.
 def begin(l):
@@ -68,8 +69,8 @@ idx = {w['naam']: i for i, w in enumerate(W)}
 kort = []
 for x in uit:
     w = W[idx[x[2]]]
-    kort.append([x[0], x[1], idx[x[2]], x[3][len(w['link']):], x[4][len(w['foto']):], x[5], x[6]])
+    kort.append([x[0], x[1], idx[x[2]], x[3][len(w['link']):], x[4][len(w['foto']):], x[5], x[6], x[7]])
 os.makedirs('assets/zoek', exist_ok=True)
-json.dump({'winkels': W, 'velden': ['titel', 'prijs', 'winkel', 'link', 'foto', 'cat', 'merk'], 'producten': kort},
+json.dump({'winkels': W, 'velden': ['titel', 'prijs', 'winkel', 'link', 'foto', 'cat', 'merk', 'geslacht'], 'producten': kort},
           open('assets/zoek/winkels.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print(per, len(uit), os.path.getsize('assets/zoek/winkels.json') // 1024, 'kB')
