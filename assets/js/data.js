@@ -101,7 +101,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'koffie-thee', naam: 'Koffie & thee', beeld: 'images/sub/sub-eten-drinken-koffie-thee.webp' }, { slug: 'lekkernijen', naam: 'Lekkernijen', beeld: 'images/sub/sub-eten-drinken-lekkernijen.webp' }
     ] },
   { slug: 'dranken', naam: 'Dranken', kort: 'Dranken', icoon: 'glas',
-    tekst: 'Mooie flessen om te geven.', tegel: 'images/categorieen/categorie-dranken.webp',
+    tekst: 'Mooie flessen om te geven.', tegel: 'images/categorieen/categorie-dranken.webp', banner: 'images/banners/banner-cat-dranken.webp',
     subs: [
       { slug: 'whisky', naam: 'Whisky', beeld: 'images/sub/sub-dranken-whisky.webp' },
       { slug: 'cognac-brandy', naam: 'Cognac & brandy', beeld: 'images/sub/sub-dranken-cognac-brandy.webp' },
