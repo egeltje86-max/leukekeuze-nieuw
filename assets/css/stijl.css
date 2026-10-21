@@ -529,7 +529,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 
 
 /* ---------- Reclameblokken (acties) op de homepage ---------- */
-.acties { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 12px; margin: 18px -16px 0; padding: 0 16px 4px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.acties { display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 12px; margin: 18px -16px 0; padding: 0 16px 4px; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: none; }
 .acties::-webkit-scrollbar { display: none; }
 .acties .actie { scroll-snap-align: start; }
 .actie { position: relative; display: block; min-height: 220px; border-radius: var(--r-l); overflow: hidden; border: 1px solid var(--lijn); box-shadow: var(--schaduw); isolation: isolate; }
@@ -587,9 +587,9 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .catmini small { font: 500 11.5px/1 var(--f-ui); color: var(--tekst-3); }
 
 /* Productrij om doorheen te vegen */
-.prodgrid.rij { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 46%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 2px 16px 6px; }
+.prodgrid.rij { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 46%; overflow-x: auto; scroll-snap-type: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: none; margin: 0 -16px; padding: 2px 16px 6px; }
 .prodgrid.rij::-webkit-scrollbar { display: none; }
-.prodgrid.rij > * { scroll-snap-align: start; }
+
 @media (min-width: 760px) { .prodgrid.rij { grid-auto-columns: calc((100% - 48px) / 4); } }
 @media (min-width: 1100px) { .prodgrid.rij { grid-auto-columns: calc((100% - 80px) / 6); margin: 0; padding: 2px 0 6px; } }
 
