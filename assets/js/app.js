@@ -527,7 +527,18 @@
     $$('[data-onder]').forEach(function (n) { if (n.dataset.onder === onder) n.setAttribute('aria-current', 'page'); else n.removeAttribute('aria-current'); });
 
     // Alleen naar boven als je naar een andere pagina gaat (niet bij filteren)
-    if (a.pad !== vorigPad) { window.scrollTo(0, 0); if (vorigPad !== null) app.focus({ preventScroll: true }); }
+    if (a.pad !== vorigPad) {
+      var grid = zelfdeCat && d[2] ? $('.prodgrid', app) : null;
+      if (grid) {
+        /* subcategorie gekozen binnen dezelfde categorie: meteen naar het eerste product */
+        var kop = $('.header') || $('header');
+        var hoogte = kop ? kop.getBoundingClientRect().height : 70;
+        var doelY = grid.getBoundingClientRect().top + window.scrollY - hoogte - 12;
+        var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: Math.max(0, doelY), behavior: rustig ? 'auto' : 'smooth' });
+      } else window.scrollTo(0, 0);
+      if (vorigPad !== null) app.focus({ preventScroll: true });
+    }
     vorigPad = a.pad;
   }
 
