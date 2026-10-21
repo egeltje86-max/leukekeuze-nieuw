@@ -57,7 +57,8 @@
   }
   /* Lange lijsten: eerst PER_KEER producten, daarna een 'Toon meer'-knop. */
   var PER_KEER = 24;
-  function gridMeer(lijst, leegHtml) {
+  function gridMeer(lijst, leegHtml, n) {
+    var PER_KEER = n || 24;
     if (lijst.length <= PER_KEER) return grid(lijst, leegHtml);
     return '<div class="prodgrid">' + lijst.map(function (p, i) {
       var h = LK.productKaart(p);
@@ -347,9 +348,65 @@
       '<div class="binnen">' +
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
-        grid(lijst, leegBlok('Niets gevonden', 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
-          '<a class="knop knop-goud" href="#/vonk">Probeer VONK</a>')) +
+        (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
+        gridMeer(lijst, leegBlok(q.q ? 'Nog niets uitgekozen voor dit woord' : 'Niets gevonden', q.q ? 'Kijk hieronder in het aanbod van onze winkels, of laat VONK zoeken.' : 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
+          '<a class="knop knop-goud" href="#/vonk">Probeer VONK</a>'), q.q ? 8 : 24) +
+        (q.q ? '<section class="sectie alle-winkels" data-alle-winkels data-q="' + esc(q.q) + '" data-prijs="' + esc(q.prijs || 'alle') + '">' +
+          '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Alles wat onze partnerwinkels verkopen. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
+          '<div class="aw-inhoud"><p class="aw-laden">Even zoeken in alle winkels…</p></div></section>' : '') +
       '</div>';
+  }
+
+  /* ---------- Zoeken in het hele aanbod van alle winkels (feeds) ---------- */
+  var AW = { data: null, laden: null };
+  function laadWinkels() {
+    if (!AW.laden) AW.laden = fetch('assets/zoek/winkels.json').then(function (r) { return r.json(); }).then(function (j) {
+      AW.data = j.producten.map(function (x) { return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' ') }; });
+      return AW.data;
+    });
+    return AW.laden;
+  }
+  function vulAlleWinkels(sec) {
+    var q = sec.getAttribute('data-q'), pf = prijsFilter(sec.getAttribute('data-prijs'));
+    var woorden = q.toLowerCase().split(/\s+/).filter(Boolean);
+    var doel = $('.aw-inhoud', sec);
+    laadWinkels().then(function (alles) {
+      var hits = alles.filter(function (x) { return x.p >= pf.min && x.p <= pf.max && woorden.every(function (w) { return x.z.indexOf(' ' + w) !== -1; }); });
+      hits.forEach(function (x) { x.s = woorden.filter(function (w) { return x.tl.indexOf(' ' + w) !== -1; }).length; });
+      var st = { winkel: 'alle', sort: 'relevant' };
+      function teken() {
+        var l = hits.filter(function (x) { return st.winkel === 'alle' || x.w === st.winkel; }).slice();
+        if (st.sort === 'prijs-op') l.sort(function (a, b) { return a.p - b.p; });
+        else if (st.sort === 'prijs-af') l.sort(function (a, b) { return b.p - a.p; });
+        else l.sort(function (a, b) { return b.s - a.s || a.p - b.p; });
+        var per = {}; hits.forEach(function (x) { per[x.w] = (per[x.w] || 0) + 1; });
+        var chips = '<div class="chips aw-winkels" role="group" aria-label="Winkel">' +
+          [['alle', 'Alle winkels (' + hits.length + ')']].concat(Object.keys(per).sort(function (a, b) { return per[b] - per[a]; }).map(function (w) { return [w, w + ' (' + per[w] + ')']; }))
+            .map(function (c) { return '<button class="chip" type="button" data-aw-winkel="' + esc(c[0]) + '" aria-pressed="' + (st.winkel === c[0]) + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
+        var sorteer = '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-aw-sort>' +
+          [['relevant', 'Best passend'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag']].map(function (o) { return '<option value="' + o[0] + '"' + (st.sort === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
+          '</select>' + ic('omlaag') + '</label>';
+        var max = 240, toon = l.slice(0, max);
+        var kaarten = toon.map(function (x, i) {
+          return '<article class="prodkaart awkaart' + (i >= PER_KEER ? ' later' : '') + '">' +
+            '<a class="beeld echt" href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener"><img src="' + esc(x.f) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>' +
+            '<div class="info"><span class="shop">' + esc(x.w) + '</span><h3><a href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener">' + esc(x.t) + '</a></h3>' +
+            '<div class="prijs">' + LK.euro(x.p) + '</div></div></article>';
+        }).join('');
+        doel.innerHTML = !hits.length ? '<div class="leeg"><strong>Ook in onze winkels niets gevonden</strong>Probeer een ander of korter woord.</div>' :
+          '<div class="werkbalk">' + chips + '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + (l.length > max ? ' (de eerste ' + max + ' getoond)' : '') + '</span>' + sorteer + '</div></div>' +
+          '<div class="prodgrid">' + kaarten + '</div>' +
+          (toon.length > PER_KEER ? '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer>Toon meer <small>(' + PER_KEER + ' van ' + toon.length + ')</small></button></div>' : '');
+      }
+      teken();
+      sec.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-aw-winkel]'); if (!b) return;
+        st.winkel = b.getAttribute('data-aw-winkel'); teken();
+      });
+      sec.addEventListener('change', function (e) {
+        if (e.target.matches('[data-aw-sort]')) { st.sort = e.target.value; teken(); }
+      });
+    }).catch(function () { doel.innerHTML = '<div class="leeg"><strong>Dit lukte even niet</strong>Probeer het later nog eens.</div>'; });
   }
 
   /* ---------- VONK ---------- */
@@ -562,6 +619,7 @@
 
     app.innerHTML = html;
     vulIconen(app);
+    var aw = $('[data-alle-winkels]', app); if (aw) vulAlleWinkels(aw);
 
     var rij = $('.subkaarten', app);
     if (rij) {
