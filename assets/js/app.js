@@ -531,6 +531,29 @@
     vorigPad = a.pad;
   }
 
+  /* ================== TERUG NAAR BOVEN ================== */
+  (function () {
+    var knop = document.querySelector('[data-naarboven]');
+    if (!knop) return;
+    var vulling = knop.querySelector('.vulling'), bezig = false;
+    function bijwerken() {
+      bezig = false;
+      var y = window.scrollY || document.documentElement.scrollTop;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var aan = y > 700;
+      knop.classList.toggle('zichtbaar', aan);
+      knop.tabIndex = aan ? 0 : -1;
+      if (vulling) vulling.style.strokeDashoffset = String(100 - Math.min(100, max > 0 ? (y / max) * 100 : 0));
+    }
+    window.addEventListener('scroll', function () { if (!bezig) { bezig = true; requestAnimationFrame(bijwerken); } }, { passive: true });
+    window.addEventListener('hashchange', function () { setTimeout(bijwerken, 50); });
+    knop.addEventListener('click', function () {
+      var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: rustig ? 'auto' : 'smooth' });
+    });
+    bijwerken();
+  })();
+
   /* ================== KLIKKEN ================== */
   document.addEventListener('click', function (e) {
     var t = e.target.closest('a, button');
