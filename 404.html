@@ -1,1 +1,12 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LeukeKeuze</title><meta http-equiv="refresh" content="0; url=/"><style>body{background:#0b0f1a;color:#eee;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#d9b25f}</style></head><body><p>Deze pagina bestaat niet meer. <a href="/">Naar LeukeKeuze</a></p></body></html>
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LeukeKeuze</title>
+<script>
+/* Oude adressen van de vorige site doorsturen naar de nieuwe pagina's (dit deed eerst Netlify met _redirects). */
+(function () {
+  var p = location.pathname.replace(/\/+$/, '').toLowerCase();
+  var kaart = { '/christelijke-cadeaus': '/#/c/christelijk', '/cadeaus-voor-kinderen': '/#/c/cadeaus/voor-kinderen', '/cadeauzoeker': '/#/vonk', '/cadeaugidsen': '/' };
+  var doel = kaart[p] || (/^\/(cadeaugids|keurkamer)\//.test(p + '/') ? '/' : '/');
+  location.replace(doel);
+})();
+</script>
+<style>body{background:#0b0f1a;color:#eee;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#d9b25f}</style></head>
+<body><p>Even doorsturen… <a href="/">Naar LeukeKeuze</a></p></body></html>
