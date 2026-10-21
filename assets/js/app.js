@@ -220,6 +220,7 @@
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       werkbalk + grid(lijst, leeg) +
+      (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="#/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
         '<nav class="catknoppen" style="display:flex;overflow-x:auto;scrollbar-width:none">' + anderen.map(function (x) {
           return '<a class="catknop" style="flex:0 0 96px" href="#/c/' + x.slug + '">' + ic(x.icoon) + '<span>' + esc(x.kort) + '</span></a>';
@@ -425,7 +426,7 @@
           '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="#/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
           volleSubs(c).map(function (s) { return '<a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
       }).join('') + '</ul>' +
-      '<div class="lade-extra"><a href="#/vonk">VONK cadeauzoeker</a><a href="#/favorieten">Mijn favorieten</a><a href="#/zoek">Zoeken</a><a href="#/info/hoe-werkt-het">Hoe werkt het?</a></div>';
+      '<div class="lade-extra"><a href="#/vonk">VONK cadeauzoeker</a><a href="#/winkels">Onze winkels</a><a href="#/favorieten">Mijn favorieten</a><a href="#/zoek">Zoeken</a><a href="#/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
@@ -464,6 +465,20 @@
 
   /* ================== ROUTER ================== */
   var vorigeCat = null;
+  /* ---------- Partnerwinkels ---------- */
+  function winkelKaart(w) {
+    return '<a class="winkelkaart" href="' + esc(w.url) + '" target="_blank" rel="sponsored noopener">' +
+      '<strong>' + esc(w.naam) + '</strong><span>' + esc(w.tekst) + '</span><em>Naar ' + esc(w.naam) + ' ' + ic('pijl') + '</em></a>';
+  }
+  function winkelsMet(slug) {
+    return (window.LK_WINKELS || []).filter(function (w) { return w.url && (!slug || w.cats.indexOf(slug) !== -1); });
+  }
+  function winkels() {
+    zetTitel('Onze winkels');
+    return paginakop({ titel: 'Onze winkels', tekst: 'Bij deze winkels vind je onze producten. Klik door en kijk rustig rond in hun hele aanbod.', kruimel: [{ tekst: 'Winkels' }] }) +
+      '<div class="binnen"><section class="sectie"><div class="winkelraster">' + winkelsMet().map(winkelKaart).join('') + '</div>' +
+      '<p class="vonk-noot" style="margin-top:18px">Koop je iets via deze links, dan krijgen wij soms een kleine vergoeding. Jij betaalt niets extra.</p></section></div>';
+  }
   function toon() {
     var a = leesAdres(), d = a.delen, html;
     if (!d.length) html = home();
@@ -474,6 +489,7 @@
     else if (d[0] === 'vonk') html = vonk(a.q);
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'info') html = info(d[1]);
+    else if (d[0] === 'winkels') html = winkels();
     else html = nietGevonden();
 
     // Onthoud waar de schuifbalk met subcategorieën stond (mobiel), zodat hij niet terugspringt.

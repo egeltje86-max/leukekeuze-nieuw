@@ -487,3 +487,14 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .prodkaart .beeld.echt, .product-beeld.echt { background: #fff; }
 .prodkaart .beeld.echt img, .product-beeld.echt img { object-fit: contain; padding: 7%; }
 .prijs s.oud { color: var(--tekst-zacht, #8b93a7); font-weight: 400; font-size: .8em; margin-left: 6px; }
+
+/* ---------- Partnerwinkels ---------- */
+.winkelraster { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 640px) { .winkelraster { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .winkelraster { grid-template-columns: repeat(3, 1fr); } }
+.winkelkaart { display: flex; flex-direction: column; gap: 6px; padding: 18px 18px 16px; border-radius: var(--r-m); border: 1px solid var(--knop-lijn); background: var(--knop-bg); transition: border-color .2s, background .2s; }
+.winkelkaart:hover { border-color: var(--lijn-sterk); background: var(--knop-bg-hover); }
+.winkelkaart strong { font: 700 18px/1.2 var(--f-ui); color: var(--goud-licht); }
+.winkelkaart span { color: var(--tekst-2); font-size: 14px; line-height: 1.45; }
+.winkelkaart em { font-style: normal; font: 600 14px/1 var(--f-ui); color: var(--tekst); display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; }
+.winkelkaart em svg { width: 15px; height: 15px; color: var(--goud); }

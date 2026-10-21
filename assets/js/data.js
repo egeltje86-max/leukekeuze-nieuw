@@ -23,6 +23,21 @@ window.LK_INSTELLINGEN = {
 
 /* Afbeeldingen: laat leeg ('') als Nova ze nog niet heeft gemaakt.
    Dan toont de site een gouden icoon in de stijl van de site. */
+/* ---------- Partnerwinkels (pagina #/winkels + tegels in categorieën) ----------
+   url leeg = nog geen partnerlink, dan wordt de winkel niet getoond. */
+window.LK_WINKELS = [
+  { naam: 'I-KOOK', tekst: 'Kookwinkel vol mooie pannen, messen en keukenspullen van goede merken.', cats: ['keuken'], url: '' },
+  { naam: 'La Redoute', tekst: 'Frans warenhuis met mooie merken: AM.PM, Ralph Lauren, Tommy Hilfiger en meer.', cats: ['wonen', 'mode-beauty'], url: 'https://fr135.net/c/?si=16029&li=1692553&wi=433339&ws=' },
+  { naam: 'Ditverzinjeniet', tekst: 'Bijzondere en originele cadeaus die je niet overal vindt.', cats: ['cadeaus', 'wonen', 'elektronica'], url: 'https://fr135.net/c/?si=11208&li=1503370&wi=433339&ws=' },
+  { naam: 'Dille & Kamille', tekst: 'Mooie spullen voor koken, wonen en de tuin, van natuurlijke materialen.', cats: ['keuken', 'wonen', 'tuin-klussen'], url: 'https://fr135.net/c/?si=7059&li=1483700&wi=433339&ws=' },
+  { naam: 'Teufel', tekst: 'Duitse speakers en koptelefoons met prachtig geluid.', cats: ['elektronica'], url: 'https://fr135.net/c/?si=15574&li=1675015&wi=433339&ws=' },
+  { naam: '999 Games', tekst: 'Bordspellen, kaartspellen en puzzels voor jong en oud.', cats: ['speelgoed'], url: 'https://fr135.net/c/?si=13450&li=1594951&wi=433339&ws=' },
+  { naam: 'Bloompost', tekst: 'Bloemen en cadeautjes die door de brievenbus passen.', cats: ['cadeaus'], url: 'https://fr135.net/c/?si=7248&li=1681176&wi=433339&ws=' },
+  { naam: 'Kaartje2go', tekst: 'Kaarten die je zelf maakt en die zij voor je versturen.', cats: ['cadeaus'], url: 'https://fr135.net/c/?si=19520&li=1837135&wi=433339&ws=' },
+  { naam: 'Dropwinkel', tekst: 'Drop, snoep en chocolade, van ouderwets tot luxe.', cats: ['eten-drinken'], url: 'https://fr135.net/c/?si=18019&li=1781027&wi=433339&ws=' },
+  { naam: 'bol', tekst: 'De grootste winkel van Nederland, voor bijna alles.', cats: [], url: 'https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=' + encodeURIComponent('https://www.bol.com/nl/nl/') }
+];
+
 window.LK_CATEGORIEEN = [
   { slug: 'cadeaus', naam: 'Cadeaus', kort: 'Cadeaus', icoon: 'cadeau',
     tekst: 'Voor elke gelegenheid een bijzonder cadeau.',
