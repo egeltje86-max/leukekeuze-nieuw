@@ -47,7 +47,7 @@ TEST = '--test' in sys.argv  # alleen feeds ophalen en index maken, niets online
 os.chdir(REPO)
 def git(*a):
     r = subprocess.run(['git'] + list(a), capture_output=True, text=True, encoding='utf-8')
-    if r.returncode: log('git', ' '.join(a), 'FOUT:', (r.stderr or r.stdout).strip()[:300])
+    if r.returncode and a[0] != 'diff': log('git', ' '.join(a), 'FOUT:', (r.stderr or r.stdout).strip()[:300])
     return r
 if not TEST: git('checkout', 'main'); git('pull', '--rebase', '-q')
 r = subprocess.run([sys.executable, os.path.join(HIER, 'maak-zoekindex.py'), FEEDS], capture_output=True, text=True, encoding='utf-8')
