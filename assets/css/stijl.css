@@ -548,3 +548,18 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   .actie, .actie-tekst { min-height: 260px; }
   .actie:first-child h3 { font-size: 32px; }
 }
+
+
+/* ---------- Compacte VONK-balk op de homepage ---------- */
+.vonk-kaart.vonk-klein { margin-top: 14px; grid-template-columns: auto 1fr auto; gap: 12px; padding: 10px 14px; border-radius: var(--r-m); }
+.vonk-kaart.vonk-klein .staf { width: 28px; height: 28px; }
+.vonk-kaart.vonk-klein h2 { font-size: 17px; margin: 0 0 2px; }
+.vonk-kaart.vonk-klein p { font-size: 12.5px; }
+.vonk-kaart.vonk-klein .rond-pijl { display: grid; width: 32px; height: 32px; }
+.vonk-kaart.vonk-klein .rond-pijl svg { width: 15px; height: 15px; }
+@media (min-width: 760px) {
+  .vonk-kaart.vonk-klein { grid-template-columns: auto 1fr auto; padding: 12px 20px; gap: 16px; }
+  .vonk-kaart.vonk-klein > div { display: flex; align-items: baseline; gap: 14px; }
+  .vonk-kaart.vonk-klein h2 { font-size: 20px; margin: 0; }
+  .vonk-kaart.vonk-klein p { font-size: 14px; }
+}

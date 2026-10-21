@@ -97,7 +97,6 @@
           '<div class="kicker">' + esc(INST.heroKicker) + '</div>' +
           '<h1>' + esc(INST.heroTitel) + '<br><em>' + esc(INST.heroTitelGoud) + '</em></h1>' +
           '<p>' + esc(INST.heroTekst) + '</p>' +
-          zoekForm('') +
           '<div class="populair"><span>Populair:</span><div class="chips">' +
             INST.populair.map(function (x) { return '<a class="chip" href="' + x.naar + '">' + esc(x.label) + '</a>'; }).join('') +
           '</div></div>' +
@@ -107,12 +106,10 @@
       '<div class="binnen">' +
         '<div class="budget"><span>Budget:</span>' + prijsChips('/zoek', {}) .replace(/aria-pressed="true"/, 'aria-pressed="false"') + '</div>' +
 
-        '<a class="vonk-kaart" href="#/vonk">' +
+        '<a class="vonk-kaart vonk-klein" href="#/vonk">' +
           ic('vonk', 'staf') +
-          '<div><h2>VONK</h2><p>Weet je niet wat je moet geven? Beantwoord 3 vragen en VONK laat passende cadeaus zien.</p></div>' +
+          '<div><h2>VONK</h2><p>Geen idee wat je moet geven? Vind het in 3 klikken.</p></div>' +
           '<span class="rond-pijl">' + ic('rechts') + '</span>' +
-          '<div class="vonk-rechts"><span class="knop knop-goud">Start VONK ' + ic('pijl') + '</span>' +
-            '<div class="vonk-punten"><span>' + ic('cadeau') + 'Persoonlijk</span><span>' + ic('klok') + 'In 3 klikken</span><span>' + ic('ster') + 'Met de hand gekozen</span></div></div>' +
         '</a>' +
 
         actieBlokken() +
