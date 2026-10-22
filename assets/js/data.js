@@ -151,6 +151,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'likeur', naam: 'Likeur', beeld: 'images/sub/sub-dranken-likeur.webp' },
       { slug: 'wijn', naam: 'Wijn', beeld: 'images/sub/sub-dranken-wijn.webp' },
       { slug: 'bubbels', naam: 'Bubbels', beeld: 'images/sub/sub-dranken-bubbels.webp' },
+      { slug: 'alcoholvrij', naam: 'Alcoholvrij', beeld: 'images/sub/sub-dranken-alcoholvrij.webp' },
       { slug: 'wijnaccessoires', naam: 'Wijnaccessoires', beeld: 'images/sub/sub-dranken-wijnaccessoires.webp' }
     ] },
   { slug: 'tuin-klussen', naam: 'Tuin & Klussen', kort: 'Tuin & Klussen', icoon: 'blad',
@@ -263,6 +264,7 @@ window.LK_ZOEKWOORDEN = {
  "eten-drinken/koffie-thee": "koffie thee koffiebonen",
  "eten-drinken/lekkernijen": "honing jam balsamico olijfolie pesto zout",
  "dranken/whisky": "whisky whiskey bourbon scotch",
+ "dranken/alcoholvrij": "alcoholvrij alcohol vrij 0,0 0.0 zonder alcohol kinderchampagne kinder champagne kidibul bob mocktail",
  "dranken/cognac-brandy": "cognac brandy armagnac calvados",
  "dranken/rum": "rum ron",
  "dranken/gin": "gin",
