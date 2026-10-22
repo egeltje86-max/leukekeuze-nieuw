@@ -115,10 +115,16 @@ window.LK_CATEGORIEEN = [
       { slug: 'audio', naam: 'Audio', beeld: 'images/sub/sub-elektronica-audio.webp' }, { slug: 'slimme-gadgets', naam: 'Slimme gadgets', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp' },
       { slug: 'telefoon', naam: 'Telefoon', beeld: 'images/sub/sub-elektronica-telefoon.webp' }, { slug: 'gaming', naam: 'Gaming', beeld: 'images/sub/sub-elektronica-gaming.webp' }, { slug: 'foto-video', naam: 'Foto & video', beeld: 'images/sub/sub-elektronica-foto-video.webp' }
     ] },
+  { slug: 'sieraden', naam: 'Sieraden', kort: 'Sieraden', icoon: 'ring',
+    tekst: 'Kettingen, oorbellen, ringen en armbanden. Van betaalbaar tot echt goud.',
+    subs: [
+      { slug: 'kettingen', naam: 'Kettingen & hangers' }, { slug: 'oorbellen', naam: 'Oorbellen' }, { slug: 'ringen', naam: 'Ringen' }, { slug: 'armbanden', naam: 'Armbanden & enkelbandjes' },
+      { slug: 'heren', naam: 'Voor hem' }, { slug: 'echt-goud', naam: 'Echt goud' }, { slug: 'zilver', naam: 'Zilver' }, { slug: 'verguld-staal', naam: 'Verguld & staal' }
+    ] },
   { slug: 'mode-beauty', naam: 'Mode & Beauty', kort: 'Mode & Beauty', icoon: 'tas',
     tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
     subs: [
-      { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-mode-beauty-sieraden.webp' }, { slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp' }, { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp' },
+      { slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp' }, { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp' },
       { slug: 'tassen', naam: 'Hand- & schoudertassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'rugzakken-reistassen', naam: 'Rugzakken & reistassen', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp' }, { slug: 'schoenen', naam: 'Schoenen', beeld: 'images/sub/sub-mode-beauty-schoenen.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
     ] },
   { slug: 'keuken', naam: 'Keuken & Tafelen', kort: 'Keuken', icoon: 'kop',
@@ -230,7 +236,14 @@ window.LK_ZOEKWOORDEN = {
  "elektronica/telefoon": "telefoon telefoonhoes smartphone",
  "elektronica/gaming": "gaming game controller",
  "elektronica/foto-video": "camera instax fotocamera",
- "mode-beauty/sieraden": "ketting armband oorbellen ring sieraden",
+ "sieraden/kettingen": "ketting kettingen hanger choker",
+ "sieraden/oorbellen": "oorbellen oorbel oorknopjes oorringen",
+ "sieraden/ringen": "ring ringen zegelring",
+ "sieraden/armbanden": "armband armbanden enkelbandje bangle",
+ "sieraden/heren": "herensieraden heren armband mannen",
+ "sieraden/echt-goud": "goud gouden 14 karaat 10 karaat witgoud",
+ "sieraden/zilver": "zilver zilveren 925",
+ "sieraden/verguld-staal": "verguld staal goedkoop betaalbaar",
  "mode-beauty/horloges": "horloge horloges",
  "mode-beauty/geuren": "parfum eau",
  "mode-beauty/verzorging": "bodycrème bodyscrub zeep handcrème massageolie lippenbalsem",
@@ -290,6 +303,7 @@ window.LK_ZOEKWOORDEN = {
  "wonen": "decoratie deken fotolijst geurolie geurstokjes huisparfum kaars kaarsen kandelaar kerstbal kerstballen kerstboom kerstdecoratie kersthanger kerstslinger klok kussen kussenhoes lamp lampen lampje lichtsnoer plaid spiegel vaas vazen verlichting waxinelichthouder wierook",
  "hobby": "aquarel bouwpakket breien breiset diy garen haakset haken knutsel knutselset modelbouw potloden schetsboek schilderset stiften verf",
  "elektronica": "camera controller fotocamera gadget game gaming headset instax koptelefoon luidspreker oordopjes oplader powerbank radio smartphone soundbar speaker telefoon telefoonhoes usb",
+ "sieraden": "sieraden sieraad ketting kettingen oorbellen ring ringen armband armbanden goud zilver",
  "mode-beauty": "armband bodycrème bodyscrub boots clutch eau handcrème handschoenen handtas horloge horloges ketting laars laarzen lippenbalsem loafers massageolie muts oorbellen pantoffels parfum portemonnee reistas riem ring rugzak schoenen schoudertas sieraden sjaal sneakers tas tasje tassen weekendtas zeep",
  "keuken": "bakmix bakvorm bewaardoos blender braadpan deegroller dienblad karaf keukenmes koekenpan koffiemolen mixer mok mokken pan pannen percolator schaal schaaltje serveerschaal snijplank taartvorm theeglas theepot trommel voorraadpot waterkoker",
  "eten-drinken": "balsamico bonbons cadeaubox cadeaupakket chocolade drop dropjes honing jam koffie koffiebonen marsepein olijfolie pakket pesto snoep thee zout zuurtjes",
