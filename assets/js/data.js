@@ -136,7 +136,7 @@ window.LK_CATEGORIEEN = [
   { slug: 'eten-drinken', naam: 'Eten & Drinken', kort: 'Eten & Drinken', icoon: 'taart',
     tekst: 'Lekkers om te geven.', tegel: 'images/categorieen/categorie-eten-drinken.webp', banner: 'images/banners/banner-cat-eten-drinken.webp',
     subs: [
-      { slug: 'chocolade-snoep', naam: 'Chocolade', beeld: 'images/sub/sub-eten-drinken-chocolade-snoep.webp' }, { slug: 'drop-snoep', naam: 'Drop & snoep', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp' }, { slug: 'pakketten', naam: 'Pakketten & borrel', beeld: 'images/sub/sub-eten-drinken-pakketten.webp' },
+      { slug: 'chocolade-snoep', naam: 'Chocolade', beeld: 'images/sub/sub-eten-drinken-chocolade-snoep.webp' }, { slug: 'drop-snoep', naam: 'Drop & snoep', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp' }, { slug: 'bbq', naam: 'BBQ & kruiden', beeld: 'images/sub/sub-eten-drinken-bbq.webp' }, { slug: 'pakketten', naam: 'Pakketten & borrel', beeld: 'images/sub/sub-eten-drinken-pakketten.webp' },
       { slug: 'koffie-thee', naam: 'Koffie & thee', beeld: 'images/sub/sub-eten-drinken-koffie-thee.webp' }, { slug: 'lekkernijen', naam: 'Lekkernijen', beeld: 'images/sub/sub-eten-drinken-lekkernijen.webp' }
     ] },
   { slug: 'dranken', naam: 'Dranken', kort: 'Dranken', icoon: 'glas',
@@ -261,6 +261,7 @@ window.LK_ZOEKWOORDEN = {
  "keuken/opbergen": "voorraadpot bewaardoos trommel",
  "eten-drinken/chocolade-snoep": "chocolade bonbons marsepein",
  "eten-drinken/drop-snoep": "drop dropjes snoep zuurtjes",
+ "eten-drinken/bbq": "barbecue bbq kruidenmix grill marinade",
  "eten-drinken/pakketten": "pakket cadeaupakket cadeaubox",
  "eten-drinken/koffie-thee": "koffie thee koffiebonen",
  "eten-drinken/lekkernijen": "honing jam balsamico olijfolie pesto zout",
@@ -337,6 +338,7 @@ window.LK_NIETWOORDEN = {
  "hobby": "wandkapstok kapstok kapstop wandhaak rek garenne garennes",
  "elektronica/foto-video": "sleutelhanger deurmat puntenslijper tegeltje mok beker sieradendoosje multi",
  "elektronica/gaming": "deurmat mok drinking bordspel pizza stapelspel schaakset boekensteun",
+ "eten-drinken/bbq": "kaarten croky chips pringles lays grillons grillo",
  "eten-drinken/pakketten": "matras dekbed inclusive",
  "eten-drinken/lekkernijen": "keelpastilles ricola anta",
  "dranken/wijn": "mok tegeltje lolly bordspel azijn zout decanteerder decanteerschenker boek wijnfles aroma",
