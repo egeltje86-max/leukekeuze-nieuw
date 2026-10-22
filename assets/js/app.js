@@ -398,7 +398,7 @@
     var attr = '';
     if (sleutel === 'cadeaus/voor-haar') attr = ' data-geslacht="v"';
     else if (sleutel === 'cadeaus/voor-hem') attr = ' data-geslacht="m"';
-    else if (sleutel === 'cadeaus/onder-10') attr = ' data-max="10"';
+    else if (sleutel === 'cadeaus/onder-15') attr = ' data-max="15"';
     else if (ZW[sleutel]) attr = ' data-woorden="' + esc(ZW[sleutel]) + '"';
     else return '';
     return '<section class="sectie alle-winkels" data-alle-winkels data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
@@ -588,7 +588,7 @@
   function volleSubs(c) {
     var z = LK.zichtbaar();
     return c.subs.filter(function (s) {
-      return s.slug === 'onder-10' || z.some(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
+      return s.slug === 'onder-15' || z.some(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
     });
   }
 

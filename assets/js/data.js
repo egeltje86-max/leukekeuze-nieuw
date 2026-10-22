@@ -17,7 +17,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Dranken', naar: '/c/dranken' },
     { label: 'Voor haar', naar: '/c/cadeaus/voor-haar' },
     { label: 'Voor hem', naar: '/c/cadeaus/voor-hem' },
-    { label: 'Onder €10', naar: '/c/cadeaus/onder-10' },
+    { label: 'Onder €15', naar: '/c/cadeaus/onder-15' },
     { label: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' }
   ],
   /* 'Voor wie zoek je een cadeau?' op de homepage. */
@@ -28,7 +28,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Opa & oma', naar: '/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
     { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
     { label: 'Met naam', naar: '/c/cadeaus/met-naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' },
-    { label: 'Onder €10', naar: '/c/cadeaus/onder-10', beeld: 'images/sub/sub-cadeaus-onder-10.webp' }
+    { label: 'Onder €15', naar: '/c/cadeaus/onder-15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' }
   ],
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [
@@ -74,7 +74,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders.webp' },
       { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
       { slug: 'baby-kraam', naam: 'Baby & kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
-      { slug: 'onder-10', naam: 'Onder €10', beeld: 'images/sub/sub-cadeaus-onder-10.webp' },
+      { slug: 'onder-15', naam: 'Onder €15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' },
       { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' }
     ] },
   { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
