@@ -164,7 +164,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
     subs: [
       { slug: 'fitness', naam: 'Fitness', beeld: 'images/sub/sub-sport-outdoor-fitness.webp' }, { slug: 'wandelen', naam: 'Wandelen', beeld: 'images/sub/sub-sport-outdoor-wandelen.webp' }, { slug: 'fietsen', naam: 'Fietsen', beeld: 'images/sub/sub-sport-outdoor-fietsen.webp' },
-      { slug: 'kamperen', naam: 'Kamperen', beeld: 'images/sub/sub-sport-outdoor-kamperen.webp' }, { slug: 'reizen', naam: 'Reizen', beeld: 'images/sub/sub-sport-outdoor-reizen.webp' }, { slug: 'darts', naam: 'Darts', beeld: 'images/sub/sub-sport-outdoor-darts.webp' }
+      { slug: 'kamperen', naam: 'Kamperen', beeld: 'images/sub/sub-sport-outdoor-kamperen.webp' }, { slug: 'reizen', naam: 'Reizen', beeld: 'images/sub/sub-sport-outdoor-reizen.webp' }, { slug: 'darts', naam: 'Darts', beeld: 'images/sub/sub-sport-outdoor-darts.webp' }, { slug: 'golf', naam: 'Golf', beeld: 'images/sub/sub-sport-outdoor-golf.webp' }
     ] },
   { slug: 'dieren', naam: 'Dieren', kort: 'Dieren', icoon: 'poot',
     tekst: 'Verwen je trouwe vriend.', tegel: 'images/categorieen/categorie-dieren.webp', banner: 'images/banners/banner-cat-dieren.webp',
@@ -173,7 +173,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Boeken, filmavond en muziek.', tegel: 'images/categorieen/categorie-boeken-media.webp', banner: 'images/banners/banner-cat-boeken-media.webp',
     subs: [
       { slug: 'romans', naam: 'Romans', beeld: 'images/sub/sub-boeken-media-romans.webp' }, { slug: 'kinderboeken', naam: 'Kinderboeken', beeld: 'images/sub/sub-boeken-media-kinderboeken.webp' }, { slug: 'kookboeken', naam: 'Kookboeken', beeld: 'images/sub/sub-boeken-media-kookboeken.webp' },
-      { slug: 'films-series', naam: 'Filmavond', beeld: 'images/sub/sub-boeken-media-films-series.webp' }, { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }, { slug: 'agendas', naam: 'Agenda’s & notitieboeken', beeld: 'images/sub/sub-boeken-media-agendas.webp' }
+      { slug: 'films-series', naam: 'Filmavond', beeld: 'images/sub/sub-boeken-media-films-series.webp' }, { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }, { slug: 'agendas', naam: 'Agenda’s & notitieboeken', beeld: 'images/sub/sub-boeken-media-agendas.webp' }, { slug: 'lezen', naam: 'Leesplezier', beeld: 'images/sub/sub-boeken-media-lezen.webp' }
     ] },
   { slug: 'christelijk', naam: 'Christelijke cadeaus', kort: 'Christelijke cadeaus', icoon: 'kruis',
     tekst: 'Geloof, hoop en liefde in mooie geschenken.',
@@ -283,6 +283,7 @@ window.LK_ZOEKWOORDEN = {
  "sport-outdoor/fitness": "fitness yoga",
  "sport-outdoor/wandelen": "picknick drinkfles wandelstok",
  "sport-outdoor/fietsen": "fiets fietsbel",
+ "sport-outdoor/golf": "golf golfbal golfballen",
  "sport-outdoor/kamperen": "kamperen tent camping",
  "sport-outdoor/reizen": "toilettas reiskoffer trolley reiskussen reisset",
  "sport-outdoor/darts": "dart darts dartbord",
@@ -291,6 +292,7 @@ window.LK_ZOEKWOORDEN = {
  "dieren/klein-dier": "konijn cavia hamster",
  "dieren/vogels": "vogel vogels nestkast vogelhuisje",
  "boeken-media/romans": "romans",
+ "boeken-media/lezen": "boekensteun boekensteunen boekenlegger leeslampje boeklampje",
  "boeken-media/kinderboeken": "kinderboek prentenboek",
  "boeken-media/kookboeken": "kookboek",
  "boeken-media/films-series": "film filmavond",
