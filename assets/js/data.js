@@ -98,6 +98,17 @@ window.LK_CATEGORIEEN = [
       { slug: 'tekenen-schilderen', naam: 'Tekenen & schilderen', beeld: 'images/sub/sub-hobby-tekenen-schilderen.webp' }, { slug: 'haken-breien', naam: 'Haken & breien', beeld: 'images/sub/sub-hobby-haken-breien.webp' },
       { slug: 'knutselen', naam: 'Zelf maken', beeld: 'images/sub/sub-hobby-knutselen.webp' }, { slug: 'modelbouw', naam: 'Modelbouw', beeld: 'images/sub/sub-hobby-modelbouw.webp' }
     ] },
+  { slug: 'metaaldetectie', naam: 'Metaaldetectie', kort: 'Metaaldetectie', icoon: 'detector',
+    tekst: 'Zelf op schattenjacht: detectors, pinpointers, scheppen en meer.',
+    subs: [
+      { slug: 'detectors', naam: 'Metaaldetectors' },
+      { slug: 'kinderen-beginners', naam: 'Voor kinderen & beginners' },
+      { slug: 'pinpointers', naam: 'Pinpointers' },
+      { slug: 'graven', naam: 'Scheppen & graven' },
+      { slug: 'magneetvissen', naam: 'Magneetvissen' },
+      { slug: 'accessoires', naam: 'Tassen & koptelefoons' },
+      { slug: 'vondsten', naam: 'Vondsten bewaren & boeken' }
+    ] },
   { slug: 'elektronica', naam: 'Elektronica & Gadgets', kort: 'Elektronica', icoon: 'koptelefoon',
     tekst: 'Slimme gadgets voor elke dag.', tegel: 'images/categorieen/categorie-elektronica.webp', banner: 'images/banners/banner-cat-elektronica.webp',
     subs: [

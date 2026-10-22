@@ -312,6 +312,30 @@
   }
 
   /* ---------- Product ---------- */
+  /* Productfoto's: één foto, of een rij om doorheen te bladeren (pijltjes, puntjes, vegen). */
+  function productFotos(p) {
+    var klasse = 'product-beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt');
+    var extra = (p.fotos || []).filter(Boolean);
+    if (!extra.length) return '<div class="' + klasse + '">' + LK.productBeeld(p, true) + (p.voorbeeld ? '<span class="label">Voorbeeld</span>' : '') + '</div>';
+    var alle = [p.beeld].concat(extra);
+    return '<div class="' + klasse + ' galerij" data-galerij>' +
+      '<div class="galerij-rij">' + alle.map(function (b, i) {
+        var src = /^https?:/.test(b) ? b : b + '.webp';
+        return '<figure><img src="' + esc(src) + '" alt="' + esc(p.titel) + (i ? ' (foto ' + (i + 1) + ')' : '') + '"' + (i ? ' loading="lazy"' : '') + ' decoding="async"></figure>';
+      }).join('') + '</div>' +
+      '<button class="galerij-knop vorige" type="button" data-galerij-stap="-1" aria-label="Vorige foto">' + ic('vorige') + '</button>' +
+      '<button class="galerij-knop volgende" type="button" data-galerij-stap="1" aria-label="Volgende foto">' + ic('rechts') + '</button>' +
+      '<div class="galerij-punten">' + alle.map(function (b, i) { return '<span' + (i ? '' : ' class="aan"') + '></span>'; }).join('') + '</div>' +
+      '<span class="galerij-teller">1 / ' + alle.length + '</span>' +
+    '</div>';
+  }
+  function galerijBijwerken(g) {
+    var rij = $('.galerij-rij', g); if (!rij) return;
+    var n = rij.children.length, i = Math.round(rij.scrollLeft / Math.max(1, rij.clientWidth));
+    $$('.galerij-punten span', g).forEach(function (s, j) { s.classList.toggle('aan', j === i); });
+    var t = $('.galerij-teller', g); if (t) t.textContent = (i + 1) + ' / ' + n;
+  }
+
   function product(id) {
     var p = LK.vind(id);
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
@@ -335,7 +359,7 @@
     return '<div class="binnen">' +
       '<div style="padding-top:16px">' + kruimel([{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
       '<div class="product">' +
-        '<div class="product-beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + '">' + LK.productBeeld(p, true) + (p.voorbeeld ? '<span class="label">Voorbeeld</span>' : '') + '</div>' +
+        productFotos(p) +
         '<div class="product-info">' +
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
@@ -345,6 +369,9 @@
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + ic('hart') + '</button>' +
           '</div>' +
           '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom || '') + '</p></div>' +
+          (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
+            p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
+            '</dl><p class="specs-noot">Volgens de gegevens van de winkel. Twijfel je? Kijk dan ook even bij ' + esc(p.shop) + '.</p></div>' : '') +
           '<ul class="feiten">' +
             '<li>' + ic('winkel') + '<span>Je bestelt en betaalt bij ' + esc(p.shop) + '. Bezorging en retour regelt de winkel.</span></li>' +
             (p.letOp ? '<li class="letop">' + ic('info') + '<span><strong>Let op:</strong> ' + esc(p.letOp) + '</span></li>' : '') +
@@ -812,6 +839,13 @@
       document.getElementById(t.getAttribute('aria-controls')).classList.toggle('open', !uit);
       return;
     }
+    if (t.hasAttribute('data-galerij-stap')) {
+      var g = t.closest('[data-galerij]'), rij = $('.galerij-rij', g);
+      var n = rij.children.length, nu = Math.round(rij.scrollLeft / Math.max(1, rij.clientWidth));
+      var doel = (nu + parseInt(t.getAttribute('data-galerij-stap'), 10) + n) % n;
+      rij.scrollTo({ left: doel * rij.clientWidth, behavior: 'smooth' });
+      return;
+    }
     if (t.hasAttribute('data-meer')) {
       var g = t.parentNode.previousElementSibling;
       var rest = g.querySelectorAll('.prodkaart.later');
@@ -857,6 +891,9 @@
       ga(v === 'aanbevolen' ? basis : basis + (basis.indexOf('?') === -1 ? '?' : '&') + 'sort=' + v, true);
     }
   });
+  document.addEventListener('scroll', function (e) {
+    var el = e.target; if (el && el.classList && el.classList.contains('galerij-rij')) galerijBijwerken(el.parentNode);
+  }, true);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { sluitLade(); sluitMega(); } });
   window.addEventListener('storage', function () { werkTellersBij(); toon(); });
 

@@ -628,3 +628,27 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 @media (min-width: 760px) { .alle-winkels .werkbalk { flex-direction: column; align-items: stretch; } }
 .alle-winkels .aw-winkels { min-width: 0; }
 .alle-winkels .werkbalk-onder .aantal { white-space: nowrap; }
+
+/* ---------- Productfoto's om doorheen te bladeren ---------- */
+.product-beeld.galerij { display: block; }
+.galerij-rij { position: absolute; inset: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.galerij-rij::-webkit-scrollbar { display: none; }
+.galerij-rij figure { flex: 0 0 100%; margin: 0; position: relative; scroll-snap-align: start; }
+.product-beeld.echt .galerij-rij img { position: absolute; inset: 0; width: 100%; height: 100%; box-sizing: border-box; object-fit: contain; padding: 7%; }
+.galerij-knop { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(10,16,32,.15); background: rgba(10,16,32,.72); color: #fff; display: grid; place-items: center; cursor: pointer; z-index: 2; }
+.galerij-knop svg { width: 20px; height: 20px; }
+.galerij-knop.vorige { left: 10px; } .galerij-knop.volgende { right: 10px; }
+.galerij-knop:hover { background: var(--goud); color: #0A1020; }
+.galerij-punten { position: absolute; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 6px; z-index: 2; }
+.galerij-punten span { width: 7px; height: 7px; border-radius: 50%; background: rgba(10,16,32,.25); transition: background .2s, transform .2s; }
+.galerij-punten span.aan { background: var(--goud); transform: scale(1.25); }
+.galerij-teller { position: absolute; right: 12px; top: 12px; z-index: 2; font: 600 12px/1 var(--f-ui); padding: 6px 9px; border-radius: 99px; background: rgba(10,16,32,.72); color: #fff; }
+/* ---------- Specificaties ---------- */
+.specs { margin-top: 22px; }
+.specs h2 { display: flex; align-items: center; gap: 8px; font-size: 18px; margin: 0 0 10px; }
+.specs h2 svg { width: 18px; height: 18px; color: var(--goud); }
+.specs dl { margin: 0; border: 1px solid var(--lijn-zacht); border-radius: var(--r-m); overflow: hidden; }
+.specs dl > div { display: grid; grid-template-columns: minmax(120px, 42%) 1fr; gap: 12px; padding: 10px 14px; font-size: 14px; }
+.specs dl > div:nth-child(odd) { background: rgba(255,255,255,.03); }
+.specs dt { color: var(--tekst-3); } .specs dd { margin: 0; }
+.specs-noot { font-size: 12.5px; color: var(--tekst-3); margin: 8px 0 0; }

@@ -82,6 +82,8 @@
     pijl: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     links: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
     rechts: '<path d="m9 6 6 6-6 6"/>',
+    vorige: '<path d="m15 6-6 6 6 6"/>',
+    detector: '<path d="M6 20.5h6.5"/><ellipse cx="7" cy="18.2" rx="4.2" ry="1.9"/><path d="M8.5 16.5 17 5"/><rect x="14.6" y="3.2" width="5.2" height="4" rx="1" transform="rotate(37 17.2 5.2)"/><path d="M13.6 9.6l2 1.5"/>',
     omlaag: '<path d="m6 9 6 6 6-6"/>',
     home: '<path d="M4 11 12 4l8 7v9h-5.5v-6h-5v6H4Z"/>',
     raster: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
