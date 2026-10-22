@@ -72,8 +72,35 @@
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.nieuw ? 1 : 0) - (a.nieuw ? 1 : 0); });
-    else l.sort(function (a, b) { return ((b.favoriet ? 4 : 0) + (b.populair ? 2 : 0) + (b.beeld ? 1 : 0)) - ((a.favoriet ? 4 : 0) + (a.populair ? 2 : 0) + (a.beeld ? 1 : 0)); });
+    else l = mix(l);
     return l;
+  }
+  /* 'Aanbevolen': een mooie mix. Favorieten eerst, daarna goedkoop en duur door elkaar,
+     verschillende winkels om en om, nieuwe producten iets naar voren.
+     De volgorde schuift elke week een beetje, zodat nieuwe producten vanzelf meedoen. */
+  function mixGetal(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
+  function mix(lijst) {
+    var week = Math.floor(Date.now() / (7 * 864e5));
+    var top = lijst.filter(function (p) { return p.favoriet || p.populair; });
+    var rest = lijst.filter(function (p) { return !(p.favoriet || p.populair); });
+    var GRENZEN = [15, 30, 60, 120, Infinity], bakken = GRENZEN.map(function () { return []; });
+    rest.forEach(function (p) {
+      var i = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[i]) i++;
+      if (typeof p.prijs !== 'number') i = 2;
+      p._mix = mixGetal(p.id + '|' + week) - (p.nieuw ? 0.25 : 0) - (p.beeld ? 0 : -0.5);
+      bakken[i].push(p);
+    });
+    bakken.forEach(function (b) { b.sort(function (a, c) { return a._mix - c._mix; }); });
+    var uit = [], volgorde = [1, 2, 0, 3, 1, 2, 4, 0, 1, 3, 2, 0], k = 0, over = rest.length;
+    while (over > 0) {
+      var b = bakken[volgorde[k % volgorde.length]]; k++;
+      if (!b.length) { if (k > 100000) break; continue; }
+      var vorige = uit.length ? uit[uit.length - 1].shop : null, j = 0;
+      while (j < b.length - 1 && j < 4 && b[j].shop === vorige) j++;
+      uit.push(b.splice(j, 1)[0]); over--;
+    }
+    top.sort(function (a, b) { return ((b.favoriet ? 2 : 0) + (b.populair ? 1 : 0)) - ((a.favoriet ? 2 : 0) + (a.populair ? 1 : 0)); });
+    return top.concat(uit);
   }
   function grid(lijst, leegHtml, klasse) {
     if (!lijst.length) return '<div class="prodgrid ' + (klasse || '') + '">' + leegHtml + '</div>';
