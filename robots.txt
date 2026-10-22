@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /sjabloon.html
 
 Sitemap: https://leukekeuze.nl/sitemap.xml

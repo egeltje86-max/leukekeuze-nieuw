@@ -118,7 +118,7 @@
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + icoon('hart') + '</button>' +
       '<div class="info">' +
         '<span class="shop">' + esc(p.shop) + '</span>' +
-        '<h3><a href="#/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +
+        '<h3><a href="/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
       '</div></article>';
   }

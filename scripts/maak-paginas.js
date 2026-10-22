@@ -1,0 +1,144 @@
+/* Maakt voor elke pagina van LeukeKeuze een echt HTML-bestand (voor Google), plus sitemap.xml en 404.html.
+   Gebruik:  node scripts/maak-paginas.js      (in de map van de site; playwright moet geinstalleerd zijn)
+   Bron van de opmaak is sjabloon.html. Alles wat dit script maakt wordt bij elke run opnieuw gemaakt. */
+const fs = require('fs'), path = require('path'), http = require('http');
+let chromium;
+try { ({ chromium } = require('playwright')); }
+catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_PAD || 'playwright')); }
+
+const ROOT = path.resolve(__dirname, '..');
+const SITE = 'https://leukekeuze.nl';
+const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
+const MAPPEN = ['c', 'p', 'info', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen'];
+const GEEN_INDEX = /^\/(favorieten|zoek)\//;
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
+  '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
+
+function server() {
+  return new Promise(res => {
+    const s = http.createServer((req, rsp) => {
+      const p = decodeURIComponent(req.url.split('?')[0]);
+      const f = path.join(ROOT, p);
+      if (p !== '/' && f.startsWith(ROOT) && fs.existsSync(f) && fs.statSync(f).isFile()) {
+        rsp.writeHead(200, { 'content-type': TYPES[path.extname(f)] || 'application/octet-stream' });
+        return fs.createReadStream(f).pipe(rsp);
+      }
+      rsp.writeHead(200, { 'content-type': TYPES['.html'] }); rsp.end(SJABLOON);
+    });
+    s.listen(0, () => res(s));
+  });
+}
+const escA = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function zet(html, re, nieuw) { if (!re.test(html)) throw new Error('niet gevonden: ' + re); return html.replace(re, nieuw); }
+
+function maakPagina(info, lade, mega) {
+  let h = SJABLOON;
+  const url = SITE + info.pad;
+  h = zet(h, /<title>[^<]*<\/title>/, '<title>' + escA(info.titel) + '</title>');
+  h = zet(h, /<meta name="description" content="[^"]*">/, '<meta name="description" content="' + escA(info.omschrijving) + '">');
+  h = zet(h, /<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + url + '">');
+  h = zet(h, /<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="' + escA(info.titel) + '">');
+  h = zet(h, /<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="' + escA(info.omschrijving) + '">');
+  h = zet(h, /<meta property="og:url" content="[^"]*">/, '<meta property="og:url" content="' + url + '">');
+  if (info.beeld) {
+    const b = /^https?:/.test(info.beeld) ? info.beeld : SITE + '/' + info.beeld.replace(/^\//, '');
+    h = h.replace(/<meta property="og:image" content="[^"]*">/, '<meta property="og:image" content="' + escA(b) + '">')
+         .replace(/<meta name="twitter:image" content="[^"]*">/, '<meta name="twitter:image" content="' + escA(b) + '">')
+         .replace(/\s*<meta property="og:image:(width|height)" content="[^"]*">/g, '');
+  }
+  if (info.geenIndex) h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex, follow">');
+  h = zet(h, /<main id="app" tabindex="-1"><\/main>/, '<main id="app" tabindex="-1">' + info.inhoud + '</main>');
+  if (info.pad.indexOf('/p/') !== 0) {  // productpagina's klein houden: menu's vult de site zelf
+    h = zet(h, /<div class="lade-inhoud" data-lade><\/div>/, '<div class="lade-inhoud" data-lade>' + lade + '</div>');
+    h = zet(h, /<div class="megamenu" id="megamenu" data-megamenu><\/div>/, '<div class="megamenu" id="megamenu" data-megamenu>' + mega + '</div>');
+  }
+  return h;
+}
+
+(async () => {
+  const srv = await server();
+  const basis = 'http://localhost:' + srv.address().port;
+  const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  const fouten = [];
+  page.on('pageerror', e => fouten.push(e.message));
+  await page.route('**/*.{webp,jpg,png,woff2}', r => r.abort());
+  await page.route('https://**', r => r.abort());
+  await page.goto(basis + '/');
+  await page.waitForFunction(() => window.LK && window.LK.ga && document.querySelector('#app').children.length);
+
+  const { lade, mega } = await page.evaluate(() => ({
+    lade: document.querySelector('[data-lade]').innerHTML,
+    mega: document.querySelector('[data-megamenu]').innerHTML
+  }));
+
+  const gezien = new Set(['/']), rij = ['/'], paginas = [];
+  while (rij.length) {
+    const pad = rij.shift();
+    const r = await page.evaluate(pad => {
+      window.LK.ga(pad, true);
+      const app = document.querySelector('#app').cloneNode(true);
+      const links = Array.from(document.querySelectorAll('a[href^="/"]')).map(a => a.getAttribute('href'))
+        .filter(h => h.indexOf('//') !== 0 && h.indexOf('?') === -1);
+      const aantal = app.querySelectorAll('.prodkaart').length;
+      app.querySelectorAll('.prodkaart.later').forEach(x => x.remove());
+      app.querySelectorAll('[data-meer]').forEach(x => x.parentNode.remove());
+      app.querySelectorAll('[data-alle-winkels]').forEach(x => { x.innerHTML = ''; });
+      const ps = Array.from(app.querySelectorAll('p')).map(p => p.textContent.replace(/\s+/g, ' ').trim()).filter(t => t.length > 40);
+      const img = app.querySelector('.product img, .prodfoto img, main img');
+      let prodTekst = '';
+      if (pad.indexOf('/p/') === 0) {
+        const pr = window.LK.vind(pad.split('/')[2]);
+        if (pr) prodTekst = (pr.waarom ? pr.waarom.replace(/\s+/g, ' ').trim() + ' ' : '') + 'Te koop bij ' + pr.shop +
+          (pr.prijs ? ' voor €' + Number(pr.prijs).toFixed(2).replace('.', ',') : '') + '.';
+      }
+      const h1 = (app.querySelector('h1') || {}).textContent || '';
+      const namen = Array.from(document.querySelectorAll('#app .prodkaart h3')).slice(0, 3).map(x => x.textContent.trim());
+      return {
+        titel: document.title, inhoud: app.innerHTML, links, aantal,
+        leeg: !!app.querySelector('.leeg') && aantal === 0,
+        nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
+        tekst: prodTekst || ps[0] || '', h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : ''
+      };
+    }, pad);
+    for (const l of r.links) if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
+    if (r.nietGevonden) { console.log('overgeslagen (niet gevonden):', pad); continue; }
+    let oms = '';
+    if (pad.indexOf('/c/') === 0 && r.aantal) {
+      oms = r.h1 + ': ' + r.aantal + ' met de hand gekozen ' + (r.aantal === 1 ? 'product' : 'producten') + ', zoals ' +
+        r.namen.slice(0, -1).join(', ') + (r.namen.length > 1 ? ' en ' : '') + r.namen[r.namen.length - 1] + '. Je koopt bij bekende winkels.';
+    }
+    oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
+    if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms,
+      beeld: pad.indexOf('/p/') === 0 ? r.beeld : '', geenIndex: GEEN_INDEX.test(pad) || r.leeg });
+  }
+  await browser.close(); srv.close();
+  if (fouten.length) { console.error('Fouten op de pagina:', fouten.slice(0, 5)); process.exit(1); }
+
+  for (const m of MAPPEN) fs.rmSync(path.join(ROOT, m), { recursive: true, force: true });
+  for (const p of paginas) {
+    const doel = path.join(ROOT, p.pad, 'index.html');
+    fs.mkdirSync(path.dirname(doel), { recursive: true });
+    fs.writeFileSync(doel, maakPagina(p, lade, mega));
+  }
+  // 404: lege app (laat 'Even kwijt?' zien) + oude adressen van de vorige site doorsturen
+  const oud = `<script>
+  (function () {
+    var p = location.pathname.replace(/\\/+$/, '').toLowerCase();
+    var kaart = { '/christelijke-cadeaus': '/c/christelijk/', '/cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/', '/cadeauzoeker': '/vonk/', '/cadeaugidsen': '/' };
+    var doel = kaart[p] || (/^\\/(cadeaugids|keurkamer)\\//.test(p + '/') ? '/' : '');
+    if (doel) location.replace(doel);
+  })();
+  </script>`;
+  let vier = SJABLOON.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex">\n  ' + oud);
+  vier = vier.replace(/<title>[^<]*<\/title>/, '<title>Pagina niet gevonden | LeukeKeuze</title>')
+             .replace(/<div class="lade-inhoud" data-lade><\/div>/, '<div class="lade-inhoud" data-lade>' + lade + '</div>')
+             .replace(/<div class="megamenu" id="megamenu" data-megamenu><\/div>/, '<div class="megamenu" id="megamenu" data-megamenu>' + mega + '</div>');
+  fs.writeFileSync(path.join(ROOT, '404.html'), vier);
+
+  const vandaag = new Date().toISOString().slice(0, 10);
+  const urls = paginas.filter(p => !p.geenIndex).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + vandaag + '</lastmod></url>');
+  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
+  console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
+})().catch(e => { console.error(e); process.exit(1); });

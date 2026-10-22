@@ -17,6 +17,11 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var app = $('#app');
+  /* Oude adressen met # (bijv. leukekeuze.nl/#/c/wonen) omzetten naar het echte adres */
+  if (/^#\//.test(location.hash)) {
+    try { history.replaceState(null, '', netjes(location.hash.slice(1))); } catch (e) {}
+  }
+
   var vorigPad = null;
 
   /* ---------- Hulpjes ---------- */
@@ -27,8 +32,7 @@
     });
   }
   function leesAdres() {
-    var h = location.hash.replace(/^#/, '') || '/';
-    var d = h.split('?');
+    var d = [location.pathname.replace(/\/index\.html$/, '/'), location.search.replace(/^\?/, '')];
     var q = {};
     (d[1] || '').split('&').forEach(function (kv) {
       if (!kv) return; var x = kv.split('=');
@@ -39,7 +43,27 @@
   function maakAdres(pad, q) {
     var s = Object.keys(q || {}).filter(function (k) { return q[k] && q[k] !== 'alle' && q[k] !== 'aanbevolen'; })
       .map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(q[k]); }).join('&');
-    return '#' + pad + (s ? '?' + s : '');
+    return netjes(pad) + (s ? '?' + s : '');
+  }
+  /* Echte adressen (zonder #): altijd met een / aan het eind, zoals GitHub Pages ze serveert. */
+  function netjes(url) {
+    var d = String(url).split('?');
+    var pad = d[0].replace(/\/+$/, '') + '/';
+    return pad + (d[1] ? '?' + d[1] : '');
+  }
+  function huidigAdres() { return location.pathname + location.search; }
+  function ga(url, vervang) {
+    url = netjes(url);
+    try { history[vervang ? 'replaceState' : 'pushState']({}, '', url); } catch (e) { location.href = url; return; }
+    toon();
+  }
+  function netteLinks(root) {
+    $$('a[href^="/"]', root).forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (h.indexOf('//') === 0) return;
+      var n = netjes(h);
+      if (n !== h) a.setAttribute('href', n);
+    });
   }
   function prijsFilter(id) { return PRIJZEN.find(function (p) { return p.id === id; }) || PRIJZEN[0]; }
   function binnenPrijs(p, id) { var f = prijsFilter(id); return p.prijs >= f.min && p.prijs <= f.max; }
@@ -79,7 +103,7 @@
     return '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async">';
   }
   function kruimel(stukken) {
-    return '<nav class="kruimel" aria-label="Kruimelpad"><a href="#/">Home</a>' + stukken.map(function (s) {
+    return '<nav class="kruimel" aria-label="Kruimelpad"><a href="/">Home</a>' + stukken.map(function (s) {
       return '<span aria-hidden="true">›</span>' + (s.naar ? '<a href="' + s.naar + '">' + esc(s.tekst) + '</a>' : '<span>' + esc(s.tekst) + '</span>');
     }).join('') + '</nav>';
   }
@@ -128,14 +152,14 @@
         '</section>' +
 
         /* 2. VONK als smalle balk */
-        '<a class="vonk-kaart vonk-klein" href="#/vonk">' +
+        '<a class="vonk-kaart vonk-klein" href="/vonk">' +
           ic('vonk', 'staf') +
           '<div><h2>VONK</h2><p>Geen idee wat je moet geven? Vind het in 3 klikken.</p></div>' +
           '<span class="rond-pijl">' + ic('rechts') + '</span>' +
         '</a>' +
 
         /* 2b. Zoeken in alle winkels (smalle balk, geen grote zoekbalk) */
-        '<a class="vonk-kaart vonk-klein zoek-alle" href="#/zoek">' +
+        '<a class="vonk-kaart vonk-klein zoek-alle" href="/zoek">' +
           ic('zoek', 'staf') +
           '<div><h2>Zoek in alle winkels</h2><p>Duizenden producten van al onze winkels op één plek.</p></div>' +
           '<span class="rond-pijl">' + ic('rechts') + '</span>' +
@@ -149,7 +173,7 @@
           '<div class="sectie-kop"><div><h2>Alle categorieën</h2></div></div>' +
           '<nav class="catmini" aria-label="Categorieën">' + CATS.map(function (c) {
             var n = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug); }).length;
-            return '<a href="#/c/' + c.slug + '"><span class="rond">' + ic(c.icoon) + '</span><span class="naam">' + esc(c.kort) + '<small>' + n + ' producten</small></span></a>';
+            return '<a href="/c/' + c.slug + '"><span class="rond">' + ic(c.icoon) + '</span><span class="naam">' + esc(c.kort) + '<small>' + n + ' producten</small></span></a>';
           }).join('') + '</nav>' +
         '</section>' +
 
@@ -158,7 +182,7 @@
 
         /* 6. Uitgelicht, ook als rij */
         '<section class="sectie">' +
-          '<div class="sectie-kop"><div><h2>Uitgelicht</h2></div><a class="meer" href="#/c/cadeaus">Alle cadeaus ' + ic('pijl') + '</a></div>' +
+          '<div class="sectie-kop"><div><h2>Uitgelicht</h2></div><a class="meer" href="/c/cadeaus">Alle cadeaus ' + ic('pijl') + '</a></div>' +
           '<div class="chips tabs" role="tablist" data-tabs>' +
             [['favoriet', 'Onze favorieten'], ['nieuw', 'Nieuw binnen'], ['onder25', 'Onder €25']].map(function (t, i) {
               return '<button class="chip" type="button" role="tab" data-tab="' + t[0] + '" aria-pressed="' + (i === 0) + '">' + t[1] + '</button>';
@@ -199,7 +223,7 @@
       rij(l) + '</section>';
   }
   function catKaart(c) {
-    return '<a class="catkaart" href="#/c/' + c.slug + '">' +
+    return '<a class="catkaart" href="/c/' + c.slug + '">' +
       '<div class="beeld">' + catBeeld(c, true) + '</div>' +
       '<div class="tekst"><h3>' + esc(c.naam) + '</h3><p>' + esc(c.tekst) + '</p><span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
   }
@@ -249,10 +273,10 @@
     lijst = sorteer(lijst, q.sort);
 
     var subs = '<div class="subkaarten">' +
-      '<a class="subkaart' + (s ? '' : ' actief') + '" href="#/c/' + c.slug + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
+      '<a class="subkaart' + (s ? '' : ' actief') + '" href="/c/' + c.slug + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
       volleSubs(c).map(function (x) {
         var beeld = x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
-        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="#/c/' + c.slug + '/' + x.slug + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
+        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="/c/' + c.slug + '/' + x.slug + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
           '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
       }).join('') + '</div>';
 
@@ -265,7 +289,7 @@
 
     var leeg = leegBlok(q.prijs && q.prijs !== 'alle' ? 'Niets in dit budget' : 'Hier komen binnenkort mooie producten',
       q.prijs && q.prijs !== 'alle' ? 'Kies een ander budget of bekijk alles.' : 'We zijn deze categorie nog aan het vullen. Kijk alvast verder:',
-      '<a class="knop knop-rand" href="#/c/cadeaus">Alle cadeaus</a> <a class="knop knop-goud" href="#/vonk">Probeer VONK</a>');
+      '<a class="knop knop-rand" href="/c/cadeaus">Alle cadeaus</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
     var anderen = CATS.filter(function (x) { return x.slug !== c.slug; });
 
@@ -273,16 +297,16 @@
       titel: s ? s.naam : c.naam,
       tekst: s ? 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.' : c.tekst,
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
-      kruimel: s ? [{ tekst: c.naam, naar: '#/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }]
+      kruimel: s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }]
     }) +
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       werkbalk + gridMeer(lijst, leeg) +
       winkelSectie(c.slug, s && s.slug, q.prijs) +
-      (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="#/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
+      (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
         '<nav class="catknoppen" style="display:flex;overflow-x:auto;scrollbar-width:none">' + anderen.map(function (x) {
-          return '<a class="catknop" style="flex:0 0 96px" href="#/c/' + x.slug + '">' + ic(x.icoon) + '<span>' + esc(x.kort) + '</span></a>';
+          return '<a class="catknop" style="flex:0 0 96px" href="/c/' + x.slug + '">' + ic(x.icoon) + '<span>' + esc(x.kort) + '</span></a>';
         }).join('') + '</nav></section>' +
     '</div>';
   }
@@ -300,7 +324,7 @@
 
     var ookIn = (p.ookIn || []).map(function (x) {
       var d = x.split('/'), cc = window.LK_CAT(d[0]), ss = window.LK_SUB(cc, d[1]);
-      return cc && ss ? '<a href="#/c/' + cc.slug + '/' + ss.slug + '">' + esc(ss.naam) + '</a>' : '';
+      return cc && ss ? '<a href="/c/' + cc.slug + '/' + ss.slug + '">' + esc(ss.naam) + '</a>' : '';
     }).filter(Boolean);
 
     var verwant = LK.zichtbaar().filter(function (x) {
@@ -309,7 +333,7 @@
     verwant = sorteer(verwant).slice(0, 4);
 
     return '<div class="binnen">' +
-      '<div style="padding-top:16px">' + kruimel([{ tekst: c.naam, naar: '#/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '#/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
+      '<div style="padding-top:16px">' + kruimel([{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
       '<div class="product">' +
         '<div class="product-beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + '">' + LK.productBeeld(p, true) + (p.voorbeeld ? '<span class="label">Voorbeeld</span>' : '') + '</div>' +
         '<div class="product-info">' +
@@ -358,7 +382,7 @@
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
         gridMeer(lijst, leegBlok(q.q ? 'Nog niets uitgekozen voor dit woord' : 'Niets gevonden', q.q ? 'Kijk hieronder in het aanbod van onze winkels, of laat VONK zoeken.' : 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
-          '<a class="knop knop-goud" href="#/vonk">Probeer VONK</a>'), q.q ? 8 : 24) +
+          '<a class="knop knop-goud" href="/vonk">Probeer VONK</a>'), q.q ? 8 : 24) +
         (q.q ? '<section class="sectie alle-winkels" data-alle-winkels data-q="' + esc(q.q) + '" data-prijs="' + esc(q.prijs || 'alle') + '">' +
           '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Alles wat onze partnerwinkels verkopen. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
           '<div class="aw-inhoud"><p class="aw-laden">Even zoeken in alle winkels…</p></div>' +
@@ -501,11 +525,11 @@
           '<span class="chip actief">Voor: ' + esc(label(V.voor, q.voor)) + '</span>' +
           '<span class="chip actief">' + esc(label(V.moment, q.moment)) + '</span>' +
           '<span class="chip actief">' + esc(q.budget === 'alle' ? 'Elk budget' : prijsFilter(q.budget).label) + '</span>' +
-          '<a class="chip" href="#/vonk">Opnieuw</a>' +
+          '<a class="chip" href="/vonk">Opnieuw</a>' +
         '</div></div>' +
         '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Geen praatjes, gewoon passende producten.</p>' +
         grid(sorteer(precies.length ? precies : bijna).slice(0, 12),
-          leegBlok('Nog niets gevonden', 'We vullen de site steeds verder aan. Probeer een ander budget of moment.', '<a class="knop knop-goud" href="#/vonk">Opnieuw</a>'));
+          leegBlok('Nog niets gevonden', 'We vullen de site steeds verder aan. Probeer een ander budget of moment.', '<a class="knop knop-goud" href="/vonk">Opnieuw</a>'));
     }
 
     return kop + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? '" style="max-width:none' : '') + '">' + (stap < 4 ? balk : '') + inhoud + terug + '</div></div>';
@@ -518,7 +542,7 @@
     var lijst = LK.zichtbaar().filter(function (p) { return ids.indexOf(p.id) !== -1; });
     return paginakop({ titel: 'Jouw favorieten', tekst: 'Bewaard met het hartje. Ze staan alleen op dit apparaat, je hebt geen account nodig.', kruimel: [{ tekst: 'Favorieten' }] }) +
       '<div class="binnen"><section class="sectie">' +
-      grid(lijst, leegBlok('Nog geen favorieten', 'Tik op het hartje bij een product om het hier te bewaren.', '<a class="knop knop-goud" href="#/c/cadeaus">Bekijk cadeaus</a>')) +
+      grid(lijst, leegBlok('Nog geen favorieten', 'Tik op het hartje bij een product om het hier te bewaren.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
       '</section></div>';
   }
 
@@ -533,7 +557,7 @@
       '<h2>Wat verdienen wij eraan?</h2><p>Koop je iets via onze link, dan krijgen wij soms een kleine vergoeding van de winkel. Jij betaalt daardoor niets extra.</p>'],
     'over-ons': ['Over LeukeKeuze',
       '<p>LeukeKeuze helpt je snel een mooi cadeau te vinden, zonder eindeloos zoeken. We kiezen liever een paar goede dingen dan duizend middelmatige.</p>' +
-      '<p>Iets moois gevonden of een tip voor ons? We horen het graag via de <a href="#/info/contact">contactpagina</a>.</p>' + CONCEPT],
+      '<p>Iets moois gevonden of een tip voor ons? We horen het graag via de <a href="/info/contact">contactpagina</a>.</p>' + CONCEPT],
     'contact': ['Contact',
       '<p>Vragen over een bestelling? Neem dan contact op met de winkel waar je het product hebt gekocht. Die regelt bezorging en retour.</p>' +
       '<p>Vragen of tips voor LeukeKeuze zelf? Mail ons op: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a></p>' + CONCEPT],
@@ -557,7 +581,7 @@
   function nietGevonden(tekst) {
     zetTitel('Niet gevonden');
     return paginakop({ titel: 'Niet gevonden', tekst: tekst || 'Deze pagina bestaat niet (meer).' }) +
-      '<div class="binnen"><section class="sectie">' + leegBlok('Even kwijt?', 'Ga terug naar de homepage of kies een categorie.', '<a class="knop knop-goud" href="#/">Naar home</a>') + '</section></div>';
+      '<div class="binnen"><section class="sectie">' + leegBlok('Even kwijt?', 'Ga terug naar de homepage of kies een categorie.', '<a class="knop knop-goud" href="/">Naar home</a>') + '</section></div>';
   }
 
   /* Subcategorieën die echt iets bevatten. Lege subs (bv. 'Met naam') blijven verborgen tot er producten in staan. */
@@ -573,19 +597,19 @@
     var uit = CATS.filter(function (c) { return c.uitgelicht; })[0];
     var rest = CATS.filter(function (c) { return !c.uitgelicht; });
     $('[data-lade]').innerHTML =
-      (uit ? '<a class="lade-uitgelicht" href="#/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
+      (uit ? '<a class="lade-uitgelicht" href="/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
       '<div class="lade-label">Alle categorieën</div><ul>' +
       rest.map(function (c) {
         return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +
-          '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="#/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
-          volleSubs(c).map(function (s) { return '<a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
+          '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
+          volleSubs(c).map(function (s) { return '<a href="/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
       }).join('') + '</ul>' +
-      '<div class="lade-extra"><a href="#/vonk">VONK cadeauzoeker</a><a href="#/winkels">Onze winkels</a><a href="#/favorieten">Mijn favorieten</a><a href="#/zoek">Zoeken</a><a href="#/info/hoe-werkt-het">Hoe werkt het?</a></div>';
+      '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn favorieten</a><a href="/zoek">Zoeken</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
-      return '<div><h3><a href="#/c/' + c.slug + '">' + ic(c.icoon) + esc(c.naam) + '</a></h3><ul>' +
-        volleSubs(c).slice(0, 6).map(function (s) { return '<li><a href="#/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
+      return '<div><h3><a href="/c/' + c.slug + '">' + ic(c.icoon) + esc(c.naam) + '</a></h3><ul>' +
+        volleSubs(c).slice(0, 6).map(function (s) { return '<li><a href="/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
     }).join('') + '</div>';
   }
   var laatsteFocus = null;
@@ -647,7 +671,9 @@
       '<div class="binnen"><section class="sectie"><div class="winkelraster">' + winkelsMet().map(winkelKaart).join('') + '</div>' +
       '<p class="vonk-noot" style="margin-top:18px">Koop je iets via deze links, dan krijgen wij soms een kleine vergoeding. Jij betaalt niets extra.</p></section></div>';
   }
+  var laatstGetoond = null;
   function toon() {
+    laatstGetoond = huidigAdres();
     var a = leesAdres(), d = a.delen, html;
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();
@@ -665,7 +691,7 @@
     var zelfdeCat = d[0] === 'c' && vorigeCat === d[1];
 
     app.innerHTML = html;
-    vulIconen(app);
+    vulIconen(app); netteLinks(app);
     var aw = $('[data-alle-winkels]', app); if (aw) vulAlleWinkels(aw);
 
     var rij = $('.subkaarten', app);
@@ -702,6 +728,7 @@
     }
     vorigPad = a.pad;
     if (typeof bewaakHome === 'function') bewaakHome();
+    try { window.dispatchEvent(new Event('lk-route')); } catch (e) {}
   }
 
   /* ================== TERUG NAAR BOVEN ================== */
@@ -719,7 +746,7 @@
       if (vulling) vulling.style.strokeDashoffset = String(100 - Math.min(100, max > 0 ? (y / max) * 100 : 0));
     }
     window.addEventListener('scroll', function () { if (!bezig) { bezig = true; requestAnimationFrame(bijwerken); } }, { passive: true });
-    window.addEventListener('hashchange', function () { setTimeout(bijwerken, 50); });
+    window.addEventListener('lk-route', function () { setTimeout(bijwerken, 50); });
     knop.addEventListener('click', function () {
       var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top: 0, behavior: rustig ? 'auto' : 'smooth' });
@@ -742,6 +769,7 @@
   }
   window.addEventListener('popstate', function (e) {
     if (negeerPop) { negeerPop = false; return; }
+    if (huidigAdres() !== laatstGetoond) { toon(); return; }
     if (document.body.classList.contains('lade-open')) { sluitDoorTerug = true; sluitLade(); return; }
     var st = e.state || {};
     if (st.basis && startOpHome && !leesAdres().delen.length) {
@@ -800,7 +828,16 @@
     }
     if (!t.closest('.megamenu')) sluitMega();
     // Zelfde adres opnieuw aanklikken: lade/menu wel sluiten
-    if (t.tagName === 'A' && t.getAttribute('href') === location.hash) { sluitLade(); sluitMega(); }
+    // Interne link: zonder herladen naar de nieuwe pagina
+    if (t.tagName === 'A') {
+      var href = t.getAttribute('href') || '';
+      if (href.charAt(0) === '/' && href.charAt(1) !== '/' && !t.target && !t.hasAttribute('download') &&
+          !e.defaultPrevented && e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+        e.preventDefault();
+        if (netjes(href) === huidigAdres()) { sluitLade(); sluitMega(); }
+        else ga(href);
+      }
+    }
   });
   document.querySelector('.lade-bg').addEventListener('click', sluitLade);
 
@@ -811,23 +848,24 @@
     var q = f.querySelector('input').value.trim();
     var huidig = leesAdres();
     var nq = { q: q, prijs: huidig.delen[0] === 'zoek' ? huidig.q.prijs : '' };
-    location.hash = maakAdres('/zoek', nq);
+    ga(maakAdres('/zoek', nq));
     f.querySelector('input').blur();
   });
   document.addEventListener('change', function (e) {
     if (e.target.matches('[data-sorteer]')) {
       var basis = e.target.getAttribute('data-sorteer'), v = e.target.value;
-      location.hash = v === 'aanbevolen' ? basis : basis + (basis.indexOf('?') === -1 ? '?' : '&') + 'sort=' + v;
+      ga(v === 'aanbevolen' ? basis : basis + (basis.indexOf('?') === -1 ? '?' : '&') + 'sort=' + v, true);
     }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { sluitLade(); sluitMega(); } });
-  window.addEventListener('hashchange', toon);
   window.addEventListener('storage', function () { werkTellersBij(); toon(); });
 
   /* ================== START ================== */
+  window.LK.ga = ga;
   vulIconen(document);
   bouwLade(); bouwMega();
   vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
+  netteLinks(document);
   werkTellersBij();
   toon();
 })();
