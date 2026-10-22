@@ -125,7 +125,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
     subs: [
       { slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp' }, { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp' },
-      { slug: 'tassen', naam: 'Hand- & schoudertassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'rugzakken-reistassen', naam: 'Rugzakken & reistassen', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp' }, { slug: 'schoenen', naam: 'Schoenen', beeld: 'images/sub/sub-mode-beauty-schoenen.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
+      { slug: 'tassen', naam: 'Hand- & schoudertassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'rugzakken-reistassen', naam: 'Rugzakken & reistassen', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp' }, { slug: 'schoenen', naam: 'Schoenen', beeld: 'images/sub/sub-mode-beauty-schoenen.webp' }, { slug: 'kleding', naam: 'Kleding & sokken', beeld: 'images/sub/sub-mode-beauty-kleding.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
     ] },
   { slug: 'keuken', naam: 'Keuken & Tafelen', kort: 'Keuken', icoon: 'kop',
     tekst: 'Mooi koken, gezellig tafelen.', tegel: 'images/categorieen/categorie-keuken.webp', banner: 'images/banners/banner-cat-keuken.webp',
@@ -251,6 +251,7 @@ window.LK_ZOEKWOORDEN = {
  "mode-beauty/tassen": "tas tassen handtas schoudertas clutch tasje",
  "mode-beauty/rugzakken-reistassen": "rugzak weekendtas reistas",
  "mode-beauty/schoenen": "laarzen laars schoenen boots loafers sneakers pantoffels",
+ "mode-beauty/kleding": "trui truien vest hoodie sweater pullover jas jassen sokken",
  "mode-beauty/accessoires": "sjaal handschoenen riem portemonnee muts",
  "keuken/koken": "pan pannen koekenpan braadpan snijplank keukenmes",
  "keuken/keukenapparaten": "blender mixer waterkoker",
@@ -324,6 +325,7 @@ window.LK_NIETWOORDEN = {
  "sieraden/verguld-staal": "kast tafel stoel fauteuil spiegel lamp",
  "sieraden": "gordijn glasgordijn vaas voorwerp drankspel kandelaar lunchbox pop holder stekers bloomring multitool toss fire snoep marmeren discobal paracord survival",
  "mode-beauty/horloges": "snoep",
+ "mode-beauty/kleding": "kast meubel kerstboom hanger mok wijnfles bed dekbed sac kersthanger plaid truienkam kaart",
  "mode-beauty/accessoires": "sandalen hoeslaken kersthanger badjas kaart wijnflessen dieet",
  "mode-beauty/schoenen": "veger",
  "mode-beauty/verzorging": "allesreiniger",
