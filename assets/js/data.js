@@ -182,7 +182,9 @@ window.LK_CATEGORIEEN = [
       { slug: 'kerst', naam: 'Kerst', beeld: 'images/sub/sub-christelijk-kerst.webp' },
       { slug: 'bijbels', naam: 'Bijbels', beeld: 'images/sub/sub-christelijk-bijbels.webp' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters', beeld: 'images/sub/sub-christelijk-kaarten-posters.webp' },
       { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-christelijk-sieraden.webp' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp' },
-      { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-christelijk-voor-kinderen.webp' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-christelijk-boeken-muziek.webp' }
+      { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-christelijk-voor-kinderen.webp' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-christelijk-boeken-muziek.webp' },
+      { slug: 'kerststal-engelen', naam: 'Kerststallen & engelen', beeld: 'images/sub/sub-christelijk-kerststal-engelen.webp' }, { slug: 'doop-communie', naam: 'Doop & communie', beeld: 'images/sub/sub-christelijk-doop-communie.webp' },
+      { slug: 'beelden-kruisen', naam: 'Beelden & kruisen', beeld: 'images/sub/sub-christelijk-beelden-kruisen.webp' }
     ] }
 ];
 
@@ -284,6 +286,9 @@ window.LK_ZOEKWOORDEN = {
  "sport-outdoor/wandelen": "picknick drinkfles wandelstok",
  "sport-outdoor/fietsen": "fiets fietsbel",
  "sport-outdoor/golf": "golf golfbal golfballen",
+ "christelijk/kerststal-engelen": "kerststal kribbe engel engeltje beschermengel",
+ "christelijk/doop-communie": "doop doopcadeau communie communiecadeau vormsel",
+ "christelijk/beelden-kruisen": "beeld mariabeeld kruisbeeld kruis icoon",
  "sport-outdoor/kamperen": "kamperen tent camping",
  "sport-outdoor/reizen": "toilettas reiskoffer trolley reiskussen reisset",
  "sport-outdoor/darts": "dart darts dartbord",
