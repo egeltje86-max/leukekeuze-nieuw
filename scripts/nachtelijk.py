@@ -23,7 +23,6 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-zadig': '&standard_id=7&language_code=fr&locale_id=5&program_id=15679',
     'x-bloompost': '&standard_id=1&language_code=nl&locale_id=1&program_id=7248',
     'x-laredoute-wonen': '&standard_id=8&language_code=nl&locale_id=1&program_id=16029',
-    'x-laredoute-mode': '&standard_id=7&language_code=nl&locale_id=1&program_id=16029',
 }
 ok = 0
 for naam, q in FEED.items():

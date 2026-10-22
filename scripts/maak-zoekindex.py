@@ -13,11 +13,8 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-zadig.json', 'Zadig & Voltaire', ''),
     ('x-bloompost.json', 'Bloompost', ''),
     ('x-laredoute-wonen.json', 'La Redoute', ''),
-    ('x-laredoute-mode.json', 'La Redoute', ''),
     # oude, kleinere La Redoute-uittreksels (alleen als de volledige feed er niet is)
     ('x-lr-wonen-cadeau.json', 'La Redoute', ''),
-    ('x-lr-mode-cadeau.json', 'La Redoute', ''),
-    ('x-lr-tassen.json', 'La Redoute', ''),
 ]
 # Bewust NIET: Mijn Hummeltje (dropshipping, wens van Marius).
 FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'), (r'bracelet', 'armband'), (r"boucles", 'oorbellen'),
