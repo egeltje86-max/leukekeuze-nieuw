@@ -416,10 +416,15 @@
   }
 
   /* ---------- Zoeken ---------- */
+  /* Woorden die mensen typen, naast wat er bij een product staat (zoals 'cadeau vrouw' of 'schoencadeau'). */
+  var SYN = { haar: 'vrouw vrouwen dames moeder mama vriendin zus', hem: 'man mannen heren vader papa vriend broer', kind: 'kinderen jongen meisje jongens meisjes',
+    'opa-oma': 'opa oma grootouders', kerst: 'kerstmis kerstcadeau', sinterklaas: 'sint pakjesavond schoencadeau schoencadeautje surprise', verjaardag: 'jarig', zomaar: 'bedankje' };
+  var SUBSYN = { 'mode-beauty/geuren': 'parfum geur' };
   function zoekTekst(p) {
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
     var extra = (p.ookIn || []).map(function (x) { var d = x.split('/'); var cc = window.LK_CAT(d[0]); var ss = window.LK_SUB(cc, d[1]); return ss ? ss.naam : ''; });
-    return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' ')].join(' ').toLowerCase();
+    var syn = (p.voor || []).concat(p.moment || []).map(function (x) { return SYN[x] || ''; });
+    return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), SUBSYN[p.cat + '/' + p.sub] || ''].join(' ').toLowerCase();
   }
   function zoeken(q) {
     var woorden = (q.q || '').toLowerCase().split(/\s+/).filter(Boolean);
