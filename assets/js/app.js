@@ -455,6 +455,8 @@
     else if (sleutel === 'cadeaus/onder-15') attr = ' data-max="15"';
     else if (ZW[sleutel]) attr = ' data-woorden="' + esc(ZW[sleutel]) + '"';
     else return '';
+    var NW = window.LK_NIETWOORDEN || {};
+    if (NW[sleutel]) attr += ' data-niet="' + esc(NW[sleutel]) + '"';
     return '<section class="sectie alle-winkels" data-alle-winkels data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
       '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Uit het hele aanbod van onze partnerwinkels. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
       '<div class="aw-inhoud"><p class="aw-laden">Even kijken in alle winkels…</p></div></section>';
@@ -478,12 +480,14 @@
     var woorden = q.toLowerCase().split(/\s+/).filter(Boolean);
     var doel = $('.aw-inhoud', sec);
     laadWinkels().then(function (alles) {
+      var nietW = (sec.getAttribute('data-niet') || '').split(' ').filter(Boolean);
       var ofW = (sec.getAttribute('data-woorden') || '').split(' ').filter(Boolean), gesl = sec.getAttribute('data-geslacht') || '', maxP = +sec.getAttribute('data-max') || 0;
       function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }
       var hits = alles.filter(function (x) {
         if (x.p < pf.min || x.p > pf.max) return false;
         if (maxP && x.p >= maxP) return false;
         if (gesl && x.g !== gesl) return false;
+        if (nietW.length && nietW.some(function (w) { return heeftWoord({ z: x.tl }, w); })) return false;
         if (ofW.length) return ofW.some(function (w) { return heeftWoord(x, w); });
         if (gesl || maxP) return true;
         return woorden.every(function (w) { return x.z.indexOf(' ' + w) !== -1; });
