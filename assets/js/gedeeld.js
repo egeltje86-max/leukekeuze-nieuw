@@ -24,6 +24,12 @@
   }
   function zichtbaar() { return producten().filter(function (p) { return p.status === 'goedgekeurd'; }); }
   function vind(id) { return producten().find(function (p) { return p.id === id; }); }
+  /* 'Nieuw' = de eerste 3 weken op de site ('sinds'). Zonder datum telt het vinkje 'nieuw'. */
+  var NIEUW_DAGEN = 21;
+  function isNieuw(p) {
+    if (p.sinds) { var t = Date.parse(p.sinds); return !isNaN(t) && (Date.now() - t) < NIEUW_DAGEN * 864e5; }
+    return !!p.nieuw;
+  }
 
   /* Hoort product bij categorie (en evt. sub)? Kijkt ook naar 'ookIn'. */
   function hoortBij(p, cat, sub) {
@@ -115,7 +121,7 @@
 
   function productKaart(p) {
     var fav = isFavoriet(p.id);
-    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : (p.nieuw ? '<span class="label vol">Nieuw</span>' : ''));
+    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : (isNieuw(p) ? '<span class="label vol">Nieuw</span>' : ''));
     return '<article class="prodkaart">' +
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + icoon('hart') + '</button>' +
@@ -128,7 +134,7 @@
 
   window.LK = {
     leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen,
-    producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij,
+    producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij, isNieuw: isNieuw,
     favorieten: favorieten, isFavoriet: isFavoriet, wisselFavoriet: wisselFavoriet,
     esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart
   };

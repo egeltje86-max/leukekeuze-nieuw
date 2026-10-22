@@ -71,7 +71,7 @@
     var l = lijst.slice();
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
-    else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.nieuw ? 1 : 0) - (a.nieuw ? 1 : 0); });
+    else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
     else l = mix(l);
     return l;
   }
@@ -87,7 +87,7 @@
     rest.forEach(function (p) {
       var i = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[i]) i++;
       if (typeof p.prijs !== 'number') i = 2;
-      p._mix = mixGetal(p.id + '|' + week) - (p.nieuw ? 0.25 : 0) - (p.beeld ? 0 : -0.5);
+      p._mix = mixGetal(p.id + '|' + week) - (LK.isNieuw(p) ? 0.25 : 0) - (p.beeld ? 0 : -0.5);
       bakken[i].push(p);
     });
     bakken.forEach(function (b) { b.sort(function (a, c) { return a._mix - c._mix; }); });
@@ -259,7 +259,7 @@
     var l = LK.zichtbaar().filter(nietChristelijk);
     if (tab === 'favoriet') l = l.filter(function (p) { return p.favoriet || p.populair; });
     if (tab === 'onder25') l = l.filter(function (p) { return p.prijs <= 25 && p.cat !== 'dranken'; });
-    if (tab === 'nieuw') l = l.filter(function (p) { return p.nieuw; });
+    if (tab === 'nieuw') l = l.filter(LK.isNieuw);
     l = sorteer(l);
     if (tab === 'nieuw' || tab === 'onder25') {
       /* afwisselen: niet tien dingen uit dezelfde categorie achter elkaar */
@@ -378,10 +378,12 @@
       return cc && ss ? '<a href="/c/' + cc.slug + '/' + ss.slug + '">' + esc(ss.naam) + '</a>' : '';
     }).filter(Boolean);
 
+    /* 'Ook leuk': eerst uit dezelfde subcategorie, daarna uit dezelfde categorie (of met dezelfde 'ook in'). */
     var verwant = LK.zichtbaar().filter(function (x) {
       return x.id !== p.id && (p.cat === 'christelijk') === (x.cat === 'christelijk') && (x.cat === p.cat || (x.ookIn || []).some(function (o) { return (p.ookIn || []).indexOf(o) !== -1; }));
     });
-    verwant = sorteer(verwant).slice(0, 4);
+    var zelfdeSub = function (x) { return x.cat === p.cat && x.sub === p.sub; };
+    verwant = sorteer(verwant.filter(zelfdeSub)).concat(sorteer(verwant.filter(function (x) { return !zelfdeSub(x); }))).slice(0, 4);
 
     return '<div class="binnen">' +
       '<div style="padding-top:16px">' + kruimel([{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +

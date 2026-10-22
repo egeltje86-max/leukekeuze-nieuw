@@ -627,6 +627,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 /* Meer in onze winkels: winkelknoppen op een eigen regel, aantal en sorteren eronder */
 @media (min-width: 760px) { .alle-winkels .werkbalk { flex-direction: column; align-items: stretch; } }
 .alle-winkels .aw-winkels { min-width: 0; }
+.alle-winkels .werkbalk-onder { flex-wrap: wrap; }
 .alle-winkels .werkbalk-onder .aantal { white-space: nowrap; }
 
 /* ---------- Productfoto's om doorheen te bladeren ---------- */

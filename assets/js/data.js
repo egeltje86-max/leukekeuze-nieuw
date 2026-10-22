@@ -46,19 +46,33 @@ window.LK_INSTELLINGEN = {
 /* ---------- Partnerwinkels (pagina /winkels + tegels in categorieën) ----------
    url leeg = nog geen partnerlink, dan wordt de winkel niet getoond. */
 window.LK_WINKELS = [
-  { naam: 'I-KOOK', tekst: 'Kookwinkel vol mooie pannen, messen en keukenspullen van goede merken.', cats: ['keuken'], url: '' },
-  { naam: 'La Redoute', tekst: 'Frans warenhuis met mooie merken: AM.PM, Ralph Lauren, Tommy Hilfiger en meer.', cats: ['wonen', 'mode-beauty'], url: 'https://fr135.net/c/?si=16029&li=1692553&wi=433339&ws=' },
-  { naam: 'Ditverzinjeniet', tekst: 'Bijzondere en originele cadeaus die je niet overal vindt.', cats: ['cadeaus', 'wonen', 'elektronica'], url: 'https://fr135.net/c/?si=11208&li=1503370&wi=433339&ws=' },
-  { naam: 'Dille & Kamille', tekst: 'Mooie spullen voor koken, wonen en de tuin, van natuurlijke materialen.', cats: ['keuken', 'wonen', 'tuin-klussen'], url: 'https://fr135.net/c/?si=7059&li=1483700&wi=433339&ws=' },
-  { naam: 'FOREO', tekst: 'Luxe Zweedse verzorging: slimme gezichtsborsteltjes en huidverzorging. Een cadeau om je mee te verwennen.', cats: ['mode-beauty'], beeld: 'images/winkels/winkel-foreo.webp', url: 'https://jf79.net/c/?si=16254&li=1829612&wi=433339&ws=' },
-  { naam: 'Teufel', tekst: 'Duitse speakers en koptelefoons met prachtig geluid.', cats: ['elektronica'], url: 'https://fr135.net/c/?si=15574&li=1675015&wi=433339&ws=' },
-  { naam: '999 Games', shop: '999Games', tekst: 'Bordspellen, kaartspellen en puzzels voor jong en oud.', cats: ['speelgoed'], url: 'https://fr135.net/c/?si=13450&li=1594951&wi=433339&ws=' },
-  { naam: 'Bloompost', tekst: 'Bloemen en cadeautjes die door de brievenbus passen.', cats: ['cadeaus'], url: 'https://fr135.net/c/?si=7248&li=1681176&wi=433339&ws=' },
-  { naam: 'Kaartje2go', tekst: 'Kaarten die je zelf maakt en die zij voor je versturen.', cats: ['cadeaus'], url: 'https://fr135.net/c/?si=19520&li=1837135&wi=433339&ws=' },
+  { naam: 'Ditverzinjeniet', tekst: 'Bijzondere en originele cadeaus die je niet overal vindt.', cats: ['cadeaus', 'wonen', 'dieren', 'boeken-media', 'hobby', 'speelgoed', 'sport-outdoor', 'elektronica', 'tuin-klussen', 'keuken', 'eten-drinken'], url: 'https://fr135.net/c/?si=11208&li=1503370&wi=433339&ws=' },
+  { naam: 'bol', tekst: 'De grootste winkel van Nederland, voor bijna alles.', cats: ['metaaldetectie', 'boeken-media'], url: 'https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=' + encodeURIComponent('https://www.bol.com/nl/nl/') },
+  { naam: 'Dille & Kamille', tekst: 'Mooie spullen voor koken, wonen en de tuin, van natuurlijke materialen.', cats: ['keuken', 'wonen', 'tuin-klussen', 'eten-drinken', 'dieren', 'speelgoed', 'mode-beauty'], url: 'https://fr135.net/c/?si=7059&li=1483700&wi=433339&ws=' },
+  { naam: 'LEGO', tekst: 'De officiële LEGO-winkel: alle sets, ook de exclusieve.', cats: ['speelgoed', 'hobby', 'wonen'], url: 'https://bdt9.net/c/?si=18488&li=1798521&wi=433339&ws=' },
+  { naam: 'Westwing', tekst: 'Mooie woonspullen en decoratie, met wisselende acties van bekende merken.', cats: ['wonen', 'dieren', 'keuken'], url: 'https://jdt8.net/c/?si=17294&li=1749537&wi=433339&ws=' },
   { naam: 'Decantalo', tekst: 'Wijnhandel uit Spanje met topwijnen, champagne, whisky en andere mooie flessen.', cats: ['dranken'], url: 'https://bdt9.net/c/?si=18645&li=1810322&wi=433339&dl=nl%2F&ws=' },
-  { naam: 'Dr. Martens', tekst: 'De bekende stoere laarzen en schoenen, ook de Vintage-lijn die nog in Engeland gemaakt wordt.', cats: ['mode-beauty'], url: 'https://fr135.net/c/?si=15138&li=1800483&wi=433339&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1184941.415225994613837962723040%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.drmartens.com%252Fnl%252Fnl%252F&ws=' },
+  { naam: 'MYKA', tekst: 'Sieraden met een naam, datum of gravure. Persoonlijk, van zilver of goud.', cats: ['sieraden', 'christelijk'], url: 'https://bdt9.net/c/?si=18346&li=1803379&wi=433339&dl=nl%2F&ws=' },
+  { naam: 'Prydligt', tekst: 'Betaalbare sieraden en horloges, van verguld staal tot zilver.', cats: ['sieraden', 'mode-beauty'], url: 'https://bdt9.net/c/?si=18475&li=1814773&wi=433339&ws=' },
+  { naam: '999 Games', shop: '999Games', tekst: 'Bordspellen, kaartspellen en puzzels voor jong en oud.', cats: ['speelgoed'], url: 'https://fr135.net/c/?si=13450&li=1594951&wi=433339&ws=' },
+  { naam: 'La Redoute', tekst: 'Frans warenhuis met mooie merken: AM.PM, Ralph Lauren, Tommy Hilfiger en meer.', cats: ['wonen', 'mode-beauty'], url: 'https://fr135.net/c/?si=16029&li=1692553&wi=433339&ws=' },
+  { naam: 'Kaartje2go', tekst: 'Kaarten die je zelf maakt en die zij voor je versturen.', cats: ['cadeaus', 'christelijk'], url: 'https://fr135.net/c/?si=19520&li=1837135&wi=433339&ws=' },
+  { naam: 'Bartogi', tekst: 'Schoenen en laarzen van merken als Hunter, HEYDUDE en Sockwell.', cats: ['mode-beauty'], url: 'https://fr135.net/c/?si=15634&li=1771255&wi=433339&ws=' },
+  { naam: 'Kantinewinkel', tekst: 'Lekkers in grote verpakkingen: snoep, koffie, thee en alcoholvrije bubbels.', cats: ['eten-drinken', 'dranken'], url: 'https://bdt9.net/c/?si=18020&li=1781028&wi=433339&ws=' },
+  { naam: 'Wijnkring', tekst: 'Wijn, port en bubbels, van betaalbaar tot bijzonder.', cats: ['dranken'], url: 'https://bdt9.net/c/?si=18166&li=1786491&wi=433339&ws=' },
+  { naam: 'Kerstland', tekst: 'Alles voor kerst: bomen, ballen, verlichting en kerstdecoratie.', cats: ['wonen'], url: 'https://glp8.net/c/?si=22097&li=1972295&wi=433339&ws=' },
+  { naam: 'Teufel', tekst: 'Duitse speakers en koptelefoons met prachtig geluid.', cats: ['elektronica'], url: 'https://fr135.net/c/?si=15574&li=1675015&wi=433339&ws=' },
   { naam: 'Dropwinkel', tekst: 'Drop, snoep en chocolade, van ouderwets tot luxe.', cats: ['eten-drinken'], url: 'https://fr135.net/c/?si=18019&li=1781027&wi=433339&ws=' },
-  { naam: 'bol', tekst: 'De grootste winkel van Nederland, voor bijna alles.', cats: [], url: 'https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=' + encodeURIComponent('https://www.bol.com/nl/nl/') }
+  { naam: 'Timberland', tekst: 'De bekende gele boots en stevige kleding, in de Duitse webshop.', cats: ['mode-beauty'], url: 'https://rkn3.net/c/?si=15048&li=1654052&wi=433339&ws=' },
+  { naam: 'Zadig & Voltaire', tekst: 'Frans modemerk met rock-chic tassen, sjaals en kasjmier.', cats: ['mode-beauty'], url: 'https://fr135.net/c/?si=15679&li=1683317&wi=433339&ws=' },
+  { naam: 'Bloompost', tekst: 'Bloemen en cadeautjes die door de brievenbus passen.', cats: ['cadeaus'], url: 'https://fr135.net/c/?si=7248&li=1681176&wi=433339&ws=' },
+  { naam: 'Dr. Martens', tekst: 'De bekende stoere laarzen en schoenen, ook de Vintage-lijn die nog in Engeland gemaakt wordt.', cats: ['mode-beauty'], url: 'https://fr135.net/c/?si=15138&li=1800483&wi=433339&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1184941.415225994613837962723040%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.drmartens.com%252Fnl%252Fnl%252F&ws=' },
+  { naam: 'Invicta', tekst: 'Opvallende horloges met een grote wijzerplaat, voor een scherpe prijs.', cats: ['mode-beauty'], url: 'https://bdt9.net/c/?si=18836&li=1811592&wi=433339&ws=' },
+  { naam: 'WoodWick', tekst: 'Geurkaarsen met een houten lont die zachtjes knettert.', cats: ['wonen'], url: 'https://glp8.net/c/?si=21919&li=1925609&wi=433339&ws=' },
+  { naam: 'Razer', tekst: 'Gaming-spullen: muizen, toetsenborden, headsets en verlichting.', cats: ['elektronica'], url: 'https://lt45.net/c/?si=13299&li=1828661&wi=433339&ws=' },
+  { naam: 'AllSaints', tekst: 'Brits modemerk met leren jassen en stoere sieraden.', cats: ['mode-beauty'], url: 'https://glp8.net/c/?si=20868&li=1886640&wi=433339&ws=' },
+  { naam: 'FOREO', tekst: 'Luxe Zweedse verzorging: slimme gezichtsborsteltjes en huidverzorging. Een cadeau om je mee te verwennen.', cats: ['mode-beauty'], beeld: 'images/winkels/winkel-foreo.webp', url: 'https://jf79.net/c/?si=16254&li=1829612&wi=433339&ws=' },
+  { naam: 'I-KOOK', tekst: 'Kookwinkel vol mooie pannen, messen en keukenspullen van goede merken.', cats: ['keuken'], url: '' }
 ];
 
 window.LK_CATEGORIEEN = [
@@ -320,9 +334,9 @@ window.LK_ZOEKWOORDEN = {
  "eten-drinken": "balsamico bonbons cadeaubox cadeaupakket chocolade drop dropjes honing jam koffie koffiebonen marsepein olijfolie pakket pesto snoep thee zout zuurtjes",
  "dranken": "armagnac bourbon brandy calvados cava champagne cognac crémant decanteerkaraf gin grappa kurkentrekker likeur likeuren limoncello liqueur mezcal mousserend prosecco ron rum scotch tequila vodka whiskey whisky wijn wijnglas wijnglazen wodka",
  "tuin-klussen": "bloempot buitenlamp gereedschap gieter hamer kweekpot kweekset lantaarn schepje schroevendraaier snoeischaar tuingereedschap tuinlamp zaden",
- "sport-outdoor": "camping dart dartbord darts drinkfles fiets fietsbel fitness kamperen picknick tent toilettas wandelstok yoga",
+ "sport-outdoor": "camping dart dartbord darts drinkfles fiets fietsbel fitness golf golfbal golfballen kamperen picknick tent toilettas wandelstok yoga",
  "dieren": "cavia hamster hond honden kat katten konijn nestkast poes vogel vogelhuisje vogels",
- "boeken-media": "agenda film kinderboek kookboek muziek notitieboek planner popcorn prentenboek roman vinyl"
+ "boeken-media": "agenda boekenlegger boekensteun boekensteunen film kinderboek kookboek leeslampje muziek notitieboek planner popcorn prentenboek roman vinyl"
 };
 /* Woorden die NIET in de titel mogen staan bij 'Meer in onze winkels' (zoals 'gordijn met ringen' bij Ringen). */
 window.LK_NIETWOORDEN = {
