@@ -641,7 +641,7 @@
       '<p>Wie de site maakt en het adres vind je in het <a href="/info/colofon">colofon</a>.</p>' + CONCEPT],
     'colofon': ['Colofon',
       '<p>Deze website wordt gemaakt en beheerd door:</p>' +
-      '<p><strong>LeukeKeuze</strong><br>Marius Kestens<br>__ADRES__<br>Nederland</p>' +
+      '<p><strong>LeukeKeuze</strong><br>Marius Kestens<br>Kromhout 108<br>3311 RH Dordrecht<br>Nederland</p>' +
       '<p>E-mail: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a><br>Website: leukekeuze.nl</p>' +
       '<p>LeukeKeuze is (nog) niet ingeschreven bij de Kamer van Koophandel.</p>' +
       '<h2>Wat is LeukeKeuze?</h2><p>LeukeKeuze is een cadeausite. Wij verkopen zelf niets, maar raden producten aan van andere winkels. Sommige links zijn partnerlinks: koop je via zo’n link, dan krijgen wij soms een kleine vergoeding van de winkel. Jij betaalt daardoor niets extra.</p>' +
