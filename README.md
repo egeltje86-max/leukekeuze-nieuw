@@ -169,7 +169,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 89 – Goedkope Sinterklaas-cadeautjes (23-10-2026): 24 schoencadeautjes.
 - Sint onder €15 (23-10-2026): nieuwe rubriek naast Sinterklaas, vult zich automatisch met alles uit Sinterklaas onder de 15 euro.
 - Ronde 90 – Baby & peuter (23-10-2026): 36 producten (rammelaars, rolspeelgoed, mobielen, vormenstoven, nachtlampjes, babyfoons).
-- Eigen kleurboek 7 (23-10-2026): Superhero Dinos (amz-b0hp27j6v7, €9,99), met noot "binnenkort te koop op Amazon"; eigen blok toont 7 boeken naast elkaar op desktop.
+- Eigen kleurboek 7 (23-10-2026): Superhero Dinos (amz-b0hp27j6v7, €9,99), nu te koop voor €10,89; eigen blok toont 7 boeken naast elkaar op desktop.
 - VONK (23-10-2026): toont nu alle passende cadeaus met "Toon meer" (was 12), eerst wat echt voor haar/hem gekozen is, en wisselt af per soort (geuren, sieraden, drank, tech, ...).
 - Categorievolgorde (20-10-2026): Cadeaus, Speelgoed, Wonen, Hobby, Elektronica, Mode, Keuken, Eten, Tuin, Sport, Dieren, Boeken, Christelijk (achteraan, niet meer uitgelicht). Knoppen lichter gemaakt (--knop-bg).
 - Regel (20-10-2026, Marius): christelijke producten staan alleen in de categorie Christelijke cadeaus. Afgedwongen in hoortBij (gedeeld.js) en in home-lijstjes, VONK en "misschien ook leuk" (app.js). Zoeken vindt ze wel.
