@@ -440,7 +440,24 @@
       var t = zoekTekst(p);
       return woorden.every(function (w) { return t.indexOf(w) !== -1; });
     });
-    lijst = sorteer(lijst, q.sort);
+    /* Relevantie: een treffer in de titel telt het zwaarst, dan de categorie, en pas daarna de uitlegtekst.
+       Zo komt bij 'fiets' eerst de fietstas en pas later de drop met 'fietsjes' in de tekst (wens van Marius). */
+    var score = function (p) {
+      var ti = ' ' + p.titel.toLowerCase().replace(/[^a-z0-9à-ÿ]+/g, ' ');
+      var c = window.LK_CAT(p.cat), su = window.LK_SUB(c, p.sub);
+      var ca = ((c ? c.naam : '') + ' ' + (su ? su.naam : '')).toLowerCase();
+      return woorden.reduce(function (s, w) {
+        if (ti.indexOf(' ' + w) !== -1) return s + 10;
+        if (ti.indexOf(w) !== -1) return s + 6;
+        if (ca.indexOf(w) !== -1) return s + 4;
+        return s + 1;
+      }, 0);
+    };
+    if (woorden.length && (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant')) {
+      var sc = {}; lijst.forEach(function (p) { sc[p.id] = score(p); });
+      var niveaus = {}; lijst.forEach(function (p) { (niveaus[sc[p.id]] = niveaus[sc[p.id]] || []).push(p); });
+      lijst = Object.keys(niveaus).map(Number).sort(function (a, b) { return b - a; }).reduce(function (u, n) { return u.concat(sorteer(niveaus[n], q.sort)); }, []);
+    } else lijst = sorteer(lijst, q.sort);
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
