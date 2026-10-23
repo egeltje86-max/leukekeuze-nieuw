@@ -693,3 +693,9 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 @media (min-width: 1200px) { .aftel-beeld { width: 230px; } }
 /* op mobiel geen dubbele balk: de aftelbalk vervangt dan de kleine topbalk */
 @media (max-width: 759px) { .met-aftel .topbalk { display: none; } }
+
+/* 'Andere categorieën' onder een categorie: op mobiel vegen, op de computer netjes over meerdere regels */
+.andere-cats { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px 8px; }
+.andere-cats::-webkit-scrollbar { display: none; }
+.andere-cats .catknop { flex: 0 0 96px; }
+@media (min-width: 760px) { .andere-cats { flex-wrap: wrap; overflow: visible; margin: 0; padding: 4px 0; } .andere-cats .catknop { flex: 0 0 112px; } }

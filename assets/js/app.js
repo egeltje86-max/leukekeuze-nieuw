@@ -344,8 +344,8 @@
       winkelSectie(c.slug, s && s.slug, q.prijs) +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
-        '<nav class="catknoppen" style="display:flex;overflow-x:auto;scrollbar-width:none">' + anderen.map(function (x) {
-          return '<a class="catknop" style="flex:0 0 96px" href="/c/' + x.slug + '">' + ic(x.icoon) + '<span>' + esc(x.kort) + '</span></a>';
+        '<nav class="catknoppen andere-cats">' + anderen.map(function (x) {
+          return '<a class="catknop" href="/c/' + x.slug + '">' + ic(x.icoon) + '<span>' + esc(x.kort) + '</span></a>';
         }).join('') + '</nav></section>' +
     '</div>';
   }
