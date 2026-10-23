@@ -139,3 +139,39 @@
     esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart
   };
 })();
+
+/* ---------- Aftelbalk bovenaan: eerst Sinterklaas (tot 5 december), daarna kerst (tot 26 december) ---------- */
+(function () {
+  var el = document.querySelector('[data-aftel]'); if (!el) return;
+  function vandaagNL() {
+    try {
+      var d = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+      var x = d.split('-'); return Date.UTC(+x[0], +x[1] - 1, +x[2]);
+    } catch (e) { var n = new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); }
+  }
+  var nu = vandaagNL(), jaar = new Date(nu).getUTCFullYear();
+  var sint = Date.UTC(jaar, 11, 5), kerst = Date.UTC(jaar, 11, 25), dag = 864e5;
+  var start = Date.UTC(jaar, 9, 1);          /* vanaf 1 oktober tonen */
+  if (nu < start || nu > Date.UTC(jaar, 11, 26)) return;
+  var thema, n, tekst, link;
+  if (nu <= sint) {
+    thema = 'sint'; n = Math.round((sint - nu) / dag); link = '/c/cadeaus/sinterklaas';
+    tekst = n === 0 ? '<span class="aftel-zin">Vandaag is het <b>pakjesavond!</b></span>'
+      : n === 1 ? '<span class="aftel-zin">Morgen is het <b>pakjesavond!</b></span>'
+      : '<span class="aftel-zin">Nog <span class="aftel-getal">' + n + '</span> dagen tot pakjesavond</span>';
+  } else {
+    thema = 'kerst'; n = Math.round((kerst - nu) / dag); link = '/c/cadeaus/kerst';
+    tekst = n <= 0 ? '<span class="aftel-zin"><b>Fijne kerstdagen!</b></span>'
+      : n === 1 ? '<span class="aftel-zin">Morgen is het <b>kerst!</b></span>'
+      : '<span class="aftel-zin">Nog <span class="aftel-getal">' + n + '</span> dagen tot kerst</span>';
+  }
+  el.className = 'aftel aftel-' + thema;
+  el.href = link;
+  el.innerHTML = '<span class="aftel-beeld links" aria-hidden="true"></span>' +
+    '<span class="aftel-midden">' + tekst + '<span class="aftel-knop">' + (thema === 'sint' ? 'Sinterklaascadeaus' : 'Kerstcadeaus') + ' →</span></span>' +
+    '<span class="aftel-beeld rechts" aria-hidden="true"></span>';
+  el.setAttribute('aria-label', el.textContent.replace(' →', '') + ', bekijk de cadeaus');
+  el.hidden = false;
+  document.documentElement.classList.add('met-aftel');
+})();
+

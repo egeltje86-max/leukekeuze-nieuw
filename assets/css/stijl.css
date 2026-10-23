@@ -658,3 +658,38 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .etalage.eigen { background: linear-gradient(180deg, var(--kaart-2), var(--kaart)); border: 1px solid var(--lijn-sterk); border-radius: var(--r-l); padding: 20px 16px 8px; box-shadow: var(--gloed); }
 .etalage.eigen .kicker { display: block; margin-bottom: 8px; }
 @media (min-width: 760px) { .etalage.eigen { padding: 26px 24px 12px; } }
+
+/* ---------- Aftelbalk (Sinterklaas / kerst) ---------- */
+.aftel { position: relative; display: flex; align-items: stretch; height: 52px; overflow: hidden; text-decoration: none; color: #F7E7C1; border-bottom: 1px solid rgba(217, 168, 72, .45); }
+.aftel[hidden] { display: none; }
+.aftel-sint { background: radial-gradient(120% 140% at 50% 0%, #7A1424 0%, #4A0C18 45%, #10162E 100%); }
+.aftel-kerst { background: radial-gradient(120% 140% at 50% 0%, #1E5A36 0%, #0F3A23 50%, #08160F 100%); }
+.aftel-beeld { flex: none; width: 64px; background-size: cover; background-repeat: no-repeat; }
+.aftel-beeld.links { background-position: right center; -webkit-mask-image: linear-gradient(90deg, #000 55%, transparent); mask-image: linear-gradient(90deg, #000 55%, transparent); }
+.aftel-beeld.rechts { background-position: left center; -webkit-mask-image: linear-gradient(270deg, #000 55%, transparent); mask-image: linear-gradient(270deg, #000 55%, transparent); }
+.aftel-sint .aftel-beeld.links { background-image: url(/images/aftel/sint-links.webp); }
+.aftel-sint .aftel-beeld.rechts { background-image: url(/images/aftel/sint-rechts.webp); }
+.aftel-kerst .aftel-beeld.links { background-image: url(/images/aftel/kerst-links.webp); }
+.aftel-kerst .aftel-beeld.rechts { background-image: url(/images/aftel/kerst-rechts.webp); }
+.aftel-midden { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 18px; padding: 0 4px; }
+.aftel-zin { font: 500 17px/1 var(--f-kop); letter-spacing: .01em; white-space: nowrap; text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+  background: linear-gradient(180deg, #FFF4D2 0%, #F2C766 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aftel-zin b { font-weight: 600; }
+.aftel-getal { display: inline-grid; place-items: center; min-width: 36px; height: 34px; margin: 0 4px; padding: 0 6px; vertical-align: middle;
+  font: 700 22px/1 var(--f-kop); color: #FFF3D6; -webkit-text-fill-color: #FFF3D6; border-radius: 9px; border: 1.5px solid #E7B95A;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .25), 0 0 14px rgba(231, 185, 90, .45), inset 0 1px 0 rgba(255, 255, 255, .25); }
+.aftel-sint .aftel-getal { background: linear-gradient(180deg, #C42235, #7E0F1E); }
+.aftel-kerst .aftel-getal { background: linear-gradient(180deg, #C42235, #7E0F1E); }
+.aftel-knop { display: none; font: 700 12px/1 var(--f-ui); letter-spacing: .04em; color: #1A1206; background: linear-gradient(180deg, #F4D07D, #D9A443); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
+.aftel:hover .aftel-knop { filter: brightness(1.08); }
+@media (max-width: 370px) { .aftel-zin { font-size: 15px; } .aftel-beeld { width: 48px; } }
+@media (min-width: 760px) {
+  .aftel { height: 64px; }
+  .aftel-beeld { width: 150px; }
+  .aftel-zin { font-size: 24px; }
+  .aftel-getal { min-width: 44px; height: 42px; font-size: 28px; margin: 0 6px; }
+  .aftel-knop { display: inline-block; }
+}
+@media (min-width: 1200px) { .aftel-beeld { width: 230px; } }
+/* op mobiel geen dubbele balk: de aftelbalk vervangt dan de kleine topbalk */
+@media (max-width: 759px) { .met-aftel .topbalk { display: none; } }
