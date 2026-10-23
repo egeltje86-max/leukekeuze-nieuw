@@ -547,9 +547,6 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   .acties { grid-auto-flow: row; grid-template-columns: 1.4fr 1fr 1fr; margin: 18px 0 0; padding: 0; overflow: visible; }
   .actie, .actie-tekst { min-height: 260px; }
   .actie:first-child h3 { font-size: 32px; }
-  .acties:has(> .actie:nth-child(4)) { grid-template-columns: 1fr 1fr; }
-  .acties:has(> .actie:nth-child(4)) .actie, .acties:has(> .actie:nth-child(4)) .actie-tekst { min-height: 220px; }
-  .acties:has(> .actie:nth-child(4)) .actie:first-child h3 { font-size: 26px; }
 }
 
 
@@ -702,3 +699,14 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .andere-cats::-webkit-scrollbar { display: none; }
 .andere-cats .catknop { flex: 0 0 96px; }
 @media (min-width: 760px) { .andere-cats { flex-wrap: wrap; overflow: visible; margin: 0; padding: 4px 0; } .andere-cats .catknop { flex: 0 0 112px; } }
+
+/* Feestbanner bovenaan de homepage */
+.feestbanner { display: block; background: var(--bg); }
+.feestbanner img { display: block; width: 100%; height: auto; aspect-ratio: 1000 / 416; object-fit: cover; }
+.hero.zonder-beeld::after { display: none; }
+.hero.zonder-beeld .hero-inhoud { padding: 22px 0 18px; }
+@media (min-width: 760px) {
+  .feestbanner img { aspect-ratio: 3 / 1; max-height: 520px; }
+  .hero.zonder-beeld { min-height: 0; }
+  .hero.zonder-beeld .hero-inhoud { padding: 30px 0 26px; }
+}

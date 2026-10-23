@@ -152,13 +152,25 @@
   /* ================== PAGINA'S ================== */
 
   /* ---------- Home ---------- */
+  /* Feestbanner (bv. Sinterklaas): hele plaatje zichtbaar en klikbaar, de gewone hero-foto valt dan weg. */
+  function feestActief() {
+    var f = INST.feestBanner; if (!f) return false;
+    return !f.tot || new Date().toISOString().slice(0, 10) <= f.tot;
+  }
+  function feestBanner() {
+    if (!feestActief()) return '';
+    var f = INST.feestBanner;
+    return '<a class="feestbanner" href="' + esc(f.naar) + '"><picture><source media="(min-width: 760px)" srcset="' + esc(f.desktop) + '">' +
+      '<img src="' + esc(f.mobiel) + '" alt="' + esc(f.alt) + '" fetchpriority="high"></picture></a>';
+  }
   function home() {
     zetTitel('');
     var hoofd = ['cadeaus', 'dranken', 'speelgoed', 'wonen', 'elektronica'].map(window.LK_CAT);
     return '' +
-      '<section class="hero">' +
-        '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
-        '<img src="' + esc(INST.heroMobiel) + '" alt="" fetchpriority="high"></picture>' +
+      feestBanner() +
+      '<section class="hero' + (feestActief() ? ' zonder-beeld' : '') + '">' +
+        (feestActief() ? '' : '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
+        '<img src="' + esc(INST.heroMobiel) + '" alt="" fetchpriority="high"></picture>') +
         '<div class="hero-inhoud"><div class="binnen">' +
           '<div class="kicker">' + esc(INST.heroKicker) + '</div>' +
           '<h1>' + esc(INST.heroTitel) + '<br><em>' + esc(INST.heroTitelGoud) + '</em></h1>' +
