@@ -14,6 +14,7 @@ window.LK_INSTELLINGEN = {
   populair: [
     { label: 'Kerst', naar: '/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' },
+    { label: 'Sint onder €15', naar: '/c/cadeaus/sint-onder-15' },
     { label: 'Dranken', naar: '/c/dranken' },
     { label: 'Voor haar', naar: '/c/cadeaus/voor-haar' },
     { label: 'Voor hem', naar: '/c/cadeaus/voor-hem' },
@@ -33,6 +34,7 @@ window.LK_INSTELLINGEN = {
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [
     { kicker: 'Pakjesavond 5 december', titel: 'Sinterklaas', tekst: 'Leuke surprises en cadeautjes voor in de zak.', knop: 'Bekijk Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', tot: '2026-12-05' },
+    { kicker: 'Snel iets voor in de schoen', titel: 'Sint onder €15', tekst: 'Leuke schoencadeautjes en surprises voor weinig geld.', knop: 'Bekijk goedkope Sint-cadeaus', naar: '/c/cadeaus/sint-onder-15', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', tot: '2026-12-05' },
     { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst.webp', tot: '2026-12-25' },
     { kicker: 'Proost op de feestdagen', titel: 'Whisky, champagne & meer', tekst: 'Topflessen om te geven of samen te openen.', knop: 'Naar de dranken', naar: '/c/dranken', beeld: 'images/categorieen/categorie-dranken.webp', tot: '2027-01-01' }
   ],
@@ -88,6 +90,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
       { slug: 'kerst', naam: 'Kerstcadeaus', beeld: 'images/sub/sub-cadeaus-kerst.webp' },
       { slug: 'sinterklaas', naam: 'Sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
+      { slug: 'sint-onder-15', naam: 'Sint onder €15', tekst: 'Snel een schoencadeautje of surprise nodig? Hier staat alles uit Sinterklaas onder de 15 euro.', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
       { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders.webp' },
       { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
       { slug: 'baby-kraam', naam: 'Baby & kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
