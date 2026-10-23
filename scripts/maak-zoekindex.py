@@ -15,6 +15,9 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-laredoute-wonen.json', 'La Redoute', ''),
     ('x-lego.json', 'LEGO', ''),
     ('x-bartogi.json', 'Bartogi', ''),
+    ('x-myka.json', 'Myka', ''),
+    ('x-prydligt.json', 'Prydligt', ''),
+    ('x-invicta.json', 'Invicta', ''),
     # oude, kleinere La Redoute-uittreksels (alleen als de volledige feed er niet is)
     ('x-lr-wonen-cadeau.json', 'La Redoute', ''),
 ]
