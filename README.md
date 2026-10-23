@@ -163,6 +163,7 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Ronde 83 (23-10-2026): 24 parfum- en verzorgingssets voor kerst.
 - Ronde 84 (23-10-2026): 25 producten kerst in huis (Kerstland, Dille & Kamille).
 - Ronde 85 – Lekkere cadeaus (23-10-2026): 22 producten (chocolade, koffie, thee).
+- Ronde 86 – Gadgets (23-10-2026): 22 producten (foto, slimme gadgets, telefoon, beamers, kinderen).
 - Categorievolgorde (20-10-2026): Cadeaus, Speelgoed, Wonen, Hobby, Elektronica, Mode, Keuken, Eten, Tuin, Sport, Dieren, Boeken, Christelijk (achteraan, niet meer uitgelicht). Knoppen lichter gemaakt (--knop-bg).
 - Regel (20-10-2026, Marius): christelijke producten staan alleen in de categorie Christelijke cadeaus. Afgedwongen in hoortBij (gedeeld.js) en in home-lijstjes, VONK en "misschien ook leuk" (app.js). Zoeken vindt ze wel.
 - Herindeling (20-10-2026, goedgekeurd door Marius): nieuwe subs Adventskalenders, Baby & kraam (Cadeaus), Kaart- & dobbelspellen, Huisgeuren, Keukenapparaten (gasstellen), Horloges, Rugzakken & reistassen, Drop & snoep, Agenda's & notitieboeken. Hernoemd: Films & series → Filmavond, Tassen → Hand- & schoudertassen, Kaarsen & geur → Kaarsen & kandelaars, Chocolade & snoep → Chocolade, Pakketten → Pakketten & borrel, Knutselen → Knutselen voor kinderen / Zelf maken. Lege subs (bv. Met naam) worden automatisch verborgen. Nieuwe subs hebben nog geen plaatje (gouden icoon) tot Nova ze maakt: images/sub/sub-<cat>-<sub>.webp, 600x600. La Redoute-foto's staan nu lokaal.
