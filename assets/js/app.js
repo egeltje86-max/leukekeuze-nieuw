@@ -195,6 +195,9 @@
         /* 3. Acties van dit seizoen */
         actieBlokken() +
 
+        /* 3b. Eigen producten van LeukeKeuze (kleurboeken van Marius) */
+        eigenBlok() +
+
         /* 4. Alles wat we hebben, compact */
         '<section class="sectie">' +
           '<div class="sectie-kop"><div><h2>Alle categorieën</h2></div></div>' +
@@ -239,6 +242,15 @@
         '<div class="actie-tekst"><span class="kicker">' + esc(a.kicker) + '</span><h3>' + esc(a.titel) + '</h3><p>' + esc(a.tekst) + '</p>' +
         '<span class="knop knop-goud">' + esc(a.knop) + ' ' + ic('pijl') + '</span></div></a>';
     }).join('') + '</section>';
+  }
+  function eigenBlok() {
+    var e = INST.eigen; if (!e || !(e.ids || []).length) return '';
+    var z = LK.zichtbaar();
+    var l = e.ids.map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+    if (!l.length) return '';
+    return '<section class="sectie etalage eigen">' +
+      '<div class="sectie-kop"><div><span class="kicker">' + esc(e.kicker) + '</span><h2>' + esc(e.titel) + '</h2><p>' + esc(e.tekst) + '</p></div></div>' +
+      rij(l) + '</section>';
   }
   function etalage() {
     var e = INST.etalage; if (!e || !(e.ids || []).length) return '';
