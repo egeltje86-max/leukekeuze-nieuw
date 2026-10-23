@@ -596,6 +596,27 @@
         var score = (past(p.voor, q.voor) ? 1 : 0) + (past(p.moment, q.moment) ? 1 : 0) + (binnenPrijs(p, q.budget) ? 1 : 0);
         return score === 2 && past(p.voor, q.voor);
       });
+      /* Eerst wat echt voor deze persoon is gekozen, daarna wat voor iedereen leuk is. Alles tonen, met 'Toon meer'. */
+      var gevonden = precies.length ? precies : bijna;
+      /* Afwisselen per categorie, zodat je bovenaan een mooie mix ziet: geuren, sieraden, drank, tech, enz. (wens van Marius). */
+      var VOORKEUR = ['mode-beauty/geuren', 'sieraden', 'dranken', 'elektronica', 'mode-beauty/verzorging', 'cadeaus', 'wonen', 'eten-drinken', 'keuken', 'speelgoed', 'boeken-media', 'sport-outdoor', 'hobby'];
+      var spreid = function (lijst) {
+        var groep = {}, volgorde = [];
+        lijst.forEach(function (p) { var k = p.cat === 'mode-beauty' ? p.cat + '/' + p.sub : p.cat; if (!groep[k]) { groep[k] = []; volgorde.push(k); } groep[k].push(p); });
+        volgorde.sort(function (a, b) {
+          var ia = VOORKEUR.indexOf(a), ib = VOORKEUR.indexOf(b);
+          return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+        });
+        var uit = [], rond = 0, bezig = true;
+        while (bezig) {
+          bezig = false;
+          volgorde.forEach(function (c) { if (groep[c][rond]) { uit.push(groep[c][rond]); bezig = true; } });
+          rond++;
+        }
+        return uit;
+      };
+      var alles = q.voor === 'iedereen' ? spreid(sorteer(gevonden)) :
+        spreid(sorteer(gevonden.filter(function (p) { return echt(p) === 0; }))).concat(spreid(sorteer(gevonden.filter(function (p) { return echt(p) !== 0; }))));
       var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
       inhoud = '<div class="vonk-vraag"><h2>' + (precies.length ? 'Dit past bij jouw keuze' : 'Geen exacte match, wel deze') + '</h2>' +
         '<div class="vonk-samenvatting">' +
@@ -605,7 +626,8 @@
           '<a class="chip" href="/vonk">Opnieuw</a>' +
         '</div></div>' +
         '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Geen praatjes, gewoon passende producten.</p>' +
-        grid(sorteer(precies.length ? precies : bijna).slice(0, 12),
+        (alles.length ? '<p class="vonk-noot"><strong>' + alles.length + ' cadeaus</strong> gevonden.</p>' : '') +
+        gridMeer(alles,
           leegBlok('Nog niets gevonden', 'We vullen de site steeds verder aan. Probeer een ander budget of moment.', '<a class="knop knop-goud" href="/vonk">Opnieuw</a>'));
     }
 
