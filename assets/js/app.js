@@ -334,7 +334,7 @@
 
     return paginakop({
       titel: s ? s.naam : c.naam,
-      tekst: s ? 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.' : c.tekst,
+      tekst: s ? (s.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : c.tekst,
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
       kruimel: s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }]
     }) +
