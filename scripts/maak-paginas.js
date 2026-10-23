@@ -8,6 +8,10 @@ catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_PAD || 'playwright'))
 
 const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://leukekeuze.nl';
+/* Versienummer achter css/js, zodat telefoons na elke update meteen de nieuwe versie laden (geen oude cache). */
+const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
+fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
+  .replace(/(assets\/(?:css\/stijl\.css|js\/(?:data|producten|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 const MAPPEN = ['c', 'p', 'info', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen'];
 const GEEN_INDEX = /^\/(favorieten|zoek)\//;
