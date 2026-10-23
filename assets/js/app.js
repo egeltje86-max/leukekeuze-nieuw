@@ -170,12 +170,13 @@
       '</section>' +
 
       '<div class="binnen">' +
-        /* 1. Voor wie zoek je? */
-        '<section class="sectie eerste">' +
-          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
-          '<div class="subkaarten voorwie">' + (INST.voorWie || []).map(function (x) {
-            return '<a class="subkaart" href="' + esc(x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.label) + '</a>';
-          }).join('') + '</div>' +
+        /* 1. Alle categorieën als rondjes, meteen bovenaan (Marius, 24-10-2026) */
+        '<section class="sectie eerste sub-sectie">' +
+          '<div class="sectie-kop"><div><h2>Categorieën</h2></div></div>' +
+          '<nav class="subkaarten catrondjes" aria-label="Categorieën">' + CATS.map(function (c) {
+            var label = ({ 'sport-outdoor': 'Sport & Reizen', christelijk: 'Christelijk', hobby: 'Hobby', 'boeken-media': 'Boeken & Media' })[c.slug] || c.kort;
+            return '<a class="subkaart" href="/c/' + c.slug + '"><span class="rond">' + catBeeld(c, true) + '</span>' + afbreek(label) + '</a>';
+          }).join('') + '</nav>' +
         '</section>' +
 
         /* 2. VONK als smalle balk */
@@ -197,15 +198,6 @@
 
         /* 3b. Eigen producten van LeukeKeuze (kleurboeken van Marius) */
         eigenBlok() +
-
-        /* 4. Alles wat we hebben, compact */
-        '<section class="sectie">' +
-          '<div class="sectie-kop"><div><h2>Alle categorieën</h2></div></div>' +
-          '<nav class="catmini" aria-label="Categorieën">' + CATS.map(function (c) {
-            var n = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug); }).length;
-            return '<a href="/c/' + c.slug + '"><span class="rond">' + ic(c.icoon) + '</span><span class="naam">' + esc(c.kort) + '<small>' + n + ' producten</small></span></a>';
-          }).join('') + '</nav>' +
-        '</section>' +
 
         /* 6. Uitgelicht, ook als rij */
         '<section class="sectie">' +
@@ -295,11 +287,15 @@
     var achter = '';
     if (o.banner) achter = '<div class="achter"><img src="' + esc(o.banner) + '" alt=""></div>';
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(o.vaag) + '" alt=""></div>';
-    return '<section class="paginakop' + (achter ? '' : ' zonder') + '">' + achter +
+    return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.compact ? ' compact' : '') + '">' + achter +
       '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p>' + esc(o.tekst) + '</p>' : '') + '</div></section>';
   }
 
   /* ---------- Categorie & subcategorie ---------- */
+  /* Lange woorden netjes laten afbreken in de kleine rondjes op de telefoon (Kerst-cadeaus, Advents-kalenders). */
+  function afbreek(naam) {
+    return esc(naam).replace(/(^|\s)(Kerst|Advents|Buiten|Keuken|Tuin|Wand|Wijn|Woon|Kinder|Metaal|Magneet|Alcohol|Lekker|Pin|Gereed|Verlich|Elektro|Accessoi|Christe|Kaart|Dobbel|Tafel|Notitie|Schouder|Koptele|Enkel|Thee|Lees)(?=[a-z]{4,})/gi, '$1$2&shy;');
+  }
   function categorie(slug, subSlug, q) {
     var c = window.LK_CAT(slug);
     if (!c) return nietGevonden();
@@ -316,7 +312,7 @@
       volleSubs(c).map(function (x) {
         var beeld = x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
         return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="/c/' + c.slug + '/' + x.slug + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-          '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
+          '<span class="rond">' + beeld + '</span>' + afbreek(x.naam) + '</a>';
       }).join('') + '</div>';
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
@@ -333,13 +329,14 @@
     var anderen = CATS.filter(function (x) { return x.slug !== c.slug; });
 
     return paginakop({
+      compact: true,
       titel: s ? s.naam : c.naam,
       tekst: s ? (s.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : c.tekst,
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
       kruimel: s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }]
     }) +
     '<div class="binnen">' +
-      '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
+      '<section class="sectie sub-sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       werkbalk + gridMeer(lijst, leeg) +
       winkelSectie(c.slug, s && s.slug, q.prijs) +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
