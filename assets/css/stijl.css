@@ -612,7 +612,8 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 /* ---------- Zoeken in alle winkels ---------- */
 .alle-winkels .uitleg { margin: 4px 0 0; font-size: 13px; color: var(--tekst-3); }
 .aw-laden { color: var(--tekst-2); font-size: 14px; padding: 18px 0; }
-.aw-winkels { margin-bottom: 8px; }
+.aw-winkels, .aw-prijzen { margin-bottom: 8px; }
+.alle-winkels .aw-prijzen { min-width: 0; }
 .awkaart .info { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; }
 .awkaart .shop { font: 700 10.5px/1.2 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; color: var(--goud); }
 .awkaart h3 { font: 600 14px/1.3 var(--f-ui); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }

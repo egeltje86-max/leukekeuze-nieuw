@@ -521,7 +521,7 @@
         }, 0);
       });
       if (!hits.length && !q) { sec.remove(); return; }
-      var st = { winkel: 'alle', sort: 'relevant', toon: PER_KEER };
+      var st = { winkel: 'alle', sort: 'relevant', toon: PER_KEER, prijs: 'alle' };
       /* 'Best passend': eerst de beste woord-treffers. Zijn die er niet (bv. bij Voor haar), dan een afwisselende mix
          van winkels en prijzen, zodat je niet alleen dure of alleen goedkope dingen ziet (wens van Marius). */
       function hashT(t) { var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0; return h; }
@@ -543,7 +543,8 @@
         return uit;
       }
       function teken() {
-        var l = hits.filter(function (x) { return st.winkel === 'alle' || x.w === st.winkel; }).slice();
+        var lp = prijsFilter(st.prijs);
+        var l = hits.filter(function (x) { return (st.winkel === 'alle' || x.w === st.winkel) && x.p >= lp.min && x.p <= lp.max; }).slice();
         if (st.sort === 'prijs-op') l.sort(function (a, b) { return a.p - b.p; });
         else if (st.sort === 'prijs-af') l.sort(function (a, b) { return b.p - a.p; });
         else l = bestPassend(l);
@@ -551,6 +552,10 @@
         var chips = '<div class="chips aw-winkels" role="group" aria-label="Winkel">' +
           [['alle', 'Alle winkels (' + hits.length + ')']].concat(Object.keys(per).sort(function (a, b) { return per[b] - per[a]; }).map(function (w) { return [w, w + ' (' + per[w] + ')']; }))
             .map(function (c) { return '<button class="chip" type="button" data-aw-winkel="' + esc(c[0]) + '" aria-pressed="' + (st.winkel === c[0]) + '">' + esc(c[1]) + '</button>'; }).join('') + '</div>';
+        /* Prijsknoppen ook hier, zodat je snel in een prijsklasse kijkt (wens van Marius). */
+        var prijsChips = pf.id && pf.id !== 'alle' ? '' : '<div class="chips aw-prijzen" role="group" aria-label="Budget">' + PRIJZEN.map(function (pr) {
+          return '<button class="chip" type="button" data-aw-prijs="' + esc(pr.id) + '" aria-pressed="' + (st.prijs === pr.id) + '">' + esc(pr.label) + '</button>';
+        }).join('') + '</div>';
         var sorteer = '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-aw-sort>' +
           [['relevant', 'Best passend'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag']].map(function (o) { return '<option value="' + o[0] + '"' + (st.sort === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
           '</select>' + ic('omlaag') + '</label>';
@@ -563,13 +568,14 @@
             '<div class="prijs">' + LK.euro(x.p) + '</div></div></article>';
         }).join('');
         doel.innerHTML = !hits.length ? '<div class="leeg"><strong>Ook in onze winkels niets gevonden</strong>Probeer een ander of korter woord.</div>' :
-          '<div class="werkbalk">' + chips + '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + '</span>' + sorteer + '</div></div>' +
+          '<div class="werkbalk">' + chips + prijsChips + '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + '</span>' + sorteer + '</div></div>' +
           '<div class="prodgrid">' + kaarten + '</div>' +
           (l.length > toon.length ? '<div class="meer-knop"><button class="knop knop-rand" type="button" data-aw-meer>Toon meer <small>(' + toon.length + ' van ' + l.length + ')</small></button></div>' : '');
       }
       teken();
       sec.addEventListener('click', function (e) {
         if (e.target.closest('[data-aw-meer]')) { st.toon += 48; teken(); return; }
+        var pb = e.target.closest('[data-aw-prijs]'); if (pb) { st.prijs = pb.getAttribute('data-aw-prijs'); st.toon = PER_KEER; teken(); return; }
         var b = e.target.closest('[data-aw-winkel]'); if (!b) return;
         st.winkel = b.getAttribute('data-aw-winkel'); st.toon = PER_KEER; teken();
       });
