@@ -658,6 +658,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .etalage.eigen { background: linear-gradient(180deg, var(--kaart-2), var(--kaart)); border: 1px solid var(--lijn-sterk); border-radius: var(--r-l); padding: 20px 16px 8px; box-shadow: var(--gloed); }
 .etalage.eigen .kicker { display: block; margin-bottom: 8px; }
 @media (min-width: 760px) { .etalage.eigen { padding: 26px 24px 12px; } }
+@media (min-width: 1100px) { .etalage.eigen .prodgrid.rij { grid-auto-columns: calc((100% - 96px) / 7); } }
 
 /* ---------- Aftelbalk (Sinterklaas / kerst) ---------- */
 .aftel { position: relative; display: flex; align-items: stretch; height: 52px; overflow: hidden; text-decoration: none; color: #F7E7C1; border-bottom: 1px solid rgba(217, 168, 72, .45); }

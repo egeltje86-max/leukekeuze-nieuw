@@ -38,7 +38,7 @@ window.LK_INSTELLINGEN = {
   ],
   /* Eigen producten: een vaste plek bovenaan de homepage (onder de seizoensblokken). */
   eigen: { kicker: 'Van de maker van LeukeKeuze', titel: 'Onze eigen dino-kleurboeken', tekst: 'Zelf bedacht en gemaakt: vrolijke kleurboeken met 40 dino-kleurplaten, voor kinderen van 4 tot 8 jaar.',
-    ids: ['amz-b0hmfl96b8', 'amz-b0hky1v4y9', 'amz-b0hmjp8cbl', 'amz-b0hmfl6pg4', 'amz-b0hn1xkg2s', 'amz-b0hl242jc8'] },
+    ids: ['amz-b0hp27j6v7', 'amz-b0hmfl96b8', 'amz-b0hky1v4y9', 'amz-b0hmjp8cbl', 'amz-b0hmfl6pg4', 'amz-b0hn1xkg2s', 'amz-b0hl242jc8'] },
   /* Etalage op de homepage: een rij uitgekozen producten. Leeg laten (ids: []) om te verbergen. */
   etalage: { titel: 'Proost! Topflessen voor de feestdagen', naar: '/c/dranken', knop: 'Alle dranken',
     ids: ['dc-2468345961', 'dc-1665638250', 'dc-2518147005', 'dc-1652149584', 'dc-1141534911', 'dc-1159542840', 'dc-2491446455', 'dc-1090238013', 'dc-391537950', 'dc-1096238052'] }
