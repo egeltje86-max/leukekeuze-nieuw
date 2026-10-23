@@ -11,8 +11,6 @@ window.LK_INSTELLINGEN = {
   heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
   heroDesktop: 'images/banners/banner-home-desktop.webp',
   heroMobiel: 'images/banners/banner-home-mobiel.webp',
-  /* Feestbanner bovenaan de homepage (gemaakt door Marius). Na 'tot' komt vanzelf de gewone banner terug. */
-  feestBanner: { desktop: 'images/banners/banner-sint-desktop.webp', mobiel: 'images/banners/banner-sint-mobiel.webp', naar: '/c/cadeaus/sinterklaas', alt: 'Sinterklaas: aftellen naar 5 december', tot: '2026-12-05' },
   populair: [
     { label: 'Kerst', naar: '/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' },
