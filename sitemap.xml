@@ -97,9 +97,9 @@
   <url><loc>https://leukekeuze.nl/c/boeken-media/romans/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/boeken-media/kinderboeken/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/boeken-media/kookboeken/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/c/boeken-media/films-series/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/boeken-media/muziek/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/boeken-media/agendas/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/c/boeken-media/lezen/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/kerst/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/bijbels/</loc><lastmod>2026-10-23</lastmod></url>
@@ -159,7 +159,6 @@
   <url><loc>https://leukekeuze.nl/c/dranken/alcoholvrij/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/dranken/wijnaccessoires/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/sport-outdoor/golf/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/c/boeken-media/lezen/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/boeken-muziek/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/kerststal-engelen/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/doop-communie/</loc><lastmod>2026-10-23</lastmod></url>
@@ -1711,14 +1710,15 @@
   <url><loc>https://leukekeuze.nl/p/ww-bao82316218483/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/kl-57357697384772/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000109159313/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-268544/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/ww-dbk40149224339/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-245410/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-439247/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-649055/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-cul65584203300/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/bol-9300000229485619/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-wes34659209868/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-245410/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/ww-dbk40149224339/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/bol-9300000229485619/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dk-00041373/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-439247/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-351467490000/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-408373/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dk-00044822/</loc><lastmod>2026-10-23</lastmod></url>
@@ -1729,32 +1729,33 @@
   <url><loc>https://leukekeuze.nl/p/dvzn-172862/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-blo14969925265/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-350099993000/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-267525/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-862380/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dk-00020457/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-384756/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-751834/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dk-00020457/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/kl-57357675430212/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-350240450000/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-751834/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/kl-57357689749828/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/lr-351198985000/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bp-l233/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/lr-351198985000/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/kl-57357733232964/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-143309/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-992371/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-143309/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-511426/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-350173646000/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-350196107000/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-bro15583695668/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/ww-wes35282542286/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-621449/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/rz-4304070100rgwb/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-195987/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/rz-4304070100rgwb/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-blo36900166940/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-blo01146196759/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/ww-wes35282542286/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-351484804000/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-820458/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/rz-4304250200r3gc/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-wes20513204740/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-820458/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/kl-57357732413764/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-ani62291271687/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-324084994001/</loc><lastmod>2026-10-23</lastmod></url>
@@ -1762,14 +1763,15 @@
   <url><loc>https://leukekeuze.nl/p/dvzn-798802/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-lak64206113528/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/lr-351304808000/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-385346/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/rz-4305320100r3ej/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-385346/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-822330/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-stt17301171038/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-924914/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-vib36595728039/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-mer12569215544/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-757883/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://leukekeuze.nl/p/dvzn-947979/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-hou77497487571/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dvzn-995816/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-fev88280195803/</loc><lastmod>2026-10-23</lastmod></url>
@@ -1922,7 +1924,6 @@
   <url><loc>https://leukekeuze.nl/p/dc-1774538019/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dc-2173176310/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000195678842/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-268544/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9200000049462557/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/ww-yam43870220401/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000082282051/</loc><lastmod>2026-10-23</lastmod></url>
@@ -2034,7 +2035,6 @@
   <url><loc>https://leukekeuze.nl/p/bol-9300000237391244/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000262538993/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/k2g-260470/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-267525/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9200000114277642/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/myka-11001485604/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/myka-11001445709/</loc><lastmod>2026-10-23</lastmod></url>
@@ -2413,7 +2413,6 @@
   <url><loc>https://leukekeuze.nl/p/dc-2093575645/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dc-2526447171/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000395558245/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://leukekeuze.nl/p/dvzn-947979/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000183746306/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dc-2059774751/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/dc-839440290/</loc><lastmod>2026-10-23</lastmod></url>

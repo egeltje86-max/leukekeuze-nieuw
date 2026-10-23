@@ -190,7 +190,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Boeken, filmavond en muziek.', tegel: 'images/categorieen/categorie-boeken-media.webp', banner: 'images/banners/banner-cat-boeken-media.webp',
     subs: [
       { slug: 'romans', naam: 'Romans', beeld: 'images/sub/sub-boeken-media-romans.webp' }, { slug: 'kinderboeken', naam: 'Kinderboeken', beeld: 'images/sub/sub-boeken-media-kinderboeken.webp' }, { slug: 'kookboeken', naam: 'Kookboeken', beeld: 'images/sub/sub-boeken-media-kookboeken.webp' },
-      { slug: 'films-series', naam: 'Filmavond', beeld: 'images/sub/sub-boeken-media-films-series.webp' }, { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }, { slug: 'agendas', naam: 'Agenda’s & notitieboeken', beeld: 'images/sub/sub-boeken-media-agendas.webp' }, { slug: 'lezen', naam: 'Leesplezier', beeld: 'images/sub/sub-boeken-media-lezen.webp' }
+      { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }, { slug: 'agendas', naam: 'Agenda’s & notitieboeken', beeld: 'images/sub/sub-boeken-media-agendas.webp' }, { slug: 'lezen', naam: 'Leesplezier', beeld: 'images/sub/sub-boeken-media-lezen.webp' }
     ] },
   { slug: 'christelijk', naam: 'Christelijke cadeaus', kort: 'Christelijke cadeaus', icoon: 'kruis',
     tekst: 'Geloof, hoop en liefde in mooie geschenken.',
@@ -317,7 +317,6 @@ window.LK_ZOEKWOORDEN = {
  "boeken-media/lezen": "boekensteun boekensteunen boekenlegger leeslampje boeklampje",
  "boeken-media/kinderboeken": "kinderboek prentenboek",
  "boeken-media/kookboeken": "kookboek",
- "boeken-media/films-series": "film filmavond",
  "boeken-media/muziek": "muziek vinyl",
  "boeken-media/agendas": "agenda notitieboek planner",
  "cadeaus/voor-kinderen": "kinderen kids kind baby",
