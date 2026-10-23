@@ -207,9 +207,6 @@
           }).join('') + '</nav>' +
         '</section>' +
 
-        /* 5. Etalage (rij om doorheen te vegen) */
-        etalage() +
-
         /* 6. Uitgelicht, ook als rij */
         '<section class="sectie">' +
           '<div class="sectie-kop"><div><h2>Uitgelicht</h2></div><a class="meer" href="/c/cadeaus">Alle cadeaus ' + ic('pijl') + '</a></div>' +
@@ -221,7 +218,10 @@
           '<div data-uitgelicht>' + uitgelicht('favoriet') + '</div>' +
         '</section>' +
 
-        /* 7. Zo werkt het (kort) */
+        /* 7. Etalage met dranken: bewust onderaan */
+        etalage() +
+
+        /* 8. Zo werkt het (kort) */
         '<section class="sectie">' +
           '<div class="stappen klein">' +
             '<div class="stap"><span class="nr">1</span><div><h3>Wij zoeken uit</h3><p>Alleen wat we echt goed vinden, komt op de site.</p></div></div>' +
