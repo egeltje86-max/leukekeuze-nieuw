@@ -170,12 +170,16 @@
       '</section>' +
 
       '<div class="binnen">' +
-        /* 1. Voor wie zoek je? */
+        /* 1. Alle categorieën als ronde knoppen om naar links en rechts te schuiven (wens van Marius). */
         '<section class="sectie eerste">' +
-          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
-          '<div class="subkaarten voorwie">' + (INST.voorWie || []).map(function (x) {
-            return '<a class="subkaart" href="' + esc(x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.label) + '</a>';
-          }).join('') + '</div>' +
+          '<div class="sectie-kop"><div><h2>Shop per categorie</h2></div></div>' +
+          '<div class="catrij-wrap">' +
+            '<button class="catrij-pijl links" type="button" data-catrij="-1" aria-label="Naar links">' + ic('links') + '</button>' +
+            '<div class="subkaarten catrij">' + CATS.map(function (c) {
+              return '<a class="subkaart" href="/c/' + c.slug + '"><span class="rond"><img src="' + esc(c.tegel.replace('.webp', '-klein.webp')) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.kort) + '</a>';
+            }).join('') + '</div>' +
+            '<button class="catrij-pijl rechts" type="button" data-catrij="1" aria-label="Naar rechts">' + ic('rechts') + '</button>' +
+          '</div>' +
         '</section>' +
 
         /* 2. VONK als smalle balk */
@@ -197,15 +201,6 @@
 
         /* 3b. Eigen producten van LeukeKeuze (kleurboeken van Marius) */
         eigenBlok() +
-
-        /* 4. Alles wat we hebben, compact */
-        '<section class="sectie">' +
-          '<div class="sectie-kop"><div><h2>Alle categorieën</h2></div></div>' +
-          '<nav class="catmini" aria-label="Categorieën">' + CATS.map(function (c) {
-            var n = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug); }).length;
-            return '<a href="/c/' + c.slug + '"><span class="rond">' + ic(c.icoon) + '</span><span class="naam">' + esc(c.kort) + '<small>' + n + ' producten</small></span></a>';
-          }).join('') + '</nav>' +
-        '</section>' +
 
         /* 6. Uitgelicht, ook als rij */
         '<section class="sectie">' +
@@ -968,6 +963,11 @@
       var n = rij.children.length, nu = Math.round(rij.scrollLeft / Math.max(1, rij.clientWidth));
       var doel = (nu + parseInt(t.getAttribute('data-galerij-stap'), 10) + n) % n;
       rij.scrollTo({ left: doel * rij.clientWidth, behavior: 'smooth' });
+      return;
+    }
+    if (t.hasAttribute('data-catrij')) {
+      var rij = t.parentNode.querySelector('.catrij');
+      if (rij) rij.scrollBy({ left: (+t.getAttribute('data-catrij')) * rij.clientWidth * 0.8, behavior: 'smooth' });
       return;
     }
     if (t.hasAttribute('data-meer')) {

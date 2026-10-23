@@ -702,3 +702,17 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .andere-cats .catknop { flex: 0 0 96px; }
 @media (min-width: 760px) { .andere-cats { flex-wrap: wrap; overflow: visible; margin: 0; padding: 4px 0; } .andere-cats .catknop { flex: 0 0 112px; } }
 
+
+/* Homepage: categorieën als schuifrij met pijltjes op de computer */
+.catrij-wrap { position: relative; }
+.catrij-pijl { display: none; }
+.subkaarten.catrij { grid-auto-columns: 84px; }
+.subkaarten.catrij .rond { width: 72px; height: 72px; }
+@media (min-width: 1024px) {
+  .subkaarten.catrij { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 112px; overflow-x: auto; scroll-behavior: smooth; margin: 0 44px; padding: 4px 0 6px; }
+  .subkaarten.catrij .rond { width: 96px; height: 96px; }
+  .catrij-pijl { display: grid; place-items: center; position: absolute; top: 34px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--lijn-sterk); background: var(--kaart); color: var(--goud); cursor: pointer; z-index: 2; }
+  .catrij-pijl svg { width: 18px; height: 18px; }
+  .catrij-pijl.links { left: 0; } .catrij-pijl.rechts { right: 0; }
+  .catrij-pijl:hover { border-color: var(--goud); }
+}
