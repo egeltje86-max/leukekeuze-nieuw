@@ -521,12 +521,32 @@
         }, 0);
       });
       if (!hits.length && !q) { sec.remove(); return; }
-      var st = { winkel: 'alle', sort: 'relevant' };
+      var st = { winkel: 'alle', sort: 'relevant', toon: PER_KEER };
+      /* 'Best passend': eerst de beste woord-treffers. Zijn die er niet (bv. bij Voor haar), dan een afwisselende mix
+         van winkels en prijzen, zodat je niet alleen dure of alleen goedkope dingen ziet (wens van Marius). */
+      function hashT(t) { var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0; return h; }
+      function band(p) { return p < 15 ? 0 : p < 30 ? 1 : p < 60 ? 2 : p < 120 ? 3 : 4; }
+      function bestPassend(lijst) {
+        var groep = {}, sleutels = [];
+        lijst.slice().sort(function (a, b) { return b.s - a.s || hashT(a.t) - hashT(b.t); }).forEach(function (x) {
+          var k = x.s + '|' + x.w + '|' + band(x.p);
+          if (!groep[k]) { groep[k] = []; sleutels.push(k); }
+          groep[k].push(x);
+        });
+        /* per score-niveau om en om uit elke winkel/prijsgroep pakken */
+        var niveaus = {}; sleutels.forEach(function (k) { var sc = +k.split('|')[0]; (niveaus[sc] = niveaus[sc] || []).push(k); });
+        var uit = [];
+        Object.keys(niveaus).map(Number).sort(function (a, b) { return b - a; }).forEach(function (sc) {
+          var ks = niveaus[sc], rond = 0, bezig = true;
+          while (bezig) { bezig = false; ks.forEach(function (k) { if (groep[k][rond]) { uit.push(groep[k][rond]); bezig = true; } }); rond++; }
+        });
+        return uit;
+      }
       function teken() {
         var l = hits.filter(function (x) { return st.winkel === 'alle' || x.w === st.winkel; }).slice();
         if (st.sort === 'prijs-op') l.sort(function (a, b) { return a.p - b.p; });
         else if (st.sort === 'prijs-af') l.sort(function (a, b) { return b.p - a.p; });
-        else l.sort(function (a, b) { return b.s - a.s || b.p - a.p; });
+        else l = bestPassend(l);
         var per = {}; hits.forEach(function (x) { per[x.w] = (per[x.w] || 0) + 1; });
         var chips = '<div class="chips aw-winkels" role="group" aria-label="Winkel">' +
           [['alle', 'Alle winkels (' + hits.length + ')']].concat(Object.keys(per).sort(function (a, b) { return per[b] - per[a]; }).map(function (w) { return [w, w + ' (' + per[w] + ')']; }))
@@ -534,25 +554,27 @@
         var sorteer = '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-aw-sort>' +
           [['relevant', 'Best passend'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag']].map(function (o) { return '<option value="' + o[0] + '"' + (st.sort === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
           '</select>' + ic('omlaag') + '</label>';
-        var max = 240, toon = l.slice(0, max);
-        var kaarten = toon.map(function (x, i) {
-          return '<article class="prodkaart awkaart' + (i >= PER_KEER ? ' later' : '') + '">' +
+        /* Geen maximum meer: steeds een stukje erbij met 'Toon meer', zodat je alles kunt zien. */
+        var toon = l.slice(0, st.toon);
+        var kaarten = toon.map(function (x) {
+          return '<article class="prodkaart awkaart">' +
             '<a class="beeld echt" href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener"><img src="' + esc(x.f) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a>' +
             '<div class="info"><span class="shop">' + esc(x.w) + '</span><h3><a href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener">' + esc(x.t) + '</a></h3>' +
             '<div class="prijs">' + LK.euro(x.p) + '</div></div></article>';
         }).join('');
         doel.innerHTML = !hits.length ? '<div class="leeg"><strong>Ook in onze winkels niets gevonden</strong>Probeer een ander of korter woord.</div>' :
-          '<div class="werkbalk">' + chips + '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + (l.length > max ? ' (de eerste ' + max + ' getoond)' : '') + '</span>' + sorteer + '</div></div>' +
+          '<div class="werkbalk">' + chips + '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + '</span>' + sorteer + '</div></div>' +
           '<div class="prodgrid">' + kaarten + '</div>' +
-          (toon.length > PER_KEER ? '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer>Toon meer <small>(' + PER_KEER + ' van ' + toon.length + ')</small></button></div>' : '');
+          (l.length > toon.length ? '<div class="meer-knop"><button class="knop knop-rand" type="button" data-aw-meer>Toon meer <small>(' + toon.length + ' van ' + l.length + ')</small></button></div>' : '');
       }
       teken();
       sec.addEventListener('click', function (e) {
+        if (e.target.closest('[data-aw-meer]')) { st.toon += 48; teken(); return; }
         var b = e.target.closest('[data-aw-winkel]'); if (!b) return;
-        st.winkel = b.getAttribute('data-aw-winkel'); teken();
+        st.winkel = b.getAttribute('data-aw-winkel'); st.toon = PER_KEER; teken();
       });
       sec.addEventListener('change', function (e) {
-        if (e.target.matches('[data-aw-sort]')) { st.sort = e.target.value; teken(); }
+        if (e.target.matches('[data-aw-sort]')) { st.sort = e.target.value; st.toon = PER_KEER; teken(); }
       });
     }).catch(function () { doel.innerHTML = '<div class="leeg"><strong>Dit lukte even niet</strong>Probeer het later nog eens.</div>'; });
   }
