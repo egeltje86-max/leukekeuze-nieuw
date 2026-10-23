@@ -433,8 +433,10 @@
     var syn = (p.voor || []).concat(p.moment || []).map(function (x) { return SYN[x] || ''; });
     return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), SUBSYN[p.cat + '/' + p.sub] || ''].join(' ').toLowerCase();
   }
+  /* Verkleinwoorden en meervoud terugbrengen: 'loopfietsje' zoekt ook 'loopfiets', 'fietsjes' ook 'fiets'. */
+  function stam(w) { var k = w.replace(/(tjes|tje|jes|je|'s|s)$/, ''); return k.length >= 4 ? k : w; }
   function zoeken(q) {
-    var woorden = (q.q || '').toLowerCase().split(/\s+/).filter(Boolean);
+    var woorden = (q.q || '').toLowerCase().split(/\s+/).filter(Boolean).map(stam);
     var lijst = LK.zichtbaar().filter(function (p) {
       if (!binnenPrijs(p, q.prijs)) return false;
       var t = zoekTekst(p);
@@ -508,7 +510,7 @@
   }
   function vulAlleWinkels(sec) {
     var q = sec.getAttribute('data-q') || '', pf = prijsFilter(sec.getAttribute('data-prijs'));
-    var woorden = q.toLowerCase().split(/\s+/).filter(Boolean);
+    var woorden = q.toLowerCase().split(/\s+/).filter(Boolean).map(stam);
     var doel = $('.aw-inhoud', sec);
     laadWinkels().then(function (alles) {
       var nietW = (sec.getAttribute('data-niet') || '').split(' ').filter(Boolean);
