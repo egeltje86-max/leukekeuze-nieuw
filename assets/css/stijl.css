@@ -1,19 +1,19 @@
 /* =========================================================
-   LeukeKeuze – Luxe & Premium (donker + goud)
+   LeukeKeuze – Luxe & Premium (zacht blauw + goud, 24-10-2026)
    Visuele basis: ontwerp stijl 5 van Nova
    ========================================================= */
 
 :root {
-  --bg: #0A1020;
-  --bg-2: #0E1628;
-  --kaart: #121B2F;
-  --kaart-2: #172238;
-  --knop-bg: #1F2B45;
-  --knop-bg-hover: #283858;
+  --bg: #1F2A44;
+  --bg-2: #243050;
+  --kaart: #2A3756;
+  --kaart-2: #31405F;
+  --knop-bg: #34436A;
+  --knop-bg-hover: #3D4E78;
   --knop-lijn: rgba(255, 255, 255, .16);
   --lijn: rgba(217, 168, 72, .26);
   --lijn-sterk: rgba(217, 168, 72, .55);
-  --lijn-zacht: rgba(255, 255, 255, .08);
+  --lijn-zacht: rgba(255, 255, 255, .1);
   --goud: #D9A848;
   --goud-licht: #F2CB74;
   --goud-donker: #B8862E;
@@ -61,7 +61,7 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 @media (min-width: 1024px) { body { padding-bottom: 0; } .binnen { padding: 0 28px; } }
 
 /* ---------- Topbalk ---------- */
-.topbalk { background: #070C18; border-bottom: 1px solid var(--lijn-zacht); font: 600 12px/1 var(--f-ui); color: var(--tekst-2); }
+.topbalk { background: #18213A; border-bottom: 1px solid var(--lijn-zacht); font: 600 12px/1 var(--f-ui); color: var(--tekst-2); }
 .topbalk .binnen { display: flex; justify-content: center; gap: 26px; padding-top: 9px; padding-bottom: 9px; overflow: hidden; white-space: nowrap; }
 .topbalk span { display: inline-flex; align-items: center; gap: 7px; }
 .topbalk svg { width: 13px; height: 13px; color: var(--goud); flex: none; }
@@ -71,7 +71,7 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 /* ---------- Header ---------- */
 .header {
   position: sticky; top: 0; z-index: 40; height: var(--header-h);
-  background: rgba(10, 16, 32, .93); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  background: rgba(31, 42, 68, .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--lijn-zacht);
 }
 .header .binnen { height: 100%; display: flex; align-items: center; gap: 14px; }
@@ -196,7 +196,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .hero { position: relative; overflow: hidden; background: var(--bg); }
 .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero picture img { object-position: center top; }
-.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,16,32,0) 22%, rgba(10,16,32,.75) 48%, var(--bg) 70%); }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(31,42,68,0) 22%, rgba(31,42,68,.75) 48%, var(--bg) 70%); }
 .hero-inhoud { position: relative; z-index: 1; padding: 150px 0 18px; }
 .kicker { font: 700 11.5px/1 var(--f-ui); letter-spacing: .32em; text-transform: uppercase; color: var(--goud); margin-bottom: 14px; }
 .hero h1 { font-family: var(--f-kop); font-weight: 500; font-size: clamp(34px, 9vw, 60px); line-height: 1.06; letter-spacing: -.015em; }
@@ -208,7 +208,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 @media (min-width: 760px) {
   .hero { min-height: 400px; display: flex; align-items: center; }
   .hero picture img { object-position: center; }
-  .hero::after { background: linear-gradient(90deg, rgba(10,16,32,.96) 0%, rgba(10,16,32,.82) 36%, rgba(10,16,32,.15) 68%, rgba(10,16,32,0) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(10,16,32,0) 22%); }
+  .hero::after { background: linear-gradient(90deg, rgba(31,42,68,.96) 0%, rgba(31,42,68,.82) 36%, rgba(31,42,68,.15) 68%, rgba(31,42,68,0) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(31,42,68,0) 22%); }
   .hero-inhoud { padding: 50px 0 50px; width: 100%; }
   .hero p { font-size: 17px; }
   .populair .chips { margin: 0; }
@@ -351,7 +351,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .paginakop .achter { position: absolute; inset: 0; }
 .paginakop .achter img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
 .paginakop .achter.vaag img { filter: blur(18px) brightness(.55); transform: scale(1.2); }
-.paginakop::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,16,32,.95) 0%, rgba(10,16,32,.7) 50%, rgba(10,16,32,.25) 100%); }
+.paginakop::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(31,42,68,.95) 0%, rgba(31,42,68,.7) 50%, rgba(31,42,68,.25) 100%); }
 .paginakop.zonder::after { background: radial-gradient(90% 120% at 100% 0%, rgba(217,168,72,.16), transparent 60%); }
 .paginakop .binnen { position: relative; z-index: 1; padding-top: 22px; padding-bottom: 28px; }
 .paginakop h1 { font-family: var(--f-kop); font-weight: 500; font-size: clamp(30px, 7vw, 48px); line-height: 1.1; margin-top: 10px; }
@@ -442,7 +442,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .tekstpagina .let-op { padding: 14px 16px; border-radius: var(--r-m); border: 1px dashed var(--lijn-sterk); color: var(--goud-licht); font-size: 14px; margin-top: 18px; }
 
 /* ---------- Footer ---------- */
-.footer { margin-top: 56px; background: #070C18; border-top: 1px solid var(--lijn); }
+.footer { margin-top: 56px; background: #18213A; border-top: 1px solid var(--lijn); }
 .footer .binnen { padding-top: 34px; padding-bottom: 28px; display: grid; gap: 26px; }
 @media (min-width: 760px) { .footer .binnen { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
 .footer p { color: var(--tekst-2); font-size: 14px; margin: 12px 0 0; max-width: 360px; }
@@ -460,7 +460,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .onderbalk {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: grid; grid-template-columns: repeat(4, 1fr);
   height: calc(var(--nav-h) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
-  background: rgba(7,12,24,.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--lijn);
+  background: rgba(24,33,58,.97); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--lijn);
 }
 .onderbalk a, .onderbalk button { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font: 600 11px/1 var(--f-ui); color: var(--tekst-3); }
 .onderbalk svg { width: 23px; height: 23px; }
@@ -534,7 +534,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .acties .actie { scroll-snap-align: start; }
 .actie { position: relative; display: block; min-height: 220px; border-radius: var(--r-l); overflow: hidden; border: 1px solid var(--lijn); box-shadow: var(--schaduw); isolation: isolate; }
 .actie img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s ease; }
-.actie::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.7) 45%, rgba(10,16,32,.15) 100%); }
+.actie::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(31,42,68,.92) 0%, rgba(31,42,68,.7) 45%, rgba(31,42,68,.15) 100%); }
 .actie:hover img { transform: scale(1.04); }
 .actie:hover { border-color: var(--lijn-sterk); }
 .actie-tekst { position: relative; padding: 22px; max-width: 340px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; height: 100%; justify-content: flex-end; min-height: 220px; }
@@ -751,7 +751,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .zoek-cats .chips { margin: 0 -16px 0 0; }
 @media (min-width: 1024px) { .zoek-cats .chips { margin: 0; } }
 /* Productpagina mobiel: balk met prijs en winkelknop die onderin blijft staan als je verder leest */
-.product-plak { position: fixed; left: 0; right: 0; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom)); z-index: 44; transform: translateY(120%); transition: transform .25s; background: rgba(7,12,24,.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--lijn); }
+.product-plak { position: fixed; left: 0; right: 0; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom)); z-index: 44; transform: translateY(120%); transition: transform .25s; background: rgba(24,33,58,.97); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--lijn); }
 .product-plak.zichtbaar { transform: none; }
 .product-plak .binnen { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
 .product-plak .prijs { font-size: 20px; margin: 0; padding: 0; }
