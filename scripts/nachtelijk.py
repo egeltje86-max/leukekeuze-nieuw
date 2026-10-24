@@ -34,6 +34,11 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-fietsparadijs': '&standard_id=1&language_code=nl&locale_id=1&program_id=12168',
     'x-fietstas': '&standard_id=1&language_code=nl&locale_id=1&program_id=12934',
     'x-svinando': '&standard_id=4&language_code=nl&locale_id=2&program_id=22015',
+    'x-westwing': '&standard_id=8&language_code=nl&locale_id=1&program_id=17294',
+}
+# Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
+FILTER = {
+    'x-westwing': (r'kaars|kandelaar|lantaarn|vaas|vazen|plaid|deken|kussen|geur|diffuser|lamp|lampje|fotolijst|spiegel|dienblad|mok|kop en schotel|glazen|karaf|schaal|kom|kerst|decoratie|beeld|klok|mand|bloempot|pot\b|kunstbloem|kunstplant|bord|servies|bestek|theedoek|handdoek|badjas|koffietafelboek|toys|health|beauty|baby|animals|pet|media|office', 3, 250),
 }
 ok = 0
 for naam, q in FEED.items():
@@ -43,7 +48,9 @@ for naam, q in FEED.items():
         with urllib.request.urlopen(urllib.request.Request(B + q, headers={'User-Agent': 'Mozilla/5.0'}), timeout=600) as r, open(tmp, 'wb') as f:
             shutil.copyfileobj(r, f)
         os.replace(tmp, xml)
-        subprocess.run([sys.executable, os.path.join(HIER, 'uittreksel.py'), xml, js + '.nieuw'], check=True, capture_output=True)
+        f = FILTER.get(naam)
+        extra = [f[0], str(f[1]), str(f[2])] if f else []
+        subprocess.run([sys.executable, os.path.join(HIER, 'uittreksel.py'), xml, js + '.nieuw'] + extra, check=True, capture_output=True)
         n = len(json.load(open(js + '.nieuw', encoding='utf-8')))
         if n == 0:
             log('LEEG, oude versie blijft:', naam); os.remove(js + '.nieuw'); continue

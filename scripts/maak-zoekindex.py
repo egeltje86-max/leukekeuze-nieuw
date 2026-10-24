@@ -24,6 +24,7 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-fietsparadijs.json', 'Fietsparadijs', ''),
     ('x-fietstas.json', 'Fietstas.com', ''),
     ('x-svinando.json', 'Svinando', ''),
+    ('x-westwing.json', 'Westwing', ''),
     # oude, kleinere La Redoute-uittreksels (alleen als de volledige feed er niet is)
     ('x-lr-wonen-cadeau.json', 'La Redoute', ''),
 ]
