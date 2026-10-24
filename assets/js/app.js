@@ -755,14 +755,20 @@
       '<p>Vragen over een bestelling? Neem dan contact op met de winkel waar je het product hebt gekocht. Die regelt bezorging en retour.</p>' +
       '<p>Vragen of tips voor LeukeKeuze zelf? Mail ons op: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a></p>' +
       '<p>Wie de site maakt en het adres vind je in het <a href="/info/colofon">colofon</a>.</p>' + CONCEPT],
-    'colofon': ['Colofon',
+    'colofon': ['Colofon (Imprint)',
       '<p>Deze website wordt gemaakt en beheerd door:</p>' +
       '<p><strong>LeukeKeuze</strong><br>Marius Kestens<br>Kromhout 108<br>3311 RH Dordrecht<br>Nederland</p>' +
       '<p>E-mail: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a><br>Website: leukekeuze.nl</p>' +
       '<p>LeukeKeuze is (nog) niet ingeschreven bij de Kamer van Koophandel.</p>' +
       '<h2>Wat is LeukeKeuze?</h2><p>LeukeKeuze is een cadeausite. Wij verkopen zelf niets, maar raden producten aan van andere winkels. Sommige links zijn partnerlinks: koop je via zo’n link, dan krijgen wij soms een kleine vergoeding van de winkel. Jij betaalt daardoor niets extra.</p>' +
-      '<p>Zie ook: <a href="/info/privacy">Privacy &amp; cookies</a>, <a href="/info/voorwaarden">Algemene voorwaarden</a> en <a href="/info/disclaimer">Disclaimer</a>.</p>'],
-    'privacy': ['Privacyverklaring',
+      '<p>Zie ook: <a href="/info/privacy">Privacy &amp; cookies</a>, <a href="/info/voorwaarden">Algemene voorwaarden</a> en <a href="/info/disclaimer">Disclaimer</a>.</p>' +
+      /* Engelse samenvatting: partnernetwerken (zoals Daisycon) laten hun controle vaak door Engelstaligen doen. */
+      '<h2 lang="en">Imprint (legal notice)</h2><div lang="en"><p>Website owner and person responsible for the content of leukekeuze.nl:</p>' +
+      '<p><strong>Marius Kestens</strong> (trading as LeukeKeuze)<br>Kromhout 108<br>3311 RH Dordrecht<br>The Netherlands</p>' +
+      '<p>E-mail: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a></p>' +
+      '<p>LeukeKeuze is run by a private individual and is not (yet) registered with the Dutch Chamber of Commerce (KvK). ' +
+      'Privacy Policy: <a href="/info/privacy">leukekeuze.nl/info/privacy</a>. General Terms and Conditions: <a href="/info/voorwaarden">leukekeuze.nl/info/voorwaarden</a>.</p></div>'],
+    'privacy': ['Privacyverklaring (Privacy Policy)',
       '<p>Laatst bijgewerkt: 23 oktober 2026.</p>' +
       '<p>LeukeKeuze (Marius Kestens, zie het <a href="/info/colofon">colofon</a>) is verantwoordelijk voor deze website. In deze verklaring lees je welke gegevens er gebruikt worden als je de site bezoekt.</p>' +
       '<h2>Geen account, geen formulieren</h2><p>Je hoeft je nergens aan te melden. Wij vragen niet om je naam, e-mail of andere persoonlijke gegevens.</p>' +
@@ -770,8 +776,12 @@
       '<h2>Hosting</h2><p>De website staat bij GitHub Pages (GitHub, Inc.). Bij elk bezoek ziet de server technische gegevens, zoals je IP-adres. GitHub gebruikt die om de site veilig en werkend te houden. Wij krijgen deze gegevens niet.</p>' +
       '<h2>Lettertypes</h2><p>De lettertypes worden geladen via Google Fonts. Daarbij ziet Google je IP-adres. We zijn van plan de lettertypes op onze eigen site te zetten.</p>' +
       '<h2>Partnerlinks en cookies van winkels</h2><p>Klik je op “Bekijk bij …”, dan ga je naar de winkel. Vaak loopt die link via een partnernetwerk, zoals Daisycon, het bol partnerprogramma of het partnerprogramma van Amazon. Zij plaatsen dan een cookie om te zien dat je via LeukeKeuze kwam. Zo kan de winkel ons een kleine vergoeding geven als je iets koopt. Wij zien niet wie je bent of wat je koopt; alleen hoeveel er via onze links is verkocht. Op de site van de winkel gelden hun eigen privacyverklaring en cookies.</p>' +
+      '<h2 lang="en">Privacy Policy (English summary)</h2><p lang="en">Controller: Marius Kestens (LeukeKeuze), Kromhout 108, 3311 RH Dordrecht, The Netherlands, leukekeuze.nl@gmail.com. ' +
+      'We do not collect personal data: no accounts, no forms, no own tracking or advertising cookies. Favourites are stored only in your own browser. ' +
+      'The site is hosted on GitHub Pages and uses Google Fonts. Links to shops may run through affiliate networks (Daisycon, bol.com, Amazon), which set their own cookies to register sales. ' +
+      'Questions or requests about your data: e-mail us. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).</p>' +
       '<h2>Je rechten</h2><p>Omdat wij zelf geen persoonsgegevens van je bewaren, is er meestal niets om in te zien of te wissen. Heb je toch een vraag over privacy? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>'],
-    'voorwaarden': ['Algemene voorwaarden',
+    'voorwaarden': ['Algemene voorwaarden (Terms and Conditions)',
       '<p>Laatst bijgewerkt: 23 oktober 2026.</p>' +
       '<p>Deze voorwaarden gelden voor het gebruik van leukekeuze.nl, een website van LeukeKeuze (Marius Kestens, zie het <a href="/info/colofon">colofon</a>).</p>' +
       '<h2>1. Wat LeukeKeuze doet</h2><p>LeukeKeuze is een cadeausite met tips en links naar producten van andere winkels. Wij verkopen zelf niets. Je sluit dus geen koop af met LeukeKeuze.</p>' +
@@ -781,7 +791,10 @@
       '<h2>5. Aansprakelijkheid</h2><p>LeukeKeuze is niet aansprakelijk voor producten, diensten of websites van andere winkels, en ook niet voor schade door het gebruik van deze site, behalve als de wet dat anders bepaalt.</p>' +
       '<h2>6. Teksten en foto’s</h2><p>De teksten op LeukeKeuze zijn van ons. Productfoto’s komen van de winkels en merken. Neem niets over zonder toestemming.</p>' +
       '<h2>7. Wijzigingen</h2><p>We kunnen deze voorwaarden aanpassen. De nieuwste versie staat altijd op deze pagina.</p>' +
-      '<h2>8. Recht</h2><p>Op deze voorwaarden is Nederlands recht van toepassing. Vragen? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>.</p>'],
+      '<h2>8. Recht</h2><p>Op deze voorwaarden is Nederlands recht van toepassing. Vragen? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>.</p>' +
+      '<h2 lang="en">General Terms and Conditions (English summary)</h2><p lang="en">leukekeuze.nl is a gift-tip website run by Marius Kestens (LeukeKeuze), Kromhout 108, 3311 RH Dordrecht, The Netherlands. ' +
+      'We do not sell products ourselves; purchases are made with the linked shops under their own terms. Prices and information may change; the shop’s information prevails. ' +
+      'Many links are affiliate links: we may receive a commission, at no extra cost to you. We are not liable for products or websites of third parties, except where the law requires otherwise. Dutch law applies.</p>'],
     'disclaimer': ['Disclaimer',
       '<p>LeukeKeuze verkoopt zelf niets. We verwijzen naar producten van andere winkels.</p>' +
       '<p>We doen ons best om prijzen en informatie juist te houden, maar prijzen en voorraad kunnen veranderen. De informatie bij de winkel is altijd leidend.</p>' +
@@ -789,6 +802,7 @@
       '<p>Als Amazon-partner verdienen wij aan kwalificerende aankopen.</p>' + CONCEPT]
   };
   function info(slug) {
+    slug = { imprint: 'colofon', impressum: 'colofon', 'privacy-policy': 'privacy', terms: 'voorwaarden', 'algemene-voorwaarden': 'voorwaarden', privacyverklaring: 'privacy' }[slug] || slug;
     var i = INFO[slug];
     if (!i) return nietGevonden();
     zetTitel(i[0]);

@@ -794,3 +794,4 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 @media (min-width: 1024px) { .filterknop, .filterpaneel { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { .filterknop, .filter-blad, .filter-achter { transition: none; } }
 .plak-open .filterknop { display: none; }
+.footer-onder a { color: var(--tekst-2); text-decoration: underline; text-underline-offset: 2px; }
