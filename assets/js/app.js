@@ -12,7 +12,9 @@
      /info/privacy      tekstpagina's
    ========================================================= */
 (function () {
-  var LK = window.LK, CATS = window.LK_CATEGORIEEN, PRIJZEN = window.LK_PRIJZEN, INST = window.LK_INSTELLINGEN;
+  var LK = window.LK, ALLECATS = window.LK_CATEGORIEEN,
+    /* Hoofdcategorieën: zonder de categorieën die onder een andere hangen. */
+    CATS = ALLECATS.filter(function (c) { return !c.onder; }), PRIJZEN = window.LK_PRIJZEN, INST = window.LK_INSTELLINGEN;
   var ic = LK.icoon, esc = LK.esc;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -310,7 +312,7 @@
       '<a class="subkaart' + (s ? '' : ' actief') + '" href="/c/' + c.slug + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
       volleSubs(c).map(function (x) {
         var beeld = x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
-        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="/c/' + c.slug + '/' + x.slug + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
+        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + subAdres(c, x) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
           '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
       }).join('') + '</div>';
 
@@ -326,12 +328,13 @@
       '<a class="knop knop-rand" href="/c/cadeaus">Alle cadeaus</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
     var anderen = CATS.filter(function (x) { return x.slug !== c.slug; });
+    var ouder = c.onder ? window.LK_CAT(c.onder) : null;
 
     return paginakop({
       titel: s ? s.naam : c.naam,
       tekst: s ? (s.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : c.tekst,
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
-      kruimel: s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }]
+      kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
     }) +
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
@@ -750,6 +753,7 @@
   }
 
   /* Subcategorieën die echt iets bevatten. Lege subs (bv. 'Met naam') blijven verborgen tot er producten in staan. */
+  function subAdres(c, s) { return s.naar || '/c/' + c.slug + '/' + s.slug; }
   function volleSubs(c) {
     var z = LK.zichtbaar();
     return c.subs.filter(function (s) {
@@ -767,14 +771,14 @@
       rest.map(function (c) {
         return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +
           '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
-          volleSubs(c).map(function (s) { return '<a href="/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
+          volleSubs(c).map(function (s) { return '<a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
       }).join('') + '</ul>' +
       '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn favorieten</a><a href="/zoek">Zoeken</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
       return '<div><h3><a href="/c/' + c.slug + '">' + ic(c.icoon) + esc(c.naam) + '</a></h3><ul>' +
-        volleSubs(c).slice(0, 6).map(function (s) { return '<li><a href="/c/' + c.slug + '/' + s.slug + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
+        volleSubs(c).slice(0, 6).map(function (s) { return '<li><a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
     }).join('') + '</div>';
   }
   var laatsteFocus = null;
