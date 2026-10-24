@@ -25,6 +25,15 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-laredoute-wonen': '&standard_id=8&language_code=nl&locale_id=1&program_id=16029',
     'x-lego': '&standard_id=1&language_code=nl&locale_id=1&program_id=18488',
     'x-bartogi': '&standard_id=7&language_code=nl&locale_id=1&program_id=15634',
+    'x-myka': '&standard_id=7&language_code=nl&locale_id=1&program_id=18346',
+    'x-prydligt': '&standard_id=7&language_code=nl&locale_id=11&program_id=18475',
+    'x-invicta': '&standard_id=1&language_code=en&locale_id=6&program_id=18836',
+    'x-woodwick': '&standard_id=1&language_code=nl&locale_id=1&program_id=21919',
+    'x-wijnkring': '&standard_id=4&language_code=nl&locale_id=1&program_id=18166',
+    'x-kerstland': '&standard_id=1&language_code=nl&locale_id=1&program_id=22097',
+    'x-fietsparadijs': '&standard_id=1&language_code=nl&locale_id=1&program_id=12168',
+    'x-fietstas': '&standard_id=1&language_code=nl&locale_id=1&program_id=12934',
+    'x-svinando': '&standard_id=4&language_code=nl&locale_id=2&program_id=22015',
 }
 ok = 0
 for naam, q in FEED.items():
@@ -54,7 +63,7 @@ if not TEST: git('checkout', 'main'); git('pull', '--rebase', '-q')
 r = subprocess.run([sys.executable, os.path.join(HIER, 'maak-zoekindex.py'), FEEDS], capture_output=True, text=True, encoding='utf-8')
 log('index:', (r.stdout or r.stderr).strip()[-300:])
 if r.returncode or TEST: sys.exit(r.returncode)
-git('add', 'assets/zoek/winkels.json')
+git('add', 'assets/zoek/winkels.json', 'assets/zoek/w')
 if git('diff', '--cached', '--quiet').returncode == 0:
     log('Niets veranderd.'); sys.exit(0)
 git('commit', '-q', '-m', 'Zoekindex bijgewerkt (' + datetime.date.today().isoformat() + ')')

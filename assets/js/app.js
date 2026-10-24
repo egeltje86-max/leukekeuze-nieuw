@@ -493,7 +493,7 @@
     else return '';
     var NW = window.LK_NIETWOORDEN || {};
     if (NW[sleutel]) attr += ' data-niet="' + esc(NW[sleutel]) + '"';
-    return '<section class="sectie alle-winkels" data-alle-winkels data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
+    return '<section class="sectie alle-winkels" data-alle-winkels data-sleutel="' + esc(sleutel) + '" data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
       '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Uit het hele aanbod van onze partnerwinkels. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
       '<div class="aw-inhoud"><p class="aw-laden">Even kijken in alle winkels…</p></div></section>';
   }
@@ -502,20 +502,22 @@
     return 'https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=' + encodeURIComponent('https://www.bol.com/nl/nl/s/?searchtext=' + encodeURIComponent(q));
   }
   /* ---------- Zoeken in het hele aanbod van alle winkels (feeds) ---------- */
-  var AW = { data: null, laden: null };
-  function laadWinkels() {
-    if (!AW.laden) AW.laden = fetch('assets/zoek/winkels.json').then(function (r) { return r.json(); }).then(function (j) {
+  /* Per (sub)categorie staat er een klein bestand klaar (assets/zoek/w/<cat>--<sub>.json, gemaakt door scripts/maak-zoekindex.py),
+     zodat een telefoon niet het hele bestand van alle winkels hoeft te laden. Alleen de zoekpagina gebruikt het hele bestand. */
+  var AW = { laden: {} };
+  function laadWinkels(sleutel) {
+    var pad = sleutel ? 'assets/zoek/w/' + sleutel.replace('/', '--') + '.json' : 'assets/zoek/winkels.json';
+    if (!AW.laden[pad]) AW.laden[pad] = fetch(pad).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
       var W = j.winkels;
-      AW.data = j.producten.map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
-      return AW.data;
-    });
-    return AW.laden;
+      return j.producten.map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
+    }).catch(function () { return sleutel ? laadWinkels() : []; });
+    return AW.laden[pad];
   }
   function vulAlleWinkels(sec) {
     var q = sec.getAttribute('data-q') || '', pf = prijsFilter(sec.getAttribute('data-prijs'));
     var woorden = q.toLowerCase().split(/\s+/).filter(Boolean).map(stam);
     var doel = $('.aw-inhoud', sec);
-    laadWinkels().then(function (alles) {
+    laadWinkels(sec.getAttribute('data-sleutel') || '').then(function (alles) {
       var nietW = (sec.getAttribute('data-niet') || '').split(' ').filter(Boolean);
       var ofW = (sec.getAttribute('data-woorden') || '').split(' ').filter(Boolean), gesl = sec.getAttribute('data-geslacht') || '', maxP = +sec.getAttribute('data-max') || 0;
       function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }

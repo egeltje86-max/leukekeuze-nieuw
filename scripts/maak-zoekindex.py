@@ -18,6 +18,12 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-myka.json', 'Myka', ''),
     ('x-prydligt.json', 'Prydligt', ''),
     ('x-invicta.json', 'Invicta', ''),
+    ('x-woodwick.json', 'WoodWick', ''),
+    ('x-wijnkring.json', 'Wijnkring', ''),
+    ('x-kerstland.json', 'Kerstland', ''),
+    ('x-fietsparadijs.json', 'Fietsparadijs', ''),
+    ('x-fietstas.json', 'Fietstas.com', ''),
+    ('x-svinando.json', 'Svinando', ''),
     # oude, kleinere La Redoute-uittreksels (alleen als de volledige feed er niet is)
     ('x-lr-wonen-cadeau.json', 'La Redoute', ''),
 ]
@@ -27,7 +33,7 @@ FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'
       (r'\brobe', 'jurk'), (r'manteau|blouson|veste|trench', 'jas'), (r'portefeuille|porte-monnaie|porte-cartes', 'portemonnee'),
       (r'\bgants', 'handschoenen'), (r'chemise', 'blouse overhemd'), (r'pantalon', 'broek'), (r'\bjupe', 'rok'), (r'cachemire', 'kasjmier'),
       (r'\bcuir', 'leer'), (r'sac à dos', 'rugzak'), (r'baskets|sneakers', 'sneakers schoenen'), (r'bottines|boots', 'laarzen')]
-OVERSLAAN = re.compile(r'\b(sokken|kersttrui - maat|cadeaubon|verzendkosten|statiegeld)\b', re.I)
+OVERSLAAN = re.compile(r'\b(sokken|sportsokken|kersttrui - maat|cadeaubon|verzendkosten|statiegeld)\b', re.I)
 def basis(t):
     t = re.sub(r',?\s*Grootte:.*$', '', t)                      # Dr. Martens maten
     t = re.sub(r'\s+\d+([,.]\d+)?\s*(cl|l|liter)\.?\s*$', '', t, flags=re.I)  # Decantalo formaten
@@ -49,8 +55,10 @@ for bestand, winkel, b in WINKELS:
         if isinstance(f, str): f = ast.literal_eval(f) if f.startswith('[') else [f]
         foto = (f or [''])[0].split('|')[0]
         if not foto: continue
-        k = basis(x['titel']).lower()
+        # Kerstland zet kleur/maat achter ' | ': één per soort tonen, en de streepjes netjes als komma's.
+        k = basis(x['titel'].split(' | ')[0]).lower()
         if k in gezien: continue
+        x['titel'] = x['titel'].replace(' | ', ', ')
         gezien[k] = 1
         cat = (x.get('cat') or '').strip()
         if winkel == 'Zadig & Voltaire':
@@ -76,3 +84,58 @@ os.makedirs('assets/zoek', exist_ok=True)
 json.dump({'winkels': W, 'velden': ['titel', 'prijs', 'winkel', 'link', 'foto', 'cat', 'merk', 'geslacht'], 'producten': kort},
           open('assets/zoek/winkels.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print(per, len(uit), os.path.getsize('assets/zoek/winkels.json') // 1024, 'kB')
+
+# ---- Kleine bestanden per (sub)categorie, zodat een telefoon niet het hele bestand hoeft te laden ----
+# Zelfde regels als vulAlleWinkels in assets/js/app.js: zoekwoorden (een van de woorden), nietwoorden, geslacht, maximumprijs.
+def lees_js_obj(naam):
+    js = open('assets/js/data.js', encoding='utf-8').read()
+    m = re.search(r'window\.' + naam + r'\s*=\s*(\{.*?\n\});', js, re.S)
+    body = re.sub(r'/\*.*?\*/', '', m.group(1), flags=re.S)
+    return json.loads(re.sub(r',\s*}', '}', body))
+ZW = lees_js_obj('LK_ZOEKWOORDEN'); NW = lees_js_obj('LK_NIETWOORDEN')
+CATS = re.findall(r"\{ slug: '([a-z0-9-]+)', naam: '[^']*', kort:", open('assets/js/data.js', encoding='utf-8').read())
+SUBS = {}
+for c in CATS:
+    blok = re.search(r"slug: '" + c + r"', naam:.*?subs: \[(.*?)\] \}", open('assets/js/data.js', encoding='utf-8').read(), re.S)
+    SUBS[c] = re.findall(r"\{ slug: '([a-z0-9-]+)'", blok.group(1)) if blok else []
+def norm(t): return ' ' + re.sub(r'[^a-z0-9à-ÿ€]+', ' ', t.lower())
+def heeft(z, w): return (' ' + w) in z if len(w) >= 5 else (' ' + w + ' ') in (z + ' ')
+rijen = []
+for x in kort:
+    w = W[x[2]]
+    z = norm(x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + w['naam']); tl = norm(x[0])
+    rijen.append((x, z, tl, x[7] or ''))
+os.makedirs('assets/zoek/w', exist_ok=True)
+for f in os.listdir('assets/zoek/w'): os.remove(os.path.join('assets/zoek/w', f))
+aantal = {}
+for c in CATS:
+    for sleutel in [c] + [c + '/' + s for s in SUBS[c]]:
+        gesl = ''; maxp = 0; ofw = []
+        if sleutel == 'cadeaus/voor-haar': gesl = 'v'
+        elif sleutel == 'cadeaus/voor-hem': gesl = 'm'
+        elif sleutel == 'cadeaus/onder-15': maxp = 15
+        elif sleutel in ZW: ofw = ZW[sleutel].split()
+        else: continue
+        niet = NW.get(sleutel, '').split()
+        sel = []
+        for x, z, tl, g in rijen:
+            if maxp and x[1] >= maxp: continue
+            if gesl and g != gesl: continue
+            if niet and any(heeft(tl, n) for n in niet): continue
+            if ofw and not any(heeft(z, o) for o in ofw): continue
+            sel.append(x)
+        # Niet meer dan MAXR per pagina: om en om uit elke winkel, zodat de mix van winkels blijft.
+        MAXR = 2500
+        if len(sel) > MAXR:
+            perw = {}
+            for x in sel: perw.setdefault(x[2], []).append(x)
+            sel = []; r = 0
+            while len(sel) < MAXR:
+                for ws in perw.values():
+                    if r < len(ws): sel.append(ws[r])
+                r += 1
+            sel = sel[:MAXR]
+        naam = sleutel.replace('/', '--') + '.json'
+        json.dump({'winkels': W, 'producten': sel}, open(os.path.join('assets/zoek/w', naam), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+        aantal[sleutel] = len(sel)
+print('per pagina:', sum(aantal.values()), 'rijen in', len(aantal), 'bestanden; grootste:', sorted(aantal.items(), key=lambda a: -a[1])[:5])
