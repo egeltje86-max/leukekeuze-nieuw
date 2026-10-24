@@ -106,15 +106,17 @@
   }
   function grid(lijst, leegHtml, klasse) {
     if (!lijst.length) return '<div class="prodgrid ' + (klasse || '') + '">' + leegHtml + '</div>';
-    return '<div class="prodgrid ' + (klasse || '') + '">' + lijst.map(LK.productKaart).join('') + '</div>';
+    return '<div class="prodgrid ' + (klasse || '') + '">' + lijst.map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>';
   }
+  /* De eerste vier foto's meteen laden (niet 'lazy'): dan staat het eerste rijtje sneller op het scherm, vooral op een telefoon. */
+  function eerstSnel(h, i) { return i < 4 ? h.replace('loading="lazy"', 'loading="eager" fetchpriority="high"') : h; }
   /* Lange lijsten: eerst PER_KEER producten, daarna een 'Toon meer'-knop. */
   var PER_KEER = 24;
   function gridMeer(lijst, leegHtml, n) {
     var PER_KEER = n || 24;
     if (lijst.length <= PER_KEER) return grid(lijst, leegHtml);
     return '<div class="prodgrid">' + lijst.map(function (p, i) {
-      var h = LK.productKaart(p);
+      var h = eerstSnel(LK.productKaart(p), i);
       return i < PER_KEER ? h : h.replace('<article class="prodkaart"', '<article class="prodkaart later"');
     }).join('') + '</div>' +
       '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer>Toon meer <small>(' + PER_KEER + ' van ' + lijst.length + ')</small></button></div>';
@@ -290,7 +292,8 @@
 
   function paginakop(o) {
     var achter = '';
-    if (o.banner) achter = '<div class="achter"><img src="' + esc(o.banner) + '" alt=""></div>';
+    /* Op een telefoon een kleinere, al bijgesneden versie van de banner (-mobiel.webp): scheelt zo'n 70% aan data. */
+    if (o.banner) achter = '<div class="achter"><picture><source media="(max-width: 759px)" srcset="' + esc(o.banner.replace('.webp', '-mobiel.webp')) + '"><img src="' + esc(o.banner) + '" alt="" fetchpriority="high"></picture></div>';
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(o.vaag) + '" alt=""></div>';
     return '<section class="paginakop' + (achter ? '' : ' zonder') + '">' + achter +
       '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p>' + esc(o.tekst) + '</p>' : '') + '</div></section>';
@@ -404,9 +407,12 @@
           '<h1>' + esc(p.titel) + '</h1>' +
           '<div class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
           '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
-          '<div class="product-acties">' + knop +
+          '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + ic('hart') + '</button>' +
           '</div>' +
+          /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
+          (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs">' + LK.euro(p.prijs) + '</span>' +
+            '<a class="knop knop-goud" href="' + esc(p.url) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
           '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom || '') + '</p></div>' +
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
@@ -466,9 +472,25 @@
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
+    /* Past het zoekwoord bij een categorie? Dan die er meteen bij zetten ('fiets' → Fietsen), zo kom je sneller op de goede pagina. */
+    var catTips = [];
+    if (woorden.length) {
+      var ZW = window.LK_ZOEKWOORDEN || {};
+      var pastBij = function (naam, sleutel) {
+        var n = ' ' + naam.toLowerCase().replace(/[^a-z0-9à-ÿ]+/g, ' '), z = ' ' + (ZW[sleutel] || '');
+        return woorden.some(function (w) { return w.length >= 3 && (n.indexOf(' ' + w) !== -1 || z.indexOf(' ' + w) !== -1); });
+      };
+      CATS.forEach(function (c) {
+        if (c.slug === 'christelijk') return;
+        if (pastBij(c.naam, c.slug)) catTips.push({ naam: c.naam, naar: '/c/' + c.slug });
+        c.subs.forEach(function (su) { if (!su.naar && pastBij(su.naam, c.slug + '/' + su.slug)) catTips.push({ naam: su.naam + ' <small>' + esc(c.kort) + '</small>', naar: '/c/' + c.slug + '/' + su.slug }); });
+      });
+      catTips = catTips.slice(0, 5);
+    }
     return paginakop({ titel: titel, kruimel: [{ tekst: 'Zoeken' }] }) +
       '<div class="binnen">' +
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
+        (catTips.length ? '<div class="zoek-cats"><span>Bekijk ook:</span><div class="chips">' + catTips.map(function (t) { return '<a class="chip" href="' + t.naar + '">' + t.naam + '</a>'; }).join('') + '</div></div>' : '') +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
         gridMeer(lijst, leegBlok(q.q ? 'Nog niets uitgekozen voor dit woord' : 'Niets gevonden', q.q ? 'Kijk hieronder in het aanbod van onze winkels, of laat VONK zoeken.' : 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
@@ -843,7 +865,30 @@
       '<p class="vonk-noot" style="margin-top:18px">Koop je iets via deze links, dan krijgen wij soms een kleine vergoeding. Jij betaalt niets extra.</p></section></div>';
   }
   var laatstGetoond = null;
+  /* Onthoud per pagina hoe ver je gescrold had en hoeveel producten je al open had geklapt ('Toon meer').
+     Ga je vanaf een product met de terugknop terug naar de lijst, dan kom je weer op dezelfde plek uit (fijn op mobiel). */
+  var plekken = {}, terugViaKnop = false;
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  function onthoudPlek() {
+    if (laatstGetoond === null) return;
+    var g = $('.prodgrid:not(.rij)', app);
+    plekken[laatstGetoond] = { y: window.scrollY || 0, n: g ? g.querySelectorAll('.prodkaart:not(.later)').length : 0 };
+  }
+  function herstelPlek() {
+    var plek = plekken[huidigAdres()];
+    if (!plek) return false;
+    var g = $('.prodgrid:not(.rij)', app);
+    if (g && plek.n) {
+      var later = g.querySelectorAll('.prodkaart.later'), alle = g.querySelectorAll('.prodkaart').length;
+      for (var i = 0; i < later.length && (alle - later.length + i) < plek.n; i++) later[i].classList.remove('later');
+      var knop = $('[data-meer]', app), over = g.querySelectorAll('.prodkaart.later').length;
+      if (knop) { if (!over) knop.parentNode.remove(); else knop.innerHTML = 'Toon meer <small>(' + (alle - over) + ' van ' + alle + ')</small>'; }
+    }
+    window.scrollTo(0, plek.y);
+    return true;
+  }
   function toon() {
+    onthoudPlek();
     laatstGetoond = huidigAdres();
     var a = leesAdres(), d = a.delen, html;
     if (!d.length) html = home();
@@ -862,8 +907,30 @@
     var zelfdeCat = d[0] === 'c' && vorigeCat === d[1];
 
     app.innerHTML = html;
+    document.body.classList.remove('plak-open');
     vulIconen(app); netteLinks(app);
-    var aw = $('[data-alle-winkels]', app); if (aw) vulAlleWinkels(aw);
+    var aw = $('[data-alle-winkels]', app);
+    if (aw) {
+      /* Op een telefoon is het bestand met álle winkelproducten groot (zoekpagina). Daar laden we het pas als je erom vraagt;
+         categoriepagina's hebben een klein eigen bestand en laden meteen. */
+      var groot = !aw.getAttribute('data-sleutel') && window.matchMedia && window.matchMedia('(max-width: 759px)').matches && !AW.laden['assets/zoek/winkels.json'];
+      if (groot) {
+        $('.aw-inhoud', aw).innerHTML = '<div class="aw-laadknop"><button class="knop knop-rand" type="button" data-aw-laad>Zoek ook in onze winkels ' + ic('pijl') + '</button>' +
+          '<p class="uitleg">Doorzoekt ruim 50.000 producten van al onze partnerwinkels. Dat is een groot bestand, dus het laden duurt even.</p></div>';
+        aw.addEventListener('click', function (e) { if (e.target.closest('[data-aw-laad]')) { $('.aw-inhoud', aw).innerHTML = '<p class="aw-laden">Even zoeken in alle winkels…</p>'; vulAlleWinkels(aw); } });
+      } else vulAlleWinkels(aw);
+    }
+
+    /* Plakbalk op de productpagina: alleen tonen als de echte knop uit beeld is (en alleen op kleine schermen, zie css). */
+    var plak = $('[data-plak]', app), acties = $('[data-acties]', app);
+    if (plak && acties && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        var uitBeeld = es[0].boundingClientRect.bottom < 0 && !es[0].isIntersecting;
+        plak.classList.toggle('zichtbaar', uitBeeld); plak.setAttribute('aria-hidden', String(!uitBeeld));
+        document.body.classList.toggle('plak-open', uitBeeld);
+        $$('a', plak).forEach(function (x) { x.tabIndex = uitBeeld ? 0 : -1; });
+      }, { threshold: 0 }).observe(acties);
+    }
 
     var rij = $('.subkaarten', app);
     if (rij) {
@@ -884,8 +951,11 @@
     var onder = !d.length ? 'home' : d[0] === 'vonk' ? 'vonk' : d[0] === 'favorieten' ? 'favorieten' : (d[0] === 'c' || d[0] === 'categorieen') ? 'categorieen' : '';
     $$('[data-onder]').forEach(function (n) { if (n.dataset.onder === onder) n.setAttribute('aria-current', 'page'); else n.removeAttribute('aria-current'); });
 
+    // Terug (of vooruit) met de knop van de browser: naar de plek waar je was.
+    var hersteld = terugViaKnop && herstelPlek();
+    terugViaKnop = false;
     // Alleen naar boven als je naar een andere pagina gaat (niet bij filteren)
-    if (a.pad !== vorigPad) {
+    if (a.pad !== vorigPad && !hersteld) {
       var grid = zelfdeCat && d[2] ? $('.prodgrid', app) : null;
       if (grid) {
         /* subcategorie gekozen binnen dezelfde categorie: meteen naar het eerste product */
@@ -940,7 +1010,7 @@
   }
   window.addEventListener('popstate', function (e) {
     if (negeerPop) { negeerPop = false; return; }
-    if (huidigAdres() !== laatstGetoond) { toon(); return; }
+    if (huidigAdres() !== laatstGetoond) { terugViaKnop = true; toon(); return; }
     if (document.body.classList.contains('lade-open')) { sluitDoorTerug = true; sluitLade(); return; }
     var st = e.state || {};
     if (st.basis && startOpHome && !leesAdres().delen.length) {

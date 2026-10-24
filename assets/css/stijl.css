@@ -716,3 +716,47 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   .catrij-pijl.links { left: 0; } .catrij-pijl.rechts { right: 0; }
   .catrij-pijl:hover { border-color: var(--goud); }
 }
+
+/* ---------- Mobiel: fijner tikken en sneller bij de producten (checkup 24-10-2026) ----------
+   Richtlijnen: tikdoelen minstens 40-44px, banner niet meer dan ~40% van het scherm, producten snel in beeld. */
+@media (hover: none) and (pointer: coarse) {
+  .chip { min-height: 40px; padding: 11px 16px; display: inline-flex; align-items: center; }
+  .sorteer select { min-height: 40px; padding-top: 12px; padding-bottom: 12px; }
+  .meer { padding: 10px 0; margin: -10px 0; }
+  .kruimel a { padding: 8px 0; margin: -8px 0; display: inline-block; }
+  .footer li a { padding: 10px 0; }
+  .lade-subs a, .lade-extra a { min-height: 44px; display: flex; align-items: center; }
+  .knop { min-height: 44px; }
+  .hartje { width: 40px; height: 40px; }
+}
+@media (max-width: 759px) {
+  /* banner thuis: korter, zodat 'Shop per categorie' eerder in beeld komt */
+  .hero-inhoud { padding-top: 112px; }
+  .hero p { margin: 10px 0 16px; font-size: 15px; }
+  /* categoriepagina: kop compacter, zodat de producten hoger staan */
+  .paginakop .binnen { padding-top: 14px; padding-bottom: 18px; }
+  .paginakop h1 { font-size: clamp(27px, 6.5vw, 40px); margin-top: 6px; }
+  .paginakop p { font-size: 14px; }
+  .subkaarten { grid-auto-columns: 96px; }
+  .subkaart .rond { width: 84px; height: 84px; }
+  .subkaarten.catrij .rond { width: 72px; height: 72px; }
+  .sectie[aria-label="Subcategorieën"] { padding-top: 18px; }
+  .prodkaart .shop, .awkaart .shop { font-size: 11px; }
+}
+.aw-laadknop { display: grid; gap: 10px; justify-items: start; }
+.aw-laadknop .uitleg { margin: 0; font-size: 13.5px; color: var(--tekst-3); max-width: 420px; }
+.zoek-cats { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.zoek-cats > span { flex: none; font: 700 13px/1 var(--f-ui); color: var(--goud-licht); }
+.zoek-cats .chip small { font-size: 11px; font-weight: 500; color: var(--tekst-3); margin-left: 5px; }
+.zoek-cats .chips { margin: 0 -16px 0 0; }
+@media (min-width: 1024px) { .zoek-cats .chips { margin: 0; } }
+/* Productpagina mobiel: balk met prijs en winkelknop die onderin blijft staan als je verder leest */
+.product-plak { position: fixed; left: 0; right: 0; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom)); z-index: 44; transform: translateY(120%); transition: transform .25s; background: rgba(7,12,24,.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--lijn); }
+.product-plak.zichtbaar { transform: none; }
+.product-plak .binnen { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
+.product-plak .prijs { font-size: 20px; margin: 0; padding: 0; }
+.product-plak .knop { padding: 12px 18px; font-size: 14px; }
+@media (min-width: 1024px) { .product-plak { display: none; } }
+@media (prefers-reduced-motion: reduce) { .product-plak { transition: none; } }
+@media (max-width: 1023px) { .plak-open .naarboven { bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 80px); } }
+@media (max-width: 759px) { .paginakop .achter img { object-position: center; } }

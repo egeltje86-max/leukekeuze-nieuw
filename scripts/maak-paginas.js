@@ -51,6 +51,8 @@ function maakPagina(info, lade, mega) {
          .replace(/\s*<meta property="og:image:(width|height)" content="[^"]*">/g, '');
   }
   if (info.geenIndex) h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex, follow">');
+  /* De banner van de homepage alleen vooraf laden op de homepage zelf (scheelt ~90 kB op elke andere pagina, vooral op mobiel). */
+  if (info.pad !== '/') h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-home-[^"]*"[^>]*>/g, '');
   h = zet(h, /<main id="app" tabindex="-1"><\/main>/, '<main id="app" tabindex="-1">' + info.inhoud + '</main>');
   if (info.pad.indexOf('/p/') !== 0) {  // productpagina's klein houden: menu's vult de site zelf
     h = zet(h, /<div class="lade-inhoud" data-lade><\/div>/, '<div class="lade-inhoud" data-lade>' + lade + '</div>');
