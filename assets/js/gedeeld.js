@@ -90,6 +90,7 @@
     zoek: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
     menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     sluit: '<path d="M6 6l12 12M18 6 6 18"/>',
+    filter: '<path d="M4 6h16M7 12h10M10 18h4"/>',
     pijl: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     links: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
     rechts: '<path d="m9 6 6 6-6 6"/>',

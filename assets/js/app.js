@@ -144,6 +144,21 @@
       return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + ((q.prijs || 'alle') === p.id) + '">' + p.label + '</a>';
     }).join('') + '</div>';
   }
+  /* Mobiel: knop 'Filter & sorteren' die onderin blijft staan als de werkbalk uit beeld is.
+     Tik je erop, dan schuift een paneel omhoog met de budgetknoppen (en sortering). Wens van Marius, 24-10-2026. */
+  function filterPaneel(pad, q, sorteerOpties) {
+    var aantalFilters = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.sort && q.sort !== 'aanbevolen' ? 1 : 0);
+    return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filter &amp; sorteren' +
+        (aantalFilters ? ' <span class="filter-teller">' + aantalFilters + '</span>' : '') + '</button>' +
+      '<div class="filterpaneel" data-filterpaneel hidden><button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
+        '<div class="filter-blad" role="dialog" aria-modal="true" aria-label="Filter en sorteren">' +
+          '<div class="filter-kop"><strong>Filter &amp; sorteren</strong><button type="button" class="filter-sluit" data-filter-dicht aria-label="Sluiten">' + ic('sluit') + '</button></div>' +
+          '<h3>Budget</h3>' + prijsChips(pad, q).replace('class="chips"', 'class="chips filter-chips"') +
+          (sorteerOpties ? '<h3>Sorteren</h3><div class="chips filter-chips">' + sorteerOpties.map(function (o) {
+            return '<a class="chip" href="' + maakAdres(pad, Object.assign({}, q, { sort: o[0] === 'aanbevolen' ? '' : o[0] })) + '" aria-pressed="' + ((q.sort || 'aanbevolen') === o[0]) + '">' + o[1] + '</a>';
+          }).join('') + '</div>' : '') +
+        '</div></div>';
+  }
   function zoekForm(waarde) {
     return '<form class="zoek" role="search" data-zoek>' +
       ic('zoek', 'lp') +
@@ -341,7 +356,7 @@
     }) +
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
-      werkbalk + gridMeer(lijst, leeg) +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
       winkelSectie(c.slug, s && s.slug, q.prijs) +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
@@ -492,6 +507,7 @@
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
         (catTips.length ? '<div class="zoek-cats"><span>Bekijk ook:</span><div class="chips">' + catTips.map(function (t) { return '<a class="chip" href="' + t.naar + '">' + t.naam + '</a>'; }).join('') + '</div></div>' : '') +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
+        filterPaneel('/zoek', q) +
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
         gridMeer(lijst, leegBlok(q.q ? 'Nog niets uitgekozen voor dit woord' : 'Niets gevonden', q.q ? 'Kijk hieronder in het aanbod van onze winkels, of laat VONK zoeken.' : 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
           '<a class="knop knop-goud" href="/vonk">Probeer VONK</a>'), q.q ? 8 : 24) +
@@ -867,7 +883,7 @@
   var laatstGetoond = null;
   /* Onthoud per pagina hoe ver je gescrold had en hoeveel producten je al open had geklapt ('Toon meer').
      Ga je vanaf een product met de terugknop terug naar de lijst, dan kom je weer op dezelfde plek uit (fijn op mobiel). */
-  var plekken = {}, terugViaKnop = false;
+  var plekken = {}, terugViaKnop = false, naarWerkbalk = false;
   try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
   function onthoudPlek() {
     if (laatstGetoond === null) return;
@@ -930,6 +946,17 @@
         document.body.classList.toggle('plak-open', uitBeeld);
         $$('a', plak).forEach(function (x) { x.tabIndex = uitBeeld ? 0 : -1; });
       }, { threshold: 0 }).observe(acties);
+    }
+
+    var fk = $('[data-filter-open]', app), wb = $('.werkbalk', app);
+    /* Na kiezen in het filterpaneel: terug naar het begin van de lijst, zodat je de nieuwe resultaten ziet. */
+    if (naarWerkbalk && wb) { naarWerkbalk = false; var kopH = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height;
+      window.scrollTo(0, Math.max(0, wb.getBoundingClientRect().top + window.scrollY - kopH - 8)); }
+    if (fk && wb && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        var uit = !es[0].isIntersecting && es[0].boundingClientRect.bottom < 0;
+        fk.classList.toggle('zichtbaar', uit); fk.setAttribute('aria-hidden', String(!uit)); fk.tabIndex = uit ? 0 : -1;
+      }, { threshold: 0 }).observe(wb);
     }
 
     var rij = $('.subkaarten', app);
@@ -1039,6 +1066,9 @@
       if (leesAdres().delen[0] === 'favorieten') toon();
       return;
     }
+    if (t.closest('[data-filterpaneel]') && t.tagName === 'A') naarWerkbalk = true;
+    if (t.hasAttribute('data-filter-open')) { var fp = $('[data-filterpaneel]'); if (fp) { fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); }); } return; }
+    if (t.hasAttribute('data-filter-dicht')) { var fp2 = $('[data-filterpaneel]'); if (fp2) { fp2.classList.remove('open'); setTimeout(function () { fp2.hidden = true; }, 250); } return; }
     if (t.hasAttribute('data-open-lade')) { openLade(); return; }
     if (t.hasAttribute('data-sluit-lade')) { sluitLade(); return; }
     if (t.hasAttribute('data-mega')) {
