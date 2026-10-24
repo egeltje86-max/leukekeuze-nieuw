@@ -4,6 +4,10 @@
    ========================================================= */
 
 window.LK_INSTELLINGEN = {
+  /* Daisycon heeft de site tijdelijk afgekeurd: hun links sturen bezoekers dan naar een vreemde site.
+     Zolang dit 'true' is, gaan de knoppen rechtstreeks naar de winkel (zonder partnerlink) en is 'Meer in onze winkels' verborgen.
+     Weer goedgekeurd? Zet dit op false. */
+  daisyconPauze: true,
   seizoen: 'kerst',            // 'kerst' of '' (neutraal)
   heroKicker: 'Bijzondere momenten',
   heroTitel: 'De mooiste cadeaus',
