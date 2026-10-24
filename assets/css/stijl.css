@@ -760,3 +760,13 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .product-plak { transition: none; } }
 @media (max-width: 1023px) { .plak-open .naarboven { bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 80px); } }
 @media (max-width: 759px) { .paginakop .achter img { object-position: center; } }
+/* Mobiel: de twee balken bovenaan iets dunner, zodat er meer ruimte is voor de producten (wens van Marius, 24-10-2026) */
+@media (max-width: 759px) {
+  :root { --header-h: 58px; }
+  .aftel { height: 42px; }
+  .aftel-zin { font-size: 15.5px; }
+  .aftel-getal { min-width: 30px; height: 28px; font-size: 17px; }
+  .aftel-beeld { width: 52px; }
+  .logo { font-size: 20px; }
+  .logo svg { width: 27px; height: 27px; }
+}
