@@ -32,9 +32,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Voor kinderen', naar: '/c/cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
     { label: 'Opa & oma', naar: '/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
     { label: 'Collega', naar: '/c/cadeaus/collega', beeld: 'images/sub/sub-cadeaus-collega.webp' },
-    { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
-    { label: 'Met naam', naar: '/c/cadeaus/met-naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' },
-    { label: 'Onder €15', naar: '/c/cadeaus/onder-15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' }
+    { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' }
   ],
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [

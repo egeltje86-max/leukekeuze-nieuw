@@ -210,6 +210,14 @@
           '</div>' +
         '</section>' +
 
+        /* 1b. Voor wie zoek je een cadeau? Eigen rij, zelfde rustige rondjes als de categorieën (wens van Marius). */
+        ((INST.voorWie || []).length ? '<section class="sectie">' +
+          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
+          '<div class="subkaarten voorwie-rij">' + INST.voorWie.map(function (x) {
+            return '<a class="subkaart" href="' + x.naar + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.label) + '</a>';
+          }).join('') + '</div>' +
+        '</section>' : '') +
+
         /* 2. VONK als smalle balk */
         '<a class="vonk-kaart vonk-klein" href="/vonk">' +
           ic('vonk', 'staf') +
