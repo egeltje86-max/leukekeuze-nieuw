@@ -31,7 +31,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Voor hem', naar: '/c/cadeaus/voor-hem', beeld: 'images/sub/sub-cadeaus-voor-hem.webp' },
     { label: 'Voor kinderen', naar: '/c/cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
     { label: 'Opa & oma', naar: '/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
-    { label: 'Collega', naar: '/c/cadeaus/collega', beeld: 'images/sub/sub-eten-drinken-pakketten.webp' },
+    { label: 'Collega', naar: '/c/cadeaus/collega', beeld: 'images/sub/sub-cadeaus-collega.webp' },
     { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
     { label: 'Met naam', naar: '/c/cadeaus/met-naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' },
     { label: 'Onder €15', naar: '/c/cadeaus/onder-15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' }
@@ -102,7 +102,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
       { slug: 'collega', naam: 'Cadeau voor collega',
         seoTitel: 'Cadeau voor collega: leuke kleinigheidjes en bedankjes',
-        seoTekst: 'Leuk cadeautje voor een collega? 90+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten en meer. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-eten-drinken-pakketten.webp',
+        seoTekst: 'Leuk cadeautje voor een collega? 140+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten en meer. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-cadeaus-collega.webp',
         tekst: 'Een leuk cadeautje voor een collega? Kleinigheidjes voor collega\'s bij lootjes, een verjaardag of afscheid: wijn, chocolade, borrelpakketten en meer.',
         gids: [
           { kop: 'Een cadeau voor een collega: waar let je op?', tekst: 'Je kent een collega vaak minder goed dan een vriend of familielid. Kies daarom iets wat bijna iedereen fijn vindt: iets lekkers, iets voor op het bureau of iets om thuis van te genieten. Een cadeau dat je samen met het team kunt delen, valt ook altijd goed.' },
