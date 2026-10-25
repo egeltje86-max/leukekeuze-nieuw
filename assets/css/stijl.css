@@ -826,3 +826,14 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .subkaarten.voorwie-rij { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); grid-auto-columns: auto; overflow: visible; margin: 0; padding: 4px 0; row-gap: 18px; }
 .subkaarten.voorwie-rij .rond { width: 84px; height: 84px; }
 @media (min-width: 760px) { .subkaarten.voorwie-rij { grid-template-columns: repeat(6, 112px); justify-content: center; gap: 12px 28px; } .subkaarten.voorwie-rij .rond { width: 96px; height: 96px; } }
+
+/* Cadeaugidsen */
+.gidslijst { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 18px 0 28px; }
+.gidskaart { display: flex; gap: 14px; align-items: center; padding: 12px; border: 1px solid var(--lijn-sterk); border-radius: var(--r-m); color: inherit; text-decoration: none !important; background: var(--kaart, transparent); }
+.gidskaart:hover { border-color: var(--goud-licht); }
+.gidsbeeld { flex: 0 0 84px; width: 84px; height: 84px; border-radius: 10px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; }
+.gidsbeeld img { width: 100%; height: 100%; object-fit: contain; }
+.gidskaart strong { display: block; font-size: 16px; line-height: 1.3; }
+.gidskaart small { display: block; margin-top: 4px; color: var(--tekst-2); font-size: 13px; line-height: 1.4; }
+.tekstpagina.gids { max-width: 760px; }
+.tekstpagina .klein { font-size: 13px; }

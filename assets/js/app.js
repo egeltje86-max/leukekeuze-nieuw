@@ -835,8 +835,17 @@
       '<h2>3. Je koopt bij de winkel</h2><p>Met de knop “Bekijk bij …” ga je naar de winkel. Daar bestel en betaal je. Bezorging, garantie en retour regel je met die winkel.</p>' +
       '<h2>Wat verdienen wij eraan?</h2><p>Koop je iets via onze link, dan krijgen wij soms een kleine vergoeding van de winkel. Jij betaalt daardoor niets extra.</p>'],
     'over-ons': ['Over LeukeKeuze',
-      '<p>LeukeKeuze helpt je snel een mooi cadeau te vinden, zonder eindeloos zoeken. We kiezen liever een paar goede dingen dan duizend middelmatige.</p>' +
-      '<p>Iets moois gevonden of een tip voor ons? We horen het graag via de <a href="/info/contact">contactpagina</a>.</p>' + CONCEPT],
+      '<p>Hoi, ik ben Marius Kestens uit Dordrecht. Ik maak LeukeKeuze naast mijn werk in de keuken. Het idee is simpel: een cadeau zoeken kost vaak veel tijd. Je klikt door honderden webwinkels en weet aan het eind nog steeds niet wat je moet kiezen. LeukeKeuze moet dat makkelijker maken.</p>' +
+      '<h2>Wat je hier vindt</h2><p>Op LeukeKeuze staan cadeaus en producten die ik met de hand heb uitgekozen. Ze zijn geordend op <a href="/c/cadeaus">voor wie</a>, op <a href="/c/cadeaus/onder-15">budget</a> en op onderwerp, van <a href="/c/christelijk">christelijke cadeaus</a> tot <a href="/c/metaaldetectie">metaaldetectie</a> (mijn eigen hobby). In de <a href="/gids">cadeaugidsen</a> zet ik per gelegenheid de beste ideeën op een rij, en met <a href="/vonk">VONK</a> vind je in een paar klikken iets passends.</p>' +
+      '<h2>Hoe ik producten kies</h2><ul>' +
+      '<li>Elk product bekijk ik eerst zelf: foto, prijs, omschrijving en de winkel.</li>' +
+      '<li>Liever een goed product dan tien bijna dezelfde. Andere kleuren van hetzelfde product zet ik er niet allemaal op.</li>' +
+      '<li>Ik let op een mix van goedkoop en duurder, zodat er voor elk budget iets is.</li>' +
+      '<li>Bij elk product schrijf ik in gewone woorden waarom het een goed cadeau is.</li>' +
+      '<li>Producten die niet meer leverbaar zijn of niet meer kloppen, haal ik weg.</li></ul>' +
+      '<h2>Eerlijk over geld</h2><p>LeukeKeuze is geen webwinkel. Je koopt altijd bij de winkel zelf, zoals bol of een andere bekende webwinkel. Koop je iets via een link op deze site, dan krijg ik soms een kleine vergoeding van die winkel (via partnerprogramma’s zoals Daisycon en bol). Jij betaalt daardoor niets extra. Die vergoeding bepaalt niet welke producten erop komen: ik kies wat ik zelf een goed cadeau vind. Meer daarover lees je bij <a href="/info/hoe-werkt-het">Hoe werkt het?</a></p>' +
+      '<h2>Contact</h2><p>Een tip, een fout gezien of een vraag? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Mijn gegevens staan ook in het <a href="/info/colofon">colofon</a>.</p>' +
+      '<h2 lang="en">About (English)</h2><p lang="en">LeukeKeuze is a Dutch gift-finder website run by Marius Kestens from Dordrecht, the Netherlands. Every product is hand-picked and described in plain Dutch. We do not sell anything ourselves; visitors buy directly from the shop. Some links are affiliate links (e.g. Daisycon, bol.com), which may earn us a small commission at no extra cost to the visitor.</p>' + CONCEPT],
     'contact': ['Contact',
       '<p>Vragen over een bestelling? Neem dan contact op met de winkel waar je het product hebt gekocht. Die regelt bezorging en retour.</p>' +
       '<p>Vragen of tips voor LeukeKeuze zelf? Mail ons op: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a></p>' +
@@ -896,6 +905,81 @@
     return paginakop({ titel: i[0], kruimel: [{ tekst: i[0] }] }) + '<div class="binnen"><article class="tekstpagina">' + i[1] + '</article></div>';
   }
 
+  /* ---------- Cadeaugidsen: eigen tekst met een paar gekozen producten per stukje ---------- */
+  var GIDSEN = [
+    { slug: 'sinterklaas-onder-15', titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
+      intro: 'Op pakjesavond gaat het niet om dure cadeaus, maar om iets leuks om uit te pakken. Daarom zette ik de beste cadeautjes onder de 15 euro op een rij. Handig als je meerdere kinderen hebt, of als je lootjes trekt met een vast bedrag.',
+      delen: [
+        { kop: 'Voor kinderen die graag iets maken', tekst: 'Knutselsetjes zijn ideaal voor de schoen of als klein pakje: goedkoop, en ze zijn er na pakjesavond nog dagen zoet mee.',
+          ids: ['bol-9300000071114106', 'bol-9300000169748883', 'bol-1004004007096491', 'bol-9200000109023395'] },
+        { kop: 'Puzzels en spelletjes', tekst: 'Een puzzel of spelletje kun je meteen samen doen, als de pakjes open zijn.',
+          ids: ['bol-9300000181433977', 'bol-9300000178728048', 'bol-9300000020405193', 'bol-9300000221675724'] },
+        { kop: 'Voor de lootjes onder volwassenen en tieners', tekst: 'Een mok van hun favoriete serie of film, of iets lekkers: altijd raak.',
+          ids: ['bol-9300000237478282', 'bol-9300000155871150', 'bol-9300000192710306', 'bol-9300000255947352'] }
+      ],
+      slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/sint-onder-15">alle Sinterklaascadeaus onder €15</a> en <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Tip: koop op tijd, rond 5 december zijn populaire cadeautjes vaak snel uitverkocht.' },
+    { slug: 'cadeau-voor-collega', titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
+      intro: 'Een cadeau voor een collega is lastig: je wilt iets persoonlijks, maar het mag niet te duur of te gek zijn. Deze cadeaus vallen bijna altijd goed, voor een verjaardag, een afscheid of als bedankje.',
+      delen: [
+        { kop: 'Kleine bedankjes (tot €20)', tekst: 'Iets lekkers of een klein plantje voor op het bureau. Niet te veel, wel attent.',
+          ids: ['bol-9300000017147055', 'bol-9300000239566022', 'bp-l114', 'dvzn-711692'] },
+        { kop: 'Voor op de werkplek', tekst: 'Praktisch en toch een cadeau: dingen waar iemand elke werkdag plezier van heeft.',
+          ids: ['bol-9300000237729002', 'bol-1003004011415851', 'bol-9300000002319410', 'bol-9300000143116033'] },
+        { kop: 'Afscheid met een knipoog', tekst: 'Gaat een collega weg? Een grappig cadeau maakt het afscheid luchtiger. Leuk om met het hele team te geven.',
+          ids: ['bol-9300000242745735', 'bol-9300000238049219', 'bol-9300000225912982', 'bol-9300000174098365'] }
+      ],
+      slot: 'Bekijk alle ideeën bij <a href="/c/cadeaus/collega">Cadeau voor collega</a>. Geef je met het hele team? Kijk dan ook eens naar de wat duurdere cadeaus, zoals een mooie laptoptas of lunchpot.' },
+    { slug: 'kerstcadeau-opa-oma', titel: 'Kerstcadeau voor opa en oma', kort: 'Cadeaus voor opa en oma die ze echt gaan gebruiken, van spelletjes tot herinneringen.',
+      intro: 'Opa en oma zeggen vaak dat ze niets nodig hebben. Toch zijn er cadeaus waar ze echt blij van worden: iets om samen met de kleinkinderen te doen, iets warms voor de winter, of een herinnering.',
+      delen: [
+        { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die opa en oma nog kennen van vroeger, en die kleinkinderen ook leuk vinden.',
+          ids: ['bol-1004004000008403', 'bol-1004004011781804', 'bol-9200000108574427', 'bol-9300000132852206'] },
+        { kop: 'Warm en gezellig de winter door', tekst: 'Voor lange winteravonden op de bank of in de stoel.',
+          ids: ['bol-9300000073597022', 'bol-9300000236851351', 'bol-9200000075452260', 'bol-9300000098766103'] },
+        { kop: 'Herinneringen en muziek', tekst: 'Foto’s van de kleinkinderen of muziek van vroeger: daar raken ze niet op uitgekeken.',
+          ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9300000171232502'] }
+      ],
+      slot: 'Nog meer ideeën staan bij <a href="/c/cadeaus/opa-oma">Cadeaus voor opa en oma</a> en <a href="/c/cadeaus/kerst">Kerstcadeaus</a>.' },
+    { slug: 'sfeerlicht-donkere-avonden', titel: 'Sfeerlicht voor donkere avonden: lavalampen, sterrenprojectors en meer', kort: 'De klok is terug en het is vroeg donker. Zo maak je het thuis gezellig.',
+      intro: 'Als de klok een uur terug gaat, is het ineens om half zes al donker. Een fel plafondlicht maakt het dan niet gezellig. Deze lampen geven sfeer, en het zijn ook leuke cadeaus voor tieners en volwassenen.',
+      delen: [
+        { kop: 'Lavalampen', tekst: 'De klassieker uit de jaren zeventig is weer helemaal terug. Rustgevend om naar te kijken.',
+          ids: ['bol-9300000178837609', 'bol-9300000021560153', 'bol-9300000270438411', 'bol-9300000181178047'] },
+        { kop: 'Sterren en noorderlicht op je plafond', tekst: 'Projectors die een sterrenhemel of noorderlicht op je plafond toveren. Heerlijk om bij in slaap te vallen.',
+          ids: ['bol-9300000191136002', 'bol-9300000193639901', 'bol-9300000019790368', 'bol-9300000164083567'] },
+        { kop: 'Erbij voor een filmavond', tekst: 'Lichten uit, lamp aan, film starten.',
+          ids: ['bol-9300000340258889', 'bol-9300000363626899', 'bol-9300000252154423', 'bol-9300000166331103'] }
+      ],
+      slot: 'Meer lampen vind je bij <a href="/c/wonen/verlichting">Verlichting</a>.' }
+  ];
+  function gidsKaart(g) {
+    var eerste = g.delen[0].ids.map(function (id) { return LK.vind(id); }).filter(Boolean)[0];
+    return '<a class="gidskaart" href="/gids/' + g.slug + '">' + '<span class="gidsbeeld">' + (eerste ? LK.productBeeld(eerste) : '') + '</span>' +
+      '<span><strong>' + esc(g.titel) + '</strong><small>' + esc(g.kort) + '</small></span></a>';
+  }
+  function gids(slug) {
+    if (!slug) {
+      zetTitel('Cadeaugidsen');
+      window.LK_SEO = 'Cadeaugidsen van LeukeKeuze: per gelegenheid de beste cadeau-ideeën op een rij, met de hand gekozen en in gewone woorden uitgelegd.';
+      return paginakop({ titel: 'Cadeaugidsen', tekst: 'Per gelegenheid de beste ideeën op een rij, met uitleg.', kruimel: [{ tekst: 'Cadeaugidsen' }] }) +
+        '<div class="binnen"><div class="gidslijst">' + GIDSEN.map(gidsKaart).join('') + '</div></div>';
+    }
+    var g = GIDSEN.filter(function (x) { return x.slug === slug; })[0];
+    if (!g) return nietGevonden();
+    zetTitel(g.titel);
+    window.LK_SEO = g.kort + ' ' + g.intro.split('. ')[0] + '.';
+    var h = paginakop({ titel: g.titel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: g.titel }] }) +
+      '<div class="binnen"><article class="tekstpagina gids"><p>' + esc(g.intro) + '</p></article>';
+    g.delen.forEach(function (d) {
+      var lijst = d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen; });
+      if (!lijst.length) return;
+      h += '<section class="sectie"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p></div>' + grid(lijst, '') + '</section>';
+    });
+    h += '<article class="tekstpagina gids"><p>' + g.slot + '</p><p class="klein">Prijzen kunnen veranderen. De prijs bij de winkel is altijd leidend.</p>' +
+      '<h2>Meer cadeaugidsen</h2><div class="gidslijst">' + GIDSEN.filter(function (x) { return x !== g; }).map(gidsKaart).join('') + '</div></article></div>';
+    return h;
+  }
+
   function nietGevonden(tekst) {
     zetTitel('Niet gevonden');
     return paginakop({ titel: 'Niet gevonden', tekst: tekst || 'Deze pagina bestaat niet (meer).' }) +
@@ -923,7 +1007,7 @@
           '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
           volleSubs(c).map(function (s) { return '<a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
       }).join('') + '</ul>' +
-      '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn favorieten</a><a href="/zoek">Zoeken</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
+      '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn favorieten</a><a href="/zoek">Zoeken</a><a href="/gids">Cadeaugidsen</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
@@ -1026,6 +1110,7 @@
     else if (d[0] === 'vonk') html = vonk(a.q);
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'info') html = info(d[1]);
+    else if (d[0] === 'gids') html = gids(d[1]);
     else if (d[0] === 'winkels') html = winkels();
     else html = nietGevonden();
 

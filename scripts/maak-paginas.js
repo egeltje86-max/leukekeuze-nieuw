@@ -13,7 +13,7 @@ const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
   .replace(/(assets\/(?:css\/stijl\.css|js\/(?:data|producten|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
-const MAPPEN = ['c', 'p', 'info', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen'];
+const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen'];
 const GEEN_INDEX = /^\/(favorieten|zoek)\//;
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
@@ -167,8 +167,8 @@ function maakPagina(info, lade, mega) {
   const oud = `<script>
   (function () {
     var p = location.pathname.replace(/\\/+$/, '').toLowerCase();
-    var kaart = { '/christelijke-cadeaus': '/c/christelijk/', '/cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/', '/cadeauzoeker': '/vonk/', '/c/cadeaus/onder-10': '/c/cadeaus/onder-15/', '/c/mode-beauty/sieraden': '/c/sieraden/', '/c/christelijk/doop-communie': '/c/christelijk/doop-belijdenis/', '/c/christelijk/beelden-kruisen': '/c/christelijk/wanddecoratie/', '/cadeaugidsen': '/' };
-    var doel = kaart[p] || (/^\\/(cadeaugids|keurkamer)\\//.test(p + '/') ? '/' : '');
+    var kaart = { '/christelijke-cadeaus': '/c/christelijk/', '/cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/', '/cadeauzoeker': '/vonk/', '/c/cadeaus/onder-10': '/c/cadeaus/onder-15/', '/c/mode-beauty/sieraden': '/c/sieraden/', '/c/christelijk/doop-communie': '/c/christelijk/doop-belijdenis/', '/c/christelijk/beelden-kruisen': '/c/christelijk/wanddecoratie/', '/cadeaugidsen': '/gids/' };
+    var doel = kaart[p] || (/^\\/cadeaugids\\//.test(p + '/') ? '/gids/' : (/^\\/keurkamer\\//.test(p + '/') ? '/' : ''));
     if (doel) location.replace(doel);
   })();
   </script>`;
