@@ -366,6 +366,7 @@
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
+      (s && s.gids ? '<section class="sectie gids" aria-label="Tips">' + s.gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       winkelSectie(c.slug, s && s.slug, q.prijs) +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
@@ -457,7 +458,7 @@
 
   /* ---------- Zoeken ---------- */
   /* Woorden die mensen typen, naast wat er bij een product staat (zoals 'cadeau vrouw' of 'schoencadeau'). */
-  var SYN = { haar: 'vrouw vrouwen dames moeder mama vriendin zus', hem: 'man mannen heren vader papa vriend broer', kind: 'kinderen jongen meisje jongens meisjes',
+  var SYN = { collega: 'collega collegas werk kantoor lootjes bedankje kleinigheid kleinigheidje afscheid', haar: 'vrouw vrouwen dames moeder mama vriendin zus', hem: 'man mannen heren vader papa vriend broer', kind: 'kinderen jongen meisje jongens meisjes',
     'opa-oma': 'opa oma grootouders', kerst: 'kerstmis kerstcadeau', sinterklaas: 'sint pakjesavond schoencadeau schoencadeautje surprise', verjaardag: 'jarig', zomaar: 'bedankje' };
   var SUBSYN = { 'mode-beauty/geuren': 'parfum geur' };
   function zoekTekst(p) {
@@ -683,12 +684,13 @@
         return q.voor === 'iedereen' || p.cat !== 'dieren';
       });
       var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
-      var precies = alle.filter(function (p) { return past(p.voor, q.voor) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
+      var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
+      var precies = alle.filter(function (p) { return pastVoor(p) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
       precies.sort(function (a, b) { return echt(a) - echt(b); });
       var bijna = alle.filter(function (p) {
         if (precies.indexOf(p) !== -1) return false;
-        var score = (past(p.voor, q.voor) ? 1 : 0) + (past(p.moment, q.moment) ? 1 : 0) + (binnenPrijs(p, q.budget) ? 1 : 0);
-        return score === 2 && past(p.voor, q.voor);
+        var score = (pastVoor(p) ? 1 : 0) + (past(p.moment, q.moment) ? 1 : 0) + (binnenPrijs(p, q.budget) ? 1 : 0);
+        return score === 2 && pastVoor(p);
       });
       /* Eerst wat echt voor deze persoon is gekozen, daarna wat voor iedereen leuk is. Alles tonen, met 'Toon meer'. */
       var gevonden = precies.length ? precies : bijna;

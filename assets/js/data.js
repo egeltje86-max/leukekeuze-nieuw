@@ -21,6 +21,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Dranken', naar: '/c/dranken' },
     { label: 'Voor haar', naar: '/c/cadeaus/voor-haar' },
     { label: 'Voor hem', naar: '/c/cadeaus/voor-hem' },
+    { label: 'Collega', naar: '/c/cadeaus/collega' },
     { label: 'Onder €15', naar: '/c/cadeaus/onder-15' },
     { label: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' }
   ],
@@ -30,6 +31,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Voor hem', naar: '/c/cadeaus/voor-hem', beeld: 'images/sub/sub-cadeaus-voor-hem.webp' },
     { label: 'Voor kinderen', naar: '/c/cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
     { label: 'Opa & oma', naar: '/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
+    { label: 'Collega', naar: '/c/cadeaus/collega', beeld: 'images/sub/sub-eten-drinken-pakketten.webp' },
     { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
     { label: 'Met naam', naar: '/c/cadeaus/met-naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' },
     { label: 'Onder €15', naar: '/c/cadeaus/onder-15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' }
@@ -98,6 +100,14 @@ window.LK_CATEGORIEEN = [
       { slug: 'sint-onder-15', naam: 'Sint onder €15', tekst: 'Snel een schoencadeautje of surprise nodig? Hier staat alles uit Sinterklaas onder de 15 euro.', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
       { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders.webp' },
       { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
+      { slug: 'collega', naam: 'Cadeau voor collega', beeld: 'images/sub/sub-eten-drinken-pakketten.webp',
+        tekst: 'Een leuk cadeautje voor een collega? Kleinigheidjes voor collega\'s bij lootjes, een verjaardag of afscheid: wijn, chocolade, borrelpakketten en meer.',
+        gids: [
+          { kop: 'Een cadeau voor een collega: waar let je op?', tekst: 'Je kent een collega vaak minder goed dan een vriend of familielid. Kies daarom iets wat bijna iedereen fijn vindt: iets lekkers, iets voor op het bureau of iets om thuis van te genieten. Een cadeau dat je samen met het team kunt delen, valt ook altijd goed.' },
+          { kop: 'Lootjes trekken op het werk', tekst: 'Bij Sinterklaas of Kerst trekken veel teams lootjes. Meestal ligt het budget tussen de 5 en 15 euro. Gebruik de prijsknoppen hierboven om alleen cadeaus binnen jullie budget te zien.' },
+          { kop: 'Een collega die afscheid neemt', tekst: 'Gaat een collega weg of met pensioen? Leg dan samen geld in voor iets groters, zoals een borrelpakket of een mooie planner voor de nieuwe baan.' },
+          { kop: 'Een bedankje of een jarige collega', tekst: 'Voor een klein bedankje of een verjaardag is iets lekkers door de brievenbus, een plantje of een geurkaarsje vaak al genoeg. Klein, maar het laat zien dat je aan iemand denkt.' }
+        ] },
       { slug: 'baby-kraam', naam: 'Baby & kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
       { slug: 'onder-15', naam: 'Onder €15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' },
       { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' }
@@ -227,7 +237,7 @@ window.LK_PRIJZEN = [
 window.LK_VONK = {
   voor: [
     { id: 'haar', label: 'Haar' }, { id: 'hem', label: 'Hem' }, { id: 'kind', label: 'Een kind' },
-    { id: 'opa-oma', label: 'Opa of oma' }, { id: 'iedereen', label: 'Maakt niet uit' }
+    { id: 'opa-oma', label: 'Opa of oma' }, { id: 'collega', label: 'Een collega' }, { id: 'iedereen', label: 'Maakt niet uit' }
   ],
   moment: [
     { id: 'kerst', label: 'Kerst' }, { id: 'sinterklaas', label: 'Sinterklaas' }, { id: 'verjaardag', label: 'Verjaardag' },

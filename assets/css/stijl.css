@@ -795,3 +795,8 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .filterknop, .filter-blad, .filter-achter { transition: none; } }
 .plak-open .filterknop { display: none; }
 .footer-onder a { color: var(--tekst-2); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Tipsblok onder een subcategorie (bijv. Cadeau voor collega) */
+.gids { max-width: 760px; }
+.gids h2 { font-size: 1.25rem; color: var(--goud-licht); margin: 22px 0 6px; }
+.gids p { color: var(--tekst-2); line-height: 1.65; margin: 0; }
