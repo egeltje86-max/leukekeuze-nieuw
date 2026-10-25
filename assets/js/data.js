@@ -22,6 +22,7 @@ window.LK_INSTELLINGEN = {
     { label: 'Voor haar', naar: '/c/cadeaus/voor-haar' },
     { label: 'Voor hem', naar: '/c/cadeaus/voor-hem' },
     { label: 'Collega', naar: '/c/cadeaus/collega' },
+    { label: 'Christelijk', naar: '/c/christelijk' },
     { label: 'Onder €15', naar: '/c/cadeaus/onder-15' },
     { label: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' }
   ],

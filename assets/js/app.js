@@ -203,7 +203,12 @@
           '<div class="sectie-kop"><div><h2>Shop per categorie</h2></div></div>' +
           '<div class="catrij-wrap">' +
             '<button class="catrij-pijl links" type="button" data-catrij="-1" aria-label="Naar links">' + ic('links') + '</button>' +
-            '<div class="subkaarten catrij">' + CATS.map(function (c) {
+            '<div class="subkaarten catrij">' + (function () {
+              /* Christelijke cadeaus op plek 4 in deze rij, zodat je hem meteen ziet (wens van Marius). Menu's houden de gewone volgorde. */
+              var rij = CATS.filter(function (c) { return c.slug !== 'christelijk'; }), chr = window.LK_CAT('christelijk');
+              if (chr) rij.splice(3, 0, chr);
+              return rij;
+            })().map(function (c) {
               return '<a class="subkaart" href="/c/' + c.slug + '"><span class="rond"><img src="' + esc(c.tegel.replace('.webp', '-klein.webp')) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.kort) + '</a>';
             }).join('') + '</div>' +
             '<button class="catrij-pijl rechts" type="button" data-catrij="1" aria-label="Naar rechts">' + ic('rechts') + '</button>' +
