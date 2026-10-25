@@ -224,11 +224,11 @@ window.LK_CATEGORIEEN = [
     ],
     tegel: 'images/categorieen/categorie-christelijk.webp', banner: 'images/banners/banner-cat-christelijk.webp',
     subs: [
-      { slug: 'bijbeltekst', naam: 'Met Bijbeltekst', kop: 'Cadeau met Bijbeltekst', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp',
+      { slug: 'bijbeltekst', naam: 'Met Bijbeltekst', kop: 'Cadeau met Bijbeltekst', beeld: 'images/sub/sub-christelijk-bijbeltekst.webp',
         seoTitel: 'Cadeau met Bijbeltekst: tegeltjes, wandborden en meer',
         seoTekst: 'Een geschenk met een Bijbeltekst: tegeltjes, wandborden, sieraden en dagboeken met Psalm 23, Jozua 1:9 en andere teksten. Om te troosten of te bemoedigen.',
         tekst: 'Een Bijbeltekst om elke dag te zien. Tegeltjes, wandborden, sieraden en dagboeken met teksten die troosten, bemoedigen of gewoon blij maken.' },
-      { slug: 'onder-25', naam: 'Onder €25', kop: 'Christelijk cadeau onder €25', beeld: 'images/sub/sub-christelijk-kerst.webp',
+      { slug: 'onder-25', naam: 'Onder €25', kop: 'Christelijk cadeau onder €25', beeld: 'images/sub/sub-christelijk-onder-25.webp',
         seoTitel: 'Christelijk cadeau onder €25',
         seoTekst: 'Christelijke cadeaus onder de 25 euro: kleine Bijbels, tegeltjes met Bijbeltekst, kruiskettingen, kinderboekjes en meer. Een mooi gebaar voor elk budget.',
         tekst: 'Een betekenisvol cadeau hoeft niet duur te zijn. Hier staan alle christelijke cadeaus onder de 25 euro (zonder losse kaartjes).' },
