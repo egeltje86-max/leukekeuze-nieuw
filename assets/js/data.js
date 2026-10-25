@@ -213,9 +213,25 @@ window.LK_CATEGORIEEN = [
       { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }, { slug: 'agendas', naam: 'Agenda’s & notitieboeken', beeld: 'images/sub/sub-boeken-media-agendas.webp' }, { slug: 'lezen', naam: 'Leesplezier', beeld: 'images/sub/sub-boeken-media-lezen.webp' }
     ] },
   { slug: 'christelijk', naam: 'Christelijke cadeaus', kort: 'Christelijke cadeaus', icoon: 'kruis',
-    tekst: 'Geloof, hoop en liefde in mooie geschenken.',
+    tekst: 'Op zoek naar een christelijk cadeau met betekenis? Ontdek Bijbels, sieraden met een kruis, tegeltjes en wandborden met een Bijbeltekst en mooie geschenken voor jong en oud. Voor een doop, belijdenis, verjaardag of om iemand een hart onder de riem te steken.',
+    seoTitel: 'Christelijke cadeaus & geschenken met betekenis',
+    seoTekst: 'Christelijke cadeaus en geschenken: Bijbels, kruiskettingen, tegeltjes met Bijbeltekst, kinderbijbels en meer. Voor doop, belijdenis, verjaardag of troost.',
+    gids: [
+      { kop: 'Een christelijk cadeau kiezen', tekst: 'Een christelijk cadeau zegt vaak meer dan een gewoon cadeau. Denk na over wat de ontvanger raakt: een Bijbeltekst die bij een moment in het leven past, een sieraad dat elke dag gedragen wordt of een boek om samen in te lezen. Kijk ook naar de vertaling of de stijl die iemand in de kerk gewend is.' },
+      { kop: 'Voor een doop, communie of belijdenis', tekst: 'Bij een doop of communie zijn een kinderbijbel, een gebedenboekje of een klein kruisje mooie blijvende cadeaus. Voor een belijdenis kies je vaak iets persoonlijkers, zoals een eigen Bijbel, een dagboek of een sieraad met een kruis.' },
+      { kop: 'Een geschenk met een Bijbeltekst', tekst: 'Een tegeltje, wandbord of kaart met een Bijbeltekst is een klein gebaar dat lang blijft hangen. Teksten als Psalm 23 of "Wees sterk en moedig" geven troost en kracht, bijvoorbeeld bij ziekte, verdriet of een nieuwe stap in het leven.' },
+      { kop: 'Christelijke cadeaus voor kinderen', tekst: 'Voor kinderen zijn er kinderbijbels met mooie platen, psalmen en gebedjes op kindermaat en speelgoed met Bijbelverhalen, zoals de ark van Noach. Zo maken ze op een speelse manier kennis met het geloof.' }
+    ],
     tegel: 'images/categorieen/categorie-christelijk.webp', banner: 'images/banners/banner-cat-christelijk.webp',
     subs: [
+      { slug: 'bijbeltekst', naam: 'Met Bijbeltekst', kop: 'Cadeau met Bijbeltekst', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp',
+        seoTitel: 'Cadeau met Bijbeltekst: tegeltjes, wandborden en meer',
+        seoTekst: 'Een geschenk met een Bijbeltekst: tegeltjes, wandborden, sieraden en dagboeken met Psalm 23, Jozua 1:9 en andere teksten. Om te troosten of te bemoedigen.',
+        tekst: 'Een Bijbeltekst om elke dag te zien. Tegeltjes, wandborden, sieraden en dagboeken met teksten die troosten, bemoedigen of gewoon blij maken.' },
+      { slug: 'onder-25', naam: 'Onder €25', kop: 'Christelijk cadeau onder €25', beeld: 'images/sub/sub-christelijk-kerst.webp',
+        seoTitel: 'Christelijk cadeau onder €25',
+        seoTekst: 'Christelijke cadeaus onder de 25 euro: kleine Bijbels, tegeltjes met Bijbeltekst, kruiskettingen, kinderboekjes en meer. Een mooi gebaar voor elk budget.',
+        tekst: 'Een betekenisvol cadeau hoeft niet duur te zijn. Hier staan alle christelijke cadeaus onder de 25 euro (zonder losse kaartjes).' },
       { slug: 'kerst', naam: 'Kerst', beeld: 'images/sub/sub-christelijk-kerst.webp' },
       { slug: 'bijbels', naam: 'Bijbels', beeld: 'images/sub/sub-christelijk-bijbels.webp' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters', beeld: 'images/sub/sub-christelijk-kaarten-posters.webp' },
       { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-christelijk-sieraden.webp' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp' },

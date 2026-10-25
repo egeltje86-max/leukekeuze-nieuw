@@ -337,8 +337,9 @@
     if (!c) return nietGevonden();
     var s = subSlug ? window.LK_SUB(c, subSlug) : null;
     if (subSlug && !s) return nietGevonden();
-    zetTitel(s ? (s.seoTitel || s.naam + ' – ' + c.naam) : c.naam);
-    window.LK_SEO = (s && s.seoTekst) || '';
+    zetTitel(s ? (s.seoTitel || s.naam + ' – ' + c.naam) : (c.seoTitel || c.naam));
+    window.LK_SEO = (s ? s.seoTekst : c.seoTekst) || '';
+    var gids = s ? s.gids : c.gids;
 
     var pad = '/c/' + c.slug + (s ? '/' + s.slug : '');
     var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs); });
@@ -367,7 +368,7 @@
     var ouder = c.onder ? window.LK_CAT(c.onder) : null;
 
     return paginakop({
-      titel: s ? s.naam : c.naam,
+      titel: s ? (s.kop || s.naam) : (c.kop || c.naam),
       tekst: s ? (s.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : c.tekst,
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
       kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
@@ -375,7 +376,7 @@
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
-      (s && s.gids ? '<section class="sectie gids" aria-label="Tips">' + s.gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
+      (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       winkelSectie(c.slug, s && s.slug, q.prijs) +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +

@@ -39,6 +39,8 @@
     if (cat === 'cadeaus' && sub === 'onder-15') return typeof p.prijs === 'number' && p.prijs < 15;
     /* 'Sint onder €15' gaat ook automatisch: alles uit Sinterklaas onder de 15 euro (wens van Marius). */
     if (cat === 'cadeaus' && sub === 'sint-onder-15') return typeof p.prijs === 'number' && p.prijs < 15 && hoortBij(p, 'cadeaus', 'sinterklaas');
+    /* 'Christelijk cadeau onder €25' gaat automatisch op prijs. Kaartjes (onder €5) tellen niet mee: dat zijn geen cadeaus. */
+    if (cat === 'christelijk' && sub === 'onder-25') return p.cat === 'christelijk' && typeof p.prijs === 'number' && p.prijs >= 5 && p.prijs < 25;
     /* Een categorie die 'onder' een andere hangt (Metaaldetectie onder Sport) telt daar mee als sub. */
     var kind = (window.LK_CATEGORIEEN || []).find(function (c) { return c.onder === cat && c.slug === p.cat; });
     if (kind && (!sub || sub === kind.slug)) return true;
