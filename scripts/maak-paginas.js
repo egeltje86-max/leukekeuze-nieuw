@@ -98,7 +98,8 @@ function maakPagina(info, lade, mega) {
     mega: document.querySelector('[data-megamenu]').innerHTML
   }));
 
-  const gezien = new Set(['/']), rij = ['/'], paginas = [];
+  /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
+  const gezien = new Set(['/', '/categorieen']), rij = ['/', '/categorieen'], paginas = [];
   while (rij.length) {
     const pad = rij.shift();
     const r = await page.evaluate(pad => {
@@ -125,13 +126,20 @@ function maakPagina(info, lade, mega) {
         const pr = window.LK.vind(pad.split('/')[2]);
         if (pr) prod = { naam: pr.titel, tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
       }
+      /* Datum voor de sitemap: productpagina's de laatste controle, categoriepagina's het nieuwste product erin. */
+      let datum = '';
+      if (pad.indexOf('/p/') === 0) { const pr = window.LK.vind(pad.split('/')[2]); if (pr) datum = pr.gecontroleerd || pr.sinds || ''; }
+      else if (pad.indexOf('/c/') === 0) {
+        const d = pad.split('/').filter(Boolean);
+        window.LK.zichtbaar().forEach(p => { if (window.LK.hoortBij(p, d[1], d[2])) { const s = p.sinds || p.gecontroleerd || ''; if (s > datum) datum = s; } });
+      }
       const h1 = (app.querySelector('h1') || {}).textContent || '';
       const namen = Array.from(document.querySelectorAll('#app .prodkaart h3')).slice(0, 3).map(x => x.textContent.trim());
       return {
         titel: document.title, inhoud: app.innerHTML, links, aantal,
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
-        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : ''
+        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum
       };
     }, pad);
     for (const l of r.links) if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
@@ -143,7 +151,7 @@ function maakPagina(info, lade, mega) {
     }
     oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod,
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : '', geenIndex: GEEN_INDEX.test(pad) || r.leeg });
   }
   await browser.close(); srv.close();
@@ -171,7 +179,8 @@ function maakPagina(info, lade, mega) {
   fs.writeFileSync(path.join(ROOT, '404.html'), vier);
 
   const vandaag = new Date().toISOString().slice(0, 10);
-  const urls = paginas.filter(p => !p.geenIndex).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + vandaag + '</lastmod></url>');
+  /* lastmod: een echte datum per pagina (niet elke keer 'vandaag'), anders negeert Google hem. */
+  const urls = paginas.filter(p => !p.geenIndex).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
 })().catch(e => { console.error(e); process.exit(1); });

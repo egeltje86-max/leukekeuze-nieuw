@@ -24,8 +24,8 @@
   }
   function zichtbaar() { return producten().filter(function (p) { return p.status === 'goedgekeurd'; }); }
   function vind(id) { return producten().find(function (p) { return p.id === id; }); }
-  /* 'Nieuw' = de eerste 3 weken op de site ('sinds'). Zonder datum telt het vinkje 'nieuw'. */
-  var NIEUW_DAGEN = 21;
+  /* 'Nieuw' = de eerste 2 weken op de site ('sinds'). Zonder datum telt het vinkje 'nieuw'. */
+  var NIEUW_DAGEN = 14;
   function isNieuw(p) {
     if (p.sinds) { var t = Date.parse(p.sinds); return !isNaN(t) && (Date.now() - t) < NIEUW_DAGEN * 864e5; }
     return !!p.nieuw;

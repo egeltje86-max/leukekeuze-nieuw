@@ -101,7 +101,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
       { slug: 'collega', naam: 'Cadeau voor collega',
         seoTitel: 'Cadeau voor collega: leuke kleinigheidjes en bedankjes',
-        seoTekst: 'Leuk cadeautje voor een collega? 145+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten en meer. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-cadeaus-collega.webp',
+        seoTekst: 'Leuk cadeautje voor een collega? 200+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten, mokken en pensioencadeaus. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-cadeaus-collega.webp',
         tekst: 'Een leuk cadeautje voor een collega? Kleinigheidjes voor collega\'s bij lootjes, een verjaardag of afscheid: wijn, chocolade, borrelpakketten en meer.',
         gids: [
           { kop: 'Een cadeau voor een collega: waar let je op?', tekst: 'Je kent een collega vaak minder goed dan een vriend of familielid. Kies daarom iets wat bijna iedereen fijn vindt: iets lekkers, iets voor op het bureau of iets om thuis van te genieten. Een cadeau dat je samen met het team kunt delen, valt ook altijd goed.' },
@@ -118,6 +118,8 @@ window.LK_CATEGORIEEN = [
     tegel: 'images/categorieen/categorie-speelgoed.webp', banner: 'images/banners/banner-cat-speelgoed.webp',
     subs: [
       { slug: 'baby-peuter', naam: 'Baby & peuter', beeld: 'images/sub/sub-speelgoed-baby-peuter.webp' }, { slug: 'bouwen', naam: 'Bouwen', beeld: 'images/sub/sub-speelgoed-bouwen.webp' },
+      /* Speelfiguren, auto's, tractors en treinen (Schleich, Playmobil, Bruder, BRIO). Plaatje volgt nog van Nova; tot die tijd toont de site het gouden icoon. */
+      { slug: 'figuren-voertuigen', naam: 'Figuren & voertuigen', beeld: '', tekst: 'Speelfiguren en dieren van Schleich en Playmobil, tractors en vrachtwagens van Bruder en SIKU, en houten treinen van BRIO.' },
       { slug: 'bordspellen', naam: 'Bord- & tafelspellen', beeld: 'images/sub/sub-speelgoed-bordspellen.webp' }, { slug: 'kaartspellen', naam: 'Kaart- & dobbelspellen', beeld: 'images/sub/sub-speelgoed-kaartspellen.webp' }, { slug: 'puzzels', naam: 'Puzzels', beeld: 'images/sub/sub-speelgoed-puzzels.webp' },
       { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed', beeld: 'images/sub/sub-speelgoed-buitenspeelgoed.webp' }, { slug: 'knutselen', naam: 'Knutselen voor kinderen', beeld: 'images/sub/sub-speelgoed-knutselen.webp' }
     ] },
@@ -273,6 +275,7 @@ window.LK_SUB = function (cat, slug) {
 window.LK_ZOEKWOORDEN = {
  "speelgoed/baby-peuter": "knuffel rammelaar babyspeelgoed bijtring",
  "speelgoed/bouwen": "bouwpakket bouwset lego blokken",
+ "speelgoed/figuren-voertuigen": "schleich playmobil speelfiguur speelfiguren bruder siku brio speelgoedauto speelgoedtractor treinset houten trein",
  "speelgoed/bordspellen": "bordspel bordspellen",
  "speelgoed/kaartspellen": "kaartspel kaartspellen dobbelspel",
  "speelgoed/puzzels": "puzzel puzzels legpuzzel",
@@ -375,6 +378,38 @@ window.LK_ZOEKWOORDEN = {
  "sport-outdoor": "camping dart dartbord darts drinkfles fiets fietsbel fitness golf golfbal golfballen kamperen picknick tent toilettas wandelstok yoga",
  "dieren": "cavia hamster hond honden kat katten konijn nestkast poes vogel vogelhuisje vogels",
  "boeken-media": "agenda boekenlegger boekensteun boekensteunen film kinderboek kookboek leeslampje muziek notitieboek planner popcorn prentenboek roman vinyl"
+};
+/* Extra woorden waarmee de zoekpagina een (sub)categorie als tip laat zien ('Bekijk ook: …'), naast de naam van de categorie.
+   Voor Christelijke cadeaus tellen alleen deze woorden, zodat die categorie niet bij elk 'kerst' opduikt. */
+window.LK_ZOEKTIPS = {
+ "christelijk": "christelijk christelijke bijbel bijbels bijbeltekst gereformeerd kerk geloof psalm psalmen",
+ "christelijk/bijbels": "bijbel bijbels statenvertaling hsv kinderbijbel",
+ "christelijk/doop-belijdenis": "doop doopcadeau belijdenis belijdeniscadeau",
+ "christelijk/bijbeltekst": "bijbeltekst psalm tegeltje",
+ "christelijk/kerststal-engelen": "kerststal",
+ "cadeaus/onder-15": "goedkoop goedkope budget klein kleinigheidje",
+ "cadeaus/sint-onder-15": "schoencadeau schoencadeautje lootjes surprise",
+ "cadeaus/sinterklaas": "sint pakjesavond schoencadeau surprise",
+ "cadeaus/kerst": "kerstcadeau kerstcadeaus kerstpakket",
+ "cadeaus/collega": "collega werk kantoor pensioen afscheid bedankje lootjes juf meester leerkracht",
+ "cadeaus/met-naam": "gepersonaliseerd persoonlijk gegraveerd gravure naam",
+ "cadeaus/baby-kraam": "kraamcadeau geboorte babyshower zwanger",
+ "cadeaus/voor-haar": "vrouw vrouwen moeder mama vriendin zus oma",
+ "cadeaus/voor-hem": "man mannen vader papa vriend broer opa",
+ "cadeaus/opa-oma": "opa oma grootouders",
+ "cadeaus/voor-kinderen": "kind kinderen jongen meisje tiener",
+ "cadeaus/adventskalenders": "adventskalender advent aftellen",
+ "eten-drinken/pakketten": "kerstpakket cadeaupakket borrelpakket borrel",
+ "wonen": "housewarming verhuizing verhuisd woning",
+ "wonen/kerstdecoratie": "kerstversiering kerstspullen",
+ "hobby/knutselen": "diy zelfmaken zelf maken zeep kaarsen",
+ "metaaldetectie": "metaaldetector metaaldetectie schatzoeken",
+ "metaaldetectie/pinpointers": "pinpointer",
+ "metaaldetectie/magneetvissen": "magneetvissen vismagneet",
+ "boeken-media/lezen": "e-reader ereader kindle",
+ "elektronica/audio": "speaker alexa echo",
+ "dranken/whisky": "whiskey whisky",
+ "dranken/wijnaccessoires": "whiskyglazen whiskystenen karaf"
 };
 /* Woorden die NIET in de titel mogen staan bij 'Meer in onze winkels' (zoals 'gordijn met ringen' bij Ringen). */
 window.LK_NIETWOORDEN = {

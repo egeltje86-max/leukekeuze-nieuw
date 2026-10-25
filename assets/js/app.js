@@ -92,8 +92,13 @@
   function mixGetal(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
   function mix(lijst) {
     var week = Math.floor(Date.now() / (7 * 864e5));
-    var top = lijst.filter(function (p) { return p.favoriet || p.populair; });
-    var rest = lijst.filter(function (p) { return !(p.favoriet || p.populair); });
+    /* Favorieten bovenaan, maar hooguit twee per winkel: anders staan bijv. alle zeven dino-kleurboeken op een rij.
+       De rest van de favorieten draait gewoon mee in de mix. */
+    var top = [], rest = [], perShop = {};
+    lijst.forEach(function (p) {
+      var k = p.shop + (p.eigen ? '|eigen' : '');
+      if ((p.favoriet || p.populair) && (perShop[k] = (perShop[k] || 0) + 1) <= 2) top.push(p); else rest.push(p);
+    });
     var GRENZEN = [15, 30, 60, 120, Infinity], bakken = GRENZEN.map(function () { return []; });
     rest.forEach(function (p) {
       var i = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[i]) i++;
@@ -350,11 +355,13 @@
     var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs); });
     lijst = sorteer(lijst, q.sort);
 
+    /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
+    var metBudget = function (adres) { return q.prijs && q.prijs !== 'alle' ? maakAdres(adres, { prijs: q.prijs }) : adres; };
     var subs = '<div class="subkaarten">' +
-      '<a class="subkaart' + (s ? '' : ' actief') + '" href="/c/' + c.slug + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
+      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
       volleSubs(c).map(function (x) {
         var beeld = x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
-        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + subAdres(c, x) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
+        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget(subAdres(c, x)) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
           '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
       }).join('') + '</div>';
 
@@ -473,14 +480,20 @@
 
   /* ---------- Zoeken ---------- */
   /* Woorden die mensen typen, naast wat er bij een product staat (zoals 'cadeau vrouw' of 'schoencadeau'). */
-  var SYN = { collega: 'collega collegas werk kantoor lootjes bedankje kleinigheid kleinigheidje afscheid', haar: 'vrouw vrouwen dames moeder mama vriendin zus', hem: 'man mannen heren vader papa vriend broer', kind: 'kinderen jongen meisje jongens meisjes',
+  var SYN = { collega: 'collega collegas werk kantoor lootjes bedankje kleinigheid kleinigheidje afscheid juf meester leerkracht docent', haar: 'vrouw vrouwen dames moeder mama vriendin zus', hem: 'man mannen heren vader papa vriend broer', kind: 'kinderen jongen meisje jongens meisjes',
     'opa-oma': 'opa oma grootouders', kerst: 'kerstmis kerstcadeau', sinterklaas: 'sint pakjesavond schoencadeau schoencadeautje surprise', verjaardag: 'jarig', zomaar: 'bedankje' };
-  var SUBSYN = { 'mode-beauty/geuren': 'parfum geur' };
+  /* Extra zoekwoorden per (sub)categorie; gelden ook voor producten die er via 'ookIn' in staan. */
+  var SUBSYN = { 'mode-beauty/geuren': 'parfum geur', 'eten-drinken/pakketten': 'kerstpakket cadeaupakket borrelpakket', 'wonen/kerstdecoratie': 'kerstversiering kerstspullen',
+    'cadeaus/met-naam': 'gepersonaliseerd persoonlijk gegraveerd gravure', 'cadeaus/baby-kraam': 'kraamcadeau geboorte babyshower', 'cadeaus/adventskalenders': 'advent aftellen',
+    'boeken-media/lezen': 'e-reader ereader', 'metaaldetectie/detectors': 'metaaldetector detector', 'elektronica/audio': 'speaker luidspreker', 'dranken/whisky': 'whiskey',
+    'christelijk/bijbels': 'bijbel', 'sport-outdoor/kamperen': 'camping', 'hobby/knutselen': 'diy zelf maken creatief', 'speelgoed/figuren-voertuigen': 'speelfiguur speelfiguren',
+    'cadeaus/collega': 'juf meester leerkracht', 'cadeaus/voor-kinderen': 'tiener' };
   function zoekTekst(p) {
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
     var extra = (p.ookIn || []).map(function (x) { var d = x.split('/'); var cc = window.LK_CAT(d[0]); var ss = window.LK_SUB(cc, d[1]); return ss ? ss.naam : ''; });
     var syn = (p.voor || []).concat(p.moment || []).map(function (x) { return SYN[x] || ''; });
-    return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), SUBSYN[p.cat + '/' + p.sub] || ''].join(' ').toLowerCase();
+    var subsyn = [p.cat + '/' + p.sub].concat(p.ookIn || []).map(function (x) { return SUBSYN[x] || ''; });
+    return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), subsyn.join(' '), p.zoek || ''].join(' ').toLowerCase();
   }
   /* Hoofdletters en accenten maken niet uit: 'cafe' vindt ook 'café'. */
   function vouw(s) { s = String(s || '').toLowerCase(); return s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : s; }
@@ -509,17 +522,19 @@
     return false;
   }
   function zoekWoorden(tekst) { return vouw(tekst).split(/[^a-z0-9]+/).filter(Boolean).map(stam); }
+  /* Korte woorden (3 letters of minder) alleen aan het begin van een woord: 'oma' vindt niet 'aroma' of 'roman', 'lp' niet 'alpaca'. */
+  function bevat(t, w) { return w.length > 3 ? t.indexOf(w) !== -1 : (' ' + t).search(new RegExp('[^a-z0-9]' + w)) !== -1; }
   /* Zoekt in onze eigen producten. Eerst precies; vindt dat niets, dan met één tikfout per woord. */
   function zoekLijst(woorden, prijs) {
     var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
-    var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return t.indexOf(w) !== -1; }); });
+    var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return bevat(t, w); }); });
     if (lijst.length < 3 && woorden.some(function (w) { return w.length >= 4; })) {
       var al = {}; lijst.forEach(function (p) { al[p.id] = 1; });
       lijst = lijst.concat(basis.filter(function (p) {
         if (al[p.id]) return false;
         var t = zoekTekstV(p), tw = null;
         return woorden.every(function (w) {
-          if (t.indexOf(w) !== -1) return true;
+          if (bevat(t, w)) return true;
           if (w.length < 4) return false;
           tw = tw || t.split(/[^a-z0-9]+/);
           return tw.some(function (x) { return lijkt(w, x); });
@@ -560,15 +575,17 @@
     /* Past het zoekwoord bij een categorie? Dan die er meteen bij zetten ('fiets' → Fietsen), zo kom je sneller op de goede pagina. */
     var catTips = [];
     if (woorden.length) {
-      var ZW = window.LK_ZOEKWOORDEN || {};
-      var pastBij = function (naam, sleutel) {
-        var n = ' ' + naam.toLowerCase().replace(/[^a-z0-9à-ÿ]+/g, ' '), z = ' ' + (ZW[sleutel] || '');
+      var ZW = window.LK_ZOEKWOORDEN || {}, TIPS = window.LK_ZOEKTIPS || {};
+      /* Christelijke cadeaus alleen als tip bij echt christelijke woorden (bijbel, doop, …), niet bij 'kerst' of 'kaart'. */
+      var pastBij = function (naam, sleutel, alleenTips) {
+        var n = ' ' + vouw(naam).replace(/[^a-z0-9]+/g, ' '), z = ' ' + (ZW[sleutel] || '') + ' ' + (TIPS[sleutel] || '');
+        if (alleenTips) { n = ''; z = ' ' + (TIPS[sleutel] || ''); }
         return woorden.some(function (w) { return w.length >= 3 && (n.indexOf(' ' + w) !== -1 || z.indexOf(' ' + w) !== -1); });
       };
-      CATS.forEach(function (c) {
-        if (c.slug === 'christelijk') return;
-        if (pastBij(c.naam, c.slug)) catTips.push({ naam: c.naam, naar: '/c/' + c.slug });
-        c.subs.forEach(function (su) { if (!su.naar && pastBij(su.naam, c.slug + '/' + su.slug)) catTips.push({ naam: su.naam + ' <small>' + esc(c.kort) + '</small>', naar: '/c/' + c.slug + '/' + su.slug }); });
+      ALLECATS.forEach(function (c) {
+        var chr = c.slug === 'christelijk';
+        if (pastBij(c.naam, c.slug, chr)) catTips.push({ naam: c.naam, naar: '/c/' + c.slug });
+        c.subs.forEach(function (su) { if (!su.naar && pastBij(su.naam, c.slug + '/' + su.slug, chr)) catTips.push({ naam: su.naam + ' <small>' + esc(c.kort) + '</small>', naar: '/c/' + c.slug + '/' + su.slug }); });
       });
       catTips = catTips.slice(0, 5);
     }
@@ -747,13 +764,19 @@
       var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
       var precies = alle.filter(function (p) { return pastVoor(p) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
       precies.sort(function (a, b) { return echt(a) - echt(b); });
-      var bijna = alle.filter(function (p) {
-        if (precies.indexOf(p) !== -1) return false;
-        var score = (pastVoor(p) ? 1 : 0) + (past(p.moment, q.moment) ? 1 : 0) + (binnenPrijs(p, q.budget) ? 1 : 0);
-        return score === 2 && pastVoor(p);
-      });
+      /* Te weinig exacte treffers (bijv. collega + €50+)? Dan eerst wat 'voor iedereen' is in dit budget en moment,
+         en daarna pas spullen voor deze persoon buiten het budget of moment. Zo blijft het budget zoveel mogelijk leidend. */
+      var ruimer = [], anders = [];
+      if (precies.length < 12) {
+        ruimer = alle.filter(function (p) {
+          return precies.indexOf(p) === -1 && (p.voor || []).indexOf('iedereen') !== -1 && past(p.moment, q.moment) && binnenPrijs(p, q.budget);
+        });
+        anders = alle.filter(function (p) {
+          if (precies.indexOf(p) !== -1 || ruimer.indexOf(p) !== -1) return false;
+          return pastVoor(p) && (past(p.moment, q.moment) || binnenPrijs(p, q.budget));
+        });
+      }
       /* Eerst wat echt voor deze persoon is gekozen, daarna wat voor iedereen leuk is. Alles tonen, met 'Toon meer'. */
-      var gevonden = precies.length ? precies : bijna;
       /* Afwisselen per categorie, zodat je bovenaan een mooie mix ziet: geuren, sieraden, drank, tech, enz. (wens van Marius). */
       var VOORKEUR = ['mode-beauty/geuren', 'sieraden', 'dranken', 'elektronica', 'mode-beauty/verzorging', 'cadeaus', 'wonen', 'eten-drinken', 'keuken', 'speelgoed', 'boeken-media', 'sport-outdoor', 'hobby'];
       var spreid = function (lijst) {
@@ -771,8 +794,9 @@
         }
         return uit;
       };
-      var alles = q.voor === 'iedereen' ? spreid(sorteer(gevonden)) :
-        spreid(sorteer(gevonden.filter(function (p) { return echt(p) === 0; }))).concat(spreid(sorteer(gevonden.filter(function (p) { return echt(p) !== 0; }))));
+      var groep = function (lijst) { return spreid(sorteer(lijst)); };
+      var alles = q.voor === 'iedereen' ? groep(precies).concat(groep(ruimer), groep(anders)) :
+        groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders));
       var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
       inhoud = '<div class="vonk-vraag"><h2>' + (precies.length ? 'Dit past bij jouw keuze' : 'Geen exacte match, wel deze') + '</h2>' +
         '<div class="vonk-samenvatting">' +
@@ -836,11 +860,11 @@
       '<h2>Geen account, geen formulieren</h2><p>Je hoeft je nergens aan te melden. Wij vragen niet om je naam, e-mail of andere persoonlijke gegevens.</p>' +
       '<h2>Wat blijft er op je eigen apparaat?</h2><p>Bewaar je een product met het hartje, dan wordt dat alleen op je eigen apparaat opgeslagen (in de lokale opslag van je browser). Wij kunnen dat niet zien. Wis je je browsergegevens, dan is het weg. Deze site plaatst zelf geen tracking- of advertentiecookies.</p>' +
       '<h2>Hosting</h2><p>De website staat bij GitHub Pages (GitHub, Inc.). Bij elk bezoek ziet de server technische gegevens, zoals je IP-adres. GitHub gebruikt die om de site veilig en werkend te houden. Wij krijgen deze gegevens niet.</p>' +
-      '<h2>Lettertypes</h2><p>De lettertypes worden geladen via Google Fonts. Daarbij ziet Google je IP-adres. We zijn van plan de lettertypes op onze eigen site te zetten.</p>' +
+      '<h2>Lettertypes</h2><p>De lettertypes staan op onze eigen site. Er wordt dus niets bij Google Fonts opgehaald.</p>' +
       '<h2>Partnerlinks en cookies van winkels</h2><p>Klik je op “Bekijk bij …”, dan ga je naar de winkel. Vaak loopt die link via een partnernetwerk, zoals Daisycon, het bol partnerprogramma of het partnerprogramma van Amazon. Zij plaatsen dan een cookie om te zien dat je via LeukeKeuze kwam. Zo kan de winkel ons een kleine vergoeding geven als je iets koopt. Wij zien niet wie je bent of wat je koopt; alleen hoeveel er via onze links is verkocht. Op de site van de winkel gelden hun eigen privacyverklaring en cookies.</p>' +
       '<h2 lang="en">Privacy Policy (English summary)</h2><p lang="en">Controller: Marius Kestens (LeukeKeuze), Kromhout 108, 3311 RH Dordrecht, The Netherlands, leukekeuze.nl@gmail.com. ' +
       'We do not collect personal data: no accounts, no forms, no own tracking or advertising cookies. Favourites are stored only in your own browser. ' +
-      'The site is hosted on GitHub Pages and uses Google Fonts. Links to shops may run through affiliate networks (Daisycon, bol.com, Amazon), which set their own cookies to register sales. ' +
+      'The site is hosted on GitHub Pages; fonts are served from our own site. Links to shops may run through affiliate networks (Daisycon, bol.com, Amazon), which set their own cookies to register sales. ' +
       'Questions or requests about your data: e-mail us. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).</p>' +
       '<h2>Je rechten</h2><p>Omdat wij zelf geen persoonsgegevens van je bewaren, is er meestal niets om in te zien of te wissen. Heb je toch een vraag over privacy? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>'],
     'voorwaarden': ['Algemene voorwaarden (Terms and Conditions)',
