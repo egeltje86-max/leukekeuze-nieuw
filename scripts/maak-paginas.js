@@ -35,6 +35,24 @@ function server() {
 const escA = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 function zet(html, re, nieuw) { if (!re.test(html)) throw new Error('niet gevonden: ' + re); return html.replace(re, nieuw); }
 
+/* Structured data voor Google: de site met zoekvak (home), kruimelpad (alle pagina's) en product (productpagina's). */
+function maakLd(info, url) {
+  const uit = [];
+  if (info.pad === '/') uit.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'LeukeKeuze', url: SITE + '/',
+    potentialAction: { '@type': 'SearchAction', target: SITE + '/zoek/?q={search_term_string}', 'query-input': 'required name=search_term_string' } });
+  const k = (info.kruimel || []).filter(x => x.naam);
+  if (info.prod && k.length && k[k.length - 1].naar) k.push({ naam: info.prod.naam, naar: '' });
+  if (k.length > 1) uit.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: k.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam,
+    item: !x.naar ? url : SITE + (x.naar === '/' ? '/' : x.naar.replace(/\/?$/, '/')) })) });
+  const p = info.prod;
+  if (p && p.prijs > 0) {
+    const beeld = info.beeld ? (/^https?:/.test(info.beeld) ? info.beeld : SITE + '/' + info.beeld.replace(/^\//, '')) : undefined;
+    uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, description: p.tekst || undefined, image: beeld, url,
+      offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
+  }
+  return uit;
+}
+
 function maakPagina(info, lade, mega) {
   let h = SJABLOON;
   const url = SITE + info.pad;
@@ -50,6 +68,8 @@ function maakPagina(info, lade, mega) {
          .replace(/<meta name="twitter:image" content="[^"]*">/, '<meta name="twitter:image" content="' + escA(b) + '">')
          .replace(/\s*<meta property="og:image:(width|height)" content="[^"]*">/g, '');
   }
+  const ld = maakLd(info, url);
+  if (ld.length) h = zet(h, /<\/head>/, ld.map(x => '  <script type="application/ld+json">' + JSON.stringify(x).replace(/</g, '\\u003c') + '</script>').join('\n') + '\n</head>');
   if (info.geenIndex) h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex, follow">');
   /* De banner van de homepage alleen vooraf laden op de homepage zelf (scheelt ~90 kB op elke andere pagina, vooral op mobiel). */
   if (info.pad !== '/') h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-home-[^"]*"[^>]*>/g, '');
@@ -98,13 +118,20 @@ function maakPagina(info, lade, mega) {
         if (pr) prodTekst = (pr.waarom ? pr.waarom.replace(/\s+/g, ' ').trim() + ' ' : '') + 'Te koop bij ' + pr.shop +
           (pr.prijs ? ' voor €' + Number(pr.prijs).toFixed(2).replace('.', ',') : '') + '.';
       }
+      /* Gegevens voor Google (structured data): kruimelpad en, op productpagina's, het product. */
+      const kruimel = Array.from(app.querySelectorAll('nav.kruimel a, nav.kruimel > span:not([aria-hidden])')).map(x => ({ naam: x.textContent.trim(), naar: x.getAttribute('href') || '' }));
+      let prod = null;
+      if (pad.indexOf('/p/') === 0) {
+        const pr = window.LK.vind(pad.split('/')[2]);
+        if (pr) prod = { naam: pr.titel, tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
+      }
       const h1 = (app.querySelector('h1') || {}).textContent || '';
       const namen = Array.from(document.querySelectorAll('#app .prodkaart h3')).slice(0, 3).map(x => x.textContent.trim());
       return {
         titel: document.title, inhoud: app.innerHTML, links, aantal,
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
-        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : ''
+        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : ''
       };
     }, pad);
     for (const l of r.links) if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
@@ -116,7 +143,7 @@ function maakPagina(info, lade, mega) {
     }
     oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms,
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : '', geenIndex: GEEN_INDEX.test(pad) || r.leeg });
   }
   await browser.close(); srv.close();
