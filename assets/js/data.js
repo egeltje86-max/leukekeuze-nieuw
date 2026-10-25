@@ -237,8 +237,8 @@ window.LK_CATEGORIEEN = [
       { slug: 'bijbels', naam: 'Bijbels', beeld: 'images/sub/sub-christelijk-bijbels.webp' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters', beeld: 'images/sub/sub-christelijk-kaarten-posters.webp' },
       { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-christelijk-sieraden.webp' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp' },
       { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-christelijk-voor-kinderen.webp' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-christelijk-boeken-muziek.webp' },
-      { slug: 'kerststal-engelen', naam: 'Kerststallen & engelen', beeld: 'images/sub/sub-christelijk-kerststal-engelen.webp' }, { slug: 'doop-communie', naam: 'Doop & communie', beeld: 'images/sub/sub-christelijk-doop-communie.webp' },
-      { slug: 'beelden-kruisen', naam: 'Beelden & kruisen', beeld: 'images/sub/sub-christelijk-beelden-kruisen.webp' }
+      { slug: 'kerststal-engelen', naam: 'Kerststallen & engelen', beeld: 'images/sub/sub-christelijk-kerststal-engelen.webp' }, { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', beeld: 'images/sub/sub-christelijk-doop-communie.webp' , tekst: 'Cadeaus voor een doop of belijdenis: kinderbijbels, eerste Bijbels, dagboeken en mooie aandenkens voor deze bijzondere dag.', seoTitel: 'Doopcadeau en belijdeniscadeau: christelijke cadeaus' },
+
     ] }
 ];
 
@@ -341,9 +341,8 @@ window.LK_ZOEKWOORDEN = {
  "sport-outdoor/fietsen": "fiets fietsbel fietstas fietsmand fietshelm fietsslot fietslamp fietspomp",
  "sport-outdoor/golf": "golf golfbal golfballen",
  "christelijk/kerststal-engelen": "kerststal kribbe engel engeltje beschermengel",
- "christelijk/doop-communie": "doop doopcadeau communie communiecadeau vormsel",
- "christelijk/beelden-kruisen": "beeld mariabeeld kruisbeeld kruis icoon",
- "sport-outdoor/kamperen": "kamperen tent camping slaapzak luchtbed koelbox campingstoel kampeerstoel kooktoestel gasbrander",
+ "christelijk/doop-belijdenis": "doop doopcadeau belijdenis belijdeniscadeau",
+  "sport-outdoor/kamperen": "kamperen tent camping slaapzak luchtbed koelbox campingstoel kampeerstoel kooktoestel gasbrander",
  "sport-outdoor/reizen": "toilettas reiskoffer trolley reiskussen reisset",
  "sport-outdoor/darts": "dart darts dartbord",
  "dieren/hond": "hond honden",
