@@ -104,13 +104,13 @@ function maakPagina(info, lade, mega) {
         titel: document.title, inhoud: app.innerHTML, links, aantal,
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
-        tekst: prodTekst || ps[0] || '', h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : ''
+        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : ''
       };
     }, pad);
     for (const l of r.links) if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
     if (r.nietGevonden) { console.log('overgeslagen (niet gevonden):', pad); continue; }
-    let oms = '';
-    if (pad.indexOf('/c/') === 0 && r.aantal) {
+    let oms = r.seo || '';
+    if (!oms && pad.indexOf('/c/') === 0 && r.aantal) {
       oms = r.h1 + ': ' + r.aantal + ' met de hand gekozen ' + (r.aantal === 1 ? 'product' : 'producten') + ', zoals ' +
         r.namen.slice(0, -1).join(', ') + (r.namen.length > 1 ? ' en ' : '') + r.namen[r.namen.length - 1] + '. Je koopt bij bekende winkels.';
     }

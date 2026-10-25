@@ -175,7 +175,7 @@
       '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="Zoek in alle winkels…" autocomplete="off" enterkeyhint="search">' +
       '<button type="submit" aria-label="Zoeken">' + ic('zoek') + '</button></form>';
   }
-  function zetTitel(t) { document.title = t ? t + ' | LeukeKeuze' : 'LeukeKeuze – de mooiste cadeaus voor elk moment'; }
+  function zetTitel(t) { window.LK_SEO = ''; document.title = t ? t + ' | LeukeKeuze' : 'LeukeKeuze – de mooiste cadeaus voor elk moment'; }
 
   /* ================== PAGINA'S ================== */
 
@@ -329,7 +329,8 @@
     if (!c) return nietGevonden();
     var s = subSlug ? window.LK_SUB(c, subSlug) : null;
     if (subSlug && !s) return nietGevonden();
-    zetTitel(s ? s.naam + ' – ' + c.naam : c.naam);
+    zetTitel(s ? (s.seoTitel || s.naam + ' – ' + c.naam) : c.naam);
+    window.LK_SEO = (s && s.seoTekst) || '';
 
     var pad = '/c/' + c.slug + (s ? '/' + s.slug : '');
     var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs); });

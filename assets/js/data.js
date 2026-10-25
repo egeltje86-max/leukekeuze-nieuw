@@ -100,7 +100,9 @@ window.LK_CATEGORIEEN = [
       { slug: 'sint-onder-15', naam: 'Sint onder €15', tekst: 'Snel een schoencadeautje of surprise nodig? Hier staat alles uit Sinterklaas onder de 15 euro.', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
       { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders.webp' },
       { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
-      { slug: 'collega', naam: 'Cadeau voor collega', beeld: 'images/sub/sub-eten-drinken-pakketten.webp',
+      { slug: 'collega', naam: 'Cadeau voor collega',
+        seoTitel: 'Cadeau voor collega: leuke kleinigheidjes en bedankjes',
+        seoTekst: 'Leuk cadeautje voor een collega? 90+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten en meer. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-eten-drinken-pakketten.webp',
         tekst: 'Een leuk cadeautje voor een collega? Kleinigheidjes voor collega\'s bij lootjes, een verjaardag of afscheid: wijn, chocolade, borrelpakketten en meer.',
         gids: [
           { kop: 'Een cadeau voor een collega: waar let je op?', tekst: 'Je kent een collega vaak minder goed dan een vriend of familielid. Kies daarom iets wat bijna iedereen fijn vindt: iets lekkers, iets voor op het bureau of iets om thuis van te genieten. Een cadeau dat je samen met het team kunt delen, valt ook altijd goed.' },
