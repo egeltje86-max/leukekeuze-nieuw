@@ -168,11 +168,11 @@
           }).join('') + '</div>' : '') +
         '</div></div>';
   }
-  function zoekForm(waarde) {
+  function zoekForm(waarde, tekst) {
     return '<form class="zoek" role="search" data-zoek>' +
       ic('zoek', 'lp') +
       '<label class="verborgen" for="zk-' + (zoekForm.n = (zoekForm.n || 0) + 1) + '">Zoek een cadeau</label>' +
-      '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="Zoek in alle winkels…" autocomplete="off" enterkeyhint="search">' +
+      '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="' + (tekst || 'Zoek in alle winkels…') + '" autocomplete="off" enterkeyhint="search">' +
       '<button type="submit" aria-label="Zoeken">' + ic('zoek') + '</button></form>';
   }
   function zetTitel(t) { window.LK_SEO = ''; document.title = t ? t + ' | LeukeKeuze' : 'LeukeKeuze – de mooiste cadeaus voor elk moment'; }
@@ -477,28 +477,73 @@
     var syn = (p.voor || []).concat(p.moment || []).map(function (x) { return SYN[x] || ''; });
     return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), SUBSYN[p.cat + '/' + p.sub] || ''].join(' ').toLowerCase();
   }
+  /* Hoofdletters en accenten maken niet uit: 'cafe' vindt ook 'café'. */
+  function vouw(s) { s = String(s || '').toLowerCase(); return s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : s; }
   /* Verkleinwoorden en meervoud terugbrengen: 'loopfietsje' zoekt ook 'loopfiets', 'fietsjes' ook 'fiets'. */
   function stam(w) { var k = w.replace(/(tjes|tje|jes|je|'s|s)$/, ''); return k.length >= 4 ? k : w; }
+  var ZT = {};
+  function zoekTekstV(p) { return ZT[p.id] || (ZT[p.id] = vouw(zoekTekst(p))); }
+  /* Eén tikfout mag ('fiest' vindt 'fiets', 'lgeo' vindt 'lego'): kleine afstand tussen twee woorden. */
+  function bijna(a, b) {
+    if (Math.abs(a.length - b.length) > 1) return false;
+    var i = 0, j = 0, fout = 0;
+    while (i < a.length && j < b.length) {
+      if (a[i] === b[j]) { i++; j++; continue; }
+      if (++fout > 1) return false;
+      if (a[i + 1] === b[j] && a[i] === b[j + 1]) { i += 2; j += 2; continue; }
+      if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; }
+    }
+    return fout + (a.length - i) + (b.length - j) <= 1;
+  }
+  /* Korte woorden (4 letters) alleen bij twee omgedraaide letters ('lgeo' → lego), langere bij elke kleine tikfout. */
+  function lijkt(w, x) {
+    if (!x) return false;
+    if (w.length >= 5) return bijna(w, x) || (x.length > w.length && bijna(w, x.slice(0, w.length)));
+    if (w.length !== 4 || x.length !== 4) return false;
+    for (var i = 0; i < 3; i++) if (w.slice(0, i) + w[i + 1] + w[i] + w.slice(i + 2) === x) return true;
+    return false;
+  }
+  function zoekWoorden(tekst) { return vouw(tekst).split(/[^a-z0-9]+/).filter(Boolean).map(stam); }
+  /* Zoekt in onze eigen producten. Eerst precies; vindt dat niets, dan met één tikfout per woord. */
+  function zoekLijst(woorden, prijs) {
+    var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
+    var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return t.indexOf(w) !== -1; }); });
+    if (lijst.length < 3 && woorden.some(function (w) { return w.length >= 4; })) {
+      var al = {}; lijst.forEach(function (p) { al[p.id] = 1; });
+      lijst = lijst.concat(basis.filter(function (p) {
+        if (al[p.id]) return false;
+        var t = zoekTekstV(p), tw = null;
+        return woorden.every(function (w) {
+          if (t.indexOf(w) !== -1) return true;
+          if (w.length < 4) return false;
+          tw = tw || t.split(/[^a-z0-9]+/);
+          return tw.some(function (x) { return lijkt(w, x); });
+        });
+      }));
+    }
+    return lijst;
+  }
+  /* Relevantie: een treffer in de titel telt het zwaarst, dan de categorie, en pas daarna de uitlegtekst.
+     Zo komt bij 'fiets' eerst de fietstas en pas later de drop met 'fietsjes' in de tekst (wens van Marius).
+     Een heel woord telt zwaarder dan een stukje: bij 'bal' eerst de ballen en pas later de balpen. */
+  function zoekScore(p, woorden) {
+    var ti = ' ' + vouw(p.titel).replace(/[^a-z0-9]+/g, ' ') + ' ';
+    var c = window.LK_CAT(p.cat), su = window.LK_SUB(c, p.sub);
+    var ca = vouw((c ? c.naam : '') + ' ' + (su ? su.naam : ''));
+    return woorden.reduce(function (s, w) {
+      if (new RegExp(' ' + w + '(en|s|len|letje|letjes|je|jes)? ').test(ti)) return s + 15;
+      if (ti.indexOf(' ' + w) !== -1) return s + 10;
+      if (ti.indexOf(w) !== -1) return s + 6;
+      if (ca.indexOf(w) !== -1) return s + 4;
+      /* Met een tikfout in de titel ('fiest' → fiets) telt het nog redelijk zwaar. */
+      if (w.length >= 4 && ti.split(' ').some(function (x) { return lijkt(w, x); })) return s + 8;
+      return s + 1;
+    }, 0);
+  }
   function zoeken(q) {
-    var woorden = (q.q || '').toLowerCase().split(/\s+/).filter(Boolean).map(stam);
-    var lijst = LK.zichtbaar().filter(function (p) {
-      if (!binnenPrijs(p, q.prijs)) return false;
-      var t = zoekTekst(p);
-      return woorden.every(function (w) { return t.indexOf(w) !== -1; });
-    });
-    /* Relevantie: een treffer in de titel telt het zwaarst, dan de categorie, en pas daarna de uitlegtekst.
-       Zo komt bij 'fiets' eerst de fietstas en pas later de drop met 'fietsjes' in de tekst (wens van Marius). */
-    var score = function (p) {
-      var ti = ' ' + p.titel.toLowerCase().replace(/[^a-z0-9à-ÿ]+/g, ' ');
-      var c = window.LK_CAT(p.cat), su = window.LK_SUB(c, p.sub);
-      var ca = ((c ? c.naam : '') + ' ' + (su ? su.naam : '')).toLowerCase();
-      return woorden.reduce(function (s, w) {
-        if (ti.indexOf(' ' + w) !== -1) return s + 10;
-        if (ti.indexOf(w) !== -1) return s + 6;
-        if (ca.indexOf(w) !== -1) return s + 4;
-        return s + 1;
-      }, 0);
-    };
+    var woorden = zoekWoorden(q.q || '');
+    var lijst = zoekLijst(woorden, q.prijs);
+    var score = function (p) { return zoekScore(p, woorden); };
     if (woorden.length && (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant')) {
       var sc = {}; lijst.forEach(function (p) { sc[p.id] = score(p); });
       var niveaus = {}; lijst.forEach(function (p) { (niveaus[sc[p.id]] = niveaus[sc[p.id]] || []).push(p); });
@@ -960,6 +1005,9 @@
 
     app.innerHTML = html;
     document.body.classList.remove('plak-open');
+    /* Witte zoekbalk onder de kop: overal zichtbaar, behalve op de zoekpagina (die heeft er zelf al een). */
+    var zr = $('[data-zoekrij]');
+    if (zr) zr.hidden = d[0] === 'zoek';
     vulIconen(app); netteLinks(app);
     var aw = $('[data-alle-winkels]', app);
     if (aw) {
@@ -1160,6 +1208,49 @@
   });
   document.querySelector('.lade-bg').addEventListener('click', sluitLade);
 
+  /* Tips onder de zoekbalk terwijl je typt: de beste 6 producten met fotootje en prijs, en een regel 'Toon alles'. */
+  var tipTimer = null;
+  function sluitTips(f) { var t = f && f.querySelector('.zoek-tips'); if (t) t.remove(); }
+  function toonTips(f) {
+    var inp = f.querySelector('input'), q = inp.value.trim();
+    if (q.length < 2) { sluitTips(f); return; }
+    var woorden = zoekWoorden(q), lijst = zoekLijst(woorden, '');
+    var sc = {}; lijst.forEach(function (p) { sc[p.id] = zoekScore(p, woorden); });
+    lijst.sort(function (a, b) { return sc[b.id] - sc[a.id]; });
+    var html = lijst.slice(0, 6).map(function (p) {
+      return '<a class="zt-item" href="/p/' + esc(p.id) + '"><img src="' + esc(p.beeld) + '-klein.webp" alt="" loading="lazy">' +
+        '<span class="zt-titel">' + esc(p.titel) + '</span><span class="zt-prijs">' + LK.euro(p.prijs) + '</span></a>';
+    }).join('');
+    html += '<a class="zt-alles" href="' + esc(maakAdres('/zoek', { q: q })) + '">' + (lijst.length ? 'Toon alle ' + lijst.length + ' resultaten voor “' + esc(q) + '”' : 'Zoek “' + esc(q) + '” ook in al onze winkels') + ' ' + ic('pijl') + '</a>';
+    var t = f.querySelector('.zoek-tips');
+    if (!t) { t = document.createElement('div'); t.className = 'zoek-tips'; t.setAttribute('role', 'listbox'); f.appendChild(t); }
+    t.innerHTML = html;
+  }
+  document.addEventListener('input', function (e) {
+    var f = e.target.closest && e.target.closest('[data-zoek]');
+    if (!f) return;
+    clearTimeout(tipTimer); tipTimer = setTimeout(function () { toonTips(f); }, 120);
+  });
+  document.addEventListener('keydown', function (e) {
+    var f = e.target.closest && e.target.closest('[data-zoek]');
+    if (!f) return;
+    var t = f.querySelector('.zoek-tips');
+    if (e.key === 'Escape') { sluitTips(f); return; }
+    if (!t || (e.key !== 'ArrowDown' && e.key !== 'ArrowUp')) return;
+    var items = Array.prototype.slice.call(t.querySelectorAll('a')), i = items.indexOf(document.activeElement);
+    e.preventDefault();
+    i = e.key === 'ArrowDown' ? Math.min(items.length - 1, i + 1) : i - 1;
+    if (i < 0) f.querySelector('input').focus(); else items[i].focus();
+  });
+  document.addEventListener('focusout', function (e) {
+    var f = e.target.closest && e.target.closest('[data-zoek]');
+    if (f) setTimeout(function () { if (!f.contains(document.activeElement)) sluitTips(f); }, 150);
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.zoek-tips a');
+    if (a) { var f = a.closest('[data-zoek]'); setTimeout(function () { sluitTips(f); if (f) f.querySelector('input').blur(); }, 0); }
+  });
+
   document.addEventListener('submit', function (e) {
     var f = e.target.closest('[data-zoek]');
     if (!f) return;
@@ -1167,6 +1258,7 @@
     var q = f.querySelector('input').value.trim();
     var huidig = leesAdres();
     var nq = { q: q, prijs: huidig.delen[0] === 'zoek' ? huidig.q.prijs : '' };
+    sluitTips(f);
     ga(maakAdres('/zoek', nq));
     f.querySelector('input').blur();
   });
@@ -1186,6 +1278,8 @@
   window.LK.ga = ga;
   vulIconen(document);
   bouwLade(); bouwMega();
+  var zoekRij = $('[data-zoekrij] .binnen');
+  if (zoekRij) zoekRij.innerHTML = zoekForm('', 'Zoek een cadeau, bijv. bal, fiets of trein');
   vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
   netteLinks(document);
   werkTellersBij();

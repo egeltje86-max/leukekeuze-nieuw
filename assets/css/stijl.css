@@ -192,6 +192,26 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .zoek button { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--goud-verloop); color: var(--navy); flex: none; }
 .zoek button svg { width: 21px; height: 21px; }
 
+/* ---------- Witte zoekbalk onder de kop (op elke pagina) ---------- */
+.zoekrij { border-bottom: 1px solid var(--lijn-zacht); background: rgba(10, 16, 32, .6); }
+.zoekrij[hidden] { display: none; }
+.zoekrij .binnen { padding-top: 10px; padding-bottom: 10px; }
+.zoekrij .zoek { max-width: 760px; margin: 0 auto; background: #fff; padding: 4px 4px 4px 16px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.zoekrij .zoek input { padding: 10px 10px; font-size: 16px; }
+.zoekrij .zoek button { width: 42px; height: 42px; }
+@media (min-width: 1024px) { .zoekrij .binnen { padding-top: 14px; padding-bottom: 14px; } }
+
+/* Tips onder de zoekbalk tijdens het typen */
+.zoek { position: relative; }
+.zoek-tips { position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 60; background: #fff; border-radius: 16px; box-shadow: 0 18px 40px rgba(0,0,0,.45); overflow: hidden; text-align: left; }
+.zoek-tips a { display: flex; align-items: center; gap: 12px; padding: 9px 14px; color: #141A2A; font: 500 14.5px/1.3 var(--f-ui); }
+.zoek-tips a:hover, .zoek-tips a:focus { background: #F4EEE2; outline: none; }
+.zoek-tips img { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; background: #fff; flex: none; }
+.zoek-tips .zt-titel { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.zoek-tips .zt-prijs { flex: none; font-weight: 700; color: #6B4E12; }
+.zoek-tips .zt-alles { justify-content: center; border-top: 1px solid #ECE4D3; font-weight: 700; color: #6B4E12; padding: 12px 14px; }
+.zoek-tips .zt-alles svg { width: 16px; height: 16px; }
+
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; background: var(--bg); }
 .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
