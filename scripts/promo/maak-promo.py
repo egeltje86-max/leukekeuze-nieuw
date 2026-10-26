@@ -10,7 +10,7 @@ en ruimt oudere datum-mappen op.
 
 Gebruik:  python maak-promo.py plan.json [--uit <map LEUKEKEUZE.NL>] [--geen-opruimen]
 """
-import json, os, re, sys, shutil, subprocess, random, datetime, tempfile
+import json, os, re, sys, shutil, subprocess, random, datetime, tempfile, math
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -338,6 +338,166 @@ def maak_reel(fotos_paden, uit):
     return True
 
 
+# ---------------- reel met beweging ----------------
+
+def _ease(x):
+    x = max(0.0, min(1.0, x))
+    return 1 - (1 - x) ** 3
+
+
+def _pop(x):
+    """0 -> 1.15 -> 1.0"""
+    if x <= 0:
+        return 0.0
+    if x >= 1:
+        return 1.0
+    if x < 0.6:
+        return 1.15 * _ease(x / 0.6)
+    return 1.15 - 0.15 * _ease((x - 0.6) / 0.4)
+
+
+def _plak_schaal(doek, laag, cx, cy, s, alpha=1.0):
+    if s <= 0.01 or alpha <= 0.01:
+        return
+    w, h = max(1, int(laag.width * s)), max(1, int(laag.height * s))
+    l = laag.resize((w, h), Image.BILINEAR) if (w, h) != laag.size else laag
+    if alpha < 1:
+        a = l.split()[3].point(lambda v: int(v * alpha))
+        l = l.copy(); l.putalpha(a)
+    doek.paste(l, (int(cx - w / 2), int(cy - h / 2)), l)
+
+
+def _tekstlaag(W, regels_def):
+    """regels_def: lijst van (tekst, font, kleur, maxb, afstand) -> RGBA-laag met alles onder elkaar"""
+    laag = Image.new('RGBA', (W, 900), (0, 0, 0, 0))
+    d = ImageDraw.Draw(laag)
+    y = 0
+    for tekst, f, kleur, maxb, afst in regels_def:
+        y = midden_tekst(laag, d, y, tekst, f, kleur, maxb, afst)
+    bb = laag.getbbox() or (0, 0, W, 1)
+    return laag.crop((0, 0, W, bb[3] + 4))
+
+
+def _pil_laag(tekst, f, vul, tekstkleur, pad_x, pad_y):
+    tmp = ImageDraw.Draw(Image.new('RGBA', (10, 10)))
+    w = tekst_breedte(tmp, tekst, f)
+    laag = Image.new('RGBA', (int(w + 2 * pad_x), int(f.size * 1.3 + 2 * pad_y)), (0, 0, 0, 0))
+    d = ImageDraw.Draw(laag)
+    d.rounded_rectangle((0, 0, laag.width - 1, laag.height - 1), radius=laag.height // 2, fill=vul)
+    schrijf(laag, d, (pad_x, pad_y - f.size * 0.05), tekst, f, tekstkleur)
+    return laag
+
+
+def _kaart_frame(foto, kant, zoom):
+    k = Image.new('RGBA', (kant, kant), (0, 0, 0, 0))
+    masker = Image.new('L', (kant, kant), 0)
+    ImageDraw.Draw(masker).rounded_rectangle((0, 0, kant - 1, kant - 1), radius=int(kant * 0.045), fill=255)
+    vlak = Image.new('RGB', (kant, kant), WIT)
+    m = int(kant * 0.06)
+    f = foto.copy()
+    f.thumbnail((kant - 2 * m, kant - 2 * m), Image.LANCZOS)
+    if zoom != 1:
+        f = f.resize((int(f.width * zoom), int(f.height * zoom)), Image.BILINEAR)
+    vlak.paste(f, ((kant - f.width) // 2, (kant - f.height) // 2))
+    k.paste(vlak, (0, 0), masker)
+    return k
+
+
+def maak_reel_beweging(plan, ps, cover_pad, uit, W=1080, H=1920, fps=30):
+    ff = ffmpeg_pad()
+    if not ff:
+        print('LET OP: geen ffmpeg, reel overgeslagen')
+        return False
+    zaad = int(plan['datum'].replace('-', ''))
+    s = W / 1080
+    n = len(ps)
+    T_HOOK, T_PROD, T_EIND = 2.2, 1.9, 2.8
+    totaal = T_HOOK + n * T_PROD + T_EIND
+    N = int(round(totaal * fps))
+
+    bg = achtergrond(W, H, zaad + 7)
+    voet_h = int(110 * s)
+    voet(bg, H - voet_h, s)
+    cov = Image.open(cover_pad).convert('RGB')
+
+    # productlagen voorbereiden (zelfde indeling als de losse foto's)
+    d0 = ImageDraw.Draw(bg)
+    fn, fr, fp = font('Bold', int(66 * s)), font('Regular', int(44 * s)), int(52 * s)
+    lagen = []
+    for i, p in enumerate(ps):
+        n_naam = len(regels(d0, p['naam'], fn, W * 0.9))
+        n_regel = len(regels(d0, p['regel'], fr, W * 0.88)) if p.get('regel') else 0
+        tekst_h = int(n_naam * fn.size * 1.15 + n_regel * fr.size * 1.18 + 18 * s + fp * 1.55 + 40 * s)
+        boven, onder = int(150 * s), H - voet_h - int(40 * s)
+        kant = int(min(W - 2 * int(70 * s), onder - boven - tekst_h))
+        y0 = boven + max(0, (onder - boven - kant - tekst_h) // 2)
+        rdef = [(p['naam'], fn, WIT, W * 0.9, 1.15)]
+        if p.get('regel'):
+            rdef.append((p['regel'], fr, (225, 230, 240), W * 0.88, 1.18))
+        tl = _tekstlaag(W, rdef)
+        prijs = _pil_laag('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', fp), ORANJE, DONKER, fp * 0.6, fp * 0.14)
+        teller = _pil_laag('%d/%d' % (i + 1, n), font('Bold', int(44 * s)), (255, 255, 255, 40), ORANJE, 26 * s, 6 * s)
+        lagen.append(dict(kant=kant, y0=y0, tekst=tl, prijs=prijs, teller=teller, foto=p['foto']))
+
+    # eindscherm
+    eind = einde(W, H, plan, zaad + 99)
+    vraag = _pil_laag('Welke kies jij? Zet 1 t/m %d in de reacties 👇' % n, font('Bold', int(40 * s)), WIT, DONKER, 34 * s, 16 * s)
+    if vraag.width > W * 0.94:
+        f2 = font('Bold', int(40 * s * W * 0.94 / vraag.width))
+        vraag = _pil_laag('Welke kies jij? Zet 1 t/m %d in de reacties 👇' % n, f2, WIT, DONKER, 34 * s, 16 * s)
+
+    args = [ff, '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', '%dx%d' % (W, H), '-r', str(fps), '-i', '-',
+            '-f', 'lavfi', '-t', '%.2f' % totaal, '-i', 'anullsrc=r=44100:cl=stereo',
+            '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-pix_fmt', 'yuv420p',
+            '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', uit]
+    proc = subprocess.Popen(args, stdin=subprocess.PIPE)
+    try:
+        for fi in range(N):
+            t = fi / fps
+            if t < T_HOOK:
+                # pakkende opening: harde inzoom en dan rustig verder zoomen
+                z = 1.12 - 0.12 * _ease(t / 0.35) + 0.04 * (t / T_HOOK)
+                w, h = int(W * z), int(H * z)
+                fr_ = cov.resize((w, h), Image.BILINEAR).crop(((w - W) // 2, (h - H) // 2, (w - W) // 2 + W, (h - H) // 2 + H))
+            elif t < T_HOOK + n * T_PROD:
+                i = int((t - T_HOOK) // T_PROD)
+                lt = (t - T_HOOK) - i * T_PROD
+                L = lagen[i]
+                fr_ = bg.copy()
+                kant = L['kant']
+                kaart_img = _kaart_frame(L['foto'], kant, 1.0 + 0.08 * (lt / T_PROD))
+                x_eind = (W - kant) // 2
+                x = int(x_eind + (W - x_eind) * (1 - _ease(lt / 0.28)))
+                fr_.paste(kaart_img, (x, L['y0']), kaart_img)
+                _plak_schaal(fr_, L['teller'], 40 * s + L['teller'].width / 2, 60 * s + L['teller'].height / 2, 1.0, _ease(lt / 0.2))
+                ty = L['y0'] + kant + int(36 * s)
+                a = _ease((lt - 0.12) / 0.3)
+                if a > 0:
+                    tl = L['tekst']
+                    _plak_schaal(fr_, tl, W / 2, ty + tl.height / 2 + 20 * s * (1 - a), 1.0, a)
+                ps_ = _pop((lt - 0.4) / 0.35)
+                if ps_ > 0:
+                    pr = L['prijs']
+                    _plak_schaal(fr_, pr, W / 2, ty + L['tekst'].height + int(20 * s) + pr.height / 2, ps_)
+            else:
+                lt = t - T_HOOK - n * T_PROD
+                fr_ = Image.blend(bg, eind, _ease(lt / 0.3)) if lt < 0.3 else eind.copy()
+                v = _pop((lt - 0.5) / 0.4)
+                if v > 0:
+                    puls = 1 + 0.03 * math.sin(max(0, lt - 0.9) * 6) if lt > 0.9 else 1
+                    _plak_schaal(fr_, vraag, W / 2, H * 0.78, v * puls)
+            # voortgangsbalk
+            dd = ImageDraw.Draw(fr_)
+            dd.rectangle((0, H - int(10 * s), int(W * (t / totaal)), H), fill=ORANJE)
+            proc.stdin.write(fr_.convert('RGB').tobytes())
+        proc.stdin.close()
+        proc.wait()
+    except Exception:
+        proc.kill()
+        raise
+    return proc.returncode == 0
+
+
 # ---------------- teksten ----------------
 
 def datum_tekst(ds):
@@ -548,9 +708,13 @@ def main():
     reel = os.path.join(mappen['tiktok'], 'leukekeuze-reel.mp4')
     reel_ok = False
     try:
-        reel_ok = maak_reel(tt, reel)
+        reel_ok = maak_reel_beweging(plan, ps, tt[0], reel)
     except Exception as e:
-        print('LET OP: reel mislukt:', e)
+        print('LET OP: bewegende reel mislukt (%s), ik maak de simpele versie' % e)
+        try:
+            reel_ok = maak_reel(tt, reel)
+        except Exception as e2:
+            print('LET OP: reel mislukt:', e2)
     if reel_ok:
         for k in ('instagram', 'facebook'):
             shutil.copy(reel, os.path.join(mappen[k], 'leukekeuze-reel.mp4'))
