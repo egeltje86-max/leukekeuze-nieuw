@@ -722,11 +722,13 @@ window.LK_TEKSTEN = {
       { kop: 'Welke detector past bij jou?', tekst: 'Een beginner kiest een detector die licht is en weinig instellingen heeft. Zoek je op het strand of in zout water? Kies dan een detector met meerdere frequenties, die werkt beter in zout. Draadloos en waterdicht is fijn, maar niet nodig om te beginnen.' }
     ] },
   'metaaldetectie/kinderen-beginners': {
-    tekst: 'Metaaldetectors voor kinderen en beginners: licht, simpel en betaalbaar.',
-    seoTitel: 'Metaaldetector voor kinderen en beginners',
-    seoTekst: 'Metaaldetector voor kinderen of beginners? Lichte, eenvoudige detectors van Bresser, Garrett, Minelab en Nokta. Een hobby om samen buiten te doen.',
+    tekst: 'Metaaldetectors voor kinderen en beginners. Eerlijk advies van iemand die zelf zoekt: wat is speelgoed, en waar vind je echt iets mee?',
+    seoTitel: 'Metaaldetector voor kinderen en beginners: eerlijk advies',
+    seoTekst: 'Metaaldetector voor een kind of beginner? Eerlijk advies: welke detectors speelgoed zijn en waarmee je echt iets vindt, zoals de Garrett Ace 150. Van Bresser, Garrett, Minelab en Nokta.',
     gids: [
-      { kop: 'Samen op schattenjacht', tekst: 'Een metaaldetector is een geweldig cadeau voor een kind: buiten, spannend, en elke keer anders. Kies een lichte detector die op de lengte van het kind is in te stellen. Voor jonge kinderen is een speelgoeddetector leuk; vanaf een jaar of acht kan een echte beginnersdetector.' }
+      { kop: 'Mijn tip: de Garrett Ace 150', tekst: 'Ik ben zelf begonnen met de Garrett Ace 150, en het is nog steeds mijn favoriet. Ik vond er onder andere een gouden ring, zilveren munten en sieraden mee. Hij is licht, makkelijk te leren en zoekt echt diep genoeg. Voor kinderen is hij prima te gebruiken. En zijn ze er na een tijdje op uitgekeken, zoals met zoveel dingen, dan heeft papa of mama een goede detector. – Marius' },
+      { kop: 'Goedkope kinderdetectors: eerlijk gezegd', tekst: 'Detectors onder de 60 euro zijn speelgoed. Leuk voor een kind om een middag mee te spelen in de tuin of op het strand, maar verwacht er geen echte vondsten van. Wil je dat een kind echt iets vindt? Kies dan een echte beginnersdetector vanaf ongeveer 150 euro.' },
+      { kop: 'De andere detectors', tekst: 'De overige detectors in dit vak zijn echte beginnersdetectors van bekende merken. Ik heb ze niet zelf getest, dus daar beloof ik niets over wat ik niet weet.' }
     ] },
   'metaaldetectie/pinpointers': {
     tekst: 'Pinpointers om een vondst snel te vinden in het gat: Garrett, Minelab, Nokta en meer.',
