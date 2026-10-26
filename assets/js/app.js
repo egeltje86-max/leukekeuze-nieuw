@@ -1285,6 +1285,18 @@
       if (eerste) { eerste = false; return; }
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.search, title: document.title }); } catch (e) {}
     });
+    /* Klik naar een winkel ('Bekijk bij bol', winkeltegel, product uit 'Meer in onze winkels'): als 'gebeurtenis' tellen,
+       zodat het Control Room laat zien welke producten mensen bij welke winkel bekijken. Geen cookies, geen persoonsgegevens. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[rel~="sponsored"]'); if (!a || !window.goatcounter || !window.goatcounter.count) return;
+      var pad = '', titel = '';
+      var kaart = a.closest('.product-info, .product-plak');
+      if (kaart) { var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1] || ''; var p = id && LK.vind(id); if (p) { pad = 'klik/' + p.shop + '/' + p.id; titel = p.shop + ': ' + p.titel; } }
+      else if (a.classList.contains('winkelkaart')) { pad = 'klik/winkel/' + (a.querySelector('strong') || {}).textContent; titel = 'Winkeltegel: ' + (a.querySelector('strong') || {}).textContent; }
+      else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); pad = 'klik/feed/' + (k.querySelector('.shop') || {}).textContent; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
+      else if (a.closest('.aw-bol')) { pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
+      if (pad) try { window.goatcounter.count({ path: pad, title: titel.slice(0, 120), event: true }); } catch (x) {}
+    }, true);
   })();
 
   /* ================== TERUG NAAR BOVEN ================== */
