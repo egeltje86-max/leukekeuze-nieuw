@@ -837,3 +837,11 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .gidskaart small { display: block; margin-top: 4px; color: var(--tekst-2); font-size: 13px; line-height: 1.4; }
 .tekstpagina.gids { max-width: 760px; }
 .tekstpagina .klein { font-size: 13px; }
+
+/* 'Lees ook' met cadeaugidsen in een vak */
+.lees-ook { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 4px 0 18px; padding: 12px 16px; border: 1px solid var(--lijn); border-radius: 14px; font-size: 14px; color: var(--tekst-2); }
+.lees-ook svg { width: 18px; height: 18px; color: var(--goud, #d4af5f); flex: none; }
+.lees-ook span { font-weight: 600; color: var(--tekst, #fff); }
+.lees-ook a { color: var(--goud, #d4af5f); text-decoration: underline; text-underline-offset: 3px; }
+.lees-ook a + a::before { content: '·'; color: var(--tekst-2); margin-right: 10px; text-decoration: none; display: inline-block; }
+@media (max-width: 600px) { .lees-ook a + a::before { display: none; } .lees-ook a { flex-basis: 100%; } .lees-ook span { margin-right: auto; } }

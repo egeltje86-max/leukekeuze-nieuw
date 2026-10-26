@@ -398,6 +398,7 @@
     }) +
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
+      leesOok(c.slug + (s ? '/' + s.slug : '')) +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       winkelSectie(c.slug, s && s.slug, q.prijs) +
@@ -917,7 +918,7 @@
 
   /* ---------- Cadeaugidsen: eigen tekst met een paar gekozen producten per stukje ---------- */
   var GIDSEN = [
-    { slug: 'sinterklaas-onder-10', titel: 'Sinterklaascadeaus onder de €10: voor in de schoen en als klein pakje', kort: 'Kleine cadeautjes voor de schoen en pakjesavond, allemaal onder een tientje.',
+    { slug: 'sinterklaas-onder-10', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/voor-kinderen', 'cadeaus/onder-15', 'speelgoed'], titel: 'Sinterklaascadeaus onder de €10: voor in de schoen en als klein pakje', kort: 'Kleine cadeautjes voor de schoen en pakjesavond, allemaal onder een tientje.',
       intro: 'Elke avond een schoen zetten, en dan ook nog pakjesavond: dat loopt snel op. Daarom koos ik cadeautjes onder de 10 euro waar kinderen echt blij van worden. Kleine setjes, boekjes en spelletjes, van merken die je kent.',
       delen: [
         { kop: 'Voor in de schoen (tot €5)', tekst: 'Klein genoeg om in een schoen te passen, en toch iets om mee te spelen.',
@@ -928,7 +929,7 @@
           ids: ['bol-9300000112625200', 'bol-9200000006380085', 'bol-9300000065878158', 'bol-9300000157956217'] }
       ],
       slot: 'Meer kleine cadeautjes staan bij <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
-    { slug: 'sinterklaas-voor-volwassenen', titel: 'Sinterklaascadeaus voor volwassenen: lootjes, surprises en lekkers', kort: 'Ideeën voor als je lootjes trekt met familie, vrienden of collega’s.',
+    { slug: 'sinterklaas-voor-volwassenen', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/onder-15', 'eten-drinken/chocolade-snoep'], titel: 'Sinterklaascadeaus voor volwassenen: lootjes, surprises en lekkers', kort: 'Ideeën voor als je lootjes trekt met familie, vrienden of collega’s.',
       intro: 'Sinterklaas is niet alleen voor kinderen. Veel families en vriendengroepen trekken lootjes, vaak met een vast bedrag van 10 of 15 euro. Dit zijn cadeaus die het goed doen bij volwassenen: iets om te spelen, iets lekkers, of iets dat je echt gebruikt.',
       delen: [
         { kop: 'Voor de lootjes (tot €15)', tekst: 'Een spel voor na het uitpakken, een grote mok, of een puzzel van de intocht.',
@@ -939,7 +940,7 @@
           ids: ['bol-9200000091821418', 'bol-9200000016853146', 'bol-9300000343902998', 'bol-9300000005044757'] }
       ],
       slot: 'Alle sinterklaascadeaus vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Zoek je iets voor een kind? Kijk dan bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a>.' },
-    { slug: 'kerstcadeau-onder-25', titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten.',
+    { slug: 'kerstcadeau-onder-25', vakken: ['cadeaus/kerst', 'cadeaus/onder-15', 'eten-drinken', 'wonen/kerstdecoratie'], titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten.',
       intro: 'Met Kerst geef je vaak aan meer mensen tegelijk. Dan is het fijn als een cadeau niet te duur is, maar wel echt leuk om te krijgen. Deze cadeaus kosten allemaal minder dan 25 euro.',
       delen: [
         { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee en chocolade in een mooie verpakking. Altijd goed, voor iedereen.',
@@ -950,7 +951,7 @@
           ids: ['bol-9300000172981367', 'bol-9300000133136276', 'bol-9300000174665071', 'bol-9300000375928006'] }
       ],
       slot: 'Meer goedkope cadeaus vind je bij <a href="/c/cadeaus/onder-15">Cadeaus onder €15</a>. Alle kerstcadeaus staan bij <a href="/c/cadeaus/kerst">Kerst</a>.' },
-    { slug: 'kerstcadeau-voor-haar', titel: 'Kerstcadeau voor haar: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van 19 tot 130 euro.',
+    { slug: 'kerstcadeau-voor-haar', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar', 'mode-beauty', 'mode-beauty/geuren', 'mode-beauty/verzorging'], titel: 'Kerstcadeau voor haar: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van 19 tot 130 euro.',
       intro: 'Een kerstcadeau voor haar hoeft niet ingewikkeld te zijn. Iets om jezelf mee te verwennen, iets lekkers bij de thee, of iets moois voor in huis. Ik zette cadeaus in drie prijsklassen op een rij, zodat je snel iets vindt dat bij je budget past.',
       delen: [
         { kop: 'Tot €25', tekst: 'Klein, maar met aandacht gekozen.',
@@ -961,7 +962,7 @@
           ids: ['bol-9300000331215829', 'bol-9300000142746730', 'bol-9200000132246044', 'bol-9300000236208265'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/voor-haar">Cadeaus voor haar</a> en <a href="/c/mode-beauty/geuren">Geuren</a>.' },
-    { slug: 'kerstcadeau-voor-hem', titel: 'Kerstcadeau voor hem: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van 20 tot 180 euro.',
+    { slug: 'kerstcadeau-voor-hem', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem', 'mode-beauty/geuren', 'sport-outdoor/darts', 'elektronica'], titel: 'Kerstcadeau voor hem: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van 20 tot 180 euro.',
       intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: iets voor de auto, iets om mee te koken of te drinken, of een gadget. Hier staan ze in drie prijsklassen.',
       delen: [
         { kop: 'Tot €35', tekst: 'Leuk en betaalbaar.',
@@ -972,7 +973,7 @@
           ids: ['bol-9300000105460117', 'bol-9200000118422706', 'bol-9300000015405237', 'bol-9200000132005044'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/voor-hem">Cadeaus voor hem</a>, <a href="/c/sport-outdoor/darts">Darts</a> en <a href="/c/dranken">Dranken</a>.' },
-    { slug: 'kerstcadeau-collega', titel: 'Kerstcadeau voor een collega of het hele team', kort: 'Van een klein bedankje tot een kerstpakket dat je samen geeft.',
+    { slug: 'kerstcadeau-collega', vakken: ['cadeaus/kerst', 'cadeaus/collega', 'eten-drinken/pakketten'], titel: 'Kerstcadeau voor een collega of het hele team', kort: 'Van een klein bedankje tot een kerstpakket dat je samen geeft.',
       intro: 'Een kerstcadeau voor een collega moet vooral niet te persoonlijk zijn, en ook niet te duur. Iets lekkers, iets voor op het bureau of iets gezelligs voor thuis doet het bijna altijd goed. Geef je met het hele team? Dan kun je wat groter denken.',
       delen: [
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt.',
@@ -983,7 +984,7 @@
           ids: ['bol-9300000047849774', 'bol-9300000198227802', 'bol-9300000243166751', 'bol-9300000233060419'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega: 12 ideeën</a>.' },
-    { slug: 'sinterklaas-onder-15', titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
+    { slug: 'sinterklaas-onder-15', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen'], titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
       intro: 'Op pakjesavond gaat het niet om dure cadeaus, maar om iets leuks om uit te pakken. Daarom zette ik de beste cadeautjes onder de 15 euro op een rij. Handig als je meerdere kinderen hebt, of als je lootjes trekt met een vast bedrag.',
       delen: [
         { kop: 'Voor kinderen die graag iets maken', tekst: 'Knutselsetjes zijn ideaal voor de schoen of als klein pakje: goedkoop, en ze zijn er na pakjesavond nog dagen zoet mee.',
@@ -994,7 +995,7 @@
           ids: ['bol-9300000237478282', 'bol-9300000155871150', 'bol-9300000192710306', 'bol-9300000255947352'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/sint-onder-15">alle Sinterklaascadeaus onder €15</a> en <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Tip: koop op tijd, rond 5 december zijn populaire cadeautjes vaak snel uitverkocht.' },
-    { slug: 'cadeau-voor-collega', titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
+    { slug: 'cadeau-voor-collega', vakken: ['cadeaus/collega', 'boeken-media/agendas'], titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
       intro: 'Een cadeau voor een collega is lastig: je wilt iets persoonlijks, maar het mag niet te duur of te gek zijn. Deze cadeaus vallen bijna altijd goed, voor een verjaardag, een afscheid of als bedankje.',
       delen: [
         { kop: 'Kleine bedankjes (tot €20)', tekst: 'Iets lekkers of een klein plantje voor op het bureau. Niet te veel, wel attent.',
@@ -1005,7 +1006,7 @@
           ids: ['bol-9300000242745735', 'bol-9300000238049219', 'bol-9300000225912982', 'bol-9300000174098365'] }
       ],
       slot: 'Bekijk alle ideeën bij <a href="/c/cadeaus/collega">Cadeau voor collega</a>. Geef je met het hele team? Kijk dan ook eens naar de wat duurdere cadeaus, zoals een mooie laptoptas of lunchpot.' },
-    { slug: 'kerstcadeau-opa-oma', titel: 'Kerstcadeau voor opa en oma', kort: 'Cadeaus voor opa en oma die ze echt gaan gebruiken, van spelletjes tot herinneringen.',
+    { slug: 'kerstcadeau-opa-oma', vakken: ['cadeaus/kerst', 'cadeaus/opa-oma', 'wonen/plaids-kussens', 'speelgoed/puzzels'], titel: 'Kerstcadeau voor opa en oma', kort: 'Cadeaus voor opa en oma die ze echt gaan gebruiken, van spelletjes tot herinneringen.',
       intro: 'Opa en oma zeggen vaak dat ze niets nodig hebben. Toch zijn er cadeaus waar ze echt blij van worden: iets om samen met de kleinkinderen te doen, iets warms voor de winter, of een herinnering.',
       delen: [
         { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die opa en oma nog kennen van vroeger, en die kleinkinderen ook leuk vinden.',
@@ -1016,7 +1017,7 @@
           ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9300000171232502'] }
       ],
       slot: 'Nog meer ideeën staan bij <a href="/c/cadeaus/opa-oma">Cadeaus voor opa en oma</a> en <a href="/c/cadeaus/kerst">Kerstcadeaus</a>.' },
-    { slug: 'sfeerlicht-donkere-avonden', titel: 'Sfeerlicht voor donkere avonden: lavalampen, sterrenprojectors en meer', kort: 'De klok is terug en het is vroeg donker. Zo maak je het thuis gezellig.',
+    { slug: 'sfeerlicht-donkere-avonden', vakken: ['wonen', 'wonen/verlichting', 'elektronica/slimme-gadgets'], titel: 'Sfeerlicht voor donkere avonden: lavalampen, sterrenprojectors en meer', kort: 'De klok is terug en het is vroeg donker. Zo maak je het thuis gezellig.',
       intro: 'Als de klok een uur terug gaat, is het ineens om half zes al donker. Een fel plafondlicht maakt het dan niet gezellig. Deze lampen geven sfeer, en het zijn ook leuke cadeaus voor tieners en volwassenen.',
       delen: [
         { kop: 'Lavalampen', tekst: 'De klassieker uit de jaren zeventig is weer helemaal terug. Rustgevend om naar te kijken.',
@@ -1034,6 +1035,13 @@
     return '<section class="sectie">' +
       '<div class="sectie-kop"><div><h2>Cadeaugidsen</h2><p>Per gelegenheid de beste ideeën op een rij, met uitleg.</p></div><a class="meer" href="/gids">Alle gidsen ' + ic('pijl') + '</a></div>' +
       '<div class="gidslijst">' + GIDSEN.slice(0, 4).map(gidsKaart).join('') + '</div></section>';
+  }
+  /* 'Lees ook': gidsen die bij dit vak horen (veld 'vakken' in GIDSEN). Maximaal 3, in de volgorde van GIDSEN. */
+  function leesOok(sleutel) {
+    var l = GIDSEN.filter(function (g) { return (g.vakken || []).indexOf(sleutel) > -1; }).slice(0, 3);
+    if (!l.length) return '';
+    return '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span>' +
+      l.map(function (g) { return '<a href="/gids/' + g.slug + '">' + esc(g.titel.split(':')[0]) + '</a>'; }).join('') + '</nav>';
   }
   function gidsKaart(g) {
     var eerste = g.delen[0].ids.map(function (id) { return LK.vind(id); }).filter(Boolean)[0];
