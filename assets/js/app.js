@@ -935,7 +935,7 @@
         { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die opa en oma nog kennen van vroeger, en die kleinkinderen ook leuk vinden.',
           ids: ['bol-1004004000008403', 'bol-1004004011781804', 'bol-9200000108574427', 'bol-9300000132852206'] },
         { kop: 'Warm en gezellig de winter door', tekst: 'Voor lange winteravonden op de bank of in de stoel.',
-          ids: ['bol-9300000073597022', 'bol-9300000236851351', 'bol-9200000075452260', 'bol-9300000098766103'] },
+          ids: ['bol-9300000196514024', 'bol-9300000236851351', 'bol-9200000075452260', 'bol-9300000098766103'] },
         { kop: 'Herinneringen en muziek', tekst: 'Foto’s van de kleinkinderen of muziek van vroeger: daar raken ze niet op uitgekeken.',
           ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9300000171232502'] }
       ],
