@@ -167,7 +167,7 @@ function maakPagina(info, lade, mega) {
   const oud = `<script>
   (function () {
     var p = location.pathname.replace(/\\/+$/, '').toLowerCase();
-    var kaart = { '/christelijke-cadeaus': '/c/christelijk/', '/cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/', '/cadeauzoeker': '/vonk/', '/c/cadeaus/onder-10': '/c/cadeaus/onder-15/', '/c/mode-beauty/sieraden': '/c/sieraden/', '/c/christelijk/doop-communie': '/c/christelijk/doop-belijdenis/', '/c/christelijk/beelden-kruisen': '/c/christelijk/wanddecoratie/', '/cadeaugidsen': '/gids/' };
+    var kaart = { '/christelijke-cadeaus': '/c/christelijk/', '/cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/', '/cadeauzoeker': '/vonk/', '/c/cadeaus/onder-10': '/c/cadeaus/onder-15/', '/c/mode-beauty/sieraden': '/c/sieraden/', '/c/christelijk/doop-communie': '/c/christelijk/doop-belijdenis/', '/c/christelijk/beelden-kruisen': '/c/christelijk/wanddecoratie/', '/cadeaugidsen': '/gids/', '/babycadeaus': '/c/cadeaus/baby-kraam/' };
     var doel = kaart[p] || (/^\\/cadeaugids\\//.test(p + '/') ? '/gids/' : (/^\\/keurkamer\\//.test(p + '/') ? '/' : ''));
     if (doel) location.replace(doel);
   })();

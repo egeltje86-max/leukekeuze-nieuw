@@ -350,9 +350,11 @@
     if (!c) return nietGevonden();
     var s = subSlug ? window.LK_SUB(c, subSlug) : null;
     if (subSlug && !s) return nietGevonden();
-    zetTitel(s ? (s.seoTitel || s.naam + ' – ' + c.naam) : (c.seoTitel || c.naam));
-    window.LK_SEO = (s ? s.seoTekst : c.seoTekst) || '';
-    var gids = s ? s.gids : c.gids;
+    /* Teksten uit teksten.js (intro, Google-titel, omschrijving, tips). Staat er in data.js al iets, dan wint dat. */
+    var T = (window.LK_TEKSTEN || {})[c.slug + (s ? '/' + s.slug : '')] || {};
+    zetTitel(s ? (s.seoTitel || T.seoTitel || s.naam + ' – ' + c.naam) : (c.seoTitel || T.seoTitel || c.naam));
+    window.LK_SEO = (s ? s.seoTekst : c.seoTekst) || T.seoTekst || '';
+    var gids = (s ? s.gids : c.gids) || T.gids;
 
     var pad = '/c/' + c.slug + (s ? '/' + s.slug : '');
     var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs); });
@@ -384,7 +386,7 @@
 
     return paginakop({
       titel: s ? (s.kop || s.naam) : (c.kop || c.naam),
-      tekst: s ? (s.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : c.tekst,
+      tekst: s ? (s.tekst || T.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : (c.tekst || T.tekst),
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
       kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
     }) +
