@@ -1260,12 +1260,11 @@
     var onder = !d.length ? 'home' : d[0] === 'vonk' ? 'vonk' : d[0] === 'favorieten' ? 'favorieten' : (d[0] === 'c' || d[0] === 'categorieen') ? 'categorieen' : '';
     $$('[data-onder]').forEach(function (n) { if (n.dataset.onder === onder) n.setAttribute('aria-current', 'page'); else n.removeAttribute('aria-current'); });
 
-    /* Terugknop: altijd bovenaan de pagina beginnen (wens van Marius, 26-10-2026). De oude plek wordt niet meer hersteld. */
-    var viaTerug = terugViaKnop;
+    // Terug (of vooruit) met de knop van de browser: naar de plek waar je was.
+    var hersteld = terugViaKnop && herstelPlek();
     terugViaKnop = false;
-    if (viaTerug) { window.scrollTo(0, 0); if (vorigPad !== null) app.focus({ preventScroll: true }); }
     // Alleen naar boven als je naar een andere pagina gaat (niet bij filteren)
-    else if (a.pad !== vorigPad) {
+    if (a.pad !== vorigPad && !hersteld) {
       var grid = zelfdeCat && d[2] ? $('.prodgrid', app) : null;
       if (grid) {
         /* subcategorie gekozen binnen dezelfde categorie: meteen naar het eerste product */
