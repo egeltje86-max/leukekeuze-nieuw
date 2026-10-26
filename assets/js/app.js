@@ -19,6 +19,12 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var app = $('#app');
+  /* Marius zelf (link uit zijn Control Room met ?eigen=1): deze browser voortaan niet meetellen in GoatCounter.
+     GoatCounter slaat elke telling over zolang 'skipgc' in deze browser staat. Daarna het stukje uit het adres halen. */
+  if (/[?&]eigen=1/.test(location.search)) {
+    try { localStorage.setItem('skipgc', 't'); } catch (e) {}
+    try { history.replaceState(null, '', location.pathname + location.search.replace(/([?&])eigen=1&?/, '$1').replace(/[?&]$/, '') + location.hash); } catch (e) {}
+  }
   /* Oude adressen met # (bijv. leukekeuze.nl/#/c/wonen) omzetten naar het echte adres */
   if (/^#\//.test(location.hash)) {
     try { history.replaceState(null, '', netjes(location.hash.slice(1))); } catch (e) {}
