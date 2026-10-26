@@ -11,7 +11,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- CADEAUS ---------------- */
   'cadeaus': {
-    seoTitel: 'Cadeaus voor elke gelegenheid – met de hand gekozen | LeukeKeuze',
+    seoTitel: 'Cadeaus voor elke gelegenheid, met de hand gekozen',
     seoTekst: 'Op zoek naar een leuk cadeau? Cadeaus voor haar, hem, kinderen, opa en oma en collega\'s. Voor Sinterklaas, Kerst, verjaardagen en kraamvisite. Met de hand gekozen.',
     gids: [
       { kop: 'Zo vind je snel een cadeau', tekst: 'Kies hierboven voor wie je iets zoekt, of voor welke gelegenheid. Met de prijsknoppen zie je alleen cadeaus binnen je budget. Weet je het echt niet? Probeer VONK: drie vragen en je krijgt passende ideeën.' },
@@ -19,7 +19,7 @@ window.LK_TEKSTEN = {
     ] },
   'cadeaus/voor-haar': {
     tekst: 'Cadeaus voor je vrouw, vriendin, moeder, zus of vriendin: van een klein verwenmoment tot iets groots.',
-    seoTitel: 'Cadeau voor haar: leuke cadeaus voor vrouw, vriendin, moeder of zus',
+    seoTitel: 'Cadeau voor haar: voor vrouw, vriendin, moeder of zus',
     seoTekst: 'Cadeau voor haar nodig? Sieraden, geuren, verzorging, iets lekkers bij de thee en mooie spullen voor in huis. Voor een verjaardag, Kerst, Moederdag of zomaar.',
     gids: [
       { kop: 'Wat geef je een vrouw cadeau?', tekst: 'Een goed cadeau voor haar sluit aan bij wat ze graag doet. Houdt ze van lekker eten? Kijk bij thee, chocolade of een mooie mok. Is ze graag bezig in huis? Dan is een geurkaars, een plaid of een mooie vaas een veilige keuze. Een sieraad of cadeauset met parfum is altijd feestelijk.' },
@@ -43,7 +43,7 @@ window.LK_TEKSTEN = {
     ] },
   'cadeaus/kerst': {
     tekst: 'Kerstcadeaus voor iedereen op je lijstje: van klein en lekker tot groot en luxe.',
-    seoTitel: 'Kerstcadeaus: ideeën voor haar, hem, kinderen, opa en oma en collega\'s',
+    seoTitel: 'Kerstcadeaus: ideeën voor haar, hem, kinderen en opa en oma',
     seoTekst: 'Kerstcadeau nodig? Honderden kerstcadeaus voor haar, hem, kinderen, opa en oma en collega\'s. Van lekkers en kerstdecoratie tot cadeausets. Op tijd in huis voor de feestdagen.',
     gids: [
       { kop: 'Kerstcadeaus kiezen zonder stress', tekst: 'Maak een lijstje met voor wie je iets zoekt en wat je per persoon wilt uitgeven. Met de prijsknoppen hierboven zie je alleen cadeaus in dat budget. Koop grote cadeaus op tijd: rond half december raken populaire dingen snel uitverkocht.' },
@@ -105,14 +105,14 @@ window.LK_TEKSTEN = {
 
   /* ---------------- SPEELGOED ---------------- */
   'speelgoed': {
-    seoTitel: 'Speelgoed en spellen: LEGO, Playmobil, puzzels, bordspellen en meer',
+    seoTitel: 'Speelgoed en spellen: LEGO, Playmobil, puzzels en meer',
     seoTekst: 'Speelgoed en spellen voor baby\'s, kinderen en volwassenen. Bouwen, puzzels, bordspellen, kaartspellen, buitenspeelgoed en knutselen. Van bekende merken.',
     gids: [
       { kop: 'Speelgoed kiezen', tekst: 'Kijk naar de leeftijd en naar wat het kind leuk vindt: bouwen, spelen met figuren, puzzelen of buiten bezig zijn. Op de productpagina staat vaak vanaf welke leeftijd iets geschikt is. Voor volwassenen vind je hier bordspellen en puzzels.' }
     ] },
   'speelgoed/baby-peuter': {
     tekst: 'Speelgoed voor baby\'s en peuters van 0 tot 3 jaar: zacht, stevig en veilig.',
-    seoTitel: 'Babyspeelgoed en peuterspeelgoed: veilig speelgoed van 0 tot 3 jaar',
+    seoTitel: 'Baby- en peuterspeelgoed: veilig speelgoed van 0 tot 3 jaar',
     seoTekst: 'Speelgoed voor baby\'s en peuters: knuffels, rammelaars, stapeltorens, badspeelgoed en eerste puzzels. Veilig en van bekende merken.',
     gids: [
       { kop: 'Speelgoed voor de allerkleinsten', tekst: 'Baby\'s ontdekken met hun handen en mond. Kies dus zacht speelgoed zonder kleine onderdelen. Peuters van één tot drie jaar houden van stapelen, duwen, trekken en nadoen: een stapeltoren, een loopwagen of een eenvoudig keukentje.' }
@@ -126,7 +126,7 @@ window.LK_TEKSTEN = {
       { kop: 'Klein of groot', tekst: 'Kleine setjes onder de 10 euro zijn ideaal voor de schoen of als extraatje. Voor een verjaardag of Kerst kun je een grotere set kiezen, of een paar kleine die bij elkaar passen.' }
     ] },
   'speelgoed/figuren-voertuigen': {
-    seoTitel: 'Speelfiguren en voertuigen: Schleich, Hot Wheels, Funko Pop en meer',
+    seoTitel: 'Speelfiguren en voertuigen: Schleich, Hot Wheels en meer',
     seoTekst: 'Speelfiguren en voertuigen: dieren van Schleich, auto\'s van Hot Wheels, verzamelfiguren en poppen. Voor kinderen en verzamelaars.',
     gids: [
       { kop: 'Figuren om mee te spelen en te verzamelen', tekst: 'Dieren van Schleich en auto\'s van Hot Wheels zijn klein, stevig en betaalbaar: perfect voor de schoen of als klein cadeau. Verzamelfiguren zoals Funko Pop zijn vooral leuk voor tieners en volwassenen die fan zijn van een film of serie.' }
@@ -170,7 +170,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- ETEN & DRINKEN ---------------- */
   'eten-drinken': {
-    seoTitel: 'Eten en drinken cadeau: chocolade, snoep, koffie, thee en pakketten',
+    seoTitel: 'Eten en drinken cadeau: chocolade, snoep, koffie en thee',
     seoTekst: 'Lekkers om cadeau te geven: chocolade, drop en snoep, koffie en thee, BBQ-kruiden, borrelpakketten en lekkernijen. Voor elke gelegenheid.',
     gids: [
       { kop: 'Lekkers geven doet het altijd', tekst: 'Iets lekkers is een cadeau dat bijna iedereen fijn vindt, en je hoeft de smaak van iemand niet precies te kennen. Kies iets in een mooie verpakking, dan is het meteen een cadeau zonder inpakken.' }
@@ -257,14 +257,14 @@ window.LK_TEKSTEN = {
 
   /* ---------------- MODE & BEAUTY ---------------- */
   'mode-beauty': {
-    seoTitel: 'Mode en beauty cadeaus: horloges, geuren, verzorging, tassen en accessoires',
+    seoTitel: 'Mode en beauty cadeaus: horloges, geuren, verzorging en tassen',
     seoTekst: 'Cadeaus in mode en beauty: horloges, parfum en cadeausets, verzorging, tassen, rugzakken, schoenen, kleding en accessoires. Voor haar en voor hem.',
     gids: [
       { kop: 'Mode en beauty als cadeau', tekst: 'Een geur, een horloge of een mooie tas is een cadeau dat elke dag gebruikt wordt. Twijfel je over smaak of maat? Een verzorgingsset of een accessoire zoals een sjaal of muts is veiliger dan kleding of schoenen.' }
     ] },
   'mode-beauty/horloges': {
     tekst: 'Horloges voor hem en haar van Casio, Fossil, Seiko en meer: van sportief tot klassiek.',
-    seoTitel: 'Horloge cadeau: horloges voor hem en haar van Casio, Fossil en meer',
+    seoTitel: 'Horloge cadeau: voor hem en haar, van Casio, Fossil en meer',
     seoTekst: 'Horloge cadeau geven? Horloges voor mannen en vrouwen van Casio, Fossil, Seiko, Daniel Wellington en meer. Sportief, klassiek of modern, in elke prijsklasse.',
     gids: [
       { kop: 'Een horloge kiezen', tekst: 'Kijk naar de stijl van de persoon: draagt hij of zij liever iets sportiefs of iets nets? Let op de maat van de kast: rond 38 mm is bescheiden, boven 42 mm is groot. Een horloge is een cadeau dat jaren meegaat, dus kies een merk dat je kent.' }
@@ -278,7 +278,7 @@ window.LK_TEKSTEN = {
     ] },
   'mode-beauty/verzorging': {
     tekst: 'Verwencadeaus: badsets, cadeausets van Rituals, Kneipp en The Body Shop, en verzorging voor hem.',
-    seoTitel: 'Verzorging cadeau: badsets en cadeausets van Rituals, Kneipp en meer',
+    seoTitel: 'Verzorging cadeau: cadeausets van Rituals, Kneipp en meer',
     seoTekst: 'Verwencadeau nodig? Cadeausets van Rituals, Kneipp, The Body Shop, Weleda en NIVEA. Badsets, douche-sets en verzorging voor haar en hem. Voor elk budget.',
     gids: [
       { kop: 'Verwennen zonder risico', tekst: 'Een verzorgingsset is een veilig cadeau: bijna iedereen gebruikt het, en je hoeft de maat of smaak niet te kennen. Voor haar zijn bad- en douchesets populair, voor hem een set met douchegel en deodorant. Kleine sets onder de 15 euro zijn ideaal voor lootjes.' }
@@ -463,7 +463,7 @@ window.LK_TEKSTEN = {
     ] },
   'dranken/alcoholvrij': {
     tekst: 'Alcoholvrije dranken om te geven: alcoholvrije gin, bubbels zonder alcohol en bijzondere limonades.',
-    seoTitel: 'Alcoholvrij cadeau: alcoholvrije gin, bubbels en bijzondere dranken',
+    seoTitel: 'Alcoholvrij cadeau: alcoholvrije gin, bubbels en meer',
     seoTekst: 'Alcoholvrij cadeau geven? Alcoholvrije gin en bubbels, bijzondere limonades en siropen. Voor wie niet drinkt, zwanger is of moet rijden, en toch wil proosten.',
     gids: [
       { kop: 'Proosten zonder alcohol', tekst: 'Steeds meer mensen drinken geen alcohol, en daar zijn mooie cadeaus voor. Alcoholvrije gin smaakt in een tonic bijna als het echte werk, alcoholvrije bubbels zijn feestelijk bij een verjaardag of zwangerschap. Een bijzondere limonade is leuk voor kinderen en volwassenen.' }
@@ -471,7 +471,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- ELEKTRONICA ---------------- */
   'elektronica': {
-    seoTitel: 'Elektronica en gadgets cadeau: audio, slimme gadgets, telefoon, gaming en foto',
+    seoTitel: 'Gadgets en elektronica cadeau: audio, gaming, foto en meer',
     seoTekst: 'Gadgets en elektronica als cadeau: speakers en koptelefoons, slimme gadgets voor thuis, telefoonaccessoires, gaming en instant camera\'s. Voor jong en oud.',
     gids: [
       { kop: 'Een gadget cadeau geven', tekst: 'Gadgets zijn leuk voor wie van nieuwe dingen houdt. Kies iets wat echt gebruikt wordt: een goede speaker, een powerbank, een instant camera. Let bij telefoonaccessoires op of het bij het toestel past.' }
@@ -485,7 +485,7 @@ window.LK_TEKSTEN = {
     ] },
   'elektronica/slimme-gadgets': {
     tekst: 'Slimme gadgets voor thuis: slimme lampen, wake-up lights, weerstations, trackers en meer.',
-    seoTitel: 'Slimme gadgets cadeau: slimme lampen, weerstations en handige apparaten',
+    seoTitel: 'Slimme gadgets cadeau: slimme lampen, weerstations en meer',
     seoTekst: 'Slimme gadgets als cadeau: slimme verlichting, wake-up lights, weerstations, trackers en handige apparaten voor thuis en onderweg. Voor wie van techniek houdt.',
     gids: [
       { kop: 'Handig en leuk', tekst: 'De beste gadgets zijn de dingen die je elke dag gebruikt: een wake-up light om rustig wakker te worden, slimme lampen die je met je telefoon bedient, een weerstation voor opa. Kijk of het werkt met wat iemand al heeft, zoals een iPhone of Android-telefoon.' }
@@ -514,7 +514,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- SPORT & OUTDOOR ---------------- */
   'sport-outdoor': {
-    seoTitel: 'Sport en outdoor cadeaus: fitness, wandelen, fietsen, kamperen, reizen, darts en golf',
+    seoTitel: 'Sport en outdoor cadeaus: fitness, wandelen, fietsen en meer',
     seoTekst: 'Cadeaus voor sportieve mensen: fitness, wandelen, fietsen, kamperen, reizen, darts, golf en metaaldetectie. Van klein cadeautje tot complete set.',
     gids: [
       { kop: 'Cadeau voor een sporter', tekst: 'Een sporter is blij met iets voor zijn sport: goede spullen gaan lang mee en worden elke week gebruikt. Weet je niet precies wat iemand al heeft? Kies dan iets kleins en handigs, zoals een drinkfles, een hoofdlamp of een goede sok.' }
@@ -528,7 +528,7 @@ window.LK_TEKSTEN = {
     ] },
   'sport-outdoor/wandelen': {
     tekst: 'Voor de wandelaar: drinkflessen, hoofdlampen, verrekijkers, zakmessen, wandelsokken en rugzakken.',
-    seoTitel: 'Wandelen cadeau: drinkflessen, hoofdlampen, verrekijkers en zakmessen',
+    seoTitel: 'Wandelen cadeau: drinkflessen, hoofdlampen en verrekijkers',
     seoTekst: 'Cadeau voor een wandelaar? Drinkflessen van Hydro Flask en Dopper, hoofdlampen van Petzl en Ledlenser, verrekijkers, Victorinox zakmessen en warme wandelsokken.',
     gids: [
       { kop: 'Cadeau voor wie graag buiten is', tekst: 'Wandelaars gebruiken hun spullen vaak en lang. Een goede drinkfles, een hoofdlamp voor de donkere maanden of een compacte verrekijker worden echt gebruikt. Een Zwitsers zakmes is een klassiek cadeau dat een leven lang meegaat.' }
@@ -549,7 +549,7 @@ window.LK_TEKSTEN = {
     ] },
   'sport-outdoor/reizen': {
     tekst: 'Reiscadeaus: koffers, toilettassen, nekkussens, inpakzakken, reisföhns en handige reisaccessoires.',
-    seoTitel: 'Reizen cadeau: koffers, toilettassen, nekkussens en reisaccessoires',
+    seoTitel: 'Reizen cadeau: koffers, toilettassen en nekkussens',
     seoTekst: 'Cadeau voor iemand die graag reist? Handbagagekoffers, toilettassen, nekkussens, inpakzakken, reisföhns, bagagelabels en meer. Van Eastpak, Thule, Fjällräven en Samsonite.',
     gids: [
       { kop: 'Cadeau voor de reiziger', tekst: 'Handige reisspullen worden elke reis gebruikt: een goed nekkussen, inpakzakken om de koffer op orde te houden, een stevige toilettas. Een handbagagekoffer is een groter cadeau voor wie vaak een weekend weg gaat. Kijk bij koffers naar de maat: 55 cm past als handbagage bij de meeste maatschappijen.' }
@@ -563,7 +563,7 @@ window.LK_TEKSTEN = {
     ] },
   'sport-outdoor/golf': {
     tekst: 'Cadeaus voor golfers: oefenmateriaal, golfballen, handschoenen, accessoires en golfkleding.',
-    seoTitel: 'Golf cadeau: golfballen, oefenmateriaal en accessoires voor golfers',
+    seoTitel: 'Golf cadeau: golfballen, oefenmateriaal en accessoires',
     seoTekst: 'Cadeau voor een golfer? Golfballen van Titleist en Callaway, oefenmatten en puttingtrainers, golfhandschoenen, handdoeken, zonnebrillen en golfaccessoires.',
     gids: [
       { kop: 'Cadeau voor een golfer', tekst: 'Golfers hebben hun clubs al, dus geef iets erbij: goede golfballen, een puttingmat om thuis te oefenen, een handschoen of een mooie golfhanddoek. Voor een groter cadeau is een golfzonnebril of een afstandsmeter een goede keuze.' }
@@ -572,14 +572,14 @@ window.LK_TEKSTEN = {
 
   /* ---------------- WONEN ---------------- */
   'wonen': {
-    seoTitel: 'Wonen en decoratie cadeau: kaarsen, huisgeuren, verlichting, plaids en woonaccessoires',
+    seoTitel: 'Wonen en decoratie cadeau: kaarsen, verlichting en plaids',
     seoTekst: 'Cadeaus voor in huis: geurkaarsen, kandelaars, huisgeuren, sfeerverlichting, plaids, kussens, woonaccessoires en kerstdecoratie. Mooi en gezellig.',
     gids: [
       { kop: 'Een cadeau voor in huis', tekst: 'Iets voor in huis is een cadeau waar iemand elke dag naar kijkt. Een geurkaars, een mooie lamp of een warme plaid past bij bijna elk interieur. Kies rustige kleuren als je de smaak van iemand niet precies kent.' }
     ] },
   'wonen/kaarsen-geur': {
     tekst: 'Geurkaarsen, kandelaars en kaarsen van Rituals, Yankee Candle, Bolsius en meer.',
-    seoTitel: 'Kaarsen en kandelaars cadeau: geurkaarsen van Rituals, Yankee Candle en meer',
+    seoTitel: 'Geurkaarsen en kandelaars cadeau: Rituals, Yankee Candle en meer',
     seoTekst: 'Kaarsen als cadeau: geurkaarsen van Rituals, Yankee Candle, Ted Sparks en Bolsius, mooie kandelaars en kaarsensets. Voor een gezellig huis.',
     gids: [
       { kop: 'Een kaars als cadeau', tekst: 'Een geurkaars is een klein verwencadeau voor haar, voor collega\'s en als bedankje. Kies een geur die bij het seizoen past: fris in de zomer, warm en kruidig in de winter. Een mooie kandelaar is een cadeau dat blijft staan als de kaars op is.' }
@@ -593,14 +593,14 @@ window.LK_TEKSTEN = {
     ] },
   'wonen/woonaccessoires': {
     tekst: 'Woonaccessoires als cadeau: vazen, fotolijsten, dienbladen, klokken en kleine decoratie.',
-    seoTitel: 'Woonaccessoires cadeau: vazen, fotolijsten, dienbladen en decoratie',
+    seoTitel: 'Woonaccessoires cadeau: vazen, fotolijsten en dienbladen',
     seoTekst: 'Woonaccessoires om cadeau te geven: vazen, fotolijsten, dienbladen, klokken, boekensteunen en kleine decoratie voor in huis. Voor een nieuw huis of zomaar.',
     gids: [
       { kop: 'Cadeau voor een nieuw huis', tekst: 'Een vaas, een mooie fotolijst of een dienblad is een klassiek cadeau voor een housewarming of verjaardag. Kies iets tijdloos in een rustige kleur, dan past het bij bijna elk interieur.' }
     ] },
   'wonen/verlichting': {
     tekst: 'Sfeerverlichting: lavalampen, sterrenprojectors, slimme lampen, lichtsnoeren en tafellampen.',
-    seoTitel: 'Sfeerverlichting cadeau: lavalampen, sterrenprojectors en slimme lampen',
+    seoTitel: 'Sfeerverlichting cadeau: lavalampen en sterrenprojectors',
     seoTekst: 'Sfeerverlichting als cadeau: lavalampen van Mathmos, sterrenprojectors, slimme lampen van Govee en Philips Hue, lichtsnoeren en tafellampen. Voor donkere avonden.',
     gids: [
       { kop: 'Licht voor donkere avonden', tekst: 'Een sfeerlamp maakt een kamer meteen gezelliger. Lavalampen zijn rustgevend, sterrenprojectors leuk voor kinderen en tieners, slimme lampen voor wie van gadgets houdt. Lees ook onze gids over sfeerlicht voor donkere avonden.' }
@@ -622,7 +622,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- KEUKEN ---------------- */
   'keuken': {
-    seoTitel: 'Keuken en tafelen cadeau: koken, bakken, keukenapparaten, serveren en koffie',
+    seoTitel: 'Keuken cadeau: koken, bakken, keukenapparaten en serveren',
     seoTekst: 'Cadeaus voor in de keuken: kookgerei, keukenapparaten, bakvormen, servies en serveerspullen, koffie- en theespullen en opbergen. Voor thuiskoks en bakkers.',
     gids: [
       { kop: 'Cadeau voor de thuiskok', tekst: 'Wie graag kookt of bakt, is blij met goede spullen: een scherp mes, een mooie pan, een handige bakvorm. Voor de koffiedrinker is een percolator of mooie mok een fijn cadeau. Kijk ook bij Eten & Drinken om er iets lekkers bij te geven.' }
@@ -672,14 +672,14 @@ window.LK_TEKSTEN = {
 
   /* ---------------- TUIN & KLUSSEN ---------------- */
   'tuin-klussen': {
-    seoTitel: 'Tuin en klussen cadeau: tuingereedschap, planten, gereedschap en buitenverlichting',
+    seoTitel: 'Tuin en klussen cadeau: tuingereedschap, planten en gereedschap',
     seoTekst: 'Cadeaus voor de tuinier en de klusser: tuingereedschap van Gardena en Fiskars, planten en zaden, gereedschap van Bosch en Stanley, en buitenverlichting.',
     gids: [
       { kop: 'Cadeau voor de tuinier of klusser', tekst: 'Wie graag in de tuin werkt, is blij met een goede snoeischaar of handige set. De klusser wil goed gereedschap van een bekend merk. Buitenverlichting is een cadeau waar het hele gezin iets aan heeft.' }
     ] },
   'tuin-klussen/tuingereedschap': {
     tekst: 'Tuingereedschap van Gardena, Fiskars en Wolf-Garten: snoeischaren, heggenscharen, handgereedschap en sets.',
-    seoTitel: 'Tuingereedschap cadeau: snoeischaren, heggenscharen en sets van Gardena en Fiskars',
+    seoTitel: 'Tuingereedschap cadeau: snoeischaren van Gardena en Fiskars',
     seoTekst: 'Cadeau voor de tuinier? Snoeischaren, heggenscharen, takkenscharen en handgereedschap van Gardena, Fiskars en Wolf-Garten. Ook tuinsets voor kinderen.',
     gids: [
       { kop: 'Goed gereedschap gaat jaren mee', tekst: 'Een scherpe snoeischaar van een bekend merk is een cadeau waar een tuinier elk seizoen plezier van heeft. Voor een groter budget is een heggenschaar of takkenschaar een goede keuze. Kinderen vinden een eigen tuinsetje geweldig.' }
@@ -700,7 +700,7 @@ window.LK_TEKSTEN = {
     ] },
   'tuin-klussen/buitenverlichting': {
     tekst: 'Buitenverlichting op zonne-energie en op stroom: wandlampen, prikspots, lichtsnoeren en lantaarns.',
-    seoTitel: 'Buitenverlichting cadeau: solar tuinverlichting, wandlampen en lichtsnoeren',
+    seoTitel: 'Buitenverlichting: solar tuinlampen, wandlampen en lichtsnoeren',
     seoTekst: 'Tuinverlichting als cadeau: solar lampen, wandlampen voor buiten, prikspots, lichtsnoeren en lantaarns van Philips en Calex. Gezellig licht in de tuin en op het terras.',
     gids: [
       { kop: 'Licht in de tuin', tekst: 'Solar lampen zijn het makkelijkst: geen kabel, gewoon neerzetten. Een lichtsnoer maakt een terras meteen gezellig. Voor bij de voordeur is een wandlamp met sensor handig. Let op of een lamp geschikt is voor buiten (waterdicht).' }
@@ -708,7 +708,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- METAALDETECTIE ---------------- */
   'metaaldetectie': {
-    seoTitel: 'Metaaldetectie: metaaldetectors, pinpointers, scheppen en accessoires',
+    seoTitel: 'Metaaldetectie: detectors, pinpointers, scheppen en meer',
     seoTekst: 'Alles voor metaaldetectie: metaaldetectors van Garrett, Minelab, Nokta en XP, pinpointers, scheppen, magneetvissen, tassen en boeken. Voor beginners en gevorderden.',
     gids: [
       { kop: 'Beginnen met metaaldetectie', tekst: 'Metaaldetectie is een hobby voor buiten, met elke keer de kans op een mooie vondst. Een beginner heeft genoeg aan een eenvoudige detector, een pinpointer en een schep. Kijk ook even naar de regels: in Nederland mag je zoeken met toestemming van de grondeigenaar, en vondsten ouder dan 50 jaar moet je melden.' },
@@ -796,7 +796,7 @@ window.LK_TEKSTEN = {
     ] },
   'dieren/vogels': {
     tekst: 'Voor vogels in de tuin en in huis: voederhuisjes, vogelvoer, nestkastjes en speeltjes.',
-    seoTitel: 'Cadeau voor vogelliefhebbers: voederhuisjes, nestkastjes en vogelvoer',
+    seoTitel: 'Cadeau voor vogelliefhebbers: voederhuisjes en nestkastjes',
     seoTekst: 'Cadeau voor een vogelliefhebber? Voederhuisjes, vogelvoer, vetbollenhouders, nestkastjes en speeltjes voor vogels in de tuin en in huis.',
     gids: [
       { kop: 'Vogels in de tuin', tekst: 'Een voederhuisje of nestkastje is een leuk cadeau voor iemand die graag naar vogels kijkt, zoals opa en oma. In de winter zijn vetbollen en vogelvoer welkom. Hang een voederhuisje op een plek die je vanuit het raam ziet.' }
@@ -804,7 +804,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- BOEKEN & MEDIA ---------------- */
   'boeken-media': {
-    seoTitel: 'Boeken en media cadeau: romans, kinderboeken, kookboeken, muziek en agenda\'s',
+    seoTitel: 'Boeken cadeau: romans, kinderboeken, kookboeken en muziek',
     seoTekst: 'Boeken en media om cadeau te geven: romans, kinderboeken, kookboeken, muziek op cd en lp, agenda\'s en notitieboeken. Voor lezers, luisteraars en schrijvers.',
     gids: [
       { kop: 'Een boek als cadeau', tekst: 'Een boek is een persoonlijk cadeau: je laat zien dat je weet wat iemand leuk vindt. Twijfel je? Een kookboek, een mooie agenda of een puzzelboek valt bij veel mensen goed. Voor kinderen staat bij elk boek vanaf welke leeftijd het geschikt is.' }
@@ -854,7 +854,7 @@ window.LK_TEKSTEN = {
 
   /* ---------------- CHRISTELIJK ---------------- */
   'christelijk': {
-    seoTitel: 'Christelijke cadeaus: Bijbels, sieraden, wanddecoratie en cadeaus met Bijbeltekst',
+    seoTitel: 'Christelijke cadeaus: Bijbels, sieraden en teksten',
     seoTekst: 'Christelijk cadeau zoeken? Bijbels (HSV, Statenvertaling, NBV21), sieraden met kruisje, tegeltjes en wandborden met Bijbeltekst, kaarten, kinderbijbels en cadeaus voor doop en belijdenis.',
     gids: [
       { kop: 'Een cadeau met betekenis', tekst: 'Een christelijk cadeau laat zien dat je aan iemand denkt, met een tekst of symbool dat echt iets zegt. Voor een doop of belijdenis is een Bijbel of dagboek een cadeau voor het leven. Voor een verjaardag of als bemoediging is een tegeltje, kaart of sieraad met een Bijbeltekst een mooie keuze.' },
@@ -864,7 +864,7 @@ window.LK_TEKSTEN = {
   'christelijk/onder-25': { },
   'christelijk/kerst': {
     tekst: 'Christelijke kerstcadeaus en kerstdecoratie: kerststallen, engelen, kaarten en cadeaus met de kerstboodschap.',
-    seoTitel: 'Christelijke kerstcadeaus: kerststallen, engelen en cadeaus met betekenis',
+    seoTitel: 'Christelijke kerstcadeaus: kerststallen, engelen en meer',
     seoTekst: 'Christelijk kerstcadeau zoeken? Kerststallen, engelen, kerstkaarten met Bijbeltekst, kerstboeken en cadeaus die de echte kerstboodschap vertellen.',
     gids: [
       { kop: 'Kerst met betekenis', tekst: 'Met Kerst vieren we de geboorte van Jezus. Een kerststal, een kaart met de kerstboodschap of een boek over het kerstverhaal houden dat in beeld, ook voor kinderen. Mooi om te geven én om zelf in huis te hebben.' }
@@ -892,14 +892,14 @@ window.LK_TEKSTEN = {
     ] },
   'christelijk/wanddecoratie': {
     tekst: 'Wanddecoratie met Bijbeltekst: tegeltjes, wandborden, posters en tekstborden voor in huis.',
-    seoTitel: 'Christelijke wanddecoratie: tegeltjes en wandborden met Bijbeltekst',
+    seoTitel: 'Christelijke wanddecoratie: tegeltjes met Bijbeltekst',
     seoTekst: 'Wanddecoratie met Bijbeltekst: tegeltjes, houten wandborden, tekstborden en posters. Een tekst om elke dag te zien, voor in de woonkamer, keuken of kinderkamer.',
     gids: [
       { kop: 'Een tekst aan de muur', tekst: 'Een tegeltje of wandbord met een Bijbeltekst is een klassiek christelijk cadeau. Kies een tekst die past bij de gelegenheid: een zegen voor een nieuw huis, een belofte bij ziekte, een dankbare tekst voor de keuken.' }
     ] },
   'christelijk/voor-kinderen': {
     tekst: 'Christelijke cadeaus voor kinderen: kinderbijbels, voorleesboeken, puzzels en spelletjes met Bijbelverhalen. Alles in het Nederlands.',
-    seoTitel: 'Christelijke cadeaus voor kinderen: kinderbijbels, boeken en spelletjes',
+    seoTitel: 'Christelijke cadeaus voor kinderen: kinderbijbels en boeken',
     seoTekst: 'Christelijk cadeau voor een kind? Kinderbijbels, voorleesboeken met Bijbelverhalen, puzzels, spelletjes en knuffels. Allemaal in het Nederlands, voor doop, verjaardag en Kerst.',
     gids: [
       { kop: 'Bijbelverhalen voor kinderen', tekst: 'Een kinderbijbel is vaak het eerste christelijke cadeau, bij de doop of de eerste verjaardag. Voor peuters zijn er stevige boekjes met Bijbelverhalen, voor oudere kinderen puzzels en spelletjes over de Bijbel. Alles hier is in het Nederlands.' }

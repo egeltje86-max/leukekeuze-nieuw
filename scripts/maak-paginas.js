@@ -48,7 +48,7 @@ function maakLd(info, url) {
   if (p && p.prijs > 0) {
     const beeld = info.beeld ? (/^https?:/.test(info.beeld) ? info.beeld : SITE + '/' + info.beeld.replace(/^\//, '')) : undefined;
     uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, description: p.tekst || undefined, image: beeld, url,
-      offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
+      offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
   }
   return uit;
 }

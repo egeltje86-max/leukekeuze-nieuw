@@ -124,7 +124,7 @@
     }
     return '<img src="' + esc(p.beeld) + (groot ? '' : '-klein') + '.webp" ' +
       (groot ? '' : 'srcset="' + esc(p.beeld) + '-klein.webp 500w, ' + esc(p.beeld) + '.webp 1000w" sizes="(min-width: 1100px) 250px, 50vw" ') +
-      'alt="' + esc(p.titel) + '" loading="lazy" decoding="async">';
+      'alt="' + esc(p.titel) + '"' + (groot ? ' fetchpriority="high" decoding="async">' : ' loading="lazy" decoding="async">');
   }
 
   function productKaart(p) {
