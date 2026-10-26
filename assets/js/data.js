@@ -28,17 +28,17 @@ window.LK_INSTELLINGEN = {
   ],
   /* 'Voor wie zoek je een cadeau?' op de homepage. */
   voorWie: [
-    { label: 'Voor haar', naar: '/c/cadeaus/voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar.webp' },
-    { label: 'Voor hem', naar: '/c/cadeaus/voor-hem', beeld: 'images/sub/sub-cadeaus-voor-hem.webp' },
-    { label: 'Voor kinderen', naar: '/c/cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
-    { label: 'Opa & oma', naar: '/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
-    { label: 'Collega', naar: '/c/cadeaus/collega', beeld: 'images/sub/sub-cadeaus-collega.webp' },
-    { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' }
+    { label: 'Voor haar', naar: '/c/cadeaus/voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp' },
+    { label: 'Voor hem', naar: '/c/cadeaus/voor-hem', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp' },
+    { label: 'Voor kinderen', naar: '/c/cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen-2026b.webp' },
+    { label: 'Opa & oma', naar: '/c/cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma-2026b.webp' },
+    { label: 'Collega', naar: '/c/cadeaus/collega', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp' },
+    { label: 'Baby & kraam', naar: '/c/cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' }
   ],
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [
     { kicker: 'Pakjesavond 5 december', titel: 'Sinterklaas', tekst: 'Leuke surprises en cadeautjes voor in de zak.', knop: 'Bekijk Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', tot: '2026-12-05' },
-    { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst.webp', tot: '2026-12-25' },
+    { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp', tot: '2026-12-25' },
     { kicker: 'Proost op de feestdagen', titel: 'Whisky, champagne & meer', tekst: 'Topflessen om te geven of samen te openen.', knop: 'Naar de dranken', naar: '/c/dranken', beeld: 'images/categorieen/categorie-dranken.webp', tot: '2027-01-01' }
   ],
   /* Eigen producten: een vaste plek bovenaan de homepage (onder de seizoensblokken). */
@@ -91,17 +91,17 @@ window.LK_CATEGORIEEN = [
     tekst: 'Voor elke gelegenheid een bijzonder cadeau.',
     tegel: 'images/categorieen/categorie-cadeaus.webp', banner: 'images/banners/banner-cat-cadeaus.webp',
     subs: [
-      { slug: 'voor-haar', naam: 'Voor haar', beeld: 'images/sub/sub-cadeaus-voor-haar.webp' },
-      { slug: 'voor-hem', naam: 'Voor hem', beeld: 'images/sub/sub-cadeaus-voor-hem.webp' },
-      { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen.webp' },
-      { slug: 'kerst', naam: 'Kerstcadeaus', beeld: 'images/sub/sub-cadeaus-kerst.webp' },
+      { slug: 'voor-haar', naam: 'Voor haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp' },
+      { slug: 'voor-hem', naam: 'Voor hem', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp' },
+      { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen-2026b.webp' },
+      { slug: 'kerst', naam: 'Kerstcadeaus', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
       { slug: 'sinterklaas', naam: 'Sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
-      { slug: 'sint-onder-15', naam: 'Sint onder €15', tekst: 'Snel een schoencadeautje of surprise nodig? Hier staat alles uit Sinterklaas onder de 15 euro.', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
+      { slug: 'sint-onder-15', naam: 'Sint onder €15', tekst: 'Snel een schoencadeautje of surprise nodig? Hier staat alles uit Sinterklaas onder de 15 euro.', beeld: 'images/sub/sub-cadeaus-sint-onder-15-2026b.webp' },
       { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders.webp' },
-      { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma.webp' },
+      { slug: 'opa-oma', naam: 'Voor opa & oma', beeld: 'images/sub/sub-cadeaus-opa-oma-2026b.webp' },
       { slug: 'collega', naam: 'Cadeau voor collega',
         seoTitel: 'Cadeau voor collega: leuke kleinigheidjes en bedankjes',
-        seoTekst: 'Leuk cadeautje voor een collega? 200+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten, mokken en pensioencadeaus. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-cadeaus-collega.webp',
+        seoTekst: 'Leuk cadeautje voor een collega? 200+ kleinigheidjes voor collega\'s: wijn, chocolade, borrelpakketten, mokken en pensioencadeaus. Voor lootjes, verjaardag of afscheid.', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp',
         tekst: 'Een leuk cadeautje voor een collega? Kleinigheidjes voor collega\'s bij lootjes, een verjaardag of afscheid: wijn, chocolade, borrelpakketten en meer.',
         gids: [
           { kop: 'Een cadeau voor een collega: waar let je op?', tekst: 'Je kent een collega vaak minder goed dan een vriend of familielid. Kies daarom iets wat bijna iedereen fijn vindt: iets lekkers, iets voor op het bureau of iets om thuis van te genieten. Een cadeau dat je samen met het team kunt delen, valt ook altijd goed.' },
@@ -109,9 +109,9 @@ window.LK_CATEGORIEEN = [
           { kop: 'Een collega die afscheid neemt', tekst: 'Gaat een collega weg of met pensioen? Leg dan samen geld in voor iets groters, zoals een borrelpakket of een mooie planner voor de nieuwe baan.' },
           { kop: 'Een bedankje of een jarige collega', tekst: 'Voor een klein bedankje of een verjaardag is iets lekkers door de brievenbus, een plantje of een geurkaarsje vaak al genoeg. Klein, maar het laat zien dat je aan iemand denkt.' }
         ] },
-      { slug: 'baby-kraam', naam: 'Baby & kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam.webp' },
-      { slug: 'onder-15', naam: 'Onder €15', beeld: 'images/sub/sub-cadeaus-onder-10.webp' },
-      { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam.webp' }
+      { slug: 'baby-kraam', naam: 'Baby & kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
+      { slug: 'onder-15', naam: 'Onder €15', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp' },
+      { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp' }
     ] },
   { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
     tekst: 'Spelen, ontdekken en groeien.',
@@ -139,7 +139,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
     subs: [
       { slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp' }, { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp' },
-      { slug: 'tassen', naam: 'Hand- & schoudertassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'rugzakken-reistassen', naam: 'Rugzakken & reistassen', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp' }, { slug: 'schoenen', naam: 'Schoenen', beeld: 'images/sub/sub-mode-beauty-schoenen.webp' }, { slug: 'kleding', naam: 'Kleding & sokken', beeld: 'images/sub/sub-mode-beauty-kleding.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
+      { slug: 'tassen', naam: 'Hand- & schoudertassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'rugzakken-reistassen', naam: 'Rugzakken & reistassen', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp' }, { slug: 'schoenen', naam: 'Schoenen', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp' }, { slug: 'kleding', naam: 'Kleding & sokken', beeld: 'images/sub/sub-mode-beauty-kleding.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
     ] },
   { slug: 'sieraden', naam: 'Sieraden', kort: 'Sieraden', icoon: 'ring',
     tekst: 'Kettingen, oorbellen, ringen en armbanden. Van betaalbaar tot echt goud.', tegel: 'images/categorieen/categorie-sieraden.webp', banner: 'images/banners/banner-cat-sieraden.webp',
@@ -150,7 +150,7 @@ window.LK_CATEGORIEEN = [
   { slug: 'dranken', naam: 'Dranken', kort: 'Dranken', icoon: 'glas',
     tekst: 'Mooie flessen om te geven.', tegel: 'images/categorieen/categorie-dranken.webp', banner: 'images/banners/banner-cat-dranken.webp',
     subs: [
-      { slug: 'whisky', naam: 'Whisky', beeld: 'images/sub/sub-dranken-whisky.webp' },
+      { slug: 'whisky', naam: 'Whisky', beeld: 'images/sub/sub-dranken-whisky-2026b.webp' },
       { slug: 'cognac-brandy', naam: 'Cognac & brandy', beeld: 'images/sub/sub-dranken-cognac-brandy.webp' },
       { slug: 'rum', naam: 'Rum', beeld: 'images/sub/sub-dranken-rum.webp' },
       { slug: 'gin', naam: 'Gin', beeld: 'images/sub/sub-dranken-gin.webp' },
@@ -172,7 +172,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
     subs: [
       { slug: 'fitness', naam: 'Fitness', beeld: 'images/sub/sub-sport-outdoor-fitness.webp' }, { slug: 'wandelen', naam: 'Wandelen', beeld: 'images/sub/sub-sport-outdoor-wandelen.webp' }, { slug: 'fietsen', naam: 'Fietsen', beeld: 'images/sub/sub-sport-outdoor-fietsen.webp' },
-      { slug: 'kamperen', naam: 'Kamperen', beeld: 'images/sub/sub-sport-outdoor-kamperen.webp' }, { slug: 'reizen', naam: 'Reizen', beeld: 'images/sub/sub-sport-outdoor-reizen.webp' }, { slug: 'darts', naam: 'Darts', beeld: 'images/sub/sub-sport-outdoor-darts.webp' }, { slug: 'golf', naam: 'Golf', beeld: 'images/sub/sub-sport-outdoor-golf.webp' },
+      { slug: 'kamperen', naam: 'Kamperen', beeld: 'images/sub/sub-sport-outdoor-kamperen.webp' }, { slug: 'reizen', naam: 'Reizen', beeld: 'images/sub/sub-sport-outdoor-reizen.webp' }, { slug: 'darts', naam: 'Darts', beeld: 'images/sub/sub-sport-outdoor-darts.webp' }, { slug: 'golf', naam: 'Golf', beeld: 'images/sub/sub-sport-outdoor-golf-2026b.webp' },
       /* Metaaldetectie is een eigen categorie, maar staat in het menu onder Sport (wens van Marius). */
       { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/categorieen/categorie-metaaldetectie-klein.webp', naar: '/c/metaaldetectie' }
     ] },
@@ -235,8 +235,8 @@ window.LK_CATEGORIEEN = [
         seoTitel: 'Christelijk cadeau onder €25',
         seoTekst: 'Christelijke cadeaus onder de 25 euro: kleine Bijbels, tegeltjes met Bijbeltekst, kruiskettingen, kinderboekjes en meer. Een mooi gebaar voor elk budget.',
         tekst: 'Een betekenisvol cadeau hoeft niet duur te zijn. Hier staan alle christelijke cadeaus onder de 25 euro (zonder losse kaartjes).' },
-      { slug: 'kerst', naam: 'Kerst', beeld: 'images/sub/sub-christelijk-kerst.webp', seoTitel: 'Christelijke kerstcadeaus en kerstkaarten', seoTekst: 'Christelijke kerstcadeaus: kerstkaarten met het kerstverhaal, kerststallen en sfeervolle decoratie rond de geboorte van Jezus.' },
-      { slug: 'bijbels', naam: 'Bijbels', beeld: 'images/sub/sub-christelijk-bijbels.webp', seoTitel: 'Bijbel als cadeau: Statenvertaling, HSV en kinderbijbels', seoTekst: 'Een Bijbel cadeau geven: Statenvertaling, HSV, Bijbels met psalmen, kanttekeningenbijbels en kinderbijbels. Voor doop, belijdenis of huwelijk.' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters', beeld: 'images/sub/sub-christelijk-kaarten-posters.webp', seoTitel: 'Christelijke kaarten met Bijbeltekst', seoTekst: 'Christelijke kaarten en posters met een Bijbeltekst: voor een verjaardag, doop, huwelijk, beterschap of om te bemoedigen.' },
+      { slug: 'kerst', naam: 'Kerst', beeld: 'images/sub/sub-christelijk-kerst-2026b.webp', seoTitel: 'Christelijke kerstcadeaus en kerstkaarten', seoTekst: 'Christelijke kerstcadeaus: kerstkaarten met het kerstverhaal, kerststallen en sfeervolle decoratie rond de geboorte van Jezus.' },
+      { slug: 'bijbels', naam: 'Bijbels', beeld: 'images/sub/sub-christelijk-bijbels-2026b.webp', seoTitel: 'Bijbel als cadeau: Statenvertaling, HSV en kinderbijbels', seoTekst: 'Een Bijbel cadeau geven: Statenvertaling, HSV, Bijbels met psalmen, kanttekeningenbijbels en kinderbijbels. Voor doop, belijdenis of huwelijk.' }, { slug: 'kaarten-posters', naam: 'Kaarten & posters', beeld: 'images/sub/sub-christelijk-kaarten-posters.webp', seoTitel: 'Christelijke kaarten met Bijbeltekst', seoTekst: 'Christelijke kaarten en posters met een Bijbeltekst: voor een verjaardag, doop, huwelijk, beterschap of om te bemoedigen.' },
       { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-christelijk-sieraden.webp', seoTitel: 'Christelijke sieraden: kruiskettingen en armbanden met kruis', seoTekst: 'Christelijke sieraden als cadeau: kruiskettingen, armbanden met een kruis, ichthus-hangers en sleutelhangers met een Bijbeltekst. Voor haar en voor hem.' }, { slug: 'wanddecoratie', naam: 'Wanddecoratie', beeld: 'images/sub/sub-christelijk-wanddecoratie.webp', seoTitel: 'Christelijke wanddecoratie: tegeltjes en tekstborden', seoTekst: 'Tegeltjes, tekstborden en mokken met een Bijbeltekst, zoals Psalm 23 en Psalm 121. Christelijke decoratie voor in huis of als cadeau.' },
       { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-christelijk-voor-kinderen.webp', seoTitel: 'Christelijke cadeaus voor kinderen: kinderbijbels en meer', seoTekst: 'Christelijke cadeaus voor kinderen: kinderbijbels, psalmboekjes, peuterdagboeken, de catechismus voor kinderen en speelgoed met Bijbelverhalen.' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-christelijk-boeken-muziek.webp', seoTitel: 'Christelijke boeken en dagboeken als cadeau', seoTekst: 'Christelijke boeken, dagboeken en muziek: HSV-dagboeken, boeken over bidden en de psalmen, dagboekkalenders en meer. Een mooi cadeau voor elke dag.' },
       { slug: 'kerststal-engelen', naam: 'Kerststallen & engelen', beeld: 'images/sub/sub-christelijk-kerststal-engelen.webp', seoTitel: 'Kerststal kopen: houten kerststallen en engelen', seoTekst: 'Kerststallen en engelen voor de kerst: houten kerststallen, kerststalfiguren en sfeervolle engeltjes voor in huis.' }, { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' , tekst: 'Cadeaus voor een doop of belijdenis: kinderbijbels, eerste Bijbels, dagboeken en mooie aandenkens voor deze bijzondere dag.', seoTitel: 'Doopcadeau en belijdeniscadeau: christelijke cadeaus', seoTekst: 'Een doopcadeau of belijdeniscadeau met betekenis: kinderbijbels, Statenvertaling en HSV Bijbels, Bijbelhoezen, dagboeken en aandenkens met een Bijbeltekst.' },
