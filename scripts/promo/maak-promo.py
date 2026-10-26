@@ -510,7 +510,7 @@ def maak_reel_spanning(plan, ps, uit, W=1080, H=1920, fps=30):
     s = W / 1080
     n = len(ps)
     volgorde = list(range(n - 1, -1, -1))          # toon #n ... #1 (ps[0] is de topper = nummer 1)
-    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 1.8, 1.55, 0.9, 2.3, 2.4
+    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.0, 2.2, 1.1, 3.0, 2.8
     segs = [('hook', T_HOOK)]
     for k, i in enumerate(volgorde):
         if i == 0:
