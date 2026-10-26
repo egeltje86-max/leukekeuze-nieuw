@@ -119,7 +119,7 @@ window.LK_CATEGORIEEN = [
     subs: [
       { slug: 'baby-peuter', naam: 'Baby & peuter', beeld: 'images/sub/sub-speelgoed-baby-peuter.webp' }, { slug: 'bouwen', naam: 'Bouwen', beeld: 'images/sub/sub-speelgoed-bouwen.webp' },
       /* Speelfiguren, auto's, tractors en treinen (Schleich, Playmobil, Bruder, BRIO). Plaatje volgt nog van Nova; tot die tijd toont de site het gouden icoon. */
-      { slug: 'figuren-voertuigen', naam: 'Figuren & voertuigen', beeld: '', tekst: 'Speelfiguren en dieren van Schleich en Playmobil, tractors en vrachtwagens van Bruder en SIKU, en houten treinen van BRIO.' },
+      { slug: 'figuren-voertuigen', naam: 'Figuren & voertuigen', beeld: 'images/sub/sub-speelgoed-figuren-voertuigen.webp', tekst: 'Speelfiguren en dieren van Schleich en Playmobil, tractors en vrachtwagens van Bruder en SIKU, en houten treinen van BRIO.' },
       { slug: 'bordspellen', naam: 'Bord- & tafelspellen', beeld: 'images/sub/sub-speelgoed-bordspellen.webp' }, { slug: 'kaartspellen', naam: 'Kaart- & dobbelspellen', beeld: 'images/sub/sub-speelgoed-kaartspellen.webp' }, { slug: 'puzzels', naam: 'Puzzels', beeld: 'images/sub/sub-speelgoed-puzzels.webp' },
       { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed', beeld: 'images/sub/sub-speelgoed-buitenspeelgoed.webp' }, { slug: 'knutselen', naam: 'Knutselen voor kinderen', beeld: 'images/sub/sub-speelgoed-knutselen.webp' }
     ] },
