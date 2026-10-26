@@ -466,6 +466,27 @@ def opruimen(basis, datum):
     return weg
 
 
+def kopie_drive(mappen, datum, opruim):
+    """Zet een kopie in Google Drive, zodat Marius alles op zijn telefoon heeft."""
+    for wortel in [r'G:\Mijn Drive', r'G:\My Drive']:
+        if os.path.isdir(wortel):
+            break
+    else:
+        return 'niet gevonden'
+    doel_basis = os.path.join(wortel, 'LeukeKeuze Promo')
+    try:
+        for k, bron in mappen.items():
+            doel = os.path.join(doel_basis, k, datum)
+            if os.path.isdir(doel):
+                shutil.rmtree(doel, ignore_errors=True)
+            shutil.copytree(bron, doel)
+        if opruim:
+            opruimen(doel_basis, datum)
+        return doel_basis
+    except Exception as e:
+        return 'MISLUKT (%s)' % e
+
+
 def main():
     args = sys.argv[1:]
     if not args:
@@ -536,7 +557,9 @@ def main():
 
     teksten(plan, ps, mappen, reel_ok)
     weg = [] if '--geen-opruimen' in args else opruimen(basis, datum)
-    print('KLAAR', datum, '| producten:', n, '| reel:', 'ja' if reel_ok else 'NEE', '| opgeruimd:', ', '.join(weg) or '-')
+    telefoon = kopie_drive(mappen, datum, '--geen-opruimen' not in args) if '--uit' not in args else '-'
+    print('KLAAR', datum, '| producten:', n, '| reel:', 'ja' if reel_ok else 'NEE', '| opgeruimd:', ', '.join(weg) or '-',
+          '| Google Drive:', telefoon)
 
 
 if __name__ == '__main__':
