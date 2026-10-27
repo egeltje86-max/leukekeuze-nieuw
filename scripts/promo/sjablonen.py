@@ -361,7 +361,6 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
                 pop_laag(fr, trom_t, ve['creme'][0]['box'] if ve['creme'] else None, S._pop(lt / 0.5))
                 fr.alpha_composite(met_alpha(trom_k, S._ease((lt - 0.4) / 0.4)))
                 fr = zoom_beeld(fr, 1 + 0.08 * S._ease(lt / T_TROM))
-                flits(fr, 0.12 * (1 - lt / 0.15) if lt < 0.15 else 0)
             elif soort == 'prod':
                 i = seg[2]; dur = seg[1]; L = lagen[i]
                 fr = leeg.copy()
@@ -383,11 +382,9 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
                 pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.7) / 0.45) * (1 + 0.02 * math.sin(max(0, lt - 1.2) * 4)))
                 if vak:
                     glim(fr, vak['box'], (lt - 0.5) / 0.7)
-                # klap + flits bij elk nieuw product; bij nummer 1 extra groot met een schok
-                fr = zoom_beeld(fr, 1 + (0.06 if i == 0 else 0.03) * (1 - S._ease(lt / 0.35)))
-                flits(fr, (0.35 if i == 0 else 0.10) * (1 - lt / 0.18) if lt < 0.18 else 0)
+                # geen klap/schok/flits meer (Marius: 'die stoten niet mooi'); alleen bij nummer 1 een zachte gloed
                 if i == 0:
-                    fr = schud(fr, 7 * (1 - lt / 0.4) if lt < 0.4 else 0)
+                    flits(fr, 0.18 * (1 - S._ease(lt / 0.6)) if lt < 0.6 else 0)
             else:
                 fr = (Image.blend(leeg, eind, S._ease(lt / 0.5)) if lt < 0.5 else eind).convert('RGBA')
                 fr = zoom_beeld(fr, 1 + 0.04 * lt / T_EIND)
