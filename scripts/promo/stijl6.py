@@ -613,7 +613,7 @@ def product(W, H, p, nr, totaal, zaad, plan=None, teller=True):
     prijs = goud_knop('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', (52 if groot else 44) * s), 34 * s, 8 * s)
     tekst_h = naam.height - int(20 * s) + (regel.height if regel else 0) + prijs.height
     if teller and totaal > 1:
-        nrl = goud_tekst('#%d' % nr, font('kop', 70 * s), W)
+        nrl = goud_knop('#%d' % nr, font('kop', 52 * s), 30 * s, 2 * s)
         plak(img, nrl, W / 2, boven - int(10 * s))
         top = boven + nrl.height
     else:
@@ -795,7 +795,7 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
     while breedte(hook, fh) > W * 0.8 and fh.size > 20:
         fh = font('Bold', fh.size - 2)
     l_hook = goud_knop(hook, fh, 34 * s, 12 * s)
-    l_pov = tekstblok(W, plan.get('pov', ''), font('kop', 60 * s), CREME, W * 0.86, 1.12) if plan.get('pov') else None
+    l_pov = creme_vak('', plan.get('pov', ''), W, s, W * 0.84, 58 * s / 0.7) if plan.get('pov') else None
 
     # producten
     fn, fr = font('kop', 70 * s), font('Regular', 42 * s)
@@ -804,7 +804,7 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
         naam = creme_vak('', p['naam'], W, s, W * 0.82, 78 * s / 0.7, p.get('regel', ''))
         regel = None
         prijs = goud_knop('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', 52 * s), 34 * s, 8 * s)
-        nr = goud_tekst('#%d' % (i + 1), font('kop', 84 * s if i else 100 * s), W)
+        nr = goud_knop('#%d' % (i + 1), font('kop', 60 * s if i else 72 * s), 34 * s, 2 * s)
         tekst_h = naam.height - int(20 * s) + (regel.height if regel else 0) + prijs.height
         top_y = boven + nr.height
         bodem = H - onder - voet.height - int(30 * s)
