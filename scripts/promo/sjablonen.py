@@ -228,7 +228,7 @@ def einde(szn, W, H, plan, n=None):
 
 def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
     n = len(ps)
-    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.0, 2.2, 1.1, 3.0, 2.8
+    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 3.0, 3.3, 1.8, 4.0, 3.5   # rustig tempo (Marius: 'te gehaast')
     segs = [('hook', T_HOOK)]
     for i in range(n - 1, -1, -1):
         if i == 0:
@@ -305,28 +305,28 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
             soort = seg[0]
             if soort == 'hook':
                 fr = hook_basis.copy().convert('RGBA')
-                fr.alpha_composite(met_alpha(hook_t, S._ease(lt / 0.3)))
+                fr.alpha_composite(met_alpha(hook_t, S._ease(lt / 0.6)))
                 fr.alpha_composite(hook_r)
-                pop_laag(fr, hook_k, knop, S._pop((lt - 0.1) / 0.35))
+                pop_laag(fr, hook_k, knop, S._pop((lt - 0.5) / 0.6))
             elif soort == 'trom':
                 fr = trom_basis.copy().convert('RGBA')
-                pop_laag(fr, trom_t, ve['creme'][0]['box'] if ve['creme'] else None, S._pop(lt / 0.3))
-                fr.alpha_composite(met_alpha(trom_k, S._ease((lt - 0.3) / 0.3)))
+                pop_laag(fr, trom_t, ve['creme'][0]['box'] if ve['creme'] else None, S._pop(lt / 0.5))
+                fr.alpha_composite(met_alpha(trom_k, S._ease((lt - 0.6) / 0.5)))
             elif soort == 'prod':
                 i = seg[2]; dur = seg[1]; L = lagen[i]
                 fr = leeg.copy()
                 if vak:
                     if i == 0:
-                        foto_in(fr, vak, ps[i]['foto'], zoom=0.6 + 0.4 * S._ease(lt / 0.4) + 0.06 * (lt / dur))
+                        foto_in(fr, vak, ps[i]['foto'], zoom=0.6 + 0.4 * S._ease(lt / 0.8) + 0.05 * (lt / dur))
                     else:
                         bw = vak['box'][2] - vak['box'][0]
-                        foto_in(fr, vak, ps[i]['foto'], zoom=1.0 + 0.07 * (lt / dur), dx=bw * (1 - S._ease(lt / 0.3)))
+                        foto_in(fr, vak, ps[i]['foto'], zoom=1.0 + 0.05 * (lt / dur), dx=bw * (1 - S._ease(lt / 0.6)))
                 fr = fr.convert('RGBA')
-                pop_laag(fr, L['nr'], rond, S._pop(lt / 0.3))
-                fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.12) / 0.3)))
-                pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.4) / 0.35))
+                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.3) / 0.5))
+                fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.5) / 0.5)))
+                pop_laag(fr, L['prijs'], knop, S._pop((lt - 1.0) / 0.5))
             else:
-                fr = (Image.blend(leeg, eind, S._ease(lt / 0.3)) if lt < 0.3 else eind).convert('RGBA')
+                fr = (Image.blend(leeg, eind, S._ease(lt / 0.6)) if lt < 0.6 else eind).convert('RGBA')
             d = ImageDraw.Draw(fr)
             d.rectangle((0, H - 10, int(W * t / totaal), H), fill=S.GOUD)
             proc.stdin.write(fr.convert('RGB').tobytes())
