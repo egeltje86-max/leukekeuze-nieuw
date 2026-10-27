@@ -183,3 +183,25 @@
   document.documentElement.classList.add('met-aftel');
 })();
 
+
+/* Feestdagen-versiering: lichtjessnoer + twinkelende sterren (25 okt t/m 6 jan; Sint t/m 5 dec, daarna kerst) */
+(function () {
+  var nu = new Date(), m = nu.getMonth() + 1, d = nu.getDate();
+  var aan = (m >= 11) || (m === 10 && d >= 25) || (m === 1 && d <= 6);
+  if (!aan) return;
+  var sint = (m === 10) || (m === 11) || (m === 12 && d <= 5);
+  document.documentElement.classList.add('feest', sint ? 'feest-sint' : 'feest-kerst');
+  var kop = document.querySelector('.header'); if (!kop || kop.querySelector('.lichtsnoer')) return;
+  var kleuren = sint ? [['#FF4D4D', 'rgba(255,60,60,.55)'], ['#FFD36B', 'rgba(255,200,80,.6)'], ['#FFF4DC', 'rgba(255,240,210,.55)']]
+                     : [['#FF4D4D', 'rgba(255,60,60,.55)'], ['#46D27A', 'rgba(60,210,110,.55)'], ['#FFD36B', 'rgba(255,200,80,.6)'], ['#7EC8FF', 'rgba(120,200,255,.5)']];
+  var s = document.createElement('div'); s.className = 'lichtsnoer'; s.setAttribute('aria-hidden', 'true');
+  var stap = 46, n = Math.ceil(Math.max(window.innerWidth, 1400) / stap) + 1, pad = '', html = '';
+  for (var i = 0; i < n; i++) {
+    var x = i * stap, y = (i % 2) ? 4 : 1;
+    pad += (i ? ' Q' + (x - stap / 2) + ',' + 9 + ' ' : 'M') + x + ',' + y;
+    var k = kleuren[i % kleuren.length];
+    html += '<i style="left:' + (x - 3) + 'px;top:' + (y + 2) + 'px;--lamp:' + k[0] + ';--lamp-gloed:' + k[1] + ';animation-delay:' + ((i * 0.37) % 1.8).toFixed(2) + 's"></i>';
+  }
+  s.innerHTML = '<svg class="draad" preserveAspectRatio="none"><path d="' + pad + '" fill="none" stroke="#2B3242" stroke-width="1.4"/></svg>' + html;
+  kop.appendChild(s);
+})();
