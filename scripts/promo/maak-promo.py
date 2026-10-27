@@ -838,11 +838,14 @@ def main():
     import stijl6 as S
     szn = S.seizoen(plan)
     print('Seizoen:', szn)
+    # Sinds 27-10: alles in de eigen rustige blauwe stijl met gouden kaders (Marius: 'veel beter, het gaat om het product').
+    # Met --nova worden de Nova-sjablonen (foto-achtergrond) weer gebruikt.
+    S.GETEKEND = '--nova' not in args
     try:
         import sjablonen as SJ
-        if SJ.heeft(szn):
+        if '--nova' in args and SJ.heeft(szn):
             return met_sjablonen(SJ, S, szn, plan, ps, fotos, n, mappen, args, basis, datum)
-        print('Geen complete Nova-sjablonen voor', szn, '- ik gebruik de getekende stijl')
+        print('Stijl: eigen blauwe achtergrond met gouden kaders' if S.GETEKEND else 'Geen complete Nova-sjablonen voor ' + szn + ' - getekende stijl')
     except ImportError as e:
         print('Sjablonen niet beschikbaar (%s) - getekende stijl' % e)
 

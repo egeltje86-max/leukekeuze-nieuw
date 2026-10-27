@@ -987,7 +987,7 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
     s = W / 1080
     n = len(ps)
     boven, onder = veilig(W, H)
-    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.0, 2.2, 1.1, 3.0, 2.8
+    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.2, 2.3, 2.2, 3.2, 2.8   # zelfde tempo als de goedgekeurde lootjes-reel
     segs = [('hook', T_HOOK)]
     for i in range(n - 1, -1, -1):
         if i == 0:
@@ -1044,6 +1044,46 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
         fv = font('Bold', fv.size - 2)
     vraag = donkere_pil(vtxt, fv, 30 * s, 14 * s)
 
+    # rustige beweging: dwarrelende sterretjes, glimstreep, zwevende foto's (geen stoten of schokken)
+    rnd = random.Random(zaad)
+    deeltjes = [dict(x=rnd.uniform(0, W), y=rnd.uniform(0, H), v=rnd.uniform(25, 70), r=rnd.uniform(2, 4.5) * s,
+                     zw=rnd.uniform(10, 30), f=rnd.uniform(0, 6.28), goud=rnd.random() < 0.55) for _ in range(30)]
+
+    def sterren(doek, t):
+        laag = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(laag)
+        for q in deeltjes:
+            y = (q['y'] + q['v'] * t) % (H + 40) - 20
+            x = q['x'] + q['zw'] * math.sin(t * 1.1 + q['f'])
+            a = 0.55 + 0.35 * (0.5 + 0.5 * math.sin(t * 1.6 + q['f'] * 2))
+            k = (255, 214, 120) if q['goud'] else (255, 255, 255)
+            r = q['r']
+            d.ellipse((x - r * 2.2, y - r * 2.2, x + r * 2.2, y + r * 2.2), fill=k + (int(40 * a),))
+            d.ellipse((x - r, y - r, x + r, y + r), fill=k + (int(230 * a),))
+        doek.alpha_composite(laag)
+
+    def glim(doek, x0, y0, kant, x):
+        if not 0 < x < 1:
+            return
+        band = Image.new('RGBA', (kant, kant), (0, 0, 0, 0)); d = ImageDraw.Draw(band)
+        cx = -kant * 0.4 + x * kant * 1.8; b = kant * 0.16
+        d.polygon([(cx, 0), (cx + b, 0), (cx + b - kant * 0.35, kant), (cx - kant * 0.35, kant)], fill=(255, 255, 255, 105))
+        band = band.filter(ImageFilter.GaussianBlur(10))
+        m = Image.new('L', (kant, kant), 0)
+        ImageDraw.Draw(m).rounded_rectangle((0, 0, kant - 1, kant - 1), radius=int(kant * 0.07), fill=255)
+        band.putalpha(ImageChops.multiply(band.split()[3], m))
+        doek.alpha_composite(band, (int(x0), int(y0)))
+
+    def zoom_beeld(fr, z):
+        if z <= 1.001:
+            return fr
+        w2, h2 = int(W / z), int(H / z)
+        x0, y0 = (W - w2) // 2, (H - h2) // 2
+        return fr.crop((x0, y0, x0 + w2, y0 + h2)).resize((W, H), Image.BILINEAR)
+
+    def gloed(fr, sterkte):
+        if sterkte > 0.01:
+            fr.alpha_composite(Image.new('RGBA', (W, H), (255, 248, 230, int(255 * min(1, sterkte)))))
+
     args = [ff, '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', '%dx%d' % (W, H), '-r', str(fps), '-i', '-',
             '-f', 'lavfi', '-t', '%.2f' % totaal, '-i', 'anullsrc=r=44100:cl=stereo',
             '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-pix_fmt', 'yuv420p',
@@ -1063,43 +1103,59 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
             if soort == 'hook':
                 fr_ = bg.copy()
                 if l_pov is not None:
-                    _plak_schaal(fr_, l_pov, W / 2, boven + l_pov.height / 2 + 10 * s, _pop(lt / 0.3))
-                puls = 1 + 0.02 * math.sin(lt * 7)
-                _plak_schaal(fr_, raad, W / 2, H * 0.47, (0.85 + 0.15 * _ease(lt / 0.3)) * puls)
-                _plak_schaal(fr_, l_hook, W / 2, H * 0.47 + raad.height / 2 + l_hook.height / 2 + 10 * s, _pop((lt - 0.08) / 0.3))
+                    _plak_schaal(fr_, l_pov, W / 2, boven + l_pov.height / 2 + 10 * s, _ease(lt / 0.5), _ease(lt / 0.5))
+                puls = 1 + 0.02 * math.sin(lt * 4)
+                _plak_schaal(fr_, raad, W / 2, H * 0.47 + 6 * s * math.sin(lt * 2.2), (0.85 + 0.15 * _ease(lt / 0.6)) * puls)
+                _plak_schaal(fr_, l_hook, W / 2, H * 0.47 + raad.height / 2 + l_hook.height / 2 + 10 * s,
+                             _pop((lt - 0.4) / 0.5) * (1 + 0.03 * math.sin(max(0, lt - 0.9) * 5)))
+                fr_ = zoom_beeld(fr_, 1 + 0.04 * lt / T_HOOK)
             elif soort == 'trom':
                 fr_ = bg.copy()
-                _plak_schaal(fr_, trom, W / 2, H * 0.42, _pop(lt / 0.3) * (1 + 0.04 * math.sin(lt * 14)))
+                _plak_schaal(fr_, trom, W / 2, H * 0.42, _pop(lt / 0.5) * (1 + 0.015 * math.sin(lt * 6)))
+                fr_ = zoom_beeld(fr_, 1 + 0.06 * _ease(lt / T_TROM))
             elif soort == 'prod':
                 i = seg[2]; L = lagen[i]; dur = seg[1]
                 fr_ = bg.copy()
                 kant = L['kant']
                 z = round(1.0 + 0.08 * (lt / dur), 3)
                 kl, km = kaart_laag(L['foto'], kant, kant, z)
+                zweef = 6 * s * math.sin(lt * 2.2)
+                x_eind = (W - kant) / 2
                 if i == 0:
-                    sc = 0.6 + 0.4 * _ease(lt / 0.35)
-                    _plak_schaal(fr_, kl, W / 2, L['y0'] + kant / 2, sc)
+                    sc = 0.6 + 0.4 * _pop(lt / 0.7)
+                    _plak_schaal(fr_, kl, W / 2, L['y0'] + kant / 2 + zweef, sc)
+                    kx, ky = x_eind, L['y0'] + zweef
                 else:
-                    x_eind = (W - kant) / 2
-                    x = x_eind + (W - x_eind) * (1 - _ease(lt / 0.25))
-                    fr_.paste(kl, (int(x - km), int(L['y0'] - km)), kl)
-                _plak_schaal(fr_, L['nr'], W / 2, boven + L['nr'].height / 2, _pop(lt / 0.3))
+                    zijde = i % 3          # 0 van rechts, 1 van links, 2 van onder
+                    inn = 1 - _ease(lt / 0.45)
+                    uit_ = _ease((lt - (dur - 0.3)) / 0.3) if lt > dur - 0.3 else 0
+                    kx = x_eind + (W * inn if zijde == 0 else -W * inn if zijde == 1 else 0) - W * uit_
+                    ky = L['y0'] + (H * 0.4 * inn if zijde == 2 else 0) + zweef
+                    fr_.alpha_composite(kl, (int(kx - km), int(ky - km)))
+                if lt > 0.45:
+                    glim(fr_, kx, ky, kant, (lt - 0.5) / 0.7)
+                _plak_schaal(fr_, L['nr'], W / 2, boven + L['nr'].height / 2,
+                             _pop((lt - 0.15) / 0.4) * (1 + 0.03 * math.sin(max(0, lt - 0.6) * 4)))
                 ty = L['y0'] + kant + int(14 * s)
-                a = _ease((lt - 0.1) / 0.25)
+                a = _ease((lt - 0.35) / 0.4)
                 if a > 0:
                     _plak_schaal(fr_, L['naam'], W / 2, ty + L['naam'].height / 2 + 20 * s * (1 - a), 1.0, a)
                     if L['regel']:
                         _plak_schaal(fr_, L['regel'], W / 2, ty + L['naam'].height - 14 * s + L['regel'].height / 2, 1.0, a)
-                pp = _pop((lt - 0.35) / 0.3)
+                pp = _pop((lt - 0.7) / 0.45) * (1 + 0.02 * math.sin(max(0, lt - 1.2) * 4))
                 if pp > 0:
                     yp = ty + L['naam'].height - 18 * s + (L['regel'].height + 4 * s if L['regel'] else 0)
                     _plak_schaal(fr_, L['prijs'], W / 2, yp + L['prijs'].height / 2, pp)
+                if i == 0:
+                    gloed(fr_, 0.18 * (1 - _ease(lt / 0.6)) if lt < 0.6 else 0)
             else:
-                fr_ = Image.blend(bg, eind, _ease(lt / 0.3)) if lt < 0.3 else eind.copy()
+                fr_ = Image.blend(bg, eind, _ease(lt / 0.5)) if lt < 0.5 else eind.copy()
                 v = _pop((lt - 0.4) / 0.4)
                 if v > 0:
                     puls = 1 + 0.03 * math.sin(max(0, lt - 0.8) * 6) if lt > 0.8 else 1
                     _plak_schaal(fr_, vraag, W / 2, H - onder - voet.height - vraag.height - 40 * s, v * puls)
+            fr_ = fr_.convert('RGBA')
+            sterren(fr_, t)
             dd = ImageDraw.Draw(fr_)
             dd.rectangle((0, H - int(10 * s), int(W * (t / totaal)), H), fill=GOUD)
             proc.stdin.write(fr_.convert('RGB').tobytes())
