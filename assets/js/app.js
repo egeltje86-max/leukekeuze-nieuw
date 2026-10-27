@@ -258,7 +258,7 @@
         eigenBlok() +
 
         /* 6. Uitgelicht, ook als rij */
-        '<section class="sectie">' +
+        '<section class="sectie sfeer-modus">' +
           '<div class="sectie-kop"><div><h2>Uitgelicht</h2></div><a class="meer" href="/c/cadeaus">Alle cadeaus ' + ic('pijl') + '</a></div>' +
           '<div class="chips tabs" role="tablist" data-tabs>' +
             [['favoriet', 'Onze favorieten'], ['nieuw', 'Nieuw binnen'], ['onder25', 'Onder €25']].map(function (t, i) {
@@ -317,19 +317,21 @@
       '<div class="tekst"><h3>' + esc(c.naam) + '</h3><p>' + esc(c.tekst) + '</p><span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
   }
   function nietChristelijk(p) { return p.cat !== 'christelijk'; }
+  /* Sfeerfoto's eerst (wens van Marius, 27-10-2026: presentatie is alles). Volgorde blijft verder gelijk. */
+  function sfeerEerst(l) { return l.filter(function (p) { return p.sfeer; }).concat(l.filter(function (p) { return !p.sfeer; })); }
   function uitgelicht(tab) {
     var l = LK.zichtbaar().filter(nietChristelijk);
     if (tab === 'favoriet') l = l.filter(function (p) { return p.favoriet || p.populair; });
     if (tab === 'onder25') l = l.filter(function (p) { return p.prijs <= 25 && p.cat !== 'dranken'; });
     if (tab === 'nieuw') l = l.filter(LK.isNieuw);
-    l = sorteer(l);
+    l = sfeerEerst(sorteer(l));
     if (tab === 'nieuw' || tab === 'onder25') {
       /* afwisselen: niet tien dingen uit dezelfde categorie achter elkaar */
       var per = {}, mix = [];
       l.forEach(function (p) { (per[p.cat] = per[p.cat] || []).push(p); });
       var lijsten = Object.keys(per).map(function (k) { return per[k]; });
       for (var i = 0; mix.length < 12 && lijsten.some(function (x) { return x.length > i; }); i++) lijsten.forEach(function (x) { if (x[i] && mix.length < 12) mix.push(x[i]); });
-      l = mix;
+      l = sfeerEerst(mix);
     }
     return l.length ? rij(l.slice(0, 12)) : grid([], leegBlok('Nog niets in deze lijst', 'Hier komen binnenkort mooie producten.'));
   }
@@ -1119,9 +1121,9 @@
     var h = paginakop({ titel: g.titel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: g.titel }] }) +
       '<div class="binnen"><article class="tekstpagina gids"><p>' + esc(g.intro) + '</p></article>';
     g.delen.forEach(function (d) {
-      var lijst = d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen; });
+      var lijst = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen; }));
       if (!lijst.length) return;
-      h += '<section class="sectie"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p></div>' + grid(lijst, '') + '</section>';
+      h += '<section class="sectie sfeer-modus"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p></div>' + grid(lijst, '') + '</section>';
     });
     h += '<article class="tekstpagina gids"><p>' + g.slot + '</p><p class="klein">Prijzen kunnen veranderen. De prijs bij de winkel is altijd leidend.</p>' +
       '<h2>Meer cadeaugidsen</h2><div class="gidslijst">' + GIDSEN.filter(function (x) { return x !== g; }).map(gidsKaart).join('') + '</div></article></div>';

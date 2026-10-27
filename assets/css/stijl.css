@@ -845,3 +845,11 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .lees-ook a { color: var(--goud, #d4af5f); text-decoration: underline; text-underline-offset: 3px; }
 .lees-ook a + a::before { content: '·'; color: var(--tekst-2); margin-right: 10px; text-decoration: none; display: inline-block; }
 @media (max-width: 600px) { .lees-ook a + a::before { display: none; } .lees-ook a { flex-basis: 100%; } .lees-ook span { margin-right: auto; } }
+
+/* ---------- Sfeerfoto's (27-10-2026, wens Marius: presentatie is alles) ---------- */
+/* Echte sfeerfoto: vult de hele kaart, zonder witte rand. */
+.prodkaart .beeld.echt.sfeer img { padding: 0; object-fit: cover; }
+/* In de gidsen en bij Uitgelicht: witte productfoto's krijgen een warme 'studio'-achtergrond met zachte schaduw. */
+.sfeer-modus .prodkaart .beeld.echt:not(.sfeer) { background: radial-gradient(120% 95% at 50% 28%, #fffaf2 0%, #f3e8d8 58%, #e6d5bd 100%); }
+.sfeer-modus .prodkaart .beeld.echt:not(.sfeer) img { mix-blend-mode: multiply; padding: 11% 11% 13%; }
+.sfeer-modus .prodkaart .beeld.echt:not(.sfeer)::after { content: ''; position: absolute; left: 18%; right: 18%; bottom: 7%; height: 7%; background: radial-gradient(closest-side, rgba(90, 62, 30, .28), rgba(90, 62, 30, 0)); pointer-events: none; }
