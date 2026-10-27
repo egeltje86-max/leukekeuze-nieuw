@@ -1047,15 +1047,15 @@
           ids: ['bol-9300000105460117', 'bol-9200000118422706', 'bol-9300000015405237', 'bol-9200000132005044'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/voor-hem">Cadeaus voor hem</a>, <a href="/c/sport-outdoor/darts">Darts</a> en <a href="/c/dranken">Dranken</a>.' },
-    { slug: 'kerstcadeau-collega', beeld: 'bol-9300000198227802', vakken: ['cadeaus/kerst', 'cadeaus/collega', 'eten-drinken/pakketten'], titel: 'Kerstcadeau voor een collega of het hele team', kort: 'Van een klein bedankje tot een kerstpakket dat je samen geeft.',
-      intro: 'Een kerstcadeau voor een collega moet vooral niet te persoonlijk zijn, en ook niet te duur. Iets lekkers, iets voor op het bureau of iets gezelligs voor thuis doet het bijna altijd goed. Geef je met het hele team? Dan kun je wat groter denken.',
+    { slug: 'kerstcadeau-collega', beeld: 'bol-9300000237452859', vakken: ['cadeaus/kerst', 'cadeaus/collega'], titel: 'Kerstcadeau voor een collega of het hele team', kort: 'Echte cadeaus die ze blijven gebruiken: van een mooie pen tot een verwenset.',
+      intro: 'Een kerstcadeau voor een collega moet niet te persoonlijk zijn en ook niet te duur. Maar het mag wel een echt cadeau zijn: iets wat ze elke werkdag gebruiken, of iets om thuis van te genieten. Dus geen zak chips of een reep chocola die je zo in de supermarkt koopt, maar iets waar ze nog lang aan terugdenken. Geef je met het hele team? Dan kun je wat groter denken.',
       delen: [
-        { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt.',
-          ids: ['bol-9200000119481045', 'bol-9300000236854034', 'bol-9300000257840777', 'bol-9300000132296580'] },
-        { kop: 'Een klein kerstpakket (€15 tot €25)', tekst: 'Een mok met thee of chocolade erbij: een kerstpakket in het klein.',
-          ids: ['bol-9300000401315426', 'bol-9300000251768734', 'bol-9300000182901246', 'bol-9300000177443955'] },
-        { kop: 'Met het hele team (€25 tot €40)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat.',
-          ids: ['bol-9300000047849774', 'bol-9300000198227802', 'bol-9300000243166751', 'bol-9300000233060419'] }
+        { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
+          ids: ['bol-9300000132296580', 'bol-9300000338660274', 'bol-9300000130428935', 'bol-9300000256554614'] },
+        { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
+          ids: ['bol-9300000023740845', 'bol-9300000143116033', 'bol-9200000078061085', 'bol-9300000237729002'] },
+        { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
+          ids: ['bol-9300000237452859', 'bol-9300000002319410', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega: 12 ideeën</a>.' },
     { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/figuren-voertuigen', 'elektronica/gaming', 'cadeaus/sint-onder-15'],
