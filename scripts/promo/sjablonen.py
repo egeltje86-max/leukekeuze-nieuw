@@ -228,7 +228,7 @@ def einde(szn, W, H, plan, n=None):
 
 def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
     n = len(ps)
-    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.5, 2.7, 1.5, 3.5, 3.0   # tempo tussen 'te gehaast' en 'te traag'
+    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.2, 2.3, 1.3, 3.2, 2.8   # tempo: Marius vond 2.7 per product net te traag, 2.2 te gehaast
     segs = [('hook', T_HOOK)]
     for i in range(n - 1, -1, -1):
         if i == 0:
