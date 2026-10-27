@@ -1162,7 +1162,7 @@
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
       return '<div><h3><a href="/c/' + c.slug + '">' + ic(c.icoon) + esc(c.naam) + '</a></h3><ul>' +
-        volleSubs(c).slice(0, 6).map(function (s) { return '<li><a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
+        volleSubs(c).map(function (s) { return '<li><a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
     }).join('') + '</div>';
   }
   var laatsteFocus = null;
@@ -1445,7 +1445,10 @@
     if (t.hasAttribute('data-sluit-lade')) { sluitLade(); return; }
     if (t.hasAttribute('data-mega')) {
       var open = !$('[data-megamenu]').classList.contains('open');
-      $('[data-megamenu]').classList.toggle('open', open);
+      var mm = $('[data-megamenu]');
+      mm.classList.toggle('open', open);
+      /* Menu nooit langer dan het scherm: wat niet past, kun je in het menu zelf scrollen. */
+      if (open) mm.style.maxHeight = Math.max(240, window.innerHeight - mm.getBoundingClientRect().top - 8) + 'px';
       t.setAttribute('aria-expanded', String(open));
       return;
     }

@@ -112,12 +112,16 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
   display: none;
 }
 .megamenu.open { display: block; }
-.megamenu .binnen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px 30px; padding-top: 28px; padding-bottom: 32px; }
+.megamenu.open { max-height: calc(100vh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain; }
+/* Kolommen die netjes aansluiten (geen gaten), alle subcategorieën zichtbaar; past het niet, dan kun je in het menu scrollen. */
+.megamenu .binnen { display: block; column-count: 4; column-gap: 30px; padding-top: 24px; padding-bottom: 26px; }
+.megamenu .binnen > div { break-inside: avoid; margin-bottom: 18px; }
+@media (min-width: 1200px) { .megamenu .binnen { column-count: 5; } }
 .megamenu h3 { font: 700 14px/1.3 var(--f-ui); margin-bottom: 8px; }
 .megamenu h3 a { display: inline-flex; align-items: center; gap: 8px; color: var(--goud-licht); }
 .megamenu h3 svg { width: 18px; height: 18px; }
 .megamenu ul { list-style: none; margin: 0; padding: 0; }
-.megamenu li a { display: block; padding: 4px 0; font-size: 14px; color: var(--tekst-2); }
+.megamenu li a { display: block; padding: 3px 0; font-size: 14px; color: var(--tekst-2); }
 .megamenu li a:hover { color: var(--tekst); }
 
 /* ---------- Mobiele lade ---------- */
