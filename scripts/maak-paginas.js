@@ -53,6 +53,13 @@ function maakLd(info, url) {
   return uit;
 }
 
+/* Deelplaatje (1200x630) voor gidsen en categorieën, gemaakt met scripts/promo/maak-deelbeelden.py */
+function deelBeeld(pad) {
+  if (pad.indexOf('/gids/') !== 0 && pad.indexOf('/c/') !== 0) return '';
+  const naam = pad.replace(/^\/|\/$/g, '').replace(/\//g, '-');
+  return fs.existsSync(path.join(ROOT, 'images', 'deel', naam + '.jpg')) ? 'images/deel/' + naam + '.jpg' : '';
+}
+
 function maakPagina(info, lade, mega) {
   let h = SJABLOON;
   const url = SITE + info.pad;
@@ -67,6 +74,7 @@ function maakPagina(info, lade, mega) {
     h = h.replace(/<meta property="og:image" content="[^"]*">/, '<meta property="og:image" content="' + escA(b) + '">')
          .replace(/<meta name="twitter:image" content="[^"]*">/, '<meta name="twitter:image" content="' + escA(b) + '">')
          .replace(/\s*<meta property="og:image:(width|height)" content="[^"]*">/g, '');
+    if (info.beeldMaat) h = h.replace(/(<meta property="og:image" content="[^"]*">)/, '$1\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">');
   }
   const ld = maakLd(info, url);
   if (ld.length) h = zet(h, /<\/head>/, ld.map(x => '  <script type="application/ld+json">' + JSON.stringify(x).replace(/</g, '\\u003c') + '</script>').join('\n') + '\n</head>');
@@ -152,7 +160,7 @@ function maakPagina(info, lade, mega) {
     oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
     paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod, datum: r.datum,
-      beeld: pad.indexOf('/p/') === 0 ? r.beeld : '', geenIndex: GEEN_INDEX.test(pad) || r.leeg });
+      beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg });
   }
   await browser.close(); srv.close();
   if (fouten.length) { console.error('Fouten op de pagina:', fouten.slice(0, 5)); process.exit(1); }

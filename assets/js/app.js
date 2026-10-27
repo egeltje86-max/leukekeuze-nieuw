@@ -537,7 +537,13 @@
   }
   function zoekWoorden(tekst) { return vouw(tekst).split(/[^a-z0-9]+/).filter(Boolean).map(stam); }
   /* Korte woorden (3 letters of minder) alleen aan het begin van een woord: 'oma' vindt niet 'aroma' of 'roman', 'lp' niet 'alpaca'. */
-  function bevat(t, w) { return w.length > 3 ? t.indexOf(w) !== -1 : (' ' + t).search(new RegExp('[^a-z0-9]' + w)) !== -1; }
+  /* Woorden die toevallig ín een ander woord zitten maar iets heel anders zijn (nijntje ≠ konijntje). */
+  var NIET_IN = { nijntje: 'konijntje', nijn: 'konijn', ijntje: 'konijntje' };
+  function bevat(t, w) {
+    if (w.length <= 3) return (' ' + t).search(new RegExp('[^a-z0-9]' + w)) !== -1;
+    if (t.indexOf(w) === -1) return false;
+    return NIET_IN[w] ? t.split(NIET_IN[w]).join(' ').indexOf(w) !== -1 : true;
+  }
   /* Zoekt in onze eigen producten. Eerst precies; vindt dat niets, dan met één tikfout per woord. */
   function zoekLijst(woorden, prijs) {
     var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
