@@ -109,7 +109,7 @@
     rest.forEach(function (p) {
       var i = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[i]) i++;
       if (typeof p.prijs !== 'number') i = 2;
-      p._mix = mixGetal(p.id + '|' + week) - (LK.isNieuw(p) ? 0.25 : 0) - (p.beeld ? 0 : -0.5);
+      p._mix = mixGetal(p.id + '|' + week) - (LK.isNieuw(p) ? 0.25 : 0) - (p.beeld ? 0 : -0.5) - (p.sfeer ? 0.6 : 0);  /* sfeerfoto's naar voren (wens Marius 27-10-2026) */
       bakken[i].push(p);
     });
     bakken.forEach(function (b) { b.sort(function (a, c) { return a._mix - c._mix; }); });
@@ -121,7 +121,7 @@
       while (j < b.length - 1 && j < 4 && b[j].shop === vorige) j++;
       uit.push(b.splice(j, 1)[0]); over--;
     }
-    top.sort(function (a, b) { return ((b.favoriet ? 2 : 0) + (b.populair ? 1 : 0)) - ((a.favoriet ? 2 : 0) + (a.populair ? 1 : 0)); });
+    top.sort(function (a, b) { return ((b.favoriet ? 2 : 0) + (b.populair ? 1 : 0)) - ((a.favoriet ? 2 : 0) + (a.populair ? 1 : 0)) || (b.sfeer ? 1 : 0) - (a.sfeer ? 1 : 0); });
     return top.concat(uit);
   }
   function grid(lijst, leegHtml, klasse) {
