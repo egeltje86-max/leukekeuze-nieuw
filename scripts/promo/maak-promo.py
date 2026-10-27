@@ -819,7 +819,15 @@ def main():
     # Ontwerp: Nova Style 6 (stijl6.py). De oude tekenfuncties hierboven blijven alleen als reserve.
     sys.path.insert(0, HIER)
     import stijl6 as S
-    print('Seizoen:', S.seizoen(plan))
+    szn = S.seizoen(plan)
+    print('Seizoen:', szn)
+    try:
+        import sjablonen as SJ
+        if SJ.heeft(szn):
+            return met_sjablonen(SJ, S, szn, plan, ps, fotos, n, mappen, args, basis, datum)
+        print('Geen complete Nova-sjablonen voor', szn, '- ik gebruik de getekende stijl')
+    except ImportError as e:
+        print('Sjablonen niet beschikbaar (%s) - getekende stijl' % e)
 
     # TikTok 9:16
     tt = []
@@ -866,6 +874,49 @@ def main():
     weg = [] if '--geen-opruimen' in args else opruimen(basis, datum)
     telefoon = kopie_drive(mappen, datum, '--geen-opruimen' not in args) if '--uit' not in args else '-'
     print('KLAAR', datum, '| producten:', n, '| reel:', 'ja' if reel_ok else 'NEE', '| opgeruimd:', ', '.join(weg) or '-',
+          '| Google Drive:', telefoon)
+
+
+def met_sjablonen(SJ, S, szn, plan, ps, fotos, n, mappen, args, basis, datum):
+    """Alles maken met de Nova-sjablonen van dit seizoen."""
+    def bewaar(img, k, naam):
+        img.convert('RGB').save(os.path.join(mappen[k], naam), quality=92)
+    # TikTok 9:16
+    bewaar(SJ.overzicht('reel-overzicht', szn, 1080, 1920, dict(plan), fotos, n), 'tiktok', '01-cover.jpg')
+    for i, p in enumerate(ps):
+        bewaar(SJ.product('reel-product', szn, 1080, 1920, p, i + 1), 'tiktok', '%02d-%s.jpg' % (i + 2, p['bestand']))
+    bewaar(SJ.einde(szn, 1080, 1920, plan), 'tiktok', '%02d-einde.jpg' % (n + 2))
+    # Instagram en Facebook 4:5
+    cov = SJ.overzicht('insta-overzicht', szn, 1080, 1350, dict(plan), fotos, n)
+    bewaar(cov, 'instagram', '01-cover.jpg'); bewaar(cov, 'facebook', '01-hoofdfoto.jpg')
+    for i, p in enumerate(ps):
+        im = SJ.product('insta-product', szn, 1080, 1350, p, i + 1)
+        bewaar(im, 'instagram', '%02d-%s.jpg' % (i + 2, p['bestand'])); bewaar(im, 'facebook', '%02d-%s.jpg' % (i + 2, p['bestand']))
+    # einde voor Instagram: 9:16-einde past niet, dus het overzicht als slot
+    bewaar(cov, 'instagram', '%02d-einde.jpg' % (n + 2))
+    # Pinterest 2:3
+    bewaar(SJ.overzicht('pin-overzicht', szn, 1000, 1500, plan, fotos, n, pin=True), 'printerest', 'pin-0-overzicht.jpg')
+    for i, p in enumerate(ps):
+        bewaar(SJ.product('pin-product', szn, 1000, 1500, p), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
+    # reel
+    reel = os.path.join(mappen['tiktok'], 'leukekeuze-reel.mp4')
+    reel_ok = False
+    ff = ffmpeg_pad()
+    try:
+        reel_ok = SJ.maak_reel(plan, ps, reel, ff, szn) if ff else False
+    except Exception as e:
+        print('LET OP: reel met sjabloon mislukt (%s), ik maak de getekende versie' % e)
+        try:
+            reel_ok = S.maak_reel(plan, ps, reel, ff)
+        except Exception as e2:
+            print('LET OP: reel mislukt:', e2)
+    if reel_ok:
+        for k in ('instagram', 'facebook'):
+            shutil.copy(reel, os.path.join(mappen[k], 'leukekeuze-reel.mp4'))
+    teksten(plan, ps, mappen, reel_ok)
+    weg = [] if '--geen-opruimen' in args else opruimen(basis, datum)
+    telefoon = kopie_drive(mappen, datum, '--geen-opruimen' not in args) if '--uit' not in args else '-'
+    print('KLAAR', datum, '| producten:', n, '| sjablonen:', szn, '| reel:', 'ja' if reel_ok else 'NEE', '| opgeruimd:', ', '.join(weg) or '-',
           '| Google Drive:', telefoon)
 
 
