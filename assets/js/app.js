@@ -1168,12 +1168,8 @@
   function gidsKaart(g) {
     /* Kaartbeeld: het product in 'beeld' (met de hand gekozen), anders het eerste product uit de gids. */
     var eerste = (g.beeld && LK.vind(g.beeld)) || g.delen[0].ids.map(function (id) { return LK.vind(id); }).filter(Boolean)[0];
-    /* Met feestelijk plaatje (images/deel/gids-<slug>.webp, gemaakt door scripts/promo/maak-deelbeelden.py).
-       Ontbreekt dat plaatje, dan valt de kaart vanzelf terug op de gewone kaart met productfoto. */
-    return '<a class="gidskaart gidsbanner" href="/gids/' + g.slug + '">' +
-      '<img class="gidsbanner-img" src="/images/deel/gids-' + g.slug + '.webp" width="800" height="420" loading="lazy" alt="" onerror="this.parentNode.classList.remove(\'gidsbanner\')">' +
-      '<span class="gidsbeeld">' + (eerste ? LK.productBeeld(eerste) : '') + '</span>' +
-      '<span class="gidstekst"><strong>' + esc(g.titel) + '</strong><small>' + esc(g.kort) + '</small></span></a>';
+    return '<a class="gidskaart" href="/gids/' + g.slug + '">' + '<span class="gidsbeeld">' + (eerste ? LK.productBeeld(eerste) : '') + '</span>' +
+      '<span><strong>' + esc(g.titel) + '</strong><small>' + esc(g.kort) + '</small></span></a>';
   }
   function gids(slug) {
     if (!slug) {

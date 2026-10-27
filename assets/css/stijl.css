@@ -839,16 +839,6 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .gidsbeeld img { width: 100%; height: 100%; object-fit: contain; }
 .gidskaart strong { display: block; font-size: 16px; line-height: 1.3; }
 .gidskaart small { display: block; margin-top: 4px; color: var(--tekst-2); font-size: 13px; line-height: 1.4; }
-/* Gidskaart met feestelijk plaatje */
-.gidslijst:has(.gidsbanner) { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
-.sectie .gidslijst:has(.gidsbanner) { grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); }
-.gidsbanner { flex-direction: column; align-items: stretch; gap: 0; padding: 0; overflow: hidden; transition: transform .2s, box-shadow .2s; }
-.gidsbanner:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,.18); }
-.gidsbanner-img { display: block; width: 100%; height: auto; aspect-ratio: 800 / 420; object-fit: cover; }
-.gidskaart:not(.gidsbanner) .gidsbanner-img, .gidsbanner .gidsbeeld { display: none; }
-.gidsbanner .gidstekst { padding: 10px 14px 13px; }
-.gidsbanner strong { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-.gidsbanner small { margin-top: 0; font-size: 14px; }
 .tekstpagina.gids { max-width: 760px; }
 .tekstpagina .klein { font-size: 13px; }
 
