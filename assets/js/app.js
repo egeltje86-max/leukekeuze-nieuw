@@ -920,6 +920,64 @@
 
   /* ---------- Cadeaugidsen: eigen tekst met een paar gekozen producten per stukje ---------- */
   var GIDSEN = [
+    { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen', 'hobby/knutselen'],
+      titel: 'Surprise maken voor Sinterklaas: 25 ideeën, tips en wat je erin stopt', kort: 'Geen inspiratie voor je surprise? Hier vind je ideeën per persoon, een stappenplan en tips voor het gedicht.',
+      intro: 'Lootjes getrokken en nu moet er een surprise komen? Een surprise is het leukste deel van pakjesavond: een zelfgemaakte verpakking die past bij de persoon, met een cadeautje erin en een gedicht erbij. Je hoeft er echt geen knutselkampioen voor te zijn. Met een doos, wat karton, een lijmpistool en verf kom je al heel ver. Hieronder vind je een simpel stappenplan, 25 ideeën per type persoon, tips voor het gedicht en de spullen die je nodig hebt.',
+      delen: [
+        { kop: 'Zo maak je een surprise in 6 stappen', tekst: 'Begin op tijd: reken op twee of drie avonden, want verf en papier-maché moeten drogen.',
+          stappen: [
+            'Bedenk een idee dat past bij de persoon: een hobby, een grappige gewoonte of iets wat er dit jaar gebeurde.',
+            'Zoek een basis: een schoenendoos, een wc-rol, een plastic fles of een oude doos. Dozen van de supermarkt zijn gratis.',
+            'Maak de vorm met karton, kranten en plakband. Voor ronde vormen werkt papier-maché of een ballon heel goed.',
+            'Plak alles stevig vast met een lijmpistool. Dat gaat veel sneller dan gewone lijm.',
+            'Verf of beplak je surprise. Met crêpepapier of verf en een paar details (ogen, letters, glitters) maak je hem af.',
+            'Stop het cadeautje erin, verstop het eventueel goed, en plak het gedicht erop. Klaar!'
+          ] },
+        { kop: '25 surprise-ideeën per persoon', tekst: 'Pak een idee en maak het groot, gek of extra grappig. Hoe herkenbaarder voor de persoon, hoe leuker.',
+          lijst: [
+            'Voetballer: een voetbalschoen of een voetbalstadion met een doel',
+            'Gamer: een grote controller of een Nintendo Switch van karton',
+            'Kok of foodie: een pan met eieren, een pizza of een grote hamburger',
+            'Koffieleut: een enorm koffiekopje of een koffiezetapparaat',
+            'Tuinier: een gieter, een moestuinbak of een grote bloempot',
+            'Reiziger: een koffer met stickers of een vliegtuig',
+            'Dierenvriend: een hondenhok, een kattenmand of een aquarium',
+            'Paardenmeisje: een paardenhoofd of een stal',
+            'Muziekliefhebber: een gitaar, een koptelefoon of een radio',
+            'Lezer: een groot boek met een bladwijzer',
+            'Sporter: een halter, een dumbbell of een sporttas',
+            'Telefoonverslaafde: een gigantische telefoon met een "laag batterij"-scherm',
+            'Altijd te laat: een wekker of een kapotte klok',
+            'Slaapkop: een bed met een kussen en een dekentje',
+            'Snoeper: een snoepautomaat of een grote donut',
+            'Schatzoeker: een schatkist of een metaaldetector',
+            'Fietser: een fiets of een fietshelm',
+            'Kampeerder: een tent of een kampvuur',
+            'Fotograaf: een camera met een grote lens',
+            'Opa of oma: een leunstoel, een breiwerk of een theepot',
+            'Baby op komst: een kinderwagen of een rammelaar',
+            'Verhuisd: een verhuisdoos of een huisje met hun nieuwe huisnummer',
+            'Nieuwe baan: een bureau, een laptop of een stropdas',
+            'Rijbewijs gehaald: een auto of een groot verkeersbord',
+            'Weet je niets? Een grote chocoladeletter, een pepernotenzak of een mijter doet het altijd'
+          ] },
+        { kop: 'Spullen om je surprise te maken', tekst: 'Met deze spullen kun je bijna elke surprise maken. Een lijmpistool is echt een aanrader: alles zit in een paar seconden vast.',
+          ids: ['bol-9300000226734832', 'bol-9200000074078488', 'bol-9200000104255819', 'bol-9300000146207567', 'bol-9200000052919661', 'bol-9200000059166526', 'bol-9300000245957314'] },
+        { kop: 'Kleine cadeautjes voor in je surprise', tekst: 'Bij lootjes trekken spreek je vaak een bedrag af. Deze cadeautjes passen in bijna elke surprise en blijven onder de €15.',
+          ids: ['bol-9300000171163755', 'bol-9300000138803498', 'bol-9300000031046460', 'bol-9300000345522494', 'bol-9300000017407527', 'bol-9300000240237143'] },
+        { kop: 'Iets lekkers erbij', tekst: 'Een chocoladeletter of kruidnoten horen er gewoon bij. Leuk om in of naast je surprise te leggen.',
+          ids: ['bol-9300000010371405', 'bol-9300000161275021', 'bol-9300000244698921'] },
+        { kop: 'Tips voor het gedicht', tekst: 'Het gedicht is minstens zo belangrijk als de surprise. Het mag plagen, maar houd het lief: iedereen moet erom kunnen lachen.',
+          lijst: [
+            'Begin klassiek: "Sinterklaas zat te denken wat hij [naam] dit jaar zou schenken…"',
+            'Plaag met iets herkenbaars: een gewoonte, een grappig moment van dit jaar of een hobby.',
+            'Houd het kort: 8 tot 16 regels is genoeg. Te lang wordt saai om voor te lezen.',
+            'Laat het rijmen op het eind van elke twee regels (aa-bb). Zoek rijmwoorden op internet als je vastloopt.',
+            'Laat het gedicht naar het cadeautje verwijzen, of geef een opdracht: "Zoek in de schoorsteen…".',
+            'Onderteken met "Sint en Piet" en schrijf het gedicht met de computer of netjes met de hand.'
+          ] }
+      ],
+      slot: 'Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
     { slug: 'sinterklaas-onder-10', beeld: 'bol-9300000157956217', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/voor-kinderen', 'cadeaus/onder-15', 'speelgoed'], titel: 'Sinterklaascadeaus onder de €10: voor in de schoen en als klein pakje', kort: 'Kleine cadeautjes voor de schoen en pakjesavond, allemaal onder een tientje.',
       intro: 'Elke avond een schoen zetten, en dan ook nog pakjesavond: dat loopt snel op. Daarom koos ik cadeautjes onder de 10 euro waar kinderen echt blij van worden. Kleine setjes, boekjes en spelletjes, van merken die je kent.',
       delen: [
@@ -1121,9 +1179,13 @@
     var h = paginakop({ titel: g.titel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: g.titel }] }) +
       '<div class="binnen"><article class="tekstpagina gids"><p>' + esc(g.intro) + '</p></article>';
     g.delen.forEach(function (d) {
+      /* Een deel kan ook alleen tekst zijn (zonder producten), met een lijstje (veld 'lijst') of genummerde stappen (veld 'stappen'). */
+      var extra = (d.lijst ? '<ul>' + d.lijst.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' : '') +
+        (d.stappen ? '<ol>' + d.stappen.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ol>' : '');
+      if (!d.ids) { h += '<article class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</article>'; return; }
       var lijst = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen; }));
       if (!lijst.length) return;
-      h += '<section class="sectie sfeer-modus"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p></div>' + grid(lijst, '') + '</section>';
+      h += '<section class="sectie sfeer-modus"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</div>' + grid(lijst, '') + '</section>';
     });
     h += '<article class="tekstpagina gids"><p>' + g.slot + '</p><p class="klein">Prijzen kunnen veranderen. De prijs bij de winkel is altijd leidend.</p>' +
       '<h2>Meer cadeaugidsen</h2><div class="gidslijst">' + GIDSEN.filter(function (x) { return x !== g; }).map(gidsKaart).join('') + '</div></article></div>';
