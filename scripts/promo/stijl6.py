@@ -635,6 +635,12 @@ def _kit(naam):
     box, inzet, m = KIT_DELEN[naam]
     im = T.crop(box).convert('RGBA')
     w, h = im.size
+    if naam == 'kaart':  # linkerkant van de bron heeft lichtjes van een lantaarn erdoor: rechterhelft spiegelen
+        rechts = im.crop((w - w // 2, 0, w, h))
+        im.paste(rechts.transpose(Image.FLIP_LEFT_RIGHT), (0, 0))
+    if naam == 'voet':  # linker lijntje heeft een vlekje: rechter lijntje gespiegeld gebruiken
+        bw_ = int(w * 0.24)
+        im.paste(im.crop((w - bw_, 0, w, h)).transpose(Image.FLIP_LEFT_RIGHT), (0, 0))
     if naam == 'knop':  # versie zonder pijltje (voor prijzen): linkerhelft spiegelen
         z = im.copy()
         links = z.crop((0, 0, w // 2, h))
