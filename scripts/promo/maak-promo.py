@@ -879,7 +879,22 @@ def main():
     reel_ok = False
     ff = ffmpeg_pad()
     try:
-        reel_ok = S.maak_reel(plan, ps, reel, ff) if ff else False
+        # Reel in de Nova-stijl (Marius 27-10: 'mensen hebben hem geliked'); plaatjes en pins blijven blauw.
+        nova_reel = False
+        try:
+            import sjablonen as SJ
+            nova_reel = SJ.heeft(szn) and '--blauwe-reel' not in args
+        except ImportError:
+            pass
+        if ff and nova_reel:
+            S.GETEKEND = False
+            try:
+                reel_ok = SJ.maak_reel(plan, ps, reel, ff, szn)
+            finally:
+                S.GETEKEND = '--nova' not in args
+            print('Reel: Nova-stijl')
+        else:
+            reel_ok = S.maak_reel(plan, ps, reel, ff) if ff else False
     except Exception as e:
         print('LET OP: reel in nieuwe stijl mislukt (%s), ik maak de simpele versie' % e)
         try:
