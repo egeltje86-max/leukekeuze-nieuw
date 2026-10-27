@@ -5,7 +5,7 @@ Bestanden: bestanden/sjabloon-<soort>-<seizoen>.png
 soorten: pin-overzicht, pin-product, reel-overzicht, reel-product, reel-einde, insta-overzicht, insta-product
 De vakken (wit = productfoto, crème = tekst, goud = lint/knop/nummer) worden automatisch herkend.
 """
-import os, math, subprocess
+import os, random, math, subprocess
 from PIL import Image, ImageDraw, ImageFilter, ImageEnhance
 import numpy as np
 from scipy import ndimage
@@ -142,7 +142,7 @@ def titel_in(laag, box, goud_deel, rest, klein=''):
             y += f.size * 1.1
 
 
-def foto_in(laag, vak, foto, zoom=1.0, dx=0, marge=0.07, alpha=1.0):
+def foto_in(laag, vak, foto, zoom=1.0, dx=0, marge=0.07, alpha=1.0, dy=0):
     x0, y0, x1, y1 = vak['box']
     bw, bh = x1 - x0, y1 - y0
     p = int(min(bw, bh) * marge)
@@ -151,7 +151,7 @@ def foto_in(laag, vak, foto, zoom=1.0, dx=0, marge=0.07, alpha=1.0):
     if zoom != 1:
         f = f.resize((max(1, int(f.width * zoom)), max(1, int(f.height * zoom))), Image.BILINEAR)
     stuk = Image.new('RGBA', (bw, bh), (255, 255, 255, 0))
-    stuk.paste(f.convert('RGBA'), (int((bw - f.width) / 2 + dx), int((bh - f.height) / 2)))
+    stuk.paste(f.convert('RGBA'), (int((bw - f.width) / 2 + dx), int((bh - f.height) / 2 + dy)))
     wit = Image.new('RGBA', (bw, bh), (255, 255, 255, 255))
     wit.alpha_composite(stuk)
     m = Image.fromarray((vak['masker'][y0:y1, x0:x1] * 255).astype('uint8'))
@@ -228,7 +228,7 @@ def einde(szn, W, H, plan, n=None):
 
 def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
     n = len(ps)
-    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 3.0, 3.3, 1.8, 4.0, 3.5   # rustig tempo (Marius: 'te gehaast')
+    T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.5, 2.7, 1.5, 3.5, 3.0   # tempo tussen 'te gehaast' en 'te traag'
     segs = [('hook', T_HOOK)]
     for i in range(n - 1, -1, -1):
         if i == 0:
@@ -273,6 +273,53 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
             prijs=tekstlaag(lambda l, p=p: knop and tekst_in(l, knop, _prijs(p['prijs']), 'Bold', 50, DONKER, 1)),
             nr=tekstlaag(lambda l, i=i: rond and tekst_in(l, rond, '#%d' % (i + 1), 'kop', 60, DONKER, 1)))
 
+    # sterretjes/sneeuw die de hele reel zachtjes naar beneden dwarrelen (altijd beweging in beeld)
+    rnd = random.Random(int(plan.get('datum', '2026').replace('-', '')[:8] or 1))
+    deeltjes = [dict(x=rnd.uniform(0, W), y=rnd.uniform(0, H), v=rnd.uniform(35, 110), r=rnd.uniform(2, 5.5),
+                     zw=rnd.uniform(10, 30), f=rnd.uniform(0, 6.28), goud=rnd.random() < 0.55) for _ in range(55)]
+
+    def sterren(doek, t):
+        laag = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(laag)
+        for q in deeltjes:
+            y = (q['y'] + q['v'] * t) % (H + 40) - 20
+            x = q['x'] + q['zw'] * math.sin(t * 1.1 + q['f'])
+            a = 0.45 + 0.55 * (0.5 + 0.5 * math.sin(t * 3.0 + q['f'] * 2))
+            k = (255, 214, 120) if q['goud'] else (255, 255, 255)
+            r = q['r']
+            d.ellipse((x - r * 2.2, y - r * 2.2, x + r * 2.2, y + r * 2.2), fill=k + (int(40 * a),))
+            d.ellipse((x - r, y - r, x + r, y + r), fill=k + (int(230 * a),))
+        doek.alpha_composite(laag)
+
+    def zoom_beeld(fr, z):
+        if z <= 1.001:
+            return fr
+        w2, h2 = int(W / z), int(H / z)
+        x0, y0 = (W - w2) // 2, (H - h2) // 2
+        return fr.crop((x0, y0, x0 + w2, y0 + h2)).resize((W, H), Image.BILINEAR)
+
+    # reclame-effecten: lichtflits, glimstreep over de foto en een korte 'klap' van het hele beeld
+    def flits(fr, sterkte):
+        if sterkte > 0.01:
+            fr.alpha_composite(Image.new('RGBA', (W, H), (255, 248, 230, int(255 * min(1, sterkte)))))
+
+    def glim(fr, box, x):
+        if not box or not 0 < x < 1:
+            return
+        x0, y0, x1, y1 = box; bw, bh = x1 - x0, y1 - y0
+        band = Image.new('RGBA', (bw, bh), (0, 0, 0, 0)); d = ImageDraw.Draw(band)
+        cx = -bw * 0.4 + x * bw * 1.8; b = bw * 0.16
+        d.polygon([(cx, 0), (cx + b, 0), (cx + b - bh * 0.35, bh), (cx - bh * 0.35, bh)], fill=(255, 255, 255, 110))
+        band = band.filter(ImageFilter.GaussianBlur(10))
+        if vak is not None and box == vak['box']:
+            m = Image.fromarray((vak['masker'][y0:y1, x0:x1] * 255).astype('uint8'))
+            band.putalpha(Image.fromarray(np.minimum(np.array(band.split()[3]), np.array(m))))
+        fr.alpha_composite(band, (x0, y0))
+
+    def schud(fr, s):
+        if s < 0.5:
+            return fr
+        n = Image.new('RGBA', (W, H)); n.paste(fr, (int(s * math.sin(s * 7.3)), int(s * math.cos(s * 5.1)))); return n
+
     def met_alpha(laag, a):
         if a >= 1:
             return laag
@@ -306,27 +353,47 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
             if soort == 'hook':
                 fr = hook_basis.copy().convert('RGBA')
                 fr.alpha_composite(met_alpha(hook_t, S._ease(lt / 0.6)))
-                fr.alpha_composite(hook_r)
-                pop_laag(fr, hook_k, knop, S._pop((lt - 0.5) / 0.6))
+                pop_laag(fr, hook_k, knop, S._pop((lt - 0.4) / 0.5) * (1 + 0.04 * math.sin(max(0, lt - 0.9) * 6)))
+                pop_laag(fr, hook_r, rond, 1 + 0.12 * abs(math.sin(lt * 4)))
+                fr = zoom_beeld(fr, 1 + 0.05 * lt / T_HOOK)
             elif soort == 'trom':
                 fr = trom_basis.copy().convert('RGBA')
                 pop_laag(fr, trom_t, ve['creme'][0]['box'] if ve['creme'] else None, S._pop(lt / 0.5))
-                fr.alpha_composite(met_alpha(trom_k, S._ease((lt - 0.6) / 0.5)))
+                fr.alpha_composite(met_alpha(trom_k, S._ease((lt - 0.4) / 0.4)))
+                fr = zoom_beeld(fr, 1 + 0.08 * S._ease(lt / T_TROM))
+                flits(fr, 0.25 * (1 - lt / 0.15) if lt < 0.15 else 0)
             elif soort == 'prod':
                 i = seg[2]; dur = seg[1]; L = lagen[i]
                 fr = leeg.copy()
                 if vak:
+                    bw = vak['box'][2] - vak['box'][0]; bh = vak['box'][3] - vak['box'][1]
+                    zweef = 9 * math.sin(lt * 2.6)
                     if i == 0:
-                        foto_in(fr, vak, ps[i]['foto'], zoom=0.6 + 0.4 * S._ease(lt / 0.8) + 0.05 * (lt / dur))
+                        foto_in(fr, vak, ps[i]['foto'], zoom=0.55 + 0.45 * S._pop(lt / 0.7) + 0.08 * (lt / dur), dy=zweef)
                     else:
-                        bw = vak['box'][2] - vak['box'][0]
-                        foto_in(fr, vak, ps[i]['foto'], zoom=1.0 + 0.05 * (lt / dur), dx=bw * (1 - S._ease(lt / 0.6)))
+                        kant = i % 3          # 0 van rechts, 1 van links, 2 van onder
+                        inn = 1 - S._ease(lt / 0.45)
+                        uit_ = S._ease((lt - (dur - 0.3)) / 0.3) if lt > dur - 0.3 else 0
+                        dx = (bw * inn if kant == 0 else -bw * inn if kant == 1 else 0) - bw * 1.1 * uit_
+                        dy = (bh * inn if kant == 2 else 0) + zweef
+                        foto_in(fr, vak, ps[i]['foto'], zoom=1.0 + 0.10 * (lt / dur), dx=dx, dy=dy)
                 fr = fr.convert('RGBA')
-                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.3) / 0.5))
-                fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.5) / 0.5)))
-                pop_laag(fr, L['prijs'], knop, S._pop((lt - 1.0) / 0.5))
+                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.15) / 0.4) * (1 + 0.06 * math.sin(max(0, lt - 0.6) * 5)))
+                fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.35) / 0.4)))
+                pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.7) / 0.45) * (1 + 0.035 * math.sin(max(0, lt - 1.2) * 5)))
+                if vak:
+                    glim(fr, vak['box'], (lt - 0.5) / 0.7)
+                if knop:
+                    glim(fr, knop, (lt - 1.3) / 0.5)
+                # klap + flits bij elk nieuw product; bij nummer 1 extra groot met een schok
+                fr = zoom_beeld(fr, 1 + (0.10 if i == 0 else 0.05) * (1 - S._ease(lt / 0.35)))
+                flits(fr, (0.55 if i == 0 else 0.22) * (1 - lt / 0.18) if lt < 0.18 else 0)
+                if i == 0:
+                    fr = schud(fr, 14 * (1 - lt / 0.45) if lt < 0.45 else 0)
             else:
-                fr = (Image.blend(leeg, eind, S._ease(lt / 0.6)) if lt < 0.6 else eind).convert('RGBA')
+                fr = (Image.blend(leeg, eind, S._ease(lt / 0.5)) if lt < 0.5 else eind).convert('RGBA')
+                fr = zoom_beeld(fr, 1 + 0.04 * lt / T_EIND)
+            sterren(fr, t)
             d = ImageDraw.Draw(fr)
             d.rectangle((0, H - 10, int(W * t / totaal), H), fill=S.GOUD)
             proc.stdin.write(fr.convert('RGB').tobytes())
