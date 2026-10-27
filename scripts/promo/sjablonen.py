@@ -275,15 +275,15 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
 
     # sterretjes/sneeuw die de hele reel zachtjes naar beneden dwarrelen (altijd beweging in beeld)
     rnd = random.Random(int(plan.get('datum', '2026').replace('-', '')[:8] or 1))
-    deeltjes = [dict(x=rnd.uniform(0, W), y=rnd.uniform(0, H), v=rnd.uniform(35, 110), r=rnd.uniform(2, 5.5),
-                     zw=rnd.uniform(10, 30), f=rnd.uniform(0, 6.28), goud=rnd.random() < 0.55) for _ in range(55)]
+    deeltjes = [dict(x=rnd.uniform(0, W), y=rnd.uniform(0, H), v=rnd.uniform(25, 70), r=rnd.uniform(2, 4.5),
+                     zw=rnd.uniform(10, 30), f=rnd.uniform(0, 6.28), goud=rnd.random() < 0.55) for _ in range(30)]
 
     def sterren(doek, t):
         laag = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(laag)
         for q in deeltjes:
             y = (q['y'] + q['v'] * t) % (H + 40) - 20
             x = q['x'] + q['zw'] * math.sin(t * 1.1 + q['f'])
-            a = 0.45 + 0.55 * (0.5 + 0.5 * math.sin(t * 3.0 + q['f'] * 2))
+            a = 0.55 + 0.35 * (0.5 + 0.5 * math.sin(t * 1.6 + q['f'] * 2))
             k = (255, 214, 120) if q['goud'] else (255, 255, 255)
             r = q['r']
             d.ellipse((x - r * 2.2, y - r * 2.2, x + r * 2.2, y + r * 2.2), fill=k + (int(40 * a),))
@@ -354,20 +354,20 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
                 fr = hook_basis.copy().convert('RGBA')
                 fr.alpha_composite(met_alpha(hook_t, S._ease(lt / 0.6)))
                 pop_laag(fr, hook_k, knop, S._pop((lt - 0.4) / 0.5) * (1 + 0.04 * math.sin(max(0, lt - 0.9) * 6)))
-                pop_laag(fr, hook_r, rond, 1 + 0.12 * abs(math.sin(lt * 4)))
+                pop_laag(fr, hook_r, rond, 1 + 0.06 * abs(math.sin(lt * 3)))
                 fr = zoom_beeld(fr, 1 + 0.05 * lt / T_HOOK)
             elif soort == 'trom':
                 fr = trom_basis.copy().convert('RGBA')
                 pop_laag(fr, trom_t, ve['creme'][0]['box'] if ve['creme'] else None, S._pop(lt / 0.5))
                 fr.alpha_composite(met_alpha(trom_k, S._ease((lt - 0.4) / 0.4)))
                 fr = zoom_beeld(fr, 1 + 0.08 * S._ease(lt / T_TROM))
-                flits(fr, 0.25 * (1 - lt / 0.15) if lt < 0.15 else 0)
+                flits(fr, 0.12 * (1 - lt / 0.15) if lt < 0.15 else 0)
             elif soort == 'prod':
                 i = seg[2]; dur = seg[1]; L = lagen[i]
                 fr = leeg.copy()
                 if vak:
                     bw = vak['box'][2] - vak['box'][0]; bh = vak['box'][3] - vak['box'][1]
-                    zweef = 9 * math.sin(lt * 2.6)
+                    zweef = 6 * math.sin(lt * 2.2)
                     if i == 0:
                         foto_in(fr, vak, ps[i]['foto'], zoom=0.55 + 0.45 * S._pop(lt / 0.7) + 0.08 * (lt / dur), dy=zweef)
                     else:
@@ -378,18 +378,16 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
                         dy = (bh * inn if kant == 2 else 0) + zweef
                         foto_in(fr, vak, ps[i]['foto'], zoom=1.0 + 0.10 * (lt / dur), dx=dx, dy=dy)
                 fr = fr.convert('RGBA')
-                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.15) / 0.4) * (1 + 0.06 * math.sin(max(0, lt - 0.6) * 5)))
+                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.15) / 0.4) * (1 + 0.03 * math.sin(max(0, lt - 0.6) * 4)))
                 fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.35) / 0.4)))
-                pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.7) / 0.45) * (1 + 0.035 * math.sin(max(0, lt - 1.2) * 5)))
+                pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.7) / 0.45) * (1 + 0.02 * math.sin(max(0, lt - 1.2) * 4)))
                 if vak:
                     glim(fr, vak['box'], (lt - 0.5) / 0.7)
-                if knop:
-                    glim(fr, knop, (lt - 1.3) / 0.5)
                 # klap + flits bij elk nieuw product; bij nummer 1 extra groot met een schok
-                fr = zoom_beeld(fr, 1 + (0.10 if i == 0 else 0.05) * (1 - S._ease(lt / 0.35)))
-                flits(fr, (0.55 if i == 0 else 0.22) * (1 - lt / 0.18) if lt < 0.18 else 0)
+                fr = zoom_beeld(fr, 1 + (0.06 if i == 0 else 0.03) * (1 - S._ease(lt / 0.35)))
+                flits(fr, (0.35 if i == 0 else 0.10) * (1 - lt / 0.18) if lt < 0.18 else 0)
                 if i == 0:
-                    fr = schud(fr, 14 * (1 - lt / 0.45) if lt < 0.45 else 0)
+                    fr = schud(fr, 7 * (1 - lt / 0.4) if lt < 0.4 else 0)
             else:
                 fr = (Image.blend(leeg, eind, S._ease(lt / 0.5)) if lt < 0.5 else eind).convert('RGBA')
                 fr = zoom_beeld(fr, 1 + 0.04 * lt / T_EIND)
