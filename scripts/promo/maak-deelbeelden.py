@@ -48,8 +48,13 @@ def maak(titel, fotos, szn, uit):
     # links: titelvak + knop
     links_w = x0 - 40 - 34
     g, w = (titel, '') if len(titel) <= 18 else S.titel_split({'titel': titel})
+    # lange samengestelde woorden splitsen: 'Sinterklaascadeaus' -> goud 'Sinterklaas', rest 'cadeaus ...'
     if len(titel) > 18 and len(g) < 6:
         g, w = '', titel
+    for voor in ('Sinterklaas', 'Kerst'):
+        if g.startswith(voor) and len(g) > len(voor) + 3:
+            w = (g[len(voor):] + ' ' + w).strip()
+            g = voor
     vak = S.creme_vak(g, w, W, s, links_w, 86 * s)
     knop = S.goud_knop('Bekijk de ideeën', S.font('Bold', 28), 28, 10, pijl=True)
     tot = vak.height + knop.height - 10
@@ -58,6 +63,13 @@ def maak(titel, fotos, szn, uit):
     img.alpha_composite(vak, (int(cx - vak.width / 2), int(y)))
     img.alpha_composite(knop, (int(cx - knop.width / 2), int(y + vak.height - 10)))
     img.convert('RGB').save(uit, quality=80, optimize=True)
+
+
+CAT = {}
+for _r in open(os.path.join(REPO, 'assets', 'js', 'producten.js'), encoding='utf-8'):
+    _m = re.search(r'"id":\s*"([^"]+)".*?"cat":\s*"([^"]+)"', _r)
+    if _m:
+        CAT[_m.group(1)] = _m.group(2)
 
 
 def main():
@@ -73,16 +85,23 @@ def main():
             continue
         titel = html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).strip()
         titel = re.sub(r'\s+', ' ', titel)
-        if len(titel) > 60:
+        if len(titel) > 34 and ':' in titel:
             titel = titel.split(':')[0].strip()
         srcs = []
         for s_ in re.findall(r'src="(/?images/producten/[^"]+)"', h):
             if s_ not in srcs:
                 srcs.append(s_)
+        if '/eten-drinken/' not in pad and '/dranken/' not in pad:
+            srcs = [s_ for s_ in srcs if CAT.get(re.sub(r'(-klein)?\.webp$', '', s_.split('/')[-1])) not in ('eten-drinken', 'dranken')] or srcs
         fotos = [x for x in (foto(s_) for s_ in srcs[:6]) if x is not None][:3]
         if not fotos:
             continue
-        maak(titel, fotos, szn, os.path.join(UIT, naam_voor(pad) + '.jpg'))
+        uit = os.path.join(UIT, naam_voor(pad) + '.jpg')
+        eigen = 'sint' if szn == 'kerst' and re.search(r'sinterklaas|surprise|pakjesavond', pad + ' ' + titel.lower()) else szn
+        maak(titel, fotos, eigen, uit)
+        if pad.startswith('/gids/'):
+            # lichte versie voor de gidskaarten op de site zelf
+            Image.open(uit).resize((800, 420), Image.LANCZOS).save(uit[:-4] + '.webp', quality=78, method=6)
         n += 1
     print('deelplaatjes gemaakt:', n)
 
