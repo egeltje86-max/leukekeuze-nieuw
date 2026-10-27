@@ -285,9 +285,27 @@ def achtergrond(W, H, szn='kerst', zaad=1):
     eigen = os.path.join(B, 'achtergrond-%s.jpg' % szn)
     if os.path.exists(eigen):
         im = Image.open(eigen).convert('RGB')
-        k = max(W / im.width, H / im.height)
-        im = im.resize((int(im.width * k) + 1, int(im.height * k) + 1), Image.LANCZOS)
-        im = im.crop(((im.width - W) // 2, (im.height - H) // 2, (im.width - W) // 2 + W, (im.height - H) // 2 + H))
+        if H / W > 1.6:
+            k = max(W / im.width, H / im.height)
+            im = im.resize((int(im.width * k) + 1, int(im.height * k) + 1), Image.LANCZOS)
+            im = im.crop(((im.width - W) // 2, (im.height - H) // 2, (im.width - W) // 2 + W, (im.height - H) // 2 + H))
+        else:
+            # lagere formaten: bovenste en onderste stuk (met takken) behouden, het rustige midden inkorten
+            k = W / im.width
+            im = im.resize((W, int(im.height * k)), Image.LANCZOS)
+            boven = im.crop((0, 0, W, H // 2))
+            onder = im.crop((0, im.height - (H - H // 2), W, im.height))
+            doel = Image.new('RGB', (W, H))
+            doel.paste(boven, (0, 0)); doel.paste(onder, (0, H // 2))
+            naad = Image.new('L', (W, H), 0)
+            ImageDraw.Draw(naad).rectangle((0, H // 2 - int(60 * W / 1080), W, H // 2 + int(60 * W / 1080)), fill=255)
+            vaag = doel.filter(ImageFilter.GaussianBlur(int(40 * W / 1080)))
+            im = Image.composite(vaag, doel, naad.filter(ImageFilter.GaussianBlur(int(30 * W / 1080))))
+        donker = Image.new('L', (W, H), 0)
+        dd = ImageDraw.Draw(donker)
+        dd.ellipse((W * 0.08, H * 0.12, W * 0.92, H * 0.92), fill=120)
+        dd.rectangle((0, H * 0.86, W, H), fill=150)
+        im = Image.composite(Image.new('RGB', (W, H), NAVY_DIEP), im, donker.filter(ImageFilter.GaussianBlur(W * 0.08)))
         _BG[sleutel] = im
         return im.copy()
     rnd = random.Random(zaad % 7 + {'kerst': 11, 'sint': 23, 'valentijn': 37, 'normaal': 51}[szn])
@@ -373,7 +391,7 @@ def kaart_laag(foto, bw, bh, zoom=1.0, marge=0.07):
     zw = Image.new('RGBA', laag.size, (0, 0, 0, 255)); zw.putalpha(sch.filter(ImageFilter.GaussianBlur(m * 0.45)))
     laag.alpha_composite(zw)
     gl = Image.new('L', laag.size, 0)
-    ImageDraw.Draw(gl).rounded_rectangle((m, m, m + bw, m + bh), radius=r, fill=90)
+    ImageDraw.Draw(gl).rounded_rectangle((m, m, m + bw, m + bh), radius=r, fill=170)
     gg = Image.new('RGBA', laag.size, (255, 200, 110, 255)); gg.putalpha(gl.filter(ImageFilter.GaussianBlur(m * 0.3)))
     laag.alpha_composite(gg)
     vlak = Image.new('RGB', (bw, bh), WIT)
@@ -387,7 +405,12 @@ def kaart_laag(foto, bw, bh, zoom=1.0, marge=0.07):
     vm = Image.new('L', (bw, bh), 0)
     ImageDraw.Draw(vm).rounded_rectangle((0, 0, bw - 1, bh - 1), radius=r, fill=255)
     v = vlak.convert('RGBA'); v.putalpha(vm)
-    ImageDraw.Draw(v).rounded_rectangle((1, 1, bw - 2, bh - 2), radius=r, outline=(222, 176, 82, 255), width=max(2, int(bw * 0.006)))
+    rb = max(3, int(min(bw, bh) * 0.014))
+    rand = _verloop(bw, bh, [(255, 226, 140), (236, 176, 70), (255, 214, 120), (200, 140, 50)]).convert('RGBA')
+    rm = Image.new('L', (bw, bh), 0)
+    ImageDraw.Draw(rm).rounded_rectangle((0, 0, bw - 1, bh - 1), radius=r, outline=255, width=rb)
+    rand.putalpha(rm)
+    v.alpha_composite(rand)
     laag.alpha_composite(v, (m, m))
     return laag, m
 
@@ -398,28 +421,105 @@ def plak_kaart(img, foto, x, y, bw, bh, zoom=1.0):
 
 
 def logo_voet(W, s):
-    """Logo + leukekeuze.nl met dunne gouden lijntjes ernaast (RGBA-laag)."""
-    ico = Image.open(os.path.join(B, 'logo-icoon.png')).convert('RGB')
-    h = int(64 * s)
-    ico = ico.resize((int(ico.width * h / ico.height), h), Image.LANCZOS)
-    tegel = Image.new('RGBA', (ico.width + int(14 * s), h + int(14 * s)), (0, 0, 0, 0))
-    ImageDraw.Draw(tegel).rounded_rectangle((0, 0, tegel.width - 1, tegel.height - 1), radius=int(12 * s), fill=(249, 248, 244, 255))
-    tegel.paste(ico, (int(7 * s), int(7 * s)))
-    f = font('Bold', 42 * s)
-    t = 'leukekeuze.nl'
-    tw = breedte(t, f)
-    lijn = int(90 * s)
-    gw = tegel.width + int(16 * s) + tw
-    Wl = int(gw + 2 * (lijn + 24 * s))
-    laag = Image.new('RGBA', (Wl, tegel.height + 4), (0, 0, 0, 0))
+    """Gouden cadeau-icoon + leukekeuze.nl met gouden lijntjes ernaast (zoals Nova-sjabloon)."""
+    ico = cadeau_icoon(int(62 * s))
+    f = font('Bold', 46 * s)
+    tt = 'leukekeuze.nl'
+    tw = breedte(tt, f)
+    lijn = int(110 * s)
+    gw = ico.width + int(14 * s) + tw
+    Wl = int(gw + 2 * (lijn + 26 * s))
+    laag = Image.new('RGBA', (Wl, ico.height + 4), (0, 0, 0, 0))
     x0 = (Wl - gw) / 2
-    laag.alpha_composite(tegel, (int(x0), 0))
-    schrijf(laag, (x0 + tegel.width + 16 * s, tegel.height / 2 - f.size * 0.68), t, f, CREME)
+    laag.alpha_composite(ico, (int(x0), 0))
+    schrijf(laag, (x0 + ico.width + 14 * s, ico.height / 2 - f.size * 0.62), tt, f, (255, 250, 240))
     d = ImageDraw.Draw(laag)
-    ym = tegel.height / 2
-    d.line((0, ym, lijn, ym), fill=GOUD + (200,), width=max(1, int(2 * s)))
-    d.line((Wl - lijn, ym, Wl, ym), fill=GOUD + (200,), width=max(1, int(2 * s)))
-    return _met_schaduw(laag, int(4 * s), 140)
+    ym = ico.height * 0.6
+    d.line((0, ym, lijn, ym), fill=(232, 182, 84, 220), width=max(2, int(3 * s)))
+    d.line((Wl - lijn, ym, Wl, ym), fill=(232, 182, 84, 220), width=max(2, int(3 * s)))
+    achter = Image.new('RGBA', (laag.width + int(80 * s), laag.height + int(50 * s)), (0, 0, 0, 0))
+    am = Image.new('L', achter.size, 0)
+    ImageDraw.Draw(am).rounded_rectangle((int(30 * s), int(18 * s), achter.width - int(30 * s), achter.height - int(18 * s)), radius=int(40 * s), fill=170)
+    zw = Image.new('RGBA', achter.size, NAVY_DIEP + (255,)); zw.putalpha(am.filter(ImageFilter.GaussianBlur(18 * s)))
+    achter.alpha_composite(zw)
+    achter.alpha_composite(_met_schaduw(laag, int(5 * s), 160), (int(40 * s), int(25 * s)))
+    return achter
+
+def cadeau_icoon(h, kleur=None):
+    """Gouden cadeau-icoon (lijntekening) zoals in het Nova-sjabloon."""
+    k = kleur or (240, 190, 90, 255)
+    w = int(h * 1.05)
+    lw = max(2, int(h * 0.07))
+    im = Image.new('RGBA', (w + 2 * lw, h + 2 * lw), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    o = lw
+    dek_y = o + h * 0.32
+    d.rounded_rectangle((o, dek_y, o + w, dek_y + h * 0.2), radius=int(lw), outline=k, width=lw)
+    d.rounded_rectangle((o + w * 0.08, dek_y + h * 0.2, o + w * 0.92, o + h), radius=int(lw), outline=k, width=lw)
+    d.line((o + w / 2, dek_y, o + w / 2, o + h), fill=k, width=lw)
+    # strik
+    d.ellipse((o + w * 0.22, o + h * 0.04, o + w * 0.5, o + h * 0.34), outline=k, width=lw)
+    d.ellipse((o + w * 0.5, o + h * 0.04, o + w * 0.78, o + h * 0.34), outline=k, width=lw)
+    gl = Image.new('RGBA', im.size, (255, 200, 110, 0))
+    gl.putalpha(im.split()[3].filter(ImageFilter.GaussianBlur(lw * 1.4)).point(lambda v: int(v * 0.6)))
+    uit = Image.new('RGBA', im.size, (0, 0, 0, 0))
+    uit.alpha_composite(gl); uit.alpha_composite(im)
+    return uit
+
+
+def icoon_met_lijnen(W, s, h=None):
+    ico = cadeau_icoon(int(h or 86 * s))
+    lijn = int(150 * s)
+    laag = Image.new('RGBA', (ico.width + 2 * (lijn + int(26 * s)), ico.height), (0, 0, 0, 0))
+    laag.alpha_composite(ico, ((laag.width - ico.width) // 2, 0))
+    d = ImageDraw.Draw(laag)
+    ym = ico.height * 0.62
+    d.line((0, ym, lijn, ym), fill=(232, 182, 84, 230), width=max(2, int(3 * s)))
+    d.line((laag.width - lijn, ym, laag.width, ym), fill=(232, 182, 84, 230), width=max(2, int(3 * s)))
+    return laag
+
+
+def creme_vak(goud_deel, rest, W, s, maxb, g1=None, klein=''):
+    """Crèmekleurig titelvak met gouden rand en gloed; eerste deel in donkergoud, rest in marine."""
+    bw = int(maxb)
+    binnen = bw - int(70 * s)
+    g1 = int(g1 or 96 * s)
+    while goud_deel and breedte(goud_deel, font('kop', g1)) > binnen and g1 > 24:
+        g1 -= 2
+    g2 = int(g1 * 0.7)
+    r2 = regels(rest, font('kop', g2), binnen) if rest else []
+    while rest and len(r2) > 2 and g2 > 18:
+        g2 -= 2; r2 = regels(rest, font('kop', g2), binnen)
+    fk = font('Medium', max(14, int(min(g2 * 0.55, 40 * s))))
+    rk = regels(klein, fk, binnen) if klein else []
+    hoogte = int((g1 * 1.08 if goud_deel else 0) + len(r2) * g2 * 1.1 + len(rk) * fk.size * 1.25 + 46 * s)
+    m = int(26 * s)
+    laag = Image.new('RGBA', (bw + 2 * m, hoogte + 2 * m), (0, 0, 0, 0))
+    vorm = Image.new('L', laag.size, 0)
+    rr = int(min(hoogte * 0.32, 60 * s))
+    ImageDraw.Draw(vorm).rounded_rectangle((m, m, m + bw, m + hoogte), radius=rr, fill=255)
+    gl = Image.new('RGBA', laag.size, (255, 196, 100, 255)); gl.putalpha(vorm.filter(ImageFilter.GaussianBlur(m * 0.6)).point(lambda v: int(v * 0.85)))
+    laag.alpha_composite(gl)
+    vlak = _verloop(bw, hoogte, [(255, 250, 236), (250, 236, 206), (240, 214, 168)]).convert('RGBA')
+    vm = Image.new('L', (bw, hoogte), 0); ImageDraw.Draw(vm).rounded_rectangle((0, 0, bw - 1, hoogte - 1), radius=rr, fill=255)
+    vlak.putalpha(vm)
+    rand = _verloop(bw, hoogte, [(255, 226, 140), (226, 166, 62), (255, 214, 120)]).convert('RGBA')
+    rm = Image.new('L', (bw, hoogte), 0); ImageDraw.Draw(rm).rounded_rectangle((0, 0, bw - 1, hoogte - 1), radius=rr, outline=255, width=max(3, int(5 * s)))
+    rand.putalpha(rm); vlak.alpha_composite(rand)
+    y = 22 * s
+    if goud_deel:
+        f = font('kop', g1)
+        schrijf(vlak, ((bw - breedte(goud_deel, f)) / 2, y - g1 * 0.1), goud_deel, f, (176, 120, 34))
+        y += g1 * 1.08
+    for r in r2:
+        f = font('kop', g2)
+        schrijf(vlak, ((bw - breedte(r, f)) / 2, y - g2 * 0.12), r, f, DONKER)
+        y += g2 * 1.1
+    for r in rk:
+        schrijf(vlak, ((bw - breedte(r, fk)) / 2, y), r, fk, (92, 80, 62))
+        y += fk.size * 1.25
+    laag.alpha_composite(vlak, (m, m))
+    return laag
 
 
 def plak(img, laag, cx, y):
@@ -436,27 +536,23 @@ def veilig(W, H):
     return int(50 * s), int(30 * s)
 
 
-def titel_lagen(plan, W, s, maxb, max_h):
-    """Gouden eerste woord(en) + crèmewitte rest, passend in max_h. Geeft lijst lagen terug."""
-    titel = plan.get('titel', '').strip()
-    goud_deel = plan.get('titel_goud')
-    wit_deel = plan.get('titel_wit')
-    if not goud_deel:
-        w = titel.split()
-        goud_deel, wit_deel = (w[0], ' '.join(w[1:])) if len(w) > 1 else (titel, '')
-    for g in range(int(124 * s), int(56 * s), -int(6 * s) or -1):
-        fg = font('kop', g)
-        if breedte(goud_deel, fg) > maxb:
-            continue
-        l1 = goud_tekst(goud_deel, fg, maxb)
-        l2 = tekstblok(W, wit_deel, font('kop', g * 0.66), CREME, maxb, 1.1) if wit_deel else None
-        if l2 is not None and len(regels(wit_deel, font('kop', g * 0.66), maxb)) > 2:
-            continue
-        hoogte = l1.height + (l2.height - int(g * 0.1) if l2 else 0)
-        if hoogte <= max_h:
-            return [l1] + ([l2] if l2 else [])
-    return [goud_tekst(titel, font('kop', 56 * s), maxb)]
+def titel_split(plan, sleutel='titel'):
+    titel = (plan.get(sleutel) or plan.get('titel', '')).strip()
+    g = plan.get(sleutel + '_goud') or plan.get('titel_goud')
+    w = plan.get(sleutel + '_wit') or plan.get('titel_wit')
+    if not g:
+        ww = titel.split()
+        g, w = (ww[0], ' '.join(ww[1:])) if len(ww) > 1 else (titel, '')
+    return g, w or ''
 
+
+def titel_lagen(plan, W, s, maxb, max_h):
+    g, w = titel_split(plan)
+    for g1 in range(int(100 * s), int(40 * s), -int(4 * s) or -1):
+        laag = creme_vak(g, w, W, s, maxb, g1)
+        if laag.height <= max_h:
+            return [laag]
+    return [creme_vak(g, w, W, s, maxb, int(40 * s))]
 
 def ondertitel_lint(t, W, s, maxb):
     f = font('kop', 40 * s)
@@ -476,10 +572,11 @@ def cover(W, H, plan, fotos, zaad, met_pov=True, knop=True, n_ideeen=None):
     img = achtergrond(W, H, szn, zaad).convert('RGBA')
     s = W / 1080
     boven, onder = veilig(W, H)
-    maxb = W * 0.86
-    y = boven + int(30 * s)
-    for laag in titel_lagen(plan, W, s, maxb, H * (0.19 if H / W > 1.6 else 0.15)):
-        y = plak(img, laag, W / 2, y) - int(10 * s)
+    maxb = W * 0.82
+    y = boven + int(6 * s)
+    y = plak(img, icoon_met_lijnen(W, s, 70 * s), W / 2, y) - int(4 * s)
+    for laag in titel_lagen(plan, W, s, maxb, H * (0.16 if H / W > 1.6 else 0.19)):
+        y = plak(img, laag, W / 2, y) - int(16 * s)
     if plan.get('subtitel'):
         y = plak(img, ondertitel_lint(plan['subtitel'], W, s, maxb), W / 2, y + int(4 * s))
     if met_pov and plan.get('pov'):
@@ -510,54 +607,47 @@ def product(W, H, p, nr, totaal, zaad, plan=None, teller=True):
     s = W / 1080
     boven, onder = veilig(W, H)
     groot = H / W > 1.6
-    fn = font('kop', (70 if groot else 60) * s)
-    fr = font('Regular', (42 if groot else 36) * s)
     voet = logo_voet(W, s)
-    naam = tekstblok(W, p['naam'], fn, CREME, W * 0.86, 1.1)
-    regel = tekstblok(W, p['regel'], fr, CREME_2, W * 0.84, 1.2, False) if p.get('regel') else None
+    naam = creme_vak('', p['naam'], W, s, W * 0.82, (78 if groot else 66) * s / 0.7, p.get('regel', ''))
+    regel = None
     prijs = goud_knop('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', (52 if groot else 44) * s), 34 * s, 8 * s)
-    tekst_h = naam.height + (regel.height if regel else 0) + prijs.height
+    tekst_h = naam.height - int(20 * s) + (regel.height if regel else 0) + prijs.height
     if teller and totaal > 1:
-        nrl = goud_tekst('#%d' % nr, font('kop', 64 * s), W)
-        plak(img, nrl, W / 2, boven)
-        top = boven + nrl.height + int(10 * s)
+        nrl = goud_tekst('#%d' % nr, font('kop', 70 * s), W)
+        plak(img, nrl, W / 2, boven - int(10 * s))
+        top = boven + nrl.height
     else:
         top = boven + int(20 * s)
-    bodem = H - onder - voet.height - int(30 * s)
-    kant = min(W - 2 * int(80 * s), bodem - top - tekst_h - int(40 * s))
-    y0 = top + max(0, (bodem - top - kant - tekst_h - int(40 * s)) // 2)
+    bodem = H - onder - voet.height - int(24 * s)
+    kant = min(W - 2 * int(90 * s), bodem - top - tekst_h - int(30 * s))
+    y0 = top + max(0, (bodem - top - kant - tekst_h - int(30 * s)) // 2)
     plak_kaart(img, p['foto'], (W - kant) / 2, y0, kant, kant)
-    y = y0 + kant + int(40 * s)
-    y = plak(img, naam, W / 2, y) - int(8 * s)
+    y = y0 + kant + int(14 * s)
+    y = plak(img, naam, W / 2, y) - int(18 * s)
     if regel:
-        y = plak(img, regel, W / 2, y)
+        y = plak(img, regel, W / 2, y + int(4 * s))
     plak(img, prijs, W / 2, y)
     plak(img, voet, W / 2, H - onder - voet.height)
     return img.convert('RGB')
-
 
 def einde(W, H, plan, zaad, n=None):
     szn = seizoen(plan)
     img = achtergrond(W, H, szn, zaad).convert('RGBA')
     s = W / 1080
     boven, onder = veilig(W, H)
-    logo = Image.open(os.path.join(B, 'logo-kaart.png')).convert('RGB')
-    kb, kh = int(640 * s), int(400 * s)
-    kaart = Image.new('RGBA', (kb, kh), (0, 0, 0, 0))
-    ImageDraw.Draw(kaart).rounded_rectangle((0, 0, kb - 1, kh - 1), radius=int(40 * s), fill=(249, 248, 244, 255), outline=(222, 176, 82, 255), width=max(2, int(4 * s)))
-    lg = logo.resize((int(logo.width * s * 0.9), int(logo.height * s * 0.9)), Image.LANCZOS)
-    kaart.paste(lg, ((kb - lg.width) // 2, (kh - lg.height) // 2))
-    kaart = _met_schaduw(kaart, int(14 * s), 170)
-    blok_h = kaart.height + int(50 * s) + int(66 * s * 2.4) + int(140 * s) + int(60 * s)
-    y = boven + max(0, (H - boven - onder - int(110 * s) - blok_h) / 2)
-    y = plak(img, kaart, W / 2, y) + int(50 * s)
-    y = plak(img, goud_tekst(plan.get('eindvraag', 'Nog meer cadeau-ideeën?'), font('kop', 66 * s), W * 0.84), W / 2, y) + int(20 * s)
-    y = plak(img, goud_knop('Kijk op leukekeuze.nl', font('Bold', 46 * s), 46 * s, 12 * s, pijl=True), W / 2, y) + int(16 * s)
-    plak(img, tekstblok(W, 'Sla dit bericht op voor je cadeaulijstje', font('Regular', 38 * s), CREME_2, W * 0.86, 1.2, False), W / 2, y)
+    ico = icoon_met_lijnen(W, s, 150 * s)
+    vak = creme_vak('', plan.get('eindvraag', 'Nog meer cadeau-ideeën?'), W, s, W * 0.82, 74 * s / 0.7)
+    knop = goud_knop('Kijk op leukekeuze.nl', font('Bold', 46 * s), 46 * s, 12 * s, pijl=True)
+    zin = donkere_pil('Sla dit bericht op voor je cadeaulijstje', font('Medium', 34 * s), 30 * s, 10 * s)
     voet = logo_voet(W, s)
+    blok = ico.height + vak.height + knop.height + zin.height + int(60 * s)
+    y = boven + max(0, (H - boven - onder - voet.height - blok) / 2)
+    y = plak(img, ico, W / 2, y) + int(10 * s)
+    y = plak(img, vak, W / 2, y) + int(6 * s)
+    y = plak(img, knop, W / 2, y) + int(10 * s)
+    plak(img, zin, W / 2, y)
     plak(img, voet, W / 2, H - onder - voet.height)
     return img.convert('RGB')
-
 
 def pin_overzicht(W, H, plan, fotos, zaad, n_ideeen=None):
     sj = pin_sjabloon('pin-%s' % seizoen(plan), plan, fotos, n_ideeen, W, H)
@@ -711,17 +801,17 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
     fn, fr = font('kop', 70 * s), font('Regular', 42 * s)
     lagen = {}
     for i, p in enumerate(ps):
-        naam = tekstblok(W, p['naam'], fn, CREME, W * 0.86, 1.1)
-        regel = tekstblok(W, p['regel'], fr, CREME_2, W * 0.84, 1.2, False) if p.get('regel') else None
+        naam = creme_vak('', p['naam'], W, s, W * 0.82, 78 * s / 0.7, p.get('regel', ''))
+        regel = None
         prijs = goud_knop('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', 52 * s), 34 * s, 8 * s)
         nr = goud_tekst('#%d' % (i + 1), font('kop', 84 * s if i else 100 * s), W)
-        tekst_h = naam.height + (regel.height if regel else 0) + prijs.height
-        top_y = boven + nr.height + int(10 * s)
+        tekst_h = naam.height - int(20 * s) + (regel.height if regel else 0) + prijs.height
+        top_y = boven + nr.height
         bodem = H - onder - voet.height - int(30 * s)
         kant = int(min(W - 2 * int(90 * s), bodem - top_y - tekst_h - int(40 * s)))
         y0 = top_y + max(0, (bodem - top_y - kant - tekst_h - int(40 * s)) // 2)
         lagen[i] = dict(kant=kant, y0=y0, naam=naam, regel=regel, prijs=prijs, nr=nr, foto=p['foto'])
-    trom = goud_tekst('En nummer 1 is…', font('kop', 92 * s), W * 0.86)
+    trom = creme_vak('En nummer 1', 'is…', W, s, W * 0.78, 110 * s)
     eind = einde(W, H, plan, zaad + 99, n).convert('RGBA')
     vtxt = 'Welke kies jij? Zet 1 t/m %d in de reacties 👇' % n
     fv = font('Bold', 40 * s)
@@ -769,15 +859,15 @@ def maak_reel(plan, ps, uit, ff, W=1080, H=1920, fps=30):
                     x = x_eind + (W - x_eind) * (1 - _ease(lt / 0.25))
                     fr_.paste(kl, (int(x - km), int(L['y0'] - km)), kl)
                 _plak_schaal(fr_, L['nr'], W / 2, boven + L['nr'].height / 2, _pop(lt / 0.3))
-                ty = L['y0'] + kant + int(40 * s)
+                ty = L['y0'] + kant + int(14 * s)
                 a = _ease((lt - 0.1) / 0.25)
                 if a > 0:
                     _plak_schaal(fr_, L['naam'], W / 2, ty + L['naam'].height / 2 + 20 * s * (1 - a), 1.0, a)
                     if L['regel']:
-                        _plak_schaal(fr_, L['regel'], W / 2, ty + L['naam'].height - 8 * s + L['regel'].height / 2, 1.0, a)
+                        _plak_schaal(fr_, L['regel'], W / 2, ty + L['naam'].height - 14 * s + L['regel'].height / 2, 1.0, a)
                 pp = _pop((lt - 0.35) / 0.3)
                 if pp > 0:
-                    yp = ty + L['naam'].height - 8 * s + (L['regel'].height if L['regel'] else 0)
+                    yp = ty + L['naam'].height - 18 * s + (L['regel'].height + 4 * s if L['regel'] else 0)
                     _plak_schaal(fr_, L['prijs'], W / 2, yp + L['prijs'].height / 2, pp)
             else:
                 fr_ = Image.blend(bg, eind, _ease(lt / 0.3)) if lt < 0.3 else eind.copy()
