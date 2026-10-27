@@ -788,8 +788,11 @@ def kopie_drive(mappen, datum, opruim):
         for k, bron in mappen.items():
             doel = os.path.join(doel_basis, k, datum)
             if os.path.isdir(doel):
-                shutil.rmtree(doel, ignore_errors=True)
-            shutil.copytree(bron, doel)
+                # oude bestanden weg; de map zelf mag blijven (Google Drive geeft hem niet altijd meteen vrij)
+                for f in os.listdir(doel):
+                    pf = os.path.join(doel, f)
+                    shutil.rmtree(pf, ignore_errors=True) if os.path.isdir(pf) else os.remove(pf)
+            shutil.copytree(bron, doel, dirs_exist_ok=True)
         if opruim:
             opruimen(doel_basis, datum)
         return doel_basis
@@ -908,11 +911,15 @@ def met_sjablonen(SJ, S, szn, plan, ps, fotos, n, mappen, args, basis, datum):
         bewaar(im, 'instagram', '%02d-%s.jpg' % (i + 2, p['bestand'])); bewaar(im, 'facebook', '%02d-%s.jpg' % (i + 2, p['bestand']))
     # einde voor Instagram: 9:16-einde past niet, dus het overzicht als slot
     bewaar(cov, 'instagram', '%02d-einde.jpg' % (n + 2))
-    # Pinterest 2:3: rustige blauwe stijl (Marius: Nova-pins te druk, 'het gaat om het product')
+    # Pinterest 2:3: eigen blauwe achtergrond met de gouden kaders/balkjes (Marius: Nova-foto te druk, 'het gaat om het product')
     zaad = int(datum.replace('-', ''))
-    bewaar(pin_overzicht(1000, 1500, plan, fotos, zaad, knop='Bekijk alle %d ideeën' % n), 'printerest', 'pin-0-overzicht.jpg')
-    for i, p in enumerate(ps):
-        bewaar(product(1000, 1500, p, i + 1, n, zaad + i + 1, teller=False), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
+    S.GETEKEND = True
+    try:
+        bewaar(S.pin_overzicht(1000, 1500, plan, fotos, zaad, n), 'printerest', 'pin-0-overzicht.jpg')
+        for i, p in enumerate(ps):
+            bewaar(S.product(1000, 1500, p, i + 1, n, zaad + i + 1, plan, teller=False), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
+    finally:
+        S.GETEKEND = False
     # reel
     reel = os.path.join(mappen['tiktok'], 'leukekeuze-reel.mp4')
     reel_ok = False

@@ -290,13 +290,16 @@ def _bal(laag, cx, cy, r, kleur, s):
     d.rectangle((cx - r * 0.25, cy - r * 1.12, cx + r * 0.25, cy - r * 0.9), fill=(200, 160, 80, 255))
 
 
+GETEKEND = False   # True: altijd de zelf getekende blauwe achtergrond (takken, ballen, sterren), niet de Nova-foto
+
+
 def achtergrond(W, H, szn='kerst', zaad=1):
-    sleutel = (W, H, szn, zaad % 7)
+    sleutel = (W, H, szn, zaad % 7, GETEKEND)
     if sleutel in _BG:
         return _BG[sleutel].copy()
     s = W / 1080
     eigen = os.path.join(B, 'achtergrond-%s.jpg' % szn)
-    if os.path.exists(eigen):
+    if os.path.exists(eigen) and not GETEKEND:
         im = Image.open(eigen).convert('RGB')
         if H / W > 1.6:
             k = max(W / im.width, H / im.height)
