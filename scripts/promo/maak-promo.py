@@ -167,6 +167,16 @@ def prijs_pil(img, cx, y, prijs, grootte):
     return y + ph
 
 
+def knop_pil(img, cx, y, t, grootte):
+    d = ImageDraw.Draw(img)
+    f = font('Bold', grootte)
+    w = d.textlength(t, font=f)
+    ph, pw = int(grootte * 1.55), w + grootte * 1.4
+    d.rounded_rectangle((cx - pw / 2, y, cx + pw / 2, y + ph), radius=ph // 2, fill=ORANJE)
+    d.text((cx - w / 2, y + ph / 2 - grootte * 0.66), t, font=f, fill=DONKER)
+    return y + ph
+
+
 def pov_pil(img, y, t, grootte):
     d = ImageDraw.Draw(img)
     f = font('Bold', grootte)
@@ -183,7 +193,7 @@ def pov_pil(img, y, t, grootte):
 
 # ---------------- slides ----------------
 
-def cover(W, H, plan, fotos, zaad, met_pov=True):
+def cover(W, H, plan, fotos, zaad, met_pov=True, knop=''):
     img = achtergrond(W, H, zaad)
     d = ImageDraw.Draw(img)
     s = W / 1080
@@ -193,7 +203,8 @@ def cover(W, H, plan, fotos, zaad, met_pov=True):
     if met_pov and plan.get('pov'):
         y = pov_pil(img, y + int(40 * s), plan['pov'], int(50 * s))
     voet_h = int(110 * s)
-    rest_boven, rest_onder = y + int(30 * s), H - voet_h - int(40 * s)
+    knop_h = int(52 * s * 1.55 + 30 * s) if knop else 0
+    rest_boven, rest_onder = y + int(30 * s), H - voet_h - int(40 * s) - knop_h
     gap = int(24 * s)
     kant = min((W - 2 * int(60 * s) - gap) / 2, (rest_onder - rest_boven - gap) / 2)
     gx = (W - 2 * kant - gap) / 2
@@ -201,15 +212,18 @@ def cover(W, H, plan, fotos, zaad, met_pov=True):
     for i, f in enumerate(fotos[:4]):
         cx, cy = gx + (i % 2) * (kant + gap), gy + (i // 2) * (kant + gap)
         kaart(img, (cx, cy, cx + kant, cy + kant), f)
+    if knop:
+        knop_pil(img, W / 2, gy + 2 * kant + gap + int(30 * s), knop, int(46 * s))
     voet(img, H - voet_h, s)
     return img
 
 
-def product(W, H, p, nr, totaal, zaad):
+def product(W, H, p, nr, totaal, zaad, teller=True):
     img = achtergrond(W, H, zaad)
     d = ImageDraw.Draw(img)
     s = W / 1080
-    d.text((int(40 * s), int(40 * s)), '%d/%d' % (nr, totaal), font=font('Bold', int(34 * s)), fill=ORANJE)
+    if teller:
+        d.text((int(40 * s), int(40 * s)), '%d/%d' % (nr, totaal), font=font('Bold', int(34 * s)), fill=ORANJE)
     voet_h = int(110 * s)
     groot = H / W > 1.6
     fn, fr, fp = (font('Bold', int(66 * s)), font('Regular', int(44 * s)), int(52 * s)) if groot else \
@@ -251,11 +265,11 @@ def einde(W, H, plan, zaad):
     return img
 
 
-def pin_overzicht(W, H, plan, fotos, zaad):
+def pin_overzicht(W, H, plan, fotos, zaad, knop=''):
     p = dict(plan)
     p['titel'] = plan.get('pin_titel', plan['titel'])
     p['subtitel'] = plan.get('pin_sub', plan['subtitel'])
-    return cover(W, H, p, fotos, zaad, met_pov=False)
+    return cover(W, H, p, fotos, zaad, met_pov=False, knop=knop)
 
 
 # ---------------- data ----------------
@@ -894,10 +908,11 @@ def met_sjablonen(SJ, S, szn, plan, ps, fotos, n, mappen, args, basis, datum):
         bewaar(im, 'instagram', '%02d-%s.jpg' % (i + 2, p['bestand'])); bewaar(im, 'facebook', '%02d-%s.jpg' % (i + 2, p['bestand']))
     # einde voor Instagram: 9:16-einde past niet, dus het overzicht als slot
     bewaar(cov, 'instagram', '%02d-einde.jpg' % (n + 2))
-    # Pinterest 2:3
-    bewaar(SJ.overzicht('pin-overzicht', szn, 1000, 1500, plan, fotos, n, pin=True), 'printerest', 'pin-0-overzicht.jpg')
+    # Pinterest 2:3: rustige blauwe stijl (Marius: Nova-pins te druk, 'het gaat om het product')
+    zaad = int(datum.replace('-', ''))
+    bewaar(pin_overzicht(1000, 1500, plan, fotos, zaad, knop='Bekijk alle %d ideeën' % n), 'printerest', 'pin-0-overzicht.jpg')
     for i, p in enumerate(ps):
-        bewaar(SJ.product('pin-product', szn, 1000, 1500, p), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
+        bewaar(product(1000, 1500, p, i + 1, n, zaad + i + 1, teller=False), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
     # reel
     reel = os.path.join(mappen['tiktok'], 'leukekeuze-reel.mp4')
     reel_ok = False
