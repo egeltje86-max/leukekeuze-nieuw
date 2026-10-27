@@ -31,7 +31,25 @@ def laad(soort, szn, W, H):
     k = (soort, szn, W, H)
     if k in _CACHE:
         return _CACHE[k]
-    im = Image.open(pad(soort, szn)).convert('RGB').resize((W, H), Image.LANCZOS)
+    bron = Image.open(pad(soort, szn)).convert('RGB')
+    if abs(bron.width / bron.height - W / H) < 0.04:
+        im = bron.resize((W, H), Image.LANCZOS)
+    else:
+        # andere verhouding: op breedte schalen en boven/onder aanvullen met een wazige versie (niets uitrekken)
+        k = W / bron.width
+        mid = bron.resize((W, int(bron.height * k)), Image.LANCZOS)
+        if mid.height > H:
+            mid = mid.crop((0, (mid.height - H) // 2, W, (mid.height - H) // 2 + H))
+        im = bron.resize((W, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(30))
+        im = ImageEnhance.Brightness(im).enhance(0.7)
+        y = (H - mid.height) // 2
+        m = Image.new('L', mid.size, 255)
+        rand = int(mid.height * 0.06)
+        d = ImageDraw.Draw(m)
+        for i in range(rand):
+            a = int(255 * i / rand)
+            d.line((0, i, W, i), fill=a); d.line((0, mid.height - 1 - i, W, mid.height - 1 - i), fill=a)
+        im.paste(mid, (0, y), m)
     a = np.array(im).astype(int)
     r, g, b = a[:, :, 0], a[:, :, 1], a[:, :, 2]
     lum = a.mean(2)
