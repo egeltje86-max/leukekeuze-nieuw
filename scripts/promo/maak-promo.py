@@ -816,37 +816,44 @@ def main():
             shutil.rmtree(mappen[k])
         os.makedirs(mappen[k])
 
-    # TikTok 9:16 (ook de bron voor de reel)
+    # Ontwerp: Nova Style 6 (stijl6.py). De oude tekenfuncties hierboven blijven alleen als reserve.
+    sys.path.insert(0, HIER)
+    import stijl6 as S
+    print('Seizoen:', S.seizoen(plan))
+
+    # TikTok 9:16
     tt = []
-    pad = os.path.join(mappen['tiktok'], '01-cover.jpg'); cover(1080, 1920, plan, fotos, zaad).save(pad, quality=92); tt.append(pad)
+    pad = os.path.join(mappen['tiktok'], '01-cover.jpg'); S.cover(1080, 1920, plan, fotos, zaad, knop=False).save(pad, quality=92); tt.append(pad)
     for i, p in enumerate(ps):
         pad = os.path.join(mappen['tiktok'], '%02d-%s.jpg' % (i + 2, p['bestand']))
-        product(1080, 1920, p, i + 1, n, zaad + i + 1).save(pad, quality=92); tt.append(pad)
-    pad = os.path.join(mappen['tiktok'], '%02d-einde.jpg' % (n + 2)); einde(1080, 1920, plan, zaad + 99).save(pad, quality=92); tt.append(pad)
+        S.product(1080, 1920, p, i + 1, n, zaad + i + 1, plan).save(pad, quality=92); tt.append(pad)
+    pad = os.path.join(mappen['tiktok'], '%02d-einde.jpg' % (n + 2)); S.einde(1080, 1920, plan, zaad + 99).save(pad, quality=92); tt.append(pad)
 
-    # Instagram 4:5
-    cover(1080, 1350, plan, fotos, zaad).save(os.path.join(mappen['instagram'], '01-cover.jpg'), quality=92)
+    # Instagram 4:5 (zonder POV-balk: die staat al in de reel)
+    S.cover(1080, 1350, dict(plan, pov=''), fotos, zaad, n_ideeen=n).save(os.path.join(mappen['instagram'], '01-cover.jpg'), quality=92)
     for i, p in enumerate(ps):
-        product(1080, 1350, p, i + 1, n, zaad + i + 1).save(os.path.join(mappen['instagram'], '%02d-%s.jpg' % (i + 2, p['bestand'])), quality=92)
-    einde(1080, 1350, plan, zaad + 99).save(os.path.join(mappen['instagram'], '%02d-einde.jpg' % (n + 2)), quality=92)
+        S.product(1080, 1350, p, i + 1, n, zaad + i + 1, plan).save(os.path.join(mappen['instagram'], '%02d-%s.jpg' % (i + 2, p['bestand'])), quality=92)
+    S.einde(1080, 1350, plan, zaad + 99).save(os.path.join(mappen['instagram'], '%02d-einde.jpg' % (n + 2)), quality=92)
 
-    # Facebook: vierkante hoofdfoto + 4:5 album
-    cover(1200, 1200, plan, fotos, zaad, met_pov=False).save(os.path.join(mappen['facebook'], '01-hoofdfoto.jpg'), quality=92)
+    # Facebook: hoofdfoto 4:5 + album
+    S.cover(1080, 1350, dict(plan, pov=''), fotos, zaad, n_ideeen=n).save(os.path.join(mappen['facebook'], '01-hoofdfoto.jpg'), quality=92)
     for i, p in enumerate(ps):
-        product(1080, 1350, p, i + 1, n, zaad + i + 1).save(os.path.join(mappen['facebook'], '%02d-%s.jpg' % (i + 2, p['bestand'])), quality=92)
+        S.product(1080, 1350, p, i + 1, n, zaad + i + 1, plan).save(os.path.join(mappen['facebook'], '%02d-%s.jpg' % (i + 2, p['bestand'])), quality=92)
 
     # Pinterest 2:3
-    pin_overzicht(1000, 1500, plan, fotos, zaad).save(os.path.join(mappen['printerest'], 'pin-0-overzicht.jpg'), quality=92)
+    S.pin_overzicht(1000, 1500, plan, fotos, zaad, n).save(os.path.join(mappen['printerest'], 'pin-0-overzicht.jpg'), quality=92)
     for i, p in enumerate(ps):
-        product(1000, 1500, p, i + 1, n, zaad + i + 1).save(os.path.join(mappen['printerest'], 'pin-%d-%s.jpg' % (i + 1, p['bestand'])), quality=92)
+        q = dict(p, regel=p.get('regel', ''))
+        S.product(1000, 1500, q, i + 1, n, zaad + i + 1, plan, teller=False).save(os.path.join(mappen['printerest'], 'pin-%d-%s.jpg' % (i + 1, p['bestand'])), quality=92)
 
     # Reel voor TikTok, Instagram en Facebook
     reel = os.path.join(mappen['tiktok'], 'leukekeuze-reel.mp4')
     reel_ok = False
+    ff = ffmpeg_pad()
     try:
-        reel_ok = maak_reel_spanning(plan, ps, reel)
+        reel_ok = S.maak_reel(plan, ps, reel, ff) if ff else False
     except Exception as e:
-        print('LET OP: bewegende reel mislukt (%s), ik maak de simpele versie' % e)
+        print('LET OP: reel in nieuwe stijl mislukt (%s), ik maak de simpele versie' % e)
         try:
             reel_ok = maak_reel(tt, reel)
         except Exception as e2:
