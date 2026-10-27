@@ -998,6 +998,34 @@
           ids: ['bol-9300000047849774', 'bol-9300000198227802', 'bol-9300000243166751', 'bol-9300000233060419'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega: 12 ideeën</a>.' },
+    { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/figuren-voertuigen', 'elektronica/gaming', 'cadeaus/sint-onder-15'],
+      titel: 'De hypes van 2026: waar kinderen en tieners nu gek op zijn', kort: 'Tamagotchi, verrassingsdoosjes, KPop Demon Hunters en meer: dit staat op elk verlanglijstje.',
+      intro: 'Elk jaar zijn er een paar dingen waar ineens iedereen het over heeft, op het schoolplein en op TikTok. In 2026 zijn dat de Tamagotchi (ja, die van vroeger), verrassingsdoosjes en tashangers, alles van KPop Demon Hunters, Pokémon en Stitch. Hier vind je ze op een rij, zodat je precies weet waar je kind of kleinkind blij van wordt.',
+      delen: [
+        { kop: 'De hits van het schoolplein', tekst: 'De Tamagotchi is helemaal terug, en KPop Demon Hunters is de film waar elk kind het over heeft.',
+          ids: ['bol-9300000241515822', 'bol-9300000236575345', 'bol-9300000273887351', 'bol-9300000354107444'] },
+        { kop: 'Verrassingsdoosjes en tashangers', tekst: 'Uitpakken is de helft van de pret: je weet nooit welke je krijgt. Tashangers zijn dé trend voor aan je rugzak.',
+          ids: ['bol-9300000264493695', 'bol-9300000268338286', 'bol-9300000261371860', 'bol-9300000227351372'] },
+        { kop: 'Pokémon en Stitch', tekst: 'Al jaren populair, en in 2026 groter dan ooit: Pokémon viert zijn 30e verjaardag.',
+          ids: ['bol-9300000377799800', 'bol-9300000331860190', 'bol-9300000159234222', 'bol-9300000026009635'] },
+        { kop: 'Voor de kleine vlogger en gamer', tekst: 'Zelf filmpjes maken, een eigen horloge of de nieuwste Pokémon-game: voor kinderen die graag met techniek bezig zijn.',
+          ids: ['bol-9300000273861930', 'bol-9300000152351739', 'bol-9300000240660527', 'bol-9300000183040640'] }
+      ],
+      slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/voor-kinderen">Cadeaus voor kinderen</a> en in de gids <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>. Tip: hypes zijn rond Sinterklaas en Kerst vaak als eerste uitverkocht.' },
+    { slug: 'geuren-trends-2026', beeld: 'bol-9300000170836066', vakken: ['mode-beauty/geuren', 'mode-beauty', 'cadeaus/voor-haar'],
+      titel: 'Geuren die nu hot zijn: ontdekkingssets, layeren en de klassiekers', kort: 'Van een proefset om te ontdekken tot de parfum die iedereen herkent.',
+      intro: 'Parfum is een van de populairste cadeaus, en er gebeurt veel. Ontdekkingssets met kleine flesjes zijn in, net als "layeren": twee geuren over elkaar dragen voor je eigen mix. Daarnaast blijven de grote klassiekers het altijd goed doen. Hier staan de mooiste, voor haar en voor hem, van klein tot luxe.',
+      delen: [
+        { kop: 'Ontdekkingssets: eerst proeven', tekst: 'Kleine flesjes van verschillende geuren. Ideaal als je niet weet welke geur iemand mooi vindt.',
+          ids: ['bol-9300000176004073', 'bol-9300000183855220', 'bol-9300000183494175', 'bol-9300000291533838'] },
+        { kop: 'Layeren en parfumbalsems', tekst: 'Een parfumolie of balsem draag je los of over je eigen parfum. Vaak ook nog voordelig.',
+          ids: ['bol-9300000003438540', 'bol-9300000240443530', 'bol-9300000406573818', 'bol-9300000318870515'] },
+        { kop: 'Klassiekers voor haar', tekst: 'Deze flesjes herkent iedereen. Een cadeau waar je nooit mee misgaat.',
+          ids: ['bol-9300000266921937', 'bol-9300000170836066', 'bol-9300000363592116', 'bol-9300000238825117'] },
+        { kop: 'Klassiekers voor hem', tekst: 'Stoere geuren die mannen echt dragen, vaak als set met douchegel of deo.',
+          ids: ['bol-9300000228928212', 'bol-9300000245612578', 'bol-9300000247496139', 'bol-9300000363538158'] }
+      ],
+      slot: 'Alle geuren vind je bij <a href="/c/mode-beauty/geuren">Geuren</a>. Tip: twijfel je? Kies een ontdekkingsset, dan kan de ander zelf de favoriet uitzoeken.' },
     { slug: 'sinterklaas-onder-15', beeld: 'bol-9300000181433977', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen'], titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
       intro: 'Op pakjesavond gaat het niet om dure cadeaus, maar om iets leuks om uit te pakken. Daarom zette ik de beste cadeautjes onder de 15 euro op een rij. Handig als je meerdere kinderen hebt, of als je lootjes trekt met een vast bedrag.',
       delen: [
