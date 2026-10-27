@@ -92,6 +92,12 @@ hetzelfde zeggen, is normaal.
 - Heeft een mooi product alleen een witte foto? Laat Nova er een
   sfeerachtergrond bij maken.
 - Kies voor pins altijd de mooiste en leukste cadeaus.
+- Op de site (sinds 27 oktober 2026):
+    * producten met een echte sfeerfoto zijn gemarkeerd (386 stuks). Hun foto
+      vult de hele kaart, en ze staan vooraan in de gidsen en bij Uitgelicht;
+    * witte productfoto's krijgen overal een warme achtergrond met een zachte
+      schaduw. Het product zelf blijft precies hetzelfde;
+    * bij nieuwe producten kijkt Claude of de foto een echte sfeerfoto is.
 
 
 7. PROMOTIE
