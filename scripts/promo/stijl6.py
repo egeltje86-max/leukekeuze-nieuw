@@ -826,7 +826,7 @@ def cover(W, H, plan, fotos, zaad, met_pov=True, knop=True, n_ideeen=None):
     return img.convert('RGB')
 
 
-def product(W, H, p, nr, totaal, zaad, plan=None, teller=True):
+def product(W, H, p, nr, totaal, zaad, plan=None, teller=True, met_prijs=True):
     szn = seizoen(plan or {})
     img = achtergrond(W, H, szn, zaad).convert('RGBA')
     s = W / 1080
@@ -835,7 +835,10 @@ def product(W, H, p, nr, totaal, zaad, plan=None, teller=True):
     voet = logo_voet(W, s)
     naam = creme_vak('', p['naam'], W, s, W * 0.82, (78 if groot else 66) * s / 0.7, p.get('regel', ''))
     regel = None
-    prijs = goud_knop('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', (52 if groot else 44) * s), 34 * s, 8 * s)
+    if met_prijs:
+        prijs = goud_knop('€ ' + ('%.2f' % p['prijs']).replace('.', ','), font('Bold', (52 if groot else 44) * s), 34 * s, 8 * s)
+    else:   # pins: geen prijs (schrikt af en verouderd), wel een uitnodiging om te klikken
+        prijs = goud_knop('Bekijk dit cadeau', font('Bold', (48 if groot else 40) * s), 34 * s, 8 * s, pijl=True)
     tekst_h = naam.height - int(20 * s) + (regel.height if regel else 0) + prijs.height
     if teller and totaal > 1:
         nrl = goud_knop('#%d' % nr, font('kop', 52 * s), 30 * s, 2 * s)

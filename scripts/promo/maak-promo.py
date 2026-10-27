@@ -872,7 +872,7 @@ def main():
     S.pin_overzicht(1000, 1500, plan, fotos, zaad, n).save(os.path.join(mappen['printerest'], 'pin-0-overzicht.jpg'), quality=92)
     for i, p in enumerate(ps):
         q = dict(p, regel=p.get('regel', ''))
-        S.product(1000, 1500, q, i + 1, n, zaad + i + 1, plan, teller=False).save(os.path.join(mappen['printerest'], 'pin-%d-%s.jpg' % (i + 1, p['bestand'])), quality=92)
+        S.product(1000, 1500, q, i + 1, n, zaad + i + 1, plan, teller=False, met_prijs=False).save(os.path.join(mappen['printerest'], 'pin-%d-%s.jpg' % (i + 1, p['bestand'])), quality=92)
 
     # Reel voor TikTok, Instagram en Facebook
     reel = os.path.join(mappen['tiktok'], 'leukekeuze-reel.mp4')
@@ -920,7 +920,7 @@ def met_sjablonen(SJ, S, szn, plan, ps, fotos, n, mappen, args, basis, datum):
     try:
         bewaar(S.pin_overzicht(1000, 1500, plan, fotos, zaad, n), 'printerest', 'pin-0-overzicht.jpg')
         for i, p in enumerate(ps):
-            bewaar(S.product(1000, 1500, p, i + 1, n, zaad + i + 1, plan, teller=False), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
+            bewaar(S.product(1000, 1500, p, i + 1, n, zaad + i + 1, plan, teller=False, met_prijs=False), 'printerest', 'pin-%d-%s.jpg' % (i + 1, p['bestand']))
     finally:
         S.GETEKEND = False
     # reel
