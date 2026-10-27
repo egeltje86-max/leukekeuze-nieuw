@@ -560,6 +560,9 @@ def einde(W, H, plan, zaad, n=None):
 
 
 def pin_overzicht(W, H, plan, fotos, zaad, n_ideeen=None):
+    sj = pin_sjabloon('pin-%s' % seizoen(plan), plan, fotos, n_ideeen, W, H)
+    if sj is not None:
+        return sj
     p = dict(plan)
     p['titel'] = plan.get('pin_titel', plan['titel'])
     p['subtitel'] = plan.get('pin_sub', plan.get('subtitel', ''))
@@ -567,6 +570,73 @@ def pin_overzicht(W, H, plan, fotos, zaad, n_ideeen=None):
     if plan.get('pin_titel_goud'):
         p['titel_goud'], p['titel_wit'] = plan['pin_titel_goud'], plan.get('pin_titel_wit', '')
     return cover(W, H, p, fotos, zaad, met_pov=False, knop=True, n_ideeen=n_ideeen)
+
+
+# ---------------- Nova-sjablonen (vaste vakken) ----------------
+# Sjabloon van Nova met lege vakken. Coördinaten in pixels van het sjabloonbestand (1024 x 1536).
+SJABLONEN = {
+    'pin-kerst': dict(bestand='sjabloon-pin-kerst.png', titel=(124, 149, 901, 292), sub=(260, 320, 757, 394),
+                      vakken=[(99, 439, 495, 794), (532, 439, 932, 793), (99, 823, 494, 1180), (526, 824, 926, 1178)],
+                      knop=(182, 1244, 760, 1344)),
+}
+
+
+def _zet_midden(img, box, t, soort, grootte, kleur, max_regels=1):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0 - 40, y1 - y0 - 16
+    g = int(grootte)
+    while g > 14:
+        f = font(soort, g)
+        rr = regels(t, f, w)
+        if len(rr) <= max_regels and len(rr) * g * 1.12 <= h:
+            break
+        g -= 2
+    lh = int(g * 1.1)
+    y = y0 + (y1 - y0 - lh * len(rr)) / 2 - g * 0.12
+    for r in rr:
+        schrijf(img, (x0 + (x1 - x0 - breedte(r, f)) / 2, y), r, f, kleur)
+        y += lh
+
+
+def pin_sjabloon(naam, plan, fotos, n_ideeen=None, W=1000, H=1500):
+    """Vult een Nova-sjabloon. Geeft None als het sjabloon er niet is."""
+    sj = SJABLONEN.get(naam)
+    if not sj or len(fotos) < 4:
+        return None
+    pad = os.path.join(B, sj['bestand'])
+    if not os.path.exists(pad):
+        return None
+    img = Image.open(pad).convert('RGBA')
+    titel = plan.get('pin_titel') or plan.get('titel', '')
+    goud_deel = plan.get('pin_titel_goud') or plan.get('titel_goud')
+    wit_deel = plan.get('pin_titel_wit') or plan.get('titel_wit')
+    if not goud_deel:
+        w = titel.split()
+        goud_deel, wit_deel = (w[0], ' '.join(w[1:])) if len(w) > 1 else (titel, '')
+    x0, y0, x1, y1 = sj['titel']
+    bw = x1 - x0 - 60
+    g1 = 80
+    while breedte(goud_deel, font('kop', g1)) > bw and g1 > 30:
+        g1 -= 2
+    g2 = int(g1 * 0.7)
+    while wit_deel and breedte(wit_deel, font('kop', g2)) > bw and g2 > 20:
+        g2 -= 2
+    tot = g1 * 1.05 + (g2 * 1.1 if wit_deel else 0)
+    y = y0 + (y1 - y0 - tot) / 2 - 8
+    schrijf(img, (x0 + (x1 - x0 - breedte(goud_deel, font('kop', g1))) / 2, y), goud_deel, font('kop', g1), (176, 120, 34))
+    if wit_deel:
+        y += g1 * 1.05
+        schrijf(img, (x0 + (x1 - x0 - breedte(wit_deel, font('kop', g2))) / 2, y), wit_deel, font('kop', g2), DONKER)
+    sub = plan.get('pin_sub') or plan.get('subtitel', '')
+    if sub:
+        _zet_midden(img, sj['sub'], sub, 'kop', 40, DONKER)
+    for f, (a, b, c, d) in zip(fotos, sj['vakken']):
+        bw, bh = c - a, d - b
+        p = int(min(bw, bh) * 0.08)
+        k = f.copy(); k.thumbnail((bw - 2 * p, bh - 2 * p), Image.LANCZOS)
+        img.paste(k, (a + (bw - k.width) // 2, b + (bh - k.height) // 2))
+    _zet_midden(img, sj['knop'], _knoptekst(plan, n_ideeen), 'Bold', 46, DONKER)
+    return img.convert('RGB').resize((W, H), Image.LANCZOS)
 
 
 # ---------------- reel (spanning: raadsel -> aftellen -> nummer 1) ----------------
