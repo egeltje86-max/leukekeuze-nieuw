@@ -175,6 +175,19 @@ def goud_tekst(t, f, maxb, afstand=1.08):
 
 
 def goud_knop(t, f, pad_x, pad_y, pijl=False):
+    if heeft_kit():
+        w = int(breedte(t, f) + 2 * pad_x + (f.size * 1.6 if pijl else 0))
+        h = int(f.size * 1.32 + 2 * pad_y)
+        sc = h / 120.0
+        laag, m = kit_vak('knop' if pijl else 'knop-zonder', w, h, sc)
+        if laag is not None:
+            x = m + pad_x
+            schrijf(laag, (x, m + pad_y + f.size * 0.02), t, f, DONKER)
+            return laag
+    return _goud_knop_getekend(t, f, pad_x, pad_y, pijl)
+
+
+def _goud_knop_getekend(t, f, pad_x, pad_y, pijl=False):
     """Gouden pil-knop met donkerblauwe tekst en glans."""
     tt = t + ('  ›' if pijl else '')
     w = int(breedte(tt, f) + 2 * pad_x)
@@ -381,6 +394,27 @@ def achtergrond(W, H, szn='kerst', zaad=1):
 # ---------------- bouwstenen ----------------
 
 def kaart_laag(foto, bw, bh, zoom=1.0, marge=0.07):
+    if heeft_kit():
+        bw, bh = int(bw), int(bh)
+        laag, m = kit_vak('kaart', bw, bh, min(bw, bh) / 380.0)
+        if laag is not None:
+            if foto is not None:
+                rand = int(min(bw, bh) * 0.05)
+                p = int(min(bw, bh) * marge) + rand
+                f = foto.copy()
+                f.thumbnail((bw - 2 * p, bh - 2 * p), Image.LANCZOS)
+                if zoom != 1:
+                    f = f.resize((int(f.width * zoom), int(f.height * zoom)), Image.BILINEAR)
+                    mx, my = bw - 2 * rand, bh - 2 * rand
+                    if f.width > mx or f.height > my:
+                        f = f.crop(((f.width - min(f.width, mx)) // 2, (f.height - min(f.height, my)) // 2,
+                                    (f.width + min(f.width, mx)) // 2, (f.height + min(f.height, my)) // 2))
+                laag.paste(f.convert('RGBA'), (m + (bw - f.width) // 2, m + (bh - f.height) // 2))
+            return laag, m
+    return _kaart_getekend(foto, bw, bh, zoom, marge)
+
+
+def _kaart_getekend(foto, bw, bh, zoom=1.0, marge=0.07):
     """Witte productkaart met dunne gouden rand en zachte schaduw. Geeft (laag, rand) terug."""
     bw, bh = int(bw), int(bh)
     r = int(min(bw, bh) * 0.06)
@@ -421,6 +455,15 @@ def plak_kaart(img, foto, x, y, bw, bh, zoom=1.0):
 
 
 def logo_voet(W, s):
+    k = _kit('voet')
+    if k:
+        im = k[0]
+        sc = W * 0.66 / im.width
+        return im.resize((int(im.width * sc), int(im.height * sc)), Image.LANCZOS)
+    return _logo_voet_getekend(W, s)
+
+
+def _logo_voet_getekend(W, s):
     """Gouden cadeau-icoon + leukekeuze.nl met gouden lijntjes ernaast (zoals Nova-sjabloon)."""
     ico = cadeau_icoon(int(62 * s))
     f = font('Bold', 46 * s)
@@ -468,6 +511,11 @@ def cadeau_icoon(h, kleur=None):
 
 
 def icoon_met_lijnen(W, s, h=None):
+    k = _kit('top')
+    if k:
+        im = k[0]
+        sc = (h or 86 * s) / 95.0
+        return im.resize((int(im.width * sc), int(im.height * sc)), Image.LANCZOS)
     ico = cadeau_icoon(int(h or 86 * s))
     lijn = int(150 * s)
     laag = Image.new('RGBA', (ico.width + 2 * (lijn + int(26 * s)), ico.height), (0, 0, 0, 0))
@@ -480,6 +528,42 @@ def icoon_met_lijnen(W, s, h=None):
 
 
 def creme_vak(goud_deel, rest, W, s, maxb, g1=None, klein=''):
+    if heeft_kit():
+        return _creme_kit(goud_deel, rest, W, s, maxb, g1, klein)
+    return _creme_getekend(goud_deel, rest, W, s, maxb, g1, klein)
+
+
+def _creme_kit(goud_deel, rest, W, s, maxb, g1=None, klein=''):
+    bw = int(maxb)
+    binnen = bw - int(90 * s)
+    g1 = int(g1 or 96 * s)
+    while goud_deel and breedte(goud_deel, font('kop', g1)) > binnen and g1 > 24:
+        g1 -= 2
+    g2 = int(g1 * 0.7)
+    r2 = regels(rest, font('kop', g2), binnen) if rest else []
+    while rest and len(r2) > 2 and g2 > 18:
+        g2 -= 2; r2 = regels(rest, font('kop', g2), binnen)
+    fk = font('Medium', max(14, int(min(g2 * 0.55, 40 * s))))
+    rk = regels(klein, fk, binnen) if klein else []
+    th = (g1 * 1.08 if goud_deel else 0) + len(r2) * g2 * 1.1 + len(rk) * fk.size * 1.25
+    hoogte = int(th + 70 * s)
+    laag, m = kit_vak('titel', bw, hoogte, W / 1024)
+    y = m + (hoogte - th) / 2 - 4 * s
+    if goud_deel:
+        f = font('kop', g1)
+        schrijf(laag, ((laag.width - breedte(goud_deel, f)) / 2, y - g1 * 0.1), goud_deel, f, (176, 120, 34))
+        y += g1 * 1.08
+    for r in r2:
+        f = font('kop', g2)
+        schrijf(laag, ((laag.width - breedte(r, f)) / 2, y - g2 * 0.12), r, f, DONKER)
+        y += g2 * 1.1
+    for r in rk:
+        schrijf(laag, ((laag.width - breedte(r, fk)) / 2, y), r, fk, (92, 80, 62))
+        y += fk.size * 1.25
+    return laag
+
+
+def _creme_getekend(goud_deel, rest, W, s, maxb, g1=None, klein=''):
     """Crèmekleurig titelvak met gouden rand en gloed; eerste deel in donkergoud, rest in marine."""
     bw = int(maxb)
     binnen = bw - int(70 * s)
@@ -522,6 +606,130 @@ def creme_vak(goud_deel, rest, W, s, maxb, g1=None, klein=''):
     return laag
 
 
+# ---------------- Universeel Nova-sjabloon: onderdelen uitknippen en hergebruiken ----------------
+# Uit sjabloon-pin-kerst.png (1024 x 1536) knippen we de gouden onderdelen. Ze zijn niet aan een seizoen
+# gebonden en worden met '9-slice' (hoeken vast, randen rekken) op elke maat gezet, op Nova's achtergronden.
+KIT_BRON = 'sjabloon-pin-kerst.png'
+KIT_DELEN = {   # naam: (crop-box, hoek-inzet links/boven/rechts/onder, glow-marge)
+    'titel': ((100, 128, 925, 332), (90, 70, 90, 70), 14),
+    'lint':  ((168, 306, 856, 412), (60, 48, 60, 48), 10),
+    'knop':  ((170, 1212, 856, 1358), (80, 62, 150, 62), 12),
+    'kaart': ((78, 418, 522, 822), (64, 64, 64, 64), 14),
+    'voet':  ((175, 1384, 855, 1474), (0, 0, 0, 0), 0),
+    'top':   ((380, 14, 648, 130), (0, 0, 0, 0), 0),
+}
+_KIT = {}
+
+
+def _kit(naam):
+    if naam in _KIT:
+        return _KIT[naam]
+    pad = os.path.join(B, KIT_BRON)
+    if not os.path.exists(pad):
+        _KIT[naam] = None
+        return None
+    T = Image.open(pad).convert('RGB')
+    box, inzet, m = KIT_DELEN[naam]
+    im = T.crop(box).convert('RGBA')
+    w, h = im.size
+    if naam == 'knop':  # versie zonder pijltje (voor prijzen): linkerhelft spiegelen
+        z = im.copy()
+        links = z.crop((0, 0, w // 2, h))
+        z.paste(links.transpose(Image.FLIP_LEFT_RIGHT), (w - w // 2, 0))
+        _KIT['knop-zonder'] = (_masker(z, m, naam), (inzet[0], inzet[1], inzet[0], inzet[3]), m)
+    _KIT[naam] = (_masker(im, m, naam), inzet, m)
+    return _KIT[naam]
+
+
+def _masker(im, m, naam):
+    """Masker = het heldere stuk (vak + gouden rand) dat het midden raakt, iets verbreed voor de gloed."""
+    try:
+        import numpy as np
+        from scipy import ndimage
+    except Exception:
+        np = None
+    w, h = im.size
+    if np is None:
+        a = Image.new('L', (w, h), 0)
+        ImageDraw.Draw(a).rounded_rectangle((m, m, w - m, h - m), radius=int(min(w, h) * 0.12), fill=255)
+        a = a.filter(ImageFilter.GaussianBlur(3))
+    else:
+        arr = np.array(im.convert('RGB')).astype(int)
+        lum = arr.mean(axis=2)
+        if naam in ('voet', 'top'):
+            r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
+            goud = (r > 150) & (r - b > 70) & (g > 90)
+            wit = (arr.min(axis=2) > 190)
+            vorm = goud | wit
+            # alleen de grote, zuivere vormen in het midden houden (geen sneeuw/lichtjes aan de randen)
+            lab, n = ndimage.label(ndimage.binary_dilation(vorm, iterations=3))
+            houd = np.zeros_like(vorm)
+            for i, sl in enumerate(ndimage.find_objects(lab), 1):
+                hh = sl[0].stop - sl[0].start; ww = sl[1].stop - sl[1].start
+                cx = (sl[1].start + sl[1].stop) / 2
+                if (hh > h * 0.25 or ww > w * 0.12) and w * 0.03 < cx < w * 0.97:
+                    houd |= (lab == i)
+            vorm = vorm & houd
+            vorm = ndimage.binary_dilation(vorm, iterations=1)
+            kern = Image.fromarray((vorm * 255).astype('uint8')).filter(ImageFilter.GaussianBlur(1))
+            # schoon opnieuw opbouwen: gouden/witte pixels op transparant, met zachte gloed
+            schoon = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+            gl = Image.new('RGBA', (w, h), (255, 196, 100, 255))
+            gl.putalpha(kern.filter(ImageFilter.GaussianBlur(6)).point(lambda v: int(v * 0.55)))
+            schoon.alpha_composite(gl)
+            vl = im.convert('RGBA'); vl.putalpha(kern)
+            schoon.alpha_composite(vl)
+            return schoon
+        else:
+            helder = lum > 120
+            lab, n = ndimage.label(helder)
+            mid = lab[h // 2, w // 2]
+            vorm = (lab == mid) if mid else helder
+            vorm = ndimage.binary_fill_holes(vorm)
+            vorm = ndimage.binary_dilation(vorm, iterations=max(2, int(m * 0.45)))
+            a = Image.fromarray((vorm * 255).astype('uint8')).filter(ImageFilter.GaussianBlur(max(2, m * 0.3)))
+    im = im.copy(); im.putalpha(a)
+    return im
+
+def _negen(im, inzet, W, H):
+    """9-slice: hoeken blijven gelijk, randen en midden rekken mee."""
+    l, t_, r, b = inzet
+    w, h = im.size
+    W, H = max(int(W), l + r + 2), max(int(H), t_ + b + 2)
+    uit = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    xs = [(0, l, 0, l), (l, w - r, l, W - r), (w - r, w, W - r, W)]
+    ys = [(0, t_, 0, t_), (t_, h - b, t_, H - b), (h - b, h, H - b, H)]
+    for sx0, sx1, dx0, dx1 in xs:
+        for sy0, sy1, dy0, dy1 in ys:
+            if sx1 <= sx0 or sy1 <= sy0 or dx1 <= dx0 or dy1 <= dy0:
+                continue
+            stuk = im.crop((sx0, sy0, sx1, sy1)).resize((dx1 - dx0, dy1 - dy0), Image.LANCZOS)
+            uit.paste(stuk, (dx0, dy0))
+    return uit
+
+
+def kit_vak(naam, W, H, schaal):
+    """Onderdeel op maat (W x H = binnenmaat zonder gloed), geschaald met 'schaal'. Geeft (laag, marge)."""
+    k = _kit(naam) if naam != 'knop-zonder' else (_kit('knop') and _KIT.get('knop-zonder'))
+    if not k:
+        return None, 0
+    im, inzet, m = k
+    sc = schaal
+    im2 = im.resize((max(1, int(im.width * sc)), max(1, int(im.height * sc))), Image.LANCZOS)
+    inz = tuple(int(v * sc) for v in inzet)
+    mm = int(m * sc)
+    # niet kleiner dan de hoeken toelaten
+    while (W + 2 * mm < inz[0] + inz[2] + 4 or H + 2 * mm < inz[1] + inz[3] + 4) and sc > 0.25:
+        sc *= 0.9
+        im2 = im.resize((max(1, int(im.width * sc)), max(1, int(im.height * sc))), Image.LANCZOS)
+        inz = tuple(int(v * sc) for v in inzet); mm = int(m * sc)
+    return _negen(im2, inz, W + 2 * mm, H + 2 * mm), mm
+
+
+def heeft_kit():
+    return _kit('titel') is not None
+
+
 def plak(img, laag, cx, y):
     """Laag horizontaal gecentreerd op cx plakken met bovenkant op y; geeft onderkant terug."""
     img.paste(laag, (int(cx - laag.width / 2), int(y)), laag)
@@ -555,6 +763,14 @@ def titel_lagen(plan, W, s, maxb, max_h):
     return [creme_vak(g, w, W, s, maxb, int(40 * s))]
 
 def ondertitel_lint(t, W, s, maxb):
+    if heeft_kit():
+        f = font('kop', 40 * s)
+        while breedte(t, f) > maxb - 120 * s and f.size > 18:
+            f = font('kop', f.size - 2)
+        w = int(breedte(t, f) + 120 * s); h = int(f.size * 1.3 + 30 * s)
+        laag, m = kit_vak('lint', w, h, h / 82.0)
+        schrijf(laag, ((laag.width - breedte(t, f)) / 2, m + (h - f.size * 1.3) / 2 - f.size * 0.04), t, f, DONKER)
+        return laag
     f = font('kop', 40 * s)
     while breedte(t, f) > maxb - 80 * s and f.size > 20:
         f = font('kop', f.size - 2)
