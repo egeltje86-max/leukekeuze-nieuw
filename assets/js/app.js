@@ -1012,6 +1012,20 @@
           ids: ['bol-9300000273861930', 'bol-9300000152351739', 'bol-9300000240660527', 'bol-9300000183040640'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/voor-kinderen">Cadeaus voor kinderen</a> en in de gids <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>. Tip: hypes zijn rond Sinterklaas en Kerst vaak als eerste uitverkocht.' },
+    { slug: 'virale-cadeaus-2026', beeld: 'bol-9300000243481710', vakken: ['cadeaus/voor-haar', 'cadeaus/voor-hem', 'elektronica/audio', 'keuken/keukenapparaten', 'speelgoed/bouwen', 'mode-beauty/verzorging'],
+      titel: 'Virale cadeaus 2026: de hits van TikTok en Instagram', kort: 'Van de Ninja CREAMi tot LEGO-bloemen en de Bum Bum Cream: dit zie je nu overal voorbijkomen.',
+      intro: 'Je kent het vast: je scrolt door TikTok of Instagram en ziet steeds weer hetzelfde product. Sommige daarvan zijn echt een hype geworden, en dat zijn vaak precies de cadeaus waar iemand stiekem op hoopt. Ik zette de bekendste op een rij, van een lippenbalsem van een paar tientjes tot een ijsmachine. Alles van bekende merken en via bol te bestellen.',
+      delen: [
+        { kop: 'De apparaten die iedereen wil', tekst: 'Zelf ijs maken, vlees en friet tegelijk klaar, koffie die urenlang warm blijft en zachte golven in je haar.',
+          ids: ['bol-9300000267208012', 'bol-9300000228952527', 'bol-9300000272998289', 'bol-9300000239958237'] },
+        { kop: 'Muziek mee, overal', tekst: 'Kleine speakers met groot geluid en oordopjes die het lawaai om je heen wegfilteren.',
+          ids: ['bol-9300000252617200', 'bol-9300000193746659', 'bol-9300000279417145', 'bol-9300000191626158'] },
+        { kop: 'Bloemen die nooit verwelken', tekst: 'LEGO-bloemen zijn een hit bij volwassenen: rustig bouwen en daarna een mooi stuk decoratie.',
+          ids: ['bol-9300000237345401', 'bol-9300000243481710', 'bol-9300000266727644', 'bol-9300000227400233'] },
+        { kop: 'Beauty-hits van je tijdlijn', tekst: 'De lippenbalsem, lipolie en crèmes die je op TikTok steeds weer ziet. Een fijn verwencadeau.',
+          ids: ['bol-9300000197592346', 'bol-9300000060629305', 'bol-9300000259398888', 'bol-9300000163759795'] }
+      ],
+      slot: 'Zoek je iets voor kinderen en tieners? Kijk dan in de gids <a href="/gids/hypes-2026">De hypes van 2026</a>. Voor parfum is er <a href="/gids/geuren-trends-2026">Geuren die nu hot zijn</a>. Tip: virale producten zijn rond de feestdagen snel uitverkocht, dus wacht niet te lang.' },
     { slug: 'geuren-trends-2026', beeld: 'bol-9300000170836066', vakken: ['mode-beauty/geuren', 'mode-beauty', 'cadeaus/voor-haar'],
       titel: 'Geuren die nu hot zijn: ontdekkingssets, layeren en de klassiekers', kort: 'Van een proefset om te ontdekken tot de parfum die iedereen herkent.',
       intro: 'Parfum is een van de populairste cadeaus, en er gebeurt veel. Ontdekkingssets met kleine flesjes zijn in, net als "layeren": twee geuren over elkaar dragen voor je eigen mix. Daarnaast blijven de grote klassiekers het altijd goed doen. Hier staan de mooiste, voor haar en voor hem, van klein tot luxe.',
