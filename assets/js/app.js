@@ -164,15 +164,30 @@
       return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + ((q.prijs || 'alle') === p.id) + '">' + p.label + '</a>';
     }).join('') + '</div>';
   }
+  /* 2.0: filter 'Voor wie' op categoriepagina's: zelfde labels als de persoonspagina's. */
+  var VOOR_WIE = [['', 'Iedereen'], ['hem', 'Hem'], ['haar', 'Haar'], ['kinderen', 'Kinderen'], ['tieners', 'Tieners'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega'], ['baby', 'Baby']];
+  function voorChips(pad, q) {
+    return '<div class="chips voor-chips" role="group" aria-label="Voor wie">' + VOOR_WIE.map(function (v) {
+      var nq = Object.assign({}, q, { voor: v[0] });
+      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + ((q.voor || '') === v[0]) + '">' + v[1] + '</a>';
+    }).join('') + '</div>';
+  }
+  function voorFilter(p, voor) {
+    if (!voor) return true;
+    var pe = window.LK_PERSOON(voor); if (!pe) return true;
+    return (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) || (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
+  }
   /* Mobiel: knop 'Filter & sorteren' die onderin blijft staan als de werkbalk uit beeld is.
      Tik je erop, dan schuift een paneel omhoog met de budgetknoppen (en sortering). Wens van Marius, 24-10-2026. */
   function filterPaneel(pad, q, sorteerOpties) {
-    var aantalFilters = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.sort && q.sort !== 'aanbevolen' ? 1 : 0);
+    var aantalFilters = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.sort && q.sort !== 'aanbevolen' ? 1 : 0) + (q.voor ? 1 : 0);
+    var metVoor = pad.indexOf('/c/') === 0 && pad.indexOf('/c/christelijk') !== 0;
     return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filter &amp; sorteren' +
         (aantalFilters ? ' <span class="filter-teller">' + aantalFilters + '</span>' : '') + '</button>' +
       '<div class="filterpaneel" data-filterpaneel hidden><button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
         '<div class="filter-blad" role="dialog" aria-modal="true" aria-label="Filter en sorteren">' +
           '<div class="filter-kop"><strong>Filter &amp; sorteren</strong><button type="button" class="filter-sluit" data-filter-dicht aria-label="Sluiten">' + ic('sluit') + '</button></div>' +
+          (metVoor ? '<h3>Voor wie</h3>' + voorChips(pad, q).replace('class="chips voor-chips"', 'class="chips filter-chips"') : '') +
           '<h3>Budget</h3>' + prijsChips(pad, q).replace('class="chips"', 'class="chips filter-chips"') +
           (sorteerOpties ? '<h3>Sorteren</h3><div class="chips filter-chips">' + sorteerOpties.map(function (o) {
             return '<a class="chip" href="' + maakAdres(pad, Object.assign({}, q, { sort: o[0] === 'aanbevolen' ? '' : o[0] })) + '" aria-pressed="' + ((q.sort || 'aanbevolen') === o[0]) + '">' + o[1] + '</a>';
@@ -365,11 +380,12 @@
     var gids = (s ? s.gids : c.gids) || T.gids;
 
     var pad = '/c/' + c.slug + (s ? '/' + s.slug : '');
-    var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs); });
+    var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs) && voorFilter(p, q.voor); });
     lijst = sorteer(lijst, q.sort);
+    if (!q.sort || q.sort === 'aanbevolen') lijst = sfeerEerst(lijst);
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
-    var metBudget = function (adres) { return q.prijs && q.prijs !== 'alle' ? maakAdres(adres, { prijs: q.prijs }) : adres; };
+    var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; if (q.voor) nq.voor = q.voor; return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
     var subs = '<div class="subkaarten">' +
       '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
       volleSubs(c).map(function (x) {
@@ -379,14 +395,14 @@
       }).join('') + '</div>';
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
-    var werkbalk = '<div class="werkbalk">' + prijsChips(pad, q) +
+    var werkbalk = '<div class="werkbalk">' + (c.slug !== 'christelijk' ? voorChips(pad, q) : '') + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
 
-    var leeg = leegBlok(q.prijs && q.prijs !== 'alle' ? 'Niets in dit budget' : 'Hier komen binnenkort mooie producten',
-      q.prijs && q.prijs !== 'alle' ? 'Kies een ander budget of bekijk alles.' : 'We zijn deze categorie nog aan het vullen. Kijk alvast verder:',
+    var leeg = leegBlok((q.prijs && q.prijs !== 'alle') || q.voor ? 'Niets met deze keuze' : 'Hier komen binnenkort mooie producten',
+      (q.prijs && q.prijs !== 'alle') || q.voor ? 'Kies een ander budget of een andere persoon, of bekijk alles.' : 'We zijn deze categorie nog aan het vullen. Kijk alvast verder:',
       '<a class="knop knop-rand" href="/c/cadeaus">Alle cadeaus</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
     var anderen = CATS.filter(function (x) { return x.slug !== c.slug; });

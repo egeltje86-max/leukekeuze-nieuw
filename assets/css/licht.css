@@ -181,3 +181,5 @@ body { background: var(--bg); color: var(--tekst); }
 .verder-knop small { display: block; font: 500 12.5px/1.2 var(--f-ui); color: var(--tekst-3); margin-top: 2px; }
 .verder-knop .pijl { width: 18px; height: 18px; color: var(--tekst-3); }
 .verder-knop:hover { border-color: var(--goud); }
+.werkbalk .voor-chips { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--lijn-zacht); }
+.werkbalk .voor-chips .chip { font-size: 12.5px; padding: 8px 13px; }
