@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reelstudio – LeukeKeuze</title>
+<style>
+:root{--bg:#0b0f1a;--paneel:#121829;--paneel2:#182036;--lijn:#26304a;--tekst:#eef1f7;--zacht:#a8b0c4;--goud:#d9b25f;--goud2:#f0d38f;--groen:#3fb37f;--rood:#e0665c}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--tekst);font:16px/1.5 "Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+button{font:inherit;cursor:pointer}
+.top{position:sticky;top:0;z-index:5;background:rgba(11,15,26,.96);border-bottom:1px solid var(--lijn)}
+.top-in{max-width:1400px;margin:0 auto;padding:12px 16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.logo{font-family:Georgia,serif;font-size:22px;white-space:nowrap}.logo b{color:var(--goud)}.logo small{font-family:inherit;color:var(--zacht);font-size:13px;margin-left:6px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;flex:1}.tab{background:transparent;border:1px solid var(--lijn);color:var(--zacht);padding:8px 14px;border-radius:99px}.tab.aan{background:var(--goud);color:#111;border-color:var(--goud);font-weight:600}
+.teller{color:var(--goud2);font-weight:700}
+main{max-width:1400px;margin:0 auto;padding:18px 16px 60px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(330px,1fr) 300px;gap:20px}
+@media(max-width:1150px){main{grid-template-columns:minmax(0,1fr) minmax(320px,1fr)}.voorbeeld{grid-column:1/-1}}
+@media(max-width:760px){main{grid-template-columns:1fr}}
+.blok{background:var(--paneel);border:1px solid var(--lijn);border-radius:18px;padding:18px}
+h2{font-family:Georgia,serif;font-weight:500;color:var(--goud2);margin:0 0 6px;font-size:21px}
+.uitleg{color:var(--zacht);font-size:14px;margin:0 0 12px}
+.raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.kand{position:relative;background:var(--paneel2);border:2px solid var(--lijn);border-radius:14px;overflow:hidden;padding:0;text-align:left;color:inherit}
+.kand:hover{border-color:var(--goud)}.kand.gekozen{border-color:var(--goud);box-shadow:0 0 0 3px rgba(217,178,95,.35)}
+.kand .f{background:#fff;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}.kand .f img{width:100%;height:100%;object-fit:contain}
+.kand.sf .f img{object-fit:cover}
+.kand .t{padding:8px 10px}.kand .n{font-size:13px;line-height:1.3;height:34px;overflow:hidden}.kand .p{color:var(--goud2);font-weight:700;font-size:14px}
+.badge{position:absolute;top:8px;left:8px;background:var(--goud);color:#111;font-weight:800;border-radius:99px;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.sfeer{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#ffd9a0;font-size:11px;border-radius:99px;padding:2px 8px}
+.keus{display:flex;flex-direction:column;gap:10px}
+.rij{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:start;background:var(--paneel2);border:1px solid var(--lijn);border-radius:12px;padding:8px;cursor:pointer}
+.rij.actief{border-color:var(--goud)}
+.rij img{width:56px;height:56px;object-fit:contain;background:#fff;border-radius:8px}
+.rij .nr{font-family:Georgia,serif;color:var(--goud2);font-size:14px}
+.rij input{width:100%;background:var(--bg);color:var(--tekst);border:1px solid var(--lijn);border-radius:8px;padding:5px 8px;font:inherit;font-size:14px;margin-top:3px}
+.rij .knop{display:flex;flex-direction:column;gap:4px}
+.mk{background:var(--paneel);border:1px solid var(--lijn);color:var(--zacht);border-radius:8px;width:34px;height:30px;padding:0}
+.mk:hover{color:var(--goud2);border-color:var(--goud)}
+.eerst{border:1px solid var(--goud);background:linear-gradient(90deg,rgba(217,178,95,.18),transparent)}
+label.kop{display:block;font-size:12px;color:var(--zacht);margin:12px 0 4px;text-transform:uppercase;letter-spacing:.06em}
+select,input[type=text],textarea{width:100%;background:var(--paneel2);color:var(--tekst);border:1px solid var(--lijn);border-radius:10px;padding:9px 11px;font:inherit}
+textarea{min-height:70px;resize:vertical}
+.groot{display:flex;gap:8px;align-items:center;justify-content:center;width:100%;background:var(--goud);color:#111;border:0;border-radius:12px;padding:14px 18px;font-weight:700;font-size:17px;margin-top:14px}
+.groot:disabled{opacity:.4;cursor:default}
+.stil{background:transparent;border:1px solid var(--lijn);color:var(--zacht);border-radius:10px;padding:9px 12px;width:100%;margin-top:8px}
+.telefoon{position:relative;width:100%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:3px solid #222;background:#000}
+.telefoon img.bg{position:absolute;inset:0;width:100%;height:100%}
+.telefoon .vak{position:absolute;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff}
+.telefoon .vak img{max-width:88%;max-height:88%;object-fit:contain}
+.telefoon .vak.sf img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:cover}
+.telefoon .txt{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#1b2440;line-height:1.1;padding:0 6%}
+.telefoon .txt b{font-family:Georgia,serif;font-weight:500;font-size:clamp(11px,1.35vw,17px)}
+.telefoon .txt i{font-style:normal;font-size:clamp(8px,.8vw,11px);color:#5c503e;margin-top:2px}
+.telefoon .prijsv{font-weight:800;font-size:clamp(10px,1.1vw,15px)}
+.telefoon .nrv{position:absolute;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;color:#1b2440;font-size:clamp(11px,1.2vw,16px)}
+.melding{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--goud);color:#111;padding:10px 18px;border-radius:99px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}.melding.zie{opacity:1}
+.leeg{color:var(--zacht);font-size:14px;padding:16px;text-align:center;border:1px dashed var(--lijn);border-radius:12px}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+  <div class="logo">Leuke<b>Keuze</b> <small>Reelstudio</small></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="teller" id="teller"></div>
+</div></div>
+<main>
+  <section class="blok">
+    <h2 id="themaNaam"></h2>
+    <p class="uitleg" id="themaUitleg"></p>
+    <p class="uitleg">Klik op de cadeaus die jij het mooist vindt (3 tot 7). Klik nog een keer om er een weg te halen. <b>De eerste die je kiest wordt nummer 1</b>; de volgorde pas je rechts aan.</p>
+    <div class="raster" id="raster"></div>
+  </section>
+  <section class="blok">
+    <h2>Jouw reel</h2>
+    <p class="uitleg">Nummer 1 is de topper: die komt als laatste in beeld, na "En nummer 1 is…". Met de pijltjes verander je de volgorde. De korte naam en het zinnetje staan in de reel.</p>
+    <div class="keus" id="keus"></div>
+    <label class="kop" for="szn">Achtergrond</label>
+    <select id="szn"></select>
+    <label class="kop" for="pov">Openingszin (bovenaan, eerste 2 seconden)</label>
+    <input type="text" id="pov">
+    <label class="kop" for="hook">Knop onder de opening</label>
+    <input type="text" id="hook">
+    <label class="kop" for="eind">Vraag aan het eind</label>
+    <input type="text" id="eind">
+    <label class="kop" for="opm">Opmerking voor Claude (optioneel)</label>
+    <textarea id="opm" placeholder="Bijv. maak hem rustiger, of: liever een andere tekst bij nummer 1"></textarea>
+    <button class="groot" id="opslaan">💾 Opslaan en naar Claude sturen</button>
+    <button class="stil" id="wis">Opnieuw beginnen met dit thema</button>
+  </section>
+  <section class="blok voorbeeld">
+    <h2>Zo ziet het eruit</h2>
+    <p class="uitleg">Klik rechts op een cadeau om het hier te zien.</p>
+    <div class="telefoon" id="tel"></div>
+  </section>
+</main>
+<div class="melding" id="melding"></div>
+<script src="sjablonen.js"></script>
+<script src="reel-voorstel.js"></script>
+<script>
+(function(){
+var V = window.RS_VOORSTEL || {themas: []}, SJ = window.RS_SJABLONEN || {};
+var SLEUTEL = 'rs-' + (V.id || 'voorstel');
+var D = lees(), ti = D.ti || 0, actief = 0;
+function lees(){ try { return JSON.parse(localStorage.getItem(SLEUTEL)) || {}; } catch(e){ return {}; } }
+function bewaar(){ D.ti = ti; try { localStorage.setItem(SLEUTEL, JSON.stringify(D)); } catch(e){} }
+function esc(t){ return String(t == null ? '' : t).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function euro(n){ return '€ ' + Number(n).toFixed(2).replace('.', ','); }
+function melding(t){ var m = document.getElementById('melding'); m.textContent = t; m.classList.add('zie'); clearTimeout(melding.t); melding.t = setTimeout(function(){ m.classList.remove('zie'); }, 1800); }
+function T(){ return V.themas[ti]; }
+function staat(){
+  var t = T(); D[t.id] = D[t.id] || { keus: [], tekst: {}, szn: t.seizoen || 'sint', pov: t.pov || '', hook: t.hook || '', eind: t.eindvraag || '', opm: '' };
+  return D[t.id];
+}
+function kand(id){ return T().kandidaten.find(function(k){ return k.id === id; }); }
+function kortNaam(k){ var s = staat(); return (s.tekst[k.id] && s.tekst[k.id].naam != null) ? s.tekst[k.id].naam : (k.kort || k.naam); }
+function regel(k){ var s = staat(); return (s.tekst[k.id] && s.tekst[k.id].regel != null) ? s.tekst[k.id].regel : (k.regel || ''); }
+function tabs(){
+  document.getElementById('tabs').innerHTML = V.themas.map(function(t, i){ return '<button class="tab' + (i === ti ? ' aan' : '') + '" data-i="' + i + '">' + esc(t.naam) + '</button>'; }).join('');
+}
+function teken(){
+  var t = T(), s = staat();
+  if (!t){ document.getElementById('raster').innerHTML = '<div class="leeg">Er staat nog geen voorstel klaar. Vraag Claude om een voorstel.</div>'; return; }
+  tabs();
+  document.getElementById('themaNaam').textContent = t.naam;
+  document.getElementById('themaUitleg').textContent = t.uitleg || '';
+  document.getElementById('teller').textContent = s.keus.length + ' van 7 gekozen';
+  document.getElementById('raster').innerHTML = t.kandidaten.map(function(k){
+    var n = s.keus.indexOf(k.id);
+    return '<button class="kand' + (n > -1 ? ' gekozen' : '') + (k.sfeer ? ' sf' : '') + '" data-id="' + k.id + '"><div class="f"><img src="' + esc(k.foto) + '" alt=""></div>' +
+      (n > -1 ? '<span class="badge">#' + (n + 1) + '</span>' : '') + (k.sfeer ? '<span class="sfeer">sfeerfoto</span>' : '') +
+      '<div class="t"><div class="n">' + esc(k.naam) + '</div><div class="p">' + euro(k.prijs) + '</div></div></button>';
+  }).join('');
+  document.getElementById('keus').innerHTML = s.keus.length ? s.keus.map(function(id, i){
+    var k = kand(id); if (!k) return '';
+    return '<div class="rij' + (i === 0 ? ' eerst' : '') + (i === actief ? ' actief' : '') + '" data-i="' + i + '"><img src="' + esc(k.foto) + '" alt="">' +
+      '<div><div class="nr">#' + (i + 1) + (i === 0 ? ' · de topper' : '') + ' · ' + euro(k.prijs) + '</div>' +
+      '<input type="text" data-veld="naam" data-id="' + id + '" value="' + esc(kortNaam(k)) + '" maxlength="32" title="Korte naam in de reel">' +
+      '<input type="text" data-veld="regel" data-id="' + id + '" value="' + esc(regel(k)) + '" maxlength="60" placeholder="Zinnetje eronder" title="Zinnetje eronder"></div>' +
+      '<div class="knop"><button class="mk" data-op="op" data-i="' + i + '" title="Hoger">▲</button><button class="mk" data-op="neer" data-i="' + i + '" title="Lager">▼</button><button class="mk" data-op="weg" data-i="' + i + '" title="Weghalen">✕</button></div></div>';
+  }).join('') : '<div class="leeg">Nog niets gekozen. Klik links op een cadeau.</div>';
+  var sel = document.getElementById('szn');
+  sel.innerHTML = Object.keys(SJ).map(function(k){ return '<option value="' + k + '"' + (k === s.szn ? ' selected' : '') + '>' + esc(SJ[k].naam) + '</option>'; }).join('');
+  ['pov','hook','eind','opm'].forEach(function(f){ var el = document.getElementById(f); if (document.activeElement !== el) el.value = s[f] || ''; });
+  document.getElementById('opslaan').disabled = s.keus.length < 3;
+  voorbeeld();
+}
+function pos(el, b){ el.style.left = b[0]*100 + '%'; el.style.top = b[1]*100 + '%'; el.style.width = (b[2]-b[0])*100 + '%'; el.style.height = (b[3]-b[1])*100 + '%'; }
+function voorbeeld(){
+  var s = staat(), sj = SJ[s.szn], tel = document.getElementById('tel');
+  if (!sj){ tel.innerHTML = ''; return; }
+  var id = s.keus[actief] || s.keus[0], k = id && kand(id);
+  var h = '<img class="bg" src="' + esc(sj.bestand) + '" alt="">';
+  tel.innerHTML = h;
+  if (sj.wit){ var v = document.createElement('div'); v.className = 'vak' + (k && k.sfeer ? ' sf' : ''); pos(v, sj.wit);
+    v.innerHTML = k ? '<img src="' + esc(k.foto) + '" alt="">' : '<span style="color:#b9a27a;font-family:Georgia;font-size:40px">?</span>'; tel.appendChild(v);
+    if (sj.vorm){ v.style.background = 'transparent'; } }
+  if (sj.creme){ var c = document.createElement('div'); c.className = 'txt'; pos(c, sj.creme);
+    c.innerHTML = k ? '<b>' + esc(kortNaam(k)) + '</b><i>' + esc(regel(k)) + '</i>' : '<b>' + esc(s.pov) + '</b>'; tel.appendChild(c); }
+  if (sj.knop){ var p = document.createElement('div'); p.className = 'txt prijsv'; pos(p, sj.knop); p.textContent = k ? euro(k.prijs) : (s.hook || ''); tel.appendChild(p); }
+  if (sj.rond && k){ var r = document.createElement('div'); r.className = 'nrv'; pos(r, sj.rond); r.textContent = '#' + (s.keus.indexOf(k.id) + 1); tel.appendChild(r); }
+}
+document.getElementById('tabs').addEventListener('click', function(e){ var b = e.target.closest('.tab'); if (!b) return; ti = +b.dataset.i; actief = 0; bewaar(); teken(); });
+document.getElementById('raster').addEventListener('click', function(e){
+  var b = e.target.closest('.kand'); if (!b) return; var s = staat(), id = b.dataset.id, n = s.keus.indexOf(id);
+  if (n > -1){ s.keus.splice(n, 1); melding('Weggehaald'); }
+  else if (s.keus.length >= 7){ melding('Je hebt er al 7. Haal er eerst een weg.'); return; }
+  else { s.keus.push(id); actief = s.keus.length - 1; melding('Gekozen als #' + s.keus.length); }
+  bewaar(); teken();
+});
+document.getElementById('keus').addEventListener('click', function(e){
+  var s = staat(), b = e.target.closest('.mk');
+  if (b){ var i = +b.dataset.i, op = b.dataset.op;
+    if (op === 'weg'){ s.keus.splice(i, 1); actief = 0; }
+    if (op === 'op' && i > 0){ s.keus.splice(i - 1, 0, s.keus.splice(i, 1)[0]); actief = i - 1; }
+    if (op === 'neer' && i < s.keus.length - 1){ s.keus.splice(i + 1, 0, s.keus.splice(i, 1)[0]); actief = i + 1; }
+    bewaar(); teken(); return; }
+  var r = e.target.closest('.rij'); if (r && e.target.tagName !== 'INPUT'){ actief = +r.dataset.i; teken(); }
+});
+document.getElementById('keus').addEventListener('input', function(e){
+  var el = e.target; if (!el.dataset.veld) return; var s = staat();
+  s.tekst[el.dataset.id] = s.tekst[el.dataset.id] || {}; s.tekst[el.dataset.id][el.dataset.veld] = el.value; bewaar(); voorbeeld();
+});
+['pov','hook','eind','opm'].forEach(function(f){ document.getElementById(f).addEventListener('input', function(){ staat()[f] = this.value; bewaar(); voorbeeld(); }); });
+document.getElementById('szn').addEventListener('change', function(){ staat().szn = this.value; bewaar(); voorbeeld(); });
+document.getElementById('wis').addEventListener('click', function(){ if (!confirm('Alles van dit thema wissen?')) return; delete D[T().id]; actief = 0; bewaar(); teken(); });
+document.getElementById('opslaan').addEventListener('click', function(){
+  var t = T(), s = staat();
+  var uit = { voorstel: V.id, thema: t.id, themaNaam: t.naam, gemaakt: new Date().toISOString(), achtergrond: s.szn,
+    pov: s.pov, hook: s.hook, eindvraag: s.eind, opmerking: s.opm,
+    producten: s.keus.map(function(id, i){ var k = kand(id); return { nr: i + 1, id: id, naam: kortNaam(k), regel: regel(k), prijs: k.prijs }; }) };
+  var blob = new Blob([JSON.stringify(uit, null, 1)], {type: 'application/json'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'reel-keuze-' + t.id + '-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  melding('Opgeslagen in je Downloads. Stuur het bestand naar Claude.');
+});
+teken();
+})();
+</script>
+</body>
+</html>
