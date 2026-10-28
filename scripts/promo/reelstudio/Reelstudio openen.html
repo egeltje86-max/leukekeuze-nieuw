@@ -43,16 +43,16 @@ textarea{min-height:70px;resize:vertical}
 .groot{display:flex;gap:8px;align-items:center;justify-content:center;width:100%;background:var(--goud);color:#111;border:0;border-radius:12px;padding:14px 18px;font-weight:700;font-size:17px;margin-top:14px}
 .groot:disabled{opacity:.4;cursor:default}
 .stil{background:transparent;border:1px solid var(--lijn);color:var(--zacht);border-radius:10px;padding:9px 12px;width:100%;margin-top:8px}
-.telefoon{position:relative;width:100%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:3px solid #222;background:#000}
+.telefoon{container-type:inline-size;position:relative;width:100%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:3px solid #222;background:#000}
 .telefoon img.bg{position:absolute;inset:0;width:100%;height:100%}
 .telefoon .vak{position:absolute;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff}
 .telefoon .vak img{max-width:88%;max-height:88%;object-fit:contain}
 .telefoon .vak.sf img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:cover}
-.telefoon .txt{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#1b2440;line-height:1.1;padding:0 6%}
-.telefoon .txt b{font-family:Georgia,serif;font-weight:500;font-size:clamp(11px,1.35vw,17px)}
-.telefoon .txt i{font-style:normal;font-size:clamp(8px,.8vw,11px);color:#5c503e;margin-top:2px}
-.telefoon .prijsv{font-weight:800;font-size:clamp(10px,1.1vw,15px)}
-.telefoon .nrv{position:absolute;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;color:#1b2440;font-size:clamp(11px,1.2vw,16px)}
+.telefoon .txt{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#1b2440;line-height:1.12;padding:0 7%;overflow:hidden}
+.telefoon .txt b{font-family:Georgia,serif;font-weight:500;font-size:5.4cqw;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%}
+.telefoon .txt i{font-style:normal;font-size:3.1cqw;color:#5c503e;margin-top:1px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;max-width:100%}
+.telefoon .prijsv{font-weight:800;font-size:4.8cqw;white-space:nowrap}.telefoon .prijsv.hk{font-size:3.4cqw;font-weight:700}
+.telefoon .nrv{position:absolute;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;color:#1b2440;font-size:5.5cqw}
 .melding{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--goud);color:#111;padding:10px 18px;border-radius:99px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}.melding.zie{opacity:1}
 .leeg{color:var(--zacht);font-size:14px;padding:16px;text-align:center;border:1px dashed var(--lijn);border-radius:12px}
 </style>
@@ -155,8 +155,8 @@ function voorbeeld(){
     v.innerHTML = k ? '<img src="' + esc(k.foto) + '" alt="">' : '<span style="color:#b9a27a;font-family:Georgia;font-size:40px">?</span>'; tel.appendChild(v);
     if (sj.vorm){ v.style.background = 'transparent'; } }
   if (sj.creme){ var c = document.createElement('div'); c.className = 'txt'; pos(c, sj.creme);
-    c.innerHTML = k ? '<b>' + esc(kortNaam(k)) + '</b><i>' + esc(regel(k)) + '</i>' : '<b>' + esc(s.pov) + '</b>'; tel.appendChild(c); }
-  if (sj.knop){ var p = document.createElement('div'); p.className = 'txt prijsv'; pos(p, sj.knop); p.textContent = k ? euro(k.prijs) : (s.hook || ''); tel.appendChild(p); }
+    c.innerHTML = k ? '<b>' + esc(kortNaam(k)) + '</b><i>' + esc(regel(k)) + '</i>' : '<b style="font-size:4.4cqw">' + esc(s.pov) + '</b>'; tel.appendChild(c); }
+  if (sj.knop){ var p = document.createElement('div'); p.className = 'txt prijsv' + (k ? '' : ' hk'); pos(p, sj.knop); p.textContent = k ? euro(k.prijs) : (s.hook || ''); tel.appendChild(p); }
   if (sj.rond && k){ var r = document.createElement('div'); r.className = 'nrv'; pos(r, sj.rond); r.textContent = '#' + (s.keus.indexOf(k.id) + 1); tel.appendChild(r); }
 }
 document.getElementById('tabs').addEventListener('click', function(e){ var b = e.target.closest('.tab'); if (!b) return; ti = +b.dataset.i; actief = 0; bewaar(); teken(); });
