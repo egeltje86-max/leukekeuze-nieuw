@@ -134,7 +134,7 @@ function maakPagina(info, lade, mega) {
       let prod = null;
       if (pad.indexOf('/p/') === 0) {
         const pr = window.LK.vind(pad.split('/')[2]);
-        if (pr) prod = { naam: pr.titel, merk: MERKEN[pr.id], tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
+        if (pr) prod = { id: pr.id, naam: pr.titel, tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
       }
       /* Datum voor de sitemap: productpagina's de laatste controle, categoriepagina's het nieuwste product erin. */
       let datum = '';
@@ -161,7 +161,7 @@ function maakPagina(info, lade, mega) {
     }
     oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg });
   }
   await browser.close(); srv.close();
