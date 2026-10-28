@@ -173,6 +173,29 @@ function maakPagina(info, lade, mega) {
     fs.mkdirSync(path.dirname(doel), { recursive: true });
     fs.writeFileSync(doel, maakPagina(p, lade, mega));
   }
+  /* Oude adressen van de vorige site die Google nog kent: een echte pagina met canonical + direct doorsturen.
+     Google ziet dat als een permanente verhuizing, zodat de waarde van het oude adres naar de nieuwe pagina gaat.
+     (Via 404.html alleen zag Google 'niet gevonden' en liet het oude adres gewoon vallen.) Lijst uit Search Console, 28-10-2026. */
+  const VERHUISD = {
+    'cadeaugids': '/gids/', 'cadeaugidsen': '/gids/',
+    'cadeaugids/cadeau-voor-collega': '/gids/cadeau-voor-collega/',
+    'cadeaugids/sinterklaas': '/c/cadeaus/sinterklaas/',
+    'cadeaugids/cadeau-voor-vriendin': '/c/cadeaus/voor-haar/',
+    'cadeaugids/origineel-cadeau-voor-vader': '/c/cadeaus/voor-hem/',
+    'cadeaugids/cadeau-voor-dierenliefhebber': '/c/dieren/',
+    'christelijke-cadeaus': '/c/christelijk/', 'cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/',
+    'cadeauzoeker': '/vonk/', 'babycadeaus': '/c/cadeaus/baby-kraam/',
+    'hoe-het-werkt': '/info/hoe-werkt-het/', 'privacy': '/info/privacy/'
+  };
+  for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
+    const doel = path.join(ROOT, oudPad, 'index.html');
+    if (fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
+    fs.mkdirSync(path.dirname(doel), { recursive: true });
+    fs.writeFileSync(doel, '<!doctype html>\n<html lang="nl" data-verhuisd><head><meta charset="utf-8">\n<title>Deze pagina is verhuisd | LeukeKeuze</title>\n' +
+      '<link rel="canonical" href="' + SITE + nieuwPad + '">\n<meta http-equiv="refresh" content="0; url=' + nieuwPad + '">\n' +
+      '<script>location.replace(' + JSON.stringify(nieuwPad) + ' + location.search);</script></head>\n' +
+      '<body><p>Deze pagina is verhuisd. <a href="' + nieuwPad + '">Ga verder naar de nieuwe pagina</a>.</p></body></html>\n');
+  }
   // 404: lege app (laat 'Even kwijt?' zien) + oude adressen van de vorige site doorsturen
   const oud = `<script>
   (function () {
