@@ -321,7 +321,7 @@ def achtergrond(W, H, szn='kerst', zaad=1):
         dd = ImageDraw.Draw(donker)
         dd.ellipse((W * 0.08, H * 0.12, W * 0.92, H * 0.92), fill=120)
         dd.rectangle((0, H * 0.86, W, H), fill=150)
-        im = Image.composite(Image.new('RGB', (W, H), NAVY_DIEP), im, donker.filter(ImageFilter.GaussianBlur(W * 0.08)))
+        im = Image.composite(Image.new('RGB', (W, H), (38, 8, 16) if szn == 'valentijn' else NAVY_DIEP), im, donker.filter(ImageFilter.GaussianBlur(W * 0.08)))
         _BG[sleutel] = im
         return im.copy()
     rnd = random.Random(zaad % 7 + {'kerst': 11, 'sint': 23, 'valentijn': 37, 'normaal': 51}[szn])
