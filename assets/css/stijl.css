@@ -902,3 +902,22 @@ html.feest body::after {
 @media (prefers-reduced-motion: reduce) {
   html.feest body::after, .lichtsnoer i { animation: none; }
 }
+
+/* Verlanglijstje delen (28-10-2026) */
+.lijst-deel { display: grid; grid-template-columns: 1.1fr 1.4fr auto; gap: 18px 24px; align-items: end; background: linear-gradient(135deg, rgba(217,168,72,.12), rgba(217,168,72,.03)); border: 1px solid rgba(217,168,72,.35); border-radius: 18px; padding: 20px 22px; margin-bottom: 26px; }
+.lijst-deel-tekst { color: var(--tekst-zacht, #c9cbd3); font-size: 14.5px; line-height: 1.5; }
+.lijst-deel-tekst strong { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 21px; color: var(--goud-licht); margin-bottom: 4px; }
+.lijst-deel-velden { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.lijst-deel-velden label { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; color: var(--tekst-zacht, #c9cbd3); }
+.lijst-deel-velden input, .lijst-deel-velden select { background: rgba(255,255,255,.06); border: 1px solid var(--lijn-sterk); color: #fff; border-radius: 10px; padding: 11px 12px; font: inherit; font-size: 15px; }
+.lijst-deel-velden select option { color: #111; }
+.lijst-deel-knoppen { display: flex; flex-direction: column; gap: 8px; }
+.knop-whatsapp { background: #25d366; color: #06301a; font-weight: 700; gap: 8px; }
+.knop-whatsapp:hover { background: #2fe375; }
+.knop-whatsapp svg { width: 20px; height: 20px; }
+.lijst-weg { color: var(--goud-licht); font-size: 14px; margin: 0 0 14px; }
+.lijst-zelf { margin-top: 34px; text-align: center; color: var(--tekst-zacht, #c9cbd3); border-top: 1px solid var(--lijn); padding-top: 26px; line-height: 1.8; }
+.lijst-zelf strong { display: block; color: #fff; font-size: 17px; }
+.lijst-zelf .knop { margin-top: 10px; }
+@media (max-width: 900px) { .lijst-deel { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .lijst-deel-velden { grid-template-columns: 1fr; } }

@@ -471,7 +471,7 @@
           '<div class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
           '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           '<div class="product-acties" data-acties>' + knop +
-            '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + ic('hart') + '</button>' +
+            '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
           '</div>' +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs">' + LK.euro(p.prijs) + '</span>' +
@@ -838,15 +838,56 @@
     return kop + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? '" style="max-width:none' : '') + '">' + (stap < 4 ? balk : '') + inhoud + terug + '</div></div>';
   }
 
-  /* ---------- Favorieten ---------- */
+  /* ---------- Verlanglijstje (was: Favorieten) ----------
+     Het hartje bewaart cadeaus op dit apparaat. Delen gaat via een link: /lijst/?n=<naam>&v=<gelegenheid>&p=<id>,<id>
+     Geen account en geen opslag nodig; wie de link opent, klikt via onze partnerlinks door naar de winkel (wens Marius 28-10-2026). */
+  var GELEGENHEDEN = [['verjaardag', 'mijn verjaardag', '🎂'], ['sinterklaas', 'Sinterklaas', '🎁'], ['kerst', 'kerst', '🎄'],
+    ['valentijn', 'Valentijn', '❤️'], ['jubileum', 'ons jubileum', '💍'], ['zomaar', 'zomaar', '✨']];
+  function gelegenheid(v) { return GELEGENHEDEN.find(function (g) { return g[0] === v; }) || null; }
+  function lijstLink(naam, v, ids) {
+    return 'https://leukekeuze.nl/lijst/?' + (naam ? 'n=' + encodeURIComponent(naam) + '&' : '') + (v ? 'v=' + v + '&' : '') + 'p=' + ids.join('.');
+  }
   function favorieten() {
-    zetTitel('Favorieten');
+    zetTitel('Mijn verlanglijstje');
     var ids = LK.favorieten();
     var lijst = LK.zichtbaar().filter(function (p) { return ids.indexOf(p.id) !== -1; });
-    return paginakop({ titel: 'Jouw favorieten', tekst: 'Bewaard met het hartje. Ze staan alleen op dit apparaat, je hebt geen account nodig.', kruimel: [{ tekst: 'Favorieten' }] }) +
-      '<div class="binnen"><section class="sectie">' +
-      grid(lijst, leegBlok('Nog geen favorieten', 'Tik op het hartje bij een product om het hier te bewaren.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
+    var naam = ''; try { naam = localStorage.getItem('lk-lijst-naam') || ''; } catch (e) {}
+    var deel = !lijst.length ? '' :
+      '<div class="lijst-deel"><div class="lijst-deel-tekst"><strong>Deel je verlanglijstje</strong>' +
+      'Stuur je lijstje naar familie, vrienden of je partner. Zij zien jouw cadeaus en kunnen ze meteen bestellen.</div>' +
+      '<div class="lijst-deel-velden"><label>Je naam<input type="text" data-lijst-naam maxlength="30" placeholder="Bijv. Sanne" value="' + esc(naam) + '"></label>' +
+      '<label>Waarvoor?<select data-lijst-voor>' + GELEGENHEDEN.map(function (g) { return '<option value="' + g[0] + '">' + g[2] + ' ' + (g[0] === 'verjaardag' ? 'Mijn verjaardag' : g[0] === 'jubileum' ? 'Ons jubileum' : g[1].charAt(0).toUpperCase() + g[1].slice(1)) + '</option>'; }).join('') + '</select></label></div>' +
+      '<div class="lijst-deel-knoppen"><button class="knop knop-whatsapp" type="button" data-lijst-whatsapp>' + ic('whatsapp') + ' Deel via WhatsApp</button>' +
+      '<button class="knop knop-rand" type="button" data-lijst-kopieer>Kopieer de link</button></div></div>';
+    return paginakop({ titel: 'Mijn verlanglijstje', tekst: 'Bewaar cadeaus met het hartje en deel je lijstje met wie je wilt. Je hebt geen account nodig.', kruimel: [{ tekst: 'Verlanglijstje' }] }) +
+      '<div class="binnen"><section class="sectie">' + deel +
+      grid(lijst, leegBlok('Je verlanglijstje is nog leeg', 'Tik op het hartje bij een cadeau om het op je verlanglijstje te zetten. Daarna kun je het lijstje delen via WhatsApp.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
       '</section></div>';
+  }
+  function gedeeldeLijst(q) {
+    var ids = (q.p || '').split(/[.,]/).filter(Boolean).slice(0, 40);
+    var lijst = ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd'; });
+    var weg = ids.length - lijst.length;
+    var naam = (q.n || '').slice(0, 30), g = gelegenheid(q.v);
+    var titel = naam ? 'Het verlanglijstje van ' + naam : 'Een verlanglijstje voor jou';
+    zetTitel(titel);
+    var voor = g ? (g[0] === 'verjaardag' ? 'Voor ' + (naam ? 'de verjaardag van ' + naam : 'een verjaardag') : g[0] === 'jubileum' ? 'Voor een jubileum' : g[0] === 'zomaar' ? 'Zomaar, omdat het kan' : 'Voor ' + g[1]) + ' ' + g[2] : '';
+    return paginakop({ titel: titel, tekst: (voor ? voor + '. ' : '') + (naam ? naam + ' heeft deze cadeaus uitgekozen.' : 'Deze cadeaus zijn uitgekozen.') + ' Klik op een cadeau en bestel het direct bij de winkel.', kruimel: [{ tekst: 'Verlanglijstje' }] }) +
+      '<div class="binnen"><section class="sectie">' +
+      (weg > 0 ? '<p class="lijst-weg">' + (weg === 1 ? '1 cadeau van dit lijstje is' : weg + ' cadeaus van dit lijstje zijn') + ' niet meer te koop.</p>' : '') +
+      grid(lijst, leegBlok('Dit lijstje is leeg', 'De cadeaus van dit lijstje zijn niet meer te koop. Kijk gerust rond voor iets anders.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
+      '<div class="lijst-zelf"><strong>Zelf ook een verlanglijstje maken?</strong> Tik op het hartje bij de cadeaus die jij wilt en deel je lijstje via WhatsApp. <a class="knop knop-goud" href="/c/cadeaus">Begin met kiezen</a></div>' +
+      '</section></div>';
+  }
+  function lijstVanDeel() {
+    var n = $('[data-lijst-naam]'), v = $('[data-lijst-voor]');
+    var naam = n ? n.value.trim() : '', voor = v ? v.value : '';
+    try { localStorage.setItem('lk-lijst-naam', naam); } catch (e) {}
+    var ids = LK.favorieten().filter(function (id) { var p = LK.vind(id); return p && p.status === 'goedgekeurd'; });
+    var g = gelegenheid(voor);
+    var link = lijstLink(naam, voor, ids);
+    var bericht = 'Mijn verlanglijstje' + (g ? ' voor ' + g[1] + ' ' + g[2] : '') + '\n👉 ' + link;
+    return { link: link, bericht: bericht };
   }
 
   /* ---------- Tekstpagina's ---------- */
@@ -1357,7 +1398,7 @@
           '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
           volleSubs(c).map(function (s) { return '<a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
       }).join('') + '</ul>' +
-      '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn favorieten</a><a href="/zoek">Zoeken</a><a href="/gids">Cadeaugidsen</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
+      '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn verlanglijstje</a><a href="/zoek">Zoeken</a><a href="/gids">Cadeaugidsen</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {
     $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) {
@@ -1459,6 +1500,7 @@
     else if (d[0] === 'zoek') html = zoeken(a.q);
     else if (d[0] === 'vonk') html = vonk(a.q);
     else if (d[0] === 'favorieten') html = favorieten();
+    else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);
     else if (d[0] === 'gids') html = gids(d[1]);
     else if (d[0] === 'winkels') html = winkels();
@@ -1631,13 +1673,18 @@
       var id = t.getAttribute('data-fav'), aan = LK.wisselFavoriet(id);
       $$('[data-fav="' + id + '"]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(aan));
-        b.setAttribute('aria-label', aan ? 'Verwijder uit favorieten' : 'Bewaar als favoriet');
+        b.setAttribute('aria-label', aan ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje');
       });
       werkTellersBij();
-      toast(aan ? 'Bewaard in je favorieten' : 'Verwijderd uit favorieten');
+      toast(aan ? 'Op je verlanglijstje gezet' : 'Van je verlanglijstje gehaald');
       if (leesAdres().delen[0] === 'favorieten') toon();
       return;
     }
+    if (t.hasAttribute('data-lijst-whatsapp')) { var w = lijstVanDeel(); window.open('https://wa.me/?text=' + encodeURIComponent(w.bericht), '_blank', 'noopener'); return; }
+    if (t.hasAttribute('data-lijst-kopieer')) { var w2 = lijstVanDeel();
+      var klaar = function () { toast('Link gekopieerd. Plak hem in een bericht.'); };
+      if (navigator.clipboard) navigator.clipboard.writeText(w2.bericht).then(klaar, function () { prompt('Kopieer deze link:', w2.link); }); else prompt('Kopieer deze link:', w2.link);
+      return; }
     if (t.closest('[data-filterpaneel]') && t.tagName === 'A') naarWerkbalk = true;
     if (t.hasAttribute('data-filter-open')) { var fp = $('[data-filterpaneel]'); if (fp) { fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); }); } return; }
     if (t.hasAttribute('data-filter-dicht')) { var fp2 = $('[data-filterpaneel]'); if (fp2) { fp2.classList.remove('open'); setTimeout(function () { fp2.hidden = true; }, 250); } return; }
