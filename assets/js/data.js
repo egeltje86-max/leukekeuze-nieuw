@@ -113,6 +113,30 @@ window.LK_CATEGORIEEN = [
       { slug: 'onder-15', naam: 'Onder €15', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp' },
       { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp' }
     ] },
+  { slug: 'valentijn', naam: 'Liefde & Valentijn', kort: 'Liefde', icoon: 'hart',
+    tekst: 'Romantische cadeaus voor iemand van wie je houdt, het hele jaar door.',
+    seoTitel: 'Valentijnscadeau & romantische cadeaus voor je geliefde',
+    seoTekst: 'Romantisch cadeau of valentijnscadeau nodig? Hartjessieraden, rozen die nooit verwelken, cadeaus met jullie namen en ideeën voor een romantische avond. Voor haar en voor hem.',
+    tegel: 'images/categorieen/categorie-valentijn.webp',
+    subs: [
+      { slug: 'voor-haar', naam: 'Voor haar', seoTitel: 'Valentijnscadeau voor haar: romantisch cadeau voor je vriendin',
+        tekst: 'Een romantisch cadeau voor je vriendin of vrouw: hartjessieraden, rozen die nooit verwelken en kleine verwenmomentjes.' },
+      { slug: 'voor-hem', naam: 'Voor hem', seoTitel: 'Valentijnscadeau voor hem: romantisch cadeau voor je vriend',
+        tekst: 'Romantisch, maar niet zoetsappig: cadeaus voor je vriend of man die hij echt gebruikt.' },
+      { slug: 'samen', naam: 'Samen & jubileum', seoTitel: 'Cadeau voor 1 jaar samen, trouwdag of huwelijksjubileum',
+        tekst: 'Voor jullie jaar samen, een trouwdag of 25, 40 of 50 jaar getrouwd: cadeaus die over jullie twee gaan.' },
+      { slug: 'met-naam', naam: 'Met naam & hartje', seoTitel: 'Romantisch cadeau met naam: sieraden met jullie namen',
+        tekst: 'Persoonlijke cadeaus met een naam, jullie namen of een hartje. Echt voor haar of hem gemaakt.' },
+      { slug: 'romantische-avond', naam: 'Romantische avond', seoTitel: 'Romantische avond thuis: date-ideeën en cadeaus voor twee',
+        tekst: 'Date-ideeën voor thuis: samen fonduen, hartjeswafels bakken, een spel voor twee of een sterrenhemel op het plafond.' },
+      { slug: 'kleine-gebaren', naam: 'Kleine liefdesgebaren', seoTitel: 'Klein romantisch cadeautje onder €25',
+        tekst: 'Zomaar, gewoon omdat je van iemand houdt. Kleine cadeautjes onder de 25 euro met een groot gebaar.' }
+    ],
+    gids: [
+      { kop: 'Een romantisch cadeau kiezen', tekst: 'Het mooiste romantische cadeau laat zien dat je de ander echt kent. Denk aan een herinnering die jullie delen, iets met jullie namen of iets waar zij of hij al lang naar kijkt.' },
+      { kop: 'Valentijn, maar ook het hele jaar door', tekst: 'Valentijnsdag is op 14 februari, maar liefde laat je het hele jaar zien: op jullie jubileum, een trouwdag of zomaar op een gewone dinsdag.' },
+      { kop: 'Samen iets doen', tekst: 'Een gezamenlijke avond is vaak het mooiste cadeau. Fonduen, samen bakken of een spel voor twee: tijd samen zegt meer dan veel woorden.' }
+    ] },
   { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
     tekst: 'Spelen, ontdekken en groeien.',
     tegel: 'images/categorieen/categorie-speelgoed.webp', banner: 'images/banners/banner-cat-speelgoed.webp',
