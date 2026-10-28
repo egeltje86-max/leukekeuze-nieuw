@@ -36,6 +36,8 @@ const escA = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').repla
 function zet(html, re, nieuw) { if (!re.test(html)) throw new Error('niet gevonden: ' + re); return html.replace(re, nieuw); }
 
 /* Structured data voor Google: de site met zoekvak (home), kruimelpad (alle pagina's) en product (productpagina's). */
+/* Merknamen per product (scripts/merken.json, uit de Productstudio-rondes), voor 'brand' in de Product-gegevens (Search Console, 28-10-2026). */
+const MERKEN = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'merken.json'), 'utf8')); } catch (e) { return {}; } })();
 function maakLd(info, url) {
   const uit = [];
   if (info.pad === '/') uit.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'LeukeKeuze', url: SITE + '/',
@@ -47,7 +49,7 @@ function maakLd(info, url) {
   const p = info.prod;
   if (p && p.prijs > 0) {
     const beeld = info.beeld ? (/^https?:/.test(info.beeld) ? info.beeld : SITE + '/' + info.beeld.replace(/^\//, '')) : undefined;
-    uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, description: p.tekst || undefined, image: beeld, url,
+    uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, brand: p.merk ? { '@type': 'Brand', name: p.merk } : undefined, description: p.tekst || undefined, image: beeld, url,
       offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
   }
   return uit;
@@ -132,7 +134,7 @@ function maakPagina(info, lade, mega) {
       let prod = null;
       if (pad.indexOf('/p/') === 0) {
         const pr = window.LK.vind(pad.split('/')[2]);
-        if (pr) prod = { naam: pr.titel, tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
+        if (pr) prod = { naam: pr.titel, merk: MERKEN[pr.id], tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
       }
       /* Datum voor de sitemap: productpagina's de laatste controle, categoriepagina's het nieuwste product erin. */
       let datum = '';
