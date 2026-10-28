@@ -211,31 +211,31 @@
       '<div class="binnen">' +
         /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
         '<section class="sectie eerste">' +
-          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
+          '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
           '<div class="persoon-subs home">' + window.LK_PERSONEN.map(function (x) {
             return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
           }).join('') + '</div>' +
         '</section>' +
 
         '<section class="sectie">' +
-          '<div class="sectie-kop"><div><h2>Shop per categorie</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
+          '<div class="sectie-kop"><div><span class="kicker">Ingang 2</span><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
           '<div class="groepen">' + window.LK_HOME_GROEPEN.map(window.LK_CAT).filter(Boolean).map(function (c) {
             return '<a class="groep" href="/c/' + c.slug + '"><img src="' + esc(c.tegel.replace('.webp', '-klein.webp')) + '" alt="" loading="lazy" decoding="async"><span>' + esc(c.kort) + '</span></a>';
           }).join('') + '</div>' +
           '<a class="knop knop-rand alle-cats" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a>' +
         '</section>' +
 
-        /* 0. Seizoen eerst: Sinterklaas en Kerst bovenaan (wens van Marius, 26-10-2026). Blokken verlopen vanzelf via 'tot'. */
-        actieBlokken() +
-
         /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
-        '<section class="sectie"><div class="sectie-kop"><div><h2>Voor welke gelegenheid?</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
+        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 3</span><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
           '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN.map(function (x) {
             return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
           }).join('') + '</div></section>' +
         (window.LK_COLLECTIES || []).map(function (c) {
           return '<a class="collectie-banner" href="/collectie/' + c.slug + '"><img src="' + esc(c.beeld) + '" alt="" loading="lazy" decoding="async"><div class="collectie-tekst"><span class="kicker">' + esc(c.kicker) + '</span><h2>' + esc(c.naam) + '</h2><p>' + esc(c.tekst) + '</p><span class="knop knop-goud">Bekijk de collectie ' + ic('pijl') + '</span></div></a>';
         }).join('') +
+
+        /* 0. Seizoen eerst: Sinterklaas en Kerst bovenaan (wens van Marius, 26-10-2026). Blokken verlopen vanzelf via 'tot'. */
+        actieBlokken() +
 
         /* 0b. Cadeaugidsen van dit seizoen */
         gidsenRij() +
@@ -1627,8 +1627,16 @@
   try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
   function onthoudPlek() {
     if (laatstGetoond === null) return;
-    var g = $('.prodgrid:not(.rij)', app);
-    plekken[laatstGetoond] = { y: window.scrollY || 0, n: g ? g.querySelectorAll('.prodkaart:not(.later)').length : 0 };
+    var g = $('.prodgrid:not(.rij)', app), y = window.scrollY || 0, anker = null, delta = 0;
+    /* Onthoud ook welk product bovenaan in beeld stond: foto's laden later na, waardoor pixels verschuiven maar het product niet. */
+    if (g) {
+      var kaarten = g.querySelectorAll('.prodkaart:not(.later)');
+      for (var i = 0; i < kaarten.length; i++) {
+        var top = kaarten[i].getBoundingClientRect().top + y;
+        if (top + kaarten[i].offsetHeight > y + 60) { var a = kaarten[i].querySelector('[data-fav]'); anker = a ? a.getAttribute('data-fav') : null; delta = y - top; break; }
+      }
+    }
+    plekken[laatstGetoond] = { y: y, n: g ? g.querySelectorAll('.prodkaart:not(.later)').length : 0, anker: anker, delta: delta };
   }
   function herstelPlek() {
     var plek = plekken[huidigAdres()];
@@ -1640,7 +1648,21 @@
       var knop = $('[data-meer]', app), over = g.querySelectorAll('.prodkaart.later').length;
       if (knop) { if (!over) knop.parentNode.remove(); else knop.innerHTML = 'Toon meer <small>(' + (alle - over) + ' van ' + alle + ')</small>'; }
     }
-    window.scrollTo(0, plek.y);
+    /* Terug naar hetzelfde product in beeld (niet naar dezelfde pixel: foto's laden na en schuiven alles op). */
+    var doel = function () {
+      if (plek.anker) { var a = app.querySelector('.prodkaart [data-fav="' + plek.anker.replace(/"/g, '') + '"]'); if (a) { var k = a.closest('.prodkaart'); if (k && !k.classList.contains('later')) return Math.max(0, k.getBoundingClientRect().top + window.scrollY + plek.delta); } }
+      return plek.y;
+    };
+    window.scrollTo(0, doel());
+    var start = Date.now(), vorige = window.scrollY;
+    (function nogEens() {
+      if (Date.now() - start > 1500) return;
+      var d = doel();
+      if (Math.abs(window.scrollY - vorige) > 40 && Math.abs(window.scrollY - d) > 40) return; /* zelf gescrold: niet tegenwerken */
+      if (Math.abs(window.scrollY - d) > 2) window.scrollTo(0, d);
+      vorige = window.scrollY;
+      setTimeout(nogEens, 120);
+    })();
     return true;
   }
   function toon() {
