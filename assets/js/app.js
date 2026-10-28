@@ -573,6 +573,8 @@
     var p = LK.vind(id);
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
+    /* 2.0: staat dit vak onder een andere groep (bijv. mode-beauty/horloges onder Sieraden & Horloges), dan dat kruimelpad. */
+    ALLECATS.forEach(function (cc) { (cc.subs || []).forEach(function (ss) { if (ss.vak === p.cat + '/' + p.sub) { c = cc; s = ss; } }); });
     zetTitel(p.titel);
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
