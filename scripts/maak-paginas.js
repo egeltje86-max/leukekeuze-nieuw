@@ -10,10 +10,11 @@ const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://leukekeuze.nl';
 /* Versienummer achter css/js, zodat telefoons na elke update meteen de nieuwe versie laden (geen oude cache). */
 const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
+require('./splits-producten.js')(); // producten.js -> producten-lean.js + producten-details.js
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
-  .replace(/(assets\/(?:css\/stijl\.css|js\/(?:data|producten|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
+  .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
-const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst'];
+const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie'];
 const GEEN_INDEX = /^\/(favorieten|zoek|lijst)\//;
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
@@ -188,11 +189,13 @@ function maakPagina(info, lade, mega) {
     'hoe-het-werkt': '/info/hoe-werkt-het/', 'privacy': '/info/privacy/',
     /* 2.0: de persoonspagina's zijn verhuisd van /c/cadeaus/... naar /voor/... (deze worden altijd overschreven). */
     'c/cadeaus/voor-hem': '/voor/hem/', 'c/cadeaus/voor-haar': '/voor/haar/', 'c/cadeaus/voor-kinderen': '/voor/kinderen/',
-    'c/cadeaus/opa-oma': '/voor/opa-oma/', 'c/cadeaus/collega': '/voor/collega/', 'c/cadeaus/baby-kraam': '/voor/baby/'
+    'c/cadeaus/opa-oma': '/voor/opa-oma/', 'c/cadeaus/collega': '/voor/collega/', 'c/cadeaus/baby-kraam': '/voor/baby/',
+    /* 2.0: horloges, geuren en verzorging zijn verhuisd van Mode & Beauty naar hun eigen groep. */
+    'c/mode-beauty/horloges': '/c/sieraden/horloges/', 'c/mode-beauty/geuren': '/c/geuren-verzorging/geuren/', 'c/mode-beauty/verzorging': '/c/geuren-verzorging/verzorging/'
   };
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
-    const altijd = /^c\/cadeaus\//.test(oudPad);
+    const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad);
     if (!altijd && fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
     fs.mkdirSync(path.dirname(doel), { recursive: true });
     fs.writeFileSync(doel, '<!doctype html>\n<html lang="nl" data-verhuisd><head><meta charset="utf-8">\n<title>Deze pagina is verhuisd | LeukeKeuze</title>\n' +
@@ -217,7 +220,8 @@ function maakPagina(info, lade, mega) {
 
   const vandaag = new Date().toISOString().slice(0, 10);
   /* lastmod: een echte datum per pagina (niet elke keer 'vandaag'), anders negeert Google hem. */
-  const urls = paginas.filter(p => !p.geenIndex).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
+  const verhuisdPaden = Object.keys(VERHUISD).map(k => '/' + k + '/');
+  const urls = paginas.filter(p => !p.geenIndex && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
 })().catch(e => { console.error(e); process.exit(1); });

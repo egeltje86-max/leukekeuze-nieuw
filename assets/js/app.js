@@ -604,9 +604,25 @@
     var t = $('.galerij-teller', g); if (t) t.textContent = (i + 1) + ' / ' + n;
   }
 
+  /* 2.0: winkellinks, specs en noten staan in een apart bestand dat pas op een productpagina laadt (sneller op de telefoon). */
+  var detailsBezig = false;
+  function laadDetails(klaar) {
+    if (window.LK_DETAILS) { klaar(); return; }
+    if (detailsBezig) return; detailsBezig = true;
+    var lean = $('script[src*="producten-lean.js"]'), v = lean ? (lean.getAttribute('src').split('?v=')[1] || '') : '';
+    var sc = document.createElement('script'); sc.src = '/assets/js/producten-details.js' + (v ? '?v=' + v : '');
+    sc.onload = function () {
+      var D = window.LK_DETAILS || {};
+      (window.LK_PRODUCTEN || []).forEach(function (p) { if (D[p.id]) Object.assign(p, D[p.id]); });
+      klaar();
+    };
+    sc.onerror = function () { detailsBezig = false; };
+    document.head.appendChild(sc);
+  }
   function product(id) {
     var p = LK.vind(id);
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
+    if (!window.LK_DETAILS) laadDetails(function () { if (location.pathname.indexOf('/p/' + id) === 0) toon(); });
     onthoudBekeken(p.id);
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
     /* 2.0: staat dit vak onder een andere groep (bijv. mode-beauty/horloges onder Sieraden & Horloges), dan dat kruimelpad. */
@@ -615,7 +631,8 @@
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
       ? '<a class="knop knop-goud" href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
-      : '<span class="knop knop-goud uit" aria-disabled="true">Voorbeeld – nog geen winkellink</span>';
+      : (!window.LK_DETAILS && !p.voorbeeld ? '<span class="knop knop-goud uit" aria-disabled="true">Bekijk bij ' + esc(p.shop) + '…</span>'
+      : '<span class="knop knop-goud uit" aria-disabled="true">Voorbeeld – nog geen winkellink</span>');
 
     var ookIn = (p.ookIn || []).map(function (x) {
       var pe = window.LK_PERSONEN.filter(function (q) { return q.oud === x; })[0];
@@ -1766,6 +1783,11 @@
     if (d[0] === 'c' && d[1] === 'cadeaus' && d[2]) {
       var oudNaarNieuw = window.LK_PERSONEN.filter(function (x) { return x.oud === 'cadeaus/' + d[2]; })[0];
       if (oudNaarNieuw) { ga('/voor/' + oudNaarNieuw.slug + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
+    }
+    /* 2.0: horloges, geuren en verzorging zijn verhuisd uit Mode & Beauty. */
+    if (d[0] === 'c' && d[1] === 'mode-beauty' && d[2]) {
+      var verhuisdSub = { horloges: '/c/sieraden/horloges', geuren: '/c/geuren-verzorging/geuren', verzorging: '/c/geuren-verzorging/verzorging' }[d[2]];
+      if (verhuisdSub) { ga(verhuisdSub + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
     }
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();

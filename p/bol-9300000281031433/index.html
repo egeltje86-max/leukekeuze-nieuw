@@ -27,7 +27,11 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-700-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202610281911">
+  <link rel="preload" as="script" href="assets/js/producten-lean.js?v=202610282316" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202610282316" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202610282316" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202610282316">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202610282316">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://leukekeuze.nl/"},{"@type":"ListItem","position":2,"name":"Christelijke cadeaus","item":"https://leukekeuze.nl/c/christelijk/"},{"@type":"ListItem","position":3,"name":"Wanddecoratie","item":"https://leukekeuze.nl/c/christelijk/wanddecoratie/"},{"@type":"ListItem","position":4,"name":"Mok “De HEERE is mijn Herder, mij ontbreekt niets” (Psalm 23:1)","item":"https://leukekeuze.nl/p/bol-9300000281031433/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Mok “De HEERE is mijn Herder, mij ontbreekt niets” (Psalm 23:1)","description":"Psalm 23 in de vertrouwde woorden, op een mok met een glas-in-loodplaatje van de Goede Herder.","image":"https://leukekeuze.nl/images/producten/bol-9300000281031433.webp","url":"https://leukekeuze.nl/p/bol-9300000281031433/","offers":{"@type":"Offer","price":"18.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition","url":"https://www.bol.com/nl/nl/p/mok-met-bijbeltekst-psalmen-23-1-de-heere-is-mijn-herder-mij-ontbreekt-niets-christelijk-cadeau-mok-met-glas-in-lood-stijl-illustratie-van-de-goede-herder-en-schapen/9300000281031433/","seller":{"@type":"Organization","name":"bol"}}}</script>
 </head>
@@ -54,12 +58,12 @@
       </a>
 
       <nav class="hoofdnav" aria-label="Hoofdmenu">
-        <a href="/c/cadeaus" data-nav="cadeaus">Cadeaus</a>
-        <a href="/c/speelgoed" data-nav="speelgoed">Speelgoed</a>
-        <a href="/c/hobby" data-nav="hobby">Hobby</a>
-        <a href="/c/wonen" data-nav="wonen">Wonen &amp; Deco</a>
+        <a href="/voor" data-nav="voor">Voor wie?</a>
+        <button type="button" data-mega aria-expanded="false" aria-controls="megamenu">Producten <span data-ic="omlaag"></span></button>
+        <a href="/gelegenheid" data-nav="gelegenheid">Gelegenheden</a>
+        <a href="/c/christelijk" data-nav="christelijk">Christelijke cadeaus</a>
+        <a href="/gids" data-nav="gids">Cadeaugidsen</a>
         <a href="/vonk" data-nav="vonk">VONK</a>
-        <button type="button" data-mega aria-expanded="false" aria-controls="megamenu">Alle categorieën <span data-ic="omlaag"></span></button>
       </nav>
 
       <div class="header-rechts">
@@ -87,8 +91,9 @@
       <div>
         <h4>Ontdekken</h4>
         <ul>
-          <li><a href="/c/cadeaus">Cadeaus</a></li>
-          <li><a href="/c/speelgoed">Speelgoed</a></li>
+          <li><a href="/voor">Voor wie?</a></li>
+          <li><a href="/categorieen">Alle categorieën</a></li>
+          <li><a href="/gelegenheid">Gelegenheden</a></li>
           <li><a href="/vonk">VONK cadeauzoeker</a></li>
           <li><a href="/winkels">Onze winkels</a></li>
           <li><a href="/c/christelijk">Christelijke cadeaus</a></li>
@@ -114,7 +119,7 @@
       </div>
     </div>
     <div class="footer-yara"><div class="binnen">Voor Yara, mijn mooiste cadeau <span aria-hidden="true">♥</span></div></div>
-    <div class="footer-onder"><div class="binnen">© 2026 LeukeKeuze · Marius · Kromhout 108, 3311 RH Dordrecht · <a href="/info/colofon">Imprint</a> · <a href="/info/privacy">Privacy Policy</a> · <a href="/info/voorwaarden">Terms</a></div></div>
+    <div class="footer-onder"><div class="binnen">© 2026 LeukeKeuze · Marius · Kromhout 108, 3311 RH Dordrecht · <a href="/info/colofon">Colofon</a> · <a href="/info/privacy">Privacy</a> · <a href="/info/voorwaarden">Voorwaarden</a></div></div>
   </footer>
 
   <nav class="onderbalk" aria-label="Snelmenu">
@@ -127,7 +132,7 @@
   <div class="lade-bg" data-sluit-lade></div>
   <aside class="lade" id="lade" aria-label="Categorieën" aria-hidden="true">
     <div class="lade-kop">
-      <a class="logo" href="/"><img src="assets/logo-icoon.svg" alt="" width="28" height="28"><span>Leuke<span class="k">Keuze</span></span></a>
+      <span class="lade-titel">Ontdek LeukeKeuze</span>
       <button class="icoonknop" type="button" data-sluit-lade aria-label="Menu sluiten" data-ic="sluit"></button>
     </div>
     <div class="lade-inhoud" data-lade></div>
@@ -140,11 +145,11 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script src="assets/js/data.js?v=202610281911"></script>
+  <script src="assets/js/data.js?v=202610282316"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/producten.js?v=202610281911"></script>
-  <script src="assets/js/gedeeld.js?v=202610281911"></script>
-  <script src="assets/js/app.js?v=202610281911"></script>
+  <script src="assets/js/producten-lean.js?v=202610282316"></script>
+  <script src="assets/js/gedeeld.js?v=202610282316"></script>
+  <script src="assets/js/app.js?v=202610282316"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
