@@ -255,6 +255,9 @@
         /* 0b. Cadeaugidsen van dit seizoen */
         gidsenRij() +
 
+        /* 2.0: laatst bekeken (als er iets is) */
+        laatstBekeken() +
+
         /* 2. VONK als smalle balk */
         '<a class="vonk-kaart vonk-klein" href="/vonk">' +
           ic('vonk', 'staf') +
@@ -397,7 +400,7 @@
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + (c.slug !== 'christelijk' ? voorChips(pad, q) : '') + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
-      '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
+      verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
 
@@ -475,7 +478,7 @@
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
-      '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
+      verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
     var leeg = alles.length
@@ -529,7 +532,7 @@
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
-      '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
+      verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
     var leeg = leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
@@ -602,6 +605,7 @@
   function product(id) {
     var p = LK.vind(id);
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
+    onthoudBekeken(p.id);
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
     /* 2.0: staat dit vak onder een andere groep (bijv. mode-beauty/horloges onder Sieraden & Horloges), dan dat kruimelpad. */
     ALLECATS.forEach(function (cc) { (cc.subs || []).forEach(function (ss) { if (ss.vak === p.cat + '/' + p.sub) { c = cc; s = ss; } }); });
@@ -657,6 +661,24 @@
       verderZoeken(p, c, s) +
       (verwant.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk</h2></div></div>' + grid(verwant) + '</section>' : '') +
     '</div>';
+  }
+  /* 2.0: 'Laatst bekeken' (alleen op dit apparaat, geen account nodig). */
+  function onthoudBekeken(id) {
+    try { var l = JSON.parse(localStorage.getItem('lk-bekeken') || '[]').filter(function (x) { return x !== id; }); l.unshift(id); localStorage.setItem('lk-bekeken', JSON.stringify(l.slice(0, 12))); } catch (e) {}
+  }
+  function laatstBekeken() {
+    var ids = []; try { ids = JSON.parse(localStorage.getItem('lk-bekeken') || '[]'); } catch (e) {}
+    var l = ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd'; });
+    if (l.length < 2) return '';
+    return '<section class="sectie"><div class="sectie-kop"><div><h2>Laatst bekeken</h2></div></div>' + rij(l.slice(0, 10)) + '</section>';
+  }
+  /* 2.0: 'Verras me': een willekeurige favoriet uit de afdeling waar je nu bent. */
+  var verrasIds = [];
+  function verrasKnop(lijst) {
+    var kand = lijst.filter(function (p) { return p.favoriet || p.populair; });
+    if (kand.length < 4) kand = lijst;
+    verrasIds = kand.slice(0, 200).map(function (p) { return p.id; });
+    return verrasIds.length >= 4 ? '<button class="chip verras" type="button" data-verras>' + ic('vonk') + ' Verras me</button>' : '';
   }
   /* 2.0: 'Verder zoeken' onder een product: in één tik naar vergelijkbare producten, goedkopere, of meer voor dezelfde persoon. */
   function verderZoeken(p, c, s) {
@@ -2055,6 +2077,13 @@
     sluitTips(f);
     ga(maakAdres('/zoek', nq));
     f.querySelector('input').blur();
+  });
+  document.addEventListener('click', function (e) {
+    var k = e.target.closest && e.target.closest('[data-verras]');
+    if (!k || !verrasIds.length) return;
+    var huidig = (location.pathname.match(/^\/p\/([^\/]+)/) || [])[1];
+    var keus = verrasIds.filter(function (id) { return id !== huidig; });
+    ga('/p/' + keus[Math.floor(Math.random() * keus.length)]);
   });
   document.addEventListener('change', function (e) {
     if (e.target.matches('[data-sorteer]')) {

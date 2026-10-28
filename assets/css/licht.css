@@ -183,3 +183,11 @@ body { background: var(--bg); color: var(--tekst); }
 .verder-knop:hover { border-color: var(--goud); }
 .werkbalk .voor-chips { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--lijn-zacht); }
 .werkbalk .voor-chips .chip { font-size: 12.5px; padding: 8px 13px; }
+.prodkaart .reden { margin: 6px 0 0; font: 500 12.5px/1.35 var(--f-tekst); color: var(--tekst-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prodkaart .info { display: flex; flex-direction: column; }
+.prodkaart .info .prijs { margin-top: 0; }
+.prodkaart .reden::before { content: '★ '; color: var(--goud); }
+.chip.verras { display: inline-flex; align-items: center; gap: 6px; border-color: rgba(184,134,46,.5); color: var(--goud-donker); background: #FFFBF3; }
+.chip.verras svg { width: 15px; height: 15px; }
+.werkbalk-onder { flex-wrap: wrap; }
+.werkbalk-onder .aantal { margin-right: auto; }

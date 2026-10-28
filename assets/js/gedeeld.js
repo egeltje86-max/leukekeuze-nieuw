@@ -144,7 +144,14 @@
         '<span class="shop">' + esc(p.shop) + '</span>' +
         '<h3><a href="/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+        /* 2.0: alleen bij onze favorieten één korte, echte reden (de eerste zin van 'waarom wij dit kozen'). */
+        (p.favoriet && p.waarom && korteReden(p.waarom) ? '<p class="reden">' + esc(korteReden(p.waarom)) + '</p>' : '') +
       '</div></article>';
+  }
+  /* Alleen als de eerste zin kort genoeg is om heel te tonen; anders liever niets dan een afgekapte zin. */
+  function korteReden(t) {
+    var zin = (t.match(/^[^.!?]{10,}[.!?]/) || [''])[0].trim();
+    return zin.length && zin.length <= 64 ? zin : '';
   }
 
   window.LK = {
