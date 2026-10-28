@@ -145,7 +145,7 @@ window.LK_CATEGORIEEN = [
     tekst: 'Kettingen, oorbellen, ringen en armbanden. Van betaalbaar tot echt goud.', tegel: 'images/categorieen/categorie-sieraden.webp', banner: 'images/banners/banner-cat-sieraden.webp',
     subs: [
       { slug: 'kettingen', naam: 'Kettingen & hangers', beeld: 'images/sub/sub-sieraden-kettingen.webp' }, { slug: 'oorbellen', naam: 'Oorbellen', beeld: 'images/sub/sub-sieraden-oorbellen.webp' }, { slug: 'ringen', naam: 'Ringen', beeld: 'images/sub/sub-sieraden-ringen.webp' }, { slug: 'armbanden', naam: 'Armbanden & enkelbandjes', beeld: 'images/sub/sub-sieraden-armbanden.webp' },
-      { slug: 'heren', naam: 'Voor hem', beeld: 'images/sub/sub-sieraden-heren.webp' }, { slug: 'echt-goud', naam: 'Echt goud', beeld: 'images/sub/sub-sieraden-echt-goud.webp' }, { slug: 'zilver', naam: 'Zilver', beeld: 'images/sub/sub-sieraden-zilver.webp' }, { slug: 'verguld-staal', naam: 'Verguld & staal', beeld: 'images/sub/sub-sieraden-verguld-staal.webp' }
+      { slug: 'heren', naam: 'Voor hem', beeld: 'images/sub/sub-sieraden-heren.webp' }, { slug: 'echt-goud', naam: 'Echt goud', beeld: 'images/sub/sub-sieraden-echt-goud.webp' }, { slug: 'zilver', naam: 'Zilver', beeld: 'images/sub/sub-sieraden-zilver.webp' }, { slug: 'verguld-staal', naam: 'Verguld & staal', beeld: 'images/sub/sub-sieraden-verguld-staal.webp' }, { slug: 'viking', naam: 'Viking-sieraden', beeld: 'images/sub/sub-sieraden-viking.webp' }
     ] },
   { slug: 'dranken', naam: 'Dranken', kort: 'Dranken', icoon: 'glas',
     tekst: 'Mooie flessen om te geven.', tegel: 'images/categorieen/categorie-dranken.webp', banner: 'images/banners/banner-cat-dranken.webp',
@@ -304,6 +304,7 @@ window.LK_ZOEKWOORDEN = {
  "sieraden/echt-goud": "karaat 14k 18k 10k 9k",
  "sieraden/zilver": "sterling 925",
  "sieraden/verguld-staal": "verguld vergulde",
+ "sieraden/viking": "viking vikings mjolnir mjölnir vegvisir valknut yggdrasil",
  "mode-beauty/horloges": "horloge horloges",
  "mode-beauty/geuren": "parfum eau",
  "mode-beauty/verzorging": "bodycrème bodyscrub zeep handcrème massageolie lippenbalsem",
@@ -419,6 +420,7 @@ window.LK_NIETWOORDEN = {
  "sieraden/heren": "herència herencia wijn watch horloge schoen schoenen laars laarzen boots sneakers trui jas broek overhemd shirt sokken tas pantoffels sloffen jumper jacket jeans riem",
  "sieraden/zilver": "gram lavalamp lava drop watch horloge vaas lamp kandelaar dienblad bestek glas glazen schaal fotolijst spiegel kerstbal boom dial",
  "sieraden/echt-goud": "roos verguld vergulde plated",
+ "sieraden/viking": "kettingslot slot fietsslot hoeslaken dekbedovertrek kussensloop mok beker glas drinkhoorn bord kostuum pop playmobil lego baard balsem shirt boek puzzel spel hoed helm zwaard schild",
  "sieraden/verguld-staal": "kast tafel stoel fauteuil spiegel lamp watch horloge vaas kandelaar dienblad bestek fotolijst",
  "sieraden": "gordijn glasgordijn vaas voorwerp drankspel kandelaar lunchbox pop holder stekers bloomring multitool toss fire snoep marmeren discobal paracord survival",
  "mode-beauty/horloges": "snoep",

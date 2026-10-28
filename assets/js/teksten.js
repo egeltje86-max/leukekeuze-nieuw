@@ -384,6 +384,15 @@ window.LK_TEKSTEN = {
       { kop: 'Verguld of staal?', tekst: 'Verguld is zilver of staal met een laagje goud: de goudlook zonder de prijs. Edelstaal is sterk, krast niet snel en verkleurt niet; ideaal voor dagelijks gebruik. Beide zijn een goede keuze als je wel iets moois wilt geven, maar geen honderden euro\'s wilt uitgeven.' }
     ] },
 
+  'sieraden/viking': {
+    tekst: 'Viking-sieraden: Thors hamer, runen, wolven, draken en de Vegvisir. Stoere kettingen, hangers en armbanden van zilver en staal.',
+    seoTitel: 'Viking-sieraden: Thors hamer, runen en wolven als cadeau',
+    seoTekst: 'Viking-sieraden als cadeau: hangers met Thors hamer (Mjölnir), kettingen met wolvenkoppen en draken, armbanden met runen en de Vegvisir. Van echt zilver en sterk staal, voor hem en haar.',
+    gids: [
+      { kop: 'Wat betekenen de tekens?', tekst: 'Thors hamer (Mjölnir) staat voor kracht en bescherming. De Vegvisir is een oud IJslands kompasteken: wie hem draagt, raakt de weg niet kwijt. De valknut (drie driehoeken in elkaar) is het teken van Odin, en Yggdrasil is de levensboom. Wolven en raven horen bij Odin: zijn wolven heten Geri en Freki, zijn raven Huginn en Muninn.' },
+      { kop: 'Zilver of staal?', tekst: 'Echt zilver (925) is mooi bewerkt en houdt zijn waarde. Staal is sterk, verkleurt niet en is betaalbaar; fijn voor elke dag. Let op: veel zilveren hangers komen zonder ketting.' }
+    ] },
+
   /* ---------------- DRANKEN ---------------- */
   'dranken': {
     seoTitel: 'Dranken cadeau: whisky, gin, rum, cognac, champagne en meer',
