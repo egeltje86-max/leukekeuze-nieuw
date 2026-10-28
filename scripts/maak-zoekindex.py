@@ -45,8 +45,29 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
 # Daisycon staat op pauze (LK_INSTELLINGEN.daisyconPauze in assets/js/data.js): dan alleen TradeTracker-winkels in de index.
 # Ditverzinjeniet komt altijd via TradeTracker (t-dvzn), niet meer via Daisycon (x-dvzn).
 PAUZE = bool(re.search(r'daisyconPauze:\s*true', open('assets/js/data.js', encoding='utf-8').read()))
-WINKELS = [w for w in WINKELS if w[0] != 'x-dvzn.json' and (w[0].startswith('t-') or not PAUZE)]
+# Wens Marius (28-10-2026): ook tijdens de pauze ALLE winkels tonen, zodat bezoekers de echte, volle site zien.
+# Tijdens de pauze sturen we Daisycon-links rechtstreeks naar de winkel (zonder Daisycon ertussen), dan werkt elke klik.
+WINKELS = [w for w in WINKELS if w[0] != 'x-dvzn.json']
 print('Daisycon-pauze:', PAUZE, '-', len(WINKELS), 'feeds')
+from urllib.parse import urlparse, parse_qs
+WINKELROOT = {'999 Games': 'https://www.999games.nl/', 'Bartogi': 'https://bartogi.nl/', 'Bloompost': 'https://www.bloompost.nl/',
+              'Decantalo': 'https://www.decantalo.com/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'Dropwinkel': 'https://www.dropwinkel.eu/',
+              'Fietsparadijs': 'https://www.fietsparadijs.com/', 'Fietstas.com': 'https://www.fietstas.com/', 'Invicta': 'https://www.invictastores.eu/',
+              'Kerstland': 'https://www.kerstland.nl/', 'La Redoute': 'https://www.laredoute.nl/', 'Myka': 'https://www.myka.com/',
+              'Prydligt': 'https://www.prydligt.eu/', 'Svinando': 'https://www.svinando.nl/', 'Wijnkring': 'https://www.wijnkring.nl/',
+              'WoodWick': 'https://woodwick.nl/'}
+DAISYCON = re.compile(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/|^https?://aff\.svinando\.be/c/')
+def direct(link, winkel):
+    """Daisycon-link -> gewone winkellink. murl= (volledige url) of dl= (pad achter de winkel). Lukt het niet: None."""
+    q = parse_qs(urlparse(link).query)
+    dl = (q.get('dl') or [''])[0]
+    if not dl: return None
+    if 'murl=' in dl:
+        m = parse_qs(urlparse('x?' + dl.split('?', 1)[-1]).query).get('murl') or parse_qs(dl).get('murl')
+        return m[0] if m and m[0].startswith('http') else None
+    if dl.startswith('http'): return dl
+    root = WINKELROOT.get(winkel)
+    return root + dl.lstrip('/') if root else None
 # Bewust NIET: Mijn Hummeltje (dropshipping, wens van Marius).
 FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'), (r'bracelet', 'armband'), (r"boucles", 'oorbellen'),
       (r'\bbague', 'ring'), (r'echarpe|écharpe|foulard|étole', 'sjaal'), (r'ceinture', 'riem'), (r'\bpull', 'trui'), (r'cardigan', 'vest'),
@@ -84,7 +105,11 @@ for bestand, winkel, b in WINKELS:
         if winkel == 'Zadig & Voltaire':
             cat = ' '.join(nl for fr, nl in FR if re.search(fr, x['titel'], re.I)) or cat
         g = (x.get('gender') or '').lower(); g = 'v' if g == 'female' else ('m' if g == 'male' else '')
-        uit.append([basis(x['titel'])[:120], round(prijs, 2), winkel, x['link'], foto, cat[:40], (x.get('merk') or '')[:40], g])
+        link = x['link']
+        if PAUZE and DAISYCON.search(link):
+            link = direct(link, winkel)
+            if not link: continue
+        uit.append([basis(x['titel'])[:120], round(prijs, 2), winkel, link, foto, cat[:40], (x.get('merk') or '')[:40], g])
     per[winkel] = len(gezien)
 if len(uit) < 1000:  # veiligheid: liever de oude index houden dan een (bijna) lege online zetten
     print('TE WEINIG producten (%d), index niet bijgewerkt' % len(uit)); sys.exit(1)
