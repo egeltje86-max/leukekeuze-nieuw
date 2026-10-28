@@ -228,7 +228,7 @@
         '<section class="sectie eerste">' +
           '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
           '<div class="persoon-subs home">' + window.LK_PERSONEN.map(function (x) {
-            return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
+            return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
           }).join('') + '</div>' +
         '</section>' +
 
@@ -243,7 +243,7 @@
         /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
         '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 3</span><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
           '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN.map(function (x) {
-            return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+            return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
           }).join('') + '</div></section>' +
         (window.LK_COLLECTIES || []).map(function (c) {
           return '<a class="collectie-banner" href="/collectie/' + c.slug + '"><img src="' + esc(c.beeld) + '" alt="" loading="lazy" decoding="async"><div class="collectie-tekst"><span class="kicker">' + esc(c.kicker) + '</span><h2>' + esc(c.naam) + '</h2><p>' + esc(c.tekst) + '</p><span class="knop knop-goud">Bekijk de collectie ' + ic('pijl') + '</span></div></a>';
@@ -361,6 +361,8 @@
       '<div class="binnen"><section class="sectie"><div class="catkaarten">' + CATS.map(catKaart).join('') + '</div></section></div>';
   }
 
+  /* Kleine versie van een rond plaatje (220px) voor de rondjes: scheelt zo'n 90% aan data per rondje. */
+  function kleinBeeld(src) { return src && src.indexOf('images/sub/') === 0 && /\.webp$/.test(src) && src.indexOf('-klein.webp') === -1 ? src.replace(/\.webp$/, '-klein.webp') : src; }
   function paginakop(o) {
     var achter = '';
     /* Op een telefoon een kleinere, al bijgesneden versie van de banner (-mobiel.webp): scheelt zo'n 70% aan data. */
@@ -392,7 +394,7 @@
     var subs = '<div class="subkaarten">' +
       '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
       volleSubs(c).map(function (x) {
-        var beeld = x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
+        var beeld = x.beeld ? '<img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
         return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget(subAdres(c, x)) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
           '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
       }).join('') + '</div>';
@@ -469,10 +471,10 @@
       var n = persoonProducten(pe, x.vakken).length;
       if (!n) return '';
       return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget('/voor/' + pe.slug + '/' + x.slug) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-        '<span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+        '<span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
     }).join('');
     var subsHtml = s
-      ? '<div class="subkaarten"><a class="subkaart" href="' + metBudget('/voor/' + pe.slug) + '"><span class="rond"><img src="' + esc(pe.beeld) + '" alt=""></span>Alles</a>' + subs + '</div>'
+      ? '<div class="subkaarten"><a class="subkaart" href="' + metBudget('/voor/' + pe.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(pe.beeld)) + '" alt=""></span>Alles</a>' + subs + '</div>'
       : '<div class="persoon-subs">' + subs + '</div>';
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
@@ -509,7 +511,7 @@
       (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Voor iemand anders?</h2></div></div>' +
         '<div class="subkaarten voorwie-rij">' + anderen.map(function (x) {
-          return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
+          return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
         }).join('') + '</div></section>' +
     '</div>';
   }
@@ -547,7 +549,7 @@
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere gelegenheden</h2></div></div>' +
         '<div class="subkaarten voorwie-rij">' + andere.map(function (x) {
-          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
         }).join('') + '</div></section>' +
     '</div>';
   }
@@ -556,7 +558,7 @@
       zetTitel('Gelegenheden');
       return paginakop({ titel: 'Gelegenheden', tekst: 'Voor elk moment een passend cadeau.', kruimel: [{ tekst: 'Gelegenheden' }] }) +
         '<div class="binnen"><section class="sectie eerste"><div class="persoon-subs">' + window.LK_GELEGENHEDEN.map(function (x) {
-          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
         }).join('') + '</div></section></div>';
     }
     var g = window.LK_GELEGENHEID(slug);
@@ -573,7 +575,7 @@
     zetTitel('Voor wie zoek je een cadeau?');
     return paginakop({ titel: 'Voor wie zoek je een cadeau?', tekst: 'Kies voor wie het is. Daarna zie je alleen wat bij die persoon past.', kruimel: [{ tekst: 'Voor wie?' }] }) +
       '<div class="binnen"><section class="sectie eerste"><div class="persoon-subs">' + window.LK_PERSONEN.map(function (x) {
-        return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
+        return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
       }).join('') + '</div></section></div>';
   }
 
@@ -1638,7 +1640,7 @@
     $('[data-lade]').innerHTML =
       (uit ? '<a class="lade-uitgelicht" href="/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
       '<div class="lade-label">Voor wie?</div><div class="lade-personen">' + window.LK_PERSONEN.map(function (x) {
-        return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(x.beeld) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
+        return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
       }).join('') + '</div>' +
       '<div class="lade-label">Producten</div><ul>' + rest.map(ladeRij).join('') + '</ul>' +
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + (window.LK_GELEGENHEDEN || []).map(function (g) { return '<a href="' + (g.naar || '/gelegenheid/' + g.slug) + '">' + esc(g.naam) + '</a>'; }).concat((window.LK_COLLECTIES || []).map(function (c) { return '<a href="/collectie/' + c.slug + '"><strong>' + esc(c.naam) + '</strong></a>'; })).join('') + '</div>' +

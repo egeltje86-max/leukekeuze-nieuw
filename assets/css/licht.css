@@ -191,3 +191,9 @@ body { background: var(--bg); color: var(--tekst); }
 .chip.verras svg { width: 15px; height: 15px; }
 .werkbalk-onder { flex-wrap: wrap; }
 .werkbalk-onder .aantal { margin-right: auto; }
+/* Toegankelijkheid: grotere tikdoelen voor kleine links, minder bewegen als iemand dat instelt. */
+.footer-onder a { display: inline-block; padding: 8px 2px; }
+.sectie-kop .meer { padding: 8px 0; }
+.kruimel a { display: inline-block; padding: 6px 0; }
+.prodkaart .shop { font-size: 11.5px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; } }
