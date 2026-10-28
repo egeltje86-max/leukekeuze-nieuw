@@ -1065,6 +1065,28 @@
           ids: ['bol-9300000237452859', 'bol-9300000002319410', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega: 12 ideeën</a>.' },
+    { slug: 'kerststal-kopen', beeld: 'bol-9300000161906004', vakken: ['christelijk/kerststal-engelen', 'christelijk/kerst', 'christelijk/voor-kinderen', 'cadeaus/kerst'],
+      titel: 'Kerststal kopen: van houten speelstal tot mooie kerststal voor in de kamer', kort: 'Houten kerststallen voor kinderen, sfeervolle stallen voor in huis en kleine kerststalletjes. Van 18 tot 505 euro.',
+      intro: 'Een kerststal hoort bij Kerst. Hij laat zien waar het met Kerst echt om gaat: de geboorte van Jezus in de stal in Bethlehem. Maar welke kies je? Een houten stal waar kinderen mee mogen spelen, een mooie stal voor op de kast, of een klein stalletje voor in de vensterbank? Ik zette ze per soort op een rij, met tips waar je op let als je een kerststal koopt.',
+      delen: [
+        { kop: 'Waar let je op als je een kerststal koopt?', tekst: 'Een paar dingen om even over na te denken voordat je bestelt.',
+          lijst: [
+            'Spelen of kijken: met kleine kinderen in huis kies je een stevige houten stal. Porselein en steen zijn mooi, maar breken als ze vallen.',
+            'Met of zonder figuren: sommige stallen zijn alleen het huisje. Kijk goed of Maria, Jozef, het kindje Jezus, de herders en de wijzen erbij zitten.',
+            'Maat: meet de plek waar hij komt te staan. Losse figuren moeten ook in de stal passen.',
+            'Licht: een stal met een lampje of een lichtgevende ster geeft ’s avonds veel sfeer. Kijk of er batterijen nodig zijn.',
+            'Elk jaar iets erbij: bij een merk als Ostheimer kun je elk jaar een figuur bijkopen. Zo groeit de kerststal mee met het gezin.'
+          ] },
+        { kop: 'Houten kerststallen voor kinderen', tekst: 'Om mee te spelen en het kerstverhaal na te vertellen. Stevig hout, dus het mag een keer vallen.',
+          ids: ['bol-9300000229367620', 'bol-9200000101182379', 'bol-9300000229915007', 'bol-9200000019512265', 'bol-9200000091616642', 'bol-9300000161906004'] },
+        { kop: 'Sfeervolle kerststallen voor in de kamer', tekst: 'Voor op de kast, de schoorsteenmantel of onder de kerstboom.',
+          ids: ['bol-9300000361763981', 'bol-9300000354379582', 'bol-9300000354373407', 'bol-9300000168431338', 'bl-10203173', 'bol-9300000237391244'] },
+        { kop: 'Klein en bijzonder', tekst: 'Voor in de vensterbank, als cadeautje, of voor wie weinig ruimte heeft.',
+          ids: ['bol-9300000409796863', 'bol-9300000251343822', 'bol-9200000045618541', 'bol-9300000197109186'] },
+        { kop: 'Voor een leven lang: Ostheimer', tekst: 'Met de hand gemaakt in Duitsland, van massief hout. Duurder, maar zo’n stal geef je later door aan je kinderen.',
+          ids: ['bol-9200000045616958', 'bol-9200000045615078', 'bol-9200000045616978', 'bol-9200000045616830'] }
+      ],
+      slot: 'Meer kerststallen en engelen staan bij <a href="/c/christelijk/kerststal-engelen">Kerststallen &amp; engelen</a>. Zoek je iets voor kinderen? Kijk dan bij <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>.' },
     { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/figuren-voertuigen', 'elektronica/gaming', 'cadeaus/sint-onder-15'],
       titel: 'De hypes van 2026: waar kinderen en tieners nu gek op zijn', kort: 'Tamagotchi, verrassingsdoosjes, KPop Demon Hunters en meer: dit staat op elk verlanglijstje.',
       intro: 'Elk jaar zijn er een paar dingen waar ineens iedereen het over heeft, op het schoolplein en op TikTok. In 2026 zijn dat de Tamagotchi (ja, die van vroeger), verrassingsdoosjes en tashangers, alles van KPop Demon Hunters, Pokémon en Stitch. Hier vind je ze op een rij, zodat je precies weet waar je kind of kleinkind blij van wordt.',
@@ -1150,7 +1172,61 @@
         { kop: 'Erbij voor een filmavond', tekst: 'Lichten uit, lamp aan, film starten.',
           ids: ['bol-9300000340258889', 'bol-9300000363626899', 'bol-9300000252154423', 'bol-9300000166331103'] }
       ],
-      slot: 'Meer lampen vind je bij <a href="/c/wonen/verlichting">Verlichting</a>.' }
+      slot: 'Meer lampen vind je bij <a href="/c/wonen/verlichting">Verlichting</a>.' },
+    { slug: 'afscheidscadeau-collega', beeld: 'bol-9300000242745735', vakken: ['cadeaus/collega'],
+      titel: 'Afscheidscadeau voor een collega: grappig, persoonlijk of met het hele team', kort: 'Gaat er een collega weg? Ideeën van een grappige mok tot een cadeau waar het hele team aan meebetaalt.',
+      intro: 'Een collega die weggaat wil je niet zomaar laten gaan. Met een afscheidscadeau laat je zien dat je de samenwerking fijn vond. Het hoeft niet duur te zijn: een mok met een knipoog of een boek waarin iedereen iets schrijft, maakt vaak meer indruk dan een dure fles. Geef je met het hele team? Dan kun je samen voor iets groters gaan. Hieronder vind je ideeën in elke prijsklasse, en tips om het samen te regelen.',
+      delen: [
+        { kop: 'Met een knipoog (tot €20)', tekst: 'Een beetje plagen mag bij een afscheid. Zo laat je zien dat je haar of hem gaat missen.',
+          ids: ['bol-9300000242745735', 'bol-9300000238049219', 'amz-b0cnkf8w3q', 'amz-b0g3hmpmjf'] },
+        { kop: 'Om samen in te schrijven', tekst: 'Een boek waarin iedere collega een berichtje of herinnering schrijft. Dat bewaart iemand jaren.',
+          ids: ['amz-9465708399', 'bol-9200000064944767'] },
+        { kop: 'Voor op de nieuwe werkplek (€10 tot €30)', tekst: 'Iets handigs voor de nieuwe baan, zodat ze bij elke kop koffie even aan jullie denken.',
+          ids: ['bol-9300000256133316', 'bol-9300000039415364', 'dvzn-847923', 'dvzn-7029'] },
+        { kop: 'Met het hele team (€25 en meer)', tekst: 'Als iedereen een paar euro geeft, kun je samen voor iets moois gaan.',
+          ids: ['bol-9300000237452859', 'bol-9300000021869451', 'bol-9300000174098365', 'bol-9300000015405237'] },
+        { kop: 'Zo regel je het samen in 4 stappen', tekst: 'Met een paar afspraken is het zo geregeld.',
+          stappen: [
+            'Spreek af wie het regelt en hoeveel iedereen ongeveer geeft. Een vast bedrag van 5 of 10 euro per persoon voorkomt gedoe.',
+            'Haal het geld op met een betaalverzoek. Dan hoeft niemand contant geld mee te nemen.',
+            'Laat een kaart of afscheidsboek stil rondgaan, zodat iedereen erin kan schrijven zonder dat de collega het ziet.',
+            'Geef het cadeau op de laatste werkdag, met een kort praatje. Een paar zinnen over wat je gaat missen is genoeg.'
+          ] }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega</a>. Gaat iemand met pensioen? Lees dan <a href="/gids/cadeau-voor-pensioen">Cadeau voor pensioen</a>.' },
+    { slug: 'cadeau-voor-pensioen', beeld: 'bol-9300000171232502', vakken: ['cadeaus/collega', 'cadeaus/opa-oma'],
+      titel: 'Cadeau voor pensioen: voor een collega, je vader of je moeder', kort: 'Grappige cadeaus, iets om te bewaren en spullen voor de nieuwe hobby. Van 9 tot 259 euro.',
+      intro: 'Na jaren werken eindelijk met pensioen. Daar hoort een cadeau bij! Maar wat geef je iemand die ineens alle tijd heeft? Iets grappigs voor de afscheidsreceptie, iets om de herinneringen aan het werk te bewaren, of juist iets voor de hobby waar nu eindelijk tijd voor is: vogels kijken, fietsen, tuinieren of schatzoeken met een metaaldetector. Ik zette de beste ideeën op een rij.',
+      delen: [
+        { kop: 'Met een knipoog', tekst: 'Voor op de afscheidsreceptie. Daar wordt om gelachen.',
+          ids: ['dvzn-734300', 'amz-b0hgq4q3pd', 'bol-9300000234965416', 'bol-9300000385427142'] },
+        { kop: 'Om te bewaren', tekst: 'Laat collega’s, familie en vrienden iets schrijven. Dat leest iemand later nog vaak terug.',
+          ids: ['amz-b0b3tdry1m', 'bol-9200000064944767', 'dvzn-452003', 'amz-b0d95l6674'] },
+        { kop: 'Voor de nieuwe hobby', tekst: 'Eindelijk tijd voor wat je altijd al wilde doen. Met deze cadeaus kan iemand meteen beginnen.',
+          ids: ['bol-9300000171232502', 'bol-9200000018494649', 'bol-9200000010409823', 'bol-9200000075382464', 'bol-9300000057830180', 'bol-9300000007378766'] },
+        { kop: 'Tip: geef er een afspraak bij', tekst: 'Het mooiste cadeau voor iemand met pensioen is soms gewoon tijd samen. Schrijf op een kaartje bij je cadeau een afspraak: samen fietsen, samen naar de vogels kijken of een dagje uit. Dan heeft het cadeau meteen een plan erbij.' }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a>, <a href="/c/dieren/vogels">Vogels</a> en <a href="/c/metaaldetectie">Metaaldetectie</a>. Gaat er een collega weg naar een nieuwe baan? Lees dan <a href="/gids/afscheidscadeau-collega">Afscheidscadeau voor een collega</a>.' },
+    { slug: 'kinderbijbel-kiezen', beeld: 'bol-9300000235874233', vakken: ['christelijk/bijbels', 'christelijk/voor-kinderen', 'christelijk/doop-belijdenis'],
+      titel: 'Kinderbijbel kiezen: welke past bij welke leeftijd?', kort: 'Van babybijbel tot kinderbijbel voor elke dag. Per leeftijd de mooiste op een rij.',
+      intro: 'Een kinderbijbel is een mooi cadeau voor een doop, een verjaardag of gewoon zomaar. Maar er zijn er heel veel. Welke past bij jouw kind of kleinkind? Dat hangt vooral af van de leeftijd. Een baby heeft iets aan stevige bladzijden en grote plaatjes. Een kind van acht wil zelf lezen en vindt een verhaal voor elke dag fijn. Hieronder vind je per leeftijd de kinderbijbels die ik het mooist vind, en waar je op let.',
+      delen: [
+        { kop: 'Waar let je op?', tekst: 'Drie vragen helpen je kiezen.',
+          lijst: [
+            'Hoe oud is het kind? Voor de kleinsten: korte verhalen en grote plaatjes. Voor oudere kinderen: meer tekst en meer verhalen.',
+            'Voorlezen of zelf lezen? Een voorleesbijbel heeft langere verhalen. Wil het kind zelf lezen, kies dan grote letters en korte zinnen.',
+            'Hoe dicht bij de Bijbel? Sommige kinderbijbels vertellen de verhalen vrij na. Andere blijven dicht bij de woorden van de Bijbel, zoals de HSV Kinderbijbel.'
+          ] },
+        { kop: 'Baby’s en dreumesen (0 tot 2 jaar)', tekst: 'Weinig tekst en vrolijke plaatjes. Fijn om samen te bekijken.',
+          ids: ['bol-9200000090540712', 'bol-9300000184006004', 'bol-9300000127699829', 'bol-9300000197756065'] },
+        { kop: 'Peuters en kleuters (2 tot 5 jaar)', tekst: 'Korte verhalen om voor te lezen, met plaatjes waar ze veel in kunnen ontdekken.',
+          ids: ['bol-9200000114277642', 'bol-9300000005322306', 'bol-9200000130050250', 'bol-9300000249426301'] },
+        { kop: 'Jonge kinderen (4 tot 8 jaar)', tekst: 'Meer verhalen, uit het Oude en het Nieuwe Testament. Om voor te lezen aan tafel of voor het slapengaan.',
+          ids: ['bol-9300000139904477', 'bol-9200000012820590', 'bol-9300000263045759', 'bol-1001004001847857', 'bol-9200000101887063'] },
+        { kop: 'Voor elke dag (6 tot 12 jaar)', tekst: 'Een verhaal voor elke dag van het jaar, of een kinderbijbel die dicht bij de Bijbel blijft. Ook om zelf in te lezen.',
+          ids: ['bol-9300000235874233', 'bol-9300000130260497', 'bol-9200000052023945', 'bol-9300000337284179'] }
+      ],
+      slot: 'Meer bijbels en boeken staan bij <a href="/c/christelijk/bijbels">Bijbels</a> en <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>. Zoek je een cadeau voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' }
   ];
   /* Rij met cadeaugidsen op de homepage: de eerste 4 uit GIDSEN (zet seizoensgidsen dus bovenaan de lijst). */
   function gidsenRij() {
