@@ -67,6 +67,7 @@ def direct(link, winkel):
         return m[0] if m and m[0].startswith('http') else None
     if dl.startswith('http'): return dl
     root = WINKELROOT.get(winkel)
+    dl = re.sub(r'\.aspx(?=[a-z])', '.aspx?', dl)   # La Redoute: het vraagteken ontbreekt in de feed
     return root + dl.lstrip('/') if root else None
 # Bewust NIET: Mijn Hummeltje (dropshipping, wens van Marius).
 FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'), (r'bracelet', 'armband'), (r"boucles", 'oorbellen'),
