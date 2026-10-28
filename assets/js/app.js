@@ -432,6 +432,12 @@
     var s = subSlug ? pe.subs.filter(function (x) { return x.slug === subSlug; })[0] : null;
     if (subSlug && !s) return nietGevonden();
     zetTitel(s ? (s.seoTitel || s.naam + ' voor ' + pe.naam.replace(/^Voor /, '')) : pe.seoTitel || pe.naam);
+    /* Teksten en tips van de oude pagina (/c/cadeaus/voor-hem …) gaan mee naar de nieuwe. */
+    var oudSub = null;
+    if (pe.oud) { var od = pe.oud.split('/'), oc = window.LK_CAT(od[0]); oudSub = oc ? window.LK_SUB(oc, od[1]) : null; }
+    var T = (window.LK_TEKSTEN || {})[pe.oud || ''] || {};
+    window.LK_SEO = (s ? '' : (oudSub && oudSub.seoTekst) || T.seoTekst) || '';
+    var tips = s ? null : ((oudSub && oudSub.gids) || T.gids);
     var pad = '/voor/' + pe.slug + (s ? '/' + s.slug : '');
     var naam = pe.naam.replace(/^Voor /, '');
     var alles = persoonProducten(pe, s ? s.vakken : null);
@@ -478,7 +484,10 @@
       (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div>' + rij(selectie) + '</section>' : '') +
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties)) +
+      /* Op een subpagina ook 'Meer in onze winkels' uit het eerste vak (bijv. mode-beauty/horloges). */
+      (s && alles.length ? (function () { var vd = s.vakken[0].split('/'); return winkelSectie(vd[0], vd[1], q.prijs); })() : '') +
       leesOok(pe.oud || '') +
+      (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Voor iemand anders?</h2></div></div>' +
         '<div class="subkaarten voorwie-rij">' + anderen.map(function (x) {
           return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
@@ -1635,6 +1644,11 @@
     onthoudPlek();
     laatstGetoond = huidigAdres();
     var a = leesAdres(), d = a.delen, html;
+    /* 2.0: oude persoonspagina's (/c/cadeaus/voor-hem …) gaan door naar /voor/… */
+    if (d[0] === 'c' && d[1] === 'cadeaus' && d[2]) {
+      var oudNaarNieuw = window.LK_PERSONEN.filter(function (x) { return x.oud === 'cadeaus/' + d[2]; })[0];
+      if (oudNaarNieuw) { ga('/voor/' + oudNaarNieuw.slug + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
+    }
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();
     else if (d[0] === 'c') html = categorie(d[1], d[2], a.q);

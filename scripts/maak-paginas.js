@@ -180,16 +180,20 @@ function maakPagina(info, lade, mega) {
     'cadeaugids': '/gids/', 'cadeaugidsen': '/gids/',
     'cadeaugids/cadeau-voor-collega': '/gids/cadeau-voor-collega/',
     'cadeaugids/sinterklaas': '/c/cadeaus/sinterklaas/',
-    'cadeaugids/cadeau-voor-vriendin': '/c/cadeaus/voor-haar/',
-    'cadeaugids/origineel-cadeau-voor-vader': '/c/cadeaus/voor-hem/',
+    'cadeaugids/cadeau-voor-vriendin': '/voor/haar/',
+    'cadeaugids/origineel-cadeau-voor-vader': '/voor/hem/',
     'cadeaugids/cadeau-voor-dierenliefhebber': '/c/dieren/',
-    'christelijke-cadeaus': '/c/christelijk/', 'cadeaus-voor-kinderen': '/c/cadeaus/voor-kinderen/',
-    'cadeauzoeker': '/vonk/', 'babycadeaus': '/c/cadeaus/baby-kraam/',
-    'hoe-het-werkt': '/info/hoe-werkt-het/', 'privacy': '/info/privacy/'
+    'christelijke-cadeaus': '/c/christelijk/', 'cadeaus-voor-kinderen': '/voor/kinderen/',
+    'cadeauzoeker': '/vonk/', 'babycadeaus': '/voor/baby/',
+    'hoe-het-werkt': '/info/hoe-werkt-het/', 'privacy': '/info/privacy/',
+    /* 2.0: de persoonspagina's zijn verhuisd van /c/cadeaus/... naar /voor/... (deze worden altijd overschreven). */
+    'c/cadeaus/voor-hem': '/voor/hem/', 'c/cadeaus/voor-haar': '/voor/haar/', 'c/cadeaus/voor-kinderen': '/voor/kinderen/',
+    'c/cadeaus/opa-oma': '/voor/opa-oma/', 'c/cadeaus/collega': '/voor/collega/', 'c/cadeaus/baby-kraam': '/voor/baby/'
   };
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
-    if (fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
+    const altijd = /^c\/cadeaus\//.test(oudPad);
+    if (!altijd && fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
     fs.mkdirSync(path.dirname(doel), { recursive: true });
     fs.writeFileSync(doel, '<!doctype html>\n<html lang="nl" data-verhuisd><head><meta charset="utf-8">\n<title>Deze pagina is verhuisd | LeukeKeuze</title>\n' +
       '<link rel="canonical" href="' + SITE + nieuwPad + '">\n<meta http-equiv="refresh" content="0; url=' + nieuwPad + '">\n' +
