@@ -694,6 +694,50 @@
     if (t.indexOf(w) === -1) return false;
     return NIET_IN[w] ? t.split(NIET_IN[w]).join(' ').indexOf(w) !== -1 : true;
   }
+  /* 2.0: 'Bedoel je…': welke pagina's passen bij het zoekwoord? Eerst de persoonspagina's (Horloges voor hem),
+     dan gelegenheden en collecties, dan de productgroepen. Zo kom je in één tik op de goede afdeling. */
+  function paginaTips(woorden) {
+    if (!woorden.length) return [];
+    var ZW = window.LK_ZOEKWOORDEN || {}, TIPS = window.LK_ZOEKTIPS || {}, uit = [], gezien = {};
+    var past = function (naam, extra) {
+      var n = ' ' + vouw(naam).replace(/[^a-z0-9]+/g, ' ') + ' ' + (extra || '');
+      return woorden.some(function (w) { return w.length >= 3 && (n.indexOf(' ' + w) !== -1 || n.split(' ').some(function (x) { return x.length >= 5 && lijkt(w, x); })); });
+    };
+    var voeg = function (naam, naar, soort) { if (!gezien[naar]) { gezien[naar] = 1; uit.push({ naam: naam, naar: naar, soort: soort }); } };
+    var PERS = window.LK_PERSONEN || [];
+    /* a. subcategorie van een persoon: 'horloge' → Horloges voor hem / voor haar / voor tieners */
+    PERS.forEach(function (pe) { (pe.subs || []).forEach(function (su) {
+      var vakwoorden = su.vakken.map(function (v) { return (ZW[v] || '') + ' ' + (TIPS[v] || ''); }).join(' ');
+      if (past(su.naam, vakwoorden)) voeg(su.naam + ' <small>' + esc(pe.naam.toLowerCase()) + '</small>', '/voor/' + pe.slug + '/' + su.slug, 'persoon');
+    }); });
+    /* b. de persoon zelf: 'oma' → Opa & oma, 'collega' → Collega's */
+    PERS.forEach(function (pe) { if (past(pe.naam, pe.labels.join(' ') + ' ' + (ZW[pe.oud] || ''))) voeg(pe.naam, '/voor/' + pe.slug, 'persoon'); });
+    /* c. gelegenheden en collecties */
+    (window.LK_GELEGENHEDEN || []).forEach(function (g) { if (past(g.naam)) voeg(g.naam, g.naar || '/gelegenheid/' + g.slug, 'gelegenheid'); });
+    (window.LK_COLLECTIES || []).forEach(function (g) { if (past(g.naam, 'naam gepersonaliseerd persoonlijk gegraveerd gravure')) voeg(g.naam, '/collectie/' + g.slug, 'collectie'); });
+    /* d. productgroepen en hun subs (christelijk alleen bij echt christelijke woorden) */
+    ALLECATS.forEach(function (c) {
+      if (c.verborgen) return;
+      var chr = c.slug === 'christelijk';
+      /* Woorden van de groep: alleen uit de subs die er echt (nog) onder vallen, niet uit verborgen subs (horloges staan niet meer onder Mode). */
+      var groepWoorden = (c.subs || []).filter(function (su) { return !su.verborgen && !su.naar; }).map(function (su) { var sl = su.vak || (c.slug + '/' + su.slug); return (ZW[sl] || '') + ' ' + (TIPS[sl] || ''); }).join(' ') + ' ' + (TIPS[c.slug] || '');
+      if (chr ? past('', TIPS[c.slug]) : past(c.naam, groepWoorden)) voeg(c.naam, '/c/' + c.slug, 'groep');
+      (c.subs || []).forEach(function (su) {
+        if (su.naar || su.verborgen) return;
+        var sl = su.vak || (c.slug + '/' + su.slug);
+        if (chr ? past('', TIPS[sl]) : past(su.naam, (ZW[sl] || '') + ' ' + (TIPS[sl] || ''))) voeg(c.kort.indexOf(su.naam) === -1 ? su.naam + ' <small>' + esc(c.kort) + '</small>' : 'Alle ' + su.naam.toLowerCase(), '/c/' + c.slug + '/' + su.slug, 'groep');
+      });
+    });
+    /* Past zowel de groep als een sub ervan (Sieraden & Horloges én Horloges), dan alleen de sub: die is preciezer. */
+    uit = uit.filter(function (t) { return !(t.soort === 'groep' && t.naar.split('/').length === 3 && uit.some(function (x) { return x.naar.indexOf(t.naar + '/') === 0; })); });
+    /* Persoonspagina's hebben alleen zin als er ook producten staan. */
+    return uit.filter(function (t) {
+      if (t.soort !== 'persoon') return true;
+      var d = t.naar.split('/'), pe = window.LK_PERSOON(d[2]); if (!pe) return false;
+      var su = d[3] ? (pe.subs || []).filter(function (x) { return x.slug === d[3]; })[0] : null;
+      return persoonProducten(pe, su ? su.vakken : null).length > 0;
+    }).slice(0, 8);
+  }
   /* Zoekt in onze eigen producten. Eerst precies; vindt dat niets, dan met één tikfout per woord. */
   function zoekLijst(woorden, prijs) {
     var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
@@ -742,27 +786,11 @@
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
-    /* Past het zoekwoord bij een categorie? Dan die er meteen bij zetten ('fiets' → Fietsen), zo kom je sneller op de goede pagina. */
-    var catTips = [];
-    if (woorden.length) {
-      var ZW = window.LK_ZOEKWOORDEN || {}, TIPS = window.LK_ZOEKTIPS || {};
-      /* Christelijke cadeaus alleen als tip bij echt christelijke woorden (bijbel, doop, …), niet bij 'kerst' of 'kaart'. */
-      var pastBij = function (naam, sleutel, alleenTips) {
-        var n = ' ' + vouw(naam).replace(/[^a-z0-9]+/g, ' '), z = ' ' + (ZW[sleutel] || '') + ' ' + (TIPS[sleutel] || '');
-        if (alleenTips) { n = ''; z = ' ' + (TIPS[sleutel] || ''); }
-        return woorden.some(function (w) { return w.length >= 3 && (n.indexOf(' ' + w) !== -1 || z.indexOf(' ' + w) !== -1); });
-      };
-      ALLECATS.forEach(function (c) {
-        var chr = c.slug === 'christelijk';
-        if (pastBij(c.naam, c.slug, chr)) catTips.push({ naam: c.naam, naar: '/c/' + c.slug });
-        c.subs.forEach(function (su) { if (!su.naar && pastBij(su.naam, c.slug + '/' + su.slug, chr)) catTips.push({ naam: su.naam + ' <small>' + esc(c.kort) + '</small>', naar: '/c/' + c.slug + '/' + su.slug }); });
-      });
-      catTips = catTips.slice(0, 5);
-    }
+    var catTips = paginaTips(woorden);
     return paginakop({ titel: titel, kruimel: [{ tekst: 'Zoeken' }] }) +
       '<div class="binnen">' +
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
-        (catTips.length ? '<div class="zoek-cats"><span>Bekijk ook:</span><div class="chips">' + catTips.map(function (t) { return '<a class="chip" href="' + t.naar + '">' + t.naam + '</a>'; }).join('') + '</div></div>' : '') +
+        (catTips.length ? '<div class="bedoel-je"><h2>Bedoel je…</h2><div class="bedoel-knoppen">' + catTips.map(function (t) { return '<a class="bedoel' + (t.soort === 'persoon' ? ' persoon' : '') + '" href="' + t.naar + '">' + ic('rechts') + '<span>' + t.naam + '</span></a>'; }).join('') + '</div></div>' : '') +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         filterPaneel('/zoek', q) +
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
@@ -1939,7 +1967,10 @@
     var woorden = zoekWoorden(q), lijst = zoekLijst(woorden, '');
     var sc = {}; lijst.forEach(function (p) { sc[p.id] = zoekScore(p, woorden); });
     lijst.sort(function (a, b) { return sc[b.id] - sc[a.id]; });
-    var html = lijst.slice(0, 6).map(function (p) {
+    var html = paginaTips(woorden).slice(0, 4).map(function (t) {
+      return '<a class="zt-item zt-pagina" href="' + t.naar + '"><span class="zt-ic">' + ic('rechts') + '</span><span class="zt-titel">' + t.naam + '</span></a>';
+    }).join('');
+    html += lijst.slice(0, 5).map(function (p) {
       return '<a class="zt-item" href="/p/' + esc(p.id) + '"><img src="' + esc(p.beeld) + '-klein.webp" alt="" loading="lazy">' +
         '<span class="zt-titel">' + esc(p.titel) + '</span><span class="zt-prijs">' + LK.euro(p.prijs) + '</span></a>';
     }).join('');

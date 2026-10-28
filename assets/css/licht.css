@@ -154,3 +154,20 @@ body { background: var(--bg); color: var(--tekst); }
 .vonk-keuze:hover, .vonk-optie:hover { border-color: var(--goud); }
 @media (min-width: 600px) { .persoon-subs.gelegenheden { grid-template-columns: repeat(5, 1fr); } }
 .sectie-kop .kicker { font: 700 10.5px/1 var(--f-ui); letter-spacing: .22em; text-transform: uppercase; color: var(--goud-donker); margin: 0 0 6px; display: block; }
+/* 'Bedoel je…' op de zoekpagina en pagina-tips tijdens het typen */
+.bedoel-je { margin: 16px 0 6px; }
+.bedoel-je h2 { font: 500 20px/1.2 var(--f-kop); margin-bottom: 10px; }
+.bedoel-knoppen { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (min-width: 760px) { .bedoel-knoppen { grid-template-columns: repeat(4, 1fr); } }
+.bedoel { display: flex; align-items: center; gap: 8px; padding: 12px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--lijn); font: 600 14px/1.25 var(--f-ui); color: var(--tekst); box-shadow: 0 2px 8px rgba(10,16,32,.05); }
+.bedoel svg { width: 16px; height: 16px; flex: none; color: var(--goud-donker); }
+.bedoel small { display: block; font: 500 11.5px/1.2 var(--f-ui); color: var(--tekst-3); }
+.bedoel.persoon { border-color: rgba(184,134,46,.45); background: #FFFBF3; }
+.bedoel:hover { border-color: var(--goud); }
+.zoek-tips .zt-pagina { background: #FFFBF3; font-weight: 600; }
+.zoek-tips .zt-pagina + .zt-item:not(.zt-pagina) { border-top: 1px solid var(--lijn-zacht); }
+.zoek-tips .zt-ic { width: 44px; height: 44px; display: grid; place-items: center; color: var(--goud-donker); flex: none; }
+.zoek-tips .zt-ic svg { width: 18px; height: 18px; }
+.zoek-tips .zt-titel small { color: var(--tekst-3); font-weight: 500; }
+.zoek-tips .zt-pagina { padding: 4px 14px; }
+.zoek-tips .zt-ic { width: 32px; height: 32px; }

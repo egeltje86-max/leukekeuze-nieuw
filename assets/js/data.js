@@ -538,7 +538,7 @@ window.LK_PERSONEN = [
       { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/sub/sub-metaaldetectie-kinderen-beginners.webp', vakken: ['metaaldetectie'], seoTitel: 'Metaaldetector voor kinderen', tekst: 'Een eerste detector voor jonge schatzoekers.' },
       { slug: 'sinterklaas', naam: 'Sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', vakken: ['cadeaus/sinterklaas'], seoTitel: 'Sinterklaascadeau voor kinderen', tekst: 'Cadeautjes voor in de schoen en voor pakjesavond.' },
       { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders-2026b.webp', vakken: ['cadeaus/adventskalenders'], seoTitel: 'Adventskalender voor kinderen', tekst: 'Aftellen naar Kerst met LEGO, Playmobil of chocolade.' },
-      { slug: 'schoenen-kleding', naam: 'Schoenen & kleding', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp', vakken: ['mode-beauty'], seoTitel: 'Kinderschoenen en kleding cadeau', tekst: 'Laarsjes, sloffen en vrolijke kleding.' },
+      { slug: 'schoenen-kleding', naam: 'Schoenen & kleding', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp', vakken: ['mode-beauty/schoenen', 'mode-beauty/kleding', 'mode-beauty/rugzakken-reistassen'], seoTitel: 'Kinderschoenen en kleding cadeau', tekst: 'Laarsjes, sloffen en vrolijke kleding.' },
       { slug: 'lekkers', naam: 'Lekkers', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp', vakken: ['eten-drinken'], seoTitel: 'Lekkers cadeau voor kinderen', tekst: 'Snoep, chocolade en kleine traktaties.' },
       { slug: 'buiten-tuin', naam: 'Tuin & natuur', beeld: 'images/sub/sub-tuin-klussen-planten-zaden.webp', vakken: ['tuin-klussen', 'dieren'], seoTitel: 'Natuurcadeau voor kinderen', tekst: 'Zaadjes, vogelhuisjes en ontdekken in de tuin.' }
     ] },
@@ -580,7 +580,7 @@ window.LK_PERSONEN = [
       { slug: 'planten', naam: 'Planten', beeld: 'images/sub/sub-tuin-klussen-planten-zaden.webp', vakken: ['tuin-klussen'], seoTitel: 'Plant cadeau voor een collega', tekst: 'Een plantje of bloembollen voor op het bureau of thuis.' },
       { slug: 'wonen-sfeer', naam: 'Wonen & sfeer', beeld: 'images/sub/sub-wonen-woonaccessoires.webp', vakken: ['wonen'], seoTitel: 'Sfeercadeau voor een collega', tekst: 'Kaarsen, geurstokjes en kleine woonaccessoires.' },
       { slug: 'gadgets', naam: 'Gadgets', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp', vakken: ['elektronica'], seoTitel: 'Gadgets voor een collega', tekst: 'Handige en grappige gadgets voor op het werk.' },
-      { slug: 'spelletjes', naam: 'Spelletjes', beeld: 'images/sub/sub-speelgoed-kaartspellen.webp', vakken: ['speelgoed'], seoTitel: 'Spelletjes voor collega\'s', tekst: 'Kaartspellen en kleine spellen voor de pauze of het teamuitje.' },
+      { slug: 'spelletjes', naam: 'Spelletjes', beeld: 'images/sub/sub-speelgoed-kaartspellen.webp', vakken: ['speelgoed/kaartspellen', 'speelgoed/bordspellen', 'speelgoed/puzzels'], seoTitel: 'Spelletjes voor collega\'s', tekst: 'Kaartspellen en kleine spellen voor de pauze of het teamuitje.' },
       { slug: 'drank', naam: 'Drank', beeld: 'images/sub/sub-dranken-wijn.webp', vakken: ['dranken'], seoTitel: 'Drank cadeau voor een collega', tekst: 'Een fles wijn, bubbels of iets sterkers als bedankje.' },
       { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vakken: ['mode-beauty/verzorging'], seoTitel: 'Verzorgingscadeau voor een collega', tekst: 'Handcrème, badproducten en kleine verwencadeaus.' },
       { slug: 'mode', naam: 'Tassen & accessoires', beeld: 'images/sub/sub-mode-beauty-tassen.webp', vakken: ['mode-beauty/tassen', 'mode-beauty/accessoires', 'keuken/opbergen'], seoTitel: 'Tassen en accessoires voor een collega', tekst: 'Lunchtassen, bekers en handige spullen voor onderweg.' }
@@ -588,11 +588,11 @@ window.LK_PERSONEN = [
   { slug: 'baby', naam: 'Baby & kraam', kort: 'Baby & kraam', labels: ['baby'], oud: 'cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp', vaag: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp',
     seoTitel: 'Kraamcadeau – cadeaus voor baby en ouders', tekst: 'Zacht speelgoed, iets met naam en lieve spulletjes voor de babykamer.',
     subs: [
-      { slug: 'speelgoed', naam: 'Babyspeelgoed', beeld: 'images/sub/sub-speelgoed-baby-peuter.webp', vakken: ['speelgoed'], seoTitel: 'Babyspeelgoed cadeau', tekst: 'Knuffels, rammelaars en zacht speelgoed voor de eerste maanden.' },
+      { slug: 'speelgoed', naam: 'Babyspeelgoed', beeld: 'images/sub/sub-speelgoed-baby-peuter.webp', vakken: ['speelgoed/baby-peuter', 'speelgoed/bouwen', 'speelgoed/puzzels'], seoTitel: 'Babyspeelgoed cadeau', tekst: 'Knuffels, rammelaars en zacht speelgoed voor de eerste maanden.' },
       { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', vakken: ['cadeaus/met-naam'], seoTitel: 'Kraamcadeau met naam', tekst: 'Een cadeau met de naam van de baby erop.' },
       { slug: 'babykamer', naam: 'Babykamer', beeld: 'images/sub/sub-wonen-verlichting.webp', vakken: ['wonen'], seoTitel: 'Cadeau voor de babykamer', tekst: 'Nachtlampjes en zachte decoratie voor de babykamer.' },
       { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-sieraden-zilver.webp', vakken: ['sieraden'], seoTitel: 'Sieraad als kraamcadeau', tekst: 'Een zilveren armbandje of hanger voor de baby of de moeder.' },
-      { slug: 'kleding', naam: 'Kleding & schoentjes', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp', vakken: ['mode-beauty'], seoTitel: 'Babykleding en schoentjes cadeau', tekst: 'Zachte kleertjes en de eerste schoentjes.' }
+      { slug: 'kleding', naam: 'Kleding & schoentjes', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp', vakken: ['mode-beauty/schoenen', 'mode-beauty/kleding'], seoTitel: 'Babykleding en schoentjes cadeau', tekst: 'Zachte kleertjes en de eerste schoentjes.' }
     ] },
 ];
 /* De 8 populairste productgroepen op de homepage (telefoon); de rest zit achter 'Alle categorieën'. */
