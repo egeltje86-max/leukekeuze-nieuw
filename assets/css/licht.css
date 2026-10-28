@@ -1,0 +1,119 @@
+/* =========================================================
+   LeukeKeuze 2.0 – LICHTE LOOK (warenhuis, naar Nova's voorbeeld)
+   Laadt na stijl.css en zet de kleuren om: crème achtergrond, donkerblauwe balken, goud als accent.
+   ========================================================= */
+:root {
+  --bg: #F7F3EC;
+  --bg-2: #FFFFFF;
+  --kaart: #FFFFFF;
+  --kaart-2: #F1ECE3;
+  --knop-bg: #EFE9DE;
+  --knop-bg-hover: #E6DECF;
+  --knop-lijn: rgba(10, 16, 32, .14);
+  --lijn: rgba(10, 16, 32, .12);
+  --lijn-sterk: rgba(184, 134, 46, .6);
+  --lijn-zacht: rgba(10, 16, 32, .08);
+  --goud: #B8862E;
+  --goud-licht: #B8862E;
+  --goud-donker: #8F6620;
+  --tekst: #141A2A;
+  --tekst-2: #4F556A;
+  --tekst-3: #7C8296;
+  --schaduw: 0 8px 24px rgba(10, 16, 32, .08);
+  --gloed: 0 0 0 1px var(--lijn-sterk), 0 8px 24px rgba(184, 134, 46, .18);
+}
+body { background: var(--bg); color: var(--tekst); }
+
+/* Donkerblauwe balken boven en onder blijven, zoals in het voorbeeld. */
+.topbalk { background: #070C18; color: #BDB6A8; }
+.topbalk svg { color: #D9A848; }
+.header { background: #0A1020; border-bottom: 0; }
+.logo { color: #fff; }
+.logo .k { color: #F2CB74; }
+.icoonknop { color: #F4ECDD; }
+.icoonknop:hover { background: rgba(255,255,255,.08); color: #F2CB74; }
+.hoofdnav a, .hoofdnav button { color: #F4ECDD; }
+.hoofdnav a:hover, .hoofdnav button:hover, .hoofdnav [aria-expanded="true"], .hoofdnav [aria-current="page"] { color: #F2CB74; }
+.zoekrij { background: #0A1020; border-bottom: 0; }
+.onderbalk { background: rgba(10,16,32,.97); border-top: 1px solid rgba(217,168,72,.3); }
+.onderbalk a, .onderbalk button { color: #BDB6A8; }
+.onderbalk [aria-current="page"] { color: #F2CB74; }
+.footer { background: #0A1020; color: #BDB6A8; }
+.footer h3, .footer h4, .footer strong { color: #F4ECDD; }
+.footer a { color: #BDB6A8; }
+
+/* Hero: foto met donkere waas links, tekst wit (zoals het voorbeeld). */
+.hero { background: #0A1020; color: #F4ECDD; }
+.hero::after { background: linear-gradient(180deg, rgba(10,16,32,.1) 0%, rgba(10,16,32,.75) 55%, rgba(10,16,32,.9) 100%); }
+.hero .kicker { color: #D9A848; }
+.hero h1 em { color: #F2CB74; }
+.hero p { color: #D9D2C4; }
+.hero .populair > span { color: #F2CB74; }
+.hero .chip { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); color: #fff; }
+@media (min-width: 760px) {
+  .hero::after { background: linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.75) 38%, rgba(10,16,32,.15) 70%, rgba(10,16,32,0) 100%); }
+}
+
+/* Mobiel menu (lade) en megamenu licht. */
+.lade { background: #fff; color: var(--tekst); }
+.lade-uitgelicht { background: linear-gradient(135deg, rgba(184,134,46,.14), rgba(184,134,46,.04)); }
+.megamenu { background: #fff; box-shadow: 0 24px 50px rgba(10,16,32,.18); }
+.megamenu li a:hover { color: var(--tekst); }
+
+/* Chips, knoppen, kaarten. */
+.chip { background: #fff; border-color: rgba(10,16,32,.16); color: var(--tekst); }
+.chip:hover { border-color: var(--goud); color: var(--goud-donker); }
+.chip[aria-pressed="true"], .chip.actief { background: #0A1020; color: #fff; border-color: #0A1020; }
+.tabs .chip:not([aria-pressed="true"]) { background: #fff; }
+.knop-goud { color: #141A2A; box-shadow: 0 6px 18px rgba(184,134,46,.28); }
+.knop-rand { border-color: var(--goud); color: var(--goud-donker); }
+.knop-rand:hover { background: rgba(184,134,46,.08); }
+.knop[disabled], .knop.uit { background: #E6E0D4; color: var(--tekst-3); }
+.prodkaart, .catkaart, .groep, .awkaart, .gidskaart { background: #fff; border-color: rgba(10,16,32,.08); box-shadow: 0 2px 10px rgba(10,16,32,.05); }
+.prodkaart:hover, .catkaart:hover { border-color: var(--goud); }
+.prodkaart .beeld, .prodkaart .beeld.echt { background: #fff; }
+.prodkaart .shop, .shop { color: var(--goud-donker); }
+.prodkaart .prijs, .product .prijs { color: #141A2A; }
+.subkaart .rond { border-color: #fff; background: #fff; box-shadow: 0 3px 12px rgba(10,16,32,.12); }
+.subkaart:hover .rond, .subkaart.actief .rond { border-color: var(--goud); }
+.subkaart.actief { color: var(--goud-donker); }
+.persoon-subs .subkaart small { color: var(--tekst-3); }
+.groep span { background: linear-gradient(transparent, rgba(8,14,30,.8)); }
+.sectie-kop h2 { color: #141A2A; }
+.sectie-kop .meer, .sectie-kop a { color: var(--goud-donker); }
+
+/* Reclameblokken: foto met donkere waas blijft, tekst wit. */
+.actie { color: #F4ECDD; }
+.actie h3 { color: #fff; }
+.actie p { color: #D9D2C4; }
+
+/* Paginakop: lichte waas over de foto, donkere tekst. */
+.paginakop { background: #fff; }
+.paginakop .achter.vaag img { filter: blur(22px) brightness(1.05) saturate(.8); opacity: .35; }
+.paginakop::after { background: linear-gradient(90deg, rgba(247,243,236,.95) 0%, rgba(247,243,236,.8) 50%, rgba(247,243,236,.5) 100%); }
+.paginakop.zonder::after { background: none; }
+.paginakop h1 { color: #141A2A; }
+.paginakop p { color: var(--tekst-2); }
+.kruimel, .kruimel a { color: var(--tekst-3); }
+
+/* VONK-balk en zoekbalk-kaart. */
+.vonk-kaart { background: linear-gradient(135deg, #0F1830, #1B2742); color: #F4ECDD; border-color: rgba(217,168,72,.35); }
+.vonk-kaart h2 { color: #fff; }
+.vonk-kaart p { color: #BDB6A8; }
+.vonk-kaart .rond-pijl { color: #0A1020; }
+
+/* Werkbalk, filters, formulieren. */
+.werkbalk .aantal { color: var(--tekst-2); }
+.sorteer select { color: var(--tekst); background: #fff; }
+.filter-paneel, .toast { background: #fff; color: var(--tekst); }
+.specs dl > div:nth-child(odd) { background: rgba(10,16,32,.03); }
+.stap .nr { color: #141A2A; }
+.stappen { background: #fff; border: 1px solid var(--lijn-zacht); border-radius: 16px; }
+.alle-winkels .aw-brug { color: var(--goud-donker); border-top-color: rgba(184,134,46,.3); }
+.lees-ook span { color: var(--tekst); }
+.lijst-deel-velden input, .lijst-deel-velden select { background: #fff; color: var(--tekst); }
+.lijst-zelf strong { color: var(--tekst); }
+.gids, .gids p { color: var(--tekst-2); }
+.gids h2 { color: var(--tekst); }
+/* Hero op telefoon korter, zodat de personen sneller in beeld komen. */
+@media (max-width: 759px) { .hero-inhoud { padding-top: 110px; } }
