@@ -1,0 +1,21 @@
+name: Pinterest-pins vrijgeven
+on:
+  schedule:
+    - cron: '17 5 * * *'   # elke dag rond 6:17 (winter) / 7:17 (zomer) Nederlandse tijd
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pins:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node scripts/pins-feed.js --vrijgeven
+      - run: |
+          git config user.name "LeukeKeuze pins"
+          git config user.email "pins@leukekeuze.nl"
+          git add pins
+          git diff --cached --quiet || (git commit -m "Pins: nieuwe pins vrijgegeven voor Pinterest" && git pull --rebase -q && git push)

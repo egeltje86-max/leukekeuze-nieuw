@@ -1,0 +1,12 @@
+{
+ "aan": false,
+ "perDag": 15,
+ "borden": {
+  "wonen-keuken": "Wonen & keuken",
+  "sieraden": "Sieraden",
+  "voor-hem": "Cadeaus voor hem",
+  "speelgoed": "Speelgoed & spellen",
+  "dieren": "Voor dierenliefhebbers",
+  "voor-haar": "Cadeaus voor haar"
+ }
+}
