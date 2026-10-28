@@ -474,3 +474,35 @@ window.LK_NIETWOORDEN = {
  "cadeaus/voor-kinderen": "ladekast bureau boekenkast vloerkleed opbergrek wandrek dekbedovertrek fauteuil hoeklaken nachtkastje kapstok boekenrek",
  "cadeaus/baby-kraam": "matras schuimmatras dekbed sac"
 };
+
+/* ===== LeukeKeuze 2.0 – PROEF (nog niet live): personen als hoofdingang. =====
+   Elke persoon heeft eigen subcategorieën. Een product hoort erbij als het label (voor) klopt
+   én de categorie/sub (of 'ookIn') in een van de 'vakken' van die subcategorie valt. Niets hoeft opnieuw gelabeld. */
+window.LK_PERSONEN = [
+  { slug: 'hem', naam: 'Voor hem', kort: 'Voor hem', labels: ['hem'], oud: 'cadeaus/voor-hem',
+    beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', vaag: 'images/sub/sub-cadeaus-voor-hem-2026b.webp',
+    seoTitel: 'Cadeau voor hem – de mooiste cadeaus voor mannen', tekst: 'Van een goed horloge tot een fles whisky: met de hand gekozen cadeaus voor hem.',
+    subs: [
+      { slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp', vakken: ['mode-beauty/horloges'] },
+      { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vakken: ['mode-beauty/geuren'] },
+      { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vakken: ['mode-beauty/verzorging'] },
+      { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-sieraden-heren.webp', vakken: ['sieraden'] },
+      { slug: 'drank', naam: 'Drank', beeld: 'images/sub/sub-dranken-whisky-2026b.webp', vakken: ['dranken'] },
+      { slug: 'gadgets-gaming', naam: 'Gadgets & gaming', beeld: 'images/sub/sub-elektronica-gaming.webp', vakken: ['elektronica'] },
+      { slug: 'sport-outdoor', naam: 'Sport & Outdoor', beeld: 'images/categorieen/categorie-sport-outdoor.webp', vakken: ['sport-outdoor'] },
+      { slug: 'klussen-bbq', naam: 'Klussen & BBQ', beeld: 'images/sub/sub-tuin-klussen-gereedschap.webp', vakken: ['tuin-klussen', 'eten-drinken/bbq'] },
+      { slug: 'lego-hobby', naam: 'LEGO & hobby', beeld: 'images/sub/sub-speelgoed-bouwen.webp', vakken: ['speelgoed/bouwen', 'hobby'] },
+      { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/categorieen/categorie-metaaldetectie.webp', vakken: ['metaaldetectie'] },
+      { slug: 'mode-accessoires', naam: 'Mode & Accessoires', beeld: 'images/sub/sub-mode-beauty-tassen.webp', vakken: ['mode-beauty/tassen', 'mode-beauty/rugzakken-reistassen', 'mode-beauty/schoenen', 'mode-beauty/kleding', 'mode-beauty/accessoires'] }
+    ] },
+  /* De andere personen: alleen de ingang staat er al; subcategorieën volgen na akkoord op het voorbeeld. */
+  { slug: 'haar', naam: 'Voor haar', kort: 'Voor haar', labels: ['haar'], oud: 'cadeaus/voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', naar: '/c/cadeaus/voor-haar' },
+  { slug: 'kinderen', naam: 'Voor kinderen', kort: 'Kinderen', labels: ['kind', 'kinderen'], oud: 'cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen-2026b.webp', naar: '/c/cadeaus/voor-kinderen' },
+  { slug: 'tieners', naam: 'Voor tieners', kort: 'Tieners', labels: ['tiener'], beeld: 'images/sub/sub-elektronica-gaming.webp', naar: '/c/elektronica/gaming' },
+  { slug: 'opa-oma', naam: 'Opa & oma', kort: 'Opa & oma', labels: ['opa-oma'], oud: 'cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma-2026b.webp', naar: '/c/cadeaus/opa-oma' },
+  { slug: 'collega', naam: "Collega's", kort: "Collega's", labels: ['collega'], oud: 'cadeaus/collega', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp', naar: '/c/cadeaus/collega' },
+  { slug: 'baby', naam: 'Baby & kraam', kort: 'Baby & kraam', labels: ['baby'], oud: 'cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp', naar: '/c/cadeaus/baby-kraam' }
+];
+/* De 8 populairste productgroepen op de homepage (telefoon); de rest zit achter 'Alle categorieën'. */
+window.LK_HOME_GROEPEN = ['sieraden', 'mode-beauty', 'elektronica', 'wonen', 'dranken', 'eten-drinken', 'speelgoed', 'hobby'];
+window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(function (p) { return p.slug === slug; }); };
