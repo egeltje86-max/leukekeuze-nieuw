@@ -597,7 +597,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
     tekst: 'Parfum, aftershave en verzorging om cadeau te geven.', tegel: 'images/categorieen/categorie-geuren-verzorging.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'],
     subs: [{ slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vak: 'mode-beauty/geuren' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vak: 'mode-beauty/verzorging' }] });
   /* Mode & Accessoires: wat overblijft van Mode & Beauty. Horloges, geuren en verzorging blijven bereikbaar, maar staan niet meer in het rijtje. */
-  hernoem('mode-beauty', 'Mode & Accessoires'); mb.tekst = 'Tassen, schoenen, kleding en accessoires.';
+  hernoem('mode-beauty', 'Mode & Accessoires'); mb.tekst = 'Tassen, schoenen, kleding en accessoires.'; mb.tegel = 'images/categorieen/categorie-mode-accessoires.webp';
   mb.subs.forEach(function (s) { if (['horloges', 'geuren', 'verzorging'].indexOf(s.slug) !== -1) s.verborgen = true; });
   hernoem('elektronica', 'Elektronica & Gadgets');
   hernoem('wonen', 'Wonen & Decoratie');
@@ -610,9 +610,35 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   var volgorde = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektronica', 'wonen', 'keuken', 'dranken', 'eten-drinken', 'speelgoed', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren', 'metaaldetectie', 'christelijk', 'cadeaus', 'valentijn'];
   C.sort(function (a, b) { return volgorde.indexOf(a.slug) - volgorde.indexOf(b.slug); });
 })();
-/* Gelegenheden in het menu (alleen wat al bestaat; Moederdag, Vaderdag, enz. volgen). */
+/* ===== 2.0 PROEF: Gelegenheden. Samengestelde pagina's: wie (labels) + welke vakken + evt. maximale prijs.
+   Bestaat er al een pagina (Sinterklaas, Kerst, …), dan verwijst 'naar' daarheen. */
 window.LK_GELEGENHEDEN = [
-  { naam: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' }, { naam: 'Kerst', naar: '/c/cadeaus/kerst' }, { naam: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' },
-  { naam: 'Liefde & Valentijn', naar: '/c/valentijn' }, { naam: 'Geboorte & kraam', naar: '/c/cadeaus/baby-kraam' }, { naam: 'Afscheid & pensioen', naar: '/gids/cadeau-voor-pensioen' },
-  { naam: 'Bedankt', naar: '/gids/cadeau-voor-collega' }, { naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis' }
+  { slug: 'sinterklaas', naam: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
+  { slug: 'kerst', naam: 'Kerst', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
+  { slug: 'valentijn', naam: 'Liefde & Valentijn', naar: '/c/valentijn', beeld: 'images/sub/sub-valentijn-voor-haar.webp' },
+  { slug: 'moederdag', naam: 'Moederdag', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', seoTitel: 'Moederdagcadeau – de mooiste cadeaus voor Moederdag',
+    tekst: 'Iets moois voor mama: sieraden, geuren, iets lekkers of iets met haar naam erop.',
+    labels: ['haar'], vakken: ['sieraden', 'mode-beauty/geuren', 'mode-beauty/verzorging', 'wonen', 'keuken/koffie-thee', 'dranken/bubbels', 'dranken/wijn', 'eten-drinken', 'cadeaus/met-naam', 'boeken-media', 'hobby'] },
+  { slug: 'vaderdag', naam: 'Vaderdag', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', seoTitel: 'Vaderdagcadeau – de leukste cadeaus voor Vaderdag',
+    tekst: 'Voor papa: een goede fles, iets voor de BBQ, een gadget of een horloge.',
+    labels: ['hem'], vakken: ['dranken', 'eten-drinken/bbq', 'tuin-klussen', 'elektronica', 'mode-beauty/horloges', 'mode-beauty/geuren', 'metaaldetectie', 'sport-outdoor', 'cadeaus/met-naam'] },
+  { slug: 'geboorte', naam: 'Geboorte & kraam', naar: '/voor/baby', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
+  { slug: 'jubileum', naam: 'Jubileum & trouwdag', beeld: 'images/sub/sub-valentijn-samen.webp', seoTitel: 'Cadeau voor jubileum of trouwdag',
+    tekst: 'Samen vieren: iets persoonlijks, iets om te proosten of iets blijvends.',
+    vakken: ['valentijn/samen', 'valentijn/met-naam', 'cadeaus/met-naam', 'dranken/bubbels', 'sieraden/echt-goud', 'valentijn/romantische-avond'] },
+  { slug: 'afscheid-pensioen', naam: 'Afscheid & pensioen', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp', seoTitel: 'Afscheidscadeau en pensioencadeau',
+    tekst: 'Een mooi afscheid van een collega, of een cadeau voor wie met pensioen gaat.', gids: 'afscheidscadeau-collega',
+    labels: ['collega', 'opa-oma'], vakken: ['boeken-media', 'tuin-klussen', 'hobby', 'dranken', 'eten-drinken/pakketten', 'keuken', 'wonen', 'cadeaus/met-naam', 'speelgoed/puzzels', 'dieren/vogels'] },
+  { slug: 'bedankt', naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
+    tekst: 'Een klein gebaar dat groot aankomt: iets lekkers, een kaars, een plantje of een goede fles.', maxPrijs: 25,
+    vakken: ['eten-drinken/chocolade-snoep', 'eten-drinken/pakketten', 'eten-drinken/koffie-thee', 'eten-drinken/lekkernijen', 'wonen/kaarsen-geur', 'wonen/huisgeuren', 'tuin-klussen/planten-zaden', 'keuken/koffie-thee', 'dranken/wijn', 'dranken/bubbels', 'cadeaus/collega'] },
+  { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' }
 ];
+/* Collecties: dwars door alle groepen heen. */
+window.LK_COLLECTIES = [
+  { slug: 'persoonlijke-cadeaus', naam: 'Persoonlijke cadeaus', kicker: 'Met naam of eigen tekst', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', seoTitel: 'Persoonlijke cadeaus met naam – gepersonaliseerde cadeaus',
+    tekst: 'Een cadeau met een naam, datum of eigen tekst erop. Altijd uniek.',
+    vakken: ['cadeaus/met-naam', 'valentijn/met-naam'] }
+];
+window.LK_GELEGENHEID = function (slug) { return (window.LK_GELEGENHEDEN || []).find(function (g) { return g.slug === slug; }); };
+window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find(function (g) { return g.slug === slug; }); };

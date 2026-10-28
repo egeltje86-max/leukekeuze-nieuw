@@ -228,6 +228,15 @@
         /* 0. Seizoen eerst: Sinterklaas en Kerst bovenaan (wens van Marius, 26-10-2026). Blokken verlopen vanzelf via 'tot'. */
         actieBlokken() +
 
+        /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
+        '<section class="sectie"><div class="sectie-kop"><div><h2>Voor welke gelegenheid?</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
+          '<div class="persoon-subs home">' + window.LK_GELEGENHEDEN.map(function (x) {
+            return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+          }).join('') + '</div></section>' +
+        (window.LK_COLLECTIES || []).map(function (c) {
+          return '<a class="collectie-banner" href="/collectie/' + c.slug + '"><img src="' + esc(c.beeld) + '" alt="" loading="lazy" decoding="async"><div class="collectie-tekst"><span class="kicker">' + esc(c.kicker) + '</span><h2>' + esc(c.naam) + '</h2><p>' + esc(c.tekst) + '</p><span class="knop knop-goud">Bekijk de collectie ' + ic('pijl') + '</span></div></a>';
+        }).join('') +
+
         /* 0b. Cadeaugidsen van dit seizoen */
         gidsenRij() +
 
@@ -473,6 +482,58 @@
           return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
         }).join('') + '</div></section>' +
     '</div>';
+  }
+  /* 2.0 PROEF: samengestelde pagina (gelegenheid of collectie): labels + vakken + evt. maximale prijs. */
+  function verzamelLijst(g) {
+    return LK.zichtbaar().filter(function (p) {
+      if (p.cat === 'christelijk') return false;
+      if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
+      if (g.maxPrijs && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
+      var plekken = [p.cat + '/' + p.sub, p.cat].concat(p.ookIn || []);
+      return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
+    });
+  }
+  function verzameling(g, pad, kruimelKop, q) {
+    zetTitel(g.seoTitel || g.naam);
+    var alles = verzamelLijst(g);
+    var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs); }), q.sort);
+    var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
+    var werkbalk = '<div class="werkbalk">' + prijsChips(pad, q) +
+      '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
+      '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
+        sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
+      '</select>' + ic('omlaag') + '</label></div></div>';
+    var leeg = leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
+    var selectie = sfeerEerst(sorteer(alles.filter(function (p) { return p.favoriet || p.populair; }))).slice(0, 10);
+    var andere = (window.LK_GELEGENHEDEN || []).filter(function (x) { return x.slug !== g.slug; });
+    return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
+    '<div class="binnen">' +
+      (selectie.length ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie</h2></div></div>' + rij(selectie) + '</section>' : '') +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(g.naam.toLowerCase()) + '</h2></div></div></section>' +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
+      (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>Andere gelegenheden</h2></div></div>' +
+        '<div class="subkaarten voorwie-rij">' + andere.map(function (x) {
+          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+        }).join('') + '</div></section>' +
+    '</div>';
+  }
+  function gelegenheidPagina(slug, q) {
+    if (!slug) {
+      zetTitel('Gelegenheden');
+      return paginakop({ titel: 'Gelegenheden', tekst: 'Voor elk moment een passend cadeau.', kruimel: [{ tekst: 'Gelegenheden' }] }) +
+        '<div class="binnen"><section class="sectie eerste"><div class="persoon-subs">' + window.LK_GELEGENHEDEN.map(function (x) {
+          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+        }).join('') + '</div></section></div>';
+    }
+    var g = window.LK_GELEGENHEID(slug);
+    if (!g || !g.vakken) return nietGevonden();
+    return verzameling(g, '/gelegenheid/' + g.slug, { tekst: 'Gelegenheden', naar: '/gelegenheid' }, q);
+  }
+  function collectie(slug, q) {
+    var g = window.LK_COLLECTIE(slug);
+    if (!g) return nietGevonden();
+    return verzameling(g, '/collectie/' + g.slug, { tekst: 'Collecties', naar: '/' }, q);
   }
   /* Overzicht van alle personen (/voor). */
   function voorWie() {
@@ -1471,7 +1532,7 @@
         return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(x.beeld) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
       }).join('') + '</div>' +
       '<div class="lade-label">Producten</div><ul>' + rest.map(ladeRij).join('') + '</ul>' +
-      '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + (window.LK_GELEGENHEDEN || []).map(function (g) { return '<a href="' + g.naar + '">' + esc(g.naam) + '</a>'; }).join('') + '</div>' +
+      '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + (window.LK_GELEGENHEDEN || []).map(function (g) { return '<a href="' + (g.naar || '/gelegenheid/' + g.slug) + '">' + esc(g.naam) + '</a>'; }).concat((window.LK_COLLECTIES || []).map(function (c) { return '<a href="/collectie/' + c.slug + '"><strong>' + esc(c.naam) + '</strong></a>'; })).join('') + '</div>' +
       (chr ? '<div class="lade-label">Christelijke cadeaus</div><ul>' + ladeRij(chr) + '</ul>' : '') +
       '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn verlanglijstje</a><a href="/zoek">Zoeken</a><a href="/gids">Cadeaugidsen</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
@@ -1572,6 +1633,8 @@
     else if (d[0] === 'categorieen') html = alleCategorieen();
     else if (d[0] === 'c') html = categorie(d[1], d[2], a.q);
     else if (d[0] === 'voor') html = d[1] ? persoon(d[1], d[2], a.q) : voorWie();
+    else if (d[0] === 'gelegenheid') html = gelegenheidPagina(d[1], a.q);
+    else if (d[0] === 'collectie') html = collectie(d[1], a.q);
     else if (d[0] === 'p') html = product(d[1]);
     else if (d[0] === 'zoek') html = zoeken(a.q);
     else if (d[0] === 'vonk') html = vonk(a.q);
