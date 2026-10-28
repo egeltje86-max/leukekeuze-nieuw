@@ -402,8 +402,10 @@
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       leesOok(c.slug + (s ? '/' + s.slug : '')) +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
-      (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
+      /* Eerst 'Meer in onze winkels' direct onder onze eigen producten, en pas daarna de tips.
+         Stonden de tips ertussen, dan leek het alsof de pagina daar ophield (opmerking Marius, 28-10-2026). */
       winkelSectie(c.slug, s && s.slug, q.prijs) +
+      (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
         '<nav class="catknoppen andere-cats">' + anderen.map(function (x) {
@@ -639,6 +641,7 @@
     var NW = window.LK_NIETWOORDEN || {};
     if (NW[sleutel]) attr += ' data-niet="' + esc(NW[sleutel]) + '"';
     return '<section class="sectie alle-winkels" data-alle-winkels data-sleutel="' + esc(sleutel) + '" data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
+      '<p class="aw-brug">' + ic('omlaag') + 'Nog niet gevonden? Kijk hieronder verder</p>' +
       '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Uit het hele aanbod van onze partnerwinkels. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
       '<div class="aw-inhoud"><p class="aw-laden">Even kijken in alle winkels…</p></div></section>';
   }

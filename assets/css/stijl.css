@@ -634,6 +634,9 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 
 
 /* ---------- Zoeken in alle winkels ---------- */
+.alle-winkels { padding-top: 14px; }
+.alle-winkels .aw-brug { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0 0 18px; padding: 12px 14px 0; border-top: 1px solid rgba(242, 203, 116, .25); font-size: 14px; color: var(--goud-licht); }
+.alle-winkels .aw-brug svg { width: 18px; height: 18px; flex: none; }
 .alle-winkels .uitleg { margin: 4px 0 0; font-size: 13px; color: var(--tekst-3); }
 .aw-laden { color: var(--tekst-2); font-size: 14px; padding: 18px 0; }
 .aw-winkels, .aw-prijzen { margin-bottom: 8px; }
