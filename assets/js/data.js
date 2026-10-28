@@ -279,7 +279,7 @@ window.LK_PRIJZEN = [
 /* VONK: de vragen. De antwoorden matchen met 'voor' en 'moment' bij elk product. */
 window.LK_VONK = {
   voor: [
-    { id: 'haar', label: 'Haar' }, { id: 'hem', label: 'Hem' }, { id: 'kind', label: 'Een kind' },
+    { id: 'haar', label: 'Haar' }, { id: 'hem', label: 'Hem' }, { id: 'kind', label: 'Een kind' }, { id: 'tiener', label: 'Een tiener' },
     { id: 'opa-oma', label: 'Opa of oma' }, { id: 'collega', label: 'Een collega' }, { id: 'iedereen', label: 'Maakt niet uit' }
   ],
   moment: [
@@ -493,7 +493,12 @@ window.LK_PERSONEN = [
       { slug: 'klussen-bbq', naam: 'Klussen & BBQ', beeld: 'images/sub/sub-tuin-klussen-gereedschap.webp', vakken: ['tuin-klussen', 'eten-drinken/bbq'], seoTitel: 'Klus- en BBQ-cadeau voor hem', tekst: 'Goed gereedschap en alles voor de barbecue. Voor de klusser en de grillmeester.' },
       { slug: 'lego-hobby', naam: 'LEGO & hobby', beeld: 'images/sub/sub-speelgoed-bouwen.webp', vakken: ['speelgoed/bouwen', 'hobby'], seoTitel: 'LEGO en hobby cadeau voor mannen', tekst: 'Bouwsets, modelbouw en creatieve hobby\'s. Uren plezier aan tafel.' },
       { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/categorieen/categorie-metaaldetectie.webp', vakken: ['metaaldetectie'], seoTitel: 'Metaaldetector cadeau voor hem', tekst: 'Een detector, pinpointer of schep voor de schatzoeker. Ook voor wie net begint.' },
-      { slug: 'mode-accessoires', naam: 'Mode & Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp', vakken: ['mode-beauty/tassen', 'mode-beauty/rugzakken-reistassen', 'mode-beauty/schoenen', 'mode-beauty/kleding', 'mode-beauty/accessoires'], seoTitel: 'Mode en accessoires cadeau voor hem', tekst: 'Portemonnees, riemen, tassen, schoenen en sokken. Mooi en bruikbaar.' }
+      { slug: 'mode-accessoires', naam: 'Mode & Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp', vakken: ['mode-beauty/tassen', 'mode-beauty/rugzakken-reistassen', 'mode-beauty/schoenen', 'mode-beauty/kleding', 'mode-beauty/accessoires'], seoTitel: 'Mode en accessoires cadeau voor hem', tekst: 'Portemonnees, riemen, tassen, schoenen en sokken. Mooi en bruikbaar.' },
+      { slug: 'lekkers', naam: 'Lekkers & BBQ-kruiden', beeld: 'images/sub/sub-eten-drinken-lekkernijen.webp', vakken: ['eten-drinken'], seoTitel: 'Lekkers cadeau voor hem', tekst: 'Borrelpakketten, chocolade, drop en kruiden voor de BBQ.' },
+      { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp', vakken: ['boeken-media'], seoTitel: 'Boeken en muziek cadeau voor hem', tekst: 'Thrillers, kookboeken, vinyl en meer.' },
+      { slug: 'wonen', naam: 'Wonen & sfeer', beeld: 'images/sub/sub-wonen-woonaccessoires.webp', vakken: ['wonen', 'keuken'], seoTitel: 'Woon- en keukencadeau voor hem', tekst: 'Stoere woonaccessoires, mooie glazen en keukenspullen.' },
+      { slug: 'spellen', naam: 'Spellen & puzzels', beeld: 'images/sub/sub-speelgoed-bordspellen.webp', vakken: ['speelgoed/bordspellen', 'speelgoed/kaartspellen', 'speelgoed/puzzels'], seoTitel: 'Spellen en puzzels cadeau voor hem', tekst: 'Bordspellen en puzzels voor een avond aan tafel.' },
+      { slug: 'dieren', naam: 'Voor zijn huisdier', beeld: 'images/sub/sub-dieren-hond.webp', vakken: ['dieren'], seoTitel: 'Cadeau voor hem en zijn huisdier', tekst: 'Voor de hond, kat of vogels in huis.' }
     ] },
   { slug: 'haar', naam: 'Voor haar', kort: 'Voor haar', labels: ['haar'], oud: 'cadeaus/voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', vaag: 'images/sub/sub-cadeaus-voor-haar-2026b.webp',
     seoTitel: 'Cadeau voor haar – de mooiste cadeaus voor vrouwen', tekst: 'Sieraden, geuren, iets moois voor in huis: met de hand gekozen cadeaus voor haar.',
@@ -510,7 +515,12 @@ window.LK_PERSONEN = [
       { slug: 'creatief', naam: 'Hobby & creatief', beeld: 'images/sub/sub-hobby-haken-breien.webp', vakken: ['hobby', 'speelgoed/bouwen'], seoTitel: 'Creatief cadeau voor haar – haken, breien, tekenen', tekst: 'Voor wie graag met haar handen bezig is: haken, breien, schilderen en bouwsets.' },
       { slug: 'boeken', naam: 'Boeken', beeld: 'images/sub/sub-boeken-media-romans.webp', vakken: ['boeken-media'], seoTitel: 'Boeken cadeau voor haar', tekst: 'Romans, kookboeken en mooie agenda\'s.' },
       { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', vakken: ['cadeaus/met-naam'], seoTitel: 'Persoonlijk cadeau voor haar met naam', tekst: 'Een cadeau met haar naam of een eigen tekst. Altijd uniek.' },
-      { slug: 'sport-outdoor', naam: 'Sport & Outdoor', beeld: 'images/sub/sub-sport-outdoor-fitness.webp', vakken: ['sport-outdoor'], seoTitel: 'Sport en outdoor cadeau voor haar', tekst: 'Yoga, fitness, wandelen en fietsen: cadeaus voor een actieve vrouw.' }
+      { slug: 'sport-outdoor', naam: 'Sport & Outdoor', beeld: 'images/sub/sub-sport-outdoor-fitness.webp', vakken: ['sport-outdoor'], seoTitel: 'Sport en outdoor cadeau voor haar', tekst: 'Yoga, fitness, wandelen en fietsen: cadeaus voor een actieve vrouw.' },
+      { slug: 'tuin-planten', naam: 'Tuin & planten', beeld: 'images/sub/sub-tuin-klussen-planten-zaden.webp', vakken: ['tuin-klussen'], seoTitel: 'Tuin- en plantencadeau voor haar', tekst: 'Planten, bloembollen en mooi tuingereedschap.' },
+      { slug: 'gadgets', naam: 'Gadgets & audio', beeld: 'images/sub/sub-elektronica-audio.webp', vakken: ['elektronica'], seoTitel: 'Gadgets cadeau voor haar', tekst: 'Koptelefoons, speakers, instantcamera’s en slimme gadgets.' },
+      { slug: 'spellen', naam: 'Spellen & puzzels', beeld: 'images/sub/sub-speelgoed-puzzels.webp', vakken: ['speelgoed/bordspellen', 'speelgoed/kaartspellen', 'speelgoed/puzzels'], seoTitel: 'Spellen en puzzels cadeau voor haar', tekst: 'Legpuzzels en spellen voor een gezellige avond.' },
+      { slug: 'dieren', naam: 'Voor haar huisdier', beeld: 'images/sub/sub-dieren-kat.webp', vakken: ['dieren'], seoTitel: 'Cadeau voor haar en haar huisdier', tekst: 'Voor de hond, kat of vogels in huis.' },
+      { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/sub/sub-metaaldetectie-detectors.webp', vakken: ['metaaldetectie'], seoTitel: 'Metaaldetector cadeau voor haar', tekst: 'Ook voor vrouwen: een detector om buiten te zoeken.' }
     ] },
   { slug: 'kinderen', naam: 'Voor kinderen', kort: 'Kinderen', labels: ['kind', 'kinderen'], oud: 'cadeaus/voor-kinderen', beeld: 'images/sub/sub-cadeaus-voor-kinderen-2026b.webp', vaag: 'images/sub/sub-cadeaus-voor-kinderen-2026b.webp',
     seoTitel: 'Cadeau voor kinderen – speelgoed en leuke cadeaus', tekst: 'Speelgoed, boeken en knutselspullen: cadeaus waar kinderen blij van worden.',
@@ -525,19 +535,26 @@ window.LK_PERSONEN = [
       { slug: 'gaming', naam: 'Gaming & gadgets', beeld: 'images/sub/sub-elektronica-gaming.webp', vakken: ['elektronica'], seoTitel: 'Gaming en gadgets voor kinderen', tekst: 'Games, koptelefoons en kindvriendelijke gadgets.' },
       { slug: 'kinderkamer', naam: 'Kinderkamer', beeld: 'images/sub/sub-wonen-verlichting.webp', vakken: ['wonen'], seoTitel: 'Cadeau voor de kinderkamer', tekst: 'Nachtlampjes, kussens en vrolijke decoratie voor de kinderkamer.' },
       { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/sub/sub-metaaldetectie-kinderen-beginners.webp', vakken: ['metaaldetectie'], seoTitel: 'Metaaldetector voor kinderen', tekst: 'Een eerste detector voor jonge schatzoekers.' },
-      { slug: 'sinterklaas', naam: 'Sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', vakken: ['cadeaus/sinterklaas'], seoTitel: 'Sinterklaascadeau voor kinderen', tekst: 'Cadeautjes voor in de schoen en voor pakjesavond.' }
+      { slug: 'sinterklaas', naam: 'Sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', vakken: ['cadeaus/sinterklaas'], seoTitel: 'Sinterklaascadeau voor kinderen', tekst: 'Cadeautjes voor in de schoen en voor pakjesavond.' },
+      { slug: 'adventskalenders', naam: 'Adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders-2026b.webp', vakken: ['cadeaus/adventskalenders'], seoTitel: 'Adventskalender voor kinderen', tekst: 'Aftellen naar Kerst met LEGO, Playmobil of chocolade.' },
+      { slug: 'schoenen-kleding', naam: 'Schoenen & kleding', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp', vakken: ['mode-beauty'], seoTitel: 'Kinderschoenen en kleding cadeau', tekst: 'Laarsjes, sloffen en vrolijke kleding.' },
+      { slug: 'lekkers', naam: 'Lekkers', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp', vakken: ['eten-drinken'], seoTitel: 'Lekkers cadeau voor kinderen', tekst: 'Snoep, chocolade en kleine traktaties.' },
+      { slug: 'buiten-tuin', naam: 'Tuin & natuur', beeld: 'images/sub/sub-tuin-klussen-planten-zaden.webp', vakken: ['tuin-klussen', 'dieren'], seoTitel: 'Natuurcadeau voor kinderen', tekst: 'Zaadjes, vogelhuisjes en ontdekken in de tuin.' }
     ] },
   { slug: 'tieners', naam: 'Voor tieners', kort: 'Tieners', labels: ['tiener'], beeld: 'images/sub/sub-elektronica-gaming.webp', vaag: 'images/sub/sub-elektronica-gaming.webp',
-    seoTitel: 'Cadeau voor tieners – cadeaus voor 12 tot 18 jaar', tekst: 'Gaming, sieraden, geuren en meer: cadeaus die tieners echt leuk vinden.',
+    seoTitel: 'Cadeau voor tieners – cadeaus voor 12 tot 18 jaar', tekst: 'Gaming, parfum, sieraden, LEGO en spullen voor de kamer: cadeaus die tieners echt leuk vinden.',
     subs: [
-      { slug: 'gaming', naam: 'Gaming & gadgets', beeld: 'images/sub/sub-elektronica-gaming.webp', vakken: ['elektronica'], seoTitel: 'Gaming cadeau voor tieners', tekst: 'Games, headsets, controllers en gadgets voor gamers.' },
-      { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-sieraden-verguld-staal.webp', vakken: ['sieraden'], seoTitel: 'Sieraden cadeau voor tieners', tekst: 'Armbandjes, kettingen en oorbellen in de stijl van nu.' },
-      { slug: 'geuren-verzorging', naam: 'Geuren & verzorging', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'], seoTitel: 'Geuren en verzorging voor tieners', tekst: 'Frisse geuren en verzorging voor jongens en meiden.' },
-      { slug: 'mode', naam: 'Mode & accessoires', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp', vakken: ['mode-beauty'], seoTitel: 'Mode cadeau voor tieners', tekst: 'Rugzakken, sneakers en accessoires.' },
-      { slug: 'sport', naam: 'Sport & Outdoor', beeld: 'images/sub/sub-sport-outdoor-fitness.webp', vakken: ['sport-outdoor'], seoTitel: 'Sportcadeau voor tieners', tekst: 'Fitness, voetbal, fietsen en buiten bezig zijn.' },
-      { slug: 'creatief', naam: 'Creatief & bouwen', beeld: 'images/sub/sub-speelgoed-bouwen.webp', vakken: ['speelgoed/bouwen', 'hobby'], seoTitel: 'Creatief cadeau voor tieners', tekst: 'Bouwsets, modelbouw en creatieve sets voor oudere kinderen.' },
-      { slug: 'boeken', naam: 'Boeken', beeld: 'images/sub/sub-boeken-media-lezen.webp', vakken: ['boeken-media'], seoTitel: 'Boeken voor tieners', tekst: 'Spannende boeken en series voor jongeren.' },
-      { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/sub/sub-metaaldetectie-detectors.webp', vakken: ['metaaldetectie'], seoTitel: 'Metaaldetector cadeau voor tieners', tekst: 'Een detector om buiten op zoek te gaan naar schatten.' }
+      { slug: 'gaming-gadgets', naam: 'Gaming & gadgets', beeld: 'images/sub/sub-elektronica-gaming.webp', vakken: ['elektronica'], seoTitel: 'Gaming en gadgets cadeau voor tieners', tekst: 'Headsets, koptelefoons, speakers, powerbanks en alles voor de gamer.' },
+      { slug: 'geuren-verzorging', naam: 'Geuren & skincare', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'], seoTitel: 'Parfum en skincare cadeau voor tieners', tekst: 'Parfum, bodymist en skincare: de cadeaus waar tieners nu om vragen.' },
+      { slug: 'sieraden', naam: 'Sieraden', beeld: 'images/sub/sub-sieraden-verguld-staal.webp', vakken: ['sieraden'], seoTitel: 'Sieraden cadeau voor tieners', tekst: 'Armbandjes, kettingen, ringen en oorbellen in de stijl van nu.' },
+      { slug: 'lego-creatief', naam: 'LEGO & creatief', beeld: 'images/sub/sub-speelgoed-bouwen.webp', vakken: ['speelgoed/bouwen', 'hobby'], seoTitel: 'LEGO en creatief cadeau voor tieners', tekst: 'LEGO Technic, Speed Champions, Botanicals en creatieve sets voor oudere kinderen.' },
+      { slug: 'spellen-puzzels', naam: 'Spellen & puzzels', beeld: 'images/sub/sub-speelgoed-kaartspellen.webp', vakken: ['speelgoed/bordspellen', 'speelgoed/kaartspellen', 'speelgoed/puzzels'], seoTitel: 'Spellen en puzzels voor tieners', tekst: 'Partyspellen, kaartspellen en 3D-puzzels voor met vrienden of familie.' },
+      { slug: 'kamer', naam: 'Kamer & sfeer', beeld: 'images/sub/sub-wonen-verlichting.webp', vakken: ['wonen'], seoTitel: 'Cadeau voor de tienerkamer', tekst: 'Lampen, ledstrips, plaids en kussens om de kamer te pimpen.' },
+      { slug: 'sport-darts', naam: 'Sport & darts', beeld: 'images/sub/sub-sport-outdoor-darts.webp', vakken: ['sport-outdoor'], seoTitel: 'Sportcadeau voor tieners', tekst: 'Darts, fitness en sportspullen.' },
+      { slug: 'mode', naam: 'Mode & accessoires', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp', vakken: ['mode-beauty/rugzakken-reistassen', 'mode-beauty/schoenen', 'mode-beauty/kleding', 'mode-beauty/accessoires', 'mode-beauty/tassen'], seoTitel: 'Mode cadeau voor tieners', tekst: 'Rugzakken, sneakers, sokken en accessoires.' },
+      { slug: 'boeken-journals', naam: 'Boeken & journals', beeld: 'images/sub/sub-boeken-media-agendas.webp', vakken: ['boeken-media'], seoTitel: 'Boeken en journals voor tieners', tekst: 'Spannende boeken, bullet journals en mooie notitieboeken.' },
+      { slug: 'lekkers', naam: 'Lekkers & bakken', beeld: 'images/sub/sub-eten-drinken-chocolade-snoep.webp', vakken: ['eten-drinken', 'keuken/bakken'], seoTitel: 'Lekkers en bakspullen cadeau voor tieners', tekst: 'Chocolade, snoep, snacks en bakspullen.' },
+      { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/sub/sub-metaaldetectie-kinderen-beginners.webp', vakken: ['metaaldetectie'], seoTitel: 'Metaaldetector cadeau voor tieners', tekst: 'Een eerste detector om buiten op zoek te gaan naar schatten.' }
     ] },
   { slug: 'opa-oma', naam: 'Opa & oma', kort: 'Opa & oma', labels: ['opa-oma'], oud: 'cadeaus/opa-oma', beeld: 'images/sub/sub-cadeaus-opa-oma-2026b.webp', vaag: 'images/sub/sub-cadeaus-opa-oma-2026b.webp',
     seoTitel: 'Cadeau voor opa en oma – lieve en praktische cadeaus', tekst: 'Iets voor in de tuin, bij de koffie of gewoon gezellig: cadeaus voor opa en oma.',
@@ -564,7 +581,8 @@ window.LK_PERSONEN = [
       { slug: 'gadgets', naam: 'Gadgets', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp', vakken: ['elektronica'], seoTitel: 'Gadgets voor een collega', tekst: 'Handige en grappige gadgets voor op het werk.' },
       { slug: 'spelletjes', naam: 'Spelletjes', beeld: 'images/sub/sub-speelgoed-kaartspellen.webp', vakken: ['speelgoed'], seoTitel: 'Spelletjes voor collega\'s', tekst: 'Kaartspellen en kleine spellen voor de pauze of het teamuitje.' },
       { slug: 'drank', naam: 'Drank', beeld: 'images/sub/sub-dranken-wijn.webp', vakken: ['dranken'], seoTitel: 'Drank cadeau voor een collega', tekst: 'Een fles wijn, bubbels of iets sterkers als bedankje.' },
-      { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vakken: ['mode-beauty/verzorging'], seoTitel: 'Verzorgingscadeau voor een collega', tekst: 'Handcrème, badproducten en kleine verwencadeaus.' }
+      { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vakken: ['mode-beauty/verzorging'], seoTitel: 'Verzorgingscadeau voor een collega', tekst: 'Handcrème, badproducten en kleine verwencadeaus.' },
+      { slug: 'mode', naam: 'Tassen & accessoires', beeld: 'images/sub/sub-mode-beauty-tassen.webp', vakken: ['mode-beauty/tassen', 'mode-beauty/accessoires', 'keuken/opbergen'], seoTitel: 'Tassen en accessoires voor een collega', tekst: 'Lunchtassen, bekers en handige spullen voor onderweg.' }
     ] },
   { slug: 'baby', naam: 'Baby & kraam', kort: 'Baby & kraam', labels: ['baby'], oud: 'cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp', vaag: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp',
     seoTitel: 'Kraamcadeau – cadeaus voor baby en ouders', tekst: 'Zacht speelgoed, iets met naam en lieve spulletjes voor de babykamer.',
@@ -613,24 +631,25 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 })();
 /* ===== 2.0 PROEF: Gelegenheden. Samengestelde pagina's: wie (labels) + welke vakken + evt. maximale prijs.
    Bestaat er al een pagina (Sinterklaas, Kerst, …), dan verwijst 'naar' daarheen. */
+var LK_GEEN_FEEST = /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas/i; /* seizoensproducten horen niet op Moederdag, Vaderdag, enz. */
 window.LK_GELEGENHEDEN = [
   { slug: 'sinterklaas', naam: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
   { slug: 'kerst', naam: 'Kerst', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
   { slug: 'valentijn', naam: 'Liefde & Valentijn', naar: '/c/valentijn', beeld: 'images/sub/sub-valentijn-voor-haar.webp' },
-  { slug: 'moederdag', naam: 'Moederdag', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', seoTitel: 'Moederdagcadeau – de mooiste cadeaus voor Moederdag',
+  { slug: 'moederdag', uit: LK_GEEN_FEEST, naam: 'Moederdag', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', seoTitel: 'Moederdagcadeau – de mooiste cadeaus voor Moederdag',
     tekst: 'Iets moois voor mama: sieraden, geuren, iets lekkers of iets met haar naam erop.',
-    labels: ['haar'], vakken: ['sieraden', 'mode-beauty/geuren', 'mode-beauty/verzorging', 'wonen', 'keuken/koffie-thee', 'dranken/bubbels', 'dranken/wijn', 'eten-drinken', 'cadeaus/met-naam', 'boeken-media', 'hobby'] },
-  { slug: 'vaderdag', naam: 'Vaderdag', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', seoTitel: 'Vaderdagcadeau – de leukste cadeaus voor Vaderdag',
+    labels: ['haar'], vakken: ['sieraden', 'mode-beauty/geuren', 'mode-beauty/verzorging', 'wonen/kaarsen-geur', 'wonen/huisgeuren', 'wonen/woonaccessoires', 'wonen/plaids-kussens', 'keuken/koffie-thee', 'keuken/serveren', 'dranken/bubbels', 'dranken/wijn', 'eten-drinken/chocolade-snoep', 'eten-drinken/lekkernijen', 'eten-drinken/koffie-thee', 'cadeaus/met-naam', 'boeken-media/romans', 'hobby'] },
+  { slug: 'vaderdag', uit: LK_GEEN_FEEST, naam: 'Vaderdag', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', seoTitel: 'Vaderdagcadeau – de leukste cadeaus voor Vaderdag',
     tekst: 'Voor papa: een goede fles, iets voor de BBQ, een gadget of een horloge.',
     labels: ['hem'], vakken: ['dranken', 'eten-drinken/bbq', 'tuin-klussen', 'elektronica', 'mode-beauty/horloges', 'mode-beauty/geuren', 'metaaldetectie', 'sport-outdoor', 'cadeaus/met-naam'] },
   { slug: 'geboorte', naam: 'Geboorte & kraam', naar: '/voor/baby', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
-  { slug: 'jubileum', naam: 'Jubileum & trouwdag', beeld: 'images/sub/sub-valentijn-samen.webp', seoTitel: 'Cadeau voor jubileum of trouwdag',
+  { slug: 'jubileum', uit: LK_GEEN_FEEST, naam: 'Jubileum & trouwdag', beeld: 'images/sub/sub-valentijn-samen.webp', seoTitel: 'Cadeau voor jubileum of trouwdag',
     tekst: 'Samen vieren: iets persoonlijks, iets om te proosten of iets blijvends.',
     vakken: ['valentijn/samen', 'valentijn/met-naam', 'cadeaus/met-naam', 'dranken/bubbels', 'sieraden/echt-goud', 'valentijn/romantische-avond'] },
-  { slug: 'afscheid-pensioen', naam: 'Afscheid & pensioen', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp', seoTitel: 'Afscheidscadeau en pensioencadeau',
+  { slug: 'afscheid-pensioen', uit: LK_GEEN_FEEST, naam: 'Afscheid & pensioen', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp', seoTitel: 'Afscheidscadeau en pensioencadeau',
     tekst: 'Een mooi afscheid van een collega, of een cadeau voor wie met pensioen gaat.', gids: 'afscheidscadeau-collega',
     labels: ['collega', 'opa-oma'], vakken: ['boeken-media', 'tuin-klussen', 'hobby', 'dranken', 'eten-drinken/pakketten', 'keuken', 'wonen', 'cadeaus/met-naam', 'speelgoed/puzzels', 'dieren/vogels'] },
-  { slug: 'bedankt', naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
+  { slug: 'bedankt', uit: LK_GEEN_FEEST, naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
     tekst: 'Een klein gebaar dat groot aankomt: iets lekkers, een kaars, een plantje of een goede fles.', maxPrijs: 25,
     vakken: ['eten-drinken/chocolade-snoep', 'eten-drinken/pakketten', 'eten-drinken/koffie-thee', 'eten-drinken/lekkernijen', 'wonen/kaarsen-geur', 'wonen/huisgeuren', 'tuin-klussen/planten-zaden', 'keuken/koffie-thee', 'dranken/wijn', 'dranken/bubbels', 'cadeaus/collega'] },
   { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' }

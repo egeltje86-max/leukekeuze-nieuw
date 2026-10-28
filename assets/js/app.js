@@ -500,6 +500,7 @@
       if (p.cat === 'christelijk') return false;
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
       if (g.maxPrijs && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
+      if (g.uit && g.uit.test(p.titel)) return false;
       var plekken = [p.cat + '/' + p.sub, p.cat].concat(p.ookIn || []);
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
