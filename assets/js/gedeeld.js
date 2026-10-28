@@ -89,6 +89,7 @@
     taart: '<path d="M4 20h16v-7H4Z"/><path d="M4 15.5c2 1.3 4 1.3 5.3 0 1.4 1.3 4 1.3 5.4 0 1.3 1.3 3.3 1.3 5.3 0"/><path d="M8 13v-3M12 13v-3M16 13v-3"/><path d="M8 7.5c-.7-.8.7-1.5 0-2.5M12 7.5c-.7-.8.7-1.5 0-2.5M16 7.5c-.7-.8.7-1.5 0-2.5"/>',
     glas: '<path d="M7.5 3h9l-.6 6.2a3.9 3.9 0 0 1-7.8 0Z"/><path d="M12 13.2V20M8.5 20h7"/>',
     hart: '<path d="M12 20s-8-4.6-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.6C20 15.4 12 20 12 20Z"/>',
+    whatsapp: '<path d="M4.5 19.5 5.6 15.8A8 8 0 1 1 8.4 18.6Z"/><path d="M9.2 8.8c.2 2.6 2.9 5.4 5.6 5.8l1.1-1.3-1.6-.9-.8.7c-1-.4-2.1-1.4-2.5-2.5l.7-.8-.9-1.6Z"/>',
     zoek: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
     menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     sluit: '<path d="M6 6l12 12M18 6 6 18"/>',
@@ -132,7 +133,7 @@
     var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : p.eigen ? '<span class="label vol favo">★ Van LeukeKeuze</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : (isNieuw(p) ? '<span class="label vol">Nieuw</span>' : ''));
     return '<article class="prodkaart">' +
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + (p.sfeer ? ' sfeer' : '') + '">' + productBeeld(p) + label + '</div>' +
-      '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Verwijder uit favorieten' : 'Bewaar als favoriet') + '">' + icoon('hart') + '</button>' +
+      '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icoon('hart') + '</button>' +
       '<div class="info">' +
         '<span class="shop">' + esc(p.shop) + '</span>' +
         '<h3><a href="/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +

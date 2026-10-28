@@ -13,8 +13,8 @@ const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
   .replace(/(assets\/(?:css\/stijl\.css|js\/(?:data|producten|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
-const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen'];
-const GEEN_INDEX = /^\/(favorieten|zoek)\//;
+const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst'];
+const GEEN_INDEX = /^\/(favorieten|zoek|lijst)\//;
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
 
@@ -109,7 +109,7 @@ function maakPagina(info, lade, mega) {
   }));
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
-  const gezien = new Set(['/', '/categorieen']), rij = ['/', '/categorieen'], paginas = [];
+  const gezien = new Set(['/', '/categorieen', '/lijst']), rij = ['/', '/categorieen', '/lijst'], paginas = [];
   while (rij.length) {
     const pad = rij.shift();
     const r = await page.evaluate(pad => {
