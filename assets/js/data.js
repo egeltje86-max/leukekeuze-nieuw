@@ -19,9 +19,10 @@ window.LK_INSTELLINGEN = {
     { label: 'Kerst', naar: '/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' },
     { label: 'Dranken', naar: '/c/dranken' },
-    { label: 'Voor haar', naar: '/c/cadeaus/voor-haar' },
-    { label: 'Voor hem', naar: '/c/cadeaus/voor-hem' },
-    { label: 'Collega', naar: '/c/cadeaus/collega' },
+    { label: 'Voor haar', naar: '/voor/haar' },
+    { label: 'Voor hem', naar: '/voor/hem' },
+    { label: 'Tieners', naar: '/voor/tieners' },
+    { label: 'Collega', naar: '/voor/collega' },
     { label: 'Christelijk', naar: '/c/christelijk' },
     { label: 'Onder €15', naar: '/c/cadeaus/onder-15' },
     { label: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' }

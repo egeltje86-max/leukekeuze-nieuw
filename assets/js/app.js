@@ -450,7 +450,7 @@
       var n = persoonProducten(pe, x.vakken).length;
       if (!n) return '';
       return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget('/voor/' + pe.slug + '/' + x.slug) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-        '<span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + (s ? '' : '<small>' + n + '</small>') + '</a>';
+        '<span class="rond"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
     }).join('');
     var subsHtml = s
       ? '<div class="subkaarten"><a class="subkaart" href="' + metBudget('/voor/' + pe.slug) + '"><span class="rond"><img src="' + esc(pe.beeld) + '" alt=""></span>Alles</a>' + subs + '</div>'
@@ -596,6 +596,8 @@
       : '<span class="knop knop-goud uit" aria-disabled="true">Voorbeeld – nog geen winkellink</span>';
 
     var ookIn = (p.ookIn || []).map(function (x) {
+      var pe = window.LK_PERSONEN.filter(function (q) { return q.oud === x; })[0];
+      if (pe) return '<a href="/voor/' + pe.slug + '">' + esc(pe.naam) + '</a>';
       var d = x.split('/'), cc = window.LK_CAT(d[0]), ss = window.LK_SUB(cc, d[1]);
       return cc && ss ? '<a href="/c/' + cc.slug + '/' + ss.slug + '">' + esc(ss.naam) + '</a>' : '';
     }).filter(Boolean);
