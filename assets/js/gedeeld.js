@@ -33,6 +33,12 @@
 
   /* Hoort product bij categorie (en evt. sub)? Kijkt ook naar 'ookIn'. */
   function hoortBij(p, cat, sub) {
+    /* 2.0: een groep of subcategorie kan doorverwijzen naar een ander vak (bijv. Sieraden & Horloges -> mode-beauty/horloges). */
+    var cd = (window.LK_CATEGORIEEN || []).find(function (c) { return c.slug === cat; });
+    if (cd) {
+      if (sub) { var sd = (cd.subs || []).find(function (s) { return s.slug === sub; }); if (sd && sd.vak) { var vd = sd.vak.split('/'); return hoortBij(p, vd[0], vd[1]); } }
+      else if (cd.vakken && cd.vakken.some(function (v) { var d = v.split('/'); return hoortBij(p, d[0], d[1]); })) return true;
+    }
     /* Christelijke producten staan alleen in de categorie Christelijke cadeaus (wens van Marius). */
     if (p.cat === 'christelijk' && cat !== 'christelijk') return false;
     /* 'Onder €15' gaat automatisch op prijs: alles onder de 15 euro, nooit iets duurders. */

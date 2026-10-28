@@ -14,7 +14,7 @@
 (function () {
   var LK = window.LK, ALLECATS = window.LK_CATEGORIEEN,
     /* Hoofdcategorieën: zonder de categorieën die onder een andere hangen. */
-    CATS = ALLECATS.filter(function (c) { return !c.onder; }), PRIJZEN = window.LK_PRIJZEN, INST = window.LK_INSTELLINGEN;
+    CATS = ALLECATS.filter(function (c) { return !c.onder && !c.verborgen; }), PRIJZEN = window.LK_PRIJZEN, INST = window.LK_INSTELLINGEN;
   var ic = LK.icoon, esc = LK.esc;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -1448,6 +1448,7 @@
   function volleSubs(c) {
     var z = LK.zichtbaar();
     return c.subs.filter(function (s) {
+      if (s.verborgen) return false;
       return s.slug === 'onder-15' || z.some(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
     });
   }
@@ -1455,18 +1456,20 @@
   /* ================== MENU'S ================== */
   function bouwLade() {
     var uit = CATS.filter(function (c) { return c.uitgelicht; })[0];
-    var rest = CATS.filter(function (c) { return !c.uitgelicht; });
+    var rest = CATS.filter(function (c) { return !c.uitgelicht && c.slug !== 'christelijk'; }), chr = window.LK_CAT('christelijk');
+    var ladeRij = function (c) {
+      return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +
+        '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
+        volleSubs(c).map(function (s) { return '<a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
+    };
     $('[data-lade]').innerHTML =
       (uit ? '<a class="lade-uitgelicht" href="/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
       '<div class="lade-label">Voor wie?</div><div class="lade-personen">' + window.LK_PERSONEN.map(function (x) {
         return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(x.beeld) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
       }).join('') + '</div>' +
-      '<div class="lade-label">Producten</div><ul>' +
-      rest.map(function (c) {
-        return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +
-          '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
-          volleSubs(c).map(function (s) { return '<a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
-      }).join('') + '</ul>' +
+      '<div class="lade-label">Producten</div><ul>' + rest.map(ladeRij).join('') + '</ul>' +
+      '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + (window.LK_GELEGENHEDEN || []).map(function (g) { return '<a href="' + g.naar + '">' + esc(g.naam) + '</a>'; }).join('') + '</div>' +
+      (chr ? '<div class="lade-label">Christelijke cadeaus</div><ul>' + ladeRij(chr) + '</ul>' : '') +
       '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn verlanglijstje</a><a href="/zoek">Zoeken</a><a href="/gids">Cadeaugidsen</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
   }
   function bouwMega() {

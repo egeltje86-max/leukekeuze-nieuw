@@ -504,5 +504,42 @@ window.LK_PERSONEN = [
   { slug: 'baby', naam: 'Baby & kraam', kort: 'Baby & kraam', labels: ['baby'], oud: 'cadeaus/baby-kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp', naar: '/c/cadeaus/baby-kraam' }
 ];
 /* De 8 populairste productgroepen op de homepage (telefoon); de rest zit achter 'Alle categorieën'. */
-window.LK_HOME_GROEPEN = ['sieraden', 'mode-beauty', 'elektronica', 'wonen', 'dranken', 'eten-drinken', 'speelgoed', 'hobby'];
+window.LK_HOME_GROEPEN = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektronica', 'wonen', 'dranken', 'eten-drinken', 'speelgoed'];
 window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(function (p) { return p.slug === slug; }); };
+
+/* ===== 2.0 PROEF: de 15 productgroepen met de nieuwe namen (afgesproken met Marius en Nova). =====
+   Oude adressen blijven werken: we hernoemen alleen en verwijzen subcategorieën door ('vak'). */
+(function () {
+  var C = window.LK_CATEGORIEEN, cat = function (slug) { return C.find(function (c) { return c.slug === slug; }); };
+  var hernoem = function (slug, naam, kort) { var c = cat(slug); if (c) { c.naam = naam; c.kort = kort || naam; } };
+  /* Cadeaus en Liefde & Valentijn zijn geen productgroepen meer: personen en gelegenheden. De pagina's blijven bestaan. */
+  cat('cadeaus').verborgen = true; cat('valentijn').verborgen = true;
+  /* Sieraden & Horloges: horloges erbij (staan in mode-beauty/horloges, dat blijft het adres). */
+  hernoem('sieraden', 'Sieraden & Horloges');
+  var si = cat('sieraden'); si.vakken = ['mode-beauty/horloges']; si.tekst = 'Kettingen, oorbellen, ringen, armbanden en horloges. Van betaalbaar tot echt goud.';
+  si.subs.unshift({ slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp', vak: 'mode-beauty/horloges' });
+  /* Geuren & Verzorging: eigen groep. */
+  var mb = cat('mode-beauty');
+  C.splice(C.indexOf(mb), 0, { slug: 'geuren-verzorging', naam: 'Geuren & Verzorging', kort: 'Geuren & Verzorging', icoon: 'tas',
+    tekst: 'Parfum, aftershave en verzorging om cadeau te geven.', tegel: 'images/categorieen/categorie-geuren-verzorging.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'],
+    subs: [{ slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vak: 'mode-beauty/geuren' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vak: 'mode-beauty/verzorging' }] });
+  /* Mode & Accessoires: wat overblijft van Mode & Beauty. Horloges, geuren en verzorging blijven bereikbaar, maar staan niet meer in het rijtje. */
+  hernoem('mode-beauty', 'Mode & Accessoires'); mb.tekst = 'Tassen, schoenen, kleding en accessoires.';
+  mb.subs.forEach(function (s) { if (['horloges', 'geuren', 'verzorging'].indexOf(s.slug) !== -1) s.verborgen = true; });
+  hernoem('elektronica', 'Elektronica & Gadgets');
+  hernoem('wonen', 'Wonen & Decoratie');
+  hernoem('keuken', 'Keuken & Tafelen');
+  hernoem('eten-drinken', 'Lekkernijen & Cadeaupakketten', 'Lekkernijen');
+  hernoem('sport-outdoor', 'Sport & Outdoor');
+  /* Metaaldetectie wordt een eigen groep (stond onder Sport). */
+  delete cat('metaaldetectie').onder;
+  /* Volgorde van de 15 groepen, Christelijke cadeaus als eigen afdeling erachter. */
+  var volgorde = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektronica', 'wonen', 'keuken', 'dranken', 'eten-drinken', 'speelgoed', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren', 'metaaldetectie', 'christelijk', 'cadeaus', 'valentijn'];
+  C.sort(function (a, b) { return volgorde.indexOf(a.slug) - volgorde.indexOf(b.slug); });
+})();
+/* Gelegenheden in het menu (alleen wat al bestaat; Moederdag, Vaderdag, enz. volgen). */
+window.LK_GELEGENHEDEN = [
+  { naam: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' }, { naam: 'Kerst', naar: '/c/cadeaus/kerst' }, { naam: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' },
+  { naam: 'Liefde & Valentijn', naar: '/c/valentijn' }, { naam: 'Geboorte & kraam', naar: '/c/cadeaus/baby-kraam' }, { naam: 'Afscheid & pensioen', naar: '/gids/cadeau-voor-pensioen' },
+  { naam: 'Bedankt', naar: '/gids/cadeau-voor-collega' }, { naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis' }
+];
