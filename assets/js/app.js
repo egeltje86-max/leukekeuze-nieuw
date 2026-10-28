@@ -424,6 +424,7 @@
     if (subSlug && !s) return nietGevonden();
     zetTitel(s ? s.naam + ' voor ' + pe.naam.replace(/^Voor /, '') : pe.seoTitel || pe.naam);
     var pad = '/voor/' + pe.slug + (s ? '/' + s.slug : '');
+    var naam = pe.naam.replace(/^Voor /, '');
     var alles = persoonProducten(pe, s ? s.vakken : null);
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs); }), q.sort);
     var metBudget = function (adres) { return q.prijs && q.prijs !== 'alle' ? maakAdres(adres, { prijs: q.prijs }) : adres; };
@@ -445,12 +446,13 @@
       '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
-    var leeg = leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
+    var leeg = alles.length
+      ? leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>')
+      : leegBlok('Deze afdeling vullen we nu', 'We kiezen de cadeaus voor ' + naam + ' met de hand uit. Kijk alvast verder:', '<a class="knop knop-rand" href="/voor">Voor iemand anders</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
     /* Selectie: favorieten en populaire producten, sfeerfoto's eerst. */
     var selectie = sfeerEerst(sorteer(alles.filter(function (p) { return p.favoriet || p.populair; }))).slice(0, 10);
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
-    var naam = pe.naam.replace(/^Voor /, '');
 
     return paginakop({
       titel: s ? s.naam + ' voor ' + naam : pe.naam,
@@ -459,11 +461,12 @@
       kruimel: [{ tekst: 'Voor wie?', naar: '/voor' }].concat(s ? [{ tekst: pe.naam, naar: '/voor/' + pe.slug }, { tekst: s.naam }] : [{ tekst: pe.naam }])
     }) +
     '<div class="binnen">' +
+      (!alles.length ? '<section class="sectie eerste">' + leeg + '</section>' :
       (s ? '<section class="sectie" aria-label="Subcategorieën">' + subsHtml + '</section>'
          : '<section class="sectie eerste"><div class="sectie-kop"><div><h2>Wat zoek je voor ' + esc(naam) + '?</h2></div></div>' + subsHtml + '</section>') +
       (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div>' + rij(selectie) + '</section>' : '') +
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties) +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties)) +
       leesOok(pe.oud || '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Voor iemand anders?</h2></div></div>' +
         '<div class="subkaarten voorwie-rij">' + anderen.map(function (x) {
