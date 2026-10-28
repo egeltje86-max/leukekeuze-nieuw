@@ -638,8 +638,33 @@
           '</ul>' +
         '</div>' +
       '</div>' +
+      verderZoeken(p, c, s) +
       (verwant.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk</h2></div></div>' + grid(verwant) + '</section>' : '') +
     '</div>';
+  }
+  /* 2.0: 'Verder zoeken' onder een product: in één tik naar vergelijkbare producten, goedkopere, of meer voor dezelfde persoon. */
+  function verderZoeken(p, c, s) {
+    if (p.cat === 'christelijk' || !s) return '';
+    var subPad = '/c/' + c.slug + '/' + s.slug, knoppen = [];
+    var aantal = function (pad, prijs) { return LK.zichtbaar().filter(function (x) { return x.id !== p.id && LK.hoortBij(x, c.slug, s.slug) && (!prijs || binnenPrijs(x, prijs)); }).length; };
+    var n = aantal();
+    if (n) knoppen.push({ tekst: 'Meer in ' + s.naam, sub: n + ' vergelijkbare producten', naar: subPad, ic: 'zoek' });
+    /* Goedkoper: het grootste budget dat onder de prijs van dit product ligt. */
+    var goedkoper = PRIJZEN.filter(function (f) { return f.id !== 'alle' && f.max < p.prijs && f.max !== Infinity; }).pop();
+    if (goedkoper) { var ng = aantal(subPad, goedkoper.id); if (ng) knoppen.push({ tekst: 'Goedkoper: ' + goedkoper.label.toLowerCase(), sub: ng + ' opties', naar: maakAdres(subPad, { prijs: goedkoper.id }), ic: 'filter' }); }
+    /* Meer voor dezelfde persoon, liefst in dezelfde subcategorie van die persoon. */
+    (window.LK_PERSONEN || []).forEach(function (pe) {
+      if (knoppen.length >= 4) return;
+      var vanPersoon = (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) || (pe.oud && (p.ookIn || []).indexOf(pe.oud) !== -1);
+      if (!vanPersoon || !pe.subs) return;
+      var plekken = [p.cat + '/' + p.sub, p.cat].concat(p.ookIn || []);
+      var su = pe.subs.filter(function (x) { return plekken.some(function (pl) { return x.vakken.some(function (v) { return pl === v || pl.indexOf(v + '/') === 0; }); }); })[0];
+      knoppen.push({ tekst: (su ? su.naam : 'Meer') + ' voor ' + pe.naam.replace(/^Voor /, '').toLowerCase(), sub: 'Bekijk', naar: '/voor/' + pe.slug + (su ? '/' + su.slug : ''), ic: 'cadeau' });
+    });
+    if (!knoppen.length) return '';
+    return '<section class="sectie verder"><div class="sectie-kop"><div><h2>Verder zoeken</h2></div></div><div class="verder-knoppen">' +
+      knoppen.slice(0, 4).map(function (k) { return '<a class="verder-knop" href="' + esc(k.naar) + '">' + ic(k.ic) + '<span><strong>' + esc(k.tekst) + '</strong><small>' + esc(k.sub) + '</small></span>' + ic('rechts', 'pijl') + '</a>'; }).join('') +
+      '</div></section>';
   }
 
   /* ---------- Zoeken ---------- */

@@ -171,3 +171,13 @@ body { background: var(--bg); color: var(--tekst); }
 .zoek-tips .zt-titel small { color: var(--tekst-3); font-weight: 500; }
 .zoek-tips .zt-pagina { padding: 4px 14px; }
 .zoek-tips .zt-ic { width: 32px; height: 32px; }
+/* 'Verder zoeken' onder een product */
+.verder-knoppen { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 760px) { .verder-knoppen { grid-template-columns: repeat(2, 1fr); } }
+.verder-knop { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; background: #fff; border: 1px solid var(--lijn); box-shadow: 0 2px 10px rgba(10,16,32,.05); color: var(--tekst); min-height: 64px; }
+.verder-knop > svg { width: 22px; height: 22px; flex: none; color: var(--goud-donker); }
+.verder-knop span { flex: 1; min-width: 0; }
+.verder-knop strong { display: block; font: 600 15px/1.25 var(--f-ui); }
+.verder-knop small { display: block; font: 500 12.5px/1.2 var(--f-ui); color: var(--tekst-3); margin-top: 2px; }
+.verder-knop .pijl { width: 18px; height: 18px; color: var(--tekst-3); }
+.verder-knop:hover { border-color: var(--goud); }
