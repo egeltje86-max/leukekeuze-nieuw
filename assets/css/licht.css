@@ -152,3 +152,4 @@ body { background: var(--bg); color: var(--tekst); }
 .vonk-stapjes span { background: rgba(10,16,32,.1); }
 .vonk-keuze, .vonk-optie { background: #fff; border: 1px solid var(--lijn); color: var(--tekst); }
 .vonk-keuze:hover, .vonk-optie:hover { border-color: var(--goud); }
+@media (min-width: 600px) { .persoon-subs.gelegenheden { grid-template-columns: repeat(5, 1fr); } }
