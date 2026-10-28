@@ -5,7 +5,7 @@
 
 window.LK_INSTELLINGEN = {
   /* Daisycon heeft de site tijdelijk afgekeurd: hun links sturen bezoekers dan naar een vreemde site.
-     Zolang dit 'true' is, gaan de knoppen rechtstreeks naar de winkel (zonder partnerlink) en is 'Meer in onze winkels' verborgen.
+     Zolang dit 'true' is, gaan de knoppen rechtstreeks naar de winkel (zonder partnerlink) en toont 'Meer in onze winkels' alleen TradeTracker-winkels.
      Weer goedgekeurd? Zet dit op false. */
   daisyconPauze: true,
   seizoen: 'kerst',            // 'kerst' of '' (neutraal)

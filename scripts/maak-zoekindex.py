@@ -27,7 +27,26 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-westwing.json', 'Westwing', ''),
     # oude, kleinere La Redoute-uittreksels (alleen als de volledige feed er niet is)
     ('x-lr-wonen-cadeau.json', 'La Redoute', ''),
+    # TradeTracker (t-*.json, gemaakt met tt-uittreksel.py)
+    ('t-dvzn.json', 'Ditverzinjeniet', ''),
+    ('t-country-acc.json', 'Countrylifestyle', ''),
+    ('t-country-licht.json', 'Countrylifestyle', ''),
+    ('t-lamponline.json', 'Lamponline', ''),
+    ('t-bellatio.json', 'Bellatio', ''),
+    ('t-wijny.json', 'Wijny', ''),
+    ('t-dgsw.json', 'De Grote Speelgoedwinkel', ''),
+    ('t-animals.json', 'Animals Giftshop', ''),
+    ('t-ijzersterk.json', 'IJzersterke geschenken', ''),
+    ('t-coolgift.json', 'CoolGift', ''),
+    ('t-gadgets.json', 'Gadgets en trends', ''),
+    ('t-knuffelpar.json', 'Knuffelparadijs', ''),
+    ('t-placethemoment.json', 'Place the Moment', ''),
 ]
+# Daisycon staat op pauze (LK_INSTELLINGEN.daisyconPauze in assets/js/data.js): dan alleen TradeTracker-winkels in de index.
+# Ditverzinjeniet komt altijd via TradeTracker (t-dvzn), niet meer via Daisycon (x-dvzn).
+PAUZE = bool(re.search(r'daisyconPauze:\s*true', open('assets/js/data.js', encoding='utf-8').read()))
+WINKELS = [w for w in WINKELS if w[0] != 'x-dvzn.json' and (w[0].startswith('t-') or not PAUZE)]
+print('Daisycon-pauze:', PAUZE, '-', len(WINKELS), 'feeds')
 # Bewust NIET: Mijn Hummeltje (dropshipping, wens van Marius).
 FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'), (r'bracelet', 'armband'), (r"boucles", 'oorbellen'),
       (r'\bbague', 'ring'), (r'echarpe|écharpe|foulard|étole', 'sjaal'), (r'ceinture', 'riem'), (r'\bpull', 'trui'), (r'cardigan', 'vest'),
@@ -67,6 +86,8 @@ for bestand, winkel, b in WINKELS:
         g = (x.get('gender') or '').lower(); g = 'v' if g == 'female' else ('m' if g == 'male' else '')
         uit.append([basis(x['titel'])[:120], round(prijs, 2), winkel, x['link'], foto, cat[:40], (x.get('merk') or '')[:40], g])
     per[winkel] = len(gezien)
+if len(uit) < 1000:  # veiligheid: liever de oude index houden dan een (bijna) lege online zetten
+    print('TE WEINIG producten (%d), index niet bijgewerkt' % len(uit)); sys.exit(1)
 # Kleiner maken: per winkel het gezamenlijke begin van links en foto's maar één keer opslaan.
 def begin(l):
     s = min(l); e = max(l); i = 0
@@ -99,6 +120,17 @@ SUBS = {}
 for c in CATS:
     blok = re.search(r"slug: '" + c + r"', naam:.*?subs: \[(.*?)\] \}", open('assets/js/data.js', encoding='utf-8').read(), re.S)
     SUBS[c] = re.findall(r"\{ slug: '([a-z0-9-]+)'", blok.group(1)) if blok else []
+# Gespecialiseerde winkels alleen tonen bij de (sub)categorieën waar ze bij horen
+# (anders komen bv. 'champagne'-kleurige kerstballen bij Bubbels of servetringen bij Ringen).
+ALLEEN = {
+    'Bellatio': ['cadeaus/adventskalenders', 'wonen', 'tuin-klussen/buitenverlichting'],
+    'Lamponline': ['wonen/verlichting', 'tuin-klussen/buitenverlichting'],
+    'Countrylifestyle': ['wonen', 'keuken', 'tuin-klussen', 'dieren/vogels'],
+    'Wijny': ['dranken'],
+    'Animals Giftshop': ['dieren', 'speelgoed', 'cadeaus/voor-kinderen'],
+    'Knuffelparadijs': ['speelgoed', 'cadeaus/voor-kinderen', 'cadeaus/baby-kraam'],
+    'De Grote Speelgoedwinkel': ['speelgoed', 'hobby', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/adventskalenders', 'cadeaus/baby-kraam', 'boeken-media/kinderboeken', 'sport-outdoor'],
+}
 def norm(t): return ' ' + re.sub(r'[^a-z0-9à-ÿ€]+', ' ', t.lower())
 def heeft(z, w): return (' ' + w) in z if len(w) >= 5 else (' ' + w + ' ') in (z + ' ')
 rijen = []
@@ -120,6 +152,8 @@ for c in CATS:
         niet = NW.get(sleutel, '').split()
         sel = []
         for x, z, tl, g in rijen:
+            mag = ALLEEN.get(W[x[2]]['naam'])
+            if mag and not any(sleutel == m or sleutel.startswith(m + '/') for m in mag): continue
             if maxp and x[1] >= maxp: continue
             if gesl and g != gesl: continue
             if niet and any(heeft(tl, n) for n in niet): continue

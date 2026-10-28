@@ -1,4 +1,4 @@
-"""Elke nacht: alle feeds ophalen bij Daisycon, de zoekindex opnieuw maken en online zetten.
+"""Elke nacht: alle feeds ophalen bij Daisycon en TradeTracker, de zoekindex opnieuw maken en online zetten.
 Draait op de laptop van Marius (Taakplanner), vanuit een kopie van de repo.
 Gebruik: python scripts/nachtelijk.py   (vanuit de hoofdmap van de repo)"""
 import os, sys, subprocess, urllib.request, datetime, json, shutil
@@ -51,6 +51,26 @@ for naam, q in FEED.items():
         f = FILTER.get(naam)
         extra = [f[0], str(f[1]), str(f[2])] if f else []
         subprocess.run([sys.executable, os.path.join(HIER, 'uittreksel.py'), xml, js + '.nieuw'] + extra, check=True, capture_output=True)
+        n = len(json.load(open(js + '.nieuw', encoding='utf-8')))
+        if n == 0:
+            log('LEEG, oude versie blijft:', naam); os.remove(js + '.nieuw'); continue
+        os.replace(js + '.nieuw', js); ok += 1
+        log('ok', naam, n, 'producten')
+    except Exception as e:
+        log('FOUT', naam, e, '(oude versie blijft)')
+# TradeTracker (site 516846). fid = het tweede getal in de tt=-link van de winkel.
+TT = 'https://pf.tradetracker.net/?aid=516846&encoding=utf-8&type=xml-v2&filter_stock=1&categoryType=2&additionalType=2&fid='
+TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1479776', 't-lamponline': '1430340',
+          't-bellatio': '1639683', 't-wijny': '701966', 't-dgsw': '2434431', 't-animals': '814623', 't-ijzersterk': '2131205',
+          't-coolgift': '1728408', 't-gadgets': '255212', 't-knuffelpar': '254011', 't-placethemoment': '2353225'}
+for naam, fid in TTFEED.items():
+    xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
+    try:
+        tmp = xml + '.nieuw'
+        with urllib.request.urlopen(urllib.request.Request(TT + fid, headers={'User-Agent': 'Mozilla/5.0'}), timeout=600) as r, open(tmp, 'wb') as f:
+            shutil.copyfileobj(r, f)
+        os.replace(tmp, xml)
+        subprocess.run([sys.executable, os.path.join(HIER, 'tt-uittreksel.py'), xml, js + '.nieuw', '5'], check=True, capture_output=True)
         n = len(json.load(open(js + '.nieuw', encoding='utf-8')))
         if n == 0:
             log('LEEG, oude versie blijft:', naam); os.remove(js + '.nieuw'); continue
