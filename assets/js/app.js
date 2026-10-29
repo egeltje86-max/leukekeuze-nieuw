@@ -1123,19 +1123,43 @@
       grid(lijst, leegBlok('Je verlanglijstje is nog leeg', 'Tik op het hartje bij een cadeau om het op je verlanglijstje te zetten. Daarna kun je het lijstje delen via WhatsApp.', '<a class="knop knop-goud" href="/voor">Bekijk cadeaus</a>')) +
       '</section>' + (deel ? '<section class="sectie">' + deel + '</section>' : '') + '</div>';
   }
+  /* Gedeeld verlanglijstje: dit ziet degene die de WhatsApp-link opent. Geen 'mijn lijstje', maar een warme cadeaupagina:
+     kies het cadeau dat jij wilt geven (wens van Marius en Nova, 29-10-2026). */
+  var LIJST_ZIN = { verjaardag: ['🎂', '{n} is binnenkort jarig!', 'Er is binnenkort iemand jarig!'], sinterklaas: ['🎁', 'Sinterklaas komt eraan!'], kerst: ['🎄', 'Kerst komt eraan!'],
+    valentijn: ['❤️', 'Bijna Valentijn!'], jubileum: ['💍', 'Er is een jubileum te vieren!'], zomaar: ['✨', 'Zomaar, omdat het kan!'] };
+  function cadeauKaart(p) {
+    var link = p.url ? winkelLink(p) : '';
+    return '<article class="cadeaukaart">' +
+      '<a class="beeld' + (p.beeld ? ' echt' : '') + (p.sfeer ? ' sfeer' : '') + '" href="/p/' + esc(p.id) + '">' + LK.productBeeld(p) + '</a>' +
+      '<div class="info"><span class="shop">' + esc(p.shop) + '</span>' +
+        '<h3><a href="/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +
+        '<div class="prijs">' + LK.euro(p.prijs) + '</div>' +
+        (link ? '<a class="knop knop-goud geef" href="' + esc(link) + '" target="_blank" rel="sponsored nofollow noopener">🎁 Dit cadeau geven</a>'
+              : '<span class="knop knop-goud geef uit" aria-disabled="true">🎁 Dit cadeau geven…</span>') +
+      '</div></article>';
+  }
   function gedeeldeLijst(q) {
     var ids = (q.p || '').split(/[.,]/).filter(Boolean).slice(0, 40);
     var lijst = ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd'; });
     var weg = ids.length - lijst.length;
-    var naam = (q.n || '').slice(0, 30), g = gelegenheid(q.v);
+    var naam = (q.n || '').slice(0, 30).trim(), g = gelegenheid(q.v), z = LIJST_ZIN[g ? g[0] : 'zomaar'] || LIJST_ZIN.zomaar;
+    if (!window.LK_DETAILS) laadDetails(function () { if (location.pathname.indexOf('/lijst') === 0) toon(); });
     var titel = naam ? 'Het verlanglijstje van ' + naam : 'Een verlanglijstje voor jou';
     zetTitel(titel);
-    var voor = g ? (g[0] === 'verjaardag' ? 'Voor ' + (naam ? 'de verjaardag van ' + naam : 'een verjaardag') : g[0] === 'jubileum' ? 'Voor een jubileum' : g[0] === 'zomaar' ? 'Zomaar, omdat het kan' : 'Voor ' + g[1]) + ' ' + g[2] : '';
-    return paginakop({ titel: titel, tekst: (voor ? voor + '. ' : '') + (naam ? naam + ' heeft deze cadeaus uitgekozen.' : 'Deze cadeaus zijn uitgekozen.') + ' Klik op een cadeau en bestel het direct bij de winkel.', kruimel: [{ tekst: 'Verlanglijstje' }], donker: true }) +
+    var gelegenheidZin = z[0] + ' ' + (naam ? z[1].replace('{n}', naam) : (z[2] || z[1]).replace('{n} is', 'Er is iemand'));
+    return '<section class="lijst-kop"><div class="binnen">' +
+        '<span class="kicker">🎁 Een persoonlijk verlanglijstje</span>' +
+        '<h1>' + esc(titel) + '</h1>' +
+        '<p class="lijst-gelegenheid">' + esc(gelegenheidZin) + '</p>' +
+        '<p>' + (naam ? 'Wil jij ' + esc(naam) + ' verrassen? ' + esc(naam) + ' heeft een paar cadeaus uitgezocht die heel welkom zijn.' : 'Wil jij iemand blij maken? Hier staan cadeaus die heel welkom zijn.') + '</p>' +
+        '<p class="lijst-vraag">Welk cadeau geef jij? ' + (g && g[0] === 'valentijn' ? '❤️' : '💛') + '</p>' +
+      '</div></section>' +
       '<div class="binnen"><section class="sectie">' +
-      (weg > 0 ? '<p class="lijst-weg">' + (weg === 1 ? '1 cadeau van dit lijstje is' : weg + ' cadeaus van dit lijstje zijn') + ' niet meer te koop.</p>' : '') +
-      grid(lijst, leegBlok('Dit lijstje is leeg', 'De cadeaus van dit lijstje zijn niet meer te koop. Kijk gerust rond voor iets anders.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
-      '<div class="lijst-zelf"><strong>Zelf ook een verlanglijstje maken?</strong> Tik op het hartje bij de cadeaus die jij wilt en deel je lijstje via WhatsApp. <a class="knop knop-goud" href="/c/cadeaus">Begin met kiezen</a></div>' +
+        (lijst.length ? '<div class="sectie-kop"><div><h2>Kies een cadeau' + (naam ? ' voor ' + esc(naam) : '') + '</h2><p>Tik op <strong>Dit cadeau geven</strong> en bestel het direct bij de winkel.</p></div></div>' : '') +
+        (weg > 0 ? '<p class="lijst-weg">' + (weg === 1 ? '1 cadeau van dit lijstje is' : weg + ' cadeaus van dit lijstje zijn') + ' niet meer te koop.</p>' : '') +
+        (lijst.length ? '<div class="cadeaukaarten">' + lijst.map(cadeauKaart).join('') + '</div>'
+          : leegBlok('Dit lijstje is leeg', 'De cadeaus van dit lijstje zijn niet meer te koop. Kijk gerust rond voor iets anders.', '<a class="knop knop-goud" href="/voor">Bekijk cadeaus</a>')) +
+        '<div class="lijst-zelf"><strong>Zelf ook een verlanglijstje maken?</strong><p>Tik op het hartje bij de cadeaus die jij wilt en deel je lijstje via WhatsApp. Gratis, zonder account.</p><a class="knop knop-rand" href="/voor">Begin met kiezen</a></div>' +
       '</section></div>';
   }
   function lijstVanDeel() {
