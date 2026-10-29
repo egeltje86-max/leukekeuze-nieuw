@@ -1,0 +1,11 @@
+PRODUCTSTUDIO 2.0 – LeukeKeuze
+
+Openen: dubbelklik op "Productstudio 2.0.html" (opent in je browser).
+Laat de bestanden bij elkaar in deze map staan:
+  - Productstudio 2.0.html   = de studio
+  - site-producten.js        = alle producten die nu op LeukeKeuze staan (Claude maakt een nieuwe als de site verandert)
+  - producten.js (soms)      = een nieuwe ronde van Claude. Staat dit bestand erbij, dan kun je op Start kiezen
+                               tussen "Producten op de site herkeuren" en "Nieuwe ronde".
+
+Klaar of even stoppen? Tabblad "Opslaan" > "Download mijn keuring". Het bestand komt in Downloads.
+Zeg tegen Claude: "keuring staat klaar".

@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Productstudio 2.0 – LeukeKeuze</title>
+<style>
+:root{--navy:#0A1020;--navy2:#141c33;--bg:#F7F3EC;--kaart:#fff;--lijn:rgba(10,16,32,.12);--tekst:#141A2A;--tekst2:#4F556A;--tekst3:#7C8296;--goud:#B8862E;--goud2:#D9A848;--goudlicht:#F2CB74;--groen:#2f9e6b;--rood:#d2554b;--oranje:#d98a1f}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--tekst);font:16px/1.5 "Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+button{font:inherit;cursor:pointer}a{color:var(--goud)}
+.top{position:sticky;top:0;z-index:20;background:var(--navy);color:#F4ECDD;border-bottom:2px solid var(--goud2)}
+.top-in{max-width:1240px;margin:0 auto;padding:10px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{font:500 21px/1 Georgia,serif;white-space:nowrap}.logo b{color:var(--goudlicht);font-weight:500}.logo small{font:600 12px/1 "Segoe UI",sans-serif;background:var(--goud2);color:var(--navy);padding:3px 7px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}.tab{background:transparent;border:1px solid rgba(255,255,255,.2);color:#d9d2c4;padding:7px 14px;border-radius:99px;font-size:14px}.tab.aan{background:var(--goud2);border-color:var(--goud2);color:var(--navy);font-weight:700}
+.voortgang{flex:1;min-width:180px;font-size:13px;color:#bdb6a8}.balk{height:7px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin-top:4px}.balk i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--goud2),var(--goudlicht));transition:width .3s}
+main{max-width:1240px;margin:0 auto;padding:18px 16px 130px}
+h2{font:500 26px/1.2 Georgia,serif;margin:0 0 6px}h3{margin:0 0 6px;font-size:17px}
+.uitleg{color:var(--tekst2);font-size:14px}.klein{font-size:12.5px;color:var(--tekst3)}
+.blok{background:var(--kaart);border:1px solid var(--lijn);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(10,16,32,.05)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.afd{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:12px}
+.afd button{text-align:left;background:#fff;border:1px solid var(--lijn);border-radius:12px;padding:12px 14px;color:var(--tekst)}.afd button:hover{border-color:var(--goud)}
+.afd b{display:block;font-size:15px}.afd .mb{height:6px;background:#eee6d6;border-radius:99px;overflow:hidden;margin:8px 0 4px}.afd .mb i{display:block;height:100%;background:var(--groen)}
+.groot{display:inline-flex;gap:8px;align-items:center;background:linear-gradient(180deg,#F2CB74,#D9A848);border:1px solid var(--goud);color:var(--navy);border-radius:12px;padding:12px 20px;font-weight:700;font-size:16px}
+.stil{background:#fff;border:1px solid var(--lijn);color:var(--tekst2);border-radius:10px;padding:9px 14px;font-size:14px}
+/* keuren */
+.kaart{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;background:#fff;border:1px solid var(--lijn);border-radius:18px;padding:20px;box-shadow:0 4px 18px rgba(10,16,32,.06)}
+@media(max-width:860px){.kaart{grid-template-columns:1fr;padding:14px;gap:14px}}
+.foto{background:#fff;border:1px solid #eee;border-radius:14px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}.foto img{max-width:100%;max-height:100%;object-fit:contain}
+.nummer{color:var(--tekst3);font-size:13px;margin-bottom:4px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h1{font:500 26px/1.2 Georgia,serif;margin:0 0 6px}
+.prijs{font-size:24px;font-weight:700}.winkel{color:var(--tekst2);font-size:14px;margin:2px 0 10px}
+.pil{display:inline-block;font-size:12px;padding:2px 10px;border-radius:99px;font-weight:700}
+.pil.nieuw{background:#ece6da;color:var(--tekst2)}.pil.goedgekeurd{background:#dff3e9;color:#1f7a4f}.pil.afgewezen{background:#fbe3e1;color:#a83a31}.pil.overgeslagen{background:#fdf0d9;color:#9a6312}
+label.kop{display:block;font-size:12px;color:var(--tekst3);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+select,textarea,input[type=text],input[type=search]{width:100%;background:#fff;color:var(--tekst);border:1px solid rgba(10,16,32,.18);border-radius:10px;padding:9px 11px;font:inherit}
+textarea{min-height:84px;resize:vertical}select:focus,textarea:focus,input:focus{outline:2px solid var(--goud2);outline-offset:1px}
+.wie{display:flex;flex-wrap:wrap;gap:6px}.wie button{border:1.5px solid rgba(10,16,32,.18);background:#fff;color:var(--tekst2);border-radius:99px;padding:7px 12px;font-size:14px;font-weight:600}
+.wie button.aan{background:var(--navy);border-color:var(--navy);color:#fff}.wie button kbd{opacity:.6;margin-left:4px}
+.wie button.aan kbd{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.schakels{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.schakel{display:flex;gap:8px;align-items:center;border:1.5px solid rgba(10,16,32,.15);border-radius:12px;padding:9px 12px;background:#fff;font-weight:600;cursor:pointer;user-select:none;font-size:15px}
+.schakel input{width:20px;height:20px;accent-color:var(--goud)}.schakel.aan{border-color:var(--goud);background:#FFF8E8}.schakel.pin.aan{border-color:#e60023;background:#fdecee}
+.letop{background:#FFF4E0;border:1px solid #e9b85c;color:#7a4d06;border-radius:10px;padding:7px 11px;font-size:14px;margin:4px 0}
+.letop.rood{background:#fdecea;border-color:#e39a93;color:#8a2a22}
+details.ook{border:1px solid var(--lijn);border-radius:10px;padding:6px 12px;margin-top:6px}details.ook summary{cursor:pointer;font-weight:600;color:var(--tekst2);font-size:14px}
+.vinkrij{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0 12px;max-height:260px;overflow:auto;padding:6px 0}
+.vk{display:flex;gap:7px;align-items:center;font-size:14px;padding:3px 0;cursor:pointer}.vk input{accent-color:var(--goud)}
+.knoppen{position:fixed;left:0;right:0;bottom:0;background:rgba(10,16,32,.97);border-top:2px solid var(--goud2);z-index:19}
+.knoppen-in{max-width:1240px;margin:0 auto;padding:10px 16px;display:grid;grid-template-columns:auto 1fr 1fr 1fr auto;gap:10px}
+.k{border:0;border-radius:12px;padding:14px 10px;font-weight:800;font-size:16px;display:flex;gap:8px;align-items:center;justify-content:center}.k small{font-weight:500;opacity:.7;font-size:12px}
+.k-terug,.k-volg{background:#1f2942;color:#d9d2c4;padding:14px 16px}.k-goed{background:var(--groen);color:#fff}.k-af{background:var(--rood);color:#fff}.k-over{background:#2a2414;color:var(--goudlicht);border:1px solid var(--goud2)}
+.k:disabled{opacity:.35}@media(max-width:600px){.k small{display:none}.k{font-size:14px;padding:12px 6px}}
+.melding{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--navy);color:var(--goudlicht);padding:10px 18px;border-radius:99px;font-weight:700;opacity:0;transition:opacity .2s;pointer-events:none;z-index:30}.melding.zie{opacity:1}
+/* snel */
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.filters select,.filters input{width:auto;min-width:150px}
+.raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.mini{background:#fff;border:2px solid var(--lijn);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.mini.goedgekeurd{border-color:#8fd3b1}.mini.afgewezen{border-color:#eba59f;opacity:.55}.mini.overgeslagen{border-color:#efc77b}
+.mini .f{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#fff;cursor:pointer}.mini .f img{max-width:100%;max-height:100%;object-fit:contain}
+.mini .t{padding:8px 10px;font-size:13px;flex:1}.mini .n{line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px}
+.mini .w{font-size:11.5px;color:var(--tekst3)}
+.mini .kn{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--lijn)}.mini .kn button{border:0;background:#fff;padding:9px 0;font-weight:800;font-size:15px}
+.mini .kn button+button{border-left:1px solid var(--lijn)}.mini .kn .j{color:var(--groen)}.mini .kn .x{color:var(--rood)}.mini .kn .t2{color:var(--oranje)}
+.pager{display:flex;gap:8px;justify-content:center;align-items:center;margin:18px 0}
+kbd{background:#f1ece2;border:1px solid #ddd3c2;border-radius:5px;padding:0 5px;font-size:11px;color:var(--tekst2);font-family:inherit}
+.tips li{margin-bottom:6px}
+.waarschuw{background:#FFF4E0;border:1px solid #e9b85c;border-radius:12px;padding:10px 14px;margin-bottom:14px;color:#7a4d06;font-weight:600}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+  <div class="logo">Leuke<b>Keuze</b> <small>Productstudio 2.0</small></div>
+  <div class="tabs" id="tabs">
+    <button class="tab" data-tab="start">🏠 Start</button>
+    <button class="tab" data-tab="keuren">✔ Keuren</button>
+    <button class="tab" data-tab="snel">⚡ Snel keuren</button>
+    <button class="tab" data-tab="opslaan">💾 Opslaan</button>
+  </div>
+  <div class="voortgang"><div id="tel"></div><div class="balk"><i id="balk"></i></div></div>
+</div></div>
+<main id="main"></main>
+<div class="knoppen" id="knoppen" style="display:none"><div class="knoppen-in">
+  <button class="k k-terug" id="kTerug" title="Vorige (pijltje links)">&larr;</button>
+  <button class="k k-af" id="kAf">✕ <span data-l="af">Weg</span> <small>W</small></button>
+  <button class="k k-over" id="kOver">? <span data-l="over">Twijfel</span> <small>T</small></button>
+  <button class="k k-goed" id="kGoed">✓ <span data-l="goed">Houden</span> <small>H</small></button>
+  <button class="k k-volg" id="kVolg" title="Volgende zonder oordeel (pijltje rechts)">&rarr;</button>
+</div></div>
+<div class="melding" id="melding"></div>
+
+<!-- Gegevens: site-producten.js = alles wat nu op LeukeKeuze staat. producten.js (optioneel) = een nieuwe ronde van Claude. -->
+<script src="site-producten.js"></script>
+<script src="producten.js" onerror="void 0"></script>
+<script>
+(function () {
+'use strict';
+/* ======================= GEGEVENS ======================= */
+var PLEKKEN = window.LKS_PLEKKEN || [], PERS = window.LKS_PERSONEN || [];
+var PLEK = {}; PLEKKEN.forEach(function (x) { PLEK[x.v] = x; });
+/* 'Voor wie'-knoppen: label op het product. Kinderen = 'kind'. */
+var WIE = [['hem', 'Hem'], ['haar', 'Haar'], ['kind', 'Kinderen'], ['tiener', 'Tieners'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega'], ['baby', 'Baby'], ['iedereen', 'Iedereen']];
+var BRONNEN = {};
+if ((window.LKS_PRODUCTEN || []).length) BRONNEN.site = { naam: 'Producten op de site herkeuren', kort: 'Site herkeuren', lijst: window.LKS_PRODUCTEN, sleutel: 'lks2-site', soort: 'herkeuring', woorden: ['Weg', 'Twijfel', 'Houden'] };
+if ((window.KK_PRODUCTEN || []).length) BRONNEN.ronde = { naam: 'Nieuwe ronde: ' + (window.KK_RONDE_NAAM || window.KK_RONDE), kort: 'Nieuwe ronde', lijst: window.KK_PRODUCTEN, sleutel: 'kk-keuringen-' + (window.KK_RONDE || 'ronde'), soort: 'ronde', ronde: window.KK_RONDE || 'ronde', woorden: ['Afwijzen', 'Overslaan', 'Goedkeuren'] };
+var BRON = null, P = [], K = {}, tab = 'start', pos = 0, rij = [], groepKeuze = '', sinds = 0;
+var SF = { groep: '', wie: '', status: '', zoek: '', pagina: 0 };
+
+function lees(k, l) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? l : v; } catch (e) { return l; } }
+function bewaarLS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { melding('Opslaan in de browser lukt niet. Download tussendoor!'); return false; } }
+function kiesBron(b) {
+  BRON = BRONNEN[b]; P = BRON.lijst; K = lees(BRON.sleutel, {}); sinds = lees(BRON.sleutel + '-sinds', 0);
+  bewaarLS('lks2-bron', b); pos = 0; rij = P.map(function (_, i) { return i; }); groepKeuze = '';
+  ['af', 'over', 'goed'].forEach(function (s, i) { document.querySelector('[data-l="' + s + '"]').textContent = BRON.woorden[i]; });
+}
+function bewaar() { bewaarLS(BRON.sleutel, K); }
+function groepVan(p) { var x = PLEK[p.cat + '/' + p.sub]; return x ? x.groep : (p.cat || 'Overig'); }
+function plekNaam(v) { var x = PLEK[v]; return x ? x.groep + ' › ' + x.naam : v; }
+function staat(p) {
+  var k = K[p.id] || {};
+  return { status: k.status || 'nieuw', cat: k.cat || p.cat, sub: k.sub || p.sub, voor: k.voor || (p.voor || []).slice(), favoriet: k.favoriet != null ? k.favoriet : !!p.favoriet,
+    pin: !!k.pin, waarom: k.waarom != null ? k.waarom : (p.waarom || ''), tekstMooier: !!k.tekstMooier, opmerking: k.opmerking || '', ookIn: k.ookIn || (p.ookIn || []).slice() };
+}
+function zet(p, w) { K[p.id] = Object.assign(staat(p), K[p.id] || {}, w, { datum: new Date().toISOString() }); bewaar(); }
+function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function euro(n) { return '€ ' + Number(n || 0).toFixed(2).replace('.', ','); }
+function melding(t) { var m = document.getElementById('melding'); m.textContent = t; m.classList.add('zie'); clearTimeout(melding.t); melding.t = setTimeout(function () { m.classList.remove('zie'); }, 1500); }
+function telling(lijst) { var t = { g: 0, a: 0, o: 0, n: 0 }; (lijst || P).forEach(function (p) { var s = staat(p).status; if (s === 'goedgekeurd') t.g++; else if (s === 'afgewezen') t.a++; else if (s === 'overgeslagen') t.o++; else t.n++; }); t.klaar = t.g + t.a; t.tot = (lijst || P).length; return t; }
+function kop() {
+  if (!BRON) { document.getElementById('tel').textContent = ''; return; }
+  var t = telling();
+  document.getElementById('tel').textContent = BRON.kort + ' · ' + t.klaar + ' van ' + t.tot + ' gekeurd · ' + t.g + ' ' + BRON.woorden[2].toLowerCase() + ' · ' + t.a + ' ' + BRON.woorden[0].toLowerCase() + (t.o ? ' · ' + t.o + ' twijfel' : '');
+  document.getElementById('balk').style.width = (t.tot ? t.klaar / t.tot * 100 : 0) + '%';
+}
+
+/* ======================= SLIMME WAARSCHUWINGEN ======================= */
+var DUBBEL = null;
+function sleutelTitel(t) { return String(t).toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9à-ü ]+/g, ' ').split(/\s+/).filter(Boolean).slice(0, 5).join(' '); }
+function maakDubbel() { DUBBEL = {}; P.forEach(function (p) { var k = sleutelTitel(p.titel); (DUBBEL[k] = DUBBEL[k] || []).push(p); }); }
+function waarschuwingen(p, s) {
+  var w = [], t = p.titel || '', v = s.voor;
+  if (s.cat === 'christelijk' && /rozenkrans|maria|heilige|katholiek|communie|paus|madonna|rozenhoedje/i.test(t + ' ' + s.waarom)) w.push(['rood', 'Christelijk: dit lijkt katholiek (rozenkrans, Maria, heilige, communie). Past dat bij de afdeling?']);
+  if (/kerst|advent|sinterklaas|\bpiet\b/i.test(t) && !/kerst|sinterklaas|advent/.test(s.cat + '/' + s.sub)) w.push(['', 'Seizoensproduct (kerst/Sint) buiten een kerst- of Sint-plek. Na de feestdagen eruit?']);
+  if (v.indexOf('tiener') !== -1 && /kinder|baby|peuter|kleuter|\bheren\b|\bmen\b|whisky|wijn/i.test(t)) w.push(['', 'Staat bij Tieners, maar de titel klinkt als kind/baby/volwassene.']);
+  if (v.indexOf('baby') !== -1 && /whisky|wijn|gin|bier|\b1[2-8]\+/i.test(t)) w.push(['rood', 'Staat bij Baby, dat klopt vast niet.']);
+  if (v.indexOf('kind') !== -1 && /whisky|wijn|gin|bier|wodka|rum\b|likeur/i.test(t)) w.push(['rood', 'Alcohol bij Kinderen.']);
+  if (!v.length || (v.length === 1 && v[0] === 'iedereen')) w.push(['', 'Staat bij geen enkele persoon (alleen "iedereen"). Kies voor wie het is.']);
+  if (!s.waarom || s.waarom.length < 30) w.push(['', 'De tekst "waarom wij dit kozen" is erg kort.']);
+  if (!DUBBEL) maakDubbel();
+  var d = (DUBBEL[sleutelTitel(t)] || []).filter(function (x) { return x.id !== p.id; });
+  if (d.length) w.push(['', 'Lijkt dubbel met: ' + d.slice(0, 2).map(function (x) { return '"' + x.titel + '" (' + euro(x.prijs) + ', ' + x.shop + ')'; }).join(' en ')]);
+  return w;
+}
+
+/* ======================= START ======================= */
+function start() {
+  document.getElementById('knoppen').style.display = 'none';
+  var keuzes = Object.keys(BRONNEN);
+  var h = '<div class="blok"><h2>Welkom in de Productstudio 2.0</h2><p class="uitleg">Hier keur je producten voor LeukeKeuze. Alles wat je doet wordt vanzelf bewaard op deze computer. Ben je klaar (of wil je tussendoor stoppen)? Ga naar <b>💾 Opslaan</b> en download je keuring. Dat bestandje geef je aan Claude.</p>';
+  if (keuzes.length > 1) h += '<p><b>Wat ga je doen?</b></p><div class="schakels">' + keuzes.map(function (b) { return '<button class="stil" data-bron="' + b + '"' + (BRON === BRONNEN[b] ? ' style="border-color:var(--goud);font-weight:700;color:var(--tekst)"' : '') + '>' + esc(BRONNEN[b].naam) + ' (' + BRONNEN[b].lijst.length + ')</button>'; }).join('') + '</div>';
+  if (!keuzes.length) h += '<p class="letop rood">Er zijn geen producten gevonden. Staat <b>site-producten.js</b> in dezelfde map als dit bestand?</p>';
+  h += '</div>';
+  if (BRON) {
+    var per = {}; P.forEach(function (p, i) { var g = groepVan(p); (per[g] = per[g] || []).push(i); });
+    var t = telling();
+    h += '<div class="blok"><h3>' + esc(BRON.naam) + '</h3><p class="uitleg">' + t.klaar + ' van ' + t.tot + ' gekeurd. Kies een afdeling om te beginnen. Tip: begin met de afdelingen die het meest bezocht worden (Sieraden & Horloges, Geuren & Verzorging, Dranken, Speelgoed, Wonen).</p>' +
+      '<div class="schakels"><button class="groot" data-afd="">▶ Verder waar ik was</button><button class="stil" data-ga="snel">⚡ Snel keuren (raster)</button></div>' +
+      '<div class="afd">' + Object.keys(per).sort().map(function (g) {
+        var l = per[g].map(function (i) { return P[i]; }), tt = telling(l);
+        return '<button data-afd="' + esc(g) + '"><b>' + esc(g) + '</b><span class="klein">' + tt.klaar + ' / ' + tt.tot + ' gekeurd' + (tt.o ? ' · ' + tt.o + ' twijfel' : '') + (tt.a ? ' · ' + tt.a + ' weg' : '') + '</span><div class="mb"><i style="width:' + (tt.tot ? tt.klaar / tt.tot * 100 : 0) + '%"></i></div></button>';
+      }).join('') + '</div></div>';
+  }
+  h += '<div class="grid2"><div class="blok"><h3>Zo werkt het</h3><ul class="uitleg tips">' +
+    '<li><b>✓ Houden</b> (H), <b>✕ Weg</b> (W), <b>? Twijfel</b> (T). Pijltjes ← → om terug of verder te gaan.</li>' +
+    '<li><b>Voor wie</b>: tik de personen aan (of toets 1 t/m 8). Zo komt het product op de juiste persoonspagina.</li>' +
+    '<li><b>★ Topper</b> (F): komt bij "Onze selectie" en krijgt een korte reden op de kaart.</li>' +
+    '<li><b>📌 Pin</b> (P): Claude maakt er een Pinterest-pin van.</li>' +
+    '<li><b>⚡ Snel keuren</b>: veel producten tegelijk in een raster, met knoppen onder elke foto. Ideaal om snel door een afdeling te gaan.</li>' +
+    '<li>Gele en rode meldingen zijn <b>tips</b> van de studio (bijvoorbeeld "lijkt dubbel" of "katholiek?"). Jij beslist.</li></ul></div>' +
+    '<div class="blok"><h3>Bewaren</h3><p class="uitleg">Je werk staat in deze browser op deze computer. Download het af en toe via 💾 Opslaan, zeker na een grote sessie. Wis nooit je browsergeschiedenis zonder eerst te downloaden.</p>' +
+    (BRON && sinds > 80 ? '<p class="waarschuw">Je hebt ' + sinds + ' keuringen gedaan sinds je laatste download. Download even tussendoor.</p>' : '') + '</div></div>';
+  document.getElementById('main').innerHTML = h;
+}
+
+/* ======================= KEUREN ======================= */
+function wieKnoppen(s) {
+  return '<div class="wie" id="wie">' + WIE.map(function (w, i) {
+    var aan = s.voor.indexOf(w[0]) !== -1 || (w[0] === 'kind' && s.voor.indexOf('kinderen') !== -1);
+    return '<button type="button" data-wie="' + w[0] + '" class="' + (aan ? 'aan' : '') + '">' + w[1] + ' <kbd>' + (i + 1) + '</kbd></button>';
+  }).join('') + '</div>';
+}
+function plekOpties(v) {
+  var groepen = {}; PLEKKEN.forEach(function (x) { (groepen[x.groep] = groepen[x.groep] || []).push(x); });
+  return Object.keys(groepen).map(function (g) { return '<optgroup label="' + esc(g) + '">' + groepen[g].map(function (x) { return '<option value="' + esc(x.v) + '"' + (x.v === v ? ' selected' : '') + '>' + esc(x.groep + ' › ' + x.naam) + '</option>'; }).join('') + '</optgroup>'; }).join('');
+}
+function ookVak(s) {
+  var hier = s.cat + '/' + s.sub, n = s.ookIn.length;
+  return '<details class="ook"><summary>Ook te zien bij… ' + (n ? '(' + n + ')' : '') + '</summary><div class="vinkrij" id="ook">' + PLEKKEN.map(function (x) {
+    if (x.v === hier) return '';
+    return '<label class="vk"><input type="checkbox" data-ook="' + esc(x.v) + '"' + (s.ookIn.indexOf(x.v) !== -1 ? ' checked' : '') + '> ' + esc(x.groep + ' › ' + x.naam) + '</label>';
+  }).join('') + '</div></details>';
+}
+function keuren(blijf) {
+  var main = document.getElementById('main');
+  if (!BRON || !P.length) { main.innerHTML = '<div class="blok"><h2>Kies eerst wat je gaat keuren</h2><p class="uitleg">Ga naar 🏠 Start.</p></div>'; document.getElementById('knoppen').style.display = 'none'; return; }
+  if (pos < 0 || pos >= P.length) pos = 0;
+  var p = P[pos], s = staat(p), ri = rij.indexOf(pos);
+  document.getElementById('knoppen').style.display = '';
+  var w = waarschuwingen(p, s);
+  main.innerHTML =
+    (groepKeuze ? '<p class="klein" style="margin:0 0 8px">Je keurt nu de afdeling <b>' + esc(groepKeuze) + '</b> · <a href="#" data-ga="start">andere afdeling kiezen</a></p>' : '') +
+    '<div class="kaart">' +
+      '<div><div class="foto"><img src="' + esc(p.foto) + '" alt="" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{textContent:\'Foto laadt niet (geen internet?)\',style:\'color:#777;padding:20px;text-align:center\'}))"></div>' +
+        '<div class="schakels">' +
+          '<label class="schakel' + (s.favoriet ? ' aan' : '') + '" id="favvak"><input type="checkbox" id="fav"' + (s.favoriet ? ' checked' : '') + '> ★ Topper <kbd>F</kbd></label>' +
+          '<label class="schakel pin' + (s.pin ? ' aan' : '') + '" id="pinvak"><input type="checkbox" id="pin"' + (s.pin ? ' checked' : '') + '> 📌 Pin <kbd>P</kbd></label>' +
+        '</div></div>' +
+      '<div>' +
+        '<div class="nummer">' + (groepKeuze && ri !== -1 ? esc(groepKeuze) + ': ' + (ri + 1) + ' van ' + rij.length : 'Product ' + (pos + 1) + ' van ' + P.length) + ' <span class="pil ' + s.status + '">' + ({ nieuw: 'Nog niet gekeurd', goedgekeurd: BRON.woorden[2], afgewezen: BRON.woorden[0], overgeslagen: BRON.woorden[1] })[s.status] + '</span></div>' +
+        '<h1>' + esc(p.titel) + '</h1>' +
+        '<div class="prijs">' + euro(p.prijs) + '</div>' +
+        '<div class="winkel">' + esc(p.shop) + (p.winkelUrl ? ' · <a href="' + esc(p.winkelUrl) + '" target="_blank" rel="noreferrer noopener">bekijk in de winkel</a>' : '') +
+          (BRON.soort === 'herkeuring' ? ' · <a href="https://leukekeuze.nl/p/' + esc(p.id) + '/" target="_blank" rel="noopener">bekijk op LeukeKeuze</a>' : '') + '</div>' +
+        w.map(function (x) { return '<div class="letop ' + x[0] + '">⚠ ' + esc(x[1]) + '</div>'; }).join('') +
+        (p.letOp ? '<div class="letop">ℹ ' + esc(p.letOp) + '</div>' : '') +
+        '<label class="kop">Voor wie?</label>' + wieKnoppen(s) +
+        '<label class="kop" for="plek">Waar staat het? (afdeling › subcategorie)</label>' +
+        '<select id="plek">' + plekOpties(s.cat + '/' + s.sub) + '</select>' + ookVak(s) +
+        '<label class="kop" for="waarom">Waarom wij dit kozen (tekst op de site)</label>' +
+        '<textarea id="waarom" autocomplete="off">' + esc(s.waarom) + '</textarea>' +
+        '<label class="vk" style="margin-top:6px"><input type="checkbox" id="mooier"' + (s.tekstMooier ? ' checked' : '') + '> Tekst moet mooier (Claude herschrijft)</label>' +
+        '<label class="kop" for="opm">Opmerking (optioneel)</label>' +
+        '<input type="text" id="opm" autocomplete="off" placeholder="Bijv. foto is lelijk, of: hoort bij Bubbels" value="' + esc(s.opmerking) + '">' +
+      '</div>' +
+    '</div>' +
+    '<p class="klein" style="margin-top:12px">Sneltoetsen: <kbd>H</kbd> houden · <kbd>W</kbd> weg · <kbd>T</kbd> twijfel · <kbd>1</kbd>–<kbd>8</kbd> voor wie · <kbd>F</kbd> topper · <kbd>P</kbd> pin · <kbd>←</kbd> <kbd>→</kbd> vorige / volgende.</p>';
+  ['waarom', 'opm', 'mooier', 'plek'].forEach(function (id) { document.getElementById(id).addEventListener(id === 'mooier' || id === 'plek' ? 'change' : 'input', function () { bewaarVelden(); if (id === 'plek') { melding('Verplaatst naar ' + plekNaam(document.getElementById('plek').value)); } }); });
+  document.getElementById('ook').addEventListener('change', function (e) { var c = e.target; if (!c.dataset.ook) return; bewaarVelden(); var st = staat(P[pos]); var l = st.ookIn.filter(function (x) { return x !== c.dataset.ook; }); if (c.checked) l.push(c.dataset.ook); zet(P[pos], { ookIn: l }); });
+  document.getElementById('fav').addEventListener('change', function () { schakel('favoriet', this.checked); });
+  document.getElementById('pin').addEventListener('change', function () { schakel('pin', this.checked); });
+  document.getElementById('wie').addEventListener('click', function (e) { var b = e.target.closest('[data-wie]'); if (b) wisselWie(b.dataset.wie); });
+  document.getElementById('kTerug').disabled = ri <= 0 && pos <= 0;
+  if (!blijf) window.scrollTo(0, 0);
+}
+function wisselWie(w) {
+  bewaarVelden(); var s = staat(P[pos]), v = s.voor.slice(), aan = v.indexOf(w) !== -1 || (w === 'kind' && v.indexOf('kinderen') !== -1);
+  v = v.filter(function (x) { return x !== w && !(w === 'kind' && x === 'kinderen'); });
+  if (!aan) { v.push(w); if (w !== 'iedereen') v = v.filter(function (x) { return x !== 'iedereen'; }); }
+  zet(P[pos], { voor: v });
+  var naam = (WIE.filter(function (x) { return x[0] === w; })[0] || [w, w])[1];
+  melding((aan ? 'Weg bij ' : 'Toegevoegd: ') + naam); keuren(true);
+}
+function schakel(veld, aan) { bewaarVelden(); var o = {}; o[veld] = aan; zet(P[pos], o); melding(veld === 'pin' ? (aan ? '📌 Pin aan' : 'Pin uit') : (aan ? '★ Topper' : 'Geen topper meer')); keuren(true); }
+function bewaarVelden() {
+  var p = P[pos]; if (!p || tab !== 'keuren' || !document.getElementById('plek')) return;
+  var d = document.getElementById('plek').value.split('/'), s = staat(p);
+  var nieuw = { cat: d[0], sub: d[1], waarom: document.getElementById('waarom').value, tekstMooier: document.getElementById('mooier').checked, opmerking: document.getElementById('opm').value };
+  /* Alleen opslaan als er echt iets veranderd is (anders telt bladeren al als 'aangepast'). */
+  if (!K[p.id] && nieuw.cat === s.cat && nieuw.sub === s.sub && nieuw.waarom === s.waarom && !nieuw.tekstMooier && !nieuw.opmerking) return;
+  K[p.id] = Object.assign(s, K[p.id] || {}, nieuw);
+  bewaar();
+}
+function volgende(richting) {
+  var ri = rij.indexOf(pos);
+  if (ri === -1) { pos = Math.max(0, Math.min(P.length - 1, pos + richting)); return true; }
+  var n = ri + richting; if (n < 0 || n >= rij.length) return false; pos = rij[n]; return true;
+}
+function volgendeOpen() {
+  var ri = Math.max(0, rij.indexOf(pos));
+  for (var i = 1; i <= rij.length; i++) { var j = rij[(ri + i) % rij.length]; if (staat(P[j]).status === 'nieuw') return j; }
+  return -1;
+}
+function oordeel(st) {
+  if (tab !== 'keuren' || !BRON) return;
+  var was = staat(P[pos]).status;
+  bewaarVelden(); zet(P[pos], { status: st }); sinds++; bewaarLS(BRON.sleutel + '-sinds', sinds);
+  melding(st === 'goedgekeurd' ? '✓ ' + BRON.woorden[2] : st === 'afgewezen' ? '✕ ' + BRON.woorden[0] : '? ' + BRON.woorden[1]);
+  kop();
+  if (sinds > 0 && sinds % 100 === 0) setTimeout(function () { melding('💾 ' + sinds + ' gekeurd: download even tussendoor'); }, 1600);
+  if (was !== 'nieuw') { if (volgende(1)) keuren(); else toon('opslaan'); return; }
+  var n = volgendeOpen(); if (n === -1) { melding('Deze afdeling is klaar! 🎉'); toon('start'); return; }
+  pos = n; keuren();
+}
+function startAfdeling(g) {
+  groepKeuze = g;
+  rij = P.map(function (_, i) { return i; }).filter(function (i) { return !g || groepVan(P[i]) === g; });
+  if (g) rij.sort(function (a, b) { var A = P[a], B = P[b]; return (A.sub || '').localeCompare(B.sub || '') || A.prijs - B.prijs; });
+  pos = rij[0] || 0; var n = volgendeOpen(); if (staat(P[pos]).status !== 'nieuw' && n !== -1) pos = n;
+  toon('keuren');
+}
+
+/* ======================= SNEL KEUREN (raster) ======================= */
+function snel() {
+  document.getElementById('knoppen').style.display = 'none';
+  var main = document.getElementById('main');
+  if (!BRON) { main.innerHTML = '<div class="blok"><h2>Kies eerst wat je gaat keuren</h2></div>'; return; }
+  var groepen = {}; P.forEach(function (p) { groepen[groepVan(p)] = 1; });
+  var z = SF.zoek.toLowerCase();
+  var lijst = P.map(function (p, i) { return { p: p, i: i, s: staat(p) }; }).filter(function (x) {
+    if (SF.groep && groepVan(x.p) !== SF.groep) return false;
+    if (SF.status && x.s.status !== SF.status) return false;
+    if (SF.wie === '-geen-' && x.s.voor.some(function (v) { return v !== 'iedereen'; })) return false;
+    if (SF.wie && SF.wie !== '-geen-' && x.s.voor.indexOf(SF.wie) === -1 && !(SF.wie === 'kind' && x.s.voor.indexOf('kinderen') !== -1)) return false;
+    if (z && (x.p.titel + ' ' + x.p.shop).toLowerCase().indexOf(z) === -1) return false;
+    return true;
+  });
+  var PER = 60, pag = Math.min(SF.pagina, Math.max(0, Math.ceil(lijst.length / PER) - 1)), stuk = lijst.slice(pag * PER, pag * PER + PER);
+  var pager = lijst.length > PER ? '<div class="pager"><button class="stil" data-pag="' + (pag - 1) + '"' + (pag ? '' : ' disabled') + '>← Vorige</button><span class="klein">Pagina ' + (pag + 1) + ' van ' + Math.ceil(lijst.length / PER) + '</span><button class="stil" data-pag="' + (pag + 1) + '"' + ((pag + 1) * PER < lijst.length ? '' : ' disabled') + '>Volgende →</button></div>' : '';
+  main.innerHTML =
+    '<div class="filters">' +
+      '<select id="fGroep"><option value="">Alle afdelingen</option>' + Object.keys(groepen).sort().map(function (g) { return '<option' + (SF.groep === g ? ' selected' : '') + '>' + esc(g) + '</option>'; }).join('') + '</select>' +
+      '<select id="fWie"><option value="">Iedereen</option>' + WIE.slice(0, 7).map(function (w) { return '<option value="' + w[0] + '"' + (SF.wie === w[0] ? ' selected' : '') + '>Voor ' + w[1].toLowerCase() + '</option>'; }).join('') + '<option value="-geen-"' + (SF.wie === '-geen-' ? ' selected' : '') + '>Bij geen persoon</option></select>' +
+      '<select id="fStatus"><option value="">Alle</option><option value="nieuw"' + (SF.status === 'nieuw' ? ' selected' : '') + '>Nog niet gekeurd</option><option value="goedgekeurd"' + (SF.status === 'goedgekeurd' ? ' selected' : '') + '>' + BRON.woorden[2] + '</option><option value="afgewezen"' + (SF.status === 'afgewezen' ? ' selected' : '') + '>' + BRON.woorden[0] + '</option><option value="overgeslagen"' + (SF.status === 'overgeslagen' ? ' selected' : '') + '>' + BRON.woorden[1] + '</option></select>' +
+      '<input type="search" id="fZoek" placeholder="Zoek op naam of winkel" value="' + esc(SF.zoek) + '">' +
+      '<span class="klein">' + lijst.length + ' producten</span>' +
+      (stuk.length ? '<button class="stil" id="alleHouden" title="Alles op deze pagina dat nog niet gekeurd is, op Houden zetten">✓ Rest van deze pagina: ' + BRON.woorden[2].toLowerCase() + '</button>' : '') +
+    '</div>' + pager +
+    (stuk.length ? '<div class="raster">' + stuk.map(function (x) {
+      return '<div class="mini ' + x.s.status + '" data-i="' + x.i + '"><div class="f" data-open="' + x.i + '" title="Open om te keuren"><img src="' + esc(x.p.foto) + '" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' +
+        '<div class="t"><div class="n">' + (x.s.favoriet ? '★ ' : '') + (x.s.pin ? '📌 ' : '') + esc(x.p.titel) + '</div><b>' + euro(x.p.prijs) + '</b> <span class="w">' + esc(x.p.shop) + '</span>' +
+        '<div class="w">' + esc(x.s.voor.join(', ') || '—') + '</div></div>' +
+        '<div class="kn"><button class="x" data-snel="afgewezen" title="' + BRON.woorden[0] + '">✕</button><button class="t2" data-snel="overgeslagen" title="' + BRON.woorden[1] + '">?</button><button class="j" data-snel="goedgekeurd" title="' + BRON.woorden[2] + '">✓</button></div></div>';
+    }).join('') + '</div>' : '<p class="uitleg">Niets gevonden met deze filters.</p>') + pager;
+  var her = function () { SF.pagina = 0; snel(); };
+  document.getElementById('fGroep').onchange = function () { SF.groep = this.value; her(); };
+  document.getElementById('fWie').onchange = function () { SF.wie = this.value; her(); };
+  document.getElementById('fStatus').onchange = function () { SF.status = this.value; her(); };
+  var zt; document.getElementById('fZoek').oninput = function () { var v = this.value; clearTimeout(zt); zt = setTimeout(function () { SF.zoek = v; her(); var f = document.getElementById('fZoek'); f.focus(); f.setSelectionRange(v.length, v.length); }, 350); };
+  var ah = document.getElementById('alleHouden');
+  if (ah) ah.onclick = function () { var n = 0; stuk.forEach(function (x) { if (staat(x.p).status === 'nieuw') { zet(x.p, { status: 'goedgekeurd' }); n++; } }); sinds += n; bewaarLS(BRON.sleutel + '-sinds', sinds); kop(); melding(n + ' op ' + BRON.woorden[2].toLowerCase() + ' gezet'); snel(); };
+}
+
+/* ======================= OPSLAAN ======================= */
+function opslaan() {
+  document.getElementById('knoppen').style.display = 'none';
+  var main = document.getElementById('main');
+  if (!BRON) { main.innerHTML = '<div class="blok"><h2>Nog niets om op te slaan</h2></div>'; return; }
+  var t = telling(), aangepast = Object.keys(K).length;
+  main.innerHTML =
+    '<div class="blok"><h2>' + (t.n ? 'Tussenstand' : 'Klaar! 🎉') + '</h2>' +
+      '<p>' + t.g + ' ' + BRON.woorden[2].toLowerCase() + ' · ' + t.a + ' ' + BRON.woorden[0].toLowerCase() + ' · ' + t.o + ' ' + BRON.woorden[1].toLowerCase() + ' · nog ' + t.n + ' niet gekeurd · ' + aangepast + ' producten aangepast</p>' +
+      '<p class="uitleg">Klik op de knop. Er komt een bestandje in je map <b>Downloads</b>. Zeg tegen Claude: "keuring staat klaar". Je kunt gewoon verder keuren; download dan later opnieuw (het nieuwste bestand telt).</p>' +
+      '<button class="groot" id="download">⬇ Download mijn keuring</button></div>' +
+    '<div class="blok"><h3>Andere computer of browser?</h3><p class="uitleg">Je werk staat in deze browser. Zet een eerder gedownload bestand hier terug om verder te gaan.</p>' +
+      '<label class="stil" style="display:inline-block;cursor:pointer">📂 Keuring terugzetten uit bestand <input type="file" id="terug" accept=".json" style="display:none"></label> ' +
+      '<button class="stil" id="wis">Alles van ' + esc(BRON.kort.toLowerCase()) + ' wissen</button></div>';
+  document.getElementById('download').onclick = download;
+  document.getElementById('terug').onchange = terugzetten;
+  document.getElementById('wis').onclick = function () { if (confirm('Weet je het zeker? Al je keuringen van "' + BRON.kort + '" worden gewist. Download ze eerst!')) { K = {}; bewaar(); sinds = 0; bewaarLS(BRON.sleutel + '-sinds', 0); kop(); melding('Gewist'); toon('start'); } };
+}
+function download() {
+  var lijst = P.filter(function (p) { return K[p.id] || BRON.soort === 'ronde'; }).map(function (p) {
+    var s = staat(p);
+    return { id: p.id, titel: p.titel, status: s.status, cat: s.cat, sub: s.sub, voor: s.voor, voorAangepast: JSON.stringify(s.voor) !== JSON.stringify(p.voor || []), favoriet: s.favoriet, pin: s.pin,
+      waarom: s.waarom, waaromAangepast: s.waarom !== (p.waarom || ''), tekstMooier: s.tekstMooier, opmerking: s.opmerking, ookIn: s.ookIn };
+  });
+  var data = { soort: BRON.soort, ronde: BRON.ronde || null, studio: '2.0', gemaakt: new Date().toISOString(), aantal: P.length, keuringen: lijst };
+  var naam = (BRON.soort === 'ronde' ? 'keuringen-' + BRON.ronde : 'keuring-site') + '-' + new Date().toISOString().slice(0, 10) + '.json';
+  var b = new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' });
+  var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = naam;
+  document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  sinds = 0; bewaarLS(BRON.sleutel + '-sinds', 0); melding('Opgeslagen in Downloads: ' + naam);
+}
+function terugzetten(e) {
+  var f = e.target.files[0]; if (!f) return; var r = new FileReader();
+  r.onload = function () { try { var d = JSON.parse(r.result), n = 0; (d.keuringen || []).forEach(function (k) { if (k.status !== 'nieuw' || k.voorAangepast || k.waaromAangepast || k.favoriet || k.pin) { K[k.id] = k; n++; } }); bewaar(); kop(); melding(n + ' keuringen teruggezet'); toon('start'); } catch (x) { melding('Dit bestand kan ik niet lezen'); } };
+  r.readAsText(f);
+}
+
+/* ======================= ALGEMEEN ======================= */
+function toon(t) {
+  if (tab === 'keuren') bewaarVelden();
+  tab = t;
+  document.querySelectorAll('#tabs .tab').forEach(function (b) { b.classList.toggle('aan', b.dataset.tab === t); });
+  kop();
+  if (t === 'keuren') keuren(); else if (t === 'snel') snel(); else if (t === 'opslaan') opslaan(); else start();
+}
+document.getElementById('tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-tab]'); if (b) toon(b.dataset.tab); });
+document.getElementById('main').addEventListener('click', function (e) {
+  var b = e.target.closest('[data-bron]'); if (b) { kiesBron(b.dataset.bron); toon('start'); return; }
+  var a = e.target.closest('[data-afd]'); if (a) { e.preventDefault(); startAfdeling(a.dataset.afd); return; }
+  var g = e.target.closest('[data-ga]'); if (g) { toon(g.dataset.ga); return; }
+  var pg = e.target.closest('[data-pag]'); if (pg) { SF.pagina = +pg.dataset.pag; snel(); window.scrollTo(0, 0); return; }
+  var o = e.target.closest('[data-open]'); if (o) { pos = +o.dataset.open; rij = P.map(function (_, i) { return i; }); groepKeuze = ''; toon('keuren'); return; }
+  var sn = e.target.closest('[data-snel]'); if (sn) { var i = +sn.closest('[data-i]').dataset.i; zet(P[i], { status: sn.dataset.snel }); sinds++; bewaarLS(BRON.sleutel + '-sinds', sinds); kop();
+    var m = sn.closest('.mini'); m.className = 'mini ' + sn.dataset.snel; return; }
+});
+document.getElementById('kGoed').onclick = function () { oordeel('goedgekeurd'); };
+document.getElementById('kAf').onclick = function () { oordeel('afgewezen'); };
+document.getElementById('kOver').onclick = function () { oordeel('overgeslagen'); };
+document.getElementById('kTerug').onclick = function () { bewaarVelden(); if (volgende(-1)) keuren(); };
+document.getElementById('kVolg').onclick = function () { bewaarVelden(); if (volgende(1)) keuren(); };
+document.addEventListener('keydown', function (e) {
+  if (tab !== 'keuren' || !BRON || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+  var k = e.key.toLowerCase();
+  if (k === 'h' || k === 'g') oordeel('goedgekeurd'); else if (k === 'w' || k === 'a') oordeel('afgewezen'); else if (k === 't' || k === 's') oordeel('overgeslagen');
+  else if (k === 'p') schakel('pin', !staat(P[pos]).pin); else if (k === 'f') schakel('favoriet', !staat(P[pos]).favoriet);
+  else if (/^[1-8]$/.test(k)) wisselWie(WIE[+k - 1][0]);
+  else if (e.key === 'ArrowLeft') { bewaarVelden(); if (volgende(-1)) keuren(); }
+  else if (e.key === 'ArrowRight') { bewaarVelden(); if (volgende(1)) keuren(); }
+});
+var b0 = lees('lks2-bron', ''); if (!BRONNEN[b0]) b0 = BRONNEN.ronde ? 'ronde' : (BRONNEN.site ? 'site' : '');
+if (b0) kiesBron(b0);
+toon('start');
+})();
+</script>
+</body>
+</html>
