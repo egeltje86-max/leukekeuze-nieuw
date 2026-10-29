@@ -227,9 +227,7 @@
         /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
         '<section class="sectie eerste">' +
           '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
-          '<div class="persoon-subs home">' + window.LK_PERSONEN.map(function (x) {
-            return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
-          }).join('') + '</div>' +
+          persoonKaartjes() +
         '</section>' +
 
         '<section class="sectie">' +
@@ -362,6 +360,13 @@
   }
 
   /* Kleine versie van een rond plaatje (220px) voor de rondjes: scheelt zo'n 90% aan data per rondje. */
+  /* Kaartjes 'Voor wie?': portret + naam + pijltje (wens van Marius, 29-10-2026). */
+  function persoonKaartjes(zonder) {
+    return '<div class="pk">' + window.LK_PERSONEN.filter(function (x) { return x.slug !== zonder; }).map(function (x) {
+      return '<a class="pkk" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(persoonBeeld(x)) + '" alt="" loading="lazy" decoding="async"><b>' + esc(x.naam === 'Voor kinderen' ? 'Kinderen' : x.naam === 'Voor tieners' ? 'Tieners' : x.naam) + '</b><span aria-hidden="true">›</span></a>';
+    }).join('') + '</div>';
+  }
+  function persoonBeeld(x) { return x.portret || kleinBeeld(x.beeld); }
   function kleinBeeld(src) { return src && src.indexOf('images/sub/') === 0 && /\.webp$/.test(src) && src.indexOf('-klein.webp') === -1 ? src.replace(/\.webp$/, '-klein.webp') : src; }
   function paginakop(o) {
     var achter = '';
@@ -510,9 +515,7 @@
       leesOok(pe.oud || '') +
       (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Voor iemand anders?</h2></div></div>' +
-        '<div class="subkaarten voorwie-rij">' + anderen.map(function (x) {
-          return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
-        }).join('') + '</div></section>' +
+        persoonKaartjes(pe.slug) + '</section>' +
     '</div>';
   }
   /* 2.0 PROEF: samengestelde pagina (gelegenheid of collectie): labels + vakken + evt. maximale prijs. */
@@ -574,9 +577,7 @@
   function voorWie() {
     zetTitel('Voor wie zoek je een cadeau?');
     return paginakop({ titel: 'Voor wie zoek je een cadeau?', tekst: 'Kies voor wie het is. Daarna zie je alleen wat bij die persoon past.', kruimel: [{ tekst: 'Voor wie?' }] }) +
-      '<div class="binnen"><section class="sectie eerste"><div class="persoon-subs">' + window.LK_PERSONEN.map(function (x) {
-        return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
-      }).join('') + '</div></section></div>';
+      '<div class="binnen"><section class="sectie eerste">' + persoonKaartjes() + '</section></div>';
   }
 
   /* ---------- Product ---------- */
@@ -1682,7 +1683,7 @@
     $('[data-lade]').innerHTML =
       (uit ? '<a class="lade-uitgelicht" href="/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
       '<div class="lade-label">Voor wie?</div><div class="lade-personen">' + window.LK_PERSONEN.map(function (x) {
-        return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
+        return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(persoonBeeld(x)) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
       }).join('') + '</div>' +
       '<div class="lade-label">Producten</div><ul>' + rest.map(ladeRij).join('') + '</ul>' +
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + (window.LK_GELEGENHEDEN || []).map(function (g) { return '<a href="' + (g.naar || '/gelegenheid/' + g.slug) + '">' + esc(g.naam) + '</a>'; }).concat((window.LK_COLLECTIES || []).map(function (c) { return '<a href="/collectie/' + c.slug + '"><strong>' + esc(c.naam) + '</strong></a>'; })).join('') + '</div>' +
