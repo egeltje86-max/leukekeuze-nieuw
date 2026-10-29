@@ -219,3 +219,10 @@ body { background: var(--bg); color: var(--tekst); }
 .lijst-deel-velden > label { min-width: 0; }
 .lijst-deel-velden input, .lijst-deel-velden select { width: 100%; min-width: 0; box-sizing: border-box; }
 .footer a, .footer p { color: #BDB6A8; }
+/* Delen op de telefoon: alles onder elkaar over de volle breedte, zodat 'Mijn verjaardag' en de knoppen altijd heel passen. */
+@media (max-width: 600px) {
+  .lijst-deel-velden { grid-template-columns: 1fr; gap: 12px; }
+  .lijst-deel-knoppen { flex-direction: column; gap: 10px; }
+  .lijst-deel-knoppen .knop { width: 100%; justify-content: center; padding: 14px 16px; font-size: 16px; }
+}
+.lijst-deel-velden select { padding-right: 36px; text-overflow: ellipsis; }
