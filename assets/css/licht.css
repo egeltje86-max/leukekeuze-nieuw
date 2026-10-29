@@ -255,3 +255,21 @@ body { background: var(--bg); color: var(--tekst); }
 .footer li a { color: #BDB6A8; }
 .footer li a:hover { color: #F2CB74; }
 .footer-onder a { color: #BDB6A8; }
+
+/* Lichte hero (stijl 'zacht licht en crème'): donkere letters op een licht beeld */
+.hero { background: #F7F1E6; color: #141A2A; }
+.hero::after { background: linear-gradient(180deg, rgba(247,241,230,0) 30%, rgba(247,241,230,.85) 55%, #F7F3EC 72%); }
+.hero .kicker { color: #9A6F22; }
+.hero h1 { color: #141A2A; }
+.hero h1 em { color: #A87A26; }
+.hero p { color: #3F4558; }
+.hero .populair > span { color: #9A6F22; }
+.hero .chip { background: rgba(255,255,255,.85); border-color: rgba(10,16,32,.14); color: #141A2A; }
+.hero .chip:hover { border-color: #B8862E; color: #8F6620; }
+@media (min-width: 760px) {
+  .hero::after { background: linear-gradient(90deg, rgba(247,241,230,.92) 0%, rgba(247,241,230,.72) 34%, rgba(247,241,230,0) 58%), linear-gradient(0deg, #F7F3EC 0%, rgba(247,243,236,0) 18%); }
+}
+@media (max-width: 759px) {
+  .hero-inhoud { padding-top: 215px; }
+  .hero::after { background: linear-gradient(180deg, rgba(247,241,230,0) 18%, rgba(247,241,230,.82) 36%, #F7F3EC 52%); }
+}
