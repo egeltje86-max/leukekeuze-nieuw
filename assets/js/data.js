@@ -112,7 +112,8 @@ window.LK_CATEGORIEEN = [
         ] },
       { slug: 'baby-kraam', naam: 'Baby & kraam', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
       { slug: 'onder-15', naam: 'Onder €15', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp' },
-      { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp' }
+      { slug: 'met-naam', naam: 'Met naam', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp' },
+      { slug: 'grappig', naam: 'Grappige cadeaus', beeld: 'images/producten/cg-useless-box.webp' }
     ] },
   { slug: 'valentijn', naam: 'Liefde & Valentijn', kort: 'Liefde', icoon: 'hart',
     tekst: 'Romantische cadeaus voor iemand van wie je houdt, het hele jaar door.',
@@ -659,7 +660,11 @@ window.LK_GELEGENHEDEN = [
 window.LK_COLLECTIES = [
   { slug: 'persoonlijke-cadeaus', naam: 'Persoonlijke cadeaus', kicker: 'Met naam of eigen tekst', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', seoTitel: 'Persoonlijke cadeaus met naam – gepersonaliseerde cadeaus',
     tekst: 'Een cadeau met een naam, datum of eigen tekst erop. Altijd uniek.',
-    vakken: ['cadeaus/met-naam', 'valentijn/met-naam'] }
+    vakken: ['cadeaus/met-naam', 'valentijn/met-naam'] },
+  { slug: 'grappige-cadeaus', naam: 'Grappige cadeaus', kicker: 'Om om te lachen', beeld: 'images/producten/cg-toilet-basketball.webp', seoTitel: 'Grappige cadeaus – leuke en gekke cadeaus om te lachen',
+    tekst: 'Gekke, handige en flauwe cadeaus waar iedereen om moet lachen. Voor feestjes, collega’s en vrienden.',
+    zoek: 'grappig grappige gek gekke humor lol lachen fun flauw',
+    vakken: ['cadeaus/grappig'] }
 ];
 window.LK_GELEGENHEID = function (slug) { return (window.LK_GELEGENHEDEN || []).find(function (g) { return g.slug === slug; }); };
 window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find(function (g) { return g.slug === slug; }); };

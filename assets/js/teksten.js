@@ -95,6 +95,13 @@ window.LK_TEKSTEN = {
     gids: [
       { kop: 'Klein cadeau, groot effect', tekst: 'Een klein cadeau wordt leuk door de keuze, niet door de prijs. Kies iets wat bij de persoon past: zijn favoriete snoep, een mok van haar serie, een spelletje voor op reis. Hier staan alleen cadeaus onder de 15 euro, dus je zit nooit te hoog.' }
     ] },
+  'cadeaus/grappig': {
+    tekst: 'Cadeaus om om te lachen: gek, handig of gewoon flauw. Voor wie alles al heeft.',
+    seoTitel: 'Grappige cadeaus: leuke en gekke cadeaus om te lachen',
+    seoTekst: 'Op zoek naar een grappig cadeau? Gekke gadgets, drankspellen, wc-sport en meer. Leuk voor vrienden, collega’s en feestjes.',
+    gids: [
+      { kop: 'Een grappig cadeau kiezen', tekst: 'Een grap werkt het best als hij past bij de persoon. Een wc-basketbal voor de sportfan, een bierteller voor het studentenhuis. Drankspellen zijn alleen voor volwassenen.' }
+    ] },
   'cadeaus/met-naam': {
     tekst: 'Cadeaus met een naam of eigen tekst erop: persoonlijk en net even anders.',
     seoTitel: 'Cadeau met naam: persoonlijke cadeaus met naam of tekst',

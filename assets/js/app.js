@@ -796,7 +796,7 @@
     PERS.forEach(function (pe) { if (past(pe.naam, pe.labels.join(' ') + ' ' + (ZW[pe.oud] || ''))) voeg(pe.naam, '/voor/' + pe.slug, 'persoon'); });
     /* c. gelegenheden en collecties */
     (window.LK_GELEGENHEDEN || []).forEach(function (g) { if (past(g.naam)) voeg(g.naam, g.naar || '/gelegenheid/' + g.slug, 'gelegenheid'); });
-    (window.LK_COLLECTIES || []).forEach(function (g) { if (past(g.naam, 'naam gepersonaliseerd persoonlijk gegraveerd gravure')) voeg(g.naam, '/collectie/' + g.slug, 'collectie'); });
+    (window.LK_COLLECTIES || []).forEach(function (g) { if (past(g.naam, g.zoek || 'naam gepersonaliseerd persoonlijk gegraveerd gravure')) voeg(g.naam, '/collectie/' + g.slug, 'collectie'); });
     /* d. productgroepen en hun subs (christelijk alleen bij echt christelijke woorden) */
     ALLECATS.forEach(function (c) {
       if (c.verborgen) return;
