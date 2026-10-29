@@ -265,3 +265,16 @@ body { background: var(--bg); color: var(--tekst); }
 .pkk span { color: #B8862E; font-size: 24px; font-weight: 700; line-height: 1; }
 @media (min-width: 760px) { .pk { grid-template-columns: repeat(4, 1fr); gap: 14px; } .pkk img { width: 72px; height: 72px; } .pkk b { font-size: 16.5px; } }
 .lade-personen img { object-fit: cover; }
+/* Sfeerbanner op persoonspagina's: licht beeld, donkere tekst links */
+.paginakop .achter:not(.vaag) img { object-position: right center; }
+.paginakop:has(.achter:not(.vaag)) .binnen { padding-top: 34px; padding-bottom: 46px; min-height: 230px; }
+@media (min-width: 760px) { .paginakop:has(.achter:not(.vaag)) .binnen { min-height: 300px; padding-top: 50px; } }
+@media (max-width: 759px) { .paginakop:has(.achter:not(.vaag))::after { background: linear-gradient(90deg, rgba(247,243,236,.92) 0%, rgba(247,243,236,.75) 55%, rgba(247,243,236,.2) 100%); } }
+/* Banner scherp: waas alleen links achter de tekst (computer), beeld boven de tekst (telefoon) */
+.paginakop:has(.achter:not(.vaag))::after { background: linear-gradient(90deg, rgba(247,243,236,.95) 0%, rgba(247,243,236,.85) 30%, rgba(247,243,236,0) 52%); }
+@media (max-width: 759px) {
+  .paginakop:has(.achter:not(.vaag)) { display: flex; flex-direction: column; }
+  .paginakop:has(.achter:not(.vaag)) .achter { position: relative; inset: auto; height: 200px; order: -1; }
+  .paginakop:has(.achter:not(.vaag))::after { display: none; }
+  .paginakop:has(.achter:not(.vaag)) .binnen { min-height: 0; padding-top: 14px; padding-bottom: 22px; }
+}

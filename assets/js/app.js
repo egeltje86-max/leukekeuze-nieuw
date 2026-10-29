@@ -500,7 +500,7 @@
     return paginakop({
       titel: s ? s.naam + ' voor ' + naam : pe.naam,
       tekst: s ? (s.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' voor ' + naam + '.') : pe.tekst,
-      vaag: pe.vaag || pe.beeld,
+      banner: pe.banner, vaag: pe.banner ? '' : (pe.vaag || pe.beeld),
       kruimel: [{ tekst: 'Voor wie?', naar: '/voor' }].concat(s ? [{ tekst: pe.naam, naar: '/voor/' + pe.slug }, { tekst: s.naam }] : [{ tekst: pe.naam }])
     }) +
     '<div class="binnen">' +

@@ -480,7 +480,7 @@ window.LK_NIETWOORDEN = {
    Elke persoon heeft eigen subcategorieën. Een product hoort erbij als het label (voor) klopt
    én de categorie/sub (of 'ookIn') in een van de 'vakken' van die subcategorie valt. Niets hoeft opnieuw gelabeld. */
 window.LK_PERSONEN = [
-  { slug: 'hem', portret: 'images/personen/hem.webp', naam: 'Voor hem', kort: 'Voor hem', labels: ['hem'], oud: 'cadeaus/voor-hem',
+  { slug: 'hem', portret: 'images/personen/hem.webp', banner: 'images/banners/banner-voor-hem.webp', naam: 'Voor hem', kort: 'Voor hem', labels: ['hem'], oud: 'cadeaus/voor-hem',
     beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', vaag: 'images/sub/sub-cadeaus-voor-hem-2026b.webp',
     seoTitel: 'Cadeau voor hem – de mooiste cadeaus voor mannen', tekst: 'Van een goed horloge tot een fles whisky: met de hand gekozen cadeaus voor hem.',
     subs: [
