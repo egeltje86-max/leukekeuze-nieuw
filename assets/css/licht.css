@@ -197,3 +197,25 @@ body { background: var(--bg); color: var(--tekst); }
 .kruimel a { display: inline-block; padding: 6px 0; }
 .prodkaart .shop { font-size: 11.5px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+/* Donkere paginakop (verlanglijstje): donkerblauw met goud, zoals het menu */
+.paginakop.donker { background: radial-gradient(120% 140% at 100% 0%, rgba(217,168,72,.18), transparent 55%), #0A1020; border-bottom: 1px solid rgba(217,168,72,.35); }
+.paginakop.donker::after { background: none; }
+.paginakop.donker h1 { color: #F4ECDD; }
+.paginakop.donker h1::first-letter { color: #F2CB74; }
+.paginakop.donker p { color: #BDB6A8; }
+.paginakop.donker .kruimel, .paginakop.donker .kruimel a { color: #8D897F; }
+
+/* Delen: compact, leesbaar, onder de cadeaus */
+.lijst-deel { display: block; background: #fff; border: 1px solid rgba(184,134,46,.35); border-radius: 16px; padding: 16px; box-shadow: 0 2px 10px rgba(10,16,32,.05); }
+.lijst-deel-tekst { color: var(--tekst-2); font-size: 14px; margin-bottom: 12px; }
+.lijst-deel-tekst strong { color: var(--tekst); font-size: 19px; }
+.lijst-deel-velden { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.lijst-deel-velden label { color: var(--tekst-2); font-weight: 600; }
+.lijst-deel-velden input, .lijst-deel-velden select { padding: 10px 11px; font-size: 15px; border-color: rgba(10,16,32,.16); }
+.lijst-deel-knoppen { flex-direction: row; gap: 8px; }
+.lijst-deel-knoppen .knop { flex: 1; padding: 12px 10px; font-size: 14.5px; }
+@media (max-width: 480px) { .lijst-deel-velden { grid-template-columns: 1fr 1fr; } }
+.lijst-deel-velden > label { min-width: 0; }
+.lijst-deel-velden input, .lijst-deel-velden select { width: 100%; min-width: 0; box-sizing: border-box; }
+.footer a, .footer p { color: #BDB6A8; }

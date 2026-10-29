@@ -368,7 +368,7 @@
     /* Op een telefoon een kleinere, al bijgesneden versie van de banner (-mobiel.webp): scheelt zo'n 70% aan data. */
     if (o.banner) achter = '<div class="achter"><picture><source media="(max-width: 759px)" srcset="' + esc(o.banner.replace('.webp', '-mobiel.webp')) + '"><img src="' + esc(o.banner) + '" alt="" fetchpriority="high"></picture></div>';
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(o.vaag) + '" alt=""></div>';
-    return '<section class="paginakop' + (achter ? '' : ' zonder') + '">' + achter +
+    return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + '">' + achter +
       '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p>' + esc(o.tekst) + '</p>' : '') + '</div></section>';
   }
 
@@ -1112,15 +1112,16 @@
     var naam = ''; try { naam = localStorage.getItem('lk-lijst-naam') || ''; } catch (e) {}
     var deel = !lijst.length ? '' :
       '<div class="lijst-deel"><div class="lijst-deel-tekst"><strong>Deel je verlanglijstje</strong>' +
-      'Stuur je lijstje naar familie, vrienden of je partner. Zij zien jouw cadeaus en kunnen ze meteen bestellen.</div>' +
+      'Familie of vrienden zien jouw cadeaus en bestellen ze meteen.</div>' +
       '<div class="lijst-deel-velden"><label>Je naam<input type="text" data-lijst-naam maxlength="30" placeholder="Bijv. Sanne" value="' + esc(naam) + '"></label>' +
       '<label>Waarvoor?<select data-lijst-voor>' + GELEGENHEDEN.map(function (g) { return '<option value="' + g[0] + '">' + g[2] + ' ' + (g[0] === 'verjaardag' ? 'Mijn verjaardag' : g[0] === 'jubileum' ? 'Ons jubileum' : g[1].charAt(0).toUpperCase() + g[1].slice(1)) + '</option>'; }).join('') + '</select></label></div>' +
       '<div class="lijst-deel-knoppen"><button class="knop knop-whatsapp" type="button" data-lijst-whatsapp>' + ic('whatsapp') + ' Deel via WhatsApp</button>' +
       '<button class="knop knop-rand" type="button" data-lijst-kopieer>Kopieer de link</button></div></div>';
-    return paginakop({ titel: 'Mijn verlanglijstje', tekst: 'Bewaar cadeaus met het hartje en deel je lijstje met wie je wilt. Je hebt geen account nodig.', kruimel: [{ tekst: 'Verlanglijstje' }] }) +
-      '<div class="binnen"><section class="sectie">' + deel +
-      grid(lijst, leegBlok('Je verlanglijstje is nog leeg', 'Tik op het hartje bij een cadeau om het op je verlanglijstje te zetten. Daarna kun je het lijstje delen via WhatsApp.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
-      '</section></div>';
+    return paginakop({ titel: 'Mijn verlanglijstje', tekst: 'Bewaar cadeaus met het hartje en deel je lijstje met wie je wilt. Geen account nodig.', kruimel: [{ tekst: 'Verlanglijstje' }], donker: true }) +
+      '<div class="binnen"><section class="sectie">' +
+      (lijst.length ? '<div class="sectie-kop"><div><h2>' + (lijst.length === 1 ? '1 cadeau' : lijst.length + ' cadeaus') + ' op je lijstje</h2></div></div>' : '') +
+      grid(lijst, leegBlok('Je verlanglijstje is nog leeg', 'Tik op het hartje bij een cadeau om het op je verlanglijstje te zetten. Daarna kun je het lijstje delen via WhatsApp.', '<a class="knop knop-goud" href="/voor">Bekijk cadeaus</a>')) +
+      '</section>' + (deel ? '<section class="sectie">' + deel + '</section>' : '') + '</div>';
   }
   function gedeeldeLijst(q) {
     var ids = (q.p || '').split(/[.,]/).filter(Boolean).slice(0, 40);
@@ -1130,7 +1131,7 @@
     var titel = naam ? 'Het verlanglijstje van ' + naam : 'Een verlanglijstje voor jou';
     zetTitel(titel);
     var voor = g ? (g[0] === 'verjaardag' ? 'Voor ' + (naam ? 'de verjaardag van ' + naam : 'een verjaardag') : g[0] === 'jubileum' ? 'Voor een jubileum' : g[0] === 'zomaar' ? 'Zomaar, omdat het kan' : 'Voor ' + g[1]) + ' ' + g[2] : '';
-    return paginakop({ titel: titel, tekst: (voor ? voor + '. ' : '') + (naam ? naam + ' heeft deze cadeaus uitgekozen.' : 'Deze cadeaus zijn uitgekozen.') + ' Klik op een cadeau en bestel het direct bij de winkel.', kruimel: [{ tekst: 'Verlanglijstje' }] }) +
+    return paginakop({ titel: titel, tekst: (voor ? voor + '. ' : '') + (naam ? naam + ' heeft deze cadeaus uitgekozen.' : 'Deze cadeaus zijn uitgekozen.') + ' Klik op een cadeau en bestel het direct bij de winkel.', kruimel: [{ tekst: 'Verlanglijstje' }], donker: true }) +
       '<div class="binnen"><section class="sectie">' +
       (weg > 0 ? '<p class="lijst-weg">' + (weg === 1 ? '1 cadeau van dit lijstje is' : weg + ' cadeaus van dit lijstje zijn') + ' niet meer te koop.</p>' : '') +
       grid(lijst, leegBlok('Dit lijstje is leeg', 'De cadeaus van dit lijstje zijn niet meer te koop. Kijk gerust rond voor iets anders.', '<a class="knop knop-goud" href="/c/cadeaus">Bekijk cadeaus</a>')) +
