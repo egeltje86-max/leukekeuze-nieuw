@@ -22,4 +22,5 @@ function splits() {
   return lean.length;
 }
 if (require.main === module) console.log(splits(), 'producten gesplitst');
+try { require('./vak-regels.js')(); } catch (e) { console.log('vak-regels niet geschreven:', e.message); }
 module.exports = splits;

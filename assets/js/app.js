@@ -977,8 +977,8 @@
     if (sleutel === 'cadeaus/voor-haar') attr = ' data-geslacht="v"';
     else if (sleutel === 'cadeaus/voor-hem') attr = ' data-geslacht="m"';
     else if (sleutel === 'cadeaus/onder-15') attr = ' data-max="15"';
-    else if (ZW[sleutel]) attr = ' data-woorden="' + esc(ZW[sleutel]) + '"';
-    else return '';
+    /* 2.1 (30-10-2026): elk vakje heeft een eigen, al gefilterd bestand (scripts/maak-zoekindex.py, zelfde regels als onze eigen
+       producten). Geen zoekwoorden meer nodig; bestaat het bestand niet, dan verdwijnt het blok vanzelf. */
     var NW = window.LK_NIETWOORDEN || {};
     if (NW[sleutel]) attr += ' data-niet="' + esc(NW[sleutel]) + '"';
     return '<section class="sectie alle-winkels" data-alle-winkels data-sleutel="' + esc(sleutel) + '" data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
@@ -1000,7 +1000,7 @@
       var W = j.winkels;
       /* Tijdens de Daisycon-pauze nooit Daisycon-links tonen (de index bevat dan alleen TradeTracker-winkels). */
       return j.producten.filter(function (x) { return !(INST.daisyconPauze && isDaisycon(W[x[2]].link + x[3])); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
-    }).catch(function () { return sleutel ? laadWinkels() : []; });
+    }).catch(function () { return sleutel ? null : []; });
     return AW.laden[pad];
   }
   function vulAlleWinkels(sec) {
@@ -1008,6 +1008,7 @@
     var woorden = q.toLowerCase().split(/\s+/).filter(Boolean).map(stam);
     var doel = $('.aw-inhoud', sec);
     laadWinkels(sec.getAttribute('data-sleutel') || '').then(function (alles) {
+      if (!alles) { sec.remove(); return; }
       var nietW = (sec.getAttribute('data-niet') || '').split(' ').filter(Boolean);
       var ofW = (sec.getAttribute('data-woorden') || '').split(' ').filter(Boolean), gesl = sec.getAttribute('data-geslacht') || '', maxP = +sec.getAttribute('data-max') || 0;
       function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }
@@ -1932,6 +1933,12 @@
         $('.aw-inhoud', aw).innerHTML = '<div class="aw-laadknop"><button class="knop knop-rand" type="button" data-aw-laad>Zoek ook in onze winkels ' + ic('pijl') + '</button>' +
           '<p class="uitleg">Doorzoekt ruim 40.000 producten van onze partnerwinkels. Dat is een groot bestand, dus het laden duurt even.</p></div>';
         aw.addEventListener('click', function (e) { if (e.target.closest('[data-aw-laad]')) { $('.aw-inhoud', aw).innerHTML = '<p class="aw-laden">Even zoeken in alle winkels…</p>'; vulAlleWinkels(aw); } });
+      } else if (aw.getAttribute('data-sleutel') && 'IntersectionObserver' in window) {
+        /* Pas laden als je bijna onderaan bent: bovenaan blijft de pagina net zo snel. */
+        var awKijker = new IntersectionObserver(function (es) {
+          if (es.some(function (e) { return e.isIntersecting; })) { awKijker.disconnect(); vulAlleWinkels(aw); }
+        }, { rootMargin: '900px 0px' });
+        awKijker.observe(aw);
       } else vulAlleWinkels(aw);
     }
 

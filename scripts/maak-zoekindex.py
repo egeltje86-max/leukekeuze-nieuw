@@ -209,6 +209,18 @@ for x in kort:
     w = W[x[2]]
     z = norm(x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + w['naam']); tl = norm(x[0])
     rijen.append((x, z, tl, x[7] or ''))
+# Per pagina hooguit MAXR producten, om en om uit elke winkel (anders staat bv. bovenaan alleen Myka).
+# Klein houden: de pagina laadt dit pas als je naar beneden scrolt, maar het moet ook op een telefoon vlot gaan.
+MAXR = 400
+def mengen(sel):
+    perw = {}
+    for x in sel: perw.setdefault(x[2], []).append(x)
+    uit = []; r = 0
+    while len(uit) < MAXR and any(r < len(ws) for ws in perw.values()):
+        for ws in perw.values():
+            if r < len(ws): uit.append(ws[r])
+        r += 1
+    return uit[:MAXR]
 os.makedirs('assets/zoek/w', exist_ok=True)
 for f in os.listdir('assets/zoek/w'): os.remove(os.path.join('assets/zoek/w', f))
 aantal = {}
@@ -230,18 +242,109 @@ for c in CATS:
             if niet and any(heeft(tl, n) for n in niet): continue
             if ofw and not any(heeft(z, o) for o in ofw): continue
             sel.append(x)
-        # Niet meer dan MAXR per pagina: om en om uit elke winkel, zodat de mix van winkels blijft.
-        MAXR = 2500
-        if len(sel) > MAXR:
-            perw = {}
-            for x in sel: perw.setdefault(x[2], []).append(x)
-            sel = []; r = 0
-            while len(sel) < MAXR:
-                for ws in perw.values():
-                    if r < len(ws): sel.append(ws[r])
-                r += 1
-            sel = sel[:MAXR]
+        sel = mengen(sel)
         naam = sleutel.replace('/', '--') + '.json'
         json.dump({'winkels': W, 'producten': sel}, open(os.path.join('assets/zoek/w', naam), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
         aantal[sleutel] = len(sel)
 print('per pagina:', sum(aantal.values()), 'rijen in', len(aantal), 'bestanden; grootste:', sorted(aantal.items(), key=lambda a: -a[1])[:5])
+
+
+# ---- 2.1 (30-10-2026): partnerproducten verdelen over de NIEUWE vakjes, met dezelfde regels als onze eigen producten ----
+# De regels komen uit scripts/indeling.js (via scripts/vak-regels.json). Christelijk doet bewust niet mee (zelf gekozen).
+REGELS = json.load(open('scripts/vak-regels.json', encoding='utf-8'))
+HERNOEM = REGELS['hernoem']
+# Vakjes die bij onze eigen producten op het oude vakje leunen: voor partnerproducten een eigen regel.
+VOORAF = {'dranken': [
+    ('champagne-bubbels', r'champagne|\bcava\b|prosecco|cr[eé]mant|mousserend|bubbels|mo[eë]t|brut\b'),
+    ('whisky', r'whisk(e)?y|bourbon|scotch|single malt'), ('cognac', r'cognac|brandy|armagnac|calvados'),
+    ('gin-cocktails', r'\bgin\b|cocktail|tonic'), ('likeuren', r'likeur|liqueur|baileys|amaretto|limoncello|advocaat'),
+    ('tequila', r'tequila|mezcal'), ('rum', r'\brum\b|\brhum\b'), ('wodka', r'wodka|vodka')]}
+NA = {'eten-drinken': [('delicatessen', r'olijfolie|honing|truffel|tapenade|pesto|balsamico|confituur|delicatesse|tapas')],
+      'dieren': [('hond', r'\bhond|honden|puppy|hondenmand|halsband|hondenriem'), ('kat', r'\bkat\b|katten|kitten|krabpaal|kattenbak'),
+                 ('vogels', r'vogelkooi|parkiet|kanarie|papegaai')]}
+VOLGORDE = ['metaaldetectie', 'sieraden', 'geuren-verzorging', 'elektronica', 'speelgoed', 'dranken', 'eten-drinken', 'boeken-media',
+            'dieren', 'hobby', 'tuin-klussen', 'sport-outdoor', 'keuken', 'wonen', 'mode-beauty']
+G = {}
+for g in VOLGORDE:
+    v = REGELS['groepen'].get(g, {'regels': [], 'extra': []})
+    lijst = [(a, re.compile(b, re.I)) for a, b in VOORAF.get(g, [])] + [(a, re.compile(b, re.I)) for a, b in v['regels']] + \
+            [(a, re.compile(b, re.I)) for a, b in NA.get(g, [])]
+    extra = [(a, re.compile(b, re.I), re.compile(c, re.I) if c else None) for a, b, c in v['extra']]
+    G[g] = (lijst, extra)
+# Winkels die maar één soort spullen verkopen: alleen in hun eigen groep (anders komt wijn met 'ski' in de naam bij Wintersport).
+EIGEN = {
+    'Decantalo': ['dranken'], 'Svinando': ['dranken'], 'Wijnkring': ['dranken'], 'Wijny': ['dranken'], 'Barrelkings': ['dranken'],
+    'Dr. Martens': ['mode-beauty/schoenen', 'mode-beauty/tassen', 'mode-beauty/rugzakken', 'mode-beauty/portemonnees'],
+    'Zadig & Voltaire': ['mode-beauty', 'sieraden'], 'Bartogi': ['mode-beauty'], 'Fashionize': ['mode-beauty', 'sieraden'],
+    '247Jeans': ['mode-beauty'], 'Bivolino': ['mode-beauty'], 'Repeat Cashmere': ['mode-beauty'],
+    'Invicta': ['sieraden/horloges'], 'Prydligt': ['sieraden'], 'Myka': ['sieraden'],
+    'Teufel': ['elektronica'], 'Mobistoxx': ['elektronica'], 'Nedgame': ['elektronica', 'speelgoed'],
+    'Fietsparadijs': ['sport-outdoor'], 'Fietstas.com': ['sport-outdoor'],
+    'Dropwinkel': ['eten-drinken'], 'LEGO': ['speelgoed'], '999 Games': ['speelgoed'],
+    'Kerstland': ['wonen'], 'WoodWick': ['wonen'], 'Bellatio': ['wonen'], 'Lamponline': ['wonen/lampen', 'tuin-klussen/buitenverlichting'],
+    'La Redoute': ['wonen', 'keuken'], 'Westwing': ['wonen', 'keuken'], 'Meubello': ['wonen'], 'Bedroomshop': ['wonen'], 'Tenstickers': ['wonen'],
+    'Italian Design': ['wonen', 'keuken'], 'Kitchenette': ['keuken'],
+    'Applamp': ['wonen/lampen', 'tuin-klussen/buitenverlichting'], 'Getled': ['wonen/lampen', 'tuin-klussen/buitenverlichting'],
+    'Lightdepot': ['wonen/lampen', 'tuin-klussen/buitenverlichting'],
+    'Superzero': ['geuren-verzorging'], 'Boombrush': ['geuren-verzorging'], 'Viparfum': ['geuren-verzorging'],
+    'Looking Good Today': ['sieraden', 'geuren-verzorging', 'mode-beauty'], 'Hobbymax': ['hobby', 'speelgoed'], 'Prepz': ['sport-outdoor'],
+    'Animals Giftshop': ['dieren', 'speelgoed'], 'Knuffelparadijs': ['speelgoed'], 'Knuffelkado': ['speelgoed'],
+    'De Grote Speelgoedwinkel': ['speelgoed', 'hobby', 'sport-outdoor'], 'Countrylifestyle': ['wonen', 'keuken', 'tuin-klussen'],
+    'Smartphoto': ['wonen', 'keuken', 'boeken-media'], 'Spaarpotten-winkel': ['wonen', 'speelgoed'],
+}
+# Sommige groepen alleen als de titel er echt over gaat.
+POORT = {
+    'metaaldetectie': re.compile(r'metaaldetect|detector|pinpointer|magneetvis|vismagneet|munten|muntalbum|goudpan', re.I),
+    'dranken': re.compile(r'\d ?(cl|ml|l|liter)\b|%|wijn|bier|champagne|prosecco|cava|whisk|gin\b|rum\b|vodka|wodka|likeur|liqueur|tequila|cognac|port\b|sake|jenever|glas|glazen|karaf|kurk|wijnrek|koeler|cocktail|shaker|alcoholvrij|0[,.]0', re.I),
+    'dieren': re.compile(r'hond|katten|\bkat\b|kitten|konijn|cavia|hamster|paard|pony|vogel|parkiet|aquarium|terrarium|\bkip|huisdier|knaagdier|vissen|reptiel', re.I),
+}
+# Nooit tonen: geen cadeau of geen product (lakens, matrassen, batterijen, schoonmaak, groothandel enz.).
+NOOIT = re.compile(r'hoeslaken|matras|bedbodem|lattenbodem|boxspring|batterij|schoonmaak|kabel|adapter|wc-bril|toiletbril|\bpartij van\b|vervangings|navulling|reserveonderdeel|verloopstuk|\bkit kat\b|kitkat|nougat|outletpakket', re.I)
+# Muziek en films (lp, cd, dvd) horen alleen bij Boeken & media (anders komt 'Live at the Whisky A Go Go' bij Whisky).
+MEDIA = re.compile(r'\(lp\)|\blp\b|vinyl|\bcd\b|\bdvd\b|blu-?ray|soundtrack', re.I)
+def toegestaan(winkel, k):
+    for lijst in (ALLEEN.get(winkel), EIGEN.get(winkel)):
+        if not lijst: continue
+        ok = False
+        for m in lijst:
+            m = HERNOEM.get(m, m)
+            if k == m or k.startswith(m + '/') or m.startswith(k + '/'): ok = True
+        if not ok: return False
+    return True
+def raak(rx, tekst):
+    """Telt alleen als het een heel woord is of het begin van een lang woord (zoals op de site): 'ski' niet in 'skiphos', 'gin' niet in 'ginger'."""
+    for m in rx.finditer(tekst):
+        a, b = m.start(), m.end()
+        if a > 0 and tekst[a - 1].isalnum(): continue
+        if b - a >= 5 or b >= len(tekst) or not tekst[b].isalnum(): return True
+    return False
+def indelen(titel, cat, winkel):
+    for tekst in (titel, titel + ' ' + cat):
+        for g in VOLGORDE:
+            if g in POORT and not POORT[g].search(titel): continue
+            if not toegestaan(winkel, g): continue
+            if g != 'boeken-media' and MEDIA.search(titel): continue
+            lijst, extra = G[g]
+            vak = next((a for a, rx in lijst if raak(rx, tekst)), None)
+            if not vak: continue
+            ks = [g + '/' + vak] + [g + '/' + a for a, rx, niet in extra if raak(rx, tekst) and not (niet and niet.search(tekst))]
+            return g, ks
+    return None, []
+vakken = {}
+for x, z, tl, g_ in rijen:
+    if x[1] < 5 or NOOIT.search(x[0]): continue
+    winkel = W[x[2]]['naam']
+    if not any(toegestaan(winkel, g) for g in VOLGORDE): continue
+    groep, ks = indelen(x[0], x[5] or '', winkel)
+    if not groep: continue
+    for k in [groep] + ks:
+        if not toegestaan(winkel, k): continue
+        niet = NW.get(k, '').split()
+        if niet and any(heeft(tl, n) for n in niet): continue
+        vakken.setdefault(k, []).append(x)
+n2 = 0
+for k, sel in vakken.items():
+    sel = mengen(sel)
+    json.dump({'winkels': W, 'producten': sel}, open(os.path.join('assets/zoek/w', k.replace('/', '--') + '.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    aantal[k] = len(sel); n2 += 1
+print('nieuwe vakjes:', n2, 'bestanden; kleinste:', sorted(((k, len(v)) for k, v in vakken.items()), key=lambda a: a[1])[:8])

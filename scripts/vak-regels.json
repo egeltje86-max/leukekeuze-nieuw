@@ -1,0 +1,836 @@
+{
+ "groepen": {
+  "sieraden": {
+   "regels": [
+    [
+     "smartwatches",
+     "smart ?watch|activity ?tracker|fitness ?tracker|sporthorloge|hartslagmeter"
+    ],
+    [
+     "horloges",
+     "horloge|chronograaf|\\bwatch\\b"
+    ],
+    [
+     "sieradendozen",
+     "sieradendoos|sieradenkist|juwelendoos|juwelenkist|sieradenstandaard|sieraden ?(box|organizer|houder|bakje|rek)|ringdoos|sieradenetui|sieradenboom|oorbellenhouder|horlogedoos|horlogebox"
+    ],
+    [
+     "bedels",
+     "bedel|\\bcharms?\\b|pandora"
+    ],
+    [
+     "met-naam",
+     "met (je |jouw |eigen )?naam|naamketting|naam ?armband|gegraveerd|graveer|gravure|initia(a)?l|letterketting|letter ?hanger|gepersonaliseerd"
+    ],
+    [
+     "oorbellen",
+     "oorbel|oorknop|creol|oorhanger|ear ?cuff|oorringen|\\bstuds?\\b"
+    ],
+    [
+     "ringen",
+     "\\bring(en|etje|set)?\\b|zegelring|aanschuifring"
+    ],
+    [
+     "armbanden",
+     "armband|enkelband|bangle|slavenarmband|tennisarmband"
+    ],
+    [
+     "kettingen",
+     "ketting|hanger|collier|choker|medaillon"
+    ]
+   ],
+   "extra": [
+    [
+     "echt-goud",
+     "(9|10|14|18) ?(k|kt|karaat)\\b|\\b585\\b|\\b750\\b|echt goud|geelgoud|witgoud|ros[eé]goud|massief goud",
+     "verguld|plated|gold ?plated|doubl[eé]|staal"
+    ],
+    [
+     "zilver",
+     "zilver|\\b925\\b|sterling",
+     "verzilverd|zilverkleur|silver ?plated|zilver(kleurig|look)"
+    ],
+    [
+     "parels",
+     "parel|pearl",
+     ""
+    ]
+   ]
+  },
+  "geuren-verzorging": {
+   "regels": [
+    [
+     "rituals",
+     "rituals"
+    ],
+    [
+     "tandenborstels",
+     "tandenborstel|oral-?b|sonicare|waterflosser|monddouche"
+    ],
+    [
+     "haarstylers",
+     "stijltang|krultang|f[oö]hn|haardroger|airwrap|airstyler|haarstyler|krulborstel|hot ?air|haar ?(krul|stijl)|warmteborstel|dyson"
+    ],
+    [
+     "scheren-baard",
+     "scheer|baard|trimmer|shaver|beard|ontharing|epilator|ladyshave|tondeuse"
+    ],
+    [
+     "massage",
+     "massage|massager|nekkussen|shiatsu|gua sha|jade ?roller|voetbad"
+    ],
+    [
+     "make-up-nagels",
+     "make-?up|mascara|lipstick|lippenstift|lipgloss|nagel|oogschaduw|foundation|kwasten|blush|palette|gellak|manicure|pedicure"
+    ],
+    [
+     "cadeausets",
+     "cadeauset|giftset|gift ?set|geschenkset|verwenpakket|verwenset|cadeaubox|gift ?box|cadeaupakket|adventskalender"
+    ],
+    [
+     "parfum",
+     "parfum|eau de|\\bedt\\b|\\bedp\\b|aftershave|cologne|bodymist|body ?mist|fragrance|\\bgeur\\b"
+    ],
+    [
+     "bad-douche",
+     "\\bbad\\b|badzout|badbruis|bruisbal|douche|shower|bath|scrub|zeep|badolie|badschuim"
+    ],
+    [
+     "huidverzorging",
+     "cr[eè]me|serum|gezicht|huid|masker|lotion|handcr|lippenbalsem|skincare|dagcr|nachtcr|oog"
+    ]
+   ],
+   "extra": []
+  },
+  "mode-beauty": {
+   "regels": [
+    [
+     "pantoffels-sokken",
+     "pantoffel|slof|sloffen|sokken|\\bsok\\b|slipper|huissok"
+    ],
+    [
+     "pyjamas",
+     "pyjama|badjas|onesie|ochtendjas|nachthemd|loungewear|kamerjas|nachtjapon|huispak"
+    ],
+    [
+     "schoenen",
+     "(?<!hand)schoen|sneaker|\\bboots?\\b|laars|laarzen|sandaal|sandalen|pump|loafer|klomp|instapper"
+    ],
+    [
+     "truien-hoodies",
+     "trui|hoodie|sweater|\\bvest\\b|cardigan|fleece|coltrui|sweatshirt|shirt|jas\\b|jack\\b|bodywarmer"
+    ],
+    [
+     "koffers",
+     "koffer|trolley|reistas|weekendtas|duffel|handbagage|weekender"
+    ],
+    [
+     "toilettassen",
+     "toilettas|make-?up ?tas|beautycase|toiletry|cosmeticatas"
+    ],
+    [
+     "rugzakken",
+     "rugzak|backpack|rugtas|schooltas"
+    ],
+    [
+     "portemonnees",
+     "portemonnee|portefeuille|pasjeshouder|kaarthouder|wallet|cardprotector|card ?holder|pashouder|cardholder|creditcardhouder"
+    ],
+    [
+     "zonnebrillen",
+     "zonnebril|brillenkoker|\\bbril\\b"
+    ],
+    [
+     "mutsen-sjaals",
+     "muts|sjaal|handschoen|\\bwanten\\b|beanie|oorwarmer|\\bcol\\b|omslagdoek|bivakmuts"
+    ],
+    [
+     "riemen-sleutelhangers",
+     "riem|sleutelhanger|paraplu|bretels|stropdas|manchetknop|keycord|keychain|haarclip|haarspeld|scrunchie|pet\\b|cap\\b|hoed"
+    ],
+    [
+     "tassen",
+     "\\btas\\b|tassen|handtas|schoudertas|shopper|crossbody|clutch|heuptas|\\bbag\\b|tasje|laptoptas|bucket"
+    ]
+   ],
+   "extra": []
+  },
+  "elektronica": {
+   "regels": [
+    [
+     "platenspelers",
+     "platenspeler|turntable|grammofoon|pick-?up"
+    ],
+    [
+     "beamers",
+     "beamer|projector"
+    ],
+    [
+     "drones-vr",
+     "drone|vr[- ]?bril|meta quest|virtual reality|oculus"
+    ],
+    [
+     "tablets-ereaders",
+     "tablet|ipad|e-?reader|kobo|kindle|galaxy tab"
+    ],
+    [
+     "gaming",
+     "gaming|\\bgame|playstation|\\bps[45]\\b|xbox|nintendo|switch|controller|console|joystick|stuurwiel|racestuur"
+    ],
+    [
+     "cameras",
+     "camera|polaroid|instax|fototoestel|gopro|actioncam|dashcam|fotoprinter|kodak|lens"
+    ],
+    [
+     "koptelefoons",
+     "koptelefoon|headphone|oordop|earbud|airpods|headset|in-ear|oortjes|hoofdtelefoon|over-ear"
+    ],
+    [
+     "speakers",
+     "speaker|luidspreker|soundbar|\\bjbl\\b|radio|boombox|karaoke|marshall|sonos|bose"
+    ],
+    [
+     "telefoon-opladen",
+     "telefoon|oplader|powerbank|kabel|smartphone|iphone|samsung galaxy|hoesje|draadloos laden|magsafe|laadstation|laadpad|selfie"
+    ],
+    [
+     "sfeerlicht-smarthome",
+     "\\bled\\b|lamp|licht|smart ?home|slimme ?(stekker|lamp)|\\bhue\\b|wifi|alexa|google (home|nest)|\\bnest\\b|wekker|sunrise|lichtwekker|galaxy ?projector|sterrenhemel"
+    ],
+    [
+     "gadgets-trackers",
+     "tracker|airtag|\\btile\\b|gadget|smartwatch"
+    ]
+   ],
+   "extra": []
+  },
+  "wonen": {
+   "regels": [
+    [
+     "kerst",
+     "kerst|christmas|xmas|sneeuwpop|rendier|piek\\b|nutcracker|notenkraker|adventskrans"
+    ],
+    [
+     "huisgeuren",
+     "geurstok|diffuser|huisparfum|roomspray|wax ?melt|geurzakje|geurolie|aroma|interieurparfum|geurverspreider"
+    ],
+    [
+     "kaarsen",
+     "kaars|kandelaar|waxine|theelicht|windlicht|lantaarn"
+    ],
+    [
+     "deurmatten",
+     "deurmat|droogloopmat"
+    ],
+    [
+     "vloerkleden",
+     "vloerkleed|karpet|tapijt|\\bkleed\\b|loper"
+    ],
+    [
+     "spiegels",
+     "spiegel"
+    ],
+    [
+     "klokken",
+     "\\bklok|wandklok|wekker|stationsklok|koekoek"
+    ],
+    [
+     "fotolijsten",
+     "fotolijst|fotoframe|fotokader|fotobord|fotolijn|fotoalbum"
+    ],
+    [
+     "lampen",
+     "lamp|verlichting|licht|\\bled\\b|lichtsnoer|nachtlamp|lichtbak|neon"
+    ],
+    [
+     "kussens-plaids",
+     "kussen|plaid|deken|sprei|fleecedeken|poef|zitzak|knuffeldeken"
+    ],
+    [
+     "vazen-bloemen",
+     "vaas|vazen|bloem|droogbloem|kunstbloem|kunstplant|bloempot|plantenpot|boeket|pampas|tulp|roos|rozen"
+    ],
+    [
+     "wanddecoratie",
+     "poster|schilderij|canvas|wanddecoratie|wandbord|muurdecoratie|\\bprint\\b|tekstbord|wandkleed|wanddeco|muursticker|wandpaneel|lijst|kunstwerk"
+    ],
+    [
+     "opbergen-dienbladen",
+     "dienblad|opberg|\\bmand|\\bdoos|\\bbak\\b|\\bkist|organizer|bewaar|krukje|rek\\b|plankje|kapstok|haak"
+    ]
+   ],
+   "extra": []
+  },
+  "keuken": {
+   "regels": [
+    [
+     "airfryers",
+     "airfryer|air fryer|heteluchtfriteuse"
+    ],
+    [
+     "gezellig-tafelen",
+     "gourmet|fondue|raclette|steengrill|teppanyaki|tafelgrill|pizza ?oven|wokset|pizzaset|tapas"
+    ],
+    [
+     "tosti-wafel-ijs",
+     "tosti|wafel|ijsmachine|ijsmaker|\\bijs\\b|popcorn|suikerspin|chocoladefontein|sandwich ?maker|cr[eê]pe|pannenkoek|poffertje|donut|cakepop|slush|softijs|frozen yogurt"
+    ],
+    [
+     "keukenapparaten",
+     "blender|keukenmachine|foodprocessor|staafmixer|waterkoker|broodrooster|sapcentrifuge|slowjuicer|slowcooker|multicooker|sous ?vide|vacu[uü]m|stoomoven|kitchenaid|thermomix|rijstkoker|weegschaal|\\bmixer|hakmolen|frituurpan|vleesthermometer|soepmaker|eierkoker|smoothie"
+    ],
+    [
+     "koffie-thee",
+     "koffie|espresso|\\bthee|melkopschuimer|french press|moka|cafeti[eè]re|\\bmok\\b|mokken|kop en schotel|barista|nespresso|senseo|dolce gusto|latte|cappuccino|theeglas|theepot|theedoos"
+    ],
+    [
+     "messen-snijplanken",
+     "\\bmes\\b|messen|messenset|snijplank|messenblok|slijp|santoku|koksmes|vleesmes"
+    ],
+    [
+     "kaas-serveerplanken",
+     "kaasplank|serveerplank|tapasplank|borrelplank|kaasmes|kaasset|kaasschaaf|serveerbord|houten plank|charcuterie"
+    ],
+    [
+     "pannen",
+     "\\bpan\\b|pannen|koekenpan|braadpan|\\bwok\\b|hapjespan|steelpan|dutch oven|gietijzer|pannenset|snelkookpan|grillpan|ovenschaal"
+    ],
+    [
+     "drinkflessen-lunch",
+     "drinkfles|thermos|lunchbox|broodtrommel|isoleerfles|bidon|waterfles|lunch|bento|isoleerbeker|koffiebeker|to ?go|reisbeker|drinkbeker"
+    ],
+    [
+     "voorraadpotten",
+     "voorraad|weckpot|vershoud|bewaarpot|kruidenrek|kruidenpot|bewaarbak|opbergpot|voorraadbus|broodtrommel"
+    ],
+    [
+     "bakken",
+     "bakken|bakvorm|taart|cake|deeg|muffin|cupcake|koekjes|uitsteker|garde|spuitzak|bakset|bakpapier|bakmat|ovenwant|deegroller|springvorm"
+    ],
+    [
+     "glazen-servies",
+     "\\bglas|glazen|servies|\\bbord|borden|schaal|\\bkom\\b|kommen|bestek|karaf|\\bkop\\b|schotel|tafel|placemat|onderzetter|kandelaar|ontbijt|eierdop|presenteer|etagere"
+    ]
+   ],
+   "extra": []
+  },
+  "dranken": {
+   "regels": [
+    [
+     "wijnaccessoires",
+     "kurkentrekker|wijnrek|wijnkoeler|decanter|wijnglas|wijnglazen|wijnset|wijnkist|wijnstopper|wijnaccessoire|ijsemmer|flessenopener|whiskyglas|whiskeyglas|whisky stones|whiskystenen|bierglas|bierglazen|cocktailset|shaker|cocktailglas"
+    ],
+    [
+     "alcoholvrij",
+     "alcoholvrij|alcohol-?vrij|0[,.]0|non-?alcoholic|\\b0%"
+    ],
+    [
+     "jenever",
+     "jenever|genever|korenwijn|beerenburg|berenburg"
+    ],
+    [
+     "sake",
+     "\\bsake\\b|sak[eé]\\b"
+    ],
+    [
+     "bier",
+     "\\bbier(en|tje|tjes|pakket|brouw\\w*|krat|glas|glazen)?\\b|bierbrouw|\\bbeer\\b|\\bipa\\b|tripel|brouwerij|bierpakket|biertje|speciaalbier|\\bstout\\b"
+    ],
+    [
+     "wijn-port",
+     "\\bport\\b|porto|sherry"
+    ]
+   ],
+   "extra": []
+  },
+  "eten-drinken": {
+   "regels": [
+    [
+     "adventskalenders",
+     "advent"
+    ],
+    [
+     "sinterklaas-lekkers",
+     "sinterklaas|chocoladeletter|pepernoot|pepernoten|kruidnoot|kruidnoten|speculaas|marsepein|schuimpje|taai ?taai|banketstaaf|banketletter|\\bsint\\b|\\bpiet\\b"
+    ],
+    [
+     "brievenbuscadeaus",
+     "brievenbus"
+    ],
+    [
+     "kerst-cadeaupakketten",
+     "pakket|kerstpakket|borrel|cadeaubox|giftbox|\\bbox\\b|\\bmand\\b|kerstmand|proeverij|tasting"
+    ],
+    [
+     "koekjes-stroopwafels",
+     "koek|stroopwafel|biscuit|cookie|speculoos|kano|spritsen|wafel"
+    ],
+    [
+     "drop-snoep",
+     "\\bdrop\\b|dropjes|snoep|lolly|zuurtje|gummy|winegum|spekjes|candy|\\bm&m|haribo|kauwgom"
+    ],
+    [
+     "chocolade",
+     "chocola|bonbon|pralin|truffel|tony|callebaut|leonidas|neuhaus|cacao|godiva|lindt|droste"
+    ],
+    [
+     "koffie-thee",
+     "koffie|\\bthee|espresso|bonen|cups|capsules|matcha|chai"
+    ],
+    [
+     "bbq-sauzen",
+     "bbq|barbecue|saus|\\brub\\b|rubs|kruiden|marinade|hot ?sauce|pepers|chili|sriracha|grill"
+    ]
+   ],
+   "extra": []
+  },
+  "speelgoed": {
+   "regels": [
+    [
+     "pokemon-verzamelkaarten",
+     "pok[eé]mon|verzamelkaart|booster|trading ?card|yu-?gi|magic the gathering|one piece card|lorcana"
+    ],
+    [
+     "playmobil",
+     "playmobil"
+    ],
+    [
+     "lego",
+     "\\blego\\b|\\bduplo\\b"
+    ],
+    [
+     "knikkerbanen-magnetisch",
+     "knikkerbaan|gravitrax|magna-?tiles|magformers|magnetisch|connetix|geomag|magneetbouw|marble ?run"
+    ],
+    [
+     "knutselen-kleuren",
+     "knutsel|\\bses\\b|science4you|crayola|kraskaart|punnik|zelf .{0,20}(bouwen|maken)|strijkkralen|slijm|slime"
+    ],
+    [
+     "puzzels",
+     "puzzel|puzzle|wasgij|legpuzzel"
+    ],
+    [
+     "poppen-barbie",
+     "modepop|monster high|mirror mi|rainbow high|(?<!funko )\\bpop\\b(?![- ]?up)|poppen|barbie|babypop|baby ?born|poppenhuis|l\\.?o\\.?l\\.? surprise|rainbow high|polly|sylvanian|bratz|\\bken\\b|poppenwagen"
+    ],
+    [
+     "speelkeukens-verkleden",
+     "beauty|make-?up|tattoo|nagellak|kaphoofd|kassa|koffiezet|gereedschapskist|dierenarts|ijssalon|ijscokar|pizza speelset|winkeltje|speelkeuken|keukentje|verkleed|kostuum|prinsessenjurk|speelgoedkassa|winkeltje|doktersset|dokterskoffer|speelgoedgereedschap|werkbank|kinderkeuken|verkleedkleding|\\bmasker|kattenoren|haarband"
+    ],
+    [
+     "autos-treinen-rc",
+     "\\bauto(s|tje|baan|garage)?\\b|trein|\\brc\\b|bestuurbare|garage|hot ?wheels|racebaan|vrachtwagen|brandweer|tractor|vliegtuig|helikopter|bouwvoertuig|matchbox|\\bbrio\\b|graafmachine|politie|monstertruck|carrera|race"
+    ],
+    [
+     "knuffels-squishmallows",
+     "knuffel|squishmallow|pluche|teddy|\\bbeer\\b|jellycat|warmteknuffel"
+    ],
+    [
+     "puzzels",
+     "puzzel|wasgij|legpuzzel"
+    ],
+    [
+     "bord-kaartspellen",
+     "\\bspel\\b|spellen|bordspel|kaartspel|dobbel|quiz|kwartet|\\buno\\b|monopoly|party|escape|catan|rummikub|ganzenbord|schaak|dammen|stratego|kaarten|weerwolven|jenga|twister|cluedo|game\\b|30 seconds|triviant|codenames|exploding|ligretto|dixit|keezen|mens erger|\\bexit\\b|sjoel|yahtzee|kendama"
+    ],
+    [
+     "muziek-karaoke",
+     "karaoke|microfoon|keyboard|gitaar|drumstel|kidi ?dj|\\bdrums?\\b|muziekinstrument|xylofoon|\\bpiano"
+    ],
+    [
+     "buitenspeelgoed",
+     "buiten|\\bstep\\b|skelter|trampoline|zwembad|waterpistool|\\bbal\\b|voetbal|zandbak|schommel|glijbaan|stoep|bellenblaas|vlieger|loopfiets|skateboard|zeepbel|kinderfiets|nerf|frisbee|metaaldetector|zandspeelgoed|waterspeelgoed|speelhuis|\\btent\\b|verrekijker|insect|vlindernet|stelten|springtouw|klimrek"
+    ],
+    [
+     "knutselen-kleuren",
+     "knutsel|\\bklei\\b|kleur|teken|verf|stift|kralen|strijkkralen|slijm|slime|diamond|sticker|creatief|kleurboek|krijt|bouwpakket hout|naaien|borduren|weven|sieraden maken|armbandjes|kristallen kweken|experiment|proefjes|wetenschap"
+    ],
+    [
+     "baby-houten",
+     "\\bbaby|peuter|mijn eerste|rammelaar|stapeltoren|stapelbeker|sorteer|trekfiguur|activity|bijtring|loopwagen|badspeelgoed|\\b(0|1)\\+|vanaf (6|9|12|18) maanden|fisher|vtech baby|speelkleed|box ?mobiel|loopauto"
+    ],
+    [
+     "hypes-trends",
+     "funko|little live pets|furreal|funtasy|hex ?bots|robot|peekimo|kidisecrets|kidizoom|kindercamera|camera|wereldbol|globe|orboot|laptop|tiptoi|ik leer|electro|fidget|squishy|labubu|stitch|tamagotchi|bitzee|hype|trend|pop ?it|sensory|hatchimal|gabby|furby|bluey|stranger|minecraft|fortnite|roblox|squid|wednesday|harry potter|disney|marvel|frozen|paw patrol|unicorn|eenhoorn"
+    ]
+   ],
+   "extra": []
+  },
+  "hobby": {
+   "regels": [
+    [
+     "diamond-painting",
+     "diamond ?paint|diamant ?schilder"
+    ],
+    [
+     "3d-pennen",
+     "3d[- ]?pen"
+    ],
+    [
+     "kaarsen-zeep-epoxy",
+     "kaarsen maken|kaars maken|zeep maken|\\bzeep|epoxy|resin|gietvorm|gieten|soja ?was|kaarsenwas"
+    ],
+    [
+     "klei-pottenbakken",
+     "\\bklei\\b|pottenbak|keramiek|boetseer|fimo|draaischijf|polymeerklei|airdry"
+    ],
+    [
+     "naaien-borduren",
+     "naai|borduur|punch ?needle|patchwork|quilt|lockmachine|kruissteek|stoffen|naaimachine"
+    ],
+    [
+     "kralen-sieraden-maken",
+     "kralen|sieraden maken|armbandjes maken|kettingen maken|bedels maken|rocailles"
+    ],
+    [
+     "modelbouw",
+     "modelbouw|robotime|rolife|miniatuur|bouwpakket|book ?nook|schip|scale|\\b1:\\d+|houten (model|3d)|mini ?huis|diy (huis|house)|maquette"
+    ],
+    [
+     "bullet-journal",
+     "bullet ?journal|kalligraf|handletter|brush ?pen|journal|lettering"
+    ],
+    [
+     "origami-scrapbooking",
+     "origami|scrapbook|papier|vouw|stempel|washi|kaarten maken|plakboek|ponser"
+    ],
+    [
+     "haken-breien",
+     "haak|haken|brei|garen|\\bwol\\b|amigurumi|macram[eé]|haakpakket|breipakket|tufting|weef"
+    ],
+    [
+     "schilderen",
+     "schilder|\\bverf|acryl|aquarel|penseel|canvas|ezel|paint ?by ?number|op nummer|gouache|olieverf|paletmes"
+    ],
+    [
+     "tekenen",
+     "teken|stift|potlood|marker|schetsboek|schets|kleurpotlood|posca|copic|\\bpen\\b|pennen|kleurboek|fineliner|houtskool|pastel"
+    ]
+   ],
+   "extra": []
+  },
+  "sport-outdoor": {
+   "regels": [
+    [
+     "darts",
+     "dart"
+    ],
+    [
+     "golf",
+     "golf"
+    ],
+    [
+     "padel-tennis",
+     "padel|tennis|tafeltennis|pingpong|badminton|squash"
+    ],
+    [
+     "vissen",
+     "\\bvis(sen|hengel|lijn|kist|tas|haak|stoel)|hengel|karper|\\baas\\b|werphengel|sportvis"
+    ],
+    [
+     "klimmen-boulderen",
+     "klim|boulder|crashpad|chalk|pofzak"
+    ],
+    [
+     "yoga",
+     "yoga|pilates|meditatie|balansbal"
+    ],
+    [
+     "skateboards-steps",
+     "skateboard|\\bstep\\b(?!.*aerobic)|steps|longboard|skate|rolschaats|inline|waveboard|penny ?board"
+    ],
+    [
+     "wintersport-schaatsen",
+     "schaats|\\bski|snowboard|\\bslee\\b|wintersport|skibril|skihelm|thermo ?ondergoed"
+    ],
+    [
+     "watersport-zwemmen",
+     "\\bsup\\b|supboard|kajak|zwem|snorkel|duik|surf|wetsuit|waterski|kano|opblaasbare boot|waterschoen"
+    ],
+    [
+     "fietsen",
+     "fiets|\\bbike|\\bmtb\\b|wielren|bidonhouder|kettingslot"
+    ],
+    [
+     "voetbal-balsporten",
+     "voetbal|hockey|basketbal|volleybal|\\bbal\\b|\\bdoel\\b|scheenbesch|keepers|rugby|honkbal|korfbal|handbal"
+    ],
+    [
+     "buitenspellen-picknick",
+     "jeu de boules|petanque|kubb|picknick|m[oö]lkky|cornhole|frisbee|beachball|spikeball|beach ?ball|werpspel|krokett"
+    ],
+    [
+     "hardlopen",
+     "hardloop|running|stappenteller|hartslag|loopvest|hardlopen|reflecterend"
+    ],
+    [
+     "fitness",
+     "fitness|dumbbell|halter|kettlebell|weerstand|\\bband(en)?\\b|springtouw|bokszak|boks|massage ?gun|hometrainer|loopband|roeitrainer|buikspier|ab ?roller|push ?up|sportmat|\\bgewicht(en)?\\b|crosstrainer|pull ?up|optrekstang|foam ?roller|stepper"
+    ],
+    [
+     "kamperen",
+     "kampeer|tent\\b|slaapzak|camping|zaklamp|hoofdlamp|gasbrander|hangmat|survival|kookset|matje|luchtbed|campingstoel|vuurstarter|bushcraft|bivak|lantaarn|outdoor ?kook|firesteel|campingkook"
+    ],
+    [
+     "wandelen",
+     "wandel|rugzak|verrekijker|drinkfles|thermosfles|nordic|kompas|regenjas|regenponcho|trekking|hiking"
+    ],
+    [
+     "reizen",
+     "reis|koffer|bagage|nekkussen|paspoort|adapter|travel|vakantie"
+    ]
+   ],
+   "extra": []
+  },
+  "tuin-klussen": {
+   "regels": [
+    [
+     "zwembaden-jacuzzis",
+     "zwembad|jacuzzi|hot ?tub|\\bspa\\b|lay-?z"
+    ],
+    [
+     "vuurschalen-terrasverwarmers",
+     "vuurschaal|vuurkorf|terrasverwarmer|vuurtafel|tuinhaard|vuurplaat|vuurpot"
+    ],
+    [
+     "bbq-buitenkoken",
+     "\\bbbq|barbecue|kamado|pizzaoven|pizza ?oven|buitenkeuken|\\bgrill|plancha|rookoven|houtskool|aansteek|weber|smoker|dutch oven"
+    ],
+    [
+     "tuinmeubelen",
+     "parasol|tuinstoel|tuinbank|loungeset|hangstoel|schommel|tuinkussen|tuintafel|ligbed|hangmat|tuinset|loungestoel|strandstoel"
+    ],
+    [
+     "tuinmachines",
+     "hogedrukreiniger|grasmaaier|robotmaaier|bladblazer|heggenschaar|kettingzaag|grastrimmer|kantenmaaier|verticuteer|bladzuiger|onkruidbrander|kärcher|karcher"
+    ],
+    [
+     "elektrisch-gereedschap",
+     "\\baccu|boormachine|schroefmachine|zaag|schuurmachine|makita|dewalt|\\bbosch\\b|einhell|ryobi|black ?\\+? ?decker|lijmpistool|soldeer|dremel|frees|klopboor|slagmoersleutel|multitool oscillerend|compressor|stofzuiger|bouwlamp|werklamp"
+    ],
+    [
+     "vogels-insecten",
+     "vogel|insect|nestkast|voeder|vlinder|bijen|egel|mezen|pindakaas|vetbol"
+    ],
+    [
+     "moestuin-kweken",
+     "moestuin|kweek|\\bkas\\b|broeikas|\\bzaad|zaden|bloembol|kiem|groente|kruidentuin|tomaat|tomaten|zaai|aardbei|tulpenbollen"
+    ],
+    [
+     "regentonnen-slangen-compost",
+     "regenton|tuinslang|gieter|compost|regenmeter|sproei|slangwagen|waterpomp\\b|irrigatie"
+    ],
+    [
+     "buitenverlichting",
+     "verlichting|solar|\\blamp|lantaarn|lichtsnoer|\\bled\\b|\\bspot|tuinlamp|lichtslinger"
+    ],
+    [
+     "tuindecoratie",
+     "kabouter|tuinbeeld|beeld\\b|thermometer|tuindecoratie|windgong|tuinsteker|zonnewijzer|tuinspiegel|windspinner|vogelbad"
+    ],
+    [
+     "tuingereedschap",
+     "schep|snoeischaar|snoeizaag|\\bhark|kruiwagen|tuinhandschoen|schoffel|spade|tuingereedschap|plantenschep|onkruid|tuinset|bladhark|tuinschort|knielkussen"
+    ],
+    [
+     "planten-potten",
+     "plant|\\bpot\\b|potten|bloempot|plantenbak|bonsai|cactus|vetplant|terrarium|orchidee|hangpot|bloembak|plantenstandaard"
+    ],
+    [
+     "handgereedschap-werkplaats",
+     "gereedschap|waterpas|schroevendraaier|hamer|\\btang|\\bbit|dopsleutel|steeksleutel|werkbank|gereedschapskist|multitool|rolmaat|zakmes|ratel|inbus|lasermeter|meetlint|werkhandschoen|hoofdlamp|zaklamp"
+    ]
+   ],
+   "extra": []
+  },
+  "boeken-media": {
+   "regels": [
+    [
+     "kookboeken",
+     "kookboek|recept|bakboek|\\bkoken\\b|keuken van"
+    ],
+    [
+     "kleurboeken",
+     "kleurboek|coloring|kleurplaten"
+    ],
+    [
+     "puzzelboeken",
+     "sudoku|kruiswoord|puzzelboek|breinbreker|denksport|woordzoeker|puzzels? ?voor|doolhof"
+    ],
+    [
+     "e-readers",
+     "e-?reader|\\bkobo\\b|kindle"
+    ],
+    [
+     "luisterboeken",
+     "luisterboek|audioboek|audiobook"
+    ],
+    [
+     "foto-invulboeken",
+     "invulboek|vertel eens|fotoboek|fotoalbum|plakboek|herinneringen|babyboek|vriendenboek|vertel ?me|mijn leven|levensboek"
+    ],
+    [
+     "boekenbonnen-abonnementen",
+     "boekenbon|cadeaukaart|abonnement|tijdschrift|cadeaubon"
+    ],
+    [
+     "agendas-planners-kalenders",
+     "agenda|planner|notitieboek|notebook|dagboek|kalender|journal|scheurkalender|schrift|bullet"
+    ],
+    [
+     "muziek",
+     "vinyl|\\blp\\b|\\bcd\\b|elpee|album|muziek|songbook|bladmuziek"
+    ],
+    [
+     "films-series",
+     "\\bdvd|blu-?ray|\\bfilm|\\bserie\\b"
+    ],
+    [
+     "strips-manga",
+     "strip|manga|graphic novel|suske|kuifje|asterix|donald duck|lucky luke|guust|jommeke|kiekeboe|garfield|dragon ball|naruto|one piece"
+    ],
+    [
+     "leesplezier",
+     "leeslamp|boekensteun|boekenlegger|leeskussen|boekenstandaard|boekenkast|book ?nook|leesbril|boekenhouder|leesstandaard|leesbord"
+    ],
+    [
+     "kinderboeken",
+     "prentenboek|voorlees|kinderboek|nijntje|dikkie|gruffalo|geronimo|harry potter|kleuter|peuter|\\bavi\\b|groep [345]|leren lezen|sprookje|dagboek van een muts|dagboek van een loser|tom poes|pluk|jip en janneke|kikker|rupsje|voelboek|kartonboek|geluidenboek|zoekboek|stickerboek|doeboek|weetboek"
+    ]
+   ],
+   "extra": []
+  },
+  "dieren": {
+   "regels": [
+    [
+     "paard",
+     "paard|pony|\\bruiter"
+    ],
+    [
+     "vissen-aquarium",
+     "aquarium|vissenkom|vijver|\\bvis(sen)?\\b"
+    ],
+    [
+     "reptielen-terrarium",
+     "terrarium|reptiel|schildpad|gekko|slang\\b|hagedis"
+    ],
+    [
+     "kippen",
+     "\\bkip\\b|kippen|hoender"
+    ],
+    [
+     "konijn-cavia-hamster",
+     "konijn|cavia|hamster|knaagdier|chinchilla|degoe"
+    ]
+   ],
+   "extra": []
+  },
+  "metaaldetectie": {
+   "regels": [
+    [
+     "magneetvissen",
+     "magneet|vismagneet|neodymium"
+    ],
+    [
+     "munten-vondsten",
+     "munt|loep|vondst|album|\\bboek|vitrine|verzamel|archeolog|reinig|vergrootglas|determin"
+    ],
+    [
+     "pinpointers-uitrusting",
+     "pinpointer|pro ?pointer|schep|spade|lesche|koptelefoon|headphone|tas\\b|vondsttas|knie|spoel|cover|zoekspoel|draagsysteem|riem|handschoen|graaf|troffel|accu|oplader|hoofdlamp"
+    ],
+    [
+     "detectors",
+     "detector|metaalzoeker|deus|minelab|nokta|garrett|quest|equinox|manticore|x-terra|vanquish"
+    ]
+   ],
+   "extra": []
+  },
+  "christelijk": {
+   "regels": [
+    [
+     "kerst",
+     "kerstkaart|kerst ?kaart|kaart.*kerst|kersttegel"
+    ],
+    [
+     "psalmboeken",
+     "psalmboek|psalmen ?boek|liedboek|kerkboek|gezangen|zangbundel|weerklank|op toonhoogte|bijbel met (psalmen|kerkboek)|psalmenpalet|met de psalmen|kleur de psalmen|psalmen voor"
+    ],
+    [
+     "bijbels",
+     "^(?!.*(dagboek|liedjes|\\babc\\b|bidden|teksten|kaart|sleutelhanger)).*(\\bbijbel\\b|statenvertaling|studiebijbel|kinderbijbel|peuterbijbel|babybijbel|bijbelhoes|bijbeltas|bijbeletui|huisbijbel|trouwbijbel|schoolbijbel|kanttekeningen|\\bhsv\\b|herziene)"
+    ],
+    [
+     "kerststal-engelen",
+     "kerststal|\\bstal\\b|\\bengel(en|tje|tjes|beeld|beeldje)?\\b|kribbe|kerstgroep|heilige familie"
+    ],
+    [
+     "doop-belijdenis",
+     "\\bdoop|belijdenis|geloofsbelijdenis"
+    ],
+    [
+     "kerst",
+     "kerst|advent"
+    ],
+    [
+     "sieraden",
+     "ketting|hanger|armband|kruisje|ring\\b|oorbel|bedel|sieraad|sieraden|broche|speld"
+    ]
+   ],
+   "extra": []
+  }
+ },
+ "hernoem": {
+  "cadeaus/adventskalenders": "eten-drinken/adventskalenders",
+  "mode-beauty/horloges": "sieraden/horloges",
+  "mode-beauty/geuren": "geuren-verzorging/parfum",
+  "mode-beauty/verzorging": "geuren-verzorging/huidverzorging",
+  "keuken/kookboeken": "boeken-media/kookboeken",
+  "speelgoed/bouwen": "speelgoed/lego",
+  "speelgoed/baby-peuter": "speelgoed/baby-houten",
+  "speelgoed/bordspellen": "speelgoed/bord-kaartspellen",
+  "speelgoed/kaartspellen": "speelgoed/bord-kaartspellen",
+  "speelgoed/figuren-voertuigen": "speelgoed/autos-treinen-rc",
+  "speelgoed/knutselen": "speelgoed/knutselen-kleuren",
+  "wonen/kaarsen-geur": "wonen/kaarsen",
+  "wonen/woonaccessoires": "wonen/wanddecoratie",
+  "wonen/verlichting": "wonen/lampen",
+  "wonen/plaids-kussens": "wonen/kussens-plaids",
+  "wonen/kerstdecoratie": "wonen/kerst",
+  "keuken/koken": "keuken/pannen",
+  "keuken/serveren": "keuken/glazen-servies",
+  "keuken/opbergen": "keuken/voorraadpotten",
+  "dranken/cognac-brandy": "dranken/cognac",
+  "dranken/gin": "dranken/gin-cocktails",
+  "dranken/likeur": "dranken/likeuren",
+  "dranken/wijn": "dranken/wijn-port",
+  "dranken/bubbels": "dranken/champagne-bubbels",
+  "eten-drinken/chocolade-snoep": "eten-drinken/chocolade",
+  "eten-drinken/bbq": "eten-drinken/bbq-sauzen",
+  "eten-drinken/pakketten": "eten-drinken/kerst-cadeaupakketten",
+  "eten-drinken/lekkernijen": "eten-drinken/delicatessen",
+  "hobby/tekenen-schilderen": "hobby/tekenen",
+  "hobby/knutselen": "hobby/origami-scrapbooking",
+  "tuin-klussen/planten-zaden": "tuin-klussen/planten-potten",
+  "tuin-klussen/gereedschap": "tuin-klussen/handgereedschap-werkplaats",
+  "boeken-media/romans": "boeken-media/thrillers-romans",
+  "boeken-media/agendas": "boeken-media/agendas-planners-kalenders",
+  "boeken-media/lezen": "boeken-media/leesplezier",
+  "dieren/klein-dier": "dieren/konijn-cavia-hamster",
+  "metaaldetectie/kinderen-beginners": "metaaldetectie/detectors",
+  "metaaldetectie/pinpointers": "metaaldetectie/pinpointers-uitrusting",
+  "metaaldetectie/graven": "metaaldetectie/pinpointers-uitrusting",
+  "metaaldetectie/accessoires": "metaaldetectie/pinpointers-uitrusting",
+  "metaaldetectie/vondsten": "metaaldetectie/munten-vondsten",
+  "elektronica/audio": "elektronica/speakers",
+  "elektronica/slimme-gadgets": "elektronica/gadgets-trackers",
+  "elektronica/telefoon": "elektronica/telefoon-opladen",
+  "elektronica/foto-video": "elektronica/cameras",
+  "mode-beauty/rugzakken-reistassen": "mode-beauty/rugzakken",
+  "mode-beauty/kleding": "mode-beauty/truien-hoodies",
+  "mode-beauty/accessoires": "mode-beauty/riemen-sleutelhangers",
+  "christelijk/kaarten-posters": "christelijk/bijbelteksten-wanddecoratie",
+  "christelijk/wanddecoratie": "christelijk/bijbelteksten-wanddecoratie"
+ }
+}
