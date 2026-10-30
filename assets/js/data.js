@@ -9,21 +9,23 @@ window.LK_INSTELLINGEN = {
      Weer goedgekeurd? Zet dit op false. */
   daisyconPauze: true,
   seizoen: 'kerst',            // 'kerst' of '' (neutraal)
-  heroKicker: 'Bijzondere momenten',
-  heroTitel: 'De mooiste cadeaus',
-  heroTitelGoud: 'voor elk moment',
-  heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
-  heroDesktop: 'images/banners/banner-home-desktop.webp',
-  heroMobiel: 'images/banners/banner-home-mobiel.webp',
+  heroKicker: 'Met de hand gekozen',
+  heroTitel: 'Wij zoeken.',
+  heroTitelGoud: 'Jij kiest.',
+  heroTekst: 'Duizenden leuke spullen van bekende winkels, één voor één met de hand gekozen. Voor jezelf, of om cadeau te doen.',
+  /* 2.2 PROEF: lichte foto (marmer), tekst donker. Echte foto komt van Nova. */
+  heroLicht: true,
+  heroDesktop: 'images/banners/proef-home-desktop.webp',
+  heroMobiel: 'images/banners/proef-home-mobiel.webp',
   populair: [
-    { label: 'Kerst', naar: '/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' },
+    { label: 'Kerst', naar: '/c/cadeaus/kerst' },
+    { label: 'LEGO', naar: '/c/speelgoed/lego' },
     { label: 'Dranken', naar: '/c/dranken' },
+    { label: 'Sieraden', naar: '/c/sieraden' },
+    { label: 'Elektronica', naar: '/c/elektronica' },
     { label: 'Voor haar', naar: '/voor/haar' },
     { label: 'Voor hem', naar: '/voor/hem' },
-    { label: 'Tieners', naar: '/voor/tieners' },
-    { label: 'Collega', naar: '/voor/collega' },
-    { label: 'Christelijk', naar: '/c/christelijk' },
     { label: 'Onder €15', naar: '/c/cadeaus/onder-15' },
     { label: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' }
   ],

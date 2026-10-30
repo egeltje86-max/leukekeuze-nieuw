@@ -233,7 +233,7 @@
   function zoekForm(waarde, tekst) {
     return '<form class="zoek" role="search" data-zoek>' +
       ic('zoek', 'lp') +
-      '<label class="verborgen" for="zk-' + (zoekForm.n = (zoekForm.n || 0) + 1) + '">Zoek een cadeau</label>' +
+      '<label class="verborgen" for="zk-' + (zoekForm.n = (zoekForm.n || 0) + 1) + '">Zoeken</label>' +
       '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="' + (tekst || 'Zoek in alle winkels…') + '" autocomplete="off" enterkeyhint="search">' +
       '<button type="submit" aria-label="Zoeken">' + ic('zoek') + '</button></form>';
   }
@@ -246,7 +246,7 @@
     zetTitel('');
     var hoofd = ['cadeaus', 'dranken', 'speelgoed', 'wonen', 'elektronica'].map(window.LK_CAT);
     return '' +
-      '<section class="hero">' +
+      '<section class="hero' + (INST.heroLicht ? ' licht' : '') + '">' +
         '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
         '<img src="' + esc(INST.heroMobiel) + '" alt="" fetchpriority="high"></picture>' +
         '<div class="hero-inhoud"><div class="binnen">' +
@@ -260,29 +260,38 @@
       '</section>' +
 
       '<div class="binnen">' +
-        /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
-        '<section class="sectie eerste">' +
-          '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
+        /* 2.2: twee deuren. Eerst vragen wat iemand komt doen; de rest van de pagina volgt die volgorde. */
+        '<section class="deuren">' +
+          '<h2>Zoek je iets voor jezelf, of voor een ander?</h2>' +
+          '<div class="deuren-rij">' +
+            '<a class="deur" href="#afdelingen" data-scroll>' + ic('zoek', 'staf') + '<span><strong>Iets voor mezelf</strong><small>Kies een afdeling en kijk rond</small></span>' + ic('rechts') + '</a>' +
+            '<a class="deur" href="#cadeau" data-scroll>' + ic('vonk', 'staf') + '<span><strong>Een cadeau voor een ander</strong><small>Voor wie, en voor welke gelegenheid?</small></span>' + ic('rechts') + '</a>' +
+          '</div>' +
+        '</section>' +
+
+        /* 2.2: afdelingen eerst (hier zoeken mensen het meest op), daarna de cadeauhulp. */
+        '<section class="sectie eerste" id="afdelingen">' +
+          '<div class="sectie-kop"><div><span class="kicker">Voor jezelf</span><h2>Waar heb je zin in?</h2></div><a class="meer" href="/categorieen">Alle afdelingen ' + ic('pijl') + '</a></div>' +
+          '<div class="groepen">' + window.LK_HOME_GROEPEN.map(window.LK_CAT).filter(Boolean).map(function (c) {
+            return '<a class="groep" href="/c/' + c.slug + '"><img src="' + esc(c.tegel.replace('.webp', '-klein.webp')) + '" alt="" loading="lazy" decoding="async"><span>' + esc(c.kort) + '</span></a>';
+          }).join('') + '</div>' +
+          '<a class="knop knop-rand alle-cats" href="/categorieen">Alle afdelingen ' + ic('pijl') + '</a>' +
+        '</section>' +
+
+        '<section class="sectie" id="cadeau">' +
+          '<div class="sectie-kop"><div><span class="kicker">Een cadeau geven</span><h2>Voor wie zoek je iets?</h2></div></div>' +
           '<div class="persoon-subs home">' + window.LK_PERSONEN.map(function (x) {
             return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
           }).join('') + '</div>' +
         '</section>' +
 
-        '<section class="sectie">' +
-          '<div class="sectie-kop"><div><span class="kicker">Ingang 2</span><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
-          '<div class="groepen">' + window.LK_HOME_GROEPEN.map(window.LK_CAT).filter(Boolean).map(function (c) {
-            return '<a class="groep" href="/c/' + c.slug + '"><img src="' + esc(c.tegel.replace('.webp', '-klein.webp')) + '" alt="" loading="lazy" decoding="async"><span>' + esc(c.kort) + '</span></a>';
-          }).join('') + '</div>' +
-          '<a class="knop knop-rand alle-cats" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a>' +
-        '</section>' +
-
         /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
-        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 3</span><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
+        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Een cadeau geven</span><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
           '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN_NU().map(function (x) {
             return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
           }).join('') + '</div></section>' +
         /* 2.1: acht collecties als rondjes (in de volgorde van zoeken). Lege collecties tonen we nog niet. */
-        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 4</span><h2>Of een collectie</h2></div></div>' +
+        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Een cadeau geven</span><h2>Of een collectie</h2></div></div>' +
           '<div class="persoon-subs home gelegenheden">' + (window.LK_COLLECTIES || []).map(function (c) {
             var l = verzamelLijst(c); if (!l.length) return '';
             return '<a class="subkaart" href="/collectie/' + c.slug + '"><span class="rond"><img src="' + esc(rondBeeld(c.beeld, l)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.naam) + '</a>';
@@ -2087,6 +2096,7 @@
       if (leesAdres().delen[0] === 'favorieten') toon();
       return;
     }
+    if (t.hasAttribute('data-scroll')) { var doel = document.querySelector(t.getAttribute('href')); if (doel) { e.preventDefault(); doel.scrollIntoView({ behavior: 'smooth', block: 'start' }); } return; }
     if (t.hasAttribute('data-lijst-whatsapp')) { var w = lijstVanDeel(); window.open('https://wa.me/?text=' + encodeURIComponent(w.bericht), '_blank', 'noopener'); return; }
     if (t.hasAttribute('data-lijst-kopieer')) { var w2 = lijstVanDeel();
       var klaar = function () { toast('Link gekopieerd. Plak hem in een bericht.'); };
@@ -2239,7 +2249,7 @@
   vulIconen(document);
   bouwLade(); bouwMega();
   var zoekRij = $('[data-zoekrij] .binnen');
-  if (zoekRij) zoekRij.innerHTML = zoekForm('', 'Zoek een cadeau, bijv. bal, fiets of trein');
+  if (zoekRij) zoekRij.innerHTML = zoekForm('', 'Zoek, bijv. lego, airfryer of whisky');
   vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
   netteLinks(document);
   werkTellersBij();

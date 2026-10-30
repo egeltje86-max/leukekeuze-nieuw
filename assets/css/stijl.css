@@ -238,6 +238,38 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   .populair .chips { margin: 0; }
 }
 
+/* ---------- 2.2: lichte hero (foto licht, tekst donker) ---------- */
+.hero.licht { background: #F7F3EC; color: #141A2A; }
+.hero.licht::after { background: linear-gradient(180deg, rgba(247,243,236,0) 12%, rgba(247,243,236,.9) 40%, rgba(247,243,236,.98) 62%, var(--bg) 100%); }
+.hero.licht h1 { color: #141A2A; }
+.hero.licht h1 em { color: #B8862E; }
+.hero.licht p { color: #4A4F5C; }
+.hero.licht .kicker { color: #B8862E; }
+.hero.licht .chip { background: rgba(255,255,255,.75); border-color: rgba(20,26,42,.18); color: #141A2A; }
+.hero.licht .populair > span { color: #B8862E; }
+@media (min-width: 760px) {
+  .hero.licht::after { background: linear-gradient(90deg, rgba(247,243,236,.94) 0%, rgba(247,243,236,.8) 36%, rgba(247,243,236,.1) 62%, rgba(247,243,236,0) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(247,243,236,0) 18%); }
+}
+
+/* ---------- 2.2: twee deuren (voor jezelf / voor een ander) ---------- */
+.deuren { padding: 26px 0 0; }
+.deuren h2 { font-family: var(--f-kop); font-weight: 500; font-size: clamp(21px, 4.6vw, 27px); line-height: 1.2; margin-bottom: 14px; }
+.deuren-rij { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.deur { display: flex; align-items: center; gap: 14px; padding: 16px 16px; border-radius: 16px; background: var(--kaart); border: 1px solid var(--lijn); color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
+.deur:hover { border-color: var(--goud); transform: translateY(-1px); }
+.deur .staf { width: 40px; height: 40px; flex: none; padding: 9px; border-radius: 12px; background: var(--goud-verloop); color: var(--navy); }
+.deur > span { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.deur strong { font-family: var(--f-kop); font-weight: 500; font-size: 19px; line-height: 1.15; }
+.deur small { font-size: 13.5px; color: var(--tekst-2); }
+.deur > svg:last-child { width: 20px; height: 20px; color: var(--goud-licht); flex: none; }
+#afdelingen, #cadeau { scroll-margin-top: 76px; }
+@media (min-width: 760px) {
+  .deuren { padding-top: 34px; }
+  .deuren-rij { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .deur { padding: 22px 22px; }
+  .deur strong { font-size: 22px; }
+}
+
 /* ---------- Secties ---------- */
 .sectie { padding: 30px 0 0; }
 .sectie-kop { display: flex; align-items: end; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
