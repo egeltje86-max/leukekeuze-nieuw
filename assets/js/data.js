@@ -15,18 +15,21 @@ window.LK_INSTELLINGEN = {
   heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
   heroDesktop: 'images/banners/banner-winter-desktop.webp',
   heroMobiel: 'images/banners/banner-winter-mobiel.webp',
+  /* Populair: wat Nederlanders het meest zoeken (OpenSEO, okt 2026) en waar wij genoeg producten voor hebben.
+     Sinterklaas en Kerst vooraan zolang het seizoen is. Rituals (368.000) en airfryers (90.500) komen erbij zodra die vakjes gevuld zijn. */
   populair: [
-    { label: 'Kerst', naar: '/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' },
-    { label: 'Dranken', naar: '/c/dranken' },
-    { label: 'Voor haar', naar: '/voor/haar' },
-    { label: 'Voor hem', naar: '/voor/hem' },
-    { label: 'Tieners', naar: '/voor/tieners' },
-    { label: 'Collega', naar: '/voor/collega' },
-    { label: 'Christelijk', naar: '/c/christelijk' },
-    { label: 'Onder €15', naar: '/c/cadeaus/onder-15' },
-    { label: 'Adventskalenders', naar: '/c/cadeaus/adventskalenders' }
+    { label: 'Kerst', naar: '/c/cadeaus/kerst' },
+    { label: 'LEGO', naar: '/c/speelgoed/lego' },
+    { label: 'Gaming', naar: '/c/elektronica/gaming' },
+    { label: 'Darts', naar: '/c/sport-outdoor/darts' },
+    { label: 'Chocolade', naar: '/c/eten-drinken/chocolade' },
+    { label: 'Sieraden', naar: '/c/sieraden' },
+    { label: 'Champagne', naar: '/c/dranken/champagne-bubbels' },
+    { label: 'Pokémon', naar: '/c/speelgoed/pokemon-verzamelkaarten' },
+    { label: 'Adventskalenders', naar: '/c/eten-drinken/adventskalenders' }
   ],
+
   /* 'Voor wie zoek je een cadeau?' op de homepage. */
   voorWie: [
     { label: 'Voor haar', naar: '/c/cadeaus/voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp' },
