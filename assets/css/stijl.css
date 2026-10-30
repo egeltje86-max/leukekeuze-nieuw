@@ -253,11 +253,21 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 
 /* ---------- 2.2: donkere (winter)foto: tekst naast/onder de spullen, niet erover ---------- */
 @media (max-width: 759px) {
-  .hero:not(.licht) picture { bottom: auto; height: 340px; }
-  .hero:not(.licht) picture img { object-position: center 16%; }
-  .hero:not(.licht)::after { bottom: auto; height: 340px; background: linear-gradient(180deg, rgba(10,16,32,0) 55%, rgba(10,16,32,.85) 85%, #0A1020 100%); }
+  .hero:not(.licht) picture { bottom: auto; height: 210px; }
+  .hero:not(.licht) picture img { object-position: center 20%; }
+  .hero:not(.licht)::after { bottom: auto; height: 210px; background: linear-gradient(180deg, rgba(10,16,32,0) 60%, rgba(10,16,32,.85) 88%, #0A1020 100%); }
   .hero:not(.licht) { background: #0A1020; }
-  .hero:not(.licht) .hero-inhoud { padding-top: 322px; }
+  .hero:not(.licht) .hero-inhoud { padding-top: 196px; padding-bottom: 6px; }
+  .hero:not(.licht) .kicker { display: none; }
+  .hero:not(.licht) h1 { font-size: 30px; }
+  .hero:not(.licht) h1 br { display: none; }
+  .hero:not(.licht) h1 em { margin-left: .25em; }
+  .hero:not(.licht) p { margin: 8px 0 12px; font-size: 14px; line-height: 1.45; }
+  .hero:not(.licht) .populair { margin-top: 0; }
+  .deuren { padding-top: 16px; }
+  .deuren h2 { font-size: 20px; margin-bottom: 10px; }
+  .deur { padding: 12px 14px; }
+  .deur strong { font-size: 17px; }
 }
 @media (min-width: 760px) {
   .hero:not(.licht) .populair { max-width: 600px; align-items: flex-start; }
