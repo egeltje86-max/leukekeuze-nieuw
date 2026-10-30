@@ -176,13 +176,12 @@
   <url><loc>https://leukekeuze.nl/c/metaaldetectie/magneetvissen/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/metaaldetectie/pinpointers-uitrusting/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/cadeaus/kerst/</loc><lastmod>2026-10-29</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/haar/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/hem/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/collega/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/c/cadeaus/onder-15/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/haar/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/kinderen/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/opa-oma/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/collega/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/baby/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/categorieen/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/gelegenheid/moederdag/</loc><lastmod>2026-10-30</lastmod></url>
@@ -256,6 +255,7 @@
   <url><loc>https://leukekeuze.nl/c/christelijk/boeken-muziek/</loc><lastmod>2026-10-28</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/christelijk/voor-kinderen/</loc><lastmod>2026-10-28</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/cadeaus/sint-onder-15/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://leukekeuze.nl/c/cadeaus/onder-15/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/cadeaus/met-naam/</loc><lastmod>2026-10-28</lastmod></url>
   <url><loc>https://leukekeuze.nl/c/cadeaus/grappig/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000343476066/</loc><lastmod>2026-10-30</lastmod></url>
@@ -5216,6 +5216,19 @@
   <url><loc>https://leukekeuze.nl/p/bol-9300000156021043/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-9300000161076165/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/p/bol-1004004006938681/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/horloges-sieraden/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/darts-sport/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/zakmessen-gereedschap/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/parfum-verzorging/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/whisky-bier-drank/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/lego-spellen/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/portemonnees-tassen/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/pantoffels-kleding/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/metaaldetectie/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/gadgets-gaming/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/bbq-lekkers/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/boeken-muziek/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/hem/wonen-keuken/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/haar/sieraden/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/haar/wonen-sfeer/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/haar/bloemen-planten/</loc><lastmod>2026-10-30</lastmod></url>
@@ -5231,33 +5244,6 @@
   <url><loc>https://leukekeuze.nl/voor/haar/keuken-koffie-thee/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/haar/met-naam/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/haar/gadgets-audio/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/horloges-sieraden/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/darts-sport/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/zakmessen-gereedschap/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/parfum-verzorging/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/whisky-bier-drank/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/lego-spellen/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/portemonnees-tassen/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/pantoffels-kleding/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/metaaldetectie/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/gadgets-gaming/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/bbq-lekkers/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/boeken-muziek/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/hem/wonen-keuken/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/gaming-gadgets/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/geuren-verzorging/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/sieraden/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/lego-creatief/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/spellen-puzzels/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/kamer/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/sport-darts/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/mode/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/boeken-journals/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/lekkers/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/tieners/metaaldetectie/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/collega/afscheid-pensioen/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/collega/bedankje/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://leukekeuze.nl/voor/collega/lootjes/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/kinderen/bouwen/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/kinderen/knutselen/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/kinderen/buiten/</loc><lastmod>2026-10-30</lastmod></url>
@@ -5270,6 +5256,17 @@
   <url><loc>https://leukekeuze.nl/voor/kinderen/schoenen-kleding/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/kinderen/lekkers/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/kinderen/buiten-tuin/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/gaming-gadgets/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/geuren-verzorging/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/sieraden/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/lego-creatief/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/spellen-puzzels/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/kamer/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/sport-darts/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/mode/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/boeken-journals/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/lekkers/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/tieners/metaaldetectie/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/opa-oma/puzzels-spellen/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/opa-oma/fotos-herinneringen/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/opa-oma/tuin-vogels/</loc><lastmod>2026-10-30</lastmod></url>
@@ -5280,6 +5277,9 @@
   <url><loc>https://leukekeuze.nl/voor/opa-oma/keuken/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/opa-oma/boeken/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/opa-oma/lekkers-drank/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/collega/afscheid-pensioen/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/collega/bedankje/</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://leukekeuze.nl/voor/collega/lootjes/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/baby/kraamcadeaus/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/baby/kleding-dekentjes/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://leukekeuze.nl/voor/baby/speelkleden-rammelaars/</loc><lastmod>2026-10-30</lastmod></url>
