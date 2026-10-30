@@ -627,6 +627,20 @@
   /* ---------- Product ---------- */
   /* Productfoto's: één foto, of een rij om doorheen te bladeren (pijltjes, puntjes, vegen). */
   function productFotos(p) {
+    var vs = (p.varianten || []).filter(function (v) { return v && v.beeld; });
+    /* Kleurwissel (30-10-2026, wens van Marius): één product per model; de pijltjes wisselen van kleur,
+       en de prijs, de kleurnaam en de winkelknop gaan mee naar de gekozen kleur. */
+    if (vs.length > 1) {
+      return '<div class="product-beeld echt galerij varianten" data-galerij data-varianten="' + esc(p.id) + '">' +
+        '<div class="galerij-rij">' + vs.map(function (v, i) {
+          var web = /^https?:/.test(v.beeld);
+          return '<figure><img src="' + esc(web ? v.beeld : v.beeld + '.webp') + '" alt="' + esc(p.titel + ', ' + v.kleur) + '"' + (i ? ' loading="lazy"' : '') + (web ? ' referrerpolicy="no-referrer"' : '') + ' decoding="async"></figure>';
+        }).join('') + '</div>' +
+        '<button class="galerij-knop vorige" type="button" data-galerij-stap="-1" aria-label="Vorige kleur">' + ic('vorige') + '</button>' +
+        '<button class="galerij-knop volgende" type="button" data-galerij-stap="1" aria-label="Volgende kleur">' + ic('rechts') + '</button>' +
+        '<span class="galerij-teller">1 / ' + vs.length + '</span>' +
+      '</div>';
+    }
     var extra = (p.fotos || []).filter(Boolean);
     var klasse = 'product-beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt' + (p.sfeer ? ' sfeer' : (extra.length ? '' : ' studio')));
     if (!extra.length) return '<div class="' + klasse + '">' + LK.productBeeld(p, true) + (p.voorbeeld ? '<span class="label">Voorbeeld</span>' : '') + '</div>';
@@ -642,11 +656,30 @@
       '<span class="galerij-teller">1 / ' + alle.length + '</span>' +
     '</div>';
   }
+  /* Kleurkeuze onder de prijs: naam van de kleur + kleine fotootjes om direct een kleur te kiezen. */
+  function kleurKeuze(p) {
+    var vs = (p.varianten || []).filter(function (v) { return v && v.beeld; });
+    if (vs.length < 2) return '';
+    return '<div class="kleurkeuze"><p>Kleur: <b data-kleur-naam>' + esc(vs[0].kleur) + '</b> <span class="klein" data-kleur-teller>(1 van ' + vs.length + ')</span></p>' +
+      '<div class="kleurstalen" role="group" aria-label="Kies een kleur">' + vs.map(function (v, i) {
+        var web = /^https?:/.test(v.beeld);
+        return '<button type="button" data-kleur-stap="' + i + '" aria-label="' + esc(v.kleur) + '" aria-pressed="' + (i ? 'false' : 'true') + '"><img src="' + esc(web ? v.beeld : v.beeld + '-klein.webp') + '" alt="" loading="lazy" decoding="async"' + (web ? ' referrerpolicy="no-referrer"' : '') + '></button>';
+      }).join('') + '</div></div>';
+  }
   function galerijBijwerken(g) {
     var rij = $('.galerij-rij', g); if (!rij) return;
     var n = rij.children.length, i = Math.round(rij.scrollLeft / Math.max(1, rij.clientWidth));
     $$('.galerij-punten span', g).forEach(function (s, j) { s.classList.toggle('aan', j === i); });
     var t = $('.galerij-teller', g); if (t) t.textContent = (i + 1) + ' / ' + n;
+    var pid = g.getAttribute('data-varianten'); if (!pid) return;
+    var p = LK.vind(pid), v = p && p.varianten && p.varianten.filter(function (x) { return x && x.beeld; })[i];
+    if (!v) return;
+    var naam = $('[data-kleur-naam]'); if (naam) naam.textContent = v.kleur;
+    var tel = $('[data-kleur-teller]'); if (tel) tel.textContent = '(' + (i + 1) + ' van ' + n + ')';
+    $$('[data-kleur-stap]').forEach(function (b, j) { b.setAttribute('aria-pressed', String(j === i)); });
+    $$('[data-variant-prijs]').forEach(function (e) { e.innerHTML = LK.euro(v.prijs); });
+    var link = winkelLink(v);
+    if (link) $$('a[data-winkel]').forEach(function (a) { a.href = link; });
   }
 
   /* 2.0: winkellinks, specs en noten staan in een apart bestand dat pas op een productpagina laadt (sneller op de telefoon). */
@@ -666,6 +699,10 @@
   }
   function product(id) {
     var p = LK.vind(id);
+    if (p && p.status === 'samengevoegd' && p.samengevoegd && LK.vind(p.samengevoegd)) {
+      if (window.history && history.replaceState) history.replaceState(null, '', '/p/' + p.samengevoegd);
+      return product(p.samengevoegd);
+    }
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
     if (!window.LK_DETAILS) laadDetails(function () { if (location.pathname.indexOf('/p/' + id) === 0) toon(); });
     onthoudBekeken(p.id);
@@ -675,7 +712,7 @@
     zetTitel(p.titel);
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
-      ? '<a class="knop knop-goud" href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
+      ? '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
       : (!window.LK_DETAILS && !p.voorbeeld ? '<span class="knop knop-goud uit" aria-disabled="true">Bekijk bij ' + esc(p.shop) + '…</span>'
       : '<span class="knop knop-goud uit" aria-disabled="true">Voorbeeld – nog geen winkellink</span>');
 
@@ -700,14 +737,15 @@
         '<div class="product-info">' +
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
-          '<div class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+          '<div class="prijs"><span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+          kleurKeuze(p) +
           '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
           '</div>' +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
-          (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs">' + LK.euro(p.prijs) + '</span>' +
-            '<a class="knop knop-goud" href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
+          (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
+            '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
           '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom || '') + '</p></div>' +
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
@@ -2072,6 +2110,11 @@
       var uit = t.getAttribute('aria-expanded') === 'true';
       t.setAttribute('aria-expanded', String(!uit));
       document.getElementById(t.getAttribute('aria-controls')).classList.toggle('open', !uit);
+      return;
+    }
+    if (t.hasAttribute('data-kleur-stap')) {
+      var gv = $('[data-varianten]'), rv = gv && $('.galerij-rij', gv);
+      if (rv) rv.scrollTo({ left: parseInt(t.getAttribute('data-kleur-stap'), 10) * rv.clientWidth, behavior: 'smooth' });
       return;
     }
     if (t.hasAttribute('data-galerij-stap')) {

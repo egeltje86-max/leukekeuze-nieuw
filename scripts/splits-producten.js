@@ -6,7 +6,7 @@
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const { deel } = require('./indeling.js'); // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
-const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden'];
+const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden', 'varianten'];
 function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
@@ -14,6 +14,7 @@ function splits() {
     const p = deel(p0);
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
+    if (p.varianten && p.varianten.length > 1) l.kleuren = p.varianten.length; // kaartje: 'x kleuren'
     lean.push(l); det[p.id] = d;
   }
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_PRODUCTEN = [\n' + lean.map(p => JSON.stringify(p)).join(',\n') + '\n];\n');

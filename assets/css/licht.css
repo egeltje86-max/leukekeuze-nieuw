@@ -261,3 +261,16 @@ body { background: var(--bg); color: var(--tekst); }
 .knop-groep .chips-titel { font-size: .82rem; font-weight: 600; color: var(--grijs, #6b6b6b); margin: 0 0 6px; letter-spacing: .01em; }
 .knop-groep .chips { padding-top: 0; }
 .persoon-subs.home .subkaart { hyphens: auto; -webkit-hyphens: auto; }
+
+/* Kleurwissel (30-10-2026): één product per model, kleuren kiezen met pijltjes of fotootjes */
+.prodkaart .kleuren { display: inline-flex; align-items: center; gap: 3px; font: 500 12px/1.2 var(--f-ui); color: #5A6275; margin-top: 2px; }
+.prodkaart .kleuren i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid rgba(20,26,42,.25); margin-right: -6px; }
+.prodkaart .kleuren i:nth-child(1) { background: #C9A86A; } .prodkaart .kleuren i:nth-child(2) { background: #C0C4CC; } .prodkaart .kleuren i:nth-child(3) { background: #1F2433; margin-right: 4px; }
+.kleurkeuze { margin: 10px 0 4px; }
+.kleurkeuze p { margin: 0 0 8px; font: 500 14px/1.4 var(--f-ui); color: #141A2A; }
+.kleurkeuze p .klein { color: #5A6275; font-weight: 400; }
+.kleurstalen { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 6px; scrollbar-width: thin; }
+.kleurstalen button { flex: 0 0 52px; width: 52px; height: 52px; padding: 3px; border-radius: 10px; border: 1.5px solid rgba(20,26,42,.14); background: #fff; cursor: pointer; }
+.kleurstalen button img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.kleurstalen button[aria-pressed="true"] { border-color: var(--goud, #C9A23A); box-shadow: 0 0 0 2px rgba(201,162,58,.35); }
+.product-beeld.varianten .galerij-rij img { position: absolute; inset: 0; width: 100%; height: 100%; box-sizing: border-box; object-fit: contain; padding: 7%; background: #fff; }
