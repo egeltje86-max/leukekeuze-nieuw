@@ -254,7 +254,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 /* ---------- 2.2: donkere (winter)foto: tekst naast/onder de spullen, niet erover ---------- */
 @media (max-width: 759px) {
   .hero:not(.licht) picture { bottom: auto; height: 150px; }
-  .hero:not(.licht) picture img { object-position: center 14%; }
+  .hero:not(.licht) picture img { object-position: center 62%; }
   .hero:not(.licht)::after { bottom: auto; height: 150px; background: linear-gradient(180deg, rgba(10,16,32,0) 60%, rgba(10,16,32,.85) 88%, #0A1020 100%); }
   .hero:not(.licht) { background: #0A1020; }
   .hero:not(.licht) .hero-inhoud { padding-top: 138px; padding-bottom: 4px; }
