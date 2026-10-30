@@ -62,7 +62,46 @@ for naam, q in FEED.items():
 TT = 'https://pf.tradetracker.net/?aid=516846&encoding=utf-8&type=xml-v2&filter_stock=1&categoryType=2&additionalType=2&fid='
 TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1479776', 't-lamponline': '1430340',
           't-bellatio': '1639683', 't-wijny': '701966', 't-dgsw': '2434431', 't-animals': '814623', 't-ijzersterk': '2131205',
-          't-coolgift': '1728408', 't-gadgets': '255212', 't-knuffelpar': '254011', 't-placethemoment': '2353225'}
+          't-coolgift': '1728408', 't-gadgets': '255212', 't-knuffelpar': '254011', 't-placethemoment': '2353225',
+          # Nieuw 30-10-2026 (GO van Marius). Bewust niet: de enorme catalogi Handpoppen-winkel, Speelgoedpostorder en Surprises-winkel.
+          't-hema': '1096437',  # HEMA
+          't-smartphoto': '1195836',  # Smartphoto
+          't-nedgame': '1597395',  # Nedgame
+          't-cadeaunl': '1744030',  # Cadeau.nl
+          't-grotekado': '1932305',  # Grote Kadoshop
+          't-kadoversturen': '466600',  # Kado-versturen
+          't-yesgifts': '252942',  # Yesgifts
+          't-cartoon': '814606',  # Cartoon Megastore
+          't-fifties': '2168887',  # Fiftiesstore
+          't-italian': '964381',  # Italian Design
+          't-kitchenette': '1708137',  # Kitchenette
+          't-lookinggood': '1801395',  # Looking Good Today
+          't-oogvoororen': '2041228',  # Oog voor oren
+          't-spaarpotten': '789006',  # Spaarpotten-winkel
+          't-superzero': '2084231',  # Superzero
+          't-repeat': '2099037',  # Repeat Cashmere
+          't-barrelkings': '2370354',  # Barrelkings
+          't-aerovito': '2319797',  # Aerovito
+          't-boombrush': '2392419',  # Boombrush
+          't-bushpappa': '2153352',  # Bushpappa
+          't-applamp': '683365',  # Applamp
+          't-getled': '310690',  # Getled
+          't-lightdepot': '2051533',  # Lightdepot
+          't-badkamerradio': '255150',  # Badkamerradio
+          't-bedroomshop': '2431923',  # Bedroomshop
+          't-meubello': '2210118',  # Meubello
+          't-prepz': '1562495',  # Prepz
+          't-topdealer': '1020010',  # Topdealer
+          't-fashionize': '2416400',  # Fashionize
+          't-247jeans': '2335153',  # 247Jeans
+          't-bivolino': '1788304',  # Bivolino
+          't-tenstickers': '1690328',  # Tenstickers
+          't-hobbymax': '480838',  # Hobbymax
+          't-knuffelkado': '2563948',  # Knuffelkado
+          't-toppers': '1516769',  # Toppers in Concert
+          't-viparfum': '2584631',  # Viparfum
+          't-mobistoxx': '1976189',  # Mobistoxx
+}
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
     try:

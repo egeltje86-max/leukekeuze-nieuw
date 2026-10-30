@@ -22,6 +22,12 @@ for ev, el in E.iterparse(src, events=('end',)):
     # Bellatio en Animals Giftshop: 'large' is soms meer dan 1 MB; 'medium' (~80 kB) is genoeg voor een kaartje.
     imgs = [re.sub(r'(bellatio-kerstversiering|animals-giftshop)\.nl/img/large/', r'\1.nl/img/medium/', i) for i in imgs]
     voorraad = props.get('stock', '')
+    # Smartphoto e.d.: prijs 0 in de feed, de echte (vanaf-)prijs staat in fromPrice
+    if p == 0 and props.get('fromPrice'):
+        try:
+            p, props['fromPrice'] = float(props['fromPrice']), ''
+        except ValueError:
+            pass
     if t and p >= lo and imgs and not (weg and weg.search(t)) and voorraad not in ('0',):
         rows.append({'titel': t, 'merk': props.get('brand', ''), 'prijs': p, 'oud': props.get('fromPrice', ''),
                      'cat': re.split(r'[>/]', props.get('categoryPath', '').strip('/ '))[-1].replace('-', ' ').strip(), 'pad': props.get('categoryPath', ''),
