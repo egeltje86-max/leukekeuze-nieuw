@@ -251,6 +251,19 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   .hero.licht::after { background: linear-gradient(90deg, rgba(247,243,236,.94) 0%, rgba(247,243,236,.8) 36%, rgba(247,243,236,.1) 62%, rgba(247,243,236,0) 100%), linear-gradient(0deg, var(--bg) 0%, rgba(247,243,236,0) 18%); }
 }
 
+/* ---------- 2.2: donkere (winter)foto: tekst naast/onder de spullen, niet erover ---------- */
+@media (max-width: 759px) {
+  .hero:not(.licht) picture { bottom: auto; height: 340px; }
+  .hero:not(.licht) picture img { object-position: center 16%; }
+  .hero:not(.licht)::after { bottom: auto; height: 340px; background: linear-gradient(180deg, rgba(10,16,32,0) 55%, rgba(10,16,32,.85) 85%, #0A1020 100%); }
+  .hero:not(.licht) { background: #0A1020; }
+  .hero:not(.licht) .hero-inhoud { padding-top: 322px; }
+}
+@media (min-width: 760px) {
+  .hero:not(.licht) .populair { max-width: 600px; align-items: flex-start; }
+  .hero:not(.licht) .populair .chips { flex-wrap: wrap; overflow: visible; }
+}
+
 /* ---------- 2.2: twee deuren (voor jezelf / voor een ander) ---------- */
 .deuren { padding: 26px 0 0; }
 .deuren h2 { font-family: var(--f-kop); font-weight: 500; font-size: clamp(21px, 4.6vw, 27px); line-height: 1.2; margin-bottom: 14px; }

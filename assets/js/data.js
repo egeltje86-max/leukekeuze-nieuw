@@ -14,7 +14,7 @@ window.LK_INSTELLINGEN = {
   heroTitelGoud: 'Jij kiest.',
   heroTekst: 'Duizenden leuke spullen van bekende winkels, één voor één met de hand gekozen. Voor jezelf, of om cadeau te doen.',
   /* 2.2 PROEF: lichte foto (marmer), tekst donker. Echte foto komt van Nova. */
-  heroLicht: true,
+  heroLicht: false,
   heroDesktop: 'images/banners/proef-home-desktop.webp',
   heroMobiel: 'images/banners/proef-home-mobiel.webp',
   populair: [
@@ -491,7 +491,7 @@ window.LK_PERSONEN = (function () {
   var s = function (slug, naam, beeld, vakken, seoTitel, tekst, extra) { return Object.assign({ slug: slug, naam: naam, beeld: beeld ? B(beeld) : '', vakken: vakken, seoTitel: seoTitel, tekst: tekst }, extra || {}); };
   return [
   { slug: 'hem', naam: 'Voor hem', kort: 'Voor hem', labels: ['hem'], oud: 'cadeaus/voor-hem',
-    beeld: B('cadeaus-voor-hem-2026b'), vaag: B('cadeaus-voor-hem-2026b'),
+    beeld: 'images/sub/proef-persoon-hem.webp', vaag: 'images/sub/proef-persoon-hem.webp',
     seoTitel: 'Cadeau voor hem of je vriend – de mooiste cadeaus voor mannen', tekst: 'Voor je vriend, je vader of je broer: van een goed horloge tot een fles whisky, met de hand gekozen cadeaus voor hem.',
     subs: [
       s('horloges-sieraden', 'Horloges & sieraden', 'mode-beauty-horloges', ['sieraden'], 'Horloge of sieraad voor hem – herenhorloges en armbanden', 'Een horloge, armband of ketting die hij elke dag draagt. Van strak en klassiek tot stoer.'),
@@ -508,7 +508,7 @@ window.LK_PERSONEN = (function () {
       s('boeken-muziek', 'Boeken & muziek', 'boeken-media-muziek', ['boeken-media'], 'Boeken en muziek cadeau voor hem', 'Thrillers, strips, vinyl en meer.'),
       s('wonen-keuken', 'Wonen & keuken', 'wonen-woonaccessoires', ['wonen', 'keuken'], 'Woon- en keukencadeau voor hem', 'Stoere woonaccessoires, mooie glazen en keukenspullen.')
     ] },
-  { slug: 'haar', naam: 'Voor haar', kort: 'Voor haar', labels: ['haar'], oud: 'cadeaus/voor-haar', beeld: B('cadeaus-voor-haar-2026b'), vaag: B('cadeaus-voor-haar-2026b'),
+  { slug: 'haar', naam: 'Voor haar', kort: 'Voor haar', labels: ['haar'], oud: 'cadeaus/voor-haar', beeld: 'images/sub/proef-persoon-haar.webp', vaag: 'images/sub/proef-persoon-haar.webp',
     seoTitel: 'Cadeau voor haar of je vriendin – de mooiste cadeaus voor vrouwen', tekst: 'Voor je vriendin, je moeder of je zus: sieraden, geuren en iets moois voor in huis, met de hand gekozen.',
     subs: [
       s('sieraden', 'Sieraden', 'sieraden-kettingen', SIERADEN, 'Sieraden cadeau voor haar – kettingen, oorbellen en armbanden', 'Een sieraad geef je met gevoel. Kettingen, oorbellen, ringen en armbanden, van betaalbaar tot echt goud.'),
