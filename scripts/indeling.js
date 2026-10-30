@@ -148,14 +148,15 @@ const GROEPEN = {
       ['knutselen-kleuren', R('knutsel|\\bses\\b|science4you|crayola|kraskaart|punnik|zelf .{0,20}(bouwen|maken)|strijkkralen|slijm|slime')],
       ['puzzels', R('puzzel|puzzle|wasgij|legpuzzel')],
       ['poppen-barbie', R('(?<!funko )\\bpop\\b(?![- ]?up)|poppen|barbie|babypop|baby ?born|poppenhuis|l\\.?o\\.?l\\.? surprise|rainbow high|polly|sylvanian|bratz|\\bken\\b|poppenwagen')],
-      ['speelkeukens-verkleden', R('speelkeuken|keukentje|verkleed|kostuum|prinsessenjurk|speelgoedkassa|winkeltje|doktersset|dokterskoffer|speelgoedgereedschap|werkbank|kinderkeuken|verkleedkleding|\\bmasker')],
+      ['speelkeukens-verkleden', R('speelkeuken|keukentje|verkleed|kostuum|prinsessenjurk|speelgoedkassa|winkeltje|doktersset|dokterskoffer|speelgoedgereedschap|werkbank|kinderkeuken|verkleedkleding|\\bmasker|kattenoren|haarband')],
       ['autos-treinen-rc', R('\\bauto(s|tje|baan|garage)?\\b|trein|\\brc\\b|bestuurbare|garage|hot ?wheels|racebaan|vrachtwagen|brandweer|tractor|vliegtuig|helikopter|bouwvoertuig|matchbox|\\bbrio\\b|graafmachine|politie|monstertruck|carrera|race')],
       ['knuffels-squishmallows', R('knuffel|squishmallow|pluche|teddy|\\bbeer\\b|jellycat|warmteknuffel')],
       ['puzzels', R('puzzel|wasgij|legpuzzel')],
       ['bord-kaartspellen', R('\\bspel\\b|spellen|bordspel|kaartspel|dobbel|quiz|kwartet|\\buno\\b|monopoly|party|escape|catan|rummikub|ganzenbord|schaak|dammen|stratego|kaarten|weerwolven|jenga|twister|cluedo|game\\b|30 seconds|triviant|codenames|exploding|ligretto|dixit|keezen|mens erger|\\bexit\\b|sjoel|yahtzee|kendama')],
+      ['muziek-karaoke', R('karaoke|microfoon|keyboard|gitaar|drumstel|kidi ?dj|\\bdrums?\\b|muziekinstrument|xylofoon|\\bpiano')],
       ['buitenspeelgoed', R('buiten|\\bstep\\b|skelter|trampoline|zwembad|waterpistool|\\bbal\\b|voetbal|zandbak|schommel|glijbaan|stoep|bellenblaas|vlieger|loopfiets|skateboard|zeepbel|kinderfiets|nerf|frisbee|metaaldetector|zandspeelgoed|waterspeelgoed|speelhuis|\\btent\\b|verrekijker|insect|vlindernet|stelten|springtouw|klimrek')],
       ['knutselen-kleuren', R('knutsel|\\bklei\\b|kleur|teken|verf|stift|kralen|strijkkralen|slijm|slime|diamond|sticker|creatief|kleurboek|krijt|bouwpakket hout|naaien|borduren|weven|sieraden maken|armbandjes|kristallen kweken|experiment|proefjes|wetenschap')],
-      ['baby-houten', R('\\bbaby|peuter|rammelaar|stapeltoren|stapelbeker|sorteer|trekfiguur|activity|bijtring|loopwagen|badspeelgoed|\\b(0|1)\\+|vanaf (6|9|12|18) maanden|fisher|vtech baby|speelkleed|box ?mobiel|loopauto')],
+      ['baby-houten', R('\\bbaby|peuter|mijn eerste|rammelaar|stapeltoren|stapelbeker|sorteer|trekfiguur|activity|bijtring|loopwagen|badspeelgoed|\\b(0|1)\\+|vanaf (6|9|12|18) maanden|fisher|vtech baby|speelkleed|box ?mobiel|loopauto')],
       ['hypes-trends', R('funko|fidget|squishy|labubu|stitch|tamagotchi|bitzee|hype|trend|pop ?it|sensory|hatchimal|gabby|furby|bluey|stranger|minecraft|fortnite|roblox|squid|wednesday|harry potter|disney|marvel|frozen|paw patrol|unicorn|eenhoorn')]
     ],
     oud: { 'baby-peuter': 'baby-houten', bouwen: 'lego', 'figuren-voertuigen': 'autos-treinen-rc', bordspellen: 'bord-kaartspellen', kaartspellen: 'bord-kaartspellen', puzzels: 'puzzels', buitenspeelgoed: 'buitenspeelgoed', knutselen: 'knutselen-kleuren' }

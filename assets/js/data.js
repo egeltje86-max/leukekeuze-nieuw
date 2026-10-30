@@ -722,7 +722,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
     ['pokemon-verzamelkaarten', 'Pokémon & verzamelkaarten'], ['puzzels', 'Puzzels', 'speelgoed-puzzels'], ['poppen-barbie', 'Poppen & Barbie'],
     ['playmobil', 'Playmobil'], ['autos-treinen-rc', "Auto's, treinen & RC", 'speelgoed-figuren-voertuigen'], ['knuffels-squishmallows', 'Knuffels & Squishmallows'],
     ['knikkerbanen-magnetisch', 'Knikkerbanen & magnetisch bouwen'], ['knutselen-kleuren', 'Knutselen & kleuren', 'speelgoed-knutselen'], ['hypes-trends', 'Hypes & trends'],
-    ['baby-houten', 'Baby- & houten speelgoed', 'speelgoed-baby-peuter'], ['speelkeukens-verkleden', 'Speelkeukens & verkleden']
+    ['baby-houten', 'Baby- & houten speelgoed', 'speelgoed-baby-peuter'], ['speelkeukens-verkleden', 'Speelkeukens & verkleden'], ['muziek-karaoke', 'Muziek & karaoke']
   ], { 'baby-peuter': 'baby-houten', bouwen: 'lego', 'figuren-voertuigen': 'autos-treinen-rc', bordspellen: 'bord-kaartspellen', kaartspellen: 'bord-kaartspellen', knutselen: 'knutselen-kleuren' });
   cat('speelgoed').knoppen = ['kind', 'leeftijd'];
 
