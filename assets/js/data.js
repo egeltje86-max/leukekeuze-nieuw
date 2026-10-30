@@ -560,7 +560,7 @@ window.LK_PERSONEN = (function () {
       s('lekkers', 'Lekkers & bakken', 'eten-drinken-chocolade-snoep', ['eten-drinken', 'keuken/bakken'], 'Lekkers en bakspullen cadeau voor tieners', 'Chocolade, snoep, snacks en bakspullen.'),
       s('metaaldetectie', 'Metaaldetectie', 'metaaldetectie-kinderen-beginners', ['metaaldetectie'], 'Metaaldetector cadeau voor tieners', 'Een eerste detector om buiten op zoek te gaan naar schatten.')
     ] },
-  { slug: 'opa-oma', naam: 'Opa & oma', kort: 'Opa & oma', labels: ['opa-oma'], oud: 'cadeaus/opa-oma', beeld: B('cadeaus-opa-oma-2026b'), vaag: B('cadeaus-opa-oma-2026b'),
+  { slug: 'opa-oma', naam: 'Opa & oma', kort: 'Opa & oma', labels: ['opa-oma'], oud: 'cadeaus/opa-oma', beeld: 'images/sub/proef-persoon-opa-oma.webp', vaag: 'images/sub/proef-persoon-opa-oma.webp',
     seoTitel: 'Cadeau voor opa en oma – lieve en praktische cadeaus', tekst: 'Puzzels, foto’s, iets voor in de tuin of iets warms: cadeaus voor opa en oma.',
     subs: [
       s('puzzels-spellen', 'Puzzels & spellen', 'speelgoed-puzzels', SPELLEN, 'Puzzels en spellen voor opa en oma', 'Legpuzzels, puzzelboeken en spellen voor gezellige middagen, ook met de kleinkinderen.'),
@@ -574,14 +574,14 @@ window.LK_PERSONEN = (function () {
       s('boeken', 'Boeken', 'boeken-media-lezen', ['boeken-media'], 'Boeken cadeau voor opa en oma', 'Romans, puzzelboeken en boeken om bij weg te dromen.'),
       s('lekkers-drank', 'Lekkers & drank', 'eten-drinken-lekkernijen', ['eten-drinken', 'dranken'], 'Lekkers en drank voor opa en oma', 'Chocolade, koekjes, een goede fles wijn of likeur.')
     ] },
-  { slug: 'collega', naam: "Collega's", kort: "Collega's", labels: ['collega'], oud: 'cadeaus/collega', beeld: B('cadeaus-collega-2026b'), vaag: B('cadeaus-collega-2026b'),
+  { slug: 'collega', naam: "Collega's", kort: "Collega's", labels: ['collega'], oud: 'cadeaus/collega', beeld: 'images/sub/proef-persoon-collega.webp', vaag: 'images/sub/proef-persoon-collega.webp',
     seoTitel: 'Cadeau voor collega – leuke en betaalbare cadeaus', tekst: 'Voor een afscheid, een bedankje of de lootjes: cadeaus voor collega’s.',
     subs: [
       s('afscheid-pensioen', 'Afscheid & pensioen', 'cadeaus-collega-2026b', ['tag:collega-afscheid'], 'Afscheidscadeau en pensioencadeau voor een collega', 'Een cadeau om te onthouden: voor een collega die vertrekt of met pensioen gaat.'),
       s('bedankje', 'Bedankje', 'eten-drinken-pakketten', ['tag:collega-bedankje'], 'Bedankje voor een collega', 'Een klein gebaar dat groot aankomt: iets lekkers, een plantje of een kaars.'),
       s('lootjes', 'Lootjes & kleinigheidjes', 'cadeaus-onder-10-2026b', ['tag:collega-lootjes'], 'Lootjescadeau voor een collega – tot €25', 'Voor de lootjes of zomaar: leuke cadeautjes tot €10, €15 of €25. Kies hieronder je budget.')
     ] },
-  { slug: 'baby', naam: 'Baby & kraam', kort: 'Baby & kraam', labels: ['baby'], oud: 'cadeaus/baby-kraam', beeld: B('cadeaus-baby-kraam-2026b'), vaag: B('cadeaus-baby-kraam-2026b'),
+  { slug: 'baby', naam: 'Baby & kraam', kort: 'Baby & kraam', labels: ['baby'], oud: 'cadeaus/baby-kraam', beeld: 'images/sub/proef-persoon-baby.webp', vaag: 'images/sub/proef-persoon-baby.webp',
     seoTitel: 'Kraamcadeau – cadeaus voor baby en ouders', tekst: 'Kraamcadeaus, zachte kleertjes, knuffels met naam en iets voor de babyshower.',
     subs: [
       s('kraamcadeaus', 'Kraamcadeaus & pakketten', 'cadeaus-baby-kraam-2026b', ['tag:baby-kraampakketten'], 'Kraamcadeau en kraampakket', 'Mooie kraampakketten en cadeaus om op kraamvisite mee te nemen.'),
