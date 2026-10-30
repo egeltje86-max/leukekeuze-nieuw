@@ -253,25 +253,25 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 
 /* ---------- 2.2: donkere (winter)foto: tekst naast/onder de spullen, niet erover ---------- */
 @media (max-width: 759px) {
-  .hero:not(.licht) picture { bottom: auto; height: 176px; }
-  .hero:not(.licht) picture img { object-position: center top; }
-  .hero:not(.licht)::after { bottom: auto; height: 176px; background: linear-gradient(180deg, rgba(10,16,32,0) 62%, rgba(10,16,32,.85) 90%, #0A1020 100%); }
-  .hero:not(.licht) { background: #0A1020; }
-  .hero:not(.licht) .hero-inhoud { padding-top: 182px; padding-bottom: 4px; }
-  .hero:not(.licht) .kicker { display: none; }
+  .hero:not(.licht):not(.jong) picture { bottom: auto; height: 176px; }
+  .hero:not(.licht):not(.jong) picture img { object-position: center top; }
+  .hero:not(.licht):not(.jong)::after { bottom: auto; height: 176px; background: linear-gradient(180deg, rgba(10,16,32,0) 62%, rgba(10,16,32,.85) 90%, #0A1020 100%); }
+  .hero:not(.licht):not(.jong) { background: #0A1020; }
+  .hero:not(.licht):not(.jong) .hero-inhoud { padding-top: 182px; padding-bottom: 4px; }
+  .hero:not(.licht):not(.jong) .kicker { display: none; }
   /* titel staat op de lege, donkere linkerkant van de foto */
-  .hero:not(.licht) h1 { position: absolute; top: 14px; left: 16px; z-index: 2; font-size: 26px; line-height: 1.08; text-shadow: 0 2px 14px rgba(10,16,32,.7); }
-  .hero:not(.licht) h1 em { margin-left: 0; }
-  .hero:not(.licht) p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.4; }
-  .hero:not(.licht) .populair { margin-top: 0; }
+  .hero:not(.licht):not(.jong) h1 { position: absolute; top: 14px; left: 16px; z-index: 2; font-size: 26px; line-height: 1.08; text-shadow: 0 2px 14px rgba(10,16,32,.7); }
+  .hero:not(.licht):not(.jong) h1 em { margin-left: 0; }
+  .hero:not(.licht):not(.jong) p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.4; }
+  .hero:not(.licht):not(.jong) .populair { margin-top: 0; }
   .deuren { padding-top: 16px; }
   .deuren h2 { font-size: 20px; margin-bottom: 10px; }
   .deur { padding: 12px 14px; }
   .deur strong { font-size: 17px; }
 }
 @media (min-width: 760px) {
-  .hero:not(.licht) .populair { max-width: 600px; align-items: flex-start; }
-  .hero:not(.licht) .populair .chips { flex-wrap: wrap; overflow: visible; }
+  .hero:not(.licht):not(.jong) .populair { max-width: 600px; align-items: flex-start; }
+  .hero:not(.licht):not(.jong) .populair .chips { flex-wrap: wrap; overflow: visible; }
 }
 
 /* ---------- 2.2: twee deuren (voor jezelf / voor een ander) ---------- */

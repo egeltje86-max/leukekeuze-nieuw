@@ -15,6 +15,7 @@ window.LK_INSTELLINGEN = {
   heroTekst: 'Duizenden leuke spullen van bekende winkels, één voor één met de hand gekozen. Voor jezelf, of om cadeau te doen.',
   /* 2.2 PROEF: lichte foto (marmer), tekst donker. Echte foto komt van Nova. */
   heroLicht: false,
+  heroJong: true,
   heroDesktop: 'images/banners/proef-home-desktop.webp',
   heroMobiel: 'images/banners/proef-home-mobiel.webp',
   populair: [

@@ -1,0 +1,76 @@
+/* =========================================================
+   LeukeKeuze 2.2 – JONG & VROLIJK (voorbeeld)
+   Laadt na licht.css. Felle kleuren, grote vette letters, wit en geel.
+   ========================================================= */
+:root {
+  --f-kop: 'Manrope', system-ui, sans-serif;
+  --bg: #FFFCF5;
+  --kaart-2: #FFF3D6;
+  --goud: #FF5A5F;
+  --goud-licht: #FF5A5F;
+  --goud-donker: #E0383F;
+  --goud-verloop: #FFD23F;
+  --lijn-sterk: rgba(255, 90, 95, .6);
+  --navy: #1B1B2F;
+  --tekst: #1B1B2F;
+  --tekst-2: #50506A;
+}
+h1, h2, h3, .sectie-kop h2, .deuren h2, .deur strong, .hero h1 { font-weight: 800; letter-spacing: -.02em; }
+
+/* Balken: wit en geel in plaats van donkerblauw */
+.topbalk { background: #FFD23F; color: #1B1B2F; font-weight: 600; }
+.topbalk svg { color: #1B1B2F; }
+.header { background: #fff; border-bottom: 1px solid rgba(27,27,47,.08); }
+.logo { color: #1B1B2F; }
+.logo .k { color: #FF5A5F; }
+.icoonknop { color: #1B1B2F; }
+.icoonknop:hover { background: #FFF3D6; color: #E0383F; }
+.hoofdnav a, .hoofdnav button { color: #1B1B2F; font-weight: 700; }
+.hoofdnav a:hover, .hoofdnav button:hover, .hoofdnav [aria-expanded="true"], .hoofdnav [aria-current="page"] { color: #E0383F; }
+.zoekrij { background: #fff; }
+.zoekrij .zoek, .zoek { border: 2px solid #1B1B2F; }
+.onderbalk { background: #fff; border-top: 1px solid rgba(27,27,47,.1); }
+.onderbalk a, .onderbalk button { color: #50506A; }
+.onderbalk [aria-current="page"] { color: #E0383F; }
+.footer { background: #1B1B2F; color: #D7D7E6; }
+.footer h3, .footer h4, .footer strong { color: #fff; }
+.footer a { color: #D7D7E6; }
+
+/* Knoppen en kaarten */
+.knop-goud { background: #FFD23F; color: #1B1B2F; box-shadow: 0 4px 0 #1B1B2F; border: 2px solid #1B1B2F; font-weight: 800; }
+.knop-rand { border: 2px solid #1B1B2F; color: #1B1B2F; font-weight: 800; }
+.deur { border: 2px solid #1B1B2F; box-shadow: 0 4px 0 #1B1B2F; background: #fff; }
+.deuren-rij .deur:first-child { background: #FFD23F; }
+.deuren-rij .deur:last-child { background: #FF8FB1; }
+.deur .staf { background: #fff; color: #1B1B2F; border: 2px solid #1B1B2F; }
+.deur > svg:last-child { color: #1B1B2F; }
+.deur small { color: #1B1B2F; opacity: .8; }
+.kicker { color: #E0383F; font-weight: 800; }
+.sectie-kop h2::after, .sectie-kop > div::after { background: #FFD23F; }
+
+/* Hero: gele vlakken met echte producten */
+.hero.jong { background: #FFD23F; color: #1B1B2F; min-height: 0; overflow: hidden; }
+.hero.jong::after { display: none; }
+.hero.jong picture { display: none; }
+.hero.jong .kicker { color: #1B1B2F; background: #fff; display: inline-block; padding: 6px 10px; border-radius: 99px; border: 2px solid #1B1B2F; letter-spacing: .14em; font-size: 11px; }
+.hero.jong h1 { color: #1B1B2F; font-size: clamp(38px, 11vw, 66px); line-height: 1; }
+.hero.jong h1 em { color: #FF5A5F; font-style: normal; }
+.hero.jong p { color: #1B1B2F; font-weight: 500; }
+.hero.jong .populair > span { color: #1B1B2F; font-weight: 800; }
+.hero.jong .chip { background: #fff; border: 2px solid #1B1B2F; color: #1B1B2F; font-weight: 700; }
+.hero.jong .hero-inhoud { position: relative; z-index: 2; padding: 22px 0 14px; }
+.hero.jong .kicker { margin-bottom: 12px; }
+.hero.jong p { margin: 12px 0 16px; font-size: 15px; }
+.hero-spullen { position: relative; z-index: 1; display: flex; gap: 10px; padding: 0 16px 16px; justify-content: center; }
+.hero-spullen .stuk { flex: 1; max-width: 120px; aspect-ratio: 1; border-radius: 22px; border: 2px solid #1B1B2F; box-shadow: 0 4px 0 #1B1B2F; overflow: hidden; background: #fff; }
+.hero-spullen .stuk:nth-child(1) { background: #FF8FB1; transform: rotate(-4deg); }
+.hero-spullen .stuk:nth-child(2) { background: #7FD6FF; transform: rotate(3deg) translateY(8px); }
+.hero-spullen .stuk:nth-child(3) { background: #8BE8B0; transform: rotate(-2deg); }
+.hero-spullen .stuk:nth-child(4) { background: #fff; transform: rotate(4deg) translateY(8px); }
+.hero-spullen img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; padding: 8%; }
+@media (min-width: 760px) {
+  .hero.jong { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; min-height: 440px; }
+  .hero.jong .hero-inhoud { padding: 46px 0 46px; }
+  .hero-spullen { padding: 24px 40px 24px 0; gap: 16px; }
+  .hero-spullen .stuk { max-width: 200px; border-radius: 28px; box-shadow: 0 6px 0 #1B1B2F; }
+}
