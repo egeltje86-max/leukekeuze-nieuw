@@ -13,8 +13,8 @@ window.LK_INSTELLINGEN = {
   heroTitel: 'De mooiste cadeaus',
   heroTitelGoud: 'voor elk moment',
   heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
-  heroDesktop: 'images/banners/banner-home-desktop.webp',
-  heroMobiel: 'images/banners/banner-home-mobiel.webp',
+  heroDesktop: 'images/banners/banner-winter-desktop.webp',
+  heroMobiel: 'images/banners/banner-winter-mobiel.webp',
   populair: [
     { label: 'Kerst', naar: '/c/cadeaus/kerst' },
     { label: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas' },
