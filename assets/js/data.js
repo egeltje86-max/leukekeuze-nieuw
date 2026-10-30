@@ -527,7 +527,7 @@ window.LK_PERSONEN = (function () {
       s('met-naam', 'Met naam', 'cadeaus-met-naam-2026b', ['cadeaus/met-naam', 'valentijn/met-naam', 'sieraden/met-naam'], 'Persoonlijk cadeau voor haar met naam', 'Een cadeau met haar naam of een eigen tekst. Altijd uniek.'),
       s('gadgets-audio', 'Gadgets & audio', 'elektronica-audio', ['elektronica'], 'Gadgets cadeau voor haar', 'Koptelefoons, speakers, camera’s en slimme gadgets.')
     ] },
-  { slug: 'kinderen', naam: 'Voor kinderen', kort: 'Kinderen', labels: ['kind', 'kinderen'], oud: 'cadeaus/voor-kinderen', beeld: B('cadeaus-voor-kinderen-2026b'), vaag: B('cadeaus-voor-kinderen-2026b'),
+  { slug: 'kinderen', naam: 'Voor kinderen', kort: 'Kinderen', labels: ['kind', 'kinderen'], oud: 'cadeaus/voor-kinderen', beeld: 'images/sub/proef-persoon-kinderen.webp', vaag: 'images/sub/proef-persoon-kinderen.webp',
     knoppen: ['kind', 'leeftijd'],
     seoTitel: 'Cadeau voor kinderen – speelgoed en leuke cadeaus', tekst: 'Speelgoed, boeken en knutselspullen: cadeaus waar kinderen blij van worden. Kies jongen of meisje en de leeftijd.',
     subs: [
@@ -544,7 +544,7 @@ window.LK_PERSONEN = (function () {
       s('lekkers', 'Lekkers', 'eten-drinken-drop-snoep', ['eten-drinken'], 'Lekkers cadeau voor kinderen', 'Snoep, chocolade en kleine traktaties.'),
       s('buiten-tuin', 'Tuin & natuur', 'tuin-klussen-planten-zaden', ['tuin-klussen', 'dieren'], 'Natuurcadeau voor kinderen', 'Zaadjes, vogelhuisjes en ontdekken in de tuin.')
     ] },
-  { slug: 'tieners', naam: 'Voor tieners', kort: 'Tieners', labels: ['tiener'], beeld: B('elektronica-gaming'), vaag: B('elektronica-gaming'),
+  { slug: 'tieners', naam: 'Voor tieners', kort: 'Tieners', labels: ['tiener'], beeld: 'images/sub/proef-persoon-tieners.webp', vaag: 'images/sub/proef-persoon-tieners.webp',
     knoppen: ['kind'],
     seoTitel: 'Cadeau voor tieners – cadeaus voor 12 tot 18 jaar', tekst: 'Gaming, parfum, sieraden, LEGO en spullen voor de kamer: cadeaus die tieners echt leuk vinden.',
     subs: [
