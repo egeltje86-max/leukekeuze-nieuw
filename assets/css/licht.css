@@ -255,3 +255,9 @@ body { background: var(--bg); color: var(--tekst); }
 .footer li a { color: #BDB6A8; }
 .footer li a:hover { color: #F2CB74; }
 .footer-onder a { color: #BDB6A8; }
+
+/* 2.1 Nieuwe indeling: knoppen (Dames · Heren · Kinderen, Jongen · Meisje, Leeftijd) met een kopje erboven. */
+.knop-groep { margin-bottom: 10px; }
+.knop-groep .chips-titel { font-size: .82rem; font-weight: 600; color: var(--grijs, #6b6b6b); margin: 0 0 6px; letter-spacing: .01em; }
+.knop-groep .chips { padding-top: 0; }
+.persoon-subs.home .subkaart { hyphens: auto; -webkit-hyphens: auto; }

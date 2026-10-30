@@ -5,11 +5,13 @@
    Los draaien: node scripts/splits-producten.js */
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
+const { deel } = require('./indeling.js'); // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
 const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden'];
 function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
-  for (const p of w.LK_PRODUCTEN) {
+  for (const p0 of w.LK_PRODUCTEN) {
+    const p = deel(p0);
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
     lean.push(l); det[p.id] = d;
