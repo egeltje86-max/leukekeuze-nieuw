@@ -117,6 +117,7 @@ function maakPagina(info, lade, mega) {
     }));
     return o;
   });
+  const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   const gezien = new Set(['/', '/categorieen', '/lijst']), rij = ['/', '/categorieen', '/lijst'], paginas = [];
@@ -205,6 +206,8 @@ function maakPagina(info, lade, mega) {
     'c/cadeaus/adventskalenders': '/c/eten-drinken/adventskalenders/', 'c/christelijk/onder-25': '/c/christelijk/'
   };
   for (const [oudPad, nieuwPad] of Object.entries(vakVerhuis)) if (!VERHUISD[oudPad]) VERHUISD[oudPad] = nieuwPad;
+  /* Samengevoegde producten (dubbel op de site): de oude productpagina stuurt door naar het product dat we hielden. */
+  for (const [id, naar] of samen) if (!VERHUISD['p/' + id]) VERHUISD['p/' + id] = '/p/' + naar + '/';
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
     const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad);
