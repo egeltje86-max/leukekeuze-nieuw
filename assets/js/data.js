@@ -748,21 +748,21 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
     ['zwembaden-jacuzzis', "Zwembaden & jacuzzi's", 'tuin-klussen-zwembaden-jacuzzis'], ['tuinmeubelen', 'Tuinmeubelen & parasols', 'tuin-klussen-tuinmeubelen'], ['elektrisch-gereedschap', 'Elektrisch gereedschap', 'tuin-klussen-gereedschap'],
     ['bbq-buitenkoken', 'BBQ & buiten koken', 'eten-drinken-bbq'], ['tuinmachines', 'Tuinmachines', 'tuin-klussen-tuinmachines'], ['handgereedschap-werkplaats', 'Handgereedschap & werkplaats', 'tuin-klussen-handgereedschap-werkplaats'],
     ['planten-potten', 'Planten & potten', 'tuin-klussen-planten-zaden'], ['regentonnen-slangen-compost', 'Regentonnen, slangen & compost', 'tuin-klussen-regentonnen-slangen-compost'], ['vogels-insecten', 'Vogels & insecten', 'dieren-vogels'],
-    ['moestuin-kweken', 'Moestuin & kweken'], ['buitenverlichting', 'Buitenverlichting', 'tuin-klussen-buitenverlichting'], ['tuingereedschap', 'Tuingereedschap', 'tuin-klussen-tuingereedschap'],
-    ['vuurschalen-terrasverwarmers', 'Vuurschalen & terrasverwarmers'], ['tuindecoratie', 'Tuindecoratie']
+    ['moestuin-kweken', 'Moestuin & kweken', 'tuin-klussen-moestuin-kweken-w'], ['buitenverlichting', 'Buitenverlichting', 'tuin-klussen-buitenverlichting'], ['tuingereedschap', 'Tuingereedschap', 'tuin-klussen-tuingereedschap'],
+    ['vuurschalen-terrasverwarmers', 'Vuurschalen & terrasverwarmers', 'tuin-klussen-vuurschalen-terrasverwarmers-w'], ['tuindecoratie', 'Tuindecoratie', 'tuin-klussen-tuindecoratie-w']
   ], { 'planten-zaden': 'planten-potten', gereedschap: 'elektrisch-gereedschap' });
 
   vakjes('boeken-media', [
-    ['puzzelboeken', 'Puzzelboeken'], ['agendas-planners-kalenders', "Agenda's, planners & kalenders", 'boeken-media-agendas'], ['e-readers', 'E-readers'],
+    ['puzzelboeken', 'Puzzelboeken', 'boeken-media-puzzelboeken-w'], ['agendas-planners-kalenders', "Agenda's, planners & kalenders", 'boeken-media-agendas'], ['e-readers', 'E-readers', 'boeken-media-e-readers-w'],
     ['muziek', "Muziek: lp's & cd's", 'boeken-media-muziek'], ['films-series', 'Films & series', 'boeken-media-films-series'], ['kinderboeken', 'Kinderboeken', 'boeken-media-kinderboeken'],
-    ['thrillers-romans', 'Thrillers & romans', 'boeken-media-romans'], ['strips-manga', 'Strips & manga'], ['leesplezier', 'Leesplezier', 'boeken-media-lezen'],
-    ['luisterboeken', 'Luisterboeken'], ['kleurboeken', 'Kleurboeken'], ['foto-invulboeken', 'Foto- & invulboeken'], ['boekenbonnen-abonnementen', 'Boekenbonnen & abonnementen'],
+    ['thrillers-romans', 'Thrillers & romans', 'boeken-media-romans'], ['strips-manga', 'Strips & manga', 'boeken-media-strips-manga-w'], ['leesplezier', 'Leesplezier', 'boeken-media-lezen'],
+    ['luisterboeken', 'Luisterboeken', 'boeken-media-luisterboeken-w'], ['kleurboeken', 'Kleurboeken', 'boeken-media-kleurboeken-w'], ['foto-invulboeken', 'Foto- & invulboeken', 'boeken-media-foto-invulboeken-w'], ['boekenbonnen-abonnementen', 'Boekenbonnen & abonnementen', 'boeken-media-boekenbonnen-abonnementen-w'],
     ['kookboeken', 'Kookboeken', 'boeken-media-kookboeken']
   ], { romans: 'thrillers-romans', agendas: 'agendas-planners-kalenders', lezen: 'leesplezier' });
 
   vakjes('dieren', [
-    ['paard', 'Paard'], ['hond', 'Hond', 'dieren-hond'], ['konijn-cavia-hamster', 'Konijn, cavia & hamster'], ['kat', 'Kat', 'dieren-kat'],
-    ['vissen-aquarium', 'Vissen & aquarium'], ['reptielen-terrarium', 'Reptielen & terrarium'], ['kippen', 'Kippen'], ['vogels', 'Vogels', 'dieren-vogels']
+    ['paard', 'Paard', 'dieren-paard-w'], ['hond', 'Hond', 'dieren-hond'], ['konijn-cavia-hamster', 'Konijn, cavia & hamster', 'dieren-konijn-cavia-hamster-w'], ['kat', 'Kat', 'dieren-kat'],
+    ['vissen-aquarium', 'Vissen & aquarium', 'dieren-vissen-aquarium-w'], ['reptielen-terrarium', 'Reptielen & terrarium', 'dieren-reptielen-terrarium-w'], ['kippen', 'Kippen'], ['vogels', 'Vogels', 'dieren-vogels-w']
   ], { 'klein-dier': 'konijn-cavia-hamster' });
 
   vakjes('metaaldetectie', [
