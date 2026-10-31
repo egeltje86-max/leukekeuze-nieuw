@@ -95,7 +95,7 @@ window.LK_WINKELS = [
 window.LK_CATEGORIEEN = [
   { slug: 'cadeaus', naam: 'Cadeaus', kort: 'Cadeaus', icoon: 'cadeau',
     tekst: 'Voor elke gelegenheid een bijzonder cadeau.',
-    tegel: 'images/categorieen/categorie-cadeaus.webp', banner: 'images/banners/banner-cat-cadeaus.webp',
+    tegel: 'images/categorieen/categorie-cadeaus-gw.webp', banner: 'images/banners/banner-cat-cadeaus.webp',
     subs: [
       { slug: 'voor-haar', naam: 'Voor haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp' },
       { slug: 'voor-hem', naam: 'Voor hem', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp' },
@@ -146,7 +146,7 @@ window.LK_CATEGORIEEN = [
     ] },
   { slug: 'speelgoed', naam: 'Speelgoed & Spellen', kort: 'Speelgoed', icoon: 'beer',
     tekst: 'Spelen, ontdekken en groeien.',
-    tegel: 'images/categorieen/categorie-speelgoed.webp', banner: 'images/banners/banner-cat-speelgoed.webp',
+    tegel: 'images/categorieen/categorie-speelgoed-gw.webp', banner: 'images/banners/banner-cat-speelgoed.webp',
     subs: [
       { slug: 'baby-peuter', naam: 'Baby & peuter', beeld: 'images/sub/sub-speelgoed-baby-peuter.webp' }, { slug: 'bouwen', naam: 'Bouwen', beeld: 'images/sub/sub-speelgoed-bouwen.webp' },
       /* Speelfiguren, auto's, tractors en treinen (Schleich, Playmobil, Bruder, BRIO). Plaatje volgt nog van Nova; tot die tijd toont de site het gouden icoon. */
@@ -155,31 +155,31 @@ window.LK_CATEGORIEEN = [
       { slug: 'buitenspeelgoed', naam: 'Buitenspeelgoed', beeld: 'images/sub/sub-speelgoed-buitenspeelgoed.webp' }, { slug: 'knutselen', naam: 'Knutselen voor kinderen', beeld: 'images/sub/sub-speelgoed-knutselen.webp' }
     ] },
   { slug: 'eten-drinken', naam: 'Eten & Drinken', kort: 'Eten & Drinken', icoon: 'taart',
-    tekst: 'Lekkers om te geven.', tegel: 'images/categorieen/categorie-eten-drinken.webp', banner: 'images/banners/banner-cat-eten-drinken.webp',
+    tekst: 'Lekkers om te geven.', tegel: 'images/categorieen/categorie-eten-drinken-gw.webp', banner: 'images/banners/banner-cat-eten-drinken.webp',
     subs: [
       { slug: 'chocolade-snoep', naam: 'Chocolade', beeld: 'images/sub/sub-eten-drinken-chocolade-snoep.webp' }, { slug: 'drop-snoep', naam: 'Drop & snoep', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp' }, { slug: 'bbq', naam: 'BBQ & kruiden', beeld: 'images/sub/sub-eten-drinken-bbq.webp' }, { slug: 'pakketten', naam: 'Pakketten & borrel', beeld: 'images/sub/sub-eten-drinken-pakketten.webp' },
       { slug: 'koffie-thee', naam: 'Koffie & thee', beeld: 'images/sub/sub-eten-drinken-koffie-thee.webp' }, { slug: 'lekkernijen', naam: 'Lekkernijen', beeld: 'images/sub/sub-eten-drinken-lekkernijen.webp' }
     ] },
   { slug: 'hobby', naam: 'Hobby & Creatief', kort: 'Hobby & Creatief', icoon: 'palet',
-    tekst: 'Zelf iets moois maken.', tegel: 'images/categorieen/categorie-hobby.webp', banner: 'images/banners/banner-cat-hobby.webp',
+    tekst: 'Zelf iets moois maken.', tegel: 'images/categorieen/categorie-hobby-gw.webp', banner: 'images/banners/banner-cat-hobby.webp',
     subs: [
       { slug: 'tekenen-schilderen', naam: 'Tekenen & schilderen', beeld: 'images/sub/sub-hobby-tekenen-schilderen.webp' }, { slug: 'haken-breien', naam: 'Haken & breien', beeld: 'images/sub/sub-hobby-haken-breien.webp' },
       { slug: 'knutselen', naam: 'Zelf maken', beeld: 'images/sub/sub-hobby-knutselen.webp' }, { slug: 'modelbouw', naam: 'Modelbouw', beeld: 'images/sub/sub-hobby-modelbouw.webp' }
     ] },
   { slug: 'mode-beauty', naam: 'Mode & Beauty', kort: 'Mode & Beauty', icoon: 'tas',
-    tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
+    tekst: 'Mooie accessoires en verzorging.', tegel: 'images/categorieen/categorie-mode-beauty-gw.webp', banner: 'images/banners/banner-cat-mode-beauty.webp',
     subs: [
       { slug: 'horloges', naam: 'Horloges', beeld: 'images/sub/sub-mode-beauty-horloges.webp' }, { slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp' },
       { slug: 'tassen', naam: 'Hand- & schoudertassen', beeld: 'images/sub/sub-mode-beauty-tassen.webp' }, { slug: 'rugzakken-reistassen', naam: 'Rugzakken & reistassen', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp' }, { slug: 'schoenen', naam: 'Schoenen', beeld: 'images/sub/sub-mode-beauty-schoenen-2026b.webp' }, { slug: 'kleding', naam: 'Kleding & sokken', beeld: 'images/sub/sub-mode-beauty-kleding.webp' }, { slug: 'accessoires', naam: 'Accessoires', beeld: 'images/sub/sub-mode-beauty-accessoires.webp' }
     ] },
   { slug: 'sieraden', naam: 'Sieraden', kort: 'Sieraden', icoon: 'ring',
-    tekst: 'Kettingen, oorbellen, ringen en armbanden. Van betaalbaar tot echt goud.', tegel: 'images/categorieen/categorie-sieraden.webp', banner: 'images/banners/banner-cat-sieraden.webp',
+    tekst: 'Kettingen, oorbellen, ringen en armbanden. Van betaalbaar tot echt goud.', tegel: 'images/categorieen/categorie-sieraden-gw.webp', banner: 'images/banners/banner-cat-sieraden.webp',
     subs: [
       { slug: 'kettingen', naam: 'Kettingen & hangers', beeld: 'images/sub/sub-sieraden-kettingen.webp' }, { slug: 'oorbellen', naam: 'Oorbellen', beeld: 'images/sub/sub-sieraden-oorbellen.webp' }, { slug: 'ringen', naam: 'Ringen', beeld: 'images/sub/sub-sieraden-ringen.webp' }, { slug: 'armbanden', naam: 'Armbanden & enkelbandjes', beeld: 'images/sub/sub-sieraden-armbanden.webp' },
       { slug: 'heren', naam: 'Voor hem', beeld: 'images/sub/sub-sieraden-heren.webp' }, { slug: 'echt-goud', naam: 'Echt goud', beeld: 'images/sub/sub-sieraden-echt-goud.webp' }, { slug: 'zilver', naam: 'Zilver', beeld: 'images/sub/sub-sieraden-zilver.webp' }, { slug: 'verguld-staal', naam: 'Verguld & staal', beeld: 'images/sub/sub-sieraden-verguld-staal.webp' }, { slug: 'viking', naam: 'Viking-sieraden', beeld: 'images/sub/sub-sieraden-viking.webp' }
     ] },
   { slug: 'dranken', naam: 'Dranken', kort: 'Dranken', icoon: 'glas',
-    tekst: 'Mooie flessen om te geven.', tegel: 'images/categorieen/categorie-dranken.webp', banner: 'images/banners/banner-cat-dranken.webp',
+    tekst: 'Mooie flessen om te geven.', tegel: 'images/categorieen/categorie-dranken-gw.webp', banner: 'images/banners/banner-cat-dranken.webp',
     subs: [
       { slug: 'whisky', naam: 'Whisky', beeld: 'images/sub/sub-dranken-whisky-2026b.webp' },
       { slug: 'cognac-brandy', naam: 'Cognac & brandy', beeld: 'images/sub/sub-dranken-cognac-brandy.webp' },
@@ -194,13 +194,13 @@ window.LK_CATEGORIEEN = [
       { slug: 'wijnaccessoires', naam: 'Wijnaccessoires', beeld: 'images/sub/sub-dranken-wijnaccessoires.webp' }
     ] },
   { slug: 'elektronica', naam: 'Elektronica & Gadgets', kort: 'Elektronica', icoon: 'koptelefoon',
-    tekst: 'Slimme gadgets voor elke dag.', tegel: 'images/categorieen/categorie-elektronica.webp', banner: 'images/banners/banner-cat-elektronica.webp',
+    tekst: 'Slimme gadgets voor elke dag.', tegel: 'images/categorieen/categorie-elektronica-gw.webp', banner: 'images/banners/banner-cat-elektronica.webp',
     subs: [
       { slug: 'audio', naam: 'Audio', beeld: 'images/sub/sub-elektronica-audio.webp' }, { slug: 'slimme-gadgets', naam: 'Slimme gadgets', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp' },
       { slug: 'telefoon', naam: 'Telefoon', beeld: 'images/sub/sub-elektronica-telefoon.webp' }, { slug: 'gaming', naam: 'Gaming', beeld: 'images/sub/sub-elektronica-gaming.webp' }, { slug: 'foto-video', naam: 'Foto & video', beeld: 'images/sub/sub-elektronica-foto-video.webp' }
     ] },
   { slug: 'sport-outdoor', naam: 'Sport, Outdoor & Reizen', kort: 'Sport, Outdoor & Reizen', icoon: 'bal',
-    tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
+    tekst: 'Erop uit, in beweging.', tegel: 'images/categorieen/categorie-sport-outdoor-gw.webp', banner: 'images/banners/banner-cat-sport-outdoor.webp',
     subs: [
       { slug: 'fitness', naam: 'Fitness', beeld: 'images/sub/sub-sport-outdoor-fitness.webp' }, { slug: 'wandelen', naam: 'Wandelen', beeld: 'images/sub/sub-sport-outdoor-wandelen.webp' }, { slug: 'fietsen', naam: 'Fietsen', beeld: 'images/sub/sub-sport-outdoor-fietsen.webp' },
       { slug: 'kamperen', naam: 'Kamperen', beeld: 'images/sub/sub-sport-outdoor-kamperen.webp' }, { slug: 'reizen', naam: 'Reizen', beeld: 'images/sub/sub-sport-outdoor-reizen.webp' }, { slug: 'darts', naam: 'Darts', beeld: 'images/sub/sub-sport-outdoor-darts.webp' }, { slug: 'golf', naam: 'Golf', beeld: 'images/sub/sub-sport-outdoor-golf-2026b.webp' },
@@ -208,14 +208,14 @@ window.LK_CATEGORIEEN = [
       { slug: 'metaaldetectie', naam: 'Metaaldetectie', beeld: 'images/categorieen/categorie-metaaldetectie-klein.webp', naar: '/c/metaaldetectie' }
     ] },
   { slug: 'wonen', naam: 'Wonen & Decoratie', kort: 'Wonen & Deco', icoon: 'huis',
-    tekst: 'Maak van je huis een warm thuis.', tegel: 'images/categorieen/categorie-wonen.webp', banner: 'images/banners/banner-cat-wonen.webp',
+    tekst: 'Maak van je huis een warm thuis.', tegel: 'images/categorieen/categorie-wonen-gw.webp', banner: 'images/banners/banner-cat-wonen.webp',
     subs: [
       { slug: 'kaarsen-geur', naam: 'Kaarsen & kandelaars', beeld: 'images/sub/sub-wonen-kaarsen-geur.webp' }, { slug: 'huisgeuren', naam: 'Huisgeuren', beeld: 'images/sub/sub-wonen-huisgeuren.webp' }, { slug: 'woonaccessoires', naam: 'Woonaccessoires', beeld: 'images/sub/sub-wonen-woonaccessoires.webp' },
       { slug: 'verlichting', naam: 'Verlichting', beeld: 'images/sub/sub-wonen-verlichting.webp' }, { slug: 'plaids-kussens', naam: 'Plaids & kussens', beeld: 'images/sub/sub-wonen-plaids-kussens.webp' },
       { slug: 'kerstdecoratie', naam: 'Kerstdecoratie', beeld: 'images/sub/sub-wonen-kerstdecoratie.webp' }
     ] },
   { slug: 'keuken', naam: 'Keuken & Tafelen', kort: 'Keuken', icoon: 'kop',
-    tekst: 'Mooi koken, gezellig tafelen.', tegel: 'images/categorieen/categorie-keuken.webp', banner: 'images/banners/banner-cat-keuken.webp',
+    tekst: 'Mooi koken, gezellig tafelen.', tegel: 'images/categorieen/categorie-keuken-gw.webp', banner: 'images/banners/banner-cat-keuken.webp',
     subs: [
       { slug: 'koken', naam: 'Koken', beeld: 'images/sub/sub-keuken-koken.webp' }, { slug: 'keukenapparaten', naam: 'Keukenapparaten', beeld: 'images/sub/sub-keuken-keukenapparaten.webp' }, { slug: 'bakken', naam: 'Bakken', beeld: 'images/sub/sub-keuken-bakken.webp' }, { slug: 'serveren', naam: 'Serveren', beeld: 'images/sub/sub-keuken-serveren.webp' },
       { slug: 'koffie-thee', naam: 'Koffie- & theespullen', beeld: 'images/sub/sub-keuken-koffie-thee.webp' }, { slug: 'opbergen', naam: 'Opbergen', beeld: 'images/sub/sub-keuken-opbergen.webp' }
@@ -617,7 +617,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
     tekst: 'Parfum, aftershave en verzorging om cadeau te geven.', tegel: 'images/categorieen/categorie-geuren-verzorging.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'],
     subs: [{ slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vak: 'mode-beauty/geuren' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vak: 'mode-beauty/verzorging' }] });
   /* Mode & Accessoires: wat overblijft van Mode & Beauty. Horloges, geuren en verzorging blijven bereikbaar, maar staan niet meer in het rijtje. */
-  hernoem('mode-beauty', 'Mode & Accessoires'); mb.tekst = 'Tassen, schoenen, kleding en accessoires.'; mb.tegel = 'images/categorieen/categorie-mode-accessoires.webp';
+  hernoem('mode-beauty', 'Mode & Accessoires'); mb.tekst = 'Tassen, schoenen, kleding en accessoires.'; mb.tegel = 'images/categorieen/categorie-mode-beauty-gw.webp';
   mb.subs.forEach(function (s) { if (['horloges', 'geuren', 'verzorging'].indexOf(s.slug) !== -1) s.verborgen = true; });
   hernoem('elektronica', 'Elektronica & Gadgets');
   hernoem('wonen', 'Wonen & Decoratie');
