@@ -3,6 +3,9 @@
    producten.js zelf blijft ongewijzigd: de rondes en de Productstudio mogen de oude vakjes blijven gebruiken.
    splits-producten.js roept deel() aan voor elk product dat in producten-lean.js komt.
    Een product kan 'vast' staan: zet dan "subVast": true in producten.js, dan blijft cat/sub zoals het staat. */
+/* Afscheid & pensioen (31-10-2026): woorden in titel of tekst, plus de producten uit de gidsen afscheidscadeau-collega en cadeau-voor-pensioen. */
+const AFSCHEID = /afscheid|pensioen|vaarwel|nieuwe baan|farewell|met vut|gepensioneerd/i;
+const AFSCHEID_IDS = new Set(["amz-9465708399", "amz-b0b3tdry1m", "amz-b0cnkf8w3q", "amz-b0d95l6674", "amz-b0g3hmpmjf", "amz-b0hgq4q3pd", "bol-9200000010409823", "bol-9200000018494649", "bol-9200000064944767", "bol-9200000075382464", "bol-9300000007378766", "bol-9300000039415364", "bol-9300000057830180", "bol-9300000141326647", "bol-9300000171232502", "bol-9300000174098365", "bol-9300000234965416", "bol-9300000238049219", "bol-9300000242745735", "bol-9300000242918318", "bol-9300000256133316", "bol-9300000385427142", "cadeau-78a0e6aecb", "dvzn-452003", "dvzn-542206", "dvzn-734300", "dvzn-847923"]);
 
 /* Per productgroep: de vakjes in volgorde van belangrijkheid bij het kiezen (niet de volgorde op de site).
    Elk vakje: [slug, regex op de titel]. Eerste match wint. Geen match: 'oud' bepaalt het vakje. */
@@ -413,10 +416,11 @@ function deel(p0) {
   if (p.voor.indexOf('collega') !== -1 || oud === 'cadeaus/collega' || (p0.ookIn || []).indexOf('cadeaus/collega') !== -1) {
     const lekker = /^(eten-drinken|dranken)$/.test(p.cat) || /bloem|plant|kaars|geurstok|bonbon|chocola|thee|koffie|handcr|zeep|bad|bedankt|dankjewel|thank/i.test(titel);
     const blijvend = /^(boeken-media|wonen|keuken|hobby|tuin-klussen|elektronica|sport-outdoor|speelgoed|sieraden|mode-beauty|cadeaus)$/.test(p.cat) || /afscheid|pensioen|met naam|gegraveerd|gepersonaliseerd/i.test(titel);
-    if (/afscheid|pensioen|vaarwel|nieuwe baan|succes|farewell/i.test(titel) || (blijvend && p.prijs >= 15)) tags.add('collega-afscheid');
+    /* 31-10-2026 (Marius: lijst afscheid klopte niet): alleen echte afscheids-/pensioencadeaus, of iets persoonlijks met naam. */
+    if (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id) || (/met naam|gegraveerd|gepersonaliseerd/i.test(titel) && p.prijs >= 15)) tags.add('collega-afscheid');
     if (/bedankt|dankjewel|thank|merci|top collega|beste collega/i.test(titel) || (lekker && p.prijs <= 40)) tags.add('collega-bedankje');
     if (p.prijs <= 25) tags.add('collega-lootjes');
-    if (![...tags].some((t) => t.indexOf('collega-') === 0)) tags.add(p.prijs <= 25 ? 'collega-lootjes' : 'collega-afscheid');
+    if (![...tags].some((t) => t.indexOf('collega-') === 0)) tags.add(p.prijs <= 25 ? 'collega-lootjes' : 'collega-bedankje');
   }
 
   /* Verjaardag: leeftijd in de titel (18, 30, 40, 50, 60, 65 jaar; Abraham en Sarah = 50). */
@@ -426,6 +430,7 @@ function deel(p0) {
   if (/verjaardag|jarig|birthday|happy b-?day|hiep hiep/i.test(titel)) tags.add('verjaardag');
   /* Overige gelegenheden. */
   if (/housewarming|nieuwe woning|nieuw huis|nieuwe huis|verhuiz|thuis\b|home sweet home/i.test(titel)) tags.add('housewarming');
+  if (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id)) tags.add('afscheid');
   if (/\bjuf\b|meester|leerkracht|leraar|lerares|juffrouw|onderwijzer|einde schooljaar|schoolverlater|\bteacher/i.test(titel)) tags.add('juf-meester');
   if (/uitdeel|traktatie|kinderfeestje|feestzakje|goodiebag|goodie ?bag|uitdelen/i.test(titel)) tags.add('uitdelen');
   if (/beterschap|sterkte|get well|herstel|beter worden|condoleance|troost|in gedachten|denk aan je|knuffel ?(op afstand|in een doosje)|hug in a box|zorg goed voor/i.test(titel)) tags.add('beterschap');

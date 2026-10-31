@@ -842,7 +842,7 @@ window.LK_GELEGENHEDEN = [
     vakken: ['tag:geslaagd', 'elektronica', 'mode-beauty/rugzakken', 'mode-beauty/koffers', 'mode-beauty/portemonnees', 'sieraden/horloges', 'dranken/champagne-bubbels', 'sport-outdoor/reizen'] },
   { slug: 'afscheid-pensioen', uit: LK_GEEN_FEEST, naam: 'Afscheid & pensioen', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp', seoTitel: 'Afscheidscadeau en pensioencadeau',
     tekst: 'Een mooi afscheid van een collega, of een cadeau voor wie met pensioen gaat.', gids: 'afscheidscadeau-collega',
-    labels: ['collega', 'opa-oma'], vakken: ['tag:collega-afscheid', 'boeken-media', 'tuin-klussen', 'hobby', 'dranken', 'eten-drinken/kerst-cadeaupakketten', 'keuken', 'wonen', 'cadeaus/met-naam', 'speelgoed/puzzels', 'tuin-klussen/vogels-insecten'] },
+    vakken: ['tag:afscheid', 'tag:collega-afscheid'] }, /* 31-10-2026: alleen echte afscheids- en pensioencadeaus (was: alles voor collega/opa-oma) */
   { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' }
 ];
 /* Gelegenheden in de juiste volgorde voor vandaag: wat nu speelt eerst. */
