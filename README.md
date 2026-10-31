@@ -297,3 +297,4 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 
 - 31-10-2026 grote controle: oude vakjes-adressen (o.a. /c/dranken/gin/, /c/wonen/kaarsen-geur/) sturen nu door naar het nieuwe vakje (automatisch uit de verborgen vakjes in data.js); telefoon-voorpagina niet meer te breed (lange namen in rondjes); uitverkochte producten niet meer in gidsen; vage titels (4x "Jumbo", "Minecraft") verbeterd.
 - 31-10-2026: 6 dubbele producten samengevoegd (oude pagina stuurt door naar het product dat bleef), dubbele regel Blond Amsterdam weg, 3 kaarsen naar Wonen > Kaarsen. Champagne en de wijn "Jij + ik" blijven bij Valentijn (keuze Marius: romantisch).
+- 31-10-2026: 86 nieuwe vakjes zonder eigen rondje-plaatje tonen nu een productfoto uit het vakje (de reserve-foto miste .webp). Opdracht voor Nova: nova-ontbrekende-rondjes.md.

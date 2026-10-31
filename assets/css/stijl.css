@@ -928,6 +928,8 @@ html.feest body::after {
 .persoon-subs .subkaart { font-size: 13px; }
 .persoon-subs .subkaart .rond { width: 92px; height: 92px; }
 .persoon-subs.home .subkaart .rond { width: 74px; height: 74px; }
+/* Rondje zonder eigen plaatje: een productfoto uit het vakje, heel in beeld op wit. */
+.rond img[src*="images/producten/"] { object-fit: contain; background: #fff; padding: 14%; }
 /* Lange namen (bijv. 'Brievenbuscadeaus') mogen de pagina op de telefoon niet breder maken (controle 31-10-2026). */
 .persoon-subs > * { min-width: 0; }
 .persoon-subs .subkaart { overflow-wrap: anywhere; hyphens: auto; }

@@ -204,8 +204,10 @@
   /* Rond plaatje: eigen beeld, anders de foto van een mooi product uit dat vakje. */
   function rondBeeld(beeld, lijst) {
     if (beeld) return kleinBeeld(beeld);
-    var p = (lijst || []).filter(function (x) { return x.sfeer || x.favoriet || x.populair; })[0] || (lijst || [])[0];
-    return p ? p.beeld : '';
+    var p = (lijst || []).filter(function (x) { return x.beeld && (x.sfeer || x.favoriet || x.populair); })[0] || (lijst || []).filter(function (x) { return x.beeld; })[0];
+    if (!p) return '';
+    /* Productfoto's staan zonder extensie in de lijst (bijv. images/producten/bol-123): de kleine webp-versie gebruiken. */
+    return /^https?:\/\//.test(p.beeld) || /\.(webp|jpe?g|png)$/i.test(p.beeld) ? p.beeld : p.beeld + '-klein.webp';
   }
   function voorFilter(p, voor) {
     if (!voor) return true;
