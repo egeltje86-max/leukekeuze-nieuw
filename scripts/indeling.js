@@ -432,6 +432,10 @@ function deel(p0) {
   if (/housewarming|nieuwe woning|nieuw huis|nieuwe huis|verhuiz|thuis\b|home sweet home/i.test(titel)) tags.add('housewarming');
   if (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id)) tags.add('afscheid');
   if (/\bjuf\b|meester|leerkracht|leraar|lerares|juffrouw|onderwijzer|einde schooljaar|schoolverlater|\bteacher/i.test(titel)) tags.add('juf-meester');
+  /* 31-10-2026: juf & meester = kleine bedankjes (tot €20): bedankt-cadeaus, chocolade, koekjes, plantjes/zaadjes door de brievenbus en kleine geurkaarsen. */
+  if (p.prijs <= 20 && (/bedankt|dankjewel|dank je wel|thank you|\bmerci\b/i.test(titel) || /^eten-drinken\/(chocolade|koekjes-stroopwafels)$/.test(p.cat + '/' + p.sub) ||
+      /door de brievenbus|zaadjes|lichtplantje|luchtplantjes/i.test(titel) || (p.cat === 'wonen' && /geurkaars/i.test(titel))) &&
+      !/wijn|pensioen|geboorte|verjaardag|whisky|gentleman|sokken|siroop|zout|grootverpakking|los verpakt|doos met 24|kruidkoek|ontbijtkoek|gamecontroller|mam\b/i.test(titel)) tags.add('juf-meester');
   if (/uitdeel|traktatie|kinderfeestje|feestzakje|goodiebag|goodie ?bag|uitdelen/i.test(titel)) tags.add('uitdelen');
   if (/beterschap|sterkte|get well|herstel|beter worden|condoleance|troost|in gedachten|denk aan je|knuffel ?(op afstand|in een doosje)|hug in a box|zorg goed voor/i.test(titel)) tags.add('beterschap');
   if (/geslaagd|diploma|rijbewijs|afgestudeerd|graduat|examen|cum laude|nieuwe auto|eerste auto/i.test(titel)) tags.add('geslaagd');

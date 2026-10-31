@@ -830,7 +830,7 @@ window.LK_GELEGENHEDEN = [
     vakken: ['eten-drinken/chocolade', 'eten-drinken/koekjes-stroopwafels', 'eten-drinken/kerst-cadeaupakketten', 'eten-drinken/koffie-thee', 'eten-drinken/delicatessen', 'eten-drinken/brievenbuscadeaus', 'wonen/kaarsen', 'wonen/huisgeuren', 'tuin-klussen/planten-potten', 'keuken/koffie-thee', 'dranken/wijn-port', 'dranken/champagne-bubbels', 'tag:collega-bedankje'] },
   { slug: 'juf-meester', seizoen: ['06-10', '07-20'], uit: LK_GEEN_FEEST, naam: 'Juf & meester', beeld: 'images/sub/sub-boeken-media-agendas.webp', seoTitel: 'Cadeau voor de juf of meester – bedankje einde schooljaar',
     tekst: 'Dankjewel zeggen aan de juf of meester: aan het einde van het schooljaar of zomaar.', maxPrijs: 25,
-    vakken: ['tag:juf-meester', 'eten-drinken/chocolade', 'eten-drinken/koekjes-stroopwafels', 'wonen/kaarsen', 'keuken/koffie-thee', 'tuin-klussen/planten-potten', 'boeken-media/agendas-planners-kalenders'] },
+    vakken: ['tag:juf-meester'] }, /* 31-10-2026: alleen kleine bedankjes (zie indeling.js) */
   { slug: 'uitdeelcadeautjes', naam: 'Uitdeelcadeautjes', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp', seoTitel: 'Uitdeelcadeautjes – voor een kinderfeestje of de klas',
     tekst: 'Kleine cadeautjes om uit te delen: voor een kinderfeestje, de klas of in een feestzakje.', maxPrijs: 10,
     labels: ['kind', 'kinderen', 'tiener'], vakken: ['tag:uitdelen', 'speelgoed/hypes-trends', 'speelgoed/knutselen-kleuren', 'speelgoed/pokemon-verzamelkaarten', 'speelgoed/bord-kaartspellen', 'eten-drinken/drop-snoep'] },
