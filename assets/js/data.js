@@ -656,24 +656,24 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   vakjes('sieraden', [
     ['ringen', 'Ringen', 'sieraden-ringen'], ['smartwatches', 'Smartwatches', 'elektronica-slimme-gadgets'], ['horloges', 'Horloges', 'mode-beauty-horloges'],
     ['echt-goud', 'Echt goud', 'sieraden-echt-goud'], ['oorbellen', 'Oorbellen', 'sieraden-oorbellen'], ['kettingen', 'Kettingen & hangers', 'sieraden-kettingen'],
-    ['zilver', 'Zilver', 'sieraden-zilver'], ['armbanden', 'Armbanden & enkelbandjes', 'sieraden-armbanden'], ['sieradendozen', 'Sieradendozen'],
-    ['parels', 'Parels'], ['bedels', 'Bedels & bedelarmbanden'], ['met-naam', 'Met naam & letter', 'cadeaus-met-naam-2026b']
+    ['zilver', 'Zilver', 'sieraden-zilver'], ['armbanden', 'Armbanden & enkelbandjes', 'sieraden-armbanden'], ['sieradendozen', 'Sieradendozen', 'sieraden-sieradendozen-w'],
+    ['parels', 'Parels', 'sieraden-parels-w'], ['bedels', 'Bedels & bedelarmbanden', 'sieraden-bedels-w'], ['met-naam', 'Met naam & letter', 'cadeaus-met-naam-2026b']
   ], { heren: 'armbanden', viking: 'kettingen', 'verguld-staal': 'kettingen' });
   cat('sieraden').knoppen = ['wie3', 'kind-als'];
 
   vakjes('geuren-verzorging', [
-    ['rituals', 'Rituals'], ['parfum', 'Parfum', 'mode-beauty-geuren'], ['scheren-baard', 'Scheren & baard'], ['haarstylers', 'Haarstylers'],
-    ['make-up-nagels', 'Make-up & nagels'], ['huidverzorging', 'Huidverzorging', 'mode-beauty-verzorging'], ['cadeausets', 'Cadeausets'],
-    ['bad-douche', 'Bad & douche'], ['massage', 'Massage'], ['tandenborstels', 'Elektrische tandenborstels']
+    ['rituals', 'Rituals', 'geuren-verzorging-rituals-w'], ['parfum', 'Parfum', 'mode-beauty-geuren'], ['scheren-baard', 'Scheren & baard', 'geuren-verzorging-scheren-baard-w'], ['haarstylers', 'Haarstylers', 'geuren-verzorging-haarstylers-w'],
+    ['make-up-nagels', 'Make-up & nagels', 'geuren-verzorging-make-up-nagels-w'], ['huidverzorging', 'Huidverzorging', 'mode-beauty-verzorging'], ['cadeausets', 'Cadeausets', 'geuren-verzorging-cadeausets-w'],
+    ['bad-douche', 'Bad & douche', 'geuren-verzorging-bad-douche-w'], ['massage', 'Massage', 'geuren-verzorging-massage-w'], ['tandenborstels', 'Elektrische tandenborstels', 'geuren-verzorging-tandenborstels-w']
   ], { geuren: 'parfum', verzorging: 'huidverzorging' });
   cat('geuren-verzorging').knoppen = ['wie2'];
 
   vakjes('mode-beauty', [
     ['schoenen', 'Schoenen, sneakers & boots', 'mode-beauty-schoenen-2026b'], ['truien-hoodies', 'Truien & hoodies', 'mode-beauty-kleding'],
-    ['pyjamas', "Pyjama's, badjassen & onesies"], ['koffers', 'Koffers & reistassen', 'sport-outdoor-reizen'], ['tassen', 'Tassen', 'mode-beauty-tassen'],
-    ['mutsen-sjaals', 'Mutsen, sjaals & handschoenen'], ['portemonnees', 'Portemonnees & pasjeshouders'], ['pantoffels-sokken', 'Pantoffels & sokken'],
-    ['zonnebrillen', 'Zonnebrillen'], ['rugzakken', 'Rugzakken', 'mode-beauty-rugzakken-reistassen'], ['riemen-sleutelhangers', "Riemen, sleutelhangers & paraplu's", 'mode-beauty-accessoires'],
-    ['toilettassen', 'Toilettassen']
+    ['pyjamas', "Pyjama's, badjassen & onesies", 'mode-beauty-pyjamas-w'], ['koffers', 'Koffers & reistassen', 'sport-outdoor-reizen'], ['tassen', 'Tassen', 'mode-beauty-tassen'],
+    ['mutsen-sjaals', 'Mutsen, sjaals & handschoenen', 'mode-beauty-mutsen-sjaals-w'], ['portemonnees', 'Portemonnees & pasjeshouders', 'mode-beauty-portemonnees-w'], ['pantoffels-sokken', 'Pantoffels & sokken', 'mode-beauty-pantoffels-sokken-w'],
+    ['zonnebrillen', 'Zonnebrillen', 'mode-beauty-zonnebrillen-w'], ['rugzakken', 'Rugzakken', 'mode-beauty-rugzakken-reistassen'], ['riemen-sleutelhangers', "Riemen, sleutelhangers & paraplu's", 'mode-beauty-accessoires'],
+    ['toilettassen', 'Toilettassen', 'mode-beauty-toilettassen-w']
   ], { horloges: 'horloges', geuren: 'tassen', verzorging: 'tassen', 'rugzakken-reistassen': 'rugzakken', kleding: 'truien-hoodies', accessoires: 'riemen-sleutelhangers' });
   /* Horloges, geuren en verzorging staan nu in hun eigen groep: oude adressen sturen daarheen. */
   cat('mode-beauty').subs.forEach(function (s) {
@@ -685,7 +685,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('elektronica', [
     ['gaming', 'Gaming', 'elektronica-gaming'], ['telefoon-opladen', 'Telefoon & opladen', 'elektronica-telefoon'], ['cameras', "Camera's", 'elektronica-foto-video'],
-    ['koptelefoons', 'Koptelefoons & oordopjes', 'elektronica-audio'], ['tablets-ereaders', 'Tablets & e-readers'], ['drones-vr', 'Drones & VR'],
+    ['koptelefoons', 'Koptelefoons & oordopjes', 'elektronica-audio'], ['tablets-ereaders', 'Tablets & e-readers', 'elektronica-tablets-ereaders-w'], ['drones-vr', 'Drones & VR'],
     ['platenspelers', 'Platenspelers', 'boeken-media-muziek'], ['gadgets-trackers', 'Gadgets & trackers', 'elektronica-slimme-gadgets'], ['speakers', 'Speakers'],
     ['beamers', 'Beamers'], ['sfeerlicht-smarthome', 'Sfeerlicht & smart home', 'wonen-verlichting']
   ], { audio: 'speakers', 'slimme-gadgets': 'gadgets-trackers', telefoon: 'telefoon-opladen', 'foto-video': 'cameras' });
