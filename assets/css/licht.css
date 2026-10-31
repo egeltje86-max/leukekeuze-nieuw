@@ -18,7 +18,7 @@
   --goud-donker: #8F6620;
   --tekst: #141A2A;
   --tekst-2: #4F556A;
-  --tekst-3: #7C8296;
+  --tekst-3: #5F667A; /* 31-10-2026: donkerder voor leesbaarheid (GO Marius) */
   --schaduw: 0 8px 24px rgba(10, 16, 32, .08);
   --gloed: 0 0 0 1px var(--lijn-sterk), 0 8px 24px rgba(184, 134, 46, .18);
 }
@@ -288,3 +288,6 @@ body { background: var(--bg); color: var(--tekst); }
 .maten button:hover { border-color: var(--goud, #C9A23A); }
 .maten button[aria-pressed="true"] { background: #141A2A; border-color: #141A2A; color: #fff; }
 .maten span { min-width: 0; height: auto; padding: 2px 8px; border: 0; border-radius: 6px; background: #EFE9DE; color: #4A4F5C; font: 500 13px/1.6 var(--f-ui); }
+
+/* Leesbaarheid (31-10-2026, GO Marius): goud als tekst op de lichte achtergrond iets donkerder; donkere balken blijven zoals ze waren. */
+main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
