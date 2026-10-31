@@ -13,8 +13,10 @@ window.LK_INSTELLINGEN = {
   heroTitel: 'De mooiste cadeaus',
   heroTitelGoud: 'voor elk moment',
   heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
-  heroDesktop: 'images/banners/banner-winter-desktop.webp',
-  heroMobiel: 'images/banners/banner-winter-mobiel.webp',
+  heroDesktop: 'images/banners/banner-kerst-desktop.webp',
+  /* Banner met het LeukeKeuze-logo erin: dan staat de tekst niet over de foto heen maar eronder. */
+  heroLogo: true,
+  heroMobiel: 'images/banners/banner-kerst-mobiel.webp',
   /* Populair: wat Nederlanders het meest zoeken (OpenSEO, okt 2026) en waar wij genoeg producten voor hebben.
      Sinterklaas en Kerst vooraan zolang het seizoen is. Rituals (368.000) en airfryers (90.500) komen erbij zodra die vakjes gevuld zijn. */
   populair: [
