@@ -685,9 +685,9 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('elektronica', [
     ['gaming', 'Gaming', 'elektronica-gaming'], ['telefoon-opladen', 'Telefoon & opladen', 'elektronica-telefoon'], ['cameras', "Camera's", 'elektronica-foto-video'],
-    ['koptelefoons', 'Koptelefoons & oordopjes', 'elektronica-audio'], ['tablets-ereaders', 'Tablets & e-readers', 'elektronica-tablets-ereaders-w'], ['drones-vr', 'Drones & VR'],
-    ['platenspelers', 'Platenspelers', 'boeken-media-muziek'], ['gadgets-trackers', 'Gadgets & trackers', 'elektronica-slimme-gadgets'], ['speakers', 'Speakers'],
-    ['beamers', 'Beamers'], ['sfeerlicht-smarthome', 'Sfeerlicht & smart home', 'wonen-verlichting']
+    ['koptelefoons', 'Koptelefoons & oordopjes', 'elektronica-audio'], ['tablets-ereaders', 'Tablets & e-readers', 'elektronica-tablets-ereaders-w'], ['drones-vr', 'Drones & VR', 'elektronica-drones-vr-w'],
+    ['platenspelers', 'Platenspelers', 'boeken-media-muziek'], ['gadgets-trackers', 'Gadgets & trackers', 'elektronica-slimme-gadgets'], ['speakers', 'Speakers', 'elektronica-speakers-w'],
+    ['beamers', 'Beamers', 'elektronica-beamers-w'], ['sfeerlicht-smarthome', 'Sfeerlicht & smart home', 'wonen-verlichting']
   ], { audio: 'speakers', 'slimme-gadgets': 'gadgets-trackers', telefoon: 'telefoon-opladen', 'foto-video': 'cameras' });
 
   vakjes('wonen', [
