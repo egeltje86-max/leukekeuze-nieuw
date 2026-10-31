@@ -307,3 +307,13 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .catkaart .lees-kort { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .catkaart .lees-open .lees-kort { display: block; -webkit-line-clamp: unset; overflow: visible; }
 .catkaart .lees-verder { display: inline-block; margin-top: 4px; font-weight: 700; font-size: 13px; color: var(--goud-donker, #8A6A1F); text-decoration: underline; cursor: pointer; }
+
+/* Nova-ontwerp (31-10-2026): dikke gouden rand om de rondjes, grotere rondjes op de voorpagina, grotere namen op de soort-kaarten. */
+.subkaart .rond, .subkaart:hover .rond { border: 6px solid #D9A848; box-shadow: 0 0 0 1px rgba(150,110,30,.35), inset 0 0 0 1px rgba(255,236,190,.6), 0 6px 18px rgba(10,16,32,.18); }
+.persoon-subs.home .subkaart { font-weight: 700; color: var(--tekst); }
+@media (max-width: 759px) { .subkaart .rond, .subkaart:hover .rond { border-width: 4px; } }
+@media (min-width: 760px) {
+  .persoon-subs.home .subkaart { font-size: 16px; }
+  .persoon-subs.home .subkaart .rond { width: 150px; height: 150px; }
+  .groep span { font-size: 19px; padding: 34px 16px 12px; text-shadow: 0 2px 6px rgba(0,0,0,.45); }
+}
