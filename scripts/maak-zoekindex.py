@@ -107,6 +107,15 @@ def direct(link, winkel):
     root = WINKELROOT.get(winkel)
     dl = re.sub(r'\.aspx(?=[a-z])', '.aspx?', dl)   # La Redoute: het vraagteken ontbreekt in de feed
     return root + dl.lstrip('/') if root else None
+# Linkcheck 31-10-2026: bij deze winkels geeft de eigen TradeTracker-landingspagina (winkel.nl/...?tt=...&r=...) een 404.
+# Via tc.tradetracker.net komt de bezoeker wel goed op de productpagina (met dezelfde tracking).
+TT_TC = {'Looking Good Today', '247Jeans'}
+def tt_tc(link):
+    q = parse_qs(urlparse(link).query)
+    tt = (q.get('tt') or [''])[0].split('_'); r = (q.get('r') or [''])[0]
+    if len(tt) < 3 or not r.startswith('http'): return link
+    from urllib.parse import quote
+    return 'https://tc.tradetracker.net/?c=%s&m=%s&a=%s&r=&u=%s' % (tt[0], tt[1], tt[2], quote(r, safe=''))
 # Bewust NIET: Mijn Hummeltje (dropshipping, wens van Marius).
 FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'), (r'bracelet', 'armband'), (r"boucles", 'oorbellen'),
       (r'\bbague', 'ring'), (r'echarpe|écharpe|foulard|étole', 'sjaal'), (r'ceinture', 'riem'), (r'\bpull', 'trui'), (r'cardigan', 'vest'),
@@ -148,6 +157,7 @@ for bestand, winkel, b in WINKELS:
         if PAUZE and DAISYCON.search(link):
             link = direct(link, winkel)
             if not link: continue
+        if winkel in TT_TC: link = tt_tc(link)
         uit.append([basis(x['titel'])[:120], round(prijs, 2), winkel, link, foto, cat[:40], (x.get('merk') or '')[:40], g])
     per[winkel] = len(gezien)
 if len(uit) < 1000:  # veiligheid: liever de oude index houden dan een (bijna) lege online zetten
