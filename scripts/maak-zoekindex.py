@@ -358,3 +358,7 @@ for k, sel in vakken.items():
     json.dump({'winkels': W, 'producten': sel}, open(os.path.join('assets/zoek/w', k.replace('/', '--') + '.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     aantal[k] = len(sel); n2 += 1
 print('nieuwe vakjes:', n2, 'bestanden; kleinste:', sorted(((k, len(v)) for k, v in vakken.items()), key=lambda a: a[1])[:8])
+# 31-10-2026: verkeerde producten eruit (hondenkauwring bij Ringen enz.) en dubbele maten samen. Zie scripts/zoek-schoonmaak.py.
+import importlib.util as _iu
+_s = _iu.spec_from_file_location('zoek_schoonmaak', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'zoek-schoonmaak.py'))
+_m = _iu.module_from_spec(_s); _s.loader.exec_module(_m); _m.schoon()
