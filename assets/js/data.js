@@ -549,7 +549,7 @@ window.LK_PERSONEN = (function () {
     knoppen: ['kind'],
     seoTitel: 'Cadeau voor tieners – cadeaus voor 12 tot 18 jaar', tekst: 'Gaming, parfum, sieraden, LEGO en spullen voor de kamer: cadeaus die tieners echt leuk vinden.',
     subs: [
-      s('gaming-gadgets', 'Gaming & gadgets', 'elektronica-gaming', ['elektronica'], 'Gaming en gadgets cadeau voor tieners', 'Headsets, koptelefoons, speakers, powerbanks en alles voor de gamer.'),
+      s('gaming-gadgets', 'Gaming & gadgets', 'tieners-gaming-w', ['elektronica'], 'Gaming en gadgets cadeau voor tieners', 'Headsets, koptelefoons, speakers, powerbanks en alles voor de gamer.'),
       s('geuren-verzorging', 'Geuren & skincare', 'mode-beauty-geuren', ['geuren-verzorging'], 'Parfum en skincare cadeau voor tieners', 'Parfum, bodymist en skincare: de cadeaus waar tieners nu om vragen.'),
       s('sieraden', 'Sieraden', 'sieraden-verguld-staal', ['sieraden'], 'Sieraden cadeau voor tieners', 'Armbandjes, kettingen, ringen en oorbellen in de stijl van nu.'),
       s('lego-creatief', 'LEGO & creatief', 'speelgoed-bouwen', ['speelgoed/lego', 'speelgoed/knikkerbanen-magnetisch', 'hobby'], 'LEGO en creatief cadeau voor tieners', 'LEGO Technic, Speed Champions, Botanicals en creatieve sets voor oudere kinderen.'),
@@ -654,7 +654,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   }
 
   vakjes('sieraden', [
-    ['ringen', 'Ringen', 'sieraden-ringen'], ['smartwatches', 'Smartwatches', 'elektronica-slimme-gadgets'], ['horloges', 'Horloges', 'mode-beauty-horloges'],
+    ['ringen', 'Ringen', 'sieraden-ringen'], ['smartwatches', 'Smartwatches', 'sieraden-smartwatches-w'], ['horloges', 'Horloges', 'mode-beauty-horloges'],
     ['echt-goud', 'Echt goud', 'sieraden-echt-goud'], ['oorbellen', 'Oorbellen', 'sieraden-oorbellen'], ['kettingen', 'Kettingen & hangers', 'sieraden-kettingen'],
     ['zilver', 'Zilver', 'sieraden-zilver'], ['armbanden', 'Armbanden & enkelbandjes', 'sieraden-armbanden'], ['sieradendozen', 'Sieradendozen', 'sieraden-sieradendozen-w'],
     ['parels', 'Parels', 'sieraden-parels-w'], ['bedels', 'Bedels & bedelarmbanden', 'sieraden-bedels-w'], ['met-naam', 'Met naam & letter', 'cadeaus-met-naam-2026b']
@@ -670,7 +670,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('mode-beauty', [
     ['schoenen', 'Schoenen, sneakers & boots', 'mode-beauty-schoenen-2026b'], ['truien-hoodies', 'Truien & hoodies', 'mode-beauty-kleding'],
-    ['pyjamas', "Pyjama's, badjassen & onesies", 'mode-beauty-pyjamas-w'], ['koffers', 'Koffers & reistassen', 'sport-outdoor-reizen'], ['tassen', 'Tassen', 'mode-beauty-tassen'],
+    ['pyjamas', "Pyjama's, badjassen & onesies", 'mode-beauty-pyjamas-w'], ['koffers', 'Koffers & reistassen', 'mode-beauty-koffers-w'], ['tassen', 'Tassen', 'mode-beauty-tassen'],
     ['mutsen-sjaals', 'Mutsen, sjaals & handschoenen', 'mode-beauty-mutsen-sjaals-w'], ['portemonnees', 'Portemonnees & pasjeshouders', 'mode-beauty-portemonnees-w'], ['pantoffels-sokken', 'Pantoffels & sokken', 'mode-beauty-pantoffels-sokken-w'],
     ['zonnebrillen', 'Zonnebrillen', 'mode-beauty-zonnebrillen-w'], ['rugzakken', 'Rugzakken', 'mode-beauty-rugzakken-reistassen'], ['riemen-sleutelhangers', "Riemen, sleutelhangers & paraplu's", 'mode-beauty-accessoires'],
     ['toilettassen', 'Toilettassen', 'mode-beauty-toilettassen-w']
@@ -686,13 +686,13 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   vakjes('elektronica', [
     ['gaming', 'Gaming', 'elektronica-gaming'], ['telefoon-opladen', 'Telefoon & opladen', 'elektronica-telefoon'], ['cameras', "Camera's", 'elektronica-foto-video'],
     ['koptelefoons', 'Koptelefoons & oordopjes', 'elektronica-audio'], ['tablets-ereaders', 'Tablets & e-readers', 'elektronica-tablets-ereaders-w'], ['drones-vr', 'Drones & VR', 'elektronica-drones-vr-w'],
-    ['platenspelers', 'Platenspelers', 'boeken-media-muziek'], ['gadgets-trackers', 'Gadgets & trackers', 'elektronica-slimme-gadgets'], ['speakers', 'Speakers', 'elektronica-speakers-w'],
-    ['beamers', 'Beamers', 'elektronica-beamers-w'], ['sfeerlicht-smarthome', 'Sfeerlicht & smart home', 'wonen-verlichting']
+    ['platenspelers', 'Platenspelers', 'elektronica-platenspelers-w'], ['gadgets-trackers', 'Gadgets & trackers', 'elektronica-slimme-gadgets'], ['speakers', 'Speakers', 'elektronica-speakers-w'],
+    ['beamers', 'Beamers', 'elektronica-beamers-w'], ['sfeerlicht-smarthome', 'Sfeerlicht & smart home', 'elektronica-sfeerlicht-w']
   ], { audio: 'speakers', 'slimme-gadgets': 'gadgets-trackers', telefoon: 'telefoon-opladen', 'foto-video': 'cameras' });
 
   vakjes('wonen', [
-    ['lampen', 'Lampen', 'wonen-verlichting'], ['vloerkleden', 'Vloerkleden', 'wonen-vloerkleden'], ['wanddecoratie', 'Wanddecoratie & posters', 'wonen-woonaccessoires'], ['klokken', 'Klokken'],
-    ['kerst', 'Kerst', 'wonen-kerstdecoratie'], ['vazen-bloemen', 'Vazen & bloemen'], ['kussens-plaids', 'Kussens & plaids', 'wonen-plaids-kussens'],
+    ['lampen', 'Lampen', 'wonen-verlichting'], ['vloerkleden', 'Vloerkleden', 'wonen-vloerkleden'], ['wanddecoratie', 'Wanddecoratie & posters', 'wonen-woonaccessoires'], ['klokken', 'Klokken', 'wonen-klokken-w'],
+    ['kerst', 'Kerst', 'wonen-kerstdecoratie'], ['vazen-bloemen', 'Vazen & bloemen', 'wonen-vazen-bloemen-w'], ['kussens-plaids', 'Kussens & plaids', 'wonen-plaids-kussens'],
     ['kaarsen', 'Kaarsen & kandelaars', 'wonen-kaarsen-geur'], ['spiegels', 'Spiegels', 'wonen-spiegels'], ['opbergen-dienbladen', 'Opbergen & dienbladen', 'wonen-opbergen-dienbladen'],
     ['fotolijsten', 'Fotolijsten', 'wonen-fotolijsten'], ['huisgeuren', 'Huisgeuren', 'wonen-huisgeuren'], ['deurmatten', 'Deurmatten', 'wonen-deurmatten']
   ], { 'kaarsen-geur': 'kaarsen', woonaccessoires: 'wanddecoratie', verlichting: 'lampen', 'plaids-kussens': 'kussens-plaids', kerstdecoratie: 'kerst' });
@@ -722,8 +722,8 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('speelgoed', [
     ['lego', 'LEGO', 'speelgoed-bouwen'], ['buitenspeelgoed', 'Buitenspeelgoed', 'speelgoed-buitenspeelgoed'], ['bord-kaartspellen', 'Bord- & kaartspellen', 'speelgoed-bordspellen'],
-    ['pokemon-verzamelkaarten', 'Pokémon & verzamelkaarten'], ['puzzels', 'Puzzels', 'speelgoed-puzzels'], ['poppen-barbie', 'Poppen & Barbie', 'speelgoed-poppen-barbie'],
-    ['playmobil', 'Playmobil'], ['autos-treinen-rc', "Auto's, treinen & RC", 'speelgoed-figuren-voertuigen'], ['knuffels-squishmallows', 'Knuffels & Squishmallows', 'speelgoed-knuffels-squishmallows'],
+    ['pokemon-verzamelkaarten', 'Pokémon & verzamelkaarten', 'speelgoed-pokemon-verzamelkaarten-w'], ['puzzels', 'Puzzels', 'speelgoed-puzzels'], ['poppen-barbie', 'Poppen & Barbie', 'speelgoed-poppen-barbie'],
+    ['playmobil', 'Playmobil', 'speelgoed-playmobil-w'], ['autos-treinen-rc', "Auto's, treinen & RC", 'speelgoed-figuren-voertuigen'], ['knuffels-squishmallows', 'Knuffels & Squishmallows', 'speelgoed-knuffels-squishmallows'],
     ['knikkerbanen-magnetisch', 'Knikkerbanen & magnetisch bouwen', 'speelgoed-knikkerbanen-magnetisch'], ['knutselen-kleuren', 'Knutselen & kleuren', 'speelgoed-knutselen'], ['hypes-trends', 'Hypes & trends', 'speelgoed-hypes-trends'],
     ['baby-houten', 'Baby- & houten speelgoed', 'speelgoed-baby-peuter'], ['speelkeukens-verkleden', 'Speelkeukens & verkleden', 'speelgoed-speelkeukens-verkleden'], ['muziek-karaoke', 'Muziek & karaoke', 'speelgoed-muziek-karaoke']
   ], { 'baby-peuter': 'baby-houten', bouwen: 'lego', 'figuren-voertuigen': 'autos-treinen-rc', bordspellen: 'bord-kaartspellen', kaartspellen: 'bord-kaartspellen', knutselen: 'knutselen-kleuren' });
@@ -746,7 +746,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('tuin-klussen', [
     ['zwembaden-jacuzzis', "Zwembaden & jacuzzi's", 'tuin-klussen-zwembaden-jacuzzis'], ['tuinmeubelen', 'Tuinmeubelen & parasols', 'tuin-klussen-tuinmeubelen'], ['elektrisch-gereedschap', 'Elektrisch gereedschap', 'tuin-klussen-gereedschap'],
-    ['bbq-buitenkoken', 'BBQ & buiten koken', 'eten-drinken-bbq'], ['tuinmachines', 'Tuinmachines', 'tuin-klussen-tuinmachines'], ['handgereedschap-werkplaats', 'Handgereedschap & werkplaats', 'tuin-klussen-handgereedschap-werkplaats'],
+    ['bbq-buitenkoken', 'BBQ & buiten koken', 'tuin-klussen-bbq-buitenkoken-w'], ['tuinmachines', 'Tuinmachines', 'tuin-klussen-tuinmachines'], ['handgereedschap-werkplaats', 'Handgereedschap & werkplaats', 'tuin-klussen-handgereedschap-werkplaats'],
     ['planten-potten', 'Planten & potten', 'tuin-klussen-planten-zaden'], ['regentonnen-slangen-compost', 'Regentonnen, slangen & compost', 'tuin-klussen-regentonnen-slangen-compost'], ['vogels-insecten', 'Vogels & insecten', 'dieren-vogels'],
     ['moestuin-kweken', 'Moestuin & kweken', 'tuin-klussen-moestuin-kweken-w'], ['buitenverlichting', 'Buitenverlichting', 'tuin-klussen-buitenverlichting'], ['tuingereedschap', 'Tuingereedschap', 'tuin-klussen-tuingereedschap'],
     ['vuurschalen-terrasverwarmers', 'Vuurschalen & terrasverwarmers', 'tuin-klussen-vuurschalen-terrasverwarmers-w'], ['tuindecoratie', 'Tuindecoratie', 'tuin-klussen-tuindecoratie-w']
@@ -762,7 +762,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('dieren', [
     ['paard', 'Paard', 'dieren-paard-w'], ['hond', 'Hond', 'dieren-hond'], ['konijn-cavia-hamster', 'Konijn, cavia & hamster', 'dieren-konijn-cavia-hamster-w'], ['kat', 'Kat', 'dieren-kat'],
-    ['vissen-aquarium', 'Vissen & aquarium', 'dieren-vissen-aquarium-w'], ['reptielen-terrarium', 'Reptielen & terrarium', 'dieren-reptielen-terrarium-w'], ['kippen', 'Kippen'], ['vogels', 'Vogels', 'dieren-vogels-w']
+    ['vissen-aquarium', 'Vissen & aquarium', 'dieren-vissen-aquarium-w'], ['reptielen-terrarium', 'Reptielen & terrarium', 'dieren-reptielen-terrarium-w'], ['kippen', 'Kippen', 'dieren-kippen-w'], ['vogels', 'Vogels', 'dieren-vogels-w']
   ], { 'klein-dier': 'konijn-cavia-hamster' });
 
   vakjes('metaaldetectie', [
@@ -772,7 +772,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   cat('metaaldetectie').subs.forEach(function (s) { if (s.slug === 'detectors') s.knoppen = ['niveau']; });
 
   vakjes('christelijk', [
-    ['bijbels', 'Bijbels', 'christelijk-bijbels-2026b'], ['psalmboeken', 'Psalmboeken'], ['kerststal-engelen', 'Kerststal & engelen', 'christelijk-kerststal-engelen'],
+    ['bijbels', 'Bijbels', 'christelijk-bijbels-2026b'], ['psalmboeken', 'Psalmboeken', 'christelijk-psalmboeken-w'], ['kerststal-engelen', 'Kerststal & engelen', 'christelijk-kerststal-engelen'],
     ['sieraden', 'Kruisjes & sieraden', 'christelijk-sieraden'], ['kerst', 'Christelijke kerst', 'christelijk-kerst-2026b'],
     ['bijbelteksten-wanddecoratie', 'Bijbelteksten & wanddecoratie', 'christelijk-wanddecoratie'], ['boeken-muziek', 'Boeken & muziek', 'christelijk-boeken-muziek'],
     ['doop-belijdenis', 'Doop & belijdenis', 'christelijk-doop-belijdenis'], ['voor-kinderen', 'Voor kinderen', 'christelijk-voor-kinderen']
