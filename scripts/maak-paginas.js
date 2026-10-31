@@ -108,6 +108,15 @@ function maakPagina(info, lade, mega) {
     lade: document.querySelector('[data-lade]').innerHTML,
     mega: document.querySelector('[data-megamenu]').innerHTML
   }));
+  /* Vakjes die bij de nieuwe indeling (2.1) een andere naam kregen: het oude adres stuurt door naar het nieuwe vakje.
+     Zo blijven adressen die Google al kent werken (gevonden bij de grote controle van 31-10-2026). */
+  const vakVerhuis = await page.evaluate(() => {
+    const o = {};
+    (window.LK_CATEGORIEEN || []).forEach(c => (c.subs || []).forEach(s => {
+      if (s.verborgen && (s.vak || s.naar)) o['c/' + c.slug + '/' + s.slug] = s.naar ? s.naar.replace(/\/?$/, '/') : '/c/' + s.vak + '/';
+    }));
+    return o;
+  });
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   const gezien = new Set(['/', '/categorieen', '/lijst']), rij = ['/', '/categorieen', '/lijst'], paginas = [];
@@ -191,8 +200,11 @@ function maakPagina(info, lade, mega) {
     'c/cadeaus/voor-hem': '/voor/hem/', 'c/cadeaus/voor-haar': '/voor/haar/', 'c/cadeaus/voor-kinderen': '/voor/kinderen/',
     'c/cadeaus/opa-oma': '/voor/opa-oma/', 'c/cadeaus/collega': '/voor/collega/', 'c/cadeaus/baby-kraam': '/voor/baby/',
     /* 2.0: horloges, geuren en verzorging zijn verhuisd van Mode & Beauty naar hun eigen groep. */
-    'c/mode-beauty/horloges': '/c/sieraden/horloges/', 'c/mode-beauty/geuren': '/c/geuren-verzorging/geuren/', 'c/mode-beauty/verzorging': '/c/geuren-verzorging/verzorging/'
+    'c/mode-beauty/horloges': '/c/sieraden/horloges/', 'c/mode-beauty/geuren': '/c/geuren-verzorging/geuren/', 'c/mode-beauty/verzorging': '/c/geuren-verzorging/huidverzorging/',
+    /* 2.1: vakjes die verhuisd of opgegaan zijn in een ander vakje */
+    'c/cadeaus/adventskalenders': '/c/eten-drinken/adventskalenders/', 'c/christelijk/onder-25': '/c/christelijk/'
   };
+  for (const [oudPad, nieuwPad] of Object.entries(vakVerhuis)) if (!VERHUISD[oudPad]) VERHUISD[oudPad] = nieuwPad;
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
     const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad);

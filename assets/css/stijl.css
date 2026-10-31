@@ -928,6 +928,9 @@ html.feest body::after {
 .persoon-subs .subkaart { font-size: 13px; }
 .persoon-subs .subkaart .rond { width: 92px; height: 92px; }
 .persoon-subs.home .subkaart .rond { width: 74px; height: 74px; }
+/* Lange namen (bijv. 'Brievenbuscadeaus') mogen de pagina op de telefoon niet breder maken (controle 31-10-2026). */
+.persoon-subs > * { min-width: 0; }
+.persoon-subs .subkaart { overflow-wrap: anywhere; hyphens: auto; }
 .persoon-subs .subkaart small { display: block; font: 500 11px/1 var(--f-ui); color: var(--tekst-2); margin-top: 2px; }
 @media (min-width: 600px) { .persoon-subs { grid-template-columns: repeat(4, 1fr); } .persoon-subs.home { grid-template-columns: repeat(7, 1fr); } }
 @media (min-width: 1024px) { .persoon-subs { grid-template-columns: repeat(6, 1fr); } .persoon-subs .subkaart .rond, .persoon-subs.home .subkaart .rond { width: 110px; height: 110px; } }

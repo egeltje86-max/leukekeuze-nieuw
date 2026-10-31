@@ -1729,7 +1729,7 @@
       var extra = (d.lijst ? '<ul>' + d.lijst.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' : '') +
         (d.stappen ? '<ol>' + d.stappen.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ol>' : '');
       if (!d.ids) { h += '<article class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</article>'; return; }
-      var lijst = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen; }));
+      var lijst = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen && p.status === 'goedgekeurd'; })); // uitverkochte producten niet tonen (geen pagina meer)
       if (!lijst.length) return;
       h += '<section class="sectie sfeer-modus"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</div>' + grid(lijst, '') + '</section>';
     });
