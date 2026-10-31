@@ -15,7 +15,7 @@ fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROO
   .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie'];
-const GEEN_INDEX = /^\/(favorieten|zoek|lijst)\//;
+const GEEN_INDEX = /^\/(favorieten|zoek|lijst)(\/|$)/; /* ook zonder slash erachter (31-10-2026: /zoek stond per ongeluk in de sitemap) */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
 
@@ -50,8 +50,11 @@ function maakLd(info, url) {
   const p = info.prod;
   if (p && p.prijs > 0) {
     const beeld = info.beeld ? (/^https?:/.test(info.beeld) ? info.beeld : SITE + '/' + info.beeld.replace(/^\//, '')) : undefined;
-    uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, brand: p.merk ? { '@type': 'Brand', name: p.merk } : undefined, description: p.tekst || undefined, image: beeld, url,
-      offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
+    /* EAN (gtin13) als het product-id er een bevat, met controle van het laatste cijfer (31-10-2026). */
+    const ean = (p.id.match(/^(?:dw|kw|inv|dgsw|dvzn|tf|bt|drm|hema)-(\d{13})$/) || [])[1];
+    const eanOk = ean && (10 - ean.split('').slice(0, 12).reduce((s, c, i) => s + (+c) * (i % 2 ? 3 : 1), 0) % 10) % 10 === +ean[12];
+    uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, gtin13: eanOk ? ean : undefined, brand: p.merk ? { '@type': 'Brand', name: p.merk } : undefined, description: p.tekst || undefined, image: beeld, url,
+      offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: p.status === 'uitverkocht' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
   }
   return uit;
 }
@@ -63,10 +66,12 @@ function deelBeeld(pad) {
   return fs.existsSync(path.join(ROOT, 'images', 'deel', naam + '.jpg')) ? 'images/deel/' + naam + '.jpg' : '';
 }
 
-function maakPagina(info, lade, mega) {
+function maakPagina(info, lade, mega, aftel, zoekrij) {
   let h = SJABLOON;
   const url = SITE + info.pad;
-  h = zet(h, /<title>[^<]*<\/title>/, '<title>' + escA(info.titel) + '</title>');
+  /* Lange producttitels: zonder ' | LeukeKeuze' erachter, anders knipt Google de titel af (31-10-2026). */
+  const titel = info.titel.length > 62 ? info.titel.replace(/ \| LeukeKeuze$/, '') : info.titel;
+  h = zet(h, /<title>[^<]*<\/title>/, '<title>' + escA(titel) + '</title>');
   h = zet(h, /<meta name="description" content="[^"]*">/, '<meta name="description" content="' + escA(info.omschrijving) + '">');
   h = zet(h, /<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + url + '">');
   h = zet(h, /<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="' + escA(info.titel) + '">');
@@ -79,11 +84,16 @@ function maakPagina(info, lade, mega) {
          .replace(/\s*<meta property="og:image:(width|height)" content="[^"]*">/g, '');
     if (info.beeldMaat) h = h.replace(/(<meta property="og:image" content="[^"]*">)/, '$1\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">');
   }
+  if (aftel) h = zet(h, /<a class="aftel" href="[^"]*" data-aftel hidden><\/a>/, aftel).replace('<html lang="nl">', '<html lang="nl" class="met-aftel">');
+  if (zoekrij) h = zet(h, /<div class="zoekrij" data-zoekrij><div class="binnen"><\/div><\/div>/, '<div class="zoekrij" data-zoekrij' + (/^\/zoek(\/|$)/.test(info.pad) ? ' hidden' : '') + '><div class="binnen">' + zoekrij + '</div></div>');
+  if (info.deel && info.prod) h = zet(h, /<script src="assets\/js\/data\.js/, '<script>window.LK_DETAILS_DEEL=' + JSON.stringify({ [info.prod.id]: info.deel }).replace(/</g, '\\u003c') + ';</script>\n  <script src="assets/js/data.js');
+  /* Hoofdfoto van een product alvast ophalen (LCP): die staat pas onderaan in de HTML. */
+  if (info.pad.indexOf('/p/') === 0 && info.beeld && !/^https?:/.test(info.beeld)) h = zet(h, /<\/head>/, '  <link rel="preload" as="image" href="' + escA(info.beeld) + '" fetchpriority="high">\n</head>');
   const ld = maakLd(info, url);
   if (ld.length) h = zet(h, /<\/head>/, ld.map(x => '  <script type="application/ld+json">' + JSON.stringify(x).replace(/</g, '\\u003c') + '</script>').join('\n') + '\n</head>');
   if (info.geenIndex) h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex, follow">');
   /* De banner van de homepage alleen vooraf laden op de homepage zelf (scheelt ~90 kB op elke andere pagina, vooral op mobiel). */
-  if (info.pad !== '/') h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-home-[^"]*"[^>]*>/g, '');
+  if (info.pad !== '/') h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-[^"]*"[^>]*>/g, '');
   h = zet(h, /<main id="app" tabindex="-1"><\/main>/, '<main id="app" tabindex="-1">' + info.inhoud + '</main>');
   if (info.pad.indexOf('/p/') !== 0) {  // productpagina's klein houden: menu's vult de site zelf
     h = zet(h, /<div class="lade-inhoud" data-lade><\/div>/, '<div class="lade-inhoud" data-lade>' + lade + '</div>');
@@ -103,6 +113,14 @@ function maakPagina(info, lade, mega) {
   await page.route('https://**', r => r.abort());
   await page.goto(basis + '/');
   await page.waitForFunction(() => window.LK && window.LK.ga && document.querySelector('#app').children.length);
+  /* Details (winkellinks, varianten, specs) alvast laden, zodat elke productpagina compleet gebouwd wordt
+     en de details van dát product in de HTML kunnen (snelheid, 31-10-2026). */
+  await page.addScriptTag({ url: basis + '/assets/js/producten-details.js' });
+  await page.evaluate(() => { const D = window.LK_DETAILS || {}; (window.LK_PRODUCTEN || []).forEach(p => { if (D[p.id]) Object.assign(p, D[p.id]); }); });
+  /* Aftelbalk (Sinterklaas/kerst) alvast in de HTML zetten: anders schuift de hele pagina omlaag zodra de site hem toont (CLS). */
+  const aftel = await page.evaluate(() => { const a = document.querySelector('[data-aftel]'); return a && !a.hidden ? a.outerHTML : ''; });
+  /* Zoekbalk onder de kop ook alvast in de HTML (31-10-2026): anders schoof de pagina 50px omlaag zodra app.js hem maakte (CLS 0,06-0,09). */
+  const zoekrij = await page.evaluate(() => { const z = document.querySelector('[data-zoekrij] .binnen'); return z ? z.innerHTML : ''; });
 
   const { lade, mega } = await page.evaluate(() => ({
     lade: document.querySelector('[data-lade]').innerHTML,
@@ -120,7 +138,7 @@ function maakPagina(info, lade, mega) {
   const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
-  const gezien = new Set(['/', '/categorieen', '/lijst']), rij = ['/', '/categorieen', '/lijst'], paginas = [];
+  const gezien = new Set(['/', '/categorieen/', '/lijst/']), rij = ['/', '/categorieen/', '/lijst/'], paginas = [];
   while (rij.length) {
     const pad = rij.shift();
     const r = await page.evaluate(pad => {
@@ -142,10 +160,11 @@ function maakPagina(info, lade, mega) {
       }
       /* Gegevens voor Google (structured data): kruimelpad en, op productpagina's, het product. */
       const kruimel = Array.from(app.querySelectorAll('nav.kruimel a, nav.kruimel > span:not([aria-hidden])')).map(x => ({ naam: x.textContent.trim(), naar: x.getAttribute('href') || '' }));
-      let prod = null;
+      let prod = null, deel = null;
       if (pad.indexOf('/p/') === 0) {
         const pr = window.LK.vind(pad.split('/')[2]);
-        if (pr) prod = { id: pr.id, naam: pr.titel, tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url };
+        if (pr) prod = { id: pr.id, naam: pr.titel, tekst: (pr.waarom || '').replace(/\s+/g, ' ').trim(), prijs: pr.prijs, winkel: pr.shop, url: pr.winkelUrl || pr.url, status: pr.status };
+        if (pr && window.LK_DETAILS && window.LK_DETAILS[pr.id]) deel = window.LK_DETAILS[pr.id];
       }
       /* Datum voor de sitemap: productpagina's de laatste controle, categoriepagina's het nieuwste product erin. */
       let datum = '';
@@ -160,10 +179,10 @@ function maakPagina(info, lade, mega) {
         titel: document.title, inhoud: app.innerHTML, links, aantal,
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
-        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum
+        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum
       };
     }, pad);
-    for (const l of r.links) if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
+    for (const l0 of r.links) { const l = /\/$/.test(l0) ? l0 : l0 + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); } } /* altijd met slash: één adres per pagina */
     if (r.nietGevonden) { console.log('overgeslagen (niet gevonden):', pad); continue; }
     let oms = r.seo || '';
     if (!oms && pad.indexOf('/c/') === 0 && r.aantal) {
@@ -172,7 +191,7 @@ function maakPagina(info, lade, mega) {
     }
     oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg });
   }
   await browser.close(); srv.close();
@@ -182,7 +201,7 @@ function maakPagina(info, lade, mega) {
   for (const p of paginas) {
     const doel = path.join(ROOT, p.pad, 'index.html');
     fs.mkdirSync(path.dirname(doel), { recursive: true });
-    fs.writeFileSync(doel, maakPagina(p, lade, mega));
+    fs.writeFileSync(doel, maakPagina(p, lade, mega, aftel, zoekrij));
   }
   /* Oude adressen van de vorige site die Google nog kent: een echte pagina met canonical + direct doorsturen.
      Google ziet dat als een permanente verhuizing, zodat de waarde van het oude adres naar de nieuwe pagina gaat.

@@ -62,6 +62,7 @@
   function huidigAdres() { return location.pathname + location.search; }
   function ga(url, vervang) {
     url = netjes(url);
+    if (!window.LK_PRODUCTEN) { location[vervang ? 'replace' : 'assign'](url); return; } /* lijst nog niet binnen: gewoon de pagina laden */
     try { history[vervang ? 'replaceState' : 'pushState']({}, '', url); } catch (e) { location.href = url; return; }
     toon();
   }
@@ -637,7 +638,7 @@
       return '<div class="product-beeld echt galerij varianten" data-galerij data-varianten="' + esc(p.id) + '">' +
         '<div class="galerij-rij">' + vs.map(function (v, i) {
           var web = /^https?:/.test(v.beeld);
-          return '<figure><img src="' + esc(web ? v.beeld : v.beeld + '.webp') + '" alt="' + esc(p.titel + ', ' + v.kleur) + '"' + (i ? ' loading="lazy"' : '') + (web ? ' referrerpolicy="no-referrer"' : '') + ' decoding="async"></figure>';
+          return '<figure><img src="' + esc(web ? v.beeld : v.beeld + '.webp') + '" alt="' + esc(p.titel + ', ' + v.kleur) + '"' + (i ? ' loading="lazy"' : ' fetchpriority="high"') + (web ? ' referrerpolicy="no-referrer"' : '') + ' decoding="async"></figure>';
         }).join('') + '</div>' +
         '<button class="galerij-knop vorige" type="button" data-galerij-stap="-1" aria-label="Vorige ' + esc((p.keuzeLabel || 'kleur').toLowerCase()) + '">' + ic('vorige') + '</button>' +
         '<button class="galerij-knop volgende" type="button" data-galerij-stap="1" aria-label="Volgende ' + esc((p.keuzeLabel || 'kleur').toLowerCase()) + '">' + ic('rechts') + '</button>' +
@@ -651,7 +652,7 @@
     return '<div class="' + klasse + ' galerij" data-galerij>' +
       '<div class="galerij-rij">' + alle.map(function (b, i) {
         var src = /^https?:/.test(b) ? b : b + '.webp';
-        return '<figure><img src="' + esc(src) + '" alt="' + esc(p.titel) + (i ? ' (foto ' + (i + 1) + ')' : '') + '"' + (i ? ' loading="lazy"' : '') + ' decoding="async"></figure>';
+        return '<figure><img src="' + esc(src) + '" alt="' + esc(p.titel) + (i ? ' (foto ' + (i + 1) + ')' : '') + '"' + (i ? ' loading="lazy"' : ' fetchpriority="high"') + ' decoding="async"></figure>';
       }).join('') + '</div>' +
       '<button class="galerij-knop vorige" type="button" data-galerij-stap="-1" aria-label="Vorige foto">' + ic('vorige') + '</button>' +
       '<button class="galerij-knop volgende" type="button" data-galerij-stap="1" aria-label="Volgende foto">' + ic('rechts') + '</button>' +
@@ -705,6 +706,15 @@
 
   /* 2.0: winkellinks, specs en noten staan in een apart bestand dat pas op een productpagina laadt (sneller op de telefoon). */
   var detailsBezig = false;
+  /* Snelheid (31-10-2026): op een gebouwde productpagina staan de details van dát product al in de HTML (LK_DETAILS_DEEL),
+     zodat het grote detailbestand (3 MB) niet hoeft te laden. */
+  function heeftDetails(p) {
+    if (!p) return false;
+    if (window.LK_DETAILS && window.LK_DETAILS[p.id]) return true;
+    var D = window.LK_DETAILS_DEEL;
+    if (D && D[p.id]) { if (!p.detailsGeladen) { Object.assign(p, D[p.id]); p.detailsGeladen = true; } return true; }
+    return false;
+  }
   function laadDetails(klaar) {
     if (window.LK_DETAILS) { klaar(); return; }
     if (detailsBezig) return; detailsBezig = true;
@@ -725,7 +735,7 @@
       return product(p.samengevoegd);
     }
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
-    if (!window.LK_DETAILS) laadDetails(function () { if (location.pathname.indexOf('/p/' + id) === 0) toon(); });
+    if (!heeftDetails(p)) laadDetails(function () { if (location.pathname.indexOf('/p/' + id) === 0) toon(); });
     onthoudBekeken(p.id);
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
     /* 2.0: staat dit vak onder een andere groep (bijv. mode-beauty/horloges onder Sieraden & Horloges), dan dat kruimelpad. */
@@ -734,7 +744,7 @@
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
       ? '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
-      : (!window.LK_DETAILS && !p.voorbeeld ? '<span class="knop knop-goud uit" aria-disabled="true">Bekijk bij ' + esc(p.shop) + '…</span>'
+      : (!heeftDetails(p) && !p.voorbeeld ? '<span class="knop knop-goud uit" aria-disabled="true">Bekijk bij ' + esc(p.shop) + '…</span>'
       : '<span class="knop knop-goud uit" aria-disabled="true">Voorbeeld – nog geen winkellink</span>');
 
     var ookIn = (p.ookIn || []).map(function (x) {
@@ -1323,10 +1333,10 @@
       '<h2>Hosting</h2><p>De website staat bij GitHub Pages (GitHub, Inc.). Bij elk bezoek ziet de server technische gegevens, zoals je IP-adres. GitHub gebruikt die om de site veilig en werkend te houden. Wij krijgen deze gegevens niet.</p>' +
       '<h2>Bezoekersstatistieken</h2><p>Om te zien hoeveel mensen de site bezoeken en welke pagina’s ze bekijken, gebruiken we GoatCounter. Dat werkt zonder cookies en zonder persoonlijke gegevens te bewaren: er wordt geen IP-adres opgeslagen en we zien niet wie je bent. We zien alleen aantallen, zoals welke pagina’s populair zijn, uit welk land bezoekers komen en via welke site ze binnenkwamen.</p>' +
       '<h2>Lettertypes</h2><p>De lettertypes staan op onze eigen site. Er wordt dus niets bij Google Fonts opgehaald.</p>' +
-      '<h2>Partnerlinks en cookies van winkels</h2><p>Klik je op “Bekijk bij …”, dan ga je naar de winkel. Vaak loopt die link via een partnernetwerk, zoals Daisycon, het bol partnerprogramma of het partnerprogramma van Amazon. Zij plaatsen dan een cookie om te zien dat je via LeukeKeuze kwam. Zo kan de winkel ons een kleine vergoeding geven als je iets koopt. Wij zien niet wie je bent of wat je koopt; alleen hoeveel er via onze links is verkocht. Op de site van de winkel gelden hun eigen privacyverklaring en cookies.</p>' +
+      '<h2>Partnerlinks en cookies van winkels</h2><p>Klik je op “Bekijk bij …”, dan ga je naar de winkel. Vaak loopt die link via een partnernetwerk, zoals Daisycon, TradeTracker, Awin, het bol partnerprogramma of het partnerprogramma van Amazon. Zij plaatsen dan een cookie om te zien dat je via LeukeKeuze kwam. Zo kan de winkel ons een kleine vergoeding geven als je iets koopt. Wij zien niet wie je bent of wat je koopt; alleen hoeveel er via onze links is verkocht. Op de site van de winkel gelden hun eigen privacyverklaring en cookies.</p>' +
       '<h2 lang="en">Privacy Policy (English summary)</h2><p lang="en">Controller: Marius (LeukeKeuze), Kromhout 108, 3311 RH Dordrecht, The Netherlands, leukekeuze.nl@gmail.com. ' +
       'We do not collect personal data: no accounts, no forms, no own tracking or advertising cookies. Favourites are stored only in your own browser. ' +
-      'The site is hosted on GitHub Pages; fonts are served from our own site. Visitor statistics are collected with GoatCounter, without cookies and without storing personal data. Links to shops may run through affiliate networks (Daisycon, bol.com, Amazon), which set their own cookies to register sales. ' +
+      'The site is hosted on GitHub Pages; fonts are served from our own site. Visitor statistics are collected with GoatCounter, without cookies and without storing personal data. Links to shops may run through affiliate networks (Daisycon, TradeTracker, Awin, bol.com, Amazon), which set their own cookies to register sales. ' +
       'Questions or requests about your data: e-mail us. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).</p>' +
       '<h2>Je rechten</h2><p>Omdat wij zelf geen persoonsgegevens van je bewaren, is er meestal niets om in te zien of te wissen. Heb je toch een vraag over privacy? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>'],
     'voorwaarden': ['Algemene voorwaarden (Terms and Conditions)',
@@ -1359,7 +1369,7 @@
 
   /* ---------- Cadeaugidsen: eigen tekst met een paar gekozen producten per stukje ---------- */
   var GIDSEN = [
-    { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen', 'hobby/knutselen'],
+    { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren', 'hobby/origami-scrapbooking'],
       titel: 'Surprise maken voor Sinterklaas: 25 ideeën, tips en wat je erin stopt', kort: 'Geen inspiratie voor je surprise? Hier vind je ideeën per persoon, een stappenplan en tips voor het gedicht.',
       intro: 'Lootjes getrokken en nu moet er een surprise komen? Een surprise is het leukste deel van pakjesavond: een zelfgemaakte verpakking die past bij de persoon, met een cadeautje erin en een gedicht erbij. Je hoeft er echt geen knutselkampioen voor te zijn. Met een doos, wat karton, een lijmpistool en verf kom je al heel ver. Hieronder vind je een simpel stappenplan, 25 ideeën per type persoon, tips voor het gedicht en de spullen die je nodig hebt.',
       delen: [
@@ -1403,9 +1413,9 @@
         { kop: 'Spullen om je surprise te maken', tekst: 'Met deze spullen kun je bijna elke surprise maken. Een lijmpistool is echt een aanrader: alles zit in een paar seconden vast.',
           ids: ['bol-9300000226734832', 'bol-9200000074078488', 'bol-9200000104255819', 'bol-9300000146207567', 'bol-9200000052919661', 'bol-9200000059166526', 'bol-9300000245957314'] },
         { kop: 'Kleine cadeautjes voor in je surprise', tekst: 'Bij lootjes trekken spreek je vaak een bedrag af. Deze cadeautjes passen in bijna elke surprise en blijven onder de €15.',
-          ids: ['bol-9300000171163755', 'bol-9300000138803498', 'bol-9300000031046460', 'bol-9300000345522494', 'bol-9300000017407527', 'bol-9300000240237143'] },
+          ids: ['bol-9300000171163755', 'bol-9300000138803498', 'bol-9300000031046460', 'bol-9300000345522498', 'bol-9300000017407527', 'bol-9300000240237143'] },
         { kop: 'Iets lekkers erbij', tekst: 'Een chocoladeletter of kruidnoten horen er gewoon bij. Leuk om in of naast je surprise te leggen.',
-          ids: ['bol-9300000010371405', 'bol-9300000161275021', 'bol-9300000244698921'] },
+          ids: ['bol-9300000010371405', 'dw-4000161850236', 'dk-00015052'] },
         { kop: 'Tips voor het gedicht', tekst: 'Het gedicht is minstens zo belangrijk als de surprise. Het mag plagen, maar houd het lief: iedereen moet erom kunnen lachen.',
           lijst: [
             'Begin klassiek: "Sinterklaas zat te denken wat hij [naam] dit jaar zou schenken…"',
@@ -1425,10 +1435,10 @@
         { kop: 'Zelf maken en ontdekken (€5 tot €8)', tekst: 'Knutselen en proefjes doen: daar zijn ze na pakjesavond nog dagen mee bezig.',
           ids: ['bol-9300000138803474', 'bol-9300000025044624', 'bol-9200000104835927', 'bol-9300000168680075'] },
         { kop: 'Boekjes en spelletjes (tot €10)', tekst: 'Een sinterklaasboekje om voor te lezen, of een spel om meteen samen te spelen.',
-          ids: ['bol-9300000112625200', 'bol-9200000006380085', 'bol-9300000065878158', 'bol-9300000157956217'] }
+          ids: ['bol-9300000181968006', 'bol-9200000006380085', 'bol-9300000065878158', 'bol-9300000157956217'] }
       ],
       slot: 'Meer kleine cadeautjes staan bij <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
-    { slug: 'speelgoed-van-het-jaar-2026', beeld: 'bol-9300000246863962', vakken: ['speelgoed', 'speelgoed/bordspellen', 'speelgoed/kaartspellen', 'speelgoed/bouwen', 'speelgoed/figuren-voertuigen', 'speelgoed/baby-peuter', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas'],
+    { slug: 'speelgoed-van-het-jaar-2026', beeld: 'bol-9300000246863962', vakken: ['speelgoed', 'speelgoed/bord-kaartspellen', 'speelgoed/lego', 'speelgoed/autos-treinen-rc', 'speelgoed/baby-houten', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas'],
       titel: 'Speelgoed van het Jaar 2026: de winnaars op een rij', kort: 'Bekroond speelgoed en spellen, gekozen door een vakjury en door heel Nederland.',
       intro: 'Elk jaar kiest een vakjury het beste speelgoed van Nederland, en daarna stemt heel Nederland mee voor de publieksprijs. Zo’n winnaar is een veilige keuze: getest, leuk om mee te spelen en vaak een echte hit. Hier staan de winnaars van 2026 die je bij ons vindt, op een rij per soort.',
       delen: [
@@ -1441,8 +1451,8 @@
         { kop: 'Spelen en knuffelen', tekst: 'Een knuffel die terugpraat, een pop die uit een zaadje groeit, een babypop die echt drinkt en een zeemeermin die bellen blaast.',
           ids: ['bol-9300000261530245', 'bol-9300000269708157', 'bol-9300000267785127', 'bol-9300000244057642'] }
       ],
-      slot: 'Meer speelgoed vind je bij <a href="/c/speelgoed">Speelgoed & Spellen</a> en <a href="/c/cadeaus/voor-kinderen">Cadeaus voor kinderen</a>. Tip: populaire winnaars zijn rond Sinterklaas vaak snel uitverkocht, dus wacht niet te lang.' },
-    { slug: 'sinterklaas-voor-volwassenen', beeld: 'bol-9300000232180883', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/onder-15', 'eten-drinken/chocolade-snoep'], titel: 'Sinterklaascadeaus voor volwassenen: lootjes, surprises en lekkers', kort: 'Ideeën voor als je lootjes trekt met familie, vrienden of collega’s.',
+      slot: 'Meer speelgoed vind je bij <a href="/c/speelgoed">Speelgoed & Spellen</a> en <a href="/voor/kinderen">Cadeaus voor kinderen</a>. Tip: populaire winnaars zijn rond Sinterklaas vaak snel uitverkocht, dus wacht niet te lang.' },
+    { slug: 'sinterklaas-voor-volwassenen', beeld: 'bol-9300000232180883', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/onder-15', 'eten-drinken/chocolade'], titel: 'Sinterklaascadeaus voor volwassenen: lootjes, surprises en lekkers', kort: 'Ideeën voor als je lootjes trekt met familie, vrienden of collega’s.',
       intro: 'Sinterklaas is niet alleen voor kinderen. Veel families en vriendengroepen trekken lootjes, vaak met een vast bedrag van 10 of 15 euro. Dit zijn cadeaus die het goed doen bij volwassenen: iets om te spelen, iets lekkers, of iets dat je echt gebruikt.',
       delen: [
         { kop: 'Voor de lootjes (tot €15)', tekst: 'Een spel voor na het uitpakken, een grote mok, of een puzzel van de intocht.',
@@ -1453,7 +1463,7 @@
           ids: ['bol-9200000091821418', 'bol-9200000016853146', 'bol-9300000343902998', 'bol-9300000005044757'] }
       ],
       slot: 'Alle sinterklaascadeaus vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Zoek je iets voor een kind? Kijk dan bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a>.' },
-    { slug: 'kerstcadeau-onder-25', beeld: 'bol-9300000238623285', vakken: ['cadeaus/kerst', 'cadeaus/onder-15', 'eten-drinken', 'wonen/kerstdecoratie'], titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten.',
+    { slug: 'kerstcadeau-onder-25', beeld: 'bol-9300000238623285', vakken: ['cadeaus/kerst', 'cadeaus/onder-15', 'eten-drinken', 'wonen/kerst'], titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten.',
       intro: 'Met Kerst geef je vaak aan meer mensen tegelijk. Dan is het fijn als een cadeau niet te duur is, maar wel echt leuk om te krijgen. Deze cadeaus kosten allemaal minder dan 25 euro.',
       delen: [
         { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee en chocolade in een mooie verpakking. Altijd goed, voor iedereen.',
@@ -1464,7 +1474,7 @@
           ids: ['bol-9300000172981367', 'bol-9300000133136276', 'bol-9300000174665071', 'bol-9300000375928006'] }
       ],
       slot: 'Meer goedkope cadeaus vind je bij <a href="/c/cadeaus/onder-15">Cadeaus onder €15</a>. Alle kerstcadeaus staan bij <a href="/c/cadeaus/kerst">Kerst</a>.' },
-    { slug: 'kerstcadeau-voor-haar', beeld: 'bol-9300000142746730', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar', 'mode-beauty', 'mode-beauty/geuren', 'mode-beauty/verzorging'], titel: 'Kerstcadeau voor haar: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van 19 tot 130 euro.',
+    { slug: 'kerstcadeau-voor-haar', beeld: 'bol-9300000142746730', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar', 'mode-beauty', 'geuren-verzorging/parfum', 'geuren-verzorging/huidverzorging'], titel: 'Kerstcadeau voor haar: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van 19 tot 130 euro.',
       intro: 'Een kerstcadeau voor haar hoeft niet ingewikkeld te zijn. Iets om jezelf mee te verwennen, iets lekkers bij de thee, of iets moois voor in huis. Ik zette cadeaus in drie prijsklassen op een rij, zodat je snel iets vindt dat bij je budget past.',
       delen: [
         { kop: 'Tot €25', tekst: 'Klein, maar met aandacht gekozen.',
@@ -1474,8 +1484,8 @@
         { kop: 'Luxe (vanaf €60)', tekst: 'Voor als je echt wilt uitpakken.',
           ids: ['bol-9300000331215829', 'bol-9300000142746730', 'bol-9200000132246044', 'bol-9300000236208265'] }
       ],
-      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/voor-haar">Cadeaus voor haar</a> en <a href="/c/mode-beauty/geuren">Geuren</a>.' },
-    { slug: 'kerstcadeau-voor-hem', beeld: 'bol-9300000105460117', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem', 'mode-beauty/geuren', 'sport-outdoor/darts', 'elektronica'], titel: 'Kerstcadeau voor hem: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van 20 tot 180 euro.',
+      slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/c/geuren-verzorging/geuren">Geuren</a>.' },
+    { slug: 'kerstcadeau-voor-hem', beeld: 'bol-9300000105460117', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem', 'geuren-verzorging/parfum', 'sport-outdoor/darts', 'elektronica'], titel: 'Kerstcadeau voor hem: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van 20 tot 180 euro.',
       intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: iets voor de auto, iets om mee te koken of te drinken, of een gadget. Hier staan ze in drie prijsklassen.',
       delen: [
         { kop: 'Tot €35', tekst: 'Leuk en betaalbaar.',
@@ -1485,18 +1495,18 @@
         { kop: 'Luxe (vanaf €80)', tekst: 'Voor een groot cadeau, of om met z’n allen te geven.',
           ids: ['bol-9300000105460117', 'bol-9200000118422706', 'bol-9300000015405237', 'bol-9200000132005044'] }
       ],
-      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/voor-hem">Cadeaus voor hem</a>, <a href="/c/sport-outdoor/darts">Darts</a> en <a href="/c/dranken">Dranken</a>.' },
+      slot: 'Meer ideeën staan bij <a href="/voor/hem">Cadeaus voor hem</a>, <a href="/c/sport-outdoor/darts">Darts</a> en <a href="/c/dranken">Dranken</a>.' },
     { slug: 'kerstcadeau-collega', beeld: 'bol-9300000237452859', vakken: ['cadeaus/kerst', 'cadeaus/collega'], titel: 'Kerstcadeau voor een collega of het hele team', kort: 'Echte cadeaus die ze blijven gebruiken: van een mooie pen tot een verwenset.',
       intro: 'Een kerstcadeau voor een collega moet niet te persoonlijk zijn en ook niet te duur. Maar het mag wel een echt cadeau zijn: iets wat ze elke werkdag gebruiken, of iets om thuis van te genieten. Dus geen zak chips of een reep chocola die je zo in de supermarkt koopt, maar iets waar ze nog lang aan terugdenken. Geef je met het hele team? Dan kun je wat groter denken.',
       delen: [
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
           ids: ['bol-9300000132296580', 'bol-9300000338660274', 'bol-9300000130428935', 'bol-9300000256554614'] },
         { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
-          ids: ['bol-9300000023740845', 'bol-9300000143116033', 'bol-9200000078061085', 'bol-9300000237729002'] },
+          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9200000078061085', 'cg-opvouwbare-aluminium-laptop-standaard'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
-          ids: ['bol-9300000237452859', 'bol-9300000002319410', 'bol-9300000225803811', 'bol-9300000021869451'] }
+          ids: ['bol-9300000242918333', 'bol-9300000244887994', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],
-      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega: 12 ideeën</a>.' },
+      slot: 'Meer ideeën staan bij <a href="/voor/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega: 12 ideeën</a>.' },
     { slug: 'kerststal-kopen', beeld: 'bol-9300000161906004', vakken: ['christelijk/kerststal-engelen', 'christelijk/kerst', 'christelijk/voor-kinderen', 'cadeaus/kerst'],
       titel: 'Kerststal kopen: van houten speelstal tot mooie kerststal voor in de kamer', kort: 'Houten kerststallen voor kinderen, sfeervolle stallen voor in huis en kleine kerststalletjes. Van 18 tot 505 euro.',
       intro: 'Een kerststal hoort bij Kerst. Hij laat zien waar het met Kerst echt om gaat: de geboorte van Jezus in de stal in Bethlehem. Maar welke kies je? Een houten stal waar kinderen mee mogen spelen, een mooie stal voor op de kast, of een klein stalletje voor in de vensterbank? Ik zette ze per soort op een rij, met tips waar je op let als je een kerststal koopt.',
@@ -1519,7 +1529,7 @@
           ids: ['bol-9200000045616958', 'bol-9200000045615078', 'bol-9200000045616978', 'bol-9200000045616830'] }
       ],
       slot: 'Meer kerststallen en engelen staan bij <a href="/c/christelijk/kerststal-engelen">Kerststallen &amp; engelen</a>. Zoek je iets voor kinderen? Kijk dan bij <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>.' },
-    { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/figuren-voertuigen', 'elektronica/gaming', 'cadeaus/sint-onder-15'],
+    { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/autos-treinen-rc', 'elektronica/gaming', 'cadeaus/sint-onder-15'],
       titel: 'De hypes van 2026: waar kinderen en tieners nu gek op zijn', kort: 'Tamagotchi, verrassingsdoosjes, KPop Demon Hunters en meer: dit staat op elk verlanglijstje.',
       intro: 'Elk jaar zijn er een paar dingen waar ineens iedereen het over heeft, op het schoolplein en op TikTok. In 2026 zijn dat de Tamagotchi (ja, die van vroeger), verrassingsdoosjes en tashangers, alles van KPop Demon Hunters, Pokémon en Stitch. Hier vind je ze op een rij, zodat je precies weet waar je kind of kleinkind blij van wordt.',
       delen: [
@@ -1532,8 +1542,8 @@
         { kop: 'Voor de kleine vlogger en gamer', tekst: 'Zelf filmpjes maken, een eigen horloge of de nieuwste Pokémon-game: voor kinderen die graag met techniek bezig zijn.',
           ids: ['bol-9300000273861930', 'bol-9300000152351739', 'bol-9300000240660527', 'bol-9300000183040640'] }
       ],
-      slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/voor-kinderen">Cadeaus voor kinderen</a> en in de gids <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>. Tip: hypes zijn rond Sinterklaas en Kerst vaak als eerste uitverkocht.' },
-    { slug: 'virale-cadeaus-2026', beeld: 'bol-9300000243481710', vakken: ['cadeaus/voor-haar', 'cadeaus/voor-hem', 'elektronica/audio', 'keuken/keukenapparaten', 'speelgoed/bouwen', 'mode-beauty/verzorging'],
+      slot: 'Meer ideeën vind je bij <a href="/voor/kinderen">Cadeaus voor kinderen</a> en in de gids <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>. Tip: hypes zijn rond Sinterklaas en Kerst vaak als eerste uitverkocht.' },
+    { slug: 'virale-cadeaus-2026', beeld: 'bol-9300000243481710', vakken: ['cadeaus/voor-haar', 'cadeaus/voor-hem', 'elektronica/speakers', 'keuken/keukenapparaten', 'speelgoed/lego', 'geuren-verzorging/huidverzorging'],
       titel: 'Virale cadeaus 2026: de hits van TikTok en Instagram', kort: 'Van de Ninja CREAMi tot LEGO-bloemen en de Bum Bum Cream: dit zie je nu overal voorbijkomen.',
       intro: 'Je kent het vast: je scrolt door TikTok of Instagram en ziet steeds weer hetzelfde product. Sommige daarvan zijn echt een hype geworden, en dat zijn vaak precies de cadeaus waar iemand stiekem op hoopt. Ik zette de bekendste op een rij, van een lippenbalsem van een paar tientjes tot een ijsmachine. Alles van bekende merken en via bol te bestellen.',
       delen: [
@@ -1547,7 +1557,7 @@
           ids: ['bol-9300000197592346', 'bol-9300000060629305', 'bol-9300000259398888', 'bol-9300000163759795'] }
       ],
       slot: 'Zoek je iets voor kinderen en tieners? Kijk dan in de gids <a href="/gids/hypes-2026">De hypes van 2026</a>. Voor parfum is er <a href="/gids/geuren-trends-2026">Geuren die nu hot zijn</a>. Tip: virale producten zijn rond de feestdagen snel uitverkocht, dus wacht niet te lang.' },
-    { slug: 'geuren-trends-2026', beeld: 'bol-9300000170836066', vakken: ['mode-beauty/geuren', 'mode-beauty', 'cadeaus/voor-haar'],
+    { slug: 'geuren-trends-2026', beeld: 'bol-9300000170836066', vakken: ['geuren-verzorging/parfum', 'mode-beauty', 'cadeaus/voor-haar'],
       titel: 'Geuren die nu hot zijn: ontdekkingssets, layeren en de klassiekers', kort: 'Van een proefset om te ontdekken tot de parfum die iedereen herkent.',
       intro: 'Parfum is een van de populairste cadeaus, en er gebeurt veel. Ontdekkingssets met kleine flesjes zijn in, net als "layeren": twee geuren over elkaar dragen voor je eigen mix. Daarnaast blijven de grote klassiekers het altijd goed doen. Hier staan de mooiste, voor haar en voor hem, van klein tot luxe.',
       delen: [
@@ -1560,8 +1570,8 @@
         { kop: 'Klassiekers voor hem', tekst: 'Stoere geuren die mannen echt dragen, vaak als set met douchegel of deo.',
           ids: ['bol-9300000228928212', 'bol-9300000245612578', 'bol-9300000247496139', 'bol-9300000363538158'] }
       ],
-      slot: 'Alle geuren vind je bij <a href="/c/mode-beauty/geuren">Geuren</a>. Tip: twijfel je? Kies een ontdekkingsset, dan kan de ander zelf de favoriet uitzoeken.' },
-    { slug: 'sinterklaas-onder-15', beeld: 'bol-9300000181433977', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen'], titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
+      slot: 'Alle geuren vind je bij <a href="/c/geuren-verzorging/geuren">Geuren</a>. Tip: twijfel je? Kies een ontdekkingsset, dan kan de ander zelf de favoriet uitzoeken.' },
+    { slug: 'sinterklaas-onder-15', beeld: 'bol-9300000181433977', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren'], titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
       intro: 'Op pakjesavond gaat het niet om dure cadeaus, maar om iets leuks om uit te pakken. Daarom zette ik de beste cadeautjes onder de 15 euro op een rij. Handig als je meerdere kinderen hebt, of als je lootjes trekt met een vast bedrag.',
       delen: [
         { kop: 'Voor kinderen die graag iets maken', tekst: 'Knutselsetjes zijn ideaal voor de schoen of als klein pakje: goedkoop, en ze zijn er na pakjesavond nog dagen zoet mee.',
@@ -1572,7 +1582,7 @@
           ids: ['bol-9300000237478282', 'bol-9300000155871150', 'bol-9300000192710306', 'bol-9300000255947352'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/sint-onder-15">alle Sinterklaascadeaus onder €15</a> en <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Tip: koop op tijd, rond 5 december zijn populaire cadeautjes vaak snel uitverkocht.' },
-    { slug: 'cadeau-voor-collega', beeld: 'bol-9300000143116033', vakken: ['cadeaus/collega', 'boeken-media/agendas'], titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
+    { slug: 'cadeau-voor-collega', beeld: 'bol-9300000143116033', vakken: ['cadeaus/collega', 'boeken-media/agendas-planners-kalenders'], titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
       intro: 'Een cadeau voor een collega is lastig: je wilt iets persoonlijks, maar het mag niet te duur of te gek zijn. Deze cadeaus vallen bijna altijd goed, voor een verjaardag, een afscheid of als bedankje.',
       delen: [
         { kop: 'Kleine bedankjes (tot €20)', tekst: 'Iets lekkers of een klein plantje voor op het bureau. Niet te veel, wel attent.',
@@ -1580,10 +1590,10 @@
         { kop: 'Voor op de werkplek', tekst: 'Praktisch en toch een cadeau: dingen waar iemand elke werkdag plezier van heeft.',
           ids: ['bol-9300000237729002', 'bol-1003004011415851', 'bol-9300000002319410', 'bol-9300000143116033'] },
         { kop: 'Afscheid met een knipoog', tekst: 'Gaat een collega weg? Een grappig cadeau maakt het afscheid luchtiger. Leuk om met het hele team te geven.',
-          ids: ['bol-9300000242745735', 'bol-9300000238049219', 'bol-9300000225912982', 'bol-9300000174098365'] }
+          ids: ['dvzn-990557', 'amz-b0dcw33ywj', 'bol-9300000225912982', 'bol-9300000171221372'] }
       ],
-      slot: 'Bekijk alle ideeën bij <a href="/c/cadeaus/collega">Cadeau voor collega</a>. Geef je met het hele team? Kijk dan ook eens naar de wat duurdere cadeaus, zoals een mooie laptoptas of lunchpot.' },
-    { slug: 'kerstcadeau-opa-oma', vakken: ['cadeaus/kerst', 'cadeaus/opa-oma', 'wonen/plaids-kussens', 'speelgoed/puzzels'], titel: 'Kerstcadeau voor opa en oma', kort: 'Cadeaus voor opa en oma die ze echt gaan gebruiken, van spelletjes tot herinneringen.',
+      slot: 'Bekijk alle ideeën bij <a href="/voor/collega">Cadeau voor collega</a>. Geef je met het hele team? Kijk dan ook eens naar de wat duurdere cadeaus, zoals een mooie laptoptas of lunchpot.' },
+    { slug: 'kerstcadeau-opa-oma', vakken: ['cadeaus/kerst', 'cadeaus/opa-oma', 'wonen/kussens-plaids', 'speelgoed/puzzels'], titel: 'Kerstcadeau voor opa en oma', kort: 'Cadeaus voor opa en oma die ze echt gaan gebruiken, van spelletjes tot herinneringen.',
       intro: 'Opa en oma zeggen vaak dat ze niets nodig hebben. Toch zijn er cadeaus waar ze echt blij van worden: iets om samen met de kleinkinderen te doen, iets warms voor de winter, of een herinnering.',
       delen: [
         { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die opa en oma nog kennen van vroeger, en die kleinkinderen ook leuk vinden.',
@@ -1591,10 +1601,10 @@
         { kop: 'Warm en gezellig de winter door', tekst: 'Voor lange winteravonden op de bank of in de stoel.',
           ids: ['bol-9300000196514024', 'bol-9300000236851351', 'bol-9200000075452260', 'bol-9300000098766103'] },
         { kop: 'Herinneringen en muziek', tekst: 'Foto’s van de kleinkinderen of muziek van vroeger: daar raken ze niet op uitgekeken.',
-          ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9300000171232502'] }
+          ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9200000099487936'] }
       ],
-      slot: 'Nog meer ideeën staan bij <a href="/c/cadeaus/opa-oma">Cadeaus voor opa en oma</a> en <a href="/c/cadeaus/kerst">Kerstcadeaus</a>.' },
-    { slug: 'sfeerlicht-donkere-avonden', vakken: ['wonen', 'wonen/verlichting', 'elektronica/slimme-gadgets'], titel: 'Sfeerlicht voor donkere avonden: lavalampen, sterrenprojectors en meer', kort: 'De klok is terug en het is vroeg donker. Zo maak je het thuis gezellig.',
+      slot: 'Nog meer ideeën staan bij <a href="/voor/opa-oma">Cadeaus voor opa en oma</a> en <a href="/c/cadeaus/kerst">Kerstcadeaus</a>.' },
+    { slug: 'sfeerlicht-donkere-avonden', vakken: ['wonen', 'wonen/lampen', 'elektronica/gadgets-trackers'], titel: 'Sfeerlicht voor donkere avonden: lavalampen, sterrenprojectors en meer', kort: 'De klok is terug en het is vroeg donker. Zo maak je het thuis gezellig.',
       intro: 'Als de klok een uur terug gaat, is het ineens om half zes al donker. Een fel plafondlicht maakt het dan niet gezellig. Deze lampen geven sfeer, en het zijn ook leuke cadeaus voor tieners en volwassenen.',
       delen: [
         { kop: 'Lavalampen', tekst: 'De klassieker uit de jaren zeventig is weer helemaal terug. Rustgevend om naar te kijken.',
@@ -1616,7 +1626,7 @@
         { kop: 'Voor op de nieuwe werkplek (€10 tot €30)', tekst: 'Iets handigs voor de nieuwe baan, zodat ze bij elke kop koffie even aan jullie denken.',
           ids: ['bol-9300000256133316', 'bol-9300000039415364', 'dvzn-847923', 'dvzn-7029'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als iedereen een paar euro geeft, kun je samen voor iets moois gaan.',
-          ids: ['bol-9300000237452859', 'bol-9300000021869451', 'bol-9300000174098365', 'bol-9300000015405237'] },
+          ids: ['bol-9300000242918318', 'cadeau-78a0e6aecb', 'bol-9300000174098365', 'bol-9300000141326647'] },
         { kop: 'Zo regel je het samen in 4 stappen', tekst: 'Met een paar afspraken is het zo geregeld.',
           stappen: [
             'Spreek af wie het regelt en hoeveel iedereen ongeveer geeft. Een vast bedrag van 5 of 10 euro per persoon voorkomt gedoe.',
@@ -1625,7 +1635,7 @@
             'Geef het cadeau op de laatste werkdag, met een kort praatje. Een paar zinnen over wat je gaat missen is genoeg.'
           ] }
       ],
-      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega</a>. Gaat iemand met pensioen? Lees dan <a href="/gids/cadeau-voor-pensioen">Cadeau voor pensioen</a>.' },
+      slot: 'Meer ideeën staan bij <a href="/voor/collega">Cadeau voor collega</a> en in de gids <a href="/gids/cadeau-voor-collega">Cadeau voor een collega</a>. Gaat iemand met pensioen? Lees dan <a href="/gids/cadeau-voor-pensioen">Cadeau voor pensioen</a>.' },
     { slug: 'cadeau-voor-pensioen', beeld: 'bol-9300000171232502', vakken: ['cadeaus/collega', 'cadeaus/opa-oma'],
       titel: 'Cadeau voor pensioen: voor een collega, je vader of je moeder', kort: 'Grappige cadeaus, iets om te bewaren en spullen voor de nieuwe hobby. Van 9 tot 259 euro.',
       intro: 'Na jaren werken eindelijk met pensioen. Daar hoort een cadeau bij! Maar wat geef je iemand die ineens alle tijd heeft? Iets grappigs voor de afscheidsreceptie, iets om de herinneringen aan het werk te bewaren, of juist iets voor de hobby waar nu eindelijk tijd voor is: vogels kijken, fietsen, tuinieren of schatzoeken met een metaaldetector. Ik zette de beste ideeën op een rij.',
@@ -1633,12 +1643,12 @@
         { kop: 'Met een knipoog', tekst: 'Voor op de afscheidsreceptie. Daar wordt om gelachen.',
           ids: ['dvzn-734300', 'amz-b0hgq4q3pd', 'bol-9300000234965416', 'bol-9300000385427142'] },
         { kop: 'Om te bewaren', tekst: 'Laat collega’s, familie en vrienden iets schrijven. Dat leest iemand later nog vaak terug.',
-          ids: ['amz-b0b3tdry1m', 'bol-9200000064944767', 'dvzn-452003', 'amz-b0d95l6674'] },
+          ids: ['amz-b0b3tdry1m', 'dvzn-542206', 'dvzn-452003', 'amz-b0d95l6674'] },
         { kop: 'Voor de nieuwe hobby', tekst: 'Eindelijk tijd voor wat je altijd al wilde doen. Met deze cadeaus kan iemand meteen beginnen.',
           ids: ['bol-9300000171232502', 'bol-9200000018494649', 'bol-9200000010409823', 'bol-9200000075382464', 'bol-9300000057830180', 'bol-9300000007378766'] },
         { kop: 'Tip: geef er een afspraak bij', tekst: 'Het mooiste cadeau voor iemand met pensioen is soms gewoon tijd samen. Schrijf op een kaartje bij je cadeau een afspraak: samen fietsen, samen naar de vogels kijken of een dagje uit. Dan heeft het cadeau meteen een plan erbij.' }
       ],
-      slot: 'Meer ideeën staan bij <a href="/c/cadeaus/collega">Cadeau voor collega</a>, <a href="/c/dieren/vogels">Vogels</a> en <a href="/c/metaaldetectie">Metaaldetectie</a>. Gaat er een collega weg naar een nieuwe baan? Lees dan <a href="/gids/afscheidscadeau-collega">Afscheidscadeau voor een collega</a>.' },
+      slot: 'Meer ideeën staan bij <a href="/voor/collega">Cadeau voor collega</a>, <a href="/c/dieren/vogels">Vogels</a> en <a href="/c/metaaldetectie">Metaaldetectie</a>. Gaat er een collega weg naar een nieuwe baan? Lees dan <a href="/gids/afscheidscadeau-collega">Afscheidscadeau voor een collega</a>.' },
     { slug: 'valentijnscadeau-voor-haar', beeld: 'bp-l087', vakken: ['valentijn/voor-haar', 'valentijn', 'cadeaus/voor-haar', 'sieraden'],
       titel: 'Valentijnscadeau voor haar: romantische cadeaus voor je vriendin of vrouw', kort: 'Hartjessieraden, rozen die nooit verwelken en iets om haar te verwennen. Van 13 tot 1.200 euro.',
       intro: 'Een valentijnscadeau voor haar moet vooral laten zien dat je aan haar denkt. Dat hoeft niet duur te zijn: een sieraad met een hartje, rozen die nooit verwelken of een avondje verwennen zeggen vaak meer dan een groot cadeau. En het mooie is: deze cadeaus zijn het hele jaar goed, voor jullie jubileum of gewoon zomaar. Ik zette de mooiste op een rij.',
@@ -1657,9 +1667,9 @@
       intro: 'Een valentijnscadeau voor hem vinden is lastig. Veel mannen houden niet van roze hartjes, maar vinden een romantisch gebaar stiekem wel heel fijn. Kies daarom iets wat hij echt gebruikt en wat toch iets van jou zegt: een mooi horloge, een armband die hij elke dag draagt of een avond samen. Hier zijn de beste ideeën.',
       delen: [
         { kop: 'Iets om elke dag te dragen', tekst: 'Een horloge of een stoere armband. Elke keer dat hij erop kijkt, denkt hij aan jou.',
-          ids: ['bol-9200000076851367', 'bol-9300000267824769', 'bol-9300000047747066', 'myka-11001234004', 'tbl-tb0a2dhs999os1'] },
+          ids: ['bol-9200000076851367', 'bol-9300000267824769', 'bol-9300000047747066', 'myka-11003216232', 'tbl-tb0a2dhs999os1'] },
         { kop: 'Met zijn naam erop', tekst: 'Persoonlijk en toch stoer: manchetknopen, een ketting of een armband met een naam of letter.',
-          ids: ['myka-11017179911', 'myka-1101781611', 'myka-11001421304', 'myka-11003249788'] },
+          ids: ['myka-11017179911', 'myka-11015253511', 'myka-11001421304', 'myka-11003249788'] },
         { kop: 'Voor de man die van mooie spullen houdt', tekst: 'Een cocktailset voor een avond samen, een goede scheerset of een leren portemonnee.',
           ids: ['bol-9300000170256799', 'dvzn-208667', 'bol-9300000272321914', 'as-5063320998032'] },
         { kop: 'Tip: plan er iets bij', tekst: 'Mannen vinden een gezamenlijke activiteit vaak het leukste cadeau. Geef bij je cadeau een plan: samen uit eten, een avond cocktails maken of een dagje weg.' }
@@ -1683,7 +1693,7 @@
       intro: 'Een trouwdag is elk jaar weer een moment om stil te staan bij elkaar. Bij een groot jubileum, zoals 12,5, 25, 40 of 50 jaar getrouwd, hoort een cadeau dat blijft: een sieraad met jullie namen, iets moois voor in huis of een avond om het samen te vieren. Ook als je een cadeau zoekt voor je ouders of opa en oma die al zo lang samen zijn, vind je hier ideeën.',
       delen: [
         { kop: 'Iets dat blijft', tekst: 'Een sieraad van echt goud met jullie namen of twee harten in elkaar. Voor een groot jubileum.',
-          ids: ['myka-11001365601', 'myka-11001131631', 'myka-11003211420', 'myka-11003136601'] },
+          ids: ['myka-11001365601', 'myka-11001131631', 'myka-11003211420', 'bol-9300000194463478'] },
         { kop: 'Iets moois voor jullie huis', tekst: 'Een kunstwerk om samen te bouwen, de stad van de liefde of een plank met jullie namen.',
           ids: ['lego-31214', 'lego-21064', 'bol-9300000074464628', 'bol-9300000070824603'] },
         { kop: 'Samen vieren', tekst: 'Een avond fonduen of een sterrenhemel op het plafond: vier jullie dag thuis.',
@@ -1906,6 +1916,7 @@
     return true;
   }
   function toon() {
+    if (!window.LK_PRODUCTEN) return; /* de productlijst is er nog niet: de HTML van de pagina staat er al */
     onthoudPlek();
     laatstGetoond = huidigAdres();
     var a = leesAdres(), d = a.delen, html;
@@ -2278,13 +2289,26 @@
   window.addEventListener('storage', function () { werkTellersBij(); toon(); });
 
   /* ================== START ================== */
-  window.LK.ga = ga;
+  /* Snelheid (31-10-2026): de productlijst (producten-lean.js) laadt 'async'. De pagina staat al in de HTML, dus de bezoeker
+     ziet meteen tekst en foto's; de site wordt 'levend' zodra de lijst binnen is. Menu's en zoekvak kunnen alvast. */
   vulIconen(document);
-  bouwLade(); bouwMega();
   var zoekRij = $('[data-zoekrij] .binnen');
-  if (zoekRij) zoekRij.innerHTML = zoekForm('', 'Zoek een cadeau, bijv. bal, fiets of trein');
-  vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
+  /* Staat de zoekbalk al in de HTML (maak-paginas.js zet hem erin tegen verspringen)? Dan laten we hem staan, zodat wat je al typte blijft. */
+  if (zoekRij && !zoekRij.firstElementChild) zoekRij.innerHTML = zoekForm('', 'Zoek een cadeau, bijv. bal, fiets of trein');
+  else if (zoekRij) zoekForm.n = Math.max(zoekForm.n || 0, 1);
   netteLinks(document);
-  werkTellersBij();
-  toon();
+  function start() {
+    if (start.gedaan) return; start.gedaan = true;
+    window.LK.ga = ga;
+    bouwLade(); bouwMega(); netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
+    vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
+    werkTellersBij();
+    toon();
+  }
+  if (window.LK_PRODUCTEN) start();
+  else {
+    window.addEventListener('lk-producten', start);
+    /* Mocht het seintje om wat voor reden niet komen (oude browser): even later zelf kijken. */
+    var wacht = setInterval(function () { if (window.LK_PRODUCTEN) { clearInterval(wacht); start(); } }, 200);
+  }
 })();

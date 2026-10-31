@@ -8,22 +8,41 @@
 
   /* ---------- Keuringen (Productstudio) ---------- */
   function leesKeuringen() { return lees(K_KEUR, {}); }
-  function bewaarKeuringen(k) { return bewaar(K_KEUR, k); }
+  function bewaarKeuringen(k) { cache = null; return bewaar(K_KEUR, k); }
 
-  /* Producten + keuringen die op dít apparaat zijn gedaan. Afwijzen haalt niets weg. */
+  /* Producten + keuringen die op dít apparaat zijn gedaan. Afwijzen haalt niets weg.
+     Snelheid (31-10-2026): de lijst wordt één keer gemaakt en daarna hergebruikt. Eerst werd bij élke aanroep de hele lijst
+     (ruim 5.500 producten) opnieuw gekopieerd, tientallen keren per pagina: dat kostte op een telefoon seconden rekentijd. */
+  var cache = null, cacheBron = null;
   function producten() {
-    var k = leesKeuringen();
-    return (window.LK_PRODUCTEN || []).map(function (p) {
-      var e = k[p.id];
-      if (!e) return Object.assign({}, p);
+    if (cache && cacheBron === window.LK_PRODUCTEN) return cache;
+    var k = leesKeuringen(), lokaal = Object.keys(k).length > 0;
+    cacheBron = window.LK_PRODUCTEN;
+    cache = (window.LK_PRODUCTEN || []).map(function (p) {
+      var e = lokaal && k[p.id];
+      if (!e) return p;
       return Object.assign({}, p, {
         status: e.status || p.status, cat: e.cat || p.cat, sub: e.sub || p.sub,
         tekstHerschrijven: !!e.tekstHerschrijven, lokaal: true
       });
     });
+    return cache;
   }
-  function zichtbaar() { return producten().filter(function (p) { return p.status === 'goedgekeurd'; }); }
-  function vind(id) { return producten().find(function (p) { return p.id === id; }); }
+  function vergeetCache() { cache = null; }
+  var zichtbaarCache = null, zichtbaarBron = null;
+  function zichtbaar() {
+    var l = producten();
+    if (zichtbaarCache && zichtbaarBron === l) return zichtbaarCache;
+    zichtbaarBron = l;
+    return (zichtbaarCache = l.filter(function (p) { return p.status === 'goedgekeurd'; }));
+  }
+  var vindKaart = null, vindBron = null;
+  function vind(id) {
+    var l = producten();
+    if (!vindKaart || vindBron !== l) { vindBron = l; vindKaart = {}; for (var i = 0; i < l.length; i++) vindKaart[l[i].id] = l[i]; }
+    return vindKaart[id];
+  }
+  try { window.addEventListener('storage', function (e) { if (!e || !e.key || e.key === K_KEUR) cache = null; }); } catch (e) {}
   /* 'Nieuw' = de eerste 2 weken op de site ('sinds'). Zonder datum telt het vinkje 'nieuw'. */
   var NIEUW_DAGEN = 14;
   function isNieuw(p) {
@@ -156,7 +175,7 @@
   }
 
   window.LK = {
-    leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen,
+    leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen, vergeetCache: vergeetCache,
     producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij, isNieuw: isNieuw,
     favorieten: favorieten, isFavoriet: isFavoriet, wisselFavoriet: wisselFavoriet,
     esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart
@@ -193,7 +212,7 @@
   el.innerHTML = '<span class="aftel-beeld links" aria-hidden="true"></span>' +
     '<span class="aftel-midden">' + tekst + '<span class="aftel-knop">' + (thema === 'sint' ? 'Sinterklaascadeaus' : 'Kerstcadeaus') + ' →</span></span>' +
     '<span class="aftel-beeld rechts" aria-hidden="true"></span>';
-  el.setAttribute('aria-label', el.textContent.replace(' →', '') + ', bekijk de cadeaus');
+  el.setAttribute('aria-label', el.querySelector('.aftel-zin').textContent + '. Bekijk de ' + (thema === 'sint' ? 'Sinterklaascadeaus' : 'kerstcadeaus'));
   el.hidden = false;
   document.documentElement.classList.add('met-aftel');
 })();

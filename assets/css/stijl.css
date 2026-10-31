@@ -54,6 +54,9 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 h1, h2, h3 { margin: 0; font-weight: 500; }
 :focus-visible { outline: 2px solid var(--goud-licht); outline-offset: 3px; border-radius: 6px; }
 .verborgen { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Spring-link naar de inhoud: alleen zichtbaar als je er met de tab-toets op staat (31-10-2026). */
+.spring { position: absolute; left: 12px; top: -60px; z-index: 1000; padding: 10px 16px; border-radius: 10px; background: #141A2A; color: #fff; font: 600 14px/1.2 var(--f-ui, sans-serif); text-decoration: none; }
+.spring:focus { top: 12px; outline: 3px solid #C9A23A; }
 .binnen { max-width: var(--breed); margin: 0 auto; padding: 0 16px; }
 .goud { color: var(--goud-licht); }
 .kop-serif { font-family: var(--f-kop); font-weight: 500; letter-spacing: -.01em; }
