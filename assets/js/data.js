@@ -247,7 +247,7 @@ window.LK_CATEGORIEEN = [
       { slug: 'muziek', naam: 'Muziek', beeld: 'images/sub/sub-boeken-media-muziek.webp' }, { slug: 'agendas', naam: 'Agenda’s & notitieboeken', beeld: 'images/sub/sub-boeken-media-agendas.webp' }, { slug: 'lezen', naam: 'Leesplezier', beeld: 'images/sub/sub-boeken-media-lezen.webp' }
     ] },
   { slug: 'christelijk', naam: 'Christelijke cadeaus', kort: 'Christelijke cadeaus', icoon: 'kruis',
-    kort: 'Bijbels, kruisjes, tegeltjes en meer met een Bijbeltekst.', tekst: 'Op zoek naar een christelijk cadeau met betekenis? Ontdek Bijbels, sieraden met een kruis, tegeltjes en wandborden met een Bijbeltekst en mooie geschenken voor jong en oud. Voor een doop, belijdenis, verjaardag of om iemand een hart onder de riem te steken.',
+    tekst: 'Op zoek naar een christelijk cadeau met betekenis? Ontdek Bijbels, sieraden met een kruis, tegeltjes en wandborden met een Bijbeltekst en mooie geschenken voor jong en oud. Voor een doop, belijdenis, verjaardag of om iemand een hart onder de riem te steken.',
     seoTitel: 'Christelijke cadeaus & geschenken met betekenis',
     seoTekst: 'Christelijke cadeaus en geschenken: Bijbels (Statenvertaling en HSV), tegeltjes met Bijbeltekst, dagboeken en kinderbijbels. Voor doop, belijdenis, verjaardag of troost.',
     gids: [

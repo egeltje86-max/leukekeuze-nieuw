@@ -374,7 +374,7 @@
   function catKaart(c) {
     return '<a class="catkaart" href="/c/' + c.slug + '">' +
       '<div class="beeld">' + catBeeld(c, true) + '</div>' +
-      '<div class="tekst"><h3>' + esc(c.naam) + '</h3><p>' + esc(c.kort || c.tekst) + '</p><span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
+      '<div class="tekst"><h3>' + esc(c.naam) + '</h3>' + ((c.tekst || '').length > 80 ? '<p class="lees-kort">' + esc(c.tekst) + '</p><span class="lees-verder" role="button" tabindex="0" data-lees>Lees verder</span>' : '<p>' + esc(c.tekst) + '</p>') + '<span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
   }
   function nietChristelijk(p) { return p.cat !== 'christelijk'; }
   /* Sfeerfoto's eerst (wens van Marius, 27-10-2026: presentatie is alles). Volgorde blijft verder gelijk. */
@@ -2269,6 +2269,16 @@
     ga(maakAdres('/zoek', nq));
     f.querySelector('input').blur();
   });
+  /* 'Lees verder' op een categoriekaart: tekst open/dicht, zonder de kaart te volgen. */
+  function leesVerder(e) {
+    var b = e.target.closest && e.target.closest('[data-lees]'); if (!b) return;
+    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault(); e.stopPropagation();
+    var t = b.parentNode, open = t.classList.toggle('lees-open');
+    b.textContent = open ? 'Minder lezen' : 'Lees verder';
+  }
+  document.addEventListener('click', leesVerder, true);
+  document.addEventListener('keydown', leesVerder, true);
   document.addEventListener('click', function (e) {
     var k = e.target.closest && e.target.closest('[data-verras]');
     if (!k || !verrasIds.length) return;
