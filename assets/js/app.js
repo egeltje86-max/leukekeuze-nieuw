@@ -374,7 +374,7 @@
   function catKaart(c) {
     return '<a class="catkaart" href="/c/' + c.slug + '">' +
       '<div class="beeld">' + catBeeld(c, true) + '</div>' +
-      '<div class="tekst"><h3>' + esc(c.naam) + '</h3><p>' + esc(c.tekst) + '</p><span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
+      '<div class="tekst"><h3>' + esc(c.naam) + '</h3><p>' + esc(c.kort || c.tekst) + '</p><span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
   }
   function nietChristelijk(p) { return p.cat !== 'christelijk'; }
   /* Sfeerfoto's eerst (wens van Marius, 27-10-2026: presentatie is alles). Volgorde blijft verder gelijk. */
