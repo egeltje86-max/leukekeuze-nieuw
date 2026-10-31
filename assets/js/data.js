@@ -878,3 +878,47 @@ window.LK_COLLECTIES = [
 ];
 window.LK_GELEGENHEID = function (slug) { return (window.LK_GELEGENHEDEN || []).find(function (g) { return g.slug === slug; }); };
 window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find(function (g) { return g.slug === slug; }); };
+
+/* Golden Winter Luxury (Nova, 31-10-2026): nieuwe ronde beelden met gouden rand. Staat onderaan, zodat het alles hierboven overschrijft. */
+(function () {
+  var S = function (n) { return 'images/sub/sub-' + n + '-gw.webp'; };
+  function vak(c, s, b) { var C = (window.LK_CATEGORIEEN || []).find(function (x) { return x.slug === c; }); var x = C && (C.subs || []).find(function (y) { return y.slug === s; }); if (x) x.beeld = b; }
+  function lijst(l, slug, b) { var x = (l || []).find(function (y) { return y.slug === slug; }); if (x) x.beeld = b; }
+  vak('sport-outdoor', 'vissen', S('sport-outdoor-vissen'));
+  lijst(window.LK_COLLECTIES, 'cadeaupakketten', S('collectie-cadeaupakketten'));
+  vak('tuin-klussen', 'bbq-buitenkoken', S('tuin-klussen-bbq-buitenkoken'));
+  vak('sport-outdoor', 'fitness', S('sport-outdoor-fitness'));
+  lijst(window.LK_PERSONEN, 'collega', S('voor-collega'));
+  vak('cadeaus', 'collega', S('voor-collega'));
+  vak('geuren-verzorging', 'huidverzorging', S('geuren-verzorging-huidverzorging'));
+  lijst(window.LK_PERSONEN, 'baby', S('voor-baby'));
+  vak('cadeaus', 'baby-kraam', S('voor-baby'));
+  lijst(window.LK_GELEGENHEDEN, 'afscheid-pensioen', S('gelegenheid-afscheid-pensioen'));
+  vak('boeken-media', 'films-series', S('boeken-media-films-series'));
+  vak('tuin-klussen', 'elektrisch-gereedschap', S('tuin-klussen-elektrisch-gereedschap'));
+  lijst(window.LK_PERSONEN, 'hem', S('voor-hem'));
+  vak('cadeaus', 'voor-hem', S('voor-hem'));
+  lijst(window.LK_PERSONEN, 'tieners', S('voor-tieners'));
+  lijst(window.LK_PERSONEN, 'haar', S('voor-haar'));
+  vak('cadeaus', 'voor-haar', S('voor-haar'));
+  vak('sport-outdoor', 'wandelen', S('sport-outdoor-wandelen'));
+  vak('keuken', 'pannen', S('keuken-pannen'));
+  lijst(window.LK_COLLECTIES, 'persoonlijke-cadeaus', S('collectie-persoonlijke-cadeaus'));
+  vak('metaaldetectie', 'detectors', S('metaaldetectie-detectors'));
+  vak('keuken', 'keukenapparaten', S('keuken-keukenapparaten'));
+  lijst(window.LK_GELEGENHEDEN, 'geboorte', S('gelegenheid-geboorte'));
+  vak('elektronica', 'gadgets-trackers', S('elektronica-gadgets-trackers'));
+  vak('elektronica', 'cameras', S('elektronica-cameras'));
+  vak('tuin-klussen', 'handgereedschap-werkplaats', S('tuin-klussen-handgereedschap-werkplaats'));
+  lijst(window.LK_PERSONEN, 'opa-oma', S('voor-opa-oma'));
+  vak('cadeaus', 'opa-oma', S('voor-opa-oma'));
+  lijst(window.LK_GELEGENHEDEN, 'vaderdag', S('gelegenheid-vaderdag'));
+  lijst(window.LK_GELEGENHEDEN, 'housewarming', S('gelegenheid-housewarming'));
+  vak('sport-outdoor', 'kamperen', S('sport-outdoor-kamperen'));
+  vak('metaaldetectie', 'pinpointers-uitrusting', S('metaaldetectie-pinpointers-uitrusting'));
+  lijst(window.LK_COLLECTIES, 'originele-cadeaus', S('collectie-originele-cadeaus'));
+  vak('elektronica', 'koptelefoons', S('elektronica-koptelefoons'));
+  lijst(window.LK_GELEGENHEDEN, 'moederdag', S('gelegenheid-moederdag'));
+  vak('speelgoed', 'bord-kaartspellen', S('speelgoed-bord-kaartspellen'));
+  var D = (window.LK_CATEGORIEEN || []).find(function (x) { return x.slug === 'dieren'; }); if (D) D.tegel = 'images/categorieen/categorie-dieren-gw.webp';
+})();
