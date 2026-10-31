@@ -691,63 +691,63 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   ], { audio: 'speakers', 'slimme-gadgets': 'gadgets-trackers', telefoon: 'telefoon-opladen', 'foto-video': 'cameras' });
 
   vakjes('wonen', [
-    ['lampen', 'Lampen', 'wonen-verlichting'], ['vloerkleden', 'Vloerkleden'], ['wanddecoratie', 'Wanddecoratie & posters', 'wonen-woonaccessoires'], ['klokken', 'Klokken'],
+    ['lampen', 'Lampen', 'wonen-verlichting'], ['vloerkleden', 'Vloerkleden', 'wonen-vloerkleden'], ['wanddecoratie', 'Wanddecoratie & posters', 'wonen-woonaccessoires'], ['klokken', 'Klokken'],
     ['kerst', 'Kerst', 'wonen-kerstdecoratie'], ['vazen-bloemen', 'Vazen & bloemen'], ['kussens-plaids', 'Kussens & plaids', 'wonen-plaids-kussens'],
-    ['kaarsen', 'Kaarsen & kandelaars', 'wonen-kaarsen-geur'], ['spiegels', 'Spiegels'], ['opbergen-dienbladen', 'Opbergen & dienbladen'],
-    ['fotolijsten', 'Fotolijsten'], ['huisgeuren', 'Huisgeuren', 'wonen-huisgeuren'], ['deurmatten', 'Deurmatten']
+    ['kaarsen', 'Kaarsen & kandelaars', 'wonen-kaarsen-geur'], ['spiegels', 'Spiegels', 'wonen-spiegels'], ['opbergen-dienbladen', 'Opbergen & dienbladen', 'wonen-opbergen-dienbladen'],
+    ['fotolijsten', 'Fotolijsten', 'wonen-fotolijsten'], ['huisgeuren', 'Huisgeuren', 'wonen-huisgeuren'], ['deurmatten', 'Deurmatten', 'wonen-deurmatten']
   ], { 'kaarsen-geur': 'kaarsen', woonaccessoires: 'wanddecoratie', verlichting: 'lampen', 'plaids-kussens': 'kussens-plaids', kerstdecoratie: 'kerst' });
 
   vakjes('keuken', [
-    ['keukenapparaten', 'Keukenapparaten', 'keuken-keukenapparaten'], ['airfryers', 'Airfryers'], ['koffie-thee', 'Koffie & thee', 'keuken-koffie-thee'],
-    ['gezellig-tafelen', 'Gezellig tafelen'], ['pannen', 'Pannen', 'keuken-koken'], ['tosti-wafel-ijs', 'Tosti-, wafel- & ijsmachines'],
-    ['glazen-servies', 'Glazen & servies', 'keuken-serveren'], ['drinkflessen-lunch', 'Drinkflessen & lunch'], ['messen-snijplanken', 'Messen & snijplanken'],
-    ['bakken', 'Bakken', 'keuken-bakken'], ['kaas-serveerplanken', 'Kaas- & serveerplanken'], ['voorraadpotten', 'Voorraadpotten', 'keuken-opbergen']
+    ['keukenapparaten', 'Keukenapparaten', 'keuken-keukenapparaten'], ['airfryers', 'Airfryers', 'keuken-airfryers'], ['koffie-thee', 'Koffie & thee', 'keuken-koffie-thee'],
+    ['gezellig-tafelen', 'Gezellig tafelen', 'keuken-gezellig-tafelen'], ['pannen', 'Pannen', 'keuken-koken'], ['tosti-wafel-ijs', 'Tosti-, wafel- & ijsmachines', 'keuken-tosti-wafel-ijs'],
+    ['glazen-servies', 'Glazen & servies', 'keuken-serveren'], ['drinkflessen-lunch', 'Drinkflessen & lunch', 'keuken-drinkflessen-lunch'], ['messen-snijplanken', 'Messen & snijplanken', 'keuken-messen-snijplanken'],
+    ['bakken', 'Bakken', 'keuken-bakken'], ['kaas-serveerplanken', 'Kaas- & serveerplanken', 'keuken-kaas-serveerplanken'], ['voorraadpotten', 'Voorraadpotten', 'keuken-opbergen']
   ], { koken: 'pannen', serveren: 'glazen-servies', opbergen: 'voorraadpotten' });
 
   vakjes('dranken', [
     ['champagne-bubbels', 'Champagne & bubbels', 'dranken-bubbels'], ['gin-cocktails', 'Gin & cocktails', 'dranken-gin'], ['wijn-port', 'Wijn & port', 'dranken-wijn'],
-    ['likeuren', 'Likeuren', 'dranken-likeur'], ['bier', 'Bier & speciaalbier'], ['wijnaccessoires', 'Wijnaccessoires', 'dranken-wijnaccessoires'],
+    ['likeuren', 'Likeuren', 'dranken-likeur'], ['bier', 'Bier & speciaalbier', 'dranken-bier'], ['wijnaccessoires', 'Wijnaccessoires', 'dranken-wijnaccessoires'],
     ['tequila', 'Tequila & mezcal', 'dranken-tequila'], ['alcoholvrij', 'Alcoholvrij', 'dranken-alcoholvrij'], ['whisky', 'Whisky', 'dranken-whisky-2026b'],
-    ['cognac', 'Cognac', 'dranken-cognac-brandy'], ['jenever', 'Jenever'], ['sake', 'Sake'], ['rum', 'Rum', 'dranken-rum'], ['wodka', 'Wodka', 'dranken-wodka']
+    ['cognac', 'Cognac', 'dranken-cognac-brandy'], ['jenever', 'Jenever', 'dranken-jenever'], ['sake', 'Sake', 'dranken-sake'], ['rum', 'Rum', 'dranken-rum'], ['wodka', 'Wodka', 'dranken-wodka']
   ], { 'cognac-brandy': 'cognac', gin: 'gin-cocktails', likeur: 'likeuren', wijn: 'wijn-port', bubbels: 'champagne-bubbels' });
 
   vakjes('eten-drinken', [
-    ['chocolade', 'Chocolade & bonbons', 'eten-drinken-chocolade-snoep'], ['koekjes-stroopwafels', 'Koekjes & stroopwafels'], ['delicatessen', 'Delicatessen', 'eten-drinken-lekkernijen'],
+    ['chocolade', 'Chocolade & bonbons', 'eten-drinken-chocolade-snoep'], ['koekjes-stroopwafels', 'Koekjes & stroopwafels', 'eten-drinken-koekjes-stroopwafels'], ['delicatessen', 'Delicatessen', 'eten-drinken-lekkernijen'],
     ['drop-snoep', 'Drop & snoep', 'eten-drinken-drop-snoep'], ['sinterklaas-lekkers', 'Sinterklaas-lekkers', 'cadeaus-sinterklaas'], ['adventskalenders', 'Adventskalenders', 'cadeaus-adventskalenders-2026b'],
     ['kerst-cadeaupakketten', 'Kerst- & cadeaupakketten', 'eten-drinken-pakketten'], ['koffie-thee', 'Koffie & thee', 'eten-drinken-koffie-thee'],
-    ['brievenbuscadeaus', 'Brievenbuscadeaus'], ['bbq-sauzen', 'BBQ & sauzen', 'eten-drinken-bbq']
+    ['brievenbuscadeaus', 'Brievenbuscadeaus', 'eten-drinken-brievenbuscadeaus'], ['bbq-sauzen', 'BBQ & sauzen', 'eten-drinken-bbq']
   ], { 'chocolade-snoep': 'chocolade', bbq: 'bbq-sauzen', pakketten: 'kerst-cadeaupakketten', lekkernijen: 'delicatessen' });
   /* Sinterklaas-lekkers alleen tot en met 5 december. */
   cat('eten-drinken').subs.forEach(function (s) { if (s.slug === 'sinterklaas-lekkers') s.tot = '12-05'; });
 
   vakjes('speelgoed', [
     ['lego', 'LEGO', 'speelgoed-bouwen'], ['buitenspeelgoed', 'Buitenspeelgoed', 'speelgoed-buitenspeelgoed'], ['bord-kaartspellen', 'Bord- & kaartspellen', 'speelgoed-bordspellen'],
-    ['pokemon-verzamelkaarten', 'Pokémon & verzamelkaarten'], ['puzzels', 'Puzzels', 'speelgoed-puzzels'], ['poppen-barbie', 'Poppen & Barbie'],
-    ['playmobil', 'Playmobil'], ['autos-treinen-rc', "Auto's, treinen & RC", 'speelgoed-figuren-voertuigen'], ['knuffels-squishmallows', 'Knuffels & Squishmallows'],
-    ['knikkerbanen-magnetisch', 'Knikkerbanen & magnetisch bouwen'], ['knutselen-kleuren', 'Knutselen & kleuren', 'speelgoed-knutselen'], ['hypes-trends', 'Hypes & trends'],
-    ['baby-houten', 'Baby- & houten speelgoed', 'speelgoed-baby-peuter'], ['speelkeukens-verkleden', 'Speelkeukens & verkleden'], ['muziek-karaoke', 'Muziek & karaoke']
+    ['pokemon-verzamelkaarten', 'Pokémon & verzamelkaarten'], ['puzzels', 'Puzzels', 'speelgoed-puzzels'], ['poppen-barbie', 'Poppen & Barbie', 'speelgoed-poppen-barbie'],
+    ['playmobil', 'Playmobil'], ['autos-treinen-rc', "Auto's, treinen & RC", 'speelgoed-figuren-voertuigen'], ['knuffels-squishmallows', 'Knuffels & Squishmallows', 'speelgoed-knuffels-squishmallows'],
+    ['knikkerbanen-magnetisch', 'Knikkerbanen & magnetisch bouwen', 'speelgoed-knikkerbanen-magnetisch'], ['knutselen-kleuren', 'Knutselen & kleuren', 'speelgoed-knutselen'], ['hypes-trends', 'Hypes & trends', 'speelgoed-hypes-trends'],
+    ['baby-houten', 'Baby- & houten speelgoed', 'speelgoed-baby-peuter'], ['speelkeukens-verkleden', 'Speelkeukens & verkleden', 'speelgoed-speelkeukens-verkleden'], ['muziek-karaoke', 'Muziek & karaoke', 'speelgoed-muziek-karaoke']
   ], { 'baby-peuter': 'baby-houten', bouwen: 'lego', 'figuren-voertuigen': 'autos-treinen-rc', bordspellen: 'bord-kaartspellen', kaartspellen: 'bord-kaartspellen', knutselen: 'knutselen-kleuren' });
   cat('speelgoed').knoppen = ['kind', 'leeftijd'];
 
   vakjes('hobby', [
-    ['tekenen', 'Tekenen & stiften', 'hobby-tekenen-schilderen'], ['schilderen', 'Schilderen'], ['diamond-painting', 'Diamond painting'], ['naaien-borduren', 'Naaien & borduren'],
-    ['kralen-sieraden-maken', 'Kralen & sieraden maken'], ['modelbouw', 'Modelbouw & miniatuurhuisjes', 'hobby-modelbouw'], ['origami-scrapbooking', 'Origami & scrapbooking', 'hobby-knutselen'],
-    ['kaarsen-zeep-epoxy', 'Kaarsen, zeep & epoxy'], ['haken-breien', 'Haken & breien', 'hobby-haken-breien'], ['klei-pottenbakken', 'Klei & pottenbakken'],
-    ['3d-pennen', '3D-pennen'], ['bullet-journal', 'Bullet journal & kalligrafie']
+    ['tekenen', 'Tekenen & stiften', 'hobby-tekenen-schilderen'], ['schilderen', 'Schilderen', 'hobby-schilderen'], ['diamond-painting', 'Diamond painting', 'hobby-diamond-painting'], ['naaien-borduren', 'Naaien & borduren', 'hobby-naaien-borduren'],
+    ['kralen-sieraden-maken', 'Kralen & sieraden maken', 'hobby-kralen-sieraden-maken'], ['modelbouw', 'Modelbouw & miniatuurhuisjes', 'hobby-modelbouw'], ['origami-scrapbooking', 'Origami & scrapbooking', 'hobby-knutselen'],
+    ['kaarsen-zeep-epoxy', 'Kaarsen, zeep & epoxy', 'hobby-kaarsen-zeep-epoxy'], ['haken-breien', 'Haken & breien', 'hobby-haken-breien'], ['klei-pottenbakken', 'Klei & pottenbakken', 'hobby-klei-pottenbakken'],
+    ['3d-pennen', '3D-pennen', 'hobby-3d-pennen'], ['bullet-journal', 'Bullet journal & kalligrafie', 'hobby-bullet-journal']
   ], { 'tekenen-schilderen': 'tekenen', knutselen: 'origami-scrapbooking' });
 
   vakjes('sport-outdoor', [
-    ['voetbal-balsporten', 'Voetbal & balsporten'], ['darts', 'Darts', 'sport-outdoor-darts'], ['fietsen', 'Fietsen', 'sport-outdoor-fietsen'], ['padel-tennis', 'Padel & tennis'],
-    ['wintersport-schaatsen', 'Wintersport & schaatsen'], ['fitness', 'Fitness & thuis sporten', 'sport-outdoor-fitness'], ['kamperen', 'Kamperen', 'sport-outdoor-kamperen'],
-    ['wandelen', 'Wandelen', 'sport-outdoor-wandelen'], ['hardlopen', 'Hardlopen'], ['golf', 'Golf', 'sport-outdoor-golf-2026b'], ['reizen', 'Reizen', 'sport-outdoor-reizen'],
-    ['watersport-zwemmen', 'Watersport & zwemmen'], ['klimmen-boulderen', 'Klimmen & boulderen'], ['skateboards-steps', 'Skateboards & steps'],
-    ['yoga', 'Yoga'], ['buitenspellen-picknick', 'Buitenspellen & picknick'], ['vissen', 'Vissen']
+    ['voetbal-balsporten', 'Voetbal & balsporten', 'sport-outdoor-voetbal-balsporten'], ['darts', 'Darts', 'sport-outdoor-darts'], ['fietsen', 'Fietsen', 'sport-outdoor-fietsen'], ['padel-tennis', 'Padel & tennis', 'sport-outdoor-padel-tennis'],
+    ['wintersport-schaatsen', 'Wintersport & schaatsen', 'sport-outdoor-wintersport-schaatsen'], ['fitness', 'Fitness & thuis sporten', 'sport-outdoor-fitness'], ['kamperen', 'Kamperen', 'sport-outdoor-kamperen'],
+    ['wandelen', 'Wandelen', 'sport-outdoor-wandelen'], ['hardlopen', 'Hardlopen', 'sport-outdoor-hardlopen'], ['golf', 'Golf', 'sport-outdoor-golf-2026b'], ['reizen', 'Reizen', 'sport-outdoor-reizen'],
+    ['watersport-zwemmen', 'Watersport & zwemmen', 'sport-outdoor-watersport-zwemmen'], ['klimmen-boulderen', 'Klimmen & boulderen', 'sport-outdoor-klimmen-boulderen'], ['skateboards-steps', 'Skateboards & steps', 'sport-outdoor-skateboards-steps'],
+    ['yoga', 'Yoga', 'sport-outdoor-yoga'], ['buitenspellen-picknick', 'Buitenspellen & picknick', 'sport-outdoor-buitenspellen-picknick'], ['vissen', 'Vissen', 'sport-outdoor-vissen']
   ], {}, [{ slug: 'metaaldetectie', naam: 'Metaaldetectie', verborgen: true, naar: '/c/metaaldetectie' }]);
 
   vakjes('tuin-klussen', [
-    ['zwembaden-jacuzzis', "Zwembaden & jacuzzi's"], ['tuinmeubelen', 'Tuinmeubelen & parasols'], ['elektrisch-gereedschap', 'Elektrisch gereedschap', 'tuin-klussen-gereedschap'],
-    ['bbq-buitenkoken', 'BBQ & buiten koken', 'eten-drinken-bbq'], ['tuinmachines', 'Tuinmachines'], ['handgereedschap-werkplaats', 'Handgereedschap & werkplaats'],
-    ['planten-potten', 'Planten & potten', 'tuin-klussen-planten-zaden'], ['regentonnen-slangen-compost', 'Regentonnen, slangen & compost'], ['vogels-insecten', 'Vogels & insecten', 'dieren-vogels'],
+    ['zwembaden-jacuzzis', "Zwembaden & jacuzzi's", 'tuin-klussen-zwembaden-jacuzzis'], ['tuinmeubelen', 'Tuinmeubelen & parasols', 'tuin-klussen-tuinmeubelen'], ['elektrisch-gereedschap', 'Elektrisch gereedschap', 'tuin-klussen-gereedschap'],
+    ['bbq-buitenkoken', 'BBQ & buiten koken', 'eten-drinken-bbq'], ['tuinmachines', 'Tuinmachines', 'tuin-klussen-tuinmachines'], ['handgereedschap-werkplaats', 'Handgereedschap & werkplaats', 'tuin-klussen-handgereedschap-werkplaats'],
+    ['planten-potten', 'Planten & potten', 'tuin-klussen-planten-zaden'], ['regentonnen-slangen-compost', 'Regentonnen, slangen & compost', 'tuin-klussen-regentonnen-slangen-compost'], ['vogels-insecten', 'Vogels & insecten', 'dieren-vogels'],
     ['moestuin-kweken', 'Moestuin & kweken'], ['buitenverlichting', 'Buitenverlichting', 'tuin-klussen-buitenverlichting'], ['tuingereedschap', 'Tuingereedschap', 'tuin-klussen-tuingereedschap'],
     ['vuurschalen-terrasverwarmers', 'Vuurschalen & terrasverwarmers'], ['tuindecoratie', 'Tuindecoratie']
   ], { 'planten-zaden': 'planten-potten', gereedschap: 'elektrisch-gereedschap' });
