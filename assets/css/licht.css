@@ -291,3 +291,14 @@ body { background: var(--bg); color: var(--tekst); }
 
 /* Leesbaarheid (31-10-2026, GO Marius): goud als tekst op de lichte achtergrond iets donkerder; donkere balken blijven zoals ze waren. */
 main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
+
+/* Banner met logo erin (kerst 2026): hele foto tonen, tekst en knoppen eronder. */
+.hero.hero-logo { display: block; min-height: 0; }
+.hero.hero-logo picture, .hero.hero-logo picture img { position: relative; inset: auto; height: auto; display: block; width: 100%; }
+.hero.hero-logo::after { display: none; }
+.hero.hero-logo .hero-inhoud { padding: 16px 0 20px; }
+.hero.hero-logo .kicker, .hero.hero-logo h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hero.hero-logo p { margin: 0 0 4px; }
+.hero.hero-logo .populair { margin-top: 10px; }
+@media (max-width: 759px) { .hero.hero-logo p { display: none; } .hero.hero-logo .populair { margin-top: 0; } }
+@media (min-width: 760px) { .hero.hero-logo .binnen { text-align: center; } .hero.hero-logo p { max-width: none; } .hero.hero-logo .populair { justify-content: center; } .hero.hero-logo .chips { flex-wrap: wrap; justify-content: center; } }
