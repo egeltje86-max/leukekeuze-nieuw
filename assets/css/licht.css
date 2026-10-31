@@ -302,3 +302,8 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .hero.hero-logo .populair { margin-top: 10px; }
 @media (max-width: 759px) { .hero.hero-logo p { display: none; } .hero.hero-logo .populair { margin-top: 0; } }
 @media (min-width: 760px) { .hero.hero-logo .binnen { text-align: center; } .hero.hero-logo p { max-width: none; } .hero.hero-logo .populair { justify-content: center; } .hero.hero-logo .chips { flex-wrap: wrap; justify-content: center; } }
+
+/* Lange tekst op een categoriekaart: 3 regels, met 'Lees verder'. */
+.catkaart .lees-kort { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.catkaart .lees-open .lees-kort { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.catkaart .lees-verder { display: inline-block; margin-top: 4px; font-weight: 700; font-size: 13px; color: var(--goud-donker, #8A6A1F); text-decoration: underline; cursor: pointer; }
