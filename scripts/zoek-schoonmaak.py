@@ -22,6 +22,8 @@ MAG = {
 # Sieraden: alleen als het echt een sieraad is (een 'ring' kan ook een hondenspeeltje of basketbalring zijn).
 SIERAAD = re.compile(r'sierad|jewel|zilver|goud|925|edelstaal|roestvrij staal|titanium|wolfraam|verguld|diamant|zirkon|moissanit|parel|kristal|swarovski|jwls|steen|steentjes|naam|letter|hart|dames|heren|bedel|ketting|collier|armband|oorbel|oorknop|hanger|horloge|watch|enkelband|broche|bague|ring maat|verlovings|trouwring|zegelring|vriendschapsring|statement', re.I)
 NIET_SIERAAD = re.compile(r'smart ring|ringenspel|werpspel|basketbal|vlieger|map met|amorces|schots|led ring|magnet|riem ring|benzine|for sex|busy buddy|chuckit|petsnack|activity ringen|sleutelring|servetring', re.I)
+# Grof of seks: nooit tonen.
+GROF = re.compile(r'fuck|\bkut\b|kutje|\blul\b|piemel|penis|tieten|borsten|\bsex\b|seks|vibrator|dildo|condoom|mankini|erotisch|bdsm|stripper|\bporn', re.I)
 # Kinderspullen die wel in volwassen groepen mogen als het vak er duidelijk over gaat (kinderschoenen, kinderhorloge...).
 KINDVAK = re.compile(r'kind|baby|tiener|knuffel|speel|lego|puzzel|spel', re.I)
 def uitsluiten():
@@ -45,6 +47,7 @@ def schoon(map_=None):
             slecht = [d for d, rx in DX.items() if rx.search(tekst) and d not in mag]
             if slecht == ['kinderspeelgoed'] and KINDVAK.search(k): slecht = []
             if g == 'sieraden' and (NIET_SIERAAD.search(p[0]) or not SIERAAD.search(tekst)): slecht = ['geen-sieraad']
+            if GROF.search(p[0]): slecht = ['grof']
             if slecht or p[0].lower() in blok: weg += 1; continue
             hou.append(p)
         totaal += len(hou)
