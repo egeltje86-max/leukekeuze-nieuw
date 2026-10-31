@@ -921,4 +921,6 @@ window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find
   lijst(window.LK_GELEGENHEDEN, 'moederdag', S('gelegenheid-moederdag'));
   vak('speelgoed', 'bord-kaartspellen', S('speelgoed-bord-kaartspellen'));
   var D = (window.LK_CATEGORIEEN || []).find(function (x) { return x.slug === 'dieren'; }); if (D) D.tegel = 'images/categorieen/categorie-dieren-gw.webp';
+  lijst(window.LK_PERSONEN, 'kinderen', S('voor-kinderen'));
+  vak('cadeaus', 'voor-kinderen', S('voor-kinderen'));
 })();
