@@ -424,6 +424,8 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 .product-info .prijsnoot { font-size: 12.5px; color: var(--tekst-3); margin: 6px 0 22px; }
 .product-acties { display: flex; gap: 10px; }
 .product-acties .knop-goud { flex: 1; padding: 16px 22px; font-size: 15.5px; }
+/* Lange winkelnaam (bijv. De Grote Speelgoedwinkel): knoptekst mag over 2 regels, zodat het hartje niet buiten beeld valt (31-10-2026). */
+.product-acties .knop-goud, .product-plak .knop { min-width: 0; white-space: normal; text-align: center; line-height: 1.25; }
 .product-acties .hartknop { width: 54px; height: 54px; border-radius: 50%; border: 1px solid var(--lijn-sterk); display: grid; place-items: center; color: var(--goud-licht); flex: none; }
 .product-acties .hartknop svg { width: 22px; height: 22px; }
 .product-acties .hartknop[aria-pressed="true"] svg { fill: currentColor; }
