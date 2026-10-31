@@ -566,7 +566,8 @@
     return LK.zichtbaar().filter(function (p) {
       if (p.cat === 'christelijk') return false;
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
-      if (g.maxPrijs && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
+      /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
+      if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
       var plekken = plekkenVan(p);
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
@@ -668,6 +669,23 @@
         return '<button type="button" data-kleur-stap="' + i + '" aria-label="' + esc(v.kleur) + '" aria-pressed="' + (i ? 'false' : 'true') + '"><img src="' + esc(web ? v.beeld : v.beeld + '-klein.webp') + '" alt="" loading="lazy" decoding="async"' + (web ? ' referrerpolicy="no-referrer"' : '') + '></button>';
       }).join('') + '</div></div>';
   }
+  /* Maatkeuze (31-10-2026, wens van Marius): bij schoenen kies je je maat al hier; als de winkel per maat een link heeft,
+     brengt de knop je direct naar die maat. Anders tonen we welke maten op voorraad zijn. */
+  function maatInhoud(v, p) {
+    var m = (v && v.maten) || p.maten || [];
+    if (!m.length) return '';
+    var klik = m.some(function (x) { return x.url; });
+    return '<p>' + (klik ? 'Maat: <b data-maat-naam>kies je maat</b>' : 'Op voorraad in maat:') + '</p>' +
+      '<div class="maten" role="group" aria-label="Kies je maat">' + m.map(function (x, i) {
+        return klik ? '<button type="button" data-maat="' + i + '" aria-pressed="false">' + esc(x.maat) + '</button>' : '<span>' + esc(x.maat) + '</span>';
+      }).join('') + '</div>' +
+      '<p class="klein">' + (klik ? 'Kies je maat, dan brengt de knop je direct naar die maat in de winkel.' : 'Je kiest je maat daarna bij de winkel.') + '</p>';
+  }
+  function maatKeuze(p) {
+    var vs = (p.varianten || []).filter(function (v) { return v && v.beeld; });
+    var h = maatInhoud(vs[0], p);
+    return h ? '<div class="maatkeuze" data-maten data-pid="' + esc(p.id) + '" data-v="0">' + h + '</div>' : '';
+  }
   function galerijBijwerken(g) {
     var rij = $('.galerij-rij', g); if (!rij) return;
     var n = rij.children.length, i = Math.round(rij.scrollLeft / Math.max(1, rij.clientWidth));
@@ -676,6 +694,7 @@
     var pid = g.getAttribute('data-varianten'); if (!pid) return;
     var p = LK.vind(pid), v = p && p.varianten && p.varianten.filter(function (x) { return x && x.beeld; })[i];
     if (!v) return;
+    var mb = $('[data-maten]'); if (mb && mb.getAttribute('data-v') !== String(i)) { mb.setAttribute('data-v', i); mb.innerHTML = maatInhoud(v, p); }
     var naam = $('[data-kleur-naam]'); if (naam) naam.textContent = v.kleur;
     var tel = $('[data-kleur-teller]'); if (tel) tel.textContent = '(' + (i + 1) + ' van ' + n + ')';
     $$('[data-kleur-stap]').forEach(function (b, j) { b.setAttribute('aria-pressed', String(j === i)); });
@@ -740,7 +759,7 @@
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
           '<div class="prijs"><span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
-          kleurKeuze(p) +
+          kleurKeuze(p) + maatKeuze(p) +
           '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
@@ -2094,6 +2113,21 @@
       werkTellersBij();
       toast(aan ? 'Op je verlanglijstje gezet' : 'Van je verlanglijstje gehaald');
       if (leesAdres().delen[0] === 'favorieten') toon();
+      return;
+    }
+    if (t.hasAttribute('data-maat')) {
+      e.preventDefault();
+      var box = t.closest('[data-maten]'), mp = box && LK.vind(box.getAttribute('data-pid'));
+      if (mp) {
+        var mvs = (mp.varianten || []).filter(function (x) { return x && x.beeld; }), mv = mvs[+box.getAttribute('data-v')] || mp;
+        var mm = ((mv && mv.maten) || mp.maten || [])[+t.getAttribute('data-maat')];
+        if (mm) {
+          $$('[data-maat]', box).forEach(function (b) { b.setAttribute('aria-pressed', String(b === t)); });
+          var mn = $('[data-maat-naam]', box); if (mn) mn.textContent = mm.maat;
+          if (mm.prijs) $$('[data-variant-prijs]').forEach(function (el) { el.innerHTML = LK.euro(mm.prijs); });
+          var ml = winkelLink(mm); if (ml) $$('a[data-winkel]').forEach(function (a) { a.href = ml; });
+        }
+      }
       return;
     }
     if (t.hasAttribute('data-lijst-whatsapp')) { var w = lijstVanDeel(); window.open('https://wa.me/?text=' + encodeURIComponent(w.bericht), '_blank', 'noopener'); return; }

@@ -277,3 +277,14 @@ body { background: var(--bg); color: var(--tekst); }
 .kleurstalen button img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .kleurstalen button[aria-pressed="true"] { border-color: var(--goud, #C9A23A); box-shadow: 0 0 0 2px rgba(201,162,58,.35); }
 .product-beeld.varianten .galerij-rij img { position: absolute; inset: 0; width: 100%; height: 100%; box-sizing: border-box; object-fit: contain; padding: 7%; background: #fff; }
+
+/* Maatkeuze (31-10-2026) */
+.maatkeuze { margin: 12px 0 4px; min-width: 0; }
+.maatkeuze p { margin: 0 0 8px; font: 500 14px/1.4 var(--f-ui); color: #141A2A; }
+.maatkeuze p.klein { margin: 6px 0 0; font-size: 12.5px; color: #5A6275; }
+.maten { display: flex; flex-wrap: wrap; gap: 6px; }
+.maten button, .maten span { min-width: 46px; height: 40px; padding: 0 10px; border-radius: 10px; border: 1.5px solid rgba(20,26,42,.16); background: #fff; font: 600 14px/37px var(--f-ui); color: #141A2A; text-align: center; }
+.maten button { cursor: pointer; }
+.maten button:hover { border-color: var(--goud, #C9A23A); }
+.maten button[aria-pressed="true"] { background: #141A2A; border-color: #141A2A; color: #fff; }
+.maten span { min-width: 0; height: auto; padding: 2px 8px; border: 0; border-radius: 6px; background: #EFE9DE; color: #4A4F5C; font: 500 13px/1.6 var(--f-ui); }
