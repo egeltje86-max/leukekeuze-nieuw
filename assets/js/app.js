@@ -630,7 +630,7 @@
   /* Productfoto's: één foto, of een rij om doorheen te bladeren (pijltjes, puntjes, vegen). */
   function productFotos(p) {
     var vs = (p.varianten || []).filter(function (v) { return v && v.beeld; });
-    /* Kleurwissel (30-10-2026, wens van Marius): één product per model; de pijltjes wisselen van kleur,
+    /* Kleurwissel (30-10-2026, wens van Marius): één product per model; sinds 31-10 ook voor dieren (p.keuzeLabel = 'Dier'). de pijltjes wisselen van kleur,
        en de prijs, de kleurnaam en de winkelknop gaan mee naar de gekozen kleur. */
     if (vs.length > 1) {
       return '<div class="product-beeld echt galerij varianten" data-galerij data-varianten="' + esc(p.id) + '">' +
@@ -638,8 +638,8 @@
           var web = /^https?:/.test(v.beeld);
           return '<figure><img src="' + esc(web ? v.beeld : v.beeld + '.webp') + '" alt="' + esc(p.titel + ', ' + v.kleur) + '"' + (i ? ' loading="lazy"' : '') + (web ? ' referrerpolicy="no-referrer"' : '') + ' decoding="async"></figure>';
         }).join('') + '</div>' +
-        '<button class="galerij-knop vorige" type="button" data-galerij-stap="-1" aria-label="Vorige kleur">' + ic('vorige') + '</button>' +
-        '<button class="galerij-knop volgende" type="button" data-galerij-stap="1" aria-label="Volgende kleur">' + ic('rechts') + '</button>' +
+        '<button class="galerij-knop vorige" type="button" data-galerij-stap="-1" aria-label="Vorige ' + esc((p.keuzeLabel || 'kleur').toLowerCase()) + '">' + ic('vorige') + '</button>' +
+        '<button class="galerij-knop volgende" type="button" data-galerij-stap="1" aria-label="Volgende ' + esc((p.keuzeLabel || 'kleur').toLowerCase()) + '">' + ic('rechts') + '</button>' +
         '<span class="galerij-teller">1 / ' + vs.length + '</span>' +
       '</div>';
     }
@@ -662,8 +662,8 @@
   function kleurKeuze(p) {
     var vs = (p.varianten || []).filter(function (v) { return v && v.beeld; });
     if (vs.length < 2) return '';
-    return '<div class="kleurkeuze"><p>Kleur: <b data-kleur-naam>' + esc(vs[0].kleur) + '</b> <span class="klein" data-kleur-teller>(1 van ' + vs.length + ')</span></p>' +
-      '<div class="kleurstalen" role="group" aria-label="Kies een kleur">' + vs.map(function (v, i) {
+    return '<div class="kleurkeuze"><p>' + esc(p.keuzeLabel || 'Kleur') + ': <b data-kleur-naam>' + esc(vs[0].kleur) + '</b> <span class="klein" data-kleur-teller>(1 van ' + vs.length + ')</span></p>' +
+      '<div class="kleurstalen" role="group" aria-label="Kies een ' + esc((p.keuzeLabel || 'kleur').toLowerCase()) + '">' + vs.map(function (v, i) {
         var web = /^https?:/.test(v.beeld);
         return '<button type="button" data-kleur-stap="' + i + '" aria-label="' + esc(v.kleur) + '" aria-pressed="' + (i ? 'false' : 'true') + '"><img src="' + esc(web ? v.beeld : v.beeld + '-klein.webp') + '" alt="" loading="lazy" decoding="async"' + (web ? ' referrerpolicy="no-referrer"' : '') + '></button>';
       }).join('') + '</div></div>';

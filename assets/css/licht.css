@@ -267,7 +267,9 @@ body { background: var(--bg); color: var(--tekst); }
 .prodkaart .kleuren { display: inline-flex; align-items: center; gap: 3px; font: 500 12px/1.2 var(--f-ui); color: #5A6275; margin-top: 2px; }
 .prodkaart .kleuren i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid rgba(20,26,42,.25); margin-right: -6px; }
 .prodkaart .kleuren i:nth-child(1) { background: #C9A86A; } .prodkaart .kleuren i:nth-child(2) { background: #C0C4CC; } .prodkaart .kleuren i:nth-child(3) { background: #1F2433; margin-right: 4px; }
-.kleurkeuze { margin: 10px 0 4px; }
+.kleurkeuze { margin: 10px 0 4px; min-width: 0; max-width: 100%; }
+/* Veel varianten (bijv. 31 hondjes): de rij met fotootjes schuift, de pagina wordt niet breder. */
+.product-info { min-width: 0; }
 .kleurkeuze p { margin: 0 0 8px; font: 500 14px/1.4 var(--f-ui); color: #141A2A; }
 .kleurkeuze p .klein { color: #5A6275; font-weight: 400; }
 .kleurstalen { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 6px; scrollbar-width: thin; }
