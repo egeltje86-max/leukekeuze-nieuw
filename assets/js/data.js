@@ -928,4 +928,12 @@ window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find
   function psub(p, slug, b) { var P = (window.LK_PERSONEN || []).find(function (x) { return x.slug === p; }); var x = P && (P.subs || []).find(function (y) { return y.slug === slug; }); if (x) x.beeld = b; }
   psub('baby', 'kraamcadeaus', S('voor-baby-kraamcadeaus'));
   psub('baby', 'babyshower', S('voor-baby-babyshower'));
+  /* 1-11-2026 (2): categoriekaarten, banners en Voor wie-vakjes van Nova */
+  function cg(slug, k, v) { var C = (window.LK_CATEGORIEEN || []).find(function (x) { return x.slug === slug; }); if (C) C[k] = v; }
+  ['boeken-media', 'christelijk', 'metaaldetectie'].forEach(function (n) { cg(n, 'tegel', 'images/categorieen/categorie-' + n + '-gw.webp'); });
+  ['dranken', 'elektronica', 'geuren-verzorging', 'keuken', 'mode-beauty', 'wonen'].forEach(function (n) { cg(n, 'banner', 'images/banners/banner-cat-' + n + '-gw.webp'); });
+  psub('tieners', 'sieraden', S('voor-tieners-sieraden'));
+  psub('tieners', 'spellen-puzzels', S('voor-tieners-spellen-puzzels'));
+  psub('tieners', 'metaaldetectie', S('voor-tieners-metaaldetectie'));
+  psub('collega', 'lootjes', S('voor-collega-lootjes'));
 })();
