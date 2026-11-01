@@ -50,7 +50,7 @@ def schoon(map_=None):
         j = json.load(open(f, encoding='utf-8')); W = j['winkels']
         blok = set(t.lower() for t in U.get(k, [])) | set(t.lower() for t in U.get('*', []))
         mag = MAG.get(g, set())
-        hou = []; gezien = set()
+        hou = []; gezien = set(); reeks = {}
         for p in j['producten']:
             # Zelfde product in een andere maat (Mendes '...-20mm', '...-17'): maar één keer tonen.
             sleutel = re.sub(r'[-\s]+\d+([.,]\d+)?\s*(mm|cm)?$', '', p[0].lower()).strip()
@@ -62,6 +62,10 @@ def schoon(map_=None):
             if g == 'sieraden' and (NIET_SIERAAD.search(p[0]) or not SIERAAD.search(tekst)): slecht = ['geen-sieraad']
             if GROF.search(p[0]): slecht = ['grof']
             if slecht or p[0].lower() in blok: weg += 1; continue
+            # Dieren: dezelfde mok/shirt in tientallen rassen en kleuren -> hooguit 3 per reeks (1-11-2026)
+            if g == 'dieren':
+                rk = ' '.join(p[0].lower().split()[:3]); reeks[rk] = reeks.get(rk, 0) + 1
+                if reeks[rk] > 3: weg += 1; continue
             if GOED is not None and p[0].lower() not in goed.get(k, ()):
                 rij = list(p); rij[2] = W[p[2]]['naam']  # winkelnaam i.p.v. nummer, zodat de rij later terug kan
                 lijst = WACHT.setdefault(k, [])
