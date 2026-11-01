@@ -398,3 +398,6 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 @media (max-width: 759px) { .vonk-hobby { flex-direction: column; align-items: flex-start; gap: 6px; } .vonk-hobby .chips { width: calc(100% + 16px); margin-right: -16px; } }
 .vonk-zes { margin-top: 16px; }
 @media (min-width: 1200px) { .vonk-zes { grid-template-columns: repeat(6, 1fr); gap: 14px; } .vonk-waarom { font-size: 12px; } }
+.vonk-toover { gap: 10px; flex-wrap: wrap; }
+.vonk-toover .knop-rand { display: inline-flex; align-items: center; gap: 8px; }
+.vonk-toover .knop-rand svg { width: 18px; height: 18px; }

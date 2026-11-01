@@ -1142,7 +1142,8 @@
   /* VONK 2.1 (01-11-2026, GO van Marius): 3 vragen, dan 6 VONK-keuzes met 'waarom', interesses als extra filter ná de uitslag,
      budget wordt NOOIT overschreden, 'Nog een keer toveren', geen herhalingen binnen een bezoek, korte fonkeling. */
   var VONK_HOBBY = [
-    { id: 'koken', label: 'Koken & lekker eten', cats: ['keuken', 'eten-drinken'] },
+    { id: 'koken', label: 'Koken', hoofd: ['keuken'], vak: ['boeken-media/kookboeken'] },
+    { id: 'lekkers', label: 'Lekkers & snoep', hoofd: ['eten-drinken'] },
     { id: 'drankje', label: 'Een lekker drankje', cats: ['dranken'] },
     { id: 'verzorging', label: 'Verzorging & geuren', cats: ['geuren-verzorging'] },
     { id: 'mode', label: 'Mode & sieraden', cats: ['mode-beauty', 'sieraden'] },
@@ -1160,8 +1161,19 @@
   function vonkHobby(p, id) {
     var h = VONK_HOBBY.filter(function (x) { return x.id === id; })[0];
     if (!h) return true;
-    if (h.vak) return h.vak.some(function (v) { var d = v.split('/'); return LK.hoortBij(p, d[0], d[1]); });
-    return h.cats.some(function (c) { return LK.hoortBij(p, c); });
+    return (h.vak || []).some(function (v) { var d = v.split('/'); return LK.hoortBij(p, d[0], d[1]); }) ||
+      (h.cats || []).some(function (c) { return LK.hoortBij(p, c); }) ||
+      (h.hoofd || []).indexOf(p.cat) !== -1;   /* 'hoofd': alleen de eigen afdeling, niet wat er via 'ook in' bij staat */
+  }
+  /* Leeftijd van een kindercadeau: uit de gegevens, anders uit de titel ('vanaf 6 jaar', '3+', 'baby'), anders onbekend (null). */
+  var VONK_LEEFTIJD = [{ id: '0-2', label: '0 tot 2 jaar', van: 0, tot: 2 }, { id: '3-5', label: '3 tot 5 jaar', van: 3, tot: 5 }, { id: '6-8', label: '6 tot 8 jaar', van: 6, tot: 8 }, { id: '9-12', label: '9 tot 12 jaar', van: 9, tot: 12 }];
+  function kindLeeftijd(p) {
+    if (p.leeftijd) return p.leeftijd;
+    var t = (p.titel || '') + ' ' + (p.zoek || ''), m;
+    if ((m = t.match(/(\d{1,2})\s*(?:-|tot|t\/m)\s*(\d{1,2})\s*jaar/i))) return [+m[1], +m[2]];
+    if ((m = t.match(/(?:vanaf|v\.a\.)\s*(\d{1,2})\s*jaar|\b(\d{1,2})\s*\+(?!\s*\d)|\b(\d{1,2})\s*jaar\s*\+/i))) return [+(m[1] || m[2] || m[3]), 99];
+    if (/\bpeuter|kraamcadeau|newborn|rammelaar|bijtring|knuffeldoek|speen|babyspeelgoed|\b0\s*\+/i.test(t) || p.sub === 'baby-kraam' || p.sub === 'baby-houten') return [0, 3];
+    return null;
   }
   /* Wat VONK in dit bezoek al als 'keuze' liet zien (sessionStorage, mag stuk gaan). */
   function vonkGeheugen(lees) {
@@ -1170,8 +1182,10 @@
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
     var V = window.LK_VONK;
-    var stap = !q.voor ? 1 : !q.moment ? 2 : !q.budget ? 3 : 4;
-    var balk = '<div class="vonk-stapjes" aria-hidden="true">' + [1, 2, 3].map(function (n) { return '<span class="' + (n <= stap ? 'aan' : '') + '"></span>'; }).join('') + '</div>';
+    var kind = q.voor === 'kind', lft = kind ? VONK_LEEFTIJD.filter(function (x) { return x.id === q.leeftijd; })[0] : null;
+    var stap = !q.voor ? 1 : (kind && !lft) ? 1.5 : !q.moment ? 2 : !q.budget ? 3 : 4;
+    var stappen = kind ? [1, 1.5, 2, 3] : [1, 2, 3];
+    var balk = '<div class="vonk-stapjes" aria-hidden="true">' + stappen.map(function (n) { return '<span class="' + (n <= stap ? 'aan' : '') + '"></span>'; }).join('') + '</div>';
     var kop = paginakop({ titel: 'VONK', tekst: 'Beantwoord 3 vragen. VONK kiest direct passende cadeaus voor je.', kruimel: [{ tekst: 'VONK' }] });
     var BUDGET = PRIJZEN.map(function (p) { return { id: p.id === 'alle' ? 'geen' : p.id, label: p.id === 'alle' ? 'Maakt niet uit' : p.label }; });
     var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
@@ -1184,12 +1198,13 @@
     }
     var terug = '';
     if (stap > 1 && stap < 4) {
-      var tq = Object.assign({}, q); delete tq[stap === 2 ? 'voor' : 'moment'];
+      var tq = Object.assign({}, q); delete tq[stap === 1.5 ? 'voor' : stap === 2 ? (kind ? 'leeftijd' : 'voor') : 'moment'];
       terug = '<a class="vonk-terug" href="' + maakAdres('/vonk', tq) + '">' + ic('links') + 'Vorige vraag</a>';
     }
 
     var inhoud = '';
     if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor');
+    if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
     if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
     if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget');
 
@@ -1203,7 +1218,10 @@
       var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
       var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
       var hob = function (p) { return !hobby || vonkHobby(p, hobby); };
-      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && past(p.moment, q.moment); });
+      if (lft) alle = alle.filter(function (p) { var a = kindLeeftijd(p); return a ? (a[0] <= lft.tot && a[1] >= lft.van) : lft.van >= 3; });
+      /* Zeker passend: leeftijd bekend en niet véél te jong (een '3+'-puzzel is geen topkeuze voor een kind van 10). */
+      var lftZeker = function (p) { if (!lft) return true; var a = kindLeeftijd(p); return !!a && a[0] >= lft.van - 3; };
+      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && past(p.moment, q.moment) && lftZeker(p); });
       /* Weinig treffers? Eerst 'voor iedereen' (zelfde moment), dan dezelfde persoon met een ander moment. Altijd binnen budget en interesse. */
       var ruimer = [], anders = [];
       if (precies.length < 12) {
@@ -1231,10 +1249,10 @@
         groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders));
 
       /* De 6 VONK-keuzes: liefst nog niet eerder getoond in dit bezoek. Zelfde vraag = zelfde 6 (ook na 'terug'). */
-      var sleutel = [q.voor, q.moment, q.budget, hobby, q.mix || ''].join('|');
+      var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.mix || ''].join('|');
       var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};
-      var zes = (geh.per[sleutel] || []).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
-      if (zes.length < Math.min(6, alles.length)) {
+      var zes = (q.zes ? q.zes.split(',') : (geh.per[sleutel] || [])).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+      if (!q.zes && zes.length < Math.min(6, alles.length)) {
         var nieuw = alles.filter(function (p) { return geh.gezien.indexOf(p.id) === -1; });
         zes = nieuw.slice(0, 6); if (zes.length < 6) zes = zes.concat(alles.filter(function (p) { return zes.indexOf(p) === -1; }).slice(0, 6 - zes.length));
         geh.per[sleutel] = zes.map(function (p) { return p.id; });
@@ -1252,36 +1270,37 @@
       var waarom = function (p) {
         var r = [];
         if (p.favoriet || p.populair) r.push('Onze favoriet');
-        else if (LK.isNieuw(p)) r.push('Nieuw binnen');
+        var ka = lft && kindLeeftijd(p); if (ka) r.push(ka[1] >= 99 ? 'Vanaf ' + ka[0] + ' jaar' : ka[0] + '–' + ka[1] + ' jaar');
         var vn = vakNaam(p); if (vn) r.push(vn);
-        if (q.voor !== 'iedereen' && echt(p) === 0) r.push('Gekozen voor ' + label(V.voor, q.voor).toLowerCase());
+        if (q.voor !== 'iedereen' && !ka && echt(p) === 0) r.push('Gekozen voor ' + label(V.voor, q.voor).toLowerCase());
         if (q.moment !== 'iedereen' && (p.moment || []).indexOf(q.moment) !== -1) r.push('Leuk voor ' + label(V.moment, q.moment).toLowerCase());
         if (bud && bud.max && isFinite(bud.max)) r.push('Onder €' + bud.max);
         return r.slice(0, 3).join(' · ');
       };
 
       var wijzig = function (sl, tekst) {
-        var nq = Object.assign({}, q); delete nq[sl]; delete nq.mix;
+        var nq = Object.assign({}, q); delete nq[sl]; delete nq.mix; delete nq.zes;
         return '<a class="chip actief vonk-wijzig" href="' + maakAdres('/vonk', nq) + '" title="Wijzig">' + esc(tekst) + ic('rechts') + '</a>';
       };
       var rijChips = function (opties, sl, huidig) {
         return opties.map(function (o) {
-          var nq = Object.assign({}, q); delete nq.mix;
+          var nq = Object.assign({}, q); delete nq.mix; delete nq.zes;
           if (huidig === o.id) delete nq[sl]; else nq[sl] = o.id;   /* nogmaals tikken = weer uit (bij interesses) */
           return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (huidig === o.id) + '">' + esc(o.label) + '</a>';
         }).join('');
       };
       var budgetRij = BUDGET.map(function (o) {
-        var nq = Object.assign({}, q); nq.budget = o.id; delete nq.mix;
+        var nq = Object.assign({}, q); nq.budget = o.id; delete nq.mix; delete nq.zes;
         return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q.budget === o.id) + '">' + esc(o.label) + '</a>';
       }).join('');
-      var mq = Object.assign({}, q); mq.mix = String((parseInt(q.mix, 10) || 0) + 1);
+      var mq = Object.assign({}, q); mq.mix = String((parseInt(q.mix, 10) || 0) + 1); delete mq.zes;
       var hijZij = q.voor === 'haar' ? 'zij' : q.voor === 'hem' ? 'hij' : 'hij of zij';
 
       inhoud = '<div class="vonk-uitslag">' +
         '<div class="vonk-vraag"><h2>' + (zes.length ? 'VONK kiest deze ' + zes.length + ' voor jou' : 'Nog niets gevonden') + '</h2>' +
         '<div class="vonk-samenvatting">' +
           wijzig('voor', 'Voor: ' + label(V.voor, q.voor)) +
+          (lft ? wijzig('leeftijd', lft.label) : '') +
           wijzig('moment', label(V.moment, q.moment)) +
           '<a class="chip" href="/vonk">Opnieuw beginnen</a>' +
         '</div>' +
@@ -1293,7 +1312,8 @@
             '<div class="vonk-fonkel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
             zes.map(function (p) { var w = waarom(p); return '<div class="vonk-keus">' + LK.productKaart(p) + (w ? '<p class="vonk-waarom">' + ic('vonk') + '<span>' + esc(w) + '</span></p>' : '') + '</div>'; }).join('') +
           '</div>' +
-          '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a></div>'
+          '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a>' +
+            '<button class="knop knop-rand" type="button" data-vonk-deel="' + esc(maakAdres('/vonk', Object.assign({}, q, { mix: undefined, zes: zes.map(function (p) { return p.id; }).join(',') }))) + '">' + ic('deel') + ' Deel deze ' + zes.length + '</button></div>'
           : leegBlok('Nog niets gevonden', 'Binnen dit budget hebben we hier nog niets voor. Kies een ander budget of een andere interesse.', '<a class="knop knop-goud" href="/vonk">Opnieuw</a>')) +
         (rest.length ? '<section class="sectie vonk-meer"><div class="sectie-kop"><div><h2>Meer passende cadeaus</h2></div><span class="vonk-noot"><strong>' + alles.length + '</strong> in totaal</span></div>' + gridMeer(rest, '', 12) + '</section>' : '') +
         '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Je budget wordt nooit overschreden.</p>' +
@@ -2296,6 +2316,12 @@
     if (t.hasAttribute('data-catrij')) {
       var rij = t.parentNode.querySelector('.catrij');
       if (rij) rij.scrollBy({ left: (+t.getAttribute('data-catrij')) * rij.clientWidth * 0.8, behavior: 'smooth' });
+      return;
+    }
+    if (t.hasAttribute('data-vonk-deel')) {
+      var url = location.origin + t.getAttribute('data-vonk-deel'), tekst = 'Kijk, deze cadeaus koos VONK op LeukeKeuze:';
+      if (navigator.share) { navigator.share({ title: 'Cadeau-ideeën van VONK', text: tekst, url: url }).catch(function () {}); }
+      else { window.open('https://wa.me/?text=' + encodeURIComponent(tekst + ' ' + url), '_blank', 'noopener'); }
       return;
     }
     if (t.hasAttribute('data-meer')) {
