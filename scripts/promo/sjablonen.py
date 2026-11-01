@@ -229,6 +229,10 @@ def einde(szn, W, H, plan, n=None):
 def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
     n = len(ps)
     T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 2.2, 2.3, 2.2, 3.2, 2.8   # tempo: Marius vond 2.7 per product net te traag, 2.2 te gehaast
+    SNEL = bool(plan.get('snel'))
+    if SNEL:   # 'snel' (1-11-2026): TikTok-cijfers lieten zien dat kijkers op 0:01 wegswipen -> meteen producten in beeld, totaal ~15 sec
+        T_HOOK, T_PROD, T_TROM, T_EEN, T_EIND = 1.3, 1.5, 1.0, 2.2, 1.8
+    TS = T_PROD / 2.3   # animaties binnen een product schalen mee met het tempo
     segs = [('hook', T_HOOK)]
     for i in range(n - 1, -1, -1):
         if i == 0:
@@ -257,8 +261,19 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
         x0, y0, x1, y1 = vak['box']
         vq = S.goud_tekst('?', S.font('kop', (y1 - y0) * 0.55), W)
         hb = hook_basis.convert('RGBA'); hb.alpha_composite(vq, (int((x0 + x1 - vq.width) / 2), int((y0 + y1 - vq.height) / 2))); hook_basis = hb.convert('RGB')
-    hook_t = tekstlaag(lambda l: (creme and titel_in(l, creme, '', plan.get('pov', '') or plan.get('titel', ''))))
-    hook_k = tekstlaag(lambda l: (knop and tekst_in(l, knop, plan.get('hook') or 'Wacht tot je nummer 1 ziet 👀', 'Bold', 44, DONKER, 1)))
+    if SNEL and vak:
+        # opening met echte producten in beeld: 2x2 raster van de nummers 2 t/m 5 (nummer 1 blijft de verrassing)
+        x0, y0, x1, y1 = vak['box']; bw, bh = x1 - x0, y1 - y0
+        raster = Image.new('RGB', (bw, bh), 'white')
+        keus = [p for p in ps[1:5]] or ps[:1]
+        for k, p in enumerate(keus[:4]):
+            cw, ch = bw // 2, bh // 2
+            f = p['foto'].copy().convert('RGB'); f.thumbnail((int(cw * 0.86), int(ch * 0.86)))
+            raster.paste(f, ((k % 2) * cw + (cw - f.width) // 2, (k // 2) * ch + (ch - f.height) // 2))
+        hook_basis = leeg.copy()
+        foto_in(hook_basis, vak, raster, zoom=1.0, marge=0)
+    hook_t = tekstlaag(lambda l: (creme and titel_in(l, creme, plan.get('hook_goud', '') if SNEL else '', (plan.get('hook_titel') or plan.get('titel', '')) if SNEL else (plan.get('pov', '') or plan.get('titel', '')))))
+    hook_k = tekstlaag(lambda l: (knop and tekst_in(l, knop, (plan.get('hook_knop') or 'Nummer 1 verrast je 👀') if SNEL else (plan.get('hook') or 'Wacht tot je nummer 1 ziet 👀'), 'Bold', 44, DONKER, 1)))
     hook_r = tekstlaag(lambda l: (rond and tekst_in(l, rond, '?', 'kop', 60, DONKER, 1)))
 
     trom_basis, ve = laad('reel-einde', szn, W, H)
@@ -352,8 +367,12 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
             soort = seg[0]
             if soort == 'hook':
                 fr = hook_basis.copy().convert('RGBA')
-                fr.alpha_composite(met_alpha(hook_t, S._ease(lt / 0.6)))
-                pop_laag(fr, hook_k, knop, S._pop((lt - 0.4) / 0.5) * (1 + 0.04 * math.sin(max(0, lt - 0.9) * 6)))
+                if SNEL:   # alles staat er vanaf het allereerste beeld
+                    fr.alpha_composite(hook_t)
+                    pop_laag(fr, hook_k, knop, 1 + 0.04 * math.sin(lt * 6))
+                else:
+                    fr.alpha_composite(met_alpha(hook_t, S._ease(lt / 0.6)))
+                    pop_laag(fr, hook_k, knop, S._pop((lt - 0.4) / 0.5) * (1 + 0.04 * math.sin(max(0, lt - 0.9) * 6)))
                 pop_laag(fr, hook_r, rond, 1 + 0.06 * abs(math.sin(lt * 3)))
                 fr = zoom_beeld(fr, 1 + 0.05 * lt / T_HOOK)
             elif soort == 'trom':
@@ -371,17 +390,17 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
                         foto_in(fr, vak, ps[i]['foto'], zoom=0.55 + 0.45 * S._pop(lt / 0.7) + 0.08 * (lt / dur), dy=zweef)
                     else:
                         kant = i % 3          # 0 van rechts, 1 van links, 2 van onder
-                        inn = 1 - S._ease(lt / 0.45)
-                        uit_ = S._ease((lt - (dur - 0.3)) / 0.3) if lt > dur - 0.3 else 0
+                        inn = 1 - S._ease(lt / (0.45 * TS))
+                        uit_ = S._ease((lt - (dur - 0.3 * TS)) / (0.3 * TS)) if lt > dur - 0.3 * TS else 0
                         dx = (bw * inn if kant == 0 else -bw * inn if kant == 1 else 0) - bw * 1.1 * uit_
                         dy = (bh * inn if kant == 2 else 0) + zweef
                         foto_in(fr, vak, ps[i]['foto'], zoom=1.0 + 0.10 * (lt / dur), dx=dx, dy=dy)
                 fr = fr.convert('RGBA')
-                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.15) / 0.4) * (1 + 0.03 * math.sin(max(0, lt - 0.6) * 4)))
-                fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.35) / 0.4)))
-                pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.7) / 0.45) * (1 + 0.02 * math.sin(max(0, lt - 1.2) * 4)))
+                pop_laag(fr, L['nr'], rond, S._pop((lt - 0.15 * TS) / (0.4 * TS)) * (1 + 0.03 * math.sin(max(0, lt - 0.6) * 4)))
+                fr.alpha_composite(met_alpha(L['naam'], S._ease((lt - 0.35 * TS) / (0.4 * TS))))
+                pop_laag(fr, L['prijs'], knop, S._pop((lt - 0.7 * TS) / (0.45 * TS)) * (1 + 0.02 * math.sin(max(0, lt - 1.2) * 4)))
                 if vak:
-                    glim(fr, vak['box'], (lt - 0.5) / 0.7)
+                    glim(fr, vak['box'], (lt - 0.5 * TS) / (0.7 * TS))
                 # geen klap/schok/flits meer (Marius: 'die stoten niet mooi'); alleen bij nummer 1 een zachte gloed
                 if i == 0:
                     flits(fr, 0.18 * (1 - S._ease(lt / 0.6)) if lt < 0.6 else 0)
