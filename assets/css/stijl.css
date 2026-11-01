@@ -951,6 +951,3 @@ html.feest body::after {
 .lade-personen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 4px; padding: 6px 0 14px; }
 .lade-personen a { display: flex; flex-direction: column; align-items: center; gap: 6px; font: 600 11px/1.2 var(--f-ui); text-align: center; color: var(--tekst); }
 .lade-personen img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid var(--lijn); }
-/* VONK 3.0 (01-11-2026): aantal cadeaus achter elk antwoord */
-.keuze .vonk-aantal { display: block; font-size: 12px; font-weight: 400; opacity: .65; margin-top: 2px; }
-.keuze .vonk-aantal::after { content: ' cadeaus'; }
