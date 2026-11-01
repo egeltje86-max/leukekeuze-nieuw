@@ -483,3 +483,13 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .actie.actie-breed, .actie.actie-breed .actie-tekst { min-height: 280px; }
   .actie.actie-breed::before { background: linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.6) 35%, rgba(10,16,32,0) 50%); }
 }
+/* VONK (01-11-2026, Nova): 'persoonlijkere cadeaus' onder de zes, en op de telefoon een kleiner icoon met ruimte erboven */
+.vonk-persoonlijk { margin: 22px 0 8px; padding: 18px 16px; border: 1px solid #E6D9BC; border-radius: 16px; background: #FFFBF2; text-align: center; }
+.vonk-persoonlijk h2 { display: block; font-family: var(--f-kop); font-weight: 500; font-size: clamp(20px, 5vw, 26px); margin: 0 0 6px; }
+.vonk-persoonlijk h2 svg { display: block; margin: 0 auto 6px; width: 24px; height: 24px; color: #B8862E; }
+.vonk-persoonlijk p { margin: 0 0 12px; color: #5A5040; font-size: 14px; }
+.vonk-persoonlijk .chips { justify-content: center; flex-wrap: wrap; }
+@media (max-width: 599px) {
+  .vonk-pagina > .vonk-icoon { width: 72px; height: 72px; margin-top: 10px; }
+  .vonk-pagina > .vonk-icoon img { width: 72px; height: 72px; }
+}

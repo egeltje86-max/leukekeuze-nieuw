@@ -1317,7 +1317,7 @@
 
     var inhoud = '';
     if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor') +
-      '<p class="vonk-tip">' + ic('zoek') + ' Liever typen? Gebruik de zoekbalk bovenaan, bijv. <em>vader die vist, max €40</em>.</p>';
+      '<p class="vonk-tip">' + ic('zoek') + '<span>Liever typen? Gebruik de zoekbalk bovenaan, bijv. <em>vader die vist, max €40</em>.</span></p>';
     if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
     if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
     if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget');
@@ -1326,11 +1326,19 @@
       var hobby = VONK_HOBBY.some(function (x) { return x.id === q.hobby; }) ? q.hobby : '';
       var B = vonkBasis(q, lft, hobby), past = B.past, alle = B.alle, watW = B.watW, echt = B.echt, pastVoor = B.pastVoor, hob = B.hob, lftZeker = B.lftZeker;
       var watWeinig = watW.length ? (alle.length < 6 ? alle.length : -1) : undefined;
-      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && past(p.moment, q.moment) && lftZeker(p); });
+      /* 01-11-2026 (Nova/Marius): bij Sinterklaas geen kerstspullen en bij Kerst geen Sinterklaas-spullen. */
+      var KERSTW = /kerst|christmas|xmas|rendier|kerstman|sneeuwpop|advent/i, SINTW = /sinterklaas|\bsint\b|\bpiet|pakjesavond|schoencadeau|chocoladeletter|kruidnoot|pepernoot|speculaas/i;
+      var pastMom = function (p) {
+        if (!past(p.moment, q.moment)) return false;
+        if (q.moment === 'sinterklaas' && KERSTW.test(p.titel || '')) return false;
+        if (q.moment === 'kerst' && SINTW.test(p.titel || '')) return false;
+        return true;
+      };
+      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && pastMom(p) && lftZeker(p); });
       /* Weinig treffers? Eerst 'voor iedereen' (zelfde moment), dan dezelfde persoon met een ander moment. Altijd binnen budget en interesse. */
       var ruimer = [], anders = [];
       if (precies.length < 12) {
-        ruimer = alle.filter(function (p) { return precies.indexOf(p) === -1 && hob(p) && (p.voor || []).indexOf('iedereen') !== -1 && past(p.moment, q.moment); });
+        ruimer = alle.filter(function (p) { return precies.indexOf(p) === -1 && hob(p) && (p.voor || []).indexOf('iedereen') !== -1 && pastMom(p); });
         anders = alle.filter(function (p) { return precies.indexOf(p) === -1 && ruimer.indexOf(p) === -1 && hob(p) && pastVoor(p); });
       }
       var VOORKEUR = ['geuren-verzorging', 'sieraden', 'dranken', 'elektronica', 'mode-beauty', 'cadeaus', 'wonen', 'eten-drinken', 'keuken', 'speelgoed', 'boeken-media', 'sport-outdoor', 'hobby'];
@@ -1363,9 +1371,12 @@
         if (q.g === 'haar' && ((v.indexOf('hem') !== -1 && v.indexOf('haar') === -1) || JONGENS.test(tt))) s += 2;
         if (q.g === 'hem' && ((v.indexOf('haar') !== -1 && v.indexOf('hem') === -1) || MEISJES.test(tt))) s += 2;
         if ((kind || q.voor === 'tiener') && q.budget === 'geen' && p.prijs > 80) s += 1;
+        /* Sinterklaas of Kerst gekozen: wat in dat feestvak staat (of het feest in de naam heeft) eerst. */
+        if (feest && !LK.hoortBij(p, 'cadeaus', q.moment) && !(q.moment === 'kerst' ? KERSTW : SINTW).test(tt)) s += 1;
         return s;
       };
-      if (q.g || kind || q.voor === 'tiener') alles = alles.map(function (p, i) { return [p, i, straf(p)]; }).sort(function (a, b) { return a[2] - b[2] || a[1] - b[1]; }).map(function (x) { return x[0]; });
+      var feest = q.moment === 'sinterklaas' || q.moment === 'kerst';
+      if (q.g || kind || q.voor === 'tiener' || feest) alles = alles.map(function (p, i) { return [p, i, straf(p)]; }).sort(function (a, b) { return a[2] - b[2] || a[1] - b[1]; }).map(function (x) { return x[0]; });
       /* Getypt woord met weinig treffers (bijv. golf vanaf €100): die paar treffers altijd vooraan. */
       if (watW.length && typeof watWeinig === 'number' && watWeinig > 0) {
         var isRaak = function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); };
@@ -1468,6 +1479,15 @@
           (opties.length ? '<p>Hier vind je wel iets:</p><div class="chips">' + opties.join('') + '</div>' : '<a class="knop knop-goud" href="/vonk">Opnieuw beginnen</a>') + '</div>';
       }
       var mq = Object.assign({}, q); mq.mix = String((parseInt(q.mix, 10) || 0) + 1); delete mq.zes;
+      /* Idee van Nova (01-11-2026): na de zes de vraag 'waar houdt hij/zij van?'. Alleen interesses die echt cadeaus opleveren. */
+      var persoonlijker = '';
+      if (zes.length && !q.wat) {
+        var hobbies = VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')) && h.id !== hobby && vonkBasis(q, lft, h.id).aantal() >= 6; });
+        if (hobbies.length) persoonlijker = '<section class="vonk-persoonlijk"><h2>' + ic('vonk') + ' Wil je nog persoonlijkere cadeaus vinden?</h2>' +
+          '<p>' + (hobby ? 'Kies een andere interesse, of ' : 'Vertel VONK ') + 'waar ' + hijZij + ' van houdt. Dan zoekt VONK cadeaus die daar echt bij passen.</p>' +
+          '<div class="chips">' + hobbies.map(function (h) { return '<a class="chip" href="' + adres({ hobby: h.id }) + '">' + esc(h.label) + '</a>'; }).join('') +
+          (hobby ? '<a class="chip" href="' + adres({ hobby: null }) + '">Alles</a>' : '') + '</div></section>';
+      }
       inhoud = '<div class="vonk-uitslag">' +
         '<div class="vonk-balk"><div class="vonk-balk-labels">' + balkLabels + '</div>' +
           '<button class="vonk-aanpassen" type="button" data-filter-open>' + ic('filter') + ' Aanpassen</button></div>' +
@@ -1482,6 +1502,7 @@
           (alles.length > 6 ? '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a>' : '<div class="vonk-toover">') +
             '<button class="knop knop-rand" type="button" data-vonk-deel="' + esc(maakAdres('/vonk', Object.assign({}, q, { mix: undefined, zes: zes.map(function (p) { return p.id; }).join(',') }))) + '">' + ic('deel') + ' Deel deze ' + zes.length + '</button></div>'
           : tips) +
+        persoonlijker +
         (rest.length ? '<section class="sectie vonk-meer"><div class="sectie-kop"><div><h2>Meer passende cadeaus</h2></div><span class="vonk-noot"><strong>' + alles.length + '</strong> in totaal</span></div>' + gridMeer(rest, '', 12) + '</section>' : '') +
         '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Je budget wordt nooit overschreden.</p>' +
         '</div>';
