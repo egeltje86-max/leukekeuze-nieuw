@@ -476,10 +476,10 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 
 /* Toppers van nu (01-11-2026): eigen kaart in de seizoensrij. Telefoon: plaatje rechts uitlijnen (producten rechts).
    Computer: over de hele breedte, de drie seizoenskaarten eronder. */
-.actie.actie-breed img { object-position: right top; }
-.actie.actie-breed::before { background: linear-gradient(0deg, rgba(10,16,32,.9) 0%, rgba(10,16,32,.5) 50%, rgba(10,16,32,0) 75%); }
+.actie.actie-breed img { object-position: right center; }
+.actie.actie-breed::before { background: linear-gradient(90deg, rgba(10,16,32,.95) 0%, rgba(10,16,32,.8) 50%, rgba(10,16,32,.2) 90%); }
 @media (min-width: 900px) {
   .acties .actie.actie-breed { grid-column: 1 / -1; }
-  .actie.actie-breed, .actie.actie-breed .actie-tekst { min-height: 220px; }
+  .actie.actie-breed, .actie.actie-breed .actie-tekst { min-height: 280px; }
   .actie.actie-breed::before { background: linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.6) 35%, rgba(10,16,32,0) 50%); }
 }
