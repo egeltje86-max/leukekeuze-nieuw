@@ -2124,19 +2124,21 @@
   }
 
   /* ================== TRADETRACKER-REFERENTIE ================== */
-  /* TradeTracker-links (…&a=516846&r=&u=…) hebben een leeg 'r='-vakje. Vlak voor de klik vullen we dat met het product
+  /* TradeTracker-links hebben een leeg referentie-vakje (r= of achteraan tt=). Vlak voor de klik vullen we dat met het product
      (op een productpagina) of met de soort link en de pagina. In TradeTracker > Transacties staat dat dan in de kolom
      'Referentie', zodat Marius bij een verkoop ziet via welk product of welke pagina die kwam. Geen persoonsgegevens. */
   (function () {
     function vulRef(e) {
       var a = e.target && e.target.closest && e.target.closest('a[href]'); if (!a) return;
-      var href = a.href; if (!/[?&]a=516846&r=(&|$)/.test(href)) return;
+      /* Twee vormen: …&a=516846&r=&u=… en bij winkels met een eigen doorstuurlink …?tt=campagne_materiaal_516846_ (referentie achteraan). */
+      var href = a.href, gewoon = /[?&]a=516846&r=(&|$)/.test(href), tt = /[?&]tt=\d+_\d+_516846_(?=&|#|$)/.test(href);
+      if (!gewoon && !tt) return;
       var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1];
       var pad = location.pathname.replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'home';
       var soort = a.closest('.awkaart') ? 'feed' : a.classList.contains('winkelkaart') ? 'winkel' : a.classList.contains('geef') ? 'lijst' : '';
-      var ref = id && !soort ? id : (soort || 'link') + '_' + pad;
-      ref = ref.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 80);
-      if (ref) a.href = href.replace(/([?&]a=516846&r=)(?=&|$)/, '$1' + ref);
+      var ref = id && !soort ? id : (soort || 'link') + '-' + pad;
+      ref = ref.replace(/[^A-Za-z0-9-]/g, '').slice(0, 80); if (!ref) return;
+      a.href = gewoon ? href.replace(/([?&]a=516846&r=)(?=&|$)/, '$1' + ref) : href.replace(/([?&]tt=\d+_\d+_516846_)(?=&|#|$)/, '$1' + ref);
     }
     ['mousedown', 'click', 'auxclick', 'contextmenu', 'keydown'].forEach(function (t) { document.addEventListener(t, vulRef, true); });
   })();
