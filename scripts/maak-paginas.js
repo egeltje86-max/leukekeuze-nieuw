@@ -14,6 +14,12 @@ require('./splits-producten.js')(); // producten.js -> producten-lean.js + produ
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
   .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
+/* Veiligheidsslot (1-11-2026): staat er nog een half samengevoegd stuk (<<<<<<< / >>>>>>>) in het sjabloon of in de bronbestanden,
+   dan stopt het bouwen meteen. Anders komt die rommel op alle 6700 pagina's. */
+for (const f of ['sjabloon.html', 'assets/js/app.js', 'assets/js/data.js', 'assets/js/producten.js', 'assets/css/stijl.css']) {
+  const p = path.join(ROOT, f);
+  if (fs.existsSync(p) && /^(<{7}|>{7}) /m.test(fs.readFileSync(p, 'utf8'))) { console.error('STOP: samenvoegfout in ' + f + ' - eerst oplossen, er is niets gebouwd.'); process.exit(1); }
+}
 const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie'];
 const GEEN_INDEX = /^\/(favorieten|zoek|lijst)(\/|$)/; /* ook zonder slash erachter (31-10-2026: /zoek stond per ongeluk in de sitemap) */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
