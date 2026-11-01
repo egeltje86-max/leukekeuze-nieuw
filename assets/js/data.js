@@ -939,4 +939,12 @@ window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find
   psub('tieners', 'spellen-puzzels', S('voor-tieners-spellen-puzzels'));
   psub('tieners', 'metaaldetectie', S('voor-tieners-metaaldetectie'));
   psub('collega', 'lootjes', S('voor-collega-lootjes'));
+  /* 1-11-2026 (3): banners, Tuin-kaart en vakjes Sieraden, Parfum en Mode */
+  ['boeken-media', 'christelijk', 'dieren', 'eten-drinken', 'hobby', 'metaaldetectie', 'sieraden', 'speelgoed', 'sport-outdoor', 'tuin-klussen'].forEach(function (n) { cg(n, 'banner', 'images/banners/banner-cat-' + n + '-gw.webp'); });
+  cg('tuin-klussen', 'tegel', 'images/categorieen/categorie-tuin-klussen-gw.webp');
+  ['ringen', 'horloges', 'echt-goud', 'oorbellen', 'kettingen', 'zilver', 'armbanden', 'met-naam'].forEach(function (n) { vak('sieraden', n, S('sieraden-' + n)); });
+  vak('geuren-verzorging', 'parfum', S('geuren-verzorging-parfum'));
+  vak('mode-beauty', 'schoenen', S('mode-beauty-schoenen'));
+  vak('mode-beauty', 'tassen', S('mode-beauty-tassen'));
+  vak('mode-beauty', 'truien-hoodies', S('mode-beauty-truien-hoodies'));
 })();
