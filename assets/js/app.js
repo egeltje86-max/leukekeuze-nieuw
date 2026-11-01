@@ -1649,6 +1649,56 @@
 
   /* ---------- Cadeaugidsen: eigen tekst met een paar gekozen producten per stukje ---------- */
   var GIDSEN = [
+    { slug: 'schoencadeautjes', beeld: 'bol-9300000265640005', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/knutselen-kleuren'],
+      titel: 'Schoencadeautjes voor Sinterklaas: 16 leuke ideeën tot €8', kort: 'Kleine cadeautjes die in de schoen passen. Voor peuters, kleuters en grotere kinderen.',
+      intro: 'Schoen zetten is voor kinderen misschien wel het leukste van de hele sinterklaastijd. Maar elke keer iets in die schoen leggen loopt snel op. Daarom zocht ik schoencadeautjes uit die klein en betaalbaar zijn, en waar kinderen toch echt mee spelen. Alles kost minder dan 8 euro en past in een gewone kinderschoen.',
+      delen: [
+        { kop: 'Tips voor schoencadeautjes', tekst: 'Een paar dingen die het makkelijker maken:',
+          lijst: [
+            'Spreek met jezelf een bedrag per schoen af, bijvoorbeeld 2 tot 5 euro. Dan houd je het betaalbaar.',
+            'Niet elke keer een cadeautje: een mandarijn, een chocolademuntje of een tekening van Piet is ook leuk.',
+            'Bewaar iets groters voor de laatste schoen, vlak voor pakjesavond.',
+            'Kies dingen waar ze meteen mee aan de slag kunnen: bouwen, kleuren of een spelletje.',
+            'Let bij kleine kinderen op losse onderdelen. Bij elk product staat vanaf welke leeftijd het is.'
+          ] },
+        { kop: 'Bouwen en spelen (tot €5)', tekst: 'Kleine bouwsetjes en figuurtjes. Snel klaar, en ze spelen er daarna nog lang mee.',
+          ids: ['bol-9300000265640005', 'bol-9300000243481734', 'bol-9300000192994578', 'bol-9300000225322186'] },
+        { kop: 'Knutselen en kleuren (€5 tot €7)', tekst: 'Voor kinderen die graag iets maken: armbandjes, kraskaarten en stickers.',
+          ids: ['bol-9300000183264805', 'bol-9300000221675733', 'bol-9300000182484745', 'bol-9300000171163755'] },
+        { kop: 'Voor de allerkleinsten', tekst: 'Zacht, veilig en makkelijk vast te pakken. Voor baby’s en peuters.',
+          ids: ['bol-9300000109164502', 'bol-9300000191580808', 'bol-9300000320683306', 'bol-9300000187578608'] },
+        { kop: 'Spelletjes en puzzels (tot €8)', tekst: 'Iets om samen te spelen, ook als de Sint weer weg is.',
+          ids: ['bol-9200000132162995', 'bol-9300000035078697', 'bol-1004004013389248', 'bol-9300000181433977'] }
+      ],
+      slot: 'Meer kleine cadeautjes vind je bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a> en <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond staat bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
+    { slug: 'sinterklaascadeau-man', beeld: 'bol-9300000238510035', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-hem', 'cadeaus/sint-onder-15', 'cadeaus/grappig'],
+      titel: 'Sinterklaascadeau voor een man: 16 ideeën van €9 tot €27', kort: 'Voor je vriend, man, vader of broer. Van lootjes tot iets wat hij echt gebruikt.',
+      intro: 'Een sinterklaascadeau voor een man is vaak lastig, want mannen zeggen meestal dat ze niets nodig hebben. Toch zijn ze blij met iets grappigs voor pakjesavond, iets lekkers voor zichzelf of een handig ding dat ze elke dag gebruiken. Ik zette 16 ideeën op een rij, van klein tot iets groter. Alles kost tussen de 9 en 27 euro, dus het past ook bij lootjes.',
+      delen: [
+        { kop: 'Voor in de schoen of de lootjes (tot €12)', tekst: 'Klein, maar wel iets waar hij wat aan heeft.',
+          ids: ['bierch-0325fb0395', 'bol-9300000322634443', 'hema-a7c1cc7068', 'dvzn-912075'] },
+        { kop: 'Grappig voor pakjesavond', tekst: 'Cadeaus waar iedereen om moet lachen. Leuk in een surprise.',
+          ids: ['dvzn-392', 'cg-useless-box', 'bol-9300000187227306', 'cg-chocolade-game-controller'] },
+        { kop: 'Handig voor elke dag (€20 tot €27)', tekst: 'Voor de man die van praktisch houdt: koken, klussen of buiten zijn.',
+          ids: ['bol-9200000002756942', 'bol-9300000238510035', 'hema-d2ace702bc', 'bol-9300000405787225'] },
+        { kop: 'Spellen voor na het uitpakken', tekst: 'Zijn de pakjes open? Dan is een spel een mooie manier om de avond af te sluiten.',
+          ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'kadov-23d3797d23'] }
+      ],
+      slot: 'Meer ideeën vind je bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
+    { slug: 'sinterklaascadeau-vrouw', beeld: 'hema-f82e244297', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
+      titel: 'Sinterklaascadeau voor een vrouw: 16 ideeën van €9 tot €20', kort: 'Voor je vriendin, vrouw, moeder of zus. Om te verwennen, voor in huis of om zelf iets te maken.',
+      intro: 'Zoek je een sinterklaascadeau voor een vrouw? Dan kun je bijna altijd scoren met iets om even lekker tot rust te komen. Denk aan warme sokken, een fijne geur of een creatief project voor de winteravonden. Ik koos 16 cadeaus van 9 tot 20 euro. Ze zijn dus ook geschikt voor de lootjes.',
+      delen: [
+        { kop: 'Voor in de schoen of de lootjes (tot €15)', tekst: 'Kleine cadeautjes die laten zien dat je aan haar dacht.',
+          ids: ['hema-84afebb566', 'dk-00043546', 'bol-9300000239540734', 'lego-40524'] },
+        { kop: 'Om jezelf te verwennen', tekst: 'Zacht, warm en lekker ruikend: helemaal goed voor de koude decemberavonden.',
+          ids: ['bol-9300000247524837', 'bol-9300000044984873', 'hema-f82e244297', 'bol-9300000291533838'] },
+        { kop: 'Mooi voor in huis', tekst: 'Een geurkaars of een lief lampje maakt het meteen gezellig.',
+          ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'bol-9300000124563618', 'hema-4ba291e77d'] },
+        { kop: 'Creatief en ontspannen', tekst: 'Voor de vrouw die graag iets met haar handen doet, of even helemaal uit wil schakelen.',
+          ids: ['bol-9300000087608265', 'bol-9300000238015446', 'bol-9300000071174759', 'bol-9300000189482940'] }
+      ],
+      slot: 'Meer ideeën vind je bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
     { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren', 'hobby/origami-scrapbooking'],
       titel: 'Surprise maken voor Sinterklaas: 25 ideeën, tips en wat je erin stopt', kort: 'Geen inspiratie voor je surprise? Hier vind je ideeën per persoon, een stappenplan en tips voor het gedicht.',
       intro: 'Lootjes getrokken en nu moet er een surprise komen? Een surprise is het leukste deel van pakjesavond: een zelfgemaakte verpakking die past bij de persoon, met een cadeautje erin en een gedicht erbij. Je hoeft er echt geen knutselkampioen voor te zijn. Met een doos, wat karton, een lijmpistool en verf kom je al heel ver. Hieronder vind je een simpel stappenplan, 25 ideeën per type persoon, tips voor het gedicht en de spullen die je nodig hebt.',
