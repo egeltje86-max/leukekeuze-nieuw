@@ -91,7 +91,13 @@
     'Wijnkring': 'https://www.wijnkring.nl/', 'Kerstland': 'https://www.kerstland.nl/', 'Teufel': 'https://teufelaudio.nl/', 'Dropwinkel': 'https://www.dropwinkel.eu/',
     'Bloompost': 'https://www.bloompost.nl/', 'Dr. Martens': 'https://www.drmartens.com/nl/nl/', 'Razer': 'https://www.razer.com/', 'Fietsparadijs': 'https://www.fietsparadijs.com/',
     'Fietstas.com': 'https://www.fietstas.com/', 'Zadig & Voltaire': 'https://zadig-et-voltaire.com/eu/nl/' };
-  function prijsFilter(id) { return PRIJZEN.find(function (p) { return p.id === id; }) || PRIJZEN[0]; }
+  function prijsFilter(id) {
+    var f = PRIJZEN.find(function (p) { return p.id === id; }); if (f) return f;
+    /* Eigen budget uit VONK-tekst (fase 3): 'tot40' = tot €40, 'vanaf75' = vanaf €75. */
+    var m = /^(tot|vanaf)(\d{1,4})$/.exec(id || '');
+    if (m) return m[1] === 'tot' ? { id: id, label: 'Tot €' + m[2], min: 0, max: +m[2] } : { id: id, label: 'Vanaf €' + m[2], min: +m[2], max: Infinity };
+    return PRIJZEN[0];
+  }
   function binnenPrijs(p, id) { var f = prijsFilter(id); return p.prijs >= f.min && p.prijs <= f.max; }
   function sorteer(lijst, hoe) {
     var l = lijst.slice();
@@ -1175,6 +1181,73 @@
     if (/\bpeuter|kraamcadeau|newborn|rammelaar|bijtring|knuffeldoek|speen|babyspeelgoed|\b0\s*\+/i.test(t) || p.sub === 'baby-kraam' || p.sub === 'baby-houten') return [0, 3];
     return null;
   }
+  /* VONK fase 3 (01-11-2026): gewone taal -> keuzes. Geen AI, wel slimme woordlijsten. Werkt in de browser, kost niets.
+     'iets voor mijn vader die van vissen houdt, max 40 euro' -> voor=hem, hobby=sport, wat=vissen, budget=tot40. */
+  var VL_VOOR = [
+    [/\b(opa|oma|grootvader|grootmoeder|opa en oma|grootouders|schoonouders)\b/, 'opa-oma'],
+    [/\b(collega|collega's|baas|leidinggevende|manager|juf|meester|personeel|team)\b/, 'collega'],
+    [/\b(tiener|puber|tieners|pubers)\b/, 'tiener'],
+    [/\b(kind|kindje|kinderen|kids|zoon|zoontje|dochter|dochtertje|baby'?s?|babietje|dreumes|neefje|nichtje|kleinkind|kleinzoon|kleindochter|baby|peuter|kleuter|jongen|meisje|jongetje|meisje|petekind)\b/, 'kind'],
+    [/\b(vader|papa|pa|man|vriend|broer|zwager|schoonvader|schoonzoon|oom|hem|heer|mannen|echtgenoot|buurman|neef|opa van)\b/, 'hem'],
+    [/\b(moeder|mama|ma|vrouw|vriendin|zus|zusje|schoonzus|schoonmoeder|schoondochter|tante|haar|dame|vrouwen|echtgenote|buurvrouw|nicht|oppas|kapster)\b/, 'haar']
+  ];
+  var VL_MOMENT = [
+    [/sinterklaas|\bsint\b|pakjesavond|schoencadeau|schoen zetten|surprise/, 'sinterklaas'],
+    [/\bkerst/, 'kerst'],
+    [/verjaardag|\bjarig|\bwordt \d{1,3}\b/, 'verjaardag'],
+    [/\b(zomaar|bedankje|bedankt|dankjewel|opkikker|beterschap)\b/, 'zomaar']
+  ];
+  /* [woord, VONK-interesse, (optioneel) zoekwoord voor precieze treffers] */
+  var VL_HOBBY = [
+    [/\b(vis|vissen|visser|hengel|hengelen|karper)/, 'sport', 'vissen'], [/\bgolf/, 'sport', 'golf'], [/\bdart/, 'sport', 'darts'],
+    [/\b(hardlo|rennen|runnen)/, 'sport', 'hardlopen'], [/\b(fiets|wielren|mountainbike)/, 'sport', 'fiets'], [/\b(wandel|hiken|hike)/, 'sport', 'wandel'],
+    [/\b(kampeer|kamperen|camping)/, 'sport', 'kampe'], [/\bvoetbal/, 'sport', 'voetbal'], [/\byoga/, 'sport', 'yoga'], [/\b(fitness|sporten|sport|gym)/, 'sport'],
+    [/\b(klim|boulder)/, 'sport', 'klim'], [/\b(schaats|ski|snowboard)/, 'sport'],
+    [/\b(kook|koken|kookt|chef|bakken|bakt|keuken)/, 'koken'], [/\b(bbq|barbecue)/, 'koken', 'bbq'], [/\bkoffie/, 'koken', 'koffie'], [/\bthee\b/, 'koken', 'thee'],
+    [/\b(snoep|chocola|drop|lekkers|zoetekauw)/, 'lekkers'],
+    [/\bwhisk/, 'drankje', 'whisk'], [/\bwijn/, 'drankje', 'wijn'], [/\bbier/, 'drankje', 'bier'], [/\bgin\b/, 'drankje', 'gin'], [/\b(champagne|bubbels)/, 'drankje', 'champagne'], [/\b(drank|borrel|cocktail)/, 'drankje'],
+    [/\b(parfum|geur|make-?up|verzorging|beauty|wellness|verwennen|skincare)/, 'verzorging'],
+    [/\b(sieraad|sieraden|ketting|armband|ring|oorbel)/, 'mode'], [/\b(mode|kleding|tas|tassen|horloge)/, 'mode'],
+    [/\b(gamen|gamer|gaming|gamet|game|playstation|xbox|nintendo|switch|ps5|games)/, 'gamen'],
+    [/\b(tech|techniek|gadget|computer|elektronica|telefoon|muziek luisteren|koptelefoon)/, 'techniek'], [/\b(fotografie|camera)/, 'techniek', 'camera'],
+    [/\b(lezen|leest|boek|boeken|lezer|lezeres)/, 'lezen'], [/\b(film|films|series)/, 'lezen', 'film'], [/\b(muziek|vinyl|lp)/, 'lezen', 'muziek'],
+    [/\b(knutsel|tekenen|tekent|schilder|haken|breien|naaien|creatief|hobby)/, 'creatief'],
+    [/\b(wonen|interieur|decoratie|kaarsen|planten)/, 'wonen'],
+    [/\b(tuin|tuinier|moestuin|klussen|klusser|gereedschap)/, 'tuin'],
+    [/\blego/, 'spelen', 'lego'], [/\b(speelgoed|spelen|spelletjes|puzzel|bordspel)/, 'spelen'],
+    [/\b(hond)/, 'dieren', 'hond'], [/\b(kat|poes|katten)\b/, 'dieren', 'kat'], [/\b(paard|pony)/, 'dieren', 'paard'], [/\b(dier|dieren)/, 'dieren'],
+    [/\b(christelijk|geloof|gelovig|bijbel|kerk)/, 'christelijk'],
+    [/\b(metaaldetect|detector)/, 'sport', 'metaaldetect']
+  ];
+  function vonkLees(zin) {
+    var t = ' ' + vouw(zin || '').replace(/[,.!?;:]/g, ' ') + ' ', q = {}, m;
+    VL_VOOR.some(function (r) { if (r[0].test(t)) { q.voor = r[1]; return true; } return false; });
+    VL_MOMENT.some(function (r) { if (r[0].test(t)) { q.moment = r[1]; return true; } return false; });
+    /* Leeftijd: 'van 7', '7 jaar', 'wordt 10' */
+    if ((m = t.match(/\b(\d{1,2})\s*(jaar|jarige|jr)\b|\bwordt (\d{1,2})\b|\bvan (\d{1,2})\b(?! ?(euro|eur))/))) {
+      var jr = +(m[1] || m[3] || m[4]);
+      if (jr <= 12 && (!q.voor || q.voor === 'kind')) { q.voor = 'kind'; q.leeftijd = jr <= 2 ? '0-2' : jr <= 5 ? '3-5' : jr <= 8 ? '6-8' : '9-12'; }
+      else if (jr >= 13 && jr <= 17 && (!q.voor || q.voor === 'kind')) q.voor = 'tiener';
+    }
+    /* Budget: 'max 40 euro', 'tot €25', 'onder de 30', 'rond de 50', 'vanaf 100', '40 euro' */
+    if ((m = t.match(/\b(vanaf|boven|meer dan)\s*(de\s*)?(€\s*|eur\s*)?(\d{1,4})/))) q.budget = 'vanaf' + m[4];
+    else if ((m = t.match(/\b(max|maximaal|maximum|tot|onder|hooguit|niet meer dan|rond|ongeveer|zo'?n|budget|van)\s*(de\s*|een\s*|is\s*|van\s*)?(€\s*|eur\s*|euro\s*)?(\d{1,4})\s*(euro|eur|€|,-)?/)) && (/max|tot|onder|hooguit|niet meer|budget/.test(m[1]) || m[5] || m[3]))
+      q.budget = 'tot' + (/rond|ongeveer|zo/.test(m[1]) ? Math.ceil(+m[4] * 1.15 / 5) * 5 : +m[4]);
+    else if ((m = t.match(/(€\s*(\d{1,4})|(\d{1,4})\s*(euro|eur)\b)/))) q.budget = 'tot' + (m[2] || m[3]);
+    var wat = [];
+    VL_HOBBY.forEach(function (r) { if (r[0].test(t)) { if (!q.hobby) q.hobby = r[1]; if (r[2] && r[1] === q.hobby && wat.indexOf(r[2]) === -1) wat.push(r[2]); } });
+    if (q.hobby === 'christelijk' && !q.voor) q.voor = 'iedereen';
+    /* Baby/peuter/kleuter zegt al genoeg over de leeftijd. */
+    if (q.voor === 'kind' && !q.leeftijd) { if (/\b(baby|babietje|dreumes|peuter|pasgeboren|kraam)/.test(t)) q.leeftijd = '0-2'; else if (/\bkleuter/.test(t)) q.leeftijd = '3-5'; }
+    /* 'iets origineels', 'praktisch', 'luxe' of 'persoonlijk': die soort gaat voor. */
+    if (/originee?l|uniek|apart|grappig|bijzonders?\b/.test(t)) q.soort = 'origineel';
+    else if (/praktisch|handig|nuttig/.test(t)) q.soort = 'praktisch';
+    else if (/luxe|chique|exclusief|duur/.test(t)) q.soort = 'luxe';
+    else if (/persoonlijk|met naam|gegraveerd|eigen foto/.test(t)) q.soort = 'persoonlijk';
+    if (wat.length) q.wat = wat.join(' ');
+    q.voor = q.voor || 'iedereen'; q.moment = q.moment || 'iedereen'; q.budget = q.budget || 'geen';
+    return q;
+  }
   /* Wat VONK in dit bezoek al als 'keuze' liet zien (sessionStorage, mag stuk gaan). */
   function vonkGeheugen(lees) {
     try { if (lees === undefined) return JSON.parse(sessionStorage.getItem('lk-vonk') || '{}'); sessionStorage.setItem('lk-vonk', JSON.stringify(lees)); } catch (e) { return {}; }
@@ -1203,7 +1276,10 @@
     }
 
     var inhoud = '';
-    if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor');
+    if (stap === 1) inhoud = '<form class="vonk-typ" data-vonk-typ role="search"><label for="vonk-zin">Typ wat je zoekt, zoals je het zou zeggen</label>' +
+      '<div class="vonk-typ-rij"><input id="vonk-zin" type="text" autocomplete="off" placeholder="Bijv. iets voor mijn vader die van vissen houdt, max 40 euro">' +
+      '<button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
+      '<p class="vonk-of"><span>of kies hieronder</span></p>' + vraag('Voor wie zoek je iets?', V.voor, 'voor');
     if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
     if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
     if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget');
@@ -1215,6 +1291,14 @@
       var alle = LK.zichtbaar().filter(function (p) { return hobby === 'christelijk' ? p.cat === 'christelijk' : nietChristelijk(p); }).filter(function (p) {
         return q.voor === 'iedereen' || hobby === 'dieren' || p.cat !== 'dieren';
       }).filter(function (p) { return binnenPrijs(p, q.budget); });   /* budget is heilig */
+      /* Precieze woorden uit de getypte zin (bijv. 'vissen'): genoeg treffers? Dan alleen die. Anders gaan ze voor. */
+      var watW = q.wat ? zoekWoorden(q.wat) : [];
+      if (watW.length) {
+        var raak = alle.filter(function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); });
+        if (raak.length >= 6) alle = raak;
+        else alle = raak.concat(alle.filter(function (p) { return raak.indexOf(p) === -1; }));
+        var watWeinig = raak.length < 6 ? raak.length : -1;
+      }
       var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
       var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
       var hob = function (p) { return !hobby || vonkHobby(p, hobby); };
@@ -1244,12 +1328,18 @@
         var r = function (l) { return l.slice().sort(function (a, b) { return mixGetal(a.id + q.mix) - mixGetal(b.id + q.mix); }); };
         return r(fav).concat(r(rest));
       };
-      var groep = function (lijst) { return daisyconLaag(spreid(schud(lijst))); };
+      var soortEerst = function (l) { if (!q.soort) return l; return l.filter(function (p) { return (p.soort || []).indexOf(q.soort) !== -1; }).concat(l.filter(function (p) { return (p.soort || []).indexOf(q.soort) === -1; })); };
+      var groep = function (lijst) { return soortEerst(daisyconLaag(spreid(schud(lijst)))); };
       var alles = q.voor === 'iedereen' ? groep(precies).concat(groep(ruimer), groep(anders)) :
         groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders));
 
+      /* Getypt woord met weinig treffers (bijv. golf vanaf €100): die paar treffers altijd vooraan. */
+      if (watW.length && typeof watWeinig === 'number' && watWeinig > 0) {
+        var isRaak = function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); };
+        alles = alles.filter(isRaak).concat(alles.filter(function (p) { return !isRaak(p); }));
+      }
       /* De 6 VONK-keuzes: liefst nog niet eerder getoond in dit bezoek. Zelfde vraag = zelfde 6 (ook na 'terug'). */
-      var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.mix || ''].join('|');
+      var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.wat || '', q.soort || '', q.mix || ''].join('|');
       var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};
       var zes = (q.zes ? q.zes.split(',') : (geh.per[sleutel] || [])).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
       if (!q.zes && zes.length < Math.min(6, alles.length)) {
@@ -1260,7 +1350,9 @@
         var heeft = function (p, s) { return (p.soort || []).indexOf(s) !== -1; };
         var VAKJES = [['best'], ['origineel'], ['praktisch'], ['best'], ['origineel'], ['luxe', 'persoonlijk']];
         zes = []; var gekozenSoort = {};
-        VAKJES.forEach(function (soorten) {
+        /* Specifiek getypt woord met maar een paar treffers: die eerst, de mixer vult de rest. */
+        if (watW.length && typeof watWeinig === 'number' && watWeinig > 0) zes = alles.slice(0, Math.min(watWeinig, 6));
+        VAKJES.slice(zes.length).forEach(function (soorten) {
           var p = bron.filter(function (x) { return zes.indexOf(x) === -1 && (soorten[0] === 'best' || soorten.some(function (s) { return heeft(x, s); })); })[0];
           if (!p) p = bron.filter(function (x) { return zes.indexOf(x) === -1; })[0];
           if (p) { zes.push(p); if (soorten[0] !== 'best') gekozenSoort[p.id] = soorten.filter(function (s) { return heeft(p, s); })[0] || ''; }
@@ -1303,7 +1395,8 @@
           return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (huidig === o.id) + '">' + esc(o.label) + '</a>';
         }).join('');
       };
-      var budgetRij = BUDGET.map(function (o) {
+      var eigenB = q.budget && !BUDGET.some(function (o) { return o.id === q.budget; }) ? [{ id: q.budget, label: prijsFilter(q.budget).label }] : [];
+      var budgetRij = eigenB.concat(BUDGET).map(function (o) {
         var nq = Object.assign({}, q); nq.budget = o.id; delete nq.mix; delete nq.zes;
         return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q.budget === o.id) + '">' + esc(o.label) + '</a>';
       }).join('');
@@ -1312,9 +1405,12 @@
 
       inhoud = '<div class="vonk-uitslag">' +
         '<div class="vonk-vraag"><h2>' + (zes.length ? 'VONK kiest deze ' + zes.length + ' voor jou' : 'Nog niets gevonden') + '</h2>' +
+        (q.wat && typeof watWeinig === 'number' && watWeinig >= 0 ? '<p class="vonk-begreep">Voor <em>“' + esc(q.wat) + '”</em> hebben we ' + (watWeinig ? 'er maar ' + watWeinig : 'nog niets') + ' binnen je keuzes. Daarna zie je andere ideeën die passen.</p>' : '') +
+        (q.zin ? '<p class="vonk-begreep">Je zocht: <em>“' + esc(q.zin) + '”</em>. Klopt iets niet? Tik op een keuze om hem te veranderen.</p>' : '') +
         '<div class="vonk-samenvatting">' +
           wijzig('voor', 'Voor: ' + label(V.voor, q.voor)) +
           (lft ? wijzig('leeftijd', lft.label) : '') +
+          (q.wat ? wijzig('wat', '“' + q.wat + '”') : '') +
           wijzig('moment', label(V.moment, q.moment)) +
           '<a class="chip" href="/vonk">Opnieuw beginnen</a>' +
         '</div>' +
@@ -2414,6 +2510,8 @@
   });
 
   document.addEventListener('submit', function (e) {
+    var v = e.target.closest('[data-vonk-typ]');
+    if (v) { e.preventDefault(); var zin = v.querySelector('input').value.trim(); if (zin) ga(maakAdres('/vonk', Object.assign(vonkLees(zin), { zin: zin }))); return; }
     var f = e.target.closest('[data-zoek]');
     if (!f) return;
     e.preventDefault();

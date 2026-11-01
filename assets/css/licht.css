@@ -401,3 +401,16 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .vonk-toover { gap: 10px; flex-wrap: wrap; }
 .vonk-toover .knop-rand { display: inline-flex; align-items: center; gap: 8px; }
 .vonk-toover .knop-rand svg { width: 18px; height: 18px; }
+/* VONK fase 3: typen in gewone taal */
+.vonk-typ { margin: 4px 0 6px; }
+.vonk-typ label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 8px; color: #141A2A; }
+.vonk-typ-rij { display: flex; gap: 8px; }
+.vonk-typ input { flex: 1; min-width: 0; height: 52px; border-radius: 14px; border: 1.5px solid rgba(184,134,46,.55); background: #fff; padding: 0 16px; font: inherit; font-size: 16px; color: #141A2A; }
+.vonk-typ input:focus { outline: none; border-color: #B8862E; box-shadow: 0 0 0 3px rgba(217,168,72,.25); }
+.vonk-typ .knop { height: 52px; display: inline-flex; align-items: center; gap: 6px; padding: 0 18px; white-space: nowrap; }
+.vonk-typ .knop svg { width: 18px; height: 18px; }
+.vonk-of { display: flex; align-items: center; gap: 12px; margin: 22px 0 6px; color: #8A7A5A; font-size: 13px; }
+.vonk-of::before, .vonk-of::after { content: ""; flex: 1; height: 1px; background: rgba(184,134,46,.3); }
+.vonk-begreep { margin: 4px 0 12px; font-size: 14px; color: #5A5040; }
+.vonk-begreep em { font-style: normal; font-weight: 600; color: #141A2A; }
+@media (max-width: 480px) { .vonk-typ .knop { padding: 0 14px; } }
