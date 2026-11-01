@@ -10,6 +10,8 @@ const FEEST_IDS = require('./feest-ids.json');
 const MOEDERDAG_IDS = new Set(FEEST_IDS.moederdag), VADERDAG_IDS = new Set(FEEST_IDS.vaderdag);
 /* Collectie 'Toppers van nu' (01-11-2026): vaste lijst + bekende hits op titel. */
 const TOPPERS = require('./toppers-van-nu.json'), TOPPERS_IDS = new Set(TOPPERS.ids), TOPPERS_WOORD = new RegExp(TOPPERS.woorden, 'i');
+const COLLEGA = require('./collega.json');
+const COL_A = new Set(COLLEGA.afscheid), COL_B = new Set(COLLEGA.bedankje), COL_L = new Set(COLLEGA.lootjes), COL_NIET_A = new Set(COLLEGA.nietAfscheid);
 const AFSCHEID_IDS = new Set(["amz-9465708399", "amz-b0b3tdry1m", "amz-b0cnkf8w3q", "amz-b0d95l6674", "amz-b0g3hmpmjf", "amz-b0hgq4q3pd", "bol-9200000010409823", "bol-9200000018494649", "bol-9200000064944767", "bol-9200000075382464", "bol-9300000007378766", "bol-9300000039415364", "bol-9300000057830180", "bol-9300000141326647", "bol-9300000171232502", "bol-9300000174098365", "bol-9300000234965416", "bol-9300000238049219", "bol-9300000242745735", "bol-9300000242918318", "bol-9300000256133316", "bol-9300000385427142", "cadeau-78a0e6aecb", "dvzn-452003", "dvzn-542206", "dvzn-734300", "dvzn-847923"]);
 
 /* Per productgroep: de vakjes in volgorde van belangrijkheid bij het kiezen (niet de volgorde op de site).
@@ -445,14 +447,17 @@ function deel(p0) {
     else tags.add('niveau-gevorderd');
   }
 
-  /* Collega: waarom geef je het (afscheid, bedankje, lootjes). Meer dan één mag. */
+  /* Collega: waarom geef je het (afscheid, bedankje, lootjes).
+     1-11-2026 (Marius: te weinig verschil, en dingen bij afscheid die er niks mee te maken hebben):
+     elk vakje heeft nu zijn eigen soort cadeaus. Handgekozen ids staan in scripts/collega.json. */
+  if (COL_A.has(p.id) || COL_B.has(p.id) || COL_L.has(p.id)) { if (p.voor.indexOf('collega') === -1) p.voor.push('collega'); }
   if (p.voor.indexOf('collega') !== -1 || oud === 'cadeaus/collega' || (p0.ookIn || []).indexOf('cadeaus/collega') !== -1) {
-    const lekker = /^(eten-drinken|dranken)$/.test(p.cat) || /bloem|plant|kaars|geurstok|bonbon|chocola|thee|koffie|handcr|zeep|bad|bedankt|dankjewel|thank/i.test(titel);
-    const blijvend = /^(boeken-media|wonen|keuken|hobby|tuin-klussen|elektronica|sport-outdoor|speelgoed|sieraden|mode-beauty|cadeaus)$/.test(p.cat) || /afscheid|pensioen|met naam|gegraveerd|gepersonaliseerd/i.test(titel);
-    /* 31-10-2026 (Marius: lijst afscheid klopte niet): alleen echte afscheids-/pensioencadeaus, of iets persoonlijks met naam. */
-    if (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id) || (/met naam|gegraveerd|gepersonaliseerd/i.test(titel) && p.prijs >= 15)) tags.add('collega-afscheid');
-    if (/bedankt|dankjewel|thank|merci|top collega|beste collega/i.test(titel) || (lekker && p.prijs <= 40)) tags.add('collega-bedankje');
-    if (p.prijs <= 25) tags.add('collega-lootjes');
+    const lekker = /^(eten-drinken|dranken)$/.test(p.cat) || /bloem|plant|kaars|geurstok|bonbon|chocola|thee|koffie(?!mok)|handcr|zeep|bruisbal|kweek|zaadjes|bedankt|dankjewel|thank|merci/i.test(titel);
+    const bedanktTekst = /bedankt|dankjewel|dank je|thank|merci|top collega|beste collega|super collega|goud waard|\bjuf\b|meester/i.test(titel);
+    const afscheid = !COL_NIET_A.has(p.id) && (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id) || COL_A.has(p.id));
+    if (afscheid) tags.add('collega-afscheid');
+    if (COL_B.has(p.id) || (!afscheid && (bedanktTekst || (lekker && p.prijs <= 40)))) tags.add('collega-bedankje');
+    if (COL_L.has(p.id) || (!afscheid && !COL_B.has(p.id) && !bedanktTekst && !lekker && p.prijs <= 25)) tags.add('collega-lootjes');
     if (![...tags].some((t) => t.indexOf('collega-') === 0)) tags.add(p.prijs <= 25 ? 'collega-lootjes' : 'collega-bedankje');
   }
 
@@ -463,7 +468,7 @@ function deel(p0) {
   if (/verjaardag|jarig|birthday|happy b-?day|hiep hiep/i.test(titel)) tags.add('verjaardag');
   /* Overige gelegenheden. */
   if (/housewarming|nieuwe woning|nieuw huis|nieuwe huis|verhuiz|thuis\b|home sweet home/i.test(titel)) tags.add('housewarming');
-  if (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id)) tags.add('afscheid');
+  if (!COL_NIET_A.has(p.id) && (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id) || COL_A.has(p.id))) tags.add('afscheid');
   if (MOEDERDAG_IDS.has(p.id)) tags.add('moederdag');
   if (VADERDAG_IDS.has(p.id)) tags.add('vaderdag');
   if (TOPPERS_IDS.has(p.id) || (TOPPERS_WOORD.test(titel) && p.cat !== 'christelijk')) tags.add('toppers');
