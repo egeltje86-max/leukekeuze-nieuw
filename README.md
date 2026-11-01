@@ -17,7 +17,7 @@ Niets van de oude site overgenomen. **Status: klaar voor livegang (GO van Marius
 | `#/c/cadeaus/voor-haar` | Subcategorie |
 | `#/p/vb-01` | Productpagina |
 | `#/zoek?q=kaars` | Zoeken |
-| `#/vonk` | VONK cadeauzoeker (3 vragen) |
+| `#/vonk` | VONK cadeauzoeker (wie, moment, budget, interesse, soort) |
 | `#/favorieten` | Bewaarde producten (hartje) |
 | `#/info/...` | Hoe werkt het, Over ons, Contact, Privacy, Disclaimer |
 

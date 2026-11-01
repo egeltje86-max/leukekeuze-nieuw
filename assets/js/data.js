@@ -287,13 +287,34 @@ window.LK_PRIJZEN = [
 
 /* VONK: de vragen. De antwoorden matchen met 'voor' en 'moment' bij elk product. */
 window.LK_VONK = {
+  /* VONK 3.0 (01-11-2026, wens Marius 'uitgebreider'): 'wie' is de eerste vraag; die zet 'voor' (en soms jongen/meisje of leeftijd). */
+  wie: [
+    { id: 'partner-v', label: 'Mijn vriendin of vrouw', voor: 'haar', rol: 'partner' }, { id: 'partner-m', label: 'Mijn vriend of man', voor: 'hem', rol: 'partner' },
+    { id: 'moeder', label: 'Moeder', voor: 'haar', rol: 'moeder' }, { id: 'vader', label: 'Vader', voor: 'hem', rol: 'vader' },
+    { id: 'vriendin', label: 'Een vriendin', voor: 'haar' }, { id: 'vriend', label: 'Een vriend', voor: 'hem' },
+    { id: 'baby', label: 'Een baby', voor: 'kind', leeftijd: '0-2' }, { id: 'kind', label: 'Een kind', voor: 'kind' }, { id: 'tiener', label: 'Een tiener', voor: 'tiener' },
+    { id: 'oma', label: 'Oma', voor: 'opa-oma', g: 'haar' }, { id: 'opa', label: 'Opa', voor: 'opa-oma', g: 'hem' },
+    { id: 'collega', label: 'Een collega', voor: 'collega' }, { id: 'juf', label: 'Juf of meester', voor: 'collega', moment: 'bedankt' },
+    { id: 'iedereen', label: 'Iemand anders', voor: 'iedereen' }
+  ],
   voor: [
     { id: 'haar', label: 'Haar' }, { id: 'hem', label: 'Hem' }, { id: 'kind', label: 'Een kind' }, { id: 'tiener', label: 'Een tiener' },
     { id: 'opa-oma', label: 'Opa of oma' }, { id: 'collega', label: 'Een collega' }, { id: 'iedereen', label: 'Maakt niet uit' }
   ],
+  /* Momenten. Zonder 'gel' kijkt VONK naar het moment bij het product; met 'gel' naar de gelegenheidspagina met die naam. */
   moment: [
     { id: 'kerst', label: 'Kerst' }, { id: 'sinterklaas', label: 'Sinterklaas' }, { id: 'verjaardag', label: 'Verjaardag' },
+    { id: 'moederdag', label: 'Moederdag', gel: 'moederdag' }, { id: 'vaderdag', label: 'Vaderdag', gel: 'vaderdag' },
+    { id: 'valentijn', label: 'Valentijn & liefde', cat: 'valentijn' }, { id: 'geboorte', label: 'Geboorte & kraam', vak: 'cadeaus/baby-kraam' },
+    { id: 'geslaagd', label: 'Geslaagd & rijbewijs', gel: 'geslaagd' }, { id: 'afscheid', label: 'Afscheid & pensioen', gel: 'afscheid-pensioen' },
+    { id: 'bedankt', label: 'Bedankje', gel: 'bedankt' }, { id: 'beterschap', label: 'Beterschap & sterkte', gel: 'beterschap' },
+    { id: 'housewarming', label: 'Nieuw huis', gel: 'housewarming' }, { id: 'jubileum', label: 'Bruiloft & jubileum', gel: 'jubileum' },
     { id: 'zomaar', label: 'Zomaar' }, { id: 'iedereen', label: 'Maakt niet uit' }
+  ],
+  /* Vraag 5: wat voor cadeau. 'lekker' en 'samen' zijn eigen groepen; de rest gebruikt 'soort' bij het product. */
+  soort: [
+    { id: 'origineel', label: 'Iets origineels' }, { id: 'praktisch', label: 'Iets handigs' }, { id: 'luxe', label: 'Iets luxes' },
+    { id: 'persoonlijk', label: 'Met naam of foto' }, { id: 'lekker', label: 'Iets lekkers' }, { id: 'geen', label: 'Verras me' }
   ]
 };
 
