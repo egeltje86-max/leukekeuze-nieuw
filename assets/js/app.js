@@ -1131,8 +1131,8 @@
   }
 
   /* ---------- VONK ---------- */
-  /* VONK 2.0 (01-11-2026, GO van Marius): 4e vraag 'waar houdt hij/zij van' (overslaan mag), keuzes aanpassen
-     zonder opnieuw te beginnen, 'Nog een keer toveren' (nieuwe mix), korte fonkeling bij de uitslag. */
+  /* VONK 2.1 (01-11-2026, GO van Marius): 3 vragen, dan 6 VONK-keuzes met 'waarom', interesses als extra filter ná de uitslag,
+     budget wordt NOOIT overschreden, 'Nog een keer toveren', geen herhalingen binnen een bezoek, korte fonkeling. */
   var VONK_HOBBY = [
     { id: 'koken', label: 'Koken & lekker eten', cats: ['keuken', 'eten-drinken'] },
     { id: 'drankje', label: 'Een lekker drankje', cats: ['dranken'] },
@@ -1147,31 +1147,36 @@
     { id: 'tuin', label: 'Tuin & klussen', cats: ['tuin-klussen'] },
     { id: 'spelen', label: 'Spelen & speelgoed', cats: ['speelgoed'] },
     { id: 'dieren', label: 'Dieren', cats: ['dieren'] },
-    { id: 'alles', label: 'Weet ik niet / sla over' }
+    { id: 'christelijk', label: 'Christelijk', cats: ['christelijk'] }
   ];
   function vonkHobby(p, id) {
     var h = VONK_HOBBY.filter(function (x) { return x.id === id; })[0];
-    if (!h || id === 'alles') return true;
+    if (!h) return true;
     if (h.vak) return h.vak.some(function (v) { var d = v.split('/'); return LK.hoortBij(p, d[0], d[1]); });
     return h.cats.some(function (c) { return LK.hoortBij(p, c); });
+  }
+  /* Wat VONK in dit bezoek al als 'keuze' liet zien (sessionStorage, mag stuk gaan). */
+  function vonkGeheugen(lees) {
+    try { if (lees === undefined) return JSON.parse(sessionStorage.getItem('lk-vonk') || '{}'); sessionStorage.setItem('lk-vonk', JSON.stringify(lees)); } catch (e) { return {}; }
   }
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
     var V = window.LK_VONK;
-    var stap = !q.voor ? 1 : !q.moment ? 2 : !q.budget ? 3 : !q.hobby ? 4 : 5;
-    var balk = '<div class="vonk-stapjes" aria-hidden="true">' + [1, 2, 3, 4].map(function (n) { return '<span class="' + (n <= stap ? 'aan' : '') + '"></span>'; }).join('') + '</div>';
-    var kop = paginakop({ titel: 'VONK', tekst: 'Beantwoord een paar vragen. VONK laat direct passende cadeaus zien.', kruimel: [{ tekst: 'VONK' }] });
+    var stap = !q.voor ? 1 : !q.moment ? 2 : !q.budget ? 3 : 4;
+    var balk = '<div class="vonk-stapjes" aria-hidden="true">' + [1, 2, 3].map(function (n) { return '<span class="' + (n <= stap ? 'aan' : '') + '"></span>'; }).join('') + '</div>';
+    var kop = paginakop({ titel: 'VONK', tekst: 'Beantwoord 3 vragen. VONK kiest direct passende cadeaus voor je.', kruimel: [{ tekst: 'VONK' }] });
     var BUDGET = PRIJZEN.map(function (p) { return { id: p.id === 'alle' ? 'geen' : p.id, label: p.id === 'alle' ? 'Maakt niet uit' : p.label }; });
+    var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
 
-    function vraag(titel, opties, sleutel, extra) {
-      return '<div class="vonk-vraag"><h2>' + titel + '</h2>' + (extra || '') + '<div class="keuzes">' + opties.map(function (o) {
+    function vraag(titel, opties, sleutel) {
+      return '<div class="vonk-vraag"><h2>' + titel + '</h2><div class="keuzes">' + opties.map(function (o) {
         var nq = Object.assign({}, q); nq[sleutel] = o.id; delete nq.mix;
-        return '<a class="keuze' + (o.id === 'alles' ? ' keuze-over' : '') + '" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q[sleutel] === o.id) + '">' + esc(o.label) + '</a>';
+        return '<a class="keuze" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q[sleutel] === o.id) + '">' + esc(o.label) + '</a>';
       }).join('') + '</div></div>';
     }
     var terug = '';
-    if (stap > 1 && stap < 5) {
-      var tq = Object.assign({}, q); delete tq[['', '', 'voor', 'moment', 'budget'][stap]];
+    if (stap > 1 && stap < 4) {
+      var tq = Object.assign({}, q); delete tq[stap === 2 ? 'voor' : 'moment'];
       terug = '<a class="vonk-terug" href="' + maakAdres('/vonk', tq) + '">' + ic('links') + 'Vorige vraag</a>';
     }
 
@@ -1179,53 +1184,34 @@
     if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor');
     if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
     if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget');
-    if (stap === 4) inhoud = vraag('Waar houdt ' + (q.voor === 'haar' ? 'zij' : q.voor === 'hem' ? 'hij' : 'hij of zij') + ' van?', VONK_HOBBY, 'hobby', '<p class="vonk-noot" style="margin:-8px 0 16px">Weet je het niet? Sla deze vraag gerust over.</p>');
 
-    if (stap === 5) {
+    if (stap === 4) {
+      var hobby = VONK_HOBBY.some(function (x) { return x.id === q.hobby; }) ? q.hobby : '';
       var past = function (lijst, waarde) { return waarde === 'iedereen' || (lijst || []).indexOf(waarde) !== -1 || (lijst || []).indexOf('iedereen') !== -1; };
-      var alle = LK.zichtbaar().filter(nietChristelijk).filter(function (p) {
-        /* dierenspullen alleen tonen als je niet voor een bepaald persoon zoekt (of als de hobby 'dieren' is) */
-        return q.voor === 'iedereen' || q.hobby === 'dieren' || p.cat !== 'dieren';
-      });
+      /* Christelijk blijft een eigen afdeling: alleen als je die interesse zelf kiest, en dan alleen christelijke producten. */
+      var alle = LK.zichtbaar().filter(function (p) { return hobby === 'christelijk' ? p.cat === 'christelijk' : nietChristelijk(p); }).filter(function (p) {
+        return q.voor === 'iedereen' || hobby === 'dieren' || p.cat !== 'dieren';
+      }).filter(function (p) { return binnenPrijs(p, q.budget); });   /* budget is heilig */
       var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
       var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
-      var hob = function (p) { return vonkHobby(p, q.hobby); };
-      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
-      precies.sort(function (a, b) { return echt(a) - echt(b); });
-      /* Te weinig exacte treffers? Dan eerst 'voor iedereen' binnen hobby, budget en moment; daarna binnen de hobby iets ruimer;
-         en pas als het dan nog weinig is: passend bij persoon, moment en budget zonder hobby. Budget blijft zoveel mogelijk leidend. */
-      var ruimer = [], anders = [], zonderHobby = [];
+      var hob = function (p) { return !hobby || vonkHobby(p, hobby); };
+      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && past(p.moment, q.moment); });
+      /* Weinig treffers? Eerst 'voor iedereen' (zelfde moment), dan dezelfde persoon met een ander moment. Altijd binnen budget en interesse. */
+      var ruimer = [], anders = [];
       if (precies.length < 12) {
-        ruimer = alle.filter(function (p) {
-          return precies.indexOf(p) === -1 && hob(p) && (p.voor || []).indexOf('iedereen') !== -1 && past(p.moment, q.moment) && binnenPrijs(p, q.budget);
-        });
-        anders = alle.filter(function (p) {
-          if (!hob(p) || precies.indexOf(p) !== -1 || ruimer.indexOf(p) !== -1) return false;
-          return pastVoor(p) && (past(p.moment, q.moment) || binnenPrijs(p, q.budget));
-        });
-        if (q.hobby && q.hobby !== 'alles' && precies.length + ruimer.length + anders.length < 12) {
-          zonderHobby = alle.filter(function (p) { return !hob(p) && pastVoor(p) && past(p.moment, q.moment) && binnenPrijs(p, q.budget); });
-        }
+        ruimer = alle.filter(function (p) { return precies.indexOf(p) === -1 && hob(p) && (p.voor || []).indexOf('iedereen') !== -1 && past(p.moment, q.moment); });
+        anders = alle.filter(function (p) { return precies.indexOf(p) === -1 && ruimer.indexOf(p) === -1 && hob(p) && pastVoor(p); });
       }
-      /* Afwisselen per categorie, zodat je bovenaan een mooie mix ziet: geuren, sieraden, drank, tech, enz. (wens van Marius). */
-      var VOORKEUR = ['geuren-verzorging', 'mode-beauty/geuren', 'sieraden', 'dranken', 'elektronica', 'mode-beauty/verzorging', 'cadeaus', 'wonen', 'eten-drinken', 'keuken', 'speelgoed', 'boeken-media', 'sport-outdoor', 'hobby'];
+      var VOORKEUR = ['geuren-verzorging', 'sieraden', 'dranken', 'elektronica', 'mode-beauty', 'cadeaus', 'wonen', 'eten-drinken', 'keuken', 'speelgoed', 'boeken-media', 'sport-outdoor', 'hobby'];
       var spreid = function (lijst) {
         var groep = {}, volgorde = [];
-        lijst.forEach(function (p) { var k = p.cat === 'mode-beauty' ? p.cat + '/' + p.sub : (q.hobby && q.hobby !== 'alles' ? p.cat + '/' + p.sub : p.cat); if (!groep[k]) { groep[k] = []; volgorde.push(k); } groep[k].push(p); });
-        volgorde.sort(function (a, b) {
-          var ia = VOORKEUR.indexOf(a), ib = VOORKEUR.indexOf(b);
-          return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
-        });
+        lijst.forEach(function (p) { var k = hobby ? p.cat + '/' + p.sub : p.cat; if (!groep[k]) { groep[k] = []; volgorde.push(k); } groep[k].push(p); });
+        volgorde.sort(function (a, b) { var ia = VOORKEUR.indexOf(a), ib = VOORKEUR.indexOf(b); return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib); });
         if (q.mix) volgorde.sort(function (a, b) { return mixGetal(a + q.mix) - mixGetal(b + q.mix); });
         var uit = [], rond = 0, bezig = true;
-        while (bezig) {
-          bezig = false;
-          volgorde.forEach(function (c) { if (groep[c][rond]) { uit.push(groep[c][rond]); bezig = true; } });
-          rond++;
-        }
+        while (bezig) { bezig = false; volgorde.forEach(function (c) { if (groep[c][rond]) { uit.push(groep[c][rond]); bezig = true; } }); rond++; }
         return uit;
       };
-      /* 'Nog een keer toveren': een andere, vaste mix per klik (mix=getal in het adres). Favorieten blijven eerst. */
       var schud = function (lijst) {
         if (!q.mix) return sorteer(lijst);
         var fav = lijst.filter(function (p) { return p.favoriet || p.populair; }), rest = lijst.filter(function (p) { return !(p.favoriet || p.populair); });
@@ -1233,40 +1219,83 @@
         return r(fav).concat(r(rest));
       };
       var groep = function (lijst) { return spreid(schud(lijst)); };
-      var alles = q.voor === 'iedereen' ? groep(precies).concat(groep(ruimer), groep(anders), groep(zonderHobby)) :
-        groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders), groep(zonderHobby));
-      var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
-      /* Keuze-chips: tik erop om alleen die vraag opnieuw te kiezen. De andere antwoorden blijven staan. */
-      var wijzig = function (sleutel, tekst) {
-        var nq = Object.assign({}, q); delete nq[sleutel]; delete nq.mix;
+      var alles = q.voor === 'iedereen' ? groep(precies).concat(groep(ruimer), groep(anders)) :
+        groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders));
+
+      /* De 6 VONK-keuzes: liefst nog niet eerder getoond in dit bezoek. Zelfde vraag = zelfde 6 (ook na 'terug'). */
+      var sleutel = [q.voor, q.moment, q.budget, hobby, q.mix || ''].join('|');
+      var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};
+      var zes = (geh.per[sleutel] || []).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+      if (zes.length < Math.min(6, alles.length)) {
+        var nieuw = alles.filter(function (p) { return geh.gezien.indexOf(p.id) === -1; });
+        zes = nieuw.slice(0, 6); if (zes.length < 6) zes = zes.concat(alles.filter(function (p) { return zes.indexOf(p) === -1; }).slice(0, 6 - zes.length));
+        geh.per[sleutel] = zes.map(function (p) { return p.id; });
+        geh.gezien = geh.gezien.concat(geh.per[sleutel]).slice(-300);
+        vonkGeheugen(geh);
+      }
+      var rest = alles.filter(function (p) { return zes.indexOf(p) === -1; });
+
+      /* 'Waarom VONK dit kiest': alleen echte feiten uit onze eigen gegevens. */
+      var bud = prijsFilter(q.budget);
+      var vakNaam = function (p) {
+        var c = window.LK_CAT(p.cat), sub = c && (c.subs || []).filter(function (x) { return (x.slug || x) === p.sub; })[0];
+        return sub && sub.naam ? sub.naam : (c ? c.kort || c.naam : '');
+      };
+      var waarom = function (p) {
+        var r = [];
+        if (p.favoriet || p.populair) r.push('Onze favoriet');
+        else if (LK.isNieuw(p)) r.push('Nieuw binnen');
+        var vn = vakNaam(p); if (vn) r.push(vn);
+        if (q.voor !== 'iedereen' && echt(p) === 0) r.push('Gekozen voor ' + label(V.voor, q.voor).toLowerCase());
+        if (q.moment !== 'iedereen' && (p.moment || []).indexOf(q.moment) !== -1) r.push('Leuk voor ' + label(V.moment, q.moment).toLowerCase());
+        if (bud && bud.max && isFinite(bud.max)) r.push('Onder €' + bud.max);
+        return r.slice(0, 3).join(' · ');
+      };
+
+      var wijzig = function (sl, tekst) {
+        var nq = Object.assign({}, q); delete nq[sl]; delete nq.mix;
         return '<a class="chip actief vonk-wijzig" href="' + maakAdres('/vonk', nq) + '" title="Wijzig">' + esc(tekst) + ic('rechts') + '</a>';
+      };
+      var rijChips = function (opties, sl, huidig) {
+        return opties.map(function (o) {
+          var nq = Object.assign({}, q); delete nq.mix;
+          if (huidig === o.id) delete nq[sl]; else nq[sl] = o.id;   /* nogmaals tikken = weer uit (bij interesses) */
+          return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (huidig === o.id) + '">' + esc(o.label) + '</a>';
+        }).join('');
       };
       var budgetRij = BUDGET.map(function (o) {
         var nq = Object.assign({}, q); nq.budget = o.id; delete nq.mix;
         return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q.budget === o.id) + '">' + esc(o.label) + '</a>';
       }).join('');
       var mq = Object.assign({}, q); mq.mix = String((parseInt(q.mix, 10) || 0) + 1);
+      var hijZij = q.voor === 'haar' ? 'zij' : q.voor === 'hem' ? 'hij' : 'hij of zij';
+
       inhoud = '<div class="vonk-uitslag">' +
-        '<div class="vonk-fonkel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
-        '<div class="vonk-vraag"><h2>' + (precies.length ? 'Dit past bij jouw keuze' : 'Geen exacte match, wel deze') + '</h2>' +
+        '<div class="vonk-vraag"><h2>' + (zes.length ? 'VONK kiest deze ' + zes.length + ' voor jou' : 'Nog niets gevonden') + '</h2>' +
         '<div class="vonk-samenvatting">' +
           wijzig('voor', 'Voor: ' + label(V.voor, q.voor)) +
           wijzig('moment', label(V.moment, q.moment)) +
-          wijzig('hobby', q.hobby === 'alles' ? 'Alle interesses' : label(VONK_HOBBY, q.hobby)) +
           '<a class="chip" href="/vonk">Opnieuw beginnen</a>' +
         '</div>' +
         '<div class="vonk-budget"><span>Budget:</span><div class="chips">' + budgetRij + '</div></div>' +
+        '<div class="vonk-budget vonk-hobby"><span>Waar houdt ' + hijZij + ' van?</span><div class="chips">' + rijChips(VONK_HOBBY.filter(function (x) { return x.id === hobby; }).concat(VONK_HOBBY.filter(function (x) { return x.id !== hobby; })), 'hobby', hobby) + '</div></div>' +
         '</div>' +
-        (alles.length ? '<div class="vonk-toover"><p class="vonk-noot"><strong>' + alles.length + ' cadeaus</strong> gevonden.</p>' +
-          '<a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a></div>' : '') +
-        '<div class="vonk-resultaat">' + gridMeer(alles,
-          leegBlok('Nog niets gevonden', 'We vullen de site steeds verder aan. Probeer een ander budget of een andere interesse.', '<a class="knop knop-goud" href="/vonk">Opnieuw</a>')) + '</div>' +
-        '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Geen praatjes, gewoon passende producten.</p>' +
+        (zes.length ?
+          '<div class="vonk-zes">' +
+            '<div class="vonk-fonkel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
+            zes.map(function (p) { var w = waarom(p); return '<div class="vonk-keus">' + LK.productKaart(p) + (w ? '<p class="vonk-waarom">' + ic('vonk') + '<span>' + esc(w) + '</span></p>' : '') + '</div>'; }).join('') +
+          '</div>' +
+          '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a></div>'
+          : leegBlok('Nog niets gevonden', 'Binnen dit budget hebben we hier nog niets voor. Kies een ander budget of een andere interesse.', '<a class="knop knop-goud" href="/vonk">Opnieuw</a>')) +
+        (rest.length ? '<section class="sectie vonk-meer"><div class="sectie-kop"><div><h2>Meer passende cadeaus</h2></div><span class="vonk-noot"><strong>' + alles.length + '</strong> in totaal</span></div>' + gridMeer(rest, '', 12) + '</section>' : '') +
+        '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Je budget wordt nooit overschreden.</p>' +
         '</div>';
     }
 
-    return kop + '<div class="binnen"><div class="vonk-pagina' + (stap === 5 ? '" style="max-width:none' : '') + '">' + (stap < 5 ? balk : '') + inhoud + terug + '</div></div>';
+    var icoon = '<div class="vonk-icoon" aria-hidden="true">' + ic('vonk') + '</div>';
+    return kop + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? '" style="max-width:none' : '') + '">' + (stap < 4 ? icoon + balk : '') + inhoud + terug + '</div></div>';
   }
+
 
 
   /* ---------- Verlanglijstje (was: Favorieten) ----------

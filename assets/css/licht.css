@@ -375,3 +375,26 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .vonk-resultaat { animation: vonkIn .5s ease-out .15s both; }
 @keyframes vonkIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .vonk-fonkel { display: none; } .vonk-resultaat { animation: none; } }
+/* VONK 2.1: 6 keuzes met 'waarom', icoon, interesses na de uitslag */
+.vonk-icoon { width: 88px; height: 88px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #1B2742, #011950); border: 2px solid #D9A848; box-shadow: 0 6px 20px rgba(184,134,46,.25); color: #F2CB74; }
+.vonk-icoon svg { width: 44px; height: 44px; }
+.vonk-icoon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.vonk-zes { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; animation: vonkIn .5s ease-out .15s both; }
+@media (min-width: 760px) { .vonk-zes { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.vonk-keus { display: flex; flex-direction: column; }
+.vonk-keus .prodkaart { flex: 1; }
+.vonk-waarom { display: flex; gap: 6px; align-items: flex-start; margin: 8px 2px 0; font-size: 12.5px; line-height: 1.35; color: #6B5320; }
+.vonk-waarom svg { width: 14px; height: 14px; flex: none; color: #B8862E; margin-top: 1px; }
+.vonk-hobby { margin-top: 10px; }
+.vonk-hobby .chips { gap: 6px; }
+.vonk-toover { justify-content: center; margin: 22px 0 6px; }
+.vonk-meer { margin-top: 26px; }
+.vonk-meer .sectie-kop { align-items: baseline; }
+.vonk-hobby { flex-wrap: nowrap; }
+.vonk-hobby > span { white-space: nowrap; }
+.vonk-hobby .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 2px; min-width: 0; }
+.vonk-hobby .chips::-webkit-scrollbar { display: none; }
+.vonk-hobby .chip { flex: none; }
+@media (max-width: 759px) { .vonk-hobby { flex-direction: column; align-items: flex-start; gap: 6px; } .vonk-hobby .chips { width: calc(100% + 16px); margin-right: -16px; } }
+.vonk-zes { margin-top: 16px; }
+@media (min-width: 1200px) { .vonk-zes { grid-template-columns: repeat(6, 1fr); gap: 14px; } .vonk-waarom { font-size: 12px; } }
