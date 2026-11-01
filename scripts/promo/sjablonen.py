@@ -6,7 +6,7 @@ soorten: pin-overzicht, pin-product, reel-overzicht, reel-product, reel-einde, i
 De vakken (wit = productfoto, crème = tekst, goud = lint/knop/nummer) worden automatisch herkend.
 """
 import os, random, math, subprocess
-from PIL import Image, ImageDraw, ImageFilter, ImageEnhance
+from PIL import ImageChops, Image, ImageDraw, ImageFilter, ImageEnhance
 import numpy as np
 from scipy import ndimage
 import stijl6 as S
@@ -268,7 +268,10 @@ def maak_reel(plan, ps, uit, ff, szn, W=1080, H=1920, fps=30):
         keus = [p for p in ps[1:5]] or ps[:1]
         for k, p in enumerate(keus[:4]):
             cw, ch = bw // 2, bh // 2
-            f = p['foto'].copy().convert('RGB'); f.thumbnail((int(cw * 0.86), int(ch * 0.86)))
+            f = p['foto'].copy().convert('RGB')
+            bb = ImageChops.difference(f, Image.new('RGB', f.size, 'white')).convert('L').point(lambda v: 255 if v > 18 else 0).getbbox()
+            if bb: f = f.crop(bb)   # witte rand eraf, zodat kleine producten ook groot in beeld staan
+            s = min(cw * 0.86 / f.width, ch * 0.86 / f.height); f = f.resize((max(1, int(f.width * s)), max(1, int(f.height * s))))
             raster.paste(f, ((k % 2) * cw + (cw - f.width) // 2, (k // 2) * ch + (ch - f.height) // 2))
         hook_basis = leeg.copy()
         foto_in(hook_basis, vak, raster, zoom=1.0, marge=0)
