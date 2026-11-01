@@ -785,6 +785,8 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 })();
 
 /* Knoppen (filters bovenaan een pagina). Elke optie zegt welk product erbij hoort. */
+/* Check-up 01-11-2026: vakje 'Boekenbonnen & abonnementen' heeft nog geen producten -> verbergen tot er iets in staat (anders een lege pagina). */
+(function () { var c = window.LK_CAT('boeken-media'); if (c) (c.subs || []).forEach(function (s) { if (s.slug === 'boekenbonnen-abonnementen') s.verborgen = true; }); })();
 window.LK_KNOPSETS = {
   wie3: { param: 'wie', titel: 'Voor wie', opties: [['dames', 'Dames', { labels: ['haar'] }], ['heren', 'Heren', { labels: ['hem'] }], ['kinderen', 'Kinderen', { labels: ['kind', 'kinderen', 'baby'] }]] },
   wie2: { param: 'wie', titel: 'Voor wie', opties: [['dames', 'Dames', { labels: ['haar'] }], ['heren', 'Heren', { labels: ['hem'] }]] },

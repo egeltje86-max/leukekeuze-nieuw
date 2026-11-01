@@ -1242,6 +1242,12 @@
     var wat = [];
     VL_HOBBY.forEach(function (r) { if (r[0].test(t)) { if (!q.hobby) q.hobby = r[1]; if (r[2] && r[1] === q.hobby && wat.indexOf(r[2]) === -1) wat.push(r[2]); } });
     if (q.hobby === 'christelijk' && !q.voor) q.voor = 'iedereen';
+    /* Jongen of meisje, opa of oma (01-11-2026): geen filter, wel een voorkeur in de volgorde (q.g). */
+    if (/\b(jongen|jongetje|jongens|zoon|zoontje|neefje|kleinzoon|opa|grootvader|broer|broertje)\b/.test(t)) q.g = 'hem';
+    else if (/\b(meisje|meisjes|dochter|dochtertje|nichtje|kleindochter|oma|grootmoeder|zus|zusje)\b/.test(t)) q.g = 'haar';
+    if (q.voor === 'hem' || q.voor === 'haar') delete q.g;
+    /* 'Iemand die alles heeft' / 'hoeft niks': dan iets origineels. */
+    if (/alles heeft|heeft alles|hoeft niks|hoeft niets|wil niks|wil niets|niks nodig|niets nodig/.test(t)) q.soort = 'origineel';
     /* Baby/peuter/kleuter zegt al genoeg over de leeftijd. */
     if (q.voor === 'kind' && !q.leeftijd) { if (/\b(baby|babietje|dreumes|peuter|pasgeboren|kraam)/.test(t)) q.leeftijd = '0-2'; else if (/\bkleuter/.test(t)) q.leeftijd = '3-5'; }
     /* 'iets origineels', 'praktisch', 'luxe' of 'persoonlijk': die soort gaat voor. */
@@ -1250,7 +1256,7 @@
     else if (/luxe|chique|exclusief|duur/.test(t)) q.soort = 'luxe';
     else if (/persoonlijk|met naam|gegraveerd|eigen foto/.test(t)) q.soort = 'persoonlijk';
     /* Overige woorden die geen persoon, moment, budget of vulwoord zijn (bijv. 'stijltang', 'puzzel'): die zoeken we letterlijk. */
-    var VUL = /^(iets|wat|een|de|het|voor|mijn|me|die|dat|van|houdt|houden|graag|leuk|leuke|leuks|mooi|mooie|mooie|cadeau|cadeaus|cadeautje|kado|zoek|zoeken|ik|wil|met|en|of|max|maximaal|maximum|tot|onder|euro|eur|rond|ongeveer|budget|jaar|jarige|is|gek|op|wordt|ze|hij|zij|hem|haar|er|nog|ook|heel|erg|lief|lieve|aan|te|om|in|bij|naar|kan|moet|geven|geef|kopen|best|beste|origineel|origineels|originele|praktisch|praktische|handig|handigs|handige|luxe|luxes|persoonlijk|persoonlijks|bijzonder|bijzonders|uniek|uniels|apart|grappig|grappigs|chique|exclusief|duur|dure|goedkoop|goedkope|vindt|vind|leuk|ideeen|idee|tip|tips|nodig|hebben|heeft|zo|n|zon|niet|meer|dan|vanaf|boven|hooguit|ze|zijn|haar|die|vind|geschikt|willen)$/;
+    var VUL = /^(iets|wat|een|de|het|voor|mijn|me|die|dat|van|houdt|houden|graag|leuk|leuke|leuks|mooi|mooie|mooie|cadeau|cadeaus|cadeautje|kado|zoek|zoeken|ik|wil|met|en|of|max|maximaal|maximum|tot|onder|euro|eur|rond|ongeveer|budget|jaar|jarige|is|gek|op|wordt|ze|hij|zij|hem|haar|er|nog|ook|heel|erg|lief|lieve|aan|te|om|in|bij|naar|kan|moet|geven|geef|kopen|best|beste|origineel|origineels|originele|praktisch|praktische|handig|handigs|handige|luxe|luxes|persoonlijk|persoonlijks|bijzonder|bijzonders|uniek|uniels|apart|grappig|grappigs|chique|exclusief|duur|dure|goedkoop|goedkope|vindt|vind|leuk|ideeen|idee|tip|tips|nodig|hebben|heeft|zo|n|zon|niet|meer|dan|vanaf|boven|hooguit|ze|zijn|haar|die|vind|geschikt|willen|iemand|alles|niks|niets|hoeft|wil)$/;
     var rest = t.split(/[^a-z0-9]+/).filter(function (w) {
       if (w.length < 4 || /^\d+$/.test(w) || VUL.test(w)) return false;
       var los = ' ' + w + ' ';
@@ -1346,13 +1352,25 @@
       var alles = q.voor === 'iedereen' ? groep(precies).concat(groep(ruimer), groep(anders)) :
         groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders));
 
+      /* Voorkeur in de volgorde (01-11-2026): bij 'meisje'/'oma' eerst wat niet duidelijk voor jongens/mannen is (en andersom),
+         en bij kinderen zonder budget eerst cadeaus tot €80. Niets valt weg, het schuift alleen naar achteren. */
+      var JONGENS = /\b(heren|mannen|jongens)\b|nerf|fortnite|monster jam|beyblade|hot wheels|ninjago|scheer|baard/i;
+      var MEISJES = /\b(dames|vrouwen|meisjes)\b|barbie|gabby|\bk3\b|poppenhuis|eenhoorn|unicorn|hello kitty|make-?up|nagellak|rainbow high|\bl\.?o\.?l\b|bratz|polly pocket|oorbel/i;
+      var straf = function (p) {
+        var s = 0, v = p.voor || [], tt = p.titel || '';
+        if (q.g === 'haar' && ((v.indexOf('hem') !== -1 && v.indexOf('haar') === -1) || JONGENS.test(tt))) s += 2;
+        if (q.g === 'hem' && ((v.indexOf('haar') !== -1 && v.indexOf('hem') === -1) || MEISJES.test(tt))) s += 2;
+        if ((kind || q.voor === 'tiener') && q.budget === 'geen' && p.prijs > 80) s += 1;
+        return s;
+      };
+      if (q.g || kind || q.voor === 'tiener') alles = alles.map(function (p, i) { return [p, i, straf(p)]; }).sort(function (a, b) { return a[2] - b[2] || a[1] - b[1]; }).map(function (x) { return x[0]; });
       /* Getypt woord met weinig treffers (bijv. golf vanaf €100): die paar treffers altijd vooraan. */
       if (watW.length && typeof watWeinig === 'number' && watWeinig > 0) {
         var isRaak = function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); };
         alles = alles.filter(isRaak).concat(alles.filter(function (p) { return !isRaak(p); }));
       }
       /* De 6 VONK-keuzes: liefst nog niet eerder getoond in dit bezoek. Zelfde vraag = zelfde 6 (ook na 'terug'). */
-      var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.wat || '', q.soort || '', q.mix || ''].join('|');
+      var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.wat || '', q.soort || '', q.mix || '', q.g || ''].join('|');
       var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};
       var zes = (q.zes ? q.zes.split(',') : (geh.per[sleutel] || [])).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
       if (!q.zes && zes.length < Math.min(6, alles.length)) {

@@ -486,6 +486,18 @@ function deel(p0) {
   /* VONK fase 2 (01-11-2026): soort cadeau, voor de cadeaumixer (2 best passend, 2 origineel, 1 praktisch, 1 bijzonder). */
   const soort = soortCadeau(p, titel, tags);
   if (soort.length) p.soort = soort; else delete p.soort;
+  /* Vangnet (check-up 01-11-2026): staat een product (ook met subVast) nog in een oud vakje dat niet meer zichtbaar is,
+     dan verhuist het naar het nieuwe vakje. Anders is het onvindbaar. */
+  const nu = p.cat + '/' + p.sub;
+  if (nu === 'sieraden/heren' || nu === 'sieraden/viking') {
+    const s = /\bring\b|ringen/i.test(titel) ? 'ringen' : /armband|bracelet/i.test(titel) ? 'armbanden' : /oorbel|oorknop|oorring/i.test(titel) ? 'oorbellen' : 'kettingen';
+    p.sub = s;
+  } else if (nu === 'mode-beauty/accessoires' && /handschoen|wanten|sjaal|muts/i.test(titel)) {
+    p.sub = 'mutsen-sjaals';
+  } else if (OOKIN_HERNOEM[nu]) {
+    const d = OOKIN_HERNOEM[nu].split('/'); p.cat = d[0]; p.sub = d[1];
+  }
+  p.ookIn = p.ookIn.map((x) => x === 'sieraden/heren' || x === 'sieraden/viking' ? 'sieraden/armbanden' : (OOKIN_HERNOEM[x] || x)).filter((x, i, a) => x !== p.cat + '/' + p.sub && a.indexOf(x) === i);
   return p;
 }
 
