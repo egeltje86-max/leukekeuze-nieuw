@@ -101,6 +101,7 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-toppers': '1516769',  # Toppers in Concert
           't-viparfum': '2584631',  # Viparfum
           't-mobistoxx': '1976189',  # Mobistoxx
+          't-biercheque': '2472146',  # Biercheque (goedgekeurd 1-11-2026)
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
