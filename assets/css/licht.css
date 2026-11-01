@@ -462,3 +462,14 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .vonk-leeg .chip small { opacity: .7; }
 .vonk-paneel .filter-blad { padding-bottom: 0; } .vonk-paneel-voet { padding-bottom: calc(14px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 16px -10px rgba(0,0,0,.15); }
 .vonk-meer-tips { flex-wrap: wrap; gap: 6px; margin: 4px 0 4px; } .vonk-meer-tips .chip small { opacity: .7; }
+/* Eén zoekbalk (01-11-2026): VONK-blok is weer één grote knop */
+.vonk-kaart.vonk-home { grid-template-columns: auto 1fr; grid-template-areas: "icoon tekst" "knop knop"; text-decoration: none; }
+.vonk-home-knop { grid-area: knop; justify-self: stretch; justify-content: center; display: inline-flex; align-items: center; gap: 8px; }
+.vonk-home-knop svg { width: 18px; height: 18px; }
+@media (min-width: 900px) { .vonk-kaart.vonk-home { grid-template-columns: auto 1fr auto; grid-template-areas: "icoon tekst knop"; } .vonk-home-knop { justify-self: end; padding: 0 26px; } }
+.vonk-tip { display: flex; gap: 8px; align-items: flex-start; margin: 18px 0 0; font-size: 14px; color: #5A5040; }
+.vonk-tip svg { width: 16px; height: 16px; flex: none; margin-top: 2px; color: #B8862E; }
+.vonk-tip em { font-style: normal; font-weight: 600; color: #141A2A; }
+.vonk-kaart.vonk-groot.vonk-home .vonk-home-knop { grid-area: knop; grid-column: 1 / -1; min-height: 48px; }
+@media (min-width: 900px) { .vonk-kaart.vonk-groot.vonk-home .vonk-home-knop { grid-column: auto; padding: 0 28px; } }
+.vonk-kaart.vonk-groot.vonk-home { align-items: center; }

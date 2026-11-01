@@ -278,15 +278,12 @@
 
       '<div class="binnen">' +
         /* VONK groot bovenaan (wens van Marius, 01-11-2026) */
-        /* VONK-blok met typveld (01-11-2026): typ je zin, of start met de 3 vragen. */
-        '<div class="vonk-kaart vonk-groot vonk-home">' +
+        /* VONK-blok (01-11-2026): uitnodiging om de 3 vragen te doen. Typen gaat via de ene zoekbalk bovenaan. */
+        '<a class="vonk-kaart vonk-groot vonk-home" href="/vonk">' +
           '<img class="vonk-home-icoon" src="/images/vonk/vonk-icoon-klein.webp" alt="" width="64" height="64" decoding="async">' +
-          '<div class="vonk-home-tekst"><h2>Geen idee wat je moet geven?</h2><p>Typ wat je zoekt, of beantwoord 3 vragen. <strong>VONK</strong> laat direct passende cadeaus zien.</p></div>' +
-          '<form class="vonk-typ vonk-typ-home" data-vonk-typ role="search"><label class="sr-only" for="vonk-zin-home">Typ wat je zoekt</label>' +
-            '<div class="vonk-typ-rij"><input id="vonk-zin-home" type="text" autocomplete="off" placeholder="Bijv. vader die vist, max €40">' +
-            '<button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
-          '<a class="vonk-home-vragen" href="/vonk">Liever 3 vragen beantwoorden ' + ic('rechts') + '</a>' +
-        '</div>' +
+          '<div class="vonk-home-tekst"><h2>Geen idee wat je moet geven?</h2><p>Beantwoord 3 vragen en <strong>VONK</strong> kiest direct passende cadeaus voor je.</p></div>' +
+          '<span class="knop knop-goud vonk-home-knop">' + ic('vonk') + ' Start VONK</span>' +
+        '</a>' +
         /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
         '<section class="sectie eerste">' +
           '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
@@ -1192,8 +1189,8 @@
     [/\b(collega|collega's|baas|leidinggevende|manager|juf|meester|personeel|team)\b/, 'collega'],
     [/\b(tiener|puber|tieners|pubers)\b/, 'tiener'],
     [/\b(kind|kindje|kinderen|kids|zoon|zoontje|dochter|dochtertje|baby'?s?|babietje|dreumes|neefje|nichtje|kleinkind|kleinzoon|kleindochter|baby|peuter|kleuter|jongen|meisje|jongetje|meisje|petekind)\b/, 'kind'],
-    [/\b(vader|papa|pa|man|vriend|broer|zwager|schoonvader|schoonzoon|oom|hem|heer|mannen|echtgenoot|buurman|neef|opa van)\b/, 'hem'],
-    [/\b(moeder|mama|ma|vrouw|vriendin|zus|zusje|schoonzus|schoonmoeder|schoondochter|tante|haar|dame|vrouwen|echtgenote|buurvrouw|nicht|oppas|kapster)\b/, 'haar']
+    [/\b(vader|papa|pa|man|vriend|broer|zwager|schoonvader|schoonzoon|oom|heer|mannen|echtgenoot|buurman|neef|voor hem)\b/, 'hem'],
+    [/\b(moeder|mama|ma|vrouw|vriendin|zus|zusje|schoonzus|schoonmoeder|schoondochter|tante|dame|vrouwen|echtgenote|buurvrouw|nicht|oppas|voor haar)\b/, 'haar']
   ];
   var VL_MOMENT = [
     [/sinterklaas|\bsint\b|pakjesavond|schoencadeau|schoen zetten|surprise/, 'sinterklaas'],
@@ -1218,7 +1215,7 @@
     [/\b(knutsel|tekenen|tekent|schilder|haken|breien|naaien|creatief|hobby)/, 'creatief'],
     [/\b(wonen|interieur|decoratie|kaarsen|planten)/, 'wonen'],
     [/\b(tuin|tuinier|moestuin|klussen|klusser|gereedschap)/, 'tuin'],
-    [/\blego/, 'spelen', 'lego'], [/\b(speelgoed|spelen|spelletjes|puzzel|bordspel)/, 'spelen'],
+    [/\blego/, 'spelen', 'lego'], [/\bpuzzel/, 'spelen', 'puzzel'], [/\b(bordspel|gezelschapsspel)/, 'spelen', 'spel'], [/\b(speelgoed|spelen|spelletjes)/, 'spelen'],
     [/\b(hond)/, 'dieren', 'hond'], [/\b(kat|poes|katten)\b/, 'dieren', 'kat'], [/\b(paard|pony)/, 'dieren', 'paard'], [/\b(dier|dieren)/, 'dieren'],
     [/\b(christelijk|geloof|gelovig|bijbel|kerk)/, 'christelijk'],
     [/\b(metaaldetect|detector)/, 'sport', 'metaaldetect']
@@ -1248,6 +1245,14 @@
     else if (/praktisch|handig|nuttig/.test(t)) q.soort = 'praktisch';
     else if (/luxe|chique|exclusief|duur/.test(t)) q.soort = 'luxe';
     else if (/persoonlijk|met naam|gegraveerd|eigen foto/.test(t)) q.soort = 'persoonlijk';
+    /* Overige woorden die geen persoon, moment, budget of vulwoord zijn (bijv. 'stijltang', 'puzzel'): die zoeken we letterlijk. */
+    var VUL = /^(iets|wat|een|de|het|voor|mijn|me|die|dat|van|houdt|houden|graag|leuk|leuke|leuks|mooi|mooie|mooie|cadeau|cadeaus|cadeautje|kado|zoek|zoeken|ik|wil|met|en|of|max|maximaal|maximum|tot|onder|euro|eur|rond|ongeveer|budget|jaar|jarige|is|gek|op|wordt|ze|hij|zij|hem|haar|er|nog|ook|heel|erg|lief|lieve|aan|te|om|in|bij|naar|kan|moet|geven|geef|kopen|best|beste|origineel|origineels|originele|praktisch|praktische|handig|handigs|handige|luxe|luxes|persoonlijk|persoonlijks|bijzonder|bijzonders|uniek|uniels|apart|grappig|grappigs|chique|exclusief|duur|dure|goedkoop|goedkope|vindt|vind|leuk|ideeen|idee|tip|tips|nodig|hebben|heeft|zo|n|zon|niet|meer|dan|vanaf|boven|hooguit|ze|zijn|haar|die|vind|geschikt|willen)$/;
+    var rest = t.split(/[^a-z0-9]+/).filter(function (w) {
+      if (w.length < 4 || /^\d+$/.test(w) || VUL.test(w)) return false;
+      var los = ' ' + w + ' ';
+      return !VL_VOOR.some(function (r) { return r[0].test(los); }) && !VL_MOMENT.some(function (r) { return r[0].test(los); }) && !VL_HOBBY.some(function (r) { return r[0].test(los); });
+    });
+    rest.forEach(function (w) { if (wat.indexOf(w) === -1) wat.push(w); });
     if (wat.length) q.wat = wat.join(' ');
     q.voor = q.voor || 'iedereen'; q.moment = q.moment || 'iedereen'; q.budget = q.budget || 'geen';
     return q;
@@ -1299,10 +1304,8 @@
     }
 
     var inhoud = '';
-    if (stap === 1) inhoud = '<form class="vonk-typ" data-vonk-typ role="search"><label for="vonk-zin">Typ wat je zoekt, zoals je het zou zeggen</label>' +
-      '<div class="vonk-typ-rij"><input id="vonk-zin" type="text" autocomplete="off" placeholder="Bijv. vader die vist, max €40">' +
-      '<button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
-      '<p class="vonk-of"><span>of kies hieronder</span></p>' + vraag('Voor wie zoek je iets?', V.voor, 'voor');
+    if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor') +
+      '<p class="vonk-tip">' + ic('zoek') + ' Liever typen? Gebruik de zoekbalk bovenaan, bijv. <em>vader die vist, max €40</em>.</p>';
     if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
     if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
     if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget');
@@ -1415,7 +1418,6 @@
       var paneel = '<div class="filterpaneel vonk-paneel" data-filterpaneel hidden><button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
         '<div class="filter-blad" role="dialog" aria-modal="true" aria-label="Keuzes aanpassen">' +
           '<div class="filter-kop"><strong>Aanpassen</strong><button type="button" class="filter-sluit" data-filter-dicht aria-label="Sluiten">' + ic('sluit') + '</button></div>' +
-          '<form class="vonk-typ" data-vonk-typ role="search"><label for="vonk-zin-p">Typ opnieuw wat je zoekt</label><div class="vonk-typ-rij"><input id="vonk-zin-p" type="text" autocomplete="off" value="' + esc(q.zin || '') + '" placeholder="Bijv. vader die vist, max €40"><button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
           '<h3>Voor wie</h3>' + chipRij(V.voor, 'voor', q.voor, { leeftijd: null }) +
           (q.voor === 'kind' ? '<h3>Leeftijd</h3>' + chipRij(VONK_LEEFTIJD, 'leeftijd', q.leeftijd) : '') +
           '<h3>Moment</h3>' + chipRij(V.moment, 'moment', q.moment) +
@@ -2547,6 +2549,13 @@
     if (!f) return;
     e.preventDefault();
     var q = f.querySelector('input').value.trim();
+    /* Eén slimme zoekbalk (01-11-2026): noemt de zin een persoon, budget, leeftijd of moment ('collega', 'oma max €25'),
+       dan kiest VONK. Een los woord ('lego', 'kaars') gaat naar de gewone zoekresultaten. */
+    var vl = q ? vonkLees(q) : null;
+    if (vl && (vl.voor !== 'iedereen' || vl.budget !== 'geen' || vl.moment !== 'iedereen' || vl.leeftijd || vl.soort)) {
+      sluitTips(f); f.querySelector('input').blur();
+      ga(maakAdres('/vonk', Object.assign(vl, { zin: q }))); return;
+    }
     var huidig = leesAdres();
     var nq = { q: q, prijs: huidig.delen[0] === 'zoek' ? huidig.q.prijs : '' };
     sluitTips(f);
@@ -2588,8 +2597,9 @@
   vulIconen(document);
   var zoekRij = $('[data-zoekrij] .binnen');
   /* Staat de zoekbalk al in de HTML (maak-paginas.js zet hem erin tegen verspringen)? Dan laten we hem staan, zodat wat je al typte blijft. */
-  if (zoekRij && !zoekRij.firstElementChild) zoekRij.innerHTML = zoekForm('', 'Zoek een cadeau, bijv. bal, fiets of trein');
-  else if (zoekRij) zoekForm.n = Math.max(zoekForm.n || 0, 1);
+  var ZOEK_TEKST = 'Zoek: lego, of ‘oma, max €25’';
+  if (zoekRij && !zoekRij.firstElementChild) zoekRij.innerHTML = zoekForm('', ZOEK_TEKST);
+  else if (zoekRij) { zoekForm.n = Math.max(zoekForm.n || 0, 1); var zi = zoekRij.querySelector('input'); if (zi) zi.placeholder = ZOEK_TEKST; }
   netteLinks(document);
   function start() {
     if (start.gedaan) return; start.gedaan = true;
