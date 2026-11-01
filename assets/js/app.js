@@ -2123,6 +2123,24 @@
     try { window.dispatchEvent(new Event('lk-route')); } catch (e) {}
   }
 
+  /* ================== TRADETRACKER-REFERENTIE ================== */
+  /* TradeTracker-links (…&a=516846&r=&u=…) hebben een leeg 'r='-vakje. Vlak voor de klik vullen we dat met het product
+     (op een productpagina) of met de soort link en de pagina. In TradeTracker > Transacties staat dat dan in de kolom
+     'Referentie', zodat Marius bij een verkoop ziet via welk product of welke pagina die kwam. Geen persoonsgegevens. */
+  (function () {
+    function vulRef(e) {
+      var a = e.target && e.target.closest && e.target.closest('a[href]'); if (!a) return;
+      var href = a.href; if (!/[?&]a=516846&r=(&|$)/.test(href)) return;
+      var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1];
+      var pad = location.pathname.replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'home';
+      var soort = a.closest('.awkaart') ? 'feed' : a.classList.contains('winkelkaart') ? 'winkel' : a.classList.contains('geef') ? 'lijst' : '';
+      var ref = id && !soort ? id : (soort || 'link') + '_' + pad;
+      ref = ref.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 80);
+      if (ref) a.href = href.replace(/([?&]a=516846&r=)(?=&|$)/, '$1' + ref);
+    }
+    ['mousedown', 'click', 'auxclick', 'contextmenu', 'keydown'].forEach(function (t) { document.addEventListener(t, vulRef, true); });
+  })();
+
   /* ================== BEZOEKERSTELLER ================== */
   /* GoatCounter telt de eerste pagina zelf bij het laden. Klik je daarna binnen de site door (zonder herladen),
      dan geven we elke nieuwe pagina hier door. Zonder cookies; alleen het adres en de titel van de pagina. */
