@@ -1256,6 +1256,25 @@
   function vonkGeheugen(lees) {
     try { if (lees === undefined) return JSON.parse(sessionStorage.getItem('lk-vonk') || '{}'); sessionStorage.setItem('lk-vonk', JSON.stringify(lees)); } catch (e) { return {}; }
   }
+  /* Basislijst van VONK: alles wat binnen budget, leeftijd, interesse en getypt woord valt. Ook gebruikt om alternatieven te tellen. */
+  function vonkBasis(q, lft, hobby) {
+    var past = function (lijst, waarde) { return waarde === 'iedereen' || (lijst || []).indexOf(waarde) !== -1 || (lijst || []).indexOf('iedereen') !== -1; };
+    var watW = q.wat ? zoekWoorden(q.wat) : [];
+    /* Christelijk blijft een eigen afdeling: alleen als je die interesse zelf kiest, en dan alleen christelijke producten. */
+    var alle = LK.zichtbaar().filter(function (p) { return hobby === 'christelijk' ? p.cat === 'christelijk' : nietChristelijk(p); }).filter(function (p) {
+      return q.voor === 'iedereen' || hobby === 'dieren' || watW.length || p.cat !== 'dieren';
+    }).filter(function (p) { return binnenPrijs(p, q.budget); });   /* budget is heilig */
+    /* Getypt woord (bijv. 'lego' of 'vissen'): streng, alleen echte treffers (wens van Marius, 01-11-2026). */
+    if (watW.length) alle = alle.filter(function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); });
+    if (lft) alle = alle.filter(function (p) { var a = kindLeeftijd(p); return a ? (a[0] <= lft.tot && a[1] >= lft.van) : lft.van >= 3; });
+    var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
+    var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
+    /* Met een getypt woord is dat woord leidend; de interesse filtert dan niet nog eens. */
+    var hob = function (p) { return !hobby || watW.length > 0 || vonkHobby(p, hobby); };
+    var lftZeker = function (p) { if (!lft) return true; var a = kindLeeftijd(p); return !!a && a[0] >= lft.van - 3; };
+    return { past: past, alle: alle, watW: watW, echt: echt, pastVoor: pastVoor, hob: hob, lftZeker: lftZeker,
+      aantal: function () { return alle.filter(function (p) { return hob(p) && (pastVoor(p) || (p.voor || []).indexOf('iedereen') !== -1); }).length; } };
+  }
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
     var V = window.LK_VONK;
@@ -1290,25 +1309,8 @@
 
     if (stap === 4) {
       var hobby = VONK_HOBBY.some(function (x) { return x.id === q.hobby; }) ? q.hobby : '';
-      var past = function (lijst, waarde) { return waarde === 'iedereen' || (lijst || []).indexOf(waarde) !== -1 || (lijst || []).indexOf('iedereen') !== -1; };
-      /* Christelijk blijft een eigen afdeling: alleen als je die interesse zelf kiest, en dan alleen christelijke producten. */
-      var alle = LK.zichtbaar().filter(function (p) { return hobby === 'christelijk' ? p.cat === 'christelijk' : nietChristelijk(p); }).filter(function (p) {
-        return q.voor === 'iedereen' || hobby === 'dieren' || p.cat !== 'dieren';
-      }).filter(function (p) { return binnenPrijs(p, q.budget); });   /* budget is heilig */
-      /* Precieze woorden uit de getypte zin (bijv. 'vissen'): genoeg treffers? Dan alleen die. Anders gaan ze voor. */
-      var watW = q.wat ? zoekWoorden(q.wat) : [];
-      if (watW.length) {
-        var raak = alle.filter(function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); });
-        if (raak.length >= 6) alle = raak;
-        else alle = raak.concat(alle.filter(function (p) { return raak.indexOf(p) === -1; }));
-        var watWeinig = raak.length < 6 ? raak.length : -1;
-      }
-      var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
-      var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
-      var hob = function (p) { return !hobby || vonkHobby(p, hobby); };
-      if (lft) alle = alle.filter(function (p) { var a = kindLeeftijd(p); return a ? (a[0] <= lft.tot && a[1] >= lft.van) : lft.van >= 3; });
-      /* Zeker passend: leeftijd bekend en niet véél te jong (een '3+'-puzzel is geen topkeuze voor een kind van 10). */
-      var lftZeker = function (p) { if (!lft) return true; var a = kindLeeftijd(p); return !!a && a[0] >= lft.van - 3; };
+      var B = vonkBasis(q, lft, hobby), past = B.past, alle = B.alle, watW = B.watW, echt = B.echt, pastVoor = B.pastVoor, hob = B.hob, lftZeker = B.lftZeker;
+      var watWeinig = watW.length ? (alle.length < 6 ? alle.length : -1) : undefined;
       var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && past(p.moment, q.moment) && lftZeker(p); });
       /* Weinig treffers? Eerst 'voor iedereen' (zelfde moment), dan dezelfde persoon met een ander moment. Altijd binnen budget en interesse. */
       var ruimer = [], anders = [];
@@ -1388,54 +1390,79 @@
         return r.slice(0, 3).join(' · ');
       };
 
-      var wijzig = function (sl, tekst) {
-        var nq = Object.assign({}, q); delete nq[sl]; delete nq.mix; delete nq.zes;
-        return '<a class="chip actief vonk-wijzig" href="' + maakAdres('/vonk', nq) + '" title="Wijzig">' + esc(tekst) + ic('rechts') + '</a>';
+      /* ---- Weergave (01-11-2026, compact voor telefoon): smalle balk met keuzes + 'Aanpassen'-paneel, cadeaus direct eronder. ---- */
+      var adres = function (wijzigen) { var nq = Object.assign({}, q); delete nq.mix; delete nq.zes; Object.keys(wijzigen).forEach(function (k) { if (wijzigen[k] === null) delete nq[k]; else nq[k] = wijzigen[k]; }); return maakAdres('/vonk', nq); };
+      var hijZij = q.voor === 'haar' ? 'zij' : q.voor === 'hem' ? 'hij' : 'hij of zij';
+      /* Label in de balk: tik = paneel open; kruisje = deze keuze weg. */
+      var label2 = function (tekst, weg) {
+        return '<span class="vlabel"><button type="button" data-filter-open>' + esc(tekst) + '</button>' +
+          (weg ? '<a class="vlabel-weg" href="' + weg + '" aria-label="' + esc(tekst) + ' weghalen">' + ic('sluit') + '</a>' : '') + '</span>';
       };
-      var rijChips = function (opties, sl, huidig) {
-        return opties.map(function (o) {
-          var nq = Object.assign({}, q); delete nq.mix; delete nq.zes;
-          if (huidig === o.id) delete nq[sl]; else nq[sl] = o.id;   /* nogmaals tikken = weer uit (bij interesses) */
-          return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (huidig === o.id) + '">' + esc(o.label) + '</a>';
-        }).join('');
+      var balkLabels =
+        label2(q.voor === 'iedereen' ? 'Voor iedereen' : 'Voor ' + label(V.voor, q.voor).toLowerCase().replace(/^een /, '')) +
+        (lft ? label2(lft.label, null) : '') +
+        (q.wat ? label2('“' + q.wat + '”', adres({ wat: null, zin: null })) : '') +
+        (hobby && !q.wat ? label2(label(VONK_HOBBY, hobby), adres({ hobby: null })) : '') +
+        (q.moment !== 'iedereen' ? label2(label(V.moment, q.moment), adres({ moment: 'iedereen' })) : '') +
+        (q.budget !== 'geen' ? label2(prijsFilter(q.budget).label, adres({ budget: 'geen' })) : '');
+      var chipRij = function (opties, sl, huidig, extra) {
+        return '<div class="chips filter-chips">' + opties.map(function (o) {
+          var w = {}; w[sl] = huidig === o.id && sl === 'hobby' ? null : o.id; Object.assign(w, extra || {});
+          return '<a class="chip" href="' + adres(w) + '" aria-pressed="' + (huidig === o.id) + '">' + esc(o.label) + '</a>';
+        }).join('') + '</div>';
       };
       var eigenB = q.budget && !BUDGET.some(function (o) { return o.id === q.budget; }) ? [{ id: q.budget, label: prijsFilter(q.budget).label }] : [];
-      var budgetRij = eigenB.concat(BUDGET).map(function (o) {
-        var nq = Object.assign({}, q); nq.budget = o.id; delete nq.mix; delete nq.zes;
-        return '<a class="chip" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q.budget === o.id) + '">' + esc(o.label) + '</a>';
-      }).join('');
+      var paneel = '<div class="filterpaneel vonk-paneel" data-filterpaneel hidden><button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
+        '<div class="filter-blad" role="dialog" aria-modal="true" aria-label="Keuzes aanpassen">' +
+          '<div class="filter-kop"><strong>Aanpassen</strong><button type="button" class="filter-sluit" data-filter-dicht aria-label="Sluiten">' + ic('sluit') + '</button></div>' +
+          '<form class="vonk-typ" data-vonk-typ role="search"><label for="vonk-zin-p">Typ opnieuw wat je zoekt</label><div class="vonk-typ-rij"><input id="vonk-zin-p" type="text" autocomplete="off" value="' + esc(q.zin || '') + '" placeholder="Bijv. vader die vist, max €40"><button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
+          '<h3>Voor wie</h3>' + chipRij(V.voor, 'voor', q.voor, { leeftijd: null }) +
+          (q.voor === 'kind' ? '<h3>Leeftijd</h3>' + chipRij(VONK_LEEFTIJD, 'leeftijd', q.leeftijd) : '') +
+          '<h3>Moment</h3>' + chipRij(V.moment, 'moment', q.moment) +
+          '<h3>Budget</h3>' + chipRij(eigenB.concat(BUDGET), 'budget', q.budget) +
+          '<h3>Waar houdt ' + hijZij + ' van?</h3>' + chipRij(VONK_HOBBY, 'hobby', q.wat ? '' : hobby, { wat: null, zin: null }) +
+          '<div class="vonk-paneel-voet"><a class="knop knop-rand" href="/vonk">Opnieuw beginnen</a><button class="knop knop-goud" type="button" data-filter-dicht>Toon ' + alles.length + ' cadeaus</button></div>' +
+        '</div></div>';
+      /* Niets gevonden: eerlijk zeggen, en laten zien waar het wél zit (alleen opties die echt iets opleveren). */
+      var tips = '', opties = [];
+      if (!zes.length || (q.wat && alles.length < 6)) {
+        var probeer = function (wijz, tekst) {
+          var nq = Object.assign({}, q, wijz); Object.keys(wijz).forEach(function (k) { if (wijz[k] === null) delete nq[k]; });
+          var nl = nq.voor === 'kind' ? VONK_LEEFTIJD.filter(function (x) { return x.id === nq.leeftijd; })[0] : null;
+          var n = vonkBasis(nq, nl, VONK_HOBBY.some(function (x) { return x.id === nq.hobby; }) ? nq.hobby : '').aantal();
+          if (n) opties.push('<a class="chip" href="' + adres(wijz) + '">' + esc(tekst) + ' <small>(' + n + ')</small></a>');
+        };
+        BUDGET.filter(function (o) { return o.id !== q.budget; }).forEach(function (o) { probeer({ budget: o.id }, o.id === 'geen' ? 'Elk budget' : o.label); });
+        if (q.moment !== 'iedereen') probeer({ moment: 'iedereen' }, 'Elk moment');
+        if (q.voor !== 'iedereen') probeer({ voor: 'iedereen', leeftijd: null }, 'Voor iedereen');
+        if (hobby && !q.wat) probeer({ hobby: null }, 'Zonder ' + label(VONK_HOBBY, hobby).toLowerCase());
+      }
+      if (!zes.length) {
+        tips = '<div class="vonk-leeg"><h2>Nog niets gevonden</h2><p>' + (q.wat ? 'Voor <strong>“' + esc(q.wat) + '”</strong> hebben we niets binnen deze keuzes.' : 'Binnen deze keuzes hebben we nog niets.') + '</p>' +
+          (opties.length ? '<p>Hier vind je wel iets:</p><div class="chips">' + opties.join('') + '</div>' : '<a class="knop knop-goud" href="/vonk">Opnieuw beginnen</a>') + '</div>';
+      }
       var mq = Object.assign({}, q); mq.mix = String((parseInt(q.mix, 10) || 0) + 1); delete mq.zes;
-      var hijZij = q.voor === 'haar' ? 'zij' : q.voor === 'hem' ? 'hij' : 'hij of zij';
-
       inhoud = '<div class="vonk-uitslag">' +
-        '<div class="vonk-vraag"><h2>' + (zes.length ? 'VONK kiest deze ' + zes.length + ' voor jou' : 'Nog niets gevonden') + '</h2>' +
-        (q.wat && typeof watWeinig === 'number' && watWeinig >= 0 ? '<p class="vonk-begreep">Voor <em>“' + esc(q.wat) + '”</em> hebben we ' + (watWeinig ? 'er maar ' + watWeinig : 'nog niets') + ' binnen je keuzes. Daarna zie je andere ideeën die passen.</p>' : '') +
-        (q.zin ? '<p class="vonk-begreep">Je zocht: <em>“' + esc(q.zin) + '”</em>. Klopt iets niet? Tik op een keuze om hem te veranderen.</p>' : '') +
-        '<div class="vonk-samenvatting">' +
-          wijzig('voor', 'Voor: ' + label(V.voor, q.voor)) +
-          (lft ? wijzig('leeftijd', lft.label) : '') +
-          (q.wat ? wijzig('wat', '“' + q.wat + '”') : '') +
-          wijzig('moment', label(V.moment, q.moment)) +
-          '<a class="chip" href="/vonk">Opnieuw beginnen</a>' +
-        '</div>' +
-        '<div class="vonk-budget"><span>Budget:</span><div class="chips">' + budgetRij + '</div></div>' +
-        '<div class="vonk-budget vonk-hobby"><span>Waar houdt ' + hijZij + ' van?</span><div class="chips">' + rijChips(VONK_HOBBY.filter(function (x) { return x.id === hobby; }).concat(VONK_HOBBY.filter(function (x) { return x.id !== hobby; })), 'hobby', hobby) + '</div></div>' +
-        '</div>' +
+        '<div class="vonk-balk"><div class="vonk-balk-labels">' + balkLabels + '</div>' +
+          '<button class="vonk-aanpassen" type="button" data-filter-open>' + ic('filter') + ' Aanpassen</button></div>' +
+        paneel +
         (zes.length ?
+          '<h2 class="vonk-titel">VONK kiest deze ' + zes.length + ' voor jou</h2>' +
+          (q.wat && alles.length < 6 ? '<p class="vonk-begreep">Er zijn er maar ' + alles.length + ' met “' + esc(q.wat) + '” binnen je keuzes.' + (opties.length ? ' Meer vinden:' : '') + '</p>' + (opties.length ? '<div class="chips vonk-meer-tips">' + opties.join('') + '</div>' : '') : '') +
           '<div class="vonk-zes">' +
             '<div class="vonk-fonkel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
             zes.map(function (p) { var w = waarom(p); return '<div class="vonk-keus">' + LK.productKaart(p) + (w ? '<p class="vonk-waarom">' + ic('vonk') + '<span>' + esc(w) + '</span></p>' : '') + '</div>'; }).join('') +
           '</div>' +
-          '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a>' +
+          (alles.length > 6 ? '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a>' : '<div class="vonk-toover">') +
             '<button class="knop knop-rand" type="button" data-vonk-deel="' + esc(maakAdres('/vonk', Object.assign({}, q, { mix: undefined, zes: zes.map(function (p) { return p.id; }).join(',') }))) + '">' + ic('deel') + ' Deel deze ' + zes.length + '</button></div>'
-          : leegBlok('Nog niets gevonden', 'Binnen dit budget hebben we hier nog niets voor. Kies een ander budget of een andere interesse.', '<a class="knop knop-goud" href="/vonk">Opnieuw</a>')) +
+          : tips) +
         (rest.length ? '<section class="sectie vonk-meer"><div class="sectie-kop"><div><h2>Meer passende cadeaus</h2></div><span class="vonk-noot"><strong>' + alles.length + '</strong> in totaal</span></div>' + gridMeer(rest, '', 12) + '</section>' : '') +
         '<p class="vonk-noot" style="margin-top:14px">VONK kijkt naar de kenmerken die wij bij elk product invullen. Je budget wordt nooit overschreden.</p>' +
         '</div>';
     }
 
     var icoon = '<div class="vonk-icoon" aria-hidden="true"><img src="/images/vonk/vonk-icoon.webp" alt="" width="96" height="96" decoding="async"></div>';
-    return kop + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? '" style="max-width:none' : '') + '">' + (stap < 4 ? icoon + balk : '') + inhoud + terug + '</div></div>';
+    return (stap === 4 ? '' : kop) + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? ' vonk-pagina-uitslag" style="max-width:none' : '') + '">' + (stap < 4 ? icoon + balk : '') + inhoud + terug + '</div></div>';
   }
 
 
