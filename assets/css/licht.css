@@ -493,3 +493,12 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .vonk-pagina > .vonk-icoon { width: 72px; height: 72px; margin-top: 10px; }
   .vonk-pagina > .vonk-icoon img { width: 72px; height: 72px; }
 }
+/* VONK proefversie (01-11-2026): kleine knop 'Zoek persoonlijkere cadeaus' die een klein lijstje opent */
+.vonk-pers { margin: 14px 0 4px; text-align: center; }
+.vonk-pers > summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 9px 16px; border: 1px solid #B8862E; border-radius: 999px; font: 700 14px/1.2 var(--f-ui); color: #141A2A; background: #FFFBF2; }
+.vonk-pers > summary::-webkit-details-marker { display: none; }
+.vonk-pers > summary svg { width: 16px; height: 16px; color: #B8862E; }
+.vonk-pers[open] > summary { background: #F3E7CC; }
+.vonk-pers p { margin: 10px 0 6px; font-size: 14px; font-weight: 600; color: #141A2A; }
+.vonk-pers-keuzes { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.vonk-pers-keuzes .chip { font-size: 13px; padding: 6px 11px; }

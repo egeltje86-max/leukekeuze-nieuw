@@ -30,7 +30,7 @@
     try { history.replaceState(null, '', netjes(location.hash.slice(1))); } catch (e) {}
   }
 
-  var vorigPad = null;
+  var vorigeVonk = null; var vorigPad = null;
 
   /* ---------- Hulpjes ---------- */
   function vulIconen(root) {
@@ -1171,8 +1171,16 @@
     { id: 'dieren', label: 'Dieren', cats: ['dieren'] },
     { id: 'christelijk', label: 'Christelijk', cats: ['christelijk'] }
   ];
+  /* Proefversie (01-11-2026, Nova/Marius): strengere interesses. 'Koken' = echte kookspullen, geen mokken of bakvormpjes. */
+  var vonkProef = false;
+  var VONK_HOBBY_PROEF = {
+    koken: { vak: ['keuken/keukenapparaten', 'keuken/airfryers', 'keuken/pannen', 'keuken/messen-snijplanken', 'keuken/tosti-wafel-ijs', 'boeken-media/kookboeken', 'tuin-klussen/bbq-buitenkoken'] },
+    lekkers: { vak: ['eten-drinken/chocolade', 'eten-drinken/drop-snoep', 'eten-drinken/koekjes-stroopwafels', 'eten-drinken/delicatessen', 'eten-drinken/kerst-cadeaupakketten', 'eten-drinken/brievenbuscadeaus', 'eten-drinken/sinterklaas-lekkers'] },
+    techniek: { vak: ['elektronica/telefoon-opladen', 'elektronica/cameras', 'elektronica/koptelefoons', 'elektronica/tablets-ereaders', 'elektronica/drones-vr', 'elektronica/platenspelers', 'elektronica/gadgets-trackers', 'elektronica/speakers', 'elektronica/beamers', 'elektronica/sfeerlicht-smarthome', 'sieraden/smartwatches'] },
+    wonen: { vak: ['wonen/lampen', 'wonen/vloerkleden', 'wonen/wanddecoratie', 'wonen/klokken', 'wonen/vazen-bloemen', 'wonen/kussens-plaids', 'wonen/kaarsen', 'wonen/spiegels', 'wonen/fotolijsten', 'wonen/huisgeuren'] }
+  };
   function vonkHobby(p, id) {
-    var h = VONK_HOBBY.filter(function (x) { return x.id === id; })[0];
+    var h = (vonkProef && VONK_HOBBY_PROEF[id]) || VONK_HOBBY.filter(function (x) { return x.id === id; })[0];
     if (!h) return true;
     return (h.vak || []).some(function (v) { var d = v.split('/'); return LK.hoortBij(p, d[0], d[1]); }) ||
       (h.cats || []).some(function (c) { return LK.hoortBij(p, c); }) ||
@@ -1294,6 +1302,7 @@
   }
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
+    vonkProef = q.proef === '1';
     var V = window.LK_VONK;
     var kind = q.voor === 'kind', lft = kind ? VONK_LEEFTIJD.filter(function (x) { return x.id === q.leeftijd; })[0] : null;
     var stap = !q.voor ? 1 : (kind && !lft) ? 1.5 : !q.moment ? 2 : !q.budget ? 3 : 4;
@@ -1482,19 +1491,23 @@
       /* Idee van Nova (01-11-2026): na de zes de vraag 'waar houdt hij/zij van?'. Alleen interesses die echt cadeaus opleveren. */
       var persoonlijker = '';
       /* 01-11-2026 22:55: op wens van Marius/Nova voorlopig UIT (te groot, resultaten pasten niet). Nieuwe compacte versie eerst op de testversie. */
-      if (false && zes.length && !q.wat) {
-        var hobbies = VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')) && h.id !== hobby && vonkBasis(q, lft, h.id).aantal() >= 6; });
-        if (hobbies.length) persoonlijker = '<section class="vonk-persoonlijk"><h2>' + ic('vonk') + ' Wil je nog persoonlijkere cadeaus vinden?</h2>' +
-          '<p>' + (hobby ? 'Kies een andere interesse, of ' : 'Vertel VONK ') + 'waar ' + hijZij + ' van houdt. Dan zoekt VONK cadeaus die daar echt bij passen.</p>' +
-          '<div class="chips">' + hobbies.map(function (h) { return '<a class="chip" href="' + adres({ hobby: h.id }) + '">' + esc(h.label) + '</a>'; }).join('') +
-          (hobby ? '<a class="chip" href="' + adres({ hobby: null }) + '">Alles</a>' : '') + '</div></section>';
+      /* Proefversie: één kleine knop 'Zoek persoonlijkere cadeaus'; tik = klein lijstje interesses (alleen waar echt genoeg cadeaus achter zitten). */
+      if (vonkProef && zes.length && !q.wat) {
+        var telH = function (id) { var B2 = vonkBasis(q, lft, id); return B2.alle.filter(function (p) { return B2.hob(p) && (B2.pastVoor(p) || (p.voor || []).indexOf('iedereen') !== -1); }).length; };
+        var hobbies = VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')) && h.id !== hobby && telH(h.id) >= 6; });
+        if (hobbies.length) persoonlijker = '<details class="vonk-pers"><summary>' + ic('vonk') + (hobby ? ' Andere interesse kiezen' : ' Zoek persoonlijkere cadeaus') + '</summary>' +
+          '<p>Waar houdt ' + hijZij + ' van?</p><div class="vonk-pers-keuzes">' +
+          hobbies.map(function (h) { return '<a class="chip" href="' + adres({ hobby: h.id, wat: null, zin: null }) + '">' + esc(h.label) + '</a>'; }).join('') +
+          '</div></details>';
       }
+      /* Proefversie: weinig cadeaus bij deze interesse? Eerlijk zeggen, niet aanvullen met iets anders. */
+      var weinigH = vonkProef && hobby && !q.wat && alles.length < 6 ? '<p class="vonk-begreep">Bij <strong>' + esc(label(VONK_HOBBY, hobby)) + '</strong> vonden we binnen je keuzes ' + (alles.length === 1 ? '1 cadeau' : alles.length + ' cadeaus') + '. <a href="' + adres({ hobby: null }) + '">Interesse weghalen</a></p>' : '';
       inhoud = '<div class="vonk-uitslag">' +
         '<div class="vonk-balk"><div class="vonk-balk-labels">' + balkLabels + '</div>' +
           '<button class="vonk-aanpassen" type="button" data-filter-open>' + ic('filter') + ' Aanpassen</button></div>' +
         paneel +
         (zes.length ?
-          '<h2 class="vonk-titel">VONK kiest deze ' + zes.length + ' voor jou</h2>' +
+          '<h2 class="vonk-titel">VONK kiest deze ' + zes.length + ' voor jou</h2>' + weinigH +
           (q.wat && alles.length < 6 ? '<p class="vonk-begreep">Er zijn er maar ' + alles.length + ' met “' + esc(q.wat) + '” binnen je keuzes.' + (opties.length ? ' Meer vinden:' : '') + '</p>' + (opties.length ? '<div class="chips vonk-meer-tips">' + opties.join('') + '</div>' : '') : '') +
           '<div class="vonk-zes">' +
             '<div class="vonk-fonkel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
@@ -2385,6 +2398,11 @@
       } else window.scrollTo(0, 0);
       if (vorigPad !== null) app.focus({ preventScroll: true });
     }
+    if (d[0] === 'vonk' && a.pad === vorigPad && location.search !== vorigeVonk && !hersteld && /(^|[?&])proef=1/.test(location.search)) {
+      var rustigV = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: rustigV ? 'auto' : 'smooth' });
+    }
+    vorigeVonk = d[0] === 'vonk' ? location.search : null;
     vorigPad = a.pad;
     if (typeof bewaakHome === 'function') bewaakHome();
     try { window.dispatchEvent(new Event('lk-route')); } catch (e) {}
