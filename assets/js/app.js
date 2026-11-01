@@ -263,6 +263,12 @@
       '</section>' +
 
       '<div class="binnen">' +
+        /* VONK groot bovenaan (wens van Marius, 01-11-2026) */
+        '<a class="vonk-kaart vonk-groot" href="/vonk">' +
+          ic('vonk', 'staf') +
+          '<div><h2>Geen idee wat je moet geven?</h2><p>Beantwoord 3 vragen en <strong>VONK</strong> laat direct passende cadeaus zien.</p></div>' +
+          '<span class="knop knop-goud">Start VONK ' + ic('rechts') + '</span>' +
+        '</a>' +
         /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
         '<section class="sectie eerste">' +
           '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
@@ -271,6 +277,11 @@
           }).join('') + '</div>' +
         '</section>' +
 
+        /* Zoek op budget (01-11-2026) */
+        '<section class="sectie"><div class="sectie-kop"><div><h2>Zoek op budget</h2></div></div>' +
+          '<div class="budget-rij">' + PRIJZEN.filter(function (p) { return p.id !== 'alle'; }).map(function (p) {
+            return '<a class="budget-knop" href="/c/cadeaus?prijs=' + p.id + '">' + p.label + '</a>';
+          }).join('') + '</div></section>' +
         '<section class="sectie">' +
           '<div class="sectie-kop"><div><span class="kicker">Ingang 2</span><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
           '<div class="groepen">' + window.LK_HOME_GROEPEN.map(window.LK_CAT).filter(Boolean).map(function (c) {
@@ -281,16 +292,9 @@
 
         /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
         '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 3</span><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
-          '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN_NU().map(function (x) {
+          '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN_NU().slice(0, 8).map(function (x) {
             return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
           }).join('') + '</div></section>' +
-        /* 2.1: acht collecties als rondjes (in de volgorde van zoeken). Lege collecties tonen we nog niet. */
-        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 4</span><h2>Of een collectie</h2></div></div>' +
-          '<div class="persoon-subs home gelegenheden">' + (window.LK_COLLECTIES || []).map(function (c) {
-            var l = verzamelLijst(c); if (!l.length) return '';
-            return '<a class="subkaart" href="/collectie/' + c.slug + '"><span class="rond"><img src="' + esc(rondBeeld(c.beeld, l)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.naam) + '</a>';
-          }).join('') + '</div></section>' +
-
         /* 0. Seizoen eerst: Sinterklaas en Kerst bovenaan (wens van Marius, 26-10-2026). Blokken verlopen vanzelf via 'tot'. */
         actieBlokken() +
 
@@ -300,12 +304,12 @@
         /* 2.0: laatst bekeken (als er iets is) */
         laatstBekeken() +
 
-        /* 2. VONK als smalle balk */
-        '<a class="vonk-kaart vonk-klein" href="/vonk">' +
-          ic('vonk', 'staf') +
-          '<div><h2>VONK</h2><p>Geen idee wat je moet geven? Vind het in 3 klikken.</p></div>' +
-          '<span class="rond-pijl">' + ic('rechts') + '</span>' +
-        '</a>' +
+        /* 2.1: acht collecties als rondjes (in de volgorde van zoeken). Lege collecties tonen we nog niet. */
+        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 4</span><h2>Of een collectie</h2></div></div>' +
+          '<div class="persoon-subs home gelegenheden">' + (window.LK_COLLECTIES || []).map(function (c) {
+            var l = verzamelLijst(c); if (!l.length) return '';
+            return '<a class="subkaart" href="/collectie/' + c.slug + '"><span class="rond"><img src="' + esc(rondBeeld(c.beeld, l)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.naam) + '</a>';
+          }).join('') + '</div></section>' +
 
         /* 2b. Zoeken in alle winkels (smalle balk, geen grote zoekbalk) */
         '<a class="vonk-kaart vonk-klein zoek-alle" href="/zoek">' +

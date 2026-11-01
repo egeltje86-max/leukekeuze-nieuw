@@ -328,3 +328,23 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .catkaart .rond-pijl { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; }
 @media (min-width: 760px) { .catkaart h3 { font-size: 16px; } }
 @media (min-width: 1100px) { .catkaarten.alle-cats, .binnen > .sectie > .catkaarten { grid-template-columns: repeat(4, 1fr); } } /* 16 categorieën: 4 x 4, geen losse kaart onderaan */
+
+/* VONK groot bovenaan + Zoek op budget (01-11-2026) */
+.vonk-kaart.vonk-groot { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px; padding: 22px 24px; margin: 22px 0 6px; border: 1px solid rgba(217,168,72,.45); border-radius: 18px; text-decoration: none; }
+.vonk-kaart.vonk-groot h2 { font-size: 22px; margin: 0 0 6px; }
+.vonk-kaart.vonk-groot p { font-size: 15px; }
+.vonk-kaart.vonk-groot p strong { color: #E8C67A; }
+.vonk-kaart.vonk-groot .knop { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+.vonk-kaart.vonk-groot .knop svg { width: 16px; height: 16px; }
+@media (max-width: 759px) {
+  .vonk-kaart.vonk-groot { grid-template-columns: auto 1fr; padding: 18px; gap: 12px 14px; margin-top: 16px; }
+  .vonk-kaart.vonk-groot h2 { font-size: 19px; }
+  .vonk-kaart.vonk-groot p { font-size: 14px; }
+  .vonk-kaart.vonk-groot .knop { grid-column: 1 / -1; justify-content: center; }
+}
+.budget-rij { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.budget-knop { display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 14px; background: #011950; color: #F4ECDD; font-weight: 800; font-size: 16px; text-decoration: none; border: 1px solid rgba(217,168,72,.45); }
+.budget-knop:hover { background: #0F1830; color: #E8C67A; }
+@media (max-width: 759px) { .budget-rij { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 600px) { .persoon-subs.home.gelegenheden { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1024px) { .persoon-subs.home.gelegenheden { grid-template-columns: repeat(8, 1fr); } .persoon-subs.home.gelegenheden .subkaart .rond { width: 104px; height: 104px; } }
