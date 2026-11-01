@@ -338,6 +338,25 @@ function kies(groep, p, titel) {
 
 const T = (p) => (p.titel || '') + ' ' + (p.zoek || '');
 
+/* Soort cadeau. Alleen op feiten: winkel, vakje, prijs, merk en woorden in de titel. Een product mag meerdere soorten hebben. */
+const WINKEL_ORIGINEEL = new Set(['Ditverzinjeniet', 'CoolGift', 'Gadgets en trends', 'Cadeau.nl', 'IJzersterke geschenken', 'Place the Moment', 'Superzero', 'Yesgifts']);
+const WINKEL_PERSOONLIJK = new Set(['Smartphoto', 'Place the Moment']);
+const LUXE_MERK = /\b(ghd|dyson|le creuset|staub|moët|moet & chandon|veuve clicquot|taittinger|roederer|bollinger|ruinart|dom p[ée]rignon|macallan|ray-?ban|oakley|myka|zadig|stella mccartney|allsaints|michael kors|villeroy|alessi|georg jensen|swarovski|montblanc|sonos|bose|teufel|bang ?& ?olufsen|apple|garmin|seiko|tissot|fossil|kitchenaid|smeg|wmf|zwilling|laifen|rituals.*(large|groot|xl)|hammam.*large|lego.*(technic|icons|ideas|ultimate))/i;
+const PRAKTISCH_VAK = new Set(['keuken/pannen', 'keuken/messen-snijplanken', 'keuken/airfryers', 'keuken/keukenapparaten', 'keuken/drinkflessen-lunch', 'keuken/opbergen',
+  'tuin-klussen/elektrisch-gereedschap', 'tuin-klussen/handgereedschap-werkplaats', 'tuin-klussen/tuingereedschap', 'tuin-klussen/regentonnen-slangen-compost',
+  'elektronica/telefoon-opladen', 'geuren-verzorging/tandenborstels', 'geuren-verzorging/scheren-baard', 'geuren-verzorging/haarstylers',
+  'mode-beauty/rugzakken', 'mode-beauty/portemonnees', 'mode-beauty/koffers', 'mode-beauty/tassen']);
+const PRAKTISCH_WOORD = /\b(?:oplader|powerbank|thermosfles|drinkfles|isoleerfles|lunchbox|broodtrommel|organizer|opberg|gereedschap|schroevendraaier|boormachine|zaklamp|hoofdlamp|paraplu|rugzak|toilettas|portemonnee|pasjeshouder|multitool|zakmes|weerstation|wekker|slaaptrainer|tandenborstel|scheerapparaat|trimmer|föhn|stijltang|airfryer|waterkoker|koffiemolen|weegschaal|thermometer|warmtekussen|kruik|regenjas|handschoenen|sjaal|muts)\b/i;
+const ORIGINEEL_WOORD = /origineel|uniek|bijzonder|grappig|ludiek|verrassend|miniatuur|book ?nook|levitat|zwevend|sterrenkaart|star ?map|moon ?lamp|maanlamp|3d.?(pen|puzzel|lamp|nachtlamp|kristal|model|print)|lichtgevend|in ?glas|terrarium|kraskaart|kraswereldkaart|scratch|kweekset|grow ?your ?own|bonsai|gadget|rookset|whisky-?smoker|sterrenprojector|escape|puzzelbox|breinbreker|experiment/i;
+const LUXE_CAT = new Set(['sieraden', 'geuren-verzorging', 'mode-beauty', 'dranken', 'wonen']);
+function soortCadeau(p, titel, tags) {
+  const uit = [], vak = p.cat + '/' + p.sub, prijs = typeof p.prijs === 'number' ? p.prijs : 0;
+  if (WINKEL_ORIGINEEL.has(p.shop) || p.sub === 'grappig' || ORIGINEEL_WOORD.test(titel)) uit.push('origineel');
+  if (WINKEL_PERSOONLIJK.has(p.shop) || p.sub === 'met-naam' || /met (je |jouw |eigen )?naam|naam naar keuze|gepersonaliseerd|personaliseer|graveer|gegraveerd|met (je |jouw |eigen )foto|eigen foto|fotoboek|fotolijst met tekst|initialen|sterrenkaart|star ?map|met tekst naar keuze|eigen tekst/i.test(titel)) uit.push('persoonlijk');
+  if ((prijs >= 100 && LUXE_CAT.has(p.cat)) || (prijs >= 40 && LUXE_MERK.test(titel + ' ' + (p.merk || ''))) || (p.cat === 'dranken' && /champagne|cognac|single malt|whisky.*\b(1[2-9]|[2-9]\d)\s*(jaar|years?)/i.test(titel) && prijs >= 45)) uit.push('luxe');
+  if (PRAKTISCH_VAK.has(vak) || tags.has('zakmes') || (PRAKTISCH_WOORD.test(titel) && p.cat !== 'boeken-media' && !/kerst(muts|verlichting)|\bmok\b/i.test(titel))) uit.push('praktisch');
+  return uit;
+}
 function deel(p0) {
   const p = Object.assign({}, p0);
   p.ookIn = (p.ookIn || []).slice();
@@ -451,6 +470,9 @@ function deel(p0) {
   if (/trouw|huwelijk|bruid|bruiloft|wedding|getrouwd|jubileum|jarig getrouwd|\bmr ?(&|and) ?mrs|verloving|engagement|vrijgezel/i.test(titel)) tags.add('trouwen');
 
   if (tags.size) p.tags = [...tags]; else delete p.tags;
+  /* VONK fase 2 (01-11-2026): soort cadeau, voor de cadeaumixer (2 best passend, 2 origineel, 1 praktisch, 1 bijzonder). */
+  const soort = soortCadeau(p, titel, tags);
+  if (soort.length) p.soort = soort; else delete p.soort;
   return p;
 }
 

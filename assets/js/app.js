@@ -1253,8 +1253,20 @@
       var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};
       var zes = (q.zes ? q.zes.split(',') : (geh.per[sleutel] || [])).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
       if (!q.zes && zes.length < Math.min(6, alles.length)) {
+        /* Cadeaumixer (fase 2): 2 best passend, 2 origineel, 1 praktisch, 1 bijzonder (luxe of persoonlijk).
+           We kiezen uit de best passende (eerste 80) en liefst iets dat in dit bezoek nog niet getoond is. Lukt een soort niet: gewoon de volgende beste. */
         var nieuw = alles.filter(function (p) { return geh.gezien.indexOf(p.id) === -1; });
-        zes = nieuw.slice(0, 6); if (zes.length < 6) zes = zes.concat(alles.filter(function (p) { return zes.indexOf(p) === -1; }).slice(0, 6 - zes.length));
+        var bron = (nieuw.length >= 6 ? nieuw : alles).slice(0, 80);
+        var heeft = function (p, s) { return (p.soort || []).indexOf(s) !== -1; };
+        var VAKJES = [['best'], ['origineel'], ['praktisch'], ['best'], ['origineel'], ['luxe', 'persoonlijk']];
+        zes = []; var gekozenSoort = {};
+        VAKJES.forEach(function (soorten) {
+          var p = bron.filter(function (x) { return zes.indexOf(x) === -1 && (soorten[0] === 'best' || soorten.some(function (s) { return heeft(x, s); })); })[0];
+          if (!p) p = bron.filter(function (x) { return zes.indexOf(x) === -1; })[0];
+          if (p) { zes.push(p); if (soorten[0] !== 'best') gekozenSoort[p.id] = soorten.filter(function (s) { return heeft(p, s); })[0] || ''; }
+        });
+        if (zes.length < 6) zes = zes.concat(alles.filter(function (p) { return zes.indexOf(p) === -1; }).slice(0, 6 - zes.length));
+        geh.soort = geh.soort || {}; zes.forEach(function (p) { if (gekozenSoort[p.id]) geh.soort[p.id] = gekozenSoort[p.id]; });
         geh.per[sleutel] = zes.map(function (p) { return p.id; });
         geh.gezien = geh.gezien.concat(geh.per[sleutel]).slice(-300);
         vonkGeheugen(geh);
@@ -1268,12 +1280,14 @@
         return sub && sub.naam ? sub.naam : (c ? c.kort || c.naam : '');
       };
       var waarom = function (p) {
-        var r = [];
+        var r = [], SOORTNAAM = { origineel: 'Origineel', praktisch: 'Praktisch', luxe: 'Iets bijzonders', persoonlijk: 'Persoonlijk' };
+        var gs = (geh.soort || {})[p.id] || ['origineel', 'persoonlijk', 'luxe', 'praktisch'].filter(function (x) { return (p.soort || []).indexOf(x) !== -1; })[0] || '';
+        if (gs && SOORTNAAM[gs]) r.push(SOORTNAAM[gs]);
         if (p.favoriet || p.populair) r.push('Onze favoriet');
         var ka = lft && kindLeeftijd(p); if (ka) r.push(ka[1] >= 99 ? 'Vanaf ' + ka[0] + ' jaar' : ka[0] + '–' + ka[1] + ' jaar');
         var vn = vakNaam(p); if (vn) r.push(vn);
         if (q.voor !== 'iedereen' && !ka && echt(p) === 0) r.push('Gekozen voor ' + label(V.voor, q.voor).toLowerCase());
-        if (q.moment !== 'iedereen' && (p.moment || []).indexOf(q.moment) !== -1) r.push('Leuk voor ' + label(V.moment, q.moment).toLowerCase());
+        if (q.moment !== 'iedereen' && (p.moment || []).indexOf(q.moment) !== -1 && (vn || '').toLowerCase().indexOf(label(V.moment, q.moment).toLowerCase()) === -1) r.push('Leuk voor ' + label(V.moment, q.moment).toLowerCase());
         if (bud && bud.max && isFinite(bud.max)) r.push('Onder €' + bud.max);
         return r.slice(0, 3).join(' · ');
       };
