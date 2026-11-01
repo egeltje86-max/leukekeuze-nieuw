@@ -483,22 +483,13 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .actie.actie-breed, .actie.actie-breed .actie-tekst { min-height: 280px; }
   .actie.actie-breed::before { background: linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.6) 35%, rgba(10,16,32,0) 50%); }
 }
-/* VONK (01-11-2026, Nova): 'persoonlijkere cadeaus' onder de zes, en op de telefoon een kleiner icoon met ruimte erboven */
-.vonk-persoonlijk { margin: 22px 0 8px; padding: 18px 16px; border: 1px solid #E6D9BC; border-radius: 16px; background: #FFFBF2; text-align: center; }
-.vonk-persoonlijk h2 { display: block; font-family: var(--f-kop); font-weight: 500; font-size: clamp(20px, 5vw, 26px); margin: 0 0 6px; }
-.vonk-persoonlijk h2 svg { display: block; margin: 0 auto 6px; width: 24px; height: 24px; color: #B8862E; }
-.vonk-persoonlijk p { margin: 0 0 12px; color: #5A5040; font-size: 14px; }
-.vonk-persoonlijk .chips { justify-content: center; flex-wrap: wrap; }
+/* VONK 'nog persoonlijker' (01-11-2026): één rustige regel met een keuzelijstje, onder de knoppen. */
+.vonk-pers { display: flex; align-items: center; gap: 10px; margin: 12px 0 4px; padding: 10px 14px; border: 1px solid #E6D9BC; border-radius: 14px; background: #FFFBF2; }
+.vonk-pers > svg { width: 18px; height: 18px; color: #B8862E; flex: none; }
+.vonk-pers label { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; flex-wrap: wrap; }
+.vonk-pers label span { font: 600 14px/1.3 var(--f-ui); color: #141A2A; }
+.vonk-pers select { flex: 1; min-width: 150px; border: 1px solid #B8862E; border-radius: 10px; padding: 8px 32px 8px 12px; font: 700 14px/1.2 var(--f-ui); color: #141A2A; background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23B8862E' stroke-width='2'/></svg>") no-repeat right 12px center; -webkit-appearance: none; appearance: none; }
 @media (max-width: 599px) {
   .vonk-pagina > .vonk-icoon { width: 72px; height: 72px; margin-top: 10px; }
   .vonk-pagina > .vonk-icoon img { width: 72px; height: 72px; }
 }
-/* VONK proefversie (01-11-2026): kleine knop 'Zoek persoonlijkere cadeaus' die een klein lijstje opent */
-.vonk-pers { margin: 14px 0 4px; text-align: center; }
-.vonk-pers > summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 9px 16px; border: 1px solid #B8862E; border-radius: 999px; font: 700 14px/1.2 var(--f-ui); color: #141A2A; background: #FFFBF2; }
-.vonk-pers > summary::-webkit-details-marker { display: none; }
-.vonk-pers > summary svg { width: 16px; height: 16px; color: #B8862E; }
-.vonk-pers[open] > summary { background: #F3E7CC; }
-.vonk-pers p { margin: 10px 0 6px; font-size: 14px; font-weight: 600; color: #141A2A; }
-.vonk-pers-keuzes { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
-.vonk-pers-keuzes .chip { font-size: 13px; padding: 6px 11px; }

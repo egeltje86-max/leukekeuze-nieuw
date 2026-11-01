@@ -1154,37 +1154,33 @@
   /* ---------- VONK ---------- */
   /* VONK 2.1 (01-11-2026, GO van Marius): 3 vragen, dan 6 VONK-keuzes met 'waarom', interesses als extra filter ná de uitslag,
      budget wordt NOOIT overschreden, 'Nog een keer toveren', geen herhalingen binnen een bezoek, korte fonkeling. */
+  /* VONK-interesses (01-11-2026, Marius/Nova: moet echt bij de producten passen). Alleen het eigen vakje telt, niet 'ook in'.
+     Zo geeft 'Koken' kookspullen en kookboeken, geen mokken of bakvormpjes. */
   var VONK_HOBBY = [
-    { id: 'koken', label: 'Koken', hoofd: ['keuken'], vak: ['boeken-media/kookboeken'] },
-    { id: 'lekkers', label: 'Lekkers & snoep', hoofd: ['eten-drinken'] },
-    { id: 'drankje', label: 'Een lekker drankje', cats: ['dranken'] },
-    { id: 'verzorging', label: 'Verzorging & geuren', cats: ['geuren-verzorging'] },
-    { id: 'mode', label: 'Mode & sieraden', cats: ['mode-beauty', 'sieraden'] },
-    { id: 'techniek', label: 'Techniek & gadgets', cats: ['elektronica'] },
+    { id: 'koken', label: 'Koken & bakken', vak: ['keuken/keukenapparaten', 'keuken/airfryers', 'keuken/pannen', 'keuken/messen-snijplanken', 'keuken/tosti-wafel-ijs', 'keuken/bakken', 'keuken/kaas-serveerplanken', 'keuken/gezellig-tafelen', 'boeken-media/kookboeken', 'tuin-klussen/bbq-buitenkoken', 'eten-drinken/bbq-sauzen'] },
+    { id: 'koffie', label: 'Koffie & thee', vak: ['keuken/koffie-thee', 'eten-drinken/koffie-thee'] },
+    { id: 'lekkers', label: 'Lekkers & snoep', vak: ['eten-drinken/chocolade', 'eten-drinken/drop-snoep', 'eten-drinken/koekjes-stroopwafels', 'eten-drinken/delicatessen', 'eten-drinken/kerst-cadeaupakketten', 'eten-drinken/sinterklaas-lekkers', 'eten-drinken/brievenbuscadeaus'] },
+    { id: 'drankje', label: 'Een lekker drankje', vak: ['dranken'] },
+    { id: 'verzorging', label: 'Verzorging & geuren', vak: ['geuren-verzorging'] },
+    { id: 'sieraden', label: 'Sieraden & horloges', vak: ['sieraden'] },
+    { id: 'mode', label: 'Mode & tassen', vak: ['mode-beauty'] },
+    { id: 'techniek', label: 'Techniek & gadgets', vak: ['elektronica/telefoon-opladen', 'elektronica/cameras', 'elektronica/koptelefoons', 'elektronica/tablets-ereaders', 'elektronica/drones-vr', 'elektronica/gadgets-trackers', 'elektronica/speakers', 'elektronica/beamers', 'elektronica/sfeerlicht-smarthome', 'sieraden/smartwatches'] },
     { id: 'gamen', label: 'Gamen', vak: ['elektronica/gaming'] },
-    { id: 'sport', label: 'Sport & buiten', cats: ['sport-outdoor'] },
-    { id: 'lezen', label: 'Lezen, films & muziek', cats: ['boeken-media'] },
-    { id: 'creatief', label: 'Knutselen & hobby', cats: ['hobby'] },
-    { id: 'wonen', label: 'Wonen & sfeer', cats: ['wonen'] },
-    { id: 'tuin', label: 'Tuin & klussen', cats: ['tuin-klussen'] },
-    { id: 'spelen', label: 'Spelen & speelgoed', cats: ['speelgoed'] },
-    { id: 'dieren', label: 'Dieren', cats: ['dieren'] },
-    { id: 'christelijk', label: 'Christelijk', cats: ['christelijk'] }
+    { id: 'sport', label: 'Sport & buiten', vak: ['sport-outdoor', 'metaaldetectie'] },
+    { id: 'lezen', label: 'Lezen', vak: ['boeken-media/thrillers-romans', 'boeken-media/leesplezier', 'boeken-media/strips-manga', 'boeken-media/luisterboeken', 'boeken-media/e-readers', 'boeken-media/puzzelboeken', 'boeken-media/kinderboeken', 'elektronica/tablets-ereaders'] },
+    { id: 'muziek', label: 'Muziek & films', vak: ['boeken-media/muziek', 'boeken-media/films-series', 'elektronica/platenspelers', 'speelgoed/muziek-karaoke'] },
+    { id: 'creatief', label: 'Knutselen & hobby', vak: ['hobby', 'speelgoed/knutselen-kleuren', 'boeken-media/kleurboeken'] },
+    { id: 'wonen', label: 'Wonen & sfeer', vak: ['wonen/lampen', 'wonen/vloerkleden', 'wonen/wanddecoratie', 'wonen/klokken', 'wonen/vazen-bloemen', 'wonen/kussens-plaids', 'wonen/kaarsen', 'wonen/spiegels', 'wonen/opbergen-dienbladen', 'wonen/fotolijsten', 'wonen/huisgeuren', 'wonen/deurmatten'] },
+    { id: 'tuin', label: 'Tuin & klussen', vak: ['tuin-klussen/buitenverlichting', 'tuin-klussen/elektrisch-gereedschap', 'tuin-klussen/handgereedschap-werkplaats', 'tuin-klussen/moestuin-kweken', 'tuin-klussen/planten-potten', 'tuin-klussen/regentonnen-slangen-compost', 'tuin-klussen/tuindecoratie', 'tuin-klussen/tuingereedschap', 'tuin-klussen/tuinmachines', 'tuin-klussen/tuinmeubelen', 'tuin-klussen/vogels-insecten', 'tuin-klussen/vuurschalen-terrasverwarmers'] },
+    { id: 'spelen', label: 'Spellen & speelgoed', vak: ['speelgoed'] },
+    { id: 'dieren', label: 'Dieren', vak: ['dieren'] },
+    { id: 'christelijk', label: 'Christelijk', vak: ['christelijk'] }
   ];
-  /* Proefversie (01-11-2026, Nova/Marius): strengere interesses. 'Koken' = echte kookspullen, geen mokken of bakvormpjes. */
-  var vonkProef = false;
-  var VONK_HOBBY_PROEF = {
-    koken: { vak: ['keuken/keukenapparaten', 'keuken/airfryers', 'keuken/pannen', 'keuken/messen-snijplanken', 'keuken/tosti-wafel-ijs', 'boeken-media/kookboeken', 'tuin-klussen/bbq-buitenkoken'] },
-    lekkers: { vak: ['eten-drinken/chocolade', 'eten-drinken/drop-snoep', 'eten-drinken/koekjes-stroopwafels', 'eten-drinken/delicatessen', 'eten-drinken/kerst-cadeaupakketten', 'eten-drinken/brievenbuscadeaus', 'eten-drinken/sinterklaas-lekkers'] },
-    techniek: { vak: ['elektronica/telefoon-opladen', 'elektronica/cameras', 'elektronica/koptelefoons', 'elektronica/tablets-ereaders', 'elektronica/drones-vr', 'elektronica/platenspelers', 'elektronica/gadgets-trackers', 'elektronica/speakers', 'elektronica/beamers', 'elektronica/sfeerlicht-smarthome', 'sieraden/smartwatches'] },
-    wonen: { vak: ['wonen/lampen', 'wonen/vloerkleden', 'wonen/wanddecoratie', 'wonen/klokken', 'wonen/vazen-bloemen', 'wonen/kussens-plaids', 'wonen/kaarsen', 'wonen/spiegels', 'wonen/fotolijsten', 'wonen/huisgeuren'] }
-  };
   function vonkHobby(p, id) {
-    var h = (vonkProef && VONK_HOBBY_PROEF[id]) || VONK_HOBBY.filter(function (x) { return x.id === id; })[0];
+    var h = VONK_HOBBY.filter(function (x) { return x.id === id; })[0];
     if (!h) return true;
-    return (h.vak || []).some(function (v) { var d = v.split('/'); return LK.hoortBij(p, d[0], d[1]); }) ||
-      (h.cats || []).some(function (c) { return LK.hoortBij(p, c); }) ||
-      (h.hoofd || []).indexOf(p.cat) !== -1;   /* 'hoofd': alleen de eigen afdeling, niet wat er via 'ook in' bij staat */
+    var eigen = p.cat + '/' + p.sub;
+    return h.vak.some(function (v) { return v === p.cat || v === eigen; });
   }
   /* Leeftijd van een kindercadeau: uit de gegevens, anders uit de titel ('vanaf 6 jaar', '3+', 'baby'), anders onbekend (null). */
   var VONK_LEEFTIJD = [{ id: '0-2', label: '0 tot 2 jaar', van: 0, tot: 2 }, { id: '3-5', label: '3 tot 5 jaar', van: 3, tot: 5 }, { id: '6-8', label: '6 tot 8 jaar', van: 6, tot: 8 }, { id: '9-12', label: '9 tot 12 jaar', van: 9, tot: 12 }];
@@ -1218,14 +1214,14 @@
     [/\b(hardlo|rennen|runnen)/, 'sport', 'hardlopen'], [/\b(fiets|wielren|mountainbike)/, 'sport', 'fiets'], [/\b(wandel|hiken|hike)/, 'sport', 'wandel'],
     [/\b(kampeer|kamperen|camping)/, 'sport', 'kampe'], [/\bvoetbal/, 'sport', 'voetbal'], [/\byoga/, 'sport', 'yoga'], [/\b(fitness|sporten|sport|gym)/, 'sport'],
     [/\b(klim|boulder)/, 'sport', 'klim'], [/\b(schaats|ski|snowboard)/, 'sport'],
-    [/\b(kook|koken|kookt|chef|bakken|bakt|keuken)/, 'koken'], [/\b(bbq|barbecue)/, 'koken', 'bbq'], [/\bkoffie/, 'koken', 'koffie'], [/\bthee\b/, 'koken', 'thee'],
+    [/\b(kook|koken|kookt|chef|bakken|bakt|keuken)/, 'koken'], [/\b(bbq|barbecue)/, 'koken', 'bbq'], [/\bkoffie/, 'koffie', 'koffie'], [/\bthee\b/, 'koffie', 'thee'],
     [/\b(snoep|chocola|drop|lekkers|zoetekauw)/, 'lekkers'],
     [/\bwhisk/, 'drankje', 'whisk'], [/\bwijn/, 'drankje', 'wijn'], [/\bbier/, 'drankje', 'bier'], [/\bgin\b/, 'drankje', 'gin'], [/\b(champagne|bubbels)/, 'drankje', 'champagne'], [/\b(drank|borrel|cocktail)/, 'drankje'],
     [/\b(parfum|geur|make-?up|verzorging|beauty|wellness|verwennen|skincare)/, 'verzorging'],
-    [/\b(sieraad|sieraden|ketting|armband|ring|oorbel)/, 'mode'], [/\b(mode|kleding|tas|tassen|horloge)/, 'mode'],
+    [/\b(sieraad|sieraden|ketting|armband|ring|oorbel|horloge)/, 'sieraden'], [/\b(mode|kleding|tas|tassen|schoenen|sjaal)/, 'mode'],
     [/\b(gamen|gamer|gaming|gamet|game|playstation|xbox|nintendo|switch|ps5|games)/, 'gamen'],
     [/\b(tech|techniek|gadget|computer|elektronica|telefoon|muziek luisteren|koptelefoon)/, 'techniek'], [/\b(fotografie|camera)/, 'techniek', 'camera'],
-    [/\b(lezen|leest|boek|boeken|lezer|lezeres)/, 'lezen'], [/\b(film|films|series)/, 'lezen', 'film'], [/\b(muziek|vinyl|lp)/, 'lezen', 'muziek'],
+    [/\b(lezen|leest|boek|boeken|lezer|lezeres)/, 'lezen'], [/\b(film|films|series)/, 'muziek', 'film'], [/\b(muziek|vinyl|lp|platenspeler)/, 'muziek'],
     [/\b(knutsel|tekenen|tekent|schilder|haken|breien|naaien|creatief|hobby)/, 'creatief'],
     [/\b(wonen|interieur|decoratie|kaarsen|planten)/, 'wonen'],
     [/\b(tuin|tuinier|moestuin|klussen|klusser|gereedschap)/, 'tuin'],
@@ -1295,14 +1291,14 @@
     var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
     var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
     /* Met een getypt woord is dat woord leidend; de interesse filtert dan niet nog eens. */
-    var hob = function (p) { return !hobby || watW.length > 0 || vonkHobby(p, hobby); };
+    /* Bij een interesse horen geen afscheids-, pensioen- of juf/meester-cadeaus (die zijn voor een ander moment). */
+    var hob = function (p) { return !hobby || watW.length > 0 || (vonkHobby(p, hobby) && !/afscheid|pensioen|\bjuf\b|meester|collega/i.test(p.titel || '')); };
     var lftZeker = function (p) { if (!lft) return true; var a = kindLeeftijd(p); return !!a && a[0] >= lft.van - 3; };
     return { past: past, alle: alle, watW: watW, echt: echt, pastVoor: pastVoor, hob: hob, lftZeker: lftZeker,
       aantal: function () { return alle.filter(function (p) { return hob(p) && (pastVoor(p) || (p.voor || []).indexOf('iedereen') !== -1); }).length; } };
   }
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
-    vonkProef = q.proef === '1';
     var V = window.LK_VONK;
     var kind = q.voor === 'kind', lft = kind ? VONK_LEEFTIJD.filter(function (x) { return x.id === q.leeftijd; })[0] : null;
     var stap = !q.voor ? 1 : (kind && !lft) ? 1.5 : !q.moment ? 2 : !q.budget ? 3 : 4;
@@ -1360,11 +1356,24 @@
         while (bezig) { bezig = false; volgorde.forEach(function (c) { if (groep[c][rond]) { uit.push(groep[c][rond]); bezig = true; } }); rond++; }
         return uit;
       };
+      /* Punten (01-11-2026): hoe beter een cadeau past, hoe hoger het komt. Zoals grote cadeauzoekers het doen: budget is hard,
+         de rest telt op. Echt voor deze persoon gekozen +3, past bij het moment +2, gevraagde soort +2, onze favoriet +2, populair +1,
+         mooie sfeerfoto +1, past bij de hoogte van het budget +1 (geen cadeau van €3 bij 'tot €50'), nieuw +0,5. */
+      var budMax = prijsFilter(q.budget).max, soortKeus = q.soort && q.soort !== 'geen' ? q.soort : '';
+      var punten = function (p) {
+        var n = 0;
+        if (q.voor !== 'iedereen' && echt(p) === 0) n += 3;
+        if (q.moment !== 'iedereen' && (p.moment || []).indexOf(q.moment) !== -1) n += 2;
+        if (soortKeus && (p.soort || []).indexOf(soortKeus) !== -1) n += 2;
+        if (p.favoriet) n += 2; if (p.populair) n += 1; if (p.sfeer) n += 1;
+        if (isFinite(budMax) && budMax > 0 && p.prijs >= budMax * 0.35) n += 1;
+        if (p.nieuw) n += 0.5;
+        return n;
+      };
       var schud = function (lijst) {
-        if (!q.mix) return sorteer(lijst);
-        var fav = lijst.filter(function (p) { return p.favoriet || p.populair; }), rest = lijst.filter(function (p) { return !(p.favoriet || p.populair); });
-        var r = function (l) { return l.slice().sort(function (a, b) { return mixGetal(a.id + q.mix) - mixGetal(b.id + q.mix); }); };
-        return r(fav).concat(r(rest));
+        var basis = q.mix ? lijst.slice().sort(function (a, b) { return mixGetal(a.id + q.mix) - mixGetal(b.id + q.mix); }) : sorteer(lijst);
+        /* stabiel: eerst op punten, bij gelijke punten de volgorde van hierboven */
+        return basis.map(function (p, i) { return [p, i, punten(p)]; }).sort(function (a, b) { return b[2] - a[2] || a[1] - b[1]; }).map(function (x) { return x[0]; });
       };
       var soortEerst = function (l) { if (!q.soort) return l; return l.filter(function (p) { return (p.soort || []).indexOf(q.soort) !== -1; }).concat(l.filter(function (p) { return (p.soort || []).indexOf(q.soort) === -1; })); };
       var groep = function (lijst) { return soortEerst(daisyconLaag(spreid(schud(lijst)))); };
@@ -1491,17 +1500,19 @@
       /* Idee van Nova (01-11-2026): na de zes de vraag 'waar houdt hij/zij van?'. Alleen interesses die echt cadeaus opleveren. */
       var persoonlijker = '';
       /* 01-11-2026 22:55: op wens van Marius/Nova voorlopig UIT (te groot, resultaten pasten niet). Nieuwe compacte versie eerst op de testversie. */
-      /* Proefversie: één kleine knop 'Zoek persoonlijkere cadeaus'; tik = klein lijstje interesses (alleen waar echt genoeg cadeaus achter zitten). */
-      if (vonkProef && zes.length && !q.wat) {
+      /* 'Nog persoonlijker' (01-11-2026, idee Nova; compact op wens van Marius): één regel met een keuzelijstje.
+         Alleen interesses waar binnen deze keuzes minstens 6 cadeaus achter zitten. Kiezen = nieuwe zes, en naar boven. */
+      if (zes.length && !q.wat) {
         var telH = function (id) { var B2 = vonkBasis(q, lft, id); return B2.alle.filter(function (p) { return B2.hob(p) && (B2.pastVoor(p) || (p.voor || []).indexOf('iedereen') !== -1); }).length; };
-        var hobbies = VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')) && h.id !== hobby && telH(h.id) >= 6; });
-        if (hobbies.length) persoonlijker = '<details class="vonk-pers"><summary>' + ic('vonk') + (hobby ? ' Andere interesse kiezen' : ' Zoek persoonlijkere cadeaus') + '</summary>' +
-          '<p>Waar houdt ' + hijZij + ' van?</p><div class="vonk-pers-keuzes">' +
-          hobbies.map(function (h) { return '<a class="chip" href="' + adres({ hobby: h.id, wat: null, zin: null }) + '">' + esc(h.label) + '</a>'; }).join('') +
-          '</div></details>';
+        var hobbies = VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')) && telH(h.id) >= 6; });
+        if (hobbies.length) persoonlijker = '<div class="vonk-pers">' + ic('vonk') + '<label><span>Nog persoonlijker? Waar houdt ' + hijZij + ' van?</span>' +
+          '<select data-vonk-hobby="' + esc(adres({ hobby: '__H__', wat: null, zin: null })) + '">' +
+          '<option value="">' + (hobby ? 'Alle interesses' : 'Kies een interesse') + '</option>' +
+          hobbies.map(function (h) { return '<option value="' + h.id + '"' + (h.id === hobby ? ' selected' : '') + '>' + esc(h.label) + '</option>'; }).join('') +
+          '</select></label></div>';
       }
-      /* Proefversie: weinig cadeaus bij deze interesse? Eerlijk zeggen, niet aanvullen met iets anders. */
-      var weinigH = vonkProef && hobby && !q.wat && alles.length < 6 ? '<p class="vonk-begreep">Bij <strong>' + esc(label(VONK_HOBBY, hobby)) + '</strong> vonden we binnen je keuzes ' + (alles.length === 1 ? '1 cadeau' : alles.length + ' cadeaus') + '. <a href="' + adres({ hobby: null }) + '">Interesse weghalen</a></p>' : '';
+      /* Weinig cadeaus bij deze interesse? Eerlijk zeggen, niet aanvullen met iets anders. */
+      var weinigH = hobby && !q.wat && alles.length < 6 ? '<p class="vonk-begreep">Bij <strong>' + esc(label(VONK_HOBBY, hobby)) + '</strong> vonden we binnen je keuzes ' + (alles.length === 1 ? '1 cadeau' : alles.length + ' cadeaus') + '. <a href="' + adres({ hobby: null }) + '">Interesse weghalen</a></p>' : '';
       inhoud = '<div class="vonk-uitslag">' +
         '<div class="vonk-balk"><div class="vonk-balk-labels">' + balkLabels + '</div>' +
           '<button class="vonk-aanpassen" type="button" data-filter-open>' + ic('filter') + ' Aanpassen</button></div>' +
@@ -2398,7 +2409,7 @@
       } else window.scrollTo(0, 0);
       if (vorigPad !== null) app.focus({ preventScroll: true });
     }
-    if (d[0] === 'vonk' && a.pad === vorigPad && location.search !== vorigeVonk && !hersteld && /(^|[?&])proef=1/.test(location.search)) {
+    if (d[0] === 'vonk' && a.pad === vorigPad && location.search !== vorigeVonk && !hersteld) {
       var rustigV = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top: 0, behavior: rustigV ? 'auto' : 'smooth' });
     }
@@ -2694,6 +2705,11 @@
     ga('/p/' + keus[Math.floor(Math.random() * keus.length)]);
   });
   document.addEventListener('change', function (e) {
+    if (e.target.matches('[data-vonk-hobby]')) {
+      var hb = e.target.getAttribute('data-vonk-hobby'), hv = e.target.value;
+      ga(hv ? hb.replace('__H__', encodeURIComponent(hv)) : hb.replace(/[?&]hobby=__H__/, function (m) { return m.charAt(0) === '?' ? '?' : ''; }).replace(/\?&/, '?').replace(/\?$/, ''));
+      return;
+    }
     if (e.target.matches('[data-sorteer]')) {
       var basis = e.target.getAttribute('data-sorteer'), v = e.target.value;
       ga(v === 'aanbevolen' ? basis : basis + (basis.indexOf('?') === -1 ? '?' : '&') + 'sort=' + v, true);
