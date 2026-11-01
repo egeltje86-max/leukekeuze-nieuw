@@ -52,7 +52,8 @@ window.LK_INSTELLINGEN = {
     ids: ['amz-b0hp27j6v7', 'amz-b0hmfl96b8', 'amz-b0hky1v4y9', 'amz-b0hmjp8cbl', 'amz-b0hmfl6pg4', 'amz-b0hn1xkg2s', 'amz-b0hl242jc8'] },
   /* Etalage op de homepage: een rij uitgekozen producten. Leeg laten (ids: []) om te verbergen. */
   etalage: { titel: 'Proost! Topflessen voor de feestdagen', naar: '/c/dranken', knop: 'Alle dranken',
-    ids: ['dc-2468345961', 'dc-1665638250', 'dc-2518147005', 'dc-1652149584', 'dc-1141534911', 'dc-1159542840', 'dc-2491446455', 'dc-1090238013', 'dc-391537950', 'dc-1096238052'] }
+    /* 01-11-2026: Decantalo (Daisycon, nu op pauze) vervangen door flessen van Wijny (TradeTracker, verdient wel). Oude rij: dc-2468345961, dc-1665638250, dc-2518147005, dc-1652149584, dc-1141534911, dc-1159542840, dc-2491446455, dc-1090238013, dc-391537950, dc-1096238052 */
+    ids: ['wny-9705', 'wny-13475', 'wny-9732', 'wny-12118', 'wny-9734', 'wny-16957', 'wny-11691', 'wny-10932', 'wny-13927', 'wny-9634'] }
 };
 
 /* Afbeeldingen: laat leeg ('') als Nova ze nog niet heeft gemaakt.
