@@ -26,13 +26,26 @@ NIET_SIERAAD = re.compile(r'smart ring|ringenspel|werpspel|basketbal|vlieger|map
 GROF = re.compile(r'fuck|\bkut\b|kutje|\blul\b|piemel|penis|tieten|borsten|\bsex\b|seks|vibrator|dildo|condoom|mankini|erotisch|bdsm|stripper|\bporn', re.I)
 # Kinderspullen die wel in volwassen groepen mogen als het vak er duidelijk over gaat (kinderschoenen, kinderhorloge...).
 KINDVAK = re.compile(r'kind|baby|tiener|knuffel|speel|lego|puzzel|spel', re.I)
+# 1-11-2026: alleen gekeurde producten tonen. De feeds veranderen elke dag; een nieuw product (nog niet bekeken)
+# gaat eerst naar de wachtrij assets/zoek/w/_wacht.json (zo neemt de nachtelijke run op de laptop hem vanzelf mee) en komt pas op de site als het is goedgekeurd
+# (scripts/zoek-goed.json). Afgekeurd staat in scripts/zoek-uitsluiten.json. Keuren: scripts/zoek-keuring.py.
+def lees(naam, leeg):
+    try: return json.load(open(os.path.join(ROOT, 'scripts', naam), encoding='utf-8'))
+    except FileNotFoundError: return leeg
 def uitsluiten():
     try: return json.load(open(os.path.join(ROOT, 'scripts', 'zoek-uitsluiten.json'), encoding='utf-8'))
     except FileNotFoundError: return {}
 def schoon(map_=None):
     map_ = map_ or os.path.join(ROOT, 'assets', 'zoek', 'w')
     U = uitsluiten(); weg = 0; totaal = 0; leeg = []
+    GOED = lees('zoek-goed.json', None)  # None = nog geen keuring: alles tonen wat door de regels komt
+    goed = {k: set(t.lower() for t in v) for k, v in (GOED or {}).items()}
+    WF = os.path.join(map_, '_wacht.json')
+    try: WACHT = json.load(open(WF, encoding='utf-8'))
+    except FileNotFoundError: WACHT = {}
+    nwacht = 0
     for f in sorted(glob.glob(os.path.join(map_, '*.json'))):
+        if os.path.basename(f).startswith('_'): continue
         k = os.path.basename(f)[:-5].replace('--', '/'); g = k.split('/')[0]
         j = json.load(open(f, encoding='utf-8')); W = j['winkels']
         blok = set(t.lower() for t in U.get(k, [])) | set(t.lower() for t in U.get('*', []))
@@ -49,10 +62,22 @@ def schoon(map_=None):
             if g == 'sieraden' and (NIET_SIERAAD.search(p[0]) or not SIERAAD.search(tekst)): slecht = ['geen-sieraad']
             if GROF.search(p[0]): slecht = ['grof']
             if slecht or p[0].lower() in blok: weg += 1; continue
+            if GOED is not None and p[0].lower() not in goed.get(k, ()):
+                rij = list(p); rij[2] = W[p[2]]['naam']  # winkelnaam i.p.v. nummer, zodat de rij later terug kan
+                lijst = WACHT.setdefault(k, [])
+                if all(r[0].lower() != p[0].lower() for r in lijst): lijst.append(rij); nwacht += 1
+                continue
             hou.append(p)
         totaal += len(hou)
         if not hou: os.remove(f); leeg.append(k); continue
         j['producten'] = hou
         json.dump(j, open(f, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
-    print('zoek-schoonmaak: %d weggehaald, %d over, lege vakjes weg: %s' % (weg, totaal, leeg))
+    if GOED is not None:
+        # wat inmiddels goed- of afgekeurd is hoort niet meer in de wachtrij
+        for k in list(WACHT):
+            bl = set(t.lower() for t in U.get(k, [])); gd = goed.get(k, set())
+            WACHT[k] = [r for r in WACHT[k] if r[0].lower() not in bl and r[0].lower() not in gd]
+            if not WACHT[k]: del WACHT[k]
+        json.dump(WACHT, open(WF, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    print('zoek-schoonmaak: %d weggehaald, %d over, %d nieuw in de wachtrij (%d totaal), lege vakjes weg: %s' % (weg, totaal, nwacht, sum(len(v) for v in WACHT.values()), leeg))
 if __name__ == '__main__': schoon()
