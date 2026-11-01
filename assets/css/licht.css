@@ -348,3 +348,30 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 @media (max-width: 759px) { .budget-rij { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 600px) { .persoon-subs.home.gelegenheden { grid-template-columns: repeat(4, 1fr); } }
 @media (min-width: 1024px) { .persoon-subs.home.gelegenheden { grid-template-columns: repeat(8, 1fr); } .persoon-subs.home.gelegenheden .subkaart .rond { width: 104px; height: 104px; } }
+/* VONK 2.0 (01-11-2026) */
+.vonk-uitslag { position: relative; }
+.vonk-wijzig { display: inline-flex; align-items: center; gap: 4px; }
+.vonk-wijzig svg { width: 12px; height: 12px; opacity: .7; }
+.vonk-budget { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.vonk-budget > span { font-weight: 700; font-size: 14px; color: #8A6A2A; }
+.vonk-budget .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.vonk-toover { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 18px 0 14px; }
+.vonk-toover .vonk-noot { margin: 0; }
+.vonk-toover .knop { display: inline-flex; align-items: center; gap: 8px; }
+.vonk-toover .knop svg { width: 18px; height: 18px; }
+.keuze.keuze-over { background: transparent; border-style: dashed; }
+.vonk-fonkel { position: absolute; inset: -10px 0 auto 0; height: 220px; pointer-events: none; z-index: 2; }
+.vonk-fonkel i { position: absolute; width: 14px; height: 14px; background: radial-gradient(circle, #FFF6D8 0%, #F2CB74 40%, rgba(217,168,72,0) 70%); border-radius: 50%; opacity: 0; animation: vonkFonkel .9s ease-out forwards; }
+.vonk-fonkel i::before, .vonk-fonkel i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 28px; height: 2px; margin: -1px 0 0 -14px; background: linear-gradient(90deg, transparent, #F2CB74, transparent); }
+.vonk-fonkel i::after { transform: rotate(90deg); }
+.vonk-fonkel i:nth-child(1) { left: 8%; top: 30%; animation-delay: 0s; }
+.vonk-fonkel i:nth-child(2) { left: 24%; top: 8%; animation-delay: .08s; }
+.vonk-fonkel i:nth-child(3) { left: 42%; top: 40%; animation-delay: .16s; }
+.vonk-fonkel i:nth-child(4) { left: 58%; top: 12%; animation-delay: .04s; }
+.vonk-fonkel i:nth-child(5) { left: 74%; top: 36%; animation-delay: .12s; }
+.vonk-fonkel i:nth-child(6) { left: 88%; top: 6%; animation-delay: .2s; }
+.vonk-fonkel i:nth-child(7) { left: 33%; top: 70%; animation-delay: .24s; }
+@keyframes vonkFonkel { 0% { opacity: 0; transform: scale(.2) rotate(0deg); } 40% { opacity: 1; transform: scale(1.2) rotate(45deg); } 100% { opacity: 0; transform: scale(.6) rotate(90deg); } }
+.vonk-resultaat { animation: vonkIn .5s ease-out .15s both; }
+@keyframes vonkIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .vonk-fonkel { display: none; } .vonk-resultaat { animation: none; } }
