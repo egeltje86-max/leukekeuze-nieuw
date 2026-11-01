@@ -433,3 +433,32 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 @media (max-width: 759px) { .vonk-kaart.vonk-groot.vonk-home .knop { grid-column: auto; } .vonk-home-icoon { width: 52px; height: 52px; } }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 @media (max-width: 480px) { .vonk-typ input { padding: 0 12px; } .vonk-typ input::placeholder { font-size: 14px; } }
+/* VONK-uitslag compact (01-11-2026): smalle balk met keuzes, 'Aanpassen'-paneel, cadeaus direct eronder */
+.vonk-pagina-uitslag { padding-top: 0; }
+.vonk-balk { position: sticky; top: var(--header-h, 64px); z-index: 30; display: flex; align-items: center; gap: 10px; margin: 0 -16px; padding: 10px 16px; background: rgba(247,242,233,.96); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(184,134,46,.2); }
+.vonk-balk-labels { flex: 1; min-width: 0; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); padding-right: 18px; }
+.vonk-balk-labels::-webkit-scrollbar { display: none; }
+.vlabel { flex: none; display: inline-flex; align-items: center; height: 32px; border-radius: 16px; background: #011950; color: #F4ECDD; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.vlabel button { all: unset; cursor: pointer; padding: 0 12px; height: 32px; display: inline-flex; align-items: center; }
+.vlabel-weg { display: inline-grid; place-items: center; width: 26px; height: 32px; margin-left: -6px; color: #E8C67A; }
+.vlabel-weg svg { width: 13px; height: 13px; }
+.vonk-aanpassen { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 17px; border: 1.5px solid #B8862E; background: #fff; color: #141A2A; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+.vonk-aanpassen svg { width: 15px; height: 15px; }
+.vonk-titel { font-family: var(--f-kop); font-weight: 500; font-size: 22px; margin: 16px 0 4px; }
+@media (min-width: 760px) { .vonk-titel { font-size: 28px; } .vonk-balk { margin: 0; padding: 10px 0; } }
+.vonk-uitslag .vonk-begreep { margin: 2px 0 6px; font-size: 13.5px; }
+.vonk-zes { margin-top: 10px; }
+/* Het paneel ook op de computer (de gewone filterknop is daar verborgen) */
+.filterpaneel.vonk-paneel:not([hidden]) { display: block !important; }
+@media (min-width: 1024px) { .vonk-paneel .filter-blad { left: 50%; right: auto; width: 560px; transform: translate(-50%, 100%); border-radius: 18px 18px 0 0; } .vonk-paneel.open .filter-blad { transform: translate(-50%, 0); } }
+.vonk-paneel .vonk-typ { margin: 4px 0 2px; }
+.vonk-paneel .vonk-typ label { font-size: 14px; }
+.vonk-paneel-voet { position: sticky; bottom: 0; display: flex; gap: 10px; padding: 14px 0 6px; background: #fff; margin-top: 10px; }
+.vonk-paneel-voet .knop { flex: 1; justify-content: center; }
+.vonk-leeg { margin: 18px 0; padding: 22px 18px; border-radius: 16px; background: #fff; border: 1px solid rgba(184,134,46,.25); text-align: center; }
+.vonk-leeg h2 { font-family: var(--f-kop); font-weight: 500; font-size: 24px; margin: 0 0 8px; }
+.vonk-leeg p { margin: 0 0 10px; color: #5A5040; }
+.vonk-leeg .chips { justify-content: center; flex-wrap: wrap; }
+.vonk-leeg .chip small { opacity: .7; }
+.vonk-paneel .filter-blad { padding-bottom: 0; } .vonk-paneel-voet { padding-bottom: calc(14px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 16px -10px rgba(0,0,0,.15); }
+.vonk-meer-tips { flex-wrap: wrap; gap: 6px; margin: 4px 0 4px; } .vonk-meer-tips .chip small { opacity: .7; }
