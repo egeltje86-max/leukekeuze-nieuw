@@ -859,7 +859,7 @@ window.LK_GELEGENHEDEN_NU = function () {
 /* Collecties: dwars door alle groepen heen, in de volgorde van zoeken. */
 window.LK_COLLECTIES = [
   { slug: 'toppers-van-nu', naam: 'Toppers van nu', kicker: 'Hits van dit najaar', beeld: 'images/collecties/toppers-van-nu-rond.webp', seoTitel: 'Populaire cadeaus 2026 – de toppers van nu',
-    tekst: 'De cadeaus waar iedereen het nu over heeft: LEGO Pokémon, KPop Demon Hunters, Hitster, Squishmallows, Marshall-speakers en meer.', vakken: ['tag:toppers'] },
+    tekst: 'Alleen de echte hits van nu: LEGO Pokémon, KPop Demon Hunters, Hitster, Pokémon-kaarten, Tamagotchi, Switch 2, Squishmallows en meer.', vakken: ['tag:toppers'] },
   { slug: 'cadeaubonnen', naam: 'Cadeaubonnen', kicker: 'Altijd goed', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp', seoTitel: 'Cadeaubon en cadeaukaart – laat ze zelf kiezen',
     tekst: 'Twijfel je? Met een cadeaubon of cadeaukaart kiezen ze zelf.', vakken: ['tag:cadeaubon', 'boeken-media/boekenbonnen-abonnementen'] },
   { slug: 'persoonlijke-cadeaus', naam: 'Persoonlijke cadeaus', kicker: 'Met naam of eigen tekst', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', seoTitel: 'Persoonlijke cadeaus met naam – gepersonaliseerde cadeaus',
