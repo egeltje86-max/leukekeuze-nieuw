@@ -1481,7 +1481,8 @@
       var mq = Object.assign({}, q); mq.mix = String((parseInt(q.mix, 10) || 0) + 1); delete mq.zes;
       /* Idee van Nova (01-11-2026): na de zes de vraag 'waar houdt hij/zij van?'. Alleen interesses die echt cadeaus opleveren. */
       var persoonlijker = '';
-      if (zes.length && !q.wat) {
+      /* 01-11-2026 22:55: op wens van Marius/Nova voorlopig UIT (te groot, resultaten pasten niet). Nieuwe compacte versie eerst op de testversie. */
+      if (false && zes.length && !q.wat) {
         var hobbies = VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')) && h.id !== hobby && vonkBasis(q, lft, h.id).aantal() >= 6; });
         if (hobbies.length) persoonlijker = '<section class="vonk-persoonlijk"><h2>' + ic('vonk') + ' Wil je nog persoonlijkere cadeaus vinden?</h2>' +
           '<p>' + (hobby ? 'Kies een andere interesse, of ' : 'Vertel VONK ') + 'waar ' + hijZij + ' van houdt. Dan zoekt VONK cadeaus die daar echt bij passen.</p>' +
