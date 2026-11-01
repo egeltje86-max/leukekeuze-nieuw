@@ -876,7 +876,9 @@
     var extra = (p.ookIn || []).map(function (x) { var d = x.split('/'); var cc = window.LK_CAT(d[0]); var ss = window.LK_SUB(cc, d[1]); return ss ? ss.naam : ''; });
     var syn = (p.voor || []).concat(p.moment || []).map(function (x) { return SYN[x] || ''; });
     var subsyn = [p.cat + '/' + p.sub].concat(p.ookIn || []).map(function (x) { return SUBSYN[x] || ''; });
-    return [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), subsyn.join(' '), p.zoek || ''].join(' ').toLowerCase();
+    var t = [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), subsyn.join(' '), p.zoek || ''].join(' ').toLowerCase();
+    /* Afkortingen die mensen intypen: 'ps5' vindt ook 'PlayStation 5', 'ps4' ook 'PlayStation 4'. */
+    return t + (/playstation\s*5/.test(t) ? ' ps5' : '') + (/playstation\s*4/.test(t) ? ' ps4' : '');
   }
   /* Hoofdletters en accenten maken niet uit: 'cafe' vindt ook 'café'. */
   function vouw(s) { s = String(s || '').toLowerCase(); return s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : s; }
