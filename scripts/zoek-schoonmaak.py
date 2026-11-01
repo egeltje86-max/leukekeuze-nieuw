@@ -55,6 +55,8 @@ def schoon(map_=None):
             # Zelfde product in een andere maat (Mendes '...-20mm', '...-17'): maar één keer tonen.
             sleutel = re.sub(r'[-\s]+\d+([.,]\d+)?\s*(mm|cm)?$', '', p[0].lower()).strip()
             if sleutel in gezien: weg += 1; continue
+            # Geen echte foto (bijv. '.../imagestore/product//'): niet tonen, anders een kapot plaatje (check-up 1-11-2026).
+            if not p[4] or str(p[4]).rstrip().endswith('/'): weg += 1; continue
             gezien.add(sleutel)
             tekst = p[0] + ' ' + (p[5] or '')
             slecht = [d for d, rx in DX.items() if rx.search(tekst) and d not in mag]
