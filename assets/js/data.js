@@ -811,10 +811,10 @@ var LK_ALLE_GROEPEN = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektron
 window.LK_GELEGENHEDEN = [
   { slug: 'moederdag', seizoen: ['04-10', '05-12'], uit: LK_GEEN_FEEST, naam: 'Moederdag', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', seoTitel: 'Moederdagcadeau – de mooiste cadeaus voor Moederdag',
     tekst: 'Iets moois voor mama: sieraden, geuren, iets lekkers of iets met haar naam erop.',
-    labels: ['haar'], vakken: ['sieraden', 'geuren-verzorging', 'wonen/kaarsen', 'wonen/huisgeuren', 'wonen/wanddecoratie', 'wonen/kussens-plaids', 'wonen/vazen-bloemen', 'keuken/koffie-thee', 'keuken/glazen-servies', 'dranken/champagne-bubbels', 'dranken/wijn-port', 'eten-drinken/chocolade', 'eten-drinken/delicatessen', 'eten-drinken/koffie-thee', 'cadeaus/met-naam', 'boeken-media/thrillers-romans', 'hobby'] },
+    labels: ['haar'], vakken: ['tag:moederdag'] /* 1-11-2026 streng: 168 gekeurde cadeaus */ },
   { slug: 'vaderdag', seizoen: ['05-20', '06-21'], uit: LK_GEEN_FEEST, naam: 'Vaderdag', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', seoTitel: 'Vaderdagcadeau – de leukste cadeaus voor Vaderdag',
     tekst: 'Voor papa: een goede fles, iets voor de BBQ, een gadget of een horloge.',
-    labels: ['hem'], vakken: ['dranken', 'eten-drinken/bbq-sauzen', 'tuin-klussen', 'elektronica', 'sieraden/horloges', 'geuren-verzorging', 'metaaldetectie', 'sport-outdoor', 'cadeaus/met-naam', 'tag:zakmes'] },
+    labels: ['hem'], vakken: ['tag:vaderdag'] /* 1-11-2026 streng: 179 gekeurde cadeaus */ },
   { slug: 'kerst', seizoen: ['11-01', '12-26'], naam: 'Kerst', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
   { slug: 'geboorte', naam: 'Geboorte & kraam', naar: '/voor/baby', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
   { slug: 'valentijn', seizoen: ['01-15', '02-14'], naam: 'Liefde & Valentijn', naar: '/c/valentijn', beeld: 'images/sub/sub-valentijn-voor-haar.webp' },

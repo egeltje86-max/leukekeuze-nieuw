@@ -136,6 +136,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     return o;
   });
   const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
+  /* Stap 8 (1-11-2026): uitverkochte en weggehaalde producten krijgen geen 404, maar sturen door naar hun vakje (oude links, pins, Google). */
+  const weg = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => (p.status === 'uitverkocht' || p.status === 'afgekeurd') && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]));
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   const gezien = new Set(['/', '/categorieen/', '/lijst/']), rij = ['/', '/categorieen/', '/lijst/'], paginas = [];
@@ -227,6 +229,11 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   for (const [oudPad, nieuwPad] of Object.entries(vakVerhuis)) if (!VERHUISD[oudPad]) VERHUISD[oudPad] = nieuwPad;
   /* Samengevoegde producten (dubbel op de site): de oude productpagina stuurt door naar het product dat we hielden. */
   for (const [id, naar] of samen) if (!VERHUISD['p/' + id]) VERHUISD['p/' + id] = '/p/' + naar + '/';
+  for (const [id, c, sub] of weg) {
+    if (VERHUISD['p/' + id]) continue;
+    const vak = 'c/' + c + '/' + sub;
+    VERHUISD['p/' + id] = VERHUISD[vak] || (fs.existsSync(path.join(ROOT, vak, 'index.html')) ? '/' + vak + '/' : '/c/' + c + '/');
+  }
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
     const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad);

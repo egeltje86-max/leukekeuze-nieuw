@@ -5,6 +5,9 @@
    Een product kan 'vast' staan: zet dan "subVast": true in producten.js, dan blijft cat/sub zoals het staat. */
 /* Afscheid & pensioen (31-10-2026): woorden in titel of tekst, plus de producten uit de gidsen afscheidscadeau-collega en cadeau-voor-pensioen. */
 const AFSCHEID = /afscheid|pensioen|vaarwel|nieuwe baan|farewell|met vut|gepensioneerd/i;
+/* 1-11-2026: Moederdag en Vaderdag streng nagelopen (bij twijfel weg); alleen deze producten staan op die pagina's. */
+const FEEST_IDS = require('./feest-ids.json');
+const MOEDERDAG_IDS = new Set(FEEST_IDS.moederdag), VADERDAG_IDS = new Set(FEEST_IDS.vaderdag);
 const AFSCHEID_IDS = new Set(["amz-9465708399", "amz-b0b3tdry1m", "amz-b0cnkf8w3q", "amz-b0d95l6674", "amz-b0g3hmpmjf", "amz-b0hgq4q3pd", "bol-9200000010409823", "bol-9200000018494649", "bol-9200000064944767", "bol-9200000075382464", "bol-9300000007378766", "bol-9300000039415364", "bol-9300000057830180", "bol-9300000141326647", "bol-9300000171232502", "bol-9300000174098365", "bol-9300000234965416", "bol-9300000238049219", "bol-9300000242745735", "bol-9300000242918318", "bol-9300000256133316", "bol-9300000385427142", "cadeau-78a0e6aecb", "dvzn-452003", "dvzn-542206", "dvzn-734300", "dvzn-847923"]);
 
 /* Per productgroep: de vakjes in volgorde van belangrijkheid bij het kiezen (niet de volgorde op de site).
@@ -459,6 +462,8 @@ function deel(p0) {
   /* Overige gelegenheden. */
   if (/housewarming|nieuwe woning|nieuw huis|nieuwe huis|verhuiz|thuis\b|home sweet home/i.test(titel)) tags.add('housewarming');
   if (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id)) tags.add('afscheid');
+  if (MOEDERDAG_IDS.has(p.id)) tags.add('moederdag');
+  if (VADERDAG_IDS.has(p.id)) tags.add('vaderdag');
   if (/\bjuf\b|meester|leerkracht|leraar|lerares|juffrouw|onderwijzer|einde schooljaar|schoolverlater|\bteacher/i.test(titel)) tags.add('juf-meester');
   /* 31-10-2026: juf & meester = kleine bedankjes (tot €20): bedankt-cadeaus, chocolade, koekjes, plantjes/zaadjes door de brievenbus en kleine geurkaarsen. */
   if (p.prijs <= 20 && (/bedankt|dankjewel|dank je wel|thank you|\bmerci\b/i.test(titel) || /^eten-drinken\/(chocolade|koekjes-stroopwafels)$/.test(p.cat + '/' + p.sub) ||
