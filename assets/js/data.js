@@ -96,7 +96,7 @@ window.LK_WINKELS = [
 window.LK_CATEGORIEEN = [
   { slug: 'cadeaus', naam: 'Cadeaus', kort: 'Cadeaus', icoon: 'cadeau',
     tekst: 'Voor elke gelegenheid een bijzonder cadeau.',
-    tegel: 'images/categorieen/categorie-cadeaus-gw.webp', banner: 'images/banners/banner-cat-cadeaus.webp',
+    tegel: 'images/categorieen/categorie-cadeaus-gw.webp', banner: 'images/banners/banner-cat-cadeaus-gw.webp',
     subs: [
       { slug: 'voor-haar', naam: 'Voor haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp' },
       { slug: 'voor-hem', naam: 'Voor hem', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp' },
@@ -615,7 +615,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   /* Geuren & Verzorging: eigen groep. */
   var mb = cat('mode-beauty');
   C.splice(C.indexOf(mb), 0, { slug: 'geuren-verzorging', naam: 'Geuren & Verzorging', kort: 'Geuren & Verzorging', icoon: 'tas',
-    tekst: 'Parfum, aftershave en verzorging om cadeau te geven.', tegel: 'images/categorieen/categorie-geuren-verzorging.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'],
+    tekst: 'Parfum, aftershave en verzorging om cadeau te geven.', tegel: 'images/categorieen/categorie-geuren-verzorging-gw.webp', vakken: ['mode-beauty/geuren', 'mode-beauty/verzorging'],
     subs: [{ slug: 'geuren', naam: 'Geuren', beeld: 'images/sub/sub-mode-beauty-geuren.webp', vak: 'mode-beauty/geuren' }, { slug: 'verzorging', naam: 'Verzorging', beeld: 'images/sub/sub-mode-beauty-verzorging.webp', vak: 'mode-beauty/verzorging' }] });
   /* Mode & Accessoires: wat overblijft van Mode & Beauty. Horloges, geuren en verzorging blijven bereikbaar, maar staan niet meer in het rijtje. */
   hernoem('mode-beauty', 'Mode & Accessoires'); mb.tekst = 'Tassen, schoenen, kleding en accessoires.'; mb.tegel = 'images/categorieen/categorie-mode-beauty-gw.webp';
@@ -924,4 +924,8 @@ window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find
   var D = (window.LK_CATEGORIEEN || []).find(function (x) { return x.slug === 'dieren'; }); if (D) D.tegel = 'images/categorieen/categorie-dieren-gw.webp';
   lijst(window.LK_PERSONEN, 'kinderen', S('voor-kinderen'));
   vak('cadeaus', 'voor-kinderen', S('voor-kinderen'));
+  /* 1-11-2026: Baby & kraam-vakjes van Nova */
+  function psub(p, slug, b) { var P = (window.LK_PERSONEN || []).find(function (x) { return x.slug === p; }); var x = P && (P.subs || []).find(function (y) { return y.slug === slug; }); if (x) x.beeld = b; }
+  psub('baby', 'kraamcadeaus', S('voor-baby-kraamcadeaus'));
+  psub('baby', 'babyshower', S('voor-baby-babyshower'));
 })();
