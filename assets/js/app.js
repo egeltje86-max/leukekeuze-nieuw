@@ -1359,12 +1359,22 @@
     var inhoud = '';
     if (stap === 1) inhoud = '<div class="vonk-vraag"><h2>Voor wie zoek je iets?</h2><div class="keuzes">' + V.wie.map(function (o) {
         var nq = { wie: o.id, voor: o.voor }; if (o.g) nq.g = o.g; if (o.leeftijd) nq.leeftijd = o.leeftijd; if (o.moment) nq.moment = o.moment;
+        if (o.id === 'baby') nq.hobby = 'geen';   /* een baby heeft nog geen hobby: die vraag slaan we over */
         return '<a class="keuze" href="' + maakAdres('/vonk', nq) + '">' + esc(o.label) + '</a>';
       }).join('') + '</div></div>' +
       '<p class="vonk-tip">' + ic('zoek') + ' Liever typen? Gebruik de zoekbalk bovenaan, bijv. <em>vader die vist, max €40</em>.</p>';
     if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
     var isHaar = q.voor === 'haar' || q.g === 'haar', isHem = q.voor === 'hem' || q.g === 'hem';
-    if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment.filter(function (o) { return !(o.id === 'vaderdag' && isHaar) && !(o.id === 'moederdag' && isHem) && !((o.id === 'valentijn' || o.id === 'jubileum' || o.id === 'housewarming' || o.id === 'afscheid') && (kind || q.voor === 'tiener')); }), 'moment', function (o) { return o.id === 'iedereen' ? null : tel({ moment: o.id }); });
+    if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment.filter(function (o) {
+      var jong = kind || q.voor === 'tiener';
+      if (o.id === 'vaderdag') return !isHaar && !jong && q.voor !== 'collega';
+      if (o.id === 'moederdag') return !isHem && !jong && q.voor !== 'collega';
+      if (o.id === 'valentijn') return !jong && q.voor !== 'collega';
+      if (o.id === 'jubileum' || o.id === 'housewarming' || o.id === 'afscheid') return !jong;
+      /* Geboorte: voor de baby zelf, de nieuwe moeder, een collega met verlof of 'iemand anders' */
+      if (o.id === 'geboorte') return q.wie === 'baby' || (kind && q.leeftijd === '0-2') || q.voor === 'collega' || q.voor === 'iedereen' || q.voor === 'haar';
+      return true;
+    }), 'moment', function (o) { return o.id === 'iedereen' ? null : tel({ moment: o.id }); });
     if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget', function (o) { return o.id === 'geen' ? null : tel({ budget: o.id }); });
     if (stap === 4) inhoud = vraag('Waar houdt ' + hijZij + ' van?', VONK_HOBBY.filter(function (h) { return !(h.id === 'drankje' && (kind || q.voor === 'tiener')); }).concat([{ id: 'geen', label: 'Weet ik niet' }]), 'hobby',
       function (o) { return o.id === 'geen' ? null : tel({ hobby: o.id }); }) + '<p class="vonk-tip">Twijfel je? Kies <strong>Weet ik niet</strong>, dan kijkt VONK overal.</p>';
