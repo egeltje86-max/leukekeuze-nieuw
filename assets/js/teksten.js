@@ -14,7 +14,7 @@ window.LK_TEKSTEN = {
     seoTitel: 'Cadeaus voor elke gelegenheid, met de hand gekozen',
     seoTekst: 'Op zoek naar een leuk cadeau? Cadeaus voor haar, hem, kinderen, opa en oma en collega\'s. Voor Sinterklaas, Kerst, verjaardagen en kraamvisite. Met de hand gekozen.',
     gids: [
-      { kop: 'Zo vind je snel een cadeau', tekst: 'Kies hierboven voor wie je iets zoekt, of voor welke gelegenheid. Met de prijsknoppen zie je alleen cadeaus binnen je budget. Weet je het echt niet? Probeer VONK: drie vragen en je krijgt passende ideeën.' },
+      { kop: 'Zo vind je snel een cadeau', tekst: 'Kies hierboven voor wie je iets zoekt, of voor welke gelegenheid. Met de prijsknoppen zie je alleen cadeaus binnen je budget. Weet je het echt niet? Probeer VONK: een paar korte vragen en je krijgt passende ideeën.' },
       { kop: 'Waar komen deze cadeaus vandaan?', tekst: 'Alles op deze pagina is met de hand gekozen uit het aanbod van bekende winkels zoals bol. Je bestelt en betaalt bij de winkel zelf, met hun bezorging en garantie. Wij krijgen soms een kleine vergoeding; jij betaalt niets extra.' }
     ] },
   'cadeaus/voor-haar': {

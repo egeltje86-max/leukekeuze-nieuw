@@ -17,7 +17,7 @@ Niets van de oude site overgenomen. **Status: klaar voor livegang (GO van Marius
 | `#/c/cadeaus/voor-haar` | Subcategorie |
 | `#/p/vb-01` | Productpagina |
 | `#/zoek?q=kaars` | Zoeken |
-| `#/vonk` | VONK cadeauzoeker (3 vragen) |
+| `#/vonk` | VONK cadeauzoeker (wie, moment, budget, interesse, soort) |
 | `#/favorieten` | Bewaarde producten (hartje) |
 | `#/info/...` | Hoe werkt het, Over ons, Contact, Privacy, Disclaimer |
 
@@ -311,3 +311,4 @@ Tot een plaatje er is, toont de site een gouden icoon. Plaatje toevoegen = besta
 - Kleurkeuzes (01-11-2026, wens Marius): 17 producten uit ronde 177 kregen kleurvarianten (Casio/G-Shock, New Balance 530/574, Bose, Sony ULT, Sonos, Fellow, Marshall Acton III). 32 extra kleuren, allemaal bol zakelijk of Fiftiesstore.
 - Ronde 178 (01-11-2026): groot HEMA-rondje, 157 producten gekozen op wat mensen zoeken bij HEMA (fototaart, warmtekussen, koffiebonen, kaarsen, pyjama, Takkie, koffers, fietstassen, Instax, Senseo, SodaStream, kerstdorp). 14 met kleurkeuze. De 'kruik van rvs' is eruit gehaald: op de foto is het een drinkfles. Goedgekeurd door Marius.
 - Ronde 179 (01-11-2026): 111 cadeaus voor collega's live na onderzoek naar wat mensen zoeken (afscheidscadeau collega 5.400x per maand). Collega-pagina's opnieuw ingedeeld: Afscheid & pensioen alleen echte afscheidscadeaus, Bedankje = lekker/bloemen/kaarsen/bedankt-tekst, Lootjes = leuke dingetjes tot €25. Handgekozen lijst in scripts/collega.json. 9 dubbele eruit. Goedgekeurd door Marius.
+- VONK 3.0 (01-11-2026, GO van Marius): 14 keuzes voor wie (partner, moeder, vader, vriend(in), baby, oma, opa, juf...), 15 momenten (ook Moederdag, Vaderdag, Valentijn, geboorte, geslaagd, afscheid, bedankje, beterschap, nieuw huis, bruiloft), 2 nieuwe vragen (waar houdt hij/zij van, wat voor cadeau), aantal cadeaus bij elk antwoord (lege antwoorden verborgen). Typen herkent de nieuwe momenten.
