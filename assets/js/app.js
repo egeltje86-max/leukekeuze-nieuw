@@ -278,11 +278,15 @@
 
       '<div class="binnen">' +
         /* VONK groot bovenaan (wens van Marius, 01-11-2026) */
-        '<a class="vonk-kaart vonk-groot" href="/vonk">' +
-          ic('vonk', 'staf') +
-          '<div><h2>Geen idee wat je moet geven?</h2><p>Beantwoord 3 vragen en <strong>VONK</strong> laat direct passende cadeaus zien.</p></div>' +
-          '<span class="knop knop-goud">Start VONK ' + ic('rechts') + '</span>' +
-        '</a>' +
+        /* VONK-blok met typveld (01-11-2026): typ je zin, of start met de 3 vragen. */
+        '<div class="vonk-kaart vonk-groot vonk-home">' +
+          '<img class="vonk-home-icoon" src="/images/vonk/vonk-icoon-klein.webp" alt="" width="64" height="64" decoding="async">' +
+          '<div class="vonk-home-tekst"><h2>Geen idee wat je moet geven?</h2><p>Typ wat je zoekt, of beantwoord 3 vragen. <strong>VONK</strong> laat direct passende cadeaus zien.</p></div>' +
+          '<form class="vonk-typ vonk-typ-home" data-vonk-typ role="search"><label class="sr-only" for="vonk-zin-home">Typ wat je zoekt</label>' +
+            '<div class="vonk-typ-rij"><input id="vonk-zin-home" type="text" autocomplete="off" placeholder="Bijv. vader die vist, max €40">' +
+            '<button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
+          '<a class="vonk-home-vragen" href="/vonk">Liever 3 vragen beantwoorden ' + ic('rechts') + '</a>' +
+        '</div>' +
         /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
         '<section class="sectie eerste">' +
           '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
@@ -1277,7 +1281,7 @@
 
     var inhoud = '';
     if (stap === 1) inhoud = '<form class="vonk-typ" data-vonk-typ role="search"><label for="vonk-zin">Typ wat je zoekt, zoals je het zou zeggen</label>' +
-      '<div class="vonk-typ-rij"><input id="vonk-zin" type="text" autocomplete="off" placeholder="Bijv. iets voor mijn vader die van vissen houdt, max 40 euro">' +
+      '<div class="vonk-typ-rij"><input id="vonk-zin" type="text" autocomplete="off" placeholder="Bijv. vader die vist, max €40">' +
       '<button class="knop knop-goud" type="submit">' + ic('vonk') + ' Zoek</button></div></form>' +
       '<p class="vonk-of"><span>of kies hieronder</span></p>' + vraag('Voor wie zoek je iets?', V.voor, 'voor');
     if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
@@ -1430,7 +1434,7 @@
         '</div>';
     }
 
-    var icoon = '<div class="vonk-icoon" aria-hidden="true">' + ic('vonk') + '</div>';
+    var icoon = '<div class="vonk-icoon" aria-hidden="true"><img src="/images/vonk/vonk-icoon.webp" alt="" width="96" height="96" decoding="async"></div>';
     return kop + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? '" style="max-width:none' : '') + '">' + (stap < 4 ? icoon + balk : '') + inhoud + terug + '</div></div>';
   }
 
