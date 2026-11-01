@@ -1170,7 +1170,7 @@
   function kindLeeftijd(p) {
     if (p.leeftijd) return p.leeftijd;
     var t = (p.titel || '') + ' ' + (p.zoek || ''), m;
-    if ((m = t.match(/(\d{1,2})\s*(?:-|tot|t\/m)\s*(\d{1,2})\s*jaar/i))) return [+m[1], +m[2]];
+    if ((m = t.match(/(?:^|[^\d])(\d{1,2})\s*(?:-|tot|t\/m)\s*(\d{1,2})\s*jaar/i))) return [+m[1], +m[2]];
     if ((m = t.match(/(?:vanaf|v\.a\.)\s*(\d{1,2})\s*jaar|\b(\d{1,2})\s*\+(?!\s*\d)|\b(\d{1,2})\s*jaar\s*\+/i))) return [+(m[1] || m[2] || m[3]), 99];
     if (/\bpeuter|kraamcadeau|newborn|rammelaar|bijtring|knuffeldoek|speen|babyspeelgoed|\b0\s*\+/i.test(t) || p.sub === 'baby-kraam' || p.sub === 'baby-houten') return [0, 3];
     return null;

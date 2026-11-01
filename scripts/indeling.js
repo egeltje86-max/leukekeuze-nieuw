@@ -290,13 +290,21 @@ const VERHUIS = [
 const MEISJE = R('meisje|meiden|\\bgirls?\\b|barbie|prinses|\\bdames\\b');
 const JONGEN = R('jongen|\\bboys?\\b|\\bheren\\b');
 
+/* Merken met een vaste minimumleeftijd (van de fabrikant). Gaan vóór het woord 'baby' in de titel. */
+const MERK_LEEFTIJD = [
+  [/schleich/i, [3, 99]], [/baby\s*born/i, [3, 99]], [/l\.?o\.?l\.?\s*surprise/i, [4, 99]], [/rainbow high/i, [6, 99]],
+  [/little live pets/i, [5, 99]], [/scruff.?a.?luvs/i, [4, 99]], [/baby paws/i, [3, 99]], [/smoby baby nurse/i, [3, 99]],
+  [/\blego\b(?!.*duplo)/i, [6, 99]], [/playmobil(?!.*(junior|1\.2\.3|123))/i, [4, 10]]
+];
 function leeftijdUitTitel(t) {
   let m;
-  if ((m = t.match(/(\d{1,2})\s*(?:-|tot|t\/m)\s*(\d{1,2})\s*jaar/i))) return [+m[1], +m[2]];
-  if ((m = t.match(/(\d{1,2})\s*(?:\+|jaar\s*\+|jaar en ouder|plus)/i))) return [+m[1], 99];
+  /* (?<!\d): '500+ kralen' is geen leeftijd '00+' (fix 01-11-2026) */
+  if ((m = t.match(/(?<!\d)(\d{1,2})\s*(?:-|tot|t\/m)\s*(\d{1,2})\s*jaar/i))) return [+m[1], +m[2]];
+  if ((m = t.match(/(?<!\d)(\d{1,2})\s*(?:\+|jaar\s*\+|jaar en ouder|plus)(?!\s*\d)/i))) return [+m[1], 99];
   if ((m = t.match(/vanaf\s*(\d{1,2})\s*jaar/i))) return [+m[1], 99];
   if ((m = t.match(/(\d{1,2})\s*(?:-|tot)\s*(\d{1,2})\s*maanden/i))) return [0, Math.max(1, Math.ceil(+m[2] / 12))];
-  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|baby/i.test(t)) return [0, 2];
+  /* 'baby' alleen als het echt babyspeelgoed is: 'Schleich baby panda' of 'BABY born' zijn pas vanaf 3 jaar (controle 01-11-2026). */
+  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|baby/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2];
   return null;
 }
 
@@ -310,6 +318,7 @@ function leeftijd(p, nieuwSub) {
   if (uitSpec && uitSpec[0] <= 18) return uitSpec;
   const uitTekst = leeftijdUitTitel(p.waarom || '');
   if (uitTekst && uitTekst[0] <= 14 && !/baby/i.test(p.waarom || '') ) return uitTekst;
+  const merk = MERK_LEEFTIJD.find((r) => r[0].test(t) && !/\blego\b|playmobil/i.test(r[0].source)); if (merk) return merk[1];
   if (/\bduplo\b/i.test(t)) return [1, 5];
   if (/lego.*(technic|ideas|icons|architecture|creator expert|star wars ultimate|botanical|art\b)/i.test(t)) return [9, 99];
   if (/\blego\b.*\bfriends\b|\blego\b.*\bcity\b|\blego\b.*\bninjago\b/i.test(t)) return [6, 12];
