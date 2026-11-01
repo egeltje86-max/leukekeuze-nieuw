@@ -76,6 +76,14 @@
   }
   /* Daisycon-links herkennen (lt45.net, fr135.net, bdt9.net, enz.). Tijdens de 'daisyconPauze' gaan we rechtstreeks naar de winkel. */
   function isDaisycon(u) { return /^https?:\/\/(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?\/c\/|^https?:\/\/aff\.svinando\.be\/c\//.test(u || ''); }
+  /* Tijdens de Daisycon-pauze verdienen we niets aan Daisycon-producten: ze blijven zichtbaar, maar komen ná de rest
+     (wens van Marius, 01-11-2026). Zet je daisyconPauze uit in data.js, dan doen ze vanzelf weer gewoon mee. */
+  function daisyconLaag(lijst) {
+    if (!INST.daisyconPauze) return lijst;
+    var voor = [], na = [];
+    lijst.forEach(function (p) { (p.dc || isDaisycon(p.url) ? na : voor).push(p); });
+    return voor.concat(na);
+  }
   function winkelLink(p) { return INST.daisyconPauze && isDaisycon(p.url) && p.winkelUrl ? p.winkelUrl : p.url; }
   var WINKELSITE = { 'Ditverzinjeniet': 'https://www.ditverzinjeniet.nl/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'LEGO': 'https://www.lego.com/nl-nl',
     'Westwing': 'https://www.westwing.nl/', 'Decantalo': 'https://www.decantalo.nl/', 'MYKA': 'https://www.myka.com/nl/', 'Prydligt': 'https://www.prydligt.nl/',
@@ -123,7 +131,7 @@
       uit.push(b.splice(j, 1)[0]); over--;
     }
     top.sort(function (a, b) { return ((b.favoriet ? 2 : 0) + (b.populair ? 1 : 0)) - ((a.favoriet ? 2 : 0) + (a.populair ? 1 : 0)) || (b.sfeer ? 1 : 0) - (a.sfeer ? 1 : 0); });
-    return top.concat(uit);
+    return daisyconLaag(top.concat(uit));
   }
   function grid(lijst, leegHtml, klasse) {
     if (!lijst.length) return '<div class="prodgrid ' + (klasse || '') + '">' + leegHtml + '</div>';
@@ -388,14 +396,14 @@
     if (tab === 'favoriet') l = l.filter(function (p) { return p.favoriet || p.populair; });
     if (tab === 'onder25') l = l.filter(function (p) { return p.prijs <= 25 && p.cat !== 'dranken'; });
     if (tab === 'nieuw') l = l.filter(LK.isNieuw);
-    l = sfeerEerst(sorteer(l));
+    l = daisyconLaag(sfeerEerst(sorteer(l)));
     if (tab === 'nieuw' || tab === 'onder25') {
       /* afwisselen: niet tien dingen uit dezelfde categorie achter elkaar */
       var per = {}, mix = [];
       l.forEach(function (p) { (per[p.cat] = per[p.cat] || []).push(p); });
       var lijsten = Object.keys(per).map(function (k) { return per[k]; });
       for (var i = 0; mix.length < 12 && lijsten.some(function (x) { return x.length > i; }); i++) lijsten.forEach(function (x) { if (x[i] && mix.length < 12) mix.push(x[i]); });
-      l = sfeerEerst(mix);
+      l = daisyconLaag(sfeerEerst(mix));
     }
     return l.length ? rij(l.slice(0, 12)) : grid([], leegBlok('Nog niets in deze lijst', 'Hier komen binnenkort mooie producten.'));
   }
@@ -434,7 +442,7 @@
     var knoppen = (s && s.knoppen) || c.knoppen || [];
     var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen); });
     lijst = sorteer(lijst, q.sort);
-    if (!q.sort || q.sort === 'aanbevolen') lijst = sfeerEerst(lijst);
+    if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; if (q.voor) nq.voor = q.voor; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
@@ -513,7 +521,7 @@
     var knoppen = pe.knoppen || [];
     var alles = persoonProducten(pe, s ? s.vakken : null);
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
-    if (!q.sort || q.sort === 'aanbevolen') lijst = sfeerEerst(lijst);
+    if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
 
     /* Rondjes met de subcategorieën van deze persoon. Op de hoofdpagina groot (raster), op een subpagina als schuifrij. */
@@ -583,7 +591,7 @@
     var knoppen = g.knoppen || [];
     var alles = verzamelLijst(g);
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
-    if (!q.sort || q.sort === 'aanbevolen') lijst = sfeerEerst(lijst);
+    if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + knopChips(pad, q, knoppen) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
@@ -1218,7 +1226,7 @@
         var r = function (l) { return l.slice().sort(function (a, b) { return mixGetal(a.id + q.mix) - mixGetal(b.id + q.mix); }); };
         return r(fav).concat(r(rest));
       };
-      var groep = function (lijst) { return spreid(schud(lijst)); };
+      var groep = function (lijst) { return daisyconLaag(spreid(schud(lijst))); };
       var alles = q.voor === 'iedereen' ? groep(precies).concat(groep(ruimer), groep(anders)) :
         groep(precies.filter(function (p) { return echt(p) === 0; })).concat(groep(precies.filter(function (p) { return echt(p) !== 0; })), groep(ruimer), groep(anders));
 
