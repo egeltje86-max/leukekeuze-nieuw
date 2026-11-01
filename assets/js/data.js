@@ -43,6 +43,7 @@ window.LK_INSTELLINGEN = {
   ],
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [
+    { kicker: 'Hits van dit najaar', titel: 'Toppers van nu', tekst: 'Waar iedereen het nu over heeft.', knop: 'Bekijk de toppers', naar: '/collectie/toppers-van-nu', beeld: 'images/collecties/toppers-van-nu.webp', beeldMobiel: 'images/collecties/toppers-van-nu-mobiel.webp', tot: '2027-01-31', klasse: 'actie-breed' },
     { kicker: 'Pakjesavond 5 december', titel: 'Sinterklaas', tekst: 'Leuke surprises en cadeautjes voor in de zak.', knop: 'Bekijk Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', tot: '2026-12-05' },
     { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp', tot: '2026-12-25' },
     { kicker: 'Proost op de feestdagen', titel: 'Whisky, champagne & meer', tekst: 'Topflessen om te geven of samen te openen.', knop: 'Naar de dranken', naar: '/c/dranken', beeld: 'images/categorieen/categorie-dranken.webp', tot: '2027-01-01' }
@@ -857,6 +858,8 @@ window.LK_GELEGENHEDEN_NU = function () {
 };
 /* Collecties: dwars door alle groepen heen, in de volgorde van zoeken. */
 window.LK_COLLECTIES = [
+  { slug: 'toppers-van-nu', naam: 'Toppers van nu', kicker: 'Hits van dit najaar', beeld: 'images/collecties/toppers-van-nu-rond.webp', seoTitel: 'Populaire cadeaus 2026 – de toppers van nu',
+    tekst: 'De cadeaus waar iedereen het nu over heeft: LEGO Pokémon, KPop Demon Hunters, Hitster, Squishmallows, Marshall-speakers en meer.', vakken: ['tag:toppers'] },
   { slug: 'cadeaubonnen', naam: 'Cadeaubonnen', kicker: 'Altijd goed', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp', seoTitel: 'Cadeaubon en cadeaukaart – laat ze zelf kiezen',
     tekst: 'Twijfel je? Met een cadeaubon of cadeaukaart kiezen ze zelf.', vakken: ['tag:cadeaubon', 'boeken-media/boekenbonnen-abonnementen'] },
   { slug: 'persoonlijke-cadeaus', naam: 'Persoonlijke cadeaus', kicker: 'Met naam of eigen tekst', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', seoTitel: 'Persoonlijke cadeaus met naam – gepersonaliseerde cadeaus',

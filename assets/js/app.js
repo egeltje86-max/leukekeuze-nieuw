@@ -366,8 +366,9 @@
     var l = (INST.acties || []).filter(function (a) { return !a.tot || vandaag <= a.tot; });
     if (!l.length) return '';
     return '<section class="acties">' + l.map(function (a) {
-      return '<a class="actie" href="' + esc(a.naar) + '">' +
-        '<img src="' + esc(a.beeld) + '" alt="" loading="lazy" decoding="async">' +
+      return '<a class="actie' + (a.klasse ? ' ' + esc(a.klasse) : '') + '" href="' + esc(a.naar) + '">' +
+        (a.beeldMobiel ? '<picture><source media="(max-width: 899px)" srcset="' + esc(a.beeldMobiel) + '">' : '') +
+        '<img src="' + esc(a.beeld) + '" alt="" loading="lazy" decoding="async">' + (a.beeldMobiel ? '</picture>' : '') +
         '<div class="actie-tekst"><span class="kicker">' + esc(a.kicker) + '</span><h3>' + esc(a.titel) + '</h3><p>' + esc(a.tekst) + '</p>' +
         '<span class="knop knop-goud">' + esc(a.knop) + ' ' + ic('pijl') + '</span></div></a>';
     }).join('') + '</section>';
