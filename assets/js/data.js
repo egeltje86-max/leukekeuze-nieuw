@@ -757,7 +757,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 
   vakjes('hobby', [
     ['tekenen', 'Tekenen & stiften', 'hobby-tekenen-schilderen'], ['schilderen', 'Schilderen', 'hobby-schilderen'], ['diamond-painting', 'Diamond painting', 'hobby-diamond-painting'], ['naaien-borduren', 'Naaien & borduren', 'hobby-naaien-borduren'],
-    ['kralen-sieraden-maken', 'Kralen & sieraden maken', 'hobby-kralen-sieraden-maken'], ['modelbouw', 'Modelbouw & miniatuurhuisjes', 'hobby-modelbouw'], ['origami-scrapbooking', 'Origami & scrapbooking', 'hobby-knutselen'],
+    ['kralen-sieraden-maken', 'Kralen & sieraden maken', 'hobby-kralen-sieraden-maken'], ['modelbouw', 'Modelbouw & miniatuurhuisjes', 'hobby-modelbouw'], ['origami-scrapbooking', 'DIY-pakketten & origami', 'hobby-knutselen'],
     ['kaarsen-zeep-epoxy', 'Kaarsen, zeep & epoxy', 'hobby-kaarsen-zeep-epoxy'], ['haken-breien', 'Haken & breien', 'hobby-haken-breien'], ['klei-pottenbakken', 'Klei & pottenbakken', 'hobby-klei-pottenbakken'],
     ['3d-pennen', '3D-pennen', 'hobby-3d-pennen'], ['bullet-journal', 'Bullet journal & kalligrafie', 'hobby-bullet-journal']
   ], { 'tekenen-schilderen': 'tekenen', knutselen: 'origami-scrapbooking' });

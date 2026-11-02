@@ -416,6 +416,24 @@
   var NOOD_CADEAU = ['noodradio', 'licht-stroom', 'buiten-veld'];
   function nietChristelijk(p) { return p.cat !== 'christelijk' && !(p.cat === 'noodpakket-survival' && NOOD_CADEAU.indexOf(p.sub) === -1); }
   /* Sfeerfoto's eerst (wens van Marius, 27-10-2026: presentatie is alles). Volgorde blijft verder gelijk. */
+  /* 02-11-2026 (Marius: pagina's moeten kwaliteit en afwisseling tonen): bovenaan niet steeds dezelfde winkel of hetzelfde soort product.
+     Herschikt alleen de eerste 'n' producten: niet dezelfde winkel 2 keer kort na elkaar en niet 2 keer hetzelfde vakje achter elkaar (als het kan). */
+  function afwisselen(l, n) {
+    n = Math.min(n || 60, l.length); var rest = l.slice(), uit = [];
+    while (uit.length < n && rest.length) {
+      var a = uit[uit.length - 1], b = uit[uit.length - 2], kies = -1;
+      for (var i = 0; i < Math.min(rest.length, 40); i++) {
+        var p = rest[i], w = (p.shop || '').toLowerCase();
+        var zelfdeWinkel = (a && (a.shop || '').toLowerCase() === w) || (b && (b.shop || '').toLowerCase() === w);
+        var zelfdeVak = a && a.cat + '/' + a.sub === p.cat + '/' + p.sub;
+        if (!zelfdeWinkel && !zelfdeVak) { kies = i; break; }
+        if (kies === -1 && !zelfdeWinkel) kies = i;
+      }
+      if (kies === -1) kies = 0;
+      uit.push(rest.splice(kies, 1)[0]);
+    }
+    return uit.concat(rest);
+  }
   function sfeerEerst(l) { return l.filter(function (p) { return p.sfeer; }).concat(l.filter(function (p) { return !p.sfeer; })); }
   function uitgelicht(tab) {
     var l = LK.zichtbaar().filter(nietChristelijk);
@@ -575,6 +593,17 @@
     /* Selectie: favorieten en populaire producten, sfeerfoto's eerst. */
     var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
     if (selectie.length < 4) selectie = [];
+    /* 02-11-2026: wat al in 'Onze selectie' staat, niet meteen nog eens bovenaan de lijst eronder (dat leek dubbel). En afwisselen in winkel en soort. */
+    if (!s && (!q.sort || q.sort === 'aanbevolen')) {
+      var inSel = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel[p.id] = 1; });
+      var basis = lijst.filter(function (p) { return !inSel[p.id]; });
+      /* Bovenaan om de beurt uit elk vakje van deze persoon (volgorde = waar het meest naar gezocht wordt): een sieraad, een parfum, iets voor in huis... */
+      var plek = {}; basis.forEach(function (p, i) { plek[p.id] = i; });
+      var perVak = pe.subs.filter(nogGeldig).map(function (x) { return persoonProducten(pe, x.vakken).filter(function (p) { return p.id in plek; }).sort(function (u, v) { return plek[u.id] - plek[v.id]; }); }).filter(function (l) { return l.length; });
+      var top = [], gehad = {};
+      for (var r = 0; top.length < 60 && r < 12; r++) perVak.forEach(function (l) { var t = 0; while (t < l.length && gehad[l[t].id]) t++; var p = l[t]; if (p && top.length < 60) { gehad[p.id] = 1; top.push(p); l.splice(0, t + 1); } });
+      lijst = afwisselen(top, 60).concat(basis.filter(function (p) { return !gehad[p.id]; })).concat(lijst.filter(function (p) { return inSel[p.id]; }));
+    }
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
 
     return paginakop({
@@ -627,6 +656,11 @@
     var leeg = !alles.length ? leegBlok('Deze afdeling vullen we nu', 'We zoeken hier nog mooie cadeaus voor. Kijk alvast verder:', '<a class="knop knop-rand" href="/">Naar de voorpagina</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>') : leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
     var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
     if (selectie.length < 4) selectie = [];
+    /* 02-11-2026: zelfde als bij de personen: geen dubbele bovenaan, en afwisselen in winkel en soort. */
+    if (!q.sort || q.sort === 'aanbevolen') {
+      var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
+      lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
+    }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
     '<div class="binnen">' +
