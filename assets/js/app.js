@@ -84,6 +84,19 @@
     lijst.forEach(function (p) { (p.dc || isDaisycon(p.url) ? na : voor).push(p); });
     return voor.concat(na);
   }
+  /* 02-11-2026 (Marius): wie via TikTok/Instagram/Facebook/Pinterest binnenkomt, zit in de ingebouwde browser van die app.
+     Daar is niemand ingelogd bij bol of Amazon, dus mensen haken af of bestellen later in de app (dan telt onze klik niet).
+     Alleen in die ingebouwde browsers tonen we een tip om de pagina in de eigen browser te openen. Geen cookies. */
+  var INAPP = (function () { var u = navigator.userAgent || ''; var m = u.match(/Instagram|FBAN|FBAV|FB_IAB|FBIOS|musical_ly|TikTok|BytedanceWebview|Bytedance|Pinterest|Snapchat|LinkedInApp/i); if (!m) return ''; var n = m[0].toLowerCase(); return /insta/.test(n) ? 'Instagram' : /fb/.test(n) ? 'Facebook' : /pinterest/.test(n) ? 'Pinterest' : /snap/.test(n) ? 'Snapchat' : /linkedin/.test(n) ? 'LinkedIn' : 'TikTok'; })();
+  var ANDROID = /Android/i.test(navigator.userAgent || '');
+  function inAppTip(p) {
+    if (!INAPP || !p.url || p.voorbeeld) return '';
+    var hier = location.host + location.pathname + location.search;
+    var knop = ANDROID
+      ? '<a class="knop knop-rand" href="intent://' + esc(hier) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + esc(encodeURIComponent(location.href)) + ';end">Openen in Chrome</a>'
+      : '<span class="inapp-stap">Tik rechtsboven op <b>⋯</b> en kies <b>Openen in browser</b> (of <b>Openen in Safari</b>).</span>';
+    return '<div class="inapp-tip">' + ic('info') + '<div><p>Je kijkt nu binnen ' + esc(INAPP) + '. Open LeukeKeuze in je eigen browser, dan ben je bij ' + esc(p.shop) + ' meestal al ingelogd en gaat bestellen sneller.</p>' + knop + '</div></div>';
+  }
   function winkelLink(p) { return INST.daisyconPauze && isDaisycon(p.url) && p.winkelUrl ? p.winkelUrl : p.url; }
   var WINKELSITE = { 'Ditverzinjeniet': 'https://www.ditverzinjeniet.nl/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'LEGO': 'https://www.lego.com/nl-nl',
     'Westwing': 'https://www.westwing.nl/', 'Decantalo': 'https://www.decantalo.nl/', 'MYKA': 'https://www.myka.com/nl/', 'Prydligt': 'https://www.prydligt.nl/',
@@ -798,7 +811,7 @@
           '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
-          '</div>' +
+          '</div>' + inAppTip(p) +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
