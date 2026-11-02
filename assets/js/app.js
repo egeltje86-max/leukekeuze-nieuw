@@ -84,6 +84,19 @@
     lijst.forEach(function (p) { (p.dc || isDaisycon(p.url) ? na : voor).push(p); });
     return voor.concat(na);
   }
+  /* 02-11-2026 (Marius): wie via TikTok/Instagram/Facebook/Pinterest binnenkomt, zit in de ingebouwde browser van die app.
+     Daar is niemand ingelogd bij bol of Amazon, dus mensen haken af of bestellen later in de app (dan telt onze klik niet).
+     Alleen in die ingebouwde browsers tonen we een tip om de pagina in de eigen browser te openen. Geen cookies. */
+  var INAPP = (function () { var u = navigator.userAgent || ''; var m = u.match(/Instagram|FBAN|FBAV|FB_IAB|FBIOS|musical_ly|TikTok|BytedanceWebview|Bytedance|Pinterest|Snapchat|LinkedInApp/i); if (!m) return ''; var n = m[0].toLowerCase(); return /insta/.test(n) ? 'Instagram' : /fb/.test(n) ? 'Facebook' : /pinterest/.test(n) ? 'Pinterest' : /snap/.test(n) ? 'Snapchat' : /linkedin/.test(n) ? 'LinkedIn' : 'TikTok'; })();
+  var ANDROID = /Android/i.test(navigator.userAgent || '');
+  function inAppTip(p) {
+    if (!INAPP || !p.url || p.voorbeeld) return '';
+    var hier = location.host + location.pathname + location.search;
+    var knop = ANDROID
+      ? '<a class="knop knop-rand" href="intent://' + esc(hier) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + esc(encodeURIComponent(location.href)) + ';end">Openen in Chrome</a>'
+      : '<span class="inapp-stap">Tik rechtsboven op <b>⋯</b> en kies <b>Openen in browser</b> (of <b>Openen in Safari</b>).</span>';
+    return '<div class="inapp-tip">' + ic('info') + '<div><p>Je kijkt nu binnen ' + esc(INAPP) + '. Open LeukeKeuze in je eigen browser, dan ben je bij ' + esc(p.shop) + ' meestal al ingelogd en gaat bestellen sneller.</p>' + knop + '</div></div>';
+  }
   function winkelLink(p) { return INST.daisyconPauze && isDaisycon(p.url) && p.winkelUrl ? p.winkelUrl : p.url; }
   var WINKELSITE = { 'Ditverzinjeniet': 'https://www.ditverzinjeniet.nl/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'LEGO': 'https://www.lego.com/nl-nl',
     'Westwing': 'https://www.westwing.nl/', 'Decantalo': 'https://www.decantalo.nl/', 'MYKA': 'https://www.myka.com/nl/', 'Prydligt': 'https://www.prydligt.nl/',
@@ -403,6 +416,24 @@
   var NOOD_CADEAU = ['noodradio', 'licht-stroom', 'buiten-veld'];
   function nietChristelijk(p) { return p.cat !== 'christelijk' && !(p.cat === 'noodpakket-survival' && NOOD_CADEAU.indexOf(p.sub) === -1); }
   /* Sfeerfoto's eerst (wens van Marius, 27-10-2026: presentatie is alles). Volgorde blijft verder gelijk. */
+  /* 02-11-2026 (Marius: pagina's moeten kwaliteit en afwisseling tonen): bovenaan niet steeds dezelfde winkel of hetzelfde soort product.
+     Herschikt alleen de eerste 'n' producten: niet dezelfde winkel 2 keer kort na elkaar en niet 2 keer hetzelfde vakje achter elkaar (als het kan). */
+  function afwisselen(l, n) {
+    n = Math.min(n || 60, l.length); var rest = l.slice(), uit = [];
+    while (uit.length < n && rest.length) {
+      var a = uit[uit.length - 1], b = uit[uit.length - 2], kies = -1;
+      for (var i = 0; i < Math.min(rest.length, 40); i++) {
+        var p = rest[i], w = (p.shop || '').toLowerCase();
+        var zelfdeWinkel = (a && (a.shop || '').toLowerCase() === w) || (b && (b.shop || '').toLowerCase() === w);
+        var zelfdeVak = a && a.cat + '/' + a.sub === p.cat + '/' + p.sub;
+        if (!zelfdeWinkel && !zelfdeVak) { kies = i; break; }
+        if (kies === -1 && !zelfdeWinkel) kies = i;
+      }
+      if (kies === -1) kies = 0;
+      uit.push(rest.splice(kies, 1)[0]);
+    }
+    return uit.concat(rest);
+  }
   function sfeerEerst(l) { return l.filter(function (p) { return p.sfeer; }).concat(l.filter(function (p) { return !p.sfeer; })); }
   function uitgelicht(tab) {
     var l = LK.zichtbaar().filter(nietChristelijk);
@@ -562,6 +593,17 @@
     /* Selectie: favorieten en populaire producten, sfeerfoto's eerst. */
     var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
     if (selectie.length < 4) selectie = [];
+    /* 02-11-2026: wat al in 'Onze selectie' staat, niet meteen nog eens bovenaan de lijst eronder (dat leek dubbel). En afwisselen in winkel en soort. */
+    if (!s && (!q.sort || q.sort === 'aanbevolen')) {
+      var inSel = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel[p.id] = 1; });
+      var basis = lijst.filter(function (p) { return !inSel[p.id]; });
+      /* Bovenaan om de beurt uit elk vakje van deze persoon (volgorde = waar het meest naar gezocht wordt): een sieraad, een parfum, iets voor in huis... */
+      var plek = {}; basis.forEach(function (p, i) { plek[p.id] = i; });
+      var perVak = pe.subs.filter(nogGeldig).map(function (x) { return persoonProducten(pe, x.vakken).filter(function (p) { return p.id in plek; }).sort(function (u, v) { return plek[u.id] - plek[v.id]; }); }).filter(function (l) { return l.length; });
+      var top = [], gehad = {};
+      for (var r = 0; top.length < 60 && r < 12; r++) perVak.forEach(function (l) { var t = 0; while (t < l.length && gehad[l[t].id]) t++; var p = l[t]; if (p && top.length < 60) { gehad[p.id] = 1; top.push(p); l.splice(0, t + 1); } });
+      lijst = afwisselen(top, 60).concat(basis.filter(function (p) { return !gehad[p.id]; })).concat(lijst.filter(function (p) { return inSel[p.id]; }));
+    }
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
 
     return paginakop({
@@ -614,6 +656,11 @@
     var leeg = !alles.length ? leegBlok('Deze afdeling vullen we nu', 'We zoeken hier nog mooie cadeaus voor. Kijk alvast verder:', '<a class="knop knop-rand" href="/">Naar de voorpagina</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>') : leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
     var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
     if (selectie.length < 4) selectie = [];
+    /* 02-11-2026: zelfde als bij de personen: geen dubbele bovenaan, en afwisselen in winkel en soort. */
+    if (!q.sort || q.sort === 'aanbevolen') {
+      var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
+      lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
+    }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
     '<div class="binnen">' +
@@ -798,7 +845,7 @@
           '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
-          '</div>' +
+          '</div>' + inAppTip(p) +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
@@ -2506,21 +2553,56 @@
      dan geven we elke nieuwe pagina hier door. Zonder cookies; alleen het adres en de titel van de pagina. */
   (function () {
     var eerste = true;
+    /* 02-11-2026 (Marius): onthouden via welk deel van de site iemand bij een winkel uitkomt (VONK, gids, Sinterklaas, zoeken...).
+       Alleen in het geheugen van dit tabblad; geen cookies, geen persoonsgegevens. */
+    var herkomst = (function () {
+      var r = ''; try { r = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+      if (r && r.indexOf('leukekeuze') === -1) return 'van buiten: ' + r.replace(/^www\./, '').replace(/^(l|m|lm)\./, '').split('.').slice(-2, -1)[0];
+      return 'rechtstreeks';
+    })();
+    function deelVan(pad) {
+      pad = (pad || '/').replace(/\/+$/, '');
+      if (!pad) return 'homepage';
+      if (/^\/p\//.test(pad)) return '';
+      return pad.slice(1);
+    }
+    var nu = deelVan(location.pathname); if (nu) herkomst = nu;
     window.addEventListener('lk-route', function () {
+      var d = deelVan(location.pathname); if (d) herkomst = d;
       if (eerste) { eerste = false; return; }
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.search, title: document.title }); } catch (e) {}
     });
-    /* Klik naar een winkel ('Bekijk bij bol', winkeltegel, product uit 'Meer in onze winkels'): als 'gebeurtenis' tellen,
-       zodat het Control Room laat zien welke producten mensen bij welke winkel bekijken. Geen cookies, geen persoonsgegevens. */
+    function netwerk(h) {
+      h = h || '';
+      if (/partner\.bol\.com|\/\/(www\.)?bol\.com/.test(h)) return 'bol';
+      if (/amazon\./.test(h)) return 'Amazon';
+      if (/[?&]tt=|tradetracker|[?&]a=516846\b|_516846_/.test(h)) return 'TradeTracker';
+      if (/awin1\.com|awin\./.test(h)) return 'Awin';
+      if (typeof isDaisycon === 'function' && isDaisycon(h)) return 'Daisycon';
+      return 'zonder partnerlink';
+    }
+    function schoon(t) { return String(t || '').replace(/[\/?#]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60); }
+    /* Klik naar een winkel ('Bekijk bij bol', winkeltegel, product uit 'Zoek in alle winkels', 'Dit cadeau geven'): als 'gebeurtenis' tellen.
+       klik/<winkel>/<product>  = welk product bij welke winkel (zoals eerst)
+       bron/<deel van de site>/<netwerk>/<winkel> = via welk deel van de site, naar welk netwerk en welke winkel (nieuw 02-11-2026) */
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a[rel~="sponsored"]'); if (!a || !window.goatcounter || !window.goatcounter.count) return;
-      var pad = '', titel = '';
+      var pad = '', titel = '', winkel = '', prod = null;
       var kaart = a.closest('.product-info, .product-plak');
-      if (kaart) { var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1] || ''; var p = id && LK.vind(id); if (p) { pad = 'klik/' + p.shop + '/' + p.id; titel = p.shop + ': ' + p.titel; } }
-      else if (a.classList.contains('winkelkaart')) { pad = 'klik/winkel/' + (a.querySelector('strong') || {}).textContent; titel = 'Winkeltegel: ' + (a.querySelector('strong') || {}).textContent; }
-      else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); pad = 'klik/feed/' + (k.querySelector('.shop') || {}).textContent; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
-      else if (a.closest('.aw-bol')) { pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
-      if (pad) try { window.goatcounter.count({ path: pad, title: titel.slice(0, 120), event: true }); } catch (x) {}
+      var ck = a.closest('.cadeaukaart');
+      if (kaart) { var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1] || ''; var p = id && LK.vind(id); if (p) { prod = p; winkel = p.shop; pad = 'klik/' + p.shop + '/' + p.id; titel = p.shop + ': ' + p.titel; } }
+      else if (a.classList.contains('winkelkaart')) { winkel = schoon((a.querySelector('strong') || {}).textContent); pad = 'klik/winkel/' + winkel; titel = 'Winkeltegel: ' + winkel; }
+      else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); winkel = schoon((k.querySelector('.shop') || {}).textContent); pad = 'klik/feed/' + winkel; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
+      else if (a.closest('.aw-bol')) { winkel = 'bol'; pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
+      else if (ck) { var pid = ((ck.querySelector('a.beeld') || {}).getAttribute ? ck.querySelector('a.beeld').getAttribute('href') : '').replace(/^\/p\/|\/$/g, ''); var q = pid && LK.vind(pid); prod = q || null; winkel = q ? q.shop : schoon((ck.querySelector('.shop') || {}).textContent); pad = 'klik/' + winkel + '/' + (q ? q.id : 'lijst'); titel = 'Verlanglijstje: ' + (q ? q.titel : winkel); }
+      else { try { winkel = new URL(a.href).hostname.replace(/^www\./, ''); } catch (x) { winkel = 'onbekend'; } pad = 'klik/overig/' + winkel; titel = 'Andere winkellink: ' + winkel; }
+      if (!pad) return;
+      try { window.goatcounter.count({ path: pad, title: titel.slice(0, 120), event: true }); } catch (x) {}
+      var net = netwerk(a.href);
+      /* Daisycon staat op pauze: dan gaat de knop rechtstreeks naar de winkel en verdienen we (nog) niets. Apart tonen. */
+      if (net === 'zonder partnerlink' && prod && netwerk(prod.url) === 'Daisycon') net = 'Daisycon-pauze';
+      var bron = 'bron/' + herkomst + '/' + net + '/' + (winkel || 'onbekend');
+      try { window.goatcounter.count({ path: bron.slice(0, 180), title: 'Via ' + herkomst + ' naar ' + (winkel || 'winkel') + ' (' + net + ')', event: true }); } catch (x) {}
     }, true);
   })();
 
