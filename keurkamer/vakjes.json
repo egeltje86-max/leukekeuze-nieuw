@@ -1426,5 +1426,33 @@
   "naam": "Kleine liefdesgebaren",
   "hoort": "Kleine romantische cadeautjes onder de 25 euro: liefdesbriefjes in een potje, hartjessleutelhangers, minirozen, chocolade met liefdesboodschap, reden-waarom-ik-van-je-hou-kaartjes en een zakspiegeltje met lieve tekst.",
   "niet": "Dure cadeaus boven de 25 euro (andere vakjes in Liefde & Valentijn), wenskaarten zonder cadeau, grappige fopcadeaus zonder romantiek (Cadeaus > Grappig), cadeautjes voor kinderen of collega's, drank (Dranken)."
+ },
+ {
+  "vak": "cadeaus/onder-15",
+  "afdeling": "Cadeaus",
+  "naam": "Onder €15",
+  "hoort": "Leuke kleine cadeautjes tot 15 euro: alles mag hier staan als het echt een cadeautje is (geen boodschappen of onderdelen) en onder de 15 euro kost. Dit is een extra vakje; producten hebben hun eigen vakje ergens anders.",
+  "niet": "Alles boven 15 euro, saaie gebruiksspullen, verbruiksartikelen, losse onderdelen en groothandelsverpakkingen."
+ },
+ {
+  "vak": "cadeaus/sint-onder-15",
+  "afdeling": "Cadeaus",
+  "naam": "Sint onder €15",
+  "hoort": "Schoencadeautjes, lootjescadeaus en kleine pakjes voor Sinterklaas onder 15 euro: speelgoed, spelletjes, lekkers voor pakjesavond, kleine gadgets en boekjes. Extra vakje.",
+  "niet": "Alles boven 15 euro, kerstspullen, verzorging en kleding, dingen die niets met pakjesavond te maken hebben."
+ },
+ {
+  "vak": "christelijk/bijbeltekst",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Met Bijbeltekst",
+  "hoort": "Cadeaus met een Bijbeltekst, psalm of zegenwens erop: tegeltjes, wandborden, kaarten, mokken, sieraden met tekst en notitieboekjes met een tekst uit de Bijbel. Alleen in de stijl van de gereformeerde gezindte. Extra vakje.",
+  "niet": "Christelijke producten zonder tekst erop (Bijbels, boeken, beelden), teksten die niet uit de Bijbel komen, en alles buiten de christelijke afdeling."
+ },
+ {
+  "vak": "sieraden/verguld-staal",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Verguld & staal",
+  "hoort": "Vergulde en roestvrijstalen sieraden: goudkleurige kettingen, armbanden, ringen en oorbellen die betaalbaar zijn en niet verkleuren. Extra vakje.",
+  "niet": "Echt gouden en zilveren sieraden (eigen vakjes), horloges, sieraden om zelf te maken (Hobby), sieradendozen."
  }
 ]

@@ -29,7 +29,13 @@ def vakjes():
 def maak(alleen_nieuw=False):
     C = lees(os.path.join(DATA, 'catalogus.json')); P = C['producten']; V = vakjes()
     oud = lees(os.path.join(KK, 'ai-oordelen.json'), {}) if alleen_nieuw else {}
-    for f in glob.glob(os.path.join(AI, 'in-*.json')): os.remove(f)
+    # oude porties en antwoorden opbergen (niet weggooien), zodat nummers nooit door elkaar lopen
+    oude = glob.glob(os.path.join(AI, 'in-*.json')) + glob.glob(os.path.join(AI, 'uit-*.json'))
+    if oude:
+        import shutil
+        klaar = os.path.join(AI, 'klaar', datetime.datetime.now().strftime('%Y-%m-%d_%H%M')); os.makedirs(klaar, exist_ok=True)
+        for f in oude: shutil.move(f, os.path.join(klaar, os.path.basename(f)))
+        print('oude porties opgeborgen in', klaar)
     # per vakje: eerst de thuis-producten, dan de ookIn-producten
     per_vak = collections.OrderedDict()
     for vak in sorted(C['vakjes'], key=lambda k: (k.split('/')[0], k)):

@@ -1426,5 +1426,33 @@
   "naam": "Kleine liefdesgebaren",
   "tekst": "Zomaar, gewoon omdat je van iemand houdt. Kleine cadeautjes onder de 25 euro met een groot gebaar.",
   "woorden": ""
+ },
+ {
+  "vak": "cadeaus/onder-15",
+  "afdeling": "Cadeaus",
+  "naam": "Onder €15",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "cadeaus/sint-onder-15",
+  "afdeling": "Cadeaus",
+  "naam": "Sint onder €15",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "christelijk/bijbeltekst",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Met Bijbeltekst",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "sieraden/verguld-staal",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Verguld & staal",
+  "tekst": "",
+  "woorden": ""
  }
 ]

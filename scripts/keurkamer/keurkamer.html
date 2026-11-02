@@ -158,7 +158,7 @@ function overzicht() {
     '<div class="cijfer"><b>' + dub + '</b><span>dubbelen</span></div><div class="cijfer oranje"><b>' + nog + '</b><span>nog indelen (oud vakje)</span></div><div class="cijfer groen"><b>' + klaar + ' / ' + V.length + '</b><span>vakjes klaar</span></div></div>' +
     (metAi ? '' : '<div class="blok"><b>Nog geen AI-advies in dit bestand.</b> <span class="uitleg">Claude maakt een nieuw databestand zodra de AI-keurmeester klaar is.</span></div>') +
     '<div class="filters"><button class="chip' + (st.sorteer === 'aandacht' ? ' aan' : '') + '" data-sorteer="aandacht">Meeste aandacht eerst</button><button class="chip' + (st.sorteer === 'menu' ? ' aan' : '') + '" data-sorteer="menu">Volgorde van de site</button><button class="chip' + (st.sorteer === 'groot' ? ' aan' : '') + '" data-sorteer="groot">Grootste eerst</button></div>';
-  var rijen = V.map(function (v, i) { return { v: v, i: i, t: telVak(v.vak) }; });
+  var rijen = V.map(function (v, i) { return { v: v, i: i, t: telVak(v.vak) }; }).filter(function (r) { return r.t.tot > 0 || !r.v.oud; });
   if (st.sorteer === 'aandacht') rijen.sort(function (a, b) { return (b.v.oud ? 1 : 0) - (a.v.oud ? 1 : 0) || b.t.aandacht - a.t.aandacht || b.t.tot - a.t.tot; });
   else if (st.sorteer === 'groot') rijen.sort(function (a, b) { return b.t.tot - a.t.tot; });
   var html = '<table><tr><th>Vakje</th><th>Producten</th><th>AI: weg</th><th>AI: verplaatsen</th><th>AI: twijfel</th><th>Dubbel</th><th>Mijn voortgang</th><th>Status</th><th></th></tr>', vorige = null;

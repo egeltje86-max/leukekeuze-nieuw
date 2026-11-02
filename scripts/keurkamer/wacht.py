@@ -60,7 +60,13 @@ else:
 
 # ---- TradeTracker en Daisycon: id = prefix + md5(link)[:10], of dezelfde winkelpagina ----
 def url_sleutel(u): return re.sub(r'/+$', '', re.sub(r'[?#].*$', '', str(u or '').lower()))
-tt_live = {pid: p for pid, p in P.items() if p['netwerk'] in ('tradetracker', 'daisycon')}
+def netwerk(u):
+    u = str(u or '')
+    if 'partner.bol.com' in u or 'bol.com' in u: return 'bol'
+    if re.search(r'tradetracker|[?&]tt=\d+_|a=516846|//partner\.', u): return 'tradetracker'
+    if re.search(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/|aff\.svinando', u): return 'daisycon'
+    return 'direct'
+tt_live = {pid: p for pid, p in P.items() if (p.get('netwerk') or netwerk(p.get('url'))) in ('tradetracker', 'daisycon')}
 per_url = {url_sleutel(p['winkelUrl']): pid for pid, p in tt_live.items() if p['winkelUrl']}
 per_md5 = {pid.split('-', 1)[1]: pid for pid in tt_live if '-' in pid}
 gevonden_tt = set()
