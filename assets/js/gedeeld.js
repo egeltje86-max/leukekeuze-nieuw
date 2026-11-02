@@ -100,6 +100,7 @@
   /* Iconen: dunne gouden lijnen, getekend in code */
   var P = {
     cadeau: '<rect x="3.5" y="9" width="17" height="11.5" rx="1.5"/><path d="M2.5 9h19V6.5h-19Z"/><path d="M12 6.5v14M12 6.5C10.5 3 6.5 2.6 7 5c.4 1.6 5 1.5 5 1.5Zm0 0c1.5-3.5 5.5-3.9 5-1.5-.4 1.6-5 1.5-5 1.5Z"/>',
+    nood: '<path d="M12 2.8 4.8 5.6v5.6c0 4.6 3 8.4 7.2 10 4.2-1.6 7.2-5.4 7.2-10V5.6Z"/><path d="M12 8.2v7.2M8.4 11.8h7.2"/>',
     kruis: '<path d="M10.5 2.5h3v5h5v3h-5v11h-3v-11h-5v-3h5Z"/>',
     beer: '<circle cx="6.5" cy="6" r="2.5"/><circle cx="17.5" cy="6" r="2.5"/><circle cx="12" cy="12" r="7"/><circle cx="9.5" cy="11" r=".6" fill="currentColor"/><circle cx="14.5" cy="11" r=".6" fill="currentColor"/><path d="M10.5 14.5c.8.8 2.2.8 3 0"/>',
     huis: '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/>',

@@ -236,7 +236,7 @@
      Tik je erop, dan schuift een paneel omhoog met de budgetknoppen (en sortering). Wens van Marius, 24-10-2026. */
   function filterPaneel(pad, q, sorteerOpties, knoppen) {
     var aantalFilters = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.sort && q.sort !== 'aanbevolen' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
-    var metVoor = !(knoppen && knoppen.length) && pad.indexOf('/c/') === 0 && pad.indexOf('/c/christelijk') !== 0;
+    var metVoor = !(knoppen && knoppen.length) && pad.indexOf('/c/') === 0 && pad.indexOf('/c/christelijk') !== 0 && pad.indexOf('/c/noodpakket-survival') !== 0;
     return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filter &amp; sorteren' +
         (aantalFilters ? ' <span class="filter-teller">' + aantalFilters + '</span>' : '') + '</button>' +
       '<div class="filterpaneel" data-filterpaneel hidden><button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
@@ -399,7 +399,9 @@
       '<div class="beeld">' + catBeeld(c, true) + '</div>' +
       '<div class="tekst"><h3>' + esc(c.naam) + '</h3>' + ((c.tekst || '').length > 80 ? '<p class="lees-kort">' + esc(c.tekst) + '</p><span class="lees-verder" role="button" tabindex="0" data-lees>Lees verder</span>' : '<p>' + esc(c.tekst) + '</p>') + '<span class="rond-pijl">' + ic('rechts') + '</span></div></a>';
   }
-  function nietChristelijk(p) { return p.cat !== 'christelijk'; }
+  /* Ook praktische noodspullen (noodrantsoen, jerrycans, EHBO...) niet tussen de gewone cadeaus en in VONK; zaklampen, noodradio's en spullen voor buiten wel. */
+  var NOOD_CADEAU = ['noodradio', 'licht-stroom', 'buiten-veld'];
+  function nietChristelijk(p) { return p.cat !== 'christelijk' && !(p.cat === 'noodpakket-survival' && NOOD_CADEAU.indexOf(p.sub) === -1); }
   /* Sfeerfoto's eerst (wens van Marius, 27-10-2026: presentatie is alles). Volgorde blijft verder gelijk. */
   function sfeerEerst(l) { return l.filter(function (p) { return p.sfeer; }).concat(l.filter(function (p) { return !p.sfeer; })); }
   function uitgelicht(tab) {
@@ -467,7 +469,7 @@
       }).join('') + '</div>';
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
-    var werkbalk = '<div class="werkbalk">' + (knoppen.length ? knopChips(pad, q, knoppen) : c.slug !== 'christelijk' ? voorChips(pad, q) : '') + prijsChips(pad, q) +
+    var werkbalk = '<div class="werkbalk">' + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
@@ -1805,6 +1807,61 @@
           ], ids: ['bol-9300000039602281'] }
       ],
       slot: 'Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
+    { slug: 'noodpakket-checklist', beeld: 'bol-9300000184877600', vakken: ['noodpakket-survival', 'noodpakket-survival/noodpakketten', 'noodpakket-survival/noodradio', 'noodpakket-survival/water-eten', 'noodpakket-survival/licht-stroom', 'noodpakket-survival/ehbo-brand'],
+      titel: 'Noodpakket samenstellen: de checklist voor 72 uur (en wat iedereen vergeet)', kort: 'Wat moet er in een noodpakket? De complete lijst, de dingen die mensen vaak vergeten en de spullen die het waard zijn.',
+      intro: 'De overheid vraagt iedereen om zich voor te bereiden op een noodsituatie: een lange stroomstoring, geen internet of telefoon, of een overstroming. Het advies is om 72 uur, dus 3 dagen, zelf te kunnen redden. Dat klinkt groot, maar het is goed te doen. Ik zette alles op een rij: wat erin moet, wat mensen vaak vergeten en welke spullen echt het geld waard zijn. Je hoeft niet alles in één keer te kopen. Begin met de basis en vul het stap voor stap aan.',
+      delen: [
+        { kop: 'De checklist: dit hoort in je noodpakket', tekst: 'Dit is de basis voor de eerste 72 uur, gebaseerd op het advies van de overheid (Denk vooruit) en het Rode Kruis:',
+          lijst: [
+            'Drinkwater: 3 liter per persoon per dag, dus 9 liter per persoon voor 3 dagen.',
+            'Eten dat lang goed blijft en dat je zonder koken kunt eten: blikken, noten, crackers, gedroogd fruit of noodrantsoen.',
+            'Een radio op batterijen of een opwindradio, zodat je de rampenzender kunt horen als internet en telefoon het niet doen.',
+            'Een zaklamp of hoofdlamp, met reservebatterijen.',
+            'Een volle powerbank met de juiste kabel voor je telefoon.',
+            'Een EHBO-set en de medicijnen die je elke dag nodig hebt.',
+            'Dekens of nooddekens, en warme kleding.',
+            'Contant geld: ongeveer 70 euro per volwassene en 30 euro per kind, in kleine briefjes en munten.',
+            'Hygiënespullen: wc-papier, vochtige doekjes, handgel, tandenborstel en maandverband.',
+            'Een fluitje, een multitool en reservesleutels van huis en auto.',
+            'Kopieën van je belangrijke papieren (paspoort, verzekering) en een papieren lijst met telefoonnummers.',
+            'Een stevige, waterdichte tas of rugzak om alles in te bewaren.'
+          ] },
+        { kop: '12 dingen die mensen vaak vergeten', tekst: 'Bijna iedereen denkt aan water en een zaklamp. Deze dingen worden het vaakst vergeten:',
+          lijst: [
+            'Contant geld. Als de stroom uitvalt, werkt pinnen niet.',
+            'Telefoonnummers op papier. Wie kent zijn familie nog uit zijn hoofd?',
+            'Een reservebril of lenzen.',
+            'Eten en water voor je huisdier.',
+            'Luiers, flesjes en babyvoeding.',
+            'Een kabel die echt in je powerbank én je telefoon past.',
+            'Batterijen in de goede maat (en niet in het apparaat bewaard, dan lopen ze leeg).',
+            'Een blikopener, als je blikken eten hebt.',
+            'Een plan voor de wc: vuilniszakken, plaszakken of een emmer met deksel.',
+            'Iets om de tijd te doden: een kaartspel of een boek, zeker met kinderen.',
+            'Een afspraak met je gezin: waar zien we elkaar als niemand bereikbaar is?',
+            'Controle: twee keer per jaar kijken of alles nog werkt en niet over de datum is.'
+          ] },
+        { kop: 'Noodradio: de belangrijkste aankoop', tekst: 'Valt de stroom uit, dan doen internet en het mobiele netwerk het vaak ook niet lang meer. Via de radio hoor je dan wat je moet doen. Kies een noodradio die je kunt opwinden of opladen met een zonnepaneel. Veel modellen hebben ook een zaklamp en kunnen je telefoon een beetje opladen.',
+          ids: ['bol-9300000184877600', 'prepz-46fa0db271', 'hema-ec5f8ec205', 'prepz-f826f694ec'] },
+        { kop: 'Water en eten voor 3 dagen', tekst: 'Water is het allerbelangrijkst. Bewaar flessen water of lang houdbaar drinkwater, en zorg voor een filter voor als het water uit de kraan niet meer te vertrouwen is. Noodrantsoen is klein, licht en jarenlang houdbaar.',
+          ids: ['prepz-5bc2e01a12', 'prepz-2b66e4c3ab', 'prepz-1b16ae0ca5', 'bushpa-2efabaca8b'] },
+        { kop: 'Licht als het donker wordt', tekst: 'Een hoofdlamp is handiger dan een zaklamp: je hebt je handen vrij. Een lamp die je met zonlicht of een slinger kunt opladen, heeft geen batterijen nodig.',
+          ids: ['prepz-5d203ca727', 'bushpa-abaaeb3d75', 'bol-9300000238510035', 'prepz-8fc77a0710'] },
+        { kop: 'EHBO en warmte', tekst: 'Een goede EHBO-set hoort in elk huis, ook zonder noodsituatie. Een nooddeken weegt bijna niets en houdt je warm als de verwarming uitvalt.',
+          ids: ['prepz-10e9686822', 'bushpa-3c0afae42b', 'bushpa-7298dda0ce', 'prepz-968ef4f95a'] },
+        { kop: 'Kant-en-klaar noodpakket kopen of zelf samenstellen?', tekst: 'Een kant-en-klaar pakket is makkelijk: je hebt meteen een tas met de basis. Maar let op. Volgens de Consumentenbond en Kassa missen veel pakketten juist water, hygiënespullen en contant geld, en zitten er soms gadgets in die je nooit gebruikt. Sommige pakketten kosten honderden euro’s. Mijn advies: koop een eenvoudig basispakket of stel het zelf samen, en geef je geld vooral uit aan een goede noodradio, een waterfilter en een fijne hoofdlamp.',
+          ids: ['prepz-f40f800553', 'dvzn-5d1532be4a', 'dvzn-456925', 'prepz-f9f677b298'] },
+        { kop: 'Zo houd je je noodpakket op orde', tekst: 'Een noodpakket dat al jaren in de kast staat, werkt niet altijd meer. Doe dit twee keer per jaar, bijvoorbeeld als de klok verzet wordt:',
+          stappen: [
+            'Kijk naar de datum op het eten, het water en de medicijnen. Vervang wat bijna over de datum is.',
+            'Laad de powerbank op en test de radio en de zaklamp.',
+            'Kijk of de batterijen nog goed zijn.',
+            'Pas het pakket aan als je gezin verandert: een baby, een huisdier, andere medicijnen.',
+            'Spreek met je gezin nog eens af waar je elkaar ziet als je elkaar niet kunt bereiken.'
+          ] },
+        { kop: 'Pas op voor nep-acties', tekst: 'De overheid deelt geen gratis noodpakketten uit. Krijg je een mail, sms of WhatsApp-bericht over een gratis noodpakket waarvoor je moet klikken of betalen? Dan is het bijna zeker oplichting. Klik niet op de link.' }
+      ],
+      slot: 'Alle spullen staan bij <a href="/c/noodpakket-survival">Noodpakket &amp; survival</a>. Zoek je iets specifieks? Kijk bij <a href="/c/noodpakket-survival/noodradio">Noodradio’s</a>, <a href="/c/noodpakket-survival/water-eten">Water &amp; eten</a> of <a href="/c/noodpakket-survival/licht-stroom">Licht &amp; stroom</a>. Meer informatie vind je op denkvooruit.nl van de Rijksoverheid.' },
     { slug: 'sinterklaas-onder-10', beeld: 'bol-9300000157956217', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/voor-kinderen', 'cadeaus/onder-15', 'speelgoed'], titel: 'Sinterklaascadeaus onder de €10: voor in de schoen en als klein pakje', kort: 'Kleine cadeautjes voor de schoen en pakjesavond, allemaal onder een tientje.',
       intro: 'Elke avond een schoen zetten, en dan ook nog pakjesavond: dat loopt snel op. Daarom koos ik cadeautjes onder de 10 euro waar kinderen echt blij van worden. Kleine setjes, boekjes en spelletjes, van merken die je kent.',
       delen: [

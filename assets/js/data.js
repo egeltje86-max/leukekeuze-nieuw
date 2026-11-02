@@ -274,6 +274,28 @@ window.LK_CATEGORIEEN = [
       { slug: 'voor-kinderen', naam: 'Voor kinderen', beeld: 'images/sub/sub-christelijk-voor-kinderen.webp', seoTitel: 'Christelijke cadeaus voor kinderen: kinderbijbels en meer', seoTekst: 'Christelijke cadeaus voor kinderen: kinderbijbels, psalmboekjes, peuterdagboeken, de catechismus voor kinderen en speelgoed met Bijbelverhalen.' }, { slug: 'boeken-muziek', naam: 'Boeken & muziek', beeld: 'images/sub/sub-christelijk-boeken-muziek.webp', seoTitel: 'Christelijke boeken en dagboeken als cadeau', seoTekst: 'Christelijke boeken, dagboeken en muziek: HSV-dagboeken, boeken over bidden en de psalmen, dagboekkalenders en meer. Een mooi cadeau voor elke dag.' },
       { slug: 'kerststal-engelen', naam: 'Kerststallen & engelen', beeld: 'images/sub/sub-christelijk-kerststal-engelen.webp', seoTitel: 'Kerststal kopen: houten kerststallen en engelen', seoTekst: 'Kerststallen en engelen voor de kerst: houten kerststallen, kerststalfiguren en sfeervolle engeltjes voor in huis.' }, { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' , tekst: 'Cadeaus voor een doop of belijdenis: kinderbijbels, eerste Bijbels, dagboeken en mooie aandenkens voor deze bijzondere dag.', seoTitel: 'Doopcadeau en belijdeniscadeau: christelijke cadeaus', seoTekst: 'Een doopcadeau of belijdeniscadeau met betekenis: kinderbijbels, Statenvertaling en HSV Bijbels, Bijbelhoezen, dagboeken en aandenkens met een Bijbeltekst.' },
 
+    ] },
+  /* Noodpakket & survival (wens Marius 2-11-2026): een eigen hoek, net als christelijk. Alleen echte, bruikbare spullen. */
+  { slug: 'noodpakket-survival', naam: 'Noodpakket & survival', kort: 'Noodpakket & survival', icoon: 'nood',
+    tekst: 'Goed voorbereid als de stroom, het water of het internet uitvalt. Noodpakketten, noodradio’s, zaklampen, waterfilters, EHBO en spullen voor buiten. Alles wat de overheid aanraadt voor de eerste 72 uur, en de dingen die mensen vaak vergeten.',
+    seoTitel: 'Noodpakket kopen of zelf samenstellen: alles voor 72 uur',
+    seoTekst: 'Noodpakket kopen of zelf samenstellen? Noodradio’s, zaklampen, powerbanks, waterfilters, noodrantsoen, EHBO-kits en survivalspullen. Met de checklist voor 72 uur.',
+    gids: [
+      { kop: 'Waarom een noodpakket?', tekst: 'De overheid raadt iedereen aan om zich voor te bereiden op een noodsituatie, zoals een lange stroomstoring, uitval van internet en telefoon of een overstroming. Het advies: zorg dat je 72 uur, dus 3 dagen, zelf kunt redden. Hulpdiensten hebben dan de handen vol met wie het het hardst nodig heeft.' },
+      { kop: 'Wat hoort erin?', tekst: 'De basis is simpel: drinkwater (3 liter per persoon per dag), houdbaar eten, een zaklamp, een radio op batterijen of een opwindradio, een powerbank, een EHBO-set, dekens, contant geld (ongeveer 70 euro per volwassene en 30 euro per kind) en je medicijnen. Lees onze checklist voor de volledige lijst.' },
+      { kop: 'Kant-en-klaar of zelf samenstellen?', tekst: 'Een kant-en-klaar noodpakket is makkelijk, maar mist vaak water, hygiënespullen en contant geld. Zelf samenstellen is vaak goedkoper en je kiest zelf de kwaliteit. Een goede middenweg: koop een basispakket en vul het aan met een goede noodradio, een waterfilter en je eigen medicijnen.' },
+      { kop: 'Wat mensen vaak vergeten', tekst: 'Contant geld in kleine briefjes, een papieren lijst met telefoonnummers, reservebrillen of lenzen, eten voor huisdieren, luiers en babyvoeding, een opladerkabel die bij de powerbank past, en batterijen die ook echt passen. En: kijk twee keer per jaar of alles nog werkt en niet over de datum is.' }
+    ],
+    tegel: 'images/categorieen/categorie-noodpakket-survival.webp', banner: 'images/banners/banner-cat-noodpakket-survival.webp',
+    subs: [
+      { slug: 'noodpakketten', naam: 'Noodpakketten', beeld: 'images/sub/sub-noodpakket-survival-noodpakketten.webp', seoTitel: 'Noodpakket kopen: kant-en-klare noodpakketten voor 72 uur', seoTekst: 'Kant-en-klare noodpakketten voor 1 of meer personen, voor de eerste 72 uur. Met zaklamp, radio, deken, EHBO en meer. Vul ze aan met water en contant geld.' },
+      { slug: 'noodradio', naam: 'Noodradio’s', beeld: 'images/sub/sub-noodpakket-survival-noodradio.webp', seoTitel: 'Noodradio kopen: opwindbaar, met zonnepaneel en powerbank', seoTekst: 'Een noodradio werkt ook als de stroom en het internet uitvallen. Opwindbare radio’s met zonnepaneel, zaklamp en powerbank, zodat je de rampenzender kunt horen.' },
+      { slug: 'licht-stroom', naam: 'Licht & stroom', beeld: 'images/sub/sub-noodpakket-survival-licht-stroom.webp', seoTitel: 'Zaklampen, hoofdlampen en powerbanks voor een stroomstoring', seoTekst: 'Licht en stroom als het donker wordt: zaklampen, hoofdlampen, lantaarns, powerbanks op zonne-energie en draagbare powerstations.' },
+      { slug: 'water-eten', naam: 'Water & eten', beeld: 'images/sub/sub-noodpakket-survival-water-eten.webp', seoTitel: 'Noodrantsoen, houdbaar water en waterfilters', seoTekst: 'Drinkwater en eten voor de eerste 72 uur: lang houdbaar water, noodrantsoen, gevriesdroogde maaltijden, waterfilters en jerrycans.' },
+      { slug: 'koken-warmte', naam: 'Koken & warmte', beeld: 'images/sub/sub-noodpakket-survival-koken-warmte.webp', seoTitel: 'Koken zonder stroom en warm blijven', seoTekst: 'Koken zonder stroom of gas met een klein kooktoestel, en warm blijven met nooddekens, slaapzakken en handwarmers.' },
+      { slug: 'ehbo-brand', naam: 'EHBO & brandveiligheid', beeld: 'images/sub/sub-noodpakket-survival-ehbo-brand.webp', seoTitel: 'EHBO-kits, branddekens en brandblussers', seoTekst: 'EHBO-kits voor thuis, in de auto en onderweg, plus branddekens, brandblussers en rookmelders. Veilig in huis.' },
+      { slug: 'buiten-veld', naam: 'Buiten & in het veld', beeld: 'images/sub/sub-noodpakket-survival-buiten-veld.webp', seoTitel: 'Survival en bushcraft: vuurstarters, kompassen, tarps en zagen', seoTekst: 'Voor buiten, in het bos en op de velden: vuurstarters, kompassen, tarps, vouwzagen, multitools en waterdichte zakken.' },
+      { slug: 'tassen-onderweg', naam: 'Tassen & onderweg', beeld: 'images/sub/sub-noodpakket-survival-tassen-onderweg.webp', seoTitel: 'Noodtas en bug-out-bag: rugzakken voor onderweg', seoTekst: 'Een stevige rugzak om je noodpakket in te bewaren, plus handige spullen voor in de stad en onderweg: fluitjes, waterdichte zakken en meer.' }
     ] }
 ];
 
@@ -629,7 +651,7 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
   /* Metaaldetectie wordt een eigen groep (stond onder Sport). */
   delete cat('metaaldetectie').onder;
   /* Volgorde van de 15 groepen, Christelijke cadeaus als eigen afdeling erachter. */
-  var volgorde = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektronica', 'wonen', 'keuken', 'dranken', 'eten-drinken', 'speelgoed', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren', 'metaaldetectie', 'christelijk', 'cadeaus', 'valentijn'];
+  var volgorde = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektronica', 'wonen', 'keuken', 'dranken', 'eten-drinken', 'speelgoed', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren', 'metaaldetectie', 'christelijk', 'noodpakket-survival', 'cadeaus', 'valentijn'];
   C.sort(function (a, b) { return volgorde.indexOf(a.slug) - volgorde.indexOf(b.slug); });
 })();
 /* ===== 2.1 NIEUWE INDELING (vakje voor vakje goedgekeurd door Marius, 30-10-2026) =====
