@@ -507,3 +507,12 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .vonk-vraag .keuze { padding: 14px 12px; }
   .vonk-terug { margin-top: 14px; }
 }
+
+/* 02-11-2026 (Marius: 'staat niet netjes'): collecties zijn er 9, dus op de telefoon 3 x 3 in plaats van 4 + 4 + 1 (Belevenissen bleef alleen over). Woorden niet meer halverwege afbreken. */
+.persoon-subs.home.gelegenheden:has(> :nth-child(9):last-child) { grid-template-columns: repeat(3, 1fr); }
+.persoon-subs.home.gelegenheden:has(> :nth-child(9):last-child) .subkaart .rond { width: 84px; height: 84px; }
+@media (min-width: 1024px) { .persoon-subs.home.gelegenheden:has(> :nth-child(9):last-child) { grid-template-columns: repeat(9, 1fr); } .persoon-subs.home.gelegenheden:has(> :nth-child(9):last-child) .subkaart .rond { width: 96px; height: 96px; } }
+.persoon-subs.home .subkaart { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: break-word; }
+/* 'Zoek in alle winkels' stond in donkere letters op het donkerblauwe vlak: onleesbaar. */
+.vonk-kaart.zoek-alle h2 { color: #F4ECDD; }
+@media (max-width: 380px) { .persoon-subs.home.gelegenheden:has(> :nth-child(9):last-child) .subkaart { font-size: 12px; } }
