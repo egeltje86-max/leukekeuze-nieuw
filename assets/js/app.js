@@ -2506,21 +2506,56 @@
      dan geven we elke nieuwe pagina hier door. Zonder cookies; alleen het adres en de titel van de pagina. */
   (function () {
     var eerste = true;
+    /* 02-11-2026 (Marius): onthouden via welk deel van de site iemand bij een winkel uitkomt (VONK, gids, Sinterklaas, zoeken...).
+       Alleen in het geheugen van dit tabblad; geen cookies, geen persoonsgegevens. */
+    var herkomst = (function () {
+      var r = ''; try { r = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+      if (r && r.indexOf('leukekeuze') === -1) return 'van buiten: ' + r.replace(/^www\./, '').replace(/^(l|m|lm)\./, '').split('.').slice(-2, -1)[0];
+      return 'rechtstreeks';
+    })();
+    function deelVan(pad) {
+      pad = (pad || '/').replace(/\/+$/, '');
+      if (!pad) return 'homepage';
+      if (/^\/p\//.test(pad)) return '';
+      return pad.slice(1);
+    }
+    var nu = deelVan(location.pathname); if (nu) herkomst = nu;
     window.addEventListener('lk-route', function () {
+      var d = deelVan(location.pathname); if (d) herkomst = d;
       if (eerste) { eerste = false; return; }
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.search, title: document.title }); } catch (e) {}
     });
-    /* Klik naar een winkel ('Bekijk bij bol', winkeltegel, product uit 'Meer in onze winkels'): als 'gebeurtenis' tellen,
-       zodat het Control Room laat zien welke producten mensen bij welke winkel bekijken. Geen cookies, geen persoonsgegevens. */
+    function netwerk(h) {
+      h = h || '';
+      if (/partner\.bol\.com|\/\/(www\.)?bol\.com/.test(h)) return 'bol';
+      if (/amazon\./.test(h)) return 'Amazon';
+      if (/[?&]tt=|tradetracker|[?&]a=516846\b|_516846_/.test(h)) return 'TradeTracker';
+      if (/awin1\.com|awin\./.test(h)) return 'Awin';
+      if (typeof isDaisycon === 'function' && isDaisycon(h)) return 'Daisycon';
+      return 'zonder partnerlink';
+    }
+    function schoon(t) { return String(t || '').replace(/[\/?#]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60); }
+    /* Klik naar een winkel ('Bekijk bij bol', winkeltegel, product uit 'Zoek in alle winkels', 'Dit cadeau geven'): als 'gebeurtenis' tellen.
+       klik/<winkel>/<product>  = welk product bij welke winkel (zoals eerst)
+       bron/<deel van de site>/<netwerk>/<winkel> = via welk deel van de site, naar welk netwerk en welke winkel (nieuw 02-11-2026) */
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a[rel~="sponsored"]'); if (!a || !window.goatcounter || !window.goatcounter.count) return;
-      var pad = '', titel = '';
+      var pad = '', titel = '', winkel = '', prod = null;
       var kaart = a.closest('.product-info, .product-plak');
-      if (kaart) { var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1] || ''; var p = id && LK.vind(id); if (p) { pad = 'klik/' + p.shop + '/' + p.id; titel = p.shop + ': ' + p.titel; } }
-      else if (a.classList.contains('winkelkaart')) { pad = 'klik/winkel/' + (a.querySelector('strong') || {}).textContent; titel = 'Winkeltegel: ' + (a.querySelector('strong') || {}).textContent; }
-      else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); pad = 'klik/feed/' + (k.querySelector('.shop') || {}).textContent; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
-      else if (a.closest('.aw-bol')) { pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
-      if (pad) try { window.goatcounter.count({ path: pad, title: titel.slice(0, 120), event: true }); } catch (x) {}
+      var ck = a.closest('.cadeaukaart');
+      if (kaart) { var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1] || ''; var p = id && LK.vind(id); if (p) { prod = p; winkel = p.shop; pad = 'klik/' + p.shop + '/' + p.id; titel = p.shop + ': ' + p.titel; } }
+      else if (a.classList.contains('winkelkaart')) { winkel = schoon((a.querySelector('strong') || {}).textContent); pad = 'klik/winkel/' + winkel; titel = 'Winkeltegel: ' + winkel; }
+      else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); winkel = schoon((k.querySelector('.shop') || {}).textContent); pad = 'klik/feed/' + winkel; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
+      else if (a.closest('.aw-bol')) { winkel = 'bol'; pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
+      else if (ck) { var pid = ((ck.querySelector('a.beeld') || {}).getAttribute ? ck.querySelector('a.beeld').getAttribute('href') : '').replace(/^\/p\/|\/$/g, ''); var q = pid && LK.vind(pid); prod = q || null; winkel = q ? q.shop : schoon((ck.querySelector('.shop') || {}).textContent); pad = 'klik/' + winkel + '/' + (q ? q.id : 'lijst'); titel = 'Verlanglijstje: ' + (q ? q.titel : winkel); }
+      else { try { winkel = new URL(a.href).hostname.replace(/^www\./, ''); } catch (x) { winkel = 'onbekend'; } pad = 'klik/overig/' + winkel; titel = 'Andere winkellink: ' + winkel; }
+      if (!pad) return;
+      try { window.goatcounter.count({ path: pad, title: titel.slice(0, 120), event: true }); } catch (x) {}
+      var net = netwerk(a.href);
+      /* Daisycon staat op pauze: dan gaat de knop rechtstreeks naar de winkel en verdienen we (nog) niets. Apart tonen. */
+      if (net === 'zonder partnerlink' && prod && netwerk(prod.url) === 'Daisycon') net = 'Daisycon-pauze';
+      var bron = 'bron/' + herkomst + '/' + net + '/' + (winkel || 'onbekend');
+      try { window.goatcounter.count({ path: bron.slice(0, 180), title: 'Via ' + herkomst + ' naar ' + (winkel || 'winkel') + ' (' + net + ')', event: true }); } catch (x) {}
     }, true);
   })();
 
