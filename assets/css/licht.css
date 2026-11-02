@@ -493,3 +493,17 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .vonk-pagina > .vonk-icoon { width: 72px; height: 72px; margin-top: 10px; }
   .vonk-pagina > .vonk-icoon img { width: 72px; height: 72px; }
 }
+/* VONK op de telefoon (2-11-2026): compacte kop zodat de eerste vraag meteen in beeld staat. */
+.vonk-pagina { scroll-margin-top: calc(var(--header-h) + 10px); }
+@media (max-width: 759px) {
+  .vonk-kop .kruimel { display: none; }
+  .vonk-kop .binnen { padding-top: 12px; padding-bottom: 12px; }
+  .vonk-kop h1 { font-size: 26px; margin-top: 0; }
+  .vonk-kop p { font-size: 14px; margin-top: 2px; line-height: 1.4; }
+  .vonk-pagina { padding-top: 14px; }
+  .vonk-pagina > .vonk-icoon { display: none; }
+  .vonk-pagina .vonk-stapjes { margin-bottom: 14px; }
+  .vonk-vraag h2 { font-size: 24px; margin-bottom: 12px; }
+  .vonk-vraag .keuze { padding: 14px 12px; }
+  .vonk-terug { margin-top: 14px; }
+}

@@ -433,7 +433,7 @@
     /* Op een telefoon een kleinere, al bijgesneden versie van de banner (-mobiel.webp): scheelt zo'n 70% aan data. */
     if (o.banner) achter = '<div class="achter"><picture><source media="(max-width: 759px)" srcset="' + esc(o.banner.replace('.webp', '-mobiel.webp')) + '"><img src="' + esc(o.banner) + '" alt="" fetchpriority="high"></picture></div>';
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(o.vaag) + '" alt=""></div>';
-    return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + '">' + achter +
+    return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + (o.klasse ? ' ' + o.klasse : '') + '">' + achter +
       '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p>' + esc(o.tekst) + '</p>' : '') + '</div></section>';
   }
 
@@ -1304,7 +1304,7 @@
     var stap = !q.voor ? 1 : (kind && !lft) ? 1.5 : !q.moment ? 2 : !q.budget ? 3 : 4;
     var stappen = kind ? [1, 1.5, 2, 3] : [1, 2, 3];
     var balk = '<div class="vonk-stapjes" aria-hidden="true">' + stappen.map(function (n) { return '<span class="' + (n <= stap ? 'aan' : '') + '"></span>'; }).join('') + '</div>';
-    var kop = paginakop({ titel: 'VONK', tekst: 'Beantwoord 3 vragen. VONK kiest direct passende cadeaus voor je.', kruimel: [{ tekst: 'VONK' }] });
+    var kop = paginakop({ titel: 'VONK', tekst: 'Beantwoord 3 vragen. VONK kiest direct passende cadeaus voor je.', kruimel: [{ tekst: 'VONK' }], klasse: 'vonk-kop' });
     var BUDGET = PRIJZEN.map(function (p) { return { id: p.id === 'alle' ? 'geen' : p.id, label: p.id === 'alle' ? 'Maakt niet uit' : p.label }; });
     var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
 
@@ -2409,9 +2409,14 @@
       } else window.scrollTo(0, 0);
       if (vorigPad !== null) app.focus({ preventScroll: true });
     }
+    /* VONK: na een keuze (of 'Vorige vraag') niet naar de bovenkant springen, maar de volgende vraag
+       netjes onder de vaste kopbalk zetten. De hoogte van die balk meten we, dus elk scherm klopt. (wens Marius 2-11-2026) */
     if (d[0] === 'vonk' && a.pad === vorigPad && location.search !== vorigeVonk && !hersteld) {
       var rustigV = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({ top: 0, behavior: rustigV ? 'auto' : 'smooth' });
+      var vp = $('.vonk-pagina', app), kopV = $('.header');
+      var kopH = kopV ? kopV.getBoundingClientRect().height : 60;
+      var doelV = vp ? vp.getBoundingClientRect().top + window.scrollY - kopH - 10 : 0;
+      if (Math.abs(window.scrollY - doelV) > 4) window.scrollTo({ top: Math.max(0, doelV), behavior: rustigV ? 'auto' : 'smooth' });
     }
     vorigeVonk = d[0] === 'vonk' ? location.search : null;
     vorigPad = a.pad;
