@@ -7,11 +7,31 @@ const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const { deel } = require('./indeling.js'); // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
 const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden', 'varianten', 'maten', 'gecontroleerd'];
+/* Keurkamer-slot (2-11-2026): de oordelen van Marius uit keurkamer/oordelen.json gelden bij ELKE bouw.
+   Wat hij weg heeft gedaan blijft weg (ook als een ronde het product opnieuw aanlevert), verplaatst blijft verplaatst,
+   'niet hier' blijft weg uit dat extra vakje, toppers blijven bovenaan. Zie scripts/keurkamer/verwerk.py. */
+let OORDELEN = { producten: {}, zwart: {} };
+try { OORDELEN = JSON.parse(fs.readFileSync(path.join(ROOT, 'keurkamer/oordelen.json'), 'utf8')); } catch (e) {}
+const urlSleutel = (u) => String(u || '').toLowerCase().replace(/[?#].*$/, '').replace(/\/+$/, '');
+function keurkamerSlot(p) {
+  const o = (OORDELEN.producten || {})[p.id];
+  if (o) {
+    /* Verplaatsingen, toppers en teksten schrijft verwerk.py in producten.js zelf (daar kan Marius ze later weer veranderen).
+       Hier alleen het vangnet: weg blijft weg, en 'niet in dit extra vakje' blijft gelden (ook als indeling.js het er weer bij zet). */
+    if (o.oordeel === 'weg' && p.status === 'goedgekeurd') { p.status = 'afgekeurd'; p.afgekeurdReden = p.afgekeurdReden || 'keurkamer'; }
+    if (o.nietIn && o.nietIn.length) p.ookIn = (p.ookIn || []).filter((v) => o.nietIn.indexOf(v) === -1);
+  } else if (p.status === 'goedgekeurd' && (OORDELEN.zwart || {})[urlSleutel(p.winkelUrl)]) {
+    /* zelfde winkelpagina als een product dat Marius weg heeft gedaan (bijv. opnieuw aangeleverd onder een nieuw id) */
+    p.status = 'afgekeurd'; p.afgekeurdReden = 'keurkamer (zelfde winkelpagina als een afgekeurd product)';
+  }
+  p.ookIn = (p.ookIn || []).filter((v, i, a) => v !== p.cat + '/' + p.sub && a.indexOf(v) === i);
+  return p;
+}
 function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
   for (const p0 of w.LK_PRODUCTEN) {
-    const p = deel(p0);
+    const p = keurkamerSlot(deel(p0));
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */

@@ -1,0 +1,206 @@
+# Alle vakjes van LeukeKeuze (code: afdeling > naam)
+
+- `sieraden/ringen`: Sieraden & Horloges > Ringen
+- `sieraden/smartwatches`: Sieraden & Horloges > Smartwatches
+- `sieraden/horloges`: Sieraden & Horloges > Horloges
+- `sieraden/echt-goud`: Sieraden & Horloges > Echt goud
+- `sieraden/oorbellen`: Sieraden & Horloges > Oorbellen
+- `sieraden/kettingen`: Sieraden & Horloges > Kettingen & hangers
+- `sieraden/zilver`: Sieraden & Horloges > Zilver
+- `sieraden/armbanden`: Sieraden & Horloges > Armbanden & enkelbandjes
+- `sieraden/sieradendozen`: Sieraden & Horloges > Sieradendozen
+- `sieraden/parels`: Sieraden & Horloges > Parels
+- `sieraden/bedels`: Sieraden & Horloges > Bedels & bedelarmbanden
+- `sieraden/met-naam`: Sieraden & Horloges > Met naam & letter
+- `geuren-verzorging/rituals`: Geuren & Verzorging > Rituals
+- `geuren-verzorging/parfum`: Geuren & Verzorging > Parfum
+- `geuren-verzorging/scheren-baard`: Geuren & Verzorging > Scheren & baard
+- `geuren-verzorging/haarstylers`: Geuren & Verzorging > Haarstylers
+- `geuren-verzorging/make-up-nagels`: Geuren & Verzorging > Make-up & nagels
+- `geuren-verzorging/huidverzorging`: Geuren & Verzorging > Huidverzorging
+- `geuren-verzorging/cadeausets`: Geuren & Verzorging > Cadeausets
+- `geuren-verzorging/bad-douche`: Geuren & Verzorging > Bad & douche
+- `geuren-verzorging/massage`: Geuren & Verzorging > Massage
+- `geuren-verzorging/tandenborstels`: Geuren & Verzorging > Elektrische tandenborstels
+- `mode-beauty/schoenen`: Mode & Accessoires > Schoenen, sneakers & boots
+- `mode-beauty/truien-hoodies`: Mode & Accessoires > Truien & hoodies
+- `mode-beauty/pyjamas`: Mode & Accessoires > Pyjama's, badjassen & onesies
+- `mode-beauty/koffers`: Mode & Accessoires > Koffers & reistassen
+- `mode-beauty/tassen`: Mode & Accessoires > Tassen
+- `mode-beauty/mutsen-sjaals`: Mode & Accessoires > Mutsen, sjaals & handschoenen
+- `mode-beauty/portemonnees`: Mode & Accessoires > Portemonnees & pasjeshouders
+- `mode-beauty/pantoffels-sokken`: Mode & Accessoires > Pantoffels & sokken
+- `mode-beauty/zonnebrillen`: Mode & Accessoires > Zonnebrillen
+- `mode-beauty/rugzakken`: Mode & Accessoires > Rugzakken
+- `mode-beauty/riemen-sleutelhangers`: Mode & Accessoires > Riemen, sleutelhangers & paraplu's
+- `mode-beauty/toilettassen`: Mode & Accessoires > Toilettassen
+- `elektronica/gaming`: Elektronica & Gadgets > Gaming
+- `elektronica/telefoon-opladen`: Elektronica & Gadgets > Telefoon & opladen
+- `elektronica/cameras`: Elektronica & Gadgets > Camera's
+- `elektronica/koptelefoons`: Elektronica & Gadgets > Koptelefoons & oordopjes
+- `elektronica/tablets-ereaders`: Elektronica & Gadgets > Tablets & e-readers
+- `elektronica/drones-vr`: Elektronica & Gadgets > Drones & VR
+- `elektronica/platenspelers`: Elektronica & Gadgets > Platenspelers
+- `elektronica/gadgets-trackers`: Elektronica & Gadgets > Gadgets & trackers
+- `elektronica/speakers`: Elektronica & Gadgets > Speakers
+- `elektronica/beamers`: Elektronica & Gadgets > Beamers
+- `elektronica/sfeerlicht-smarthome`: Elektronica & Gadgets > Sfeerlicht & smart home
+- `wonen/lampen`: Wonen & Decoratie > Lampen
+- `wonen/vloerkleden`: Wonen & Decoratie > Vloerkleden
+- `wonen/wanddecoratie`: Wonen & Decoratie > Wanddecoratie & posters
+- `wonen/klokken`: Wonen & Decoratie > Klokken
+- `wonen/kerst`: Wonen & Decoratie > Kerst
+- `wonen/vazen-bloemen`: Wonen & Decoratie > Vazen & bloemen
+- `wonen/kussens-plaids`: Wonen & Decoratie > Kussens & plaids
+- `wonen/kaarsen`: Wonen & Decoratie > Kaarsen & kandelaars
+- `wonen/spiegels`: Wonen & Decoratie > Spiegels
+- `wonen/opbergen-dienbladen`: Wonen & Decoratie > Opbergen & dienbladen
+- `wonen/fotolijsten`: Wonen & Decoratie > Fotolijsten
+- `wonen/huisgeuren`: Wonen & Decoratie > Huisgeuren
+- `wonen/deurmatten`: Wonen & Decoratie > Deurmatten
+- `keuken/keukenapparaten`: Keuken & Tafelen > Keukenapparaten
+- `keuken/airfryers`: Keuken & Tafelen > Airfryers
+- `keuken/koffie-thee`: Keuken & Tafelen > Koffie & thee
+- `keuken/gezellig-tafelen`: Keuken & Tafelen > Gezellig tafelen
+- `keuken/pannen`: Keuken & Tafelen > Pannen
+- `keuken/tosti-wafel-ijs`: Keuken & Tafelen > Tosti-, wafel- & ijsmachines
+- `keuken/glazen-servies`: Keuken & Tafelen > Glazen & servies
+- `keuken/drinkflessen-lunch`: Keuken & Tafelen > Drinkflessen & lunch
+- `keuken/messen-snijplanken`: Keuken & Tafelen > Messen & snijplanken
+- `keuken/bakken`: Keuken & Tafelen > Bakken
+- `keuken/kaas-serveerplanken`: Keuken & Tafelen > Kaas- & serveerplanken
+- `keuken/voorraadpotten`: Keuken & Tafelen > Voorraadpotten
+- `dranken/champagne-bubbels`: Dranken > Champagne & bubbels
+- `dranken/gin-cocktails`: Dranken > Gin & cocktails
+- `dranken/wijn-port`: Dranken > Wijn & port
+- `dranken/likeuren`: Dranken > Likeuren
+- `dranken/bier`: Dranken > Bier & speciaalbier
+- `dranken/wijnaccessoires`: Dranken > Wijnaccessoires
+- `dranken/tequila`: Dranken > Tequila & mezcal
+- `dranken/alcoholvrij`: Dranken > Alcoholvrij
+- `dranken/whisky`: Dranken > Whisky
+- `dranken/cognac`: Dranken > Cognac
+- `dranken/jenever`: Dranken > Jenever
+- `dranken/sake`: Dranken > Sake
+- `dranken/rum`: Dranken > Rum
+- `dranken/wodka`: Dranken > Wodka
+- `eten-drinken/chocolade`: Lekkernijen & Cadeaupakketten > Chocolade & bonbons
+- `eten-drinken/koekjes-stroopwafels`: Lekkernijen & Cadeaupakketten > Koekjes & stroopwafels
+- `eten-drinken/delicatessen`: Lekkernijen & Cadeaupakketten > Delicatessen
+- `eten-drinken/drop-snoep`: Lekkernijen & Cadeaupakketten > Drop & snoep
+- `eten-drinken/sinterklaas-lekkers`: Lekkernijen & Cadeaupakketten > Sinterklaas-lekkers
+- `eten-drinken/adventskalenders`: Lekkernijen & Cadeaupakketten > Adventskalenders
+- `eten-drinken/kerst-cadeaupakketten`: Lekkernijen & Cadeaupakketten > Kerst- & cadeaupakketten
+- `eten-drinken/koffie-thee`: Lekkernijen & Cadeaupakketten > Koffie & thee
+- `eten-drinken/brievenbuscadeaus`: Lekkernijen & Cadeaupakketten > Brievenbuscadeaus
+- `eten-drinken/bbq-sauzen`: Lekkernijen & Cadeaupakketten > BBQ & sauzen
+- `speelgoed/lego`: Speelgoed & Spellen > LEGO
+- `speelgoed/buitenspeelgoed`: Speelgoed & Spellen > Buitenspeelgoed
+- `speelgoed/bord-kaartspellen`: Speelgoed & Spellen > Bord- & kaartspellen
+- `speelgoed/pokemon-verzamelkaarten`: Speelgoed & Spellen > Pokémon & verzamelkaarten
+- `speelgoed/puzzels`: Speelgoed & Spellen > Puzzels
+- `speelgoed/poppen-barbie`: Speelgoed & Spellen > Poppen & Barbie
+- `speelgoed/playmobil`: Speelgoed & Spellen > Playmobil
+- `speelgoed/autos-treinen-rc`: Speelgoed & Spellen > Auto's, treinen & RC
+- `speelgoed/knuffels-squishmallows`: Speelgoed & Spellen > Knuffels & Squishmallows
+- `speelgoed/knikkerbanen-magnetisch`: Speelgoed & Spellen > Knikkerbanen & magnetisch bouwen
+- `speelgoed/knutselen-kleuren`: Speelgoed & Spellen > Knutselen & kleuren
+- `speelgoed/hypes-trends`: Speelgoed & Spellen > Hypes & trends
+- `speelgoed/baby-houten`: Speelgoed & Spellen > Baby- & houten speelgoed
+- `speelgoed/speelkeukens-verkleden`: Speelgoed & Spellen > Speelkeukens & verkleden
+- `speelgoed/muziek-karaoke`: Speelgoed & Spellen > Muziek & karaoke
+- `hobby/tekenen`: Hobby & Creatief > Tekenen & stiften
+- `hobby/schilderen`: Hobby & Creatief > Schilderen
+- `hobby/diamond-painting`: Hobby & Creatief > Diamond painting
+- `hobby/naaien-borduren`: Hobby & Creatief > Naaien & borduren
+- `hobby/kralen-sieraden-maken`: Hobby & Creatief > Kralen & sieraden maken
+- `hobby/modelbouw`: Hobby & Creatief > Modelbouw & miniatuurhuisjes
+- `hobby/origami-scrapbooking`: Hobby & Creatief > Origami & scrapbooking
+- `hobby/kaarsen-zeep-epoxy`: Hobby & Creatief > Kaarsen, zeep & epoxy
+- `hobby/haken-breien`: Hobby & Creatief > Haken & breien
+- `hobby/klei-pottenbakken`: Hobby & Creatief > Klei & pottenbakken
+- `hobby/3d-pennen`: Hobby & Creatief > 3D-pennen
+- `hobby/bullet-journal`: Hobby & Creatief > Bullet journal & kalligrafie
+- `sport-outdoor/voetbal-balsporten`: Sport & Outdoor > Voetbal & balsporten
+- `sport-outdoor/darts`: Sport & Outdoor > Darts
+- `sport-outdoor/fietsen`: Sport & Outdoor > Fietsen
+- `sport-outdoor/padel-tennis`: Sport & Outdoor > Padel & tennis
+- `sport-outdoor/wintersport-schaatsen`: Sport & Outdoor > Wintersport & schaatsen
+- `sport-outdoor/fitness`: Sport & Outdoor > Fitness & thuis sporten
+- `sport-outdoor/kamperen`: Sport & Outdoor > Kamperen
+- `sport-outdoor/wandelen`: Sport & Outdoor > Wandelen
+- `sport-outdoor/hardlopen`: Sport & Outdoor > Hardlopen
+- `sport-outdoor/golf`: Sport & Outdoor > Golf
+- `sport-outdoor/reizen`: Sport & Outdoor > Reizen
+- `sport-outdoor/watersport-zwemmen`: Sport & Outdoor > Watersport & zwemmen
+- `sport-outdoor/klimmen-boulderen`: Sport & Outdoor > Klimmen & boulderen
+- `sport-outdoor/skateboards-steps`: Sport & Outdoor > Skateboards & steps
+- `sport-outdoor/yoga`: Sport & Outdoor > Yoga
+- `sport-outdoor/buitenspellen-picknick`: Sport & Outdoor > Buitenspellen & picknick
+- `sport-outdoor/vissen`: Sport & Outdoor > Vissen
+- `tuin-klussen/zwembaden-jacuzzis`: Tuin & Klussen > Zwembaden & jacuzzi's
+- `tuin-klussen/tuinmeubelen`: Tuin & Klussen > Tuinmeubelen & parasols
+- `tuin-klussen/elektrisch-gereedschap`: Tuin & Klussen > Elektrisch gereedschap
+- `tuin-klussen/bbq-buitenkoken`: Tuin & Klussen > BBQ & buiten koken
+- `tuin-klussen/tuinmachines`: Tuin & Klussen > Tuinmachines
+- `tuin-klussen/handgereedschap-werkplaats`: Tuin & Klussen > Handgereedschap & werkplaats
+- `tuin-klussen/planten-potten`: Tuin & Klussen > Planten & potten
+- `tuin-klussen/regentonnen-slangen-compost`: Tuin & Klussen > Regentonnen, slangen & compost
+- `tuin-klussen/vogels-insecten`: Tuin & Klussen > Vogels & insecten
+- `tuin-klussen/moestuin-kweken`: Tuin & Klussen > Moestuin & kweken
+- `tuin-klussen/buitenverlichting`: Tuin & Klussen > Buitenverlichting
+- `tuin-klussen/tuingereedschap`: Tuin & Klussen > Tuingereedschap
+- `tuin-klussen/vuurschalen-terrasverwarmers`: Tuin & Klussen > Vuurschalen & terrasverwarmers
+- `tuin-klussen/tuindecoratie`: Tuin & Klussen > Tuindecoratie
+- `boeken-media/puzzelboeken`: Boeken & Media > Puzzelboeken
+- `boeken-media/agendas-planners-kalenders`: Boeken & Media > Agenda's, planners & kalenders
+- `boeken-media/e-readers`: Boeken & Media > E-readers
+- `boeken-media/muziek`: Boeken & Media > Muziek: lp's & cd's
+- `boeken-media/films-series`: Boeken & Media > Films & series
+- `boeken-media/kinderboeken`: Boeken & Media > Kinderboeken
+- `boeken-media/thrillers-romans`: Boeken & Media > Thrillers & romans
+- `boeken-media/strips-manga`: Boeken & Media > Strips & manga
+- `boeken-media/leesplezier`: Boeken & Media > Leesplezier
+- `boeken-media/luisterboeken`: Boeken & Media > Luisterboeken
+- `boeken-media/kleurboeken`: Boeken & Media > Kleurboeken
+- `boeken-media/foto-invulboeken`: Boeken & Media > Foto- & invulboeken
+- `boeken-media/kookboeken`: Boeken & Media > Kookboeken
+- `dieren/paard`: Dieren > Paard
+- `dieren/hond`: Dieren > Hond
+- `dieren/konijn-cavia-hamster`: Dieren > Konijn, cavia & hamster
+- `dieren/kat`: Dieren > Kat
+- `dieren/vissen-aquarium`: Dieren > Vissen & aquarium
+- `dieren/reptielen-terrarium`: Dieren > Reptielen & terrarium
+- `dieren/kippen`: Dieren > Kippen
+- `dieren/vogels`: Dieren > Vogels
+- `metaaldetectie/munten-vondsten`: Metaaldetectie > Munten & vondsten bewaren
+- `metaaldetectie/detectors`: Metaaldetectie > Metaaldetectors
+- `metaaldetectie/magneetvissen`: Metaaldetectie > Magneetvissen
+- `metaaldetectie/pinpointers-uitrusting`: Metaaldetectie > Pinpointers & uitrusting
+- `christelijk/bijbels`: Christelijke cadeaus > Bijbels
+- `christelijk/psalmboeken`: Christelijke cadeaus > Psalmboeken
+- `christelijk/kerststal-engelen`: Christelijke cadeaus > Kerststal & engelen
+- `christelijk/sieraden`: Christelijke cadeaus > Kruisjes & sieraden
+- `christelijk/kerst`: Christelijke cadeaus > Christelijke kerst
+- `christelijk/bijbelteksten-wanddecoratie`: Christelijke cadeaus > Bijbelteksten & wanddecoratie
+- `christelijk/boeken-muziek`: Christelijke cadeaus > Boeken & muziek
+- `christelijk/doop-belijdenis`: Christelijke cadeaus > Doop & belijdenis
+- `christelijk/voor-kinderen`: Christelijke cadeaus > Voor kinderen
+- `noodpakket-survival/noodpakketten`: Noodpakket & survival > Noodpakketten
+- `noodpakket-survival/noodradio`: Noodpakket & survival > Noodradio’s
+- `noodpakket-survival/licht-stroom`: Noodpakket & survival > Licht & stroom
+- `noodpakket-survival/water-eten`: Noodpakket & survival > Water & eten
+- `noodpakket-survival/koken-warmte`: Noodpakket & survival > Koken & warmte
+- `noodpakket-survival/ehbo-brand`: Noodpakket & survival > EHBO & brandveiligheid
+- `noodpakket-survival/buiten-veld`: Noodpakket & survival > Buiten & in het veld
+- `noodpakket-survival/tassen-onderweg`: Noodpakket & survival > Tassen & onderweg
+- `cadeaus/kerst`: Cadeaus > Kerstcadeaus
+- `cadeaus/sinterklaas`: Cadeaus > Sinterklaas
+- `cadeaus/met-naam`: Cadeaus > Met naam
+- `cadeaus/grappig`: Cadeaus > Grappige cadeaus
+- `valentijn/voor-haar`: Liefde & Valentijn > Voor haar
+- `valentijn/voor-hem`: Liefde & Valentijn > Voor hem
+- `valentijn/samen`: Liefde & Valentijn > Samen & jubileum
+- `valentijn/met-naam`: Liefde & Valentijn > Met naam & hartje
+- `valentijn/romantische-avond`: Liefde & Valentijn > Romantische avond
+- `valentijn/kleine-gebaren`: Liefde & Valentijn > Kleine liefdesgebaren

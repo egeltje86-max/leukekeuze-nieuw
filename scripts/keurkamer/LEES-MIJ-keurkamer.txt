@@ -1,0 +1,26 @@
+KEURKAMER – LeukeKeuze
+======================
+
+Hiermee keur je de hele site opnieuw, vakje voor vakje. Alleen leuke keuzes blijven over.
+
+Openen: dubbelklik op "Keurkamer openen.html". Laat de bestanden bij elkaar in deze map staan.
+De foto's komen van leukekeuze.nl, dus je hebt internet nodig.
+
+Zo werkt het
+1. Overzicht: alle vakjes, met wat de AI-keurmeester ervan vindt. Kies een vakje en klik Keuren.
+2. Keuren: je ziet 24 producten per pagina. De producten die aandacht nodig hebben staan vooraan.
+   Per product klik je: Houden, Verplaatsen (of Niet hier), Weg of Twijfel.
+   - Houden      = goed, blijft hier.
+   - Verplaatsen = goed product, maar hoort in een ander vakje (kies het vakje).
+   - Niet hier   = het product staat hier als extra vakje, maar hoort hier niet (blijft wel op de site).
+   - Weg         = geen leuke keuze: gaat van de hele site.
+   - Twijfel     = Claude kijkt er met je naar.
+   Klik op de foto voor details: grotere foto, de tekst (mag je verbeteren), dubbelen, en de ster voor toppers.
+   Onderaan: "Volg AI-advies" neemt het advies van de AI over voor de hele pagina; "Alles houden" zet alles op houden.
+3. Vakje afronden: vink af of de pagina op de site er goed uitziet. Daarna gaat hij vanzelf naar het volgende vakje.
+4. Opslaan: Download mijn keuring. Stuur het bestand naar Claude. Hij laat zien wat er verandert en zet het live na jouw GO.
+
+Je keuring wordt vanzelf bewaard in de browser op deze computer. Download toch af en toe tussendoor.
+Je hoeft niet alles in één keer te doen. Vakjes die je al klaar hebt, blijven klaar.
+
+Sneltoetsen (klik eerst op een kaartje): H houden · V verplaatsen/niet hier · X weg · T twijfel · S topper · Enter details.

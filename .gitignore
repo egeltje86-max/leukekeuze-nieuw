@@ -1,1 +1,10 @@
 __pycache__/
+# Keurkamer: grote werkbestanden en AI-porties blijven lokaal (kopie staat op de laptop van Marius)
+keurkamer/data/
+keurkamer/app/
+keurkamer/ai/in-*.json
+keurkamer/ai/uit-*.json
+keurkamer/ai-oordelen.json
+# rapporten en Google-cijfers blijven buiten de (openbare) repo; Marius krijgt ze per bericht
+keurkamer/rapporten/
+keurkamer/wacht/

@@ -1,0 +1,1430 @@
+[
+ {
+  "vak": "sieraden/ringen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Ringen",
+  "hoort": "Ringen om cadeau te geven: zegelringen, ringen met steentje, stapelringen, zilveren en gouden ringen, ringensets en herenringen.",
+  "niet": "Losse ringetjes en oogjes om zelf sieraden te maken (Hobby), sleutelringen, servetringen, gordijnringen en ringen met een kruisje (Christelijke cadeaus)."
+ },
+ {
+  "vak": "sieraden/smartwatches",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Smartwatches",
+  "hoort": "Slimme horloges en fitnesstrackers: Apple Watch, Garmin, Fitbit, sporthorloges met hartslagmeter, stappentellers en smartwatches voor kinderen.",
+  "niet": "Losse bandjes, screenprotectors en opladers voor smartwatches, gewone horloges zonder slimme functies (Horloges), bloeddrukmeters en weegschalen."
+ },
+ {
+  "vak": "sieraden/horloges",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Horloges",
+  "hoort": "Gewone polshorloges voor hem en haar: klassieke horloges, chronografen, horloges met leren of stalen band, bekende merken en horlogesets.",
+  "niet": "Smartwatches en fitnesstrackers (eigen vakje), losse horlogebandjes en batterijen, horlogedozen (Sieradendozen), wandklokken en wekkers (Wonen > Klokken)."
+ },
+ {
+  "vak": "sieraden/echt-goud",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Echt goud",
+  "hoort": "Sieraden van echt goud (14 of 18 karaat): gouden ringen, kettingen, oorbellen, armbanden en hangers, vaak met certificaat.",
+  "niet": "Vergulde of goudkleurige sieraden (gold plated, doublé, goudkleurig staal), bladgoud, gouden munten en goudstaven als belegging."
+ },
+ {
+  "vak": "sieraden/oorbellen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Oorbellen",
+  "hoort": "Oorbellen als cadeau: oorknopjes, creolen, oorhangers, ear cuffs, oorbellen met parel of steentje, in zilver, goud of staal.",
+  "niet": "Losse oorbelhaakjes en onderdelen om zelf oorbellen te maken (Hobby), oorbellenhouders (Sieradendozen), oordopjes om muziek mee te luisteren (Elektronica)."
+ },
+ {
+  "vak": "sieraden/kettingen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Kettingen & hangers",
+  "hoort": "Kettingen en hangers: colliers, chokers, hangers met steentje of hartje, medaillons, herenkettingen en kettingsets.",
+  "niet": "Fietskettingen en kettingsloten (Sport), losse schakelketting per meter (Hobby), sleutelhangers (Mode & Accessoires), kettingen met kruisje (Christelijke cadeaus)."
+ },
+ {
+  "vak": "sieraden/zilver",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Zilver",
+  "hoort": "Sieraden van echt zilver (925 sterling): zilveren ringen, kettingen, oorbellen, armbanden, hangers en zilveren sieradensets.",
+  "niet": "Zilverkleurige sieraden van staal of verzilverd, zilveren bestek en servies (Keuken), zilverpoets en schoonmaakmiddelen, zilveren munten (Metaaldetectie)."
+ },
+ {
+  "vak": "sieraden/armbanden",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Armbanden & enkelbandjes",
+  "hoort": "Armbanden en enkelbandjes: bangles, tennisarmbanden, slavenarmbanden, schakelarmbanden, leren armbanden voor mannen en vriendschapsarmbandjes.",
+  "niet": "Smartwatch- en horlogebandjes, bedelarmbanden (eigen vakje), pakketten om zelf armbandjes te maken (Hobby), zweetbandjes en sportarmbanden voor je telefoon."
+ },
+ {
+  "vak": "sieraden/sieradendozen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Sieradendozen",
+  "hoort": "Mooie opbergers voor sieraden en horloges: sieradendozen, sieradenkistjes, ringdoosjes, sieradenbomen, oorbellenhouders, horlogeboxen en reisetuis.",
+  "niet": "De sieraden zelf, lege cadeaudoosjes en inpakmateriaal, make-uporganizers (Geuren & Verzorging), opbergdozen voor kralen en hobbyspullen (Hobby)."
+ },
+ {
+  "vak": "sieraden/parels",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Parels",
+  "hoort": "Sieraden met echte of zoetwaterparels: parelkettingen, pareloorbellen, parelarmbanden, ringen met parel en parelsets.",
+  "niet": "Losse kralen en parels om zelf sieraden te maken (Hobby), parelmoerdecoratie (Wonen), namaakparels op kleding, nagellak en make-up met parelglans."
+ },
+ {
+  "vak": "sieraden/bedels",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Bedels & bedelarmbanden",
+  "hoort": "Bedels en bedelarmbanden om te verzamelen en te combineren: Pandora-bedels, bedelarmbanden, charms met betekenis en bedelkettingen.",
+  "niet": "Zakjes losse bedeltjes om zelf sieraden te knutselen (Hobby), sleutelhangers en tassenhangers (Mode), hangertjes voor je telefoon (Elektronica)."
+ },
+ {
+  "vak": "sieraden/met-naam",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Met naam & letter",
+  "hoort": "Sieraden die persoonlijk gemaakt worden: naamkettingen, letterhangers, initiaalkettingen, armbanden met gravure, ringen met naam of datum.",
+  "niet": "Cadeaus met naam die geen sieraad zijn, zoals mokken en kussens (Cadeaus > Met naam), graveermachines, losse letterkralen voor hobby."
+ },
+ {
+  "vak": "geuren-verzorging/rituals",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Rituals",
+  "hoort": "Verzorging en geur van het merk Rituals: cadeausets, douchefoam, bodycrème, scrubs, parfum, geurstokjes en adventskalenders van Rituals.",
+  "niet": "Producten van andere merken die op Rituals lijken, Rituals-kaarsen (Wonen > Kaarsen & kandelaars), navulverpakkingen en losse proefzakjes."
+ },
+ {
+  "vak": "geuren-verzorging/parfum",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Parfum",
+  "hoort": "Parfum als cadeau voor hem en haar: eau de parfum, eau de toilette, aftershave, bodymist, parfumsets en bekende merkgeuren.",
+  "niet": "Huisparfum, geurstokjes en roomsprays (Wonen > Huisgeuren), deodorant als boodschap, proefflesjes en testers, lege reisverstuivers."
+ },
+ {
+  "vak": "geuren-verzorging/scheren-baard",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Scheren & baard",
+  "hoort": "Spullen om te scheren en een baard te verzorgen: scheerapparaten, baardtrimmers, tondeuses, scheersets met kwast, baardoliesets, ladyshaves en epilators.",
+  "niet": "Losse scheermesjes, navulmesjes en scheerschuim (boodschappen), losse opzetkammen en onderdelen, föhns en stijltangen (Haarstylers)."
+ },
+ {
+  "vak": "geuren-verzorging/haarstylers",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Haarstylers",
+  "hoort": "Apparaten om haar te stylen: stijltangen, krultangen, föhns, airstylers zoals de Dyson Airwrap, warmteborstels en reissets.",
+  "niet": "Shampoo, haarlak en andere haarproducten, losse opzetstukken en borstelkoppen, scheerapparaten en tondeuses (Scheren & baard), haarclips en scrunchies (Mode)."
+ },
+ {
+  "vak": "geuren-verzorging/make-up-nagels",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Make-up & nagels",
+  "hoort": "Make-up en nagelverzorging als cadeau: oogschaduwpaletten, lipsticksets, mascara, kwastensets, gellaksets, manicuresets en nagellakdoosjes.",
+  "niet": "Eén los potje nagellak of één mascara als aanvulling, speelgoedmake-up voor kinderen (Speelgoed), make-uptassen (Mode > Toilettassen), make-upremover en wattenschijfjes."
+ },
+ {
+  "vak": "geuren-verzorging/huidverzorging",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Huidverzorging",
+  "hoort": "Verzorging voor gezicht en lichaam: dagcrème, serums, gezichtsmaskers, handcrèmesets, bodylotion, skincaresets en lippenbalsemcadeautjes.",
+  "niet": "Drogisterijboodschappen zoals zonnebrand en pleisters, medische zalven, make-up (eigen vakje), douchegel en badzout (Bad & douche), navulverpakkingen."
+ },
+ {
+  "vak": "geuren-verzorging/cadeausets",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Cadeausets",
+  "hoort": "Kant-en-klare geschenksets om te verwennen: giftsets met douchegel en bodylotion, verwenpakketten, beauty-adventskalenders en cadeauboxen met geur en verzorging.",
+  "niet": "Losse producten die geen set zijn, cadeausets met eten of drinken (Lekkernijen of Dranken), lege cadeaudozen en inpakmateriaal, sets met gereedschap of keukenspullen."
+ },
+ {
+  "vak": "geuren-verzorging/bad-douche",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Bad & douche",
+  "hoort": "Verwennerij voor in bad en onder de douche: badbruisballen, badzout, scrubs, luxe zeep, badolie, douchefoam en badsets.",
+  "niet": "Gewone shampoo en douchegel als boodschap, handdoeken en badjassen (Mode), badspeelgoed voor kinderen (Speelgoed), pakketten om zelf zeep te maken (Hobby)."
+ },
+ {
+  "vak": "geuren-verzorging/massage",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Massage",
+  "hoort": "Spullen om te ontspannen: massageapparaten, shiatsu-nekkussens, massageguns, voetenbaden, gua sha en jade rollers, massageoliesets.",
+  "niet": "Medische hulpmiddelen zoals TENS-apparaten en bloeddrukmeters, massagetafels voor professionals, yogamatten en foamrollers (Sport & Outdoor), losse olieflessen als boodschap."
+ },
+ {
+  "vak": "geuren-verzorging/tandenborstels",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Elektrische tandenborstels",
+  "hoort": "Elektrische tandenborstels en mondverzorging als cadeau: Oral-B en Philips Sonicare tandenborstels, waterflossers, monddouches, reissets en elektrische kindertandenborstels.",
+  "niet": "Losse opzetborstels, tandpasta, flosdraad en mondwater (boodschappen), gewone handtandenborstels, tandenbleeksets en andere drogisterijspullen."
+ },
+ {
+  "vak": "mode-beauty/schoenen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Schoenen, sneakers & boots",
+  "hoort": "Schoenen als cadeau: sneakers, boots en laarzen, sandalen, loafers, pumps en klompen voor dames, heren en kinderen.",
+  "niet": "Pantoffels en sloffen (eigen vakje), sportschoenen voor een specifieke sport zoals voetbal- en wandelschoenen (Sport & Outdoor), schoenpoets, veters, inlegzolen en schoenenrekken."
+ },
+ {
+  "vak": "mode-beauty/truien-hoodies",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Truien & hoodies",
+  "hoort": "Warme kleding: hoodies, sweaters, vesten, cardigans, fleecetruien, coltruien, shirts en jassen voor dames en heren.",
+  "niet": "Foute kersttruien en grappige shirts met tekst (Cadeaus), sportkleding en thermo-ondergoed (Sport & Outdoor), pyjama's (eigen vakje), ondergoed, losse knopen en stof."
+ },
+ {
+  "vak": "mode-beauty/pyjamas",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Pyjama's, badjassen & onesies",
+  "hoort": "Lekker voor thuis: pyjama's, badjassen, onesies, ochtendjassen, nachthemden en loungewearsets voor volwassenen en kinderen.",
+  "niet": "Handdoeken, badmatten en beddengoed, ondergoed, verkleedkostuums voor carnaval (Speelgoed > Speelkeukens & verkleden), pantoffels en huissokken (eigen vakje)."
+ },
+ {
+  "vak": "mode-beauty/koffers",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Koffers & reistassen",
+  "hoort": "Bagage voor op reis: handbagagekoffers, trolleys, weekendtassen, duffels, reistassen en koffersets.",
+  "niet": "Rugzakken (eigen vakje), kofferriemen, bagagelabels en kofferweegschalen (Sport & Outdoor > Reizen), gereedschapskoffers (Tuin & Klussen), toilettassen (eigen vakje)."
+ },
+ {
+  "vak": "mode-beauty/tassen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Tassen",
+  "hoort": "Handtassen en andere tassen: schoudertassen, crossbodytassen, shoppers, clutches, heuptassen, laptoptassen en leren tassen.",
+  "niet": "Rugzakken, koffers en toilettassen (eigen vakjes), boodschappentassen en plastic tasjes, cadeautasjes en inpakpapier, vondsttassen en sporttassen (Metaaldetectie / Sport)."
+ },
+ {
+  "vak": "mode-beauty/mutsen-sjaals",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Mutsen, sjaals & handschoenen",
+  "hoort": "Warme accessoires: mutsen, beanies, sjaals, omslagdoeken, handschoenen, wanten, oorwarmers en wintersets.",
+  "niet": "Werk- en tuinhandschoenen (Tuin & Klussen), skihelmen en skibrillen (Sport > Wintersport), ovenwanten (Keuken), boks- en keepershandschoenen (Sport)."
+ },
+ {
+  "vak": "mode-beauty/portemonnees",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Portemonnees & pasjeshouders",
+  "hoort": "Portemonnees, portefeuilles, pasjeshouders, kaarthouders met RFID-bescherming, leren billfolds en portemonnee-cadeausets.",
+  "niet": "Telefoonhoesjes met pasjesvak (Elektronica), sleutelhangers en riemen (eigen vakje), kluisjes en geldkistjes, muntalbums voor verzamelaars (Metaaldetectie)."
+ },
+ {
+  "vak": "mode-beauty/pantoffels-sokken",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Pantoffels & sokken",
+  "hoort": "Lekker warme voeten: pantoffels, sloffen, huissokken, leuke sokkensets, wollen sokken en antislipsokken.",
+  "niet": "Sportsokken en hardloopsokken (Sport & Outdoor), gewone schoenen en sandalen (eigen vakje), steunkousen en medische sokken, voetcrème en pedicurespullen (Geuren & Verzorging)."
+ },
+ {
+  "vak": "mode-beauty/zonnebrillen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Zonnebrillen",
+  "hoort": "Zonnebrillen voor dames, heren en kinderen: Ray-Ban, pilotenbrillen, gepolariseerde zonnebrillen, sportzonnebrillen en brillenkokers.",
+  "niet": "Leesbrillen en brillen op sterkte, skibrillen (Sport > Wintersport), VR-brillen (Elektronica), veiligheidsbrillen (Tuin & Klussen), brillendoekjes en brillenspray."
+ },
+ {
+  "vak": "mode-beauty/rugzakken",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Rugzakken",
+  "hoort": "Rugzakken voor school, werk en vrije tijd: schoolrugzakken, laptoprugzakken, dagrugzakken, kinderrugzakjes en stijlvolle merkrugzakken.",
+  "niet": "Wandel- en trekkingrugzakken (Sport & Outdoor > Wandelen), noodrugzakken (Noodpakket & survival), koffers en reistassen (eigen vakje), regenhoezen en losse onderdelen."
+ },
+ {
+  "vak": "mode-beauty/riemen-sleutelhangers",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Riemen, sleutelhangers & paraplu's",
+  "hoort": "Kleine accessoires als cadeau: leren riemen, sleutelhangers, paraplu's, bretels, stropdassen, manchetknopen, petten, hoeden en haaraccessoires.",
+  "niet": "Sleutelhangers met naam of foto (Cadeaus > Met naam), sleutelhangers met Bijbeltekst (Christelijke cadeaus), gereedschapsriemen (Tuin & Klussen), hondenriemen (Dieren), sleutelkastjes."
+ },
+ {
+  "vak": "mode-beauty/toilettassen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Toilettassen",
+  "hoort": "Toilettassen en beautycases om verzorging in mee te nemen: toilettassen voor hem en haar, make-uptassen, ophangbare reistoilettassen en beautykoffers.",
+  "niet": "Make-up en verzorgingsproducten zelf (Geuren & Verzorging), handtassen en rugzakken (eigen vakjes), etuis voor school, reisflesjes en lege potjes."
+ },
+ {
+  "vak": "elektronica/gaming",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Gaming",
+  "hoort": "Spelcomputers en gamespullen: PlayStation, Xbox, Nintendo Switch, games, controllers, racesturen, gamingheadsets en gamingmuizen.",
+  "niet": "Bordspellen en kaartspellen (Speelgoed), losse kabels en opladers, pc-onderdelen zoals videokaarten en geheugen, prepaid-tegoed en abonnementen, schermbeschermers en hoesjes."
+ },
+ {
+  "vak": "elektronica/telefoon-opladen",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Telefoon & opladen",
+  "hoort": "Telefoons en handige spullen eromheen: smartphones, powerbanks, draadloze opladers, laadstations, MagSafe-accessoires, selfiesticks en leuke telefoonhoesjes.",
+  "niet": "Losse oplaadkabeltjes, stekkers en screenprotectors (geen cadeau), simkaarten en beltegoed, reparatiesets, koptelefoons (eigen vakje), smartwatches (Sieraden & Horloges)."
+ },
+ {
+  "vak": "elektronica/cameras",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Camera's",
+  "hoort": "Camera's om mee te fotograferen en filmen: instant camera's zoals Instax en Polaroid, actioncams zoals GoPro, compactcamera's, fotoprinters en dashcams.",
+  "niet": "Fotorolletjes en instax-fotopapier (verbruik), losse lenzen, filters en geheugenkaarten, kindercamera's (Speelgoed > Hypes & trends), beveiligingscamera's en babyfoons, fotolijsten (Wonen)."
+ },
+ {
+  "vak": "elektronica/koptelefoons",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Koptelefoons & oordopjes",
+  "hoort": "Koptelefoons en oortjes: draadloze over-ear koptelefoons, AirPods en andere earbuds, noise-cancelling koptelefoons, gamingheadsets en kinderkoptelefoons.",
+  "niet": "Losse oordopjes-tips, hoesjes en vervangkabels, oordopjes om geluid te dempen of mee te slapen, speakers (eigen vakje), koptelefoons voor metaaldetectors (Metaaldetectie)."
+ },
+ {
+  "vak": "elektronica/tablets-ereaders",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Tablets & e-readers",
+  "hoort": "Tablets en e-readers als cadeau: iPad, Samsung Galaxy Tab, kindertablets, Kobo en Kindle e-readers, tabletsets met hoes en pen.",
+  "niet": "Losse screenprotectors, kabels en laders, laptops en pc's, e-books en downloadtegoed, speelgoedtablets voor peuters (Speelgoed), tekentablets voor hobby."
+ },
+ {
+  "vak": "elektronica/drones-vr",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Drones & VR",
+  "hoort": "Drones en virtual reality: cameradrones, minidrones voor beginners, VR-brillen zoals Meta Quest, VR-accessoires en drones voor kinderen.",
+  "niet": "Losse propellers, accu's en reserveonderdelen, droneverzekeringen en cursussen, RC-auto's en speelgoedhelikopters (Speelgoed > Auto's, treinen & RC), 3D-brillen en zonnebrillen."
+ },
+ {
+  "vak": "elektronica/platenspelers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Platenspelers",
+  "hoort": "Platenspelers en vinylspullen: platenspelers met ingebouwde speakers, retro kofferplatenspelers, hifi-platenspelers, platenrekken en platenborstels.",
+  "niet": "De platen zelf, lp's en cd's (Boeken & Media > Muziek), losse naalden en elementen, versterkers en losse speakers (eigen vakje), cassettebandjes."
+ },
+ {
+  "vak": "elektronica/gadgets-trackers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Gadgets & trackers",
+  "hoort": "Handige en leuke gadgets: AirTags en Tile-trackers, sleutelvinders, slimme gadgets, mini-ventilators, LED-gadgets en bureaugadgets.",
+  "niet": "GPS-trackers voor honden en katten (Dieren), fitnesstrackers en smartwatches (Sieraden & Horloges > Smartwatches), losse batterijen, speelgoedgadgets en fidgets (Speelgoed > Hypes & trends)."
+ },
+ {
+  "vak": "elektronica/speakers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Speakers",
+  "hoort": "Draagbare en vaste speakers: bluetooth-speakers van JBL, Marshall, Bose en Sonos, soundbars, retroradio's, partyspeakers en boomboxen.",
+  "niet": "Losse kabels, standaards en hoezen, koptelefoons (eigen vakje), kinderkaraoke en speelgoedmicrofoons (Speelgoed > Muziek & karaoke), noodradio's (Noodpakket & survival), autoradio's."
+ },
+ {
+  "vak": "elektronica/beamers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Beamers",
+  "hoort": "Beamers en projectors voor film en games: minibeamers, full-HD en 4K-beamers, smartbeamers met Netflix, projectieschermen en beamerstandaards.",
+  "niet": "Sterrenhemelprojectors en sfeerlampjes (Sfeerlicht & smart home), losse beamerlampen en filters, kabels en adapters, fotoprinters en camera's (eigen vakje), diaprojectors."
+ },
+ {
+  "vak": "elektronica/sfeerlicht-smarthome",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Sfeerlicht & smart home",
+  "hoort": "Slimme en sfeervolle gadgets voor thuis: Philips Hue-lampen, slimme stekkers, Google Nest en Alexa, lichtwekkers, sterrenhemelprojectors en LED-strips.",
+  "niet": "Gewone lampen zonder slimme functie (Wonen > Lampen), buitenverlichting en solarlampen (Tuin & Klussen), losse LED-lampjes en batterijen, kaarsen (Wonen > Kaarsen & kandelaars), schakelaars en kabels."
+ },
+ {
+  "vak": "wonen/lampen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Lampen",
+  "hoort": "Lampen die het huis gezelliger maken: tafellampen, vloerlampen, hanglampen, nachtlampjes, lichtsnoeren, neonletters en lichtbakken.",
+  "niet": "Losse gloeilampen en LED-lampjes (verbruik), slimme lampen en lichtwekkers (Elektronica > Sfeerlicht & smart home), buitenlampen (Tuin & Klussen), zaklampen (Noodpakket & survival), leeslampjes (Boeken & Media > Leesplezier)."
+ },
+ {
+  "vak": "wonen/vloerkleden",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Vloerkleden",
+  "hoort": "Vloerkleden en tapijten als cadeau voor een nieuw huis: wollen kleden, ronde vloerkleden, lopers voor de gang, vintage-look tapijten en speelkleden voor de kinderkamer.",
+  "niet": "Deurmatten en droogloopmatten (eigen vakje), yogamatten en sportmatten (Sport & Outdoor), picknickkleden (Sport > Buitenspellen & picknick), antislip-ondertapijt en tapijtreiniger, tafelkleden (Keuken)."
+ },
+ {
+  "vak": "wonen/wanddecoratie",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Wanddecoratie & posters",
+  "hoort": "Spullen voor aan de muur: posters, canvasdoeken, schilderijen, wandborden met tekst, wandkleden, muurstickers en wandpanelen.",
+  "niet": "Lege fotolijsten (eigen vakje), spiegels en klokken (eigen vakjes), wanddecoratie met Bijbelteksten (Christelijke cadeaus), schilderspullen om zelf te schilderen (Hobby), ophangsystemen en schroeven."
+ },
+ {
+  "vak": "wonen/klokken",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Klokken",
+  "hoort": "Klokken voor in huis: wandklokken, stationsklokken, koekoeksklokken, tafelklokken, wekkers en designklokken.",
+  "niet": "Horloges en smartwatches (Sieraden & Horloges), lichtwekkers (Elektronica > Sfeerlicht & smart home), batterijen en losse uurwerken om zelf een klok te maken, kookwekkers (Keuken)."
+ },
+ {
+  "vak": "wonen/kerst",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Kerst",
+  "hoort": "Kerstdecoratie voor in huis: kerstbomen, kerstballen, kersthuisjes, notenkrakers, sneeuwbollen, kerstverlichting en adventskransen.",
+  "niet": "Kerstcadeaus die geen decoratie zijn (Cadeaus > Kerstcadeaus), kerstlekkers en kerstpakketten (Lekkernijen), kerststallen en engelen (Christelijke cadeaus), kerstkaarten en inpakpapier, foute kersttruien."
+ },
+ {
+  "vak": "wonen/vazen-bloemen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Vazen & bloemen",
+  "hoort": "Vazen, bloemen en groen voor binnen: designvazen, droogbloemenboeketten, pampaspluimen, kunstbloemen, kunstplanten en mooie bloempotten voor binnen.",
+  "niet": "Tuinplanten, bloembollen en zaden (Tuin & Klussen), eeuwige rozen in een stolp (Liefde & Valentijn), plantenvoeding en potgrond, bloemschikmateriaal en steekschuim (Hobby)."
+ },
+ {
+  "vak": "wonen/kussens-plaids",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Kussens & plaids",
+  "hoort": "Zacht en warm voor op de bank: sierkussens, plaids, fleecedekens, spreien, poefs, zitzakken en knuffeldekens.",
+  "niet": "Dekbedovertrekken, hoofdkussens en matrassen, kussens met naam of foto (Cadeaus > Met naam), nekkussens voor op reis (Sport > Reizen), tuinkussens (Tuin), massagekussens (Geuren & Verzorging)."
+ },
+ {
+  "vak": "wonen/kaarsen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Kaarsen & kandelaars",
+  "hoort": "Alle kaarsen en kaarsenhouders: geurkaarsen, dinerkaarsen, stompkaarsen, kandelaars, windlichten, lantaarns, waxinelichthouders en kaarsensets.",
+  "niet": "Pakketten om zelf kaarsen te maken (Hobby > Kaarsen, zeep & epoxy), geurstokjes en wax melts (Huisgeuren), aanstekers en lucifers als boodschap, verjaardagskaarsjes voor op de taart, solarlantaarns (Tuin)."
+ },
+ {
+  "vak": "wonen/spiegels",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Spiegels",
+  "hoort": "Spiegels voor in huis: wandspiegels, staande passpiegels, make-upspiegels met verlichting, ronde designspiegels en spiegels met houten of gouden rand.",
+  "niet": "Tuinspiegels (Tuin > Tuindecoratie), auto- en fietsspiegels, spiegelfolie en spiegelglas om zelf te monteren, badkamerspiegelkasten, speelgoedspiegeltjes in beautysets (Speelgoed)."
+ },
+ {
+  "vak": "wonen/opbergen-dienbladen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Opbergen & dienbladen",
+  "hoort": "Mooi opbergen en presenteren: dienbladen, opbergmanden, houten kistjes, opbergdozen, organizers, krukjes, kapstokken en wandhaken.",
+  "niet": "Sieradendozen (Sieraden & Horloges), voorraadpotten en broodtrommels (Keuken), lege cadeaudozen en verzenddozen, plastic opbergbakken voor de zolder, gereedschapskisten (Tuin & Klussen)."
+ },
+ {
+  "vak": "wonen/fotolijsten",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Fotolijsten",
+  "hoort": "Fotolijsten en fotodecoratie: fotolijstjes voor één foto, collagelijsten, fotolijsten met tekst, fotolijnen met knijpers en fotostandaards.",
+  "niet": "Fotoalbums en invulboeken (Boeken & Media > Foto- & invulboeken), lijsten met je eigen foto erin gedrukt (Cadeaus > Met naam), posters en canvas (Wanddecoratie), fotopapier en printerinkt, ophanghaakjes en passe-partouts."
+ },
+ {
+  "vak": "wonen/huisgeuren",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Huisgeuren",
+  "hoort": "Geur voor in huis: geurstokjes, aromadiffusers, huisparfum, roomsprays, wax melts, geurzakjes voor in de kast en geuroliesets.",
+  "niet": "Geurkaarsen (Kaarsen & kandelaars), parfum voor op je huid (Geuren & Verzorging), luchtverfrissers voor toilet en auto (boodschappen), navulflessen voor geurstokjes, etherische olie voor medisch gebruik."
+ },
+ {
+  "vak": "wonen/deurmatten",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Deurmatten",
+  "hoort": "Deurmatten met een leuke tekst of mooi ontwerp: kokosmatten, droogloopmatten, grappige deurmatten, deurmatten met naam en matten voor binnen en buiten.",
+  "niet": "Vloerkleden en lopers (eigen vakje), badmatten en keukenmatten, antislip-onderleggers, automatten, schoonmaakmiddelen en borstels."
+ },
+ {
+  "vak": "keuken/keukenapparaten",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Keukenapparaten",
+  "hoort": "Handige apparaten voor in de keuken: blenders, keukenmachines, waterkokers, broodroosters, slowcookers, staafmixers, sapcentrifuges en keukenweegschalen.",
+  "niet": "Airfryers, koffiezetapparaten en tosti-ijzers (eigen vakjes), losse onderdelen zoals mengkommen en messen voor een blender, inbouwapparaten zoals ovens en vaatwassers, verlengsnoeren."
+ },
+ {
+  "vak": "keuken/airfryers",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Airfryers",
+  "hoort": "Airfryers in alle maten: Philips, Ninja, Tefal en andere heteluchtfriteuses, dubbele airfryers, mini-airfryers en airfryer-cadeausets.",
+  "niet": "Airfryer-bakpapiertjes, siliconen mandjes en liners (verbruik), gewone friteuses met olie, ovens en magnetrons, airfryer-kookboeken (Boeken & Media > Kookboeken)."
+ },
+ {
+  "vak": "keuken/koffie-thee",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Koffie & thee",
+  "hoort": "Alles om koffie en thee te zetten en te drinken: espressomachines, Nespresso, Senseo, melkopschuimers, French press, theepotten, mooie mokken en theeglazen.",
+  "niet": "Koffiebonen, cups, capsules en thee zelf (Lekkernijen > Koffie & thee), ontkalker en filterzakjes, reisbekers en thermosflessen (Drinkflessen & lunch), mokken met naam of grappige tekst (Cadeaus)."
+ },
+ {
+  "vak": "keuken/gezellig-tafelen",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Gezellig tafelen",
+  "hoort": "Samen aan tafel koken: gourmetstellen, fonduesets, racletteapparaten, steengrills, teppanyakiplaten, tafelpizzaovens en tapassets.",
+  "niet": "Gourmetvlees, kaas en fonduemixen (boodschappen), losse gourmetpannetjes en spatels, buitenbarbecues en grote pizzaovens (Tuin & Klussen), servies en glazen (eigen vakje), chocoladefonteinen (Tosti-, wafel- & ijsmachines)."
+ },
+ {
+  "vak": "keuken/pannen",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Pannen",
+  "hoort": "Pannen en pannensets: koekenpannen, braadpannen, wokpannen, gietijzeren pannen, Dutch ovens, hapjespannen, snelkookpannen en ovenschalen.",
+  "niet": "Losse deksels, handgrepen en pannenbeschermers, pannenlappen en ovenwanten (Bakken), bakvormen en taartvormen (Bakken), campingpannen en kooksets voor buiten (Sport > Kamperen), schuursponsjes."
+ },
+ {
+  "vak": "keuken/tosti-wafel-ijs",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Tosti-, wafel- & ijsmachines",
+  "hoort": "Leuke apparaten voor lekkers: tosti-ijzers, wafelijzers, ijsmachines, popcornmachines, suikerspinmachines, chocoladefonteinen, poffertjesplaten en donutmakers.",
+  "niet": "Ingrediënten zoals wafelmix, popcornmaïs en ijsmix (boodschappen), gourmet- en fonduesets (Gezellig tafelen), koffie- en theeapparaten, grote keukenmachines (Keukenapparaten), bakvormen (Bakken)."
+ },
+ {
+  "vak": "keuken/glazen-servies",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Glazen & servies",
+  "hoort": "Mooi gedekte tafel: serviessets, borden, kommen, glazensets, karaffen, bestek, placemats, onderzetters, ontbijtsets en etagères.",
+  "niet": "Wijn-, bier- en whiskyglazen (Dranken > Wijnaccessoires), mokken en theeglazen (Koffie & thee), kaarsen en kandelaars (Wonen), wegwerpservies en servetten, servies met naam (Cadeaus > Met naam)."
+ },
+ {
+  "vak": "keuken/drinkflessen-lunch",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Drinkflessen & lunch",
+  "hoort": "Voor onderweg en op het werk: drinkflessen, thermosflessen, isoleerbekers, reisbekers voor koffie, lunchboxen, bentoboxen en broodtrommels.",
+  "niet": "Losse doppen, rietjes en flessenborstels, koelboxen en koeltassen (Sport & Outdoor), drinkflessen met naam (Cadeaus > Met naam), het eten en drinken zelf, voorraadpotten (eigen vakje)."
+ },
+ {
+  "vak": "keuken/messen-snijplanken",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Messen & snijplanken",
+  "hoort": "Goede messen en planken: koksmessen, santokumessen, messensets, messenblokken, snijplanken van hout of bamboe, messenslijpers en keukenscharen.",
+  "niet": "Zakmessen en multitools (Tuin & Klussen > Handgereedschap), kaasmessen en kaasplanken (Kaas- & serveerplanken), bestek en tafelmessen (Glazen & servies), hobbymessen (Hobby), survivalmessen (Noodpakket & survival)."
+ },
+ {
+  "vak": "keuken/bakken",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Bakken",
+  "hoort": "Alles om zelf te bakken: bakvormen, springvormen, muffinvormen, koekjesuitstekers, deegrollers, spuitzakken, bakmatten, ovenwanten en complete baksets.",
+  "niet": "Bakmixen, meel en bloem (boodschappen), broodbakmachines en keukenmachines (Keukenapparaten), bakboeken (Boeken & Media > Kookboeken), bakpapier en papieren cupcakevormpjes (verbruik), speelgoedbaksets (Speelgoed)."
+ },
+ {
+  "vak": "keuken/kaas-serveerplanken",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Kaas- & serveerplanken",
+  "hoort": "Mooi serveren bij de borrel: kaasplanken, borrelplanken, serveerplanken van hout of leisteen, tapasplanken, kaasmessensets, kaasschaven en charcuteriesets.",
+  "niet": "De kaas, worst en nootjes zelf (Lekkernijen > Delicatessen), snijplanken om op te snijden (Messen & snijplanken), planken met naam gegraveerd (Cadeaus > Met naam), wijn en bier (Dranken), wegwerpbordjes."
+ },
+ {
+  "vak": "keuken/voorraadpotten",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Voorraadpotten",
+  "hoort": "Netjes bewaren in de keuken: voorraadpotten, weckpotten, vershoudbakjes, voorraadbussen, kruidenrekken met potjes en broodtrommels voor het aanrecht.",
+  "niet": "Kruiden en specerijen zelf (Lekkernijen > BBQ & sauzen), vershoudfolie en diepvrieszakken (boodschappen), opbergdozen voor de woonkamer (Wonen), lunchboxen (Drinkflessen & lunch), plastic bakken voor de zolder."
+ },
+ {
+  "vak": "dranken/champagne-bubbels",
+  "afdeling": "Dranken",
+  "naam": "Champagne & bubbels",
+  "hoort": "Feestelijke bubbels: champagne van bekende huizen, prosecco, cava, crémant, champagne in cadeauverpakking en bubbelsets met glazen.",
+  "niet": "Alcoholvrije bubbels (Alcoholvrij), champagneglazen en koelers zonder fles (Wijnaccessoires), frisdrank en limonade, chocolade met champagnesmaak (Lekkernijen)."
+ },
+ {
+  "vak": "dranken/gin-cocktails",
+  "afdeling": "Dranken",
+  "naam": "Gin & cocktails",
+  "hoort": "Gin en cocktails: gins van bekende merken, gin-tonicpakketten met tonic en garnering, cocktailsets met shaker, cocktailpakketten met drank en mixers in cadeauverpakking.",
+  "niet": "Alleen tonic of frisdrank zonder gin, alcoholvrije gin (Alcoholvrij), likeuren (eigen vakje), cocktailglazen zonder drank (Wijnaccessoires), cocktailboeken (Boeken & Media)."
+ },
+ {
+  "vak": "dranken/wijn-port",
+  "afdeling": "Dranken",
+  "naam": "Wijn & port",
+  "hoort": "Wijn om cadeau te geven: rode, witte en rosé wijn, wijnpakketten en proefdoosjes, port, sherry, wijn in houten kist en wijn met eigen etiket.",
+  "niet": "Champagne en prosecco (eigen vakje), alcoholvrije wijn (Alcoholvrij), wijnglazen, kurkentrekkers en wijnrekken (Wijnaccessoires), kookwijn en azijn (boodschappen), wijnboeken."
+ },
+ {
+  "vak": "dranken/likeuren",
+  "afdeling": "Dranken",
+  "naam": "Likeuren",
+  "hoort": "Zoete en kruidige likeuren: Baileys, Licor 43, limoncello, amaretto, advocaat, likeurproefpakketten en likeur in cadeauverpakking.",
+  "niet": "Sterke drank zoals whisky, rum en jenever (eigen vakjes), siropen zonder alcohol, bonbons met likeur (Lekkernijen > Chocolade), likeurglaasjes zonder drank (Wijnaccessoires)."
+ },
+ {
+  "vak": "dranken/bier",
+  "afdeling": "Dranken",
+  "naam": "Bier & speciaalbier",
+  "hoort": "Bier als cadeau: speciaalbierpakketten, bierproeverijen, bierbrouwpakketten om zelf te brouwen, bier met bijpassend glas, kratjes van de brouwerij en biersets.",
+  "niet": "Alcoholvrij bier (Alcoholvrij), bierglazen zonder bier (Wijnaccessoires), bierpullen met naam (Cadeaus > Met naam), biertaps en bierkoelkasten, borrelhapjes bij het bier (Lekkernijen)."
+ },
+ {
+  "vak": "dranken/wijnaccessoires",
+  "afdeling": "Dranken",
+  "naam": "Wijnaccessoires",
+  "hoort": "Spullen voor de drankliefhebber zonder de drank: kurkentrekkers, wijnkoelers, decanteerkaraffen, wijnglazensets, whiskyglazen met whiskystenen, bierglazen, wijnrekken en flessenopeners.",
+  "niet": "Flessen wijn, bier of sterke drank (andere vakjes in Dranken), gewone drinkglazen en waterkaraffen (Keuken), lege flessen en kurken voor hobby, glazen met naam gegraveerd (Cadeaus > Met naam)."
+ },
+ {
+  "vak": "dranken/tequila",
+  "afdeling": "Dranken",
+  "naam": "Tequila & mezcal",
+  "hoort": "Tequila en mezcal: 100% agave tequila, reposado en añejo, mezcal uit Mexico, tequilacadeausets met glaasjes en tequila in een bijzondere fles.",
+  "niet": "Margaritamix en limoenen zonder tequila, tequilaglaasjes zonder drank (Wijnaccessoires), sombrero's en feestartikelen, rum en andere sterke drank (eigen vakjes)."
+ },
+ {
+  "vak": "dranken/alcoholvrij",
+  "afdeling": "Dranken",
+  "naam": "Alcoholvrij",
+  "hoort": "Alcoholvrij proosten: 0.0% bier, alcoholvrije wijn en bubbels, alcoholvrije gin en spirits, mocktailpakketten, luxe limonades en siropen in cadeauverpakking.",
+  "niet": "Gewone frisdrank en sap uit de supermarkt, koffie en thee (Lekkernijen), water en drinkflessen (Keuken), drank met alcohol (andere vakjes), glazen zonder drank (Wijnaccessoires)."
+ },
+ {
+  "vak": "dranken/whisky",
+  "afdeling": "Dranken",
+  "naam": "Whisky",
+  "hoort": "Whisky voor kenners en beginners: Schotse single malts, blended whisky, Ierse en Japanse whisky, bourbon, whiskyproefpakketten en whisky in cadeaukist.",
+  "niet": "Whiskyglazen, whiskystenen en karaffen zonder whisky (Wijnaccessoires), whiskylikeur (Likeuren), cognac en rum (eigen vakjes), whiskyboeken, chocolade met whisky (Lekkernijen)."
+ },
+ {
+  "vak": "dranken/cognac",
+  "afdeling": "Dranken",
+  "naam": "Cognac",
+  "hoort": "Cognac en andere brandewijn: VS, VSOP en XO cognac van bekende huizen, armagnac, calvados, vieux, cognac in cadeauverpakking en proefsets.",
+  "niet": "Cognacglazen zonder drank (Wijnaccessoires), whisky en rum (eigen vakjes), likeuren op cognacbasis (Likeuren), sigaren en rookwaren, bonbons met cognac (Lekkernijen)."
+ },
+ {
+  "vak": "dranken/jenever",
+  "afdeling": "Dranken",
+  "naam": "Jenever",
+  "hoort": "Typisch Nederlands: oude en jonge jenever, korenwijn, Beerenburg, kruidenbitter, jenever in stenen kruik en jeneverproefpakketten.",
+  "niet": "Gin (Gin & cocktails), jeneverglaasjes zonder drank (Wijnaccessoires), jeneverbessen als kruid (Lekkernijen > BBQ & sauzen), bitterballen en borrelhapjes (Lekkernijen), alcoholvrije jenever (Alcoholvrij)."
+ },
+ {
+  "vak": "dranken/sake",
+  "afdeling": "Dranken",
+  "naam": "Sake",
+  "hoort": "Japanse rijstwijn: sake in mooie flessen, junmai en daiginjo sake, sakecadeausets met kopjes, umeshu (pruimenwijn) en soju.",
+  "niet": "Sakekopjes en sets zonder drank (Wijnaccessoires), Japanse thee en ramen (Lekkernijen), sushisets en servies (Keuken), mirin kookwijn (boodschappen), Japanse whisky (Whisky)."
+ },
+ {
+  "vak": "dranken/rum",
+  "afdeling": "Dranken",
+  "naam": "Rum",
+  "hoort": "Rum uit de Cariben en verder: bruine en witte rum, spiced rum, rumproefpakketten, rum in cadeaukist en rum-colasets.",
+  "niet": "Rumglazen zonder rum (Wijnaccessoires), rumlikeur zoals Malibu (Likeuren), cola en mixers zonder rum, rumbonen (Lekkernijen), tequila en whisky (eigen vakjes)."
+ },
+ {
+  "vak": "dranken/wodka",
+  "afdeling": "Dranken",
+  "naam": "Wodka",
+  "hoort": "Wodka als cadeau: Grey Goose, Belvedere, Absolut en andere merken, wodka in bijzondere flessen, wodkacadeausets met shotglaasjes en gearomatiseerde wodka.",
+  "niet": "Shotglaasjes zonder drank (Wijnaccessoires), energydrinks en mixers, wodkalikeuren (Likeuren), gin (Gin & cocktails), alcoholvrije spirits (Alcoholvrij)."
+ },
+ {
+  "vak": "eten-drinken/chocolade",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Chocolade & bonbons",
+  "hoort": "Lekkere chocolade om cadeau te geven: bonbondozen, pralines, chocoladetruffels, Tony's Chocolonely-pakketten, Leonidas en Neuhaus, chocoladerepen in cadeauverpakking.",
+  "niet": "Chocoladeletters (Sinterklaas-lekkers), chocolade-adventskalenders (Adventskalenders), chocoladefonteinen en bakspullen (Keuken), cacaopoeder en bakchocolade (boodschappen), chocolade met naam (Cadeaus > Met naam)."
+ },
+ {
+  "vak": "eten-drinken/koekjes-stroopwafels",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Koekjes & stroopwafels",
+  "hoort": "Koek en gebak als cadeau: stroopwafels in blik, luxe koekjesdozen, Deense boterkoekjes, speculoos, biscuitsets en koekjes in cadeauverpakking.",
+  "niet": "Speculaas en pepernoten (Sinterklaas-lekkers), koekjesuitstekers en bakspullen (Keuken > Bakken), gewone pakken koekjes uit de supermarkt, koekjes voor honden (Dieren)."
+ },
+ {
+  "vak": "eten-drinken/delicatessen",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Delicatessen",
+  "hoort": "Fijne hapjes en luxe eten: olijfoliesets, kaaspakketten, worst en tapas, truffelproducten, jam en honing in cadeauverpakking, nootjes en borrelpakketten.",
+  "niet": "Gewone boodschappen zoals losse pakken pasta of rijst, sauzen en kruiden voor de BBQ (eigen vakje), kaasplanken en messen (Keuken), drank (Dranken), dierenvoer (Dieren)."
+ },
+ {
+  "vak": "eten-drinken/drop-snoep",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Drop & snoep",
+  "hoort": "Snoepcadeaus: dropmixen, snoepdozen, lolly's, winegums, Haribo-pakketten, snoeppotten, retrosnoep en snoepboxen.",
+  "niet": "Pepernoten en marsepein (Sinterklaas-lekkers), snoep-adventskalenders (Adventskalenders), kauwgom en mintjes als losse boodschap, chocolade (eigen vakje), snoepjes voor honden en paarden (Dieren)."
+ },
+ {
+  "vak": "eten-drinken/sinterklaas-lekkers",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Sinterklaas-lekkers",
+  "hoort": "Lekkers voor de schoen en pakjesavond: chocoladeletters, pepernoten, kruidnoten, speculaas, marsepein, taaitaai, banketstaven en schuimpjes.",
+  "niet": "Sinterklaascadeaus die geen eten zijn (Cadeaus > Sinterklaas), sinterklaasversiering en verkleedkleding, gewone chocolade zonder sinterklaasthema (Chocolade & bonbons), sinterklaasboeken (Boeken & Media)."
+ },
+ {
+  "vak": "eten-drinken/adventskalenders",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Adventskalenders",
+  "hoort": "Adventskalenders om af te tellen naar kerst: chocolade-adventskalenders, snoep- en koekjeskalenders, thee- en koffiekalenders, kaas- en borrelkalenders.",
+  "niet": "Adventskalenders met bier, wijn of sterke drank (Dranken), beauty-adventskalenders (Geuren & Verzorging > Cadeausets), speelgoed-adventskalenders zoals LEGO en Playmobil (Speelgoed), lege houten adventskalenders (Wonen > Kerst)."
+ },
+ {
+  "vak": "eten-drinken/kerst-cadeaupakketten",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Kerst- & cadeaupakketten",
+  "hoort": "Gevulde pakketten met eten: kerstpakketten, borrelpakketten, cadeaumanden met delicatessen, proeverijboxen, ontbijtpakketten en cadeauboxen met chocolade en koek.",
+  "niet": "Pakketten met alleen drank (Dranken), beauty-cadeausets (Geuren & Verzorging > Cadeausets), lege cadeaudozen en manden om zelf te vullen, kerstdecoratie (Wonen > Kerst), brievenbuscadeaus (eigen vakje)."
+ },
+ {
+  "vak": "eten-drinken/koffie-thee",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Koffie & thee",
+  "hoort": "Koffie en thee om te drinken: koffiebonen van branderijen, koffieproefpakketten, Nespresso-cups en capsules, theecadeausets, losse thee in blik, matcha en chai.",
+  "niet": "Koffiezetapparaten, mokken en theepotten (Keuken > Koffie & thee), thee- en koffie-adventskalenders (Adventskalenders), reisbekers (Keuken), grote pakken supermarktkoffie, ontkalker en filters."
+ },
+ {
+  "vak": "eten-drinken/brievenbuscadeaus",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Brievenbuscadeaus",
+  "hoort": "Cadeautjes die door de brievenbus passen: brievenbuschocolade, brievenbusthee, brievenbusbloemen, kleine snoepdoosjes, kaartjes met een lekkernij en brievenbuspakketjes met een boodschap.",
+  "niet": "Grote pakketten en manden (Kerst- & cadeaupakketten), wenskaarten zonder cadeau, postzegels en enveloppen, digitale cadeaubonnen, de brievenbus zelf (Tuin & Klussen)."
+ },
+ {
+  "vak": "eten-drinken/bbq-sauzen",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "BBQ & sauzen",
+  "hoort": "Lekkers voor de barbecue en de keuken: BBQ-sauzenpakketten, rubs en kruidenmixen, hot-saucesets, marinades, chilipepersauzen en kruidencadeaupakketten.",
+  "niet": "Barbecues, rookovens en grillgereedschap (Tuin & Klussen > BBQ & buiten koken), vlees en vis (boodschappen), zoutvaatjes en pepermolens (Keuken), BBQ-kookboeken (Boeken & Media), kruidenzaden (Tuin > Moestuin)."
+ },
+ {
+  "vak": "speelgoed/lego",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "LEGO",
+  "hoort": "LEGO en DUPLO voor alle leeftijden: LEGO City, Friends, Technic, Star Wars, Harry Potter, LEGO Icons voor volwassenen en DUPLO voor peuters.",
+  "niet": "Losse LEGO-steentjes en reserveonderdelen per stuk, LEGO-opbergdozen zonder set, bouwsets van andere merken (Knikkerbanen & magnetisch bouwen of Hypes & trends), LEGO-games (Elektronica > Gaming)."
+ },
+ {
+  "vak": "speelgoed/buitenspeelgoed",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Buitenspeelgoed",
+  "hoort": "Speelgoed om buiten te spelen: kindersteps, skelters, loopfietsen, trampolines, waterpistolen, zandbakspeelgoed, bellenblaas, vliegers, Nerf-blasters en kinderzwembadjes.",
+  "niet": "Grote zwembaden en jacuzzi's (Tuin & Klussen), skateboards en stuntsteps voor tieners en volwassenen (Sport & Outdoor), tuinspellen zoals kubb (Sport > Buitenspellen & picknick), fietsen voor volwassenen (Sport > Fietsen)."
+ },
+ {
+  "vak": "speelgoed/bord-kaartspellen",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Bord- & kaartspellen",
+  "hoort": "Spellen voor een gezellige avond: bordspellen zoals Catan en Monopoly, kaartspellen zoals UNO, partyspellen zoals 30 Seconds, escaperoomspellen, quizzen, schaak en dammen, kinderspellen.",
+  "niet": "Videogames en spelcomputers (Elektronica > Gaming), Pokémon- en verzamelkaarten (eigen vakje), legpuzzels (eigen vakje), buitenspellen zoals kubb (Sport & Outdoor), speelgeld en losse onderdelen om een spel te repareren."
+ },
+ {
+  "vak": "speelgoed/pokemon-verzamelkaarten",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Pokémon & verzamelkaarten",
+  "hoort": "Verzamelkaarten en alles eromheen: Pokémon-boosterpakketjes, Elite Trainer Boxen, tins, Yu-Gi-Oh!, Magic: The Gathering, Disney Lorcana, verzamelmappen en sleeves.",
+  "niet": "Losse enkele kaarten per stuk van de verzamelaarsmarkt, Pokémon-knuffels en -figuren (Knuffels / Hypes & trends), Pokémon-games (Elektronica > Gaming), gewone kaartspellen zoals UNO (Bord- & kaartspellen)."
+ },
+ {
+  "vak": "speelgoed/puzzels",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Puzzels",
+  "hoort": "Puzzels voor jong en oud: legpuzzels van 500 tot 5000 stukjes, Wasgij, Ravensburger, kinderpuzzels, 3D-puzzels, houten puzzels, breinbrekers en puzzelmatten.",
+  "niet": "Puzzelboeken met sudoku en kruiswoord (Boeken & Media > Puzzelboeken), puzzellijm en losse puzzelstukjes, escaperoomspellen (Bord- & kaartspellen), houten 3D-bouwpakketten (Hobby > Modelbouw)."
+ },
+ {
+  "vak": "speelgoed/poppen-barbie",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Poppen & Barbie",
+  "hoort": "Poppen om mee te spelen: Barbie, L.O.L. Surprise, Rainbow High, babypoppen zoals Baby Born, poppenhuizen, poppenwagens, Sylvanian Families en poppenkleertjes.",
+  "niet": "Funko Pop-figuren en verzamelfiguren (Hypes & trends), knuffels (eigen vakje), lappenpoppen voor baby's (Baby- & houten speelgoed), antieke verzamelpoppen, poppen om zelf te maken (Hobby)."
+ },
+ {
+  "vak": "speelgoed/playmobil",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Playmobil",
+  "hoort": "Playmobil-sets: Playmobil City Life, Princess, Pirates, Novelmore, dierentuinen, voertuigen, Playmobil 1.2.3 voor peuters en Playmobil-adventskalenders.",
+  "niet": "Losse Playmobil-poppetjes en reserveonderdelen per stuk, LEGO en andere bouwsets (eigen vakje), Playmobil-films en -boeken (Boeken & Media), speelfiguren van andere merken (Auto's, treinen & RC of Hypes & trends)."
+ },
+ {
+  "vak": "speelgoed/autos-treinen-rc",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Auto's, treinen & RC",
+  "hoort": "Rijdend speelgoed: Hot Wheels-banen, bestuurbare auto's, speelgoedtreinen van BRIO, racebanen, garages, brandweerauto's, tractors, monstertrucks en RC-helikopters.",
+  "niet": "Drones met camera (Elektronica > Drones & VR), modelbouwauto's voor verzamelaars (Hobby > Modelbouw), accessoires voor echte auto's, loopfietsen en skelters (Buitenspeelgoed), racesturen voor games (Elektronica > Gaming)."
+ },
+ {
+  "vak": "speelgoed/knuffels-squishmallows",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Knuffels & Squishmallows",
+  "hoort": "Knuffels om te knuffelen: Squishmallows, Jellycat, teddyberen, grote knuffels, warmteknuffels, knuffels van bekende figuren en knuffeldoekjes voor baby's.",
+  "niet": "Honden- en kattenspeelgoed (Dieren), knuffels met naam geborduurd (Cadeaus > Met naam), knuffeldekens en kussens (Wonen), Funko Pops en figuren (Hypes & trends)."
+ },
+ {
+  "vak": "speelgoed/knikkerbanen-magnetisch",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Knikkerbanen & magnetisch bouwen",
+  "hoort": "Bouwen en knikkeren: GraviTrax, houten knikkerbanen, Magna-Tiles, Connetix, Magformers, Geomag en andere magnetische bouwsets.",
+  "niet": "LEGO en DUPLO (eigen vakje), houten blokken voor baby's (Baby- & houten speelgoed), koelkastmagneten (Wonen), vismagneten (Metaaldetectie > Magneetvissen), modelbouwpakketten (Hobby)."
+ },
+ {
+  "vak": "speelgoed/knutselen-kleuren",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Knutselen & kleuren",
+  "hoort": "Knutselsets voor kinderen: SES-knutselpakketten, strijkkralen, slijmsets, kraskaarten, Crayola-kleursets, science-experimenten en stickerboeken.",
+  "niet": "Tekenspullen en verf voor volwassenen (Hobby & Creatief), kleurboeken (Boeken & Media > Kleurboeken), losse lijm, scharen en papier (schoolspullen), navulzakjes kralen, diamond painting voor volwassenen (Hobby)."
+ },
+ {
+  "vak": "speelgoed/hypes-trends",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Hypes & trends",
+  "hoort": "Het speelgoed waar kinderen nu om vragen: Funko Pops, Labubu, Little Live Pets, robots, Tamagotchi, fidgetspeelgoed, kindercamera's, Stitch, tiptoi en interactieve wereldbollen.",
+  "niet": "Gadgets voor volwassenen (Elektronica > Gadgets & trackers), knuffels (eigen vakje), Pokémon-kaarten (eigen vakje), echte camera's en tablets (Elektronica), losse batterijen en opladers."
+ },
+ {
+  "vak": "speelgoed/baby-houten",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Baby- & houten speelgoed",
+  "hoort": "Speelgoed voor baby's en peuters: rammelaars, stapeltorens, bijtringen, houten blokken, loopwagens, activityspeelgoed, badspeelgoed, speelkleden en Fisher-Price.",
+  "niet": "Luiers, flesjes en babyverzorging (boodschappen), kinderwagens en boxen (babyspullen, geen speelgoed), speelgoed vanaf 3 jaar (andere vakjes), knuffels (eigen vakje), houten modelbouw voor volwassenen (Hobby)."
+ },
+ {
+  "vak": "speelgoed/speelkeukens-verkleden",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Speelkeukens & verkleden",
+  "hoort": "Rollenspel en fantasie: speelkeukens, speelgoedkassa's, dokterssets, gereedschapskisten voor kinderen, verkleedkleding, prinsessenjurken, kindermake-up en beautysets.",
+  "niet": "Echte keukenspullen en gereedschap (Keuken / Tuin & Klussen), echte make-up (Geuren & Verzorging), pyjama's en onesies om in te slapen (Mode), poppen en poppenhuizen (eigen vakje), losse schminknavullingen."
+ },
+ {
+  "vak": "speelgoed/muziek-karaoke",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Muziek & karaoke",
+  "hoort": "Muziek maken voor kinderen: karaokesets, speelgoedmicrofoons, kinderkeyboards, kindergitaren, drumstellen, xylofoons, muziekspeelgoed voor peuters en KidiDJ.",
+  "niet": "Professionele instrumenten en versterkers, bluetooth-speakers en koptelefoons (Elektronica), lp's en cd's (Boeken & Media > Muziek), losse snaren, batterijen en microfoonkabels, karaokemachines voor volwassenen (Elektronica > Speakers)."
+ },
+ {
+  "vak": "hobby/tekenen",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Tekenen & stiften",
+  "hoort": "Tekenspullen om mee te beginnen of te verwennen: stiftensets zoals Posca en Copic, kleurpotlodensets, schetsboeken, fineliners, houtskool- en pastelsets en complete tekenkoffers.",
+  "niet": "Eén losse stift of potlood als aanvulling, balpennen voor school, kleurboeken (Boeken & Media), knutselsets voor kinderen (Speelgoed), 3D-pennen en brush pens (eigen vakjes)."
+ },
+ {
+  "vak": "hobby/schilderen",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Schilderen",
+  "hoort": "Alles om te schilderen: acrylverfsets, aquarelsets, olieverf, penselensets, schildersezels, canvasdoeken, paint-by-numbers en complete schilderpakketten.",
+  "niet": "Muurverf en lak voor klussen (Tuin & Klussen), losse tubes verf als navulling, kant-en-klare schilderijen (Wonen > Wanddecoratie), diamond painting (eigen vakje), vingerverf voor peuters (Speelgoed)."
+ },
+ {
+  "vak": "hobby/diamond-painting",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Diamond painting",
+  "hoort": "Diamond painting: complete pakketten met doek, steentjes en pen, sets voor beginners en gevorderden, grote doeken, kaarten en sleutelhangers om te maken, lichtpads en opbergdozen voor steentjes.",
+  "niet": "Losse zakjes steentjes en reservepennen, lijsten om het resultaat in te hangen (Wonen > Fotolijsten), paint-by-numbers (Schilderen), borduurpakketten (Naaien & borduren), echte diamanten sieraden (Sieraden)."
+ },
+ {
+  "vak": "hobby/naaien-borduren",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Naaien & borduren",
+  "hoort": "Naaien en borduren: naaimachines, borduurpakketten met patroon, kruissteekpakketten, punch needle-sets, gevulde naaidozen, quiltsets en lockmachines.",
+  "niet": "Losse restjes stof, knopen en garen, naalden en spelden als navulling, kleding die al af is (Mode), haak- en breipakketten (eigen vakje), reparatiesetjes voor onderweg."
+ },
+ {
+  "vak": "hobby/kralen-sieraden-maken",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Kralen & sieraden maken",
+  "hoort": "Zelf sieraden maken: complete kralensets, pakketten om armbandjes te maken, bedels en letterkralen in een set, sieradengereedschap in een koffer en rocaillessets.",
+  "niet": "Kant-en-klare sieraden (Sieraden & Horloges), losse zakjes kralen en sluitinkjes als aanvulling, sieradendozen (Sieraden), strijkkralen voor kinderen (Speelgoed > Knutselen), Pandora-bedels (Sieraden > Bedels)."
+ },
+ {
+  "vak": "hobby/modelbouw",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Modelbouw & miniatuurhuisjes",
+  "hoort": "Bouwpakketten voor volwassenen en tieners: Robotime en Rolife miniatuurhuisjes, book nooks, houten 3D-puzzels, modelbouwschepen, schaalmodellen van auto's en vliegtuigen en maquettes.",
+  "niet": "Losse lijm, verf en onderdelen voor modelbouw, LEGO en Playmobil (Speelgoed), speelgoedauto's (Speelgoed > Auto's, treinen & RC), poppenhuizen om mee te spelen (Speelgoed > Poppen)."
+ },
+ {
+  "vak": "hobby/origami-scrapbooking",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Origami & scrapbooking",
+  "hoort": "Papierhobby's: origamipapiersets, scrapbookalbums met materialen, stempelsets, washi tape-sets, pakketten om kaarten te maken, ponsen en papiersnijders.",
+  "niet": "Gewoon printpapier en kantoorartikelen, kant-en-klare fotoalbums (Boeken & Media > Foto- & invulboeken), gedrukte wenskaarten, losse velletjes en restjes, bullet journals (eigen vakje)."
+ },
+ {
+  "vak": "hobby/kaarsen-zeep-epoxy",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Kaarsen, zeep & epoxy",
+  "hoort": "Zelf gieten en maken: kaarsenmaakpakketten, zeepmaaksets, epoxygietsets met mallen, sojawas en lonten in een pakket en resin-sieradensets.",
+  "niet": "Kant-en-klare kaarsen (Wonen > Kaarsen & kandelaars), kant-en-klare zeep en badbruisballen (Geuren & Verzorging > Bad & douche), losse flessen hars zonder set, lijmpistolen (Tuin & Klussen), kleurstofnavullingen."
+ },
+ {
+  "vak": "hobby/haken-breien",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Haken & breien",
+  "hoort": "Haak- en breipakketten: amigurumi-haakpakketten, breipakketten voor een sjaal of trui, macramésets, haaknaalden- en breinaaldensets, tuftingkits en luxe garenpakketten.",
+  "niet": "Losse bollen wol en garen zonder pakket, gehaakte of gebreide kleding die al af is (Mode), gehaakte knuffels die al af zijn (Speelgoed), naai- en borduurpakketten (eigen vakje)."
+ },
+ {
+  "vak": "hobby/klei-pottenbakken",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Klei & pottenbakken",
+  "hoort": "Werken met klei: pottenbaksets met draaischijf, boetseersets, polymeerklei zoals Fimo in een set, luchtdrogende kleipakketten, keramiekschilderpakketten en pottenbakkersgereedschap.",
+  "niet": "Kant-en-klaar keramiek en vazen (Wonen), kinderklei en Play-Doh (Speelgoed > Knutselen), losse blokken klei als aanvulling, keramiekovens voor professionals, bloempotten (Tuin & Klussen)."
+ },
+ {
+  "vak": "hobby/3d-pennen",
+  "afdeling": "Hobby & Creatief",
+  "naam": "3D-pennen",
+  "hoort": "3D-pennen om mee te tekenen in de lucht: 3D-pen startersets voor kinderen en volwassenen, 3D-pennen met filament en sjablonen en complete 3D-tekenkits.",
+  "niet": "Losse rolletjes filament als navulling, 3D-printers en printeronderdelen, gewone stiften en pennen (Tekenen & stiften), lijmpistolen (Tuin & Klussen), tekentablets (Elektronica)."
+ },
+ {
+  "vak": "hobby/bullet-journal",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Bullet journal & kalligrafie",
+  "hoort": "Mooi schrijven en plannen: bullet journal-startsets, kalligrafiesets met pen en inkt, handletteringpakketten, brush pen-sets, stickers en sjablonen voor je journal.",
+  "niet": "Gewone agenda's en notitieboeken (Boeken & Media > Agenda's, planners & kalenders), balpennen voor school, één losse brush pen, dagboeken met vragen (Boeken & Media > Foto- & invulboeken)."
+ },
+ {
+  "vak": "sport-outdoor/voetbal-balsporten",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Voetbal & balsporten",
+  "hoort": "Voor de voetballer en balsporter: voetballen, keepershandschoenen, voetbaldoeltjes, scheenbeschermers, basketballen, hockeysticks, volleyballen en trainingsmateriaal.",
+  "niet": "Voetbalgames (Elektronica > Gaming), voetbalplaatjes en verzamelkaarten (Speelgoed), padel- en tennisrackets (eigen vakje), zachte speelballen voor peuters (Speelgoed > Buitenspeelgoed), voetbalboeken (Boeken & Media)."
+ },
+ {
+  "vak": "sport-outdoor/darts",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Darts",
+  "hoort": "Alles voor darts: dartborden, elektronische dartborden, dartpijlensets, dartkabinetten, dartmatten, surrounds en dartsets voor beginners.",
+  "niet": "Losse flights, shafts en tips (verbruik), dartgames voor de computer (Elektronica), werpspellen voor kinderen (Speelgoed), bierglazen voor bij het darten (Dranken > Wijnaccessoires)."
+ },
+ {
+  "vak": "sport-outdoor/fietsen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Fietsen",
+  "hoort": "Voor de fietser: fietsen en e-bikes, fietshelmen, fietscomputers, fietstassen, bidonhouders, fietsverlichting, wielrenkleding en kettingsloten.",
+  "niet": "Kinderfietsen en loopfietsjes (Speelgoed > Buitenspeelgoed), losse binnenbanden, remblokjes en reserveonderdelen, fietsreparatie en abonnementen, hometrainers (Fitness & thuis sporten)."
+ },
+ {
+  "vak": "sport-outdoor/padel-tennis",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Padel & tennis",
+  "hoort": "Racketsporten: padelrackets, tennisrackets, tafeltennistafels en batjes, badmintonsets, squashrackets, padeltassen en ballen in cadeauverpakking.",
+  "niet": "Losse grips, dempers en bespanning (verbruik), tennisballen voor de hond (Dieren), baanhuur en lessen, beachballsets voor het strand (Buitenspellen & picknick), gewone sportkleding."
+ },
+ {
+  "vak": "sport-outdoor/wintersport-schaatsen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Wintersport & schaatsen",
+  "hoort": "Voor de winter: schaatsen, ski's en snowboards, skihelmen, skibrillen, sleeën, thermo-ondergoed, skihandschoenen en snowboots.",
+  "niet": "Gewone winterjassen en mutsen (Mode & Accessoires), skipassen en skilessen, ski-onderhoud zoals wax en slijpen, wintersportvakanties, losse schaatsveters en beschermers als onderdeel."
+ },
+ {
+  "vak": "sport-outdoor/fitness",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Fitness & thuis sporten",
+  "hoort": "Thuis sporten: dumbbells, kettlebells, weerstandsbanden, springtouwen, bokszakken, hometrainers, roeitrainers, ab-rollers, sportmatten en fitness-startpakketten.",
+  "niet": "Sportvoeding, eiwitpoeder en supplementen (verbruik), yogamatten en meditatiekussens (Yoga), fitnesstrackers en smartwatches (Sieraden & Horloges), sportschoolabonnementen, massageguns (Geuren & Verzorging > Massage)."
+ },
+ {
+  "vak": "sport-outdoor/kamperen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Kamperen",
+  "hoort": "Kampeerspullen: tenten, slaapzakken, campingstoelen, hangmatten, gasbranders, campingkooksets, luchtbedden, hoofdlampen, zaklampen en campinglantaarns.",
+  "niet": "Noodpakketten en survivalspullen voor noodsituaties (Noodpakket & survival), tuinmeubelen en parasols (Tuin & Klussen), campingreserveringen, gasflessen en brandstof (verbruik), zakmessen en multitools (Tuin & Klussen > Handgereedschap)."
+ },
+ {
+  "vak": "sport-outdoor/wandelen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Wandelen",
+  "hoort": "Voor de wandelaar: wandelschoenen, wandelrugzakken, verrekijkers, nordic walking-stokken, regenponcho's, kompassen, wandelsokken en thermosflessen voor onderweg.",
+  "niet": "Gewone schoenen en sneakers (Mode), stads- en schoolrugzakken (Mode > Rugzakken), blarenpleisters en sportvoeding (verbruik), wandelgidsen en kaarten (Boeken & Media), hardloopspullen (Hardlopen)."
+ },
+ {
+  "vak": "sport-outdoor/hardlopen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Hardlopen",
+  "hoort": "Voor hardlopers: hardloopschoenen, hardloopvesten en -jassen, reflecterende hesjes en verlichting, stappentellers, hartslagbanden, hardloopriemen voor je telefoon en hardloopsokken.",
+  "niet": "Smartwatches en sporthorloges (Sieraden & Horloges > Smartwatches), sportdrank en gels (verbruik), loopbanden (Fitness & thuis sporten), wedstrijdinschrijvingen, gewone sneakers (Mode)."
+ },
+ {
+  "vak": "sport-outdoor/golf",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Golf",
+  "hoort": "Voor de golfer: golfsets en clubs, golftassen, golfballen in cadeauverpakking, puttingmatten voor thuis, golfhandschoenen, golfkleding, afstandsmeters en golfcadeausets met tees.",
+  "niet": "Minigolfsets voor kinderen (Speelgoed > Buitenspeelgoed), greenfees en golflessen, golfboeken (Boeken & Media), onderdelen voor de Volkswagen Golf, losse tees als boodschap."
+ },
+ {
+  "vak": "sport-outdoor/reizen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Reizen",
+  "hoort": "Handig op reis: reiskussens, wereldstekkers, paspoorthoesjes, kofferweegschalen, bagagelabels, reisorganizers, slaapmaskers, kofferriemen en reisdagboeken.",
+  "niet": "Koffers en reistassen (Mode > Koffers), rugzakken (Mode), reisverzekeringen en vliegtickets, reisformaat shampoo (boodschappen), reisgidsen (Boeken & Media), kampeerspullen (Kamperen)."
+ },
+ {
+  "vak": "sport-outdoor/watersport-zwemmen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Watersport & zwemmen",
+  "hoort": "Voor in en op het water: SUP-boards, kajaks, snorkelsets, duikbrillen, wetsuits, zwembrillen, opblaasboten, waterschoenen en zwemvliezen.",
+  "niet": "Opzetzwembaden en jacuzzi's (Tuin & Klussen), zwembandjes en badspeelgoed voor kinderen (Speelgoed > Buitenspeelgoed), zwemlessen en abonnementen, aquariums (Dieren), vishengels (Vissen)."
+ },
+ {
+  "vak": "sport-outdoor/klimmen-boulderen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Klimmen & boulderen",
+  "hoort": "Voor klimmers en boulderaars: klimschoenen, chalkbags, klimgordels, crashpads, klimhelmen, hangboards om thuis te trainen en klimtassen.",
+  "niet": "Klimrekken en speeltoestellen voor de tuin (Speelgoed > Buitenspeelgoed), klimrekken voor planten (Tuin), ladders en trappen (Tuin & Klussen), losse zakjes chalk als navulling, klimhalabonnementen."
+ },
+ {
+  "vak": "sport-outdoor/skateboards-steps",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Skateboards & steps",
+  "hoort": "Op wieltjes: skateboards, longboards, pennyboards, stuntsteps, rolschaatsen, inlineskates, waveboards en beschermsets met helm.",
+  "niet": "Kindersteps en loopfietsjes voor peuters (Speelgoed > Buitenspeelgoed), losse wieltjes, lagers en griptape (onderdelen), schaatsen voor op het ijs (Wintersport & schaatsen), aerobicsteps (Fitness), fietsen (eigen vakje)."
+ },
+ {
+  "vak": "sport-outdoor/yoga",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Yoga",
+  "hoort": "Voor yoga en ontspanning: yogamatten, yogablokken en riemen, meditatiekussens, pilatesballen, yogasets voor beginners, balansballen, yogakleding en yogatassen.",
+  "niet": "Fitnessapparaten en gewichten (Fitness & thuis sporten), massageapparaten (Geuren & Verzorging > Massage), yogalessen en apps, yogaboeken (Boeken & Media), wierook en geurstokjes (Wonen > Huisgeuren)."
+ },
+ {
+  "vak": "sport-outdoor/buitenspellen-picknick",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Buitenspellen & picknick",
+  "hoort": "Gezellig buiten: jeu de boules-sets, kubb, mölkky, cornhole, spikeball, frisbees, picknickmanden, picknickkleden, beachballsets en werpspellen.",
+  "niet": "Buitenspeelgoed voor jonge kinderen zoals zandbakken en waterpistolen (Speelgoed), bordspellen voor binnen (Speelgoed), barbecues en tuinmeubelen (Tuin & Klussen), eten en drinken voor de picknick (Lekkernijen / Dranken)."
+ },
+ {
+  "vak": "sport-outdoor/vissen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Vissen",
+  "hoort": "Voor de sportvisser: hengels en werphengelsets, vismolens, viskisten en vistassen, visstoelen, schepnetten, kunstaassets, visweegschalen en beginnerssets.",
+  "niet": "Aquariums en siervissen (Dieren > Vissen & aquarium), magneetvissen (Metaaldetectie > Magneetvissen), losse haakjes, lijn en aas (verbruik), visvergunningen, vis om te eten (Lekkernijen)."
+ },
+ {
+  "vak": "tuin-klussen/zwembaden-jacuzzis",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Zwembaden & jacuzzi's",
+  "hoort": "Water in de tuin: opzetzwembaden, opblaasbare jacuzzi's zoals Lay-Z-Spa, kinderzwembadjes, framepools, zwembadtrappen en afdekzeilen.",
+  "niet": "Chloor, filtercartridges en onderhoudsmiddelen (verbruik), badspeelgoed en waterpistolen (Speelgoed > Buitenspeelgoed), zwemkleding en snorkels (Sport > Watersport & zwemmen), badkuipen voor binnen."
+ },
+ {
+  "vak": "tuin-klussen/tuinmeubelen",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuinmeubelen & parasols",
+  "hoort": "Lekker zitten in de tuin: loungesets, tuinstoelen, hangstoelen, parasols, ligbedden, hangmatten met standaard, tuinbanken en tuinkussens.",
+  "niet": "Campingstoelen en kampeerspullen (Sport & Outdoor > Kamperen), binnenmeubels en bankkussens voor binnen (Wonen), losse parasolvoeten en onderdelen, beschermhoezen, tuinmeubelreiniger en olie."
+ },
+ {
+  "vak": "tuin-klussen/elektrisch-gereedschap",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Elektrisch gereedschap",
+  "hoort": "Elektrisch gereedschap van merken als Makita, Bosch en DeWalt: accuboormachines, schroefmachines, zagen, schuurmachines, Dremel-multitools, lijmpistolen, soldeerbouten en compressors.",
+  "niet": "Losse accu's, boortjes, zaagbladen en schuurpapier (onderdelen en verbruik), handgereedschap zoals hamers en schroevendraaiers (eigen vakje), tuinmachines (eigen vakje), speelgoedgereedschap (Speelgoed), keukenapparaten (Keuken)."
+ },
+ {
+  "vak": "tuin-klussen/bbq-buitenkoken",
+  "afdeling": "Tuin & Klussen",
+  "naam": "BBQ & buiten koken",
+  "hoort": "Buiten koken: barbecues van Weber en andere merken, kamado's, buitenpizzaovens, smokers, plancha's, buitenkeukens en BBQ-gereedschapssets.",
+  "niet": "BBQ-sauzen, rubs en kruiden (Lekkernijen > BBQ & sauzen), houtskool, briketten en aanmaakblokjes (verbruik), gourmetstellen en tafelgrills voor binnen (Keuken), vuurschalen om bij te zitten (eigen vakje), campingkooksets (Sport)."
+ },
+ {
+  "vak": "tuin-klussen/tuinmachines",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuinmachines",
+  "hoort": "Machines voor de tuin: grasmaaiers, robotmaaiers, hogedrukreinigers van Kärcher, heggenscharen, bladblazers, kettingzagen, grastrimmers en verticuteermachines.",
+  "niet": "Losse maaimessen, maaidraad en reserveonderdelen, benzine en olie, handgereedschap zoals snoeischaren en harken (Tuingereedschap), boormachines en klusgereedschap (Elektrisch gereedschap), speelgoedgrasmaaiers (Speelgoed)."
+ },
+ {
+  "vak": "tuin-klussen/handgereedschap-werkplaats",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Handgereedschap & werkplaats",
+  "hoort": "Gereedschap voor de klusser: gereedschapskoffers, dopsleutelsets, schroevendraaiersets, hamers en tangen, waterpassen en lasermeters, werkbanken, zakmessen en multitools, werkhandschoenen en zaklampen.",
+  "niet": "Elektrisch gereedschap (eigen vakje), schroeven, pluggen en spijkers (verbruik), tuingereedschap (eigen vakje), keukenmessen (Keuken), survivalmessen en noodpakketten (Noodpakket & survival), speelgoedgereedschap (Speelgoed)."
+ },
+ {
+  "vak": "tuin-klussen/planten-potten",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Planten & potten",
+  "hoort": "Groen voor binnen en buiten: kamerplanten, bonsai, cactussen en vetplanten, orchideeën, terrariums met planten, mooie bloempotten, hangpotten, plantenbakken en plantenstandaards.",
+  "niet": "Potgrond, plantenvoeding en meststoffen (verbruik), zaden en bloembollen om zelf te kweken (Moestuin & kweken), kunstplanten en vazen (Wonen > Vazen & bloemen), gieters en tuinslangen (eigen vakje)."
+ },
+ {
+  "vak": "tuin-klussen/regentonnen-slangen-compost",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Regentonnen, slangen & compost",
+  "hoort": "Water en compost in de tuin: regentonnen, tuinslangen met haspel, mooie gieters, compostbakken, sproeiers, regenmeters en druppelsystemen voor planten.",
+  "niet": "Losse koppelstukken, slangklemmen en reserveonderdelen, zakken tuinaarde en compost (verbruik), vijverpompen, zwembaden (eigen vakje), drinkflessen (Keuken)."
+ },
+ {
+  "vak": "tuin-klussen/vogels-insecten",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Vogels & insecten",
+  "hoort": "Dieren in de tuin lokken: nestkastjes, vogelvoederhuisjes, voedersilo's, insectenhotels, vlinderkastjes, egelhuisjes, bijenhotels en pindakaaspotten met houder.",
+  "niet": "Losse zakken vogelvoer en vetbollen als boodschap (verbruik), kooien en speelgoed voor huisvogels (Dieren > Vogels), insectenspray en ongediertebestrijding, vlindernetjes en insectenpotjes voor kinderen (Speelgoed)."
+ },
+ {
+  "vak": "tuin-klussen/moestuin-kweken",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Moestuin & kweken",
+  "hoort": "Zelf kweken: moestuinbakken, kweekkassen en minikassen, zaadpakketten als cadeau, kweeksets voor kruiden en tomaten, bloembollenpakketten, kiemschaaltjes en zaaisets voor kinderen.",
+  "niet": "Losse zakjes zaad en potgrond als boodschap, bestrijdingsmiddelen en mest, kamerplanten en potten (Planten & potten), gieters en slangen (eigen vakje), groente en fruit om te eten (Lekkernijen)."
+ },
+ {
+  "vak": "tuin-klussen/buitenverlichting",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Buitenverlichting",
+  "hoort": "Licht in de tuin: solar tuinlampen, lichtsnoeren voor buiten, tuinfakkels, buitenlantaarns, wandlampen voor buiten, prikspots en lichtslingers voor het terras.",
+  "niet": "Lampen voor binnen (Wonen > Lampen), slimme verlichting (Elektronica > Sfeerlicht & smart home), losse LED-lampen en batterijen, zaklampen en hoofdlampen (Noodpakket / Kamperen), kaarsen en windlichten (Wonen), kerstverlichting (Wonen > Kerst)."
+ },
+ {
+  "vak": "tuin-klussen/tuingereedschap",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuingereedschap",
+  "hoort": "Handgereedschap voor de tuin: snoeischaren, tuingereedschapssets, kruiwagens, schoffels en harken, spades, tuinhandschoenen, knielkussens, tuinschorten en plantenschepjes.",
+  "niet": "Tuinmachines zoals grasmaaiers en heggenscharen (eigen vakje), klusgereedschap (Handgereedschap & werkplaats), onkruidbestrijdingsmiddelen (verbruik), speelgoedtuinsets (Speelgoed > Buitenspeelgoed), graafscheppen voor metaaldetectie (Metaaldetectie)."
+ },
+ {
+  "vak": "tuin-klussen/vuurschalen-terrasverwarmers",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Vuurschalen & terrasverwarmers",
+  "hoort": "Warmte en sfeer buiten: vuurschalen, vuurkorven, terrasverwarmers, vuurtafels, tuinhaarden, vuurplaten en vuurpotten.",
+  "niet": "Haardhout, aanmaakblokjes en gas (verbruik), barbecues en pizzaovens (BBQ & buiten koken), kaarsen en lantaarns (Wonen > Kaarsen & kandelaars), kachels voor binnen, vuurstarters (Noodpakket & survival)."
+ },
+ {
+  "vak": "tuin-klussen/tuindecoratie",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuindecoratie",
+  "hoort": "Versiering voor de tuin: tuinkabouters, tuinbeelden, windgongs, tuinstekers, zonnewijzers, tuinspiegels, windspinners, buitenthermometers en vogelbaden.",
+  "niet": "Kerstdecoratie voor buiten (Wonen > Kerst), tuinverlichting (eigen vakje), kaarsen en lantaarns (Wonen), nestkastjes en insectenhotels (Vogels & insecten), engelenbeelden met christelijke betekenis (Christelijke cadeaus), bloempotten (Planten & potten)."
+ },
+ {
+  "vak": "boeken-media/puzzelboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Puzzelboeken",
+  "hoort": "Puzzelen op papier: sudokuboeken, kruiswoordpuzzels, woordzoekers, breinbrekerboeken, denksportbundels, doolhofboeken voor kinderen en puzzelboeken in grote letter.",
+  "niet": "Legpuzzels (Speelgoed > Puzzels), kleurboeken (eigen vakje), losse puzzelbladen uit de krant, pennen en potloden (Hobby), puzzelapps en abonnementen, escaperoomspellen (Speelgoed)."
+ },
+ {
+  "vak": "boeken-media/agendas-planners-kalenders",
+  "afdeling": "Boeken & Media",
+  "naam": "Agenda's, planners & kalenders",
+  "hoort": "Plannen en schrijven: agenda's, weekplanners, notitieboeken van Moleskine of Leuchtturm, scheurkalenders, verjaardagskalenders, dagboeken en familieplanners.",
+  "niet": "Bullet journal- en kalligrafiesets (Hobby), kalenders met eigen foto's (Cadeaus > Met naam), adventskalenders met lekkers (Lekkernijen), invulboeken met vragen (Foto- & invulboeken), gewone schoolschriften."
+ },
+ {
+  "vak": "boeken-media/e-readers",
+  "afdeling": "Boeken & Media",
+  "naam": "E-readers",
+  "hoort": "Lezen op een scherm: Kobo- en Kindle-e-readers, e-readers met verlichting en waterdicht, e-readers met groter scherm voor notities, e-readerhoezen en e-readersets met hoes.",
+  "niet": "Tablets en iPads (Elektronica > Tablets & e-readers), e-books en downloads, losse laadkabels en screenprotectors, leeslampjes en boekensteunen (Leesplezier), papieren boeken (andere vakjes)."
+ },
+ {
+  "vak": "boeken-media/muziek",
+  "afdeling": "Boeken & Media",
+  "naam": "Muziek: lp's & cd's",
+  "hoort": "Muziek om te geven: lp's en vinyl van bekende artiesten, cd's en boxsets, verzamelalbums, bladmuziek en songbooks en luxe heruitgaven op gekleurd vinyl.",
+  "niet": "Platenspelers en speakers (Elektronica), muziekinstrumenten en kinderkaraoke (Speelgoed > Muziek & karaoke), streamingtegoed en digitale codes, lege cd's en platenhoezen, psalmen- en koor-cd's (Christelijke cadeaus)."
+ },
+ {
+  "vak": "boeken-media/films-series",
+  "afdeling": "Boeken & Media",
+  "naam": "Films & series",
+  "hoort": "Films en series op dvd en blu-ray: complete seriesboxen, filmklassiekers, Disney-films, 4K-blu-rays, filmboxsets voor verzamelaars en kinderfilms.",
+  "niet": "Beamers en tv's (Elektronica), streamingabonnementen en digitale codes, Funko Pops en filmmerchandise (Speelgoed > Hypes & trends), filmboeken en strips (andere vakjes), lege dvd's."
+ },
+ {
+  "vak": "boeken-media/kinderboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Kinderboeken",
+  "hoort": "Boeken voor kinderen: prentenboeken, voorleesboeken, Nijntje en Dikkie Dik, De Gruffalo, boeken om te leren lezen (AVI), Harry Potter, Dagboek van een muts en sprookjesboeken.",
+  "niet": "Kinderbijbels en christelijke kinderboeken (Christelijke cadeaus > Voor kinderen), kleurboeken en puzzelboeken (eigen vakjes), strips (Strips & manga), babyboeken om in te vullen (Foto- & invulboeken), speelgoed van boekfiguren (Speelgoed)."
+ },
+ {
+  "vak": "boeken-media/thrillers-romans",
+  "afdeling": "Boeken & Media",
+  "naam": "Thrillers & romans",
+  "hoort": "Leesboeken voor volwassenen: thrillers, romans, literaire bestsellers, feelgoodboeken, fantasy en sciencefiction, waargebeurde verhalen en boekenpakketten.",
+  "niet": "Christelijke boeken en dagboeken (Christelijke cadeaus > Boeken & muziek), kinder- en jeugdboeken (Kinderboeken), kookboeken, strips en manga, luisterboeken en e-readers (eigen vakjes)."
+ },
+ {
+  "vak": "boeken-media/strips-manga",
+  "afdeling": "Boeken & Media",
+  "naam": "Strips & manga",
+  "hoort": "Strips en manga: Suske en Wiske, Kuifje, Asterix, Donald Duck-pockets, Lucky Luke, manga zoals Naruto en One Piece, graphic novels en luxe verzamelbundels.",
+  "niet": "Stripfiguren als speelgoed en Funko Pops (Speelgoed), mangaposters en wanddecoratie (Wonen), tekensets om zelf manga te tekenen (Hobby > Tekenen & stiften), stickervellen en losse stripbladen."
+ },
+ {
+  "vak": "boeken-media/leesplezier",
+  "afdeling": "Boeken & Media",
+  "naam": "Leesplezier",
+  "hoort": "Voor de boekenwurm: leeslampjes, boekensteunen, mooie boekenleggers, leeskussens, boekenstandaards, boekenrekjes, leesbrillen en boekenhoezen.",
+  "niet": "De boeken zelf (andere vakjes), e-readers (eigen vakje), book nook-bouwpakketten (Hobby > Modelbouw), gewone tafellampen (Wonen > Lampen), brillen op sterkte van de opticien."
+ },
+ {
+  "vak": "boeken-media/luisterboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Luisterboeken",
+  "hoort": "Boeken om naar te luisteren: luisterboeken op cd, luisterboeken voor kinderen, complete series als luisterboek, voorleesverhalen van bekende voorlezers en luisterboekcadeaukaarten.",
+  "niet": "Koptelefoons en speakers (Elektronica), papieren boeken (andere vakjes), muziek-cd's (Muziek), Toniebox-figuren en kinderluisterboxen (Speelgoed), podcasts en gratis apps."
+ },
+ {
+  "vak": "boeken-media/kleurboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Kleurboeken",
+  "hoort": "Kleuren voor jong en oud: kleurboeken voor volwassenen, mandala-kleurboeken, kleurboeken voor kinderen, Disney-kleurboeken, dino-kleurboeken en kleurboeksets met potloden.",
+  "niet": "Losse kleurpotloden en stiften (Hobby > Tekenen & stiften), gratis printbare kleurplaten, paint-by-numbers (Hobby > Schilderen), krasblokken en knutselsets (Speelgoed > Knutselen), puzzelboeken (eigen vakje)."
+ },
+ {
+  "vak": "boeken-media/foto-invulboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Foto- & invulboeken",
+  "hoort": "Boeken om te vullen met herinneringen: fotoalbums, babyboeken, invulboeken zoals Vertel eens, vriendenboekjes, levensboeken voor opa en oma, zwangerschapsdagboeken en plakboeken.",
+  "niet": "Fotolijsten (Wonen), fotoboeken met je eigen foto's gedrukt (Cadeaus > Met naam), scrapbookmateriaal (Hobby > Origami & scrapbooking), agenda's en planners (eigen vakje), fotopapier en printers (Elektronica)."
+ },
+ {
+  "vak": "boeken-media/kookboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Kookboeken",
+  "hoort": "Kookboeken en bakboeken: kookboeken van bekende koks, airfryer-kookboeken, bakboeken, boeken over wereldkeukens, vegetarische kookboeken, kinderkookboeken en borrelboeken.",
+  "niet": "Keukenapparaten en pannen (Keuken & Tafelen), ingrediënten en kruiden (Lekkernijen), kookboekstandaards (Leesplezier), kookcursussen en workshops, receptenboeken om zelf in te vullen (Foto- & invulboeken)."
+ },
+ {
+  "vak": "dieren/paard",
+  "afdeling": "Dieren",
+  "naam": "Paard",
+  "hoort": "Voor paarden, pony's en hun ruiters: halsters, paardendekens, poetsboxen met borstels, en cadeaus voor paardenliefhebbers zoals mokken, hoefijzersieraden, paardenbeeldjes en paardenknuffels.",
+  "niet": "Paardenvoer en paardensnoepjes, wormmiddelen en medicijnen, zaagsel en stalbenodigdheden (verbruik), speelgoedpaarden en Playmobil-maneges (Speelgoed), paardenboeken (Boeken & Media)."
+ },
+ {
+  "vak": "dieren/hond",
+  "afdeling": "Dieren",
+  "naam": "Hond",
+  "hoort": "Voor de hond en het baasje: hondenmanden en -kussens, stevig hondenspeelgoed, halsbanden en riemen, hondenjassen, GPS-trackers, snuffelmatten en mokken, shirts en beeldjes van het ras.",
+  "niet": "Hondenvoer, snacks en kauwbotten (verbruik), vlooienmiddelen, wormkuren en medicijnen, poepzakjes en hondenshampoo, knuffelhonden en speelgoed voor kinderen (Speelgoed)."
+ },
+ {
+  "vak": "dieren/konijn-cavia-hamster",
+  "afdeling": "Dieren",
+  "naam": "Konijn, cavia & hamster",
+  "hoort": "Voor knaagdieren en hun baasjes: konijnenhokken en rennen, hamsterkooien, speeltunnels en loopwielen, knaagspeelgoed, caviahangmatjes en knuffels en mokken voor konijnenliefhebbers.",
+  "niet": "Voer, hooi, stro en bodembedekking (verbruik), medicijnen en vitamines, losse drinkflesjes en voerbakjes als vervanging, speelgoedhamsters en knuffelkonijnen voor kinderen (Speelgoed)."
+ },
+ {
+  "vak": "dieren/kat",
+  "afdeling": "Dieren",
+  "naam": "Kat",
+  "hoort": "Voor de kat en de kattenliefhebber: krabpalen, kattenmanden, kattenspeelgoed, kattentunnels, drinkfonteinen, automatische laserspeeltjes en kattenbeeldjes, mokken en shirts met katten.",
+  "niet": "Kattenvoer, snacks en kattengras (verbruik), kattenbakvulling en poepschepjes, vlooienbanden, wormmiddelen en medicijnen, Hello Kitty-speelgoed en knuffelkatten voor kinderen (Speelgoed)."
+ },
+ {
+  "vak": "dieren/vissen-aquarium",
+  "afdeling": "Dieren",
+  "naam": "Vissen & aquarium",
+  "hoort": "Voor de aquariumliefhebber: aquariums en vissenkommen, aquariumsets met verlichting, nano-aquariums, decoratie zoals kastelen en planten, vijverspullen en visbeeldjes en mokken voor liefhebbers.",
+  "niet": "Visvoer en waterverbeteraars (verbruik), losse filters, pompen en lampen als vervanging, medicijnen voor vissen, vishengels en sportvissen (Sport & Outdoor > Vissen), vis om te eten (Lekkernijen), magneetvissen (Metaaldetectie)."
+ },
+ {
+  "vak": "dieren/reptielen-terrarium",
+  "afdeling": "Dieren",
+  "naam": "Reptielen & terrarium",
+  "hoort": "Voor reptielen en hun verzorgers: terrariums, terrariumdecoratie, klimtakken en schuilplekken, schildpaddenbakken en beeldjes en knuffels van gekko's en slangen voor liefhebbers.",
+  "niet": "Levend en diepgevroren voer zoals krekels en muizen, UV-lampen en warmtematten als losse vervanging, supplementen en medicijnen, plantenterrariums (Tuin & Klussen > Planten & potten), speelgoeddino's (Speelgoed)."
+ },
+ {
+  "vak": "dieren/kippen",
+  "afdeling": "Dieren",
+  "naam": "Kippen",
+  "hoort": "Voor kippenhouders: kippenhokken en rennen, kippenschommels en speeltjes, voederautomaten, legnesten, automatische kippendeuren en mokken en decoratie voor de kippenliefhebber.",
+  "niet": "Kippenvoer, graan en grit (verbruik), medicijnen en mijtmiddelen, stro en zaagsel, kip en eieren om te eten (boodschappen), speelgoedkippen en Playmobil-boerderijen (Speelgoed), rubberen kippen als grap (Cadeaus > Grappig)."
+ },
+ {
+  "vak": "dieren/vogels",
+  "afdeling": "Dieren",
+  "naam": "Vogels",
+  "hoort": "Voor huisvogels en vogelliefhebbers: vogelkooien, volières, speelgoed voor parkieten en papegaaien, zitstokken, badhuisjes en vogelbeeldjes, mokken en wanddecoratie met vogels.",
+  "niet": "Vogelzaad, strooizand en kalk (verbruik), medicijnen en vitamines, tuinvogelspullen zoals nestkastjes en voederhuisjes (Tuin & Klussen > Vogels & insecten), speelgoedvogels en knuffels (Speelgoed), kippenhokken (Kippen)."
+ },
+ {
+  "vak": "metaaldetectie/munten-vondsten",
+  "afdeling": "Metaaldetectie",
+  "naam": "Munten & vondsten bewaren",
+  "hoort": "Vondsten bewaren en bekijken: muntalbums en muntcapsules, vitrines en verzamelkisten, loepen en vergrootglazen, reinigingssets voor munten en determinatieboeken over munten en vondsten.",
+  "niet": "Metaaldetectors en pinpointers (eigen vakjes), gouden munten als belegging (Sieraden), fotoalbums (Boeken & Media), speelgoedmunten en schatkisten voor kinderen (Speelgoed), zilverpoets en chemische middelen (verbruik)."
+ },
+ {
+  "vak": "metaaldetectie/detectors",
+  "afdeling": "Metaaldetectie",
+  "naam": "Metaaldetectors",
+  "hoort": "Metaaldetectors voor beginners en gevorderden: XP Deus, Minelab Equinox en Manticore, Nokta, Garrett, Quest, kinderdetectors en complete startpakketten met detector.",
+  "niet": "Losse zoekspoelen, accu's en reserveonderdelen (Pinpointers & uitrusting), pinpointers (eigen vakje), speelgoeddetectors zonder echte functie (Speelgoed > Buitenspeelgoed), vismagneten (Magneetvissen), leidingzoekers voor klussers (Tuin & Klussen)."
+ },
+ {
+  "vak": "metaaldetectie/magneetvissen",
+  "afdeling": "Metaaldetectie",
+  "naam": "Magneetvissen",
+  "hoort": "Alles voor magneetvissen: vismagneten en neodymiummagneten, magneetvissets met touw en handschoenen, dubbelzijdige magneten, karabijnhaken en touw in een set en beginnerssets.",
+  "niet": "Koelkastmagneten en knutselmagneten (Wonen / Hobby), magnetisch speelgoed (Speelgoed > Knikkerbanen & magnetisch bouwen), vishengels (Sport & Outdoor > Vissen), metaaldetectors (eigen vakje)."
+ },
+ {
+  "vak": "metaaldetectie/pinpointers-uitrusting",
+  "afdeling": "Metaaldetectie",
+  "naam": "Pinpointers & uitrusting",
+  "hoort": "Uitrusting voor de zoeker: pinpointers zoals de Garrett Pro-Pointer, graafscheppen van Lesche, vondsttassen, koptelefoons voor de detector, kniebeschermers, zoekspoelen, spoelbeschermers en draagsystemen.",
+  "niet": "Losse batterijen en kabels, gewone tuinscheppen (Tuin & Klussen), gewone koptelefoons voor muziek (Elektronica), werkhandschoenen (Tuin & Klussen), de detector zelf (Metaaldetectors), vismagneten (Magneetvissen)."
+ },
+ {
+  "vak": "christelijk/bijbels",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Bijbels",
+  "hoort": "Bijbels om cadeau te geven: Statenvertaling, Herziene Statenvertaling (HSV), Bijbels met psalmen, kanttekeningenbijbels, studiebijbels, trouwbijbels, kinderbijbels en Bijbelhoezen.",
+  "niet": "Dagboeken en boeken over de Bijbel (Boeken & muziek), Bijbelteksten voor aan de muur (Bijbelteksten & wanddecoratie), sleutelhangers en sieraden met tekst (Kruisjes & sieraden), gewone romans en kinderboeken (Boeken & Media)."
+ },
+ {
+  "vak": "christelijk/psalmboeken",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Psalmboeken",
+  "hoort": "Psalm- en liedboeken: psalmboeken in de berijming van 1773, Weerklank, Op Toonhoogte, liedboeken, luxe kerkboeken, zangbundels, Bijbels met psalmen en kerkboek en Psalmenpalet.",
+  "niet": "Bijbels zonder psalmen (Bijbels), cd's met psalmen (Boeken & muziek), bladmuziek en songbooks van popmuziek (Boeken & Media > Muziek), gewone kleurboeken (Boeken & Media), orgels en muziekinstrumenten."
+ },
+ {
+  "vak": "christelijk/kerststal-engelen",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Kerststal & engelen",
+  "hoort": "Kerststallen en engelen: houten kerststallen, kerststalfiguren, kerstgroepen, de heilige familie, engelenbeeldjes, engelhangers voor in de kerstboom en kerststallen voor kinderen.",
+  "niet": "Gewone kerstdecoratie zonder kerstverhaal zoals kerstballen en kersthuisjes (Wonen > Kerst), kerstkaarten met Bijbeltekst (Christelijke kerst), kerstmannen en rendieren, kerstpakketten met lekkers (Lekkernijen)."
+ },
+ {
+  "vak": "christelijk/sieraden",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Kruisjes & sieraden",
+  "hoort": "Christelijke sieraden: kettingen met kruisje, ichthushangers, armbanden met Bijbeltekst, ringen met kruis, oorbellen met kruisje, sleutelhangers met Bijbeltekst, broches en spelden.",
+  "niet": "Gewone sieraden zonder christelijk symbool (Sieraden & Horloges), naamsieraden zonder kruisje (Sieraden > Met naam & letter), sieradendozen (Sieraden), pakketten om zelf sieraden te maken (Hobby)."
+ },
+ {
+  "vak": "christelijk/kerst",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Christelijke kerst",
+  "hoort": "Kerstcadeaus met het kerstverhaal: kerstkaarten met Bijbeltekst, kersttegels, kerstboeken over de geboorte van Jezus, adventskalenders met Bijbelteksten, kerstdecoratie met tekst en kerst-cd's met christelijke muziek.",
+  "niet": "Gewone kerstversiering zoals kerstballen en kerstverlichting (Wonen > Kerst), kerststallen en engelen (eigen vakje), kerstpakketten met eten en drinken (Lekkernijen / Dranken), kerstcadeaus zonder christelijk thema (Cadeaus > Kerstcadeaus)."
+ },
+ {
+  "vak": "christelijk/bijbelteksten-wanddecoratie",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Bijbelteksten & wanddecoratie",
+  "hoort": "Bijbelteksten voor in huis: wandborden en tekstborden met Bijbeltekst, posters en canvas met psalmen, tegeltjes met een spreuk uit de Bijbel, kaartensets met Bijbelteksten en muurstickers met tekst.",
+  "niet": "Wanddecoratie zonder Bijbeltekst (Wonen > Wanddecoratie), fotolijsten en spiegels (Wonen), tegeltjes met gewone of grappige spreuken (Cadeaus > Grappig), dagboekkalenders en boeken (Boeken & muziek), wenskaarten zonder christelijke tekst."
+ },
+ {
+  "vak": "christelijk/boeken-muziek",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Boeken & muziek",
+  "hoort": "Christelijke boeken en muziek: HSV-dagboeken, dagboekkalenders, boeken over bidden en geloof, christelijke romans, boeken van bekende predikanten en cd's met psalmen en koormuziek.",
+  "niet": "Bijbels en psalmboeken (eigen vakjes), gewone romans, thrillers en muziek-cd's (Boeken & Media), kinderbijbels en christelijke kinderboeken (Voor kinderen), e-readers en cd-spelers (Elektronica), lege notitieboeken (Boeken & Media)."
+ },
+ {
+  "vak": "christelijk/doop-belijdenis",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Doop & belijdenis",
+  "hoort": "Cadeaus met betekenis voor doop en belijdenis: Bijbels met naam of datum, Bijbelhoezen, kinderbijbels als doopcadeau, dagboeken voor belijdenis, sieraden met kruisje en aandenkens met een Bijbeltekst.",
+  "niet": "Gewone baby- en kraamcadeaus zonder christelijke betekenis (Speelgoed > Baby- & houten speelgoed), feestversiering en ballonnen, doopsuiker en lekkers (Lekkernijen), sieraden zonder kruis (Sieraden & Horloges), wenskaarten zonder tekst."
+ },
+ {
+  "vak": "christelijk/voor-kinderen",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Voor kinderen",
+  "hoort": "Christelijke cadeaus voor kinderen: kinderbijbels, peuterbijbels, psalmboekjes voor kinderen, peuterdagboeken, de catechismus voor kinderen, Bijbelse kleur- en doeboeken en speelgoed met Bijbelverhalen zoals de ark van Noach.",
+  "niet": "Gewone kinderboeken en speelgoed zonder Bijbelverhaal (Boeken & Media / Speelgoed), Bijbels voor volwassenen (Bijbels), sinterklaas- en kerstcadeaus zonder christelijk thema (Cadeaus), kinderkleding (Mode), knutselspullen zonder christelijk thema (Hobby)."
+ },
+ {
+  "vak": "noodpakket-survival/noodpakketten",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Noodpakketten",
+  "hoort": "Kant-en-klare noodpakketten voor thuis: 72-uurspakketten voor 1, 2 of 4 personen, noodrugzakken met zaklamp, radio, EHBO en nooddeken, complete rampenpakketten en noodpakketten voor in de auto.",
+  "niet": "Losse onderdelen zoals alleen een zaklamp of radio (andere vakjes in deze afdeling), survivalspeelgoed en nepnoodkits voor kinderen (Speelgoed), kampeersets voor vakantie (Sport & Outdoor > Kamperen), kerstpakketten met eten (Lekkernijen)."
+ },
+ {
+  "vak": "noodpakket-survival/noodradio",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Noodradio’s",
+  "hoort": "Radio's die werken zonder stroom: opwindbare noodradio's, noodradio's met zonnepaneel, zaklamp en powerbank, radio's op batterijen voor de rampenzender en compacte noodradio's voor in het noodpakket.",
+  "niet": "Gewone bluetooth-speakers en retroradio's (Elektronica > Speakers), losse batterijen (verbruik), speelgoedradio's en kinderwalkietalkies (Speelgoed), autoradio's, powerbanks zonder radio (Licht & stroom)."
+ },
+ {
+  "vak": "noodpakket-survival/licht-stroom",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Licht & stroom",
+  "hoort": "Licht en stroom bij een stroomstoring: stevige zaklampen, hoofdlampen, lantaarns op batterijen, solar powerbanks, draagbare powerstations, opwindbare zaklampen en noodverlichting voor in huis.",
+  "niet": "Sfeerlampen en tafellampen (Wonen > Lampen), slimme lampen (Elektronica), gewone powerbanks voor je telefoon (Elektronica > Telefoon & opladen), losse batterijen en kabels, kaarsen en waxinelichtjes (Wonen), speelgoedzaklampen (Speelgoed)."
+ },
+ {
+  "vak": "noodpakket-survival/water-eten",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Water & eten",
+  "hoort": "Lang houdbaar eten en drinken voor noodsituaties: noodwater in zakjes of blik, noodrantsoenen, gevriesdroogde maaltijden, waterfilters en zuiveringstabletten, jerrycans en waterzakken en voorraadpakketten voor 72 uur.",
+  "niet": "Gewone boodschappen en drinkflessen (Keuken), lekkernijen en cadeaupakketten (Lekkernijen), drank en alcohol (Dranken), sportvoeding en energierepen (Sport), dierenvoer (Dieren), waterkokers en keukenapparaten (Keuken)."
+ },
+ {
+  "vak": "noodpakket-survival/koken-warmte",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Koken & warmte",
+  "hoort": "Koken en warm blijven zonder stroom of gas: kleine noodkooktoestellen en campingbranders, Esbit-kokers, nooddekens (isolatiedekens), noodslaapzakken, handwarmers, bivakzakken en noodkacheltjes.",
+  "niet": "Gewone plaids en fleecedekens (Wonen > Kussens & plaids), barbecues en pizzaovens (Tuin & Klussen), elektrische kachels en terrasverwarmers (Tuin), tenten en slaapzakken voor vakantie (Sport & Outdoor > Kamperen), keukenapparaten (Keuken)."
+ },
+ {
+  "vak": "noodpakket-survival/ehbo-brand",
+  "afdeling": "Noodpakket & survival",
+  "naam": "EHBO & brandveiligheid",
+  "hoort": "Veiligheid in huis en onderweg: EHBO-kits voor thuis, auto en reis, verbanddozen, branddekens, brandblussers en sprayblussers, rookmelders, CO-melders en noodhamers voor in de auto.",
+  "niet": "Losse pleisters, verband en ontsmettingsmiddel als boodschap (verbruik), medicijnen en pijnstillers, speelgoeddokterssets (Speelgoed > Speelkeukens & verkleden), EHBO-cursussen, vuurwerk en aanstekers, huidverzorging (Geuren & Verzorging)."
+ },
+ {
+  "vak": "noodpakket-survival/buiten-veld",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Buiten & in het veld",
+  "hoort": "Overleven buiten: vuurstarters en firesteels, kompassen, tarps en noodtenten, vouwzagen, multitools en survivalmessen, waterdichte zakken, paracordsets, survivalfluitjes en waterfilters voor onderweg.",
+  "niet": "Kampeerspullen voor vakantie zoals tenten en campingstoelen (Sport & Outdoor > Kamperen), speelgoedmessen en nepsurvivalkits (Speelgoed), klusgereedschap (Tuin & Klussen > Handgereedschap), wapens, bushcraftboeken (Boeken & Media), metaaldetectors (Metaaldetectie)."
+ },
+ {
+  "vak": "noodpakket-survival/tassen-onderweg",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Tassen & onderweg",
+  "hoort": "Je noodspullen bij de hand: stevige noodrugzakken (bug-out bags), waterdichte tassen en drybags, noodfluitjes, reflecterende hesjes, waterdichte documentenhoezen, kleine survivalkits voor auto of fiets en EDC-tasjes.",
+  "niet": "Gewone rugzakken, handtassen en koffers (Mode & Accessoires), wandelrugzakken voor hobby (Sport & Outdoor > Wandelen), schooltassen en speelgoedrugzakjes (Speelgoed), lege cadeautassen en inpakmateriaal."
+ },
+ {
+  "vak": "cadeaus/kerst",
+  "afdeling": "Cadeaus",
+  "naam": "Kerstcadeaus",
+  "hoort": "Van alles wat leuk is om met kerst te geven: kerstpakketten, foute kersttruien, kerstsokken, cadeausets, gezelschapsspellen, luxe chocolade, gadgets en mooie cadeaus voor onder de boom.",
+  "niet": "Kerstdecoratie zoals kerstballen en kerstbomen (Wonen > Kerst), kerststallen en christelijke kerstcadeaus (Christelijke cadeaus), wijn en andere drank (Dranken), kerstkaarten en inpakpapier, sinterklaascadeaus (eigen vakje)."
+ },
+ {
+  "vak": "cadeaus/sinterklaas",
+  "afdeling": "Cadeaus",
+  "naam": "Sinterklaas",
+  "hoort": "Cadeaus voor pakjesavond en in de schoen: speelgoed voor alle leeftijden, spelletjes, boeken, kleine schoencadeautjes, surprisecadeaus voor volwassenen, sinterklaasboeken en sinterklaaspuzzels.",
+  "niet": "Pepernoten, chocoladeletters en ander sinterklaaslekkers (Lekkernijen > Sinterklaas-lekkers), kerstcadeaus (eigen vakje), drank (Dranken), inpakpapier, strooigoedzakjes en losse cadeauverpakking, gewone boodschappen."
+ },
+ {
+  "vak": "cadeaus/met-naam",
+  "afdeling": "Cadeaus",
+  "naam": "Met naam",
+  "hoort": "Persoonlijke cadeaus met naam, foto of eigen tekst: mokken met naam, gegraveerde snijplanken, kussens met foto, naamslingers, deurmatten met naam, fotoboeken, lunchboxen met naam en knuffels met naam.",
+  "niet": "Sieraden met naam (Sieraden > Met naam & letter), romantische cadeaus met jullie namen (Liefde & Valentijn), Bijbels met naam (Christelijke cadeaus), naamstickers voor school, gewone cadeaus zonder naam."
+ },
+ {
+  "vak": "cadeaus/grappig",
+  "afdeling": "Cadeaus",
+  "naam": "Grappige cadeaus",
+  "hoort": "Cadeaus om mee te lachen: grappige mokken en sokken, rubberen kippen, fopcadeaus, grappige deurmatten, tekstborden met humor, gekke gadgets, grappige boeken en cadeaus met een knipoog voor hem en haar.",
+  "niet": "Cadeaus met schunnige of kwetsende teksten, drank met een grappig etiket (Dranken), feestartikelen en ballonnen, serieuze gadgets zonder grap (Elektronica), gewoon speelgoed voor kinderen (Speelgoed)."
+ },
+ {
+  "vak": "valentijn/voor-haar",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Voor haar",
+  "hoort": "Romantische cadeaus voor je vriendin of vrouw: hartjessieraden, eeuwige rozen in een stolp, verwenpakketten met bad en geur, zachte badjassen, luxe chocolade in hartvorm en liefdesboekjes met reden-waarom-briefjes.",
+  "niet": "Gewone cadeaus voor vrouwen zonder romantisch tintje (andere afdelingen), cadeaus voor je moeder, zus of vriendinnen, wijn en bubbels (Dranken), huishoudelijke apparaten zoals stofzuigers en airfryers, gewone make-up (Geuren & Verzorging)."
+ },
+ {
+  "vak": "valentijn/voor-hem",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Voor hem",
+  "hoort": "Romantische cadeaus voor je vriend of man die hij echt gebruikt: gegraveerde leren armband, portemonnee met geheime liefdesboodschap, mok met jullie foto, luxe verzorgingsset en een spel voor twee.",
+  "niet": "Gewone mannencadeaus zonder romantisch tintje zoals gereedschap en gadgets (andere afdelingen), bier, whisky en andere drank (Dranken), vaderdagcadeaus voor je vader, grappige fopcadeaus (Cadeaus > Grappig)."
+ },
+ {
+  "vak": "valentijn/samen",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Samen & jubileum",
+  "hoort": "Cadeaus voor jullie samen of voor een trouwdag: jubileumborden met namen en datum, bijpassende mokken of pyjama's, herinneringsboeken voor stellen, cadeaus voor 25, 40 of 50 jaar getrouwd en fotocollages van jullie.",
+  "niet": "Bruiloftscadeaus van gasten voor het bruidspaar, cadeaus voor de hele familie, bruiloftsdecoratie en trouwkaarten, drank voor het feest (Dranken), sieraden zonder jullie namen (Sieraden & Horloges), jubilea van werk of vereniging."
+ },
+ {
+  "vak": "valentijn/met-naam",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Met naam & hartje",
+  "hoort": "Persoonlijk en romantisch: sieraden met jullie namen of initialen, kussens met namen en datum, sleutelhangers met hartje en naam, houten hartjes met gravure, sterrenkaarten van jullie eerste ontmoeting.",
+  "niet": "Persoonlijke cadeaus zonder romantisch thema zoals een mok met naam voor opa (Cadeaus > Met naam), naamsieraden zonder liefdesboodschap (Sieraden > Met naam & letter), babycadeaus met naam, gegraveerde Bijbels (Christelijke cadeaus)."
+ },
+ {
+  "vak": "valentijn/romantische-avond",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Romantische avond",
+  "hoort": "Alles voor een date-avond thuis: fonduesets voor twee, hartjeswafelijzers, spellen voor koppels, sterrenhemelprojectors, massageoliesets, badsets voor samen en kookpakketten voor een diner voor twee.",
+  "niet": "Wijn en bubbels (Dranken), kaarsen (Wonen > Kaarsen & kandelaars), familiespellen (Speelgoed > Bord- & kaartspellen), grote gourmetstellen voor acht personen (Keuken), de boodschappen voor het diner zelf."
+ },
+ {
+  "vak": "valentijn/kleine-gebaren",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Kleine liefdesgebaren",
+  "hoort": "Kleine romantische cadeautjes onder de 25 euro: liefdesbriefjes in een potje, hartjessleutelhangers, minirozen, chocolade met liefdesboodschap, reden-waarom-ik-van-je-hou-kaartjes en een zakspiegeltje met lieve tekst.",
+  "niet": "Dure cadeaus boven de 25 euro (andere vakjes in Liefde & Valentijn), wenskaarten zonder cadeau, grappige fopcadeaus zonder romantiek (Cadeaus > Grappig), cadeautjes voor kinderen of collega's, drank (Dranken)."
+ }
+]

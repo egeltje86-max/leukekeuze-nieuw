@@ -1,0 +1,1430 @@
+[
+ {
+  "vak": "sieraden/ringen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Ringen",
+  "tekst": "",
+  "woorden": "\\bring(en|etje|set)?\\b|zegelring|aanschuifring"
+ },
+ {
+  "vak": "sieraden/smartwatches",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Smartwatches",
+  "tekst": "",
+  "woorden": "smart ?watch|activity ?tracker|fitness ?tracker|sporthorloge|hartslagmeter"
+ },
+ {
+  "vak": "sieraden/horloges",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Horloges",
+  "tekst": "",
+  "woorden": "horloge|chronograaf|\\bwatch\\b"
+ },
+ {
+  "vak": "sieraden/echt-goud",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Echt goud",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "sieraden/oorbellen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Oorbellen",
+  "tekst": "",
+  "woorden": "oorbel|oorknop|creol|oorhanger|ear ?cuff|oorringen|\\bstuds?\\b"
+ },
+ {
+  "vak": "sieraden/kettingen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Kettingen & hangers",
+  "tekst": "",
+  "woorden": "ketting|hanger|collier|choker|medaillon"
+ },
+ {
+  "vak": "sieraden/zilver",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Zilver",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "sieraden/armbanden",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Armbanden & enkelbandjes",
+  "tekst": "",
+  "woorden": "armband|enkelband|bangle|slavenarmband|tennisarmband"
+ },
+ {
+  "vak": "sieraden/sieradendozen",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Sieradendozen",
+  "tekst": "",
+  "woorden": "sieradendoos|sieradenkist|juwelendoos|juwelenkist|sieradenstandaard|sieraden ?(box|organizer|houder|bakje|rek)|ringdoos|sieradenetui|sieradenboom|oorbellenhouder|horlogedoos|horlogebox"
+ },
+ {
+  "vak": "sieraden/parels",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Parels",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "sieraden/bedels",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Bedels & bedelarmbanden",
+  "tekst": "",
+  "woorden": "bedel|\\bcharms?\\b|pandora"
+ },
+ {
+  "vak": "sieraden/met-naam",
+  "afdeling": "Sieraden & Horloges",
+  "naam": "Met naam & letter",
+  "tekst": "",
+  "woorden": "met (je |jouw |eigen )?naam|naamketting|naam ?armband|gegraveerd|graveer|gravure|initia(a)?l|letterketting|letter ?hanger|gepersonaliseerd"
+ },
+ {
+  "vak": "geuren-verzorging/rituals",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Rituals",
+  "tekst": "",
+  "woorden": "rituals"
+ },
+ {
+  "vak": "geuren-verzorging/parfum",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Parfum",
+  "tekst": "",
+  "woorden": "parfum|eau de|\\bedt\\b|\\bedp\\b|aftershave|cologne|bodymist|body ?mist|fragrance|\\bgeur\\b"
+ },
+ {
+  "vak": "geuren-verzorging/scheren-baard",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Scheren & baard",
+  "tekst": "",
+  "woorden": "scheer|baard|trimmer|shaver|beard|ontharing|epilator|ladyshave|tondeuse"
+ },
+ {
+  "vak": "geuren-verzorging/haarstylers",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Haarstylers",
+  "tekst": "",
+  "woorden": "stijltang|krultang|f[oö]hn|haardroger|airwrap|airstyler|haarstyler|krulborstel|hot ?air|haar ?(krul|stijl)|warmteborstel|dyson"
+ },
+ {
+  "vak": "geuren-verzorging/make-up-nagels",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Make-up & nagels",
+  "tekst": "",
+  "woorden": "make-?up|mascara|lipstick|lippenstift|lipgloss|nagel|oogschaduw|foundation|kwasten|blush|palette|gellak|manicure|pedicure"
+ },
+ {
+  "vak": "geuren-verzorging/huidverzorging",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Huidverzorging",
+  "tekst": "",
+  "woorden": "cr[eè]me|serum|gezicht|huid|masker|lotion|handcr|lippenbalsem|skincare|dagcr|nachtcr|oog"
+ },
+ {
+  "vak": "geuren-verzorging/cadeausets",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Cadeausets",
+  "tekst": "",
+  "woorden": "cadeauset|giftset|gift ?set|geschenkset|verwenpakket|verwenset|cadeaubox|gift ?box|cadeaupakket|adventskalender"
+ },
+ {
+  "vak": "geuren-verzorging/bad-douche",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Bad & douche",
+  "tekst": "",
+  "woorden": "\\bbad\\b|badzout|badbruis|bruisbal|douche|shower|bath|scrub|zeep|badolie|badschuim"
+ },
+ {
+  "vak": "geuren-verzorging/massage",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Massage",
+  "tekst": "",
+  "woorden": "massage|massager|nekkussen|shiatsu|gua sha|jade ?roller|voetbad"
+ },
+ {
+  "vak": "geuren-verzorging/tandenborstels",
+  "afdeling": "Geuren & Verzorging",
+  "naam": "Elektrische tandenborstels",
+  "tekst": "",
+  "woorden": "tandenborstel|oral-?b|sonicare|waterflosser|monddouche"
+ },
+ {
+  "vak": "mode-beauty/schoenen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Schoenen, sneakers & boots",
+  "tekst": "",
+  "woorden": "(?<!hand)schoen|sneaker|\\bboots?\\b|laars|laarzen|sandaal|sandalen|pump|loafer|klomp|instapper"
+ },
+ {
+  "vak": "mode-beauty/truien-hoodies",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Truien & hoodies",
+  "tekst": "",
+  "woorden": "trui|hoodie|sweater|\\bvest\\b|cardigan|fleece|coltrui|sweatshirt|shirt|jas\\b|jack\\b|bodywarmer"
+ },
+ {
+  "vak": "mode-beauty/pyjamas",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Pyjama's, badjassen & onesies",
+  "tekst": "",
+  "woorden": "pyjama|badjas|onesie|ochtendjas|nachthemd|loungewear|kamerjas|nachtjapon|huispak"
+ },
+ {
+  "vak": "mode-beauty/koffers",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Koffers & reistassen",
+  "tekst": "",
+  "woorden": "koffer|trolley|reistas|weekendtas|duffel|handbagage|weekender"
+ },
+ {
+  "vak": "mode-beauty/tassen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Tassen",
+  "tekst": "",
+  "woorden": "\\btas\\b|tassen|handtas|schoudertas|shopper|crossbody|clutch|heuptas|\\bbag\\b|tasje|laptoptas|bucket"
+ },
+ {
+  "vak": "mode-beauty/mutsen-sjaals",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Mutsen, sjaals & handschoenen",
+  "tekst": "",
+  "woorden": "muts|sjaal|handschoen|\\bwanten\\b|beanie|oorwarmer|\\bcol\\b|omslagdoek|bivakmuts"
+ },
+ {
+  "vak": "mode-beauty/portemonnees",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Portemonnees & pasjeshouders",
+  "tekst": "",
+  "woorden": "portemonnee|portefeuille|pasjeshouder|kaarthouder|wallet|cardprotector|card ?holder|pashouder|cardholder|creditcardhouder"
+ },
+ {
+  "vak": "mode-beauty/pantoffels-sokken",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Pantoffels & sokken",
+  "tekst": "",
+  "woorden": "pantoffel|slof|sloffen|sokken|\\bsok\\b|slipper|huissok"
+ },
+ {
+  "vak": "mode-beauty/zonnebrillen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Zonnebrillen",
+  "tekst": "",
+  "woorden": "zonnebril|brillenkoker|\\bbril\\b"
+ },
+ {
+  "vak": "mode-beauty/rugzakken",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Rugzakken",
+  "tekst": "",
+  "woorden": "rugzak|backpack|rugtas|schooltas"
+ },
+ {
+  "vak": "mode-beauty/riemen-sleutelhangers",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Riemen, sleutelhangers & paraplu's",
+  "tekst": "",
+  "woorden": "riem|sleutelhanger|paraplu|bretels|stropdas|manchetknop|keycord|keychain|haarclip|haarspeld|scrunchie|pet\\b|cap\\b|hoed"
+ },
+ {
+  "vak": "mode-beauty/toilettassen",
+  "afdeling": "Mode & Accessoires",
+  "naam": "Toilettassen",
+  "tekst": "",
+  "woorden": "toilettas|make-?up ?tas|beautycase|toiletry|cosmeticatas"
+ },
+ {
+  "vak": "elektronica/gaming",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Gaming",
+  "tekst": "",
+  "woorden": "gaming|\\bgame|playstation|\\bps[45]\\b|xbox|nintendo|switch|controller|console|joystick|stuurwiel|racestuur"
+ },
+ {
+  "vak": "elektronica/telefoon-opladen",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Telefoon & opladen",
+  "tekst": "",
+  "woorden": "telefoon|oplader|powerbank|kabel|smartphone|iphone|samsung galaxy|hoesje|draadloos laden|magsafe|laadstation|laadpad|selfie"
+ },
+ {
+  "vak": "elektronica/cameras",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Camera's",
+  "tekst": "",
+  "woorden": "camera|polaroid|instax|fototoestel|gopro|actioncam|dashcam|fotoprinter|kodak|lens"
+ },
+ {
+  "vak": "elektronica/koptelefoons",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Koptelefoons & oordopjes",
+  "tekst": "",
+  "woorden": "koptelefoon|headphone|oordop|earbud|airpods|headset|in-ear|oortjes|hoofdtelefoon|over-ear"
+ },
+ {
+  "vak": "elektronica/tablets-ereaders",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Tablets & e-readers",
+  "tekst": "",
+  "woorden": "tablet|ipad|e-?reader|kobo|kindle|galaxy tab"
+ },
+ {
+  "vak": "elektronica/drones-vr",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Drones & VR",
+  "tekst": "",
+  "woorden": "drone|vr[- ]?bril|meta quest|virtual reality|oculus"
+ },
+ {
+  "vak": "elektronica/platenspelers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Platenspelers",
+  "tekst": "",
+  "woorden": "platenspeler|turntable|grammofoon|pick-?up"
+ },
+ {
+  "vak": "elektronica/gadgets-trackers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Gadgets & trackers",
+  "tekst": "",
+  "woorden": "tracker|airtag|\\btile\\b|gadget|smartwatch"
+ },
+ {
+  "vak": "elektronica/speakers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Speakers",
+  "tekst": "",
+  "woorden": "speaker|luidspreker|soundbar|\\bjbl\\b|radio|boombox|karaoke|marshall|sonos|bose"
+ },
+ {
+  "vak": "elektronica/beamers",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Beamers",
+  "tekst": "",
+  "woorden": "beamer|projector"
+ },
+ {
+  "vak": "elektronica/sfeerlicht-smarthome",
+  "afdeling": "Elektronica & Gadgets",
+  "naam": "Sfeerlicht & smart home",
+  "tekst": "",
+  "woorden": "\\bled\\b|lamp|licht|smart ?home|slimme ?(stekker|lamp)|\\bhue\\b|wifi|alexa|google (home|nest)|\\bnest\\b|wekker|sunrise|lichtwekker|galaxy ?projector|sterrenhemel"
+ },
+ {
+  "vak": "wonen/lampen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Lampen",
+  "tekst": "",
+  "woorden": "lamp|verlichting|licht|\\bled\\b|lichtsnoer|nachtlamp|lichtbak|neon"
+ },
+ {
+  "vak": "wonen/vloerkleden",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Vloerkleden",
+  "tekst": "",
+  "woorden": "vloerkleed|karpet|tapijt|\\bkleed\\b|loper"
+ },
+ {
+  "vak": "wonen/wanddecoratie",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Wanddecoratie & posters",
+  "tekst": "",
+  "woorden": "poster|schilderij|canvas|wanddecoratie|wandbord|muurdecoratie|\\bprint\\b|tekstbord|wandkleed|wanddeco|muursticker|wandpaneel|lijst|kunstwerk"
+ },
+ {
+  "vak": "wonen/klokken",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Klokken",
+  "tekst": "",
+  "woorden": "\\bklok|wandklok|wekker|stationsklok|koekoek"
+ },
+ {
+  "vak": "wonen/kerst",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Kerst",
+  "tekst": "",
+  "woorden": "kerst|christmas|xmas|sneeuwpop|rendier|piek\\b|nutcracker|notenkraker|adventskrans"
+ },
+ {
+  "vak": "wonen/vazen-bloemen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Vazen & bloemen",
+  "tekst": "",
+  "woorden": "vaas|vazen|bloem|droogbloem|kunstbloem|kunstplant|bloempot|plantenpot|boeket|pampas|tulp|roos|rozen"
+ },
+ {
+  "vak": "wonen/kussens-plaids",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Kussens & plaids",
+  "tekst": "",
+  "woorden": "kussen|plaid|deken|sprei|fleecedeken|poef|zitzak|knuffeldeken"
+ },
+ {
+  "vak": "wonen/kaarsen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Kaarsen & kandelaars",
+  "tekst": "",
+  "woorden": "kaars|kandelaar|waxine|theelicht|windlicht|lantaarn"
+ },
+ {
+  "vak": "wonen/spiegels",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Spiegels",
+  "tekst": "",
+  "woorden": "spiegel"
+ },
+ {
+  "vak": "wonen/opbergen-dienbladen",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Opbergen & dienbladen",
+  "tekst": "",
+  "woorden": "dienblad|opberg|\\bmand|\\bdoos|\\bbak\\b|\\bkist|organizer|bewaar|krukje|rek\\b|plankje|kapstok|haak"
+ },
+ {
+  "vak": "wonen/fotolijsten",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Fotolijsten",
+  "tekst": "",
+  "woorden": "fotolijst|fotoframe|fotokader|fotobord|fotolijn|fotoalbum"
+ },
+ {
+  "vak": "wonen/huisgeuren",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Huisgeuren",
+  "tekst": "",
+  "woorden": "geurstok|diffuser|huisparfum|roomspray|wax ?melt|geurzakje|geurolie|aroma|interieurparfum|geurverspreider"
+ },
+ {
+  "vak": "wonen/deurmatten",
+  "afdeling": "Wonen & Decoratie",
+  "naam": "Deurmatten",
+  "tekst": "",
+  "woorden": "deurmat|droogloopmat"
+ },
+ {
+  "vak": "keuken/keukenapparaten",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Keukenapparaten",
+  "tekst": "",
+  "woorden": "blender|keukenmachine|foodprocessor|staafmixer|waterkoker|broodrooster|sapcentrifuge|slowjuicer|slowcooker|multicooker|sous ?vide|vacu[uü]m|stoomoven|kitchenaid|thermomix|rijstkoker|weegschaal|\\bmixer"
+ },
+ {
+  "vak": "keuken/airfryers",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Airfryers",
+  "tekst": "",
+  "woorden": "airfryer|air fryer|heteluchtfriteuse"
+ },
+ {
+  "vak": "keuken/koffie-thee",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Koffie & thee",
+  "tekst": "",
+  "woorden": "koffie|espresso|\\bthee|melkopschuimer|french press|moka|cafeti[eè]re|\\bmok\\b|mokken|kop en schotel|barista|nespresso|senseo|dolce gusto|latte|cappuccino|theeglas|theepot|theedoos"
+ },
+ {
+  "vak": "keuken/gezellig-tafelen",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Gezellig tafelen",
+  "tekst": "",
+  "woorden": "gourmet|fondue|raclette|steengrill|teppanyaki|tafelgrill|pizza ?oven|wokset|pizzaset|tapas"
+ },
+ {
+  "vak": "keuken/pannen",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Pannen",
+  "tekst": "",
+  "woorden": "\\bpan\\b|pannen|koekenpan|braadpan|\\bwok\\b|hapjespan|steelpan|dutch oven|gietijzer|pannenset|snelkookpan|grillpan|ovenschaal"
+ },
+ {
+  "vak": "keuken/tosti-wafel-ijs",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Tosti-, wafel- & ijsmachines",
+  "tekst": "",
+  "woorden": "tosti|wafel|ijsmachine|ijsmaker|\\bijs\\b|popcorn|suikerspin|chocoladefontein|sandwich ?maker|cr[eê]pe|pannenkoek|poffertje|donut|cakepop|slush|softijs|frozen yogurt"
+ },
+ {
+  "vak": "keuken/glazen-servies",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Glazen & servies",
+  "tekst": "",
+  "woorden": "\\bglas|glazen|servies|\\bbord|borden|schaal|\\bkom\\b|kommen|bestek|karaf|\\bkop\\b|schotel|tafel|placemat|onderzetter|kandelaar|ontbijt|eierdop|presenteer|etagere"
+ },
+ {
+  "vak": "keuken/drinkflessen-lunch",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Drinkflessen & lunch",
+  "tekst": "",
+  "woorden": "drinkfles|thermos|lunchbox|broodtrommel|isoleerfles|bidon|waterfles|lunch|bento|isoleerbeker|koffiebeker|to ?go|reisbeker|drinkbeker"
+ },
+ {
+  "vak": "keuken/messen-snijplanken",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Messen & snijplanken",
+  "tekst": "",
+  "woorden": "\\bmes\\b|messen|messenset|snijplank|messenblok|slijp|santoku|koksmes|vleesmes"
+ },
+ {
+  "vak": "keuken/bakken",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Bakken",
+  "tekst": "",
+  "woorden": "bakken|bakvorm|taart|cake|deeg|muffin|cupcake|koekjes|uitsteker|garde|spuitzak|bakset|bakpapier|bakmat|ovenwant|deegroller|springvorm"
+ },
+ {
+  "vak": "keuken/kaas-serveerplanken",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Kaas- & serveerplanken",
+  "tekst": "",
+  "woorden": "kaasplank|serveerplank|tapasplank|borrelplank|kaasmes|kaasset|kaasschaaf|serveerbord|houten plank|charcuterie"
+ },
+ {
+  "vak": "keuken/voorraadpotten",
+  "afdeling": "Keuken & Tafelen",
+  "naam": "Voorraadpotten",
+  "tekst": "",
+  "woorden": "voorraad|weckpot|vershoud|bewaarpot|kruidenrek|kruidenpot|bewaarbak|opbergpot|voorraadbus|broodtrommel"
+ },
+ {
+  "vak": "dranken/champagne-bubbels",
+  "afdeling": "Dranken",
+  "naam": "Champagne & bubbels",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/gin-cocktails",
+  "afdeling": "Dranken",
+  "naam": "Gin & cocktails",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/wijn-port",
+  "afdeling": "Dranken",
+  "naam": "Wijn & port",
+  "tekst": "",
+  "woorden": "\\bport\\b|porto|sherry"
+ },
+ {
+  "vak": "dranken/likeuren",
+  "afdeling": "Dranken",
+  "naam": "Likeuren",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/bier",
+  "afdeling": "Dranken",
+  "naam": "Bier & speciaalbier",
+  "tekst": "",
+  "woorden": "\\bbier(en|tje|tjes|pakket|brouw\\w*|krat|glas|glazen)?\\b|bierbrouw|\\bbeer\\b|\\bipa\\b|tripel|brouwerij|bierpakket|biertje|speciaalbier|\\bstout\\b"
+ },
+ {
+  "vak": "dranken/wijnaccessoires",
+  "afdeling": "Dranken",
+  "naam": "Wijnaccessoires",
+  "tekst": "",
+  "woorden": "kurkentrekker|wijnrek|wijnkoeler|decanter|wijnglas|wijnglazen|wijnset|wijnkist|wijnstopper|wijnaccessoire|ijsemmer|flessenopener|whiskyglas|whiskeyglas|whisky stones|whiskystenen|bierglas|bierglazen|c"
+ },
+ {
+  "vak": "dranken/tequila",
+  "afdeling": "Dranken",
+  "naam": "Tequila & mezcal",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/alcoholvrij",
+  "afdeling": "Dranken",
+  "naam": "Alcoholvrij",
+  "tekst": "",
+  "woorden": "alcoholvrij|alcohol-?vrij|0[,.]0|non-?alcoholic|\\b0%"
+ },
+ {
+  "vak": "dranken/whisky",
+  "afdeling": "Dranken",
+  "naam": "Whisky",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/cognac",
+  "afdeling": "Dranken",
+  "naam": "Cognac",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/jenever",
+  "afdeling": "Dranken",
+  "naam": "Jenever",
+  "tekst": "",
+  "woorden": "jenever|genever|korenwijn|beerenburg|berenburg"
+ },
+ {
+  "vak": "dranken/sake",
+  "afdeling": "Dranken",
+  "naam": "Sake",
+  "tekst": "",
+  "woorden": "\\bsake\\b|sak[eé]\\b"
+ },
+ {
+  "vak": "dranken/rum",
+  "afdeling": "Dranken",
+  "naam": "Rum",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dranken/wodka",
+  "afdeling": "Dranken",
+  "naam": "Wodka",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "eten-drinken/chocolade",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Chocolade & bonbons",
+  "tekst": "",
+  "woorden": "chocola|bonbon|pralin|truffel|tony|callebaut|leonidas|neuhaus|cacao|godiva|lindt|droste"
+ },
+ {
+  "vak": "eten-drinken/koekjes-stroopwafels",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Koekjes & stroopwafels",
+  "tekst": "",
+  "woorden": "koek|stroopwafel|biscuit|cookie|speculoos|kano|spritsen|wafel"
+ },
+ {
+  "vak": "eten-drinken/delicatessen",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Delicatessen",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "eten-drinken/drop-snoep",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Drop & snoep",
+  "tekst": "",
+  "woorden": "\\bdrop\\b|dropjes|snoep|lolly|zuurtje|gummy|winegum|spekjes|candy|\\bm&m|haribo|kauwgom"
+ },
+ {
+  "vak": "eten-drinken/sinterklaas-lekkers",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Sinterklaas-lekkers",
+  "tekst": "",
+  "woorden": "sinterklaas|chocoladeletter|pepernoot|pepernoten|kruidnoot|kruidnoten|speculaas|marsepein|schuimpje|taai ?taai|banketstaaf|banketletter|\\bsint\\b|\\bpiet\\b"
+ },
+ {
+  "vak": "eten-drinken/adventskalenders",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Adventskalenders",
+  "tekst": "",
+  "woorden": "advent"
+ },
+ {
+  "vak": "eten-drinken/kerst-cadeaupakketten",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Kerst- & cadeaupakketten",
+  "tekst": "",
+  "woorden": "pakket|kerstpakket|borrel|cadeaubox|giftbox|\\bbox\\b|\\bmand\\b|kerstmand|proeverij|tasting"
+ },
+ {
+  "vak": "eten-drinken/koffie-thee",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Koffie & thee",
+  "tekst": "",
+  "woorden": "koffie|\\bthee|espresso|bonen|cups|capsules|matcha|chai"
+ },
+ {
+  "vak": "eten-drinken/brievenbuscadeaus",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "Brievenbuscadeaus",
+  "tekst": "",
+  "woorden": "brievenbus"
+ },
+ {
+  "vak": "eten-drinken/bbq-sauzen",
+  "afdeling": "Lekkernijen & Cadeaupakketten",
+  "naam": "BBQ & sauzen",
+  "tekst": "",
+  "woorden": "bbq|barbecue|saus|\\brub\\b|rubs|kruiden|marinade|hot ?sauce|pepers|chili|sriracha|grill"
+ },
+ {
+  "vak": "speelgoed/lego",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "LEGO",
+  "tekst": "",
+  "woorden": "\\blego\\b|\\bduplo\\b"
+ },
+ {
+  "vak": "speelgoed/buitenspeelgoed",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Buitenspeelgoed",
+  "tekst": "",
+  "woorden": "buiten|\\bstep\\b|skelter|trampoline|zwembad|waterpistool|\\bbal\\b|voetbal|zandbak|schommel|glijbaan|stoep|bellenblaas|vlieger|loopfiets|skateboard|zeepbel|kinderfiets|nerf|frisbee|metaaldetector|zandspe"
+ },
+ {
+  "vak": "speelgoed/bord-kaartspellen",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Bord- & kaartspellen",
+  "tekst": "",
+  "woorden": "\\bspel\\b|spellen|bordspel|kaartspel|dobbel|quiz|kwartet|\\buno\\b|monopoly|party|escape|catan|rummikub|ganzenbord|schaak|dammen|stratego|kaarten|weerwolven|jenga|twister|cluedo|game\\b|30 seconds|trivian"
+ },
+ {
+  "vak": "speelgoed/pokemon-verzamelkaarten",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Pokémon & verzamelkaarten",
+  "tekst": "",
+  "woorden": "pok[eé]mon|verzamelkaart|booster|trading ?card|yu-?gi|magic the gathering|one piece card|lorcana"
+ },
+ {
+  "vak": "speelgoed/puzzels",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Puzzels",
+  "tekst": "",
+  "woorden": "puzzel|puzzle|wasgij|legpuzzel"
+ },
+ {
+  "vak": "speelgoed/poppen-barbie",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Poppen & Barbie",
+  "tekst": "",
+  "woorden": "modepop|monster high|mirror mi|rainbow high|(?<!funko )\\bpop\\b(?![- ]?up)|poppen|barbie|babypop|baby ?born|poppenhuis|l\\.?o\\.?l\\.? surprise|rainbow high|polly|sylvanian|bratz|\\bken\\b|poppenwagen"
+ },
+ {
+  "vak": "speelgoed/playmobil",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Playmobil",
+  "tekst": "",
+  "woorden": "playmobil"
+ },
+ {
+  "vak": "speelgoed/autos-treinen-rc",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Auto's, treinen & RC",
+  "tekst": "",
+  "woorden": "\\bauto(s|tje|baan|garage)?\\b|trein|\\brc\\b|bestuurbare|garage|hot ?wheels|racebaan|vrachtwagen|brandweer|tractor|vliegtuig|helikopter|bouwvoertuig|matchbox|\\bbrio\\b|graafmachine|politie|monstertruck|ca"
+ },
+ {
+  "vak": "speelgoed/knuffels-squishmallows",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Knuffels & Squishmallows",
+  "tekst": "",
+  "woorden": "knuffel|squishmallow|pluche|teddy|\\bbeer\\b|jellycat|warmteknuffel"
+ },
+ {
+  "vak": "speelgoed/knikkerbanen-magnetisch",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Knikkerbanen & magnetisch bouwen",
+  "tekst": "",
+  "woorden": "knikkerbaan|gravitrax|magna-?tiles|magformers|magnetisch|connetix|geomag|magneetbouw|marble ?run"
+ },
+ {
+  "vak": "speelgoed/knutselen-kleuren",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Knutselen & kleuren",
+  "tekst": "",
+  "woorden": "knutsel|\\bses\\b|science4you|crayola|kraskaart|punnik|zelf .{0,20}(bouwen|maken)|strijkkralen|slijm|slime"
+ },
+ {
+  "vak": "speelgoed/hypes-trends",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Hypes & trends",
+  "tekst": "",
+  "woorden": "funko|little live pets|furreal|funtasy|hex ?bots|robot|peekimo|kidisecrets|kidizoom|kindercamera|camera|wereldbol|globe|orboot|laptop|tiptoi|ik leer|electro|fidget|squishy|labubu|stitch|tamagotchi|bit"
+ },
+ {
+  "vak": "speelgoed/baby-houten",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Baby- & houten speelgoed",
+  "tekst": "",
+  "woorden": "\\bbaby|peuter|mijn eerste|rammelaar|stapeltoren|stapelbeker|sorteer|trekfiguur|activity|bijtring|loopwagen|badspeelgoed|\\b(0|1)\\+|vanaf (6|9|12|18) maanden|fisher|vtech baby|speelkleed|box ?mobiel|loo"
+ },
+ {
+  "vak": "speelgoed/speelkeukens-verkleden",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Speelkeukens & verkleden",
+  "tekst": "",
+  "woorden": "beauty|make-?up|tattoo|nagellak|kaphoofd|kassa|koffiezet|gereedschapskist|dierenarts|ijssalon|ijscokar|pizza speelset|winkeltje|speelkeuken|keukentje|verkleed|kostuum|prinsessenjurk|speelgoedkassa|win"
+ },
+ {
+  "vak": "speelgoed/muziek-karaoke",
+  "afdeling": "Speelgoed & Spellen",
+  "naam": "Muziek & karaoke",
+  "tekst": "",
+  "woorden": "karaoke|microfoon|keyboard|gitaar|drumstel|kidi ?dj|\\bdrums?\\b|muziekinstrument|xylofoon|\\bpiano"
+ },
+ {
+  "vak": "hobby/tekenen",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Tekenen & stiften",
+  "tekst": "",
+  "woorden": "teken|stift|potlood|marker|schetsboek|schets|kleurpotlood|posca|copic|\\bpen\\b|pennen|kleurboek|fineliner|houtskool|pastel"
+ },
+ {
+  "vak": "hobby/schilderen",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Schilderen",
+  "tekst": "",
+  "woorden": "schilder|\\bverf|acryl|aquarel|penseel|canvas|ezel|paint ?by ?number|op nummer|gouache|olieverf|paletmes"
+ },
+ {
+  "vak": "hobby/diamond-painting",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Diamond painting",
+  "tekst": "",
+  "woorden": "diamond ?paint|diamant ?schilder"
+ },
+ {
+  "vak": "hobby/naaien-borduren",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Naaien & borduren",
+  "tekst": "",
+  "woorden": "naai|borduur|punch ?needle|patchwork|quilt|lockmachine|kruissteek|stoffen|naaimachine"
+ },
+ {
+  "vak": "hobby/kralen-sieraden-maken",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Kralen & sieraden maken",
+  "tekst": "",
+  "woorden": "kralen|sieraden maken|armbandjes maken|kettingen maken|bedels maken|rocailles"
+ },
+ {
+  "vak": "hobby/modelbouw",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Modelbouw & miniatuurhuisjes",
+  "tekst": "",
+  "woorden": "modelbouw|robotime|rolife|miniatuur|bouwpakket|book ?nook|schip|scale|\\b1:\\d+|houten (model|3d)|mini ?huis|diy (huis|house)|maquette"
+ },
+ {
+  "vak": "hobby/origami-scrapbooking",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Origami & scrapbooking",
+  "tekst": "",
+  "woorden": "origami|scrapbook|papier|vouw|stempel|washi|kaarten maken|plakboek|ponser"
+ },
+ {
+  "vak": "hobby/kaarsen-zeep-epoxy",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Kaarsen, zeep & epoxy",
+  "tekst": "",
+  "woorden": "kaarsen maken|kaars maken|zeep maken|\\bzeep|epoxy|resin|gietvorm|gieten|soja ?was|kaarsenwas"
+ },
+ {
+  "vak": "hobby/haken-breien",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Haken & breien",
+  "tekst": "",
+  "woorden": "haak|haken|brei|garen|\\bwol\\b|amigurumi|macram[eé]|haakpakket|breipakket|tufting|weef"
+ },
+ {
+  "vak": "hobby/klei-pottenbakken",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Klei & pottenbakken",
+  "tekst": "",
+  "woorden": "\\bklei\\b|pottenbak|keramiek|boetseer|fimo|draaischijf|polymeerklei|airdry"
+ },
+ {
+  "vak": "hobby/3d-pennen",
+  "afdeling": "Hobby & Creatief",
+  "naam": "3D-pennen",
+  "tekst": "",
+  "woorden": "3d[- ]?pen"
+ },
+ {
+  "vak": "hobby/bullet-journal",
+  "afdeling": "Hobby & Creatief",
+  "naam": "Bullet journal & kalligrafie",
+  "tekst": "",
+  "woorden": "bullet ?journal|kalligraf|handletter|brush ?pen|journal|lettering"
+ },
+ {
+  "vak": "sport-outdoor/voetbal-balsporten",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Voetbal & balsporten",
+  "tekst": "",
+  "woorden": "voetbal|hockey|basketbal|volleybal|\\bbal\\b|\\bdoel\\b|scheenbesch|keepers|rugby|honkbal|korfbal|handbal"
+ },
+ {
+  "vak": "sport-outdoor/darts",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Darts",
+  "tekst": "",
+  "woorden": "dart"
+ },
+ {
+  "vak": "sport-outdoor/fietsen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Fietsen",
+  "tekst": "",
+  "woorden": "fiets|\\bbike|\\bmtb\\b|wielren|bidonhouder|kettingslot"
+ },
+ {
+  "vak": "sport-outdoor/padel-tennis",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Padel & tennis",
+  "tekst": "",
+  "woorden": "padel|tennis|tafeltennis|pingpong|badminton|squash"
+ },
+ {
+  "vak": "sport-outdoor/wintersport-schaatsen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Wintersport & schaatsen",
+  "tekst": "",
+  "woorden": "schaats|\\bski|snowboard|\\bslee\\b|wintersport|skibril|skihelm|thermo ?ondergoed"
+ },
+ {
+  "vak": "sport-outdoor/fitness",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Fitness & thuis sporten",
+  "tekst": "",
+  "woorden": "fitness|dumbbell|halter|kettlebell|weerstand|\\bband(en)?\\b|springtouw|bokszak|boks|massage ?gun|hometrainer|loopband|roeitrainer|buikspier|ab ?roller|push ?up|sportmat|\\bgewicht(en)?\\b|crosstrainer|pu"
+ },
+ {
+  "vak": "sport-outdoor/kamperen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Kamperen",
+  "tekst": "",
+  "woorden": "kampeer|tent\\b|slaapzak|camping|zaklamp|hoofdlamp|gasbrander|hangmat|survival|kookset|matje|luchtbed|campingstoel|vuurstarter|bushcraft|bivak|lantaarn|outdoor ?kook|firesteel|campingkook"
+ },
+ {
+  "vak": "sport-outdoor/wandelen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Wandelen",
+  "tekst": "",
+  "woorden": "wandel|rugzak|verrekijker|drinkfles|thermosfles|nordic|kompas|regenjas|regenponcho|trekking|hiking"
+ },
+ {
+  "vak": "sport-outdoor/hardlopen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Hardlopen",
+  "tekst": "",
+  "woorden": "hardloop|running|stappenteller|hartslag|loopvest|hardlopen|reflecterend"
+ },
+ {
+  "vak": "sport-outdoor/golf",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Golf",
+  "tekst": "",
+  "woorden": "golf"
+ },
+ {
+  "vak": "sport-outdoor/reizen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Reizen",
+  "tekst": "",
+  "woorden": "reis|koffer|bagage|nekkussen|paspoort|adapter|travel|vakantie"
+ },
+ {
+  "vak": "sport-outdoor/watersport-zwemmen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Watersport & zwemmen",
+  "tekst": "",
+  "woorden": "\\bsup\\b|supboard|kajak|zwem|snorkel|duik|surf|wetsuit|waterski|kano|opblaasbare boot|waterschoen"
+ },
+ {
+  "vak": "sport-outdoor/klimmen-boulderen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Klimmen & boulderen",
+  "tekst": "",
+  "woorden": "klim|boulder|crashpad|chalk|pofzak"
+ },
+ {
+  "vak": "sport-outdoor/skateboards-steps",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Skateboards & steps",
+  "tekst": "",
+  "woorden": "skateboard|\\bstep\\b(?!.*aerobic)|steps|longboard|skate|rolschaats|inline|waveboard|penny ?board"
+ },
+ {
+  "vak": "sport-outdoor/yoga",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Yoga",
+  "tekst": "",
+  "woorden": "yoga|pilates|meditatie|balansbal"
+ },
+ {
+  "vak": "sport-outdoor/buitenspellen-picknick",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Buitenspellen & picknick",
+  "tekst": "",
+  "woorden": "jeu de boules|petanque|kubb|picknick|m[oö]lkky|cornhole|frisbee|beachball|spikeball|beach ?ball|werpspel|krokett"
+ },
+ {
+  "vak": "sport-outdoor/vissen",
+  "afdeling": "Sport & Outdoor",
+  "naam": "Vissen",
+  "tekst": "",
+  "woorden": "\\bvis(sen|hengel|lijn|kist|tas|haak|stoel)|hengel|karper|\\baas\\b|werphengel|sportvis"
+ },
+ {
+  "vak": "tuin-klussen/zwembaden-jacuzzis",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Zwembaden & jacuzzi's",
+  "tekst": "",
+  "woorden": "zwembad|jacuzzi|hot ?tub|\\bspa\\b|lay-?z"
+ },
+ {
+  "vak": "tuin-klussen/tuinmeubelen",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuinmeubelen & parasols",
+  "tekst": "",
+  "woorden": "parasol|tuinstoel|tuinbank|loungeset|hangstoel|schommel|tuinkussen|tuintafel|ligbed|hangmat|tuinset|loungestoel|strandstoel"
+ },
+ {
+  "vak": "tuin-klussen/elektrisch-gereedschap",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Elektrisch gereedschap",
+  "tekst": "",
+  "woorden": "\\baccu|boormachine|schroefmachine|zaag|schuurmachine|makita|dewalt|\\bbosch\\b|einhell|ryobi|black ?\\+? ?decker|lijmpistool|soldeer|dremel|frees|klopboor|slagmoersleutel|multitool oscillerend|compressor"
+ },
+ {
+  "vak": "tuin-klussen/bbq-buitenkoken",
+  "afdeling": "Tuin & Klussen",
+  "naam": "BBQ & buiten koken",
+  "tekst": "",
+  "woorden": "\\bbbq|barbecue|kamado|pizzaoven|pizza ?oven|buitenkeuken|\\bgrill|plancha|rookoven|houtskool|aansteek|weber|smoker|dutch oven"
+ },
+ {
+  "vak": "tuin-klussen/tuinmachines",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuinmachines",
+  "tekst": "",
+  "woorden": "hogedrukreiniger|grasmaaier|robotmaaier|bladblazer|heggenschaar|kettingzaag|grastrimmer|kantenmaaier|verticuteer|bladzuiger|onkruidbrander|kärcher|karcher"
+ },
+ {
+  "vak": "tuin-klussen/handgereedschap-werkplaats",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Handgereedschap & werkplaats",
+  "tekst": "",
+  "woorden": "gereedschap|waterpas|schroevendraaier|hamer|\\btang|\\bbit|dopsleutel|steeksleutel|werkbank|gereedschapskist|multitool|rolmaat|zakmes|ratel|inbus|lasermeter|meetlint|werkhandschoen|hoofdlamp|zaklamp"
+ },
+ {
+  "vak": "tuin-klussen/planten-potten",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Planten & potten",
+  "tekst": "",
+  "woorden": "plant|\\bpot\\b|potten|bloempot|plantenbak|bonsai|cactus|vetplant|terrarium|orchidee|hangpot|bloembak|plantenstandaard"
+ },
+ {
+  "vak": "tuin-klussen/regentonnen-slangen-compost",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Regentonnen, slangen & compost",
+  "tekst": "",
+  "woorden": "regenton|tuinslang|gieter|compost|regenmeter|sproei|slangwagen|waterpomp\\b|irrigatie"
+ },
+ {
+  "vak": "tuin-klussen/vogels-insecten",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Vogels & insecten",
+  "tekst": "",
+  "woorden": "vogel|insect|nestkast|voeder|vlinder|bijen|egel|mezen|pindakaas|vetbol"
+ },
+ {
+  "vak": "tuin-klussen/moestuin-kweken",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Moestuin & kweken",
+  "tekst": "",
+  "woorden": "moestuin|kweek|\\bkas\\b|broeikas|\\bzaad|zaden|bloembol|kiem|groente|kruidentuin|tomaat|tomaten|zaai|aardbei|tulpenbollen"
+ },
+ {
+  "vak": "tuin-klussen/buitenverlichting",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Buitenverlichting",
+  "tekst": "",
+  "woorden": "verlichting|solar|\\blamp|lantaarn|lichtsnoer|\\bled\\b|\\bspot|tuinlamp|lichtslinger"
+ },
+ {
+  "vak": "tuin-klussen/tuingereedschap",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuingereedschap",
+  "tekst": "",
+  "woorden": "schep|snoeischaar|snoeizaag|\\bhark|kruiwagen|tuinhandschoen|schoffel|spade|tuingereedschap|plantenschep|onkruid|tuinset|bladhark|tuinschort|knielkussen"
+ },
+ {
+  "vak": "tuin-klussen/vuurschalen-terrasverwarmers",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Vuurschalen & terrasverwarmers",
+  "tekst": "",
+  "woorden": "vuurschaal|vuurkorf|terrasverwarmer|vuurtafel|tuinhaard|vuurplaat|vuurpot"
+ },
+ {
+  "vak": "tuin-klussen/tuindecoratie",
+  "afdeling": "Tuin & Klussen",
+  "naam": "Tuindecoratie",
+  "tekst": "",
+  "woorden": "kabouter|tuinbeeld|beeld\\b|thermometer|tuindecoratie|windgong|tuinsteker|zonnewijzer|tuinspiegel|windspinner|vogelbad"
+ },
+ {
+  "vak": "boeken-media/puzzelboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Puzzelboeken",
+  "tekst": "",
+  "woorden": "sudoku|kruiswoord|puzzelboek|breinbreker|denksport|woordzoeker|puzzels? ?voor|doolhof"
+ },
+ {
+  "vak": "boeken-media/agendas-planners-kalenders",
+  "afdeling": "Boeken & Media",
+  "naam": "Agenda's, planners & kalenders",
+  "tekst": "",
+  "woorden": "agenda|planner|notitieboek|notebook|dagboek|kalender|journal|scheurkalender|schrift|bullet"
+ },
+ {
+  "vak": "boeken-media/e-readers",
+  "afdeling": "Boeken & Media",
+  "naam": "E-readers",
+  "tekst": "",
+  "woorden": "e-?reader|\\bkobo\\b|kindle"
+ },
+ {
+  "vak": "boeken-media/muziek",
+  "afdeling": "Boeken & Media",
+  "naam": "Muziek: lp's & cd's",
+  "tekst": "",
+  "woorden": "vinyl|\\blp\\b|\\bcd\\b|elpee|album|muziek|songbook|bladmuziek"
+ },
+ {
+  "vak": "boeken-media/films-series",
+  "afdeling": "Boeken & Media",
+  "naam": "Films & series",
+  "tekst": "",
+  "woorden": "\\bdvd|blu-?ray|\\bfilm|\\bserie\\b"
+ },
+ {
+  "vak": "boeken-media/kinderboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Kinderboeken",
+  "tekst": "",
+  "woorden": "prentenboek|voorlees|kinderboek|nijntje|dikkie|gruffalo|geronimo|harry potter|kleuter|peuter|\\bavi\\b|groep [345]|leren lezen|sprookje|dagboek van een muts|dagboek van een loser|tom poes|pluk|jip en ja"
+ },
+ {
+  "vak": "boeken-media/thrillers-romans",
+  "afdeling": "Boeken & Media",
+  "naam": "Thrillers & romans",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "boeken-media/strips-manga",
+  "afdeling": "Boeken & Media",
+  "naam": "Strips & manga",
+  "tekst": "",
+  "woorden": "strip|manga|graphic novel|suske|kuifje|asterix|donald duck|lucky luke|guust|jommeke|kiekeboe|garfield|dragon ball|naruto|one piece"
+ },
+ {
+  "vak": "boeken-media/leesplezier",
+  "afdeling": "Boeken & Media",
+  "naam": "Leesplezier",
+  "tekst": "",
+  "woorden": "leeslamp|boekensteun|boekenlegger|leeskussen|boekenstandaard|boekenkast|book ?nook|leesbril|boekenhouder|leesstandaard|leesbord"
+ },
+ {
+  "vak": "boeken-media/luisterboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Luisterboeken",
+  "tekst": "",
+  "woorden": "luisterboek|audioboek|audiobook"
+ },
+ {
+  "vak": "boeken-media/kleurboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Kleurboeken",
+  "tekst": "",
+  "woorden": "kleurboek|coloring|kleurplaten"
+ },
+ {
+  "vak": "boeken-media/foto-invulboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Foto- & invulboeken",
+  "tekst": "",
+  "woorden": "invulboek|vertel eens|fotoboek|fotoalbum|plakboek|herinneringen|babyboek|vriendenboek|vertel ?me|mijn leven|levensboek"
+ },
+ {
+  "vak": "boeken-media/kookboeken",
+  "afdeling": "Boeken & Media",
+  "naam": "Kookboeken",
+  "tekst": "",
+  "woorden": "kookboek|recept|bakboek|\\bkoken\\b|keuken van"
+ },
+ {
+  "vak": "dieren/paard",
+  "afdeling": "Dieren",
+  "naam": "Paard",
+  "tekst": "",
+  "woorden": "paard|pony|\\bruiter"
+ },
+ {
+  "vak": "dieren/hond",
+  "afdeling": "Dieren",
+  "naam": "Hond",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dieren/konijn-cavia-hamster",
+  "afdeling": "Dieren",
+  "naam": "Konijn, cavia & hamster",
+  "tekst": "",
+  "woorden": "konijn|cavia|hamster|knaagdier|chinchilla|degoe"
+ },
+ {
+  "vak": "dieren/kat",
+  "afdeling": "Dieren",
+  "naam": "Kat",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "dieren/vissen-aquarium",
+  "afdeling": "Dieren",
+  "naam": "Vissen & aquarium",
+  "tekst": "",
+  "woorden": "aquarium|vissenkom|vijver|\\bvis(sen)?\\b"
+ },
+ {
+  "vak": "dieren/reptielen-terrarium",
+  "afdeling": "Dieren",
+  "naam": "Reptielen & terrarium",
+  "tekst": "",
+  "woorden": "terrarium|reptiel|schildpad|gekko|slang\\b|hagedis"
+ },
+ {
+  "vak": "dieren/kippen",
+  "afdeling": "Dieren",
+  "naam": "Kippen",
+  "tekst": "",
+  "woorden": "\\bkip\\b|kippen|hoender"
+ },
+ {
+  "vak": "dieren/vogels",
+  "afdeling": "Dieren",
+  "naam": "Vogels",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "metaaldetectie/munten-vondsten",
+  "afdeling": "Metaaldetectie",
+  "naam": "Munten & vondsten bewaren",
+  "tekst": "",
+  "woorden": "munt|loep|vondst|album|\\bboek|vitrine|verzamel|archeolog|reinig|vergrootglas|determin"
+ },
+ {
+  "vak": "metaaldetectie/detectors",
+  "afdeling": "Metaaldetectie",
+  "naam": "Metaaldetectors",
+  "tekst": "",
+  "woorden": "detector|metaalzoeker|deus|minelab|nokta|garrett|quest|equinox|manticore|x-terra|vanquish"
+ },
+ {
+  "vak": "metaaldetectie/magneetvissen",
+  "afdeling": "Metaaldetectie",
+  "naam": "Magneetvissen",
+  "tekst": "",
+  "woorden": "magneet|vismagneet|neodymium"
+ },
+ {
+  "vak": "metaaldetectie/pinpointers-uitrusting",
+  "afdeling": "Metaaldetectie",
+  "naam": "Pinpointers & uitrusting",
+  "tekst": "",
+  "woorden": "pinpointer|pro ?pointer|schep|spade|lesche|koptelefoon|headphone|tas\\b|vondsttas|knie|spoel|cover|zoekspoel|draagsysteem|riem|handschoen|graaf|troffel|accu|oplader|hoofdlamp"
+ },
+ {
+  "vak": "christelijk/bijbels",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Bijbels",
+  "tekst": "Een Bijbel cadeau geven: Statenvertaling, HSV, Bijbels met psalmen, kanttekeningenbijbels en kinderbijbels. Voor doop, belijdenis of huwelijk.",
+  "woorden": "^(?!.*(dagboek|liedjes|\\babc\\b|bidden|teksten|kaart|sleutelhanger)).*(\\bbijbel\\b|statenvertaling|studiebijbel|kinderbijbel|peuterbijbel|babybijbel|bijbelhoes|bijbeltas|bijbeletui|huisbijbel|trouwbijbe"
+ },
+ {
+  "vak": "christelijk/psalmboeken",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Psalmboeken",
+  "tekst": "",
+  "woorden": "psalmboek|psalmen ?boek|liedboek|kerkboek|gezangen|zangbundel|weerklank|op toonhoogte|bijbel met (psalmen|kerkboek)|psalmenpalet|met de psalmen|kleur de psalmen|psalmen voor"
+ },
+ {
+  "vak": "christelijk/kerststal-engelen",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Kerststal & engelen",
+  "tekst": "Kerststallen en engelen voor de kerst: houten kerststallen, kerststalfiguren en sfeervolle engeltjes voor in huis.",
+  "woorden": "kerststal|\\bstal\\b|\\bengel(en|tje|tjes|beeld|beeldje)?\\b|kribbe|kerstgroep|heilige familie"
+ },
+ {
+  "vak": "christelijk/sieraden",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Kruisjes & sieraden",
+  "tekst": "Christelijke sieraden als cadeau: kruiskettingen, armbanden met een kruis, ichthus-hangers en sleutelhangers met een Bijbeltekst. Voor haar en voor hem.",
+  "woorden": "ketting|hanger|armband|kruisje|ring\\b|oorbel|bedel|sieraad|sieraden|broche|speld"
+ },
+ {
+  "vak": "christelijk/kerst",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Christelijke kerst",
+  "tekst": "Christelijke kerstcadeaus: kerstkaarten met het kerstverhaal, kerststallen en sfeervolle decoratie rond de geboorte van Jezus.",
+  "woorden": "kerstkaart|kerst ?kaart|kaart.*kerst|kersttegel"
+ },
+ {
+  "vak": "christelijk/bijbelteksten-wanddecoratie",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Bijbelteksten & wanddecoratie",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "christelijk/boeken-muziek",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Boeken & muziek",
+  "tekst": "Christelijke boeken, dagboeken en muziek: HSV-dagboeken, boeken over bidden en de psalmen, dagboekkalenders en meer. Een mooi cadeau voor elke dag.",
+  "woorden": ""
+ },
+ {
+  "vak": "christelijk/doop-belijdenis",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Doop & belijdenis",
+  "tekst": "Een doopcadeau of belijdeniscadeau met betekenis: kinderbijbels, Statenvertaling en HSV Bijbels, Bijbelhoezen, dagboeken en aandenkens met een Bijbeltekst.",
+  "woorden": "\\bdoop|belijdenis|geloofsbelijdenis"
+ },
+ {
+  "vak": "christelijk/voor-kinderen",
+  "afdeling": "Christelijke cadeaus",
+  "naam": "Voor kinderen",
+  "tekst": "Christelijke cadeaus voor kinderen: kinderbijbels, psalmboekjes, peuterdagboeken, de catechismus voor kinderen en speelgoed met Bijbelverhalen.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/noodpakketten",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Noodpakketten",
+  "tekst": "Kant-en-klare noodpakketten voor 1 of meer personen, voor de eerste 72 uur. Met zaklamp, radio, deken, EHBO en meer. Vul ze aan met water en contant geld.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/noodradio",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Noodradio’s",
+  "tekst": "Een noodradio werkt ook als de stroom en het internet uitvallen. Opwindbare radio’s met zonnepaneel, zaklamp en powerbank, zodat je de rampenzender kunt horen.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/licht-stroom",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Licht & stroom",
+  "tekst": "Licht en stroom als het donker wordt: zaklampen, hoofdlampen, lantaarns, powerbanks op zonne-energie en draagbare powerstations.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/water-eten",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Water & eten",
+  "tekst": "Drinkwater en eten voor de eerste 72 uur: lang houdbaar water, noodrantsoen, gevriesdroogde maaltijden, waterfilters en jerrycans.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/koken-warmte",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Koken & warmte",
+  "tekst": "Koken zonder stroom of gas met een klein kooktoestel, en warm blijven met nooddekens, slaapzakken en handwarmers.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/ehbo-brand",
+  "afdeling": "Noodpakket & survival",
+  "naam": "EHBO & brandveiligheid",
+  "tekst": "EHBO-kits voor thuis, in de auto en onderweg, plus branddekens, brandblussers en rookmelders. Veilig in huis.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/buiten-veld",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Buiten & in het veld",
+  "tekst": "Voor buiten, in het bos en op de velden: vuurstarters, kompassen, tarps, vouwzagen, multitools en waterdichte zakken.",
+  "woorden": ""
+ },
+ {
+  "vak": "noodpakket-survival/tassen-onderweg",
+  "afdeling": "Noodpakket & survival",
+  "naam": "Tassen & onderweg",
+  "tekst": "Een stevige rugzak om je noodpakket in te bewaren, plus handige spullen voor in de stad en onderweg: fluitjes, waterdichte zakken en meer.",
+  "woorden": ""
+ },
+ {
+  "vak": "cadeaus/kerst",
+  "afdeling": "Cadeaus",
+  "naam": "Kerstcadeaus",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "cadeaus/sinterklaas",
+  "afdeling": "Cadeaus",
+  "naam": "Sinterklaas",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "cadeaus/met-naam",
+  "afdeling": "Cadeaus",
+  "naam": "Met naam",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "cadeaus/grappig",
+  "afdeling": "Cadeaus",
+  "naam": "Grappige cadeaus",
+  "tekst": "",
+  "woorden": ""
+ },
+ {
+  "vak": "valentijn/voor-haar",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Voor haar",
+  "tekst": "Een romantisch cadeau voor je vriendin of vrouw: hartjessieraden, rozen die nooit verwelken en kleine verwenmomentjes.",
+  "woorden": ""
+ },
+ {
+  "vak": "valentijn/voor-hem",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Voor hem",
+  "tekst": "Romantisch, maar niet zoetsappig: cadeaus voor je vriend of man die hij echt gebruikt.",
+  "woorden": ""
+ },
+ {
+  "vak": "valentijn/samen",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Samen & jubileum",
+  "tekst": "Voor jullie jaar samen, een trouwdag of 25, 40 of 50 jaar getrouwd: cadeaus die over jullie twee gaan.",
+  "woorden": ""
+ },
+ {
+  "vak": "valentijn/met-naam",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Met naam & hartje",
+  "tekst": "Persoonlijke cadeaus met een naam, jullie namen of een hartje. Echt voor haar of hem gemaakt.",
+  "woorden": ""
+ },
+ {
+  "vak": "valentijn/romantische-avond",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Romantische avond",
+  "tekst": "Date-ideeën voor thuis: samen fonduen, hartjeswafels bakken, een spel voor twee of een sterrenhemel op het plafond.",
+  "woorden": ""
+ },
+ {
+  "vak": "valentijn/kleine-gebaren",
+  "afdeling": "Liefde & Valentijn",
+  "naam": "Kleine liefdesgebaren",
+  "tekst": "Zomaar, gewoon omdat je van iemand houdt. Kleine cadeautjes onder de 25 euro met een groot gebaar.",
+  "woorden": ""
+ }
+]
