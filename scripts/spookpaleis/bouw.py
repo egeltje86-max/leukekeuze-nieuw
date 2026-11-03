@@ -62,16 +62,28 @@ for a in B['afdelingen']:
     a_url = BASIS + a['slug'] + '/'; n_afd = 0; blok = []
     for g in a['groepen']:
         g_url = a_url + g['slug'] + '/'; items = []; n_g = 0
-        for v in g['vakjes']:
-            vs = slug(v); code = '%s/%s/%s' % (a['slug'], g['slug'], vs); lijst = per_vak.get(code, []); n_g += len(lijst); tot_vak += 1
-            schrijf('%s/%s/%s' % (a['slug'], g['slug'], vs), pagina(v, [('Home', BASIS), (a['naam'], a_url), (g['naam'], g_url), (v, None)], '<h1>%s</h1>%s' % (e(v), kaartjes(lijst))))
-            items.append('<li><a href="%s%s/">%s <span class="n">(%d)</span></a></li>' % (g_url, vs, e(v), len(lijst)))
+        for v0 in g['vakjes']:
+            v = v0 if isinstance(v0, str) else v0['naam']; soorten = [] if isinstance(v0, str) else v0.get('soorten', [])
+            vs = slug(v); code = '%s/%s/%s' % (a['slug'], g['slug'], vs); v_url = g_url + vs + '/'
+            lijst = [x for k, l in per_vak.items() if k == code or k.startswith(code + '/') for x in l]; n_g += len(lijst)
+            kr = [('Home', BASIS), (a['naam'], a_url), (g['naam'], g_url)]
+            if soorten:
+                chips = []
+                for so in soorten:
+                    ss = slug(so); sl = per_vak.get(code + '/' + ss, []); tot_vak += 1
+                    schrijf('%s/%s/%s/%s' % (a['slug'], g['slug'], vs, ss), pagina(so, kr + [(v, v_url), (so, None)], '<h1>%s</h1>%s' % (e(so), kaartjes(sl))))
+                    chips.append('<li><a href="%s%s/">%s <span class="n">(%d)</span></a></li>' % (v_url, ss, e(so), len(sl)))
+                inhoud = '<h1>%s</h1><ul class="vakjes">%s</ul><h2>Alle producten</h2>%s' % (e(v), ''.join(chips), kaartjes(lijst))
+            else:
+                tot_vak += 1; inhoud = '<h1>%s</h1>%s' % (e(v), kaartjes(lijst))
+            schrijf('%s/%s/%s' % (a['slug'], g['slug'], vs), pagina(v, kr + [(v, None)], inhoud))
+            items.append('<li><a href="%s">%s <span class="n">(%d)</span></a></li>' % (v_url, e(v), len(lijst)))
         n_afd += n_g
         schrijf('%s/%s' % (a['slug'], g['slug']), pagina(g['naam'], [('Home', BASIS), (a['naam'], a_url), (g['naam'], None)], '<h1>%s</h1><ul class="vakjes">%s</ul>' % (e(g['naam']), ''.join(items))))
         blok.append('<h2><a href="%s">%s</a></h2><ul class="vakjes">%s</ul>' % (g_url, e(g['naam']), ''.join(items)))
     inhoud = '<h1>%s</h1>' % e(a['naam']) + (''.join(blok) if blok else '<div class="niets">Deze afdeling wordt nog ingedeeld.</div>')
     schrijf(a['slug'], pagina(a['naam'], [('Home', BASIS), (a['naam'], None)], inhoud))
-    info = ('%d groepen · %d vakjes' % (len(a['groepen']), sum(len(g['vakjes']) for g in a['groepen']))) if a['groepen'] else 'nog in te delen'
+    info = ('%d groepen · %d vakjes' % (len(a['groepen']), sum(len(v.get('soorten') or [1]) if isinstance(v, dict) else 1 for g in a['groepen'] for v in g['vakjes']))) if a['groepen'] else 'nog in te delen'
     home.append('<a class="tegel%s" href="%s"><b>%s</b><small>%s</small><br><span class="pil">%d producten</span></a>' % ('' if a['groepen'] else ' leeg', a_url, e(a['naam']), info, n_afd))
 open(os.path.join(SP, 'index.html'), 'w', encoding='utf-8').write(pagina('Alle afdelingen', [('Home', None)], '<h1>Alle afdelingen</h1><div class="raster">%s</div>' % ''.join(home)))
 print('Spookpaleis gebouwd: %d afdelingen, %d vakjes, %d producten' % (len(B['afdelingen']), tot_vak, len(P)))
