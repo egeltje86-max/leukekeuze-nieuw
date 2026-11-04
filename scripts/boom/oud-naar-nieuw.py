@@ -43,7 +43,7 @@ M={
 'hobby/naaien-borduren':(HO,'Handwerken',None),'hobby/kralen-sieraden-maken':(HO,'Zelf maken','Sieraden maken'),'hobby/modelbouw':(HO,'Modelbouw',None),
 'hobby/origami-scrapbooking':(HO,'Papier & planners','Scrapbooking & origami'),'hobby/kaarsen-zeep-epoxy':(HO,'Zelf maken',None),'hobby/haken-breien':(HO,'Handwerken','Haken & breien'),
 'hobby/klei-pottenbakken':(HO,'Zelf maken','Klei, pottenbakken & epoxy'),'hobby/3d-pennen':(HO,'Zelf maken','3D-pennen'),'hobby/bullet-journal':(HO,'Papier & planners',None),
-'sport-outdoor/voetbal-balsporten':(SB,'Balsport & spel',None),'sport-outdoor/darts':(SB,'Balsport & spel','Darts'),'sport-outdoor/fietsen':(SB,'Fietsen & steps',None),
+'sport-outdoor/voetbal-balsporten':(SB,'Balsport & spel',None),'sport-outdoor/darts':(SB,'Darts',None),'sport-outdoor/fietsen':(SB,'Fietsen & steps',None),
 'sport-outdoor/padel-tennis':(SB,'Balsport & spel','Padel & tennis'),'sport-outdoor/wintersport-schaatsen':(SB,'Water- & wintersport','Wintersport'),'sport-outdoor/fitness':(SB,'Fitness & yoga','Fitness thuis'),
 'sport-outdoor/kamperen':(SB,'Kamperen & outdoor',None),'sport-outdoor/wandelen':(SB,'Wandelen & hardlopen','Wandelen'),'sport-outdoor/hardlopen':(SB,'Wandelen & hardlopen','Hardlopen'),
 'sport-outdoor/golf':(SB,'Balsport & spel','Golf'),'sport-outdoor/reizen':(MO,'Tassen & portemonnees','Reisaccessoires'),'sport-outdoor/watersport-zwemmen':(SB,'Water- & wintersport','Zwemmen'),

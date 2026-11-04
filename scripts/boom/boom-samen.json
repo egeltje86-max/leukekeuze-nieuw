@@ -6,91 +6,91 @@
    {
     "naam": "Baby & peuter",
     "vakjes": [
-     "Rammelaars & bijtringen",
-     "Babygyms & activiteitenspeelgoed",
+     "Badspeelgoed",
      "Stapelen & sorteren",
+     "Rammelaars & bijtringen",
      "Loopwagens & duwspeelgoed",
-     "Badspeelgoed"
+     "Babygyms & activiteitenspeelgoed"
     ]
    },
    {
     "naam": "Bouwen",
     "vakjes": [
      "LEGO",
+     "Knikkerbanen",
      "LEGO Duplo",
-     "Andere bouwstenen",
      "Magnetisch bouwen",
-     "Knikkerbanen"
+     "Andere bouwstenen"
     ]
    },
    {
     "naam": "Poppen & knuffels",
     "vakjes": [
-     "Babypoppen",
-     "Modepoppen",
-     "Poppenhuizen & accessoires",
      "Knuffels",
-     "Squishmallows"
+     "Squishmallows",
+     "Poppenhuizen & accessoires",
+     "Babypoppen",
+     "Modepoppen"
     ]
    },
    {
     "naam": "Speelfiguren & voertuigen",
     "vakjes": [
-     "Playmobil",
-     "Dieren- & dinofiguren",
-     "Actiefiguren & superhelden",
      "Speelgoedauto's & garages",
+     "Playmobil",
+     "Actiefiguren & superhelden",
      "Racebanen & treinen",
-     "Radiografisch bestuurbaar"
+     "Radiografisch bestuurbaar",
+     "Dieren- & dinofiguren"
     ]
    },
    {
     "naam": "Rollenspel & verkleden",
     "vakjes": [
+     "Verkleedkleding",
      "Speelkeukens & winkeltjes",
-     "Gereedschap & dokterssets",
-     "Verkleedkleding"
+     "Gereedschap & dokterssets"
     ]
    },
    {
     "naam": "Knutselen",
     "vakjes": [
-     "Knutselsets",
-     "Klei & slijm",
      "Tekenen & kleuren",
-     "Strijkkralen & sieraden maken"
+     "Strijkkralen & sieraden maken",
+     "Klei & slijm",
+     "Knutselsets"
     ]
    },
    {
     "naam": "Leren & ontdekken",
     "vakjes": [
-     "Experimenteren & wetenschap",
+     "Muziekspeelgoed & karaoke",
      "Programmeren & robots",
      "Microscopen & telescopen",
+     "Experimenteren & wetenschap",
      "Tiptoi & leersystemen",
-     "Luisterboxen (Toniebox)",
-     "Muziekspeelgoed & karaoke"
+     "Luisterboxen (Toniebox)"
     ]
    },
    {
     "naam": "Buiten spelen",
     "vakjes": [
-     "Steps & loopfietsen",
-     "Trampolines & speeltoestellen",
      "Zand & water",
+     "Trampolines & speeltoestellen",
+     "Steps & loopfietsen",
      "Buitenspellen & ballen"
     ]
    },
    {
     "naam": "Spellen",
     "vakjes": [
-     "Bordspellen voor het gezin",
-     "Strategiespellen",
-     "Kaart- & dobbelspellen",
-     "Partyspellen",
+     "Verzamelkaarten (Pokémon)",
      "Escape room & breinbrekers",
      "Kinderspellen",
-     "Verzamelkaarten (Pokémon)"
+     "Kaart- & dobbelspellen",
+     "Partyspellen",
+     "Strategiespellen",
+     "Bordspellen voor het gezin"
     ]
    },
    {
@@ -110,36 +110,36 @@
    {
     "naam": "Audio",
     "vakjes": [
+     "Platenspelers",
      "Koptelefoons",
      "Oordopjes",
-     "Bluetooth-speakers",
-     "Platenspelers"
+     "Bluetooth-speakers"
     ]
    },
    {
     "naam": "Gaming",
     "vakjes": [
-     "Consoles",
-     "Games",
      "Controllers & accessoires",
-     "Gaming-headsets",
      "Gamestoelen",
-     "VR-brillen"
+     "Consoles",
+     "VR-brillen",
+     "Games",
+     "Gaming-headsets"
     ]
    },
    {
     "naam": "Smartwatches",
     "vakjes": [
-     "Smartwatches",
-     "Activity trackers"
+     "Activity trackers",
+     "Smartwatches"
     ]
    },
    {
     "naam": "Foto & video",
     "vakjes": [
      "Camera's & instant camera's",
-     "Actioncam's",
-     "Drones"
+     "Drones",
+     "Actioncam's"
     ]
    },
    {
@@ -154,17 +154,17 @@
    {
     "naam": "Tv & beeld",
     "vakjes": [
-     "Televisies",
      "Beamers",
+     "Televisies",
      "Soundbars"
     ]
    },
    {
     "naam": "Slim wonen",
     "vakjes": [
+     "Robotstofzuigers",
      "Slimme lampen & sfeerlicht",
-     "Slimme speakers",
-     "Robotstofzuigers"
+     "Slimme speakers"
     ]
    },
    {
@@ -183,13 +183,13 @@
    {
     "naam": "Sieraden",
     "vakjes": [
-     "Kettingen",
-     "Armbanden",
      "Oorbellen",
+     "Kettingen",
      "Ringen",
+     "Armbanden",
+     "Bedels",
      "Sieraden met naam",
-     "Sieradendozen",
-     "Bedels"
+     "Sieradendozen"
     ]
    },
    {
@@ -202,39 +202,39 @@
    {
     "naam": "Tassen & portemonnees",
     "vakjes": [
+     "Koffers & reistassen",
+     "Portemonnees & pasjeshouders",
      "Handtassen",
      "Rugzakken",
-     "Portemonnees & pasjeshouders",
-     "Koffers & reistassen",
-     "Toilettassen",
-     "Reisaccessoires"
+     "Reisaccessoires",
+     "Toilettassen"
     ]
    },
    {
     "naam": "Accessoires",
     "vakjes": [
-     "Sjaals & mutsen",
-     "Handschoenen",
      "Zonnebrillen",
      "Riemen & petten",
-     "Sleutelhangers"
+     "Sleutelhangers",
+     "Sjaals & mutsen",
+     "Handschoenen"
     ]
    },
    {
     "naam": "Kleding",
     "vakjes": [
-     "Pyjama's & badjassen",
      "Truien & hoodies",
-     "T-shirts met print",
-     "Sokken"
+     "Pyjama's & badjassen",
+     "Sokken",
+     "T-shirts met print"
     ]
    },
    {
     "naam": "Schoenen & sloffen",
     "vakjes": [
-     "Pantoffels & sloffen",
+     "Laarzen & boots",
      "Sneakers",
-     "Laarzen & boots"
+     "Pantoffels & sloffen"
     ]
    }
   ]
@@ -246,8 +246,8 @@
    {
     "naam": "Parfum",
     "vakjes": [
-     "Damesparfum",
      "Herenparfum",
+     "Damesparfum",
      "Parfumsets"
     ]
    },
@@ -261,8 +261,8 @@
    {
     "naam": "Bad & douche",
     "vakjes": [
-     "Bad- & doucheproducten",
-     "Bruisballen"
+     "Bruisballen",
+     "Bad- & doucheproducten"
     ]
    },
    {
@@ -282,8 +282,8 @@
    {
     "naam": "Haar",
     "vakjes": [
-     "Föhns & stijltangen",
-     "Haarverzorging"
+     "Haarverzorging",
+     "Föhns & stijltangen"
     ]
    },
    {
@@ -316,47 +316,47 @@
    {
     "naam": "Woondecoratie",
     "vakjes": [
-     "Beelden & decoratie",
-     "Vazen",
-     "Wanddecoratie & posters",
-     "Klokken",
      "Spiegels",
-     "Opbergen & dienbladen"
+     "Wanddecoratie & posters",
+     "Opbergen & dienbladen",
+     "Vazen",
+     "Klokken",
+     "Beelden & decoratie"
     ]
    },
    {
     "naam": "Kaarsen & geur",
     "vakjes": [
+     "Huisgeuren & geurstokjes",
      "Kaarsen",
      "Geurkaarsen",
-     "Huisgeuren & geurstokjes",
      "Kandelaars & lantaarns"
     ]
    },
    {
     "naam": "Verlichting",
     "vakjes": [
-     "Sfeerlampen",
      "Tafellampen",
-     "Lichtsnoeren"
+     "Lichtsnoeren",
+     "Sfeerlampen"
     ]
    },
    {
     "naam": "Woontextiel",
     "vakjes": [
-     "Plaids",
+     "Vloerkleden",
      "Kussens",
      "Kruiken & warmte",
-     "Vloerkleden",
+     "Plaids",
      "Deurmatten"
     ]
    },
    {
     "naam": "Foto & persoonlijk",
     "vakjes": [
+     "Fotolijsten",
      "Fotoboeken",
-     "Foto op canvas & glas",
-     "Fotolijsten"
+     "Foto op canvas & glas"
     ]
    },
    {
@@ -364,19 +364,19 @@
     "vakjes": [
      "Kerstballen & hangers",
      "Kerstverlichting",
-     "Kerststallen",
-     "Kerstfiguren"
+     "Kerstfiguren",
+     "Kerststallen"
     ]
    },
    {
     "naam": "Koken & bakken",
     "vakjes": [
      "Pannen & messen",
-     "Keukenapparaten",
-     "Bakken",
-     "Airfryers",
      "Opbergen & voorraadpotten",
-     "Drinkflessen & lunchboxen"
+     "Airfryers",
+     "Drinkflessen & lunchboxen",
+     "Keukenapparaten",
+     "Bakken"
     ]
    },
    {
@@ -390,9 +390,9 @@
    {
     "naam": "Tafelen",
     "vakjes": [
+     "Borrelplanken & serveren",
      "Servies",
-     "Glazen",
-     "Borrelplanken & serveren"
+     "Glazen"
     ]
    }
   ]
@@ -404,10 +404,10 @@
    {
     "naam": "Chocolade & snoep",
     "vakjes": [
-     "Chocolade",
+     "Koekjes & stroopwafels",
      "Snoep & drop",
-     "Chocoladeletters",
-     "Koekjes & stroopwafels"
+     "Chocolade",
+     "Chocoladeletters"
     ]
    },
    {
@@ -436,11 +436,11 @@
    {
     "naam": "Wijn",
     "vakjes": [
+     "Port & dessertwijn",
+     "Sake",
      "Rode wijn",
      "Witte wijn",
-     "Rosé",
-     "Port & dessertwijn",
-     "Sake"
+     "Rosé"
     ]
    },
    {
@@ -460,14 +460,14 @@
    {
     "naam": "Sterke drank",
     "vakjes": [
-     "Whisky",
-     "Gin",
-     "Rum",
-     "Likeur",
-     "Cognac",
-     "Wodka",
      "Tequila",
-     "Jenever"
+     "Whisky",
+     "Cognac",
+     "Gin",
+     "Jenever",
+     "Rum",
+     "Wodka",
+     "Likeur"
     ]
    },
    {
@@ -481,8 +481,8 @@
     "naam": "Drankaccessoires",
     "vakjes": [
      "Glazen & karaffen",
-     "Cocktailsets",
-     "Wijnaccessoires"
+     "Wijnaccessoires",
+     "Cocktailsets"
     ]
    }
   ]
@@ -494,26 +494,26 @@
    {
     "naam": "Handwerken",
     "vakjes": [
+     "Diamond painting",
      "Haken & breien",
-     "Naaien",
      "Borduren & punch needle",
-     "Diamond painting"
+     "Naaien"
     ]
    },
    {
     "naam": "Schilderen & tekenen",
     "vakjes": [
-     "Verf & schildersets",
      "Tekenen & schetsen",
+     "Verf & schildersets",
      "Kalligrafie & handlettering"
     ]
    },
    {
     "naam": "Zelf maken",
     "vakjes": [
+     "Klei, pottenbakken & epoxy",
      "Kaarsen & zeep maken",
      "Sieraden maken",
-     "Klei, pottenbakken & epoxy",
      "3D-pennen"
     ]
    },
@@ -521,15 +521,15 @@
     "naam": "Modelbouw",
     "vakjes": [
      "Bouwpakketten",
-     "Miniatuurhuisjes",
-     "Modeltreinen"
+     "Modeltreinen",
+     "Miniatuurhuisjes"
     ]
    },
    {
     "naam": "Muziek maken",
     "vakjes": [
-     "Gitaren & ukelele's",
      "Keyboards & piano's",
+     "Gitaren & ukelele's",
      "Muziekaccessoires"
     ]
    },
@@ -537,9 +537,9 @@
     "naam": "Papier & planners",
     "vakjes": [
      "Agenda's & planners",
-     "Notitieboeken",
+     "Scrapbooking & origami",
      "Bullet journal",
-     "Scrapbooking & origami"
+     "Notitieboeken"
     ]
    }
   ]
@@ -551,17 +551,29 @@
    {
     "naam": "Fietsen & steps",
     "vakjes": [
+     "Skateboards",
      "Fietsaccessoires",
      "Fietshelmen",
-     "Elektrische steps",
-     "Skateboards"
+     "Elektrische steps"
+    ]
+   },
+   {
+    "naam": "Darts",
+    "vakjes": [
+     "Dartborden",
+     "Dartpijlen",
+     "Dartmatten & oches",
+     "Flights & shafts",
+     "Elektronische dartborden",
+     "Darts-shirts",
+     "Verlichting & surrounds"
     ]
    },
    {
     "naam": "Fitness & yoga",
     "vakjes": [
-     "Fitness thuis",
-     "Yoga & pilates"
+     "Yoga & pilates",
+     "Fitness thuis"
     ]
    },
    {
@@ -574,12 +586,12 @@
    {
     "naam": "Kamperen & outdoor",
     "vakjes": [
-     "Kampeerspullen",
-     "Zaklampen & hoofdlampen",
-     "Messen & multitools",
-     "Verrekijkers",
      "Klimmen & boulderen",
-     "Hengelsport"
+     "Zaklampen & hoofdlampen",
+     "Verrekijkers",
+     "Hengelsport",
+     "Messen & multitools",
+     "Kampeerspullen"
     ]
    },
    {
@@ -587,38 +599,37 @@
     "vakjes": [
      "Voetbal",
      "Padel & tennis",
-     "Darts",
-     "Tafelvoetbal & tafeltennis",
      "Golf",
-     "Buitenspellen & picknick"
+     "Buitenspellen & picknick",
+     "Tafelvoetbal & tafeltennis"
     ]
    },
    {
     "naam": "Water- & wintersport",
     "vakjes": [
-     "Zwemmen",
-     "Wintersport"
+     "Wintersport",
+     "Zwemmen"
     ]
    },
    {
     "naam": "Metaaldetectie",
     "vakjes": [
-     "Metaaldetectors",
-     "Pinpointers & uitrusting",
+     "Munten & vondsten",
      "Magneetvissen",
-     "Munten & vondsten"
+     "Pinpointers & uitrusting",
+     "Metaaldetectors"
     ]
    },
    {
     "naam": "Noodpakket & survival",
     "vakjes": [
      "Noodpakketten",
-     "Noodradio's",
-     "Licht & stroom",
      "Water & eten",
+     "Tassen & onderweg",
      "Koken & warmte",
+     "Licht & stroom",
      "EHBO & brand",
-     "Tassen & onderweg"
+     "Noodradio's"
     ]
    }
   ]
@@ -631,27 +642,27 @@
     "naam": "Tuin & planten",
     "vakjes": [
      "Planten & potten",
-     "Moestuin & zaden",
-     "Tuindecoratie",
      "Vogelhuisjes & insectenhotels",
-     "Regentonnen & compost"
+     "Moestuin & zaden",
+     "Regentonnen & compost",
+     "Tuindecoratie"
     ]
    },
    {
     "naam": "Buiten leven",
     "vakjes": [
-     "Tuinmeubelen",
+     "Zwembaden & jacuzzi's",
      "BBQ & buitenkoken",
-     "Vuurkorven & terrasverwarmers",
+     "Tuinmeubelen",
      "Buitenverlichting",
-     "Zwembaden & jacuzzi's"
+     "Vuurkorven & terrasverwarmers"
     ]
    },
    {
     "naam": "Tuingereedschap",
     "vakjes": [
-     "Handgereedschap tuin",
-     "Tuinmachines"
+     "Tuinmachines",
+     "Handgereedschap tuin"
     ]
    },
    {
@@ -672,21 +683,21 @@
     "naam": "Boeken",
     "vakjes": [
      "Romans & thrillers",
-     "Kookboeken",
-     "Non-fictie & hobby",
      "Strips & manga",
+     "Luisterboeken",
+     "Kookboeken",
      "Invulboeken & dagboeken",
-     "Puzzelboeken",
-     "Luisterboeken"
+     "Non-fictie & hobby",
+     "Puzzelboeken"
     ]
    },
    {
     "naam": "Kinderboeken",
     "vakjes": [
+     "Kleurboeken",
      "Prentenboeken",
-     "Voorleesboeken",
      "Leesboeken",
-     "Kleurboeken"
+     "Voorleesboeken"
     ]
    },
    {
@@ -711,8 +722,8 @@
    {
     "naam": "Hond",
     "vakjes": [
-     "Hondenspeelgoed",
      "Manden & kussens",
+     "Hondenspeelgoed",
      "Riemen & halsbanden"
     ]
    },
@@ -727,15 +738,15 @@
     "naam": "Klein dier",
     "vakjes": [
      "Konijn & knaagdier",
-     "Kippen",
-     "Reptielen & terrarium"
+     "Reptielen & terrarium",
+     "Kippen"
     ]
    },
    {
     "naam": "Vogels & vissen",
     "vakjes": [
-     "Vogels",
-     "Aquarium"
+     "Aquarium",
+     "Vogels"
     ]
    },
    {
@@ -753,8 +764,8 @@
    {
     "naam": "Bijbels & psalmboeken",
     "vakjes": [
-     "Bijbels",
-     "Psalmboeken"
+     "Psalmboeken",
+     "Bijbels"
     ]
    },
    {
@@ -774,8 +785,8 @@
    {
     "naam": "Wanddecoratie & teksten",
     "vakjes": [
-     "Tegeltjes & wandborden",
-     "Kaarten & posters"
+     "Kaarten & posters",
+     "Tegeltjes & wandborden"
     ]
    },
    {
@@ -788,15 +799,15 @@
    {
     "naam": "Doop & belijdenis",
     "vakjes": [
-     "Doop",
-     "Belijdenis"
+     "Belijdenis",
+     "Doop"
     ]
    },
    {
     "naam": "Voor kinderen",
     "vakjes": [
-     "Kinderbijbels & boeken",
-     "Speelgoed & cadeautjes"
+     "Speelgoed & cadeautjes",
+     "Kinderbijbels & boeken"
     ]
    }
   ]

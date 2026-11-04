@@ -151,7 +151,7 @@
     rest.forEach(function (p) {
       var i = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[i]) i++;
       if (typeof p.prijs !== 'number') i = 2;
-      p._mix = mixGetal(p.id + '|' + week) - (LK.isNieuw(p) ? 0.25 : 0) - (p.beeld ? 0 : -0.5) - (p.sfeer ? 0.6 : 0) - (p.shop !== 'bol' ? 0.12 : 0);  /* sfeerfoto's naar voren (wens Marius 27-10-2026); partnerwinkels iets naar voren voor meer variatie (wens 1-11-2026) */
+      p._mix = mixGetal(p.id + '|' + week) - (LK.isNieuw(p) ? 0.25 : 0) - (p.beeld ? 0 : -0.5) - (p.sfeer ? 0.6 : 0) - (p.shop !== 'bol' ? 0.12 : 0) - (typeof p.wil === 'number' ? (p.wil - 60) / 100 : 0);  /* 3.0: wat klanten graag willen (AI-keuring) naar voren */  /* sfeerfoto's naar voren (wens Marius 27-10-2026); partnerwinkels iets naar voren voor meer variatie (wens 1-11-2026) */
       bakken[i].push(p);
     });
     bakken.forEach(function (b) { b.sort(function (a, c) { return a._mix - c._mix; }); });
@@ -545,7 +545,7 @@
 
     return paginakop({
       titel: v ? (v.kop || v.naam) : s ? (s.kop || s.naam) : (c.kop || c.naam),
-      tekst: v ? (v.tekst || T.tekst || 'Met de hand gekozen: ' + v.naam.toLowerCase() + '.') : s ? (s.tekst || T.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : (c.tekst || T.tekst),
+      tekst: v ? (v.tekst || T.tekst || 'Met de hand gekozen: ' + v.naam.toLowerCase() + '.') : s ? (s.tekst || T.tekst || (s.vakjes ? 'Met de hand gekozen: ' + (function (n, meer) { return meer ? n.join(', ') + ' en meer' : n.length > 1 ? n.slice(0, -1).join(', ') + ' en ' + n[n.length - 1] : n[0]; })(s.vakjes.slice(0, 4).map(function (x, i) { return i ? x.naam.replace(/^[A-Z](?![A-Z])/, function (l) { return l.toLowerCase(); }) : x.naam; }), s.vakjes.length > 4) + '.' : 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.')) : (c.tekst || T.tekst),
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
       kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(v ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam, naar: '/c/' + c.slug + '/' + s.slug }, { tekst: v.naam }] : s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
     }) +

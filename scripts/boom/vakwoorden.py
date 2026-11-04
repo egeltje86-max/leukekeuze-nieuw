@@ -69,7 +69,7 @@ VW={
 'Fietsaccessoires':r'fiets|bel\b|lamp|slot|tas|bidon','Fietshelmen':r'helm','Elektrische steps':r'elektrische step|e-step','Skateboards':r'skate|longboard|penny',
 'Fitness thuis':r'fitness|dumbbell|halter|kettlebell|weerstand|springtouw|buikspier|hometrainer','Yoga & pilates':r'yoga|pilates|mat\b',
 'Kampeerspullen':r'kampe|tent|slaapzak|matje|stoel|kooktoestel|brander','Zaklampen & hoofdlampen':r'zaklamp|hoofdlamp|lantaarn|lamp','Messen & multitools':r'mes\b|zakmes|multitool|leatherman|victorinox|bijl','Verrekijkers':r'verrekijker|kijker',
-'Voetbal':r'voetbal|doel\b','Padel & tennis':r'padel|tennis','Darts':r'dart','Tafelvoetbal & tafeltennis':r'tafelvoetbal|tafeltennis|pingpong','Golf':r'golf',
+'Voetbal':r'voetbal|doel\b','Padel & tennis':r'padel|tennis','Dartborden':r'dartbord(?!.*elektron)|bristle|blade 6|winmau.*bord|unicorn.*bord','Dartpijlen':r'dartpijl|darts? ?set|steeltip|tungsten|barrel','Dartmatten & oches':r'dartmat|oche|werplijn','Flights & shafts':r'flight|shaft|stem','Elektronische dartborden':r'elektron|softtip|soft tip|granboard','Darts-shirts':r'shirt|polo|jersey','Verlichting & surrounds':r'verlichting|surround|ring|led|lamp|kabinet','Tafelvoetbal & tafeltennis':r'tafelvoetbal|tafeltennis|pingpong','Golf':r'golf',
 'Zwemmen':r'zwem|duik|snorkel|sup\b|surf','Wintersport':r'ski|snowboard|schaats|slee|wintersport',
 # tuin
 'Planten & potten':r'plant|pot\b|potten|bloempot','Moestuin & zaden':r'moestuin|zaad|zaden|kweek|kas\b','Tuindecoratie':r'tuindeco|tuinbeeld|windgong|decoratie','Vogelhuisjes & insectenhotels':r'vogel|insect|nestkast|egel|vlinder','Regentonnen & compost':r'regenton|compost|slang|haspel',
