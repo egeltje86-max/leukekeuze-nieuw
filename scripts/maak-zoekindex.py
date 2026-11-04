@@ -98,7 +98,14 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
 ]
 # Daisycon staat op pauze (LK_INSTELLINGEN.daisyconPauze in assets/js/data.js): dan alleen TradeTracker-winkels in de index.
 # Ditverzinjeniet komt altijd via TradeTracker (t-dvzn), niet meer via Daisycon (x-dvzn).
-PAUZE = bool(re.search(r'daisyconPauze:\s*true', open('assets/js/data.js', encoding='utf-8').read()))
+_dj = open('assets/js/data.js', encoding='utf-8').read()
+PAUZE = bool(re.search(r'daisyconPauze:\s*true', _dj))
+# 04-11-2026: Daisycon-campagnes waar we niet op zijn ingeschreven (daisyconZonder in data.js): die links ook rechtstreeks naar de winkel.
+_m = re.search(r'daisyconZonder:\s*\[([^\]]*)\]', _dj); ZONDER = set(re.findall(r'\d+', _m.group(1))) if _m else set()
+def dc_direct(link):
+    if not DAISYCON.search(link): return False
+    if PAUZE: return True
+    m = re.search(r'[?&]si=(\d+)', link); return bool(m and m.group(1) in ZONDER)
 # Wens Marius (28-10-2026): ook tijdens de pauze ALLE winkels tonen, zodat bezoekers de echte, volle site zien.
 # Tijdens de pauze sturen we Daisycon-links rechtstreeks naar de winkel (zonder Daisycon ertussen), dan werkt elke klik.
 WINKELS = [w for w in WINKELS if w[0] != 'x-dvzn.json']
@@ -170,7 +177,7 @@ for bestand, winkel, b in WINKELS:
             cat = ' '.join(nl for fr, nl in FR if re.search(fr, x['titel'], re.I)) or cat
         g = (x.get('gender') or '').lower(); g = 'v' if g == 'female' else ('m' if g == 'male' else '')
         link = x['link']
-        if PAUZE and DAISYCON.search(link):
+        if dc_direct(link):
             link = direct(link, winkel)
             if not link: continue
         if winkel in TT_TC: link = tt_tc(link)

@@ -7,7 +7,11 @@ window.LK_INSTELLINGEN = {
   /* Daisycon heeft de site tijdelijk afgekeurd: hun links sturen bezoekers dan naar een vreemde site.
      Zolang dit 'true' is, gaan alle knoppen rechtstreeks naar de winkel (zonder partnerlink). 'Meer in onze winkels' toont wel ALLE winkels (wens Marius 28-10-2026), ook met directe links.
      Weer goedgekeurd? Zet dit op false. */
-  daisyconPauze: true,
+  daisyconPauze: false,       // 04-11-2026: Daisycon heeft de media goedgekeurd (Marius)
+  /* Daisycon-campagnes waar we (nog) niet op zijn ingeschreven: hun link stuurt naar een vreemde site (rakutenadvertising.com).
+     Die gaan rechtstreeks naar de winkel, tot de campagne weer goedgekeurd is. Getest 04-11-2026. Haal een nummer weg als hij weer werkt.
+     15138 Dr. Martens, 18488 LEGO, 17294 Westwing, 15574 Teufel, 15048 Timberland, 15679 Zadig & Voltaire, 15224 (?), 20868 AllSaints, 13299 Razer */
+  daisyconZonder: ['15138', '18488', '17294', '15574', '15048', '15679', '15224', '20868', '13299'],
   seizoen: 'kerst',            // 'kerst' of '' (neutraal)
   heroKicker: 'Bijzondere momenten',
   heroTitel: 'De mooiste cadeaus',

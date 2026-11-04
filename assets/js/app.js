@@ -78,10 +78,16 @@
   function isDaisycon(u) { return /^https?:\/\/(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?\/c\/|^https?:\/\/aff\.svinando\.be\/c\//.test(u || ''); }
   /* Tijdens de Daisycon-pauze verdienen we niets aan Daisycon-producten: ze blijven zichtbaar, maar komen ná de rest
      (wens van Marius, 01-11-2026). Zet je daisyconPauze uit in data.js, dan doen ze vanzelf weer gewoon mee. */
+  /* Gaat deze Daisycon-link (nog) niet naar de winkel? Tijdens de pauze alle Daisycon-links, daarna alleen de campagnes in daisyconZonder. */
+  function dcDirect(u) {
+    if (!isDaisycon(u)) return false;
+    if (INST.daisyconPauze) return true;
+    var m = (u || '').match(/[?&]si=(\d+)/);
+    return !!(m && (INST.daisyconZonder || []).indexOf(m[1]) !== -1);
+  }
   function daisyconLaag(lijst) {
-    if (!INST.daisyconPauze) return lijst;
     var voor = [], na = [];
-    lijst.forEach(function (p) { (p.dc || isDaisycon(p.url) ? na : voor).push(p); });
+    lijst.forEach(function (p) { ((INST.daisyconPauze && p.dc) || dcDirect(p.url) ? na : voor).push(p); });
     return voor.concat(na);
   }
   /* 02-11-2026 (Marius): wie via TikTok/Instagram/Facebook/Pinterest binnenkomt, zit in de ingebouwde browser van die app.
@@ -97,7 +103,7 @@
       : '<span class="inapp-stap">Tik rechtsboven op <b>⋯</b> en kies <b>Openen in browser</b> (of <b>Openen in Safari</b>).</span>';
     return '<div class="inapp-tip">' + ic('info') + '<div><p>Je kijkt nu binnen ' + esc(INAPP) + '. Open LeukeKeuze in je eigen browser, dan ben je bij ' + esc(p.shop) + ' meestal al ingelogd en gaat bestellen sneller.</p>' + knop + '</div></div>';
   }
-  function winkelLink(p) { return INST.daisyconPauze && isDaisycon(p.url) && p.winkelUrl ? p.winkelUrl : p.url; }
+  function winkelLink(p) { return dcDirect(p.url) && p.winkelUrl ? p.winkelUrl : p.url; }
   var WINKELSITE = { 'Ditverzinjeniet': 'https://www.ditverzinjeniet.nl/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'LEGO': 'https://www.lego.com/nl-nl',
     'Westwing': 'https://www.westwing.nl/', 'Decantalo': 'https://www.decantalo.nl/', 'MYKA': 'https://www.myka.com/nl/', 'Prydligt': 'https://www.prydligt.nl/',
     '999 Games': 'https://www.999games.nl/', 'La Redoute': 'https://www.laredoute.nl/', 'Kaartje2go': 'https://www.kaartje2go.nl/', 'Bartogi': 'https://www.bartogi.nl/',
@@ -1104,7 +1110,7 @@
     if (!AW.laden[pad]) AW.laden[pad] = fetch(pad).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
       var W = j.winkels;
       /* Tijdens de Daisycon-pauze nooit Daisycon-links tonen (de index bevat dan alleen TradeTracker-winkels). */
-      return j.producten.filter(function (x) { return !(INST.daisyconPauze && isDaisycon(W[x[2]].link + x[3])); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
+      return j.producten.filter(function (x) { return !dcDirect(W[x[2]].link + x[3]); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
     }).catch(function () { return sleutel ? null : []; });
     return AW.laden[pad];
   }
@@ -2339,14 +2345,14 @@
     return '<span class="winkelfotos">' + ps.map(function (p) { return '<img src="' + esc(p.beeld) + '-klein.webp" alt="" loading="lazy" decoding="async">'; }).join('') + '</span>';
   }
   function winkelKaart(w) {
-    var wurl = INST.daisyconPauze && isDaisycon(w.url) ? WINKELSITE[w.naam] : w.url;
+    var wurl = dcDirect(w.url) ? WINKELSITE[w.naam] : w.url;
     return '<a class="winkelkaart" href="' + esc(wurl) + '" target="_blank" rel="sponsored noopener">' + winkelFotos(w) +
       '<strong>' + esc(w.naam) + '</strong><span>' + esc(w.tekst) + '</span><em>Naar ' + esc(w.naam) + ' ' + ic('pijl') + '</em></a>';
   }
   function winkelsMet(slug) {
-    var l = (window.LK_WINKELS || []).filter(function (w) { return w.url && (!slug || w.cats.indexOf(slug) !== -1) && (!INST.daisyconPauze || !isDaisycon(w.url) || WINKELSITE[w.naam]); });
+    var l = (window.LK_WINKELS || []).filter(function (w) { return w.url && (!slug || w.cats.indexOf(slug) !== -1) && (!dcDirect(w.url) || WINKELSITE[w.naam]); });
     /* 04-11-2026: tijdens de Daisycon-pauze eerst de winkels waar we wel aan verdienen (bol, TradeTracker, Awin). Volgorde verder zoals in data.js. */
-    if (INST.daisyconPauze) l = l.filter(function (w) { return !isDaisycon(w.url); }).concat(l.filter(function (w) { return isDaisycon(w.url); }));
+    l = l.filter(function (w) { return !dcDirect(w.url); }).concat(l.filter(function (w) { return dcDirect(w.url); }));
     return l;
   }
   function winkels() {
