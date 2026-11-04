@@ -51,7 +51,15 @@
   }
 
   /* Hoort product bij categorie (en evt. sub)? Kijkt ook naar 'ookIn'. */
-  function hoortBij(p, cat, sub) {
+  function hoortBij(p, cat, sub, vak) {
+    /* 3.0 (4-11-2026): nieuwe boom. Afdeling > groep > vakje staan in p.afd, p.groep en p.vak.
+       Oude adressen en de themapagina's (Cadeaus, Valentijn) werken nog via p.cat/p.sub/ookIn hieronder. */
+    var nc = (window.LK_CATEGORIEEN || []).find(function (c) { return c.slug === cat && !c.verborgen; });
+    var ns = nc && sub ? (nc.subs || []).find(function (s) { return s.slug === sub; }) : null;
+    if (nc && p.afd && (!sub || (ns && ns.vakjes))) {
+      if (cat === 'christelijk' && sub === 'onder-25') { /* valt hieronder */ }
+      else return p.afd === cat && (!sub || p.groep === sub) && (!vak || p.vak === vak);
+    }
     /* 2.0: een groep of subcategorie kan doorverwijzen naar een ander vak (bijv. Sieraden & Horloges -> mode-beauty/horloges). */
     var cd = (window.LK_CATEGORIEEN || []).find(function (c) { return c.slug === cat; });
     if (cd) {

@@ -1,0 +1,164 @@
+# Zet alles samen voor de nieuwe boom:
+#  - de plek van elk product (afdeling/groep/vakje) -> scripts/boom/plaatsing.json (splits-producten.js gebruikt dit bij elke bouw)
+#  - nieuwe producten van de spooksite erbij in assets/js/producten.js
+#  - het oordeel van de AI-keuring (houden / weg / twijfel), behalve voor beschermde producten (hits, pins, favorieten, sfeerfoto's)
+# Gebruik: python3 scripts/boom/verwerk.py [map-met-AI-antwoorden] [--toepassen]
+#   zonder --toepassen: alleen een rapport (scripts/boom/rapport.txt), er verandert niets.
+import json, re, os, sys, subprocess, unicodedata, collections, glob, datetime
+HIER = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HIER))
+def slug(t): t = unicodedata.normalize('NFKD', t); t = ''.join(c for c in t if not unicodedata.combining(c)); return re.sub(r'^-|-$', '', re.sub(r'[^a-z0-9]+', '-', t.lower()))
+exec(open(os.path.join(HIER, 'oud-naar-nieuw.py')).read())
+exec(open(os.path.join(HIER, 'vakwoorden.py')).read())
+BOOM = json.load(open(os.path.join(HIER, 'boom-samen.json')))
+AFDSLUG = {'speelgoed-spellen': 'speelgoed', 'elektronica-gaming': 'elektronica', 'mode-sieraden': 'mode-sieraden', 'beauty-verzorging': 'beauty-verzorging',
+           'wonen-koken': 'wonen', 'eten-drinken': 'eten-drinken', 'hobby-creatief': 'hobby', 'sport-buiten': 'sport-outdoor', 'tuin-klussen': 'tuin-klussen',
+           'boeken-films-muziek': 'boeken-media', 'dieren': 'dieren', 'christelijk': 'christelijk'}
+args = [a for a in sys.argv[1:] if not a.startswith('--')]; TOEPASSEN = '--toepassen' in sys.argv
+AIMAP = args[0] if args else None
+# ---- de boom met codes (zelfde volgorde als de AI-porties) ----
+CODE = {}; PLEK = {}; GROEPVAK = {}
+for a in BOOM:
+    for g in a['groepen']:
+        GROEPVAK[(a['id'], g['naam'])] = g['vakjes']
+        for v in g['vakjes']:
+            c = 'v%03d' % (len(CODE) + 1); CODE[(a['id'], g['naam'], v)] = c; PLEK[c] = (a['id'], g['naam'], v)
+def slugs(pl): return [AFDSLUG[pl[0]], slug(pl[1]), slug(pl[2]) if pl[2] else '']
+# ---- terug naar een oud vakje (cat/sub) zodat alle oude onderdelen van de site (VONK, voor wie, gelegenheden) blijven werken ----
+REV = {}; REVG = {}
+for k, m in M.items():
+    if isinstance(m, tuple):
+        if m[2]: REV.setdefault(m, k)
+        REVG.setdefault((m[0], m[1]), k)
+REVA = {}
+for k, m in M.items():
+    if isinstance(m, tuple): REVA.setdefault(m[0], k)
+def oudPad(pl): return REV.get(tuple(pl)) or REVG.get((pl[0], pl[1])) or REVA[pl[0]]
+# ---- producten ----
+def laad(js, naam):
+    return json.loads(subprocess.check_output(['node', '-e', 'const w={};new Function("window",require("fs").readFileSync(%r,"utf8"))(w);process.stdout.write(JSON.stringify(w.%s))' % (js, naam)]))
+PJS = os.path.join(ROOT, 'assets/js/producten.js')
+LIVE = laad(PJS, 'LK_PRODUCTEN')
+# wat de site nu echt toont (na indeling.js): cat/sub per product
+LEAN = {p['id']: p for p in json.loads(subprocess.check_output(['node', '-e', 'global.window={dispatchEvent(){}};global.Event=function(){};require(%r);process.stdout.write(JSON.stringify(window.LK_PRODUCTEN.map(p=>({id:p.id,cat:p.cat,sub:p.sub,ookIn:p.ookIn||[]}))))' % os.path.join(ROOT, 'assets/js/producten-lean.js')]))}
+SPOOKJS = '/mnt/user-data/outputs/spooksite-test/producten.js'
+SPOOK = laad(SPOOKJS, 'SPOOK_PRODUCTEN') if os.path.exists(SPOOKJS) else []
+SPOOKPLEK = json.load(open(os.path.join(HIER, 'indeling-spook.json'))) if os.path.exists(os.path.join(HIER, 'indeling-spook.json')) else {}
+PAREN = json.load(open(os.path.join(HIER, 'paren.json'))) if os.path.exists(os.path.join(HIER, 'paren.json')) else []
+# ---- AI-antwoorden ----
+AI = {}
+if AIMAP:
+    for f in sorted(glob.glob(os.path.join(AIMAP, 'antw-*.json'))):
+        for x in json.load(open(f, encoding='utf-8'))['uit']: AI[x['i']] = x
+# ---- beschermd: wat al werkt blijft staan ----
+BESCHERMD = {}
+try:
+    for r in json.load(open(os.path.join(HIER, 'gsc-pages.json')))['rows']:
+        mm = re.search(r'/p/([^/]+)/', r['keys'][0])
+        if mm and (r.get('clicks', 0) > 0 or r.get('impressions', 0) >= 3): BESCHERMD[mm.group(1)] = 'Google'
+except FileNotFoundError: pass
+for f in glob.glob(os.path.join(ROOT, 'pins', '*.xml')) + [os.path.join(ROOT, 'pins', 'geplaatst.json')]:
+    if os.path.exists(f):
+        for pid in re.findall(r'/p/([a-z0-9][a-z0-9-]*)', open(f, encoding='utf-8', errors='ignore').read()): BESCHERMD.setdefault(pid, 'Pinterest')
+for p in LIVE:
+    if p.get('favoriet') or p.get('populair'): BESCHERMD.setdefault(p['id'], 'favoriet')
+    if p.get('sfeer'): BESCHERMD.setdefault(p['id'], 'sfeerfoto')
+gcf = os.path.join(HIER, 'goatcounter-hits.json')
+if os.path.exists(gcf):
+    for pid in json.load(open(gcf)): BESCHERMD.setdefault(pid, 'GoatCounter')
+# ---- regels: plek kiezen zonder AI ----
+def kiesRegel(titel, oud):
+    m = M.get(oud); t = titel.lower()
+    if isinstance(m, tuple):
+        a, g, v = m; vs = GROEPVAK[(a, g)]
+        if v: return [a, g, v]
+        if len(vs) == 1: return [a, g, vs[0]]
+        hits = [x for x in vs if VW.get(x) and re.search(VW[x], t)]
+        return [a, g, hits[0] if len(hits) == 1 else None]
+    return None
+VOOR = {'kinderen': 'kind', 'tieners': 'tiener', 'kind': 'kind', 'tiener': 'tiener', 'haar': 'haar', 'hem': 'hem', 'baby': 'baby', 'opa-oma': 'opa-oma', 'collega': 'collega'}
+THEMA_OUD = {'sinterklaas': 'cadeaus/sinterklaas', 'kerst': 'cadeaus/kerst', 'met-naam': 'cadeaus/met-naam', 'grappig': 'cadeaus/grappig', 'adventskalender': 'cadeaus/adventskalenders'}
+def lft(l):
+    rr = []
+    for x in l:
+        mm = re.match(r'(\d+)\s*[-–]\s*(\d+)', x); m2 = re.match(r'(\d+)\+', x)
+        if mm: rr.append((int(mm.group(1)), int(mm.group(2))))
+        elif m2: rr.append((int(m2.group(1)), 99))
+    return [min(a for a, b in rr), max(b for a, b in rr)] if rr else None
+# ---- alles samen ----
+plaatsing = {}; rapport = collections.Counter(); weg = []; twijfel = []; nieuw = []
+dubbelSpook = {s: p for s, p, k in PAREN}
+SPOOKID = {p['id']: p for p in SPOOK}
+for p in LIVE:
+    if p.get('status') != 'goedgekeurd': continue
+    lp = LEAN.get(p['id'], p); oud = lp['cat'] + '/' + lp['sub']
+    a = AI.get(p['id'])
+    pl = list(PLEK[a['v']]) if a else kiesRegel(p['titel'], oud)
+    if not pl: rapport['nog geen plek (mengvak, wacht op AI)'] += 1; continue
+    s = slugs(pl); extra = []
+    mo = M.get(oud)
+    if oud.split('/')[0] in ('cadeaus', 'valentijn'): extra.append(oud)  # themapagina blijft het product tonen
+    plaatsing[p['id']] = {'a': s[0], 'g': s[1], 'v': s[2]}
+    # het oude vakje alleen veranderen als het product echt naar een andere afdeling/groep gaat
+    if not (isinstance(mo, tuple) and (mo[0], mo[1]) == (pl[0], pl[1])):
+        o = oudPad(pl); plaatsing[p['id']]['oud'] = o
+    if extra: plaatsing[p['id']]['ook'] = extra
+    if a:
+        plaatsing[p['id']]['c'] = a.get('c')
+        if a['k'] in ('w', 't'):
+            if p['id'] in BESCHERMD: rapport['AI wil weg, maar beschermd (%s)' % BESCHERMD[p['id']]] += 1; twijfel.append((p['id'], p['titel'], 'beschermd: ' + BESCHERMD[p['id']], a.get('r', '')))
+            elif a['k'] == 'w': weg.append((p['id'], p['titel'], a.get('r', '')))
+            else: twijfel.append((p['id'], p['titel'], 'AI twijfelt', a.get('r', '')))
+    rapport['live ingedeeld' + (' (AI)' if a else ' (regels)')] += 1
+# nieuwe producten van de spooksite
+for sp in SPOOK:
+    if sp['id'] in dubbelSpook: rapport['spooksite: dubbel met live (goedkoopste telt)'] += 1; continue
+    a = AI.get(sp['id'])
+    if a and a['k'] == 'w': rapport['spooksite: AI zegt weg'] += 1; weg.append((sp['id'], sp['titel'], a.get('r', ''))); continue
+    if a and a['k'] == 't': rapport['spooksite: AI twijfelt (niet toegevoegd)'] += 1; twijfel.append((sp['id'], sp['titel'], 'AI twijfelt', a.get('r', ''))); continue
+    pl = list(PLEK[a['v']]) if a else SPOOKPLEK.get(sp['id'])
+    if not pl: continue
+    s = slugs(pl); o = oudPad(pl)
+    ook = []
+    th = (a or {}).get('th') or sp.get('thema') or []
+    for t in th:
+        if t in THEMA_OUD: ook.append(THEMA_OUD[t])
+    if 'valentijn' in th: ook.append('valentijn/voor-haar' if 'haar' in ((a or {}).get('wie') or []) else 'valentijn/voor-hem' if 'hem' in ((a or {}).get('wie') or []) else 'valentijn/samen')
+    voor = sorted({VOOR[v] for v in ((a or {}).get('wie') or sp.get('voor') or []) if v in VOOR}) or ['iedereen']
+    moment = sorted({g for g in (sp.get('gelegenheid') or []) if g in ('kerst', 'sinterklaas', 'verjaardag', 'valentijn')} | {t for t in th if t in ('kerst', 'sinterklaas', 'valentijn')}) or ['verjaardag']
+    rec = {'id': sp['id'], 'titel': sp['titel'], 'prijs': sp['prijs'], 'shop': re.sub(r'\s*\(.*?\)\s*$', '', sp['winkel']), 'url': sp['link'],
+           'beeld': 'images/producten/' + sp['id'], 'fotoBron': sp['foto'], 'cat': o.split('/')[0], 'sub': o.split('/')[1], 'subVast': True,
+           'ookIn': ook, 'voor': voor, 'moment': moment, 'waarom': sp.get('tekst') or '', 'status': 'goedgekeurd', 'nieuw': True, 'sinds': datetime.date.today().isoformat()}
+    if sp.get('merk'): rec['merk'] = sp['merk']
+    if sp.get('oudePrijs'): rec['oudePrijs'] = sp['oudePrijs']
+    l = lft((a or {}).get('lft', '').split(',') if a and a.get('lft') else (sp.get('leeftijd') or []))
+    if l: rec['leeftijd'] = l
+    if 'luxe' in th: rec['soort'] = ['luxe']
+    nieuw.append(rec); plaatsing[sp['id']] = {'a': s[0], 'g': s[1], 'v': s[2]}
+    if a: plaatsing[sp['id']]['c'] = a.get('c')
+    rapport['spooksite: nieuw erbij'] += 1
+# goedkoopste wint bij dubbel: de live-versie houdt zijn adres, maar krijgt de goedkoopste winkel
+goedkoper = []
+LID = {p['id']: p for p in LIVE}
+for s_id, p_id, k in PAREN:
+    sp, lp = SPOOKID.get(s_id), LID.get(p_id)
+    if sp and lp and sp.get('prijs') and lp.get('prijs') and sp['prijs'] < lp['prijs'] - 0.01 and not (sp['winkel'] == 'Boardgameshop'):
+        goedkoper.append((p_id, lp['titel'], lp['shop'], lp['prijs'], sp['winkel'], sp['prijs'], sp['link']))
+os.makedirs(HIER, exist_ok=True)
+json.dump(plaatsing, open(os.path.join(HIER, 'plaatsing.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
+with open(os.path.join(HIER, 'rapport.txt'), 'w', encoding='utf-8') as f:
+    f.write('RAPPORT NIEUWE BOOM – %s\n\n' % datetime.datetime.now().strftime('%d-%m-%Y %H:%M'))
+    for k, n in rapport.most_common(): f.write('%6d  %s\n' % (n, k))
+    f.write('\nBeschermd (blijft altijd staan): %d producten\n' % len(BESCHERMD))
+    f.write('\nWEG (%d):\n' % len(weg)); [f.write('  %s | %s | %s\n' % x) for x in weg]
+    f.write('\nTWIJFEL (%d):\n' % len(twijfel)); [f.write('  %s | %s | %s | %s\n' % x) for x in twijfel]
+    f.write('\nGOEDKOPER BIJ EEN ANDERE WINKEL (%d):\n' % len(goedkoper)); [f.write('  %s | %s | %s €%s -> %s €%s\n' % x[:6]) for x in goedkoper]
+tel = collections.Counter((v['a'], v['g'], v['v']) for v in plaatsing.values())
+print(dict(rapport)); print('weg', len(weg), 'twijfel', len(twijfel), 'goedkoper', len(goedkoper), 'beschermd', len(BESCHERMD))
+print('vakjes gevuld', len([k for k in tel if k[2]]), 'met minder dan 10:', len([k for k, n in tel.items() if k[2] and n < 10]))
+if TOEPASSEN:
+    d = open(PJS, encoding='utf-8').read()
+    d = re.sub(r'\n/\* ===== 3\.0 NIEUWE PRODUCTEN.*?/\* ===== einde 3\.0 producten ===== \*/\n', '\n', d, flags=re.S)
+    blok = '\n/* ===== 3.0 NIEUWE PRODUCTEN (spooksite, AI-gekeurd) – gemaakt door scripts/boom/verwerk.py ===== */\nwindow.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, ' + json.dumps(nieuw, ensure_ascii=False) + ');\n/* ===== einde 3.0 producten ===== */\n'
+    open(PJS, 'w', encoding='utf-8').write(d.rstrip('\n') + '\n' + blok)
+    json.dump({'weg': [x[0] for x in weg], 'goedkoper': goedkoper}, open(os.path.join(HIER, 'oordeel-ai.json'), 'w'), ensure_ascii=False)
+    print('toegepast: producten.js +', len(nieuw))

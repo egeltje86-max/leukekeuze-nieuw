@@ -136,9 +136,13 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
      Zo blijven adressen die Google al kent werken (gevonden bij de grote controle van 31-10-2026). */
   const vakVerhuis = await page.evaluate(() => {
     const o = {};
-    (window.LK_CATEGORIEEN || []).forEach(c => (c.subs || []).forEach(s => {
-      if (s.verborgen && (s.vak || s.naar)) o['c/' + c.slug + '/' + s.slug] = s.naar ? s.naar.replace(/\/?$/, '/') : '/c/' + s.vak + '/';
-    }));
+    (window.LK_CATEGORIEEN || []).forEach(c => {
+      /* 3.0 (4-11-2026): een hele oude afdeling (bijv. Dranken) stuurt door naar zijn nieuwe plek. */
+      if (c.verborgen && c.naar) o['c/' + c.slug] = c.naar.replace(/\/?$/, '/');
+      (c.subs || []).forEach(s => {
+        if (s.verborgen && (s.vak || s.naar)) o['c/' + c.slug + '/' + s.slug] = s.naar ? s.naar.replace(/\/?$/, '/') : '/c/' + s.vak + '/';
+      });
+    });
     return o;
   });
   const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
@@ -244,9 +248,17 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     const vak = 'c/' + c + '/' + sub;
     VERHUISD['p/' + id] = VERHUISD[vak] || (fs.existsSync(path.join(ROOT, vak, 'index.html')) ? '/' + vak + '/' : '/c/' + c + '/');
   }
+  /* 3.0: ketens oplossen (oud -> ouder -> nieuw), zodat elke oude pagina in één stap op de goede plek uitkomt. */
+  for (const k of Object.keys(VERHUISD)) {
+    let d = VERHUISD[k], n = 0;
+    while (n++ < 5) { const sl = d.replace(/^\/|\/$/g, ''); if (VERHUISD[sl] && VERHUISD[sl] !== d) d = VERHUISD[sl]; else break; }
+    VERHUISD[k] = d;
+  }
+  /* 3.0: een oude /c/-pagina die bij deze bouw niet meer bestaat, mag overschreven worden door een doorverwijzing. */
+  const nuEcht = new Set(paginas.map(p => p.pad.replace(/^\/|\/$/g, '')));
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
-    const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad);
+    const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad) || (/^c\//.test(oudPad) && !nuEcht.has(oudPad));
     if (!altijd && fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
     fs.mkdirSync(path.dirname(doel), { recursive: true });
     fs.writeFileSync(doel, '<!doctype html>\n<html lang="nl" data-verhuisd><head><meta charset="utf-8">\n<title>Deze pagina is verhuisd | LeukeKeuze</title>\n' +

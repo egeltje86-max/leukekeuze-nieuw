@@ -5,7 +5,8 @@
    Los draaien: node scripts/splits-producten.js */
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
-const { deel } = require('./indeling.js'); // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
+const { deel } = require('./indeling.js');
+const { plaats } = require('./boom/plaats.js'); // 3.0: nieuwe boom (afd > groep > vak), zie scripts/boom/ // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
 const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden', 'varianten', 'maten', 'gecontroleerd'];
 /* Keurkamer-slot (2-11-2026): de oordelen van Marius uit keurkamer/oordelen.json gelden bij ELKE bouw.
    Wat hij weg heeft gedaan blijft weg (ook als een ronde het product opnieuw aanlevert), verplaatst blijft verplaatst,
@@ -31,7 +32,7 @@ function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
   for (const p0 of w.LK_PRODUCTEN) {
-    const p = keurkamerSlot(deel(p0));
+    const p = plaats(keurkamerSlot(deel(p0)));
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */

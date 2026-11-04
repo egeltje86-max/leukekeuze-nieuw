@@ -1,0 +1,937 @@
+{
+"sieraden/ringen": [
+"mode-sieraden",
+"sieraden",
+"ringen"
+],
+"sieraden/smartwatches": [
+"elektronica",
+"smartwatches",
+""
+],
+"sieraden/horloges": [
+"mode-sieraden",
+"horloges",
+""
+],
+"sieraden/echt-goud": [
+"mode-sieraden",
+"sieraden",
+""
+],
+"sieraden/oorbellen": [
+"mode-sieraden",
+"sieraden",
+"oorbellen"
+],
+"sieraden/kettingen": [
+"mode-sieraden",
+"sieraden",
+"kettingen"
+],
+"sieraden/zilver": [
+"mode-sieraden",
+"sieraden",
+""
+],
+"sieraden/armbanden": [
+"mode-sieraden",
+"sieraden",
+"armbanden"
+],
+"sieraden/sieradendozen": [
+"mode-sieraden",
+"sieraden",
+"sieradendozen"
+],
+"sieraden/bedels": [
+"mode-sieraden",
+"sieraden",
+"bedels"
+],
+"sieraden/met-naam": [
+"mode-sieraden",
+"sieraden",
+"sieraden-met-naam"
+],
+"geuren-verzorging/rituals": [
+"beauty-verzorging",
+"giftsets",
+""
+],
+"geuren-verzorging/parfum": [
+"beauty-verzorging",
+"parfum",
+""
+],
+"geuren-verzorging/scheren-baard": [
+"beauty-verzorging",
+"scheren-baard",
+""
+],
+"geuren-verzorging/haarstylers": [
+"beauty-verzorging",
+"haar",
+"fohns-stijltangen"
+],
+"geuren-verzorging/make-up-nagels": [
+"beauty-verzorging",
+"make-up-nagels",
+""
+],
+"geuren-verzorging/huidverzorging": [
+"beauty-verzorging",
+"huid-gezicht",
+""
+],
+"geuren-verzorging/cadeausets": [
+"beauty-verzorging",
+"giftsets",
+""
+],
+"geuren-verzorging/bad-douche": [
+"beauty-verzorging",
+"bad-douche",
+""
+],
+"geuren-verzorging/massage": [
+"beauty-verzorging",
+"wellness",
+""
+],
+"geuren-verzorging/tandenborstels": [
+"beauty-verzorging",
+"mond-tanden",
+""
+],
+"mode-beauty/schoenen": [
+"mode-sieraden",
+"schoenen-sloffen",
+""
+],
+"mode-beauty/truien-hoodies": [
+"mode-sieraden",
+"kleding",
+"truien-hoodies"
+],
+"mode-beauty/pyjamas": [
+"mode-sieraden",
+"kleding",
+"pyjama-s-badjassen"
+],
+"mode-beauty/koffers": [
+"mode-sieraden",
+"tassen-portemonnees",
+"koffers-reistassen"
+],
+"mode-beauty/tassen": [
+"mode-sieraden",
+"tassen-portemonnees",
+""
+],
+"mode-beauty/mutsen-sjaals": [
+"mode-sieraden",
+"accessoires",
+""
+],
+"mode-beauty/portemonnees": [
+"mode-sieraden",
+"tassen-portemonnees",
+"portemonnees-pasjeshouders"
+],
+"mode-beauty/zonnebrillen": [
+"mode-sieraden",
+"accessoires",
+"zonnebrillen"
+],
+"mode-beauty/rugzakken": [
+"mode-sieraden",
+"tassen-portemonnees",
+"rugzakken"
+],
+"mode-beauty/riemen-sleutelhangers": [
+"mode-sieraden",
+"accessoires",
+""
+],
+"mode-beauty/toilettassen": [
+"mode-sieraden",
+"tassen-portemonnees",
+"toilettassen"
+],
+"elektronica/gaming": [
+"elektronica",
+"gaming",
+""
+],
+"elektronica/telefoon-opladen": [
+"elektronica",
+"tablets-e-readers",
+""
+],
+"elektronica/cameras": [
+"elektronica",
+"foto-video",
+""
+],
+"elektronica/koptelefoons": [
+"elektronica",
+"audio",
+""
+],
+"elektronica/tablets-ereaders": [
+"elektronica",
+"tablets-e-readers",
+""
+],
+"elektronica/platenspelers": [
+"elektronica",
+"audio",
+"platenspelers"
+],
+"elektronica/gadgets-trackers": [
+"elektronica",
+"gadgets",
+""
+],
+"elektronica/speakers": [
+"elektronica",
+"audio",
+""
+],
+"elektronica/beamers": [
+"elektronica",
+"tv-beeld",
+"beamers"
+],
+"elektronica/sfeerlicht-smarthome": [
+"elektronica",
+"slim-wonen",
+""
+],
+"wonen/lampen": [
+"wonen",
+"verlichting",
+""
+],
+"wonen/vloerkleden": [
+"wonen",
+"woontextiel",
+"vloerkleden"
+],
+"wonen/wanddecoratie": [
+"wonen",
+"woondecoratie",
+"wanddecoratie-posters"
+],
+"wonen/klokken": [
+"wonen",
+"woondecoratie",
+"klokken"
+],
+"wonen/kerst": [
+"wonen",
+"kerstdecoratie",
+""
+],
+"wonen/vazen-bloemen": [
+"wonen",
+"woondecoratie",
+"vazen"
+],
+"wonen/kussens-plaids": [
+"wonen",
+"woontextiel",
+""
+],
+"wonen/kaarsen": [
+"wonen",
+"kaarsen-geur",
+""
+],
+"wonen/spiegels": [
+"wonen",
+"woondecoratie",
+"spiegels"
+],
+"wonen/opbergen-dienbladen": [
+"wonen",
+"woondecoratie",
+"opbergen-dienbladen"
+],
+"wonen/fotolijsten": [
+"wonen",
+"foto-persoonlijk",
+"fotolijsten"
+],
+"wonen/huisgeuren": [
+"wonen",
+"kaarsen-geur",
+"huisgeuren-geurstokjes"
+],
+"wonen/deurmatten": [
+"wonen",
+"woontextiel",
+"deurmatten"
+],
+"keuken/keukenapparaten": [
+"wonen",
+"koken-bakken",
+"keukenapparaten"
+],
+"keuken/airfryers": [
+"wonen",
+"koken-bakken",
+"airfryers"
+],
+"keuken/koffie-thee": [
+"wonen",
+"koffie-thee-zetten",
+""
+],
+"keuken/gezellig-tafelen": [
+"wonen",
+"tafelen",
+""
+],
+"keuken/pannen": [
+"wonen",
+"koken-bakken",
+"pannen-messen"
+],
+"keuken/tosti-wafel-ijs": [
+"wonen",
+"koken-bakken",
+"keukenapparaten"
+],
+"keuken/glazen-servies": [
+"wonen",
+"tafelen",
+""
+],
+"keuken/drinkflessen-lunch": [
+"wonen",
+"koken-bakken",
+"drinkflessen-lunchboxen"
+],
+"keuken/messen-snijplanken": [
+"wonen",
+"koken-bakken",
+"pannen-messen"
+],
+"keuken/bakken": [
+"wonen",
+"koken-bakken",
+"bakken"
+],
+"keuken/kaas-serveerplanken": [
+"wonen",
+"tafelen",
+"borrelplanken-serveren"
+],
+"keuken/voorraadpotten": [
+"wonen",
+"koken-bakken",
+"opbergen-voorraadpotten"
+],
+"dranken/champagne-bubbels": [
+"eten-drinken",
+"bubbels",
+""
+],
+"dranken/wijn-port": [
+"eten-drinken",
+"wijn",
+""
+],
+"dranken/likeuren": [
+"eten-drinken",
+"sterke-drank",
+"likeur"
+],
+"dranken/bier": [
+"eten-drinken",
+"bier",
+""
+],
+"dranken/wijnaccessoires": [
+"eten-drinken",
+"drankaccessoires",
+""
+],
+"dranken/tequila": [
+"eten-drinken",
+"sterke-drank",
+"tequila"
+],
+"dranken/alcoholvrij": [
+"eten-drinken",
+"alcoholvrij",
+""
+],
+"dranken/whisky": [
+"eten-drinken",
+"sterke-drank",
+"whisky"
+],
+"dranken/cognac": [
+"eten-drinken",
+"sterke-drank",
+"cognac"
+],
+"dranken/jenever": [
+"eten-drinken",
+"sterke-drank",
+"jenever"
+],
+"dranken/sake": [
+"eten-drinken",
+"wijn",
+"sake"
+],
+"dranken/rum": [
+"eten-drinken",
+"sterke-drank",
+"rum"
+],
+"dranken/wodka": [
+"eten-drinken",
+"sterke-drank",
+"wodka"
+],
+"eten-drinken/chocolade": [
+"eten-drinken",
+"chocolade-snoep",
+""
+],
+"eten-drinken/koekjes-stroopwafels": [
+"eten-drinken",
+"chocolade-snoep",
+"koekjes-stroopwafels"
+],
+"eten-drinken/delicatessen": [
+"eten-drinken",
+"delicatessen",
+""
+],
+"eten-drinken/drop-snoep": [
+"eten-drinken",
+"chocolade-snoep",
+"snoep-drop"
+],
+"eten-drinken/sinterklaas-lekkers": [
+"eten-drinken",
+"chocolade-snoep",
+""
+],
+"eten-drinken/kerst-cadeaupakketten": [
+"eten-drinken",
+"cadeaupakketten",
+"cadeaupakketten-manden"
+],
+"eten-drinken/koffie-thee": [
+"eten-drinken",
+"koffie-thee-cacao",
+""
+],
+"eten-drinken/brievenbuscadeaus": [
+"eten-drinken",
+"cadeaupakketten",
+"brievenbuscadeaus"
+],
+"eten-drinken/bbq-sauzen": [
+"eten-drinken",
+"delicatessen",
+"sauzen-kruiden"
+],
+"speelgoed/lego": [
+"speelgoed",
+"bouwen",
+""
+],
+"speelgoed/buitenspeelgoed": [
+"speelgoed",
+"buiten-spelen",
+""
+],
+"speelgoed/bord-kaartspellen": [
+"speelgoed",
+"spellen",
+""
+],
+"speelgoed/pokemon-verzamelkaarten": [
+"speelgoed",
+"spellen",
+"verzamelkaarten-pokemon"
+],
+"speelgoed/puzzels": [
+"speelgoed",
+"puzzels",
+""
+],
+"speelgoed/poppen-barbie": [
+"speelgoed",
+"poppen-knuffels",
+""
+],
+"speelgoed/playmobil": [
+"speelgoed",
+"speelfiguren-voertuigen",
+"playmobil"
+],
+"speelgoed/autos-treinen-rc": [
+"speelgoed",
+"speelfiguren-voertuigen",
+""
+],
+"speelgoed/knuffels-squishmallows": [
+"speelgoed",
+"poppen-knuffels",
+""
+],
+"speelgoed/knikkerbanen-magnetisch": [
+"speelgoed",
+"bouwen",
+""
+],
+"speelgoed/knutselen-kleuren": [
+"speelgoed",
+"knutselen",
+""
+],
+"speelgoed/baby-houten": [
+"speelgoed",
+"baby-peuter",
+""
+],
+"speelgoed/speelkeukens-verkleden": [
+"speelgoed",
+"rollenspel-verkleden",
+""
+],
+"speelgoed/muziek-karaoke": [
+"speelgoed",
+"leren-ontdekken",
+"muziekspeelgoed-karaoke"
+],
+"hobby/tekenen": [
+"hobby",
+"schilderen-tekenen",
+""
+],
+"hobby/schilderen": [
+"hobby",
+"schilderen-tekenen",
+""
+],
+"hobby/diamond-painting": [
+"hobby",
+"handwerken",
+"diamond-painting"
+],
+"hobby/naaien-borduren": [
+"hobby",
+"handwerken",
+""
+],
+"hobby/kralen-sieraden-maken": [
+"hobby",
+"zelf-maken",
+"sieraden-maken"
+],
+"hobby/modelbouw": [
+"hobby",
+"modelbouw",
+""
+],
+"hobby/origami-scrapbooking": [
+"hobby",
+"papier-planners",
+"scrapbooking-origami"
+],
+"hobby/kaarsen-zeep-epoxy": [
+"hobby",
+"zelf-maken",
+""
+],
+"hobby/haken-breien": [
+"hobby",
+"handwerken",
+"haken-breien"
+],
+"hobby/klei-pottenbakken": [
+"hobby",
+"zelf-maken",
+"klei-pottenbakken-epoxy"
+],
+"hobby/3d-pennen": [
+"hobby",
+"zelf-maken",
+"3d-pennen"
+],
+"hobby/bullet-journal": [
+"hobby",
+"papier-planners",
+""
+],
+"sport-outdoor/voetbal-balsporten": [
+"sport-outdoor",
+"balsport-spel",
+""
+],
+"sport-outdoor/darts": [
+"sport-outdoor",
+"balsport-spel",
+"darts"
+],
+"sport-outdoor/fietsen": [
+"sport-outdoor",
+"fietsen-steps",
+""
+],
+"sport-outdoor/padel-tennis": [
+"sport-outdoor",
+"balsport-spel",
+"padel-tennis"
+],
+"sport-outdoor/wintersport-schaatsen": [
+"sport-outdoor",
+"water-wintersport",
+"wintersport"
+],
+"sport-outdoor/fitness": [
+"sport-outdoor",
+"fitness-yoga",
+"fitness-thuis"
+],
+"sport-outdoor/kamperen": [
+"sport-outdoor",
+"kamperen-outdoor",
+""
+],
+"sport-outdoor/wandelen": [
+"sport-outdoor",
+"wandelen-hardlopen",
+"wandelen"
+],
+"sport-outdoor/hardlopen": [
+"sport-outdoor",
+"wandelen-hardlopen",
+"hardlopen"
+],
+"sport-outdoor/golf": [
+"sport-outdoor",
+"balsport-spel",
+"golf"
+],
+"sport-outdoor/reizen": [
+"mode-sieraden",
+"tassen-portemonnees",
+"reisaccessoires"
+],
+"sport-outdoor/watersport-zwemmen": [
+"sport-outdoor",
+"water-wintersport",
+"zwemmen"
+],
+"sport-outdoor/klimmen-boulderen": [
+"sport-outdoor",
+"kamperen-outdoor",
+"klimmen-boulderen"
+],
+"sport-outdoor/skateboards-steps": [
+"sport-outdoor",
+"fietsen-steps",
+""
+],
+"sport-outdoor/yoga": [
+"sport-outdoor",
+"fitness-yoga",
+"yoga-pilates"
+],
+"sport-outdoor/buitenspellen-picknick": [
+"sport-outdoor",
+"balsport-spel",
+"buitenspellen-picknick"
+],
+"sport-outdoor/vissen": [
+"sport-outdoor",
+"kamperen-outdoor",
+"hengelsport"
+],
+"tuin-klussen/zwembaden-jacuzzis": [
+"tuin-klussen",
+"buiten-leven",
+"zwembaden-jacuzzi-s"
+],
+"tuin-klussen/tuinmeubelen": [
+"tuin-klussen",
+"buiten-leven",
+"tuinmeubelen"
+],
+"tuin-klussen/elektrisch-gereedschap": [
+"tuin-klussen",
+"klussen",
+"elektrisch-gereedschap"
+],
+"tuin-klussen/bbq-buitenkoken": [
+"tuin-klussen",
+"buiten-leven",
+"bbq-buitenkoken"
+],
+"tuin-klussen/tuinmachines": [
+"tuin-klussen",
+"tuingereedschap",
+"tuinmachines"
+],
+"tuin-klussen/handgereedschap-werkplaats": [
+"tuin-klussen",
+"klussen",
+""
+],
+"tuin-klussen/planten-potten": [
+"tuin-klussen",
+"tuin-planten",
+"planten-potten"
+],
+"tuin-klussen/regentonnen-slangen-compost": [
+"tuin-klussen",
+"tuin-planten",
+"regentonnen-compost"
+],
+"tuin-klussen/vogels-insecten": [
+"tuin-klussen",
+"tuin-planten",
+"vogelhuisjes-insectenhotels"
+],
+"tuin-klussen/moestuin-kweken": [
+"tuin-klussen",
+"tuin-planten",
+"moestuin-zaden"
+],
+"tuin-klussen/buitenverlichting": [
+"tuin-klussen",
+"buiten-leven",
+"buitenverlichting"
+],
+"tuin-klussen/tuingereedschap": [
+"tuin-klussen",
+"tuingereedschap",
+"handgereedschap-tuin"
+],
+"tuin-klussen/vuurschalen-terrasverwarmers": [
+"tuin-klussen",
+"buiten-leven",
+"vuurkorven-terrasverwarmers"
+],
+"tuin-klussen/tuindecoratie": [
+"tuin-klussen",
+"tuin-planten",
+"tuindecoratie"
+],
+"boeken-media/puzzelboeken": [
+"boeken-media",
+"boeken",
+"puzzelboeken"
+],
+"boeken-media/agendas-planners-kalenders": [
+"hobby",
+"papier-planners",
+"agenda-s-planners"
+],
+"boeken-media/e-readers": [
+"elektronica",
+"tablets-e-readers",
+"e-readers"
+],
+"boeken-media/muziek": [
+"boeken-media",
+"muziek",
+""
+],
+"boeken-media/films-series": [
+"boeken-media",
+"films-series",
+"dvd-blu-ray"
+],
+"boeken-media/kinderboeken": [
+"boeken-media",
+"kinderboeken",
+""
+],
+"boeken-media/thrillers-romans": [
+"boeken-media",
+"boeken",
+"romans-thrillers"
+],
+"boeken-media/strips-manga": [
+"boeken-media",
+"boeken",
+"strips-manga"
+],
+"boeken-media/luisterboeken": [
+"boeken-media",
+"boeken",
+"luisterboeken"
+],
+"boeken-media/kleurboeken": [
+"boeken-media",
+"kinderboeken",
+"kleurboeken"
+],
+"boeken-media/foto-invulboeken": [
+"boeken-media",
+"boeken",
+"invulboeken-dagboeken"
+],
+"boeken-media/kookboeken": [
+"boeken-media",
+"boeken",
+"kookboeken"
+],
+"dieren/paard": [
+"dieren",
+"paard",
+"paardrijden"
+],
+"dieren/hond": [
+"dieren",
+"hond",
+""
+],
+"dieren/konijn-cavia-hamster": [
+"dieren",
+"klein-dier",
+"konijn-knaagdier"
+],
+"dieren/kat": [
+"dieren",
+"kat",
+""
+],
+"dieren/vissen-aquarium": [
+"dieren",
+"vogels-vissen",
+"aquarium"
+],
+"dieren/reptielen-terrarium": [
+"dieren",
+"klein-dier",
+"reptielen-terrarium"
+],
+"dieren/kippen": [
+"dieren",
+"klein-dier",
+"kippen"
+],
+"dieren/vogels": [
+"dieren",
+"vogels-vissen",
+"vogels"
+],
+"metaaldetectie/munten-vondsten": [
+"sport-outdoor",
+"metaaldetectie",
+"munten-vondsten"
+],
+"metaaldetectie/detectors": [
+"sport-outdoor",
+"metaaldetectie",
+"metaaldetectors"
+],
+"metaaldetectie/magneetvissen": [
+"sport-outdoor",
+"metaaldetectie",
+"magneetvissen"
+],
+"metaaldetectie/pinpointers-uitrusting": [
+"sport-outdoor",
+"metaaldetectie",
+"pinpointers-uitrusting"
+],
+"christelijk/bijbels": [
+"christelijk",
+"bijbels-psalmboeken",
+"bijbels"
+],
+"christelijk/psalmboeken": [
+"christelijk",
+"bijbels-psalmboeken",
+"psalmboeken"
+],
+"christelijk/kerststal-engelen": [
+"christelijk",
+"kerst",
+"kerststallen-engelen"
+],
+"christelijk/sieraden": [
+"christelijk",
+"sieraden",
+""
+],
+"christelijk/kerst": [
+"christelijk",
+"kerst",
+"christelijke-kerstcadeaus"
+],
+"christelijk/bijbelteksten-wanddecoratie": [
+"christelijk",
+"wanddecoratie-teksten",
+""
+],
+"christelijk/boeken-muziek": [
+"christelijk",
+"boeken-muziek",
+""
+],
+"christelijk/doop-belijdenis": [
+"christelijk",
+"doop-belijdenis",
+""
+],
+"christelijk/voor-kinderen": [
+"christelijk",
+"voor-kinderen",
+""
+],
+"noodpakket-survival/noodpakketten": [
+"sport-outdoor",
+"noodpakket-survival",
+"noodpakketten"
+],
+"noodpakket-survival/noodradio": [
+"sport-outdoor",
+"noodpakket-survival",
+"noodradio-s"
+],
+"noodpakket-survival/licht-stroom": [
+"sport-outdoor",
+"noodpakket-survival",
+"licht-stroom"
+],
+"noodpakket-survival/water-eten": [
+"sport-outdoor",
+"noodpakket-survival",
+"water-eten"
+],
+"noodpakket-survival/koken-warmte": [
+"sport-outdoor",
+"noodpakket-survival",
+"koken-warmte"
+],
+"noodpakket-survival/ehbo-brand": [
+"sport-outdoor",
+"noodpakket-survival",
+"ehbo-brand"
+],
+"noodpakket-survival/buiten-veld": [
+"sport-outdoor",
+"noodpakket-survival",
+"tassen-onderweg"
+],
+"noodpakket-survival/tassen-onderweg": [
+"sport-outdoor",
+"noodpakket-survival",
+"tassen-onderweg"
+]
+}

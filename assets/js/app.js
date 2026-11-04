@@ -66,11 +66,19 @@
     try { history[vervang ? 'replaceState' : 'pushState']({}, '', url); } catch (e) { location.href = url; return; }
     toon();
   }
+  /* 3.0 (4-11-2026): links naar een oude afdeling of een oud vakje meteen naar de nieuwe plek laten wijzen (zonder omweg). */
+  function verhuisd(h) {
+    var m = /^\/c\/([^\/?#]+)(?:\/([^\/?#]+))?\/?([?#].*)?$/.exec(h); if (!m) return h;
+    var c = window.LK_CAT(m[1]); if (!c) return h;
+    var s = m[2] ? window.LK_SUB(c, m[2]) : null;
+    var naar = (s && s.verborgen && s.naar) || (!m[2] && c.verborgen && c.naar) || '';
+    return naar ? naar.replace(/\/$/, '') + (m[3] || '') : h;
+  }
   function netteLinks(root) {
     $$('a[href^="/"]', root).forEach(function (a) {
       var h = a.getAttribute('href');
       if (h.indexOf('//') === 0) return;
-      var n = netjes(h);
+      var n = netjes(verhuisd(h));
       if (n !== h) a.setAttribute('href', n);
     });
   }
@@ -477,20 +485,24 @@
   }
 
   /* ---------- Categorie & subcategorie ---------- */
-  function categorie(slug, subSlug, q) {
+  function categorie(slug, subSlug, vakSlug, q) {
     var c = window.LK_CAT(slug);
     if (!c) return nietGevonden();
     var s = subSlug ? window.LK_SUB(c, subSlug) : null;
     if (subSlug && !s) return nietGevonden();
+    /* 3.0: derde laag (vakje binnen een groep). */
+    var v = vakSlug ? window.LK_VAK(s, vakSlug) : null;
+    if (vakSlug && !v) return nietGevonden();
     /* Teksten uit teksten.js (intro, Google-titel, omschrijving, tips). Staat er in data.js al iets, dan wint dat. */
-    var T = (window.LK_TEKSTEN || {})[c.slug + (s ? '/' + s.slug : '')] || {};
-    zetTitel(s ? (s.seoTitel || T.seoTitel || s.naam + ' – ' + c.naam) : (c.seoTitel || T.seoTitel || c.naam));
-    window.LK_SEO = (s ? s.seoTekst : c.seoTekst) || T.seoTekst || '';
-    var gids = (s ? s.gids : c.gids) || T.gids;
+    var T = (window.LK_TEKSTEN || {})[v ? (v.oud || '') : c.slug + (s ? '/' + s.slug : '')] || {};
+    var laag = v || s;
+    zetTitel(v ? (v.seoTitel || T.seoTitel || v.naam + ' – ' + s.naam) : s ? (s.seoTitel || T.seoTitel || s.naam + ' – ' + c.naam) : (c.seoTitel || T.seoTitel || c.naam));
+    window.LK_SEO = (laag ? laag.seoTekst : c.seoTekst) || T.seoTekst || '';
+    var gids = (laag ? laag.gids : c.gids) || T.gids;
 
-    var pad = '/c/' + c.slug + (s ? '/' + s.slug : '');
-    var knoppen = (s && s.knoppen) || c.knoppen || [];
-    var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug) && binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen); });
+    var pad = '/c/' + c.slug + (s ? '/' + s.slug : '') + (v ? '/' + v.slug : '');
+    var knoppen = (v && v.knoppen) || (s && s.knoppen) || c.knoppen || [];
+    var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug, v && v.slug) && binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen); });
     lijst = sorteer(lijst, q.sort);
     if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
 
@@ -504,6 +516,17 @@
         return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget(subAdres(c, x)) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
           '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
       }).join('') + '</div>';
+    /* 3.0: in een groep een rij met de vakjes (alleen vakjes waar iets in staat). */
+    if (s && s.vakjes) {
+      var inGroep = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
+      var volleVakjes = s.vakjes.filter(function (x) { return inGroep.some(function (p) { return p.vak === x.slug; }); });
+      if (volleVakjes.length > 1) subs += '<nav class="chips vakjesrij" aria-label="Soorten in ' + esc(s.naam) + '">' +
+        '<a class="chip' + (v ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug + '/' + s.slug) + '"' + (v ? '' : ' aria-current="page"') + '>Alles</a>' +
+        volleVakjes.map(function (x) {
+          var hier = v && v.slug === x.slug;
+          return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug) + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(x.naam) + '</a>';
+        }).join('') + '</nav>';
+    }
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + prijsChips(pad, q) +
@@ -521,18 +544,18 @@
     var ouder = c.onder ? window.LK_CAT(c.onder) : null;
 
     return paginakop({
-      titel: s ? (s.kop || s.naam) : (c.kop || c.naam),
-      tekst: s ? (s.tekst || T.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : (c.tekst || T.tekst),
+      titel: v ? (v.kop || v.naam) : s ? (s.kop || s.naam) : (c.kop || c.naam),
+      tekst: v ? (v.tekst || T.tekst || 'Met de hand gekozen: ' + v.naam.toLowerCase() + '.') : s ? (s.tekst || T.tekst || 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.') : (c.tekst || T.tekst),
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
-      kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
+      kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(v ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam, naar: '/c/' + c.slug + '/' + s.slug }, { tekst: v.naam }] : s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
     }) +
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
-      leesOok(c.slug + (s ? '/' + s.slug : '')) +
+      leesOok(v && v.oud ? v.oud : c.slug + (s ? '/' + s.slug : '')) +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen) +
       /* Eerst 'Meer in onze winkels' direct onder onze eigen producten, en pas daarna de tips.
          Stonden de tips ertussen, dan leek het alsof de pagina daar ophield (opmerking Marius, 28-10-2026). */
-      winkelSectie(c.slug, s && s.slug, q.prijs) +
+      (v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
@@ -818,6 +841,8 @@
     var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
     /* 2.0: staat dit vak onder een andere groep (bijv. mode-beauty/horloges onder Sieraden & Horloges), dan dat kruimelpad. */
     if (!s || s.verborgen) ALLECATS.forEach(function (cc) { (cc.subs || []).forEach(function (ss) { if (ss.vak === p.cat + '/' + p.sub && !ss.verborgen) { c = cc; s = ss; } }); });
+    /* 3.0: kruimelpad volgens de nieuwe boom (afdeling > groep > vakje). */
+    var nc = p.afd && window.LK_CAT(p.afd), ns = nc && window.LK_SUB(nc, p.groep), nv = ns && window.LK_VAK(ns, p.vak);
     zetTitel(p.titel);
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
@@ -840,7 +865,7 @@
     verwant = sorteer(verwant.filter(zelfdeSub)).concat(sorteer(verwant.filter(function (x) { return !zelfdeSub(x); }))).slice(0, 4);
 
     return '<div class="binnen">' +
-      '<div style="padding-top:16px">' + kruimel([{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
+      '<div style="padding-top:16px">' + kruimel(nc ? [{ tekst: nc.naam, naar: '/c/' + nc.slug }, { tekst: ns ? ns.naam : '', naar: ns ? '/c/' + nc.slug + '/' + ns.slug : '' }, { tekst: nv ? nv.naam : '', naar: nv ? '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug : '' }].filter(function (x) { return x.tekst; }) : [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
       '<div class="product">' +
         productFotos(p) +
         '<div class="product-info">' +
@@ -2423,7 +2448,13 @@
     }
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();
-    else if (d[0] === 'c') html = categorie(d[1], d[2], a.q);
+    else if (d[0] === 'c') {
+      /* 3.0: oude afdelingen en vakjes sturen door naar hun nieuwe plek (adressen die Google en oude links kennen). */
+      var oc = window.LK_CAT(d[1]), os = oc && d[2] ? window.LK_SUB(oc, d[2]) : null;
+      var naar = (os && os.verborgen && os.naar) || (oc && oc.verborgen && oc.naar && !d[2] ? oc.naar : '');
+      if (naar) { ga(naar + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
+      html = categorie(d[1], d[2], d[3], a.q);
+    }
     else if (d[0] === 'voor') html = d[1] ? persoon(d[1], d[2], a.q) : voorWie();
     else if (d[0] === 'gelegenheid') html = gelegenheidPagina(d[1], a.q);
     else if (d[0] === 'collectie') html = collectie(d[1], a.q);

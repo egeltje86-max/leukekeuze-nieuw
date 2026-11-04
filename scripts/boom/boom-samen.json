@@ -1,0 +1,804 @@
+[
+ {
+  "id": "speelgoed-spellen",
+  "naam": "Speelgoed & spellen",
+  "groepen": [
+   {
+    "naam": "Baby & peuter",
+    "vakjes": [
+     "Rammelaars & bijtringen",
+     "Babygyms & activiteitenspeelgoed",
+     "Stapelen & sorteren",
+     "Loopwagens & duwspeelgoed",
+     "Badspeelgoed"
+    ]
+   },
+   {
+    "naam": "Bouwen",
+    "vakjes": [
+     "LEGO",
+     "LEGO Duplo",
+     "Andere bouwstenen",
+     "Magnetisch bouwen",
+     "Knikkerbanen"
+    ]
+   },
+   {
+    "naam": "Poppen & knuffels",
+    "vakjes": [
+     "Babypoppen",
+     "Modepoppen",
+     "Poppenhuizen & accessoires",
+     "Knuffels",
+     "Squishmallows"
+    ]
+   },
+   {
+    "naam": "Speelfiguren & voertuigen",
+    "vakjes": [
+     "Playmobil",
+     "Dieren- & dinofiguren",
+     "Actiefiguren & superhelden",
+     "Speelgoedauto's & garages",
+     "Racebanen & treinen",
+     "Radiografisch bestuurbaar"
+    ]
+   },
+   {
+    "naam": "Rollenspel & verkleden",
+    "vakjes": [
+     "Speelkeukens & winkeltjes",
+     "Gereedschap & dokterssets",
+     "Verkleedkleding"
+    ]
+   },
+   {
+    "naam": "Knutselen",
+    "vakjes": [
+     "Knutselsets",
+     "Klei & slijm",
+     "Tekenen & kleuren",
+     "Strijkkralen & sieraden maken"
+    ]
+   },
+   {
+    "naam": "Leren & ontdekken",
+    "vakjes": [
+     "Experimenteren & wetenschap",
+     "Programmeren & robots",
+     "Microscopen & telescopen",
+     "Tiptoi & leersystemen",
+     "Luisterboxen (Toniebox)",
+     "Muziekspeelgoed & karaoke"
+    ]
+   },
+   {
+    "naam": "Buiten spelen",
+    "vakjes": [
+     "Steps & loopfietsen",
+     "Trampolines & speeltoestellen",
+     "Zand & water",
+     "Buitenspellen & ballen"
+    ]
+   },
+   {
+    "naam": "Spellen",
+    "vakjes": [
+     "Bordspellen voor het gezin",
+     "Strategiespellen",
+     "Kaart- & dobbelspellen",
+     "Partyspellen",
+     "Escape room & breinbrekers",
+     "Kinderspellen",
+     "Verzamelkaarten (Pokémon)"
+    ]
+   },
+   {
+    "naam": "Puzzels",
+    "vakjes": [
+     "Legpuzzels",
+     "3D-puzzels",
+     "Kinderpuzzels"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "elektronica-gaming",
+  "naam": "Elektronica & gaming",
+  "groepen": [
+   {
+    "naam": "Audio",
+    "vakjes": [
+     "Koptelefoons",
+     "Oordopjes",
+     "Bluetooth-speakers",
+     "Platenspelers"
+    ]
+   },
+   {
+    "naam": "Gaming",
+    "vakjes": [
+     "Consoles",
+     "Games",
+     "Controllers & accessoires",
+     "Gaming-headsets",
+     "Gamestoelen",
+     "VR-brillen"
+    ]
+   },
+   {
+    "naam": "Smartwatches",
+    "vakjes": [
+     "Smartwatches",
+     "Activity trackers"
+    ]
+   },
+   {
+    "naam": "Foto & video",
+    "vakjes": [
+     "Camera's & instant camera's",
+     "Actioncam's",
+     "Drones"
+    ]
+   },
+   {
+    "naam": "Tablets & e-readers",
+    "vakjes": [
+     "Tablets",
+     "E-readers",
+     "Powerbanks & opladers",
+     "Telefoonaccessoires"
+    ]
+   },
+   {
+    "naam": "Tv & beeld",
+    "vakjes": [
+     "Televisies",
+     "Beamers",
+     "Soundbars"
+    ]
+   },
+   {
+    "naam": "Slim wonen",
+    "vakjes": [
+     "Slimme lampen & sfeerlicht",
+     "Slimme speakers",
+     "Robotstofzuigers"
+    ]
+   },
+   {
+    "naam": "Gadgets",
+    "vakjes": [
+     "Handige gadgets",
+     "Fun & retro gadgets"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "mode-sieraden",
+  "naam": "Mode & sieraden",
+  "groepen": [
+   {
+    "naam": "Sieraden",
+    "vakjes": [
+     "Kettingen",
+     "Armbanden",
+     "Oorbellen",
+     "Ringen",
+     "Sieraden met naam",
+     "Sieradendozen",
+     "Bedels"
+    ]
+   },
+   {
+    "naam": "Horloges",
+    "vakjes": [
+     "Dameshorloges",
+     "Herenhorloges"
+    ]
+   },
+   {
+    "naam": "Tassen & portemonnees",
+    "vakjes": [
+     "Handtassen",
+     "Rugzakken",
+     "Portemonnees & pasjeshouders",
+     "Koffers & reistassen",
+     "Toilettassen",
+     "Reisaccessoires"
+    ]
+   },
+   {
+    "naam": "Accessoires",
+    "vakjes": [
+     "Sjaals & mutsen",
+     "Handschoenen",
+     "Zonnebrillen",
+     "Riemen & petten",
+     "Sleutelhangers"
+    ]
+   },
+   {
+    "naam": "Kleding",
+    "vakjes": [
+     "Pyjama's & badjassen",
+     "Truien & hoodies",
+     "T-shirts met print",
+     "Sokken"
+    ]
+   },
+   {
+    "naam": "Schoenen & sloffen",
+    "vakjes": [
+     "Pantoffels & sloffen",
+     "Sneakers",
+     "Laarzen & boots"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "beauty-verzorging",
+  "naam": "Beauty & verzorging",
+  "groepen": [
+   {
+    "naam": "Parfum",
+    "vakjes": [
+     "Damesparfum",
+     "Herenparfum",
+     "Parfumsets"
+    ]
+   },
+   {
+    "naam": "Giftsets",
+    "vakjes": [
+     "Giftsets voor haar",
+     "Giftsets voor hem"
+    ]
+   },
+   {
+    "naam": "Bad & douche",
+    "vakjes": [
+     "Bad- & doucheproducten",
+     "Bruisballen"
+    ]
+   },
+   {
+    "naam": "Huid & gezicht",
+    "vakjes": [
+     "Gezichtsverzorging",
+     "Lichaamsverzorging"
+    ]
+   },
+   {
+    "naam": "Make-up & nagels",
+    "vakjes": [
+     "Make-up",
+     "Nagels"
+    ]
+   },
+   {
+    "naam": "Haar",
+    "vakjes": [
+     "Föhns & stijltangen",
+     "Haarverzorging"
+    ]
+   },
+   {
+    "naam": "Scheren & baard",
+    "vakjes": [
+     "Scheerapparaten & trimmers",
+     "Baardverzorging"
+    ]
+   },
+   {
+    "naam": "Mond & tanden",
+    "vakjes": [
+     "Elektrische tandenborstels",
+     "Monddouches & flossers"
+    ]
+   },
+   {
+    "naam": "Wellness",
+    "vakjes": [
+     "Massage",
+     "Spa & ontspanning"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "wonen-koken",
+  "naam": "Wonen & koken",
+  "groepen": [
+   {
+    "naam": "Woondecoratie",
+    "vakjes": [
+     "Beelden & decoratie",
+     "Vazen",
+     "Wanddecoratie & posters",
+     "Klokken",
+     "Spiegels",
+     "Opbergen & dienbladen"
+    ]
+   },
+   {
+    "naam": "Kaarsen & geur",
+    "vakjes": [
+     "Kaarsen",
+     "Geurkaarsen",
+     "Huisgeuren & geurstokjes",
+     "Kandelaars & lantaarns"
+    ]
+   },
+   {
+    "naam": "Verlichting",
+    "vakjes": [
+     "Sfeerlampen",
+     "Tafellampen",
+     "Lichtsnoeren"
+    ]
+   },
+   {
+    "naam": "Woontextiel",
+    "vakjes": [
+     "Plaids",
+     "Kussens",
+     "Kruiken & warmte",
+     "Vloerkleden",
+     "Deurmatten"
+    ]
+   },
+   {
+    "naam": "Foto & persoonlijk",
+    "vakjes": [
+     "Fotoboeken",
+     "Foto op canvas & glas",
+     "Fotolijsten"
+    ]
+   },
+   {
+    "naam": "Kerstdecoratie",
+    "vakjes": [
+     "Kerstballen & hangers",
+     "Kerstverlichting",
+     "Kerststallen",
+     "Kerstfiguren"
+    ]
+   },
+   {
+    "naam": "Koken & bakken",
+    "vakjes": [
+     "Pannen & messen",
+     "Keukenapparaten",
+     "Bakken",
+     "Airfryers",
+     "Opbergen & voorraadpotten",
+     "Drinkflessen & lunchboxen"
+    ]
+   },
+   {
+    "naam": "Koffie & thee zetten",
+    "vakjes": [
+     "Koffiemachines",
+     "Mokken & theeglazen",
+     "Theepotten"
+    ]
+   },
+   {
+    "naam": "Tafelen",
+    "vakjes": [
+     "Servies",
+     "Glazen",
+     "Borrelplanken & serveren"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "eten-drinken",
+  "naam": "Eten & drinken",
+  "groepen": [
+   {
+    "naam": "Chocolade & snoep",
+    "vakjes": [
+     "Chocolade",
+     "Snoep & drop",
+     "Chocoladeletters",
+     "Koekjes & stroopwafels"
+    ]
+   },
+   {
+    "naam": "Cadeaupakketten",
+    "vakjes": [
+     "Cadeaupakketten & manden",
+     "Brievenbuscadeaus"
+    ]
+   },
+   {
+    "naam": "Koffie, thee & cacao",
+    "vakjes": [
+     "Koffie",
+     "Thee",
+     "Warme chocolademelk"
+    ]
+   },
+   {
+    "naam": "Delicatessen",
+    "vakjes": [
+     "Kaas & worst",
+     "Sauzen & kruiden",
+     "Noten & zoutjes"
+    ]
+   },
+   {
+    "naam": "Wijn",
+    "vakjes": [
+     "Rode wijn",
+     "Witte wijn",
+     "Rosé",
+     "Port & dessertwijn",
+     "Sake"
+    ]
+   },
+   {
+    "naam": "Bubbels",
+    "vakjes": [
+     "Champagne",
+     "Prosecco & cava"
+    ]
+   },
+   {
+    "naam": "Bier",
+    "vakjes": [
+     "Speciaalbier",
+     "Bierpakketten"
+    ]
+   },
+   {
+    "naam": "Sterke drank",
+    "vakjes": [
+     "Whisky",
+     "Gin",
+     "Rum",
+     "Likeur",
+     "Cognac",
+     "Wodka",
+     "Tequila",
+     "Jenever"
+    ]
+   },
+   {
+    "naam": "Alcoholvrij",
+    "vakjes": [
+     "Alcoholvrije wijn & bier",
+     "Siropen & mocktails"
+    ]
+   },
+   {
+    "naam": "Drankaccessoires",
+    "vakjes": [
+     "Glazen & karaffen",
+     "Cocktailsets",
+     "Wijnaccessoires"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "hobby-creatief",
+  "naam": "Hobby & creatief",
+  "groepen": [
+   {
+    "naam": "Handwerken",
+    "vakjes": [
+     "Haken & breien",
+     "Naaien",
+     "Borduren & punch needle",
+     "Diamond painting"
+    ]
+   },
+   {
+    "naam": "Schilderen & tekenen",
+    "vakjes": [
+     "Verf & schildersets",
+     "Tekenen & schetsen",
+     "Kalligrafie & handlettering"
+    ]
+   },
+   {
+    "naam": "Zelf maken",
+    "vakjes": [
+     "Kaarsen & zeep maken",
+     "Sieraden maken",
+     "Klei, pottenbakken & epoxy",
+     "3D-pennen"
+    ]
+   },
+   {
+    "naam": "Modelbouw",
+    "vakjes": [
+     "Bouwpakketten",
+     "Miniatuurhuisjes",
+     "Modeltreinen"
+    ]
+   },
+   {
+    "naam": "Muziek maken",
+    "vakjes": [
+     "Gitaren & ukelele's",
+     "Keyboards & piano's",
+     "Muziekaccessoires"
+    ]
+   },
+   {
+    "naam": "Papier & planners",
+    "vakjes": [
+     "Agenda's & planners",
+     "Notitieboeken",
+     "Bullet journal",
+     "Scrapbooking & origami"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sport-buiten",
+  "naam": "Sport & buiten",
+  "groepen": [
+   {
+    "naam": "Fietsen & steps",
+    "vakjes": [
+     "Fietsaccessoires",
+     "Fietshelmen",
+     "Elektrische steps",
+     "Skateboards"
+    ]
+   },
+   {
+    "naam": "Fitness & yoga",
+    "vakjes": [
+     "Fitness thuis",
+     "Yoga & pilates"
+    ]
+   },
+   {
+    "naam": "Wandelen & hardlopen",
+    "vakjes": [
+     "Wandelen",
+     "Hardlopen"
+    ]
+   },
+   {
+    "naam": "Kamperen & outdoor",
+    "vakjes": [
+     "Kampeerspullen",
+     "Zaklampen & hoofdlampen",
+     "Messen & multitools",
+     "Verrekijkers",
+     "Klimmen & boulderen",
+     "Hengelsport"
+    ]
+   },
+   {
+    "naam": "Balsport & spel",
+    "vakjes": [
+     "Voetbal",
+     "Padel & tennis",
+     "Darts",
+     "Tafelvoetbal & tafeltennis",
+     "Golf",
+     "Buitenspellen & picknick"
+    ]
+   },
+   {
+    "naam": "Water- & wintersport",
+    "vakjes": [
+     "Zwemmen",
+     "Wintersport"
+    ]
+   },
+   {
+    "naam": "Metaaldetectie",
+    "vakjes": [
+     "Metaaldetectors",
+     "Pinpointers & uitrusting",
+     "Magneetvissen",
+     "Munten & vondsten"
+    ]
+   },
+   {
+    "naam": "Noodpakket & survival",
+    "vakjes": [
+     "Noodpakketten",
+     "Noodradio's",
+     "Licht & stroom",
+     "Water & eten",
+     "Koken & warmte",
+     "EHBO & brand",
+     "Tassen & onderweg"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "tuin-klussen",
+  "naam": "Tuin & klussen",
+  "groepen": [
+   {
+    "naam": "Tuin & planten",
+    "vakjes": [
+     "Planten & potten",
+     "Moestuin & zaden",
+     "Tuindecoratie",
+     "Vogelhuisjes & insectenhotels",
+     "Regentonnen & compost"
+    ]
+   },
+   {
+    "naam": "Buiten leven",
+    "vakjes": [
+     "Tuinmeubelen",
+     "BBQ & buitenkoken",
+     "Vuurkorven & terrasverwarmers",
+     "Buitenverlichting",
+     "Zwembaden & jacuzzi's"
+    ]
+   },
+   {
+    "naam": "Tuingereedschap",
+    "vakjes": [
+     "Handgereedschap tuin",
+     "Tuinmachines"
+    ]
+   },
+   {
+    "naam": "Klussen",
+    "vakjes": [
+     "Handgereedschap",
+     "Elektrisch gereedschap",
+     "Gereedschapssets"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "boeken-films-muziek",
+  "naam": "Boeken, films & muziek",
+  "groepen": [
+   {
+    "naam": "Boeken",
+    "vakjes": [
+     "Romans & thrillers",
+     "Kookboeken",
+     "Non-fictie & hobby",
+     "Strips & manga",
+     "Invulboeken & dagboeken",
+     "Puzzelboeken",
+     "Luisterboeken"
+    ]
+   },
+   {
+    "naam": "Kinderboeken",
+    "vakjes": [
+     "Prentenboeken",
+     "Voorleesboeken",
+     "Leesboeken",
+     "Kleurboeken"
+    ]
+   },
+   {
+    "naam": "Films & series",
+    "vakjes": [
+     "Dvd & Blu-ray"
+    ]
+   },
+   {
+    "naam": "Muziek",
+    "vakjes": [
+     "Vinyl",
+     "Cd's"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "dieren",
+  "naam": "Dieren",
+  "groepen": [
+   {
+    "naam": "Hond",
+    "vakjes": [
+     "Hondenspeelgoed",
+     "Manden & kussens",
+     "Riemen & halsbanden"
+    ]
+   },
+   {
+    "naam": "Kat",
+    "vakjes": [
+     "Kattenspeelgoed",
+     "Krabpalen & manden"
+    ]
+   },
+   {
+    "naam": "Klein dier",
+    "vakjes": [
+     "Konijn & knaagdier",
+     "Kippen",
+     "Reptielen & terrarium"
+    ]
+   },
+   {
+    "naam": "Vogels & vissen",
+    "vakjes": [
+     "Vogels",
+     "Aquarium"
+    ]
+   },
+   {
+    "naam": "Paard",
+    "vakjes": [
+     "Paardrijden"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "christelijk",
+  "naam": "Christelijke cadeaus",
+  "groepen": [
+   {
+    "naam": "Bijbels & psalmboeken",
+    "vakjes": [
+     "Bijbels",
+     "Psalmboeken"
+    ]
+   },
+   {
+    "naam": "Boeken & muziek",
+    "vakjes": [
+     "Christelijke boeken",
+     "Christelijke muziek"
+    ]
+   },
+   {
+    "naam": "Sieraden",
+    "vakjes": [
+     "Kettingen met kruis",
+     "Armbanden & overig"
+    ]
+   },
+   {
+    "naam": "Wanddecoratie & teksten",
+    "vakjes": [
+     "Tegeltjes & wandborden",
+     "Kaarten & posters"
+    ]
+   },
+   {
+    "naam": "Kerst",
+    "vakjes": [
+     "Kerststallen & engelen",
+     "Christelijke kerstcadeaus"
+    ]
+   },
+   {
+    "naam": "Doop & belijdenis",
+    "vakjes": [
+     "Doop",
+     "Belijdenis"
+    ]
+   },
+   {
+    "naam": "Voor kinderen",
+    "vakjes": [
+     "Kinderbijbels & boeken",
+     "Speelgoed & cadeautjes"
+    ]
+   }
+  ]
+ }
+]
