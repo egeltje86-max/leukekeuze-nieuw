@@ -216,6 +216,10 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
      (Via 404.html alleen zag Google 'niet gevonden' en liet het oude adres gewoon vallen.) Lijst uit Search Console, 28-10-2026. */
   const VERHUISD = {
     'cadeaugids': '/gids/', 'cadeaugidsen': '/gids/',
+    /* 04-11-2026: oude adressen die Google als 404 meldde (Search Console). Producten die helemaal van de site zijn: naar hun vakje. */
+    'c/cadeaus/onder-10': '/c/cadeaus/onder-15/',
+    'p/dk-00015530': '/c/hobby/tekenen/', 'p/dvzn-635418': '/voor/opa-oma/', 'p/dk-00044984': '/c/wonen/kerst/',
+    'p/dk-00044532': '/c/wonen/huisgeuren/', 'p/dk-35072707': '/c/wonen/huisgeuren/',
     'cadeaugids/cadeau-voor-collega': '/gids/cadeau-voor-collega/',
     'cadeaugids/sinterklaas': '/c/cadeaus/sinterklaas/',
     'cadeaugids/cadeau-voor-vriendin': '/voor/haar/',
