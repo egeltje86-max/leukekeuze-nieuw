@@ -80,6 +80,14 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('t-viparfum.json', 'Viparfum', ''),
     ('t-mobistoxx.json', 'Mobistoxx', ''),
     ('t-biercheque.json', 'Biercheque', ''),
+    ('t-expert.json', 'Expert', ''),
+    ('t-bourgini.json', 'Bourgini', ''),
+    ('t-fotofabriek.json', 'Fotofabriek', ''),
+    ('t-ikwilzitzakken.json', 'Ikwilzitzakken', ''),
+    ('t-louiz.json', 'Louiz', ''),
+    ('t-tandenborstel.json', 'Tandenborstel.com', ''),
+    ('t-besled.json', 'Besled', ''),
+    ('t-boekenwereld.json', 'Boekenwereld', ''),
     # Awin (a-*.json, opgehaald met Feedzoeker\programma\awin-ophalen.py; 04-11-2026, wens Marius). Bewust niet: Kopp Verlag,
     # de enorme kledingcatalogi van s.Oliver en Street One (wel als winkeltegel), en reizen/vervoer.
     ('a-coolblue-nl.json', 'Coolblue', ''),
@@ -309,6 +317,7 @@ EIGEN = {
     'Animals Giftshop': ['dieren', 'speelgoed'], 'Knuffelparadijs': ['speelgoed'], 'Knuffelkado': ['speelgoed'],
     'De Grote Speelgoedwinkel': ['speelgoed', 'hobby', 'sport-outdoor'], 'Countrylifestyle': ['wonen', 'keuken', 'tuin-klussen'],
     'Smartphoto': ['wonen', 'keuken', 'boeken-media'], 'Spaarpotten-winkel': ['wonen', 'speelgoed'],
+    'Louiz': ['sieraden'], 'Tandenborstel.com': ['geuren-verzorging', 'mode-beauty'], 'Boekenwereld': ['boeken-media'], 'Bourgini': ['keuken'], 'Biercheque': ['dranken', 'cadeaus'],
     'Timeshop24': ['mode-beauty', 'sieraden'], 'InterGard': ['tuin-klussen'], 'Robotime': ['hobby', 'speelgoed'],
 }
 # Sommige groepen alleen als de titel er echt over gaat.

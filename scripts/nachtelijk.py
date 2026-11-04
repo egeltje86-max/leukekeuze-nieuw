@@ -102,6 +102,15 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-viparfum': '2584631',  # Viparfum
           't-mobistoxx': '1976189',  # Mobistoxx
           't-biercheque': '2472146',  # Biercheque (goedgekeurd 1-11-2026)
+          # Nieuw 04-11-2026 (Marius). Bewust niet in de zoekfunctie: Woonkampioen (206.000, oud), Fietsweb (556.000), 1dagactie (ondergoed/textiel).
+          't-expert': '254727',  # Expert
+          't-bourgini': '2132103',  # Bourgini
+          't-fotofabriek': '1809626',  # Fotofabriek
+          't-ikwilzitzakken': '2587470',  # Ikwilzitzakken
+          't-louiz': '2476044',  # Louiz
+          't-tandenborstel': '1911673',  # Tandenborstel.com
+          't-besled': '1533462',  # Besled (bestsellers)
+          't-boekenwereld': '2490267',  # Boekenwereld (bestsellers)
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
@@ -109,6 +118,9 @@ for naam, fid in TTFEED.items():
         tmp = xml + '.nieuw'
         with urllib.request.urlopen(urllib.request.Request(TT + fid, headers={'User-Agent': 'Mozilla/5.0'}), timeout=600) as r, open(tmp, 'wb') as f:
             shutil.copyfileobj(r, f)
+        if os.path.getsize(tmp) < 400:  # 04-11-2026: sommige winkels (Biercheque) vullen 'voorraad' niet in: dan zonder voorraadfilter
+            with urllib.request.urlopen(urllib.request.Request((TT + fid).replace('&filter_stock=1', ''), headers={'User-Agent': 'Mozilla/5.0'}), timeout=600) as r, open(tmp, 'wb') as f:
+                shutil.copyfileobj(r, f)
         os.replace(tmp, xml)
         subprocess.run([sys.executable, os.path.join(HIER, 'tt-uittreksel.py'), xml, js + '.nieuw', '5'], check=True, capture_output=True)
         n = len(json.load(open(js + '.nieuw', encoding='utf-8')))
