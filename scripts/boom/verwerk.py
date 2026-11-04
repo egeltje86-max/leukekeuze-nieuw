@@ -92,13 +92,18 @@ def kiesRegel(titel, oud):
         hits = [x for x in vs if VW.get(x) and re.search(VW[x], t)]
         return [a, g, hits[0] if len(hits) == 1 else None]
     return None
+# Darts: vaste volgorde van herkennen (een kabinet met bord is verlichting/kabinet, een elektronisch bord is elektronisch)
+DARTS = [('Elektronische dartborden', r'elektron|softtip|soft tip|scoring|scolia|ton machine'), ('Verlichting & surrounds', r'verlichting|surround|kabinet|dartkast|\bkast\b|plasma|standaard|ring\b|led'),
+         ('Dartmatten & oches', r'dartmat|oche|werplijn|\bmat\b'), ('Darts-shirts', r'shirt|polo|jersey'), ('Flights & shafts', r'flight|shaft|case|accessoire|sharpener|scorebord|dock|wallet'),
+         ('Dartborden', r'dartbord|bristle|sisal|bord\b|board'), ('Dartpijlen', r'dartpijl|darts? ?set|tungsten|brass|gram|\d+\s*gr\b|steeltip|pijlen')]
 # vakjes die na de AI-keuring nog veranderd zijn (bijv. Darts werd een eigen groep, 5-11-2026)
 def herzie(pl, titel):
     if not pl: return pl
-    if (pl[0], pl[1], pl[2]) == ('sport-buiten', 'Balsport & spel', 'Darts'):
-        vs = GROEPVAK[('sport-buiten', 'Darts')]; t = titel.lower()
-        hits = [x for x in vs if VW.get(x) and re.search(VW[x], t)]
-        return ['sport-buiten', 'Darts', hits[0] if hits else None]
+    if (pl[0], pl[1], pl[2]) == ('sport-buiten', 'Balsport & spel', 'Darts') or (pl[0], pl[1]) == ('sport-buiten', 'Darts'):
+        t = titel.lower()
+        for v, rx in DARTS:
+            if re.search(rx, t): return ['sport-buiten', 'Darts', v]
+        return ['sport-buiten', 'Darts', None]
     if (pl[0], pl[1]) in GROEPVAK and pl[2] and pl[2] not in GROEPVAK[(pl[0], pl[1])]: return [pl[0], pl[1], None]
     t = titel.lower()
     # games staan soms bij consoles: een spel (titel met '(Switch 2)', '(PS5)' enz.) zonder het woord console is een game
