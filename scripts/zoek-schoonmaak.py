@@ -22,6 +22,9 @@ MAG = {
 # Sieraden: alleen als het echt een sieraad is (een 'ring' kan ook een hondenspeeltje of basketbalring zijn).
 SIERAAD = re.compile(r'sierad|jewel|zilver|goud|925|edelstaal|roestvrij staal|titanium|wolfraam|verguld|diamant|zirkon|moissanit|parel|kristal|swarovski|jwls|steen|steentjes|naam|letter|hart|dames|heren|bedel|ketting|collier|armband|oorbel|oorknop|hanger|horloge|watch|enkelband|broche|bague|ring maat|verlovings|trouwring|zegelring|vriendschapsring|statement', re.I)
 NIET_SIERAAD = re.compile(r'smart ring|ringenspel|werpspel|basketbal|vlieger|map met|amorces|schots|led ring|magnet|riem ring|benzine|for sex|busy buddy|chuckit|petsnack|activity ringen|sleutelring|servetring', re.I)
+# Drankspellen (4-11-2026, Marius: "haal de alcoholspel weg uit speelgoed en spellen"): nooit bij speelgoed of in kinder-/sintvakken.
+DRANKSPEL = re.compile(r'drankspel|drinkspel|drink ?game|drinking ?game|drinkopoly|shot ?roulette|met shot(glaasjes|glazen|jes)|call the shots|stier zoekt bier|pompen of verzuipen|bier ?kaartspel|beer ?pong|drink hard|zuipspel|shotschaak', re.I)
+KINDGROEP = re.compile(r'^speelgoed|kind|baby|tiener|sint|advent', re.I)
 # Grof of seks: nooit tonen.
 GROF = re.compile(r'fuck|\bkut\b|kutje|\blul\b|piemel|penis|tieten|borsten|\bsex\b|seks|vibrator|dildo|condoom|mankini|erotisch|bdsm|stripper|\bporn', re.I)
 # Kinderspullen die wel in volwassen groepen mogen als het vak er duidelijk over gaat (kinderschoenen, kinderhorloge...).
@@ -63,6 +66,7 @@ def schoon(map_=None):
             if slecht == ['kinderspeelgoed'] and KINDVAK.search(k): slecht = []
             if g == 'sieraden' and (NIET_SIERAAD.search(p[0]) or not SIERAAD.search(tekst)): slecht = ['geen-sieraad']
             if GROF.search(p[0]): slecht = ['grof']
+            if DRANKSPEL.search(p[0]) and KINDGROEP.search(k): slecht = ['drankspel']
             if slecht or p[0].lower() in blok: weg += 1; continue
             # Dieren: dezelfde mok/shirt in tientallen rassen en kleuren -> hooguit 3 per reeks (1-11-2026)
             if g == 'dieren':
