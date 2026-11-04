@@ -519,7 +519,7 @@
     /* 3.0: in een groep een rij met de vakjes (alleen vakjes waar iets in staat). */
     if (s && s.vakjes) {
       var inGroep = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
-      var volleVakjes = s.vakjes.filter(function (x) { return inGroep.some(function (p) { return p.vak === x.slug; }); });
+      var volleVakjes = s.vakjes.filter(function (x) { return inGroep.filter(function (p) { return p.vak === x.slug; }).length >= 3; }); /* vakjes met minder dan 3 producten: alleen onder 'Alles' */
       if (volleVakjes.length > 1) subs += '<nav class="chips vakjesrij" aria-label="Soorten in ' + esc(s.naam) + '">' +
         '<a class="chip' + (v ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug + '/' + s.slug) + '"' + (v ? '' : ' aria-current="page"') + '>Alles</a>' +
         volleVakjes.map(function (x) {

@@ -8,19 +8,22 @@ for f in sorted(glob.glob(os.path.join(AIMAP, 'antw-*.json'))):
     for x in json.load(open(f, encoding='utf-8'))['uit']: AI[x['i']] = x
 VAK = {v['code']: v['pad'] for v in json.load(open(os.path.join(AIMAP, 'vakjes.json'), encoding='utf-8'))}
 def laad(js, naam): return json.loads(subprocess.check_output(['node', '-e', 'const w={};new Function("window",require("fs").readFileSync(%r,"utf8"))(w);process.stdout.write(JSON.stringify(w.%s))' % (js, naam)]))
-L = {p['id']: p for p in laad(os.path.join(ROOT, 'assets/js/producten.js'), 'LK_PRODUCTEN')}
+import re
+_pj = re.sub(r'\n/\* ===== 3\.0 NIEUWE PRODUCTEN.*?/\* ===== einde 3\.0 producten ===== \*/\n', '\n', open(os.path.join(ROOT, 'assets/js/producten.js'), encoding='utf-8').read(), flags=re.S)
+L = {p['id']: p for p in json.loads(subprocess.check_output(['node', '-e', 'const w={};new Function("window",require("fs").readFileSync(0,"utf8"))(w);process.stdout.write(JSON.stringify(w.LK_PRODUCTEN))'], input=_pj.encode('utf-8')))}
 S = {p['id']: p for p in laad('/mnt/user-data/outputs/spooksite-test/producten.js', 'SPOOK_PRODUCTEN')}
 BESCH = set()
 try: BESCH |= set(json.load(open(os.path.join(ROOT, 'keurkamer/data/boom/goatcounter-hits.json'))))
 except Exception: pass
+TE = set(json.load(open(os.path.join(ROOT, 'keurkamer/data/boom/te-keuren.json'))))
 rij = []
 for i, a in AI.items():
-    if a['k'] not in ('w', 't'): continue
+    if i not in TE: continue
     p = L.get(i); s = S.get(i)
     if p: foto = 'https://leukekeuze.nl/images/producten/' + i + '-klein.webp'; titel, prijs, winkel, nieuw = p['titel'], p.get('prijs'), p['shop'], False
     elif s: foto = "../FOTOS-NIEUW/FOTO'S NIEUW/" + i + '-klein.webp'; titel, prijs, winkel, nieuw = s['titel'], s.get('prijs'), s['winkel'], True; 
     else: continue
-    rij.append({'i': i, 't': titel, 'p': prijs, 'w': winkel, 'f': foto, 'f2': (s or {}).get('foto', ''), 'r': a.get('r', ''), 'k': a['k'], 'v': VAK.get(a['v'], ''), 'n': nieuw, 'c': a.get('c', 0)})
+    rij.append({'i': i, 't': titel, 'p': prijs, 'w': winkel, 'f': foto, 'f2': (s or {}).get('foto', ''), 'r': a.get('r', ''), 'k': a['k'], 'v': VAK.get(a['v'], ''), 'n': nieuw, 'c': a.get('c', 0), 'u': ('https://leukekeuze.nl/p/' + i + '/') if p else ''})
 rij.sort(key=lambda x: (x['v'], x['t']))
 data = json.dumps(rij, ensure_ascii=False).replace('</', '<\\/')
 pagina = '''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -51,7 +54,7 @@ var D = ''' + data + ''';
 var K = 'lk-keur-boom-2026-11'; var keus = {}; try { keus = JSON.parse(localStorage.getItem(K) || '{}'); } catch (e) {}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function teken(){var f=document.getElementById('filter').value;var h='';D.forEach(function(x){var k=keus[x.i]||'';if(f==='open'&&k)return;if(f!=='open'&&f!=='alles'&&k!==f)return;
-h+='<article class="k '+k+'" data-i="'+esc(x.i)+'"><img loading="lazy" src="'+esc(x.f)+'" data-f2="'+esc(x.f2)+'" onerror="if(this.dataset.f2&&this.src!==this.dataset.f2)this.src=this.dataset.f2" alt=""><div class="in"><span class="w">'+esc(x.w)+(x.n?'<span class="nieuw">nieuw</span>':'')+'</span><span class="t">'+esc(x.t)+'</span><span class="prijs">€ '+(x.p!=null?Number(x.p).toFixed(2).replace('.',','):'?')+'</span><span class="v">'+esc(x.v)+'</span><span class="r"><b>'+(x.k==='w'?'AI: weg':'AI twijfelt')+'</b> – '+esc(x.r||'')+'</span></div><div class="kn"><button class="h" data-k="houden">Houden</button><button class="x" data-k="weg">Weg</button></div></article>';});
+h+='<article class="k '+k+'" data-i="'+esc(x.i)+'"><img loading="lazy" src="'+esc(x.f)+'" data-f2="'+esc(x.f2)+'" onerror="if(this.dataset.f2&&this.src!==this.dataset.f2)this.src=this.dataset.f2" alt=""><div class="in"><span class="w">'+esc(x.w)+(x.n?'<span class="nieuw">nieuw</span>':'')+'</span><span class="t">'+esc(x.t)+'</span><span class="prijs">€ '+(x.p!=null?Number(x.p).toFixed(2).replace('.',','):'?')+'</span><span class="v">'+esc(x.v)+(x.u?' · <a href="'+esc(x.u)+'" target="_blank" rel="noopener">bekijk</a>':'')+'</span><span class="r"><b>'+(x.k==='w'?'AI: weg':'AI twijfelt')+'</b> – '+esc(x.r||'')+'</span></div><div class="kn"><button class="h" data-k="houden">Houden</button><button class="x" data-k="weg">Weg</button></div></article>';});
 document.getElementById('lijst').innerHTML=h||'<p>Niets meer in deze lijst.</p>';var n=Object.keys(keus).length;document.getElementById('tel').textContent=n+' van '+D.length+' gekeurd';}
 document.getElementById('lijst').addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(!b)return;var a=b.closest('.k');keus[a.dataset.i]=b.dataset.k;try{localStorage.setItem(K,JSON.stringify(keus));}catch(x){}
 a.className='k '+b.dataset.k;var n=Object.keys(keus).length;document.getElementById('tel').textContent=n+' van '+D.length+' gekeurd';if(document.getElementById('filter').value==='open')setTimeout(function(){a.remove();},250);});

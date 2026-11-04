@@ -43,13 +43,20 @@ def oudPad(pl): return REV.get(tuple(pl)) or REVG.get((pl[0], pl[1])) or REVA[pl
 def laad(js, naam):
     return json.loads(subprocess.check_output(['node', '-e', 'const w={};new Function("window",require("fs").readFileSync(%r,"utf8"))(w);process.stdout.write(JSON.stringify(w.%s))' % (js, naam)]))
 PJS = os.path.join(ROOT, 'assets/js/producten.js')
-LIVE = laad(PJS, 'LK_PRODUCTEN')
+# producten.js zonder het 3.0-blok (anders tellen de nieuwe producten dubbel mee)
+_pj = re.sub(r'\n/\* ===== 3\.0 NIEUWE PRODUCTEN.*?/\* ===== einde 3\.0 producten ===== \*/\n', '\n', open(PJS, encoding='utf-8').read(), flags=re.S)
+LIVE = json.loads(subprocess.check_output(['node', '-e', 'const w={};new Function("window",require("fs").readFileSync(0,"utf8"))(w);process.stdout.write(JSON.stringify(w.LK_PRODUCTEN))'], input=_pj.encode('utf-8')))
 # wat de site nu echt toont (na indeling.js): cat/sub per product
 LEAN = {p['id']: p for p in json.loads(subprocess.check_output(['node', '-e', 'global.window={dispatchEvent(){}};global.Event=function(){};require(%r);process.stdout.write(JSON.stringify(window.LK_PRODUCTEN.map(p=>({id:p.id,cat:p.cat,sub:p.sub,ookIn:p.ookIn||[]}))))' % os.path.join(ROOT, 'assets/js/producten-lean.js')]))}
 SPOOKJS = '/mnt/user-data/outputs/spooksite-test/producten.js'
 SPOOK = laad(SPOOKJS, 'SPOOK_PRODUCTEN') if os.path.exists(SPOOKJS) else []
 SPOOKPLEK = json.load(open(os.path.join(HIER, 'indeling-spook.json'))) if os.path.exists(os.path.join(HIER, 'indeling-spook.json')) else {}
 PAREN = json.load(open(os.path.join(HIER, 'paren.json'))) if os.path.exists(os.path.join(HIER, 'paren.json')) else []
+# kandidaat-vakjes uit de AI-porties (voor producten waar de AI geen antwoord op gaf)
+HINT = {}
+for f in glob.glob('/mnt/user-data/outputs/ai-keuring/porties/in-*.json'):
+    for x in json.load(open(f, encoding='utf-8')):
+        if x.get('k'): HINT[x['i']] = x['k'][0]
 # ---- AI-antwoorden ----
 AI = {}
 if AIMAP:
@@ -93,6 +100,10 @@ def herzie(pl, titel):
         hits = [x for x in vs if VW.get(x) and re.search(VW[x], t)]
         return ['sport-buiten', 'Darts', hits[0] if hits else None]
     if (pl[0], pl[1]) in GROEPVAK and pl[2] and pl[2] not in GROEPVAK[(pl[0], pl[1])]: return [pl[0], pl[1], None]
+    t = titel.lower()
+    # games staan soms bij consoles: een spel (titel met '(Switch 2)', '(PS5)' enz.) zonder het woord console is een game
+    if (pl[0], pl[1], pl[2]) == ('elektronica-gaming', 'Gaming', 'Consoles') and re.search(r'\((ps[45]|switch|xbox|nintendo)', t) and not re.search(r'console|slim|disc edition|digital edition|oled', t):
+        return [pl[0], pl[1], 'Games']
     return pl
 VOOR = {'kinderen': 'kind', 'tieners': 'tiener', 'kind': 'kind', 'tiener': 'tiener', 'haar': 'haar', 'hem': 'hem', 'baby': 'baby', 'opa-oma': 'opa-oma', 'collega': 'collega'}
 THEMA_OUD = {'sinterklaas': 'cadeaus/sinterklaas', 'kerst': 'cadeaus/kerst', 'met-naam': 'cadeaus/met-naam', 'grappig': 'cadeaus/grappig', 'adventskalender': 'cadeaus/adventskalenders'}
@@ -112,7 +123,8 @@ for p in LIVE:
     lp = LEAN.get(p['id'], p); oud = lp['cat'] + '/' + lp['sub']
     a = AI.get(p['id'])
     pl = herzie(list(PLEK[a['v']]), p['titel']) if a else kiesRegel(p['titel'], oud)
-    if not pl: rapport['nog geen plek (mengvak, wacht op AI)'] += 1; continue
+    if not pl and HINT.get(p['id']): pl = list(PLEK[HINT[p['id']]])  # geen AI-antwoord: eerste kandidaat van de regels
+    if not pl: rapport['geen plek in de boom (blijft alleen op themapagina)'] += 1; continue
     s = slugs(pl); extra = []
     mo = M.get(oud)
     if oud.split('/')[0] in ('cadeaus', 'valentijn'): extra.append(oud)  # themapagina blijft het product tonen
@@ -174,6 +186,7 @@ with open(os.path.join(ROOT, 'keurkamer/data/boom/rapport.txt'), 'w', encoding='
     f.write('\nWEG (%d):\n' % len(weg)); [f.write('  %s | %s | %s\n' % x) for x in weg]
     f.write('\nTWIJFEL (%d):\n' % len(twijfel)); [f.write('  %s | %s | %s | %s\n' % x) for x in twijfel]
     f.write('\nGOEDKOPER BIJ EEN ANDERE WINKEL (%d):\n' % len(goedkoper)); [f.write('  %s | %s | %s €%s -> %s €%s\n' % x[:6]) for x in goedkoper]
+json.dump([x[0] for x in twijfel], open(os.path.join(ROOT, 'keurkamer/data/boom/te-keuren.json'), 'w'))
 tel = collections.Counter((v['a'], v['g'], v['v']) for v in plaatsing.values())
 print(dict(rapport)); print('weg', len(weg), 'twijfel', len(twijfel), 'goedkoper', len(goedkoper), 'beschermd', len(BESCHERMD))
 print('vakjes gevuld', len([k for k in tel if k[2]]), 'met minder dan 10:', len([k for k, n in tel.items() if k[2] and n < 10]))
