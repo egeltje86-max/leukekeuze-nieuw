@@ -118,6 +118,14 @@ for naam, fid in TTFEED.items():
         log('ok', naam, n, 'producten')
     except Exception as e:
         log('FOUT', naam, e, '(oude versie blijft)')
+# Awin (04-11-2026, wens Marius): de feeds van alle goedgekeurde Awin-partners, met het script van de Feedzoeker.
+AWIN = r'C:\Users\egelt\Desktop\Feedzoeker LeukeKeuze\programma\awin-ophalen.py'
+if os.path.exists(AWIN):
+    try:
+        r = subprocess.run([sys.executable, AWIN], capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=2400)
+        log('awin', 'ok' if r.returncode == 0 else 'FOUT', (r.stdout or r.stderr).strip().splitlines()[-1:] if (r.stdout or r.stderr) else '')
+    except Exception as e:
+        log('FOUT awin', e, '(oude versies blijven)')
 if ok == 0:
     log('Geen enkele feed gelukt, niets online gezet.'); sys.exit(1)
 TEST = '--test' in sys.argv  # alleen feeds ophalen en index maken, niets online zetten

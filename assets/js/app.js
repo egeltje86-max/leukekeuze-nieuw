@@ -2344,7 +2344,10 @@
       '<strong>' + esc(w.naam) + '</strong><span>' + esc(w.tekst) + '</span><em>Naar ' + esc(w.naam) + ' ' + ic('pijl') + '</em></a>';
   }
   function winkelsMet(slug) {
-    return (window.LK_WINKELS || []).filter(function (w) { return w.url && (!slug || w.cats.indexOf(slug) !== -1) && (!INST.daisyconPauze || !isDaisycon(w.url) || WINKELSITE[w.naam]); });
+    var l = (window.LK_WINKELS || []).filter(function (w) { return w.url && (!slug || w.cats.indexOf(slug) !== -1) && (!INST.daisyconPauze || !isDaisycon(w.url) || WINKELSITE[w.naam]); });
+    /* 04-11-2026: tijdens de Daisycon-pauze eerst de winkels waar we wel aan verdienen (bol, TradeTracker, Awin). Volgorde verder zoals in data.js. */
+    if (INST.daisyconPauze) l = l.filter(function (w) { return !isDaisycon(w.url); }).concat(l.filter(function (w) { return isDaisycon(w.url); }));
+    return l;
   }
   function winkels() {
     zetTitel('Onze winkels');

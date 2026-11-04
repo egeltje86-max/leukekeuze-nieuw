@@ -79,6 +79,14 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('t-toppers.json', 'Toppers in Concert', ''),
     ('t-viparfum.json', 'Viparfum', ''),
     ('t-mobistoxx.json', 'Mobistoxx', ''),
+    ('t-biercheque.json', 'Biercheque', ''),
+    # Awin (a-*.json, opgehaald met Feedzoeker\programma\awin-ophalen.py; 04-11-2026, wens Marius). Bewust niet: Kopp Verlag,
+    # de enorme kledingcatalogi van s.Oliver en Street One (wel als winkeltegel), en reizen/vervoer.
+    ('a-coolblue-nl.json', 'Coolblue', ''),
+    ('a-intergard-tuinartikelen-nl.json', 'InterGard', ''),
+    ('a-robotime-international-limited.json', 'Robotime', ''),
+    ('a-emp.json', 'EMP', ''),
+    ('a-timeshop24-de.json', 'Timeshop24', ''),
 ]
 # Daisycon staat op pauze (LK_INSTELLINGEN.daisyconPauze in assets/js/data.js): dan alleen TradeTracker-winkels in de index.
 # Ditverzinjeniet komt altijd via TradeTracker (t-dvzn), niet meer via Daisycon (x-dvzn).
@@ -301,6 +309,7 @@ EIGEN = {
     'Animals Giftshop': ['dieren', 'speelgoed'], 'Knuffelparadijs': ['speelgoed'], 'Knuffelkado': ['speelgoed'],
     'De Grote Speelgoedwinkel': ['speelgoed', 'hobby', 'sport-outdoor'], 'Countrylifestyle': ['wonen', 'keuken', 'tuin-klussen'],
     'Smartphoto': ['wonen', 'keuken', 'boeken-media'], 'Spaarpotten-winkel': ['wonen', 'speelgoed'],
+    'Timeshop24': ['mode-beauty', 'sieraden'], 'InterGard': ['tuin-klussen'], 'Robotime': ['hobby', 'speelgoed'],
 }
 # Sommige groepen alleen als de titel er echt over gaat.
 POORT = {
