@@ -24,7 +24,7 @@ SIERAAD = re.compile(r'sierad|jewel|zilver|goud|925|edelstaal|roestvrij staal|ti
 NIET_SIERAAD = re.compile(r'smart ring|ringenspel|werpspel|basketbal|vlieger|map met|amorces|schots|led ring|magnet|riem ring|benzine|for sex|busy buddy|chuckit|petsnack|activity ringen|sleutelring|servetring', re.I)
 # Drankspellen (4-11-2026, Marius: "haal de alcoholspel weg uit speelgoed en spellen"): nooit bij speelgoed of in kinder-/sintvakken.
 DRANKSPEL = re.compile(r'drankspel|drinkspel|drink ?game|drinking ?game|drinkopoly|shot ?roulette|met shot(glaasjes|glazen|jes)|call the shots|stier zoekt bier|pompen of verzuipen|bier ?kaartspel|beer ?pong|drink hard|zuipspel|shotschaak', re.I)
-KINDGROEP = re.compile(r'^speelgoed|kind|baby|tiener|sint|advent', re.I)
+KINDGROEP = re.compile(r'^speelgoed|^sport|kind|baby|tiener|sint|advent', re.I)
 # Grof of seks: nooit tonen.
 GROF = re.compile(r'fuck|\bkut\b|kutje|\blul\b|piemel|penis|tieten|borsten|\bsex\b|seks|vibrator|dildo|condoom|mankini|erotisch|bdsm|stripper|\bporn', re.I)
 # Kinderspullen die wel in volwassen groepen mogen als het vak er duidelijk over gaat (kinderschoenen, kinderhorloge...).
