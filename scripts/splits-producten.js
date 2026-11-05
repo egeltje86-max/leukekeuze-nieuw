@@ -33,8 +33,23 @@ function keurkamerSlot(p) {
 function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
-  for (const p0 of w.LK_PRODUCTEN) {
-    const p = plaats(keurkamerSlot(deel(p0)));
+  const alle = w.LK_PRODUCTEN.map((p0) => plaats(keurkamerSlot(deel(p0))));
+  /* Nakijkbeurt (6-11-2026): bij dubbele producten blijft er één over (correcties.json 'samen').
+     Het product dat blijft krijgt de labels van het weggevallen product erbij (voor wie, tags, extra vakjes, momenten),
+     zodat het nergens van een pagina verdwijnt. 'voorWeg' blijft gelden. */
+  const opId = {}; for (const p of alle) opId[p.id] = p;
+  const COR = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/correcties.json'), 'utf8')); } catch (e) { return {}; } })();
+  for (const p of alle) {
+    if (p.status !== 'samengevoegd' || !p.samengevoegd) continue;
+    const doel = opId[p.samengevoegd]; if (!doel || doel.status !== 'goedgekeurd') continue;
+    const weg = (COR.voorWeg || {})[doel.id] || [];
+    for (const veld of ['voor', 'tags', 'ookIn', 'moment']) {
+      if (!Array.isArray(p[veld])) continue;
+      const lijst = Array.isArray(doel[veld]) ? doel[veld] : (doel[veld] = []);
+      for (const x of p[veld]) if (lijst.indexOf(x) === -1 && !(veld === 'voor' && weg.indexOf(x) !== -1) && !(veld === 'ookIn' && x === doel.cat + '/' + doel.sub)) lijst.push(x);
+    }
+  }
+  for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */

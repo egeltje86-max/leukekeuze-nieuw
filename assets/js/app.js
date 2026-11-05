@@ -1233,12 +1233,18 @@
   }
   /* 2.0: 'Bedoel je…': welke pagina's passen bij het zoekwoord? Eerst de persoonspagina's (Horloges voor hem),
      dan gelegenheden en collecties, dan de productgroepen. Zo kom je in één tik op de goede afdeling. */
+  /* Nakijkbeurt 6-11-2026: eerst alleen echte treffers. Pas als dat niets geeft, ook woorden met één tikfout
+     (anders werd 'kaarten' ook 'kaarsen' en kreeg je bij 'pokemon kaarten' Kaarsen & geur als tip). */
   function paginaTips(woorden) {
+    var t = paginaTips2(woorden, false);
+    return t.length ? t : paginaTips2(woorden, true);
+  }
+  function paginaTips2(woorden, tikfout) {
     if (!woorden.length) return [];
     var ZW = window.LK_ZOEKWOORDEN || {}, TIPS = window.LK_ZOEKTIPS || {}, uit = [], gezien = {};
     var past = function (naam, extra) {
       var n = ' ' + vouw(naam).replace(/[^a-z0-9]+/g, ' ') + ' ' + (extra || '');
-      return woorden.some(function (w) { return w.length >= 3 && (n.indexOf(' ' + w) !== -1 || n.split(' ').some(function (x) { return x.length >= 5 && lijkt(w, x); })); });
+      return woorden.some(function (w) { return w.length >= 3 && (n.indexOf(' ' + w) !== -1 || (tikfout && n.split(' ').some(function (x) { return x.length >= 5 && lijkt(w, x); }))); });
     };
     var voeg = function (naam, naar, soort) { if (!gezien[naar]) { gezien[naar] = 1; uit.push({ naam: naam, naar: naar, soort: soort }); } };
     var PERS = window.LK_PERSONEN || [];
@@ -1626,10 +1632,14 @@
     var watW = q.wat ? zoekWoorden(q.wat) : [];
     /* Christelijk blijft een eigen afdeling: alleen als je die interesse zelf kiest, en dan alleen christelijke producten. */
     var alle = LK.zichtbaar().filter(function (p) { return hobby === 'christelijk' ? p.cat === 'christelijk' : nietChristelijk(p); }).filter(function (p) {
-      return q.voor === 'iedereen' || hobby === 'dieren' || watW.length || p.cat !== 'dieren';
+      return q.voor === 'iedereen' || hobby === 'dieren' || (watW.length && !hobby) || p.cat !== 'dieren'; /* 6-11: 'vader die vist' (hobby sport) geeft geen aquarium- of vogelspullen */
     }).filter(function (p) { return binnenPrijs(p, q.budget); });   /* budget is heilig */
     /* Getypt woord (bijv. 'lego' of 'vissen'): streng, alleen echte treffers (wens van Marius, 01-11-2026). */
-    if (watW.length) alle = alle.filter(function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); });
+    /* Nakijkbeurt 6-11-2026: eerst producten met álle woorden ('knuffel met naam' = knuffels met een naam), pas als dat niets geeft één woord. */
+    if (watW.length) {
+      var alleW = alle.filter(function (p) { var zt = zoekTekstV(p); return watW.every(function (w) { return bevatEen(zt, w); }); });
+      alle = alleW.length ? alleW : alle.filter(function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); });
+    }
     if (lft) alle = alle.filter(function (p) { var a = kindLeeftijd(p); return a ? (a[0] <= lft.tot && a[1] >= lft.van) : lft.van >= 3; });
     var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
     var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };

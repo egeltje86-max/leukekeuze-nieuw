@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /sjabloon.html
+Disallow: /keurkamer/
+Disallow: /scripts/
 
 Sitemap: https://leukekeuze.nl/sitemap.xml

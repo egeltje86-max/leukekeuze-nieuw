@@ -28,6 +28,7 @@ function plaats(p) {
   const z = (COR.samen || {})[p.id]; if (z && p.status === 'goedgekeurd') { p.status = 'samengevoegd'; p.samengevoegd = z; }
   const t = (COR.tekst || {})[p.id]; if (t) p.waarom = t;
   const ti = (COR.titel || {})[p.id]; if (ti) p.titel = ti;
+  const vb = (COR.voorErbij || {})[p.id]; if (vb) { p.voor = (p.voor || []).slice(); for (const x of vb) if (p.voor.indexOf(x) === -1) p.voor.push(x); } /* nakijkbeurt 6-11-2026: voor-wie erbij */
   const w = (COR.voorWeg || {})[p.id];
   if (w) { p.voor = (p.voor || []).filter((x) => w.indexOf(x) === -1); p.ookIn = (p.ookIn || []).filter((x) => !w.some((l) => OUDP[l] === x)); }
   const s = (COR.status || {})[p.id]; if (s && p.status === 'goedgekeurd') { p.status = s; p.uitverkochtSinds = p.uitverkochtSinds || '2026-11-05'; }

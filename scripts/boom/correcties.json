@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg).",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -1592,6 +1592,74 @@
   "dgsw-8121491748": {
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbitzee-hamster-ball-interactief-speelgoed-met-meer-dan-20-hamsters-rolt-en-reageert-op-aanraking-speelgoed-met-digitale-huisdieren%2F9300000225917011%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/bitzee-hamster-ball-interactief-speelgoed-met-meer-dan-20-hamsters-rolt-en-reageert-op-aanraking-speelgoed-met-digitale-huisdieren/9300000225917011/"
+  },
+  "cl-svinando-criollo": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=21f4cc10120ae8936be01997638dffbc&dl=domori-tavaletta-di-cioccolato-cacao-criollo-guasare&ws=",
+   "winkelUrl": "https://www.svinando.nl/domori-tavaletta-di-cioccolato-cacao-criollo-guasare"
+  },
+  "cl-svinando-adore": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=2383efc64cdf1577248c16269dfe990b&dl=dammann-coffret-adore-20-bustine-te-termosigillate&ws=",
+   "winkelUrl": "https://www.svinando.nl/dammann-coffret-adore-20-bustine-te-termosigillate"
+  },
+  "cl-svinando-cioccolata": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=1e19eabff2a496455bec60a80714c89c&dl=domori-preparato-per-cioccolata-calda-da-6-bustine&ws=",
+   "winkelUrl": "https://www.svinando.nl/domori-preparato-per-cioccolata-calda-da-6-bustine"
+  },
+  "cl-svinando-ragu": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=d5008a3ed2ece298249bda42a6247eec&dl=ragu-di-toscana-2&ws=",
+   "winkelUrl": "https://www.svinando.nl/ragu-di-toscana-2"
+  },
+  "cl-chianti": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=5430cd8dedbef4cbbf7d7d00e06da20c&dl=piccini-chianti-docg-2025&ws=",
+   "winkelUrl": "https://www.svinando.nl/piccini-chianti-docg-2025"
+  },
+  "cl-moet": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=05b3798182bc3e1d4f2764011f489dc5&dl=moet-e-chandon-moet-imperial&ws=",
+   "winkelUrl": "https://www.svinando.nl/moet-e-chandon-moet-imperial"
+  },
+  "cl-moet-reserve": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=9379cf1f78468fe0e5fd709653043247&dl=champagne-moet-chandon-reserve-imperiale-brut&ws=",
+   "winkelUrl": "https://www.svinando.nl/champagne-moet-chandon-reserve-imperiale-brut"
+  },
+  "cl-laurent-perrier": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=17053aa413afa3bf1b26ae570b3ad6d6&dl=laurent-perrier-champagne-la-cuvee-brut&ws=",
+   "winkelUrl": "https://www.svinando.nl/laurent-perrier-champagne-la-cuvee-brut"
+  },
+  "cl-lamotte": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=c3ce91a226a1c8b262a7e8dfe97791c5&dl=jacquart-champagne-lamotte-brut-aoc&ws=",
+   "winkelUrl": "https://www.svinando.nl/jacquart-champagne-lamotte-brut-aoc"
+  },
+  "cl-baron-fuente": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=f5caa354b251f687fed89a9d8180039b&dl=baron-fuente-champagne-baron-fuente-brut-tradition&ws=",
+   "winkelUrl": "https://www.svinando.nl/baron-fuente-champagne-baron-fuente-brut-tradition"
+  },
+  "cl-jean-villare": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=5c29c5d421579339fee5944fb0f735ed&dl=champagne-jean-de-villare-grande-reserve&ws=",
+   "winkelUrl": "https://www.svinando.nl/champagne-jean-de-villare-grande-reserve"
+  },
+  "cl-consulat": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=4c5c2d99fc3728a5cf570888a93e1f1c&dl=baron-fuente-champagne-consulat-palace-brut-prestige&ws=",
+   "winkelUrl": "https://www.svinando.nl/baron-fuente-champagne-consulat-palace-brut-prestige"
+  },
+  "cl-charpentier": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=e6a97509388a156f67d0e381b4bace80&dl=champagne-j-charpentier-tradition-brut&ws=",
+   "winkelUrl": "https://www.svinando.nl/champagne-j-charpentier-tradition-brut"
+  },
+  "cl-valdobbiadene": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=f9d194f44a3d9a32ef2c4b9e2e7cfe5c&dl=valdo-spumanti-prosecco-cuvee-1926-valdobbiadene-superiore-docg&ws=",
+   "winkelUrl": "https://www.svinando.nl/valdo-spumanti-prosecco-cuvee-1926-valdobbiadene-superiore-docg"
+  },
+  "cl-canella-bellini": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=35f2f82d964bd9cdcc69b113e43e8389&dl=casa-vinicola-canella-bellini-canella&ws=",
+   "winkelUrl": "https://www.svinando.nl/casa-vinicola-canella-bellini-canella"
+  },
+  "cl-lebolle": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=ff15a9b58b542559d6d901c24d488fad&dl=losito-e-guarini-spumante-pinot-noir-rosato-lebolle-extra-dry&ws=",
+   "winkelUrl": "https://www.svinando.nl/losito-e-guarini-spumante-pinot-noir-rosato-lebolle-extra-dry"
+  },
+  "cl-lambrusco": {
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=adc666f764e04d896f9e259ec3220582&dl=chiarli-nivola-lambrusco-grasparossa-castelvetro&ws=",
+   "winkelUrl": "https://www.svinando.nl/chiarli-nivola-lambrusco-grasparossa-castelvetro"
   }
  },
  "vak": {
@@ -6549,6 +6617,26 @@
    "hobby",
    "modelbouw",
    "bouwpakketten"
+  ],
+  "bol-9300000264493695": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "bol-9300000268338286": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "grotek-84374cd8b5": [
+   "speelgoed",
+   "leren-ontdekken",
+   "experimenteren-wetenschap"
+  ],
+  "bol-9300000035128726": [
+   "speelgoed",
+   "baby-peuter",
+   "babygyms-activiteitenspeelgoed"
   ]
  },
  "samen": {
@@ -6614,7 +6702,96 @@
   "999g-999snl02": "bol-9300000228437042",
   "bol-9300000019345442": "cl-rb-pokebal",
   "bol-9300000232180883": "cl-jvh-sint",
-  "dg-cbd3c91d5b": "cl-rb-bigben"
+  "dg-cbd3c91d5b": "cl-rb-bigben",
+  "cl-bp-rozen": "bp-l001",
+  "cl-ll-p2r": "bol-9300000234717251",
+  "cl-highpeak-narvik": "bol-9300000222759041",
+  "cl-eeuwigheid-kort-moment": "bol-9300000311177843",
+  "cl-myka-initiaal": "myka-11001426204",
+  "cl-epicuro": "wk-0352985",
+  "cl-ww-medium": "wwk-2674186e",
+  "cl-manduka-superlite": "bol-9300000091428189",
+  "cl-pk-minitin": "bol-9300000377799800",
+  "cl-pk-bundle": "bol-9300000331860190",
+  "cl-bluey-figuren": "bol-9300000133849812",
+  "cl-rit-karma": "bol-9300000237452859",
+  "cl-set-goodgirl": "bol-9300000266921937",
+  "cl-jbl-clip5": "bol-9300000167137761",
+  "cl-ch720": "bol-9300000139579323",
+  "cl-willen2": "bol-9300000187294796",
+  "cl-rit-jing": "bol-9300000242918333",
+  "cl-set-stronger": "bol-9300000245612578",
+  "cl-tony-lief": "bol-9300000110090153",
+  "cl-vibe-one": "bol-9200000109330654",
+  "cl-venco-toren": "bol-9300000242449609",
+  "cl-fotolijst-kodak": "bol-9300000234671725",
+  "cl-crosley-cruiser": "bol-9300000054523157",
+  "cl-beeztees-dorix": "bol-9200000122915078",
+  "cl-duvo-popup": "bol-9300000246498048",
+  "cl-rembrandt-12": "bol-9200000129054415",
+  "cl-puky-moto": "bol-9300000050797969",
+  "cl-coleman-slaapzak": "bol-9200000066014328",
+  "cl-nivea-advent": "bol-9300000239540729",
+  "cl-happy-wine": "bol-9300000187227306",
+  "cl-basil-mand": "bol-9200000085014800",
+  "cl-fossil-heren": "bol-9300000133972425",
+  "cl-tunturi-abroller": "bol-9200000026150095",
+  "cl-nivea-shave": "bol-9300000322634453",
+  "cl-luna-rossa": "bol-9200000074105493",
+  "cl-jvh-rol": "bol-9300000155515424",
+  "cl-rm-hartspiegel": "bol-9300000224403531",
+  "cl-ugears-hagrid": "bol-9300000158414106",
+  "cl-pilates-ring": "bol-9300000005474098",
+  "cl-ses-kristal": "bol-9300000021970709",
+  "cl-cl-actie": "bol-9200000109690396",
+  "cl-bp-zakje-geluk": "bp-l025",
+  "cl-bp-koffieplant": "bp-l114",
+  "cl-weleda-set": "bol-9300000309590276",
+  "cl-kneipp-men": "bol-9300000152711957",
+  "cl-exit": "bol-9300000173882144",
+  "cl-nivea-protect": "bol-9300000322634431",
+  "cl-govee-sterren": "bol-9300000193639901",
+  "cl-hoooked-panda": "bol-9300000374064659",
+  "cl-durable-tulp": "bol-9300000000726428",
+  "cl-chuckit-launcher": "bol-9200000047074314",
+  "cl-ll-kidled": "bol-9300000104909201",
+  "cl-rit-geurstok": "bol-9300000242950948",
+  "cl-bb-clickplay": "bol-9300000267785127",
+  "cl-jbl-flip7": "bol-9300000193746659",
+  "cl-ps5-disc": "bol-9300000166374057",
+  "cl-barbie-zeemeermin": "bol-9300000153923423",
+  "cl-dobble": "bol-9300000159988830",
+  "cl-ds-glow": "bol-9300000179894059",
+  "cl-barbie-zwembad": "bol-9300000222631513",
+  "cl-bb-bad": "bol-9300000267785138",
+  "cl-vtech-transporter": "bol-9300000264938787",
+  "cl-blokus": "bol-9200000020488096",
+  "cl-watbenik": "bol-9300000085320242",
+  "cl-neopix244": "bol-9300000244901052",
+  "cl-mogo4": "bol-9300000232171476",
+  "cl-hoverair": "bol-9300000184457631",
+  "cl-sony-lx3": "bol-9300000253062720",
+  "cl-meditatiekussen": "bol-9300000074001597",
+  "cl-one-piece-1": "bol-9300000236925688",
+  "cl-philips-n150": "bol-9300000229495665",
+  "cl-ses-bluey": "bol-9300000279044423",
+  "cl-jbl-tune770": "bol-9300000149873801",
+  "cl-nothing-a": "bol-9300000176239529",
+  "cl-jbl-charge6": "bol-9300000193746671",
+  "cl-ch520": "bol-9300000140770431",
+  "cl-xm6": "bol-9300000229857582",
+  "cl-set-libre": "bol-9300000055445739",
+  "cl-fossil-dames": "bol-9300000258216288",
+  "cl-airpods-pro3": "bol-9300000239314960",
+  "cl-era100sl": "bol-9300000269935698",
+  "cl-k-cw-chef": "bol-9300000187237442",
+  "cl-playseat": "bol-9300000011623827",
+  "cl-ult-wear": "bol-9300000175795860",
+  "cl-sauvage": "bol-9200000052055968",
+  "cl-hydroflask-tumbler": "bol-9300000263072188",
+  "cl-ax-hampton": "bol-9200000093250301",
+  "dgsw-372e70531c": "cl-kpop-figuur",
+  "cadeau-ea0fd7bda4": "cl-mario-lamp"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -12153,6 +12330,74 @@
   "cl-flextail-lantern": [
    34.95,
    null
+  ],
+  "dvzn-637174": [
+   37.99
+  ],
+  "dw-8410525256714": [
+   12.59
+  ],
+  "dw-8710559049512": [
+   14.15
+  ],
+  "dw-knoppers": [
+   10.61,
+   11.17
+  ],
+  "nedgam-3dfbdc114b": [
+   179.99
+  ],
+  "cl-bose-qc": [
+   208.0
+  ],
+  "cl-switch2-mkw": [
+   550.0
+  ],
+  "cl-switch-oled": [
+   318.0,
+   349.99
+  ],
+  "cl-ds-laad": [
+   29.99
+  ],
+  "cl-a50": [
+   225.0
+  ],
+  "cl-va5": [
+   197.0
+  ],
+  "cl-pixel5": [
+   397.0
+  ],
+  "cl-zv1f": [
+   506.0
+  ],
+  "cl-gopro-hero": [
+   219.0
+  ],
+  "cl-rollei9s": [
+   250.0
+  ],
+  "cl-hue-bridge": [
+   58.0
+  ],
+  "cl-dyson-airwrap": [
+   478.0
+  ],
+  "cl-babyliss-superx": [
+   90.0
+  ],
+  "cl-tefal-dual": [
+   143.0
+  ],
+  "cl-forerunner-55": [
+   155.0
+  ],
+  "cl-polar-pacer": [
+   156.0
+  ],
+  "cl-shokz-openmove": [
+   84.0
   ]
  },
  "shop": {
@@ -13129,6 +13374,51 @@
  },
  "titel": {
   "bol-9300000193649002": "Jellycat Bashful eenhoorn (31 cm)",
-  "bol-9300000241019192": "Jellycat Blossom konijn Bloom (18 cm)"
+  "bol-9300000241019192": "Jellycat Blossom konijn Bloom (18 cm)",
+  "bol-9300000156251556": "Guess Crescent herenhorloge (GW0630G1)"
+ },
+ "voorErbij": {
+  "bol-9300000142143695": [
+   "tiener"
+  ],
+  "bol-9300000169798460": [
+   "tiener"
+  ],
+  "bol-9300000194762206": [
+   "tiener"
+  ],
+  "bol-9300000144864856": [
+   "tiener"
+  ],
+  "bol-9200000109805786": [
+   "tiener"
+  ],
+  "bol-9300000083423907": [
+   "tiener"
+  ],
+  "amz-b0dhhhz7sn": [
+   "tiener"
+  ],
+  "bol-9300000240772861": [
+   "tiener"
+  ],
+  "bol-9300000240772866": [
+   "tiener"
+  ],
+  "bol-9300000071045678": [
+   "tiener"
+  ],
+  "bol-9300000197526649": [
+   "tiener"
+  ],
+  "bol-9300000271007565": [
+   "tiener"
+  ],
+  "amz-b0dnfdt72m": [
+   "tiener"
+  ],
+  "bol-9300000238950410": [
+   "tiener"
+  ]
  }
 }
