@@ -1584,6 +1584,14 @@
   "999g-999wiz01b": {
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F999-games-wizard-kaartspel-familiespel-gezelschapsspel-klein-cadeautje-met-nieuw-artwork%2F9300000306390817%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/999-games-wizard-kaartspel-familiespel-gezelschapsspel-klein-cadeautje-met-nieuw-artwork/9300000306390817/"
+  },
+  "dgsw-7e185a9854": {
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbitzee-disney-het-interactieve-virtuele-huisdier-30-digitale-personages-in-een-doosje-die-reageren-op-jouw-aanraking%2F9300000177189559%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/bitzee-disney-het-interactieve-virtuele-huisdier-30-digitale-personages-in-een-doosje-die-reageren-op-jouw-aanraking/9300000177189559/"
+  },
+  "dgsw-8121491748": {
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbitzee-hamster-ball-interactief-speelgoed-met-meer-dan-20-hamsters-rolt-en-reageert-op-aanraking-speelgoed-met-digitale-huisdieren%2F9300000225917011%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/bitzee-hamster-ball-interactief-speelgoed-met-meer-dan-20-hamsters-rolt-en-reageert-op-aanraking-speelgoed-met-digitale-huisdieren/9300000225917011/"
   }
  },
  "vak": {
@@ -2148,9 +2156,9 @@
    "strategiespellen"
   ],
   "cg-desktop-knikkerbaan": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "bouwen",
+   "knikkerbanen"
   ],
   "cg-hover-hockey-voetbal-set": [
    "speelgoed",
@@ -4548,9 +4556,9 @@
    "fun-retro-gadgets"
   ],
   "dgsw-8121491748": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "nedgam-c49abba29a": [
    "elektronica",
@@ -4558,19 +4566,19 @@
    "fun-retro-gadgets"
   ],
   "bol-9300000252262288": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "dgsw-0a6f0ac8c4": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "dgsw-7e185a9854": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "bol-9300000236575345": [
    "elektronica",
@@ -5461,6 +5469,236 @@
    "speelgoed",
    "puzzels",
    "kinderpuzzels"
+  ],
+  "bol-9300000271089935": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cl-charmera": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000232180880": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "bol-9300000247823181": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "bol-9300000275654380": [
+   "speelgoed",
+   "poppen-knuffels",
+   "poppenhuizen-accessoires"
+  ],
+  "bol-9300000275654350": [
+   "speelgoed",
+   "poppen-knuffels",
+   "poppenhuizen-accessoires"
+  ],
+  "bol-9300000256044322": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "verkleedkleding"
+  ],
+  "nedg-3f231c0b49": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "bol-9300000261112822": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "bol-9300000239874901": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "bol-9300000368982942": [
+   "speelgoed",
+   "knutselen",
+   "klei-slijm"
+  ],
+  "bol-9300000154791241": [
+   "speelgoed",
+   "knutselen",
+   "klei-slijm"
+  ],
+  "bol-9300000024357515": [
+   "speelgoed",
+   "buiten-spelen",
+   "buitenspellen-ballen"
+  ],
+  "bol-9300000247823188": [
+   "speelgoed",
+   "leren-ontdekken",
+   "muziekspeelgoed-karaoke"
+  ],
+  "bol-9300000247823180": [
+   "speelgoed",
+   "leren-ontdekken",
+   "muziekspeelgoed-karaoke"
+  ],
+  "cl-paw-handheld": [
+   "elektronica",
+   "gaming",
+   "consoles"
+  ],
+  "nedg-5047c5ea7b": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "supz-8176d5f538": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cl-creeper-lamp": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cl-mario-lamp": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cl-ps-lamp": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cl-stitch-neon": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "emp-100c8f85bc": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "supz-b83356d67b": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "dvzn-871551": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "bol-9300000244357239": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "bol-9200000052263547": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "bol-9200000098105594": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "amz-b0f3jwfl56": [
+   "elektronica",
+   "tv-beeld",
+   "televisies"
+  ],
+  "dvzn-541673": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cl-sprocket": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "cl-zoemini2": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "cl-selphy": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "cl-plaud-notepro": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-plaud-notepin-s": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-rokid-style": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000239807652": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000198405239": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9200000081551257": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "nedg-alarmo": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000167429702": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000221461980": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000235929564": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000238323021": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9200000123106644": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000233557162": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ]
  },
  "samen": {
@@ -5780,7 +6018,68 @@
   "bol-9300000243481734": "uitverkocht",
   "lego-72306": "uitverkocht",
   "amz-b0gyxc8dtk": "afgekeurd",
-  "bol-9300000062674595": "uitverkocht"
+  "bol-9300000062674595": "uitverkocht",
+  "bol-9300000083332346": "afgekeurd",
+  "dvzn-186719": "afgekeurd",
+  "dvzn-862380": "afgekeurd",
+  "cadeau-2e997fae58": "afgekeurd",
+  "dvzn-857964": "afgekeurd",
+  "dvzn-505615": "afgekeurd",
+  "dvzn-3647": "afgekeurd",
+  "dvzn-896290": "afgekeurd",
+  "nedg-765e828271": "afgekeurd",
+  "kadov-2ce541f8f3": "afgekeurd",
+  "coolgi-5745b2e110": "afgekeurd",
+  "grotek-0952bbcdc1": "afgekeurd",
+  "dvzn-690454": "afgekeurd",
+  "dvzn-711692": "afgekeurd",
+  "amz-b09v296172": "afgekeurd",
+  "cadeau-22137f0c5b": "afgekeurd",
+  "cadeau-21d3b85068": "afgekeurd",
+  "cadeau-9addb11d4d": "afgekeurd",
+  "cadeau-62d948c376": "afgekeurd",
+  "dvzn-0708beee1c": "afgekeurd",
+  "dvzn-85770701aa": "afgekeurd",
+  "grotek-153c8266a9": "afgekeurd",
+  "bol-9300000225322186": "afgekeurd",
+  "bol-9300000237453080": "afgekeurd",
+  "bol-9300000246179244": "afgekeurd",
+  "amz-b0f6n21337": "afgekeurd",
+  "amz-b0gczmncmm": "afgekeurd",
+  "bol-9300000266439686": "afgekeurd",
+  "dvzn-531801": "afgekeurd",
+  "dvzn-984740": "afgekeurd",
+  "dvzn-349": "afgekeurd",
+  "amz-b0c7vjfn24": "afgekeurd",
+  "cg-0f2241affe": "afgekeurd",
+  "dvzn-574f2639a5": "afgekeurd",
+  "cadeau-f48bf78021": "afgekeurd",
+  "cadeau-1979487d6d": "afgekeurd",
+  "cadeau-9c26c90976": "afgekeurd",
+  "cadeau-d316621f64": "afgekeurd",
+  "dvzn-2065c5af45": "afgekeurd",
+  "cadeau-f05eada5ab": "afgekeurd",
+  "grotek-29c325dcf1": "afgekeurd",
+  "dvzn-7029": "afgekeurd",
+  "cadeau-d7f0ed2417": "afgekeurd",
+  "cg-0a4bf10746": "afgekeurd",
+  "amz-b0fbw78slt": "afgekeurd",
+  "kadov-1acac54ed8": "afgekeurd",
+  "dvzn-957218": "afgekeurd",
+  "dvzn-847923": "afgekeurd",
+  "kadove-5e97ce0358": "afgekeurd",
+  "dvzn-392": "afgekeurd",
+  "cl-usb-koelkast": "afgekeurd",
+  "dvzn-877256": "afgekeurd",
+  "dvzn-428550": "afgekeurd",
+  "coolgi-d849afde16": "afgekeurd",
+  "cl-keyfinder": "afgekeurd",
+  "bol-9300000039415364": "afgekeurd",
+  "bol-9200000023738096": "afgekeurd",
+  "bol-9300000237729002": "afgekeurd",
+  "bol-1003004011415851": "afgekeurd",
+  "cg-verstelbare-laptoptafel-bamboe": "afgekeurd",
+  "cl-retro-arcade": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
@@ -10946,6 +11245,14 @@
   "999g-999wiz01b": [
    13.19,
    null
+  ],
+  "dgsw-7e185a9854": [
+   22.99,
+   39.99
+  ],
+  "dgsw-8121491748": [
+   28.99,
+   49.99
   ]
  },
  "shop": {
@@ -11908,6 +12215,16 @@
    "bol",
    "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
    "https://www.bol.com/nl/nl/p/999-games-wizard-kaartspel-familiespel-gezelschapsspel-klein-cadeautje-met-nieuw-artwork/9300000306390817/"
+  ],
+  "dgsw-7e185a9854": [
+   "bol",
+   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
+   "https://www.bol.com/nl/nl/p/bitzee-disney-het-interactieve-virtuele-huisdier-30-digitale-personages-in-een-doosje-die-reageren-op-jouw-aanraking/9300000177189559/"
+  ],
+  "dgsw-8121491748": [
+   "bol",
+   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
+   "https://www.bol.com/nl/nl/p/bitzee-hamster-ball-interactief-speelgoed-met-meer-dan-20-hamsters-rolt-en-reageert-op-aanraking-speelgoed-met-digitale-huisdieren/9300000225917011/"
   ]
  },
  "titel": {
