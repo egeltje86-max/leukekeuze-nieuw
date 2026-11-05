@@ -558,3 +558,9 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .werkbalk > .chips::before { position: static; }
   .werkbalk .werkbalk-onder { justify-content: flex-end; }
 }
+/* 5-11-2026: onderste regel van het filterblok mag nooit buiten het scherm vallen (smalle telefoons, grote letters). */
+.werkbalk { max-width: 100%; overflow: hidden; }
+.werkbalk .werkbalk-onder { flex-wrap: wrap; row-gap: 8px; }
+.werkbalk .werkbalk-onder .sorteer { min-width: 0; flex: 1 1 140px; max-width: 220px; margin-left: auto; }
+.werkbalk .werkbalk-onder .sorteer select { width: 100%; text-overflow: ellipsis; }
+@media (max-width: 420px) { .werkbalk .werkbalk-onder .sorteer { max-width: none; } .werkbalk .werkbalk-onder .chip.verras { flex: none; } }
