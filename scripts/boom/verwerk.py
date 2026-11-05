@@ -18,6 +18,8 @@ args = [a for a in sys.argv[1:] if not a.startswith('--')]; TOEPASSEN = '--toepa
 KEUS = {}
 for a in sys.argv[1:]:
     if a.startswith('--keuring='): KEUS = json.load(open(a.split('=', 1)[1], encoding='utf-8'))['keus']
+# --alles-houden: Marius keurde de AI-keuring af (5-11-2026): niets gaat weg, ook twijfelgevallen komen erbij
+ALLES_HOUDEN = '--alles-houden' in sys.argv
 AIMAP = args[0] if args else None
 # ---- de boom met codes (zelfde volgorde als de AI-porties) ----
 CODE = {}; PLEK = {}; GROEPVAK = {}
@@ -151,7 +153,7 @@ for sp in SPOOK:
     if sp['id'] in dubbelSpook: rapport['spooksite: dubbel met live (goedkoopste telt)'] += 1; continue
     a = AI.get(sp['id'])
     if KEUS.get(sp['id']) == 'weg': rapport['spooksite: Marius zegt weg'] += 1; continue
-    if a and a['k'] in ('w', 't') and KEUS.get(sp['id']) != 'houden':
+    if a and a['k'] in ('w', 't') and KEUS.get(sp['id']) != 'houden' and not ALLES_HOUDEN:
         rapport['spooksite: AI wil weg/twijfelt, wacht op Marius (nog niet toegevoegd)'] += 1; twijfel.append((sp['id'], sp['titel'], 'nieuw, wacht op keuring Marius', a.get('r', ''))); continue
     if FOTOS is not None and FOTOS.get(sp['id']) not in ('ok', 'al'): rapport['spooksite: geen goede foto (nog niet toegevoegd)'] += 1; continue
     pl = herzie(list(PLEK[a['v']]) if a else SPOOKPLEK.get(sp['id']), sp['titel'])
