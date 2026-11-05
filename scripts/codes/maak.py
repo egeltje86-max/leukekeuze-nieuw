@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Kortingscodes & acties (5-11-2026, GO Marius).
 
-Leest de Daisycon-promotie-export (Materiaal > Promoties > export, CSV) en zet de
-bruikbare acties als window.LK_CODES in assets/js/data.js (tussen de CODES-markers).
+Leest een promotie-export van een netwerk en zet de bruikbare acties als window.LK_CODES
+in assets/js/data.js (tussen de CODES-markers).
+- Daisycon: Materiaal > Promoties > export (CSV)
+- Awin: Toolbox > My Offers > download (CSV)
+Per netwerk wordt het resultaat bewaard in scripts/codes/bron-<netwerk>.json, zodat een
+nieuw bestand van één netwerk de codes van de andere netwerken laat staan.
 
-Gebruik:  python3 -I scripts/codes/daisycon.py <export.csv>
+Gebruik:  python3 -I scripts/codes/maak.py <export.csv> [<export2.csv> ...]
 
 Regels:
 - Alleen acties die in Nederland gelden (locale nl-NL) en nog niet verlopen zijn.
@@ -16,6 +20,7 @@ import csv, json, re, sys, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 DATA = ROOT / 'assets/js/data.js'
+HIER = pathlib.Path(__file__).resolve().parent
 
 # Winkelnaam zoals op de site (zodat de producten van die winkel eronder komen).
 WINKEL = {'AllSaints (EU)': 'AllSaints', 'LEGO (EU)': 'LEGO', 'Mijn Hummeltje (NL)': 'Mijn Hummeltje', 'Cewe.nl': 'CEWE',
@@ -48,6 +53,26 @@ NL = {
   '38747': ('Gratis verzending vanaf €150', 'Bij Decántalo betaal je geen verzendkosten bij bestellingen boven €150.'),
   '34864': ('Wijn-outlet', 'Een hele wijnafdeling van Decántalo in de aanbieding.'),
 }
+# Awin: winkelnaam zoals op de site, en Nederlandse tekst voor acties die we tonen (andere Awin-acties slaan we over).
+# Naam op de site als die anders is dan de mooie naam (zodat de producten eronder kloppen).
+SITE_SHOP = {'Street One': 'Street-One NL'}
+AWIN_WINKEL = {'Street-One NL': 'Street One', 'Large NL': 'EMP', 'Yves Rocher NL': 'Yves Rocher', 'Flextail': 'Flextail'}
+AWIN_NL = {
+  '4161272': ('Tot 50% korting op jurken', 'Een selectie damesjurken met tot 50% korting. De korting zit al in de prijs.'),
+  '4161265': ('Tot 50% op de damessale', 'Geselecteerde damesartikelen uit de sale met tot 50% korting. De korting zit al in de prijs.'),
+  '4145679': ('Tot 50% op de herensale', 'Geselecteerde herenartikelen uit de sale met tot 50% korting. De korting zit al in de prijs.'),
+  '4153800': ('10% korting als lid', 'Word gratis lid en krijg 10% korting. Niet op artikelen die al zijn afgeprijsd.'),
+  '4154224': ('Tot 70% korting op de sale', 'Voor korte tijd: tot 70% korting op geselecteerde kleding, merchandise en must-haves. De korting zit al in de prijs.'),
+  '3989345': ('15% korting via de nieuwsbrief', 'Schrijf je in voor de nieuwsbrief en krijg een code voor 15% korting, 4 weken geldig.'),
+  '4130666': ('Tot 50% korting op een selectie', 'Geselecteerde Yves Rocher-producten met tot 50% korting. Gratis levering vanaf €30.'),
+  '4023867': ('1 kopen = 1 gratis', 'Kies je favoriete product en krijg een tweede gratis. De korting gaat vanzelf in je winkelmandje.'),
+  '4075833': ('Adventskalender 2026', '24 deurtjes met 24 beautyverrassingen tot Kerstmis. Leuk om cadeau te doen of zelf te houden.'),
+  '4161418': ('Black Friday: tot 45% korting', 'Slimme, lichte outdoorspullen van Flextail met tot 45% korting.'),
+  '3911477': ('10% op de Zero Lantern', 'Met deze code krijg je 10% korting op de nieuwe Zero Lantern: een campinglamp van maar 56 gram.'),
+  '3519202': ('15% op de Ezy Set', 'Met deze code krijg je 15% korting op de Vollyc Ezy Set, die je bagage tot 85% kleiner maakt.'),
+}
+AWIN_CODE = {'3911477': 'NEW10', '3519202': 'ULElectricGear15'}  # staan in de uitleg van de winkel, niet in de codekolom
+
 # Datums die in de uitleg van de winkel staan gaan voor (de feed zegt soms iets anders).
 DATUM = {'50234': ('2026-11-16', '2026-11-29'), '50239': ('2026-11-30', '2026-12-06'), '50304': (None, '2026-11-08'), '50009': (None, '2026-11-08')}
 # Niet tonen: zakelijk (koffiemachines), nieuws zonder voordeel, of dubbel.
@@ -61,9 +86,16 @@ def schoon(t):
     return t
 
 
-def main(pad):
-    vandaag = datetime.date.today().isoformat()
-    rijen = list(csv.DictReader(open(pad, encoding='utf-8-sig', newline='')))
+def badge_uit(titel, tekst=''):
+    t = (titel + ' ' + tekst).lower()
+    m = re.search(r'(\d+)\s?%', titel) or re.search(r'(\d+)\s?%', tekst)
+    if m: return ('tot ' if re.search(r'\btot\b', titel.lower()) else '') + m.group(1) + '%'
+    if 'gratis verzending' in t: return 'Gratis verzending'
+    if '1 gratis' in t or 'cadeau' in t: return 'Cadeau'
+    return 'Actie'
+
+
+def daisycon(rijen):
     uit, gezien = [], set()
     for r in rijen:
         pid = r['Promotion id'].strip()
@@ -77,7 +109,6 @@ def main(pad):
         else: continue
         vanaf, tot = (r['Start date'] or '')[:10], (r['End date'] or '')[:10]
         if pid in DATUM: vanaf, tot = DATUM[pid][0] or vanaf, DATUM[pid][1] or tot
-        if tot and tot < vandaag: continue
         code = schoon(r['Promotion code'])
         if code and not re.fullmatch(r'[A-Za-z0-9_-]{3,30}', code): code = ''  # 'Via e-mail' e.d. is geen code
         sleutel = (prog, titel.lower())
@@ -88,21 +119,45 @@ def main(pad):
         elif soort == 'amount' and k: badge = '€' + k
         elif soort == 'free_shipping': badge = 'Gratis verzending'
         elif soort == 'free_item': badge = 'Cadeau'
-        elif re.search(r'(\d+)%', titel): badge = re.search(r'(\d+)%', titel).group(1) + '%'
-        elif 'gratis verzending' in titel.lower(): badge = 'Gratis verzending'
-        else: badge = 'Actie'
-        voorwaarden = schoon(r.get('Terms'))
-        uit.append({'id': pid, 'winkel': WINKEL[prog], 'titel': titel, 'tekst': tekst, 'code': code, 'badge': badge,
+        else: badge = badge_uit(titel)
+        uit.append({'id': 'd' + pid, 'winkel': WINKEL[prog], 'titel': titel, 'tekst': tekst, 'code': code, 'badge': badge,
                     'vanaf': vanaf, 'tot': tot, 'link': r['Click url'].strip(), 'logo': r['Logo'].strip(),
-                    'voorwaarden': voorwaarden[:400]})
+                    'voorwaarden': schoon(r.get('Terms'))[:400]})
+    return uit
+
+
+def awin_datum(d):
+    m = re.match(r'(\d\d)/(\d\d)/(\d{4})', d or '')
+    return m.group(3) + '-' + m.group(2) + '-' + m.group(1) if m else ''
+
+
+def awin(rijen):
+    uit = []
+    for r in rijen:
+        pid = r['Promotion ID'].strip()
+        if pid not in AWIN_NL or r['Advertiser'].strip() not in AWIN_WINKEL: continue
+        titel, tekst = AWIN_NL[pid]
+        code = schoon(r.get('Code')) or AWIN_CODE.get(pid, '')
+        uit.append({'id': 'a' + pid, 'winkel': AWIN_WINKEL[r['Advertiser'].strip()], 'titel': titel, 'tekst': tekst, 'code': code,
+                    'badge': badge_uit(titel, tekst), 'vanaf': awin_datum(r['Starts']), 'tot': awin_datum(r['Ends']),
+                    'link': r['Deeplink Tracking'].strip(), 'logo': '', 'voorwaarden': schoon(r.get('Terms'))[:400] if r['Advertiser'].strip() in ('Street-One NL', 'Large NL') else ''})
+    return uit
+
+
+def bouw():
+    vandaag = datetime.date.today().isoformat()
+    alles = []
+    for f in sorted(HIER.glob('bron-*.json')): alles += json.loads(f.read_text(encoding='utf-8'))
+    alles = [x for x in alles if not x['tot'] or x['tot'] >= vandaag]
     # Codes eerst, dan wat het eerst afloopt.
-    uit.sort(key=lambda x: (0 if x['code'] else 1, x['tot'] or '9999'))
+    alles.sort(key=lambda x: (0 if x['code'] else 1, x['tot'] or '9999'))
     per, klaar = {}, []
-    for x in uit:
+    for x in alles:
         if per.get(x['winkel'], 0) >= MAX_PER_WINKEL: continue
         per[x['winkel']] = per.get(x['winkel'], 0) + 1
+        if x['winkel'] in SITE_SHOP: x['shop'] = SITE_SHOP[x['winkel']]
         klaar.append(x)
-    blok = ('/* CODES-START: gemaakt door scripts/codes/daisycon.py op ' + vandaag + ' uit de Daisycon-export. Niet met de hand aanpassen. */\n'
+    blok = ('/* CODES-START: gemaakt door scripts/codes/maak.py op ' + vandaag + ' uit de exports van de netwerken. Niet met de hand aanpassen. */\n'
             'window.LK_CODES = ' + json.dumps(klaar, ensure_ascii=False, indent=0).replace('\n', '') + ';\n/* CODES-END */')
     js = DATA.read_text(encoding='utf-8')
     if '/* CODES-START' in js:
@@ -114,5 +169,17 @@ def main(pad):
     for x in klaar: print(' ', x['winkel'], '|', x['badge'], '|', x['code'] or '-', '|', x['vanaf'], '→', x['tot'], '|', x['titel'])
 
 
+def main(paden):
+    for pad in paden:
+        rijen = list(csv.DictReader(open(pad, encoding='utf-8-sig', newline='')))
+        kop = rijen[0].keys() if rijen else []
+        if 'Promotion id' in kop: net, uit = 'daisycon', daisycon(rijen)
+        elif 'Advertiser' in kop: net, uit = 'awin', awin(rijen)
+        else: sys.exit('Onbekend bestand: ' + pad)
+        (HIER / ('bron-' + net + '.json')).write_text(json.dumps(uit, ensure_ascii=False, indent=1), encoding='utf-8')
+        print(net + ':', len(uit), 'acties ingelezen')
+    bouw()
+
+
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1:])
