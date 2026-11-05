@@ -1813,7 +1813,7 @@
             'Let bij kleine kinderen op losse onderdelen. Bij elk product staat vanaf welke leeftijd het is.'
           ] },
         { kop: 'Bouwen en spelen (tot €5)', tekst: 'Kleine bouwsetjes en figuurtjes. Snel klaar, en ze spelen er daarna nog lang mee.',
-          ids: ['bol-9300000265640005', 'bol-9300000243481734', 'bol-9300000192994578', 'bol-9300000225322186'] },
+          ids: ['bol-9300000265640005', 'bol-9300000232471843', 'bol-9300000192994578', 'bol-9300000225322186'] },
         { kop: 'Knutselen en kleuren (€5 tot €7)', tekst: 'Voor kinderen die graag iets maken: armbandjes, kraskaarten en stickers.',
           ids: ['bol-9300000183264805', 'bol-9300000221675733', 'bol-9300000182484745', 'bol-9300000171163755'] },
         { kop: 'Voor de allerkleinsten', tekst: 'Zacht, veilig en makkelijk vast te pakken. Voor baby’s en peuters.',
