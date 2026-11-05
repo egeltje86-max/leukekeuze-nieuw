@@ -47,6 +47,7 @@ window.LK_INSTELLINGEN = {
   ],
   /* Reclameblokken op de homepage. 'tot' = laatste dag dat het blok getoond wordt (daarna verdwijnt het vanzelf). */
   acties: [
+    { kicker: 'Black Friday · 27 november', titel: 'Black Friday deals', tekst: 'De grootste kortingen van al onze winkels, tot 70%.', knop: 'Bekijk de deals', naar: '/collectie/black-friday', beeld: 'images/collecties/black-friday.webp', beeldMobiel: 'images/collecties/black-friday-mobiel.webp', tot: '2026-11-30', klasse: 'actie-breed' },
     { kicker: 'Hits van dit najaar', titel: 'Toppers van nu', tekst: 'Waar iedereen het nu over heeft.', knop: 'Bekijk de toppers', naar: '/collectie/toppers-van-nu', beeld: 'images/collecties/toppers-van-nu.webp', beeldMobiel: 'images/collecties/toppers-van-nu-mobiel.webp', tot: '2027-01-31', klasse: 'actie-breed' },
     { kicker: 'Pakjesavond 5 december', titel: 'Sinterklaas', tekst: 'Leuke surprises en cadeautjes voor in de zak.', knop: 'Bekijk Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', tot: '2026-12-05' },
     { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp', tot: '2026-12-25' },
@@ -944,6 +945,10 @@ window.LK_GELEGENHEDEN_NU = function () {
 };
 /* Collecties: dwars door alle groepen heen, in de volgorde van zoeken. */
 window.LK_COLLECTIES = [
+  /* Black Friday (5-11-2026, GO Marius): alle echte deals van minstens 20% korting, grootste korting eerst. Tot en met Cyber Monday. */
+  { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'Deals tot 70% korting', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 – de beste deals van bol, Coolblue en meer',
+    tekst: 'De grootste kortingen van al onze winkels op één plek, met minstens 20% korting. De grootste korting staat bovenaan. Black Friday is op 27 november.',
+    zoek: 'black friday blackfriday cyber monday deals deal aanbieding aanbiedingen korting sale uitverkoop', korting: 20, vakken: LK_ALLE_GROEPEN },
   { slug: 'toppers-van-nu', naam: 'Toppers van nu', kicker: 'Hits van dit najaar', beeld: 'images/collecties/toppers-van-nu-rond.webp', seoTitel: 'Populaire cadeaus 2026 – de toppers van nu',
     tekst: 'Alleen de echte hits van nu: LEGO Pokémon, KPop Demon Hunters, Hitster, Pokémon-kaarten, Tamagotchi, Switch 2, Squishmallows en meer.', vakken: ['tag:toppers'] },
   { slug: 'cadeaubonnen', naam: 'Cadeaubonnen', kicker: 'Altijd goed', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp', seoTitel: 'Cadeaubon en cadeaukaart – laat ze zelf kiezen',
