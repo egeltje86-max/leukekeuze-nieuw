@@ -126,11 +126,14 @@
     return PRIJZEN[0];
   }
   function binnenPrijs(p, id) { var f = prijsFilter(id); return p.prijs >= f.min && p.prijs <= f.max; }
+  function kortingPct(p) { return p.oudePrijs > p.prijs ? (1 - p.prijs / p.oudePrijs) * 100 : 0; }
   function sorteer(lijst, hoe) {
     var l = lijst.slice();
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
+    /* Black Friday (5-11-2026): grootste korting in procenten eerst. */
+    else if (hoe === 'korting') l.sort(function (a, b) { return kortingPct(b) - kortingPct(a); });
     else l = mix(l);
     return l;
   }
@@ -783,6 +786,8 @@
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
+      /* Black Friday (5-11-2026): alleen echte korting van minstens g.korting procent. */
+      if (g.korting && kortingPct(p) < g.korting) return false;
       var plekken = plekkenVan(p);
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
@@ -793,9 +798,11 @@
     var alles = verzamelLijst(g);
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
+    if (g.korting && !q.sort) q = Object.assign({}, q, { sort: 'korting' }); /* Black Friday: standaard grootste korting eerst */
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
+    if (g.korting) sorteerOpties = [['korting', 'Grootste korting']].concat(sorteerOpties.slice(1));
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
@@ -813,7 +820,7 @@
     return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
     '<div class="binnen">' +
       (selectie.length ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie</h2></div></div>' + rij(selectie) + '</section>' : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(g.naam.toLowerCase()) + '</h2></div></div></section>' +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.korting ? 'Alle deals, grootste korting eerst' : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase())) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere gelegenheden</h2></div></div>' +

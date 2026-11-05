@@ -166,7 +166,8 @@
 
   function productKaart(p) {
     var fav = isFavoriet(p.id);
-    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : p.eigen ? '<span class="label vol favo">★ Zelf gemaakt</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : (isNieuw(p) ? '<span class="label vol">Nieuw</span>' : ''));
+    /* Black Friday (5-11-2026): bij minstens 20% korting toont de kaart het kortingspercentage in plaats van 'Nieuw'. */
+    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : p.eigen ? '<span class="label vol favo">★ Zelf gemaakt</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : ((p.oudePrijs > p.prijs && p.prijs / p.oudePrijs <= 0.8) ? '<span class="label vol">-' + Math.round((1 - p.prijs / p.oudePrijs) * 100) + '%</span>' : (isNieuw(p) ? '<span class="label vol">Nieuw</span>' : '')));
     return '<article class="prodkaart">' +
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + (p.sfeer ? ' sfeer' : '') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icoon('hart') + '</button>' +
