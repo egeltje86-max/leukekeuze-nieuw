@@ -2136,9 +2136,9 @@
    "invulboeken-dagboeken"
   ],
   "bol-9300000158661647": [
-   "elektronica",
-   "gadgets",
-   "handige-gadgets"
+   "speelgoed",
+   "baby-peuter",
+   "babygyms-activiteitenspeelgoed"
   ],
   "bol-9300000234970813": [
    "beauty-verzorging",
@@ -2221,9 +2221,9 @@
    "actiefiguren-superhelden"
   ],
   "nedgam-dba6ef3ed7": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "fiftie-556a8ca9cf": [
    "boeken-media",
@@ -2241,14 +2241,14 @@
    "knuffels"
   ],
   "nedgam-25aaf9dace": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "nedgam-aae4a4588e": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "bol-9300000256526145": [
    "speelgoed",
@@ -4561,9 +4561,9 @@
    "knuffels"
   ],
   "nedgam-c49abba29a": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "bol-9300000252262288": [
    "speelgoed",
@@ -4581,14 +4581,14 @@
    "knuffels"
   ],
   "bol-9300000236575345": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "nedgam-e9e80fd4f4": [
-   "elektronica",
-   "gadgets",
-   "fun-retro-gadgets"
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
   ],
   "bol-9300000190216447": [
    "speelgoed",
@@ -5699,6 +5699,131 @@
    "elektronica",
    "gadgets",
    "fun-retro-gadgets"
+  ],
+  "cl-denver-retro": [
+   "elektronica",
+   "gaming",
+   "consoles"
+  ],
+  "cl-pacman-arcade": [
+   "elektronica",
+   "gaming",
+   "consoles"
+  ],
+  "cl-atari-arcade": [
+   "elektronica",
+   "gaming",
+   "consoles"
+  ],
+  "cl-comp-pro": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cl-eufy-deurbel": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-nuki-pro": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-dji-neo2": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-aura-aspen": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-netatmo-weer": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-chipolo-pop": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-theragun-mini": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9200000118477973": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-winbot-w2s": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9200000058500987": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000160642140": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000174594347": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000150216431": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000101315567": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000241747537": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000245781180": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000226979576": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000162818800": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-steba-sv75": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9000000011421062": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000231075897": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
   ]
  },
  "samen": {
@@ -6079,7 +6204,16 @@
   "bol-9300000237729002": "afgekeurd",
   "bol-1003004011415851": "afgekeurd",
   "cg-verstelbare-laptoptafel-bamboe": "afgekeurd",
-  "cl-retro-arcade": "afgekeurd"
+  "cl-retro-arcade": "afgekeurd",
+  "hema-a0470135e0": "afgekeurd",
+  "hema-f03615ffad": "afgekeurd",
+  "dvzn-751834": "afgekeurd",
+  "cl-slimme-stekker": "afgekeurd",
+  "bol-9300000232272343": "afgekeurd",
+  "bol-9300000244728319": "afgekeurd",
+  "cl-fotolijst-km": "afgekeurd",
+  "cl-dymo160": "afgekeurd",
+  "bol-9200000132005044": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
