@@ -5281,6 +5281,186 @@
    "speelgoed",
    "spellen",
    "verzamelkaarten-pokemon"
+  ],
+  "bol-9300000142563153": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "bol-9200000055944519": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "bol-9300000258403542": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "bol-9300000116390489": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "amz-b09vt565j8": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "amz-b07my1tm6h": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "amz-b0f6n21337": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-407008": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000275849340": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "amz-b0h4tkmlwx": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000133455850": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000177375658": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-1004004004575904": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9200000055578895": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9200000058389161": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000034129529": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000256044331": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000180035637": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000221641685": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000256044324": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000169524763": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000227351956": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000256044334": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000256044342": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000227351959": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000142190873": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9200000127692429": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "bol-9300000224606017": [
+   "speelgoed",
+   "puzzels",
+   "3d-puzzels"
+  ],
+  "bol-9300000224606175": [
+   "speelgoed",
+   "puzzels",
+   "3d-puzzels"
+  ],
+  "bol-9300000160192099": [
+   "speelgoed",
+   "puzzels",
+   "3d-puzzels"
+  ],
+  "bol-9200000073344638": [
+   "speelgoed",
+   "puzzels",
+   "3d-puzzels"
+  ],
+  "bol-9300000161622211": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "bol-9300000231551276": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "bol-9300000184465659": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "bol-9300000070563322": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "bol-9300000044119664": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
   ]
  },
  "samen": {
@@ -5342,7 +5522,11 @@
   "bol-9300000179596479": "cl-tt-liedjes",
   "dgsw-6e81b4552f": "cl-tt-mijnwereld",
   "bol-9300000170755951": "cl-vt-bluey",
-  "bol-9300000225854979": "cl-vt-gabby"
+  "bol-9300000225854979": "cl-vt-gabby",
+  "999g-999snl02": "bol-9300000228437042",
+  "bol-9300000019345442": "cl-rb-pokebal",
+  "bol-9300000232180883": "cl-jvh-sint",
+  "dg-cbd3c91d5b": "cl-rb-bigben"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
