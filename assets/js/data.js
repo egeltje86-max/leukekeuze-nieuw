@@ -132,7 +132,24 @@ window.LK_WINKELS = [
   { naam: 'InterGard', tekst: 'Tuinspullen: kweekkassen, tuinhuisjes, vogelhuisjes en tuindecoratie.', cats: ['tuin-klussen'], url: 'https://www.awin1.com/cread.php?awinmid=21861&awinaffid=3110079&ued=' + encodeURIComponent('https://www.intergard.nl/') },
   { naam: 'Robotime', tekst: 'Houten bouwpakketten: muziekdozen, book nooks en miniatuurhuisjes.', cats: ['hobby', 'speelgoed'], url: 'https://www.awin1.com/cread.php?awinmid=109560&awinaffid=3110079&ued=' + encodeURIComponent('https://www.robotime.com/') },
   { naam: 'Timeshop24', tekst: 'Horloges van bekende merken (Duitse webshop).', cats: ['mode-beauty'], url: 'https://www.awin1.com/cread.php?awinmid=14609&awinaffid=3110079&ued=' + encodeURIComponent('https://www.timeshop24.de/') },
-  { naam: 'I-KOOK', tekst: 'Kookwinkel vol mooie pannen, messen en keukenspullen van goede merken.', cats: ['keuken'], url: '' }
+  /* 05-11-2026: nieuwe winkels (Daisycon + TradeTracker), wens Marius: "allemaal" */
+  { naam: "Levi's", tekst: 'Jeans, jassen en truien van het bekende spijkerbroekenmerk.', cats: ['mode-beauty'], url: 'https://glp8.net/c/?si=19949&li=1850890&wi=433339&ws=' },
+  { naam: 'Isabel Marant', tekst: 'Franse designermode: kleding, schoenen en tassen.', cats: ['mode-beauty'], url: 'https://bdt9.net/c/?si=18138&li=1785243&wi=433339&ws=' },
+  { naam: 'Eastpak', tekst: 'Stevige rugzakken, tassen en koffers, met 30 jaar garantie.', cats: ['mode-beauty', 'sport-outdoor'], url: 'https://glp8.net/c/?si=20076&li=1857675&wi=433339&ws=' },
+  { naam: 'Mokkaland', tekst: 'Originele Nespresso Professional-cups en koffiepads, voordelig.', cats: ['eten-drinken'], url: 'https://glp8.net/c/?si=21568&li=1913742&wi=433339&ws=' },
+  { naam: 'Butchery.nl', tekst: 'Topvlees van de online slager: wagyu, steaks en BBQ-pakketten.', cats: ['eten-drinken'], url: 'https://jdt8.net/c/?si=17660&li=1762426&wi=433339&ws=' },
+  { naam: 'Vipio', tekst: 'Bijzonder overnachten: in een boomhut, kasteel of vuurtoren. Ook leuk als cadeau.', cats: ['cadeaus', 'sport-outdoor'], url: 'https://fr135.net/c/?si=15569&li=1672748&wi=433339&ws=' },
+  { naam: 'Kambukka', tekst: 'Lekvrije drinkflessen en thermosbekers met een slim deksel.', cats: ['keuken', 'sport-outdoor'], url: 'https://jdt8.net/c/?si=17815&li=1771806&wi=433339&ws=' },
+  { naam: 'Cewe', tekst: 'Fotoboeken, foto op canvas en andere fotocadeaus.', cats: ['cadeaus', 'wonen'], url: 'https://lt45.net/c/?si=11918&li=1526258&wi=433339&ws=' },
+  { naam: 'Parfumado', tekst: 'Elke maand een ander luxe parfum proberen, in een handig flesje.', cats: ['geuren-verzorging'], url: 'https://fr135.net/c/?si=15178&li=1658200&wi=433339&ws=' },
+  { naam: 'Goedgemerkt', tekst: 'Naamstickers en labels voor de spullen van kinderen.', cats: ['cadeaus'], url: 'https://lt45.net/c/?si=12921&li=1569280&wi=433339&ws=' },
+  { naam: 'Brekz', tekst: 'Dierenwinkel met voer, snoepjes en speeltjes voor hond, kat en andere dieren.', cats: ['dieren'], url: 'https://tc.tradetracker.net/?c=9620&m=1161548&a=516846&r=&u=' + encodeURIComponent('https://www.brekz.nl/') },
+  { naam: 'Boardgameshop', tekst: 'Bordspellen en kaartspellen, van familiespel tot expertspel.', cats: ['speelgoed'], url: 'https://tc.tradetracker.net/?c=40488&m=2520696&a=516846&r=&u=' + encodeURIComponent('https://boardgameshop.nl/') },
+  { naam: 'Yourdecoration', tekst: 'Posters, fotobehang en wanddecoratie.', cats: ['wonen'], url: 'https://tc.tradetracker.net/?c=29448&m=1549969&a=516846&r=&u=' + encodeURIComponent('https://www.yourdecoration.nl/') },
+  { naam: 'Barokspiegel', tekst: 'Sierlijke barokspiegels en spiegels in alle maten.', cats: ['wonen'], url: 'https://tc.tradetracker.net/?c=27832&m=1537045&a=516846&r=&u=' + encodeURIComponent('https://www.barokspiegel.nl/') },
+  { naam: 'Profotonet', tekst: 'Alles voor de fotograaf: camera\'s, lenzen en accessoires.', cats: ['elektronica'], url: 'https://tc.tradetracker.net/?c=32704&m=1748978&a=516846&r=&u=' + encodeURIComponent('https://www.profotonet.com/') },
+  { naam: 'Steegengamode', tekst: 'Kleding en schoenen voor dames en heren, van bekende merken.', cats: ['mode-beauty'], url: 'https://tc.tradetracker.net/?c=33842&m=1847808&a=516846&r=&u=' + encodeURIComponent('https://www.steegengamode.nl/') },
+  { naam: 'I-KOOK', tekst: 'Een nieuwe keuken op maat, met persoonlijk advies van een keukencoach.', cats: ['keuken'], url: 'https://lt45.net/c/?si=11558&li=1513186&wi=433339&ws=' }
 ];
 
 window.LK_CATEGORIEEN = [

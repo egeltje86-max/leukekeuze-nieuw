@@ -35,6 +35,12 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-fietstas': '&standard_id=1&language_code=nl&locale_id=1&program_id=12934',
     'x-svinando': '&standard_id=4&language_code=nl&locale_id=2&program_id=22015',
     'x-westwing': '&standard_id=8&language_code=nl&locale_id=1&program_id=17294',
+    # 05-11-2026: nieuw (Vipio heeft geen productfeed, alleen een winkeltegel)
+    'x-levis': '&standard_id=7&language_code=nl&locale_id=1&program_id=19949',
+    'x-isabelmarant': '&standard_id=7&language_code=en&locale_id=6&program_id=18138',
+    'x-mokkaland': '&standard_id=4&language_code=nl&locale_id=1&program_id=21568',
+    'x-butchery': '&standard_id=4&language_code=nl&locale_id=1&program_id=17660',
+    'x-kambukka': '&standard_id=1&language_code=en&locale_id=6&program_id=17815',
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
@@ -111,6 +117,9 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-tandenborstel': '1911673',  # Tandenborstel.com
           't-besled': '1533462',  # Besled (bestsellers)
           't-boekenwereld': '2490267',  # Boekenwereld (bestsellers)
+          # 05-11-2026: nieuw goedgekeurd
+          't-brekz': '1161548', 't-boardgameshop': '2520696', 't-yourdecoration': '1549969',
+          't-barokspiegel': '1537045', 't-profotonet': '1748978', 't-steegenga': '1847808',
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
