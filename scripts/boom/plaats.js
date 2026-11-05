@@ -27,6 +27,7 @@ function plaats(p) {
   const v = (COR.vak || {})[p.id]; if (v) { p.afd = v[0]; p.groep = v[1]; p.vak = v[2]; }
   const z = (COR.samen || {})[p.id]; if (z && p.status === 'goedgekeurd') { p.status = 'samengevoegd'; p.samengevoegd = z; }
   const t = (COR.tekst || {})[p.id]; if (t) p.waarom = t;
+  const ti = (COR.titel || {})[p.id]; if (ti) p.titel = ti;
   const w = (COR.voorWeg || {})[p.id];
   if (w) { p.voor = (p.voor || []).filter((x) => w.indexOf(x) === -1); p.ookIn = (p.ookIn || []).filter((x) => !w.some((l) => OUDP[l] === x)); }
   const s = (COR.status || {})[p.id]; if (s && p.status === 'goedgekeurd') { p.status = s; p.uitverkochtSinds = p.uitverkochtSinds || '2026-11-05'; }
