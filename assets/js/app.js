@@ -260,7 +260,7 @@
   }
   /* Mobiel: knop 'Filter & sorteren' die onderin blijft staan als de werkbalk uit beeld is.
      Tik je erop, dan schuift een paneel omhoog met de budgetknoppen (en sortering). Wens van Marius, 24-10-2026. */
-  function filterPaneel(pad, q, sorteerOpties, knoppen) {
+  function filterPaneel(pad, q, sorteerOpties, knoppen, aantal) {
     var aantalFilters = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.sort && q.sort !== 'aanbevolen' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
     var metVoor = !(knoppen && knoppen.length) && pad.indexOf('/c/') === 0 && pad.indexOf('/c/christelijk') !== 0 && pad.indexOf('/c/noodpakket-survival') !== 0;
     return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filter &amp; sorteren' +
@@ -274,6 +274,9 @@
           (sorteerOpties ? '<h3>Sorteren</h3><div class="chips filter-chips">' + sorteerOpties.map(function (o) {
             return '<a class="chip" href="' + maakAdres(pad, Object.assign({}, q, { sort: o[0] === 'aanbevolen' ? '' : o[0] })) + '" aria-pressed="' + ((q.sort || 'aanbevolen') === o[0]) + '">' + o[1] + '</a>';
           }).join('') + '</div>' : '') +
+          /* 5-11-2026 (wens Marius): het paneel blijft open bij elke keuze; met deze knop sluit je het en zie je de producten. */
+          '<div class="filter-voet"><a class="knop knop-rand" href="' + maakAdres(pad, {}) + '">Wissen</a>' +
+          '<button class="knop knop-goud" type="button" data-filter-dicht>' + (typeof aantal === 'number' ? 'Toon ' + aantal + (aantal === 1 ? ' product' : ' producten') : 'Toon producten') + '</button></div>' +
         '</div></div>';
   }
 
@@ -581,7 +584,7 @@
     '<div class="binnen">' +
       '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
       leesOok(v && v.oud ? v.oud : c.slug + (s ? '/' + s.slug : '')) +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen) +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       /* Eerst 'Meer in onze winkels' direct onder onze eigen producten, en pas daarna de tips.
          Stonden de tips ertussen, dan leek het alsof de pagina daar ophield (opmerking Marius, 28-10-2026). */
       (v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
@@ -676,7 +679,7 @@
          : '<section class="sectie eerste"><div class="sectie-kop"><div><h2>Wat zoek je voor ' + esc(naam) + '?</h2></div></div>' + subsHtml + '</section>') +
       (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div>' + rij(selectie) + '</section>' : '') +
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen)) +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length)) +
       /* Op een subpagina ook 'Meer in onze winkels' uit het eerste vak (bijv. mode-beauty/horloges). */
       (s && alles.length && s.vakken[0].indexOf('tag:') !== 0 ? (function () { var vd = s.vakken[0].split('/'); return winkelSectie(vd[0], vd[1], q.prijs); })() : '') +
       leesOok(pe.oud || '') +
@@ -724,7 +727,7 @@
     '<div class="binnen">' +
       (selectie.length ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie</h2></div></div>' + rij(selectie) + '</section>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(g.naam.toLowerCase()) + '</h2></div></div></section>' +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen) +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere gelegenheden</h2></div></div>' +
         '<div class="subkaarten voorwie-rij">' + andere.map(function (x) {
@@ -2442,7 +2445,7 @@
   var laatstGetoond = null;
   /* Onthoud per pagina hoe ver je gescrold had en hoeveel producten je al open had geklapt ('Toon meer').
      Ga je vanaf een product met de terugknop terug naar de lijst, dan kom je weer op dezelfde plek uit (fijn op mobiel). */
-  var plekken = {}, terugViaKnop = false, naarWerkbalk = false;
+  var plekken = {}, terugViaKnop = false, naarWerkbalk = false, paneelOpen = false, paneelScroll = 0;
   try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
   function onthoudPlek() {
     if (laatstGetoond === null) return;
@@ -2562,6 +2565,10 @@
 
     var fk = $('.filterknop[data-filter-open]', app), wb = $('.werkbalk', app);
     /* Na kiezen in het filterpaneel: terug naar het begin van de lijst, zodat je de nieuwe resultaten ziet. */
+    /* Keuze gemaakt in het paneel: het nieuwe paneel meteen weer open, op dezelfde plek (zonder schuifbeweging). */
+    if (paneelOpen) { paneelOpen = false; var np = $('[data-filterpaneel]', app);
+      if (np) { var nb = $('.filter-blad', np); np.hidden = false; if (nb) nb.style.transition = 'none'; np.classList.add('open');
+        if (nb) { nb.scrollTop = paneelScroll; requestAnimationFrame(function () { requestAnimationFrame(function () { nb.style.transition = ''; }); }); } } }
     if (naarWerkbalk && wb) { naarWerkbalk = false; var kopH = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height;
       window.scrollTo(0, Math.max(0, wb.getBoundingClientRect().top + window.scrollY - kopH - 8)); }
     if (fk && wb && 'IntersectionObserver' in window) {
@@ -2788,7 +2795,7 @@
       var klaar = function () { toast('Link gekopieerd. Plak hem in een bericht.'); };
       if (navigator.clipboard) navigator.clipboard.writeText(w2.bericht).then(klaar, function () { prompt('Kopieer deze link:', w2.link); }); else prompt('Kopieer deze link:', w2.link);
       return; }
-    if (t.closest('[data-filterpaneel]') && t.tagName === 'A') naarWerkbalk = true;
+    if (t.closest('[data-filterpaneel]') && t.tagName === 'A') { naarWerkbalk = true; paneelOpen = !t.closest('.vonk-paneel'); var bl = t.closest('.filter-blad'); paneelScroll = bl ? bl.scrollTop : 0; }
     if (t.hasAttribute('data-filter-open')) { var fp = $('[data-filterpaneel]'); if (fp) { fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); }); } return; }
     if (t.hasAttribute('data-filter-dicht')) { var fp2 = $('[data-filterpaneel]'); if (fp2) { fp2.classList.remove('open'); setTimeout(function () { fp2.hidden = true; }, 250); } return; }
     if (t.hasAttribute('data-open-lade')) { openLade(); return; }
