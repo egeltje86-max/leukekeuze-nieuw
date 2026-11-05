@@ -6149,6 +6149,36 @@
    "hobby",
    "zelf-maken",
    "klei-pottenbakken-epoxy"
+  ],
+  "bp-bloomparty-pensioen": [
+   "eten-drinken",
+   "cadeaupakketten",
+   "brievenbuscadeaus"
+  ],
+  "bp-rozen-pensioen": [
+   "eten-drinken",
+   "cadeaupakketten",
+   "brievenbuscadeaus"
+  ],
+  "bp-bloomemory-pensioen": [
+   "eten-drinken",
+   "cadeaupakketten",
+   "brievenbuscadeaus"
+  ],
+  "bol-9200000002927607": [
+   "boeken-media",
+   "boeken",
+   "invulboeken-dagboeken"
+  ],
+  "bol-9200000114043060": [
+   "boeken-media",
+   "boeken",
+   "invulboeken-dagboeken"
+  ],
+  "bol-9300000006166001": [
+   "boeken-media",
+   "boeken",
+   "invulboeken-dagboeken"
   ]
  },
  "samen": {
