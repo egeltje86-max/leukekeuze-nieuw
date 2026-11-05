@@ -276,6 +276,36 @@
           }).join('') + '</div>' : '') +
         '</div></div>';
   }
+
+  /* Mobiel (wens Marius 5-11-2026, naar zijn eigen ontwerp): bovenaan één knop Filteren en één knop Sorteren,
+     het belangrijkste filter als één klein rijtje (Leeftijd, anders Prijs), en de gekozen filters als labels met een kruisje.
+     Op de computer blijven de filterrijen zoals ze zijn; de labels met kruisje staan daar ook. */
+  function filterLabels(pad, q, knoppen) {
+    var uit = [];
+    knopSets(knoppen, q).forEach(function (k) {
+      var keuze = q[k.param]; if (!keuze) return;
+      var o = k.opties.filter(function (x) { return x[0] === keuze; })[0]; if (!o) return;
+      var nq = Object.assign({}, q); delete nq[k.param]; if (k.param === 'wie') delete nq.kind;
+      uit.push([o[1], maakAdres(pad, nq)]);
+    });
+    if (q.voor) { var v = VOOR_WIE.filter(function (x) { return x[0] === q.voor; })[0]; if (v && v[0]) { var nv = Object.assign({}, q); delete nv.voor; uit.push([v[1], maakAdres(pad, nv)]); } }
+    if (q.prijs && q.prijs !== 'alle') { var pr = PRIJZEN.filter(function (x) { return x.id === q.prijs; })[0]; if (pr) { var np = Object.assign({}, q); delete np.prijs; uit.push([pr.label, maakAdres(pad, np)]); } }
+    if (!uit.length) return '';
+    return '<div class="actief-filters" aria-label="Gekozen filters">' + uit.map(function (x) {
+      return '<a class="actief-label" href="' + x[1] + '" aria-label="' + esc(x[0]) + ' weghalen">' + esc(x[0]) + ic('sluit') + '</a>';
+    }).join('') + (uit.length > 1 ? '<a class="actief-wis" href="' + maakAdres(pad, q.sort ? { sort: q.sort } : {}) + '">Alles wissen</a>' : '') + '</div>';
+  }
+  function mobielBalk(pad, q, knoppen, sorteerOpties) {
+    var aantal = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
+    var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd/i.test(k.titel); })[0];
+    var snel = lft ? '<div class="knop-groep mb-snel"><div class="chips-titel">' + esc(lft.titel) + '</div>' + knopRij(pad, q, lft) + '</div>'
+                   : '<div class="knop-groep mb-snel"><div class="chips-titel">Prijs</div>' + prijsChips(pad, q) + '</div>';
+    var so = sorteerOpties || [], gekozenSort = so.filter(function (o) { return o[0] === (q.sort || 'aanbevolen'); })[0];
+    var sorteer = so.length ? '<label class="mb-sorteer"><span class="mb-tekst">' + ic('sorteer') + (gekozenSort && gekozenSort[0] !== 'aanbevolen' ? esc(gekozenSort[1]) : 'Sorteren') + '</span>' + ic('omlaag', 'mb-pijl') +
+      '<select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '" aria-label="Sorteren">' +
+      so.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>' : '';
+    return '<div class="mobiel-balk"><button class="mb-filter" type="button" data-filter-open>' + ic('filter') + 'Filteren' + (aantal ? ' <span class="mb-teller">' + aantal + '</span>' : '') + '</button>' + sorteer + '</div>' + snel;
+  }
   function zoekForm(waarde, tekst) {
     return '<form class="zoek" role="search" data-zoek>' +
       ic('zoek', 'lp') +
@@ -508,12 +538,12 @@
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; if (q.voor) nq.voor = q.voor; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
     var subs = '<div class="subkaarten">' +
-      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span>Alles</a>' +
+      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span><span class="subnaam">Alles</span></a>' +
       volleSubs(c).map(function (x) {
         var src = rondBeeld(x.beeld, x.beeld ? null : LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }));
         var beeld = src ? '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
         return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget(subAdres(c, x)) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-          '<span class="rond">' + beeld + '</span>' + esc(x.naam) + '</a>';
+          '<span class="rond">' + beeld + '</span><span class="subnaam">' + esc(x.naam) + '</span></a>';
       }).join('') + '</div>';
     /* 3.0: in een groep een rij met de vakjes (alleen vakjes waar iets in staat). */
     if (s && s.vakjes) {
@@ -528,7 +558,7 @@
     }
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
-    var werkbalk = '<div class="werkbalk">' + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + prijsChips(pad, q) +
+    var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
@@ -602,14 +632,14 @@
       var inVak = persoonProducten(pe, x.vakken);
       if (!inVak.length) return '';
       return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget('/voor/' + pe.slug + '/' + x.slug) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-        '<span class="rond"><img src="' + esc(rondBeeld(x.beeld, inVak)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
+        '<span class="rond"><img src="' + esc(rondBeeld(x.beeld, inVak)) + '" alt="" loading="lazy" decoding="async"></span><span class="subnaam">' + esc(x.naam) + '</span></a>';
     }).join('');
     var subsHtml = s
       ? '<div class="subkaarten"><a class="subkaart" href="' + metBudget('/voor/' + pe.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(pe.beeld)) + '" alt=""></span>Alles</a>' + subs + '</div>'
       : '<div class="persoon-subs">' + subs + '</div>';
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
-    var werkbalk = '<div class="werkbalk">' + knopChips(pad, q, knoppen) + prijsChips(pad, q) +
+    var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
@@ -676,7 +706,7 @@
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
-    var werkbalk = '<div class="werkbalk">' + knopChips(pad, q, knoppen) + prijsChips(pad, q) +
+    var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
@@ -2530,7 +2560,7 @@
       }, { threshold: 0 }).observe(acties);
     }
 
-    var fk = $('[data-filter-open]', app), wb = $('.werkbalk', app);
+    var fk = $('.filterknop[data-filter-open]', app), wb = $('.werkbalk', app);
     /* Na kiezen in het filterpaneel: terug naar het begin van de lijst, zodat je de nieuwe resultaten ziet. */
     if (naarWerkbalk && wb) { naarWerkbalk = false; var kopH = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height;
       window.scrollTo(0, Math.max(0, wb.getBoundingClientRect().top + window.scrollY - kopH - 8)); }
@@ -2567,10 +2597,12 @@
     if (a.pad !== vorigPad && !hersteld) {
       var grid = zelfdeCat && d[2] ? $('.prodgrid', app) : null;
       if (grid) {
-        /* subcategorie gekozen binnen dezelfde categorie: meteen naar het eerste product */
+        /* Subcategorie gekozen binnen dezelfde categorie: net onder de rondjes uitkomen, bij de soorten en filters,
+           zodat je je zoektocht meteen kunt verfijnen (wens Marius 5-11-2026; eerst sprong hij voorbij de filters naar de producten). */
         var kop = $('.header') || $('header');
         var hoogte = kop ? kop.getBoundingClientRect().height : 70;
-        var doelY = grid.getBoundingClientRect().top + window.scrollY - hoogte - 12;
+        var doelEl = $('.vakjesrij', app) || $('.werkbalk', app) || grid;
+        var doelY = doelEl.getBoundingClientRect().top + window.scrollY - hoogte - 10;
         var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({ top: Math.max(0, doelY), behavior: rustig ? 'auto' : 'smooth' });
       } else window.scrollTo(0, 0);
