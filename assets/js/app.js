@@ -795,9 +795,47 @@
       if (g.uit && g.uit.test(p.titel)) return false;
       /* Black Friday (5-11-2026): alleen echte korting van minstens g.korting procent. */
       if (g.korting && kortingPct(p) < g.korting) return false;
+      /* Kortingscodes (5-11-2026): alleen producten van winkels die nu een code of actie hebben. */
+      if (g.codes && !codesNu().some(function (c) { return c.winkel === p.shop; })) return false;
       var plekken = plekkenVan(p);
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
+  }
+  /* Kortingscodes & acties (5-11-2026, GO Marius): echte codes en acties uit de Daisycon-export (LK_CODES in data.js).
+     Verlopen acties verdwijnen vanzelf; acties die nog moeten beginnen staan onderaan met 'vanaf'. */
+  function codesNu() {
+    var vandaag = new Date().toISOString().slice(0, 10);
+    return (window.LK_CODES || []).filter(function (c) { return !c.tot || c.tot >= vandaag; });
+  }
+  function datumNl(d) {
+    var m = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+    var x = d.split('-'); return (+x[2]) + ' ' + m[+x[1] - 1] + (x[0] !== String(new Date().getFullYear()) ? ' ' + x[0] : '');
+  }
+  function codeKaart(c) {
+    var vandaag = new Date().toISOString().slice(0, 10), straks = c.vanaf && c.vanaf > vandaag;
+    var tijd = straks ? 'Vanaf ' + datumNl(c.vanaf) + (c.tot ? ' t/m ' + datumNl(c.tot) : '') : (c.tot && c.tot <= ('' + (+vandaag.slice(0, 4) + 1)) + vandaag.slice(4) ? 'Geldig t/m ' + datumNl(c.tot) : 'Doorlopende actie');
+    var knop = c.code && !straks
+      ? '<a class="code-knop" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-code="' + esc(c.code) + '"><span class="code-vak">' + esc(c.code) + '</span><span class="code-actie">Kopieer en ga naar ' + esc(c.winkel) + '</span></a>'
+      : c.code ? '<span class="code-knop wacht"><span class="code-vak">' + esc(c.code) + '</span><span class="code-actie">Werkt ' + esc(tijd.toLowerCase()) + '</span></span>'
+      : '<a class="knop knop-goud code-ga" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener">Naar de actie bij ' + esc(c.winkel) + '</a>';
+    return '<article class="code-kaart' + (c.code ? ' met-code' : '') + (straks ? ' straks' : '') + '">' +
+      '<div class="code-kop">' + (c.logo ? '<img src="' + esc(c.logo) + '" alt="' + esc(c.winkel) + '" loading="lazy" decoding="async" width="56" height="56" onerror="this.hidden=true;this.nextSibling.hidden=false">' : '') + '<span class="code-logo" aria-hidden="true"' + (c.logo ? ' hidden' : '') + '>' + esc(c.winkel.charAt(0)) + '</span>' + '<div><strong>' + esc(c.winkel) + '</strong><span class="code-tijd">' + esc(tijd) + '</span></div><span class="code-badge">' + esc(c.badge) + '</span></div>' +
+      '<h3>' + esc(c.titel) + '</h3><p>' + esc(c.tekst) + '</p>' + knop +
+      (c.voorwaarden ? '<details class="code-voorwaarden"><summary>Voorwaarden</summary><p>' + esc(c.voorwaarden) + '</p></details>' : '') +
+    '</article>';
+  }
+  function codesBlok() {
+    var vandaag = new Date().toISOString().slice(0, 10), l = codesNu();
+    var nu = l.filter(function (c) { return !c.vanaf || c.vanaf <= vandaag; }), straks = l.filter(function (c) { return c.vanaf && c.vanaf > vandaag; });
+    return '<section class="sectie eerste"><div class="sectie-kop"><div><h2>Codes en acties van nu</h2><p>' + (function (n) { return n + (n === 1 ? ' kortingscode' : ' kortingscodes'); })(nu.filter(function (c) { return c.code; }).length) + ' en ' + nu.filter(function (c) { return !c.code; }).length + ' acties. Klik op een code: wij kopiëren hem en openen de winkel.</p></div></div>' +
+      '<div class="code-raster">' + nu.map(codeKaart).join('') + '</div></section>' +
+      (straks.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Binnenkort</h2><p>Deze codes werken straks. Zet ze alvast in je agenda.</p></div></div><div class="code-raster">' + straks.map(codeKaart).join('') + '</div></section>' : '');
+  }
+  /* Eén 'Deals'-rij bovenaan de deal-pagina's, zodat ze bij elkaar horen. */
+  function dealsNav(slug) {
+    var l = [['aanbiedingen', 'Aanbiedingen'], ['kortingscodes', 'Kortingscodes'], ['black-friday', 'Black Friday']];
+    if (new Date().toISOString().slice(0, 10) > '2026-11-30') l = l.filter(function (x) { return x[0] !== 'black-friday'; });
+    return '<nav class="deals-nav" aria-label="Deals">' + l.map(function (x) { return '<a class="chip" href="/collectie/' + x[0] + '"' + (x[0] === slug ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>';
   }
   function verzameling(g, pad, kruimelKop, q) {
     zetTitel(g.seoTitel || g.naam);
@@ -805,11 +843,11 @@
     var alles = verzamelLijst(g);
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
-    if (g.korting && !q.sort) q = Object.assign({}, q, { sort: 'korting' }); /* Black Friday: standaard grootste korting eerst */
+    if ((g.korting || g.codes) && !q.sort) q = Object.assign({}, q, { sort: 'korting' }); /* Black Friday: standaard grootste korting eerst */
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
-    if (g.korting) sorteerOpties = [['korting', 'Grootste korting']].concat(sorteerOpties.slice(1));
+    if (g.korting || g.codes) sorteerOpties = [['korting', 'Grootste korting']].concat(sorteerOpties.slice(1));
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
@@ -835,8 +873,9 @@
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
     '<div class="binnen">' +
-      (selectie.length ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div>' + rij(selectie) + '</section>' : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.korting ? 'Alle deals, grootste korting eerst' : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase())) + '</h2></div></div></section>' +
+      (g.korting || g.codes ? dealsNav(g.slug) : '') + (g.codes ? codesBlok() : '') +
+      (selectie.length && !g.codes ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div>' + rij(selectie) + '</section>' : '') +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? 'Alle deals, grootste korting eerst' : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase())) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>Andere gelegenheden</h2></div></div>' +
@@ -2901,6 +2940,9 @@
       }
       return;
     }
+    if (t.hasAttribute('data-code')) { var cd = t.getAttribute('data-code');
+      try { if (navigator.clipboard) navigator.clipboard.writeText(cd); } catch (er) {}
+      toast('Code ' + cd + ' gekopieerd. Plak hem bij het afrekenen.'); return; }
     if (t.hasAttribute('data-lijst-whatsapp')) { var w = lijstVanDeel(); window.open('https://wa.me/?text=' + encodeURIComponent(w.bericht), '_blank', 'noopener'); return; }
     if (t.hasAttribute('data-lijst-kopieer')) { var w2 = lijstVanDeel();
       var klaar = function () { toast('Link gekopieerd. Plak hem in een bericht.'); };

@@ -954,3 +954,30 @@ html.feest body::after {
 
 /* 3.0 nieuwe boom: rij met vakjes onder de groepen (4-11-2026) */
 .vakjesrij { margin-top: 14px; }
+
+/* Kortingscodes & deals (5-11-2026, GO Marius) */
+.deals-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 4px; }
+.deals-nav .chip[aria-current="page"] { background: var(--goud-verloop); color: #141A2A; border-color: var(--goud); font-weight: 700; }
+.code-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+.code-kaart { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--lijn); border-radius: 18px; background: var(--kaart); box-shadow: var(--schaduw); }
+.code-kaart.met-code { border-color: var(--lijn-sterk); }
+.code-kaart.straks { opacity: .9; }
+.code-kop { display: flex; align-items: center; gap: 12px; }
+.code-kop img { width: 56px; height: 56px; border-radius: 50%; object-fit: contain; background: #fff; border: 1px solid var(--lijn-zacht); flex: none; }
+.code-kop div { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.code-kop strong { font-size: 15px; }
+.code-tijd { font-size: 13px; color: var(--tekst-3); }
+.code-badge { flex: none; background: var(--goud-verloop); color: #141A2A; font-weight: 800; font-size: 13px; padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+.code-kaart h3 { margin: 2px 0 0; font-size: 18px; line-height: 1.25; }
+.code-kaart p { margin: 0; font-size: 14px; color: var(--tekst-2); line-height: 1.5; }
+.code-knop { margin-top: auto; display: flex; align-items: stretch; border: 2px dashed var(--goud); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; }
+.code-vak { padding: 12px 14px; font-weight: 800; letter-spacing: .08em; font-size: 17px; background: var(--kaart-2); }
+.code-actie { flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 12px; background: var(--goud-verloop); color: #141A2A; font-weight: 700; font-size: 14px; text-align: center; }
+.code-knop.wacht .code-actie { background: var(--knop-bg); color: var(--tekst-2); font-weight: 600; }
+a.code-knop:hover .code-actie { filter: brightness(1.06); }
+.code-ga { margin-top: auto; text-align: center; }
+.code-voorwaarden { font-size: 13px; color: var(--tekst-3); }
+.code-voorwaarden summary { cursor: pointer; }
+.code-voorwaarden p { font-size: 13px; margin-top: 6px; }
+.code-logo[hidden], .code-kop img[hidden] { display: none; }
+.code-logo { width: 56px; height: 56px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; background: #0A1020; color: #F2CB74; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; }
