@@ -414,13 +414,14 @@ function deel(p0) {
   if (kindProduct || p.cat === 'speelgoed') { const l = leeftijd(p, p.sub); if (l) p.leeftijd = l; }
 
   /* Baby: label goed zetten. */
-  const babyTekst = /\bbaby|kraam|newborn|rammelaar|\b0\+|0-6 maanden|bijtring|speelkleed|romper|rompertje|slab(betje)?|swaddle|hydrofiel|geboorte|knuffeldoek|speendoek|box ?mobiel|zwanger|babyshower|luiertaart|babygym/i;
+  /* 5-11-2026: 'kraam' alleen als los woord (niet marktkraam/ijskraam), 'geboorte' niet bij geboortesteen-sieraden voor volwassenen. */
+  const babyTekst = /\bbaby|(?<![a-z])kraam|newborn|rammelaar|\b0\+|0-6 maanden|bijtring|speelkleed|romper|rompertje|slab(betje)?|swaddle|hydrofiel|geboorte(?!steen|bloem|jaar)|knuffeldoek|speendoek|box ?mobiel|zwanger|babyshower|luiertaart|babygym/i;
   if (babyTekst.test(titel) && !/babyfoon|babyolie|\bbaby ?(born|annabell|pop)\b|babypop/i.test(titel) && p.cat !== 'christelijk') {
     if (p.voor.indexOf('baby') === -1) p.voor.push('baby');
   }
   if (p.voor.indexOf('baby') !== -1 || oud === 'cadeaus/baby-kraam') {
     if (/babyshower|zwanger|gender ?reveal|aanstaande|mama to be|mom to be|mommy/i.test(titel)) tags.add('baby-babyshower');
-    if (/kraam|pakket|cadeaubox|cadeauset|giftset|gift ?box|luiertaart|geboorte|cadeaumand/i.test(titel) || oud === 'cadeaus/baby-kraam') tags.add('baby-kraampakketten');
+    if ((/(?<![a-z])kraam|pakket|cadeaubox|cadeauset|giftset|gift ?box|luiertaart|geboorte(?!steen|bloem|jaar)|cadeaumand/i.test(titel) || oud === 'cadeaus/baby-kraam') && !/babyfoon|nachtlamp|zwangerschapskussen|markt|ijskraam|tompouce/i.test(titel)) tags.add('baby-kraampakketten');
     if (/romper|kleding|pakje|\bslab|mutsje|dekentje|\bdeken|hydrofiel|swaddle|slofjes|schoentjes|sokjes|badcape|omslagdoek|kruippakje|pyjama|boxpakje/i.test(titel)) tags.add('baby-kleding');
     if (/speelkleed|rammelaar|bijtring|mobiel|activity|knisper|babygym|badspeelgoed|stapel|sorteer|muziekdoos|speelboog|loopwagen|houten/i.test(titel) || oud === 'speelgoed/baby-peuter') tags.add('baby-speelgoed');
     if (/knuffel|met naam|naam|knuffeldoek|gepersonaliseerd|tutteldoek/i.test(titel)) tags.add('baby-knuffels-naam');
