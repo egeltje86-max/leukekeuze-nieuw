@@ -240,6 +240,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     /* 2.1: vakjes die verhuisd of opgegaan zijn in een ander vakje */
     'c/cadeaus/adventskalenders': '/c/eten-drinken/adventskalenders/', 'c/christelijk/onder-25': '/c/christelijk/'
   };
+  /* 05-11-2026: oude adressen die Google nog kent en die 'Niet gevonden' gaven (sitecontrole). Zie scripts/boom/correcties.json. */
+  try { Object.assign(VERHUISD, JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/correcties.json'), 'utf8')).adressen || {}); } catch (e) {}
   for (const [oudPad, nieuwPad] of Object.entries(vakVerhuis)) if (!VERHUISD[oudPad]) VERHUISD[oudPad] = nieuwPad;
   /* Samengevoegde producten (dubbel op de site): de oude productpagina stuurt door naar het product dat we hielden. */
   for (const [id, naar] of samen) if (!VERHUISD['p/' + id]) VERHUISD['p/' + id] = '/p/' + naar + '/';

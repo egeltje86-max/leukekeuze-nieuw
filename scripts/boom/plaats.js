@@ -6,6 +6,10 @@ const fs = require('fs'), path = require('path');
 let PL = {}, OUD = {};
 try { PL = JSON.parse(fs.readFileSync(path.join(__dirname, 'plaatsing.json'), 'utf8')); } catch (e) {}
 try { OUD = JSON.parse(fs.readFileSync(path.join(__dirname, 'oud-naar-nieuw.json'), 'utf8')); } catch (e) {}
+/* Reparaties 5-11-2026 (GO Marius, na de sitecontrole): partnerlinks voor producten die een gewone winkellink hadden,
+   een vakje voor producten zonder vakje, en dubbele producten samenvoegen (de goedkoopste blijft). Zie correcties.json. */
+let COR = { links: {}, vak: {}, samen: {} };
+try { COR = JSON.parse(fs.readFileSync(path.join(__dirname, 'correcties.json'), 'utf8')); } catch (e) {}
 function plaats(p) {
   const x = PL[p.id];
   if (x) {
@@ -18,6 +22,9 @@ function plaats(p) {
     const o = OUD[p.cat + '/' + p.sub];
     if (o) { p.afd = o[0]; p.groep = o[1]; if (o[2]) p.vak = o[2]; }
   }
+  const l = (COR.links || {})[p.id]; if (l) { p.url = l.url; if (!p.winkelUrl) p.winkelUrl = l.winkelUrl; }
+  const v = (COR.vak || {})[p.id]; if (v) { p.afd = v[0]; p.groep = v[1]; p.vak = v[2]; }
+  const z = (COR.samen || {})[p.id]; if (z && p.status === 'goedgekeurd') { p.status = 'samengevoegd'; p.samengevoegd = z; }
   return p;
 }
 module.exports = { plaats };
