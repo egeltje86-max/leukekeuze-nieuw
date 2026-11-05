@@ -797,7 +797,7 @@
       /* Black Friday (5-11-2026): alleen echte korting van minstens g.korting procent. */
       if (g.korting && kortingPct(p) < g.korting) return false;
       /* Kortingscodes (5-11-2026): alleen producten van winkels die nu een code of actie hebben. */
-      if (g.codes && !codesNu().some(function (c) { return c.winkel === p.shop; })) return false;
+      if (g.codes && !codesNu().some(function (c) { return (c.shop || c.winkel) === p.shop; })) return false;
       var plekken = plekkenVan(p);
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
