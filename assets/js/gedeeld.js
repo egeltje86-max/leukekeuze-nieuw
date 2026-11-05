@@ -128,6 +128,7 @@
     menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     sluit: '<path d="M6 6l12 12M18 6 6 18"/>',
     filter: '<path d="M4 6h16M7 12h10M10 18h4"/>',
+    sorteer: '<path d="M8 4v16M4.5 7.5 8 4l3.5 3.5M16 20V4M12.5 16.5 16 20l3.5-3.5"/>',
     pijl: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     links: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
     rechts: '<path d="m9 6 6 6-6 6"/>',
