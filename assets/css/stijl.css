@@ -981,3 +981,4 @@ a.code-knop:hover .code-actie { filter: brightness(1.06); }
 .code-voorwaarden p { font-size: 13px; margin-top: 6px; }
 .code-logo[hidden], .code-kop img[hidden] { display: none; }
 .code-logo { width: 56px; height: 56px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; background: #0A1020; color: #F2CB74; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; }
+.zoek-ruim { margin: 14px 0 0; padding: 10px 14px; border-radius: 12px; background: var(--kaart-2); color: var(--tekst-2); font-size: 14px; }

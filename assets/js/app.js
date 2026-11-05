@@ -1185,7 +1185,24 @@
   }
   /* Woorden die bijna elke zoekvraag heeft ('cadeau voor man'): die tellen niet mee, zolang er nog een ander woord over is. */
   var STOP = { voor: 1, een: 1, de: 1, het: 1, van: 1, met: 1, en: 1, cadeau: 1, cadeaus: 1, cadeautje: 1, kado: 1, kados: 1, idee: 1, ideeen: 1, leuk: 1, leuke: 1 };
-  function zoekWoorden(tekst) { var w = vouw(tekst).split(/[^a-z0-9]+/).filter(Boolean); var r = w.filter(function (x) { return !STOP[x]; }); return (r.length ? r : w).map(stam); }
+  /* Zoekbalk slimmer (5-11-2026, GO Marius): Engelse woorden en woorden die erop lijken ('teapot' vindt theepotten,
+     'kokmes' vindt koksmessen). Een woord met '|' betekent: een van deze woorden is goed. */
+  var ZINALT = { 'oorbellen maken': 'sieraden-maken', 'sieraden maken': 'sieraden-maken', 'kettingen maken': 'sieraden-maken', 'armbandjes maken': 'sieraden-maken' };
+  var ALT = { teapot: 'theepot|teapot', tea: 'thee', mug: 'mok|beker', cup: 'mok|beker|kop', kokme: 'koksmes|keukenmes|messenset|koksme', kokmes: 'koksmes|keukenmes|messenset', koksme: 'koksmes|keukenmes|messenset', keukenme: 'keukenmes|koksmes|messenset',
+    knife: 'mes|messen', zakme: 'zakmes|multitool', zakmes: 'zakmes|multitool', scarf: 'sjaal', candle: 'kaars', watch: 'horloge', earring: 'oorbel', necklace: 'ketting', bracelet: 'armband', ring: 'ring',
+    bag: 'tas', backpack: 'rugzak', wallet: 'portemonnee', headphone: 'koptelefoon', earbud: 'oordop|oordopjes', perfume: 'parfum', puzzle: 'puzzel', toy: 'speelgoed', book: 'boek', sock: 'sokken|sok',
+    blanket: 'plaid|deken', deken: 'deken|plaid', plaid: 'plaid|deken', slipper: 'slof|pantoffel', sloffen: 'slof|pantoffel', slof: 'slof|pantoffel', pantoffel: 'pantoffel|slof', sweater: 'trui', jumper: 'trui',
+    wine: 'wijn', beer: 'bier', chocolate: 'chocola|chocolade', coffee: 'koffie', cookbook: 'kookboek', apron: 'schort', phone: 'telefoon', charger: 'oplader', kitchen: 'keuken', garden: 'tuin', dog: 'hond', cat: 'kat|poes',
+    beker: 'beker|mok', mok: 'mok|beker', kado: 'cadeau', gift: 'cadeau', sieradenmaken: 'sieraden-maken', kralen: 'kralen|sieraden-maken', lego: 'lego', jbl: 'jbl', airpod: 'airpods|oordopjes' };
+  function zoekWoorden(tekst) {
+    var v = vouw(tekst);
+    Object.keys(ZINALT).forEach(function (z) { if (v.indexOf(z) !== -1) v = v.split(z).join(' ' + ZINALT[z] + ' '); });
+    var w = v.split(/[^a-z0-9-]+/).filter(Boolean).map(function (x) { return x.replace(/^-+|-+$/g, ''); }).filter(Boolean);
+    var r = w.filter(function (x) { return !STOP[x]; });
+    return (r.length ? r : w).map(function (x) { if (x.indexOf('-') !== -1) return x.split('-').join(' '); var st = stam(x); return ALT[x] || ALT[st] || st; });
+  }
+  /* Eén van de woorden in een '|'-lijst is genoeg. Een woord met een spatie ('sieraden maken') moet als geheel voorkomen. */
+  function bevatEen(t, w) { return w.split('|').some(function (d) { return d.indexOf(' ') !== -1 ? t.indexOf(d) !== -1 : bevat(t, d); }); }
   /* Woorden voor een persoon ('man', 'vrouw', 'oma'): die zoeken op voor wie het product is, niet op de titel ('Dog Man' is geen cadeau voor een man). */
   var PERSW = {}; Object.keys(SYN).forEach(function (k) { if (/^(haar|hem|kind|opa-oma|collega)$/.test(k)) (SYN[k] + ' ' + k).split(' ').forEach(function (w) { PERSW[stam(w)] = k; }); });
   /* Korte woorden (3 letters of minder) alleen aan het begin van een woord: 'oma' vindt niet 'aroma' of 'roman', 'lp' niet 'alpaca'. */
@@ -1243,19 +1260,34 @@
   /* Zoekt in onze eigen producten. Eerst precies; vindt dat niets, dan met één tikfout per woord. */
   function zoekLijst(woorden, prijs) {
     var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
-    var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return bevat(t, w); }); });
+    var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return bevatEen(t, w); }); });
     if (lijst.length < 3 && woorden.some(function (w) { return w.length >= 4; })) {
       var al = {}; lijst.forEach(function (p) { al[p.id] = 1; });
       lijst = lijst.concat(basis.filter(function (p) {
         if (al[p.id]) return false;
         var t = zoekTekstV(p), tw = null;
         return woorden.every(function (w) {
-          if (bevat(t, w)) return true;
-          if (w.length < 4) return false;
+          if (bevatEen(t, w)) return true;
+          if (w.length < 4 || w.indexOf('|') !== -1 || w.indexOf(' ') !== -1) return false;
           tw = tw || t.split(/[^a-z0-9]+/);
           return tw.some(function (x) { return lijkt(w, x); });
         });
       }));
+    }
+    /* Vangnet (5-11-2026): nog steeds niets? Dan liever iets wat erop lijkt dan een lege pagina.
+       a. Meerdere woorden: producten die minstens één woord hebben (de beste bovenaan).
+       b. Eén samengesteld woord ('kokmes', 'theeglas'): het laatste stuk ervan ('mes', 'glas'). */
+    if (!lijst.length && woorden.length > 1) {
+      lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.some(function (w) { return w.length >= 3 && bevatEen(t, w); }); });
+      if (lijst.length) lijst.ruim = woorden.join(' ');
+    }
+    if (!lijst.length && woorden.length === 1 && woorden[0].indexOf('|') === -1 && woorden[0].length >= 6) {
+      var w0 = woorden[0];
+      for (var i = 2; i <= w0.length - 3 && !lijst.length; i++) {
+        var staart = w0.slice(i);
+        lijst = basis.filter(function (p) { return bevat(zoekTekstV(p), staart); });
+        if (lijst.length) { lijst.ruim = staart; lijst.staart = staart; }
+      }
     }
     return lijst;
   }
@@ -1263,6 +1295,11 @@
      Zo komt bij 'fiets' eerst de fietstas en pas later de drop met 'fietsjes' in de tekst (wens van Marius).
      Een heel woord telt zwaarder dan een stukje: bij 'bal' eerst de ballen en pas later de balpen. */
   function zoekScore(p, woorden) {
+    if (woorden.some(function (w) { return w.indexOf('|') !== -1 || w.indexOf(' ') !== -1; })) {
+      return woorden.reduce(function (s, w) {
+        return s + Math.max.apply(null, w.split('|').map(function (d, i) { var x = d.indexOf(' ') !== -1 ? (vouw(p.titel).indexOf(d) !== -1 ? 15 : 4) : zoekScore(p, [d]); return i ? x * 0.5 : x; })); /* het eerste woord gaat voor */
+      }, 0);
+    }
     var ti = ' ' + vouw(p.titel).replace(/[^a-z0-9]+/g, ' ') + ' ';
     var c = window.LK_CAT(p.cat), su = window.LK_SUB(c, p.sub);
     var ca = vouw((c ? c.naam : '') + ' ' + (su ? su.naam : ''));
@@ -1283,7 +1320,8 @@
   }
   function zoeken(q) {
     var woorden = zoekWoorden(q.q || '');
-    var lijst = zoekLijst(woorden, q.prijs);
+    var lijst = zoekLijst(woorden, q.prijs), ruim = lijst.ruim;
+    if (lijst.staart) woorden = [lijst.staart];
     var score = function (p) { return zoekScore(p, woorden); };
     if (woorden.length && (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant')) {
       var sc = {}; lijst.forEach(function (p) { sc[p.id] = score(p); });
@@ -1298,6 +1336,7 @@
       '<div class="binnen">' +
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
         (catTips.length ? '<div class="bedoel-je"><h2>Bedoel je…</h2><div class="bedoel-knoppen">' + catTips.map(function (t) { return '<a class="bedoel' + (t.soort === 'persoon' ? ' persoon' : '') + '" href="' + t.naar + '">' + ic('rechts') + '<span>' + t.naam + '</span></a>'; }).join('') + '</div></div>' : '') +
+        (ruim ? '<p class="zoek-ruim">We vonden niets precies voor “' + esc(q.q) + '”. Dit lijkt erop' + (lijst.staart ? ' (' + esc(lijst.staart) + ')' : '') + ':</p>' : '') +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         filterPaneel('/zoek', q) +
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
