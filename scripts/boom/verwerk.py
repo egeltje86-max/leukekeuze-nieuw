@@ -96,7 +96,7 @@ def kiesRegel(titel, oud):
     return None
 # Darts: vaste volgorde van herkennen (een kabinet met bord is verlichting/kabinet, een elektronisch bord is elektronisch)
 DARTS = [('Elektronische dartborden', r'elektron|softtip|soft tip|scoring|scolia|ton machine'), ('Verlichting & surrounds', r'verlichting|surround|kabinet|dartkast|\bkast\b|plasma|standaard|ring\b|led'),
-         ('Dartmatten & oches', r'dartmat|oche|werplijn|\bmat\b'), ('Darts-shirts', r'shirt|polo|jersey'), ('Flights & shafts', r'flight|shaft|case|accessoire|sharpener|scorebord|dock|wallet'),
+         ('Dartmatten & oches', r'dartmat|oche|werplijn|\bmat\b'), ('Darts-shirts', r'shirt|polo|jersey'), ('Flights & shafts', r'flight|shaft|case|accessoire|sharpener|slijper|scorebord|dock|wallet|servicekit|onderhoudsset'),
          ('Dartborden', r'dartbord|bristle|sisal|bord\b|board'), ('Dartpijlen', r'dartpijl|darts? ?set|tungsten|brass|gram|\d+\s*gr\b|steeltip|pijlen')]
 # vakjes die na de AI-keuring nog veranderd zijn (bijv. Darts werd een eigen groep, 5-11-2026)
 def herzie(pl, titel):
@@ -129,7 +129,7 @@ for p in LIVE:
     if p.get('status') != 'goedgekeurd': continue
     lp = LEAN.get(p['id'], p); oud = lp['cat'] + '/' + lp['sub']
     a = AI.get(p['id'])
-    pl = herzie(list(PLEK[a['v']]), p['titel']) if a else kiesRegel(p['titel'], oud)
+    pl = herzie(list(PLEK[a['v']]) if a else kiesRegel(p['titel'], oud), p['titel'])
     if not pl and HINT.get(p['id']): pl = list(PLEK[HINT[p['id']]])  # geen AI-antwoord: eerste kandidaat van de regels
     if not pl: rapport['geen plek in de boom (blijft alleen op themapagina)'] += 1; continue
     s = slugs(pl); extra = []
