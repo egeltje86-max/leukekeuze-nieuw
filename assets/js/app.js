@@ -202,19 +202,45 @@
       return '<span aria-hidden="true">›</span>' + (s.naar ? '<a href="' + s.naar + '">' + esc(s.tekst) + '</a>' : '<span>' + esc(s.tekst) + '</span>');
     }).join('') + '</nav>';
   }
+  /* 5-11-2026 (wens Marius: "filters aanpassen aan de pagina", bv. geen 'Baby' bij Tv & beeld):
+     elke pagina zet TEL = een functie die telt hoeveel producten er met een bepaalde keuze overblijven.
+     Knoppen zonder producten verdwijnen; een filter met minder dan 2 echte keuzes verdwijnt helemaal.
+     Een knop die nu aan staat blijft altijd staan (zo kun je hem uitzetten). In het paneel staat het aantal erachter. */
+  var TEL = null;
+  function telKeuze(q, sleutel, waarde) {
+    if (!TEL) return null;
+    var nq = Object.assign({}, q); if (waarde) nq[sleutel] = waarde; else delete nq[sleutel];
+    return TEL(nq);
+  }
+  function chipTal(n) { return n === null ? '' : ' <small>' + n + '</small>'; }
+  /* Minder dan 3 producten: knop weg. Geeft elke keuze bijna alles (90% of meer), dan maakt het filter niets kleiner: weg. */
+  var MIN_KNOP = 3;
+  function filterNut(aantallen, totaal) { return aantallen.length >= 2 && aantallen.some(function (n) { return n < totaal * 0.9; }); }
   function prijsChips(pad, q) {
-    return '<div class="chips" role="group" aria-label="Budget">' + PRIJZEN.map(function (p) {
+    var huidig = q.prijs || 'alle', echt = [];
+    var html = PRIJZEN.map(function (p) {
+      var n = p.id === 'alle' ? null : telKeuze(q, 'prijs', p.id);
+      if (n !== null && n < MIN_KNOP && huidig !== p.id) return '';
+      if (n !== null) echt.push(n);
       var nq = Object.assign({}, q, { prijs: p.id });
-      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + ((q.prijs || 'alle') === p.id) + '">' + p.label + '</a>';
-    }).join('') + '</div>';
+      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + (huidig === p.id) + '">' + p.label + chipTal(n) + '</a>';
+    }).join('');
+    if (TEL && huidig === 'alle' && !filterNut(echt, telKeuze(q, 'prijs', ''))) return '';
+    return '<div class="chips" role="group" aria-label="Budget">' + html + '</div>';
   }
   /* 2.0: filter 'Voor wie' op categoriepagina's: zelfde labels als de persoonspagina's. */
   var VOOR_WIE = [['', 'Iedereen'], ['hem', 'Hem'], ['haar', 'Haar'], ['kinderen', 'Kinderen'], ['tieners', 'Tieners'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega'], ['baby', 'Baby']];
   function voorChips(pad, q) {
-    return '<div class="chips voor-chips" role="group" aria-label="Voor wie">' + VOOR_WIE.map(function (v) {
+    var huidig = q.voor || '', echt = [];
+    var html = VOOR_WIE.map(function (v) {
+      var n = v[0] ? telKeuze(q, 'voor', v[0]) : null;
+      if (n !== null && n < MIN_KNOP && huidig !== v[0]) return '';
+      if (n !== null) echt.push(n);
       var nq = Object.assign({}, q, { voor: v[0] });
-      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + ((q.voor || '') === v[0]) + '">' + v[1] + '</a>';
-    }).join('') + '</div>';
+      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + (huidig === v[0]) + '">' + v[1] + chipTal(n) + '</a>';
+    }).join('');
+    if (TEL && !huidig && !filterNut(echt, telKeuze(q, 'voor', ''))) return '';
+    return '<div class="chips voor-chips" role="group" aria-label="Voor wie">' + html + '</div>';
   }
   /* 2.1: eigen knoppen per pagina (Dames · Heren · Kinderen, Jongen · Meisje, Leeftijd ...), zie LK_KNOPSETS in data.js. */
   function knopSets(namen, q) {
@@ -222,16 +248,21 @@
       .filter(function (k) { return k && (!k.als || q[k.als[0]] === k.als[1]); });
   }
   function knopRij(pad, q, k) {
-    return '<div class="chips knop-chips" role="group" aria-label="' + esc(k.titel) + '">' +
-      [['', 'Alles']].concat(k.opties).map(function (o) {
+    var huidig = q[k.param] || '', echt = [];
+    var html = [['', 'Alles']].concat(k.opties).map(function (o) {
         var nq = Object.assign({}, q); nq[k.param] = o[0];
         /* Kies je bij sieraden weer 'Alles' of 'Dames', dan vervalt Jongen/Meisje. */
         if (k.param === 'wie' && o[0] !== 'kinderen') delete nq.kind;
-        return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + ((q[k.param] || '') === o[0]) + '">' + esc(o[1]) + '</a>';
-      }).join('') + '</div>';
+        var n = o[0] && TEL ? TEL(nq) : null;
+        if (n !== null && n < MIN_KNOP && huidig !== o[0]) return '';
+        if (n !== null) echt.push(n);
+        return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + (huidig === o[0]) + '">' + esc(o[1]) + chipTal(n) + '</a>';
+      }).join('');
+    if (TEL && !huidig && !filterNut(echt, telKeuze(q, k.param, ''))) return '';
+    return '<div class="chips knop-chips" role="group" aria-label="' + esc(k.titel) + '">' + html + '</div>';
   }
   function knopChips(pad, q, namen) {
-    return knopSets(namen, q).map(function (k) { return '<div class="knop-groep"><div class="chips-titel">' + esc(k.titel) + '</div>' + knopRij(pad, q, k) + '</div>'; }).join('');
+    return knopSets(namen, q).map(function (k) { var rij = knopRij(pad, q, k); return rij ? '<div class="knop-groep"><div class="chips-titel">' + esc(k.titel) + '</div>' + rij + '</div>' : ''; }).join('');
   }
   function knopFilter(p, q, namen) {
     return knopSets(namen, q).every(function (k) {
@@ -268,9 +299,9 @@
       '<div class="filterpaneel" data-filterpaneel hidden><button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
         '<div class="filter-blad" role="dialog" aria-modal="true" aria-label="Filter en sorteren">' +
           '<div class="filter-kop"><strong>Filter &amp; sorteren</strong><button type="button" class="filter-sluit" data-filter-dicht aria-label="Sluiten">' + ic('sluit') + '</button></div>' +
-          (metVoor ? '<h3>Voor wie</h3>' + voorChips(pad, q).replace('class="chips voor-chips"', 'class="chips filter-chips"') : '') +
-          knopSets(knoppen, q).map(function (k) { return '<h3>' + esc(k.titel) + '</h3>' + knopRij(pad, q, k).replace('class="chips knop-chips"', 'class="chips filter-chips"'); }).join('') +
-          '<h3>Budget</h3>' + prijsChips(pad, q).replace('class="chips"', 'class="chips filter-chips"') +
+          (metVoor && voorChips(pad, q) ? '<h3>Voor wie</h3>' + voorChips(pad, q).replace('class="chips voor-chips"', 'class="chips filter-chips"') : '') +
+          knopSets(knoppen, q).map(function (k) { var rij = knopRij(pad, q, k); return rij ? '<h3>' + esc(k.titel) + '</h3>' + rij.replace('class="chips knop-chips"', 'class="chips filter-chips"') : ''; }).join('') +
+          (prijsChips(pad, q) ? '<h3>Budget</h3>' + prijsChips(pad, q).replace('class="chips"', 'class="chips filter-chips"') : '') +
           (sorteerOpties ? '<h3>Sorteren</h3><div class="chips filter-chips">' + sorteerOpties.map(function (o) {
             return '<a class="chip" href="' + maakAdres(pad, Object.assign({}, q, { sort: o[0] === 'aanbevolen' ? '' : o[0] })) + '" aria-pressed="' + ((q.sort || 'aanbevolen') === o[0]) + '">' + o[1] + '</a>';
           }).join('') + '</div>' : '') +
@@ -301,8 +332,9 @@
   function mobielBalk(pad, q, knoppen, sorteerOpties) {
     var aantal = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
     var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd/i.test(k.titel); })[0];
-    var snel = lft ? '<div class="knop-groep mb-snel"><div class="chips-titel">' + esc(lft.titel) + '</div>' + knopRij(pad, q, lft) + '</div>'
-                   : '<div class="knop-groep mb-snel"><div class="chips-titel">Prijs</div>' + prijsChips(pad, q) + '</div>';
+    var lftRij = lft ? knopRij(pad, q, lft) : '', prRij = lftRij ? '' : prijsChips(pad, q);
+    var snel = lftRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">' + esc(lft.titel) + '</div>' + lftRij + '</div>'
+             : prRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">Prijs</div>' + prRij + '</div>' : '';
     var so = sorteerOpties || [], gekozenSort = so.filter(function (o) { return o[0] === (q.sort || 'aanbevolen'); })[0];
     var sorteer = so.length ? '<label class="mb-sorteer"><span class="mb-tekst">' + ic('sorteer') + (gekozenSort && gekozenSort[0] !== 'aanbevolen' ? esc(gekozenSort[1]) : 'Sorteren') + '</span>' + ic('omlaag', 'mb-pijl') +
       '<select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '" aria-label="Sorteren">' +
@@ -534,7 +566,9 @@
 
     var pad = '/c/' + c.slug + (s ? '/' + s.slug : '') + (v ? '/' + v.slug : '');
     var knoppen = (v && v.knoppen) || (s && s.knoppen) || c.knoppen || [];
-    var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug, v && v.slug) && binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen); });
+    var basis = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug, v && v.slug); });
+    TEL = function (nq) { return basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen); }).length; };
+    var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen); });
     lijst = sorteer(lijst, q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
@@ -625,6 +659,7 @@
     var naam = pe.naam.replace(/^Voor /, '');
     var knoppen = pe.knoppen || [];
     var alles = persoonProducten(pe, s ? s.vakken : null);
+    TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen); }).length; };
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
@@ -706,6 +741,7 @@
     zetTitel(g.seoTitel || g.naam);
     var knoppen = g.knoppen || [];
     var alles = verzamelLijst(g);
+    TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen); }).length; };
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
@@ -2502,6 +2538,7 @@
       var verhuisdSub = { horloges: '/c/sieraden/horloges', geuren: '/c/geuren-verzorging/geuren', verzorging: '/c/geuren-verzorging/verzorging' }[d[2]];
       if (verhuisdSub) { ga(verhuisdSub + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
     }
+    TEL = null;
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();
     else if (d[0] === 'c') {
