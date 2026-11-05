@@ -62,6 +62,10 @@
   function huidigAdres() { return location.pathname + location.search; }
   function ga(url, vervang) {
     url = netjes(url);
+    /* 5-11-2026 (wens Marius): een filter of sortering kiezen op dezelfde pagina is geen nieuwe stap in de geschiedenis.
+       Zo brengt de terugknop je in één keer naar de vorige pagina, zoals bij bol en Coolblue (eerst moest je elke filterklik terug). */
+    var doelPad = url.split('?')[0].split('#')[0];
+    if (!vervang && doelPad === netjes(location.pathname) && /^\/(c|voor|gelegenheid|collectie)\//.test(doelPad)) vervang = true;
     if (!window.LK_PRODUCTEN) { location[vervang ? 'replace' : 'assign'](url); return; } /* lijst nog niet binnen: gewoon de pagina laden */
     try { history[vervang ? 'replaceState' : 'pushState']({}, '', url); } catch (e) { location.href = url; return; }
     toon();
@@ -622,7 +626,9 @@
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
-    var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; if (q.voor) nq.voor = q.voor; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
+    /* Naar een andere groep: alleen budget en leeftijd/dames-heren gaan mee. 'Voor wie', merk en winkel niet
+       (eerst ging bv. 'Baby' mee naar Tablets en zag je 0 producten). */
+    var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
     var subs = '<div class="subkaarten">' +
       '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span><span class="subnaam">Alles</span></a>' +
       volleSubs(c).map(function (x) {
@@ -652,8 +658,9 @@
 
     var gekozen = (q.prijs && q.prijs !== 'alle') || q.voor || aantalKnoppen(q, knoppen);
     var leeg = leegBlok(gekozen ? 'Niets met deze keuze' : 'Hier komen binnenkort mooie producten',
-      gekozen ? 'Kies een ander budget of een andere persoon, of bekijk alles.' : 'We zijn deze categorie nog aan het vullen. Kijk alvast verder:',
-      '<a class="knop knop-rand" href="/c/cadeaus">Alle cadeaus</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
+      gekozen ? 'Met deze filters vinden we hier niets. Haal een filter weg of bekijk alles.' : 'We zijn deze categorie nog aan het vullen. Kijk alvast verder:',
+      gekozen ? '<a class="knop knop-goud" href="' + maakAdres(pad, {}) + '">Toon alles hier</a> <a class="knop knop-rand" href="/c/cadeaus">Alle cadeaus</a>'
+              : '<a class="knop knop-rand" href="/c/cadeaus">Alle cadeaus</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
     var anderen = CATS.filter(function (x) { return x.slug !== c.slug; });
     var ouder = c.onder ? window.LK_CAT(c.onder) : null;
