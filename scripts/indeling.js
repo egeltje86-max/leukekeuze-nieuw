@@ -452,6 +452,8 @@ function deel(p0) {
      1-11-2026 (Marius: te weinig verschil, en dingen bij afscheid die er niks mee te maken hebben):
      elk vakje heeft nu zijn eigen soort cadeaus. Handgekozen ids staan in scripts/collega.json. */
   if (COL_A.has(p.id) || COL_B.has(p.id) || COL_L.has(p.id)) { if (p.voor.indexOf('collega') === -1) p.voor.push('collega'); }
+  /* 5-11-2026: dierenspullen (kooien, knaagdiertunnels, aquaria) zijn geen collegacadeau. */
+  if (p.cat === 'dieren' || /knaagdier|parkiet|vogelkooi|aquarium|zittak|kattenbak|krabpaal/i.test(titel)) { const ci = p.voor.indexOf('collega'); if (ci !== -1) p.voor.splice(ci, 1); }
   if (p.voor.indexOf('collega') !== -1 || oud === 'cadeaus/collega' || (p0.ookIn || []).indexOf('cadeaus/collega') !== -1) {
     const lekker = /^(eten-drinken|dranken)$/.test(p.cat) || /bloem|plant|kaars|geurstok|bonbon|chocola|thee|koffie(?!mok)|handcr|zeep|bruisbal|kweek|zaadjes|bedankt|dankjewel|thank|merci/i.test(titel);
     const bedanktTekst = /bedankt|dankjewel|dank je|thank|merci|top collega|beste collega|super collega|goud waard|\bjuf\b|meester/i.test(titel);
@@ -459,7 +461,9 @@ function deel(p0) {
     if (afscheid) tags.add('collega-afscheid');
     if (COL_B.has(p.id) || (!afscheid && (bedanktTekst || (lekker && p.prijs <= 40)))) tags.add('collega-bedankje');
     if (COL_L.has(p.id) || (!afscheid && !COL_B.has(p.id) && !bedanktTekst && !lekker && p.prijs <= 25)) tags.add('collega-lootjes');
-    if (![...tags].some((t) => t.indexOf('collega-') === 0)) tags.add(p.prijs <= 25 ? 'collega-lootjes' : 'collega-bedankje');
+    /* 5-11-2026 (Marius: bij bedankje stond van alles): alleen nog lootjes als vangnet (tot €25). Duurdere losse dingen
+       (powerbanks, yogamatten, beeldjes) staan wel bij Collega's, maar niet meer onder 'Bedankje'. */
+    if (![...tags].some((t) => t.indexOf('collega-') === 0) && p.prijs <= 25) tags.add('collega-lootjes');
   }
 
   /* Verjaardag: leeftijd in de titel (18, 30, 40, 50, 60, 65 jaar; Abraham en Sarah = 50). */
