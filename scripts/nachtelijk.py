@@ -41,6 +41,9 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-mokkaland': '&standard_id=4&language_code=nl&locale_id=1&program_id=21568',
     'x-butchery': '&standard_id=4&language_code=nl&locale_id=1&program_id=17660',
     'x-kambukka': '&standard_id=1&language_code=en&locale_id=6&program_id=17815',
+    # 05-11-2026 middag: Joybuy NL en Acculaders.nl (gevonden door Claude). Geen feed (nog) bij: Eastpak, Cewe, Parfumado, Goedgemerkt, I-KOOK, Vipio.
+    'x-joybuy': '&standard_id=1&language_code=nl&locale_id=1&program_id=20823',
+    'x-acculaders': '&standard_id=1&language_code=nl&locale_id=1&program_id=12933',
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
