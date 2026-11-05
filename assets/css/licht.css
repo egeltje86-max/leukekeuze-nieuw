@@ -523,3 +523,38 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .inapp-tip p { margin: 0 0 8px; }
 .inapp-tip .knop { padding: 8px 14px; font-size: 14px; }
 .inapp-stap { display: block; font-size: 13px; color: #5a4a20; }
+
+/* ===== Filterblok compact en mooier (wens Marius 5-11-2026): per filter één rij met een klein label ervoor ===== */
+.werkbalk { padding: 6px 14px 10px; gap: 0; border-radius: 16px; background: #FFFDF8; border: 1px solid rgba(184,134,46,.22); box-shadow: 0 6px 18px -12px rgba(10,16,32,.25); }
+.werkbalk .knop-groep, .werkbalk > .chips { margin: 0; }
+.werkbalk .chip { min-height: 34px; padding: 0 13px; font: 600 13px/1 var(--f-ui); background: #F5F1E9; border-color: transparent; color: #2A2F3D; display: inline-flex; align-items: center; transition: background .15s, border-color .15s, color .15s; }
+.werkbalk .chip:hover { background: #fff; border-color: var(--goud); color: var(--goud-donker); }
+.werkbalk .chip[aria-pressed="true"] { background: #0A1020; color: #F3D68A; border-color: #0A1020; }
+.werkbalk .chip.verras { background: #FFFBF3; border-color: rgba(184,134,46,.5); color: var(--goud-donker); min-height: 34px; }
+.werkbalk .werkbalk-onder { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(10,16,32,.07); gap: 8px; flex-wrap: nowrap; }
+.werkbalk .aantal { font: 600 13px/1.2 var(--f-ui); color: var(--tekst-2); white-space: nowrap; }
+.werkbalk .sorteer select { min-height: 34px; padding: 0 30px 0 11px; font: 600 13px/1 var(--f-ui); border-radius: 999px; background: #F5F1E9; border-color: transparent; }
+.werkbalk .voor-chips { padding-bottom: 0; border-bottom: 0; }
+.werkbalk .voor-chips .chip { font-size: 13px; padding: 0 13px; }
+@media all {
+  .werkbalk .knop-groep, .werkbalk > .chips { display: flex; align-items: center; gap: 6px; padding: 7px 0; border-bottom: 1px dashed rgba(10,16,32,.09); }
+  .werkbalk .knop-groep .chips-titel { flex: 0 0 62px; margin: 0; font: 700 10.5px/1.15 var(--f-ui); text-transform: uppercase; letter-spacing: .06em; color: #8A7A5C; }
+  .werkbalk .knop-groep .chips { flex: 1; min-width: 0; margin: 0 -14px 0 0; padding: 1px 14px 1px 0; gap: 6px; border: 0; }
+  /* Budget en Voor wie hebben geen kopje: het label komt uit aria-label en blijft links staan tijdens het schuiven. */
+  .werkbalk > .chips { margin: 0 -14px 0 0; padding: 7px 14px 7px 0; gap: 6px; }
+  .werkbalk > .chips::before { content: attr(aria-label); position: sticky; left: 0; z-index: 1; flex: 0 0 62px; align-self: stretch; display: flex; align-items: center; font: 700 10.5px/1.15 var(--f-ui); text-transform: uppercase; letter-spacing: .06em; color: #8A7A5C; background: #FFFDF8; margin-right: 0; }
+  .werkbalk > .chips[aria-label="Budget"]::before { content: 'Prijs'; }
+  .werkbalk .werkbalk-onder { border-top: 0; margin-top: 2px; }
+  .werkbalk .werkbalk-onder .chip.verras { padding: 0 11px; }
+}
+@media (hover: none) and (pointer: coarse) { .werkbalk .chip { min-height: 36px; padding: 0 13px; } .werkbalk .sorteer select { min-height: 36px; padding-top: 0; padding-bottom: 0; } }
+/* Soorten-rij (Verkleedkleding, Speelkeukens ...) onder de rondjes: iets rustiger en duidelijk anders dan de filters. */
+.vakjesrij .chip { min-height: 36px; padding: 0 15px; display: inline-flex; align-items: center; border: 1.5px solid rgba(10,16,32,.12); background: #fff; font-weight: 600; }
+.vakjesrij .chip[aria-pressed="true"], .vakjesrij .chip.actief { background: linear-gradient(180deg, #F2CB74, #D9A848); color: #141A2A; border-color: #B8862E; }
+@media (min-width: 760px) {
+  .werkbalk { flex-direction: column; align-items: stretch; padding: 6px 18px 12px; }
+  .werkbalk .knop-groep .chips-titel, .werkbalk > .chips::before { flex-basis: 110px; }
+  .werkbalk .knop-groep .chips, .werkbalk > .chips { margin: 0; padding-right: 0; flex-wrap: wrap; overflow: visible; }
+  .werkbalk > .chips::before { position: static; }
+  .werkbalk .werkbalk-onder { justify-content: flex-end; }
+}

@@ -2567,10 +2567,12 @@
     if (a.pad !== vorigPad && !hersteld) {
       var grid = zelfdeCat && d[2] ? $('.prodgrid', app) : null;
       if (grid) {
-        /* subcategorie gekozen binnen dezelfde categorie: meteen naar het eerste product */
+        /* Subcategorie gekozen binnen dezelfde categorie: net onder de rondjes uitkomen, bij de soorten en filters,
+           zodat je je zoektocht meteen kunt verfijnen (wens Marius 5-11-2026; eerst sprong hij voorbij de filters naar de producten). */
         var kop = $('.header') || $('header');
         var hoogte = kop ? kop.getBoundingClientRect().height : 70;
-        var doelY = grid.getBoundingClientRect().top + window.scrollY - hoogte - 12;
+        var doelEl = $('.vakjesrij', app) || $('.werkbalk', app) || grid;
+        var doelY = doelEl.getBoundingClientRect().top + window.scrollY - hoogte - 10;
         var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({ top: Math.max(0, doelY), behavior: rustig ? 'auto' : 'smooth' });
       } else window.scrollTo(0, 0);
