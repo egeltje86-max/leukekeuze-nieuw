@@ -624,3 +624,27 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .catbalk-pijl { position: absolute; right: 18px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: #E0B54A; }
 @media (max-width: 380px) { .catbalk-naam { font-size: 17px; } }
 .catbalken + .alle-cats { margin-top: 14px; }
+
+/* Ronde plaatjes Gelegenheden / Voor wie (eigen gouden rand): geen witte rand eromheen */
+.subkaart .rond:has(img[src*="/sub/rond/"]) { padding: 0; background: transparent; border-color: transparent; overflow: visible; box-shadow: 0 8px 18px -10px rgba(10,16,32,.45); }
+.subkaart .rond img[src*="/sub/rond/"] { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.subkaart.actief .rond:has(img[src*="/sub/rond/"]) { box-shadow: 0 0 0 3px #E0B54A, 0 8px 18px -8px rgba(184,134,46,.8); }
+/* Nieuwe banner bovenaan (5-11-2026): donker links voor de tekst, cadeaus rechts. Op de telefoon 220-260px hoog (wens Marius). */
+.hero.hero-2026 picture img { object-position: right center; }
+@media (max-width: 759px) { .hero.hero-2026 picture img { object-position: 70% center; } }
+.hero.hero-2026::after { background: linear-gradient(90deg, rgba(8,13,30,.92) 0%, rgba(8,13,30,.7) 38%, rgba(8,13,30,.15) 70%, rgba(8,13,30,0) 100%); }
+@media (max-width: 759px) {
+  .hero.hero-2026 { min-height: 240px; max-height: 260px; display: flex; align-items: center; }
+  .hero.hero-2026 .hero-inhoud { padding: 18px 0 16px; width: 100%; }
+  .hero.hero-2026 .kicker { font-size: 11px; margin-bottom: 4px; }
+  .hero.hero-2026 h1 { font-size: 29px; max-width: 62%; }
+  .hero.hero-2026 p { display: none; }
+  .hero.hero-2026 .populair { margin-top: 12px; }
+  .hero.hero-2026 .populair > span { display: none; }
+  .hero.hero-2026 .chip { min-height: 32px; padding: 0 12px; font-size: 12.5px; }
+}
+@media (min-width: 760px) { .hero.hero-2026 { min-height: 380px; } .hero.hero-2026 h1, .hero.hero-2026 p { max-width: 520px; } }
+/* Tekst op de banner altijd leesbaar (wens Marius 5-11-2026) */
+.hero.hero-2026 .kicker, .hero.hero-2026 h1, .hero.hero-2026 p { text-shadow: 0 2px 10px rgba(5,8,20,.95), 0 0 2px rgba(5,8,20,.9); }
+.hero.hero-2026 .kicker { color: #F2CB74; font-weight: 800; }
+@media (max-width: 759px) { .hero.hero-2026::after { background: linear-gradient(90deg, rgba(8,13,30,.95) 0%, rgba(8,13,30,.82) 45%, rgba(8,13,30,.3) 75%, rgba(8,13,30,.1) 100%); } }

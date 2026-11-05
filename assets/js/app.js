@@ -412,7 +412,7 @@
     zetTitel('');
     var hoofd = ['cadeaus', 'dranken', 'speelgoed', 'wonen', 'elektronica'].map(window.LK_CAT);
     return '' +
-      '<section class="hero' + (INST.heroLogo ? ' hero-logo' : '') + '">' +
+      '<section class="hero' + (INST.heroLogo ? ' hero-logo' : '') + (INST.heroNieuw ? ' hero-2026' : '') + '">' +
         '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
         '<img src="' + esc(INST.heroMobiel) + '" alt="" fetchpriority="high"></picture>' +
         '<div class="hero-inhoud"><div class="binnen">' +
