@@ -7,7 +7,9 @@ const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const { deel } = require('./indeling.js');
 const { plaats } = require('./boom/plaats.js'); // 3.0: nieuwe boom (afd > groep > vak), zie scripts/boom/ // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
-const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden', 'varianten', 'maten', 'gecontroleerd'];
+const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden', 'varianten', 'maten', 'gecontroleerd',
+  /* Snelheid (5-11-2026): deze velden gebruikt de site in lijsten niet, dus die laden pas op de productpagina. */
+  'subVast', 'wil', 'uitverkochtSinds'];
 /* Keurkamer-slot (2-11-2026): de oordelen van Marius uit keurkamer/oordelen.json gelden bij ELKE bouw.
    Wat hij weg heeft gedaan blijft weg (ook als een ronde het product opnieuw aanlevert), verplaatst blijft verplaatst,
    'niet hier' blijft weg uit dat extra vakje, toppers blijven bovenaan. Zie scripts/keurkamer/verwerk.py. */
@@ -41,6 +43,12 @@ function splits() {
     /* Snelheid (31-10-2026): de standaardwaarden laten we weg; het laadscript hieronder vult ze weer in. Zo is het bestand ~15% kleiner en sneller te lezen. */
     if (l.beeld === 'images/producten/' + l.id) delete l.beeld;
     if (l.status === 'goedgekeurd') delete l.status;
+    if (typeof l.rang === 'number') l.rang = Math.round(l.rang * 100) / 100; /* 2 decimalen is genoeg voor de volgorde */
+    /* Snelheid (5-11-2026): de meest voorkomende waarden laten we weg; het laadscript vult ze weer in (zie hieronder). */
+    if (l.nieuw === true) delete l.nieuw; else if (l.nieuw === undefined) l.nieuw = false;
+    if (Array.isArray(l.ookIn) && !l.ookIn.length) delete l.ookIn;
+    if (l.shop === 'bol') delete l.shop;
+    if (JSON.stringify(l.moment) === '["kerst","sinterklaas","verjaardag"]') delete l.moment;
     lean.push(l); det[p.id] = d;
   }
   /* Snelheid (31-10-2026): JSON.parse van een tekst is in browsers een stuk sneller dan het lezen van een JavaScript-object van 2,5 MB.
@@ -48,7 +56,7 @@ function splits() {
   const json = '[' + lean.map(p => JSON.stringify(p)).join(',') + ']';
   const letterlijk = "'" + json.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(new RegExp(String.fromCharCode(0x2028), 'g'), '\\u2028').replace(new RegExp(String.fromCharCode(0x2029), 'g'), '\\u2029') + "'";
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_PRODUCTEN = JSON.parse(' + letterlijk + ');\n' +
-    '(function (L) { for (var i = 0; i < L.length; i++) { var p = L[i]; if (p.beeld === undefined) p.beeld = "images/producten/" + p.id; if (!p.status) p.status = "goedgekeurd"; } })(window.LK_PRODUCTEN);\n' +
+    '(function (L) { for (var i = 0; i < L.length; i++) { var p = L[i]; if (p.beeld === undefined) p.beeld = "images/producten/" + p.id; if (!p.status) p.status = "goedgekeurd"; if (p.nieuw === undefined) p.nieuw = true; else if (p.nieuw === false) delete p.nieuw; if (!p.ookIn) p.ookIn = []; if (!p.shop) p.shop = "bol"; if (!p.moment) p.moment = ["kerst", "sinterklaas", "verjaardag"]; } })(window.LK_PRODUCTEN);\n' +
     /* Snelheid (31-10-2026): dit bestand laadt nu 'async' (zie sjabloon.html); de site wacht op dit seintje. */
     'try { window.dispatchEvent(new Event("lk-producten")); } catch (e) { var ev = document.createEvent("Event"); ev.initEvent("lk-producten", false, false); window.dispatchEvent(ev); }\n');
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-details.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_DETAILS = ' + JSON.stringify(det) + ';\n');

@@ -9,6 +9,7 @@ try { OUD = JSON.parse(fs.readFileSync(path.join(__dirname, 'oud-naar-nieuw.json
 /* Reparaties 5-11-2026 (GO Marius, na de sitecontrole): partnerlinks voor producten die een gewone winkellink hadden,
    een vakje voor producten zonder vakje, en dubbele producten samenvoegen (de goedkoopste blijft). Zie correcties.json. */
 let COR = { links: {}, vak: {}, samen: {} };
+const OUDP = { kind: 'cadeaus/voor-kinderen', kinderen: 'cadeaus/voor-kinderen', haar: 'cadeaus/voor-haar', hem: 'cadeaus/voor-hem', collega: 'cadeaus/collega', baby: 'cadeaus/baby-kraam', 'opa-oma': 'cadeaus/opa-oma' };
 try { COR = JSON.parse(fs.readFileSync(path.join(__dirname, 'correcties.json'), 'utf8')); } catch (e) {}
 function plaats(p) {
   const x = PL[p.id];
@@ -25,6 +26,13 @@ function plaats(p) {
   const l = (COR.links || {})[p.id]; if (l) { p.url = l.url; if (!p.winkelUrl) p.winkelUrl = l.winkelUrl; }
   const v = (COR.vak || {})[p.id]; if (v) { p.afd = v[0]; p.groep = v[1]; p.vak = v[2]; }
   const z = (COR.samen || {})[p.id]; if (z && p.status === 'goedgekeurd') { p.status = 'samengevoegd'; p.samengevoegd = z; }
+  const t = (COR.tekst || {})[p.id]; if (t) p.waarom = t;
+  const w = (COR.voorWeg || {})[p.id];
+  if (w) { p.voor = (p.voor || []).filter((x) => w.indexOf(x) === -1); p.ookIn = (p.ookIn || []).filter((x) => !w.some((l) => OUDP[l] === x)); }
+  const s = (COR.status || {})[p.id]; if (s && p.status === 'goedgekeurd') { p.status = s; p.uitverkochtSinds = p.uitverkochtSinds || '2026-11-05'; }
+  const pr = (COR.prijs || {})[p.id]; if (pr) { p.prijs = pr[0]; if (pr[1] && pr[1] > pr[0]) p.oudePrijs = pr[1]; else delete p.oudePrijs; }
+  if (p.oudePrijs && !(p.oudePrijs > p.prijs)) delete p.oudePrijs; /* geen 'van-prijs' die niet hoger is */
+  if (v && v[0] === 'christelijk') p.cat = 'christelijk'; /* christelijk alleen bij Christelijk (regel Marius) */
   return p;
 }
 module.exports = { plaats };

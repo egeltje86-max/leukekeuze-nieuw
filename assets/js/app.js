@@ -950,12 +950,27 @@
     'boeken-media/lezen': 'e-reader ereader', 'metaaldetectie/detectors': 'metaaldetector detector', 'elektronica/audio': 'speaker luidspreker', 'dranken/whisky': 'whiskey',
     'christelijk/bijbels': 'bijbel', 'sport-outdoor/kamperen': 'camping', 'hobby/knutselen': 'diy zelf maken creatief', 'speelgoed/figuren-voertuigen': 'speelfiguur speelfiguren',
     'cadeaus/collega': 'juf meester leerkracht', 'cadeaus/voor-kinderen': 'tiener' };
+  /* 3.0 (5-11-2026): ook de nieuwe boom (afdeling > groep > vakje) telt mee bij zoeken, plus extra woorden per vakje.
+     Zo vindt 'bordspel' alle bordspellen en 'kerstboom' het vakje Kerstbomen & kransen. */
+  var VAKSYN = { 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
+    'dameshorloges': 'dameshorloge horloge dames', 'herenhorloges': 'herenhorloge horloge heren', 'koptelefoons': 'koptelefoon headphone', 'oordopjes': 'oortjes earbuds oordopjes koptelefoon',
+    'gaming-headsets': 'headset koptelefoon', 'bordspellen-voor-het-gezin': 'bordspel gezelschapsspel', 'strategiespellen': 'bordspel strategiespel', 'partyspellen': 'bordspel partyspel',
+    'kinderspellen': 'bordspel kinderspel', 'kaart-dobbelspellen': 'kaartspel dobbelspel', 'squishmallows': 'squishmallow knuffel', 'dartborden': 'dartbord darts', 'dartpijlen': 'darts dartpijl pijltjes',
+    'elektronische-dartborden': 'dartbord darts', 'dartmatten-oches': 'darts dartmat oche', 'flights-shafts': 'darts', 'verlichting-surrounds': 'darts surround dartbordverlichting',
+    'damesparfum': 'parfum geur eau de parfum', 'herenparfum': 'parfum geur aftershave eau de toilette', 'parfumsets': 'parfum geurset', 'giftsets-voor-haar': 'cadeauset giftset',
+    'giftsets-voor-hem': 'cadeauset giftset', 'metaaldetectors': 'metaaldetector detector', 'chocoladeletters': 'chocoladeletter letter', 'geurkaarsen': 'geurkaars kaars',
+    'kerstballen-hangers': 'kerstbal kersthanger kerstversiering', 'kerstverlichting': 'kerstlampjes kerstverlichting lichtjes', 'knuffels': 'knuffel', 'legpuzzels': 'puzzel legpuzzel',
+    'kinderpuzzels': 'puzzel', '3d-puzzels': 'puzzel', 'bluetooth-speakers': 'speaker luidspreker box', 'consoles': 'console spelcomputer', 'games': 'game spel' };
+  function zoekBoom(p) {
+    var a = window.LK_CAT(p.afd), g = window.LK_SUB(a, p.groep), v = window.LK_VAK ? window.LK_VAK(g, p.vak) : null;
+    return { groep: g ? g.naam : '', vak: (v ? v.naam : '') + ' ' + (VAKSYN[p.vak] || ''), afd: a ? a.naam : '' };
+  }
   function zoekTekst(p) {
-    var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub);
+    var c = window.LK_CAT(p.cat), s = window.LK_SUB(c, p.sub), b = zoekBoom(p);
     var extra = (p.ookIn || []).map(function (x) { var d = x.split('/'); var cc = window.LK_CAT(d[0]); var ss = window.LK_SUB(cc, d[1]); return ss ? ss.naam : ''; });
     var syn = (p.voor || []).concat(p.moment || []).map(function (x) { return SYN[x] || ''; });
     var subsyn = [p.cat + '/' + p.sub].concat(p.ookIn || []).map(function (x) { return SUBSYN[x] || ''; });
-    var t = [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), subsyn.join(' '), p.zoek || ''].join(' ').toLowerCase();
+    var t = [p.titel, p.waarom, p.shop, c && c.naam, s && s.naam, extra.join(' '), (p.voor || []).join(' '), (p.moment || []).join(' '), syn.join(' '), subsyn.join(' '), p.zoek || '', b.afd, b.groep, b.vak, p.merk || ''].join(' ').toLowerCase();
     /* Afkortingen die mensen intypen: 'ps5' vindt ook 'PlayStation 5', 'ps4' ook 'PlayStation 4'. */
     return t + (/playstation\s*5/.test(t) ? ' ps5' : '') + (/playstation\s*4/.test(t) ? ' ps4' : '');
   }
@@ -985,7 +1000,11 @@
     for (var i = 0; i < 3; i++) if (w.slice(0, i) + w[i + 1] + w[i] + w.slice(i + 2) === x) return true;
     return false;
   }
-  function zoekWoorden(tekst) { return vouw(tekst).split(/[^a-z0-9]+/).filter(Boolean).map(stam); }
+  /* Woorden die bijna elke zoekvraag heeft ('cadeau voor man'): die tellen niet mee, zolang er nog een ander woord over is. */
+  var STOP = { voor: 1, een: 1, de: 1, het: 1, van: 1, met: 1, en: 1, cadeau: 1, cadeaus: 1, cadeautje: 1, kado: 1, kados: 1, idee: 1, ideeen: 1, leuk: 1, leuke: 1 };
+  function zoekWoorden(tekst) { var w = vouw(tekst).split(/[^a-z0-9]+/).filter(Boolean); var r = w.filter(function (x) { return !STOP[x]; }); return (r.length ? r : w).map(stam); }
+  /* Woorden voor een persoon ('man', 'vrouw', 'oma'): die zoeken op voor wie het product is, niet op de titel ('Dog Man' is geen cadeau voor een man). */
+  var PERSW = {}; Object.keys(SYN).forEach(function (k) { if (/^(haar|hem|kind|opa-oma|collega)$/.test(k)) (SYN[k] + ' ' + k).split(' ').forEach(function (w) { PERSW[stam(w)] = k; }); });
   /* Korte woorden (3 letters of minder) alleen aan het begin van een woord: 'oma' vindt niet 'aroma' of 'roman', 'lp' niet 'alpaca'. */
   /* Woorden die toevallig ín een ander woord zitten maar iets heel anders zijn (nijntje ≠ konijntje). */
   var NIET_IN = { nijntje: 'konijntje', nijn: 'konijn', ijntje: 'konijntje' };
@@ -1064,7 +1083,12 @@
     var ti = ' ' + vouw(p.titel).replace(/[^a-z0-9]+/g, ' ') + ' ';
     var c = window.LK_CAT(p.cat), su = window.LK_SUB(c, p.sub);
     var ca = vouw((c ? c.naam : '') + ' ' + (su ? su.naam : ''));
+    var b = zoekBoom(p), vk = ' ' + vouw(b.vak).replace(/[^a-z0-9]+/g, ' '), gr = ' ' + vouw(b.groep).replace(/[^a-z0-9]+/g, ' ');
     return woorden.reduce(function (s, w) {
+      if (PERSW[w]) return s + ((p.voor || []).indexOf(PERSW[w]) !== -1 ? 12 : 0);
+      /* Het vakje telt zwaar mee: bij 'darts' eerst de dartborden en pijlen, bij 'koptelefoon' eerst echte koptelefoons. */
+      var bonus = vk.indexOf(' ' + w) !== -1 ? 12 : (gr.indexOf(' ' + w) !== -1 ? 6 : 0);
+      s += bonus;
       if (new RegExp(' ' + w + '(en|s|len|letje|letjes|je|jes)? ').test(ti)) return s + 15;
       if (ti.indexOf(' ' + w) !== -1) return s + 10;
       if (ti.indexOf(w) !== -1) return s + 6;
@@ -1819,9 +1843,9 @@
         { kop: 'Voor in de schoen of de lootjes (tot €15)', tekst: 'Kleine cadeautjes die laten zien dat je aan haar dacht.',
           ids: ['hema-84afebb566', 'dk-00043546', 'bol-9300000239540734', 'lego-40524'] },
         { kop: 'Om jezelf te verwennen', tekst: 'Zacht, warm en lekker ruikend: helemaal goed voor de koude decemberavonden.',
-          ids: ['bol-9300000247524837', 'bol-9300000044984873', 'hema-f82e244297', 'bol-9300000291533838'] },
+          ids: ['bol-9300000247524837', 'bol-9300000044984873', 'lr-350322363000', 'bol-9300000291533838'] },
         { kop: 'Mooi voor in huis', tekst: 'Een geurkaars of een lief lampje maakt het meteen gezellig.',
-          ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'bol-9300000124563618', 'hema-4ba291e77d'] },
+          ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'bol-9300000124563618', 'dvzn-347250'] },
         { kop: 'Creatief en ontspannen', tekst: 'Voor de vrouw die graag iets met haar handen doet, of even helemaal uit wil schakelen.',
           ids: ['bol-9300000087608265', 'bol-9300000238015446', 'bol-9300000071174759', 'bol-9300000189482940'] }
       ],
@@ -1868,11 +1892,11 @@
             'Weet je niets? Een grote chocoladeletter, een pepernotenzak of een mijter doet het altijd'
           ] },
         { kop: 'Spullen om je surprise te maken', tekst: 'Met deze spullen kun je bijna elke surprise maken. Een lijmpistool is echt een aanrader: alles zit in een paar seconden vast.',
-          ids: ['bol-9300000226734832', 'bol-9200000074078488', 'bol-9200000104255819', 'bol-9300000146207567', 'bol-9200000052919661', 'bol-9200000059166526', 'bol-9300000245957314'] },
+          ids: ['bol-9300000226734832', 'bol-9300000146207567', 'bol-9200000052919661', 'bol-9200000059166526'] },
         { kop: 'Kleine cadeautjes voor in je surprise', tekst: 'Bij lootjes trekken spreek je vaak een bedrag af. Deze cadeautjes passen in bijna elke surprise en blijven onder de €15.',
           ids: ['bol-9300000171163755', 'bol-9300000138803498', 'bol-9300000031046460', 'bol-9300000345522498', 'bol-9300000017407527', 'bol-9300000240237143'] },
         { kop: 'Iets lekkers erbij', tekst: 'Een chocoladeletter of kruidnoten horen er gewoon bij. Leuk om in of naast je surprise te leggen.',
-          ids: ['bol-9300000010371405', 'dw-4000161850236', 'dk-00015052'] },
+          ids: ['bol-9300000010371405', 'bol-9300000044730933', 'dk-00015052'] },
         { kop: 'Tips voor het gedicht', tekst: 'Het gedicht is minstens zo belangrijk als de surprise. Het mag plagen, maar houd het lief: iedereen moet erom kunnen lachen.',
           lijst: [
             'Begin klassiek: "Sinterklaas zat te denken wat hij [naam] dit jaar zou schenken…"',
@@ -1970,7 +1994,7 @@
         { kop: 'Voor de lootjes (tot €15)', tekst: 'Een spel voor na het uitpakken, een grote mok, of een puzzel van de intocht.',
           ids: ['bol-9300000192994012', 'bol-9300000345522494', 'bol-9300000232180883', 'bol-1004004005951228'] },
         { kop: 'Lekkers van de Sint', tekst: 'Kruidnoten en chocolade, maar dan net even anders dan uit de supermarkt.',
-          ids: ['bol-9300000161275021', 'bol-9300000244698921', 'bol-9300000151088723', 'bol-9300000044737130'] },
+          ids: ['bol-9300000161275021', 'bol-9300000244698921', 'bol-9300000151088723', 'dw-4000161470748'] },
         { kop: 'Iets groters (€20 tot €40)', tekst: 'Als je iets meer mag uitgeven: cadeaus die lang meegaan.',
           ids: ['bol-9200000091821418', 'bol-9200000016853146', 'bol-9300000343902998', 'bol-9300000005044757'] }
       ],
@@ -1979,7 +2003,7 @@
       intro: 'Met Kerst geef je vaak aan meer mensen tegelijk. Dan is het fijn als een cadeau niet te duur is, maar wel echt leuk om te krijgen. Deze cadeaus kosten allemaal minder dan 25 euro.',
       delen: [
         { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee en chocolade in een mooie verpakking. Altijd goed, voor iedereen.',
-          ids: ['bol-9300000240085617', 'bol-9300000008252018', 'bol-9300000383269797', 'bol-9300000241393562'] },
+          ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000383269797', 'bol-9300000241393562'] },
         { kop: 'Gezellig in huis', tekst: 'Lichtjes, een kandelaar of kerstbekers: cadeaus waar je de hele decembermaand wat aan hebt.',
           ids: ['bol-9300000229498501', 'bol-9300000345522500', 'bol-9300000182787559', 'bol-9300000238623285'] },
         { kop: 'Samen aan tafel', tekst: 'Een puzzel of spel voor de dagen tussen Kerst en Oud en Nieuw.',
@@ -2014,7 +2038,7 @@
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
           ids: ['bol-9300000132296580', 'bol-9300000338660274', 'bol-9300000130428935', 'bol-9300000256554614'] },
         { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
-          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9200000078061085', 'cg-opvouwbare-aluminium-laptop-standaard'] },
+          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9200000078061085', 'dvzn-562225'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
           ids: ['bol-9300000242918333', 'bol-9300000244887994', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],
@@ -2046,7 +2070,7 @@
       intro: 'Elk jaar zijn er een paar dingen waar ineens iedereen het over heeft, op het schoolplein en op TikTok. In 2026 zijn dat de Tamagotchi (ja, die van vroeger), verrassingsdoosjes en tashangers, alles van KPop Demon Hunters, Pokémon en Stitch. Hier vind je ze op een rij, zodat je precies weet waar je kind of kleinkind blij van wordt.',
       delen: [
         { kop: 'De hits van het schoolplein', tekst: 'De Tamagotchi is helemaal terug, en KPop Demon Hunters is de film waar elk kind het over heeft.',
-          ids: ['bol-9300000241515822', 'bol-9300000236575345', 'bol-9300000273887351', 'bol-9300000354107444'] },
+          ids: ['nedgam-25aaf9dace', 'bol-9300000236575345', 'bol-9300000273887351', 'bol-9300000354107444'] },
         { kop: 'Verrassingsdoosjes en tashangers', tekst: 'Uitpakken is de helft van de pret: je weet nooit welke je krijgt. Tashangers zijn dé trend voor aan je rugzak.',
           ids: ['bol-9300000264493695', 'bol-9300000268338286', 'bol-9300000261371860', 'bol-9300000227351372'] },
         { kop: 'Pokémon en Stitch', tekst: 'Al jaren populair, en in 2026 groter dan ooit: Pokémon viert zijn 30e verjaardag.',
@@ -2122,7 +2146,7 @@
         { kop: 'Lavalampen', tekst: 'De klassieker uit de jaren zeventig is weer helemaal terug. Rustgevend om naar te kijken.',
           ids: ['bol-9300000178837609', 'bol-9300000021560153', 'bol-9300000270438411', 'bol-9300000181178047'] },
         { kop: 'Sterren en noorderlicht op je plafond', tekst: 'Projectors die een sterrenhemel of noorderlicht op je plafond toveren. Heerlijk om bij in slaap te vallen.',
-          ids: ['bol-9300000191136002', 'bol-9300000193639901', 'bol-9300000019790368', 'bol-9300000164083567'] },
+          ids: ['bol-9300000191136002', 'bol-9300000193639901', 'dvzn-6795', 'bol-9300000164083567'] },
         { kop: 'Erbij voor een filmavond', tekst: 'Lichten uit, lamp aan, film starten.',
           ids: ['bol-9300000340258889', 'bol-9300000363626899', 'bol-9300000252154423', 'bol-9300000166331103'] }
       ],
@@ -2138,7 +2162,7 @@
         { kop: 'Voor op de nieuwe werkplek (€10 tot €30)', tekst: 'Iets handigs voor de nieuwe baan, zodat ze bij elke kop koffie even aan jullie denken.',
           ids: ['bol-9300000256133316', 'bol-9300000039415364', 'dvzn-847923', 'dvzn-7029'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als iedereen een paar euro geeft, kun je samen voor iets moois gaan.',
-          ids: ['bol-9300000242918318', 'cadeau-78a0e6aecb', 'bol-9300000174098365', 'bol-9300000141326647'] },
+          ids: ['cl-rit-sakura', 'cadeau-78a0e6aecb', 'bol-9300000174098365', 'bol-9300000141326647'] },
         { kop: 'Zo regel je het samen in 4 stappen', tekst: 'Met een paar afspraken is het zo geregeld.',
           stappen: [
             'Spreek af wie het regelt en hoeveel iedereen ongeveer geeft. Een vast bedrag van 5 of 10 euro per persoon voorkomt gedoe.',
@@ -2195,8 +2219,8 @@
           ids: ['myka-1100157588', 'ww-kaj73364965349', 'myka-11001132188', 'bol-9300000181912357'] },
         { kop: 'Samen iets doen', tekst: 'Vragen die jullie nog nooit aan elkaar stelden, een puzzel voor een rustige avond of warme chocolade om fruit in te dippen.',
           ids: ['bol-9300000226609761', 'bol-9300000161370142', 'bol-9300000075413777', 'bol-9300000169524759', 'bol-9300000227831932'] },
-        { kop: 'Een klein gebaar', tekst: 'Een rood neonhart, ontbijt op bed of een fonduepannetje voor twee. Klein, maar het zegt genoeg.',
-          ids: ['bol-9300000084984419', 'bol-9300000126380123', 'bol-9300000164551900'] },
+        { kop: 'Een klein gebaar', tekst: 'Een rood neonhart of een fonduepannetje voor twee. Klein, maar het zegt genoeg.',
+          ids: ['bol-9300000084984419', 'bol-9300000164551900'] },
         { kop: 'Tip: maak er een dag van', tekst: 'Ga terug naar de plek waar jullie elkaar voor het eerst zagen, of doe nog eens wat jullie op jullie eerste date deden. Het cadeau maakt de dag compleet.' }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/valentijn/samen">Samen & jubileum</a> en <a href="/c/valentijn/romantische-avond">Romantische avond</a>. Zijn jullie al langer getrouwd? Lees dan <a href="/gids/cadeau-trouwdag-jubileum">Cadeau voor je trouwdag of huwelijksjubileum</a>.' },
