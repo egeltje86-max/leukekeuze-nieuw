@@ -5824,6 +5824,81 @@
    "elektronica",
    "gadgets",
    "handige-gadgets"
+  ],
+  "so-teddy-shopper": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "handtassen"
+  ],
+  "so-teddy-luipaard": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "handtassen"
+  ],
+  "so-bonttas": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "handtassen"
+  ],
+  "so-boucle-sjaal": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "so-jacquard-sjaal": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "so-bont-muts": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "so-oorwarmers": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "so-bont-wanten": [
+   "mode-sieraden",
+   "accessoires",
+   "handschoenen"
+  ],
+  "so-pailletten-beanie": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "ft-zero-power": [
+   "elektronica",
+   "tablets-e-readers",
+   "powerbanks-opladers"
+  ],
+  "ft-bike-pump": [
+   "sport-outdoor",
+   "fietsen-steps",
+   "fietsaccessoires"
+  ],
+  "ft-max-blast": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "ft-ezy-set": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "reisaccessoires"
+  ],
+  "ft-zero-pillow": [
+   "sport-outdoor",
+   "kamperen-outdoor",
+   "kampeerspullen"
+  ],
+  "ft-tiny-repeller": [
+   "sport-outdoor",
+   "kamperen-outdoor",
+   "kampeerspullen"
   ]
  },
  "samen": {
@@ -11387,6 +11462,14 @@
   "dgsw-8121491748": [
    28.99,
    49.99
+  ],
+  "cl-flextail-helio": [
+   34.95,
+   null
+  ],
+  "cl-flextail-lantern": [
+   34.95,
+   null
   ]
  },
  "shop": {
