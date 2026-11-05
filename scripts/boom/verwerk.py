@@ -9,6 +9,7 @@ HIER = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.pat
 def slug(t): t = unicodedata.normalize('NFKD', t); t = ''.join(c for c in t if not unicodedata.combining(c)); return re.sub(r'^-|-$', '', re.sub(r'[^a-z0-9]+', '-', t.lower()))
 exec(open(os.path.join(HIER, 'oud-naar-nieuw.py')).read())
 exec(open(os.path.join(HIER, 'vakwoorden.py')).read())
+exec(open(os.path.join(HIER, 'rang.py')).read())
 BOOM = json.load(open(os.path.join(HIER, 'boom-samen.json')))
 AFDSLUG = {'speelgoed-spellen': 'speelgoed', 'elektronica-gaming': 'elektronica', 'mode-sieraden': 'mode-sieraden', 'beauty-verzorging': 'beauty-verzorging',
            'wonen-koken': 'wonen', 'eten-drinken': 'eten-drinken', 'hobby-creatief': 'hobby', 'sport-buiten': 'sport-outdoor', 'tuin-klussen': 'tuin-klussen',
@@ -140,6 +141,8 @@ for p in LIVE:
     if not (isinstance(mo, tuple) and (mo[0], mo[1]) == (pl[0], pl[1])):
         o = oudPad(pl); plaatsing[p['id']]['oud'] = o
     if extra: plaatsing[p['id']]['ook'] = extra
+    plaatsing[p['id']]['r'] = rang(pl[2], (a or {}).get('c'), topper=bool(p.get('favoriet') or p.get('populair') or 'toppers' in (p.get('tags') or [])),
+                                   nieuw=False, hits=BESCHERMD.get(p['id']) in ('GoatCounter', 'Google'), sfeer=bool(p.get('sfeer')))
     if a:
         plaatsing[p['id']]['c'] = a.get('c')
         if KEUS.get(p['id']) == 'weg': weg.append((p['id'], p['titel'], 'Marius: weg (AI: %s)' % a.get('r', '')))
@@ -175,6 +178,7 @@ for sp in SPOOK:
     if l: rec['leeftijd'] = l
     if 'luxe' in th: rec['soort'] = ['luxe']
     nieuw.append(rec); plaatsing[sp['id']] = {'a': s[0], 'g': s[1], 'v': s[2]}
+    plaatsing[sp['id']]['r'] = rang(pl[2], (a or {}).get('c'), topper=bool(sp.get('topper')), nieuw=True)
     if a: plaatsing[sp['id']]['c'] = a.get('c')
     rapport['spooksite: nieuw erbij'] += 1
 # goedkoopste wint bij dubbel: de live-versie houdt zijn adres, maar krijgt de goedkoopste winkel

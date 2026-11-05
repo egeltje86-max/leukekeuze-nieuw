@@ -138,36 +138,35 @@
      verschillende winkels om en om, nieuwe producten iets naar voren.
      De volgorde schuift elke week een beetje, zodat nieuwe producten vanzelf meedoen. */
   function mixGetal(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
+  /* 3.0 (5-11-2026, Marius en Nova): 'Aanbevolen' = de beste, meest gezochte cadeaus bovenaan, goed gemixt.
+     p.rang komt uit scripts/boom/rang.py (cadeau-niveau van het vakje, wat klanten graag willen, toppers, nieuwe toppers, echte kliks).
+     Op kinderpagina's gaat speelgoed voor. Daarna mixen: niet twee keer hetzelfde soort product of dezelfde winkel achter elkaar.
+     De volgorde schuift elke week een klein beetje, zodat ook andere goede producten aan de beurt komen. */
   function mix(lijst) {
-    var week = Math.floor(Date.now() / (7 * 864e5));
-    /* Favorieten bovenaan, maar hooguit twee per winkel: anders staan bijv. alle zeven dino-kleurboeken op een rij.
-       De rest van de favorieten draait gewoon mee in de mix. */
-    var top = [], rest = [], perShop = {};
-    lijst.forEach(function (p) {
-      var k = p.shop + (p.eigen ? '|eigen' : '');
-      if ((p.favoriet || p.populair) && (perShop[k] = (perShop[k] || 0) + 1) <= 2) top.push(p); else rest.push(p);
+    var week = Math.floor(Date.now() / (7 * 864e5)), a = leesAdres(), d = a.delen, q = a.q || {};
+    var kind = (d[0] === 'voor' && /^(kinderen|baby)$/.test(d[1] || '')) || /^(kinderen|kind|baby)$/.test(q.voor || '') || q.wie === 'kinderen' || !!q.leeftijd || !!q.kind;
+    var tiener = (d[0] === 'voor' && d[1] === 'tieners') || q.voor === 'tieners';
+    var GRENZEN = [15, 30, 60, 120, Infinity];
+    var l = lijst.map(function (p) {
+      var s = (typeof p.rang === 'number' ? p.rang : 0.55) + (mixGetal(p.id + '|' + week) - 0.5) * 0.12 + (p.beeld ? 0 : -0.5);
+      if (kind) s += p.afd === 'speelgoed' ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
+      if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen')) s += 0.1;
+      var b = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[b]) b++;
+      return { p: p, s: s, v: p.vak || p.groep || (p.cat + '/' + p.sub), w: p.shop, b: b };
     });
-    var GRENZEN = [15, 30, 60, 120, Infinity], bakken = GRENZEN.map(function () { return []; });
-    rest.forEach(function (p) {
-      var i = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[i]) i++;
-      if (typeof p.prijs !== 'number') i = 2;
-      p._mix = mixGetal(p.id + '|' + week) - (LK.isNieuw(p) ? 0.25 : 0) - (p.beeld ? 0 : -0.5) - (p.sfeer ? 0.6 : 0) - (p.shop !== 'bol' ? 0.12 : 0) - (typeof p.wil === 'number' ? (p.wil - 60) / 100 : 0);  /* 3.0: wat klanten graag willen (AI-keuring) naar voren */  /* sfeerfoto's naar voren (wens Marius 27-10-2026); partnerwinkels iets naar voren voor meer variatie (wens 1-11-2026) */
-      bakken[i].push(p);
-    });
-    bakken.forEach(function (b) { b.sort(function (a, c) { return a._mix - c._mix; }); });
-    var uit = [], volgorde = [1, 2, 0, 3, 1, 2, 4, 0, 1, 3, 2, 0], k = 0, over = rest.length;
-    while (over > 0) {
-      var b = bakken[volgorde[k % volgorde.length]]; k++;
-      if (!b.length) { if (k > 100000) break; continue; }
-      /* Niet twee keer achter elkaar dezelfde winkel, en liefst ook niet die van twee plekken terug. */
-      var vorige = uit.length ? uit[uit.length - 1].shop : null, vv = uit.length > 1 ? uit[uit.length - 2].shop : null, j = 0;
-      var zelfde = function (x) { return x.shop === vorige || x.shop === vv; };
-      while (j < b.length && j < 10 && zelfde(b[j])) j++;
-      if (j >= b.length || j >= 10) { j = 0; while (j < b.length - 1 && j < 6 && b[j].shop === vorige) j++; }
-      uit.push(b.splice(j, 1)[0]); over--;
+    l.sort(function (x, y) { return y.s - x.s; });
+    var uit = [];
+    while (l.length) {
+      var n = uit.length, v1 = n ? uit[n - 1] : null, v2 = n > 1 ? uit[n - 2] : null, beste = 0, besteS = -1e9;
+      for (var i = 0; i < l.length && i < 14; i++) {
+        var c = l[i], straf = 0;
+        if (v1 && c.v === v1.v) straf += 0.25; if (v2 && c.v === v2.v) straf += 0.12;
+        if (v1 && c.w === v1.w) straf += 0.12; if (v1 && c.b === v1.b) straf += 0.04;
+        if (c.s - straf > besteS) { besteS = c.s - straf; beste = i; }
+      }
+      uit.push(l.splice(beste, 1)[0]);
     }
-    top.sort(function (a, b) { return ((b.favoriet ? 2 : 0) + (b.populair ? 1 : 0)) - ((a.favoriet ? 2 : 0) + (a.populair ? 1 : 0)) || (b.sfeer ? 1 : 0) - (a.sfeer ? 1 : 0); });
-    return daisyconLaag(top.concat(uit));
+    return daisyconLaag(uit.map(function (x) { return x.p; }));
   }
   function grid(lijst, leegHtml, klasse) {
     if (!lijst.length) return '<div class="prodgrid ' + (klasse || '') + '">' + leegHtml + '</div>';
@@ -454,14 +453,14 @@
     if (tab === 'favoriet') l = l.filter(function (p) { return p.favoriet || p.populair; });
     if (tab === 'onder25') l = l.filter(function (p) { return p.prijs <= 25 && p.cat !== 'dranken'; });
     if (tab === 'nieuw') l = l.filter(LK.isNieuw);
-    l = daisyconLaag(sfeerEerst(sorteer(l)));
+    l = sorteer(l);
     if (tab === 'nieuw' || tab === 'onder25') {
       /* afwisselen: niet tien dingen uit dezelfde categorie achter elkaar */
       var per = {}, mix = [];
       l.forEach(function (p) { (per[p.cat] = per[p.cat] || []).push(p); });
       var lijsten = Object.keys(per).map(function (k) { return per[k]; });
       for (var i = 0; mix.length < 12 && lijsten.some(function (x) { return x.length > i; }); i++) lijsten.forEach(function (x) { if (x[i] && mix.length < 12) mix.push(x[i]); });
-      l = daisyconLaag(sfeerEerst(mix));
+      l = daisyconLaag(mix);
     }
     return l.length ? rij(l.slice(0, 12)) : grid([], leegBlok('Nog niets in deze lijst', 'Hier komen binnenkort mooie producten.'));
   }
@@ -504,7 +503,7 @@
     var knoppen = (v && v.knoppen) || (s && s.knoppen) || c.knoppen || [];
     var lijst = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug, v && v.slug) && binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen); });
     lijst = sorteer(lijst, q.sort);
-    if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
+    /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; if (q.voor) nq.voor = q.voor; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
@@ -594,7 +593,7 @@
     var knoppen = pe.knoppen || [];
     var alles = persoonProducten(pe, s ? s.vakken : null);
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
-    if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
+    /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
 
     /* Rondjes met de subcategorieën van deze persoon. Op de hoofdpagina groot (raster), op een subpagina als schuifrij. */
@@ -675,7 +674,7 @@
     var knoppen = g.knoppen || [];
     var alles = verzamelLijst(g);
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen); }), q.sort);
-    if (!q.sort || q.sort === 'aanbevolen') lijst = daisyconLaag(sfeerEerst(lijst));
+    /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + knopChips(pad, q, knoppen) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
