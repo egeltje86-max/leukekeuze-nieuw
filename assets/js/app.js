@@ -471,7 +471,7 @@
 
         /* 2.1: acht collecties als rondjes (in de volgorde van zoeken). Lege collecties tonen we nog niet. */
         '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 4</span><h2>Of een collectie</h2></div></div>' +
-          '<div class="persoon-subs home gelegenheden">' + (window.LK_COLLECTIES || []).map(function (c) {
+          '<div class="persoon-subs home gelegenheden collecties">' + (window.LK_COLLECTIES || []).map(function (c) {
             var l = verzamelLijst(c); if (!l.length) return '';
             return '<a class="subkaart" href="/collectie/' + c.slug + '"><span class="rond"><img src="' + esc(rondBeeld(c.beeld, l)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.naam) + '</a>';
           }).join('') + '</div></section>' +
@@ -589,8 +589,26 @@
   /* ---------- Alle categorieën ---------- */
   function alleCategorieen() {
     zetTitel('Alle categorieën');
+    /* 5-11-2026 (wens Marius): ronde icoontjes zoals op de homepage, met een korte, duidelijke tekst eronder. */
+    var T = {
+      'speelgoed': 'LEGO, spellen, knuffels en buitenspeelgoed voor elke leeftijd.',
+      'elektronica': 'Koptelefoons, gaming, smartwatches en slimme gadgets.',
+      'mode-sieraden': 'Sieraden, horloges, tassen en warme winterkleding.',
+      'beauty-verzorging': 'Parfum, giftsets en verwenproducten voor hem en haar.',
+      'wonen': 'Kaarsen, sfeerlicht, plaids en mooie spullen voor de keuken.',
+      'eten-drinken': 'Chocolade, wijn, bubbels en lekkere cadeaupakketten.',
+      'hobby': 'Schilderen, haken, modelbouw en zelf iets moois maken.',
+      'sport-outdoor': 'Darts, fitness, kamperen en erop uit in de natuur.',
+      'tuin-klussen': 'Voor de groene vingers en de handige klusser.',
+      'boeken-media': 'Mooie boeken, kinderboeken, films en muziek.',
+      'dieren': 'Snoepjes, speeltjes en mandjes voor hond, kat en meer.',
+      'christelijk': 'Bijbels, sieraden met kruis en geschenken met betekenis.'
+    };
     return paginakop({ titel: 'Alle categorieën', tekst: 'Kies waar je zin in hebt.', kruimel: [{ tekst: 'Categorieën' }] }) +
-      '<div class="binnen"><section class="sectie"><div class="catkaarten">' + CATS.map(catKaart).join('') + '</div></section></div>';
+      '<div class="binnen"><section class="sectie"><div class="catronden">' + CATS.map(function (c) {
+        return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="images/categorieen/rond/rond-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
+          '<span class="catrond-naam">' + esc(c.naam) + '</span><span class="catrond-tekst">' + esc(T[c.slug] || c.tekst || '') + '</span></a>';
+      }).join('') + '</div></section></div>';
   }
 
   /* Kleine versie van een rond plaatje (220px) voor de rondjes: scheelt zo'n 90% aan data per rondje. */
