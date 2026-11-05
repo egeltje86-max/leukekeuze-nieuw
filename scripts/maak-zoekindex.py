@@ -25,6 +25,12 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-fietstas.json', 'Fietstas.com', ''),
     ('x-svinando.json', 'Svinando', ''),
     ('x-westwing.json', 'Westwing', ''),
+    # 05-11-2026: nieuw bij Daisycon (wens Marius: "allemaal")
+    ('x-levis.json', "Levi's", ''),
+    ('x-isabelmarant.json', 'Isabel Marant', ''),
+    ('x-mokkaland.json', 'Mokkaland', ''),
+    ('x-butchery.json', 'Butchery.nl', ''),
+    ('x-kambukka.json', 'Kambukka', ''),
     # oude, kleinere La Redoute-uittreksels (alleen als de volledige feed er niet is)
     ('x-lr-wonen-cadeau.json', 'La Redoute', ''),
     # TradeTracker (t-*.json, gemaakt met tt-uittreksel.py)
@@ -88,6 +94,13 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('t-tandenborstel.json', 'Tandenborstel.com', ''),
     ('t-besled.json', 'Besled', ''),
     ('t-boekenwereld.json', 'Boekenwereld', ''),
+    # 05-11-2026: nieuw bij TradeTracker
+    ('t-brekz.json', 'Brekz', ''),
+    ('t-boardgameshop.json', 'Boardgameshop', ''),
+    ('t-yourdecoration.json', 'Yourdecoration', ''),
+    ('t-barokspiegel.json', 'Barokspiegel', ''),
+    ('t-profotonet.json', 'Profotonet', ''),
+    ('t-steegenga.json', 'Steegengamode', ''),
     # Awin (a-*.json, opgehaald met Feedzoeker\programma\awin-ophalen.py; 04-11-2026, wens Marius). Bewust niet: Kopp Verlag,
     # de enorme kledingcatalogi van s.Oliver en Street One (wel als winkeltegel), en reizen/vervoer.
     ('a-coolblue-nl.json', 'Coolblue', ''),
@@ -148,6 +161,8 @@ FR = [(r'\bsac\b', 'tas'), (r'pochette', 'tasje clutch'), (r'collier', 'ketting'
 OVERSLAAN = re.compile(r'\b(sokken|sportsokken|kersttrui - maat|cadeaubon|verzendkosten|statiegeld)\b', re.I)
 def basis(t):
     t = re.sub(r',?\s*Grootte:.*$', '', t)                      # Dr. Martens maten
+    t = re.sub(r"\s+-\s+(Men's|Women's|Male|Female|Unisex)\s+-\s+.*$", '', t)   # Levi's / Isabel Marant: maat en kleur eraf
+    t = re.sub(r'\s+-\s+(\d{2}X\d{2}|Size\s+\S+)\b.*$', '', t)
     t = re.sub(r'\s+\d+([,.]\d+)?\s*(cl|l|liter)\.?\s*$', '', t, flags=re.I)  # Decantalo formaten
     t = re.sub(r'\s+(Geschenk|Magnum)\s*$', '', t, flags=re.I)
     t = re.sub(r'\s+(19|20)\d\d\s*$', '', t)                     # jaartallen wijn
@@ -326,6 +341,9 @@ EIGEN = {
     'Smartphoto': ['wonen', 'keuken', 'boeken-media'], 'Spaarpotten-winkel': ['wonen', 'speelgoed'],
     'Louiz': ['sieraden'], 'Tandenborstel.com': ['geuren-verzorging', 'mode-beauty'], 'Boekenwereld': ['boeken-media'], 'Bourgini': ['keuken'], 'Biercheque': ['dranken', 'cadeaus'],
     'Timeshop24': ['mode-beauty', 'sieraden'], 'InterGard': ['tuin-klussen'], 'Robotime': ['hobby', 'speelgoed'],
+    "Levi's": ['mode-beauty'], 'Isabel Marant': ['mode-beauty', 'sieraden'], 'Mokkaland': ['eten-drinken'], 'Butchery.nl': ['eten-drinken'],
+    'Kambukka': ['keuken', 'sport-outdoor'], 'Brekz': ['dieren'], 'Boardgameshop': ['speelgoed'], 'Yourdecoration': ['wonen'],
+    'Barokspiegel': ['wonen'], 'Profotonet': ['elektronica'], 'Steegengamode': ['mode-beauty'],
 }
 # Sommige groepen alleen als de titel er echt over gaat.
 POORT = {
