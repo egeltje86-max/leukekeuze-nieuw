@@ -512,7 +512,7 @@
   /* Reclameblokken (seizoen/acties) uit LK_INSTELLINGEN.acties; verlopen blokken vallen vanzelf weg. */
   function actieBlokken() {
     var vandaag = new Date().toISOString().slice(0, 10);
-    var l = (INST.acties || []).filter(function (a) { return !a.tot || vandaag <= a.tot; });
+    var l = (INST.acties || []).filter(function (a) { return (!a.tot || vandaag <= a.tot) && (!a.vanaf || vandaag >= a.vanaf); }); /* 'vanaf' = eerste dag (5-11-2026) */
     if (!l.length) return '';
     return '<section class="acties">' + l.map(function (a) {
       return '<a class="actie' + (a.klasse ? ' ' + esc(a.klasse) : '') + '" href="' + esc(a.naar) + '">' +
@@ -818,6 +818,15 @@
     var leeg = !alles.length ? leegBlok('Deze afdeling vullen we nu', 'We zoeken hier nog mooie cadeaus voor. Kijk alvast verder:', '<a class="knop knop-rand" href="/">Naar de voorpagina</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>') : leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
     var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
     if (selectie.length < 4) selectie = [];
+    /* Aanbiedingen (5-11-2026, GO Marius): 'Deals van vandaag' = elke dag 12 andere topdeals (vanaf 30% korting),
+       steeds uit verschillende vakjes en winkels. De keuze hangt af van de datum, dus morgen staat er een nieuwe rij. */
+    if (g.dagdeals) {
+      var dag = new Date().toISOString().slice(0, 10), perVak = {}, perShop = {};
+      selectie = alles.filter(function (p) { return kortingPct(p) >= 30 && p.beeld; })
+        .sort(function (a, b) { return mixGetal(a.id + dag) - mixGetal(b.id + dag); })
+        .filter(function (p) { var v = (p.groep || p.cat) + '/' + (p.vak || p.sub); if (perVak[v] || (perShop[p.shop] || 0) >= 3) return false; perVak[v] = 1; perShop[p.shop] = (perShop[p.shop] || 0) + 1; return true; })
+        .slice(0, 12).sort(function (a, b) { return kortingPct(b) - kortingPct(a); });
+    }
     /* 02-11-2026: zelfde als bij de personen: geen dubbele bovenaan, en afwisselen in winkel en soort. */
     if (!q.sort || q.sort === 'aanbevolen') {
       var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
@@ -826,7 +835,7 @@
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
     '<div class="binnen">' +
-      (selectie.length ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie</h2></div></div>' + rij(selectie) + '</section>' : '') +
+      (selectie.length ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div>' + rij(selectie) + '</section>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.korting ? 'Alle deals, grootste korting eerst' : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase())) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
