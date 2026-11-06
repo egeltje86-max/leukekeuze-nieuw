@@ -123,6 +123,7 @@
     'Bloompost': 'https://www.bloompost.nl/', 'Dr. Martens': 'https://www.drmartens.com/nl/nl/', 'Razer': 'https://www.razer.com/', 'Fietsparadijs': 'https://www.fietsparadijs.com/',
     'Fietstas.com': 'https://www.fietstas.com/', 'Zadig & Voltaire': 'https://zadig-et-voltaire.com/eu/nl/' };
   function prijsFilter(id) {
+    if (window.LK_PRIJS_OUD && window.LK_PRIJS_OUD[id]) id = window.LK_PRIJS_OUD[id]; /* oude adressen (tot10, tot50, boven50) */
     var f = PRIJZEN.find(function (p) { return p.id === id; }); if (f) return f;
     /* Eigen budget uit VONK-tekst (fase 3): 'tot40' = tot €40, 'vanaf75' = vanaf €75. */
     var m = /^(tot|vanaf)(\d{1,4})$/.exec(id || '');
@@ -435,7 +436,7 @@
         '</a>' +
         /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
         '<section class="sectie eerste">' +
-          '<div class="sectie-kop"><div><span class="kicker">Ingang 1</span><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
+          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
           '<div class="persoon-subs home">' + window.LK_PERSONEN.map(function (x) {
             return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
           }).join('') + '</div>' +
@@ -447,7 +448,7 @@
             return '<a class="budget-knop" href="/c/cadeaus?prijs=' + p.id + '">' + p.label + '</a>';
           }).join('') + '</div></section>' +
         '<section class="sectie">' +
-          '<div class="sectie-kop"><div><span class="kicker">Ingang 2</span><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
+          '<div class="sectie-kop"><div><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
           /* 5-11-2026 (ontwerp Marius): compacte balken met rond icoon in plaats van grote tegels. */
           '<div class="catbalken">' + ['speelgoed', 'elektronica', 'mode-sieraden', 'beauty-verzorging', 'wonen', 'eten-drinken', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'].map(window.LK_CAT).filter(function (c) { return c && !c.verborgen; }).map(function (c) {
             return '<a class="catbalk" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
@@ -456,7 +457,7 @@
         '</section>' +
 
         /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
-        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 3</span><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
+        '<section class="sectie"><div class="sectie-kop"><div><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
           '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN_NU().slice(0, 8).map(function (x) {
             return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
           }).join('') + '</div></section>' +
@@ -470,8 +471,9 @@
         laatstBekeken() +
 
         /* 2.1: acht collecties als rondjes (in de volgorde van zoeken). Lege collecties tonen we nog niet. */
-        '<section class="sectie"><div class="sectie-kop"><div><span class="kicker">Ingang 4</span><h2>Of een collectie</h2></div></div>' +
+        '<section class="sectie"><div class="sectie-kop"><div><h2>Of een collectie</h2></div></div>' +
           '<div class="persoon-subs home gelegenheden collecties">' + (window.LK_COLLECTIES || []).map(function (c) {
+            if ((window.LK_COLLECTIE_VERBORGEN || []).indexOf(c.slug) !== -1) return ''; /* stap 1 indeling: verborgen tot ze kloppen */
             var l = verzamelLijst(c); if (!l.length) return '';
             return '<a class="subkaart" href="/collectie/' + c.slug + '"><span class="rond"><img src="' + esc(rondBeeld(c.beeld, l)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.naam) + '</a>';
           }).join('') + '</div></section>' +
@@ -1902,7 +1904,7 @@
     return 'https://leukekeuze.nl/lijst/?' + (naam ? 'n=' + encodeURIComponent(naam) + '&' : '') + (v ? 'v=' + v + '&' : '') + 'p=' + ids.join('.');
   }
   function favorieten() {
-    zetTitel('Mijn verlanglijstje');
+    zetTitel('Mijn lijstje');
     var ids = LK.favorieten();
     var lijst = LK.zichtbaar().filter(function (p) { return ids.indexOf(p.id) !== -1; });
     var naam = ''; try { naam = localStorage.getItem('lk-lijst-naam') || ''; } catch (e) {}
@@ -1913,7 +1915,7 @@
       '<label>Waarvoor?<select data-lijst-voor>' + GELEGENHEDEN.map(function (g) { return '<option value="' + g[0] + '">' + g[2] + ' ' + (g[0] === 'verjaardag' ? 'Mijn verjaardag' : g[0] === 'jubileum' ? 'Ons jubileum' : g[1].charAt(0).toUpperCase() + g[1].slice(1)) + '</option>'; }).join('') + '</select></label></div>' +
       '<div class="lijst-deel-knoppen"><button class="knop knop-whatsapp" type="button" data-lijst-whatsapp>' + ic('whatsapp') + ' Deel via WhatsApp</button>' +
       '<button class="knop knop-rand" type="button" data-lijst-kopieer>Kopieer de link</button></div></div>';
-    return paginakop({ titel: 'Mijn verlanglijstje', tekst: 'Bewaar cadeaus met het hartje en deel je lijstje met wie je wilt. Geen account nodig.', kruimel: [{ tekst: 'Verlanglijstje' }], donker: true }) +
+    return paginakop({ titel: 'Mijn lijstje', tekst: 'Bewaar cadeaus met het hartje en deel je lijstje met wie je wilt. Geen account nodig.', kruimel: [{ tekst: 'Lijstje' }], donker: true }) +
       '<div class="binnen"><section class="sectie">' +
       (lijst.length ? '<div class="sectie-kop"><div><h2>' + (lijst.length === 1 ? '1 cadeau' : lijst.length + ' cadeaus') + ' op je lijstje</h2></div></div>' : '') +
       grid(lijst, leegBlok('Je verlanglijstje is nog leeg', 'Tik op het hartje bij een cadeau om het op je verlanglijstje te zetten. Daarna kun je het lijstje delen via WhatsApp.', '<a class="knop knop-goud" href="/voor">Bekijk cadeaus</a>')) +
@@ -2555,10 +2557,16 @@
     return h;
   }
 
+  /* Stap 1 indeling (6-11-2026): een verdwaalde bezoeker krijgt de zoekbalk en de vier ingangen. */
   function nietGevonden(tekst) {
     zetTitel('Niet gevonden');
-    return paginakop({ titel: 'Niet gevonden', tekst: tekst || 'Deze pagina bestaat niet (meer).' }) +
-      '<div class="binnen"><section class="sectie">' + leegBlok('Even kwijt?', 'Ga terug naar de homepage of kies een categorie.', '<a class="knop knop-goud" href="/">Naar home</a>') + '</section></div>';
+    return paginakop({ titel: 'Niet gevonden', tekst: tekst || 'Deze pagina bestaat niet (meer). Zoek hieronder, of kies een ingang.' }) +
+      '<div class="binnen"><section class="sectie eerste">' + zoekForm('', 'Zoek: lego, parfum, of cadeau voor mama') +
+      '<div class="ingangen-404">' +
+        '<a class="knop knop-rand" href="/voor">Voor wie?</a><a class="knop knop-rand" href="/categorieen">Categorieën</a>' +
+        '<a class="knop knop-rand" href="/gelegenheid">Gelegenheden</a><a class="knop knop-goud" href="/vonk">' + ic('vonk') + ' Help mij kiezen</a>' +
+      '</div>' +
+      '<p class="klein"><a href="/">Of ga terug naar de homepage</a></p></section></div>';
   }
 
   /* Subcategorieën die echt iets bevatten. Lege subs (bv. 'Met naam') blijven verborgen tot er producten in staan. */
@@ -2572,26 +2580,38 @@
   }
 
   /* ================== MENU'S ================== */
+  /* Stap 1 indeling (6-11-2026, GO Marius): zes vaste kopjes in deze volgorde. Collecties staan niet meer onder Gelegenheden.
+     Cadeaubonnen, Belevenissen en Toppers blijven uit de menu's tot ze kloppen (zie LK_COLLECTIE_VERBORGEN). */
   function bouwLade() {
-    var uit = CATS.filter(function (c) { return c.uitgelicht; })[0];
-    var rest = CATS.filter(function (c) { return !c.uitgelicht && c.slug !== 'christelijk'; }), chr = window.LK_CAT('christelijk');
+    var cats = CATS.slice(); /* alle 12 afdelingen, Christelijk als laatste */
     var ladeRij = function (c) {
       return '<li><button class="lade-rij" type="button" aria-expanded="false" aria-controls="ls-' + c.slug + '">' + ic(c.icoon, 'ic') + '<span>' + esc(c.naam) + '</span>' + ic('rechts', 'pijl') + '</button>' +
         '<div class="lade-subs" id="ls-' + c.slug + '"><a class="alles" href="/c/' + c.slug + '">Alles in ' + esc(c.naam) + '</a>' +
         volleSubs(c).map(function (s) { return '<a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a>'; }).join('') + '</div></li>';
     };
+    var link = function (naar, naam) { return '<a href="' + naar + '">' + esc(naam) + '</a>'; };
     $('[data-lade]').innerHTML =
-      (uit ? '<a class="lade-uitgelicht" href="/c/' + uit.slug + '"><span class="rond">' + ic(uit.icoon) + '</span><span><strong>' + esc(uit.naam) + '</strong><small>' + esc(uit.tekst) + '</small></span></a>' : '') +
       '<div class="lade-label">Voor wie?</div><div class="lade-personen">' + window.LK_PERSONEN.map(function (x) {
         return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
       }).join('') + '</div>' +
-      '<div class="lade-label">Producten</div><ul>' + rest.map(ladeRij).join('') + '</ul>' +
-      '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + (window.LK_GELEGENHEDEN || []).map(function (g) { return '<a href="' + (g.naar || '/gelegenheid/' + g.slug) + '">' + esc(g.naam) + '</a>'; }).concat((window.LK_COLLECTIES || []).map(function (c) { return '<a href="/collectie/' + c.slug + '"><strong>' + esc(c.naam) + '</strong></a>'; })).join('') + '</div>' +
-      (chr ? '<div class="lade-label">Christelijke cadeaus</div><ul>' + ladeRij(chr) + '</ul>' : '') +
-      '<div class="lade-extra"><a href="/vonk">VONK cadeauzoeker</a><a href="/winkels">Onze winkels</a><a href="/favorieten">Mijn verlanglijstje</a><a href="/zoek">Zoeken</a><a href="/gids">Cadeaugidsen</a><a href="/info/hoe-werkt-het">Hoe werkt het?</a></div>';
+      '<div class="lade-label">Categorieën</div><ul>' + cats.map(ladeRij).join('') + '</ul>' +
+      '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
+      '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
+      '<div class="lade-label">Cadeau-ideeën</div><div class="lade-links">' + collectiesVan('ideeen').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
+      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>';
+  }
+  /* Collecties in twee groepen: acties (kortingen) en cadeau-ideeën. Verborgen collecties blijven bereikbaar via hun adres. */
+  var COLLECTIE_ACTIES = ['black-friday', 'aanbiedingen', 'kortingscodes'];
+  function collectiesVan(soort) {
+    var verborgen = window.LK_COLLECTIE_VERBORGEN || [];
+    return (window.LK_COLLECTIES || []).filter(function (c) {
+      if (verborgen.indexOf(c.slug) !== -1) return false;
+      var actie = COLLECTIE_ACTIES.indexOf(c.slug) !== -1;
+      return soort === 'acties' ? actie : !actie;
+    }).sort(function (a, b) { return soort === 'acties' ? COLLECTIE_ACTIES.indexOf(a.slug) - COLLECTIE_ACTIES.indexOf(b.slug) : 0; });
   }
   function bouwMega() {
-    $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.filter(function (c) { return c.slug !== 'christelijk'; }).map(function (c) {
+    $('[data-megamenu]').innerHTML = '<div class="binnen">' + CATS.map(function (c) { /* stap 1 indeling: alle 12 afdelingen, Christelijk als laatste */
       return '<div><h3><a href="/c/' + c.slug + '">' + ic(c.icoon) + esc(c.naam) + '</a></h3><ul>' +
         volleSubs(c).map(function (s) { return '<li><a href="' + subAdres(c, s) + '">' + esc(s.naam) + '</a></li>'; }).join('') + '</ul></div>';
     }).join('') + '</div>';

@@ -208,7 +208,14 @@
   var start = Date.UTC(jaar, 9, 1);          /* vanaf 1 oktober tonen */
   if (nu < start || nu > Date.UTC(jaar, 11, 26)) return;
   var thema, n, tekst, link;
-  if (nu <= sint) {
+  /* Stap 1 indeling (6-11-2026, GO Marius): van 20 t/m 27 november is Black Friday de boodschap (27-11-2026). Daarna weer Sinterklaas, vanaf 6 december Kerst. */
+  var bf = Date.UTC(jaar, 10, 27), bfStart = Date.UTC(jaar, 10, 20);
+  if (nu >= bfStart && nu <= bf) {
+    thema = 'bf'; n = Math.round((bf - nu) / dag); link = '/collectie/black-friday';
+    tekst = n === 0 ? '<span class="aftel-zin">Vandaag is het <b>Black Friday!</b></span>'
+      : n === 1 ? '<span class="aftel-zin">Morgen is het <b>Black Friday!</b></span>'
+      : '<span class="aftel-zin">Nog <span class="aftel-getal">' + n + '</span> dagen tot Black Friday</span>';
+  } else if (nu <= sint) {
     thema = 'sint'; n = Math.round((sint - nu) / dag); link = '/c/cadeaus/sinterklaas';
     tekst = n === 0 ? '<span class="aftel-zin">Vandaag is het <b>pakjesavond!</b></span>'
       : n === 1 ? '<span class="aftel-zin">Morgen is het <b>pakjesavond!</b></span>'
@@ -222,9 +229,9 @@
   el.className = 'aftel aftel-' + thema;
   el.href = link;
   el.innerHTML = '<span class="aftel-beeld links" aria-hidden="true"></span>' +
-    '<span class="aftel-midden">' + tekst + '<span class="aftel-knop">' + (thema === 'sint' ? 'Sinterklaascadeaus' : 'Kerstcadeaus') + ' →</span></span>' +
+    '<span class="aftel-midden">' + tekst + '<span class="aftel-knop">' + (thema === 'sint' ? 'Sinterklaascadeaus' : thema === 'bf' ? 'Bekijk de deals' : 'Kerstcadeaus') + ' →</span></span>' +
     '<span class="aftel-beeld rechts" aria-hidden="true"></span>';
-  el.setAttribute('aria-label', el.querySelector('.aftel-zin').textContent + '. Bekijk de ' + (thema === 'sint' ? 'Sinterklaascadeaus' : 'kerstcadeaus'));
+  el.setAttribute('aria-label', el.querySelector('.aftel-zin').textContent + '. Bekijk de ' + (thema === 'sint' ? 'Sinterklaascadeaus' : thema === 'bf' ? 'Black Friday deals' : 'kerstcadeaus'));
   el.hidden = false;
   document.documentElement.classList.add('met-aftel');
 })();

@@ -359,13 +359,16 @@ window.LK_CATEGORIEEN = [
     ] }
 ];
 
+/* Stap 1 indeling (6-11-2026, GO Marius): overal dezelfde vier bedragen. Past bij een Sinterklaasbudget van gemiddeld €134 (lootjestrekken.nl, 2025).
+   Oude adressen (?prijs=tot10, boven50) blijven werken via LK_PRIJS_OUD. */
 window.LK_PRIJZEN = [
   { id: 'alle', label: 'Alles', min: 0, max: Infinity },
-  { id: 'tot10', label: 'Tot €10', min: 0, max: 10 },
   { id: 'tot25', label: 'Tot €25', min: 0, max: 25 },
-  { id: 'tot50', label: 'Tot €50', min: 0, max: 50 },
-  { id: 'boven50', label: '€50+', min: 50.01, max: Infinity }
+  { id: '25-50', label: '€25-50', min: 25.01, max: 50 },
+  { id: '50-100', label: '€50-100', min: 50.01, max: 100 },
+  { id: 'boven100', label: '€100+', min: 100.01, max: Infinity }
 ];
+window.LK_PRIJS_OUD = { tot10: 'tot25', tot50: '25-50', boven50: '50-100' };
 
 /* VONK: de vragen. De antwoorden matchen met 'voor' en 'moment' bij elk product. */
 window.LK_VONK = {
@@ -938,13 +941,20 @@ window.LK_GELEGENHEDEN = [
   { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' }
 ];
 /* Gelegenheden in de juiste volgorde voor vandaag: wat nu speelt eerst. */
+/* Stap 1 indeling (6-11-2026): eerst wat nu speelt (op datum), dan de gelegenheden van het hele jaar in een vaste volgorde, en de feestdagen buiten hun seizoen helemaal onderaan. */
 window.LK_GELEGENHEDEN_NU = function () {
   var d = new Date(), nu = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
   var speelt = function (g) { if (!g.seizoen) return false; var a = g.seizoen[0], b = g.seizoen[1]; return a <= b ? nu >= a && nu <= b : nu >= a || nu <= b; };
   var l = window.LK_GELEGENHEDEN;
-  return l.filter(speelt).sort(function (a, b) { return a.seizoen[1].localeCompare(b.seizoen[1]); }).concat(l.filter(function (g) { return !speelt(g); }));
+  var VAST = ['verjaardag', 'geboorte', 'jubileum', 'housewarming', 'bedankt', 'afscheid-pensioen', 'beterschap', 'geslaagd', 'juf-meester', 'uitdeelcadeautjes', 'doop-belijdenis'];
+  var rang = function (g) { var i = VAST.indexOf(g.slug); return i === -1 ? 99 : i; };
+  return l.filter(speelt).sort(function (a, b) { return a.seizoen[1].localeCompare(b.seizoen[1]); })
+    .concat(l.filter(function (g) { return !speelt(g) && !g.seizoen; }).sort(function (a, b) { return rang(a) - rang(b); }))
+    .concat(l.filter(function (g) { return !speelt(g) && g.seizoen; }));
 };
 /* Collecties: dwars door alle groepen heen, in de volgorde van zoeken. */
+/* Stap 1 indeling (6-11-2026, GO Marius): deze collecties blijven uit menu's en homepage tot ze kloppen (Cadeaubonnen: 1 product; Belevenissen: 9, deels fout; Toppers: 85 van 134 speelgoed). De pagina's zelf blijven bestaan. */
+window.LK_COLLECTIE_VERBORGEN = ['cadeaubonnen', 'belevenissen', 'toppers-van-nu'];
 window.LK_COLLECTIES = [
   /* Aanbiedingen (5-11-2026, GO Marius): altijd de grootste kortingen van al onze winkels, met bovenaan elke dag 12 'Deals van vandaag'. */
   { slug: 'aanbiedingen', naam: 'Aanbiedingen', kicker: 'Elke dag nieuwe deals', beeld: 'images/collecties/aanbiedingen-rond.webp', seoTitel: 'Aanbiedingen van vandaag – de grootste kortingen van bol, Coolblue en meer',
