@@ -993,7 +993,7 @@ window.LK_GELEGENHEDEN_NU = function () {
 };
 /* Collecties: dwars door alle groepen heen, in de volgorde van zoeken. */
 /* Stap 1 indeling (6-11-2026, GO Marius): deze collecties blijven uit menu's en homepage tot ze kloppen (Cadeaubonnen: 1 product; Belevenissen: 9, deels fout; Toppers: 85 van 134 speelgoed). De pagina's zelf blijven bestaan. */
-window.LK_COLLECTIE_VERBORGEN = ['cadeaubonnen', 'belevenissen', 'toppers-van-nu'];
+window.LK_COLLECTIE_VERBORGEN = ['cadeaubonnen', 'belevenissen']; /* 6-11-2026: Toppers van nu weer zichtbaar (33 toppers gekozen door Marius) */
 window.LK_COLLECTIES = [
   /* Aanbiedingen (5-11-2026, GO Marius): altijd de grootste kortingen van al onze winkels, met bovenaan elke dag 12 'Deals van vandaag'. */
   { slug: 'aanbiedingen', naam: 'Aanbiedingen', kicker: 'Elke dag nieuwe deals', beeld: 'images/collecties/aanbiedingen-rond.webp', seoTitel: 'Aanbiedingen van vandaag – de grootste kortingen van bol, Coolblue en meer',
@@ -1008,7 +1008,7 @@ window.LK_COLLECTIES = [
     tekst: 'De grootste kortingen van al onze winkels op één plek, met minstens 20% korting. De grootste korting staat bovenaan. Black Friday is op 27 november.',
     zoek: 'black friday blackfriday cyber monday deals deal aanbieding aanbiedingen korting sale uitverkoop', korting: 20, vakken: LK_ALLE_GROEPEN },
   { slug: 'toppers-van-nu', naam: 'Toppers van nu', kicker: 'Hits van dit najaar', beeld: 'images/collecties/toppers-van-nu-rond.webp', seoTitel: 'Populaire cadeaus 2026 – de toppers van nu',
-    tekst: 'Alleen de echte hits van nu: LEGO Pokémon, KPop Demon Hunters, Hitster, Pokémon-kaarten, Tamagotchi, Switch 2, Squishmallows en meer.', vakken: ['tag:toppers'] },
+    tekst: 'Per afdeling de drie cadeaus die nu het meest gevraagd zijn, met de hand gekozen.', vakken: ['tag:toppers'] },
   { slug: 'cadeaubonnen', naam: 'Cadeaubonnen', kicker: 'Altijd goed', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp', seoTitel: 'Cadeaubon en cadeaukaart – laat ze zelf kiezen',
     tekst: 'Twijfel je? Met een cadeaubon of cadeaukaart kiezen ze zelf.', vakken: ['tag:cadeaubon', 'boeken-media/boekenbonnen-abonnementen'] },
   { slug: 'persoonlijke-cadeaus', naam: 'Persoonlijke cadeaus', kicker: 'Met naam of eigen tekst', beeld: 'images/sub/sub-cadeaus-met-naam-2026b.webp', seoTitel: 'Persoonlijke cadeaus met naam – gepersonaliseerde cadeaus',
