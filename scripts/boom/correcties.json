@@ -7098,6 +7098,121 @@
    "elektronica",
    "gadgets",
    "fun-retro-gadgets"
+  ],
+  "cl-dualsense": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000009936882": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-joycon2": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-streamdeck-mk2": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-streamdeck-neo": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-streamdeck-mini": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-g923-ps": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-g920-xbox": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-hotas-x": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-backbone-one": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-pulsefire-haste2": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-eswap-x2": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "cb-wolverine-v3": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000130858604": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9200000045770071": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9200000046043771": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000230605890": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000021953298": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000244809819": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000332556197": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000023383597": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000225801726": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "bol-9300000009699366": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
   ]
  },
  "samen": {
@@ -7253,7 +7368,9 @@
   "cl-ax-hampton": "bol-9200000093250301",
   "dgsw-372e70531c": "cl-kpop-figuur",
   "cadeau-ea0fd7bda4": "cl-mario-lamp",
-  "nedgam-3dfbdc114b": "cl-dualsense-edge"
+  "nedgam-3dfbdc114b": "cl-dualsense-edge",
+  "nedgam-a77380a524": "cl-dualsense",
+  "nedgam-ae63e9da8d": "bol-9300000009936882"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
