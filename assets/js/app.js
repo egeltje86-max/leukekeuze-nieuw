@@ -1593,9 +1593,21 @@
   /* Per (sub)categorie staat er een klein bestand klaar (assets/zoek/w/<cat>--<sub>.json, gemaakt door scripts/maak-zoekindex.py),
      zodat een telefoon niet het hele bestand van alle winkels hoeft te laden. Alleen de zoekpagina gebruikt het hele bestand. */
   var AW = { laden: {} };
+  /* Het hele bestand staat ingepakt (gzip, 06-11-2026: scheelt ~50 MB op de site). Begint het met de gzip-kenmerken 1f 8b,
+     dan pakt de browser het zelf uit; heeft de server het al uitgepakt, dan lezen we het gewoon als tekst. */
+  function pakUit(r) {
+    return r.arrayBuffer().then(function (buf) {
+      var b = new Uint8Array(buf);
+      if (b.length > 1 && b[0] === 0x1f && b[1] === 0x8b) {
+        if (typeof DecompressionStream === 'undefined') throw new Error('geen uitpakker');
+        return new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).json();
+      }
+      return JSON.parse(new TextDecoder('utf-8').decode(b));
+    });
+  }
   function laadWinkels(sleutel) {
-    var pad = sleutel ? 'assets/zoek/w/' + sleutel.replace('/', '--') + '.json' : 'assets/zoek/winkels.json';
-    if (!AW.laden[pad]) AW.laden[pad] = fetch(pad).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
+    var pad = sleutel ? 'assets/zoek/w/' + sleutel.replace('/', '--') + '.json' : 'assets/zoek/alle.json.gz';
+    if (!AW.laden[pad]) AW.laden[pad] = fetch(pad).then(function (r) { if (!r.ok) throw new Error(r.status); return sleutel ? r.json() : pakUit(r); }).then(function (j) {
       var W = j.winkels;
       /* Tijdens de Daisycon-pauze nooit Daisycon-links tonen (de index bevat dan alleen TradeTracker-winkels). */
       return j.producten.filter(function (x) { return !dcDirect(W[x[2]].link + x[3]); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
@@ -3012,7 +3024,7 @@
     if (aw) {
       /* Op een telefoon is het bestand met álle winkelproducten groot (zoekpagina). Daar laden we het pas als je erom vraagt;
          categoriepagina's hebben een klein eigen bestand en laden meteen. */
-      var groot = !aw.getAttribute('data-sleutel') && window.matchMedia && window.matchMedia('(max-width: 759px)').matches && !AW.laden['assets/zoek/winkels.json'];
+      var groot = !aw.getAttribute('data-sleutel') && window.matchMedia && window.matchMedia('(max-width: 759px)').matches && !AW.laden['assets/zoek/alle.json.gz'];
       if (groot) {
         $('.aw-inhoud', aw).innerHTML = '<div class="aw-laadknop"><button class="knop knop-rand" type="button" data-aw-laad>Zoek ook in onze winkels ' + ic('pijl') + '</button>' +
           '<p class="uitleg">Doorzoekt ruim 40.000 producten van onze partnerwinkels. Dat is een groot bestand, dus het laden duurt even.</p></div>';

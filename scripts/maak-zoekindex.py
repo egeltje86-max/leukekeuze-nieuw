@@ -215,9 +215,16 @@ for x in uit:
     w = W[idx[x[2]]]
     kort.append([x[0], x[1], idx[x[2]], x[3][len(w['link']):], x[4][len(w['foto']):], x[5], x[6], x[7]])
 os.makedirs('assets/zoek', exist_ok=True)
-json.dump({'winkels': W, 'velden': ['titel', 'prijs', 'winkel', 'link', 'foto', 'cat', 'merk', 'geslacht'], 'producten': kort},
-          open('assets/zoek/winkels.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
-print(per, len(uit), os.path.getsize('assets/zoek/winkels.json') // 1024, 'kB')
+# 06-11-2026: het hele bestand staat ingepakt (gzip) in assets/zoek/alle.json.gz (scheelt ~55 MB op de site, 1 GB-grens);
+# de browser pakt het zelf uit (zie laadWinkels in app.js). winkels.json blijft als klein verwijsbestand bestaan,
+# zodat ook een oudere nachtelijk.py (git add assets/zoek/winkels.json ...) blijft werken.
+import gzip
+_data = json.dumps({'winkels': W, 'velden': ['titel', 'prijs', 'winkel', 'link', 'foto', 'cat', 'merk', 'geslacht'], 'producten': kort},
+                   ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+os.makedirs('assets/zoek/w', exist_ok=True)
+with gzip.GzipFile('assets/zoek/alle.json.gz', 'wb', compresslevel=9, mtime=0) as _g: _g.write(_data)
+json.dump({'verplaatst': 'assets/zoek/alle.json.gz'}, open('assets/zoek/winkels.json', 'w', encoding='utf-8'))
+print(per, len(uit), len(_data) // 1024, 'kB ->', os.path.getsize('assets/zoek/alle.json.gz') // 1024, 'kB ingepakt')
 
 # ---- Kleine bestanden per (sub)categorie, zodat een telefoon niet het hele bestand hoeft te laden ----
 # Zelfde regels als vulAlleWinkels in assets/js/app.js: zoekwoorden (een van de woorden), nietwoorden, geslacht, maximumprijs.

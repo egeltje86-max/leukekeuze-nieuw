@@ -164,7 +164,7 @@ if not TEST: git('checkout', 'main'); git('pull', '--rebase', '-q')
 r = subprocess.run([sys.executable, os.path.join(HIER, 'maak-zoekindex.py'), FEEDS], capture_output=True, text=True, encoding='utf-8')
 log('index:', (r.stdout or r.stderr).strip()[-300:])
 if r.returncode or TEST: sys.exit(r.returncode)
-git('add', 'assets/zoek/winkels.json', 'assets/zoek/w')
+git('add', 'assets/zoek/winkels.json', 'assets/zoek/alle.json.gz', 'assets/zoek/w')
 if git('diff', '--cached', '--quiet').returncode == 0:
     log('Niets veranderd.'); sys.exit(0)
 git('commit', '-q', '-m', 'Zoekindex bijgewerkt (' + datetime.date.today().isoformat() + ')')
