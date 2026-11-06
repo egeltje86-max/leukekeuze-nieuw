@@ -2313,9 +2313,9 @@
    "actiefiguren-superhelden"
   ],
   "nedgam-dba6ef3ed7": [
-   "speelgoed",
-   "poppen-knuffels",
-   "knuffels"
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ],
   "fiftie-556a8ca9cf": [
    "boeken-media",
@@ -2333,14 +2333,14 @@
    "knuffels"
   ],
   "nedgam-25aaf9dace": [
-   "speelgoed",
-   "poppen-knuffels",
-   "knuffels"
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ],
   "nedgam-aae4a4588e": [
-   "speelgoed",
-   "poppen-knuffels",
-   "knuffels"
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ],
   "bol-9300000256526145": [
    "speelgoed",
@@ -4653,9 +4653,9 @@
    "knuffels"
   ],
   "nedgam-c49abba29a": [
-   "speelgoed",
-   "poppen-knuffels",
-   "knuffels"
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ],
   "bol-9300000252262288": [
    "speelgoed",
@@ -4673,14 +4673,14 @@
    "knuffels"
   ],
   "bol-9300000236575345": [
-   "speelgoed",
-   "poppen-knuffels",
-   "knuffels"
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ],
   "nedgam-e9e80fd4f4": [
-   "speelgoed",
-   "poppen-knuffels",
-   "knuffels"
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ],
   "bol-9300000190216447": [
    "speelgoed",
@@ -12586,6 +12586,131 @@
    "wonen",
    "verlichting",
    "tafellampen"
+  ],
+  "a-coolblue-nl-126da9ca92": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "a-flextail-420ec05a0e": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "joybuy-600d2858b0": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "joybuy-62ed0b5517": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "joybuy-752875ce8a": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "joybuy-8e27a52a17": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "joybuy-d18900addd": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "joybuy-f30fb156f1": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "t2-aerovito-21b0485362": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "t2-cadeau-nl-1ec76d97be": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "t2-cadeau-nl-31dfd27d21": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "t2-cadeau-nl-4bd056e715": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "t2-cadeau-nl-8189fb6f8b": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "t2-nedgame-4639e1bcd1": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "tt-dvzn-17daf0a3fc": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "tt-dvzn-54591406f8": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "tt-dvzn-91a33807a8": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "tt-dvzn-9e8799ca46": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "tt-dvzn-bb15eaba48": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "tt-dvzn-e97ee499fa": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000241515822": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-opvouwbare-aluminium-laptop-standaard": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "bol-9300000225322186": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000246179244": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-0a4bf10746": [
+   "sport-outdoor",
+   "water-wintersport",
+   "zwemmen"
   ]
  },
  "samen": {
@@ -13504,7 +13629,8 @@
   "cl-lavalamp-w": "afgekeurd",
   "cl-zoutlamp": "afgekeurd",
   "bol-9300000123442435": "afgekeurd",
-  "cl-sfeerhaard": "afgekeurd"
+  "cl-sfeerhaard": "afgekeurd",
+  "cl-charmera": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
