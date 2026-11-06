@@ -213,10 +213,12 @@
   /* Keuzes bovenaan een lijstpagina (stap 3 indeling): een vast raster van rondjes dat omloopt, 4 per rij op een telefoon.
      Meer dan 8? Dan staan de eerste 8 in beeld en de rest achter één knop 'Meer'. Geen schuifrijen meer: op een telefoon zag je alleen wat vooraan stond. */
   var KEUZES_ZICHT = 8;
-  function keuzeRaster(items, label) {
+  /* o.altijd: ook op de computer eerst 8 (personen hebben tot 15 onderdelen). o.alles: nooit inklappen (overzichten). o.groot: grotere rondjes, 3 per rij. */
+  function keuzeRaster(items, label, o) {
+    o = o || {};
     if (!items.length) return '';
-    var meer = items.length > KEUZES_ZICHT;
-    return '<nav class="keuzes-blok" aria-label="' + esc(label) + '"><div class="keuzes' + (meer ? ' ingeklapt' : '') + '">' + items.map(function (x) {
+    var meer = !o.alles && items.length > KEUZES_ZICHT;
+    return '<nav class="keuzes-blok' + (o.altijd ? ' altijd' : '') + '" aria-label="' + esc(label) + '"><div class="keuzes' + (meer ? ' ingeklapt' : '') + (o.altijd ? ' altijd' : '') + (o.groot ? ' groot' : '') + '">' + items.map(function (x) {
       return '<a class="keuzerond' + (x.actief ? ' actief' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
         '<span class="rond">' + (x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async" width="88" height="88">' : (x.icoon || '')) + '</span>' +
         '<span class="naam">' + esc(x.naam) + '</span></a>';
@@ -424,7 +426,7 @@
   }
   function mobielBalk(pad, q, knoppen, sorteerOpties) {
     var aantal = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
-    var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd/i.test(k.titel); })[0];
+    var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd|hoe oud/i.test(k.titel); })[0]; /* stap 4: op Verjaardag ook 'Hoe oud wordt hij of zij?' als snel rijtje */
     var lftRij = lft ? knopRij(pad, q, lft) : '', prRij = lftRij ? '' : prijsChips(pad, q);
     var snel = lftRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">' + esc(lft.titel) + '</div>' + lftRij + '</div>'
              : prRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">Prijs</div>' + prRij + '</div>' : '';
@@ -859,17 +861,18 @@
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
 
-    /* Rondjes met de subcategorieën van deze persoon. Op de hoofdpagina groot (raster), op een subpagina als schuifrij. */
-    var subs = pe.subs.map(function (x) {
-      if (!nogGeldig(x)) return '';
-      var inVak = persoonProducten(pe, x.vakken);
-      if (!inVak.length) return '';
-      return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget('/voor/' + pe.slug + '/' + x.slug) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-        '<span class="rond"><img src="' + esc(rondBeeld(x.beeld, inVak)) + '" alt="" loading="lazy" decoding="async"></span><span class="subnaam">' + esc(x.naam) + '</span></a>';
-    }).join('');
+    /* Stap 4 indeling (6-11-2026, plan deel 8): op de hoofdpagina de onderdelen als rondjes in een vast raster, de eerste 8 in beeld
+       (de volgorde is al: waar het meest naar gezocht wordt), de rest achter 'Meer'. Op een onderdeel: de andere onderdelen als knopjes
+       in één rij die omloopt. Geen schuifrijen en geen 'Alles' meer (het kruimelpad brengt je terug). */
+    var volleSubsP = pe.subs.filter(function (x) { return nogGeldig(x) && persoonProducten(pe, x.vakken).length; });
     var subsHtml = s
-      ? '<div class="subkaarten"><a class="subkaart" href="' + metBudget('/voor/' + pe.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(pe.beeld)) + '" alt=""></span>Alles</a>' + subs + '</div>'
-      : '<div class="persoon-subs">' + subs + '</div>';
+      ? '<nav class="chips vakjesrij omlopend" aria-label="Onderdelen voor ' + esc(naam) + '">' + volleSubsP.map(function (x) {
+          var hier = s.slug === x.slug;
+          return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + metBudget('/voor/' + pe.slug + '/' + x.slug) + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(x.naam) + '</a>';
+        }).join('') + '</nav>'
+      : keuzeRaster(volleSubsP.map(function (x) {
+          return { naam: x.naam, naar: metBudget('/voor/' + pe.slug + '/' + x.slug), beeld: rondBeeld(x.beeld, persoonProducten(pe, x.vakken)) };
+        }), 'Onderdelen voor ' + naam, { altijd: true });
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
@@ -881,8 +884,8 @@
       ? leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>')
       : leegBlok('Deze afdeling vullen we nu', 'We kiezen de cadeaus voor ' + naam + ' met de hand uit. Kijk alvast verder:', '<a class="knop knop-rand" href="/voor">Voor iemand anders</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
-    /* Selectie: favorieten en populaire producten, sfeerfoto's eerst. */
-    var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
+    /* Selectie: favorieten en populaire producten, sfeerfoto's eerst. Stap 4 indeling: een vast raster van 4, geen schuifrij. */
+    var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 4);
     if (selectie.length < 4) selectie = [];
     /* 02-11-2026: wat al in 'Onze selectie' staat, niet meteen nog eens bovenaan de lijst eronder (dat leek dubbel). En afwisselen in winkel en soort. */
     if (!s && (!q.sort || q.sort === 'aanbevolen')) {
@@ -905,19 +908,18 @@
     }) +
     '<div class="binnen">' +
       (!alles.length ? '<section class="sectie eerste">' + leeg + '</section>' :
-      (s ? '<section class="sectie" aria-label="Subcategorieën">' + subsHtml + '</section>'
-         : '<section class="sectie eerste"><div class="sectie-kop"><div><h2>Wat zoek je voor ' + esc(naam) + '?</h2></div></div>' + subsHtml + '</section>') +
-      (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div>' + rij(selectie) + '</section>' : '') +
+      (s ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + subsHtml + '</section>'
+         : '<section class="sectie eerste keuzes-sectie"><div class="sectie-kop"><div><h2>Wat zoek je voor ' + esc(naam) + '?</h2></div></div>' + subsHtml + '</section>') +
+      (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length)) +
+      /* Stap 3/4 indeling: 'Lees ook' onder de eerste 24 producten. */
+      leesOok(pe.oud || '') +
       /* Op een subpagina ook 'Meer in onze winkels' uit het eerste vak (bijv. mode-beauty/horloges). */
       (s && alles.length && s.vakken[0].indexOf('tag:') !== 0 ? (function () { var vd = s.vakken[0].split('/'); return winkelSectie(vd[0], vd[1], q.prijs); })() : '') +
-      leesOok(pe.oud || '') +
       (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>Voor iemand anders?</h2></div></div>' +
-        '<div class="subkaarten voorwie-rij">' + anderen.map(function (x) {
-          return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
-        }).join('') + '</div></section>' +
+      /* Verder kijken, onderaan als tekstlinks. */
+      tekstLinks('Voor iemand anders?', anderen.map(function (x) { return [x.kort, x.subs ? '/voor/' + x.slug : x.naar]; })) +
     '</div>';
   }
   /* 2.0 PROEF: samengestelde pagina (gelegenheid of collectie): labels + vakken + evt. maximale prijs. */
@@ -972,12 +974,32 @@
     if (new Date().toISOString().slice(0, 10) > '2026-11-30') l = l.filter(function (x) { return x[0] !== 'black-friday'; });
     return '<nav class="deals-nav" aria-label="Deals">' + l.map(function (x) { return '<a class="chip" href="/collectie/' + x[0] + '"' + (x[0] === slug ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>';
   }
-  function verzameling(g, pad, kruimelKop, q) {
-    zetTitel(g.seoTitel || g.naam);
+  /* Stap 4 indeling (6-11-2026, plan deel 8): op een gelegenheid knopjes 'Voor haar · Voor hem · Kinderen · Tieners · Collega · Opa & oma'.
+     Elk knopje is een eigen adres (/gelegenheid/verjaardag/haar): 'verjaardagscadeau voor haar' wordt 3.600 keer per maand gezocht.
+     Alleen knopjes met minstens 10 producten. */
+  var GELEGENHEID_VOOR = ['haar', 'hem', 'kinderen', 'tieners', 'collega', 'opa-oma'];
+  function verzameling(g, pad, kruimelKop, q, voorSlug) {
     var knoppen = g.knoppen || [];
-    var alles = verzamelLijst(g);
+    var basisAlles = verzamelLijst(g);
+    var pv = voorSlug ? window.LK_PERSOON(voorSlug) : null;
+    if (voorSlug && (!pv || g.labels || !g.vakken)) return nietGevonden();
+    var voorNaam = pv ? pv.kort.replace(/^Voor /, '').toLowerCase() : '';
+    var alles = pv ? basisAlles.filter(function (p) { return voorFilter(p, pv.slug); }) : basisAlles;
+    if (pv && alles.length < 10) return nietGevonden();
+    var hoofdPad = pad; if (pv) pad = pad + '/' + pv.slug;
+    zetTitel(pv ? (g.seoKort || g.naam) + ' voor ' + voorNaam + (g.seoKort ? '' : ': cadeau-ideeën') : (g.seoTitel || g.naam));
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
+    var voorKnopjes = '';
+    if (!g.labels && g.vakken && !g.korting && !g.codes) {
+      var vk = (g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
+        var p2 = window.LK_PERSOON(slug); if (!p2) return '';
+        var n = basisAlles.filter(function (p) { return voorFilter(p, slug); }).length; if (n < 10) return '';
+        var hier = pv && pv.slug === slug;
+        return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + hoofdPad + '/' + slug + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(p2.kort) + '</a>';
+      }).join('');
+      if (vk) voorKnopjes = '<nav class="chips vakjesrij omlopend" aria-label="Voor wie">' + (pv ? '<a class="chip" href="' + hoofdPad + '">Iedereen</a>' : '') + vk + '</nav>';
+    }
     if ((g.korting || g.codes) && !q.sort) q = Object.assign({}, q, { sort: 'korting' }); /* Black Friday: standaard grootste korting eerst */
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
@@ -1006,43 +1028,49 @@
       lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
     }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
-    return paginakop({ titel: g.kop || g.naam, tekst: g.tekst, vaag: g.beeld, kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }, { tekst: g.naam }] }) +
+    var isGelegenheid = kruimelKop.naar === '/gelegenheid';
+    return paginakop({
+      titel: pv ? (g.kop || g.naam) + ' voor ' + voorNaam : (g.kop || g.naam),
+      tekst: pv ? 'Met de hand gekozen cadeaus voor ' + voorNaam + ', voor ' + g.naam.toLowerCase() + '.' : g.tekst, vaag: g.beeld,
+      kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }].concat(pv ? [{ tekst: g.naam, naar: hoofdPad }, { tekst: pv.kort }] : [{ tekst: g.naam }])
+    }) +
     '<div class="binnen">' +
       (g.korting || g.codes ? dealsNav(g.slug) : '') + (g.codes ? codesBlok() : '') +
-      (selectie.length && !g.codes ? '<section class="sectie eerste sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div>' + rij(selectie) + '</section>' : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? 'Alle deals, grootste korting eerst' : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase())) + '</h2></div></div></section>' +
+      (voorKnopjes ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + voorKnopjes + '</section>' : '') +
+      /* Stap 4 indeling: 'Onze selectie' als vast raster (geen schuifrij). Deals van vandaag (Acties) blijven 12 stuks. */
+      (selectie.length && !g.codes ? '<section class="sectie' + (voorKnopjes ? '' : ' eerste') + ' sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? 'Alle deals, grootste korting eerst' : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase()))) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>Andere gelegenheden</h2></div></div>' +
-        '<div class="subkaarten voorwie-rij">' + andere.map(function (x) {
-          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
-        }).join('') + '</div></section>' +
+      /* Verder kijken, onderaan als tekstlinks (gelegenheden op datum: eerst wat eraan komt). */
+      (isGelegenheid ? tekstLinks('Andere gelegenheden', andere.map(function (x) { return [x.naam, x.naar || '/gelegenheid/' + x.slug]; })) : '') +
     '</div>';
   }
-  function gelegenheidPagina(slug, q) {
+  function gelegenheidPagina(slug, voorSlug, q) {
     if (!slug) {
       zetTitel('Gelegenheden');
+      /* Stap 4 indeling: 16 rondjes in een vast raster, op datum (eerst wat eraan komt; Moederdag, Vaderdag en Valentijn buiten hun seizoen onderaan). */
       return paginakop({ titel: 'Gelegenheden', tekst: 'Voor elk moment een passend cadeau.', kruimel: [{ tekst: 'Gelegenheden' }] }) +
-        '<div class="binnen"><section class="sectie eerste"><div class="persoon-subs">' + window.LK_GELEGENHEDEN_NU().map(function (x) {
-          return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
-        }).join('') + '</div></section></div>';
+        '<div class="binnen"><section class="sectie eerste keuzes-sectie">' + keuzeRaster(window.LK_GELEGENHEDEN_NU().map(function (x) {
+          return { naam: x.naam, naar: x.naar || '/gelegenheid/' + x.slug, beeld: kleinBeeld(x.beeld) };
+        }), 'Gelegenheden', { alles: true, groot: true }) + '</section></div>';
     }
     var g = window.LK_GELEGENHEID(slug);
     if (!g || !g.vakken) return nietGevonden();
-    return verzameling(g, '/gelegenheid/' + g.slug, { tekst: 'Gelegenheden', naar: '/gelegenheid' }, q);
+    return verzameling(g, '/gelegenheid/' + g.slug, { tekst: 'Gelegenheden', naar: '/gelegenheid' }, q, voorSlug);
   }
   function collectie(slug, q) {
     var g = window.LK_COLLECTIE(slug);
     if (!g) return nietGevonden();
     return verzameling(g, '/collectie/' + g.slug, { tekst: 'Collecties', naar: '/' }, q);
   }
-  /* Overzicht van alle personen (/voor). */
+  /* Overzicht van alle personen (/voor). Stap 4 indeling: vast raster van rondjes. */
   function voorWie() {
     zetTitel('Voor wie zoek je een cadeau?');
     return paginakop({ titel: 'Voor wie zoek je een cadeau?', tekst: 'Kies voor wie het is. Daarna zie je alleen wat bij die persoon past.', kruimel: [{ tekst: 'Voor wie?' }] }) +
-      '<div class="binnen"><section class="sectie eerste"><div class="persoon-subs">' + window.LK_PERSONEN.map(function (x) {
-        return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
-      }).join('') + '</div></section></div>';
+      '<div class="binnen"><section class="sectie eerste keuzes-sectie">' + keuzeRaster(window.LK_PERSONEN.filter(function (x) { return !x.verborgen; }).map(function (x) {
+        return { naam: x.kort, naar: x.subs ? '/voor/' + x.slug : x.naar, beeld: kleinBeeld(x.beeld) };
+      }), 'Voor wie', { alles: true, groot: true }) + '</section></div>';
   }
 
   /* ---------- Product ---------- */
@@ -2863,7 +2891,7 @@
       html = categorie(d[1], d[2], d[3], a.q);
     }
     else if (d[0] === 'voor') html = d[1] ? persoon(d[1], d[2], a.q) : voorWie();
-    else if (d[0] === 'gelegenheid') html = gelegenheidPagina(d[1], a.q);
+    else if (d[0] === 'gelegenheid') html = gelegenheidPagina(d[1], d[2], a.q);
     else if (d[0] === 'collectie') html = collectie(d[1], a.q);
     else if (d[0] === 'p') html = product(d[1]);
     else if (d[0] === 'zoek') html = zoeken(a.q);

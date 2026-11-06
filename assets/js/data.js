@@ -949,7 +949,7 @@ window.LK_GELEGENHEDEN = [
   { slug: 'kerst', seizoen: ['11-01', '12-26'], naam: 'Kerst', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
   { slug: 'geboorte', naam: 'Geboorte & kraam', naar: '/voor/baby', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
   { slug: 'valentijn', seizoen: ['01-15', '02-14'], naam: 'Liefde & Valentijn', naar: '/c/valentijn', beeld: 'images/sub/sub-valentijn-voor-haar.webp' },
-  { slug: 'verjaardag', uit: LK_GEEN_FEEST, naam: 'Verjaardag', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Verjaardagscadeau – cadeau voor 18, 30, 40, 50 of 60 jaar',
+  { slug: 'verjaardag', uit: LK_GEEN_FEEST, naam: 'Verjaardag', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Verjaardagscadeau – cadeau voor 18, 30, 40, 50 of 60 jaar', seoKort: 'Verjaardagscadeau',
     tekst: 'Een cadeau voor een verjaardag. Kies hieronder hoe oud hij of zij wordt, of bekijk alles.',
     knoppen: ['jaar'], vakken: LK_ALLE_GROEPEN.concat(['tag:verjaardag']) },
   { slug: 'jubileum', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kraam|baby|voorraad|kat\b|kilo|rakkers/i, naam: 'Trouwen & jubileum', beeld: 'images/sub/sub-valentijn-samen.webp', seoTitel: 'Trouwcadeau, huwelijkscadeau en jubileumcadeau',
@@ -962,7 +962,7 @@ window.LK_GELEGENHEDEN = [
   { slug: 'bedankt', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kilo|silo|\d{2,3} stuks|mix \(/i, naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
     tekst: 'Een klein gebaar dat groot aankomt: iets lekkers, een kaars, een plantje of een goede fles.', maxPrijs: 25,
     vakken: ['tag:juf-meester', 'eten-drinken/brievenbuscadeaus', 'eten-drinken/chocolade'] /* 31-10-2026 strenger */ },
-  { slug: 'juf-meester', seizoen: ['06-10', '07-20'], uit: LK_GEEN_FEEST, naam: 'Juf & meester', beeld: 'images/sub/sub-boeken-media-agendas.webp', seoTitel: 'Cadeau voor de juf of meester – bedankje einde schooljaar',
+  { slug: 'juf-meester', voorWie: ['haar', 'hem'], /* stap 4: alleen juf (haar) of meester (hem) */ seizoen: ['06-10', '07-20'], uit: LK_GEEN_FEEST, naam: 'Juf & meester', beeld: 'images/sub/sub-boeken-media-agendas.webp', seoTitel: 'Cadeau voor de juf of meester – bedankje einde schooljaar',
     tekst: 'Dankjewel zeggen aan de juf of meester: aan het einde van het schooljaar of zomaar.', maxPrijs: 25,
     vakken: ['tag:juf-meester'] }, /* 31-10-2026: alleen kleine bedankjes (zie indeling.js) */
   { slug: 'uitdeelcadeautjes', naam: 'Uitdeelcadeautjes', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp', seoTitel: 'Uitdeelcadeautjes – voor een kinderfeestje of de klas',

@@ -824,3 +824,13 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .voor-knopjes { margin-top: 0; }
 /* Winkels bij deze afdeling: tekstlinks in plaats van 24 grote kaarten (6.000 px op een telefoon). */
 .tekstlinks a[target="_blank"]::after { content: "↗"; font-size: 11px; margin-left: 3px; color: var(--goud-donker); }
+
+/* ===== Stap 4 indeling (6-11-2026, plan deel 8): Voor wie en Gelegenheden ===== */
+/* Personen hebben tot 15 onderdelen: ook op de computer eerst 8, de rest achter 'Meer'. */
+.keuzes.ingeklapt.altijd .keuzerond:nth-child(n+9) { display: none; }
+@media (min-width: 760px) { .keuzes-blok.altijd .keuzes-meer { display: flex; } }
+/* Overzichten (Voor wie, Gelegenheden): grotere rondjes, 3 per rij op een telefoon. */
+.keuzes.groot { grid-template-columns: repeat(3, 1fr); gap: 18px 8px; }
+.keuzes.groot .keuzerond { font-size: 13px; }
+.keuzes.groot .keuzerond .rond { width: 88px; height: 88px; }
+@media (min-width: 760px) { .keuzes.groot { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 12px; } .keuzes.groot .keuzerond { font-size: 14px; } .keuzes.groot .keuzerond .rond { width: 112px; height: 112px; } }
