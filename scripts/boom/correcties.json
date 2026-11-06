@@ -1676,6 +1676,10 @@
   "cl-switch-lite": {
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnintendo-switch-lite-console-turquoise%2F9200000116374154%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/nintendo-switch-lite-console-turquoise/9200000116374154/"
+  },
+  "bol-9300000341079798": {
+   "url": "https://www.awin1.com/pclick.php?p=45366208321&a=3110079&m=85161",
+   "winkelUrl": "https://www.awin1.com/pclick.php?p=45366208321&a=3110079&m=85161"
   }
  },
  "vak": {
@@ -6970,9 +6974,9 @@
    "games"
   ],
   "bol-9300000247823047": [
-   "elektronica",
-   "gaming",
-   "games"
+   "speelgoed",
+   "buiten-spelen",
+   "buitenspellen-ballen"
   ],
   "bol-9300000354468362": [
    "elektronica",
@@ -7213,6 +7217,146 @@
    "elektronica",
    "gaming",
    "controllers-accessoires"
+  ],
+  "cb-cod-mw4": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-cod-bo7": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-bf6": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-ghost-yotei": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-astro-bot": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-hogwarts": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9200000090938105": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-it-takes-two": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000240435887": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000240435890": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000233107043": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-sonic-racing": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-luigis-mansion3": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-zelda-eow": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-mario-wonder": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-elden-ring-ns2": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000277888865": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-just-dance-2026": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000020992182": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-ps-tegoed": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-nintendo-tegoed": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "ned-nso-12m": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "cb-mc-dungeons2": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000114591958": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9200000103387305": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bol-9300000190453920": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "superz-f16bbf44cc": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "hema-866ecf650d": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
   ]
  },
  "samen": {
@@ -7370,7 +7514,9 @@
   "cadeau-ea0fd7bda4": "cl-mario-lamp",
   "nedgam-3dfbdc114b": "cl-dualsense-edge",
   "nedgam-a77380a524": "cl-dualsense",
-  "nedgam-ae63e9da8d": "bol-9300000009936882"
+  "nedgam-ae63e9da8d": "bol-9300000009936882",
+  "bol-9300000240435884": "cl-mario-galaxy",
+  "bol-9200000122553336": "cl-mk-stuur"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -12991,6 +13137,9 @@
   ],
   "cl-switch-lite": [
    246.0
+  ],
+  "bol-9300000341079798": [
+   64.0
   ]
  },
  "shop": {
@@ -13993,7 +14142,26 @@
   "bol-9200000002924845": "Victorinox Climber Zwitsers zakmes (14 functies, blauw)",
   "bol-9300000222945148": "PlayStation Portal (zwart)",
   "cl-ps-portal": "PlayStation Portal (wit)",
-  "cl-switch-lite": "Nintendo Switch Lite (turquoise)"
+  "cl-switch-lite": "Nintendo Switch Lite (turquoise)",
+  "bol-9300000247823047": "Nerf Marvel Wolverine blaster",
+  "bol-9200000125025508": "Animal Crossing: New Horizons (Switch)",
+  "bol-9300000285106314": "Star Fox (Switch 2)",
+  "bol-9300000309770614": "Nintendo Switch Sports Resort (Switch 2)",
+  "bol-9200000099049834": "New Super Mario Bros. U Deluxe (Switch)",
+  "bol-9200000073666630": "Super Mario Odyssey (Switch)",
+  "bol-9300000262812615": "Rayman: 30th Anniversary Edition (PS5)",
+  "bol-9300000245069913": "Bluey's Quest for the Gold Pen (PS5)",
+  "bol-9300000247805933": "RollerCoaster Tycoon 3: Complete Edition (PS5)",
+  "bol-9300000275795322": "Hot Wheels Infinite Rush (PS5)",
+  "bol-9300000354468362": "Planet Zoo 2 (PS5)",
+  "bol-9300000304605075": "Control Resonant (PS5)",
+  "bol-9300000234106716": "007 First Light (PS5)",
+  "bol-9300000260264891": "The Disney Afternoon Collection (Switch)",
+  "bol-9300000275290677": "PAW Patrol: Dino World (PS5)",
+  "bol-9300000240306822": "Gabby's Dollhouse: Ready to Party (PS4, speelt ook op PS5)",
+  "cl-mario-galaxy": "Super Mario Galaxy 1+2 (Switch)",
+  "cl-mario-party": "Super Mario Party Jamboree (Switch)",
+  "cl-nba2k27": "NBA 2K27 (PS5)"
  },
  "voorErbij": {
   "bol-9300000142143695": [
