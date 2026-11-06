@@ -8121,6 +8121,56 @@
    "elektronica",
    "smartwatches",
    "activity-trackers"
+  ],
+  "bol-9300000193882009": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "hema-wegwerp-flits": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "jb-70mai-m200": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "cb-osmo-action6": [
+   "elektronica",
+   "foto-video",
+   "actioncam-s"
+  ],
+  "cb-osmo360": [
+   "elektronica",
+   "foto-video",
+   "actioncam-s"
+  ],
+  "cb-insta-x5": [
+   "elektronica",
+   "foto-video",
+   "actioncam-s"
+  ],
+  "cb-gopro-max2": [
+   "elektronica",
+   "foto-video",
+   "actioncam-s"
+  ],
+  "cb-dji-neo2": [
+   "elektronica",
+   "foto-video",
+   "drones"
+  ],
+  "cb-dji-flip": [
+   "elektronica",
+   "foto-video",
+   "drones"
+  ],
+  "cb-dji-mini5-rc": [
+   "elektronica",
+   "foto-video",
+   "drones"
   ]
  },
  "samen": {
@@ -8294,7 +8344,12 @@
   "cl-rockster": "tf-106489003",
   "bol-9300000179996366": "cl-sonos-roam2",
   "bol-9300000190559748": "cl-bose-flex2",
-  "bol-9300000167137772": "cb-xtreme5"
+  "bol-9300000167137772": "cb-xtreme5",
+  "bol-9200000083183430": "cl-printomatic",
+  "bol-9300000304083183": "cl-polaroid-go3",
+  "bol-9300000142746730": "cl-instax12",
+  "cl-instax-sq1": "bol-9300000011440413",
+  "bol-9200000097663498": "cl-sprocket"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
