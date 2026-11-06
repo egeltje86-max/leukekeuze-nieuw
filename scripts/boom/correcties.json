@@ -9651,6 +9651,151 @@
    "mode-sieraden",
    "horloges",
    "herenhorloges"
+  ],
+  "bol-9300000004138074": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "bol-9300000070559212": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "bol-9300000073699724": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "bol-9300000237012029": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "bol-9300000242008723": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "laarzen-boots"
+  ],
+  "bol-9300000118724846": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "bol-9300000385234246": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "sneakers"
+  ],
+  "cb-samsonite-scure-55": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "koffers-reistassen"
+  ],
+  "bol-9300000352890709": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "bol-9300000253114953": [
+   "speelgoed",
+   "leren-ontdekken",
+   "experimenteren-wetenschap"
+  ],
+  "bol-9300000384656307": [
+   "tuin-klussen",
+   "klussen",
+   "handgereedschap"
+  ],
+  "bol-9200000051833314": [
+   "boeken-media",
+   "boeken",
+   "invulboeken-dagboeken"
+  ],
+  "dvzn-ed71392698": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "reisaccessoires"
+  ],
+  "bol-9300000261371860": [
+   "mode-sieraden",
+   "accessoires",
+   "sleutelhangers"
+  ],
+  "cb-kitchenaid-artisan": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "jb-lecreuset-braadpan": [
+   "wonen",
+   "koken-bakken",
+   "pannen-messen"
+  ],
+  "ex-ninja-af180": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "bol-9300000034785141": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "bol-9200000033415524": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "bol-9300000008094894": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "jb-delonghi-dedica": [
+   "wonen",
+   "koffie-thee-zetten",
+   "koffiemachines"
+  ],
+  "bol-9300000053129905": [
+   "wonen",
+   "koffie-thee-zetten",
+   "koffiemachines"
+  ],
+  "cl-ninja-af100": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "cl-philips-af-xl": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "cl-tefal-dual": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "cl-philips-af-dual": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "cl-ninja-ds": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "cl-ninja-ds-xl": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "cl-ninja-flex": [
+   "wonen",
+   "koken-bakken",
+   "airfryers"
   ]
  },
  "samen": {
@@ -9841,7 +9986,13 @@
   "bol-9300000179354077": "bol-9300000231731440",
   "bol-9300000363538158": "bol-9300000265211555",
   "bol-9300000242737632": "cl-rit-ayurveda",
-  "cl-treaclemoon-set": "bol-9300000402223604"
+  "cl-treaclemoon-set": "bol-9300000402223604",
+  "bol-9200000045345871": "cl-rb-justin",
+  "cl-tefal-dual": "bol-9300000159304941",
+  "bol-9300000116868583": "cl-vertuo-pop",
+  "cl-smeg-tsf01": "bol-9200000068054609",
+  "bol-9300000185349180": "cl-dl-rivelia",
+  "hema-15cd984c89": "cl-senseo"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -9994,6 +10145,12 @@
    "baby"
   ],
   "cl-babyliss-superx": [
+   "baby"
+  ],
+  "zv-lwba04338011uni": [
+   "baby"
+  ],
+  "bol-9300000290154892": [
    "baby"
   ]
  },
