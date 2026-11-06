@@ -1022,13 +1022,15 @@
         .filter(function (p) { var v = (p.groep || p.cat) + '/' + (p.vak || p.sub); if (perVak[v] || (perShop[p.shop] || 0) >= 3) return false; perVak[v] = 1; perShop[p.shop] = (perShop[p.shop] || 0) + 1; return true; })
         .slice(0, 12).sort(function (a, b) { return kortingPct(b) - kortingPct(a); });
     }
+    /* Stap 6 indeling: de selectie staat alleen op gelegenheden en bij 'Deals van vandaag'; op een collectie (Cadeau-ideeën) meteen filter en producten. */
+    var isGelegenheid = kruimelKop.naar === '/gelegenheid';
+    if (!(isGelegenheid || g.dagdeals) || g.codes) selectie = [];
     /* 02-11-2026: zelfde als bij de personen: geen dubbele bovenaan, en afwisselen in winkel en soort. */
     if (!q.sort || q.sort === 'aanbevolen') {
       var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
       lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
     }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
-    var isGelegenheid = kruimelKop.naar === '/gelegenheid';
     return paginakop({
       titel: pv ? (g.kop || g.naam) + ' voor ' + voorNaam : (g.kop || g.naam),
       tekst: pv ? 'Met de hand gekozen cadeaus voor ' + voorNaam + ', voor ' + g.naam.toLowerCase() + '.' : g.tekst, vaag: g.beeld,
@@ -1038,7 +1040,8 @@
       (g.korting || g.codes ? dealsNav(g.slug) : '') + (g.codes ? codesBlok() : '') +
       (voorKnopjes ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + voorKnopjes + '</section>' : '') +
       /* Stap 4 indeling: 'Onze selectie' als vast raster (geen schuifrij). Deals van vandaag (Acties) blijven 12 stuks. */
-      (selectie.length && !g.codes ? '<section class="sectie' + (voorKnopjes ? '' : ' eerste') + ' sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
+      /* Stap 6 indeling: op een collectie (Cadeau-ideeën) geen selectie: meteen filter en producten. Acties houden 'Deals van vandaag'. */
+      (selectie.length ? '<section class="sectie' + (voorKnopjes ? '' : ' eerste') + ' sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? 'Alle deals, grootste korting eerst' : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase()))) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
@@ -1216,11 +1219,12 @@
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
           '<div class="prijs"><span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
-          kleurKeuze(p) + maatKeuze(p) +
-          '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
+          /* Stap 5 indeling (6-11-2026, plan deel 8): de knop direct onder de prijs, binnen het eerste scherm; kleur en maat eronder. */
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
           '</div>' + inAppTip(p) +
+          kleurKeuze(p) + maatKeuze(p) +
+          '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
@@ -1228,16 +1232,19 @@
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
             '</dl><p class="specs-noot">Volgens de gegevens van de winkel. Twijfel je? Kijk dan ook even bij ' + esc(p.shop) + '.</p></div>' : '') +
+          /* Stap 5 indeling: één zin korter ('Met de hand gekozen' staat al bij 'Waarom wij dit kozen'). */
           '<ul class="feiten">' +
-            '<li>' + ic('winkel') + '<span>Je bestelt en betaalt bij ' + esc(p.shop) + '. Bezorging en retour regelt de winkel.</span></li>' +
+            '<li>' + ic('winkel') + '<span>Je bestelt en betaalt bij ' + esc(p.shop) + '; bezorging en retour regelt de winkel.</span></li>' +
             (p.letOp ? '<li class="letop">' + ic('info') + '<span><strong>Let op:</strong> ' + esc(p.letOp) + '</span></li>' : '') +
             (p.verzendNoot ? '<li>' + ic('info') + '<span>' + esc(p.verzendNoot) + '</span></li>' : '') +
-            '<li>' + ic('vink') + '<span>Met de hand gekozen door LeukeKeuze.</span></li>' +
             (ookIn.length ? '<li>' + ic('cadeau') + '<span>Ook te vinden bij: ' + ookIn.join(', ') + '</span></li>' : '') +
             (p.voorbeeld ? '<li>' + ic('info') + '<span>Dit is een voorbeeldproduct om de site te testen. De foto is een sfeerbeeld.</span></li>' : '') +
           '</ul>' +
         '</div>' +
       '</div>' +
+      /* Stap 5 indeling: terug naar het vakje als tekstlink (ontbrak). */
+      (function () { var t = nv ? [nv.naam, '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug] : ns ? [ns.naam, '/c/' + nc.slug + '/' + ns.slug] : (s && !s.verborgen ? [s.naam, '/c/' + c.slug + '/' + s.slug] : c ? [c.naam, '/c/' + c.slug] : null);
+        return t ? '<p class="terug-link"><a href="' + esc(t[1]) + '">' + ic('vorige') + ' Terug naar ' + esc(t[0]) + '</a></p>' : ''; })() +
       verderZoeken(p, c, s) +
       (verwant.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk</h2></div></div>' + grid(verwant) + '</section>' : '') +
     '</div>';
@@ -1379,9 +1386,52 @@
      dan gelegenheden en collecties, dan de productgroepen. Zo kom je in één tik op de goede afdeling. */
   /* Nakijkbeurt 6-11-2026: eerst alleen echte treffers. Pas als dat niets geeft, ook woorden met één tikfout
      (anders werd 'kaarten' ook 'kaarsen' en kreeg je bij 'pokemon kaarten' Kaarsen & geur als tip). */
+  /* Stap 6 indeling (6-11-2026, plan deel 8): woordenlijst. 'vrouw', 'vriendin', 'moeder' = voor haar; 'man', 'vriend', 'vader' = voor hem;
+     'kind', 'zoon', 'dochter' = kinderen; kerst, sinterklaas, verjaardag = die pagina. Samen wordt dat 'Kerstcadeaus voor haar'. */
+  var WL_PERSOON = { haar: 'haar vrouw vrouwen vriendin moeder mama mam zus dames dame echtgenote partner schoonmoeder tante nicht', hem: 'hem man mannen vriend vader papa pap broer heren heer echtgenoot schoonvader oom neef',
+    kinderen: 'kind kinderen zoon dochter jongen meisje kids kleinkind kleinzoon kleindochter neefje nichtje peuter kleuter', tieners: 'tiener tieners puber pubers', 'opa-oma': 'opa oma grootouders opas omas grootvader grootmoeder',
+    collega: 'collega collegas werknemer medewerker baas', baby: 'baby kraamcadeau kraam geboorte babyshower pasgeboren newborn' };
+  var WL_MOMENT = { kerst: ['kerst kerstcadeau kerstcadeaus kerstmis kerstcadeautje kerstpakket', 'Kerstcadeaus', '/c/cadeaus/kerst'], sinterklaas: ['sinterklaas sint pakjesavond schoencadeau schoencadeautje surprise sinterklaascadeau', 'Sinterklaascadeaus', '/c/cadeaus/sinterklaas'],
+    verjaardag: ['verjaardag jarig verjaardagscadeau verjaardagscadeaus', 'Verjaardagscadeaus', '/gelegenheid/verjaardag'], moederdag: ['moederdag moederdagcadeau', 'Moederdagcadeaus', '/gelegenheid/moederdag'],
+    vaderdag: ['vaderdag vaderdagcadeau', 'Vaderdagcadeaus', '/gelegenheid/vaderdag'], valentijn: ['valentijn valentijnscadeau valentijnsdag', 'Valentijnscadeaus', '/c/valentijn'] };
+  function woordenTips(woorden) {
+    var stammen = woorden.map(stam), uit = [];
+    var heeft = function (lijst) { return lijst.split(' ').some(function (x) { return stammen.indexOf(stam(x)) !== -1; }); };
+    var pers = Object.keys(WL_PERSOON).filter(function (k) { return heeft(WL_PERSOON[k]); });
+    var mom = Object.keys(WL_MOMENT).filter(function (k) { return heeft(WL_MOMENT[k][0]); });
+    var jaar = null; woorden.forEach(function (w, i) { if (/^\d{1,2}$/.test(w) && /^jaar|^jr$/.test(woorden[i + 1] || '')) jaar = +w; });
+    if (jaar !== null && jaar <= 12 && pers.indexOf('kinderen') === -1) pers.unshift('kinderen');
+    if (jaar !== null && jaar >= 13 && jaar <= 17 && pers.indexOf('tieners') === -1) pers.unshift('tieners');
+    var naamVan = function (slug) { var pe = window.LK_PERSOON(slug); return pe ? pe.naam.replace(/^Voor /, '').toLowerCase() : slug; };
+    /* 1. moment + persoon: 'Kerstcadeaus voor haar' */
+    mom.forEach(function (m) { pers.forEach(function (ps) {
+      var M = WL_MOMENT[m], naar;
+      if (m === 'moederdag' || m === 'vaderdag') return;
+      if (m === 'verjaardag') { var g = window.LK_GELEGENHEID('verjaardag'); naar = g && GELEGENHEID_VOOR.indexOf(ps) !== -1 && verzamelLijst(g).filter(function (p) { return voorFilter(p, ps); }).length >= 10 ? M[2] + '/' + ps : ''; }
+      else naar = M[2] + '?voor=' + ps;
+      if (naar) uit.push({ naam: M[1] + ' voor ' + naamVan(ps), naar: naar, soort: 'pagina' });
+    }); });
+    /* 2. het moment zelf, 3. de persoon zelf (met leeftijd als die genoemd is) */
+    mom.forEach(function (m) { uit.push({ naam: WL_MOMENT[m][1], naar: WL_MOMENT[m][2], soort: 'pagina' }); });
+    pers.forEach(function (ps) {
+      var pe = window.LK_PERSOON(ps); if (!pe) return;
+      if (ps === 'kinderen' && jaar !== null && jaar <= 12) {
+        var b = (window.LK_KNOPSETS.leeftijd || { opties: [] }).opties.filter(function (o) { return jaar >= o[2].leeftijd[0] && jaar <= o[2].leeftijd[1]; })[0];
+        if (b) { uit.push({ naam: 'Voor kinderen van ' + b[1], naar: '/voor/kinderen?leeftijd=' + b[0], soort: 'pagina' }); return; }
+      }
+      uit.push({ naam: pe.naam, naar: pe.subs ? '/voor/' + pe.slug : pe.naar, soort: 'pagina' });
+    });
+    return uit;
+  }
   function paginaTips(woorden) {
-    var t = paginaTips2(woorden, false);
-    return t.length ? t : paginaTips2(woorden, true);
+    var eerst = woordenTips(woorden);
+    /* 'haar' en 'hem' zijn hier personen, geen haarproducten: die woorden doen niet mee aan het zoeken naar groepen. */
+    var zonder = woorden.filter(function (w) { return !/^(haar|hem|hun|zijn|voor)$/.test(w); });
+    var t = paginaTips2(zonder, false);
+    if (!t.length && !eerst.length) t = paginaTips2(zonder, true);
+    var gezien = {};
+    /* Wijst de woordenlijst al een pagina aan, dan hoogstens 3 andere tips erbij. */
+    return eerst.concat(eerst.length ? t.slice(0, 3) : t).filter(function (x) { if (gezien[x.naar]) return false; gezien[x.naar] = 1; return true; }).slice(0, 8);
   }
   function paginaTips2(woorden, tikfout) {
     if (!woorden.length) return [];
@@ -2683,19 +2733,39 @@
     if (!g) return nietGevonden();
     zetTitel(g.titel);
     window.LK_SEO = g.kort + ' ' + g.intro.split('. ')[0] + '.';
+    /* Stap 6 indeling (6-11-2026, plan deel 8): intro van 3 zinnen (de rest achter 'Lees verder'), springlinks naar de delen,
+       per deel producten 2 naast elkaar, onderaan 'Lees ook' en de link naar het vakje. */
+    var zinnen = g.intro.match(/[^.!?]+[.!?]+(\s|$)/g) || [g.intro];
+    var introKort = zinnen.slice(0, 3).join('').trim(), introRest = zinnen.slice(3).join('').trim();
+    var delenMet = g.delen.map(function (d, i) { return Object.assign({ nr: i + 1 }, d); }).filter(function (d) {
+      if (!d.ids) return true;
+      d.lijst2 = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen && p.status === 'goedgekeurd'; })); /* uitverkochte producten niet tonen */
+      return d.lijst2.length > 0;
+    });
+    var spring = delenMet.length > 1 ? '<nav class="chips vakjesrij omlopend springlinks" aria-label="In deze gids">' + delenMet.map(function (d) { return '<a class="chip" href="#deel-' + d.nr + '">' + esc(d.kop) + '</a>'; }).join('') + '</nav>' : '';
     var h = paginakop({ titel: g.titel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: g.titel }] }) +
-      '<div class="binnen"><article class="tekstpagina gids"><p>' + esc(g.intro) + '</p></article>';
-    g.delen.forEach(function (d) {
+      '<div class="binnen"><article class="tekstpagina gids"><p>' + esc(introKort) + '</p>' +
+      (introRest ? '<details class="lees-verder"><summary>Lees verder</summary><p>' + esc(introRest) + '</p></details>' : '') + spring + '</article>';
+    delenMet.forEach(function (d) {
       /* Een deel kan ook alleen tekst zijn (zonder producten), met een lijstje (veld 'lijst') of genummerde stappen (veld 'stappen'). */
       var extra = (d.lijst ? '<ul>' + d.lijst.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' : '') +
         (d.stappen ? '<ol>' + d.stappen.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ol>' : '');
-      if (!d.ids) { h += '<article class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</article>'; return; }
-      var lijst = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen && p.status === 'goedgekeurd'; })); // uitverkochte producten niet tonen (geen pagina meer)
-      if (!lijst.length) return;
-      h += '<section class="sectie sfeer-modus"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</div>' + grid(lijst, '') + '</section>';
+      if (!d.ids) { h += '<article class="tekstpagina gids" id="deel-' + d.nr + '"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</article>'; return; }
+      h += '<section class="sectie sfeer-modus" id="deel-' + d.nr + '"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</div>' + grid(d.lijst2, '') + '</section>';
     });
-    h += '<article class="tekstpagina gids"><p>' + g.slot + '</p><p class="klein">Prijzen kunnen veranderen. De prijs bij de winkel is altijd leidend.</p>' +
-      '<h2>Meer cadeaugidsen</h2><div class="gidslijst">' + GIDSEN.filter(function (x) { return x !== g; }).map(gidsKaart).join('') + '</div></article></div>';
+    /* Onderaan: slot, 'Lees ook' (gidsen over hetzelfde vak), de link naar het vakje, en alle gidsen als tekstlink. */
+    var verwant = GIDSEN.filter(function (x) { return x !== g && (x.vakken || []).some(function (v) { return (g.vakken || []).indexOf(v) !== -1; }); }).slice(0, 3);
+    var vakLink = (g.vakken || []).map(function (v) {
+      var d = v.split('/'), cc = window.LK_CAT(d[0]), ss = cc && d[1] ? window.LK_SUB(cc, d[1]) : null;
+      if (!cc || cc.verborgen && !cc.naar) return null;
+      if (d[1] && !ss) return null;
+      var naar = ss ? (ss.naar || (ss.vak ? '/c/' + ss.vak : '/c/' + cc.slug + '/' + ss.slug)) : (cc.naar || '/c/' + cc.slug);
+      return [ss ? ss.naam : cc.naam, naar];
+    }).filter(Boolean)[0];
+    h += '<article class="tekstpagina gids"><p>' + g.slot + '</p><p class="klein">Prijzen kunnen veranderen. De prijs bij de winkel is altijd leidend.</p></article>' +
+      (verwant.length ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span>' + verwant.map(function (x) { return '<a href="/gids/' + x.slug + '">' + esc(x.titel.split(':')[0]) + '</a>'; }).join('') + '</nav>' : '') +
+      tekstLinks('Verder kijken', (vakLink ? [['Alle ' + vakLink[0].toLowerCase(), vakLink[1]]] : []).concat([['Alle cadeaugidsen', '/gids']])) +
+      '</div>';
     return h;
   }
 
@@ -2810,15 +2880,40 @@
       '<strong>' + esc(w.naam) + '</strong><span>' + esc(w.tekst) + '</span><em>Naar ' + esc(w.naam) + ' ' + ic('pijl') + '</em></a>';
   }
   function winkelsMet(slug) {
-    var l = (window.LK_WINKELS || []).filter(function (w) { return w.url && (!slug || w.cats.indexOf(slug) !== -1) && (!dcDirect(w.url) || WINKELSITE[w.naam]); });
+    var past = slug ? (WINKEL_SOORT[slug] || [slug]) : null;
+    var l = (window.LK_WINKELS || []).filter(function (w) { return w.url && (!past || (w.cats || []).some(function (c) { return past.indexOf(c) !== -1; })) && (!dcDirect(w.url) || WINKELSITE[w.naam]); });
     /* 04-11-2026: tijdens de Daisycon-pauze eerst de winkels waar we wel aan verdienen (bol, TradeTracker, Awin). Volgorde verder zoals in data.js. */
     l = l.filter(function (w) { return !dcDirect(w.url); }).concat(l.filter(function (w) { return dcDirect(w.url); }));
     return l;
   }
-  function winkels() {
+  /* Stap 6 indeling (6-11-2026, plan deel 8): Onze winkels compact. Was 82 grote kaarten (21.400 px); wordt korte uitleg,
+     knopjes per soort, en rijen van 2 (logo of beginletter, naam, één zin, knop), op alfabet. */
+  var WINKEL_SOORT = { 'speelgoed': ['speelgoed'], 'elektronica': ['elektronica'], 'mode-sieraden': ['mode-beauty', 'sieraden'], 'beauty-verzorging': ['geuren-verzorging', 'mode-beauty'],
+    'wonen': ['wonen', 'keuken'], 'eten-drinken': ['eten-drinken', 'dranken'], 'hobby': ['hobby', 'metaaldetectie'], 'sport-outdoor': ['sport-outdoor'], 'tuin-klussen': ['tuin-klussen'],
+    'boeken-media': ['boeken-media'], 'dieren': ['dieren'], 'christelijk': ['christelijk'] };
+  function winkelLogo(w) {
+    var code = (window.LK_CODES || []).filter(function (c) { return c.logo && (c.winkel || '').toLowerCase() === w.naam.toLowerCase(); })[0];
+    if (w.logo || code) return '<img class="winkel-logo" src="' + esc(w.logo || code.logo) + '" alt="" loading="lazy" decoding="async" width="48" height="48" onerror="this.hidden=true;this.nextSibling.hidden=false"><span class="winkel-letter" aria-hidden="true" hidden>' + esc(w.naam.charAt(0).toUpperCase()) + '</span>';
+    return '<span class="winkel-letter" aria-hidden="true">' + esc(w.naam.charAt(0).toUpperCase()) + '</span>';
+  }
+  function winkels(q) {
+    q = q || {};
     zetTitel('Onze winkels');
-    return paginakop({ titel: 'Onze winkels', tekst: 'Bij deze winkels vind je onze producten. Klik door en kijk rustig rond in hun hele aanbod.', kruimel: [{ tekst: 'Winkels' }] }) +
-      '<div class="binnen"><section class="sectie"><div class="winkelraster">' + winkelsMet().map(winkelKaart).join('') + '</div>' +
+    var alle = winkelsMet().slice().sort(function (a, b) { return a.naam.toLowerCase().localeCompare(b.naam.toLowerCase(), 'nl'); });
+    var soort = q.soort && WINKEL_SOORT[q.soort] ? q.soort : '';
+    var lijst = soort ? alle.filter(function (w) { return (w.cats || []).some(function (c) { return WINKEL_SOORT[soort].indexOf(c) !== -1; }); }) : alle;
+    var knopjes = '<nav class="chips vakjesrij omlopend" aria-label="Soort winkel"><a class="chip' + (soort ? '' : ' actief') + '" href="/winkels">Alle (' + alle.length + ')</a>' +
+      CATS.map(function (c) {
+        var n = alle.filter(function (w) { return (w.cats || []).some(function (x) { return WINKEL_SOORT[c.slug].indexOf(x) !== -1; }); }).length;
+        return n ? '<a class="chip' + (soort === c.slug ? ' actief' : '') + '" href="/winkels?soort=' + c.slug + '">' + esc(c.kort) + ' (' + n + ')</a>' : '';
+      }).join('') + '</nav>';
+    return paginakop({ titel: 'Onze winkels', tekst: 'Je koopt bij ' + alle.length + ' bekende winkels. Wij kiezen de cadeaus, de winkel levert.', kruimel: [{ tekst: 'Winkels' }] }) +
+      '<div class="binnen"><section class="sectie keuzes-sectie">' + knopjes + '</section>' +
+      '<section class="sectie"><div class="winkels-compact">' + lijst.map(function (w) {
+        var wurl = dcDirect(w.url) ? WINKELSITE[w.naam] : w.url;
+        return '<a class="winkel-rij" href="' + esc(wurl) + '" target="_blank" rel="sponsored noopener">' + winkelLogo(w) +
+          '<span class="winkel-tekst"><strong>' + esc(w.naam) + '</strong><small>' + esc(w.tekst) + '</small></span><span class="knop knop-rand winkel-knop">Naar ' + esc(w.naam) + '</span></a>';
+      }).join('') + '</div>' +
       '<p class="vonk-noot" style="margin-top:18px">Koop je iets via deze links, dan krijgen wij soms een kleine vergoeding. Jij betaalt niets extra.</p></section></div>';
   }
   var laatstGetoond = null;
@@ -2900,7 +2995,7 @@
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);
     else if (d[0] === 'gids') html = gids(d[1]);
-    else if (d[0] === 'winkels') html = winkels();
+    else if (d[0] === 'winkels') html = winkels(a.q);
     else html = nietGevonden();
 
     // Onthoud waar de schuifbalk met subcategorieën stond (mobiel), zodat hij niet terugspringt.
