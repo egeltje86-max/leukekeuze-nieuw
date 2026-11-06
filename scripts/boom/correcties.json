@@ -7357,6 +7357,61 @@
    "elektronica",
    "gadgets",
    "fun-retro-gadgets"
+  ],
+  "cb-quest3-refurb": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-psvr2": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "ned-psvr2-pc": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-psvr2-laad": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-pico4-ultra": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-xreal-r1": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-quest-elite": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "bol-9300000171458346": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "bol-9300000322432760": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-quest-hoes": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
+  ],
+  "cb-vr-link": [
+   "elektronica",
+   "gaming",
+   "vr-brillen"
   ]
  },
  "samen": {
@@ -7875,7 +7930,8 @@
   "cl-dymo160": "afgekeurd",
   "bol-9200000132005044": "afgekeurd",
   "ned-switch-oled-zelda": "uitverkocht",
-  "ned-switch-lite-pokemon": "uitverkocht"
+  "ned-switch-lite-pokemon": "uitverkocht",
+  "bol-9300000141382540": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
