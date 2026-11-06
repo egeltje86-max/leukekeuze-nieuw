@@ -22,6 +22,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 DATA = ROOT / 'assets/js/data.js'
 HIER = pathlib.Path(__file__).resolve().parent
 
+NIET_OP_SITE = {'Mijn Hummeltje'}
+
 # Winkelnaam zoals op de site (zodat de producten van die winkel eronder komen).
 WINKEL = {'AllSaints (EU)': 'AllSaints', 'LEGO (EU)': 'LEGO', 'Mijn Hummeltje (NL)': 'Mijn Hummeltje', 'Cewe.nl': 'CEWE',
           'Joybuy (NL)': 'Joybuy', 'Wijnkring (NL)': 'Wijnkring', 'Woodwick.nl': 'WoodWick', "Levi's (EU)": "Levi's",
@@ -149,6 +151,8 @@ def bouw():
     alles = []
     for f in sorted(HIER.glob('bron-*.json')): alles += json.loads(f.read_text(encoding='utf-8'))
     alles = [x for x in alles if not x['tot'] or x['tot'] >= vandaag]
+    # Winkels die Marius niet op de site wil (Mijn Hummeltje = dropshipping, wens 21-10-2026).
+    alles = [x for x in alles if x['winkel'] not in NIET_OP_SITE]
     # Codes eerst, dan wat het eerst afloopt.
     alles.sort(key=lambda x: (0 if x['code'] else 1, x['tot'] or '9999'))
     per, klaar = {}, []
