@@ -8171,6 +8171,61 @@
    "elektronica",
    "foto-video",
    "drones"
+  ],
+  "jb-airtag2": [
+   "elektronica",
+   "tablets-e-readers",
+   "telefoonaccessoires"
+  ],
+  "cb-osmo-mobile7": [
+   "elektronica",
+   "tablets-e-readers",
+   "telefoonaccessoires"
+  ],
+  "jb-samsung-pb20k": [
+   "elektronica",
+   "tablets-e-readers",
+   "powerbanks-opladers"
+  ],
+  "cb-lenovo-tab-kids": [
+   "elektronica",
+   "tablets-e-readers",
+   "tablets"
+  ],
+  "jb-lenovo-k11": [
+   "elektronica",
+   "tablets-e-readers",
+   "tablets"
+  ],
+  "amz-b0dxz9sng9": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-17a8b7a90b": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-f07d61bc31": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-965759": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cadeau-f2c3c05eca": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-557ffbe334": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
   ]
  },
  "samen": {
@@ -9146,10 +9201,6 @@
   ],
   "cl-galaxy-ring": [
    413.0,
-   null
-  ],
-  "cl-ipad-mini7": [
-   689.0,
    null
   ],
   "cl-tab-a11plus": [
