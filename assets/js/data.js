@@ -13,10 +13,11 @@ window.LK_INSTELLINGEN = {
      15138 Dr. Martens, 18488 LEGO, 17294 Westwing, 15574 Teufel, 15048 Timberland, 15679 Zadig & Voltaire, 15224 (?), 20868 AllSaints, 13299 Razer */
   daisyconZonder: [],
   seizoen: 'kerst',            // 'kerst' of '' (neutraal)
-  heroKicker: 'Bijzondere momenten',
-  heroTitel: 'De mooiste cadeaus',
-  heroTitelGoud: 'voor elk moment',
-  heroTekst: 'Van persoonlijke geschenken tot de leukste gadgets. Met de hand uitgekozen, zodat jij snel iets moois vindt.',
+  /* Stap 1 homepage (6-11-2026, GO Marius): één intro met twee knoppen (Help mij kiezen = VONK, Lekker rondkijken = favorieten). */
+  heroKicker: 'Uitgezocht door ons',
+  heroTitel: 'Een mooi cadeau vinden,',
+  heroTitelGoud: 'zonder eindeloos zoeken',
+  heroTekst: 'Bij 82 bekende winkels. Jij kiest, de winkel levert.',
   heroDesktop: 'images/banners/banner-home-desktop.webp',
   /* Banner met het LeukeKeuze-logo erin: dan staat de tekst niet over de foto heen maar eronder. */
   heroLogo: false,
@@ -54,6 +55,44 @@ window.LK_INSTELLINGEN = {
     { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp', tot: '2026-12-25' },
     { kicker: 'Proost op de feestdagen', titel: 'Whisky, champagne & meer', tekst: 'Topflessen om te geven of samen te openen.', knop: 'Naar de dranken', naar: '/c/dranken', beeld: 'images/categorieen/categorie-dranken.webp', tot: '2027-01-01' }
   ],
+  /* Onze favorieten (stap 1 homepage, 6-11-2026, keuze Marius): zes handgekozen cadeaus vlak onder 'Voor wie'.
+     Regels: goede foto, €40-€115, voor haar én hem, verschillende winkels, geen speelgoed. We noemen het 'favorieten', niet 'bestsellers': dat kunnen we nog niet bewijzen. */
+  favorieten: { kicker: 'Uitgezocht door ons', titel: 'Onze favorieten van dit moment', tekst: 'Zes cadeaus die we nu zelf zouden geven.', knop: 'Meer cadeaus', naar: '/c/cadeaus',
+    /* Zes stuks, zoals het plan (deel 7). Gekozen uit de 12 van Marius (6-11-2026, kieskaart): populair + mooie foto, voor haar en voor hem, €40-140.
+       Marshall Emberton II was uitverkocht -> Emberton III; Instax en Ticket to Ride staan op de site als samengevoegd product (cl-...).
+       Reserve, zelfde ronde: bol-9300000179581364 (Swarovski), bol-9300000237950295 (Michael Kors), dc-1141534911 (Hibiki), bol-9300000271848241 (schaakbord), cl-ttr-europe, dvzn-647292 (rendier).
+       De adventskalender na 1 december wisselen (stap 9: favorieten per seizoen). */
+    ids: ['cl-rit-advent', 'bol-9300000285253019', 'bol-9300000163354878', 'cl-instax12', 'bol-9300000131876375', 'cl-emberton3'] },
+  /* Stap 2 indeling (6-11-2026, GO Marius): het seizoensblok op de homepage: één grote kaart en twee kleine, op datum (deel 7 van het plan).
+     De eerste kaart van een periode is de grote. Datums zijn maand-dag; het jaar maakt niet uit. */
+  seizoen: {
+    kaarten: {
+      sint: { kicker: 'Pakjesavond 5 december', titel: 'Sinterklaas', tekst: 'Surprises, schoencadeautjes en lootjes.', knop: 'Bekijk Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
+      bf: { kicker: 'Black Friday · 27 november', titel: 'Black Friday deals', tekst: 'Echte kortingen van al onze winkels.', knop: 'Bekijk de deals', naar: '/collectie/black-friday', beeld: 'images/collecties/black-friday.webp', beeldMobiel: 'images/collecties/black-friday-mobiel.webp' },
+      kerst: { kicker: 'Kerst komt eraan', titel: 'Kerstcadeaus', tekst: 'Mooie cadeaus voor onder de boom.', knop: 'Bekijk kerstcadeaus', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
+      advent: { kicker: 'Aftellen tot kerst', titel: 'Adventskalenders', tekst: 'Beauty, LEGO, chocolade en meer.', knop: 'Bekijk de kalenders', naar: '/collectie/adventskalenders', beeld: 'images/sub/sub-cadeaus-adventskalenders-2026b.webp' },
+      kerstHaar: { kicker: 'Kerst', titel: 'Kerstcadeau voor haar', tekst: 'Van klein verwenmoment tot luxe.', knop: 'Bekijk', naar: '/gids/kerstcadeau-voor-haar', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp' },
+      kerstHem: { kicker: 'Kerst', titel: 'Kerstcadeau voor hem', tekst: 'Voor je vriend, vader of broer.', knop: 'Bekijk', naar: '/gids/kerstcadeau-voor-hem', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp' },
+      aanbiedingen: { kicker: 'Elke dag nieuwe deals', titel: 'Aanbiedingen', tekst: 'De grootste kortingen van al onze winkels.', knop: 'Bekijk de aanbiedingen', naar: '/collectie/aanbiedingen', beeld: 'images/collecties/aanbiedingen.webp', beeldMobiel: 'images/collecties/aanbiedingen-mobiel.webp' },
+      valentijn: { kicker: '14 februari', titel: 'Liefde & Valentijn', tekst: 'Romantische cadeaus voor haar en hem.', knop: 'Bekijk', naar: '/c/valentijn', beeld: 'images/sub/sub-valentijn-voor-haar.webp' }
+    },
+    periodes: [
+      { vanaf: '10-01', tot: '11-19', kaarten: ['sint', 'bf', 'advent'] },
+      { vanaf: '11-20', tot: '11-27', kaarten: ['bf', 'sint', 'kerst'] },
+      { vanaf: '11-28', tot: '11-30', kaarten: ['sint', 'kerst', 'bf'] },
+      { vanaf: '12-01', tot: '12-05', kaarten: ['sint', 'kerst', 'aanbiedingen'] },
+      { vanaf: '12-06', tot: '12-25', kaarten: ['kerst', 'kerstHaar', 'kerstHem'] },
+      { vanaf: '12-26', tot: '01-14', kaarten: ['aanbiedingen'] },
+      { vanaf: '01-15', tot: '02-14', kaarten: ['valentijn', 'aanbiedingen'] },
+      { vanaf: '02-15', tot: '09-30', kaarten: ['aanbiedingen'] }
+    ]
+  },
+  /* Stap 2 indeling: het blok 'Persoonlijk maakt bijzonder' (4 producten uit de collectie Persoonlijke cadeaus; ids mogen hier vast gezet worden). */
+  persoonlijk: { kicker: 'Persoonlijk maakt bijzonder', titel: 'Een cadeau speciaal voor iemand', tekst: 'Met naam, gravure of eigen foto.', knop: 'Alle persoonlijke cadeaus', naar: '/collectie/persoonlijke-cadeaus',
+    /* Gekozen door Marius (6-11-2026, kieskaart). */
+    ids: ['bol-9300000426946863', 'bol-9300000156021043', 'bol-9300000136627314', 'myka-11001203989'] },
+  /* Stap 2 indeling: de gelegenheden als tekstknopjes onder het persoonlijke blok. */
+  gelegenheidKnopjes: [['Verjaardag', '/gelegenheid/verjaardag'], ['Trouwen & jubileum', '/gelegenheid/jubileum'], ['Geboorte', '/voor/baby'], ['Liefde', '/c/valentijn'], ['Housewarming', '/gelegenheid/housewarming'], ['Bedankt', '/gelegenheid/bedankt'], ['Brievenbus', '/collectie/brievenbuscadeaus']],
   /* Eigen producten: een vaste plek bovenaan de homepage (onder de seizoensblokken). */
   eigen: { kicker: 'Van de maker van LeukeKeuze', titel: 'Onze eigen dino-kleurboeken', tekst: 'Zelf bedacht en gemaakt: vrolijke kleurboeken met 40 dino-kleurplaten, voor kinderen van 4 tot 8 jaar.',
     ids: ['amz-b0hp27j6v7', 'amz-b0hmfl96b8', 'amz-b0hky1v4y9', 'amz-b0hmjp8cbl', 'amz-b0hmfl6pg4', 'amz-b0hn1xkg2s', 'amz-b0hl242jc8'] },

@@ -409,10 +409,27 @@
   /* ================== PAGINA'S ================== */
 
   /* ---------- Home ---------- */
+  /* Stap 2 indeling (6-11-2026, GO Marius): de homepage volgens deel 7 van het plan. Twaalf blokken, producten in scherm 1.
+     Volgorde: intro met twee knoppen, Voor wie, Onze favorieten, seizoen, laatst bekeken, budget, categorieën, persoonlijk + gelegenheden,
+     acties van onze winkels, gidsen + eigen kleurboeken, zo werkt het. Elk blok heeft data-tel voor de klikteller. */
   function home() {
     zetTitel('');
-    var hoofd = ['cadeaus', 'dranken', 'speelgoed', 'wonen', 'elektronica'].map(window.LK_CAT);
+    var CATS_VOOR = ['wonen', 'mode-sieraden', 'beauty-verzorging', 'elektronica', 'eten-drinken', 'speelgoed'];
+    var CATS_REST = ['hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'];
+    var cat = function (slug, extra) {
+      var c = window.LK_CAT(slug); if (!c || c.verborgen) return '';
+      return '<a class="catbalk' + (extra ? ' extra' : '') + '" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
+    };
+    var persoon = function (slug) {
+      var x = window.LK_PERSONEN.filter(function (p) { return p.slug === slug; })[0]; if (!x) return '';
+      return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
+    };
+    var persoonLink = function (slug) {
+      var x = window.LK_PERSONEN.filter(function (p) { return p.slug === slug; })[0]; if (!x) return '';
+      return '<a class="chip" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '">' + esc(x.kort) + '</a>';
+    };
     return '' +
+      /* 1. Intro met twee knoppen: Help mij kiezen (VONK) en Lekker rondkijken (naar de favorieten). */
       '<section class="hero' + (INST.heroLogo ? ' hero-logo' : '') + (INST.heroNieuw ? ' hero-2026' : '') + '">' +
         '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
         '<img src="' + esc(INST.heroMobiel) + '" alt="" fetchpriority="high"></picture>' +
@@ -420,97 +437,130 @@
           '<div class="kicker">' + esc(INST.heroKicker) + '</div>' +
           '<h1>' + esc(INST.heroTitel) + '<br><em>' + esc(INST.heroTitelGoud) + '</em></h1>' +
           '<p>' + esc(INST.heroTekst) + '</p>' +
-          '<div class="populair"><span>Populair:</span><div class="chips">' +
-            INST.populair.map(function (x) { return '<a class="chip" href="' + x.naar + '">' + esc(x.label) + '</a>'; }).join('') +
-          '</div></div>' +
+          '<div class="hero-knoppen" data-tel="intro">' +
+            '<a class="knop knop-goud" href="/vonk">' + ic('vonk') + ' Help mij kiezen</a>' +
+            '<a class="knop knop-rand" href="#favorieten">Lekker rondkijken</a>' +
+          '</div>' +
         '</div></div>' +
       '</section>' +
 
       '<div class="binnen">' +
-        /* VONK groot bovenaan (wens van Marius, 01-11-2026) */
-        /* VONK-blok (01-11-2026): uitnodiging om de 3 vragen te doen. Typen gaat via de ene zoekbalk bovenaan. */
-        '<a class="vonk-kaart vonk-groot vonk-home" href="/vonk">' +
-          '<img class="vonk-home-icoon" src="/images/vonk/vonk-icoon-klein.webp" alt="" width="64" height="64" decoding="async">' +
-          '<div class="vonk-home-tekst"><h2>Geen idee wat je moet geven?</h2><p>Beantwoord 3 vragen en <strong>VONK</strong> kiest direct passende cadeaus voor je.</p></div>' +
-          '<span class="knop knop-goud vonk-home-knop">' + ic('vonk') + ' Start VONK</span>' +
-        '</a>' +
-        /* 1. 2.0 PROEF: eerst de personen (7 rondjes), dan de 8 populairste productgroepen + 'Alle categorieën'. */
-        '<section class="sectie eerste">' +
-          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div></div>' +
-          '<div class="persoon-subs home">' + window.LK_PERSONEN.map(function (x) {
-            return '<a class="subkaart" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.kort) + '</a>';
-          }).join('') + '</div>' +
+        /* 2. Voor wie: mobiel 4 rondjes + 3 tekstlinks, desktop alle 7 rondjes. */
+        '<section class="sectie eerste" data-tel="voor-wie">' +
+          '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div><a class="meer" href="/voor">Iedereen ' + ic('pijl') + '</a></div>' +
+          '<div class="persoon-subs home zeven">' + ['haar', 'hem', 'kinderen', 'collega', 'baby', 'opa-oma', 'tieners'].map(persoon).join('') + '</div>' +
+          '<div class="voorwie-links alleen-mobiel">' + ['baby', 'opa-oma', 'tieners'].map(persoonLink).join('') + '</div>' +
         '</section>' +
 
-        /* Zoek op budget (01-11-2026) */
-        '<section class="sectie"><div class="sectie-kop"><div><h2>Zoek op budget</h2></div></div>' +
+        /* 3. Onze favorieten: zes handgekozen cadeaus. */
+        favorietenBlok() +
+
+        /* 4. Het seizoen: één grote kaart, twee kleine, op datum. */
+        seizoenBlok() +
+
+        /* 5. Laatst bekeken (alleen als er iets is). */
+        laatstBekeken() +
+
+        /* 6. Budget. */
+        '<section class="sectie" data-tel="budget"><div class="sectie-kop"><div><h2>Welk bedrag wil je uitgeven?</h2></div></div>' +
           '<div class="budget-rij">' + PRIJZEN.filter(function (p) { return p.id !== 'alle'; }).map(function (p) {
             return '<a class="budget-knop" href="/c/cadeaus?prijs=' + p.id + '">' + p.label + '</a>';
           }).join('') + '</div></section>' +
-        '<section class="sectie">' +
-          '<div class="sectie-kop"><div><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
-          /* 5-11-2026 (ontwerp Marius): compacte balken met rond icoon in plaats van grote tegels. */
-          '<div class="catbalken">' + ['speelgoed', 'elektronica', 'mode-sieraden', 'beauty-verzorging', 'wonen', 'eten-drinken', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'].map(window.LK_CAT).filter(function (c) { return c && !c.verborgen; }).map(function (c) {
-            return '<a class="catbalk" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
-          }).join('') + '</div>' +
-          '<a class="knop knop-rand alle-cats" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a>' +
+
+        /* 7. Categorieën: mobiel 6 rondjes + 5 tekstlinks, desktop alle 11. */
+        '<section class="sectie" data-tel="categorieen">' +
+          '<div class="sectie-kop"><div><h2>Ontdek onze categorieën</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
+          '<div class="catbalken">' + CATS_VOOR.map(function (s) { return cat(s, false); }).join('') + CATS_REST.map(function (s) { return cat(s, true); }).join('') + '</div>' +
+          '<div class="cat-links alleen-mobiel">' + CATS_REST.map(function (s) { var c = window.LK_CAT(s); return c ? '<a class="chip" href="/c/' + c.slug + '">' + esc(c.naam) + '</a>' : ''; }).join('') + '<a class="chip" href="/categorieen">Alle categorieën</a></div>' +
         '</section>' +
 
-        /* 0a. 2.0 PROEF: gelegenheden als rondjes + collectie Persoonlijke cadeaus */
-        '<section class="sectie"><div class="sectie-kop"><div><h2>Of een gelegenheid</h2></div><a class="meer" href="/gelegenheid">Alle gelegenheden ' + ic('pijl') + '</a></div>' +
-          '<div class="persoon-subs home gelegenheden">' + window.LK_GELEGENHEDEN_NU().slice(0, 8).map(function (x) {
-            return '<a class="subkaart" href="' + (x.naar || '/gelegenheid/' + x.slug) + '"><span class="rond"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(x.naam) + '</a>';
-          }).join('') + '</div></section>' +
-        /* 0. Seizoen eerst: Sinterklaas en Kerst bovenaan (wens van Marius, 26-10-2026). Blokken verlopen vanzelf via 'tot'. */
-        actieBlokken() +
+        /* 8. Persoonlijk + gelegenheden als tekstknopjes. */
+        persoonlijkBlok() +
 
-        /* 0b. Cadeaugidsen van dit seizoen */
-        gidsenRij() +
+        /* 9. Acties van onze winkels. */
+        actiesBlok() +
 
-        /* 2.0: laatst bekeken (als er iets is) */
-        laatstBekeken() +
+        /* 10. Cadeaugidsen compact + eigen kleurboeken als één kaart. */
+        gidsenCompact() +
+        eigenKaart() +
 
-        /* 2.1: acht collecties als rondjes (in de volgorde van zoeken). Lege collecties tonen we nog niet. */
-        '<section class="sectie"><div class="sectie-kop"><div><h2>Of een collectie</h2></div></div>' +
-          '<div class="persoon-subs home gelegenheden collecties">' + (window.LK_COLLECTIES || []).map(function (c) {
-            if ((window.LK_COLLECTIE_VERBORGEN || []).indexOf(c.slug) !== -1) return ''; /* stap 1 indeling: verborgen tot ze kloppen */
-            var l = verzamelLijst(c); if (!l.length) return '';
-            return '<a class="subkaart" href="/collectie/' + c.slug + '"><span class="rond"><img src="' + esc(rondBeeld(c.beeld, l)) + '" alt="" loading="lazy" decoding="async"></span>' + esc(c.naam) + '</a>';
-          }).join('') + '</div></section>' +
-
-        /* 2b. Zoeken in alle winkels (smalle balk, geen grote zoekbalk) */
-        '<a class="vonk-kaart vonk-klein zoek-alle" href="/zoek">' +
-          ic('zoek', 'staf') +
-          '<div><h2>Zoek in alle winkels</h2><p>Duizenden producten van al onze winkels op één plek.</p></div>' +
-          '<span class="rond-pijl">' + ic('rechts') + '</span>' +
-        '</a>' +
-
-        /* 3b. Eigen producten van LeukeKeuze (kleurboeken van Marius) */
-        eigenBlok() +
-
-        /* 6. Uitgelicht, ook als rij */
-        '<section class="sectie sfeer-modus">' +
-          '<div class="sectie-kop"><div><h2>Uitgelicht</h2></div><a class="meer" href="/c/cadeaus">Alle cadeaus ' + ic('pijl') + '</a></div>' +
-          '<div class="chips tabs" role="tablist" data-tabs>' +
-            [['favoriet', 'Onze favorieten'], ['nieuw', 'Nieuw binnen'], ['onder25', 'Onder €25']].map(function (t, i) {
-              return '<button class="chip" type="button" role="tab" data-tab="' + t[0] + '" aria-pressed="' + (i === 0) + '">' + t[1] + '</button>';
-            }).join('') +
-          '</div>' +
-          '<div data-uitgelicht>' + uitgelicht('favoriet') + '</div>' +
-        '</section>' +
-
-        /* 7. Etalage met dranken: bewust onderaan */
-        etalage() +
-
-        /* 8. Zo werkt het (kort) */
-        '<section class="sectie">' +
+        /* 11. Zo werkt het. */
+        '<section class="sectie" data-tel="zo-werkt-het">' +
           '<div class="stappen klein">' +
             '<div class="stap"><span class="nr">1</span><div><h3>Wij zoeken uit</h3><p>Alleen wat we echt goed vinden, komt op de site.</p></div></div>' +
             '<div class="stap"><span class="nr">2</span><div><h3>Jij kiest</h3><p>Op persoon, categorie of met VONK.</p></div></div>' +
-            '<div class="stap"><span class="nr">3</span><div><h3>Je koopt bij de winkel</h3><p>Je bestelt en betaalt zoals je gewend bent.</p></div></div>' +
+            '<div class="stap"><span class="nr">3</span><div><h3>Je koopt bij de winkel</h3><p>Je bestelt en betaalt zoals je gewend bent. Via onze links krijgen wij soms een kleine vergoeding; jij betaalt niets extra.</p></div></div>' +
           '</div>' +
         '</section>' +
       '</div>';
+  }
+  /* Seizoensblok: de periode van vandaag bepaalt welke kaarten er staan; de eerste is groot. */
+  function seizoenBlok() {
+    var s = INST.seizoen; if (!s) return '';
+    var d = new Date(), nu = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    var per = (s.periodes || []).filter(function (p) { return p.vanaf <= p.tot ? (nu >= p.vanaf && nu <= p.tot) : (nu >= p.vanaf || nu <= p.tot); })[0];
+    if (!per) return '';
+    var kaarten = per.kaarten.map(function (k) { return s.kaarten[k]; }).filter(Boolean);
+    if (!kaarten.length) return '';
+    var kaart = function (a, groot) {
+      return '<a class="actie seizoen-kaart ' + (groot ? 'groot' : 'klein') + '" href="' + esc(a.naar) + '">' +
+        (a.beeldMobiel ? '<picture><source media="(max-width: 759px)" srcset="' + esc(a.beeldMobiel) + '">' : '') +
+        '<img src="' + esc(a.beeld) + '" alt="" loading="lazy" decoding="async">' + (a.beeldMobiel ? '</picture>' : '') +
+        '<div class="actie-tekst"><span class="kicker">' + esc(a.kicker) + '</span><h3>' + esc(a.titel) + '</h3>' + (groot ? '<p>' + esc(a.tekst) + '</p>' : '') +
+        '<span class="knop knop-goud">' + esc(a.knop) + ' ' + ic('pijl') + '</span></div></a>';
+    };
+    return '<section class="sectie seizoen" data-tel="seizoen"><div class="seizoen-raster' + (kaarten.length === 1 ? ' een' : kaarten.length === 2 ? ' twee' : '') + '">' +
+      kaarten.map(function (a, i) { return kaart(a, i === 0); }).join('') + '</div></section>';
+  }
+  /* Persoonlijk maakt bijzonder: 4 producten uit de collectie Persoonlijke cadeaus (vaste ids, anders de mooiste met sfeerfoto). */
+  function persoonlijkBlok() {
+    var f = INST.persoonlijk; if (!f) return '';
+    var z = LK.zichtbaar(), l = (f.ids || []).map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+    if (l.length < 4) {
+      var g = window.LK_COLLECTIE && window.LK_COLLECTIE('persoonlijke-cadeaus');
+      var kand = g ? sorteer(verzamelLijst(g)).filter(function (p) { return l.indexOf(p) === -1; }) : [];
+      kand = kand.filter(function (p) { return p.sfeer || p.favoriet; }).concat(kand.filter(function (p) { return !(p.sfeer || p.favoriet); }));
+      l = l.concat(afwisselen(kand, 8).slice(0, 4 - l.length));
+    }
+    var knopjes = (INST.gelegenheidKnopjes || []).map(function (k) { return '<a class="chip" href="' + esc(k[1]) + '">' + esc(k[0]) + '</a>'; }).join('');
+    return '<section class="sectie persoonlijk" data-tel="persoonlijk">' +
+      '<div class="sectie-kop"><div><span class="kicker">' + esc(f.kicker) + '</span><h2>' + esc(f.titel) + '</h2><p>' + esc(f.tekst) + '</p></div><a class="meer" href="' + esc(f.naar) + '">' + esc(f.knop) + ' ' + ic('pijl') + '</a></div>' +
+      (l.length ? '<div class="prodgrid vier">' + l.slice(0, 4).map(LK.productKaart).join('') + '</div>' : '') +
+      '<div class="gelegenheid-knopjes"><span>Of kies een gelegenheid:</span>' + knopjes + '</div>' +
+      '</section>';
+  }
+  /* Acties van onze winkels: de 3 acties die het eerst aflopen, zonder de algemene 'word lid'-kortingen. Verlopen acties staan er nooit (codesNu). */
+  function actiesBlok() {
+    var alg = /nieuwsbrief|als lid|nieuwe leden|nieuwe klanten|eerste bestelling|elke donderdag|outlet|gratis verzending vanaf/i;
+    var l = codesNu().filter(function (c) { return c.tot && !alg.test(c.titel + ' ' + c.tekst); })
+      .sort(function (a, b) { return a.tot.localeCompare(b.tot); }).slice(0, 3);
+    if (!l.length) return '';
+    return '<section class="sectie acties-blok" data-tel="acties">' +
+      '<div class="sectie-kop"><div><h2>Acties van onze winkels</h2><p>Echte acties, met een einddatum. Verlopen is weg.</p></div><a class="meer" href="/collectie/kortingscodes">Alle kortingscodes ' + ic('pijl') + '</a></div>' +
+      '<div class="acties-rij">' + l.map(function (c) {
+        return '<a class="actie-kaart" href="/collectie/kortingscodes">' +
+          '<span class="actie-badge">' + esc(c.badge || 'Actie') + '</span>' +
+          '<span class="actie-winkel">' + esc(c.winkel) + '</span>' +
+          '<strong>' + esc(c.titel) + '</strong>' +
+          '<small>Geldig t/m ' + esc(datumNl(c.tot)) + '</small></a>';
+      }).join('') + '</div></section>';
+  }
+  /* Cadeaugidsen: drie compacte kaartjes. */
+  function gidsenCompact() {
+    if (!GIDSEN.length) return '';
+    return '<section class="sectie" data-tel="gidsen">' +
+      '<div class="sectie-kop"><div><h2>Cadeaugidsen</h2></div><a class="meer" href="/gids">Alle gidsen ' + ic('pijl') + '</a></div>' +
+      '<div class="gidslijst compact">' + GIDSEN.slice(0, 3).map(gidsKaart).join('') + '</div></section>';
+  }
+  /* Eigen kleurboeken van Marius: één kaart, laag op de pagina. */
+  function eigenKaart() {
+    var e = INST.eigen; if (!e || !(e.ids || []).length) return '';
+    var p = LK.vind(e.ids[0]); if (!p) return '';
+    return '<section class="sectie eigen-kaart" data-tel="eigen">' +
+      '<a class="eigen-link" href="/zoek?q=dino%20kleurboek">' +
+        '<span class="eigen-beeld">' + LK.productBeeld(p) + '</span>' +
+        '<span class="eigen-tekst"><span class="kicker">' + esc(e.kicker) + '</span><strong>' + esc(e.titel) + '</strong><small>' + esc(e.tekst) + '</small><span class="meer">Bekijk de ' + e.ids.length + ' kleurboeken ' + ic('pijl') + '</span></span>' +
+      '</a></section>';
   }
   /* Reclameblokken (seizoen/acties) uit LK_INSTELLINGEN.acties; verlopen blokken vallen vanzelf weg. */
   function actieBlokken() {
@@ -524,6 +574,19 @@
         '<div class="actie-tekst"><span class="kicker">' + esc(a.kicker) + '</span><h3>' + esc(a.titel) + '</h3><p>' + esc(a.tekst) + '</p>' +
         '<span class="knop knop-goud">' + esc(a.knop) + ' ' + ic('pijl') + '</span></div></a>';
     }).join('') + '</section>';
+  }
+  /* Stap 1 homepage (6-11-2026, GO Marius): zes handgekozen cadeaus, 2 naast elkaar, vlak onder 'Voor wie'.
+     Onderzoek: 81% van de kijktijd zit in de eerste 3 schermen; producten stonden op scherm 6. Lijst staat in LK_INSTELLINGEN.favorieten. */
+  function favorietenBlok() {
+    var f = INST.favorieten; if (!f || !(f.ids || []).length) return '';
+    var z = LK.zichtbaar();
+    var l = f.ids.map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+    if (!l.length) return '';
+    return '<section class="sectie favorieten" id="favorieten" data-tel="favorieten">' +
+      '<div class="sectie-kop"><div>' + (f.kicker ? '<span class="kicker">' + esc(f.kicker) + '</span>' : '') + '<h2>' + esc(f.titel) + '</h2>' + (f.tekst ? '<p>' + esc(f.tekst) + '</p>' : '') + '</div>' +
+      (f.naar ? '<a class="meer" href="' + esc(f.naar) + '">' + esc(f.knop || 'Meer') + ' ' + ic('pijl') + '</a>' : '') + '</div>' +
+      '<div class="prodgrid">' + l.map(LK.productKaart).join('') + '</div>' +
+      '</section>';
   }
   function eigenBlok() {
     var e = INST.eigen; if (!e || !(e.ids || []).length) return '';
@@ -2943,6 +3006,17 @@
       if (net === 'zonder partnerlink' && prod && netwerk(prod.url) === 'Daisycon') net = 'Daisycon-pauze';
       var bron = 'bron/' + herkomst + '/' + net + '/' + (winkel || 'onbekend');
       try { window.goatcounter.count({ path: bron.slice(0, 180), title: 'Via ' + herkomst + ' naar ' + (winkel || 'winkel') + ' (' + net + ')', event: true }); } catch (x) {}
+    }, true);
+    /* Stap 1 homepage (6-11-2026): klikken per blok op de homepage tellen, zodat we over een paar weken zien welke blokken werken.
+       home/<blok>/<doel> (blok = intro, voor-wie, favorieten, ...; doel = product-id of het adres waar de klik heen gaat). */
+    document.addEventListener('click', function (e) {
+      if (location.pathname !== '/' && location.pathname !== '/index.html') return;
+      var a = e.target.closest('a, button'); if (!a || !window.goatcounter || !window.goatcounter.count) return;
+      var blok = a.closest('[data-tel]'); if (!blok) return;
+      var naam = blok.getAttribute('data-tel'), kaart = a.closest('.prodkaart'), doel = '';
+      if (kaart) { var fav = kaart.querySelector('[data-fav]'); doel = fav ? fav.getAttribute('data-fav') : 'product'; if (a.hasAttribute('data-fav')) doel = 'hartje/' + doel; }
+      else doel = schoon((a.getAttribute('href') || a.textContent || '').replace(/^\/|\/$/g, '')) || 'knop';
+      try { window.goatcounter.count({ path: ('home/' + naam + '/' + doel).slice(0, 180), title: ('Homepage ' + naam + ': ' + (a.textContent || doel).replace(/\s+/g, ' ').trim()).slice(0, 120), event: true }); } catch (x) {}
     }, true);
   })();
 

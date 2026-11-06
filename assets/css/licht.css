@@ -1,5 +1,4 @@
-/* =========================================================
-   LeukeKeuze 2.0 – LICHTE LOOK (warenhuis, naar Nova's voorbeeld)
+/* ==================================================   LeukeKeuze 2.0 – LICHTE LOOK (warenhuis, naar Nova's voorbeeld)
    Laadt na stijl.css en zet de kleuren om: crème achtergrond, donkerblauwe balken, goud als accent.
    ========================================================= */
 :root {
@@ -697,3 +696,96 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .ingangen-404 .knop { min-height: 48px; }
 @media (min-width: 760px) { .ingangen-404 { grid-template-columns: repeat(4, 1fr); max-width: 760px; } }
 .lade-extra a { min-height: 44px; }
+=======
+/* ===== Stap 1 homepage (6-11-2026, GO Marius): intro met twee knoppen, Voor wie met 4 rondjes + tekstlinks, favorieten meteen in beeld. ===== */
+.hero-knoppen { display: flex; gap: 10px; margin-top: 16px; max-width: 440px; }
+.hero-knoppen .knop { flex: 1 1 0; min-height: 48px; padding: 0 12px; font-size: 14.5px; }
+.hero-knoppen .knop svg { width: 16px; height: 16px; flex: none; }
+.hero-knoppen .knop-rand { background: rgba(10,16,32,.62); border-color: rgba(255,255,255,.5); color: #fff; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.hero-knoppen .knop-rand:hover { background: rgba(10,16,32,.82); border-color: #C9A23A; }
+@media (max-width: 759px) {
+  .hero.hero-2026 { min-height: 220px; max-height: 270px; }
+  .hero.hero-2026 h1 { max-width: 70%; font-size: 27px; }
+  .hero.hero-2026 .hero-knoppen { margin-top: 14px; max-width: none; }
+  .hero.hero-2026 .hero-knoppen .knop { font-size: 14px; padding: 0 10px; }
+}
+@media (max-width: 379px) { .hero.hero-2026 .hero-knoppen .knop { font-size: 13px; padding: 0 8px; } .hero.hero-2026 .hero-knoppen .knop svg { display: none; } }
+.persoon-subs.home.vier { grid-template-columns: repeat(4, 1fr); }
+@media (min-width: 600px) { .persoon-subs.home.vier { grid-template-columns: repeat(4, 1fr); max-width: 660px; } }
+@media (min-width: 1024px) { .persoon-subs.home.vier { max-width: 780px; } }
+.voorwie-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.voorwie-links .chip { min-height: 36px; }
+.sectie.favorieten { scroll-margin-top: 150px; }
+.sectie.favorieten .prodgrid { margin-top: 2px; }
+
+/* ===== Stap 2 indeling (6-11-2026, GO Marius): homepage volgens deel 7 van het plan ===== */
+.alleen-mobiel { display: none; }
+@media (max-width: 759px) {
+  .alleen-mobiel { display: flex; }
+  /* Voor wie: mobiel 4 rondjes, de rest als tekstlinks */
+  .persoon-subs.home.zeven .subkaart:nth-child(n+5) { display: none; }
+  /* Categorieën: mobiel 6 rondjes, de rest als tekstlinks */
+  .catbalk.extra { display: none; }
+}
+.persoon-subs.home.zeven { grid-template-columns: repeat(4, 1fr); }
+@media (min-width: 760px) { .persoon-subs.home.zeven { grid-template-columns: repeat(7, 1fr); } }
+.voorwie-links, .cat-links { flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.voorwie-links .chip, .cat-links .chip { min-height: 36px; }
+@media (min-width: 760px) { .catbalken { grid-template-columns: repeat(6, 1fr); } }
+@media (min-width: 1100px) { .catbalken { grid-template-columns: repeat(11, 1fr); gap: 10px 4px; } .catbalk-naam { max-width: 100px; } }
+
+/* Seizoensblok: 1 grote kaart + 2 kleine, geen schuifstrook */
+.seizoen-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.seizoen-kaart.groot { grid-column: 1 / -1; min-height: 170px; }
+.seizoen-kaart.klein { min-height: 128px; }
+.seizoen-kaart .actie-tekst { min-height: 0; height: 100%; padding: 16px; gap: 4px; }
+.seizoen-kaart.klein .actie-tekst { padding: 12px; }
+.seizoen-kaart.klein h3 { font-size: 18px; }
+.seizoen-kaart.klein .kicker { font-size: 10px; letter-spacing: .12em; }
+.seizoen-kaart.klein .knop { font-size: 12px; padding: 7px 11px; }
+.seizoen-kaart.klein::before { background: linear-gradient(180deg, rgba(10,16,32,.15) 0%, rgba(10,16,32,.85) 70%); }
+.seizoen-raster.een .seizoen-kaart, .seizoen-raster.twee .seizoen-kaart { grid-column: auto; }
+.seizoen-raster.een .seizoen-kaart.groot { grid-column: 1 / -1; }
+.seizoen-raster.twee { grid-template-columns: 2fr 1fr; }
+@media (min-width: 760px) {
+  .seizoen-raster { grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+  .seizoen-kaart.groot { grid-column: auto; min-height: 260px; }
+  .seizoen-kaart.klein { min-height: 260px; }
+  .seizoen-kaart .actie-tekst { padding: 22px; }
+  .seizoen-kaart.klein h3 { font-size: 22px; }
+}
+
+/* Favorieten en Persoonlijk: 2 naast elkaar op mobiel, 6 / 4 op desktop */
+.sectie.favorieten { scroll-margin-top: 150px; }
+@media (min-width: 1100px) { .sectie.favorieten .prodgrid { grid-template-columns: repeat(6, 1fr); } .prodgrid.vier { grid-template-columns: repeat(4, 1fr); } }
+.gelegenheid-knopjes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; }
+.gelegenheid-knopjes > span { font-size: 14px; color: var(--tekst-2); margin-right: 4px; }
+.gelegenheid-knopjes .chip { min-height: 36px; }
+
+/* Acties van onze winkels */
+.acties-rij { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 760px) { .acties-rij { grid-template-columns: repeat(3, 1fr); } }
+.actie-kaart { display: grid; grid-template-columns: auto 1fr; grid-template-areas: "badge winkel" "badge titel" "badge geldig"; column-gap: 14px; align-items: center; padding: 14px 16px; background: #fff; border: 1px solid rgba(10,16,32,.08); border-radius: 14px; box-shadow: 0 2px 10px rgba(10,16,32,.05); color: var(--tekst); text-decoration: none; min-height: 72px; }
+.actie-kaart:hover { border-color: var(--goud-licht); }
+.actie-badge { grid-area: badge; display: inline-grid; place-items: center; min-width: 56px; height: 56px; padding: 0 8px; border-radius: 14px; background: var(--goud-verloop); color: var(--navy); font: 800 14px/1 var(--f-ui); text-align: center; }
+.actie-winkel { grid-area: winkel; font: 700 11.5px/1 var(--f-ui); letter-spacing: .14em; text-transform: uppercase; color: var(--goud-donker); }
+.actie-kaart strong { grid-area: titel; font-size: 15.5px; line-height: 1.3; margin: 4px 0 2px; }
+.actie-kaart small { grid-area: geldig; font-size: 12.5px; color: var(--tekst-2); }
+
+/* Gidsen compact en de eigen kleurboeken als één kaart */
+.gidslijst.compact { grid-template-columns: 1fr; gap: 10px; margin: 0; }
+@media (min-width: 760px) { .gidslijst.compact { grid-template-columns: repeat(3, 1fr); } }
+.gidslijst.compact .gidskaart { padding: 10px; }
+.gidslijst.compact .gidskaart strong { font-size: 15px; }
+.gidslijst.compact .gidskaart small { display: none; }
+.eigen-kaart { padding-top: 16px; }
+.eigen-link { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center; padding: 12px 14px; border: 1px solid rgba(217,168,72,.45); border-radius: 16px; background: linear-gradient(135deg, #fff 0%, #FBF4E6 100%); color: var(--tekst); text-decoration: none; }
+.eigen-link:hover { border-color: var(--goud); }
+.eigen-beeld img { width: 96px; height: 96px; object-fit: contain; border-radius: 10px; background: #fff; }
+.eigen-tekst { display: flex; flex-direction: column; gap: 3px; }
+.eigen-tekst .kicker { margin: 0; font-size: 10.5px; }
+.eigen-tekst strong { font: 500 19px/1.2 var(--f-kop); }
+.eigen-tekst small { font-size: 13px; color: var(--tekst-2); }
+.eigen-tekst .meer { margin-top: 4px; font-size: 13.5px; }
+@media (min-width: 760px) { .eigen-link { grid-template-columns: 120px 1fr auto; } .eigen-beeld img { width: 120px; height: 120px; } }
+@media (max-width: 759px) { .seizoen-kaart.klein .kicker { display: none; } .seizoen-kaart.klein .actie-tekst { justify-content: flex-end; } }
