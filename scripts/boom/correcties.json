@@ -2018,9 +2018,9 @@
    "koptelefoons"
   ],
   "bol-9200000073543208": [
-   "wonen",
-   "woondecoratie",
-   "klokken"
+   "elektronica",
+   "audio",
+   "radio-s"
   ],
   "bol-9300000187525087": [
    "elektronica",
@@ -2035,12 +2035,12 @@
   "bol-9200000077171588": [
    "elektronica",
    "audio",
-   "bluetooth-speakers"
+   "radio-s"
   ],
   "bol-9300000237380954": [
    "elektronica",
    "audio",
-   "bluetooth-speakers"
+   "radio-s"
   ],
   "bol-9300000184877600": [
    "sport-outdoor",
@@ -2048,9 +2048,9 @@
    "noodradio-s"
   ],
   "bol-9300000230574485": [
-   "wonen",
-   "woondecoratie",
-   "klokken"
+   "elektronica",
+   "audio",
+   "radio-s"
   ],
   "amz-b09b8rf4py": [
    "elektronica",
@@ -2068,9 +2068,9 @@
    "slimme-speakers"
   ],
   "bol-9300000132786497": [
-   "wonen",
-   "woondecoratie",
-   "klokken"
+   "elektronica",
+   "audio",
+   "radio-s"
   ],
   "fiftie-804d181317": [
    "elektronica",
@@ -2088,9 +2088,9 @@
    "koptelefoons"
   ],
   "hema-d98fcda3b6": [
-   "wonen",
-   "woondecoratie",
-   "klokken"
+   "elektronica",
+   "audio",
+   "radio-s"
   ],
   "hema-897c5eb87d": [
    "elektronica",
@@ -5693,9 +5693,9 @@
    "keukenapparaten"
   ],
   "bol-9200000052263547": [
-   "wonen",
-   "koken-bakken",
-   "keukenapparaten"
+   "elektronica",
+   "audio",
+   "radio-s"
   ],
   "bol-9200000098105594": [
    "elektronica",
@@ -7696,6 +7696,226 @@
    "elektronica",
    "audio",
    "oordopjes"
+  ],
+  "cb-at-lp60xbt": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "cb-at-lp70xbt": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "cb-denon-dp300f": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000178345557": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000253062721": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000167137746": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000238997552": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000238997553": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9200000073477383": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "fs-mini-cruiser": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "fs-mercury": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "fs-gadhouse-brad": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000223188715": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000146633633": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000031514682": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000171159250": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000264493685": [
+   "elektronica",
+   "audio",
+   "platenspelers"
+  ],
+  "bol-9300000042726225": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000233557152": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9200000091834691": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000153493714": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000230574487": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000279260393": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000193830306": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "fs-roberts-rest": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000122123902": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000160436884": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000061369291": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "fs-roberts-petite": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "fs-roberts-rambler": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000178101619": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000039345430": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "fs-crosley-tribute": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9200000054267466": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000180333312": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000002079672": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000242250826": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000184391239": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000177818449": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "cb-denon-ceol": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "cb-roberts-istream": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "tf-106138002": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "bol-9300000230945476": [
+   "elektronica",
+   "audio",
+   "radio-s"
+  ],
+  "tf-107000612": [
+   "elektronica",
+   "audio",
+   "radio-s"
   ]
  },
  "samen": {
@@ -7857,7 +8077,10 @@
   "bol-9300000240435884": "cl-mario-galaxy",
   "bol-9200000122553336": "cl-mk-stuur",
   "bol-9300000236077496": "cl-bose-qc-buds",
-  "bol-9300000178679929": "cl-marshall-minor"
+  "bol-9300000178679929": "cl-marshall-minor",
+  "bol-9300000058807403": "cl-crosley-voyager",
+  "bol-9200000108370512": "cl-at-lp120",
+  "cl-gpo-soho": "fiftie-83f8a6620f"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -14511,7 +14734,9 @@
   "bol-9300000240306822": "Gabby's Dollhouse: Ready to Party (PS4, speelt ook op PS5)",
   "cl-mario-galaxy": "Super Mario Galaxy 1+2 (Switch)",
   "cl-mario-party": "Super Mario Party Jamboree (Switch)",
-  "cl-nba2k27": "NBA 2K27 (PS5)"
+  "cl-nba2k27": "NBA 2K27 (PS5)",
+  "bol-9300000230574485": "Philips wekkerradio TAR4500 met groot display en dubbel alarm",
+  "bol-9300000042726225": "Philips wekkerradio TAR3306 met groot display"
  },
  "voorErbij": {
   "bol-9300000142143695": [
