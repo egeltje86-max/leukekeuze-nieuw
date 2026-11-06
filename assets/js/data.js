@@ -1207,3 +1207,12 @@ window.LK_CODES = [{"id": "a3519202","winkel": "Flextail","titel": "15% op de Ez
   });
   (window.LK_COLLECTIES || []).forEach(function (g) { g.beeld = R + 'col-' + g.slug + '.webp'; });
 })();
+
+/* 6-11-2026: nieuwe ronde icoontjes van Marius voor de afdeling Cadeaus. */
+(function () {
+  var c = window.LK_CAT && window.LK_CAT('cadeaus'); if (!c) return;
+  var R = 'images/sub/rond/cad-';
+  c.allesBeeld = R + 'alles.webp';
+  var S = ['voor-haar', 'voor-hem', 'voor-kinderen', 'kerst', 'sinterklaas', 'sint-onder-15', 'opa-oma', 'collega', 'baby-kraam', 'onder-15', 'met-naam', 'grappig'];
+  (c.subs || []).forEach(function (s) { if (S.indexOf(s.slug) !== -1) { s.beeld = R + s.slug + '.webp'; s.icoon2026 = true; } });
+})();
