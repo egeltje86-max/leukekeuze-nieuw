@@ -8226,6 +8226,176 @@
    "wonen",
    "woondecoratie",
    "beelden-decoratie"
+  ],
+  "cb-ring-deurbel": [
+   "elektronica",
+   "slim-wonen",
+   "slimme-lampen-sfeerlicht"
+  ],
+  "cb-wakeup-hf3654": [
+   "elektronica",
+   "slim-wonen",
+   "slimme-lampen-sfeerlicht"
+  ],
+  "dvzn-662540": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "dvzn-817865": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "cadeau-cc28806c60": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "dvzn-582187": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "dvzn-542206": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "superz-bbdc576997": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "bol-9300000301556735": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "dvzn-712829": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "dvzn-903598": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "bol-9300000009319303": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "bol-9200000121371932": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "cl-17386": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9300000183026680": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9300000123442435": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "dvzn-347250": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cadeau-23eab75ed6": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9300000058796455": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9300000165180203": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cl-lavalamp": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "dvzn-129164": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "dvzn-557193": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9200000085381037": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bp-l265ke": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bp-l293ke": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bp-p0061ke": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9300000345522498": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cadeau-b7c1d50e07": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "bol-9300000145343894": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "grotek-8cca839ffc": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstfiguren"
+  ],
+  "spaar-e05c091596": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-369271": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "bol-9300000252262268": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "dieren-dinofiguren"
   ]
  },
  "samen": {
@@ -8404,7 +8574,8 @@
   "bol-9300000304083183": "cl-polaroid-go3",
   "bol-9300000142746730": "cl-instax12",
   "cl-instax-sq1": "bol-9300000011440413",
-  "bol-9200000097663498": "cl-sprocket"
+  "bol-9200000097663498": "cl-sprocket",
+  "bol-9300000144526387": "cl-era300"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
