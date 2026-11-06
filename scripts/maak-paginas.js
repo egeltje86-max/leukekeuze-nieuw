@@ -240,7 +240,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     /* 2.0: horloges, geuren en verzorging zijn verhuisd van Mode & Beauty naar hun eigen groep. */
     'c/mode-beauty/horloges': '/c/sieraden/horloges/', 'c/mode-beauty/geuren': '/c/geuren-verzorging/geuren/', 'c/mode-beauty/verzorging': '/c/geuren-verzorging/huidverzorging/',
     /* 2.1: vakjes die verhuisd of opgegaan zijn in een ander vakje */
-    'c/cadeaus/adventskalenders': '/c/eten-drinken/adventskalenders/', 'c/christelijk/onder-25': '/c/christelijk/'
+    'c/cadeaus/adventskalenders': '/collectie/adventskalenders/', 'c/eten-drinken/adventskalenders': '/collectie/adventskalenders/', 'c/christelijk/onder-25': '/c/christelijk/'
   };
   /* 05-11-2026: oude adressen die Google nog kent en die 'Niet gevonden' gaven (sitecontrole). Zie scripts/boom/correcties.json. */
   try { Object.assign(VERHUISD, JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/correcties.json'), 'utf8')).adressen || {}); } catch (e) {}
