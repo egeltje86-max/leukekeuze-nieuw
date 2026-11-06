@@ -151,6 +151,11 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   const gezien = new Set(['/', '/categorieen/', '/lijst/']), rij = ['/', '/categorieen/', '/lijst/'], paginas = [];
+  /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
+     Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
+  for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd').map(p => p.id))) {
+    const l = '/p/' + id + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
+  }
   while (rij.length) {
     const pad = rij.shift();
     const r = await page.evaluate(pad => {
@@ -158,8 +163,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
       const app = document.querySelector('#app').cloneNode(true);
       const links = Array.from(document.querySelectorAll('a[href^="/"]')).map(a => a.getAttribute('href'))
         .filter(h => h.indexOf('//') !== 0 && h.indexOf('?') === -1);
-      const aantal = app.querySelectorAll('.prodkaart').length;
-      app.querySelectorAll('.prodkaart.later').forEach(x => x.remove());
+      /* Stap 3 indeling: alleen de eerste 24 kaarten staan in de pagina; het echte aantal staat in het filterblok ('1409 producten'). */
+      const aantalEl = app.querySelector('.werkbalk .aantal');
+      const aantal = aantalEl ? (parseInt(aantalEl.textContent.replace(/\D/g, ''), 10) || 0) : app.querySelectorAll('.prodkaart').length;
       app.querySelectorAll('[data-meer]').forEach(x => x.parentNode.remove());
       app.querySelectorAll('[data-alle-winkels]').forEach(x => { x.innerHTML = ''; });
       const ps = Array.from(app.querySelectorAll('p')).map(p => p.textContent.replace(/\s+/g, ' ').trim()).filter(t => t.length > 40);

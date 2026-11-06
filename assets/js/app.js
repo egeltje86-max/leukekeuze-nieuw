@@ -182,16 +182,53 @@
   }
   /* De eerste vier foto's meteen laden (niet 'lazy'): dan staat het eerste rijtje sneller op het scherm, vooral op een telefoon. */
   function eerstSnel(h, i) { return i < 4 ? h.replace('loading="lazy"', 'loading="eager" fetchpriority="high"') : h; }
-  /* Lange lijsten: eerst PER_KEER producten, daarna een 'Toon meer'-knop. */
-  var PER_KEER = 24;
+  /* Lange lijsten: eerst PER_KEER producten, daarna een 'Toon meer'-knop.
+     Stap 3 indeling (6-11-2026): de rest staat niet verborgen in de pagina, maar wordt pas gemaakt als je op de knop drukt.
+     Wonen had 1.409 kaarten in de pagina staan; op een telefoon kostte dat seconden. Nu staan er 24. */
+  /* Getallen op z'n Nederlands: 1.409 */
+  function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  var PER_KEER = 24, MEER_LIJSTEN = [];
   function gridMeer(lijst, leegHtml, n) {
-    var PER_KEER = n || 24;
-    if (lijst.length <= PER_KEER) return grid(lijst, leegHtml);
-    return '<div class="prodgrid">' + lijst.map(function (p, i) {
-      var h = eerstSnel(LK.productKaart(p), i);
-      return i < PER_KEER ? h : h.replace('<article class="prodkaart"', '<article class="prodkaart later"');
+    var per = n || PER_KEER;
+    if (lijst.length <= per) return grid(lijst, leegHtml);
+    var k = MEER_LIJSTEN.push({ lijst: lijst, getoond: per, per: per }) - 1;
+    return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
+      '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">Toon meer <small>(' + per + ' van ' + getal(lijst.length) + ')</small></button></div>';
+  }
+  /* Volgende portie kaarten erbij zetten (knop 'Toon meer', of terugkomen op een lijst waar je al verder was). */
+  function toonMeer(k, aantal) {
+    var m = MEER_LIJSTEN[k], g = $('[data-meer-grid="' + k + '"]', app);
+    if (!m || !g) return;
+    var tot = Math.min(m.lijst.length, m.getoond + (aantal || m.per));
+    if (tot > m.getoond) {
+      var stuk = document.createElement('div');
+      stuk.innerHTML = m.lijst.slice(m.getoond, tot).map(LK.productKaart).join('');
+      vulIconen(stuk); netteLinks(stuk);
+      while (stuk.firstChild) g.appendChild(stuk.firstChild);
+      m.getoond = tot;
+    }
+    var knop = $('[data-meer="' + k + '"]', app);
+    if (knop) { if (tot >= m.lijst.length) knop.parentNode.remove(); else knop.innerHTML = 'Toon meer <small>(' + tot + ' van ' + getal(m.lijst.length) + ')</small>'; }
+  }
+  /* Keuzes bovenaan een lijstpagina (stap 3 indeling): een vast raster van rondjes dat omloopt, 4 per rij op een telefoon.
+     Meer dan 8? Dan staan de eerste 8 in beeld en de rest achter één knop 'Meer'. Geen schuifrijen meer: op een telefoon zag je alleen wat vooraan stond. */
+  var KEUZES_ZICHT = 8;
+  function keuzeRaster(items, label) {
+    if (!items.length) return '';
+    var meer = items.length > KEUZES_ZICHT;
+    return '<nav class="keuzes-blok" aria-label="' + esc(label) + '"><div class="keuzes' + (meer ? ' ingeklapt' : '') + '">' + items.map(function (x) {
+      return '<a class="keuzerond' + (x.actief ? ' actief' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
+        '<span class="rond">' + (x.beeld ? '<img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async" width="88" height="88">' : (x.icoon || '')) + '</span>' +
+        '<span class="naam">' + esc(x.naam) + '</span></a>';
     }).join('') + '</div>' +
-      '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer>Toon meer <small>(' + PER_KEER + ' van ' + lijst.length + ')</small></button></div>';
+      (meer ? '<button class="keuzes-meer" type="button" data-keuzes-meer aria-expanded="false">Meer <small>(nog ' + (items.length - KEUZES_ZICHT) + ')</small> ' + ic('omlaag') + '</button>' : '') + '</nav>';
+  }
+  /* Onderaan elke lijstpagina: verder kijken als tekstlinks (geen rij met plaatjes die je voorbij moet schuiven). */
+  function tekstLinks(kop, links) {
+    if (!links.length) return '';
+    return '<section class="sectie verder"><h2>' + esc(kop) + '</h2><nav class="tekstlinks" aria-label="' + esc(kop) + '">' + links.map(function (l) {
+      return '<a href="' + esc(l[1]) + '">' + esc(l[0]) + '</a>';
+    }).join('') + '</nav></section>';
   }
   /* Horizontale rij om doorheen te vegen (homepage). */
   function rij(lijst) {
@@ -362,7 +399,7 @@
           }).join('') + '</div>' : '') +
           /* 5-11-2026 (wens Marius): het paneel blijft open bij elke keuze; met deze knop sluit je het en zie je de producten. */
           '<div class="filter-voet"><a class="knop knop-rand" href="' + maakAdres(pad, {}) + '">Wissen</a>' +
-          '<button class="knop knop-goud" type="button" data-filter-dicht>' + (typeof aantal === 'number' ? 'Toon ' + aantal + (aantal === 1 ? ' product' : ' producten') : 'Toon producten') + '</button></div>' +
+          '<button class="knop knop-goud" type="button" data-filter-dicht>' + (typeof aantal === 'number' ? 'Toon ' + getal(aantal) + (aantal === 1 ? ' product' : ' producten') : 'Toon producten') + '</button></div>' +
         '</div></div>';
   }
 
@@ -673,7 +710,12 @@
       '<div class="binnen"><section class="sectie"><div class="catronden">' + CATS.map(function (c) {
         return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
           '<span class="catrond-naam">' + esc(c.naam) + '</span><span class="catrond-tekst">' + esc(T[c.slug] || c.tekst || '') + '</span></a>';
-      }).join('') + '</div></section></div>';
+      }).join('') + '</div></section>' +
+      /* Stap 3 indeling: onder de 12 afdelingen de 7 personen als knopjes (plan deel 8). */
+      '<section class="sectie"><div class="sectie-kop"><div><h2>Of kies voor wie</h2></div><a class="meer" href="/voor">Alle personen ' + ic('pijl') + '</a></div>' +
+      '<nav class="gelegenheid-knopjes voor-knopjes" aria-label="Voor wie">' + (window.LK_PERSONEN || []).filter(function (p) { return !p.verborgen; }).map(function (p) {
+        return '<a class="chip" href="/voor/' + esc(p.slug) + '">' + esc(p.naam) + '</a>';
+      }).join('') + '</nav></section></div>';
   }
 
   /* Kleine versie van een rond plaatje (220px) voor de rondjes: scheelt zo'n 90% aan data per rondje. */
@@ -716,29 +758,34 @@
     /* Naar een andere groep: alleen budget en leeftijd/dames-heren gaan mee. 'Voor wie', merk en winkel niet
        (eerst ging bv. 'Baby' mee naar Tablets en zag je 0 producten). */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
-    var subs = '<div class="subkaarten">' +
-      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + (c.allesBeeld ? '<img src="' + esc(kleinBeeld(c.allesBeeld)) + '" alt="" loading="lazy" decoding="async">' : catBeeld(c, true)) + '</span><span class="subnaam">Alles</span></a>' +
-      volleSubs(c).map(function (x) {
-        var src = rondBeeld(x.beeld, x.beeld ? null : LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }));
-        var beeld = src ? '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
-        return '<a class="subkaart' + (s && s.slug === x.slug ? ' actief' : '') + '" href="' + metBudget(subAdres(c, x)) + '"' + (s && s.slug === x.slug ? ' aria-current="page"' : '') + '>' +
-          '<span class="rond">' + beeld + '</span><span class="subnaam">' + esc(x.naam) + '</span></a>';
-      }).join('') + '</div>';
-    /* 3.0: in een groep een rij met de vakjes (alleen vakjes waar iets in staat). */
+    /* Stap 3 indeling (6-11-2026, plan deel 8): één laag keuzes per pagina, nooit twee rijen boven elkaar.
+       Afdeling: de groepen als rondjes (geen 'Alles': de pagina is al alles). Groep: de vakjes als rondjes.
+       Vakje: de buurvakjes als knopjes in één rij die omloopt. De andere groepen staan onderaan als tekstlinks. */
+    var subs = '', groepen = volleSubs(c), volleVakjes = [];
     if (s && s.vakjes) {
       var inGroep = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
-      var volleVakjes = s.vakjes.filter(function (x) { return inGroep.filter(function (p) { return p.vak === x.slug; }).length >= 3; }); /* vakjes met minder dan 3 producten: alleen onder 'Alles' */
-      if (volleVakjes.length > 1) subs += '<nav class="chips vakjesrij" aria-label="Soorten in ' + esc(s.naam) + '">' +
-        '<a class="chip' + (v ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug + '/' + s.slug) + '"' + (v ? '' : ' aria-current="page"') + '>Alles</a>' +
-        volleVakjes.map(function (x) {
-          var hier = v && v.slug === x.slug;
-          return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug) + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(x.naam) + '</a>';
-        }).join('') + '</nav>';
+      volleVakjes = s.vakjes.filter(function (x) { return inGroep.filter(function (p) { return p.vak === x.slug; }).length >= 3; }); /* vakjes met minder dan 3 producten: alleen onder de groep zelf */
+    }
+    if (!s) {
+      subs = keuzeRaster(groepen.map(function (x) {
+        var src = rondBeeld(x.beeld, x.beeld ? null : LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }));
+        return { naam: x.naam, naar: metBudget(subAdres(c, x)), beeld: src, icoon: src ? '' : ic(c.icoon) };
+      }), 'Groepen in ' + c.naam);
+    } else if (!v && volleVakjes.length > 1) {
+      subs = keuzeRaster(volleVakjes.map(function (x) {
+        var src = rondBeeld(x.beeld, x.beeld ? null : sfeerEerst(inGroep.filter(function (p) { return p.vak === x.slug; })));
+        return { naam: x.naam, naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), beeld: src, icoon: src ? '' : ic(c.icoon) };
+      }), 'Soorten in ' + s.naam);
+    } else if (v && volleVakjes.length > 1) {
+      subs = '<nav class="chips vakjesrij omlopend" aria-label="Soorten in ' + esc(s.naam) + '">' + volleVakjes.map(function (x) {
+        var hier = v.slug === x.slug;
+        return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug) + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(x.naam) + '</a>';
+      }).join('') + '</nav>';
     }
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + merkWinkelChips(pad, q) + prijsChips(pad, q) +
-      '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
+      '<div class="werkbalk-onder"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
@@ -759,18 +806,22 @@
       kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(v ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam, naar: '/c/' + c.slug + '/' + s.slug }, { tekst: v.naam }] : s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
     }) +
     '<div class="binnen">' +
-      '<section class="sectie" aria-label="Subcategorieën">' + subs + '</section>' +
-      leesOok(v && v.oud ? v.oud : c.slug + (s ? '/' + s.slug : '')) +
+      (subs ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + subs + '</section>' : '') +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
+      /* Stap 3 indeling: 'Lees ook' (de gidsen) komt ná de eerste 24 producten; producten eerst. */
+      leesOok(v && v.oud ? v.oud : c.slug + (s ? '/' + s.slug : '')) +
       /* Eerst 'Meer in onze winkels' direct onder onze eigen producten, en pas daarna de tips.
          Stonden de tips ertussen, dan leek het alsof de pagina daar ophield (opmerking Marius, 28-10-2026). */
       (v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
-      (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk om rond te kijken</h2></div><a href="/winkels">Alle winkels</a></div><div class="winkelraster">' + winkelsMet(c.slug).map(winkelKaart).join('') + '</div></section>') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>Andere categorieën</h2></div></div>' +
-        '<nav class="catknoppen andere-cats">' + anderen.map(function (x) {
-          return '<a class="catknop" href="/c/' + x.slug + '">' + ic(x.icoon) + '<span>' + esc(x.kort) + '</span></a>';
-        }).join('') + '</nav></section>' +
+      /* Stap 3 indeling: de winkels van deze afdeling als tekstlinks (eerst 24 grote kaarten: ruim 6.000 px op een telefoon). */
+      (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie verder"><h2>Winkels voor ' + esc(c.naam.toLowerCase()) + '</h2><nav class="tekstlinks" aria-label="Winkels">' + winkelsMet(c.slug).map(function (w) {
+        var wurl = dcDirect(w.url) ? WINKELSITE[w.naam] : w.url;
+        return '<a href="' + esc(wurl) + '" target="_blank" rel="sponsored noopener">' + esc(w.naam) + '</a>';
+      }).join('') + '<a href="/winkels">Alle winkels</a></nav></section>') +
+      /* Verder kijken, onderaan als tekstlinks: in een groep of vakje eerst de andere groepen van de afdeling, dan de andere afdelingen. */
+      (s ? tekstLinks('Andere groepen in ' + c.naam, groepen.filter(function (x) { return x.slug !== s.slug; }).map(function (x) { return [x.naam, metBudget(subAdres(c, x))]; })) : '') +
+      tekstLinks('Andere categorieën', anderen.map(function (x) { return [x.kort, '/c/' + x.slug]; })) +
     '</div>';
   }
 
@@ -822,7 +873,7 @@
 
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
-      '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
+      '<div class="werkbalk-onder"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
@@ -933,7 +984,7 @@
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     if (g.korting || g.codes) sorteerOpties = [['korting', 'Grootste korting']].concat(sorteerOpties.slice(1));
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
-      '<div class="werkbalk-onder"><span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
+      '<div class="werkbalk-onder"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
       verrasKnop(lijst) + '<label class="sorteer"><span class="verborgen">Sorteren</span><select data-sorteer="' + esc(maakAdres(pad, Object.assign({}, q, { sort: '' }))) + '">' +
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
@@ -1426,7 +1477,7 @@
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
         (catTips.length ? '<div class="bedoel-je"><h2>Bedoel je…</h2><div class="bedoel-knoppen">' + catTips.map(function (t) { return '<a class="bedoel' + (t.soort === 'persoon' ? ' persoon' : '') + '" href="' + t.naar + '">' + ic('rechts') + '<span>' + t.naam + '</span></a>'; }).join('') + '</div></div>' : '') +
         (ruim ? '<p class="zoek-ruim">We vonden niets precies voor “' + esc(q.q) + '”. Dit lijkt erop' + (lijst.staart ? ' (' + esc(lijst.staart) + ')' : '') + ':</p>' : '') +
-        '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + lijst.length + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
+        '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         filterPaneel('/zoek', q) +
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
         gridMeer(lijst, leegBlok(q.q ? 'Nog niets uitgekozen voor dit woord' : 'Niets gevonden', q.q ? 'Kijk hieronder in het aanbod van onze winkels, of laat VONK zoeken.' : 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
@@ -2764,11 +2815,10 @@
     var plek = plekken[huidigAdres()];
     if (!plek) return false;
     var g = $('.prodgrid:not(.rij)', app);
-    if (g && plek.n) {
-      var later = g.querySelectorAll('.prodkaart.later'), alle = g.querySelectorAll('.prodkaart').length;
-      for (var i = 0; i < later.length && (alle - later.length + i) < plek.n; i++) later[i].classList.remove('later');
-      var knop = $('[data-meer]', app), over = g.querySelectorAll('.prodkaart.later').length;
-      if (knop) { if (!over) knop.parentNode.remove(); else knop.innerHTML = 'Toon meer <small>(' + (alle - over) + ' van ' + alle + ')</small>'; }
+    /* Was je al verder in de lijst ('Toon meer'), dan komen die kaarten er weer bij. */
+    if (g && plek.n && g.hasAttribute('data-meer-grid')) {
+      var al = g.querySelectorAll('.prodkaart').length;
+      if (plek.n > al) toonMeer(g.getAttribute('data-meer-grid'), plek.n - al);
     }
     /* Terug naar hetzelfde product in beeld (niet naar dezelfde pixel: foto's laden na en schuiven alles op). */
     var doel = function () {
@@ -2802,7 +2852,7 @@
       var verhuisdSub = { horloges: '/c/sieraden/horloges', geuren: '/c/geuren-verzorging/geuren', verzorging: '/c/geuren-verzorging/verzorging' }[d[2]];
       if (verhuisdSub) { ga(verhuisdSub + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
     }
-    TEL = null; BASIS = null;
+    TEL = null; BASIS = null; MEER_LIJSTEN = [];
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();
     else if (d[0] === 'c') {
@@ -2909,7 +2959,7 @@
            zodat je je zoektocht meteen kunt verfijnen (wens Marius 5-11-2026; eerst sprong hij voorbij de filters naar de producten). */
         var kop = $('.header') || $('header');
         var hoogte = kop ? kop.getBoundingClientRect().height : 70;
-        var doelEl = $('.vakjesrij', app) || $('.werkbalk', app) || grid;
+        var doelEl = $('.vakjesrij', app) || $('.keuzes-blok', app) || $('.werkbalk', app) || grid;
         var doelY = doelEl.getBoundingClientRect().top + window.scrollY - hoogte - 10;
         var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({ top: Math.max(0, doelY), behavior: rustig ? 'auto' : 'smooth' });
@@ -3153,13 +3203,10 @@
       else { window.open('https://wa.me/?text=' + encodeURIComponent(tekst + ' ' + url), '_blank', 'noopener'); }
       return;
     }
-    if (t.hasAttribute('data-meer')) {
-      var g = t.parentNode.previousElementSibling;
-      var rest = g.querySelectorAll('.prodkaart.later');
-      for (var i = 0; i < Math.min(PER_KEER, rest.length); i++) rest[i].classList.remove('later');
-      var over = g.querySelectorAll('.prodkaart.later').length;
-      if (!over) t.parentNode.remove();
-      else t.innerHTML = 'Toon meer <small>(' + (g.querySelectorAll('.prodkaart').length - over) + ' van ' + g.querySelectorAll('.prodkaart').length + ')</small>';
+    if (t.hasAttribute('data-meer')) { toonMeer(t.getAttribute('data-meer')); return; }
+    if (t.hasAttribute('data-keuzes-meer')) {
+      var kz = t.parentNode.querySelector('.keuzes'); if (kz) kz.classList.remove('ingeklapt');
+      t.remove();
       return;
     }
     if (t.dataset.tab) {

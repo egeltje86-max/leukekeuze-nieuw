@@ -914,7 +914,7 @@ window.LK_TEKSTEN = {
       { kop: 'Een tekst aan de muur', tekst: 'Een tegeltje of wandbord met een Bijbeltekst is een klassiek christelijk cadeau. Kies een tekst die past bij de gelegenheid: een zegen voor een nieuw huis, een belofte bij ziekte, een dankbare tekst voor de keuken.' }
     ] },
   'christelijk/voor-kinderen': {
-    tekst: 'Christelijke cadeaus voor kinderen: kinderbijbels, voorleesboeken, puzzels en spelletjes met Bijbelverhalen. Alles in het Nederlands.',
+    tekst: 'Christelijke cadeaus voor kinderen: kinderbijbels, voorleesboeken, puzzels en spelletjes met Bijbelverhalen.',
     seoTitel: 'Christelijke cadeaus voor kinderen: kinderbijbels en boeken',
     seoTekst: 'Christelijk cadeau voor een kind? Kinderbijbels, voorleesboeken met Bijbelverhalen, puzzels, spelletjes en knuffels. Allemaal in het Nederlands, voor doop, verjaardag en Kerst.',
     gids: [

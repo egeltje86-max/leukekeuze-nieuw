@@ -789,3 +789,38 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .eigen-tekst .meer { margin-top: 4px; font-size: 13.5px; }
 @media (min-width: 760px) { .eigen-link { grid-template-columns: 120px 1fr auto; } .eigen-beeld img { width: 120px; height: 120px; } }
 @media (max-width: 759px) { .seizoen-kaart.klein .kicker { display: none; } .seizoen-kaart.klein .actie-tekst { justify-content: flex-end; } }
+
+/* ===== Stap 3 indeling (6-11-2026, plan deel 8): lijstpagina's. Keuzes als vast raster dat omloopt (4 per rij op een telefoon,
+   8 op de computer, meer dan 8 achter 'Meer'), 'Toon meer' maakt de volgende 24 kaarten pas aan, verder kijken als tekstlinks onderaan. ===== */
+.keuzes-sectie { padding-top: 16px; }
+.keuzes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 2px; }
+.keuzerond { display: flex; flex-direction: column; align-items: center; gap: 7px; min-width: 0; text-align: center; text-decoration: none; color: var(--tekst); font: 600 12px/1.2 var(--f-ui); }
+.keuzerond .rond { width: 68px; height: 68px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(10,16,32,.08); background: #fff; display: grid; place-items: center; box-shadow: 0 4px 12px -8px rgba(10,16,32,.5); transition: border-color .15s, box-shadow .15s; }
+.keuzerond .rond img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.keuzerond .rond svg { width: 30px; height: 30px; color: var(--goud); }
+.keuzerond:hover .rond { border-color: var(--goud); box-shadow: 0 6px 16px -8px rgba(184,134,46,.7); }
+.keuzerond .naam { width: calc(100% + 6px); margin: 0 -3px; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; letter-spacing: -.01em; }
+@media (max-width: 379px) { .keuzerond { font-size: 11px; } }
+.keuzerond.actief .naam { background: linear-gradient(180deg, #F2CB74, #D9A848); color: #141A2A; border-radius: 999px; padding: 3px 10px; }
+/* Alleen op een telefoon: eerste 8, de rest achter Meer. Op een groter scherm staan ze allemaal (hoogstens 10). */
+@media (max-width: 759px) { .keuzes.ingeklapt .keuzerond:nth-child(n+9) { display: none; } }
+.keuzes-meer { display: flex; align-items: center; gap: 6px; margin: 12px auto 0; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1.5px solid rgba(184,134,46,.5); background: #fff; color: var(--goud-donker); font: 700 13.5px/1 var(--f-ui); cursor: pointer; }
+.keuzes-meer small { font-weight: 500; color: var(--tekst-2); }
+.keuzes-meer svg { width: 16px; height: 16px; }
+@media (min-width: 760px) { .keuzes { grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 16px 10px; } .keuzerond { font-size: 13.5px; } .keuzerond .rond { width: 84px; height: 84px; } .keuzes-meer { display: none; } }
+@media (min-width: 1100px) { .keuzerond .rond { width: 100px; height: 100px; } }
+/* Buurvakjes op een vakjespagina: één rij knopjes die omloopt (geen schuifrij, geen vervaging aan de rechterkant). */
+.vakjesrij.omlopend { flex-wrap: wrap; overflow: visible; margin: 0; padding: 2px 0; row-gap: 8px; -webkit-mask-image: none; mask-image: none; }
+/* Snelle filterrij op de telefoon (Prijs of Leeftijd) loopt om in plaats van te schuiven. */
+@media (max-width: 759px) { .werkbalk > .mb-snel .chips { flex-wrap: wrap; overflow: visible; margin: 0; padding-right: 0; row-gap: 6px; } }
+/* Verder kijken: tekstlinks onderaan. */
+.sectie.verder { padding-top: 22px; }
+.sectie.verder h2 { font: 700 15px/1.3 var(--f-ui); color: var(--tekst-2); margin: 0 0 2px; text-transform: uppercase; letter-spacing: .06em; }
+.tekstlinks { display: flex; flex-wrap: wrap; gap: 0 20px; }
+.tekstlinks a { display: inline-flex; align-items: center; min-height: 40px; color: var(--tekst); font: 600 14.5px/1.3 var(--f-ui); text-decoration: underline; text-decoration-color: rgba(184,134,46,.55); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.tekstlinks a:hover { color: var(--goud-donker); text-decoration-color: var(--goud-donker); }
+/* Alle categorieën: 3 per rij op de computer (plan deel 8), 2 op een telefoon; daaronder de personen als knopjes. */
+@media (min-width: 1100px) { .catronden { grid-template-columns: repeat(3, 1fr); } }
+.voor-knopjes { margin-top: 0; }
+/* Winkels bij deze afdeling: tekstlinks in plaats van 24 grote kaarten (6.000 px op een telefoon). */
+.tekstlinks a[target="_blank"]::after { content: "↗"; font-size: 11px; margin-left: 3px; color: var(--goud-donker); }
