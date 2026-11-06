@@ -1611,7 +1611,7 @@
       var W = j.winkels;
       /* Tijdens de Daisycon-pauze nooit Daisycon-links tonen (de index bevat dan alleen TradeTracker-winkels). */
       return j.producten.filter(function (x) { return !dcDirect(W[x[2]].link + x[3]); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
-    }).catch(function () { return sleutel ? null : []; });
+    }).catch(function (e) { if (!sleutel && e && e.message === 'geen uitpakker') return 'oud'; return sleutel ? null : []; });
     return AW.laden[pad];
   }
   function vulAlleWinkels(sec) {
@@ -1620,6 +1620,8 @@
     var doel = $('.aw-inhoud', sec);
     laadWinkels(sec.getAttribute('data-sleutel') || '').then(function (alles) {
       if (!alles) { sec.remove(); return; }
+      /* Oudere browser (bijv. iPhone van voor 2023) kan het ingepakte bestand niet uitpakken: dat zeggen we gewoon. */
+      if (alles === 'oud') { doel.innerHTML = '<p class="uitleg">Zoeken in alle winkels werkt niet in deze oudere browser. Probeer het op een ander apparaat of in een nieuwere browser.</p>'; return; }
       var nietW = (sec.getAttribute('data-niet') || '').split(' ').filter(Boolean);
       var ofW = (sec.getAttribute('data-woorden') || '').split(' ').filter(Boolean), gesl = sec.getAttribute('data-geslacht') || '', maxP = +sec.getAttribute('data-max') || 0;
       function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }
@@ -3027,7 +3029,7 @@
       var groot = !aw.getAttribute('data-sleutel') && window.matchMedia && window.matchMedia('(max-width: 759px)').matches && !AW.laden['assets/zoek/alle.json.gz'];
       if (groot) {
         $('.aw-inhoud', aw).innerHTML = '<div class="aw-laadknop"><button class="knop knop-rand" type="button" data-aw-laad>Zoek ook in onze winkels ' + ic('pijl') + '</button>' +
-          '<p class="uitleg">Doorzoekt ruim 40.000 producten van onze partnerwinkels. Dat is een groot bestand, dus het laden duurt even.</p></div>';
+          '<p class="uitleg">Doorzoekt ruim 250.000 producten van onze partnerwinkels. Dat is een groot bestand, dus het laden duurt even.</p></div>';
         aw.addEventListener('click', function (e) { if (e.target.closest('[data-aw-laad]')) { $('.aw-inhoud', aw).innerHTML = '<p class="aw-laden">Even zoeken in alle winkels…</p>'; vulAlleWinkels(aw); } });
       } else if (aw.getAttribute('data-sleutel') && 'IntersectionObserver' in window) {
         /* Pas laden als je bijna onderaan bent: bovenaan blijft de pagina net zo snel. */

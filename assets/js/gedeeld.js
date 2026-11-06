@@ -160,7 +160,7 @@
       return '<img src="' + esc(p.beeld) + '" alt="' + esc(p.titel) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">';
     }
     return '<img src="' + esc(p.beeld) + (groot ? '' : '-klein') + '.webp" ' +
-      (groot ? '' : 'srcset="' + esc(p.beeld) + '-klein.webp 500w, ' + esc(p.beeld) + '.webp 1000w" sizes="(min-width: 1100px) 250px, 50vw" ') +
+      (groot ? '' : 'srcset="' + esc(p.beeld) + '-klein.webp 400w, ' + esc(p.beeld) + '.webp 640w" sizes="(min-width: 1100px) 250px, 50vw" ') +
       'alt="' + esc(p.titel) + '"' + (groot ? ' fetchpriority="high" decoding="async">' : ' loading="lazy" decoding="async">');
   }
 
