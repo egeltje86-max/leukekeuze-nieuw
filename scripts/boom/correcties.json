@@ -1668,6 +1668,14 @@
   "cl-ps-portal": {
    "url": "https://www.awin1.com/pclick.php?p=38840435171&a=3110079&m=85161",
    "winkelUrl": "https://www.coolblue.nl/"
+  },
+  "ned-switch-oled-mario": {
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnintendo-switch-oled-mario-editie-rood%2F9300000160131250%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/nintendo-switch-oled-mario-editie-rood/9300000160131250/"
+  },
+  "cl-switch-lite": {
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnintendo-switch-lite-console-turquoise%2F9200000116374154%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/nintendo-switch-lite-console-turquoise/9200000116374154/"
   }
  },
  "vak": {
@@ -7244,7 +7252,8 @@
   "cl-hydroflask-tumbler": "bol-9300000263072188",
   "cl-ax-hampton": "bol-9200000093250301",
   "dgsw-372e70531c": "cl-kpop-figuur",
-  "cadeau-ea0fd7bda4": "cl-mario-lamp"
+  "cadeau-ea0fd7bda4": "cl-mario-lamp",
+  "nedgam-3dfbdc114b": "cl-dualsense-edge"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -7601,7 +7610,9 @@
   "bol-9300000244728319": "afgekeurd",
   "cl-fotolijst-km": "afgekeurd",
   "cl-dymo160": "afgekeurd",
-  "bol-9200000132005044": "afgekeurd"
+  "bol-9200000132005044": "afgekeurd",
+  "ned-switch-oled-zelda": "uitverkocht",
+  "ned-switch-lite-pokemon": "uitverkocht"
  },
  "prijs": {
   "lr-350322363000": [
@@ -12807,7 +12818,8 @@
    550.0
   ],
   "cl-switch-oled": [
-   249.0
+   318.0,
+   349.99
   ],
   "cl-ds-laad": [
    29.99
@@ -12856,6 +12868,12 @@
   ],
   "cl-ps-portal": [
    249.0
+  ],
+  "ned-switch-oled-mario": [
+   349.0
+  ],
+  "cl-switch-lite": [
+   246.0
   ]
  },
  "shop": {
@@ -13838,6 +13856,16 @@
    "Coolblue",
    null,
    "https://www.coolblue.nl/"
+  ],
+  "ned-switch-oled-mario": [
+   "bol",
+   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
+   "https://www.bol.com/nl/nl/p/nintendo-switch-oled-mario-editie-rood/9300000160131250/"
+  ],
+  "cl-switch-lite": [
+   "bol",
+   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
+   "https://www.bol.com/nl/nl/p/nintendo-switch-lite-console-turquoise/9200000116374154/"
   ]
  },
  "titel": {
@@ -13847,7 +13875,8 @@
   "bol-9200000011398318": "Victorinox Climber Zwitsers zakmes (14 functies, rood)",
   "bol-9200000002924845": "Victorinox Climber Zwitsers zakmes (14 functies, blauw)",
   "bol-9300000222945148": "PlayStation Portal (zwart)",
-  "cl-ps-portal": "PlayStation Portal (wit)"
+  "cl-ps-portal": "PlayStation Portal (wit)",
+  "cl-switch-lite": "Nintendo Switch Lite (turquoise)"
  },
  "voorErbij": {
   "bol-9300000142143695": [
