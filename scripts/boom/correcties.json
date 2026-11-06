@@ -7606,6 +7606,96 @@
    "elektronica",
    "gaming",
    "gaming-headsets"
+  ],
+  "cb-openrun-pro2": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-openfit-air2": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-openrun": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000239191938": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000239671711": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000223391580": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-sleep-a20": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-sleep-a30": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000236204216": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000263076902": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000189329007": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000399361855": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-tune-flex2": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-nothing-3a": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-nothing-open": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "cb-liberty5": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000186287122": [
+   "elektronica",
+   "audio",
+   "oordopjes"
+  ],
+  "bol-9300000229579545": [
+   "elektronica",
+   "audio",
+   "oordopjes"
   ]
  },
  "samen": {
@@ -7765,7 +7855,9 @@
   "nedgam-a77380a524": "cl-dualsense",
   "nedgam-ae63e9da8d": "bol-9300000009936882",
   "bol-9300000240435884": "cl-mario-galaxy",
-  "bol-9200000122553336": "cl-mk-stuur"
+  "bol-9200000122553336": "cl-mk-stuur",
+  "bol-9300000236077496": "cl-bose-qc-buds",
+  "bol-9300000178679929": "cl-marshall-minor"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
