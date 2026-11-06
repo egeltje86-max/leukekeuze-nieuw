@@ -5254,13 +5254,13 @@
   ],
   "supz-91eb795c4c": [
    "wonen",
-   "tafelen",
-   "servies"
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
   ],
   "nedg-e1cd4db186": [
    "wonen",
-   "tafelen",
-   "servies"
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
   ],
   "bol-9300000308421940": [
    "mode-sieraden",
@@ -5399,8 +5399,8 @@
   ],
   "bol-9300000116390489": [
    "wonen",
-   "tafelen",
-   "servies"
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
   ],
   "amz-b09vt565j8": [
    "speelgoed",
@@ -13636,6 +13636,251 @@
    "wonen",
    "koken-bakken",
    "keukenapparaten"
+  ],
+  "decantalo-4c6ef11dc4": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "decantalo-e672c85551": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "dille-58dac9bd47": [
+   "wonen",
+   "tafelen",
+   "borrelplanken-serveren"
+  ],
+  "dille-63032ca960": [
+   "wonen",
+   "tafelen",
+   "borrelplanken-serveren"
+  ],
+  "dille-6b61902ab5": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "t2-hema-5623840130": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "t2-hema-eaa97c2154": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-country-acc-40291bdfe5": [
+   "wonen",
+   "tafelen",
+   "borrelplanken-serveren"
+  ],
+  "tt-country-acc-7b35c5bb99": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-country-acc-e38af6603c": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-dvzn-009668f7e8": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-dvzn-33ec81ff22": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-dvzn-40ea454e3d": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "tt-dvzn-c0a7b1a834": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-dvzn-f80a86365b": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "tt-dvzn-f8fb87dc7c": [
+   "wonen",
+   "tafelen",
+   "borrelplanken-serveren"
+  ],
+  "westwing-0a01a1d0b5": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-1360b3fb47": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-35a7843cca": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-377b085dca": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-3e52bef1ef": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-4272489ac9": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-51166dd0b0": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-6024c465c4": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-69d3bc4d00": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-7980b37727": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-8e5ca561b7": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-a25a7d1a69": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-ab188ccbdc": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-c4cb23132d": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-d72df20185": [
+   "wonen",
+   "tafelen",
+   "borrelplanken-serveren"
+  ],
+  "westwing-dda88e549d": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-df3fb71e0f": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "westwing-fc5f5bb7c1": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-fedc7077a1": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "westwing-ff826b515f": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "supz-54ccb7df76": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "nedgam-f34b4376e6": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "bol-9200000020342525": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "bol-9300000238623285": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dk-00045011": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "bol-9300000272086424": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "bol-9200000033415520": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "bol-9300000051694575": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "hema-118e2790bc": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "dvzn-801397": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "dgsw-fc3740ba4c": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "dieren-dinofiguren"
+  ],
+  "cl-vacuvin-shaker": [
+   "eten-drinken",
+   "drankaccessoires",
+   "cocktailsets"
+  ],
+  "bol-9300000009402365": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
   ]
  },
  "samen": {
@@ -14561,7 +14806,9 @@
   "cl-emp-late": "afgekeurd",
   "cl-tefal-dual": "afgekeurd",
   "cl-smeg-tsf01": "afgekeurd",
-  "bol-9200000108416812": "afgekeurd"
+  "bol-9200000108416812": "afgekeurd",
+  "cl-hema-kaasmessen": "afgekeurd",
+  "hobbym-33b594e946": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
