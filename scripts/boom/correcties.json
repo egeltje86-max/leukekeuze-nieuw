@@ -1680,6 +1680,10 @@
   "bol-9300000341079798": {
    "url": "https://www.awin1.com/pclick.php?p=45366208321&a=3110079&m=85161",
    "winkelUrl": "https://www.awin1.com/pclick.php?p=45366208321&a=3110079&m=85161"
+  },
+  "rz-0405180800ruea": {
+   "url": "https://www.awin1.com/pclick.php?p=46340282610&a=3110079&m=85161",
+   "winkelUrl": "https://www.awin1.com/pclick.php?p=46340282610&a=3110079&m=85161"
   }
  },
  "vak": {
@@ -7512,6 +7516,96 @@
    "elektronica",
    "gaming",
    "gamestoelen"
+  ],
+  "cb-nova-pro-wl": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "cb-nova-pro": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "cb-nova7": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000190114833": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000238161130": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000238113316": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000178970619": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "cb-inzone-h5": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "cb-inzone-h9": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "cb-gprox2": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "cb-virtuoso-max": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000227271658": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000176218112": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000042178893": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9200000106548532": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000082961060": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000238131899": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bol-9300000198110486": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
   ]
  },
  "samen": {
@@ -13296,6 +13390,9 @@
   ],
   "bol-9300000341079798": [
    64.0
+  ],
+  "rz-0405180800ruea": [
+   107.0
   ]
  },
  "shop": {
@@ -14288,6 +14385,11 @@
    "bol",
    "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
    "https://www.bol.com/nl/nl/p/nintendo-switch-lite-console-turquoise/9200000116374154/"
+  ],
+  "rz-0405180800ruea": [
+   "Coolblue",
+   "Coolblue bezorgt gratis als je bij het bestellen een hele dag kiest.",
+   null
   ]
  },
  "titel": {
