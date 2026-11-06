@@ -5828,9 +5828,9 @@
    "handige-gadgets"
   ],
   "cl-aura-aspen": [
-   "elektronica",
-   "gadgets",
-   "handige-gadgets"
+   "wonen",
+   "foto-persoonlijk",
+   "fotolijsten"
   ],
   "cl-netatmo-weer": [
    "elektronica",
@@ -5854,8 +5854,8 @@
   ],
   "cl-winbot-w2s": [
    "elektronica",
-   "gadgets",
-   "handige-gadgets"
+   "slim-wonen",
+   "robotstofzuigers"
   ],
   "bol-9200000058500987": [
    "elektronica",
@@ -8396,6 +8396,61 @@
    "speelgoed",
    "speelfiguren-voertuigen",
    "dieren-dinofiguren"
+  ],
+  "cb-sonos-arc-ultra": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "bol-9300000309664317": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "bol-9300000112512514": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "ex-sam-q930f": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "ex-sonos-sub-mini": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "cb-google-tv-streamer": [
+   "elektronica",
+   "tv-beeld",
+   "televisies"
+  ],
+  "bol-9300000165726849": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "jb-rayban-meta": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cl-wakeup": [
+   "elektronica",
+   "slim-wonen",
+   "slimme-lampen-sfeerlicht"
+  ],
+  "bol-9300000005359428": [
+   "elektronica",
+   "slim-wonen",
+   "slimme-lampen-sfeerlicht"
+  ],
+  "cl-fotolijst-rollei": [
+   "wonen",
+   "foto-persoonlijk",
+   "fotolijsten"
   ]
  },
  "samen": {
@@ -8575,7 +8630,11 @@
   "bol-9300000142746730": "cl-instax12",
   "cl-instax-sq1": "bol-9300000011440413",
   "bol-9200000097663498": "cl-sprocket",
-  "bol-9300000144526387": "cl-era300"
+  "bol-9300000144526387": "cl-era300",
+  "bol-9300000051308768": "cl-beam2",
+  "cl-airtag2": "jb-airtag2",
+  "cl-dji-neo2": "cb-dji-neo2",
+  "cl-charmera": "bol-9300000271089935"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
