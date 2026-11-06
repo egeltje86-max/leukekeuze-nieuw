@@ -8451,6 +8451,111 @@
    "wonen",
    "foto-persoonlijk",
    "fotolijsten"
+  ],
+  "bol-9300000195179566": [
+   "sport-outdoor",
+   "darts",
+   "dartpijlen"
+  ],
+  "bol-9300000061797323": [
+   "sport-outdoor",
+   "darts",
+   "dartpijlen"
+  ],
+  "bol-9300000265597314": [
+   "sport-outdoor",
+   "darts",
+   "dartpijlen"
+  ],
+  "bol-9300000061797315": [
+   "sport-outdoor",
+   "darts",
+   "dartborden"
+  ],
+  "bol-9200000103631602": [
+   "sport-outdoor",
+   "darts",
+   "dartborden"
+  ],
+  "bol-9300000132698511": [
+   "sport-outdoor",
+   "balsport-spel",
+   "padel-tennis"
+  ],
+  "bol-9300000184731300": [
+   "sport-outdoor",
+   "balsport-spel",
+   "padel-tennis"
+  ],
+  "bol-9300000236027179": [
+   "sport-outdoor",
+   "balsport-spel",
+   "padel-tennis"
+  ],
+  "bol-9300000246210996": [
+   "sport-outdoor",
+   "balsport-spel",
+   "padel-tennis"
+  ],
+  "bol-9300000184395266": [
+   "sport-outdoor",
+   "balsport-spel",
+   "padel-tennis"
+  ],
+  "bol-9300000191138934": [
+   "sport-outdoor",
+   "balsport-spel",
+   "padel-tennis"
+  ],
+  "bol-9300000025052582": [
+   "beauty-verzorging",
+   "wellness",
+   "massage"
+  ],
+  "bol-9300000224454609": [
+   "beauty-verzorging",
+   "wellness",
+   "massage"
+  ],
+  "bol-9300000134288182": [
+   "beauty-verzorging",
+   "wellness",
+   "massage"
+  ],
+  "bol-9200000075410668": [
+   "sport-outdoor",
+   "fitness-yoga",
+   "fitness-thuis"
+  ],
+  "bol-9300000149662486": [
+   "sport-outdoor",
+   "fitness-yoga",
+   "fitness-thuis"
+  ],
+  "bol-9200000039034694": [
+   "sport-outdoor",
+   "balsport-spel",
+   "buitenspellen-picknick"
+  ],
+  "bol-9200000131013220": [
+   "sport-outdoor",
+   "balsport-spel",
+   "buitenspellen-picknick"
+  ],
+  "bol-9200000055971147": [
+   "sport-outdoor",
+   "balsport-spel",
+   "golf"
+  ],
+  "bol-9300000170998329": [
+   "sport-outdoor",
+   "balsport-spel",
+   "tafelvoetbal-tafeltennis"
+  ],
+  "bol-9200000127092359": [
+   "sport-outdoor",
+   "balsport-spel",
+   "tafelvoetbal-tafeltennis"
   ]
  },
  "samen": {
@@ -8761,6 +8866,18 @@
    "hem"
   ],
   "cl-fz-geboorte-arm": [
+   "hem"
+  ],
+  "cl-agility-ladder": [
+   "hem"
+  ],
+  "cl-pionnen": [
+   "hem"
+  ],
+  "cl-reusch-keeper": [
+   "hem"
+  ],
+  "cl-scheenbeschermer": [
    "hem"
   ]
  },
