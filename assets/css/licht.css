@@ -674,3 +674,17 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .persoon-subs.home.collecties .subkaart { min-width: 0; font-size: 12.5px; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
 .persoon-subs.home.collecties .subkaart .rond { width: 84px; height: 84px; }
 @media (min-width: 760px) { .persoon-subs.home.collecties { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; } .persoon-subs.home.collecties .subkaart { font-size: 13px; } .persoon-subs.home.collecties .subkaart .rond { width: 104px; height: 104px; } }
+
+/* Categorieën op home: alleen rondjes met naam eronder (6 nov) */
+.catbalken { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 6px; padding-left: 0; }
+@media (min-width: 560px) { .catbalken { grid-template-columns: repeat(6, 1fr); } }
+@media (min-width: 1100px) { .catbalken { grid-template-columns: repeat(11, 1fr); gap: 16px 8px; } }
+.catbalk { position: static; display: flex; flex-direction: column; align-items: center; gap: 7px; min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; text-align: center; }
+.catbalk:hover { transform: none; box-shadow: none; }
+.catbalk-rond { position: static; transform: none; width: 68px; height: 68px; box-shadow: 0 0 0 2px #C9A24A, 0 6px 14px -7px rgba(0,0,0,.55); transition: transform .15s ease, box-shadow .15s ease; }
+.catbalk:hover .catbalk-rond { transform: translateY(-2px); box-shadow: 0 0 0 2px #E8C46A, 0 10px 18px -8px rgba(0,0,0,.6); }
+.catbalk-naam { font: 600 12.5px/1.2 var(--f-ui, 'Manrope', sans-serif); color: var(--tekst, #141A2A); letter-spacing: 0; max-width: 92px; overflow-wrap: anywhere; hyphens: auto; }
+.catbalk-pijl { display: none !important; }
+@media (min-width: 760px) { .catbalk-rond { width: 84px; height: 84px; } .catbalk-naam { font-size: 13.5px; max-width: 110px; } }
+.catbalk-rond { box-shadow: 0 6px 14px -7px rgba(0,0,0,.5); }
+.catbalk:hover .catbalk-rond { box-shadow: 0 10px 18px -8px rgba(0,0,0,.55); }

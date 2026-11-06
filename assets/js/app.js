@@ -450,7 +450,7 @@
           '<div class="sectie-kop"><div><span class="kicker">Ingang 2</span><h2>Of kies een soort cadeau</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
           /* 5-11-2026 (ontwerp Marius): compacte balken met rond icoon in plaats van grote tegels. */
           '<div class="catbalken">' + ['speelgoed', 'elektronica', 'mode-sieraden', 'beauty-verzorging', 'wonen', 'eten-drinken', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'].map(window.LK_CAT).filter(function (c) { return c && !c.verborgen; }).map(function (c) {
-            return '<a class="catbalk" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="images/categorieen/rond/rond-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
+            return '<a class="catbalk" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
           }).join('') + '</div>' +
           '<a class="knop knop-rand alle-cats" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a>' +
         '</section>' +
@@ -606,7 +606,7 @@
     };
     return paginakop({ titel: 'Alle categorieën', tekst: 'Kies waar je zin in hebt.', kruimel: [{ tekst: 'Categorieën' }] }) +
       '<div class="binnen"><section class="sectie"><div class="catronden">' + CATS.map(function (c) {
-        return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="images/categorieen/rond/rond-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
+        return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
           '<span class="catrond-naam">' + esc(c.naam) + '</span><span class="catrond-tekst">' + esc(T[c.slug] || c.tekst || '') + '</span></a>';
       }).join('') + '</div></section></div>';
   }
@@ -652,7 +652,7 @@
        (eerst ging bv. 'Baby' mee naar Tablets en zag je 0 producten). */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
     var subs = '<div class="subkaarten">' +
-      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span><span class="subnaam">Alles</span></a>' +
+      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + (c.allesBeeld ? '<img src="' + esc(kleinBeeld(c.allesBeeld)) + '" alt="" loading="lazy" decoding="async">' : catBeeld(c, true)) + '</span><span class="subnaam">Alles</span></a>' +
       volleSubs(c).map(function (x) {
         var src = rondBeeld(x.beeld, x.beeld ? null : LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }));
         var beeld = src ? '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);
