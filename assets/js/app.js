@@ -652,7 +652,7 @@
        (eerst ging bv. 'Baby' mee naar Tablets en zag je 0 producten). */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['wie', 'kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
     var subs = '<div class="subkaarten">' +
-      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + catBeeld(c, true) + '</span><span class="subnaam">Alles</span></a>' +
+      '<a class="subkaart' + (s ? '' : ' actief') + '" href="' + metBudget('/c/' + c.slug) + '"><span class="rond">' + (c.allesBeeld ? '<img src="' + esc(kleinBeeld(c.allesBeeld)) + '" alt="" loading="lazy" decoding="async">' : catBeeld(c, true)) + '</span><span class="subnaam">Alles</span></a>' +
       volleSubs(c).map(function (x) {
         var src = rondBeeld(x.beeld, x.beeld ? null : LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }));
         var beeld = src ? '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async">' : ic(c.icoon);

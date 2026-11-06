@@ -1195,3 +1195,15 @@ window.LK_CODES = [{"id": "a3519202","winkel": "Flextail","titel": "15% op de Ez
   (window.LK_PERSONEN || []).forEach(function (p) { if (V.indexOf(p.slug) !== -1) p.beeld = 'images/sub/rond/voor-' + p.slug + '.webp'; });
   var I = window.LK_INSTELLINGEN; if (I) { I.heroDesktop = 'images/banners/banner-home-2026-desktop.webp'; I.heroMobiel = 'images/banners/banner-home-2026-mobiel.webp'; I.heroNieuw = true; }
 })();
+
+/* 6-11-2026: nieuwe ronde icoontjes van Marius voor Liefde & Valentijn, Christelijk (incl. Doop & belijdenis) en de collecties. */
+(function () {
+  var R = 'images/sub/rond/';
+  [['valentijn', 'val', ['voor-haar', 'voor-hem', 'samen', 'met-naam', 'romantische-avond', 'kleine-gebaren']],
+   ['christelijk', 'chr', ['bijbels-psalmboeken', 'boeken-muziek', 'sieraden', 'wanddecoratie-teksten', 'kerst', 'doop-belijdenis', 'voor-kinderen']]].forEach(function (d) {
+    var c = window.LK_CAT && window.LK_CAT(d[0]); if (!c) return;
+    c.allesBeeld = R + d[1] + '-alles.webp';
+    (c.subs || []).forEach(function (s) { if (d[2].indexOf(s.slug) !== -1) { s.beeld = R + d[1] + '-' + s.slug + '.webp'; s.icoon2026 = true; } });
+  });
+  (window.LK_COLLECTIES || []).forEach(function (g) { g.beeld = R + 'col-' + g.slug + '.webp'; });
+})();
