@@ -910,7 +910,7 @@
    "winkelUrl": ""
   },
   "cl-airpods-max2": {
-   "url": "https://www.awin1.com/pclick.php?p=45954468174&a=3110079&m=85161",
+   "url": "https://www.awin1.com/pclick.php?p=44417221999&a=3110079&m=85161",
    "winkelUrl": ""
   },
   "cl-cirqa": {
@@ -2030,7 +2030,7 @@
   "bol-9300000197119654": [
    "elektronica",
    "audio",
-   "bluetooth-speakers"
+   "radio-s"
   ],
   "bol-9200000077171588": [
    "elektronica",
@@ -7986,6 +7986,76 @@
    "elektronica",
    "audio",
    "koptelefoons"
+  ],
+  "cb-xtreme5": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "cb-ult-field5": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "bol-9300000182977575": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "bol-9300000252617215": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "bol-9300000270825240": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "cb-ult-tower5": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "bol-9300000110615720": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "bol-9300000242659941": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "cb-stanmore3": [
+   "elektronica",
+   "audio",
+   "bluetooth-speakers"
+  ],
+  "bol-9300000269935698": [
+   "elektronica",
+   "slim-wonen",
+   "slimme-speakers"
+  ],
+  "bol-9300000144526387": [
+   "elektronica",
+   "slim-wonen",
+   "slimme-speakers"
+  ],
+  "bol-9300000051308768": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "tf-107001153": [
+   "elektronica",
+   "tv-beeld",
+   "soundbars"
+  ],
+  "tf-105968001": [
+   "elektronica",
+   "audio",
+   "radio-s"
   ]
  },
  "samen": {
@@ -8152,7 +8222,14 @@
   "bol-9200000108370512": "cl-at-lp120",
   "cl-gpo-soho": "fiftie-83f8a6620f",
   "cl-teufel-nc3": "tf-107001574",
-  "bol-9300000187525087": "cl-marshall-major"
+  "bol-9300000187525087": "cl-marshall-major",
+  "cl-jbl-go5": "bol-9300000252617200",
+  "bol-9300000175284951": "cl-ult-field1",
+  "bol-9300000227291937": "cl-ult-field3",
+  "cl-rockster": "tf-106489003",
+  "bol-9300000179996366": "cl-sonos-roam2",
+  "bol-9300000190559748": "cl-bose-flex2",
+  "bol-9300000167137772": "cb-xtreme5"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -9084,7 +9161,7 @@
    null
   ],
   "cl-airpods-max2": [
-   468.0,
+   539.0,
    null
   ],
   "cl-cirqa": [
