@@ -9796,6 +9796,201 @@
    "wonen",
    "koken-bakken",
    "airfryers"
+  ],
+  "kl-imperial-pine": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstbomen-kransen"
+  ],
+  "kl-pencil-pine": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstbomen-kransen"
+  ],
+  "kl-monarch-sneeuw": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstbomen-kransen"
+  ],
+  "kl-boom-led-sneeuw": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstbomen-kransen"
+  ],
+  "jb-blackbox-charlton": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstbomen-kransen"
+  ],
+  "bol-9300000304073489": [
+   "wonen",
+   "woontextiel",
+   "vloerkleden"
+  ],
+  "bol-9300000018908153": [
+   "wonen",
+   "woontextiel",
+   "vloerkleden"
+  ],
+  "ex-inventum-hb185": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "bol-9200000032461459": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "bol-9300000240296704": [
+   "wonen",
+   "kaarsen-geur",
+   "geurkaarsen"
+  ],
+  "ex-medisana-hu666": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "cl-konijn-spiegel": [
+   "wonen",
+   "woondecoratie",
+   "spiegels"
+  ],
+  "cl-excellance-spiegel": [
+   "wonen",
+   "woondecoratie",
+   "spiegels"
+  ],
+  "cl-ovaal-spiegel": [
+   "wonen",
+   "woondecoratie",
+   "spiegels"
+  ],
+  "cl-rotan-spiegel": [
+   "wonen",
+   "woondecoratie",
+   "spiegels"
+  ],
+  "cl-leonie-spiegel": [
+   "wonen",
+   "woondecoratie",
+   "spiegels"
+  ],
+  "cl-23145": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cl-17958": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-t0216": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-aa08d838a3": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-t4000": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-t0319": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-t0113": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ijz-t0150": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ag-beeld": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ww-kaj73364965349": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cl-26994": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cl-28115": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cl-19247": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cl-19246": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cl-28104": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "ww-wes41255211483": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "grotek-fe9ee61228": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "bol-9300000147420364": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "bol-9300000056990865": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "dvzn-162611": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "dvzn-8689e02134": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "hema-bbadfb5371": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "emp-41b318680c": [
+   "wonen",
+   "woondecoratie",
+   "klokken"
   ]
  },
  "samen": {
@@ -9992,7 +10187,8 @@
   "bol-9300000116868583": "cl-vertuo-pop",
   "cl-smeg-tsf01": "bol-9200000068054609",
   "bol-9300000185349180": "cl-dl-rivelia",
-  "hema-15cd984c89": "cl-senseo"
+  "hema-15cd984c89": "cl-senseo",
+  "cl-emp-late": "emp-41b318680c"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
