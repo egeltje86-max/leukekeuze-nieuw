@@ -1,0 +1,5 @@
+De sjablonen, achtergronden en lettertypen voor promo (reels, pins, Instagram) staan sinds 6-11-2026
+NIET meer in de website, omdat de site te groot werd voor GitHub Pages (grens 1 GB).
+Ze staan op Marius' laptop: Documenten\LeukeKeuze-Nieuw-Feeds\promo-bestanden\ (37 bestanden).
+Ze staan ook nog in de git-geschiedenis (commit vóór 6-11-2026 20:10).
+De promo-scripts verwachten ze in scripts/promo/bestanden/: zet de map daar terug (wordt niet meegestuurd naar GitHub).
