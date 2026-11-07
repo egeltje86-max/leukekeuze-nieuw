@@ -135,6 +135,8 @@ for naam, fid in TTFEED.items():
         if os.path.getsize(tmp) < 400:  # 04-11-2026: sommige winkels (Biercheque) vullen 'voorraad' niet in: dan zonder voorraadfilter
             with urllib.request.urlopen(urllib.request.Request((TT + fid).replace('&filter_stock=1', ''), headers={'User-Agent': 'Mozilla/5.0'}), timeout=600) as r, open(tmp, 'wb') as f:
                 shutil.copyfileobj(r, f)
+        if os.path.getsize(tmp) < 400:  # 08-11-2026: ook zonder voorraadfilter leeg (bijv. Toppers in Concert): geen foutmelding, oude versie blijft
+            os.remove(tmp); log('LEEG (winkel levert nu geen producten), oude versie blijft:', naam); continue
         os.replace(tmp, xml)
         subprocess.run([sys.executable, os.path.join(HIER, 'tt-uittreksel.py'), xml, js + '.nieuw', '5'], check=True, capture_output=True)
         n = len(json.load(open(js + '.nieuw', encoding='utf-8')))
