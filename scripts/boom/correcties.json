@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame).",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -32,10 +32,6 @@
   "cl-ferm-mobiel": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=a0d0ed4cd40ce9ccfc6fce38f0e39aa7&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.490496165649782006993170%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fmuziekmobiel-lion-van-linnen-165488.html%253Fsimple%253DDEQ24FER42629-213921&ws=",
    "winkelUrl": "https://www.westwing.nl/muziekmobiel-lion-van-linnen-165488.html?simple=DEQ24FER42629-213921"
-  },
-  "cl-lego-advent": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flego-city-adventskalender-2026-werkplaats-van-de-kerstman-minifiguren-van-de-kerstman-kerstvrouw-3-elfen-en-een-sneeuwpop-babyrendierfiguur-24-verrassingen-kerstcadeau-voor-kinderen-vanaf-5-jaar-60510%2F9300000265640014%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/lego-city-adventskalender-2026-werkplaats-van-de-kerstman-minifiguren-van-de-kerstman-kerstvrouw-3-elfen-en-een-sneeuwpop-babyrendierfiguur-24-verrassingen-kerstcadeau-voor-kinderen-vanaf-5-jaar-60510/9300000265640014/"
   },
   "cl-lego-42212": {
    "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=ae953176ebcc95e317120a9f25304a6c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526830%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fferrari-fxx-k-42212&ws=",
@@ -921,10 +917,6 @@
    "url": "https://www.awin1.com/pclick.php?p=44921589165&a=3110079&m=85161",
    "winkelUrl": "https://www.awin1.com/pclick.php?p=44921589165&a=3110079&m=85161"
   },
-  "lego-75192": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flego-star-wars-millennium-falcon%2F9200000087338838%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/lego-star-wars-millennium-falcon/9200000087338838/"
-  },
   "lego-42210": {
    "url": "https://www.awin1.com/pclick.php?p=46290707628&a=3110079&m=85161",
    "winkelUrl": "https://www.awin1.com/pclick.php?p=46290707628&a=3110079&m=85161"
@@ -1201,10 +1193,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fravensburger-tiptoi-interactieve-stift-voor-leren-en-spelen%2F9300000178263897%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/ravensburger-tiptoi-interactieve-stift-voor-leren-en-spelen/9300000178263897/"
   },
-  "999g-999kls01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fkakkerlakkensalade%2F1004004006510330%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/kakkerlakkensalade/1004004006510330/"
-  },
   "999g-999exi30": {
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fexit-adventskalender-de-intergalactische-race%2F9300000239087096%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/exit-adventskalender-de-intergalactische-race/9300000239087096/"
@@ -1213,81 +1201,13 @@
    "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2F999-games%2Ffamiliespellen%2F999-games-spel-sky-team%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
    "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2F999-games%2Ffamiliespellen%2F999-games-spel-sky-team%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker"
   },
-  "999g-999snl02": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F999-games-schuifpret-rekenen-educatief-rekenspel-kinderspel-educatief-speelgoed%2F9300000228437042%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/999-games-schuifpret-rekenen-educatief-rekenspel-kinderspel-educatief-speelgoed/9300000228437042/"
-  },
-  "999g-999wrw01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fweerwolven-ontmasker-de-weerwolven%2F9300000147801613%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/weerwolven-ontmasker-de-weerwolven/9300000147801613/"
-  },
-  "999g-999lam01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flama-kaartspel%2F9200000113872459%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/lama-kaartspel/9200000113872459/"
-  },
-  "999g-999kol23b": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcatan-junior-bordspel%2F1004004006487390%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/catan-junior-bordspel/1004004006487390/"
-  },
-  "999g-999bom01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F999-games-bomb-busters-bordspel-cooperatief-deductiespel%2F9300000227860266%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/999-games-bomb-busters-bordspel-cooperatief-deductiespel/9300000227860266/"
-  },
-  "999g-999mac04": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fmachiavelli-kaartspel%2F9300000101661246%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/machiavelli-kaartspel/9300000101661246/"
-  },
-  "999g-999wvw01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F999-games-woord-voor-woord-spannend-cooperatief-woordspel-tot-12-spelers%2F9300000233637077%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/999-games-woord-voor-woord-spannend-cooperatief-woordspel-tot-12-spelers/9300000233637077/"
-  },
-  "999g-sch58183": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fschmidt-puzzel-schip-voor-anker-1000-stukjes%2F9200000023250259%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/schmidt-puzzel-schip-voor-anker-1000-stukjes/9200000023250259/"
-  },
-  "999g-999wyr01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fwyrmspan%2F9300000173012795%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/wyrmspan/9300000173012795/"
-  },
   "999g-999win02": {
    "url": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fwingspan-uitbreiding-europa%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
    "winkelUrl": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fwingspan-uitbreiding-europa%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes"
   },
-  "999g-999lva01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fde-legenden-van-andor-basisspel-bordspel%2F9200000014944539%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/de-legenden-van-andor-basisspel-bordspel/9200000014944539/"
-  },
-  "999g-999dom01n": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdominion-basisspel-kaartspel%2F9200000080798542%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/dominion-basisspel-kaartspel/9200000080798542/"
-  },
-  "999g-999kwa01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fde-kwakzalvers-van-kakelenburg-bordspel%2F9200000097759035%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/de-kwakzalvers-van-kakelenburg-bordspel/9200000097759035/"
-  },
-  "999g-999ste01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fstenen-tijdperk-bordspel%2F1004004006487394%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/stenen-tijdperk-bordspel/1004004006487394/"
-  },
   "999g-999eld01": {
    "url": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fde-zoektocht-naar-el-dorado%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
    "winkelUrl": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fde-zoektocht-naar-el-dorado%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes"
-  },
-  "999g-999hwk01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhet-witte-kasteel-van-himeji%2F9300000147801610%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/het-witte-kasteel-van-himeji/9300000147801610/"
-  },
-  "999g-999kee09": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fkeer-op-keer-deluxe%2F9300000180307554%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/keer-op-keer-deluxe/9300000180307554/"
-  },
-  "999g-999cre01": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fde-crew-kaartspel%2F9300000001938572%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/de-crew-kaartspel/9300000001938572/"
-  },
-  "999g-999wiz01b": {
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F999-games-wizard-kaartspel-familiespel-gezelschapsspel-klein-cadeautje-met-nieuw-artwork%2F9300000306390817%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/999-games-wizard-kaartspel-familiespel-gezelschapsspel-klein-cadeautje-met-nieuw-artwork/9300000306390817/"
   },
   "dgsw-7e185a9854": {
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbitzee-disney-het-interactieve-virtuele-huisdier-30-digitale-personages-in-een-doosje-die-reageren-op-jouw-aanraking%2F9300000177189559%2F",
@@ -17792,7 +17712,8 @@
   "bol-9200000072615655": "t2-boekenwereld-48a9c917d6",
   "bol-1001004010971015": "t2-boekenwereld-f2fbfbc0c9",
   "dille-73362dc872": "cl-dk-cacao",
-  "dille-af9aa7f980": "cl-dk-kaneel"
+  "dille-af9aa7f980": "cl-dk-kaneel",
+  "bol-9300000044733596": "dw-4001686849439"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
@@ -32645,10 +32566,6 @@
   "lego-31215": [
    151
   ],
-  "lego-75192": [
-   706.15,
-   849.99
-  ],
   "lego-42210": [
    108
   ],
@@ -32841,10 +32758,6 @@
    119.99,
    null
   ],
-  "cl-lego-advent": [
-   23.89,
-   26.99
-  ],
   "bol-9300000194522601": [
    21.69,
    59.99
@@ -32857,10 +32770,6 @@
    39.99,
    43.85
   ],
-  "999g-999kls01": [
-   14.89,
-   15.99
-  ],
   "999g-999exi30": [
    37.99,
    49.99
@@ -32868,79 +32777,11 @@
   "999g-999skt01": [
    29.99
   ],
-  "999g-999snl02": [
-   15.99,
-   19.99
-  ],
-  "999g-999wrw01": [
-   12.07,
-   12.99
-  ],
-  "999g-999lam01": [
-   12.39,
-   null
-  ],
-  "999g-999kol23b": [
-   25.99,
-   29.99
-  ],
-  "999g-999bom01": [
-   38.24,
-   44.99
-  ],
-  "999g-999mac04": [
-   27.49,
-   29.99
-  ],
-  "999g-999wvw01": [
-   16.09,
-   16.99
-  ],
-  "999g-sch58183": [
-   13.79,
-   19.99
-  ],
-  "999g-999wyr01": [
-   55.24,
-   64.99
-  ],
   "999g-999win02": [
    28.95
   ],
-  "999g-999lva01": [
-   38.24,
-   44.99
-  ],
-  "999g-999dom01n": [
-   37.99,
-   44.99
-  ],
-  "999g-999kwa01": [
-   33.99,
-   39.99
-  ],
-  "999g-999ste01": [
-   39.95,
-   0
-  ],
   "999g-999eld01": [
    34.95
-  ],
-  "999g-999hwk01": [
-   26.99,
-   29.99
-  ],
-  "999g-999kee09": [
-   29.74,
-   34.99
-  ],
-  "999g-999cre01": [
-   16.59,
-   null
-  ],
-  "999g-999wiz01b": [
-   13.19,
-   null
   ],
   "dgsw-7e185a9854": [
    22.99,
@@ -38528,11 +38369,6 @@
    "Coolblue verzendt gratis.",
    "https://www.awin1.com/pclick.php?p=44921589165&a=3110079&m=85161"
   ],
-  "lego-75192": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/lego-star-wars-millennium-falcon/9200000087338838/"
-  ],
   "lego-42210": [
    "Coolblue",
    "Coolblue verzendt gratis.",
@@ -38873,11 +38709,6 @@
    "Coolblue bezorgt gratis als je bij het bestellen een hele dag kiest.",
    "https://www.awin1.com/pclick.php?p=46290707599&a=3110079&m=85161"
   ],
-  "cl-lego-advent": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/lego-city-adventskalender-2026-werkplaats-van-de-kerstman-minifiguren-van-de-kerstman-kerstvrouw-3-elfen-en-een-sneeuwpop-babyrendierfiguur-24-verrassingen-kerstcadeau-voor-kinderen-vanaf-5-jaar-60510/9300000265640014/"
-  ],
   "bol-9300000228511367": [
    "Coolblue",
    "Coolblue bezorgt gratis als je bij het bestellen een hele dag kiest.",
@@ -38898,11 +38729,6 @@
    "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
    "https://www.bol.com/nl/nl/p/ravensburger-tiptoi-interactieve-stift-voor-leren-en-spelen/9300000178263897/"
   ],
-  "999g-999kls01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/kakkerlakkensalade/1004004006510330/"
-  ],
   "999g-999exi30": [
    "bol",
    "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
@@ -38913,100 +38739,15 @@
    "",
    "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2F999-games%2Ffamiliespellen%2F999-games-spel-sky-team%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker"
   ],
-  "999g-999snl02": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/999-games-schuifpret-rekenen-educatief-rekenspel-kinderspel-educatief-speelgoed/9300000228437042/"
-  ],
-  "999g-999wrw01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/weerwolven-ontmasker-de-weerwolven/9300000147801613/"
-  ],
-  "999g-999lam01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/lama-kaartspel/9200000113872459/"
-  ],
-  "999g-999kol23b": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/catan-junior-bordspel/1004004006487390/"
-  ],
-  "999g-999bom01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/999-games-bomb-busters-bordspel-cooperatief-deductiespel/9300000227860266/"
-  ],
-  "999g-999mac04": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/machiavelli-kaartspel/9300000101661246/"
-  ],
-  "999g-999wvw01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/999-games-woord-voor-woord-spannend-cooperatief-woordspel-tot-12-spelers/9300000233637077/"
-  ],
-  "999g-sch58183": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/schmidt-puzzel-schip-voor-anker-1000-stukjes/9200000023250259/"
-  ],
-  "999g-999wyr01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/wyrmspan/9300000173012795/"
-  ],
   "999g-999win02": [
    "Boardgameshop",
    "",
    "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fwingspan-uitbreiding-europa%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes"
   ],
-  "999g-999lva01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/de-legenden-van-andor-basisspel-bordspel/9200000014944539/"
-  ],
-  "999g-999dom01n": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/dominion-basisspel-kaartspel/9200000080798542/"
-  ],
-  "999g-999kwa01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/de-kwakzalvers-van-kakelenburg-bordspel/9200000097759035/"
-  ],
-  "999g-999ste01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/stenen-tijdperk-bordspel/1004004006487394/"
-  ],
   "999g-999eld01": [
    "Boardgameshop",
    "",
    "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fde-zoektocht-naar-el-dorado%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes"
-  ],
-  "999g-999hwk01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/het-witte-kasteel-van-himeji/9300000147801610/"
-  ],
-  "999g-999kee09": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/keer-op-keer-deluxe/9300000180307554/"
-  ],
-  "999g-999cre01": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/de-crew-kaartspel/9300000001938572/"
-  ],
-  "999g-999wiz01b": [
-   "bol",
-   "bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).",
-   "https://www.bol.com/nl/nl/p/999-games-wizard-kaartspel-familiespel-gezelschapsspel-klein-cadeautje-met-nieuw-artwork/9300000306390817/"
   ],
   "dgsw-7e185a9854": [
    "bol",
