@@ -3266,10 +3266,13 @@
   }
   /* 7-11-2026 (akkoord Marius): op de homepage 6 gidsen, Sinterklaas en Kerst door elkaar, met de nieuwe kerstgidsen erbij.
      Google komt vaak op de homepage en vindt de nieuwe gidsen zo sneller. Na 5 december: Sinterklaas-gidsen hier vervangen. */
-  var HOME_GIDSEN = ['schoencadeautjes', 'adventskalender-kiezen', 'sinterklaascadeau-vrouw', 'kerstcadeau-kind', 'sinterklaascadeau-man', 'surprise-maken'];
+  /* 7-11-2026: 'Sinterklaasgedicht maken' erbij (veel gezocht in november); kerst-kind tijdelijk eraf. */
+  var HOME_GIDSEN = ['surprise-maken', 'sinterklaasgedicht-maken', 'schoencadeautjes', 'sinterklaascadeau-vrouw', 'sinterklaascadeau-man', 'adventskalender-kiezen'];
   /* 'Lees ook': gidsen die bij dit vak horen (veld 'vakken' in GIDSEN). Maximaal 3, in de volgorde van GIDSEN. */
   function leesOok(sleutel) {
-    var l = GIDSEN.filter(function (g) { return (g.vakken || []).indexOf(sleutel) > -1; }).slice(0, 3);
+    /* Gidsen van de homepage (seizoen) eerst, daarna de rest in de volgorde van GIDSEN. */
+    var l = GIDSEN.filter(function (g) { return (g.vakken || []).indexOf(sleutel) > -1; })
+      .sort(function (x, y) { var a = HOME_GIDSEN.indexOf(x.slug), b = HOME_GIDSEN.indexOf(y.slug); return (a < 0 ? 99 : a) - (b < 0 ? 99 : b); }).slice(0, 3);
     if (!l.length) return '';
     return '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span>' +
       l.map(function (g) { return '<a href="/gids/' + g.slug + '">' + esc(g.titel.split(':')[0]) + '</a>'; }).join('') + '</nav>';
