@@ -1623,6 +1623,7 @@
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
+    window.LK_SEO = 'Zoek in ruim 10.000 met de hand gekozen cadeaus van bekende winkels: op naam, voor wie het is of op budget.'; /* 8-11-2026: anders pakte de bouw de tekst van een willekeurig product */
     var catTips = paginaTips(woorden);
     return paginakop({ titel: titel, kruimel: [{ tekst: 'Zoeken' }] }) +
       '<div class="binnen">' +
@@ -1939,8 +1940,8 @@
      Op deze pagina verdwijnt de onderbalk (focusmodus), zodat hij niet over het formulier of het gedicht valt. */
   var RIJM_URL = 'https://oivhdejsvmsudfrulwsn.supabase.co/functions/v1/sint-rijm';
   var RIJM_STIJL = '<style>' +
-    '.rijm-z{--rz-navy:#0b1225;--rz-gold:#e4b75a;--rz-goldl:#f7d77f;--rz-paper:#fffdf8;--rz-ink:#172034;--rz-muted:#687083;--rz-burg:#8a1530;--rz-line:#e9dbc3;--rz-shadow:0 16px 42px rgba(20,20,35,.12);color:var(--rz-ink)}' +
-    '.rijm-z .rz-eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#986724}' +
+    '.rijm-z{--rz-navy:#0b1225;--rz-gold:#e4b75a;--rz-goldl:#f7d77f;--rz-paper:#fffdf8;--rz-ink:#172034;--rz-muted:#4a5163;--rz-burg:#8a1530;--rz-line:#e9dbc3;--rz-shadow:0 16px 42px rgba(20,20,35,.12);color:var(--rz-ink)}' +
+    '.rijm-z .rz-eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7d5418}' +
     '.rijm-z .rz-knop{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:13px 22px;border:1px solid #c99740;border-radius:15px;background:linear-gradient(#f8dc95,#e6b452);color:#221b1f;font:800 16px/1.2 var(--f-ui);text-decoration:none;box-shadow:0 6px 0 #9c6c24,0 10px 26px rgba(22,16,20,.15);cursor:pointer}' +
     '.rijm-z .rz-knop:active{transform:translateY(2px);box-shadow:0 4px 0 #9c6c24}' +
     '.rijm-z .rz-knop.rz-wit{background:#fff;box-shadow:none;border-color:#e2d2b7;color:#23243b;min-height:46px;padding:10px 14px;font-size:14px}' +
@@ -1979,24 +1980,24 @@
     '.rz-velden{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.rz-veld{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;border:0;min-width:0}.rz-veld.breed{grid-column:1/-1}' +
     '.rz-veld>label,.rz-veld legend{font-weight:790;font-size:14px;color:#242336;padding:0;margin-bottom:2px}' +
     '.rz-veld input[type=text],.rz-veld select,.rz-veld textarea{width:100%;min-height:50px;background:#fff;border:1.5px solid #ded9d1;border-radius:13px;padding:11px 14px;color:#202336;font:16px/1.5 var(--f-ui)}.rz-veld textarea{min-height:118px;resize:vertical}.rz-veld input:focus,.rz-veld textarea:focus,.rz-veld select:focus{border-color:#ba8d40}' +
-    '.rz-veld small{color:#797489;font-size:12px}' +
-    '.rz-keuzes{display:flex;flex-wrap:wrap;gap:8px}.rz-keuzes label{position:relative;min-height:44px;display:inline-flex;align-items:center;padding:9px 15px;border:1px solid #dccfbb;border-radius:999px;background:#f3eee5;color:#29283b;font-weight:680;cursor:pointer}' +
+    '.rz-veld small{color:#4f4a5e;font-size:13px}.rz-veld ::placeholder{color:#7a7384;opacity:1}' +
+    '.rz-keuzes{display:flex;flex-wrap:wrap;gap:8px}.rz-keuzes label{position:relative;min-height:44px;display:inline-flex;align-items:center;padding:9px 15px;border:1.5px solid #cdb98f;border-radius:999px;background:#fff;color:#1d1c2b;font-weight:700;cursor:pointer}' +
     '.rz-keuzes input{position:absolute;opacity:0;pointer-events:none}.rz-keuzes label:has(input:checked){background:#111d37;color:#ffe39b;border-color:#bb8d46;box-shadow:inset 0 0 0 1px #d8ad5b}.rz-keuzes label:has(input:focus-visible){outline:3px solid #137ca8;outline-offset:2px}' +
-    '.rz-humor{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.rz-humor label{border-radius:15px;padding:12px 6px;flex-direction:column;justify-content:center;gap:3px;font-size:14px;text-align:center}.rz-humor small{font-size:11px;opacity:.75;font-weight:500}' +
-    '.rz-acties-form{border-top:1px solid #e9dfd0;padding:22px}.rz-acties-form p{margin:12px 0 0;text-align:center;color:#83798b;font-size:12px}' +
+    '.rz-humor{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.rz-humor label{border-radius:15px;padding:12px 6px;flex-direction:column;justify-content:center;gap:3px;font-size:14px;text-align:center}.rz-humor small{font-size:12px;font-weight:600;color:#4f4a5e}.rz-keuzes label:has(input:checked) small{color:#f7e3b0}' +
+    '.rz-acties-form{border-top:1px solid #e9dfd0;padding:22px}.rz-acties-form p{margin:12px 0 0;text-align:center;color:#4f4a5e;font-size:13px}' +
     '.rz-fout{background:#fff3f0;border:1px solid #e9b7aa;border-radius:12px;padding:12px 14px;color:#5a2418;margin:0 22px 0}' +
     '.rz-wacht{background:radial-gradient(circle at 50% 20%,#273251,#0b1225 65%);border-radius:28px;min-height:min(78vh,640px);padding:34px 16px;display:grid;place-items:center;scroll-margin-top:90px}' +
     '.rz-wachtkaart{width:min(100%,550px);background:#fffdf7;border-radius:28px;padding:26px 24px 26px;overflow:hidden;text-align:center;border:2px solid #debc78;box-shadow:0 28px 90px rgba(0,0,0,.4)}' +
     '.rz-boekbeeld{margin:4px -24px 14px;overflow:hidden}.rz-boekbeeld img{width:100%;height:auto;display:block}' +
-    '.rz-stappen{list-style:none;margin:0 0 18px;padding:6px 16px;text-align:left;background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:1px solid #e2c17c;border-radius:16px}.rz-stappen li{display:flex;align-items:center;gap:12px;padding:9px 0;font-weight:700;font-size:16px;border-bottom:1px solid #ecdcb8;color:#7b7280}.rz-stappen li:last-child{border-bottom:0}' +
+    '.rz-stappen{list-style:none;margin:0 0 18px;padding:6px 16px;text-align:left;background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:1px solid #e2c17c;border-radius:16px}.rz-stappen li{display:flex;align-items:center;gap:12px;padding:9px 0;font-weight:700;font-size:16px;border-bottom:1px solid #ecdcb8;color:#5c566a}.rz-stappen li:last-child{border-bottom:0}' +
     '.rz-stappen li span{flex:none;width:24px;height:24px;border-radius:50%;border:3px dotted #c99740}.rz-stappen li.bezig{color:#172034}.rz-stappen li.bezig span{animation:rzdraai 1.2s linear infinite}.rz-stappen li.klaar{color:#172034}.rz-stappen li.klaar span{border:0;background:#2e9e4a url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 12.5l4 4 8-9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E") center/16px no-repeat}' +
     '@keyframes rzdraai{to{transform:rotate(360deg)}}' +
     '.rz-scene{height:170px;display:flex;align-items:center;justify-content:center;gap:8px}.rz-scene .b{font-size:92px;animation:rzboek 3s ease-in-out infinite}.rz-scene .v{font-size:54px;animation:rzveer 2s ease-in-out infinite}' +
     '.rz-wachtkaart h2{font:700 clamp(26px,5vw,36px)/1.15 var(--f-kop);margin:6px 0 10px}.rz-grap{color:#7d1730;font-weight:780;min-height:50px;margin:10px auto 18px;font-size:16px}' +
     '.rz-balk{height:9px;border-radius:20px;background:#eee5d4;overflow:hidden;position:relative}.rz-balk:before{content:"";position:absolute;left:-30%;width:36%;height:100%;background:linear-gradient(90deg,#cf9d44,#ffe6a8);border-radius:20px;animation:rzloop 1.65s infinite ease-in-out}' +
-    '.rz-noot{margin:13px 0 0;font-size:13px;color:#686a78}' +
+    '.rz-noot{margin:13px 0 0;font-size:14px;color:#4a4d5c}' +
     '@keyframes rzboek{0%,100%{transform:translateY(1px) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}@keyframes rzveer{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(-5deg) translateY(-8px)}}@keyframes rzloop{0%{left:-35%}100%{left:110%}}' +
-    '.rz-terug{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:8px 0;color:#574c62;font:700 15px var(--f-ui);cursor:pointer;margin-bottom:6px}' +
+    '.rz-terug{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:8px 0;color:#3d3650;font:700 15px var(--f-ui);cursor:pointer;margin-bottom:6px}' +
     '.rz-uitslag{scroll-margin-top:90px}.rz-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);align-items:start;gap:18px}' +
     '.rz-gedicht{background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:2px solid #d6b575;border-radius:24px;padding:28px 26px;box-shadow:0 18px 45px rgba(26,26,46,.08);position:relative;overflow:hidden}' +
     '.rz-gedicht:before{content:"✦";position:absolute;font-size:170px;top:-99px;right:-45px;color:#f3e4c9;pointer-events:none}' +
@@ -2004,11 +2005,11 @@
     '.rz-gedicht .rz-tekst{white-space:pre-wrap;overflow-wrap:anywhere;font:17px/1.72 Georgia,"Times New Roman",serif;margin:0;position:relative}' +
     '.rz-handtekening{text-align:right;color:#a21c39;font:italic 28px/1.2 Georgia,serif;margin-top:18px}' +
     '.rz-acties{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}' +
-    '.rz-cadeaus{background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:2px solid #d6b575;border-radius:24px;padding:20px;box-shadow:var(--rz-shadow)}.rz-cadeaus h2{font:700 27px/1.15 var(--f-kop);margin:2px 0 6px}.rz-cadeaus>p{font-size:13px;color:#6a6b7b;margin:0 0 14px}' +
+    '.rz-cadeaus{background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:2px solid #d6b575;border-radius:24px;padding:20px;box-shadow:var(--rz-shadow)}.rz-cadeaus h2{font:700 27px/1.15 var(--f-kop);margin:2px 0 6px}.rz-cadeaus>p{font-size:14px;color:#4a4d5c;margin:0 0 14px}' +
     '.rz-cadeau{border:1px solid #e8ddce;border-radius:15px;background:#fff;padding:11px;display:flex;gap:12px;align-items:center;margin-bottom:10px;color:inherit;text-decoration:none}.rz-cadeau:hover{border-color:#d6b575}' +
-    '.rz-cadeau img{width:78px;height:78px;border-radius:12px;object-fit:contain;background:#fff;flex:none}.rz-cadeau div{min-width:0;flex:1}.rz-cadeau b{display:block;font-size:14px;line-height:1.3}.rz-cadeau small{color:#6b6c7b;font-size:12px}.rz-cadeau em{display:block;font-style:normal;font-size:14px;color:#a26b23;font-weight:780}.rz-cadeau .pijl{flex:none;width:34px;height:34px;border-radius:50%;background:#f3d27a;display:grid;place-items:center;font-weight:800}' +
+    '.rz-cadeau img{width:78px;height:78px;border-radius:12px;object-fit:contain;background:#fff;flex:none}.rz-cadeau div{min-width:0;flex:1}.rz-cadeau b{display:block;font-size:14px;line-height:1.3}.rz-cadeau small{color:#4a4d5c;font-size:13px}.rz-cadeau em{display:block;font-style:normal;font-size:14px;color:#a26b23;font-weight:780}.rz-cadeau .pijl{flex:none;width:34px;height:34px;border-radius:50%;background:#f3d27a;display:grid;place-items:center;font-weight:800}' +
     '.rz-totaal{background:#fff3d4;border:1px solid #e2c17c;border-radius:14px;padding:13px;text-align:center;font-weight:850;color:#362c28;margin-top:4px}' +
-    '.rz-cadeaus .rz-knop{margin-top:12px}.rz-klein{font-size:11px!important;line-height:1.4;color:#6d6970!important;margin:12px 0 0!important}' +
+    '.rz-cadeaus .rz-knop{margin-top:12px}.rz-klein{font-size:12px!important;line-height:1.45;color:#4f4a5e!important;margin:12px 0 0!important}' +
     '.rz-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#18382a;color:#fff;border-radius:999px;z-index:60;padding:10px 16px;font-weight:700;font-size:14px;box-shadow:var(--rz-shadow)}' +
     '@media (max-width:720px){.rz-velden{grid-template-columns:1fr}.rz-grid{grid-template-columns:1fr}}' +
     '@media (max-width:480px){.rz-pagina{width:calc(100% - 28px)}.rz-velden{padding:17px}.rz-kaartkop{padding:12px 16px}.rz-humor label{font-size:13px}.rz-gedicht{padding:24px 20px}.rz-gedicht .rz-tekst{font-size:16px;line-height:1.65}.rz-acties .rz-knop{padding:9px 6px;font-size:13px}.rz-scene{height:130px}.rz-scene .b{font-size:68px}.rz-scene .v{font-size:42px}}' +

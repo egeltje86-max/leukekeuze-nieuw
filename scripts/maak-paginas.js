@@ -213,6 +213,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
     /* Nakijkbeurt 6-11-2026: korte producttekst? Vul de omschrijving voor Google aan met prijs en winkel. */
     if (r.prod && r.prod.prijs && oms.length < 90 && oms.indexOf('€') === -1) oms = oms.replace(/\s+$/, '') + ' Nu €' + Number(r.prod.prijs).toFixed(2).replace('.', ',') + ' bij ' + r.prod.winkel + '. Met de hand gekozen door LeukeKeuze.';
+    /* Nakijkbeurt 8-11-2026: te korte of afgebroken omschrijvingen (bijv. 'beheerd door:') netjes aanvullen. */
+    if (/:$/.test(oms)) oms = r.h1 + ' van LeukeKeuze: met de hand gekozen cadeaus, je koopt bij bekende winkels.';
+    else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
     paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg });
