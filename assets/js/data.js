@@ -942,10 +942,10 @@ var LK_ALLE_GROEPEN = ['sieraden', 'geuren-verzorging', 'mode-beauty', 'elektron
 window.LK_GELEGENHEDEN = [
   { slug: 'moederdag', seizoen: ['04-10', '05-12'], uit: LK_GEEN_FEEST, naam: 'Moederdag', beeld: 'images/sub/sub-cadeaus-voor-haar-2026b.webp', seoTitel: 'Moederdagcadeau – de mooiste cadeaus voor Moederdag',
     tekst: 'Iets moois voor mama: sieraden, geuren, iets lekkers of iets met haar naam erop.',
-    labels: ['haar'], vakken: ['tag:moederdag'] /* 1-11-2026 streng: 168 gekeurde cadeaus */ },
+    labels: ['haar'], vakken: ['tag:moederdag', 'mode-sieraden/sieraden', 'beauty-verzorging/parfum', 'beauty-verzorging/wellness', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'wonen/woondecoratie', 'eten-drinken/chocolade-snoep', 'mode-sieraden/accessoires'] /* 1-11-2026 streng: 168 gekeurde cadeaus */ },
   { slug: 'vaderdag', seizoen: ['05-20', '06-21'], uit: LK_GEEN_FEEST, naam: 'Vaderdag', beeld: 'images/sub/sub-cadeaus-voor-hem-2026b.webp', seoTitel: 'Vaderdagcadeau – de leukste cadeaus voor Vaderdag',
     tekst: 'Voor papa: een goede fles, iets voor de BBQ, een gadget of een horloge.',
-    labels: ['hem'], vakken: ['tag:vaderdag'] /* 1-11-2026 streng: 179 gekeurde cadeaus */ },
+    labels: ['hem'], vakken: ['tag:vaderdag', 'eten-drinken/sterke-drank', 'eten-drinken/bier', 'elektronica/gadgets', 'sport-outdoor/darts', 'eten-drinken/delicatessen', 'mode-sieraden/horloges', 'wonen/koffie-thee-zetten', 'tuin-klussen/klussen'] /* 1-11-2026 streng: 179 gekeurde cadeaus */ },
   { slug: 'kerst', seizoen: ['11-01', '12-26'], naam: 'Kerst', naar: '/c/cadeaus/kerst', beeld: 'images/sub/sub-cadeaus-kerst-2026b.webp' },
   { slug: 'geboorte', naam: 'Geboorte & kraam', naar: '/voor/baby', beeld: 'images/sub/sub-cadeaus-baby-kraam-2026b.webp' },
   { slug: 'valentijn', seizoen: ['01-15', '02-14'], naam: 'Liefde & Valentijn', naar: '/c/valentijn', beeld: 'images/sub/sub-valentijn-voor-haar.webp' },
@@ -954,29 +954,29 @@ window.LK_GELEGENHEDEN = [
     knoppen: ['jaar'], vakken: LK_ALLE_GROEPEN.concat(['tag:verjaardag']) },
   { slug: 'jubileum', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kraam|baby|voorraad|kat\b|kilo|rakkers/i, naam: 'Trouwen & jubileum', beeld: 'images/sub/sub-valentijn-samen.webp', seoTitel: 'Trouwcadeau, huwelijkscadeau en jubileumcadeau',
     tekst: 'Een bruiloft, een trouwdag of een jubileum: iets persoonlijks, iets om te proosten of iets blijvends.',
-    vakken: ['tag:trouwen', 'valentijn/samen', 'valentijn/met-naam', 'dranken/champagne-bubbels', 'sieraden/echt-goud', 'wonen/fotolijsten'] /* 31-10-2026: glazen & servies eruit */ },
+    vakken: ['tag:trouwen', 'eten-drinken/bubbels', 'mode-sieraden/sieraden', 'wonen/foto-persoonlijk', 'eten-drinken/cadeaupakketten', 'wonen/kaarsen-geur'] /* 31-10-2026: glazen & servies eruit */ },
   { slug: 'housewarming', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|hulst|maretak|pumpkin|minecraft|kinder|baby/i, naam: 'Housewarming', beeld: 'images/sub/sub-wonen-woonaccessoires.webp', seoTitel: 'Housewarming cadeau – cadeau voor een nieuwe woning',
     tekst: 'Iemand gaat verhuizen of heeft een nieuw huis: iets moois voor in huis, een plant of iets om te proosten.',
-    vakken: ['tag:housewarming', 'wonen/vazen-bloemen', 'wonen/kaarsen', 'wonen/huisgeuren', 'wonen/deurmatten', 'wonen/fotolijsten', 'keuken/kaas-serveerplanken', 'dranken/champagne-bubbels'], maxPrijs: 75 /* 31-10-2026 strenger */ },
+    vakken: ['tag:housewarming', 'wonen/woondecoratie', 'wonen/kaarsen-geur', 'wonen/verlichting', 'wonen/woontextiel', 'wonen/tafelen', 'eten-drinken/bubbels', 'eten-drinken/cadeaupakketten'], maxPrijs: 75 /* 31-10-2026 strenger */ },
   { slug: 'sinterklaas', seizoen: ['10-15', '12-05'], naam: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
   { slug: 'bedankt', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kilo|silo|\d{2,3} stuks|mix \(/i, naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
     tekst: 'Een klein gebaar dat groot aankomt: iets lekkers, een kaars, een plantje of een goede fles.', maxPrijs: 25,
-    vakken: ['tag:juf-meester', 'eten-drinken/brievenbuscadeaus', 'eten-drinken/chocolade'] /* 31-10-2026 strenger */ },
+    vakken: ['tag:juf-meester', 'eten-drinken/chocolade-snoep', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'beauty-verzorging/bad-douche'] /* 31-10-2026 strenger */ },
   { slug: 'juf-meester', voorWie: ['haar', 'hem'], /* stap 4: alleen juf (haar) of meester (hem) */ seizoen: ['06-10', '07-20'], uit: LK_GEEN_FEEST, naam: 'Juf & meester', beeld: 'images/sub/sub-boeken-media-agendas.webp', seoTitel: 'Cadeau voor de juf of meester – bedankje einde schooljaar',
     tekst: 'Dankjewel zeggen aan de juf of meester: aan het einde van het schooljaar of zomaar.', maxPrijs: 25,
-    vakken: ['tag:juf-meester'] }, /* 31-10-2026: alleen kleine bedankjes (zie indeling.js) */
+    vakken: ['tag:juf-meester', 'eten-drinken/chocolade-snoep', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'hobby/papier-planners', 'beauty-verzorging/bad-douche'] }, /* 31-10-2026: alleen kleine bedankjes (zie indeling.js) */
   { slug: 'uitdeelcadeautjes', naam: 'Uitdeelcadeautjes', beeld: 'images/sub/sub-eten-drinken-drop-snoep.webp', seoTitel: 'Uitdeelcadeautjes – voor een kinderfeestje of de klas',
     tekst: 'Kleine cadeautjes om uit te delen: voor een kinderfeestje, de klas of in een feestzakje.', maxPrijs: 10,
     labels: ['kind', 'kinderen', 'tiener'], vakken: ['tag:uitdelen', 'speelgoed/hypes-trends', 'speelgoed/knutselen-kleuren', 'speelgoed/pokemon-verzamelkaarten', 'speelgoed/bord-kaartspellen', 'eten-drinken/drop-snoep'] },
   { slug: 'beterschap', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|baby|truffel|kilo|silo/i, naam: 'Beterschap & sterkte', beeld: 'images/sub/sub-wonen-plaids-kussens.webp', seoTitel: 'Beterschapscadeau en sterkte cadeau',
     tekst: 'Voor iemand die ziek is of het moeilijk heeft: iets om op te vrolijken of even te troosten.', maxPrijs: 40,
-    vakken: ['tag:beterschap', 'eten-drinken/brievenbuscadeaus', 'eten-drinken/chocolade', 'geuren-verzorging/bad-douche', 'boeken-media/puzzelboeken', 'mode-beauty/pantoffels-sokken', 'wonen/kussens-plaids'] /* 31-10-2026 strenger */ },
+    vakken: ['tag:beterschap', 'eten-drinken/cadeaupakketten', 'eten-drinken/chocolade-snoep', 'beauty-verzorging/bad-douche', 'boeken-media/boeken', 'wonen/woontextiel', 'eten-drinken/koffie-thee-cacao'] /* 31-10-2026 strenger */ },
   { slug: 'geslaagd', seizoen: ['06-01', '07-15'], uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kinder|fortnite|baby|magnum/i, naam: 'Geslaagd & rijbewijs', beeld: 'images/sub/sub-mode-beauty-rugzakken-reistassen.webp', seoTitel: 'Geslaagd cadeau – cadeau voor je diploma of rijbewijs',
     tekst: 'Geslaagd voor het examen of het rijbewijs gehaald: een cadeau om het te vieren.',
-    vakken: ['tag:geslaagd', 'mode-beauty/rugzakken', 'mode-beauty/koffers', 'mode-beauty/portemonnees', 'sieraden/horloges', 'dranken/champagne-bubbels', 'elektronica/koptelefoons', 'elektronica/speakers', 'elektronica/telefoon-opladen'], maxPrijs: 150 /* 31-10-2026 strenger */ },
+    vakken: ['tag:geslaagd', 'mode-sieraden/tassen-portemonnees', 'mode-sieraden/horloges', 'eten-drinken/bubbels', 'elektronica/audio', 'mode-sieraden/sieraden', 'eten-drinken/chocolade-snoep'], maxPrijs: 150 /* 31-10-2026 strenger */ },
   { slug: 'afscheid-pensioen', uit: LK_GEEN_FEEST, naam: 'Afscheid & pensioen', beeld: 'images/sub/sub-cadeaus-collega-2026b.webp', seoTitel: 'Afscheidscadeau en pensioencadeau',
     tekst: 'Een mooi afscheid van een collega, of een cadeau voor wie met pensioen gaat.', gids: 'afscheidscadeau-collega',
-    vakken: ['tag:afscheid', 'tag:collega-afscheid'] }, /* 31-10-2026: alleen echte afscheids- en pensioencadeaus (was: alles voor collega/opa-oma) */
+    vakken: ['tag:afscheid', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'eten-drinken/chocolade-snoep', 'eten-drinken/bubbels', 'beauty-verzorging/wellness', 'wonen/foto-persoonlijk', 'eten-drinken/delicatessen'] }, /* 31-10-2026: alleen echte afscheids- en pensioencadeaus (was: alles voor collega/opa-oma) */
   { slug: 'doop-belijdenis', naam: 'Doop & belijdenis', naar: '/c/christelijk/doop-belijdenis', beeld: 'images/sub/sub-christelijk-doop-belijdenis.webp' }
 ];
 /* Gelegenheden in de juiste volgorde voor vandaag: wat nu speelt eerst. */
