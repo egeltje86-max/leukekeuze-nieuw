@@ -2380,6 +2380,70 @@
           ], ids: ['bol-9300000039602281'] }
       ],
       slot: 'Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
+    { slug: 'adventskalender-kiezen', beeld: 'bol-9300000408782128', vakken: ['cadeaus/kerst', 'eten-drinken/adventskalenders', 'eten-drinken/chocolade-snoep', 'wonen/kerstdecoratie'],
+      titel: 'Adventskalender kopen: de leukste kalenders van 2026', kort: 'Chocolade, thee, popcorn of een kaars: 24 dagen aftellen naar Kerst. Van €13 tot €80.',
+      intro: 'Vanaf 1 december elke dag een vakje openmaken: een adventskalender maakt van het wachten op Kerst een klein feestje. Vroeger zat er alleen een plaatje of een chocolaatje in, nu is er voor iedereen wat: thee voor je moeder, popcorn voor filmavonden, een puzzelverhaal dat je in 24 dagen oplost. Het is ook een heel dankbaar cadeau, want je geeft eigenlijk 24 cadeautjes tegelijk. Ik zette de leukste op een rij, van klein tot flink uitpakken. Eén tip vooraf: bestel vóór eind november, want op 1 december wil je beginnen en de populairste kalenders zijn dan op.',
+      delen: [
+        { kop: 'Waar let je op bij een adventskalender?', tekst: 'Een paar dingen om even te bekijken voordat je kiest:',
+          lijst: [
+            'Tel de vakjes: de meeste kalenders hebben 24 (tot kerstavond), sommige 25 vakjes (tot en met eerste kerstdag).',
+            'Kijk wat erin zit: bij chocolade weet je het zeker, bij "verrassingskalenders" is de inhoud wel eens teleurstellend.',
+            'Reken even uit wat je per vakje betaalt. Een kalender van €20 met 24 vakjes is nog geen euro per dag.',
+            'Voor kinderen: kies iets zonder kleine onderdelen voor de allerkleinsten, en koop voor elk kind dezelfde soort, dat voorkomt ruzie.',
+            'Bestel op tijd: een adventskalender die op 3 december binnenkomt, mist precies waar hij voor bedoeld is.'
+          ] },
+        { kop: 'De chocolade-klassiekers', tekst: 'Je kunt niet misgaan met chocolade. Dit zijn de bekende merken, van Tony’s tot Lindt.',
+          ids: ['bol-9300000186028245', 'bol-9300000187297428', 'bol-9300000237632552', 'dw-7622210598837'] },
+        { kop: 'Net even anders', tekst: 'Voor wie elk jaar al een chocoladekalender krijgt: jam, thee, popcorn of een puzzelverhaal dat je in 24 dagen oplost.',
+          ids: ['bol-9300000408782128', 'dw-680275066859', 'dw-4260611771720', '999g-999exi30'] },
+        { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
+          ids: ['dw-8000500392065', 't2-handpoppen-bf7af21cea', 'amz-b0hmfl96b8'] },
+        { kop: 'Aftellen met kaarsen', tekst: 'Liever geen vakjes? Een adventskaars brandt je elke dag een streepje verder naar Kerst, en een krans met vier kaarsen hoort bij de vier adventszondagen.',
+          ids: ['ww-khe99771207305', 'ww-fev88280195803', 'dk-00042099', 'wwk-2280887'] }
+      ],
+      slot: 'Meer lekkers voor december vind je bij <a href="/c/eten-drinken">Eten &amp; drinken</a> en alle kerstspullen bij <a href="/c/cadeaus/kerst">Kerst</a>. Zoek je een kerstcadeau? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor haar</a> of <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor hem</a>.' },
+    { slug: 'kerstcadeau-kind', beeld: 'hema-f9c9a4dbde', vakken: ['cadeaus/kerst', 'cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/lego'],
+      titel: 'Kerstcadeau voor een kind: de leukste ideeën per leeftijd', kort: 'Voor onder de boom: van DUPLO voor de kleintjes tot Pokémon en games. Van €7 tot €50.',
+      intro: 'Een kerstcadeau voor een kind uitzoeken is leuk, maar ook lastig: je wilt iets geven waar het kind écht blij van wordt, en niet iets dat op tweede kerstdag alweer in de kast ligt. Het geheim zit in twee dingen: kies iets dat past bij de leeftijd, en kies iets waar het kind in de kerstvakantie meteen mee aan de slag kan. Twee weken vrij is namelijk de beste tijd van het jaar om te bouwen, te spelen en spelletjes te doen. Ik heb alles hieronder streng uitgezocht: geen troep, alleen cadeaus die het lang volhouden. En van elke prijs wat, van een kleurboek van 7 euro tot een game voor de Switch.',
+      delen: [
+        { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:',
+          lijst: [
+            'Vraag de ouders (of kijk stiekem op het verlanglijstje) waar het kind nú gek op is. Hypes wisselen snel.',
+            'Kies iets om te dóén: bouwen, maken, spelen. Daar heeft een kind de hele kerstvakantie wat aan.',
+            'Let op de leeftijd op de doos. Te moeilijk is frustrerend, te makkelijk is saai.',
+            'Geef je een spel? Kies er een die het kind met opa, oma of het hele gezin kan spelen tijdens de kerstdagen.'
+          ] },
+        { kop: 'Voor de kleintjes (tot 4 jaar)', tekst: 'Stevig hout en DUPLO: hier kan een peuter niets aan kapot maken, en ze spelen er jaren mee.',
+          ids: ['lego-10441', 'lego-10473', 'dk-00040677', 'cl-ld-stapelbekers'] },
+        { kop: 'Bouwen en maken (5 tot 9 jaar)', tekst: 'Op deze leeftijd willen kinderen iets máken. Magnetische tegels, LEGO of een echte robot op zonne-energie.',
+          ids: ['dgsw-ff4a82687a', 'hema-f9c9a4dbde', 't2-cadeau-nl-8189fb6f8b', 'dk-00025946'] },
+        { kop: 'Spellen voor de kerstvakantie', tekst: 'Voor aan tafel tussen Kerst en Oud en Nieuw: snelle kaartspellen waar het hele gezin om moet lachen.',
+          ids: ['999g-999kls01', '999g-999jak04', 'amz-b09vt565j8', 'cb-luigis-mansion3'] },
+        { kop: 'Voor de fans', tekst: 'Pokémon, Mario en Toy Story: als je weet waar een kind fan van is, zit je altijd goed.',
+          ids: ['nedgam-8468857b69', 'cl-pokemon-klok', 'superz-9a3d0a0bd5', 'supz-601c903233'] }
+      ],
+      slot: 'Veel meer staat bij <a href="/voor/kinderen">Cadeaus voor kinderen</a>. Wil je weten wat er nu hip is op het schoolplein? Lees <a href="/gids/hypes-2026">De hypes van 2026</a>. En bekroond speelgoed vind je in <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>.' },
+    { slug: 'kerstcadeau-tiener', beeld: 'tt-dvzn-d0fc92f962', vakken: ['cadeaus/kerst', 'speelgoed/hypes-trends', 'elektronica/gaming', 'sieraden/kettingen'],
+      titel: 'Kerstcadeau voor een tiener: ideeën die niet kinderachtig zijn', kort: 'Voor je zoon, dochter, neef of kleinkind van 12 tot 18. Van €15 tot €79.',
+      intro: 'Tieners zijn misschien wel de lastigste groep om een kerstcadeau voor te vinden. Speelgoed is kinderachtig, maar voor een duur cadeau zoals een telefoon geef je ze liever geld. De truc: geef iets dat bij hún wereld past, dus muziek, gamen, hun eigen kamer of hun stijl. En let op merken, want die tellen op die leeftijd zwaar. Alles hieronder is door tieners zelf goedgekeurd: het zijn de dingen die ze nu echt gebruiken en op verlanglijstjes zetten. Twijfel je? Vraag stiekem even aan een vriend of vriendin wat er leeft.',
+      delen: [
+        { kop: 'Zo scoor je bij een tiener', tekst: 'Vier regels die het verschil maken:',
+          lijst: [
+            'Niet te kinderachtig: liever iets "volwassens" in een goedkopere uitvoering dan duur speelgoed.',
+            'Het merk telt. Een onbekend merk oordopjes ligt in de la, een bekend merk wordt gebruikt.',
+            'Iets voor hun eigen kamer werkt bijna altijd: een lamp, een poster, iets voor hun bureau.',
+            'Echt geen idee? Vraag het hun vrienden, die weten het beter dan de ouders.'
+          ] },
+        { kop: 'Voor de gamer', tekst: 'Een goede controller, een nieuwe game of een lamp die de kamer meteen cooler maakt.',
+          ids: ['joybuy-6a6fbf11cb', 'cb-sonic-racing', 't2-nedgame-4639e1bcd1', 'tt-dvzn-d0fc92f962'] },
+        { kop: 'Muziek en filmpjes maken', tekst: 'Oordopjes van een echt audiomerk, karaoke voor op een feestje of een gimbal voor strakke video’s.',
+          ids: ['tf-107003281', 'hema-1976c559e6', 'cb-osmo-mobile7', 'fiftie-c634bd1714'] },
+        { kop: 'Voor haar: stijl en zelf maken', tekst: 'Een gouden kettinkje met haar beginletter, armbandjes maken met vriendinnen of een verwenpakket.',
+          ids: ['pry-zh2x', 'boeken-b4ca80eae9', 'hema-33d8a73d1b', 'bol-9300000162839311'] },
+        { kop: 'Handig (en stiekem cool)', tekst: 'Een dikke powerbank, een activity tracker of een LEGO-auto voor op de kamer: praktisch, maar wel leuk om te krijgen.',
+          ids: ['jb-samsung-pb20k', 'cb-galaxy-fit3', 'lego-77241', 'dgsw-e7e3188ef3'] }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/voor/tieners">Cadeaus voor tieners</a>. Wat er nu viraal gaat, lees je in <a href="/gids/hypes-2026">De hypes van 2026</a> en <a href="/gids/virale-cadeaus-2026">Virale cadeaus 2026</a>.' },
     { slug: 'noodpakket-checklist', beeld: 'bol-9300000184877600', vakken: ['noodpakket-survival', 'noodpakket-survival/noodpakketten', 'noodpakket-survival/noodradio', 'noodpakket-survival/water-eten', 'noodpakket-survival/licht-stroom', 'noodpakket-survival/ehbo-brand'],
       titel: 'Noodpakket samenstellen: de checklist voor 72 uur (en wat iedereen vergeet)', kort: 'Wat moet er in een noodpakket? De complete lijst, de dingen die mensen vaak vergeten en de spullen die het waard zijn.',
       intro: 'De overheid vraagt iedereen om zich voor te bereiden op een noodsituatie: een lange stroomstoring, geen internet of telefoon, of een overstroming. Het advies is om 72 uur, dus 3 dagen, zelf te kunnen redden. Dat klinkt groot, maar het is goed te doen. Ik zette alles op een rij: wat erin moet, wat mensen vaak vergeten en welke spullen echt het geld waard zijn. Je hoeft niet alles in één keer te kopen. Begin met de basis en vul het stap voor stap aan.',
@@ -2657,6 +2721,89 @@
         { kop: 'Tip: geef er een afspraak bij', tekst: 'Het mooiste cadeau voor iemand met pensioen is soms gewoon tijd samen. Schrijf op een kaartje bij je cadeau een afspraak: samen fietsen, samen naar de vogels kijken of een dagje uit. Dan heeft het cadeau meteen een plan erbij.' }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/collega">Cadeau voor collega</a>, <a href="/c/dieren/vogels">Vogels</a> en <a href="/c/metaaldetectie">Metaaldetectie</a>. Gaat er een collega weg naar een nieuwe baan? Lees dan <a href="/gids/afscheidscadeau-collega">Afscheidscadeau voor een collega</a>.' },
+    { slug: 'kraamcadeau', beeld: 'knufk-bambam-pakket', vakken: ['cadeaus/baby-kraam', 'speelgoed/baby-peuter', 'cadeaus/voor-kinderen'],
+      titel: 'Kraamcadeau: ideeën waar ouders écht iets aan hebben', kort: 'Voor op kraamvisite: lief voor de baby, handig voor de ouders. Van €6 tot €65.',
+      intro: 'Op kraamvisite ga je niet met lege handen. Maar wat neem je mee? De meeste ouders krijgen stapels rompertjes in maat 50 en meer knuffels dan er in de wieg passen. Het beste kraamcadeau is daarom iets waar ze over een paar maanden nog wat aan hebben, of iets voor de ouders zelf, want die worden op kraamvisite bijna altijd overgeslagen. Ik zette de beste ideeën op een rij, van een klein cadeautje tot iets om met een groepje te geven. En onthoud: het allerbeste wat je kunt meenemen is iets te eten en de vraag "zal ik de afwas even doen?".',
+      delen: [
+        { kop: 'Tips voor het kraamcadeau', tekst: 'Vijf dingen die kraamouders zelf zeggen:',
+          lijst: [
+            'Koop kleding liever in maat 68 of 74 dan in maat 50. Daar passen baby’s maar een paar weken in.',
+            'Vergeet de ouders niet: iets lekkers of iets om te ontspannen valt vaak nog beter dan het zoveelste babycadeau.',
+            'Is er al een groot kind in huis? Een klein cadeautje voor de grote broer of zus voorkomt jaloezie.',
+            'Geef iets voor later: een boek, een spaarpot of iets voor de babykamer gaat jaren mee.',
+            'Vraag van tevoren of je iets kunt meenemen, zoals eten voor de vriezer. Daar help je ze pas echt mee.'
+          ] },
+        { kop: 'Lief voor de baby', tekst: 'Zacht, veilig en net even mooier dan standaard: hier kijken ouders blij van op.',
+          ids: ['hema-d2cd56c14b', 'tbl-0a6h8gez0010m1', 'knufk-bambam-pakket', 'cl-eendjes-familie'] },
+        { kop: 'Voor op de babykamer', tekst: 'Een nachtlampje of een wandkleed: elke avond in gebruik, en het staat er nog als de baby een kleuter is.',
+          ids: ['dvzn-347250', 'tt-lamponline-51b017f92e', 'westwing-4a8bb904b1', 'bol-9300000183026688'] },
+        { kop: 'Voor de ouders zelf', tekst: 'Een ketting voor de kersverse mama, een invulboek vol vragen of gewoon even gips om die bijzondere buik te bewaren (voor de volgende!).',
+          ids: ['myka-1100182088', 'cl-1000-dagen-vragen', 'hm-gipsbuik-set', 'bw-relax-mama-kalender'] }
+      ],
+      slot: 'Alles voor de kleinste vind je bij <a href="/voor/baby">Babycadeaus</a>. Zoek je iets voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' },
+    { slug: 'housewarming-cadeau', beeld: 'dvzn-530181', vakken: ['wonen', 'wonen/woondecoratie', 'wonen/kaarsen-geur', 'wonen/tafelen'],
+      titel: 'Housewarming cadeau: ideeën voor een nieuw huis', kort: 'Voor vrienden of familie die net verhuisd zijn. Van €13 tot €75.',
+      intro: 'Iemand die net verhuisd is, heeft dozen vol spullen en toch nog een leeg huis. Het beste housewarming cadeau maakt dat nieuwe huis meteen een beetje méér thuis: licht, iets voor op tafel of iets om te proosten. Waar je mee op moet passen: smaak. Jij vindt dat beeldje prachtig, maar het moet wel in hún huis passen. Kies daarom iets neutraals, iets grappigs of iets wat op gaat. Ik zette de beste ideeën op een rij, van klein tot een cadeau om met een groep vrienden te geven.',
+      delen: [
+        { kop: 'Tips voor een housewarming cadeau', tekst: 'Zo kies je iets waar ze echt blij mee zijn:',
+          lijst: [
+            'Twijfel je over hun smaak? Kies iets dat op gaat: een mooie fles, een geurkaars, iets lekkers.',
+            'Licht is bijna altijd raak: een nieuwe woning heeft nooit genoeg sfeerverlichting.',
+            'Geef iets voor het eerste avondje thuis: glazen, een plank vol lekkers, een fles bubbels.',
+            'Met een groep? Leg samen in voor één mooi cadeau in plaats van vijf kleine.',
+            'Een kaartje met "veel geluk in jullie nieuwe huis" maakt elk cadeau persoonlijker.'
+          ] },
+        { kop: 'Licht en sfeer', tekst: 'Van een weckpot die overdag oplaadt in de vensterbank tot een lichtsnoer voor de tuin.',
+          ids: ['dvzn-530181', 'lr-351482827000', 'bol-9300000159425017', 'joybuy-234e86090b'] },
+        { kop: 'Voor aan tafel', tekst: 'Mooi servies en een flinke serveerplank: daar heeft elk nieuw huishouden wat aan.',
+          ids: ['t2-hema-5623840130', 'tt-country-acc-40291bdfe5', 'dille-58dac9bd47', 'westwing-0a01a1d0b5'] },
+        { kop: 'Vrolijke details', tekst: 'Een wiebelend geluksmannetje, een knipogende kattenklok of een vaas met kleur: kleine dingen die een huis eigen maken.',
+          ids: ['westwing-0f62b95423', 't2-fiftiesstore-52c8a41b59', 't2-hema-52e407e77f'] },
+        { kop: 'Om te proosten op het nieuwe huis', tekst: 'Champagne, mooie glazen of een karaf: het eerste feestje in het nieuwe huis kan beginnen.',
+          ids: ['dc-1665638250', 'decantalo-4c6ef11dc4', 'dc-2163335415'] }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/gelegenheid/housewarming">Housewarming</a> en <a href="/c/wonen">Wonen</a>.' },
+    { slug: 'cadeau-wijnliefhebber', beeld: 'decantalo-4c6ef11dc4', vakken: ['eten-drinken/wijn', 'eten-drinken/bubbels', 'eten-drinken/drankaccessoires'],
+      titel: 'Cadeau voor een wijnliefhebber: van mooie fles tot Riedel-glazen', kort: 'Wijn geven zonder zelf kenner te zijn: veilige flessen, mooie glazen en luxe om uit te pakken.',
+      intro: 'Een fles wijn geven aan iemand die er verstand van heeft: veel mensen vinden dat spannend. Niet nodig. Er zijn flessen waar vrijwel elke wijnliefhebber blij van wordt, en je hoeft er zelf geen kenner voor te zijn. De veiligste keuze is een Rioja Reserva uit Spanje: een klassieker die bij bijna iedereen goed valt. En wil je iets geven dat níét op gaat, kies dan mooie glazen of een karaf. Daar denkt iemand bij elk glas weer even aan je. Alle wijnen hieronder komen van een echte wijnwinkel, niet uit het supermarktschap.',
+      delen: [
+        { kop: 'Zo kies je een fles als cadeau', tekst: 'Vier simpele regels, geen kennersgedoe:',
+          lijst: [
+            'Veilige keuze: een Rioja Reserva uit Spanje. Soepel, klassiek en bijna iedereen vindt het lekker.',
+            'Tussen de 15 en 25 euro zit je goed: duidelijk beter dan de supermarkt, zonder dat het gek wordt.',
+            'Kijk (of vraag stiekem) wat iemand zelf drinkt: wie altijd wit drinkt, maak je niet blij met zware rode wijn.',
+            'Twijfel je? Bubbels. Champagne is voor bijna elke wijnliefhebber feest.'
+          ] },
+        { kop: 'Veilige flessen (€12 tot €25)', tekst: 'Spaanse klassiekers die het altijd goed doen. De Cune Reserva is misschien wel de beste koop van deze hele lijst.',
+          ids: ['dc-2073674337', 'dc-1680371208', 'dc-2041274417', 'dc-2042172830'] },
+        { kop: 'Net iets specialer (€25 tot €35)', tekst: 'Voor een verjaardag of als bedankje dat net wat meer mag zijn.',
+          ids: ['dc-2096174492', 'dc-1774276360', 'dc-2874880424', 'dc-2059774751'] },
+        { kop: 'Cadeaus die niet op gaan', tekst: 'Goede glazen en een karaf maken elke fles beter. Riedel is hét merk waar wijnliefhebbers zelf naar kijken.',
+          ids: ['decantalo-4c6ef11dc4', 'dc-2163335415', 'dvzn-243456', 'bol-9300000405968428'] },
+        { kop: 'Om echt uit te pakken', tekst: 'Champagne van een groot huis of een grote Italiaan: voor een jubileum, een pensioen of gewoon omdat het kan.',
+          ids: ['dc-1665638250', 'dc-1652149584', 'dc-2190379159', 'dc-2620875218'] }
+      ],
+      slot: 'Alle wijnen staan bij <a href="/c/eten-drinken/wijn">Wijn</a> en de bubbels bij <a href="/c/eten-drinken/bubbels">Bubbels</a>. Geen 18, geen alcohol.' },
+    { slug: 'cadeau-hondenliefhebber', beeld: 'dvzn-358202', vakken: ['dieren/hond', 'dieren'],
+      titel: 'Cadeau voor een hondenliefhebber (en voor de hond zelf)', kort: 'Voor het baasje én de hond: van grappig tot flink verwend. Van €10 tot €90.',
+      intro: 'Voor veel mensen is de hond gewoon een gezinslid. Een cadeau voor de hond is dus eigenlijk een cadeau voor het baasje, en andersom. Het leuke: hondencadeaus zijn er in elke prijsklasse, van een bruisbal voor het hondenbad tot een prachtige mand van zeegras. Eén ding om op te letten: geef geen snacks of voer zonder te overleggen, want veel honden hebben een allergie of een streng dieet. Speelgoed, een mand of iets voor in huis is altijd veilig. Ik zette de leukste ideeën op een rij.',
+      delen: [
+        { kop: 'Waar let je op?', tekst: 'Drie dingen voordat je kiest:',
+          lijst: [
+            'De maat van de hond: een mand voor een beagle is voor een labrador een kussentje.',
+            'Geen voer of snacks zonder overleg: allergieën en diëten komen bij honden vaak voor.',
+            'Sloopt de hond alles? Kies dan stevig speelgoed van rubber in plaats van pluche.'
+          ] },
+        { kop: 'Om mee te spelen', tekst: 'Van de onverwoestbare KONG tot een likmat die de hond een kwartier rustig houdt.',
+          ids: ['bol-9200000046271441', 'ww-oyo16356203242', 'ww-oyo33644203247', 'dvzn-474812'] },
+        { kop: 'Voor het hondenbad', tekst: 'Wassen wordt bijna leuk: een spa-setje, een badborstel en zelfs een bruisbal speciaal voor honden.',
+          ids: ['dvzn-443774', 'dvzn-421666', 'dvzn-833231'] },
+        { kop: 'Lekker liggen', tekst: 'Een mooie mand of een zachte deken: daar heeft de hond élke dag wat aan, en het staat nog mooi in huis ook.',
+          ids: ['dk-00041518', 'ww-wah41840217818', 'ww-lab19475198538', 'ww-oyo49119390280'] },
+        { kop: 'Voor het baasje', tekst: 'Een voerbak die mooi staat in de keuken, een riem vol worstjes of een handgeweven halsband: hier zie je de hondenliefde vanaf.',
+          ids: ['ww-dgg43412153851', 'dvzn-376007', 'dvzn-358202', 'ww-bud14470791825'] }
+      ],
+      slot: 'Meer voor huisdieren vind je bij <a href="/c/dieren">Dieren</a>. Ook een kat in huis? Kijk bij <a href="/c/dieren/kat">Katten</a>.' },
     { slug: 'valentijnscadeau-voor-haar', beeld: 'bp-l087', vakken: ['valentijn/voor-haar', 'valentijn', 'cadeaus/voor-haar', 'sieraden'],
       titel: 'Valentijnscadeau voor haar: romantische cadeaus voor je vriendin of vrouw', kort: 'Hartjessieraden, rozen die nooit verwelken en iets om haar te verwennen. Van 13 tot 1.200 euro.',
       intro: 'Een valentijnscadeau voor haar moet vooral laten zien dat je aan haar denkt. Dat hoeft niet duur te zijn: een sieraad met een hartje, rozen die nooit verwelken of een avondje verwennen zeggen vaak meer dan een groot cadeau. En het mooie is: deze cadeaus zijn het hele jaar goed, voor jullie jubileum of gewoon zomaar. Ik zette de mooiste op een rij.',
