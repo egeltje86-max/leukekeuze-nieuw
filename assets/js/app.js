@@ -132,8 +132,21 @@
   }
   function binnenPrijs(p, id) { var f = prijsFilter(id); return p.prijs >= f.min && p.prijs <= f.max; }
   function kortingPct(p) { return p.oudePrijs > p.prijs ? (1 - p.prijs / p.oudePrijs) * 100 : 0; }
-  function sorteer(lijst, hoe) {
+  /* 7-11-2026 (richtlijn 'minder maar beter'): per pagina staan de met de hand gekozen toppers bovenaan.
+     De lijst met keuzes staat in assets/js/topkeuze.js (gemaakt uit het paginaplan); de rest volgt gewoon erachter. */
+  function metTopkeuze(l, sleutel) {
+    var keuze = sleutel && window.LK_TOPKEUZE && window.LK_TOPKEUZE[sleutel];
+    if (!keuze || !keuze.length) return null;
+    var plek = {}; keuze.forEach(function (id, i) { plek[id] = i + 1; });
+    var top = [], rest = [];
+    l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
+    if (!top.length) return null;
+    top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
+    return top.concat(mix(rest));
+  }
+  function sorteer(lijst, hoe, sleutel) {
     var l = lijst.slice();
+    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); if (m) return m; }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
@@ -187,7 +200,7 @@
      Wonen had 1.409 kaarten in de pagina staan; op een telefoon kostte dat seconden. Nu staan er 24. */
   /* Getallen op z'n Nederlands: 1.409 */
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
-  var PER_KEER = 24, MEER_LIJSTEN = [];
+  var PER_KEER = 36, MEER_LIJSTEN = [];
   function gridMeer(lijst, leegHtml, n) {
     var per = n || PER_KEER;
     if (lijst.length <= per) return grid(lijst, leegHtml);
@@ -753,7 +766,7 @@
     BASIS = basis;
     TEL = function (nq) { return basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen) && extraFilter(p, q); });
-    lijst = sorteer(lijst, q.sort);
+    lijst = sorteer(lijst, q.sort, pad);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
@@ -857,7 +870,7 @@
     var alles = persoonProducten(pe, s ? s.vakken : null);
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
-    var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort);
+    var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
 
@@ -885,7 +898,8 @@
       : leegBlok('Deze afdeling vullen we nu', 'We kiezen de cadeaus voor ' + naam + ' met de hand uit. Kijk alvast verder:', '<a class="knop knop-rand" href="/voor">Voor iemand anders</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>');
 
     /* Selectie: favorieten en populaire producten, sfeerfoto's eerst. Stap 4 indeling: een vast raster van 4, geen schuifrij. */
-    var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 4);
+    /* 7-11-2026: staat er een topkeuze voor deze pagina, dan is 'Onze selectie' gewoon de top daarvan (één systeem). */
+    var selectie = (window.LK_TOPKEUZE && window.LK_TOPKEUZE[pad]) ? lijst.slice(0, 4) : sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 4);
     if (selectie.length < 4) selectie = [];
     /* 02-11-2026: wat al in 'Onze selectie' staat, niet meteen nog eens bovenaan de lijst eronder (dat leek dubbel). En afwisselen in winkel en soort. */
     if (!s && (!q.sort || q.sort === 'aanbevolen')) {
@@ -1001,7 +1015,7 @@
       if (vk) voorKnopjes = '<nav class="chips vakjesrij omlopend" aria-label="Voor wie">' + (pv ? '<a class="chip" href="' + hoofdPad + '">Iedereen</a>' : '') + vk + '</nav>';
     }
     if ((g.korting || g.codes) && !q.sort) q = Object.assign({}, q, { sort: 'korting' }); /* Black Friday: standaard grootste korting eerst */
-    var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort);
+    var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     if (g.korting || g.codes) sorteerOpties = [['korting', 'Grootste korting']].concat(sorteerOpties.slice(1));
@@ -1011,7 +1025,7 @@
         sorteerOpties.map(function (o) { return '<option value="' + o[0] + '"' + ((q.sort || 'aanbevolen') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
       '</select>' + ic('omlaag') + '</label></div></div>';
     var leeg = !alles.length ? leegBlok('Deze afdeling vullen we nu', 'We zoeken hier nog mooie cadeaus voor. Kijk alvast verder:', '<a class="knop knop-rand" href="/">Naar de voorpagina</a> <a class="knop knop-goud" href="/vonk">Probeer VONK</a>') : leegBlok('Niets in dit budget', 'Kies een ander budget of bekijk alles.', '<a class="knop knop-rand" href="' + pad + '">Alles bekijken</a>');
-    var selectie = sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
+    var selectie = (window.LK_TOPKEUZE && window.LK_TOPKEUZE[pad]) ? lijst.slice(0, 10) : sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 10);
     if (selectie.length < 4) selectie = [];
     /* Aanbiedingen (5-11-2026, GO Marius): 'Deals van vandaag' = elke dag 12 andere topdeals (vanaf 30% korting),
        steeds uit verschillende vakjes en winkels. De keuze hangt af van de datum, dus morgen staat er een nieuwe rij. */
