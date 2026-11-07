@@ -474,7 +474,7 @@
     var CATS_REST = ['hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'];
     var cat = function (slug, extra) {
       var c = window.LK_CAT(slug); if (!c || c.verborgen) return '';
-      return '<a class="catbalk' + (extra ? ' extra' : '') + '" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
+      return '<a class="catbalk' + (extra ? ' extra' : '') + '" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="' + (c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
     };
     var persoon = function (slug) {
       var x = window.LK_PERSONEN.filter(function (p) { return p.slug === slug; })[0]; if (!x) return '';
@@ -727,7 +727,7 @@
     };
     return paginakop({ titel: 'Alle categorieën', tekst: 'Kies waar je zin in hebt.', kruimel: [{ tekst: 'Categorieën' }] }) +
       '<div class="binnen"><section class="sectie"><div class="catronden">' + CATS.map(function (c) {
-        return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="images/categorieen/rond/cat-' + c.slug + '.webp" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
+        return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="' + (c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
           '<span class="catrond-naam">' + esc(c.naam) + '</span><span class="catrond-tekst">' + esc(T[c.slug] || c.tekst || '') + '</span></a>';
       }).join('') + '</div></section>' +
       /* Stap 3 indeling: onder de 12 afdelingen de 7 personen als knopjes (plan deel 8). */
