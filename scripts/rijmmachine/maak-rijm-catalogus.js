@@ -57,6 +57,7 @@ for (const p of w.LK_PRODUCTEN) {
   const waarom = String(p.waarom || '').replace(/\s+/g, ' ').split(/(?<=[.!?])\s/)[0].slice(0, 110);
   producten.push([p.id, p.titel, Math.round(p.prijs * 100) / 100, vakNr[sleutel], (p.voor || []).join('+'), waarom, p.shop || 'bol', link, kleinBeeld, Math.round((p.rang || 0.5) * 100)]);
 }
-const uit = process.argv[2] || path.join(ROOT, 'rijm-catalogus.json');
+const uit = process.argv[2] || path.join(ROOT, 'data/rijm-catalogus.json');
+fs.mkdirSync(path.dirname(uit), { recursive: true });
 fs.writeFileSync(uit, JSON.stringify({ gemaakt: new Date().toISOString().slice(0, 10), vakken, producten }));
 console.log('producten:', producten.length, 'vakjes:', vakken.length, 'zonder partnerlink overgeslagen:', zonderLink, 'daisycon-direct overgeslagen:', dcUit, 'bytes:', fs.statSync(uit).size);
