@@ -115,7 +115,20 @@
       : '<span class="inapp-stap">Tik rechtsboven op <b>⋯</b> en kies <b>Openen in browser</b> (of <b>Openen in Safari</b>).</span>';
     return '<div class="inapp-tip">' + ic('info') + '<div><p>Je kijkt nu binnen ' + esc(INAPP) + '. Open LeukeKeuze in je eigen browser, dan ben je bij ' + esc(p.shop) + ' meestal al ingelogd en gaat bestellen sneller.</p>' + knop + '</div></div>';
   }
-  function winkelLink(p) { return dcDirect(p.url) && p.winkelUrl ? p.winkelUrl : p.url; }
+  /* 7-11-2026 (Marius: "ja doe maar"): elke partnerlink krijgt het product-id als referentie mee,
+     zodat Marius in TradeTracker, Daisycon, Awin en bol ziet op welk cadeau is geklikt. */
+  function metRef(u, id) {
+    if (!u || !id) return u;
+    var r = encodeURIComponent(id);
+    if (/[?&]tt=\d+_\d+_\d+_(?=&|$)/.test(u)) return u.replace(/([?&]tt=\d+_\d+_\d+_)(?=&|$)/, '$1' + r); /* TradeTracker (tt=campagne_materiaal_partner_REFERENTIE) */
+    if (/[?&]a=516846(&|$)/.test(u) && /[?&]r=(?=&|$)/.test(u)) return u.replace(/([?&]r=)(?=&|$)/, '$1' + r); /* TradeTracker (c=..&m=..&a=..&r=REFERENTIE) */
+    if (/[?&]ws=(?=&|$)/.test(u)) return u.replace(/([?&]ws=)(?=&|$)/, '$1' + r); /* Daisycon */
+    if (isDaisycon(u) && !/[?&]ws=/.test(u)) return u + '&ws=' + r;
+    if (/awin1\.com\/(pclick|cread)\.php/.test(u) && !/[?&]clickref=/.test(u)) return u + '&clickref=' + r; /* Awin */
+    if (/partner\.bol\.com\/click/.test(u) && !/[?&]subid=/i.test(u)) return u + '&subid=' + r; /* bol */
+    return u;
+  }
+  function winkelLink(p) { return dcDirect(p.url) && p.winkelUrl ? p.winkelUrl : metRef(p.url, p.id); }
   var WINKELSITE = { 'Ditverzinjeniet': 'https://www.ditverzinjeniet.nl/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'LEGO': 'https://www.lego.com/nl-nl',
     'Westwing': 'https://www.westwing.nl/', 'Decantalo': 'https://www.decantalo.nl/', 'MYKA': 'https://www.myka.com/nl/', 'Prydligt': 'https://www.prydligt.nl/',
     '999 Games': 'https://www.999games.nl/', 'La Redoute': 'https://www.laredoute.nl/', 'Kaartje2go': 'https://www.kaartje2go.nl/', 'Bartogi': 'https://www.bartogi.nl/',
@@ -1245,7 +1258,10 @@
     if (!s || s.verborgen) ALLECATS.forEach(function (cc) { (cc.subs || []).forEach(function (ss) { if (ss.vak === p.cat + '/' + p.sub && !ss.verborgen) { c = cc; s = ss; } }); });
     /* 3.0: kruimelpad volgens de nieuwe boom (afdeling > groep > vakje). */
     var nc = p.afd && window.LK_CAT(p.afd), ns = nc && window.LK_SUB(nc, p.groep), nv = ns && window.LK_VAK(ns, p.vak);
-    zetTitel(p.titel);
+    /* 7-11-2026: prijs in de titel (als het past), zodat zoekers in Google meteen zien wat het kost: meer klikken. */
+    var pTitel = p.titel;
+    if (p.prijs) { var metPrijs = p.titel + ' – €' + Number(p.prijs).toFixed(2).replace('.', ','); if (metPrijs.length <= 60) pTitel = metPrijs; }
+    zetTitel(pTitel);
     var fav = LK.isFavoriet(p.id);
     var knop = (p.url && !p.voorbeeld)
       ? '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a>'
