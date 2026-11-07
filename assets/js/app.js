@@ -1982,7 +1982,7 @@
     '.rz-veld input[type=text],.rz-veld select,.rz-veld textarea{width:100%;min-height:50px;background:#fff;border:1.5px solid #ded9d1;border-radius:13px;padding:11px 14px;color:#202336;font:16px/1.5 var(--f-ui)}.rz-veld textarea{min-height:118px;resize:vertical}.rz-veld input:focus,.rz-veld textarea:focus,.rz-veld select:focus{border-color:#ba8d40}' +
     '.rz-veld small{color:#4f4a5e;font-size:13px}.rz-veld ::placeholder{color:#7a7384;opacity:1}' +
     '.rz-keuzes{display:flex;flex-wrap:wrap;gap:8px}.rz-keuzes label{position:relative;min-height:44px;display:inline-flex;align-items:center;padding:9px 15px;border:1.5px solid #cdb98f;border-radius:999px;background:#fff;color:#1d1c2b;font-weight:700;cursor:pointer}' +
-    '.rz-keuzes input{position:absolute;opacity:0;pointer-events:none}.rz-keuzes label:has(input:checked){background:#111d37;color:#ffe39b;border-color:#bb8d46;box-shadow:inset 0 0 0 1px #d8ad5b}.rz-keuzes label:has(input:focus-visible){outline:3px solid #137ca8;outline-offset:2px}' +
+    '.rz-keuzes input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;pointer-events:none}.rz-keuzes label:has(input:checked){background:#111d37;color:#ffe39b;border-color:#bb8d46;box-shadow:inset 0 0 0 1px #d8ad5b}.rz-keuzes label:has(input:focus-visible){outline:3px solid #137ca8;outline-offset:2px}' +
     '.rz-humor{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.rz-humor label{border-radius:15px;padding:12px 6px;flex-direction:column;justify-content:center;gap:3px;font-size:14px;text-align:center}.rz-humor small{font-size:12px;font-weight:600;color:#4f4a5e}.rz-keuzes label:has(input:checked) small{color:#f7e3b0}' +
     '.rz-acties-form{border-top:1px solid #e9dfd0;padding:22px}.rz-acties-form p{margin:12px 0 0;text-align:center;color:#4f4a5e;font-size:13px}' +
     '.rz-fout{background:#fff3f0;border:1px solid #e9b7aa;border-radius:12px;padding:12px 14px;color:#5a2418;margin:0 22px 0}' +
@@ -2014,6 +2014,17 @@
     '@media (max-width:720px){.rz-velden{grid-template-columns:1fr}.rz-grid{grid-template-columns:1fr}}' +
     '@media (max-width:480px){.rz-pagina{width:calc(100% - 28px)}.rz-velden{padding:17px}.rz-kaartkop{padding:12px 16px}.rz-humor label{font-size:13px}.rz-gedicht{padding:24px 20px}.rz-gedicht .rz-tekst{font-size:16px;line-height:1.65}.rz-acties .rz-knop{padding:9px 6px;font-size:13px}.rz-scene{height:130px}.rz-scene .b{font-size:68px}.rz-scene .v{font-size:42px}}' +
     '@media print{body *{visibility:hidden}.rz-gedicht,.rz-gedicht *{visibility:visible}.rz-gedicht{position:absolute;left:0;top:0;border:0;box-shadow:none}}' +
+    /* 8-11-2026 (wens Marius): alles compacter op de telefoon. */
+    '@media (max-width:600px){.rz-pagina{padding-bottom:36px}.rz-held{aspect-ratio:859/330;margin-bottom:12px;border-radius:18px}.rz-held img{object-position:center 35%}' +
+      '.rz-kop{margin-bottom:12px}.rz-kop h2{font-size:24px;margin:4px 0 4px}.rz-kop p{font-size:14px}.rijm-z .rz-eyebrow{font-size:10px;letter-spacing:.14em}' +
+      '.rz-kaart{border-radius:18px}.rz-kaartkop{padding:9px 14px;font-size:14px}.rz-kaartkop span{width:24px;height:24px;font-size:13px}' +
+      '.rz-velden{padding:14px;gap:12px}.rz-veld{gap:5px}.rz-veld>label,.rz-veld legend{font-size:13px}' +
+      '.rz-veld input[type=text],.rz-veld select{min-height:44px;padding:8px 12px}.rz-veld textarea{min-height:92px;padding:9px 12px}' +
+      '.rz-keuzes{gap:6px}.rz-keuzes label{min-height:40px;padding:7px 13px;font-size:15px}.rz-humor{gap:6px}.rz-humor label{padding:8px 4px;font-size:13px}.rz-humor small{font-size:11px}' +
+      '.rz-acties-form{padding:14px}.rijm-z .rz-knop{min-height:48px;padding:11px 18px;font-size:16px}.rz-acties-form p{font-size:12px;margin-top:10px}' +
+      '.rz-wacht{padding:18px 10px;min-height:0;border-radius:20px}.rz-wachtkaart{padding:18px 14px}.rz-wachtkaart h2{font-size:23px}.rz-boekbeeld{margin:4px -14px 10px}.rz-stappen li{font-size:14px;padding:7px 0}' +
+      '.rz-gedicht{padding:20px 16px}.rz-gedicht h2{font-size:24px;margin-bottom:12px}.rz-gedicht .rz-tekst{font-size:15.5px;line-height:1.6}.rz-handtekening{font-size:23px;margin-top:10px}' +
+      '.rz-cadeaus{padding:14px}.rz-cadeaus h2{font-size:22px}.rz-cadeau{padding:9px;gap:10px}.rz-cadeau img{width:64px;height:64px}.rz-acties{gap:7px}}' +
     '</style>';
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
@@ -2036,10 +2047,10 @@
         '<div class="rz-velden">' +
           '<div class="rz-veld"><label for="rz-naam">Voornaam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
           '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
-          '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(mag je leeg laten)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man of jongen'], ['vrouw', 'Vrouw of meisje']], '') + '</div></fieldset>' +
+          '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(mag je leeg laten)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
           '<div class="rz-veld breed"><label for="rz-over">Vertel iets grappigs over deze persoon</label>' +
-            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. koopt elke week een plant en vergeet hem daarna water te geven. Praat tegen de cactus. Zegt elke maandag dat ze gaat sporten."></textarea>' +
-            '<small>Schrijf herkenbare gewoontes op. Sint verzint er zelf de grap bij.</small></div>' +
+            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. koopt steeds planten, maar ze gaan allemaal dood."></textarea>' +
+            '<small>Schrijf een paar herkenbare gewoontes op. Sint verzint er zelf de grap bij.</small></div>' +
           '<fieldset class="rz-veld breed"><legend>Budget voor 3 cadeaus samen</legend><div class="rz-keuzes">' + kies('budget', [['25', '€ 25'], ['50', '€ 50'], ['75', '€ 75'], ['100', '€ 100'], ['150', '€ 150']], '50') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Hoe scherp mag het zijn?</legend><div class="rz-keuzes rz-humor">' +
             kies('stand', [['lief', '😊 Lief<small>Met een knipoog</small>'], ['hilarisch', '🤣 Hilarisch<small>Hardop lachen</small>'], ['genadeloos', '😈 Genadeloos<small>Lekker plagen</small>']], 'hilarisch') +
@@ -2130,6 +2141,10 @@
     if (!f) return; e.preventDefault(); e.stopPropagation(); rijmVerstuur(f);
   }, true);
   document.addEventListener('click', function (e) {
+    /* 8-11-2026: op een telefoon sprong de pagina omhoog als je een keuze aantikte (de browser scrolde naar het verborgen rondje).
+       Daarom zetten we de keuze hier zelf aan, zonder focus, zodat de pagina blijft staan. */
+    var kz = e.target && e.target.closest ? e.target.closest('.rz-keuzes label') : null;
+    if (kz && e.detail !== 0) { var ri = kz.querySelector('input'); if (ri) { e.preventDefault(); ri.checked = true; } return; }
     var t = e.target && e.target.closest ? e.target.closest('[data-rijm-kopieer],[data-rijm-print],[data-rijm-opnieuw],[data-rijm-deel],[data-rijm-aanpassen],[data-rijm-pakket],[data-rijm-cadeau]') : null;
     if (!t) return;
     if (t.hasAttribute('data-rijm-pakket') || t.hasAttribute('data-rijm-cadeau')) {
