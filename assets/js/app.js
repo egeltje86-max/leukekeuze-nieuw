@@ -514,6 +514,8 @@
       '</section>' +
 
       '<div class="binnen">' +
+        /* 1b. Sint-rijmmachine (7-11-2026, wens Marius: net onder de banner), alleen tot en met 5 december. */
+        rijmBlok('home') +
         /* 2. Voor wie: mobiel 4 rondjes + 3 tekstlinks, desktop alle 7 rondjes. */
         '<section class="sectie eerste" data-tel="voor-wie">' +
           '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div><a class="meer" href="/voor">Iedereen ' + ic('pijl') + '</a></div>' +
@@ -1930,6 +1932,173 @@
     return { past: past, alle: alle, watW: watW, echt: echt, pastVoor: pastVoor, hob: hob, lftZeker: lftZeker,
       aantal: function () { return alle.filter(function (p) { return hob(p) && (pastVoor(p) || (p.voor || []).indexOf('iedereen') !== -1); }).length; } };
   }
+  /* ---------- Sint-rijmmachine (7-11-2026, GO Marius: live met gpt-6.1-terra) ----------
+     De klant vult in voor wie het is; de serverfunctie 'sint-rijm' (Supabase, op Marius' eigen OpenAI-tegoed) schrijft een grappig
+     gedicht waarin Sint voorleest uit zijn Grote Boek, en kiest er 3 cadeaus bij uit ALLE producten van de site (met partnercode).
+     Komen alle 3 van Amazon, dan gaan ze met één knop in het Amazon-winkelmandje; anders heeft elk cadeau zijn eigen knop. */
+  var RIJM_URL = 'https://oivhdejsvmsudfrulwsn.supabase.co/functions/v1/sint-rijm';
+  /* Het blok bovenaan de homepage (en in de gedichtengids) staat er tot en met 5 december. Beeld van Nova: images/banners/rijmmachine-*.webp */
+  function rijmSeizoen() { var d = new Date(); return d < new Date(2026, 11, 6); }
+  function rijmBlok(waar) {
+    if (!rijmSeizoen()) return '';
+    return '<style>' +
+      '.rijmblok{position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:stretch;overflow:hidden;border-radius:20px;background:#7a1020;color:#fff7ea;text-decoration:none;box-shadow:var(--schaduw);margin:18px 0 6px}' +
+      '.rijmblok .rb-tekst{padding:24px 26px;display:grid;gap:10px;align-content:center;position:relative;z-index:1}' +
+      '.rijmblok .rb-kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#f4d27a;font-weight:700}' +
+      '.rijmblok h2{font-family:var(--f-kop);font-weight:500;font-size:28px;line-height:1.15;margin:0;color:#fff7ea}' +
+      '.rijmblok p{margin:0;color:#f6e7d2;font-size:16px;line-height:1.45}' +
+      '.rijmblok .knop{justify-self:start;margin-top:6px}' +
+      '.rijmblok .rb-beeld{position:relative;min-height:200px;background:radial-gradient(circle at 70% 40%,#b3263a 0,#7a1020 70%)}' +
+      '.rijmblok .rb-beeld img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}' +
+      '.rijmblok .rb-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;gap:12px}' +
+      '@media (max-width:700px){.rijmblok{grid-template-columns:1fr}.rijmblok .rb-beeld{min-height:170px;order:-1}.rijmblok h2{font-size:23px}.rijmblok .rb-tekst{padding:18px 18px 20px}}' +
+      '</style>' +
+      '<a class="rijmblok" href="/sint-rijmmachine/" data-tel="rijmblok-' + waar + '">' +
+        '<div class="rb-tekst"><div class="rb-kicker">Nieuw: de Sint-rijmmachine</div>' +
+          '<h2>Sint leest voor uit zijn Grote Boek</h2>' +
+          '<p>Vertel Sint wie je verrast. Hij schrijft een gedicht waar de hele kamer om lacht, en kiest er 3 cadeaus bij die precies passen. Gratis.</p>' +
+          '<span class="knop knop-goud">' + ic('vonk') + ' Laat Sint dichten</span></div>' +
+        '<div class="rb-beeld"><span class="rb-emoji" aria-hidden="true">📖🎁</span>' +
+          '<picture><source media="(min-width: 701px)" srcset="/images/banners/rijmmachine-desktop.webp"><img src="/images/banners/rijmmachine-mobiel.webp" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></picture></div>' +
+      '</a>';
+  }
+  var RIJM_CSS = '<style>' +
+    '.rijm{max-width:760px;margin:0 auto;padding:8px 0 40px}' +
+    '.rijm-form{display:grid;gap:18px;background:var(--kaart);border:1px solid var(--lijn);border-radius:18px;padding:22px;box-shadow:var(--schaduw)}' +
+    '.rijm-form label.veld{display:grid;gap:6px;font-weight:600}' +
+    '.rijm-form input[type=text],.rijm-form select,.rijm-form textarea{font:inherit;font-weight:400;padding:12px 14px;border:1px solid var(--knop-lijn);border-radius:12px;background:var(--bg-2);color:var(--tekst);width:100%}' +
+    '.rijm-form textarea{min-height:120px;resize:vertical}' +
+    '.rijm-form .hint{font-weight:400;font-size:14px;color:var(--tekst-3)}' +
+    '.rijm-groep{border:0;padding:0;margin:0;display:grid;gap:8px}.rijm-groep legend{font-weight:600;margin-bottom:8px}' +
+    '.rijm-keuzes{display:flex;flex-wrap:wrap;gap:8px}' +
+    '.rijm-keuzes label{cursor:pointer;padding:10px 14px;border:1px solid var(--knop-lijn);border-radius:999px;background:var(--knop-bg);font-weight:500;position:relative}' +
+    '.rijm-keuzes label:has(input:checked){border-color:var(--goud);box-shadow:var(--gloed);background:var(--bg-2)}' +
+    '.rijm-keuzes input{position:absolute;opacity:0;pointer-events:none}' +
+    '.rijm-standen label{flex:1 1 150px;border-radius:14px;text-align:center;display:grid;gap:2px}.rijm-standen small{font-weight:400;color:var(--tekst-3)}' +
+    '.rijm-knop{justify-self:start;font-size:18px}' +
+    '.rijm-privacy{font-size:13px;color:var(--tekst-3);margin:0}' +
+    '.rijm-bezig,.rijm-gedicht,.rijm-uitslag{scroll-margin-top:96px}.rijm-bezig{text-align:center;padding:34px 16px;background:var(--kaart);border:1px solid var(--lijn);border-radius:18px;margin-top:20px;box-shadow:var(--schaduw)}' +
+    '.rijm-bezig .rb-figuren{font-size:54px;display:flex;justify-content:center;gap:18px}' +
+    '.rijm-bezig .rb-figuren span{display:inline-block;animation:rijmhup 1.4s ease-in-out infinite}.rijm-bezig .rb-figuren span:nth-child(2){animation-delay:.25s}.rijm-bezig .rb-figuren span:nth-child(3){animation-delay:.5s}' +
+    '@keyframes rijmhup{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}' +
+    '@media (prefers-reduced-motion:reduce){.rijm-bezig .rb-figuren span{animation:none}.rijm-balk i{transition:none}}' +
+    '.rijm-bezig .rb-zin{font-size:19px;font-weight:600;margin:16px 0 6px;min-height:2.6em}' +
+    '.rijm-bezig small{color:var(--tekst-3)}' +
+    '.rijm-balk{height:10px;border-radius:99px;background:var(--bg-2);overflow:hidden;max-width:420px;margin:16px auto 0}.rijm-balk i{display:block;height:100%;width:3%;background:var(--goud);border-radius:99px;transition:width 1s linear}' +
+    '.rijm-fout{background:#fff3f0;border:1px solid #e9b7aa;border-radius:12px;padding:14px 16px;margin-top:16px;color:#5a2418}' +
+    '.rijm-uitslag{margin-top:28px;display:grid;gap:22px}' +
+    '.rijm-gedicht{background:var(--kaart);border:1px solid var(--lijn-sterk);border-radius:18px;padding:26px 24px;box-shadow:var(--gloed);font-size:18px;line-height:1.6}' +
+    '.rijm-gedicht h2{font-family:var(--f-kop);font-weight:500;font-size:26px;margin:0 0 14px}' +
+    '.rijm-gedicht .tekst{white-space:pre-line}.rijm-gedicht .onder{margin-top:14px;font-style:italic;color:var(--tekst-2)}' +
+    '.rijm-acties{display:flex;flex-wrap:wrap;gap:10px}' +
+    '.rijm-cadeaus{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}' +
+    '@media (max-width:640px){.rijm-cadeaus{grid-template-columns:1fr}.rijm-cadeau{grid-template-columns:96px 1fr;align-items:center}}' +
+    '.rijm-cadeau{display:grid;gap:8px;background:var(--kaart);border:1px solid var(--lijn);border-radius:14px;padding:12px;color:var(--tekst);text-decoration:none}' +
+    '.rijm-cadeau img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:10px}' +
+    '.rijm-cadeau strong{font-weight:600;font-size:15px;line-height:1.3}.rijm-cadeau span{color:var(--tekst-2);font-size:14px}.rijm-cadeau em{font-style:normal;font-weight:600;color:var(--goud-donker,#8a6414);font-size:14px}' +
+    '.rijm-pakket{background:var(--kaart-2);border-radius:18px;padding:20px;display:grid;gap:10px;text-align:center}' +
+    '.rijm-pakket .knop{justify-self:center;font-size:18px}.rijm-pakket p{margin:0;color:var(--tekst-2)}' +
+    '.rijm-kleintje{font-size:12px;color:var(--tekst-3)}' +
+    '@media print{body *{visibility:hidden}.rijm-gedicht,.rijm-gedicht *{visibility:visible}.rijm-gedicht{position:absolute;left:0;top:0;border:0;box-shadow:none}}' +
+    '</style>';
+  var RIJM_LAST = null, RIJM_BEZIG = false;
+  function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
+  function rijmmachine() {
+    zetTitel('Sint-rijmmachine: grappig Sinterklaasgedicht met cadeaus erbij');
+    window.LK_SEO = 'Laat Sint voorlezen uit zijn Grote Boek: een hilarisch, persoonlijk Sinterklaasgedicht met 3 cadeaus die er precies bij passen. Gratis, in ongeveer 40 seconden.';
+    var kies = function (naam, opties, standaard) {
+      return opties.map(function (o) {
+        return '<label><input type="radio" name="' + naam + '" value="' + o[0] + '"' + (o[0] === standaard ? ' checked' : '') + '>' + o[1] + '</label>';
+      }).join('');
+    };
+    var rel = [['partner', 'Mijn partner'], ['ouder', 'Vader of moeder'], ['grootouder', 'Opa of oma'], ['broerzus', 'Broer of zus'], ['vriend', 'Vriend(in)'],
+      ['collega', 'Collega'], ['baas', 'Baas'], ['juf', 'Juf of meester'], ['schoon', 'Schoonfamilie'], ['buren', 'Buren'], ['tiener', 'Tiener'], ['kind', 'Kind'], ['anders', 'Iemand anders']];
+    return RIJM_CSS + paginakop({ titel: 'Sint-rijmmachine', tekst: 'Sint leest voor uit zijn Grote Boek. Vertel hem wie je verrast: hij schrijft een gedicht waar de hele kamer om lacht, en kiest er 3 cadeaus bij die precies passen.', kruimel: [{ tekst: 'Sint-rijmmachine' }] }) +
+      '<div class="binnen"><div class="rijm">' +
+      '<form class="rijm-form" data-rijm novalidate>' +
+        '<label class="veld">Voor wie is het gedicht?<input type="text" name="naam" maxlength="40" placeholder="Voornaam, bijvoorbeeld Ingrid" autocomplete="off" required></label>' +
+        '<label class="veld">Wie is het?<select name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></label>' +
+        '<fieldset class="rijm-groep"><legend>Is het een man of een vrouw?</legend><div class="rijm-keuzes">' + kies('geslacht', [['man', 'Man of jongen'], ['vrouw', 'Vrouw of meisje']], '') + '</div></fieldset>' +
+        '<label class="veld">Vertel Sint iets over deze persoon' +
+          '<span class="hint">Hoe meer details, hoe grappiger. Denk aan gewoontes, hobby\'s, rare dingen en wat er dit jaar gebeurde.</span>' +
+          '<textarea name="over" maxlength="500" placeholder="Bijvoorbeeld: koopt steeds planten en ze gaan allemaal dood. Praat tegen de cactus. Zegt elke maandag dat ze gaat sporten."></textarea></label>' +
+        '<fieldset class="rijm-groep"><legend>Budget voor de 3 cadeaus samen</legend><div class="rijm-keuzes">' + kies('budget', [['25', 'Tot €25'], ['50', 'Tot €50'], ['75', 'Tot €75'], ['100', 'Tot €100'], ['150', 'Tot €150']], '50') + '</div></fieldset>' +
+        '<fieldset class="rijm-groep"><legend>Hoe grappig mag het zijn?</legend><div class="rijm-keuzes rijm-standen">' +
+          kies('stand', [['lief', '😊 Lief<small>Iedereen glimlacht</small>'], ['hilarisch', '😂 Hilarisch<small>De kamer ligt dubbel</small>'], ['genadeloos', '😈 Genadeloos<small>Flink plagen</small>']], 'hilarisch') +
+        '</div></fieldset>' +
+        '<button class="knop knop-goud rijm-knop" type="submit">' + ic('vonk') + ' Laat Sint dichten</button>' +
+        '<p class="rijm-privacy">We bewaren niets van wat je invult. Je tekst gaat alleen naar de dichtmachine (OpenAI) om het gedicht te maken. Vul dus geen geheimen of adressen in.</p>' +
+      '</form>' +
+      '<div data-rijm-uit aria-live="polite"></div>' +
+      '</div></div>';
+  }
+  function rijmBeeld(b) { b = String(b || ''); return /^(https?:)?\//.test(b) ? b : '/' + b; }
+  function rijmUitslag(r) {
+    var amazon = !!r.pakketUrl;
+    var tekst = String(r.gedicht || '').replace(/\n*\s*Sint\s*(en|&)\s*Piet\.?\s*$/i, '').trim();
+    return '<div class="rijm-uitslag">' +
+      '<article class="rijm-gedicht" data-rijm-gedicht><h2>' + esc(r.titel || 'Een gedicht van Sint') + '</h2><div class="tekst">' + esc(tekst) + '</div><div class="onder">Sint &amp; Piet</div></article>' +
+      '<div class="rijm-acties"><button class="knop knop-rand" type="button" data-rijm-kopieer>Kopieer gedicht</button><button class="knop knop-rand" type="button" data-rijm-print>Print gedicht</button><button class="knop knop-rand" type="button" data-rijm-opnieuw>Nieuw gedicht</button></div>' +
+      '<h2>De cadeaus bij dit gedicht</h2>' +
+      '<div class="rijm-cadeaus">' + r.cadeaus.map(function (c) {
+        var winkel = c.winkel || 'Amazon';
+        return '<a class="rijm-cadeau" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-cadeau="' + esc(c.id) + '"><img src="' + esc(rijmBeeld(c.beeld)) + '" alt="" loading="lazy"><div><strong>' + esc(c.titel) + '</strong><br><span>ongeveer ' + rijmEuro(c.prijs) + ' bij ' + esc(winkel) + '</span><br><em>Bekijk bij ' + esc(winkel) + ' →</em></div></a>';
+      }).join('') + '</div>' +
+      '<div class="rijm-pakket"><p><strong>Samen ongeveer ' + rijmEuro(r.totaal) + '</strong></p>' +
+        (amazon ? '<a class="knop knop-goud" href="' + esc(r.pakketUrl) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-pakket>' + ic('cadeau') + ' Bestel dit pakket bij Amazon</a>' +
+          '<p>Je logt eerst in bij Amazon. Daarna liggen alle 3 de cadeaus in je winkelmandje. Het gedicht print je zelf uit.</p>'
+          : '<p>Klik op een cadeau om het bij de winkel te bekijken en te bestellen. Het gedicht print of kopieer je zelf.</p>') +
+        '<p class="rijm-kleintje">Prijzen kunnen veranderen: de prijs bij de winkel geldt. LeukeKeuze krijgt een kleine vergoeding als je via deze links iets koopt; jij betaalt niets extra.</p>' +
+      '</div></div>';
+  }
+  function rijmVerstuur(f) {
+    if (RIJM_BEZIG) return;
+    var uit = $('[data-rijm-uit]');
+    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', over: (fd.get('over') || '').trim(), budget: Number(fd.get('budget') || 50), stand: fd.get('stand') || 'hilarisch' };
+    if (!gegevens.naam) { uit.innerHTML = '<p class="rijm-fout">Vul eerst een naam in.</p>'; return; }
+    if (gegevens.over.length < 8) { uit.innerHTML = '<p class="rijm-fout">Vertel Sint iets meer over deze persoon. Hoe meer details, hoe grappiger het gedicht.</p>'; return; }
+    RIJM_LAST = gegevens; RIJM_BEZIG = true;
+    var n = gegevens.naam;
+    var zinnen = ['Even geduld... Sint slaat het Grote Boek open bij ' + n + ' 📖', 'Piet leest mee en moet al grinniken...', 'Sint bladert: wat hebben de Pieten dit jaar allemaal gezien?', 'Piet zoekt de mooiste cadeaus uit de zak 🎁', 'Sint zoekt nog een rijmwoord... 🖋️', 'Je pakket wordt klaargezet door Sint en Piet!'], z = 0, sec = 0;
+    uit.innerHTML = '<div class="rijm-bezig"><div class="rb-figuren" aria-hidden="true"><span>📖</span><span>🖋️</span><span>🎁</span></div>' +
+      '<p class="rb-zin" data-rijm-zin>' + esc(zinnen[0]) + '</p><small>Sint dicht met zorg: dit duurt ongeveer 40 seconden.</small><div class="rijm-balk"><i data-rijm-balk></i></div></div>';
+    uit.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var klok = setInterval(function () {
+      var e = $('[data-rijm-zin]'), b = $('[data-rijm-balk]'); if (!e) return clearInterval(klok);
+      sec++; if (b) b.style.width = Math.min(95, 3 + sec * 2.2) + '%';
+      if (sec % 5 === 0) { z = (z + 1) % zinnen.length; e.textContent = zinnen[z]; }
+    }, 1000);
+    fetch(RIJM_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(gegevens) })
+      .then(function (r) { return r.json().catch(function () { return { fout: 'Er ging iets mis. Probeer het nog een keer.' }; }); })
+      .then(function (r) {
+        clearInterval(klok); RIJM_BEZIG = false;
+        if (!r || r.fout || !r.gedicht || !r.cadeaus) { uit.innerHTML = '<p class="rijm-fout">' + esc((r && r.fout) || 'Er ging iets mis. Probeer het nog een keer.') + '</p>'; return; }
+        uit.innerHTML = rijmUitslag(r); vulIconen(uit);
+        try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'rijmmachine-gedicht-' + r.stand, title: 'Rijmmachine gedicht', event: true }); } catch (e) {}
+        var g = $('[data-rijm-gedicht]'); if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      })
+      .catch(function () { clearInterval(klok); RIJM_BEZIG = false; uit.innerHTML = '<p class="rijm-fout">Sint kan de dichtmachine nu niet bereiken. Controleer je internet en probeer het opnieuw.</p>'; });
+  }
+  document.addEventListener('submit', function (e) {
+    var f = e.target && e.target.closest ? e.target.closest('form[data-rijm]') : null;
+    if (!f) return; e.preventDefault(); e.stopPropagation(); rijmVerstuur(f);
+  }, true);
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-rijm-kopieer],[data-rijm-print],[data-rijm-opnieuw],[data-rijm-pakket],[data-rijm-cadeau]') : null;
+    if (!t) return;
+    if (t.hasAttribute('data-rijm-pakket') || t.hasAttribute('data-rijm-cadeau')) {
+      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: t.hasAttribute('data-rijm-pakket') ? 'rijmmachine-pakket-amazon' : 'rijmmachine-cadeau', title: 'Rijmmachine klik', event: true }); } catch (x) {}
+      return;
+    }
+    var g = $('[data-rijm-gedicht]');
+    if (t.hasAttribute('data-rijm-kopieer') && g) {
+      var tekst = $('h2', g).textContent + '\n\n' + $('.tekst', g).textContent + '\n\nSint & Piet';
+      if (navigator.clipboard) navigator.clipboard.writeText(tekst).then(function () { t.textContent = 'Gekopieerd!'; }, function () {});
+    }
+    if (t.hasAttribute('data-rijm-print')) window.print();
+    if (t.hasAttribute('data-rijm-opnieuw')) { var f = $('form[data-rijm]'); if (f) rijmVerstuur(f); }
+  });
+
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
     var V = window.LK_VONK;
@@ -3363,6 +3532,7 @@
     var h = paginakop({ titel: g.titel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: g.titel }] }) +
       '<div class="binnen"><article class="tekstpagina gids">' + meta + '<p class="gids-intro">' + esc(introKort) + '</p>' +
       (introRest ? '<details class="lees-verder"><summary>Lees verder</summary><p>' + esc(introRest) + '</p></details>' : '') + '</article>' +
+      (g.slug === 'sinterklaasgedicht-maken' ? '<div class="tekstpagina gids">' + rijmBlok('gids') + '</div>' : '') +
       gidsTop(g) + '<div class="tekstpagina gids">' + spring + '</div>';
     delenMet.forEach(function (d) {
       /* Een deel kan ook alleen tekst zijn (zonder producten), met een lijstje (veld 'lijst') of genummerde stappen (veld 'stappen'). */
@@ -3615,6 +3785,7 @@
     else if (d[0] === 'p') html = product(d[1]);
     else if (d[0] === 'zoek') html = zoeken(a.q);
     else if (d[0] === 'vonk') html = vonk(a.q);
+    else if (d[0] === 'sint-rijmmachine') html = rijmmachine();
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);

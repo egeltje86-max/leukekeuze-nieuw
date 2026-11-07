@@ -11,6 +11,8 @@ const SITE = 'https://leukekeuze.nl';
 /* Versienummer achter css/js, zodat telefoons na elke update meteen de nieuwe versie laden (geen oude cache). */
 const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
 require('./splits-producten.js')(); // producten.js -> producten-lean.js + producten-details.js
+/* Sint-rijmmachine (7-11-2026): cadeaulijst met alle producten voor de serverfunctie 'sint-rijm' (data/rijm-catalogus.json). */
+try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'rijmmachine/maak-rijm-catalogus.js'), path.join(__dirname, '../data/rijm-catalogus.json')], { stdio: 'inherit' }); } catch (e) { console.error('rijm-catalogus niet gelukt:', e.message); }
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
   .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app|topkeuze)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
@@ -20,7 +22,7 @@ for (const f of ['sjabloon.html', 'assets/js/app.js', 'assets/js/data.js', 'asse
   const p = path.join(ROOT, f);
   if (fs.existsSync(p) && /^(<{7}|>{7}) /m.test(fs.readFileSync(p, 'utf8'))) { console.error('STOP: samenvoegfout in ' + f + ' - eerst oplossen, er is niets gebouwd.'); process.exit(1); }
 }
-const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie'];
+const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie', 'sint-rijmmachine'];
 const GEEN_INDEX = /^\/(favorieten|zoek|lijst)(\/|$)/; /* ook zonder slash erachter (31-10-2026: /zoek stond per ongeluk in de sitemap) */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
@@ -150,7 +152,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const weg = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => (p.status === 'uitverkocht' || p.status === 'afgekeurd') && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]));
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
-  const gezien = new Set(['/', '/categorieen/', '/lijst/']), rij = ['/', '/categorieen/', '/lijst/'], paginas = [];
+  /* Sint-rijmmachine (7-11-2026): de pagina wordt ook los meegenomen (het blok op de homepage verdwijnt na 5 december). */
+  const gezien = new Set(['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/']), rij = ['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/'], paginas = [];
   /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
      Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
   for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd').map(p => p.id))) {
