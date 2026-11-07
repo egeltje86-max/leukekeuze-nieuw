@@ -1957,23 +1957,24 @@
       '.rz-blok .rz-eyebrow{color:#f7d77f}' +
       '.rz-blok h2{font:700 clamp(28px,4.4vw,44px)/1.05 var(--f-kop);letter-spacing:-.5px;margin:10px 0 12px;color:#fff}.rz-blok h2 em{font-style:normal;color:#f7d77f}' +
       '.rz-blok p{margin:0 0 20px;color:#e9e7e3;font-size:16px;max-width:460px}' +
-      '.rz-zegel{justify-self:center;width:190px;height:190px;border-radius:50%;border:2px solid #dbac4a;box-shadow:0 0 0 9px rgba(230,184,84,.1),0 0 60px rgba(230,184,84,.33);display:grid;place-items:center;position:relative;background:radial-gradient(circle,#421f29,#151426)}' +
-      '.rz-zegel b{font-size:92px;transform:rotate(-9deg);font-weight:400}.rz-zegel i{position:absolute;font-style:normal;color:#ffeaa1;font-size:24px}.rz-zegel i:nth-of-type(1){top:6px;left:20px}.rz-zegel i:nth-of-type(2){bottom:20px;right:4px}.rz-zegel i:nth-of-type(3){top:34px;right:6px}' +
-      '@media (max-width:600px){.rz-blok{grid-template-columns:1fr 92px;padding:22px 18px;gap:8px}.rz-blok h2{font-size:29px}.rz-blok p{font-size:14px}.rz-zegel{width:88px;height:88px;align-self:start}.rz-zegel b{font-size:44px}.rz-zegel i{font-size:14px}.rz-blok .rz-knop{grid-column:1/-1;width:100%}}' +
+      '.rz-blok .rz-beeld{grid-row:1/3;grid-column:2;align-self:stretch;margin:-26px -28px -26px 0;min-height:260px;background:#0b1225}.rz-blok .rz-beeld img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}' +
+      '.rz-blok .rz-knop{justify-self:start}' +
+      '@media (max-width:700px){.rz-blok{grid-template-columns:1fr;padding:0 18px 22px;gap:0}.rz-blok .rz-beeld{order:-1;grid-row:auto;grid-column:auto;margin:0 -18px 14px;min-height:0;aspect-ratio:859/480}.rz-blok .rz-beeld img{-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent 100%);mask-image:linear-gradient(180deg,#000 75%,transparent 100%)}.rz-blok h2{font-size:30px}.rz-blok p{font-size:14px}.rz-blok .rz-knop{width:100%}}' +
       '</style>' +
       '<a class="rijm-z rz-blok" href="/sint-rijmmachine/" data-tel="rijmblok-' + waar + '">' +
         '<div><div class="rz-eyebrow">✦ Nieuw: de Sint-rijmmachine</div>' +
           '<h2>Sint weet <em>alles</em>.<br>En rijmt er nog op ook.</h2>' +
           '<p>Vertel over iemand die je kent. Sint leest voor uit zijn Grote Boek, maakt er een persoonlijk gedicht met een flinke knipoog van, én zoekt 3 cadeaus die passen.</p></div>' +
-        '<div class="rz-zegel" aria-hidden="true"><b>📖</b><i>✦</i><i>✧</i><i>✦</i></div>' +
+        '<div class="rz-beeld"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" loading="lazy" decoding="async"></div>' +
         '<span class="rz-knop">🪶 Maak een gedicht <span aria-hidden="true">→</span></span>' +
       '</a>';
   }
   var RIJM_CSS = RIJM_STIJL + '<style>' +
     'body.rijm-focus .onderbalk{display:none!important}body.rijm-focus{padding-bottom:0}' +
     '.rz-pagina{width:min(100% - 32px,900px);margin:0 auto;padding:6px 0 56px}' +
+    '.rz-held{max-width:620px;margin:0 auto 18px;border-radius:24px;overflow:hidden;background:#0b1225;box-shadow:var(--rz-shadow);aspect-ratio:859/480}.rz-held img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}' +
     '.rz-kop{text-align:center;margin:0 auto 20px;max-width:620px}.rz-kop h2{font:700 clamp(28px,5vw,42px)/1.15 var(--f-kop);margin:6px 0 8px}.rz-kop p{color:var(--rz-muted);margin:0}' +
-    '.rz-kaart{border:1px solid #ecd9ba;background:var(--rz-paper);border-radius:25px;box-shadow:var(--rz-shadow);overflow:hidden}' +
+    '.rz-kaart{border:2px solid #d9b46a;background:linear-gradient(180deg,#fffaf0,#f8ebcc);border-radius:25px;box-shadow:var(--rz-shadow);overflow:hidden}' +
     '.rz-kaartkop{background:linear-gradient(100deg,#81172f,#aa263e);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:750;font-size:15px}.rz-kaartkop span{width:30px;height:30px;display:grid;place-items:center;border:1px solid #ffc674;border-radius:50%;color:#ffe7a7}' +
     '.rz-velden{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.rz-veld{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;border:0;min-width:0}.rz-veld.breed{grid-column:1/-1}' +
     '.rz-veld>label,.rz-veld legend{font-weight:790;font-size:14px;color:#242336;padding:0;margin-bottom:2px}' +
@@ -1985,7 +1986,11 @@
     '.rz-acties-form{border-top:1px solid #e9dfd0;padding:22px}.rz-acties-form p{margin:12px 0 0;text-align:center;color:#83798b;font-size:12px}' +
     '.rz-fout{background:#fff3f0;border:1px solid #e9b7aa;border-radius:12px;padding:12px 14px;color:#5a2418;margin:0 22px 0}' +
     '.rz-wacht{background:radial-gradient(circle at 50% 20%,#273251,#0b1225 65%);border-radius:28px;min-height:min(78vh,640px);padding:34px 16px;display:grid;place-items:center;scroll-margin-top:90px}' +
-    '.rz-wachtkaart{width:min(100%,550px);background:#fffdf7;border-radius:28px;padding:34px 24px 30px;text-align:center;border:2px solid #debc78;box-shadow:0 28px 90px rgba(0,0,0,.4)}' +
+    '.rz-wachtkaart{width:min(100%,550px);background:#fffdf7;border-radius:28px;padding:26px 24px 26px;overflow:hidden;text-align:center;border:2px solid #debc78;box-shadow:0 28px 90px rgba(0,0,0,.4)}' +
+    '.rz-boekbeeld{margin:4px -24px 14px;overflow:hidden}.rz-boekbeeld img{width:100%;height:auto;display:block}' +
+    '.rz-stappen{list-style:none;margin:0 0 18px;padding:6px 16px;text-align:left;background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:1px solid #e2c17c;border-radius:16px}.rz-stappen li{display:flex;align-items:center;gap:12px;padding:9px 0;font-weight:700;font-size:16px;border-bottom:1px solid #ecdcb8;color:#7b7280}.rz-stappen li:last-child{border-bottom:0}' +
+    '.rz-stappen li span{flex:none;width:24px;height:24px;border-radius:50%;border:3px dotted #c99740}.rz-stappen li.bezig{color:#172034}.rz-stappen li.bezig span{animation:rzdraai 1.2s linear infinite}.rz-stappen li.klaar{color:#172034}.rz-stappen li.klaar span{border:0;background:#2e9e4a url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 12.5l4 4 8-9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E") center/16px no-repeat}' +
+    '@keyframes rzdraai{to{transform:rotate(360deg)}}' +
     '.rz-scene{height:170px;display:flex;align-items:center;justify-content:center;gap:8px}.rz-scene .b{font-size:92px;animation:rzboek 3s ease-in-out infinite}.rz-scene .v{font-size:54px;animation:rzveer 2s ease-in-out infinite}' +
     '.rz-wachtkaart h2{font:700 clamp(26px,5vw,36px)/1.15 var(--f-kop);margin:6px 0 10px}.rz-grap{color:#7d1730;font-weight:780;min-height:50px;margin:10px auto 18px;font-size:16px}' +
     '.rz-balk{height:9px;border-radius:20px;background:#eee5d4;overflow:hidden;position:relative}.rz-balk:before{content:"";position:absolute;left:-30%;width:36%;height:100%;background:linear-gradient(90deg,#cf9d44,#ffe6a8);border-radius:20px;animation:rzloop 1.65s infinite ease-in-out}' +
@@ -1993,13 +1998,13 @@
     '@keyframes rzboek{0%,100%{transform:translateY(1px) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}@keyframes rzveer{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(-5deg) translateY(-8px)}}@keyframes rzloop{0%{left:-35%}100%{left:110%}}' +
     '.rz-terug{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:8px 0;color:#574c62;font:700 15px var(--f-ui);cursor:pointer;margin-bottom:6px}' +
     '.rz-uitslag{scroll-margin-top:90px}.rz-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);align-items:start;gap:18px}' +
-    '.rz-gedicht{background:#fffefb;border:2px solid #d6b575;border-radius:24px;padding:28px 26px;box-shadow:0 18px 45px rgba(26,26,46,.08);position:relative;overflow:hidden}' +
+    '.rz-gedicht{background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:2px solid #d6b575;border-radius:24px;padding:28px 26px;box-shadow:0 18px 45px rgba(26,26,46,.08);position:relative;overflow:hidden}' +
     '.rz-gedicht:before{content:"✦";position:absolute;font-size:170px;top:-99px;right:-45px;color:#f3e4c9;pointer-events:none}' +
     '.rz-gedicht .rz-eyebrow{color:#a77630;letter-spacing:.16em;position:relative}.rz-gedicht h2{font:700 clamp(28px,4.5vw,38px)/1.14 var(--f-kop);margin:5px 0 20px;position:relative}' +
     '.rz-gedicht .rz-tekst{white-space:pre-wrap;overflow-wrap:anywhere;font:17px/1.72 Georgia,"Times New Roman",serif;margin:0;position:relative}' +
     '.rz-handtekening{text-align:right;color:#a21c39;font:italic 28px/1.2 Georgia,serif;margin-top:18px}' +
     '.rz-acties{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}' +
-    '.rz-cadeaus{background:#fffdf9;border:1px solid #e1d1b6;border-radius:24px;padding:20px;box-shadow:var(--rz-shadow)}.rz-cadeaus h2{font:700 27px/1.15 var(--f-kop);margin:2px 0 6px}.rz-cadeaus>p{font-size:13px;color:#6a6b7b;margin:0 0 14px}' +
+    '.rz-cadeaus{background:linear-gradient(180deg,#fffaf0,#f6e6c2);border:2px solid #d6b575;border-radius:24px;padding:20px;box-shadow:var(--rz-shadow)}.rz-cadeaus h2{font:700 27px/1.15 var(--f-kop);margin:2px 0 6px}.rz-cadeaus>p{font-size:13px;color:#6a6b7b;margin:0 0 14px}' +
     '.rz-cadeau{border:1px solid #e8ddce;border-radius:15px;background:#fff;padding:11px;display:flex;gap:12px;align-items:center;margin-bottom:10px;color:inherit;text-decoration:none}.rz-cadeau:hover{border-color:#d6b575}' +
     '.rz-cadeau img{width:78px;height:78px;border-radius:12px;object-fit:contain;background:#fff;flex:none}.rz-cadeau div{min-width:0;flex:1}.rz-cadeau b{display:block;font-size:14px;line-height:1.3}.rz-cadeau small{color:#6b6c7b;font-size:12px}.rz-cadeau em{display:block;font-style:normal;font-size:14px;color:#a26b23;font-weight:780}.rz-cadeau .pijl{flex:none;width:34px;height:34px;border-radius:50%;background:#f3d27a;display:grid;place-items:center;font-weight:800}' +
     '.rz-totaal{background:#fff3d4;border:1px solid #e2c17c;border-radius:14px;padding:13px;text-align:center;font-weight:850;color:#362c28;margin-top:4px}' +
@@ -2024,6 +2029,7 @@
     return RIJM_CSS + paginakop({ titel: 'Sint-rijmmachine', tekst: 'Sint weet alles. En rijmt er nog op ook.', kruimel: [{ tekst: 'Sint-rijmmachine' }] }) +
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
+        '<div class="rz-held"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" decoding="async"></div>' +
         '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Over wie mogen we lachen?</h2><p>Hoe meer échte details, hoe persoonlijker de grap.</p></div>' +
         '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>1</span>Het dossier voor het Grote Boek</div>' +
         '<div class="rz-velden">' +
@@ -2073,10 +2079,11 @@
         '<p class="rz-klein">Prijzen kunnen veranderen: de prijs bij de winkel geldt. LeukeKeuze krijgt een kleine vergoeding als je via deze links iets koopt; jij betaalt niets extra.</p>' +
       '</aside></div></div>';
   }
-  function rijmWacht(naam) {
+  function rijmWacht(naam) { /* ontwerp Nova: 'Sint en Piet zijn aan het dichten…' */
     return '<div class="rz-wacht" data-rijm-wacht><div class="rz-wachtkaart" role="status">' +
-      '<div class="rz-eyebrow">Stap 2 van 2 • Even geduld</div><div class="rz-scene" aria-hidden="true"><span class="b">📖</span><span class="v">🪶</span></div>' +
-      '<h2>Sint heeft iets héél ergs gelezen…</h2><div class="rz-grap" data-rijm-zin>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</div>' +
+      '<div class="rz-eyebrow">Stap 2 van 2 • Even geduld</div><h2>Sint en Piet zijn aan het dichten…</h2>' +
+      '<div class="rz-boekbeeld"><img src="/images/banners/rijm-boek.webp" alt="Sinterklaas leest voor uit het Grote Boek, Piet moet lachen" width="700" height="468" decoding="async"></div>' +
+      '<ul class="rz-stappen"><li data-rz-s="1"><span></span>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</li><li data-rz-s="2"><span></span>Piet zoekt de cadeaus uit…</li><li data-rz-s="3"><span></span>Het gedicht rijmen…</li></ul>' +
       '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht met zorg. Dit duurt meestal minder dan een minuut.</p></div></div>';
   }
   function rijmVerstuur(f) {
@@ -2090,8 +2097,13 @@
     RIJM_LAST = gegevens; RIJM_BEZIG = true;
     rijmStap('wacht'); uit.innerHTML = rijmWacht(gegevens.naam);
     var w = $('[data-rijm-wacht]'); if (w) w.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    var zinnen = ['Sint slaat het Grote Boek open bij ' + gegevens.naam + '…', 'Piet probeert zijn lach in te houden.', 'Sint verzint de gemeenste grap die nét mag.', 'Piet zoekt de mooiste cadeaus uit de zak.', 'De laatste regel moet de zaal stil krijgen…'], z = 0;
-    var klok = setInterval(function () { var e = $('[data-rijm-zin]'); if (!e) return clearInterval(klok); z = (z + 1) % zinnen.length; e.textContent = zinnen[z]; }, 3000);
+    /* De drie stappen lopen op de klok op (de server meldt geen tussenstand); de laatste blijft draaien tot het gedicht er is. */
+    var sec = 0, zetStap = function () {
+      var nu = sec < 8 ? 1 : sec < 18 ? 2 : 3;
+      [1, 2, 3].forEach(function (i) { var li = $('[data-rz-s="' + i + '"]'); if (li) li.className = i < nu ? 'klaar' : i === nu ? 'bezig' : ''; });
+    };
+    zetStap();
+    var klok = setInterval(function () { if (!$('[data-rz-s="1"]')) return clearInterval(klok); sec++; zetStap(); }, 1000);
     var mislukt = function (t) {
       clearInterval(klok); RIJM_BEZIG = false; uit.innerHTML = ''; rijmStap('form'); meld(t);
       var k = $('[data-rijm-fout]'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'center' });
