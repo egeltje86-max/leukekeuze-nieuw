@@ -1,0 +1,50 @@
+# Eigen upload naar GitHub Pages (7-11-2026).
+# De standaard-upload van GitHub brak af na 10 minuten als GitHub traag was met "bestanden verwerken"
+# (5 keer in 2 dagen). Deze upload mag 30 minuten wachten.
+# Werkt pas nadat in GitHub bij Settings > Pages > Source "GitHub Actions" is gekozen.
+name: Website uploaden
+
+on:
+  push:
+    branches: [main]
+  # De pins-upload (pins.yml) pusht met de GitHub-sleutel; zo'n push start geen andere uploads.
+  # Daarom: na de pins-upload ook de website uploaden, zodat nieuwe pins live komen.
+  workflow_run:
+    workflows: ["Pinterest-pins vrijgeven"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nooit een lopende upload afbreken; nieuwe uploads wachten netjes op hun beurt.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  uploaden:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.upload.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Website-map klaarzetten (zonder bouwgereedschap)
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'scripts' ./ _site/
+          du -sh _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: upload
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 1800000
