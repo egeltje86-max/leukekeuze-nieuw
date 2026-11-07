@@ -1974,7 +1974,7 @@
       '</a>';
   }
   var RIJM_CSS = RIJM_STIJL + '<style>' +
-    'body.rijm-focus .onderbalk{display:none!important}body.rijm-focus{padding-bottom:0}' +
+    'body.rijm-focus .onderbalk,body.rijm-focus .naarboven{display:none!important}body.rijm-focus{padding-bottom:0}' +
     '.rz-pagina{width:min(100% - 32px,900px);margin:0 auto;padding:6px 0 56px}' +
     '.rz-held{max-width:620px;margin:0 auto 18px;border-radius:24px;overflow:hidden;background:#0b1225;box-shadow:var(--rz-shadow);aspect-ratio:859/480}.rz-held img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}' +
     '.rz-kop{text-align:center;margin:0 auto 20px;max-width:620px}.rz-kop h2{font:700 clamp(28px,5vw,42px)/1.15 var(--f-kop);margin:6px 0 8px}.rz-kop p{color:var(--rz-muted);margin:0}' +
