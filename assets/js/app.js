@@ -2928,7 +2928,7 @@
         { kop: 'Voor de baby', tekst: 'Zacht, veilig en net even mooier: een deken met naam, een knuffel om te ontdekken en de allerkleinste slofjes.',
           ids: ['bol-9300000136627314', 'cl-ld-knuffel', 'cl-steiff-trex', 'tbl-0a6h8gez0010m1'] },
         { kop: 'Met de hele groep', tekst: 'Als iedereen een paar tientjes geeft, kun je samen iets geven wat de ouders echt gaan gebruiken.',
-          ids: ['cl-bol-fp-jungle', 'knufk-bambam-pakket', 'ww-voedingskussen-caprice', 'bol-9300000144690906'] }
+          ids: ['cl-bol-fp-jungle', 'knufk-bambam-pakket', 'cl-vtech-speeltafel', 'bol-9300000144690906'] }
       ],
       slot: 'Is de baby er al? Lees dan <a href="/gids/kraamcadeau">Kraamcadeau: ideeën waar ouders iets aan hebben</a>. Alles voor de kleinsten staat bij <a href="/voor/baby">Babycadeaus</a>.' },
     { slug: 'housewarming-cadeau', beeld: 'dvzn-530181', vakken: ['wonen', 'wonen/woondecoratie', 'wonen/kaarsen-geur', 'wonen/tafelen'],
