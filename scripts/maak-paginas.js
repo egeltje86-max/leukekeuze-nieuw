@@ -78,7 +78,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   let h = SJABLOON;
   const url = SITE + info.pad;
   /* Lange producttitels: zonder ' | LeukeKeuze' erachter, anders knipt Google de titel af (31-10-2026). */
-  const titel = info.titel.length > 62 ? info.titel.replace(/ \| LeukeKeuze$/, '') : info.titel;
+  let titel = info.titel.length > 62 ? info.titel.replace(/ \| LeukeKeuze$/, '') : info.titel;
+  /* 8-11-2026 (GO Marius): nog steeds te lang voor Google (meer dan 65 tekens)? Dan netjes inkorten op een heel woord. Op de pagina zelf verandert niets. */
+  if (titel.length > 65) titel = titel.slice(0, 62).replace(/[\s,–-]+\S*$/, '') + '…';
   h = zet(h, /<title>[^<]*<\/title>/, '<title>' + escA(titel) + '</title>');
   h = zet(h, /<meta name="description" content="[^"]*">/, '<meta name="description" content="' + escA(info.omschrijving) + '">');
   h = zet(h, /<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + url + '">');

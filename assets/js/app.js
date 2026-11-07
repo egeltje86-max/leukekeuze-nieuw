@@ -922,6 +922,7 @@
     /* 7-11-2026: staat er een topkeuze voor deze pagina, dan is 'Onze selectie' gewoon de top daarvan (één systeem). */
     var selectie = (window.LK_TOPKEUZE && window.LK_TOPKEUZE[pad]) ? lijst.slice(0, 4) : sorteer(alles.filter(function (p) { return (p.favoriet || p.populair) && p.sfeer; })).slice(0, 4);
     if (selectie.length < 4) selectie = [];
+    selectie = []; /* 8-11-2026 (GO Marius): 'Onze selectie' ook van de Voor wie-pagina's af, net als bij de gelegenheden. */
     /* 02-11-2026: wat al in 'Onze selectie' staat, niet meteen nog eens bovenaan de lijst eronder (dat leek dubbel). En afwisselen in winkel en soort. */
     if (!s && (!q.sort || q.sort === 'aanbevolen')) {
       var inSel = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel[p.id] = 1; });
@@ -1646,6 +1647,8 @@
   /* 'Meer in onze winkels' onder een (sub)categorie. */
   function winkelSectie(cat, sub, prijs) {
     if (cat === 'christelijk') return '';
+    /* 8-11-2026 (GO Marius): twee nieuwe afdelingen hebben in de zoekindex nog hun oude naam; zonder dit miste daar 'Meer in onze winkels'. */
+    if (!sub) cat = { 'mode-sieraden': 'mode-beauty', 'beauty-verzorging': 'geuren-verzorging' }[cat] || cat;
     var ZW = window.LK_ZOEKWOORDEN || {}, sleutel = sub ? cat + '/' + sub : cat;
     var attr = '';
     if (sleutel === 'cadeaus/voor-haar') attr = ' data-geslacht="v"';
@@ -3500,7 +3503,10 @@
   /* 7-11-2026 (akkoord Marius): op de homepage 6 gidsen, Sinterklaas en Kerst door elkaar, met de nieuwe kerstgidsen erbij.
      Google komt vaak op de homepage en vindt de nieuwe gidsen zo sneller. Na 5 december: Sinterklaas-gidsen hier vervangen. */
   /* 7-11-2026: 'Sinterklaasgedicht maken' erbij (veel gezocht in november); kerst-kind tijdelijk eraf. */
-  var HOME_GIDSEN = ['surprise-maken', 'sinterklaasgedicht-maken', 'schoencadeautjes', 'sinterklaascadeau-vrouw', 'sinterklaascadeau-man', 'adventskalender-kiezen'];
+  /* 8-11-2026 (GO Marius): tot en met 5 december de Sinterklaasgidsen, daarna vanzelf de kerstgidsen. */
+  var HOME_GIDSEN = new Date() < new Date(2026, 11, 6)
+    ? ['surprise-maken', 'sinterklaasgedicht-maken', 'schoencadeautjes', 'sinterklaascadeau-vrouw', 'sinterklaascadeau-man', 'adventskalender-kiezen']
+    : ['kerstcadeau-voor-haar', 'kerstcadeau-voor-hem', 'kerstcadeau-kind', 'kerstcadeau-onder-25', 'kerstcadeau-collega', 'kerstcadeau-opa-oma'];
   /* 'Lees ook': gidsen die bij dit vak horen (veld 'vakken' in GIDSEN). Maximaal 3, in de volgorde van GIDSEN. */
   function leesOok(sleutel) {
     /* Gidsen van de homepage (seizoen) eerst, daarna de rest in de volgorde van GIDSEN. */
