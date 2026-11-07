@@ -1,0 +1,1 @@
+Testtak voor de Sint-rijmmachine (sint-rijm-test). Geen website. rijm-catalogus.json wordt gemaakt met scripts/rijmmachine/maak-rijm-catalogus.js op main.
