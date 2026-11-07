@@ -2416,6 +2416,44 @@
           ], ids: ['bol-9300000039602281'] }
       ],
       slot: 'Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
+    { slug: 'sinterklaasgedicht-maken', beeld: 'bol-9300000039602281', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'eten-drinken/chocolade-snoep'],
+      titel: 'Sinterklaasgedicht maken: zo schrijf je een leuk gedicht (met rijmwoorden)', kort: 'Een stappenplan, rijmwoorden die je altijd nodig hebt, voorbeeldregels en tips om te plagen zonder te kwetsen.',
+      intro: 'Een cadeau uitpakken is leuk, maar het gedicht maakt pakjesavond pas echt. Veel mensen zien er tegenop: hoe begin je, en wat rijmt er op Piet? Goed nieuws: een sinterklaasgedicht hoeft geen kunstwerk te zijn. Iedereen lacht om een gedicht dat herkenbaar is, een beetje plaagt en lekker voorleest. Hieronder vind je een simpel stappenplan, een lijst rijmwoorden die je bij elk gedicht nodig hebt, voorbeeldregels om mee te beginnen en tips om te plagen zonder iemand te kwetsen. En voor wie er echt niet uitkomt: er zijn chocoladeletters met een kant-en-klaar gedicht erbij.',
+      delen: [
+        { kop: 'Zo schrijf je een sinterklaasgedicht in 6 stappen', tekst: 'Neem er een half uurtje voor, met een kop koffie en een vel papier.',
+          stappen: [
+            'Schrijf eerst 5 dingen op over de persoon: een hobby, een gewoonte, iets grappigs van dit jaar, iets waar diegene trots op is en iets waar diegene altijd over klaagt.',
+            'Kies daar 2 of 3 dingen uit. Meer hoeft niet: een kort gedicht dat raak is, is beter dan een lang gedicht dat alles noemt.',
+            'Begin met een vaste openingszin, bijvoorbeeld: "Sinterklaas zat eens te denken, wat hij [naam] dit jaar zou schenken."',
+            'Schrijf daarna steeds twee regels die op elkaar rijmen (aa-bb). Zet het rijmwoord aan het eind van de regel.',
+            'Eindig met een verwijzing naar het cadeau of de surprise, of met een opdracht: "Kijk eens onder de bank".',
+            'Lees het hardop voor. Klinkt een regel stroef? Maak hem korter. Onderteken met "Sint en Piet".'
+          ] },
+        { kop: 'Rijmwoorden die je bij elk gedicht nodig hebt', tekst: 'Deze woorden komen in bijna elk sinterklaasgedicht terug. Handig om bij de hand te hebben.',
+          lijst: [
+            'Sint: vindt, kind, wind, bezint, begint, lint',
+            'Piet: niet, ziet, verdriet, liet, lied, giet',
+            'cadeau: zo, oh, bravo, tempo, cacao',
+            'gedicht: licht, dicht, plicht, gezicht, zicht',
+            'schoen: doen, toen, zoen, groen, miljoen',
+            'jaar: klaar, waar, maar, haar, raar',
+            'Spanje: oranje, kastanje',
+            'pakjes: zakjes, takjes, plakjes, lakjes'
+          ] },
+        { kop: 'Voorbeeldregels om mee te beginnen', tekst: 'Kies een regel die past, en maak hem af met iets over de persoon.',
+          lijst: [
+            '"Sinterklaas zat in zijn boek te lezen, wat [naam] dit jaar allemaal is geweest…"',
+            '"Piet zat op het dak en keek naar binnen, en zag [naam] weer iets geks beginnen…"',
+            '"Dit jaar was voor [naam] best een druk jaar, maar Sint vond het cadeau al snel klaar…"',
+            '"Een pakje dat zo groot is en zo zwaar, dat kan alleen voor [naam] zijn, of niet soms, maar?"'
+          ] },
+        { kop: 'Tip: plagen mag, kwetsen niet', tekst: 'Een sinterklaasgedicht mag best plagen, dat hoort erbij. Maar houd het lief: plaag over gewoontes en grappige momenten, niet over iemands uiterlijk, gewicht of iets waar iemand verdriet van heeft. Twijfel je over een regel? Laat hem weg. Als iedereen moet lachen, ook degene over wie het gaat, dan is het gedicht geslaagd.' },
+        { kop: 'Geen tijd? Chocolade met een gedicht erbij', tekst: 'Er zijn chocoladeletters met een kant-en-klaar gedicht. Handig als je het druk hebt, of als extra naast je eigen gedicht.',
+          ids: ['bol-9300000039602281', 'cl-dubai-letter', 'cl-lindor-letter', 'cl-tony-puur-pepernoot'] },
+        { kop: 'Voor de kleintjes: rijmen met Sinterklaas', tekst: 'Prentenboeken over Sinterklaas om voor te lezen. Leuk voor in de schoen, en kinderen leren meteen hoe rijmen werkt.',
+          ids: ['bol-9300000320406800', 'bol-9300000042944655', 'cl-sinterklaas-voorlees'] }
+      ],
+      slot: 'Maak je er ook een surprise bij? Lees dan <a href="/gids/surprise-maken">Surprise maken: 25 ideeën</a>. Zoek je nog een cadeautje? Kijk bij <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a> en <a href="/gids/schoencadeautjes">Schoencadeautjes</a>.' },
     { slug: 'adventskalender-kiezen', beeld: 'bol-9300000408782128', vakken: ['cadeaus/kerst', 'eten-drinken/adventskalenders', 'eten-drinken/chocolade-snoep', 'wonen/kerstdecoratie'],
       titel: 'Adventskalender kopen: de leukste kalenders van 2026', kort: 'Chocolade, thee, popcorn of een kaars: 24 dagen aftellen naar Kerst. Van €7 tot €65.',
       intro: 'Vanaf 1 december elke dag een vakje openmaken: een adventskalender maakt van het wachten op Kerst een klein feestje. Vroeger zat er alleen een plaatje of een chocolaatje in, nu is er voor iedereen wat: thee voor je moeder, popcorn voor filmavonden, een puzzelverhaal dat je in 24 dagen oplost. Het is ook een heel dankbaar cadeau, want je geeft eigenlijk 24 cadeautjes tegelijk. Ik zette de leukste op een rij, van klein tot flink uitpakken. Eén tip vooraf: bestel vóór eind november, want op 1 december wil je beginnen en de populairste kalenders zijn dan op.',
@@ -2580,7 +2618,7 @@
           ids: ['bol-9300000172981367', 'bol-9300000133136276', 'bol-9300000174665071', 'bol-9300000375928006'] }
       ],
       slot: 'Meer goedkope cadeaus vind je bij <a href="/c/cadeaus/onder-15">Cadeaus onder €15</a>. Alle kerstcadeaus staan bij <a href="/c/cadeaus/kerst">Kerst</a>.' },
-    { slug: 'kerstcadeau-voor-haar', beeld: 'cl-instax12', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar', 'mode-beauty', 'geuren-verzorging/parfum', 'geuren-verzorging/huidverzorging'], titel: 'Kerstcadeau voor haar: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van €17 tot €98.',
+    { slug: 'kerstcadeau-voor-haar', beeld: 'cl-instax12', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar', 'mode-beauty', 'geuren-verzorging/parfum', 'geuren-verzorging/huidverzorging'], titel: 'Kerstcadeau voor een vrouw: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van €17 tot €98.',
       intro: 'Een kerstcadeau voor haar hoeft niet ingewikkeld te zijn. Iets om jezelf mee te verwennen, iets lekkers bij de thee, of iets moois voor in huis. Ik zette cadeaus in drie prijsklassen op een rij, zodat je snel iets vindt dat bij je budget past.',
       delen: [
         { kop: 'Tot €25', tekst: 'Klein, maar met aandacht gekozen.',
@@ -2591,7 +2629,7 @@
           ids: ['bol-9300000331215829', 'cl-instax12', 'bol-9200000132246044', 'bol-9300000236208265'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/c/geuren-verzorging/geuren">Geuren</a>.' },
-    { slug: 'kerstcadeau-voor-hem', beeld: 'cl-emberton3', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem', 'geuren-verzorging/parfum', 'sport-outdoor/darts', 'elektronica'], titel: 'Kerstcadeau voor hem: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van €20 tot €111.',
+    { slug: 'kerstcadeau-voor-hem', beeld: 'cl-emberton3', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem', 'geuren-verzorging/parfum', 'sport-outdoor/darts', 'elektronica'], titel: 'Kerstcadeau voor een man: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van €20 tot €111.',
       intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: iets voor de auto, iets om mee te koken of te drinken, of een gadget. Hier staan ze in drie prijsklassen.',
       delen: [
         { kop: 'Tot €35', tekst: 'Leuk en betaalbaar.',
@@ -2755,6 +2793,105 @@
         { kop: 'Tip: geef er een afspraak bij', tekst: 'Het mooiste cadeau voor iemand met pensioen is soms gewoon tijd samen. Schrijf op een kaartje bij je cadeau een afspraak: samen fietsen, samen naar de vogels kijken of een dagje uit. Dan heeft het cadeau meteen een plan erbij.' }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/collega">Cadeau voor collega</a>, <a href="/c/dieren/vogels">Vogels</a> en <a href="/c/metaaldetectie">Metaaldetectie</a>. Gaat er een collega weg naar een nieuwe baan? Lees dan <a href="/gids/afscheidscadeau-collega">Afscheidscadeau voor een collega</a>.' },
+    { slug: 'cadeau-voor-vriendin', beeld: 'bol-9300000131876375', vakken: ['cadeaus/voor-haar', 'sieraden', 'geuren-verzorging/cadeausets'],
+      titel: 'Cadeau voor je vriendin: 16 ideeën waar ze écht blij van wordt', kort: 'Voor haar verjaardag, Sinterklaas, Kerst of zomaar: sieraden, verwenmomenten, iets om samen te doen en iets moois voor in huis.',
+      intro: 'Een cadeau voor je vriendin zoeken is leuk en spannend tegelijk. Je wilt laten zien dat je haar kent, maar ze heeft vaak al alles wat ze nodig heeft. Het beste cadeau zit meestal in één van vier hoeken: iets wat ze elke dag draagt, een moment om zichzelf te verwennen, iets om samen te doen of iets moois voor in huis. Ik zette per hoek de beste ideeën op een rij, van een kleine verrassing tot iets om echt mee uit te pakken. Of het nu gaat om je vriendin, je beste vriendin of je partner: hier vind je iets dat bij haar past.',
+      delen: [
+        { kop: 'Zo kies je het goede cadeau', tekst: 'Vier vragen die helpen:',
+          lijst: [
+            'Waar heeft ze het de laatste tijd vaak over gehad? Daar zit vaak het beste cadeau in verstopt.',
+            'Draagt ze goud of zilver? Kijk naar de sieraden die ze al heeft, dan zit je met een ketting of armband altijd goed.',
+            'Is ze iemand van spullen of van momenten? Bij het tweede scoor je met iets om samen te doen.',
+            'Twijfel je over een geur? Kies een cadeauset van een merk dat ze al gebruikt.'
+          ] },
+        { kop: 'Sieraden die ze elke dag draagt', tekst: 'Een sieraad zie je terug, elke dag weer. Kies iets fijns en eenvoudigs, dan past het bij alles.',
+          ids: ['bp-l311', 'cl-myka-naam-hart', 'myka-11001332804', 'cl-guess-moon'] },
+        { kop: 'Even helemaal verwend', tekst: 'Een fijne geur, een bad vol bruisballen of een kaars voor lange avonden: een moment voor haarzelf.',
+          ids: ['cl-rit-sakura', 'cl-lveb', 'cl-dvzjn-hart', 'cl-ww-trilogy'] },
+        { kop: 'Iets om samen te doen', tekst: 'Een spel voor jullie twee of met vrienden, of een fles om op iets te proosten.',
+          ids: ['999g-999win01', 'cl-ttr-europe', 'cl-the-mind', 'dc-1665638250'] },
+        { kop: 'Mooi voor in huis', tekst: 'Bloemen die nooit verwelken, een lamp die overdag zonlicht opslaat en een camera voor alle mooie momenten.',
+          ids: ['bol-9300000131876375', 'dvzn-530181', 'dvzn-647292', 'cl-instax12'] }
+      ],
+      slot: 'Meer ideeën vind je bij <a href="/voor/haar">Cadeaus voor haar</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor een vrouw</a>. Voor Valentijn is er <a href="/gids/valentijnscadeau-voor-haar">Valentijnscadeau voor haar</a>.' },
+    { slug: 'cadeau-voor-moeder', beeld: 'cl-myka-mama', vakken: ['cadeaus/voor-haar', 'sieraden'],
+      titel: 'Cadeau voor je moeder: ideeën voor haar verjaardag, Kerst of Moederdag', kort: 'Iets persoonlijks, iets om tot rust te komen, iets lekkers en bloemen die blijven. Van klein tot groot.',
+      intro: 'Moeders zeggen vaak dat ze niets nodig hebben, en dat is meestal ook waar. Toch is er altijd een cadeau dat haar raakt: iets met een herinnering, een moment voor haarzelf, of iets lekkers om van te genieten. Het mooiste cadeau voor je moeder laat zien dat je aan haar denkt. Daarom zette ik de ideeën in vier groepen: iets persoonlijks, iets om tot rust te komen, iets voor de keuken en de thee, en bloemen die blijven staan. Voor haar verjaardag, voor Kerst of voor Moederdag.',
+      delen: [
+        { kop: 'Tips voor een cadeau voor je moeder', tekst: 'Zo maak je er iets bijzonders van:',
+          lijst: [
+            'Persoonlijk wint het altijd: een sieraad met de geboortestenen van haar kinderen of een fotoboek vol herinneringen.',
+            'Geef haar tijd voor zichzelf: een warme plaid, een voetenbad of een geurkaars voor de avond.',
+            'Schrijf er een kaartje bij. Een paar zinnen over wat je van haar hebt geleerd, bewaart ze jaren.',
+            'Geef je met broers en zussen? Leg samen in voor één mooi cadeau.'
+          ] },
+        { kop: 'Iets persoonlijks', tekst: 'Een armband met de geboortestenen van haar kinderen, een fotoboek of een camera voor nieuwe herinneringen.',
+          ids: ['cl-myka-mama', 'cl-pf-hardcover', 'bp-l311', 'cl-instax12'] },
+        { kop: 'Om even tot rust te komen', tekst: 'Warm, zacht en lekker ruikend: helemaal goed voor een avond op de bank.',
+          ids: ['lr-351519825000', 'cl-ww-trilogy', 'cl-beurer-fb12', 'cl-rit-sakura'] },
+        { kop: 'Voor de keuken en bij de thee', tekst: 'Een kookboek dat ze echt gebruikt, goede koffie of iets lekkers om uit te delen.',
+          ids: ['bol-9300000258651028', 'cl-bialetti-moka', 'dk-00044932', 'bol-9300000158510566'] },
+        { kop: 'Bloemen die blijven', tekst: 'Bloemen van LEGO om samen te bouwen, of droogbloemen die gewoon door de brievenbus passen.',
+          ids: ['bol-9300000131876375', 'bp-l087', 'lego-40460'] }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/gelegenheid/moederdag">Moederdag</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor een vrouw</a>.' },
+    { slug: 'cadeau-voor-vader', beeld: 'bol-9300000083266771', vakken: ['cadeaus/voor-hem', 'eten-drinken/sterke-drank'],
+      titel: 'Cadeau voor je vader: ideeën voor zijn verjaardag, Kerst of Vaderdag', kort: 'Voor bij de borrel, in de keuken, voor zijn hobby of om te dragen. Cadeaus die hij echt gebruikt.',
+      intro: 'Een cadeau voor je vader is lastig, want hij zegt bijna altijd dat hij niets nodig heeft. Toch zijn er cadeaus waar vaders stiekem heel blij mee zijn: iets voor bij de borrel, goed gereedschap voor de keuken of de barbecue, iets voor zijn hobby of iets om te dragen dat net wat mooier is dan wat hij zelf zou kopen. Ik zette de beste ideeën op een rij, voor zijn verjaardag, voor Kerst of voor Vaderdag. Van een klein cadeau tot iets om met het hele gezin te geven.',
+      delen: [
+        { kop: 'Tips voor een cadeau voor je vader', tekst: 'Zo vind je iets waar hij wél blij mee is:',
+          lijst: [
+            'Kijk naar wat hij elke week doet: koken, de tuin, sporten, klussen. Een beter stuk gereedschap daarvoor valt altijd goed.',
+            'Kies kwaliteit boven gadgets: liever één goed mes dan een la vol snufjes.',
+            'Drinkt hij graag een glas? Een goede whisky of mooie glazen maakt het af.',
+            'Geef er een moment bij: samen een spel spelen of samen proeven.'
+          ] },
+        { kop: 'Voor bij de borrel', tekst: 'Een goede whisky, een rookset om er iets bijzonders van te maken, of een kist speciaalbier.',
+          ids: ['dc-2468345961', 'dvzn-648493', 'hema-d6fb696345', 'bol-9300000015405237'] },
+        { kop: 'Voor de keuken en de barbecue', tekst: 'Dingen die hij elke week gebruikt, en die net wat beter zijn dan wat hij al heeft.',
+          ids: ['bol-9300000083266771', 'bol-9200000002756942', 'bol-9300000258651028'] },
+        { kop: 'Voor zijn hobby en ontspanning', tekst: 'Een mooi schaakbord, een dartset, een spel voor de familie of warme pantoffels voor de avond.',
+          ids: ['bol-9300000271848241', 'bol-9300000163354878', 'cl-7wonders', 'bt-51963303362899'] },
+        { kop: 'Om te dragen en te gebruiken', tekst: 'Een stoer horloge, een klassieke geur, een goede koptelefoon of een hoofdlamp voor buiten.',
+          ids: ['cl-gshock-5600', 'cl-le-male', 'tf-106136001', 'bol-9300000238510035'] }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gelegenheid/vaderdag">Vaderdag</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor een man</a>.' },
+    { slug: 'cadeau-voor-oma', beeld: 'lr-324495013000', vakken: ['cadeaus/opa-oma', 'wonen/kussens-plaids'],
+      titel: 'Cadeau voor oma: ideeën voor haar verjaardag, Kerst of zomaar', kort: 'Iets om samen met de kleinkinderen te doen, iets warms, herinneringen en iets lekkers.',
+      intro: 'Oma zegt vaak dat ze niets nodig heeft, en dat ze vooral blij is als iedereen er is. Daar zit precies het geheim van een goed cadeau voor oma: iets waarmee ze tijd doorbrengt met de kleinkinderen, iets warms voor de koude avonden, of iets met herinneringen. En iets lekkers bij de koffie gaat er altijd in. Ik zette de beste ideeën op een rij, voor haar verjaardag, voor Kerst of gewoon zomaar.',
+      delen: [
+        { kop: 'Tips voor een cadeau voor oma', tekst: 'Zo maak je oma echt blij:',
+          lijst: [
+            'Tijd samen is het mooiste cadeau: geef een spel en speel het meteen samen.',
+            'Foto’s van de kleinkinderen zijn altijd raak, in een album of in een digitale fotolijst.',
+            'Warm en zacht valt bijna altijd goed: een deken, pantoffels of een warmtekussen.',
+            'Laat de kleinkinderen iets tekenen of schrijven bij het cadeau.'
+          ] },
+        { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die oma nog kent van vroeger en die kleinkinderen ook leuk vinden, en een invulboek voor samen.',
+          ids: ['bol-1004004000008403', 'bol-9200000108574427', 'bol-9300000132852206', 'cl-wasgij'] },
+        { kop: 'Warm en gezellig', tekst: 'Voor lange avonden in haar favoriete stoel.',
+          ids: ['lr-324495013000', 'cl-rohde', 'cl-beurer-fb12', 'bol-9200000075452260'] },
+        { kop: 'Herinneringen', tekst: 'Een album om foto’s in te plakken of een fotolijst waar de familie zelf nieuwe foto’s naartoe stuurt.',
+          ids: ['cl-pf-linnen', 'bol-9300000167329318'] },
+        { kop: 'Iets lekkers bij de koffie', tekst: 'Marsepein, boterkoek door de brievenbus of een pakket om zelf appeltaart te bakken.',
+          ids: ['dw-4000161470748', 'bp-l303', 'dk-00044932', 'cl-senseo'] }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/voor/opa-oma">Cadeaus voor opa en oma</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-opa-oma">Kerstcadeau voor opa en oma</a>.' },
+    { slug: 'cadeau-voor-zus', beeld: 'bol-9300000147583964', vakken: ['cadeaus/voor-haar'],
+      titel: 'Cadeau voor je zus: ideeën voor haar verjaardag, Sinterklaas of Kerst', kort: 'Iets van jullie twee, iets om te verwennen, een spel om samen te doen en iets moois voor in huis.',
+      intro: 'Een cadeau voor je zus is bijzonder: niemand kent haar zo goed als jij. Daarom mag het ook best iets persoonlijks zijn, iets dat alleen over jullie twee gaat. Een invulboek vol vragen over jullie jeugd, een ketting met "sister", of gewoon een avond samen met een goed spel. Wil je haar vooral verwennen? Dan is er ook genoeg om uit te kiezen. Ik zette de leukste ideeën op een rij, voor haar verjaardag, voor Sinterklaas of voor Kerst.',
+      delen: [
+        { kop: 'Iets van jullie twee', tekst: 'Een invulboek om samen te maken, een ketting met een knipoog of een boek over zussen.',
+          ids: ['bol-9300000147583964', 'cl-lucardi-sister', 'bol-9200000089454350'] },
+        { kop: 'Om haar te verwennen', tekst: 'Een fijne geur, bruisballen voor in bad en een kaars die heerlijk ruikt.',
+          ids: ['cl-rit-sakura', 'cl-ch-goodgirl', 'cl-dvzjn-hart', 'cl-ww-trilogy'] },
+        { kop: 'Samen spelen', tekst: 'Een spel voor jullie twee, of voor de hele familie tijdens de feestdagen.',
+          ids: ['cl-the-mind', 'cl-pictionary', 'cl-ttr-europe'] },
+        { kop: 'Mooi voor in huis', tekst: 'Bloemen die blijven, een lamp op zonne-energie en een camera voor jullie mooiste momenten.',
+          ids: ['bol-9300000131876375', 'dvzn-530181', 'cl-instax12'] },
+        { kop: 'Tip: geef er een herinnering bij', tekst: 'Zoek een oude foto van jullie twee op en stop die bij het cadeau, met een kaartje over wat jullie samen hebben meegemaakt. Daar wordt elke zus stil van, hoe klein het cadeau ook is.' }
+      ],
+      slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en in de gids <a href="/gids/cadeau-voor-vriendin">Cadeau voor je vriendin</a>.' },
     { slug: 'kraamcadeau', beeld: 'knufk-bambam-pakket', vakken: ['cadeaus/baby-kraam', 'speelgoed/baby-peuter', 'cadeaus/voor-kinderen'],
       titel: 'Kraamcadeau: ideeën waar ouders écht iets aan hebben', kort: 'Voor op kraamvisite: lief voor de baby, handig voor de ouders. Van €6 tot €65.',
       intro: 'Op kraamvisite ga je niet met lege handen. Maar wat neem je mee? De meeste ouders krijgen stapels rompertjes in maat 50 en meer knuffels dan er in de wieg passen. Het beste kraamcadeau is daarom iets waar ze over een paar maanden nog wat aan hebben, of iets voor de ouders zelf, want die worden op kraamvisite bijna altijd overgeslagen. Ik zette de beste ideeën op een rij, van een klein cadeautje tot iets om met een groepje te geven. En onthoud: het allerbeste wat je kunt meenemen is iets te eten en de vraag "zal ik de afwas even doen?".',
@@ -2775,6 +2912,25 @@
           ids: ['myka-1100182088', 'cl-1000-dagen-vragen', 'hm-gipsbuik-set', 'bw-relax-mama-kalender'] }
       ],
       slot: 'Alles voor de kleinste vind je bij <a href="/voor/baby">Babycadeaus</a>. Zoek je iets voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' },
+    { slug: 'babyshower-cadeau', beeld: 'bol-9300000136627314', vakken: ['cadeaus/baby-kraam', 'speelgoed/baby-peuter'],
+      titel: 'Babyshower cadeau: ideeën voor de aanstaande mama en de baby', kort: 'Wat neem je mee naar een babyshower? Iets voor de mama, iets voor de baby en ideeën om met de groep te geven.',
+      intro: 'Een babyshower is een feestje voor de aanstaande mama, een paar weken voordat de baby komt. Vrienden en familie komen samen, er zijn spelletjes en iedereen neemt een cadeautje mee. Maar wat neem je mee? Het leukste babyshower-cadeau is voor de mama én voor de baby: iets om de zwangerschap te bewaren, iets zachts voor de babykamer, of samen met de groep iets groots dat de ouders echt nodig hebben. Ik zette de beste ideeën op een rij.',
+      delen: [
+        { kop: 'Tips voor een babyshower cadeau', tekst: 'Een paar dingen om op te letten:',
+          lijst: [
+            'Vergeet de mama niet: veel cadeaus zijn voor de baby, terwijl het feestje voor haar is.',
+            'Vraag of er een verlanglijst is. Dan krijgen ze geen drie dezelfde badjes.',
+            'Kleding? Kies maat 68 of groter. De kleinste maatjes krijgen ze al genoeg.',
+            'Met de hele groep kun je samen iets groters geven, zoals een babygym of een babyfoon.'
+          ] },
+        { kop: 'Voor de aanstaande mama', tekst: 'Iets om de zwangerschap te bewaren of om er nog even van te genieten.',
+          ids: ['sp-zwangerschapsdagboek', 'bw-relax-mama-kalender', 'kv-mommy-to-be-sweater', 'hm-gipsbuik-set'] },
+        { kop: 'Voor de baby', tekst: 'Zacht, veilig en net even mooier: een deken met naam, een knuffel om te ontdekken en de allerkleinste slofjes.',
+          ids: ['bol-9300000136627314', 'cl-ld-knuffel', 'cl-steiff-trex', 'tbl-0a6h8gez0010m1'] },
+        { kop: 'Met de hele groep', tekst: 'Als iedereen een paar tientjes geeft, kun je samen iets geven wat de ouders echt gaan gebruiken.',
+          ids: ['cl-bol-fp-jungle', 'knufk-bambam-pakket', 'ww-voedingskussen-caprice', 'bol-9300000144690906'] }
+      ],
+      slot: 'Is de baby er al? Lees dan <a href="/gids/kraamcadeau">Kraamcadeau: ideeën waar ouders iets aan hebben</a>. Alles voor de kleinsten staat bij <a href="/voor/baby">Babycadeaus</a>.' },
     { slug: 'housewarming-cadeau', beeld: 'dvzn-530181', vakken: ['wonen', 'wonen/woondecoratie', 'wonen/kaarsen-geur', 'wonen/tafelen'],
       titel: 'Housewarming cadeau: ideeën voor een nieuw huis', kort: 'Voor vrienden of familie die net verhuisd zijn. Van €13 tot €75.',
       intro: 'Iemand die net verhuisd is, heeft dozen vol spullen en toch nog een leeg huis. Het beste housewarming cadeau maakt dat nieuwe huis meteen een beetje méér thuis: licht, iets voor op tafel of iets om te proosten. Waar je mee op moet passen: smaak. Jij vindt dat beeldje prachtig, maar het moet wel in hún huis passen. Kies daarom iets neutraals, iets grappigs of iets wat op gaat. Ik zette de beste ideeën op een rij, van klein tot een cadeau om met een groep vrienden te geven.',
@@ -3048,7 +3204,36 @@
     'kinderbijbel-kiezen': { top: [['Onze topkeuze', 'bol-9200000130050250'], ['Voor elke dag', 'bol-9300000130260497'], ['Voor de kleinsten', 'bol-9200000090540712']], faq: [
       ['Welke kinderbijbel past bij welke leeftijd?', 'Voor baby’s en dreumesen een babybijbel met stevige bladzijden. Voor peuters en kleuters korte verhalen met grote plaatjes. Vanaf een jaar of zes een kinderbijbel om voor te lezen of zelf te lezen.'],
       ['Wat is het verschil tussen een voorleesbijbel en een bijbel om zelf te lezen?', 'Een voorleesbijbel heeft langere verhalen om aan kinderen voor te lezen. Een bijbel om zelf te lezen heeft grotere letters en kortere zinnen.'],
-      ['Is een kinderbijbel een goed doopcadeau?', 'Ja, een babybijbel is een mooi doopcadeau dat jaren meegaat. Schrijf er een persoonlijke wens voorin.']] }
+      ['Is een kinderbijbel een goed doopcadeau?', 'Ja, een babybijbel is een mooi doopcadeau dat jaren meegaat. Schrijf er een persoonlijke wens voorin.']] },
+    'sinterklaasgedicht-maken': { top: [['Gedicht erbij', 'bol-9300000039602281'], ['Lekkerste letter', 'cl-dubai-letter'], ['Voor de kleintjes', 'bol-9300000320406800']], faq: [
+      ['Hoe begin je een sinterklaasgedicht?', 'Met een vaste openingszin, bijvoorbeeld: "Sinterklaas zat eens te denken, wat hij [naam] dit jaar zou schenken." Daarna schrijf je steeds twee regels die op elkaar rijmen.'],
+      ['Hoe lang moet een sinterklaasgedicht zijn?', 'Acht tot zestien regels is genoeg. Een kort gedicht dat raak is, is leuker om voor te lezen dan een lang gedicht.'],
+      ['Wat rijmt er op Piet?', 'Bijvoorbeeld niet, ziet, verdriet, liet en lied. Op Sint rijmen vindt, kind, wind en begint.'],
+      ['Mag je plagen in een sinterklaasgedicht?', 'Ja, dat hoort erbij. Plaag over gewoontes en grappige momenten, niet over uiterlijk of dingen waar iemand verdriet van heeft. Als iedereen lacht, ook degene over wie het gaat, is het goed.']] },
+    'cadeau-voor-vriendin': { top: [['Onze topkeuze', 'bol-9300000131876375'], ['Beste koop', 'cl-rit-sakura'], ['Iets blijvends', 'bp-l311']], faq: [
+      ['Wat geef je je vriendin voor haar verjaardag?', 'Iets wat ze elke dag draagt, zoals een fijne ketting, een verwenmoment, of iets om samen te doen. Kijk naar waar ze het de laatste tijd over had.'],
+      ['Wat geef je een vriendin die alles al heeft?', 'Een moment in plaats van spullen: een spel voor jullie twee, een fles om op iets te proosten of LEGO-bloemen om samen te bouwen.'],
+      ['Hoeveel geef je uit aan een cadeau voor je vriendin?', 'Dat bepaal je zelf. In deze gids lopen de ideeën van ongeveer 13 tot 80 euro, dus er is voor elk budget iets.']] },
+    'cadeau-voor-moeder': { top: [['Onze topkeuze', 'cl-myka-mama'], ['Beste koop', 'dk-00044932'], ['Om te verwennen', 'lr-351519825000']], faq: [
+      ['Wat geef je je moeder die niets nodig heeft?', 'Iets persoonlijks of een moment voor haarzelf: een armband met de geboortestenen van haar kinderen, een fotoboek, of een warme plaid en een geurkaars.'],
+      ['Wat is een origineel cadeau voor je moeder?', 'LEGO-bloemen om samen te bouwen, droogbloemen door de brievenbus of een pakket om samen appeltaart te bakken.'],
+      ['Wanneer is het Moederdag?', 'Moederdag is in Nederland elk jaar op de tweede zondag van mei.']] },
+    'cadeau-voor-vader': { top: [['Onze topkeuze', 'bol-9300000083266771'], ['Beste koop', 'hema-d6fb696345'], ['Om uit te pakken', 'dc-2468345961']], faq: [
+      ['Wat geef je een vader die niets nodig heeft?', 'Iets wat hij elke week gebruikt maar zelf niet snel koopt: goede steakmessen, een vleesthermometer of een mooi schaakbord.'],
+      ['Wat is een goed cadeau voor een vader die van whisky houdt?', 'Een goede single malt in een geschenkdoos, mooie whiskyglazen of een rookset om zijn whisky een rokerige smaak te geven.'],
+      ['Wanneer is het Vaderdag?', 'Vaderdag is in Nederland elk jaar op de derde zondag van juni.']] },
+    'babyshower-cadeau': { top: [['Onze topkeuze', 'bol-9300000136627314'], ['Voor de mama', 'sp-zwangerschapsdagboek'], ['Met de groep', 'cl-bol-fp-jungle']], faq: [
+      ['Wat is een babyshower?', 'Een feestje voor de aanstaande mama, een paar weken voordat de baby komt. Vrienden en familie komen samen, doen spelletjes en nemen een cadeautje mee.'],
+      ['Wat neem je mee naar een babyshower?', 'Iets voor de mama en iets voor de baby, zoals een zwangerschapsdagboek of een zachte deken met naam. Vraag of er een verlanglijst is.'],
+      ['Hoeveel geef je uit aan een babyshower cadeau?', 'Meestal 15 tot 30 euro per persoon. Met de groep kun je samen iets groters geven, zoals een babygym.']] },
+    'cadeau-voor-oma': { top: [['Onze topkeuze', 'lr-324495013000'], ['Samen doen', 'bol-1004004000008403'], ['Beste koop', 'bp-l303']], faq: [
+      ['Wat geef je een oma die zegt dat ze niets nodig heeft?', 'Tijd samen: een spel om meteen met de kleinkinderen te spelen, of een invulboek voor oma en kleinkind.'],
+      ['Wat is een goed cadeau voor oma van de kleinkinderen?', 'Iets met foto’s, zoals een fotoalbum of een digitale fotolijst, met een tekening of briefje van de kleinkinderen erbij.'],
+      ['Wat geef je oma in de winter?', 'Iets warms: een wollen deken, warme pantoffels, een warmtekussen of een voetenbad.']] },
+    'cadeau-voor-zus': { top: [['Onze topkeuze', 'bol-9300000147583964'], ['Om te dragen', 'cl-lucardi-sister'], ['Samen doen', 'cl-the-mind']], faq: [
+      ['Wat geef je je zus voor haar verjaardag?', 'Iets van jullie twee, zoals een zussen-invulboek of een ketting met "sister", of iets om haar te verwennen.'],
+      ['Wat is een persoonlijk cadeau voor je zus?', 'Een invulboek dat je samen maakt, of een oude foto van jullie twee met een kaartje erbij.'],
+      ['Wat geef je een zus die alles heeft?', 'Een avond samen: een spel voor jullie twee, zoals The Mind, en iets lekkers erbij.']] },
   };
   GIDSEN.forEach(function (g) { var x = GIDS_EXTRA[g.slug]; if (x) { g.top = x.top; g.faq = x.faq; } });
   /* Rij met cadeaugidsen op de homepage: de eerste 4 uit GIDSEN (zet seizoensgidsen dus bovenaan de lijst). */
