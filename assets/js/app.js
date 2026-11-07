@@ -2028,6 +2028,7 @@
       '.rz-wacht{padding:18px 10px;min-height:0;border-radius:20px}.rz-wachtkaart{padding:18px 14px}.rz-wachtkaart h2{font-size:23px}.rz-boekbeeld{margin:4px -14px 10px}.rz-stappen li{font-size:14px;padding:7px 0}' +
       '.rz-gedicht{padding:20px 16px}.rz-gedicht h2{font-size:24px;margin-bottom:12px}.rz-gedicht .rz-tekst{font-size:15.5px;line-height:1.6}.rz-handtekening{font-size:23px;margin-top:10px}' +
       '.rz-cadeaus{padding:14px}.rz-cadeaus h2{font-size:22px}.rz-cadeau{padding:9px;gap:10px}.rz-cadeau img{width:64px;height:64px}.rz-acties{gap:7px}}' +
+    '@media (max-width:400px){.rz-gedicht{padding:18px 13px}.rz-gedicht .rz-tekst{font-size:14.5px;line-height:1.6}}' +
     '</style>';
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
