@@ -166,6 +166,16 @@ if not TEST: git('checkout', 'main'); git('pull', '--rebase', '-q')
 r = subprocess.run([sys.executable, os.path.join(HIER, 'maak-zoekindex.py'), FEEDS], capture_output=True, text=True, encoding='utf-8')
 log('index:', (r.stdout or r.stderr).strip()[-300:])
 if r.returncode or TEST: sys.exit(r.returncode)
+# 8-11-2026 (nazorg, wens Marius): elke nacht nakijken of de prijzen en voorraad op de site nog kloppen met de verse feeds.
+# Alleen een rapport (zoekindex-feeds/nazorg/wacht-laatste.json); verandert niets aan de site. Mag de zoekindex nooit tegenhouden.
+try:
+    NZ = os.path.join(FEEDS, 'nazorg'); os.makedirs(NZ, exist_ok=True)
+    subprocess.run(['node', os.path.join(HIER, 'keurkamer', 'effectief-site.js'), os.path.join(NZ, 'producten-site.json')], check=True, capture_output=True, timeout=600)
+    w = subprocess.run([sys.executable, '-I', os.path.join(HIER, 'keurkamer', 'wacht.py'), '--producten', os.path.join(NZ, 'producten-site.json'), '--uit', NZ],
+                       capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=3600)
+    log('nazorg-controle:', (w.stdout or w.stderr).strip().splitlines()[-1:] if (w.stdout or w.stderr) else '')
+except Exception as e:
+    log('nazorg-controle overgeslagen:', e)
 git('add', 'assets/zoek/winkels.json', 'assets/zoek/alle.json.gz', 'assets/zoek/w')
 if git('diff', '--cached', '--quiet').returncode == 0:
     log('Niets veranderd.'); sys.exit(0)

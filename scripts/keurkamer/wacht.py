@@ -17,7 +17,7 @@ BOL = arg('--bol-feeds', os.path.join(HOME, 'Documents', 'LeukeKeuze-Bol', 'feed
 TTF = arg('--tt-feeds', os.path.join(HOME, 'Documents', 'zoekindex-feeds'))
 UIT = arg('--uit', os.path.join(ROOT, 'keurkamer', 'wacht')); os.makedirs(UIT, exist_ok=True)
 bron = os.path.join(ROOT, 'keurkamer', 'data', 'producten-effectief.json')
-if not os.path.exists(bron): bron = arg('--producten', bron)
+bron = arg('--producten', bron)  # 8-11-2026: een opgegeven bestand gaat altijd voor
 E = json.load(open(bron, encoding='utf-8')); P = E['producten']
 vandaag = datetime.date.today().isoformat()
 uit = {'gemaakt': datetime.datetime.now().isoformat(timespec='minutes'), 'prijs': [], 'uitverkocht': [], 'nietInFeed': [], 'gecontroleerd': 0, 'bronnen': []}
@@ -28,7 +28,8 @@ def prijsverschil(pid, oud, nieuw):
     if oud > 0 and abs(nieuw - oud) / oud >= 0.10: uit['prijs'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'oud': oud, 'nieuw': round(nieuw, 2)})
 
 # ---- bol: productId staat in het id (bol-<productId>) ----
-bol_ids = {pid[4:]: pid for pid in P if pid.startswith('bol-')}
+# 8-11-2026: alleen producten die nog echt naar bol linken (sinds 7-11 linken veel bol-ids naar een partner)
+bol_ids = {pid[4:]: pid for pid in P if pid.startswith('bol-') and 'bol.com' in (P[pid].get('url') or '')}
 gevonden = set()
 feeds = sorted(glob.glob(os.path.join(BOL, 'product-feed_*-v2.csv.gz')))
 if feeds and bol_ids:
@@ -65,12 +66,19 @@ def netwerk(u):
     if 'partner.bol.com' in u or 'bol.com' in u: return 'bol'
     if re.search(r'tradetracker|[?&]tt=\d+_|a=516846|//partner\.', u): return 'tradetracker'
     if re.search(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/|aff\.svinando', u): return 'daisycon'
+    if 'awin1.com' in u: return 'awin'
     return 'direct'
-tt_live = {pid: p for pid, p in P.items() if (p.get('netwerk') or netwerk(p.get('url'))) in ('tradetracker', 'daisycon')}
-per_url = {url_sleutel(p['winkelUrl']): pid for pid, p in tt_live.items() if p['winkelUrl']}
+tt_live = {pid: p for pid, p in P.items() if (p.get('netwerk') or netwerk(p.get('url'))) in ('tradetracker', 'daisycon', 'awin')}
+per_url = {url_sleutel(p['winkelUrl']): pid for pid, p in tt_live.items() if p['winkelUrl'] and 'awin1.com' not in p['winkelUrl']}
 per_md5 = {pid.split('-', 1)[1]: pid for pid in tt_live if '-' in pid}
+# 8-11-2026: Awin (Coolblue, EMP, s.Oliver...) herkennen we aan het productnummer p= in de awin-link
+def awin_p(u):
+    m = re.search(r'awin1\.com/pclick\.php\?(?:.*&)?p=(\d+)', str(u or ''))
+    return m.group(1) if m else None
+per_awin = {awin_p(p['url']): pid for pid, p in tt_live.items() if awin_p(p['url'])}
 gevonden_tt = set()
-for f in sorted(glob.glob(os.path.join(TTF, '*.json'))):
+# 8-11-2026: nieuwste bestanden eerst (een product telt maar één keer, dus de verste prijs moet winnen)
+for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, reverse=True):
     naam = os.path.basename(f)
     if naam.startswith('logboek'): continue
     try: L = json.load(open(f, encoding='utf-8'))
@@ -79,7 +87,8 @@ for f in sorted(glob.glob(os.path.join(TTF, '*.json'))):
     uit['bronnen'].append(naam); n = 0
     for r in L:
         link = r.get('link') or r.get('url') or ''
-        pid = per_md5.get(hashlib.md5(link.encode()).hexdigest()[:10]) if link else None
+        pid = per_awin.get(awin_p(link)) if awin_p(link) else None
+        if not pid: pid = per_md5.get(hashlib.md5(link.encode()).hexdigest()[:10]) if link else None
         if not pid:
             w = url_sleutel(r.get('winkelUrl') or re.sub(r'^.*[?&](?:r|u|url)=', '', link) if link else '')
             try:
