@@ -1091,7 +1091,8 @@
     }
     /* Stap 6 indeling: de selectie staat alleen op gelegenheden en bij 'Deals van vandaag'; op een collectie (Cadeau-ideeën) meteen filter en producten. */
     var isGelegenheid = kruimelKop.naar === '/gelegenheid';
-    if (!(isGelegenheid || g.dagdeals) || g.codes) selectie = [];
+    /* 7-11-2026 (Marius): 'Onze selectie' ook van de gelegenheden af; alleen 'Deals van vandaag' blijft. */
+    if (!g.dagdeals || g.codes) selectie = [];
     /* 02-11-2026: zelfde als bij de personen: geen dubbele bovenaan, en afwisselen in winkel en soort. */
     if (!q.sort || q.sort === 'aanbevolen') {
       var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
