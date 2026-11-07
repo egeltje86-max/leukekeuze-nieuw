@@ -696,7 +696,6 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .ingangen-404 .knop { min-height: 48px; }
 @media (min-width: 760px) { .ingangen-404 { grid-template-columns: repeat(4, 1fr); max-width: 760px; } }
 .lade-extra a { min-height: 44px; }
-=======
 /* ===== Stap 1 homepage (6-11-2026, GO Marius): intro met twee knoppen, Voor wie met 4 rondjes + tekstlinks, favorieten meteen in beeld. ===== */
 .hero-knoppen { display: flex; gap: 10px; margin-top: 16px; max-width: 440px; }
 .hero-knoppen .knop { flex: 1 1 0; min-height: 48px; padding: 0 12px; font-size: 14.5px; }
@@ -947,3 +946,52 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .afd-chips { margin: 4px 0 6px; }
 .afd-chips .chip small { opacity: .6; font-weight: 600; margin-left: 2px; }
 .afd-chips .chip.actief { background: #141A2A; color: #fff; border-color: #141A2A; }
+
+/* ==========================================================
+   8-11-2026 (wens Marius): mooiere knoppen en balken, overal op de site.
+   Zelfde stijl als de Sint-rijmmachine: goud met een zacht glansje, wit-crème knoppen met gouden rand.
+   ========================================================== */
+.knop { transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, filter .15s ease; }
+.knop:focus-visible, .chip:focus-visible { outline: 3px solid #137ca8; outline-offset: 3px; }
+.knop > svg:last-child { transition: transform .2s ease; }
+.knop:hover > svg:last-child:not(:first-child) { transform: translateX(3px); }
+
+.knop-goud { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #FCE7AD 0%, #F0C96C 48%, #DBA646 100%); border: 1px solid #B8862E; color: #141A2A;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75), inset 0 -2px 0 rgba(140,90,20,.2), 0 3px 0 #A8762A, 0 8px 18px rgba(120,80,20,.2); }
+.knop-goud::after { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -60%; width: 45%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-18deg); transition: left .6s ease; pointer-events: none; }
+.knop-goud:hover { background: linear-gradient(180deg, #FDEBB8 0%, #F3CF78 48%, #E0AD4E 100%); transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75), inset 0 -2px 0 rgba(140,90,20,.2), 0 4px 0 #A8762A, 0 12px 24px rgba(120,80,20,.26); }
+.knop-goud:hover::after { left: 120%; }
+.knop-goud:active { transform: translateY(2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 1px 0 #A8762A, 0 3px 8px rgba(120,80,20,.18); }
+.knop-goud.uit::after, .knop-goud[disabled]::after { display: none; }
+.knop-goud.uit, .knop-goud[disabled] { border-color: #DDD4C3; transform: none; }
+
+.knop-rand { background: linear-gradient(180deg, #FFFFFF, #FBF5E8); border: 1.5px solid #DCC48F; color: var(--goud-donker); box-shadow: inset 0 1px 0 #fff, 0 2px 0 #E6D5B0, 0 4px 10px rgba(60,40,10,.06); }
+.knop-rand:hover { background: #FFFAF0; border-color: var(--goud); box-shadow: inset 0 1px 0 #fff, 0 3px 0 #D9BF86, 0 8px 16px rgba(60,40,10,.1); transform: translateY(-1px); }
+.knop-rand:active { transform: translateY(2px); box-shadow: 0 0 0 transparent; }
+.hero-knoppen .knop-rand { box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.hero-knoppen .knop-rand:hover { box-shadow: 0 6px 18px rgba(0,0,0,.3); }
+
+.chip { background: linear-gradient(180deg, #FFFFFF, #FBF7EE); box-shadow: 0 1px 0 rgba(120,90,30,.1); transition: transform .12s ease, border-color .12s, box-shadow .12s, background .12s, color .12s; }
+.chip:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(120,90,30,.12); }
+.chip[aria-pressed="true"], .chip.actief { background: linear-gradient(180deg, #1D2A4B, #0A1020); color: #FFE39B; border-color: #C9A23A; box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 0 0 2px rgba(217,168,72,.22), 0 3px 8px rgba(10,16,32,.2); transform: none; }
+
+/* Zoekknop in de zoekbalk */
+.zoek button { background: linear-gradient(180deg, #FCE7AD 0%, #F0C96C 48%, #DBA646 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -2px 0 rgba(140,90,20,.2), 0 2px 6px rgba(0,0,0,.18); transition: transform .15s ease, filter .15s ease; }
+.zoek button:hover { filter: brightness(1.04); transform: scale(1.04); }
+.zoek button:active { transform: scale(.96); }
+.zoek:focus-within { box-shadow: 0 0 0 3px rgba(217,168,72,.45), 0 6px 20px rgba(0,0,0,.25); }
+
+/* Filteren-knop (telefoon) */
+.mb-filter { box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 0 0 1.5px rgba(201,162,58,.55), 0 6px 16px -8px rgba(10,16,32,.7); }
+
+/* Onderste balk (telefoon): goud streepje boven de pagina waar je bent */
+.onderbalk { box-shadow: 0 -6px 20px rgba(10,16,32,.18); }
+.onderbalk [aria-current="page"]::before { content: ""; position: absolute; top: 0; left: 50%; width: 34px; margin-left: -17px; height: 3px; border-radius: 0 0 3px 3px; background: linear-gradient(90deg, #E2AD4C, #FCE7AD, #E2AD4C); box-shadow: 0 0 10px rgba(240,190,90,.6); }
+.onderbalk a, .onderbalk button { transition: color .15s; }
+.onderbalk a:active svg, .onderbalk button:active svg { transform: scale(.92); }
+
+@media (prefers-reduced-motion: reduce) {
+  .knop, .chip, .knop-goud::after, .zoek button, .knop > svg:last-child { transition: none; }
+  .knop:hover, .chip:hover, .zoek button:hover { transform: none; }
+}

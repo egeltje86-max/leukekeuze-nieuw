@@ -2029,6 +2029,29 @@
       '.rz-gedicht{padding:20px 16px}.rz-gedicht h2{font-size:24px;margin-bottom:12px}.rz-gedicht .rz-tekst{font-size:15.5px;line-height:1.6}.rz-handtekening{font-size:23px;margin-top:10px}' +
       '.rz-cadeaus{padding:14px}.rz-cadeaus h2{font-size:22px}.rz-cadeau{padding:9px;gap:10px}.rz-cadeau img{width:64px;height:64px}.rz-acties{gap:7px}}' +
     '@media (max-width:400px){.rz-gedicht{padding:18px 13px}.rz-gedicht .rz-tekst{font-size:14.5px;line-height:1.6}}' +
+    /* 8-11-2026 (wens Marius): mooiere knoppen en balken. */
+    '.rijm-z .rz-knop{position:relative;overflow:hidden;isolation:isolate;border-radius:14px;border:1px solid #b8862e;letter-spacing:.01em;background:linear-gradient(180deg,#fce7ad 0%,#f0c96c 48%,#dba646 100%);color:#1d1626;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -2px 0 rgba(140,90,20,.22),0 4px 0 #a8762a,0 10px 22px rgba(120,80,20,.22);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}' +
+    '.rijm-z .rz-knop:after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);transition:left .6s ease;pointer-events:none}' +
+    '.rijm-z .rz-knop:hover{filter:brightness(1.03);transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -2px 0 rgba(140,90,20,.22),0 5px 0 #a8762a,0 14px 28px rgba(120,80,20,.26)}.rijm-z .rz-knop:hover:after{left:120%}' +
+    '.rijm-z .rz-knop:active{transform:translateY(3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 0 #a8762a,0 4px 10px rgba(120,80,20,.18)}' +
+    '.rijm-z .rz-knop:focus-visible{outline:3px solid #137ca8;outline-offset:3px}' +
+    '.rijm-z .rz-knop>span[aria-hidden]{display:inline-block;transition:transform .2s ease}.rijm-z .rz-knop:hover>span[aria-hidden]{transform:translateX(4px)}' +
+    '.rijm-z .rz-knop.rz-wit{background:linear-gradient(180deg,#fff,#fbf4e4);border:1.5px solid #dfc894;color:#23243b;font-weight:750;box-shadow:inset 0 1px 0 #fff,0 2px 0 #e3d0a8,0 5px 12px rgba(60,40,10,.07)}' +
+    '.rijm-z .rz-knop.rz-wit:after{display:none}.rijm-z .rz-knop.rz-wit:hover{border-color:#c99740;background:#fffaf0;box-shadow:inset 0 1px 0 #fff,0 3px 0 #d9bf86,0 8px 16px rgba(60,40,10,.1)}.rijm-z .rz-knop.rz-wit:active{transform:translateY(2px);box-shadow:0 0 0 #fff}' +
+    '.rz-keuzes label{background:linear-gradient(180deg,#fff,#fbf6ea);border-color:#dccaa2;box-shadow:0 1px 0 rgba(120,90,30,.12);transition:transform .12s ease,border-color .12s,box-shadow .12s,background .12s}' +
+    '.rz-keuzes label:hover{border-color:#c99740;transform:translateY(-1px);box-shadow:0 3px 8px rgba(120,90,30,.12)}' +
+    '.rz-keuzes label:has(input:checked){background:linear-gradient(180deg,#1d2a4b,#0b1225);color:#ffe39b;border-color:#c99740;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 2px rgba(217,168,72,.28),0 4px 10px rgba(11,18,37,.22);transform:none}' +
+    '.rz-kaartkop{background:linear-gradient(100deg,#7a142c,#a8263f 60%,#8f1b34);border-bottom:2px solid #d9b46a;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}' +
+    '.rz-kaartkop span{border:0;background:linear-gradient(180deg,#fce7ad,#e2ad4c);color:#5a1424;font-weight:850;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 4px rgba(0,0,0,.2)}' +
+    '.rz-veld input[type=text],.rz-veld select,.rz-veld textarea{transition:border-color .15s,box-shadow .15s;box-shadow:inset 0 1px 2px rgba(40,30,10,.05)}' +
+    '.rz-veld input:focus,.rz-veld textarea:focus,.rz-veld select:focus{outline:none;border-color:#c99740;box-shadow:0 0 0 4px rgba(217,168,72,.22)}' +
+    '.rz-balk{height:10px;background:linear-gradient(180deg,#eadcbd,#f4ead4);border:1px solid #e0cb9e;box-shadow:inset 0 1px 2px rgba(80,50,10,.18)}' +
+    '.rz-balk:before{width:40%;background:linear-gradient(90deg,rgba(217,164,65,.2),#e9b85a 30%,#ffe7a8 55%,#e9b85a 80%,rgba(217,164,65,.2));box-shadow:0 0 10px rgba(240,190,90,.75)}' +
+    '.rz-totaal{background:linear-gradient(180deg,#fff7df,#fbe6b2);border:1.5px solid #e2c17c;box-shadow:inset 0 1px 0 #fff,0 2px 6px rgba(120,80,20,.08);font-size:15px}' +
+    '.rz-cadeau{transition:transform .15s ease,box-shadow .15s ease,border-color .15s}.rz-cadeau:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(60,40,10,.1)}' +
+    '.rz-cadeau .pijl{background:linear-gradient(180deg,#fce7ad,#e2ad4c);color:#3a2a10;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 4px rgba(120,80,20,.25);transition:transform .15s ease}.rz-cadeau:hover .pijl{transform:translateX(3px)}' +
+    '.rz-terug{background:linear-gradient(180deg,#fff,#fbf4e4);border:1.5px solid #e0cba3;border-radius:999px;padding:8px 14px;font-size:14px;box-shadow:0 2px 0 #e8d9ba;transition:border-color .15s}.rz-terug:hover{border-color:#c99740}' +
+    '@media (prefers-reduced-motion:reduce){.rijm-z .rz-knop,.rijm-z .rz-knop:after,.rz-keuzes label,.rz-cadeau,.rz-cadeau .pijl{transition:none}.rijm-z .rz-knop:hover,.rz-keuzes label:hover,.rz-cadeau:hover{transform:none}}' +
     '</style>';
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
