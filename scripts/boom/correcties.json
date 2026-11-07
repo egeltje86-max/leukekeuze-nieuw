@@ -17495,6 +17495,56 @@
    "wonen",
    "woondecoratie",
    "beelden-decoratie"
+  ],
+  "dille-73362dc872": [
+   "eten-drinken",
+   "koffie-thee-cacao",
+   "warme-chocolademelk"
+  ],
+  "dille-087cfe1ee8": [
+   "eten-drinken",
+   "alcoholvrij",
+   "siropen-mocktails"
+  ],
+  "dille-4b1a6b6a56": [
+   "eten-drinken",
+   "alcoholvrij",
+   "siropen-mocktails"
+  ],
+  "dille-af9aa7f980": [
+   "eten-drinken",
+   "alcoholvrij",
+   "siropen-mocktails"
+  ],
+  "tt-wijny-a4781f8b47": [
+   "eten-drinken",
+   "alcoholvrij",
+   "siropen-mocktails"
+  ],
+  "dvzn-daisycon-3f645c7702": [
+   "eten-drinken",
+   "alcoholvrij",
+   "siropen-mocktails"
+  ],
+  "dille-5e455a9ab9": [
+   "eten-drinken",
+   "delicatessen",
+   "noten-zoutjes"
+  ],
+  "dille-5bc1252e57": [
+   "eten-drinken",
+   "delicatessen",
+   "noten-zoutjes"
+  ],
+  "dille-5446464088": [
+   "eten-drinken",
+   "delicatessen",
+   "noten-zoutjes"
+  ],
+  "tt-wijny-318291448d": [
+   "eten-drinken",
+   "bier",
+   "bierpakketten"
   ]
  },
  "samen": {
@@ -17740,7 +17790,9 @@
   "bol-9300000265640029": "a-coolblue-nl-7a325166bb",
   "bol-9300000179544167": "dgsw-dc15cc6e74",
   "bol-9200000072615655": "t2-boekenwereld-48a9c917d6",
-  "bol-1001004010971015": "t2-boekenwereld-f2fbfbc0c9"
+  "bol-1001004010971015": "t2-boekenwereld-f2fbfbc0c9",
+  "dille-73362dc872": "cl-dk-cacao",
+  "dille-af9aa7f980": "cl-dk-kaneel"
  },
  "adressen": {
   "p/dk-00045080": "/c/wonen/kerstdecoratie/",
