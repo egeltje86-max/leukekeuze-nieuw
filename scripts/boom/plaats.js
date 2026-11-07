@@ -35,6 +35,13 @@ function plaats(p) {
   const sh = (COR.shop || {})[p.id]; if (sh) { p.shop = sh[0]; if (sh[1]) p.verzendNoot = sh[1]; else delete p.verzendNoot; if (sh[2]) p.winkelUrl = sh[2]; }
   const pr = (COR.prijs || {})[p.id]; if (pr) { p.prijs = pr[0]; if (pr[1] && pr[1] > pr[0]) p.oudePrijs = pr[1]; else delete p.oudePrijs; }
   if (p.oudePrijs && !(p.oudePrijs > p.prijs)) delete p.oudePrijs; /* geen 'van-prijs' die niet hoger is */
+  /* Ronde Sinterklaas & Kerst (7-11-2026, gekeurd door Marius): 'Uit Kerstcadeaus' / 'Uit Sinterklaas'.
+     Het product blijft op de site in zijn eigen vakje, maar staat niet meer op die cadeaupagina. */
+  const ni = (COR.nietIn || {})[p.id];
+  if (ni) {
+    p.ookIn = (p.ookIn || []).filter((x) => ni.indexOf(x) === -1);
+    if (ni.indexOf(p.cat + '/' + p.sub) !== -1 && p.afd) { p.cat = p.afd; p.sub = p.groep; }
+  }
   if (v && v[0] === 'christelijk') p.cat = 'christelijk'; /* christelijk alleen bij Christelijk (regel Marius) */
   return p;
 }
