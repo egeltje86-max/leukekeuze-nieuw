@@ -602,7 +602,7 @@
     if (!GIDSEN.length) return '';
     return '<section class="sectie" data-tel="gidsen">' +
       '<div class="sectie-kop"><div><h2>Cadeaugidsen</h2></div><a class="meer" href="/gids">Alle gidsen ' + ic('pijl') + '</a></div>' +
-      '<div class="gidslijst compact">' + GIDSEN.slice(0, 3).map(gidsKaart).join('') + '</div></section>';
+      '<div class="gidslijst compact">' + HOME_GIDSEN.map(function (sl) { return GIDSEN.filter(function (g) { return g.slug === sl; })[0]; }).filter(Boolean).map(gidsKaart).join('') + '</div></section>';
   }
   /* Eigen kleurboeken van Marius: één kaart, laag op de pagina. */
   function eigenKaart() {
@@ -3020,8 +3020,11 @@
     if (!GIDSEN.length) return '';
     return '<section class="sectie">' +
       '<div class="sectie-kop"><div><h2>Cadeaugidsen</h2><p>Per gelegenheid de beste ideeën op een rij, met uitleg.</p></div><a class="meer" href="/gids">Alle gidsen ' + ic('pijl') + '</a></div>' +
-      '<div class="gidslijst">' + GIDSEN.slice(0, 4).map(gidsKaart).join('') + '</div></section>';
+      '<div class="gidslijst">' + HOME_GIDSEN.map(function (s) { return GIDSEN.filter(function (g) { return g.slug === s; })[0]; }).filter(Boolean).map(gidsKaart).join('') + '</div></section>';
   }
+  /* 7-11-2026 (akkoord Marius): op de homepage 6 gidsen, Sinterklaas en Kerst door elkaar, met de nieuwe kerstgidsen erbij.
+     Google komt vaak op de homepage en vindt de nieuwe gidsen zo sneller. Na 5 december: Sinterklaas-gidsen hier vervangen. */
+  var HOME_GIDSEN = ['schoencadeautjes', 'adventskalender-kiezen', 'sinterklaascadeau-vrouw', 'kerstcadeau-kind', 'sinterklaascadeau-man', 'surprise-maken'];
   /* 'Lees ook': gidsen die bij dit vak horen (veld 'vakken' in GIDSEN). Maximaal 3, in de volgorde van GIDSEN. */
   function leesOok(sleutel) {
     var l = GIDSEN.filter(function (g) { return (g.vakken || []).indexOf(sleutel) > -1; }).slice(0, 3);
