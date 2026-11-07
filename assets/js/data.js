@@ -1005,8 +1005,16 @@ window.LK_COLLECTIES = [
     zoek: 'kortingscode kortingscodes code codes actiecode couponcode coupon voucher promotiecode gratis verzending', codes: true, vakken: LK_ALLE_GROEPEN },
   /* Black Friday (5-11-2026, GO Marius): alle echte deals van minstens 20% korting, grootste korting eerst. Tot en met Cyber Monday. */
   { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'Deals tot 70% korting', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 – de beste deals van bol, Coolblue en meer',
-    tekst: 'De grootste kortingen van al onze winkels op één plek, met minstens 20% korting. De grootste korting staat bovenaan. Black Friday is op 27 november.',
-    zoek: 'black friday blackfriday cyber monday deals deal aanbieding aanbiedingen korting sale uitverkoop', korting: 20, vakken: LK_ALLE_GROEPEN },
+    tekst: 'De beste kortingen van al onze winkels op één plek, allemaal minstens 20% korting. Bovenaan staan de beste deals; kies hieronder je categorie. Black Friday is op vrijdag 27 november.',
+    zoek: 'black friday blackfriday cyber monday deals deal aanbieding aanbiedingen korting sale uitverkoop', korting: 20, vakken: LK_ALLE_GROEPEN,
+    /* 7-11-2026: veelgestelde vragen (ook als FAQ-gegevens voor Google). */
+    faq: [
+      ['Wanneer is Black Friday 2026?', 'Black Friday is op vrijdag 27 november 2026. Veel winkels beginnen al eerder met een Black Friday-week, en op maandag 30 november is het Cyber Monday.'],
+      ['Zijn de kortingen echt?', 'Wij tonen de van-prijs die de winkel zelf opgeeft. Twijfel je? Kijk dan of het product de weken ervoor ook al zo goedkoop was. Een goede deal is een prijs die je anders niet krijgt, niet alleen een hoog percentage.'],
+      ['Hoe kies ik een goede Black Friday-deal?', 'Maak vooraf een lijstje van wat je echt wilt kopen en vergelijk de prijs met andere winkels. Bovenaan deze pagina staan de beste deals: korting op cadeaus waar mensen echt blij mee zijn, niet alleen het hoogste percentage.'],
+      ['Kan ik met Black Friday mijn Sinterklaas- en kerstcadeaus kopen?', 'Ja, Black Friday valt precies tussen Sinterklaas en Kerst. Veel mensen kopen dan al hun cadeaus in één keer. Let wel op de levertijd als het cadeau vóór 5 december binnen moet zijn.'],
+      ['Waar gaat mijn bestelling heen?', 'Je koopt altijd bij de winkel zelf, zoals bol, Coolblue of HEMA. Daar betaal je, en daar regel je ook bezorging en retour. De prijs bij de winkel is altijd leidend.']
+    ] },
   { slug: 'toppers-van-nu', naam: 'Toppers van nu', kicker: 'Hits van dit najaar', beeld: 'images/collecties/toppers-van-nu-rond.webp', seoTitel: 'Populaire cadeaus 2026 – de toppers van nu',
     tekst: 'Per afdeling de drie cadeaus die nu het meest gevraagd zijn, met de hand gekozen.', vakken: ['tag:toppers'] },
   { slug: 'cadeaubonnen', naam: 'Cadeaubonnen', kicker: 'Altijd goed', beeld: 'images/sub/sub-cadeaus-onder-10-2026b.webp', seoTitel: 'Cadeaubon en cadeaukaart – laat ze zelf kiezen',

@@ -943,3 +943,7 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .gi-onder .prijs s.oud { font-size: .72em; margin-left: 4px; }
 /* Homepage (7-11-2026): 6 gidsen; op de telefoon alleen de eerste 4, anders wordt de homepage te lang. */
 @media (max-width: 759px) { .gidslijst.compact .gidskaart:nth-child(n+5) { display: none; } }
+/* Black Friday (7-11-2026): knopjes per categorie */
+.afd-chips { margin: 4px 0 6px; }
+.afd-chips .chip small { opacity: .6; font-weight: 600; margin-left: 2px; }
+.afd-chips .chip.actief { background: #141A2A; color: #fff; border-color: #141A2A; }
