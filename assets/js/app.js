@@ -872,6 +872,8 @@
     var naam = pe.naam.replace(/^Voor /, '');
     var knoppen = pe.knoppen || [];
     var alles = persoonProducten(pe, s ? s.vakken : null);
+    var nietOp = (window.LK_NIETOP && window.LK_NIETOP[pad]) || []; /* 7-11-2026: past niet op deze subpagina */
+    if (nietOp.length) alles = alles.filter(function (p) { return nietOp.indexOf(p.id) === -1; });
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
@@ -953,6 +955,7 @@
       /* Kortingscodes (5-11-2026): alleen producten van winkels die nu een code of actie hebben. */
       if (g.codes && !codesNu().some(function (c) { return (c.shop || c.winkel) === p.shop; })) return false;
       var plekken = plekkenVan(p);
+      if (p.afd) plekken = plekken.concat([p.afd + '/' + p.groep, p.afd + '/' + p.groep + '/' + p.vak]); /* 7-11-2026: gelegenheden noemen ook de nieuwe vakjes (bijv. mode-sieraden/horloges) */
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
   }
@@ -1030,6 +1033,8 @@
   function verzameling(g, pad, kruimelKop, q, voorSlug) {
     var knoppen = g.knoppen || [];
     var basisAlles = verzamelLijst(g);
+    var nietOpG = (window.LK_NIETOP && window.LK_NIETOP[pad + (voorSlug ? '/' + voorSlug : '')]) || []; /* 7-11-2026: past niet op deze pagina (nagekeken) */
+    if (nietOpG.length) basisAlles = basisAlles.filter(function (p) { return nietOpG.indexOf(p.id) === -1; });
     var pv = voorSlug ? window.LK_PERSOON(voorSlug) : null;
     if (voorSlug && (!pv || g.labels || !g.vakken)) return nietGevonden();
     var voorNaam = pv ? pv.kort.replace(/^Voor /, '').toLowerCase() : '';
