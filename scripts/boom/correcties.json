@@ -13881,6 +13881,61 @@
    "wonen",
    "woondecoratie",
    "beelden-decoratie"
+  ],
+  "t2-nedgame-0e1a4c803f": [
+   "speelgoed",
+   "poppen-knuffels",
+   "squishmallows"
+  ],
+  "t2-nedgame-b475a82589": [
+   "speelgoed",
+   "poppen-knuffels",
+   "squishmallows"
+  ],
+  "tt-dgsw-ea9185075f": [
+   "speelgoed",
+   "poppen-knuffels",
+   "squishmallows"
+  ],
+  "joybuy-c655705746": [
+   "speelgoed",
+   "bouwen",
+   "magnetisch-bouwen"
+  ],
+  "joybuy-92c16e44ab": [
+   "speelgoed",
+   "bouwen",
+   "magnetisch-bouwen"
+  ],
+  "tt-dgsw-e64143cda9": [
+   "speelgoed",
+   "knutselen",
+   "klei-slijm"
+  ],
+  "joybuy-3f6114cc36": [
+   "speelgoed",
+   "poppen-knuffels",
+   "poppenhuizen-accessoires"
+  ],
+  "t2-nedgame-08a4535d16": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "t2-cartoon-a190d15c5d": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "gereedschap-dokterssets"
+  ],
+  "tt-dgsw-5827835cf0": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "gereedschap-dokterssets"
+  ],
+  "tt-dgsw-679cd9e678": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
   ]
  },
  "samen": {
@@ -14272,7 +14327,9 @@
    "collega"
   ],
   "cl-lindt-teddy": [
-   "collega"
+   "collega",
+   "kind",
+   "kinderen"
   ],
   "cl-tony-lief": [
    "collega"
@@ -14299,7 +14356,9 @@
    "collega"
   ],
   "cl-lindt-santa": [
-   "collega"
+   "collega",
+   "kind",
+   "kinderen"
   ],
   "cl-lindor-200": [
    "collega"
@@ -14323,10 +14382,14 @@
    "haar"
   ],
   "dgsw-a8f3035ef8": [
-   "baby"
+   "baby",
+   "kind",
+   "kinderen"
   ],
   "lego-76477": [
-   "baby"
+   "baby",
+   "kind",
+   "kinderen"
   ],
   "cl-bol-geomag-cube": [
    "baby"
@@ -14350,7 +14413,9 @@
    "baby"
   ],
   "bellat-c50471e085": [
-   "baby"
+   "baby",
+   "kind",
+   "kinderen"
   ],
   "hema-85cb39ca1b": [
    "baby"
@@ -14365,16 +14430,24 @@
    "hem"
   ],
   "cl-agility-ladder": [
-   "hem"
+   "hem",
+   "kind",
+   "kinderen"
   ],
   "cl-pionnen": [
-   "hem"
+   "hem",
+   "kind",
+   "kinderen"
   ],
   "cl-reusch-keeper": [
-   "hem"
+   "hem",
+   "kind",
+   "kinderen"
   ],
   "cl-scheenbeschermer": [
-   "hem"
+   "hem",
+   "kind",
+   "kinderen"
   ],
   "cl-babyliss-stijltang": [
    "baby"
@@ -14408,6 +14481,9410 @@
   "cl-cah": [
    "tiener",
    "tieners"
+  ],
+  "dvzn-347250": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-479347": [
+   "kind",
+   "kinderen"
+  ],
+  "999g-999rgw01": [
+   "kind",
+   "kinderen"
+  ],
+  "999g-999kls01": [
+   "kind",
+   "kinderen"
+  ],
+  "999g-999gal01": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000127699829": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000114277642": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000005322306": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-666777555": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190792432": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-8000500392065": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-614180": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-490944": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000157956303": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070995008": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345512": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000248152371": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262460631": [
+   "kind",
+   "kinderen"
+  ],
+  "999g-999kol01e": [
+   "kind",
+   "kinderen"
+  ],
+  "999g-999wrw01": [
+   "kind",
+   "kinderen"
+  ],
+  "999g-999jak04": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-352784": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-762707": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-207301": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-262695": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-267368": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-6791": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-637174": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000279784730": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000005509144": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000125118307": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277051203": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00011577": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00025947": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00025946": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00040677": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00044294": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00016825": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00025953": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00030362": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-915338": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000090540712": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000130050250": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000139904477": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-4000379033506": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-4000379000607": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073684225": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000040253620": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000090910875": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004007092873": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000128985252": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-737823": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194762206": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142143695": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194762451": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000013218376": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31134": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60312": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-10471": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-77241": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-77243": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-72032": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-10473": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60500": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31393": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-71441": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60503": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-42221": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60511": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31387": [
+   "kind",
+   "kinderen"
+  ],
+  "myka-11001412788": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000075874369": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000426946863": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000239695089": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-52823565238611": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-54414049968467": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-55056513565011": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-52032339378515": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-52732072427859": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-52616490385747": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-52732070560083": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-54837508374867": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-51623415906643": [
+   "kind",
+   "kinderen"
+  ],
+  "tbl-112809713110m1": [
+   "kind",
+   "kinderen"
+  ],
+  "tbl-0a6bmeep0020m1": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-318845": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-42222": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-42235": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-42227": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-42204": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-77263": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-77257": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31136": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31173": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31376": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31381": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31161": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31168": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31389": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-31378": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60414": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60316": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60367": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-42684": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-43281": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-21276": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-21595": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-21270": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-72045": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-77001": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-11206": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-10698": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-10477": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-10954": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-131394": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-276349": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-840774": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-633422": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-264986": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-223497": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-746890": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-608847": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-154853": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-494154": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-542206": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-582187": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-151252": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-653282": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-253338": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-542600": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-951186": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-565641": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-541316": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-873615": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-493447": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000045616908": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229367620": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000101182379": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228059899": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229915007": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000104558952": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000135520058": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194738060": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235874233": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000130260497": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000052023945": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267987085": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004006541063": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142563153": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249550": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196418820": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000128141050": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000118308118": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190086752": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000152419734": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000260237609": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000123794077": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000059824426": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000000419972": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000198984251": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000306377192": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004011510353": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000175009321": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000377799800": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000279040507": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000331860190": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261350709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073452459": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000113863783": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000199174262": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000157550414": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000167766303": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233155918": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000242944221": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233155942": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000028822951": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000173682774": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256962442": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000033682836": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150694924": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000188712340": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000308421940": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231801529": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244502862": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000168522132": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183040640": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142896932": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179544169": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000246438655": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000133849812": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000199135497": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000111721816": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000071103001": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227351372": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256962426": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000145384800": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256962404": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000159234222": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000161620559": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273583385": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235330885": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196801615": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000165180203": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000238781712": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000127487170": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000114280954": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231249719": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000026009635": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000251591601": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000116390489": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000080891278": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000123061827": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0hky1v4y9": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0hmjp8cbl": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0hmfl6pg4": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0hn1xkg2s": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0hmfl96b8": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0hl242jc8": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000272162490": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264879894": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000384469927": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000384469926": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640029": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640056": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000188054290": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000002719732": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000144864856": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000039278002": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000234304052": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000042944655": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000095274107": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004011740407": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000320406800": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004004440079": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000088621923": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176830274": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221675733": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000015510242": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221675781": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229753760": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000035078697": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000169748815": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000104835927": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190216447": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183890165": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225252882": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000070328120": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000197605998": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223693762": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000399526977": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232471843": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640005": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000039562803": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070416370": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000168680075": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004013389248": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000192994578": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000172296069": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000025044624": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183264805": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000171163755": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000162220917": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000138803498": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000145343894": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223650596": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000058728851": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000108724491": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000035037758": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231109417": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000155741812": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000116573085": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000081460808": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228440180": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000018856074": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000145250032": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000050797969": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000178199190": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187579529": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000198174842": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177662728": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000040350470": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000084607301": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000182692894": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244090215": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000057089447": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000191333378": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227816232": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273966384": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244102702": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000184006010": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004012352031": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000028102202": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000042944709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000132860293": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176344032": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000331823380": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000042944689": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000197756065": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223869444": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000076997721": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000152681441": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000165421082": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000167796261": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004013021717": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004002089607": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000044733596": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244057652": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640019": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225695697": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000340513473": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176870601": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000037038894": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000137571944": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243671138": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000178526031": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000085014800": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000074280377": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000169798458": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000013239995": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000036272136": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000080521320": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004010971015": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000053301104": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000301556735": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000023573892": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004011067327": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000130057541": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000040980047": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000259419975": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000076366157": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256515991": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004000009967": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000167700749": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000109023531": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228763339": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235268654": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000090408302": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345467": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227400244": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727628": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345489": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225966655": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000017407527": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000260191886": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000342374342": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000239745816": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000241430019": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004006938681": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227216973": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000161785976": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000140369594": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000199140831": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229765812": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000188004029": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000021970709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000092865631": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000251039902": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000007240539": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000086903910": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227795168": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229072135": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190133273": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000021822286": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000031046461": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000084182863": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000105695478": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000240072216": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000169798467": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000117953212": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000034589739": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227142482": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004006937446": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000038629390": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000056276653": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004011191722": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004006937709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194026799": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000021643609": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000145250036": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000087608394": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000258916502": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070546479": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000241430012": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000001726147": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000095218292": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226217575": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228514355": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000069001227": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000224663597": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000175212447": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000274036925": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000254180656": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000082791410": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-8410031977936": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-4000417900401": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-4260611771478": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-8000300407860": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-7622202032967": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-4260611772017": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-7622202013584": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-7622201747411": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-394620": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-141793": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-887823": [
+   "kind",
+   "kinderen"
+  ],
+  "dk-00045011": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-424059": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000181576893": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000148798384": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000167884017": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000158053937": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000084608473": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000182185975": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000004832458": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000181433977": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000126373762": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000071114106": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000138219372": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247175329": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000169748883": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004007096491": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000074407267": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000169748884": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000021970722": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000109023395": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000193333721": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000084874432": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190119213": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000174955248": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020405193": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000178728048": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221675724": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000128141074": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150508842": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000049362770": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000019512265": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000199063509": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000184006004": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247083400": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000038306258": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000066826192": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004001847857": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000032095219": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000249426301": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000337284179": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142337647": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b07xv7ytjx": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0ggsqrft2": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0gr96fwxr": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0b39hhvgv": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b009a39y0u": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b06xww7m8q": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b09s3w7p49": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0c8blsvl2": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b07my1tm6h": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b08plswlp6": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0bwfrc8s6": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0csrnjknr": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0cq2lv8l6": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b09jp6xnbq": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b09tdgbr5q": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0h7wp1hxq": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0cbd85fyn": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0cbdbkxtd": [
+   "kind",
+   "kinderen"
+  ],
+  "amz-b0d9qk7t1s": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233528483": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000006380085": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000181968006": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233386002": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232743825": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000042831824": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000153365170": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000182484627": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000182484745": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000039278028": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000371316762": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000224670268": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000157956217": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345397": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345445": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000263559033": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000128141002": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000184861917": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000055944519": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000166566947": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073803176": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000065878158": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000343476066": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000169694687": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000107080642": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000024357515": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277694649": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000257685097": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229236515": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000272107345": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000240660521": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530245": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708157": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267785127": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244057642": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727635": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262248": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236575345": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273887351": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493695": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000268338286": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273861930": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000152351739": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-bf9ca4e862": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-b7216eba18": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-62d7c6c31c": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-3cedf2fff8": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-5450dc87d2": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-d27edb1b66": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10431848": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10433379": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10505604": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10429639": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10431847": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10429742": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10429914": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10434266": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10434267": [
+   "kind",
+   "kinderen"
+  ],
+  "an-10473689": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-faabc11a5e": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-d7b24ee304": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-cac5ff65d9": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-4ace9a7a3e": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-96e6b6a9bc": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-49043c5b36": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-7da2bc7a9f": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-95f9e74d63": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-df7ece796a": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-ac31dabc62": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-dcf5dbd59c": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-00697c9483": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-759cd22c28": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-091965d11a": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-83c11e57ad": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-f3e04f7c37": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-eef9ac5903": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-f6a956e27f": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-2b72fa72bb": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-799a48b433": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000008136486": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000157708059": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000121886901": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000014094712": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070952055": [
+   "kind",
+   "kinderen"
+  ],
+  "cg-underwater-light-show": [
+   "kind",
+   "kinderen"
+  ],
+  "cg-chocolade-game-controller": [
+   "kind",
+   "kinderen"
+  ],
+  "cg-hover-hockey-voetbal-set": [
+   "kind",
+   "kinderen"
+  ],
+  "cg-rainbow-in-my-room": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530208": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000283555344": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228511226": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223645302": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245606456": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177044305": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228511367": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000009319303": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262055175": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000034103256": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493679": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000125025508": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000175168678": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227347815": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631508": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000009069730": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196770": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000085320223": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000132733465": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345424": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000238269141": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000250375692": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000242876141": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000302471968": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708102": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708160": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000160071756": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267826680": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000055364816": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225854989": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345490": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179485984": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000174108120": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000240065922": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249632": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221442168": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000275654380": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000302471969": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237666796": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000309770614": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530180": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345521": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221442153": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000003122902": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267785132": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823018": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345517": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000099049834": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000132862057": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245783375": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000041150668": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262460620": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073666630": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000238943436": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000275658288": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000283555343": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232471841": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226144814": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256076078": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256044310": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245069913": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493597": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262214": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196762": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262265": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243481709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000276357465": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000153798461": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000275795322": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264888846": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220559003": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070934524": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228763319": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227400273": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000148921218": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244058244": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232180774": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640013": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228951997": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226395514": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000099544553": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631514": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000030510177": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179485983": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000126779414": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273887354": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273375565": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256044306": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000275290677": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000085381037": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264879882": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000034159462": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000032883991": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228763305": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253110804": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640062": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000029187525": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235345693": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177675336": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262221": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244058119": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000272162486": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345419": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262242074": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000153923423": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266439690": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727722": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176116258": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000038011718": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727719": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000171212282": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727729": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000195236644": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000255940951": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196761": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526142": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262068685": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227174326": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000003405499": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000002852481": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000021970696": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000093309555": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177675267": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237949256": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228440183": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000170755969": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196760": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000018986724": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000260934383": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004006162681": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823082": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243481703": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225916975": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000027406107": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256875618": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244057552": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266482157": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244058151": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000260135557": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727732": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000132891417": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526103": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266439695": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000057021429": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196763": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345478": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938793": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727694": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000003611235": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256962449": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727707": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000126114715": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000159988830": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938801": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244058324": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631509": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229682661": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938791": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000184863542": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938799": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000122182194": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493596": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530194": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262218107": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179894059": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000170755968": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000057992803": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020893712": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727713": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530184": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727702": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631513": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245783364": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727691": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000284376858": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631544": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823252": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345514": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273887353": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727714": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253114947": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264888857": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262271": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000105068681": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285102376": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493642": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000271515587": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000271680025": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253840973": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000251039647": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266439692": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267785138": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631512": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000292340141": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231236865": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345395": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823259": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727662": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000170493371": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233385723": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262058735": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000135789085": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220047809": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000241505900": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000002496991": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727667": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526192": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000075519669": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225664928": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526175": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249540": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225892757": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530226": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000075519693": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190393805": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530168": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708143": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000073568595": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000033972788": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285102379": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000242947724": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262460645": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000234116501": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262460646": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000272008302": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262063": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000259069478": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938787": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345444": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229819858": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073981372": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249678": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000020488096": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264888852": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000276357458": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000239874901": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267785137": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530247": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253114951": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000141897344": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264879888": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004011915000": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493615": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000091570802": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000002303119": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220047815": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000238229469": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000035198842": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000094540496": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000037601277": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262268": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345412": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000160465631": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227400152": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285655656": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000242805880": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526117": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727669": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000240031402": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150167198": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708144": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232180888": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493625": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727731": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000109553009": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004007111495": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000260135552": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526121": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225916891": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000257637899": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000259069428": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000075230027": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938783": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000275654350": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264938785": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225917001": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000152044196": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000273887349": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727704": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000028714942": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233141139": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253110781": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727701": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000145001164": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249535": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227216975": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253349293": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190510575": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000271984677": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493624": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727648": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277694629": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256044322": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708148": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493656": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285102384": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000174512287": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264888861": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000306392325": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000033632654": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266628657": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000180035654": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000281027233": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225435302": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244057733": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244057866": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223650588": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000002863037": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232180897": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000239208955": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000253110831": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256044338": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196765": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727725": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142190694": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000230650958": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277687709": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285102377": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000088986607": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000085320242": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000281027232": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345458": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000259069354": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227992643": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231038489": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000086222219": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000195248086": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232180880": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000013361281": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000095299661": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004006487384": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526094": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004004574403": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000013361237": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000057831168": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247438425": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526101": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000027281974": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000039299421": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142563603": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285271795": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000257531698": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227992649": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277602216": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004012352032": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000095475921": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000276376648": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261504097": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000257531703": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004000019548": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000281033786": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000039302799": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000271984777": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226641563": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000230014940": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000060063755": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000119019550": [
+   "kind",
+   "kinderen"
+  ],
+  "cadeau-d6ad9d4cbf": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221675737": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000031659526": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-1334e22ed6": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000188459585": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247317010": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-9afd5e4908": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000022062834": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000001941395": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-beren-18-21": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-boerderij-13-17": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-bos-22-25": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-dino-35-48": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-fantasie-13-56": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-huisdieren-13-17": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-insecten-10-16": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-pool-18-21": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-safari-18-21": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-vogels-18-21": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-knuf-zee-22-26": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-dierenpak": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-figuur": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-handpop": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-oren": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-sh-pluche": [
+   "kind",
+   "kinderen"
+  ],
+  "ag-spaarpot": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-1ea2a1341f": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-e1663711d8": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-1d80bcb1ac": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-7ddd6b92f9": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-25c6794b1f": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-72a7d192be": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-5d7ff2a01d": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-6057a162fd": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-27364defa3": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-f5a17be11a": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-19f7e55c31": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-26e5071162": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-54c580fa73": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-7eebe2f49b": [
+   "kind",
+   "kinderen"
+  ],
+  "bt-m-30c08b2688": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-8004735050332": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-5011061016942": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-9044400859470": [
+   "kind",
+   "kinderen"
+  ],
+  "dw-5400265034324": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-0d1083eb14": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-90cecb0d49": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-b06ddc03f9": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-d5564babe6": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-5f901797c6": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-eb18bdd33e": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-f5db1e0bdb": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-7f716097d7": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-2a1ff023af": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-90cd28be8e": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-b4f09e138f": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-1a6c86e0e1": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-50ef22a166": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-1062878805": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-94a9e70de3": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-5047c5ea7b": [
+   "kind",
+   "kinderen"
+  ],
+  "supz-8851c878f1": [
+   "kind",
+   "kinderen"
+  ],
+  "cartn-2df9af07dd": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-1bbbba9ff0": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-8b50e2d844": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-422c796ef4": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-dd67bb0157": [
+   "kind",
+   "kinderen"
+  ],
+  "emp-d7c1dfbf74": [
+   "kind",
+   "kinderen"
+  ],
+  "emp-1b75c906ec": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-dfd4f94811": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-1442f3f6ae": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-71b8706876": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-78b712cc1b": [
+   "kind",
+   "kinderen"
+  ],
+  "emp-00dd1f4812": [
+   "kind",
+   "kinderen"
+  ],
+  "emp-ad220fcf4f": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-abdc1c0813": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-055e4aa23c": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-0b41d1b9c7": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-93dfb2fef9": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-e1cd4db186": [
+   "kind",
+   "kinderen"
+  ],
+  "cartn-43c349b8ea": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-3e0440b66c": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-3c1358542d": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-10017c870e": [
+   "kind",
+   "kinderen"
+  ],
+  "dg-sw-26games": [
+   "kind",
+   "kinderen"
+  ],
+  "pry-sw-safebuddy-gtm": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-0e7b6a029e": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-43021": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-5010081": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-5010254": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-5010262": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-airhockey": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150810101": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000132165207": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000132165209": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150811102": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150810097": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179546317": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232235952": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220214492": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000145369712": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269202725": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000005509211": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000106561561": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245440722": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190670668": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-70b9b578ef": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-c56356b0bb": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-8e80e1ce7a": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-afda0c7fb8": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-d374a3db69": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-753e345eb8": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000248618488": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000242603974": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231778430": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236925688": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000004128201": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000040119447": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228691739": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225664935": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000138219392": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183026688": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243076488": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256076086": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823189": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225966610": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000280911653": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000257637902": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631548": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526137": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823188": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269708154": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233701878": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000230014950": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-666778924": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004008485272": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000009318450": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000052849274": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000040980662": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000279044423": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-ff4a82687a": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-4bfe2df827": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-c0f1541ef8": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-3e674c2b05": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-b43c142dad": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-dced33edac": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-6e1bf5a667": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-994e8ca813": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-b9ee5bfb80": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-e4346f412a": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-dca386c1d4": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-fa83f6039f": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-54554c2314": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-34a409e9cb": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-2866463201": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-cd139f8c37": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-8468857b69": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-22bf28fdea": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-7085cf0f6f": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-7b2f16b0ab": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-1df0951995": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-e863a522e7": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-e7e3188ef3": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-6bfb65947f": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-43ac777e9b": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-13fbef55db": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-990951dbb5": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-dc15cc6e74": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-43ecfdad79": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-85969e6b79": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-c6cdc75b4d": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-f61b16814e": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-a09859bbeb": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-d96fe04bad": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-34359356a2": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-c542080499": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-a1a415e558": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-15e1e92cfe": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-7b24aa2a93": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-ea9185075f": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-0a6f0ac8c4": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-7e185a9854": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-8121491748": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-fc3740ba4c": [
+   "kind",
+   "kinderen"
+  ],
+  "cadeau-23eab75ed6": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-6e8cbdfb96": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-3b78eaaf50": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-dba6ef3ed7": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-362c4198d2": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-30f36c71fb": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-18e5e3cc96": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-28d6e0fee5": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-ded7cea22a": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-890852f990": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-ee7e4238fb": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-c1b652e703": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-50112199c1": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000259671597": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262462447": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000198110519": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000322381513": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000005845222": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196576723": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000185716142": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000173400085": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000320683306": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000182391581": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000152725729": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000302377672": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000248996731": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000267978215": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000066826685": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000158619739": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-65d7cb9d99": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269251460": [
+   "kind",
+   "kinderen"
+  ],
+  "bellat-15fecca997": [
+   "kind",
+   "kinderen"
+  ],
+  "cg-903f3003ed": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-84374cd8b5": [
+   "kind",
+   "kinderen"
+  ],
+  "gadget-aab95732a4": [
+   "kind",
+   "kinderen"
+  ],
+  "supz-601c903233": [
+   "kind",
+   "kinderen"
+  ],
+  "cartn-84778b72bc": [
+   "kind",
+   "kinderen"
+  ],
+  "nedg-f5c06688d6": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000125602531": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247175308": [
+   "kind",
+   "kinderen"
+  ],
+  "hobbym-3be1536e49": [
+   "kind",
+   "kinderen"
+  ],
+  "hobbym-1b401f8d22": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-9c923e1a87": [
+   "kind",
+   "kinderen"
+  ],
+  "bellat-7b32f864c1": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194487246": [
+   "kind",
+   "kinderen"
+  ],
+  "bellat-cae8005b68": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000100748446": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-5e6bc6bc4f": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-650774a97a": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-c0c2446134": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-65cd85d05e": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000154791241": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000368982942": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-3ff2bd7a7d": [
+   "kind",
+   "kinderen"
+  ],
+  "kadove-22198e086d": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-04c8cc9a61": [
+   "kind",
+   "kinderen"
+  ],
+  "knufk-a7e60395ca": [
+   "kind",
+   "kinderen"
+  ],
+  "knufk-d227b986c5": [
+   "kind",
+   "kinderen"
+  ],
+  "cartn-c40c600ee9": [
+   "kind",
+   "kinderen"
+  ],
+  "cartn-7397c7dd1f": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-677a542a65": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-2a57d5ad32": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000163469374": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345461": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-1976c559e6": [
+   "kind",
+   "kinderen"
+  ],
+  "cadeau-c7000dbcbe": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-4a0366b1be": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000135788920": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177497152": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493662": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225916942": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-2ccaa16da7": [
+   "kind",
+   "kinderen"
+  ],
+  "cartn-6ec846064a": [
+   "kind",
+   "kinderen"
+  ],
+  "bellat-604225da5f": [
+   "kind",
+   "kinderen"
+  ],
+  "dvzn-dbce378d1c": [
+   "kind",
+   "kinderen"
+  ],
+  "supz-4d725e5570": [
+   "kind",
+   "kinderen"
+  ],
+  "lo-ebe779fd91": [
+   "kind",
+   "kinderen"
+  ],
+  "countr-87939d3a32": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-4787819424": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-d39d3ac317": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-c49abba29a": [
+   "kind",
+   "kinderen"
+  ],
+  "superz-1c2726b315": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-9b9d1dac14": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-a0f4eeddd2": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-bcb99cad72": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-464d12e201": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-c4a008b2a4": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-7ab4f79bd1": [
+   "kind",
+   "kinderen"
+  ],
+  "dgsw-044a7d56b1": [
+   "kind",
+   "kinderen"
+  ],
+  "grotek-05c4fd331e": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000108574415": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196801526": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000104061452": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631583": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000087124976": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220459892": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000137571954": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000073568594": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000249428208": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823181": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183628682": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000132510926": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000175633563": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227113255": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000082254801": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187237442": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000082254848": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236721373": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225854987": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220461000": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000300909481": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000232176756": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000061978435": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000055944511": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000003287451": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179544174": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000174541072": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000322582015": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227354686": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227354684": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000189465337": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000126181549": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227361153": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000011623827": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727659": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249552": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-0a143f0ea6": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-e27575bc9a": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-c7b96ec892": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-1143df80ce": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-edb967d06e": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-b65cf432ab": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-173a47bde3": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-99e6bdd503": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-6f338b7cc4": [
+   "kind",
+   "kinderen"
+  ],
+  "superz-9a3d0a0bd5": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000238405632": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000258926374": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247823180": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526145": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526149": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000256526152": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228659081": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225959759": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225695354": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233155914": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-ab9d43699d": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-e72bc67523": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-557516bc97": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-6ae42c81d2": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-d08c98a1e2": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-33e69f881a": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-791041b578": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-1ad732d358": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-5bb77f29a4": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-a813ae82db": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-afa8aee0b7": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-3b38d31258": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-6a3bb5dff8": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-efd74a107f": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-88d1203a8b": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-0ee951ea3e": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-6af2c3fcf9": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-f7d3100c50": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-c9ace68ee9": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-e1117e24dd": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-4af5d4ee72": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-213c852a38": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-31caee8a5f": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-8c657c161f": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-534c828f2f": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-f4e2698b8a": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-10b088f67a": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-e779c24617": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-bbb7e30adf": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-d7d3583824": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-c8ea9d59ec": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-ba83056b5a": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-1d34b79f9c": [
+   "kind",
+   "kinderen"
+  ],
+  "nedgam-f34b4376e6": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000158751881": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000242944222": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000198204008": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194463540": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196801524": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245783361": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177281785": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000094694127": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000107062585": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-f3cad50182": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-a3e3f0690a": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-5b76d81493": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-7f363974d9": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-fb75cae954": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-866ecf650d": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-56b7b09988": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-4a6fc9ccef": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-f2955585b4": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-5cc5f6717b": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-1935ad0898": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-e9c1e6219b": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-02307aa7da": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-86b7fdd260": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-fe78788e51": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-84812eeeed": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-62f36f32ac": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-27310077d5": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-d2cd56c14b": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-ebb6553636": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-693e36f0cd": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-32d780c657": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-dccaac0118": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-3f0c9f514c": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-de24837503": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-3bbc996968": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-0f5c9f375b": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-e06cdef1b1": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-114bb7a357": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-b3719f140c": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-63336aebde": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-5ded232893": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-28921500a4": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-55e9be5dde": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-d1e85c2ec7": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-f0b1839331": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-16259a451b": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-ef74705c0b": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-ca76ce30ea": [
+   "kind",
+   "kinderen"
+  ],
+  "hema-8fc8a01810": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227400207": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000030853769": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000030853773": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000160468255": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000023961179": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243164882": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-fiftiesstore-17ec7efb50": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-hema-f8ec744397": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-cadeau-nl-08b5ee7c2b": [
+   "kind",
+   "kinderen"
+  ],
+  "dille-e7355a0fe7": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-hema-38fa764896": [
+   "kind",
+   "kinderen"
+  ],
+  "tt-dgsw-2edb3453bc": [
+   "kind",
+   "kinderen"
+  ],
+  "westwing-62bd070047": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000193882009": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236204204": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000114219177": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227271658": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000042178893": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000082961060": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000192307083": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000192297207": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000159130325": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-astro-bot": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000090938105": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000240435887": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000233107043": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-sonic-racing": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-luigis-mansion3": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-zelda-eow": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-mario-wonder": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277888865": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-just-dance-2026": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020992182": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-ps-tegoed": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-nintendo-tegoed": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-nso-12m": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-mc-dungeons2": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000103387305": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000009936882": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-joycon2": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch2-pokemon-za": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch2-dk-bananza": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch2-mario-galaxy": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch2-mario-party": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-switch-oled-mario": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch-oled-mk8": [
+   "kind",
+   "kinderen"
+  ],
+  "ned-switch-lite-hyrule": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch-lite-ac": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch-lite-mk8": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-switch-lite-tomodachi": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225191264": [
+   "kind",
+   "kinderen"
+  ],
+  "joybuy-752875ce8a": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-cadeau-nl-8189fb6f8b": [
+   "kind",
+   "kinderen"
+  ],
+  "tt-dvzn-54591406f8": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150800868": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000153357879": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-hema-cd5ffe24b0": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-hema-d19b2b824d": [
+   "kind",
+   "kinderen"
+  ],
+  "t2-surprises-ee16dd4e72": [
+   "kind",
+   "kinderen"
+  ],
+  "tt-lamponline-51b017f92e": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000302102741": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000396020692": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225241037": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000031628743": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235317489": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228853088": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236752938": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262570692": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000301426239": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000351999722": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000259364063": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194339928": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000079164901": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000053540343": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004006848029": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1000004013301534": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1001004002632225": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000061704893": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000038620000": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004013420572": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000039086509": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000050691869": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000041181154": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225905230": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000305017136": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000031513904": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000402421148": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000003704545": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376097": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376098": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376091": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376095": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000353382381": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000190291890": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000141808232": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000152351736": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000110880539": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004012091684": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183877651": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225278017": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000180239435": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000224606017": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000224606175": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000160192099": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073344638": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231551276": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000184465659": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070563322": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000044119664": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000130958068": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000174849258": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004000008506": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000038630001": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000022083329": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000277694646": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000027406115": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004000017412": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000166566946": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000384693584": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269418667": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000165377724": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223702544": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000051359181": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000224792204": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245070969": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000101981672": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000130493648": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000116053625": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000193063404": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000127547332": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000071590500": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000021701786": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000129399005": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000124008439": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264843639": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000230288515": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000139421484": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235537672": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000021906947": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229498790": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070618871": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225966664": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000193114181": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020965579": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000086849977": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000175213927": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376102": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376100": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376104": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000338376099": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000178940167": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000178263903": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179596482": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000149834721": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000223872791": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225253055": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150167090": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000073981386": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228437042": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235099556": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000065574189": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004012542019": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000127898487": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000197606888": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000260987805": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196441980": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000090232656": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000115160588": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000025411566": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000240437043": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000173400431": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177071367": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000246164481": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000065092700": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000026826409": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000077152196": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228069372": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020230993": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020231008": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220459895": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000258899307": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229193617": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000178199399": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000262196768": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000241508460": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493742": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000261530191": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000179254673": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000098877173": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004012314656": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000147912319": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000183562456": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000197157790": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221675746": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000096164369": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000191092349": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265010672": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000283696177": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000239736365": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000181837311": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000124780797": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000136060991": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000382642849": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226416521": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000105249191": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000016699374": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004007098239": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228515171": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000077152975": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229465389": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000003291464": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227577026": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000062008221": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000109553019": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000044113442": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000170927055": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000092099992": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000230182495": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228785183": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000279225649": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176017450": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000108193479": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000231097806": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000147604006": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000153137666": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000032573797": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225916894": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000192677691": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000024259374": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236973829": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177675794": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000252262235": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000144063450": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000248617903": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000340930163": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000374378310": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000196418760": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269439132": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000268068855": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000056489441": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000222631498": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000249225270": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225966650": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000181986180": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225966593": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000221442142": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000144687421": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000304079615": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000108292801": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000037038896": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000047344455": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000153231095": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004006937390": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000197038930": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000220047806": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000229376696": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000319684995": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-1004004010686393": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000032150050": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000161812699": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000309485198": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000137571949": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000249428210": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000172084230": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000047346540": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000092500181": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000130396617": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176116276": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226862227": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000176044519": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000225892777": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000035327065": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000174278833": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000151067972": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000102605919": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000244057824": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000194026794": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227599308": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264092901": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000245593252": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000184477615": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000254448996": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493647": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000264493604": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000269251466": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000247810383": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000020223337": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187578594": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000258255149": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000058437053": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000226842493": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000013361570": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000111370441": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000285253022": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000040234647": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000046903052": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000173534249": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000161907676": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000126232335": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000001942005": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000159784472": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000092972308": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000119947054": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228658775": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640057": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228658772": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640051": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243481726": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227400278": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000243481719": [
+   "kind",
+   "kinderen"
+  ],
+  "lego-60509": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000227400175": [
+   "kind",
+   "kinderen"
+  ],
+  "cb-lego-60469": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249542": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000187249534": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000157956359": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345443": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727699": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345507": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727649": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000237345482": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727693": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000266727675": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000265640054": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000228662624": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000172461768": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000127897587": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000019680882": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9200000058040216": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000142555002": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000150084461": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000177503127": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000070581067": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000331035909": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000236928142": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000235856338": [
+   "kind",
+   "kinderen"
+  ],
+  "bol-9300000134025461": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dk-gots": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vtech-speeltafel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vtech-boekje": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fp-ringpiramide": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-stapelbekers": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-takkie-ringen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-stapelpuzzel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ls-toren-rammel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ls-blokken": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ls-vormenemmer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fp-schildpad": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-vormenstoof": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-giftset": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-regenboog": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-clem-fruit": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-clem-auto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fp-3dpuzzel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vtech-sorteerwagen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-blokkenkar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolu-stepcar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolu-3in1": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolu-smile": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolu-toeter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolu-dumptruck": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tractor-maurice": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-injusa-motor": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lt-hobbelpaard": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-trekdier": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-schildpad": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-kippen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-np-trekdier": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-vtech-walker": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-bobbycar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-ld-loopwagen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-ld-activiteiten": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-ld-retro": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-vtech-stap": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-bootjes": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-waterbaan": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-bootjes": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-diertje": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-eendjes": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-aaprups": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ls-badeend": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bad-licht": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ravensden-set": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-eendjes-familie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-eendje-hoera": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-60463": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-60481": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-42644": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-42687": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-75436": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-76445": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-76470": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-76335": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-21585": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-71831": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-43268": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-31140": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-11221": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10479": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10913": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10421": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10447": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10475": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10427": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10458": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10459": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10466": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10462": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10941": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10464": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10456": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-duplo-10480": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mb-dino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mb-rups": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mb-build": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mc-advent": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mc-pikachu": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mc-lapras": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-abrick-cijfertrein": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-abrick-dino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolu-blokken": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jipy-blokkendoos": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-takkie-blokken": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-platte": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-smallfoot-blokken": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-maxbricks": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mag-192": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mag-40": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mag-22": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-supermag-huis": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-emmer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-boerderij": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-jungle": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-noordpool": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-brandweer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-magna-100": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-connetix-64": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-magformers-14": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-magformers-62": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-gravitrax-start": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-gravitrax-paw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-gravitrax-xxl": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-hubelino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-quadrilla-bucket": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-migoga-toren": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-skyrail": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bol-cuboga": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bb-magicboy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bb-lena": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ba-sophia": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-co-penelope": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-co-manon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-babypop": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nenuco-soft": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kruselings": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-babypop": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-poppenbed": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-barbie-auto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-barbie-ontwerp": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-barbie-picknick": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rh-daria": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rh-jrhigh": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mh-frankie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-polly-dolfijn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-polly-schaap": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dp-assepoester": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dp-rapunzel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lol-tots": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lol-pets": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-barbie-droomhuis": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-syl-starter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-syl-kasteel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-syl-camper": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-syl-framboos": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-syl-familie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-syl-bad": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gabby-kamer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-poppenhuis": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ltv-sky": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tl-chalet": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sf-villa": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jellycat-bashful": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-steiff-ijsbeer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nijntje-ld": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stitch-30": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stitch-xxl": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pikachu-45": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ty-boo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-knuffelpop": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-bunny": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jollein-luz": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jollein-teddy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hh-schaap": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bukowski-konijn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-teddy-zwaar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-warmies": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-hula": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-pikachu": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-clefairy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-kuromi": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-mickey": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-hufflepuff": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-wendy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-grogu": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-kpop": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-pooh": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sq-jackalope": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-piratenschip": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-boerderij": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-assepoester": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-dierenarts": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-manege": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-paardrij": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-tractor": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-bus": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-markt": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pm-starter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-trex": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-raptor": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-trice": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-mammoet": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jw-trex": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jw-owen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-stal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-box": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-ponybox": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-ponystal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-volbloed": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sl-giraf": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-co-pinto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sm-titan": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sm-buggy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sm-hulk": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pp-toren": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pp-dinohq": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pp-dinovoertuig": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pp-bigtruck": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tf-cyber": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-battle": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-6pack": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mario-luigi": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mc-piston": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dc-batman": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-5pack": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-brandweer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-gorilla": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-carwash": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mb-5": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mb-garage": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-siku-ladder": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-siku-kiep": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bruder-jd": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bruder-man": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bruder-cat": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dickie-sos": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dickie-vuilnis": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dickie-garage": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cg-mario": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cg-sonic": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cg-mclaren": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cfirst": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-brio-brandweer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-brio-bluey": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-brio-batterij": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-brio-rails": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hape-rails": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-rc-baan": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exost-360": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nikko-toyota": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exost-rally": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exost-monster": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nikko-vaporizr": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exost-rocket": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exost-drift": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dickie-mcqueen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-carrera-fold": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-revell-heli": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-revell-advent": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nikko-truck": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-carrera-cruiser": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-miele": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-ld-pink": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-ld-buiten": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-janod": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-modder": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-hape-fornuis": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-ld-koffie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-ld-markt": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-ld-snijfruit": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-sf-groente": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-bosch-mixer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-kassa": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-k-pizza": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-g-werkbank": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-g-werkbank-jr": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-g-boor": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-g-sf-werkbank": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-g-zaag": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-d-klein": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-d-ecoiffier": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-d-toitoys": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-d-greentoys": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-s-bezem": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-s-kapper": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-chase": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-anna": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-ladybug": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-mando": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-ridder": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-ijsprinses": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-prinses-geel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-eenhoorn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-brandweer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-v-piraat": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-supercolor": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-8": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-tandarts": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-peppa": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-chef": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-confetti": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-stylist": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-kikker": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-dino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pd-vulkaan": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ks-907": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ks-pizza": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ks-ijs": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-slime": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hama-3000": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hama-maxi-emmer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hama-maxi-doos": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hama-glow": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-beedz-dieren": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-beedz-hp": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-janod-bijoux": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-janod-vriendschap": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mir-heishi": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-totum-unicorn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-loom": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-totum-shrink": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-lightboard": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-tracing": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-magiclight": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-epic": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-ultimate": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-geur": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cr-kleurboek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stabilo-paw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fc-24": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stabilo-trio": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tb-paw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lcd": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-spirograph": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-stoepkrijt": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ds-maker": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-diamond": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-hp-diamond": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-gieten": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-tattoo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ses-bruisbal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-janod-mozaiek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-puffy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-scratch-maskers": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-scratch-gabby": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ko-kristal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ko-stuiter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ko-spy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cl-hp-terra": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cl-dierenarts": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buki-graaf": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-4m-insect": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-zeep": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lr-codego": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lr-codego-set": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cl-bug": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-4m-robot": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ko-flip": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ko-solar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vtech-dino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fv-opzicht": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-br-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buki-micro": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buki-video": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buki-zak": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-carson": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-celestron-kids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buki-globe": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lr-globe": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tt-nijntje": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tt-atlas": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tt-mijnwereld": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tt-nijntje-boek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tt-rekenen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tt-liedjes": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vt-smartwatch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vt-bluey": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vt-paw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vt-gabby": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vt-baby": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bigben-mic": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-karaoke-machine": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fp-muziektafel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fp-xylofoon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hape-drum": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cl-drum": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-janod-xylofoon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ld-xylofoon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-reig-gitaar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gl-goup": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gl-stunt": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-puky-r1": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-puky-lino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cf-moto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cf-1jaar": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sf-kolibrie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ba-retro": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sm-rookie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-berg-choppy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hu-rolschaats": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mondo-rolschaats": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exit-244": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kettler-244": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exit-183": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-wonderjump": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-plum-schommel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lt-slide": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sf-paard": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-step2-sport": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nijntje-tent": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lt-battle": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lt-seas": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-step2-arcade": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-eco-water": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-paw-tafel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-quut-triplet": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-quut-ballo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dantoy-boot": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-eco-emmer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-paw-emmer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ss-rainstorm": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-xshot-typhoon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pustefix": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sx-goals": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-goal-vouw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kubb": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jdb": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-badminton": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-croquet": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nerf-fortnite": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nerf-tf": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vlieger-ld": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vlieger-paw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-springtouw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-frisbee": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-scrabble": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cluedo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kingdomino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mens-erger": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jenga": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-flip7": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-skyjo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-uno": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-qwixx": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-skipbo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-exploding": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lama": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ligretto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jatten": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-the-mind": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sushigo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-twister": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-unlock": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cluepuzzle": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rushhour": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-iqflow": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-penguins": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-parking": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cubepuzzler": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mastermind": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stef": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-wieishet": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-regenwormen-jr": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-skyjo-jr": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-labyrinth-jr": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dobble-kids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kippenkont": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-memory": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stratego-jr": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-zeeslag": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-keerkids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-booster": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-checklane": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-3blister": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-charizard-tin": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-etb": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-dag2026": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-battledeck": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pk-map": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-1000": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-auto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-pokebal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-stitch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hylkies": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-wrebbit": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-4d": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rt-trein": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-bluey": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-paw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-princess": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-gabby": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-toystory": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rb-xxl": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jvh-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kpop": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sonic": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-brawl": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vloer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hape-dino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dino-mega": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-beyblade": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-beystadium": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bluey-4wd": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-minecraft-steve": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-monster": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hw-megawrex": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mj-gravedigger": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-furblets": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-llp-mama": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hatchimals": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kpop-jinu": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kpop-figuur": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rubiks": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rubiks-connected": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nexcube": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kidizoom-print": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kidyprint": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kindercam": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bluey-boomhut": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kind-draadloos": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kind-bedraad": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-switch2-mkw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-switch2-pokopia": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-switch2-sports": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-switch-lite": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mkw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pokopia": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-legends-za": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dk-bananza": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mario-galaxy": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mario-party": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-minecraft": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lego-batman": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-recon70": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-revvo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-printomatic": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rollei-sb502": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pacman-arcade": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-denver-retro": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-comp-pro": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-creeper-lamp": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mario-lamp": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-paw-handheld": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sd-bijou": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sd-glitter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sd-nijntje": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sd-muziek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sd-hema-muziek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sd-camera": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gr-unicorn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gr-dino": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-wetbrush": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mario-kussen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ylvi-wekker": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-harrypotter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-pokemon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-f1": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-stitch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-starwars": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-stranger": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pos-onepiece": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pro-kids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-beanboozled": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bertie-bott": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-candy-machine": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-snoepketting": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-verkade-letter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-letter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-tony-sintbundel3": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bp-snoep": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-filmpakket": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dotz-box": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-craftbuddy-stitch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hema-dp-kaarten": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pako-kind": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fc-acryl-18": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ohuhu-akaka": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-clementoni-zeep": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-katsuki": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-letterkralen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-glaskralen-15000": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-mylinse-2340": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-essentials-xl": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kralen-7600": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-heishi-2190": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-crazychic": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kralen-mega": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-principessa": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-heyclay": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-marklin-start": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-piko-goederen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-piko-ice": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-piko-kerst": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-marklin-bouw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-marklin-landbouw": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-piko-station": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-marklin-wagens": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-marklin-dhg500": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-marklin-auto": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-valencia-34": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-g4m-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-casio-cts300": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-casio-lks250": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-casio-cts1": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-yamaha-ew320": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-roland-gokeys3": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-ting-planagenda": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hp-notebook": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pokemon-notebook": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-thule-yepp": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-abus-skurb": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-segway-zing": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-simate-s2": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-rcb-r11": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kiddowe-k2": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-easycamp-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-opinel-kids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-levenhuk-kids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bresser-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-adidas-bal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-nike-bal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-puma-bal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-derbystar-street": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-wk-bal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-voetbaldoel-groot": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pure2improve-reb": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-padelset-kids": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cougar-striker": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cougar-world": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-playos-voetbal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vidaxl-voetbal": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-smallfoot-hout": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-joola-midsize": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-fasports-tt": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-virtufit-ttset": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stiga-bat": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buffalo-airhockey": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buffalo-pool": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buffalo-sjoel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-speedo-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kinder-snorkel": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-alpina-junior": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cairn-orbit-j": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-houten-slee": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kadax-stuur": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hornet-slee": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pannenkoekslee": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-buzzy-bloemen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-stadtgartner-choco": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-bloemenknikkers": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-terrarium": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-suske-wiske-witje": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-asterix-41": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kuifje-tibet": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-jommeke-323": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-garfield-126": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-lucky-luke-11": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-smurfen-43": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dagboek-slot-stitch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dagboek-slot-kawaii": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vriendenboek-eenhoorn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-vriendenboek-capibara": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-wally-feesten": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-escape-boek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gruffalo": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-gruffaloma": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-raad-eens": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleurenmonster": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kikker-verliefd": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-elmer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-boer-boris": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleine-ijsbeer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-schildpadjes": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-neehoorn": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-koning-zonder-paard": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-takkie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pippi": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dolfje": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sjakie": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-sinterklaas-voorlees": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dog-man-kid-kat": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-zoete-zusjes-show": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-alex-tweelingbroer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-loser-20": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-boomhut-169": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-peppa": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-bluey": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-minecraft": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-dog-man": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-pokemon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-pokemon-nummer": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-stitch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-cosy-dieren": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-cosy-kerst": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-spiekpietjes": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-kleur-ridder": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-wicked": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-vaiana2": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-lilo-stitch": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-minecraft": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-draak": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-harry-potter": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-dvd-home-alone": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-cd-kpop-demon": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hh-mini-poetstas": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hh-handschoen": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-epplejeck-rijbroek": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-hh-bodyprotector": [
+   "kind",
+   "kinderen"
+  ],
+  "cl-pokemon-3d-greatball": [
+   "kind",
+   "kinderen"
   ]
  },
  "status": {
@@ -14996,7 +24473,10 @@
   "myka-11005247804": "uitverkocht",
   "myka-11003106508": "uitverkocht",
   "myka-11001462641": "uitverkocht",
-  "myka-11001372111": "uitverkocht"
+  "myka-11001372111": "uitverkocht",
+  "bol-9300000230574485": "afgekeurd",
+  "bol-9300000156251556": "afgekeurd",
+  "cl-uiltje-0": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
