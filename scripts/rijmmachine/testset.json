@@ -1,0 +1,15 @@
+{
+ "_uitleg": "Vaste testset (8-11-2026). Elke versie van de rijmmachine krijgt precies deze 10 personen, zodat we eerlijk kunnen vergelijken. Niet aanpassen tijdens een vergelijking.",
+ "personen": [
+  {"naam": "Floris", "relatie": "vriend", "geslacht": "man", "type": "een echte grapjas", "gekop": "darts", "typisch": "is altijd te laat", "budget": 25, "stand": "hilarisch"},
+  {"naam": "Sanne", "relatie": "collega", "geslacht": "vrouw", "type": "gezellig en behulpzaam", "gekop": "kaarsen en lezen", "typisch": "heeft het altijd koud", "budget": 15, "stand": "lief"},
+  {"naam": "Henk", "relatie": "ouder", "geslacht": "man", "type": "rustig", "gekop": "puzzelen", "typisch": "weet alles beter", "budget": 25, "stand": "genadeloos"},
+  {"naam": "Lotte", "relatie": "tiener", "geslacht": "vrouw", "type": "altijd druk", "gekop": "muziek en sieraden", "typisch": "zit de hele dag te appen", "budget": 25, "stand": "hilarisch"},
+  {"naam": "Daan", "relatie": "kind", "geslacht": "man", "type": "sportief", "gekop": "bouwen", "typisch": "", "budget": 25, "stand": "lief"},
+  {"naam": "Ria", "relatie": "grootouder", "geslacht": "vrouw", "type": "gezellig", "gekop": "spelletjes", "typisch": "zingt onder de douche", "budget": 25, "stand": "lief"},
+  {"naam": "Mohamed", "relatie": "baas", "geslacht": "man", "type": "een echte regelaar", "gekop": "gamen", "typisch": "is altijd de sleutels kwijt", "budget": 50, "stand": "hilarisch"},
+  {"naam": "Eva", "relatie": "partner", "geslacht": "vrouw", "type": "een beetje chaotisch", "gekop": "parfum", "typisch": "hangt graag op de bank", "budget": 50, "stand": "hilarisch"},
+  {"naam": "Joost", "relatie": "broerzus", "geslacht": "man", "type": "sportief", "gekop": "kamperen", "typisch": "maakt overal een grapje over", "budget": 25, "stand": "genadeloos"},
+  {"naam": "Fatima", "relatie": "buren", "geslacht": "vrouw", "type": "behulpzaam", "gekop": "honden", "typisch": "", "budget": 15, "stand": "lief"}
+ ]
+}
