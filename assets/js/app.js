@@ -1320,7 +1320,7 @@
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
-          '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom || '') + '</p></div>' +
+          (p.waarom ? '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom) + '</p></div>' : '') +
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
             '</dl><p class="specs-noot">Volgens de gegevens van de winkel. Twijfel je? Kijk dan ook even bij ' + esc(p.shop) + '.</p></div>' : '') +
@@ -3666,6 +3666,8 @@
     var g = GIDSEN.filter(function (x) { return x.slug === slug; })[0];
     if (!g) return nietGevonden();
     zetTitel(g.titel);
+    /* 8-11-2026: de 'waarom'-teksten van gidsproducten staan in de lijst; ontbreekt er toch een (nieuw product), dan de details erbij laden. */
+    if (!window.LK_DETAILS && (g.delen || []).some(function (d) { return (d.ids || []).some(function (id) { var p = LK.vind(id); return p && !p.waarom; }); })) laadDetails(function () { if (location.pathname.indexOf('/gids/' + slug) === 0) toon(); });
     window.LK_SEO = gidsKort(g) + ' ' + g.intro.split('. ')[0] + '.';
     /* Stap 6 indeling (6-11-2026, plan deel 8): intro van 3 zinnen (de rest achter 'Lees verder'), springlinks naar de delen,
        per deel producten 2 naast elkaar, onderaan 'Lees ook' en de link naar het vakje. */

@@ -9,7 +9,12 @@ const { deel } = require('./indeling.js');
 const { plaats } = require('./boom/plaats.js'); // 3.0: nieuwe boom (afd > groep > vak), zie scripts/boom/ // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
 const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurdReden', 'varianten', 'maten', 'gecontroleerd',
   /* Snelheid (5-11-2026): deze velden gebruikt de site in lijsten niet, dus die laden pas op de productpagina. */
-  'subVast', 'wil', 'uitverkochtSinds'];
+  'subVast', 'wil', 'uitverkochtSinds',
+  /* Snelheid (8-11-2026, Fable P2): ook deze alleen op de productpagina. */
+  'fotos', 'herkomst'];
+/* Snelheid (8-11-2026): 'waarom' (1,1 MB) blijft in de lijst alleen voor producten die in een gids staan of favoriet zijn (die teksten staan op lijstpagina's);
+   voor de rest gaat hij naar details (productpagina's hebben hun eigen details al in de HTML). */
+const GIDS_IDS = (() => { try { const s = fs.readFileSync(path.join(ROOT, 'assets/js/app.js'), 'utf8'); const a = s.indexOf('var GIDSEN = ['); const b = s.indexOf('\n  ];', a); return new Set([...s.slice(a, b).matchAll(/'([a-z0-9]+-[a-z0-9-]+)'/g)].map(m => m[1])); } catch (e) { return new Set(); } })();
 /* Keurkamer-slot (2-11-2026): de oordelen van Marius uit keurkamer/oordelen.json gelden bij ELKE bouw.
    Wat hij weg heeft gedaan blijft weg (ook als een ronde het product opnieuw aanlevert), verplaatst blijft verplaatst,
    'niet hier' blijft weg uit dat extra vakje, toppers blijven bovenaan. Zie scripts/keurkamer/verwerk.py. */
@@ -52,6 +57,7 @@ function splits() {
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
+    if (l.waarom && !p.favoriet && !p.eigen && !GIDS_IDS.has(p.id)) { d.waarom = l.waarom; delete l.waarom; }
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */
     if (/^https?:\/\/(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?\/c\/|^https?:\/\/aff\.svinando\.be\/c\//.test(p.url || '')) l.dc = 1;
     if (p.varianten && p.varianten.length > 1) l.kleuren = p.varianten.length; // kaartje: 'x kleuren'
