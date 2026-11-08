@@ -46,6 +46,12 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-joybuy': '&standard_id=1&language_code=nl&locale_id=1&program_id=20823',
     'x-acculaders': '&standard_id=1&language_code=nl&locale_id=1&program_id=12933',
     'x-vipio': '&standard_id=16&language_code=nl&locale_id=1&program_id=15569',  # feedlink van Marius (5-11)
+    # 08-11-2026: feedlinks van Marius
+    'x-sissyboy': '&standard_id=7&language_code=nl&locale_id=1&program_id=14446',        # Sissy-Boy kleding
+    'x-sissyboy-wonen': '&standard_id=8&language_code=nl&locale_id=1&program_id=14446',  # Sissy-Boy wonen
+    'x-miscota': '&standard_id=1&language_code=nl&locale_id=1&program_id=22031',         # Miscota (dierenvoeding)
+    'x-kaartje2go': '&standard_id=1&language_code=nl&locale_id=1&program_id=19520',      # Kaartje2go
+    'x-razer': '&standard_id=6&language_code=fr&locale_id=1&program_id=13299',           # Razer (Engelstalige titels)
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
@@ -126,6 +132,7 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-brekz': '1161548', 't-boardgameshop': '2520696', 't-yourdecoration': '1549969',
           't-barokspiegel': '1537045', 't-profotonet': '1748978', 't-steegenga': '1847808',
           't-steegen2': '2376168',  # tweede Steegen-feed (feedlink van Marius, 5-11)
+          't-fragrance': '2433689',  # eu.fragrance.com (goedgekeurd + feedlink van Marius, 8-11)
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
