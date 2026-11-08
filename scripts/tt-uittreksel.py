@@ -6,6 +6,9 @@ sys.stdout.reconfigure(encoding='utf-8')
 src, dst = sys.argv[1], sys.argv[2]
 lo = float(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[3] else 0
 weg = re.compile(sys.argv[4], re.I) if len(sys.argv) > 4 and sys.argv[4] else None
+# 08-11-2026: Massamarkt, Ontwerp-zelf en Pillowbuddies geven geen echte voorraad door (altijd 0): daar het voorraadveld negeren.
+import os
+GEEN_VOORRAAD = os.path.basename(src).split('.')[0] in ('t-massamarkt', 't-ontwerpzelf', 't-pillowbuddies')
 rows = []
 for ev, el in E.iterparse(src, events=('end',)):
     if el.tag != 'product':
@@ -22,6 +25,8 @@ for ev, el in E.iterparse(src, events=('end',)):
     # Bellatio en Animals Giftshop: 'large' is soms meer dan 1 MB; 'medium' (~80 kB) is genoeg voor een kaartje.
     imgs = [re.sub(r'(bellatio-kerstversiering|animals-giftshop)\.nl/img/large/', r'\1.nl/img/medium/', i) for i in imgs]
     voorraad = props.get('stock', '')
+    if GEEN_VOORRAAD:  # deze winkels zetten 'stock' altijd op 0, ook als het product gewoon te koop is
+        voorraad = ''
     # Smartphoto e.d.: prijs 0 in de feed, de echte (vanaf-)prijs staat in fromPrice
     if p == 0 and props.get('fromPrice'):
         try:
