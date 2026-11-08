@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -19160,6 +19160,101 @@
    "wonen",
    "verlichting",
    "sfeerlampen"
+  ],
+  "grotek-7b5ef3f1fc": [
+   "tuin-klussen",
+   "tuin-planten",
+   "planten-potten"
+  ],
+  "dgsw-ef8ca3a24b": [
+   "speelgoed",
+   "knutselen",
+   "tekenen-kleuren"
+  ],
+  "emp-69f154bc3a": [
+   "mode-sieraden",
+   "accessoires",
+   "sleutelhangers"
+  ],
+  "dvzn-2e93b23d66": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "emp-686f3103d9": [
+   "mode-sieraden",
+   "accessoires",
+   "riemen-petten"
+  ],
+  "dvzn-31dec2c07a": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "superz-2b2b14cdcb": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-a5e5055996": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dvzn-7c5be52edb": [
+   "wonen",
+   "koken-bakken",
+   "drinkflessen-lunchboxen"
+  ],
+  "legoshop-660d7b2a23": [
+   "speelgoed",
+   "bouwen",
+   "lego"
+  ],
+  "superz-0acef33ce7": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-c662b078bc": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-051f006eb2": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dvzn-6bf42f846e": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "cadeau-ef4d9184ea": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dvzn-a3a5c81ea8": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "kado-63cf516b7e": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "kado-a2b920f5d8": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "anim-ce7802cd8f": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
   ]
  },
  "samen": {
@@ -29978,7 +30073,45 @@
   "bol-9300000044984873": "afgekeurd",
   "cl-cheshire-pyjamabroek": "afgekeurd",
   "myka-1010123102": "afgekeurd",
-  "bol-9200000119481045": "afgekeurd"
+  "bol-9200000119481045": "afgekeurd",
+  "myka-10105173888": "afgekeurd",
+  "cl-stal-leeg": "afgekeurd",
+  "bol-9300000268068883": "afgekeurd",
+  "bol-9300000237717651": "afgekeurd",
+  "myka-11012449321": "afgekeurd",
+  "myka-11001302622": "afgekeurd",
+  "dk-00045263": "afgekeurd",
+  "bol-9300000197526649": "afgekeurd",
+  "cl-28228": "afgekeurd",
+  "bol-9300000229367617": "afgekeurd",
+  "myka-11001211409": "afgekeurd",
+  "bol-9200000068998413": "afgekeurd",
+  "zv-owsc01549022uni": "afgekeurd",
+  "bol-9300000152015086": "afgekeurd",
+  "ww-pol72500209084": "afgekeurd",
+  "bol-9300000360826567": "afgekeurd",
+  "dvzn-368592": "afgekeurd",
+  "bol-9200000087607759": "afgekeurd",
+  "dvzn-165481": "afgekeurd",
+  "dk-00022240": "afgekeurd",
+  "dvzn-296713": "afgekeurd",
+  "pry-k88": "afgekeurd",
+  "pry-k516": "afgekeurd",
+  "myka-11015253511": "afgekeurd",
+  "ww-geo22144203392": "afgekeurd",
+  "bol-9300000160468158": "afgekeurd",
+  "myka-11003249788": "afgekeurd",
+  "as-5063320998032": "afgekeurd",
+  "cl-capibara-lamp": "afgekeurd",
+  "cl-wilton-kerst": "afgekeurd",
+  "cl-sdj-wash": "afgekeurd",
+  "myka-11001337328": "afgekeurd",
+  "bol-9200000055971147": "afgekeurd",
+  "cl-12403": "afgekeurd",
+  "bol-9300000123124986": "afgekeurd",
+  "999g-999gal01": "afgekeurd",
+  "dk-00045309": "afgekeurd",
+  "cl-kat-leeslamp": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
