@@ -2069,14 +2069,14 @@
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
         '<div class="rz-held"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" decoding="async"></div>' +
-        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Over wie mogen we lachen?</h2><p>Hoe meer échte details, hoe persoonlijker de grap.</p></div>' +
-        '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>1</span>Het dossier voor het Grote Boek</div>' +
+        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maakt Sint een gedicht?</h2><p>Vertel een paar leuke dingen over deze persoon. Sint maakt er een grappig gedicht van.</p></div>' +
+        '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>1</span>Wat moet Sint weten?</div>' +
         '<div class="rz-velden">' +
           '<div class="rz-veld"><label for="rz-naam">Voornaam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
           '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
           '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(mag je leeg laten)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
           '<div class="rz-veld breed"><label for="rz-over">Vertel iets grappigs over deze persoon</label>' +
-            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. koopt steeds planten, maar ze gaan allemaal dood."></textarea>' +
+            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. zegt altijd ‘nog één aflevering’ en kijkt dan door tot 2 uur ’s nachts."></textarea>' +
             '<small>Schrijf een paar herkenbare gewoontes op. Sint verzint er zelf de grap bij.</small></div>' +
           '<fieldset class="rz-veld breed"><legend>Budget voor 3 cadeaus samen</legend><div class="rz-keuzes">' + kies('budget', [['25', '€ 25'], ['50', '€ 50'], ['75', '€ 75'], ['100', '€ 100'], ['150', '€ 150']], '50') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Hoe scherp mag het zijn?</legend><div class="rz-keuzes rz-humor">' +

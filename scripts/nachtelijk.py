@@ -40,6 +40,7 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-isabelmarant': '&standard_id=7&language_code=en&locale_id=6&program_id=18138',
     'x-mokkaland': '&standard_id=4&language_code=nl&locale_id=1&program_id=21568',
     'x-butchery': '&standard_id=4&language_code=nl&locale_id=1&program_id=17660',
+    'x-stroopwafels': '&standard_id=4&language_code=nl&locale_id=1&program_id=17202',  # Stroopwafels.com, goedgekeurd 8-11-2026
     'x-kambukka': '&standard_id=1&language_code=en&locale_id=6&program_id=17815',
     # 05-11-2026 middag: Joybuy NL en Acculaders.nl (gevonden door Claude). Geen feed (nog) bij: Eastpak, Cewe, Parfumado, Goedgemerkt, I-KOOK, Vipio.
     'x-joybuy': '&standard_id=1&language_code=nl&locale_id=1&program_id=20823',
