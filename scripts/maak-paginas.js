@@ -74,6 +74,9 @@ function deelBeeld(pad) {
   return fs.existsSync(path.join(ROOT, 'images', 'deel', naam + '.jpg')) ? 'images/deel/' + naam + '.jpg' : '';
 }
 
+/* 8-11-2026 (GO Marius): twee pagina's met dezelfde producten en bijna dezelfde titel zitten elkaar in Google in de weg.
+   De collectie verwijst naar de hoofdpagina (canonical) en staat niet meer in de sitemap. De pagina's per persoon blijven gewoon zelfstandig. */
+const HOOFDPAGINA = { '/collectie/grappige-cadeaus/': '/c/cadeaus/grappig/' };
 function maakPagina(info, lade, mega, aftel, zoekrij) {
   let h = SJABLOON;
   const url = SITE + info.pad;
@@ -83,7 +86,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   if (titel.length > 65) titel = titel.slice(0, 62).replace(/[\s,–-]+\S*$/, '') + '…';
   h = zet(h, /<title>[^<]*<\/title>/, '<title>' + escA(titel) + '</title>');
   h = zet(h, /<meta name="description" content="[^"]*">/, '<meta name="description" content="' + escA(info.omschrijving) + '">');
-  h = zet(h, /<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + url + '">');
+  h = zet(h, /<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + (HOOFDPAGINA[info.pad] ? SITE + HOOFDPAGINA[info.pad] : url) + '">');
   h = zet(h, /<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="' + escA(info.titel) + '">');
   h = zet(h, /<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="' + escA(info.omschrijving) + '">');
   h = zet(h, /<meta property="og:url" content="[^"]*">/, '<meta property="og:url" content="' + url + '">');
@@ -302,7 +305,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const vandaag = new Date().toISOString().slice(0, 10);
   /* lastmod: een echte datum per pagina (niet elke keer 'vandaag'), anders negeert Google hem. */
   const verhuisdPaden = Object.keys(VERHUISD).map(k => '/' + k + '/');
-  const urls = paginas.filter(p => !p.geenIndex && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
+  const urls = paginas.filter(p => !p.geenIndex && !HOOFDPAGINA[p.pad] && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
 })().catch(e => { console.error(e); process.exit(1); });

@@ -44,10 +44,12 @@
   }
   try { window.addEventListener('storage', function (e) { if (!e || !e.key || e.key === K_KEUR) cache = null; }); } catch (e) {}
   /* 'Nieuw' = de eerste 2 weken op de site ('sinds'). Zonder datum telt het vinkje 'nieuw'. */
-  var NIEUW_DAGEN = 14;
+  /* 8-11-2026 (GO Marius): de hele winkel is in oktober/november gevuld, dus 'Nieuw' stond op alles en zei niets.
+     Nu: alleen wat er vanaf 9 november bij komt (de piloot), en dan 7 dagen lang. */
+  var NIEUW_DAGEN = 7, NIEUW_VANAF = '2026-11-09';
   function isNieuw(p) {
-    if (p.sinds) { var t = Date.parse(p.sinds); return !isNaN(t) && (Date.now() - t) < NIEUW_DAGEN * 864e5; }
-    return !!p.nieuw;
+    if (!p.sinds || p.sinds < NIEUW_VANAF) return false;
+    var t = Date.parse(p.sinds); return !isNaN(t) && (Date.now() - t) < NIEUW_DAGEN * 864e5;
   }
 
   /* Hoort product bij categorie (en evt. sub)? Kijkt ook naar 'ookIn'. */
