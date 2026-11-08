@@ -1956,6 +1956,19 @@
   function rijmSeizoen() { return new Date() < new Date(2026, 11, 6); }
   function rijmBlok(waar) {
     if (!rijmSeizoen()) return '';
+    /* 8-11-2026 (GO Marius): op de homepage een smalle balk i.p.v. het grote blok, zodat "Voor wie" meteen in beeld komt. */
+    if (waar === 'home') return '<style>' +
+      '.rz-smal{display:flex;align-items:center;gap:12px;margin:16px 0 4px;padding:10px 12px 10px 10px;border-radius:18px;text-decoration:none;color:#fff;background:linear-gradient(110deg,#0b1225,#1a1632 65%,#3a1727);border:1px solid rgba(228,183,90,.55);box-shadow:0 8px 22px rgba(20,20,35,.16);transition:transform .15s ease,box-shadow .15s ease}' +
+      '.rz-smal:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(20,20,35,.22)}.rz-smal:focus-visible{outline:3px solid #137ca8;outline-offset:3px}' +
+      '.rz-smal img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:30% 30%;border:2px solid #e4b75a;flex:none}' +
+      '.rz-smal .t{flex:1;min-width:0}.rz-smal b{display:block;font:700 18px/1.2 var(--f-kop);color:#fff}.rz-smal b em{font-style:normal;color:#f7d77f}' +
+      '.rz-smal small{display:block;font-size:13.5px;color:#e2ddd3;margin-top:3px}' +
+      '.rz-smal .ga{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:18px;color:#1d1626;background:linear-gradient(180deg,#fce7ad,#dba646);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 3px 0 #a8762a;transition:transform .2s ease}.rz-smal:hover .ga{transform:translateX(3px)}' +
+      '@media (max-width:380px){.rz-smal b{font-size:16px}.rz-smal small{font-size:12.5px}.rz-smal img{width:50px;height:50px}}' +
+      '@media (prefers-reduced-motion:reduce){.rz-smal,.rz-smal .ga{transition:none}}' +
+      '</style>' +
+      '<a class="rz-smal" href="/sint-rijmmachine/" data-tel="rijmblok-home"><img src="/images/banners/rijm-sint-piet.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
+      '<span class="t"><b>Nieuw: <em>Sint-rijmmachine</em></b><small>Grappig gedicht + 3 cadeaus</small></span><span class="ga" aria-hidden="true">→</span></a>';
     return RIJM_STIJL + '<style>' +
       '.rz-blok{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;margin:20px 0 6px;padding:26px 28px;border-radius:24px;overflow:hidden;color:#fff;text-decoration:none;background:radial-gradient(circle at 80% 30%,rgba(119,66,39,.35) 0 90px,transparent 220px),linear-gradient(140deg,#0b1225,#15132a 70%,#3a1727);box-shadow:0 16px 42px rgba(20,20,35,.18)}' +
       '.rz-blok .rz-eyebrow{color:#f7d77f}' +
