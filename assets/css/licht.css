@@ -1037,3 +1037,13 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .vonk-keus.vonk-wissel { animation: vonkWissel .45s ease; }
 @keyframes vonkWissel { from { opacity: .2; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .vonk-keus.vonk-wissel { animation: none; } }
+/* Merkzoeker op Dames- en Herenhorloges (8-11-2026) */
+.merkzoeker { margin: 10px 0 4px; padding: 12px; border: 1px solid rgba(10,16,32,.1); border-radius: 14px; background: #fffdf7; }
+.mz-veld { display: flex; align-items: center; gap: 8px; border: 1.5px solid rgba(10,16,32,.16); border-radius: 10px; padding: 7px 12px; background: #fff; margin-bottom: 10px; }
+.mz-veld:focus-within { border-color: var(--goud, #C9A23A); }
+.mz-veld svg { width: 18px; height: 18px; flex: 0 0 auto; opacity: .55; }
+.mz-veld input { border: 0; outline: 0; flex: 1; min-width: 0; font: inherit; font-size: 16px; background: transparent; color: var(--tekst); padding: 2px 0; }
+.merkzoeker .chips { margin: 0 -12px; padding: 2px 12px; }
+.merkzoeker .chip { white-space: nowrap; }
+.mz-tal { opacity: .6; font-weight: 500; margin-left: 2px; }
+.mz-melding { margin: 8px 0 0; font-size: 14px; color: var(--tekst-zacht, #555); }

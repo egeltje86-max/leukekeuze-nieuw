@@ -843,6 +843,7 @@
 
     var anderen = CATS.filter(function (x) { return x.slug !== c.slug; });
     var ouder = c.onder ? window.LK_CAT(c.onder) : null;
+    var horlogeVak = !!(v && c.slug === 'mode-sieraden' && s && s.slug === 'horloges');
 
     return paginakop({
       titel: v ? (v.kop || v.naam) : s ? (s.kop || s.naam) : (c.kop || c.naam),
@@ -852,13 +853,14 @@
     }) +
     '<div class="binnen">' +
       (subs ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + subs + '</section>' : '') +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
+      (horlogeVak ? merkZoeker(pad, q, basis, 'mode-sieraden/horloges/' + v.slug) : '') +
+      werkbalk + gridMeer(lijst, horlogeVak && q.merk && !lijst.length ? '' : leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) +
       /* Stap 3 indeling: 'Lees ook' (de gidsen) komt ná de eerste 24 producten; producten eerst. */
       leesOok(v && v.oud ? v.oud : c.slug + (s ? '/' + s.slug : '')) +
       /* Eerst 'Meer in onze winkels' direct onder onze eigen producten, en pas daarna de tips.
          Stonden de tips ertussen, dan leek het alsof de pagina daar ophield (opmerking Marius, 28-10-2026). */
       /* 8-11-2026 (Marius): onder Dames- en Herenhorloges alleen horloges uit zijn eigen winkels en van zijn eigen merken (scripts/zoek-horloges.py). */
-      (v && c.slug === 'mode-sieraden' && s.slug === 'horloges' ? winkelSectie('mode-sieraden', 'horloges/' + v.slug, q.prijs) :
+      (horlogeVak ? winkelSectie('mode-sieraden', 'horloges/' + v.slug, q.prijs, q.merk) :
        v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       /* Stap 3 indeling: de winkels van deze afdeling als tekstlinks (eerst 24 grote kaarten: ruim 6.000 px op een telefoon). */
@@ -1678,8 +1680,60 @@
       '</div>';
   }
 
+  /* Merkzoeker (8-11-2026, go Marius) op Dames- en Herenhorloges: typ of kies een merk. Eerst de merken die wij zelf kozen,
+     daarna de merken uit zijn eigen winkels ('Meer in onze winkels', scripts/zoek-horloges.py). Gekozen merk: eerst onze horloges
+     van dat merk, daaronder alles van dat merk uit onze winkels. */
+  var MERK_NORM = { 'boss': 'Hugo Boss', 'zeppelin': 'Zeppelin', 'louis xvi': 'Louis XVI', 'peaky blinders': 'Shelby Brothers' };
+  function merkNorm(m) { m = (m || '').trim(); return MERK_NORM[m.toLowerCase()] || m; }
+  function merkChip(pad, zonder, m, n, huidig) {
+    var aan = huidig.toLowerCase() === m.toLowerCase();
+    return '<a class="chip" data-merk="' + esc(m) + '" href="' + maakAdres(pad, Object.assign({}, zonder, { merk: m })) + '" aria-pressed="' + aan + '">' + esc(m) + ' <span class="mz-tal">' + n + '</span></a>';
+  }
+  function merkZoeker(pad, q, basis, sleutel) {
+    var tel = {}; basis.forEach(function (p) { var m = merkNorm(merkVan(p)); if (m) tel[m] = (tel[m] || 0) + 1; });
+    var eigen = Object.keys(tel).sort(function (a, b) { return tel[b] - tel[a] || a.localeCompare(b); });
+    var huidig = q.merk || '', zonder = Object.assign({}, q); delete zonder.merk;
+    return '<section class="merkzoeker" data-merkzoeker data-sleutel="' + esc(sleutel) + '" data-pad="' + esc(pad) + '" data-q="' + esc(JSON.stringify(zonder)) + '" data-huidig="' + esc(huidig) + '" data-eigen="' + (huidig ? (tel[merkNorm(huidig)] || 0) : 0) + '">' +
+      '<label class="mz-veld">' + ic('zoek') + '<input type="search" list="mz-lijst" placeholder="Zoek op merk, bijv. ' + esc(eigen[0] || 'Tissot') + '" value="' + esc(huidig) + '" autocomplete="off" enterkeyhint="search" aria-label="Zoek op merk" data-mz-invoer></label>' +
+      '<datalist id="mz-lijst">' + eigen.map(function (m) { return '<option value="' + esc(m) + '">'; }).join('') + '</datalist>' +
+      '<div class="chips mz-chips" role="group" aria-label="Merken">' + (huidig ? '<a class="chip" href="' + maakAdres(pad, zonder) + '">Alle merken</a>' : '') +
+        eigen.map(function (m) { return merkChip(pad, zonder, m, tel[m], huidig); }).join('') + '</div>' +
+      '<p class="mz-melding"' + (huidig ? '' : ' hidden') + '>' + (huidig ? esc(huidig) + ': eerst wat wij kozen, daaronder alles van ' + esc(huidig) + ' uit onze winkels.' : '') + '</p></section>';
+  }
+  function vulMerkzoeker(mz) {
+    var pad = mz.getAttribute('data-pad'), zonder = {}, huidig = mz.getAttribute('data-huidig') || '';
+    try { zonder = JSON.parse(mz.getAttribute('data-q') || '{}'); } catch (e) {}
+    laadWinkels(mz.getAttribute('data-sleutel')).then(function (alles) {
+      if (!alles || alles === 'oud') return;
+      var extra = {}; alles.forEach(function (x) { var m = merkNorm(x.m); if (m) extra[m] = (extra[m] || 0) + 1; });
+      var rij = $('.mz-chips', mz), dl = $('datalist', mz), bestaand = {};
+      $$('[data-merk]', rij).forEach(function (a) { bestaand[a.getAttribute('data-merk').toLowerCase()] = a; });
+      Object.keys(extra).sort(function (a, b) { return extra[b] - extra[a]; }).forEach(function (m) {
+        var a = bestaand[m.toLowerCase()];
+        if (a) { var t = $('.mz-tal', a); if (t) t.textContent = (+t.textContent || 0) + extra[m]; return; }
+        rij.insertAdjacentHTML('beforeend', merkChip(pad, zonder, m, extra[m], huidig));
+        dl.insertAdjacentHTML('beforeend', '<option value="' + esc(m) + '">');
+      });
+      if (huidig) {
+        var eigen = +mz.getAttribute('data-eigen') || 0, winkel = extra[merkNorm(huidig)] || 0, mel = $('.mz-melding', mz);
+        mel.textContent = (eigen + winkel) + ' horloges van ' + huidig + ': ' + (eigen ? 'eerst wat wij kozen, daaronder alles van ' + huidig + ' uit onze winkels.' : 'zelf kozen we er nog geen, hieronder alles van ' + huidig + ' uit onze winkels.');
+        var gek = $('[data-merk="' + huidig.replace(/"/g, '') + '"]', rij) || $$('[data-merk]', rij).filter(function (a) { return a.getAttribute('data-merk').toLowerCase() === huidig.toLowerCase(); })[0];
+        if (gek && gek.scrollIntoView) try { rij.scrollLeft = gek.offsetLeft - 40; } catch (e) {}
+      }
+    });
+  }
+  function merkZoekKies(inp) {
+    var mz = inp.closest('[data-merkzoeker]'), w = inp.value.trim().toLowerCase(), mel = $('.mz-melding', mz);
+    var chips = $$('[data-merk]', mz), raak = null;
+    if (!w) { var zonder = {}; try { zonder = JSON.parse(mz.getAttribute('data-q') || '{}'); } catch (e) {} ga(maakAdres(mz.getAttribute('data-pad'), zonder), true); return; }
+    chips.forEach(function (a) { if (!raak && a.getAttribute('data-merk').toLowerCase() === w) raak = a; });
+    if (!raak) { var begin = chips.filter(function (a) { return a.getAttribute('data-merk').toLowerCase().indexOf(w) === 0; }); if (begin.length === 1) raak = begin[0]; }
+    if (!raak) { var ergens = chips.filter(function (a) { return a.getAttribute('data-merk').toLowerCase().indexOf(w) !== -1; }); if (ergens.length === 1) raak = ergens[0]; }
+    if (raak) { ga(raak.getAttribute('href'), true); return; }
+    mel.hidden = false; mel.textContent = 'Dat merk hebben we hier niet. Kies hieronder een merk.';
+  }
   /* 'Meer in onze winkels' onder een (sub)categorie. */
-  function winkelSectie(cat, sub, prijs) {
+  function winkelSectie(cat, sub, prijs, merk) {
     if (cat === 'christelijk') return '';
     /* 8-11-2026 (GO Marius): twee nieuwe afdelingen hebben in de zoekindex nog hun oude naam; zonder dit miste daar 'Meer in onze winkels'. */
     if (!sub) cat = { 'mode-sieraden': 'mode-beauty', 'beauty-verzorging': 'geuren-verzorging' }[cat] || cat;
@@ -1694,9 +1748,10 @@
        producten). Geen zoekwoorden meer nodig; bestaat het bestand niet, dan verdwijnt het blok vanzelf. */
     var NW = window.LK_NIETWOORDEN || {};
     if (NW[sleutel]) attr += ' data-niet="' + esc(NW[sleutel]) + '"';
+    if (merk) attr += ' data-merk="' + esc(merk) + '"';
     return '<section class="sectie alle-winkels" data-alle-winkels data-sleutel="' + esc(sleutel) + '" data-prijs="' + esc(prijs || 'alle') + '"' + attr + '>' +
       '<p class="aw-brug">' + ic('omlaag') + 'Nog niet gevonden? Kijk hieronder verder</p>' +
-      '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Uit het hele aanbod van onze partnerwinkels. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
+      '<div class="sectie-kop"><div><h2>' + (merk ? 'Meer van ' + esc(merk) + ' in onze winkels' : 'Meer in onze winkels') + '</h2><p class="uitleg">Uit het hele aanbod van onze partnerwinkels. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
       '<div class="aw-inhoud"><p class="aw-laden">Even kijken in alle winkels…</p></div></section>';
   }
   /* Zoekresultaten op bol.com via de bol-partnerlink van LeukeKeuze. */
@@ -1724,7 +1779,7 @@
     if (!AW.laden[pad]) AW.laden[pad] = fetch(pad).then(function (r) { if (!r.ok) throw new Error(r.status); return sleutel ? r.json() : pakUit(r); }).then(function (j) {
       var W = j.winkels;
       /* Tijdens de Daisycon-pauze nooit Daisycon-links tonen (de index bevat dan alleen TradeTracker-winkels). */
-      return j.producten.filter(function (x) { return !dcDirect(W[x[2]].link + x[3]); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
+      return j.producten.filter(function (x) { return !dcDirect(W[x[2]].link + x[3]); }).map(function (x) { var w = W[x[2]]; x[2] = w.naam; x[3] = w.link + x[3]; x[4] = w.foto + x[4]; return { t: x[0], p: x[1], w: x[2], l: x[3], f: x[4], m: x[6] || '', z: ' ' + (x[0] + ' ' + x[5] + ' ' + x[6] + ' ' + x[2]).toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), tl: ' ' + x[0].toLowerCase().replace(/[^a-z0-9à-ÿ€]+/g, ' '), g: x[7] || '' }; });
     }).catch(function (e) { if (!sleutel && e && e.message === 'geen uitpakker') return 'oud'; return sleutel ? null : []; });
     return AW.laden[pad];
   }
@@ -1739,7 +1794,9 @@
       var nietW = (sec.getAttribute('data-niet') || '').split(' ').filter(Boolean);
       var ofW = (sec.getAttribute('data-woorden') || '').split(' ').filter(Boolean), gesl = sec.getAttribute('data-geslacht') || '', maxP = +sec.getAttribute('data-max') || 0;
       function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }
+      var merkF = (sec.getAttribute('data-merk') || '').toLowerCase();
       var hits = alles.filter(function (x) {
+        if (merkF && merkNorm(x.m).toLowerCase() !== merkF) return false;
         if (x.p < pf.min || x.p > pf.max) return false;
         if (maxP && x.p >= maxP) return false;
         if (gesl && x.g !== gesl) return false;
@@ -4017,6 +4074,8 @@
     var zr = $('[data-zoekrij]');
     if (zr) zr.hidden = d[0] === 'zoek';
     vulIconen(app); netteLinks(app);
+    var mzk = $('[data-merkzoeker]', app);
+    if (mzk) vulMerkzoeker(mzk);
     var aw = $('[data-alle-winkels]', app);
     if (aw) {
       /* Op een telefoon is het bestand met álle winkelproducten groot (zoekpagina). Daar laden we het pas als je erom vraagt;
@@ -4450,6 +4509,7 @@
       ga(hv ? hb.replace('__H__', encodeURIComponent(hv)) : hb.replace(/[?&]hobby=__H__/, function (m) { return m.charAt(0) === '?' ? '?' : ''; }).replace(/\?&/, '?').replace(/\?$/, ''));
       return;
     }
+    if (e.target.matches('[data-mz-invoer]')) { merkZoekKies(e.target); return; }
     if (e.target.matches('[data-sorteer]')) {
       var basis = e.target.getAttribute('data-sorteer'), v = e.target.value;
       ga(v === 'aanbevolen' ? basis : basis + (basis.indexOf('?') === -1 ? '?' : '&') + 'sort=' + v, true);
@@ -4459,6 +4519,7 @@
     var el = e.target; if (el && el.classList && el.classList.contains('galerij-rij')) galerijBijwerken(el.parentNode);
   }, true);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { sluitLade(); sluitMega(); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches && e.target.matches('[data-mz-invoer]')) { e.preventDefault(); merkZoekKies(e.target); } });
   window.addEventListener('storage', function () { werkTellersBij(); toon(); });
 
   /* ================== START ================== */
