@@ -2083,10 +2083,23 @@
     '.rz-terug{background:linear-gradient(180deg,#fff,#fbf4e4);border:1.5px solid #e0cba3;border-radius:999px;padding:8px 14px;font-size:14px;box-shadow:0 2px 0 #e8d9ba;transition:border-color .15s}.rz-terug:hover{border-color:#c99740}' +
     '@media (prefers-reduced-motion:reduce){.rijm-z .rz-knop,.rijm-z .rz-knop:after,.rz-keuzes label,.rz-cadeau,.rz-cadeau .pijl{transition:none}.rijm-z .rz-knop:hover,.rz-keuzes label:hover,.rz-cadeau:hover{transform:none}}' +
     '.rz-meer{border:1.5px dashed rgba(201,151,63,.5);border-radius:14px;padding:6px 12px}.rz-meer summary{cursor:pointer;font-weight:700;color:#0f1a33;padding:6px 0;list-style:none}.rz-meer summary::-webkit-details-marker{display:none}.rz-meer summary::before{content:"▸ ";color:#c9973f}.rz-meer[open] summary::before{content:"▾ "}.rz-meer summary small{font-weight:500;color:#5d5a68}.rz-meer[open]{padding-bottom:12px}.rz-meer .rz-veld{margin-top:12px}' +
+    /* 8-11-2026: compacte 3 vragen met voorbeelden die je opzij veegt */
+    '.rz-vraag{gap:6px}.rz-vraag>label{display:flex;align-items:center;gap:8px}.rz-nr{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:850;color:#5a1424;background:linear-gradient(180deg,#fce7ad,#e2ad4c)}' +
+    '.rz-vb{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -2px;padding:2px 2px 4px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}.rz-vb::-webkit-scrollbar{display:none}' +
+    '.rz-vb button{flex:none;white-space:nowrap;font:600 13px/1 var(--f-ui);padding:8px 11px;border-radius:999px;border:1px solid #e0cfab;background:#fffaf0;color:#3d3650;cursor:pointer}' +
+    '.rz-vb button:hover{border-color:#c99740}.rz-vb button[aria-pressed=true]{background:#0b1225;color:#ffe39b;border-color:#c99740}.rz-vb button:focus-visible{outline:3px solid #137ca8;outline-offset:2px}' +
+    '.rz-vb button:last-child{margin-right:24px}' +
+    '@media (max-width:720px){.rz-velden{grid-template-columns:1fr 1fr}.rz-velden>.rz-veld.breed,.rz-velden>.rz-meer{grid-column:1/-1}}' +
       '@media (max-width:759px){.rz-held{aspect-ratio:auto;max-height:150px}.rz-held img{height:150px;object-fit:cover;object-position:center 30%}.rz-kop h2{font-size:22px}}' +
       '</style>';
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
+  function rijmVraag(nr, id, naam, vraag, max, hulp, voorbeelden, meer) {
+    return '<div class="rz-veld breed rz-vraag"><label for="' + id + '"><span class="rz-nr">' + nr + '</span>' + vraag + '</label>' +
+      '<input id="' + id + '" type="text" name="' + naam + '" maxlength="' + max + '" placeholder="' + esc(hulp) + '" autocomplete="off">' +
+      '<div class="rz-vb" data-rz-vb="' + id + '"' + (meer ? ' data-meer="1"' : '') + ' aria-label="Voorbeelden, tik om in te vullen">' +
+      voorbeelden.map(function (v) { return '<button type="button" aria-pressed="false">' + esc(v) + '</button>'; }).join('') + '</div></div>';
+  }
   function rijmmachine() {
     zetTitel('Sint-rijmmachine: grappig Sinterklaasgedicht met cadeaus erbij');
     window.LK_SEO = 'Sint weet alles, en rijmt er nog op ook. Laat Sint voorlezen uit zijn Grote Boek: een grappig, persoonlijk Sinterklaasgedicht met 3 cadeaus die er precies bij passen. Gratis.';
@@ -2101,14 +2114,15 @@
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
         '<div class="rz-held"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" decoding="async"></div>' +
-        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maken we een Sinterklaasgedicht?</h2><p>Vertel iets over die persoon. Sint maakt er een grappig gedicht van!</p></div>' +
-        '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>1</span>Wat moet Sint weten?</div>' +
+        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maken we een Sinterklaasgedicht?</h2><p>3 korte vragen. Tik een voorbeeld aan of typ zelf.</p></div>' +
+        '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>✦</span>Wat moet Sint weten?</div>' +
         '<div class="rz-velden">' +
           '<div class="rz-veld"><label for="rz-naam">Naam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
           '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
-          '<div class="rz-veld breed"><label for="rz-over">Wat is er grappig aan deze persoon?</label>' +
-            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. komt altijd te laat en denkt dat hij alles beter weet."></textarea>' +
-            '</div>' +
+          /* 8-11-2026 (GO Marius): 3 vaste vragen met aantikbare voorbeelden in plaats van één open vak; zo komt het grappige voorval altijd in het gedicht. */
+          rijmVraag(1, 'rz-gewoonte', 'gewoonte', 'Wat doet hij of zij altijd?', 200, 'Bijv. is altijd de sleutels kwijt', ['is altijd de sleutels kwijt', 'is altijd te laat', 'hangt altijd op de bank', 'heeft het altijd koud', 'zit altijd te gamen', 'zingt altijd onder de douche', 'weet alles beter']) +
+          rijmVraag(2, 'rz-voorval', 'voorval', 'Wat ging er laatst grappig mis?', 250, 'Hoe preciezer, hoe grappiger', ['twee verschillende schoenen aan', 'verloor met darts van een kind', 'appte de verkeerde groep', 'zocht de bril op het hoofd', 'sliep in tijdens de film', 'liet de pizza aanbranden']) +
+          rijmVraag(3, 'rz-gekop', 'gekop', 'Waar is hij of zij gek op?', 150, 'Hier kiest Sint het hoofdcadeau bij', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
           /* 8-11-2026 (Fable P1-13): eenvoudiger. Eerst alleen naam, wie en iets grappigs; budget, man/vrouw en scherpte staan achter 'Meer opties' (standaard €50, hilarisch). */
           '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €50, man/vrouw, hoe scherp)</small></summary>' +
           '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
@@ -2157,24 +2171,24 @@
     return '<div class="rz-wacht" data-rijm-wacht><div class="rz-wachtkaart" role="status">' +
       '<div class="rz-eyebrow">Stap 2 van 2 • Even geduld</div><h2>Sint en Piet zijn aan het dichten…</h2>' +
       '<div class="rz-boekbeeld"><img src="/images/banners/rijm-boek.webp" alt="Sinterklaas leest voor uit het Grote Boek, Piet moet lachen" width="700" height="468" decoding="async"></div>' +
-      '<ul class="rz-stappen"><li data-rz-s="1"><span></span>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</li><li data-rz-s="2"><span></span>Piet zoekt de cadeaus uit…</li><li data-rz-s="3"><span></span>Het gedicht rijmen…</li></ul>' +
-      '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht met zorg. Dit duurt meestal minder dan een minuut.</p></div></div>';
+      '<ul class="rz-stappen"><li data-rz-s="1"><span></span>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</li><li data-rz-s="2"><span></span>Piet zoekt de cadeaus uit…</li><li data-rz-s="3"><span></span>Het gedicht rijmen…</li><li data-rz-s="4"><span></span>Sint controleert rijm en grap…</li></ul>' +
+      '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht en controleert met zorg. Dit duurt ongeveer een minuut.</p></div></div>';
   }
   function rijmVerstuur(f) {
     if (RIJM_BEZIG) return;
     var uit = $('[data-rijm-uit]'), fout = $('[data-rijm-fout]');
-    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', over: (fd.get('over') || '').trim(), budget: Number(fd.get('budget') || 50), stand: fd.get('stand') || 'hilarisch' };
+    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', gewoonte: (fd.get('gewoonte') || '').trim(), voorval: (fd.get('voorval') || '').trim(), gekop: (fd.get('gekop') || '').trim(), budget: Number(fd.get('budget') || 50), stand: fd.get('stand') || 'hilarisch' };
     var meld = function (t) { if (fout) { fout.innerHTML = '<p class="rz-fout">' + esc(t) + '</p>'; } };
     if (!gegevens.naam) { meld('Vul eerst een naam in.'); return; }
-    if (gegevens.over.length < 8) { meld('Vertel Sint iets meer over deze persoon. Hoe meer details, hoe grappiger het gedicht.'); return; }
+    if ((gegevens.gewoonte + gegevens.voorval + gegevens.gekop).length < 6) { meld('Vul minstens één van de 3 vragen in. Tik gerust een voorbeeld aan.'); return; }
     if (fout) fout.innerHTML = '';
     RIJM_LAST = gegevens; RIJM_BEZIG = true;
     rijmStap('wacht'); uit.innerHTML = rijmWacht(gegevens.naam);
     var w = $('[data-rijm-wacht]'); if (w) w.scrollIntoView({ behavior: 'smooth', block: 'start' });
     /* De drie stappen lopen op de klok op (de server meldt geen tussenstand); de laatste blijft draaien tot het gedicht er is. */
     var sec = 0, zetStap = function () {
-      var nu = sec < 8 ? 1 : sec < 18 ? 2 : 3;
-      [1, 2, 3].forEach(function (i) { var li = $('[data-rz-s="' + i + '"]'); if (li) li.className = i < nu ? 'klaar' : i === nu ? 'bezig' : ''; });
+      var nu = sec < 6 ? 1 : sec < 14 ? 2 : sec < 32 ? 3 : 4;
+      [1, 2, 3, 4].forEach(function (i) { var li = $('[data-rz-s="' + i + '"]'); if (li) li.className = i < nu ? 'klaar' : i === nu ? 'bezig' : ''; });
     };
     zetStap();
     var klok = setInterval(function () { if (!$('[data-rz-s="1"]')) return clearInterval(klok); sec++; zetStap(); }, 1000);
@@ -2205,6 +2219,18 @@
   document.addEventListener('click', function (e) {
     /* 8-11-2026: op een telefoon sprong de pagina omhoog als je een keuze aantikte (de browser scrolde naar het verborgen rondje).
        Daarom zetten we de keuze hier zelf aan, zonder focus, zodat de pagina blijft staan. */
+    var vb = e.target && e.target.closest ? e.target.closest('.rz-vb button') : null;
+    if (vb) {
+      var groep = vb.parentNode, veld = document.getElementById(groep.getAttribute('data-rz-vb')), knoppen = groep.querySelectorAll('button');
+      if (groep.hasAttribute('data-meer')) {
+        vb.setAttribute('aria-pressed', vb.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        if (veld) veld.value = Array.prototype.filter.call(knoppen, function (b) { return b.getAttribute('aria-pressed') === 'true'; }).map(function (b) { return b.textContent; }).join(' en ');
+      } else {
+        Array.prototype.forEach.call(knoppen, function (b) { b.setAttribute('aria-pressed', b === vb ? 'true' : 'false'); });
+        if (veld) veld.value = vb.textContent;
+      }
+      return;
+    }
     var kz = e.target && e.target.closest ? e.target.closest('.rz-keuzes label') : null;
     if (kz && e.detail !== 0) { var ri = kz.querySelector('input'); if (ri) { e.preventDefault(); ri.checked = true; } return; }
     var t = e.target && e.target.closest ? e.target.closest('[data-rijm-kopieer],[data-rijm-print],[data-rijm-opnieuw],[data-rijm-deel],[data-rijm-aanpassen],[data-rijm-pakket],[data-rijm-cadeau]') : null;
