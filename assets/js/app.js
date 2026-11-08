@@ -1955,7 +1955,7 @@
   }
   /* ---------- Sint-rijmmachine (7-11-2026, GO Marius; ontwerp Nova: 'Modern Luxury met een komische Sint-knipoog') ----------
      De klant vult in voor wie het is; de serverfunctie 'sint-rijm' (Supabase, op Marius' eigen OpenAI-tegoed) schrijft een grappig
-     gedicht waarin Sint voorleest uit zijn Grote Boek, en kiest er 3 cadeaus bij uit ALLE producten van de site (met partnercode).
+     gedicht waarin Sint voorleest uit zijn Grote Boek, en kiest er 1 passend cadeau bij uit ALLE producten (8-11-2026, wens Marius: 1 cadeau in plaats van 3) van de site (met partnercode).
      Komen alle 3 van Amazon, dan gaan ze met één knop in het Amazon-winkelmandje; anders heeft elk cadeau zijn eigen knop.
      Op deze pagina verdwijnt de onderbalk (focusmodus), zodat hij niet over het formulier of het gedicht valt. */
   var RIJM_URL = 'https://oivhdejsvmsudfrulwsn.supabase.co/functions/v1/sint-rijm';
@@ -1985,7 +1985,7 @@
       '@media (prefers-reduced-motion:reduce){.rz-smal,.rz-smal .ga{transition:none}}' +
       '</style>' +
       '<a class="rz-smal" href="/sint-rijmmachine/" data-tel="rijmblok-home"><img src="/images/banners/rijm-sint-piet.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
-      '<span class="t"><b>Nieuw: <em>Sint-rijmmachine</em></b><small>Grappig gedicht + 3 cadeaus</small></span><span class="ga" aria-hidden="true">→</span></a>';
+      '<span class="t"><b>Nieuw: <em>Sint-rijmmachine</em></b><small>Grappig gedicht + een cadeau dat past</small></span><span class="ga" aria-hidden="true">→</span></a>';
     return RIJM_STIJL + '<style>' +
       '.rz-blok{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;margin:20px 0 6px;padding:26px 28px;border-radius:24px;overflow:hidden;color:#fff;text-decoration:none;background:radial-gradient(circle at 80% 30%,rgba(119,66,39,.35) 0 90px,transparent 220px),linear-gradient(140deg,#0b1225,#15132a 70%,#3a1727);box-shadow:0 16px 42px rgba(20,20,35,.18)}' +
       '.rz-blok .rz-eyebrow{color:#f7d77f}' +
@@ -1998,7 +1998,7 @@
       '<a class="rijm-z rz-blok" href="/sint-rijmmachine/" data-tel="rijmblok-' + waar + '">' +
         '<div><div class="rz-eyebrow">✦ Nieuw: de Sint-rijmmachine</div>' +
           '<h2>Sint weet <em>alles</em>.<br>En rijmt er nog op ook.</h2>' +
-          '<p>Vertel over iemand die je kent. Sint leest voor uit zijn Grote Boek, maakt er een persoonlijk gedicht met een flinke knipoog van, én zoekt 3 cadeaus die passen.</p></div>' +
+          '<p>Vertel over iemand die je kent. Sint leest voor uit zijn Grote Boek, maakt er een persoonlijk gedicht met een flinke knipoog van, én zoekt er een cadeau bij dat precies past.</p></div>' +
         '<div class="rz-beeld"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" loading="lazy" decoding="async"></div>' +
         '<span class="rz-knop">🪶 Maak een gedicht <span aria-hidden="true">→</span></span>' +
       '</a>';
@@ -2102,7 +2102,7 @@
   }
   function rijmmachine() {
     zetTitel('Sint-rijmmachine: grappig Sinterklaasgedicht met cadeaus erbij');
-    window.LK_SEO = 'Sint weet alles, en rijmt er nog op ook. Laat Sint voorlezen uit zijn Grote Boek: een grappig, persoonlijk Sinterklaasgedicht met 3 cadeaus die er precies bij passen. Gratis.';
+    window.LK_SEO = 'Sint weet alles, en rijmt er nog op ook. Laat Sint voorlezen uit zijn Grote Boek: een grappig, persoonlijk Sinterklaasgedicht met een cadeau dat er precies bij past. Gratis.';
     var kies = function (naam, opties, standaard) {
       return opties.map(function (o) {
         return '<label><input type="radio" name="' + naam + '" value="' + o[0] + '"' + (o[0] === standaard ? ' checked' : '') + '>' + o[1] + '</label>';
@@ -2124,9 +2124,9 @@
           rijmVraag(2, 'rz-voorval', 'voorval', 'Wat ging er laatst grappig mis?', 250, 'Hoe preciezer, hoe grappiger', ['twee verschillende schoenen aan', 'verloor met darts van een kind', 'appte de verkeerde groep', 'zocht de bril op het hoofd', 'sliep in tijdens de film', 'liet de pizza aanbranden']) +
           rijmVraag(3, 'rz-gekop', 'gekop', 'Waar is hij of zij gek op?', 150, 'Hier kiest Sint het hoofdcadeau bij', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
           /* 8-11-2026 (Fable P1-13): eenvoudiger. Eerst alleen naam, wie en iets grappigs; budget, man/vrouw en scherpte staan achter 'Meer opties' (standaard €50, hilarisch). */
-          '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €50, man/vrouw, hoe scherp)</small></summary>' +
+          '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €25, man/vrouw, hoe scherp)</small></summary>' +
           '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
-          '<fieldset class="rz-veld breed"><legend>Budget voor 3 cadeaus samen</legend><div class="rz-keuzes">' + kies('budget', [['25', '€ 25'], ['50', '€ 50'], ['75', '€ 75'], ['100', '€ 100'], ['150', '€ 150']], '50') + '</div></fieldset>' +
+          '<fieldset class="rz-veld breed"><legend>Budget voor het cadeau</legend><div class="rz-keuzes">' + kies('budget', [['10', 'tot € 10'], ['15', 'tot € 15'], ['25', 'tot € 25'], ['50', 'tot € 50'], ['100', 'tot € 100']], '25') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Hoe scherp mag het zijn?</legend><div class="rz-keuzes rz-humor">' +
             kies('stand', [['lief', '😊 Lief<small>Met een knipoog</small>'], ['hilarisch', '🤣 Hilarisch<small>Hardop lachen</small>'], ['genadeloos', '😈 Genadeloos<small>Lekker plagen</small>']], 'hilarisch') +
           '</div></fieldset>' +
@@ -2151,19 +2151,18 @@
     var tekst = String(r.gedicht || '').replace(/\n*\s*Sint\s*(en|&)\s*Piet\.?\s*$/i, '').trim();
     return '<div class="rz-uitslag" data-rijm-uitslag>' +
       '<button class="rz-terug" type="button" data-rijm-aanpassen>← Ingevulde gegevens aanpassen</button>' +
-      '<div class="rz-kop"><span class="rz-eyebrow">✦ De Sint heeft gesproken</span><h2>Dit gaat over ' + esc(naam) + '!</h2><p>En dat is niet alles… Sint heeft er ook drie cadeaus bij gezocht.</p></div>' +
+      '<div class="rz-kop"><span class="rz-eyebrow">✦ De Sint heeft gesproken</span><h2>Dit gaat over ' + esc(naam) + '!</h2><p>En dat is niet alles… Sint heeft er ook een cadeau bij gezocht dat precies past.</p></div>' +
       '<div class="rz-grid"><div>' +
         '<article class="rz-gedicht" data-rijm-gedicht><span class="rz-eyebrow">Uit het Grote Boek</span><h2>' + esc(r.titel || 'Een gedicht van Sint') + '</h2><div class="rz-tekst">' + esc(tekst) + '</div><div class="rz-handtekening">Sint &amp; Piet ✍</div></article>' +
         '<div class="rz-acties"><button class="rz-knop rz-wit" type="button" data-rijm-kopieer>▣ Kopieer gedicht</button><button class="rz-knop rz-wit" type="button" data-rijm-print>🖨 Print gedicht</button>' +
           '<button class="rz-knop rz-wit" type="button" data-rijm-opnieuw>↻ Nieuw gedicht</button><button class="rz-knop rz-wit" type="button" data-rijm-deel>↗ Deel gedicht</button></div>' +
       '</div>' +
-      '<aside class="rz-cadeaus"><h2>🎁 De drie cadeaus</h2><p>Klik op een cadeau om het bij de winkel te bekijken en te bestellen.</p>' +
+      '<aside class="rz-cadeaus"><h2>🎁 Het cadeau van Sint</h2><p>Klik op het cadeau om het bij de winkel te bekijken en te bestellen.</p>' +
         r.cadeaus.map(function (c) {
           var winkel = c.winkel || 'Amazon';
           return '<a class="rz-cadeau" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-cadeau="' + esc(c.id) + '"><img src="' + esc(rijmBeeld(c.beeld)) + '" alt="" loading="lazy" width="78" height="78"><div><b>' + esc(c.titel) + '</b><small>bij ' + esc(winkel) + '</small><em>ongeveer ' + rijmEuro(c.prijs) + '</em></div><span class="pijl" aria-hidden="true">›</span></a>';
         }).join('') +
-        '<div class="rz-totaal">Samen ongeveer ' + rijmEuro(r.totaal) + '</div>' +
-        (r.pakketUrl ? '<a class="rz-knop rz-vol" href="' + esc(r.pakketUrl) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-pakket>🎁 Alle 3 in je Amazon-mandje</a>' : '') +
+        (r.cadeaus.length > 1 ? '<div class="rz-totaal">Samen ongeveer ' + rijmEuro(r.totaal) + '</div>' : '') +
         '<p class="rz-klein">Prijzen kunnen veranderen: de prijs bij de winkel geldt. LeukeKeuze krijgt een kleine vergoeding als je via deze links iets koopt; jij betaalt niets extra.</p>' +
       '</aside></div></div>';
   }
@@ -2171,13 +2170,13 @@
     return '<div class="rz-wacht" data-rijm-wacht><div class="rz-wachtkaart" role="status">' +
       '<div class="rz-eyebrow">Stap 2 van 2 • Even geduld</div><h2>Sint en Piet zijn aan het dichten…</h2>' +
       '<div class="rz-boekbeeld"><img src="/images/banners/rijm-boek.webp" alt="Sinterklaas leest voor uit het Grote Boek, Piet moet lachen" width="700" height="468" decoding="async"></div>' +
-      '<ul class="rz-stappen"><li data-rz-s="1"><span></span>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</li><li data-rz-s="2"><span></span>Piet zoekt de cadeaus uit…</li><li data-rz-s="3"><span></span>Het gedicht rijmen…</li><li data-rz-s="4"><span></span>Sint controleert rijm en grap…</li></ul>' +
-      '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht en controleert met zorg. Dit duurt ongeveer een minuut.</p></div></div>';
+      '<ul class="rz-stappen"><li data-rz-s="1"><span></span>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</li><li data-rz-s="2"><span></span>Piet zoekt het cadeau uit…</li><li data-rz-s="3"><span></span>Het gedicht rijmen…</li><li data-rz-s="4"><span></span>Sint controleert rijm en grap…</li></ul>' +
+      '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht en controleert met zorg. Dit duurt ongeveer een halve minuut.</p></div></div>';
   }
   function rijmVerstuur(f) {
     if (RIJM_BEZIG) return;
     var uit = $('[data-rijm-uit]'), fout = $('[data-rijm-fout]');
-    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', gewoonte: (fd.get('gewoonte') || '').trim(), voorval: (fd.get('voorval') || '').trim(), gekop: (fd.get('gekop') || '').trim(), budget: Number(fd.get('budget') || 50), stand: fd.get('stand') || 'hilarisch' };
+    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', gewoonte: (fd.get('gewoonte') || '').trim(), voorval: (fd.get('voorval') || '').trim(), gekop: (fd.get('gekop') || '').trim(), budget: Number(fd.get('budget') || 25), stand: fd.get('stand') || 'hilarisch' };
     var meld = function (t) { if (fout) { fout.innerHTML = '<p class="rz-fout">' + esc(t) + '</p>'; } };
     if (!gegevens.naam) { meld('Vul eerst een naam in.'); return; }
     if ((gegevens.gewoonte + gegevens.voorval + gegevens.gekop).length < 6) { meld('Vul minstens één van de 3 vragen in. Tik gerust een voorbeeld aan.'); return; }
@@ -2187,7 +2186,7 @@
     var w = $('[data-rijm-wacht]'); if (w) w.scrollIntoView({ behavior: 'smooth', block: 'start' });
     /* De drie stappen lopen op de klok op (de server meldt geen tussenstand); de laatste blijft draaien tot het gedicht er is. */
     var sec = 0, zetStap = function () {
-      var nu = sec < 6 ? 1 : sec < 14 ? 2 : sec < 32 ? 3 : 4;
+      var nu = sec < 4 ? 1 : sec < 9 ? 2 : sec < 24 ? 3 : 4;
       [1, 2, 3, 4].forEach(function (i) { var li = $('[data-rz-s="' + i + '"]'); if (li) li.className = i < nu ? 'klaar' : i === nu ? 'bezig' : ''; });
     };
     zetStap();
