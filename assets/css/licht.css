@@ -1008,6 +1008,7 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   body.pag-product .product-info h1 { font-size: clamp(20px, 5.6vw, 26px); line-height: 1.15; margin: 4px 0 6px; }
   body.pag-product .kruimel { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
   body.pag-product .kruimel a { padding: 2px 0; }
+  body.pag-product .kruimel > span { margin: 0 5px; } /* 8-11-2026: tussen de stukjes stond geen ruimte (Home›Elektronica›…) */
   body.pag-product .zoekrij .binnen { padding-top: 6px; padding-bottom: 6px; }
   body.pag-product .zoekrij .zoek { padding: 2px 2px 2px 14px; }
   body.pag-product .zoekrij .zoek input { font-size: 15px; min-height: 36px; }

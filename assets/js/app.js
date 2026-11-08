@@ -147,7 +147,7 @@
   function kortingPct(p) { return p.oudePrijs > p.prijs ? (1 - p.prijs / p.oudePrijs) * 100 : 0; }
   /* 8-11-2026: prijs ouder dan 7 dagen = geen harde belofte meer. */
   function datumNL(d) { return String(d || '').split('-').reverse().join('-'); }
-  function prijsOud(p) { if (!p.gecontroleerd) return true; var t = Date.parse(p.gecontroleerd); return !isFinite(t) || Date.now() - t > 7 * 864e5; }
+  function prijsOud(p) { var d = p.gecontroleerd || p.sinds; /* 8-11-2026: zonder controle telt de dag dat de prijs bij het toevoegen is overgenomen */ if (!d) return true; var t = Date.parse(d); return !isFinite(t) || Date.now() - t > 7 * 864e5; }
   /* 7-11-2026 (richtlijn 'minder maar beter'): per pagina staan de met de hand gekozen toppers bovenaan.
      De lijst met keuzes staat in assets/js/topkeuze.js (gemaakt uit het paginaplan); de rest volgt gewoon erachter. */
   function metTopkeuze(l, sleutel) {
@@ -1116,7 +1116,7 @@
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({
       titel: pv ? (g.kop || g.naam) + ' voor ' + voorNaam : (g.kop || g.naam),
-      tekst: pv ? 'Met de hand gekozen cadeaus voor ' + voorNaam + ', voor ' + g.naam.toLowerCase() + '.' : g.tekst, vaag: g.beeld,
+      tekst: pv ? (pad.indexOf('/collectie/') === 0 ? (g.kop || g.naam) + ' voor ' + voorNaam + ', met de hand gekozen. ' + (g.tekst || '') : 'Met de hand gekozen cadeaus voor ' + voorNaam + ', voor ' + g.naam.toLowerCase() + '.') : g.tekst, vaag: g.beeld,
       kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }].concat(pv ? [{ tekst: g.naam, naar: hoofdPad }, { tekst: pv.kort }] : [{ tekst: g.naam }])
     }) +
     '<div class="binnen">' +
@@ -1146,10 +1146,11 @@
     if (!g || !g.vakken) return nietGevonden();
     return verzameling(g, '/gelegenheid/' + g.slug, { tekst: 'Gelegenheden', naar: '/gelegenheid' }, q, voorSlug);
   }
-  function collectie(slug, q) {
+  function collectie(slug, q, voorSlug) {
     var g = window.LK_COLLECTIE(slug);
     if (!g) return nietGevonden();
-    return verzameling(g, '/collectie/' + g.slug, { tekst: 'Collecties', naar: '/' }, q);
+    /* 8-11-2026 (onderzoek): de keuze voor wie (/collectie/grappige-cadeaus/haar) werd niet doorgegeven, dus die pagina toonde alles. */
+    return verzameling(g, '/collectie/' + g.slug, { tekst: 'Collecties', naar: '/' }, q, voorSlug);
   }
   /* Overzicht van alle personen (/voor). Stap 4 indeling: vast raster van rondjes. */
   function voorWie() {
@@ -1316,7 +1317,7 @@
           '</div>' + inAppTip(p) +
           kleurKeuze(p) + maatKeuze(p) +
           /* Eerlijke prijs (8-11-2026, Fable P0-4): de controledatum staat er altijd bij; is die ouder dan 7 dagen, dan is de prijs 'circa' en verwijzen we duidelijk naar de winkel. */
-          '<p class="prijsnoot' + (prijsOud(p) ? ' oud' : '') + '">' + (prijsOud(p) ? 'Prijs van ' + datumNL(p.gecontroleerd) + ', kan inmiddels veranderd zijn. <strong>Bekijk de actuele prijs bij ' + esc(p.shop) + '.</strong>' : 'Prijs gecontroleerd op ' + (p.gecontroleerd ? datumNL(p.gecontroleerd) : 'onbekende datum') + '. De actuele prijs zie je bij de winkel.') + '</p>' +
+          '<p class="prijsnoot' + (prijsOud(p) ? ' oud' : '') + '">' + (prijsOud(p) ? ((p.gecontroleerd || p.sinds) ? 'Prijs van ' + datumNL(p.gecontroleerd || p.sinds) + ', kan' : 'De prijs kan') + ' inmiddels veranderd zijn. <strong>Bekijk de actuele prijs bij ' + esc(p.shop) + '.</strong>' : 'Prijs gecontroleerd op ' + datumNL(p.gecontroleerd || p.sinds) + '. De actuele prijs zie je bij de winkel.') + '</p>' +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
@@ -1337,7 +1338,8 @@
       /* Stap 5 indeling: terug naar het vakje als tekstlink (ontbrak). */
       (function () { var t = nv ? [nv.naam, '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug] : ns ? [ns.naam, '/c/' + nc.slug + '/' + ns.slug] : (s && !s.verborgen ? [s.naam, '/c/' + c.slug + '/' + s.slug] : c ? [c.naam, '/c/' + c.slug] : null);
         return t ? '<p class="terug-link"><a href="' + esc(t[1]) + '">' + ic('vorige') + ' Terug naar ' + esc(t[0]) + '</a></p>' : ''; })() +
-      verderZoeken(p, c, s) +
+      /* 8-11-2026 (onderzoek): 'Meer in …' volgens de nieuwe boom (zoals het kruimelpad), niet de oude subcategorie ('Telefoon & opladen' bij sticky notes). */
+      verderZoeken(p, nc && ns ? nc : c, nc && ns ? ns : s) +
       (verwant.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Ook leuk</h2></div></div>' + grid(verwant) + '</section>' : '') +
     '</div>';
   }
@@ -1628,9 +1630,20 @@
       return s + 1;
     }, 0);
   }
+  /* 8-11-2026 (onderzoek): de zoekbalk belooft 'oma, max €25'. Een budget in de zoekvraag ('max 25', 'onder €10', 'tot 50 euro', '<15')
+     wordt nu een echt budget: het getal zoekt niet meer mee in de titels ('kaars 25 cm') en alles boven het bedrag valt af. */
+  function zoekBudget(tekst) {
+    var t = String(tekst || ''), max = null;
+    var m = t.match(/(?:max(?:imaal)?|onder(?:\s+de)?|tot|minder\s+dan|beneden|hooguit|<)\s*(?:€|eur(?:o)?)?\s*(\d{1,4})(?:[.,]\d{1,2})?\s*(?:€|euro|eur)?/i) ||
+      t.match(/(?:€|eur(?:o)?)\s*(\d{1,4})(?:[.,]\d{1,2})?/i) || t.match(/(\d{1,4})(?:[.,]\d{1,2})?\s*(?:€|euro|eur)\b/i);
+    if (m) { max = Number(m[1]); t = t.replace(m[0], ' '); }
+    return { tekst: t.replace(/[,]+/g, ' ').replace(/\s+/g, ' ').trim(), max: max > 0 ? max : null };
+  }
   function zoeken(q) {
-    var woorden = zoekWoorden(q.q || '');
+    var zb = zoekBudget(q.q || '');
+    var woorden = zoekWoorden(zb.tekst);
     var lijst = zoekLijst(woorden, q.prijs), ruim = lijst.ruim;
+    if (zb.max) { var lijstMax = lijst.filter(function (p) { return p.prijs > 0 && p.prijs <= zb.max; }); lijstMax.ruim = lijst.ruim; lijstMax.staart = lijst.staart; lijst = lijstMax; }
     if (lijst.staart) woorden = [lijst.staart];
     var score = function (p) { return zoekScore(p, woorden); };
     if (woorden.length && (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant')) {
@@ -1647,6 +1660,7 @@
       '<div class="binnen">' +
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
         (catTips.length ? '<div class="bedoel-je"><h2>Bedoel je…</h2><div class="bedoel-knoppen">' + catTips.map(function (t) { return '<a class="bedoel' + (t.soort === 'persoon' ? ' persoon' : '') + '" href="' + t.naar + '">' + ic('rechts') + '<span>' + t.naam + '</span></a>'; }).join('') + '</div></div>' : '') +
+        (zb.max ? '<p class="zoek-ruim">Alles tot €' + zb.max + (zb.tekst ? ' voor “' + esc(zb.tekst) + '”' : '') + '.</p>' : '') +
         (ruim ? '<p class="zoek-ruim">We vonden niets precies voor “' + esc(q.q) + '”. Dit lijkt erop' + (lijst.staart ? ' (' + esc(lijst.staart) + ')' : '') + ':</p>' : '') +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         filterPaneel('/zoek', q) +
@@ -3974,7 +3988,7 @@
     }
     else if (d[0] === 'voor') html = d[1] ? persoon(d[1], d[2], a.q) : voorWie();
     else if (d[0] === 'gelegenheid') html = gelegenheidPagina(d[1], d[2], a.q);
-    else if (d[0] === 'collectie') html = collectie(d[1], a.q);
+    else if (d[0] === 'collectie') html = collectie(d[1], a.q, d[2]);
     else if (d[0] === 'p') html = product(d[1]);
     else if (d[0] === 'zoek') html = zoeken(a.q);
     else if (d[0] === 'vonk') html = vonk(a.q);
