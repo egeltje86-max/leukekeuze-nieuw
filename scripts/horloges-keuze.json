@@ -1,0 +1,6 @@
+{
+ "_uitleg": "8-11-2026 (Marius): onder Dameshorloges en Herenhorloges ('Meer in onze winkels') alleen horloges uit de winkels en van de merken die Marius zelf in de Superkeurkamer koos. Dames alleen dameshorloges, heren alleen herenhorloges. Wordt gebruikt door scripts/zoek-horloges.py (draait na maak-zoekindex.py).",
+ "winkels": ["Watch Enclave", "Invicta", "Timeshop24", "Fiftiesstore", "Looking Good Today", "Italian Style", "Shelby Brothers", "Watch2day"],
+ "dames": ["Michael Kors", "Tommy Hilfiger", "Hugo Boss", "BOSS", "Emporio Armani", "TechnoMarine", "Invicta", "Activa", "Tissot", "Frederique Constant", "Versace"],
+ "heren": ["Philipp Plein", "Tommy Hilfiger", "Hugo Boss", "BOSS", "Diesel", "Luminox", "Jacques Lemans", "Christian Audigier", "LGT JWLS", "Ed Hardy", "HangSheng", "Shelby Brothers", "Peaky Blinders", "WATX", "Frederique Constant", "Tsar Bomba", "Louis XVI", "Hamilton", "Zeppelin", "Victorinox", "Nubeo"]
+}

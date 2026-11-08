@@ -857,7 +857,9 @@
       leesOok(v && v.oud ? v.oud : c.slug + (s ? '/' + s.slug : '')) +
       /* Eerst 'Meer in onze winkels' direct onder onze eigen producten, en pas daarna de tips.
          Stonden de tips ertussen, dan leek het alsof de pagina daar ophield (opmerking Marius, 28-10-2026). */
-      (v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
+      /* 8-11-2026 (Marius): onder Dames- en Herenhorloges alleen horloges uit zijn eigen winkels en van zijn eigen merken (scripts/zoek-horloges.py). */
+      (v && c.slug === 'mode-sieraden' && s.slug === 'horloges' ? winkelSectie('mode-sieraden', 'horloges/' + v.slug, q.prijs) :
+       v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       /* Stap 3 indeling: de winkels van deze afdeling als tekstlinks (eerst 24 grote kaarten: ruim 6.000 px op een telefoon). */
       (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie verder"><h2>Winkels voor ' + esc(c.naam.toLowerCase()) + '</h2><nav class="tekstlinks" aria-label="Winkels">' + winkelsMet(c.slug).map(function (w) {
@@ -1682,6 +1684,8 @@
     /* 8-11-2026 (GO Marius): twee nieuwe afdelingen hebben in de zoekindex nog hun oude naam; zonder dit miste daar 'Meer in onze winkels'. */
     if (!sub) cat = { 'mode-sieraden': 'mode-beauty', 'beauty-verzorging': 'geuren-verzorging' }[cat] || cat;
     var ZW = window.LK_ZOEKWOORDEN || {}, sleutel = sub ? cat + '/' + sub : cat;
+    /* 8-11-2026 (Marius): Voor haar > Horloges toont dezelfde feed als Dameshorloges (alleen zijn eigen winkels en merken). */
+    if (sleutel === 'sieraden/horloges') sleutel = 'mode-sieraden/horloges/dameshorloges';
     var attr = '';
     if (sleutel === 'cadeaus/voor-haar') attr = ' data-geslacht="v"';
     else if (sleutel === 'cadeaus/voor-hem') attr = ' data-geslacht="m"';
@@ -1716,7 +1720,7 @@
     });
   }
   function laadWinkels(sleutel) {
-    var pad = sleutel ? 'assets/zoek/w/' + sleutel.replace('/', '--') + '.json' : 'assets/zoek/alle.json.gz';
+    var pad = sleutel ? 'assets/zoek/w/' + sleutel.replace(/\//g, '--') + '.json' : 'assets/zoek/alle.json.gz';
     if (!AW.laden[pad]) AW.laden[pad] = fetch(pad).then(function (r) { if (!r.ok) throw new Error(r.status); return sleutel ? r.json() : pakUit(r); }).then(function (j) {
       var W = j.winkels;
       /* Tijdens de Daisycon-pauze nooit Daisycon-links tonen (de index bevat dan alleen TradeTracker-winkels). */

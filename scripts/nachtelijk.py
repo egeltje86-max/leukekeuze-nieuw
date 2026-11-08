@@ -176,6 +176,9 @@ if not TEST: git('checkout', 'main'); git('pull', '--rebase', '-q')
 r = subprocess.run([sys.executable, os.path.join(HIER, 'maak-zoekindex.py'), FEEDS], capture_output=True, text=True, encoding='utf-8')
 log('index:', (r.stdout or r.stderr).strip()[-300:])
 if r.returncode or TEST: sys.exit(r.returncode)
+# 8-11-2026 (wens Marius): 'Meer in onze winkels' onder Dames- en Herenhorloges alleen uit zijn eigen winkels en merken.
+h = subprocess.run([sys.executable, '-I', os.path.join(HIER, 'zoek-horloges.py')], capture_output=True, text=True, encoding='utf-8', errors='replace')
+log('horloges:', (h.stdout or h.stderr).strip()[-200:])
 # 8-11-2026 (nazorg, wens Marius): elke nacht nakijken of de prijzen en voorraad op de site nog kloppen met de verse feeds.
 # Alleen een rapport (zoekindex-feeds/nazorg/wacht-laatste.json); verandert niets aan de site. Mag de zoekindex nooit tegenhouden.
 try:
