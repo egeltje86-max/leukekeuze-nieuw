@@ -1021,8 +1021,10 @@
       }).join('') + '</nav>';
   }
   function besteDeals(lijst) {
+    /* 8-11-2026: de deals die Marius zelf koos (LK_TOPKEUZE['/collectie/black-friday']) komen bovenaan, nog steeds gemixt. */
+    var bfTop = {}; ((window.LK_TOPKEUZE || {})['/collectie/black-friday'] || []).forEach(function (id) { bfTop[id] = 1; });
     var l = lijst.map(function (p) {
-      var s = kortingPct(p) / 100 * 0.55 + (typeof p.rang === 'number' ? p.rang : 0.5) * 0.45 + (p.favoriet ? 0.08 : 0) + (p.populair ? 0.04 : 0) + (p.beeld ? 0 : -1);
+      var s = (bfTop[p.id] ? 1 : 0) + kortingPct(p) / 100 * 0.55 + (typeof p.rang === 'number' ? p.rang : 0.5) * 0.45 + (p.favoriet ? 0.08 : 0) + (p.populair ? 0.04 : 0) + (p.beeld ? 0 : -1);
       return { p: p, s: s, v: p.vak || p.groep || (p.cat + '/' + p.sub), w: p.shop };
     }).sort(function (a, b) { return b.s - a.s; });
     var uit = [];

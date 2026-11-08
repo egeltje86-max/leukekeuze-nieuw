@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd).",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -18570,6 +18570,231 @@
    "wonen",
    "koffie-thee-zetten",
    "mokken-theeglazen"
+  ],
+  "nedg-bf53660934": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-90ff019ac4": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-63694fe146": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-e2ebf79499": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-50729c80d3": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "superz-4bbaece2a1": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "nedg-bcbaa0bfdc": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-7044519cd1": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "drm-eaad95c538": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "laarzen-boots"
+  ],
+  "lgt-18cb9b468b": [
+   "mode-sieraden",
+   "sieraden",
+   "ringen"
+  ],
+  "dgsw-d9be18c644": [
+   "speelgoed",
+   "poppen-knuffels",
+   "babypoppen"
+  ],
+  "nedg-635d05fe70": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "superz-40fb315180": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-2f5ed8c537": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "cadeau-c618134a03": [
+   "eten-drinken",
+   "cadeaupakketten",
+   "cadeaupakketten-manden"
+  ],
+  "dgsw-71185b5d06": [
+   "speelgoed",
+   "poppen-knuffels",
+   "babypoppen"
+  ],
+  "tf-7714b5af06": [
+   "elektronica",
+   "gaming",
+   "gaming-headsets"
+  ],
+  "bourg-b6efe2d862": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "dgsw-023910d43d": [
+   "speelgoed",
+   "poppen-knuffels",
+   "babypoppen"
+  ],
+  "myka-9b82f2b483": [
+   "mode-sieraden",
+   "sieraden",
+   "sieraden-met-naam"
+  ],
+  "dvzn-d79ce0f76c": [
+   "wonen",
+   "woondecoratie",
+   "klokken"
+  ],
+  "cartn-eb3463e160": [
+   "speelgoed",
+   "baby-peuter",
+   "babygyms-activiteitenspeelgoed"
+  ],
+  "anim-2e0b7d7ea8": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "bourg-1d6523c335": [
+   "wonen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "tf-740190773a": [
+   "elektronica",
+   "audio",
+   "koptelefoons"
+  ],
+  "fotof-875c742de2": [
+   "eten-drinken",
+   "drankaccessoires",
+   "wijnaccessoires"
+  ],
+  "fotof-e8db06d7cc": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "fotof-160240387e": [
+   "wonen",
+   "tafelen",
+   "borrelplanken-serveren"
+  ],
+  "hema-f6ceddb9e1": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "nedg-09466e7d99": [
+   "speelgoed",
+   "poppen-knuffels",
+   "squishmallows"
+  ],
+  "dgsw-95462b80a5": [
+   "speelgoed",
+   "poppen-knuffels",
+   "squishmallows"
+  ],
+  "nedg-e5b202d439": [
+   "speelgoed",
+   "poppen-knuffels",
+   "squishmallows"
+  ],
+  "nedg-3d5c3351d1": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "nedg-fd21259df2": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dvzn-553e02fbf0": [
+   "mode-sieraden",
+   "accessoires",
+   "sleutelhangers"
+  ],
+  "hema-42468f36da": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "hema-9b805157bb": [
+   "elektronica",
+   "foto-video",
+   "camera-s-instant-camera-s"
+  ],
+  "nedg-1e6747c7e4": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "nedg-a13c19503b": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-39c6780c0d": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "hema-fe3ef7029d": [
+   "beauty-verzorging",
+   "make-up-nagels",
+   "nagels"
+  ],
+  "hema-195045a1d1": [
+   "beauty-verzorging",
+   "make-up-nagels",
+   "make-up"
+  ],
+  "kado-f0bb10af84": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dgsw-8c5cb56555": [
+   "hobby",
+   "papier-planners",
+   "notitieboeken"
+  ],
+  "grotek-6fe48ddbbe": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
   ]
  },
  "samen": {
@@ -29315,7 +29540,28 @@
   "dw-3116740013143": "afgekeurd",
   "bol-1001004002089570": "afgekeurd",
   "bol-9200000060063536": "afgekeurd",
-  "amz-b0hp27j6v7": "afgekeurd"
+  "amz-b0hp27j6v7": "afgekeurd",
+  "bellat-0638cff8bd": "afgekeurd",
+  "pry-y627": "afgekeurd",
+  "zv-owjw01781705uni": "afgekeurd",
+  "pry-k3815": "afgekeurd",
+  "cl-12552": "afgekeurd",
+  "bol-9200000107390427": "afgekeurd",
+  "pry-k5613": "afgekeurd",
+  "bol-9200000132246044": "afgekeurd",
+  "kl-57357673333060": "afgekeurd",
+  "bol-9300000184861917": "afgekeurd",
+  "cl-26764": "afgekeurd",
+  "bol-9300000237950295": "afgekeurd",
+  "myka-1100141422": "afgekeurd",
+  "bol-9300000319966640": "afgekeurd",
+  "bt-51614738874707": "afgekeurd",
+  "bol-9300000259398888": "afgekeurd",
+  "bol-9200000082256283": "afgekeurd",
+  "myka-1100114789": "afgekeurd",
+  "myka-11003287209": "afgekeurd",
+  "bol-9200000102182814": "afgekeurd",
+  "bol-9300000134288182": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
@@ -39539,6 +39785,118 @@
   ],
   "bp-zaden-bedankt": [
    15.99
+  ],
+  "nedg-bf53660934": [
+   98.0,
+   289.99
+  ],
+  "nedg-90ff019ac4": [
+   128.0,
+   299.99
+  ],
+  "nedg-63694fe146": [
+   128.0,
+   299.99
+  ],
+  "nedg-e2ebf79499": [
+   68.0,
+   159.99
+  ],
+  "nedg-50729c80d3": [
+   68.0,
+   149.99
+  ],
+  "superz-4bbaece2a1": [
+   89.0,
+   185.0
+  ],
+  "nedg-bcbaa0bfdc": [
+   68.0,
+   139.99
+  ],
+  "nedg-7044519cd1": [
+   118.0,
+   239.99
+  ],
+  "drm-eaad95c538": [
+   85.0,
+   170.0
+  ],
+  "lgt-18cb9b468b": [
+   22.5,
+   44.95
+  ],
+  "dgsw-d9be18c644": [
+   24.99,
+   49.99
+  ],
+  "nedg-635d05fe70": [
+   78.0,
+   139.99
+  ],
+  "superz-40fb315180": [
+   69.0,
+   125.0
+  ],
+  "superz-2f5ed8c537": [
+   75.0,
+   129.0
+  ],
+  "cadeau-c618134a03": [
+   89.99,
+   149.99
+  ],
+  "dgsw-71185b5d06": [
+   29.99,
+   49.99
+  ],
+  "tf-7714b5af06": [
+   79.99,
+   129.99
+  ],
+  "bourg-b6efe2d862": [
+   25.0,
+   39.99
+  ],
+  "dgsw-023910d43d": [
+   39.99,
+   59.99
+  ],
+  "myka-9b82f2b483": [
+   105.0,
+   150.0
+  ],
+  "dvzn-d79ce0f76c": [
+   41.99,
+   59.99
+  ],
+  "cartn-eb3463e160": [
+   13.99,
+   19.99
+  ],
+  "anim-2e0b7d7ea8": [
+   11.19,
+   15.99
+  ],
+  "bourg-1d6523c335": [
+   70.0,
+   94.98
+  ],
+  "tf-740190773a": [
+   179.99,
+   239.99
+  ],
+  "fotof-875c742de2": [
+   41.24,
+   54.99
+  ],
+  "fotof-e8db06d7cc": [
+   59.99,
+   79.99
+  ],
+  "fotof-160240387e": [
+   24.74,
+   32.99
   ]
  },
  "shop": {
