@@ -40,16 +40,23 @@ if c != 0:
     if c != 0: klaar(2, 'Kon origin/main niet mergen (conflict). Niets veranderd, niets live gezet. Marius hoeft niets te doen; de volgende run probeert het opnieuw, maar als dit blijft: melden.')
 
 # 2. nazorg (prijzen en voorraad)
-wacht = arg('--wacht')
+wacht = arg('--wacht') or os.path.join(ROOT, 'keurkamer', 'nazorg', 'wacht-laatste.json')  # standaard: het nachtrapport dat de laptop in de repo zet
+vers = False
 if wacht and os.path.exists(wacht):
+    try:
+        gemaakt = json.load(open(wacht, encoding='utf-8')).get('gemaakt', '')[:10]
+        vers = (datetime.date.today() - datetime.date.fromisoformat(gemaakt)).days <= 1
+    except Exception: vers = False
+    if not vers: stap('nazorg', True, 'nachtrapport is ouder dan 1 dag, niet toegepast (laptop stond uit?)'); rap['melden'].append('Geen vers nachtrapport van de laptop (prijzen niet bijgewerkt).')
+if wacht and os.path.exists(wacht) and vers:
     c, t = run(['node', 'scripts/keurkamer/effectief-site.js']); stap('site-prijzen verzamelen', c == 0, t)
     c, t = run([sys.executable, 'scripts/keurkamer/nazorg.py', wacht]); stap('nazorg toepassen', c in (0, 3), t)
     try: rap['nazorg'] = json.loads(t.strip().splitlines()[-1]) if c == 0 else {'gestopt': t.strip().splitlines()[0] if t.strip() else 'onbekend'}
     except Exception: rap['nazorg'] = {'ruw': t[-500:]}
     if c == 3: rap['melden'].append('Nazorg gestopt: ' + str(rap['nazorg'].get('gestopt', '')))
     if rap['nazorg'] and rap['nazorg'].get('gemeld'): rap['melden'].append('%d prijzen die verdubbelden of halveerden niet overgenomen (handmatig nakijken).' % len(rap['nazorg']['gemeld']))
-else:
-    stap('nazorg', True, 'geen nachtrapport meegegeven, overgeslagen')
+elif not (wacht and os.path.exists(wacht)):
+    stap('nazorg', True, 'geen nachtrapport gevonden, overgeslagen')
 
 if arg('--alleen-controle'):
     c, t = run(['node', 'scripts/controle/alles.js', '.', 'keurkamer/data']); stap('controle', c == 0, t)

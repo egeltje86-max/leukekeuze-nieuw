@@ -175,6 +175,10 @@ try:
     w = subprocess.run([sys.executable, '-I', os.path.join(HIER, 'keurkamer', 'wacht.py'), '--producten', os.path.join(NZ, 'producten-site.json'), '--uit', NZ],
                        capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=3600)
     log('nazorg-controle:', (w.stdout or w.stderr).strip().splitlines()[-1:] if (w.stdout or w.stderr) else '')
+    # 8-11-2026 (piloot): het rapport gaat mee in de repo (keurkamer/nazorg/), zodat de dagelijkse piloot in de cloud het kan toepassen zonder de laptop.
+    NZR = os.path.join(REPO, 'keurkamer', 'nazorg'); os.makedirs(NZR, exist_ok=True)
+    shutil.copyfile(os.path.join(NZ, 'wacht-laatste.json'), os.path.join(NZR, 'wacht-laatste.json'))
+    git('add', 'keurkamer/nazorg/wacht-laatste.json')
 except Exception as e:
     log('nazorg-controle overgeslagen:', e)
 git('add', 'assets/zoek/winkels.json', 'assets/zoek/alle.json.gz', 'assets/zoek/w')

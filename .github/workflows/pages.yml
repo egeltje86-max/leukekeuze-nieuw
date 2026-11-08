@@ -38,7 +38,7 @@ jobs:
       - name: Website-map klaarzetten (zonder bouwgereedschap)
         run: |
           mkdir -p _site
-          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'scripts' --exclude 'assets/js/producten.js' --exclude 'images/nova-origineel' --exclude 'WERKWIJZE.txt' --exclude 'CLAUDE.md' --exclude 'FABLE-OPDRACHT.md' --exclude 'PILOOT-LOGBOEK.md' --exclude 'README.md' ./ _site/
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'scripts' --exclude 'assets/js/producten.js' --exclude 'images/nova-origineel' --exclude 'WERKWIJZE.txt' --exclude 'CLAUDE.md' --exclude 'FABLE-OPDRACHT.md' --exclude 'PILOOT-LOGBOEK.md' --exclude 'keurkamer/nazorg' --exclude 'README.md' ./ _site/
           # 7-11-2026: bronbestanden die de site zelf niet gebruikt gaan niet mee (GitHub Pages mag max. 1 GB zijn).
           du -sh _site
       - uses: actions/configure-pages@v5
