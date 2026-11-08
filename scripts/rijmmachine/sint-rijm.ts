@@ -1,4 +1,5 @@
 // Sint-rijmmachine van LeukeKeuze. Bron van de Supabase-functie (versie live-13, 8-11-2026, GO Marius):
+// - live-15 (GO Marius): het gedicht noemt de hobby, niet het precieze product; de klant kan onder het gedicht zelf een ander passend cadeau kiezen (6 extra, zelfde AI-ronde, geen extra kosten).
 // - live-14 (GO Marius): algemene vragen: wat voor iemand, wat doet hij/zij graag, iets typisch (mag leeg). Geen verzonnen blunders.
 // - live-13 (wens Marius): 1 goed passend cadeau per gedicht in plaats van 3; het budget geldt voor dat ene cadeau.
 // - 3 vaste vragen (gewoonte, grappig voorval, gek op) in plaats van één open vak; oude 'over' werkt nog.
@@ -93,19 +94,19 @@ const TAALLES = "HOE GOED NEDERLANDS SINTERKLAASRIJM WERKT (houd je hier streng 
   "4. ELKE REGEL IS EEN AFGEROND STUK ZIN. Breek nooit een zin midden in een zinsdeel af ('een Sint / van chocola' is FOUT). Een regel eindigt nooit op een, de, het, van, en, met, voor, aan of op.\n" +
   "5. GEWOON, GOED NEDERLANDS, zoals je het zou zeggen. Geen rare omgekeerde volgorde om te kunnen rijmen ('een cadeau ik jou geef' is fout). Let op: die/dat (een knop DIE, het boek DAT), de/het, hij vindt / vind jij, jij/jouw. Korte woorden, geen dure woorden.\n" +
   "6. GEEN OPVULLING EN GEEN SLEETS RIJM: geen 'hoor', 'heel fijn', 'tevree', 'hoera' om een regel vol te maken; geen 'denken/schenken'. Gebruik elk rijmwoord maar één keer.\n" +
-  "7. HET CADEAU KORT EN DUIDELIJK, in gewone woorden (geen productnaam overschrijven, geen merk).\n" +
+  "7. HET CADEAU ALS SOORT, in gewone woorden (geen productnaam, geen merk).\n" +
   "8. CONTROLEER VOOR JE ANTWOORDT: tel per regel de lettergrepen, zeg elk rijmpaar hardop, en verbeter wat niet klopt.\n\n";
 
 const SYSTEEM = "Je bent een echte Nederlandse comedytekstschrijver die Sinterklaasgedichten maakt voor LEUKEKEUZE. Doel: een gedicht dat iemand met plezier hardop voorleest, met minimaal een echte lach.\n\n" +
   "JE KRIJGT: (1) WAT VOOR IEMAND het is, (2) wat de persoon GRAAG DOET, en soms (3) iets TYPISCHS (een gewoonte). Gebruik ze zo:\n" +
-  "- Maak het gedicht herkenbaar: wie de persoon is en wat hij of zij graag doet, met een knipoog.\n- Is er iets typisch ingevuld, dan is dat de rode draad en zit daar de plagerij.\n- Wat de persoon graag doet bepaalt het CADEAU, en dat cadeau is de clou in de laatste twee regels.\n" +
+  "- Maak het gedicht herkenbaar: wie de persoon is en wat hij of zij graag doet, met een knipoog.\n- Is er iets typisch ingevuld, dan is dat de rode draad en zit daar de plagerij.\n- Wat de persoon graag doet bepaalt het CADEAU. De laatste twee regels zijn de clou: Sint geeft iets voor die hobby.\n" +
   "- VERZIN NIETS: geen blunders, voorvallen, gebeurtenissen of feiten die niet zijn ingevuld. Er hoeft niets mis te zijn gegaan. Is er niets typisch ingevuld, maak er dan een warm, vrolijk gedicht van over wie de persoon is en wat hij of zij graag doet.\n\n" +
-  "HET CADEAU: kies precies ÉÉN cadeau uit de cadeaulijst: het cadeau dat het allerbest past bij wat de persoon graag doet, het liefst met een knipoog naar iets typisch. Liever een cadeau waar de ontvanger echt blij mee is dan een grappig maar nutteloos ding. Binnen het budget. Noem het cadeau pas in de laatste strofe, in gewone woorden, zonder merknaam. Bedenk geen onmogelijke productfuncties.\n\n" +
+  "HET CADEAU: kies precies ÉÉN cadeau uit de cadeaulijst: het cadeau dat het allerbest past bij wat de persoon graag doet, het liefst met een knipoog naar iets typisch. Liever een cadeau waar de ontvanger echt blij mee is dan een grappig maar nutteloos ding. Binnen het budget. BELANGRIJK: noem in het gedicht NIET het precieze product, want de klant kan daarna zelf nog een ander cadeau kiezen en het gedicht moet dan nog steeds kloppen. Is er één ding ingevuld dat de persoon graag doet, verwijs dan naar die hobby ('iets voor bij het darten'); zijn er meer dingen ingevuld, houd het dan algemeen ('iets voor wat jij het liefste doet').\nKies daarnaast 6 ANDERE cadeaus uit de lijst die ook echt bij deze persoon passen, in de richting die de klant zoekt. Zijn er meer dingen ingevuld die de persoon leuk vindt, verdeel de 6 dan over die dingen (variatie). Verschillend van elkaar en in verschillende prijzen. Geen cadeaus die er niets mee te maken hebben; zijn er minder dan 6 die echt passen, geef er dan minder.\n\n" +
   "SINTERKLAAS: Sint spreekt zelf in de ik-vorm. Zijn GROTE BOEK komt erin voor (de Pieten schrijven daarin op wat iedereen doet), maar begin NIET met 'Ik sloeg mijn Grote Boek open' en gebruik geen Piet die door het raam kijkt. Bij een kind: geen roe en geen zak, alleen lief-grappig.\n\n" +
   "VORM: 12 regels, 3 strofen van 4 regels, gepaard rijm (aabb). Na de 12 regels een lege regel en dan: Sint en Piet\n\n" +
   TAALLES +
   GRENZEN +
-  "\n\nANTWOORD UITSLUITEND GELDIGE JSON:\n{\"grap\":{\"rode draad\":\"...\",\"clou\":\"hoe het cadeau de pointe is\"},\"cadeau\":\"code\",\"titel\":\"korte titel\",\"gedicht\":\"12 regels met \\\\n tussen regels en \\\\n\\\\n tussen strofen\"}";
+  "\n\nANTWOORD UITSLUITEND GELDIGE JSON:\n{\"grap\":{\"rode draad\":\"...\",\"clou\":\"hoe het cadeau de pointe is\"},\"cadeau\":\"code\",\"anders\":[\"code\",\"code\",\"code\",\"code\",\"code\",\"code\"],\"titel\":\"korte titel\",\"gedicht\":\"12 regels met \\\\n tussen regels en \\\\n\\\\n tussen strofen\"}";
 
 const HERSTEL = "Je bent een Nederlandse eindredacteur van Sinterklaasgedichten. Je krijgt een gedicht en een lijst met regels die NIET goed zijn (rijm, lengte of afgebroken zin). Herschrijf ALLEEN die regels (en zo nodig de regel waarop ze rijmen), zodat ze zuiver rijmen, 9 tot 11 lettergrepen hebben, vloeiend lezen en hetzelfde vertellen. Laat de rest van het gedicht precies staan.\n\n" + TAALLES +
   "ANTWOORD ALLEEN GELDIGE JSON: {\"gedicht\":\"het hele gedicht, 12 regels met \\\\n tussen regels en \\\\n\\\\n tussen strofen, plus Sint en Piet\"}";
@@ -232,7 +233,7 @@ async function vraagAI(systeem: string, gebruiker: string, denken: string, vast?
   throw new Error("GEEN_MODEL: " + laatste);
 }
 
-type Versie = { gedicht: string; titel: string; prods: Item[]; model: string; grap: unknown; oordeel: { punten: number; fouten: string[] } };
+type Versie = { gedicht: string; titel: string; prods: Item[]; anders: Item[]; model: string; grap: unknown; oordeel: { punten: number; fouten: string[] } };
 async function herstel(persoon: string, v: Versie, naam: string, vast?: string): Promise<string | null> {
   try {
     const vraag = persoon + "\n\nDEZE REGELS ZIJN NIET GOED:\n- " + v.oordeel.fouten.join("\n- ") + "\n\nHET GEDICHT:\n" + v.gedicht;
@@ -253,7 +254,7 @@ function cors(origin: string): Record<string, string> {
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin") || "";
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(origin) });
-  if (req.method === "GET") return antwoord({ ok: true, versie: "live-14", denken: DENKEN, sleutel: !!sleutel(), model: goedModel || MODELLEN[0] }, 200, origin);
+  if (req.method === "GET") return antwoord({ ok: true, versie: "live-15", denken: DENKEN, sleutel: !!sleutel(), model: goedModel || MODELLEN[0] }, 200, origin);
   if (req.method !== "POST") return antwoord({ fout: "Niet toegestaan." }, 405, origin);
   if (origin && !ORIGINS.includes(origin)) return antwoord({ fout: "Niet toegestaan." }, 403, origin);
 
@@ -302,18 +303,24 @@ Deno.serve(async (req: Request) => {
   const opCode = new Map<string, Item>();
   items.forEach((it, i) => opCode.set("c" + (i + 1), it));
   const lijst = [...opCode.entries()].map(([c, it]) => `${c} | ${it.titel} | EUR ${it.prijs.toFixed(2)} | ${it.vak} | ${it.uitleg}`).join("\n");
-  const gebruiker = persoon + `\n\nHUMORSTAND: ${STANDEN[stand]}\n\nCADEAULIJST (code | naam | prijs | vakje | uitleg). Geef bij "cadeau" de CODE van het ene cadeau (zoals c12):\n${lijst}`;
+  const gebruiker = persoon + `\n\nHUMORSTAND: ${STANDEN[stand]}\n\nCADEAULIJST (code | naam | prijs | vakje | uitleg). Geef bij "cadeau" de CODE van het beste cadeau (zoals c12) en bij "anders" 6 andere codes:\n${lijst}`;
 
   const maakVersie = async (): Promise<Versie | null> => {
     const { inhoud, model } = await vraagAI(SYSTEEM, gebruiker, denken, vast);
-    let d: { cadeau?: unknown; cadeaus?: unknown; titel?: unknown; gedicht?: unknown; grap?: unknown };
+    let d: { cadeau?: unknown; cadeaus?: unknown; anders?: unknown; titel?: unknown; gedicht?: unknown; grap?: unknown };
     try { d = JSON.parse(inhoud); } catch { return null; }
     const code = String(d.cadeau ?? (Array.isArray(d.cadeaus) ? d.cadeaus[0] : "")).trim();
     const gedicht = String(d.gedicht || "").trim();
     if (!opCode.has(code) || gedicht.length < 120) return null;
     const prods = [opCode.get(code)!];
     if (prods[0].prijs > budget * 1.05) return null;
-    return { gedicht, titel: schoon(d.titel, 90), prods, model, grap: d.grap, oordeel: beoordeel(gedicht) };
+    const gezien = new Set([code]);
+    const anders = (Array.isArray(d.anders) ? d.anders : []).map((x) => String(x).trim()).filter((c) => opCode.has(c) && !gezien.has(c) && gezien.add(c)).map((c) => opCode.get(c)!).filter((p) => p.prijs <= budget * 1.05);
+    // aanvullen alleen met cadeaus waarvan de naam bij de hobby past (dezelfde richting)
+    const hobby = woordjes(gekOp + " " + zoek.join(" ")).filter((w) => w.length >= 4);
+    const past = (it: Item) => hobby.some((w) => it.titel.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(w));
+    if (anders.length < 3) for (const it of items) { if (anders.length >= 6) break; if (past(it) && it.id !== prods[0].id && !anders.some((a) => a.id === it.id)) anders.push(it); }
+    return { gedicht, titel: schoon(d.titel, 90), prods, anders: anders.slice(0, 6), model, grap: d.grap, oordeel: beoordeel(gedicht) };
   };
   try {
     // Sint schrijft er een paar tegelijk; de computer kijkt rijm, lengte en afgebroken zinnen na en de beste wint.
@@ -343,7 +350,8 @@ Deno.serve(async (req: Request) => {
       const pakketUrl = null;
       const uit: Record<string, unknown> = {
         titel: beste.titel, gedicht: beste.gedicht.slice(0, 2500), stand, model: beste.model, geredigeerd: hersteld, totaal: Math.round(totaal * 100) / 100, pakketUrl,
-        cadeaus: prods.map((p) => ({ id: p.id, titel: p.titel, prijs: p.prijs, winkel: p.winkel, link: p.link, beeld: p.beeld, pagina: "/p/" + p.id + "/" }))
+        cadeaus: prods.map((p) => ({ id: p.id, titel: p.titel, prijs: p.prijs, winkel: p.winkel, link: p.link, beeld: p.beeld, pagina: "/p/" + p.id + "/" })),
+        meer: beste.anders.map((p) => ({ id: p.id, titel: p.titel, prijs: p.prijs, winkel: p.winkel, link: p.link, beeld: p.beeld }))
       };
       if (inv.test) { tijd.totaal = Math.round((Date.now() - t0) / 1000); Object.assign(uit, { eersteVersie: eerste, eersteOordeel, oordeel: beste.oordeel, alle: versies.map((v) => v.oordeel.punten), hersteld, grap: beste.grap, tijd }); }
       return antwoord(uit, 200, origin);

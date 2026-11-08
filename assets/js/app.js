@@ -2089,6 +2089,10 @@
     '.rz-vb button{flex:none;white-space:nowrap;font:600 13px/1 var(--f-ui);padding:8px 11px;border-radius:999px;border:1px solid #e0cfab;background:#fffaf0;color:#3d3650;cursor:pointer}' +
     '.rz-vb button:hover{border-color:#c99740}.rz-vb button[aria-pressed=true]{background:#0b1225;color:#ffe39b;border-color:#c99740}.rz-vb button:focus-visible{outline:3px solid #137ca8;outline-offset:2px}' +
     '.rz-vb button:last-child{margin-right:24px}' +
+    '.rz-meerkeus{margin-top:16px;border-top:1px dashed #d6b575;padding-top:14px}.rz-meerkeus h3{font:700 19px/1.2 var(--f-kop);margin:0 0 2px}.rz-meerkeus>p{font-size:13px;color:#4a4d5c;margin:0 0 10px}' +
+    '.rz-meergrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}' +
+    '.rz-mini{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid #e8ddce;border-radius:13px;padding:8px;color:inherit;text-decoration:none;min-width:0;transition:border-color .15s,box-shadow .15s}.rz-mini:hover{border-color:#d6b575;box-shadow:0 6px 14px rgba(60,40,10,.08)}' +
+    '.rz-mini img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:9px;background:#fff}.rz-mini b{font-size:12.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.rz-mini em{font-style:normal;font-weight:780;font-size:13px;color:#a26b23}.rz-mini small{font-size:11.5px;color:#4a4d5c}' +
     '@media (max-width:720px){.rz-velden{grid-template-columns:1fr 1fr}.rz-velden>.rz-veld.breed,.rz-velden>.rz-meer{grid-column:1/-1}}' +
       '@media (max-width:759px){.rz-held{aspect-ratio:auto;max-height:150px}.rz-held img{height:150px;object-fit:cover;object-position:center 30%}.rz-kop h2{font-size:22px}}' +
       '</style>';
@@ -2122,7 +2126,7 @@
           /* 8-11-2026 (GO Marius): 3 vaste vragen met aantikbare voorbeelden in plaats van één open vak; zo komt het grappige voorval altijd in het gedicht. */
           /* 8-11-2026 (GO Marius): algemene, positieve vragen; er hoeft niets mis te gaan. Vraag 3 mag leeg. */
           rijmVraag(1, 'rz-type', 'type', 'Wat voor iemand is het?', 150, 'Bijv. gezellig en altijd druk', ['gezellig', 'behulpzaam', 'altijd druk', 'sportief', 'een echte grapjas', 'een beetje chaotisch', 'rustig', 'een echte regelaar'], true) +
-          rijmVraag(2, 'rz-gekop', 'gekop', 'Wat doet hij of zij graag?', 150, 'Hier kiest Sint het cadeau bij', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
+          rijmVraag(2, 'rz-gekop', 'gekop', 'Wat doet hij of zij graag?', 150, 'Kies er gerust een paar: meer keus in cadeaus', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
           rijmVraag(3, 'rz-typisch', 'typisch', 'Wat is typisch iets voor hem of haar? <small>(mag leeg)</small>', 200, 'Bijv. is altijd de sleutels kwijt', ['is altijd te laat', 'is altijd de sleutels kwijt', 'hangt graag op de bank', 'heeft het altijd koud', 'zingt onder de douche', 'weet alles beter', 'maakt overal een grapje over', 'zit de hele dag te appen']) +
           /* 8-11-2026 (Fable P1-13): eenvoudiger. Eerst alleen naam, wie en iets grappigs; budget, man/vrouw en scherpte staan achter 'Meer opties' (standaard €50, hilarisch). */
           '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €25, man/vrouw, hoe scherp)</small></summary>' +
@@ -2164,6 +2168,11 @@
           return '<a class="rz-cadeau" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-cadeau="' + esc(c.id) + '"><img src="' + esc(rijmBeeld(c.beeld)) + '" alt="" loading="lazy" width="78" height="78"><div><b>' + esc(c.titel) + '</b><small>bij ' + esc(winkel) + '</small><em>ongeveer ' + rijmEuro(c.prijs) + '</em></div><span class="pijl" aria-hidden="true">›</span></a>';
         }).join('') +
         (r.cadeaus.length > 1 ? '<div class="rz-totaal">Samen ongeveer ' + rijmEuro(r.totaal) + '</div>' : '') +
+        /* 8-11-2026 (GO Marius): het gedicht noemt de hobby, dus de klant kan zelf een ander passend cadeau kiezen (geen nieuw gedicht nodig). */
+        (r.meer && r.meer.length ? '<div class="rz-meerkeus"><h3>Liever iets anders? Kies zelf</h3><p>Het gedicht past ook bij deze cadeaus.</p><div class="rz-meergrid">' +
+          r.meer.map(function (c) {
+            return '<a class="rz-mini" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-cadeau="' + esc(c.id) + '"><img src="' + esc(rijmBeeld(c.beeld)) + '" alt="" loading="lazy" width="120" height="120"><b>' + esc(c.titel) + '</b><em>ongeveer ' + rijmEuro(c.prijs) + '</em><small>bij ' + esc(c.winkel || 'de winkel') + '</small></a>';
+          }).join('') + '</div></div>' : '') +
         '<p class="rz-klein">Prijzen kunnen veranderen: de prijs bij de winkel geldt. LeukeKeuze krijgt een kleine vergoeding als je via deze links iets koopt; jij betaalt niets extra.</p>' +
       '</aside></div></div>';
   }
