@@ -18,6 +18,9 @@ def main():
     if len(sys.argv) < 2: print(__doc__); sys.exit(2)
     W = json.load(open(sys.argv[1], encoding='utf-8')); droog = '--droog' in sys.argv
     COR = json.load(open(COR_PAD, encoding='utf-8'))
+    global SITE
+    sp = os.path.join(ROOT, 'keurkamer', 'data', 'producten-site.json')  # gemaakt door effectief-site.js
+    SITE = json.load(open(sp, encoding='utf-8')).get('producten', {}) if os.path.exists(sp) else {}
     s = W.get('samenvatting', {}); live = s.get('live') or 1; gec = s.get('gecontroleerd') or 0
     rap = {'datum': datetime.date.today().isoformat(), 'live': live, 'gecontroleerd': gec, 'prijs': 0, 'uitverkocht': 0, 'gemeld': [], 'gestopt': ''}
     if gec < MIN_GECONTROLEERD * live:
@@ -35,7 +38,9 @@ def main():
         oud, nieuw = float(p['oud']), float(p['nieuw'])
         if nieuw <= 0 or nieuw > 2 * oud or nieuw < 0.5 * oud:
             rap['gemeld'].append('%s: %s van %.2f naar %.2f (niet overgenomen)' % (p['id'], p['titel'], oud, nieuw)); continue
-        COR['prijs'][p['id']] = [round(nieuw, 2)]; rap['prijs'] += 1
+        # 8-11-2026: een echte van-prijs (hoger dan de nieuwe prijs) blijft staan, anders verdwijnen deals van de Black Friday-pagina.
+        van = float((SITE.get(p['id']) or {}).get('oudePrijs') or 0)
+        COR['prijs'][p['id']] = [round(nieuw, 2), van] if van > nieuw else [round(nieuw, 2)]; rap['prijs'] += 1
     if not droog:
         json.dump(COR, open(COR_PAD, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(json.dumps(rap, ensure_ascii=False, indent=1))
