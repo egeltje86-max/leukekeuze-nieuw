@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé).",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -18115,6 +18115,461 @@
    "christelijk",
    "kerst",
    "kerststallen-engelen"
+  ],
+  "hema-79390a87a8": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "hema-a7e88f01f6": [
+   "mode-sieraden",
+   "kleding",
+   "t-shirts-met-print"
+  ],
+  "knufp-71c264828f": [
+   "mode-sieraden",
+   "accessoires",
+   "sleutelhangers"
+  ],
+  "kado-2706ae274d": [
+   "speelgoed",
+   "baby-peuter",
+   "badspeelgoed"
+  ],
+  "dgsw-23926ccd09": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "dgsw-ae47134035": [
+   "boeken-media",
+   "kinderboeken",
+   "prentenboeken"
+  ],
+  "dgsw-caa4a56e67": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "dieren-dinofiguren"
+  ],
+  "cartn-74d9d55ae5": [
+   "speelgoed",
+   "baby-peuter",
+   "rammelaars-bijtringen"
+  ],
+  "kado-971a9f6a11": [
+   "speelgoed",
+   "baby-peuter",
+   "rammelaars-bijtringen"
+  ],
+  "dgsw-16768f4501": [
+   "speelgoed",
+   "baby-peuter",
+   "stapelen-sorteren"
+  ],
+  "kado-11eb38ee30": [
+   "speelgoed",
+   "baby-peuter",
+   "rammelaars-bijtringen"
+  ],
+  "hema-8ff0da93bf": [
+   "mode-sieraden",
+   "kleding",
+   "pyjama-s-badjassen"
+  ],
+  "emp-54a501b20f": [
+   "mode-sieraden",
+   "kleding",
+   "t-shirts-met-print"
+  ],
+  "dgsw-5c8459b122": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "verkleedkleding"
+  ],
+  "spaar-30c10f68c3": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cartn-bc24716354": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "grotek-ae9134dac2": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "gereedschap-dokterssets"
+  ],
+  "hema-1a6e400f83": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "verkleedkleding"
+  ],
+  "hema-ff945a05d7": [
+   "speelgoed",
+   "knutselen",
+   "tekenen-kleuren"
+  ],
+  "dgsw-59cd3934a6": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "speelgoedauto-s-garages"
+  ],
+  "grotek-cdf0ce5f9f": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "verkleedkleding"
+  ],
+  "anim-6bb824ce71": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "nedg-00a23132ab": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "louiz-1d933b65fa": [
+   "mode-sieraden",
+   "sieraden",
+   "oorbellen"
+  ],
+  "superz-b043341d33": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-beb8642e65": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-7acd660751": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-9c02bd09a1": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "emp-998f528ede": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "emp-b50201f909": [
+   "mode-sieraden",
+   "accessoires",
+   "riemen-petten"
+  ],
+  "emp-220584ba0f": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "superz-655d89bc15": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "grotek-7d11fb6ab2": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "emp-ed1055a6cd": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "louiz-6e1fde40ef": [
+   "mode-sieraden",
+   "sieraden",
+   "oorbellen"
+  ],
+  "myka-e2c241a3e5": [
+   "mode-sieraden",
+   "sieraden",
+   "bedels"
+  ],
+  "spaar-2e27915989": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "hobbym-e418a22452": [
+   "wonen",
+   "woondecoratie",
+   "vazen"
+  ],
+  "grotek-472820e498": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "country-a50a0343f0": [
+   "wonen",
+   "kaarsen-geur",
+   "huisgeuren-geurstokjes"
+  ],
+  "kado-eaccad970e": [
+   "wonen",
+   "woondecoratie",
+   "spiegels"
+  ],
+  "hema-41132baf92": [
+   "wonen",
+   "woontextiel",
+   "plaids"
+  ],
+  "country-c0545e5ce2": [
+   "wonen",
+   "woondecoratie",
+   "vazen"
+  ],
+  "country-66dcf0a53f": [
+   "wonen",
+   "tafelen",
+   "servies"
+  ],
+  "hobbym-039084a98c": [
+   "wonen",
+   "woondecoratie",
+   "vazen"
+  ],
+  "bell-a7063fec9b": [
+   "mode-sieraden",
+   "kleding",
+   "kersttruien"
+  ],
+  "ijz-88b74e1999": [
+   "eten-drinken",
+   "drankaccessoires",
+   "wijnaccessoires"
+  ],
+  "cadeau-d95d8e1e06": [
+   "elektronica",
+   "gaming",
+   "controllers-accessoires"
+  ],
+  "nedg-7479758304": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "portemonnees-pasjeshouders"
+  ],
+  "dvzn-c15dcffb40": [
+   "wonen",
+   "woondecoratie",
+   "wanddecoratie-posters"
+  ],
+  "dvzn-a9b20a04c2": [
+   "wonen",
+   "tafelen",
+   "glazen"
+  ],
+  "ijz-e39de9b348": [
+   "sport-outdoor",
+   "balsport-spel",
+   "golf"
+  ],
+  "fotof-275bc1f9eb": [
+   "wonen",
+   "foto-persoonlijk",
+   "fotoboeken"
+  ],
+  "dvzn-befe32d2ff": [
+   "wonen",
+   "woondecoratie",
+   "klokken"
+  ],
+  "dvzn-6f05bbb089": [
+   "wonen",
+   "koken-bakken",
+   "bakken"
+  ],
+  "nedg-e1c207aa08": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "hema-65e29861e6": [
+   "speelgoed",
+   "baby-peuter",
+   "babygyms-activiteitenspeelgoed"
+  ],
+  "nedg-a80ee0c487": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "superz-17d4a56e96": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-3a21f02550": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-b8d2861b06": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "emp-21c67a58dc": [
+   "hobby",
+   "papier-planners",
+   "notitieboeken"
+  ],
+  "superz-db1905d9fb": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-abab02f131": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "nedg-fec3346ed1": [
+   "elektronica",
+   "tablets-e-readers",
+   "telefoonaccessoires"
+  ],
+  "emp-e4f7c656bc": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "handtassen"
+  ],
+  "dvzn-e3159cc06a": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "dgsw-ca1b884d94": [
+   "speelgoed",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "dgsw-21c3e111de": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "radiografisch-bestuurbaar"
+  ],
+  "superz-12becbb0f3": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dgsw-b621ba72f8": [
+   "speelgoed",
+   "buiten-spelen",
+   "buitenspellen-ballen"
+  ],
+  "nedg-68ade2c8e4": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dgsw-f158b5f582": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "speelgoedauto-s-garages"
+  ],
+  "dgsw-c39793165b": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "speelgoedauto-s-garages"
+  ],
+  "hema-e5511701de": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "hobbym-e6f1ad31f0": [
+   "speelgoed",
+   "knutselen",
+   "knutselsets"
+  ],
+  "dgsw-8e298db4d5": [
+   "speelgoed",
+   "knutselen",
+   "tekenen-kleuren"
+  ],
+  "dgsw-3660b01cdf": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "playmobil"
+  ],
+  "cartn-bdc8328442": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "nedg-a2dddc9e78": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dgsw-d876e3a9d0": [
+   "speelgoed",
+   "leren-ontdekken",
+   "programmeren-robots"
+  ],
+  "dgsw-e18493e55f": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "speelgoedauto-s-garages"
+  ],
+  "hema-11131f1683": [
+   "eten-drinken",
+   "chocolade-snoep",
+   "chocoladeletters"
+  ],
+  "hema-a58a669b8c": [
+   "wonen",
+   "kaarsen-geur",
+   "kandelaars-lantaarns"
+  ],
+  "nedg-f7f73f8a59": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "superz-6acdd1252d": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dvzn-a9bd60aaf2": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "hobbym-2aa3e7b0a3": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "kado-0fe0f7c936": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "nedg-c0f9ecf85f": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "nedg-4ec2869167": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
   ]
  },
  "samen": {
