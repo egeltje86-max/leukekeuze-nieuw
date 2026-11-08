@@ -2069,15 +2069,15 @@
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
         '<div class="rz-held"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" decoding="async"></div>' +
-        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maakt Sint een gedicht?</h2><p>Vertel een paar leuke dingen over deze persoon. Sint maakt er een grappig gedicht van.</p></div>' +
+        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maken we een Sinterklaasgedicht?</h2><p>Vertel iets over die persoon. Sint maakt er een grappig gedicht van!</p></div>' +
         '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>1</span>Wat moet Sint weten?</div>' +
         '<div class="rz-velden">' +
-          '<div class="rz-veld"><label for="rz-naam">Voornaam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
+          '<div class="rz-veld"><label for="rz-naam">Naam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
           '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
-          '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(mag je leeg laten)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
-          '<div class="rz-veld breed"><label for="rz-over">Vertel iets grappigs over deze persoon</label>' +
-            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. zegt altijd ‘nog één aflevering’ en kijkt dan door tot 2 uur ’s nachts."></textarea>' +
-            '<small>Schrijf een paar herkenbare gewoontes op. Sint verzint er zelf de grap bij.</small></div>' +
+          '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
+          '<div class="rz-veld breed"><label for="rz-over">Wat is er grappig aan deze persoon?</label>' +
+            '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. komt altijd te laat en denkt dat hij alles beter weet."></textarea>' +
+            '</div>' +
           '<fieldset class="rz-veld breed"><legend>Budget voor 3 cadeaus samen</legend><div class="rz-keuzes">' + kies('budget', [['25', '€ 25'], ['50', '€ 50'], ['75', '€ 75'], ['100', '€ 100'], ['150', '€ 150']], '50') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Hoe scherp mag het zijn?</legend><div class="rz-keuzes rz-humor">' +
             kies('stand', [['lief', '😊 Lief<small>Met een knipoog</small>'], ['hilarisch', '🤣 Hilarisch<small>Hardop lachen</small>'], ['genadeloos', '😈 Genadeloos<small>Lekker plagen</small>']], 'hilarisch') +
@@ -2130,7 +2130,7 @@
     var uit = $('[data-rijm-uit]'), fout = $('[data-rijm-fout]');
     var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', over: (fd.get('over') || '').trim(), budget: Number(fd.get('budget') || 50), stand: fd.get('stand') || 'hilarisch' };
     var meld = function (t) { if (fout) { fout.innerHTML = '<p class="rz-fout">' + esc(t) + '</p>'; } };
-    if (!gegevens.naam) { meld('Vul eerst een voornaam in.'); return; }
+    if (!gegevens.naam) { meld('Vul eerst een naam in.'); return; }
     if (gegevens.over.length < 8) { meld('Vertel Sint iets meer over deze persoon. Hoe meer details, hoe grappiger het gedicht.'); return; }
     if (fout) fout.innerHTML = '';
     RIJM_LAST = gegevens; RIJM_BEZIG = true;
