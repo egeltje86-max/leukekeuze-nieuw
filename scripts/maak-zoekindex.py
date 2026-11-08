@@ -31,6 +31,9 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-kaartje2go.json', 'Kaartje2go', ''),
     ('x-razer.json', 'Razer', ''),
     ('t-fragrance.json', 'eu.fragrance.com', ''),
+    ('t-massamarkt.json', 'Massamarkt', ''),
+    ('t-ontwerpzelf.json', 'Ontwerp-zelf', ''),
+    ('t-pillowbuddies.json', 'Pillowbuddies', ''),
     ('x-westwing.json', 'Westwing', ''),
     # 05-11-2026: nieuw bij Daisycon (wens Marius: "allemaal")
     ('x-levis.json', "Levi's", ''),
@@ -266,6 +269,8 @@ ALLEEN = {
     'Miscota': ['dieren'], 'Razer': ['elektronica'], 'Kaartje2go': ['alleen-zoekfunctie'],  # Kaartje2go: alleen via de zoekfunctie, niet in de categorieën
     'Sissy-Boy': ['mode-beauty', 'sieraden', 'wonen', 'keuken'],
     'eu.fragrance.com': ['geuren-verzorging', 'mode-beauty'],
+    'Massamarkt': ['alleen-zoekfunctie'],  # grote budgetwinkel van alles wat: alleen via de zoekfunctie
+    'Ontwerp-zelf': ['wonen'], 'Pillowbuddies': ['dieren', 'wonen'],
     'De Grote Speelgoedwinkel': ['speelgoed', 'hobby', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/adventskalenders', 'cadeaus/baby-kraam', 'boeken-media/kinderboeken', 'sport-outdoor'],
 }
 def norm(t): return ' ' + re.sub(r'[^a-z0-9à-ÿ€]+', ' ', t.lower())
