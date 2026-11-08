@@ -24,6 +24,12 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-fietsparadijs.json', 'Fietsparadijs', ''),
     ('x-fietstas.json', 'Fietstas.com', ''),
     ('x-svinando.json', 'Svinando', ''),
+    # 08-11-2026: feedlinks van Marius ("ja doe dat")
+    ('x-sissyboy.json', 'Sissy-Boy', ''),
+    ('x-sissyboy-wonen.json', 'Sissy-Boy', ''),
+    ('x-miscota.json', 'Miscota', ''),
+    ('x-kaartje2go.json', 'Kaartje2go', ''),
+    ('x-razer.json', 'Razer', ''),
     ('x-westwing.json', 'Westwing', ''),
     # 05-11-2026: nieuw bij Daisycon (wens Marius: "allemaal")
     ('x-levis.json', "Levi's", ''),
@@ -129,7 +135,8 @@ WINKELROOT = {'999 Games': 'https://www.999games.nl/', 'Bartogi': 'https://barto
               'Fietsparadijs': 'https://www.fietsparadijs.com/', 'Fietstas.com': 'https://www.fietstas.com/', 'Invicta': 'https://www.invictastores.eu/',
               'Kerstland': 'https://www.kerstland.nl/', 'La Redoute': 'https://www.laredoute.nl/', 'Myka': 'https://www.myka.com/',
               'Prydligt': 'https://www.prydligt.eu/', 'Svinando': 'https://www.svinando.nl/', 'Wijnkring': 'https://www.wijnkring.nl/',
-              'WoodWick': 'https://woodwick.nl/'}
+              'WoodWick': 'https://woodwick.nl/', 'Sissy-Boy': 'https://www.sissy-boy.com/', 'Miscota': 'https://www.miscota.nl/',
+              'Kaartje2go': 'https://www.kaartje2go.nl/', 'Razer': 'https://www.razer.com/'}
 DAISYCON = re.compile(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/|^https?://aff\.svinando\.be/c/')
 def direct(link, winkel):
     """Daisycon-link -> gewone winkellink. murl= (volledige url) of dl= (pad achter de winkel). Lukt het niet: None."""
@@ -255,6 +262,8 @@ ALLEEN = {
     'Hobbymax': ['hobby', 'speelgoed'], 'Barrelkings': ['dranken'], 'Prepz': ['sport-outdoor'],
     'Superzero': ['mode-beauty'], 'Boombrush': ['mode-beauty'], 'Viparfum': ['mode-beauty'],
     'Looking Good Today': ['mode-beauty', 'sieraden'], 'Fashionize': ['mode-beauty', 'sieraden'],
+    'Miscota': ['dieren'], 'Razer': ['elektronica'], 'Kaartje2go': ['alleen-zoekfunctie'],  # Kaartje2go: alleen via de zoekfunctie, niet in de categorieën
+    'Sissy-Boy': ['mode-beauty', 'sieraden', 'wonen', 'keuken'],
     'De Grote Speelgoedwinkel': ['speelgoed', 'hobby', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/adventskalenders', 'cadeaus/baby-kraam', 'boeken-media/kinderboeken', 'sport-outdoor'],
 }
 def norm(t): return ' ' + re.sub(r'[^a-z0-9à-ÿ€]+', ' ', t.lower())
