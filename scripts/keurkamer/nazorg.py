@@ -41,6 +41,11 @@ def main():
         # 8-11-2026: een echte van-prijs (hoger dan de nieuwe prijs) blijft staan, anders verdwijnen deals van de Black Friday-pagina.
         van = float((SITE.get(p['id']) or {}).get('oudePrijs') or 0)
         COR['prijs'][p['id']] = [round(nieuw, 2), van] if van > nieuw else [round(nieuw, 2)]; rap['prijs'] += 1
+    # 8-11-2026 (Fable P0-4): alles wat vandaag in een feed is teruggevonden krijgt de controledatum van vandaag (ook als de prijs gelijk bleef).
+    COR.setdefault('gezien', {}); vandaag = datetime.date.today().isoformat(); rap['gezien'] = 0
+    for pid in W.get('gezien', []):
+        if pid in COR['status']: continue
+        COR['gezien'][pid] = vandaag; rap['gezien'] += 1
     if not droog:
         json.dump(COR, open(COR_PAD, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(json.dumps(rap, ensure_ascii=False, indent=1))

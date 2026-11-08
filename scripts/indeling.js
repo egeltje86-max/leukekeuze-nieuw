@@ -306,12 +306,14 @@ const MERK_LEEFTIJD = [
 function leeftijdUitTitel(t) {
   let m;
   /* (?<!\d): '500+ kralen' is geen leeftijd '00+' (fix 01-11-2026) */
+  /* Veiligheid (8-11-2026, Fable P0-2): 'kleine onderdelen' of 'niet voor kinderen onder 3' = minimaal 3 jaar. */
+  if (/kleine onderdelen|small parts|niet (geschikt )?voor kinderen (jonger dan|onder)\s*(de\s*)?3|verstikkingsgevaar/i.test(t)) return [3, 99];
   if ((m = t.match(/(?<!\d)(\d{1,2})\s*(?:-|tot|t\/m)\s*(\d{1,2})\s*jaar/i))) return [+m[1], +m[2]];
   if ((m = t.match(/(?<!\d)(\d{1,2})\s*(?:\+|jaar\s*\+|jaar en ouder|plus)(?!\s*\d)/i))) return [+m[1], 99];
   if ((m = t.match(/vanaf\s*(\d{1,2})\s*jaar/i))) return [+m[1], 99];
   if ((m = t.match(/(\d{1,2})\s*(?:-|tot)\s*(\d{1,2})\s*maanden/i))) return [0, Math.max(1, Math.ceil(+m[2] / 12))];
   /* 'baby' alleen als het echt babyspeelgoed is: 'Schleich baby panda' of 'BABY born' zijn pas vanaf 3 jaar (controle 01-11-2026). */
-  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|baby/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2];
+  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|\bbaby(?!liss|foot|born|-?born)/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2]; /* 8-11-2026: 'BaByliss' en 'Babyfoot' zijn geen babyspeelgoed */
   return null;
 }
 

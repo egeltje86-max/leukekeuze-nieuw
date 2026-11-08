@@ -33,6 +33,7 @@ function plaats(p) {
   if (w) { p.voor = (p.voor || []).filter((x) => w.indexOf(x) === -1); p.ookIn = (p.ookIn || []).filter((x) => !w.some((l) => OUDP[l] === x)); }
   const s = (COR.status || {})[p.id]; if (s && p.status === 'goedgekeurd') { p.status = s; p.uitverkochtSinds = p.uitverkochtSinds || '2026-11-05'; }
   const sh = (COR.shop || {})[p.id]; if (sh) { p.shop = sh[0]; if (sh[1]) p.verzendNoot = sh[1]; else delete p.verzendNoot; if (sh[2]) p.winkelUrl = sh[2]; }
+  const gz = (COR.gezien || {})[p.id]; if (gz && (!p.gecontroleerd || gz > p.gecontroleerd)) p.gecontroleerd = gz; /* 8-11-2026: controledatum uit de nazorg */
   const pr = (COR.prijs || {})[p.id]; if (pr) { p.prijs = pr[0]; if (pr[1] && pr[1] > pr[0]) p.oudePrijs = pr[1]; else delete p.oudePrijs; }
   if (p.oudePrijs && !(p.oudePrijs > p.prijs)) delete p.oudePrijs; /* geen 'van-prijs' die niet hoger is */
   /* Ronde Sinterklaas & Kerst (7-11-2026, gekeurd door Marius): 'Uit Kerstcadeaus' / 'Uit Sinterklaas'.
@@ -43,6 +44,23 @@ function plaats(p) {
     if (ni.indexOf(p.cat + '/' + p.sub) !== -1 && p.afd) { p.cat = p.afd; p.sub = p.groep; }
   }
   if (v && v[0] === 'christelijk') p.cat = 'christelijk'; /* christelijk alleen bij Christelijk (regel Marius) */
+  /* Budgetbelofte (8-11-2026, Fable-opdracht P0): een vak dat 'onder €X' belooft mag geen duurder product laten zien.
+     Het product blijft gewoon op de site in zijn eigen vakje; alleen het budgetvakje valt weg. Uitdeelverpakkingen (per stuk goedkoop) mogen blijven. */
+  const BUDGET = { 'cadeaus/onder-15': 15, 'cadeaus/sint-onder-15': 15, 'cadeaus/onder-10': 10, 'cadeaus/sint-onder-10': 10, 'christelijk/onder-25': 25 };
+  if (typeof p.prijs === 'number' && !(p.tags || []).includes('uitdelen')) {
+    p.ookIn = (p.ookIn || []).filter((x) => !(BUDGET[x] && p.prijs > BUDGET[x]));
+    const eigen = p.cat + '/' + p.sub;
+    if (BUDGET[eigen] && p.prijs > BUDGET[eigen]) { if (p.afd && p.afd + '/' + p.groep !== eigen) { p.cat = p.afd; p.sub = p.groep; } else { p.cat = 'cadeaus'; p.sub = eigen.indexOf('sint') !== -1 ? 'sinterklaas' : 'kerst'; } }
+  }
+  /* Leeftijd en veiligheid (8-11-2026, Fable P0-2): speelgoed vanaf 3 jaar (of met kleine onderdelen) hoort niet in een babyselectie.
+     Het product blijft op de site; alleen het label 'baby' en het vakje Baby & kraam vallen weg. Zit het in Baby & peuter en hoort het
+     eigenlijk in een ander vak (afd/groep), dan gaat het daarheen. Onbekende leeftijd + speelgoed = ook niet bij baby (voorzichtig). */
+  if (p.leeftijd && p.leeftijd[0] >= 3) {
+    p.voor = (p.voor || []).filter((x) => x !== 'baby');
+    p.ookIn = (p.ookIn || []).filter((x) => x !== 'cadeaus/baby-kraam');
+    if (p.cat === 'cadeaus' && p.sub === 'baby-kraam' && p.afd) { p.cat = p.afd; p.sub = p.groep; }
+    if (p.cat === 'speelgoed' && p.sub === 'baby-peuter' && p.afd && p.afd + '/' + p.groep !== 'speelgoed/baby-peuter') { p.cat = p.afd; p.sub = p.groep; }
+  }
   return p;
 }
 module.exports = { plaats };

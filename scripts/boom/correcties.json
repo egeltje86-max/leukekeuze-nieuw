@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -19690,7 +19690,113 @@
   "cl-lp-benson": "American Heart van Benson Boone op lp.",
   "cl-cd-benson": "American Heart van Benson Boone op cd.",
   "cl-lp-queen": "De grootste hits van Queen op twee lp's.",
-  "cl-cd-queen": "De grootste hits van Queen op cd."
+  "cl-cd-queen": "De grootste hits van Queen op cd.",
+  "bol-9300000184307270": "Bijbel voor jonge vrouwen, met overdenkingen, tips, leesroosters en veel ruimte om zelf te schrijven Bij bol beoordeeld met 4,9 uit 5 toen wij keken.",
+  "bol-9200000073684225": "Het populairste racespel op de Switch, met 48 circuits. Met z’n vieren tegelijk spelen op één scherm Bij bol beoordeeld met 4,9 uit 5 toen wij keken.",
+  "bol-9200000039507366": "Fijne headset met goed geluid en een losse microfoon. Werkt op pc, PlayStation, Xbox en Switch. Bij bol beoordeeld met 4,4 uit 5 toen wij keken.",
+  "bol-9200000131378453": "Betaalbare headset voor pc, PlayStation, Xbox en Switch. Bij bol beoordeeld met 4,2 uit 5 toen wij keken. Mooi startcadeau voor jonge gamers.",
+  "bol-9200000011843998": "Fotopapier voor de Instax Mini-camera, genoeg voor 20 foto’s. Fijn cadeautje bij de camera. Bij bol beoordeeld met 4,5 uit 5 toen wij keken.",
+  "bol-9200000058466074": "Dertien Opwekkingsliederen, live opgenomen op het Zangfestijn. Met een gratis dvd erbij Bij bol beoordeeld met 4,7 uit 5 toen wij keken.",
+  "bol-9200000040253620": "Grote strijkkralen die makkelijk zijn voor kleine handjes, met een rond grondbord, voorbeelden en strijkpapier Bij De Grote Speelgoedwinkel beoordeeld met 4,9 uit 5 toen wij keken.",
+  "bol-9200000090910875": "Giet eenhoorns van gips, schilder ze in mooie kleuren en maak ze af met glitter en een lintje. Vanaf 5 jaar Bij bol beoordeeld met 4,5 uit 5 toen wij keken.",
+  "bol-9300000304073816": "Het nieuwe kookboek van Veggilaine, vol vegetarische gerechten met groenten van het seizoen Bij bol beoordeeld met 5 uit 5 toen wij keken.",
+  "bol-9300000268499475": "Kleurrijk vegetarisch kookboek met meer dan 80 recepten, van de bekende foodblogger. Bij Dille & Kamille beoordeeld met 5 uit 5 toen wij keken.",
+  "bol-9300000235330813": "Makkelijke recepten van chef Sepp van Dijk: sappige kip, snelle pasta’s en gerechten uit één pan. Bij bol beoordeeld met 4,9 uit 5 toen wij keken.",
+  "bol-9300000142450484": "80 makkelijke recepten voor de slowcooker, van stoofpotjes tot pasta’s. Alles erin, deksel erop en klaar Bij bol beoordeeld met 4,6 uit 5 toen wij keken.",
+  "bol-9300000128985252": "36 kleurpotloden in een blik, met een groot schetsboek erbij. De punten breken niet snel Bij bol beoordeeld met 4,6 uit 5 toen wij keken.",
+  "bol-9300000131876375": "Bouw een boeket wilde bloemen van LEGO dat nooit verwelkt. Ontspannend om te bouwen en daarna mooi in een vaas. Bij Coolblue beoordeeld met 4,8 uit 5 toen wij keken.",
+  "bol-9300000150622907": "Acht natuurlijke speeltjes om op te knagen: wilgenballen, knabbelkettingen en wortels van mais en hooi. Goed voor de tanden van je konijn of cavia Bij bol beoordeeld met 4,6 uit 5 toen wij keken.",
+  "bol-9200000101456379": "Klassiek stalen herenhorloge met een mooie blauwe wijzerplaat en datum. Kan tegen een regenbui en de douche. Bij bol beoordeeld met 4,9 uit 5 toen wij keken.",
+  "bol-9200000118422706": "Stoer horloge met een zwarte kast, blauwe wijzerplaat, Romeinse cijfers, stopwatch en een blauwe leren band. Een echte klassieker van Fossil, nu 16% goedkoper Bij bol beoordeeld met 4,6 uit 5 toen wij keken.",
+  "bol-9200000089433329": "Sportief horloge van Tommy Hilfiger met een blauwe wijzerplaat, datum en een stevige rubberen band. Met 2 jaar garantie Bij bol beoordeeld met 4,5 uit 5 toen wij keken.",
+  "bol-9300000047747066": "Stoere armband van zwart leer met bruine natuurstenen en een sluiting van roestvrij staal Bij bol beoordeeld met 4,6 uit 5 toen wij keken.",
+  "dvzn-515371": "Tovert een sterrenhemel op je muur of plafond, in verschillende kleuren. Fijn om bij in slaap te vallen.",
+  "dvzn-469432": "Grote fles Belgisch blond bier met een grappig kerstetiket. Lekker bij het kerstdiner of een kaasplankje.",
+  "lr-351369308000": "Ruime zwarte weekendtas met rits. Groot genoeg voor een paar dagen weg of de sportschool.",
+  "lr-351335812000": "Soepele tas van echt leer met een gedraaid handvat en een losse sleutelhanger. Over je schouder of schuin gedragen.",
+  "lr-351221315000": "Zwarte tas van zacht suède met randjes van glad leer, van het Franse merk NAT & NIN. Met verstelbare riem en rits.",
+  "lr-351376328000": "Kleine portemonnee van leer met een krokodillenprint en een goudkleurige sluiting als een sieraad. Komt in een mooie verpakking.",
+  "lr-351375847000": "Zachte, warme sjaal van vooral alpacawol, met een rustig ruitpatroon en franjes. 200 cm lang.",
+  "inv-28208": "Een strak goudkleurig horloge met een zwarte wijzerplaat. Nu flink",
+  "inv-29175": "Een stoere chronograaf met een stopwatch-functie. Nu flink",
+  "inv-28915": "Een vrolijk roze horloge met een zachte band. Voor weinig geld. Nu flink",
+  "t2-nedgame-dd1ee89ff0": "Rode gebreide trui met Eevee. Officiële Pokémon,",
+  "tt-barokspiegel-293f9432e0": "Barokspiegel met sierlijke lijst, gemaakt in Italië.",
+  "cl-sm-hulk": "Speelset met Hulk en Spider-Man.",
+  "cl-nikko-toyota": "Rallyauto met ledlampen.",
+  "cl-nikko-vaporizr": "Rijdt over land én door het water.",
+  "bol-9300000042178893": "Een prima headset voor de eerste console. Voor bijna alle consoles. Nu flink",
+  "bol-9300000162038148": "Een roze gamestoel met lichtjes, en kussens voor je nek en rug.",
+  "cl-fp-speelmat": "Zacht speelkleed met spiegel en speeltjes, vanaf de geboorte. Fijn voor buikliggen.",
+  "cl-jipy-giftset": "Cadeauset met stapeltoren en stapelbekers, ook voor in bad.",
+  "cl-clem-auto": "Stapeltoren met autootjes. Voor kleine autofans.",
+  "cl-jipy-blokkenkar": "Houten duwkar vol blokken. Steun bij de eerste stapjes en daarna bouwen.",
+  "cl-bol-bobbycar": "De echte Bobby Car: al tientallen jaren dé loopauto. Stevig en gaat jaren mee.",
+  "cl-abrick-trein": "Trein van grote, stevige blokken van het Franse merk Écoiffier.",
+  "cl-bol-magna-32": "Het originele merk magnetische tegels. Heel stevig en gaat jaren mee.",
+  "cl-bol-connetix-64": "Connetix is erg populair bij ouders, vooral om de mooie pastelkleuren.",
+  "cl-bol-gravitrax-start": "De populairste knikkerbaan van nu. Bouw je eigen baan met bochten, sprongen en kanonnen.",
+  "cl-bol-gravitrax-pro": "Voor gevorderde bouwers: banen die de hoogte in gaan. Flink",
+  "cl-bol-migoga-toren": "Knikkerbaan die geluid maakt. Klein en voordelig.",
+  "cl-bb-clickplay": "Nieuwe BABY born met 10 functies en veel accessoires.",
+  "cl-co-penelope": "Franse babypop van Corolle, bekend om de mooie kwaliteit.",
+  "cl-barbie-picknick": "Barbie en Chelsea gaan picknicken.",
+  "cl-rh-jrhigh": "De jongere zusjes van Rainbow High.",
+  "cl-mh-cleo": "Cleo De Nile met verzorgingsspullen.",
+  "cl-syl-starter": "Het begin van de Sylvanian-wereld: een huisje met meubels en een figuurtje.",
+  "cl-ld-poppenhuis": "Houten poppenhuis van Little Dutch, gemaakt van FSC-hout.",
+  "cl-tl-chalet": "Houten chalet met handvat om mee te nemen.",
+  "cl-pikachu-cord": "Pikachu van zacht ribstof.",
+  "cl-ld-knuffelpop": "Zachte knuffelpop van Little Dutch.",
+  "cl-sq-clefairy": "Roze Pokémon Clefairy.",
+  "cl-sq-wendy": "Wendy, een van de bekendste originele Squishmallows.",
+  "cl-pm-boerderij": "Boerderij met dieren om eindeloos mee te spelen.",
+  "cl-pm-markt": "Marktkraam met heftruck.",
+  "cl-sl-trex": "De koning van de dino's, heel echt nagemaakt door Schleich.",
+  "cl-sl-brachio": "Langnek-dino van Schleich.",
+  "cl-sl-stal": "Paardenstal met ruiter en paard.",
+  "cl-sl-ponystal": "Ponystal met een IJslandse hengst.",
+  "cl-sm-buggy": "Buggy met Spider-Man en schietfunctie.",
+  "cl-dc-batman": "Batman met 22 beweegbare punten.",
+  "cl-bruder-man": "Stevige kiepwagen van Bruder.",
+  "cl-brio-batterij": "Trein die zelf rijdt. Past op elke houten baan.",
+  "cl-carrera-fold": "Eenvoudige RC-auto voor beginners.",
+  "cl-revell-heli": "Kleine helikopter om binnen te vliegen.",
+  "cl-k-kidkraft": "Complete speelkeuken van KidKraft.",
+  "cl-k-ld-markt": "Houten marktkraam om winkeltje te spelen.",
+  "cl-k-bosch-mixer": "Keukenmachine die echt draait, van Bosch.",
+  "cl-k-pizzaoven": "Houten pizzaoven die licht geeft en knettert.",
+  "cl-d-ecoiffier": "Stevige dokterskoffer van Écoiffier.",
+  "cl-v-chase": "Officieel kostuum van Chase. Kies de maat bij de winkel.",
+  "cl-v-elsa": "Officiële Elsa-jurk van Disney. Kies de maat bij de winkel.",
+  "cl-v-ridder": "Compleet ridderpak.",
+  "cl-v-ijsprinses": "Blauwe prinsessenjurk voor kleine ijsprinsesjes.",
+  "cl-v-prinses-geel": "Gele prinsessenjurk, net als Belle.",
+  "cl-pd-supercolor": "Grote verpakking Play-Doh in veel kleuren. Play-Doh staat bovenaan de verkooplijsten.",
+  "cl-pd-tandarts": "De bekende tandarts-set van Play-Doh met 8 potjes.",
+  "cl-pd-stylist": "Haren knippen en stylen met Play-Doh.",
+  "cl-ks-ijs": "IJsjes draaien van Kinetic Sand.",
+  "cl-cr-magiclight": "Magische kwast die alleen op het papier kleurt, niet op de bank.",
+  "cl-fc-24": "Kleurpotloden die je kunt uitgummen.",
+  "cl-ds-maker": "De bestverkochte knutselset van dit moment: maak je eigen squishies.",
+  "cl-ko-chemie": "Veilige scheikundeproeven van KOSMOS, een van de best verkochte merken in experimenteren.",
+  "cl-ko-stuiter": "Maak je eigen stuiterballen.",
+  "cl-cl-hp-terra": "Laat echte planten groeien in de hut van Hagrid.",
+  "cl-lr-codego": "Leer programmeren zonder scherm: stuur de muis naar de kaas.",
+  "cl-lr-codego-set": "Complete set met doolhof en opdrachtkaarten.",
+  "cl-tt-dieren": "Eerste tiptoi-spel voor kinderen vanaf 1 jaar.",
+  "cl-vt-gabby": "Leercomputer met Gabby en haar katten.",
+  "cl-fp-xylofoon": "De vrolijke xylofoon van Fisher-Price.",
+  "cl-hape-drum": "Houten drumstel dat reageert op aanraking.",
+  "cl-cf-1jaar": "Driewieler die meegroeit naar loopfiets.",
+  "cl-sm-rookie": "Driewieler met duwstang voor papa of mama.",
+  "cl-wonderjump": "Kleine trampoline met handvat voor binnen.",
+  "cl-ss-rainstorm": "Twee waterpistolen voor een echt watergevecht.",
+  "cl-sx-goals": "Twee voetbaldoelen voor in de tuin.",
+  "cl-nerf-target": "Eerste Nerf-blaster met schietdoel.",
+  "cl-guess-collier": "Stoere ketting van Guess, nu flink",
+  "cl-celeste": "Goudkleurige ketting die nu heel veel is",
+  "cl-celeste-ring": "Goudkleurige ring die nu flink is"
  },
  "voorWeg": {
   "cl-tony-reep": [
@@ -26770,7 +26876,8 @@
   ],
   "cl-duplo-10466": [
    "kind",
-   "kinderen"
+   "kinderen",
+   "opa-oma"
   ],
   "cl-duplo-10462": [
    "kind",
@@ -29255,6 +29362,10 @@
   "cl-pokemon-3d-greatball": [
    "kind",
    "kinderen"
+  ],
+  "bol-9200000115916881": [
+   "baby",
+   "kind"
   ]
  },
  "status": {
@@ -30522,7 +30633,7 @@
    null
   ],
   "grotek-4b17d7be4d": [
-   31.0
+   31
   ],
   "cl-lego-f1": [
    23.99,
@@ -30641,7 +30752,7 @@
    null
   ],
   "cl-ooni-karu12": [
-   289.0
+   289
   ],
   "ww-prn32826971940": [
    57.99,
@@ -32765,7 +32876,7 @@
    null
   ],
   "bol-9300000239958237": [
-   159.0
+   159
   ],
   "bol-9300000228952527": [
    202
@@ -34649,7 +34760,7 @@
    47.99
   ],
   "dgsw-a8f3035ef8": [
-   69.0
+   69
   ],
   "dgsw-b43c142dad": [
    40.99,
@@ -40178,43 +40289,43 @@
    21.99
   ],
   "cb-lenovo-tab-kids": [
-   139.0
+   139
   ],
   "a-coolblue-nl-2857fe6592": [
-   125.0
+   125
   ],
   "a-coolblue-nl-35931b887f": [
-   100.0
+   100
   ],
   "cl-agfa-ac9000": [
-   70.0
+   70
   ],
   "cl-lg-b6": [
-   899.0
+   899
   ],
   "cl-ninja-slushi": [
-   229.0
+   229
   ],
   "cl-philips-bt5780": [
-   54.0
+   54
   ],
   "cl-weber-kettle": [
-   120.0
+   120
   ],
   "cl-theragun-relief": [
-   106.0
+   106
   ],
   "cl-pixel5": [
-   339.0
+   339
   ],
   "supz-dc1454c082": [
-   29.0
+   29
   ],
   "supz-8851c878f1": [
-   15.0
+   15
   ],
   "fiftie-06dee9ff79": [
-   299.0
+   299
   ],
   "grotek-75e646198f": [
    59.5
@@ -40226,7 +40337,7 @@
    32.99
   ],
   "nedg-93dfb2fef9": [
-   15.0
+   15
   ],
   "smartp-c4444bc994": [
    26.99
@@ -40259,7 +40370,7 @@
    104.95
   ],
   "cl-12448": [
-   48.0
+   48
   ],
   "dvzn-611": [
    22.94
@@ -40313,16 +40424,16 @@
    72.99
   ],
   "westwing-ec5153aa61": [
-   149.0
+   149
   ],
   "westwing-ea864fdd54": [
-   189.0
+   189
   ],
   "westwing-e7f208f572": [
    25.99
   ],
   "westwing-ab188ccbdc": [
-   119.0
+   119
   ],
   "westwing-2d3b7e0cdc": [
    29.99
@@ -40337,40 +40448,40 @@
    15.99
   ],
   "nedg-bf53660934": [
-   98.0,
+   98,
    289.99
   ],
   "nedg-90ff019ac4": [
-   128.0,
+   128,
    299.99
   ],
   "nedg-63694fe146": [
-   128.0,
+   128,
    299.99
   ],
   "nedg-e2ebf79499": [
-   68.0,
+   68,
    159.99
   ],
   "nedg-50729c80d3": [
-   68.0,
+   68,
    149.99
   ],
   "superz-4bbaece2a1": [
-   89.0,
-   185.0
+   89,
+   185
   ],
   "nedg-bcbaa0bfdc": [
-   68.0,
+   68,
    139.99
   ],
   "nedg-7044519cd1": [
-   118.0,
+   118,
    239.99
   ],
   "drm-eaad95c538": [
-   85.0,
-   170.0
+   85,
+   170
   ],
   "lgt-18cb9b468b": [
    22.5,
@@ -40381,16 +40492,16 @@
    49.99
   ],
   "nedg-635d05fe70": [
-   78.0,
+   78,
    139.99
   ],
   "superz-40fb315180": [
-   69.0,
-   125.0
+   69,
+   125
   ],
   "superz-2f5ed8c537": [
-   75.0,
-   129.0
+   75,
+   129
   ],
   "cadeau-c618134a03": [
    89.99,
@@ -40405,7 +40516,7 @@
    129.99
   ],
   "bourg-b6efe2d862": [
-   25.0,
+   25,
    39.99
   ],
   "dgsw-023910d43d": [
@@ -40413,8 +40524,8 @@
    59.99
   ],
   "myka-9b82f2b483": [
-   105.0,
-   150.0
+   105,
+   150
   ],
   "dvzn-d79ce0f76c": [
    41.99,
@@ -40429,7 +40540,7 @@
    15.99
   ],
   "bourg-1d6523c335": [
-   70.0,
+   70,
    94.98
   ],
   "tf-740190773a": [
@@ -43909,6 +44020,123 @@
   ],
   "bol-9300000343902998": [
    "cadeaus/sinterklaas"
+  ],
+  "cl-wavelength": [
+   "cadeaus/grappig"
+  ],
+  "cl-pictionary": [
+   "cadeaus/grappig"
+  ],
+  "cl-weerwolven": [
+   "cadeaus/grappig"
+  ],
+  "cl-topten": [
+   "cadeaus/grappig"
+  ],
+  "cl-twister": [
+   "cadeaus/grappig"
+  ],
+  "bol-9300000085320242": [
+   "cadeaus/grappig"
+  ],
+  "cl-lavalamp": [
+   "cadeaus/grappig"
+  ],
+  "cl-hp-beanie": [
+   "cadeaus/grappig"
+  ],
+  "cl-hp-giftset": [
+   "cadeaus/grappig"
+  ],
+  "cl-apres-muts": [
+   "cadeaus/grappig"
+  ],
+  "cl-guess-cap": [
+   "cadeaus/grappig"
+  ],
+  "cl-acdc-cap": [
+   "cadeaus/grappig"
+  ],
+  "cl-hema-badjas-konijn": [
+   "cadeaus/grappig"
+  ],
+  "cl-hp-tee": [
+   "cadeaus/grappig"
+  ],
+  "cl-chillpill": [
+   "cadeaus/grappig"
+  ],
+  "cl-lavalamp-tiedye": [
+   "cadeaus/grappig"
+  ],
+  "cl-poes-leeslamp": [
+   "cadeaus/grappig"
+  ],
+  "cl-impressions": [
+   "cadeaus/grappig"
+  ],
+  "cl-cls-legs": [
+   "cadeaus/grappig"
+  ],
+  "cl-ww-soda": [
+   "cadeaus/grappig"
+  ],
+  "cl-whisky-stones-e": [
+   "cadeaus/grappig"
+  ],
+  "cl-pouch-pals": [
+   "cadeaus/grappig"
+  ],
+  "cl-hp-lantaarn": [
+   "cadeaus/grappig"
+  ],
+  "cl-tafelvuur-smores": [
+   "cadeaus/grappig"
+  ],
+  "cl-hofats-beerbox": [
+   "cadeaus/grappig"
+  ],
+  "cl-dirkjan-28": [
+   "cadeaus/grappig"
+  ],
+  "cl-garfield-126": [
+   "cadeaus/grappig"
+  ],
+  "cl-neehoorn": [
+   "cadeaus/grappig"
+  ],
+  "cl-dog-man-kid-kat": [
+   "cadeaus/grappig"
+  ],
+  "cl-loser-20": [
+   "cadeaus/grappig"
+  ],
+  "cadeau-efa0687aa6": [
+   "cadeaus/grappig"
+  ],
+  "cl-cr-geur": [
+   "cadeaus/grappig"
+  ],
+  "cl-gorilla": [
+   "cadeaus/grappig"
+  ],
+  "hema-99bca40da5": [
+   "cadeaus/grappig"
+  ],
+  "badkam-d05c3463c4": [
+   "cadeaus/grappig"
+  ],
+  "cl-papa-letter": [
+   "cadeaus/grappig"
+  ],
+  "grotek-eb9d2396a7": [
+   "cadeaus/grappig"
+  ],
+  "bellat-059631f9b4": [
+   "cadeaus/grappig"
+  ],
+  "bellat-7b32f864c1": [
+   "cadeaus/grappig"
   ]
  }
 }

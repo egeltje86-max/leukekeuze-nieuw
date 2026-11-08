@@ -145,6 +145,9 @@
   }
   function binnenPrijs(p, id) { var f = prijsFilter(id); return p.prijs >= f.min && p.prijs <= f.max; }
   function kortingPct(p) { return p.oudePrijs > p.prijs ? (1 - p.prijs / p.oudePrijs) * 100 : 0; }
+  /* 8-11-2026: prijs ouder dan 7 dagen = geen harde belofte meer. */
+  function datumNL(d) { return String(d || '').split('-').reverse().join('-'); }
+  function prijsOud(p) { if (!p.gecontroleerd) return true; var t = Date.parse(p.gecontroleerd); return !isFinite(t) || Date.now() - t > 7 * 864e5; }
   /* 7-11-2026 (richtlijn 'minder maar beter'): per pagina staan de met de hand gekozen toppers bovenaan.
      De lijst met keuzes staat in assets/js/topkeuze.js (gemaakt uit het paginaplan); de rest volgt gewoon erachter. */
   function metTopkeuze(l, sleutel) {
@@ -241,7 +244,8 @@
   }
   /* Keuzes bovenaan een lijstpagina (stap 3 indeling): een vast raster van rondjes dat omloopt, 4 per rij op een telefoon.
      Meer dan 8? Dan staan de eerste 8 in beeld en de rest achter één knop 'Meer'. Geen schuifrijen meer: op een telefoon zag je alleen wat vooraan stond. */
-  var KEUZES_ZICHT = 8;
+  /* 8-11-2026 (Fable P1-6): op de telefoon eerst één rij van 4 rondjes, zodat de producten sneller in beeld komen. */
+  var KEUZES_ZICHT = (window.matchMedia && window.matchMedia('(max-width: 759px)').matches) ? 4 : 8;
   /* o.altijd: ook op de computer eerst 8 (personen hebben tot 15 onderdelen). o.alles: nooit inklappen (overzichten). o.groot: grotere rondjes, 3 per rij. */
   function keuzeRaster(items, label, o) {
     o = o || {};
@@ -760,8 +764,14 @@
     if (o.banner) achter = '<div class="achter"><picture><source media="(max-width: 759px)" srcset="' + esc(o.banner.replace('.webp', '-mobiel.webp')) + '"><img src="' + esc(o.banner) + '" alt="" fetchpriority="high"></picture></div>';
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(o.vaag) + '" alt=""></div>';
     return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + (o.klasse ? ' ' + o.klasse : '') + '">' + achter +
-      '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p>' + esc(o.tekst) + '</p>' : '') + '</div></section>';
+      '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p class="intro' + (o.tekst.length > 110 ? ' lang' : '') + '">' + esc(o.tekst) + '</p>' + (o.tekst.length > 110 ? '<button type="button" class="intro-meer" data-intro-meer aria-expanded="false">Lees meer</button>' : '') : '') + '</div></section>';
   }
+  /* Eerste scherm op de telefoon (8-11-2026, Fable P1-6): een lange intro laat eerst 2 regels zien; tik op 'Lees meer' voor de rest. */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-intro-meer]'); if (!b) return;
+    var open = b.getAttribute('aria-expanded') === 'true'; b.setAttribute('aria-expanded', open ? 'false' : 'true'); b.textContent = open ? 'Lees meer' : 'Minder';
+    var p = b.previousElementSibling; if (p) p.classList.toggle('open', !open);
+  });
 
   /* ---------- Categorie & subcategorie ---------- */
   function categorie(slug, subSlug, vakSlug, q) {
@@ -948,7 +958,7 @@
          : '<section class="sectie eerste keuzes-sectie"><div class="sectie-kop"><div><h2>Wat zoek je voor ' + esc(naam) + '?</h2></div></div>' + subsHtml + '</section>') +
       (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length)) +
+      werkbalk + (function () { var g = gridMeer(lijst, leeg); if (s || (q.sort && q.sort !== 'aanbevolen') || (q.prijs && q.prijs !== 'alle') || !(window.LK_TOPKEUZE && window.LK_TOPKEUZE[pad])) return g; return g.replace('class="prodgrid', 'class="prodgrid top6'); })() + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length)) +
       /* Stap 3/4 indeling: 'Lees ook' onder de eerste 24 producten. */
       leesOok(pe.oud || '') +
       /* Op een subpagina ook 'Meer in onze winkels' uit het eerste vak (bijv. mode-beauty/horloges). */
@@ -1286,7 +1296,11 @@
       return x.id !== p.id && (p.cat === 'christelijk') === (x.cat === 'christelijk') && (x.cat === p.cat || (x.ookIn || []).some(function (o) { return (p.ookIn || []).indexOf(o) !== -1; }));
     });
     var zelfdeSub = function (x) { return x.cat === p.cat && x.sub === p.sub; };
-    verwant = sorteer(verwant.filter(zelfdeSub)).concat(sorteer(verwant.filter(function (x) { return !zelfdeSub(x); }))).slice(0, 4);
+    /* 8-11-2026 (Fable P1-9): 'Ook leuk' = echt passende alternatieven: eerst hetzelfde vakje, dan dezelfde groep, en in dezelfde prijsklasse (half tot dubbel). */
+    var zelfdeVak = function (x) { return p.vak && x.vak === p.vak && x.afd === p.afd; };
+    var prijsOk = function (x) { return !(p.prijs > 0) || (x.prijs >= p.prijs * 0.5 && x.prijs <= p.prijs * 2); };
+    var vw = verwant.filter(prijsOk); if (vw.length < 4) vw = verwant;
+    verwant = sorteer(vw.filter(zelfdeVak)).concat(sorteer(vw.filter(function (x) { return !zelfdeVak(x) && zelfdeSub(x); }))).concat(sorteer(vw.filter(function (x) { return !zelfdeVak(x) && !zelfdeSub(x); }))).slice(0, 4);
 
     return '<div class="binnen">' +
       '<div style="padding-top:16px">' + kruimel(nc ? [{ tekst: nc.naam, naar: '/c/' + nc.slug }, { tekst: ns ? ns.naam : '', naar: ns ? '/c/' + nc.slug + '/' + ns.slug : '' }, { tekst: nv ? nv.naam : '', naar: nv ? '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug : '' }].filter(function (x) { return x.tekst; }) : [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s ? s.naam : '', naar: s ? '/c/' + c.slug + '/' + s.slug : '' }].filter(function (x) { return x.tekst; })) + '</div>' +
@@ -1295,13 +1309,14 @@
         '<div class="product-info">' +
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
-          '<div class="prijs"><span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+          '<div class="prijs">' + (prijsOud(p) ? '<span class="circa" title="prijs kan veranderd zijn">ca.</span> ' : '') + '<span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs && !prijsOud(p) ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
           /* Stap 5 indeling (6-11-2026, plan deel 8): de knop direct onder de prijs, binnen het eerste scherm; kleur en maat eronder. */
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
           '</div>' + inAppTip(p) +
           kleurKeuze(p) + maatKeuze(p) +
-          '<p class="prijsnoot">Prijs zoals laatst bij ons bekend' + (p.gecontroleerd ? ' (gecontroleerd op ' + p.gecontroleerd.split('-').reverse().join('-') + ')' : '') + '. De actuele prijs zie je bij de winkel.</p>' +
+          /* Eerlijke prijs (8-11-2026, Fable P0-4): de controledatum staat er altijd bij; is die ouder dan 7 dagen, dan is de prijs 'circa' en verwijzen we duidelijk naar de winkel. */
+          '<p class="prijsnoot' + (prijsOud(p) ? ' oud' : '') + '">' + (prijsOud(p) ? 'Prijs van ' + datumNL(p.gecontroleerd) + ', kan inmiddels veranderd zijn. <strong>Bekijk de actuele prijs bij ' + esc(p.shop) + '.</strong>' : 'Prijs gecontroleerd op ' + (p.gecontroleerd ? datumNL(p.gecontroleerd) : 'onbekende datum') + '. De actuele prijs zie je bij de winkel.') + '</p>' +
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
@@ -2067,7 +2082,9 @@
     '.rz-cadeau .pijl{background:linear-gradient(180deg,#fce7ad,#e2ad4c);color:#3a2a10;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 4px rgba(120,80,20,.25);transition:transform .15s ease}.rz-cadeau:hover .pijl{transform:translateX(3px)}' +
     '.rz-terug{background:linear-gradient(180deg,#fff,#fbf4e4);border:1.5px solid #e0cba3;border-radius:999px;padding:8px 14px;font-size:14px;box-shadow:0 2px 0 #e8d9ba;transition:border-color .15s}.rz-terug:hover{border-color:#c99740}' +
     '@media (prefers-reduced-motion:reduce){.rijm-z .rz-knop,.rijm-z .rz-knop:after,.rz-keuzes label,.rz-cadeau,.rz-cadeau .pijl{transition:none}.rijm-z .rz-knop:hover,.rz-keuzes label:hover,.rz-cadeau:hover{transform:none}}' +
-    '</style>';
+    '.rz-meer{border:1.5px dashed rgba(201,151,63,.5);border-radius:14px;padding:6px 12px}.rz-meer summary{cursor:pointer;font-weight:700;color:#0f1a33;padding:6px 0;list-style:none}.rz-meer summary::-webkit-details-marker{display:none}.rz-meer summary::before{content:"▸ ";color:#c9973f}.rz-meer[open] summary::before{content:"▾ "}.rz-meer summary small{font-weight:500;color:#5d5a68}.rz-meer[open]{padding-bottom:12px}.rz-meer .rz-veld{margin-top:12px}' +
+      '@media (max-width:759px){.rz-held{aspect-ratio:auto;max-height:150px}.rz-held img{height:150px;object-fit:cover;object-position:center 30%}.rz-kop h2{font-size:22px}}' +
+      '</style>';
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
   function rijmmachine() {
@@ -2089,18 +2106,21 @@
         '<div class="rz-velden">' +
           '<div class="rz-veld"><label for="rz-naam">Naam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
           '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
-          '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
           '<div class="rz-veld breed"><label for="rz-over">Wat is er grappig aan deze persoon?</label>' +
             '<textarea id="rz-over" name="over" maxlength="500" placeholder="Bijv. komt altijd te laat en denkt dat hij alles beter weet."></textarea>' +
             '</div>' +
+          /* 8-11-2026 (Fable P1-13): eenvoudiger. Eerst alleen naam, wie en iets grappigs; budget, man/vrouw en scherpte staan achter 'Meer opties' (standaard €50, hilarisch). */
+          '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €50, man/vrouw, hoe scherp)</small></summary>' +
+          '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Budget voor 3 cadeaus samen</legend><div class="rz-keuzes">' + kies('budget', [['25', '€ 25'], ['50', '€ 50'], ['75', '€ 75'], ['100', '€ 100'], ['150', '€ 150']], '50') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Hoe scherp mag het zijn?</legend><div class="rz-keuzes rz-humor">' +
             kies('stand', [['lief', '😊 Lief<small>Met een knipoog</small>'], ['hilarisch', '🤣 Hilarisch<small>Hardop lachen</small>'], ['genadeloos', '😈 Genadeloos<small>Lekker plagen</small>']], 'hilarisch') +
           '</div></fieldset>' +
+          '</details>' +
         '</div>' +
         '<div data-rijm-fout></div>' +
         '<div class="rz-acties-form"><button class="rz-knop rz-vol" type="submit">✨ Laat Sint dichten <span aria-hidden="true">→</span></button>' +
-          '<p>🔒 We bewaren niets van wat je invult. Je tekst gaat alleen naar de dichtmachine (OpenAI) om het gedicht te maken. Vul geen geheimen of adressen in.</p></div>' +
+          '<p>🔒 We bewaren niets van wat je invult. Je tekst gaat alleen naar de dichtmachine (OpenAI) om het gedicht te maken. Vul geen adres, telefoonnummer of gevoelige dingen in. <a href="/info/privacy">Meer over privacy</a>.</p></div>' +
         '</form>' +
       '</div>' +
       '<div data-rijm-uit aria-live="polite"></div>' +
@@ -2204,6 +2224,26 @@
     if (t.hasAttribute('data-rijm-opnieuw')) { var f = $('form[data-rijm]'); if (f) rijmVerstuur(f); }
   });
 
+  var VONK_LAATST = null;
+  function vonkKeus(p, w) {
+    return '<div class="vonk-keus" data-vonk-keus="' + esc(p.id) + '">' + LK.productKaart(p) + (w ? '<p class="vonk-waarom">' + ic('vonk') + '<span>' + esc(w) + '</span></p>' : '') +
+      '<div class="vonk-keus-acties"><button type="button" class="vonk-mini" data-vonk-weg="' + esc(p.id) + '">Niet leuk</button><button type="button" class="vonk-mini" data-vonk-goedkoper="' + esc(p.id) + '">Goedkoper</button></div></div>';
+  }
+  /* 'Niet leuk' / 'Goedkoper': wissel alleen dat ene voorstel, de rest blijft staan en het scherm springt niet. */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-vonk-weg],[data-vonk-goedkoper]'); if (!b || !VONK_LAATST) return;
+    var V2 = VONK_LAATST, id = b.getAttribute('data-vonk-weg') || b.getAttribute('data-vonk-goedkoper'), goedkoper = b.hasAttribute('data-vonk-goedkoper');
+    var oud = V2.zes.filter(function (p) { return p.id === id; })[0]; var kaart = b.closest('[data-vonk-keus]'); if (!oud || !kaart) return;
+    var kandidaten = V2.rest.filter(function (p) { return V2.zes.indexOf(p) === -1; });
+    if (goedkoper) { var g = kandidaten.filter(function (p) { return p.prijs < oud.prijs * 0.8; }); var gv = g.filter(function (p) { return p.vak && p.vak === oud.vak; }); kandidaten = gv.length ? gv.concat(g.filter(function (p) { return gv.indexOf(p) === -1; })) : g; }
+    var nieuw = kandidaten[0];
+    if (!nieuw) { var m = kaart.querySelector('.vonk-keus-acties'); if (m) m.innerHTML = '<span class="vonk-mini-noot">' + (goedkoper ? 'Niets goedkopers gevonden binnen je keuzes.' : 'Geen ander voorstel meer.') + '</span>'; return; }
+    V2.zes[V2.zes.indexOf(oud)] = nieuw; V2.rest = V2.rest.filter(function (p) { return p !== nieuw; });
+    try { V2.geh.nietLeuk = (V2.geh.nietLeuk || []).concat(oud.id).slice(-200); V2.geh.per[V2.sleutel] = V2.zes.map(function (p) { return p.id; }); V2.geh.gezien = (V2.geh.gezien || []).concat(nieuw.id).slice(-300); vonkGeheugen(V2.geh); } catch (err) {}
+    var tmp = document.createElement('div'); tmp.innerHTML = vonkKeus(nieuw, V2.waarom ? V2.waarom(nieuw) : '');
+    var nk = tmp.firstElementChild; kaart.replaceWith(nk); vulIconen(nk); netteLinks(nk); nk.classList.add('vonk-wissel');
+    var g2 = document.querySelector('[data-meer-grid]'); if (g2) { var weg = g2.querySelector('[data-fav="' + nieuw.id.replace(/"/g, '') + '"]'); var pk = weg && weg.closest('.prodkaart'); if (pk) pk.remove(); }
+  });
   function vonk(q) {
     zetTitel('VONK cadeauzoeker');
     var V = window.LK_VONK;
@@ -2310,6 +2350,7 @@
       /* De 6 VONK-keuzes: liefst nog niet eerder getoond in dit bezoek. Zelfde vraag = zelfde 6 (ook na 'terug'). */
       var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.wat || '', q.soort || '', q.mix || '', q.g || ''].join('|');
       var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};
+      if ((geh.nietLeuk || []).length && !q.zes) { var nl2 = geh.nietLeuk; alles = alles.filter(function (p) { return nl2.indexOf(p.id) === -1; }); } /* 8-11-2026: wat je 'niet leuk' vond komt dit bezoek niet terug */
       var zes = (q.zes ? q.zes.split(',') : (geh.per[sleutel] || [])).map(function (id) { return alles.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
       if (!q.zes && zes.length < Math.min(6, alles.length)) {
         /* Cadeaumixer (fase 2): 2 best passend, 2 origineel, 1 praktisch, 1 bijzonder (luxe of persoonlijk).
@@ -2333,6 +2374,8 @@
         vonkGeheugen(geh);
       }
       var rest = alles.filter(function (p) { return zes.indexOf(p) === -1; });
+      /* 8-11-2026 (Fable P1-10): per voorstel 'Niet leuk' en 'Goedkoper' zonder herladen; onthouden voor de volgende keer. */
+      VONK_LAATST = { zes: zes, rest: rest, geh: geh, sleutel: sleutel, waarom: null };
 
       /* 'Waarom VONK dit kiest': alleen echte feiten uit onze eigen gegevens. */
       var bud = prijsFilter(q.budget);
@@ -2353,6 +2396,7 @@
         return r.slice(0, 3).join(' · ');
       };
 
+      VONK_LAATST.waarom = waarom;
       /* ---- Weergave (01-11-2026, compact voor telefoon): smalle balk met keuzes + 'Aanpassen'-paneel, cadeaus direct eronder. ---- */
       var adres = function (wijzigen) { var nq = Object.assign({}, q); delete nq.mix; delete nq.zes; Object.keys(wijzigen).forEach(function (k) { if (wijzigen[k] === null) delete nq[k]; else nq[k] = wijzigen[k]; }); return maakAdres('/vonk', nq); };
       var hijZij = q.voor === 'haar' ? 'zij' : q.voor === 'hem' ? 'hij' : 'hij of zij';
@@ -2429,7 +2473,7 @@
           (q.wat && alles.length < 6 ? '<p class="vonk-begreep">Er zijn er maar ' + alles.length + ' met “' + esc(q.wat) + '” binnen je keuzes.' + (opties.length ? ' Meer vinden:' : '') + '</p>' + (opties.length ? '<div class="chips vonk-meer-tips">' + opties.join('') + '</div>' : '') : '') +
           '<div class="vonk-zes">' +
             '<div class="vonk-fonkel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
-            zes.map(function (p) { var w = waarom(p); return '<div class="vonk-keus">' + LK.productKaart(p) + (w ? '<p class="vonk-waarom">' + ic('vonk') + '<span>' + esc(w) + '</span></p>' : '') + '</div>'; }).join('') +
+            zes.map(function (p) { return vonkKeus(p, waarom(p)); }).join('') +
           '</div>' +
           (alles.length > 6 ? '<div class="vonk-toover"><a class="knop knop-goud" href="' + maakAdres('/vonk', mq) + '">' + ic('vonk') + ' Nog een keer toveren</a>' : '<div class="vonk-toover">') +
             '<button class="knop knop-rand" type="button" data-vonk-deel="' + esc(maakAdres('/vonk', Object.assign({}, q, { mix: undefined, zes: zes.map(function (p) { return p.id; }).join(',') }))) + '">' + ic('deel') + ' Deel deze ' + zes.length + '</button></div>'
@@ -2561,19 +2605,23 @@
       '<p>' +
       'Privacy Policy: <a href="/info/privacy">leukekeuze.nl/info/privacy</a>. General Terms and Conditions: <a href="/info/voorwaarden">leukekeuze.nl/info/voorwaarden</a>.</p></div>'],
     'privacy': ['Privacyverklaring (Privacy Policy)',
-      '<p>Laatst bijgewerkt: 25 oktober 2026.</p>' +
-      '<p>LeukeKeuze (Marius, zie het <a href="/info/colofon">colofon</a>) is verantwoordelijk voor deze website. In deze verklaring lees je welke gegevens er gebruikt worden als je de site bezoekt.</p>' +
-      '<h2>Geen account, geen formulieren</h2><p>Je hoeft je nergens aan te melden. Wij vragen niet om je naam, e-mail of andere persoonlijke gegevens.</p>' +
-      '<h2>Wat blijft er op je eigen apparaat?</h2><p>Bewaar je een product met het hartje, dan wordt dat alleen op je eigen apparaat opgeslagen (in de lokale opslag van je browser). Wij kunnen dat niet zien. Wis je je browsergegevens, dan is het weg. Deze site plaatst zelf geen tracking- of advertentiecookies.</p>' +
+      '<p>Laatst bijgewerkt: 8 november 2026.</p>' +
+      '<p>LeukeKeuze (Marius, zie het <a href="/info/colofon">colofon</a>) is verantwoordelijk voor deze website. Hier lees je in gewone taal welke gegevens er gebruikt worden als je de site bezoekt.</p>' +
+      '<h2>Geen account nodig</h2><p>Je hoeft je nergens aan te melden. Gewoon rondkijken, zoeken en doorklikken naar een winkel kan zonder dat je iets over jezelf invult.</p>' +
+      '<h2>Wat blijft er op je eigen apparaat?</h2><p>Bewaar je een product met het hartje, dan staat dat alleen in je eigen browser (lokale opslag). Dat geldt ook voor de laatst bekeken producten en de naam die je invult bij je verlanglijstje. Wij kunnen dat niet zien; wis je je browsergegevens, dan is het weg. Deze site plaatst zelf geen tracking- of advertentiecookies.</p>' +
+      '<h2>Je verlanglijstje delen</h2><p>Deel je je lijstje, dan staan je voornaam (als je die invult) en de gekozen producten in de deellink. Alleen wie die link krijgt, ziet dat. Wij bewaren niets op een server.</p>' +
+      '<h2>De Sint-rijmmachine</h2><p>Bij de rijmmachine vul je een voornaam en een paar woorden over iemand in. Die gegevens sturen we naar onze eigen rekenfunctie bij Supabase en van daaruit naar OpenAI, die het gedicht schrijft. Wij slaan je invoer en het gedicht nergens op. OpenAI gebruikt deze gegevens niet om zijn modellen te trainen en bewaart ze volgens zijn eigen beleid tijdelijk voor controle op misbruik (op dit moment maximaal 30 dagen). Vul daarom alleen in wat je ook in een gedicht zou zetten: geen adres, telefoonnummer, gezondheid of andere gevoelige dingen. Om misbruik tegen te gaan telt onze rekenfunctie kort hoeveel gedichten er per internetadres worden gemaakt; dat wordt niet bewaard.</p>' +
+      '<h2>VONK en zoeken</h2><p>De cadeauhulp VONK en de zoekfunctie werken helemaal in je eigen browser. Wat je daar intypt, wordt niet naar ons of naar anderen gestuurd.</p>' +
       '<h2>Hosting</h2><p>De website staat bij GitHub Pages (GitHub, Inc.). Bij elk bezoek ziet de server technische gegevens, zoals je IP-adres. GitHub gebruikt die om de site veilig en werkend te houden. Wij krijgen deze gegevens niet.</p>' +
-      '<h2>Bezoekersstatistieken</h2><p>Om te zien hoeveel mensen de site bezoeken en welke pagina’s ze bekijken, gebruiken we GoatCounter. Dat werkt zonder cookies en zonder persoonlijke gegevens te bewaren: er wordt geen IP-adres opgeslagen en we zien niet wie je bent. We zien alleen aantallen, zoals welke pagina’s populair zijn, uit welk land bezoekers komen en via welke site ze binnenkwamen.</p>' +
+      '<h2>Bezoekersstatistieken</h2><p>Om te zien hoeveel mensen de site bezoeken en welke pagina’s en knoppen ze gebruiken, gebruiken we GoatCounter. Dat werkt zonder cookies en zonder persoonlijke gegevens te bewaren: er wordt geen IP-adres opgeslagen en we zien niet wie je bent. We zien alleen aantallen, zoals welke pagina’s populair zijn, uit welk land bezoekers komen en via welke site ze binnenkwamen.</p>' +
       '<h2>Lettertypes</h2><p>De lettertypes staan op onze eigen site. Er wordt dus niets bij Google Fonts opgehaald.</p>' +
       '<h2>Partnerlinks en cookies van winkels</h2><p>Klik je op “Bekijk bij …”, dan ga je naar de winkel. Vaak loopt die link via een partnernetwerk, zoals Daisycon, TradeTracker, Awin, het bol partnerprogramma of het partnerprogramma van Amazon. Zij plaatsen dan een cookie om te zien dat je via LeukeKeuze kwam. Zo kan de winkel ons een kleine vergoeding geven als je iets koopt. Wij zien niet wie je bent of wat je koopt; alleen hoeveel er via onze links is verkocht. Op de site van de winkel gelden hun eigen privacyverklaring en cookies.</p>' +
       '<h2 lang="en">Privacy Policy (English summary)</h2><p lang="en">Controller: Marius (LeukeKeuze), Kromhout 108, 3311 RH Dordrecht, The Netherlands, leukekeuze.nl@gmail.com. ' +
-      'We do not collect personal data: no accounts, no forms, no own tracking or advertising cookies. Favourites are stored only in your own browser. ' +
+      'No accounts and no own tracking or advertising cookies. Favourites, recently viewed items and the name for your wish list are stored only in your own browser; a shared wish list puts the first name and product ids in the link. ' +
+      'The Sinterklaas poem generator sends the first name and description you enter to our own Supabase function and on to OpenAI, which writes the poem; we store nothing, OpenAI does not train on this data and keeps it temporarily for abuse monitoring under its own policy. The gift helper VONK and the search work entirely in your browser. ' +
       'The site is hosted on GitHub Pages; fonts are served from our own site. Visitor statistics are collected with GoatCounter, without cookies and without storing personal data. Links to shops may run through affiliate networks (Daisycon, TradeTracker, Awin, bol.com, Amazon), which set their own cookies to register sales. ' +
       'Questions or requests about your data: e-mail us. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).</p>' +
-      '<h2>Je rechten</h2><p>Omdat wij zelf geen persoonsgegevens van je bewaren, is er meestal niets om in te zien of te wissen. Heb je toch een vraag over privacy? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>'],
+      '<h2>Je rechten</h2><p>Wij bewaren zelf geen persoonsgegevens van je, dus er is meestal niets om in te zien of te wissen. Heb je toch een vraag over privacy? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Je mag ook een klacht indienen bij de Autoriteit Persoonsgegevens.</p>'],
     'voorwaarden': ['Algemene voorwaarden (Terms and Conditions)',
       '<p>Laatst bijgewerkt: 23 oktober 2026.</p>' +
       '<p>Deze voorwaarden gelden voor het gebruik van leukekeuze.nl, een website van LeukeKeuze (Marius, zie het <a href="/info/colofon">colofon</a>).</p>' +
@@ -2875,7 +2923,7 @@
         { kop: 'Zelf maken en ontdekken (€5 tot €10)', tekst: 'Knutselen en proefjes doen: daar zijn ze na pakjesavond nog dagen mee bezig.',
           ids: ['bol-9300000169748884', 'bol-9300000025044624', 'bol-9200000104835927', 'bol-9300000168680075'] },
         { kop: 'Boekjes en spelletjes (tot €10)', tekst: 'Een sinterklaasboekje om voor te lezen, of een spel om meteen samen te spelen.',
-          ids: ['bol-9300000181968006', 'bol-9200000006380085', 'bol-9300000065878158', 'bol-9300000157956217'] }
+          ids: ['bol-9300000181968006', 'bol-9200000006380085', 'bol-9200000073803176', 'bol-9300000157956217'] }
       ],
       slot: 'Meer kleine cadeautjes staan bij <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'speelgoed-van-het-jaar-2026', beeld: 'bol-9300000246863962', vakken: ['speelgoed', 'speelgoed/bord-kaartspellen', 'speelgoed/lego', 'speelgoed/autos-treinen-rc', 'speelgoed/baby-houten', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas'],
@@ -2907,7 +2955,7 @@
       intro: 'Met Kerst geef je vaak aan meer mensen tegelijk. Dan is het fijn als een cadeau niet te duur is, maar wel echt leuk om te krijgen. Deze cadeaus kosten allemaal minder dan 25 euro.',
       delen: [
         { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee en chocolade in een mooie verpakking. Altijd goed, voor iedereen.',
-          ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000383269797', 'bol-9300000241393562'] },
+          ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000251768734', 'bol-9300000241393562'] },
         { kop: 'Gezellig in huis', tekst: 'Lichtjes, een kandelaar of kerstbekers: cadeaus waar je de hele decembermaand wat aan hebt.',
           ids: ['bol-9300000229498501', 'kl-57357716193604', 'bol-9300000182787559', 'bol-9300000238623285'] },
         { kop: 'Samen aan tafel', tekst: 'Een puzzel of spel voor de dagen tussen Kerst en Oud en Nieuw.',
@@ -2929,7 +2977,7 @@
       intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: iets voor de auto, iets om mee te koken of te drinken, of een gadget. Hier staan ze in drie prijsklassen.',
       delen: [
         { kop: 'Tot €35', tekst: 'Leuk en betaalbaar.',
-          ids: ['bol-9300000269870256', 'bol-9300000191796264', 'bol-9300000124265945', 'a-flextail-420ec05a0e'] },
+          ids: ['bol-9300000269870256', 'bol-9300000191796264', 'dvzn-a4ed4f69b9', 'a-flextail-420ec05a0e'] },
         { kop: '€35 tot €80', tekst: 'Dingen die hij elke week gebruikt.',
           ids: ['bol-9300000083266771', 'bol-9200000101456379', 'bol-9200000127709459'] },
         { kop: 'Luxe (vanaf €80)', tekst: 'Voor een groot cadeau, of om met z’n allen te geven.',
@@ -2940,7 +2988,7 @@
       intro: 'Een kerstcadeau voor een collega moet niet te persoonlijk zijn en ook niet te duur. Maar het mag wel een echt cadeau zijn: iets wat ze elke werkdag gebruiken, of iets om thuis van te genieten. Dus geen zak chips of een reep chocola die je zo in de supermarkt koopt, maar iets waar ze nog lang aan terugdenken. Geef je met het hele team? Dan kun je wat groter denken.',
       delen: [
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
-          ids: ['hema-8eff9a5ada', 'bol-9300000338660274', 'bol-9300000130428935', 'bol-9300000256554614'] },
+          ids: ['hema-8eff9a5ada', 'bol-9300000338660274', 'dk-00025723', 'bol-9300000256554614'] },
         { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
           ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9200000078061085', 'dvzn-562225'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
@@ -3907,6 +3955,7 @@
 
     app.innerHTML = html;
     document.body.classList.remove('plak-open');
+    document.body.classList.toggle('pag-product', d[0] === 'p'); /* 8-11-2026: compacter eerste scherm op productpagina's (telefoon) */
     document.body.classList.toggle('rijm-focus', d[0] === 'sint-rijmmachine'); /* Sint-rijmmachine: geen onderbalk over formulier en gedicht */
     /* Witte zoekbalk onder de kop: overal zichtbaar, behalve op de zoekpagina (die heeft er zelf al een). */
     var zr = $('[data-zoekrij]');

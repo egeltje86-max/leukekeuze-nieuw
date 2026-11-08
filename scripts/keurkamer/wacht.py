@@ -101,6 +101,7 @@ for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, re
         if str(r.get('voorraad', 'true')).lower() in ('false', '0', 'nee', 'no'): uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': naam})
     if n: print(naam, n, 'producten teruggevonden', flush=True)
 uit['gecontroleerd'] += len(gevonden_tt)
+uit['gezien'] = sorted(set(gevonden) | set(gevonden_tt))  # 8-11-2026: welke producten vandaag in een feed teruggevonden zijn (voor de controledatum)
 for pid, p in tt_live.items():
     if pid not in gevonden_tt and p['shop'] not in ('Amazon',): uit['nietInFeed'].append({'id': pid, 'titel': p['titel'][:70], 'bron': p['shop']})
 
