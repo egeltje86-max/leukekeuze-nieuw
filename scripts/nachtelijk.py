@@ -132,6 +132,7 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-brekz': '1161548', 't-boardgameshop': '2520696', 't-yourdecoration': '1549969',
           't-barokspiegel': '1537045', 't-profotonet': '1748978', 't-steegenga': '1847808',
           't-steegen2': '2376168',  # tweede Steegen-feed (feedlink van Marius, 5-11)
+          't-fragrance': '2433689',  # eu.fragrance.com (goedgekeurd + feedlink van Marius, 8-11)
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
