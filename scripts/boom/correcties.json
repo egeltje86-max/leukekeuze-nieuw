@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd).",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -18795,6 +18795,371 @@
    "wonen",
    "verlichting",
    "sfeerlampen"
+  ],
+  "anim-8f9e00bf81": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "country-2e33016849": [
+   "wonen",
+   "koken-bakken",
+   "bakken"
+  ],
+  "kado-567f2b1c31": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "anim-93192fdc4c": [
+   "tuin-klussen",
+   "tuin-planten",
+   "vogelhuisjes-insectenhotels"
+  ],
+  "anim-459dbc90d7": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "handtassen"
+  ],
+  "cartn-a394e8b754": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "grotek-5500840880": [
+   "dieren",
+   "klein-dier",
+   "konijn-knaagdier"
+  ],
+  "kado-ab8b7864d7": [
+   "speelgoed",
+   "baby-peuter",
+   "rammelaars-bijtringen"
+  ],
+  "kado-633c1c755b": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dgsw-9ad500947f": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "dieren-dinofiguren"
+  ],
+  "kado-d76439f7fb": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "grotek-004afe055a": [
+   "wonen",
+   "woontextiel",
+   "kruiken-warmte"
+  ],
+  "anim-347b348fd9": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "cartn-70fe41a272": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "cartn-b2f16ba6cb": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "cartn-e29659e2f2": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "cartn-c41d9dd63b": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "country-0b912b289f": [
+   "tuin-klussen",
+   "tuin-planten",
+   "vogelhuisjes-insectenhotels"
+  ],
+  "cartn-d095c3778f": [
+   "speelgoed",
+   "knutselen",
+   "tekenen-kleuren"
+  ],
+  "grotek-7708f5423b": [
+   "speelgoed",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "hema-97de057cac": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "country-39ebbdafeb": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-b652e9c080": [
+   "wonen",
+   "kaarsen-geur",
+   "kandelaars-lantaarns"
+  ],
+  "hema-bade0847e3": [
+   "mode-sieraden",
+   "accessoires",
+   "sjaals-mutsen"
+  ],
+  "grotek-8c579c8a93": [
+   "wonen",
+   "kaarsen-geur",
+   "kandelaars-lantaarns"
+  ],
+  "woodw-bbae996ce8": [
+   "wonen",
+   "kaarsen-geur",
+   "geurkaarsen"
+  ],
+  "bell-3e185cc00b": [
+   "wonen",
+   "kaarsen-geur",
+   "kandelaars-lantaarns"
+  ],
+  "bell-f5a744df5e": [
+   "mode-sieraden",
+   "kleding",
+   "kersttruien"
+  ],
+  "louiz-c49b9a4a17": [
+   "mode-sieraden",
+   "sieraden",
+   "kettingen"
+  ],
+  "bell-b65301f5e3": [
+   "mode-sieraden",
+   "kleding",
+   "kersttruien"
+  ],
+  "country-07a3571b5a": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "kado-da9b788bf2": [
+   "wonen",
+   "woontextiel",
+   "plaids"
+  ],
+  "emp-9df2a79690": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "bell-62ae85e5fe": [
+   "mode-sieraden",
+   "kleding",
+   "kersttruien"
+  ],
+  "kado-347434f7bf": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-10052fbb04": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "nedg-30a4e51911": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-1e813d41b2": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-ac2b0d6d48": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-59d980c093": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "hobbym-52438feb97": [
+   "eten-drinken",
+   "drankaccessoires",
+   "cocktailsets"
+  ],
+  "nedg-53d907e649": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-bf8e908154": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "nedg-545f141a5f": [
+   "elektronica",
+   "gaming",
+   "games"
+  ],
+  "bgs-da8fd7345e": [
+   "speelgoed",
+   "spellen",
+   "strategiespellen"
+  ],
+  "bgs-5971fc880e": [
+   "speelgoed",
+   "spellen",
+   "strategiespellen"
+  ],
+  "emp-810c21ef9c": [
+   "mode-sieraden",
+   "tassen-portemonnees",
+   "handtassen"
+  ],
+  "fotof-3bcf2fe71a": [
+   "wonen",
+   "foto-persoonlijk",
+   "foto-op-canvas-glas"
+  ],
+  "hobbym-562b0dfdce": [
+   "wonen",
+   "woondecoratie",
+   "vazen"
+  ],
+  "country-e8a8fa0023": [
+   "wonen",
+   "kaarsen-geur",
+   "kandelaars-lantaarns"
+  ],
+  "country-57c8349ba7": [
+   "wonen",
+   "kaarsen-geur",
+   "geurkaarsen"
+  ],
+  "kado-74c1606f2f": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-d8e6fe0f00": [
+   "speelgoed",
+   "puzzels",
+   "3d-puzzels"
+  ],
+  "bgs-907cf5ef2a": [
+   "speelgoed",
+   "spellen",
+   "strategiespellen"
+  ],
+  "dvzn-b3bd17a3c5": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "superz-946b4e6632": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "cadeau-9b65a711d5": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "superz-8179adcb87": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "superz-93820cbea3": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "anim-1d2bd3cdc3": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "superz-fa69dae4cd": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "emp-158c174b58": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "superz-ac77cfc418": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "superz-bab39b66d3": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "cartn-10a9496163": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "cadeau-89157ed70e": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "dgsw-c15c790f1b": [
+   "speelgoed",
+   "knutselen",
+   "knutselsets"
+  ],
+  "emp-3385e4532a": [
+   "hobby",
+   "schilderen-tekenen",
+   "kalligrafie-handlettering"
+  ],
+  "cadeau-412043fd7c": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "nedg-5c1470fc82": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dvzn-bcf306e8b9": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "dvzn-9fcc4ad333": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "cadeau-39333c9c72": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
   ]
  },
  "samen": {
@@ -29561,7 +29926,59 @@
   "myka-1100114789": "afgekeurd",
   "myka-11003287209": "afgekeurd",
   "bol-9200000102182814": "afgekeurd",
-  "bol-9300000134288182": "afgekeurd"
+  "bol-9300000134288182": "afgekeurd",
+  "bol-9300000132698511": "afgekeurd",
+  "bol-9300000057303342": "afgekeurd",
+  "bol-9300000191580808": "afgekeurd",
+  "dg-faabc11a5e": "afgekeurd",
+  "dvzn-737823": "afgekeurd",
+  "bol-9300000248031343": "afgekeurd",
+  "myka-1100157588": "afgekeurd",
+  "dw-7622201747411": "afgekeurd",
+  "myka-11001321091": "afgekeurd",
+  "cl-27160": "afgekeurd",
+  "bol-9300000318219075": "afgekeurd",
+  "cl-atmosphera-balletjes": "afgekeurd",
+  "cl-hema-dp-kaarten": "afgekeurd",
+  "bol-9300000398241531": "afgekeurd",
+  "myka-11001465188": "afgekeurd",
+  "fiftie-4e7b3fb0f4": "afgekeurd",
+  "dvzn-306381": "afgekeurd",
+  "bol-9300000246835763": "afgekeurd",
+  "dg-d7b24ee304": "afgekeurd",
+  "dvzn-435886": "afgekeurd",
+  "myka-11001282388": "afgekeurd",
+  "dk-00042764": "afgekeurd",
+  "bol-9300000035109722": "afgekeurd",
+  "as-5063975060443": "afgekeurd",
+  "pry-k2010": "afgekeurd",
+  "bol-9300000304073816": "afgekeurd",
+  "emp-ab9e2b4c6c": "afgekeurd",
+  "bol-9200000128141050": "afgekeurd",
+  "bol-9300000229499869": "afgekeurd",
+  "myka-11003437404": "afgekeurd",
+  "ww-wes13455274914": "afgekeurd",
+  "as-5063975003488": "afgekeurd",
+  "cl-11276": "afgekeurd",
+  "pry-k414": "afgekeurd",
+  "ww-mar74858219020": "afgekeurd",
+  "wk-97409902": "afgekeurd",
+  "cl-heilige-familie": "afgekeurd",
+  "bol-9300000222709096": "afgekeurd",
+  "myka-11001191234": "afgekeurd",
+  "bol-9300000316885444": "afgekeurd",
+  "bol-9300000193267761": "afgekeurd",
+  "cg-hover-hockey-voetbal-set": "afgekeurd",
+  "myka-11001137189": "afgekeurd",
+  "bol-9200000056489074": "afgekeurd",
+  "bol-9300000174665071": "afgekeurd",
+  "tf-107003281": "afgekeurd",
+  "cadeau-7f422d8fcf": "afgekeurd",
+  "bol-9300000192710306": "afgekeurd",
+  "bol-9300000044984873": "afgekeurd",
+  "cl-cheshire-pyjamabroek": "afgekeurd",
+  "myka-1010123102": "afgekeurd",
+  "bol-9200000119481045": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
