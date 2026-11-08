@@ -2114,15 +2114,16 @@
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
         '<div class="rz-held"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" decoding="async"></div>' +
-        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maken we een Sinterklaasgedicht?</h2><p>3 korte vragen. Tik een voorbeeld aan of typ zelf.</p></div>' +
+        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maken we een Sinterklaasgedicht?</h2><p>3 korte vragen. Tik voorbeelden aan of typ zelf.</p></div>' +
         '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>✦</span>Wat moet Sint weten?</div>' +
         '<div class="rz-velden">' +
           '<div class="rz-veld"><label for="rz-naam">Naam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
           '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
           /* 8-11-2026 (GO Marius): 3 vaste vragen met aantikbare voorbeelden in plaats van één open vak; zo komt het grappige voorval altijd in het gedicht. */
-          rijmVraag(1, 'rz-gewoonte', 'gewoonte', 'Wat doet hij of zij altijd?', 200, 'Bijv. is altijd de sleutels kwijt', ['is altijd de sleutels kwijt', 'is altijd te laat', 'hangt altijd op de bank', 'heeft het altijd koud', 'zit altijd te gamen', 'zingt altijd onder de douche', 'weet alles beter']) +
-          rijmVraag(2, 'rz-voorval', 'voorval', 'Wat ging er laatst grappig mis?', 250, 'Hoe preciezer, hoe grappiger', ['twee verschillende schoenen aan', 'verloor met darts van een kind', 'appte de verkeerde groep', 'zocht de bril op het hoofd', 'sliep in tijdens de film', 'liet de pizza aanbranden']) +
-          rijmVraag(3, 'rz-gekop', 'gekop', 'Waar is hij of zij gek op?', 150, 'Hier kiest Sint het hoofdcadeau bij', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
+          /* 8-11-2026 (GO Marius): algemene, positieve vragen; er hoeft niets mis te gaan. Vraag 3 mag leeg. */
+          rijmVraag(1, 'rz-type', 'type', 'Wat voor iemand is het?', 150, 'Bijv. gezellig en altijd druk', ['gezellig', 'behulpzaam', 'altijd druk', 'sportief', 'een echte grapjas', 'een beetje chaotisch', 'rustig', 'een echte regelaar'], true) +
+          rijmVraag(2, 'rz-gekop', 'gekop', 'Wat doet hij of zij graag?', 150, 'Hier kiest Sint het cadeau bij', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
+          rijmVraag(3, 'rz-typisch', 'typisch', 'Wat is typisch iets voor hem of haar? <small>(mag leeg)</small>', 200, 'Bijv. is altijd de sleutels kwijt', ['is altijd te laat', 'is altijd de sleutels kwijt', 'hangt graag op de bank', 'heeft het altijd koud', 'zingt onder de douche', 'weet alles beter', 'maakt overal een grapje over', 'zit de hele dag te appen']) +
           /* 8-11-2026 (Fable P1-13): eenvoudiger. Eerst alleen naam, wie en iets grappigs; budget, man/vrouw en scherpte staan achter 'Meer opties' (standaard €50, hilarisch). */
           '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €25, man/vrouw, hoe scherp)</small></summary>' +
           '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
@@ -2176,10 +2177,10 @@
   function rijmVerstuur(f) {
     if (RIJM_BEZIG) return;
     var uit = $('[data-rijm-uit]'), fout = $('[data-rijm-fout]');
-    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', gewoonte: (fd.get('gewoonte') || '').trim(), voorval: (fd.get('voorval') || '').trim(), gekop: (fd.get('gekop') || '').trim(), budget: Number(fd.get('budget') || 25), stand: fd.get('stand') || 'hilarisch' };
+    var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', type: (fd.get('type') || '').trim(), gekop: (fd.get('gekop') || '').trim(), typisch: (fd.get('typisch') || '').trim(), budget: Number(fd.get('budget') || 25), stand: fd.get('stand') || 'hilarisch' };
     var meld = function (t) { if (fout) { fout.innerHTML = '<p class="rz-fout">' + esc(t) + '</p>'; } };
     if (!gegevens.naam) { meld('Vul eerst een naam in.'); return; }
-    if ((gegevens.gewoonte + gegevens.voorval + gegevens.gekop).length < 6) { meld('Vul minstens één van de 3 vragen in. Tik gerust een voorbeeld aan.'); return; }
+    if (!gegevens.type && !gegevens.gekop) { meld('Vul vraag 1 of 2 in. Tik gerust een voorbeeld aan.'); return; }
     if (fout) fout.innerHTML = '';
     RIJM_LAST = gegevens; RIJM_BEZIG = true;
     rijmStap('wacht'); uit.innerHTML = rijmWacht(gegevens.naam);
