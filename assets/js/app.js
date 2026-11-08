@@ -2095,7 +2095,7 @@
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
   function rijmVraag(nr, id, naam, vraag, max, hulp, voorbeelden, meer) {
-    return '<div class="rz-veld breed rz-vraag"><label for="' + id + '"><span class="rz-nr">' + nr + '</span>' + vraag + '</label>' +
+    return '<div class="rz-veld breed rz-vraag"><label for="' + id + '"><span class="rz-nr">' + nr + '</span><span>' + vraag + '</span></label>' +
       '<input id="' + id + '" type="text" name="' + naam + '" maxlength="' + max + '" placeholder="' + esc(hulp) + '" autocomplete="off">' +
       '<div class="rz-vb" data-rz-vb="' + id + '"' + (meer ? ' data-meer="1"' : '') + ' aria-label="Voorbeelden, tik om in te vullen">' +
       voorbeelden.map(function (v) { return '<button type="button" aria-pressed="false">' + esc(v) + '</button>'; }).join('') + '</div></div>';
