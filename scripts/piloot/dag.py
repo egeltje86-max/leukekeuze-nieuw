@@ -27,9 +27,10 @@ def stap(naam, ok, tekst=''):
 def klaar(code, zin):
     rap['uitkomst'] = zin
     json.dump(rap, open(os.path.join(DATA, 'piloot-%s.json' % vandaag), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    try:
+    if not rap.get('logGeschreven'):
+      try:
         with open(os.path.join(ROOT, 'PILOOT-LOGBOEK.md'), 'a', encoding='utf-8') as f: f.write('- %s: %s\n' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M'), zin))
-    except Exception: pass
+      except Exception: pass
     print('PILOOT: ' + zin); sys.exit(code)
 
 # 1. nieuwste code
@@ -78,6 +79,11 @@ if not veranderd: klaar(0, 'Niets veranderd vandaag; controle schoon.')
 nz = rap['nazorg'] or {}
 zin = 'Piloot %s: %s prijzen bijgewerkt, %s uitverkocht van de lijsten; controle schoon' % (vandaag, nz.get('prijs', 0), nz.get('uitverkocht', 0))
 if arg('--niet-pushen'): klaar(0, zin + ' (niet gepusht, op verzoek).')
+# logboekregel vóór het vastleggen, zodat hij in dezelfde commit zit (controle Opus 8-11-2026)
+try:
+    with open(os.path.join(ROOT, 'PILOOT-LOGBOEK.md'), 'a', encoding='utf-8') as f: f.write('- %s: %s\n' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M'), zin + ', live gezet.'))
+    rap['logGeschreven'] = True
+except Exception: pass
 run(['git', 'add', '-A'])
 c, t = run(['git', 'commit', '-q', '-m', zin + '\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>']); stap('vastleggen', c == 0, t)
 c, t = run(['git', 'push', '-q', 'origin', 'HEAD:main', 'HEAD:verbouwing-boom']); stap('live zetten', c == 0, t)

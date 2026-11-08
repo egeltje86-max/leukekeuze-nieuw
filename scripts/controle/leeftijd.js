@@ -10,7 +10,7 @@ const fouten = [];
 const inBaby = p => (p.voor || []).includes('baby') || (p.ookIn || []).includes('cadeaus/baby-kraam') || (p.cat === 'cadeaus' && p.sub === 'baby-kraam');
 const VERDACHT = /\blego\b(?!.*duplo)|playmobil(?!.*(junior|1\.2\.3|123))|(?<!\d)(?:[3-9]|1[0-9])\s*\+|kleine onderdelen|small parts|verstikking/i;
 for (const p of P) {
-  if (p.leeftijd && p.leeftijd[0] >= 3 && inBaby(p)) fouten.push({ soort: 'baby-maar-3plus', id: p.id, titel: p.titel, leeftijd: p.leeftijd });
+  if (p.leeftijd && p.leeftijd[0] >= 3 && p.leeftijd[0] < 16 && inBaby(p)) fouten.push({ soort: 'baby-maar-3plus', id: p.id, titel: p.titel, leeftijd: p.leeftijd });
   if (p.leeftijd && p.leeftijd[0] <= 2 && VERDACHT.test(p.titel)) fouten.push({ soort: '0-2-maar-verdacht', id: p.id, titel: p.titel, leeftijd: p.leeftijd });
   if (!p.leeftijd && p.cat === 'speelgoed' && p.sub === 'baby-peuter' && VERDACHT.test(p.titel)) fouten.push({ soort: 'baby-peuter-onbekend-verdacht', id: p.id, titel: p.titel });
 }

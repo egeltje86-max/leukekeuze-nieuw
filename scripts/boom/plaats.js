@@ -55,7 +55,8 @@ function plaats(p) {
   /* Leeftijd en veiligheid (8-11-2026, Fable P0-2): speelgoed vanaf 3 jaar (of met kleine onderdelen) hoort niet in een babyselectie.
      Het product blijft op de site; alleen het label 'baby' en het vakje Baby & kraam vallen weg. Zit het in Baby & peuter en hoort het
      eigenlijk in een ander vak (afd/groep), dan gaat het daarheen. Onbekende leeftijd + speelgoed = ook niet bij baby (voorzichtig). */
-  if (p.leeftijd && p.leeftijd[0] >= 3) {
+  /* 8-11-2026 (controle Opus): alleen speelgoed-leeftijden (3 t/m 15). 18+ is een cadeau voor de ouders (zwangerschap, mama) en hoort juist wél bij Baby & kraam. */
+  if (p.leeftijd && p.leeftijd[0] >= 3 && p.leeftijd[0] < 16) {
     p.voor = (p.voor || []).filter((x) => x !== 'baby');
     p.ookIn = (p.ookIn || []).filter((x) => x !== 'cadeaus/baby-kraam');
     if (p.cat === 'cadeaus' && p.sub === 'baby-kraam' && p.afd) { p.cat = p.afd; p.sub = p.groep; }
