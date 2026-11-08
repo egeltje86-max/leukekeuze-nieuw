@@ -45,13 +45,15 @@ Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 - Correcties: `scripts/boom/correcties.json` (vak, prijs `[nieuw, van]`, status, ...). Altijd wegschrijven met `indent=1, ensure_ascii=False`. Zet een regel in `_uitleg`.
 - Toppers per pagina: `assets/js/topkeuze.js`. Black Friday: `LK_TOPKEUZE["/collectie/black-friday"]` = Marius' eigen deals bovenaan.
 - **Bouwen + controleren** (duurt ongeveer 12 minuten):
-  `node scripts/maak-paginas.js && node scripts/controle/check.js ./ /tmp/rapport.json`
-  Schoon = sitemapMist, redirectKapot, kapotteLinks, fotoMist, linkZonderCode en zonderVak zijn allemaal 0.
+  `node scripts/maak-paginas.js && node scripts/controle/alles.js . keurkamer/data`
+  Schoon = de gewone controle (sitemapMist, redirectKapot, kapotteLinks, fotoMist, linkZonderCode, zonderVak allemaal 0) plus budget, leeftijd, links en doelgroep zonder fouten. De uitkomst staat in keurkamer/data/controle-laatste.json.
+- Vaste regels in `scripts/boom/plaats.js`: een product duurder dan het budget van een vak ('onder €15') valt daar automatisch uit; speelgoed 3+ (of met kleine onderdelen) valt automatisch uit baby-selecties. Verkeerd ingedeeld in een collectie? `correcties.json` → `nietIn[id] = ['cadeaus/grappig']`.
+- Prijzen: elke productpagina toont de controledatum; ouder dan 7 dagen = 'ca.' en verwijzing naar de winkel. Korting alleen via een echte van-prijs. Geen sterren of 'in de aanbieding' in teksten zonder bron.
   Pas je app.js of data.js aan tijdens het bouwen? Stop de bouw en begin opnieuw.
 - **Nooit iets pushen dat niet gebouwd en gecontroleerd is.**
 - Push: `git fetch -q origin && (git merge-base --is-ancestor origin/main HEAD || git merge origin/main --no-edit -q) && git push -q origin HEAD:main HEAD:verbouwing-boom`
 - De repo is openbaar: geen GoatCounter- of Search Console-data, geen sleutels en geen persoonlijke dingen in git.
-- Elke nacht om 03:30 draait `scripts/nachtelijk.py` op de laptop (zoekindex plus een rapport over prijzen en voorraad). Alles automatisch laten toepassen kan pas na een go van Marius.
+- **Automatische piloot** (sinds 8-11-2026, zie `scripts/piloot/LEES-MIJ.md`): 03:30 laptop (`scripts/nachtelijk.py`: feeds, zoekindex, nachtrapport in `keurkamer/nazorg/`), 06:43 cloud (geplande taak 'LeukeKeuze piloot dagelijks': `scripts/piloot/dag.py` = nazorg toepassen, bouwen, controleren, live; daarna max. 15 nieuwe producten op trends), maandag 08:11 'LeukeKeuze weekoverzicht'. Marius hoort alleen iets als het echt moet. Logboek: `PILOOT-LOGBOEK.md`.
 
 ## 6. Veiligheid (harde regels)
 - Log nooit in met wachtwoorden van Marius, ook niet bij TradeTracker, Daisycon, Awin of bol. Kraak geen CAPTCHA's.
@@ -65,4 +67,5 @@ Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 - Bezoekers komen vooral rechtstreeks, daarna via **ChatGPT** (ongeveer 4x zoveel als via Google), daarna Google. Bijna iedereen zit op de telefoon.
 - Goed lopen: grappige en originele cadeaus onder €25, de Voor wie-pagina's (tieners/gaming, haar, collega, kinderen), Sint onder €15.
 - Google stuurt vooral bezoekers naar productpagina's (long-tail).
-- Op de telefoon zie je op het eerste scherm nog geen product, prijs of knop. Dat is een bekend verbeterpunt (eerst een voorbeeld laten zien).
+- Op de telefoon staan prijs en knop nu op het eerste scherm (8-11-2026); lange intro's klappen in met 'Lees meer'.
+- Marius wil zo min mogelijk doen (8-11-2026): geen nieuwe kies- of keurlijsten sturen tenzij hij erom vraagt. De piloot doet het onderhoud.
