@@ -762,7 +762,8 @@
     var achter = '';
     /* Op een telefoon een kleinere, al bijgesneden versie van de banner (-mobiel.webp): scheelt zo'n 70% aan data. */
     if (o.banner) achter = '<div class="achter"><picture><source media="(max-width: 759px)" srcset="' + esc(o.banner.replace('.webp', '-mobiel.webp')) + '"><img src="' + esc(o.banner) + '" alt="" fetchpriority="high"></picture></div>';
-    else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(o.vaag) + '" alt=""></div>';
+    /* Snelheid (8-11-2026, GO Marius): de vage achtergrond is het grootste beeld bovenaan (LCP). Hij wordt toch vervaagd, dus de kleine versie (-klein) is genoeg; en hij krijgt voorrang. */
+    else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(kleinBeeld(o.vaag)) + '" alt="" fetchpriority="high" decoding="async"></div>';
     return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + (o.klasse ? ' ' + o.klasse : '') + '">' + achter +
       '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p class="intro' + (o.tekst.length > 110 ? ' lang' : '') + '">' + esc(o.tekst) + '</p>' + (o.tekst.length > 110 ? '<button type="button" class="intro-meer" data-intro-meer aria-expanded="false">Lees meer</button>' : '') : '') + '</div></section>';
   }
@@ -4474,10 +4475,13 @@
     werkTellersBij();
     toon();
   }
-  if (window.LK_PRODUCTEN) start();
+  /* Snelheid (8-11-2026): topkeuze.js laadt nu ook 'async'. We starten als de productlijst er is én de toppers (of na 6 seconden zonder toppers, als vangnet). */
+  var T_START = Date.now();
+  function klaarVoorStart() { return window.LK_PRODUCTEN && (window.LK_TOPKEUZE || Date.now() - T_START > 6000); }
+  if (klaarVoorStart()) start();
   else {
-    window.addEventListener('lk-producten', start);
+    window.addEventListener('lk-producten', function () { if (klaarVoorStart()) start(); });
     /* Mocht het seintje om wat voor reden niet komen (oude browser): even later zelf kijken. */
-    var wacht = setInterval(function () { if (window.LK_PRODUCTEN) { clearInterval(wacht); start(); } }, 200);
+    var wacht = setInterval(function () { if (klaarVoorStart()) { clearInterval(wacht); start(); } }, 150);
   }
 })();
