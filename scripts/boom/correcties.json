@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak. 8-11-2026 (go Marius, keuze 1B): Dameshorloges vervangen door 36 horloges die Marius in de Superkeurkamer koos (van-prijs zoals de winkel hem geeft). De oude dameshorloges zijn afgekeurd (ze sturen door naar hun vakje); bijzondere oude blijven: Fossil ringhorloge naar Ringen, Invicta-horloge aan ketting naar Kettingen, Casio Vintage (unisex) naar Herenhorloges. Casio A168 van bol was dubbel met cl-casio-a168.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -10879,7 +10879,7 @@
   "bol-9200000026739823": [
    "mode-sieraden",
    "horloges",
-   "dameshorloges"
+   "herenhorloges"
   ],
   "bol-9300000225916975": [
    "speelgoed",
@@ -19255,6 +19255,221 @@
    "wonen",
    "koffie-thee-zetten",
    "mokken-theeglazen"
+  ],
+  "we-c505193929": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-2dce3d89c0": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-8ecedeeb4d": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-e0a4d4e0cd": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-1b4ab39792": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-876d982b5c": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-17a3f9f6b1": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-1e29809df5": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-cd6225030b": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-0297c15b37": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-34cd0028bb": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-ac0c839061": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-952ba379b2": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-6f6e3bf90e": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-406c5a450f": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-ef1bea440d": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-52a568aebb": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-d5637e9d5f": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-1ab5112bf2": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-4aab742ba3": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "we-24ccb4f87e": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-bfe04f83f8": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-fb4f1834be": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-115d94b618": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-859d2da0d8": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-08d2be2c5d": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-15c0ec276f": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-348e0bc07e": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-5afe1d198e": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-a4fb5ba1d6": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-56647850ff": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-71f19c84ce": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-fe762e87d1": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-cb28b57a4d": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "inv-e842699001": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "ts24-444188744b": [
+   "mode-sieraden",
+   "horloges",
+   "dameshorloges"
+  ],
+  "bol-9300000169347964": [
+   "mode-sieraden",
+   "sieraden",
+   "ringen"
+  ],
+  "inv-27386": [
+   "mode-sieraden",
+   "sieraden",
+   "kettingen"
+  ],
+  "bol-9200000112366639": [
+   "mode-sieraden",
+   "horloges",
+   "herenhorloges"
+  ],
+  "bol-9300000042177624": [
+   "mode-sieraden",
+   "horloges",
+   "herenhorloges"
+  ],
+  "cl-casio-a168": [
+   "mode-sieraden",
+   "horloges",
+   "herenhorloges"
+  ],
+  "cl-casio-f91-roze": [
+   "mode-sieraden",
+   "horloges",
+   "herenhorloges"
+  ],
+  "bol-9200000026739741": [
+   "mode-sieraden",
+   "horloges",
+   "herenhorloges"
   ]
  },
  "samen": {
@@ -29443,11 +29658,11 @@
   "pry-k102": "uitverkocht",
   "pry-k1914": "uitverkocht",
   "inv-28208": "uitverkocht",
-  "inv-28915": "uitverkocht",
-  "inv-28047": "uitverkocht",
-  "inv-21223": "uitverkocht",
+  "inv-28915": "afgekeurd",
+  "inv-28047": "afgekeurd",
+  "inv-21223": "afgekeurd",
   "pry-nib224": "uitverkocht",
-  "pry-g5412": "uitverkocht",
+  "pry-g5412": "afgekeurd",
   "dk-44140524": "uitverkocht",
   "dk-00044734": "uitverkocht",
   "ww-wes63622218491": "uitverkocht",
@@ -30222,7 +30437,34 @@
   "bol-9300000123124986": "afgekeurd",
   "999g-999gal01": "afgekeurd",
   "dk-00045309": "afgekeurd",
-  "cl-kat-leeslamp": "afgekeurd"
+  "cl-kat-leeslamp": "afgekeurd",
+  "cl-tissot-prx35": "afgekeurd",
+  "cl-mk-darci": "afgekeurd",
+  "topdea-d93644d0ce": "afgekeurd",
+  "cl-cluse-minuit": "afgekeurd",
+  "bol-9200000072470865": "afgekeurd",
+  "cl-skagen-anita": "afgekeurd",
+  "bol-9300000037600518": "afgekeurd",
+  "cl-citizen-eu6074": "afgekeurd",
+  "bol-9300000171206708": "afgekeurd",
+  "bol-9300000156755549": "afgekeurd",
+  "cl-dw-petite": "afgekeurd",
+  "inv-29213": "afgekeurd",
+  "cl-fossil-carlie": "afgekeurd",
+  "inv-23341": "afgekeurd",
+  "inv-25663": "afgekeurd",
+  "bol-9300000076366157": "afgekeurd",
+  "bol-9300000137560757": "afgekeurd",
+  "cl-olivia-burton": "afgekeurd",
+  "cl-fossil-es5408": "afgekeurd",
+  "bol-9200000026739657": "afgekeurd",
+  "pry-kom276": "afgekeurd",
+  "pry-nib133": "afgekeurd",
+  "pry-nib91": "afgekeurd",
+  "pry-lor93": "afgekeurd",
+  "pry-lor69": "afgekeurd",
+  "bol-9200000107260788": "afgekeurd",
+  "bol-9300000038987207": "afgekeurd"
  },
  "prijs": {
   "lr-350322363000": [
