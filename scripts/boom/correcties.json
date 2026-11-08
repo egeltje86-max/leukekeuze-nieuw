@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -28550,8 +28550,7 @@
    null
   ],
   "lo-138752812": [
-   51.95,
-   null
+   44.95
   ],
   "lo-151412221": [
    97.95,
@@ -28626,8 +28625,7 @@
    null
   ],
   "grotek-4b17d7be4d": [
-   27.6,
-   null
+   31.0
   ],
   "cl-lego-f1": [
    23.99,
@@ -28746,8 +28744,7 @@
    null
   ],
   "cl-ooni-karu12": [
-   349,
-   null
+   289.0
   ],
   "ww-prn32826971940": [
    57.99,
@@ -30871,7 +30868,7 @@
    null
   ],
   "bol-9300000239958237": [
-   188
+   159.0
   ],
   "bol-9300000228952527": [
    202
@@ -32755,7 +32752,7 @@
    47.99
   ],
   "dgsw-a8f3035ef8": [
-   62
+   69.0
   ],
   "dgsw-b43c142dad": [
    40.99,
@@ -38263,6 +38260,183 @@
   ],
   "cl-basilisk": [
    43.99
+  ],
+  "bol-9300000180330843": [
+   39.42
+  ],
+  "bol-9300000151157925": [
+   87.79
+  ],
+  "bol-9300000050712934": [
+   141.38
+  ],
+  "bol-9200000064854519": [
+   91.24
+  ],
+  "bol-9300000007170653": [
+   94.59
+  ],
+  "bol-9200000094413158": [
+   21.99
+  ],
+  "cb-lenovo-tab-kids": [
+   139.0
+  ],
+  "a-coolblue-nl-2857fe6592": [
+   125.0
+  ],
+  "a-coolblue-nl-35931b887f": [
+   100.0
+  ],
+  "cl-agfa-ac9000": [
+   70.0
+  ],
+  "cl-lg-b6": [
+   899.0
+  ],
+  "cl-ninja-slushi": [
+   229.0
+  ],
+  "cl-philips-bt5780": [
+   54.0
+  ],
+  "cl-weber-kettle": [
+   120.0
+  ],
+  "cl-theragun-relief": [
+   106.0
+  ],
+  "cl-pixel5": [
+   339.0
+  ],
+  "supz-dc1454c082": [
+   29.0
+  ],
+  "supz-8851c878f1": [
+   15.0
+  ],
+  "fiftie-06dee9ff79": [
+   299.0
+  ],
+  "grotek-75e646198f": [
+   59.5
+  ],
+  "nedgam-6ae42c81d2": [
+   89.99
+  ],
+  "nedg-3f231c0b49": [
+   32.99
+  ],
+  "nedg-93dfb2fef9": [
+   15.0
+  ],
+  "smartp-c4444bc994": [
+   26.99
+  ],
+  "smartp-61af9185cb": [
+   59.99
+  ],
+  "smartp-fe122a4434": [
+   18.99
+  ],
+  "sp-babyset-nijntje": [
+   41.99
+  ],
+  "smartp-d7c0f300e2": [
+   19.99
+  ],
+  "smartp-5da8bfa665": [
+   38.99
+  ],
+  "smartp-0130c86d9c": [
+   14.99
+  ],
+  "smartp-f114dea3c5": [
+   32.99
+  ],
+  "cg-rock-on-koptelefoonhouder": [
+   26.95
+  ],
+  "lo-91992688": [
+   104.95
+  ],
+  "cl-12448": [
+   48.0
+  ],
+  "dvzn-611": [
+   22.94
+  ],
+  "dvzn-936141": [
+   12.74
+  ],
+  "dvzn-374901": [
+   12.74
+  ],
+  "dvzn-849140": [
+   12.74
+  ],
+  "joybuy-ddd986006f": [
+   103.99
+  ],
+  "joybuy-e48be4f9b4": [
+   73.59
+  ],
+  "ww-meraki-pampering": [
+   39.95
+  ],
+  "westwing-729efa318b": [
+   44.99
+  ],
+  "westwing-c10c5e2914": [
+   34.99
+  ],
+  "westwing-220c138689": [
+   21.99
+  ],
+  "westwing-daf52862b5": [
+   94.99
+  ],
+  "westwing-569fea3eff": [
+   79.99
+  ],
+  "westwing-7e9e5c4623": [
+   39.99
+  ],
+  "westwing-da783c678e": [
+   44.99
+  ],
+  "westwing-94ef7963c6": [
+   32.99
+  ],
+  "westwing-a88770a2f2": [
+   37.99
+  ],
+  "westwing-057650ccad": [
+   72.99
+  ],
+  "westwing-ec5153aa61": [
+   149.0
+  ],
+  "westwing-ea864fdd54": [
+   189.0
+  ],
+  "westwing-e7f208f572": [
+   25.99
+  ],
+  "westwing-ab188ccbdc": [
+   119.0
+  ],
+  "westwing-2d3b7e0cdc": [
+   29.99
+  ],
+  "westwing-09ec762bac": [
+   22.99
+  ],
+  "prydli-7d562296a0": [
+   82.5
+  ],
+  "bp-zaden-bedankt": [
+   15.99
   ]
  },
  "shop": {
