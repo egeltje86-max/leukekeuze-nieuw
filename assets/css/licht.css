@@ -1663,3 +1663,151 @@ body.nova4-target .sectie.verder .tekstlinks a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   body.nova4-overzicht .keuzes.groot .keuzerond { transition: none; }
 }
+
+/* ===== NOVA-005 (9-11-2026, ontwerp Nova): zoeken, filters en navigatie. Alleen binnen html.nova5 (proef: ?proef=nova5). ===== */
+
+/* Zoekveld: bestaande layout, nieuwe verfijnde omlijsting. */
+html.nova5 .zoekrij .zoek,
+html.nova5 #app .zoek {
+  background: #FFFFFF;
+  border: 1px solid #E6D8C1;
+  box-shadow: 0 3px 14px rgba(10, 16, 32, .13), inset 0 1px 0 #FFFFFF;
+}
+html.nova5 .zoek:focus-within {
+  border-color: #B8862E;
+  box-shadow: 0 0 0 3px rgba(184, 134, 46, .24), 0 6px 18px rgba(10,16,32,.13);
+}
+html.nova5 .zoek input { font-size: 16px; color: #141A2A; }
+html.nova5 .zoek input::placeholder { color: #626B7D; opacity: 1; }
+html.nova5 .zoek button {
+  background: linear-gradient(180deg, #FCE6A6, #E5B454);
+  color: #0A1020;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65), 0 2px 5px rgba(40,25,7,.16);
+}
+html.nova5 .zoek button:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+/* Op productpagina geen extra hoogte: prijs + winkelknop blijven in beeld. */
+html.nova5 body.pag-product .zoekrij .zoek { padding-top: 2px; padding-bottom: 2px; }
+
+/* Zoeksuggesties: laat de suggesties zelf en hun links volledig intact. */
+html.nova5 .zoek-tips {
+  border: 1px solid #E6D8C1;
+  border-radius: 16px;
+  background: #FFFFFF;
+  box-shadow: 0 14px 34px rgba(10,16,32,.2);
+}
+html.nova5 .zoek-tips a { color: #141A2A; font-size: 15.5px; line-height: 1.35; }
+html.nova5 .zoek-tips a:hover,
+html.nova5 .zoek-tips a:focus-visible { background: #FFF8EB; color: #141A2A; }
+html.nova5 .zoek-tips .zt-prijs,
+html.nova5 .zoek-tips .zt-alles { color: #8F6620; }
+
+/* De bestaande werkbalk. Geen wijziging aan resultaatvolgorde of filtering. */
+html.nova5 .werkbalk {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFCF7 100%);
+  border: 1px solid #E5D9C6;
+  border-radius: 17px;
+  box-shadow: 0 4px 14px rgba(10,16,32,.065);
+}
+html.nova5 .werkbalk .chip[aria-pressed="true"],
+html.nova5 .werkbalk .chip.actief { background: #0A1020; color: #FCE6A6; border-color: #B8862E; }
+html.nova5 .werkbalk .chip:focus-visible,
+html.nova5 .werkbalk .sorteer select:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+html.nova5 .actief-label { background: #FFF8EB; border-color: #D6BA82; color: #654713; }
+html.nova5 .actief-wis { color: #5F667A; }
+
+/* Mobiele Filteren / Sorteren: bestaande knoppen en bestaande select behouden. */
+@media (max-width: 759px) {
+  html.nova5 .mb-filter {
+    background: linear-gradient(180deg, #1B2949, #0A1020);
+    color: #FFFFFF;
+    border: 1px solid #C9A45C;
+    box-shadow: 0 4px 12px rgba(10,16,32,.17);
+  }
+  html.nova5 .mb-sorteer {
+    background: #FFFCF7;
+    border: 1.5px solid #D1B781;
+    color: #141A2A;
+    box-shadow: 0 2px 8px rgba(10,16,32,.065);
+  }
+  html.nova5 .mb-filter:focus-visible,
+  html.nova5 .mb-sorteer:focus-within { outline: 3px solid #186D92; outline-offset: 2px; }
+}
+
+/* Stap-voor-stap filter — alleen visuele details; VONK-filter uitgesloten. */
+html.nova5 .filterpaneel:not(.vonk-paneel) .filter-blad {
+  background: #FFFCF7;
+  border-top-color: #D6BA82;
+  box-shadow: 0 -16px 40px rgba(10,16,32,.16);
+}
+html.nova5 .filterpaneel.fp2 .fp2-kop {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E7DCCB;
+}
+html.nova5 .filterpaneel.fp2 .fp2-kop strong { color: #141A2A; }
+html.nova5 .filterpaneel.fp2 .fp2-rij,
+html.nova5 .filterpaneel.fp2 .fp2-optie {
+  color: #141A2A;
+  border-bottom-color: #EAE1D5;
+}
+html.nova5 .filterpaneel.fp2 .fp2-rij:hover,
+html.nova5 .filterpaneel.fp2 .fp2-optie:hover { background: #FFF8EC; }
+html.nova5 .filterpaneel.fp2 .fp2-optie.aan {
+  background: #FFF4D9;
+  color: #141A2A;
+}
+html.nova5 .filterpaneel.fp2 .fp2-label {
+  background: #FFF5DF;
+  border-color: #C9A45C;
+}
+html.nova5 .filterpaneel.fp2 .fp2-voet { background: #FFFFFF; }
+html.nova5 .filterpaneel:not(.vonk-paneel) .filter-sluit:focus-visible,
+html.nova5 .filterpaneel:not(.vonk-paneel) .fp2-terug:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+
+/* Desktop hoofdmenu en megamenu: bestaande plaatsing en aantal kolommen. */
+html.nova5 .hoofdnav a:hover,
+html.nova5 .hoofdnav button:hover,
+html.nova5 .hoofdnav [aria-expanded="true"],
+html.nova5 .hoofdnav [aria-current="page"] {
+  background: rgba(255,255,255,.07);
+  color: #F8D88B;
+}
+html.nova5 .hoofdnav a:focus-visible,
+html.nova5 .hoofdnav button:focus-visible { outline: 2px solid #F2CB74; outline-offset: 2px; }
+html.nova5 .megamenu {
+  background: #FFFCF7;
+  border-bottom: 1px solid #D1B781;
+  box-shadow: 0 18px 34px rgba(10,16,32,.18);
+}
+html.nova5 .megamenu h3 a { color: #8F6620; }
+html.nova5 .megamenu li a { color: #30384A; }
+html.nova5 .megamenu li a:hover,
+html.nova5 .megamenu li a:focus-visible { color: #0A1020; background: #FFF3D8; }
+
+/* Mobiele lade: geen verandering aan openen/sluiten, scroll of submenu-logica. */
+html.nova5 .lade { background: #FFFCF7; border-right-color: #D8C5A2; }
+html.nova5 .lade-kop { background: #FFFFFF; border-bottom-color: #E7DCCB; }
+html.nova5 .lade-uitgelicht { border-color: #E1CEAA; }
+html.nova5 .lade-label { color: #8F6620; }
+html.nova5 .lade li + li { border-top-color: #E8DECd; }
+html.nova5 .lade-rij { color: #141A2A; font-size: 16px; }
+html.nova5 .lade-rij[aria-expanded="true"] { color: #8F6620; }
+html.nova5 .lade-subs a { color: #40485A; }
+html.nova5 .lade-subs a:focus-visible,
+html.nova5 .lade-rij:focus-visible,
+html.nova5 .lade-links a:focus-visible { outline: 2px solid #186D92; outline-offset: 2px; }
+
+/* Mobiele onderbalk: behoud vier bestaande tabbladen, hoogte en positie. */
+html.nova5 .onderbalk {
+  background: rgba(10,16,32,.98);
+  border-top: 1px solid rgba(201,164,92,.5);
+  box-shadow: 0 -5px 18px rgba(10,16,32,.16);
+}
+html.nova5 .onderbalk [aria-current="page"] { color: #F8D88B; }
+html.nova5 .onderbalk a:focus-visible,
+html.nova5 .onderbalk button:focus-visible { outline: 2px solid #F8D88B; outline-offset: -3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.nova5 .zoek button,
+  html.nova5 .onderbalk a,
+  html.nova5 .onderbalk button { transition: none; }
+}
