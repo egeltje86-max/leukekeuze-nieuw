@@ -140,6 +140,8 @@
     if (window.LK_PRIJS_OUD && window.LK_PRIJS_OUD[id]) id = window.LK_PRIJS_OUD[id]; /* oude adressen (tot10, tot50, boven50) */
     var f = PRIJZEN.find(function (p) { return p.id === id; }); if (f) return f;
     /* Eigen budget uit VONK-tekst (fase 3): 'tot40' = tot €40, 'vanaf75' = vanaf €75. */
+    var mr = /^r(\d{1,4})-(\d{1,4})$/.exec(id || ''); /* 9-11-2026: eigen minimum en maximum in het nieuwe filter */
+    if (mr) return { id: id, label: '€' + mr[1] + ' – €' + mr[2], min: +mr[1], max: +mr[2] };
     var m = /^(tot|vanaf)(\d{1,4})$/.exec(id || '');
     if (m) return m[1] === 'tot' ? { id: id, label: 'Tot €' + m[2], min: 0, max: +m[2] } : { id: id, label: 'Vanaf €' + m[2], min: +m[2], max: Infinity };
     return PRIJZEN[0];
@@ -436,6 +438,7 @@
     if (q.merk && merkVan(p).toLowerCase() !== String(q.merk).toLowerCase()) return false;
     if (q.winkel && String(p.shop || '').toLowerCase() !== String(q.winkel).toLowerCase()) return false;
     if (q.soort && soortVan(p).toLowerCase() !== String(q.soort).toLowerCase()) return false;
+    if (q.sg && p.afd !== q.sg && (p.afd + '/' + p.groep) !== q.sg) return false;
     if (q.afd && p.afd !== q.afd) return false;
     return true;
   }
@@ -490,7 +493,165 @@
   }
   /* Mobiel: knop 'Filter & sorteren' die onderin blijft staan als de werkbalk uit beeld is.
      Tik je erop, dan schuift een paneel omhoog met de budgetknoppen (en sortering). Wens van Marius, 24-10-2026. */
+  /* ================== NIEUW FILTER (9-11-2026, opdracht via Marius; VOORBEELD op Voor haar) ==================
+     Eén scherm tegelijk: hoofdscherm met rijen (Prijs, Soort cadeau, Merk, Voor wie …) en per rij een eigen keuzescherm.
+     Kiezen past het aantal direct aan; pas met 'Toon x cadeaus' verandert de pagina. Sorteren blijft apart (knop Sorteren). */
+  var FILTER2 = !!window.LK_FILTER2 || (function () { try { if (/[?&]proef=filter(&|$)/.test(location.search)) sessionStorage.setItem('lkf2', '1'); return sessionStorage.getItem('lkf2') === '1'; } catch (e) { return false; } })(); /* voorbeeld nieuw filter: alleen met ?proef=filter */
+  var FP = null;
+  function fp2Aan(pad) { return FILTER2 && (window.LK_FILTER2_OVERAL || /^\/voor\/haar(\/|$)/.test(pad)); }
+  function fp2Shell(pad, knoppen) {
+    return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filteren</button>' +
+      '<div class="filterpaneel fp2" data-filterpaneel data-fp2-pad="' + esc(pad) + '" data-fp2-knoppen="' + esc((knoppen || []).join(',')) + '" hidden>' +
+      '<button type="button" class="filter-achter" data-filter-dicht aria-label="Sluiten" tabindex="-1"></button>' +
+      '<div class="filter-blad fp2-blad" role="dialog" aria-modal="true" aria-label="Filteren"></div></div>';
+  }
+  var AFDNAAM = null, GROEPNAAM = null;
+  function fp2Namen() {
+    if (AFDNAAM) return; AFDNAAM = {}; GROEPNAAM = {};
+    (window.LK_CATEGORIEEN || []).forEach(function (c) { if (c.verborgen) return; AFDNAAM[c.slug] = c.naam; (c.subs || []).forEach(function (g) { GROEPNAAM[c.slug + '/' + g.slug] = g.naam; }); });
+  }
+  function fp2Tel(nq) { return TEL ? TEL(nq) : 0; }
+  function fp2Met(k, v) { var nq = Object.assign({}, FP.q); if (v) nq[k] = v; else delete nq[k]; return nq; }
+  /* Soort cadeau: de hoogste laag van de boom waarin de producten van deze pagina echt verschillen (afdeling > groep > vakje). */
+  function fp2Soorten() {
+    fp2Namen();
+    var basis = (BASIS || []).filter(function (p) { return p.afd; });
+    var tel = function (f) { var t = {}; basis.forEach(function (p) { var k = f(p); if (k) t[k] = (t[k] || 0) + 1; }); return t; };
+    var afd = tel(function (p) { return p.afd; }), grp = tel(function (p) { return p.afd + '/' + p.groep; });
+    var vol = function (t) { return Object.keys(t).filter(function (k) { return t[k] >= MIN_KNOP; }); };
+    var laag = vol(afd).length >= 2 ? 'afd' : vol(grp).length >= 2 ? 'groep' : 'vak';
+    var groepen = laag === 'afd' ? vol(afd).map(function (k) { return { id: k, naam: AFDNAAM[k] || k }; })
+      : laag === 'groep' ? vol(grp).map(function (k) { return { id: k, naam: GROEPNAAM[k] || k }; }) : [];
+    return { laag: laag, groepen: groepen };
+  }
+  function fp2Vakken(groepId) {
+    var t = {};
+    (BASIS || []).forEach(function (p) { if (!p.afd) return; if (groepId && p.afd !== groepId && (p.afd + '/' + p.groep) !== groepId) return; var n = soortVan(p); if (n) t[n] = (t[n] || 0) + 1; });
+    return Object.keys(t).filter(function (k) { return t[k] >= MIN_KNOP; });
+  }
+  function fp2Merken() {
+    var t = {}; (BASIS || []).forEach(function (p) { var m = merkVan(p); if (m) t[m] = (t[m] || 0) + 1; });
+    return Object.keys(t).filter(function (k) { return t[k] >= 2; });
+  }
+  function fp2Rij(actie, titel, waarde, n, aan) {
+    return '<button type="button" class="fp2-rij' + (aan ? ' aan' : '') + '" data-fp2="' + esc(actie) + '"><span class="fp2-t">' + titel + '</span>' +
+      (waarde ? '<span class="fp2-w">' + esc(waarde) + '</span>' : '') + (typeof n === 'number' ? '<span class="fp2-n">' + getal(n) + '</span>' : '') +
+      '<span class="fp2-pijl" aria-hidden="true">›</span></button>';
+  }
+  function fp2Optie(actie, titel, n, aan) {
+    return '<button type="button" class="fp2-optie' + (aan ? ' aan' : '') + '" data-fp2="' + esc(actie) + '" aria-pressed="' + !!aan + '"' + (n === 0 && !aan ? ' disabled' : '') + '>' +
+      '<span class="fp2-vink" aria-hidden="true"></span><span class="fp2-t">' + titel + '</span>' + (typeof n === 'number' ? '<span class="fp2-n">' + getal(n) + '</span>' : '') + '</button>';
+  }
+  function fp2Gekozen() {
+    var q = FP.q, uit = [];
+    if (q.prijs && q.prijs !== 'alle') uit.push(['prijs', prijsFilter(q.prijs).label]);
+    if (q.soort) uit.push(['soort', q.soort]); else if (q.sg) { fp2Namen(); uit.push(['sg', AFDNAAM[q.sg] || GROEPNAAM[q.sg] || q.sg]); }
+    if (q.merk) uit.push(['merk', q.merk]);
+    if (q.voor) { var vw = VOOR_WIE.filter(function (v) { return v[0] === q.voor; })[0]; uit.push(['voor', 'Voor ' + (vw ? vw[1].toLowerCase() : q.voor)]); }
+    knopSets(FP.knoppen, q).forEach(function (k) { if (q[k.param]) { var o = k.opties.filter(function (x) { return x[0] === q[k.param]; })[0]; uit.push([k.param, o ? o[1] : q[k.param]]); } });
+    return uit;
+  }
+  function fp2Teken() {
+    var blad = $('.fp2-blad'); if (!blad || !FP) return;
+    var q = FP.q, sch = FP.scherm, kop = '', inhoud = '';
+    var terug = function (titel) { return '<div class="fp2-kop"><button type="button" class="fp2-terug" data-fp2="terug" aria-label="Terug">‹</button><strong>' + esc(titel) + '</strong><span></span></div>'; };
+    if (sch === 'hoofd') {
+      kop = '<div class="fp2-kop"><span></span><strong>Filteren</strong><button type="button" class="filter-sluit" data-filter-dicht aria-label="Sluiten">' + ic('sluit') + '</button></div>';
+      var gek = fp2Gekozen();
+      inhoud = (gek.length ? '<div class="fp2-gekozen" aria-label="Gekozen filters">' + gek.map(function (g) { return '<button type="button" class="fp2-label" data-fp2="weg:' + esc(g[0]) + '" aria-label="' + esc(g[1]) + ' weghalen">' + esc(g[1]) + ' <span aria-hidden="true">✕</span></button>'; }).join('') + '</div>' : '<p class="fp2-hulp">Waar wil je op letten? Kies wat je wilt, het aantal cadeaus past zich meteen aan.</p>');
+      inhoud += fp2Rij('naar:prijs', 'Prijs', q.prijs && q.prijs !== 'alle' ? prijsFilter(q.prijs).label : 'Alle prijzen', null, q.prijs && q.prijs !== 'alle');
+      var so = fp2Soorten();
+      if (so.groepen.length >= 2 || fp2Vakken('').length >= 2) inhoud += fp2Rij('naar:soort', 'Soort cadeau', q.soort || (q.sg ? (AFDNAAM[q.sg] || GROEPNAAM[q.sg]) : 'Alles'), null, q.soort || q.sg);
+      if (fp2Merken().length >= 2) inhoud += fp2Rij('naar:merk', 'Merk', q.merk || 'Alle merken', null, q.merk);
+      if (FP.metVoor) inhoud += fp2Rij('naar:voor', 'Voor wie', q.voor ? (VOOR_WIE.filter(function (v) { return v[0] === q.voor; })[0] || ['', q.voor])[1] : 'Iedereen', null, q.voor);
+      knopSets(FP.knoppen, q).forEach(function (k) { var o = k.opties.filter(function (x) { return x[0] === q[k.param]; })[0]; inhoud += fp2Rij('naar:knop:' + k.param, esc(k.titel), o ? o[1] : 'Alles', null, !!o); });
+    } else if (sch === 'prijs') {
+      kop = terug('Prijs');
+      inhoud = fp2Optie('zet:prijs:', 'Alle prijzen', fp2Tel(fp2Met('prijs', '')), !q.prijs || q.prijs === 'alle') +
+        PRIJZEN.filter(function (x) { return x.id !== 'alle'; }).map(function (x) { var n = fp2Tel(fp2Met('prijs', x.id)); return n || q.prijs === x.id ? fp2Optie('zet:prijs:' + x.id, esc(x.label), n, q.prijs === x.id) : ''; }).join('') +
+        '<div class="fp2-zelf"><span class="fp2-t">Zelf een prijs kiezen</span><div class="fp2-van-tot"><label>Van €<input type="number" inputmode="numeric" min="0" data-fp2-min value="' + (/^r/.test(q.prijs || '') ? prijsFilter(q.prijs).min : '') + '" placeholder="0"></label>' +
+        '<label>Tot €<input type="number" inputmode="numeric" min="0" data-fp2-max value="' + (/^r/.test(q.prijs || '') ? prijsFilter(q.prijs).max : '') + '" placeholder="100"></label></div>' +
+        '<button type="button" class="knop knop-rand" data-fp2="eigenprijs">Gebruik deze prijs</button></div>';
+    } else if (sch === 'soort') {
+      var sd = fp2Soorten();
+      kop = terug('Soort cadeau');
+      if (sd.groepen.length >= 2) {
+        inhoud = fp2Optie('zet:sg:', 'Alles', fp2Tel(fp2Met('soort', '') && Object.assign(fp2Met('soort', ''), { sg: undefined })), !q.sg && !q.soort) +
+          sd.groepen.map(function (g) { var nq = fp2Met('sg', g.id); delete nq.soort; return { g: g, n: fp2Tel(nq) }; }).filter(function (x) { return x.n || q.sg === x.g.id; })
+            .sort(function (a, b) { return b.n - a.n; }).map(function (x) { return fp2Rij('groep:' + x.g.id, esc(x.g.naam), '', x.n, q.sg === x.g.id); }).join('');
+      } else {
+        inhoud = fp2Optie('zet:soort:', 'Alles', fp2Tel(fp2Met('soort', '')), !q.soort) +
+          fp2Vakken('').map(function (v) { return { v: v, n: fp2Tel(fp2Met('soort', v)) }; }).filter(function (x) { return x.n || q.soort === x.v; }).sort(function (a, b) { return b.n - a.n; })
+            .map(function (x) { return fp2Optie('zet:soort:' + x.v, esc(x.v), x.n, q.soort === x.v); }).join('');
+      }
+    } else if (sch === 'soort2') {
+      fp2Namen(); var gid = FP.groep, gnaam = AFDNAAM[gid] || GROEPNAAM[gid] || gid;
+      kop = terug(gnaam);
+      var alles = fp2Met('sg', gid); delete alles.soort;
+      inhoud = fp2Optie('zetsg:' + gid, 'Alles in ' + esc(gnaam), fp2Tel(alles), q.sg === gid && !q.soort) +
+        fp2Vakken(gid).map(function (v) { var nq = fp2Met('sg', gid); nq.soort = v; return { v: v, n: fp2Tel(nq) }; }).filter(function (x) { return x.n || q.soort === x.v; }).sort(function (a, b) { return b.n - a.n; })
+          .map(function (x) { return fp2Optie('zetvak:' + gid + '|' + x.v, esc(x.v), x.n, q.soort === x.v); }).join('');
+    } else if (sch === 'merk' || sch === 'merkalle') {
+      var merken = fp2Merken().map(function (m) { return { m: m, n: fp2Tel(fp2Met('merk', m)) }; }).filter(function (x) { return x.n || q.merk === x.m; });
+      var zoek = (FP.zoek || '').toLowerCase();
+      kop = terug(sch === 'merk' ? 'Merk' : 'Alle merken');
+      var lijst;
+      if (zoek) lijst = merken.filter(function (x) { return x.m.toLowerCase().indexOf(zoek) !== -1; }).sort(function (a, b) { return a.m.localeCompare(b.m, 'nl'); });
+      else if (sch === 'merk') lijst = merken.slice().sort(function (a, b) { return b.n - a.n; }).slice(0, 5);
+      else lijst = merken.slice().sort(function (a, b) { return a.m.localeCompare(b.m, 'nl'); });
+      var letter = '';
+      inhoud = '<label class="fp2-zoek"><span class="verborgen">Zoek een merk</span><input type="search" data-fp2-zoek placeholder="Zoek een merk…" value="' + esc(FP.zoek || '') + '" autocomplete="off"></label>' +
+        '<div data-fp2-lijst>' + fp2Optie('zet:merk:', 'Alle merken', fp2Tel(fp2Met('merk', '')), !q.merk) +
+        (sch === 'merk' && !zoek ? '<p class="fp2-sub">Meest gekozen</p>' : '') +
+        lijst.map(function (x) { var l = x.m.charAt(0).toUpperCase(); var kopL = sch === 'merkalle' && !zoek && l !== letter ? '<p class="fp2-letter">' + esc(letter = l) + '</p>' : '';
+          return kopL + fp2Optie('zet:merk:' + x.m, esc(x.m), x.n, q.merk === x.m); }).join('') +
+        (zoek && !lijst.length ? '<p class="fp2-hulp">Geen merk gevonden.</p>' : '') +
+        (sch === 'merk' && !zoek && merken.length > 5 ? '<button type="button" class="fp2-alle" data-fp2="naar:merkalle">Alle merken bekijken (' + merken.length + ') ›</button>' : '') + '</div>';
+    } else if (sch === 'voor') {
+      kop = terug('Voor wie');
+      inhoud = VOOR_WIE.map(function (v) { var n = fp2Tel(fp2Met('voor', v[0])); return n || !v[0] || q.voor === v[0] ? fp2Optie('zet:voor:' + v[0], esc(v[1]), n, (q.voor || '') === v[0]) : ''; }).join('');
+    } else if (sch.indexOf('knop:') === 0) {
+      var param = sch.slice(5), ks = knopSets(FP.knoppen, q).filter(function (k) { return k.param === param; })[0];
+      kop = terug(ks ? ks.titel : 'Kies');
+      inhoud = fp2Optie('zet:' + param + ':', 'Alles', fp2Tel(fp2Met(param, '')), !q[param]) +
+        (ks ? ks.opties.map(function (o) { var n = fp2Tel(fp2Met(param, o[0])); return n || q[param] === o[0] ? fp2Optie('zet:' + param + ':' + o[0], esc(o[1]), n, q[param] === o[0]) : ''; }).join('') : '');
+    }
+    var n = fp2Tel(q);
+    blad.innerHTML = kop + '<div class="fp2-inhoud">' + inhoud + '</div>' +
+      '<div class="fp2-voet"><button type="button" class="knop knop-rand" data-fp2="wis"' + (fp2Gekozen().length ? '' : ' disabled') + '>Wis alles</button>' +
+      '<button type="button" class="knop knop-goud" data-fp2="toon"' + (n ? '' : ' disabled') + '>' + (n ? 'Toon ' + getal(n) + (n === 1 ? ' cadeau' : ' cadeaus') : 'Geen cadeaus') + '</button></div>';
+  }
+  function fp2Start() {
+    var fp = $('[data-filterpaneel].fp2'); if (!fp) return false;
+    var q = Object.assign({}, leesAdres().q); delete q.sort;
+    FP = { pad: fp.getAttribute('data-fp2-pad'), q: q, sort: leesAdres().q.sort, scherm: 'hoofd', groep: '', zoek: '',
+      knoppen: (fp.getAttribute('data-fp2-knoppen') || '').split(',').filter(Boolean), metVoor: /^\/c\//.test(fp.getAttribute('data-fp2-pad') || '') };
+    fp2Teken(); return true;
+  }
+  function fp2Naar(scherm) { FP.scherm = scherm; FP.zoek = ''; fp2Teken(); var b = $('.fp2-blad'); if (b) b.scrollTop = 0; }
+  function fp2Klik(t) {
+    var a = t.getAttribute('data-fp2');
+    if (a === 'terug') return fp2Naar(FP.scherm === 'soort2' ? 'soort' : FP.scherm === 'merkalle' ? 'merk' : 'hoofd');
+    if (a.indexOf('naar:') === 0) return fp2Naar(a.slice(5));
+    if (a.indexOf('groep:') === 0) { FP.groep = a.slice(6); return fp2Naar('soort2'); }
+    if (a.indexOf('weg:') === 0) { var k = a.slice(4); delete FP.q[k]; if (k === 'sg') delete FP.q.soort; if (k === 'soort' && FP.q.sg && !fp2Soorten().groepen.length) delete FP.q.sg; return fp2Teken(); }
+    if (a.indexOf('zetsg:') === 0) { FP.q.sg = a.slice(6); delete FP.q.soort; return fp2Naar('hoofd'); }
+    if (a.indexOf('zetvak:') === 0) { var d = a.slice(7).split('|'); FP.q.sg = d[0]; FP.q.soort = d.slice(1).join('|'); return fp2Naar('hoofd'); }
+    if (a.indexOf('zet:') === 0) {
+      var r = a.slice(4), i = r.indexOf(':'), key = r.slice(0, i), val = r.slice(i + 1);
+      if (key === 'sg') { delete FP.q.sg; delete FP.q.soort; } else if (val) FP.q[key] = val; else delete FP.q[key];
+      return fp2Naar('hoofd');
+    }
+    if (a === 'eigenprijs') {
+      var mi = Math.max(0, Math.round(+(($('[data-fp2-min]') || {}).value) || 0)), ma = Math.round(+(($('[data-fp2-max]') || {}).value) || 0);
+      if (!ma || ma < mi) { toast('Vul een maximumprijs in die hoger is dan het minimum.'); return; }
+      FP.q.prijs = 'r' + mi + '-' + ma; return fp2Naar('hoofd');
+    }
+    if (a === 'wis') { FP.q = {}; return fp2Naar('hoofd'); }
+    if (a === 'toon') { var q = Object.assign({}, FP.q); if (FP.sort) q.sort = FP.sort; return fp2Toepassen(maakAdres(FP.pad, q)); }
+  }
   function filterPaneel(pad, q, sorteerOpties, knoppen, aantal) {
+    if (fp2Aan(pad)) return fp2Shell(pad, knoppen);
     var aantalFilters = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.sort && q.sort !== 'aanbevolen' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
     var metVoor = !(knoppen && knoppen.length) && pad.indexOf('/c/') === 0 && pad.indexOf('/c/christelijk') !== 0 && pad.indexOf('/c/noodpakket-survival') !== 0;
     return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filter &amp; sorteren' +
@@ -533,7 +694,7 @@
   function mobielBalk(pad, q, knoppen, sorteerOpties) {
     var aantal = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
     var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd|hoe oud/i.test(k.titel) || k.snel; })[0]; /* stap 4: op Verjaardag ook 'Hoe oud wordt hij of zij?' als snel rijtje */
-    var lftRij = lft ? knopRij(pad, q, lft) : '', prRij = lftRij ? '' : prijsChips(pad, q);
+    var lftRij = lft ? knopRij(pad, q, lft) : '', prRij = lftRij || fp2Aan(pad) ? '' : prijsChips(pad, q);
     var snel = lftRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">' + esc(lft.titel) + '</div>' + lftRij + '</div>'
              : prRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">Prijs</div>' + prRij + '</div>' : '';
     var so = sorteerOpties || [], gekozenSort = so.filter(function (o) { return o[0] === (q.sort || 'aanbevolen'); })[0];
@@ -4076,11 +4237,19 @@
     if (!sluitDoorTerug && history.state && history.state.lade) { negeerPop = true; history.back(); }
     sluitDoorTerug = false;
   }
-  var sluitDoorTerug = false, negeerPop = false, herstelNa = null;
+  var sluitDoorTerug = false, negeerPop = false, herstelNa = null, naPopToon = false;
+  /* Nieuw filter: 'Toon x cadeaus' sluit het paneel en zet de keuze in het adres, zonder extra stap in de geschiedenis. */
+  function fp2Toepassen(url) {
+    var fp = $('[data-filterpaneel]'); if (fp) { fp.classList.remove('open'); setTimeout(function () { fp.hidden = true; }, 250); }
+    naarWerkbalk = true;
+    if (history.state && history.state.paneel) { negeerPop = true; herstelNa = url; naPopToon = true; try { history.back(); return; } catch (e) { negeerPop = false; naPopToon = false; } }
+    ga(url, true);
+  }
   /* 9-11-2026 (wens Marius): Filter & sorteren is een extra stap in de geschiedenis. De terugknop van de telefoon sluit het paneel
      en je blijft op dezelfde pagina (met je gekozen filters), in plaats van terug naar de vorige pagina te gaan. */
   function openPaneel() {
     var fp = $('[data-filterpaneel]'); if (!fp) return;
+    if (fp.classList.contains('fp2')) fp2Start();
     fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); });
     try { if (!(history.state && history.state.paneel)) history.pushState({ paneel: 1 }, ''); } catch (e) {}
   }
@@ -4477,7 +4646,7 @@
     } catch (e) {}
   }
   window.addEventListener('popstate', function (e) {
-    if (negeerPop) { negeerPop = false; if (herstelNa && huidigAdres() !== herstelNa) { try { history.replaceState(e.state, '', herstelNa); } catch (er) {} } herstelNa = null; return; }
+    if (negeerPop) { negeerPop = false; if (herstelNa && huidigAdres() !== herstelNa) { try { history.replaceState(e.state, '', herstelNa); } catch (er) {} } herstelNa = null; if (naPopToon) { naPopToon = false; toon(); } return; }
     var pnl = $('[data-filterpaneel]');
     if (pnl && !pnl.hidden) { var bleef = laatstGetoond; sluitPaneel(true); if (huidigAdres() !== bleef) { try { history.replaceState(e.state, '', bleef); } catch (er) {} } return; }
     if (huidigAdres() !== laatstGetoond) { terugViaKnop = true; toon(); return; }
@@ -4533,6 +4702,7 @@
       if (navigator.clipboard) navigator.clipboard.writeText(w2.bericht).then(klaar, function () { prompt('Kopieer deze link:', w2.link); }); else prompt('Kopieer deze link:', w2.link);
       return; }
     if (t.closest('[data-filterpaneel]') && t.tagName === 'A') { naarWerkbalk = true; paneelOpen = !t.closest('.vonk-paneel'); var bl = t.closest('.filter-blad'); paneelScroll = bl ? bl.scrollTop : 0; }
+    if (t.hasAttribute('data-fp2')) { if (FP) fp2Klik(t); return; }
     if (t.hasAttribute('data-filter-open')) { openPaneel(); return; }
     if (t.hasAttribute('data-filter-dicht')) { sluitPaneel(false); return; }
     if (t.hasAttribute('data-open-lade')) { openLade(); return; }
@@ -4623,6 +4793,11 @@
     t.innerHTML = html;
   }
   document.addEventListener('input', function (e) {
+    if (e.target && e.target.hasAttribute && e.target.hasAttribute('data-fp2-zoek') && FP) {
+      FP.zoek = e.target.value; var pos = e.target.selectionStart; fp2Teken();
+      var z = $('[data-fp2-zoek]'); if (z) { z.focus(); try { z.setSelectionRange(pos, pos); } catch (er) {} }
+      return;
+    }
     var f = e.target.closest && e.target.closest('[data-zoek]');
     if (!f) return;
     clearTimeout(tipTimer); tipTimer = setTimeout(function () { toonTips(f); }, 120);
