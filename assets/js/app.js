@@ -277,6 +277,10 @@
      Voor iedereen aan; terug naar de oude stijl kan met window.LK_NOVA2 = false. */
   var NOVA2 = window.LK_NOVA2 !== false;
   if (NOVA2) document.documentElement.classList.add('nova2');
+  /* NOVA-003 (9-11-2026, ontwerp Nova): de homepage in de luxe huisstijl. Proefversie: alleen met ?proef=nova3 (blijft aan in dit tabblad).
+     De stijlen gelden alleen op de homepage (#app:has(> .hero)). */
+  var NOVA3 = (function () { try { if (/[?&]proef=nova3(&|$)/.test(location.search)) sessionStorage.setItem('lknova3', '1'); return window.LK_NOVA3 === true || sessionStorage.getItem('lknova3') === '1'; } catch (e) { return window.LK_NOVA3 === true; } })();
+  if (NOVA3) document.documentElement.classList.add('nova3');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
