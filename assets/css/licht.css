@@ -1183,3 +1183,150 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .nova1 .slimnav .sn-alles .sn-beeld:not(.sn-rond) { height: 72px; }
 }
 @media (prefers-reduced-motion: reduce) { .nova1 .slimnav .sn-knop { transition: none; } }
+
+/* ===== NOVA-002 (9-11-2026, ontwerp Nova): luxe productkaarten en productpagina. Alleen binnen html.nova2 (proef: ?proef=nova2). ===== */
+
+/* Productkaart: bestaande HTML, links en productfoto's blijven intact. */
+html.nova2 .prodkaart {
+  background: #FFFFFF;
+  border: 1px solid #E6DCCB;
+  border-radius: 18px;
+  box-shadow: 0 3px 14px rgba(10, 16, 32, .065);
+  overflow: hidden;
+}
+html.nova2 .prodkaart:hover {
+  border-color: #B8862E;
+  box-shadow: 0 7px 22px rgba(10, 16, 32, .10);
+}
+html.nova2 .prodkaart .info {
+  padding: 12px 12px 14px;
+  gap: 6px;
+}
+html.nova2 .prodkaart .shop {
+  color: #69552F;
+  font-size: 12px;
+  line-height: 1.25;
+  letter-spacing: .025em;
+}
+html.nova2 .prodkaart h3,
+html.nova2 .prodkaart.awkaart h3 {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.32;
+  color: #141A2A;
+  hyphens: none;
+  -webkit-hyphens: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+html.nova2 .prodkaart .prijs,
+html.nova2 .prodkaart.awkaart .prijs {
+  color: #141A2A;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+html.nova2 .prodkaart .oud { color: #5F667A; }
+html.nova2 .prodkaart .reden { color: #4F556A; }
+
+/* Echte productfoto blijft onveranderd: géén kleurmenging.
+   Een bestaande sfeerfoto blijft als sfeerfoto vullend afgebeeld. */
+html.nova2 .prodkaart .beeld.echt:not(.sfeer) {
+  background: #FFFCF6;
+}
+html.nova2 .prodkaart .beeld.echt:not(.sfeer) img {
+  object-fit: contain;
+  padding: 5%;
+  mix-blend-mode: normal;
+  filter: none;
+}
+html.nova2 .prodkaart .beeld.echt:not(.sfeer)::after { content: none; }
+/* het label '★ Onze keuze' (top 6) blijft staan */
+html.nova2 .prodgrid.top6 > .prodkaart:nth-child(-n+6) .beeld.echt::after { content: '★ Onze keuze'; }
+html.nova2 .prodkaart .beeld.echt.sfeer img {
+  object-fit: cover;
+  padding: 0;
+  mix-blend-mode: normal;
+  filter: none;
+}
+/* Kaarten in extern-winkels overzicht: behoud bestaande foto/link-conventies. */
+html.nova2 .prodkaart.awkaart .beeld img {
+  object-fit: contain;
+  padding: 5%;
+  mix-blend-mode: normal;
+}
+
+/* Tikvlak favoriete hart: minimaal 44x44, geen nieuwe actie. */
+html.nova2 .prodkaart .hartje {
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .96);
+  color: #141A2A;
+  border: 1px solid #D6C29A;
+  backdrop-filter: none;
+}
+html.nova2 .prodkaart .hartje[aria-pressed="true"] { color: #8F6620; }
+html.nova2 .prodkaart .hartje:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+
+/* Bestaande labels zijn inhoudelijk ongewijzigd, maar niet naast het hart. */
+html.nova2 .prodkaart .beeld .label,
+html.nova2 .prodgrid.top6 > .prodkaart:nth-child(-n+6) .beeld::after {
+  top: auto;
+  bottom: 8px;
+  left: 8px;
+  max-width: calc(100% - 16px);
+  font-size: 11px;
+  letter-spacing: .015em;
+}
+
+/* Productdetail: rustige witte kaart om de bestaande winkel-foto. */
+html.nova2 body.pag-product .product-beeld {
+  background: #FFFCF6;
+  border: 1px solid #E6DCCB;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(10,16,32,.06);
+}
+html.nova2 body.pag-product .product-beeld.echt.studio img {
+  mix-blend-mode: normal;
+  filter: none;
+}
+html.nova2 body.pag-product .product-beeld.echt.studio::after { content: none; }
+html.nova2 body.pag-product .product-info .shop {
+  color: #69552F;
+  letter-spacing: .055em;
+}
+html.nova2 body.pag-product .product-acties .knop-goud {
+  font-size: 16px;
+  min-height: 48px;
+  line-height: 1.25;
+  border-radius: 14px;
+}
+html.nova2 body.pag-product .waarom {
+  background: #FFFDF8;
+  border: 1px solid #E6D8C1;
+  border-left: 3px solid #B8862E;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(10,16,32,.045);
+}
+html.nova2 body.pag-product .waarom h2 { color: #8F6620; }
+html.nova2 body.pag-product .feiten {
+  color: #4F556A;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Bestaande sticky prijs/winkelbalk: alleen kleurcontrast verbeteren. */
+html.nova2 body.pag-product .product-plak .prijs { color: #FFF4DD; }
+html.nova2 body.pag-product .product-plak .knop { font-size: 16px; min-height: 44px; }
+
+/* De compacte mobiele producthoogte (210px) en volgorde blijven zoals ze zijn (regels van 8-11-2026 hierboven); hier niets extra's. */
+
+@media (prefers-reduced-motion: reduce) {
+  html.nova2 .prodkaart,
+  html.nova2 .prodkaart .beeld img { transition: none; }
+  html.nova2 .prodkaart:hover { transform: none; }
+}

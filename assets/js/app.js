@@ -273,6 +273,9 @@
      met het bestaande icoon of de bestaande foto. Voor iedereen aan; terug naar de oude knoppen kan met window.LK_NOVA1 = false. */
   var NOVA1 = window.LK_NOVA1 !== false;
   if (NOVA1) document.documentElement.classList.add('nova1');
+  /* NOVA-002 (9-11-2026, ontwerp Nova): luxe productkaarten en productpagina. Proefversie: alleen met ?proef=nova2 (blijft aan in dit tabblad). */
+  var NOVA2 = (function () { try { if (/[?&]proef=nova2(&|$)/.test(location.search)) sessionStorage.setItem('lknova2', '1'); return window.LK_NOVA2 === true || sessionStorage.getItem('lknova2') === '1'; } catch (e) { return window.LK_NOVA2 === true; } })();
+  if (NOVA2) document.documentElement.classList.add('nova2');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
