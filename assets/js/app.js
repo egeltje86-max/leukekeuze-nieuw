@@ -416,7 +416,7 @@
       return !o || window.LK_KNOPTEST(p, o[2]);
     });
   }
-  function aantalKnoppen(q, namen) { return knopSets(namen, q).filter(function (k) { return q[k.param]; }).length + (q.merk ? 1 : 0) + (q.winkel ? 1 : 0) + (q.soort ? 1 : 0); }
+  function aantalKnoppen(q, namen) { return knopSets(namen, q).filter(function (k) { return q[k.param]; }).length + (q.merk ? 1 : 0) + (q.winkel ? 1 : 0) + (q.soort || q.sg ? 1 : 0); }
   /* 5-11-2026: extra filters Merk en Winkel (wens Marius: "zoek uit welke filters welke spullen nodig hebben").
      Merk: uit het veld 'merk', anders herkend aan het begin van de titel (merken die minstens 3x voorkomen).
      Getoond alleen als er op de pagina minstens 2 merken/winkels met 3+ producten zijn en het filter echt iets kleiner maakt. */
@@ -496,9 +496,10 @@
   /* ================== NIEUW FILTER (9-11-2026, opdracht via Marius; VOORBEELD op Voor haar) ==================
      Eén scherm tegelijk: hoofdscherm met rijen (Prijs, Soort cadeau, Merk, Voor wie …) en per rij een eigen keuzescherm.
      Kiezen past het aantal direct aan; pas met 'Toon x cadeaus' verandert de pagina. Sorteren blijft apart (knop Sorteren). */
-  var FILTER2 = !!window.LK_FILTER2 || (function () { try { if (/[?&]proef=filter(&|$)/.test(location.search)) sessionStorage.setItem('lkf2', '1'); return sessionStorage.getItem('lkf2') === '1'; } catch (e) { return false; } })(); /* voorbeeld nieuw filter: alleen met ?proef=filter */
+  /* 9-11-2026 (GO Marius): het stap-voor-stap filter (opdracht Nova) op alle pagina's. Uitzetten kan met window.LK_FILTER2 = false. */
+  var FILTER2 = window.LK_FILTER2 !== false;
   var FP = null;
-  function fp2Aan(pad) { return FILTER2 && (window.LK_FILTER2_OVERAL || /^\/voor\/haar(\/|$)/.test(pad)); }
+  function fp2Aan(pad) { return FILTER2 && pad !== '/zoek'; }
   function fp2Shell(pad, knoppen) {
     return '<button class="filterknop" type="button" data-filter-open aria-hidden="true" tabindex="-1">' + ic('filter') + 'Filteren</button>' +
       '<div class="filterpaneel fp2" data-filterpaneel data-fp2-pad="' + esc(pad) + '" data-fp2-knoppen="' + esc((knoppen || []).join(',')) + '" hidden>' +
@@ -625,7 +626,9 @@
     var fp = $('[data-filterpaneel].fp2'); if (!fp) return false;
     var q = Object.assign({}, leesAdres().q); delete q.sort;
     FP = { pad: fp.getAttribute('data-fp2-pad'), q: q, sort: leesAdres().q.sort, scherm: 'hoofd', groep: '', zoek: '',
-      knoppen: (fp.getAttribute('data-fp2-knoppen') || '').split(',').filter(Boolean), metVoor: /^\/c\//.test(fp.getAttribute('data-fp2-pad') || '') };
+      knoppen: (fp.getAttribute('data-fp2-knoppen') || '').split(',').filter(Boolean), metVoor: false };
+    /* Voor wie alleen op /c/-pagina's zonder eigen knoppen (net als het oude filter), anders stond 'Voor wie' er twee keer. */
+    FP.metVoor = !FP.knoppen.length && /^\/c\//.test(FP.pad) && !/^\/c\/(christelijk|noodpakket-survival)/.test(FP.pad);
     fp2Teken(); return true;
   }
   function fp2Naar(scherm) { FP.scherm = scherm; FP.zoek = ''; fp2Teken(); var b = $('.fp2-blad'); if (b) b.scrollTop = 0; }
@@ -684,8 +687,9 @@
       uit.push([o[1], maakAdres(pad, nq)]);
     });
     if (q.voor) { var v = VOOR_WIE.filter(function (x) { return x[0] === q.voor; })[0]; if (v && v[0]) { var nv = Object.assign({}, q); delete nv.voor; uit.push([v[1], maakAdres(pad, nv)]); } }
-    ['soort', 'merk', 'winkel'].forEach(function (k) { if (q[k]) { var nm = Object.assign({}, q); delete nm[k]; uit.push([q[k], maakAdres(pad, nm)]); } });
-    if (q.prijs && q.prijs !== 'alle') { var pr = PRIJZEN.filter(function (x) { return x.id === q.prijs; })[0]; if (pr) { var np = Object.assign({}, q); delete np.prijs; uit.push([pr.label, maakAdres(pad, np)]); } }
+    ['soort', 'merk', 'winkel'].forEach(function (k) { if (q[k]) { var nm = Object.assign({}, q); delete nm[k]; if (k === 'soort') delete nm.sg; uit.push([q[k], maakAdres(pad, nm)]); } });
+    if (q.sg && !q.soort) { fp2Namen(); var ns = Object.assign({}, q); delete ns.sg; uit.push([GROEPNAAM[q.sg] || AFDNAAM[q.sg] || q.sg, maakAdres(pad, ns)]); }
+    if (q.prijs && q.prijs !== 'alle') { var pr = prijsFilter(q.prijs); if (pr && pr.label) { var np = Object.assign({}, q); delete np.prijs; uit.push([pr.label, maakAdres(pad, np)]); } }
     if (!uit.length) return '';
     return '<div class="actief-filters" aria-label="Gekozen filters">' + uit.map(function (x) {
       return '<a class="actief-label" href="' + x[1] + '" aria-label="' + esc(x[0]) + ' weghalen">' + esc(x[0]) + ic('sluit') + '</a>';
@@ -1112,7 +1116,8 @@
        v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
       /* Stap 3 indeling: de winkels van deze afdeling als tekstlinks (eerst 24 grote kaarten: ruim 6.000 px op een telefoon). */
-      (s || !winkelsMet(c.slug).length ? '' : '<section class="sectie verder"><h2>Winkels voor ' + esc(c.naam.toLowerCase()) + '</h2><nav class="tekstlinks" aria-label="Winkels">' + winkelsMet(c.slug).map(function (w) {
+      /* 9-11-2026 (Marius: "ze hoeven geen winkel te kiezen"): het rijtje 'Winkels voor …' staat er niet meer. */
+      (true || s || !winkelsMet(c.slug).length ? '' : '<section class="sectie verder"><h2>Winkels voor ' + esc(c.naam.toLowerCase()) + '</h2><nav class="tekstlinks" aria-label="Winkels">' + winkelsMet(c.slug).map(function (w) {
         var wurl = dcDirect(w.url) ? WINKELSITE[w.naam] : w.url;
         return '<a href="' + esc(wurl) + '" target="_blank" rel="sponsored noopener">' + esc(w.naam) + '</a>';
       }).join('') + '<a href="/winkels">Alle winkels</a></nav></section>') +
@@ -2123,7 +2128,7 @@
             '<div class="prijs">' + LK.euro(x.p) + '</div></div></article>';
         }).join('');
         doel.innerHTML = !hits.length ? '<div class="leeg"><strong>Ook in onze winkels niets gevonden</strong>Probeer een ander of korter woord.</div>' :
-          '<div class="werkbalk">' + chips + prijsChips + '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + '</span>' + sorteer + '</div></div>' +
+          '<div class="werkbalk">' + prijsChips + /* 9-11-2026 (Marius): "ze hoeven geen winkel te kiezen", dus geen winkelknoppen meer */ '<div class="werkbalk-onder"><span class="aantal">' + l.length + (l.length === 1 ? ' product' : ' producten') + '</span>' + sorteer + '</div></div>' +
           '<div class="prodgrid">' + kaarten + '</div>' +
           (l.length > toon.length ? '<div class="meer-knop"><button class="knop knop-rand" type="button" data-aw-meer>Toon meer <small>(' + toon.length + ' van ' + l.length + ')</small></button></div>' : '');
       }
