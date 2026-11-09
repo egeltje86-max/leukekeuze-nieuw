@@ -258,6 +258,55 @@
     }).join('') + '</div>' +
       (meer ? '<button class="keuzes-meer" type="button" data-keuzes-meer aria-expanded="false">Meer <small>(nog ' + (items.length - KEUZES_ZICHT) + ')</small> ' + ic('omlaag') + '</button>' : '') + '</nav>';
   }
+  /* ---------- Slimme navigatie (9-11-2026, opdracht Nova via Marius; VOORBEELD, nog niet live) ----------
+     Eén component voor alle lijstpagina's: max. 6 onderwerpen in 2 even brede kolommen, de rest achter 'Bekijk alle onderwerpen (n)'.
+     Navigatie brengt je naar een bestaande pagina; filteren en sorteren blijven apart in de werkbalk.
+     Volgorde: handmatig gekozen top (SLIM.top) eerst, daarna de best gevulde. Het actieve onderwerp staat altijd in beeld. */
+  var SLIMNAV = !!window.LK_SLIMNAV;
+  var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
+    [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
+    [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
+    [/keuken|koffie|thee/i, '☕'], [/wonen|kamer|klok|sfeer/i, '🏡'], [/tuin|vogel|bloem|plant/i, '🌷'], [/baby|kraam|rammelaar|speelklee/i, '🍼'], [/knuffel|pop/i, '🧸'],
+    [/voertuig|figuren|auto/i, '🚗'], [/rollenspel|verkle/i, '🎭'], [/knutsel|creatief|haken|breien|teken/i, '✂️'], [/leren|ontdek/i, '🔬'], [/buiten/i, '⚽'], [/sport|yoga/i, '🏃'],
+    [/naam|foto|herinnering/i, '🖼️'], [/warm|comfort/i, '🧣'], [/afscheid|pensioen/i, '👋'], [/bedank/i, '💐'], [/lootje/i, '🎟️'], [/onder\s*€/i, '💶'], [/surprise/i, '🎨'], [/gedicht/i, '📜'],
+    [/kind/i, '🧒'], [/volwassen|hem|haar/i, '🎁']];
+  function slimIco(naam) { for (var i = 0; i < SLIM_ICO.length; i++) if (SLIM_ICO[i][0].test(naam)) return SLIM_ICO[i][1]; return '🎁'; }
+  /* Per pagina: titel en de handmatig gekozen top 6 (sleutels = bestaande slugs). Niet gevonden of leeg = niet tonen. */
+  var SLIM = {
+    '/voor/hem': { titel: 'Waar houdt hij van?', top: ['gadgets-gaming', 'whisky-bier-drank', 'horloges-sieraden', 'darts-sport', 'parfum-verzorging', 'zakmessen-gereedschap'] },
+    '/voor/haar': { titel: 'Waar houdt ze van?', top: ['sieraden', 'parfum-verzorging', 'pantoffels-sjaals-kleding', 'wonen-sfeer', 'champagne-wijn-lekkers', 'gadgets-audio'] },
+    '/voor/kinderen': { titel: 'Waar speelt je kind graag mee?', top: ['bouwen', 'figuren', 'spellen', 'buiten', 'knutselen', 'boeken'] },
+    '/voor/tieners': { titel: 'Waar is je tiener mee bezig?', top: ['gaming-gadgets', 'lego-creatief', 'mode', 'geuren-verzorging', 'sport-darts', 'sieraden'] },
+    '/voor/opa-oma': { titel: 'Waar worden ze blij van?', top: ['fotos-herinneringen', 'lekkers-drank', 'boeken', 'tuin-vogels', 'puzzels-spellen', 'warm-comfortabel'] },
+    '/c/speelgoed': { titel: 'Wat zoek je?', top: ['baby-peuter', 'bouwen', 'poppen-knuffels', 'speelfiguren-voertuigen', 'spellen', 'buiten-spelen'] },
+    '/c/cadeaus/sinterklaas': { titel: 'Wat zoek je voor Sinterklaas?', vast: [
+      ['schoen', 'Schoencadeaus', '/gids/schoencadeautjes', '🥿'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒'], ['volw', 'Voor volwassenen', '/gids/sinterklaas-voor-volwassenen', '🎁'],
+      ['lootjes', 'Lootjes', '/voor/collega/lootjes', '🎟️'], ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫'], ['o15', 'Onder €15', '/c/cadeaus/sint-onder-15', '💶'],
+      ['o10', 'Onder €10', '/gids/sinterklaas-onder-10', '💶'], ['man', 'Voor hem', '/gids/sinterklaascadeau-man', '🎩'], ['vrouw', 'Voor haar', '/gids/sinterklaascadeau-vrouw', '💐'],
+      ['surprise', 'Surprise maken', '/gids/surprise-maken', '🎨'], ['gedicht', 'Gedicht laten maken', '/sint-rijmmachine', '📜']] }
+  };
+  function slimNav(items, cfg, label) {
+    if (!items || items.length < 2) return ''; /* kleine categorie: geen navigatieblok, meteen de producten */
+    cfg = cfg || {};
+    var top = [], rest = items.slice();
+    (cfg.top || []).forEach(function (k) { var i = rest.map(function (x) { return x.id; }).indexOf(k); if (i !== -1 && top.length < 6) top.push(rest.splice(i, 1)[0]); });
+    rest.slice().sort(function (a, b) { return (b.n || 0) - (a.n || 0); }).forEach(function (x) { if (top.length < 6) top.push(x); });
+    var actief = items.filter(function (x) { return x.actief; })[0];
+    if (actief && top.indexOf(actief) === -1) top[top.length - 1] = actief;
+    var knop = function (x) {
+      return '<a class="sn-knop' + (x.actief ? ' actief' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
+        '<span class="sn-ico" aria-hidden="true">' + (x.icoon || slimIco(x.naam)) + '</span><span class="sn-naam">' + esc(x.naam) + '</span></a>';
+    };
+    return '<nav class="slimnav" aria-label="' + esc(label || cfg.titel || 'Onderwerpen') + '">' +
+      (cfg.titel ? '<h2 class="sn-titel">' + esc(cfg.titel) + '</h2>' : '') +
+      '<div class="sn-raster">' + top.map(knop).join('') + '</div>' +
+      (items.length > top.length ? '<details class="sn-alle"><summary><span>Bekijk alle onderwerpen (' + items.length + ')</span>' + ic('omlaag') + '</summary><div class="sn-raster sn-alles">' + items.map(knop).join('') + '</div></details>' : '') +
+      '</nav>';
+  }
+  function slimVast(pad) {
+    var cfg = SLIM[pad]; if (!cfg || !cfg.vast) return '';
+    return slimNav(cfg.vast.map(function (x) { return { id: x[0], naam: x[1], naar: x[2], icoon: x[3] }; }), { titel: cfg.titel, top: cfg.vast.slice(0, 6).map(function (x) { return x[0]; }) });
+  }
   /* Onderaan elke lijstpagina: verder kijken als tekstlinks (geen rij met plaatjes die je voorbij moet schuiven). */
   function tekstLinks(kop, links) {
     if (!links.length) return '';
@@ -351,7 +400,7 @@
       return !o || window.LK_KNOPTEST(p, o[2]);
     });
   }
-  function aantalKnoppen(q, namen) { return knopSets(namen, q).filter(function (k) { return q[k.param]; }).length + (q.merk ? 1 : 0) + (q.winkel ? 1 : 0); }
+  function aantalKnoppen(q, namen) { return knopSets(namen, q).filter(function (k) { return q[k.param]; }).length + (q.merk ? 1 : 0) + (q.winkel ? 1 : 0) + (q.soort ? 1 : 0); }
   /* 5-11-2026: extra filters Merk en Winkel (wens Marius: "zoek uit welke filters welke spullen nodig hebben").
      Merk: uit het veld 'merk', anders herkend aan het begin van de titel (merken die minstens 3x voorkomen).
      Getoond alleen als er op de pagina minstens 2 merken/winkels met 3+ producten zijn en het filter echt iets kleiner maakt. */
@@ -372,6 +421,7 @@
   function extraFilter(p, q) {
     if (q.merk && merkVan(p).toLowerCase() !== String(q.merk).toLowerCase()) return false;
     if (q.winkel && String(p.shop || '').toLowerCase() !== String(q.winkel).toLowerCase()) return false;
+    if (q.soort && soortVan(p).toLowerCase() !== String(q.soort).toLowerCase()) return false;
     if (q.afd && p.afd !== q.afd) return false;
     return true;
   }
@@ -396,8 +446,16 @@
     return '<div class="knop-groep"><div class="chips-titel">' + titel + '</div><div class="chips knop-chips" role="group" aria-label="' + titel + '">' +
       '<a class="chip" href="' + maakAdres(pad, zonder) + '" aria-pressed="' + !huidig + '">Alles</a>' + html + '</div></div>';
   }
+  /* 9-11-2026 (wens Marius): "niemand kijkt naar de winkels, ze kijken naar het product". Geen filter Winkel meer, wel Soort
+     (whisky, wodka, gin …): de naam van het vakje waar het product in staat. Oude links met ?winkel= blijven werken. */
+  var SOORTNAAM = null;
+  function soortVan(p) {
+    if (!SOORTNAAM) { SOORTNAAM = {}; (window.LK_CATEGORIEEN || []).forEach(function (c) { if (c.verborgen) return; (c.subs || []).forEach(function (g) { (g.vakjes || []).forEach(function (v) { SOORTNAAM[c.slug + '/' + g.slug + '/' + v.slug] = v.naam; }); }); }); }
+    return (p.afd && SOORTNAAM[p.afd + '/' + p.groep + '/' + p.vak]) || '';
+  }
   function merkWinkelChips(pad, q) {
-    return lijstChips(pad, q, 'merk', 'Merk', merkVan, 12) + lijstChips(pad, q, 'winkel', 'Winkel', function (p) { return p.shop; }, 10);
+    return lijstChips(pad, q, 'soort', 'Soort', soortVan, 12) + lijstChips(pad, q, 'merk', 'Merk', merkVan, 12) +
+      (q.winkel ? lijstChips(pad, q, 'winkel', 'Winkel', function (p) { return p.shop; }, 10) : '');
   }
   /* Plekken van een product: vak, groep, ookIn en tags (als 'tag:naam'). */
   function plekkenVan(p) { return [p.cat + '/' + p.sub, p.cat].concat(p.ookIn || []).concat((p.tags || []).map(function (t) { return 'tag:' + t; })); }
@@ -451,7 +509,7 @@
       uit.push([o[1], maakAdres(pad, nq)]);
     });
     if (q.voor) { var v = VOOR_WIE.filter(function (x) { return x[0] === q.voor; })[0]; if (v && v[0]) { var nv = Object.assign({}, q); delete nv.voor; uit.push([v[1], maakAdres(pad, nv)]); } }
-    ['merk', 'winkel'].forEach(function (k) { if (q[k]) { var nm = Object.assign({}, q); delete nm[k]; uit.push([q[k], maakAdres(pad, nm)]); } });
+    ['soort', 'merk', 'winkel'].forEach(function (k) { if (q[k]) { var nm = Object.assign({}, q); delete nm[k]; uit.push([q[k], maakAdres(pad, nm)]); } });
     if (q.prijs && q.prijs !== 'alle') { var pr = PRIJZEN.filter(function (x) { return x.id === q.prijs; })[0]; if (pr) { var np = Object.assign({}, q); delete np.prijs; uit.push([pr.label, maakAdres(pad, np)]); } }
     if (!uit.length) return '';
     return '<div class="actief-filters" aria-label="Gekozen filters">' + uit.map(function (x) {
@@ -834,6 +892,15 @@
       }).join('') + '</nav>';
     }
 
+    if (SLIMNAV) {
+      if (SLIM[pad] && SLIM[pad].vast) subs = slimVast(pad);
+      else if (!s) subs = slimNav(groepen.map(function (x) { return { id: x.slug, naam: x.naam, naar: metBudget(subAdres(c, x)), n: LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }).length }; }),
+        SLIM[pad] || { titel: 'Wat zoek je?' }, 'Groepen in ' + c.naam);
+      else if (volleVakjes.length > 1) subs = slimNav(volleVakjes.map(function (x) {
+        return { id: x.slug, naam: x.naam, naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), actief: !!(v && v.slug === x.slug), n: inGroep.filter(function (p) { return p.vak === x.slug; }).length };
+      }), SLIM['/c/' + c.slug + '/' + s.slug] || { titel: 'Soorten ' + s.naam.toLowerCase() }, 'Soorten in ' + s.naam);
+      else subs = '';
+    }
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + merkWinkelChips(pad, q) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
@@ -929,6 +996,9 @@
           return { naam: x.naam, naar: metBudget('/voor/' + pe.slug + '/' + x.slug), beeld: rondBeeld(x.beeld, persoonProducten(pe, x.vakken)) };
         }), 'Onderdelen voor ' + naam, { altijd: true });
 
+    if (SLIMNAV) subsHtml = slimNav(volleSubsP.map(function (x) {
+      return { id: x.slug, naam: x.naam, naar: metBudget('/voor/' + pe.slug + '/' + x.slug), actief: !!(s && s.slug === x.slug), n: persoonProducten(pe, x.vakken).length };
+    }), SLIM['/voor/' + pe.slug] || { titel: 'Wat zoek je voor ' + naam + '?' }, 'Onderwerpen voor ' + naam);
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
@@ -966,6 +1036,7 @@
     '<div class="binnen">' +
       (!alles.length ? '<section class="sectie eerste">' + leeg + '</section>' :
       (s ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + subsHtml + '</section>'
+         : SLIMNAV ? '<section class="sectie eerste keuzes-sectie">' + subsHtml + '</section>'
          : '<section class="sectie eerste keuzes-sectie"><div class="sectie-kop"><div><h2>Wat zoek je voor ' + esc(naam) + '?</h2></div></div>' + subsHtml + '</section>') +
       (!s && selectie.length ? '<section class="sectie sfeer-modus"><div class="sectie-kop"><div><h2>Onze selectie voor ' + esc(naam) + '</h2></div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
