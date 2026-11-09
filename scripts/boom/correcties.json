@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak. 8-11-2026 (go Marius, keuze 1B): Dameshorloges vervangen door 36 horloges die Marius in de Superkeurkamer koos (van-prijs zoals de winkel hem geeft). De oude dameshorloges zijn afgekeurd (ze sturen door naar hun vakje); bijzondere oude blijven: Fossil ringhorloge naar Ringen, Invicta-horloge aan ketting naar Kettingen, Casio Vintage (unisex) naar Herenhorloges. Casio A168 van bol was dubbel met cl-casio-a168. 8-11-2026 (go Marius, keuze B): Herenhorloges vervangen door de horloges die Marius in de Superkeurkamer koos (4 dameshorloges uit die lijst naar Dameshorloges; van-prijs zoals de winkel hem geeft). Oude herenhorloges afgekeurd (doorverwijzing), behalve de klassiekers Casio Vintage, F-91W, G-Shock DW-5600 en Seiko 5. cl-gshock-5600 was dubbel met bol-9300000176286400. Burlington sokken naar Sokken.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak. 8-11-2026 (go Marius, keuze 1B): Dameshorloges vervangen door 36 horloges die Marius in de Superkeurkamer koos (van-prijs zoals de winkel hem geeft). De oude dameshorloges zijn afgekeurd (ze sturen door naar hun vakje); bijzondere oude blijven: Fossil ringhorloge naar Ringen, Invicta-horloge aan ketting naar Kettingen, Casio Vintage (unisex) naar Herenhorloges. Casio A168 van bol was dubbel met cl-casio-a168. 8-11-2026 (go Marius, keuze B): Herenhorloges vervangen door de horloges die Marius in de Superkeurkamer koos (4 dameshorloges uit die lijst naar Dameshorloges; van-prijs zoals de winkel hem geeft). Oude herenhorloges afgekeurd (doorverwijzing), behalve de klassiekers Casio Vintage, F-91W, G-Shock DW-5600 en Seiko 5. cl-gshock-5600 was dubbel met bol-9300000176286400. Burlington sokken naar Sokken. 9-11-2026 piloot: Furby knuffel luipaard (superz-1c2726b315) nu 9,00 van 19,00 (in de winkel gecontroleerd). Horlogedoos, bbq-schort, puzzel Amsterdam, Teufel en stroopwafels: feedprijs was fout, winkelprijs = siteprijs, niets veranderd. Piloot 2026-11-09: 15 producten erbij (piloot).",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -19760,6 +19760,81 @@
    "mode-sieraden",
    "kleding",
    "sokken"
+  ],
+  "nedg-ef1dc875f9": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "nedg-d70c77594f": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dvzn-685253dc97": [
+   "mode-sieraden",
+   "accessoires",
+   "sleutelhangers"
+  ],
+  "emp-772f0b51eb": [
+   "wonen",
+   "koken-bakken",
+   "drinkflessen-lunchboxen"
+  ],
+  "nedg-d7c32d51f1": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "emp-ea05ec9b56": [
+   "mode-sieraden",
+   "sieraden",
+   "kettingen"
+  ],
+  "nedg-118cf5c5d5": [
+   "speelgoed",
+   "speelfiguren-voertuigen",
+   "actiefiguren-superhelden"
+  ],
+  "dgsw-6041e388b3": [
+   "speelgoed",
+   "bouwen",
+   "lego"
+  ],
+  "dgsw-6bb72a7b20": [
+   "speelgoed",
+   "poppen-knuffels",
+   "knuffels"
+  ],
+  "nedg-5bab02d247": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "emp-88dd73a046": [
+   "wonen",
+   "verlichting",
+   "tafellampen"
+  ],
+  "dgsw-5da7aa69a8": [
+   "speelgoed",
+   "bouwen",
+   "lego"
+  ],
+  "superz-b066a46bf1": [
+   "wonen",
+   "verlichting",
+   "sfeerlampen"
+  ],
+  "emp-cb9c04957e": [
+   "wonen",
+   "kerstdecoratie",
+   "kerstfiguren"
+  ],
+  "dgsw-9704b8bd27": [
+   "wonen",
+   "koken-bakken",
+   "drinkflessen-lunchboxen"
   ]
  },
  "samen": {
@@ -41228,6 +41303,10 @@
   ],
   "kerstl-a4597fe8fb": [
    34.99
+  ],
+  "superz-1c2726b315": [
+   9.0,
+   19.0
   ]
  },
  "shop": {
