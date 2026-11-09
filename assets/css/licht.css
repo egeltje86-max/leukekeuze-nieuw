@@ -1055,11 +1055,11 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .slimnav { margin: 2px 0 4px; }
 .sn-titel { font: 600 22px/1.2 var(--f-kop); color: var(--tekst); margin: 0 0 12px; }
 .sn-raster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.sn-knop { display: flex; align-items: center; gap: 9px; min-height: 60px; padding: 8px 11px; border-radius: 14px; background: #FBF7EF; border: 1px solid #E5DAC4; color: #14213D; font-weight: 650; font-size: 15px; line-height: 1.25; text-decoration: none; transition: border-color .15s, background .15s; }
+.sn-knop { display: flex; align-items: center; gap: 8px; min-height: 60px; padding: 8px 10px; border-radius: 14px; background: #FBF7EF; border: 1px solid #E5DAC4; color: #14213D; font-weight: 650; font-size: 14.5px; line-height: 1.25; text-decoration: none; transition: border-color .15s, background .15s; }
 .sn-knop:hover { border-color: #C9A45C; background: #FFFBF2; }
 .sn-knop:focus-visible { outline: 3px solid #137CA8; outline-offset: 2px; }
 .sn-knop.actief { border-color: #C9A45C; background: #FFF6E0; box-shadow: inset 0 0 0 1px #C9A45C; }
-.sn-ico { flex: none; width: 28px; font-size: 21px; line-height: 1; text-align: center; }
+.sn-ico { flex: none; width: 24px; font-size: 19px; line-height: 1; text-align: center; }
 .sn-naam { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
 .sn-alle { margin-top: 10px; }
 .sn-alle summary { list-style: none; display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; border-radius: 12px; color: #14213D; font-weight: 650; font-size: 15px; cursor: pointer; }

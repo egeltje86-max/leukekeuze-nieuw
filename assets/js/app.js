@@ -262,7 +262,7 @@
      Eén component voor alle lijstpagina's: max. 6 onderwerpen in 2 even brede kolommen, de rest achter 'Bekijk alle onderwerpen (n)'.
      Navigatie brengt je naar een bestaande pagina; filteren en sorteren blijven apart in de werkbalk.
      Volgorde: handmatig gekozen top (SLIM.top) eerst, daarna de best gevulde. Het actieve onderwerp staat altijd in beeld. */
-  var SLIMNAV = !!window.LK_SLIMNAV;
+  var SLIMNAV = window.LK_SLIMNAV !== false; /* 9-11-2026: GO Marius, staat aan op alle lijstpagina's */
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
@@ -278,6 +278,19 @@
     '/voor/kinderen': { titel: 'Waar speelt je kind graag mee?', top: ['bouwen', 'figuren', 'spellen', 'buiten', 'knutselen', 'boeken'] },
     '/voor/tieners': { titel: 'Waar is je tiener mee bezig?', top: ['gaming-gadgets', 'lego-creatief', 'mode', 'geuren-verzorging', 'sport-darts', 'sieraden'] },
     '/voor/opa-oma': { titel: 'Waar worden ze blij van?', top: ['fotos-herinneringen', 'lekkers-drank', 'boeken', 'tuin-vogels', 'puzzels-spellen', 'warm-comfortabel'] },
+    '/voor/collega': { titel: 'Waar zoek je iets voor?' },
+    '/voor/baby': { titel: 'Wat zoek je voor de baby?' },
+    '/c/elektronica': { titel: 'Wat zoek je?', top: ['audio', 'gaming', 'smartwatches', 'foto-video', 'gadgets', 'tablets-e-readers'] },
+    '/c/beauty-verzorging': { titel: 'Wat zoek je?', top: ['parfum', 'giftsets', 'huid-gezicht', 'haar', 'scheren-baard', 'bad-douche'] },
+    '/c/wonen': { titel: 'Wat zoek je?', top: ['verlichting', 'kaarsen-geur', 'woondecoratie', 'woontextiel', 'kerstdecoratie', 'foto-persoonlijk'] },
+    '/c/eten-drinken': { titel: 'Wat zoek je?', top: ['chocolade-snoep', 'cadeaupakketten', 'delicatessen', 'koffie-thee-cacao', 'sterke-drank', 'wijn'] },
+    '/c/sport-outdoor': { titel: 'Wat zoek je?', top: ['fitness-yoga', 'wandelen-hardlopen', 'kamperen-outdoor', 'fietsen-steps', 'darts', 'metaaldetectie'] },
+    '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-psalmboeken', 'boeken-muziek', 'sieraden', 'wanddecoratie-teksten', 'voor-kinderen', 'doop-belijdenis'] },
+    '/c/cadeaus/kerst': { titel: 'Wat zoek je voor kerst?', vast: [
+      ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒'],
+      ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶'], ['advent', 'Adventskalenders', '/collectie/adventskalenders', '📅'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄'],
+      ['tiener', 'Voor tieners', '/gids/kerstcadeau-tiener', '🎧'], ['collega', 'Voor collega’s', '/gids/kerstcadeau-collega', '💼'], ['opa', 'Voor opa en oma', '/gids/kerstcadeau-opa-oma', '👵'],
+      ['trui', 'Kersttruien', '/c/mode-sieraden/kleding/kersttruien', '🧶'], ['stal', 'Kerststal kopen', '/gids/kerststal-kopen', '⭐']] },
     '/c/speelgoed': { titel: 'Wat zoek je?', top: ['baby-peuter', 'bouwen', 'poppen-knuffels', 'speelfiguren-voertuigen', 'spellen', 'buiten-spelen'] },
     '/c/cadeaus/sinterklaas': { titel: 'Wat zoek je voor Sinterklaas?', vast: [
       ['schoen', 'Schoencadeaus', '/gids/schoencadeautjes', '🥿'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒'], ['volw', 'Voor volwassenen', '/gids/sinterklaas-voor-volwassenen', '🎁'],
@@ -1163,6 +1176,15 @@
         return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + hoofdPad + '/' + slug + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(p2.kort) + '</a>';
       }).join('');
       if (vk) voorKnopjes = '<nav class="chips vakjesrij omlopend" aria-label="Voor wie">' + (pv ? '<a class="chip" href="' + hoofdPad + '">Iedereen</a>' : '') + vk + '</nav>';
+      /* 9-11-2026 (GO Marius): gelegenheden en collecties: Voor wie als rustige knoppen (zelfde component als overal). */
+      if (SLIMNAV && vk) {
+        var VOORICO = { hem: '👔', haar: '👗', kinderen: '🧒', tieners: '🎧', 'opa-oma': '👵', collega: '💼', baby: '🍼' };
+        voorKnopjes = slimNav((pv ? [{ id: 'iedereen', naam: 'Iedereen', naar: hoofdPad, icoon: '🎁' }] : []).concat((g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
+          var p2 = window.LK_PERSOON(slug); if (!p2) return null;
+          var n = basisAlles.filter(function (p) { return voorFilter(p, slug); }).length; if (n < 10) return null;
+          return { id: slug, naam: p2.kort, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n, icoon: VOORICO[slug] };
+        }).filter(Boolean)), { titel: 'Voor wie zoek je iets?' }, 'Voor wie');
+      }
     }
     if ((g.korting || g.codes) && !q.sort) q = Object.assign({}, q, { sort: g.korting ? 'beste' : 'korting' }); /* Black Friday: standaard de beste deals eerst */
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
