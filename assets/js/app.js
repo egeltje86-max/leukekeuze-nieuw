@@ -67,7 +67,8 @@
     var doelPad = url.split('?')[0].split('#')[0];
     if (!vervang && doelPad === netjes(location.pathname) && /^\/(c|voor|gelegenheid|collectie)\//.test(doelPad)) vervang = true;
     if (!window.LK_PRODUCTEN) { location[vervang ? 'replace' : 'assign'](url); return; } /* lijst nog niet binnen: gewoon de pagina laden */
-    try { history[vervang ? 'replaceState' : 'pushState']({}, '', url); } catch (e) { location.href = url; return; }
+    /* 9-11-2026: kies je iets in het filterpaneel, dan blijft de paneel-stap in de geschiedenis staan (terug sluit dan het paneel). */
+    try { history[vervang ? 'replaceState' : 'pushState'](vervang && history.state && history.state.paneel ? { paneel: 1 } : {}, '', url); } catch (e) { location.href = url; return; }
     toon();
   }
   /* 3.0 (4-11-2026): links naar een oude afdeling of een oud vakje meteen naar de nieuwe plek laten wijzen (zonder omweg). */
@@ -4075,7 +4076,19 @@
     if (!sluitDoorTerug && history.state && history.state.lade) { negeerPop = true; history.back(); }
     sluitDoorTerug = false;
   }
-  var sluitDoorTerug = false, negeerPop = false;
+  var sluitDoorTerug = false, negeerPop = false, herstelNa = null;
+  /* 9-11-2026 (wens Marius): Filter & sorteren is een extra stap in de geschiedenis. De terugknop van de telefoon sluit het paneel
+     en je blijft op dezelfde pagina (met je gekozen filters), in plaats van terug naar de vorige pagina te gaan. */
+  function openPaneel() {
+    var fp = $('[data-filterpaneel]'); if (!fp) return;
+    fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); });
+    try { if (!(history.state && history.state.paneel)) history.pushState({ paneel: 1 }, ''); } catch (e) {}
+  }
+  function sluitPaneel(doorTerug) {
+    var fp = $('[data-filterpaneel]'); if (!fp || fp.hidden) return;
+    fp.classList.remove('open'); setTimeout(function () { fp.hidden = true; }, 250); paneelOpen = false;
+    if (!doorTerug && history.state && history.state.paneel) { negeerPop = true; herstelNa = huidigAdres(); try { history.back(); } catch (e) { negeerPop = false; herstelNa = null; } }
+  }
   function sluitMega() {
     $('[data-megamenu]').classList.remove('open');
     var b = $('[data-mega]'); if (b) b.setAttribute('aria-expanded', 'false');
@@ -4464,7 +4477,9 @@
     } catch (e) {}
   }
   window.addEventListener('popstate', function (e) {
-    if (negeerPop) { negeerPop = false; return; }
+    if (negeerPop) { negeerPop = false; if (herstelNa && huidigAdres() !== herstelNa) { try { history.replaceState(e.state, '', herstelNa); } catch (er) {} } herstelNa = null; return; }
+    var pnl = $('[data-filterpaneel]');
+    if (pnl && !pnl.hidden) { var bleef = laatstGetoond; sluitPaneel(true); if (huidigAdres() !== bleef) { try { history.replaceState(e.state, '', bleef); } catch (er) {} } return; }
     if (huidigAdres() !== laatstGetoond) { terugViaKnop = true; toon(); return; }
     if (document.body.classList.contains('lade-open')) { sluitDoorTerug = true; sluitLade(); return; }
     var st = e.state || {};
@@ -4518,8 +4533,8 @@
       if (navigator.clipboard) navigator.clipboard.writeText(w2.bericht).then(klaar, function () { prompt('Kopieer deze link:', w2.link); }); else prompt('Kopieer deze link:', w2.link);
       return; }
     if (t.closest('[data-filterpaneel]') && t.tagName === 'A') { naarWerkbalk = true; paneelOpen = !t.closest('.vonk-paneel'); var bl = t.closest('.filter-blad'); paneelScroll = bl ? bl.scrollTop : 0; }
-    if (t.hasAttribute('data-filter-open')) { var fp = $('[data-filterpaneel]'); if (fp) { fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); }); } return; }
-    if (t.hasAttribute('data-filter-dicht')) { var fp2 = $('[data-filterpaneel]'); if (fp2) { fp2.classList.remove('open'); setTimeout(function () { fp2.hidden = true; }, 250); } return; }
+    if (t.hasAttribute('data-filter-open')) { openPaneel(); return; }
+    if (t.hasAttribute('data-filter-dicht')) { sluitPaneel(false); return; }
     if (t.hasAttribute('data-open-lade')) { openLade(); return; }
     if (t.hasAttribute('data-sluit-lade')) { sluitLade(); return; }
     if (t.hasAttribute('data-mega')) {
