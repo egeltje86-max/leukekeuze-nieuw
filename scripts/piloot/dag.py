@@ -52,7 +52,7 @@ if wacht and os.path.exists(wacht):
 if wacht and os.path.exists(wacht) and vers:
     c, t = run(['node', 'scripts/keurkamer/effectief-site.js']); stap('site-prijzen verzamelen', c == 0, t)
     c, t = run([sys.executable, 'scripts/keurkamer/nazorg.py', wacht]); stap('nazorg toepassen', c in (0, 3), t)
-    try: rap['nazorg'] = json.loads(t.strip().splitlines()[-1]) if c == 0 else {'gestopt': t.strip().splitlines()[0] if t.strip() else 'onbekend'}
+    try: rap['nazorg'] = json.loads(t[t.index('{'):t.rindex('}') + 1]) if c == 0 else {'gestopt': t.strip().splitlines()[0] if t.strip() else 'onbekend'}
     except Exception: rap['nazorg'] = {'ruw': t[-500:]}
     if c == 3: rap['melden'].append('Nazorg gestopt: ' + str(rap['nazorg'].get('gestopt', '')))
     if rap['nazorg'] and rap['nazorg'].get('gemeld'): rap['melden'].append('%d prijzen die verdubbelden of halveerden niet overgenomen (handmatig nakijken).' % len(rap['nazorg']['gemeld']))
