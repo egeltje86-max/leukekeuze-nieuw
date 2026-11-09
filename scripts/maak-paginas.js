@@ -77,14 +77,25 @@ function deelBeeld(pad) {
 /* 8-11-2026 (GO Marius): twee pagina's met dezelfde producten en bijna dezelfde titel zitten elkaar in Google in de weg.
    De collectie verwijst naar de hoofdpagina (canonical) en staat niet meer in de sitemap. De pagina's per persoon blijven gewoon zelfstandig. */
 const HOOFDPAGINA = { '/collectie/grappige-cadeaus/': '/c/cadeaus/grappig/' };
+/* 9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor een paar pagina's (scripts/seo-paginas.json). */
+let SEO = {}; try { SEO = JSON.parse(fs.readFileSync(path.join(__dirname, 'seo-paginas.json'), 'utf8')); } catch (e) {}
+const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+function seoDatum(d) { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? (+m[3]) + ' ' + MAANDEN[+m[2] - 1] : ''; }
 function maakPagina(info, lade, mega, aftel, zoekrij) {
   let h = SJABLOON;
+  const eigen = SEO[info.pad];
+  if (eigen) {
+    info = Object.assign({}, info);
+    if (eigen.titel) info.titel = eigen.titel;
+    if (eigen.omschrijving) { const d = seoDatum(info.datum); info.omschrijving = d ? eigen.omschrijving.replace('{datum}', d) : eigen.omschrijving.replace(/, prijs gecontroleerd op \{datum\}/, ''); }
+  }
   const url = SITE + info.pad;
   /* Lange producttitels: zonder ' | LeukeKeuze' erachter, anders knipt Google de titel af (31-10-2026). */
   let titel = info.titel.length > 62 ? info.titel.replace(/ \| LeukeKeuze$/, '') : info.titel;
   /* 8-11-2026 (GO Marius): nog steeds te lang voor Google (meer dan 65 tekens)? Dan netjes inkorten op een heel woord. Op de pagina zelf verandert niets. */
   if (titel.length > 65) titel = titel.slice(0, 62).replace(/[\s,–-]+\S*$/, '') + '…';
   h = zet(h, /<title>[^<]*<\/title>/, '<title>' + escA(titel) + '</title>');
+  if (eigen && eigen.titel) h = h.replace('</head>', '<meta name="lk-titel" data-pad="' + info.pad + '" content="' + escA(titel) + '">\n</head>'); /* de app houdt deze titel aan */
   h = zet(h, /<meta name="description" content="[^"]*">/, '<meta name="description" content="' + escA(info.omschrijving) + '">');
   h = zet(h, /<link rel="canonical" href="[^"]*">/, '<link rel="canonical" href="' + (HOOFDPAGINA[info.pad] ? SITE + HOOFDPAGINA[info.pad] : url) + '">');
   h = zet(h, /<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="' + escA(info.titel) + '">');

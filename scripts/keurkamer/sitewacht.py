@@ -201,6 +201,7 @@ def winkel_sectie():
 # ======================================================================
 # 3. TECHNIEK (gebouwde pagina's)
 # ======================================================================
+BEWUST_CANON = {'/collectie/grappige-cadeaus/'}  # 8-11-2026 GO Marius: wijst bewust naar /c/cadeaus/grappig/ (zie HOOFDPAGINA in maak-paginas.js)
 RE_TITLE = re.compile(r'<title>(.*?)</title>', re.S); RE_DESC = re.compile(r'<meta name="description" content="([^"]*)"'); RE_CANON = re.compile(r'<link rel="canonical" href="([^"]*)"')
 RE_H1 = re.compile(r'<h1[^>]*>(.*?)</h1>', re.S); RE_HREF = re.compile(r'href="([^"#]*)"'); RE_SRC = re.compile(r'(?:src|data-src)="([^"]*)"'); RE_ROBOTS = re.compile(r'<meta name="robots" content="([^"]*)"'); RE_LD = re.compile(r'application/ld\+json')
 OVERSLAAN = {'assets', 'images', 'scripts', 'keurkamer', 'node_modules', '.git', 'pins', 'tools', '.github'}
@@ -247,7 +248,7 @@ def techniek_sectie(snel):
             if len(dd) < 50: fouten['omschrijving te kort (<50)'].append(rel)
             elif len(dd) > 170: fouten['omschrijving te lang (>170)'].append(rel)
         if not c: fouten['geen canonical'].append(rel)
-        elif c.group(1).rstrip('/') != (SITE + rel).rstrip('/'): canon_fout += 1; fouten['canonical wijst ergens anders heen'].append(rel + ' -> ' + c.group(1))
+        elif c.group(1).rstrip('/') != (SITE + rel).rstrip('/') and rel.rstrip('/') + '/' not in BEWUST_CANON: canon_fout += 1; fouten['canonical wijst ergens anders heen'].append(rel + ' -> ' + c.group(1))
         if not h1 or not re.sub('<[^>]+>', '', h1.group(1)).strip(): fouten['geen h1'].append(rel)
         rb = RE_ROBOTS.search(h)
         if rb and 'noindex' in rb.group(1): noindex += 1

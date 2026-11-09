@@ -477,7 +477,13 @@
       '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="' + (tekst || 'Zoek in alle winkels…') + '" autocomplete="off" enterkeyhint="search">' +
       '<button type="submit" aria-label="Zoeken">' + ic('zoek') + '</button></form>';
   }
-  function zetTitel(t) { window.LK_SEO = ''; document.title = t ? t + ' | LeukeKeuze' : 'LeukeKeuze – de mooiste cadeaus voor elk moment'; }
+  function zetTitel(t) {
+    window.LK_SEO = '';
+    /* 9-11-2026: heeft deze pagina een eigen Google-titel (scripts/seo-paginas.json), dan houdt de app die aan. */
+    var eigen = document.querySelector('meta[name="lk-titel"]');
+    if (eigen && eigen.getAttribute('data-pad') === location.pathname) { document.title = eigen.getAttribute('content'); return; }
+    document.title = t ? t + ' | LeukeKeuze' : 'LeukeKeuze – de mooiste cadeaus voor elk moment';
+  }
 
   /* ================== PAGINA'S ================== */
 
