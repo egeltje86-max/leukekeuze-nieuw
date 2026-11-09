@@ -266,6 +266,10 @@
      Navigatie brengt je naar een bestaande pagina; filteren en sorteren blijven apart in de werkbalk.
      Volgorde: handmatig gekozen top (SLIM.top) eerst, daarna de best gevulde. Het actieve onderwerp staat altijd in beeld. */
   var SLIMNAV = window.LK_SLIMNAV !== false; /* 9-11-2026: GO Marius, staat aan op alle lijstpagina's */
+  /* NOVA-001 (9-11-2026, ontwerp Nova): de keuzeknoppen als luxe mini-kaartjes met het bestaande icoon of de bestaande foto.
+     Proefversie: alleen zichtbaar met ?proef=nova (blijft aan in dit tabblad). Pas na GO van Marius voor iedereen. */
+  var NOVA1 = (function () { try { if (/[?&]proef=nova(&|$)/.test(location.search)) sessionStorage.setItem('lknova1', '1'); return window.LK_NOVA1 === true || sessionStorage.getItem('lknova1') === '1'; } catch (e) { return window.LK_NOVA1 === true; } })();
+  if (NOVA1) document.documentElement.classList.add('nova1');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
@@ -322,9 +326,13 @@
     rest.slice().sort(function (a, b) { return (b.n || 0) - (a.n || 0); }).forEach(function (x) { if (top.length < 6) top.push(x); });
     var actief = items.filter(function (x) { return x.actief; })[0];
     if (actief && top.indexOf(actief) === -1) top[top.length - 1] = actief;
+    /* NOVA-001: hebben alle zes een foto, dan grote foto's; anders overal een rond beeldje, zodat de kaartjes gelijk ogen. */
+    var isRond = function (b) { return /\/(iconen|rond)\//.test(b || ''); };
+    var alleFoto = NOVA1 && top.every(function (x) { return x.beeld && !isRond(x.beeld); });
     var knop = function (x) {
       return '<a class="sn-knop' + (x.actief ? ' actief' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
-        '<span class="sn-ico" aria-hidden="true">' + (x.icoon || slimIco(x.naam)) + '</span><span class="sn-naam">' + esc(x.naam) + '</span></a>';
+        (NOVA1 && x.beeld ? '<span class="sn-beeld' + (alleFoto && !isRond(x.beeld) ? '' : ' sn-rond') + '" aria-hidden="true"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async" width="120" height="120"></span>'
+          : '<span class="sn-ico" aria-hidden="true">' + (x.icoon || slimIco(x.naam)) + '</span>') + '<span class="sn-naam">' + esc(x.naam) + '</span></a>';
     };
     return '<nav class="slimnav" aria-label="' + esc(label || cfg.titel || 'Onderwerpen') + '">' +
       (cfg.titel ? '<h2 class="sn-titel">' + esc(cfg.titel) + '</h2>' : '') +
@@ -1119,10 +1127,10 @@
 
     if (SLIMNAV) {
       if (SLIM[pad] && SLIM[pad].vast) subs = slimVast(pad);
-      else if (!s) subs = slimNav(groepen.map(function (x) { return { id: x.slug, naam: x.naam, naar: metBudget(subAdres(c, x)), n: LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }).length }; }),
+      else if (!s) subs = slimNav(groepen.map(function (x) { return { id: x.slug, naam: x.naam, beeld: x.beeld, naar: metBudget(subAdres(c, x)), n: LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }).length }; }),
         SLIM[pad] || { titel: 'Wat zoek je?' }, 'Groepen in ' + c.naam);
       else if (volleVakjes.length > 1) subs = slimNav(volleVakjes.map(function (x) {
-        return { id: x.slug, naam: x.naam, naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), actief: !!(v && v.slug === x.slug), n: inGroep.filter(function (p) { return p.vak === x.slug; }).length };
+        return { id: x.slug, naam: x.naam, beeld: x.beeld, naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), actief: !!(v && v.slug === x.slug), n: inGroep.filter(function (p) { return p.vak === x.slug; }).length };
       }), SLIM['/c/' + c.slug + '/' + s.slug] || { titel: 'Soorten ' + s.naam.toLowerCase() }, 'Soorten in ' + s.naam);
       else subs = '';
     }
@@ -1223,7 +1231,7 @@
         }), 'Onderdelen voor ' + naam, { altijd: true });
 
     if (SLIMNAV) subsHtml = slimNav(volleSubsP.map(function (x) {
-      return { id: x.slug, naam: x.naam, naar: metBudget('/voor/' + pe.slug + '/' + x.slug), actief: !!(s && s.slug === x.slug), n: persoonProducten(pe, x.vakken).length };
+      return { id: x.slug, naam: x.naam, beeld: x.beeld, naar: metBudget('/voor/' + pe.slug + '/' + x.slug), actief: !!(s && s.slug === x.slug), n: persoonProducten(pe, x.vakken).length };
     }), SLIM['/voor/' + pe.slug] || { titel: 'Wat zoek je voor ' + naam + '?' }, 'Onderwerpen voor ' + naam);
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
@@ -1395,7 +1403,7 @@
         voorKnopjes = slimNav((pv ? [{ id: 'iedereen', naam: 'Iedereen', naar: hoofdPad, icoon: '🎁' }] : []).concat((g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
           var p2 = window.LK_PERSOON(slug); if (!p2) return null;
           var n = basisAlles.filter(function (p) { return voorFilter(p, slug); }).length; if (n < 10) return null;
-          return { id: slug, naam: p2.kort, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n, icoon: VOORICO[slug] };
+          return { id: slug, naam: p2.kort, beeld: p2.beeld, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n, icoon: VOORICO[slug] };
         }).filter(Boolean)), { titel: 'Voor wie zoek je iets?' }, 'Voor wie');
       }
     }
