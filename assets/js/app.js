@@ -460,7 +460,7 @@
   }
   function mobielBalk(pad, q, knoppen, sorteerOpties) {
     var aantal = (q.prijs && q.prijs !== 'alle' ? 1 : 0) + (q.voor ? 1 : 0) + aantalKnoppen(q, knoppen);
-    var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd|hoe oud/i.test(k.titel); })[0]; /* stap 4: op Verjaardag ook 'Hoe oud wordt hij of zij?' als snel rijtje */
+    var sets = knopSets(knoppen, q), lft = sets.filter(function (k) { return /leeftijd|hoe oud/i.test(k.titel) || k.snel; })[0]; /* stap 4: op Verjaardag ook 'Hoe oud wordt hij of zij?' als snel rijtje */
     var lftRij = lft ? knopRij(pad, q, lft) : '', prRij = lftRij ? '' : prijsChips(pad, q);
     var snel = lftRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">' + esc(lft.titel) + '</div>' + lftRij + '</div>'
              : prRij ? '<div class="knop-groep mb-snel"><div class="chips-titel">Prijs</div>' + prRij + '</div>' : '';

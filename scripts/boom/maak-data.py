@@ -48,7 +48,9 @@ for a in BOOM:
                     for x in ('beeld', 'tekst', 'seoTitel', 'seoTekst', 'gids', 'knoppen'):
                         if os_.get(x): vk[x] = os_[x]
                     vk['oud'] = oudpad
+            if (a['id'], g['naam'], v) == ('elektronica-gaming', 'Smartwatches', 'Smartwatches'): vk['knoppen'] = ['wie3snel']  # 9-11-2026 GO Marius
             s['vakjes'].append(vk)
+        if (a['id'], g['naam']) == ('elektronica-gaming', 'Smartwatches'): s['knoppen'] = ['wie3snel']  # 9-11-2026 GO Marius: Dames / Heren / Kinderen
         # plaatje van de groep: het plaatje van het eerste vakje dat er een heeft (anders kiest de site een productfoto)
         b = next((vk['beeld'] for vk in s['vakjes'] if vk.get('beeld')), None)
         if b: s['beeld'] = b
