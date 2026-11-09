@@ -1,5 +1,5 @@
-// NOVA-VOORSTEL 8-11-2026: persoonlijkere humor, natuurlijk Nederlands, striktere rijm- en strofencontrole.
-// Alleen deze rijmmachinebron wijzigen op een aparte branch; geen live GO.
+// live-16 (9-11-2026, GO Marius): Nova-voorstel: persoonlijkere humor, natuurlijk Nederlands, striktere rijm- en strofencontrole
+//   (getest als test-nova-1 tegen de nulmeting met de vaste testset, zie scripts/rijmmachine/uitslagen/).
 // Sint-rijmmachine van LeukeKeuze. Bron van de Supabase-functie (versie live-13, 8-11-2026, GO Marius):
 // - live-15 (GO Marius): het gedicht noemt de hobby, niet het precieze product; de klant kan onder het gedicht zelf een ander passend cadeau kiezen (6 extra, zelfde AI-ronde, geen extra kosten).
 // - live-14 (GO Marius): algemene vragen: wat voor iemand, wat doet hij/zij graag, iets typisch (mag leeg). Geen verzonnen blunders.
@@ -271,7 +271,7 @@ function cors(origin: string): Record<string, string> {
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin") || "";
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(origin) });
-  if (req.method === "GET") return antwoord({ ok: true, versie: "live-15", denken: DENKEN, sleutel: !!sleutel(), model: goedModel || MODELLEN[0] }, 200, origin);
+  if (req.method === "GET") return antwoord({ ok: true, versie: "live-16", denken: DENKEN, sleutel: !!sleutel(), model: goedModel || MODELLEN[0] }, 200, origin);
   if (req.method !== "POST") return antwoord({ fout: "Niet toegestaan." }, 405, origin);
   if (origin && !ORIGINS.includes(origin)) return antwoord({ fout: "Niet toegestaan." }, 403, origin);
 
