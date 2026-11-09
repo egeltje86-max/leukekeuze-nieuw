@@ -304,7 +304,7 @@
     '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-psalmboeken', 'boeken-muziek', 'sieraden', 'wanddecoratie-teksten', 'voor-kinderen', 'doop-belijdenis'] },
     '/c/cadeaus/kerst': { titel: 'Wat zoek je voor kerst?', vast: [
       ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒'],
-      ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶'], ['advent', 'Adventskalenders', '/collectie/adventskalenders', '📅'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄'],
+      ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶'], ['beleef', 'Belevenissen', '/gids/belevenis-cadeau', '🎟️'], ['advent', 'Advents\u00ADkalenders', '/collectie/adventskalenders', '📅'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄'],
       ['tiener', 'Voor tieners', '/gids/kerstcadeau-tiener', '🎧'], ['collega', 'Voor collega’s', '/gids/kerstcadeau-collega', '💼'], ['opa', 'Voor opa en oma', '/gids/kerstcadeau-opa-oma', '👵'],
       ['trui', 'Kersttruien', '/c/mode-sieraden/kleding/kersttruien', '🧶'], ['stal', 'Kerststal kopen', '/gids/kerststal-kopen', '⭐']] },
     '/c/speelgoed': { titel: 'Wat zoek je?', top: ['baby-peuter', 'bouwen', 'poppen-knuffels', 'speelfiguren-voertuigen', 'spellen', 'buiten-spelen'] },
@@ -3891,10 +3891,31 @@
         { kop: 'Voor elke dag (6 tot 12 jaar)', tekst: 'Een verhaal voor elke dag van het jaar, of een kinderbijbel die dicht bij de Bijbel blijft. Ook om zelf in te lezen.',
           ids: ['bol-9300000235874233', 'bol-9300000130260497', 'bol-9200000052023945', 'bol-9300000337284179'] }
       ],
-      slot: 'Meer bijbels en boeken staan bij <a href="/c/christelijk/bijbels">Bijbels</a> en <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>. Zoek je een cadeau voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' }
+      slot: 'Meer bijbels en boeken staan bij <a href="/c/christelijk/bijbels">Bijbels</a> en <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>. Zoek je een cadeau voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' },
+    /* 9-11-2026 (GO Marius): gids Belevenis cadeau geven. 'Belevenis cadeau' wordt 1.300 keer per maand gezocht. */
+    { slug: 'belevenis-cadeau', beeld: 'dk-35d0e56982', vakken: ['belevenissen'], titel: 'Belevenis cadeau geven: de leukste uitjes voor iedereen', kort: 'Van zeehondensafari tot Ferrari rijden: een cadeau dat ze nooit vergeten. Al vanaf €9,99.',
+      intro: 'Een belevenis is een cadeau dat je niet in de kast zet. Uit onderzoek blijkt dat mensen zich na een uitje dichter bij de gever voelen dan na een gewoon cadeau, omdat het meer gevoel geeft. Daarom zette ik de leukste belevenissen per persoon op een rij: voor een stel, voor wie van snelheid houdt, voor het gezin en voor iemand die alles al heeft.',
+      delen: [
+        { kop: 'Voor een stel of je partner', tekst: 'Samen een nachtje weg, samen proeven of samen de lucht in. Een cadeau voor twee.',
+          ids: ['dk-dd67a6f2bc', 'dk-904317b4e5', 'dk-1d0dec2fb3', 'dk-c4e8d984dc'] },
+        { kop: 'Voor wie van snelheid houdt', tekst: 'Zelf achter het stuur van een Ferrari of Porsche, door de modder met een 4x4, of leren slippen. Een droom die uitkomt.',
+          ids: ['dk-85478160d2', 'dk-9c89e99aa6', 'dk-d1a38aa3fc', 'dk-726a82d16c'] },
+        { kop: 'Voor het hele gezin', tekst: 'Zeehonden en bevers van dichtbij, een speurtocht door de stad of alpaca’s knuffelen. Leuk voor jong en oud.',
+          ids: ['dk-78c5a18049', 'dk-f09931c85d', 'dk-4c68d47ad3', 'dk-1ed1b33cb8'] },
+        { kop: 'Voor iemand die alles al heeft', tekst: 'Iets wat ze zelf nooit zouden boeken: vliegen boven het water, paragliden, ontsnappen uit een escape room of zelf kaas maken.',
+          ids: ['dk-da9d4b8898', 'dk-d8f37a3161', 'dk-15d8cc0fbd', 'dk-46fd9a9a7d'] },
+        { kop: 'Kleine belevenissen onder €20', tekst: 'Een uitje hoeft niet duur te zijn. Leuk voor de lootjes of als extraatje bij een ander cadeau.',
+          ids: ['dk-1a1d8d2d06', 'dk-02f248b8b4', 'dk-04e115fae5', 'dk-97953ebc63'] }
+      ],
+      slot: 'Alle 138 belevenissen vind je bij <a href="/c/belevenissen">Belevenissen</a>: van boottochten en escape rooms tot een nachtje weg. Je bestelt ze bij Doenkado; daar zie je ook de precieze prijs per plek.' }
   ];
   /* Gidsen 2.0 (7-11-2026): per gids 'Snel kiezen' (3 favorieten: [label, product-id]) en veelgestelde vragen ([vraag, antwoord]). */
   var GIDS_EXTRA = {
+    'belevenis-cadeau': { top: [['Onze topkeuze', 'dk-78c5a18049'], ['Voor durfals', 'dk-904317b4e5'], ['Beste koop', 'dk-4c68d47ad3']], faq: [
+      ['Wat is een belevenis cadeau?', 'Je geeft geen spullen, maar iets om te doen: een uitje, een workshop, een nachtje weg of een spannende activiteit. Je bestelt de belevenis bij Doenkado.'],
+      ['Wat is een leuk belevenis cadeau voor een stel?', 'Een nachtje in een pod op de Veluwe, een rondvaart door Giethoorn, een wijnproeverij of samen een helikoptervlucht. Iets wat je samen doet, onthoud je samen.'],
+      ['Wat als iemand ver weg woont?', 'Veel belevenissen kun je op meerdere plekken in Nederland doen. Ferrari rijden kan bijvoorbeeld op 15 plekken en een escape room in veel steden. Bij elke belevenis staat waar je hem kunt doen.'],
+      ['Is er ook een goedkoop belevenis cadeau?', 'Ja. Er zijn belevenissen vanaf €9,99, zoals een smaaksafari, kickbiken op de Veluwe of een rondvaart door Delft.']] },
     'schoencadeautjes': { top: [['Onze topkeuze', 'bol-9300000232471843'], ['Voor de kleintjes', 'bol-9300000320683306'], ['Om samen te spelen', 'bol-9200000132162995']], faq: [
       ['Hoeveel geef je uit aan een schoencadeautje?', 'De meeste ouders houden 2 tot 5 euro per schoen aan en bewaren het grotere cadeau voor pakjesavond. Niet elke schoen hoeft een cadeautje te hebben: een mandarijn, een chocolademuntje of een tekening van Piet is ook feest.'],
       ['Hoe vaak mag je je schoen zetten?', 'Dat verschilt per gezin. Veel kinderen zetten hun schoen een paar keer in de weken tussen de intocht en 5 december, bijvoorbeeld op vaste dagen. Spreek het van tevoren af, dan weet iedereen waar hij aan toe is.'],

@@ -1180,6 +1180,16 @@ window.LK_HOME_GROEPEN = ['speelgoed', 'mode-sieraden', 'beauty-verzorging', 'el
   if (col) col.vakken = a.subs.map(function (s) { return 'belevenissen/' + s.slug; });
 })();
 
+/* 9-11-2026 (GO Marius): Belevenissen ook als onderwerp bij Voor haar, Voor hem en Voor kinderen. */
+(function () {
+  (window.LK_PERSONEN || []).forEach(function (p) {
+    if (['haar', 'hem', 'kinderen'].indexOf(p.slug) === -1 || !p.subs || p.subs.some(function (s) { return s.slug === 'belevenissen'; })) return;
+    p.subs.push({ slug: 'belevenissen', naam: 'Belevenissen', beeld: 'images/categorieen/belevenissen-home.webp', vakken: ['belevenissen'],
+      seoTitel: p.slug === 'kinderen' ? 'Uitje cadeau voor kinderen – zeehonden, speurtochten en meer' : 'Belevenis cadeau ' + p.naam.toLowerCase() + ' – een uitje dat ze nooit vergeten',
+      tekst: p.slug === 'kinderen' ? 'Een uitje om samen te doen: bevers speuren, zeehonden kijken, een speurtocht of alpaca’s knuffelen.' : 'Geen spullen, maar een herinnering: van Ferrari rijden en een helikoptervlucht tot een nachtje weg.' });
+  });
+})();
+
 /* 5-11-2026: nieuwe subcategorie-icoontjes van Marius (80 stuks, marineblauw met gouden rand). Alleen de plaatjes, verder verandert er niets. */
 (function () {
   var I = {
