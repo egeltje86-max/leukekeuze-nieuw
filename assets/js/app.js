@@ -266,9 +266,9 @@
      Navigatie brengt je naar een bestaande pagina; filteren en sorteren blijven apart in de werkbalk.
      Volgorde: handmatig gekozen top (SLIM.top) eerst, daarna de best gevulde. Het actieve onderwerp staat altijd in beeld. */
   var SLIMNAV = window.LK_SLIMNAV !== false; /* 9-11-2026: GO Marius, staat aan op alle lijstpagina's */
-  /* NOVA-001 (9-11-2026, ontwerp Nova): de keuzeknoppen als luxe mini-kaartjes met het bestaande icoon of de bestaande foto.
-     Proefversie: alleen zichtbaar met ?proef=nova (blijft aan in dit tabblad). Pas na GO van Marius voor iedereen. */
-  var NOVA1 = (function () { try { if (/[?&]proef=nova(&|$)/.test(location.search)) sessionStorage.setItem('lknova1', '1'); return window.LK_NOVA1 === true || sessionStorage.getItem('lknova1') === '1'; } catch (e) { return window.LK_NOVA1 === true; } })();
+  /* NOVA-001 (9-11-2026, ontwerp Nova, goedgekeurd door Nova; GO Marius 9-11-2026): de keuzeknoppen als luxe mini-kaartjes
+     met het bestaande icoon of de bestaande foto. Voor iedereen aan; terug naar de oude knoppen kan met window.LK_NOVA1 = false. */
+  var NOVA1 = window.LK_NOVA1 !== false;
   if (NOVA1) document.documentElement.classList.add('nova1');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
