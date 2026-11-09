@@ -288,6 +288,19 @@
     '/c/wonen': { titel: 'Wat zoek je?', top: ['verlichting', 'kaarsen-geur', 'woondecoratie', 'woontextiel', 'kerstdecoratie', 'foto-persoonlijk'] },
     '/c/eten-drinken': { titel: 'Wat zoek je?', top: ['chocolade-snoep', 'cadeaupakketten', 'delicatessen', 'koffie-thee-cacao', 'sterke-drank', 'wijn'] },
     '/c/sport-outdoor': { titel: 'Wat zoek je?', top: ['fitness-yoga', 'wandelen-hardlopen', 'kamperen-outdoor', 'fietsen-steps', 'darts', 'metaaldetectie'] },
+    /* 9-11-2026 (GO Marius): Belevenissen. Eerst zijn zes favorieten, de rest onder 'Bekijk alle onderwerpen'. */
+    '/c/belevenissen': { titel: 'Waar heb je zin in?', vast: [
+      ['auto', 'Droomauto rijden', '/c/belevenissen/snelheid-avontuur/droomauto-rijden', '🏎️'], ['lucht', 'Paragliden & helikopter', '/c/belevenissen/in-de-lucht', '🪂'],
+      ['fly', 'Flyboarden & waterskiën', '/c/belevenissen/water-strand/waterskien-kitesurfen-flyboarden', '🌊'], ['escape', 'Escape rooms', '/c/belevenissen/escape-rooms-puzzeltochten/escape-rooms', '🔐'],
+      ['puzzel', 'Puzzeltochten', '/c/belevenissen/escape-rooms-puzzeltochten/puzzel-speurtochten', '🧩'], ['slapen', 'Overnachten', '/c/belevenissen/dagjes-uit-overnachten/overnachten', '🛖'],
+      ['boot', 'Boottochten & zeilen', '/c/belevenissen/water-strand/boottochten-zeilen', '⛵'], ['dieren', 'Dieren kijken', '/c/belevenissen/natuur-dieren/dieren-kijken-knuffelen', '🦭'],
+      ['modder', '4x4, quad & motor', '/c/belevenissen/snelheid-avontuur/4x4-quad-motor', '🚙'], ['slip', 'Slipcursus', '/c/belevenissen/snelheid-avontuur/slipcursus', '🛞'],
+      ['kano', 'Kano & SUP', '/c/belevenissen/water-strand/kano-sup', '🛶'], ['duik', 'Duiken', '/c/belevenissen/water-strand/duiken', '🤿'],
+      ['strand', 'Blokarten & powerkiten', '/c/belevenissen/water-strand/blokarten-powerkiten', '🪁'], ['wandel', 'Wandeltochten', '/c/belevenissen/natuur-dieren/wandeltochten', '🥾'],
+      ['fiets', 'Fietsen, steppen & scooteren', '/c/belevenissen/natuur-dieren/fietsen-steppen-scooteren', '🚲'], ['maak', 'Zelf maken', '/c/belevenissen/workshops-proeven/zelf-maken', '🧀'],
+      ['proef', 'Proeven & eettours', '/c/belevenissen/workshops-proeven/proeven-eettours', '🍷'], ['foto', 'Fotograferen', '/c/belevenissen/workshops-proeven/fotograferen', '📷'],
+      ['yoga', 'Yoga & ontspanning', '/c/belevenissen/workshops-proeven', '🧘'], ['dag', 'Dagjes uit', '/c/belevenissen/dagjes-uit-overnachten/dagjes-uit', '🗺️'],
+      ['meer', 'Nog meer uitjes', '/c/belevenissen/dagjes-uit-overnachten/nog-meer-uitjes', '✨']] },
     '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-psalmboeken', 'boeken-muziek', 'sieraden', 'wanddecoratie-teksten', 'voor-kinderen', 'doop-belijdenis'] },
     '/c/cadeaus/kerst': { titel: 'Wat zoek je voor kerst?', vast: [
       ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒'],
@@ -728,6 +741,36 @@
   /* Stap 2 indeling (6-11-2026, GO Marius): de homepage volgens deel 7 van het plan. Twaalf blokken, producten in scherm 1.
      Volgorde: intro met twee knoppen, Voor wie, Onze favorieten, seizoen, laatst bekeken, budget, categorieën, persoonlijk + gelegenheden,
      acties van onze winkels, gidsen + eigen kleurboeken, zo werkt het. Elk blok heeft data-tel voor de klikteller. */
+  /* Belevenissen op de homepage (9-11-2026, GO Marius). Onderzoek: een belevenis verbindt meer dan een ding (Chan & Mogilner),
+     dus de boodschap is 'samen iets beleven'. Weinig keuzes op de homepage (6 tegels), de rest op /c/belevenissen.
+     De 'vanaf'-prijzen rekent de site zelf uit, zodat ze altijd kloppen. */
+  var BELEVENIS_TEGELS = [
+    ['Droomauto rijden', 'snelheid-avontuur', 'droomauto-rijden', 'dk-9c89e99aa6'],
+    ['Paragliden', 'in-de-lucht', '', 'dk-d8f37a3161'],
+    ['Flyboard & waterski', 'water-strand', 'waterskien-kitesurfen-flyboarden', 'dk-da9d4b8898'],
+    ['Escape room', 'escape-rooms-puzzeltochten', 'escape-rooms', 'dk-f69947b4d7'],
+    ['Puzzeltocht', 'escape-rooms-puzzeltochten', 'puzzel-speurtochten', 'dk-4c68d47ad3'],
+    ['Overnachten', 'dagjes-uit-overnachten', 'overnachten', 'dk-35d0e56982']];
+  function belevenisBlok() {
+    var alle = LK.zichtbaar().filter(function (p) { return p.afd === 'belevenissen'; });
+    if (alle.length < 6) return '';
+    var min = function (l) { return l.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9); };
+    var eu = function (n) { return '€' + (n % 1 ? n.toFixed(2).replace('.', ',') : String(n)); };
+    var tegels = BELEVENIS_TEGELS.map(function (t) {
+      var l = alle.filter(function (p) { return p.groep === t[1] && (!t[2] || p.vak === t[2]); }); if (!l.length) return '';
+      var naar = '/c/belevenissen/' + t[1] + (t[2] ? '/' + t[2] : '');
+      return '<a class="bh-tegel" href="' + naar + '"><span class="bh-foto"><img src="images/producten/' + t[3] + '-klein.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></span>' +
+        '<span class="bh-naam">' + esc(t[0]) + '</span><span class="bh-prijs">vanaf ' + eu(min(l)) + '</span></a>';
+    }).join('');
+    return '<section class="sectie belevenis-home" data-tel="belevenissen" aria-labelledby="bh-kop">' +
+      '<a class="bh-banner" href="/c/belevenissen"><picture><source media="(min-width: 760px)" srcset="images/categorieen/banner-belevenissen.webp">' +
+        '<img src="images/categorieen/belevenissen-home.webp" alt="Samen iets beleven: duiken, paragliden, kitesurfen en een helikoptervlucht" loading="lazy" decoding="async" width="800" height="533"></picture>' +
+        '<span class="bh-tekst"><span class="bh-kicker">Nieuw: belevenissen</span><strong id="bh-kop">Geef een belevenis</strong>' +
+        '<span class="bh-sub">Samen iets doen onthoud je langer dan een cadeau. Al vanaf ' + eu(min(alle)) + '.</span></span></a>' +
+      '<div class="bh-rij" role="list">' + tegels + '</div>' +
+      '<a class="knop knop-rand bh-alle" href="/c/belevenissen">Bekijk alle ' + alle.length + ' belevenissen ' + ic('pijl') + '</a>' +
+    '</section>';
+  }
   function home() {
     zetTitel('');
     var CATS_VOOR = ['wonen', 'mode-sieraden', 'beauty-verzorging', 'elektronica', 'eten-drinken', 'speelgoed'];
@@ -769,6 +812,9 @@
           '<div class="persoon-subs home zeven">' + ['haar', 'hem', 'kinderen', 'collega', 'baby', 'opa-oma', 'tieners'].map(persoon).join('') + '</div>' +
           '<div class="voorwie-links alleen-mobiel">' + ['baby', 'opa-oma', 'tieners'].map(persoonLink).join('') + '</div>' +
         '</section>' +
+
+        /* 2b. Belevenissen (9-11-2026, GO Marius): banner van Nova + zes tegels om te swipen. */
+        belevenisBlok() +
 
         /* 3. Onze favorieten: zes handgekozen cadeaus. */
         favorietenBlok() +
@@ -4318,7 +4364,7 @@
     var lijst = soort ? alle.filter(function (w) { return (w.cats || []).some(function (c) { return WINKEL_SOORT[soort].indexOf(c) !== -1; }); }) : alle;
     var knopjes = '<nav class="chips vakjesrij omlopend" aria-label="Soort winkel"><a class="chip' + (soort ? '' : ' actief') + '" href="/winkels">Alle (' + alle.length + ')</a>' +
       CATS.map(function (c) {
-        var n = alle.filter(function (w) { return (w.cats || []).some(function (x) { return WINKEL_SOORT[c.slug].indexOf(x) !== -1; }); }).length;
+        var n = alle.filter(function (w) { return (w.cats || []).some(function (x) { return (WINKEL_SOORT[c.slug] || []).indexOf(x) !== -1; }); }).length;
         return n ? '<a class="chip' + (soort === c.slug ? ' actief' : '') + '" href="/winkels?soort=' + c.slug + '">' + esc(c.kort) + ' (' + n + ')</a>' : '';
       }).join('') + '</nav>';
     return paginakop({ titel: 'Onze winkels', tekst: 'Je koopt bij ' + alle.length + ' bekende winkels. Wij kiezen de cadeaus, de winkel levert.', kruimel: [{ tekst: 'Winkels' }] }) +

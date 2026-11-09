@@ -1106,3 +1106,27 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
 .fp2-voet .knop { flex: 1; justify-content: center; min-height: 52px; display: inline-flex; align-items: center; margin: 0; font-size: 16px; }
 .fp2-voet .knop-goud { flex: 1.7; }
 .fp2-voet .knop[disabled] { opacity: .5; }
+
+/* Belevenissen op de homepage (9-11-2026, GO Marius): banner + tegels om te swipen */
+.belevenis-home { display: grid; gap: 14px; }
+.bh-banner { display: block; border-radius: 18px; overflow: hidden; background: #fff; border: 1px solid #E8DCC6; text-decoration: none; color: #14213D; box-shadow: 0 6px 20px rgba(20,33,61,.08); }
+.bh-banner picture, .bh-banner img { display: block; width: 100%; height: auto; }
+.bh-banner img { aspect-ratio: 3 / 2; object-fit: cover; }
+.bh-tekst { display: grid; gap: 4px; padding: 14px 16px 16px; background: linear-gradient(180deg, #FFF8EA, #fff); }
+.bh-kicker { font-size: 12.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #A8741A; }
+.bh-tekst strong { font: 700 clamp(24px, 6vw, 32px)/1.15 var(--f-kop, Georgia, serif); }
+.bh-sub { font-size: 15px; color: #4A4F63; }
+.bh-rij { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 2px 2px 8px; margin: 0 -2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.bh-rij::-webkit-scrollbar { display: none; }
+.bh-tegel { flex: 0 0 38%; max-width: 170px; scroll-snap-align: start; display: grid; gap: 3px; text-decoration: none; color: #14213D; background: #fff; border: 1px solid #E8DCC6; border-radius: 14px; padding: 6px 6px 10px; }
+.bh-foto { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 1; background: #F4EEE2; }
+.bh-foto img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.07); }
+.bh-naam { font-weight: 750; font-size: 14.5px; line-height: 1.25; padding: 4px 4px 0; }
+.bh-prijs { font-size: 13px; font-weight: 700; color: #A8741A; padding: 0 4px; }
+.bh-alle { justify-self: center; }
+@media (min-width: 760px) {
+  .bh-banner img { aspect-ratio: 16 / 5; }
+  .bh-tekst { padding: 18px 22px 20px; }
+  .bh-rij { overflow: visible; display: grid; grid-template-columns: repeat(6, 1fr); }
+  .bh-tegel { max-width: none; }
+}
