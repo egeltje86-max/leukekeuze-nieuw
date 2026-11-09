@@ -194,6 +194,9 @@
       var s = (typeof p.rang === 'number' ? p.rang : 0.55) + (mixGetal(p.id + '|' + week) - 0.5) * 0.12 + (p.beeld ? 0 : -0.5);
       if (kind) s += p.afd === 'speelgoed' ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
       if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen')) s += 0.1;
+      /* 9-11-2026 (GO Marius): bezoekers klikken vooral op cadeaus onder €25 (middelste klikprijs €21, op de site €28).
+         Die komen daarom wat vaker vooraan; duurdere blijven er gewoon tussen (goedkoop en duur door elkaar). */
+      if (typeof p.prijs === 'number') s += p.prijs < 15 ? 0.1 : p.prijs < 25 ? 0.08 : p.prijs < 40 ? 0.03 : p.prijs > 100 ? -0.05 : 0;
       var b = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[b]) b++;
       return { p: p, s: s, v: p.vak || p.groep || (p.cat + '/' + p.sub), w: p.shop, b: b };
     });
