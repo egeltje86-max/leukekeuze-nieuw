@@ -115,6 +115,16 @@ def google_sectie(g, vorige):
 # ======================================================================
 # 2. WINKEL (catalogus / keurkamer)
 # ======================================================================
+def site_dunne_vakjes():
+    import subprocess
+    js = ('global.window={dispatchEvent(){}};global.Event=function(){};require("./assets/js/producten-lean.js");const fs=require("fs");const w={};'
+          'new Function("window","document",fs.readFileSync("assets/js/data.js","utf8"))(w,{});const t={};'
+          'window.LK_PRODUCTEN.filter(p=>p.status=="goedgekeurd"&&p.vak).forEach(p=>{const k=p.afd+"/"+p.groep+"/"+p.vak;t[k]=(t[k]||0)+1});const u=[];'
+          'for(const a of w.LK_CATEGORIEEN)for(const g of a.subs||[])for(const v of g.vakjes||[]){const k=a.slug+"/"+g.slug+"/"+v.slug;if((t[k]||0)<6)u.push([t[k]||0,v.naam])}'
+          'console.log(JSON.stringify(u))')
+    try: return sorted(json.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, timeout=120).stdout))
+    except Exception: return []
+
 def winkel_sectie():
     r = []; C = lees(os.path.join(KK, 'data', 'catalogus.json'))
     if not C:
@@ -128,11 +138,13 @@ def winkel_sectie():
     r.append('Stand van de catalogus (%s): **%s producten** live in **%d vakjes**; %s producten staan ook in een extra vakje.' % (str(C.get('gemaakt', ''))[:10], n(len(P)), len(echte), n(sum(len(x.get('ookIn', [])) for x in echte.values()))))
     # dunne en volle vakjes
     def aantal(x): return len(set(x.get('thuis', [])) | set(x.get('ookIn', [])))
-    dun = sorted([(aantal(x), v) for v, x in echte.items() if aantal(x) < 6]); vol = sorted([(aantal(x), v) for v, x in echte.items() if aantal(x) > 120], reverse=True)
+    vol = sorted([(aantal(x), v) for v, x in echte.items() if aantal(x) > 120], reverse=True)
+    # 9-11-2026: dunne vakjes tellen zoals de site ze echt toont (nieuwe indeling afdeling/groep/vakje), niet uit de oude catalogus-vakjes.
+    dun = site_dunne_vakjes()
     kern['dun'] = len(dun); kern['vol'] = len(vol)
     if dun:
-        r.append('- **%d vakjes zijn te dun** (minder dan 6 producten; een lege pagina maakt geen goede indruk): ' % len(dun) + ', '.join('%s (%d)' % (namen.get(v, v), a) for a, v in dun[:12]) + (' …' if len(dun) > 12 else ''))
-        actie(65, 'samen', '%d te dunne vakjes aanvullen met goede producten of samenvoegen met een buurvakje: %s.' % (len(dun), ', '.join(namen.get(v, v) for a, v in dun[:5])))
+        r.append('- %d vakjes op de site hebben minder dan 6 producten: ' % len(dun) + ', '.join('%s (%d)' % (v, a) for a, v in dun[:12]) +
+                 '. Die slaat Google vanzelf over (noindex, niet in de sitemap) tot ze vol genoeg zijn; de producten blijven bereikbaar.')
     if vol:
         r.append('- %d vakjes zijn erg vol (meer dan 120 producten; keuzestress): ' % len(vol) + ', '.join('%s (%d)' % (namen.get(v, v), a) for a, v in vol[:8]))
         actie(35, 'Marius', 'Volle vakjes in de Keurkamer strenger keuren (alleen leuke keuzes laten staan): %s.' % ', '.join(namen.get(v, v) for a, v in vol[:4]))
@@ -165,14 +177,14 @@ def winkel_sectie():
         r.append('- Regelmotor, open punten: ' + ', '.join('%s %s' % (c, uitleg.get(k, k)) for k, c in sorted(probleem.items(), key=lambda x: -x[1])))
     dubbel = vl.get('dubbel', 0); geenvak = vl.get('geen-echt-vakje', 0)
     if dubbel: actie(60, 'Marius', '%d dubbele producten samenvoegen tot één product met keuzes (in de Keurkamer: filter "dubbel", knop "Die weg").' % dubbel)
-    if geenvak: actie(58, 'Marius', '%d producten zonder echt vakje een plek geven (Keurkamer, afdeling "Nog indelen": Verplaatsen of Weg).' % geenvak)
+    # 9-11-2026: 'geen echt vakje' komt uit de oude catalogus-indeling; op de site heeft elk product een vakje (nieuwe boom). Geen actie meer.
     for k, gew, wie, tekst in (('link-geen-partner', 50, 'Claude', 'links zonder partnercode repareren (anders geen commissie)'), ('titel-engels', 30, 'Claude', 'Engelse titels vertalen'), ('foto-klein', 25, 'Claude', 'te kleine foto\'s vervangen door een grotere uit de feed'), ('tekst-kort', 28, 'Claude', 'te korte teksten herschrijven')):
         if probleem.get(k): actie(gew, wie, '%d %s.' % (probleem[k], tekst))
     # keurkamer-voortgang
     klaar = sum(1 for v, s in (O.get('vakjes') or {}).items() if s.get('status') == 'klaar'); beoordeeld = len(O.get('producten') or {})
     kern['keurkamer'] = {'vakjes_klaar': klaar, 'producten_beoordeeld': beoordeeld, 'weg': sum(1 for x in (O.get('producten') or {}).values() if x.get('oordeel') == 'weg')}
     r.append('- Keurkamer: **%d van %d vakjes klaar**, %s producten door Marius beoordeeld, %d weggehaald.' % (klaar, len(echte), n(beoordeeld), kern['keurkamer']['weg']))
-    if klaar < len(echte): actie(80 if klaar == 0 else 45, 'Marius', 'Keurkamer: %d vakjes wachten nog op keuring (begin met de vakjes die bovenaan staan bij "aandacht").' % (len(echte) - klaar))
+    # 9-11-2026: Marius keurt nu via de keurlijsten en de Superkeurkamer (op zijn laptop); deze oude Keurkamer-telling is geen actie meer.
     # AI-advies
     if AI:
         weg = verpl = twijfel = 0; per_vak = collections.Counter(); leuk = []

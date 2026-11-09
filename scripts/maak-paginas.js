@@ -23,6 +23,9 @@ for (const f of ['sjabloon.html', 'assets/js/app.js', 'assets/js/data.js', 'asse
   if (fs.existsSync(p) && /^(<{7}|>{7}) /m.test(fs.readFileSync(p, 'utf8'))) { console.error('STOP: samenvoegfout in ' + f + ' - eerst oplossen, er is niets gebouwd.'); process.exit(1); }
 }
 const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie', 'sint-rijmmachine'];
+/* 9-11-2026 (GO Marius, Sitewacht): een vakje (/c/afdeling/groep/vakje/) met minder dan 6 producten oogt leeg.
+   Google slaat het dan over (noindex, niet in de sitemap); de pagina en de producten blijven gewoon bereikbaar. Vanaf 6 producten telt hij vanzelf weer mee. */
+const DUN = (pad, aantal) => /^\/c\/[^/]+\/[^/]+\/[^/]+\/$/.test(pad) && typeof aantal === 'number' && aantal < 6;
 const GEEN_INDEX = /^\/(favorieten|zoek|lijst)(\/|$)/; /* ook zonder slash erachter (31-10-2026: /zoek stond per ongeluk in de sitemap) */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.xml': 'application/xml', '.txt': 'text/plain' };
@@ -234,7 +237,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
     paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
-      beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg });
+      beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) });
   }
   await browser.close(); srv.close();
   if (fouten.length) { console.error('Fouten op de pagina:', fouten.slice(0, 5)); process.exit(1); }
