@@ -2176,15 +2176,58 @@
     '.rz-mini{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid #e8ddce;border-radius:13px;padding:8px;color:inherit;text-decoration:none;min-width:0;transition:border-color .15s,box-shadow .15s}.rz-mini:hover{border-color:#d6b575;box-shadow:0 6px 14px rgba(60,40,10,.08)}' +
     '.rz-mini img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:9px;background:#fff}.rz-mini b{font-size:12.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.rz-mini em{font-style:normal;font-weight:780;font-size:13px;color:#a26b23}.rz-mini small{font-size:11.5px;color:#4a4d5c}' +
     '@media (max-width:720px){.rz-velden{grid-template-columns:1fr 1fr}.rz-velden>.rz-veld.breed,.rz-velden>.rz-meer{grid-column:1/-1}}' +
+    /* 9-11-2026 (wens Marius, zijn voorbeeld): rustige kaarten per vraag, Sint en Piet bovenaan. */
+    '.rz-held2{position:relative;text-align:center;padding:16px 26% 14px;margin:0 0 14px;min-height:150px;border-radius:0 0 22px 22px;background:radial-gradient(ellipse at 50% 35%,#fffbf3 0%,#f8eedd 62%,#f1e2c6 100%);overflow:hidden}' +
+    '.rz-held2 .rz-sint,.rz-held2 .rz-piet{position:absolute;bottom:0;height:100%;width:auto;max-height:230px;object-fit:contain;pointer-events:none}.rz-held2 .rz-sint{left:0}.rz-held2 .rz-piet{right:0;height:94%}' +
+    '.rz-held2 h1{position:relative;z-index:1;margin:4px 0 0;font:700 clamp(23px,6.3vw,46px)/1.05 var(--f-kop);letter-spacing:-.01em;color:#101a33;text-shadow:0 0 14px #fff8ec,0 0 4px #fff8ec}' +
+    '.rz-held2 .rz-sier{position:relative;z-index:1;display:block;width:min(150px,60%);height:auto;margin:6px auto 6px}' +
+    '.rz-held2 p{position:relative;z-index:1;margin:0 auto;max-width:330px;font-size:14.5px;line-height:1.4;color:#2a2f40;text-shadow:0 0 10px #fff8ec}' +
+    '.rz-form{display:block}' +
+    '.rz-stap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:linear-gradient(180deg,#fffdf8,#fcf4e3);border:1.5px solid #e8d3a2;border-radius:20px;padding:14px 14px 14px 12px;margin:0 0 12px;box-shadow:inset 0 1px 0 #fff,0 2px 0 rgba(201,151,63,.16),0 8px 18px rgba(80,55,15,.06)}' +
+    '.rz-stapnr{display:flex;align-items:center;gap:7px;padding-top:2px}' +
+    '.rz-num{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;font:700 19px/1 var(--f-kop);color:#fff;background:radial-gradient(circle at 35% 30%,#c42a43,#7c0f27 75%);box-shadow:inset 0 -2px 3px rgba(0,0,0,.25),0 2px 4px rgba(124,15,39,.3)}' +
+    '.rz-ico{width:26px;height:26px;flex:none;fill:#d4a24a;color:#d4a24a;filter:drop-shadow(0 1px 0 rgba(140,95,25,.35))}' +
+    '.rz-staptitel{display:block;font:800 17px/1.25 var(--f-ui);color:#101a33;margin:4px 0 2px}.rz-stapsub{margin:0 0 9px;font-size:13.5px;color:#4f4a5e}' +
+    '.rz-stapin .rz-vb{margin-top:8px}.rz-stapsub+.rz-vb{margin-top:0}' +
+    '.rz-stap .rz-vb button{font:600 15px/1 var(--f-ui);padding:11px 18px;min-height:42px;border-radius:999px;border:1.5px solid #e2c88f;background:linear-gradient(180deg,#fffdf7,#f9eed6);color:#1d2236;box-shadow:inset 0 1px 0 #fff,0 2px 0 rgba(201,151,63,.22)}' +
+    '.rz-stap .rz-vb button[aria-pressed=true]{background:linear-gradient(180deg,#1d2a4b,#0b1225);color:#ffe39b;border-color:#c99740}' +
+    '.rz-zelf,.rz-twee input,.rz-twee select{width:100%;min-height:46px;background:#fff;border:1.5px solid #e2d6bf;border-radius:14px;padding:9px 14px;color:#202336;font:16px/1.4 var(--f-ui);box-shadow:inset 0 1px 2px rgba(40,30,10,.04)}' +
+    '.rz-zelf{margin-top:8px;min-height:42px;font-size:15px;background:#fffdf9;border-style:dashed}.rz-zelf:not(:placeholder-shown){border-style:solid;background:#fff}' +
+    '.rz-zelf:focus,.rz-twee input:focus,.rz-twee select:focus{outline:none;border-color:#c99740;border-style:solid;box-shadow:0 0 0 4px rgba(217,168,72,.22)}.rz-zelf::placeholder,.rz-twee ::placeholder{color:#7a7384;opacity:1}' +
+    '.rz-twee{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr;gap:8px;margin-top:-2px}' +
+    '.rz-meer2{background:linear-gradient(180deg,#fffdf8,#fcf4e3);border:1.5px solid #e8d3a2;border-radius:20px;margin:0 0 16px;box-shadow:inset 0 1px 0 #fff,0 2px 0 rgba(201,151,63,.16)}' +
+    '.rz-meer2 summary{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer;list-style:none}.rz-meer2 summary::-webkit-details-marker{display:none}' +
+    '.rz-meer2 summary .rz-ico{width:30px;height:30px}.rz-meer2 summary span:not(.rz-pijl){flex:1;min-width:0}.rz-meer2 summary b{display:block;font:800 17px/1.25 var(--f-ui);color:#101a33}.rz-meer2 summary small{display:block;font-size:13.5px;color:#4f4a5e}' +
+    '.rz-meer2 .rz-pijl{font-size:28px;line-height:1;color:#101a33;transition:transform .2s}.rz-meer2[open] .rz-pijl{transform:rotate(90deg)}' +
+    '.rz-meerin{padding:0 16px 16px;display:grid;gap:14px}' +
+    '.rijm-z .rz-knop.rz-groot{min-height:60px;border-radius:999px;font-size:20px;font-weight:800;gap:12px}.rz-knop.rz-groot svg{width:30px;height:30px;flex:none}' +
+    '.rz-privacy{margin:14px auto 0;max-width:520px;text-align:center;font-size:13px;line-height:1.5;color:#4f4a5e}' +
+    '@media (max-width:759px){.rz-held2{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}.rz-pagina:has(.rz-held2){padding-top:0}}' +
+    '@media (min-width:760px){.rz-held2{min-height:230px;padding:26px 30% 22px;border-radius:24px;margin-top:10px}.rz-held2 p{font-size:17px}.rz-pagina .rz-form{max-width:680px;margin:0 auto}.rz-stap{padding:18px 20px 18px 16px}}' +
+    '@media (max-width:380px){.rz-held2{padding:14px 24% 12px}.rz-held2 p{font-size:14px}.rz-num{width:30px;height:30px;font-size:17px}.rz-ico{width:22px;height:22px}.rz-stap .rz-vb button{font-size:14px;padding:10px 14px}}' +
       '@media (max-width:759px){.rz-held{aspect-ratio:auto;max-height:150px}.rz-held img{height:150px;object-fit:cover;object-position:center 30%}.rz-kop h2{font-size:22px}}' +
       '</style>';
   var RIJM_LAST = null, RIJM_BEZIG = false;
   function rijmEuro(n) { return '€' + Number(n).toFixed(2).replace('.', ','); }
-  function rijmVraag(nr, id, naam, vraag, max, hulp, voorbeelden, meer) {
-    return '<div class="rz-veld breed rz-vraag"><label for="' + id + '"><span class="rz-nr">' + nr + '</span><span>' + vraag + '</span></label>' +
-      '<input id="' + id + '" type="text" name="' + naam + '" maxlength="' + max + '" placeholder="' + esc(hulp) + '" autocomplete="off">' +
+  /* 9-11-2026 (wens Marius, zijn voorbeeld): rustiger. Elke vraag een eigen kaart met nummer en icoon; voorbeelden aantikken, zelf typen kan nog steeds. */
+  var RZ_ICO = {
+    persoon: '<path d="M12 12a4.6 4.6 0 1 0 0-9.2 4.6 4.6 0 0 0 0 9.2zm0 2.2c-4.6 0-8.4 2.6-8.4 6v1h16.8v-1c0-3.4-3.8-6-8.4-6z"/>',
+    hart: '<path d="M12 21.2s-8.6-5.3-8.6-11.3A4.9 4.9 0 0 1 12 6.8a4.9 4.9 0 0 1 8.6 3.1c0 6-8.6 11.3-8.6 11.3z"/>',
+    ster: '<path d="M12 2.6l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 16.8l-5.8 3.3 1.4-6.4-4.9-4.4 6.5-.7z"/>',
+    lach: '<path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zM8.6 8.4a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8zm6.8 0a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8zM12 17.8c-2.6 0-4.7-1.6-5.3-3.9h10.6c-.6 2.3-2.7 3.9-5.3 3.9z"/>',
+    schuif: '<path d="M3 6.2h11.2M18 6.2h3M3 12h3M9.8 12H21M3 17.8h9M15.8 17.8H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="16.1" cy="6.2" r="2.1"/><circle cx="7.9" cy="12" r="2.1"/><circle cx="13.9" cy="17.8" r="2.1"/>'
+  };
+  function rzIco(n) { return '<svg class="rz-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + RZ_ICO[n] + '</svg>'; }
+  function rijmKaart(nr, icoon, titel, sub, inhoud, labelVoor, onder) {
+    return '<section class="rz-stap"><div class="rz-stapnr"><span class="rz-num">' + nr + '</span>' + rzIco(icoon) + '</div>' +
+      '<div class="rz-stapin"><' + (labelVoor ? 'label for="' + labelVoor + '"' : 'div') + ' class="rz-staptitel">' + titel + '</' + (labelVoor ? 'label' : 'div') + '>' +
+      (sub ? '<p class="rz-stapsub">' + sub + '</p>' : '') + inhoud + '</div>' + (onder || '') + '</section>';
+  }
+  function rijmVraag(nr, icoon, id, naam, titel, sub, max, hulp, voorbeelden, meer) {
+    return rijmKaart(nr, icoon, titel, sub,
       '<div class="rz-vb" data-rz-vb="' + id + '"' + (meer ? ' data-meer="1"' : '') + ' aria-label="Voorbeelden, tik om in te vullen">' +
-      voorbeelden.map(function (v) { return '<button type="button" aria-pressed="false">' + esc(v) + '</button>'; }).join('') + '</div></div>';
+        voorbeelden.map(function (v) { return '<button type="button" aria-pressed="false">' + esc(v) + '</button>'; }).join('') + '</div>' +
+      '<input class="rz-zelf" id="' + id + '" type="text" name="' + naam + '" maxlength="' + max + '" placeholder="' + esc(hulp) + '" autocomplete="off">', id);
   }
   function rijmmachine() {
     zetTitel('Sint-rijmmachine: grappig Sinterklaasgedicht met cadeaus erbij');
@@ -2196,32 +2239,35 @@
     };
     var rel = [['partner', 'Mijn partner'], ['ouder', 'Vader of moeder'], ['grootouder', 'Opa of oma'], ['broerzus', 'Broer of zus'], ['vriend', 'Vriend(in)'],
       ['collega', 'Collega'], ['baas', 'Baas'], ['juf', 'Juf of meester'], ['schoon', 'Schoonfamilie'], ['buren', 'Buren'], ['tiener', 'Tiener'], ['kind', 'Kind'], ['anders', 'Iemand anders']];
-    return RIJM_CSS + paginakop({ titel: 'Sint-rijmmachine', tekst: 'Sint weet alles. En rijmt er nog op ook.', kruimel: [{ tekst: 'Sint-rijmmachine' }] }) +
+    return RIJM_CSS +
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
-        '<div class="rz-held"><img src="/images/banners/rijm-sint-piet.webp" alt="Sinterklaas en Piet" width="859" height="550" decoding="async"></div>' +
-        '<div class="rz-kop"><span class="rz-eyebrow">Stap 1 van 2 • Vertel het Sint</span><h2>Voor wie maken we een Sinterklaasgedicht?</h2><p>3 korte vragen. Tik voorbeelden aan of typ zelf.</p></div>' +
-        '<form class="rz-kaart" data-rijm novalidate><div class="rz-kaartkop"><span>✦</span>Wat moet Sint weten?</div>' +
-        '<div class="rz-velden">' +
-          '<div class="rz-veld"><label for="rz-naam">Naam</label><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Bijv. Ingrid" autocomplete="off" required></div>' +
-          '<div class="rz-veld"><label for="rz-rel">Wie is het?</label><select id="rz-rel" name="relatie">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>' +
-          /* 8-11-2026 (GO Marius): 3 vaste vragen met aantikbare voorbeelden in plaats van één open vak; zo komt het grappige voorval altijd in het gedicht. */
-          /* 8-11-2026 (GO Marius): algemene, positieve vragen; er hoeft niets mis te gaan. Vraag 3 mag leeg. */
-          rijmVraag(1, 'rz-type', 'type', 'Wat voor iemand is het?', 150, 'Bijv. gezellig en altijd druk', ['gezellig', 'behulpzaam', 'altijd druk', 'sportief', 'een echte grapjas', 'een beetje chaotisch', 'rustig', 'een echte regelaar'], true) +
-          rijmVraag(2, 'rz-gekop', 'gekop', 'Wat doet hij of zij graag?', 150, 'Kies er gerust een paar: meer keus in cadeaus', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
-          rijmVraag(3, 'rz-typisch', 'typisch', 'Wat is typisch iets voor hem of haar? <small>(mag leeg)</small>', 200, 'Bijv. is altijd de sleutels kwijt', ['is altijd te laat', 'is altijd de sleutels kwijt', 'hangt graag op de bank', 'heeft het altijd koud', 'zingt onder de douche', 'weet alles beter', 'maakt overal een grapje over', 'zit de hele dag te appen']) +
-          /* 8-11-2026 (Fable P1-13): eenvoudiger. Eerst alleen naam, wie en iets grappigs; budget, man/vrouw en scherpte staan achter 'Meer opties' (standaard €50, hilarisch). */
-          '<details class="rz-veld breed rz-meer"><summary>Meer opties <small>(budget €25, man/vrouw, hoe scherp)</small></summary>' +
+        '<header class="rz-held2"><img class="rz-sint" src="/images/banners/rijm-held-sint.webp" alt="Sinterklaas" width="232" height="325" decoding="async" fetchpriority="high">' +
+          '<img class="rz-piet" src="/images/banners/rijm-held-piet.webp" alt="Piet" width="212" height="323" decoding="async">' +
+          '<h1>Sinterklaasgedicht</h1>' +
+          '<svg class="rz-sier" viewBox="0 0 200 28" aria-hidden="true" focusable="false"><path d="M8 15c18 0 30-9 44-4 8 3 6 11-1 10-6-1-4-8 3-8h24M192 15c-18 0-30-9-44-4-8 3-6 11 1 10 6-1 4-8-3-8h-24" fill="none" stroke="#c9973f" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<g fill="#d8a64a"><rect x="88" y="10" width="24" height="16" rx="2"/><rect x="86" y="6" width="28" height="6" rx="1.5"/></g><path d="M100 6v20" stroke="#fff3cf" stroke-width="2.4"/><path d="M100 6c-3-6-11-6-9-1 1 2 6 2 9 1zm0 0c3-6 11-6 9-1-1 2-6 2-9 1z" fill="#d8a64a"/></svg>' +
+          '<p>Beantwoord een paar korte vragen en Sint maakt een persoonlijk gedicht.</p>' +
+        '</header>' +
+        '<form class="rz-form" data-rijm novalidate>' +
+          rijmKaart(1, 'persoon', 'Voor wie is het gedicht?', '', '', 'rz-naam',
+            '<div class="rz-twee"><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Naam (bijv. Ingrid)" autocomplete="off" required aria-label="Naam">' +
+            '<select id="rz-rel" name="relatie" aria-label="Wie is het?">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>') +
+          /* Zelfde vragen en voorbeelden als voorheen (GO Marius 8-11-2026); vraag 4 (iets grappigs) blijft: daar worden de gedichten persoonlijker en grappiger van. */
+          rijmVraag(2, 'hart', 'rz-type', 'type', 'Wat typeert hem of haar?', 'Kies één of meer kenmerken.', 150, 'Of typ zelf, bijv. gezellig en altijd druk', ['gezellig', 'behulpzaam', 'altijd druk', 'sportief', 'een echte grapjas', 'een beetje chaotisch', 'rustig', 'een echte regelaar'], true) +
+          rijmVraag(3, 'ster', 'rz-gekop', 'gekop', 'Wat doet hij of zij graag?', 'Kies één of meer hobby’s. Meer hobby’s = meer keus in cadeaus.', 150, 'Of typ zelf, bijv. wandelen met de hond', ['gamen', 'spelletjes', 'bouwen', 'lezen', 'muziek', 'puzzelen', 'darts', 'kamperen', 'tekenen', 'sieraden', 'parfum', 'kaarsen', 'honden', 'katten', 'Harry Potter'], true) +
+          rijmVraag(4, 'lach', 'rz-typisch', 'typisch', 'Iets grappigs over hem of haar?', 'Daar wordt het gedicht extra leuk van. Mag leeg.', 200, 'Of typ zelf, bijv. is altijd de sleutels kwijt', ['is altijd te laat', 'is altijd de sleutels kwijt', 'hangt graag op de bank', 'heeft het altijd koud', 'zingt onder de douche', 'weet alles beter', 'maakt overal een grapje over', 'zit de hele dag te appen']) +
+          '<details class="rz-meer2"><summary>' + rzIco('schuif') + '<span><b>Meer opties</b><small>Budget, man/vrouw, hoe scherp, enz.</small></span><span class="rz-pijl" aria-hidden="true">›</span></summary>' +
+          '<div class="rz-meerin">' +
           '<fieldset class="rz-veld breed"><legend>Man of vrouw? <small>(optioneel)</small></legend><div class="rz-keuzes">' + kies('geslacht', [['man', 'Man'], ['vrouw', 'Vrouw']], '') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Budget voor het cadeau</legend><div class="rz-keuzes">' + kies('budget', [['10', 'tot € 10'], ['15', 'tot € 15'], ['25', 'tot € 25'], ['50', 'tot € 50'], ['100', 'tot € 100']], '25') + '</div></fieldset>' +
           '<fieldset class="rz-veld breed"><legend>Hoe scherp mag het zijn?</legend><div class="rz-keuzes rz-humor">' +
             kies('stand', [['lief', '😊 Lief<small>Met een knipoog</small>'], ['hilarisch', '🤣 Hilarisch<small>Hardop lachen</small>'], ['genadeloos', '😈 Genadeloos<small>Lekker plagen</small>']], 'hilarisch') +
-          '</div></fieldset>' +
+          '</div></fieldset></div>' +
           '</details>' +
-        '</div>' +
-        '<div data-rijm-fout></div>' +
-        '<div class="rz-acties-form"><button class="rz-knop rz-vol" type="submit">✨ Laat Sint dichten <span aria-hidden="true">→</span></button>' +
-          '<p>🔒 We bewaren niets van wat je invult. Je tekst gaat alleen naar de dichtmachine (OpenAI) om het gedicht te maken. Vul geen adres, telefoonnummer of gevoelige dingen in. <a href="/info/privacy">Meer over privacy</a>.</p></div>' +
+          '<div data-rijm-fout></div>' +
+          '<button class="rz-knop rz-vol rz-groot" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20 15.5 8.5" stroke="#5b3a10" stroke-width="2.4" stroke-linecap="round"/><path d="M17.5 2.5l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9zM21 10l.5 1.2 1.2.5-1.2.5L21 13.4l-.5-1.2-1.2-.5 1.2-.5zM11 2.8l.5 1.2 1.2.5-1.2.5-.5 1.2-.5-1.2-1.2-.5 1.2-.5z" fill="#fff6d6"/></svg>Laat Sint dichten <span aria-hidden="true">→</span></button>' +
+          '<p class="rz-privacy">🔒 We bewaren niets van wat je invult. Je tekst gaat alleen naar de dichtmachine (OpenAI) om het gedicht te maken. Vul geen adres of telefoonnummer in. <a href="/info/privacy">Meer over privacy</a>.</p>' +
         '</form>' +
       '</div>' +
       '<div data-rijm-uit aria-live="polite"></div>' +
@@ -4064,6 +4110,8 @@
       if (verhuisdSub) { ga(verhuisdSub + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
     }
     TEL = null; BASIS = null; MEER_LIJSTEN = [];
+    /* 9-11-2026 (wens Marius): op pagina's voor mannen geen roze productfoto's (zie productKaart). */
+    window.LK_KAART_HEM = (d[0] === 'voor' && /^(hem|vader|vriend|opa)$/.test(d[1] || '')) || a.q.wie === 'heren' || a.q.voor === 'hem' || d.indexOf('herenhorloges') !== -1;
     if (!d.length) html = home();
     else if (d[0] === 'categorieen') html = alleCategorieen();
     else if (d[0] === 'c') {

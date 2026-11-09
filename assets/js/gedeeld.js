@@ -167,6 +167,8 @@
   }
 
   function productKaart(p) {
+    /* 9-11-2026 (wens Marius): op heren-pagina's de niet-roze kleur laten zien (beeldHem, gemaakt door splits-producten.js). */
+    if (window.LK_KAART_HEM && p.beeldHem) p = Object.assign({}, p, { beeld: p.beeldHem });
     var fav = isFavoriet(p.id);
     /* Black Friday (5-11-2026): bij minstens 20% korting toont de kaart het kortingspercentage in plaats van 'Nieuw'. */
     var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : p.eigen ? '<span class="label vol favo">★ Zelf gemaakt</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : ((p.oudePrijs > p.prijs && p.prijs / p.oudePrijs <= 0.8) ? '<span class="label vol">-' + Math.round((1 - p.prijs / p.oudePrijs) * 100) + '%</span>' : (isNieuw(p) ? '<span class="label vol">Nieuw</span>' : '')));

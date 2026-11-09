@@ -30,6 +30,7 @@ Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 - Er is een **Keurbord**-artifact met wat hij nu moet doen, wat er gebouwd wordt en wat live staat. Hou dat bij.
 - Productregels: goedkoop en duur door elkaar; geen troep; geen (bijna-)dubbele producten; geen Mijn Hummeltje; nooit Coolblue tweedekans of refurbished; La Redoute geeft 403 → product overslaan; bol alleen wat bol zelf verkoopt.
 - Gooi nooit producten of afbeeldingen in bulk weg op basis van product-id.
+- Op pagina's voor mannen (Voor hem, Herenhorloges, filter Heren) nooit een roze productfoto: kies een zwarte of andere kleur (9-11-2026). splits-producten.js zet dan `beeldHem` automatisch als er een niet-roze variant is.
 
 ## 4. Partnercodes (elke productlink moet er een hebben)
 - bol `s=1545784` · Amazon `tag=leukekeuze-21` · Awin `a=3110079` · TradeTracker `516846` · Daisycon `wi=433339` · DexterCards `?aff=LEUKEKEUZE`
