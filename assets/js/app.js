@@ -2243,6 +2243,7 @@
         '<article class="rz-gedicht" data-rijm-gedicht><span class="rz-eyebrow">Uit het Grote Boek</span><h2>' + esc(r.titel || 'Een gedicht van Sint') + '</h2><div class="rz-tekst">' + esc(tekst) + '</div><div class="rz-handtekening">Sint &amp; Piet ✍</div></article>' +
         '<div class="rz-acties"><button class="rz-knop rz-wit" type="button" data-rijm-kopieer>▣ Kopieer gedicht</button><button class="rz-knop rz-wit" type="button" data-rijm-print>🖨 Print gedicht</button>' +
           '<button class="rz-knop rz-wit" type="button" data-rijm-opnieuw>↻ Nieuw gedicht</button><button class="rz-knop rz-wit" type="button" data-rijm-deel>↗ Deel gedicht</button></div>' +
+        '<p class="rz-tip">Maak je er ook een surprise bij? <a href="/gids/surprise-maken">25 ideeën en een stappenplan</a></p>' +
       '</div>' +
       '<aside class="rz-cadeaus"><h2>🎁 Het cadeau van Sint</h2><p>Klik op het cadeau om het bij de winkel te bekijken en te bestellen.</p>' +
         r.cadeaus.map(function (c) {
@@ -2792,8 +2793,8 @@
       ],
       slot: 'Meer kleine cadeautjes vind je bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a> en <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond staat bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'sinterklaascadeau-man', beeld: 'bol-9300000238510035', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-hem', 'cadeaus/sint-onder-15', 'cadeaus/grappig'],
-      titel: 'Sinterklaascadeau voor een man: 16 ideeën die hij écht gebruikt', kort: 'Voor je vriend, man, vader of broer. Van lootjes tot iets wat hij echt gebruikt.',
-      intro: 'Een sinterklaascadeau voor een man is vaak lastig, want mannen zeggen meestal dat ze niets nodig hebben. Toch zijn ze blij met iets grappigs voor pakjesavond, iets lekkers voor zichzelf of een handig ding dat ze elke dag gebruiken. Ik zette 16 ideeën op een rij, van klein tot iets groter. Alles kost minder dan 30 euro, dus het past ook bij lootjes.',
+      titel: 'Sinterklaascadeau voor een man of vader: 20 ideeën die hij écht gebruikt', kort: 'Voor je vriend, man, vader of broer. Van lootjes tot iets wat hij echt gebruikt.',
+      intro: 'Een sinterklaascadeau voor een man is vaak lastig, want mannen zeggen meestal dat ze niets nodig hebben. Toch zijn ze blij met iets grappigs voor pakjesavond, iets lekkers voor zichzelf of een handig ding dat ze elke dag gebruiken. Ik zette 20 ideeën op een rij, van klein tot iets groter, met ook vier ideeën speciaal voor je vader. Bijna alles kost minder dan 30 euro, dus het past ook bij lootjes.',
       delen: [
         { kop: 'Voor in de schoen of de lootjes (tot €12)', tekst: 'Klein, maar wel iets waar hij wat aan heeft.',
           ids: ['bierch-0325fb0395', 'bol-9300000322634443', 'hema-a7c1cc7068', 'dvzn-912075'] },
@@ -2802,21 +2803,25 @@
         { kop: 'Handig voor elke dag (€20 tot €27)', tekst: 'Voor de man die van praktisch houdt: koken, klussen of buiten zijn.',
           ids: ['bol-9200000002756942', 'bol-9300000238510035', 'hema-d2ace702bc', 'bol-9300000405787225'] },
         { kop: 'Spellen voor na het uitpakken', tekst: 'Zijn de pakjes open? Dan is een spel een mooie manier om de avond af te sluiten.',
-          ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'kadov-23d3797d23'] }
+          ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'kadov-23d3797d23'] },
+        { kop: 'Voor je vader (€15 tot €35)', tekst: 'Vaders hebben vaak al alles. Kies dan iets voor zijn vaste gewoontes: zijn koffie, zijn biertje, zijn verzorging of iets lekkers.',
+          ids: ['cl-bialetti-moka', 'hema-d6fb696345', 'cl-rit-homme', 'cl-tony-sintbundel3'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
-    { slug: 'sinterklaascadeau-vrouw', beeld: 'bol-9300000044984873', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
-      titel: 'Sinterklaascadeau voor een vrouw: 16 ideeën om haar te verwennen', kort: 'Voor je vriendin, vrouw, moeder of zus. Om te verwennen, voor in huis of om zelf iets te maken.',
-      intro: 'Zoek je een sinterklaascadeau voor een vrouw? Dan kun je bijna altijd scoren met iets om even lekker tot rust te komen. Denk aan warme sokken, een fijne geur of een creatief project voor de winteravonden. Ik koos 16 cadeaus, allemaal onder de 30 euro. De meeste zijn ook geschikt voor de lootjes.',
+    { slug: 'sinterklaascadeau-vrouw', beeld: 'tbl-tb0a6as6280m1', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
+      titel: 'Sinterklaascadeau voor een vrouw of moeder: 20 ideeën om haar te verwennen', kort: 'Voor je vriendin, vrouw, moeder of zus. Om te verwennen, voor in huis of om zelf iets te maken.',
+      intro: 'Zoek je een sinterklaascadeau voor een vrouw? Dan kun je bijna altijd scoren met iets om even lekker tot rust te komen. Denk aan warme sokken, een fijne geur of een creatief project voor de winteravonden. Ik koos 20 cadeaus, met ook vier ideeën speciaal voor je moeder. Bijna alles kost minder dan 30 euro, en de meeste zijn ook geschikt voor de lootjes.',
       delen: [
         { kop: 'Voor in de schoen of de lootjes (tot €15)', tekst: 'Kleine cadeautjes die laten zien dat je aan haar dacht.',
           ids: ['hema-84afebb566', 'dk-00043546', 'bol-9300000239540734', 'lego-40524'] },
         { kop: 'Om jezelf te verwennen', tekst: 'Zacht, warm en lekker ruikend: helemaal goed voor de koude decemberavonden.',
-          ids: ['bol-9300000188983674', 'bol-9300000044984873', 'lr-350322363000', 'bol-9300000291533838'] },
+          ids: ['bol-9300000188983674', 'tbl-tb0a6as6280m1', 'lr-350322363000', 'bol-9300000291533838'] },
         { kop: 'Mooi voor in huis', tekst: 'Een geurkaars of een lief lampje maakt het meteen gezellig.',
           ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'bol-9300000124563618', 'dvzn-347250'] },
         { kop: 'Creatief en ontspannen', tekst: 'Voor de vrouw die graag iets met haar handen doet, of even helemaal uit wil schakelen.',
-          ids: ['bol-9300000087608265', 'bol-9300000238015446', 'bol-9300000071174759', 'bol-9300000189482940'] }
+          ids: ['bol-9300000087608265', 'bol-9300000238015446', 'bol-9300000071174759', 'bol-9300000189482940'] },
+        { kop: 'Voor je moeder (€15 tot €35)', tekst: 'Moeders denken vaak eerst aan een ander. Geef haar dus iets wat alleen voor haar is: om te verwennen of om van te snoepen bij de koffie.',
+          ids: ['cl-rit-sakura', 'dw-4000161100379', 'dk-00043581', 'cl-bodyshop-set'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
     { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren', 'hobby/origami-scrapbooking'],
@@ -2860,6 +2865,14 @@
             'Rijbewijs gehaald: een auto of een groot verkeersbord',
             'Weet je niets? Een grote chocoladeletter, een pepernotenzak of een mijter doet het altijd'
           ] },
+        { kop: 'Geen tijd of niet zo handig? Zo wordt het toch leuk', tekst: 'Een surprise hoeft geen kunstwerk te zijn. Deze snelle ideeën kosten een uurtje en zijn net zo grappig.',
+          lijst: [
+            'Doos in een doos: verpak het cadeau in steeds kleinere dozen, met bij elke doos een stukje van het gedicht.',
+            'Chocoladesurprise: plak een doos helemaal vol met chocoladerepen of chocoladeletters. Uitpakken is meteen snoepen.',
+            'Gebruik wat er al is: een oude koffer, een emmer of de eigen sporttas van de persoon wordt de surprise.',
+            'Schatzoektocht: verstop het cadeau in huis en geef met het gedicht de eerste aanwijzing.',
+            'Nog geen gedicht? Laat de Sint-rijmmachine van LeukeKeuze er gratis een maken en pas het aan waar je wilt.'
+          ] },
         { kop: 'Spullen om je surprise te maken', tekst: 'Met deze spullen kun je bijna elke surprise maken. Een lijmpistool is echt een aanrader: alles zit in een paar seconden vast.',
           ids: ['bol-9300000226734832', 'bol-9300000146207567', 'bol-9200000052919661'] },
         { kop: 'Kleine cadeautjes voor in je surprise', tekst: 'Bij lootjes trekken spreek je vaak een bedrag af. Deze cadeautjes passen in bijna elke surprise en blijven onder de €15.',
@@ -2876,7 +2889,7 @@
             'Onderteken met "Sint en Piet" en schrijf het gedicht met de computer of netjes met de hand.'
           ], ids: ['bol-9300000039602281'] }
       ],
-      slot: 'Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
+      slot: 'Nog een gedicht nodig? De <a href="/sint-rijmmachine">Sint-rijmmachine</a> maakt er gratis een, met een passend cadeau erbij. Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
     { slug: 'sinterklaasgedicht-maken', beeld: 'bol-9300000039602281', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'eten-drinken/chocolade-snoep'],
       titel: 'Sinterklaasgedicht maken: zo schrijf je een leuk gedicht (met rijmwoorden)', kort: 'Een stappenplan, rijmwoorden die je altijd nodig hebt, voorbeeldregels en tips om te plagen zonder te kwetsen.',
       intro: 'Een cadeau uitpakken is leuk, maar het gedicht maakt pakjesavond pas echt. Veel mensen zien er tegenop: hoe begin je, en wat rijmt er op Piet? Goed nieuws: een sinterklaasgedicht hoeft geen kunstwerk te zijn. Iedereen lacht om een gedicht dat herkenbaar is, een beetje plaagt en lekker voorleest. Hieronder vind je een simpel stappenplan, een lijst rijmwoorden die je bij elk gedicht nodig hebt, voorbeeldregels om mee te beginnen en tips om te plagen zonder iemand te kwetsen. En voor wie er echt niet uitkomt: er zijn chocoladeletters met een kant-en-klaar gedicht erbij.',
@@ -3537,15 +3550,21 @@
     'sinterklaascadeau-man': { top: [['Onze topkeuze', 'bol-9300000179094379'], ['Voor de lootjes', 'bierch-0325fb0395'], ['Grappigste', 'cg-useless-box']], faq: [
       ['Wat geef je een man die zegt dat hij niets nodig heeft?', 'Iets wat hij zelf niet zou kopen maar wel gebruikt: een goede hoofdlamp, een vleesthermometer of een spel voor na het uitpakken. Of maak het grappig, daar is pakjesavond voor.'],
       ['Wat is een leuk lootjescadeau voor een man onder de €15?', 'Een bierbon, een verzorgingsset of een handig stuk gereedschap zoals een precisieschroevendraaier. In deze gids staan vier ideeën tot €12.'],
-      ['Hoe maak ik er een surprise van?', 'Verpak het cadeau in iets wat bij hem past, zoals een grote dartpijl of een bierflesje van karton. In onze gids Surprise maken staat een stappenplan.']] },
-    'sinterklaascadeau-vrouw': { top: [['Onze topkeuze', 'bol-9300000044984873'], ['Beste koop', 'dk-00043546'], ['Om te verwennen', 'lr-350322363000']], faq: [
+      ['Hoe maak ik er een surprise van?', 'Verpak het cadeau in iets wat bij hem past, zoals een grote dartpijl of een bierflesje van karton. In onze gids Surprise maken staat een stappenplan.'],
+      ['Wat is een goed sinterklaascadeau voor je vader?', 'Iets voor zijn vaste gewoontes: een goede koffiepot, een bierkist met breekijzer, een verzorgingsset of iets lekkers. In deze gids staan vier ideeën speciaal voor je vader.'],
+      ['Wat geef je een volwassen man voor Sinterklaas?', 'Hetzelfde als voor een kind, alleen met een knipoog: iets grappigs voor pakjesavond en iets wat hij echt gebruikt. Met een plagerig gedicht erbij wordt elk cadeau persoonlijk.']] },
+    'sinterklaascadeau-vrouw': { top: [['Onze topkeuze', 'tbl-tb0a6as6280m1'], ['Beste koop', 'dk-00043546'], ['Om te verwennen', 'lr-350322363000']], faq: [
       ['Wat geef je een vrouw voor Sinterklaas?', 'Iets om even tot rust te komen valt bijna altijd goed: warme sokken, een fijne geur of een plaid. Houdt ze van maken? Dan is een haakpakket of schilderen op nummer een schot in de roos.'],
       ['Wat is een goed lootjescadeau voor een vrouw onder de €15?', 'Fleece huissokken, een geurbalsem of de LEGO-zonnebloemen. Klein, maar ze gebruikt het echt.'],
-      ['Is een geurkaars niet te standaard?', 'Niet als je een bijzondere geur kiest, zoals salted caramel. Met een grappig gedicht erbij wordt het meteen persoonlijk.']] },
+      ['Is een geurkaars niet te standaard?', 'Niet als je een bijzondere geur kiest, zoals salted caramel. Met een grappig gedicht erbij wordt het meteen persoonlijk.'],
+      ['Wat is een leuk sinterklaascadeau voor je moeder?', 'Iets wat alleen voor haar is: een verzorgingsset, marsepein of een koekjespakket voor bij de koffie. In deze gids staan vier ideeën speciaal voor je moeder.'],
+      ['Wat geef je een volwassen vrouw voor Sinterklaas?', 'Iets om te verwennen of iets voor in huis, met een gedicht dat haar een beetje plaagt. Een klein cadeau met een goed gedicht valt vaak beter dan een duur cadeau zonder.']] },
     'surprise-maken': { top: [['Onmisbaar', 'bol-9300000226734832'], ['Voor in je surprise', 'bol-9300000345522498'], ['Iets lekkers erbij', 'bol-9300000010371405']], faq: [
       ['Hoeveel tijd kost een surprise maken?', 'Reken op twee tot drie avonden. Verf en papier-maché moeten drogen, dus begin uiterlijk een week voor pakjesavond.'],
       ['Wat heb je nodig om een surprise te maken?', 'Een doos of fles als basis, karton, plakband, een lijmpistool, verf of crêpepapier en een paar details zoals ogen of glitters. Met een lijmpistool gaat alles veel sneller.'],
-      ['Hoe lang moet een sinterklaasgedicht zijn?', 'Acht tot zestien regels is genoeg. Laat het rijmen op elke twee regels, plaag een beetje maar houd het lief, en onderteken met Sint en Piet.']] },
+      ['Hoe lang moet een sinterklaasgedicht zijn?', 'Acht tot zestien regels is genoeg. Laat het rijmen op elke twee regels, plaag een beetje maar houd het lief, en onderteken met Sint en Piet.'],
+      ['Kan ik een surprise maken zonder te knutselen?', 'Ja. Verpak het cadeau in steeds kleinere dozen met bij elke doos een stukje gedicht, of plak een doos vol met chocoladerepen. In deze gids staan meer snelle ideeën.'],
+      ['Wat stop je in een surprise?', 'Het lootjescadeau, vaak tussen 10 en 25 euro, plus iets lekkers zoals een chocoladeletter of kruidnoten. Bij de kleine cadeautjes in deze gids staan ideeën onder de 15 euro.']] },
     'adventskalender-kiezen': { top: [['Onze topkeuze', 'bol-9300000186028245'], ['Net even anders', 'bol-9300000408782128'], ['Voor kinderen', 'dw-8000500392065']], faq: [
       ['Wanneer begint een adventskalender?', 'Op 1 december. De meeste kalenders hebben 24 vakjes en lopen tot kerstavond. Sommige hebben er 25, tot en met eerste kerstdag.'],
       ['Wanneer moet ik een adventskalender bestellen?', 'Liefst vóór eind november. Dan heb je hem zeker op tijd, en de populairste kalenders zijn in december vaak uitverkocht.'],
@@ -3715,7 +3734,7 @@
   function leesOok(sleutel) {
     /* Gidsen van de homepage (seizoen) eerst, daarna de rest in de volgorde van GIDSEN. */
     var l = GIDSEN.filter(function (g) { return (g.vakken || []).indexOf(sleutel) > -1; })
-      .sort(function (x, y) { var a = HOME_GIDSEN.indexOf(x.slug), b = HOME_GIDSEN.indexOf(y.slug); return (a < 0 ? 99 : a) - (b < 0 ? 99 : b); }).slice(0, 3);
+      .sort(function (x, y) { var a = HOME_GIDSEN.indexOf(x.slug), b = HOME_GIDSEN.indexOf(y.slug); return (a < 0 ? 99 : a) - (b < 0 ? 99 : b); }).slice(0, 5); /* 9-11-2026: 5 i.p.v. 3, zodat ook de Sint-gidsen voor man en vrouw op de Sinterklaaspagina staan */
     if (!l.length) return '';
     return '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span>' +
       l.map(function (g) { return '<a href="/gids/' + g.slug + '">' + esc(g.titel.split(':')[0]) + '</a>'; }).join('') + '</nav>';

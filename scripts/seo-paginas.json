@@ -1,12 +1,115 @@
 {
  "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand.",
- "/p/bol-9300000252262265/": {"titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol", "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."},
- "/p/bol-9300000275658288/": {"titel": "ZURU Sticker Therapy Kawaii Kitties – €17,56 bij bol", "omschrijving": "Sticker Therapy van ZURU: stickervellen met schattige katjes waarmee je zelf een plaatje maakt. €17,56 bij bol, prijs gecontroleerd op {datum}."},
- "/p/bol-9300000281033787/": {"titel": "Opa's Kieteltenen spel (vanaf 4 jaar) – €23,45 bij bol", "omschrijving": "Opa's Kieteltenen: leg voorwerpen op opa zonder dat hij wakker schrikt en opspringt. Voor 2 tot 4 spelers vanaf 4 jaar. €23,45 bij bol, prijs gecontroleerd op {datum}."},
- "/p/bol-9300000280626381/": {"titel": "SmartGames Kabouter Kiekeboe, houten denkspel (3+)", "omschrijving": "Kabouter Kiekeboe van SmartGames: verstop de kabouters onder de bloempotten en los 48 opdrachten op. Vanaf 3 jaar. €24,99 bij bol, prijs gecontroleerd op {datum}."},
- "/p/bol-9300000261530226/": {"titel": "PAW Patrol Rabarber en Marshall interactief (3+) – €33,99", "omschrijving": "PAW Patrol De Dinofilm: Marshall en dino Rabarber, die steeds harder leert brullen. Vanaf 3 jaar. €33,99 bij bol, prijs gecontroleerd op {datum}."},
- "/p/bol-9300000269708102/": {"titel": "Basketbal Duo Deurset met scorebord – €43,29 bij bol", "omschrijving": "Basketbal Duo Deurset: een basketbalnetje voor aan de deur, met twee ballen en een scorebord met licht. €43,29 bij bol, prijs gecontroleerd op {datum}."},
- "/p/bol-9300000268348044/": {"titel": "Yankee Candle geurstokjes Clean Cotton 100 ml – €22,67", "omschrijving": "Yankee Candle Clean Cotton geurstokjes: de geur van schone was, tot zes weken lang, zonder vlam. Mooi klein cadeau. €22,67 bij bol, prijs gecontroleerd op {datum}."},
- "/p/hema-b06ddc03f9/": {"titel": "HEMA kiekeboe-mok Sinterklaas: schoencadeautje van €6,99", "omschrijving": "Een vrolijke mok waar Sinterklaas uit gluurt. Leuk voor in de schoen, met warme chocolademelk erin. €6,99 bij HEMA, prijs gecontroleerd op {datum}."},
- "/gids/kerststal-kopen/": {"titel": "Kerststal kopen: van houten speelstal tot sfeervolle stal"}
+ "/p/bol-9300000252262265/": {
+  "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
+  "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000275658288/": {
+  "titel": "ZURU Sticker Therapy Kawaii Kitties – €17,56 bij bol",
+  "omschrijving": "Sticker Therapy van ZURU: stickervellen met schattige katjes waarmee je zelf een plaatje maakt. €17,56 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000281033787/": {
+  "titel": "Opa's Kieteltenen spel (vanaf 4 jaar) – €23,45 bij bol",
+  "omschrijving": "Opa's Kieteltenen: leg voorwerpen op opa zonder dat hij wakker schrikt en opspringt. Voor 2 tot 4 spelers vanaf 4 jaar. €23,45 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000280626381/": {
+  "titel": "SmartGames Kabouter Kiekeboe, houten denkspel (3+)",
+  "omschrijving": "Kabouter Kiekeboe van SmartGames: verstop de kabouters onder de bloempotten en los 48 opdrachten op. Vanaf 3 jaar. €24,99 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000261530226/": {
+  "titel": "PAW Patrol Rabarber en Marshall interactief (3+) – €33,99",
+  "omschrijving": "PAW Patrol De Dinofilm: Marshall en dino Rabarber, die steeds harder leert brullen. Vanaf 3 jaar. €33,99 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000269708102/": {
+  "titel": "Basketbal Duo Deurset met scorebord – €43,29 bij bol",
+  "omschrijving": "Basketbal Duo Deurset: een basketbalnetje voor aan de deur, met twee ballen en een scorebord met licht. €43,29 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000268348044/": {
+  "titel": "Yankee Candle geurstokjes Clean Cotton 100 ml – €22,67",
+  "omschrijving": "Yankee Candle Clean Cotton geurstokjes: de geur van schone was, tot zes weken lang, zonder vlam. Mooi klein cadeau. €22,67 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/hema-b06ddc03f9/": {
+  "titel": "HEMA kiekeboe-mok Sinterklaas: schoencadeautje van €6,99",
+  "omschrijving": "Een vrolijke mok waar Sinterklaas uit gluurt. Leuk voor in de schoen, met warme chocolademelk erin. €6,99 bij HEMA, prijs gecontroleerd op {datum}."
+ },
+ "/gids/kerststal-kopen/": {
+  "titel": "Kerststal kopen: van houten speelstal tot sfeervolle stal"
+ },
+ "/p/bol-9300000264879888/": {
+  "titel": "Disney Bullebeest bestuurbaar paard (3+) – €43,99 bij bol",
+  "omschrijving": "Bullebeest uit Toy Story 5 als bestuurbaar paard van ruim 30 cm: hij draaft, wiebelt en maakt geluid. Vanaf 3 jaar. €43,99 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000197502206/": {
+  "titel": "Becky's kerstmok met warme chocolademix – €19,95",
+  "omschrijving": "Becky's kerstmok met chocolademelk en marshmallows: een gezellig wintercadeau voor collega, vriendin of in de schoen. €19,95 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000285102377/": {
+  "titel": "Jump-It Wipeout! spel (vanaf 6 jaar) – €69,99 bij bol",
+  "omschrijving": "Jump-It Wipeout!: spring over de draaiende stang op muziek, in 3 snelheden. Lekker actief binnen spelen vanaf 6 jaar. €69,99 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000262196765/": {
+  "titel": "Disney Stitch Double Trouble interactief – €47 bij bol",
+  "omschrijving": "Stitch Double Trouble: een interactieve Stitch die danst, zingt, brabbelt en zelf over de grond kruipt als je op zijn hoofd drukt. €47 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000283555343/": {
+  "titel": "Kuromi rugzak met tekenschool (8-13 jaar) – €19,99",
+  "omschrijving": "Kuromi rugzak met tekenschool: een rugzak vol tekenspullen voor creatieve kinderen van 8 tot 13 jaar. €19,99 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/p/bol-9300000262218107/": {
+  "titel": "FurReal Riley de Koe interactief (4+) – €62,93 bij bol",
+  "omschrijving": "FurReal Riley de Koe kwispelt, loopt, knippert en loeit. Een interactieve knuffel voor dierenliefhebbers vanaf 4 jaar. €62,93 bij bol, prijs gecontroleerd op {datum}."
+ },
+ "/voor/kinderen/": {
+  "titel": "Cadeau voor kinderen: speelgoed per leeftijd | LeukeKeuze",
+  "omschrijving": "Een cadeau voor een kind zoeken? Kies de leeftijd, van 0 tot 12 jaar: LEGO, spellen, knutselsets, boeken en meer. Met de hand gekozen, met de prijs erbij."
+ },
+ "/gids/sinterklaascadeau-man/": {
+  "titel": "Sinterklaascadeau man of vader: 20 ideeën die hij gebruikt",
+  "omschrijving": "Sinterklaascadeau voor een man, vader of broer: 20 ideeën, van lootjes en grappig tot iets wat hij echt gebruikt. Bijna alles onder €30, met de prijs erbij."
+ },
+ "/gids/sinterklaascadeau-vrouw/": {
+  "titel": "Sinterklaascadeau vrouw of moeder: 20 ideeën om te verwennen",
+  "omschrijving": "Sinterklaascadeau voor een vrouw, moeder of zus: 20 ideeën om te verwennen, voor in huis of voor de lootjes. Bijna alles onder €30, met de prijs erbij."
+ },
+ "/gids/surprise-maken/": {
+  "titel": "Surprise maken: 25 ideeën, stappenplan en snelle tips",
+  "omschrijving": "Surprise maken voor Sinterklaas? Een stappenplan in 6 stappen, 25 ideeën per persoon, snelle surprises zonder knutselen en tips voor het gedicht."
+ },
+ "/c/tuin-klussen/tuingereedschap/handgereedschap-tuin/": {
+  "titel": "Handgereedschap voor de tuin: snoeischaren, schepjes en sets",
+  "omschrijving": "Handgereedschap voor de tuin als cadeau: snoeischaren, plantenschepjes, onkruidstekers en complete sets van Felco, Fiskars, Gardena en Wolf-Garten."
+ },
+ "/gelegenheid/": {
+  "omschrijving": "Een cadeau voor een verjaardag, Sinterklaas, Kerst, Moederdag of een geboorte? Kies de gelegenheid en zie meteen cadeaus die passen, met de prijs erbij."
+ },
+ "/categorieen/": {
+  "omschrijving": "Alle categorieën van LeukeKeuze op een rij: speelgoed, wonen, mode en sieraden, eten en drinken, elektronica, hobby en meer. Met de hand gekozen cadeaus."
+ },
+ "/voor/hem/boeken-muziek/": {
+  "omschrijving": "Een boek als cadeau voor hem: romans, thrillers van onder meer Dan Brown en kookboeken van Ottolenghi. Met de hand gekozen, met de prijs erbij."
+ },
+ "/voor/tieners/lekkers/": {
+  "omschrijving": "Lekkers als cadeau voor tieners: chocolade van Tony's en Lindt, chocoladeletters, een filmpakket met popcorn en meer. Met de prijs erbij."
+ },
+ "/voor/tieners/sport-darts/": {
+  "omschrijving": "Sportcadeau voor een tiener: dartborden en dartpijlen, sporthorloges van Garmin en Polar, sportoordopjes en een voetbaltafel. Met de prijs erbij."
+ },
+ "/voor/opa-oma/keuken/": {
+  "omschrijving": "Keukencadeau voor opa en oma: koffiezetters, theedozen, een fluitketel, oma's bakboek en meer voor in de keuken. Met de hand gekozen, met de prijs erbij."
+ },
+ "/voor/kinderen/lekkers/": {
+  "omschrijving": "Lekkers als cadeau voor kinderen: chocoladeletters, lolly's, speculaaspoppen en adventskalenders van LEGO en Playmobil. Met de prijs erbij."
+ },
+ "/voor/haar/horloges/": {
+  "omschrijving": "Dameshorloge als cadeau: Michael Kors, Tommy Hilfiger, Hugo Boss, TechnoMarine en meer, met de hand gekozen. Met de prijs zoals de winkel hem geeft."
+ },
+ "/voor/haar/haken-breien-creatief/": {
+  "omschrijving": "Creatief cadeau voor haar: LEGO bloemen en LEGO Art, diamond painting, mozaïek en kaarsen maken. Met de hand gekozen, met de prijs erbij."
+ },
+ "/p/ts24-1f644a22f3/": {
+  "omschrijving": "Hamilton Ventura Elvis80 automatisch herenhorloge (42 mm): het bekende driehoekige horloge dat Elvis droeg, met zwarte band. Bij Timeshop24."
+ },
+ "/p/ts24-7357ffc44e/": {
+  "omschrijving": "Hamilton Ventura (32 mm, unisex): het kleinere driehoekige horloge met zwarte leren band, de klassieker die Elvis beroemd maakte. Bij Timeshop24."
+ }
 }
