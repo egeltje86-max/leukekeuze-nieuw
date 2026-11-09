@@ -1130,3 +1130,10 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   .bh-rij { overflow: visible; display: grid; grid-template-columns: repeat(6, 1fr); }
   .bh-tegel { max-width: none; }
 }
+
+/* 9-11-2026 (Marius: "sommige foto's zijn microscopisch klein"): de foto's zelf zijn bijgesneden tot het product,
+   en op de productpagina op de telefoon minder lege rand om de foto, zodat het product groter in beeld staat (hoogte blijft 210px). */
+@media (max-width: 859px) {
+  body.pag-product .product-beeld.echt.studio img { padding: 4% 4% 8%; }
+  body.pag-product .product-beeld.echt.studio::after { bottom: 3%; }
+}
