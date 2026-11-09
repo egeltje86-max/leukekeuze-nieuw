@@ -46,7 +46,21 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+      # 9-11-2026: GitHub blijft soms hangen op "bestanden verwerken" en breekt dan na 10 minuten af (de upload zelf duurt normaal 1 minuut).
+      # Dan nog twee keer opnieuw proberen met dezelfde, al klaargezette website.
       - id: upload
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 1800000
+      - id: upload2
+        if: steps.upload.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 1800000
+      - id: upload3
+        if: steps.upload.outcome == 'failure' && steps.upload2.outcome == 'failure'
         uses: actions/deploy-pages@v4
         with:
           timeout: 1800000
