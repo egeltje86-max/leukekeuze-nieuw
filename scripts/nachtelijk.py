@@ -52,6 +52,12 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-miscota': '&standard_id=1&language_code=nl&locale_id=1&program_id=22031',         # Miscota (dierenvoeding)
     'x-kaartje2go': '&standard_id=1&language_code=nl&locale_id=1&program_id=19520',      # Kaartje2go
     'x-razer': '&standard_id=6&language_code=fr&locale_id=1&program_id=13299',           # Razer (Engelstalige titels)
+    'x-doenkado': '&standard_id=1&language_code=nl&locale_id=1&program_id=1305',         # Doenkado belevenissen, goedgekeurd 9-11-2026
+    'x-invulboekjes': '&standard_id=1&language_code=nl&locale_id=1&program_id=14523',    # invulboekjes.nl, feedlink van Marius 9-11-2026
+    'x-parfumania': '&standard_id=5&language_code=nl&locale_id=1&program_id=16384',      # Parfumania, feedlink van Marius 9-11-2026
+    'x-zinzi': '&standard_id=7&language_code=nl&locale_id=1&program_id=11108',           # Zinzi sieraden NL, goedgekeurd 9-11-2026
+    'x-droptelegram': '&standard_id=1&language_code=nl&locale_id=1&program_id=18913',    # Droptelegram, goedgekeurd 9-11-2026
+    'x-naturesgift': '&standard_id=1&language_code=nl&locale_id=1&program_id=17750',     # Nature's Gift, goedgekeurd 9-11-2026
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
