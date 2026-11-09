@@ -307,17 +307,23 @@
       ['meer', 'Nog meer uitjes', '/c/belevenissen/dagjes-uit-overnachten/nog-meer-uitjes', '✨']] },
     '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-psalmboeken', 'boeken-muziek', 'sieraden', 'wanddecoratie-teksten', 'voor-kinderen', 'doop-belijdenis'] },
     '/c/cadeaus/kerst': { titel: 'Wat zoek je voor kerst?', vast: [
-      ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒'],
-      ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶'], ['beleef', 'Belevenissen', '/gids/belevenis-cadeau', '🎟️'], ['advent', 'Advents\u00ADkalenders', '/collectie/adventskalenders', '📅'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄'],
-      ['tiener', 'Voor tieners', '/gids/kerstcadeau-tiener', '🎧'], ['collega', 'Voor collega’s', '/gids/kerstcadeau-collega', '💼'], ['opa', 'Voor opa en oma', '/gids/kerstcadeau-opa-oma', '👵'],
-      ['trui', 'Kersttruien', '/c/mode-sieraden/kleding/kersttruien', '🧶'], ['stal', 'Kerststal kopen', '/gids/kerststal-kopen', '⭐']] },
+      ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔', 'images/sub/rond/voor-hem.webp'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗', 'images/sub/rond/voor-haar.webp'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒', 'images/sub/rond/voor-kinderen.webp'],
+      ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶', 'images/sub/rond/cad-onder-15-klein.webp'], ['beleef', 'Belevenissen', '/gids/belevenis-cadeau', '🎟️', 'images/categorieen/belevenissen-home.webp'], ['advent', 'Advents\u00ADkalenders', '/collectie/adventskalenders', '📅', 'images/sub/rond/col-adventskalenders.webp'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄', 'images/sub/iconen/icoon-wonen-kerstdecoratie.webp'],
+      ['tiener', 'Voor tieners', '/gids/kerstcadeau-tiener', '🎧', 'images/sub/rond/voor-tieners-klein.webp'], ['collega', 'Voor collega’s', '/gids/kerstcadeau-collega', '💼', 'images/sub/rond/voor-collega-klein.webp'], ['opa', 'Voor opa en oma', '/gids/kerstcadeau-opa-oma', '👵', 'images/sub/rond/voor-opa-oma-klein.webp'],
+      ['trui', 'Kersttruien', '/c/mode-sieraden/kleding/kersttruien', '🧶'], ['stal', 'Kerststal kopen', '/gids/kerststal-kopen', '⭐', 'images/sub/rond/chr-kerst-klein.webp']] },
     '/c/speelgoed': { titel: 'Wat zoek je?', top: ['baby-peuter', 'bouwen', 'poppen-knuffels', 'speelfiguren-voertuigen', 'spellen', 'buiten-spelen'] },
     '/c/cadeaus/sinterklaas': { titel: 'Wat zoek je voor Sinterklaas?', vast: [
-      ['schoen', 'Schoencadeaus', '/gids/schoencadeautjes', '🥿'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒'], ['volw', 'Voor volwassenen', '/gids/sinterklaas-voor-volwassenen', '🎁'],
-      ['lootjes', 'Lootjes', '/voor/collega/lootjes', '🎟️'], ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫'], ['o15', 'Onder €15', '/c/cadeaus/sint-onder-15', '💶'],
-      ['o10', 'Onder €10', '/gids/sinterklaas-onder-10', '💶'], ['man', 'Voor hem', '/gids/sinterklaascadeau-man', '🎩'], ['vrouw', 'Voor haar', '/gids/sinterklaascadeau-vrouw', '💐'],
+      ['schoen', 'Schoencadeaus', '/gids/schoencadeautjes', '🥿', 'images/sub/rond/cad-sint-onder-15-klein.webp'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒', 'images/sub/rond/voor-kinderen.webp'], ['volw', 'Voor volwassenen', '/gids/sinterklaas-voor-volwassenen', '🎁', 'images/sub/rond/cad-sinterklaas-klein.webp'],
+      ['lootjes', 'Lootjes', '/voor/collega/lootjes', '🎟️', 'images/sub/rond/voor-collega-klein.webp'], ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫', 'images/sub/iconen/icoon-eten-drinken-chocolade-snoep.webp'], ['o15', 'Onder €15', '/c/cadeaus/sint-onder-15', '💶', 'images/sub/rond/gel-sinterklaas-klein.webp'],
+      ['o10', 'Onder €10', '/gids/sinterklaas-onder-10', '💶', 'images/sub/rond/col-kleine-cadeautjes.webp'], ['man', 'Voor hem', '/gids/sinterklaascadeau-man', '🎩', 'images/sub/rond/voor-hem.webp'], ['vrouw', 'Voor haar', '/gids/sinterklaascadeau-vrouw', '💐', 'images/sub/rond/voor-haar.webp'],
       ['surprise', 'Surprise maken', '/gids/surprise-maken', '🎨'], ['gedicht', 'Gedicht laten maken', '/sint-rijmmachine', '📜']] }
   };
+  /* NOVA-001: een bestaand beeld bij een knop zonder eigen icoon: de foto van een gekozen product uit dat onderwerp (geen nieuwe beelden). */
+  function beeldUit(lijst) { return rondBeeld(null, (lijst || []).slice().sort(function (a, b) { return (b.wil || 0) - (a.wil || 0); })); }
+  function padBeeld(naar) {
+    var m = /^\/c\/([^/?#]+)(?:\/([^/?#]+))?(?:\/([^/?#]+))?/.exec(naar || ''); if (!m) return '';
+    return beeldUit(LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, m[1], m[2], m[3]); }));
+  }
   function slimNav(items, cfg, label) {
     if (!items || items.length < 2) return ''; /* kleine categorie: geen navigatieblok, meteen de producten */
     cfg = cfg || {};
@@ -328,10 +334,10 @@
     if (actief && top.indexOf(actief) === -1) top[top.length - 1] = actief;
     /* NOVA-001: hebben alle zes een foto, dan grote foto's; anders overal een rond beeldje, zodat de kaartjes gelijk ogen. */
     var isRond = function (b) { return /\/(iconen|rond)\//.test(b || ''); };
-    var alleFoto = NOVA1 && top.every(function (x) { return x.beeld && !isRond(x.beeld); });
+    var alleFoto = NOVA1 && top.every(function (x) { return x.beeld && !isRond(x.beeld) && !/images\/producten\//.test(x.beeld); });
     var knop = function (x) {
       return '<a class="sn-knop' + (x.actief ? ' actief' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
-        (NOVA1 && x.beeld ? '<span class="sn-beeld' + (alleFoto && !isRond(x.beeld) ? '' : ' sn-rond') + '" aria-hidden="true"><img src="' + esc(x.beeld) + '" alt="" loading="lazy" decoding="async" width="120" height="120"></span>'
+        (NOVA1 && x.beeld ? '<span class="sn-beeld' + (alleFoto && !isRond(x.beeld) ? '' : ' sn-rond') + (/images\/producten\//.test(x.beeld) ? ' sn-product' : '') + '" aria-hidden="true"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy" decoding="async" width="120" height="120"></span>'
           : '<span class="sn-ico" aria-hidden="true">' + (x.icoon || slimIco(x.naam)) + '</span>') + '<span class="sn-naam">' + esc(x.naam) + '</span></a>';
     };
     return '<nav class="slimnav" aria-label="' + esc(label || cfg.titel || 'Onderwerpen') + '">' +
@@ -342,7 +348,7 @@
   }
   function slimVast(pad) {
     var cfg = SLIM[pad]; if (!cfg || !cfg.vast) return '';
-    return slimNav(cfg.vast.map(function (x) { return { id: x[0], naam: x[1], naar: x[2], icoon: x[3] }; }), { titel: cfg.titel, top: cfg.vast.slice(0, 6).map(function (x) { return x[0]; }) });
+    return slimNav(cfg.vast.map(function (x) { return { id: x[0], naam: x[1], naar: x[2], icoon: x[3], beeld: x[4] || (NOVA1 ? padBeeld(x[2]) : '') }; }), { titel: cfg.titel, top: cfg.vast.slice(0, 6).map(function (x) { return x[0]; }) });
   }
   /* Onderaan elke lijstpagina: verder kijken als tekstlinks (geen rij met plaatjes die je voorbij moet schuiven). */
   function tekstLinks(kop, links) {
@@ -1127,10 +1133,10 @@
 
     if (SLIMNAV) {
       if (SLIM[pad] && SLIM[pad].vast) subs = slimVast(pad);
-      else if (!s) subs = slimNav(groepen.map(function (x) { return { id: x.slug, naam: x.naam, beeld: x.beeld, naar: metBudget(subAdres(c, x)), n: LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }).length }; }),
+      else if (!s) subs = slimNav(groepen.map(function (x) { return { id: x.slug, naam: x.naam, beeld: x.beeld || (NOVA1 ? beeldUit(LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); })) : ''), naar: metBudget(subAdres(c, x)), n: LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }).length }; }),
         SLIM[pad] || { titel: 'Wat zoek je?' }, 'Groepen in ' + c.naam);
       else if (volleVakjes.length > 1) subs = slimNav(volleVakjes.map(function (x) {
-        return { id: x.slug, naam: x.naam, beeld: x.beeld, naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), actief: !!(v && v.slug === x.slug), n: inGroep.filter(function (p) { return p.vak === x.slug; }).length };
+        return { id: x.slug, naam: x.naam, beeld: x.beeld || (NOVA1 ? beeldUit(inGroep.filter(function (p) { return p.vak === x.slug; })) : ''), naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), actief: !!(v && v.slug === x.slug), n: inGroep.filter(function (p) { return p.vak === x.slug; }).length };
       }), SLIM['/c/' + c.slug + '/' + s.slug] || { titel: 'Soorten ' + s.naam.toLowerCase() }, 'Soorten in ' + s.naam);
       else subs = '';
     }
@@ -1231,7 +1237,7 @@
         }), 'Onderdelen voor ' + naam, { altijd: true });
 
     if (SLIMNAV) subsHtml = slimNav(volleSubsP.map(function (x) {
-      return { id: x.slug, naam: x.naam, beeld: x.beeld, naar: metBudget('/voor/' + pe.slug + '/' + x.slug), actief: !!(s && s.slug === x.slug), n: persoonProducten(pe, x.vakken).length };
+      return { id: x.slug, naam: x.naam, beeld: x.beeld || (NOVA1 ? beeldUit(persoonProducten(pe, x.vakken)) : ''), naar: metBudget('/voor/' + pe.slug + '/' + x.slug), actief: !!(s && s.slug === x.slug), n: persoonProducten(pe, x.vakken).length };
     }), SLIM['/voor/' + pe.slug] || { titel: 'Wat zoek je voor ' + naam + '?' }, 'Onderwerpen voor ' + naam);
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + knopChips(pad, q, knoppen) + merkWinkelChips(pad, q) + prijsChips(pad, q) +
