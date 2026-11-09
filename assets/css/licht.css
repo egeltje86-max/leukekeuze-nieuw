@@ -1504,3 +1504,162 @@ html.nova3 #app:has(> .hero) .persoonlijk .gelegenheid-knopjes .chip {
   html.nova3 #app:has(> .hero) *::before,
   html.nova3 #app:has(> .hero) *::after { transition: none !important; }
 }
+
+/* ===== NOVA-004 (9-11-2026, ontwerp Nova) — Voor wie & Gelegenheden: UITSLUITEND visueel.
+   Alleen actief via body.nova4-target (proef: ?proef=nova4).
+   GEEN wijzigingen aan .slimnav, productkaarten, filters, URLs of interacties. */
+
+/* Beide paginatypen: warme, verfijnde maar compacte paginakop. */
+body.nova4-target .paginakop {
+  background: #FFFDF8;
+  border-bottom: 1px solid #E6D8C1;
+}
+body.nova4-target .paginakop::after {
+  background: linear-gradient(90deg, rgba(247,243,236,.96) 0%, rgba(247,243,236,.86) 58%, rgba(247,243,236,.55) 100%);
+}
+body.nova4-target .paginakop.zonder::after { background: none; }
+body.nova4-target .paginakop .binnen {
+  padding-top: 16px;
+  padding-bottom: 20px;
+}
+body.nova4-target .paginakop h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(29px, 7.2vw, 40px);
+  line-height: 1.13;
+  letter-spacing: -.02em;
+  color: #141A2A;
+}
+body.nova4-target .paginakop p {
+  max-width: 660px;
+  color: #4F556A;
+  line-height: 1.52;
+  font-size: 16px;
+}
+body.nova4-target .paginakop .kruimel,
+body.nova4-target .paginakop .kruimel a { color: #555D70; }
+
+/* De 2 overzichtspagina's: bestaande ronde foto's in echte, rustige kaarten.
+   Op detailpagina's blijven de goedgekeurde NOVA-001-keuzekaarten ongewijzigd. */
+body.nova4-overzicht .keuzes-sectie { padding-top: 18px; }
+body.nova4-overzicht .keuzes.groot {
+  display: grid;
+  gap: 12px;
+  align-items: stretch;
+}
+body.nova4-overzicht.nova4-voor .keuzes.groot {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+body.nova4-overzicht.nova4-gelegenheid .keuzes.groot {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+body.nova4-overzicht .keuzes.groot .keuzerond {
+  min-width: 0;
+  min-height: 156px;
+  padding: 14px 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #E6D8C1;
+  border-radius: 17px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF5E9 100%);
+  box-shadow: 0 3px 12px rgba(20,26,42,.07);
+  color: #141A2A;
+  text-decoration: none;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+body.nova4-overzicht .keuzes.groot .keuzerond:hover {
+  border-color: #B8862E;
+  box-shadow: 0 7px 19px rgba(20,26,42,.1);
+}
+body.nova4-overzicht .keuzes.groot .keuzerond:focus-visible {
+  outline: 3px solid #186D92;
+  outline-offset: 3px;
+}
+body.nova4-overzicht .keuzes.groot .keuzerond .rond {
+  width: 84px;
+  height: 84px;
+  flex: none;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0A1020;
+  box-shadow: 0 0 0 2px #C9A45C, 0 5px 12px rgba(10,16,32,.14);
+}
+body.nova4-overzicht .keuzes.groot .keuzerond .rond img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body.nova4-overzicht .keuzes.groot .keuzerond .naam {
+  width: 100%;
+  margin: 0;
+  color: #141A2A;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Navigatielinks onderaan detailpagina's: dezelfde ivoor/goud-taal. */
+body.nova4-target .sectie.verder .tekstlinks { gap: 8px; }
+body.nova4-target .sectie.verder .tekstlinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 1px solid #E6D8C1;
+  border-radius: 12px;
+  background: #FFFDF8;
+  color: #141A2A;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-decoration: none;
+}
+body.nova4-target .sectie.verder .tekstlinks a:hover {
+  border-color: #B8862E;
+  background: #FFF8EA;
+}
+body.nova4-target .sectie.verder .tekstlinks a:focus-visible {
+  outline: 3px solid #186D92;
+  outline-offset: 2px;
+}
+
+@media (max-width: 359px) {
+  body.nova4-overzicht.nova4-voor .keuzes.groot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.nova4-overzicht .keuzes.groot { gap: 10px; }
+  body.nova4-overzicht .keuzes.groot .keuzerond { min-height: 148px; padding-left: 4px; padding-right: 4px; }
+  /* heel smalle telefoon: lange woorden als 'Uitdeelcadeautjes' passen anders niet heel */
+  body.nova4-overzicht.nova4-gelegenheid .keuzes.groot .keuzerond .naam { font-size: 15px; letter-spacing: -.03em; }
+}
+@media (min-width: 600px) {
+  body.nova4-overzicht .keuzes.groot,
+  body.nova4-overzicht.nova4-voor .keuzes.groot,
+  body.nova4-overzicht.nova4-gelegenheid .keuzes.groot {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px;
+  }
+}
+@media (min-width: 760px) {
+  body.nova4-target .paginakop .binnen { padding-top: 26px; padding-bottom: 30px; }
+  body.nova4-overzicht .keuzes.groot,
+  body.nova4-overzicht.nova4-voor .keuzes.groot,
+  body.nova4-overzicht.nova4-gelegenheid .keuzes.groot {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px;
+  }
+  body.nova4-overzicht .keuzes.groot .keuzerond { min-height: 178px; padding: 17px 12px; }
+  body.nova4-overzicht .keuzes.groot .keuzerond .rond { width: 108px; height: 108px; }
+}
+@media (min-width: 1180px) {
+  body.nova4-overzicht.nova4-gelegenheid .keuzes.groot { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.nova4-overzicht .keuzes.groot .keuzerond { transition: none; }
+}

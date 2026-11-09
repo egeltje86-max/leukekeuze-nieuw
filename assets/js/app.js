@@ -281,6 +281,9 @@
      De stijlen gelden alleen op de homepage (#app:has(> .hero)). Voor iedereen aan; terug kan met window.LK_NOVA3 = false. */
   var NOVA3 = window.LK_NOVA3 !== false;
   if (NOVA3) document.documentElement.classList.add('nova3');
+  /* NOVA-004 (9-11-2026, ontwerp Nova): Voor wie en Gelegenheden. Proefversie: alleen met ?proef=nova4 (blijft aan in dit tabblad).
+     Zet alleen classes op <body> (in toon()) zodat de stijl uitsluitend op die pagina's werkt. */
+  var NOVA4 = (function () { try { if (/[?&]proef=nova4(&|$)/.test(location.search)) sessionStorage.setItem('lknova4', '1'); return window.LK_NOVA4 === true || sessionStorage.getItem('lknova4') === '1'; } catch (e) { return window.LK_NOVA4 === true; } })();
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
@@ -4514,6 +4517,11 @@
     app.innerHTML = html;
     document.body.classList.remove('plak-open');
     document.body.classList.toggle('pag-product', d[0] === 'p'); /* 8-11-2026: compacter eerste scherm op productpagina's (telefoon) */
+    var doelN4 = NOVA4 && (d[0] === 'voor' || d[0] === 'gelegenheid'); /* NOVA-004: alleen uiterlijk */
+    document.body.classList.toggle('nova4-target', doelN4);
+    document.body.classList.toggle('nova4-overzicht', doelN4 && !d[1]);
+    document.body.classList.toggle('nova4-voor', doelN4 && d[0] === 'voor');
+    document.body.classList.toggle('nova4-gelegenheid', doelN4 && d[0] === 'gelegenheid');
     document.body.classList.toggle('rijm-focus', d[0] === 'sint-rijmmachine'); /* Sint-rijmmachine: geen onderbalk over formulier en gedicht */
     /* Witte zoekbalk onder de kop: overal zichtbaar, behalve op de zoekpagina (die heeft er zelf al een). */
     var zr = $('[data-zoekrij]');
