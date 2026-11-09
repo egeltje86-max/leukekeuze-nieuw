@@ -281,9 +281,9 @@
      De stijlen gelden alleen op de homepage (#app:has(> .hero)). Voor iedereen aan; terug kan met window.LK_NOVA3 = false. */
   var NOVA3 = window.LK_NOVA3 !== false;
   if (NOVA3) document.documentElement.classList.add('nova3');
-  /* NOVA-004 (9-11-2026, ontwerp Nova): Voor wie en Gelegenheden. Proefversie: alleen met ?proef=nova4 (blijft aan in dit tabblad).
-     Zet alleen classes op <body> (in toon()) zodat de stijl uitsluitend op die pagina's werkt. */
-  var NOVA4 = (function () { try { if (/[?&]proef=nova4(&|$)/.test(location.search)) sessionStorage.setItem('lknova4', '1'); return window.LK_NOVA4 === true || sessionStorage.getItem('lknova4') === '1'; } catch (e) { return window.LK_NOVA4 === true; } })();
+  /* NOVA-004 (9-11-2026, ontwerp Nova; GO 9-11-2026): Voor wie en Gelegenheden. Zet alleen classes op <body> (in toon()),
+     zodat de stijl uitsluitend op die pagina's werkt. Voor iedereen aan; terug kan met window.LK_NOVA4 = false. */
+  var NOVA4 = window.LK_NOVA4 !== false;
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
