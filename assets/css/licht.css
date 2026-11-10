@@ -2021,4 +2021,21 @@ html.nova9 .prodgrid.top6 > .prodkaart:nth-child(-n+6) .beeld::after {
 }
 html.nova9 .prodkaart .beeld .label.vol { background: #0A1020; color: #F2CB74; border-color: #0A1020; }
 @media (prefers-reduced-motion: reduce) { html.nova9 .slimnav .sn-knop { transition: none; } }
+/* NOVA-009 ronde 2 (Nova 10-11-2026 16:43): mobiel compacter — lagere fotovlakken, minder witruimte, filterblok strakker. */
+@media (max-width: 759px) {
+  html.nova9 .slimnav .sn-raster { gap: 10px; }
+  html.nova9 .slimnav .sn-beeld:not(.sn-rond) { aspect-ratio: 5 / 2; }
+  html.nova9 .slimnav .sn-beeld.sn-rond, html.nova9 .slimnav .sn-ico { width: 46px; height: 46px; margin-top: 9px; }
+  html.nova9 .slimnav .sn-naam { min-height: calc(2 * 1.2em + 12px); padding: 6px 6px 7px; font-size: 14.5px; line-height: 1.2; }
+  html.nova9 .slimnav .sn-alle { margin-top: 10px; }
+  html.nova9 .slimnav .sn-alle summary { min-height: 44px; }
+  html.nova9 .werkbalk { padding: 10px 12px 10px; }
+  html.nova9 .werkbalk > .werkbalk-onder { padding-bottom: 8px; }
+  html.nova9 .werkbalk > .mobiel-balk { padding-top: 8px; gap: 8px; }
+  html.nova9 .werkbalk .mb-filter, html.nova9 .werkbalk .mb-sorteer { min-height: 44px; }
+  html.nova9 .werkbalk > .actief-filters { padding-top: 8px; }
+  html.nova9 .werkbalk > .mb-snel { margin-top: 8px; padding-top: 8px; }
+  html.nova9 .werkbalk > .mb-snel .chip { min-height: 36px; }
+}
+@media (hover: none) and (pointer: coarse) and (max-width: 759px) { html.nova9 .werkbalk > .mb-snel .chip { min-height: 40px; } }
 /* ===== einde NOVA-009 ===== */
