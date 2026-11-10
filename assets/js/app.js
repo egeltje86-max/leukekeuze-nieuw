@@ -1297,6 +1297,7 @@
       var top = [], gehad = {};
       for (var r = 0; top.length < 60 && r < 12; r++) perVak.forEach(function (l) { var t = 0; while (t < l.length && gehad[l[t].id]) t++; var p = l[t]; if (p && top.length < 60) { gehad[p.id] = 1; top.push(p); l.splice(0, t + 1); } });
       lijst = afwisselen(top, 60).concat(basis.filter(function (p) { return !gehad[p.id]; })).concat(lijst.filter(function (p) { return inSel[p.id]; }));
+      lijst = apartEerst(lijst, pad); /* 10-11-2026: ook na het om-en-om mixen de aparte cadeaus eerst */
     }
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
 
@@ -1476,6 +1477,7 @@
     if (!q.sort || q.sort === 'aanbevolen') {
       var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
       lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
+      if (!g.korting && !g.codes) lijst = apartEerst(lijst, pad); /* 10-11-2026: ook na het afwisselen de aparte cadeaus eerst */
     }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({

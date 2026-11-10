@@ -917,6 +917,8 @@ window.LK_PERSOON = function (slug) { return (window.LK_PERSONEN || []).find(fun
 /* Check-up 01-11-2026: vakje 'Boekenbonnen & abonnementen' heeft nog geen producten -> verbergen tot er iets in staat (anders een lege pagina). */
 (function () { var c = window.LK_CAT('boeken-media'); if (c) (c.subs || []).forEach(function (s) { if (s.slug === 'boekenbonnen-abonnementen') s.verborgen = true; }); })();
 window.LK_KNOPSETS = {
+  /* 10-11-2026 (opdracht Marius): adventskalenders ingedeeld in soorten (tags komen uit scripts/boom/correcties.json > tagErbij). */
+  adventsoort: { param: 'kal', titel: 'Wat voor kalender?', opties: [['apart', 'Bijzonder & grappig', { tag: 'advent-apart' }], ['geur', 'Geuren & beauty', { tag: 'advent-geur' }], ['choco', 'Chocolade & snoep', { tag: 'advent-choco' }], ['drank', 'Thee, bier & drank', { tag: 'advent-drink' }], ['kind', 'Voor kinderen', { tag: 'advent-kind' }], ['vullen', 'Zelf vullen', { tag: 'advent-vullen' }]] },
   wie3: { param: 'wie', titel: 'Voor wie', opties: [['dames', 'Dames', { labels: ['haar'] }], ['heren', 'Heren', { labels: ['hem'] }], ['kinderen', 'Kinderen', { labels: ['kind', 'kinderen', 'baby'] }]] },
   wie2: { param: 'wie', titel: 'Voor wie', opties: [['dames', 'Dames', { labels: ['haar'] }], ['heren', 'Heren', { labels: ['hem'] }]] },
   /* 9-11-2026 (GO Marius): Smartwatches. Zelfde als wie3, maar op de telefoon staat dit rijtje meteen in beeld (niet alleen achter 'Filteren'). */
@@ -1033,7 +1035,7 @@ window.LK_COLLECTIES = [
     tekst: 'Bijzondere, verrassende cadeaus die niet iedereen al heeft.', uit: LK_GEEN_FEEST, vakken: ['tag:origineel', 'cadeaus/grappig'] },
   /* Adventskalenders (6-11-2026, GO Marius): 33.100 zoekopdrachten per maand. Alle kalenders met tag 'advent', van beauty tot LEGO en chocolade. */
   { slug: 'adventskalenders', naam: 'Adventskalenders', kicker: 'Aftellen tot kerst', beeld: 'images/sub/sub-cadeaus-adventskalenders-2026b.webp', seoTitel: 'Adventskalender 2026 – voor vrouwen, mannen, kinderen en lekkerbekken',
-    tekst: 'Elke dag tot kerst een verrassing. Beauty-kalenders, LEGO en speelgoed, chocolade en snoep, thee, en kalenders voor mannen en volwassenen.', zoek: 'adventskalender adventskalenders aftelkalender advent kalender 2026', vakken: ['tag:advent'] },
+    tekst: 'Elke dag tot kerst een verrassing. Bovenaan de bijzondere en grappige kalenders: whisky, bier, sokken, een modelauto bouwen of iets voor de hond. Daaronder geuren en beauty, chocolade, thee en speelgoed.', zoek: 'adventskalender adventskalenders aftelkalender advent kalender 2026', knoppen: ['adventsoort'], vakken: ['tag:advent'] },
   { slug: 'cadeaupakketten', naam: 'Cadeaupakketten & verwenpakketten', kicker: 'Mooi verpakt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Cadeaupakket en verwenpakket – mooi verpakte cadeaus',
     tekst: 'Lekkere pakketten, wellness- en verwensets: mooi verpakt en klaar om te geven.', vakken: ['tag:pakket', 'eten-drinken/kerst-cadeaupakketten', 'geuren-verzorging/cadeausets'] },
   { slug: 'grappige-cadeaus', naam: 'Grappige cadeaus', kicker: 'Om om te lachen', beeld: 'images/producten/cg-toilet-basketball.webp', seoTitel: 'Grappige cadeaus – leuke en gekke cadeaus om te lachen',
