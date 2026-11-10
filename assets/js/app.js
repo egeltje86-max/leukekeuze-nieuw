@@ -287,6 +287,9 @@
   /* NOVA-005 (9-11-2026, ontwerp Nova; GO 10-11-2026): zoeken, filters en navigatie. Voor iedereen aan; terug kan met window.LK_NOVA5 = false. */
   var NOVA5 = window.LK_NOVA5 !== false;
   if (NOVA5) document.documentElement.classList.add('nova5');
+  /* NOVA-006 (10-11-2026, ontwerp Nova): VONK, Lijstje en Sint-rijmmachine. Proefversie: alleen met ?proef=nova6 (blijft aan in dit tabblad). */
+  var NOVA6 = (function () { try { if (/[?&]proef=nova6(&|$)/.test(location.search)) sessionStorage.setItem('lknova6', '1'); return window.LK_NOVA6 === true || sessionStorage.getItem('lknova6') === '1'; } catch (e) { return window.LK_NOVA6 === true; } })();
+  if (NOVA6) document.documentElement.classList.add('nova6');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
@@ -4525,6 +4528,10 @@
     document.body.classList.toggle('nova4-overzicht', doelN4 && !d[1]);
     document.body.classList.toggle('nova4-voor', doelN4 && d[0] === 'voor');
     document.body.classList.toggle('nova4-gelegenheid', doelN4 && d[0] === 'gelegenheid');
+    document.body.classList.toggle('nova6-vonk', NOVA6 && d[0] === 'vonk'); /* NOVA-006: alleen uiterlijk */
+    document.body.classList.toggle('nova6-favorieten', NOVA6 && d[0] === 'favorieten');
+    document.body.classList.toggle('nova6-gedeeld', NOVA6 && d[0] === 'lijst');
+    document.body.classList.toggle('nova6-rijm', NOVA6 && d[0] === 'sint-rijmmachine');
     document.body.classList.toggle('rijm-focus', d[0] === 'sint-rijmmachine'); /* Sint-rijmmachine: geen onderbalk over formulier en gedicht */
     /* Witte zoekbalk onder de kop: overal zichtbaar, behalve op de zoekpagina (die heeft er zelf al een). */
     var zr = $('[data-zoekrij]');

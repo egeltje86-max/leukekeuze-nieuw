@@ -1811,3 +1811,50 @@ html.nova5 .onderbalk button:focus-visible { outline: 2px solid #F8D88B; outline
   html.nova5 .onderbalk a,
   html.nova5 .onderbalk button { transition: none; }
 }
+
+/* ===== NOVA-006 (10-11-2026, ontwerp Nova): VONK, Lijstje en Sint-rijmmachine. Alleen binnen html.nova6 + paginaclass (proef: ?proef=nova6). ===== */
+html.nova6 body.nova6-vonk .vonk-vraag {
+  padding:18px 16px 20px; border:1px solid #E6D8C1; border-radius:20px;
+  background:linear-gradient(180deg,#fff,#FFFCF7); box-shadow:0 4px 16px rgba(20,26,42,.065);
+}
+html.nova6 body.nova6-vonk .vonk-vraag h2 { color:#141A2A; font-weight:600; line-height:1.2; }
+html.nova6 body.nova6-vonk .vonk-vraag .keuzes { gap:10px; }
+html.nova6 body.nova6-vonk .vonk-vraag .keuze {
+  min-height:52px; border:1px solid #E2D3B9; border-radius:14px;
+  background:linear-gradient(180deg,#fff,#FBF5E9); color:#141A2A;
+  font:700 16px/1.3 var(--f-ui,Manrope,sans-serif); text-decoration:none;
+  box-shadow:0 2px 8px rgba(20,26,42,.05);
+}
+html.nova6 body.nova6-vonk .vonk-vraag .keuze:focus-visible { outline:3px solid #186D92; outline-offset:2px; }
+html.nova6 body.nova6-vonk .vonk-stapjes span { height:6px; border-radius:999px; }
+html.nova6 body.nova6-vonk .vonk-terug,
+html.nova6 body.nova6-vonk .vonk-aanpassen { min-height:44px; }
+html.nova6 body.nova6-vonk .vonk-waarom { font-size:16px; line-height:1.4; }
+html.nova6 body.nova6-favorieten .lijst-deel {
+  border:1px solid #DCC69E; border-radius:20px; background:linear-gradient(180deg,#fff,#FFFCF7);
+  box-shadow:0 5px 18px rgba(20,26,42,.065); padding:18px;
+}
+html.nova6 body.nova6-favorieten .lijst-deel-tekst { font-size:16px; line-height:1.5; }
+html.nova6 body.nova6-favorieten .lijst-deel-tekst strong { font:600 25px/1.2 var(--f-kop,Georgia,serif); color:#141A2A; }
+html.nova6 body.nova6-favorieten .lijst-deel-velden label { font-size:16px; color:#141A2A; }
+html.nova6 body.nova6-favorieten .lijst-deel-velden input,
+html.nova6 body.nova6-favorieten .lijst-deel-velden select { min-height:48px; font-size:16px; border:1px solid #DCCBAD; border-radius:12px; }
+html.nova6 body.nova6-favorieten .lijst-deel-knoppen .knop { min-height:48px; font-size:16px; }
+html.nova6 body.nova6-gedeeld .cadeaukaart {
+  border:1px solid #E6D9C3; background:#fff; border-radius:18px;
+  box-shadow:0 3px 13px rgba(20,26,42,.065);
+}
+html.nova6 body.nova6-gedeeld .cadeaukaart h3 { font-size:16px; line-height:1.35; }
+html.nova6 body.nova6-gedeeld .cadeaukaart .prijs { font-size:18px; }
+html.nova6 body.nova6-gedeeld .cadeaukaart .geef { min-height:48px; font-size:16px; }
+html.nova6 body.nova6-gedeeld .cadeaukaart .beeld img { filter:none; mix-blend-mode:normal; }
+html.nova6 body.nova6-rijm .rijm-z .rz-veld>label,
+html.nova6 body.nova6-rijm .rijm-z .rz-veld legend { font-size:16px; line-height:1.35; }
+html.nova6 body.nova6-rijm .rijm-z .rz-keuzes label { min-height:44px; font-size:16px; }
+html.nova6 body.nova6-rijm .rijm-z .rz-gedicht .rz-tekst { font-size:16px; line-height:1.65; }
+html.nova6 body.nova6-rijm .rijm-z .rz-knop { min-height:48px; }
+@media(max-width:359px){
+  html.nova6 body.nova6-vonk .vonk-vraag { padding:14px 11px 16px; }
+  html.nova6 body.nova6-favorieten .lijst-deel { padding:14px 12px; }
+}
+
