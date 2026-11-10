@@ -171,7 +171,19 @@
   function apartEerst(l, sleutel) {
     if (!sleutel || APART_NIET[sleutel]) return l;
     var a = [], r = []; l.forEach(function (p) { (isApart(p) ? a : r).push(p); });
-    return a.length && r.length ? a.concat(r) : l;
+    if (!a.length || !r.length) return l;
+    /* 10-11-2026 (Marius: 'ik zie alleen maar bruisballen'): de aparte cadeaus bovenaan wel gemengd. Per soort (vakje) hooguit 2
+       in het bovenste blok, om en om; het blok is 6 tot 12 cadeaus. De rest staat daarna in de gewone volgorde. */
+    var per = {}, volg = [];
+    /* Brede pagina (aparte cadeaus uit 3+ groepen, zoals Parfum & verzorging)? Dan per groep hooguit 1, zodat er niet 3 badspullen bovenaan staan. */
+    var gr = {}; a.forEach(function (p) { gr[p.afd + '/' + p.groep] = 1; });
+    var perGroep = Object.keys(gr).length >= 3;
+    a.forEach(function (p) { var k = perGroep ? p.afd + '/' + p.groep : (p.vak || p.sub || ''); if (!per[k]) { per[k] = []; volg.push(k); } per[k].push(p); });
+    var max = Math.max(6, Math.min(12, Math.round(l.length * 0.15))), top = [], gezien = {};
+    for (var ronde = 0; ronde < (perGroep ? 1 : 2) && top.length < max; ronde++) {
+      volg.forEach(function (k) { var p = per[k][ronde]; if (p && top.length < max) { top.push(p); gezien[p.id] = 1; } });
+    }
+    return top.concat(l.filter(function (p) { return !gezien[p.id]; }));
   }
   function sorteer(lijst, hoe, sleutel) {
     var l = lijst.slice();
@@ -583,7 +595,10 @@
     var tel = function (f) { var t = {}; basis.forEach(function (p) { var k = f(p); if (k) t[k] = (t[k] || 0) + 1; }); return t; };
     var afd = tel(function (p) { return p.afd; }), grp = tel(function (p) { return p.afd + '/' + p.groep; });
     var vol = function (t) { return Object.keys(t).filter(function (k) { return t[k] >= MIN_KNOP; }); };
-    var laag = vol(afd).length >= 2 ? 'afd' : vol(grp).length >= 2 ? 'groep' : 'vak';
+    /* 10-11-2026 (Marius: 'bij filter zie je nergens parfum'): zit bijna alles (85%+) in één afdeling of groep, dan is die laag zinloos
+       (Beauty 348 tegen Wonen 3) en tonen we meteen de laag eronder: Parfum, Giftsets, Haar, Make-up ... */
+    var breed = function (t) { var v = vol(t), som = 0, max = 0; Object.keys(t).forEach(function (k) { som += t[k]; if (t[k] > max) max = t[k]; }); return v.length >= 2 && max < som * 0.85; };
+    var laag = breed(afd) ? 'afd' : vol(grp).length >= 2 && breed(grp) ? 'groep' : 'vak';
     var groepen = laag === 'afd' ? vol(afd).map(function (k) { return { id: k, naam: AFDNAAM[k] || k }; })
       : laag === 'groep' ? vol(grp).map(function (k) { return { id: k, naam: GROEPNAAM[k] || k }; }) : [];
     return { laag: laag, groepen: groepen };

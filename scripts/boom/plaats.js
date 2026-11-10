@@ -46,6 +46,7 @@ function plaats(p) {
     if (ni.indexOf(p.cat + '/' + p.sub) !== -1 && p.afd) { p.cat = p.afd; p.sub = p.groep; }
   }
   if (v && v[0] === 'christelijk') p.cat = 'christelijk'; /* christelijk alleen bij Christelijk (regel Marius) */
+  if (p.cat === 'geuren-verzorging' && p.afd && p.afd !== 'beauty-verzorging') { p.cat = p.afd; p.sub = p.groep; } /* 10-11-2026: een oud vakje Geuren & verzorging mag geen koekjes, servies of speelgoed op de parfumpagina's zetten */
   /* Budgetbelofte (8-11-2026, Fable-opdracht P0): een vak dat 'onder €X' belooft mag geen duurder product laten zien.
      Het product blijft gewoon op de site in zijn eigen vakje; alleen het budgetvakje valt weg. Uitdeelverpakkingen (per stuk goedkoop) mogen blijven. */
   const BUDGET = { 'cadeaus/onder-15': 15, 'cadeaus/sint-onder-15': 15, 'cadeaus/onder-10': 10, 'cadeaus/sint-onder-10': 10, 'christelijk/onder-25': 25 };
