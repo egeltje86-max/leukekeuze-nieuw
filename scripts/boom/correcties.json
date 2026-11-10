@@ -1,5 +1,5 @@
 {
- "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak. 8-11-2026 (go Marius, keuze 1B): Dameshorloges vervangen door 36 horloges die Marius in de Superkeurkamer koos (van-prijs zoals de winkel hem geeft). De oude dameshorloges zijn afgekeurd (ze sturen door naar hun vakje); bijzondere oude blijven: Fossil ringhorloge naar Ringen, Invicta-horloge aan ketting naar Kettingen, Casio Vintage (unisex) naar Herenhorloges. Casio A168 van bol was dubbel met cl-casio-a168. 8-11-2026 (go Marius, keuze B): Herenhorloges vervangen door de horloges die Marius in de Superkeurkamer koos (4 dameshorloges uit die lijst naar Dameshorloges; van-prijs zoals de winkel hem geeft). Oude herenhorloges afgekeurd (doorverwijzing), behalve de klassiekers Casio Vintage, F-91W, G-Shock DW-5600 en Seiko 5. cl-gshock-5600 was dubbel met bol-9300000176286400. Burlington sokken naar Sokken. 9-11-2026 piloot: Furby knuffel luipaard (superz-1c2726b315) nu 9,00 van 19,00 (in de winkel gecontroleerd). Horlogedoos, bbq-schort, puzzel Amsterdam, Teufel en stroopwafels: feedprijs was fout, winkelprijs = siteprijs, niets veranderd. Piloot 2026-11-09: 15 producten erbij (piloot). 9-11-2026 (go Marius): Smartwatches: zijn keuze uit de Superkeurkamer erbij (10 goedkope no-name-watches en het speelgoedkassa-setje niet; modellen die al op de site stonden niet dubbel). Kinderhorloges zonder simkaart erbij (walkietalkie-horloges, KidiZoom, Ice-Watch, Accutime). Op Smartwatches knoppen Dames / Heren / Kinderen (wie3snel); drie kinderhorloges kregen het label kind. 9-11-2026 (go Marius): nieuwe afdeling Belevenissen met 138 belevenissen van Doenkado (Daisycon), in 7 groepen en 21 vakjes.",
+ "_uitleg": "Reparaties 5-11-2026 (GO Marius): partnerlinks, vakjes, dubbele producten, oude Google-adressen. Wordt bij elke bouw toegepast (plaats.js en maak-paginas.js). Ook: nieuw vakje Kerstbomen & kransen (wens Marius 5-11). Ook (5-11 middag): uitverkocht/niet meer in feed (status), prijzen uit de feeds van 4-11 (prijs), teksten (tekst), voor-wie (voorWeg). Nakijkbeurt 6-11-2026: 90 dubbele producten samengevoegd (labels gaan mee naar het product dat blijft), Svinando-links met partnercode. Ook (6-11): bol-controle met verse feeds (uitverkocht verborgen, prijzen bijgewerkt, veel duurder geworden weg op keuze van Marius). Ook (7-11): Bol eruit (opdracht Marius 7-11): bol-producten die ook bij een partner te koop zijn, linken nu naar die partner (zelfde product, ook als het duurder is). Staat dat partnerproduct al op de site, dan is het bol-product ermee samengevoegd. Herstel (7-11 avond): 75 producten waren per ongeluk met zichzelf samengevoegd (fout in de bol-vervangronde) en stonden daardoor niet meer op de site; ze staan er weer, met de partnerlink (LEGO, Coolblue, De Grote Speelgoedwinkel, 999 Games, Nedgame). Ook (7-11 avond): 20 producten die volgens de oude prijsregel naar bol gingen (999 Games, LEGO) linken weer naar de partner (regel Marius: partner gaat voor, ook als die duurder is); Haribo adventskalender: bol samengevoegd in Dropwinkel. Nazorg 8-11-2026: 64 prijzen bijgewerkt uit de verse feeds (bol, Awin/Coolblue, TradeTracker, Daisycon); 6 rare prijssprongen niet overgenomen. Kieslijst 8-11-2026: 109 partnercadeaus (door Marius aangetikt) erbij; Superhero Dinos-kleurboek van de site (naam van Marius op de cover, te privé). Kieslijst ronde 2 en Sint onder 15 (8-11-2026): 91 partnercadeaus (door Marius aangetikt) erbij. 8-11-2026: kieslijst ronde 3 (45 cadeaus: Black Friday-deals van partners met van-prijs uit de feed, en tienermeiden), en keurronde 1: 21 producten door Marius weggetikt (status afgekeurd). Kieslijst ronde 4 (8-11-2026): 73 partnercadeaus erbij. Keurronde 2 en 3 (8-11-2026): 52 producten door Marius weggetikt. Erbij-ronde 5 (8-11-2026): 19 partnercadeaus erbij. Keurronde 4 en 5 (8-11-2026): 38 producten door Marius weggetikt. 8-11-2026 (Fable P0-4): 19 keer \"klanten geven het een X uit 5\" omgezet naar \"Bij <winkel> beoordeeld met X uit 5 toen wij keken\" (bron erbij). Alle 87 \"nu in de aanbieding\"-zinnen uit de teksten gehaald: korting tonen we alleen via de echte van-prijs uit de feed. 8-11-2026 (Fable P1-8): 39 gewone spellen, boeken, mutsen en lampen uit Grappige cadeaus gehaald (nietIn); ze blijven in hun eigen vak. 8-11-2026 (go Marius, keuze 1B): Dameshorloges vervangen door 36 horloges die Marius in de Superkeurkamer koos (van-prijs zoals de winkel hem geeft). De oude dameshorloges zijn afgekeurd (ze sturen door naar hun vakje); bijzondere oude blijven: Fossil ringhorloge naar Ringen, Invicta-horloge aan ketting naar Kettingen, Casio Vintage (unisex) naar Herenhorloges. Casio A168 van bol was dubbel met cl-casio-a168. 8-11-2026 (go Marius, keuze B): Herenhorloges vervangen door de horloges die Marius in de Superkeurkamer koos (4 dameshorloges uit die lijst naar Dameshorloges; van-prijs zoals de winkel hem geeft). Oude herenhorloges afgekeurd (doorverwijzing), behalve de klassiekers Casio Vintage, F-91W, G-Shock DW-5600 en Seiko 5. cl-gshock-5600 was dubbel met bol-9300000176286400. Burlington sokken naar Sokken. 9-11-2026 piloot: Furby knuffel luipaard (superz-1c2726b315) nu 9,00 van 19,00 (in de winkel gecontroleerd). Horlogedoos, bbq-schort, puzzel Amsterdam, Teufel en stroopwafels: feedprijs was fout, winkelprijs = siteprijs, niets veranderd. Piloot 2026-11-09: 15 producten erbij (piloot). 9-11-2026 (go Marius): Smartwatches: zijn keuze uit de Superkeurkamer erbij (10 goedkope no-name-watches en het speelgoedkassa-setje niet; modellen die al op de site stonden niet dubbel). Kinderhorloges zonder simkaart erbij (walkietalkie-horloges, KidiZoom, Ice-Watch, Accutime). Op Smartwatches knoppen Dames / Heren / Kinderen (wie3snel); drie kinderhorloges kregen het label kind. 9-11-2026 (go Marius): nieuwe afdeling Belevenissen met 138 belevenissen van Doenkado (Daisycon), in 7 groepen en 21 vakjes. 10-11-2026 (go Marius): 108 grappige cadeaus onder 25 euro uit de partnerfeeds erbij (herkomst superkeurkamer, tag grappig), elk met een vast vakje.",
  "links": {
   "cl-mushie-bijtring": {
    "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=d433905b6703e1731a93da1485c987a1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904914042807975830776970%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fpretzel-en-25muh71316.html%253Fsimple%253DDEQ25MUH71316-135638&ws=",
@@ -20690,6 +20690,546 @@
    "belevenissen",
    "dagjes-uit-overnachten",
    "nog-meer-uitjes"
+  ],
+  "mega-7e8123c9c5": [
+   "eten-drinken",
+   "drankaccessoires",
+   "wijnaccessoires"
+  ],
+  "mega-b82ccca4fb": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "surpr-7abb2edc5a": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "mega-61c7f57c1c": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "mega-de65539d2c": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "dvzn-318b8bdf4d": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "kadove-274cfdc2ee": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "mega-b9f21c5d70": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "mega-3b48f291f3": [
+   "wonen",
+   "woondecoratie",
+   "klokken"
+  ],
+  "cg-491cafc1c7": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cg-a1414be062": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "kadove-f8649b6c1b": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "cg-b5a3d1657b": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cadeau-d3697997b2": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "kadove-627f92fa7c": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "surpr-bc78b0ec78": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "cadeau-9ef5eb52bb": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "dvzn-9fa96c0cc6": [
+   "eten-drinken",
+   "drankaccessoires",
+   "wijnaccessoires"
+  ],
+  "cg-bc98fb08a2": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cg-93b0a832d0": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-89115dea40": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "cg-199d3f02fa": [
+   "eten-drinken",
+   "drankaccessoires",
+   "glazen-karaffen"
+  ],
+  "cg-f41fe38476": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "mega-afda647e36": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "mega-30ae5e417a": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-9c84549f8c": [
+   "speelgoed",
+   "spellen",
+   "kaart-dobbelspellen"
+  ],
+  "cg-d2e7f8a4b8": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-58068de5fa": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-48bcf6ed40": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "grotek-6f48819021": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "mega-17628b67f2": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-db7d0c2f45": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-7557bb78c3": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "cg-57a56fb762": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-c472f3ec05": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cg-e7526c91a8": [
+   "sport-outdoor",
+   "balsport-spel",
+   "golf"
+  ],
+  "grotek-32bd78a6c3": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "cg-1b56c4d8b5": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "cg-06973d8b67": [
+   "speelgoed",
+   "rollenspel-verkleden",
+   "verkleedkleding"
+  ],
+  "mega-e8e68c2656": [
+   "mode-sieraden",
+   "kleding",
+   "sokken"
+  ],
+  "mega-322134bc0a": [
+   "sport-outdoor",
+   "balsport-spel",
+   "tafelvoetbal-tafeltennis"
+  ],
+  "grotek-f288431def": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "mega-b003aa5c08": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "dvzn-22f0aff1dc": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "mega-279aa01d45": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "mega-82a0578185": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "mega-bd127c7946": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "cg-913caa57b8": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-6ca65cead2": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "kadove-a3d6a89d48": [
+   "mode-sieraden",
+   "accessoires",
+   "riemen-petten"
+  ],
+  "dvzn-52168e65a7": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "grotek-a5294a2680": [
+   "boeken-media",
+   "boeken",
+   "non-fictie-hobby"
+  ],
+  "mega-286c7cb191": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-b2176baf5e": [
+   "speelgoed",
+   "spellen",
+   "escape-room-breinbrekers"
+  ],
+  "grotek-d4f484fe0b": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-e21245f3e6": [
+   "tuin-klussen",
+   "tuin-planten",
+   "planten-potten"
+  ],
+  "cg-475e43592a": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cg-577551e3e4": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "mega-bf00b5ced4": [
+   "tuin-klussen",
+   "tuin-planten",
+   "planten-potten"
+  ],
+  "cg-9db664dff7": [
+   "speelgoed",
+   "spellen",
+   "kaart-dobbelspellen"
+  ],
+  "grotek-b9c2122537": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-b8bc4c15c3": [
+   "wonen",
+   "woondecoratie",
+   "vazen"
+  ],
+  "grotek-c03df60d33": [
+   "tuin-klussen",
+   "tuin-planten",
+   "planten-potten"
+  ],
+  "mega-25d20c7dee": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-ea58feeb4b": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "cg-ec3f1d535d": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "kadove-b9de9a96c8": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "mega-9d25e0411f": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "kadove-4d24f8364b": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "mega-a6823ad51f": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "kadove-c141091798": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-f5ed4dbeb8": [
+   "hobby",
+   "papier-planners",
+   "notitieboeken"
+  ],
+  "surpr-33e82ea133": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "mega-c427807462": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-ce796768ef": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dvzn-5c1606b166": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "dvzn-0b532e0274": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-5216d81731": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "mega-1805a674f0": [
+   "wonen",
+   "woondecoratie",
+   "beelden-decoratie"
+  ],
+  "mega-5ac09e768f": [
+   "wonen",
+   "woondecoratie",
+   "klokken"
+  ],
+  "grotek-2a1ce0cae3": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-6ffb4e744f": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-d0e947b38d": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "grotek-105094ae86": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-7fbf7836d1": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-4e2da12471": [
+   "hobby",
+   "papier-planners",
+   "notitieboeken"
+  ],
+  "mega-f463dc48a8": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "dvzn-4c3a0fc08b": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "cg-4f3ddf43bd": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "grotek-4ccd4ebb0d": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "mega-e2312c9f50": [
+   "mode-sieraden",
+   "schoenen-sloffen",
+   "pantoffels-sloffen"
+  ],
+  "grotek-06d772daef": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-20b8011546": [
+   "elektronica",
+   "gadgets",
+   "handige-gadgets"
+  ],
+  "cg-487881e9eb": [
+   "dieren",
+   "kat",
+   "krabpalen-manden"
+  ],
+  "grotek-a5dbba685c": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-bf50bef78c": [
+   "tuin-klussen",
+   "tuin-planten",
+   "planten-potten"
+  ],
+  "mega-4b8ceed670": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "mega-87f4cfd2a9": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "kadove-858cf75653": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-9c3f31b455": [
+   "speelgoed",
+   "spellen",
+   "kaart-dobbelspellen"
+  ],
+  "mega-cf15325c3b": [
+   "sport-outdoor",
+   "balsport-spel",
+   "golf"
+  ],
+  "cg-a421e2f9e5": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "dvzn-683fabb664": [
+   "wonen",
+   "koffie-thee-zetten",
+   "mokken-theeglazen"
+  ],
+  "grotek-8759ffa74e": [
+   "elektronica",
+   "gadgets",
+   "fun-retro-gadgets"
+  ],
+  "grotek-56509f4daf": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "grotek-aa80412d2a": [
+   "speelgoed",
+   "spellen",
+   "partyspellen"
+  ],
+  "grotek-cec9bf01eb": [
+   "speelgoed",
+   "spellen",
+   "kaart-dobbelspellen"
+  ],
+  "grotek-d04d9132c8": [
+   "speelgoed",
+   "spellen",
+   "kaart-dobbelspellen"
   ]
  },
  "samen": {
