@@ -1944,7 +1944,7 @@ html.nova7 .footer-yara { border-top-color:rgba(217,168,72,.20); }
 .winkel-logo[hidden], .winkel-letter[hidden] { display: none !important; }
 
 /* ===== NOVA-009 (10-11-2026, opdracht Nova, 3 punten): mobiele filterbalk, rustige onderwerpkaarten, consequente knoppen en badges.
-   UITSLUITEND visueel. Alleen binnen html.nova9 (proef: ?proef=nova9, blijft aan in dit tabblad). Wacht op GO van Marius. ===== */
+   UITSLUITEND visueel. Alleen binnen html.nova9. Live sinds 10-11-2026 (GO Marius). ===== */
 
 /* --- 1. Mobiele filterbalk: boven aantal + Verras me, onder Sorteren | Filteren, dan het snelle rijtje --- */
 @media (max-width: 759px) {
