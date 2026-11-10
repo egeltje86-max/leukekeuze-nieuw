@@ -163,9 +163,19 @@
     top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
     return top.concat(mix(rest));
   }
+  /* 10-11-2026 (opdracht Marius): bezoekers willen eerst de aparte, grappige, bijzondere en unieke cadeaus zien, daaronder de bekende.
+     Dus op elke pagina met 'Aanbevolen' eerst alles wat apart is (soort 'origineel' of grappig, plus de met de hand gekozen pareltjes met tag 'apart'),
+     daaronder de rest. Binnen beide groepen blijft de volgorde zoals hij was (toppers eerst, daarna gemixt). Niet bij de deals-pagina's. */
+  var APART_NIET = { '/collectie/black-friday': 1, '/collectie/aanbiedingen': 1, '/collectie/kortingscodes': 1 };
+  function isApart(p) { return (p.soort && p.soort.indexOf('origineel') !== -1) || (p.tags && (p.tags.indexOf('grappig') !== -1 || p.tags.indexOf('apart') !== -1)) || (p.ookIn && p.ookIn.indexOf('cadeaus/grappig') !== -1); }
+  function apartEerst(l, sleutel) {
+    if (!sleutel || APART_NIET[sleutel]) return l;
+    var a = [], r = []; l.forEach(function (p) { (isApart(p) ? a : r).push(p); });
+    return a.length && r.length ? a.concat(r) : l;
+  }
   function sorteer(lijst, hoe, sleutel) {
     var l = lijst.slice();
-    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); if (m) return m; }
+    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return apartEerst(m || mix(l), sleutel); }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
