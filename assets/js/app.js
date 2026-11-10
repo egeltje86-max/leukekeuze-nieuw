@@ -185,9 +185,64 @@
     }
     return top.concat(l.filter(function (p) { return !gezien[p.id]; }));
   }
+  /* 10-11-2026 (opdracht Marius, scripts/FABLE-OPDRACHT-PAGINAS.md): de heldenrij. Het eerste telefoonscherm toont 4 tot 6 kaarten;
+     wat daar staat beslist of iemand blijft. De eerste zes plekken krijgen daarom elk een eigen taak, gekozen uit de beste 60 van de pagina
+     (de toppers uit topkeuze.js staan daar al vooraan, die blijven dus voorgaan):
+       1 wow (apart of eigen keuze) · 2 herkenning (bekend merk of bestseller, middenprijs) · 3 makkelijke ja (onder €15)
+       4 anker (het duurdere topstuk, maakt de rest redelijk) · 5 persoonlijk of grappig · 6 echte korting (of iets nieuws).
+     Nooit twee van hetzelfde vakje in een rij van zes, liefst zes verschillende winkels en groepen. Eerlijk: geen nep-labels, korting alleen met echte van-prijs.
+     Eerst als proef: ?proef=volgorde (of window.LK_VOLGORDE = true). Staat hij uit, dan geldt apartEerst() zoals voorheen. */
+  var VOLGORDE = (function () { try { if (/[?&]proef=volgorde(&|$)/.test(location.search)) sessionStorage.setItem('lkvolgorde', '1'); if (/[?&]proef=volgorde-uit(&|$)/.test(location.search)) sessionStorage.removeItem('lkvolgorde'); return window.LK_VOLGORDE === true || sessionStorage.getItem('lkvolgorde') === '1'; } catch (e) { return window.LK_VOLGORDE === true; } })();
+  var BEKEND = /\b(lego|duplo|rituals|dyson|philips|casio|seiko|apple|sony|jbl|nintendo|playmobil|pok[eé]mon|barbie|ravensburger|tony'?s|lindt|nike|adidas|samsung|bose|garmin|swarovski|pandora|fossil|tommy hilfiger|calvin klein|hugo boss|paco rabanne|carolina herrera|yankee candle|woodwick|riviera maison|stanley|smeg|nespresso|le creuset|bosch|makita|999 games|squishmallows?|paw patrol|disney|star wars|marvel|hot wheels|gravitrax|little dutch|nijntje|douwe egberts|pickwick|dopper|victorinox|leatherman|weber|fj[aä]llr[aä]ven|eastpak|guess|michael kors|g-shock|oral-b|sonicare|theragun|ghd|babyliss|lacoste|versace|armani|jean paul gaultier|lanc[oô]me|marc jacobs|bluey|minecraft|harry potter|monopoly|rummikub|jellycat|hema|blond amsterdam|pip studio|villeroy|iittala|marshall|sonos|kobo|fitbit|polaroid|instax|stabilo|moleskine|leuchtturm|target|winmau|unicorn)\b/i;
+  var PERSOONLIJK = /met (je |eigen )?(naam|foto|tekst)|gegraveerd|graveren|gepersonaliseerd|personaliseer|eigen foto|initiaal|geboortebloem|sterrenbeeld/i;
+  function heldenrij(l, sleutel) {
+    if (!sleutel || APART_NIET[sleutel] || l.length < 12) return apartEerst(l, sleutel);
+    var collega = /^\/voor\/collega/.test(sleutel), kind = /^\/voor\/(kinderen|baby)/.test(sleutel);
+    var prijzen = l.map(function (p) { return p.prijs; }).filter(function (x) { return typeof x === 'number'; }).sort(function (a, b) { return a - b; });
+    var p80 = prijzen.length ? prijzen[Math.floor(prijzen.length * 0.8)] : 60, med = prijzen.length ? prijzen[prijzen.length >> 1] : 25;
+    var p95 = prijzen.length ? prijzen[Math.floor(prijzen.length * 0.95)] : 150;
+    var jaMax = collega ? 10 : 15, ankerMin = Math.max(p80, med * 1.6), ankerMax = collega ? 35 : Math.max(p95, ankerMin * 1.5); /* het anker is duur, maar niet het allerduurste van de pagina */
+    var bekend = function (p) { return p.populair || BEKEND.test((p.merk || '') + ' ' + p.titel); };
+    var TAKEN = [
+      function (p) { return isApart(p); },                                                                             /* 1 wow: apart, grappig of 'wist je dat dit bestond?' */
+      function (p) { return bekend(p) && p.prijs >= jaMax && p.prijs < ankerMin; },                                    /* 2 herkenning */
+      function (p) { return p.prijs < jaMax; },                                                                        /* 3 makkelijke ja */
+      function (p) { return p.prijs >= ankerMin && p.prijs <= ankerMax; },                                             /* 4 anker */
+      function (p) { return kind ? (p.tags && p.tags.indexOf('grappig') !== -1) || isApart(p) : PERSOONLIJK.test(p.titel) || /met-naam|persoonlijk/.test(p.vak || '') || isApart(p); }, /* 5 persoonlijk, grappig of apart */
+      function (p) { return kortingPct(p) >= 15 || isApart(p) || p.favoriet; }                                         /* 6 echte korting, anders nog iets aparts of een eigen keuze */
+    ];
+    /* 10-11-2026 (Marius: 'na de 6 moet het zich herhalen en herhalen, zodat dat gevoel steeds terugkomt'): elk volgend blok van zes
+       krijgt dezelfde zes taken, telkens gekozen uit de beste 60 die nog over zijn. Tot 40 blokken (240 cadeaus); daarna de gewone volgorde. */
+    var rest = l.slice(), uit = [], vorigeWinkel = '';
+    for (var blokNr = 0; blokNr < 40 && rest.length >= 6; blokNr++) {
+      var kand = rest.slice(0, 60), blok = [], vakken = {}, winkels = {}, groepen = {};
+      var breed = (function () { var g = {}; kand.forEach(function (p) { g[p.afd + '/' + p.groep] = 1; }); return Object.keys(g).length >= 4; })();
+      var vrij = function (p, streng) {
+        if (blok.indexOf(p) !== -1 || !p.beeld || vakken[p.vak || p.sub]) return false;
+        if (streng && (winkels[p.shop] || (breed && groepen[p.afd + '/' + p.groep]))) return false;
+        return true;
+      };
+      for (var t = 0; t < TAKEN.length; t++) {
+        var p = null, i;
+        for (i = 0; i < kand.length && !p; i++) if (vrij(kand[i], true) && TAKEN[t](kand[i])) p = kand[i];
+        for (i = 0; i < kand.length && !p; i++) if (vrij(kand[i], false) && TAKEN[t](kand[i])) p = kand[i];
+        for (i = 0; i < kand.length && !p; i++) if (vrij(kand[i], true)) p = kand[i];     /* niemand voor deze taak: de volgende beste */
+        for (i = 0; i < kand.length && !p; i++) if (vrij(kand[i], false)) p = kand[i];
+        if (!p) for (i = 0; i < kand.length && !p; i++) if (blok.indexOf(kand[i]) === -1) p = kand[i];
+        if (!p) break;
+        blok.push(p); vakken[p.vak || p.sub] = 1; winkels[p.shop] = 1; groepen[p.afd + '/' + p.groep] = 1;
+      }
+      var inBlok = {}; blok.forEach(function (x) { inBlok[x.id] = 1; });
+      rest = rest.filter(function (x) { return !inBlok[x.id]; });
+      uit = uit.concat(blok);
+    }
+    return uit.concat(rest);
+  }
+  /* Wat bovenaan komt: de heldenrij (proef) of, zolang die uit staat, de aparte cadeaus eerst. */
+  function bovenaan(l, sleutel) { return VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel); }
   function sorteer(lijst, hoe, sleutel) {
     var l = lijst.slice();
-    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return apartEerst(m || mix(l), sleutel); }
+    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return bovenaan(m || mix(l), sleutel); }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
@@ -1240,8 +1295,12 @@
 
   /* ---------- 2.0 PROEF: persoon (Voor hem, Voor haar …) met eigen subcategorieën ---------- */
   function persoonProducten(pe, vakken) {
+    /* 10-11-2026 (paginaregels): een product dat niet op dit onderwerp hoort (p.nietOp) of een los onderdeel is (p.los) staat hier niet. */
+    var sub = vakken && pe.subs ? pe.subs.filter(function (x) { return x.vakken === vakken; })[0] : null;
+    var sleutel = sub ? 'voor/' + pe.slug + '/' + sub.slug : '';
     return LK.zichtbaar().filter(function (p) {
-      if (p.cat === 'christelijk') return false;
+      if (p.cat === 'christelijk' || p.los) return false;
+      if (sleutel && p.nietOp && p.nietOp.indexOf(sleutel) !== -1) return false;
       var vanPersoon = (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) ||
         (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
       if (!vanPersoon) return false;
@@ -1315,7 +1374,7 @@
       var top = [], gehad = {};
       for (var r = 0; top.length < 60 && r < 12; r++) perVak.forEach(function (l) { var t = 0; while (t < l.length && gehad[l[t].id]) t++; var p = l[t]; if (p && top.length < 60) { gehad[p.id] = 1; top.push(p); l.splice(0, t + 1); } });
       lijst = afwisselen(top, 60).concat(basis.filter(function (p) { return !gehad[p.id]; })).concat(lijst.filter(function (p) { return inSel[p.id]; }));
-      lijst = apartEerst(lijst, pad); /* 10-11-2026: ook na het om-en-om mixen de aparte cadeaus eerst */
+      lijst = bovenaan(lijst, pad); /* 10-11-2026: ook na het om-en-om mixen de aparte cadeaus eerst (of de heldenrij) */
     }
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
 
@@ -1345,7 +1404,7 @@
   /* 2.0 PROEF: samengestelde pagina (gelegenheid of collectie): labels + vakken + evt. maximale prijs. */
   function verzamelLijst(g) {
     return LK.zichtbaar().filter(function (p) {
-      if (p.cat === 'christelijk') return false;
+      if (p.cat === 'christelijk' || p.los) return false; /* p.los: losse onderdelen niet op cadeaupagina's (paginaregels, 10-11-2026) */
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
@@ -1495,7 +1554,7 @@
     if (!q.sort || q.sort === 'aanbevolen') {
       var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
       lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
-      if (!g.korting && !g.codes) lijst = apartEerst(lijst, pad); /* 10-11-2026: ook na het afwisselen de aparte cadeaus eerst */
+      if (!g.korting && !g.codes) lijst = bovenaan(lijst, pad); /* 10-11-2026: ook na het afwisselen de aparte cadeaus eerst (of de heldenrij) */
     }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({

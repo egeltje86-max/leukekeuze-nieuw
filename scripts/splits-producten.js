@@ -54,6 +54,9 @@ function splits() {
       for (const x of p[veld]) if (lijst.indexOf(x) === -1 && !(veld === 'voor' && weg.indexOf(x) !== -1) && !(veld === 'ookIn' && x === doel.cat + '/' + doel.sub)) lijst.push(x);
     }
   }
+  /* 10-11-2026: paginaregels (geen verkeerde producten op een pagina), zie scripts/boom/paginaregels.js */
+  const prTel = require('./boom/paginaregels.js').pas(alle, ROOT);
+  console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp);
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];

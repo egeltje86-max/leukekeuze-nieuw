@@ -1,0 +1,586 @@
+{
+ "_uitleg": "Paginaregels (10-11-2026, opdracht Marius: geen verkeerde producten meer op een pagina). Wordt toegepast door scripts/boom/paginaregels.js bij elke bouw en nagekeken door scripts/controle/paginas.js. sub: per Voor wie-onderwerp welke afdelingen (afd) en losse groepen (groep) erop mogen; een product van buiten mag alleen blijven als de titel bij het thema past (thema = regex). Zo n product verdwijnt alleen van dat onderwerp (veld nietOp), niet van de site. label_vak_niet: een vakje dat niet bij een doelgroep past haalt dat label weg (tenzij de titel bij behalve past). los: losse onderdelen en uitbreidingen staan niet op cadeaupagina s (Voor wie, gelegenheden, collecties), wel in hun eigen vakje. label_titel_niet: woorden in de titel die niet bij een doelgroep passen (binnen de genoemde afdelingen) halen dat label weg.",
+ "los": "\\b(uitbreidingsset|uitbreiding|navulling|navulset|navullingen|refill|vervangende|vervangings\\w*|reserveonderde\\w*|bouwplaat|grondplaat|opzetborstels?|borstelkop\\w*|extension|expansion)\\b",
+ "label_vak_niet": {
+  "haar": {
+   "vakken": [
+    "herenparfum",
+    "herenhorloges",
+    "giftsets-voor-hem",
+    "baardverzorging"
+   ],
+   "behalve": "unisex|ck one|oud wood|tobacco vanille|casio vintage"
+  },
+  "hem": {
+   "vakken": [
+    "damesparfum",
+    "dameshorloges",
+    "giftsets-voor-haar",
+    "make-up",
+    "nagels",
+    "bedels",
+    "oorbellen"
+   ],
+   "behalve": "unisex|heren"
+  },
+  "kind": {
+   "vakken": [
+    "babygyms-activiteitenspeelgoed",
+    "rammelaars-bijtringen",
+    "lego-duplo",
+    "elektrische-steps"
+   ],
+   "behalve": ""
+  },
+  "tiener": {
+   "vakken": [
+    "kinderspellen",
+    "kinderpuzzels",
+    "voorleesboeken",
+    "prentenboeken",
+    "lego-duplo",
+    "rammelaars-bijtringen",
+    "babygyms-activiteitenspeelgoed",
+    "badspeelgoed",
+    "stapelen-sorteren",
+    "loopwagens-duwspeelgoed",
+    "babypoppen"
+   ],
+   "behalve": ""
+  },
+  "opa-oma": {
+   "vakken": [
+    "games",
+    "consoles",
+    "controllers-accessoires",
+    "gaming-headsets",
+    "gamestoelen",
+    "vr-brillen",
+    "squishmallows"
+   ],
+   "behalve": ""
+  }
+ },
+ "sub": {
+  "voor/hem/horloges-sieraden": {
+   "afd": [
+    "elektronica",
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "horloge|watch|sieraad|sieraden|ketting|armband|oorbel|\\bring"
+  },
+  "voor/hem/darts-sport": {
+   "afd": [
+    "sport-outdoor"
+   ],
+   "groep": [],
+   "thema": "dart|sport|fitness|hardloop|voetbal|padel|tennis|golf"
+  },
+  "voor/hem/zakmessen-gereedschap": {
+   "afd": [
+    "sport-outdoor",
+    "tuin-klussen"
+   ],
+   "groep": [
+    "sport-outdoor/noodpakket-survival"
+   ],
+   "thema": "zakmes|\\bmes\\b|multitool|gereedschap|tool"
+  },
+  "voor/hem/parfum-verzorging": {
+   "afd": [
+    "beauty-verzorging"
+   ],
+   "groep": [],
+   "thema": "parfum|eau de|geur|verzorging|douche|bad\\b|scrub|crème|creme"
+  },
+  "voor/hem/whisky-bier-drank": {
+   "afd": [
+    "eten-drinken"
+   ],
+   "groep": [],
+   "thema": "whisky|whiskey|bier|drank|gin|rum|cocktail|wijn"
+  },
+  "voor/hem/lego-spellen": {
+   "afd": [
+    "hobby",
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "lego|spel\\b|spellen|speelkaart"
+  },
+  "voor/hem/portemonnees-tassen": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "portemonnee|pasjeshouder|wallet|\\btas\\b|tassen|rugzak|shopper"
+  },
+  "voor/hem/pantoffels-kleding": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [
+    "sport-outdoor/wandelen-hardlopen"
+   ],
+   "thema": "pantoffel|slof|slipper|trui|hoodie|shirt|sokken|pyjama|badjas|vest|jas\\b"
+  },
+  "voor/hem/metaaldetectie": {
+   "afd": [
+    "sport-outdoor"
+   ],
+   "groep": [],
+   "thema": "metaaldetect|detector|pinpointer"
+  },
+  "voor/hem/gadgets-gaming": {
+   "afd": [
+    "elektronica"
+   ],
+   "groep": [],
+   "thema": "gadget|gaming|game|nintendo|mario|pok[eé]mon|playstation|zelda|animal crossing|minecraft|xbox|sonic|fortnite"
+  },
+  "voor/hem/bbq-lekkers": {
+   "afd": [
+    "eten-drinken",
+    "tuin-klussen"
+   ],
+   "groep": [],
+   "thema": "barbecue|bbq|grill|chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie"
+  },
+  "voor/hem/boeken-muziek": {
+   "afd": [
+    "boeken-media"
+   ],
+   "groep": [
+    "elektronica/tablets-e-readers",
+    "hobby/papier-planners"
+   ],
+   "thema": "boek|lees|muziek|vinyl|\\blp\\b|\\bcd\\b|radio"
+  },
+  "voor/hem/wonen-keuken": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [
+    "eten-drinken/drankaccessoires"
+   ],
+   "thema": "wonen|woon|decoratie|kussen|plaid|vaas|kaars|keuken|kook|bak|pan\\b|mes\\b"
+  },
+  "voor/hem/belevenissen": {
+   "afd": [
+    "belevenissen"
+   ],
+   "groep": [],
+   "thema": "beleveniss"
+  },
+  "voor/haar/sieraden": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "sieraad|sieraden|ketting|armband|oorbel|\\bring"
+  },
+  "voor/haar/wonen-sfeer": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [],
+   "thema": "wonen|woon|decoratie|kussen|plaid|vaas|kaars|sfeer|kaars|geur|lamp|lichtjes"
+  },
+  "voor/haar/bloemen-planten": {
+   "afd": [
+    "tuin-klussen",
+    "wonen"
+   ],
+   "groep": [
+    "eten-drinken/cadeaupakketten"
+   ],
+   "thema": "bloem|boeket|roos|rozen|orchidee|botanical|tulp|plant|boompje|terrarium|cactus"
+  },
+  "voor/haar/puzzels-spellen": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [
+    "boeken-media/boeken"
+   ],
+   "thema": "puzzel|spel\\b|spellen|speelkaart"
+  },
+  "voor/haar/tassen-portemonnees": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "\\btas\\b|tassen|rugzak|shopper|portemonnee|pasjeshouder|wallet"
+  },
+  "voor/haar/champagne-wijn-lekkers": {
+   "afd": [
+    "eten-drinken"
+   ],
+   "groep": [],
+   "thema": "champagne|prosecco|cava|bubbel|wijn|wine|chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie"
+  },
+  "voor/haar/horloges": {
+   "afd": [
+    "elektronica",
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "horloge|watch"
+  },
+  "voor/haar/parfum-verzorging": {
+   "afd": [
+    "beauty-verzorging"
+   ],
+   "groep": [],
+   "thema": "parfum|eau de|geur|verzorging|douche|bad\\b|scrub|crème|creme"
+  },
+  "voor/haar/pantoffels-sjaals-kleding": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [
+    "sport-outdoor/wandelen-hardlopen"
+   ],
+   "thema": "pantoffel|slof|slipper|sjaal|muts|handschoen|trui|hoodie|shirt|sokken|pyjama|badjas|vest|jas\\b"
+  },
+  "voor/haar/haken-breien-creatief": {
+   "afd": [
+    "hobby"
+   ],
+   "groep": [
+    "speelgoed/bouwen"
+   ],
+   "thema": "haak|haken|brei|creatief|knutsel|verf|teken|kleurboek|diamond|borduur|schilder|maak je eigen"
+  },
+  "voor/haar/yoga-sport": {
+   "afd": [
+    "sport-outdoor"
+   ],
+   "groep": [],
+   "thema": "yoga|pilates|sport|fitness|hardloop|voetbal|padel|tennis|golf"
+  },
+  "voor/haar/boeken-agendas": {
+   "afd": [
+    "boeken-media"
+   ],
+   "groep": [
+    "elektronica/tablets-e-readers",
+    "hobby/papier-planners"
+   ],
+   "thema": "boek|lees|agenda|planner|kalender|journal|notitie"
+  },
+  "voor/haar/keuken-koffie-thee": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [
+    "boeken-media/boeken",
+    "eten-drinken/koffie-thee-cacao"
+   ],
+   "thema": "keuken|kook|bak|pan\\b|mes\\b|koffie|espresso|thee"
+  },
+  "voor/haar/gadgets-audio": {
+   "afd": [
+    "elektronica"
+   ],
+   "groep": [],
+   "thema": "gadget|speaker|koptelefoon|oordop|radio|audio"
+  },
+  "voor/haar/belevenissen": {
+   "afd": [
+    "belevenissen"
+   ],
+   "groep": [],
+   "thema": "beleveniss"
+  },
+  "voor/kinderen/bouwen": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "bouw|lego|blokken|magnet"
+  },
+  "voor/kinderen/knutselen": {
+   "afd": [
+    "hobby",
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "knutsel|kleur|teken|verf|klei|kralen"
+  },
+  "voor/kinderen/buiten": {
+   "afd": [
+    "speelgoed",
+    "sport-outdoor"
+   ],
+   "groep": [],
+   "thema": "buiten|tuin|bal\\b|step|fiets"
+  },
+  "voor/kinderen/figuren": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [
+    "elektronica/gadgets"
+   ],
+   "thema": "figu|pop\\b|poppen|knuffel|barbie|playmobil"
+  },
+  "voor/kinderen/spellen": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "spel\\b|spellen|speelkaart"
+  },
+  "voor/kinderen/boeken": {
+   "afd": [
+    "boeken-media"
+   ],
+   "groep": [],
+   "thema": "boek|lees"
+  },
+  "voor/kinderen/gaming": {
+   "afd": [
+    "elektronica"
+   ],
+   "groep": [
+    "wonen/verlichting"
+   ],
+   "thema": "gaming|game|nintendo|mario|pok[eé]mon|playstation|zelda|animal crossing|minecraft|xbox|sonic|fortnite"
+  },
+  "voor/kinderen/kinderkamer": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [],
+   "thema": "kamer|lamp|nachtlamp|dekbed|poster"
+  },
+  "voor/kinderen/schoenen-kleding": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "schoen|sneaker|laars|slof|pantoffel|trui|hoodie|shirt|sokken|pyjama|badjas|vest|jas\\b"
+  },
+  "voor/kinderen/lekkers": {
+   "afd": [
+    "eten-drinken"
+   ],
+   "groep": [],
+   "thema": "chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie"
+  },
+  "voor/kinderen/buiten-tuin": {
+   "afd": [
+    "dieren",
+    "tuin-klussen"
+   ],
+   "groep": [],
+   "thema": "buiten|tuin|bal\\b|step|fiets|tuin|plant|vogel|bloem|moestuin"
+  },
+  "voor/kinderen/belevenissen": {
+   "afd": [
+    "belevenissen"
+   ],
+   "groep": [],
+   "thema": "beleveniss"
+  },
+  "voor/tieners/gaming-gadgets": {
+   "afd": [
+    "elektronica"
+   ],
+   "groep": [
+    "wonen/verlichting"
+   ],
+   "thema": "gaming|game|nintendo|mario|pok[eé]mon|playstation|zelda|animal crossing|minecraft|xbox|sonic|fortnite|gadget"
+  },
+  "voor/tieners/geuren-verzorging": {
+   "afd": [
+    "beauty-verzorging"
+   ],
+   "groep": [],
+   "thema": "parfum|eau de|geur|mist|verzorging|douche|bad\\b|scrub|crème|creme"
+  },
+  "voor/tieners/sieraden": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [
+    "elektronica/smartwatches"
+   ],
+   "thema": "sieraad|sieraden|ketting|armband|oorbel|\\bring"
+  },
+  "voor/tieners/lego-creatief": {
+   "afd": [
+    "hobby",
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "lego|creatief|knutsel|verf|teken|kleurboek|diamond|borduur|schilder|maak je eigen"
+  },
+  "voor/tieners/spellen-puzzels": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "spel\\b|spellen|speelkaart|puzzel"
+  },
+  "voor/tieners/kamer": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [
+    "elektronica/slim-wonen"
+   ],
+   "thema": "kamer|lamp|led|poster|neon|spiegel|kussen"
+  },
+  "voor/tieners/sport-darts": {
+   "afd": [
+    "sport-outdoor"
+   ],
+   "groep": [],
+   "thema": "sport|fitness|hardloop|voetbal|padel|tennis|golf|dart"
+  },
+  "voor/tieners/mode": {
+   "afd": [
+    "mode-sieraden"
+   ],
+   "groep": [],
+   "thema": "mode|tas\\b|rugzak|pet\\b|sjaal|trui|hoodie|sokken"
+  },
+  "voor/tieners/boeken-journals": {
+   "afd": [
+    "boeken-media",
+    "hobby"
+   ],
+   "groep": [],
+   "thema": "boek|lees|journal|dagboek|notitie|planner"
+  },
+  "voor/tieners/lekkers": {
+   "afd": [
+    "eten-drinken"
+   ],
+   "groep": [],
+   "thema": "chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie"
+  },
+  "voor/tieners/metaaldetectie": {
+   "afd": [
+    "sport-outdoor"
+   ],
+   "groep": [],
+   "thema": "metaaldetect|detector|pinpointer"
+  },
+  "voor/opa-oma/puzzels-spellen": {
+   "afd": [
+    "boeken-media",
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "puzzel|spel\\b|spellen|speelkaart"
+  },
+  "voor/opa-oma/tuin-vogels": {
+   "afd": [
+    "tuin-klussen"
+   ],
+   "groep": [],
+   "thema": "tuin|plant|vogel|bloem|moestuin|vogel|nestkast|voeder"
+  },
+  "voor/opa-oma/warm-comfortabel": {
+   "afd": [
+    "mode-sieraden",
+    "wonen"
+   ],
+   "groep": [
+    "beauty-verzorging/wellness"
+   ],
+   "thema": "warm|plaid|kruik|deken|slof|pantoffel|fleece|comfort|kussen|zacht"
+  },
+  "voor/opa-oma/radio-muziek": {
+   "afd": [
+    "boeken-media",
+    "elektronica"
+   ],
+   "groep": [],
+   "thema": "radio|dab|muziek|vinyl|\\blp\\b|\\bcd\\b|radio"
+  },
+  "voor/opa-oma/koffie-thee": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [
+    "eten-drinken/koffie-thee-cacao",
+    "eten-drinken/koffie-thee-cacao"
+   ],
+   "thema": "koffie|espresso|thee"
+  },
+  "voor/opa-oma/wonen-klokken": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [],
+   "thema": "wonen|woon|decoratie|kussen|plaid|vaas|kaars|klok|wekker"
+  },
+  "voor/opa-oma/keuken": {
+   "afd": [
+    "wonen"
+   ],
+   "groep": [
+    "boeken-media/boeken"
+   ],
+   "thema": "keuken|kook|bak|pan\\b|mes\\b"
+  },
+  "voor/opa-oma/boeken": {
+   "afd": [
+    "boeken-media"
+   ],
+   "groep": [
+    "elektronica/tablets-e-readers",
+    "wonen/verlichting"
+   ],
+   "thema": "boek|lees"
+  },
+  "voor/opa-oma/lekkers-drank": {
+   "afd": [
+    "eten-drinken"
+   ],
+   "groep": [],
+   "thema": "chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie|drank|gin|rum|cocktail|wijn"
+  },
+  "voor/baby/kleding-dekentjes": {
+   "afd": [
+    "mode-sieraden",
+    "wonen"
+   ],
+   "groep": [
+    "speelgoed/poppen-knuffels"
+   ],
+   "thema": "trui|hoodie|shirt|sokken|pyjama|badjas|vest|jas\\b|deken|plaid|swaddle|slaapzak"
+  },
+  "voor/baby/speelkleden-rammelaars": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [],
+   "thema": "speelkleed|speelmat|babygym|rammelaar|bijtring"
+  },
+  "voor/baby/knuffels-met-naam": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [
+    "wonen/woontextiel"
+   ],
+   "thema": "knuffel|pluche|beer\\b|naam"
+  }
+ },
+ "label_titel_niet": {
+  "hem": {
+   "afd": [
+    "mode-sieraden",
+    "beauty-verzorging"
+   ],
+   "woorden": "collier|choker|\\bparels?\\b|hartjes?\\b|vlinder|bloemetje|\\broze\\b|ros[eé]goud",
+   "behalve": "heren|mannen|unisex|voor hem"
+  }
+ }
+}
