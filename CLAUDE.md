@@ -1,6 +1,6 @@
 # LeukeKeuze.nl – werkafspraken voor elke Claude-sessie (ook Fable)
 
-Bijgewerkt: 10 november 2026. Dit bestand gaat vóór WERKWIJZE.txt (die is van 26 oktober en verouderd).
+Bijgewerkt: 10 november 2026 (avond). Dit bestand gaat vóór WERKWIJZE.txt (die is van 26 oktober en verouderd).
 Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 
 ## 1. Met wie je werkt
@@ -83,3 +83,14 @@ De visuele vernieuwing NOVA-001 t/m NOVA-008 is goedgekeurd door NOVA en Marius 
 - **Code:** de stijl staat in `assets/css/licht.css` in blokken "NOVA-001" t/m "NOVA-007" en "NOVA-009"; aan/uit via `window.LK_NOVA1..7` en `window.LK_NOVA9` in `assets/js/app.js` (alle staan aan; `window.LK_NOVAx = false` zet er één uit).
 - **NOVA-009** (live 10-11-2026, GO Marius): mobiele filterbalk (boven aantal + Verras me, onder Sorteren | Filteren), rustige onderwerpkaarten met foto bovenaan, secundaire knoppen ivoor met rand, gekozen = marineblauw, badges gelijk. Nieuwe pagina's of onderdelen gebruiken dezelfde klassen en kleuren, zodat ze er vanzelf bij passen.
 - Het bewijs van de eindcontrole (47 screenshots, live, 10-11-2026) staat op de laptop in `Desktop\Feedzoeker LeukeKeuze\NOVA-008-bewijs`.
+
+## 9. Juiste producten op de juiste pagina (10-11-2026, harde eis van Marius)
+"Als er spullen staan die er niet horen of niet leuk of mooi genoeg zijn, raken we bezoekers meteen kwijt." De eerste indruk is het belangrijkste.
+- **Alleen zekere cadeaus.** Twijfel je of een product op een pagina past? Dan staat het daar niet (het blijft wel in zijn eigen vakje).
+- **Regels** staan in `scripts/boom/paginaregels.json` en worden bij elke bouw toegepast (`scripts/boom/paginaregels.js`), de controle `scripts/controle/paginas.js` bewaakt ze:
+  - `smal`: cadeau met een tekst voor één soort persoon of moment (pensioen, opa/oma, zwanger, juf/meester, collega, 50 jaar, bruiloft, mama/papa) staat alleen waar het hoort. Nooit een pensioencadeau op Voor hem.
+  - `persoon_niet` / `hoofd_veilig`: groepen die niet op de pagina's van een persoon horen (bij kinderen alleen speelgoed, kinderboeken, gaming, snoep en wat duidelijk voor kinderen is).
+  - `sub`, `label_vak_niet`, `label_titel_niet`, `los`: verkeerde onderwerpen, verkeerde doelgroep, losse onderdelen.
+- **Vaste top:** 113 pagina's (alle Voor wie-pagina's en -onderwerpen, gelegenheden, collecties, afdelingen, Sinterklaas, Kerst) hebben een met de hand nagekeken bovenkant: `window.LK_TOPVAST` in `assets/js/topkeuze.js`. Werkwijze en hulpscripts: `scripts/top/LEES-MIJ.md`. Verander die top alleen door zelf de titels te lezen, nooit met een automatische regel.
+- Volgorde in die top: verrassing, bekend merk, goedkope "ja", duurder pronkstuk, persoonlijk of grappig, topper – en dat herhaalt zich. De automatische versie daarvan voor de rest van de pagina (`heldenrij` in app.js) staat nog **uit**: alleen te zien met `?proef=volgorde`, pas aan na GO van Marius.
+- Ziet Marius één verkeerd product? Los het op voor de hele site (regel erbij), niet alleen op die ene plek.
