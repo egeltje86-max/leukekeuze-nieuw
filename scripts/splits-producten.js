@@ -56,7 +56,7 @@ function splits() {
   }
   /* 10-11-2026: paginaregels (geen verkeerde producten op een pagina), zie scripts/boom/paginaregels.js */
   const prTel = require('./boom/paginaregels.js').pas(alle, ROOT);
-  console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp);
+  console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp, '| smal (tekst voor één soort persoon)', prTel.smal, '| van een Voor wie-pagina af (niet zeker)', prTel.nietBij);
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];

@@ -239,7 +239,33 @@
     return uit.concat(rest);
   }
   /* Wat bovenaan komt: de heldenrij (proef) of, zolang die uit staat, de aparte cadeaus eerst. */
-  function bovenaan(l, sleutel) { return VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel); }
+  /* 10-11-2026 (Marius: 'een pensioencadeau op Voor hem, dit kan niet'): cadeaus met een tekst voor één soort persoon of moment (p.smal, zie scripts/boom/paginaregels.json).
+     [0] = bij welke Voor wie-personen ze mogen staan (null = bij allemaal), [1] = op welke pagina's ze gewoon meedoen. Past de pagina niet, dan zakken ze naar onderen. */
+  var SMAL_PAG = {
+    pensioen: [/collega|opa-oma/, /pensioen|afscheid|opa-oma/], grootouder: [/opa-oma|baby/, /opa-oma|geboorte|baby/], zwanger: [/baby/, /babyshower|zwanger/],
+    juf: [/collega/, /juf|collega|bedank/], leeftijd: [/opa-oma/, /verjaardag|opa-oma/], collega: [/collega/, /collega|bedank|afscheid/], trouw: [/geen/, /jubileum|bruiloft|trouw/],
+    ouder: [null, /moederdag|vaderdag|baby|geboorte|kraam|persoonlijk/]
+  };
+  function smalBij(p, slug) { var r = p.smal && SMAL_PAG[p.smal]; return !r || !r[0] || r[0].test(slug); }
+  function smalOnder(l, sleutel) {
+    if (!sleutel) return l;
+    var goed = [], onder = [];
+    l.forEach(function (p) { var r = p.smal && SMAL_PAG[p.smal]; (r && !r[1].test(sleutel) ? onder : goed).push(p); });
+    return onder.length ? goed.concat(onder) : l;
+  }
+  /* 10-11-2026 (Marius: 'de eerste indruk is het belangrijkste, de pagina's moeten goed staan'): heeft een pagina een vaste top
+     (window.LK_TOPVAST in topkeuze.js: stuk voor stuk nagekeken en in volgorde gezet), dan staat die er precies zo, en wordt alleen de rest daaronder nog geschud. */
+  function bovenaan(l, sleutel) {
+    var vast = sleutel && window.LK_TOPVAST && window.LK_TOPVAST[String(sleutel).replace(/\/$/, '')];
+    if (vast && vast.length) {
+      var plek = {}; vast.forEach(function (id, i) { plek[id] = i + 1; });
+      var top = [], rest = [];
+      l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
+      top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
+      return top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel));
+    }
+    return smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel);
+  }
   function sorteer(lijst, hoe, sleutel) {
     var l = lijst.slice();
     if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return bovenaan(m || mix(l), sleutel); }
@@ -1301,6 +1327,8 @@
     return LK.zichtbaar().filter(function (p) {
       if (p.cat === 'christelijk' || p.los) return false;
       if (sleutel && p.nietOp && p.nietOp.indexOf(sleutel) !== -1) return false;
+      if (p.nietBij && p.nietBij.indexOf(pe.slug) !== -1) return false; /* 10-11-2026: alleen zekere cadeaus; staat op geen enkel nagekeken onderwerp van deze persoon */
+      if (p.smal && !smalBij(p, pe.slug)) return false; /* pensioen-, opa/oma-, juf-cadeaus e.d. alleen bij de persoon waar ze bij horen */
       var vanPersoon = (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) ||
         (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
       if (!vanPersoon) return false;
@@ -1404,7 +1432,8 @@
   /* 2.0 PROEF: samengestelde pagina (gelegenheid of collectie): labels + vakken + evt. maximale prijs. */
   function verzamelLijst(g) {
     return LK.zichtbaar().filter(function (p) {
-      if (p.cat === 'christelijk' || p.los) return false; /* p.los: losse onderdelen niet op cadeaupagina's (paginaregels, 10-11-2026) */
+      if (p.cat === 'christelijk' || p.los) return false;
+      if (p.smal && SMAL_PAG[p.smal] && !SMAL_PAG[p.smal][1].test(g.slug || '')) return false; /* pensioen-, opa/oma-, mama-cadeaus e.d. alleen op een passende gelegenheid */ /* p.los: losse onderdelen niet op cadeaupagina's (paginaregels, 10-11-2026) */
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;

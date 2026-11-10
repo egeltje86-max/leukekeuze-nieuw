@@ -582,5 +582,153 @@
    "woorden": "collier|choker|\\bparels?\\b|hartjes?\\b|vlinder|bloemetje|\\broze\\b|ros[eé]goud",
    "behalve": "heren|mannen|unisex|voor hem"
   }
+ },
+ "smal": {
+  "_uitleg": "Cadeaus met een tekst voor één soort persoon of moment. Ze krijgen p.smal = soort. Op een Voor wie-pagina staan ze alleen als 'personen' past; 'ouder' blijft staan maar zakt naar onderen. Op andere pagina's zakken ze naar onderen als 'paginas' niet past (app.js: SMAL_PAG).",
+  "pensioen": {
+   "woorden": "pensioen|\\bretired\\b|retirement|gepensioneerd",
+   "personen": "collega|opa-oma",
+   "paginas": "pensioen|afscheid|opa-oma"
+  },
+  "grootouder": {
+   "woorden": "\\bopa'?s?\\b|\\boma'?s?\\b|grandpa|grandma|grandad|kleinkind|grootouder",
+   "behalve": "granny square|opa big|waslijn|kieteltenen|oma koekie|opa jan",
+   "personen": "opa-oma|baby",
+   "paginas": "opa-oma|geboorte|baby"
+  },
+  "zwanger": {
+   "woorden": "zwanger|babyshower|gender reveal|aanstaande (moeder|mama|papa|vader)|mama loading|mommy to be|promoted to big|going to be a big|broers en zussen babyboek",
+   "personen": "baby",
+   "paginas": "babyshower|zwanger"
+  },
+  "juf": {
+   "woorden": "\\bjuf\\b|(bedankt|leukste|beste|super|liefste)[^.]{0,30}\\bmeester\\b|meester bedankt",
+   "personen": "collega",
+   "paginas": "juf|collega|bedank"
+  },
+  "leeftijd": {
+   "woorden": "abraham|\\bsarah-|\\b(18|21|30|40|50|60|65|70|80) and \\w+|cadeauset (30|40|50|60|65|70|80) jaar|mok (30|40|50|60|65|70|80) jaar|\\((30|40|50|60|65|70|80) jaar\\)|voor wie \\d+ wordt|awesome (18|21|25|30|40|50|60)",
+   "personen": "opa-oma",
+   "paginas": "verjaardag|opa-oma"
+  },
+  "collega": {
+   "woorden": "collega|colleague|stagiair|nieuwe baan|je baas",
+   "personen": "collega",
+   "paginas": "collega|bedank|afscheid"
+  },
+  "trouw": {
+   "woorden": "bruiloft|getrouwd|trouwdag|bruidspaar|\\bbruid\\b|huwelijk|verloofd",
+   "personen": "geen",
+   "paginas": "jubileum|bruiloft|trouw"
+  },
+  "ouder": {
+   "woorden": "\\b(papa|pappa|daddy|dad|vaderdag|mama|mamma|mommy|mom|mam|pap|moederdag)\\b|\\b(beste|liefste|trotse|super|nieuwe) (vader|moeder)s?\\b",
+   "behalve": "don papa|papa niet wakker|mama surprise|mama & baby|mamma mia|angry mama|opa's|kieteltenen",
+   "zacht": 1,
+   "paginas": "moederdag|vaderdag|baby|geboorte|kraam|persoonlijk"
+  }
+ },
+ "hoofd_veilig": {
+  "_uitleg": "10-11-2026 (Marius: alleen cadeaus waarvan we zeker weten dat ze goed staan). Een product staat alleen nog op de pagina's van een persoon (Voor hem, Voor haar ...) als het op een van de nagekeken onderwerpen van die persoon staat, of in een afdeling/groep hieronder valt. Anders krijgt het p.nietBij = ['hem'] en staat het alleen nog in zijn eigen vakje.",
+  "kinderen": {
+   "afd": [
+    "speelgoed"
+   ],
+   "groep": [
+    "boeken-media/kinderboeken"
+   ]
+  },
+  "baby": {
+   "afd": [],
+   "groep": [
+    "speelgoed/baby-peuter",
+    "speelgoed/poppen-knuffels"
+   ]
+  }
+ },
+ "persoon_niet": {
+  "_uitleg": "10-11-2026 (Marius: alleen veilige cadeaus op de Voor wie-pagina's). 'groep' = afdelingen/groepen die bij deze persoon van de pagina's af gaan (ze blijven in hun eigen vakje). 'alleen' = alleen deze afdelingen/groepen mogen. 'unisexMode' = mode met ook het label 'haar' niet bij hem (ziet eruit als damesmode). 'behalve' = staat dit in de titel, dan mag het toch.",
+  "hem": {
+   "groep": [
+    "wonen/kerstdecoratie",
+    "wonen/woontextiel",
+    "wonen/kaarsen-geur",
+    "beauty-verzorging/mond-tanden",
+    "beauty-verzorging/bad-douche",
+    "beauty-verzorging/huid-gezicht",
+    "hobby/papier-planners",
+    "tuin-klussen/tuin-planten",
+    "sport-outdoor/fietsen-steps"
+   ],
+   "unisexMode": [
+    "schoenen-sloffen",
+    "kleding",
+    "tassen-portemonnees",
+    "sieraden"
+   ],
+   "behalve": "heren|mannen|\\bman\\b|\\bmen\\b|voor hem"
+  },
+  "haar": {
+   "groep": [
+    "wonen/kerstdecoratie",
+    "elektronica/tv-beeld",
+    "elektronica/slim-wonen",
+    "elektronica/gaming",
+    "eten-drinken/bier",
+    "hobby/modelbouw",
+    "sport-outdoor/kamperen-outdoor",
+    "sport-outdoor/fietsen-steps",
+    "sport-outdoor/balsport-spel",
+    "sport-outdoor/water-wintersport",
+    "sport-outdoor/metaaldetectie",
+    "beauty-verzorging/scheren-baard",
+    "beauty-verzorging/mond-tanden",
+    "dieren",
+    "tuin-klussen/klussen",
+    "tuin-klussen/buiten-leven"
+   ],
+   "behalve": "dames|vrouwen|voor haar"
+  },
+  "kinderen": {
+   "alleen": [
+    "speelgoed",
+    "boeken-media/kinderboeken",
+    "elektronica/gaming"
+   ],
+   "behalve": "\\bkind|kinder|\\bkids\\b|junior|jongens|meisjes|\\d\\+|vanaf \\d+ jaar|\\d+ ?(t/m|tot|-) ?\\d+ jaar|pok[eé]mon|disney|paw patrol|bluey|peppa|nijntje|minecraft|mario|sonic|squishmallow|\\blego\\b|playmobil|barbie|hot wheels|\\bnerf\\b|eenhoorn|dino|knuffel|kleurboek|stickers?\\b|spiderman|spider-man|frozen|harry potter|stitch"
+  },
+  "tieners": {
+   "groep": [
+    "wonen/kerstdecoratie",
+    "wonen/koken-bakken",
+    "wonen/tafelen",
+    "wonen/koffie-thee-zetten",
+    "tuin-klussen",
+    "eten-drinken/koffie-thee-cacao",
+    "eten-drinken/drankaccessoires",
+    "eten-drinken/delicatessen",
+    "eten-drinken/alcoholvrij",
+    "speelgoed/poppen-knuffels",
+    "speelgoed/speelfiguren-voertuigen",
+    "speelgoed/knutselen",
+    "sport-outdoor/kamperen-outdoor"
+   ],
+   "behalve": "tiener|teen"
+  },
+  "opa-oma": {
+   "groep": [
+    "speelgoed/bouwen",
+    "elektronica/slim-wonen"
+   ]
+  },
+  "collega": {
+   "groep": [
+    "speelgoed/poppen-knuffels",
+    "speelgoed/speelfiguren-voertuigen",
+    "elektronica/gaming",
+    "mode-sieraden/kleding",
+    "wonen/kerstdecoratie"
+   ]
+  }
  }
 }
