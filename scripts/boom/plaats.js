@@ -36,6 +36,7 @@ function plaats(p) {
   const gz = (COR.gezien || {})[p.id]; if (gz && (!p.gecontroleerd || gz > p.gecontroleerd)) p.gecontroleerd = gz; /* 8-11-2026: controledatum uit de nazorg */
   const pr = (COR.prijs || {})[p.id]; if (pr) { p.prijs = pr[0]; if (pr[1] && pr[1] > pr[0]) p.oudePrijs = pr[1]; else delete p.oudePrijs; }
   if (p.oudePrijs && !(p.oudePrijs > p.prijs)) delete p.oudePrijs; /* geen 'van-prijs' die niet hoger is */
+  if (p.oudePrijs && p.prijs < p.oudePrijs * 0.3) delete p.oudePrijs; /* 10-11-2026 (ACM): meer dan 70% korting is bijna altijd een adviesprijs, dan tonen we geen van-prijs */
   /* Ronde Sinterklaas & Kerst (7-11-2026, gekeurd door Marius): 'Uit Kerstcadeaus' / 'Uit Sinterklaas'.
      Het product blijft op de site in zijn eigen vakje, maar staat niet meer op die cadeaupagina. */
   const ni = (COR.nietIn || {})[p.id];
