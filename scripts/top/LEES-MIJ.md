@@ -13,3 +13,7 @@ Zo werk je een pagina bij (kost weinig):
 4. `node scripts/top/pasToe.js` – zet alles in `topkeuze.js`. Daarna bouwen + controleren, dan pas pushen.
 
 Paden: `/voor/<persoon>[/<onderwerp>]`, `/gelegenheid/<naam>`, `/collectie/<naam>`, `/c/<afdeling>[/<groep>[/<vak>]]`, `/c/cadeaus/<oud vakje>`.
+
+`node scripts/top/afleid.js` maakt de vaste top voor pagina's als "Verjaardag voor hem" en "Grappige cadeaus voor haar" (lijst in `gsubs.txt`):
+alleen uit cadeaus die al met de hand zijn nagekeken voor die gelegenheid én voor die persoon. Draai hem opnieuw nadat je een Voor wie-pagina of gelegenheid hebt bijgewerkt.
+De 313 losse vakjes (bijv. Dartpijlen) hebben geen vaste top; die zijn op 10-11-2026 wel allemaal nagelezen (eerste 7 producten).
