@@ -1,0 +1,38 @@
+{
+ "_uitleg": "Concept door Claude 10-11-2026 voor Fable. ordenPagina(lijst, sleutel) in app.js leest dit. Zie scripts/FABLE-OPDRACHT-PAGINAS.md §4.",
+ "score": {
+  "favoriet": 40, "populair": 25, "apart_of_origineel": 20, "echte_korting_15": 15,
+  "grote_foto": 10, "korte_titel_60": 5, "nieuw_14_dagen": 5,
+  "specs_in_titel": -10, "los_onderdeel": -50, "slechte_foto": -30, "zelfde_titelstam_hoger": -20
+ },
+ "heldenrij": ["wow", "herkenning", "makkelijke_ja", "anker", "persoonlijk_of_humor", "korting_of_seizoen"],
+ "rollen": {
+  "wow": {"tags": ["apart", "origineel"], "of": ["favoriet"]},
+  "herkenning": {"populair": true, "of_merk_bekend": true, "prijs": "midden"},
+  "makkelijke_ja": {"prijs_max": 15},
+  "anker": {"prijs": "top10procent"},
+  "persoonlijk_of_humor": {"tags": ["met-naam", "grappig"], "vakken_bevat": ["met-naam", "persoonlijk"]},
+  "korting_of_seizoen": {"echte_korting_min": 15, "of_moment_nu": true}
+ },
+ "blokken": {"grootte": 6, "max_zelfde_vak": 2, "max_zelfde_winkel": 2, "prijsritme": ["laag", "midden", "hoog", "midden", "laag", "hoog"]},
+ "per_pagina": {
+  "voor/hem": {"persoonlijk_of_humor": "persoonlijk", "anker_voorbeeld": "horloge, Theragun, Dyson", "onder": ["pantoffels", "accessoires", "boeken"]},
+  "voor/haar": {"persoonlijk_of_humor": "persoonlijk", "anker_voorbeeld": "Dyson Airwrap, echt goud", "onder": ["sport", "agenda", "keuken"]},
+  "voor/kinderen": {"persoonlijk_of_humor": "humor", "mix": "leeftijd 4-6, 7-9, 10-12 om en om", "alleen_complete_sets": true},
+  "voor/tieners": {"persoonlijk_of_humor": "persoonlijk", "onder": ["boeken", "sport"]},
+  "voor/opa-oma": {"persoonlijk_of_humor": "persoonlijk (eigen foto)", "onder": ["keuken"]},
+  "voor/collega": {"makkelijke_ja_max": 10, "anker_max": 35, "persoonlijk_of_humor": "humor"},
+  "voor/baby": {"persoonlijk_of_humor": "persoonlijk (naam)"},
+  "gelegenheid/sinterklaas": {"eerst": "schoencadeautjes < 15", "plek3": "chocoladeletter of pepernoten"},
+  "gelegenheid/kerst": {"mix": "sfeer (advent, decoratie) om en om met grote cadeaus", "december_plek6": "brievenbus/last-minute"},
+  "collectie/grappige-cadeaus": {"eerst": "6 grappigste, waarvan 3 < 15", "mix": "hem/haar/neutraal om en om"},
+  "collectie/adventskalenders": {"mix": "kind, vrouw, man, lekker, drank in elke rij"},
+  "collectie/aanbiedingen": {"eerst": "grootste echte korting op bekende merken"},
+  "c/beauty-verzorging": {"eerste_rij_groepen": ["parfum", "giftsets", "bad-douche", "haar", "wellness", "make-up-nagels"], "max_bruisbal": 1},
+  "c/mode-sieraden/sieraden": {"eerste_rij_vakken": ["kettingen", "oorbellen", "armbanden", "ringen", "sieraden-met-naam", "sieradendozen"]},
+  "c/wonen": {"eerste_rij_groepen": ["kaarsen-geur", "verlichting", "woontextiel", "woondecoratie", "kerstdecoratie"]},
+  "c/speelgoed": {"eerste_rij_groepen": ["bouwen", "poppen-knuffels", "spellen", "knutselen", "buiten-spelen", "leren-ontdekken"]},
+  "c/elektronica": {"eerste_rij_groepen": ["audio", "smartwatches", "gadgets", "gaming", "foto-video"]},
+  "c/eten-drinken": {"eerste_rij_groepen": ["chocolade-snoep", "cadeaupakketten", "wijn", "bubbels", "sterke-drank", "delicatessen"]}
+ }
+}

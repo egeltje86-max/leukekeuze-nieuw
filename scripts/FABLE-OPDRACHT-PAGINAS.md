@@ -40,6 +40,10 @@ Wat er nu in de data zit: 10.975 zichtbare producten.
 | `voor` | haar 4797 · hem 3663 · iedereen 3330 · tiener 2310 · opa-oma 847 · collega 797 · kind 793 · baby 334 |
 | `moment` | vooral kerst, verjaardag en sinterklaas. Moederdag, vaderdag, bedankt en geboorte zijn bijna leeg. Daar zit werk. |
 
+## Klaargezet door Claude (scheelt jou werk)
+- `scripts/boom/paginaregels-concept.json`: alle 329 pagina's (Voor wie + subs, gelegenheden, collecties, categorie-groepen) met de vakken die er nu aan hangen, `nooit_woorden` per doelgroep, prijsgrenzen en de regex voor losse onderdelen. Controleer, vul aan, hernoem naar `paginaregels.json`.
+- `scripts/boom/volgorde-concept.json`: de scoreformule, de 6 rollen van de heldenrij, de blokregels en de afspraken per drukke pagina. Hernoem naar `volgorde.json` en gebruik het in `ordenPagina()`.
+
 ## 3. Fase A: elk product op de goede plek (eerst dit)
 
 ### A1. Eén regelbestand per pagina
