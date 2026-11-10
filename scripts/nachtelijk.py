@@ -58,6 +58,8 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-zinzi': '&standard_id=7&language_code=nl&locale_id=1&program_id=11108',           # Zinzi sieraden NL, goedgekeurd 9-11-2026
     'x-droptelegram': '&standard_id=1&language_code=nl&locale_id=1&program_id=18913',    # Droptelegram, goedgekeurd 9-11-2026
     'x-naturesgift': '&standard_id=1&language_code=nl&locale_id=1&program_id=17750',     # Nature's Gift, goedgekeurd 9-11-2026
+    'x-olijfolie': '&standard_id=4&language_code=nl&locale_id=1&program_id=20259',       # Olijfolie Concurrent, goedgekeurd 10-11-2026
+    'x-majakoi': '&standard_id=1&language_code=nl&locale_id=1&program_id=15904',         # MaJa Koi (vijver/aquarium), goedgekeurd 10-11-2026
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
@@ -141,6 +143,10 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-fragrance': '2433689',  # eu.fragrance.com (goedgekeurd + feedlink van Marius, 8-11)
           # 08-11-2026: feedlinks van Marius. Deze winkels geven geen voorraad door: de feed komt binnen zonder voorraadfilter (zie hieronder).
           't-massamarkt': '1013186', 't-ontwerpzelf': '2489184', 't-pillowbuddies': '2455857',
+          # 10-11-2026: nieuwe partners (feedlinks van Marius / goedkeuringsmails)
+          't-makemefamous': '2590467',  # Make Me Famous (persoonlijke cadeaus)
+          't-christmas1967': '2586335',  # Christmas1967
+          't-gestrikt': '1737881',  # Gestrikt.nl (Superkeurkamer-keuzes 10-11)
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')

@@ -303,6 +303,9 @@
   /* NOVA-007 (10-11-2026, ontwerp Nova): gidsen, info, winkels, categorieen en footer. Live sinds 10-11-2026 (GO Marius); uitzetten met window.LK_NOVA7 = false. */
   var NOVA7 = window.LK_NOVA7 !== false;
   if (NOVA7) document.documentElement.classList.add('nova7');
+  /* NOVA-009 (10-11-2026, opdracht Nova: filterbalk mobiel, rustige onderwerpkaarten, consequente knoppen). Proefversie: alleen met ?proef=nova9 (blijft aan in dit tabblad). Wacht op GO Marius. */
+  var NOVA9 = (function () { try { if (/[?&]proef=nova9(&|$)/.test(location.search)) sessionStorage.setItem('lknova9', '1'); if (/[?&]proef=uit(&|$)/.test(location.search)) sessionStorage.removeItem('lknova9'); return window.LK_NOVA9 === true || sessionStorage.getItem('lknova9') === '1'; } catch (e) { return window.LK_NOVA9 === true; } })();
+  if (NOVA9) document.documentElement.classList.add('nova9');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],
