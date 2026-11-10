@@ -617,7 +617,7 @@
    "paginas": "collega|bedank|afscheid"
   },
   "trouw": {
-   "woorden": "bruiloft|getrouwd|trouwdag|bruidspaar|\\bbruid\\b|huwelijk|verloofd",
+   "woorden": "bruiloft|getrouwd|trouwdag|bruidspaar|\\bbruid\\b|huwelijk|verloofd|trouwposter|trouwplaats",
    "personen": "geen",
    "paginas": "jubileum|bruiloft|trouw"
   },
@@ -693,7 +693,8 @@
    "alleen": [
     "speelgoed",
     "boeken-media/kinderboeken",
-    "elektronica/gaming"
+    "elektronica/gaming",
+    "eten-drinken/chocolade-snoep"
    ],
    "behalve": "\\bkind|kinder|\\bkids\\b|junior|jongens|meisjes|\\d\\+|vanaf \\d+ jaar|\\d+ ?(t/m|tot|-) ?\\d+ jaar|pok[eé]mon|disney|paw patrol|bluey|peppa|nijntje|minecraft|mario|sonic|squishmallow|\\blego\\b|playmobil|barbie|hot wheels|\\bnerf\\b|eenhoorn|dino|knuffel|kleurboek|stickers?\\b|spiderman|spider-man|frozen|harry potter|stitch"
   },
