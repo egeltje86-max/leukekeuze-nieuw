@@ -645,6 +645,8 @@
   function voorFilter(p, voor) {
     if (!voor) return true;
     var pe = window.LK_PERSOON(voor); if (!pe) return true;
+    /* 10-11-2026 (alleen zekere cadeaus): wat niet bij deze persoon hoort (p.nietBij) of een tekst voor een ander soort persoon heeft (p.smal), ook niet via het filter 'Voor wie' of op 'Verjaardag voor hem'. */
+    if ((p.nietBij && p.nietBij.indexOf(pe.slug) !== -1) || (p.smal && !smalBij(p, pe.slug))) return false;
     return (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) || (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
   }
   /* Mobiel: knop 'Filter & sorteren' die onderin blijft staan als de werkbalk uit beeld is.

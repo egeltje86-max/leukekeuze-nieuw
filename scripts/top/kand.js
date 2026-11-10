@@ -21,13 +21,15 @@ function lijst(pad) {
       if (g.uit && g.uit.test(p.titel)) return false;
       let pl = PR.plekkenVan(p); if (p.afd) pl = pl.concat([p.afd + '/' + p.groep, p.afd + '/' + p.groep + '/' + p.vak]);
       return PR.past(pl, g.vakken || []);
-    });
+    }).filter(p => { if (!d[2]) return true; const pe = W.LK_PERSONEN.find(x => x.slug === d[2]); return PR.vanPersoon(p, pe) && PR.smalMagBij(p, pe.slug) && !(p.nietBij && p.nietBij.includes(pe.slug)); });
   }
   if (d[0] === 'c' && d[1] === 'cadeaus') return P.filter(p => p.cat !== 'christelijk' && !p.los && !(p.smal && !SMAL[p.smal].test(pad)) && PR.plekkenVan(p).includes('cadeaus/' + d[2]));
   if (d[0] === 'c') return P.filter(p => p.afd === d[1] && (!d[2] || p.groep === d[2]) && (!d[3] || p.vak === d[3]));
   throw new Error('onbekend pad ' + pad);
 }
-const KORT = process.env.KORT; const pad = process.argv[2].replace(/\/$/, ''), MAX = +process.argv[3] || 80;
+const KORT = process.env.KORT; module.exports = { lijst };
+if (require.main === module) {
+const pad = process.argv[2].replace(/\/$/, ''), MAX = +process.argv[3] || 80;
 const l = lijst(pad).filter(p => p.beeld && typeof p.prijs === 'number');
 const smalPast = p => !p.smal || SMAL[p.smal].test(pad);
 const tk = {}; (TK[pad] || []).forEach((id, i) => tk[id] = i + 1);
@@ -39,7 +41,8 @@ const opRang = l.slice().sort((a, b) => rang(b) - rang(a));
 const nK = kies.length;
 opRang.filter(p => p.favoriet || p.populair).forEach(p => { if (kies.length < MAX) neem(p, 99); });
 opRang.filter(apart).forEach(p => { if (kies.length < nK + (MAX - nK) * 0.6) neem(p, 4); });
-opRang.forEach(p => { if (kies.length < MAX) neem(p, 5); });
-fs.mkdirSync(path.join(__dirname, 'kand'), { recursive: true }); fs.writeFileSync(path.join(__dirname, 'kand', pad.replace(/\W+/g, '_') + '.json'), JSON.stringify(kies.map(p => p.id)));
+opRang.forEach(p => { if (kies.length < MAX) neem(p, process.env.KORT ? 7 : 5); });
+fs.writeFileSync(path.join(__dirname, 'kand', pad.replace(/\W+/g, '_') + '.json'), JSON.stringify(kies.map(p => p.id)));
 console.log('## ' + pad + ' (' + l.length + ' producten, oude top ' + nK + ')');
 kies.forEach((p, i) => console.log((i + 1) + '|' + p.titel.slice(0, KORT ? 42 : 52) + '|' + Math.round(p.prijs) + '|' + (KORT ? '' : (p.vak || p.sub || '').slice(0, 16) + '|') + (tk[p.id] ? 'K' : '') + (apart(p) ? 'A' : '') + (p.favoriet ? 'F' : '') + (p.oudePrijs > p.prijs ? Math.round((1 - p.prijs / p.oudePrijs) * 100) + '%' : '')));
+}

@@ -2039,3 +2039,10 @@ html.nova9 .prodkaart .beeld .label.vol { background: #0A1020; color: #F2CB74; b
 }
 @media (hover: none) and (pointer: coarse) and (max-width: 759px) { html.nova9 .werkbalk > .mb-snel .chip { min-height: 40px; } }
 /* ===== einde NOVA-009 ===== */
+/* ===== Herstel 10-11-2026 (fout gezien op /voor/kinderen/, 390px): 'Bellenblaasmachi|ne' brak midden in het woord.
+   Lange woorden (14+ letters) in een producttitel krijgen nu een net afbreekstreepje op een lettergreep; korte woorden breken nooit. ===== */
+html.nova2 .prodkaart.awkaart h3 {
+  hyphens: auto; -webkit-hyphens: auto;
+  hyphenate-limit-chars: 14 6 5;
+  -webkit-hyphenate-limit-before: 6; -webkit-hyphenate-limit-after: 5;
+}
