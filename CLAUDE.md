@@ -1,6 +1,6 @@
 # LeukeKeuze.nl – werkafspraken voor elke Claude-sessie (ook Fable)
 
-Bijgewerkt: 8 november 2026. Dit bestand gaat vóór WERKWIJZE.txt (die is van 26 oktober en verouderd).
+Bijgewerkt: 10 november 2026. Dit bestand gaat vóór WERKWIJZE.txt (die is van 26 oktober en verouderd).
 Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 
 ## 1. Met wie je werkt
@@ -71,3 +71,14 @@ Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 - Google stuurt vooral bezoekers naar productpagina's (long-tail).
 - Op de telefoon staan prijs en knop nu op het eerste scherm (8-11-2026); lange intro's klappen in met 'Lees meer'.
 - Marius wil zo min mogelijk doen (8-11-2026): geen nieuwe kies- of keurlijsten sturen tenzij hij erom vraagt. De piloot doet het onderhoud.
+
+## 8. Vaste huisstijl (ontwerpstandaard, afgesloten 10-11-2026)
+De visuele vernieuwing NOVA-001 t/m NOVA-008 is goedgekeurd door NOVA en Marius en **afgesloten**. Dit is de vaste standaard.
+- **Niets meer verbouwen.** Alleen nieuwe, aantoonbare fouten herstellen (met URL, schermbreedte en screenshot). Geen nieuwe ontwerprondes, tenzij Marius erom vraagt.
+- **Kleuren:** marine `#0A1020`, tekst `#141A2A`, crème `#F7F3EC`, ivoor `#FFFCF7`, wit `#FFFFFF`, goud `#B8862E`, donker goud `#8F6620`, licht goud `#F2CB74`, kaartrand `#E5D7BE`.
+- **Letters:** Playfair Display voor koppen, Manrope voor knoppen en tekst. Geen extra lettertypes, libraries of animaties.
+- **Vorm:** kaarten wit/ivoor met dunne goud-ivoor rand, ronding 16–18px, zachte schaduw. Geen dikke gouden kaders overal, geen drukte.
+- **Mobiel eerst:** gewone tekst 16px, tikvlakken minimaal 44px, nergens zijwaarts scrollen (320–1440px), geen woorden midden afgebroken. Op productpagina's staan prijs en "Bekijk bij …" op het eerste telefoonscherm.
+- **Echt en eerlijk:** echte productfoto's, geen AI-productbeelden, geen nep-labels, sterren of voorraadclaims.
+- **Code:** de stijl staat in `assets/css/licht.css` in blokken "NOVA-001" t/m "NOVA-007"; aan/uit via `window.LK_NOVA1..7` in `assets/js/app.js` (alle zeven staan aan; `window.LK_NOVAx = false` zet er één uit). Nieuwe pagina's of onderdelen gebruiken dezelfde klassen en kleuren, zodat ze er vanzelf bij passen.
+- Het bewijs van de eindcontrole (47 screenshots, live, 10-11-2026) staat op de laptop in `Desktop\Feedzoeker LeukeKeuze\NOVA-008-bewijs`.
