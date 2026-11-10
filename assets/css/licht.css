@@ -1812,7 +1812,7 @@ html.nova5 .onderbalk button:focus-visible { outline: 2px solid #F8D88B; outline
   html.nova5 .onderbalk button { transition: none; }
 }
 
-/* ===== NOVA-006 (10-11-2026, ontwerp Nova): VONK, Lijstje en Sint-rijmmachine. Alleen binnen html.nova6 + paginaclass (proef: ?proef=nova6). ===== */
+/* ===== NOVA-006 (10-11-2026, ontwerp Nova): VONK, Lijstje en Sint-rijmmachine. Alleen binnen html.nova6 + paginaclass. Live sinds 10-11-2026 (GO Marius). ===== */
 html.nova6 body.nova6-vonk .vonk-vraag {
   padding:18px 16px 20px; border:1px solid #E6D8C1; border-radius:20px;
   background:linear-gradient(180deg,#fff,#FFFCF7); box-shadow:0 4px 16px rgba(20,26,42,.065);
