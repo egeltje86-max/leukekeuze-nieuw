@@ -284,8 +284,8 @@
   /* NOVA-004 (9-11-2026, ontwerp Nova; GO 9-11-2026): Voor wie en Gelegenheden. Zet alleen classes op <body> (in toon()),
      zodat de stijl uitsluitend op die pagina's werkt. Voor iedereen aan; terug kan met window.LK_NOVA4 = false. */
   var NOVA4 = window.LK_NOVA4 !== false;
-  /* NOVA-005 (9-11-2026, ontwerp Nova): zoeken, filters en navigatie. Proefversie: alleen met ?proef=nova5 (blijft aan in dit tabblad). */
-  var NOVA5 = (function () { try { if (/[?&]proef=nova5(&|$)/.test(location.search)) sessionStorage.setItem('lknova5', '1'); return window.LK_NOVA5 === true || sessionStorage.getItem('lknova5') === '1'; } catch (e) { return window.LK_NOVA5 === true; } })();
+  /* NOVA-005 (9-11-2026, ontwerp Nova; GO 10-11-2026): zoeken, filters en navigatie. Voor iedereen aan; terug kan met window.LK_NOVA5 = false. */
+  var NOVA5 = window.LK_NOVA5 !== false;
   if (NOVA5) document.documentElement.classList.add('nova5');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
