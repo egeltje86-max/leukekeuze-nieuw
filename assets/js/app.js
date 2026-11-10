@@ -290,6 +290,9 @@
   /* NOVA-006 (10-11-2026, ontwerp Nova): VONK, Lijstje en Sint-rijmmachine. Live sinds 10-11-2026 (GO Marius); uitzetten met window.LK_NOVA6 = false. */
   var NOVA6 = window.LK_NOVA6 !== false;
   if (NOVA6) document.documentElement.classList.add('nova6');
+  /* NOVA-007 (10-11-2026, ontwerp Nova): gidsen, info, winkels, categorieen en footer. Proefversie: alleen met ?proef=nova7 (blijft aan in dit tabblad). */
+  var NOVA7 = (function () { try { if (/[?&]proef=nova7(&|$)/.test(location.search)) sessionStorage.setItem('lknova7', '1'); return window.LK_NOVA7 === true || sessionStorage.getItem('lknova7') === '1'; } catch (e) { return window.LK_NOVA7 === true; } })();
+  if (NOVA7) document.documentElement.classList.add('nova7');
   var SLIM_ICO = [[/buiten/i, '⚽'], [/knikker/i, '🔮'], [/duplo/i, '🧸'], [/magnetisch/i, '🧲'],[/whisky|bier|drank|wijn|champagne/i, '🥃'], [/horloge/i, '⌚'], [/sieraden|sieraad/i, '💍'], [/dart/i, '🎯'], [/zakmes|gereedschap|klus/i, '🔧'],
     [/parfum|geur|verzorging/i, '🧴'], [/lego|bouw/i, '🧱'], [/puzzel/i, '🧩'], [/spel/i, '🎲'], [/portemonnee|tas/i, '👜'], [/pantoffel|sjaal|kleding|mode|schoen/i, '🧦'],
     [/metaal/i, '🪙'], [/gadget|gaming|game/i, '🎮'], [/bbq/i, '🍖'], [/chocola|lekker|snoep/i, '🍫'], [/boek|agenda|journal/i, '📚'], [/muziek|radio|audio/i, '🎵'],

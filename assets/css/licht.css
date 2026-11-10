@@ -1858,3 +1858,84 @@ html.nova6 body.nova6-rijm .rijm-z .rz-knop { min-height:48px; }
   html.nova6 body.nova6-favorieten .lijst-deel { padding:14px 12px; }
 }
 
+/* ===== NOVA-007 (10-11-2026, ontwerp Nova): gidsen, info, winkels, categorieen en footer. Alleen binnen html.nova7 (proef: ?proef=nova7). ===== */
+html.nova7 { --n7-navy:#0A1020; --n7-ink:#141A2A; --n7-cream:#F7F3EC; --n7-gold:#B8862E; --n7-deepgold:#8F6620; --n7-border:#E5D7BE; --n7-card:#FFFEFB; }
+
+/* 1 · Cadeaugidsen: overzicht (exclude compact homepage list) */
+html.nova7 .gidslijst:not(.compact) { gap:14px; }
+html.nova7 .gidslijst:not(.compact) .gidskaart {
+  min-width:0; border:1px solid var(--n7-border); border-radius:17px;
+  background:linear-gradient(180deg,#fff 0%,#FFFCF7 100%);
+  box-shadow:0 4px 14px rgba(10,16,32,.06); padding:12px; transition:border-color .16s,box-shadow .16s;
+}
+html.nova7 .gidslijst:not(.compact) .gidskaart:hover { border-color:var(--n7-gold); box-shadow:0 7px 18px rgba(10,16,32,.10); }
+html.nova7 .gidslijst:not(.compact) .gidsbeeld { border:1px solid #EFE1C9; border-radius:12px; background:#fff; }
+html.nova7 .gidslijst:not(.compact) .gidskaart strong { color:var(--n7-ink); font-size:16px; line-height:1.4; overflow-wrap:normal; word-break:normal; hyphens:none; }
+html.nova7 .gidslijst:not(.compact) .gidskaart small { color:#555D6F; font-size:14px; line-height:1.45; }
+
+/* 2 · Cadeaugids: text, existing cards, FAQ and jump links */
+html.nova7 .tekstpagina.gids { line-height:1.7; }
+html.nova7 .tekstpagina.gids:not(:has(.rijm-z)) p, html.nova7 .tekstpagina.gids:not(:has(.rijm-z)) li { font-size:16px; line-height:1.65; }
+html.nova7 .tekstpagina.gids h2 { font-family:var(--f-kop); color:var(--n7-ink); line-height:1.24; }
+html.nova7 .gidsitem, html.nova7 .gids-top { border-color:var(--n7-border); background:var(--n7-card); box-shadow:0 4px 14px rgba(10,16,32,.06); }
+html.nova7 .gidsitem { border-radius:17px; }
+html.nova7 .gidsitem .gi-info h3 { font-size:16px; line-height:1.35; }
+html.nova7 .gidsitem .gi-waarom { font-size:15px !important; }
+html.nova7 .gidsitem .hartje::after { content:''; position:absolute; inset:-6px; border-radius:50%; } /* klikvlak 44px, hartje blijft even groot */
+html.nova7 .gi-knop { min-height:44px; padding:9px 14px 9px 16px; font-size:14px; }
+html.nova7 .gids-faq details { border:1px solid var(--n7-border); background:#FFFEFB; border-radius:12px; padding:0 14px; margin-bottom:8px; }
+html.nova7 .gids-faq summary { min-height:48px; font-size:16px; }
+html.nova7 .gids .lees-verder summary { min-height:44px; font-size:16px; }
+html.nova7 .springlinks .chip { min-height:44px; display:inline-flex; align-items:center; }
+
+/* 3 · Information and legal pages: editorial readability; no content changes */
+html.nova7 .tekstpagina:not(.gids) { max-width:760px; padding-top:18px; padding-bottom:28px; }
+html.nova7 .tekstpagina:not(.gids) p,
+html.nova7 .tekstpagina:not(.gids) li { font-size:16px; line-height:1.75; color:#485166; }
+html.nova7 .tekstpagina:not(.gids) h2 { font-family:var(--f-kop); font-weight:600; font-size:clamp(24px,4.4vw,29px); line-height:1.25; color:var(--n7-ink); }
+html.nova7 .tekstpagina:not(.gids) a:not([class]) { color:var(--n7-deepgold); text-decoration-thickness:1px; text-underline-offset:3px; }
+html.nova7 .tekstpagina:not(.gids) .let-op { border-color:#D6BC8A; background:#FFF9ED; color:#4B4337; }
+
+/* 4 · Onze winkels: preserve compact two-column structure and shop/affiliate links */
+html.nova7 .winkels-compact { gap:10px; }
+html.nova7 .winkel-rij { border:1px solid var(--n7-border); border-radius:16px; background:linear-gradient(180deg,#fff,#FFFCF7); box-shadow:0 3px 12px rgba(10,16,32,.055); transition:border-color .16s,box-shadow .16s; }
+html.nova7 .winkel-rij:hover { border-color:var(--n7-gold); box-shadow:0 6px 16px rgba(10,16,32,.09); }
+html.nova7 .winkel-tekst strong { color:var(--n7-ink); font-size:16px; overflow-wrap:normal; word-break:normal; }
+html.nova7 .winkel-tekst small { color:#50586B; font-size:14px; line-height:1.45; }
+html.nova7 .winkel-logo, html.nova7 .winkel-letter { border-radius:12px; }
+html.nova7 .winkel-rij:focus-visible, html.nova7 .gidskaart:focus-visible { outline:3px solid #186D92; outline-offset:3px; }
+
+/* 5 · All categories overview. Do not affect NOVA-001/003 cards elsewhere */
+html.nova7 .catronden .catrond { min-width:0; border:1px solid var(--n7-border); border-radius:18px; background:linear-gradient(180deg,#fff,#FFF9F0); box-shadow:0 4px 12px rgba(10,16,32,.055); padding:14px 10px; transition:border-color .16s,box-shadow .16s; }
+html.nova7 .catronden .catrond:hover { border-color:var(--n7-gold); box-shadow:0 7px 18px rgba(10,16,32,.09); }
+html.nova7 .catronden .catrond-naam { color:var(--n7-ink); font-size:16px; font-weight:700; hyphens:none; word-break:normal; overflow-wrap:normal; }
+html.nova7 .catronden .catrond-tekst { font-size:14px; line-height:1.45; color:#525A6E; }
+html.nova7 .catronden .catrond:focus-visible { outline:3px solid #186D92; outline-offset:2px; }
+
+/* 6 · Footer: preserve all text (including personal line), navigation, legal details */
+html.nova7 .footer { background:var(--n7-navy); border-top:1px solid #8E703D; }
+html.nova7 .footer .binnen { gap:28px; }
+html.nova7 .footer h4 { font-size:13px; line-height:1.35; letter-spacing:.10em; color:#F2CB74; }
+html.nova7 .footer p { color:#D2CCBF; font-size:15px; line-height:1.65; }
+html.nova7 .footer li a { color:#E5DFD2; font-size:15px; line-height:1.35; min-height:44px; padding:0; display:flex; align-items:center; }
+html.nova7 .footer li a:hover, html.nova7 .footer li a:focus-visible { color:#F2CB74; }
+html.nova7 .footer-onder .binnen { color:#DDD5C8; font-size:13px; line-height:1.6; }
+html.nova7 .footer-onder a { color:#F3D592; }
+html.nova7 .footer-yara { border-top-color:rgba(217,168,72,.20); }
+
+/* Compact mobile, protect 320px and existing grids */
+@media (max-width:699px) {
+  html.nova7 .winkels-compact { gap:8px; }
+  html.nova7 .winkel-rij { padding:10px 8px; align-items:start; }
+  html.nova7 .winkel-tekst strong { font-size:15px; }
+  html.nova7 .winkel-tekst small { font-size:13px; }
+  html.nova7 .footer .binnen { gap:20px; }
+}
+@media (max-width:359px) {
+  html.nova7 .gidslijst:not(.compact) { grid-template-columns:minmax(0,1fr); }
+  html.nova7 .catronden .catrond { padding:10px 6px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html.nova7 .gidslijst:not(.compact) .gidskaart,
+  html.nova7 .winkel-rij, html.nova7 .catronden .catrond { transition:none; }
+}
