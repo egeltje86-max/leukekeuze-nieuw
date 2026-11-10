@@ -1858,7 +1858,7 @@ html.nova6 body.nova6-rijm .rijm-z .rz-knop { min-height:48px; }
   html.nova6 body.nova6-favorieten .lijst-deel { padding:14px 12px; }
 }
 
-/* ===== NOVA-007 (10-11-2026, ontwerp Nova): gidsen, info, winkels, categorieen en footer. Alleen binnen html.nova7 (proef: ?proef=nova7). ===== */
+/* ===== NOVA-007 (10-11-2026, ontwerp Nova): gidsen, info, winkels, categorieen en footer. Alleen binnen html.nova7. Live sinds 10-11-2026 (GO Marius). ===== */
 html.nova7 { --n7-navy:#0A1020; --n7-ink:#141A2A; --n7-cream:#F7F3EC; --n7-gold:#B8862E; --n7-deepgold:#8F6620; --n7-border:#E5D7BE; --n7-card:#FFFEFB; }
 
 /* 1 · Cadeaugidsen: overzicht (exclude compact homepage list) */
@@ -1939,3 +1939,6 @@ html.nova7 .footer-yara { border-top-color:rgba(217,168,72,.20); }
   html.nova7 .gidslijst:not(.compact) .gidskaart,
   html.nova7 .winkel-rij, html.nova7 .catronden .catrond { transition:none; }
 }
+
+/* Kapot winkellogo (10-11-2026): onerror zet 'hidden', maar display:block hield het kapotte plaatje zichtbaar. Nu valt hij netjes terug op de letter. */
+.winkel-logo[hidden], .winkel-letter[hidden] { display: none !important; }
