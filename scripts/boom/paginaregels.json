@@ -617,7 +617,7 @@
    "paginas": "collega|bedank|afscheid"
   },
   "trouw": {
-   "woorden": "bruiloft|getrouwd|trouwdag|bruidspaar|\\bbruid\\b|huwelijk|verloofd|trouwposter|trouwplaats",
+   "woorden": "bruiloft|getrouwd|trouwdag|bruidspaar|\\bbruid\\b|huwelijk|verloofd|trouwposter|trouwplaats|trouwalbum",
    "personen": "geen",
    "paginas": "jubileum|bruiloft|trouw"
   },
