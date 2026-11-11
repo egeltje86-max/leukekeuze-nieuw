@@ -2,7 +2,7 @@
 
 Elke dag, zonder dat Marius iets hoeft te doen:
 
-1. **03:30, laptop** (`scripts/nachtelijk.py`, Taakplanner): verse feeds, zoekindex, en een nachtrapport met prijzen en voorraad (`keurkamer/nazorg/wacht-laatste.json`) in de repo.
+1. **21:00, laptop** (tot 11-11-2026 was dit 03:30; bij een gemiste beurt draait de taak zodra de laptop weer aan gaat) (`scripts/nachtelijk.py`, Taakplanner): verse feeds, zoekindex, en een nachtrapport met prijzen en voorraad (`keurkamer/nazorg/wacht-laatste.json`) in de repo.
 2. **06:43, cloud** (geplande taak "LeukeKeuze piloot dagelijks"): `python3 scripts/piloot/dag.py`
    - nieuwste code ophalen, nachtrapport toepassen (nazorg.py met veiligheidsgrenzen), bouwen, alle controles (`scripts/controle/alles.js`), en alleen bij "schoon" live zetten.
    - daarna, als de laptop aan staat: maximaal 15 nieuwe producten op basis van trends (`kandidaten.py` → agent kiest en schrijft teksten → `haalfotos.py` op de laptop → `voegtoe.py` → nog een bouw + controle + live).
