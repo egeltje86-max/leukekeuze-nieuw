@@ -166,6 +166,22 @@
       'alt="' + esc(p.titel) + '"' + (groot ? ' fetchpriority="high" decoding="async">' : ' loading="lazy" decoding="async">');
   }
 
+  /* Lange woorden in een producttitel netjes afbreken (11-11-2026, fout gezien op /voor/kinderen/ op 390px: 'Bellenblaasmachi|ne').
+     LK_AFBREEK (uit producten-lean.js) zegt per lang woord waar het mag breken: bellenblaas-machine. Daar komt een onzichtbaar
+     afbreekstreepje; de browser gebruikt het alleen als het woord niet op de regel past. Onbekend woord: de browser beslist zelf. */
+  var afbreekTabel = null;
+  function zachtAf(titel) {
+    /* 'Leren/waxkoord': na een schuine streep tussen twee woorden mag de regel ook breken (onzichtbare spatie) */
+    titel = String(titel == null ? '' : titel).replace(/([A-Za-zÀ-ÿ-])\/(?=[A-Za-zÀ-ÿ])/g, '$1/\u200B');
+    if (!window.LK_AFBREEK) return titel;
+    if (!afbreekTabel) { afbreekTabel = {}; window.LK_AFBREEK.split('|').forEach(function (s) { afbreekTabel[s.replace(/-/g, '')] = s; }); }
+    return titel.replace(/[A-Za-zÀ-ÿ]{13,}/g, function (w) {
+      var s = afbreekTabel[w.toLowerCase()]; if (!s) return w;
+      var uit = '', k = 0;
+      for (var i = 0; i < s.length; i++) { if (s.charAt(i) === '-') uit += '\u00AD'; else uit += w.charAt(k++); }
+      return uit;
+    });
+  }
   function productKaart(p) {
     /* 9-11-2026 (wens Marius): op heren-pagina's de niet-roze kleur laten zien (beeldHem, gemaakt door splits-producten.js). */
     if (window.LK_KAART_HEM && p.beeldHem) p = Object.assign({}, p, { beeld: p.beeldHem });
@@ -177,7 +193,7 @@
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icoon('hart') + '</button>' +
       '<div class="info">' +
         '<span class="shop">' + esc(p.shop) + '</span>' +
-        '<h3><a href="/p/' + esc(p.id) + '">' + esc(p.titel) + '</a></h3>' +
+        '<h3><a href="/p/' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</a></h3>' +
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
         (p.kleuren > 1 ? '<span class="kleuren"><i></i><i></i><i></i>' + p.kleuren + ' ' + (p.keuzeMeervoud || 'kleuren') + '</span>' : '') +
         /* 2.0: alleen bij onze favorieten één korte, echte reden (de eerste zin van 'waarom wij dit kozen'). */

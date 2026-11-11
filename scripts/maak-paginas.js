@@ -214,9 +214,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
         window.LK.zichtbaar().forEach(p => { if (window.LK.hoortBij(p, d[1], d[2])) { const s = p.sinds || p.gecontroleerd || ''; if (s > datum) datum = s; } });
       }
       const h1 = (app.querySelector('h1') || {}).textContent || '';
-      const namen = Array.from(document.querySelectorAll('#app .prodkaart h3')).slice(0, 3).map(x => x.textContent.trim());
+      const namen = Array.from(document.querySelectorAll('#app .prodkaart h3')).slice(0, 3).map(x => x.textContent.replace(/[\u00AD\u200B]/g, '').trim()); /* zonder de onzichtbare afbreekstreepjes */
       return {
-        titel: document.title, inhoud: app.innerHTML, links, aantal,
+        titel: document.title, inhoud: app.innerHTML.replace(/[\u00AD\u200B]/g, ''), links, aantal, /* vaste HTML voor zoekmachines en ChatGPT: zonder de onzichtbare afbreekstreepjes */
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
         tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum

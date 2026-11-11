@@ -1,6 +1,6 @@
 # LeukeKeuze.nl – werkafspraken voor elke Claude-sessie (ook Fable)
 
-Bijgewerkt: 10 november 2026 (avond). Dit bestand gaat vóór WERKWIJZE.txt (die is van 26 oktober en verouderd).
+Bijgewerkt: 11 november 2026. Dit bestand gaat vóór WERKWIJZE.txt (die is van 26 oktober en verouderd).
 Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 
 ## 1. Met wie je werkt
@@ -82,6 +82,7 @@ De visuele vernieuwing NOVA-001 t/m NOVA-008 is goedgekeurd door NOVA en Marius 
 - **Echt en eerlijk:** echte productfoto's, geen AI-productbeelden, geen nep-labels, sterren of voorraadclaims.
 - **Code:** de stijl staat in `assets/css/licht.css` in blokken "NOVA-001" t/m "NOVA-007" en "NOVA-009"; aan/uit via `window.LK_NOVA1..7` en `window.LK_NOVA9` in `assets/js/app.js` (alle staan aan; `window.LK_NOVAx = false` zet er één uit).
 - **NOVA-009** (live 10-11-2026, GO Marius): mobiele filterbalk (boven aantal + Verras me, onder Sorteren | Filteren), rustige onderwerpkaarten met foto bovenaan, secundaire knoppen ivoor met rand, gekozen = marineblauw, badges gelijk. Nieuwe pagina's of onderdelen gebruiken dezelfde klassen en kleuren, zodat ze er vanzelf bij passen.
+- **Lange woorden in producttitels** (11-11-2026): breken netjes af met een streepje (bellenblaas-machine). De afbreekplekken staan in `scripts/boom/afbreek.json` (1264 woorden, met de hand nagelezen); `splits-producten.js` zet ze in `producten-lean.js` (`window.LK_AFBREEK`), `zachtAf()` in `gedeeld.js` past ze toe op de productkaart. Nieuwe lange woorden: `node scripts/afbreek/maak.js` toont voorstellen, `... schrijf` zet ze erbij (eerst nalezen). Meten of er nog een titel midden in een woord breekt: 390, 360 en 320px.
 - Het bewijs van de eindcontrole (47 screenshots, live, 10-11-2026) staat op de laptop in `Desktop\Feedzoeker LeukeKeuze\NOVA-008-bewijs`.
 
 ## 9. Juiste producten op de juiste pagina (10-11-2026, harde eis van Marius)
@@ -91,6 +92,6 @@ De visuele vernieuwing NOVA-001 t/m NOVA-008 is goedgekeurd door NOVA en Marius 
   - `smal`: cadeau met een tekst voor één soort persoon of moment (pensioen, opa/oma, zwanger, juf/meester, collega, 50 jaar, bruiloft, mama/papa) staat alleen waar het hoort. Nooit een pensioencadeau op Voor hem.
   - `persoon_niet` / `hoofd_veilig`: groepen die niet op de pagina's van een persoon horen (bij kinderen alleen speelgoed, kinderboeken, gaming, snoep en wat duidelijk voor kinderen is).
   - `sub`, `label_vak_niet`, `label_titel_niet`, `los`: verkeerde onderwerpen, verkeerde doelgroep, losse onderdelen.
-- **Vaste top:** 263 pagina's (alle Voor wie-pagina's en -onderwerpen, gelegenheden en collecties, ook per persoon zoals "Verjaardag voor hem", de 12 afdelingen en hun 87 groepen, Sinterklaas, Kerst) hebben een met de hand nagekeken bovenkant: `window.LK_TOPVAST` in `assets/js/topkeuze.js`. Werkwijze en hulpscripts: `scripts/top/LEES-MIJ.md`. Verander die top alleen door zelf de titels te lezen, nooit met een automatische regel.
+- **Vaste top:** 264 pagina's (alle Voor wie-pagina's en -onderwerpen, gelegenheden en collecties, ook per persoon zoals "Verjaardag voor hem", de 12 afdelingen en hun 87 groepen, Sinterklaas, Kerst, en het vakje Hondenspeelgoed) hebben een met de hand nagekeken bovenkant: `window.LK_TOPVAST` in `assets/js/topkeuze.js`. Werkwijze en hulpscripts: `scripts/top/LEES-MIJ.md`. Verander die top alleen door zelf de titels te lezen, nooit met een automatische regel.
 - Volgorde in die top: verrassing, bekend merk, goedkope "ja", duurder pronkstuk, persoonlijk of grappig, topper – en dat herhaalt zich. De automatische versie daarvan voor de rest van de pagina (`heldenrij` in app.js) staat nog **uit**: alleen te zien met `?proef=volgorde`, pas aan na GO van Marius.
 - Ziet Marius één verkeerd product? Los het op voor de hele site (regel erbij), niet alleen op die ene plek.
