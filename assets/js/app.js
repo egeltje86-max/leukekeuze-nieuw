@@ -294,9 +294,20 @@
       var top = [], rest = [];
       l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
       top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
-      return top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel));
+      return sieradenLaat(top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel)), sleutel);
     }
-    return smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel);
+    return sieradenLaat(smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel), sleutel);
+  }
+  /* 11-11-2026 (wens Marius: 'veel te veel sieraden, kwaliteit voorop, ze mogen gewoon op hun categorie blijven'):
+     sieraden (Mode & sieraden > Sieraden) staan alleen vooraan op pagina's die over sieraden gaan: hun eigen categorie en een onderwerp
+     met 'sieraden' in het adres (Voor haar > Sieraden, Voor hem > Horloges & sieraden). Op alle andere lijsten (Voor wie, gelegenheden,
+     collecties) schuiven ze naar achteren; de volgorde van de rest blijft zoals hij met de hand is nagekeken. Ze blijven dus vindbaar,
+     ook via zoeken en de kieshulp. Uit: window.LK_SIERADEN_VOORAAN = true. */
+  function isSieraad(p) { return p.afd === 'mode-sieraden' && p.groep === 'sieraden'; }
+  function sieradenLaat(l, sleutel) {
+    if (window.LK_SIERADEN_VOORAAN === true || !sleutel || /sieraden/.test(String(sleutel)) || /^\/c\//.test(String(sleutel))) return l;
+    var voor = [], na = []; l.forEach(function (p) { (isSieraad(p) ? na : voor).push(p); });
+    return na.length && voor.length ? voor.concat(na) : l;
   }
   function sorteer(lijst, hoe, sleutel) {
     var l = lijst.slice();
@@ -444,9 +455,9 @@
   /* Per pagina: titel en de handmatig gekozen top 6 (sleutels = bestaande slugs). Niet gevonden of leeg = niet tonen. */
   var SLIM = {
     '/voor/hem': { titel: 'Waar houdt hij van?', top: ['gadgets-gaming', 'whisky-bier-drank', 'horloges-sieraden', 'darts-sport', 'parfum-verzorging', 'zakmessen-gereedschap'] },
-    '/voor/haar': { titel: 'Waar houdt ze van?', top: ['sieraden', 'parfum-verzorging', 'pantoffels-sjaals-kleding', 'wonen-sfeer', 'champagne-wijn-lekkers', 'gadgets-audio'] },
+    '/voor/haar': { titel: 'Waar houdt ze van?', top: ['parfum-verzorging', 'pantoffels-sjaals-kleding', 'wonen-sfeer', 'champagne-wijn-lekkers', 'gadgets-audio', 'bloemen-planten'] }, /* 11-11-2026: 'sieraden' uit de eerste zes (wens Marius) */
     '/voor/kinderen': { titel: 'Waar speelt je kind graag mee?', top: ['bouwen', 'figuren', 'spellen', 'buiten', 'knutselen', 'boeken'] },
-    '/voor/tieners': { titel: 'Waar is je tiener mee bezig?', top: ['gaming-gadgets', 'lego-creatief', 'mode', 'geuren-verzorging', 'sport-darts', 'sieraden'] },
+    '/voor/tieners': { titel: 'Waar is je tiener mee bezig?', top: ['gaming-gadgets', 'lego-creatief', 'mode', 'geuren-verzorging', 'sport-darts', 'spellen-puzzels'] }, /* 11-11-2026: 'sieraden' uit de eerste zes (wens Marius) */
     '/voor/opa-oma': { titel: 'Waar worden ze blij van?', top: ['fotos-herinneringen', 'lekkers-drank', 'boeken', 'tuin-vogels', 'puzzels-spellen', 'warm-comfortabel'] },
     '/voor/collega': { titel: 'Waar zoek je iets voor?' },
     '/voor/baby': { titel: 'Wat zoek je voor de baby?' },
@@ -1113,14 +1124,20 @@
     var wzTegel = function (naam, naar, beeld, icoon) {
       return '<a class="wzh-tegel" href="' + naar + '">' + (beeld ? '<span class="wzh-rond"><img src="' + beeld + '" alt="" width="64" height="64" decoding="async"></span>' : '<span class="wzh-rond wzh-icoon">' + ic(icoon) + '</span>') + '<span>' + esc(naam) + '</span></a>';
     };
-    return '<div class="binnen wzh">' +
+    return '<div class="binnen wzh wijzer">' +
       '<section class="sectie eerste wzh-vraag" data-tel="voor-wie"><h1>Voor wie zoek je een cadeau?</h1><p class="wzh-sub">Tik op één plaatje. Je ziet meteen onze beste keuzes.</p>' +
         '<nav class="wzh-raster" aria-label="Voor wie zoek je een cadeau?">' +
           window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
           wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel('Categorieën', '/categorieen', '', 'raster') +
         '</nav></section>' +
+      /* 11-11-2026 (Marius: 'kijk wat nog meer goed is om op de homepage te zetten'): wat het best loopt (grappig en origineel) en kiezen op bedrag. */
+      '<section class="sectie wzh-soort" data-tel="soort"><p class="wz-vraag">Of kies een soort cadeau</p><nav class="mini-raster breed" aria-label="Soort cadeau">' +
+        [['Grappige cadeaus', '/collectie/grappige-cadeaus', 'col-grappige-cadeaus'], ['Originele cadeaus', '/collectie/originele-cadeaus', 'col-originele-cadeaus'], ['Met naam of foto', '/collectie/persoonlijke-cadeaus', 'col-persoonlijke-cadeaus'], ['Toppers van nu', '/collectie/toppers-van-nu', 'col-toppers-van-nu']]
+          .map(function (k) { return miniTegel(k[0], k[1], 'images/sub/rond/' + k[2] + '-klein.webp'); }).join('') + '</nav>' +
+        '<p class="wz-vraag">Of kies een bedrag</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' +
+        (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip" href="/c/cadeaus/?prijs=' + p.id + '">' + p.label + '</a>'; }).join('') + '</nav></section>' +
       rijmBlok('home') + seizoenBlok() + belevenisBlok() + favorietenBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
-      tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; })) +
+      tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; }).concat([['Acties en kortingscodes', '/collectie/aanbiedingen']])) +
       gidsenCompact() + eigenKaart() + zoWerkt +
     '</div>';
   }
@@ -1538,7 +1555,7 @@
     var wzAan = WIJZER === 'b' && !q.alles && alles.length && !(q.sort && q.sort !== 'aanbevolen') && !wzFilters.some(function (k) { return q[k]; });
     LK.redenAltijd = !!wzAan;
     if (wzAan) {
-      var wzLijst = etalageEerst(lijst);
+      var wzLijst = sieradenLaat(etalageEerst(lijst), pad);
       var wzNaam = /^(hem|haar|kinderen|tieners)$/.test(naam) ? naam : naam.toLowerCase();
       var wzPrijs = (window.LK_PRIJZEN || []).filter(function (p) { return p.id === q.prijs; })[0];
       var wzBedrag = (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) {
@@ -1547,7 +1564,7 @@
         return '<a class="chip" href="' + (hier ? pad : maakAdres(pad, { prijs: p.id })) + '" aria-pressed="' + hier + '">' + p.label + '</a>';
       }).join('');
       /* Volgorde van de onderwerpen: eerst waar het meest naar gezocht wordt (de 'top' van de onderwerpkaarten), dan de rest. */
-      var wzTop = ((SLIM['/voor/' + pe.slug] || {}).top || []), wzPlek = function (x) { var i = wzTop.indexOf(x.slug); return i === -1 ? 99 : i; };
+      var wzTop = ((SLIM['/voor/' + pe.slug] || {}).top || []), wzPlek = function (x) { var i = wzTop.indexOf(x.slug); return i === -1 ? (x.slug === 'sieraden' ? 999 : 99) : i; };
       var wzSubs = volleSubsP.slice().sort(function (u, v) { return wzPlek(u) - wzPlek(v); }).map(function (x) {
         var hier = !!(s && s.slug === x.slug);
         return '<a class="chip" href="' + metBudget(hier ? '/voor/' + pe.slug : '/voor/' + pe.slug + '/' + x.slug) + '" aria-pressed="' + hier + '"' + (hier ? ' data-wz-hier' : '') + '>' + esc(x.naam) + '</a>';

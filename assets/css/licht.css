@@ -2142,6 +2142,9 @@ html.wz-b:not(.lk-gestart) #app .paginakop p.intro, html.wz-b:not(.lk-gestart) #
   .wzh .wzh-vraag h1 { font-size: 40px; } .wzh .wzh-sub { font-size: 17px; margin-bottom: 22px; }
   .wzh-raster { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px; }
 }
+.wzh .wzh-soort { display: flex; flex-direction: column; gap: 10px; }
+.wzh .wzh-soort .wz-vraag { margin-top: 4px; }
+@media (min-width: 760px) { .wzh .wzh-soort { align-items: center; } .wzh .wzh-soort .mini-raster { width: 100%; } }
 /* Tot de app de homepage overneemt: van de gebouwde (oude) homepage alleen het blok 'Voor wie zoek je een cadeau?' laten zien. */
 html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .binnen > :not([data-tel="voor-wie"]) { display: none; }
 /* ===== einde WIJZER ===== */
