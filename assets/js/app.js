@@ -305,7 +305,9 @@
      ook via zoeken en de kieshulp. Uit: window.LK_SIERADEN_VOORAAN = true. */
   function isSieraad(p) { return p.afd === 'mode-sieraden' && p.groep === 'sieraden'; }
   function sieradenLaat(l, sleutel) {
-    if (window.LK_SIERADEN_VOORAAN === true || !sleutel || /sieraden/.test(String(sleutel)) || /^\/c\//.test(String(sleutel))) return l;
+    var sl = String(sleutel || '').replace(/\/$/, '');
+    /* Op de hoofdpagina Mode & sieraden gaan kleding, tassen, horloges en accessoires voor (11-11-2026); de groep Sieraden zelf blijft zoals hij is. */
+    if (window.LK_SIERADEN_VOORAAN === true || !sl || (sl !== '/c/mode-sieraden' && (/sieraden/.test(sl) || /^\/c\//.test(sl)))) return l;
     var voor = [], na = []; l.forEach(function (p) { (isSieraad(p) ? na : voor).push(p); });
     return na.length && voor.length ? voor.concat(na) : l;
   }
