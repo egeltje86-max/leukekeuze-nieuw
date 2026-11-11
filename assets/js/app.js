@@ -191,8 +191,9 @@
        1 wow (apart of eigen keuze) · 2 herkenning (bekend merk of bestseller, middenprijs) · 3 makkelijke ja (onder €15)
        4 anker (het duurdere topstuk, maakt de rest redelijk) · 5 persoonlijk of grappig · 6 echte korting (of iets nieuws).
      Nooit twee van hetzelfde vakje in een rij van zes, liefst zes verschillende winkels en groepen. Eerlijk: geen nep-labels, korting alleen met echte van-prijs.
-     Eerst als proef: ?proef=volgorde (of window.LK_VOLGORDE = true). Staat hij uit, dan geldt apartEerst() zoals voorheen. */
-  var VOLGORDE = (function () { try { if (/[?&]proef=volgorde(&|$)/.test(location.search)) sessionStorage.setItem('lkvolgorde', '1'); if (/[?&]proef=volgorde-uit(&|$)/.test(location.search)) sessionStorage.removeItem('lkvolgorde'); return window.LK_VOLGORDE === true || sessionStorage.getItem('lkvolgorde') === '1'; } catch (e) { return window.LK_VOLGORDE === true; } })();
+     Was eerst een proef (?proef=volgorde). Sinds 11-11-2026 staat hij AAN (GO Marius). Uitzetten om te vergelijken: ?proef=volgorde-uit
+     (weer aan: ?proef=volgorde) of window.LK_VOLGORDE = false. Staat hij uit, dan geldt apartEerst() zoals voorheen. */
+  var VOLGORDE = (function () { try { if (/[?&]proef=volgorde-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkvolgorde', '0'); else if (/[?&]proef=volgorde(&|$)/.test(location.search)) sessionStorage.removeItem('lkvolgorde'); return window.LK_VOLGORDE !== false && sessionStorage.getItem('lkvolgorde') !== '0'; } catch (e) { return window.LK_VOLGORDE !== false; } })();
   var BEKEND = /\b(lego|duplo|rituals|dyson|philips|casio|seiko|apple|sony|jbl|nintendo|playmobil|pok[eé]mon|barbie|ravensburger|tony'?s|lindt|nike|adidas|samsung|bose|garmin|swarovski|pandora|fossil|tommy hilfiger|calvin klein|hugo boss|paco rabanne|carolina herrera|yankee candle|woodwick|riviera maison|stanley|smeg|nespresso|le creuset|bosch|makita|999 games|squishmallows?|paw patrol|disney|star wars|marvel|hot wheels|gravitrax|little dutch|nijntje|douwe egberts|pickwick|dopper|victorinox|leatherman|weber|fj[aä]llr[aä]ven|eastpak|guess|michael kors|g-shock|oral-b|sonicare|theragun|ghd|babyliss|lacoste|versace|armani|jean paul gaultier|lanc[oô]me|marc jacobs|bluey|minecraft|harry potter|monopoly|rummikub|jellycat|hema|blond amsterdam|pip studio|villeroy|iittala|marshall|sonos|kobo|fitbit|polaroid|instax|stabilo|moleskine|leuchtturm|target|winmau|unicorn)\b/i;
   var PERSOONLIJK = /met (je |eigen )?(naam|foto|tekst)|gegraveerd|graveren|gepersonaliseerd|personaliseer|eigen foto|initiaal|geboortebloem|sterrenbeeld/i;
   function heldenrij(l, sleutel) {
@@ -238,7 +239,7 @@
     }
     return uit.concat(rest);
   }
-  /* Wat bovenaan komt: de heldenrij (proef) of, zolang die uit staat, de aparte cadeaus eerst. */
+  /* Wat bovenaan komt: de heldenrij, of als die uit staat de aparte cadeaus eerst. */
   /* 10-11-2026 (Marius: 'een pensioencadeau op Voor hem, dit kan niet'): cadeaus met een tekst voor één soort persoon of moment (p.smal, zie scripts/boom/paginaregels.json).
      [0] = bij welke Voor wie-personen ze mogen staan (null = bij allemaal), [1] = op welke pagina's ze gewoon meedoen. Past de pagina niet, dan zakken ze naar onderen. */
   var SMAL_PAG = {
