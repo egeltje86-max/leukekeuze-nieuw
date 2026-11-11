@@ -714,8 +714,66 @@
     knopSets(FP.knoppen, q).forEach(function (k) { if (q[k.param]) { var o = k.opties.filter(function (x) { return x[0] === q[k.param]; })[0]; uit.push([k.param, o ? o[1] : q[k.param]]); } });
     return uit;
   }
+  /* ================== NOVA-010 (PROEF 11-11-2026, opdracht Nova via Marius; NIET live zonder GO) ==================
+     Tik je op de telefoon op een onderwerpkaart ('Waar houdt ze van?' en de andere onderwerpblokken), dan opent meteen het bestaande
+     scherm 'Soort cadeau' over het hele scherm: alleen de soorten van dat onderwerp, met hun aantallen. Een soort kiezen toont direct
+     de gefilterde producten. Terug (pijltje of de terugknop van de telefoon) brengt je naar de onderwerpen. Heeft een onderwerp geen
+     twee of meer soorten, dan zie je meteen de producten. Zelfde filtersysteem (FP, fp2Soorten, fp2Vakken); geen andere producten, links of indeling.
+     Aan: ?proef=soort (uit: ?proef=soort-uit) of window.LK_SOORT = true. */
+  var SOORT_PROEF = (function () { try { if (/[?&]proef=soort-uit(&|$)/.test(location.search)) sessionStorage.removeItem('lksoort'); else if (/[?&]proef=soort(&|$)/.test(location.search)) sessionStorage.setItem('lksoort', '1'); return window.LK_SOORT === true || sessionStorage.getItem('lksoort') === '1'; } catch (e) { return window.LK_SOORT === true; } })();
+  function soortAan() { return SOORT_PROEF && FILTER2 && window.matchMedia && window.matchMedia('(max-width: 759px)').matches; }
+  var soortDoel = ''; try { soortDoel = sessionStorage.getItem('lksoortdoel') || ''; } catch (e) {}
+  var soortScroll = false;
+  if (SOORT_PROEF) document.addEventListener('click', function (e) {
+    var k = e.target && e.target.closest && e.target.closest('.slimnav a.sn-knop');
+    if (!k || k.classList.contains('actief') || e.metaKey || e.ctrlKey || e.shiftKey || !soortAan()) return;
+    var h = k.getAttribute('href') || ''; if (h.indexOf('?') !== -1 || h.charAt(0) !== '/') return;
+    soortDoel = netjes(h); try { sessionStorage.setItem('lksoortdoel', soortDoel); } catch (er) {}
+  }, true);
+  /* De soorten van dit onderwerp, met hun aantal, meeste eerst. Zelfde bron als het filter (fp2Soorten / fp2Vakken). */
+  function soortKeuzes() {
+    var sd = fp2Soorten(), uit;
+    if (sd.groepen.length >= 2) uit = sd.groepen.map(function (g) { return { actie: 'sg:' + g.id, naam: g.naam, n: fp2Tel({ sg: g.id }) }; });
+    else uit = fp2Vakken('').map(function (v) { return { actie: 'soort:' + v, naam: v, n: fp2Tel({ soort: v }) }; });
+    uit = uit.filter(function (x) { return x.n; }).sort(function (a, b) { return b.n - a.n; });
+    /* Nuttig is een vervolgkeuze pas als hij de bezoeker echt helpt kiezen: geen grove afdelingen ('Wonen & koken' tegen 'Eten & drinken'),
+       en minstens drie soorten, of twee die allebei iets voorstellen (de kleinste minstens een kwart). Anders: meteen de producten. */
+    var som = uit.reduce(function (t, x) { return t + x.n; }, 0);
+    var nuttig = sd.laag !== 'afd' && (uit.length >= 3 || (uit.length === 2 && uit[1].n >= som * 0.25));
+    return nuttig ? uit : [];
+  }
+  /* Na het tekenen van de nieuwe pagina: is dit het onderwerp waar net op getikt is, en zijn er soorten te kiezen? Dan het scherm open. */
+  function soortOpenNaKlik() {
+    var doel = soortDoel; soortDoel = ''; try { sessionStorage.removeItem('lksoortdoel'); } catch (e) {}
+    if (!doel || !soortAan() || doel !== netjes(location.pathname) || location.search) return;
+    var fp = $('[data-filterpaneel].fp2', app); if (!fp || !TEL || !BASIS || !fp2Start()) return;
+    var keuzes = soortKeuzes(); if (!keuzes.length) { soortScroll = true; return; } /* geen nuttige vervolgkeuze: meteen naar de producten */
+    FP.direct = true; FP.scherm = 'soort'; FP.keuzes = keuzes; FP.onderwerp = (($('h1', app) || {}).textContent || '').trim();
+    fp.classList.add('direct'); fp2Teken();
+    var blad = $('.filter-blad', fp); if (blad) blad.style.transition = 'none';
+    fp.hidden = false; fp.classList.add('open'); window.scrollTo(0, 0);
+    if (blad) requestAnimationFrame(function () { requestAnimationFrame(function () { blad.style.transition = ''; }); });
+  }
+  function soortDicht() { var fp = $('[data-filterpaneel]'); if (fp) { fp.classList.remove('open', 'direct'); fp.hidden = true; } if (FP) FP.direct = false; }
+  function fp2TekenDirect(blad) {
+    blad.innerHTML = '<div class="fp2-kop"><button type="button" class="fp2-terug" data-fp2="terug" aria-label="Terug naar de onderwerpen">‹</button><strong>Soort cadeau</strong><span></span></div>' +
+      '<div class="fp2-inhoud"><p class="fp2-hulp fp2-direct-hulp">' + (FP.onderwerp ? '<strong>' + esc(FP.onderwerp) + '</strong>' : '') + 'Kies een soort. Je ziet dan meteen de cadeaus.</p>' +
+      FP.keuzes.map(function (x) { return fp2Rij('kies:' + x.actie, esc(x.naam), '', x.n, false); }).join('') + '</div>' +
+      '<div class="fp2-voet"><button type="button" class="knop knop-rand" data-fp2="toon">Bekijk alle ' + getal(fp2Tel({})) + ' cadeaus</button></div>';
+  }
+  function fp2KlikDirect(a) {
+    if (a === 'terug') { try { history.back(); } catch (e) { soortDicht(); } return; }
+    if (a === 'toon') { soortDicht(); var wb = $('.werkbalk', app); /* alles bekijken: meteen bij de producten uitkomen */
+      if (wb) { var kopH = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height; window.scrollTo(0, Math.max(0, wb.getBoundingClientRect().top + window.scrollY - kopH - 8)); }
+      return; }
+    if (a.indexOf('kies:') !== 0) return;
+    var q = {}, r = a.slice(5), i = r.indexOf(':'); q[r.slice(0, i)] = r.slice(i + 1);
+    var pad = FP.pad; FP.direct = false; var fp = $('[data-filterpaneel]'); if (fp) fp.classList.remove('direct');
+    fp2Toepassen(maakAdres(pad, q));
+  }
   function fp2Teken() {
     var blad = $('.fp2-blad'); if (!blad || !FP) return;
+    if (FP.direct) return fp2TekenDirect(blad);
     var q = FP.q, sch = FP.scherm, kop = '', inhoud = '';
     var terug = function (titel) { return '<div class="fp2-kop"><button type="button" class="fp2-terug" data-fp2="terug" aria-label="Terug">‹</button><strong>' + esc(titel) + '</strong><span></span></div>'; };
     if (sch === 'hoofd') {
@@ -796,6 +854,7 @@
   function fp2Naar(scherm) { FP.scherm = scherm; FP.zoek = ''; fp2Teken(); var b = $('.fp2-blad'); if (b) b.scrollTop = 0; }
   function fp2Klik(t) {
     var a = t.getAttribute('data-fp2');
+    if (FP.direct) return fp2KlikDirect(a);
     if (a === 'terug') return fp2Naar(FP.scherm === 'soort2' ? 'soort' : FP.scherm === 'merkalle' ? 'merk' : 'hoofd');
     if (a.indexOf('naar:') === 0) return fp2Naar(a.slice(5));
     if (a.indexOf('groep:') === 0) { FP.groep = a.slice(6); return fp2Naar('soort2'); }
@@ -4479,6 +4538,7 @@
      en je blijft op dezelfde pagina (met je gekozen filters), in plaats van terug naar de vorige pagina te gaan. */
   function openPaneel() {
     var fp = $('[data-filterpaneel]'); if (!fp) return;
+    fp.classList.remove('direct');
     if (fp.classList.contains('fp2')) fp2Start();
     fp.hidden = false; requestAnimationFrame(function () { fp.classList.add('open'); });
     try { if (!(history.state && history.state.paneel)) history.pushState({ paneel: 1 }, ''); } catch (e) {}
@@ -4693,6 +4753,7 @@
     }
 
     var fk = $('.filterknop[data-filter-open]', app), wb = $('.werkbalk', app);
+    if (soortDoel) soortOpenNaKlik(); /* NOVA-010 proef */
     /* Na kiezen in het filterpaneel: terug naar het begin van de lijst, zodat je de nieuwe resultaten ziet. */
     /* Keuze gemaakt in het paneel: het nieuwe paneel meteen weer open, op dezelfde plek (zonder schuifbeweging). */
     if (paneelOpen) { paneelOpen = false; var np = $('[data-filterpaneel]', app);
@@ -4744,6 +4805,9 @@
       } else window.scrollTo(0, 0);
       if (vorigPad !== null) app.focus({ preventScroll: true });
     }
+    /* NOVA-010 proef: onderwerp zonder nuttige vervolgkeuze -> meteen bij de producten uitkomen (niet bovenaan de pagina) */
+    if (soortScroll) { soortScroll = false; var swb = $('.werkbalk', app);
+      if (swb) { var skop = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height; window.scrollTo(0, Math.max(0, swb.getBoundingClientRect().top + window.scrollY - skop - 8)); } }
     /* VONK: na een keuze (of 'Vorige vraag') niet naar de bovenkant springen, maar de volgende vraag
        netjes onder de vaste kopbalk zetten. De hoogte van die balk meten we, dus elk scherm klopt. (wens Marius 2-11-2026) */
     if (d[0] === 'vonk' && a.pad === vorigPad && location.search !== vorigeVonk && !hersteld) {
@@ -4887,7 +4951,7 @@
   window.addEventListener('popstate', function (e) {
     if (negeerPop) { negeerPop = false; if (herstelNa && huidigAdres() !== herstelNa) { try { history.replaceState(e.state, '', herstelNa); } catch (er) {} } herstelNa = null; if (naPopToon) { naPopToon = false; toon(); } return; }
     var pnl = $('[data-filterpaneel]');
-    if (pnl && !pnl.hidden) { var bleef = laatstGetoond; sluitPaneel(true); if (huidigAdres() !== bleef) { try { history.replaceState(e.state, '', bleef); } catch (er) {} } return; }
+    if (pnl && !pnl.hidden && !(FP && FP.direct)) { /* NOVA-010 proef: staat 'Soort cadeau' direct open, dan gaat terug gewoon naar de onderwerpen */ var bleef = laatstGetoond; sluitPaneel(true); if (huidigAdres() !== bleef) { try { history.replaceState(e.state, '', bleef); } catch (er) {} } return; }
     if (huidigAdres() !== laatstGetoond) { terugViaKnop = true; toon(); return; }
     if (document.body.classList.contains('lade-open')) { sluitDoorTerug = true; sluitLade(); return; }
     var st = e.state || {};
