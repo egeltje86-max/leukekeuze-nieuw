@@ -2054,3 +2054,12 @@ html.nova2 .prodkaart.awkaart h3 {
 @media (max-width: 339px) { html.nova2 .prodkaart h3, html.nova2 .prodkaart.awkaart h3 { font-size: 14.5px; } }
 /* Zelfde scherm: de doorgestreepte oude prijs brak tussen '€' en het bedrag. Die blijft nu bij elkaar. */
 .prodkaart .prijs s.oud { white-space: nowrap; }
+
+/* ===== NOVA-010 (live 11-11-2026, GO Marius): na een tik op een onderwerp opent 'Soort cadeau' over het hele telefoonscherm ===== */
+.filterpaneel.fp2.direct .filter-achter { background: #F7F3EC; opacity: 1; }
+.filterpaneel.fp2.direct .filter-blad { top: 0; height: 100%; max-height: none; border-radius: 0; border-top: 0; box-shadow: none; transform: none; }
+.filterpaneel.fp2.direct .fp2-direct-hulp { margin: 16px 2px 10px; font-size: 16px; }
+.filterpaneel.fp2.direct .fp2-direct-hulp strong { display: block; font: 700 22px/1.2 'Playfair Display', Georgia, serif; color: #141A2A; margin-bottom: 4px; }
+.filterpaneel.fp2.direct .fp2-rij { min-height: 56px; }
+.filterpaneel.fp2.direct .fp2-voet .knop { flex: 1; }
+/* ===== einde NOVA-010 ===== */
