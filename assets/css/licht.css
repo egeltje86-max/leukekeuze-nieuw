@@ -2148,3 +2148,30 @@ html.wz-b:not(.lk-gestart) #app .paginakop p.intro, html.wz-b:not(.lk-gestart) #
 /* Tot de app de homepage overneemt: van de gebouwde (oude) homepage alleen het blok 'Voor wie zoek je een cadeau?' laten zien. */
 html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .binnen > :not([data-tel="voor-wie"]) { display: none; }
 /* ===== einde WIJZER ===== */
+
+/* ===== WINKELTOP (11-11-2026, idee Marius): vijf favoriete winkels met elk vijf uitgekozen cadeaus ===== */
+.wtop-raster { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+@media (min-width: 900px) { .wtop-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.wtop-kaart { background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 18px; padding: 16px; box-shadow: 0 6px 18px rgba(10, 16, 32, .06); min-width: 0; }
+.wtop-kaart h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.2; margin: 0 0 2px; color: #141A2A; }
+.wtop-kaart p { margin: 0 0 12px; color: #141A2A; font-size: 1rem; line-height: 1.45; }
+.wtop-rij { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.wtop-prod { display: block; min-width: 0; text-decoration: none; color: #141A2A; }
+.wtop-prod img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; border: 1px solid #E5D7BE; background: #FFFFFF; }
+.wtop-prod > span { display: block; margin-top: 4px; font-family: Manrope, sans-serif; font-weight: 700; font-size: .8rem; text-align: center; white-space: nowrap; }
+.wtop-meer { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; margin-top: 12px; padding: 6px 10px; border: 1px solid #E5D7BE; border-radius: 14px; background: #FFFFFF; color: #141A2A; font-family: Manrope, sans-serif; font-weight: 700; font-size: 1rem; text-align: center; text-decoration: none; }
+.wtop-meer svg { width: 18px; height: 18px; flex: none; }
+/* ===== einde WINKELTOP ===== */
+
+/* ===== VONK strakker (11-11-2026, Marius: 'kan dit ook netter en strakker'): elk voorstel is één nette kaart met de reden en de twee knoppen erin; alles in een rij is even hoog ===== */
+.vonk-zes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 760px) { .vonk-zes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .vonk-zes { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.vonk-keus, html.nova6 body.nova6-vonk .vonk-keus { min-width: 0; background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 18px; box-shadow: 0 5px 18px rgba(20, 26, 42, .065); overflow: hidden; }
+.vonk-keus .prodkaart, html.nova6 body.nova6-vonk .vonk-keus .prodkaart, html.nova3 .vonk-keus .prodkaart, html.nova9 .vonk-keus .prodkaart { border: 0; box-shadow: none; border-radius: 0; background: transparent; }
+.vonk-keus .vonk-waarom, html.nova6 body.nova6-vonk .vonk-keus .vonk-waarom { margin: 0 12px; padding-top: 10px; border-top: 1px solid #E5D7BE; font-size: 14px; line-height: 1.35; min-height: calc(2.7em + 10px); }
+.vonk-keus .vonk-waarom span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.vonk-keus .vonk-keus-acties { margin: 8px 10px 12px; gap: 8px; }
+.vonk-keus .vonk-mini { box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 6px; white-space: nowrap; font-size: 13px; background: #FFFFFF; }
+@media (max-width: 359px) { .vonk-keus .vonk-keus-acties { flex-direction: column; } } /* heel smalle telefoon: de twee knoppen onder elkaar, anders valt 'Goedkoper' buiten de kaart */
+/* ===== einde VONK strakker ===== */

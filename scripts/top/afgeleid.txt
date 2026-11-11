@@ -29,8 +29,8 @@
 /gelegenheid/afscheid-pensioen/haar:24
 /gelegenheid/afscheid-pensioen/hem:17
 /gelegenheid/afscheid-pensioen/opa-oma:16
-/collectie/toppers-van-nu/haar:15
-/collectie/toppers-van-nu/hem:16
+/collectie/toppers-van-nu/haar:14
+/collectie/toppers-van-nu/hem:15
 /collectie/toppers-van-nu/tieners:21
 /collectie/persoonlijke-cadeaus/haar:21
 /collectie/persoonlijke-cadeaus/hem:11

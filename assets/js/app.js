@@ -1079,7 +1079,7 @@
         belevenisBlok() +
 
         /* 3. Onze favorieten: zes handgekozen cadeaus. */
-        favorietenBlok() +
+        favorietenBlok() + winkelTopBlok() +
 
         /* 4. Het seizoen: één grote kaart, twee kleine, op datum. */
         seizoenBlok() +
@@ -1138,7 +1138,7 @@
           .map(function (k) { return miniTegel(k[0], k[1], 'images/sub/rond/' + k[2] + '-klein.webp'); }).join('') + '</nav>' +
         '<p class="wz-vraag">Of kies een bedrag</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' +
         (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip" href="/c/cadeaus/?prijs=' + p.id + '">' + p.label + '</a>'; }).join('') + '</nav></section>' +
-      rijmBlok('home') + seizoenBlok() + belevenisBlok() + favorietenBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
+      rijmBlok('home') + seizoenBlok() + belevenisBlok() + favorietenBlok() + winkelTopBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
       tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; }).concat([['Acties en kortingscodes', '/collectie/aanbiedingen']])) +
       gidsenCompact() + eigenKaart() + zoWerkt +
     '</div>';
@@ -1239,6 +1239,61 @@
       (f.naar ? '<a class="meer" href="' + esc(f.naar) + '">' + esc(f.knop || 'Meer') + ' ' + ic('pijl') + '</a>' : '') + '</div>' +
       '<div class="prodgrid">' + l.map(LK.productKaart).join('') + '</div>' +
       '</section>';
+  }
+  /* WINKELTOP (11-11-2026, idee Marius: 'de allerleukste partners een top 5 plek geven met onze uitgekozen producten, met een plek op de homepage').
+     Vijf favoriete winkels, elk met vijf cadeaus die wij zelf hebben uitgezocht (de eerste vijf van de vaste top '/winkel/<slug>' in topkeuze.js).
+     De kaartjes gaan naar onze eigen productpagina; 'Alle cadeaus van …' gaat naar /zoek?winkel=<naam> (alles van die winkel, de uitgekozen cadeaus eerst).
+     Eerst als voorbeeld: alleen zichtbaar met ?proef=winkels (uit: ?proef=winkels-uit). Voor iedereen aan: window.LK_WINKELTOP = true; helemaal uit: false. */
+  var WINKELTOP = [
+    { shop: 'Dille & Kamille', slug: 'dille-kamille', tekst: 'Natuurlijke spullen voor keuken, huis en tuin.' },
+    { shop: 'Ditverzinjeniet', slug: 'ditverzinjeniet', tekst: 'Grappige en vreemde cadeaus die je nergens anders ziet.' },
+    { shop: 'LEGO', slug: 'lego', tekst: 'Bouwsets voor kinderen en voor grote mensen.' },
+    { shop: 'HEMA', slug: 'hema', tekst: 'Leuke cadeaus voor weinig geld.' },
+    { shop: 'Decantalo', slug: 'decantalo', tekst: 'Mooie flessen: whisky, gin, wijn en bubbels (18+).' }
+  ];
+  var WT_AAN = (function () {
+    if (window.LK_WINKELTOP === true) return true;
+    if (window.LK_WINKELTOP === false) return false;
+    try {
+      var m = /[?&]proef=winkels(-uit)?(?:&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.removeItem('lkwinkels'); else localStorage.setItem('lkwinkels', '1'); }
+      return localStorage.getItem('lkwinkels') === '1';
+    } catch (e) { return false; }
+  })();
+  function winkelSlug(naam) { var w = WINKELTOP.filter(function (x) { return x.shop.toLowerCase() === String(naam).toLowerCase(); })[0]; return w ? w.slug : vouw(String(naam)).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+  function winkelTopBlok() {
+    if (!WT_AAN) return '';
+    var z = LK.zichtbaar(), opId = {}; z.forEach(function (p) { opId[p.id] = p; });
+    var kaarten = WINKELTOP.map(function (w) {
+      var top = ((window.LK_TOPVAST || {})['/winkel/' + w.slug] || []).map(function (id) { return opId[id]; }).filter(function (p) { return p && p.shop === w.shop && p.beeld; }).slice(0, 5);
+      if (top.length < 5) return '';
+      var n = z.filter(function (p) { return p.shop === w.shop; }).length;
+      return '<article class="wtop-kaart"><h3>' + esc(w.shop) + '</h3><p>' + esc(w.tekst) + '</p>' +
+        '<div class="wtop-rij">' + top.map(function (p) {
+          return '<a class="wtop-prod" href="/p/' + esc(p.id) + '" aria-label="' + esc(p.titel) + '"><img src="/' + esc(p.beeld) + '-klein.webp" alt="' + esc(p.titel) + '" loading="lazy" decoding="async" width="400" height="400"><span>' + LK.euro(p.prijs) + '</span></a>';
+        }).join('') + '</div>' +
+        '<a class="wtop-meer" href="/zoek?winkel=' + encodeURIComponent(w.shop) + '">Alle ' + getal(n) + ' cadeaus van ' + esc(w.shop) + ' ' + ic('pijl') + '</a></article>';
+    }).filter(Boolean);
+    if (!kaarten.length) return '';
+    return '<section class="sectie wtop" id="winkeltop" data-tel="winkeltop">' +
+      '<div class="sectie-kop"><div><span class="kicker">Onze favoriete winkels</span><h2>De leukste cadeaus per winkel</h2><p>Per winkel hebben wij de mooiste, leukste en gekste cadeaus uitgezocht.</p></div></div>' +
+      '<div class="wtop-raster">' + kaarten.join('') + '</div></section>';
+  }
+  /* Alles van één winkel (/zoek?winkel=<naam>): de met de hand uitgekozen cadeaus van die winkel eerst, daarna de rest. */
+  function winkelPagina(q) {
+    var laag = String(q.winkel).toLowerCase();
+    var alle = LK.zichtbaar().filter(function (p) { return String(p.shop || '').toLowerCase() === laag; });
+    var naam = alle.length ? alle[0].shop : String(q.winkel);
+    var w = WINKELTOP.filter(function (x) { return x.shop === naam; })[0];
+    var lijst = sorteer(alle, q.sort, '/winkel/' + winkelSlug(naam));
+    zetTitel('Cadeaus van ' + naam);
+    window.LK_SEO = 'De leukste cadeaus van ' + naam + ', door ons met de hand uitgezocht.';
+    return paginakop({ titel: 'Cadeaus van ' + naam, kruimel: [{ tekst: 'Onze winkels', naar: '/winkels' }, { tekst: naam }] }) +
+      '<div class="binnen">' +
+        '<p class="zoek-ruim">' + (w ? esc(w.tekst) + ' ' : '') + 'Bovenaan staan de cadeaus die wij het mooist, leukst of gekst vinden.</p>' +
+        '<div class="werkbalk"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
+        gridMeer(lijst, leegBlok('Niets gevonden', 'Van deze winkel hebben we nu geen cadeaus.', '<a class="knop knop-goud" href="/winkels">Naar onze winkels</a>'), 24) +
+      '</div>';
   }
   function eigenBlok() {
     var e = INST.eigen; if (!e || !(e.ids || []).length) return '';
@@ -2300,6 +2355,7 @@
     return { tekst: t.replace(/[,]+/g, ' ').replace(/\s+/g, ' ').trim(), max: max > 0 ? max : null };
   }
   function zoeken(q) {
+    if (!q.q && q.winkel) return winkelPagina(q); /* WINKELTOP: alles van één winkel */
     var zb = zoekBudget(q.q || '');
     var woorden = zoekWoorden(zb.tekst);
     var lijst = zoekLijst(woorden, q.prijs), ruim = lijst.ruim;
@@ -3208,7 +3264,9 @@
         if (q.voor !== 'iedereen' && !ka && echt(p) === 0) r.push('Gekozen voor ' + label(V.voor, q.voor).toLowerCase());
         if (q.moment !== 'iedereen' && (p.moment || []).indexOf(q.moment) !== -1 && (vn || '').toLowerCase().indexOf(label(V.moment, q.moment).toLowerCase()) === -1) r.push('Leuk voor ' + label(V.moment, q.moment).toLowerCase());
         if (bud && bud.max && isFinite(bud.max)) r.push('Onder €' + bud.max);
-        return r.slice(0, 3).join(' · ');
+        /* 11-11-2026 (Marius: 'kan dit ook netter en strakker'): hooguit twee korte redenen; wat de bezoeker zelf al koos ('Gekozen voor …', 'Leuk voor …') alleen als er niets anders is. */
+        var kern = r.filter(function (x) { return !/^(Gekozen voor|Leuk voor) /.test(x); });
+        return (kern.length ? kern : r).slice(0, 2).join(' · ');
       };
 
       VONK_LAATST.waarom = waarom;
