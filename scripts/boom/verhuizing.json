@@ -27,8 +27,8 @@
        "tekst": "Bordspellen voor het hele gezin en voor wie graag een avond lang een strategie uitdenkt.", "seoTitel": "Bordspellen – voor het gezin en strategiespellen" },
      { "slug": "kaart-partyspellen", "naam": "Kaart- & partyspellen", "beeld": "images/sub/sub-speelgoed-kaartspellen.webp", "uit": ["speelgoed/spellen/kaart-dobbelspellen", "speelgoed/spellen/partyspellen"],
        "tekst": "Kleine spellen die je zo uitlegt: kaartspellen, dobbelspellen en partyspellen voor een avond met vrienden.", "seoTitel": "Kaartspellen, dobbelspellen en partyspellen" },
-     { "slug": "kinderspellen", "naam": "Kinderspellen", "uit": ["speelgoed/spellen/kinderspellen"] },
-     { "slug": "breinbrekers-escape", "naam": "Breinbrekers & escape", "beeld": "images/sub/sub-voor-tieners-spellen-puzzels-gw-klein.webp", "uit": ["speelgoed/spellen/escape-room-breinbrekers"] },
+     { "slug": "kinderspellen", "naam": "Kinderspellen", "seoTitel": "Kinderspellen – bord- en kaartspellen voor kinderen", "uit": ["speelgoed/spellen/kinderspellen"] },
+     { "slug": "breinbrekers-escape", "naam": "Breinbrekers & escape", "seoTitel": "Breinbrekers en escape room-spellen voor thuis", "beeld": "images/sub/sub-voor-tieners-spellen-puzzels-gw-klein.webp", "uit": ["speelgoed/spellen/escape-room-breinbrekers"] },
      { "slug": "puzzels", "naam": "Puzzels", "uit": ["speelgoed/puzzels"] },
      { "slug": "pokemon-verzamelkaarten", "naam": "Pokémon & verzamelkaarten", "uit": ["speelgoed/spellen/verzamelkaarten-pokemon"] }
     ] },
@@ -71,7 +71,7 @@
      { "slug": "foto-persoonlijk", "naam": "Foto & persoonlijk", "uit": ["wonen/foto-persoonlijk"] },
      { "slug": "kerstdecoratie", "naam": "Kerst", "uit": ["wonen/kerstdecoratie"] }
     ] },
-  { "slug": "koken-tafelen", "naam": "Koken & tafelen", "kort": "Koken", "nieuw": true, "van": "wonen", "icoon": "kop",
+  { "slug": "koken-tafelen", "naam": "Koken & tafelen", "kort": "Koken", "nieuw": true, "van": "wonen", "oudeAfd": ["keuken"], "icoon": "kop",
     "rond": "images/categorieen/rond/cat-keuken.webp",
     "tekst": "Voor de keuken en de gedekte tafel: pannen en bakspullen, koffie en thee zetten, mokken en glazen, servies en borrelplanken.",
     "seoTitel": "Koken en tafelen – pannen, koffie en thee, mokken, glazen en servies",

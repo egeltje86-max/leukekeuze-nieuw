@@ -68,6 +68,7 @@ function LK_VERHUIS(L, T) {
     if (thuis && !thuis.subs.some(function (s) { return s.slug === d[1]; })) thuis.subs.push({ slug: d[1], naam: os.naam, verborgen: true, naar: naar, naarVak: naarVak, vakken: vakken });
   });
   /* 3. wat al verborgen was (nog oudere adressen) blijft, en wijst meteen naar de nieuwste plek */
+  var oudeAfd = {}; T.forEach(function (A) { (A.oudeAfd || []).forEach(function (x) { oudeAfd[x] = '/c/' + A.slug; }); });
   function nieuwste(p) { var k = String(p || '').replace(/\/$/, ''); return uit.pad[k] || p; }
   T.forEach(function (A) {
     var oud = zicht[A.slug]; if (!oud) return;
@@ -80,7 +81,7 @@ function LK_VERHUIS(L, T) {
   L.forEach(function (c) {
     if (nieuweAfd[c.slug]) return;
     if (!c.verborgen && zicht[c.slug] && !/^(cadeaus|valentijn)$/.test(c.slug)) return; /* zichtbare afdeling die niet in de tabel staat: hoort niet voor te komen */
-    if (c.naar) c.naar = nieuwste(c.naar);
+    if (c.naar) c.naar = oudeAfd[c.slug] || nieuwste(c.naar); /* een hele oude afdeling die nu weer een eigen hoofdcategorie heeft (Keuken -> Koken & tafelen) */
     (c.subs || []).forEach(function (s) { if (s.naar) s.naar = nieuwste(s.naar); });
     uit.cats.push(c);
   });

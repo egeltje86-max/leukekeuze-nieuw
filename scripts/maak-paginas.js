@@ -157,16 +157,19 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
      Zo blijven adressen die Google al kent werken (gevonden bij de grote controle van 31-10-2026). */
   const vakVerhuis = await page.evaluate(() => {
     const o = {};
-    const gevuld = {}; (window.LK_PRODUCTEN || []).forEach(p => { if (p.status === 'goedgekeurd' && p.afd) gevuld[p.afd + '/' + p.groep + '/' + p.vak] = 1; });
+    const gevuld = {}; (window.LK_PRODUCTEN || []).forEach(p => { if (p.status === 'goedgekeurd' && p.afd) { const k = p.afd + '/' + p.groep + '/' + p.vak; gevuld[k] = (gevuld[k] || 0) + 1; } });
     (window.LK_CATEGORIEEN || []).forEach(c => {
       /* 3.0 (4-11-2026): een hele oude afdeling (bijv. Dranken) stuurt door naar zijn nieuwe plek. */
       if (c.verborgen && c.naar) o['c/' + c.slug] = c.naar.replace(/\/?$/, '/');
       (c.subs || []).forEach(s => {
         if (s.verborgen && (s.vak || s.naar)) o['c/' + c.slug + '/' + s.slug] = s.naar ? s.naar.replace(/\/?$/, '/') : '/c/' + s.vak + '/';
         /* 4.0: oude vakjes sturen door naar hun nieuwe plek; is dat vakje leeg (geen pagina), dan naar de groep erboven */
-        if (s.verborgen && s.naarVak) for (const v of Object.keys(s.naarVak)) { const doel = s.naarVak[v].replace(/\/$/, ''); o['c/' + c.slug + '/' + s.slug + '/' + v] = (gevuld[doel.slice(3)] ? doel : doel.split('/').slice(0, 4).join('/')) + '/'; }
+        if (s.verborgen && s.naarVak) for (const v of Object.keys(s.naarVak)) { const doel = s.naarVak[v].replace(/\/$/, ''); o['c/' + c.slug + '/' + s.slug + '/' + v] = doel + '/'; }
       });
     });
+    /* 11-11-2026: een oud adres stuurt nooit door naar een leeg of dun vakje (minder dan 6 producten: dat staat op noindex,
+       dan raakt Google de draad kwijt). Het gaat dan naar de groep erboven, die wel in Google staat. */
+    Object.keys(o).forEach(k => { const m = /^\/c\/([^/]+\/[^/]+\/[^/]+)\/$/.exec(o[k]); if (m && !(gevuld[m[1]] >= 6)) o[k] = '/c/' + m[1].split('/').slice(0, 2).join('/') + '/'; });
     return o;
   });
   const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
