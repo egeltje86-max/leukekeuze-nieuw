@@ -5,10 +5,10 @@
 /gelegenheid/verjaardag/collega:24
 /gelegenheid/verjaardag/opa-oma:24
 /gelegenheid/jubileum/haar:24
-/gelegenheid/jubileum/hem:18
+/gelegenheid/jubileum/hem:19
 /gelegenheid/jubileum/opa-oma:10
 /gelegenheid/housewarming/haar:24
-/gelegenheid/housewarming/hem:16
+/gelegenheid/housewarming/hem:17
 /gelegenheid/housewarming/collega:17
 /gelegenheid/bedankt/haar:24
 /gelegenheid/bedankt/hem:8
@@ -27,9 +27,11 @@
 /gelegenheid/geslaagd/tieners:24
 /gelegenheid/afscheid-pensioen/collega:24
 /gelegenheid/afscheid-pensioen/haar:24
-/gelegenheid/afscheid-pensioen/hem:16
+/gelegenheid/afscheid-pensioen/hem:17
 /gelegenheid/afscheid-pensioen/opa-oma:16
-/collectie/toppers-van-nu/hem:8
+/collectie/toppers-van-nu/haar:15
+/collectie/toppers-van-nu/hem:16
+/collectie/toppers-van-nu/tieners:21
 /collectie/persoonlijke-cadeaus/haar:21
 /collectie/persoonlijke-cadeaus/hem:11
 /collectie/persoonlijke-cadeaus/tieners:6
@@ -50,7 +52,7 @@
 /collectie/originele-cadeaus/opa-oma:8
 /collectie/adventskalenders/haar:6
 /collectie/cadeaupakketten/haar:11
-/collectie/cadeaupakketten/hem:16
+/collectie/cadeaupakketten/hem:20
 /collectie/cadeaupakketten/tieners:8
 /collectie/cadeaupakketten/collega:13
 /collectie/cadeaupakketten/opa-oma:6
