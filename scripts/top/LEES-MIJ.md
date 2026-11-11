@@ -20,3 +20,4 @@ De 313 losse vakjes (bijv. Dartpijlen) hebben geen vaste top; die zijn op 10-11-
 Uitzondering (11-11-2026): het vakje Hondenspeelgoed heeft wel een vaste top, omdat er ook verwensets en een fotoalbum in zitten en die bovenaan stonden; nu staat echt speelgoed eerst.
 
 Uitzondering (11-11-2026): 'Grappige cadeaus voor kinderen' en '... voor tieners' staan niet meer in `gsubs.txt`. Hun top is met de hand gekozen (opdracht Marius: meer grappige cadeaus voor kinderen en tieners), dus `afleid.js` blijft ervan af.
+Ook 'Grappige cadeaus voor hem', '... voor haar' en '... voor collega' staan sinds 11-11-2026 niet meer in `gsubs.txt`: daar zijn met de hand nieuwe grappige cadeaus tussengevoegd.

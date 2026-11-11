@@ -140,12 +140,12 @@
     ] },
   { "slug": "belevenissen", "naam": "Belevenissen", "kort": "Belevenissen",
     "groepen": [
-     { "slug": "avontuur-snelheid", "naam": "Avontuur & snelheid", "uit": ["belevenissen/snelheid-avontuur", "belevenissen/in-de-lucht"],
+     { "slug": "avontuur-snelheid", "naam": "Avontuur & snelheid", "beeld": "images/sub/sub-belevenissen-avontuur-snelheid.webp", "uit": ["belevenissen/snelheid-avontuur", "belevenissen/in-de-lucht"],
        "tekst": "Voor wie van spanning houdt: in een droomauto rijden, een slipcursus, met een quad door de modder, paragliden of een helikoptervlucht.", "seoTitel": "Avontuur en snelheid cadeau geven – droomauto, slipcursus, helikoptervlucht" },
-     { "slug": "water-strand", "naam": "Water & strand", "uit": ["belevenissen/water-strand"] },
-     { "slug": "uitjes-natuur", "naam": "Uitjes & natuur", "uit": ["belevenissen/dagjes-uit-overnachten", "belevenissen/natuur-dieren"],
+     { "slug": "water-strand", "naam": "Water & strand", "beeld": "images/sub/sub-belevenissen-water-strand.webp", "uit": ["belevenissen/water-strand"] },
+     { "slug": "uitjes-natuur", "naam": "Uitjes & natuur", "beeld": "images/sub/sub-belevenissen-uitjes-natuur.webp", "uit": ["belevenissen/dagjes-uit-overnachten", "belevenissen/natuur-dieren"],
        "tekst": "Samen eropuit: een dagje uit, een bijzondere overnachting, dieren kijken en knuffelen, wandelen, fietsen of steppen.", "seoTitel": "Uitjes en natuur cadeau geven – dagje uit, overnachten en dieren" },
-     { "slug": "workshops-escape-proeven", "naam": "Workshops, escape & proeven", "uit": ["belevenissen/escape-rooms-puzzeltochten", "belevenissen/workshops-proeven"],
+     { "slug": "workshops-escape-proeven", "naam": "Workshops, escape & proeven", "beeld": "images/sub/sub-belevenissen-workshops-proeven.webp", "uit": ["belevenissen/escape-rooms-puzzeltochten", "belevenissen/workshops-proeven"],
        "tekst": "Samen iets doen of maken: een escape room, een puzzel- of speurtocht, een workshop, een proeverij of een eettour.", "seoTitel": "Workshops, escape rooms en proeverijen cadeau geven" }
     ] },
   { "slug": "christelijk", "naam": "Christelijke cadeaus", "kort": "Christelijk",
