@@ -15,6 +15,14 @@ vandaag = datetime.date.today().isoformat(); blok = arg('--blok', 'Piloot ' + va
 CODE = re.compile(r'tag=leukekeuze-21|[?&_=]516846|s=1545784|[?&]a=3110079|awinaffid=3110079|wi=433339|aff=LEUKEKEUZE', re.I)
 PRE = {'Ditverzinjeniet': 'dvzn', 'Cadeau.nl': 'cadeau', 'Grote Kadoshop': 'grotek', 'De Grote Speelgoedwinkel': 'dgsw', 'Nedgame': 'nedg', 'HEMA': 'hema', 'EMP': 'emp', 'LEGO': 'legoshop', 'Bloompost': 'bloom', 'Bellatio': 'bell', 'Kerstland': 'kerstl', 'Hobbymax': 'hobbym', 'Dille & Kamille': 'dkam', 'Countrylifestyle': 'country', 'Animals Giftshop': 'anim', 'Kado-versturen': 'kado', 'Spaarpotten-winkel': 'spaar', 'Smartphoto': 'smartp', 'Fotofabriek': 'fotof', 'Myka': 'myka', 'MYKA': 'myka', 'CoolGift': 'cg', 'Superzero': 'superz', 'Massamarkt': 'massa', 'Yourdecoration': 'yourd', '999 Games': 'g999', 'Knuffelparadijs': 'knufp', 'Cartoon Megastore': 'cartn', 'Louiz': 'louiz', 'IJzersterke geschenken': 'ijz', 'Dr. Martens': 'drm', 'Looking Good': 'lgt', 'Teufel': 'tf', 'Bourgini': 'bourg', 'Gift Republic': 'grotek', 'WoodWick': 'woodw', 'Boardgameshop': 'bgs', 'Stroopwafels.com': 'stroop', 'Gadgets en trends': 'gadget', 'Dropwinkel': 'dw', 'Wijnkring': 'wk', 'Repeat Cashmere': 'repeat', 'Kambukka': 'kamb', 'Toppers in Concert': 'topc', 'Fiftiesstore': 'fiftie', 'Yesgifts': 'yesg', 'Boekenwereld.com': 'boekw'}
 NAAM = {'Myka': 'MYKA', '999 Games': '999Games', 'Yourdecoration': 'YourDecoration', 'Looking Good': 'Looking Good Today'}
+# zelfde voorvoegsel en winkelnaam als de producten die er al staan (11-11-2026)
+PRE.update({'Decantalo': 'dc', 'Wijny': 'wny', 'Butchery.nl': 'butchery'}); NAAM.update({'Butchery.nl': 'Butchery'})
+def DRANK(a):
+    if a[0] != 'eten-drinken': return a[0], a[1]
+    g, v = a[1], a[2]
+    if g in ('sterke-drank', 'bier-sterke-drank'): return 'dranken', (v if v in ('whisky', 'gin', 'rum', 'wodka', 'tequila', 'likeur', 'cognac') else 'bier')
+    m = {'bier': 'bier', 'wijn': 'wijn', 'bubbels': 'bubbels', 'wijn-bubbels': ('bubbels' if v in ('champagne', 'prosecco-cava') else 'wijn'), 'drankaccessoires': 'wijnaccessoires', 'alcoholvrij': 'alcoholvrij'}
+    return ('dranken', m[g]) if g in m else (a[0], a[1])
 # vakken uit data.js
 vak_ok = set(subprocess.run(['node', '-e', """const fs=require('fs');const w={};new Function('window','document',fs.readFileSync('assets/js/data.js','utf8'))(w,{});
 for(const a of w.LK_CATEGORIEEN)for(const g of a.subs||[])for(const v of g.vakjes||[])console.log(a.slug+'/'+g.slug+'/'+v.slug)"""], cwd=ROOT, capture_output=True, text=True).stdout.split())
@@ -42,7 +50,8 @@ for i, keus in KEUZE.items():
     sq.resize((640, 640), Image.LANCZOS).save(os.path.join(ROOT, 'images/producten/%s.webp' % pid), 'WEBP', quality=82)
     sq.resize((400, 400), Image.LANCZOS).save(os.path.join(ROOT, 'images/producten/%s-klein.webp' % pid), 'WEBP', quality=80)
     a = keus['vak'].split('/')
-    uit.append({"id": pid, "titel": keus['titel'], "prijs": float(x['p']), "shop": NAAM.get(x['w'], x['w']), "url": x['l'], "winkelUrl": x['l'], "beeld": "images/producten/" + pid, "cat": a[0], "sub": a[1], "subVast": True, "ookIn": keus.get('ookIn', []), "voor": keus.get('voor', ['iedereen']), "moment": keus.get('moment', ['verjaardag', 'kerst', 'zomaar']), "waarom": keus['waarom'], "status": "goedgekeurd", "nieuw": True, "gecontroleerd": vandaag, "sinds": vandaag, "herkomst": "piloot"})
+    cs = DRANK(a)  # drank hoort bij het label 'dranken' (anders ontbreekt het op 'Whisky, bier & drank' bij Voor hem), 11-11-2026
+    uit.append({"id": pid, "titel": keus['titel'], "prijs": float(x['p']), "shop": NAAM.get(x['w'], x['w']), "url": x['l'], "winkelUrl": x['l'], "beeld": "images/producten/" + pid, "cat": cs[0], "sub": cs[1], "subVast": True, "ookIn": keus.get('ookIn', []), "voor": keus.get('voor', ['iedereen']), "moment": keus.get('moment', ['verjaardag', 'kerst', 'zomaar']), "waarom": keus['waarom'], "status": "goedgekeurd", "nieuw": True, "gecontroleerd": vandaag, "sinds": vandaag, "herkomst": "piloot"})
     vak[pid] = a; titels.add(re.sub(r'[^a-z0-9]', '', keus['titel'].lower())[:30])
 if uit:
     tekst = '\n/* ===== ' + blok + ': ' + str(len(uit)) + ' producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */\nwindow.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, ' + json.dumps(uit, ensure_ascii=False) + ');\n/* ===== einde ' + blok + ' ===== */\n'
