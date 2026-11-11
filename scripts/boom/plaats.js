@@ -9,6 +9,13 @@ try { OUD = JSON.parse(fs.readFileSync(path.join(__dirname, 'oud-naar-nieuw.json
 /* Reparaties 5-11-2026 (GO Marius, na de sitecontrole): partnerlinks voor producten die een gewone winkellink hadden,
    een vakje voor producten zonder vakje, en dubbele producten samenvoegen (de goedkoopste blijft). Zie correcties.json. */
 let COR = { links: {}, vak: {}, samen: {} };
+/* 11-11-2026 (Marius: 'uitzondering, het zijn Black Friday-deals, die zijn altijd enorm afgeprijsd'): de deals die Marius zelf koos
+   (LK_TOPKEUZE['/collectie/black-friday'] in topkeuze.js) mogen een doorgestreepte prijs tot 70% korting tonen; voor al het andere is de grens 50%. */
+const BF_EIGEN = {};
+try {
+  const m = /LK_TOPKEUZE\["\/collectie\/black-friday"\]\s*=\s*(\[[^\]]*\])/.exec(fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'js', 'topkeuze.js'), 'utf8'));
+  if (m) JSON.parse(m[1]).forEach((id) => { BF_EIGEN[id] = 1; });
+} catch (e) {}
 /* 11-11-2026 (grote controle, linktest op 137 producten): bij deze winkels geeft de eigen TradeTracker-doorstuurpagina
    (winkel.nl/map/?tt=...&r=...) een 404, terwijl het product gewoon bestaat. De bezoeker kwam op 'pagina niet gevonden' en wij
    kregen niets. Via tc.tradetracker.net komt hij wel goed uit, met dezelfde code. Zelfde lijst als TT_TC in maak-zoekindex.py:
@@ -49,7 +56,7 @@ function plaats(p) {
   const gz = (COR.gezien || {})[p.id]; if (gz && (!p.gecontroleerd || gz > p.gecontroleerd)) p.gecontroleerd = gz; /* 8-11-2026: controledatum uit de nazorg */
   const pr = (COR.prijs || {})[p.id]; if (pr) { p.prijs = pr[0]; if (pr[1] && pr[1] > pr[0]) p.oudePrijs = pr[1]; else delete p.oudePrijs; }
   if (p.oudePrijs && !(p.oudePrijs > p.prijs)) delete p.oudePrijs; /* geen 'van-prijs' die niet hoger is */
-  if (p.oudePrijs && Math.round((1 - p.prijs / p.oudePrijs) * 100) > 50) delete p.oudePrijs; /* precies 50% (24,99 van 49,99) mag blijven */ /* 11-11-2026 (grote controle, OK Marius): de grens is 50% in plaats van 70%. Een hogere korting is bijna altijd een adviesprijs uit de feed die wij niet kunnen nagaan; de prijs zelf blijft gewoon staan. */ if (p.oudePrijs && p.shop === 'Watch Enclave') delete p.oudePrijs; /* 10-11-2026 (idee J, ACM): de van-prijs van Watch Enclave is een adviesprijs die we niet kunnen nagaan */ /* 10-11-2026 (ACM): meer dan 70% korting is bijna altijd een adviesprijs, dan tonen we geen van-prijs */
+  if (p.oudePrijs && Math.round((1 - p.prijs / p.oudePrijs) * 100) > (BF_EIGEN[p.id] ? 70 : 50)) delete p.oudePrijs; /* precies 50% (24,99 van 49,99) mag blijven */ /* 11-11-2026 (grote controle, OK Marius): de grens is 50% in plaats van 70%. Een hogere korting is bijna altijd een adviesprijs uit de feed die wij niet kunnen nagaan; de prijs zelf blijft gewoon staan. */ if (p.oudePrijs && p.shop === 'Watch Enclave') delete p.oudePrijs; /* 10-11-2026 (idee J, ACM): de van-prijs van Watch Enclave is een adviesprijs die we niet kunnen nagaan */ /* 10-11-2026 (ACM): meer dan 70% korting is bijna altijd een adviesprijs, dan tonen we geen van-prijs */
   /* Ronde Sinterklaas & Kerst (7-11-2026, gekeurd door Marius): 'Uit Kerstcadeaus' / 'Uit Sinterklaas'.
      Het product blijft op de site in zijn eigen vakje, maar staat niet meer op die cadeaupagina. */
   const ni = (COR.nietIn || {})[p.id];
