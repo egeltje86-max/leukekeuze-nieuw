@@ -18,7 +18,7 @@ function LK_VERHUIS(L, T) {
     var c = oud ? kopie(oud, ['subs']) : { slug: A.slug };
     if (!oud) { ['tegel', 'banner'].forEach(function (k) { if (bron[k]) c[k] = bron[k]; }); c.icoon = A.icoon || bron.icoon; }
     c.naam = A.naam; c.kort = A.kort || A.naam;
-    ['rond', 'tekst', 'seoTitel', 'icoon'].forEach(function (k) { if (A[k]) c[k] = A[k]; });
+    ['rond', 'tekst', 'seoTitel', 'icoon', 'tegel', 'banner'].forEach(function (k) { if (A[k]) c[k] = A[k]; }); /* tegel en banner: eigen beelden van Nova (11-11-2026) */
     if (A.tekst && oud) { delete c.seoTekst; }
     c.subs = A.groepen.map(function (G) {
       var heel = G.uit.length === 1 && typeof G.uit[0] === 'string' && G.uit[0].split('/').length === 2;
