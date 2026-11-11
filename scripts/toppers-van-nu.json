@@ -1,5 +1,5 @@
 {
- "_uitleg": "Collectie 'Toppers van nu'. 11-11-2026 (opdracht Marius: 'maak die relevant, zoek de echte toppers'): opnieuw opgebouwd uit onderzoek naar wat nu echt gewild is (winnaars Speelgoed van het Jaar 2026, de hypes KPop Demon Hunters, Pokémon 30 jaar, Stitch, Bluey, Switch 2, squishy dumplings, Hitster, en bij volwassenen AirPods, JBL, Instax, Owala, Sol de Janeiro, LEGO voor volwassenen). De 33 toppers die Marius op 6-11 koos staan er nog in (achteraan). Handmatig gekozen lijst; geen automatische titelwoorden. De volgorde bovenaan staat in scripts/top/picks.json.",
+ "_uitleg": "Collectie 'Toppers van nu'. 11-11-2026 (opdracht Marius: 'maak die relevant, zoek de echte toppers'): opnieuw opgebouwd uit onderzoek naar wat nu echt gewild is (winnaars Speelgoed van het Jaar 2026, de hypes KPop Demon Hunters, Pokémon 30 jaar, Stitch, Bluey, Switch 2, squishy dumplings, Hitster, en bij volwassenen AirPods, JBL, Instax, Owala, Sol de Janeiro, LEGO voor volwassenen). De 33 toppers die Marius op 6-11 koos staan er nog in (achteraan). Handmatig gekozen lijst; geen automatische titelwoorden. De volgorde bovenaan staat in scripts/top/picks.json. 11-11-2026 (Marius: 'er mogen alleen nog maar cadeaus in staan, geen gereedschap'): heggenschaar, golf-multitool, de drie films, de twee aquariums en de vogelkooi zijn uit deze collectie gehaald (ze staan nog wel in hun eigen vakje). Zet hier geen gereedschap, dierbenodigdheden of losse films meer in.",
  "woorden": "(?!)",
  "ids": [
   "bol-9300000252262288",
@@ -24,7 +24,7 @@
   "bol-9300000060629305",
   "bol-9300000276376648",
   "tf-107001609",
-  "dvzn-198055",
+  "dvzn-549082",
   "lego-72151",
   "bol-9300000277694649",
   "bol-9300000237452859",
@@ -84,14 +84,6 @@
   "dvzn-915338",
   "bol-9200000037554087",
   "bol-9300000163354878",
-  "dvzn-549082",
-  "bol-9300000017133246",
-  "dvzn-878250",
-  "cl-dvd-inside-out2",
-  "cl-dvd-mission",
-  "cl-dvd-wicked",
-  "bol-9300000246445457",
-  "cl-flamingo-mobi",
-  "cl-superfish-start50"
+  "dvzn-878250"
  ]
 }
