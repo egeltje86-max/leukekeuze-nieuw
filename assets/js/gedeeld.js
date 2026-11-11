@@ -65,7 +65,10 @@
     /* 2.0: een groep of subcategorie kan doorverwijzen naar een ander vak (bijv. Sieraden & Horloges -> mode-beauty/horloges). */
     var cd = (window.LK_CATEGORIEEN || []).find(function (c) { return c.slug === cat; });
     if (cd) {
-      if (sub) { var sd = (cd.subs || []).find(function (s) { return s.slug === sub; }); if (sd && sd.vak) { var vd = sd.vak.split('/'); return hoortBij(p, vd[0], vd[1]); } }
+      if (sub) { var sd = (cd.subs || []).find(function (s) { return s.slug === sub; });
+        /* 4.0: een groep van vóór de verhuizing weet nog precies welke vakjes erbij hoorden (gidsen en gelegenheden noemen die groepen nog). */
+        if (sd && sd.verborgen && sd.vakken) return sd.vakken.some(function (v) { var d = v.split('/'); return (!vak || d[2] === vak) && hoortBij(p, d[0], d[1], d[2]); });
+        if (sd && sd.vak) { var vd = sd.vak.split('/'); return hoortBij(p, vd[0], vd[1]); } }
       else if (cd.vakken && cd.vakken.some(function (v) { var d = v.split('/'); return hoortBij(p, d[0], d[1]); })) return true;
     }
     /* Christelijke producten staan alleen in de categorie Christelijke cadeaus (wens van Marius). */
@@ -112,6 +115,7 @@
     cadeau: '<rect x="3.5" y="9" width="17" height="11.5" rx="1.5"/><path d="M2.5 9h19V6.5h-19Z"/><path d="M12 6.5v14M12 6.5C10.5 3 6.5 2.6 7 5c.4 1.6 5 1.5 5 1.5Zm0 0c1.5-3.5 5.5-3.9 5-1.5-.4 1.6-5 1.5-5 1.5Z"/>',
     nood: '<path d="M12 2.8 4.8 5.6v5.6c0 4.6 3 8.4 7.2 10 4.2-1.6 7.2-5.4 7.2-10V5.6Z"/><path d="M12 8.2v7.2M8.4 11.8h7.2"/>',
     kruis: '<path d="M10.5 2.5h3v5h5v3h-5v11h-3v-11h-5v-3h5Z"/>',
+    dobbel: '<rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="8.5" cy="8.5" r=".9" fill="currentColor"/><circle cx="15.5" cy="8.5" r=".9" fill="currentColor"/><circle cx="12" cy="12" r=".9" fill="currentColor"/><circle cx="8.5" cy="15.5" r=".9" fill="currentColor"/><circle cx="15.5" cy="15.5" r=".9" fill="currentColor"/>', /* 4.0: Spellen & puzzels */
     beer: '<circle cx="6.5" cy="6" r="2.5"/><circle cx="17.5" cy="6" r="2.5"/><circle cx="12" cy="12" r="7"/><circle cx="9.5" cy="11" r=".6" fill="currentColor"/><circle cx="14.5" cy="11" r=".6" fill="currentColor"/><path d="M10.5 14.5c.8.8 2.2.8 3 0"/>',
     huis: '<path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/>',
     koptelefoon: '<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4.5" height="7" rx="1.5"/><rect x="16.5" y="14" width="4.5" height="7" rx="1.5"/>',

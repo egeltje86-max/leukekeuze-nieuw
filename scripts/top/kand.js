@@ -19,7 +19,7 @@ function lijst(pad) {
       if (g.labels && !(p.voor || []).some(v => g.labels.includes(v))) return false;
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
-      let pl = PR.plekkenVan(p); if (p.afd) pl = pl.concat([p.afd + '/' + p.groep, p.afd + '/' + p.groep + '/' + p.vak]);
+      let pl = PR.plekkenVan(p); if (p.afd) pl = pl.concat([p.afd + '/' + p.groep, p.afd + '/' + p.groep + '/' + p.vak]); { const o = PR.oud(p); if (o !== p) pl = pl.concat([o.afd + '/' + o.groep, o.afd + '/' + o.groep + '/' + o.vak]); } /* 4.0: gelegenheden noemen nog de groepen van vóór de verhuizing */
       return PR.past(pl, g.vakken || []);
     }).filter(p => { if (!d[2]) return true; const pe = W.LK_PERSONEN.find(x => x.slug === d[2]); return PR.vanPersoon(p, pe) && PR.smalMagBij(p, pe.slug) && !(p.nietBij && p.nietBij.includes(pe.slug)); });
   }

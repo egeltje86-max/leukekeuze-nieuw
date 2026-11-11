@@ -72,7 +72,12 @@
     toon();
   }
   /* 3.0 (4-11-2026): links naar een oude afdeling of een oud vakje meteen naar de nieuwe plek laten wijzen (zonder omweg). */
+  /* 4.0: de plek van een product van vóór de verhuizing (gelegenheden en collecties noemen die groepen nog). */
+  function oudPlek(p) { var t = window.LK_VERHUISD && p.afd && window.LK_VERHUISD.terug[p.afd + '/' + p.groep + '/' + p.vak]; return t ? t.split('/') : null; }
   function verhuisd(h) {
+    /* 4.0: groepen en vakjes die een nieuwe plek hebben (window.LK_VERHUISD.pad, uit scripts/boom/verhuizing.json) */
+    var v4 = window.LK_VERHUISD && /^(\/c\/[^?#]+?)\/?([?#].*)?$/.exec(h);
+    if (v4 && window.LK_VERHUISD.pad[v4[1]]) return window.LK_VERHUISD.pad[v4[1]] + (v4[2] || '');
     var m = /^\/c\/([^\/?#]+)(?:\/([^\/?#]+))?\/?([?#].*)?$/.exec(h); if (!m) return h;
     var c = window.LK_CAT(m[1]); if (!c) return h;
     var s = m[2] ? window.LK_SUB(c, m[2]) : null;
@@ -296,8 +301,8 @@
     var GRENZEN = [15, 30, 60, 120, Infinity];
     var l = lijst.map(function (p) {
       var s = (typeof p.rang === 'number' ? p.rang : 0.55) + (mixGetal(p.id + '|' + week) - 0.5) * 0.12 + (p.beeld ? 0 : -0.5);
-      if (kind) s += p.afd === 'speelgoed' ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
-      if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen')) s += 0.1;
+      if (kind) s += (p.afd === 'speelgoed' || p.afd === 'spellen-puzzels') ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'koken-tafelen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
+      if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen' || (p.afd === 'spellen-puzzels' && p.groep !== 'puzzels'))) s += 0.1;
       /* 9-11-2026 (GO Marius): bezoekers klikken vooral op cadeaus onder €25 (middelste klikprijs €21, op de site €28).
          Die komen daarom wat vaker vooraan; duurdere blijven er gewoon tussen (goedkoop en duur door elkaar). */
       if (typeof p.prijs === 'number') s += p.prijs < 15 ? 0.1 : p.prijs < 25 ? 0.08 : p.prijs < 40 ? 0.03 : p.prijs > 100 ? -0.05 : 0;
@@ -417,11 +422,13 @@
     '/voor/opa-oma': { titel: 'Waar worden ze blij van?', top: ['fotos-herinneringen', 'lekkers-drank', 'boeken', 'tuin-vogels', 'puzzels-spellen', 'warm-comfortabel'] },
     '/voor/collega': { titel: 'Waar zoek je iets voor?' },
     '/voor/baby': { titel: 'Wat zoek je voor de baby?' },
-    '/c/elektronica': { titel: 'Wat zoek je?', top: ['audio', 'gaming', 'smartwatches', 'foto-video', 'gadgets', 'tablets-e-readers'] },
-    '/c/beauty-verzorging': { titel: 'Wat zoek je?', top: ['parfum', 'giftsets', 'huid-gezicht', 'haar', 'scheren-baard', 'bad-douche'] },
+    '/c/elektronica': { titel: 'Wat zoek je?', top: ['gaming', 'audio', 'smartwatches', 'foto-video', 'gadgets', 'tablets-tv-slim-wonen', 'tablets-e-readers'] },
+    '/c/beauty-verzorging': { titel: 'Wat zoek je?', top: ['parfum', 'giftsets', 'bad-huid-spa', 'make-up-haar', 'scheren-baard', 'huid-gezicht', 'haar', 'bad-douche'] },
     '/c/wonen': { titel: 'Wat zoek je?', top: ['verlichting', 'kaarsen-geur', 'woondecoratie', 'woontextiel', 'kerstdecoratie', 'foto-persoonlijk'] },
-    '/c/eten-drinken': { titel: 'Wat zoek je?', top: ['chocolade-snoep', 'cadeaupakketten', 'delicatessen', 'koffie-thee-cacao', 'sterke-drank', 'wijn'] },
-    '/c/sport-outdoor': { titel: 'Wat zoek je?', top: ['fitness-yoga', 'wandelen-hardlopen', 'kamperen-outdoor', 'fietsen-steps', 'darts', 'metaaldetectie'] },
+    '/c/eten-drinken': { titel: 'Wat zoek je?', top: ['chocolade-snoep', 'cadeaupakketten', 'lekkernijen', 'wijn-bubbels', 'bier-sterke-drank', 'drankaccessoires', 'delicatessen', 'koffie-thee-cacao', 'sterke-drank', 'wijn'] },
+    '/c/sport-outdoor': { titel: 'Wat zoek je?', top: ['darts', 'fitness-yoga', 'outdoor-avontuur', 'fietsen-steps', 'balsport-spel', 'metaaldetectie', 'wandelen-hardlopen', 'kamperen-outdoor'] },
+    '/c/spellen-puzzels': { titel: 'Wat zoek je?', top: ['bordspellen', 'kaart-partyspellen', 'puzzels', 'kinderspellen', 'breinbrekers-escape', 'pokemon-verzamelkaarten'] },
+    '/c/koken-tafelen': { titel: 'Wat zoek je?', top: ['koken-bakken', 'koffie-thee-zetten', 'mokken-glazen', 'tafelen-borrel'] },
     /* 9-11-2026 (GO Marius): Belevenissen. Eerst zijn zes favorieten, de rest onder 'Bekijk alle onderwerpen'. */
     '/c/belevenissen': { titel: 'Waar heb je zin in?', vast: [
       ['auto', 'Droomauto rijden', '/c/belevenissen/snelheid-avontuur/droomauto-rijden', '🏎️'], ['lucht', 'Paragliden & helikopter', '/c/belevenissen/in-de-lucht', '🪂'],
@@ -435,7 +442,7 @@
       ['proef', 'Proeven & eettours', '/c/belevenissen/workshops-proeven/proeven-eettours', '🍷'], ['foto', 'Fotograferen', '/c/belevenissen/workshops-proeven/fotograferen', '📷'],
       ['yoga', 'Yoga & ontspanning', '/c/belevenissen/workshops-proeven', '🧘'], ['dag', 'Dagjes uit', '/c/belevenissen/dagjes-uit-overnachten/dagjes-uit', '🗺️'],
       ['meer', 'Nog meer uitjes', '/c/belevenissen/dagjes-uit-overnachten/nog-meer-uitjes', '✨']] },
-    '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-psalmboeken', 'boeken-muziek', 'sieraden', 'wanddecoratie-teksten', 'voor-kinderen', 'doop-belijdenis'] },
+    '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-boeken', 'sieraden', 'wanddecoratie-teksten', 'kerst', 'doop-belijdenis-kinderen', 'bijbels-psalmboeken', 'boeken-muziek', 'voor-kinderen', 'doop-belijdenis'] },
     '/c/cadeaus/kerst': { titel: 'Wat zoek je voor kerst?', vast: [
       ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔', 'images/sub/rond/voor-hem.webp'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗', 'images/sub/rond/voor-haar.webp'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒', 'images/sub/rond/voor-kinderen.webp'],
       ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶', 'images/sub/rond/cad-onder-15-klein.webp'], ['beleef', 'Belevenissen', '/gids/belevenis-cadeau', '🎟️', 'images/categorieen/belevenissen-home.webp'], ['advent', 'Advents\u00ADkalenders', '/collectie/adventskalenders', '📅', 'images/sub/rond/col-adventskalenders.webp'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄', 'images/sub/iconen/icoon-wonen-kerstdecoratie.webp'],
@@ -971,8 +978,8 @@
     var min = function (l) { return l.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9); };
     var eu = function (n) { return '€' + (n % 1 ? n.toFixed(2).replace('.', ',') : String(n)); };
     var tegels = BELEVENIS_TEGELS.map(function (t) {
-      var l = alle.filter(function (p) { return p.groep === t[1] && (!t[2] || p.vak === t[2]); }); if (!l.length) return '';
-      var naar = '/c/belevenissen/' + t[1] + (t[2] ? '/' + t[2] : '');
+      var l = alle.filter(function (p) { var op = oudPlek(p), g = op ? op[1] : p.groep; return g === t[1] && (!t[2] || p.vak === t[2]); }); if (!l.length) return ''; /* 4.0: t[1] is de groep van vóór de verhuizing */
+      var naar = verhuisd('/c/belevenissen/' + t[1] + (t[2] ? '/' + t[2] : ''));
       return '<a class="bh-tegel" href="' + naar + '"><span class="bh-foto"><img src="images/producten/' + t[3] + '-klein.webp" alt="" loading="lazy" decoding="async" width="400" height="400"></span>' +
         '<span class="bh-naam">' + esc(t[0]) + '</span><span class="bh-prijs">vanaf ' + eu(min(l)) + '</span></a>';
     }).join('');
@@ -988,7 +995,7 @@
   function home() {
     zetTitel('');
     var CATS_VOOR = ['wonen', 'mode-sieraden', 'beauty-verzorging', 'elektronica', 'eten-drinken', 'speelgoed'];
-    var CATS_REST = ['hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'];
+    var CATS_REST = ['spellen-puzzels', 'koken-tafelen', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'].filter(function (s) { var c = window.LK_CAT(s); return c && !c.verborgen; }); /* 4.0: Spellen & puzzels en Koken & tafelen erbij (alleen als ze bestaan) */
     var cat = function (slug, extra) {
       var c = window.LK_CAT(slug); if (!c || c.verborgen) return '';
       return '<a class="catbalk' + (extra ? ' extra' : '') + '" href="/c/' + c.slug + '"><span class="catbalk-rond"><img src="' + (c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" loading="lazy" decoding="async" width="80" height="80"></span><span class="catbalk-naam">' + esc(c.naam) + '</span>' + ic('rechts', 'catbalk-pijl') + '</a>';
@@ -1237,11 +1244,14 @@
     zetTitel('Alle categorieën');
     /* 5-11-2026 (wens Marius): ronde icoontjes zoals op de homepage, met een korte, duidelijke tekst eronder. */
     var T = {
-      'speelgoed': 'LEGO, spellen, knuffels en buitenspeelgoed voor elke leeftijd.',
+      'speelgoed': window.LK_VERHUISD ? 'LEGO, knuffels, knutselen en buitenspeelgoed voor elke leeftijd.' : 'LEGO, spellen, knuffels en buitenspeelgoed voor elke leeftijd.',
+      'spellen-puzzels': 'Bordspellen, kaartspellen, puzzels en Pokémon-kaarten.',
+      'koken-tafelen': 'Pannen, koffie en thee, mokken, glazen en borrelplanken.',
+      'belevenissen': 'Samen iets beleven: van droomauto rijden tot een nachtje weg.',
       'elektronica': 'Koptelefoons, gaming, smartwatches en slimme gadgets.',
       'mode-sieraden': 'Sieraden, horloges, tassen en warme winterkleding.',
       'beauty-verzorging': 'Parfum, giftsets en verwenproducten voor hem en haar.',
-      'wonen': 'Kaarsen, sfeerlicht, plaids en mooie spullen voor de keuken.',
+      'wonen': window.LK_VERHUISD ? 'Kaarsen, sfeerlicht, plaids en mooie spullen voor in huis.' : 'Kaarsen, sfeerlicht, plaids en mooie spullen voor de keuken.',
       'eten-drinken': 'Chocolade, wijn, bubbels en lekkere cadeaupakketten.',
       'hobby': 'Schilderen, haken, modelbouw en zelf iets moois maken.',
       'sport-outdoor': 'Darts, fitness, kamperen en erop uit in de natuur.',
@@ -1515,6 +1525,7 @@
       if (g.codes && !codesNu().some(function (c) { return (c.shop || c.winkel) === p.shop; })) return false;
       var plekken = plekkenVan(p);
       if (p.afd) plekken = plekken.concat([p.afd + '/' + p.groep, p.afd + '/' + p.groep + '/' + p.vak]); /* 7-11-2026: gelegenheden noemen ook de nieuwe vakjes (bijv. mode-sieraden/horloges) */
+      var op = oudPlek(p); if (op) plekken = plekken.concat([op[0] + '/' + op[1], op.join('/')]); /* 4.0: ook de groep van vóór de verhuizing */
       return plekken.some(function (x) { return g.vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
   }
@@ -4691,7 +4702,8 @@
     else if (d[0] === 'c') {
       /* 3.0: oude afdelingen en vakjes sturen door naar hun nieuwe plek (adressen die Google en oude links kennen). */
       var oc = window.LK_CAT(d[1]), os = oc && d[2] ? window.LK_SUB(oc, d[2]) : null;
-      var naar = (os && os.verborgen && os.naar) || (oc && oc.verborgen && oc.naar && !d[2] ? oc.naar : '');
+      var naar = (os && os.verborgen && d[3] && os.naarVak && os.naarVak[d[3]]) || (os && os.verborgen && os.naar) || (oc && oc.verborgen && oc.naar && !d[2] ? oc.naar : '');
+      if (!naar && window.LK_VERHUISD && window.LK_VERHUISD.pad['/c/' + d.slice(1).join('/')]) naar = window.LK_VERHUISD.pad['/c/' + d.slice(1).join('/')]; /* 4.0: een vakje dat naar een andere groep is gegaan */
       if (naar) { ga(naar + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
       html = categorie(d[1], d[2], d[3], a.q);
     }

@@ -1,0 +1,833 @@
+{
+ "_uitleg": "Gemaakt door scripts/boom/verhuis.js uit verhuizing.json – niet met de hand bewerken. vak: oud afd/groep/vak -> nieuw; groep: oud afd/groep -> nieuw (product zonder vakje); terug: nieuw -> oud.",
+ "vak": {
+  "speelgoed/spellen/bordspellen-voor-het-gezin": [
+   "spellen-puzzels",
+   "bordspellen",
+   "bordspellen-voor-het-gezin"
+  ],
+  "speelgoed/spellen/strategiespellen": [
+   "spellen-puzzels",
+   "bordspellen",
+   "strategiespellen"
+  ],
+  "speelgoed/spellen/kaart-dobbelspellen": [
+   "spellen-puzzels",
+   "kaart-partyspellen",
+   "kaart-dobbelspellen"
+  ],
+  "speelgoed/spellen/partyspellen": [
+   "spellen-puzzels",
+   "kaart-partyspellen",
+   "partyspellen"
+  ],
+  "speelgoed/spellen/kinderspellen": [
+   "spellen-puzzels",
+   "kinderspellen",
+   "kinderspellen"
+  ],
+  "speelgoed/spellen/escape-room-breinbrekers": [
+   "spellen-puzzels",
+   "breinbrekers-escape",
+   "escape-room-breinbrekers"
+  ],
+  "speelgoed/puzzels/legpuzzels": [
+   "spellen-puzzels",
+   "puzzels",
+   "legpuzzels"
+  ],
+  "speelgoed/puzzels/3d-puzzels": [
+   "spellen-puzzels",
+   "puzzels",
+   "3d-puzzels"
+  ],
+  "speelgoed/puzzels/kinderpuzzels": [
+   "spellen-puzzels",
+   "puzzels",
+   "kinderpuzzels"
+  ],
+  "speelgoed/spellen/verzamelkaarten-pokemon": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "verzamelkaarten-pokemon"
+  ],
+  "elektronica/tablets-e-readers/tablets": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "tablets"
+  ],
+  "elektronica/tablets-e-readers/e-readers": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "e-readers"
+  ],
+  "elektronica/tablets-e-readers/powerbanks-opladers": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "powerbanks-opladers"
+  ],
+  "elektronica/tablets-e-readers/telefoonaccessoires": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "telefoonaccessoires"
+  ],
+  "elektronica/tv-beeld/beamers": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "beamers"
+  ],
+  "elektronica/tv-beeld/televisies": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "televisies"
+  ],
+  "elektronica/tv-beeld/soundbars": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "soundbars"
+  ],
+  "elektronica/slim-wonen/robotstofzuigers": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "robotstofzuigers"
+  ],
+  "elektronica/slim-wonen/slimme-lampen-sfeerlicht": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "slimme-lampen-sfeerlicht"
+  ],
+  "elektronica/slim-wonen/slimme-speakers": [
+   "elektronica",
+   "tablets-tv-slim-wonen",
+   "slimme-speakers"
+  ],
+  "beauty-verzorging/bad-douche/bruisballen": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "bruisballen"
+  ],
+  "beauty-verzorging/bad-douche/bad-doucheproducten": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "bad-doucheproducten"
+  ],
+  "beauty-verzorging/huid-gezicht/gezichtsverzorging": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "gezichtsverzorging"
+  ],
+  "beauty-verzorging/huid-gezicht/lichaamsverzorging": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "lichaamsverzorging"
+  ],
+  "beauty-verzorging/wellness/massage": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "massage"
+  ],
+  "beauty-verzorging/wellness/spa-ontspanning": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "spa-ontspanning"
+  ],
+  "beauty-verzorging/mond-tanden/elektrische-tandenborstels": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "elektrische-tandenborstels"
+  ],
+  "beauty-verzorging/mond-tanden/monddouches-flossers": [
+   "beauty-verzorging",
+   "bad-huid-spa",
+   "monddouches-flossers"
+  ],
+  "beauty-verzorging/make-up-nagels/make-up": [
+   "beauty-verzorging",
+   "make-up-haar",
+   "make-up"
+  ],
+  "beauty-verzorging/make-up-nagels/nagels": [
+   "beauty-verzorging",
+   "make-up-haar",
+   "nagels"
+  ],
+  "beauty-verzorging/haar/haarverzorging": [
+   "beauty-verzorging",
+   "make-up-haar",
+   "haarverzorging"
+  ],
+  "beauty-verzorging/haar/fohns-stijltangen": [
+   "beauty-verzorging",
+   "make-up-haar",
+   "fohns-stijltangen"
+  ],
+  "wonen/koken-bakken/pannen-messen": [
+   "koken-tafelen",
+   "koken-bakken",
+   "pannen-messen"
+  ],
+  "wonen/koken-bakken/opbergen-voorraadpotten": [
+   "koken-tafelen",
+   "koken-bakken",
+   "opbergen-voorraadpotten"
+  ],
+  "wonen/koken-bakken/airfryers": [
+   "koken-tafelen",
+   "koken-bakken",
+   "airfryers"
+  ],
+  "wonen/koken-bakken/drinkflessen-lunchboxen": [
+   "koken-tafelen",
+   "koken-bakken",
+   "drinkflessen-lunchboxen"
+  ],
+  "wonen/koken-bakken/keukenapparaten": [
+   "koken-tafelen",
+   "koken-bakken",
+   "keukenapparaten"
+  ],
+  "wonen/koken-bakken/bakken": [
+   "koken-tafelen",
+   "koken-bakken",
+   "bakken"
+  ],
+  "wonen/koffie-thee-zetten/koffiemachines": [
+   "koken-tafelen",
+   "koffie-thee-zetten",
+   "koffiemachines"
+  ],
+  "wonen/koffie-thee-zetten/theepotten": [
+   "koken-tafelen",
+   "koffie-thee-zetten",
+   "theepotten"
+  ],
+  "wonen/koffie-thee-zetten/mokken-theeglazen": [
+   "koken-tafelen",
+   "mokken-glazen",
+   "mokken-theeglazen"
+  ],
+  "wonen/tafelen/glazen": [
+   "koken-tafelen",
+   "mokken-glazen",
+   "glazen"
+  ],
+  "wonen/tafelen/servies": [
+   "koken-tafelen",
+   "tafelen-borrel",
+   "servies"
+  ],
+  "wonen/tafelen/borrelplanken-serveren": [
+   "koken-tafelen",
+   "tafelen-borrel",
+   "borrelplanken-serveren"
+  ],
+  "eten-drinken/delicatessen/kaas-worst": [
+   "eten-drinken",
+   "lekkernijen",
+   "kaas-worst"
+  ],
+  "eten-drinken/delicatessen/sauzen-kruiden": [
+   "eten-drinken",
+   "lekkernijen",
+   "sauzen-kruiden"
+  ],
+  "eten-drinken/delicatessen/noten-zoutjes": [
+   "eten-drinken",
+   "lekkernijen",
+   "noten-zoutjes"
+  ],
+  "eten-drinken/koffie-thee-cacao/koffie": [
+   "eten-drinken",
+   "lekkernijen",
+   "koffie"
+  ],
+  "eten-drinken/koffie-thee-cacao/thee": [
+   "eten-drinken",
+   "lekkernijen",
+   "thee"
+  ],
+  "eten-drinken/koffie-thee-cacao/warme-chocolademelk": [
+   "eten-drinken",
+   "lekkernijen",
+   "warme-chocolademelk"
+  ],
+  "eten-drinken/wijn/port-dessertwijn": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "port-dessertwijn"
+  ],
+  "eten-drinken/wijn/sake": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "sake"
+  ],
+  "eten-drinken/wijn/rode-wijn": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "rode-wijn"
+  ],
+  "eten-drinken/wijn/witte-wijn": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "witte-wijn"
+  ],
+  "eten-drinken/wijn/rose": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "rose"
+  ],
+  "eten-drinken/bubbels/champagne": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "champagne"
+  ],
+  "eten-drinken/bubbels/prosecco-cava": [
+   "eten-drinken",
+   "wijn-bubbels",
+   "prosecco-cava"
+  ],
+  "eten-drinken/sterke-drank/tequila": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "tequila"
+  ],
+  "eten-drinken/sterke-drank/whisky": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "whisky"
+  ],
+  "eten-drinken/sterke-drank/cognac": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "cognac"
+  ],
+  "eten-drinken/sterke-drank/gin": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "gin"
+  ],
+  "eten-drinken/sterke-drank/rum": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "rum"
+  ],
+  "eten-drinken/sterke-drank/wodka": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "wodka"
+  ],
+  "eten-drinken/sterke-drank/likeur": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "likeur"
+  ],
+  "eten-drinken/bier/speciaalbier": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "speciaalbier"
+  ],
+  "eten-drinken/bier/bierpakketten": [
+   "eten-drinken",
+   "bier-sterke-drank",
+   "bierpakketten"
+  ],
+  "sport-outdoor/wandelen-hardlopen/hardlopen": [
+   "sport-outdoor",
+   "fitness-yoga",
+   "hardlopen"
+  ],
+  "sport-outdoor/kamperen-outdoor/klimmen-boulderen": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "klimmen-boulderen"
+  ],
+  "sport-outdoor/kamperen-outdoor/zaklampen-hoofdlampen": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "zaklampen-hoofdlampen"
+  ],
+  "sport-outdoor/kamperen-outdoor/verrekijkers": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "verrekijkers"
+  ],
+  "sport-outdoor/kamperen-outdoor/hengelsport": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "hengelsport"
+  ],
+  "sport-outdoor/kamperen-outdoor/messen-multitools": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "messen-multitools"
+  ],
+  "sport-outdoor/kamperen-outdoor/kampeerspullen": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "kampeerspullen"
+  ],
+  "sport-outdoor/wandelen-hardlopen/wandelen": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "wandelen"
+  ],
+  "sport-outdoor/noodpakket-survival/noodpakketten": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "sport-outdoor/noodpakket-survival/water-eten": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "sport-outdoor/noodpakket-survival/tassen-onderweg": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "sport-outdoor/noodpakket-survival/koken-warmte": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "sport-outdoor/noodpakket-survival/licht-stroom": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "sport-outdoor/noodpakket-survival/ehbo-brand": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "sport-outdoor/noodpakket-survival/noodradio-s": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "noodpakket-survival"
+  ],
+  "boeken-media/muziek/vinyl": [
+   "boeken-media",
+   "muziek-films",
+   "vinyl"
+  ],
+  "boeken-media/muziek/cd-s": [
+   "boeken-media",
+   "muziek-films",
+   "cd-s"
+  ],
+  "boeken-media/films-series/dvd-blu-ray": [
+   "boeken-media",
+   "muziek-films",
+   "dvd-blu-ray"
+  ],
+  "dieren/klein-dier/konijn-knaagdier": [
+   "dieren",
+   "andere-dieren",
+   "konijn-knaagdier"
+  ],
+  "dieren/klein-dier/reptielen-terrarium": [
+   "dieren",
+   "andere-dieren",
+   "reptielen-terrarium"
+  ],
+  "dieren/klein-dier/kippen": [
+   "dieren",
+   "andere-dieren",
+   "kippen"
+  ],
+  "dieren/paard/paardrijden": [
+   "dieren",
+   "andere-dieren",
+   "paardrijden"
+  ],
+  "dieren/vogels-vissen/aquarium": [
+   "dieren",
+   "andere-dieren",
+   "aquarium"
+  ],
+  "dieren/vogels-vissen/vogels": [
+   "dieren",
+   "andere-dieren",
+   "vogels"
+  ],
+  "belevenissen/snelheid-avontuur/droomauto-rijden": [
+   "belevenissen",
+   "avontuur-snelheid",
+   "droomauto-rijden"
+  ],
+  "belevenissen/snelheid-avontuur/4x4-quad-motor": [
+   "belevenissen",
+   "avontuur-snelheid",
+   "4x4-quad-motor"
+  ],
+  "belevenissen/snelheid-avontuur/slipcursus": [
+   "belevenissen",
+   "avontuur-snelheid",
+   "slipcursus"
+  ],
+  "belevenissen/in-de-lucht/paragliden-helikoptervlucht": [
+   "belevenissen",
+   "avontuur-snelheid",
+   "paragliden-helikoptervlucht"
+  ],
+  "belevenissen/dagjes-uit-overnachten/overnachten": [
+   "belevenissen",
+   "uitjes-natuur",
+   "overnachten"
+  ],
+  "belevenissen/dagjes-uit-overnachten/dagjes-uit": [
+   "belevenissen",
+   "uitjes-natuur",
+   "dagjes-uit"
+  ],
+  "belevenissen/dagjes-uit-overnachten/nog-meer-uitjes": [
+   "belevenissen",
+   "uitjes-natuur",
+   "nog-meer-uitjes"
+  ],
+  "belevenissen/natuur-dieren/dieren-kijken-knuffelen": [
+   "belevenissen",
+   "uitjes-natuur",
+   "dieren-kijken-knuffelen"
+  ],
+  "belevenissen/natuur-dieren/wandeltochten": [
+   "belevenissen",
+   "uitjes-natuur",
+   "wandeltochten"
+  ],
+  "belevenissen/natuur-dieren/fietsen-steppen-scooteren": [
+   "belevenissen",
+   "uitjes-natuur",
+   "fietsen-steppen-scooteren"
+  ],
+  "belevenissen/escape-rooms-puzzeltochten/escape-rooms": [
+   "belevenissen",
+   "workshops-escape-proeven",
+   "escape-rooms"
+  ],
+  "belevenissen/escape-rooms-puzzeltochten/puzzel-speurtochten": [
+   "belevenissen",
+   "workshops-escape-proeven",
+   "puzzel-speurtochten"
+  ],
+  "belevenissen/workshops-proeven/zelf-maken": [
+   "belevenissen",
+   "workshops-escape-proeven",
+   "zelf-maken"
+  ],
+  "belevenissen/workshops-proeven/proeven-eettours": [
+   "belevenissen",
+   "workshops-escape-proeven",
+   "proeven-eettours"
+  ],
+  "belevenissen/workshops-proeven/fotograferen": [
+   "belevenissen",
+   "workshops-escape-proeven",
+   "fotograferen"
+  ],
+  "christelijk/bijbels-psalmboeken/psalmboeken": [
+   "christelijk",
+   "bijbels-boeken",
+   "psalmboeken"
+  ],
+  "christelijk/bijbels-psalmboeken/bijbels": [
+   "christelijk",
+   "bijbels-boeken",
+   "bijbels"
+  ],
+  "christelijk/boeken-muziek/christelijke-boeken": [
+   "christelijk",
+   "bijbels-boeken",
+   "christelijke-boeken"
+  ],
+  "christelijk/boeken-muziek/christelijke-muziek": [
+   "christelijk",
+   "bijbels-boeken",
+   "christelijke-muziek"
+  ],
+  "christelijk/doop-belijdenis/belijdenis": [
+   "christelijk",
+   "doop-belijdenis-kinderen",
+   "belijdenis"
+  ],
+  "christelijk/doop-belijdenis/doop": [
+   "christelijk",
+   "doop-belijdenis-kinderen",
+   "doop"
+  ],
+  "christelijk/voor-kinderen/speelgoed-cadeautjes": [
+   "christelijk",
+   "doop-belijdenis-kinderen",
+   "speelgoed-cadeautjes"
+  ],
+  "christelijk/voor-kinderen/kinderbijbels-boeken": [
+   "christelijk",
+   "doop-belijdenis-kinderen",
+   "kinderbijbels-boeken"
+  ]
+ },
+ "groep": {
+  "speelgoed/spellen": [
+   "spellen-puzzels",
+   "bordspellen"
+  ],
+  "speelgoed/puzzels": [
+   "spellen-puzzels",
+   "puzzels"
+  ],
+  "elektronica/tablets-e-readers": [
+   "elektronica",
+   "tablets-tv-slim-wonen"
+  ],
+  "elektronica/tv-beeld": [
+   "elektronica",
+   "tablets-tv-slim-wonen"
+  ],
+  "elektronica/slim-wonen": [
+   "elektronica",
+   "tablets-tv-slim-wonen"
+  ],
+  "beauty-verzorging/bad-douche": [
+   "beauty-verzorging",
+   "bad-huid-spa"
+  ],
+  "beauty-verzorging/huid-gezicht": [
+   "beauty-verzorging",
+   "bad-huid-spa"
+  ],
+  "beauty-verzorging/wellness": [
+   "beauty-verzorging",
+   "bad-huid-spa"
+  ],
+  "beauty-verzorging/mond-tanden": [
+   "beauty-verzorging",
+   "bad-huid-spa"
+  ],
+  "beauty-verzorging/make-up-nagels": [
+   "beauty-verzorging",
+   "make-up-haar"
+  ],
+  "beauty-verzorging/haar": [
+   "beauty-verzorging",
+   "make-up-haar"
+  ],
+  "wonen/koken-bakken": [
+   "koken-tafelen",
+   "koken-bakken"
+  ],
+  "wonen/koffie-thee-zetten": [
+   "koken-tafelen",
+   "koffie-thee-zetten"
+  ],
+  "wonen/tafelen": [
+   "koken-tafelen",
+   "tafelen-borrel"
+  ],
+  "eten-drinken/delicatessen": [
+   "eten-drinken",
+   "lekkernijen"
+  ],
+  "eten-drinken/koffie-thee-cacao": [
+   "eten-drinken",
+   "lekkernijen"
+  ],
+  "eten-drinken/wijn": [
+   "eten-drinken",
+   "wijn-bubbels"
+  ],
+  "eten-drinken/bubbels": [
+   "eten-drinken",
+   "wijn-bubbels"
+  ],
+  "eten-drinken/sterke-drank": [
+   "eten-drinken",
+   "bier-sterke-drank"
+  ],
+  "eten-drinken/bier": [
+   "eten-drinken",
+   "bier-sterke-drank"
+  ],
+  "sport-outdoor/wandelen-hardlopen": [
+   "sport-outdoor",
+   "fitness-yoga"
+  ],
+  "sport-outdoor/kamperen-outdoor": [
+   "sport-outdoor",
+   "outdoor-avontuur"
+  ],
+  "sport-outdoor/noodpakket-survival": [
+   "sport-outdoor",
+   "outdoor-avontuur"
+  ],
+  "boeken-media/muziek": [
+   "boeken-media",
+   "muziek-films"
+  ],
+  "boeken-media/films-series": [
+   "boeken-media",
+   "muziek-films"
+  ],
+  "dieren/klein-dier": [
+   "dieren",
+   "andere-dieren"
+  ],
+  "dieren/paard": [
+   "dieren",
+   "andere-dieren"
+  ],
+  "dieren/vogels-vissen": [
+   "dieren",
+   "andere-dieren"
+  ],
+  "belevenissen/snelheid-avontuur": [
+   "belevenissen",
+   "avontuur-snelheid"
+  ],
+  "belevenissen/in-de-lucht": [
+   "belevenissen",
+   "avontuur-snelheid"
+  ],
+  "belevenissen/dagjes-uit-overnachten": [
+   "belevenissen",
+   "uitjes-natuur"
+  ],
+  "belevenissen/natuur-dieren": [
+   "belevenissen",
+   "uitjes-natuur"
+  ],
+  "belevenissen/escape-rooms-puzzeltochten": [
+   "belevenissen",
+   "workshops-escape-proeven"
+  ],
+  "belevenissen/workshops-proeven": [
+   "belevenissen",
+   "workshops-escape-proeven"
+  ],
+  "christelijk/bijbels-psalmboeken": [
+   "christelijk",
+   "bijbels-boeken"
+  ],
+  "christelijk/boeken-muziek": [
+   "christelijk",
+   "bijbels-boeken"
+  ],
+  "christelijk/doop-belijdenis": [
+   "christelijk",
+   "doop-belijdenis-kinderen"
+  ],
+  "christelijk/voor-kinderen": [
+   "christelijk",
+   "doop-belijdenis-kinderen"
+  ]
+ },
+ "terug": {
+  "spellen-puzzels/pokemon-verzamelkaarten/verzamelkaarten-pokemon": "speelgoed/spellen/verzamelkaarten-pokemon",
+  "spellen-puzzels/breinbrekers-escape/escape-room-breinbrekers": "speelgoed/spellen/escape-room-breinbrekers",
+  "spellen-puzzels/kinderspellen/kinderspellen": "speelgoed/spellen/kinderspellen",
+  "spellen-puzzels/kaart-partyspellen/kaart-dobbelspellen": "speelgoed/spellen/kaart-dobbelspellen",
+  "spellen-puzzels/kaart-partyspellen/partyspellen": "speelgoed/spellen/partyspellen",
+  "spellen-puzzels/bordspellen/strategiespellen": "speelgoed/spellen/strategiespellen",
+  "spellen-puzzels/bordspellen/bordspellen-voor-het-gezin": "speelgoed/spellen/bordspellen-voor-het-gezin",
+  "spellen-puzzels/puzzels/legpuzzels": "speelgoed/puzzels/legpuzzels",
+  "spellen-puzzels/puzzels/3d-puzzels": "speelgoed/puzzels/3d-puzzels",
+  "spellen-puzzels/puzzels/kinderpuzzels": "speelgoed/puzzels/kinderpuzzels",
+  "elektronica/tablets-tv-slim-wonen/tablets": "elektronica/tablets-e-readers/tablets",
+  "elektronica/tablets-tv-slim-wonen/e-readers": "elektronica/tablets-e-readers/e-readers",
+  "elektronica/tablets-tv-slim-wonen/powerbanks-opladers": "elektronica/tablets-e-readers/powerbanks-opladers",
+  "elektronica/tablets-tv-slim-wonen/telefoonaccessoires": "elektronica/tablets-e-readers/telefoonaccessoires",
+  "elektronica/tablets-tv-slim-wonen/beamers": "elektronica/tv-beeld/beamers",
+  "elektronica/tablets-tv-slim-wonen/televisies": "elektronica/tv-beeld/televisies",
+  "elektronica/tablets-tv-slim-wonen/soundbars": "elektronica/tv-beeld/soundbars",
+  "elektronica/tablets-tv-slim-wonen/robotstofzuigers": "elektronica/slim-wonen/robotstofzuigers",
+  "elektronica/tablets-tv-slim-wonen/slimme-lampen-sfeerlicht": "elektronica/slim-wonen/slimme-lampen-sfeerlicht",
+  "elektronica/tablets-tv-slim-wonen/slimme-speakers": "elektronica/slim-wonen/slimme-speakers",
+  "beauty-verzorging/bad-huid-spa/bruisballen": "beauty-verzorging/bad-douche/bruisballen",
+  "beauty-verzorging/bad-huid-spa/bad-doucheproducten": "beauty-verzorging/bad-douche/bad-doucheproducten",
+  "beauty-verzorging/bad-huid-spa/gezichtsverzorging": "beauty-verzorging/huid-gezicht/gezichtsverzorging",
+  "beauty-verzorging/bad-huid-spa/lichaamsverzorging": "beauty-verzorging/huid-gezicht/lichaamsverzorging",
+  "beauty-verzorging/bad-huid-spa/massage": "beauty-verzorging/wellness/massage",
+  "beauty-verzorging/bad-huid-spa/spa-ontspanning": "beauty-verzorging/wellness/spa-ontspanning",
+  "beauty-verzorging/bad-huid-spa/elektrische-tandenborstels": "beauty-verzorging/mond-tanden/elektrische-tandenborstels",
+  "beauty-verzorging/bad-huid-spa/monddouches-flossers": "beauty-verzorging/mond-tanden/monddouches-flossers",
+  "beauty-verzorging/make-up-haar/make-up": "beauty-verzorging/make-up-nagels/make-up",
+  "beauty-verzorging/make-up-haar/nagels": "beauty-verzorging/make-up-nagels/nagels",
+  "beauty-verzorging/make-up-haar/haarverzorging": "beauty-verzorging/haar/haarverzorging",
+  "beauty-verzorging/make-up-haar/fohns-stijltangen": "beauty-verzorging/haar/fohns-stijltangen",
+  "koken-tafelen/koken-bakken/pannen-messen": "wonen/koken-bakken/pannen-messen",
+  "koken-tafelen/koken-bakken/opbergen-voorraadpotten": "wonen/koken-bakken/opbergen-voorraadpotten",
+  "koken-tafelen/koken-bakken/airfryers": "wonen/koken-bakken/airfryers",
+  "koken-tafelen/koken-bakken/drinkflessen-lunchboxen": "wonen/koken-bakken/drinkflessen-lunchboxen",
+  "koken-tafelen/koken-bakken/keukenapparaten": "wonen/koken-bakken/keukenapparaten",
+  "koken-tafelen/koken-bakken/bakken": "wonen/koken-bakken/bakken",
+  "koken-tafelen/koffie-thee-zetten/koffiemachines": "wonen/koffie-thee-zetten/koffiemachines",
+  "koken-tafelen/mokken-glazen/mokken-theeglazen": "wonen/koffie-thee-zetten/mokken-theeglazen",
+  "koken-tafelen/koffie-thee-zetten/theepotten": "wonen/koffie-thee-zetten/theepotten",
+  "koken-tafelen/tafelen-borrel/borrelplanken-serveren": "wonen/tafelen/borrelplanken-serveren",
+  "koken-tafelen/tafelen-borrel/servies": "wonen/tafelen/servies",
+  "koken-tafelen/mokken-glazen/glazen": "wonen/tafelen/glazen",
+  "eten-drinken/lekkernijen/kaas-worst": "eten-drinken/delicatessen/kaas-worst",
+  "eten-drinken/lekkernijen/sauzen-kruiden": "eten-drinken/delicatessen/sauzen-kruiden",
+  "eten-drinken/lekkernijen/noten-zoutjes": "eten-drinken/delicatessen/noten-zoutjes",
+  "eten-drinken/lekkernijen/koffie": "eten-drinken/koffie-thee-cacao/koffie",
+  "eten-drinken/lekkernijen/thee": "eten-drinken/koffie-thee-cacao/thee",
+  "eten-drinken/lekkernijen/warme-chocolademelk": "eten-drinken/koffie-thee-cacao/warme-chocolademelk",
+  "eten-drinken/wijn-bubbels/port-dessertwijn": "eten-drinken/wijn/port-dessertwijn",
+  "eten-drinken/wijn-bubbels/sake": "eten-drinken/wijn/sake",
+  "eten-drinken/wijn-bubbels/rode-wijn": "eten-drinken/wijn/rode-wijn",
+  "eten-drinken/wijn-bubbels/witte-wijn": "eten-drinken/wijn/witte-wijn",
+  "eten-drinken/wijn-bubbels/rose": "eten-drinken/wijn/rose",
+  "eten-drinken/wijn-bubbels/champagne": "eten-drinken/bubbels/champagne",
+  "eten-drinken/wijn-bubbels/prosecco-cava": "eten-drinken/bubbels/prosecco-cava",
+  "eten-drinken/bier-sterke-drank/tequila": "eten-drinken/sterke-drank/tequila",
+  "eten-drinken/bier-sterke-drank/whisky": "eten-drinken/sterke-drank/whisky",
+  "eten-drinken/bier-sterke-drank/cognac": "eten-drinken/sterke-drank/cognac",
+  "eten-drinken/bier-sterke-drank/gin": "eten-drinken/sterke-drank/gin",
+  "eten-drinken/bier-sterke-drank/rum": "eten-drinken/sterke-drank/rum",
+  "eten-drinken/bier-sterke-drank/wodka": "eten-drinken/sterke-drank/wodka",
+  "eten-drinken/bier-sterke-drank/likeur": "eten-drinken/sterke-drank/likeur",
+  "eten-drinken/bier-sterke-drank/speciaalbier": "eten-drinken/bier/speciaalbier",
+  "eten-drinken/bier-sterke-drank/bierpakketten": "eten-drinken/bier/bierpakketten",
+  "sport-outdoor/outdoor-avontuur/wandelen": "sport-outdoor/wandelen-hardlopen/wandelen",
+  "sport-outdoor/fitness-yoga/hardlopen": "sport-outdoor/wandelen-hardlopen/hardlopen",
+  "sport-outdoor/outdoor-avontuur/klimmen-boulderen": "sport-outdoor/kamperen-outdoor/klimmen-boulderen",
+  "sport-outdoor/outdoor-avontuur/zaklampen-hoofdlampen": "sport-outdoor/kamperen-outdoor/zaklampen-hoofdlampen",
+  "sport-outdoor/outdoor-avontuur/verrekijkers": "sport-outdoor/kamperen-outdoor/verrekijkers",
+  "sport-outdoor/outdoor-avontuur/hengelsport": "sport-outdoor/kamperen-outdoor/hengelsport",
+  "sport-outdoor/outdoor-avontuur/messen-multitools": "sport-outdoor/kamperen-outdoor/messen-multitools",
+  "sport-outdoor/outdoor-avontuur/kampeerspullen": "sport-outdoor/kamperen-outdoor/kampeerspullen",
+  "sport-outdoor/outdoor-avontuur/noodpakket-survival": "sport-outdoor/noodpakket-survival/noodradio-s",
+  "boeken-media/muziek-films/vinyl": "boeken-media/muziek/vinyl",
+  "boeken-media/muziek-films/cd-s": "boeken-media/muziek/cd-s",
+  "boeken-media/muziek-films/dvd-blu-ray": "boeken-media/films-series/dvd-blu-ray",
+  "dieren/andere-dieren/konijn-knaagdier": "dieren/klein-dier/konijn-knaagdier",
+  "dieren/andere-dieren/reptielen-terrarium": "dieren/klein-dier/reptielen-terrarium",
+  "dieren/andere-dieren/kippen": "dieren/klein-dier/kippen",
+  "dieren/andere-dieren/paardrijden": "dieren/paard/paardrijden",
+  "dieren/andere-dieren/aquarium": "dieren/vogels-vissen/aquarium",
+  "dieren/andere-dieren/vogels": "dieren/vogels-vissen/vogels",
+  "belevenissen/avontuur-snelheid/droomauto-rijden": "belevenissen/snelheid-avontuur/droomauto-rijden",
+  "belevenissen/avontuur-snelheid/4x4-quad-motor": "belevenissen/snelheid-avontuur/4x4-quad-motor",
+  "belevenissen/avontuur-snelheid/slipcursus": "belevenissen/snelheid-avontuur/slipcursus",
+  "belevenissen/avontuur-snelheid/paragliden-helikoptervlucht": "belevenissen/in-de-lucht/paragliden-helikoptervlucht",
+  "belevenissen/uitjes-natuur/overnachten": "belevenissen/dagjes-uit-overnachten/overnachten",
+  "belevenissen/uitjes-natuur/dagjes-uit": "belevenissen/dagjes-uit-overnachten/dagjes-uit",
+  "belevenissen/uitjes-natuur/nog-meer-uitjes": "belevenissen/dagjes-uit-overnachten/nog-meer-uitjes",
+  "belevenissen/uitjes-natuur/dieren-kijken-knuffelen": "belevenissen/natuur-dieren/dieren-kijken-knuffelen",
+  "belevenissen/uitjes-natuur/wandeltochten": "belevenissen/natuur-dieren/wandeltochten",
+  "belevenissen/uitjes-natuur/fietsen-steppen-scooteren": "belevenissen/natuur-dieren/fietsen-steppen-scooteren",
+  "belevenissen/workshops-escape-proeven/escape-rooms": "belevenissen/escape-rooms-puzzeltochten/escape-rooms",
+  "belevenissen/workshops-escape-proeven/puzzel-speurtochten": "belevenissen/escape-rooms-puzzeltochten/puzzel-speurtochten",
+  "belevenissen/workshops-escape-proeven/zelf-maken": "belevenissen/workshops-proeven/zelf-maken",
+  "belevenissen/workshops-escape-proeven/proeven-eettours": "belevenissen/workshops-proeven/proeven-eettours",
+  "belevenissen/workshops-escape-proeven/fotograferen": "belevenissen/workshops-proeven/fotograferen",
+  "christelijk/bijbels-boeken/psalmboeken": "christelijk/bijbels-psalmboeken/psalmboeken",
+  "christelijk/bijbels-boeken/bijbels": "christelijk/bijbels-psalmboeken/bijbels",
+  "christelijk/bijbels-boeken/christelijke-boeken": "christelijk/boeken-muziek/christelijke-boeken",
+  "christelijk/bijbels-boeken/christelijke-muziek": "christelijk/boeken-muziek/christelijke-muziek",
+  "christelijk/doop-belijdenis-kinderen/belijdenis": "christelijk/doop-belijdenis/belijdenis",
+  "christelijk/doop-belijdenis-kinderen/doop": "christelijk/doop-belijdenis/doop",
+  "christelijk/doop-belijdenis-kinderen/speelgoed-cadeautjes": "christelijk/voor-kinderen/speelgoed-cadeautjes",
+  "christelijk/doop-belijdenis-kinderen/kinderbijbels-boeken": "christelijk/voor-kinderen/kinderbijbels-boeken"
+ }
+}

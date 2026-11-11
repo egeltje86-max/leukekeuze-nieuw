@@ -18,6 +18,9 @@ NAAM = {'Myka': 'MYKA', '999 Games': '999Games', 'Yourdecoration': 'YourDecorati
 # vakken uit data.js
 vak_ok = set(subprocess.run(['node', '-e', """const fs=require('fs');const w={};new Function('window','document',fs.readFileSync('assets/js/data.js','utf8'))(w,{});
 for(const a of w.LK_CATEGORIEEN)for(const g of a.subs||[])for(const v of g.vakjes||[])console.log(a.slug+'/'+g.slug+'/'+v.slug)"""], cwd=ROOT, capture_output=True, text=True).stdout.split())
+# 4.0: ook de namen van voor de nieuwe indeling blijven geldig (de bouw zet ze zelf op de nieuwe plek)
+try: vak_ok |= set(json.load(open(os.path.join(ROOT, 'scripts/boom/verhuisd.json'), encoding='utf-8')).get('vak', {}).keys())
+except Exception: pass
 bestaand = open(os.path.join(ROOT, 'assets/js/producten.js'), encoding='utf-8').read()
 titels = set(re.sub(r'[^a-z0-9]', '', t.lower())[:30] for t in re.findall(r'"titel":\s*"((?:[^"\\]|\\.)*)"', bestaand))
 uit = []; vak = {}; over = []

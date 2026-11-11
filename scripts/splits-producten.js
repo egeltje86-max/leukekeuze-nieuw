@@ -57,6 +57,15 @@ function splits() {
   /* 10-11-2026: paginaregels (geen verkeerde producten op een pagina), zie scripts/boom/paginaregels.js */
   const prTel = require('./boom/paginaregels.js').pas(alle, ROOT);
   console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp, '| smal (tekst voor één soort persoon)', prTel.smal, '| van een Voor wie-pagina af (niet zeker)', prTel.nietBij);
+  /* 4.0 (proef 11-11-2026): de nieuwe indeling. De paginaregels hierboven werken nog met de plek van vóór de verhuizing;
+     daarna krijgt elk product zijn nieuwe afdeling, groep en vakje (scripts/boom/verhuisd.json, gemaakt door scripts/boom/verhuis.js).
+     Bestaat dat bestand niet, dan verandert er niets. */
+  let VERH = null; try { VERH = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/verhuisd.json'), 'utf8')); } catch (e) {}
+  if (VERH) { let n = 0;
+    for (const p of alle) { if (!p.afd) continue;
+      const x = VERH.vak[p.afd + '/' + p.groep + '/' + p.vak] || VERH.groep[p.afd + '/' + p.groep];
+      if (x) { p.afd = x[0]; p.groep = x[1]; if (x[2]) p.vak = x[2]; n++; } }
+    console.log('4.0 nieuwe indeling: ' + n + ' producten op een nieuwe plek'); }
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];

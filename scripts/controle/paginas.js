@@ -17,18 +17,18 @@ for (const pe of window.LK_PERSONEN) for (const s of pe.subs || []) {
 // 2. Doelgroep en vakje botsen (herenparfum bij 'voor haar', games bij opa en oma ...)
 for (const p of P) for (const l of Object.keys(PR.REGELS.label_vak_niet)) {
   const r = PR.REGELS.label_vak_niet[l];
-  if ((p.voor || []).indexOf(l) !== -1 && r.vakken.indexOf(p.vak) !== -1 && !(r.behalve && new RegExp(r.behalve, 'i').test(p.titel))) fouten.push({ wat: 'vakje past niet bij ' + l, id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
+  if ((p.voor || []).indexOf(l) !== -1 && r.vakken.indexOf(PR.oud(p).vak) !== -1 && !(r.behalve && new RegExp(r.behalve, 'i').test(p.titel))) fouten.push({ wat: 'vakje past niet bij ' + l, id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
 }
 for (const p of P) for (const l of Object.keys(PR.REGELS.label_titel_niet || {})) {
   const r = PR.REGELS.label_titel_niet[l];
-  if ((p.voor || []).indexOf(l) !== -1 && r.afd.indexOf(p.afd) !== -1 && new RegExp(r.woorden, 'i').test(p.titel) && !new RegExp(r.behalve, 'i').test(p.titel)) fouten.push({ wat: 'titel past niet bij ' + l, id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
+  if ((p.voor || []).indexOf(l) !== -1 && r.afd.indexOf(PR.oud(p).afd) !== -1 && new RegExp(r.woorden, 'i').test(p.titel) && !new RegExp(r.behalve, 'i').test(p.titel)) fouten.push({ wat: 'titel past niet bij ' + l, id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
 }
 // 2b. Smal (tekst voor één soort persoon): moet gemerkt zijn, en app.js moet elke soort kennen
 { const S = PR.REGELS.smal || {}; const app = fs.readFileSync(path.join(R, 'assets/js/app.js'), 'utf8');
   for (const k of Object.keys(S)) { if (k[0] === '_') continue;
     if (app.indexOf(k + ': [') === -1) fouten.push({ wat: 'smal-soort ' + k + ' ontbreekt in app.js (SMAL_PAG)', id: '-', titel: k, vak: '-' });
     const w = new RegExp(S[k].woorden, 'i'), b = S[k].behalve ? new RegExp(S[k].behalve, 'i') : null;
-    for (const p of P) if (p.cat !== 'christelijk' && !p.smal && w.test(p.titel) && !(b && b.test(p.titel)) && !(S[k].nietAfd && S[k].nietAfd.indexOf(p.afd) !== -1)) fouten.push({ wat: 'smal cadeau niet gemerkt (' + k + ')', id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
+    for (const p of P) if (p.cat !== 'christelijk' && !p.smal && w.test(p.titel) && !(b && b.test(p.titel)) && !(S[k].nietAfd && S[k].nietAfd.indexOf(PR.oud(p).afd) !== -1)) fouten.push({ wat: 'smal cadeau niet gemerkt (' + k + ')', id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
   }
   for (const pe of window.LK_PERSONEN) for (const p of P) if (p.smal && p.cat !== 'christelijk' && !p.los && PR.vanPersoon(p, pe) && !PR.smalMagBij(p, pe.slug) && app.indexOf('!smalBij(p, pe.slug)') === -1) fouten.push({ wat: 'smal cadeau op Voor ' + pe.slug, id: p.id, titel: p.titel, vak: p.afd + '/' + p.vak });
 }
