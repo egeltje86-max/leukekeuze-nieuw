@@ -146,7 +146,7 @@
     var f = PRIJZEN.find(function (p) { return p.id === id; }); if (f) return f;
     /* Eigen budget uit VONK-tekst (fase 3): 'tot40' = tot €40, 'vanaf75' = vanaf €75. */
     var mr = /^r(\d{1,4})-(\d{1,4})$/.exec(id || ''); /* 9-11-2026: eigen minimum en maximum in het nieuwe filter */
-    if (mr) return { id: id, label: '€' + mr[1] + ' – €' + mr[2], min: +mr[1], max: +mr[2] };
+    if (mr) return { id: id, label: +mr[1] === 0 ? 'Tot €' + mr[2] : '€' + mr[1] + ' – €' + mr[2], min: +mr[1], max: +mr[2] };
     var m = /^(tot|vanaf)(\d{1,4})$/.exec(id || '');
     if (m) return m[1] === 'tot' ? { id: id, label: 'Tot €' + m[2], min: 0, max: +m[2] } : { id: id, label: 'Vanaf €' + m[2], min: +m[2], max: Infinity };
     return PRIJZEN[0];
@@ -279,6 +279,14 @@
     ouder: [null, /moederdag|vaderdag|baby|geboorte|kraam|persoonlijk/]
   };
   function smalBij(p, slug) { var r = p.smal && SMAL_PAG[p.smal]; return !r || !r[0] || r[0].test(slug); }
+  /* 11-11-2026 (Marius: 'je wilt schoencadeautjes voor kinderen zien, alleen voor kinderen'): is dit zeker een cadeau voor een kind?
+     Het label 'kind' of 'baby', of speelgoed, kinderboeken en kinderspellen zonder label. Niet wat op Voor kinderen is afgekeurd (p.nietBij). */
+  function kindCadeau(p) {
+    var v = p.voor || [];
+    if (p.nietBij && p.nietBij.indexOf('kinderen') !== -1) return false;
+    if (v.indexOf('kind') !== -1 || v.indexOf('kinderen') !== -1 || v.indexOf('baby') !== -1) return true;
+    return !v.length && (p.afd === 'speelgoed' || /kinder/.test((p.groep || '') + ' ' + (p.vak || '')));
+  }
   function smalOnder(l, sleutel) {
     if (!sleutel) return l;
     var goed = [], onder = [];
@@ -484,16 +492,18 @@
       ['yoga', 'Yoga & ontspanning', '/c/belevenissen/workshops-proeven', '🧘'], ['dag', 'Dagjes uit', '/c/belevenissen/dagjes-uit-overnachten/dagjes-uit', '🗺️'],
       ['meer', 'Nog meer uitjes', '/c/belevenissen/dagjes-uit-overnachten/nog-meer-uitjes', '✨']] },
     '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-boeken', 'sieraden', 'wanddecoratie-teksten', 'kerst', 'doop-belijdenis-kinderen', 'bijbels-psalmboeken', 'boeken-muziek', 'voor-kinderen', 'doop-belijdenis'] },
+    /* 11-11-2026 (Marius: 'als klant heb je niks aan alleen tekst, je wilt de cadeaus zien'): een tegel gaat altijd naar een lijst met
+       producten, nooit naar een gids. Alleen wat duidelijk uitleg is (Surprise maken, Gedicht laten maken) mag naar een gids of hulpje. */
     '/c/cadeaus/kerst': { titel: 'Wat zoek je voor kerst?', vast: [
-      ['hem', 'Voor hem', '/gids/kerstcadeau-voor-hem', '👔', 'images/sub/rond/voor-hem.webp'], ['haar', 'Voor haar', '/gids/kerstcadeau-voor-haar', '👗', 'images/sub/rond/voor-haar.webp'], ['kind', 'Voor kinderen', '/gids/kerstcadeau-kind', '🧒', 'images/sub/rond/voor-kinderen.webp'],
-      ['o25', 'Onder €25', '/gids/kerstcadeau-onder-25', '💶', 'images/sub/rond/cad-onder-15-klein.webp'], ['beleef', 'Belevenissen', '/gids/belevenis-cadeau', '🎟️', 'images/categorieen/belevenissen-home.webp'], ['advent', 'Advents\u00ADkalenders', '/collectie/adventskalenders', '📅', 'images/sub/rond/col-adventskalenders.webp'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄', 'images/sub/iconen/icoon-wonen-kerstdecoratie.webp'],
-      ['tiener', 'Voor tieners', '/gids/kerstcadeau-tiener', '🎧', 'images/sub/rond/voor-tieners-klein.webp'], ['collega', 'Voor collega’s', '/gids/kerstcadeau-collega', '💼', 'images/sub/rond/voor-collega-klein.webp'], ['opa', 'Voor opa en oma', '/gids/kerstcadeau-opa-oma', '👵', 'images/sub/rond/voor-opa-oma-klein.webp'],
-      ['trui', 'Kersttruien', '/c/mode-sieraden/kleding/kersttruien', '🧶'], ['stal', 'Kerststal kopen', '/gids/kerststal-kopen', '⭐', 'images/sub/rond/chr-kerst-klein.webp']] },
+      ['hem', 'Voor hem', '/c/cadeaus/kerst?voor=hem', '👔', 'images/sub/rond/voor-hem.webp'], ['haar', 'Voor haar', '/c/cadeaus/kerst?voor=haar', '👗', 'images/sub/rond/voor-haar.webp'], ['kind', 'Voor kinderen', '/voor/kinderen', '🧒', 'images/sub/rond/voor-kinderen.webp'],
+      ['o25', 'Onder €25', '/c/cadeaus/kerst?prijs=tot25', '💶', 'images/sub/rond/cad-onder-15-klein.webp'], ['beleef', 'Belevenissen', '/c/belevenissen', '🎟️', 'images/categorieen/belevenissen-home.webp'], ['advent', 'Advents\u00ADkalenders', '/collectie/adventskalenders', '📅', 'images/sub/rond/col-adventskalenders.webp'], ['deco', 'Kerstdecoratie', '/c/wonen/kerstdecoratie', '🎄', 'images/sub/iconen/icoon-wonen-kerstdecoratie.webp'],
+      ['tiener', 'Voor tieners', '/c/cadeaus/kerst?voor=tieners', '🎧', 'images/sub/rond/voor-tieners-klein.webp'], ['collega', 'Voor collega’s', '/c/cadeaus/kerst?voor=collega', '💼', 'images/sub/rond/voor-collega-klein.webp'], ['opa', 'Voor opa en oma', '/c/cadeaus/kerst?voor=opa-oma', '👵', 'images/sub/rond/voor-opa-oma-klein.webp'],
+      ['trui', 'Kersttruien', '/c/mode-sieraden/kleding/kersttruien', '🧶'], ['stal', 'Kerststallen', '/c/christelijk/kerststal-engelen', '⭐', 'images/sub/rond/chr-kerst-klein.webp']] },
     '/c/speelgoed': { titel: 'Wat zoek je?', top: ['baby-peuter', 'bouwen', 'poppen-knuffels', 'speelfiguren-voertuigen', 'spellen', 'buiten-spelen'] },
     '/c/cadeaus/sinterklaas': { titel: 'Wat zoek je voor Sinterklaas?', vast: [
-      ['schoen', 'Schoencadeaus', '/gids/schoencadeautjes', '🥿', 'images/sub/rond/cad-sint-onder-15-klein.webp'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒', 'images/sub/rond/voor-kinderen.webp'], ['volw', 'Voor volwassenen', '/gids/sinterklaas-voor-volwassenen', '🎁', 'images/sub/rond/cad-sinterklaas-klein.webp'],
-      ['lootjes', 'Lootjes', '/voor/collega/lootjes', '🎟️', 'images/sub/rond/voor-collega-klein.webp'], ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫', 'images/sub/iconen/icoon-eten-drinken-chocolade-snoep.webp'], ['o15', 'Onder €15', '/c/cadeaus/sint-onder-15', '💶', 'images/sub/rond/gel-sinterklaas-klein.webp'],
-      ['o10', 'Onder €10', '/gids/sinterklaas-onder-10', '💶', 'images/sub/rond/col-kleine-cadeautjes.webp'], ['man', 'Voor hem', '/gids/sinterklaascadeau-man', '🎩', 'images/sub/rond/voor-hem.webp'], ['vrouw', 'Voor haar', '/gids/sinterklaascadeau-vrouw', '💐', 'images/sub/rond/voor-haar.webp'],
+      ['schoen', 'Schoencadeaus', '/collectie/schoencadeautjes', '🥿', 'images/sub/rond/cad-sint-onder-15-klein.webp'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒', 'images/sub/rond/voor-kinderen.webp'], ['man', 'Voor hem', '/c/cadeaus/sinterklaas?voor=hem', '🎩', 'images/sub/rond/voor-hem.webp'],
+      ['vrouw', 'Voor haar', '/c/cadeaus/sinterklaas?voor=haar', '💐', 'images/sub/rond/voor-haar.webp'], ['lootjes', 'Lootjes', '/voor/collega/lootjes', '🎟️', 'images/sub/rond/voor-collega-klein.webp'], ['o15', 'Onder €15', '/c/cadeaus/sint-onder-15', '💶', 'images/sub/rond/gel-sinterklaas-klein.webp'],
+      ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫', 'images/sub/iconen/icoon-eten-drinken-chocolade-snoep.webp'], ['o10', 'Onder €10', '/c/cadeaus/sinterklaas?prijs=r0-10', '💶', 'images/sub/rond/col-kleine-cadeautjes.webp'],
       ['surprise', 'Surprise maken', '/gids/surprise-maken', '🎨'], ['gedicht', 'Gedicht laten maken', '/sint-rijmmachine', '📜']] }
   };
   /* NOVA-001: een bestaand beeld bij een knop zonder eigen icoon: de foto van een gekozen product uit dat onderwerp (geen nieuwe beelden). */
@@ -1464,7 +1474,11 @@
     }
 
     if (SLIMNAV) {
-      if (SLIM[pad] && SLIM[pad].vast) subs = slimVast(pad);
+      /* 11-11-2026 (Marius: 'je wilt de cadeaus zien'): is er al gekozen voor wie of welk bedrag (bijv. via de tegel 'Voor hem'),
+         dan staan de cadeaus meteen in beeld en niet nog een keer dezelfde tegels. Eén knop brengt je terug naar alle onderwerpen. */
+      if (SLIM[pad] && SLIM[pad].vast) subs = (q.voor || (q.prijs && q.prijs !== 'alle'))
+        ? '<nav class="chips vakjesrij omlopend" aria-label="Terug"><a class="chip" href="' + pad + '">← Alles voor ' + esc((s || c).naam) + '</a></nav>'
+        : slimVast(pad);
       else if (!s) subs = slimNav(groepen.map(function (x) { return { id: x.slug, naam: x.naam, beeld: x.beeld || (NOVA1 ? beeldUit(LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); })) : ''), naar: metBudget(subAdres(c, x)), n: LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }).length }; }),
         SLIM[pad] || { titel: 'Wat zoek je?' }, 'Groepen in ' + c.naam);
       else if (volleVakjes.length > 1) subs = slimNav(volleVakjes.map(function (x) {
@@ -1490,7 +1504,10 @@
     var horlogeVak = !!(v && c.slug === 'mode-sieraden' && s && s.slug === 'horloges');
 
     return paginakop({
-      titel: v ? (v.kop || v.naam) : s ? (s.kop || s.naam) : (c.kop || c.naam),
+      titel: (v ? (v.kop || v.naam) : s ? (s.kop || s.naam) : (c.kop || c.naam)) + (SLIM[pad] && SLIM[pad].vast ? (function () {
+        var vw = q.voor ? VOOR_WIE.filter(function (x) { return x[0] === q.voor; })[0] : null;
+        return (vw && vw[0] ? ' voor ' + vw[1].toLowerCase().replace('&', 'en') : '') + (q.prijs && q.prijs !== 'alle' ? ' ' + prijsFilter(q.prijs).label.toLowerCase() : '');
+      })() : ''),
       tekst: v ? (v.tekst || T.tekst || 'Met de hand gekozen: ' + v.naam.toLowerCase() + '.') : s ? (s.tekst || T.tekst || (s.vakjes ? 'Met de hand gekozen: ' + (function (n, meer) { return meer ? n.join(', ') + ' en meer' : n.length > 1 ? n.slice(0, -1).join(', ') + ' en ' + n[n.length - 1] : n[0]; })(s.vakjes.slice(0, 4).map(function (x, i) { return i ? x.naam.replace(/^[A-Z](?![A-Z])/, function (l) { return l.toLowerCase(); }) : x.naam; }), s.vakjes.length > 4) + '.' : 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.')) : (c.tekst || T.tekst),
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
       kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(v ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam, naar: '/c/' + c.slug + '/' + s.slug }, { tekst: v.naam }] : s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
@@ -1677,6 +1694,7 @@
       if (p.cat === 'christelijk' || p.los) return false;
       if (p.smal && SMAL_PAG[p.smal] && !SMAL_PAG[p.smal][1].test(g.slug || '')) return false; /* pensioen-, opa/oma-, mama-cadeaus e.d. alleen op een passende gelegenheid */ /* p.los: losse onderdelen niet op cadeaupagina's (paginaregels, 10-11-2026) */
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
+      if (g.kind && !kindCadeau(p)) return false; /* 11-11-2026: een collectie met alleen kindercadeaus (Schoencadeautjes) */
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
@@ -1841,7 +1859,7 @@
       /* Stap 6 indeling: op een collectie (Cadeau-ideeën) geen selectie: meteen filter en producten. Acties houden 'Deals van vandaag'. */
       (selectie.length ? '<section class="sectie' + (voorKnopjes ? '' : ' eerste') + ' sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       (g.korting ? afdChips(pad, q, alles) : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? (q.afd && window.LK_CAT(q.afd) ? 'Deals in ' + esc(window.LK_CAT(q.afd).naam.toLowerCase()) : 'Alle deals') + (q.sort === 'korting' ? ', grootste korting eerst' : ', beste eerst') : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase()))) + '</h2></div></div></section>' +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? (q.afd && window.LK_CAT(q.afd) ? 'Deals in ' + esc(window.LK_CAT(q.afd).naam.toLowerCase()) : 'Alle deals') + (q.sort === 'korting' ? ', grootste korting eerst' : ', beste eerst') : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : g.lijstKop ? esc(g.lijstKop) : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase()))) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) + (g.faq ? gidsFaq(g) : '') +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       /* Verder kijken, onderaan als tekstlinks (gelegenheden op datum: eerst wat eraan komt). */
@@ -3577,7 +3595,7 @@
         { kop: 'Spelletjes en puzzels (tot €10)', tekst: 'Iets om samen te spelen, ook als de Sint weer weg is.',
           ids: ['bol-9200000132162995', 'bol-9300000035078697', 'bol-1004004013389248', 'bol-9300000181433977'] }
       ],
-      slot: 'Meer kleine cadeautjes vind je bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a> en <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond staat bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
+      slot: 'Alle schoencadeautjes op een rij, met foto en prijs: <a href="/collectie/schoencadeautjes">bekijk de hele lijst</a>. Meer kleine cadeautjes vind je bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a> en <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond staat bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'sinterklaascadeau-man', beeld: 'bol-9300000238510035', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-hem', 'cadeaus/sint-onder-15', 'cadeaus/grappig'],
       titel: 'Sinterklaascadeau voor een man of vader: 20 ideeën die hij écht gebruikt', kort: 'Voor je vriend, man, vader of broer. Van lootjes tot iets wat hij echt gebruikt.',
       intro: 'Een sinterklaascadeau voor een man is vaak lastig, want mannen zeggen meestal dat ze niets nodig hebben. Toch zijn ze blij met iets grappigs voor pakjesavond, iets lekkers voor zichzelf of een handig ding dat ze elke dag gebruiken. Ik zette 20 ideeën op een rij, van klein tot iets groter, met ook vier ideeën speciaal voor je vader. Bijna alles kost minder dan 30 euro, dus het past ook bij lootjes.',
@@ -4713,6 +4731,8 @@
     var verborgen = window.LK_COLLECTIE_VERBORGEN || [];
     return (window.LK_COLLECTIES || []).filter(function (c) {
       if (verborgen.indexOf(c.slug) !== -1) return false;
+      /* 11-11-2026: een collectie met een seizoen (Schoencadeautjes: 15 oktober tot en met 5 december) staat alleen dan in de menu's; de pagina zelf blijft bestaan. */
+      if (c.seizoen) { var md = new Date().toISOString().slice(5, 10); if (md < c.seizoen[0] || md > c.seizoen[1]) return false; }
       var actie = COLLECTIE_ACTIES.indexOf(c.slug) !== -1;
       return soort === 'acties' ? actie : !actie;
     }).sort(function (a, b) { return soort === 'acties' ? COLLECTIE_ACTIES.indexOf(a.slug) - COLLECTIE_ACTIES.indexOf(b.slug) : 0; });

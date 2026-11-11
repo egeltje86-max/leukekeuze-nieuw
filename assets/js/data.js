@@ -1029,6 +1029,13 @@ window.LK_COLLECTIES = [
     vakken: ['cadeaus/met-naam', 'valentijn/met-naam', 'sieraden/met-naam'] },
   { slug: 'brievenbuscadeaus', naam: 'Brievenbuscadeaus', kicker: 'Past door de bus', beeld: 'images/sub/sub-eten-drinken-chocolade-snoep.webp', seoTitel: 'Brievenbuscadeau – cadeaus die door de brievenbus passen',
     tekst: 'Een verrassing die gewoon door de brievenbus past. Handig om op te sturen.', vakken: ['tag:brievenbus', 'eten-drinken/brievenbuscadeaus'] },
+  /* Schoencadeautjes (11-11-2026, opdracht Marius): de tegel 'Schoencadeaus' op de Sinterklaaspagina ging naar een gids met vooral tekst.
+     Nu een echte lijst: alleen kindercadeaus (g.kind) tot 10 euro, geen kerst- of paasspullen en niets dat te groot is voor bij de schoen. */
+  { slug: 'schoencadeautjes', naam: 'Schoencadeautjes', kicker: 'Voor in de schoen', beeld: 'images/sub/sub-cadeaus-sint-onder-15-2026b.webp', seoTitel: 'Schoencadeautjes voor kinderen – kleine cadeautjes tot €10',
+    tekst: 'Kleine cadeautjes voor in de schoen. Alles is voor kinderen en kost hooguit 10 euro. Kies hieronder de leeftijd.',
+    zoek: 'schoencadeau schoencadeautje schoencadeautjes schoen zetten sinterklaas klein cadeautje',
+    kind: true, maxPrijs: 10, voorWie: [], knoppen: ['leeftijd'], vakken: LK_ALLE_GROEPEN, gids: 'schoencadeautjes', seizoen: ['10-15', '12-05'], lijstKop: 'Alle schoencadeautjes',
+    uit: /kerst|christmas|advent|halloween|pasen|paas|grinch|lindt|lindor|criollo|chocolatemakers|hartjesreep|stroopwafel|lolly|candy|snoep|skippybal|vlieger|honkbal|bezem|kostuum|lichtzwaard|knutselkleed|muismat|autoweg|romper|pyjama|lepels|kraamcadeau|hoera een baby|sleutelhanger/i },
   { slug: 'kleine-cadeautjes', naam: 'Kleine cadeautjes', kicker: 'Klein maar fijn', beeld: 'images/sub/sub-cadeaus-sint-onder-15-2026b.webp', seoTitel: 'Kleine cadeautjes – leuke cadeaus tot €10, €25 of €50',
     tekst: 'Leuke kleine cadeautjes voor weinig geld. Kies hieronder je budget.', maxPrijs: 50, uit: LK_GEEN_FEEST, vakken: LK_ALLE_GROEPEN },
   { slug: 'originele-cadeaus', naam: 'Originele cadeaus', kicker: 'Net even anders', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp', seoTitel: 'Originele cadeaus – unieke en bijzondere cadeau-ideeën',
