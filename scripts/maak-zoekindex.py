@@ -111,6 +111,18 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('t-barokspiegel.json', 'Barokspiegel', ''),
     ('t-profotonet.json', 'Profotonet', ''),
     ('t-steegenga.json', 'Steegengamode', ''),
+    # 11-11-2026 (Marius: 'heb je nu alle missende feeds'): deze feeds werden al elke nacht opgehaald, maar stonden niet in de zoekindex.
+    # Bewust nog niet: Zinzi (sieraden), Parfumania (heel groot), MaJa Koi, Acculaders, Olijfolie, Joybuy, Vipio, Favoshop en Zonnerij.
+    ('t-gestrikt.json', 'Gestrikt', ''),
+    ('t-christmas1967.json', 'Christmas1967', ''),
+    ('t-makemefamous.json', 'Make Me Famous', ''),
+    ('t-surprose.json', 'Surprose', ''),
+    ('t-fotoinglas.json', 'Foto-in-glas', ''),
+    ('x-stroopwafels.json', 'Stroopwafels.com', ''),
+    ('x-droptelegram.json', 'Droptelegram', ''),
+    ('x-invulboekjes.json', 'invulboekjes.nl', ''),
+    ('x-doenkado.json', 'Doenkado', ''),
+    ('x-naturesgift.json', "Nature's Gift", ''),
     # Awin (a-*.json, opgehaald met Feedzoeker\programma\awin-ophalen.py; 04-11-2026, wens Marius). Bewust niet: Kopp Verlag,
     # de enorme kledingcatalogi van s.Oliver en Street One (wel als winkeltegel), en reizen/vervoer.
     ('a-coolblue-nl.json', 'Coolblue', ''),

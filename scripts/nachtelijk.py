@@ -147,6 +147,11 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-makemefamous': '2590467',  # Make Me Famous (persoonlijke cadeaus)
           't-christmas1967': '2586335',  # Christmas1967
           't-gestrikt': '1737881',  # Gestrikt.nl (Superkeurkamer-keuzes 10-11)
+          # 11-11-2026: feedlinks van Marius (goedgekeurd bij TradeTracker). Favoshop en Zonnerij worden wel opgehaald, maar staan nog niet in de zoekindex (eerst kijken wat erin zit).
+          't-surprose': '1955243',  # Surprose (rozen)
+          't-fotoinglas': '2120869',  # Foto-in-glas
+          't-favoshop': '2562877',  # Favoshop
+          't-zonnerij': '2180753',  # Zonnerij
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
