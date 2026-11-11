@@ -2041,8 +2041,16 @@ html.nova9 .prodkaart .beeld .label.vol { background: #0A1020; color: #F2CB74; b
 /* ===== einde NOVA-009 ===== */
 /* ===== Herstel 10-11-2026 (fout gezien op /voor/kinderen/, 390px): 'Bellenblaasmachi|ne' brak midden in het woord.
    Lange woorden (14+ letters) in een producttitel krijgen nu een net afbreekstreepje op een lettergreep; korte woorden breken nooit. ===== */
+html.nova2 .prodkaart h3,
 html.nova2 .prodkaart.awkaart h3 {
   hyphens: auto; -webkit-hyphens: auto;
-  hyphenate-limit-chars: 14 6 5;
-  -webkit-hyphenate-limit-before: 6; -webkit-hyphenate-limit-after: 5;
+  hyphenate-limit-chars: 13 5 4;
+  -webkit-hyphenate-limit-before: 5; -webkit-hyphenate-limit-after: 4;
 }
+/* 11-11-2026: de regel hierboven gold eerst alleen voor .awkaart en werkte dus niet op de gewone productkaart. Nu voor alle kaarten,
+   en de titels krijgen zelf afbreekplekken mee (zachtAf in gedeeld.js), zodat het ook werkt in browsers zonder Nederlands woordenboek. */
+/* Op de allersmalste telefoons (320px) is een titelvak 111px breed; woorden van 12 letters ('geschenkdoos', 'warmtekussen') pasten
+   daar net niet in en braken midden af. Iets kleinere letter, alleen daar. */
+@media (max-width: 339px) { html.nova2 .prodkaart h3, html.nova2 .prodkaart.awkaart h3 { font-size: 14.5px; } }
+/* Zelfde scherm: de doorgestreepte oude prijs brak tussen '€' en het bedrag. Die blijft nu bij elkaar. */
+.prodkaart .prijs s.oud { white-space: nowrap; }

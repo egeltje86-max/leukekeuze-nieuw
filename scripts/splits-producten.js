@@ -85,10 +85,20 @@ function splits() {
   }
   /* Snelheid (31-10-2026): JSON.parse van een tekst is in browsers een stuk sneller dan het lezen van een JavaScript-object van 2,5 MB.
      De tekst staat tussen enkele quotes; alleen \ en ' hoeven dan ontsnapt te worden. */
+  /* Lange woorden netjes afbreken op de telefoon (11-11-2026): alleen de woorden die nu in een titel staan gaan mee.
+     De tabel staat in scripts/boom/afbreek.json (gemaakt met scripts/afbreek/maak.js, met de hand nagelezen). */
+  let afbreek = '';
+  try {
+    const tab = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/afbreek.json'), 'utf8'));
+    const gezien = {};
+    for (const p of lean) for (const w of (p.titel || '').match(/[A-Za-zÀ-ÿ]{13,}/g) || []) { const k = w.toLowerCase(); if (typeof tab[k] === 'string' && /^[a-zà-ÿ-]+$/.test(tab[k]) && tab[k].replace(/-/g, '') === k) gezien[k] = tab[k]; }
+    afbreek = Object.keys(gezien).sort().map(k => gezien[k]).join('|');
+  } catch (e) { console.log('afbreek.json niet gelezen (titels breken dan gewoon af): ' + e.message); }
   const json = '[' + lean.map(p => JSON.stringify(p)).join(',') + ']';
   const letterlijk = "'" + json.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(new RegExp(String.fromCharCode(0x2028), 'g'), '\\u2028').replace(new RegExp(String.fromCharCode(0x2029), 'g'), '\\u2029') + "'";
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_PRODUCTEN = JSON.parse(' + letterlijk + ');\n' +
     '(function (L) { for (var i = 0; i < L.length; i++) { var p = L[i]; if (p.beeld === undefined) p.beeld = "images/producten/" + p.id; if (!p.status) p.status = "goedgekeurd"; if (p.nieuw === undefined) p.nieuw = true; else if (p.nieuw === false) delete p.nieuw; if (!p.ookIn) p.ookIn = []; if (!p.shop) p.shop = "bol"; if (!p.moment) p.moment = ["kerst", "sinterklaas", "verjaardag"]; } })(window.LK_PRODUCTEN);\n' +
+    'window.LK_AFBREEK = "' + afbreek + '";\n' +
     /* Snelheid (31-10-2026): dit bestand laadt nu 'async' (zie sjabloon.html); de site wacht op dit seintje. */
     'try { window.dispatchEvent(new Event("lk-producten")); } catch (e) { var ev = document.createEvent("Event"); ev.initEvent("lk-producten", false, false); window.dispatchEvent(ev); }\n');
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-details.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_DETAILS = ' + JSON.stringify(det) + ';\n');
