@@ -8,3 +8,4 @@ Elke regel is één dagelijkse run. Meer details staan in de commit van die dag.
 - 2026-11-11 06:04: Piloot 2026-11-11: 58 prijzen bijgewerkt, 1 uitverkocht van de lijsten; controle schoon, live gezet. Nachtrapport was van 10-11 07:39 (laptop stond vannacht uit). Van de 8 rare prijzen waren Teufel en horlogedoos al eerder nagekeken (feedfout); 6 nieuw (barbecueschort, Toms Creek, TechnoMarine, puzzel Amsterdam, VoxorAI-smartwatch, stroopwafels), niet overgenomen, site houdt oude prijs. Stap 3 (nieuwe producten) overgeslagen: laptop offline.
 - 2026-11-11 06:48: Piloot 2026-11-11: 43 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
 - 2026-11-11 06:56: Kon origin/main niet mergen (conflict). Niets veranderd, niets live gezet. Marius hoeft niets te doen; de volgende run probeert het opnieuw, maar als dit blijft: melden.
+- 2026-11-11 07:16: Piloot 2026-11-11: 43 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
