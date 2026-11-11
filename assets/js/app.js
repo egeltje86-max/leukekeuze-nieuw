@@ -198,6 +198,32 @@
      Nooit twee van hetzelfde vakje in een rij van zes, liefst zes verschillende winkels en groepen. Eerlijk: geen nep-labels, korting alleen met echte van-prijs.
      Was eerst een proef (?proef=volgorde). Sinds 11-11-2026 staat hij AAN (GO Marius). Uitzetten om te vergelijken: ?proef=volgorde-uit
      (weer aan: ?proef=volgorde) of window.LK_VOLGORDE = false. Staat hij uit, dan geldt apartEerst() zoals voorheen. */
+  /* WIJZER (proef sinds 11-11-2026, GO Marius): de Voor wie-pagina's in een nieuwe opzet voor de helft van de bezoekers.
+     Oud (a): onderwerpkaarten, werkbalk en 36 producten. Nieuw (b): twee rijen knoppen (bedrag, waar houdt hij van), daaronder
+     'Onze 12 beste keuzes' met één regel waarom, 'Laat er nog 12 zien' en een link naar de hele lijst (?alles=1).
+     Wie welke versie krijgt staat in localStorage 'lkwijzer' (a of b; met een ! erachter = zelf gekozen via ?proef=wijzer of ?proef=wijzer-uit,
+     die tellen niet mee in de meting). Zoekmachines en de bouw krijgen altijd a, dus de gebouwde pagina's veranderen niet.
+     Alles uit: window.LK_WIJZER = false. Meting: gebeurtenissen proef/wijzer-a|b/gezien, /product en /winkel in GoatCounter. */
+  var WIJZER_ZELF = false;
+  var WIJZER = (function () {
+    try {
+      if (window.LK_WIJZER === false) return 'a';
+      var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search);
+      if (m) localStorage.setItem('lkwijzer', m[1] ? 'a!' : 'b!');
+      var v = localStorage.getItem('lkwijzer') || '';
+      if (v.charAt(1) === '!') { WIJZER_ZELF = true; return v.charAt(0) === 'b' ? 'b' : 'a'; }
+      if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { WIJZER_ZELF = true; return 'a'; }
+      if (v !== 'a' && v !== 'b') { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
+      return v;
+    } catch (e) { WIJZER_ZELF = true; return 'a'; }
+  })();
+  var ETALAGE = null;
+  /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
+  function etalageEerst(l) {
+    if (!window.LK_TOPVAST) return l;
+    if (!ETALAGE) { ETALAGE = {}; Object.keys(window.LK_TOPVAST).forEach(function (k) { (window.LK_TOPVAST[k] || []).forEach(function (id) { ETALAGE[id] = 1; }); }); }
+    var voor = [], na = []; l.forEach(function (p) { (ETALAGE[p.id] ? voor : na).push(p); }); return voor.concat(na);
+  }
   var VOLGORDE = (function () { try { if (/[?&]proef=volgorde-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkvolgorde', '0'); else if (/[?&]proef=volgorde(&|$)/.test(location.search)) sessionStorage.removeItem('lkvolgorde'); return window.LK_VOLGORDE !== false && sessionStorage.getItem('lkvolgorde') !== '0'; } catch (e) { return window.LK_VOLGORDE !== false; } })();
   var BEKEND = /\b(lego|duplo|rituals|dyson|philips|casio|seiko|apple|sony|jbl|nintendo|playmobil|pok[eé]mon|barbie|ravensburger|tony'?s|lindt|nike|adidas|samsung|bose|garmin|swarovski|pandora|fossil|tommy hilfiger|calvin klein|hugo boss|paco rabanne|carolina herrera|yankee candle|woodwick|riviera maison|stanley|smeg|nespresso|le creuset|bosch|makita|999 games|squishmallows?|paw patrol|disney|star wars|marvel|hot wheels|gravitrax|little dutch|nijntje|douwe egberts|pickwick|dopper|victorinox|leatherman|weber|fj[aä]llr[aä]ven|eastpak|guess|michael kors|g-shock|oral-b|sonicare|theragun|ghd|babyliss|lacoste|versace|armani|jean paul gaultier|lanc[oô]me|marc jacobs|bluey|minecraft|harry potter|monopoly|rummikub|jellycat|hema|blond amsterdam|pip studio|villeroy|iittala|marshall|sonos|kobo|fitbit|polaroid|instax|stabilo|moleskine|leuchtturm|target|winmau|unicorn)\b/i;
   var PERSOONLIJK = /met (je |eigen )?(naam|foto|tekst)|gegraveerd|graveren|gepersonaliseerd|personaliseer|eigen foto|initiaal|geboortebloem|sterrenbeeld/i;
@@ -335,10 +361,12 @@
   /* Getallen op z'n Nederlands: 1.409 */
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   var PER_KEER = 36, MEER_LIJSTEN = [];
-  function gridMeer(lijst, leegHtml, n) {
+  function gridMeer(lijst, leegHtml, n, knopTekst) {
     var per = n || PER_KEER;
     if (lijst.length <= per) return grid(lijst, leegHtml);
-    var k = MEER_LIJSTEN.push({ lijst: lijst, getoond: per, per: per }) - 1;
+    var k = MEER_LIJSTEN.push({ lijst: lijst, getoond: per, per: per, tekst: knopTekst || '' }) - 1;
+    if (knopTekst) return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
+      '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">' + knopTekst + '</button></div>';
     return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
       '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">Toon meer <small>(' + per + ' van ' + getal(lijst.length) + ')</small></button></div>';
   }
@@ -355,7 +383,7 @@
       m.getoond = tot;
     }
     var knop = $('[data-meer="' + k + '"]', app);
-    if (knop) { if (tot >= m.lijst.length) knop.parentNode.remove(); else knop.innerHTML = 'Toon meer <small>(' + tot + ' van ' + getal(m.lijst.length) + ')</small>'; }
+    if (knop) { if (tot >= m.lijst.length) knop.parentNode.remove(); else if (!m.tekst) knop.innerHTML = 'Toon meer <small>(' + tot + ' van ' + getal(m.lijst.length) + ')</small>'; }
   }
   /* Keuzes bovenaan een lijstpagina (stap 3 indeling): een vast raster van rondjes dat omloopt, 4 per rij op een telefoon.
      Meer dan 8? Dan staan de eerste 8 in beeld en de rest achter één knop 'Meer'. Geen schuifrijen meer: op een telefoon zag je alleen wat vooraan stond. */
@@ -1486,6 +1514,46 @@
       lijst = bovenaan(lijst, pad); /* 10-11-2026: ook na het om-en-om mixen de aparte cadeaus eerst (of de heldenrij) */
     }
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
+
+    /* WIJZER (proef): de nieuwe opzet. Alleen zonder eigen sortering of filters; met ?alles=1 krijg je de gewone lijst met werkbalk. */
+    var wzAan = WIJZER === 'b' && !q.alles && alles.length && Object.keys(q).every(function (k) { return !q[k] || k === 'prijs' || k === 'proef' || (k === 'sort' && q[k] === 'aanbevolen'); });
+    LK.redenAltijd = !!wzAan;
+    if (wzAan) {
+      var wzLijst = etalageEerst(lijst);
+      var wzNaam = /^(hem|haar|kinderen|tieners)$/.test(naam) ? naam : naam.toLowerCase();
+      var wzPrijs = (window.LK_PRIJZEN || []).filter(function (p) { return p.id === q.prijs; })[0];
+      var wzBedrag = (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) {
+        var hier = q.prijs === p.id, n = alles.filter(function (x) { return binnenPrijs(x, p.id); }).length;
+        if (n < MIN_KNOP && !hier) return '';
+        return '<a class="chip" href="' + (hier ? pad : maakAdres(pad, { prijs: p.id })) + '" aria-pressed="' + hier + '">' + p.label + '</a>';
+      }).join('');
+      /* Volgorde van de onderwerpen: eerst waar het meest naar gezocht wordt (de 'top' van de onderwerpkaarten), dan de rest. */
+      var wzTop = ((SLIM['/voor/' + pe.slug] || {}).top || []), wzPlek = function (x) { var i = wzTop.indexOf(x.slug); return i === -1 ? 99 : i; };
+      var wzSubs = volleSubsP.slice().sort(function (u, v) { return wzPlek(u) - wzPlek(v); }).map(function (x) {
+        var hier = !!(s && s.slug === x.slug);
+        return '<a class="chip" href="' + metBudget(hier ? '/voor/' + pe.slug : '/voor/' + pe.slug + '/' + x.slug) + '" aria-pressed="' + hier + '"' + (hier ? ' data-wz-hier' : '') + '>' + esc(x.naam) + '</a>';
+      }).join('');
+      var wzN = Math.min(12, wzLijst.length);
+      var wzKop = !wzLijst.length ? '' : '<div class="wz-uit"><h2>' + (wzN === 1 ? 'Onze beste keuze' : 'Onze ' + wzN + ' beste keuzes') + '</h2>' +
+        (wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
+      return paginakop({
+        titel: s ? s.naam + ' voor ' + naam : pe.naam,
+        tekst: '', /* de inleiding staat in de gebouwde pagina (voor Google); in de nieuwe opzet gaan de keuzes en de cadeaus voor */
+        vaag: pe.vaag || pe.beeld,
+        kruimel: [{ tekst: 'Voor wie?', naar: '/voor' }].concat(s ? [{ tekst: pe.naam, naar: '/voor/' + pe.slug }, { tekst: s.naam }] : [{ tekst: pe.naam }])
+      }) +
+      '<div class="binnen wijzer">' +
+        '<section class="sectie eerste wz-keuze" aria-label="Kies een bedrag en een onderwerp">' +
+          (wzBedrag ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
+          (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p><nav class="chips wz-chips wz-rol" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>' : '') +
+        '</section>' +
+        wzKop + gridMeer(wzLijst, leeg, 12, 'Laat er nog 12 zien') +
+        (wzLijst.length > 12 ? '<p class="wz-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, { alles: '1' })) + '" data-wz-alles>Alle ' + getal(wzLijst.length) + ' cadeaus bekijken, met sorteren en filteren</a></p>' : '') +
+        leesOok(pe.oud || '') +
+        (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
+        tekstLinks('Voor iemand anders?', anderen.map(function (x) { return [x.kort, x.subs ? '/voor/' + x.slug : x.naar]; })) +
+      '</div>';
+    }
 
     return paginakop({
       titel: s ? s.naam + ' voor ' + naam : pe.naam,
@@ -4683,6 +4751,7 @@
     if (!window.LK_PRODUCTEN) return; /* de productlijst is er nog niet: de HTML van de pagina staat er al */
     onthoudPlek();
     laatstGetoond = huidigAdres();
+    LK.redenAltijd = false; /* WIJZER: alleen de nieuwe Voor wie-opzet zet op elke kaart een regel 'waarom' */
     var a = leesAdres(), d = a.delen, html;
     /* 2.0: oude persoonspagina's (/c/cadeaus/voor-hem …) gaan door naar /voor/… */
     if (d[0] === 'c' && d[1] === 'cadeaus' && d[2]) {
@@ -4883,8 +4952,24 @@
       return pad.slice(1);
     }
     var nu = deelVan(location.pathname); if (nu) herkomst = nu;
+    /* WIJZER (proef): tellen hoe vaak een Voor wie-pagina gezien is, hoe vaak daar op een product getikt is en hoe vaak dat bezoek naar een winkel ging. */
+    function wzTel(wat, poging) {
+      if (WIJZER_ZELF) return;
+      if (!window.goatcounter || !window.goatcounter.count) { if ((poging || 0) < 6) setTimeout(function () { wzTel(wat, (poging || 0) + 1); }, 1500); return; }
+      try { window.goatcounter.count({ path: 'proef/wijzer-' + WIJZER + '/' + wat, title: 'Proef Voor wie (' + (WIJZER === 'b' ? 'nieuw' : 'oud') + '): ' + wat, event: true }); } catch (e) {}
+    }
+    document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-wz-alles]')) setTimeout(function () { window.scrollTo(0, 0); }, 60); });
+    function wzGezien() { try { if (/^\/voor\/[^\/]+/.test(location.pathname) && !sessionStorage.getItem('lkwzg')) { sessionStorage.setItem('lkwzg', '1'); wzTel('gezien'); } } catch (e) {} }
+    document.addEventListener('click', function (e) {
+      try {
+        if (e.target.closest('#app .prodgrid .prodkaart a') && /^\/voor\/[^\/]+/.test(location.pathname)) wzTel('product');
+        else if (e.target.closest('a[rel~="sponsored"]') && sessionStorage.getItem('lkwzg')) wzTel('winkel');
+      } catch (x) {}
+    });
     window.addEventListener('lk-route', function () {
       var d = deelVan(location.pathname); if (d) herkomst = d;
+      wzGezien();
+      try { var wzH = document.querySelector('.wz-rol [data-wz-hier]'); if (wzH && wzH.parentNode.scrollWidth > wzH.parentNode.clientWidth) wzH.parentNode.scrollLeft = Math.max(0, wzH.offsetLeft - 16); } catch (x) {}
       if (eerste) { eerste = false; return; }
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.search, title: document.title }); } catch (e) {}
     });
@@ -5214,6 +5299,7 @@
   netteLinks(document);
   function start() {
     if (start.gedaan) return; start.gedaan = true;
+    document.documentElement.classList.add('lk-gestart'); /* WIJZER: vanaf nu tekent de app de pagina zelf */
     window.LK.ga = ga;
     bouwLade(); bouwMega(); netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
     vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
