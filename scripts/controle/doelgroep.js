@@ -7,7 +7,7 @@ global.window = { dispatchEvent() {} }; global.Event = function () {};
 require(path.join(R, 'assets/js/producten-lean.js'));
 const P = window.LK_PRODUCTEN.filter(p => p.status === 'goedgekeurd');
 const ALC = /\b(wijn|wine|bier|whisky|whiskey|gin|rum|wodka|vodka|likeur|liqueur|champagne|prosecco|cava|port|cognac|tequila|jenever|amaretto|baileys|aperol|limoncello|sake|cider|spritz|brandy|calvados|drankspel|shotglas|shotglaasjes)\b|wijnglas|bierglas|cocktail/i;
-const ALCOK = /alcoholvrij|0[,.]0|kinderchampagne|mocktail|chocolade|thee|koffie|kaars|boek|puzzel|sokken|\bmok\b|shirt|zeep|bad|kookboek|geur|siroop|limonade/i;
+const ALCOK = /alcoholvrij|0[,.]0|kinderchampagne|mocktail|chocolade|thee|koffie|kaars|boek|puzzel|sokken|\bmok\b|shirt|zeep|bad|kookboek|geur|siroop|limonade|body mist/i; /* 11-11-2026: 'Coco Spritz hair & body mist' is een geurtje, geen drankje */
 const isAlc = p => ALC.test(p.titel) && !ALCOK.test(p.titel) && !/^(speelgoed|boeken-media)$/.test(p.afd) || /^eten-drinken\/(wijn|bier|sterke-drank|bubbels)$/.test(p.afd + '/' + p.groep);
 const REGELS = {
   kind: [[isAlc, 'alcohol bij kinderen'], [p => /\b(dames|heren|vrouwen|mannen|lingerie|\bbh\b|scheer|baard|eau de (parfum|toilette)|aftershave|tabak|sigaar|18\+)/i.test(p.titel), 'volwassen bij kinderen']],

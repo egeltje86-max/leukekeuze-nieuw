@@ -29,7 +29,7 @@
 /gelegenheid/afscheid-pensioen/haar:24
 /gelegenheid/afscheid-pensioen/hem:17
 /gelegenheid/afscheid-pensioen/opa-oma:16
-/collectie/toppers-van-nu/haar:14
+/collectie/toppers-van-nu/haar:15
 /collectie/toppers-van-nu/hem:15
 /collectie/toppers-van-nu/tieners:21
 /collectie/persoonlijke-cadeaus/haar:21
@@ -48,13 +48,13 @@
 /collectie/originele-cadeaus/hem:21
 /collectie/originele-cadeaus/kinderen:16
 /collectie/originele-cadeaus/tieners:24
-/collectie/originele-cadeaus/collega:12
+/collectie/originele-cadeaus/collega:11
 /collectie/originele-cadeaus/opa-oma:8
 /collectie/adventskalenders/haar:6
-/collectie/cadeaupakketten/haar:11
+/collectie/cadeaupakketten/haar:12
 /collectie/cadeaupakketten/hem:20
-/collectie/cadeaupakketten/tieners:8
-/collectie/cadeaupakketten/collega:13
+/collectie/cadeaupakketten/tieners:7
+/collectie/cadeaupakketten/collega:14
 /collectie/cadeaupakketten/opa-oma:6
 /collectie/grappige-cadeaus/haar:14
 /collectie/grappige-cadeaus/hem:20

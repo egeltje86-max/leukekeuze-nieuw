@@ -1255,6 +1255,9 @@
      De kaartjes gaan naar onze eigen productpagina; 'Alle cadeaus van …' gaat naar /zoek?winkel=<naam> (alles van die winkel, de uitgekozen cadeaus eerst).
      Live voor iedereen sinds 11-11-2026 (GO Marius). Helemaal uit: window.LK_WINKELTOP = false. */
   var WINKELTOP = [
+    /* 11-11-2026 (wens Marius): Atelier Rebul op plek 1. Het is een merk, te koop bij onze partner Parfumania; 'naam' is wat op de kaart staat,
+       'shop' is de winkel waar de knop heen gaat. Van Parfumania staan alleen de cadeaus van Atelier Rebul op de site. */
+    { shop: 'Parfumania', naam: 'Atelier Rebul', slug: 'atelier-rebul', tekst: 'Geuren en verzorging uit Istanbul, sinds 1895: geurstokjes, geurkaarsen en cadeausets. Te koop bij Parfumania.' },
     { shop: 'Dille & Kamille', slug: 'dille-kamille', tekst: 'Natuurlijke spullen voor keuken, huis en tuin.' },
     { shop: 'Ditverzinjeniet', slug: 'ditverzinjeniet', tekst: 'Grappige en vreemde cadeaus die je nergens anders ziet.' },
     { shop: 'LEGO', slug: 'lego', tekst: 'Bouwsets voor kinderen en voor grote mensen.' },
@@ -1278,11 +1281,11 @@
       var top = ((window.LK_TOPVAST || {})['/winkel/' + w.slug] || []).map(function (id) { return opId[id]; }).filter(function (p) { return p && p.shop === w.shop && p.beeld; }).slice(0, 5);
       if (top.length < 5) return '';
       var n = z.filter(function (p) { return p.shop === w.shop; }).length;
-      return '<article class="wtop-kaart"><h3>' + esc(w.shop) + '</h3><p>' + esc(w.tekst) + '</p>' +
+      return '<article class="wtop-kaart"><h3>' + esc(w.naam || w.shop) + '</h3><p>' + esc(w.tekst) + '</p>' +
         '<div class="wtop-rij">' + top.map(function (p) {
           return '<a class="wtop-prod" href="/p/' + esc(p.id) + '" aria-label="' + esc(p.titel) + '"><img src="/' + esc(p.beeld) + '-klein.webp" alt="' + esc(p.titel) + '" loading="lazy" decoding="async" width="400" height="400"><span>' + LK.euro(p.prijs) + '</span></a>';
         }).join('') + '</div>' +
-        '<a class="wtop-meer" href="/zoek?winkel=' + encodeURIComponent(w.shop) + '">Alle ' + getal(n) + ' cadeaus van ' + esc(w.shop) + ' ' + ic('pijl') + '</a></article>';
+        '<a class="wtop-meer" href="/zoek?winkel=' + encodeURIComponent(w.shop) + '">Alle ' + getal(n) + ' cadeaus van ' + esc(w.naam || w.shop) + ' ' + ic('pijl') + '</a></article>';
     }).filter(Boolean);
     if (!kaarten.length) return '';
     return '<section class="sectie wtop" id="winkeltop" data-tel="winkeltop">' +
@@ -1296,9 +1299,10 @@
     var naam = alle.length ? alle[0].shop : String(q.winkel);
     var w = WINKELTOP.filter(function (x) { return x.shop === naam; })[0];
     var lijst = sorteer(alle, q.sort, '/winkel/' + winkelSlug(naam));
-    zetTitel('Cadeaus van ' + naam);
-    window.LK_SEO = 'De leukste cadeaus van ' + naam + ', door ons met de hand uitgezocht.';
-    return paginakop({ titel: 'Cadeaus van ' + naam, kruimel: [{ tekst: 'Onze winkels', naar: '/winkels' }, { tekst: naam }] }) +
+    var kop = w && w.naam ? w.naam : naam; /* Atelier Rebul: het merk in de kop, de winkel staat in de tekst eronder */
+    zetTitel('Cadeaus van ' + kop);
+    window.LK_SEO = 'De leukste cadeaus van ' + kop + ', door ons met de hand uitgezocht.';
+    return paginakop({ titel: 'Cadeaus van ' + kop, kruimel: [{ tekst: 'Onze winkels', naar: '/winkels' }, { tekst: kop }] }) +
       '<div class="binnen">' +
         '<p class="zoek-ruim">' + (w ? esc(w.tekst) + ' ' : '') + 'Bovenaan staan de cadeaus die wij het mooist, leukst of gekst vinden.</p>' +
         '<div class="werkbalk"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +

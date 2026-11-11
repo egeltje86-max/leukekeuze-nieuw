@@ -42,7 +42,8 @@ for i, keus in KEUZE.items():
     if not os.path.exists(fp): over.append((i, 'geen foto')); continue
     pid = PRE.get(x['w'], re.sub(r'[^a-z]', '', x['w'].lower())[:6]) + '-' + hashlib.md5(x['l'].encode()).hexdigest()[:10]
     if '"' + pid + '"' in bestaand: over.append((i, 'staat al op de site: ' + pid)); continue
-    if re.sub(r'[^a-z0-9]', '', keus['titel'].lower())[:30] in titels: over.append((i, 'bijna dezelfde titel bestaat al')); continue
+    # --titels-nagelezen (11-11-2026): voor een reeks van één merk (Atelier Rebul: zelfde naam, andere geur of maat) waarvan de titels met de hand zijn nagelezen
+    if '--titels-nagelezen' not in sys.argv and re.sub(r'[^a-z0-9]', '', keus['titel'].lower())[:30] in titels: over.append((i, 'bijna dezelfde titel bestaat al')); continue
     try:
         im = Image.open(fp); im.load(); im = im.convert('RGBA'); bg = Image.new('RGB', im.size, (255, 255, 255)); bg.paste(im, mask=im.split()[3]); im = bg
     except Exception as e: over.append((i, 'foto kapot: ' + str(e)[:60])); continue
