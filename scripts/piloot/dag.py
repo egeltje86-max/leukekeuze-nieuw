@@ -59,6 +59,14 @@ if wacht and os.path.exists(wacht) and vers:
 elif not (wacht and os.path.exists(wacht)):
     stap('nazorg', True, 'geen nachtrapport gevonden, overgeslagen')
 
+# 2b. linktest (11-11-2026): de laptop klikt eens per 30 dagen de winkelknoppen na. Kapotte knoppen melden (twee dagen lang), niets zelf veranderen:
+# herstellen gaat volgens CLAUDE.md hoofdstuk 10 (winkel in TT_OMWEG en TT_TC, of het product op uitverkocht).
+try:
+    lt = json.load(open(os.path.join(ROOT, 'keurkamer', 'nazorg', 'linktest-laatste.json'), encoding='utf-8'))
+    if lt.get('kapot') and (datetime.date.today() - datetime.date.fromisoformat(lt.get('datum', ''))).days <= 1:
+        rap['melden'].append('Linktest: %d winkelknoppen komen op een pagina die niet bestaat (%s). Zie CLAUDE.md hoofdstuk 10.' % (len(lt['kapot']), ', '.join(x.get('id', '?') for x in lt['kapot'][:8])))
+except Exception: pass
+
 if arg('--alleen-controle'):
     c, t = run(['node', 'scripts/controle/alles.js', '.', 'keurkamer/data']); stap('controle', c == 0, t)
     klaar(0 if c == 0 else 2, 'Alleen controle: ' + ('schoon.' if c == 0 else 'NIET schoon, zie keurkamer/data/controle-laatste.json.'))

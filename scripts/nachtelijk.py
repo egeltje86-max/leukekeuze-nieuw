@@ -210,6 +210,27 @@ try:
     git('add', 'keurkamer/nazorg/wacht-laatste.json')
 except Exception as e:
     log('nazorg-controle overgeslagen:', e)
+# 11-11-2026 (grote controle, JA Marius): eens per 30 dagen de winkelknoppen naklikken, één product per doorstuuradres.
+# Vier winkels gaven 'pagina niet gevonden' terwijl het product er gewoon was; dat ziet alleen een echte klik. Elke test telt
+# bij het netwerk als klik, daarom niet vaker. Alleen een rapport (keurkamer/nazorg/linktest-laatste.json); de dagelijkse piloot
+# meldt wat kapot is. Mag de zoekindex nooit tegenhouden.
+try:
+    LT = os.path.join(REPO, 'keurkamer', 'nazorg', 'linktest-laatste.json'); dagen = 999
+    if os.path.exists(LT):
+        try: dagen = (datetime.date.today() - datetime.date.fromisoformat(json.load(open(LT, encoding='utf-8')).get('datum', ''))).days
+        except Exception: dagen = 999
+    if dagen >= 30:
+        e = subprocess.run(['node', os.path.join(HIER, 'controle', 'eindpunten.js'), REPO], capture_output=True, text=True, encoding='utf-8', timeout=300)
+        rij = (e.stdout or '').strip()
+        if rij:
+            os.makedirs(os.path.dirname(LT), exist_ok=True)
+            t = subprocess.run([sys.executable, os.path.join(HIER, 'controle', 'linktest-laptop.py'), rij, '--json', LT],
+                               capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=2400)
+            log('linktest:', (t.stdout or t.stderr).strip().splitlines()[-1:])
+            if os.path.exists(LT): git('add', 'keurkamer/nazorg/linktest-laatste.json')
+        else: log('linktest overgeslagen: geen rij producten', (e.stderr or '').strip()[-200:])
+except Exception as e:
+    log('linktest overgeslagen:', e)
 git('add', 'assets/zoek/winkels.json', 'assets/zoek/alle.json.gz', 'assets/zoek/w')
 if git('diff', '--cached', '--quiet').returncode == 0:
     log('Niets veranderd.'); sys.exit(0)

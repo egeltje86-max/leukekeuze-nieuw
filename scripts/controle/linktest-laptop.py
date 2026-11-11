@@ -5,7 +5,8 @@
 #   ROBOT  = de winkel houdt robots tegen (403, 'even geduld'); zegt niets over echte bezoekers
 #   BLIJFT = blijft op het doorstuuradres hangen; met de hand nakijken
 # Gebruik (PowerShell):
-#   python linktest-laptop.py <id,id,id>     de rij komt uit: node scripts/controle/eindpunten.js .
+#   python linktest-laptop.py <id,id,id> [--json uitslag.json]     de rij komt uit: node scripts/controle/eindpunten.js .
+# De nachtrun (scripts/nachtelijk.py) doet dit vanzelf als de vorige test 30 dagen of ouder is.
 # bol en Amazon zitten er bewust niet in (niet scrapen). Let op: elke test is een echte klik bij het partnernetwerk;
 # doe dit dus af en toe (bijvoorbeeld één keer per maand), niet elke dag.
 import json, re, sys, urllib.request, urllib.parse
@@ -14,6 +15,8 @@ from playwright.sync_api import sync_playwright
 if len(sys.argv) < 2:
     print('Geef de rij product-id\'s mee (zie de uitleg bovenaan).'); raise SystemExit(1)
 IDS = [x for x in sys.argv[1].split(',') if x]
+UIT = sys.argv[sys.argv.index('--json') + 1] if '--json' in sys.argv else None   # de nachtrun laat hier de uitslag schrijven
+lijst = []
 t = urllib.request.urlopen(urllib.request.Request('https://leukekeuze.nl/assets/js/producten-details.js', headers={'User-Agent': 'Mozilla/5.0'}), timeout=60).read().decode('utf-8')
 D = json.loads(t[t.index('window.LK_DETAILS = ') + 20:t.rindex('}') + 1])
 
@@ -39,8 +42,15 @@ with sync_playwright() as p:
             elif pu.netloc == u0.netloc and pu.path == u0.path: oordeel = 'BLIJFT'
             else: oordeel = 'GOED'
             print(n + 1, oordeel, i, st, u0.netloc + u0.path[:30], '->', pu.netloc + pu.path[:40], '|', kop, flush=True)
+            if oordeel != 'GOED': lijst.append({'id': i, 'oordeel': oordeel, 'status': st, 'van': u0.netloc + u0.path[:40], 'naar': pu.netloc + pu.path[:60], 'kop': kop})
         except Exception as e:
             oordeel = 'FOUT'; print(n + 1, 'FOUT', i, u0.netloc + u0.path[:30], a(e)[:70], flush=True)
+            lijst.append({'id': i, 'oordeel': 'FOUT', 'van': u0.netloc + u0.path[:40], 'kop': a(e)[:70]})
         tel[oordeel] = tel.get(oordeel, 0) + 1
     b.close()
+if UIT:
+    import datetime
+    with open(UIT, 'w', encoding='utf-8') as fh:
+        json.dump({'datum': datetime.date.today().isoformat(), 'getest': len(IDS), 'tel': tel,
+                   'kapot': [x for x in lijst if x['oordeel'] == 'KAPOT'], 'rest': [x for x in lijst if x['oordeel'] != 'KAPOT']}, fh, indent=1, ensure_ascii=False)
 print('KLAAR', tel, flush=True)
