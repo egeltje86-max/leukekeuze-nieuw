@@ -487,6 +487,12 @@
       return '<a href="' + esc(l[1]) + '">' + esc(l[0]) + '</a>';
     }).join('') + '</nav></section>';
   }
+  /* 11-11-2026 (Marius: 'alles moet strak zijn, met leuke icoontjes erbij'): een kleine nette tegel met een rond plaatje en een naam.
+     Vervangt de losse tekstknopjes van ongelijke breedte (overige categorieën, overige personen, gelegenheden). Altijd in een raster van gelijke vakken. */
+  function miniTegel(naam, naar, beeld, icoon) {
+    return '<a class="mini-tegel" href="' + esc(naar) + '"><span class="mt-rond' + (beeld ? '' : ' mt-ico') + '">' +
+      (beeld ? '<img src="' + esc(beeld) + '" alt="" loading="lazy" decoding="async" width="44" height="44">' : ic(icoon || 'raster')) + '</span><span class="mt-naam">' + esc(naam) + '</span></a>';
+  }
   /* Horizontale rij om doorheen te vegen (homepage). */
   function rij(lijst) {
     return '<div class="prodgrid rij">' + lijst.map(LK.productKaart).join('') + '</div>';
@@ -993,7 +999,7 @@
     };
     var persoonLink = function (slug) {
       var x = window.LK_PERSONEN.filter(function (p) { return p.slug === slug; })[0]; if (!x) return '';
-      return '<a class="chip" href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '">' + esc(x.kort) + '</a>';
+      return miniTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp');
     };
     return '' +
       /* 1. Intro met twee knoppen: Help mij kiezen (VONK) en Lekker rondkijken (naar de favorieten). */
@@ -1018,7 +1024,7 @@
         '<section class="sectie eerste" data-tel="voor-wie">' +
           '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div><a class="meer" href="/voor">Iedereen ' + ic('pijl') + '</a></div>' +
           '<div class="persoon-subs home zeven">' + ['haar', 'hem', 'kinderen', 'collega', 'baby', 'opa-oma', 'tieners'].map(persoon).join('') + '</div>' +
-          '<div class="voorwie-links alleen-mobiel">' + ['baby', 'opa-oma', 'tieners'].map(persoonLink).join('') + '</div>' +
+          '<div class="voorwie-links mini-raster alleen-mobiel">' + ['baby', 'opa-oma', 'tieners'].map(persoonLink).join('') + miniTegel('Iedereen', '/voor', '', 'cadeau') + '</div>' +
         '</section>' +
 
         /* 2b. Belevenissen (9-11-2026, GO Marius): banner van Nova + zes tegels om te swipen. */
@@ -1043,7 +1049,7 @@
         '<section class="sectie" data-tel="categorieen">' +
           '<div class="sectie-kop"><div><h2>Ontdek onze categorieën</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
           '<div class="catbalken">' + CATS_VOOR.map(function (s) { return cat(s, false); }).join('') + CATS_REST.map(function (s) { return cat(s, true); }).join('') + '</div>' +
-          '<div class="cat-links alleen-mobiel">' + CATS_REST.map(function (s) { var c = window.LK_CAT(s); return c ? '<a class="chip" href="/c/' + c.slug + '">' + esc(c.naam) + '</a>' : ''; }).join('') + '<a class="chip" href="/categorieen">Alle categorieën</a></div>' +
+          '<div class="cat-links mini-raster alleen-mobiel">' + CATS_REST.map(function (s) { var c = window.LK_CAT(s); return c ? miniTegel(c.naam, '/c/' + c.slug, c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') : ''; }).join('') + miniTegel('Alle categorieën', '/categorieen', '', 'raster') + '</div>' +
         '</section>' +
 
         /* 8. Persoonlijk + gelegenheden als tekstknopjes. */
@@ -1094,11 +1100,14 @@
       kand = kand.filter(function (p) { return p.sfeer || p.favoriet; }).concat(kand.filter(function (p) { return !(p.sfeer || p.favoriet); }));
       l = l.concat(afwisselen(kand, 8).slice(0, 4 - l.length));
     }
-    var knopjes = (INST.gelegenheidKnopjes || []).map(function (k) { return '<a class="chip" href="' + esc(k[1]) + '">' + esc(k[0]) + '</a>'; }).join('');
+    var GEL_BEELD = { '/gelegenheid/verjaardag': 'gel-verjaardag', '/gelegenheid/jubileum': 'gel-jubileum', '/voor/baby': 'gel-geboorte', '/c/valentijn': 'gel-valentijn',
+      '/gelegenheid/housewarming': 'gel-housewarming', '/gelegenheid/bedankt': 'gel-bedankt', '/collectie/brievenbuscadeaus': 'col-brievenbuscadeaus' };
+    var knopjes = (INST.gelegenheidKnopjes || []).map(function (k) { return miniTegel(k[0], k[1], GEL_BEELD[k[1]] ? 'images/sub/rond/' + GEL_BEELD[k[1]] + '-klein.webp' : '', 'cadeau'); }).join('') +
+      miniTegel('Alle gelegenheden', '/gelegenheid', '', 'raster');
     return '<section class="sectie persoonlijk" data-tel="persoonlijk">' +
       '<div class="sectie-kop"><div><span class="kicker">' + esc(f.kicker) + '</span><h2>' + esc(f.titel) + '</h2><p>' + esc(f.tekst) + '</p></div><a class="meer" href="' + esc(f.naar) + '">' + esc(f.knop) + ' ' + ic('pijl') + '</a></div>' +
       (l.length ? '<div class="prodgrid vier">' + l.slice(0, 4).map(LK.productKaart).join('') + '</div>' : '') +
-      '<div class="gelegenheid-knopjes"><span>Of kies een gelegenheid:</span>' + knopjes + '</div>' +
+      '<div class="gelegenheid-strak"><h3>Of kies een gelegenheid</h3><div class="mini-raster breed">' + knopjes + '</div></div>' +
       '</section>';
   }
   /* Acties van onze winkels: de 3 acties die het eerst aflopen, zonder de algemene 'word lid'-kortingen. Verlopen acties staan er nooit (codesNu). */
@@ -1248,9 +1257,9 @@
       }).join('') + '</div></section>' +
       /* Stap 3 indeling: onder de 12 afdelingen de 7 personen als knopjes (plan deel 8). */
       '<section class="sectie"><div class="sectie-kop"><div><h2>Of kies voor wie</h2></div><a class="meer" href="/voor">Alle personen ' + ic('pijl') + '</a></div>' +
-      '<nav class="gelegenheid-knopjes voor-knopjes" aria-label="Voor wie">' + (window.LK_PERSONEN || []).filter(function (p) { return !p.verborgen; }).map(function (p) {
-        return '<a class="chip" href="/voor/' + esc(p.slug) + '">' + esc(p.naam) + '</a>';
-      }).join('') + '</nav></section></div>';
+      '<nav class="mini-raster breed" aria-label="Voor wie">' + (window.LK_PERSONEN || []).filter(function (p) { return !p.verborgen; }).map(function (p) {
+        return miniTegel(p.naam, '/voor/' + p.slug, 'images/sub/rond/voor-' + p.slug + '-klein.webp');
+      }).join('') + miniTegel('Alle personen', '/voor', '', 'cadeau') + '</nav></section></div>';
   }
 
   /* Kleine versie van een rond plaatje (220px) voor de rondjes: scheelt zo'n 90% aan data per rondje. */
