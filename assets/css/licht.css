@@ -2011,6 +2011,13 @@ html.nova9 .meer-knop .knop-rand, html.nova9 .knop.knop-rand {
   font: 700 15px/1 var(--f-ui); box-shadow: 0 2px 8px rgba(10,16,32,.05);
 }
 html.nova9 .meer-knop .knop-rand:hover, html.nova9 .knop.knop-rand:hover { border-color: #B8862E; background: #FFFFFF; }
+/* Herstel 11-11-2026 (fout gezien door Marius op de homepage, telefoon): 'Lekker rondkijken' was donkere tekst op een donkere knop.
+   De regel hierboven maakte de tekst van elke tweede knop donker, maar op de foto bovenaan de homepage blijft die knop donker doorzichtig.
+   Daar hoort dus witte tekst bij, zoals vóór NOVA-009. */
+html.nova9 #app > .hero .hero-knoppen .knop.knop-rand,
+html.nova9 .hero-knoppen .knop.knop-rand { color: #FFFFFF; background: rgba(10, 16, 32, .75); border-color: rgba(250, 233, 188, .72); }
+html.nova9 #app > .hero .hero-knoppen .knop.knop-rand:hover,
+html.nova9 .hero-knoppen .knop.knop-rand:hover { color: #FFFFFF; background: rgba(10, 16, 32, .88); border-color: #F2CB74; }
 html.nova9 .prodkaart { border-radius: 16px; border-color: #E5D7BE; }
 html.nova9 .prodkaart .beeld.echt:not(.sfeer) { background: #FFFFFF; aspect-ratio: 1 / 1; }
 html.nova9 .prodkaart .beeld .label,
