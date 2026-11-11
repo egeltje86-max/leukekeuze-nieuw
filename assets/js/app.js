@@ -1516,7 +1516,9 @@
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
 
     /* WIJZER (proef): de nieuwe opzet. Alleen zonder eigen sortering of filters; met ?alles=1 krijg je de gewone lijst met werkbalk. */
-    var wzAan = WIJZER === 'b' && !q.alles && alles.length && Object.keys(q).every(function (k) { return !q[k] || k === 'prijs' || k === 'proef' || (k === 'sort' && q[k] === 'aanbevolen'); });
+    /* Alleen een echte sortering of een echt filter zet de gewone lijst terug; andere dingen in het adres (utm_source van ChatGPT, fbclid …) niet. */
+    var wzFilters = ['afd', 'merk', 'sg', 'soort', 'winkel', 'kind', 'leeftijd'].concat(knopSets(knoppen, q).map(function (k) { return k.param; }));
+    var wzAan = WIJZER === 'b' && !q.alles && alles.length && !(q.sort && q.sort !== 'aanbevolen') && !wzFilters.some(function (k) { return q[k]; });
     LK.redenAltijd = !!wzAan;
     if (wzAan) {
       var wzLijst = etalageEerst(lijst);
