@@ -1243,7 +1243,7 @@
   /* WINKELTOP (11-11-2026, idee Marius: 'de allerleukste partners een top 5 plek geven met onze uitgekozen producten, met een plek op de homepage').
      Vijf favoriete winkels, elk met vijf cadeaus die wij zelf hebben uitgezocht (de eerste vijf van de vaste top '/winkel/<slug>' in topkeuze.js).
      De kaartjes gaan naar onze eigen productpagina; 'Alle cadeaus van …' gaat naar /zoek?winkel=<naam> (alles van die winkel, de uitgekozen cadeaus eerst).
-     Eerst als voorbeeld: alleen zichtbaar met ?proef=winkels (uit: ?proef=winkels-uit). Voor iedereen aan: window.LK_WINKELTOP = true; helemaal uit: false. */
+     Live voor iedereen sinds 11-11-2026 (GO Marius). Helemaal uit: window.LK_WINKELTOP = false. */
   var WINKELTOP = [
     { shop: 'Dille & Kamille', slug: 'dille-kamille', tekst: 'Natuurlijke spullen voor keuken, huis en tuin.' },
     { shop: 'Ditverzinjeniet', slug: 'ditverzinjeniet', tekst: 'Grappige en vreemde cadeaus die je nergens anders ziet.' },
@@ -1252,13 +1252,13 @@
     { shop: 'Decantalo', slug: 'decantalo', tekst: 'Mooie flessen: whisky, gin, wijn en bubbels (18+).' }
   ];
   var WT_AAN = (function () {
-    if (window.LK_WINKELTOP === true) return true;
+    /* 11-11-2026, 17:53: GO van Marius: het blok staat aan voor iedereen. Zelf vergelijken zonder blok: ?proef=winkels-uit (weer aan: ?proef=winkels). */
     if (window.LK_WINKELTOP === false) return false;
     try {
       var m = /[?&]proef=winkels(-uit)?(?:&|$)/.exec(location.search);
-      if (m) { if (m[1]) localStorage.removeItem('lkwinkels'); else localStorage.setItem('lkwinkels', '1'); }
-      return localStorage.getItem('lkwinkels') === '1';
-    } catch (e) { return false; }
+      if (m) { if (m[1]) localStorage.setItem('lkwinkels', '0'); else localStorage.removeItem('lkwinkels'); }
+      return localStorage.getItem('lkwinkels') !== '0';
+    } catch (e) { return true; }
   })();
   function winkelSlug(naam) { var w = WINKELTOP.filter(function (x) { return x.shop.toLowerCase() === String(naam).toLowerCase(); })[0]; return w ? w.slug : vouw(String(naam)).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
   function winkelTopBlok() {
