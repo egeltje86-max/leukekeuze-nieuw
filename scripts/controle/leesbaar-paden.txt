@@ -39,3 +39,7 @@
 /voor/collega/
 /c/speelgoed/
 /c/elektronica/gaming/
+/vonk/?voor=kind
+/vonk/?voor=haar
+/vonk/?voor=haar&moment=verjaardag
+/vonk/?voor=haar&moment=verjaardag&budget=tot25

@@ -1826,6 +1826,13 @@ html.nova6 body.nova6-vonk .vonk-vraag .keuze {
   box-shadow:0 2px 8px rgba(20,26,42,.05);
 }
 html.nova6 body.nova6-vonk .vonk-vraag .keuze:focus-visible { outline:3px solid #186D92; outline-offset:2px; }
+/* Herstel 11-11-2026 (fout gezien door Marius op /vonk/, telefoon): de keuzeknoppen stonden in vier smalle kolommen, met tekst over drie regels,
+   en 'Een tiener' stak buiten het kader. Oorzaak: de regel '.keuzes' voor de ronde keuzes op lijstpagina's (4 per rij) gold ook hier.
+   VONK krijgt zijn eigen raster terug: twee even brede knoppen naast elkaar (drie op een breed scherm), tekst op één regel, alles binnen het kader. */
+.vonk-vraag .keuzes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.vonk-vraag .keuze { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 56px; padding: 10px 12px; text-align: center; overflow-wrap: break-word; }
+@media (max-width: 639px) { .vonk-vraag .keuzes > .keuze:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (min-width: 640px) { .vonk-vraag .keuzes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 html.nova6 body.nova6-vonk .vonk-stapjes span { height:6px; border-radius:999px; }
 html.nova6 body.nova6-vonk .vonk-terug,
 html.nova6 body.nova6-vonk .vonk-aanpassen { min-height:44px; }
