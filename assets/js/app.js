@@ -2416,7 +2416,8 @@
         (q.q ? '<section class="sectie alle-winkels" data-alle-winkels data-q="' + esc(q.q) + '" data-prijs="' + esc(q.prijs || 'alle') + '">' +
           '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Alles wat onze partnerwinkels verkopen. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
           '<div class="aw-inhoud"><p class="aw-laden">Even zoeken in alle winkels…</p></div>' +
-          '<div class="aw-bol"><a class="knop knop-rand" href="' + esc(bolZoek(q.q)) + '" target="_blank" rel="sponsored nofollow noopener">Zoek ook op bol naar “' + esc(q.q) + '” ' + ic('pijl') + '</a></div>' +
+          /* 11-11-2026 (Marius: 'als je naar Atelier Rebul zoekt wil ik niet naar bol doorgestuurd worden'): bij dit merk geen knop naar bol; het loopt alleen via Parfumania. */
+          (/rebul/i.test(q.q) ? '' : '<div class="aw-bol"><a class="knop knop-rand" href="' + esc(bolZoek(q.q)) + '" target="_blank" rel="sponsored nofollow noopener">Zoek ook op bol naar “' + esc(q.q) + '” ' + ic('pijl') + '</a></div>') +
         '</section>' : '') +
       '</div>';
   }
