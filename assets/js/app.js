@@ -2043,7 +2043,13 @@
           /* Stap 5 indeling: één zin korter ('Met de hand gekozen' staat al bij 'Waarom wij dit kozen'). */
           '<ul class="feiten">' +
             '<li>' + ic('winkel') + '<span>Je bestelt en betaalt bij ' + esc(p.shop) + '; bezorging en retour regelt de winkel.</span></li>' +
-            (p.letOp ? '<li class="letop">' + ic('info') + '<span><strong>Let op:</strong> ' + esc(p.letOp) + '</span></li>' : '') +
+            /* 11-11-2026 (grote controle): bij elke fles drank staat 'Alleen voor 18 jaar en ouder', ook als dat niet in de eigen tekst van het product staat (166 van de 422 misten het). */
+            (function () {
+              var lo = p.letOp || '';
+              var drank = p.afd === 'eten-drinken' && (p.groep === 'bier-sterke-drank' || p.groep === 'wijn-bubbels') && p.vak !== 'alcoholvrije-wijn-bier' && !/alcoholvrij|0[,.]0 ?%|\b0 ?%/i.test(p.titel || '');
+              if (drank && !/18/.test(lo)) lo = 'Alleen voor 18 jaar en ouder.' + (lo ? ' ' + lo : '');
+              return lo ? '<li class="letop">' + ic('info') + '<span><strong>Let op:</strong> ' + esc(lo) + '</span></li>' : '';
+            })() +
             (p.verzendNoot ? '<li>' + ic('info') + '<span>' + esc(p.verzendNoot) + '</span></li>' : '') +
             (ookIn.length ? '<li>' + ic('cadeau') + '<span>Ook te vinden bij: ' + ookIn.join(', ') + '</span></li>' : '') +
             (p.voorbeeld ? '<li>' + ic('info') + '<span>Dit is een voorbeeldproduct om de site te testen. De foto is een sfeerbeeld.</span></li>' : '') +
@@ -2733,13 +2739,35 @@
       alle = alleW.length ? alleW : alle.filter(function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); });
     }
     if (lft) alle = alle.filter(function (p) { var a = kindLeeftijd(p); return a ? (a[0] <= lft.tot && a[1] >= lft.van) : lft.van >= 3; });
+    /* 11-11-2026 (grote controle): dezelfde regels als op de Voor wie-pagina's ('alleen zekere cadeaus').
+       1. Een cadeau met een tekst voor één soort persoon of moment (pensioen, oma, juf, zwanger, 50 jaar) staat alleen bij de persoon
+          waar het hoort; bij 'Maakt niet uit' alleen als het moment erom vraagt. Een getypt woord ('pensioen') gaat altijd voor.
+       2. Wat op de pagina van die persoon niet staat omdat het niet zeker past (p.nietBij), hoort ook niet bij de eerste keuzes
+          van VONK, tenzij de bezoeker zelf een interesse kiest of een woord typt. Het blijft aanvulling als er te weinig is. */
+    var SLUG = { hem: 'hem', haar: 'haar', kind: 'kinderen', tiener: 'tieners', 'opa-oma': 'opa-oma', collega: 'collega' }[q.voor];
+    alle = alle.filter(function (p) {
+      var r = p.smal && SMAL_PAG[p.smal];
+      if (!r || watW.length) return true;
+      return SLUG ? (!r[0] || r[0].test(SLUG)) : r[1].test(q.moment || '');
+    });
+    var zeker = function (p) { return !!hobby || watW.length > 0 || !(SLUG && p.nietBij && p.nietBij.indexOf(SLUG) !== -1); };
     var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
-    var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : past(p.voor, q.voor); };
+    /* 11-11-2026 (grote controle): bij een kind telt alleen wat echt voor kinderen is: het label 'kind' (of 'baby' bij 0 tot 2 jaar),
+       of speelgoed, kinderboeken en kinderspellen zonder label waarvan we de leeftijd weten. Iets 'voor iedereen' (een LEGO-bonsai,
+       een spel vanaf 16) is bij een kind alleen nog aanvulling als er te weinig is. Aanleiding: 'lego 8 jaar' gaf sets voor volwassenen
+       en sloeg de LEGO City-sets over. */
+    var kindZeker = function (p) {
+      var v = p.voor || [];
+      if (v.indexOf('kind') !== -1 || v.indexOf('kinderen') !== -1) return true;
+      if (lft && lft.van === 0 && v.indexOf('baby') !== -1) return true;
+      return !v.length && !!kindLeeftijd(p) && (p.afd === 'speelgoed' || /kinder/.test((p.groep || '') + ' ' + (p.vak || '')));
+    };
+    var pastVoor = function (p) { return q.voor === 'collega' ? echt(p) === 0 : q.voor === 'kind' ? kindZeker(p) : past(p.voor, q.voor); };
     /* Met een getypt woord is dat woord leidend; de interesse filtert dan niet nog eens. */
     /* Bij een interesse horen geen afscheids-, pensioen- of juf/meester-cadeaus (die zijn voor een ander moment). */
     var hob = function (p) { return !hobby || watW.length > 0 || (vonkHobby(p, hobby) && !/afscheid|pensioen|\bjuf\b|meester|collega/i.test(p.titel || '')); };
     var lftZeker = function (p) { if (!lft) return true; var a = kindLeeftijd(p); return !!a && a[0] >= lft.van - 3; };
-    return { past: past, alle: alle, watW: watW, echt: echt, pastVoor: pastVoor, hob: hob, lftZeker: lftZeker,
+    return { past: past, alle: alle, watW: watW, echt: echt, pastVoor: pastVoor, hob: hob, lftZeker: lftZeker, zeker: zeker,
       aantal: function () { return alle.filter(function (p) { return hob(p) && (pastVoor(p) || (p.voor || []).indexOf('iedereen') !== -1); }).length; } };
   }
   /* ---------- Sint-rijmmachine (7-11-2026, GO Marius; ontwerp Nova: 'Modern Luxury met een komische Sint-knipoog') ----------
@@ -3017,7 +3045,7 @@
       '<div class="rz-eyebrow">Stap 2 van 2 • Even geduld</div><h2>Sint en Piet zijn aan het dichten…</h2>' +
       '<div class="rz-boekbeeld"><img src="/images/banners/rijm-boek.webp" alt="Sinterklaas leest voor uit het Grote Boek, Piet moet lachen" width="700" height="468" decoding="async"></div>' +
       '<ul class="rz-stappen"><li data-rz-s="1"><span></span>Sint slaat het Grote Boek open bij ' + esc(naam) + '…</li><li data-rz-s="2"><span></span>Piet zoekt het cadeau uit…</li><li data-rz-s="3"><span></span>Het gedicht rijmen…</li><li data-rz-s="4"><span></span>Sint controleert rijm en grap…</li></ul>' +
-      '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht en controleert met zorg. Dit duurt ongeveer een halve minuut.</p></div></div>';
+      '<div class="rz-balk" aria-hidden="true"></div><p class="rz-noot">Sint dicht en controleert met zorg. Dit duurt een halve tot een hele minuut.</p></div></div>';
   }
   function rijmVerstuur(f) {
     if (RIJM_BEZIG) return;
@@ -3157,7 +3185,7 @@
         if (q.moment === 'kerst' && SINTW.test(p.titel || '')) return false;
         return true;
       };
-      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && pastMom(p) && lftZeker(p); });
+      var precies = alle.filter(function (p) { return hob(p) && pastVoor(p) && pastMom(p) && lftZeker(p) && B.zeker(p); });
       /* Weinig treffers? Eerst 'voor iedereen' (zelfde moment), dan dezelfde persoon met een ander moment. Altijd binnen budget en interesse. */
       var ruimer = [], anders = [];
       if (precies.length < 12) {
@@ -3218,6 +3246,9 @@
         var isRaak = function (p) { var zt = zoekTekstV(p); return watW.some(function (w) { return bevat(zt, w); }); };
         alles = alles.filter(isRaak).concat(alles.filter(function (p) { return !isRaak(p); }));
       }
+      /* 11-11-2026 (grote controle): sieraden ook bij VONK achteraan, net als op de andere lijsten (wens Marius). Niet als de bezoeker
+         er zelf om vraagt: de interesse 'Sieraden & horloges' of een getypt woord. Er valt niets weg. */
+      if (!watW.length && hobby !== 'sieraden') alles = sieradenLaat(alles, '/vonk');
       /* De 6 VONK-keuzes: liefst nog niet eerder getoond in dit bezoek. Zelfde vraag = zelfde 6 (ook na 'terug'). */
       var sleutel = [q.voor, q.leeftijd || '', q.moment, q.budget, hobby, q.wat || '', q.soort || '', q.mix || '', q.g || ''].join('|');
       var geh = vonkGeheugen(); geh.gezien = geh.gezien || []; geh.per = geh.per || {};

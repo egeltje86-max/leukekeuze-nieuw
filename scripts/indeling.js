@@ -313,7 +313,7 @@ function leeftijdUitTitel(t) {
   if ((m = t.match(/vanaf\s*(\d{1,2})\s*jaar/i))) return [+m[1], 99];
   if ((m = t.match(/(\d{1,2})\s*(?:-|tot)\s*(\d{1,2})\s*maanden/i))) return [0, Math.max(1, Math.ceil(+m[2] / 12))];
   /* 'baby' alleen als het echt babyspeelgoed is: 'Schleich baby panda' of 'BABY born' zijn pas vanaf 3 jaar (controle 01-11-2026). */
-  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|\bbaby(?!liss|foot|born|-?born)/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2]; /* 8-11-2026: 'BaByliss' en 'Babyfoot' zijn geen babyspeelgoed */
+  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|\bbaby(?!liss|foot|born|-?born)/i.test(t) && !/lolly|snoep|kauwgom/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2]; /* 11-11-2026: 'Big Baby Pop' is een lolly, geen babycadeau */ /* 8-11-2026: 'BaByliss' en 'Babyfoot' zijn geen babyspeelgoed */
   return null;
 }
 
@@ -327,10 +327,14 @@ function leeftijd(p, nieuwSub) {
   if (uitSpec && uitSpec[0] <= 18) return uitSpec;
   const uitTekst = leeftijdUitTitel(p.waarom || '');
   if (uitTekst && uitTekst[0] <= 14 && !/baby/i.test(p.waarom || '') ) return uitTekst;
-  const merk = MERK_LEEFTIJD.find((r) => r[0].test(t) && !/\blego\b|playmobil/i.test(r[0].source)); if (merk) return merk[1];
+  /* 11-11-2026 (grote controle): de uitzondering voor LEGO werkte niet ('\blego\b' vindt 'lego' niet in de tekst van de regel zelf),
+     waardoor élke LEGO-set 'vanaf 6 jaar' kreeg en de fijnere regels hieronder nooit aan de beurt kwamen. VONK stelde daardoor
+     een bonsai en een Ferrari voor volwassenen voor bij een kind van 6. */
+  const merk = MERK_LEEFTIJD.find((r) => r[0].test(t) && !/lego|playmobil/i.test(r[0].source)); if (merk) return merk[1];
   if (/\bduplo\b/i.test(t)) return [1, 5];
-  if (/lego.*(technic|ideas|icons|architecture|creator expert|star wars ultimate|botanical|art\b)/i.test(t)) return [9, 99];
   if (/\blego\b.*\bfriends\b|\blego\b.*\bcity\b|\blego\b.*\bninjago\b/i.test(t)) return [6, 12];
+  /* Sets voor grotere kinderen en volwassenen: de series, en de bloemen, planten en bouwwerken die geen serienaam in de titel hebben. */
+  if (/lego.*(technic|ideas|icons|architecture|creator expert|star wars ultimate|botanical|\bart\b|bonsai|boeket|bloemen|orchidee|bamboe|chrysant|waterlelies|kersenbloesems|lepelplant|abrikoos|woestijntuin|eiffeltoren|concorde|rivendell|verzamelaarseditie)/i.test(t)) return [9, 99];
   if (/\blego\b/i.test(t)) return [6, 99];
   if (/playmobil.*(junior|1\.2\.3|123)/i.test(t)) return [1, 4];
   if (/playmobil/i.test(t)) return [4, 10];

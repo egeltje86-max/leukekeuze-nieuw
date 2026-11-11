@@ -9,6 +9,15 @@ try { OUD = JSON.parse(fs.readFileSync(path.join(__dirname, 'oud-naar-nieuw.json
 /* Reparaties 5-11-2026 (GO Marius, na de sitecontrole): partnerlinks voor producten die een gewone winkellink hadden,
    een vakje voor producten zonder vakje, en dubbele producten samenvoegen (de goedkoopste blijft). Zie correcties.json. */
 let COR = { links: {}, vak: {}, samen: {} };
+/* 11-11-2026 (grote controle, linktest op 137 producten): bij deze winkels geeft de eigen TradeTracker-doorstuurpagina
+   (winkel.nl/map/?tt=...&r=...) een 404, terwijl het product gewoon bestaat. De bezoeker kwam op 'pagina niet gevonden' en wij
+   kregen niets. Via tc.tradetracker.net komt hij wel goed uit, met dezelfde code. Zelfde lijst als TT_TC in maak-zoekindex.py:
+   komt er een winkel bij, zet hem dan op beide plekken. */
+const TT_OMWEG = /^https?:\/\/(www\.lookinggoodtoday\.com\/mode\/|www\.surprose\.nl\/ttsurpriserozen\/|www\.toprc\.nl\/rc\/|www\.247jeans\.com\/ttjeans\/)\?/;
+function ttOmweg(u) {
+  const m = /[?&]tt=(\d+)_(\d+)_(\d+)_([^&]*)/.exec(u), r = /[?&]r=([^&]+)/.exec(u);
+  return m && r ? 'https://tc.tradetracker.net/?c=' + m[1] + '&m=' + m[2] + '&a=' + m[3] + '&r=' + m[4] + '&u=' + r[1] : u;
+}
 const OUDP = { kind: 'cadeaus/voor-kinderen', kinderen: 'cadeaus/voor-kinderen', haar: 'cadeaus/voor-haar', hem: 'cadeaus/voor-hem', collega: 'cadeaus/collega', baby: 'cadeaus/baby-kraam', 'opa-oma': 'cadeaus/opa-oma' };
 try { COR = JSON.parse(fs.readFileSync(path.join(__dirname, 'correcties.json'), 'utf8')); } catch (e) {}
 let TERUG4 = {}; try { TERUG4 = JSON.parse(fs.readFileSync(path.join(__dirname, 'verhuisd.json'), 'utf8')).terug || {}; } catch (e) {}
@@ -35,6 +44,8 @@ function plaats(p) {
   if (w) { p.voor = (p.voor || []).filter((x) => w.indexOf(x) === -1); p.ookIn = (p.ookIn || []).filter((x) => !w.some((l) => OUDP[l] === x)); }
   const s = (COR.status || {})[p.id]; if (s && p.status === 'goedgekeurd') { p.status = s; p.uitverkochtSinds = p.uitverkochtSinds || '2026-11-05'; }
   const sh = (COR.shop || {})[p.id]; if (sh) { p.shop = sh[0]; if (sh[1]) p.verzendNoot = sh[1]; else delete p.verzendNoot; if (sh[2]) p.winkelUrl = sh[2]; }
+  if (TT_OMWEG.test(p.url || '')) p.url = ttOmweg(p.url);
+  if (TT_OMWEG.test(p.winkelUrl || '')) { const r0 = /[?&]r=([^&]+)/.exec(p.winkelUrl); if (r0) { try { p.winkelUrl = decodeURIComponent(r0[1]); } catch (e) {} } }
   const gz = (COR.gezien || {})[p.id]; if (gz && (!p.gecontroleerd || gz > p.gecontroleerd)) p.gecontroleerd = gz; /* 8-11-2026: controledatum uit de nazorg */
   const pr = (COR.prijs || {})[p.id]; if (pr) { p.prijs = pr[0]; if (pr[1] && pr[1] > pr[0]) p.oudePrijs = pr[1]; else delete p.oudePrijs; }
   if (p.oudePrijs && !(p.oudePrijs > p.prijs)) delete p.oudePrijs; /* geen 'van-prijs' die niet hoger is */

@@ -168,7 +168,8 @@ def direct(link, winkel):
     return root + dl.lstrip('/') if root else None
 # Linkcheck 31-10-2026: bij deze winkels geeft de eigen TradeTracker-landingspagina (winkel.nl/...?tt=...&r=...) een 404.
 # Via tc.tradetracker.net komt de bezoeker wel goed op de productpagina (met dezelfde tracking).
-TT_TC = {'Looking Good Today', '247Jeans'}
+# 11-11-2026 (grote controle): Surprose en TopRC erbij. De producten op de site zelf krijgen dezelfde omweg in scripts/boom/plaats.js (TT_OMWEG).
+TT_TC = {'Looking Good Today', '247Jeans', 'Surprose', 'TopRC'}
 def tt_tc(link):
     q = parse_qs(urlparse(link).query)
     tt = (q.get('tt') or [''])[0].split('_'); r = (q.get('r') or [''])[0]

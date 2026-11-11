@@ -663,7 +663,7 @@ window.LK_PERSONEN = (function () {
     ] },
   { slug: 'kinderen', naam: 'Voor kinderen', kort: 'Kinderen', labels: ['kind', 'kinderen'], oud: 'cadeaus/voor-kinderen', beeld: B('cadeaus-voor-kinderen-2026b'), vaag: B('cadeaus-voor-kinderen-2026b'),
     knoppen: ['kind', 'leeftijd'],
-    seoTitel: 'Cadeau voor kinderen – speelgoed en leuke cadeaus', tekst: 'Speelgoed, boeken en knutselspullen: cadeaus waar kinderen blij van worden. Kies jongen of meisje en de leeftijd.',
+    seoTitel: 'Cadeau voor kinderen – speelgoed en leuke cadeaus', tekst: 'Speelgoed, boeken en knutselspullen: cadeaus waar kinderen blij van worden. Kies waar je kind graag mee speelt, of kies de leeftijd.',
     subs: [
       s('bouwen', 'Bouwen & LEGO', 'speelgoed-bouwen', ['speelgoed/lego', 'speelgoed/playmobil', 'speelgoed/knikkerbanen-magnetisch'], 'LEGO en bouwspeelgoed cadeau', 'LEGO, Duplo, Playmobil en knikkerbanen. Voor kleine en grote bouwers.'),
       s('knutselen', 'Knutselen & creatief', 'speelgoed-knutselen', ['speelgoed/knutselen-kleuren', 'hobby', 'boeken-media/kleurboeken'], 'Knutselcadeau voor kinderen', 'Tekenen, verven, kleien en knutselpakketten voor creatieve kinderen.'),
