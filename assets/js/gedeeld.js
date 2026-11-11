@@ -201,10 +201,15 @@
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
         (p.kleuren > 1 ? '<span class="kleuren"><i></i><i></i><i></i>' + p.kleuren + ' ' + (p.keuzeMeervoud || 'kleuren') + '</span>' : '') +
         /* 2.0: alleen bij onze favorieten één korte, echte reden (de eerste zin van 'waarom wij dit kozen'). */
-        ((p.favoriet || (window.LK && window.LK.redenAltijd)) && p.waarom && korteReden(p.waarom) ? '<p class="reden">' + esc(korteReden(p.waarom)) + '</p>' : '') +
+        (kaartReden(p) ? '<p class="reden">' + esc(kaartReden(p)) + '</p>' : '') +
       '</div></article>';
   }
   /* Alleen als de eerste zin kort genoeg is om heel te tonen; anders liever niets dan een afgekapte zin. */
+  /* Favorieten tonen altijd een korte reden. In de nieuwe opzet van de Voor wie-pagina's (WIJZER) elke kaart die er een heeft: p.kort (etalage) of de eerste zin van 'waarom'. */
+  function kaartReden(p) {
+    if (window.LK && window.LK.redenAltijd) { if (p.kort) return p.kort; if (!p.waarom) return ''; var m = String(p.waarom).match(/^[^.!?]{10,}[.!?]/), z = (m ? m[0] : String(p.waarom)).trim(); return z.length > 100 ? z.slice(0, 98).replace(/\s+\S*$/, '') + '…' : z; }
+    return p.favoriet && p.waarom ? korteReden(p.waarom) : '';
+  }
   function korteReden(t) {
     var zin = (t.match(/^[^.!?]{10,}[.!?]/) || [''])[0].trim();
     return zin.length && zin.length <= 64 ? zin : '';

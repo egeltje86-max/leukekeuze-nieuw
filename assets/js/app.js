@@ -1036,7 +1036,7 @@
       var x = window.LK_PERSONEN.filter(function (p) { return p.slug === slug; })[0]; if (!x) return '';
       return miniTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp');
     };
-    return '' +
+    var klassiek = '' +
       /* 1. Intro met twee knoppen: Help mij kiezen (VONK) en Lekker rondkijken (naar de favorieten). */
       '<section class="hero' + (INST.heroLogo ? ' hero-logo' : '') + (INST.heroNieuw ? ' hero-2026' : '') + '">' +
         '<picture><source media="(min-width: 760px)" srcset="' + esc(INST.heroDesktop) + '">' +
@@ -1106,6 +1106,23 @@
           '</div>' +
         '</section>' +
       '</div>';
+    if (WIJZER !== 'b') return klassiek;
+    /* WIJZER (proef, 11-11-2026, GO Marius): de homepage stelt één vraag. Eerste scherm: voor wie? Daaronder alleen het seizoen, onze favorieten,
+       de gelegenheden en gidsen als gewone links, de eigen kleurboeken en 'zo werkt het'. Categorieën, bedrag, acties en belevenissen staan in het menu. */
+    var zoWerkt = (/<section class="sectie" data-tel="zo-werkt-het">[\s\S]*?<\/section>/.exec(klassiek) || [''])[0];
+    var wzTegel = function (naam, naar, beeld, icoon) {
+      return '<a class="wzh-tegel" href="' + naar + '">' + (beeld ? '<span class="wzh-rond"><img src="' + beeld + '" alt="" width="64" height="64" decoding="async"></span>' : '<span class="wzh-rond wzh-icoon">' + ic(icoon) + '</span>') + '<span>' + esc(naam) + '</span></a>';
+    };
+    return '<div class="binnen wzh">' +
+      '<section class="sectie eerste wzh-vraag" data-tel="voor-wie"><h1>Voor wie zoek je een cadeau?</h1><p class="wzh-sub">Tik op één plaatje. Je ziet meteen onze beste keuzes.</p>' +
+        '<nav class="wzh-raster" aria-label="Voor wie zoek je een cadeau?">' +
+          window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
+          wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel('Categorieën', '/categorieen', '', 'raster') +
+        '</nav></section>' +
+      rijmBlok('home') + seizoenBlok() + favorietenBlok() +
+      tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; })) +
+      gidsenCompact() + eigenKaart() + zoWerkt +
+    '</div>';
   }
   /* Seizoensblok: de periode van vandaag bepaalt welke kaarten er staan; de eerste is groot. */
   function seizoenBlok() {
@@ -2275,6 +2292,8 @@
       var niveaus = {}; lijst.forEach(function (p) { (niveaus[sc[p.id]] = niveaus[sc[p.id]] || []).push(p); });
       lijst = Object.keys(niveaus).map(Number).sort(function (a, b) { return b - a; }).reduce(function (u, n) { return u.concat(sorteer(niveaus[n], q.sort)); }, []);
     } else lijst = sorteer(lijst, q.sort);
+    /* 11-11-2026: 'wijn' zette een fles met pensioentekst bovenaan. Zulke smalle cadeaus (paginaregels 'smal') komen achteraan, tenzij het zoekwoord er zelf om vraagt. */
+    if (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant') { var zv = vouw(q.q || '').replace(/\s+/g, '-'), gew = [], smalle = []; var SMAL_ZOEK = { pensioen: /pensioen|afscheid/, grootouder: /opa|oma|grootouder|kleinkind/, zwanger: /zwanger|babyshower/, juf: /juf|meester|leraar|leerkracht/, leeftijd: /jaar|verjaardag|\d\d/, collega: /collega|baas|werk/, trouw: /trouw|bruiloft|jubileum|huwelijk/, ouder: /mama|papa|moeder|vader/ }; lijst.forEach(function (p) { ((p.smal && !(SMAL_ZOEK[p.smal] && SMAL_ZOEK[p.smal].test(zv)) && zv.indexOf(p.smal) === -1) ? smalle : gew).push(p); }); if (smalle.length && gew.length) { var zr = lijst.ruim, zs = lijst.staart; lijst = gew.concat(smalle); lijst.ruim = zr; lijst.staart = zs; } }
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
@@ -4961,11 +4980,15 @@
       try { window.goatcounter.count({ path: 'proef/wijzer-' + WIJZER + '/' + wat, title: 'Proef Voor wie (' + (WIJZER === 'b' ? 'nieuw' : 'oud') + '): ' + wat, event: true }); } catch (e) {}
     }
     document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-wz-alles]')) setTimeout(function () { window.scrollTo(0, 0); }, 60); });
-    function wzGezien() { try { if (/^\/voor\/[^\/]+/.test(location.pathname) && !sessionStorage.getItem('lkwzg')) { sessionStorage.setItem('lkwzg', '1'); wzTel('gezien'); } } catch (e) {} }
+    function wzGezien() { try {
+      if (/^\/voor\/[^\/]+/.test(location.pathname) && !sessionStorage.getItem('lkwzg')) { sessionStorage.setItem('lkwzg', '1'); wzTel('gezien'); }
+      if (location.pathname === '/' && !sessionStorage.getItem('lkwzh')) { sessionStorage.setItem('lkwzh', '1'); wzTel('home'); }
+    } catch (e) {} }
     document.addEventListener('click', function (e) {
       try {
         if (e.target.closest('#app .prodgrid .prodkaart a') && /^\/voor\/[^\/]+/.test(location.pathname)) wzTel('product');
-        else if (e.target.closest('a[rel~="sponsored"]') && sessionStorage.getItem('lkwzg')) wzTel('winkel');
+        else if (e.target.closest('a[rel~="sponsored"]')) { if (sessionStorage.getItem('lkwzg')) wzTel('winkel'); if (sessionStorage.getItem('lkwzh')) wzTel('home-winkel'); }
+        if (location.pathname === '/' && e.target.closest('#app [data-tel="voor-wie"] a')) wzTel('home-voorwie');
       } catch (x) {}
     });
     window.addEventListener('lk-route', function () {
@@ -5302,6 +5325,7 @@
   function start() {
     if (start.gedaan) return; start.gedaan = true;
     document.documentElement.classList.add('lk-gestart'); /* WIJZER: vanaf nu tekent de app de pagina zelf */
+    if (WIJZER === 'b') $$('a[data-onder="vonk"], a[data-nav="vonk"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3 && /VONK/.test(t.nodeValue)) t.nodeValue = 'Kieshulp'; }); /* een nieuwe bezoeker weet niet wat VONK is */
     window.LK.ga = ga;
     bouwLade(); bouwMega(); netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
     vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));

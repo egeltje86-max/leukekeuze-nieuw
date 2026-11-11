@@ -66,10 +66,14 @@ function splits() {
       const x = VERH.vak[p.afd + '/' + p.groep + '/' + p.vak] || VERH.groep[p.afd + '/' + p.groep];
       if (x) { p.afd = x[0]; p.groep = x[1]; if (x[2]) p.vak = x[2]; n++; } }
     console.log('4.0 nieuwe indeling: ' + n + ' producten op een nieuwe plek'); }
+  const ETALAGE_IDS = new Set();
+  try { const pk = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, 'top/picks.json'), 'utf8')); Object.keys(pk).forEach(k => { if (Array.isArray(pk[k])) pk[k].forEach(i => ETALAGE_IDS.add(i)); }); } catch (e) {}
+  const eersteZin = t => { const m = String(t).match(/^[^.!?]{10,}[.!?]/); let z = (m ? m[0] : String(t)).trim(); if (z.length > 100) z = z.slice(0, 98).replace(/\s+\S*$/, '') + '…'; return z; };
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
-    if (l.waarom && !p.favoriet && !p.eigen && !GIDS_IDS.has(p.id)) { d.waarom = l.waarom; delete l.waarom; }
+    /* WIJZER (11-11-2026): wat in een handgekozen top staat (de etalage) houdt in de lijst één korte zin 'waarom' (veld kort), voor op de kaart in de nieuwe opzet. */
+    if (l.waarom && !p.favoriet && !p.eigen && !GIDS_IDS.has(p.id)) { d.waarom = l.waarom; if (ETALAGE_IDS.has(p.id)) l.kort = eersteZin(l.waarom); delete l.waarom; }
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */
     if (/^https?:\/\/(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?\/c\/|^https?:\/\/aff\.svinando\.be\/c\//.test(p.url || '')) l.dc = 1;
     if (p.varianten && p.varianten.length > 1) l.kleuren = p.varianten.length; // kaartje: 'x kleuren'
