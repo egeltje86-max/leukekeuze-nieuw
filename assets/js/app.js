@@ -1119,7 +1119,7 @@
           window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
           wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel('Categorieën', '/categorieen', '', 'raster') +
         '</nav></section>' +
-      rijmBlok('home') + seizoenBlok() + favorietenBlok() +
+      rijmBlok('home') + seizoenBlok() + belevenisBlok() + favorietenBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
       tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; })) +
       gidsenCompact() + eigenKaart() + zoWerkt +
     '</div>';
