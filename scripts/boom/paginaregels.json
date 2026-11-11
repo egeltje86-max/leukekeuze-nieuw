@@ -629,13 +629,17 @@
   }
  },
  "hoofd_veilig": {
-  "_uitleg": "10-11-2026 (Marius: alleen cadeaus waarvan we zeker weten dat ze goed staan). Een product staat alleen nog op de pagina's van een persoon (Voor hem, Voor haar ...) als het op een van de nagekeken onderwerpen van die persoon staat, of in een afdeling/groep hieronder valt. Anders krijgt het p.nietBij = ['hem'] en staat het alleen nog in zijn eigen vakje.",
+  "_uitleg": "10-11-2026 (Marius: alleen cadeaus waarvan we zeker weten dat ze goed staan). Een product staat alleen nog op de pagina's van een persoon (Voor hem, Voor haar ...) als het op een van de nagekeken onderwerpen van die persoon staat, of in een afdeling/groep hieronder valt. Anders krijgt het p.nietBij = ['hem'] en staat het alleen nog in zijn eigen vakje. 11-11-2026 (Marius: meer grappige cadeaus voor kinderen): 'grappig' = in deze groepen mag een cadeau toch op de pagina's voor kinderen als het met de hand het label 'kind' heeft én bij Grappige cadeaus staat (scheten-soundbox, stemvervormer, spionnenbril, gillende-kippen-pen).",
   "kinderen": {
    "afd": [
     "speelgoed"
    ],
    "groep": [
     "boeken-media/kinderboeken"
+   ],
+   "grappig": [
+    "elektronica/gadgets",
+    "beauty-verzorging/bad-douche"
    ]
   },
   "baby": {

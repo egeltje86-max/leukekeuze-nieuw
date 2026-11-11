@@ -80,8 +80,6 @@
 /collectie/cadeaupakketten/opa-oma
 /collectie/grappige-cadeaus/haar
 /collectie/grappige-cadeaus/hem
-/collectie/grappige-cadeaus/kinderen
-/collectie/grappige-cadeaus/tieners
 /collectie/grappige-cadeaus/collega
 /collectie/grappige-cadeaus/opa-oma
 /collectie/belevenissen/haar

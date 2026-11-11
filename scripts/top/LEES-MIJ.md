@@ -18,3 +18,5 @@ Paden: `/voor/<persoon>[/<onderwerp>]`, `/gelegenheid/<naam>`, `/collectie/<naam
 alleen uit cadeaus die al met de hand zijn nagekeken voor die gelegenheid én voor die persoon. Draai hem opnieuw nadat je een Voor wie-pagina of gelegenheid hebt bijgewerkt.
 De 313 losse vakjes (bijv. Dartpijlen) hebben geen vaste top; die zijn op 10-11-2026 wel allemaal nagelezen (eerste 7 producten).
 Uitzondering (11-11-2026): het vakje Hondenspeelgoed heeft wel een vaste top, omdat er ook verwensets en een fotoalbum in zitten en die bovenaan stonden; nu staat echt speelgoed eerst.
+
+Uitzondering (11-11-2026): 'Grappige cadeaus voor kinderen' en '... voor tieners' staan niet meer in `gsubs.txt`. Hun top is met de hand gekozen (opdracht Marius: meer grappige cadeaus voor kinderen en tieners), dus `afleid.js` blijft ervan af.

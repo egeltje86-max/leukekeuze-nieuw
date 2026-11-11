@@ -68,7 +68,9 @@ function pas(alle, root) {
       }
       /* alleen zekere cadeaus: staat het op geen enkel nagekeken onderwerp van deze persoon, dan ook niet op diens pagina's */
       const v = (REGELS.hoofd_veilig || {})[pe.slug];
-      const veilig = v && (v.afd.indexOf(o.afd) !== -1 || v.groep.indexOf(o.afd + '/' + o.groep) !== -1);
+      /* 11-11-2026: grappige cadeaus met het label 'kind' (met de hand gezet) mogen ook uit de gadgets en de bruisballen */
+      const grapKind = !!(v && v.grappig && v.grappig.indexOf(o.afd + '/' + o.groep) !== -1 && (p.voor || []).indexOf('kind') !== -1 && (p.ookIn || []).indexOf('cadeaus/grappig') !== -1);
+      const veilig = v && (v.afd.indexOf(o.afd) !== -1 || v.groep.indexOf(o.afd + '/' + o.groep) !== -1 || grapKind);
       let weg = !opOnderwerp && !veilig;
       /* alleen veilige cadeaus: groepen die bij deze persoon niet op de pagina's horen */
       const pn = (REGELS.persoon_niet || {})[pe.slug];
@@ -77,7 +79,7 @@ function pas(alle, root) {
         let w = pn.groep ? inL(pn.groep) : false;
         if (pn.alleen) w = !inL(pn.alleen);
         if (pn.unisexMode && o.afd === 'mode-sieraden' && pn.unisexMode.indexOf(o.groep) !== -1 && (p.voor || []).indexOf('haar') !== -1) w = true;
-        if (w && !(pn.behalve && new RegExp(pn.behalve, 'i').test(p.titel || ''))) weg = true;
+        if (w && !grapKind && !(pn.behalve && new RegExp(pn.behalve, 'i').test(p.titel || ''))) weg = true;
       }
       if (weg) (nietBij = nietBij || []).push(pe.slug);
     }
