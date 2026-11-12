@@ -2263,3 +2263,6 @@ html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .bi
 @media (min-width: 760px) { .prodkaart .kaart-koop { font-size: 14px; padding: 8px 14px; } }
 .prodkaart .kaart-koop:hover { filter: brightness(1.04); }
 .prodkaart .kaart-koop:focus-visible { outline: 3px solid #0A1020; outline-offset: 2px; }
+
+/* 12-11-2026: vijf bedragen (Tot €10 erbij). Op heel smalle telefoons (onder 350px) in twee rijen, zodat €50-100 niet uit zijn knop steekt. */
+@media (max-width: 350px) { .wijzer .wz-bedrag { flex-wrap: wrap; } .wijzer .wz-bedrag .chip { flex: 1 1 28%; } }

@@ -403,12 +403,13 @@ window.LK_CATEGORIEEN = [
    Oude adressen (?prijs=tot10, boven50) blijven werken via LK_PRIJS_OUD. */
 window.LK_PRIJZEN = [
   { id: 'alle', label: 'Alles', min: 0, max: Infinity },
+  { id: 'tot10', label: 'Tot €10', min: 0, max: 10 }, /* 12-11-2026, wens Marius: 'Tot €10 erbij, zo is er meer keus' */
   { id: 'tot25', label: 'Tot €25', min: 0, max: 25 },
   { id: '25-50', label: '€25-50', min: 25.01, max: 50 },
   { id: '50-100', label: '€50-100', min: 50.01, max: 100 },
   { id: 'boven100', label: '€100+', min: 100.01, max: Infinity }
 ];
-window.LK_PRIJS_OUD = { tot10: 'tot25', tot50: '25-50', boven50: '50-100' };
+window.LK_PRIJS_OUD = { tot50: '25-50', boven50: '50-100' }; /* tot10 is sinds 12-11-2026 weer een eigen bedrag */
 
 /* VONK: de vragen. De antwoorden matchen met 'voor' en 'moment' bij elk product. */
 window.LK_VONK = {

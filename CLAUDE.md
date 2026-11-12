@@ -291,4 +291,4 @@ Marius: 'ik wil dat mensen direct kunnen kopen in de winkel en niet eerst worden
 - **Geen knop** bij drank (`cat: 'dranken'`, 18+), elektrische steps en fietsen (regels RDW) en RC-auto's op brandstof: daar moet de bezoeker eerst de uitleg op de productpagina zien.
 - Meting: de klik telt als `klik/<winkel>/<id>`, `bron/<pagina>/kaartknop/<winkel>` en `via/<bron>/<winkel>`.
 - Uit om te vergelijken: `?proef=koopknop-uit` (weer aan: `?proef=koopknop`); helemaal uit: `window.LK_KOOPKNOP = false`.
-
+- **Bedragen** (12-11-2026, wens Marius: 'Tot €10 erbij, zo is er meer keus'): `LK_PRIJZEN` in data.js heeft nu vijf bedragen: Tot €10, Tot €25, €25-50, €50-100, €100+. Overal waar bedragen staan (homepage, Voor wie, filters) komt hij vanzelf mee. `?prijs=tot10` is weer een eigen bedrag (stond in `LK_PRIJS_OUD`). Onder 350px breed gaan de bedragen in twee rijen.
