@@ -80,6 +80,7 @@ Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
 - Google stuurt vooral bezoekers naar productpagina's (long-tail).
 - Op de telefoon staan prijs en knop nu op het eerste scherm (8-11-2026); lange intro's klappen in met 'Lees meer'.
 - Marius wil zo min mogelijk doen (8-11-2026): geen nieuwe kies- of keurlijsten sturen tenzij hij erom vraagt. De piloot doet het onderhoud.
+- **We concentreren ons op leuke cadeaus** (Marius 12-11-2026, na een blik op de feed van Batavia, Daisycon-programma 15460: 'het zijn gereedschappen, voor dit moment niet belangrijk voor de site'). Batavia (gereedschap, 127 echte producten) is bekeken en niet toegevoegd; de feed staat niet in de nachtrun. Stel geen gereedschapswinkels voor en voeg ze niet uit jezelf toe; nieuwe winkels en producten kies je op 'leuk cadeau'.
 
 ## 8. Vaste huisstijl (ontwerpstandaard, afgesloten 10-11-2026)
 De visuele vernieuwing NOVA-001 t/m NOVA-008 is goedgekeurd door NOVA en Marius en **afgesloten**. Dit is de vaste standaard.
