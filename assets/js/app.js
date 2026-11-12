@@ -1739,7 +1739,11 @@
 
     /* WIJZER (proef): de nieuwe opzet. Alleen zonder eigen sortering of filters; met ?alles=1 krijg je de gewone lijst met werkbalk. */
     /* Alleen een echte sortering of een echt filter zet de gewone lijst terug; andere dingen in het adres (utm_source van ChatGPT, fbclid …) niet. */
-    var wzFilters = ['afd', 'merk', 'sg', 'soort', 'winkel', 'kind', 'leeftijd'].concat(knopSets(knoppen, q).map(function (k) { return k.param; }));
+    /* Handboek P1 (12-11-2026): op de pagina's voor kinderen ook in de nieuwe opzet 'Hoe oud is het kind?' (oma-test: kind van 7, Sint, onder €25).
+       Een gekozen leeftijd zet dus niet meer de oude lijst terug. */
+    var wzLft = knopSets(knoppen, q).filter(function (k) { return k.param === 'leeftijd'; })[0];
+    var wzFilters = ['afd', 'merk', 'sg', 'soort', 'winkel', 'kind', 'leeftijd'].concat(knopSets(knoppen, q).map(function (k) { return k.param; }))
+      .filter(function (k) { return !(wzLft && k === 'leeftijd'); });
     var wzAan = WIJZER === 'b' && !q.alles && alles.length && !(q.sort && q.sort !== 'aanbevolen') && !wzFilters.some(function (k) { return q[k]; });
     LK.redenAltijd = !!wzAan;
     if (wzAan) {
@@ -1749,7 +1753,14 @@
       var wzBedrag = (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) {
         var hier = q.prijs === p.id, n = alles.filter(function (x) { return binnenPrijs(x, p.id); }).length;
         if (n < MIN_KNOP && !hier) return '';
-        return '<a class="chip" href="' + (hier ? pad : maakAdres(pad, { prijs: p.id })) + '" aria-pressed="' + hier + '">' + p.label + '</a>';
+        var mt = q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {};
+        return '<a class="chip" href="' + maakAdres(pad, hier ? mt : Object.assign({ prijs: p.id }, mt)) + '" aria-pressed="' + hier + '">' + p.label + '</a>';
+      }).join('');
+      var wzLeeftijd = !wzLft ? '' : wzLft.opties.map(function (o) {
+        var hier = q.leeftijd === o[0], n = TEL(Object.assign({}, q, { leeftijd: o[0] }));
+        if (n < MIN_KNOP && !hier) return '';
+        var nq = q.prijs && q.prijs !== 'alle' ? { prijs: q.prijs } : {}; if (!hier) nq.leeftijd = o[0];
+        return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + hier + '">' + esc(o[1]) + '</a>';
       }).join('');
       /* Volgorde van de onderwerpen: eerst waar het meest naar gezocht wordt (de 'top' van de onderwerpkaarten), dan de rest. */
       var wzTop = ((SLIM['/voor/' + pe.slug] || {}).top || []), wzPlek = function (x) { var i = wzTop.indexOf(x.slug); return i === -1 ? (x.slug === 'sieraden' ? 999 : 99) : i; };
@@ -1759,7 +1770,7 @@
       }).join('');
       var wzN = Math.min(12, wzLijst.length);
       var wzKop = !wzLijst.length ? '' : '<div class="wz-uit"><h2>' + (wzN === 1 ? 'Onze beste keuze' : 'Onze ' + wzN + ' beste keuzes') + '</h2>' +
-        (wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
+        (wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
       return paginakop({
         titel: s ? s.naam + ' voor ' + naam : pe.naam,
         tekst: '', /* de inleiding staat in de gebouwde pagina (voor Google); in de nieuwe opzet gaan de keuzes en de cadeaus voor */
@@ -1768,12 +1779,13 @@
       }) +
       '<div class="binnen wijzer">' +
         '<section class="sectie eerste wz-keuze" aria-label="Kies een bedrag en een onderwerp">' +
+          (wzLeeftijd ? '<p class="wz-vraag">Hoe oud is het kind?</p><nav class="chips wz-chips wz-bedrag" aria-label="Leeftijd">' + wzLeeftijd + '</nav>' : '') +
           (wzBedrag ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
           (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p><nav class="chips wz-chips wz-rol" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>' : '') +
         '</section>' +
         wzKop + gridMeer(wzLijst, leeg, 12, 'Laat er nog 12 zien') +
-        (wzLijst.length > 12 ? '<p class="wz-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, { alles: '1' })) + '" data-wz-alles>Alle ' + getal(wzLijst.length) + ' cadeaus bekijken, met sorteren en filteren</a></p>' : '') +
-        leesOok(pe.oud || '') + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
+        (wzLijst.length > 12 ? '<p class="wz-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>Alle ' + getal(wzLijst.length) + ' cadeaus bekijken, met sorteren en filteren</a></p>' : '') +
+        leesOok(pe.oud || 'voor/' + pe.slug) + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
         (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
         tekstLinks('Voor iemand anders?', anderen.map(function (x) { return [x.kort, x.subs ? '/voor/' + x.slug : x.naar]; })) +
       '</div>';
@@ -1794,7 +1806,7 @@
       (s ? '' : '<section class="sectie"><div class="sectie-kop"><div><h2>Alle cadeaus voor ' + esc(naam) + '</h2></div></div></section>') +
       werkbalk + (function () { var g = gridMeer(lijst, leeg); if (s || (q.sort && q.sort !== 'aanbevolen') || (q.prijs && q.prijs !== 'alle') || !(window.LK_TOPKEUZE && window.LK_TOPKEUZE[pad])) return g; return g.replace('class="prodgrid', 'class="prodgrid top6'); })() + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length)) +
       /* Stap 3/4 indeling: 'Lees ook' onder de eerste 24 producten. */
-      leesOok(pe.oud || '') + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
+      leesOok(pe.oud || 'voor/' + pe.slug) + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
       /* Op een subpagina ook 'Meer in onze winkels' uit het eerste vak (bijv. mode-beauty/horloges). */
       (s && alles.length && s.vakken[0].indexOf('tag:') !== 0 ? (function () { var vd = s.vakken[0].split('/'); return winkelSectie(vd[0], vd[1], q.prijs); })() : '') +
       (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
@@ -4264,7 +4276,7 @@
         { kop: "Buiten en sport", tekst: "Voor buiten: springen, voetballen of een Nerf-gevecht.", ids: ["bol-9300000228440183", "bol-9300000070618871", "bol-9300000225966664", "bol-9300000239466618"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-10-jaar\">een kind van 10</a> en <a href=\"/gids/cadeau-kind-12-jaar\">een kind van 12</a>." },
-    { slug: "cadeau-kind-12-jaar", beeld: "cl-hitster", vakken: [], leeftijd: 12,
+    { slug: "cadeau-kind-12-jaar", beeld: "cl-hitster", vakken: ['voor/tieners'], leeftijd: 12,
       titel: "Cadeau voor een kind van 12 jaar: 24 ideeën voor jongens en meisjes", kort: "Voor je kind, kleinkind, neefje, nicht of een vriend uit de brugklas.",
       intro: "Wat geef je een kind van 12? Iets dat bij een bijna-tiener past. Op deze leeftijd gaan de meeste kinderen naar de brugklas en willen ze niets meer dat kinderachtig is. Een game, een spel om met vrienden te spelen, manga, tekenspullen of iets om buiten mee te sporten valt goed. Hieronder staan 24 ideeën in zes soorten.",
       delen: [
@@ -4277,7 +4289,7 @@
         { kop: "Buiten en sport", tekst: "Voor buiten: springen, voetballen of een Nerf-gevecht.", ids: ["bol-9300000228440183", "cl-adidas-bal", "bol-9300000225966664", "cl-exost-rally"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-11-jaar\">een kind van 11</a>." },
-    { slug: 'kerstcadeau-tiener', beeld: 'tt-dvzn-d0fc92f962', vakken: ['cadeaus/kerst', 'speelgoed/hypes-trends', 'elektronica/gaming', 'sieraden/kettingen'],
+    { slug: 'kerstcadeau-tiener', beeld: 'tt-dvzn-d0fc92f962', vakken: ['cadeaus/kerst', 'speelgoed/hypes-trends', 'elektronica/gaming', 'sieraden/kettingen', 'voor/tieners'],
       titel: 'Kerstcadeau voor een tiener: ideeën die niet kinderachtig zijn', kort: 'Voor je zoon, dochter, neef of kleinkind van 12 tot 18. Van €15 tot €79.',
       intro: 'Tieners zijn misschien wel de lastigste groep om een kerstcadeau voor te vinden. Speelgoed is kinderachtig, maar voor een duur cadeau zoals een telefoon geef je ze liever geld. De truc: geef iets dat bij hún wereld past, dus muziek, gamen, hun eigen kamer of hun stijl. En let op merken, want die tellen op die leeftijd zwaar. Alles hieronder is door tieners zelf goedgekeurd: het zijn de dingen die ze nu echt gebruiken en op verlanglijstjes zetten. Twijfel je? Vraag stiekem even aan een vriend of vriendin wat er leeft.',
       delen: [
@@ -4455,7 +4467,7 @@
           ids: ['bol-9200000045615078', 'bol-9200000045616978', 'bol-9200000045616830'] }
       ],
       slot: 'Meer kerststallen en engelen staan bij <a href="/c/christelijk/kerststal-engelen">Kerststallen &amp; engelen</a>. Zoek je iets voor kinderen? Kijk dan bij <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>.' },
-    { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/autos-treinen-rc', 'elektronica/gaming', 'cadeaus/sint-onder-15'],
+    { slug: 'hypes-2026', beeld: 'bol-9300000236575345', vakken: ['cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/autos-treinen-rc', 'elektronica/gaming', 'cadeaus/sint-onder-15', 'voor/tieners'],
       titel: 'De hypes van 2026: waar kinderen en tieners nu gek op zijn', kort: 'Tamagotchi, verrassingsdoosjes, KPop Demon Hunters en meer: dit staat op elk verlanglijstje.',
       intro: 'Elk jaar zijn er een paar dingen waar ineens iedereen het over heeft, op het schoolplein en op TikTok. In 2026 zijn dat de Tamagotchi (ja, die van vroeger), verrassingsdoosjes en tashangers, alles van KPop Demon Hunters, Pokémon en Stitch. Hier vind je ze op een rij, zodat je precies weet waar je kind of kleinkind blij van wordt.',
       delen: [
@@ -5633,6 +5645,28 @@
       return pad.slice(1);
     }
     var nu = deelVan(location.pathname); if (nu) herkomst = nu;
+    var vorigPadGc = '', laatstGeteldGc = '';
+    /* Handboek P0 (12-11-2026): waar kwam deze bezoeker binnen? Alleen de groep (chatgpt, google, ...), alleen in dit tabblad
+       (sessionStorage), geen cookie en geen bezoekersnummer. Gebruikt voor via/<groep>/<winkel> bij een winkelklik. */
+    var binnenVia = (function () {
+      try { var b = sessionStorage.getItem('lkvia'); if (b) return b; } catch (e) {}
+      var u = '', r = '';
+      try { u = (new URLSearchParams(location.search).get('utm_source') || '').toLowerCase(); } catch (e) {}
+      try { r = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+      var g = /chatgpt|openai/.test(u + ' ' + r) ? 'chatgpt'
+        : /perplexity/.test(u + r) ? 'perplexity'
+        : /copilot|bing/.test(u + r) ? 'bing'
+        : /gemini/.test(u + r) ? 'gemini'
+        : /google/.test(u + r) ? 'google'
+        : /pinterest|pin\.it/.test(u + r) ? 'pinterest'
+        : /tiktok/.test(u + r) ? 'tiktok'
+        : /instagram/.test(u + r) ? 'instagram'
+        : /facebook|fb\.|messenger/.test(u + r) ? 'facebook'
+        : /leukekeuze\.nl$/.test(r) ? 'intern'
+        : u ? 'overig' : r ? 'overig' : 'direct';
+      try { sessionStorage.setItem('lkvia', g); } catch (e) {}
+      return g;
+    })();
     /* WIJZER (proef): tellen hoe vaak een Voor wie-pagina gezien is, hoe vaak daar op een product getikt is en hoe vaak dat bezoek naar een winkel ging. */
     function wzTel(wat, poging) {
       if (WIJZER_ZELF) return;
@@ -5655,8 +5689,17 @@
       var d = deelVan(location.pathname); if (d) herkomst = d;
       wzGezien();
       try { var wzH = document.querySelector('.wz-rol [data-wz-hier]'); if (wzH && wzH.parentNode.scrollWidth > wzH.parentNode.clientWidth) wzH.parentNode.scrollLeft = Math.max(0, wzH.offsetLeft - 16); } catch (x) {}
-      if (eerste) { eerste = false; return; }
-      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.search, title: document.title }); } catch (e) {}
+      /* Handboek P0 (12-11-2026): een pagina die zichzelf opnieuw tekent (product na het laden van de details, gids, lijstje)
+         stuurt lk-route nog een keer. Dat telde als tweede bezoek. Nu telt elk adres één keer per keer dat je erheen gaat. */
+      var adresGc = location.pathname + location.search;
+      if (eerste) { eerste = false; vorigPadGc = location.pathname; laatstGeteldGc = adresGc; return; }
+      if (adresGc === laatstGeteldGc) return;
+      laatstGeteldGc = adresGc;
+      /* Handboek P0 (12-11-2026): bij doorklikken binnen de site bleef document.referrer de eerste bron (bijv. chatgpt.com),
+         waardoor elke volgende pagina als 'via ChatGPT' telde. Nu geven we de vorige pagina van onze eigen site mee:
+         GoatCounter telt dat als intern, niet als ChatGPT of Google. */
+      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.search, title: document.title, referrer: location.origin + (vorigPadGc || '/') }); } catch (e) {}
+      vorigPadGc = location.pathname;
     });
     function netwerk(h) {
       h = h || '';
@@ -5680,6 +5723,7 @@
       else if (a.classList.contains('winkelkaart')) { winkel = schoon((a.querySelector('strong') || {}).textContent); pad = 'klik/winkel/' + winkel; titel = 'Winkeltegel: ' + winkel; }
       else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); winkel = schoon((k.querySelector('.shop') || {}).textContent); pad = 'klik/feed/' + winkel; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
       else if (a.closest('.aw-bol')) { winkel = 'bol'; pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
+      else if (a.hasAttribute('data-rijm-cadeau') && LK.vind(a.getAttribute('data-rijm-cadeau'))) { prod = LK.vind(a.getAttribute('data-rijm-cadeau')); winkel = prod.shop; pad = 'klik/' + prod.shop + '/' + prod.id; titel = 'Rijmmachine: ' + prod.titel; }
       else if (ck) { var pid = ((ck.querySelector('a.beeld') || {}).getAttribute ? ck.querySelector('a.beeld').getAttribute('href') : '').replace(/^\/p\/|\/$/g, ''); var q = pid && LK.vind(pid); prod = q || null; winkel = q ? q.shop : schoon((ck.querySelector('.shop') || {}).textContent); pad = 'klik/' + winkel + '/' + (q ? q.id : 'lijst'); titel = 'Verlanglijstje: ' + (q ? q.titel : winkel); }
       else { try { winkel = new URL(a.href).hostname.replace(/^www\./, ''); } catch (x) { winkel = 'onbekend'; } pad = 'klik/overig/' + winkel; titel = 'Andere winkellink: ' + winkel; }
       if (!pad) return;
@@ -5689,6 +5733,8 @@
       if (net === 'zonder partnerlink' && prod && netwerk(prod.url) === 'Daisycon') net = 'Daisycon-pauze';
       var bron = 'bron/' + herkomst + '/' + net + '/' + (winkel || 'onbekend');
       try { window.goatcounter.count({ path: bron.slice(0, 180), title: 'Via ' + herkomst + ' naar ' + (winkel || 'winkel') + ' (' + net + ')', event: true }); } catch (x) {}
+      /* Handboek P0: via welke bron kwam deze bezoeker binnen (chatgpt, google, direct ...). Telt dezelfde klik als klik/, dus nooit optellen. */
+      try { window.goatcounter.count({ path: ('via/' + binnenVia + '/' + (winkel || 'onbekend')).slice(0, 180), title: 'Binnengekomen via ' + binnenVia + ', klik naar ' + (winkel || 'winkel'), event: true }); } catch (x) {}
     }, true);
     /* Stap 1 homepage (6-11-2026): klikken per blok op de homepage tellen, zodat we over een paar weken zien welke blokken werken.
        home/<blok>/<doel> (blok = intro, voor-wie, favorieten, ...; doel = product-id of het adres waar de klik heen gaat). */

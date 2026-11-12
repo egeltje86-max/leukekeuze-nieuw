@@ -54,6 +54,9 @@ function maakLd(info, url) {
   const uit = [];
   if (info.pad === '/') uit.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'LeukeKeuze', url: SITE + '/',
     potentialAction: { '@type': 'SearchAction', target: SITE + '/zoek/?q={search_term_string}', 'query-input': 'required name=search_term_string' } });
+  /* Handboek P1 (12-11-2026): wie de site maakt, alleen echte gegevens (naam, adres, logo). Geen winkel, geen reviews. */
+  if (info.pad === '/') uit.push({ '@context': 'https://schema.org', '@type': 'Organization', name: 'LeukeKeuze', url: SITE + '/', logo: SITE + '/favicon-512.png',
+    description: 'Nederlandse cadeausite: met de hand gekozen cadeaus van bekende winkels. LeukeKeuze verkoopt zelf niets; je koopt bij de winkel.' });
   const k = (info.kruimel || []).filter(x => x.naam);
   if (info.prod && k.length && k[k.length - 1].naar) k.push({ naam: info.prod.naam, naar: '' });
   if (k.length > 1) uit.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: k.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam,
