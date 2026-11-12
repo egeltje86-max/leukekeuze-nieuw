@@ -940,5 +940,19 @@ window.LK_TEKSTEN = {
     gids: [
       { kop: 'Cadeau voor een doop', tekst: 'Bij een doop geef je vaak iets voor later: een kinderbijbel, een doopkaars of een aandenken met de naam en datum. Ouders bewaren dat jaren. Een boekje met gebeden of een mooie kaart erbij maakt het compleet.' },
       { kop: 'Cadeau voor een belijdenis', tekst: 'Bij belijdenis is een eigen Bijbel het klassieke cadeau, in de vertaling van de kerk. Ook een dagboek, een psalmboekje of een sieraad met kruisje zijn mooie keuzes. Geef je samen met familie? Dan kun je een luxe Bijbel met naam kiezen.' }
+    ] },
+  /* Handboek P2 (12-11-2026, GO Marius): sinds indeling 4.0 hadden deze samengevoegde groepen geen tips en geen eigen Google-titel meer.
+     Teksten op de vragen waar mensen echt mee binnenkomen (Search Console: 'cadeau met bijbeltekst', 'christelijk cadeau doop', 'belijdenis cadeau'). */
+  'christelijk/wanddecoratie-teksten': {
+    seoTitel: 'Cadeau met Bijbeltekst: tegeltjes, wandborden en kaarten',
+    seoTekst: 'Een cadeau met een Bijbeltekst zoeken? Tegeltjes, wandborden, posters en kaarten met een tekst die troost, bemoedigt of zegent. Om op te hangen, neer te zetten of te sturen.',
+    gids: [
+      { kop: 'Een cadeau met een Bijbeltekst', tekst: 'Kies een tekst die past bij het moment. Bij een verjaardag of een nieuw begin: een zegen. Bij verdriet of ziekte: een tekst die troost. Bij een huwelijk of jubileum: een tekst over liefde en trouw. Een tegeltje of wandbord blijft jaren hangen; een kaart kun je meteen sturen.' }
+    ] },
+  'christelijk/doop-belijdenis-kinderen': {
+    seoTekst: 'Cadeau voor een doop of belijdenis? Kinderbijbels, eerste Bijbels (HSV en Statenvertaling), Bijbels met psalmen, dagboeken, psalmboekjes en mooie aandenkens aan deze dag.',
+    gids: [
+      { kop: 'Cadeau voor een doop', tekst: 'Bij een doop geef je vaak iets voor later: een kinderbijbel, een doopkaars of een aandenken met de naam en datum. Ouders bewaren dat jaren. Een boekje met gebeden of een mooie kaart erbij maakt het compleet.' },
+      { kop: 'Cadeau voor een belijdenis', tekst: 'Bij belijdenis is een eigen Bijbel het klassieke cadeau, in de vertaling van de kerk. Ook een dagboek, een psalmboekje of een sieraad met kruisje zijn mooie keuzes. Geef je samen met familie? Dan kun je een luxe Bijbel met naam kiezen.' }
     ] }
 };

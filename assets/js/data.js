@@ -1009,8 +1009,8 @@ window.LK_COLLECTIES = [
     tekst: 'Echte kortingscodes en acties van onze winkels, rechtstreeks van de winkels zelf. Verlopen codes halen we er vanzelf af.',
     zoek: 'kortingscode kortingscodes code codes actiecode couponcode coupon voucher promotiecode gratis verzending', codes: true, vakken: LK_ALLE_GROEPEN },
   /* Black Friday (5-11-2026, GO Marius): alle echte deals van minstens 20% korting, grootste korting eerst. Tot en met Cyber Monday. */
-  { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'De beste deals op een rij', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 – de beste deals van bol, Coolblue en meer',
-    tekst: 'De beste kortingen van al onze winkels op één plek, allemaal minstens 20% korting. Bovenaan staan de beste deals; kies hieronder je categorie. Black Friday is op vrijdag 27 november.',
+  { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'Deals op een rij', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 – deals van bol, Coolblue en meer',
+    tekst: 'Kortingen van al onze winkels op één plek, allemaal minstens 20% korting op een echte van-prijs. Bovenaan staan de deals die wij zelf hebben uitgekozen; kies hieronder je categorie. Black Friday is op vrijdag 27 november.',
     zoek: 'black friday blackfriday cyber monday deals deal aanbieding aanbiedingen korting sale uitverkoop', korting: 20, vakken: LK_ALLE_GROEPEN,
     /* 7-11-2026: veelgestelde vragen (ook als FAQ-gegevens voor Google). */
     faq: [
