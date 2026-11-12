@@ -94,6 +94,13 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     info = Object.assign({}, info);
     if (eigen.titel) info.titel = eigen.titel;
     if (eigen.omschrijving) { const d = seoDatum(info.datum); info.omschrijving = d ? eigen.omschrijving.replace('{datum}', d) : eigen.omschrijving.replace(/, prijs gecontroleerd op \{datum\}/, ''); }
+    /* 12-11-2026: de met de hand geschreven titels noemden een vaste prijs (Peekimo: €29,99 terwijl hij €24,99 is).
+       Een productprijs ('– €29,99', '€29,99 bij bol') volgt nu altijd de echte prijs van het product. */
+    if (info.prod && Number(info.prod.prijs) > 0) {
+      const pr = Number(info.prod.prijs), nu = '€' + (pr % 1 ? pr.toFixed(2).replace('.', ',') : String(pr));
+      const zet = s => s && s.replace(/€\s?\d+(?:,\d{2})?(?=( bij |$|\.$))/g, nu);
+      info.titel = zet(info.titel); info.omschrijving = zet(info.omschrijving);
+    }
   }
   const url = SITE + info.pad;
   /* Lange producttitels: zonder ' | LeukeKeuze' erachter, anders knipt Google de titel af (31-10-2026). */

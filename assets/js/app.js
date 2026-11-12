@@ -6040,7 +6040,8 @@
   function start() {
     if (start.gedaan) return; start.gedaan = true;
     document.documentElement.classList.add('lk-gestart'); /* WIJZER: vanaf nu tekent de app de pagina zelf */
-    if (SOORTEN) $$('button[data-onder="categorieen"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3) t.nodeValue = 'Producten'; });
+    /* 12-11-2026: de gebouwde pagina zegt al 'Producten' (anders sprong het woord op een trage telefoon even van Categorieën naar Producten). */
+    $$('button[data-onder="categorieen"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3) t.nodeValue = SOORTEN ? 'Producten' : 'Categorieën'; });
     if (WIJZER === 'b') $$('a[data-onder="vonk"], a[data-nav="vonk"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3 && /VONK/.test(t.nodeValue)) t.nodeValue = 'Kieshulp'; }); /* een nieuwe bezoeker weet niet wat VONK is */
     window.LK.ga = ga;
     bouwLade(); bouwMega(); netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
