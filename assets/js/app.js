@@ -135,6 +135,7 @@
     return u;
   }
   function winkelLink(p) { return dcDirect(p.url) && p.winkelUrl ? p.winkelUrl : metRef(p.url, p.id); }
+  window.LK_WINKELLINK = winkelLink;
   var WINKELSITE = { 'Ditverzinjeniet': 'https://www.ditverzinjeniet.nl/', 'Dille & Kamille': 'https://www.dille-kamille.nl/', 'LEGO': 'https://www.lego.com/nl-nl',
     'Westwing': 'https://www.westwing.nl/', 'Decantalo': 'https://www.decantalo.nl/', 'MYKA': 'https://www.myka.com/nl/', 'Prydligt': 'https://www.prydligt.nl/',
     '999 Games': 'https://www.999games.nl/', 'La Redoute': 'https://www.laredoute.nl/', 'Kaartje2go': 'https://www.kaartje2go.nl/', 'Bartogi': 'https://www.bartogi.nl/',
@@ -205,6 +206,9 @@
      die tellen niet mee in de meting). Zoekmachines en de bouw krijgen altijd a, dus de gebouwde pagina's veranderen niet.
      Alles uit: window.LK_WIJZER = false. Meting: gebeurtenissen proef/wijzer-a|b/gezien, /product en /winkel in GoatCounter. */
   var WIJZER_ZELF = false;
+  /* VOORBEELD koopknop (12-11-2026, idee Marius: 'direct onder het product: bekijk bij bol'): alleen met ?proef=koopknop, nog niet live. */
+  var KOOPKNOP = (function () { try { if (/[?&]proef=koopknop-uit(&|$)/.test(location.search)) sessionStorage.removeItem('lkkoop'); else if (/[?&]proef=koopknop(&|$)/.test(location.search)) sessionStorage.setItem('lkkoop', '1'); return sessionStorage.getItem('lkkoop') === '1'; } catch (e) { return false; } })();
+  window.LK_KOOPKNOP = KOOPKNOP;
   var WIJZER = (function () {
     try {
       if (window.LK_WIJZER === false) return 'a';
@@ -5723,6 +5727,7 @@
       else if (a.classList.contains('winkelkaart')) { winkel = schoon((a.querySelector('strong') || {}).textContent); pad = 'klik/winkel/' + winkel; titel = 'Winkeltegel: ' + winkel; }
       else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); winkel = schoon((k.querySelector('.shop') || {}).textContent); pad = 'klik/feed/' + winkel; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
       else if (a.closest('.aw-bol')) { winkel = 'bol'; pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
+      else if (a.classList.contains('kaart-koop') && LK.vind(a.getAttribute('data-id'))) { prod = LK.vind(a.getAttribute('data-id')); winkel = prod.shop; pad = 'klik/' + prod.shop + '/' + prod.id; titel = 'Knop op de kaart: ' + prod.titel; }
       else if (a.hasAttribute('data-rijm-cadeau') && LK.vind(a.getAttribute('data-rijm-cadeau'))) { prod = LK.vind(a.getAttribute('data-rijm-cadeau')); winkel = prod.shop; pad = 'klik/' + prod.shop + '/' + prod.id; titel = 'Rijmmachine: ' + prod.titel; }
       else if (ck) { var pid = ((ck.querySelector('a.beeld') || {}).getAttribute ? ck.querySelector('a.beeld').getAttribute('href') : '').replace(/^\/p\/|\/$/g, ''); var q = pid && LK.vind(pid); prod = q || null; winkel = q ? q.shop : schoon((ck.querySelector('.shop') || {}).textContent); pad = 'klik/' + winkel + '/' + (q ? q.id : 'lijst'); titel = 'Verlanglijstje: ' + (q ? q.titel : winkel); }
       else { try { winkel = new URL(a.href).hostname.replace(/^www\./, ''); } catch (x) { winkel = 'onbekend'; } pad = 'klik/overig/' + winkel; titel = 'Andere winkellink: ' + winkel; }
@@ -6040,6 +6045,7 @@
     vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
     werkTellersBij();
     toon();
+    if (KOOPKNOP && !window.LK_DETAILS) laadDetails(function () { toon(); });
   }
   /* Snelheid (8-11-2026): topkeuze.js laadt nu ook 'async'. We starten als de productlijst er is én de toppers (of na 6 seconden zonder toppers, als vangnet). */
   var T_START = Date.now();

@@ -2251,3 +2251,11 @@ html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .bi
   html:not(.lk-gestart) .srt-blok[open] .srt-pijl { transform: rotate(90deg); }
 }
 /* ===== einde SOORTEN ===== */
+
+/* VOORBEELD koopknop (12-11-2026): knop op de productkaart, direct naar de winkel. Alleen met ?proef=koopknop. */
+.prodkaart .kaart-koop { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 10px; min-height: 44px; padding: 0 10px;
+  border-radius: 999px; background: linear-gradient(180deg, #F2CB74 0%, #D9A848 100%); border: 1px solid #B8862E; color: #141A2A;
+  font: 700 14px/1.15 Manrope, system-ui, sans-serif; text-decoration: none; text-align: center; box-shadow: 0 3px 10px rgba(184,134,46,.22); position: relative; z-index: 2; }
+.prodkaart .kaart-koop:hover { filter: brightness(1.04); }
+.prodkaart .kaart-koop:focus-visible { outline: 3px solid #0A1020; outline-offset: 2px; }
+
