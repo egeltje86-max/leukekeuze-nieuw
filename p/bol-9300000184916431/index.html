@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-700-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611121500" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611121500" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121500">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611121500">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611121535" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611121535" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121535">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611121535">
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
     if (!v && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
@@ -155,17 +155,17 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"bol-9300000184916431":{"url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbosch-easyrotak-32-205-grasmaaier-31-liter-grasopvangbak%2F9300000184916431%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbosch-easyrotak-32-205-grasmaaier-31-liter-grasopvangbak%2F9300000184916431%2F","subVast":true,"gecontroleerd":"2026-11-12","verzendNoot":"bol verzendt gratis vanaf €25. Daaronder betaal je verzendkosten (boeken worden altijd gratis verzonden).","waarom":"Compacte elektrische maaier van Bosch, 1200 watt, voor een kleine tot middelgrote tuin."}};</script>
-  <script src="assets/js/data.js?v=202611121500"></script>
+  <script src="assets/js/data.js?v=202611121535"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121500"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121535"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
-  <script src="assets/js/topkeuze.js?v=202611121500" async></script>
-  <script src="assets/js/gedeeld.js?v=202611121500"></script>
-  <script src="assets/js/app.js?v=202611121500"></script>
+  <script src="assets/js/topkeuze.js?v=202611121535" async></script>
+  <script src="assets/js/gedeeld.js?v=202611121535"></script>
+  <script src="assets/js/app.js?v=202611121535"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -950,11 +950,15 @@
 /gids/hypes-2026/
 /gids/kerstcadeau-collega/
 /gids/kerstcadeau-kind/
+/gids/kerstcadeau-moeder/
 /gids/kerstcadeau-onder-25/
 /gids/kerstcadeau-opa-oma/
 /gids/kerstcadeau-tiener/
+/gids/kerstcadeau-vader/
 /gids/kerstcadeau-voor-haar/
 /gids/kerstcadeau-voor-hem/
+/gids/kerstcadeau-vriend/
+/gids/kerstcadeau-vriendin/
 /gids/kerststal-kopen/
 /gids/kinderbijbel-kiezen/
 /gids/kraamcadeau/

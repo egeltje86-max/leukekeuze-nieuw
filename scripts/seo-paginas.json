@@ -1,5 +1,5 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt).",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin).",
  "/p/bol-9300000252262265/": {
   "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
   "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
@@ -147,5 +147,17 @@
  },
  "/gids/cadeau-kind-12-jaar/": {
   "titel": "Cadeau kind van 12 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/kerstcadeau-moeder/": {
+  "titel": "Kerstcadeau moeder: 24 ideeën om haar te verwennen"
+ },
+ "/gids/kerstcadeau-vader/": {
+  "titel": "Kerstcadeau vader: 24 ideeën voor de man die alles heeft"
+ },
+ "/gids/kerstcadeau-vriendin/": {
+  "titel": "Kerstcadeau vriendin: 24 ideeën om haar te verrassen"
+ },
+ "/gids/kerstcadeau-vriend/": {
+  "titel": "Kerstcadeau vriend: 24 ideeën voor je partner"
  }
 }
