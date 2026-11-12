@@ -1375,11 +1375,13 @@
   /* ---------- Zoek een product: alle soorten op een rij (12-11-2026) ---------- */
   var SOORTEN = window.LK_SOORTEN !== false;
   try { var srtQ = /[?&]proef=soorten(-uit)?\b/.exec(location.search); if (srtQ) sessionStorage.setItem('lk-soorten', srtQ[1] ? 'uit' : 'aan'); if (sessionStorage.getItem('lk-soorten') === 'uit') SOORTEN = false; } catch (e) {}
-  /* Vaak gezocht: met de hand gekozen soorten die je anders drie tikken diep moet zoeken. [naam, adres] */
-  var SRT_VAAK = [['Darts', '/c/sport-outdoor/darts'], ['Whisky', '/c/eten-drinken/bier-sterke-drank/whisky'], ['Gin', '/c/eten-drinken/bier-sterke-drank/gin'], ['Bier', '/c/eten-drinken/bier-sterke-drank/speciaalbier'],
-    ['Wijn', '/c/eten-drinken/wijn-bubbels'], ['Horloges', '/c/mode-sieraden/horloges'], ['LEGO', '/c/speelgoed/bouwen/lego'], ['Puzzels', '/c/spellen-puzzels/puzzels'], ['Bordspellen', '/c/spellen-puzzels/bordspellen'],
-    ['Parfum', '/c/beauty-verzorging/parfum'], ['Koptelefoons', '/c/elektronica/audio/koptelefoons'], ['Gaming', '/c/elektronica/gaming'], ['Kaarsen', '/c/wonen/kaarsen-geur'], ['Chocolade', '/c/eten-drinken/chocolade-snoep/chocolade'],
-    ['Knuffels', '/c/speelgoed/poppen-knuffels/knuffels'], ['Metaaldetectors', '/c/sport-outdoor/metaaldetectie']];
+  /* Vaak gezocht: met de hand gekozen, van elke afdeling hooguit een (Marius 12-11: 'niet vijf soorten drank, anders ziet iemand niks anders'), met het mooiste ronde plaatje. [naam, adres, plaatje] */
+  var SRT_VAAK = [['Darts', '/c/sport-outdoor/darts', 'sport-outdoor-darts'], ['Drank', '/c/eten-drinken/bier-sterke-drank', 'eten-drinken-sterke-drank'], ['Horloges', '/c/mode-sieraden/horloges', 'mode-sieraden-horloges'],
+    ['Gaming', '/c/elektronica/gaming', 'elektronica-gaming'], ['LEGO', '/c/speelgoed/bouwen/lego', 'speelgoed-bouwen'], ['Parfum', '/c/beauty-verzorging/parfum', 'beauty-verzorging-parfum'],
+    ['Koptelefoons', '/c/elektronica/audio/koptelefoons', 'elektronica-audio'], ['Puzzels', '/c/spellen-puzzels/puzzels', 'speelgoed-puzzels'], ['Spellen', '/c/spellen-puzzels/bordspellen', 'speelgoed-spellen'],
+    ['Smartwatches', '/c/elektronica/smartwatches', 'elektronica-smartwatches'], ['Kaarsen', '/c/wonen/kaarsen-geur', 'wonen-kaarsen-geur'], ['Chocolade', '/c/eten-drinken/chocolade-snoep/chocolade', 'eten-drinken-chocolade-snoep'],
+    ['Knuffels', '/c/speelgoed/poppen-knuffels/knuffels', 'speelgoed-poppen-knuffels'], ['Gereedschap', '/c/tuin-klussen/klussen', 'tuin-klussen-klussen'], ['Tassen', '/c/mode-sieraden/tassen-portemonnees', 'mode-sieraden-tassen-portemonnees'],
+    ["Camera's", '/c/elektronica/foto-video', 'elektronica-foto-video'], ['Koffie', '/c/koken-tafelen/koffie-thee-zetten', 'wonen-koffie-thee-zetten'], ['Metaaldetectors', '/c/sport-outdoor/metaaldetectie', 'sport-outdoor-metaaldetectie']];
   /* Andere woorden waarop je een soort ook vindt in het zoekvakje van deze pagina. */
   var SRT_OOK = { 'whisky': 'whiskey drank sterke drank', 'gin': 'drank sterke drank', 'rum': 'drank sterke drank', 'wodka': 'vodka drank', 'likeur': 'drank', 'cognac': 'drank', 'tequila': 'drank', 'speciaalbier': 'bier drank', 'bierpakketten': 'bier drank',
     'rode-wijn': 'drank', 'witte-wijn': 'drank', 'rose': 'drank wijn', 'champagne': 'bubbels drank', 'prosecco-cava': 'bubbels drank', 'dameshorloges': 'horloge klokje', 'herenhorloges': 'horloge klokje', 'dartborden': 'darts darten', 'dartpijlen': 'darts darten pijltjes',
@@ -1390,16 +1392,25 @@
     return '<nav class="srt-wissel" aria-label="Wat zoek je?"><a href="/"' + (aan === 'cadeau' ? ' class="aan" aria-current="page"' : '') + '>' + ic('cadeau') + '<span>Ik zoek een <b>cadeau</b></span></a>' +
       '<a href="/categorieen"' + (aan === 'product' ? ' class="aan" aria-current="page"' : '') + '>' + ic('raster') + '<span>Ik zoek een <b>product</b></span></a></nav>';
   }
+  /* Lange woorden in de namen van soorten breken netjes af met een streepje (met de hand nagelezen). */
+  var SRT_AF = { "activiteitenspeelgoed": "activiteiten-speelgoed", "speelgoedauto's": "speelgoed-auto's", "verkleedkleding": "verkleed-kleding", "muziekspeelgoed": "muziek-speelgoed", "strategiespellen": "strategie-spellen", "telefoonaccessoires": "telefoon-accessoires", "robotstofzuigers": "robot-stofzuigers", "reisaccessoires": "reis-accessoires", "doucheproducten": "douche-producten", "gezichtsverzorging": "gezichts-verzorging", "lichaamsverzorging": "lichaams-verzorging", "scheerapparaten": "scheer-apparaten", "baardverzorging": "baard-verzorging", "haarverzorging": "haar-verzorging", "kerstverlichting": "kerst-verlichting", "keukenapparaten": "keuken-apparaten", "chocoladeletters": "chocolade-letters", "cadeaupakketten": "cadeau-pakketten", "brievenbuscadeaus": "brievenbus-cadeaus", "wijnaccessoires": "wijn-accessoires", "miniatuurhuisjes": "miniatuur-huisjes", "muziekaccessoires": "muziek-accessoires", "kampeerspullen": "kampeer-spullen", "fietsaccessoires": "fiets-accessoires", "metaaldetectors": "metaal-detectors", "buitenverlichting": "buiten-verlichting", "terrasverwarmers": "terras-verwarmers", "handgereedschap": "hand-gereedschap", "gereedschapssets": "gereedschaps-sets", "voorleesboeken": "voorlees-boeken", "hondenspeelgoed": "honden-speelgoed", "kattenspeelgoed": "katten-speelgoed", "helikoptervlucht": "helikopter-vlucht", "sieradendozen": "sieraden-dozen", "dameshorloges": "dames-horloges", "herenhorloges": "heren-horloges", "koffiemachines": "koffie-machines", "bouwpakketten": "bouw-pakketten", "notitieboeken": "notitie-boeken", "prentenboeken": "prenten-boeken", "wandeltochten": "wandel-tochten", "magneetvissen": "magneet-vissen", "sleutelhangers": "sleutel-hangers", "tuindecoratie": "tuin-decoratie", "luisterboeken": "luister-boeken", "puzzelboeken": "puzzel-boeken", "tuinmeubelen": "tuin-meubelen", "insectenhotels": "insecten-hotels", "vogelhuisjes": "vogel-huisjes", "speeltoestellen": "speel-toestellen", "pasjeshouders": "pasjes-houders", "tandenborstels": "tanden-borstels", "geurstokjes": "geur-stokjes", "geurbranders": "geur-branders", "voorraadpotten": "voorraad-potten" }, SRT_AF_RE = /[A-Za-zÀ-ÿ']{12,}/g;
   function soortenPagina() {
     zetTitel('Zoek een product – alle soorten op een rij');
-    var tel = {}, z = LK.zichtbaar();
-    for (var i = 0; i < z.length; i++) { var p = z[i]; if (!p.afd) continue; var k = p.afd + '/' + p.groep; tel[k] = (tel[k] || 0) + 1; if (p.vak) { k += '/' + p.vak; tel[k] = (tel[k] || 0) + 1; } }
+    var tel = {}, per = {}, z = LK.zichtbaar();
+    for (var i = 0; i < z.length; i++) { var p = z[i]; if (!p.afd) continue; var k = p.afd + '/' + p.groep; tel[k] = (tel[k] || 0) + 1; (per[k] = per[k] || []).push(p); if (p.vak) { k += '/' + p.vak; tel[k] = (tel[k] || 0) + 1; (per[k] = per[k] || []).push(p); } }
+    /* Strakke tegel: rond plaatje boven, naam eronder; alle vakken even breed (zelfde vorm als de onderwerpkaarten op een groepspagina). */
+    function soortTegel(naam, naar, beeld, zoek) {
+      return '<a class="srt-st srt-kies" href="' + esc(naar) + '" data-z="' + esc(zoek) + '"><span class="srt-st-rond' + (beeld ? '' : ' srt-vt-ico') + '">' + (beeld ? '<img src="' + esc(beeld) + '" alt="" loading="lazy" decoding="async" width="60" height="60">' : ic('raster')) +
+        '</span><span class="srt-st-naam">' + esc(String(naam).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; })) + '</span></a>';
+    }
+    /* Zet de afbreekplekken uit SRT_AF (bv. 'telefoon-accessoires') als zachte streepjes in het woord, met behoud van hoofdletters. */
+    function zetAf(w, patroon) { var uit = '', k = 0; for (var q = 0; q < patroon.length; q++) { if (patroon.charAt(q) === '-') uit += '\u00AD'; else uit += w.charAt(k++); } return uit; }
     function groepen(c) { return (c.subs || []).filter(function (s) { return !s.verborgen && s.vakjes && s.vakjes.length && tel[c.slug + '/' + s.slug]; }); }
     function groepHtml(c, s) {
-      var basis = '/c/' + c.slug + '/' + s.slug, vakken = s.vakjes.filter(function (v) { return tel[c.slug + '/' + s.slug + '/' + v.slug]; });
-      return '<div class="srt-groep" data-z="' + esc((s.naam + ' ' + c.naam).toLowerCase()) + '"><a class="srt-groepnaam" href="' + basis + '">' + esc(s.naam) + ' <small>' + tel[c.slug + '/' + s.slug] + '</small></a><div class="srt-chips">' +
-        (vakken.length > 1 ? vakken.map(function (v) { return '<a class="srt-chip" href="' + basis + '/' + v.slug + '" data-z="' + esc((v.naam + ' ' + (SRT_OOK[v.slug] || '')).toLowerCase()) + '">' + esc(v.naam) + ' <small>' + tel[c.slug + '/' + s.slug + '/' + v.slug] + '</small></a>'; }).join('') : '') +
-        '<a class="srt-chip srt-alles" href="' + basis + '" data-z="">Alles van ' + esc(s.naam) + '</a></div></div>';
+      var basis = '/c/' + c.slug + '/' + s.slug, sleutel = c.slug + '/' + s.slug, vakken = s.vakjes.filter(function (v) { return tel[sleutel + '/' + v.slug]; });
+      return '<div class="srt-groep" data-z="' + esc((s.naam + ' ' + c.naam).toLowerCase()) + '"><h3 class="srt-groepnaam">' + esc(s.naam) + '</h3><nav class="srt-raster" aria-label="' + esc(s.naam) + '">' +
+        (vakken.length > 1 ? vakken.map(function (v) { return soortTegel(v.naam, basis + '/' + v.slug, kleinBeeld(v.beeld) || beeldUit(per[sleutel + '/' + v.slug]), (v.naam + ' ' + (SRT_OOK[v.slug] || '')).toLowerCase()); }).join('') : '') +
+        '<a class="srt-alles srt-kies" href="' + basis + '" data-z=""><span>Alles van ' + esc(s.naam) + ' <small>' + tel[sleutel] + '</small></span>' + ic('pijl') + '</a></nav></div>';
     }
     /* Elke afdeling is een uitklapper: op de telefoon dicht (zestien nette regels op een scherm), op de computer open. */
     function blok(naam, naar, beeld, inhoud, anker, binnen) {
@@ -1424,7 +1435,7 @@
         var kop = (b.querySelector('h2') || {}).textContent || '', bRaak = !q || kop.toLowerCase().indexOf(q) !== -1, bToon = false;
         $$('.srt-groep', b).forEach(function (g) {
           var gRaak = bRaak || (g.getAttribute('data-z') || '').indexOf(q) !== -1, gToon = false;
-          $$('.srt-chip', g).forEach(function (a) { var raak = gRaak || (a.getAttribute('data-z') && a.getAttribute('data-z').indexOf(q) !== -1); a.hidden = !raak; if (raak && !a.classList.contains('srt-alles')) { gToon = true; aantal++; } });
+          $$('.srt-kies', g).forEach(function (a) { var raak = gRaak || (a.getAttribute('data-z') && a.getAttribute('data-z').indexOf(q) !== -1); a.hidden = !raak; if (raak && !a.classList.contains('srt-alles')) { gToon = true; aantal++; } });
           if (gRaak) gToon = true; g.hidden = !gToon; if (gToon) bToon = true;
         });
         b.hidden = !bToon; b.open = q ? bToon : breedScherm;
@@ -1436,7 +1447,8 @@
       '<div class="binnen soorten">' +
       '<section class="sectie eerste srt-boven">' + soortWissel('product') +
         '<label class="srt-zoek">' + ic('zoek') + '<input type="search" id="srt-zoek" autocomplete="off" placeholder="Typ een soort: darts, whisky, horloge…" aria-label="Zoek een soort" oninput="LK_SOORTFILTER(this.value)"></label>' +
-        '<div class="srt-vaak"><p class="srt-label">Vaak gezocht</p><nav class="srt-chips" aria-label="Vaak gezocht">' + SRT_VAAK.map(function (v) { return '<a class="srt-chip srt-goud" href="' + v[1] + '">' + esc(v[0]) + '</a>'; }).join('') + '</nav>' +
+        '<div class="srt-vaak"><p class="srt-label">Vaak gezocht</p><nav class="srt-vaakraster" aria-label="Vaak gezocht">' + SRT_VAAK.map(function (v) {
+          return '<a class="srt-vt" href="' + v[1] + '"><span class="srt-vt-rond"><img src="images/sub/iconen/icoon-' + v[2] + '.webp" alt="" width="96" height="96" decoding="async"></span><span>' + esc(v[0]).replace('Metaaldetectors', 'Metaal&shy;detectors') + '</span></a>'; }).join('') + '</nav>' +
         '<p class="srt-label">Alle soorten</p></div>' +
         '<p class="srt-leeg" hidden>Deze soort staat er niet tussen. <a href="/zoek">Zoek in alle producten</a></p></section>' +
       '<div class="srt-lijst">' +
