@@ -1,71 +1,2837 @@
 {
- "gemaakt": "2026-11-11T07:29",
+ "gemaakt": "2026-11-12T06:42",
  "prijs": [
   {
-   "id": "cb-backbone-one",
-   "titel": "Backbone One controller voor je telefoon",
-   "oud": 120.0,
-   "nieuw": 102.0
+   "id": "bol-9300000184322991",
+   "titel": "Jollein x Nijntje zomerslaapzak (70 cm)",
+   "oud": 15.4,
+   "nieuw": 12.19
   },
   {
-   "id": "cl-mkw",
-   "titel": "Mario Kart World (Switch 2)",
-   "oud": 73.0,
-   "nieuw": 65.0
+   "id": "bol-9300000145343894",
+   "titel": "Alecto slaaptrainer Simon met nachtlampje",
+   "oud": 34.99,
+   "nieuw": 27.99
   },
   {
-   "id": "cl-ninja-flex",
-   "titel": "Ninja FlexDrawer airfryer",
-   "oud": 198.0,
-   "nieuw": 169.0
+   "id": "bol-9300000171452101",
+   "titel": "Little Dutch mijlpaalkaarten 'Mijn eerste jaar'",
+   "oud": 12.94,
+   "nieuw": 10.39
   },
   {
-   "id": "a-coolblue-nl-2857fe6592",
-   "titel": "Ninja Foodi Dual Zone airfryer met 2 lades (AF200)",
-   "oud": 125.0,
-   "nieuw": 100.0
+   "id": "bol-9300000258916482",
+   "titel": "Little Dutch muziekmobiel Safari Friends",
+   "oud": 36.99,
+   "nieuw": 31.99
   },
   {
-   "id": "cl-ninja-ds",
-   "titel": "Ninja Double Stack airfryer",
-   "oud": 167.0,
-   "nieuw": 150.0
+   "id": "bol-9300000187683942",
+   "titel": "Little Dutch wiegdeken Forest Friends",
+   "oud": 28.49,
+   "nieuw": 31.44
   },
   {
-   "id": "cl-ninja-ds-xl",
-   "titel": "Ninja Double Stack XL airfryer",
-   "oud": 198.0,
-   "nieuw": 233.0
+   "id": "bol-9300000224387684",
+   "titel": "Jollein babymobiel Elephant Tales (voor box of bed)",
+   "oud": 23.09,
+   "nieuw": 26.44
   },
   {
-   "id": "a-coolblue-nl-0a14557168",
-   "titel": "Diamant Sabatier Riyouri messenblok (5-delig)",
-   "oud": 133.0,
-   "nieuw": 159.0
+   "id": "bol-9300000036602411",
+   "titel": "Steiff knuffeldoekje konijn",
+   "oud": 17.09,
+   "nieuw": 36.0
   },
   {
-   "id": "cl-philips-bt5780",
-   "titel": "Philips baardtrimmer Series 5000",
-   "oud": 54.0,
-   "nieuw": 60.0
+   "id": "bol-9300000082703574",
+   "titel": "PlayStation-bureaumat (groot)",
+   "oud": 17.0,
+   "nieuw": 25.16
   },
   {
-   "id": "a-coolblue-nl-2092e12536",
-   "titel": "Princess raclette en fondue in één",
-   "oud": 83.0,
-   "nieuw": 74.0
+   "id": "bol-9300000194720242",
+   "titel": "BLU 3D-pen XXL starterspakket met 40 m filament in 8 kleuren",
+   "oud": 16.95,
+   "nieuw": 20.95
   },
   {
-   "id": "bol-9200000046043771",
-   "titel": "Logitech Driving Force Shifter (versnellingspook)",
-   "oud": 43.99,
+   "id": "bol-9300000178602346",
+   "titel": "Anker MagGo 3-in-1 oplaadstation",
+   "oud": 114.0,
+   "nieuw": 85.99
+  },
+  {
+   "id": "bol-9300000230785366",
+   "titel": "Luumuu 3D-pen starterspakket XXL met 200 m filament, glow in the dark",
+   "oud": 39.95,
+   "nieuw": 33.95
+  },
+  {
+   "id": "bol-9200000028156878",
+   "titel": "Weleda badmelk lavendel",
+   "oud": 11.99,
+   "nieuw": 14.29
+  },
+  {
+   "id": "bol-9300000048573198",
+   "titel": "CeraVe gezichtsreiniger (88 ml)",
+   "oud": 10.15,
+   "nieuw": 11.17
+  },
+  {
+   "id": "bol-9200000005033043",
+   "titel": "Kneipp badolie – kies je geur",
+   "oud": 8.51,
+   "nieuw": 11.01
+  },
+  {
+   "id": "bol-9300000169003721",
+   "titel": "NYX Duck Plump lipgloss (Pure Plum-P)",
+   "oud": 5.39,
+   "nieuw": 4.85
+  },
+  {
+   "id": "bol-9200000022485300",
+   "titel": "Kneipp badolie Beauty Secret",
+   "oud": 8.74,
+   "nieuw": 11.14
+  },
+  {
+   "id": "bol-9300000005194894",
+   "titel": "essie sneldrogende nagellak (blauw)",
+   "oud": 4.79,
+   "nieuw": 9.13
+  },
+  {
+   "id": "bol-9300000135987373",
+   "titel": "Weleda body butter voor zwangere vrouwen",
+   "oud": 15.0,
+   "nieuw": 17.0
+  },
+  {
+   "id": "bol-9300000251732948",
+   "titel": "Rare Beauty Positive Light lipgloss",
+   "oud": 30.77,
+   "nieuw": 37.63
+  },
+  {
+   "id": "bol-9300000299426819",
+   "titel": "NIVEA MEN Fresh & Relax geschenkset",
+   "oud": 9.29,
+   "nieuw": 16.88
+  },
+  {
+   "id": "bol-9300000231599583",
+   "titel": "SKIN1004 Madagascar Centella Ampoule",
+   "oud": 8.31,
+   "nieuw": 7.06
+  },
+  {
+   "id": "bol-9300000154469622",
+   "titel": "NYX Ultimate Shadow Palette Tropic Shock",
+   "oud": 14.02,
+   "nieuw": 18.0
+  },
+  {
+   "id": "bol-9300000233060419",
+   "titel": "Ted Sparks cadeauset Vanilla & Cedarwood",
+   "oud": 20.39,
+   "nieuw": 17.21
+  },
+  {
+   "id": "bol-9300000129430304",
+   "titel": "Bosch Professional GTB 18V-45 accu schroefmachine (body, zonder accu)",
+   "oud": 173.3,
+   "nieuw": 191.0
+  },
+  {
+   "id": "bol-9300000156348983",
+   "titel": "Bosch Professional GSR 18V-45 accu schroefboormachine met 3 accu's 4.0",
+   "oud": 208.0,
+   "nieuw": 299.0
+  },
+  {
+   "id": "bol-9300000174594347",
+   "titel": "HOTO slimme laserafstandsmeter (30 m)",
+   "oud": 37.99,
+   "nieuw": 44.99
+  },
+  {
+   "id": "bol-9200000131026328",
+   "titel": "Ryobi ONE+ accuklopboormachine 18V, 50 Nm",
+   "oud": 58.35,
+   "nieuw": 74.25
+  },
+  {
+   "id": "bol-9300000004832458",
+   "titel": "Kleurboek Sinterklaas",
+   "oud": 4.99,
+   "nieuw": 9.99
+  },
+  {
+   "id": "bol-9300000225512285",
+   "titel": "Het superleuke bakboek voor kinderen",
+   "oud": 18.95,
+   "nieuw": 25.82
+  },
+  {
+   "id": "bol-9300000236296411",
+   "titel": "Het Efteling-sprookjesbakboek – Rutger van den Broek",
+   "oud": 24.99,
+   "nieuw": 0.0
+  },
+  {
+   "id": "bol-9300000045363218",
+   "titel": "Het kerstverhaal van Ia, het ezeltje",
+   "oud": 19.95,
+   "nieuw": 34.51
+  },
+  {
+   "id": "bol-9300000065875609",
+   "titel": "Boek “Zin in je pensioen”",
+   "oud": 16.1,
+   "nieuw": 20.0
+  },
+  {
+   "id": "bol-9200000130821692",
+   "titel": "Noblechairs HERO gamestoel (zwart/goud)",
+   "oud": 472.0,
+   "nieuw": 413.25
+  },
+  {
+   "id": "bol-9300000009319303",
+   "titel": "Spider-Man Bureaulamp",
+   "oud": 44.29,
+   "nieuw": 36.89
+  },
+  {
+   "id": "bol-9300000226014369",
+   "titel": "AndaSeat X-Air Mega mesh-gamestoel",
+   "oud": 329.0,
+   "nieuw": 249.0
+  },
+  {
+   "id": "bol-9200000039507366",
+   "titel": "HyperX Cloud II gaming-headset (rood)",
+   "oud": 58.99,
+   "nieuw": 79.0
+  },
+  {
+   "id": "bol-9300000231801529",
+   "titel": "Pokémon-drinkfles Pikachu van rvs (780 ml)",
+   "oud": 19.99,
+   "nieuw": 16.49
+  },
+  {
+   "id": "bol-9300000198110486",
+   "titel": "Fortnite headset-standaard met licht en oplaadpoorten",
+   "oud": 26.79,
+   "nieuw": 35.0
+  },
+  {
+   "id": "bol-9300000165180203",
+   "titel": "Minecraft Redstone-kubus met licht",
+   "oud": 34.99,
    "nieuw": 38.99
   },
   {
-   "id": "cl-braun-wildcam",
-   "titel": "Braun wildcamera",
-   "oud": 124.0,
-   "nieuw": 86.0
+   "id": "bol-9300000130858604",
+   "titel": "Elgato Stream Deck+ met draaiknoppen",
+   "oud": 169.28,
+   "nieuw": 199.0
+  },
+  {
+   "id": "bol-9300000244809819",
+   "titel": "Razer Kishi V3 controller voor je telefoon (wit)",
+   "oud": 90.66,
+   "nieuw": 105.0
+  },
+  {
+   "id": "bol-9300000176218112",
+   "titel": "JBL Quantum 360 draadloze gaming-headset",
+   "oud": 80.99,
+   "nieuw": 59.99
+  },
+  {
+   "id": "bol-9300000009699366",
+   "titel": "PDP Victrix Gambit toernooicontroller (Xbox/pc)",
+   "oud": 130.0,
+   "nieuw": 114.89
+  },
+  {
+   "id": "bol-9300000023961111",
+   "titel": "Animal Crossing mok die verandert bij warmte",
+   "oud": 13.96,
+   "nieuw": 26.49
+  },
+  {
+   "id": "bol-9200000045770071",
+   "titel": "Logitech G29 racestuur met pedalen (PS5/pc)",
+   "oud": 224.9,
+   "nieuw": 177.0
+  },
+  {
+   "id": "bol-9300000183040640",
+   "titel": "Pokémon Legends: Z-A (Nintendo Switch)",
+   "oud": 33.99,
+   "nieuw": 28.99
+  },
+  {
+   "id": "bol-9300000301556735",
+   "titel": "Stitch leeslampje met klem",
+   "oud": 16.95,
+   "nieuw": 24.98
+  },
+  {
+   "id": "bol-9200000058466074",
+   "titel": "Opwekkingsliederen 40 (cd + dvd, nrs. 783–795)",
+   "oud": 14.5,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-1000004011791822",
+   "titel": "Sela – Via Dolorosa (cd)",
+   "oud": 18.39,
+   "nieuw": 12.59
+  },
+  {
+   "id": "bol-9300000237753976",
+   "titel": "Lenovo Legion Go S met SteamOS (512 GB)",
+   "oud": 834.2,
+   "nieuw": 699.0
+  },
+  {
+   "id": "bol-9200000092344174",
+   "titel": "Fjällräven Kånken toilettas (frost green)",
+   "oud": 45.79,
+   "nieuw": 51.0
+  },
+  {
+   "id": "bol-9300000176286400",
+   "titel": "G-Shock DW-5600 horloge (zwart)",
+   "oud": 72.5,
+   "nieuw": 93.0
+  },
+  {
+   "id": "bol-9300000222709117",
+   "titel": "Guess tennisarmband met 4G-logo",
+   "oud": 64.06,
+   "nieuw": 54.6
+  },
+  {
+   "id": "bol-9200000129724000",
+   "titel": "Kipling Abanu Multi crossbodytasje (zwart)",
+   "oud": 55.9,
+   "nieuw": 49.46
+  },
+  {
+   "id": "bol-9300000233149251",
+   "titel": "Diesel schakelarmband Metamorph",
+   "oud": 56.99,
+   "nieuw": 96.0
+  },
+  {
+   "id": "bol-9300000182396406",
+   "titel": "Lucardi kinderketting met kruisje (925 zilver)",
+   "oud": 34.99,
+   "nieuw": 29.74
+  },
+  {
+   "id": "bol-9200000026739741",
+   "titel": "Casio Vintage mini horloge (zilver)",
+   "oud": 31.6,
+   "nieuw": 37.6
+  },
+  {
+   "id": "bol-9300000258717228",
+   "titel": "Kruis-cadeauset goud: ketting en armband (Thomasiny)",
+   "oud": 124.99,
+   "nieuw": 99.95
+  },
+  {
+   "id": "bol-9300000254525374",
+   "titel": "Tommy Hilfiger riem Layton",
+   "oud": 44.91,
+   "nieuw": 49.9
+  },
+  {
+   "id": "bol-9300000402308712",
+   "titel": "Guess telefoontasje met logo (zwart)",
+   "oud": 44.99,
+   "nieuw": 40.4
+  },
+  {
+   "id": "bol-9300000328905137",
+   "titel": "GUESS armband Crystal Love Tag",
+   "oud": 80.0,
+   "nieuw": 69.6
+  },
+  {
+   "id": "bol-9300000258216323",
+   "titel": "Emporio Armani stalen herenarmband",
+   "oud": 84.06,
+   "nieuw": 95.04
+  },
+  {
+   "id": "bol-9300000042177624",
+   "titel": "Casio Vintage horloge A171WE",
+   "oud": 46.31,
+   "nieuw": 39.95
+  },
+  {
+   "id": "bol-9300000133972221",
+   "titel": "Fossil herenarmband met tijgeroog kralen",
+   "oud": 25.29,
+   "nieuw": 32.54
+  },
+  {
+   "id": "bol-9300000317042466",
+   "titel": "Barts Cowcoon sjaal met dierenprint",
+   "oud": 39.99,
+   "nieuw": 35.99
+  },
+  {
+   "id": "bol-9300000105460403",
+   "titel": "Guess herenketting staal",
+   "oud": 29.67,
+   "nieuw": 58.99
+  },
+  {
+   "id": "bol-9300000257495444",
+   "titel": "GUESS ketting Borboleta met vlinderbedel",
+   "oud": 50.3,
+   "nieuw": 63.95
+  },
+  {
+   "id": "bol-9200000103834024",
+   "titel": "Fjällräven Ulvö 23 rugzak (mountain blue)",
+   "oud": 109.0,
+   "nieuw": 81.29
+  },
+  {
+   "id": "bol-9300000227119215",
+   "titel": "Thule Crossover 2 toilettas (zwart)",
+   "oud": 54.95,
+   "nieuw": 47.34
+  },
+  {
+   "id": "bol-9300000266810136",
+   "titel": "Tommy Hilfiger toilettas zwart",
+   "oud": 44.99,
+   "nieuw": 52.9
+  },
+  {
+   "id": "bol-9200000119361644",
+   "titel": "BARTS handschoenen voor dames (zwart)",
+   "oud": 19.55,
+   "nieuw": 16.95
+  },
+  {
+   "id": "bol-9300000267904723",
+   "titel": "Pacsafe anti-diefstal schoudertasje (lila)",
+   "oud": 49.95,
+   "nieuw": 42.87
+  },
+  {
+   "id": "bol-9300000185035535",
+   "titel": "Garzini toilettas voor heren met haak (bruin)",
+   "oud": 23.96,
+   "nieuw": 29.95
+  },
+  {
+   "id": "bol-9200000061999525",
+   "titel": "Marie-Celeste gouden armband met hartje en zirkonia",
+   "oud": 156.0,
+   "nieuw": 176.0
+  },
+  {
+   "id": "bol-9200000039486990",
+   "titel": "Mi Zalini bedel zilver, dier",
+   "oud": 39.0,
+   "nieuw": 32.5
+  },
+  {
+   "id": "bol-9200000026739823",
+   "titel": "Casio Vintage Iconic A159 (goudkleurig)",
+   "oud": 44.53,
+   "nieuw": 54.53
+  },
+  {
+   "id": "bol-9200000051650546",
+   "titel": "Marie Celeste gouden hanger infinity",
+   "oud": 56.43,
+   "nieuw": 80.0
+  },
+  {
+   "id": "bol-9200000108808069",
+   "titel": "DSTRCT leren dames portemonnee met RFID (zwart)",
+   "oud": 36.6,
+   "nieuw": 32.0
+  },
+  {
+   "id": "bol-9300000228695099",
+   "titel": "Fossil sieraden cadeauset goudkleurig",
+   "oud": 47.9,
+   "nieuw": 54.62
+  },
+  {
+   "id": "bol-9300000250611296",
+   "titel": "Fjällräven Vardag Duffel 33 reistas",
+   "oud": 71.1,
+   "nieuw": 83.47
+  },
+  {
+   "id": "bol-9300000192519194",
+   "titel": "14 karaat gouden kompas hanger",
+   "oud": 170.99,
+   "nieuw": 149.0
+  },
+  {
+   "id": "bol-9200000045317784",
+   "titel": "Fjällräven Pocket schoudertasje (navy)",
+   "oud": 19.09,
+   "nieuw": 39.95
+  },
+  {
+   "id": "bol-9200000083864051",
+   "titel": "Warmbat Grizzly suède herensloffen (grijs)",
+   "oud": 65.88,
+   "nieuw": 55.97
+  },
+  {
+   "id": "bol-9300000118283672",
+   "titel": "Shepherd of Sweden Lina sloffen (dames)",
+   "oud": 46.72,
+   "nieuw": 95.0
+  },
+  {
+   "id": "bol-9300000073699724",
+   "titel": "UGG Disquette damessloffen (zwart)",
+   "oud": 104.5,
+   "nieuw": 134.73
+  },
+  {
+   "id": "bol-9300000022497910",
+   "titel": "Sunred Vintage terrasverwarmer (tafelmodel)",
+   "oud": 206.0,
+   "nieuw": 285.0
+  },
+  {
+   "id": "bol-9300000155195329",
+   "titel": "Mica bloempot Harris (keramiek, blauw)",
+   "oud": 27.95,
+   "nieuw": 20.36
+  },
+  {
+   "id": "bol-9300000064719406",
+   "titel": "Bo-Camp hangmat Oxomo",
+   "oud": 7.99,
+   "nieuw": 49.95
+  },
+  {
+   "id": "bol-9300000159425017",
+   "titel": "SHINE lichtsnoer op zonne-energie (8,5 meter)",
+   "oud": 49.95,
+   "nieuw": 40.0
+  },
+  {
+   "id": "bol-9200000026459745",
+   "titel": "Alessi Diva gieter",
+   "oud": 46.75,
+   "nieuw": 58.2
+  },
+  {
+   "id": "bol-9300000372578161",
+   "titel": "EGLO lavalamp (blauw)",
+   "oud": 41.95,
+   "nieuw": 26.99
+  },
+  {
+   "id": "bol-9200000084954076",
+   "titel": "Luxform solar wandlampen Tacoma (2 stuks)",
+   "oud": 12.69,
+   "nieuw": 28.95
+  },
+  {
+   "id": "bol-9200000014980852",
+   "titel": "Amazonas Barbados hangmat (2 personen)",
+   "oud": 48.99,
+   "nieuw": 65.3
+  },
+  {
+   "id": "bol-9300000236752938",
+   "titel": "Costway kinderpicknicktafel met banken, kussens en parasol",
+   "oud": 95.23,
+   "nieuw": 109.99
+  },
+  {
+   "id": "bol-9300000221600338",
+   "titel": "Ticket To The Moon hangmat",
+   "oud": 51.63,
+   "nieuw": 69.95
+  },
+  {
+   "id": "bol-9300000225895878",
+   "titel": "herQs Chief rookvrije vuurkorf",
+   "oud": 349.99,
+   "nieuw": 399.99
+  },
+  {
+   "id": "bol-9200000106745636",
+   "titel": "Fatboy Edison the Petit oplaadbare tafellamp, wit",
+   "oud": 64.99,
+   "nieuw": 75.82
+  },
+  {
+   "id": "bol-9200000010729500",
+   "titel": "Black+Decker GL7033 elektrische grastrimmer 700 W",
+   "oud": 52.99,
+   "nieuw": 74.9
+  },
+  {
+   "id": "bol-9200000056314395",
+   "titel": "Nature kweekset Start (zaaien en stekken)",
+   "oud": 28.99,
+   "nieuw": 44.95
+  },
+  {
+   "id": "bol-9200000121371932",
+   "titel": "Paulmann leeslamp Junus met flexibele arm (stekker)",
+   "oud": 33.67,
+   "nieuw": 27.16
+  },
+  {
+   "id": "bol-9300000441814149",
+   "titel": "QP kippenhok met ren, 144 x 53 x 69 cm",
+   "oud": 69.21,
+   "nieuw": 339.95
+  },
+  {
+   "id": "bol-9200000099323362",
+   "titel": "MikaMax Himalaya zoutlamp 2,5 kg, dimbaar",
+   "oud": 22.29,
+   "nieuw": 19.87
+  },
+  {
+   "id": "bol-9300000182787559",
+   "titel": "Goobay 3D-led-kerstster met timer (56 cm)",
+   "oud": 17.43,
+   "nieuw": 21.98
+  },
+  {
+   "id": "bol-9300000174972991",
+   "titel": "Fiskars Solid plantenschepje",
+   "oud": 9.69,
+   "nieuw": 12.5
+  },
+  {
+   "id": "bol-9200000126161512",
+   "titel": "Makita HW101 hogedrukreiniger",
+   "oud": 78.99,
+   "nieuw": 99.99
+  },
+  {
+   "id": "bol-9300000426946863",
+   "titel": "Voetbal-lamp met naam (LED)",
+   "oud": 24.95,
+   "nieuw": 29.95
+  },
+  {
+   "id": "bol-9300000229938635",
+   "titel": "Calex Vista solar lichtsnoer voor buiten (10 meter, 20 lampjes)",
+   "oud": 39.99,
+   "nieuw": 31.99
+  },
+  {
+   "id": "bol-9300000133520645",
+   "titel": "Elho Bouncy Basil kruidenpot",
+   "oud": 22.99,
+   "nieuw": 26.21
+  },
+  {
+   "id": "bol-9300000045069967",
+   "titel": "Snoopy deurmat",
+   "oud": 18.79,
+   "nieuw": 24.09
+  },
+  {
+   "id": "bol-9300000240296704",
+   "titel": "Yankee Candle grote geurkaars (Large Jar)",
+   "oud": 23.71,
+   "nieuw": 27.9
+  },
+  {
+   "id": "bol-9200000110197386",
+   "titel": "Serax Marie spiegeltje (Marie Michielssen)",
+   "oud": 53.99,
+   "nieuw": 73.2
+  },
+  {
+   "id": "bol-9300000003800921",
+   "titel": "LAMY Joy kalligrafieset met 3 penpunten",
+   "oud": 46.89,
+   "nieuw": 38.09
+  },
+  {
+   "id": "bol-9200000073411685",
+   "titel": "Harry Potter deurmat Welcome to Hogwarts",
+   "oud": 28.0,
+   "nieuw": 24.98
+  },
+  {
+   "id": "bol-9200000066375273",
+   "titel": "Zwilling Four Star koksmes (18 cm)",
+   "oud": 68.79,
+   "nieuw": 77.22
+  },
+  {
+   "id": "bol-9300000062956350",
+   "titel": "Fellow Eddy melkkan voor latte art (staal)",
+   "oud": 52.99,
+   "nieuw": 47.19
+  },
+  {
+   "id": "bol-9300000028317650",
+   "titel": "Mepal bento lunchbox, blauw",
+   "oud": 14.99,
+   "nieuw": 11.69
+  },
+  {
+   "id": "bol-9300000268347949",
+   "titel": "Mepal Campus RVS bento lunchbox (750 ml)",
+   "oud": 20.0,
+   "nieuw": 16.89
+  },
+  {
+   "id": "bol-9300000015405237",
+   "titel": "Glencairn geslepen whiskyglazen van kristal (set van 2)",
+   "oud": 92.9,
+   "nieuw": 103.95
+  },
+  {
+   "id": "bol-9300000243226638",
+   "titel": "Owala SmoothSip Slider koffiebeker 590 ml",
+   "oud": 36.99,
+   "nieuw": 27.74
+  },
+  {
+   "id": "bol-9300000235399619",
+   "titel": "Ibenzoa cacaostrooiers set met 16 sjablonen",
+   "oud": 41.0,
+   "nieuw": 56.0
+  },
+  {
+   "id": "bol-9200000124010082",
+   "titel": "Inferno compacte kamado barbecue (34 cm)",
+   "oud": 211.0,
+   "nieuw": 249.95
+  },
+  {
+   "id": "bol-9300000223693768",
+   "titel": "Mepal isoleerpot Ellipse voor warme lunch (500 ml)",
+   "oud": 28.46,
+   "nieuw": 23.69
+  },
+  {
+   "id": "bol-9300000169362761",
+   "titel": "Ember slimme koffiebeker (houdt je koffie warm)",
+   "oud": 144.95,
+   "nieuw": 169.95
+  },
+  {
+   "id": "bol-9300000244887994",
+   "titel": "Stanley Classic thermosfles (940 ml)",
+   "oud": 55.99,
+   "nieuw": 69.0
+  },
+  {
+   "id": "bol-9200000040371380",
+   "titel": "Global messenset (3-delig)",
+   "oud": 194.0,
+   "nieuw": 252.0
+  },
+  {
+   "id": "bol-9200000009380590",
+   "titel": "Weber Gourmet BBQ System",
+   "oud": 55.55,
+   "nieuw": 64.99
+  },
+  {
+   "id": "bol-9200000040602689",
+   "titel": "Kikkerland kaasmesjes met muizen (set van 3)",
+   "oud": 23.65,
+   "nieuw": 21.0
+  },
+  {
+   "id": "bol-9300000254183758",
+   "titel": "Le Creuset theepot (1,3 liter, meringue)",
+   "oud": 60.99,
+   "nieuw": 77.2
+  },
+  {
+   "id": "bol-9300000007762369",
+   "titel": "Westmark blikopener",
+   "oud": 7.5,
+   "nieuw": 9.0
+  },
+  {
+   "id": "bol-9200000107164773",
+   "titel": "OXO POP voorraadbus (2,6 liter)",
+   "oud": 13.5,
+   "nieuw": 19.95
+  },
+  {
+   "id": "bol-9300000272086424",
+   "titel": "Blond Amsterdam kerstbeker XL (0,5 liter)",
+   "oud": 15.0,
+   "nieuw": 13.0
+  },
+  {
+   "id": "bol-9300000060650516",
+   "titel": "Salt & Pepper cocktailset goud (7-delig)",
+   "oud": 42.5,
+   "nieuw": 33.72
+  },
+  {
+   "id": "bol-9300000161864152",
+   "titel": "Hario Buono waterkoker voor filterkoffie (zwart)",
+   "oud": 48.47,
+   "nieuw": 53.99
+  },
+  {
+   "id": "bol-9300000241968931",
+   "titel": "Hydro Flask koffiebeker 354 ml",
+   "oud": 15.59,
+   "nieuw": 26.95
+  },
+  {
+   "id": "bol-9300000049362770",
+   "titel": "Minecraft-drinkfles van aluminium (400 ml)",
+   "oud": 12.99,
+   "nieuw": 11.0
+  },
+  {
+   "id": "bol-9200000040704994",
+   "titel": "Emile Henry taartvorm Grand Cru (aardewerk, 28 cm)",
+   "oud": 27.99,
+   "nieuw": 42.0
+  },
+  {
+   "id": "bol-9300000167193554",
+   "titel": "Bredemeijer theeset Umea met theelichtwarmer (1,2 liter)",
+   "oud": 59.11,
+   "nieuw": 48.77
+  },
+  {
+   "id": "bol-9200000132138505",
+   "titel": "Patisse poffertjespan (16 poffertjes)",
+   "oud": 39.95,
+   "nieuw": 35.91
+  },
+  {
+   "id": "bol-9300000078827056",
+   "titel": "Ondersteboven-mok tijger (Cutiemals)",
+   "oud": 10.34,
+   "nieuw": 14.98
+  },
+  {
+   "id": "bol-9300000227362791",
+   "titel": "Accutime Bluey kindersmartwatch met camera en spelletjes",
+   "oud": 17.49,
+   "nieuw": 42.49
+  },
+  {
+   "id": "bol-9300000236333048",
+   "titel": "Ice-Watch ICE-Smart Junior 3.0 kindersmartwatch, roze (39 mm)",
+   "oud": 54.99,
+   "nieuw": 47.88
+  },
+  {
+   "id": "bol-9300000386803507",
+   "titel": "Samsung powerbank 10.000 mAh met snellader",
+   "oud": 39.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9300000233305928",
+   "titel": "Cabeau Evolution X nekkussen (turquoise)",
+   "oud": 66.99,
+   "nieuw": 51.03
+  },
+  {
+   "id": "bol-9300000250742045",
+   "titel": "Outwell Blackpool campingstoel",
+   "oud": 26.99,
+   "nieuw": 52.95
+  },
+  {
+   "id": "bol-9300000057830180",
+   "titel": "Sigma BC 12.0 fietscomputer",
+   "oud": 37.94,
+   "nieuw": 44.7
+  },
+  {
+   "id": "bol-9300000082782551",
+   "titel": "Campingaz 206 gasbrander (1 pit)",
+   "oud": 35.99,
+   "nieuw": 29.9
+  },
+  {
+   "id": "bol-9300000258718720",
+   "titel": "DreamGoods noodrugzak met 28 onderdelen",
+   "oud": 29.95,
+   "nieuw": 39.95
+  },
+  {
+   "id": "bol-9300000011823403",
+   "titel": "My First Victorinox junior zakmes (konijn, 9 functies)",
+   "oud": 33.49,
+   "nieuw": 37.83
+  },
+  {
+   "id": "bol-9300000244102702",
+   "titel": "Volare Paw Patrol kinderfiets 12 inch (roze)",
+   "oud": 122.5,
+   "nieuw": 109.35
+  },
+  {
+   "id": "bol-9200000066014328",
+   "titel": "Coleman Atlantic Lite 10 slaapzak",
+   "oud": 31.99,
+   "nieuw": 67.99
+  },
+  {
+   "id": "bol-9300000196238385",
+   "titel": "Vango Nevis 300 trekkingtent (3 personen)",
+   "oud": 134.99,
+   "nieuw": 178.49
+  },
+  {
+   "id": "bol-9300000224675460",
+   "titel": "Igloo retro picknickmand-koelbox (23 liter, groen)",
+   "oud": 46.99,
+   "nieuw": 59.49
+  },
+  {
+   "id": "bol-9300000132178428",
+   "titel": "Lafuma Maxi Transat strandstoel",
+   "oud": 46.99,
+   "nieuw": 55.01
+  },
+  {
+   "id": "bol-9300000021701884",
+   "titel": "Bo-Camp inklapbare picknicktafel van bamboe",
+   "oud": 120.25,
+   "nieuw": 149.95
+  },
+  {
+   "id": "bol-9300000222759041",
+   "titel": "High Peak Narvik 2 tent met veranda",
+   "oud": 47.35,
+   "nieuw": 69.91
+  },
+  {
+   "id": "bol-9300000263626368",
+   "titel": "Albatros visstoel (aluminium)",
+   "oud": 40.99,
+   "nieuw": 77.5
+  },
+  {
+   "id": "bol-9300000231075897",
+   "titel": "Muc-Off AirMach Mini Pro elektrische fietspomp",
+   "oud": 104.0,
+   "nieuw": 118.95
+  },
+  {
+   "id": "bol-9200000054318349",
+   "titel": "Campingaz Powerbox Plus koelbox (24 liter, 12V)",
+   "oud": 48.99,
+   "nieuw": 79.55
+  },
+  {
+   "id": "bol-9300000220468196",
+   "titel": "Sevylor Colorado opblaasbare kajak",
+   "oud": 222.0,
+   "nieuw": 297.5
+  },
+  {
+   "id": "bol-9300000194783659",
+   "titel": "Black Diamond Mojo chalkbag (S/M)",
+   "oud": 26.49,
+   "nieuw": 22.76
+  },
+  {
+   "id": "bol-9300000019060592",
+   "titel": "High Peak Garda 5.0 tunneltent (5 personen)",
+   "oud": 461.0,
+   "nieuw": 548.65
+  },
+  {
+   "id": "bol-9300000226025254",
+   "titel": "Bvlgari herengeuren ontdekkingsset (4 x 5 ml)",
+   "oud": 79.99,
+   "nieuw": 66.0
+  },
+  {
+   "id": "bol-9300000183855220",
+   "titel": "Chloé minisetje met 3 geuren (3 x 5 ml)",
+   "oud": 49.71,
+   "nieuw": 54.99
+  },
+  {
+   "id": "bol-9200000129989018",
+   "titel": "YSL Mon Paris cadeauset",
+   "oud": 89.95,
+   "nieuw": 103.0
+  },
+  {
+   "id": "bol-9300000237452859",
+   "titel": "Rituals cadeauset The Ritual of Karma",
+   "oud": 27.99,
+   "nieuw": 33.9
+  },
+  {
+   "id": "bol-9300000194646680",
+   "titel": "Gucci Guilty Pour Homme giftset",
+   "oud": 73.0,
+   "nieuw": 58.58
+  },
+  {
+   "id": "bol-9300000231731440",
+   "titel": "Narciso Rodriguez For Her parfumset",
+   "oud": 51.41,
+   "nieuw": 61.99
+  },
+  {
+   "id": "bol-9300000150634153",
+   "titel": "Victoria’s Secret Pure Seduction bodymist (250 ml)",
+   "oud": 21.09,
+   "nieuw": 27.29
+  },
+  {
+   "id": "bol-9300000242949851",
+   "titel": "Boss The Scent cadeauset (3 delen)",
+   "oud": 74.99,
+   "nieuw": 52.94
+  },
+  {
+   "id": "bol-9300000236208265",
+   "titel": "Marc Jacobs Daisy cadeauset",
+   "oud": 113.0,
+   "nieuw": 101.0
+  },
+  {
+   "id": "bol-9200000046859735",
+   "titel": "Elizabeth Arden Eight Hour handcrème",
+   "oud": 18.79,
+   "nieuw": 23.73
+  },
+  {
+   "id": "bol-9300000003438540",
+   "titel": "Viktor & Rolf Flowerbomb Jasmine Twist parfumolie (20 ml)",
+   "oud": 42.35,
+   "nieuw": 54.99
+  },
+  {
+   "id": "bol-9300000050712934",
+   "titel": "Dior Miss Dior",
+   "oud": 141.38,
+   "nieuw": 183.99
+  },
+  {
+   "id": "bol-9300000132222333",
+   "titel": "Therme Mystic Rose geurset (parfum en douchegel)",
+   "oud": 17.49,
+   "nieuw": 25.6
+  },
+  {
+   "id": "bol-9300000196530057",
+   "titel": "Davidoff Cool Water cadeauset voor mannen",
+   "oud": 32.9,
+   "nieuw": 44.99
+  },
+  {
+   "id": "bol-9300000241675022",
+   "titel": "Clarins kerst-geschenkset huidverzorging",
+   "oud": 79.0,
+   "nieuw": 67.99
+  },
+  {
+   "id": "bol-9200000026455551",
+   "titel": "Dior Fahrenheit eau de toilette (50 ml)",
+   "oud": 74.99,
+   "nieuw": 82.99
+  },
+  {
+   "id": "bol-9300000197181882",
+   "titel": "Rabanne Olympea cadeauset (3 delen)",
+   "oud": 79.18,
+   "nieuw": 103.0
+  },
+  {
+   "id": "bol-9300000196894106",
+   "titel": "Versace Dylan Blue pour Femme cadeauset",
+   "oud": 61.49,
+   "nieuw": 70.19
+  },
+  {
+   "id": "bol-9300000183546579",
+   "titel": "Jean Paul Gaultier Classique cadeauset",
+   "oud": 101.99,
+   "nieuw": 87.39
+  },
+  {
+   "id": "bol-9300000228928212",
+   "titel": "Jean Paul Gaultier Le Male cadeauset",
+   "oud": 76.98,
+   "nieuw": 89.99
+  },
+  {
+   "id": "bol-9200000101237902",
+   "titel": "Elizabeth Arden Sunflowers geschenkset",
+   "oud": 19.8,
+   "nieuw": 21.92
+  },
+  {
+   "id": "bol-9300000177318827",
+   "titel": "Benefit Shellie blush cadeauset (2 blushes)",
+   "oud": 35.25,
+   "nieuw": 53.99
+  },
+  {
+   "id": "bol-9300000000506201",
+   "titel": "Elizabeth Arden Eight Hour Cream geschenkset",
+   "oud": 30.12,
+   "nieuw": 45.87
+  },
+  {
+   "id": "bol-9300000225451153",
+   "titel": "YSL MYSLF giftset (eau de parfum 100 ml)",
+   "oud": 125.99,
+   "nieuw": 160.26
+  },
+  {
+   "id": "bol-9300000377702823",
+   "titel": "Calvin Klein Euphoria cadeauset (3 delen)",
+   "oud": 69.95,
+   "nieuw": 52.99
+  },
+  {
+   "id": "bol-9200000106871496",
+   "titel": "Emporio Armani In Love With You eau de parfum (50 ml)",
+   "oud": 74.98,
+   "nieuw": 84.39
+  },
+  {
+   "id": "bol-9300000249510846",
+   "titel": "Armani Sì Passione cadeauset met mascara",
+   "oud": 75.94,
+   "nieuw": 99.1
+  },
+  {
+   "id": "bol-9300000238825117",
+   "titel": "Rabanne Lady Million cadeauset met tasspray",
+   "oud": 91.56,
+   "nieuw": 82.14
+  },
+  {
+   "id": "bol-9300000181934023",
+   "titel": "Trixie kerstmand Natalya (50 cm)",
+   "oud": 21.79,
+   "nieuw": 25.49
+  },
+  {
+   "id": "bol-9200000099487936",
+   "titel": "Flamingo voederhuis Lucar met staander",
+   "oud": 39.99,
+   "nieuw": 47.2
+  },
+  {
+   "id": "bol-9200000076056699",
+   "titel": "Happy Pet knaagspeeltjes van wilgenhout (4 stuks)",
+   "oud": 15.25,
+   "nieuw": 16.95
+  },
+  {
+   "id": "bol-9300000170222890",
+   "titel": "Beeztees knuffel egel Ittie (zonder piep)",
+   "oud": 11.04,
+   "nieuw": 12.99
+  },
+  {
+   "id": "bol-9200000045262760",
+   "titel": "Ferplast caviakooi Cavie 80 (met accessoires)",
+   "oud": 94.99,
+   "nieuw": 76.07
+  },
+  {
+   "id": "bol-9200000010931426",
+   "titel": "Vitakraft Party Rollis knaagsnacks (500 gram)",
+   "oud": 9.5,
+   "nieuw": 7.5
+  },
+  {
+   "id": "bol-9300000246498048",
+   "titel": "Duvo+ opvouwbare speelren met net en deurtje",
+   "oud": 29.09,
+   "nieuw": 43.4
+  },
+  {
+   "id": "bol-9300000246445457",
+   "titel": "Ciano Emotions Pro 60 aquariumset",
+   "oud": 114.26,
+   "nieuw": 83.79
+  },
+  {
+   "id": "bol-9300000377662495",
+   "titel": "Elho Cosy vetbolhouder voor vogels",
+   "oud": 9.5,
+   "nieuw": 12.0
+  },
+  {
+   "id": "bol-9300000223791535",
+   "titel": "Beeztees kattenhuis Moza (pluche)",
+   "oud": 35.69,
+   "nieuw": 41.99
+  },
+  {
+   "id": "bol-9300000152272659",
+   "titel": "Designed by Lotte hondenmand Ribbed (antraciet)",
+   "oud": 52.13,
+   "nieuw": 61.95
+  },
+  {
+   "id": "bol-9300000150622907",
+   "titel": "Knaagspeeltjes van wilgen, gras en hooi (8 stuks)",
+   "oud": 24.99,
+   "nieuw": 22.19
+  },
+  {
+   "id": "bol-9300000136592721",
+   "titel": "Trixie Catch It: automatisch kattenspeeltje",
+   "oud": 14.99,
+   "nieuw": 12.69
+  },
+  {
+   "id": "bol-9300000240292431",
+   "titel": "Pluche rendier voor de hond (met lavendelgeur)",
+   "oud": 14.5,
+   "nieuw": 16.0
+  },
+  {
+   "id": "bol-9300000265877888",
+   "titel": "Zilverkleurige ID-penning met naam voor hond of kat",
+   "oud": 19.99,
+   "nieuw": 0.0
+  },
+  {
+   "id": "bol-9300000148298729",
+   "titel": "Designed by Lotte krabpaal Yenna (70 cm)",
+   "oud": 32.84,
+   "nieuw": 37.99
+  },
+  {
+   "id": "bol-9300000237905400",
+   "titel": "Elho Cosy vogelhuisje (18 cm)",
+   "oud": 11.95,
+   "nieuw": 21.48
+  },
+  {
+   "id": "bol-9300000257629466",
+   "titel": "Sage Luxe Toast Select broodrooster (Red Velvet)",
+   "oud": 101.95,
+   "nieuw": 119.0
+  },
+  {
+   "id": "bol-9300000227115983",
+   "titel": "Tefal Snack Collection tosti- en wafelapparaat",
+   "oud": 81.49,
+   "nieuw": 68.99
+  },
+  {
+   "id": "bol-9200000115916881",
+   "titel": "BaByliss Rose-Quartz krultang 10 mm",
+   "oud": 38.59,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9300000245781180",
+   "titel": "Renpho U-Neck Go nek- en schoudermassager",
+   "oud": 60.49,
+   "nieuw": 70.33
+  },
+  {
+   "id": "bol-9300000025052582",
+   "titel": "Beurer MG 180 massage gun",
+   "oud": 101.42,
+   "nieuw": 139.99
+  },
+  {
+   "id": "bol-9300000353207034",
+   "titel": "Laifen snelle föhn",
+   "oud": 49.99,
+   "nieuw": 54.99
+  },
+  {
+   "id": "bol-9300000263076902",
+   "titel": "Samsung Galaxy Buds4 Pro – kies je kleur",
+   "oud": 199.0,
+   "nieuw": 169.0
+  },
+  {
+   "id": "bol-9300000227108491",
+   "titel": "Sony WF-C710N met ruisonderdrukking – kies je kleur",
+   "oud": 81.0,
+   "nieuw": 69.0
+  },
+  {
+   "id": "bol-9300000112512514",
+   "titel": "JBL Bar 800 Pro soundbar met afneembare achterspeakers",
+   "oud": 599.99,
+   "nieuw": 525.53
+  },
+  {
+   "id": "bol-9300000186287122",
+   "titel": "Sony WF-C510 draadloze oordopjes – kies je kleur",
+   "oud": 46.95,
+   "nieuw": 39.0
+  },
+  {
+   "id": "bol-9300000263076901",
+   "titel": "Samsung Galaxy Buds4 – kies je kleur",
+   "oud": 149.0,
+   "nieuw": 129.0
+  },
+  {
+   "id": "bol-9300000167329318",
+   "titel": "Krüger & Matz digitale fotolijst met wifi (10 inch, Frameo)",
+   "oud": 61.45,
+   "nieuw": 79.99
+  },
+  {
+   "id": "bol-9300000262817377",
+   "titel": "Fresh ’n Rebel Twins Core 2 draadloze oordopjes",
+   "oud": 26.99,
+   "nieuw": 21.99
+  },
+  {
+   "id": "bol-9300000177818449",
+   "titel": "Soundmaster ICD2023 muziekcenter (internet- en DAB+-radio, cd) – kies ",
+   "oud": 233.2,
+   "nieuw": 269.95
+  },
+  {
+   "id": "bol-9300000233557152",
+   "titel": "Thomson Cosy wekkerradio die de tijd op het plafond zet",
+   "oud": 32.75,
+   "nieuw": 38.03
+  },
+  {
+   "id": "bol-9300000160436884",
+   "titel": "Soundmaster DAB700 stereo-radio met DAB+ en bluetooth",
+   "oud": 76.07,
+   "nieuw": 99.0
+  },
+  {
+   "id": "bol-9300000197119654",
+   "titel": "Philips draagbare cd-speler met DAB+ en bluetooth",
+   "oud": 96.99,
+   "nieuw": 114.4
+  },
+  {
+   "id": "bol-9300000239089723",
+   "titel": "SkyWatcher Lark 4K GPS-drone",
+   "oud": 99.0,
+   "nieuw": 119.0
+  },
+  {
+   "id": "bol-9300000197556408",
+   "titel": "Anker MagGo 3-in-1 opvouwbare oplader",
+   "oud": 90.0,
+   "nieuw": 75.99
+  },
+  {
+   "id": "bol-9300000175795860",
+   "titel": "Sony ULT Wear koptelefoon met noise cancelling",
+   "oud": 125.0,
+   "nieuw": 99.0
+  },
+  {
+   "id": "bol-9300000229096699",
+   "titel": "Crosley Miles platenspeler – kies je kleur",
+   "oud": 106.07,
+   "nieuw": 121.05
+  },
+  {
+   "id": "bol-9300000262817382",
+   "titel": "Fresh 'n Rebel Twins Fuse 2 Draadloze Oordopjes",
+   "oud": 29.99,
+   "nieuw": 26.99
+  },
+  {
+   "id": "bol-9300000242118268",
+   "titel": "Marmitek RESQ 200 noodradio met DAB+ en kleurenscherm",
+   "oud": 69.0,
+   "nieuw": 57.92
+  },
+  {
+   "id": "bol-9300000279260393",
+   "titel": "Kenwood CR-ST55DAB compacte wekkerradio met DAB+ en bluetooth",
+   "oud": 71.83,
+   "nieuw": 79.95
+  },
+  {
+   "id": "bol-9300000177044305",
+   "titel": "Move Inline Skates Stripes Verstelbaar",
+   "oud": 46.95,
+   "nieuw": 39.68
+  },
+  {
+   "id": "bol-9200000109718000",
+   "titel": "Harrows professionele dartmat",
+   "oud": 42.65,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9300000263419633",
+   "titel": "Wilson Optix V2 padelracket",
+   "oud": 81.9,
+   "nieuw": 99.95
+  },
+  {
+   "id": "bol-9300000383530750",
+   "titel": "Harrows Wolfram Trinity dartpijlen (97% tungsten)",
+   "oud": 97.78,
+   "nieuw": 111.35
+  },
+  {
+   "id": "bol-9300000169750435",
+   "titel": "Dunlop Paletero Club padeltas",
+   "oud": 38.89,
+   "nieuw": 33.49
+  },
+  {
+   "id": "bol-9300000260145224",
+   "titel": "Winmau Blade X surround",
+   "oud": 65.95,
+   "nieuw": 54.99
+  },
+  {
+   "id": "bol-9300000091469167",
+   "titel": "Globe Pinner Classic longboard 40 inch, bamboo/black",
+   "oud": 167.0,
+   "nieuw": 219.95
+  },
+  {
+   "id": "bol-9300000184731300",
+   "titel": "Wilson Blade V3 LS padelracket",
+   "oud": 142.95,
+   "nieuw": 120.95
+  },
+  {
+   "id": "bol-9200000056195176",
+   "titel": "Pure2Improve golfoefennet (2,4 x 2,1 meter)",
+   "oud": 51.2,
+   "nieuw": 65.9
+  },
+  {
+   "id": "bol-9300000180311337",
+   "titel": "Everlast bokshandschoenen Core",
+   "oud": 24.99,
+   "nieuw": 18.16
+  },
+  {
+   "id": "bol-9200000014001296",
+   "titel": "Harrows officieel competitie-dartbord (sisal)",
+   "oud": 39.7,
+   "nieuw": 50.49
+  },
+  {
+   "id": "bol-9300000076495647",
+   "titel": "Aqua Sphere Focus frontsnorkel",
+   "oud": 31.74,
+   "nieuw": 35.99
+  },
+  {
+   "id": "bol-9300000134025461",
+   "titel": "Magnetisch kinderdartbord ruimte (dubbelzijdig)",
+   "oud": 19.99,
+   "nieuw": 16.5
+  },
+  {
+   "id": "bol-9300000179451062",
+   "titel": "Wilson Infinite Grant Park putter (rechtshandig)",
+   "oud": 98.42,
+   "nieuw": 109.05
+  },
+  {
+   "id": "bol-9300000171553478",
+   "titel": "Faver verstelbare dartbordstandaard",
+   "oud": 53.11,
+   "nieuw": 59.99
+  },
+  {
+   "id": "bol-9200000056571190",
+   "titel": "Winmau Xtreme dartbordstandaard 2",
+   "oud": 73.08,
+   "nieuw": 90.0
+  },
+  {
+   "id": "bol-9300000222692712",
+   "titel": "Columbia Newton Ridge Plus II waterdichte wandelschoenen heren",
+   "oud": 72.0,
+   "nieuw": 105.0
+  },
+  {
+   "id": "bol-9300000440729962",
+   "titel": "Harrows Fortis Grey dartmat 300 x 60 cm",
+   "oud": 54.95,
+   "nieuw": 44.95
+  },
+  {
+   "id": "bol-9300000231778430",
+   "titel": "Madd Gear Carve stuntstep",
+   "oud": 91.58,
+   "nieuw": 109.76
+  },
+  {
+   "id": "bol-9300000365580821",
+   "titel": "SportNow elektronisch dartbord met kast",
+   "oud": 108.99,
+   "nieuw": 88.99
+  },
+  {
+   "id": "bol-9300000228058321",
+   "titel": "The North Face Jester crossbody schoudertas",
+   "oud": 35.29,
+   "nieuw": 30.99
+  },
+  {
+   "id": "bol-9200000095467230",
+   "titel": "Winmau Sniper dartbordset met pijlen",
+   "oud": 43.99,
+   "nieuw": 54.95
+  },
+  {
+   "id": "bol-9300000240085623",
+   "titel": "Dammann Frères cadeaudoos Séléné",
+   "oud": 52.0,
+   "nieuw": 34.12
+  },
+  {
+   "id": "bol-9300000182901246",
+   "titel": "Pukka Hero Collection theedoos (45 zakjes)",
+   "oud": 19.99,
+   "nieuw": 22.04
+  },
+  {
+   "id": "bol-9300000164663740",
+   "titel": "Nutella adventskalender",
+   "oud": 60.0,
+   "nieuw": 52.0
+  },
+  {
+   "id": "bol-9300000239566022",
+   "titel": "Pukka Discovery Box (30 zakjes)",
+   "oud": 13.0,
+   "nieuw": 14.99
+  },
+  {
+   "id": "bol-9300000191979946",
+   "titel": "Milka Favourites pralines (5 smaken)",
+   "oud": 24.99,
+   "nieuw": 21.99
+  },
+  {
+   "id": "bol-9300000395558245",
+   "titel": "BUSS N°4 olijfolie chili-knoflook (700 ml)",
+   "oud": 29.5,
+   "nieuw": 32.49
+  },
+  {
+   "id": "bol-9300000239202018",
+   "titel": "Lindt Dubai Style familiebundel (3 smaken)",
+   "oud": 26.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9300000073683204",
+   "titel": "Jelly Bean Factory snoeppot met hartjes (650 gram)",
+   "oud": 15.52,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000160067633",
+   "titel": "Lindt Swiss Luxury Selection (230 gram)",
+   "oud": 18.89,
+   "nieuw": 20.99
+  },
+  {
+   "id": "bol-9300000395558241",
+   "titel": "BUSS N°1 extra vierge olijfolie (700 ml)",
+   "oud": 29.5,
+   "nieuw": 32.49
+  },
+  {
+   "id": "bol-9300000167884017",
+   "titel": "Pokémon cadeauset Pikachu (mok, boekje en kaarten)",
+   "oud": 22.0,
+   "nieuw": 18.0
+  },
+  {
+   "id": "bol-9200000117297651",
+   "titel": "Tony's Chocolonely proeverijtje (6 reepjes)",
+   "oud": 10.39,
+   "nieuw": 14.99
+  },
+  {
+   "id": "bol-9300000235919435",
+   "titel": "Pukka Tea adventskalender 2026 (24 theezakjes)",
+   "oud": 14.99,
+   "nieuw": 13.49
+  },
+  {
+   "id": "bol-9300000247155989",
+   "titel": "Moestuinagenda 2027",
+   "oud": 19.59,
+   "nieuw": 22.5
+  },
+  {
+   "id": "bol-9300000008252018",
+   "titel": "Tony's Chocolonely cadeaudoos met 3 repen",
+   "oud": 13.0,
+   "nieuw": 15.29
+  },
+  {
+   "id": "bol-9300000261530184",
+   "titel": "Hex Bots Muurkruipende Spin",
+   "oud": 29.99,
+   "nieuw": 24.95
+  },
+  {
+   "id": "bol-9200000040865061",
+   "titel": "Sophie de giraf badspeeltje So'Pure",
+   "oud": 12.89,
+   "nieuw": 21.95
+  },
+  {
+   "id": "bol-9300000262196762",
+   "titel": "Little Live Pets My Magical Dragon Skye Interactieve Knuffel",
+   "oud": 42.99,
+   "nieuw": 47.99
+  },
+  {
+   "id": "bol-9300000193114181",
+   "titel": "Nerf Zombie Driller blaster met 16 darts",
+   "oud": 19.99,
+   "nieuw": 17.0
+  },
+  {
+   "id": "bol-9300000225854987",
+   "titel": "VTech Spidey walkie-talkies",
+   "oud": 31.99,
+   "nieuw": 39.99
+  },
+  {
+   "id": "bol-9300000065092700",
+   "titel": "Lexibook mini-vleugelpiano met lichtgevende toetsen",
+   "oud": 42.89,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9300000158751881",
+   "titel": "Pokémon Charizard knuffel (30 cm)",
+   "oud": 24.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000223977220",
+   "titel": "Jan van Haasteren puzzel NK Mens erger je niet (1000 stukjes)",
+   "oud": 17.59,
+   "nieuw": 14.5
+  },
+  {
+   "id": "bol-9300000199146825",
+   "titel": "Funko Pop! Marvel: Spider-Man",
+   "oud": 21.89,
+   "nieuw": 26.9
+  },
+  {
+   "id": "bol-9300000140194385",
+   "titel": "Tichu – kaartspel voor 4 spelers",
+   "oud": 11.27,
+   "nieuw": 16.05
+  },
+  {
+   "id": "bol-9300000194026799",
+   "titel": "Hot Wheels City superpolitiebureau met looping",
+   "oud": 26.39,
+   "nieuw": 32.59
+  },
+  {
+   "id": "bol-9300000223702544",
+   "titel": "Chillafish kinderstep met lichtgevende wielen (roze)",
+   "oud": 45.98,
+   "nieuw": 41.19
+  },
+  {
+   "id": "bol-9300000238943436",
+   "titel": "BABY born Prinsessenoutfit",
+   "oud": 14.99,
+   "nieuw": 13.49
+  },
+  {
+   "id": "bol-9300000153923470",
+   "titel": "Fisher-Price cadeauset zintuigen (bijtring, rammelaar en bal)",
+   "oud": 11.19,
+   "nieuw": 26.97
+  },
+  {
+   "id": "bol-9300000166519551",
+   "titel": "Cobra olieverf in houten kist (wateroplosbaar)",
+   "oud": 56.11,
+   "nieuw": 72.95
+  },
+  {
+   "id": "bol-9300000227351956",
+   "titel": "Wasgij Original 47: De boot in! (1000 stukjes)",
+   "oud": 16.69,
+   "nieuw": 14.24
+  },
+  {
+   "id": "bol-9300000261350709",
+   "titel": "Pikachu-hoesjes en toploaders voor Pokémon-kaarten",
+   "oud": 10.5,
+   "nieuw": 11.95
+  },
+  {
+   "id": "bol-9300000264493662",
+   "titel": "Bratz x Hello Kitty modepop Jade",
+   "oud": 28.28,
+   "nieuw": 34.99
+  },
+  {
+   "id": "bol-9300000229765812",
+   "titel": "Kosmos Mimosa Garden: kweek een kruidje-roer-mij-niet",
+   "oud": 12.99,
+   "nieuw": 18.99
+  },
+  {
+   "id": "bol-1004004000019548",
+   "titel": "Vlaggen van de Wereld Kaartspel",
+   "oud": 13.39,
+   "nieuw": 14.99
+  },
+  {
+   "id": "bol-9300000247175329",
+   "titel": "SES Shrinkies: krimpbedels Fast Foodies",
+   "oud": 7.0,
+   "nieuw": 8.4
+  },
+  {
+   "id": "bol-9300000196801526",
+   "titel": "Monopoly Classic (vernieuwde editie)",
+   "oud": 22.43,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9200000074614554",
+   "titel": "Jumbo Electro Wonderpen – Vormen en kleuren",
+   "oud": 16.99,
+   "nieuw": 13.49
+  },
+  {
+   "id": "bol-9300000153923423",
+   "titel": "Barbie Zeemeerminpop",
+   "oud": 9.19,
+   "nieuw": 7.5
+  },
+  {
+   "id": "bol-9300000003287451",
+   "titel": "Fast & Furious bestuurbare Toyota Supra (1:16)",
+   "oud": 34.49,
+   "nieuw": 42.0
+  },
+  {
+   "id": "bol-9300000384693584",
+   "titel": "BS Toys extra groot opvouwbaar schaakspel",
+   "oud": 23.39,
+   "nieuw": 29.95
+  },
+  {
+   "id": "bol-9300000237949265",
+   "titel": "Unicorn Academy Speelfiguren Giftset",
+   "oud": 39.99,
+   "nieuw": 30.49
+  },
+  {
+   "id": "bol-1004004013408530",
+   "titel": "999 Games kaartspel waarin je moet valsspelen",
+   "oud": 14.99,
+   "nieuw": 11.99
+  },
+  {
+   "id": "bol-9200000055944519",
+   "titel": "SmartGames IQ Puzzler Pro (120 opdrachten)",
+   "oud": 9.5,
+   "nieuw": 12.99
+  },
+  {
+   "id": "bol-9300000126260768",
+   "titel": "Staedtler pigment brush pens pastel (12)",
+   "oud": 13.09,
+   "nieuw": 27.0
+  },
+  {
+   "id": "bol-9300000285655656",
+   "titel": "Lekker Lava",
+   "oud": 24.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9300000188863170",
+   "titel": "Infantino voelbal met lintjes en belletje",
+   "oud": 6.89,
+   "nieuw": 0.0
+  },
+  {
+   "id": "bol-9300000256526092",
+   "titel": "Barbie Signature Marilyn Monroe (verzamelpop)",
+   "oud": 87.84,
+   "nieuw": 65.54
+  },
+  {
+   "id": "bol-9300000147374520",
+   "titel": "Playgro rammelaar paardje Clip Clop",
+   "oud": 11.99,
+   "nieuw": 15.29
+  },
+  {
+   "id": "bol-9300000241164282",
+   "titel": "Kubb XL met draagtas",
+   "oud": 26.85,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9300000172084230",
+   "titel": "Sylvanian Families kinderopvangkasteel (5743)",
+   "oud": 27.99,
+   "nieuw": 33.99
+  },
+  {
+   "id": "bol-9300000027281974",
+   "titel": "Spookslot 3D",
+   "oud": 22.99,
+   "nieuw": 27.99
+  },
+  {
+   "id": "bol-9300000105068681",
+   "titel": "Kinetic Sand Eenhoorn Bakkerij Speelset",
+   "oud": 15.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000236721373",
+   "titel": "Walkie-talkies voor kinderen (300 meter bereik)",
+   "oud": 28.66,
+   "nieuw": 19.29
+  },
+  {
+   "id": "bol-1004004006937390",
+   "titel": "Bruder John Deere maaidorser",
+   "oud": 59.98,
+   "nieuw": 68.95
+  },
+  {
+   "id": "bol-9200000086849977",
+   "titel": "Dragon Fly stuntvlieger Bise (115 cm)",
+   "oud": 15.39,
+   "nieuw": 24.95
+  },
+  {
+   "id": "bol-9200000126181549",
+   "titel": "Roces Quaddy 3.0 verstelbare rolschaatsen (wit/roze)",
+   "oud": 69.95,
+   "nieuw": 51.71
+  },
+  {
+   "id": "bol-9300000227351959",
+   "titel": "Wasgij Efteling: De Wereld van Sindbad (1000 stukjes)",
+   "oud": 17.49,
+   "nieuw": 14.24
+  },
+  {
+   "id": "bol-9300000233141139",
+   "titel": "Monster High Skulltimate Secrets Draculaura Oasis",
+   "oud": 35.99,
+   "nieuw": 44.99
+  },
+  {
+   "id": "bol-9300000225695645",
+   "titel": "PLAYMOBIL politiebureau met verhoorkamer (71874)",
+   "oud": 39.99,
+   "nieuw": 47.99
+  },
+  {
+   "id": "bol-9200000058409125",
+   "titel": "Revell bouwpakket Porsche 918 Spyder (met verf en lijm)",
+   "oud": 30.0,
+   "nieuw": 43.73
+  },
+  {
+   "id": "bol-9200000131094073",
+   "titel": "Done by Deer activiteitenknuffel krokodil (groen)",
+   "oud": 37.91,
+   "nieuw": 30.69
+  },
+  {
+   "id": "bol-9300000199135430",
+   "titel": "Ravensburger schilderen op nummer: leeuw",
+   "oud": 6.09,
+   "nieuw": 12.99
+  },
+  {
+   "id": "bol-9300000159234222",
+   "titel": "Squishmallows Stitch (35 cm)",
+   "oud": 23.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9200000131013220",
+   "titel": "Tactic Kubb in houten kist",
+   "oud": 45.78,
+   "nieuw": 35.35
+  },
+  {
+   "id": "bol-9300000033632654",
+   "titel": "Klein Toys Speelgoed Kassa",
+   "oud": 27.99,
+   "nieuw": 24.39
+  },
+  {
+   "id": "bol-9300000264938793",
+   "titel": "VTech Kidisecrets Magic Locker 2.0",
+   "oud": 49.99,
+   "nieuw": 39.99
+  },
+  {
+   "id": "bol-9300000024357515",
+   "titel": "Kendama (houten behendigheidsspel)",
+   "oud": 9.69,
+   "nieuw": 22.95
+  },
+  {
+   "id": "bol-9300000220283657",
+   "titel": "Fisher-Price houten rammelaar rups",
+   "oud": 7.19,
+   "nieuw": 18.38
+  },
+  {
+   "id": "bol-9200000128141074",
+   "titel": "Schleich reuzenschildpad",
+   "oud": 6.1,
+   "nieuw": 7.79
+  },
+  {
+   "id": "bol-9300000240437043",
+   "titel": "Learning Resources Cooper: STEM-robot om te leren programmeren",
+   "oud": 83.94,
+   "nieuw": 66.43
+  },
+  {
+   "id": "bol-9300000241508460",
+   "titel": "So Slime fabriek voor magische slijmdrankjes",
+   "oud": 26.99,
+   "nieuw": 45.35
+  },
+  {
+   "id": "bol-9300000247982483",
+   "titel": "Barbie Weekend Escape-huis met pop",
+   "oud": 38.99,
+   "nieuw": 47.99
+  },
+  {
+   "id": "bol-9300000269708144",
+   "titel": "Make it Real 2-in-1 Swift Clicks Armbandenmaker",
+   "oud": 29.99,
+   "nieuw": 23.99
+  },
+  {
+   "id": "bol-9300000264888857",
+   "titel": "Super Mario Bros. Knuffel Bowser Jr.",
+   "oud": 20.79,
+   "nieuw": 24.99
+  },
+  {
+   "id": "bol-9200000040350470",
+   "titel": "Hudora BigWheel 205 step (zwart/rood)",
+   "oud": 70.59,
+   "nieuw": 98.93
+  },
+  {
+   "id": "bol-9300000271848241",
+   "titel": "Handgemaakt schaak- en dambord van walnoot- en esdoornhout",
+   "oud": 95.0,
+   "nieuw": 110.0
+  },
+  {
+   "id": "bol-9300000141897344",
+   "titel": "nijntje memory",
+   "oud": 11.89,
+   "nieuw": 16.31
+  },
+  {
+   "id": "bol-9300000228069372",
+   "titel": "Aquabeads ontwerpstudio in tas (1400 parels)",
+   "oud": 39.99,
+   "nieuw": 32.94
+  },
+  {
+   "id": "bol-9300000132891417",
+   "titel": "Twister Junior",
+   "oud": 19.99,
+   "nieuw": 24.99
+  },
+  {
+   "id": "bol-9200000108292801",
+   "titel": "Schleich Farm World paardenstal met 2 paarden",
+   "oud": 65.99,
+   "nieuw": 79.99
+  },
+  {
+   "id": "bol-9200000031659300",
+   "titel": "Miele Speelgoedstofzuiger",
+   "oud": 29.99,
+   "nieuw": 25.99
+  },
+  {
+   "id": "bol-9300000384469927",
+   "titel": "Playmobil adventskalender Op de Noordpool",
+   "oud": 26.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-1004004005951228",
+   "titel": "Catan: Het Dobbelspel (reisspel)",
+   "oud": 11.29,
+   "nieuw": 12.49
+  },
+  {
+   "id": "bol-9300000240652173",
+   "titel": "Kidywolf dieren-koptelefoon voor kinderen – kies je dier",
+   "oud": 29.9,
+   "nieuw": 25.22
+  },
+  {
+   "id": "bol-9300000269708157",
+   "titel": "Luvibubs pop Kira – van zaadje tot pop",
+   "oud": 27.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000264888861",
+   "titel": "Super Mario Bros. Knuffel Yoshi",
+   "oud": 34.99,
+   "nieuw": 27.09
+  },
+  {
+   "id": "bol-9300000279040507",
+   "titel": "Pokémon-kaarten: League Battle Deck Mega Lucario ex",
+   "oud": 44.99,
+   "nieuw": 36.37
+  },
+  {
+   "id": "bol-9300000070416370",
+   "titel": "Schleich bayala regenboog-eenhoornveulen",
+   "oud": 7.0,
+   "nieuw": 8.59
+  },
+  {
+   "id": "bol-9300000253110821",
+   "titel": "Knuffelset “Emotional Support Fries” (friet)",
+   "oud": 12.99,
+   "nieuw": 25.44
+  },
+  {
+   "id": "bol-9300000249225270",
+   "titel": "Hot Wheels RC Ferrari-racecircuit met 2 bestuurbare auto's",
+   "oud": 79.99,
+   "nieuw": 69.99
+  },
+  {
+   "id": "bol-9200000104835927",
+   "titel": "SES dino-ei uitbroeden",
+   "oud": 9.29,
+   "nieuw": 7.99
+  },
+  {
+   "id": "bol-9300000226842493",
+   "titel": "Janod activiteitenbord krokodil (busy board)",
+   "oud": 38.39,
+   "nieuw": 70.0
+  },
+  {
+   "id": "bol-9300000264843639",
+   "titel": "EXIT Silvi dubbele houten schommel",
+   "oud": 138.0,
+   "nieuw": 229.0
+  },
+  {
+   "id": "bol-9300000184477615",
+   "titel": "Monster High Skulltimate Secrets Venus McFlytrap",
+   "oud": 45.99,
+   "nieuw": 35.54
+  },
+  {
+   "id": "bol-9300000225966664",
+   "titel": "Nerf Loadout Arctic Zerostriker met 24 darts",
+   "oud": 19.99,
+   "nieuw": 22.59
+  },
+  {
+   "id": "bol-9300000225435527",
+   "titel": "UNO Teams in metalen doos",
+   "oud": 9.0,
+   "nieuw": 17.5
+  },
+  {
+   "id": "bol-9300000242876141",
+   "titel": "Polly Pocket Knuffelbeer Speelset",
+   "oud": 19.99,
+   "nieuw": 17.0
+  },
+  {
+   "id": "bol-9300000225664928",
+   "titel": "Yeti in My Spaghetti",
+   "oud": 14.99,
+   "nieuw": 13.0
+  },
+  {
+   "id": "bol-9300000258255149",
+   "titel": "Bumba ballenbak met 50 ballen",
+   "oud": 32.99,
+   "nieuw": 26.99
+  },
+  {
+   "id": "bol-9300000198174842",
+   "titel": "Puky LR 1L loopfiets met handrem (vanaf 2,5 jaar)",
+   "oud": 95.49,
+   "nieuw": 123.6
+  },
+  {
+   "id": "bol-9300000233155914",
+   "titel": "Squishmallows Stitch met koekje (25 cm)",
+   "oud": 17.99,
+   "nieuw": 14.39
+  },
+  {
+   "id": "bol-9300000256044306",
+   "titel": "Jumbo Electro Touch & Learn – De wereld en ik",
+   "oud": 17.99,
+   "nieuw": 15.99
+  },
+  {
+   "id": "bol-9300000070563092",
+   "titel": "Fisher-Price 3-in-1 babygym Glow & Grow met lichtjes",
+   "oud": 44.99,
+   "nieuw": 33.99
+  },
+  {
+   "id": "bol-9300000191580810",
+   "titel": "Schleich Horse Club mobiele dierenarts met aanhanger",
+   "oud": 46.09,
+   "nieuw": 69.99
+  },
+  {
+   "id": "bol-9300000197157790",
+   "titel": "Avenir stickerboek Bos met 300 stickers",
+   "oud": 14.99,
+   "nieuw": 12.99
+  },
+  {
+   "id": "bol-9300000224606175",
+   "titel": "Ravensburger 3D Porsche 911 GT3 Cup",
+   "oud": 33.0,
+   "nieuw": 24.58
+  },
+  {
+   "id": "bol-9300000152351739",
+   "titel": "Clementoni Crazy Chic make-upstudio met ledringlamp",
+   "oud": 30.97,
+   "nieuw": 24.99
+  },
+  {
+   "id": "bol-9200000091616642",
+   "titel": "Playmobil kerststal met lichtgevende ster",
+   "oud": 46.49,
+   "nieuw": 34.2
+  },
+  {
+   "id": "bol-9200000130958068",
+   "titel": "Philos Yahtzee dobbelspel",
+   "oud": 9.99,
+   "nieuw": 11.0
+  },
+  {
+   "id": "bol-9300000277602215",
+   "titel": "Dikkie Dik Verstoppertje",
+   "oud": 16.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000244058151",
+   "titel": "Disney Frozen Slaapfeestje Anna en Elsa",
+   "oud": 34.99,
+   "nieuw": 39.99
+  },
+  {
+   "id": "bol-9300000159784472",
+   "titel": "Hape 2-in-1 houten hobbelpaard en balansbord",
+   "oud": 73.79,
+   "nieuw": 89.9
+  },
+  {
+   "id": "bol-9300000269708148",
+   "titel": "Make it Real 2-in-1 pottenbakstudio",
+   "oud": 24.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000264938792",
+   "titel": "VTech Scan & Leer Kassa",
+   "oud": 26.24,
+   "nieuw": 29.95
+  },
+  {
+   "id": "bol-9300000029187525",
+   "titel": "Black Dragon Liquid Gold Stuntstep",
+   "oud": 101.55,
+   "nieuw": 79.99
+  },
+  {
+   "id": "bol-9300000262218107",
+   "titel": "FurReal Riley de Koe",
+   "oud": 62.93,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9300000229193617",
+   "titel": "Clementoni BFF Jewels sieradenstudio",
+   "oud": 19.99,
+   "nieuw": 31.6
+  },
+  {
+   "id": "bol-9300000003405499",
+   "titel": "Goula Happy Chickens",
+   "oud": 17.09,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000172296069",
+   "titel": "UNO Spider-Man kaartspel",
+   "oud": 6.99,
+   "nieuw": 12.28
+  },
+  {
+   "id": "bol-9300000252262268",
+   "titel": "Unicorn Academy Lichtgevende Skywind met Vleugels",
+   "oud": 34.99,
+   "nieuw": 38.99
+  },
+  {
+   "id": "bol-9300000285625291",
+   "titel": "Gekraakt! (blufspel)",
+   "oud": 33.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9300000020893712",
+   "titel": "UNO Extreme",
+   "oud": 24.99,
+   "nieuw": 27.99
+  },
+  {
+   "id": "bol-9300000136060991",
+   "titel": "Disney Frozen Elsa jurk, officieel (5-6 jaar)",
+   "oud": 29.99,
+   "nieuw": 49.44
+  },
+  {
+   "id": "bol-9300000262055175",
+   "titel": "Little Dutch Plaspop Livia",
+   "oud": 33.99,
+   "nieuw": 39.95
+  },
+  {
+   "id": "bol-9300000231038489",
+   "titel": "Schuifpret Spelling",
+   "oud": 15.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000039299421",
+   "titel": "Oma's Waslijn",
+   "oud": 24.99,
+   "nieuw": 27.99
+  },
+  {
+   "id": "bol-9300000153231095",
+   "titel": "Bruder Scania brandweerauto met waterpomp",
+   "oud": 94.81,
+   "nieuw": 77.9
+  },
+  {
+   "id": "bol-9300000306392325",
+   "titel": "Kattenkwaad (familiespel)",
+   "oud": 19.99,
+   "nieuw": 31.0
+  },
+  {
+   "id": "bol-9300000225278017",
+   "titel": "Little Dutch Baby Bunny (32 cm)",
+   "oud": 16.34,
+   "nieuw": 12.95
+  },
+  {
+   "id": "bol-1004004006501700",
+   "titel": "Jumbo schaakspel voor kinderen",
+   "oud": 16.09,
+   "nieuw": 17.99
+  },
+  {
+   "id": "bol-9300000187579529",
+   "titel": "Puky LR M loopfiets (paars, vanaf 2 jaar)",
+   "oud": 79.95,
+   "nieuw": 63.69
+  },
+  {
+   "id": "bol-9300000261530247",
+   "titel": "Tech Deck Free Riders Speelset",
+   "oud": 34.99,
+   "nieuw": 29.99
+  },
+  {
+   "id": "bol-9200000058437053",
+   "titel": "VTech Baby activiteitenkubus",
+   "oud": 32.99,
+   "nieuw": 39.99
+  },
+  {
+   "id": "bol-9200000073803176",
+   "titel": "Phase 10 (kaartspel)",
+   "oud": 9.99,
+   "nieuw": 13.95
+  },
+  {
+   "id": "bol-9300000074407267",
+   "titel": "SES vriendschapsarmbandjes met knoopwiel",
+   "oud": 7.99,
+   "nieuw": 14.3
+  },
+  {
+   "id": "bol-1004004004574403",
+   "titel": "Familie Poen",
+   "oud": 9.69,
+   "nieuw": 8.39
+  },
+  {
+   "id": "bol-9300000256526171",
+   "titel": "DC Premier Robin Motorfiets",
+   "oud": 25.56,
+   "nieuw": 40.0
+  },
+  {
+   "id": "bol-1004004012352032",
+   "titel": "SmartGames IQ Fit",
+   "oud": 9.5,
+   "nieuw": 12.99
+  },
+  {
+   "id": "bol-9300000272674476",
+   "titel": "Quickstop Party Kaartspel",
+   "oud": 19.99,
+   "nieuw": 16.99
+  },
+  {
+   "id": "bol-9300000252262265",
+   "titel": "Peekimo Interactieve Ketting",
+   "oud": 29.99,
+   "nieuw": 24.99
+  },
+  {
+   "id": "bol-9300000252262248",
+   "titel": "PAW Patrol De Dinofilm – Rocky’s Megasaurus",
+   "oud": 47.49,
+   "nieuw": 40.09
+  },
+  {
+   "id": "bol-9200000079252023",
+   "titel": "Fisher-Price baby’s eerste blokken (blokkendoos)",
+   "oud": 10.99,
+   "nieuw": 9.89
+  },
+  {
+   "id": "bol-9300000277687700",
+   "titel": "Clementoni EcoSphere mini-ecosysteem",
+   "oud": 26.99,
+   "nieuw": 29.95
+  },
+  {
+   "id": "bol-9300000340930163",
+   "titel": "PLAYMOBIL brandweer-commandowagen (72192)",
+   "oud": 59.99,
+   "nieuw": 69.99
+  },
+  {
+   "id": "bol-9300000099544546",
+   "titel": "VTech 3-in-1 Sport & Scoor Speelplaats",
+   "oud": 44.99,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9200000027679852",
+   "titel": "K'nex Typhoon Frenzy achtbaan",
+   "oud": 54.99,
+   "nieuw": 64.5
+  },
+  {
+   "id": "bol-9300000244058241",
+   "titel": "Hot Wheels Monstertrucks Gemuteerde Chaos Loopinguitdaging",
+   "oud": 31.29,
+   "nieuw": 36.0
+  },
+  {
+   "id": "bol-1004004000009967",
+   "titel": "Ravensburger Dick Bruna reuzenkwartet",
+   "oud": 7.69,
+   "nieuw": 8.99
+  },
+  {
+   "id": "bol-9300000279044423",
+   "titel": "SES Bluey klei mega set met houten tools",
+   "oud": 15.99,
+   "nieuw": 22.7
+  },
+  {
+   "id": "bol-9300000256526160",
+   "titel": "Masters of the Universe Battle for Eternia Speelset",
+   "oud": 79.99,
+   "nieuw": 59.99
+  },
+  {
+   "id": "bol-9300000238269141",
+   "titel": "Super Mario Tafelvoetbal",
+   "oud": 30.99,
+   "nieuw": 38.69
+  },
+  {
+   "id": "bol-9300000170755969",
+   "titel": "VTech KidiZoom Duo FX Kindercamera",
+   "oud": 72.64,
+   "nieuw": 79.99
+  },
+  {
+   "id": "bol-9300000338376102",
+   "titel": "FABA luisterfiguur PAW Patrol: Chase",
+   "oud": 13.41,
+   "nieuw": 14.9
+  },
+  {
+   "id": "bol-9200000094540496",
+   "titel": "Let's Go Fishing Original",
+   "oud": 8.49,
+   "nieuw": 9.99
+  },
+  {
+   "id": "bol-9300000277602216",
+   "titel": "Kers op de Taart",
+   "oud": 20.49,
+   "nieuw": 24.99
+  },
+  {
+   "id": "bol-9300000250793298",
+   "titel": "Woet Houten Autobaan",
+   "oud": 24.95,
+   "nieuw": 19.59
+  },
+  {
+   "id": "bol-9200000036922606",
+   "titel": "Crayola afwasbaar stoepkrijt (16 stuks)",
+   "oud": 8.0,
+   "nieuw": 11.99
+  },
+  {
+   "id": "bol-9300000095475921",
+   "titel": "SmartGames IQ Love",
+   "oud": 13.59,
+   "nieuw": 14.99
+  },
+  {
+   "id": "bol-9300000190510575",
+   "titel": "Air Toobz Buizenparcours",
+   "oud": 109.99,
+   "nieuw": 129.99
+  },
+  {
+   "id": "bol-9300000170257502",
+   "titel": "Pelikan Twist kalligrafievulpen (wit)",
+   "oud": 8.69,
+   "nieuw": 17.79
+  },
+  {
+   "id": "bol-9300000163469374",
+   "titel": "LEGO Star Wars Millennium Falcon kerstdiner",
+   "oud": 43.0,
+   "nieuw": 36.5
+  },
+  {
+   "id": "bol-9300000070618871",
+   "titel": "Nerf Elite 2.0 Motoblitz automatische blaster",
+   "oud": 47.17,
+   "nieuw": 54.0
+  },
+  {
+   "id": "bol-9300000232180888",
+   "titel": "Jan van Haasteren Junior Waterglijbaan Gekte",
+   "oud": 10.69,
+   "nieuw": 18.0
+  },
+  {
+   "id": "bol-9300000269708160",
+   "titel": "Little Live Pets Ouchies Interactief Kuikentje Chirpy",
+   "oud": 16.99,
+   "nieuw": 15.0
+  },
+  {
+   "id": "bol-9200000052693550",
+   "titel": "Van Gogh oliepastels (60 kleuren)",
+   "oud": 34.19,
+   "nieuw": 29.51
+  },
+  {
+   "id": "bol-9300000024259374",
+   "titel": "Woet houten gereedschapsriem (16 delen)",
+   "oud": 16.0,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9300000256526165",
+   "titel": "Masters of the Universe Chronicles Battle Cat Actiefiguur",
+   "oud": 24.49,
+   "nieuw": 29.19
+  },
+  {
+   "id": "bol-9300000247823188",
+   "titel": "KPop Demon Hunters HUNTR/X lightstick",
+   "oud": 14.99,
+   "nieuw": 13.49
+  },
+  {
+   "id": "bol-9300000233155918",
+   "titel": "Squishmallows Pikachu (35 cm)",
+   "oud": 38.99,
+   "nieuw": 42.99
+  },
+  {
+   "id": "bol-9300000225252957",
+   "titel": "Lexibook Verlichte Beauty Studio",
+   "oud": 49.99,
+   "nieuw": 36.82
+  },
+  {
+   "id": "bol-9300000252262288",
+   "titel": "Bitzee KPop Demon Hunters",
+   "oud": 26.93,
+   "nieuw": 36.0
+  },
+  {
+   "id": "bol-9300000264493695",
+   "titel": "Hyojo Hello Kitty blind box",
+   "oud": 17.19,
+   "nieuw": 15.0
+  },
+  {
+   "id": "bol-9300000220460976",
+   "titel": "Smoby Stitch-step (vanaf 3 jaar)",
+   "oud": 29.99,
+   "nieuw": 18.99
+  },
+  {
+   "id": "bol-9300000028714942",
+   "titel": "Party & Co. Junior",
+   "oud": 17.99,
+   "nieuw": 19.99
+  },
+  {
+   "id": "bol-9200000045956389",
+   "titel": "Derwent aquarelpotloden in blik (36 stuks)",
+   "oud": 69.95,
+   "nieuw": 78.98
+  },
+  {
+   "id": "bol-9300000225854989",
+   "titel": "VTech Mijn Interactieve Video Verrekijker",
+   "oud": 56.99,
+   "nieuw": 64.59
+  },
+  {
+   "id": "bol-9200000020488096",
+   "titel": "Mattel Games Blokus",
+   "oud": 16.99,
+   "nieuw": 29.0
+  },
+  {
+   "id": "bol-9200000058040216",
+   "titel": "Clics Build & Play 10-in-1",
+   "oud": 39.99,
+   "nieuw": 46.99
+  },
+  {
+   "id": "bol-9300000157956359",
+   "titel": "LEGO Duplo mijn eerste dierentrein (10412)",
+   "oud": 13.99,
+   "nieuw": 16.99
+  },
+  {
+   "id": "bol-9200000129054415",
+   "titel": "Rembrandt aquarelverf in metalen doos (12 napjes en penseel)",
+   "oud": 57.23,
+   "nieuw": 90.6
+  },
+  {
+   "id": "bol-9300000264938789",
+   "titel": "VTech Activiteiten Speelhuis",
+   "oud": 31.99,
+   "nieuw": 35.99
+  },
+  {
+   "id": "bol-9300000007240539",
+   "titel": "Kosmos Neon Glow: proefjes met uv-licht",
+   "oud": 14.99,
+   "nieuw": 19.45
+  },
+  {
+   "id": "bol-9300000261530191",
+   "titel": "Kinetic Sand megadoos met 5 kg speelzand",
+   "oud": 41.26,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9300000220460969",
+   "titel": "Smoby Be Fun Comfort driewieler (vanaf 10 maanden)",
+   "oud": 41.59,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9300000123794077",
+   "titel": "Janod knutselset papieren vliegtuigjes",
+   "oud": 16.99,
+   "nieuw": 9.99
+  },
+  {
+   "id": "bol-9200000100558698",
+   "titel": "Sophie de giraf grote stapeltoren",
+   "oud": 24.99,
+   "nieuw": 22.49
+  },
+  {
+   "id": "bol-9300000273861930",
+   "titel": "VTech KidiZoom Creator Cam (roze)",
+   "oud": 59.99,
+   "nieuw": 79.99
+  },
+  {
+   "id": "bol-9300000227216973",
+   "titel": "BABY born babypop Anna (36 cm)",
+   "oud": 24.99,
+   "nieuw": 38.74
+  },
+  {
+   "id": "bol-9300000239466618",
+   "titel": "Spikeball Weekender set",
+   "oud": 79.95,
+   "nieuw": 60.33
+  },
+  {
+   "id": "bol-9300000103279446",
+   "titel": "EXIT: Terug naar de verlaten hut",
+   "oud": 24.0,
+   "nieuw": 26.95
+  },
+  {
+   "id": "bol-9300000192994578",
+   "titel": "Hylkies Harry Potter: Ron Wemel (verzamelfiguurtje)",
+   "oud": 3.89,
+   "nieuw": 14.95
+  },
+  {
+   "id": "bol-9300000241430019",
+   "titel": "Little Dutch knuffelpop prinses Julia (35 cm)",
+   "oud": 18.0,
+   "nieuw": 19.95
+  },
+  {
+   "id": "bol-9300000242944222",
+   "titel": "Pokémon slapende Squirtle knuffel (45 cm)",
+   "oud": 49.99,
+   "nieuw": 44.99
+  },
+  {
+   "id": "bol-9300000189124122",
+   "titel": "Philos houten puzzeldoos met hartje",
+   "oud": 13.0,
+   "nieuw": 16.95
+  },
+  {
+   "id": "bol-9300000025044624",
+   "titel": "Totum letterarmbandjes maken (4 stuks)",
+   "oud": 5.0,
+   "nieuw": 7.95
+  },
+  {
+   "id": "bol-9300000176116258",
+   "titel": "Woet Houten Bowlingset Dieren",
+   "oud": 29.95,
+   "nieuw": 23.99
+  },
+  {
+   "id": "bol-9300000269708124",
+   "titel": "Playskool Busy Ball Popper",
+   "oud": 29.95,
+   "nieuw": 33.99
+  },
+  {
+   "id": "bol-9300000240072216",
+   "titel": "Learning Resources Artie 3000 tekenrobot",
+   "oud": 72.21,
+   "nieuw": 53.79
+  },
+  {
+   "id": "bol-9200000116053625",
+   "titel": "Kinderfeets houten loopfiets en driewieler in één",
+   "oud": 78.28,
+   "nieuw": 67.49
+  },
+  {
+   "id": "bol-9300000227816232",
+   "titel": "Little Tikes Cozy Coupe loopauto",
+   "oud": 84.99,
+   "nieuw": 120.99
+  },
+  {
+   "id": "bol-9300000220460948",
+   "titel": "Smoby Funny Slide glijbaan met wateraansluiting",
+   "oud": 68.0,
+   "nieuw": 129.0
+  },
+  {
+   "id": "bol-9300000285102376",
+   "titel": "Level Out Balance Board",
+   "oud": 29.99,
+   "nieuw": 25.49
+  },
+  {
+   "id": "bol-9200000027698008",
+   "titel": "Revell bouwpakket Titanic, cadeauset (67 cm)",
+   "oud": 50.95,
+   "nieuw": 63.0
+  },
+  {
+   "id": "bol-9300000174849258",
+   "titel": "Rummikub Dice: het dobbelspel",
+   "oud": 14.19,
+   "nieuw": 19.49
+  },
+  {
+   "id": "bol-9200000123061827",
+   "titel": "Harry Potter Mandragora-knuffel (praat en beweegt)",
+   "oud": 27.44,
+   "nieuw": 39.52
+  },
+  {
+   "id": "bol-9300000254180656",
+   "titel": "VTech Buzz Lightyear leerhorloge",
+   "oud": 19.0,
+   "nieuw": 21.99
+  },
+  {
+   "id": "bol-9300000004985500",
+   "titel": "Amsterdam acrylverf complete set (90 kleuren)",
+   "oud": 84.62,
+   "nieuw": 100.78
+  },
+  {
+   "id": "bol-9300000224387682",
+   "titel": "Jollein zachte activiteitenkubus Animal Friends",
+   "oud": 13.5,
+   "nieuw": 15.5
+  },
+  {
+   "id": "bol-9300000266727635",
+   "titel": "LEGO DUPLO 3-in-1 creatieve hellingen met voertuigen",
+   "oud": 41.99,
+   "nieuw": 54.99
+  },
+  {
+   "id": "bol-9200000126232335",
+   "titel": "Small Foot vormenstoof-emmer met 50 houten blokken",
+   "oud": 10.99,
+   "nieuw": 17.95
+  },
+  {
+   "id": "bol-9200000056276653",
+   "titel": "Bruder Fendt 1050 tractor",
+   "oud": 51.0,
+   "nieuw": 59.67
+  },
+  {
+   "id": "bol-9300000222631512",
+   "titel": "Hot Wheels Monstertrucks Draak Vernietiging Speelset",
+   "oud": 44.99,
+   "nieuw": 49.99
+  },
+  {
+   "id": "bol-9300000179401144",
+   "titel": "Tamiya Mercedes-Benz 300SL bouwpakket (1:24, doorzichtig)",
+   "oud": 33.85,
+   "nieuw": 54.55
+  },
+  {
+   "id": "cl-dr-d30",
+   "titel": "Dreame D30 Ultra",
+   "oud": 409.0,
+   "nieuw": 299.0
+  },
+  {
+   "id": "emp-40eb545709",
+   "titel": "Kussen van de Grinch",
+   "oud": 12.95,
+   "nieuw": 10.99
+  },
+  {
+   "id": "tf-749c0d6817",
+   "titel": "Teufel CINEBAR 11 soundbar met draadloze subwoofer (zwart)",
+   "oud": 299.99,
+   "nieuw": 26.99
+  },
+  {
+   "id": "bp-be37b14f9d",
+   "titel": "Edelstenen voor kracht, balans en energie (brievenbuscadeau)",
+   "oud": 9.95,
+   "nieuw": 15.99
+  },
+  {
+   "id": "legoshop-b244e8a6e3",
+   "titel": "LEGO Editions Cristiano Ronaldo: Voetbalhoogtepunten (43012)",
+   "oud": 29.99,
+   "nieuw": 5.94
+  },
+  {
+   "id": "g999-94cd4809c5",
+   "titel": "Bokken Schieten (kaartspel)",
+   "oud": 12.99,
+   "nieuw": 39.99
   },
   {
    "id": "topdea-955e8f176e",
@@ -80,220 +2846,578 @@
    "nieuw": 129.95
   },
   {
-   "id": "spaar-2e27915989",
-   "titel": "Spaarpot gouden zakenman (20 cm)",
-   "oud": 13.99,
-   "nieuw": 11.19
-  },
-  {
-   "id": "kadove-88d388285c",
-   "titel": "Sarah-cadeauset met fleece plaid en mok (50 jaar)",
-   "oud": 20.45,
-   "nieuw": 22.98
-  },
-  {
-   "id": "kadove-059d6fcf7f",
-   "titel": "Warmwaterkruik 2 liter met gebreide hoes – kies je print",
-   "oud": 9.99,
-   "nieuw": 10.99
-  },
-  {
-   "id": "kado-463d51a4db",
-   "titel": "Cadeauset voor je zus: panterplaid met mok",
-   "oud": 20.45,
-   "nieuw": 22.98
-  },
-  {
-   "id": "kado-da9b788bf2",
-   "titel": "Cadeauset voor je zus: tijgerplaid en mok",
-   "oud": 20.45,
-   "nieuw": 22.98
-  },
-  {
-   "id": "nedg-ece6eb7663",
-   "titel": "L.O.L. Surprise! Remix We Rule the World (game)",
-   "oud": 9.99,
-   "nieuw": 12.0
-  },
-  {
-   "id": "nedg-f6d0333b54",
-   "titel": "L.O.L. Surprise! Movie Night (game)",
-   "oud": 12.0,
-   "nieuw": 9.99
-  },
-  {
-   "id": "nedg-00a23132ab",
-   "titel": "Final Fantasy Type-0 HD",
-   "oud": 14.99,
-   "nieuw": 18.0
-  },
-  {
-   "id": "nedg-f5c06688d6",
-   "titel": "Nintendo Switch Lite geel",
-   "oud": 218.0,
-   "nieuw": 169.0
-  },
-  {
-   "id": "smartp-d7c0f300e2",
-   "titel": "Chocoladetelegram met eigen tekst (28 stukjes)",
-   "oud": 35.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "ag-knuf-pool-18-21",
-   "titel": "Knuffel pooldier (18 tot 21 cm)",
-   "oud": 10.39,
-   "nieuw": 12.99
-  },
-  {
-   "id": "ag-knuf-beren-18-21",
-   "titel": "Knuffelbeer, panda of koala (18 tot 21 cm)",
-   "oud": 7.99,
-   "nieuw": 9.99
-  },
-  {
-   "id": "ag-knuf-bos-22-25",
-   "titel": "Knuffel bosdier (22 tot 25 cm)",
-   "oud": 8.79,
-   "nieuw": 10.99
-  },
-  {
-   "id": "ag-knuf-fantasie-13-56",
-   "titel": "Knuffel eenhoorn of draak (13 tot 56 cm)",
-   "oud": 11.75,
-   "nieuw": 10.5
-  },
-  {
-   "id": "animal-428ae7da88",
-   "titel": "Esschert Design vogelbad nestje",
-   "oud": 15.19,
-   "nieuw": 18.99
-  },
-  {
-   "id": "anim-ce7802cd8f",
-   "titel": "Mok panda met ornament (Puckator)",
-   "oud": 7.99,
-   "nieuw": 9.99
-  },
-  {
-   "id": "ag-dierenpak",
-   "titel": "Dierenpak voor kinderen",
-   "oud": 31.99,
-   "nieuw": 25.59
-  },
-  {
-   "id": "animal-bf99184afc",
-   "titel": "Houten stempelsetje paarden",
-   "oud": 13.59,
-   "nieuw": 15.29
-  },
-  {
-   "id": "animal-283b6ee415",
-   "titel": "Tuinbeeld witte kip van Esschert Design",
-   "oud": 19.19,
-   "nieuw": 23.99
-  },
-  {
-   "id": "ag-knuf-zee-22-26",
-   "titel": "Knuffel zee- of waterdier (22 tot 26 cm)",
-   "oud": 7.64,
-   "nieuw": 8.99
-  },
-  {
-   "id": "bellat-c50471e085",
-   "titel": "Kerstknuffel pinguïn",
-   "oud": 7.99,
-   "nieuw": 9.99
-  },
-  {
-   "id": "bellat-73a92756bb",
-   "titel": "Houten notenkraker soldaat",
-   "oud": 28.79,
-   "nieuw": 35.99
-  },
-  {
-   "id": "lo-154700474",
-   "titel": "Lucide oplaadbaar lampje Vivo met gloeidraad",
-   "oud": 25.45,
-   "nieuw": 29.95
-  },
-  {
-   "id": "lo-91941226",
-   "titel": "Lucide bankierslamp met groene glazen kap",
-   "oud": 56.9,
-   "nieuw": 63.95
-  },
-  {
-   "id": "lo-ebe779fd91",
-   "titel": "Lucide Dodo kinderlampje panda",
-   "oud": 39.95,
-   "nieuw": 35.16
-  },
-  {
-   "id": "kerstland-48112d2aae",
-   "titel": "Tuinsteker rendier met ledlampjes (77 cm)",
-   "oud": 34.99,
-   "nieuw": 46.65
-  },
-  {
-   "id": "bp-be37b14f9d",
-   "titel": "Edelstenen voor kracht, balans en energie (brievenbuscadeau)",
-   "oud": 14.95,
-   "nieuw": 9.95
-  },
-  {
-   "id": "legoshop-9d0feabaa2",
-   "titel": "LEGO dinosaurusfossiel: Triceratops-schedel",
-   "oud": 44.99,
-   "nieuw": 14.95
-  },
-  {
-   "id": "999g-048e0e6e80",
-   "titel": "Scoreblokken Clever 4Ever",
-   "oud": 9.99,
-   "nieuw": 49.95
-  },
-  {
-   "id": "westwi-c349b743c7",
-   "titel": "Mondgeblazen kerstornament: kerststal",
-   "oud": 26.99,
-   "nieuw": 34.95
-  },
-  {
-   "id": "inv-e842699001",
-   "titel": "TechnoMarine Cruise TM-126032 dameshorloge, zilver en goud (40 mm)",
-   "oud": 275.0,
-   "nieuw": 209.0
-  },
-  {
-   "id": "prydli-7d562296a0",
-   "titel": "Philippe Palmer smartwatch LP49 zwart",
-   "oud": 82.5,
-   "nieuw": 90.8
-  },
-  {
-   "id": "superz-43b3b29f52",
-   "titel": "Funko Pop! Ahsoka bobblehead (Star Wars)",
-   "oud": 9.0,
-   "nieuw": 15.0
-  },
-  {
-   "id": "hema-8fc8a01810",
-   "titel": "Nijntje houten klok",
-   "oud": 20.0,
-   "nieuw": 24.99
+   "id": "parfum-472c1efb0c",
+   "titel": "Atelier Rebul eau de parfum Golden Hour (50 ml)",
+   "oud": 75.0,
+   "nieuw": 11.5
   }
  ],
- "uitverkocht": [],
+ "uitverkocht": [
+  {
+   "id": "bol-9300000236296411",
+   "titel": "Het Efteling-sprookjesbakboek – Rutger van den Broek",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000265877888",
+   "titel": "Zilverkleurige ID-penning met naam voor hond of kat",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000188863170",
+   "titel": "Infantino voelbal met lintjes en belletje",
+   "bron": "bol"
+  },
+  {
+   "id": "legoshop-b244e8a6e3",
+   "titel": "LEGO Editions Cristiano Ronaldo: Voetbalhoogtepunten (43012)",
+   "bron": "x-dropwinkel.json"
+  }
+ ],
  "nietInFeed": [
+  {
+   "id": "bol-9300000275864639",
+   "titel": "Bolsius geurkaars voor mama met namen",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000101182379",
+   "titel": "Small Foot houten kerststal-speelset, 15-delig",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000275515432",
+   "titel": "Leuchtturm muntenbox met 6 grote vakken",
+   "bron": "bol"
+  },
   {
    "id": "bol-9300000377799800",
    "titel": "Pokémon-kaarten: 30th Anniversary mini-tin – kies je tin",
    "bron": "bol"
   },
   {
-   "id": "bol-9300000193746671",
-   "titel": "JBL Charge 6 speaker – kies je kleur",
+   "id": "bol-9300000133849812",
+   "titel": "Bluey-familie: 4 speelfiguren",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000145384800",
+   "titel": "Squishmallows Hello Kitty (30 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000151680122",
+   "titel": "Adventskalender met haakset (24 dagen)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000345522494",
+   "titel": "Blond Amsterdam Sint-mok XL (0,5 liter)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000260831174",
+   "titel": "Dammann Frères cadeaudoos Destination",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000198577468",
+   "titel": "Dammann Frères Rêves de Noël kerstdoos",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000275515404",
+   "titel": "Leuchtturm houten muntenkast met laden (mahonie)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000109023483",
+   "titel": "Janod houten vormenstoof met geometrische vormen",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000147974028",
+   "titel": "Beeztees konijnenhuis Kiko van waterhyacint",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000184312949",
+   "titel": "Trixie reistas Vicky voor knaagdieren",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000244254331",
+   "titel": "Globber Learning Bike loopfiets (12 tot 36 maanden)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000176870601",
+   "titel": "Schleich Frosty Christmas rendier",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000171890190",
+   "titel": "Ledlenser HF6R Work oplaadbare hoofdlamp (800 lumen)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000157685464",
+   "titel": "Stanley dopsleutelset in koffer (175 delen)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000004771000",
+   "titel": "Tunturi foamroller van kurk (30 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000057915026",
+   "titel": "Dr. Oetker bakmat Flexxibel (30 x 38 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000243689158",
+   "titel": "Harrows Vault dartcase (blauw)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000036272136",
+   "titel": "Gouden Boekje: Frozen",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000172268518",
+   "titel": "Pip Studio kom Lily & Lotus (lila)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000372578165",
+   "titel": "EGLO discobal-tafellamp",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000012638048",
+   "titel": "Flamingo voedersilo Elma (zwart, 27 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000063243689",
+   "titel": "Fiskars bollenplanter",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000034589739",
+   "titel": "Goki houten trein Amsterdam met blokken",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000241051244",
+   "titel": "Mica grote papieren hangster, zwart (60 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000181433977",
+   "titel": "Clementoni blokkenpuzzel Sinterklaas (12 blokken)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000031135703",
+   "titel": "Puzzel kerststal (1000 stukjes)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000181968006",
+   "titel": "Thuis bij Muis: Sinterklaas met Muis",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000073914738",
+   "titel": "Pure2Improve putting-spiegel (mini, 8 x 8 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000191626158",
+   "titel": "Bose QuietComfort Earbuds – kies je kleur",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000196800292",
+   "titel": "Real Madrid Voetbal",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000132733465",
+   "titel": "Barbie Droomvliegtuig",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000221442168",
+   "titel": "K3 Karaoke Microfoon",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000244058119",
+   "titel": "Barbie Geparfumeerde Petal Pop",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000228440183",
+   "titel": "Chillafish Poogi Glow Springstok",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000256526103",
+   "titel": "Monster High Moonspell Magic Modepop",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000130551618",
+   "titel": "Hot Wheels City Transformerende Racetoren",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000229682661",
+   "titel": "Hot Wheels Mega Loop Garage",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000264493596",
+   "titel": "L.O.L. Surprise! O.M.G. Loves Hello Kitty and Friends Modepop",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000261530194",
+   "titel": "Kinetic Sand Sweet Station Chocolademaker",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000256526192",
+   "titel": "Fisher-Price Little People Ultieme Berg Speelset",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000220047815",
+   "titel": "Buki Wereldbol Dag en Nacht",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000240031402",
+   "titel": "Fisher-Price Mega Bloks Bouw en Betover Eenhoorn",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000222631601",
+   "titel": "Fisher-Price Leerplezier muzikale knuffel Zusje",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000167950350",
+   "titel": "Wilson Accent LT padelracket",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000199022783",
+   "titel": "Adidas Cross It Ctrl 3.4 padelracket",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000230957191",
+   "titel": "WOOOD Jinte ligbed geel",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000039161525",
+   "titel": "WOOOD Ross vloerkleed jute (150 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000106561561",
+   "titel": "Bigben kinderwekker met paardengeluiden",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000239732491",
+   "titel": "Philips Sonicare waterflosser (draadloos)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000225664935",
+   "titel": "Goliath Loopdedoo: sieraden maken",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000259671597",
+   "titel": "Ravensburger Doolhof KPop Demon Hunters",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000151168843",
+   "titel": "Exploding Kittens Good vs. Evil (NL)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000238264178",
+   "titel": "King C. Gillette baardverzorging cadeauset",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000125602531",
+   "titel": "Buki kaarsen studio",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000017672803",
+   "titel": "Zilveren oorbellen met granaat",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000154791241",
+   "titel": "NeeDoh Nice Cube knijpkubus",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000368982942",
+   "titel": "NeeDoh Nice Berg grote squishy",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000177497152",
+   "titel": "Barbie Cutie Reveal Color Dream - dalmatiër",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000249428208",
+   "titel": "Sylvanian Families drieling koekjesbeer (5866)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000227354686",
+   "titel": "Nerf elektronisch schietdoel",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000034877020",
+   "titel": "Fellow Carter Move thermosbeker (355 ml)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000052055968",
+   "titel": "Dior Sauvage eau de toilette (100 ml)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000235206215",
+   "titel": "SNTIALS noodpakket XL (100 delen)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000079468993",
+   "titel": "Victorinox koksmes (19 cm, zwart)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000107192474",
+   "titel": "Kai Wasabi Black nakirimes (16,5 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000019070712",
+   "titel": "Zwilling magnetisch messenblok (bamboe)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000309664317",
+   "titel": "Samsung HW-Q600F soundbar met achterspeakers (surroundset)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000009345768",
+   "titel": "NATURL. rond hoogpolig vloerkleed met franjes Lofty, beige (Ø 100 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000027544021",
+   "titel": "Lorena Canals wasbaar vloerkleed Mini Azteca (70 x 100 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000161372177",
+   "titel": "Little Olly rond wasbaar kindervloerkleed regenboog Ravi (Ø 80 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000302471988",
+   "titel": "Sennheiser Momentum 5 Wireless (nieuw)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000230574487",
+   "titel": "Philips wekkerradio met DAB+ en bluetooth",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000082961060",
+   "titel": "ASTRO A10 gaming-headset (lila)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000159130325",
+   "titel": "X Rocker Agility Junior gamestoel met RGB (voor kinderen)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000162038148",
+   "titel": "Deltaco PCH90 gamestoel roze met RGB-licht",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000250463242",
+   "titel": "Deltaco L33T FuzionX gamestoel (stof)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000385234246",
+   "titel": "Onitsuka Tiger Mexico 66 sneakers (Birch/Peacoat)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000352890709",
+   "titel": "The North Face Jim muts (zwart)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000123932891",
+   "titel": "Jo Malone London geurkaars Peony & Blush Suede",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000156623186",
+   "titel": "Diptyque Hourglass diffuser Fleur d'Oranger (75 ml)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000228110547",
+   "titel": "Jo Malone London diffuser Lime Basil & Mandarin (165 ml)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000228941471",
+   "titel": "TinyPlay set van twee 3D-pennen XXL met 100 m filament",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000265091501",
+   "titel": "Houten kaart voor doopcadeau, geldverpakking, 14,2 x 11 cm",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000244578985",
+   "titel": "NoodPrepz premium noodpakket voor thuis",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000375725156",
+   "titel": "Feeder hengelhouder met rubberen steunen, voor karperhengels",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000376545513",
+   "titel": "Verwarmingslamp voor reptielen met 2 keramische lampen (50 W + 100 W)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000160727260",
+   "titel": "Santa Cruz skateboard deck Screaming Hand Fusion",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000147396054",
+   "titel": "FRAAI Japandi vloerkleed Yori Arches crème, 160 x 230 cm",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000445214286",
+   "titel": "Vinyl vloerkleed 50 shades of green, 195 x 300 cm",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000018908153",
+   "titel": "Bloomingville wollen vloerkleed Warda",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000341384995",
+   "titel": "Laifen Wave Pro elektrische tandenborstel",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000244477215",
+   "titel": "NIVEA Q10 verstevigende cadeauset",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000145249953",
+   "titel": "Kaloo fotolijst met hand- en voetafdruk",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000239807652",
+   "titel": "VITURE Luma Pro XR-bril (152-inch scherm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000338376099",
+   "titel": "FABA•Me luisterfiguur om zelf verhalen in te spreken",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000235099556",
+   "titel": "Hot Dots: thuis leren lezen en rekenen",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000127898487",
+   "titel": "Woet houten schoolbord: krijtbord en magnetisch whiteboard",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000020230993",
+   "titel": "Aquabeads Disney Prinses box (2500 parels)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000020231008",
+   "titel": "Aquabeads Super Mario box (2500 parels)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000181837311",
+   "titel": "Disney Assepoester prinsessenjurk (5-6 jaar)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000077152975",
+   "titel": "Klein Toys politiekoffer met handboeien en walkietalkie",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000225916894",
+   "titel": "Melissa & Doug doktersset (25 delen)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000039747234",
+   "titel": "Schleich dinosaurussen grote vulkaan-expeditie",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9300000319684995",
+   "titel": "Jellycat Blossom konijn Petal beige (31 cm)",
+   "bron": "bol"
+  },
+  {
+   "id": "bol-9200000019680882",
+   "titel": "Plus-Plus Basic (600 stukjes)",
    "bron": "bol"
   },
   {
@@ -4502,11 +7626,6 @@
    "bron": "Kaartje2go"
   },
   {
-   "id": "bol-9300000195678842",
-   "titel": "Goudkleurige armband met fijn kruis, 925 zilver (Elenza)",
-   "bron": "Looking Good Today"
-  },
-  {
    "id": "dc-2465545913",
    "titel": "Baileys Original Irish Cream (70 cl)",
    "bron": "Decantalo"
@@ -6672,6 +9791,11 @@
    "bron": "De Grote Speelgoedwinkel"
   },
   {
+   "id": "emp-100c8f85bc",
+   "titel": "Zelda Master Sword-replica",
+   "bron": "EMP"
+  },
+  {
    "id": "emp-00dd1f4812",
    "titel": "Disney adventskalender 2026",
    "bron": "EMP"
@@ -6679,6 +9803,11 @@
   {
    "id": "emp-ad220fcf4f",
    "titel": "Lilo & Stitch adventskalender",
+   "bron": "EMP"
+  },
+  {
+   "id": "emp-ec3a9d7aa5",
+   "titel": "Deurmat 'My Home. My Music. My Rules.'",
    "bron": "EMP"
   },
   {
@@ -6937,11 +10066,6 @@
    "bron": "Bellatio"
   },
   {
-   "id": "bierch-0325fb0395",
-   "titel": "Biercheque Sinterklaas: bierbon voor in de schoen",
-   "bron": "Biercheque"
-  },
-  {
    "id": "bierch-39dea6c2d9",
    "titel": "Biercheque Feestdagen: bierbon met kerstplaatje",
    "bron": "Biercheque"
@@ -6950,6 +10074,11 @@
    "id": "bierch-64e888b69d",
    "titel": "Biercheque cadeaukaart (fysiek, per post)",
    "bron": "Biercheque"
+  },
+  {
+   "id": "bol-9300000192425967",
+   "titel": "LEGO Technic Ferrari SF-24 F1 (42207)",
+   "bron": "Coolblue"
   },
   {
    "id": "bol-9300000238405632",
@@ -7480,11 +10609,6 @@
    "id": "dvzn-daisycon-3f645c7702",
    "titel": "Slush Puppie siropen (set van 4)",
    "bron": "Ditverzinjeniet"
-  },
-  {
-   "id": "dille-5e455a9ab9",
-   "titel": "Dille & Kamille amandelen in witte chocolade met pistache",
-   "bron": "Dille & Kamille"
   },
   {
    "id": "tt-wijny-318291448d",
@@ -8307,11 +11431,6 @@
    "bron": "Nedgame"
   },
   {
-   "id": "tt-dgsw-ea9185075f",
-   "titel": "Squishmallows Harry Potter Sorteerhoed (25 cm)",
-   "bron": "De Grote Speelgoedwinkel"
-  },
-  {
    "id": "tt-dgsw-e64143cda9",
    "titel": "Kinetic Sand zandfabriek speelset",
    "bron": "De Grote Speelgoedwinkel"
@@ -8325,11 +11444,6 @@
    "id": "t2-cartoon-a190d15c5d",
    "titel": "PAW Patrol ontdekkingsset met walkietalkies, verrekijker en kompas",
    "bron": "Cartoon Megastore"
-  },
-  {
-   "id": "tt-dgsw-5827835cf0",
-   "titel": "Spy X polswalkietalkies",
-   "bron": "De Grote Speelgoedwinkel"
   },
   {
    "id": "tt-dgsw-679cd9e678",
@@ -8369,11 +11483,6 @@
   {
    "id": "tt-dvzn-33ec81ff22",
    "titel": "Bitten pepermolen Toren van Pisa",
-   "bron": "Ditverzinjeniet"
-  },
-  {
-   "id": "tt-dvzn-40ea454e3d",
-   "titel": "MikaMax wereldbol-decanteerset met glazen",
    "bron": "Ditverzinjeniet"
   },
   {
@@ -8572,11 +11681,6 @@
    "bron": "Countrylifestyle"
   },
   {
-   "id": "tt-country-acc-b06fd8fe06",
-   "titel": "Riviera Maison glazen stolp Pianello",
-   "bron": "Countrylifestyle"
-  },
-  {
    "id": "tt-country-acc-d2d84c3099",
    "titel": "Gien Sologne dessertschaaltje met eenden",
    "bron": "Countrylifestyle"
@@ -8640,11 +11744,6 @@
    "id": "tt-bellatio-6e3e3c9753",
    "titel": "Konstsmide verlichte kerstster met 40 ledlampjes (40 cm)",
    "bron": "Bellatio"
-  },
-  {
-   "id": "tt-dgsw-2edb3453bc",
-   "titel": "Little Dutch speelkoffer kerststal",
-   "bron": "De Grote Speelgoedwinkel"
   },
   {
    "id": "westwing-1defadf361",
@@ -8867,16 +11966,6 @@
    "bron": "Nedgame"
   },
   {
-   "id": "cb-streamdeck-mk2",
-   "titel": "Elgato Stream Deck MK.2",
-   "bron": "Coolblue"
-  },
-  {
-   "id": "cb-streamdeck-mini",
-   "titel": "Elgato Stream Deck Mini",
-   "bron": "Coolblue"
-  },
-  {
    "id": "bol-9300000023383597",
    "titel": "8BitDo Arcade Stick",
    "bron": "Nedgame"
@@ -8972,16 +12061,6 @@
    "bron": "Ditverzinjeniet"
   },
   {
-   "id": "tt-dvzn-91a33807a8",
-   "titel": "Klok in de vorm van een platenspeler, rood",
-   "bron": "Ditverzinjeniet"
-  },
-  {
-   "id": "tt-dvzn-9e8799ca46",
-   "titel": "Elektrische cocktail smoker",
-   "bron": "Ditverzinjeniet"
-  },
-  {
    "id": "tt-dvzn-bb15eaba48",
    "titel": "Houten wekker met draadloze telefoonlader",
    "bron": "Ditverzinjeniet"
@@ -8995,11 +12074,6 @@
    "id": "joybuy-92fd7a670f",
    "titel": "Black Box Trees lichtsnoer Creston 270 cm met 30 lampjes warmwit",
    "bron": "Joybuy"
-  },
-  {
-   "id": "t2-applamp-34cce9e1f4",
-   "titel": "Nanoleaf Shapes Hexagon lichtpanelen, startset 5 panelen",
-   "bron": "Applamp"
   },
   {
    "id": "t2-applamp-c791330147",
@@ -9049,16 +12123,6 @@
   {
    "id": "t2-hema-d19b2b824d",
    "titel": "HEMA Nijntje lichtsnoer met 12 hoofdjes, 2,8 meter",
-   "bron": "HEMA"
-  },
-  {
-   "id": "t2-hema-f76263161b",
-   "titel": "HEMA glazen lichtsnoer met 40 ledlampjes, 2,25 meter",
-   "bron": "HEMA"
-  },
-  {
-   "id": "t2-hema-ff5e37e48f",
-   "titel": "HEMA clusterlichtsnoer met 560 lampjes, 7,8 meter",
    "bron": "HEMA"
   },
   {
@@ -9115,11 +12179,6 @@
    "id": "tt-dvzn-d0fc92f962",
    "titel": "Star Wars X-wing bureaulamp",
    "bron": "Ditverzinjeniet"
-  },
-  {
-   "id": "tt-gadgets-c6b446b4f0",
-   "titel": "Sompex Lucy sfeerlamp in kerstster-vorm, chroom",
-   "bron": "Gadgets en trends"
   },
   {
    "id": "tt-gadgets-db419fba88",
@@ -9225,11 +12284,6 @@
    "id": "t2-kado-versturen-bdfc129715",
    "titel": "Anna's Collection led-stompkaarsen crème (3 stuks)",
    "bron": "Kado-versturen"
-  },
-  {
-   "id": "tt-dvzn-5b4eb0f36f",
-   "titel": "Gift Republic gingerbread house geurbrander",
-   "bron": "Ditverzinjeniet"
   },
   {
    "id": "t2-meubello-6cedea5c46",
@@ -9380,11 +12434,6 @@
    "id": "t2-hema-455578df7b",
    "titel": "HEMA oplaadbare theelichtjes (4 stuks)",
    "bron": "HEMA"
-  },
-  {
-   "id": "t2-grotekadoshop-8e0e011d6f",
-   "titel": "Gift Republic Feestelijke Wierook Peperkoekhuis",
-   "bron": "Grote Kadoshop"
   },
   {
    "id": "westwing-f704bef6cb",
@@ -9705,6 +12754,11 @@
    "id": "bol-9300000152351736",
    "titel": "Nijntje pratende knuffel met lampjes",
    "bron": "De Grote Speelgoedwinkel"
+  },
+  {
+   "id": "so-teddy-luipaard",
+   "titel": "Street One teddy-schoudertas met luipaardprint",
+   "bron": "Street-One NL"
   },
   {
    "id": "ft-zero-power",
@@ -10837,6 +13891,11 @@
    "bron": "Nedgame"
   },
   {
+   "id": "cl-mkw",
+   "titel": "Mario Kart World (Switch 2)",
+   "bron": "Coolblue"
+  },
+  {
    "id": "cl-legends-za",
    "titel": "Pokémon Legends: Z-A (Switch 2)",
    "bron": "Nedgame"
@@ -10892,6 +13951,11 @@
    "bron": "Joybuy"
   },
   {
+   "id": "cl-oura-maat",
+   "titel": "Oura Ring maatset",
+   "bron": "Coolblue"
+  },
+  {
    "id": "cl-instax12",
    "titel": "Instax mini 12 instant camera – kies je kleur",
    "bron": "HEMA"
@@ -10900,11 +13964,6 @@
    "id": "cl-pocket3",
    "titel": "DJI Osmo Pocket 3 vlogcamera",
    "bron": "Joybuy"
-  },
-  {
-   "id": "cl-rollei9s",
-   "titel": "Rollei Actioncam 9S Plus met accessoires",
-   "bron": "Coolblue"
   },
   {
    "id": "cl-hue-bridge",
@@ -10920,11 +13979,6 @@
    "id": "cl-uxbridge",
    "titel": "Marshall Uxbridge Voice met Alexa",
    "bron": "Fiftiesstore"
-  },
-  {
-   "id": "cl-dr-d30",
-   "titel": "Dreame D30 Ultra",
-   "bron": "Coolblue"
   },
   {
    "id": "cl-atari-arcade",
@@ -11157,6 +14211,11 @@
    "bron": "HEMA"
   },
   {
+   "id": "cl-soliver-pyjamabroek",
+   "titel": "s.Oliver pyjamabroek met print",
+   "bron": "s.Oliver NL"
+  },
+  {
    "id": "cl-yes-badjas",
    "titel": "Fleece badjas",
    "bron": "Yesgifts"
@@ -11342,6 +14401,11 @@
    "bron": "Dille & Kamille"
   },
   {
+   "id": "cl-ninja-ds-xl",
+   "titel": "Ninja Double Stack XL airfryer",
+   "bron": "Coolblue"
+  },
+  {
    "id": "cl-hollands-bakboek",
    "titel": "Hollands Bakboek",
    "bron": "Boekenwereld.com"
@@ -11520,11 +14584,6 @@
    "id": "cl-whisky-karaf",
    "titel": "Glazen whisky karaf 1 liter",
    "bron": "Surprises-winkel"
-  },
-  {
-   "id": "cl-sp-whiskyglas",
-   "titel": "Gegraveerd whiskyglas",
-   "bron": "Smartphoto"
   },
   {
    "id": "cl-cocktailglazen",
@@ -11772,11 +14831,6 @@
    "bron": "Smartphoto"
   },
   {
-   "id": "cl-sp-bierglazen",
-   "titel": "Bierglazen met eigen tekst (2)",
-   "bron": "Smartphoto"
-  },
-  {
    "id": "cl-sp-fotohouder-gegr",
    "titel": "Gegraveerde fotohouder",
    "bron": "Smartphoto"
@@ -11930,11 +14984,6 @@
    "id": "cl-geurbrander-omega",
    "titel": "Geurbrander Omega",
    "bron": "Surprises-winkel"
-  },
-  {
-   "id": "cl-ruhhy-waterval",
-   "titel": "Wierookbrander waterval",
-   "bron": "Kado-versturen"
   },
   {
    "id": "cl-lantaarn-led",
@@ -12577,11 +15626,6 @@
    "bron": "Dille & Kamille"
   },
   {
-   "id": "cl-dk-kerstthee",
-   "titel": "Dille & Kamille kerstthee",
-   "bron": "Dille & Kamille"
-  },
-  {
    "id": "cl-dk-appel-kaneel",
    "titel": "Dille & Kamille appel & kaneel rooibos",
    "bron": "Dille & Kamille"
@@ -12589,11 +15633,6 @@
   {
    "id": "cl-dk-munt",
    "titel": "Dille & Kamille munt & honing groene thee",
-   "bron": "Dille & Kamille"
-  },
-  {
-   "id": "cl-dk-jasmijn",
-   "titel": "Dille & Kamille jasmijnthee",
    "bron": "Dille & Kamille"
   },
   {
@@ -12660,11 +15699,6 @@
    "id": "cl-svinando-ragu",
    "titel": "Ragù di Toscana",
    "bron": "Svinando"
-  },
-  {
-   "id": "cl-dk-pistachecreme",
-   "titel": "Dille & Kamille pistache crème",
-   "bron": "Dille & Kamille"
   },
   {
    "id": "cl-utopia-mix",
@@ -13612,11 +16646,6 @@
    "bron": "Westwing"
   },
   {
-   "id": "cl-raincheck",
-   "titel": "Waterbestendig notitieboek",
-   "bron": "Ditverzinjeniet"
-  },
-  {
    "id": "cl-mystic-journal",
    "titel": "The Mystic Journal (A5)",
    "bron": "Ditverzinjeniet"
@@ -13695,11 +16724,6 @@
    "id": "cl-silva-kompas",
    "titel": "Silva kompas",
    "bron": "Bushpappa"
-  },
-  {
-   "id": "cl-explorer-kit",
-   "titel": "Explorer kit met kompas",
-   "bron": "Ditverzinjeniet"
   },
   {
    "id": "cl-hema-wandelsok",
@@ -13870,16 +16894,6 @@
    "id": "cl-meuwissen-station",
    "titel": "Compleet vogelvoederstation",
    "bron": "Surprises-winkel"
-  },
-  {
-   "id": "cl-bfb-eekhoorn",
-   "titel": "Best for Birds eekhoorn voederhuis",
-   "bron": "Animals Giftshop"
-  },
-  {
-   "id": "cl-bfb-eekhoorn-nest",
-   "titel": "Houten eekhoorn nestkast",
-   "bron": "Animals Giftshop"
   },
   {
    "id": "cl-insectenhotel",
@@ -15042,51 +18056,6 @@
    "bron": "Coppens Warenhuis"
   },
   {
-   "id": "surpro-3601199181",
-   "titel": "Drie blauwe long-life rozen in een vaasje",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-cd686e168b",
-   "titel": "10 regenboogrozen",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-e5e6560c14",
-   "titel": "Eén bordeauxrode long-life roos in een vaasje",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-f1ac81dce9",
-   "titel": "Rozenboeket Romy met Lindt-hart",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-ef03a471bb",
-   "titel": "20 blauwe rozen met panicum",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-af8f8ae72c",
-   "titel": "Rode rozen in hartvorm (Madam Red)",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-6aa8b93129",
-   "titel": "Rozenboeket van de maand (november)",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-3d6fe025f4",
-   "titel": "Wit long-life boeket in een vaasje (30 cm)",
-   "bron": "Surprose"
-  },
-  {
-   "id": "surpro-3ead34f5fd",
-   "titel": "Een dozijn witte rozen (XL)",
-   "bron": "Surprose"
-  },
-  {
    "id": "t4r-47bcd76ae6",
    "titel": "adidas Samba (zwart)",
    "bron": "Top4Running"
@@ -15147,20 +18116,25 @@
    "bron": "Gestrikt"
   }
  ],
- "gecontroleerd": 6451,
+ "gecontroleerd": 6501,
  "bronnen": [
   "product-feed_baby-v2.csv.gz",
   "product-feed_computer-v2.csv.gz",
   "product-feed_daily-care-v2.csv.gz",
+  "product-feed_digital-reading-v2.csv.gz",
   "product-feed_diy-v2.csv.gz",
   "product-feed_dutch-books-v2.csv.gz",
+  "product-feed_educational-books-v2.csv.gz",
   "product-feed_entertainment-v2.csv.gz",
   "product-feed_fashion-accessories-v2.csv.gz",
   "product-feed_fashion-footwear-v2.csv.gz",
   "product-feed_garden-lighting-v2.csv.gz",
+  "product-feed_gift-cards-v2.csv.gz",
   "product-feed_health-v2.csv.gz",
   "product-feed_home-interior-v2.csv.gz",
+  "product-feed_international-books-v2.csv.gz",
   "product-feed_kitchen-household-v2.csv.gz",
+  "product-feed_mda-v2.csv.gz",
   "product-feed_mobile-v2.csv.gz",
   "product-feed_outdoor-mobility-v2.csv.gz",
   "product-feed_perfumery-v2.csv.gz",
@@ -15184,6 +18158,25 @@
   "a-robotime-international-limited.json",
   "a-watch-enclave.json",
   "a-flextail.json",
+  "t-wijny.json",
+  "t-lamponline.json",
+  "t-country-licht.json",
+  "t-country-acc.json",
+  "t-dvzn.json",
+  "x-laredoute-wonen.json",
+  "x-bloompost.json",
+  "x-zadig.json",
+  "x-teufel.json",
+  "x-dropwinkel.json",
+  "x-999-alles.json",
+  "x-dvzn.json",
+  "x-drmartens.json",
+  "x-decantalo1.json",
+  "x-dille.json",
+  "t-zonnerij.json",
+  "t-favoshop.json",
+  "t-fotoinglas.json",
+  "t-surprose.json",
   "t-gestrikt.json",
   "t-christmas1967.json",
   "t-makemefamous.json",
@@ -15249,12 +18242,7 @@
   "t-ijzersterk.json",
   "t-animals.json",
   "t-dgsw.json",
-  "t-wijny.json",
   "t-bellatio.json",
-  "t-lamponline.json",
-  "t-country-licht.json",
-  "t-country-acc.json",
-  "t-dvzn.json",
   "x-majakoi.json",
   "x-olijfolie.json",
   "x-naturesgift.json",
@@ -15289,16 +18277,6 @@
   "x-myka.json",
   "x-bartogi.json",
   "x-lego.json",
-  "x-laredoute-wonen.json",
-  "x-bloompost.json",
-  "x-zadig.json",
-  "x-teufel.json",
-  "x-dropwinkel.json",
-  "x-999-alles.json",
-  "x-dvzn.json",
-  "x-drmartens.json",
-  "x-decantalo1.json",
-  "x-dille.json",
   "a-watch-enclave-F2150.json",
   "a-suitableshop-nl-19369.json",
   "a-suitableshop-nl-40067.json",
@@ -15386,7 +18364,6 @@
   "t2-nedgame.json",
   "t2-smartphoto.json",
   "t2-hema.json",
-  "t-fotoinglas.json",
   "t-dindio.json",
   "t-biercheque.json",
   "t-toppers.json",
@@ -15495,7 +18472,6 @@
   "animal-283b6ee415",
   "animal-35f6246c76",
   "animal-428ae7da88",
-  "animal-ac29ac6651",
   "animal-bf99184afc",
   "applam-0c756370e9",
   "applam-34cce9e1f4",
@@ -15670,10 +18646,8 @@
   "bol-9200000018510082",
   "bol-9200000018521669",
   "bol-9200000019064871",
-  "bol-9200000019070712",
   "bol-9200000019070918",
   "bol-9200000019512265",
-  "bol-9200000019680882",
   "bol-9200000020297546",
   "bol-9200000020342485",
   "bol-9200000020342525",
@@ -15738,12 +18712,10 @@
   "bol-9200000033387880",
   "bol-9200000033415520",
   "bol-9200000033415524",
-  "bol-9200000034589739",
   "bol-9200000035037758",
   "bol-9200000035375500",
   "bol-9200000035721545",
   "bol-9200000035833646",
-  "bol-9200000036272136",
   "bol-9200000036922606",
   "bol-9200000037296159",
   "bol-9200000037409341",
@@ -15819,7 +18791,6 @@
   "bol-9200000051791337",
   "bol-9200000051833314",
   "bol-9200000052023945",
-  "bol-9200000052055968",
   "bol-9200000052220250",
   "bol-9200000052263547",
   "bol-9200000052693520",
@@ -15853,7 +18824,6 @@
   "bol-9200000056571190",
   "bol-9200000057021429",
   "bol-9200000057831168",
-  "bol-9200000057915026",
   "bol-9200000057992803",
   "bol-9200000057994731",
   "bol-9200000058040216",
@@ -15943,7 +18913,6 @@
   "bol-9200000076619271",
   "bol-9200000077152196",
   "bol-9200000077152550",
-  "bol-9200000077152975",
   "bol-9200000077170116",
   "bol-9200000077171588",
   "bol-9200000077595422",
@@ -15954,7 +18923,6 @@
   "bol-9200000078934262",
   "bol-9200000079164901",
   "bol-9200000079252023",
-  "bol-9200000079468993",
   "bol-9200000080254345",
   "bol-9200000081022442",
   "bol-9200000081333948",
@@ -16022,8 +18990,6 @@
   "bol-9200000091616642",
   "bol-9200000091821418",
   "bol-9200000091834691",
-  "bol-9200000091999223",
-  "bol-9200000091999275",
   "bol-9200000092099559",
   "bol-9200000092099992",
   "bol-9200000092338801",
@@ -16079,7 +19045,6 @@
   "bol-9200000100863931",
   "bol-9200000101076350",
   "bol-9200000101076368",
-  "bol-9200000101182379",
   "bol-9200000101237902",
   "bol-9200000101851318",
   "bol-9200000101887063",
@@ -16125,7 +19090,6 @@
   "bol-9200000106945924",
   "bol-9200000107080642",
   "bol-9200000107164773",
-  "bol-9200000107192474",
   "bol-9200000107764755",
   "bol-9200000108193479",
   "bol-9200000108292801",
@@ -16137,7 +19101,6 @@
   "bol-9200000108724491",
   "bol-9200000108808069",
   "bol-9200000109023395",
-  "bol-9200000109023483",
   "bol-9200000109023531",
   "bol-9200000109088922",
   "bol-9200000109330690",
@@ -16217,7 +19180,6 @@
   "bol-9200000125025508",
   "bol-9200000125118307",
   "bol-9200000125481463",
-  "bol-9200000125602531",
   "bol-9200000125684992",
   "bol-9200000125693085",
   "bol-9200000126114715",
@@ -16270,7 +19232,6 @@
   "bol-9200000131969034",
   "bol-9200000132029204",
   "bol-9200000132138505",
-  "bol-9200000132733465",
   "bol-9200000132860293",
   "bol-9200000133030421",
   "bol-9300000000038490",
@@ -16307,7 +19268,6 @@
   "bol-9300000004078255",
   "bol-9300000004128201",
   "bol-9300000004138074",
-  "bol-9300000004771000",
   "bol-9300000004771001",
   "bol-9300000004801967",
   "bol-9300000004832458",
@@ -16340,7 +19300,6 @@
   "bol-9300000009069730",
   "bol-9300000009318450",
   "bol-9300000009319303",
-  "bol-9300000009345768",
   "bol-9300000009402365",
   "bol-9300000009679395",
   "bol-9300000009699366",
@@ -16352,7 +19311,6 @@
   "bol-9300000011623827",
   "bol-9300000011823403",
   "bol-9300000012199690",
-  "bol-9300000012638048",
   "bol-9300000012815860",
   "bol-9300000013218376",
   "bol-9300000013231326",
@@ -16380,14 +19338,12 @@
   "bol-9300000017397537",
   "bol-9300000017397894",
   "bol-9300000017407527",
-  "bol-9300000017672803",
   "bol-9300000017887282",
   "bol-9300000018334964",
   "bol-9300000018443438",
   "bol-9300000018635881",
   "bol-9300000018638124",
   "bol-9300000018856074",
-  "bol-9300000018908153",
   "bol-9300000018986724",
   "bol-9300000019060592",
   "bol-9300000019078203",
@@ -16399,8 +19355,6 @@
   "bol-9300000019925808",
   "bol-9300000019946915",
   "bol-9300000020223337",
-  "bol-9300000020230993",
-  "bol-9300000020231008",
   "bol-9300000020396993",
   "bol-9300000020405193",
   "bol-9300000020409124",
@@ -16442,7 +19396,6 @@
   "bol-9300000027406107",
   "bol-9300000027406115",
   "bol-9300000027469588",
-  "bol-9300000027544021",
   "bol-9300000028317650",
   "bol-9300000028546883",
   "bol-9300000028714942",
@@ -16458,7 +19411,6 @@
   "bol-9300000030692255",
   "bol-9300000030853769",
   "bol-9300000031046461",
-  "bol-9300000031135703",
   "bol-9300000031155907",
   "bol-9300000031255005",
   "bol-9300000031399460",
@@ -16490,7 +19442,6 @@
   "bol-9300000034727777",
   "bol-9300000034727786",
   "bol-9300000034785141",
-  "bol-9300000034877020",
   "bol-9300000035078697",
   "bol-9300000035078782",
   "bol-9300000035092727",
@@ -16518,7 +19469,6 @@
   "bol-9300000038920568",
   "bol-9300000039086509",
   "bol-9300000039155912",
-  "bol-9300000039161525",
   "bol-9300000039278002",
   "bol-9300000039278028",
   "bol-9300000039299421",
@@ -16526,7 +19476,6 @@
   "bol-9300000039314106",
   "bol-9300000039345430",
   "bol-9300000039602281",
-  "bol-9300000039747234",
   "bol-9300000039859471",
   "bol-9300000040234647",
   "bol-9300000040883762",
@@ -16618,7 +19567,6 @@
   "bol-9300000062938632",
   "bol-9300000062956350",
   "bol-9300000063217325",
-  "bol-9300000063243689",
   "bol-9300000064231476",
   "bol-9300000064385562",
   "bol-9300000064691879",
@@ -16668,7 +19616,6 @@
   "bol-9300000073568595",
   "bol-9300000073683204",
   "bol-9300000073699724",
-  "bol-9300000073914738",
   "bol-9300000074001597",
   "bol-9300000074011862",
   "bol-9300000074050633",
@@ -16701,7 +19648,6 @@
   "bol-9300000082703574",
   "bol-9300000082782551",
   "bol-9300000082791410",
-  "bol-9300000082961060",
   "bol-9300000083216947",
   "bol-9300000083266771",
   "bol-9300000083339892",
@@ -16752,7 +19698,6 @@
   "bol-9300000105068681",
   "bol-9300000105460403",
   "bol-9300000105542904",
-  "bol-9300000106561561",
   "bol-9300000107062585",
   "bol-9300000107517392",
   "bol-9300000108922629",
@@ -16815,7 +19760,6 @@
   "bol-9300000123628341",
   "bol-9300000123665841",
   "bol-9300000123794077",
-  "bol-9300000123932891",
   "bol-9300000123980541",
   "bol-9300000124097041",
   "bol-9300000124200796",
@@ -16840,7 +19784,6 @@
   "bol-9300000127614041",
   "bol-9300000127699829",
   "bol-9300000127897587",
-  "bol-9300000127898487",
   "bol-9300000128468770",
   "bol-9300000128826732",
   "bol-9300000128985252",
@@ -16853,7 +19796,6 @@
   "bol-9300000130428935",
   "bol-9300000130493648",
   "bol-9300000130503879",
-  "bol-9300000130551618",
   "bol-9300000130858604",
   "bol-9300000130860594",
   "bol-9300000131369302",
@@ -16883,7 +19825,6 @@
   "bol-9300000133622477",
   "bol-9300000133647357",
   "bol-9300000133668430",
-  "bol-9300000133849812",
   "bol-9300000133972221",
   "bol-9300000133972425",
   "bol-9300000133981901",
@@ -16954,12 +19895,10 @@
   "bol-9300000145001164",
   "bol-9300000145081050",
   "bol-9300000145180608",
-  "bol-9300000145249953",
   "bol-9300000145250032",
   "bol-9300000145250036",
   "bol-9300000145343894",
   "bol-9300000145369712",
-  "bol-9300000145384800",
   "bol-9300000145526987",
   "bol-9300000146100740",
   "bol-9300000146207567",
@@ -16969,13 +19908,11 @@
   "bol-9300000146633633",
   "bol-9300000146858950",
   "bol-9300000147374520",
-  "bol-9300000147396054",
   "bol-9300000147420364",
   "bol-9300000147604006",
   "bol-9300000147729779",
   "bol-9300000147764361",
   "bol-9300000147764600",
-  "bol-9300000147974028",
   "bol-9300000148298715",
   "bol-9300000148298729",
   "bol-9300000148512342",
@@ -17004,12 +19941,10 @@
   "bol-9300000150949204",
   "bol-9300000151067972",
   "bol-9300000151157925",
-  "bol-9300000151168843",
   "bol-9300000151284325",
   "bol-9300000151287533",
   "bol-9300000151509729",
   "bol-9300000151510512",
-  "bol-9300000151680122",
   "bol-9300000151750718",
   "bol-9300000151784577",
   "bol-9300000151785086",
@@ -17043,7 +19978,6 @@
   "bol-9300000154284828",
   "bol-9300000154469622",
   "bol-9300000154601822",
-  "bol-9300000154791241",
   "bol-9300000155053185",
   "bol-9300000155195329",
   "bol-9300000155213728",
@@ -17056,7 +19990,6 @@
   "bol-9300000156302526",
   "bol-9300000156348983",
   "bol-9300000156509144",
-  "bol-9300000156623186",
   "bol-9300000156690497",
   "bol-9300000157251951",
   "bol-9300000157253558",
@@ -17065,7 +19998,6 @@
   "bol-9300000157570947",
   "bol-9300000157582045",
   "bol-9300000157605364",
-  "bol-9300000157685464",
   "bol-9300000157708059",
   "bol-9300000157781581",
   "bol-9300000157910837",
@@ -17082,7 +20014,6 @@
   "bol-9300000158777033",
   "bol-9300000159069861",
   "bol-9300000159102979",
-  "bol-9300000159130325",
   "bol-9300000159162749",
   "bol-9300000159170205",
   "bol-9300000159170207",
@@ -17113,7 +20044,6 @@
   "bol-9300000160517168",
   "bol-9300000160628461",
   "bol-9300000160642140",
-  "bol-9300000160727260",
   "bol-9300000161024365",
   "bol-9300000161047545",
   "bol-9300000161076165",
@@ -17123,7 +20053,6 @@
   "bol-9300000161275021",
   "bol-9300000161336628",
   "bol-9300000161370142",
-  "bol-9300000161372177",
   "bol-9300000161404184",
   "bol-9300000161478991",
   "bol-9300000161499164",
@@ -17139,7 +20068,6 @@
   "bol-9300000161906004",
   "bol-9300000161907676",
   "bol-9300000161992006",
-  "bol-9300000162038148",
   "bol-9300000162044483",
   "bol-9300000162220917",
   "bol-9300000162818800",
@@ -17194,7 +20122,6 @@
   "bol-9300000167884017",
   "bol-9300000167890550",
   "bol-9300000167890557",
-  "bol-9300000167950350",
   "bol-9300000168431338",
   "bol-9300000168522132",
   "bol-9300000168710886",
@@ -17220,7 +20147,6 @@
   "bol-9300000169748815",
   "bol-9300000169748883",
   "bol-9300000169748884",
-  "bol-9300000169749318",
   "bol-9300000169750434",
   "bol-9300000169750435",
   "bol-9300000169798458",
@@ -17253,10 +20179,8 @@
   "bol-9300000171458346",
   "bol-9300000171553478",
   "bol-9300000171825347",
-  "bol-9300000171890190",
   "bol-9300000172032276",
   "bol-9300000172084230",
-  "bol-9300000172268518",
   "bol-9300000172296069",
   "bol-9300000172321548",
   "bol-9300000172461768",
@@ -17330,7 +20254,6 @@
   "bol-9300000176775964",
   "bol-9300000176830274",
   "bol-9300000176865025",
-  "bol-9300000176870601",
   "bol-9300000176951031",
   "bol-9300000177044305",
   "bol-9300000177051068",
@@ -17349,7 +20272,6 @@
   "bol-9300000177409726",
   "bol-9300000177443955",
   "bol-9300000177497120",
-  "bol-9300000177497152",
   "bol-9300000177502352",
   "bol-9300000177510705",
   "bol-9300000177510757",
@@ -17418,7 +20340,6 @@
   "bol-9300000180764598",
   "bol-9300000181192290",
   "bol-9300000181364430",
-  "bol-9300000181433977",
   "bol-9300000181455730",
   "bol-9300000181455754",
   "bol-9300000181534651",
@@ -17427,11 +20348,9 @@
   "bol-9300000181793298",
   "bol-9300000181797613",
   "bol-9300000181837271",
-  "bol-9300000181837311",
   "bol-9300000181912357",
   "bol-9300000181934023",
   "bol-9300000181934808",
-  "bol-9300000181968006",
   "bol-9300000181986180",
   "bol-9300000182025342",
   "bol-9300000182141996",
@@ -17464,6 +20383,7 @@
   "bol-9300000183494175",
   "bol-9300000183546579",
   "bol-9300000183562456",
+  "bol-9300000183624857",
   "bol-9300000183628682",
   "bol-9300000183684006",
   "bol-9300000183746306",
@@ -17481,7 +20401,6 @@
   "bol-9300000184143402",
   "bol-9300000184208775",
   "bol-9300000184234470",
-  "bol-9300000184312949",
   "bol-9300000184322991",
   "bol-9300000184324066",
   "bol-9300000184377809",
@@ -17568,7 +20487,6 @@
   "bol-9300000191138934",
   "bol-9300000191333378",
   "bol-9300000191580810",
-  "bol-9300000191626158",
   "bol-9300000191796264",
   "bol-9300000191979946",
   "bol-9300000192177316",
@@ -17576,7 +20494,6 @@
   "bol-9300000192297207",
   "bol-9300000192307083",
   "bol-9300000192351260",
-  "bol-9300000192425967",
   "bol-9300000192519194",
   "bol-9300000192573893",
   "bol-9300000192661190",
@@ -17587,7 +20504,6 @@
   "bol-9300000192947608",
   "bol-9300000192994012",
   "bol-9300000192994578",
-  "bol-9300000193044979",
   "bol-9300000193063404",
   "bol-9300000193114181",
   "bol-9300000193263106",
@@ -17597,6 +20513,7 @@
   "bol-9300000193639901",
   "bol-9300000193693321",
   "bol-9300000193746659",
+  "bol-9300000193746671",
   "bol-9300000193778454",
   "bol-9300000193823831",
   "bol-9300000193830306",
@@ -17621,6 +20538,7 @@
   "bol-9300000195612851",
   "bol-9300000195612857",
   "bol-9300000195612859",
+  "bol-9300000195678842",
   "bol-9300000195684144",
   "bol-9300000196181575",
   "bol-9300000196238385",
@@ -17633,7 +20551,6 @@
   "bol-9300000196530057",
   "bol-9300000196787374",
   "bol-9300000196788950",
-  "bol-9300000196800292",
   "bol-9300000196801526",
   "bol-9300000196801615",
   "bol-9300000196809261",
@@ -17674,11 +20591,9 @@
   "bol-9300000198405239",
   "bol-9300000198436399",
   "bol-9300000198465482",
-  "bol-9300000198577468",
   "bol-9300000198643003",
   "bol-9300000198765600",
   "bol-9300000198823622",
-  "bol-9300000199022783",
   "bol-9300000199026012",
   "bol-9300000199061770",
   "bol-9300000199063509",
@@ -17691,7 +20606,6 @@
   "bol-9300000220035373",
   "bol-9300000220047806",
   "bol-9300000220047809",
-  "bol-9300000220047815",
   "bol-9300000220214492",
   "bol-9300000220264259",
   "bol-9300000220283657",
@@ -17710,7 +20624,6 @@
   "bol-9300000220559003",
   "bol-9300000221442142",
   "bol-9300000221442153",
-  "bol-9300000221442168",
   "bol-9300000221461980",
   "bol-9300000221488019",
   "bol-9300000221547332",
@@ -17737,7 +20650,6 @@
   "bol-9300000222631544",
   "bol-9300000222631548",
   "bol-9300000222631583",
-  "bol-9300000222631601",
   "bol-9300000222635387",
   "bol-9300000222675212",
   "bol-9300000222692712",
@@ -17811,7 +20723,6 @@
   "bol-9300000225512276",
   "bol-9300000225512285",
   "bol-9300000225664928",
-  "bol-9300000225664935",
   "bol-9300000225695354",
   "bol-9300000225695645",
   "bol-9300000225695697",
@@ -17832,7 +20743,6 @@
   "bol-9300000225911874",
   "bol-9300000225912982",
   "bol-9300000225916891",
-  "bol-9300000225916894",
   "bol-9300000225916942",
   "bol-9300000225916953",
   "bol-9300000225916975",
@@ -17888,7 +20798,6 @@
   "bol-9300000227351956",
   "bol-9300000227351959",
   "bol-9300000227354684",
-  "bol-9300000227354686",
   "bol-9300000227361153",
   "bol-9300000227362773",
   "bol-9300000227362791",
@@ -17914,10 +20823,8 @@
   "bol-9300000228059899",
   "bol-9300000228069372",
   "bol-9300000228094058",
-  "bol-9300000228110547",
   "bol-9300000228119660",
   "bol-9300000228440180",
-  "bol-9300000228440183",
   "bol-9300000228465894",
   "bol-9300000228511367",
   "bol-9300000228514355",
@@ -17937,7 +20844,6 @@
   "bol-9300000228928212",
   "bol-9300000228928839",
   "bol-9300000228933315",
-  "bol-9300000228941471",
   "bol-9300000228951997",
   "bol-9300000229072135",
   "bol-9300000229096699",
@@ -17957,7 +20863,6 @@
   "bol-9300000229498790",
   "bol-9300000229548960",
   "bol-9300000229606938",
-  "bol-9300000229682661",
   "bol-9300000229682695",
   "bol-9300000229723382",
   "bol-9300000229741857",
@@ -17982,13 +20887,11 @@
   "bol-9300000230344763",
   "bol-9300000230370076",
   "bol-9300000230516169",
-  "bol-9300000230574487",
   "bol-9300000230605890",
   "bol-9300000230636501",
   "bol-9300000230650958",
   "bol-9300000230785366",
   "bol-9300000230945476",
-  "bol-9300000230957191",
   "bol-9300000231010773",
   "bol-9300000231010787",
   "bol-9300000231010810",
@@ -18055,9 +20958,7 @@
   "bol-9300000234781958",
   "bol-9300000234965416",
   "bol-9300000234970813",
-  "bol-9300000235099556",
   "bol-9300000235114023",
-  "bol-9300000235206215",
   "bol-9300000235234020",
   "bol-9300000235330813",
   "bol-9300000235330884",
@@ -18143,7 +21044,6 @@
   "bol-9300000238136356",
   "bol-9300000238161130",
   "bol-9300000238229469",
-  "bol-9300000238264178",
   "bol-9300000238267792",
   "bol-9300000238269141",
   "bol-9300000238359993",
@@ -18169,15 +21069,12 @@
   "bol-9300000239621031",
   "bol-9300000239671711",
   "bol-9300000239695089",
-  "bol-9300000239732491",
   "bol-9300000239736365",
   "bol-9300000239740891",
   "bol-9300000239745816",
-  "bol-9300000239807652",
   "bol-9300000239926323",
   "bol-9300000239958237",
   "bol-9300000239985562",
-  "bol-9300000240031402",
   "bol-9300000240065922",
   "bol-9300000240069882",
   "bol-9300000240072216",
@@ -18203,7 +21100,6 @@
   "bol-9300000240772866",
   "bol-9300000240879532",
   "bol-9300000241034185",
-  "bol-9300000241051244",
   "bol-9300000241164282",
   "bol-9300000241257631",
   "bol-9300000241266633",
@@ -18271,7 +21167,6 @@
   "bol-9300000243481719",
   "bol-9300000243481721",
   "bol-9300000243481726",
-  "bol-9300000243689158",
   "bol-9300000243689214",
   "bol-9300000243689255",
   "bol-9300000243689272",
@@ -18290,7 +21185,6 @@
   "bol-9300000244057824",
   "bol-9300000244057866",
   "bol-9300000244057976",
-  "bol-9300000244058119",
   "bol-9300000244058151",
   "bol-9300000244058241",
   "bol-9300000244058244",
@@ -18298,12 +21192,9 @@
   "bol-9300000244090215",
   "bol-9300000244102702",
   "bol-9300000244107825",
-  "bol-9300000244254331",
   "bol-9300000244262523",
   "bol-9300000244357239",
-  "bol-9300000244477215",
   "bol-9300000244502862",
-  "bol-9300000244578985",
   "bol-9300000244644877",
   "bol-9300000244644881",
   "bol-9300000244671262",
@@ -18391,7 +21282,6 @@
   "bol-9300000249312545",
   "bol-9300000249339079",
   "bol-9300000249426301",
-  "bol-9300000249428208",
   "bol-9300000249428210",
   "bol-9300000249442089",
   "bol-9300000249467695",
@@ -18402,7 +21292,6 @@
   "bol-9300000250373009",
   "bol-9300000250375692",
   "bol-9300000250399375",
-  "bol-9300000250463242",
   "bol-9300000250486470",
   "bol-9300000250589450",
   "bol-9300000250589451",
@@ -18479,7 +21368,6 @@
   "bol-9300000256526094",
   "bol-9300000256526098",
   "bol-9300000256526101",
-  "bol-9300000256526103",
   "bol-9300000256526117",
   "bol-9300000256526121",
   "bol-9300000256526137",
@@ -18492,7 +21380,6 @@
   "bol-9300000256526165",
   "bol-9300000256526171",
   "bol-9300000256526175",
-  "bol-9300000256526192",
   "bol-9300000256526194",
   "bol-9300000256554614",
   "bol-9300000256588784",
@@ -18555,7 +21442,6 @@
   "bol-9300000259419975",
   "bol-9300000259516841",
   "bol-9300000259559462",
-  "bol-9300000259671597",
   "bol-9300000260000151",
   "bol-9300000260123719",
   "bol-9300000260135503",
@@ -18569,7 +21455,6 @@
   "bol-9300000260262364",
   "bol-9300000260264891",
   "bol-9300000260277337",
-  "bol-9300000260831174",
   "bol-9300000260837870",
   "bol-9300000260927789",
   "bol-9300000260934383",
@@ -18588,7 +21473,6 @@
   "bol-9300000261530180",
   "bol-9300000261530184",
   "bol-9300000261530191",
-  "bol-9300000261530194",
   "bol-9300000261530208",
   "bol-9300000261530226",
   "bol-9300000261530245",
@@ -18639,7 +21523,6 @@
   "bol-9300000263419633",
   "bol-9300000263626368",
   "bol-9300000264092901",
-  "bol-9300000264493596",
   "bol-9300000264493597",
   "bol-9300000264493604",
   "bol-9300000264493615",
@@ -18673,7 +21556,6 @@
   "bol-9300000264938793",
   "bol-9300000264938799",
   "bol-9300000265010672",
-  "bol-9300000265091501",
   "bol-9300000265123580",
   "bol-9300000265211555",
   "bol-9300000265597314",
@@ -18797,14 +21679,11 @@
   "bol-9300000274323716",
   "bol-9300000274596871",
   "bol-9300000275290677",
-  "bol-9300000275515404",
-  "bol-9300000275515432",
   "bol-9300000275654350",
   "bol-9300000275654380",
   "bol-9300000275658288",
   "bol-9300000275795322",
   "bol-9300000275849340",
-  "bol-9300000275864639",
   "bol-9300000276057137",
   "bol-9300000276357459",
   "bol-9300000276357465",
@@ -18881,7 +21760,6 @@
   "bol-9300000302464503",
   "bol-9300000302471968",
   "bol-9300000302471969",
-  "bol-9300000302471988",
   "bol-9300000303199910",
   "bol-9300000303268820",
   "bol-9300000304073489",
@@ -18902,7 +21780,6 @@
   "bol-9300000309584275",
   "bol-9300000309590276",
   "bol-9300000309591673",
-  "bol-9300000309664317",
   "bol-9300000309770614",
   "bol-9300000310309601",
   "bol-9300000311177843",
@@ -18921,7 +21798,6 @@
   "bol-9300000317113944",
   "bol-9300000317155603",
   "bol-9300000318870515",
-  "bol-9300000319684995",
   "bol-9300000319966663",
   "bol-9300000319966692",
   "bol-9300000319966749",
@@ -18967,7 +21843,6 @@
   "bol-9300000338376096",
   "bol-9300000338376097",
   "bol-9300000338376098",
-  "bol-9300000338376099",
   "bol-9300000338376100",
   "bol-9300000338376102",
   "bol-9300000338376104",
@@ -18980,7 +21855,6 @@
   "bol-9300000340640267",
   "bol-9300000340930163",
   "bol-9300000341079798",
-  "bol-9300000341384995",
   "bol-9300000342058435",
   "bol-9300000342058766",
   "bol-9300000342374342",
@@ -18988,14 +21862,12 @@
   "bol-9300000343689233",
   "bol-9300000343902998",
   "bol-9300000344045827",
-  "bol-9300000345522494",
   "bol-9300000345522497",
   "bol-9300000345522498",
   "bol-9300000345522501",
   "bol-9300000346113908",
   "bol-9300000346732983",
   "bol-9300000351999722",
-  "bol-9300000352890709",
   "bol-9300000352895753",
   "bol-9300000353207034",
   "bol-9300000353382381",
@@ -19022,7 +21894,6 @@
   "bol-9300000365580821",
   "bol-9300000368460468",
   "bol-9300000368463335",
-  "bol-9300000368982942",
   "bol-9300000370161812",
   "bol-9300000371106097",
   "bol-9300000371316762",
@@ -19031,15 +21902,12 @@
   "bol-9300000372453889",
   "bol-9300000372491522",
   "bol-9300000372578161",
-  "bol-9300000372578165",
   "bol-9300000373184012",
   "bol-9300000374064659",
   "bol-9300000374378310",
   "bol-9300000374950947",
-  "bol-9300000375725156",
   "bol-9300000375928006",
   "bol-9300000376146357",
-  "bol-9300000376545513",
   "bol-9300000377662251",
   "bol-9300000377662495",
   "bol-9300000377662497",
@@ -19049,6 +21917,7 @@
   "bol-9300000382483403",
   "bol-9300000382642849",
   "bol-9300000382744686",
+  "bol-9300000383111156",
   "bol-9300000383194116",
   "bol-9300000383269797",
   "bol-9300000383301336",
@@ -19063,7 +21932,6 @@
   "bol-9300000384693584",
   "bol-9300000384941663",
   "bol-9300000384942021",
-  "bol-9300000385234246",
   "bol-9300000385251516",
   "bol-9300000385427140",
   "bol-9300000385427142",
@@ -19072,7 +21940,6 @@
   "bol-9300000386459935",
   "bol-9300000386803507",
   "bol-9300000387767423",
-  "bol-9300000392967490",
   "bol-9300000395403929",
   "bol-9300000395404146",
   "bol-9300000395558241",
@@ -19127,7 +21994,6 @@
   "bol-9300000441814149",
   "bol-9300000442610569",
   "bol-9300000444859249",
-  "bol-9300000445214286",
   "bourg-1d6523c335",
   "bourg-b6efe2d862",
   "bp-be37b14f9d",
@@ -19190,6 +22056,7 @@
   "cadeau-9b5061d286",
   "cadeau-9b65a711d5",
   "cadeau-9ef5eb52bb",
+  "cadeau-aa0550d68e",
   "cadeau-b9ec65b2ad",
   "cadeau-bc499e03ba",
   "cadeau-bf72ab0c3e",
@@ -19203,7 +22070,6 @@
   "cadeau-cef5db67ed",
   "cadeau-d3697997b2",
   "cadeau-d3eb06d851",
-  "cadeau-d50f9a0f99",
   "cadeau-d6ad9d4cbf",
   "cadeau-da61702c3b",
   "cadeau-e18451a7c4",
@@ -19298,6 +22164,8 @@
   "cb-space-one",
   "cb-space2",
   "cb-stanmore3",
+  "cb-streamdeck-mini",
+  "cb-streamdeck-mk2",
   "cb-streamdeck-neo",
   "cb-switch-lite-mk8",
   "cb-switch-lite-tomodachi",
@@ -19321,10 +22189,12 @@
   "cb-xtreme5",
   "cb-zelda-eow",
   "cg-06973d8b67",
+  "cg-0cd95a18fc",
   "cg-199d3f02fa",
   "cg-1b56c4d8b5",
   "cg-22dbada8f3",
   "cg-296cdbc773",
+  "cg-2e82b9f785",
   "cg-375eb38550",
   "cg-3d-pin-art",
   "cg-475e43592a",
@@ -19338,6 +22208,7 @@
   "cg-6da3b9f1ad",
   "cg-7fbf7836d1",
   "cg-82babf085e",
+  "cg-8baaccbb2e",
   "cg-903f3003ed",
   "cg-913caa57b8",
   "cg-93b0a832d0",
@@ -19346,6 +22217,7 @@
   "cg-a1414be062",
   "cg-a421e2f9e5",
   "cg-b2176baf5e",
+  "cg-b320632dae",
   "cg-b5a3d1657b",
   "cg-bb18150e39",
   "cg-bc98fb08a2",
@@ -19358,11 +22230,11 @@
   "cg-d0e947b38d",
   "cg-d2e7f8a4b8",
   "cg-db7d0c2f45",
-  "cg-diy-neon-sign",
   "cg-drinkopoly",
   "cg-drinkspel-schaken-shot",
   "cg-e101e52b2e",
   "cg-e7526c91a8",
+  "cg-e80baa1454",
   "cg-e83887cee1",
   "cg-ea58feeb4b",
   "cg-ec3f1d535d",
@@ -19370,6 +22242,7 @@
   "cg-eenhoorn-sloffen",
   "cg-explosiongiftbox-black",
   "cg-f41fe38476",
+  "cg-f5a80d0aad",
   "cg-f74b0e78fd",
   "cg-fiets-spaak-verlichting",
   "cg-geitenyoga-partyspel",
@@ -19546,6 +22419,7 @@
   "cl-dl-magnifica-s",
   "cl-dl-rivelia",
   "cl-dr-d20",
+  "cl-dr-d30",
   "cl-dr-l10s",
   "cl-dualsense",
   "cl-dualsense-edge",
@@ -19615,18 +22489,15 @@
   "cl-metallica-hoodie",
   "cl-metallica-tee",
   "cl-minecraft",
-  "cl-mkw",
   "cl-momentum4",
   "cl-napoleon-handschoen",
   "cl-napoleon-kettle",
   "cl-ninja-ds",
-  "cl-ninja-ds-xl",
   "cl-ninja-flex",
   "cl-ninja-slushi",
   "cl-nirvana-tee",
   "cl-novation-mini25",
   "cl-ooni-karu12",
-  "cl-oura-maat",
   "cl-oura4",
   "cl-oura5",
   "cl-philips-3300-lg",
@@ -19654,6 +22525,7 @@
   "cl-r50v",
   "cl-remington-airvive",
   "cl-remington-x6",
+  "cl-rollei9s",
   "cl-roomba-115",
   "cl-roomba-205",
   "cl-rr-qrevo",
@@ -19670,7 +22542,6 @@
   "cl-soliver-kasjmier",
   "cl-soliver-kerst",
   "cl-soliver-pet",
-  "cl-soliver-pyjamabroek",
   "cl-soliver-riem",
   "cl-soliver-ring",
   "cl-soliver-sjaal",
@@ -19757,6 +22628,20 @@
   "country-dcec20809a",
   "country-e8a8fa0023",
   "country-f035cfed99",
+  "dc-0699f11ed4",
+  "dc-173d9cad3f",
+  "dc-255153fc43",
+  "dc-4fa29f5aef",
+  "dc-52dce5c381",
+  "dc-736bcee6c6",
+  "dc-7bb55b720d",
+  "dc-b3eedc9418",
+  "dc-b5872dbd4f",
+  "dc-b5f6f002c9",
+  "dc-f248fbc5e8",
+  "dc-f5efe492e2",
+  "dc-f6d6aacfaf",
+  "dc-fb22636e49",
   "decantalo-1d85429269",
   "decantalo-4c6ef11dc4",
   "decantalo-5390ca8a59",
@@ -19808,6 +22693,7 @@
   "dgsw-15e1e92cfe",
   "dgsw-16768f4501",
   "dgsw-1b73138a0e",
+  "dgsw-214780c73b",
   "dgsw-21c3e111de",
   "dgsw-23926ccd09",
   "dgsw-2553a053ad",
@@ -19824,12 +22710,15 @@
   "dgsw-3c1358542d",
   "dgsw-3e0440b66c",
   "dgsw-3e07c2d7bf",
+  "dgsw-426333ae43",
   "dgsw-43ac777e9b",
   "dgsw-43ecfdad79",
   "dgsw-4787819424",
+  "dgsw-47b77d3741",
   "dgsw-48e3b06074",
   "dgsw-496b883e55",
   "dgsw-4a0366b1be",
+  "dgsw-4ad030996e",
   "dgsw-52d8f9e4f5",
   "dgsw-54554c2314",
   "dgsw-5827835cf0",
@@ -19864,12 +22753,14 @@
   "dgsw-9afd5e4908",
   "dgsw-a09859bbeb",
   "dgsw-a1a415e558",
+  "dgsw-a42a4b129c",
   "dgsw-abdc1c0813",
   "dgsw-af39be86e2",
   "dgsw-b144f9952d",
   "dgsw-b16899debf",
   "dgsw-b650de6c41",
   "dgsw-bcb99cad72",
+  "dgsw-bdc114c4f0",
   "dgsw-bed7e54c6c",
   "dgsw-c15c790f1b",
   "dgsw-c1b652e703",
@@ -19879,6 +22770,7 @@
   "dgsw-c542080499",
   "dgsw-c56356b0bb",
   "dgsw-c6cdc75b4d",
+  "dgsw-c704b700de",
   "dgsw-ca1b884d94",
   "dgsw-caa4a56e67",
   "dgsw-ce1707b7ab",
@@ -19903,7 +22795,10 @@
   "dgsw-f545db0668",
   "dgsw-f61b16814e",
   "dgsw-f6fe127b2a",
+  "dgsw-f8d291bf6b",
+  "dgsw-fa7e6f4f87",
   "dgsw-fac2ab0178",
+  "dgsw-fc2899235e",
   "dgsw-labubu-big-into-energy",
   "dgsw-labubu-exciting-macaron",
   "dgsw-tiro",
@@ -19924,6 +22819,7 @@
   "dille-58dac9bd47",
   "dille-5ba22441ed",
   "dille-5bc1252e57",
+  "dille-5e455a9ab9",
   "dille-63032ca960",
   "dille-68a59b0154",
   "dille-6b61902ab5",
@@ -20069,13 +22965,18 @@
   "dk-fb5a06cb83",
   "dk-fe6f7d9f70",
   "dkam-4e94fbdc78",
+  "dkam-ba1424427d",
   "drm-eaad95c538",
   "dropwinkel-be009eccf5",
   "dvzn-03096a2e31",
+  "dvzn-0482175e9a",
   "dvzn-04c8cc9a61",
   "dvzn-0574cf0f55",
+  "dvzn-06017594f6",
+  "dvzn-06e0c194cf",
   "dvzn-08db542304",
   "dvzn-0a1c80f181",
+  "dvzn-0b435dbafd",
   "dvzn-0b532e0274",
   "dvzn-0da774b005",
   "dvzn-100184",
@@ -20100,6 +23001,7 @@
   "dvzn-154853",
   "dvzn-155818",
   "dvzn-158179",
+  "dvzn-16077164f9",
   "dvzn-162611",
   "dvzn-172862",
   "dvzn-174651",
@@ -20107,6 +23009,9 @@
   "dvzn-195987",
   "dvzn-196608",
   "dvzn-198055",
+  "dvzn-1a61ae70d9",
+  "dvzn-1bd71f35f4",
+  "dvzn-1c2dd36351",
   "dvzn-201474",
   "dvzn-203087",
   "dvzn-207301",
@@ -20121,7 +23026,7 @@
   "dvzn-228006",
   "dvzn-228023",
   "dvzn-22f0aff1dc",
-  "dvzn-232312",
+  "dvzn-23588bb7fb",
   "dvzn-239078",
   "dvzn-23ad15cb3e",
   "dvzn-243456",
@@ -20147,7 +23052,10 @@
   "dvzn-291755",
   "dvzn-294182",
   "dvzn-296940",
+  "dvzn-2a081e35e0",
+  "dvzn-2ae478263a",
   "dvzn-2e93b23d66",
+  "dvzn-2ff8645a24",
   "dvzn-302017",
   "dvzn-306777",
   "dvzn-310189",
@@ -20159,11 +23067,14 @@
   "dvzn-322602",
   "dvzn-323434",
   "dvzn-323938",
+  "dvzn-326d5595a1",
+  "dvzn-32f325624d",
   "dvzn-330772",
   "dvzn-332357",
   "dvzn-334815",
   "dvzn-339379",
   "dvzn-347250",
+  "dvzn-34abc02c79",
   "dvzn-350531",
   "dvzn-351330",
   "dvzn-352784",
@@ -20185,6 +23096,7 @@
   "dvzn-389378",
   "dvzn-394620",
   "dvzn-3a57f564dd",
+  "dvzn-3ee499eae7",
   "dvzn-401118",
   "dvzn-401757",
   "dvzn-403290",
@@ -20203,6 +23115,7 @@
   "dvzn-435735",
   "dvzn-435773",
   "dvzn-436068",
+  "dvzn-43cb3e6645",
   "dvzn-440155",
   "dvzn-442374cb06",
   "dvzn-443132",
@@ -20227,12 +23140,16 @@
   "dvzn-494959",
   "dvzn-499560",
   "dvzn-49cff9772e",
+  "dvzn-4c1a69ab87",
   "dvzn-4d97c0ab44",
+  "dvzn-4e151f5a0e",
   "dvzn-50112199c1",
   "dvzn-502653",
+  "dvzn-5086867292",
   "dvzn-511426",
   "dvzn-515371",
   "dvzn-516424",
+  "dvzn-517860e43d",
   "dvzn-518148",
   "dvzn-521279",
   "dvzn-52168e65a7",
@@ -20255,26 +23172,34 @@
   "dvzn-567265",
   "dvzn-567465",
   "dvzn-569721",
+  "dvzn-5718c70e17",
   "dvzn-58068de5fa",
   "dvzn-582187",
   "dvzn-583569",
   "dvzn-583761",
   "dvzn-589846",
+  "dvzn-596fad3e4e",
   "dvzn-5a4a71bc8a",
   "dvzn-5beb611cdc",
   "dvzn-5c1606b166",
+  "dvzn-5d8fd7a707",
+  "dvzn-5eb6c4d8fb",
   "dvzn-602613",
   "dvzn-606464",
   "dvzn-606537",
   "dvzn-607762",
   "dvzn-608847",
+  "dvzn-60b44dfc7a",
   "dvzn-60c464eb38",
   "dvzn-610983",
+  "dvzn-6109bcaff3",
   "dvzn-611",
   "dvzn-614180",
   "dvzn-61421270c4",
   "dvzn-614881",
+  "dvzn-620a020072",
   "dvzn-626041",
+  "dvzn-62ef2a06c2",
   "dvzn-633422",
   "dvzn-637174",
   "dvzn-639895",
@@ -20282,6 +23207,7 @@
   "dvzn-647292",
   "dvzn-648493",
   "dvzn-653282",
+  "dvzn-655af9bd06",
   "dvzn-659841",
   "dvzn-660244",
   "dvzn-662540",
@@ -20296,6 +23222,7 @@
   "dvzn-692113",
   "dvzn-6934eb427b",
   "dvzn-6a0d467ccc",
+  "dvzn-6a6fb0dec6",
   "dvzn-6bf42f846e",
   "dvzn-6f05bbb089",
   "dvzn-702314",
@@ -20307,6 +23234,7 @@
   "dvzn-723463",
   "dvzn-725638",
   "dvzn-726291",
+  "dvzn-7317cbf13a",
   "dvzn-732907ae36",
   "dvzn-733439",
   "dvzn-734300",
@@ -20317,6 +23245,7 @@
   "dvzn-746890",
   "dvzn-748566",
   "dvzn-750607",
+  "dvzn-752ec1ad3d",
   "dvzn-753329",
   "dvzn-753721",
   "dvzn-757883",
@@ -20324,6 +23253,7 @@
   "dvzn-761956",
   "dvzn-762707",
   "dvzn-763974",
+  "dvzn-7670dc54f5",
   "dvzn-779391",
   "dvzn-783555",
   "dvzn-783693",
@@ -20335,6 +23265,9 @@
   "dvzn-7c4c1185c2",
   "dvzn-7c5be52edb",
   "dvzn-7e62ce4f3d",
+  "dvzn-7ed319ef34",
+  "dvzn-7f3420e5ad",
+  "dvzn-7fa21f9ec9",
   "dvzn-801397",
   "dvzn-803101",
   "dvzn-803303",
@@ -20357,14 +23290,18 @@
   "dvzn-849140",
   "dvzn-858695",
   "dvzn-859756",
+  "dvzn-8607c53284",
   "dvzn-863286",
   "dvzn-863632",
   "dvzn-8689e02134",
+  "dvzn-868decc4c6",
   "dvzn-871551",
   "dvzn-873615",
   "dvzn-878250",
+  "dvzn-87965e50f5",
   "dvzn-880752",
   "dvzn-880877",
+  "dvzn-880ebf0fce",
   "dvzn-882928",
   "dvzn-887823",
   "dvzn-888578",
@@ -20377,6 +23314,7 @@
   "dvzn-915338",
   "dvzn-916237",
   "dvzn-919980",
+  "dvzn-91be613ae8",
   "dvzn-92130ccb88",
   "dvzn-924914",
   "dvzn-927119",
@@ -20384,6 +23322,7 @@
   "dvzn-938751",
   "dvzn-947979",
   "dvzn-965759",
+  "dvzn-9688f84b76",
   "dvzn-972727",
   "dvzn-976239",
   "dvzn-97babccebf",
@@ -20394,7 +23333,11 @@
   "dvzn-995742",
   "dvzn-995816",
   "dvzn-998859",
+  "dvzn-9b7575d0e1",
+  "dvzn-9c6e6309c6",
+  "dvzn-9fa32eee7e",
   "dvzn-9fcc4ad333",
+  "dvzn-a003b63b40",
   "dvzn-a3a5c81ea8",
   "dvzn-a4ed4f69b9",
   "dvzn-a97a32e968",
@@ -20403,8 +23346,10 @@
   "dvzn-aa0c45fc44",
   "dvzn-ab683e6acf",
   "dvzn-airhockey",
+  "dvzn-b2451c0bf0",
   "dvzn-b2aa854352",
   "dvzn-b3bd17a3c5",
+  "dvzn-b584c30354",
   "dvzn-b8bc4c15c3",
   "dvzn-bcf306e8b9",
   "dvzn-befe32d2ff",
@@ -20416,20 +23361,39 @@
   "dvzn-cf5281b9f2",
   "dvzn-d06d85e764",
   "dvzn-d16eec6ed0",
+  "dvzn-d1e1776af6",
   "dvzn-d79ce0f76c",
+  "dvzn-db94064ffb",
   "dvzn-dbce378d1c",
   "dvzn-dcc8e0b22d",
+  "dvzn-dcd93d79e7",
+  "dvzn-ddab8fc83d",
+  "dvzn-de850bc27f",
+  "dvzn-df22fba87c",
   "dvzn-e3159cc06a",
+  "dvzn-e5a1c9fee7",
+  "dvzn-e5d9f429c7",
   "dvzn-e8f2771b4a",
+  "dvzn-e92d24af8c",
+  "dvzn-ebc9e55f71",
   "dvzn-ed71392698",
+  "dvzn-ee583a5fcb",
   "dvzn-f07d61bc31",
+  "dvzn-f5059f5782",
   "dvzn-f55e335a8c",
   "dvzn-f893ee9d46",
+  "dvzn-f8c667585b",
   "dvzn-f9a2716ae2",
+  "dvzn-f9a524b9f9",
+  "dvzn-fa20b1c9c1",
   "dvzn-fb498e30f3",
+  "dvzn-fcb853102a",
+  "dvzn-fcca193d6c",
+  "dvzn-fdd7c310b4",
+  "dvzn-fe5155cbab",
+  "dvzn-ff260a4e39",
   "dvzn-stroopwafelclip",
   "emp-011be2f8cb",
-  "emp-100c8f85bc",
   "emp-158c174b58",
   "emp-1b75c906ec",
   "emp-21c67a58dc",
@@ -20468,7 +23432,6 @@
   "emp-e0ce32bb1c",
   "emp-e4f7c656bc",
   "emp-ea05ec9b56",
-  "emp-ec3a9d7aa5",
   "emp-ed1055a6cd",
   "emp-fd8fab1038",
   "emp-fea1a14374",
@@ -20485,6 +23448,7 @@
   "fietsparadijs-fbad609df6",
   "fiftie-0043d7b3c4",
   "fiftie-02b40906b3",
+  "fiftie-0328c85ef6",
   "fiftie-06dee9ff79",
   "fiftie-0fff99e7e8",
   "fiftie-11ff6b82c6",
@@ -20502,7 +23466,9 @@
   "fiftie-87ba9892bd",
   "fiftie-8aa3d695c2",
   "fiftie-92d41012a4",
+  "fiftie-9a84f7e5a0",
   "fiftie-a676528cc5",
+  "fiftie-b848fd6c6e",
   "fiftie-c634bd1714",
   "fiftie-dab33dc9de",
   "fiftie-f002c3e41c",
@@ -20514,7 +23480,9 @@
   "fotof-875c742de2",
   "fotof-d0f56e3a38",
   "fotof-e8db06d7cc",
+  "g999-1da5b5e339",
   "g999-3e3a0dfe43",
+  "g999-94cd4809c5",
   "gadget-093c6c6544",
   "gadget-85e1fb69f3",
   "gadget-9725656615",
@@ -20688,7 +23656,6 @@
   "grotek-bba7026c15",
   "grotek-bcb4e114fa",
   "grotek-bf50bef78c",
-  "grotek-c14121789e",
   "grotek-c5bba62707",
   "grotek-c64f685d2c",
   "grotek-c664e1adbd",
@@ -20759,6 +23726,7 @@
   "hema-285496e5fc",
   "hema-28921500a4",
   "hema-2c732f4838",
+  "hema-320d4759b0",
   "hema-32d780c657",
   "hema-33d8a73d1b",
   "hema-3bbc996968",
@@ -20776,6 +23744,7 @@
   "hema-4d4d29e947",
   "hema-4e2704e2f5",
   "hema-4e5f57602c",
+  "hema-4f711f0ecd",
   "hema-50ef22a166",
   "hema-55e9be5dde",
   "hema-56b7b09988",
@@ -20783,6 +23752,7 @@
   "hema-58465f2eed",
   "hema-5b65ae0dd0",
   "hema-5b76d81493",
+  "hema-5c9392b1f3",
   "hema-5cc5f6717b",
   "hema-5ded232893",
   "hema-617bd49d84",
@@ -20812,10 +23782,10 @@
   "hema-7d5fc62ef7",
   "hema-7f2c6ddbe8",
   "hema-7f363974d9",
+  "hema-804b7f818c",
   "hema-80b92bb823",
   "hema-80e43f0ce3",
   "hema-811ea72c01",
-  "hema-81292a28be",
   "hema-83ab868408",
   "hema-84046660d6",
   "hema-84812eeeed",
@@ -20835,6 +23805,7 @@
   "hema-97de057cac",
   "hema-986c321ef0",
   "hema-9b805157bb",
+  "hema-9bfed9efff",
   "hema-9c923e1a87",
   "hema-a3e3f0690a",
   "hema-a4721f1ec2",
@@ -20861,6 +23832,7 @@
   "hema-bade0847e3",
   "hema-bbadfb5371",
   "hema-c0c2446134",
+  "hema-c22b5ecef5",
   "hema-c2ba18b748",
   "hema-c3f82b6414",
   "hema-c713f4b358",
@@ -20880,6 +23852,7 @@
   "hema-d98fcda3b6",
   "hema-dcc94b7809",
   "hema-dccaac0118",
+  "hema-de0aba6002",
   "hema-e06cdef1b1",
   "hema-e5511701de",
   "hema-e9c1e6219b",
@@ -20893,10 +23866,10 @@
   "hema-f0b1839331",
   "hema-f157ea9faa",
   "hema-f2955585b4",
+  "hema-f2e3bb45a1",
   "hema-f3cad50182",
   "hema-f60e4f4ca2",
   "hema-f6cec92895",
-  "hema-f6ceddb9e1",
   "hema-f76263161b",
   "hema-f83c5e577c",
   "hema-f8513f86cf",
@@ -20910,6 +23883,7 @@
   "hema-fe88172732",
   "hema-ff5e37e48f",
   "hema-ff945a05d7",
+  "hema-fff75ba577",
   "hobbym-039084a98c",
   "hobbym-0cf09e6ed4",
   "hobbym-0d5bd1cc77",
@@ -20930,6 +23904,7 @@
   "hobbym-a4cb639eb3",
   "hobbym-ba00737426",
   "hobbym-c698125695",
+  "hobbym-cc513083ec",
   "hobbym-cd3e05cf88",
   "hobbym-cfe3d81cbf",
   "hobbym-e418a22452",
@@ -21056,7 +24031,6 @@
   "kadove-148594d9a9",
   "kadove-14d74602e8",
   "kadove-17636bdd68",
-  "kadove-1c107f8767",
   "kadove-2149d2a6b9",
   "kadove-22198e086d",
   "kadove-24b3fbab77",
@@ -21188,6 +24162,7 @@
   "legoshop-18423efb5e",
   "legoshop-521626b009",
   "legoshop-9d0feabaa2",
+  "legoshop-b244e8a6e3",
   "lgt-07f897f1f7",
   "lgt-0940f22834",
   "lgt-10626cbf63",
@@ -21245,6 +24220,9 @@
   "louiz-c49b9a4a17",
   "louiz-e26df60878",
   "majak-b0f584ad3e",
+  "massa-4eb4710fb1",
+  "massa-c86f190c42",
+  "massa-d3bbafbc28",
   "meubel-f810f9d809",
   "miscota-50154fd205",
   "mmf-1d89397ad0",
@@ -21292,6 +24270,7 @@
   "nedg-1e813d41b2",
   "nedg-1ed80cdff7",
   "nedg-1f61e10b03",
+  "nedg-283d80078f",
   "nedg-2d206d4e0d",
   "nedg-30a4e51911",
   "nedg-3d5c3351d1",
@@ -21307,6 +24286,7 @@
   "nedg-5aacc8cc59",
   "nedg-5bab02d247",
   "nedg-5c1470fc82",
+  "nedg-5f68137a74",
   "nedg-622e756131",
   "nedg-635d05fe70",
   "nedg-63694fe146",
@@ -21346,6 +24326,7 @@
   "nedg-e1c207aa08",
   "nedg-e1cd4db186",
   "nedg-e2ebf79499",
+  "nedg-e39bcb63af",
   "nedg-e5b202d439",
   "nedg-ece6eb7663",
   "nedg-ed4cea97a9",
@@ -21383,7 +24364,6 @@
   "nedgam-4c0879c635",
   "nedgam-534c828f2f",
   "nedgam-557516bc97",
-  "nedgam-5bb77f29a4",
   "nedgam-6a3bb5dff8",
   "nedgam-6ae42c81d2",
   "nedgam-6af2c3fcf9",
@@ -21436,6 +24416,38 @@
   "olijfc-8fbf646147",
   "olijfc-d56dd03c7e",
   "olijfc-f41ab9a07d",
+  "parfum-067d9ab2ad",
+  "parfum-085898387c",
+  "parfum-1013a17927",
+  "parfum-18c6d9dd8c",
+  "parfum-3cb130fee6",
+  "parfum-45d8b68540",
+  "parfum-45dbbae7b4",
+  "parfum-472c1efb0c",
+  "parfum-4860650e33",
+  "parfum-5519078921",
+  "parfum-57674e1f3a",
+  "parfum-5d60f64e0e",
+  "parfum-620914cb08",
+  "parfum-6aae891b32",
+  "parfum-74f01b08b6",
+  "parfum-79e274528c",
+  "parfum-7dcafd557e",
+  "parfum-7e28f46e8a",
+  "parfum-80840d7cc9",
+  "parfum-9490aa6fa1",
+  "parfum-981dabec99",
+  "parfum-9cb9f8b1fe",
+  "parfum-9de373db2d",
+  "parfum-ab22c2229e",
+  "parfum-b9f59fd144",
+  "parfum-c5868ad51d",
+  "parfum-cadae14860",
+  "parfum-ce6b918fdb",
+  "parfum-d45daa19ee",
+  "parfum-de4b8c1c10",
+  "parfum-deb03d0333",
+  "parfum-ec207acbc6",
   "placet-5afc5d2edc",
   "prepz-46fa0db271",
   "prepz-6b262c7087",
@@ -21463,7 +24475,6 @@
   "smartp-17fbaa1306",
   "smartp-1ed3987d88",
   "smartp-2a3d5c6aae",
-  "smartp-39a99f9461",
   "smartp-4849c81cba",
   "smartp-48b3d1162c",
   "smartp-4d8aa9b834",
@@ -21494,7 +24505,6 @@
   "so-jacquard-sjaal",
   "so-oorwarmers",
   "so-pailletten-beanie",
-  "so-teddy-luipaard",
   "so-teddy-shopper",
   "sp-babyset-nijntje",
   "spaar-0d768bd10c",
@@ -21523,6 +24533,7 @@
   "stroop-ceb8bebc71",
   "stroop-d2b7550f1b",
   "stroop-f4f726a414",
+  "superz-00e4bf8a6e",
   "superz-051f006eb2",
   "superz-0acef33ce7",
   "superz-0e7855affa",
@@ -21561,6 +24572,7 @@
   "superz-beb8642e65",
   "superz-c12b7aab68",
   "superz-c662b078bc",
+  "superz-c974254a92",
   "superz-db1905d9fb",
   "superz-f0bcb74ad1",
   "superz-f16bbf44cc",
@@ -21579,8 +24591,23 @@
   "surpr-33e82ea133",
   "surpr-7abb2edc5a",
   "surpr-bc78b0ec78",
+  "surpro-3601199181",
+  "surpro-3d6fe025f4",
+  "surpro-3ead34f5fd",
+  "surpro-6aa8b93129",
+  "surpro-af8f8ae72c",
+  "surpro-cd686e168b",
+  "surpro-e5e6560c14",
+  "surpro-ef03a471bb",
+  "surpro-f1ac81dce9",
+  "tf-465bd8d2c7",
   "tf-740190773a",
+  "tf-749c0d6817",
   "tf-7714b5af06",
+  "tf-836f48562d",
+  "tf-a7b6b66d8f",
+  "tf-a872052a74",
+  "tf-eaf1998dcc",
   "topdea-10b5ba65b8",
   "topdea-7de34c6a15",
   "topdea-955e8f176e",
@@ -21802,6 +24829,7 @@
   "westwing-ff826b515f",
   "westwing-fff7cfda46",
   "wijnkring-f931d1f82b",
+  "wk-3878b43168",
   "wny-066ae8130b",
   "wny-10932",
   "wny-10934",
@@ -21809,7 +24837,6 @@
   "wny-11822",
   "wny-12013",
   "wny-12118",
-  "wny-12569",
   "wny-1277218771",
   "wny-12929",
   "wny-13808",
@@ -21817,7 +24844,6 @@
   "wny-15618",
   "wny-15b220e392",
   "wny-16507",
-  "wny-16553",
   "wny-16919",
   "wny-2413",
   "wny-3062",
@@ -21835,6 +24861,7 @@
   "wny-9732",
   "wny-9734",
   "wny-dad120ac7e",
+  "wny-f28bc991db",
   "woodw-bbae996ce8",
   "woodwick-551d1881f4",
   "wwk-17a10d7442",
@@ -21847,10 +24874,10 @@
   "yourd-defb1a3ef4"
  ],
  "samenvatting": {
-  "live": 10974,
-  "gecontroleerd": 6451,
-  "prijsVeranderd": 47,
-  "uitverkocht": 0,
-  "nietInFeed": 2972
+  "live": 11098,
+  "gecontroleerd": 6501,
+  "prijsVeranderd": 475,
+  "uitverkocht": 4,
+  "nietInFeed": 3048
  }
 }
