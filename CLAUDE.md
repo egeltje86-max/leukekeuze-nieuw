@@ -214,7 +214,7 @@ Marius: 'ik heb een nieuwe partner iScooter, die hebben hele gave spullen'; na d
 - **Eerlijk over de weg** (nagekeken bij de Rijksoverheid, 12-11): een elektrische step mag in Nederland alleen op de openbare weg als hij door de RDW is goedgekeurd en een kenteken heeft; iScooter noemt geen Nederlandse goedkeuring. Daarom staat op elke productpagina in het vakje Elektrische steps vanzelf een regel daarover (app.js, bij `letOp`), bij de crossmotor 'alleen voor eigen terrein' en bij de fietsen de regel van 250 watt en 25 km per uur. Zeg nooit dat een step de weg op mag als de winkel dat niet aantoont.
 - **Geen doorgestreepte prijzen**: de 'van'-prijzen van de winkel (tot 70%) tonen we niet.
 - De feed kwam uit Marius' eigen feedlijst van Awin; hij gaf daar toestemming voor ('open mijn feed van awin'). De sleutel in die link is alleen op de laptop gebruikt en staat nergens opgeslagen. Voor nieuwe producten van iScooter: de openbare productpagina's van de winkel, de sleutel niet opnieuw gebruiken zonder dat Marius het zegt.
-- **Sample**: iScooter biedt via Awin een gratis product voor een review aan. Er staat een concept-mail klaar in Gmail (aan affiliate@iscooterglobal.eu) met de vraag hoe dat werkt; Marius verstuurt hem zelf.
+- **Sample**: iScooter biedt via Awin een gratis product voor een review aan. Marius heeft de mail aan affiliate@iscooterglobal.eu (vraag hoe dat werkt) op 12-11-2026 zelf verstuurd; wacht op antwoord. Bij een antwoord: alleen een concept-antwoord maken, Marius verstuurt.
 - Reels (op verzoek): zeven foto's en een video voor Instagram in `Desktop\Feedzoeker LeukeKeuze\Reels 12-11\iScooter`. Marius plaatst zelf.
 
 ## 17. Zoekbalk sterker en Google-adressen (12-11-2026, opdracht Marius)
