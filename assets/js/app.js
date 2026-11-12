@@ -347,6 +347,7 @@
   /* 'Aanbevolen': een mooie mix. Favorieten eerst, daarna goedkoop en duur door elkaar,
      verschillende winkels om en om, nieuwe producten iets naar voren.
      De volgorde schuift elke week een beetje, zodat nieuwe producten vanzelf meedoen. */
+  var WINKEL_VERKOOPT = { 'Ditverzinjeniet': 1, 'Dille & Kamille': 1, 'HEMA': 1, 'Amazon': 1 }; /* winkels waar bij ons echt gekocht is (12-11-2026) */
   function mixGetal(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
   /* 3.0 (5-11-2026, Marius en Nova): 'Aanbevolen' = de beste, meest gezochte cadeaus bovenaan, goed gemixt.
      p.rang komt uit scripts/boom/rang.py (cadeau-niveau van het vakje, wat klanten graag willen, toppers, nieuwe toppers, echte kliks).
@@ -359,6 +360,9 @@
     var GRENZEN = [15, 30, 60, 120, Infinity];
     var l = lijst.map(function (p) {
       var s = (typeof p.rang === 'number' ? p.rang : 0.55) + (mixGetal(p.id + '|' + week) - 0.5) * 0.12 + (p.beeld ? 0 : -0.5);
+      /* 12-11-2026 (GO Marius: 'laat bol verschuiven'): bol leverde van 1 okt tot 12 nov geen enkele verkoop op, Ditverzinjeniet,
+         Dille & Kamille, HEMA en Amazon wel. Bol schuift daarom wat naar achteren, die winkels wat naar voren. Er gaat niets weg. */
+      s += (!p.shop || p.shop === 'bol') ? -0.06 : (WINKEL_VERKOOPT[p.shop] ? 0.06 : 0);
       if (kind) s += (p.afd === 'speelgoed' || p.afd === 'spellen-puzzels') ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'koken-tafelen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
       if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen' || (p.afd === 'spellen-puzzels' && p.groep !== 'puzzels'))) s += 0.1;
       /* 9-11-2026 (GO Marius): bezoekers klikken vooral op cadeaus onder €25 (middelste klikprijs €21, op de site €28).
