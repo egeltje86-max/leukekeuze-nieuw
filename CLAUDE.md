@@ -191,3 +191,12 @@ Marius: 'je kan niks specifiek gemakkelijk kiezen, bijvoorbeeld darts of whisky;
 - Een soort erbij bij 'Vaak gezocht': de lijst `SRT_VAAK` (naam, adres, naam van het plaatje in `images/sub/iconen/`). Nooit twee tegels uit dezelfde hoek. Een nieuwe groep of soort komt vanzelf op de pagina zodra er producten in staan.
 - Fotoreel 12-11 ('Lootje getrokken? 5 grappige cadeaus onder € 15', op verzoek van Marius): `Desktop\Feedzoeker LeukeKeuze\Reels 12-11`.
 
+## 15. Partnerronde: de partners één voor één langs (gestart 12-11-2026, opdracht Marius)
+Marius: 'ga één voor één de partners langs met leuke cadeaus, begin gewoon bij de eerste en laat me de leukste cadeaus zien die nog niet op de site staan, gemixt voor jong en oud; heeft de partner alleen volwassen of alleen jong, laat dan alleen dat zien'.
+- **Volgorde**: de winkels in de zoekindex (`assets/zoek/alle.json.gz`) op alfabet, alleen winkels met leuke cadeaus (geen gereedschap, meubels, kleding in maten, losse onderdelen). Gedaan: 1. 999 Games (12 van de 37 gekozen, live 12-11). 2. Animals Giftshop (lijst staat klaar). Daarna: Bellatio, Bloompost, Boardgameshop, Cadeau.nl, Cartoon Megastore, CoolGift, Countrylifestyle, De Grote Speelgoedwinkel, Dille & Kamille, Ditverzinjeniet, Doenkado, enzovoort.
+- **Per partner**: een ERBIJ-lijst (artifact met `db`, document `keuze/partner-<naam>`) met 20 tot 40 cadeaus in groepen (voor kinderen, voor het gezin, voor volwassenen, of wat bij de winkel past). Zegt Marius 'klaar': keuzes ophalen, op de site zetten, bouwen, live, en meteen de lijst van de volgende partner klaarzetten.
+- **Dubbelen met de hand wegen**: de site heeft hetzelfde product vaak al via bol of een andere winkel, met een andere titel ('Keer op Keer (bol)'). Zoek dus op de naam van het product in `producten-lean.js`, niet alleen op de winkel. Geen uitbreidingen, scoreblokken, Engelstalige versies of losse onderdelen.
+- **Voor het live gaat**: de pagina van de winkel nakijken via de laptop (prijs, op voorraad, wat de winkel er zelf over zegt) en de tekst daarop baseren. Bij 999 Games: alle twaalf op voorraad en de prijs gelijk aan de lijst.
+- Spellen krijgen na `voegtoe.py` de oude labels `cat: 'speelgoed'`, `sub: 'bord-kaartspellen'` (puzzels: `sub: 'puzzels'`), zoals de andere spellen.
+- Hulpjes staan in de werkmap van de sessie (`partners/maak_lijst.py`, `partners/uitpak.py`); foto's komen in één pakket via de laptop (`controlroom\haal-pak2.py <naam>`), want de cloud kan de winkels niet bereiken.
+
