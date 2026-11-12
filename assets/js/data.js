@@ -1376,6 +1376,17 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde bestuurbare auto's ===== */
 
+/* ===== 12-11-2026 (wens Marius bij partner Droptelegram: 'maak een rubriek sorry snoep ofzo maar dan nettere tekst'): eigen vakje 'Snoep met een boodschap'
+   bij Eten & drinken > Chocolade & snoep: doosjes drop, snoep en bonbons door de brievenbus met een tekst op de wikkel (Het spijt me, Gefeliciteerd, Beterschap ...).
+   Dit blok staat bewust los van de gemaakte boom (3.0) en voor de verhuizing (4.0). ===== */
+(function () {
+  var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'eten-drinken' && !x.verborgen; })[0];
+  var s = c && (c.subs || []).filter(function (x) { return x.slug === 'chocolade-snoep' && x.vakjes && !x.verborgen; })[0];
+  if (!s || s.vakjes.some(function (v) { return v.slug === 'snoep-met-een-boodschap'; })) return;
+  s.vakjes.push({ slug: 'snoep-met-een-boodschap', naam: 'Snoep met een boodschap', tekst: 'Zeg sorry, gefeliciteerd of beterschap met een doosje drop, snoep of bonbons door de brievenbus. Je kiest bij de winkel zelf de tekst op de wikkel en er gaat een kaartje met je eigen woorden bij.' });
+})();
+/* ===== einde snoep met een boodschap ===== */
+
 /* ===== 4.0 VERHUIZING (proef 11-11-2026): 15 hoofdcategorieën. GEMAAKT DOOR scripts/boom/verhuis.js uit scripts/boom/verhuizing.json – niet met de hand bewerken.
    De boom hierboven (3.0 en alle aanvullingen) wordt hier omgezet naar de nieuwe indeling. Oude adressen sturen door; zie scripts/boom/verhuis-kern.js voor de uitleg. ===== */
 function LK_VERHUIS(L, T) {

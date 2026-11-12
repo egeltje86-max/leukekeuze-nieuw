@@ -626,6 +626,31 @@
    "behalve": "don papa|papa niet wakker|mama surprise|mama & baby|mamma mia|angry mama|opa's|kieteltenen",
    "zacht": 1,
    "paginas": "moederdag|vaderdag|baby|geboorte|kraam|persoonlijk"
+  },
+  "sorry": {
+   "woorden": "wikkel 'het spijt me'",
+   "personen": "geen",
+   "paginas": "snoep-met-een-boodschap|chocolade-snoep"
+  },
+  "beterschap": {
+   "woorden": "beterschap|opkikker",
+   "personen": ".",
+   "paginas": "beterschap|snoep|brievenbus|kleine-cadeautjes|onder-15"
+  },
+  "felicitatie": {
+   "woorden": "cadeaudoosje gefeliciteerd",
+   "personen": ".",
+   "paginas": "verjaardag|geslaagd|snoep|brievenbus|kleine-cadeautjes|onder-15"
+  },
+  "geslaagd": {
+   "woorden": "geslaagd|examen|apetrots|diploma",
+   "personen": "tieners|kinderen",
+   "paginas": "geslaagd|snoep|brievenbus|kleine-cadeautjes"
+  },
+  "liefde": {
+   "woorden": "wikkel 'dikke kus'",
+   "personen": "haar|hem",
+   "paginas": "valentijn|snoep|brievenbus|kleine-cadeautjes"
   }
  },
  "hoofd_veilig": {

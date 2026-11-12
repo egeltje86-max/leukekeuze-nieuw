@@ -276,7 +276,12 @@
   var SMAL_PAG = {
     pensioen: [/collega|opa-oma/, /pensioen|afscheid|opa-oma/], grootouder: [/opa-oma|baby/, /opa-oma|geboorte|baby/], zwanger: [/baby/, /babyshower|zwanger/],
     juf: [/collega/, /juf|collega|bedank/], leeftijd: [/opa-oma/, /verjaardag|opa-oma/], collega: [/collega/, /collega|bedank|afscheid/], trouw: [/geen/, /jubileum|bruiloft|trouw/],
-    ouder: [null, /moederdag|vaderdag|baby|geboorte|kraam|persoonlijk/]
+    ouder: [null, /moederdag|vaderdag|baby|geboorte|kraam|persoonlijk/],
+    /* 12-11-2026: snoepdoosjes met 'Het spijt me' op de wikkel (Droptelegram) staan alleen in hun eigen vakje en bij Chocolade & snoep. */
+    sorry: [/geen/, /snoep-met-een-boodschap|chocolade-snoep/],
+    /* 12-11-2026: doosjes met een tekst voor één moment (beterschap, gefeliciteerd, geslaagd, een kus) alleen op de pagina van dat moment. */
+    beterschap: [null, /beterschap|snoep|brievenbus|kleine-cadeautjes|onder-15/], felicitatie: [null, /verjaardag|geslaagd|snoep|brievenbus|kleine-cadeautjes|onder-15/],
+    geslaagd: [/tieners|kinderen/, /geslaagd|snoep|brievenbus|kleine-cadeautjes/], liefde: [/haar|hem/, /valentijn|snoep|brievenbus|kleine-cadeautjes/]
   };
   function smalBij(p, slug) { var r = p.smal && SMAL_PAG[p.smal]; return !r || !r[0] || r[0].test(slug); }
   /* 11-11-2026 (Marius: 'je wilt schoencadeautjes voor kinderen zien, alleen voor kinderen'): is dit zeker een cadeau voor een kind?
@@ -1394,7 +1399,7 @@
   /* Andere woorden waarop je een soort ook vindt in het zoekvakje van deze pagina. */
   var SRT_OOK = { 'whisky': 'whiskey drank sterke drank', 'gin': 'drank sterke drank', 'rum': 'drank sterke drank', 'wodka': 'vodka drank', 'likeur': 'drank', 'cognac': 'drank', 'tequila': 'drank', 'speciaalbier': 'bier drank', 'bierpakketten': 'bier drank',
     'rode-wijn': 'drank', 'witte-wijn': 'drank', 'rose': 'drank wijn', 'champagne': 'bubbels drank', 'prosecco-cava': 'bubbels drank', 'dameshorloges': 'horloge klokje', 'herenhorloges': 'horloge klokje', 'dartborden': 'darts darten', 'dartpijlen': 'darts darten pijltjes',
-    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'elektrische-steps': 'e-step estep step scooter', 'elektrische-fietsen': 'e-bike ebike fiets fatbike', 'elektrische-rc-auto-s': 'rc auto bestuurbare radiografisch', 'rc-auto-s-op-brandstof': 'rc auto bestuurbare nitro benzine radiografisch', 'rc-auto-s-voor-beginners': 'rc auto bestuurbare radiografisch kind', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
+    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'elektrische-steps': 'e-step estep step scooter', 'elektrische-fietsen': 'e-bike ebike fiets fatbike', 'snoep-met-een-boodschap': 'sorry spijt goedmaken excuses droptelegram snoeptelegram brievenbus beterschap gefeliciteerd bedankt', 'elektrische-rc-auto-s': 'rc auto bestuurbare radiografisch', 'rc-auto-s-op-brandstof': 'rc auto bestuurbare nitro benzine radiografisch', 'rc-auto-s-voor-beginners': 'rc auto bestuurbare radiografisch kind', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
   /* Twee ingangen naast elkaar: een cadeau zoeken (voor wie, moment, bedrag) of een product zoeken (op soort). */
   function soortWissel(aan) {
     if (!SOORTEN) return '';
@@ -2248,7 +2253,7 @@
     'cadeaus/collega': 'juf meester leerkracht', 'cadeaus/voor-kinderen': 'tiener' };
   /* 3.0 (5-11-2026): ook de nieuwe boom (afdeling > groep > vakje) telt mee bij zoeken, plus extra woorden per vakje.
      Zo vindt 'bordspel' alle bordspellen en 'kerstboom' het vakje Kerstbomen & kransen. */
-  var VAKSYN = { 'elektrische-rc-auto-s': 'rc auto rc-auto bestuurbare auto radiografisch', 'rc-auto-s-op-brandstof': 'rc auto rc-auto bestuurbare auto nitro benzine brandstof', 'rc-auto-s-voor-beginners': 'rc auto rc-auto bestuurbare auto radiografisch', 'elektrische-fietsen': 'ebike e-bike fatbike elektrische fiets stadsfiets vouwfiets', 'elektrische-steps': 'estep e-step escooter e-scooter elektrische step', 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
+  var VAKSYN = { 'snoep-met-een-boodschap': 'sorry het spijt me goedmaken excuses droptelegram snoeptelegram brievenbus snoep', 'elektrische-rc-auto-s': 'rc auto rc-auto bestuurbare auto radiografisch', 'rc-auto-s-op-brandstof': 'rc auto rc-auto bestuurbare auto nitro benzine brandstof', 'rc-auto-s-voor-beginners': 'rc auto rc-auto bestuurbare auto radiografisch', 'elektrische-fietsen': 'ebike e-bike fatbike elektrische fiets stadsfiets vouwfiets', 'elektrische-steps': 'estep e-step escooter e-scooter elektrische step', 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
     'dameshorloges': 'dameshorloge horloge dames', 'herenhorloges': 'herenhorloge horloge heren', 'koptelefoons': 'koptelefoon headphone', 'oordopjes': 'oortjes earbuds oordopjes koptelefoon',
     'gaming-headsets': 'headset koptelefoon', 'bordspellen-voor-het-gezin': 'bordspel gezelschapsspel', 'strategiespellen': 'bordspel strategiespel', 'partyspellen': 'bordspel partyspel',
     'kinderspellen': 'bordspel kinderspel', 'kaart-dobbelspellen': 'kaartspel dobbelspel', 'squishmallows': 'squishmallow knuffel', 'dartborden': 'dartbord darts', 'dartpijlen': 'darts dartpijl pijltjes',
