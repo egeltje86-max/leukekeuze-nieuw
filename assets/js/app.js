@@ -4055,6 +4055,34 @@
           ids: ['nedgam-8468857b69', 'cl-pokemon-klok', 'superz-9a3d0a0bd5', 'supz-601c903233'] }
       ],
       slot: 'Veel meer staat bij <a href="/voor/kinderen">Cadeaus voor kinderen</a>. Wil je weten wat er nu hip is op het schoolplein? Lees <a href="/gids/hypes-2026">De hypes van 2026</a>. En bekroond speelgoed vind je in <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>.' },
+    /* 12-11-2026 (Marius: 'begin met antwoordpagina's'): pagina's die één vraag beantwoorden die mensen aan Google en ChatGPT stellen.
+       'cadeau jongen/meisje <leeftijd> jaar' wordt in Nederland duizenden keren per maand gezocht en bijna niemand heeft er een goede pagina voor.
+       Eén pagina per leeftijd voor jongens én meisjes. Alleen cadeaus waarvan de leeftijd op de doos klopt (LEGO-sets nagekeken). */
+    { slug: 'cadeau-kind-8-jaar', beeld: 'cl-bol-gravitrax-start', vakken: [], leeftijd: 8,
+      titel: 'Cadeau voor een kind van 8 jaar: 24 ideeën voor jongens en meisjes', kort: 'Voor je zoon, dochter, neef, nicht of een klasgenootje uit groep 5.',
+      intro: 'Wat geef je een kind van 8? Iets om te dóén. Op deze leeftijd zitten kinderen meestal in groep 5: ze kunnen goed lezen, snappen de regels van een echt spel en willen iets bouwen, maken of winnen. De beste cadeaus zijn daarom een bouwset, een spel voor het hele gezin, een proefjesdoos of iets van waar ze nu fan van zijn, zoals Pokémon, Minecraft of KPop Demon Hunters. Hieronder staan 24 ideeën in zes soorten, van een pakje Pokémonkaarten tot een knikkerbaan om mee door te bouwen.',
+      delen: [
+        { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:',
+          lijst: [
+            'Vraag de ouders waar het kind nu gek op is. Iets van de favoriete game, film of serie valt bijna altijd goed.',
+            'Kies iets om te doen: bouwen, maken, spelen. Op deze leeftijd houden kinderen dat al lang vol.',
+            'Kijk op de doos: \'vanaf 8\' of jonger past. Staat er \'vanaf 10\', dan is het vaak nog te moeilijk.',
+            'Voor een feestje van een klasgenootje: in elke soort hieronder staat ook iets van rond de 10 euro of minder.'
+          ] },
+        { kop: 'Bouwen', tekst: 'Een kind van 8 bouwt al zelf, met het boekje erbij. Een knikkerbaan of een auto die echt rijdt houdt het lang leuk.',
+          ids: ['lego-72032', 'bol-9300000237345467', 'bol-9300000157956303', 'cl-bol-gravitrax-start'] },
+        { kop: 'Spellen voor het hele gezin', tekst: 'Snelle spellen die een kind van 8 zelf kan winnen, ook van de grote mensen.',
+          ids: ['cl-uno', 'bol-9300000276376648', 'bol-9300000002863037', 'bol-9200000111976144'] },
+        { kop: 'Proefjes en ontdekken', tekst: 'Slijm, stuiterballen en toverdrankjes: proefjes waarbij echt iets gebeurt.',
+          ids: ['cl-ses-slime', 'cl-ko-stuiter', 'bol-9300000277687709', 'cl-br-junior'] },
+        { kop: 'Zelf iets maken', tekst: 'Armbandjes, strijkkralen en squishy\'s: iets maken dat je daarna kunt laten zien of weggeven.',
+          ids: ['cl-hama-3000', 'bol-9300000251039737', 'cl-ds-maker', 'cl-cl-hp-terra'] },
+        { kop: 'Voor de fans', tekst: 'Pokémon, Minecraft en KPop Demon Hunters zijn dit jaar de grote hypes op het schoolplein.',
+          ids: ['cl-pk-booster', 'cl-pikachu-cord', 'cl-minecraft', 'bol-9300000252262288'] },
+        { kop: 'Buiten en bewegen', tekst: 'Voor het kind dat niet stil kan zitten: voetballen, schieten op een doel, racen of rolschaatsen.',
+          ids: ['cl-nerf-target', 'cl-adidas-bal', 'cl-carrera-fold', 'cl-hu-rolschaats'] }
+      ],
+      slot: 'Veel meer staat bij <a href="/voor/kinderen">Cadeaus voor kinderen</a>. Wat er nu hip is lees je in <a href="/gids/hypes-2026">De hypes van 2026</a>. Iets kleins voor in de schoen vind je bij <a href="/collectie/schoencadeautjes">Schoencadeautjes</a>.' },
     { slug: 'kerstcadeau-tiener', beeld: 'tt-dvzn-d0fc92f962', vakken: ['cadeaus/kerst', 'speelgoed/hypes-trends', 'elektronica/gaming', 'sieraden/kettingen'],
       titel: 'Kerstcadeau voor een tiener: ideeën die niet kinderachtig zijn', kort: 'Voor je zoon, dochter, neef of kleinkind van 12 tot 18. Van €15 tot €79.',
       intro: 'Tieners zijn misschien wel de lastigste groep om een kerstcadeau voor te vinden. Speelgoed is kinderachtig, maar voor een duur cadeau zoals een telefoon geef je ze liever geld. De truc: geef iets dat bij hún wereld past, dus muziek, gamen, hun eigen kamer of hun stijl. En let op merken, want die tellen op die leeftijd zwaar. Alles hieronder is door tieners zelf goedgekeurd: het zijn de dingen die ze nu echt gebruiken en op verlanglijstjes zetten. Twijfel je? Vraag stiekem even aan een vriend of vriendin wat er leeft.',
@@ -4680,6 +4708,11 @@
       ['Hoeveel geef je uit aan een kerstcadeau voor een kind?', 'Dat is heel persoonlijk. Veel mensen geven 20 tot 50 euro uit aan een eigen kind en wat minder aan neefjes, nichtjes of kleinkinderen. Spreek het in de familie af, dan voelt niemand zich bezwaard.'],
       ['Wat geef je een kind dat alles al heeft?', 'Iets om te dóén in plaats van te hebben: een bouwset, een spel voor de kerstvakantie of iets om zelf te maken. Daar hebben ze langer plezier van dan van nog een knuffel.'],
       ['Welk speelgoed past bij een kind van 2 of 3 jaar?', 'Stevig hout en DUPLO: groot, zonder kleine onderdelen en bijna niet kapot te krijgen. Kijk altijd naar de leeftijd op de verpakking.']] },
+    'cadeau-kind-8-jaar': { top: [['Onze topkeuze', 'cl-bol-gravitrax-start'], ['Onder de 10 euro', 'cl-pk-booster'], ['Voor het hele gezin', 'bol-9300000002863037']], faq: [
+      ['Wat geef je een kind van 8 jaar?', 'Iets om te doen: een bouwset zoals LEGO of een GraviTrax-knikkerbaan, een spel voor het hele gezin zoals UNO of Speed Cups, of een proefjesdoos. Is het kind fan van Pokémon, Minecraft of KPop Demon Hunters, dan zit je met iets daarvan bijna altijd goed.'],
+      ['Wat is een leuk cadeau voor een jongen van 8?', 'Veel jongens van 8 houden van bouwen en winnen: LEGO Mario Kart, een knikkerbaan, Pokémonkaarten, een voetbal of een Nerf-set met doel. Maar kijk vooral naar zijn hobby, die zegt meer dan of het een jongen is.'],
+      ['Wat is een leuk cadeau voor een meisje van 8?', 'Zelf armbandjes, slijm of squishy\'s maken, LEGO Friends, een proefjesdoos, Pokémon of iets van KPop Demon Hunters. Ook hier geldt: kijk naar waar ze nu fan van is.'],
+      ['Hoeveel geef je uit aan een cadeau voor een kind van 8?', 'Dat bepaal je zelf. Voor een klasgenootje kiezen veel mensen iets van rond de 10 euro, voor een eigen kind, neef of kleinkind vaak meer. In deze gids staat van elk bedrag iets, van een pakje kaarten tot een knikkerbaan.']] },
     'kerstcadeau-tiener': { top: [['Onze topkeuze', 'tf-107003281'], ['Voor de gamer', 'joybuy-6a6fbf11cb'], ['Voor haar', 'pry-zh2x']], faq: [
       ['Wat geef je een tiener die alles al heeft?', 'Iets voor hun eigen kamer of hun hobby: een lamp, oordopjes van een bekend merk of iets voor het gamen. Of iets van een film of serie waar ze nu fan van zijn.'],
       ['Is geld geven aan een tiener een goed idee?', 'Veel tieners vinden geld prima, maar het voelt minder persoonlijk. Een tussenweg: een klein cadeau dat bij ze past, met wat geld erbij voor iets groters.'],
