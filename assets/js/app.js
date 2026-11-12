@@ -1258,6 +1258,8 @@
     /* 11-11-2026 (wens Marius): Atelier Rebul op plek 1. Het is een merk, te koop bij onze partner Parfumania; 'naam' is wat op de kaart staat,
        'shop' is de winkel waar de knop heen gaat. Van Parfumania staan alleen de cadeaus van Atelier Rebul op de site. */
     { shop: 'Parfumania', naam: 'Atelier Rebul', slug: 'atelier-rebul', tekst: 'Geuren en verzorging uit Istanbul, sinds 1895: geurstokjes, geurkaarsen en cadeausets. Te koop bij Parfumania.' },
+    /* 12-11-2026 (wens Marius: 'zet ze ook in de top 5'): nieuwe partner iScooter. */
+    { shop: 'iScooter', slug: 'iscooter', tekst: 'Elektrische steps en fietsen, ook voor kinderen. De steps zijn voor eigen terrein.' },
     { shop: 'Dille & Kamille', slug: 'dille-kamille', tekst: 'Natuurlijke spullen voor keuken, huis en tuin.' },
     { shop: 'Ditverzinjeniet', slug: 'ditverzinjeniet', tekst: 'Grappige en vreemde cadeaus die je nergens anders ziet.' },
     { shop: 'LEGO', slug: 'lego', tekst: 'Bouwsets voor kinderen en voor grote mensen.' },
@@ -1377,15 +1379,18 @@
   try { var srtQ = /[?&]proef=soorten(-uit)?\b/.exec(location.search); if (srtQ) sessionStorage.setItem('lk-soorten', srtQ[1] ? 'uit' : 'aan'); if (sessionStorage.getItem('lk-soorten') === 'uit') SOORTEN = false; } catch (e) {}
   /* Vaak gezocht: met de hand gekozen, van elke afdeling hooguit een (Marius 12-11: 'niet vijf soorten drank, anders ziet iemand niks anders'), met het mooiste ronde plaatje. [naam, adres, plaatje] */
   var SRT_VAAK = [['Darts', '/c/sport-outdoor/darts', 'sport-outdoor-darts'], ['Drank', '/c/eten-drinken/bier-sterke-drank', 'eten-drinken-sterke-drank'], ['Horloges', '/c/mode-sieraden/horloges', 'mode-sieraden-horloges'],
+    /* 12-11-2026 (wens Marius, partner iScooter: 'met hun eigen categorie net als drank en horloges'): elektrische steps en fietsen als eigen tegel. */
+    ['E-steps', '/c/sport-outdoor/fietsen-steps/elektrische-steps', 'sport-outdoor-elektrische-steps'], ['E-bikes', '/c/sport-outdoor/fietsen-steps/elektrische-fietsen', 'sport-outdoor-elektrische-fietsen'],
     ['Gaming', '/c/elektronica/gaming', 'elektronica-gaming'], ['LEGO', '/c/speelgoed/bouwen/lego', 'speelgoed-bouwen'], ['Parfum', '/c/beauty-verzorging/parfum', 'beauty-verzorging-parfum'],
     ['Koptelefoons', '/c/elektronica/audio/koptelefoons', 'elektronica-audio'], ['Puzzels', '/c/spellen-puzzels/puzzels', 'speelgoed-puzzels'], ['Spellen', '/c/spellen-puzzels/bordspellen', 'speelgoed-spellen'],
     ['Smartwatches', '/c/elektronica/smartwatches', 'elektronica-smartwatches'], ['Kaarsen', '/c/wonen/kaarsen-geur', 'wonen-kaarsen-geur'], ['Chocolade', '/c/eten-drinken/chocolade-snoep/chocolade', 'eten-drinken-chocolade-snoep'],
     ['Knuffels', '/c/speelgoed/poppen-knuffels/knuffels', 'speelgoed-poppen-knuffels'], ['Gereedschap', '/c/tuin-klussen/klussen', 'tuin-klussen-klussen'], ['Tassen', '/c/mode-sieraden/tassen-portemonnees', 'mode-sieraden-tassen-portemonnees'],
-    ["Camera's", '/c/elektronica/foto-video', 'elektronica-foto-video'], ['Koffie', '/c/koken-tafelen/koffie-thee-zetten', 'wonen-koffie-thee-zetten'], ['Metaaldetectors', '/c/sport-outdoor/metaaldetectie', 'sport-outdoor-metaaldetectie']];
+    ["Camera's", '/c/elektronica/foto-video', 'elektronica-foto-video'], ['Koffie', '/c/koken-tafelen/koffie-thee-zetten', 'wonen-koffie-thee-zetten'], ['Metaaldetectors', '/c/sport-outdoor/metaaldetectie', 'sport-outdoor-metaaldetectie'],
+    ['Fitness', '/c/sport-outdoor/fitness-yoga', 'sport-outdoor-fitness-yoga']];
   /* Andere woorden waarop je een soort ook vindt in het zoekvakje van deze pagina. */
   var SRT_OOK = { 'whisky': 'whiskey drank sterke drank', 'gin': 'drank sterke drank', 'rum': 'drank sterke drank', 'wodka': 'vodka drank', 'likeur': 'drank', 'cognac': 'drank', 'tequila': 'drank', 'speciaalbier': 'bier drank', 'bierpakketten': 'bier drank',
     'rode-wijn': 'drank', 'witte-wijn': 'drank', 'rose': 'drank wijn', 'champagne': 'bubbels drank', 'prosecco-cava': 'bubbels drank', 'dameshorloges': 'horloge klokje', 'herenhorloges': 'horloge klokje', 'dartborden': 'darts darten', 'dartpijlen': 'darts darten pijltjes',
-    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
+    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'elektrische-steps': 'e-step estep step scooter', 'elektrische-fietsen': 'e-bike ebike fiets fatbike', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
   /* Twee ingangen naast elkaar: een cadeau zoeken (voor wie, moment, bedrag) of een product zoeken (op soort). */
   function soortWissel(aan) {
     if (!SOORTEN) return '';
@@ -2161,6 +2166,8 @@
               var lo = p.letOp || '';
               var drank = p.afd === 'eten-drinken' && (p.groep === 'bier-sterke-drank' || p.groep === 'wijn-bubbels') && p.vak !== 'alcoholvrije-wijn-bier' && !/alcoholvrij|0[,.]0 ?%|\b0 ?%/i.test(p.titel || '');
               if (drank && !/18/.test(lo)) lo = 'Alleen voor 18 jaar en ouder.' + (lo ? ' ' + lo : '');
+              /* 12-11-2026: bij elke elektrische step staat eerlijk dat hij alleen met RDW-goedkeuring en kenteken de openbare weg op mag (bron: Rijksoverheid). */
+              if (p.vak === 'elektrische-steps' && !/RDW|openbare weg/i.test(lo)) lo = 'Een elektrische step mag in Nederland alleen op de openbare weg als hij door de RDW is goedgekeurd en een kenteken heeft. Kijk dat na bij de winkel.' + (lo ? ' ' + lo : '');
               return lo ? '<li class="letop">' + ic('info') + '<span><strong>Let op:</strong> ' + esc(lo) + '</span></li>' : '';
             })() +
             (p.verzendNoot ? '<li>' + ic('info') + '<span>' + esc(p.verzendNoot) + '</span></li>' : '') +

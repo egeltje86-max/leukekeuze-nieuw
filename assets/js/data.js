@@ -1350,6 +1350,19 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   (window.LK_GELEGENHEDEN || []).forEach(function (g) { if (GEL[g.slug]) { g.vaag = g.vaag || g.beeld; g.beeld = R + GEL[g.slug] + '.webp'; } });
 })();
 
+/* ===== 12-11-2026 (wens Marius, nieuwe partner iScooter: 'met hun eigen categorie'): eigen vakje 'Elektrische fietsen' bij Sport & outdoor > Fietsen & steps.
+   De elektrische steps en fietsen staan daar vooraan. Dit blok staat bewust los van de gemaakte boom (3.0) en voor de verhuizing (4.0). ===== */
+(function () {
+  var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'sport-outdoor' && !x.verborgen; })[0];
+  var s = c && (c.subs || []).filter(function (x) { return x.slug === 'fietsen-steps' && x.vakjes && !x.verborgen; })[0];
+  if (!s) return;
+  if (!s.vakjes.some(function (v) { return v.slug === 'elektrische-fietsen'; })) s.vakjes.push({ slug: 'elektrische-fietsen', naam: 'Elektrische fietsen' });
+  var voor = ['elektrische-steps', 'elektrische-fietsen'];
+  s.vakjes = voor.map(function (k) { return s.vakjes.filter(function (v) { return v.slug === k; })[0]; }).filter(Boolean)
+    .concat(s.vakjes.filter(function (v) { return voor.indexOf(v.slug) === -1; }));
+})();
+/* ===== einde elektrische fietsen ===== */
+
 /* ===== 4.0 VERHUIZING (proef 11-11-2026): 15 hoofdcategorieën. GEMAAKT DOOR scripts/boom/verhuis.js uit scripts/boom/verhuizing.json – niet met de hand bewerken.
    De boom hierboven (3.0 en alle aanvullingen) wordt hier omgezet naar de nieuwe indeling. Oude adressen sturen door; zie scripts/boom/verhuis-kern.js voor de uitleg. ===== */
 function LK_VERHUIS(L, T) {
