@@ -27,17 +27,17 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611122143" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611122143" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611122143">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611122143">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611122153" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611122153" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611122153">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611122153">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
        binnen waren (op een trage telefoon na bijna 4 seconden); nu meteen, met lage voorrang zodat de foto's bovenaan eerst komen. -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611122143"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611122153"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
@@ -165,11 +165,11 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"cl-va5":{"url":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=862e8acfa2a6ddd925b9f1e93500b1cf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10353718%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-amoled-42-mm%252F10353718%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","subVast":true,"winkelUrl":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=862e8acfa2a6ddd925b9f1e93500b1cf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10353718%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-amoled-42-mm%252F10353718%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","verzendNoot":"Joybuy bezorgt gratis vanaf €29.","varianten":[{"kleur":"Blauw","beeld":"images/producten/cl-va5-blauw","url":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=862e8acfa2a6ddd925b9f1e93500b1cf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10353718%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-amoled-42-mm%252F10353718%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","winkelUrl":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=862e8acfa2a6ddd925b9f1e93500b1cf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10353718%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-amoled-42-mm%252F10353718%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","prijs":179.99},{"kleur":"Crème/goud","beeld":"images/producten/cl-va5-creme-goud","url":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=2334ce922a838a1ad432cc0aeeaf5c6f&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10297236%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-amoled-42-mm%252F10297236%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","winkelUrl":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=2334ce922a838a1ad432cc0aeeaf5c6f&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10297236%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-amoled-42-mm%252F10297236%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","prijs":194.95},{"kleur":"Zwart","beeld":"images/producten/cl-va5-zwart","url":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=f9de54df257605a0e7f14da42aed6033&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10094276%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-42-mm-amoled%252F10094276%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","winkelUrl":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=f9de54df257605a0e7f14da42aed6033&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10094276%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgarmin-vivoactive-5-42-mm-amoled%252F10094276%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","prijs":195.95}],"wil":70,"waarom":"Populaire, iets goedkopere Garmin. Houdt je stappen, slaap en sport bij."}};</script>
-  <script src="assets/js/data.js?v=202611122143"></script>
+  <script src="assets/js/data.js?v=202611122153"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/topkeuze.js?v=202611122143" async></script>
-  <script src="assets/js/gedeeld.js?v=202611122143"></script>
-  <script src="assets/js/app.js?v=202611122143"></script>
+  <script src="assets/js/topkeuze.js?v=202611122153" async></script>
+  <script src="assets/js/gedeeld.js?v=202611122153"></script>
+  <script src="assets/js/app.js?v=202611122153"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
