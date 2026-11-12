@@ -2219,4 +2219,10 @@ html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .bi
 .srt-boven .srt-vaak[hidden] + .srt-leeg { margin-top: 16px; }
 .hero-knoppen.srt-hero .knop, .hero.hero-2026 .hero-knoppen.srt-hero .knop { white-space: normal; text-align: center; line-height: 1.15; padding: 6px 10px; font-size: 14.5px; gap: 6px; }
 @media (max-width: 479px) { .hero-knoppen.srt-hero .knop svg { display: none; } }
+/* De gebouwde pagina heeft alle afdelingen open (goed voor de computer en voor Google). Op de telefoon blijven ze dicht tot de app de pagina zelf tekent, zodat er niets verspringt. */
+@media (max-width: 899px) {
+  html:not(.lk-gestart) .srt-blok > .srt-in { display: none; }
+  html:not(.lk-gestart) .srt-blok[open] .srt-kop small { display: block; }
+  html:not(.lk-gestart) .srt-blok[open] .srt-pijl { transform: rotate(90deg); }
+}
 /* ===== einde SOORTEN ===== */
