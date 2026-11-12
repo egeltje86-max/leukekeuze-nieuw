@@ -1381,17 +1381,20 @@
   var SRT_VAAK = [['Darts', '/c/sport-outdoor/darts', 'sport-outdoor-darts'], ['Drank', '/c/eten-drinken/bier-sterke-drank', 'eten-drinken-sterke-drank'], ['Horloges', '/c/mode-sieraden/horloges', 'mode-sieraden-horloges'],
     /* 12-11-2026 (wens Marius, partner iScooter: 'met hun eigen categorie net als drank en horloges'): elektrische steps en fietsen als eigen tegel. */
     ['E-steps', '/c/sport-outdoor/fietsen-steps/elektrische-steps', 'sport-outdoor-elektrische-steps'], ['E-bikes', '/c/sport-outdoor/fietsen-steps/elektrische-fietsen', 'sport-outdoor-elektrische-fietsen'],
+    /* 12-11-2026 (wens Marius, partner TopRC: 'apart vak net als elektrische fietsen en steps, dit is een categorie apart'): bestuurbare auto's als eigen tegel.
+       Kerst en Knutselen staan erbij zodat het raster vol is: 24 tegels = hele rijen van drie (telefoon) en van zes (computer). */
+    ["RC-auto's", '/c/hobby/rc-auto-s', 'hobby-rc-auto-s'],
     ['Gaming', '/c/elektronica/gaming', 'elektronica-gaming'], ['LEGO', '/c/speelgoed/bouwen/lego', 'speelgoed-bouwen'], ['Parfum', '/c/beauty-verzorging/parfum', 'beauty-verzorging-parfum'],
     ['Koptelefoons', '/c/elektronica/audio/koptelefoons', 'elektronica-audio'], ['Puzzels', '/c/spellen-puzzels/puzzels', 'speelgoed-puzzels'], ['Spellen', '/c/spellen-puzzels/bordspellen', 'speelgoed-spellen'],
     ['Smartwatches', '/c/elektronica/smartwatches', 'elektronica-smartwatches'], ['Kaarsen', '/c/wonen/kaarsen-geur', 'wonen-kaarsen-geur'], ['Chocolade', '/c/eten-drinken/chocolade-snoep/chocolade', 'eten-drinken-chocolade-snoep'],
     ['Knuffels', '/c/speelgoed/poppen-knuffels/knuffels', 'speelgoed-poppen-knuffels'], ['Gereedschap', '/c/tuin-klussen/klussen', 'tuin-klussen-klussen'], ['Tassen', '/c/mode-sieraden/tassen-portemonnees', 'mode-sieraden-tassen-portemonnees'],
     ["Camera's", '/c/elektronica/foto-video', 'elektronica-foto-video'], ['Koffie', '/c/koken-tafelen/koffie-thee-zetten', 'wonen-koffie-thee-zetten'], ['Boeken', '/c/boeken-media/boeken', 'boeken-media-boeken'],
-    ['Fitness', '/c/sport-outdoor/fitness-yoga', 'sport-outdoor-fitness-yoga']];
+    ['Fitness', '/c/sport-outdoor/fitness-yoga', 'sport-outdoor-fitness-yoga'], ['Kerst', '/c/wonen/kerstdecoratie', 'wonen-kerstdecoratie'], ['Knutselen', '/c/speelgoed/knutselen', 'speelgoed-knutselen']];
   /* 12-11-2026 (Marius: 'verander metaaldetector voor iScooter steps en bikes'): de tegel Metaaldetectors is eruit; E-steps en E-bikes staan op de tweede rij. Metaaldetectie staat nog bij Sport & outdoor. */
   /* Andere woorden waarop je een soort ook vindt in het zoekvakje van deze pagina. */
   var SRT_OOK = { 'whisky': 'whiskey drank sterke drank', 'gin': 'drank sterke drank', 'rum': 'drank sterke drank', 'wodka': 'vodka drank', 'likeur': 'drank', 'cognac': 'drank', 'tequila': 'drank', 'speciaalbier': 'bier drank', 'bierpakketten': 'bier drank',
     'rode-wijn': 'drank', 'witte-wijn': 'drank', 'rose': 'drank wijn', 'champagne': 'bubbels drank', 'prosecco-cava': 'bubbels drank', 'dameshorloges': 'horloge klokje', 'herenhorloges': 'horloge klokje', 'dartborden': 'darts darten', 'dartpijlen': 'darts darten pijltjes',
-    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'elektrische-steps': 'e-step estep step scooter', 'elektrische-fietsen': 'e-bike ebike fiets fatbike', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
+    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'elektrische-steps': 'e-step estep step scooter', 'elektrische-fietsen': 'e-bike ebike fiets fatbike', 'elektrische-rc-auto-s': 'rc auto bestuurbare radiografisch', 'rc-auto-s-op-brandstof': 'rc auto bestuurbare nitro benzine radiografisch', 'rc-auto-s-voor-beginners': 'rc auto bestuurbare radiografisch kind', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
   /* Twee ingangen naast elkaar: een cadeau zoeken (voor wie, moment, bedrag) of een product zoeken (op soort). */
   function soortWissel(aan) {
     if (!SOORTEN) return '';
@@ -2245,7 +2248,7 @@
     'cadeaus/collega': 'juf meester leerkracht', 'cadeaus/voor-kinderen': 'tiener' };
   /* 3.0 (5-11-2026): ook de nieuwe boom (afdeling > groep > vakje) telt mee bij zoeken, plus extra woorden per vakje.
      Zo vindt 'bordspel' alle bordspellen en 'kerstboom' het vakje Kerstbomen & kransen. */
-  var VAKSYN = { 'elektrische-fietsen': 'ebike e-bike fatbike elektrische fiets stadsfiets vouwfiets', 'elektrische-steps': 'estep e-step escooter e-scooter elektrische step', 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
+  var VAKSYN = { 'elektrische-rc-auto-s': 'rc auto rc-auto bestuurbare auto radiografisch', 'rc-auto-s-op-brandstof': 'rc auto rc-auto bestuurbare auto nitro benzine brandstof', 'rc-auto-s-voor-beginners': 'rc auto rc-auto bestuurbare auto radiografisch', 'elektrische-fietsen': 'ebike e-bike fatbike elektrische fiets stadsfiets vouwfiets', 'elektrische-steps': 'estep e-step escooter e-scooter elektrische step', 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
     'dameshorloges': 'dameshorloge horloge dames', 'herenhorloges': 'herenhorloge horloge heren', 'koptelefoons': 'koptelefoon headphone', 'oordopjes': 'oortjes earbuds oordopjes koptelefoon',
     'gaming-headsets': 'headset koptelefoon', 'bordspellen-voor-het-gezin': 'bordspel gezelschapsspel', 'strategiespellen': 'bordspel strategiespel', 'partyspellen': 'bordspel partyspel',
     'kinderspellen': 'bordspel kinderspel', 'kaart-dobbelspellen': 'kaartspel dobbelspel', 'squishmallows': 'squishmallow knuffel', 'dartborden': 'dartbord darts', 'dartpijlen': 'darts dartpijl pijltjes',

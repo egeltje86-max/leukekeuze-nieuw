@@ -102,6 +102,7 @@
      { "slug": "schilderen-tekenen", "naam": "Schilderen & tekenen", "uit": ["hobby/schilderen-tekenen"] },
      { "slug": "zelf-maken", "naam": "Zelf maken", "uit": ["hobby/zelf-maken"] },
      { "slug": "modelbouw", "naam": "Modelbouw", "uit": ["hobby/modelbouw"] },
+     { "slug": "rc-auto-s", "naam": "Bestuurbare auto's", "uit": ["hobby/rc-auto-s"] },
      { "slug": "papier-planners", "naam": "Papier & planners", "uit": ["hobby/papier-planners"] },
      { "slug": "muziek-maken", "naam": "Muziek maken", "uit": ["hobby/muziek-maken"] }
     ] },
