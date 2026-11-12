@@ -1437,8 +1437,13 @@
 /p/bl-10490036/
 /p/bl-10496752/
 /p/bloom-19cec43f1e/
+/p/bloom-2216bdea50/
+/p/bloom-405104d9c1/
 /p/bloom-7e63f703c6/
+/p/bloom-b66878fe5c/
+/p/bloom-c9b56cd2e1/
 /p/bloom-dd3427675e/
+/p/bloom-dfefb6a832/
 /p/bloompost-305235d16a/
 /p/boeken-b4ca80eae9/
 /p/bol-1000004003218771/
