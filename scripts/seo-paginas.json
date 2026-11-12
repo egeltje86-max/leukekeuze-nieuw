@@ -1,5 +1,5 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand.",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt).",
  "/p/bol-9300000252262265/": {
   "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
   "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
@@ -111,5 +111,41 @@
  },
  "/p/ts24-7357ffc44e/": {
   "omschrijving": "Hamilton Ventura (32 mm, unisex): het kleinere driehoekige horloge met zwarte leren band, de klassieker die Elvis beroemd maakte. Bij Timeshop24."
+ },
+ "/gids/cadeau-kind-1-jaar/": {
+  "titel": "Cadeau kind van 1 jaar: 20 ideeën voor een dreumes"
+ },
+ "/gids/cadeau-kind-2-jaar/": {
+  "titel": "Cadeau kind van 2 jaar: 19 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-3-jaar/": {
+  "titel": "Cadeau kind van 3 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-4-jaar/": {
+  "titel": "Cadeau kind van 4 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-5-jaar/": {
+  "titel": "Cadeau kind van 5 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-6-jaar/": {
+  "titel": "Cadeau kind van 6 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-7-jaar/": {
+  "titel": "Cadeau kind van 7 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-8-jaar/": {
+  "titel": "Cadeau kind van 8 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-9-jaar/": {
+  "titel": "Cadeau kind van 9 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-10-jaar/": {
+  "titel": "Cadeau kind van 10 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-11-jaar/": {
+  "titel": "Cadeau kind van 11 jaar: 24 ideeën voor jongen en meisje"
+ },
+ "/gids/cadeau-kind-12-jaar/": {
+  "titel": "Cadeau kind van 12 jaar: 24 ideeën voor jongen en meisje"
  }
 }

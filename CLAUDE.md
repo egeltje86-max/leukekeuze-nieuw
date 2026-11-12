@@ -262,3 +262,14 @@ Marius bij de lijst van Droptelegram: 'maak een rubriek sorry snoep ofzo maar da
 - Er draait een automatische taak 'LeukeKeuze pins' die zelf naar `main` schrijft (map `pins/`). Dus altijd eerst `origin/main` binnenhalen en samenvoegen voor je pusht (staat in de pushregel van paragraaf 5).
 - De vaste top van `/gelegenheid/geslaagd` begint nog met sieraden (ketting, naamketting, armband); dat botst met de wens van 11-11 (sieraden alleen in hun eigen hoek). Nog niet aangepast: voorstel aan Marius.
 
+
+## 20. Antwoordpagina's per leeftijd (live 12-11-2026, GO Marius)
+Marius: 'hoe kunnen we LeukeKeuze bekender maken'; daarna 'begin met antwoordpagina's'.
+- **Waarom**: ChatGPT stuurt veel meer bezoekers dan Google, en ChatGPT noemt pagina's die één vraag duidelijk beantwoorden. Zoekwoorden (OpenSEO, 12-11): 'cadeau jongen 4 jaar', 'cadeau meisje 4 jaar', 'cadeau meisje 6 jaar' en 'cadeau 1 jaar' elk ongeveer 2.900 per maand, 'cadeau jongen 10 jaar' 2.400, 8 jaar 1.900; moeilijkheid bijna 0. Daarna kansrijk: 'kerstcadeau moeder/vriend/vriendin/vader' (880–1.300), 'cadeau 10/15 euro' (1.000–1.300), 'cadeau voetballer' (1.600), 'kerstpakket ideeën' (1.600).
+- **Twaalf gidsen** `/gids/cadeau-kind-<1..12>-jaar` (in `GIDSEN` in app.js, veld `leeftijd`), elk voor jongens én meisjes: bovenaan meteen het antwoord, 'Snel kiezen' (drie favorieten in `GIDS_EXTRA`), vier tips, zes soorten met vier cadeaus (20 bij 1 jaar, 19 bij 2 jaar), en vier vragen, ook 'voor een jongen van …' en 'voor een meisje van …' (die staan als FAQ in de pagina voor Google). Onderaan links naar de leeftijd ervoor en erna.
+- **Op Cadeaus voor kinderen** staat een rij minitegels 'Cadeau per leeftijd' (`leeftijdRij()` in app.js, onder 'Lees ook'), met het plaatje van de topkeuze van elke gids.
+- **Alleen cadeaus waarvan de leeftijd klopt.** De keuze is gemaakt met een hulpje (kandidaten per leeftijd uit `producten-lean.js`, veld `leeftijd`) en daarna met de hand nagelezen: geen kraamcadeaus bij 1 jaar, geen loopfiets bij 6, geen kinderachtige kraskaarten bij 9, geen LEGO-bloemen voor volwassenen.
+- **LEGO-leeftijden rechtgezet** (`scripts/indeling.js`): onze site zei 'vanaf 6' bij sets waar 'vanaf 10' op de doos staat. Nu: Speed Champions en de Enderdraak vanaf 10 (nagekeken: 77243 en 21595), Minecraft, Star Wars en Harry Potter vanaf 8, helmen, bustes, boekensteunen en Kasteel Zweinstein vanaf 18. 68 producten kregen een andere leeftijd. Liever iets te oud dan te jong.
+- Tekst: alleen wat klopt. Geen 'favoriet van alle kinderen' of andere beweringen zonder bron; 'Mario Kart 72032 vanaf 7' komt van de productgegevens.
+- Bing en ChatGPT krijgen de nieuwe pagina's via IndexNow. Voor Google: aanmelden in Search Console (max ongeveer tien per dag).
+- Volgende stap (nog niet gedaan): dezelfde soort pagina's voor kerstcadeau moeder, vader, vriend en vriendin, en 'cadeau 10 euro' en 'cadeau 15 euro'.

@@ -335,6 +335,11 @@ function leeftijd(p, nieuwSub) {
   if (/\blego\b.*\bfriends\b|\blego\b.*\bcity\b|\blego\b.*\bninjago\b/i.test(t)) return [6, 12];
   /* Sets voor grotere kinderen en volwassenen: de series, en de bloemen, planten en bouwwerken die geen serienaam in de titel hebben. */
   if (/lego.*(technic|ideas|icons|architecture|creator expert|star wars ultimate|botanical|\bart\b|bonsai|boeket|bloemen|orchidee|bamboe|chrysant|waterlelies|kersenbloesems|lepelplant|abrikoos|woestijntuin|eiffeltoren|concorde|rivendell|verzamelaarseditie)/i.test(t)) return [9, 99];
+  /* 12-11-2026 (antwoordpagina's per leeftijd): op de doos staan deze series hoger dan 6. Nagekeken: Speed Champions 77243 'vanaf 10',
+     Minecraft De Enderdraak 21595 'vanaf 10'. De meeste Minecraft-, Star Wars- en Harry Potter-sets zijn 'vanaf 8'. Liever iets te oud dan te jong. */
+  if (/lego.*(\bhelm\b|buste|boekensteun|kasteel zweinstein en terrein)/i.test(t)) return [18, 99]; /* sets voor volwassenen (18+ op de doos) */
+  if (/lego.*(speed champions|enderdraak)/i.test(t)) return [10, 99];
+  if (/lego.*(minecraft|star wars|harry potter)/i.test(t)) return [8, 99];
   if (/\blego\b/i.test(t)) return [6, 99];
   if (/playmobil.*(junior|1\.2\.3|123)/i.test(t)) return [1, 4];
   if (/playmobil/i.test(t)) return [4, 10];
