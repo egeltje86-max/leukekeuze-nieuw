@@ -107,10 +107,37 @@ function splits() {
     for (const p of lean) for (const w of (p.titel || '').match(/[A-Za-zÀ-ÿ]{13,}/g) || []) { const k = w.toLowerCase(); if (typeof tab[k] === 'string' && /^[a-zà-ÿ-]+$/.test(tab[k]) && tab[k].replace(/-/g, '') === k) gezien[k] = tab[k]; }
     afbreek = Object.keys(gezien).sort().map(k => gezien[k]).join('|');
   } catch (e) { console.log('afbreek.json niet gelezen (titels breken dan gewoon af): ' + e.message); }
-  const json = '[' + lean.map(p => JSON.stringify(p)).join(',') + ']';
-  const letterlijk = "'" + json.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(new RegExp(String.fromCharCode(0x2028), 'g'), '\\u2028').replace(new RegExp(String.fromCharCode(0x2029), 'g'), '\\u2029') + "'";
+  /* Snelheid (12-11-2026, GO Marius): de lijst was 4,8 MB (690 KB ingepakt) en moest op elke lijstpagina binnen zijn voor de knoppen werken.
+     1. Afgekeurde, uitverkochte en samengevoegde producten (ruim 2.000) houden alleen wat nog nodig is: naam, prijs, winkel en plek
+        (voor het doorsturen van hun oude adres en het voorkomen van dubbelen), en bij samengevoegd het nieuwe id.
+     2. Waarden die heel vaak terugkomen (de plek cat/sub/afd/groep/vak, momenten, voor wie, extra vakjes, datum, winkel, merk ...)
+        staan één keer in een tabel; het product noemt alleen het nummer. Het laadscript hieronder zet alles terug zoals het was,
+        dus app.js, gedeeld.js en alle controles zien precies dezelfde producten als eerst. */
+  const HOUD = ['id', 'status', 'samengevoegd', 'titel', 'prijs', 'shop', 'cat', 'sub', 'afd', 'groep', 'vak', 'beeld', 'merk'];
+  for (const l of lean) if (l.status === 'afgekeurd' || l.status === 'uitverkocht' || l.status === 'samengevoegd') for (const k of Object.keys(l)) if (HOUD.indexOf(k) === -1) delete l[k];
+  const TAB = [], tabNr = {};
+  const nr = (v) => { const s = JSON.stringify(v); if (!(s in tabNr)) { tabNr[s] = TAB.length; TAB.push(v); } return tabNr[s]; };
+  const PLEK = ['cat', 'sub', 'afd', 'groep', 'vak'];
+  const VELD = ['moment', 'voor', 'ookIn', 'tags', 'soort', 'nietBij', 'nietOp', 'sinds', 'shop', 'merk', 'keuzeLabel', 'keuzeMeervoud', 'leeftijd'];
+  const kort = lean.map((l) => {
+    const o = {};
+    for (const k of Object.keys(l)) {
+      if (PLEK.indexOf(k) !== -1) continue;
+      o[k] = (VELD.indexOf(k) !== -1 && l[k] !== undefined && l[k] !== null && typeof l[k] !== 'number' && typeof l[k] !== 'boolean') ? nr(l[k]) : l[k];
+    }
+    if (PLEK.some((k) => l[k] !== undefined)) o.pl = nr(PLEK.map((k) => l[k] === undefined ? null : l[k]));
+    return o;
+  });
+  /* Een getal in een tabelveld betekent 'zie de tabel'. Dat werkt alleen als die velden zelf nooit een getal zijn: dat bewaken we hier. */
+  for (const l of lean) for (const k of VELD) if (typeof l[k] === 'number') throw new Error('splits-producten: veld ' + k + ' is een getal bij ' + l.id + '; haal het uit VELD');
+  const ontsnap = (s) => "'" + s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(new RegExp(String.fromCharCode(0x2028), 'g'), '\\u2028').replace(new RegExp(String.fromCharCode(0x2029), 'g'), '\\u2029') + "'";
+  const json = '[' + kort.map(p => JSON.stringify(p)).join(',') + ']';
+  const letterlijk = ontsnap(json);
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_PRODUCTEN = JSON.parse(' + letterlijk + ');\n' +
-    '(function (L) { for (var i = 0; i < L.length; i++) { var p = L[i]; if (p.beeld === undefined) p.beeld = "images/producten/" + p.id; if (!p.status) p.status = "goedgekeurd"; if (p.nieuw === undefined) p.nieuw = true; else if (p.nieuw === false) delete p.nieuw; if (!p.ookIn) p.ookIn = []; if (!p.shop) p.shop = "bol"; if (!p.moment) p.moment = ["kerst", "sinterklaas", "verjaardag"]; } })(window.LK_PRODUCTEN);\n' +
+    '(function (L, T, V) { for (var i = 0; i < L.length; i++) { var p = L[i], k, v, j;\n' +
+    '  if (p.pl !== undefined) { v = T[p.pl]; for (j = 0; j < 5; j++) if (v[j] !== null) p[["cat", "sub", "afd", "groep", "vak"][j]] = v[j]; delete p.pl; }\n' +
+    '  for (j = 0; j < V.length; j++) { k = V[j]; if (typeof p[k] === "number") { v = T[p[k]]; p[k] = Array.isArray(v) ? v.slice() : (v && typeof v === "object" ? JSON.parse(JSON.stringify(v)) : v); } }\n' +
+    '  if (p.beeld === undefined) p.beeld = "images/producten/" + p.id; if (!p.status) p.status = "goedgekeurd"; if (p.nieuw === undefined) p.nieuw = true; else if (p.nieuw === false) delete p.nieuw; if (!p.ookIn) p.ookIn = []; if (!p.shop) p.shop = "bol"; if (!p.moment) p.moment = ["kerst", "sinterklaas", "verjaardag"]; } })(window.LK_PRODUCTEN, JSON.parse(' + ontsnap(JSON.stringify(TAB)) + '), ' + JSON.stringify(VELD) + ');\n' +
     'window.LK_AFBREEK = "' + afbreek + '";\n' +
     /* Snelheid (31-10-2026): dit bestand laadt nu 'async' (zie sjabloon.html); de site wacht op dit seintje. */
     'try { window.dispatchEvent(new Event("lk-producten")); } catch (e) { var ev = document.createEvent("Event"); ev.initEvent("lk-producten", false, false); window.dispatchEvent(ev); }\n');

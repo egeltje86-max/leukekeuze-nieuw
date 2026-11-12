@@ -923,6 +923,8 @@
 /gids/babyshower-cadeau/
 /gids/belevenis-cadeau/
 /gids/cadeau-1-jaar-samen/
+/gids/cadeau-10-euro/
+/gids/cadeau-15-euro/
 /gids/cadeau-hondenliefhebber/
 /gids/cadeau-kind-1-jaar/
 /gids/cadeau-kind-10-jaar/
@@ -937,6 +939,7 @@
 /gids/cadeau-kind-8-jaar/
 /gids/cadeau-kind-9-jaar/
 /gids/cadeau-trouwdag-jubileum/
+/gids/cadeau-voetballer/
 /gids/cadeau-voor-collega/
 /gids/cadeau-voor-moeder/
 /gids/cadeau-voor-oma/
@@ -959,6 +962,7 @@
 /gids/kerstcadeau-voor-hem/
 /gids/kerstcadeau-vriend/
 /gids/kerstcadeau-vriendin/
+/gids/kerstpakket-ideeen/
 /gids/kerststal-kopen/
 /gids/kinderbijbel-kiezen/
 /gids/kraamcadeau/

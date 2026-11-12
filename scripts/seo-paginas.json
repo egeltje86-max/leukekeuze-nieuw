@@ -160,5 +160,17 @@
  },
  "/gids/kerstcadeau-vriend/": {
   "titel": "Kerstcadeau vriend: 24 ideeën voor je partner"
+ },
+ "/gids/cadeau-10-euro/": {
+  "titel": "Cadeau 10 euro: 24 leuke ideeën tot €10"
+ },
+ "/gids/cadeau-15-euro/": {
+  "titel": "Cadeau 15 euro: 24 leuke ideeën tot €15"
+ },
+ "/gids/cadeau-voetballer/": {
+  "titel": "Cadeau voor een voetballer: 18 ideeën voor jong en oud"
+ },
+ "/gids/kerstpakket-ideeen/": {
+  "titel": "Kerstpakket ideeën: 24 pakketten en cadeausets"
  }
 }
