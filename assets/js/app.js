@@ -1068,9 +1068,9 @@
           '<div class="kicker">' + esc(INST.heroKicker) + '</div>' +
           '<h1>' + esc(INST.heroTitel) + '<br><em>' + esc(INST.heroTitelGoud) + '</em></h1>' +
           '<p>' + esc(INST.heroTekst) + '</p>' +
-          '<div class="hero-knoppen" data-tel="intro">' +
-            '<a class="knop knop-goud" href="/vonk">' + ic('vonk') + ' Help mij kiezen</a>' +
-            '<a class="knop knop-rand" href="#favorieten">Lekker rondkijken</a>' +
+          '<div class="hero-knoppen' + (SOORTEN ? ' srt-hero' : '') + '" data-tel="intro">' +
+            (SOORTEN ? '<a class="knop knop-goud" href="/voor">' + ic('cadeau') + ' Ik zoek een cadeau</a><a class="knop knop-rand" href="/categorieen">' + ic('raster') + ' Ik zoek een product</a>'
+              : '<a class="knop knop-goud" href="/vonk">' + ic('vonk') + ' Help mij kiezen</a><a class="knop knop-rand" href="#favorieten">Lekker rondkijken</a>') +
           '</div>' +
         '</div></div>' +
       '</section>' +
@@ -1137,10 +1137,10 @@
       return '<a class="wzh-tegel" href="' + naar + '">' + (beeld ? '<span class="wzh-rond"><img src="' + beeld + '" alt="" width="64" height="64" decoding="async"></span>' : '<span class="wzh-rond wzh-icoon">' + ic(icoon) + '</span>') + '<span>' + esc(naam) + '</span></a>';
     };
     return '<div class="binnen wzh wijzer">' +
-      '<section class="sectie eerste wzh-vraag" data-tel="voor-wie"><h1>Voor wie zoek je een cadeau?</h1><p class="wzh-sub">Tik op één plaatje. Je ziet meteen onze beste keuzes.</p>' +
+      '<section class="sectie eerste wzh-vraag" data-tel="voor-wie">' + soortWissel('cadeau') + '<h1>Voor wie zoek je een cadeau?</h1><p class="wzh-sub">Tik op één plaatje. Je ziet meteen onze beste keuzes.</p>' +
         '<nav class="wzh-raster" aria-label="Voor wie zoek je een cadeau?">' +
           window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
-          wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel('Categorieën', '/categorieen', '', 'raster') +
+          wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel(SOORTEN ? 'Producten' : 'Categorieën', '/categorieen', '', 'raster') +
         '</nav></section>' +
       /* 11-11-2026 (Marius: 'kijk wat nog meer goed is om op de homepage te zetten'): wat het best loopt (grappig en origineel) en kiezen op bedrag. */
       '<section class="sectie wzh-soort" data-tel="soort"><p class="wz-vraag">Of kies een soort cadeau</p><nav class="mini-raster breed" aria-label="Soort cadeau">' +
@@ -1372,6 +1372,81 @@
     return l.length ? rij(l.slice(0, 12)) : grid([], leegBlok('Nog niets in deze lijst', 'Hier komen binnenkort mooie producten.'));
   }
 
+  /* ---------- Zoek een product: alle soorten op een rij (12-11-2026) ---------- */
+  var SOORTEN = window.LK_SOORTEN !== false;
+  try { var srtQ = /[?&]proef=soorten(-uit)?\b/.exec(location.search); if (srtQ) sessionStorage.setItem('lk-soorten', srtQ[1] ? 'uit' : 'aan'); if (sessionStorage.getItem('lk-soorten') === 'uit') SOORTEN = false; } catch (e) {}
+  /* Vaak gezocht: met de hand gekozen soorten die je anders drie tikken diep moet zoeken. [naam, adres] */
+  var SRT_VAAK = [['Darts', '/c/sport-outdoor/darts'], ['Whisky', '/c/eten-drinken/bier-sterke-drank/whisky'], ['Gin', '/c/eten-drinken/bier-sterke-drank/gin'], ['Bier', '/c/eten-drinken/bier-sterke-drank/speciaalbier'],
+    ['Wijn', '/c/eten-drinken/wijn-bubbels'], ['Horloges', '/c/mode-sieraden/horloges'], ['LEGO', '/c/speelgoed/bouwen/lego'], ['Puzzels', '/c/spellen-puzzels/puzzels'], ['Bordspellen', '/c/spellen-puzzels/bordspellen'],
+    ['Parfum', '/c/beauty-verzorging/parfum'], ['Koptelefoons', '/c/elektronica/audio/koptelefoons'], ['Gaming', '/c/elektronica/gaming'], ['Kaarsen', '/c/wonen/kaarsen-geur'], ['Chocolade', '/c/eten-drinken/chocolade-snoep/chocolade'],
+    ['Knuffels', '/c/speelgoed/poppen-knuffels/knuffels'], ['Metaaldetectors', '/c/sport-outdoor/metaaldetectie']];
+  /* Andere woorden waarop je een soort ook vindt in het zoekvakje van deze pagina. */
+  var SRT_OOK = { 'whisky': 'whiskey drank sterke drank', 'gin': 'drank sterke drank', 'rum': 'drank sterke drank', 'wodka': 'vodka drank', 'likeur': 'drank', 'cognac': 'drank', 'tequila': 'drank', 'speciaalbier': 'bier drank', 'bierpakketten': 'bier drank',
+    'rode-wijn': 'drank', 'witte-wijn': 'drank', 'rose': 'drank wijn', 'champagne': 'bubbels drank', 'prosecco-cava': 'bubbels drank', 'dameshorloges': 'horloge klokje', 'herenhorloges': 'horloge klokje', 'dartborden': 'darts darten', 'dartpijlen': 'darts darten pijltjes',
+    'lego': 'bouwen blokjes', 'koptelefoons': 'headphone koptelefoon', 'oordopjes': 'airpods earbuds', 'bluetooth-speakers': 'speaker box', 'knuffels': 'knuffel beer', 'legpuzzels': 'puzzel', 'damesparfum': 'geur luchtje', 'herenparfum': 'geur luchtje aftershave' };
+  /* Twee ingangen naast elkaar: een cadeau zoeken (voor wie, moment, bedrag) of een product zoeken (op soort). */
+  function soortWissel(aan) {
+    if (!SOORTEN) return '';
+    return '<nav class="srt-wissel" aria-label="Wat zoek je?"><a href="/"' + (aan === 'cadeau' ? ' class="aan" aria-current="page"' : '') + '>' + ic('cadeau') + '<span>Ik zoek een <b>cadeau</b></span></a>' +
+      '<a href="/categorieen"' + (aan === 'product' ? ' class="aan" aria-current="page"' : '') + '>' + ic('raster') + '<span>Ik zoek een <b>product</b></span></a></nav>';
+  }
+  function soortenPagina() {
+    zetTitel('Zoek een product – alle soorten op een rij');
+    var tel = {}, z = LK.zichtbaar();
+    for (var i = 0; i < z.length; i++) { var p = z[i]; if (!p.afd) continue; var k = p.afd + '/' + p.groep; tel[k] = (tel[k] || 0) + 1; if (p.vak) { k += '/' + p.vak; tel[k] = (tel[k] || 0) + 1; } }
+    function groepen(c) { return (c.subs || []).filter(function (s) { return !s.verborgen && s.vakjes && s.vakjes.length && tel[c.slug + '/' + s.slug]; }); }
+    function groepHtml(c, s) {
+      var basis = '/c/' + c.slug + '/' + s.slug, vakken = s.vakjes.filter(function (v) { return tel[c.slug + '/' + s.slug + '/' + v.slug]; });
+      return '<div class="srt-groep" data-z="' + esc((s.naam + ' ' + c.naam).toLowerCase()) + '"><a class="srt-groepnaam" href="' + basis + '">' + esc(s.naam) + ' <small>' + tel[c.slug + '/' + s.slug] + '</small></a><div class="srt-chips">' +
+        (vakken.length > 1 ? vakken.map(function (v) { return '<a class="srt-chip" href="' + basis + '/' + v.slug + '" data-z="' + esc((v.naam + ' ' + (SRT_OOK[v.slug] || '')).toLowerCase()) + '">' + esc(v.naam) + ' <small>' + tel[c.slug + '/' + s.slug + '/' + v.slug] + '</small></a>'; }).join('') : '') +
+        '<a class="srt-chip srt-alles" href="' + basis + '" data-z="">Alles van ' + esc(s.naam) + '</a></div></div>';
+    }
+    /* Elke afdeling is een uitklapper: op de telefoon dicht (zestien nette regels op een scherm), op de computer open. */
+    function blok(naam, naar, beeld, inhoud, anker, binnen) {
+      return '<details class="srt-blok" id="srt-' + anker + '"' + (breedScherm ? ' open' : '') + '><summary><img src="' + esc(beeld) + '" alt="" width="48" height="48" loading="lazy" decoding="async">' +
+        '<span class="srt-kop"><h2>' + esc(naam) + '</h2><small>' + esc(binnen) + '</small></span><span class="srt-pijl">' + ic('pijl') + '</span></summary><div class="srt-in">' + inhoud + '</div></details>';
+    }
+    var breedScherm = false; try { breedScherm = window.matchMedia('(min-width: 900px)').matches; } catch (e) {}
+    var blokken = [];
+    CATS.forEach(function (c) {
+      var g = groepen(c), rond = c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp';
+      /* Horloges staan los van sieraden: wie een horloge zoekt, zoekt geen ketting (Marius, 12-11-2026). */
+      var los = c.slug === 'mode-sieraden' ? g.filter(function (s) { return s.slug === 'horloges'; })[0] : null;
+      if (los) g = g.filter(function (s) { return s !== los; }).sort(function (a, b) { return (a.slug === 'sieraden') - (b.slug === 'sieraden'); });
+      if (!g.length) return;
+      var naam = c.slug === 'mode-sieraden' ? 'Mode, tassen & sieraden' : c.naam;
+      blokken.push(blok(naam, '/c/' + c.slug, rond, g.map(function (s) { return groepHtml(c, s); }).join(''), c.slug, g.map(function (s) { return s.naam; }).join(' · ')));
+      if (los) blokken.push(blok('Horloges', '/c/' + c.slug + '/horloges', kleinBeeld(los.beeld) || rond, groepHtml(c, los), 'horloges', los.vakjes.map(function (v) { return v.naam; }).join(' · ')));
+    });
+    window.LK_SOORTFILTER = function (q) {
+      q = String(q || '').toLowerCase().replace(/^\s+|\s+$/g, ''); var aantal = 0;
+      $$('.srt-blok').forEach(function (b) {
+        var kop = (b.querySelector('h2') || {}).textContent || '', bRaak = !q || kop.toLowerCase().indexOf(q) !== -1, bToon = false;
+        $$('.srt-groep', b).forEach(function (g) {
+          var gRaak = bRaak || (g.getAttribute('data-z') || '').indexOf(q) !== -1, gToon = false;
+          $$('.srt-chip', g).forEach(function (a) { var raak = gRaak || (a.getAttribute('data-z') && a.getAttribute('data-z').indexOf(q) !== -1); a.hidden = !raak; if (raak && !a.classList.contains('srt-alles')) { gToon = true; aantal++; } });
+          if (gRaak) gToon = true; g.hidden = !gToon; if (gToon) bToon = true;
+        });
+        b.hidden = !bToon; b.open = q ? bToon : breedScherm;
+      });
+      var vaak = $('.srt-vaak'); if (vaak) vaak.hidden = !!q;
+      var leeg = $('.srt-leeg'); if (leeg) { leeg.hidden = !q || aantal > 0 || $$('.srt-blok').some(function (b) { return !b.hidden; }); var l = $('a', leeg); if (l) l.setAttribute('href', '/zoek?q=' + encodeURIComponent(q)); }
+    };
+    return paginakop({ titel: 'Zoek een product', tekst: 'Alle soorten netjes op een rij. Tik op een soort en je ziet meteen de producten.', kruimel: [{ tekst: 'Producten' }] }) +
+      '<div class="binnen soorten">' +
+      '<section class="sectie eerste srt-boven">' + soortWissel('product') +
+        '<label class="srt-zoek">' + ic('zoek') + '<input type="search" id="srt-zoek" autocomplete="off" placeholder="Typ een soort: darts, whisky, horloge…" aria-label="Zoek een soort" oninput="LK_SOORTFILTER(this.value)"></label>' +
+        '<div class="srt-vaak"><p class="srt-label">Vaak gezocht</p><nav class="srt-chips" aria-label="Vaak gezocht">' + SRT_VAAK.map(function (v) { return '<a class="srt-chip srt-goud" href="' + v[1] + '">' + esc(v[0]) + '</a>'; }).join('') + '</nav>' +
+        '<p class="srt-label">Alle soorten</p></div>' +
+        '<p class="srt-leeg" hidden>Deze soort staat er niet tussen. <a href="/zoek">Zoek in alle producten</a></p></section>' +
+      '<div class="srt-lijst">' +
+      blokken.join('') + '</div>' +
+      '<section class="sectie srt-cadeau"><div class="sectie-kop"><div><h2>Zoek je liever een cadeau?</h2><p>Kies voor wie het is, dan zoeken wij de leukste cadeaus bij elkaar.</p></div></div>' +
+      '<nav class="mini-raster breed" aria-label="Voor wie">' + (window.LK_PERSONEN || []).filter(function (p) { return !p.verborgen; }).map(function (p) {
+        return miniTegel(p.naam, '/voor/' + p.slug, 'images/sub/rond/voor-' + p.slug + '-klein.webp');
+      }).join('') + miniTegel('Alle personen', '/voor', '', 'cadeau') + '</nav></section></div>';
+  }
+
   /* ---------- Alle categorieën ---------- */
   function alleCategorieen() {
     zetTitel('Alle categorieën');
@@ -1393,6 +1468,10 @@
       'dieren': 'Snoepjes, speeltjes en mandjes voor hond, kat en meer.',
       'christelijk': 'Bijbels, sieraden met kruis en geschenken met betekenis.'
     };
+    /* 12-11-2026 (Marius: 'je kan niks specifiek gemakkelijk kiezen, bijvoorbeeld darts of whisky; er moet onderscheid komen tussen
+       cadeaus en producten zoeken'): deze pagina is nu 'Zoek een product'. Alle soorten staan netjes onder elkaar; een tik op een
+       soort toont meteen de producten (het vakje), zonder tussenscherm. Uit: window.LK_SOORTEN = false of ?proef=soorten-uit. */
+    if (SOORTEN) return soortenPagina();
     return paginakop({ titel: 'Alle categorieën', tekst: 'Kies waar je zin in hebt.', kruimel: [{ tekst: 'Categorieën' }] }) +
       '<div class="binnen"><section class="sectie"><div class="catronden">' + CATS.map(function (c) {
         return '<a class="catrond" href="/c/' + c.slug + '"><span class="catrond-beeld"><img src="' + (c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" loading="lazy" decoding="async" width="88" height="88" onerror="this.onerror=null;this.src=\'' + esc(c.tegel) + '\'"></span>' +
@@ -5272,7 +5351,7 @@
     if (t.hasAttribute('data-fp2')) { if (FP) fp2Klik(t); return; }
     if (t.hasAttribute('data-filter-open')) { openPaneel(); return; }
     if (t.hasAttribute('data-filter-dicht')) { sluitPaneel(false); return; }
-    if (t.hasAttribute('data-open-lade')) { openLade(); return; }
+    if (t.hasAttribute('data-open-lade')) { if (SOORTEN && t.getAttribute('data-onder') === 'categorieen') { ga('/categorieen'); return; } /* onderbalk: 'Producten' gaat meteen naar alle soorten; het menu zit onder de drie streepjes */ openLade(); return; }
     if (t.hasAttribute('data-sluit-lade')) { sluitLade(); return; }
     if (t.hasAttribute('data-mega')) {
       var open = !$('[data-megamenu]').classList.contains('open');
@@ -5458,6 +5537,7 @@
   function start() {
     if (start.gedaan) return; start.gedaan = true;
     document.documentElement.classList.add('lk-gestart'); /* WIJZER: vanaf nu tekent de app de pagina zelf */
+    if (SOORTEN) $$('button[data-onder="categorieen"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3) t.nodeValue = 'Producten'; });
     if (WIJZER === 'b') $$('a[data-onder="vonk"], a[data-nav="vonk"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3 && /VONK/.test(t.nodeValue)) t.nodeValue = 'Kieshulp'; }); /* een nieuwe bezoeker weet niet wat VONK is */
     window.LK.ga = ga;
     bouwLade(); bouwMega(); netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
