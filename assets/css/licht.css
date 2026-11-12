@@ -2252,10 +2252,14 @@ html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .bi
 }
 /* ===== einde SOORTEN ===== */
 
-/* VOORBEELD koopknop (12-11-2026): knop op de productkaart, direct naar de winkel. Alleen met ?proef=koopknop. */
-.prodkaart .kaart-koop { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 10px; min-height: 44px; padding: 0 10px;
+/* KOOPKNOP (live 12-11-2026, GO Marius): knop 'Bekijk bij <winkel>' onderaan de productkaart, direct naar de winkel. Code: koopKnop() in gedeeld.js. */
+.prodkaart .kaart-voet { margin-top: auto; padding-top: 12px; }
+.prodkaart .kaart-koop { display: flex; align-items: center; justify-content: center; gap: 4px; min-height: 44px; padding: 7px 10px;
   border-radius: 999px; background: linear-gradient(180deg, #F2CB74 0%, #D9A848 100%); border: 1px solid #B8862E; color: #141A2A;
-  font: 700 14px/1.15 Manrope, system-ui, sans-serif; text-decoration: none; text-align: center; box-shadow: 0 3px 10px rgba(184,134,46,.22); position: relative; z-index: 2; }
+  font: 700 13.5px/1.2 Manrope, system-ui, sans-serif; letter-spacing: -.1px; text-decoration: none; text-align: center; text-wrap: balance;
+  box-shadow: 0 3px 10px rgba(184,134,46,.22); position: relative; z-index: 2; }
+.prodkaart .info:has(.kaart-koop) { flex: 1 1 auto; }
+.prodkaart .kaart-koop svg { width: 14px; height: 14px; flex: none; }
+@media (min-width: 760px) { .prodkaart .kaart-koop { font-size: 14px; padding: 8px 14px; } }
 .prodkaart .kaart-koop:hover { filter: brightness(1.04); }
 .prodkaart .kaart-koop:focus-visible { outline: 3px solid #0A1020; outline-offset: 2px; }
-

@@ -29,10 +29,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-700-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611121746" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611121746" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121746">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611121746">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611121809" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611121809" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121809">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611121809">
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
     if (!v && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
@@ -89,6 +89,8 @@
   <div class="zoekrij" data-zoekrij><div class="binnen"><form class="zoek" role="search" data-zoek=""><svg class="lp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg><label class="verborgen" for="zk-1">Zoek een cadeau</label><input id="zk-1" type="search" name="q" value="" placeholder="Typ wat je zoekt, bijvoorbeeld lego, whisky of ‘oma, max €25’" autocomplete="off" enterkeyhint="search"><button type="submit" aria-label="Zoeken"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg></button></form></div></div>
 
   <main id="app" tabindex="-1"><section class="paginakop zonder"><div class="binnen"><nav class="kruimel" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">›</span><span>Algemene voorwaarden (Terms and Conditions)</span></nav><h1>Algemene voorwaarden (Terms and Conditions)</h1></div></section><div class="binnen"><article class="tekstpagina"><p>Laatst bijgewerkt: 23 oktober 2026.</p><p>Deze voorwaarden gelden voor het gebruik van leukekeuze.nl, een website van LeukeKeuze (Marius, zie het <a href="/info/colofon/">colofon</a>).</p><h2>1. Wat LeukeKeuze doet</h2><p>LeukeKeuze is een cadeausite met tips en links naar producten van andere winkels. Wij verkopen zelf niets. Je sluit dus geen koop af met LeukeKeuze.</p><h2>2. Kopen doe je bij de winkel</h2><p>Bestel je iets via een link, dan koop je bij die winkel. Hun voorwaarden gelden voor bestelling, betaling, bezorging, garantie en retour. Met vragen daarover ga je naar de winkel.</p><h2>3. Prijzen en informatie</h2><p>We doen ons best om prijzen, foto’s en beschrijvingen juist te houden. Maar winkels passen prijzen en voorraad soms aan. De informatie op de site van de winkel is altijd leidend. Aan fouten op LeukeKeuze kun je geen rechten ontlenen.</p><h2>4. Partnerlinks</h2><p>Veel links zijn partnerlinks. Koop je via zo’n link, dan krijgen wij soms een kleine vergoeding van de winkel. Dat kost jou niets extra en verandert niets aan de prijs.</p><h2>5. Aansprakelijkheid</h2><p>LeukeKeuze is niet aansprakelijk voor producten, diensten of websites van andere winkels, en ook niet voor schade door het gebruik van deze site, behalve als de wet dat anders bepaalt.</p><h2>6. Teksten en foto’s</h2><p>De teksten op LeukeKeuze zijn van ons. Productfoto’s komen van de winkels en merken. Neem niets over zonder toestemming.</p><h2>7. Wijzigingen</h2><p>We kunnen deze voorwaarden aanpassen. De nieuwste versie staat altijd op deze pagina.</p><h2>8. Recht</h2><p>Op deze voorwaarden is Nederlands recht van toepassing. Vragen? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>.</p><h2 lang="en">General Terms and Conditions (English summary)</h2><p lang="en">leukekeuze.nl is a gift-tip website run by Marius (LeukeKeuze), Kromhout 108, 3311 RH Dordrecht, The Netherlands. We do not sell products ourselves; purchases are made with the linked shops under their own terms. Prices and information may change; the shop’s information prevails. Many links are affiliate links: we may receive a commission, at no extra cost to you. We are not liable for products or websites of third parties, except where the law requires otherwise. Dutch law applies.</p></article></div></main>
+  <script>/* KOOPKNOP (12-11-2026): kwam je via 'Bekijk bij …' op een productkaart (?naar=winkel), dan meteen door naar de winkel, met de partnerlink van deze pagina. */
+  (function () { if (!/[?&]naar=winkel(&|$)/.test(location.search)) return; var a = document.querySelector('#app a[data-winkel][href^="http"]'); if (a) location.replace(a.href); })();</script>
 
   <footer class="footer">
     <div class="binnen">
@@ -154,17 +156,17 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script src="assets/js/data.js?v=202611121746"></script>
+  <script src="assets/js/data.js?v=202611121809"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121746"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121809"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
-  <script src="assets/js/topkeuze.js?v=202611121746" async></script>
-  <script src="assets/js/gedeeld.js?v=202611121746"></script>
-  <script src="assets/js/app.js?v=202611121746"></script>
+  <script src="assets/js/topkeuze.js?v=202611121809" async></script>
+  <script src="assets/js/gedeeld.js?v=202611121809"></script>
+  <script src="assets/js/app.js?v=202611121809"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

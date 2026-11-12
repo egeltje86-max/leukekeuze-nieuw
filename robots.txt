@@ -3,5 +3,6 @@ Allow: /
 Disallow: /sjabloon.html
 Disallow: /keurkamer/
 Disallow: /scripts/
+Disallow: /*naar=winkel
 
 Sitemap: https://leukekeuze.nl/sitemap.xml

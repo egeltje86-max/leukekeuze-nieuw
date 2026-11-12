@@ -29,10 +29,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-700-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611121746" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611121746" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121746">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611121746">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611121809" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611121809" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121809">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611121809">
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
     if (!v && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
@@ -89,6 +89,8 @@
   <div class="zoekrij" data-zoekrij><div class="binnen"><form class="zoek" role="search" data-zoek=""><svg class="lp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg><label class="verborgen" for="zk-1">Zoek een cadeau</label><input id="zk-1" type="search" name="q" value="" placeholder="Typ wat je zoekt, bijvoorbeeld lego, whisky of ‘oma, max €25’" autocomplete="off" enterkeyhint="search"><button type="submit" aria-label="Zoeken"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg></button></form></div></div>
 
   <main id="app" tabindex="-1"><section class="paginakop zonder"><div class="binnen"><nav class="kruimel" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">›</span><span>Voor wie?</span></nav><h1>Voor wie zoek je een cadeau?</h1><p class="intro">Kies voor wie het is. Daarna zie je alleen wat bij die persoon past.</p></div></section><div class="binnen"><section class="sectie eerste keuzes-sectie"><nav class="keuzes-blok" aria-label="Voor wie"><div class="keuzes groot"><a class="keuzerond" href="/voor/hem/"><span class="rond"><img src="images/sub/rond/voor-hem-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Voor hem</span></a><a class="keuzerond" href="/voor/haar/"><span class="rond"><img src="images/sub/rond/voor-haar-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Voor haar</span></a><a class="keuzerond" href="/voor/kinderen/"><span class="rond"><img src="images/sub/rond/voor-kinderen-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Kinderen</span></a><a class="keuzerond" href="/voor/tieners/"><span class="rond"><img src="images/sub/rond/voor-tieners-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Tieners</span></a><a class="keuzerond" href="/voor/opa-oma/"><span class="rond"><img src="images/sub/rond/voor-opa-oma-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Opa &amp; oma</span></a><a class="keuzerond" href="/voor/collega/"><span class="rond"><img src="images/sub/rond/voor-collega-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Collega's</span></a><a class="keuzerond" href="/voor/baby/"><span class="rond"><img src="images/sub/rond/voor-baby-klein.webp" alt="" loading="lazy" decoding="async" width="88" height="88"></span><span class="naam">Baby &amp; kraam</span></a></div></nav></section></div></main>
+  <script>/* KOOPKNOP (12-11-2026): kwam je via 'Bekijk bij …' op een productkaart (?naar=winkel), dan meteen door naar de winkel, met de partnerlink van deze pagina. */
+  (function () { if (!/[?&]naar=winkel(&|$)/.test(location.search)) return; var a = document.querySelector('#app a[data-winkel][href^="http"]'); if (a) location.replace(a.href); })();</script>
 
   <footer class="footer">
     <div class="binnen">
@@ -154,17 +156,17 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script src="assets/js/data.js?v=202611121746"></script>
+  <script src="assets/js/data.js?v=202611121809"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121746"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121809"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
-  <script src="assets/js/topkeuze.js?v=202611121746" async></script>
-  <script src="assets/js/gedeeld.js?v=202611121746"></script>
-  <script src="assets/js/app.js?v=202611121746"></script>
+  <script src="assets/js/topkeuze.js?v=202611121809" async></script>
+  <script src="assets/js/gedeeld.js?v=202611121809"></script>
+  <script src="assets/js/app.js?v=202611121809"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

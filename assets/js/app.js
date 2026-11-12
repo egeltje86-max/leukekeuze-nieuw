@@ -206,8 +206,10 @@
      die tellen niet mee in de meting). Zoekmachines en de bouw krijgen altijd a, dus de gebouwde pagina's veranderen niet.
      Alles uit: window.LK_WIJZER = false. Meting: gebeurtenissen proef/wijzer-a|b/gezien, /product en /winkel in GoatCounter. */
   var WIJZER_ZELF = false;
-  /* VOORBEELD koopknop (12-11-2026, idee Marius: 'direct onder het product: bekijk bij bol'): alleen met ?proef=koopknop, nog niet live. */
-  var KOOPKNOP = (function () { try { if (/[?&]proef=koopknop-uit(&|$)/.test(location.search)) sessionStorage.removeItem('lkkoop'); else if (/[?&]proef=koopknop(&|$)/.test(location.search)) sessionStorage.setItem('lkkoop', '1'); return sessionStorage.getItem('lkkoop') === '1'; } catch (e) { return false; } })();
+  /* KOOPKNOP (live 12-11-2026, GO Marius: 'mensen moeten direct kunnen kopen in de winkel, niet eerst naar een pagina met foto en uitleg'):
+     op elke productkaart een knop 'Bekijk bij <winkel>' die meteen naar de winkel gaat. Vergelijken zonder knop: ?proef=koopknop-uit (weer aan: ?proef=koopknop).
+     Helemaal uit: window.LK_KOOPKNOP = false (vóór app.js). */
+  var KOOPKNOP = (function () { if (window.LK_KOOPKNOP === false) return false; try { if (/[?&]proef=koopknop-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkkoop', '0'); else if (/[?&]proef=koopknop(&|$)/.test(location.search)) sessionStorage.removeItem('lkkoop'); return sessionStorage.getItem('lkkoop') !== '0'; } catch (e) { return true; } })();
   window.LK_KOOPKNOP = KOOPKNOP;
   var WIJZER = (function () {
     try {
@@ -5733,7 +5735,7 @@
       else { try { winkel = new URL(a.href).hostname.replace(/^www\./, ''); } catch (x) { winkel = 'onbekend'; } pad = 'klik/overig/' + winkel; titel = 'Andere winkellink: ' + winkel; }
       if (!pad) return;
       try { window.goatcounter.count({ path: pad, title: titel.slice(0, 120), event: true }); } catch (x) {}
-      var net = netwerk(a.href);
+      var net = a.classList.contains('kaart-koop') ? 'kaartknop' : netwerk(a.href); /* kaartknop: de link loopt via onze productpagina */
       /* Daisycon staat op pauze: dan gaat de knop rechtstreeks naar de winkel en verdienen we (nog) niets. Apart tonen. */
       if (net === 'zonder partnerlink' && prod && netwerk(prod.url) === 'Daisycon') net = 'Daisycon-pauze';
       var bron = 'bron/' + herkomst + '/' + net + '/' + (winkel || 'onbekend');
@@ -6045,7 +6047,6 @@
     vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
     werkTellersBij();
     toon();
-    if (KOOPKNOP && !window.LK_DETAILS) laadDetails(function () { toon(); });
   }
   /* Snelheid (8-11-2026): topkeuze.js laadt nu ook 'async'. We starten als de productlijst er is én de toppers (of na 6 seconden zonder toppers, als vangnet). */
   var T_START = Date.now();

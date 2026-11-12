@@ -284,3 +284,11 @@ Marius: 'hoe kunnen we LeukeKeuze bekender maken'; daarna 'begin met antwoordpag
 - bol-feeds: Marius ververst ze op de laptop (`Documents\LeukeKeuze-Bol\VERNIEUW-BOL-FEEDS.cmd`, laatst 11-11). Prijzen overnemen: `controlroom\bolprijs\bol_prijzen_site.py` (leest alleen, schrijft `bol-uitslag.json`; boekenfeeds worden overgeslagen), dan in de cloud omzetten naar de vorm van wacht.py en `nazorg.py` draaien; `gezien` = de datum van de feed.
 - Actie Marius (M4): `leukekeuze.nl/?eigen=1` één keer openen in de browser van de ChatGPT-app en op elk ander apparaat.
 
+## 22. Knop 'Bekijk bij …' op elke productkaart (live 12-11-2026, GO Marius)
+Marius: 'ik wil dat mensen direct kunnen kopen in de winkel en niet eerst worden doorgestuurd naar nog een pagina met een foto en uitleg'. Tekst: 'Bekijk bij <winkel>' (Marius koos dat boven 'Koop bij').
+- `koopKnop()` in gedeeld.js zet onderaan elke productkaart een gouden knop (`.kaart-voet` > `.kaart-koop`, blok 'KOOPKNOP' onderaan licht.css). Foto en naam gaan nog steeds naar de productpagina.
+- De knop gaat naar `/p/<id>/?naar=winkel` (nieuw tabblad). Een klein script in `sjabloon.html`, direct na `<main id="app">`, stuurt die pagina meteen door met de partnerlink van de knop op die productpagina (`a[data-winkel]`). Zo blijft de productlijst licht (de winkellinks in de lijst zetten kostte 440 KB extra) en is de partnerlink precies dezelfde als op de productpagina. `robots.txt`: `Disallow: /*naar=winkel`.
+- **Geen knop** bij drank (`cat: 'dranken'`, 18+), elektrische steps en fietsen (regels RDW) en RC-auto's op brandstof: daar moet de bezoeker eerst de uitleg op de productpagina zien.
+- Meting: de klik telt als `klik/<winkel>/<id>`, `bron/<pagina>/kaartknop/<winkel>` en `via/<bron>/<winkel>`.
+- Uit om te vergelijken: `?proef=koopknop-uit` (weer aan: `?proef=koopknop`); helemaal uit: `window.LK_KOOPKNOP = false`.
+

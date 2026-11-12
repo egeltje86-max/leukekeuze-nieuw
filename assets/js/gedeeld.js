@@ -199,19 +199,20 @@
         '<span class="shop">' + esc(p.shop) + '</span>' +
         '<h3><a href="/p/' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</a></h3>' +
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
-        koopKnop(p) +
         (p.kleuren > 1 ? '<span class="kleuren"><i></i><i></i><i></i>' + p.kleuren + ' ' + (p.keuzeMeervoud || 'kleuren') + '</span>' : '') +
         /* 2.0: alleen bij onze favorieten één korte, echte reden (de eerste zin van 'waarom wij dit kozen'). */
         (kaartReden(p) ? '<p class="reden">' + esc(kaartReden(p)) + '</p>' : '') +
+        koopKnop(p) +
       '</div></article>';
   }
-  /* VOORBEELD koopknop (12-11-2026): direct naar de winkel vanaf de kaart. Niet bij drank (18+), elektrische steps (regels RDW) en RC op brandstof:
-     daar moet de bezoeker eerst de uitleg op de productpagina zien. */
+  /* KOOPKNOP (12-11-2026, GO Marius): direct naar de winkel vanaf de kaart, met dezelfde woorden als op de productpagina ('Bekijk bij …').
+     De knop gaat naar /p/<id>/?naar=winkel: die pagina stuurt meteen door naar de winkel (script in sjabloon.html, vóór de rest laadt),
+     met precies dezelfde partnerlink als de knop op de productpagina. Zo hoeft de lijst geen 11.000 winkellinks mee te sjouwen.
+     Niet bij drank (18+), elektrische steps en fietsen (regels RDW, 25 km/u) en RC op brandstof: daar eerst de uitleg op de productpagina. */
   function koopKnop(p) {
-    if (!window.LK_KOOPKNOP || !p.url || p.voorbeeld || !window.LK_WINKELLINK) return '';
+    if (window.LK_KOOPKNOP === false || p.voorbeeld || !p.shop || (p.status && p.status !== 'goedgekeurd')) return '';
     if (p.cat === 'dranken' || /elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || ''))) return '';
-    var naam = String(p.shop || ''), tekst = naam.length <= 7 ? 'Koop bij ' + naam : 'Naar de winkel';
-    return '<a class="kaart-koop" data-id="' + esc(p.id) + '" href="' + esc(window.LK_WINKELLINK(p)) + '" target="_blank" rel="sponsored nofollow noopener">' + esc(tekst) + ' <span aria-hidden="true">›</span></a>';
+    return '<div class="kaart-voet"><a class="kaart-koop" data-id="' + esc(p.id) + '" href="/p/' + esc(p.id) + '/?naar=winkel" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + icoon('pijl') + '</a></div>';
   }
   /* Alleen als de eerste zin kort genoeg is om heel te tonen; anders liever niets dan een afgekapte zin. */
   /* Favorieten tonen altijd een korte reden. In de nieuwe opzet van de Voor wie-pagina's (WIJZER) elke kaart die er een heeft: p.kort (etalage) of de eerste zin van 'waarom'. */
