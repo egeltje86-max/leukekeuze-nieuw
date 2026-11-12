@@ -212,3 +212,25 @@ Marius: 'ik heb een nieuwe partner iScooter, die hebben hele gave spullen'; na d
 - De feed kwam uit Marius' eigen feedlijst van Awin; hij gaf daar toestemming voor ('open mijn feed van awin'). De sleutel in die link is alleen op de laptop gebruikt en staat nergens opgeslagen. Voor nieuwe producten van iScooter: de openbare productpagina's van de winkel, de sleutel niet opnieuw gebruiken zonder dat Marius het zegt.
 - **Sample**: iScooter biedt via Awin een gratis product voor een review aan. Er staat een concept-mail klaar in Gmail (aan affiliate@iscooterglobal.eu) met de vraag hoe dat werkt; Marius verstuurt hem zelf.
 - Reels (op verzoek): zeven foto's en een video voor Instagram in `Desktop\Feedzoeker LeukeKeuze\Reels 12-11\iScooter`. Marius plaatst zelf.
+
+## 17. Zoekbalk sterker en Google-adressen (12-11-2026, opdracht Marius)
+Marius: 'verbeter de zoekbalk, dat mensen alles kunnen vinden en dat er typfouten mogen; ik heb geen verstand van zoekbalken, jij wel, dus verbeter hem gewoon'.
+- **Getest met 461 zoekwoorden en typfouten** (`scripts/controle/zoektest/`): vóór en na elke wijziging aan het zoeken draaien en vergelijken. Uitslag 12-11: 452 van de 461 vinden iets; de rest staat echt niet op de site (ajax, psv, feyenoord, scheikunde, goochelen, goocheldoos, fidget, ballonvaart).
+- **Wat er nieuw is** (app.js, blok 'Zoekbalk sterker' boven `zoekLijst`):
+  - Woordenlijst (`vocab`): alle woorden uit titels, merken en vakjes van wat nu op de site staat. Wordt pas opgebouwd als een zoekwoord niets vindt.
+  - Klank (`klank`): woorden die hetzelfde klinken zijn gelijk: sjokolade = chocolade, sjampanje = champagne, portemonnaie = portemonnee, pusel = puzzel, monopolie = monopoly.
+  - Verbeteren (`verbeter`): een woord dat niets vindt wordt het woord uit de woordenlijst dat er het meest op lijkt (1 tikfout, vanaf 8 letters 2; de eerste letter moet kloppen). Op de pagina staat dan 'We zochten op "puzzel"'.
+  - Aan elkaar of los: 'pokemonkaarten' = pokemon + kaarten, 'knuffelkonijn' = knuffel + konijn, 'yoga mat' = yogamat, 'smart watch' = smartwatch. Splitsen of verbeteren: wat het meeste vindt wint.
+  - Streepjes tellen als spatie ('make-up', 'e-bike', 'tosti-ijzer'); twee woorden achter elkaar moeten als heel woord voorkomen (wel 'elektrische fietsen', niet 'elektrische fietspomp').
+  - Extra woorden in `ALT` en `VAKSYN`: e-bike, fatbike, e-step, barbecue/bbq, make-up, pepernoten/kruidnoten, zaklantaarn, pingpong, kpop, cadeaubon.
+  - 'goedkoop' is een budget (tot €15). Een leeftijd van een kind ('lego 8 jaar') is een filter op leeftijd.
+  - Is het zoekwoord de naam van een gelegenheid of collectie ('housewarming', 'origineel cadeau') en vinden we zelf bijna niets, dan tonen we de cadeaus van die pagina.
+  - Vinden we niets met alle woorden samen, dan telt een zeldzaam woord zwaarder ('snijplank met naam': eerst de snijplanken).
+  - Geen onzin meer als laatste redmiddel: het staartje van een woord telt alleen als het zelf een echt woord is ('verkleedkleren' gaf leren schoenen, 'labuboe' gaf boeken).
+- **Nieuwe producten** staan vanzelf in de zoekbalk (die zoekt in `producten-lean.js`); nagekeken voor 999 Games en iScooter.
+- **Tekst in het zoekvak** (Marius: 'zet erin: typ het product wat je zoekt, bijvoorbeeld'): 'Typ wat je zoekt, bijv. lego' (past op 390 en 360px; onder 350px alleen 'Typ wat je zoekt'; op de computer met meer voorbeelden). `ZOEK_TEKST` in app.js.
+- **Gaten die de zoektest liet zien** (voorstel, niets toegevoegd): goocheldoos, fidget-speelgoed, scheikundedoos, telefoonhoesjes, spullen van voetbalclubs.
+- **Google: 'Niet gevonden (404)'** (mail van Search Console, 12-11): alle adressen die ooit in de sitemap stonden zijn nagelopen (14.598): 165 bestonden niet meer (oude onderwerpen van Voor wie, collecties en gelegenheden per persoon, en 102 producten die helemaal uit producten.js waren gehaald). Ze staan nu in `correcties.json` → `adressen` en sturen door naar de best passende bestaande pagina (product: zijn laatste vakje).
+  - Nieuwe bewaking: `node scripts/controle/ooit.js .` (na een bouw): elk adres dat ooit in de sitemap stond moet nog bestaan of doorsturen; de lijst (`scripts/controle/ooit-adressen.txt`) groeit vanzelf mee. Draai hem na elke bouw waarin pagina's of producten verdwijnen. **Haal een product nooit helemaal uit producten.js; zet het op afgekeurd of uitverkocht**, dan stuurt zijn pagina vanzelf door.
+  - Google komt maar af en toe langs: het duurt dagen tot weken voor de meldingen stoppen. In Search Console kan Marius daarna opnieuw op 'Oplossing valideren' drukken.
+- **Nieuwe winkels bij TradeTracker** (bekeken 12-11, nog niet aangemeld): No 28 wonen & lifestyle (woonwinkel, past) en MDN Trading = Allesvoorkamado.nl (barbecue, past bij Voor hem); Zigbuy (elektronica, deels), Kinkythings (erotiek, nee), Solarite (zonnepanelen, nee). Marius: 'als ik nog niet ben aangemeld hoef je ook geen lijsten klaar te maken'. Pas een lijst maken als hij zegt dat hij is goedgekeurd.

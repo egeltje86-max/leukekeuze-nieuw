@@ -996,7 +996,7 @@
     return '<form class="zoek" role="search" data-zoek>' +
       ic('zoek', 'lp') +
       '<label class="verborgen" for="zk-' + (zoekForm.n = (zoekForm.n || 0) + 1) + '">Zoek een cadeau</label>' +
-      '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="' + (tekst || 'Zoek in alle winkels…') + '" autocomplete="off" enterkeyhint="search">' +
+      '<input id="zk-' + zoekForm.n + '" type="search" name="q" value="' + esc(waarde || '') + '" placeholder="' + (tekst || 'Typ wat je zoekt, bijv. lego') + '" autocomplete="off" enterkeyhint="search">' +
       '<button type="submit" aria-label="Zoeken">' + ic('zoek') + '</button></form>';
   }
   function zetTitel(t) {
@@ -2245,7 +2245,7 @@
     'cadeaus/collega': 'juf meester leerkracht', 'cadeaus/voor-kinderen': 'tiener' };
   /* 3.0 (5-11-2026): ook de nieuwe boom (afdeling > groep > vakje) telt mee bij zoeken, plus extra woorden per vakje.
      Zo vindt 'bordspel' alle bordspellen en 'kerstboom' het vakje Kerstbomen & kransen. */
-  var VAKSYN = { 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
+  var VAKSYN = { 'elektrische-fietsen': 'ebike e-bike fatbike elektrische fiets stadsfiets vouwfiets', 'elektrische-steps': 'estep e-step escooter e-scooter elektrische step', 'kerstbomen-kransen': 'kerstboom kunstkerstboom kerstkrans krans adventskrans', 'cadeaupakketten-manden': 'kerstpakket cadeaupakket borrelpakket pakket',
     'dameshorloges': 'dameshorloge horloge dames', 'herenhorloges': 'herenhorloge horloge heren', 'koptelefoons': 'koptelefoon headphone', 'oordopjes': 'oortjes earbuds oordopjes koptelefoon',
     'gaming-headsets': 'headset koptelefoon', 'bordspellen-voor-het-gezin': 'bordspel gezelschapsspel', 'strategiespellen': 'bordspel strategiespel', 'partyspellen': 'bordspel partyspel',
     'kinderspellen': 'bordspel kinderspel', 'kaart-dobbelspellen': 'kaartspel dobbelspel', 'squishmallows': 'squishmallow knuffel', 'dartborden': 'dartbord darts', 'dartpijlen': 'darts dartpijl pijltjes',
@@ -2272,7 +2272,7 @@
   /* Verkleinwoorden en meervoud terugbrengen: 'loopfietsje' zoekt ook 'loopfiets', 'fietsjes' ook 'fiets'. */
   function stam(w) { var k = w.replace(/(tjes|tje|jes|je|'s|s)$/, ''); return k.length >= 4 ? k : w; }
   var ZT = {};
-  function zoekTekstV(p) { return ZT[p.id] || (ZT[p.id] = vouw(zoekTekst(p))); }
+  function zoekTekstV(p) { return ZT[p.id] || (ZT[p.id] = vouw(zoekTekst(p)).replace(/[-\u2010-\u2015]/g, ' ')); }
   /* Eén tikfout mag ('fiest' vindt 'fiets', 'lgeo' vindt 'lego'): kleine afstand tussen twee woorden. */
   function bijna(a, b) {
     if (Math.abs(a.length - b.length) > 1) return false;
@@ -2303,16 +2303,28 @@
     bag: 'tas', backpack: 'rugzak', wallet: 'portemonnee', headphone: 'koptelefoon', earbud: 'oordop|oordopjes', perfume: 'parfum', puzzle: 'puzzel', toy: 'speelgoed', book: 'boek', sock: 'sokken|sok',
     blanket: 'plaid|deken', deken: 'deken|plaid', plaid: 'plaid|deken', slipper: 'slof|pantoffel', sloffen: 'slof|pantoffel', slof: 'slof|pantoffel', pantoffel: 'pantoffel|slof', sweater: 'trui', jumper: 'trui',
     wine: 'wijn', beer: 'bier', chocolate: 'chocola|chocolade', coffee: 'koffie', cookbook: 'kookboek', apron: 'schort', phone: 'telefoon', charger: 'oplader', kitchen: 'keuken', garden: 'tuin', dog: 'hond', cat: 'kat|poes',
+    ebike: 'ebike|elektrische fiets', fatbike: 'fatbike|elektrische fiets', estep: 'estep|elektrische step', escooter: 'escooter|elektrische step', kpop: 'kpop|k pop', zaklantaarn: 'zaklamp|zaklantaarn|lantaarn', pingpong: 'tafeltennis|ping pong|pingpong', barbecue: 'barbecue|bbq', barbeque: 'bbq|barbecue', bbq: 'bbq|barbecue',
+    makeup: 'make up|makeup|lipgloss|mascara|oogschaduw|blush|lippenstift', pepernoten: 'pepernoten|kruidnoten|strooigoed', pepernoot: 'pepernoten|kruidnoten|strooigoed', kruidnoten: 'kruidnoten|pepernoten|strooigoed', ballonvaart: 'ballonvaart|ballonvlucht|luchtballon', cadeaubon: 'cadeaubon|cadeaukaart|giftcard|tegoedbon', cadeaukaart: 'cadeaukaart|cadeaubon|giftcard',
     beker: 'beker|mok', mok: 'mok|beker', kado: 'cadeau', gift: 'cadeau', sieradenmaken: 'sieraden-maken', kralen: 'kralen|sieraden-maken', lego: 'lego', jbl: 'jbl', airpod: 'airpods|oordopjes' };
   function zoekWoorden(tekst) {
     var v = vouw(tekst);
     Object.keys(ZINALT).forEach(function (z) { if (v.indexOf(z) !== -1) v = v.split(z).join(' ' + ZINALT[z] + ' '); });
     var w = v.split(/[^a-z0-9-]+/).filter(Boolean).map(function (x) { return x.replace(/^-+|-+$/g, ''); }).filter(Boolean);
+    /* 12-11-2026: twee losse woorden die samen een bekend woord zijn ('fat bike', 'make up', 'e step') tellen als dat ene woord. */
+    for (var i = 0; i < w.length - 1; i++) if (ALT[w[i] + w[i + 1]] && !ALT[w[i]]) { w.splice(i, 2, w[i] + w[i + 1]); }
     var r = w.filter(function (x) { return !STOP[x]; });
-    return (r.length ? r : w).map(function (x) { if (x.indexOf('-') !== -1) return x.split('-').join(' '); var st = stam(x); return ALT[x] || ALT[st] || st; });
+    return (r.length ? r : w).map(function (x) { if (x.indexOf('-') !== -1) { var zs = x.split('-').join(''); return ALT[zs] || x.split('-').join(' '); } var st = stam(x); return ALT[x] || ALT[st] || st; });
   }
   /* Eén van de woorden in een '|'-lijst is genoeg. Een woord met een spatie ('sieraden maken') moet als geheel voorkomen. */
-  function bevatEen(t, w) { return w.split('|').some(function (d) { return d.indexOf(' ') !== -1 ? t.indexOf(d) !== -1 : bevat(t, d); }); }
+  /* Twee woorden achter elkaar ('elektrische fiets') moeten als heel woord voorkomen: wel 'elektrische fietsen', niet 'elektrische fietspomp'. */
+  function heeftZin(t, d) {
+    for (var i = t.indexOf(d); i !== -1; i = t.indexOf(d, i + 1)) {
+      if (i > 0 && /[a-z0-9]/.test(t[i - 1])) continue;
+      if (/^(en|s|je|jes)?([^a-z0-9]|$)/.test(t.slice(i + d.length, i + d.length + 4))) return true;
+    }
+    return false;
+  }
+  function bevatEen(t, w) { return w.split('|').some(function (d) { d = d.replace(/-/g, ' '); return d.indexOf(' ') !== -1 ? heeftZin(t, d) : bevat(t, d); }); }
   /* Woorden voor een persoon ('man', 'vrouw', 'oma'): die zoeken op voor wie het product is, niet op de titel ('Dog Man' is geen cadeau voor een man). */
   var PERSW = {}; Object.keys(SYN).forEach(function (k) { if (/^(haar|hem|kind|opa-oma|collega)$/.test(k)) (SYN[k] + ' ' + k).split(' ').forEach(function (w) { PERSW[stam(w)] = k; }); });
   /* Korte woorden (3 letters of minder) alleen aan het begin van een woord: 'oma' vindt niet 'aroma' of 'roman', 'lp' niet 'alpaca'. */
@@ -2417,11 +2429,127 @@
     }).slice(0, 8);
   }
   /* Zoekt in onze eigen producten. Eerst precies; vindt dat niets, dan met één tikfout per woord. */
+  /* ===== Zoekbalk sterker (12-11-2026, opdracht Marius: 'dat mensen alles kunnen vinden en dat er typfouten mogen') =====
+     a. Woordenlijst: alle woorden uit titels, merken en vakjes van wat nu op de site staat (één keer opgebouwd, pas als het nodig is).
+     b. Klank: woorden die hetzelfde klinken zijn gelijk ('sjokolade' = chocolade, 'portemonnaie' = portemonnee, 'pusel' = puzzel).
+     c. Verbeteren: vindt een woord niets, dan zoeken we op het woord uit de woordenlijst dat er het meest op lijkt.
+     d. Aan elkaar of los: 'pokemonkaarten' = pokemon + kaarten, 'yoga mat' = yogamat. */
+  function klank(w) {
+    return w.replace(/^ch/, 'sj').replace(/sch/g, 'sg').replace(/ch/g, 'g').replace(/aie/g, 'e').replace(/eau/g, 'o').replace(/ou/g, 'au').replace(/ij/g, 'ei').replace(/y/g, 'i')
+      .replace(/ph/g, 'f').replace(/th/g, 't').replace(/wh/g, 'w').replace(/ck/g, 'k').replace(/qu?/g, 'k').replace(/x/g, 'ks').replace(/gn/g, 'nj').replace(/c(?=[ei])/g, 's').replace(/c/g, 'k')
+      .replace(/z/g, 's').replace(/v/g, 'f').replace(/dt$/, 't').replace(/d$/, 't').replace(/ie/g, 'i').replace(/oe/g, 'u').replace(/(.)\1+/g, '$1');
+  }
+  var VOC = null;
+  function vocab() {
+    if (VOC) return VOC;
+    var n = {}, kl = {}, per = {};
+    LK.zichtbaar().forEach(function (p) {
+      var b = zoekBoom(p), gezien = {};
+      vouw(p.titel + ' ' + (p.merk || '') + ' ' + b.vak + ' ' + b.groep).split(/[^a-z0-9]+/).forEach(function (x) {
+        if (x.length < 3 || /^\d/.test(x)) return; x = stam(x); if (gezien[x]) return; gezien[x] = 1; n[x] = (n[x] || 0) + 1;
+      });
+    });
+    var lijst = Object.keys(n);
+    lijst.forEach(function (x) { var k = klank(x); kl[x] = k; (per[k] = per[k] || []).push(x); });
+    return (VOC = { n: n, kl: kl, per: per, lijst: lijst });
+  }
+  /* Is dit het begin van minstens twee bekende woorden ('verkleed' van verkleedkleding en verkleedset)? */
+  function bekendBegin(x) { var V = vocab(), n = 0; for (var q = 0; q < V.lijst.length && n < 2; q++) if (V.lijst[q].length > x.length && V.lijst[q].indexOf(x) === 0) n++; return n >= 2; }
+  /* Aantal tikfouten tussen twee woorden (letter erbij, eraf, anders of twee omgedraaid); stopt zodra het er meer dan 'max' zijn. */
+  function afstand(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    var vv = null, v = [], i, j;
+    for (j = 0; j <= b.length; j++) v[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      var nu = [i], laag = i;
+      for (j = 1; j <= b.length; j++) {
+        var k = a[i - 1] === b[j - 1] ? 0 : 1;
+        nu[j] = Math.min(v[j] + 1, nu[j - 1] + 1, v[j - 1] + k);
+        if (vv && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) nu[j] = Math.min(nu[j], vv[j - 2] + 1);
+        if (nu[j] < laag) laag = nu[j];
+      }
+      if (laag > max) return max + 1;
+      vv = v; v = nu;
+    }
+    return v[b.length];
+  }
+  /* De woorden uit de woordenlijst die het meest lijken op een woord dat zelf niets vindt (hooguit twee). */
+  function verbeter(w) {
+    var V = vocab(); if (V.n[w] || w.length < 4) return [];
+    var kw = klank(w), max = w.length >= 8 ? 2 : 1, kand = {};
+    /* Het zoekwoord is al ingekort ('champanje' werd 'champan'): probeer ook de vorm met het stukje er weer aan. */
+    [w, w + 'je', w + 's', w + 'tje'].forEach(function (v) { (V.per[klank(v)] || []).forEach(function (x) { if (kand[x] === undefined) kand[x] = 0; }); });
+    V.lijst.forEach(function (x) {
+      if (kand[x] !== undefined || x.length < 4 || Math.abs(x.length - w.length) > max) return;
+      /* Een tikfout zit bijna nooit in de eerste letter: zo wordt 'fidget' geen 'widget'. */
+      if (x[0] !== w[0] && !(x[0] === w[1] && x[1] === w[0])) return;
+      var d = afstand(w, x, max);
+      if (d > max) { if (w.length < 6 || afstand(kw, V.kl[x], 1) > 1) return; d = 1.5; }
+      /* Korte woorden (4 letters): alleen twee omgedraaide letters ('leog' = lego), anders wordt 'kaas' ook 'kaars'. */
+      if (w.length === 4 && !(x.length === 4 && w.split('').sort().join('') === x.split('').sort().join(''))) return;
+      kand[x] = d;
+    });
+    var k = Object.keys(kand).sort(function (a, b) { return kand[a] - kand[b] || V.n[b] - V.n[a]; });
+    return k.filter(function (x) { return kand[x] <= kand[k[0]] + 0.5; }).slice(0, 2);
+  }
+  function gewoonWoord(w) { return w.indexOf('|') === -1 && w.indexOf(' ') === -1; }
   function zoekLijst(woorden, prijs) {
     var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
     var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return bevatEen(t, w); }); });
-    if (lijst.length < 3 && woorden.some(function (w) { return w.length >= 4; })) {
-      var al = {}; lijst.forEach(function (p) { al[p.id] = 1; });
+    var en = function (ww) { return basis.filter(function (p) { var t = zoekTekstV(p); return ww.every(function (w) { return bevatEen(t, w); }); }); };
+    var komtVoor = function (w) { return basis.some(function (p) { return bevatEen(zoekTekstV(p), w); }); };
+    var gewoon = function (w) { return w.indexOf('|') === -1 && w.indexOf(' ') === -1 && !/^\d+$/.test(w) && !PERSW[w]; };
+    var maak = function (x) { var st = stam(x); return STOP[x] ? '' : (ALT[x] || ALT[st] || st); };
+    /* d. Twee losse woorden die samen één woord zijn ('yoga mat', 'smart watch'): die treffers gaan voor. */
+    if (woorden.length > 1) {
+      for (var a = 0; a < woorden.length - 1; a++) {
+        if (!gewoon(woorden[a]) || !gewoon(woorden[a + 1])) continue;
+        var vast = stam(woorden[a] + woorden[a + 1]);
+        if ((vocab().n[vast] || 0) < 2) continue;
+        var wS = woorden.slice(0, a).concat([vast], woorden.slice(a + 2)), lS = en(wS);
+        if (lS.length) { var alS = {}; lS.forEach(function (p) { alS[p.id] = 1; }); lijst = lS.concat(lijst.filter(function (p) { return !alS[p.id]; })); lijst.samen = wS; break; }
+      }
+    }
+    /* d. Een lang woord dat niets vindt en uit twee bekende woorden bestaat ('pokemonkaarten', 'wijnpakket'): zoek op allebei.
+       Vindt dat niets, dan op het eerste stuk ('verkleedkleren' = verkleed...). */
+    var kop = [], splits = null, heel = woorden;
+    if (lijst.length < 3) {
+      var V = vocab(), kent = function (x) { return V.n[stam(x)] || ALT[x] || ALT[stam(x)] || STOP[x]; };
+      var wD = [], los = []; kop = [];
+      woorden.forEach(function (w) {
+        if (!gewoon(w) || w.length < 6 || (lijst.length ? woorden.length > 1 : komtVoor(w))) { wD.push(w); kop.push(w); return; }
+        var best = null, bestKop = '';
+        for (var i = 3; i <= w.length - 3; i++) {
+          var b2 = w.slice(i), voor = [w.slice(0, i)];
+          if (/s$/.test(voor[0]) && i > 4) voor.push(voor[0].slice(0, -1));
+          if (/en$/.test(voor[0]) && i > 5) voor.push(voor[0].slice(0, -2));
+          voor.forEach(function (a2) {
+            if ((w.length >= 7 || Math.min(a2.length, b2.length) >= 4) && kent(a2) && kent(b2) && (!best || Math.min(a2.length, b2.length) > Math.min(best[0].length, best[1].length))) best = [a2, b2];
+            if (a2.length >= 5 && a2.length > bestKop.length && (V.n[stam(a2)] || bekendBegin(a2))) bestKop = a2;
+          });
+        }
+        if (best) { best.forEach(function (x) { var m = maak(x); if (m) wD.push(m); }); los.push(best.join(' ')); } else wD.push(w);
+        kop.push(bestKop ? maak(bestKop) || bestKop : w);
+      });
+      if (los.length && wD.length) { var lD = en(wD); if (lD.length > lijst.length) splits = { lijst: lD, woorden: wD, los: los.join(' ') }; }
+    }
+    /* c. Een woord dat zelf niets vindt: zoek op het woord dat er het meest op lijkt ('pusel' = puzzel, 'sjampanje' = champagne). */
+    if (lijst.length < 3) {
+      var bedoeld = [], wV = woorden.map(function (w) {
+        if (!gewoon(w) || w.length < 4 || komtVoor(w)) return w;
+        var k = verbeter(w); if (!k.length) return w;
+        bedoeld.push(k[0]); return k.join('|');
+      });
+      /* Splitsen of verbeteren? Wat het meeste vindt wint ('barbiepop' = barbie + pop, maar 'playmobiel' = playmobil en niet play + mobiel). */
+      var lV = bedoeld.length ? en(wV) : [];
+      if (splits && splits.lijst.length >= lV.length) {
+        var alD = {}, eerst = lijst.length; lijst.forEach(function (p) { alD[p.id] = 1; });
+        lijst = lijst.concat(splits.lijst.filter(function (p) { return !alD[p.id]; })); lijst.woorden = splits.woorden; lijst.samen = heel; if (!eerst) lijst.bedoeld = splits.los; woorden = splits.woorden;
+      } else if (lV.length > lijst.length) { lijst = lV; lijst.woorden = wV; lijst.bedoeld = bedoeld.join(' '); woorden = wV; }
+    }
+    if (!lijst.length && kop.length && kop.join(' ') !== woorden.join(' ')) { var lK = en(kop); if (lK.length) { lijst = lK; lijst.woorden = kop; lijst.ruim = kop.join(' '); woorden = kop; } }
+    if (lijst.length < 3 && !lijst.woorden && woorden.some(function (w) { return w.length >= 4; })) {
+      var al = {}, samenW = lijst.samen; lijst.forEach(function (p) { al[p.id] = 1; });
       lijst = lijst.concat(basis.filter(function (p) {
         if (al[p.id]) return false;
         var t = zoekTekstV(p), tw = null;
@@ -2429,9 +2557,11 @@
           if (bevatEen(t, w)) return true;
           if (w.length < 4 || w.indexOf('|') !== -1 || w.indexOf(' ') !== -1) return false;
           tw = tw || t.split(/[^a-z0-9]+/);
-          return tw.some(function (x) { return lijkt(w, x); });
+          return tw.some(function (x) { return lijkt(w, x) || lijkt(w, stam(x)); });
         });
       }));
+      if (samenW) lijst.samen = samenW;
+      if (!Object.keys(al).length && lijst.length) lijst.ruim = woorden.join(' ');
     }
     /* Vangnet (5-11-2026): nog steeds niets? Dan liever iets wat erop lijkt dan een lege pagina.
        a. Meerdere woorden: producten die minstens één woord hebben (de beste bovenaan).
@@ -2442,8 +2572,9 @@
     }
     if (!lijst.length && woorden.length === 1 && woorden[0].indexOf('|') === -1 && woorden[0].length >= 6) {
       var w0 = woorden[0];
-      for (var i = 2; i <= w0.length - 3 && !lijst.length; i++) {
-        var staart = w0.slice(i);
+      for (var i = 2; i <= w0.length - 4 && !lijst.length; i++) {
+        var staart = w0.slice(i), ervoor = w0.slice(0, i);
+        if (!vocab().n[stam(staart)] || !(vocab().n[stam(ervoor)] || (ervoor.length >= 3 && bekendBegin(ervoor)))) continue; /* 12-11-2026: alleen een echt woord ('kleren' werd 'leren' en gaf leren schoenen) */
         lijst = basis.filter(function (p) { return bevat(zoekTekstV(p), staart); });
         if (lijst.length) { lijst.ruim = staart; lijst.staart = staart; }
       }
@@ -2456,7 +2587,7 @@
   function zoekScore(p, woorden) {
     if (woorden.some(function (w) { return w.indexOf('|') !== -1 || w.indexOf(' ') !== -1; })) {
       return woorden.reduce(function (s, w) {
-        return s + Math.max.apply(null, w.split('|').map(function (d, i) { var x = d.indexOf(' ') !== -1 ? (vouw(p.titel).indexOf(d) !== -1 ? 15 : 4) : zoekScore(p, [d]); return i ? x * 0.5 : x; })); /* het eerste woord gaat voor */
+        return s + Math.max.apply(null, w.split('|').map(function (d, i) { d = d.replace(/-/g, ' '); var x = d.indexOf(' ') !== -1 ? (vouw(p.titel).replace(/-/g, ' ').indexOf(d) !== -1 ? 15 : 4) : zoekScore(p, [d]); return i ? x * 0.5 : x; })); /* het eerste woord gaat voor */
       }, 0);
     }
     var ti = ' ' + vouw(p.titel).replace(/[^a-z0-9]+/g, ' ') + ' ';
@@ -2473,8 +2604,10 @@
       if (ti.indexOf(w) !== -1) return s + 6;
       if (ca.indexOf(w) !== -1) return s + 4;
       /* Met een tikfout in de titel ('fiest' → fiets) telt het nog redelijk zwaar. */
-      if (w.length >= 4 && ti.split(' ').some(function (x) { return lijkt(w, x); })) return s + 8;
-      return s + 1;
+      /* 12-11-2026: staat het woord echt in de tekst, dan gaat dat vóór een titel die er alleen op lijkt ('dammen' gaf eerst thee van Dammann). */
+      if (bevat(zoekTekstV(p), w)) return s + 1;
+      if (w.length >= 4 && ti.split(' ').some(function (x) { return lijkt(w, x) || lijkt(w, stam(x)); })) return s + 0.8;
+      return s + 0.3;
     }, 0);
   }
   /* 8-11-2026 (onderzoek): de zoekbalk belooft 'oma, max €25'. Een budget in de zoekvraag ('max 25', 'onder €10', 'tot 50 euro', '<15')
@@ -2484,33 +2617,65 @@
     var m = t.match(/(?:max(?:imaal)?|onder(?:\s+de)?|tot|minder\s+dan|beneden|hooguit|<)\s*(?:€|eur(?:o)?)?\s*(\d{1,4})(?:[.,]\d{1,2})?\s*(?:€|euro|eur)?/i) ||
       t.match(/(?:€|eur(?:o)?)\s*(\d{1,4})(?:[.,]\d{1,2})?/i) || t.match(/(\d{1,4})(?:[.,]\d{1,2})?\s*(?:€|euro|eur)\b/i);
     if (m) { max = Number(m[1]); t = t.replace(m[0], ' '); }
+    /* 12-11-2026: 'goedkoop cadeau' is een budget (tot €15), geen woord in een titel. */
+    else { var gk = t.match(/\b(goedkoop|goedkope|betaalbaar|betaalbare|niet\s+te\s+duur)\b/i); if (gk) { max = 15; t = t.replace(gk[0], ' '); } }
     return { tekst: t.replace(/[,]+/g, ' ').replace(/\s+/g, ' ').trim(), max: max > 0 ? max : null };
   }
   function zoeken(q) {
     if (!q.q && q.winkel) return winkelPagina(q); /* WINKELTOP: alles van één winkel */
     var zb = zoekBudget(q.q || '');
-    var woorden = zoekWoorden(zb.tekst);
+    /* 12-11-2026: een leeftijd van een kind ('lego 8 jaar') is een filter, geen woord: alleen wat voor die leeftijd is (of geen leeftijd heeft). */
+    var lm = zb.tekst.match(/\b(\d{1,2})\s*(?:jaar|jr|jarige|jarig)\b/i), lft = lm && +lm[1] <= 17 ? +lm[1] : null;
+    var tipWoorden = zoekWoorden(zb.tekst);
+    var woorden = lft !== null ? zoekWoorden(zb.tekst.replace(lm[0], ' ')) : tipWoorden;
+    if (lft !== null && !woorden.length) { woorden = tipWoorden; lft = null; }
     var lijst = zoekLijst(woorden, q.prijs), ruim = lijst.ruim;
-    if (zb.max) { var lijstMax = lijst.filter(function (p) { return p.prijs > 0 && p.prijs <= zb.max; }); lijstMax.ruim = lijst.ruim; lijstMax.staart = lijst.staart; lijst = lijstMax; }
+    var neem = function (naar, van) { naar.ruim = van.ruim; naar.staart = van.staart; naar.woorden = van.woorden; naar.bedoeld = van.bedoeld; naar.samen = van.samen; return naar; };
+    if (zb.max) lijst = neem(lijst.filter(function (p) { return p.prijs > 0 && p.prijs <= zb.max; }), lijst);
+    if (lft !== null) lijst = neem(lijst.filter(function (p) { return !p.leeftijd || (p.leeftijd[0] <= lft && lft <= p.leeftijd[1]); }), lijst);
+    if (lijst.woorden) { woorden = lijst.woorden; tipWoorden = lijst.woorden; }
     if (lijst.staart) woorden = [lijst.staart];
-    var score = function (p) { return zoekScore(p, woorden); };
+    var bedoeld = lijst.bedoeld, samen = lijst.samen;
+    var zeldzaam = null;
+    if (ruim && woorden.length > 1 && !lijst.staart) { zeldzaam = {}; woorden.forEach(function (w) { var n = 0; lijst.forEach(function (p) { if (bevatEen(zoekTekstV(p), w)) n++; }); zeldzaam[w] = n; }); }
+    var score = function (p) {
+      var s = Math.max(zoekScore(p, woorden), samen ? zoekScore(p, samen) + 5 : 0);
+      /* Vonden we niets met alle woorden samen, dan telt een zeldzaam woord ('snijplank') zwaarder dan een woord dat overal in staat ('naam'). */
+      if (zeldzaam) { var t = zoekTekstV(p); woorden.forEach(function (w) { if (zeldzaam[w] && bevatEen(t, w)) s += 40 * (1 - zeldzaam[w] / lijst.length); }); }
+      return s;
+    };
     if (woorden.length && (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant')) {
       var sc = {}; lijst.forEach(function (p) { sc[p.id] = score(p); });
       var niveaus = {}; lijst.forEach(function (p) { (niveaus[sc[p.id]] = niveaus[sc[p.id]] || []).push(p); });
       lijst = Object.keys(niveaus).map(Number).sort(function (a, b) { return b - a; }).reduce(function (u, n) { return u.concat(sorteer(niveaus[n], q.sort)); }, []);
     } else lijst = sorteer(lijst, q.sort);
     /* 11-11-2026: 'wijn' zette een fles met pensioentekst bovenaan. Zulke smalle cadeaus (paginaregels 'smal') komen achteraan, tenzij het zoekwoord er zelf om vraagt. */
-    if (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant') { var zv = vouw(q.q || '').replace(/\s+/g, '-'), gew = [], smalle = []; var SMAL_ZOEK = { pensioen: /pensioen|afscheid/, grootouder: /opa|oma|grootouder|kleinkind/, zwanger: /zwanger|babyshower/, juf: /juf|meester|leraar|leerkracht/, leeftijd: /jaar|verjaardag|\d\d/, collega: /collega|baas|werk/, trouw: /trouw|bruiloft|jubileum|huwelijk/, ouder: /mama|papa|moeder|vader/ }; lijst.forEach(function (p) { ((p.smal && !(SMAL_ZOEK[p.smal] && SMAL_ZOEK[p.smal].test(zv)) && zv.indexOf(p.smal) === -1) ? smalle : gew).push(p); }); if (smalle.length && gew.length) { var zr = lijst.ruim, zs = lijst.staart; lijst = gew.concat(smalle); lijst.ruim = zr; lijst.staart = zs; } }
+    if (!q.sort || q.sort === 'aanbevolen' || q.sort === 'relevant') { var zv = vouw(q.q || '').replace(/\s+/g, '-'), gew = [], smalle = []; var SMAL_ZOEK = { pensioen: /pensioen|afscheid/, grootouder: /opa|oma|grootouder|kleinkind/, zwanger: /zwanger|babyshower/, juf: /juf|meester|leraar|leerkracht/, leeftijd: /jaar|verjaardag|\d\d/, collega: /collega|baas|werk/, trouw: /trouw|bruiloft|jubileum|huwelijk/, ouder: /mama|papa|moeder|vader/ }; lijst.forEach(function (p) { ((p.smal && !(SMAL_ZOEK[p.smal] && SMAL_ZOEK[p.smal].test(zv)) && zv.indexOf(p.smal) === -1) ? smalle : gew).push(p); }); if (smalle.length && gew.length) lijst = neem(gew.concat(smalle), lijst); }
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
     window.LK_SEO = 'Zoek in ruim 10.000 met de hand gekozen cadeaus van bekende winkels: op naam, voor wie het is of op budget.'; /* 8-11-2026: anders pakte de bouw de tekst van een willekeurig product */
-    var catTips = paginaTips(woorden);
+    var catTips = paginaTips(tipWoorden);
+    /* 12-11-2026: is het zoekwoord de naam van een gelegenheid of collectie ('housewarming', 'origineel cadeau') en vinden we zelf (bijna) niets,
+       dan tonen we de cadeaus van die pagina in plaats van iets wat er toevallig op lijkt. */
+    var vanPagina = '';
+    if (q.q && (lijst.length < 3 || ruim)) {
+      var kt = catTips.filter(function (x) { return x.soort === 'gelegenheid' || x.soort === 'collectie'; })[0], kd = kt ? kt.naar.split('/') : [];
+      var gg = kd[1] === 'gelegenheid' ? window.LK_GELEGENHEID(kd[2]) : (kd[1] === 'collectie' ? window.LK_COLLECTIE(kd[2]) : null);
+      var ggNaam = gg ? vouw(gg.naam + ' ' + gg.slug + ' ' + (gg.zoek || '')) : '';
+      if (gg && gg.vakken && tipWoorden.length && tipWoorden.every(function (w) { return gewoonWoord(w) && ggNaam.indexOf(w.slice(0, Math.max(5, w.length - 2))) !== -1; })) {
+        var lg = sorteer(verzamelLijst(gg).filter(function (p) { return binnenPrijs(p, q.prijs) && (!zb.max || (p.prijs > 0 && p.prijs <= zb.max)); }), q.sort);
+        if (lg.length >= 3) { lijst = lg; ruim = ''; bedoeld = ''; vanPagina = gg.naam; }
+      }
+    }
     return paginakop({ titel: titel, kruimel: [{ tekst: 'Zoeken' }] }) +
       '<div class="binnen">' +
         '<div style="margin-top:18px">' + zoekForm(q.q) + '</div>' +
         (catTips.length ? '<div class="bedoel-je"><h2>Bedoel je…</h2><div class="bedoel-knoppen">' + catTips.map(function (t) { return '<a class="bedoel' + (t.soort === 'persoon' ? ' persoon' : '') + '" href="' + t.naar + '">' + ic('rechts') + '<span>' + t.naam + '</span></a>'; }).join('') + '</div></div>' : '') +
         (zb.max ? '<p class="zoek-ruim">Alles tot €' + zb.max + (zb.tekst ? ' voor “' + esc(zb.tekst) + '”' : '') + '.</p>' : '') +
+        (lft !== null ? '<p class="zoek-ruim">Voor ' + lft + ' jaar.</p>' : '') +
+        (vanPagina ? '<p class="zoek-ruim">Dit zijn onze cadeaus voor “<b>' + esc(vanPagina) + '</b>”.</p>' : '') +
+        (bedoeld && !ruim ? '<p class="zoek-ruim zoek-bedoeld">We zochten op “<b>' + esc(bedoeld) + '</b>”.</p>' : '') +
         (ruim ? '<p class="zoek-ruim">We vonden niets precies voor “' + esc(q.q) + '”. Dit lijkt erop' + (lijst.staart ? ' (' + esc(lijst.staart) + ')' : '') + ':</p>' : '') +
         '<div class="werkbalk">' + prijsChips('/zoek', q) + '<span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span></div>' +
         filterPaneel('/zoek', q) +
@@ -4795,7 +4960,7 @@
   function nietGevonden(tekst) {
     zetTitel('Niet gevonden');
     return paginakop({ titel: 'Niet gevonden', tekst: tekst || 'Deze pagina bestaat niet (meer). Zoek hieronder, of kies een ingang.' }) +
-      '<div class="binnen"><section class="sectie eerste">' + zoekForm('', 'Zoek: lego, parfum, of cadeau voor mama') +
+      '<div class="binnen"><section class="sectie eerste">' + zoekForm('', 'Typ wat je zoekt, bijv. lego of parfum') +
       '<div class="ingangen-404">' +
         '<a class="knop knop-rand" href="/voor">Voor wie?</a><a class="knop knop-rand" href="/categorieen">Categorieën</a>' +
         '<a class="knop knop-rand" href="/gelegenheid">Gelegenheden</a><a class="knop knop-goud" href="/vonk">' + ic('vonk') + ' Help mij kiezen</a>' +
@@ -5448,8 +5613,9 @@
   function toonTips(f) {
     var inp = f.querySelector('input'), q = inp.value.trim();
     if (q.length < 2) { sluitTips(f); return; }
-    var woorden = zoekWoorden(q), lijst = zoekLijst(woorden, '');
-    var sc = {}; lijst.forEach(function (p) { sc[p.id] = zoekScore(p, woorden); });
+    var woorden = zoekWoorden(zoekBudget(q).tekst), lijst = zoekLijst(woorden, ''), samen = lijst.samen;
+    if (lijst.woorden) woorden = lijst.woorden;
+    var sc = {}; lijst.forEach(function (p) { sc[p.id] = Math.max(zoekScore(p, woorden), samen ? zoekScore(p, samen) + 5 : 0); });
     lijst.sort(function (a, b) { return sc[b.id] - sc[a.id]; });
     var html = paginaTips(woorden).slice(0, 4).map(function (t) {
       return '<a class="zt-item zt-pagina" href="' + t.naar + '"><span class="zt-ic">' + ic('rechts') + '</span><span class="zt-titel">' + t.naam + '</span></a>';
@@ -5555,7 +5721,8 @@
   vulIconen(document);
   var zoekRij = $('[data-zoekrij] .binnen');
   /* Staat de zoekbalk al in de HTML (maak-paginas.js zet hem erin tegen verspringen)? Dan laten we hem staan, zodat wat je al typte blijft. */
-  var ZOEK_TEKST = 'Zoek: lego, of ‘oma, max €25’';
+  /* 12-11-2026 (Marius: 'zet erin: typ het product wat je zoekt, bijvoorbeeld'): korte zin die op de telefoon helemaal past, op de computer met meer voorbeelden. */
+  var ZOEK_TEKST = window.innerWidth >= 700 ? 'Typ wat je zoekt, bijvoorbeeld lego, whisky of ‘oma, max €25’' : (window.innerWidth < 350 ? 'Typ wat je zoekt' : 'Typ wat je zoekt, bijv. lego');
   if (zoekRij && !zoekRij.firstElementChild) zoekRij.innerHTML = zoekForm('', ZOEK_TEKST);
   else if (zoekRij) { zoekForm.n = Math.max(zoekForm.n || 0, 1); var zi = zoekRij.querySelector('input'); if (zi) zi.placeholder = ZOEK_TEKST; }
   netteLinks(document);
