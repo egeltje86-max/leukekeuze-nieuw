@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-700-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611121114" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611121114" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121114">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611121114">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611121128" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611121128" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611121128">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611121128">
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
     if (!v && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
@@ -155,17 +155,17 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"cb-streamdeck-neo":{"url":"https://www.awin1.com/pclick.php?p=38840439167&a=3110079&m=85161","winkelUrl":"https://www.coolblue.nl/","subVast":true,"gecontroleerd":"2026-11-12","waarom":"8 knoppen met schermpjes, voor streamen, gamen of op het werk."}};</script>
-  <script src="assets/js/data.js?v=202611121114"></script>
+  <script src="assets/js/data.js?v=202611121128"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121114"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611121128"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.body.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
-  <script src="assets/js/topkeuze.js?v=202611121114" async></script>
-  <script src="assets/js/gedeeld.js?v=202611121114"></script>
-  <script src="assets/js/app.js?v=202611121114"></script>
+  <script src="assets/js/topkeuze.js?v=202611121128" async></script>
+  <script src="assets/js/gedeeld.js?v=202611121128"></script>
+  <script src="assets/js/app.js?v=202611121128"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
