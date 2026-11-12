@@ -3953,7 +3953,7 @@
         { kop: 'Zelf maken en ontdekken (€5 tot €10)', tekst: 'Knutselen en proefjes doen: daar zijn ze na pakjesavond nog dagen mee bezig.',
           ids: ['bol-9300000169748884', 'bol-9300000025044624', 'bol-9200000104835927', 'bol-9300000168680075'] },
         { kop: 'Boekjes en spelletjes (tot €10)', tekst: 'Een sinterklaasboekje om voor te lezen, of een spel om meteen samen te spelen.',
-          ids: ['bol-9300000181968006', 'bol-9200000006380085', 'bol-9200000073803176', 'bol-9300000157956217'] }
+          ids: ['bol-9300000181968006', 'bol-9200000006380085', 'bol-9300000157956217'] }
       ],
       slot: 'Meer kleine cadeautjes staan bij <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'speelgoed-van-het-jaar-2026', beeld: 'bol-9300000246863962', vakken: ['speelgoed', 'speelgoed/bord-kaartspellen', 'speelgoed/lego', 'speelgoed/autos-treinen-rc', 'speelgoed/baby-houten', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas'],
