@@ -236,4 +236,8 @@ if git('diff', '--cached', '--quiet').returncode == 0:
     log('Niets veranderd.'); sys.exit(0)
 git('commit', '-q', '-m', 'Zoekindex bijgewerkt (' + datetime.date.today().isoformat() + ')')
 p = git('push', '-q')
+# 13-11-2026: tijdens de run kan er in de cloud iets live gezet zijn; dan eerst binnenhalen en opnieuw proberen
+for _ in range(3):
+    if p.returncode == 0: break
+    git('pull', '--rebase', '-q'); p = git('push', '-q')
 log('online gezet' if p.returncode == 0 else 'push mislukt')
