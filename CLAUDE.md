@@ -343,3 +343,16 @@ Marius: 'verdeel de producten bij cadeaus voor hem opnieuw in; doe onderzoek naa
   - mooiere sieraden die Marius wel goed vindt (nu bewust achteraan);
   - pantoffels voor dames van leuke merken, niet bol.
 - La Redoute: er staan nog 25 producten van La Redoute op de site (de cloud krijgt bij die winkel een 403; voor bezoekers werkt de link wel). Zet ze niet in een nieuwe top.
+- **Voor kinderen (13-11)**: eigen cijfers: bekeken en aangeklikt worden vooral de dino-kleurboeken van Marius zelf, het lichtgevende tekenbord, een rockgitaar, Tamagotchi, Bluey en Peppa Pig. De oude top was goed, maar had drie poepspellen in de eerste 32 en miste de hypes van nu. Nieuwe eerste 36, door elkaar in leeftijd (peuter, 4–6, 7–9, 10–12) en voor jongens en meisjes: o.a. bellenblaasmachine, Bitzee KPop Demon Hunters, LEGO City-politiewagen (€ 9,99), Barbie Malibu-huis, scheetgrappen-blik, Squishmallow Stitch, kwallenlamp, Pikachu-knuffel, dino-kerstkleurboek, Orboot-wereldbol, dinomasker, Connetix, triops, LEGO Friends, chocomelk-knuffel, Mario Kart-stuur, boksende handpop, Bende in het Bos, LED-tekenbord, DUPLO, voetballamp, 3D-puzzel Saturn V, Catan Junior, Minecraft-tekenset, Squishmallow Rumi, krokodil van 60 cm, BRIO-raket, Elf on the Shelf, Taco Cat, Buzz-lampje, Azul Kids, Mario-spaarpot, BRIO Bluey, doolhofbal, LEGO Pokémon Eevee. Gemiddeld ongeveer € 29. Oude volgorde: scratchpad `kind-oud.json`.
+- **Wat we missen voor kinderen (later zoeken)**:
+  - de winnaars van Speelgoed van het Jaar 2026 bij een partner die geen bol is (nu vaak alleen via bol);
+  - KPop Demon Hunters-spullen bij HEMA, De Grote Speelgoedwinkel of Amazon;
+  - buitenspeelgoed voor de winter (slee, sneeuwspullen) en verkleedkleren;
+  - meer voor peuters van 1 tot 3 die geen DUPLO of bol is (Woewoe helpt al);
+  - boeken voor kinderen van 6 tot 9 bij een partner die geen bol is.
+- **Voor tieners (13-11)**: de drukst bezochte Voor wie-pagina's (Gaming & gadgets, Voor tieners, Tienerkamer). De oude top was sterk op jongens en gaming gericht. Nieuwe eerste 36, jongens en meisjes door elkaar: o.a. Gouden Snaai-lamp (verkocht), Stanley Quencher, hamster-stressbal, AirPods 5, Useless Box, Minecraft, Chicken Jockey-lampje, Sol de Janeiro, HEMA teddy-hoodie, Mario Kart World, opblaasbare controller-stoel, Game Boy-mok, HEMA-discolamp, Laneige, BeanBoozled, Instax mini 13, minimicrofoon, regenboog-neonlamp, Tetris in een blikje, LEGO rozen, chocolade-controller, karaokeset, axolotl-sloffen, Hitster, Patronus-lamp, HEMA-stijltang, UNO, Teufel-oordopjes, kralenset vriendschapsarmbandjes, Pokémon Elite Trainer Box, HEMA-sterrenprojector, JBL Go 5, bruisballen, speaker met lamp, Exploding Kittens, powerbank. Gemiddeld ongeveer € 34. Oude volgorde: scratchpad `tiener-oud.json`.
+- **Wat we missen voor tieners (later zoeken)**:
+  - trends voor meisjes bij een partner die geen bol is: Stanley/Owala-bekers, Sol de Janeiro, Laneige, Rhode (nu via bol);
+  - telefoonhoesjes en telefoonaccessoires (bleek ook uit de zoektest);
+  - kleding die tieners willen (hoodies van merken, Crocs-jibbitz) zonder maten-gedoe;
+  - KPop Demon Hunters-spullen voor tieners (lightstick, posters).
