@@ -4119,7 +4119,7 @@
         { kop: 'Net even anders', tekst: 'Voor wie elk jaar al een chocoladekalender krijgt: jam, thee, popcorn, geurkaarsjes of een puzzelverhaal dat je in 24 dagen oplost.',
           ids: ['bol-9300000408782128', 'dw-680275066859', 'dw-4260611771720', 'wwk-2280887', '999g-999exi30'] },
         { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
-          ids: ['dw-8000500392065', 't2-handpoppen-bf7af21cea', 'amz-b0hmfl96b8'] }
+          ids: ['t2-handpoppen-bf7af21cea', 'amz-b0hmfl96b8'] }
       ],
       slot: 'Meer lekkers voor december vind je bij <a href="/c/eten-drinken">Eten &amp; drinken</a> en alle kerstspullen bij <a href="/c/cadeaus/kerst">Kerst</a>. Zoek je een kerstcadeau? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor haar</a> of <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor hem</a>.' },
     { slug: 'kerstcadeau-kind', beeld: 'woewoe-6e48434b3c', vakken: ['cadeaus/kerst', 'cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/lego'],
@@ -4947,8 +4947,8 @@
       titel: 'Cadeau voor 1 jaar samen: ideeën voor jullie eerste jubileum', kort: 'Iets van jullie twee, iets om samen te doen en kleine liefdevolle gebaren. Van 15 tot 109 euro.',
       intro: 'Een jaar samen! Dat is iets om te vieren. Het mooiste cadeau voor jullie eerste jubileum gaat over jullie twee: een sieraad dat jullie allebei dragen, een spel waarmee je elkaar nog beter leert kennen, of een avond met chocoladefondue. Geen dure cadeaus nodig, wel iets met aandacht. Ik zette de leukste ideeën op een rij.',
       delen: [
-        { kop: 'Iets van jullie twee', tekst: 'Twee harten met jullie namen, twee vogeltjes tegen elkaar aan of een kistje voor jullie herinneringen.',
-          ids: ['myka-11001132188', 'ww-kaj73364965349', 'bol-9300000181912357'] },
+        { kop: 'Iets van jullie twee', tekst: 'Twee vogeltjes tegen elkaar aan of een kistje voor jullie herinneringen.',
+          ids: ['ww-kaj73364965349', 'bol-9300000181912357'] },
         { kop: 'Samen iets doen', tekst: 'Vragen die jullie nog nooit aan elkaar stelden, een puzzel voor een rustige avond of warme chocolade om fruit in te dippen.',
           ids: ['bol-9300000226609761', 'bol-9300000161370142', 'bol-9300000075413777', 'bol-9300000169524759', 'bol-9300000227831932'] },
         { kop: 'Een klein gebaar', tekst: 'Een rood neonhart of een fonduepannetje voor twee. Klein, maar het zegt genoeg.',
@@ -4961,7 +4961,7 @@
       intro: 'Een trouwdag is elk jaar weer een moment om stil te staan bij elkaar. Bij een groot jubileum, zoals 12,5, 25, 40 of 50 jaar getrouwd, hoort een cadeau dat blijft: een sieraad met jullie namen, iets moois voor in huis of een avond om het samen te vieren. Ook als je een cadeau zoekt voor je ouders of opa en oma die al zo lang samen zijn, vind je hier ideeën.',
       delen: [
         { kop: 'Iets dat blijft', tekst: 'Een sieraad met jullie namen of twee harten in elkaar, van zilver tot echt goud. Voor een groot jubileum.',
-          ids: ['myka-11001132188', 'myka-11001320091', 'myka-11001131631', 'myka-11003211420'] },
+          ids: ['myka-11001320091', 'myka-11001131631', 'myka-11003211420'] },
         { kop: 'Iets moois voor jullie huis', tekst: 'Een kunstwerk om samen te bouwen, een plank met jullie namen of een invulboek voor jullie eigen recepten.',
           ids: ['lego-31214', 'bol-9300000074464628', 'bol-9300000070824603'] },
         { kop: 'Samen vieren', tekst: 'Een avond fonduen of een sterrenhemel op het plafond: vier jullie dag thuis.',
@@ -5035,7 +5035,7 @@
       ['Hoe lang moet een sinterklaasgedicht zijn?', 'Acht tot zestien regels is genoeg. Laat het rijmen op elke twee regels, plaag een beetje maar houd het lief, en onderteken met Sint en Piet.'],
       ['Kan ik een surprise maken zonder te knutselen?', 'Ja. Verpak het cadeau in steeds kleinere dozen met bij elke doos een stukje gedicht, of plak een doos vol met chocoladerepen. In deze gids staan meer snelle ideeën.'],
       ['Wat stop je in een surprise?', 'Het lootjescadeau, vaak tussen 10 en 25 euro, plus iets lekkers zoals een chocoladeletter of kruidnoten. Bij de kleine cadeautjes in deze gids staan ideeën onder de 15 euro.']] },
-    'adventskalender-kiezen': { top: [['Onze topkeuze', 'bol-9300000186028245'], ['Net even anders', 'bol-9300000408782128'], ['Voor kinderen', 'dw-8000500392065']], faq: [
+    'adventskalender-kiezen': { top: [['Onze topkeuze', 'bol-9300000186028245'], ['Net even anders', 'bol-9300000408782128'], ['Voor kinderen', 't2-handpoppen-bf7af21cea']], faq: [
       ['Wanneer begint een adventskalender?', 'Op 1 december. De meeste kalenders hebben 24 vakjes en lopen tot kerstavond. Sommige hebben er 25, tot en met eerste kerstdag.'],
       ['Wanneer moet ik een adventskalender bestellen?', 'Liefst vóór eind november. Dan heb je hem zeker op tijd, en de populairste kalenders zijn in december vaak uitverkocht.'],
       ['Is advent hetzelfde als de adventskalender?', 'Niet helemaal. Advent zijn de vier zondagen voor Kerst; daar hoort de adventskrans met vier kaarsen bij. De adventskalender telt de dagen af vanaf 1 december.']] },

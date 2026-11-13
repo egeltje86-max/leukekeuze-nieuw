@@ -76,6 +76,29 @@ def awin_p(u):
     m = re.search(r'awin1\.com/pclick\.php\?(?:.*&)?p=(\d+)', str(u or ''))
     return m.group(1) if m else None
 per_awin = {awin_p(p['url']): pid for pid, p in tt_live.items() if awin_p(p['url'])}
+# 13-11-2026 (grote keuring): ook terugvinden op het pad van de winkelpagina. Daisycon-links noemen alleen het pad (dl=...),
+# en oudere ids zijn geen md5 van de link. Zonder dit vond de nachtrun ongeveer 3.000 producten nooit terug (Decantalo 280,
+# Dille & Kamille 174, Nedgame 69 ...) en kregen die nooit een verse prijs. Proef met de zoekindex: 1.830 van de 2.755 nu wel.
+import urllib.parse
+def doel_pad(u):
+    """Het pad van de winkelpagina waar een (partner)link naartoe gaat, zonder domein en zonder vraagteken-deel."""
+    u = str(u or '')
+    try: q = urllib.parse.parse_qs(urllib.parse.urlsplit(u).query)
+    except Exception: q = {}
+    d = None
+    for k in ('r', 'u', 'ued', 'url'):
+        if k in q and re.match(r'https?://', q[k][0]): d = q[k][0]; break
+    if d is None and 'dl' in q:
+        m = re.search(r'(?:murl|[?&]u)=([^&]+)', q['dl'][0]); d = urllib.parse.unquote(m.group(1)) if m else q['dl'][0]
+    if d is None: d = u if not re.search(r'tradetracker|awin1|//partner\.|[?&]tt=\d', u) else ''
+    d = urllib.parse.unquote(d); d = re.sub(r'^https?://[^/]+/', '', d); d = re.sub(r'[?#].*$', '', d).strip('/').lower()
+    return d if len(d) >= 8 else ''
+_pad = collections.defaultdict(set)
+for pid, p in tt_live.items():
+    for u in (p.get('winkelUrl'), p.get('url')):
+        dp = doel_pad(u)
+        if dp: _pad[dp].add(pid)
+per_pad = {k: list(v)[0] for k, v in _pad.items() if len(v) == 1}
 gevonden_tt = set()
 # 8-11-2026: nieuwste bestanden eerst (een product telt maar één keer, dus de verste prijs moet winnen)
 for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, reverse=True):
@@ -95,6 +118,7 @@ for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, re
                 import urllib.parse; w = url_sleutel(urllib.parse.unquote(w))
             except Exception: pass
             pid = per_url.get(w)
+        if not pid and link: pid = per_pad.get(doel_pad(link))
         if not pid or pid in gevonden_tt: continue
         gevonden_tt.add(pid); n += 1
         prijsverschil(pid, P[pid]['prijs'], r.get('prijs'))
