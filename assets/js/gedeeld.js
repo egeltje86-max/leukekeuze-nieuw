@@ -30,16 +30,28 @@
   }
   function vergeetCache() { cache = null; }
   var zichtbaarCache = null, zichtbaarBron = null;
+  /* SNEL (13-11-2026): alleen tijdens het bouwen (scripts/maak-pakken.js zet window.LK_OPNAME) schrijven we op welke producten een pagina
+     echt gebruikt. Daar komt het kleine productbestand van die pagina uit (het pak). Op de site zelf doet dit niets. */
+  function opname(z) {
+    var O = window.LK_OPNAME, o = z.slice();
+    o.filter = function (fn, t) { var r = Array.prototype.filter.call(z, fn, t); for (var i = 0; i < r.length; i++) O.ids[r[i].id] = 1; return r; };
+    o.some = function (fn, t) { return Array.prototype.some.call(z, function (p, i, a) { var ok = fn.call(t, p, i, a); if (ok) O.ids[p.id] = 1; return ok; }); };
+    o.find = function (fn, t) { var p = Array.prototype.find.call(z, fn, t); if (p) O.ids[p.id] = 1; return p; };
+    o.forEach = function (fn, t) { O.alles = (O.alles || 0) + 1; return Array.prototype.forEach.call(z, fn, t); };
+    o.map = function (fn, t) { O.alles = (O.alles || 0) + 1; return Array.prototype.map.call(z, fn, t); };
+    return o;
+  }
   function zichtbaar() {
     var l = producten();
-    if (zichtbaarCache && zichtbaarBron === l) return zichtbaarCache;
-    zichtbaarBron = l;
-    return (zichtbaarCache = l.filter(function (p) { return p.status === 'goedgekeurd'; }));
+    if (!zichtbaarCache || zichtbaarBron !== l) { zichtbaarBron = l; zichtbaarCache = l.filter(function (p) { return p.status === 'goedgekeurd'; }); }
+    return window.LK_OPNAME ? opname(zichtbaarCache) : zichtbaarCache;
   }
   var vindKaart = null, vindBron = null;
   function vind(id) {
     var l = producten();
     if (!vindKaart || vindBron !== l) { vindBron = l; vindKaart = {}; for (var i = 0; i < l.length; i++) vindKaart[l[i].id] = l[i]; }
+    if (window.LK_OPNAME && vindKaart[id]) window.LK_OPNAME.ids[id] = 1;
+    if (window.LK_DEEL && !vindKaart[id]) window.LK_DEEL_MIS = true; /* SNEL: dit product zit niet in het pak van de pagina; als de hele lijst er is kijken we opnieuw */
     return vindKaart[id];
   }
   try { window.addEventListener('storage', function (e) { if (!e || !e.key || e.key === K_KEUR) cache = null; }); } catch (e) {}
@@ -52,20 +64,36 @@
     var t = Date.parse(p.sinds); return !isNaN(t) && (Date.now() - t) < NIEUW_DAGEN * 864e5;
   }
 
+  var HB_BRON = null, HB_N = -1, HB = {};
+  function hbZoek(cat, sub) {
+    var C = window.LK_CATEGORIEEN || [];
+    if (HB_BRON !== C || HB_N !== C.length) { HB_BRON = C; HB_N = C.length; HB = {}; }
+    var k = cat + '|' + (sub || ''), r = HB[k];
+    if (!r) {
+      var nc = C.find(function (c) { return c.slug === cat && !c.verborgen; });
+      var cd = C.find(function (c) { return c.slug === cat; });
+      /* categorieën die 'onder' deze hangen: de eerste per naam, net als het zoeken hiervoor deed */
+      var onder = null; C.forEach(function (c) { if (c.onder === cat) { onder = onder || Object.create(null); if (!(c.slug in onder)) onder[c.slug] = c; } });
+      r = HB[k] = { nc: nc, ns: nc && sub ? (nc.subs || []).find(function (s) { return s.slug === sub; }) : null, cd: cd,
+        sd: cd && sub ? (cd.subs || []).find(function (s) { return s.slug === sub; }) : undefined, onder: onder };
+    }
+    return r;
+  }
   /* Hoort product bij categorie (en evt. sub)? Kijkt ook naar 'ookIn'. */
   function hoortBij(p, cat, sub, vak) {
     /* 3.0 (4-11-2026): nieuwe boom. Afdeling > groep > vakje staan in p.afd, p.groep en p.vak.
        Oude adressen en de themapagina's (Cadeaus, Valentijn) werken nog via p.cat/p.sub/ookIn hieronder. */
-    var nc = (window.LK_CATEGORIEEN || []).find(function (c) { return c.slug === cat && !c.verborgen; });
-    var ns = nc && sub ? (nc.subs || []).find(function (s) { return s.slug === sub; }) : null;
+    /* SNEL (13-11-2026): de afdeling en de groep werden bij elk product opnieuw opgezocht (drie keer zoeken per vraag, honderdduizenden vragen
+       per pagina). De indeling verandert niet terwijl de pagina open staat: we zoeken hem één keer op per afdeling en groep. */
+    var HZ = hbZoek(cat, sub), nc = HZ.nc, ns = HZ.ns;
     if (nc && p.afd && (!sub || (ns && ns.vakjes))) {
       if (cat === 'christelijk' && sub === 'onder-25') { /* valt hieronder */ }
       else return p.afd === cat && (!sub || p.groep === sub) && (!vak || p.vak === vak);
     }
     /* 2.0: een groep of subcategorie kan doorverwijzen naar een ander vak (bijv. Sieraden & Horloges -> mode-beauty/horloges). */
-    var cd = (window.LK_CATEGORIEEN || []).find(function (c) { return c.slug === cat; });
+    var cd = HZ.cd;
     if (cd) {
-      if (sub) { var sd = (cd.subs || []).find(function (s) { return s.slug === sub; });
+      if (sub) { var sd = HZ.sd;
         /* 4.0: een groep van vóór de verhuizing weet nog precies welke vakjes erbij hoorden (gidsen en gelegenheden noemen die groepen nog). */
         if (sd && sd.verborgen && sd.vakken) return sd.vakken.some(function (v) { var d = v.split('/'); return (!vak || d[2] === vak) && hoortBij(p, d[0], d[1], d[2]); });
         if (sd && sd.vak) { var vd = sd.vak.split('/'); return hoortBij(p, vd[0], vd[1]); } }
@@ -80,7 +108,7 @@
     /* 'Christelijk cadeau onder €25' gaat automatisch op prijs. Kaartjes (onder €5) tellen niet mee: dat zijn geen cadeaus. */
     if (cat === 'christelijk' && sub === 'onder-25') return p.cat === 'christelijk' && typeof p.prijs === 'number' && p.prijs >= 5 && p.prijs < 25;
     /* Een categorie die 'onder' een andere hangt (Metaaldetectie onder Sport) telt daar mee als sub. */
-    var kind = (window.LK_CATEGORIEEN || []).find(function (c) { return c.onder === cat && c.slug === p.cat; });
+    var kind = HZ.onder ? HZ.onder[p.cat] : undefined;
     if (kind && (!sub || sub === kind.slug)) return true;
     if (p.cat === cat && (!sub || p.sub === sub)) return true;
     return (p.ookIn || []).some(function (x) {
@@ -173,12 +201,12 @@
   /* Lange woorden in een producttitel netjes afbreken (11-11-2026, fout gezien op /voor/kinderen/ op 390px: 'Bellenblaasmachi|ne').
      LK_AFBREEK (uit producten-lean.js) zegt per lang woord waar het mag breken: bellenblaas-machine. Daar komt een onzichtbaar
      afbreekstreepje; de browser gebruikt het alleen als het woord niet op de regel past. Onbekend woord: de browser beslist zelf. */
-  var afbreekTabel = null;
+  var afbreekTabel = null, afbreekBron = null;
   function zachtAf(titel) {
     /* 'Leren/waxkoord': na een schuine streep tussen twee woorden mag de regel ook breken (onzichtbare spatie) */
     titel = String(titel == null ? '' : titel).replace(/([A-Za-zÀ-ÿ-])\/(?=[A-Za-zÀ-ÿ])/g, '$1/\u200B');
     if (!window.LK_AFBREEK) return titel;
-    if (!afbreekTabel) { afbreekTabel = {}; window.LK_AFBREEK.split('|').forEach(function (s) { afbreekTabel[s.replace(/-/g, '')] = s; }); }
+    if (!afbreekTabel || afbreekBron !== window.LK_AFBREEK) { afbreekBron = window.LK_AFBREEK; afbreekTabel = {}; window.LK_AFBREEK.split('|').forEach(function (s) { afbreekTabel[s.replace(/-/g, '')] = s; }); } /* SNEL: de tabel uit het pak wordt vervangen als de hele lijst er is */
     return titel.replace(/[A-Za-zÀ-ÿ]{13,}/g, function (w) {
       var s = afbreekTabel[w.toLowerCase()]; if (!s) return w;
       var uit = '', k = 0;

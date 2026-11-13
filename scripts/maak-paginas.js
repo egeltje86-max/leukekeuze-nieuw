@@ -16,6 +16,7 @@ try { require('child_process').execFileSync(process.execPath, [path.join(__dirna
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
   .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app|topkeuze)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
+let SJ_UIT = ''; /* het sjabloon met de icoontjes van kop, menu en onderbalk er al in (zie verderop) */
 /* Veiligheidsslot (1-11-2026): staat er nog een half samengevoegd stuk (<<<<<<< / >>>>>>>) in het sjabloon of in de bronbestanden,
    dan stopt het bouwen meteen. Anders komt die rommel op alle 6700 pagina's. */
 for (const f of ['sjabloon.html', 'assets/js/app.js', 'assets/js/data.js', 'assets/js/producten.js', 'assets/css/stijl.css']) {
@@ -88,7 +89,7 @@ let SEO = {}; try { SEO = JSON.parse(fs.readFileSync(path.join(__dirname, 'seo-p
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 function seoDatum(d) { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? (+m[3]) + ' ' + MAANDEN[+m[2] - 1] : ''; }
 function maakPagina(info, lade, mega, aftel, zoekrij) {
-  let h = SJABLOON;
+  let h = SJ_UIT || SJABLOON;
   const eigen = SEO[info.pad];
   if (eigen) {
     info = Object.assign({}, info);
@@ -131,7 +132,10 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   if (info.geenIndex) h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex, follow">');
   /* De banner van de homepage alleen vooraf laden op de homepage zelf (scheelt ~90 kB op elke andere pagina, vooral op mobiel). */
   if (info.pad !== '/') h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-[^"]*"[^>]*>/g, '');
-  h = zet(h, /<main id="app" tabindex="-1"><\/main>/, '<main id="app" tabindex="-1">' + info.inhoud + '</main>');
+  /* 13-11-2026 (grote keuring): de homepage en de Voor wie-pagina's krijgen ook de nieuwe opzet van de proef WIJZER mee, in een <template>
+     (onzichtbaar; zoekmachines en wie de oude opzet heeft merken er niets van). Wie de nieuwe opzet krijgt, ziet die daardoor meteen staan
+     (het stukje script direct na <main> in sjabloon.html wisselt hem in). Eerder stond er seconden een half lege pagina en versprong alles daarna. */
+  h = zet(h, /<main id="app" tabindex="-1"><\/main>/, () => '<main id="app" tabindex="-1">' + info.inhoud + '</main>' + (info.inhoudB ? '\n  <template id="app-b">' + info.inhoudB + '</template>' : ''));
   if (info.pad.indexOf('/p/') !== 0) {  // productpagina's klein houden: menu's vult de site zelf
     h = zet(h, /<div class="lade-inhoud" data-lade><\/div>/, '<div class="lade-inhoud" data-lade>' + lade + '</div>');
     h = zet(h, /<div class="megamenu" id="megamenu" data-megamenu><\/div>/, '<div class="megamenu" id="megamenu" data-megamenu>' + mega + '</div>');
@@ -157,7 +161,19 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   /* Aftelbalk (Sinterklaas/kerst) alvast in de HTML zetten: anders schuift de hele pagina omlaag zodra de site hem toont (CLS). */
   const aftel = await page.evaluate(() => { const a = document.querySelector('[data-aftel]'); return a && !a.hidden ? a.outerHTML : ''; });
   /* Zoekbalk onder de kop ook alvast in de HTML (31-10-2026): anders schoof de pagina 50px omlaag zodra app.js hem maakte (CLS 0,06-0,09). */
-  const zoekrij = await page.evaluate(() => { const z = document.querySelector('[data-zoekrij] .binnen'); return z ? z.innerHTML : ''; });
+  /* 13-11-2026 (grote keuring): de bouw draait op een breed scherm en zette dus de lange zoektekst van de computer in elke pagina. Op de telefoon
+     (bijna alle bezoekers) stond die tekst dan afgekapt in beeld tot app.js hem verving. Nu staat de korte tekst van de telefoon in de pagina;
+     op de computer zet app.js er meteen de lange voor in de plaats. */
+  const zoekrij = await page.evaluate(() => { const z = document.querySelector('[data-zoekrij] .binnen'); return z ? z.innerHTML : ''; })
+    .then(z => z.replace(/placeholder="[^"]*"/, 'placeholder="Typ wat je zoekt, bijv. lego"'));
+  /* 13-11-2026 (grote keuring): de icoontjes in de kop, het menu en de onderbalk staan nu al in de HTML. Eerder zette app.js ze er pas in:
+     op een trage telefoon stond de pagina dan ongeveer een seconde zonder menuknop, hartje en icoontjes in de onderbalk. */
+  {
+    const namen = [...new Set((SJABLOON.match(/data-ic="[a-z-]+"/g) || []).map(x => x.slice(9, -1)))];
+    const iconen = await page.evaluate(n => { const o = {}; n.forEach(x => { o[x] = window.LK.icoon(x); }); return o; }, namen);
+    SJ_UIT = SJABLOON.replace(/(<(?:span|button|a)\b[^>]*?)\s+data-ic="([a-z-]+)"([^>]*>)/g, (m, a, naam, b) => a + b + iconen[naam]);
+    if (/data-ic=/.test(SJ_UIT)) throw new Error('niet alle icoontjes van het sjabloon zijn ingevuld');
+  }
 
   const { lade, mega } = await page.evaluate(() => ({
     lade: document.querySelector('[data-lade]').innerHTML,
@@ -231,12 +247,23 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
       }
       const h1 = (app.querySelector('h1') || {}).textContent || '';
       const namen = Array.from(document.querySelectorAll('#app .prodkaart h3')).slice(0, 3).map(x => x.textContent.replace(/[\u00AD\u200B]/g, '').trim()); /* zonder de onzichtbare afbreekstreepjes */
-      return {
+      const uit = {
         titel: document.title, inhoud: app.innerHTML.replace(/[\u00AD\u200B]/g, ''), links, aantal, /* vaste HTML voor zoekmachines en ChatGPT: zonder de onzichtbare afbreekstreepjes */
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
         tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum
       };
+      /* 13-11-2026: dezelfde pagina in de nieuwe opzet van de proef WIJZER (alleen de homepage en de Voor wie-pagina's hebben die). */
+      if ((pad === '/' || /^\/voor\/[^/]+\//.test(pad)) && window.LK._wijzer) {
+        window.LK._wijzer('b'); window.LK.ga(pad, true);
+        const appB = document.querySelector('#app').cloneNode(true);
+        appB.querySelectorAll('[data-meer]').forEach(x => x.parentNode.remove());
+        appB.querySelectorAll('[data-alle-winkels]').forEach(x => { x.innerHTML = ''; });
+        const b = appB.innerHTML.replace(/[\u00AD\u200B]/g, '');
+        if (b !== uit.inhoud && b.indexOf('</template') === -1) uit.inhoudB = b;
+        window.LK._wijzer('a');
+      }
+      return uit;
     }, pad);
     for (const l0 of r.links) { const l = /\/$/.test(l0) ? l0 : l0 + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); } } /* altijd met slash: één adres per pagina */
     if (r.nietGevonden) { console.log('overgeslagen (niet gevonden):', pad); continue; }
@@ -252,7 +279,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     if (/:$/.test(oms)) oms = r.h1 + ' van LeukeKeuze: met de hand gekozen cadeaus, je koopt bij bekende winkels.';
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) });
   }
   await browser.close(); srv.close();
@@ -338,4 +365,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const urls = paginas.filter(p => !p.geenIndex && !HOOFDPAGINA[p.pad] && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
+  /* SNEL (13-11-2026): per lijstpagina een klein productbestand (pak), elk nagekeken tegen de hele lijst. Zie scripts/maak-pakken.js.
+     Staat UIT (voorstel, wacht op GO van Marius): het kost 144 MB aan bestanden en 8 minuten extra per bouw. Aan: LK_PAKKEN=1 node scripts/maak-paginas.js.
+     Zonder pakken ruimen we de map op, zodat er nooit oude pakken bij een nieuwe bouw blijven liggen. */
+  if (process.env.LK_PAKKEN === '1') { try { require('./maak-pakken.js'); } catch (e) { console.error('pakken niet gemaakt (de site werkt gewoon, alleen zonder pakken):', e.message); } }
+  else fs.rmSync(path.join(ROOT, 'assets', 'pak'), { recursive: true, force: true });
 })().catch(e => { console.error(e); process.exit(1); });

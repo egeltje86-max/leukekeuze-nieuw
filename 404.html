@@ -38,27 +38,51 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611131619" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611131619" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611131823" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611131823" fetchpriority="high">
   <link rel="preload" as="image" href="images/banners/banner-home-2026-mobiel.webp" media="(max-width: 759px)">
   <link rel="preload" as="image" href="images/banners/banner-home-2026-desktop.webp" media="(min-width: 760px)">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611131619">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611131619">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611131823">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611131823">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
        binnen waren (op een trage telefoon na bijna 4 seconden); nu meteen, met lage voorrang zodat de foto's bovenaan eerst komen. -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611131619"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
-    if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
+  <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
+       dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
+       Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611131823", t = "assets/js/topkeuze.js?v=202611131823";
+    function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
+    function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
+    window.LK_LAAD_VOL = laad;
+    /* Het pak is nagekeken voor het kale adres van de pagina. Staat er een filter of een andere keuze in het adres (?prijs=…, ?voor=…, ?alles=1),
+       dan wacht de pagina gewoon op de hele lijst, zoals eerst. Wat een andere site erachter plakt om te tellen (utm_source van ChatGPT, fbclid …) telt niet mee. */
+    function kaal() { var q = location.search.replace(/^\?/, '').split('&'), i; for (i = 0; i < q.length; i++) if (q[i] && !/^(utm_[a-z_]+|gclid|fbclid|msclkid|srsltid|gad_source|gbraid|wbraid)=/i.test(q[i]) && q[i] !== 'proef=pak') return false; return true; }
+    var uit = false; try { var m = /[?&]proef=pak(-uit)?(&|$)/.exec(location.search); if (m) localStorage.setItem('lkpak', m[1] ? '0' : '1'); uit = localStorage.getItem('lkpak') === '0'; } catch (x) {}
+    if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (g) { addEventListener(g, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); }
+    else if (window.LK_PAKPAD && !uit && kaal()) { zet(window.LK_PAKPAD, 'high', null, laad); setTimeout(laad, 5000); }
+    else laad(); })();</script>
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
     if (!v && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
     if (v.charAt(0) === 'b' && /^\/voor\/[^\/]+/.test(location.pathname) && !/[?&]alles=1/.test(location.search)) document.documentElement.className += ' wz-b';
-    if (v.charAt(0) === 'b' && location.pathname === '/') document.documentElement.className += ' wz-bh'; } catch (e) {} })();</script>
+    if (v.charAt(0) === 'b' && location.pathname === '/') document.documentElement.className += ' wz-bh';
+    if (v.charAt(0) === 'b') document.documentElement.className += ' wz-v'; } catch (e) {} })();</script>
+  <!-- VROEG-NOVA (13-11-2026, grote keuring): de klassen van de huisstijl (NOVA-001 t/m 009) staan nu al op de pagina voordat app.js binnen is.
+       Eerder zette app.js ze pas: op een trage telefoon zag je de pagina dan eerst ongeveer een seconde in de oude stijl, en daarna versprong alles. Zelfde schakelaars als in app.js. -->
+  <script>(function () { var c = '', i, n = [1, 2, 3, 5, 6, 7, 9]; for (i = 0; i < n.length; i++) if (window['LK_NOVA' + n[i]] !== false) c += ' nova' + n[i]; document.documentElement.className += c; })();</script>
 </head>
 <body>
+  <!-- 13-11-2026 (grote keuring): de klassen die de app op <body> zet (NOVA-004 en NOVA-006, productpagina) staan er nu al voor de app start.
+       Anders verspringt de kop van de pagina (plaatje en inleiding worden groter) op het moment dat de app begint. Zelfde regels als in toon() in app.js. -->
+  <script>(function () { try { var d = location.pathname.replace(/\/index\.html$/, '/').split('/').filter(Boolean), c = [], n4 = window.LK_NOVA4 !== false && (d[0] === 'voor' || d[0] === 'gelegenheid'), n6 = window.LK_NOVA6 !== false;
+    if (d[0] === 'p') c.push('pag-product');
+    if (n4) { c.push('nova4-target'); if (!d[1]) c.push('nova4-overzicht'); c.push('nova4-' + d[0]); }
+    if (n6 && d[0] === 'vonk') c.push('nova6-vonk'); if (n6 && d[0] === 'favorieten') c.push('nova6-favorieten'); if (n6 && d[0] === 'lijst') c.push('nova6-gedeeld'); if (n6 && d[0] === 'sint-rijmmachine') c.push('nova6-rijm');
+    if (d[0] === 'sint-rijmmachine') c.push('rijm-focus');
+    if (c.length) document.body.className = c.join(' '); } catch (e) {} })();</script>
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
@@ -107,6 +131,13 @@
   <div class="zoekrij" data-zoekrij><div class="binnen"></div></div>
 
   <main id="app" tabindex="-1"></main>
+  <!-- WIJZER (13-11-2026, grote keuring): staat de nieuwe opzet van deze pagina klaar (<template id="app-b">, gemaakt door maak-paginas.js) en krijgt
+       deze bezoeker de nieuwe opzet, dan wisselen we hem hier meteen in, nog voor er iets getekend is. Alleen op het kale adres (zonder filter of sortering). -->
+  <script>(function () { try { var h = document.documentElement, t = document.getElementById('app-b'), q, i;
+    if (!t || !/(^| )wz-bh?( |$)/.test(h.className) || window.LK_WIJZER === false) return;
+    q = location.search.replace(/^\?/, '').split('&');
+    for (i = 0; i < q.length; i++) if (q[i] && !/^(utm_[a-z_]+|gclid|fbclid|msclkid|srsltid|gad_source|gbraid|wbraid|proef)=/i.test(q[i])) return;
+    document.getElementById('app').innerHTML = t.innerHTML; h.className += ' wz-klaar'; } catch (e) {} })();</script>
   <script>/* KOOPKNOP (12-11-2026): kwam je via 'Bekijk bij …' op een productkaart (?naar=winkel), dan meteen door naar de winkel, met de partnerlink van deze pagina. */
   (function () { if (!/[?&]naar=winkel(&|$)/.test(location.search)) return; var a = document.querySelector('#app a[data-winkel][href^="http"]'); if (a) location.replace(a.href); })();</script>
 
@@ -157,6 +188,15 @@
     <a href="/vonk" data-onder="vonk"><span data-ic="vonk"></span>VONK</a>
     <a href="/favorieten" data-onder="favorieten"><span data-ic="hart"></span>Lijstje<span class="teller" data-favteller hidden>0</span></a>
   </nav>
+  <!-- 13-11-2026 (grote keuring): waar je bent (Home, Producten …) en het woord 'Kieshulp' staan er nu al voor de app start; eerder versprong
+       de kleur en het woord in de onderbalk pas na seconden. Zelfde regels als in toon() en start() in app.js. -->
+  <script>(function () { try { var d = location.pathname.replace(/\/index\.html$/, '/').split('/').filter(Boolean), i, t, l,
+      o = !d.length ? 'home' : d[0] === 'vonk' ? 'vonk' : d[0] === 'favorieten' ? 'favorieten' : (d[0] === 'c' || d[0] === 'categorieen') ? 'categorieen' : '',
+      c = d[0] === 'c' ? d[1] : (d[0] === 'vonk' ? 'vonk' : '');
+    l = document.querySelectorAll('[data-onder]'); for (i = 0; i < l.length; i++) if (o && l[i].getAttribute('data-onder') === o) l[i].setAttribute('aria-current', 'page');
+    l = document.querySelectorAll('[data-nav]'); for (i = 0; i < l.length; i++) if (c && l[i].getAttribute('data-nav') === c) l[i].setAttribute('aria-current', 'page');
+    if (/(^| )wz-v( |$)/.test(document.documentElement.className) && window.LK_WIJZER !== false) { l = document.querySelectorAll('a[data-onder="vonk"], a[data-nav="vonk"]');
+      for (i = 0; i < l.length; i++) { t = l[i].lastChild; if (t && t.nodeType === 3 && /VONK/.test(t.nodeValue)) t.nodeValue = 'Kieshulp'; } } } catch (e) {} })();</script>
 
   <div class="lade-bg" data-sluit-lade></div>
   <aside class="lade" id="lade" aria-label="Categorieën" aria-hidden="true">
@@ -174,11 +214,10 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script src="assets/js/data.js?v=202611131619"></script>
+  <script src="assets/js/data.js?v=202611131823"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/topkeuze.js?v=202611131619" async></script>
-  <script src="assets/js/gedeeld.js?v=202611131619"></script>
-  <script src="assets/js/app.js?v=202611131619"></script>
+  <script src="assets/js/gedeeld.js?v=202611131823"></script>
+  <script src="assets/js/app.js?v=202611131823"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

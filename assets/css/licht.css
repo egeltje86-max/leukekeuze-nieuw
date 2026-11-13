@@ -2124,11 +2124,13 @@ html.nova2 .prodkaart.awkaart h3 {
 .wijzer .wz-alles a { color: #8F6620; font-weight: 700; }
 .wijzer .prodkaart .reden { -webkit-line-clamp: 3; }
 /* Tot de app de pagina overneemt staat de gebouwde (oude) opzet er nog: voor wie de nieuwe opzet krijgt, laten we daar alleen de kop en de eerste 12 producten van zien. */
-html.wz-b:not(.lk-gestart) #app .keuzes-sectie, html.wz-b:not(.lk-gestart) #app .werkbalk, html.wz-b:not(.lk-gestart) #app .meer-knop,
-html.wz-b:not(.lk-gestart) #app .prodgrid > :nth-child(n+13) { display: none; }
-html.wz-b:not(.lk-gestart) #app > .binnen::before { content: ''; display: block; height: 240px; }
-@media (min-width: 721px) { html.wz-b:not(.lk-gestart) #app > .binnen::before { height: 200px; } }
-html.wz-b:not(.lk-gestart) #app .paginakop p.intro, html.wz-b:not(.lk-gestart) #app .paginakop p.intro + button { display: none; }
+/* 13-11-2026 (grote keuring): staat de nieuwe opzet zelf al in de pagina (html.wz-klaar, zie het stukje script na <main> in sjabloon.html),
+   dan is dit verstoppen niet nodig. Het geldt nog voor een adres met een filter erin, waar de app zelf de pagina tekent. */
+html.wz-b:not(.lk-gestart):not(.wz-klaar) #app .keuzes-sectie, html.wz-b:not(.lk-gestart):not(.wz-klaar) #app .werkbalk, html.wz-b:not(.lk-gestart):not(.wz-klaar) #app .meer-knop,
+html.wz-b:not(.lk-gestart):not(.wz-klaar) #app .prodgrid > :nth-child(n+13) { display: none; }
+html.wz-b:not(.lk-gestart):not(.wz-klaar) #app > .binnen::before { content: ''; display: block; height: 240px; }
+@media (min-width: 721px) { html.wz-b:not(.lk-gestart):not(.wz-klaar) #app > .binnen::before { height: 200px; } }
+html.wz-b:not(.lk-gestart):not(.wz-klaar) #app .paginakop p.intro, html.wz-b:not(.lk-gestart):not(.wz-klaar) #app .paginakop p.intro + button { display: none; }
 /* WIJZER, homepage: één vraag, negen gelijke tegels */
 .wzh .wzh-vraag h1 { margin: 6px 0 6px; font: 600 28px/1.15 var(--f-kop, "Playfair Display", serif); color: #141A2A; text-wrap: balance; }
 .wzh .wzh-sub { margin: 0 0 14px; font-size: 15px; color: #5B6072; }
@@ -2147,7 +2149,7 @@ html.wz-b:not(.lk-gestart) #app .paginakop p.intro, html.wz-b:not(.lk-gestart) #
 .wzh .wzh-soort .wz-vraag { margin-top: 4px; }
 @media (min-width: 760px) { .wzh .wzh-soort { align-items: center; } .wzh .wzh-soort .mini-raster { width: 100%; } }
 /* Tot de app de homepage overneemt: van de gebouwde (oude) homepage alleen het blok 'Voor wie zoek je een cadeau?' laten zien. */
-html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .binnen > :not([data-tel="voor-wie"]) { display: none; }
+html.wz-bh:not(.lk-gestart):not(.wz-klaar) #app > .hero, html.wz-bh:not(.lk-gestart):not(.wz-klaar) #app > .binnen > :not([data-tel="voor-wie"]) { display: none; }
 /* ===== einde WIJZER ===== */
 
 /* ===== WINKELTOP (11-11-2026, idee Marius): vijf favoriete winkels met elk vijf uitgekozen cadeaus ===== */

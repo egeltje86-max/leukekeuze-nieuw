@@ -44,6 +44,10 @@
     var q = {};
     (d[1] || '').split('&').forEach(function (kv) {
       if (!kv) return; var x = kv.split('=');
+      /* 13-11-2026 (grote keuring): wat een andere site achter ons adres plakt om te tellen (utm_source=chatgpt.com, fbclid, gclid …) hoort niet
+         bij de pagina. Eerder nam elke knop op de pagina (sorteren, onderwerpen, filters) dat stukje mee in zijn eigen link. De bron van het bezoek
+         wordt apart onthouden (bronGroep leest het adres zelf), dus aan de telling verandert niets. */
+      if (/^(utm_[a-z_]+|gclid|fbclid|msclkid|srsltid|gad_source|gbraid|wbraid)$/i.test(x[0])) return;
       q[decodeURIComponent(x[0])] = decodeURIComponent((x[1] || '').replace(/\+/g, ' '));
     });
     return { pad: d[0] || '/', delen: d[0].split('/').filter(Boolean), q: q };
@@ -67,6 +71,9 @@
     var doelPad = url.split('?')[0].split('#')[0];
     if (!vervang && doelPad === netjes(location.pathname) && /^\/(c|voor|gelegenheid|collectie)\//.test(doelPad)) vervang = true;
     if (!window.LK_PRODUCTEN) { location[vervang ? 'replace' : 'assign'](url); return; } /* lijst nog niet binnen: gewoon de pagina laden */
+    /* SNEL (PAK): de app draait nog op het kleine productbestand van deze pagina. Filteren en sorteren op dezelfde pagina kan daarmee;
+       een andere pagina laden we gewoon (die heeft zijn eigen pagina en pak al klaarstaan). */
+    if (window.LK_DEEL && !window.LK_BOUW && doelPad !== netjes(location.pathname)) { location[vervang ? 'replace' : 'assign'](url); return; }
     /* 9-11-2026: kies je iets in het filterpaneel, dan blijft de paneel-stap in de geschiedenis staan (terug sluit dan het paneel). */
     try { history[vervang ? 'replaceState' : 'pushState'](vervang && history.state && history.state.paneel ? { paneel: 1 } : {}, '', url); } catch (e) { location.href = url; return; }
     toon();
@@ -152,7 +159,12 @@
     if (m) return m[1] === 'tot' ? { id: id, label: 'Tot €' + m[2], min: 0, max: +m[2] } : { id: id, label: 'Vanaf €' + m[2], min: +m[2], max: Infinity };
     return PRIJZEN[0];
   }
-  function binnenPrijs(p, id) { var f = prijsFilter(id); return p.prijs >= f.min && p.prijs <= f.max; }
+  /* SNEL (13-11-2026): het prijsfilter werd voor elk product opnieuw opgezocht (tienduizenden keren per pagina). Nu één keer per bedrag. */
+  var BP_ID, BP_OUD, BP_F = null;
+  function binnenPrijs(p, id) {
+    if (!BP_F || id !== BP_ID || BP_OUD !== window.LK_PRIJS_OUD) { BP_F = prijsFilter(id); BP_ID = id; BP_OUD = window.LK_PRIJS_OUD; }
+    return p.prijs >= BP_F.min && p.prijs <= BP_F.max;
+  }
   function kortingPct(p) { return p.oudePrijs > p.prijs ? (1 - p.prijs / p.oudePrijs) * 100 : 0; }
   /* 8-11-2026: prijs ouder dan 7 dagen = geen harde belofte meer. */
   function datumNL(d) { return String(d || '').split('-').reverse().join('-'); }
@@ -251,9 +263,15 @@
     ];
     /* 10-11-2026 (Marius: 'na de 6 moet het zich herhalen en herhalen, zodat dat gevoel steeds terugkomt'): elk volgend blok van zes
        krijgt dezelfde zes taken, telkens gekozen uit de beste 60 die nog over zijn. Tot 40 blokken (240 cadeaus); daarna de gewone volgorde. */
-    var rest = l.slice(), uit = [], vorigeWinkel = '';
-    for (var blokNr = 0; blokNr < 40 && rest.length >= 6; blokNr++) {
-      var kand = rest.slice(0, 60), blok = [], vakken = {}, winkels = {}, groepen = {};
+    /* SNEL (13-11-2026): na elk blok van zes werd de hele rest van de lijst (soms 5.000 cadeaus) opnieuw afgelopen, 40 keer. Nu houden we alleen
+       de 60 kandidaten bij en vullen die aan uit de lijst. De uitkomst is precies dezelfde. Staat een cadeau twee keer in de lijst (hoort niet
+       voor te komen), dan rekenen we op de oude manier. */
+    var uit = [], vorigeWinkel = '', kand = [], ptr = 0, nL = l.length, gezienId = {}, dubbel = false;
+    for (var di = 0; di < nL; di++) { if (gezienId[l[di].id]) { dubbel = true; break; } gezienId[l[di].id] = 1; }
+    var rest = dubbel ? l.slice() : null;
+    for (var blokNr = 0; blokNr < 40 && (dubbel ? rest.length : kand.length + (nL - ptr)) >= 6; blokNr++) {
+      if (dubbel) kand = rest.slice(0, 60); else while (kand.length < 60 && ptr < nL) kand.push(l[ptr++]);
+      var blok = [], vakken = {}, winkels = {}, groepen = {};
       var breed = (function () { var g = {}; kand.forEach(function (p) { g[p.afd + '/' + p.groep] = 1; }); return Object.keys(g).length >= 4; })();
       var vrij = function (p, streng) {
         if (blok.indexOf(p) !== -1 || !p.beeld || vakken[p.vak || p.sub]) return false;
@@ -271,10 +289,10 @@
         blok.push(p); vakken[p.vak || p.sub] = 1; winkels[p.shop] = 1; groepen[p.afd + '/' + p.groep] = 1;
       }
       var inBlok = {}; blok.forEach(function (x) { inBlok[x.id] = 1; });
-      rest = rest.filter(function (x) { return !inBlok[x.id]; });
+      if (dubbel) rest = rest.filter(function (x) { return !inBlok[x.id]; }); else kand = kand.filter(function (x) { return !inBlok[x.id]; });
       uit = uit.concat(blok);
     }
-    return uit.concat(rest);
+    return dubbel ? uit.concat(rest) : uit.concat(kand, l.slice(ptr));
   }
   /* Wat bovenaan komt: de heldenrij, of als die uit staat de aparte cadeaus eerst. */
   /* 10-11-2026 (Marius: 'een pensioencadeau op Voor hem, dit kan niet'): cadeaus met een tekst voor één soort persoon of moment (p.smal, zie scripts/boom/paginaregels.json).
@@ -376,16 +394,19 @@
       return { p: p, s: s, v: p.vak || p.groep || (p.cat + '/' + p.sub), w: p.shop, b: b };
     });
     l.sort(function (x, y) { return y.s - x.s; });
-    var uit = [];
-    while (l.length) {
+    /* SNEL (13-11-2026): we kiezen steeds de beste van de eerste 14. Eerder schoof daarna de hele lijst één plek op (bij 5.000 cadeaus miljoenen
+       stapjes); nu houden we alleen die 14 bij en vullen ze aan. De volgorde die eruit komt is precies dezelfde. */
+    var uit = [], venster = l.slice(0, 14), volgende = venster.length;
+    while (venster.length) {
       var n = uit.length, v1 = n ? uit[n - 1] : null, v2 = n > 1 ? uit[n - 2] : null, beste = 0, besteS = -1e9;
-      for (var i = 0; i < l.length && i < 14; i++) {
-        var c = l[i], straf = 0;
+      for (var i = 0; i < venster.length; i++) {
+        var c = venster[i], straf = 0;
         if (v1 && c.v === v1.v) straf += 0.25; if (v2 && c.v === v2.v) straf += 0.12;
         if (v1 && c.w === v1.w) straf += 0.12; if (v1 && c.b === v1.b) straf += 0.04;
         if (c.s - straf > besteS) { besteS = c.s - straf; beste = i; }
       }
-      uit.push(l.splice(beste, 1)[0]);
+      uit.push(venster.splice(beste, 1)[0]);
+      if (volgende < l.length) venster.push(l[volgende++]);
     }
     return daisyconLaag(uit.map(function (x) { return x.p; }));
   }
@@ -411,8 +432,9 @@
       '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">Toon meer <small>(' + per + ' van ' + getal(lijst.length) + ')</small></button></div>';
   }
   /* Volgende portie kaarten erbij zetten (knop 'Toon meer', of terugkomen op een lijst waar je al verder was). */
-  function toonMeer(k, aantal) {
-    var m = MEER_LIJSTEN[k], g = $('[data-meer-grid="' + k + '"]', app);
+  function toonMeer(k, aantal, waar) {
+    waar = waar || app;
+    var m = MEER_LIJSTEN[k], g = $('[data-meer-grid="' + k + '"]', waar);
     if (!m || !g) return;
     var tot = Math.min(m.lijst.length, m.getoond + (aantal || m.per));
     if (tot > m.getoond) {
@@ -422,7 +444,7 @@
       while (stuk.firstChild) g.appendChild(stuk.firstChild);
       m.getoond = tot;
     }
-    var knop = $('[data-meer="' + k + '"]', app);
+    var knop = $('[data-meer="' + k + '"]', waar);
     if (knop) { if (tot >= m.lijst.length) knop.parentNode.remove(); else if (!m.tekst) knop.innerHTML = 'Toon meer <small>(' + tot + ' van ' + getal(m.lijst.length) + ')</small>'; }
   }
   /* Keuzes bovenaan een lijstpagina (stap 3 indeling): een vast raster van rondjes dat omloopt, 4 per rij op een telefoon.
@@ -666,11 +688,15 @@
     if (!MERKEN) {
       var tel = {}; (window.LK_PRODUCTEN || []).forEach(function (x) { var m = (x.merk || '').trim(); if (m && !NIET_MERK.test(m)) tel[m] = (tel[m] || 0) + 1; });
       MERKEN = Object.keys(tel).filter(function (m) { return tel[m] >= 3 && m.length >= 2; }).sort(function (a, b) { return b.length - a.length; });
+      /* SNEL (13-11-2026): voor elk product zonder merk liepen we alle merken af. Een titel kan alleen met een merk beginnen dat dezelfde eerste
+         letter heeft: we proberen nu alleen die, in dezelfde volgorde (langste eerst). */
+      MERKEN.letter = {}; MERKEN.forEach(function (naam) { var k = naam.toLowerCase(), c = k.charAt(0); (MERKEN.letter[c] = MERKEN.letter[c] || []).push([k, naam]); });
     }
     var m = (p.merk || '').trim();
     if (!m || NIET_MERK.test(m)) {
       m = ''; var t = (p.titel || '').toLowerCase();
-      for (var i = 0; i < MERKEN.length; i++) { var k = MERKEN[i].toLowerCase(); if (t.indexOf(k) === 0 && !/[a-z0-9]/.test(t.charAt(k.length) || ' ')) { m = MERKEN[i]; break; } }
+      var rij = MERKEN.letter[t.charAt(0)] || [];
+      for (var i = 0; i < rij.length; i++) { var k = rij[i][0]; if (t.lastIndexOf(k, 0) === 0 && !/[a-z0-9]/.test(t.charAt(k.length) || ' ')) { m = rij[i][1]; break; } }
     }
     return (p._merk = m);
   }
@@ -1300,9 +1326,9 @@
   function winkelSlug(naam) { var w = WINKELTOP.filter(function (x) { return x.shop.toLowerCase() === String(naam).toLowerCase(); })[0]; return w ? w.slug : vouw(String(naam)).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
   function winkelTopBlok() {
     if (!WT_AAN) return '';
-    var z = LK.zichtbaar(), opId = {}; z.forEach(function (p) { opId[p.id] = p; });
+    var z = LK.zichtbaar(), opId = function (id) { var p = LK.vind(id); return p && p.status === 'goedgekeurd' ? p : null; }; /* SNEL: per id opzoeken in plaats van de hele lijst aflopen */
     var kaarten = WINKELTOP.map(function (w) {
-      var top = ((window.LK_TOPVAST || {})['/winkel/' + w.slug] || []).map(function (id) { return opId[id]; }).filter(function (p) { return p && p.shop === w.shop && p.beeld; }).slice(0, 5);
+      var top = ((window.LK_TOPVAST || {})['/winkel/' + w.slug] || []).map(function (id) { return opId(id); }).filter(function (p) { return p && p.shop === w.shop && p.beeld; }).slice(0, 5);
       if (top.length < 5) return '';
       var n = z.filter(function (p) { return p.shop === w.shop; }).length;
       return '<article class="wtop-kaart"><h3>' + esc(w.naam || w.shop) + '</h3><p>' + esc(w.tekst) + '</p>' +
@@ -1674,7 +1700,11 @@
     /* 10-11-2026 (paginaregels): een product dat niet op dit onderwerp hoort (p.nietOp) of een los onderdeel is (p.los) staat hier niet. */
     var sub = vakken && pe.subs ? pe.subs.filter(function (x) { return x.vakken === vakken; })[0] : null;
     var sleutel = sub ? 'voor/' + pe.slug + '/' + sub.slug : '';
-    return LK.zichtbaar().filter(function (p) {
+    /* SNEL (13-11-2026): een Voor wie-pagina vroeg voor elk van zijn ongeveer twintig onderwerpen vijf keer dezelfde lijst op (telkens alle
+       11.000 producten langs). Nu onthouden we de uitkomst zolang de productlijst dezelfde is. Wie de lijst krijgt, krijgt een eigen kopie. */
+    var zPP = LK.zichtbaar(), ckPP = (!window.LK_OPNAME && (!vakken || sub)) ? pe.slug + '|' + (sub ? sub.slug : '') : '';
+    if (ckPP) { if (PP_BRON !== zPP) { PP_BRON = zPP; PP_CACHE = {}; } if (PP_CACHE[ckPP]) return PP_CACHE[ckPP].slice(); }
+    var uitPP = zPP.filter(function (p) {
       if (p.cat === 'christelijk' || p.los) return false;
       if (sleutel && p.nietOp && p.nietOp.indexOf(sleutel) !== -1) return false;
       if (p.nietBij && p.nietBij.indexOf(pe.slug) !== -1) return false; /* 10-11-2026: alleen zekere cadeaus; staat op geen enkel nagekeken onderwerp van deze persoon */
@@ -1686,7 +1716,10 @@
       var plekken = plekkenVan(p);
       return plekken.some(function (x) { return vakken.some(function (v) { return x === v || x.indexOf(v + '/') === 0; }); });
     });
+    if (ckPP) { PP_CACHE[ckPP] = uitPP; return uitPP.slice(); }
+    return uitPP;
   }
+  var PP_BRON = null, PP_CACHE = {};
   function persoon(slug, subSlug, q) {
     var pe = window.LK_PERSOON(slug);
     if (!pe || !pe.subs) return nietGevonden();
@@ -1871,7 +1904,7 @@
       : c.code ? '<span class="code-knop wacht"><span class="code-vak">' + esc(c.code) + '</span><span class="code-actie">Werkt ' + esc(tijd.toLowerCase()) + '</span></span>'
       : '<a class="knop knop-goud code-ga" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener">Naar de actie bij ' + esc(c.winkel) + '</a>';
     return '<article class="code-kaart' + (c.code ? ' met-code' : '') + (straks ? ' straks' : '') + '">' +
-      '<div class="code-kop">' + (c.logo ? '<img src="' + esc(c.logo) + '" alt="' + esc(c.winkel) + '" loading="lazy" decoding="async" width="56" height="56" onerror="this.hidden=true;this.nextSibling.hidden=false">' : '') + '<span class="code-logo" aria-hidden="true"' + (c.logo ? ' hidden' : '') + '>' + esc(c.winkel.charAt(0)) + '</span>' + '<div><strong>' + esc(c.winkel) + '</strong><span class="code-tijd">' + esc(tijd) + '</span></div><span class="code-badge">' + esc(c.badge) + '</span></div>' +
+      '<div class="code-kop">' + (c.logo ? '<img src="' + esc(c.logo) + '" alt="' + esc(c.winkel) + '" loading="lazy" decoding="async" width="56" height="56" onerror="this.hidden=true;if(this.nextSibling)this.nextSibling.hidden=false">' : '') + '<span class="code-logo" aria-hidden="true"' + (c.logo ? ' hidden' : '') + '>' + esc(c.winkel.charAt(0)) + '</span>' + '<div><strong>' + esc(c.winkel) + '</strong><span class="code-tijd">' + esc(tijd) + '</span></div><span class="code-badge">' + esc(c.badge) + '</span></div>' +
       '<h3>' + esc(c.titel) + '</h3><p>' + esc(c.tekst) + '</p>' + knop +
       (c.voorwaarden ? '<details class="code-voorwaarden"><summary>Voorwaarden</summary><p>' + esc(c.voorwaarden) + '</p></details>' : '') +
     '</article>';
@@ -2838,6 +2871,8 @@
   function sleutelT(w, t) { return String(w || '').toLowerCase().replace(/[^a-z0-9]+/g, '') + '|' + String(t || '').toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff]+/g, ''); }
   function eigenTitels() { var z = LK.zichtbaar(); if (EIGEN_T && EIGEN_BRON === z) return EIGEN_T; EIGEN_BRON = z; EIGEN_T = {}; z.forEach(function (p) { EIGEN_T[sleutelT(p.shop, p.titel)] = 1; }); return EIGEN_T; }
   function vulAlleWinkels(sec) {
+    /* SNEL (PAK): 'wat wij zelf al hebben' weten we pas zeker met de hele lijst. Is die er nog niet, dan wachten we er even op. */
+    if (window.LK_DEEL) { if (window.LK_LAAD_VOL) window.LK_LAAD_VOL(); window.addEventListener('lk-volledig', function () { if (sec.isConnected) vulAlleWinkels(sec); }, { once: true }); return; }
     var q = sec.getAttribute('data-q') || '', pf = prijsFilter(sec.getAttribute('data-prijs'));
     var woorden = q.toLowerCase().split(/\s+/).filter(Boolean).map(stam);
     var doel = $('.aw-inhoud', sec);
@@ -5331,12 +5366,18 @@
 
   /* Subcategorieën die echt iets bevatten. Lege subs (bv. 'Met naam') blijven verborgen tot er producten in staan. */
   function subAdres(c, s) { return s.naar || '/c/' + c.slug + '/' + s.slug; }
+  /* SNEL (13-11-2026): het menu links, het grote menu en de pagina zelf vroegen dit elk apart (telkens de hele productlijst langs). Nu één keer
+     per productlijst en per dag (een groep kan op een datum aflopen). */
+  var VS_BRON = null, VS_DAG = '', VS_CACHE = null;
   function volleSubs(c) {
-    var z = LK.zichtbaar();
-    return c.subs.filter(function (s) {
+    var z = LK.zichtbaar(), dag = new Date().toDateString(), kan = !window.LK_OPNAME && typeof WeakMap === 'function';
+    if (kan) { if (VS_BRON !== z || VS_DAG !== dag || !VS_CACHE) { VS_BRON = z; VS_DAG = dag; VS_CACHE = new WeakMap(); } var al = VS_CACHE.get(c); if (al) return al.slice(); }
+    var uit = c.subs.filter(function (s) {
       if (s.verborgen || !nogGeldig(s)) return false;
       return s.slug === 'onder-15' || z.some(function (p) { return LK.hoortBij(p, c.slug, s.slug); });
     });
+    if (kan) { VS_CACHE.set(c, uit); return uit.slice(); }
+    return uit;
   }
 
   /* ================== MENU'S ================== */
@@ -5426,7 +5467,9 @@
   }
 
   function werkTellersBij() {
-    var n = LK.favorieten().filter(function (id) { var p = LK.vind(id); return p && p.status === 'goedgekeurd'; }).length;
+    var deelNu = window.LK_DEEL, misNu = window.LK_DEEL_MIS; /* SNEL (PAK): wat niet in het pak zit telt voorlopig mee; de teller klopt precies zodra de hele lijst er is */
+    var n = LK.favorieten().filter(function (id) { var p = LK.vind(id); return deelNu ? (!p || p.status === 'goedgekeurd') : (p && p.status === 'goedgekeurd'); }).length;
+    if (deelNu) window.LK_DEEL_MIS = misNu;
     $$('[data-favteller]').forEach(function (t) { t.textContent = n; t.hidden = n === 0; });
   }
   function toast(t) {
@@ -5464,7 +5507,7 @@
     'boeken-media': ['boeken-media'], 'dieren': ['dieren'], 'christelijk': ['christelijk'] };
   function winkelLogo(w) {
     var code = (window.LK_CODES || []).filter(function (c) { return c.logo && (c.winkel || '').toLowerCase() === w.naam.toLowerCase(); })[0];
-    if (w.logo || code) return '<img class="winkel-logo" src="' + esc(w.logo || code.logo) + '" alt="" loading="lazy" decoding="async" width="48" height="48" onerror="this.hidden=true;this.nextSibling.hidden=false"><span class="winkel-letter" aria-hidden="true" hidden>' + esc(w.naam.charAt(0).toUpperCase()) + '</span>';
+    if (w.logo || code) return '<img class="winkel-logo" src="' + esc(w.logo || code.logo) + '" alt="" loading="lazy" decoding="async" width="48" height="48" onerror="this.hidden=true;if(this.nextSibling)this.nextSibling.hidden=false"><span class="winkel-letter" aria-hidden="true" hidden>' + esc(w.naam.charAt(0).toUpperCase()) + '</span>';
     return '<span class="winkel-letter" aria-hidden="true">' + esc(w.naam.charAt(0).toUpperCase()) + '</span>';
   }
   function winkels(q) {
@@ -5531,8 +5574,48 @@
     })();
     return true;
   }
+  /* SNEL (13-11-2026, grote keuring, GO Marius: 'zorg dat de site sneller wordt'): de gebouwde pagina staat er al als de app start.
+     Eerst gooide de app die weg en tekende alles opnieuw. Daardoor telde de grote foto bovenaan pas na 8 tot 10 seconden als 'geladen'
+     (Google meet dat), en wie al naar beneden was gescrold sprong terug naar boven. Nu past de app de eerste keer alleen aan wat anders is
+     (de knop 'Toon meer', afbreekstreepjes in titels, je hartjes); de rest blijft gewoon staan.
+     Uit: window.LK_MORPH = false of ?proef=morph-uit. Nakijken: window.LK_MORPH_TEST = true meldt elk verschil met de oude manier in de console. */
+  var MORPH = window.LK_MORPH !== false && !/[?&]proef=morph-uit(&|$)/.test(location.search), EERSTE = true, STIL = false, LAATSTE_HTML = null;
+  function zelfdeSoort(a, b) { return a.nodeType === b.nodeType && a.nodeName === b.nodeName; }
+  function gelijkeAttrs(o, n) {
+    var na = n.attributes, oa = o.attributes, i, a;
+    for (i = oa.length - 1; i >= 0; i--) { a = oa[i]; if (!n.hasAttribute(a.name)) o.removeAttribute(a.name); }
+    for (i = 0; i < na.length; i++) { a = na[i]; if (o.getAttribute(a.name) !== a.value) o.setAttribute(a.name, a.value); }
+  }
+  /* Een plaatje met een eigen vangnet (onerror: verstop het plaatje en toon de letter, of pak een ander plaatje) dat niet laadde, heeft de pagina
+     zelf al veranderd. Zo'n plaatje nemen we altijd vers over uit de nieuwe pagina, net als vroeger: dan laadt het opnieuw en werkt het vangnet weer.
+     (Gevonden bij het nakijken op /winkels: anders stond er een kapot plaatje in plaats van de letter van de winkel.) */
+  function beeldMis(im) { return im.hasAttribute('onerror') && im.complete && (!im.naturalWidth || im.onerror === null); }
+  /* Maakt de kinderen van 'oud' gelijk aan die van 'nieuw'. Wat al gelijk is blijft staan (zelfde plaatje, zelfde kaart). */
+  function morph(oud, nieuw) {
+    var o = oud.firstChild, n = nieuw.firstChild, volg, z, i, w;
+    while (n) {
+      volg = n.nextSibling;
+      if (!o) { oud.appendChild(n); n = volg; continue; }
+      if (o.isEqualNode(n)) { o = o.nextSibling; n = volg; continue; }
+      /* staat dit nieuwe stuk iets verderop al in de oude pagina? dan is wat ertussen staat weg */
+      for (z = o.nextSibling, i = 0; z && i < 6; z = z.nextSibling, i++) if (z.isEqualNode(n)) break;
+      if (z && i < 6) { while (o !== z) { w = o; o = o.nextSibling; oud.removeChild(w); } o = o.nextSibling; n = volg; continue; }
+      /* staat het oude stuk iets verderop in de nieuwe pagina? dan is dit nieuwe stuk ertussen gekomen */
+      for (z = volg, i = 0; z && i < 6; z = z.nextSibling, i++) if (o.isEqualNode(z)) break;
+      if (z && i < 6) { oud.insertBefore(n, o); n = volg; continue; }
+      if (zelfdeSoort(o, n)) {
+        if (o.nodeType === 1 && o.tagName === 'IMG' && beeldMis(o)) { w = o.nextSibling; oud.replaceChild(n, o); o = w; n = volg; continue; }
+        if (o.nodeType === 1) { gelijkeAttrs(o, n); morph(o, n); }
+        else if (o.nodeValue !== n.nodeValue) o.nodeValue = n.nodeValue;
+        o = o.nextSibling;
+      } else oud.insertBefore(n, o); /* ander soort stuk: het nieuwe ervoor; het oude komt verderop nog aan de beurt of gaat aan het eind weg */
+      n = volg;
+    }
+    while (o) { w = o; o = o.nextSibling; oud.removeChild(w); }
+  }
   function toon() {
     if (!window.LK_PRODUCTEN) return; /* de productlijst is er nog niet: de HTML van de pagina staat er al */
+    var stil = STIL, oudMeer = stil ? MEER_LIJSTEN.map(function (m) { return m.getoond; }) : null; STIL = false;
     onthoudPlek();
     laatstGetoond = huidigAdres();
     LK.redenAltijd = false; /* WIJZER: alleen de nieuwe Voor wie-opzet zet op elke kaart een regel 'waarom' */
@@ -5578,7 +5661,19 @@
     var oudeRij = $('.subkaarten', app), oudeScroll = oudeRij ? oudeRij.scrollLeft : 0;
     var zelfdeCat = d[0] === 'c' && vorigeCat === d[1];
 
-    app.innerHTML = html;
+    var eersteKeer = EERSTE; EERSTE = false;
+    /* Stil bijwerken (de hele lijst kwam binnen nadat de pagina met zijn eigen pak was gestart): is er niets veranderd, dan blijft alles staan. */
+    if (stil && html === LAATSTE_HTML) { MEER_LIJSTEN.forEach(function (m, i) { if (oudMeer[i] > m.getoond) m.getoond = Math.min(m.lijst.length, oudMeer[i]); }); return; }
+    LAATSTE_HTML = html;
+    if ((eersteKeer || stil) && MORPH && app.firstChild) {
+      try {
+        var tpl = document.createElement('template'); tpl.innerHTML = html; vulIconen(tpl.content); netteLinks(tpl.content);
+        if (stil) oudMeer.forEach(function (n, k) { var m = MEER_LIJSTEN[k]; if (m && n > m.getoond) toonMeer(k, n - m.getoond, tpl.content); }); /* wie al op 'Toon meer' tikte, houdt die kaarten */
+        morph(app, tpl.content);
+        if (window.LK_MORPH_TEST) { var proef = document.createElement('template'); proef.innerHTML = html; vulIconen(proef.content); netteLinks(proef.content);
+          var h1 = proef.innerHTML, h2 = app.innerHTML; if (h1 !== h2) { var vi = 0; while (vi < h1.length && h1.charAt(vi) === h2.charAt(vi)) vi++; console.error('MORPH-VERSCHIL op ' + location.pathname + location.search + ' vanaf teken ' + vi + ': verwacht [' + h1.slice(Math.max(0, vi - 40), vi + 80) + '] kreeg [' + h2.slice(Math.max(0, vi - 40), vi + 80) + ']'); } }
+      } catch (e) { if (window.LK_MORPH_TEST) console.error('MORPH-FOUT ' + (e && e.message)); app.innerHTML = html; }
+    } else app.innerHTML = html;
     document.body.classList.remove('plak-open');
     document.body.classList.toggle('pag-product', d[0] === 'p'); /* 8-11-2026: compacter eerste scherm op productpagina's (telefoon) */
     var doelN4 = NOVA4 && (d[0] === 'voor' || d[0] === 'gelegenheid'); /* NOVA-004: alleen uiterlijk */
@@ -5653,7 +5748,7 @@
       }
     }
     vorigeCat = d[0] === 'c' ? d[1] : null;
-    sluitLade(); sluitMega();
+    if (!stil) { sluitLade(); sluitMega(); }
 
     // Actieve menu-items
     var huidigeCat = d[0] === 'c' ? d[1] : (d[0] === 'vonk' ? 'vonk' : '');
@@ -5676,7 +5771,7 @@
         var doelY = doelEl.getBoundingClientRect().top + window.scrollY - hoogte - 10;
         var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({ top: Math.max(0, doelY), behavior: rustig ? 'auto' : 'smooth' });
-      } else window.scrollTo(0, 0);
+      } else if (!eersteKeer) window.scrollTo(0, 0); /* SNEL: de eerste keer blijf je staan waar je was (eerst sprong je na het laden terug naar boven) */
       if (vorigPad !== null) app.focus({ preventScroll: true });
     }
     /* NOVA-010: onderwerp zonder nuttige vervolgkeuze -> meteen bij de producten uitkomen (niet bovenaan de pagina) */
@@ -6007,6 +6102,7 @@
   var tipTimer = null;
   function sluitTips(f) { var t = f && f.querySelector('.zoek-tips'); if (t) t.remove(); }
   function toonTips(f) {
+    if (window.LK_DEEL) { if (window.LK_LAAD_VOL) window.LK_LAAD_VOL(); return; } /* SNEL (PAK): zoektips pas als de hele lijst er is (die laden we nu meteen) */
     var inp = f.querySelector('input'), q = inp.value.trim();
     if (q.length < 2) { sluitTips(f); return; }
     var woorden = zoekWoorden(zoekBudget(q).tekst), lijst = zoekLijst(woorden, ''), samen = lijst.samen;
@@ -6129,14 +6225,46 @@
     $$('button[data-onder="categorieen"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3) t.nodeValue = SOORTEN ? 'Producten' : 'Categorieën'; });
     if (WIJZER === 'b') $$('a[data-onder="vonk"], a[data-nav="vonk"]').forEach(function (a) { var t = a.lastChild; if (t && t.nodeType === 3 && /VONK/.test(t.nodeValue)) t.nodeValue = 'Kieshulp'; }); /* een nieuwe bezoeker weet niet wat VONK is */
     window.LK.ga = ga;
-    bouwLade(); bouwMega(); netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
+    if (!window.LK_DEEL) { bouwLade(); bouwMega(); } /* SNEL (PAK): de menu's uit de gebouwde pagina blijven staan tot de hele lijst er is */
+    netteLinks(document); /* menu-links netjes met een slash erachter (ook voor de sitemap) */
     vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
     werkTellersBij();
     toon();
+    /* SNEL (PAK): gestart met het kleine bestand van deze pagina; nu de hele lijst op de achtergrond ophalen (meteen bij de eerste tik of scroll, anders na een halve seconde) */
+    if (window.LK_DEEL && window.LK_LAAD_VOL) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, window.LK_LAAD_VOL, { once: true, passive: true }); }); setTimeout(window.LK_LAAD_VOL, 500); }
   }
   /* Snelheid (8-11-2026): topkeuze.js laadt nu ook 'async'. We starten als de productlijst er is én de toppers (of na 6 seconden zonder toppers, als vangnet). */
   var T_START = Date.now();
-  function klaarVoorStart() { return window.LK_PRODUCTEN && (window.LK_TOPKEUZE || Date.now() - T_START > 6000); }
+  /* SNEL (PAK, 13-11-2026): een lijstpagina heeft een klein eigen productbestand (assets/pak/<pagina>.js, gemaakt en per pagina nagekeken door
+     scripts/maak-pakken.js): alleen de producten en toppers die op die pagina meedoen. Daarmee start de app meteen; de hele lijst (voor zoeken,
+     de kieshulp en andere pagina's) komt daarna op de achtergrond. Uit: ?proef=pak-uit (weer aan: ?proef=pak); het stukje in de kop van de pagina regelt het laden. */
+  var PAK_TOP = null;
+  function zetPak() {
+    var k = window.LK_PAK; if (!k || !k.p || window.LK_PRODUCTEN) return;
+    window.LK_DEEL = true; window.LK_DEEL_MIS = false; window.LK_PRODUCTEN = k.p;
+    if (!window.LK_TOPKEUZE) { PAK_TOP = window.LK_TOPKEUZE = k.top || {}; window.LK_TOPVAST = k.vast || {}; window.LK_NIETOP = k.nietop || {}; }
+    if (!window.LK_AFBREEK && k.af) window.LK_AFBREEK = k.af;
+  }
+  /* De hele lijst (en de hele lijst met toppers) is binnen: menu's en tellers compleet maken. De pagina zelf blijft staan; alleen als er iets
+     ontbrak (een product van je verlanglijstje of 'laatst bekeken' dat niet in het pak zat) wordt hij stil bijgewerkt. */
+  function volledig() {
+    if (!window.LK_DEEL || !start.gedaan || !window.LK_PAK || window.LK_PRODUCTEN === window.LK_PAK.p) return;
+    if (PAK_TOP && window.LK_TOPKEUZE === PAK_TOP) return;
+    window.LK_DEEL = false; MERKEN = null; ETALAGE = null;
+    bouwLade(); bouwMega(); netteLinks(document); vulIconen($('[data-lade]').parentNode); vulIconen($('[data-megamenu]'));
+    werkTellersBij();
+    /* Het pak is nagekeken voor het kale adres. Heeft de bezoeker in de tussentijd al gefilterd of gesorteerd (er staat een keuze in het adres),
+       dan tekenen we voor de zekerheid stil opnieuw met de hele lijst: is alles gelijk, dan gebeurt er niets. */
+    var gekozen = Object.keys(leesAdres().q).some(function (k) { return k !== 'proef'; });
+    if ((window.LK_DEEL_MIS || gekozen) && !$('[data-filterpaneel].open', app) && !$('.lade.open')) { STIL = true; toon(); }
+    try { window.dispatchEvent(new Event('lk-volledig')); } catch (e) {}
+  }
+  window.addEventListener('lk-producten', volledig); window.addEventListener('lk-top', volledig);
+  function klaarVoorStart() { if (!window.LK_PRODUCTEN && window.LK_PAK) zetPak(); return window.LK_PRODUCTEN && (window.LK_TOPKEUZE || Date.now() - T_START > 6000); }
+  window.addEventListener('lk-pak', function () { if (klaarVoorStart()) start(); });
+  /* Hulpjes voor het bouwen en nakijken van de pakken (scripts/maak-pakken.js). De site zelf gebruikt ze niet. */
+  LK._toonPad = function (pad) { try { history.replaceState({}, '', netjes(pad)); } catch (e) {} toon(); return LAATSTE_HTML; };
+  LK._wijzer = function (v) { WIJZER = v; }; LK._merk = merkVan; LK._reset = function () { MERKEN = null; ETALAGE = null; };
   if (klaarVoorStart()) start();
   else {
     window.addEventListener('lk-producten', function () { if (klaarVoorStart()) start(); });
