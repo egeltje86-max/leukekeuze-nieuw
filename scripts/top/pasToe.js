@@ -13,7 +13,10 @@ if (BOL_LATER) {
   for (const k of Object.keys(P)) {
     if (!Array.isArray(P[k]) || k.indexOf('/winkel/') === 0) continue;
     const oud = P[k].join();
-    P[k] = P[k].map((id, i) => [id, i + (winkel[id] === 'bol' ? BOL_LATER + 0.5 : 0)]).sort((x, y) => x[1] - y[1]).map((x) => x[0]);
+    /* 13-11-2026 (grote keuring): La Redoute staat niet meer in een vaste top. De cloud kan die winkel niet nakijken (403), dus de prijs
+       wordt nooit ververst en staat als 'ca.' op de productpagina. De cadeaus blijven op de pagina staan (verderop, in de gemixte rest);
+       er gaat niets weg en in picks.json blijft de volgorde staan. */
+    P[k] = P[k].filter((id) => winkel[id] !== 'La Redoute').map((id, i) => [id, i + (winkel[id] === 'bol' ? BOL_LATER + 0.5 : 0)]).sort((x, y) => x[1] - y[1]).map((x) => x[0]);
     if (P[k].join() !== oud) n++;
   }
   console.log('bol drie plekken later in', n, "vaste toppen");

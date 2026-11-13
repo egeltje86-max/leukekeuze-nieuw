@@ -164,7 +164,7 @@
     if (!keuze || !keuze.length) return null;
     var plek = {}; keuze.forEach(function (id, i) { plek[id] = i + 1; });
     var top = [], rest = [];
-    l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
+    l.forEach(function (p) { (plek[p.id] && p.shop !== 'La Redoute' ? top : rest).push(p); }); /* 13-11-2026: La Redoute niet meer vooraan (prijs kan niet nagekeken worden), wel in de rest */
     if (!top.length) return null;
     top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
     return top.concat(mix(rest));
@@ -326,7 +326,8 @@
   function sieradenLaat(l, sleutel) {
     var sl = String(sleutel || '').replace(/\/$/, '');
     /* Op de hoofdpagina Mode & sieraden gaan kleding, tassen, horloges en accessoires voor (11-11-2026); de groep Sieraden zelf blijft zoals hij is. */
-    if (window.LK_SIERADEN_VOORAAN === true || !sl || (sl !== '/c/mode-sieraden' && (/sieraden/.test(sl) || /^\/c\//.test(sl)))) return l;
+    /* 13-11-2026 (grote keuring): /c/cadeaus/... en /c/valentijn/... zijn themalijsten (Kerst, Met naam), geen eigen hoek van sieraden: ook daar schuiven ze naar achteren. */
+    if (window.LK_SIERADEN_VOORAAN === true || !sl || (sl !== '/c/mode-sieraden' && (/sieraden/.test(sl) || /^\/c\/(?!(cadeaus|valentijn)(\/|\?|$))/.test(sl)))) return l;
     var voor = [], na = []; l.forEach(function (p) { (isSieraad(p) ? na : voor).push(p); });
     return na.length && voor.length ? voor.concat(na) : l;
   }
@@ -363,6 +364,9 @@
       /* 12-11-2026 (GO Marius: 'laat bol verschuiven'): bol leverde van 1 okt tot 12 nov geen enkele verkoop op, Ditverzinjeniet,
          Dille & Kamille, HEMA en Amazon wel. Bol schuift daarom wat naar achteren, die winkels wat naar voren. Er gaat niets weg. */
       s += (!p.shop || p.shop === 'bol') ? -0.06 : (WINKEL_VERKOOPT[p.shop] ? 0.06 : 0);
+      /* 13-11-2026 (grote keuring): La Redoute kan de cloud niet nakijken (403), dus de prijs wordt nooit ververst ('ca.' op de productpagina).
+         Die cadeaus staan daarom niet meer vooraan; ze blijven in hun vakje en via zoeken gewoon vindbaar. */
+      if (p.shop === 'La Redoute') s -= 0.25;
       if (kind) s += (p.afd === 'speelgoed' || p.afd === 'spellen-puzzels') ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'koken-tafelen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
       if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen' || (p.afd === 'spellen-puzzels' && p.groep !== 'puzzels'))) s += 0.1;
       /* 9-11-2026 (GO Marius): bezoekers klikken vooral op cadeaus onder €25 (middelste klikprijs €21, op de site €28).
@@ -2783,7 +2787,7 @@
   function winkelSectie(cat, sub, prijs, merk) {
     if (cat === 'christelijk') return '';
     /* 8-11-2026 (GO Marius): twee nieuwe afdelingen hebben in de zoekindex nog hun oude naam; zonder dit miste daar 'Meer in onze winkels'. */
-    if (!sub) cat = { 'mode-sieraden': 'mode-beauty', 'beauty-verzorging': 'geuren-verzorging' }[cat] || cat;
+    if (!sub) cat = { 'mode-sieraden': 'mode-beauty', 'beauty-verzorging': 'geuren-verzorging', 'koken-tafelen': 'keuken' /* 13-11-2026: miste op Koken & tafelen */ }[cat] || cat;
     var ZW = window.LK_ZOEKWOORDEN || {}, sleutel = sub ? cat + '/' + sub : cat;
     /* 8-11-2026 (Marius): Voor haar > Horloges toont dezelfde feed als Dameshorloges (alleen zijn eigen winkels en merken). */
     if (sleutel === 'sieraden/horloges') sleutel = 'mode-sieraden/horloges/dameshorloges';
@@ -2830,6 +2834,9 @@
     }).catch(function (e) { if (!sleutel && e && e.message === 'geen uitpakker') return 'oud'; return sleutel ? null : []; });
     return AW.laden[pad];
   }
+  var EIGEN_T = null, EIGEN_BRON = null;
+  function sleutelT(w, t) { return String(w || '').toLowerCase().replace(/[^a-z0-9]+/g, '') + '|' + String(t || '').toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff]+/g, ''); }
+  function eigenTitels() { var z = LK.zichtbaar(); if (EIGEN_T && EIGEN_BRON === z) return EIGEN_T; EIGEN_BRON = z; EIGEN_T = {}; z.forEach(function (p) { EIGEN_T[sleutelT(p.shop, p.titel)] = 1; }); return EIGEN_T; }
   function vulAlleWinkels(sec) {
     var q = sec.getAttribute('data-q') || '', pf = prijsFilter(sec.getAttribute('data-prijs'));
     var woorden = q.toLowerCase().split(/\s+/).filter(Boolean).map(stam);
@@ -2861,6 +2868,8 @@
           return s + ((x.z + ' ').indexOf(' ' + w + ' ') !== -1 ? 1 : 0);
         }, 0);
       });
+      /* 13-11-2026 (grote keuring): wat al tussen onze eigen cadeaus staat (zelfde winkel, zelfde naam) niet nog eens hieronder tonen. */
+      var eigenT = eigenTitels(); hits = hits.filter(function (x) { return !eigenT[sleutelT(x.w, x.t)]; });
       if (!hits.length && !q) { sec.remove(); return; }
       var st = { winkel: 'alle', sort: 'relevant', toon: PER_KEER, prijs: 'alle' };
       /* 'Best passend': eerst de beste woord-treffers. Zijn die er niet (bv. bij Voor haar), dan een afwisselende mix
@@ -2904,7 +2913,7 @@
         var toon = l.slice(0, st.toon);
         var kaarten = toon.map(function (x) {
           return '<article class="prodkaart awkaart">' +
-            '<a class="beeld echt" href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener"><img src="' + esc(x.f) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="var k=this.closest(\'.awkaart\');if(k)k.style.display=\'none\'"></a>' +
+            '<a class="beeld echt" href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1" aria-hidden="true"><img src="' + esc(x.f) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="var k=this.closest(\'.awkaart\');if(k)k.style.display=\'none\'"></a>' +
             '<div class="info"><span class="shop">' + esc(x.w) + '</span><h3><a href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener">' + esc(x.t) + '</a></h3>' +
             '<div class="prijs">' + LK.euro(x.p) + '</div></div></article>';
         }).join('');
@@ -3078,7 +3087,14 @@
       if (!r || watW.length) return true;
       return SLUG ? (!r[0] || r[0].test(SLUG)) : r[1].test(q.moment || '');
     });
-    var zeker = function (p) { return !!hobby || watW.length > 0 || !(SLUG && p.nietBij && p.nietBij.indexOf(SLUG) !== -1); };
+    /* 13-11-2026 (grote keuring): een cadeau met een tekst voor mama of papa, of een opkikkertje, stond bij 'voor haar, verjaardag' op plek 2.
+       Zo'n cadeau (smal zonder vaste persoon) hoort alleen bij de eerste keuzes als het moment erom vraagt (moederdag, vaderdag, beterschap). */
+    var zeker = function (p) {
+      if (hobby || watW.length > 0) return true;
+      var r = p.smal && SMAL_PAG[p.smal];
+      if (r && !r[0] && !r[1].test(q.moment || '')) return false;
+      return !(SLUG && p.nietBij && p.nietBij.indexOf(SLUG) !== -1);
+    };
     var echt = function (p) { return (p.voor || []).indexOf(q.voor) !== -1 ? 0 : 1; };
     /* 11-11-2026 (grote controle): bij een kind telt alleen wat echt voor kinderen is: het label 'kind' (of 'baby' bij 0 tot 2 jaar),
        of speelgoed, kinderboeken en kinderspellen zonder label waarvan we de leeftijd weten. Iets 'voor iedereen' (een LEGO-bonsai,
@@ -5211,7 +5227,7 @@
       '<a class="gi-beeld" href="' + naar + '" tabindex="-1" aria-hidden="true">' + LK.productBeeld(p) + '</a>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
       '<div class="gi-info"><span class="shop">' + esc(p.shop) + '</span>' +
-        '<h3><a href="' + naar + '">' + esc(p.titel) + '</a></h3>' +
+        '<h3><a href="' + naar + '">' + esc(LK.zachtAf(p.titel)) + '</a></h3>' + /* 13-11-2026: lange woorden netjes afbreken, net als op de productkaart */
         (p.waarom ? '<p class="gi-waarom">' + esc(p.waarom) + '</p>' : '') +
         '<div class="gi-onder"><span class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</span>' +
         '<a class="gi-knop" href="' + naar + '">Bekijk' + ic('rechts') + '</a></div>' +
@@ -5225,7 +5241,7 @@
       '<div class="gt-lijst">' + t.map(function (x) {
         var p = x[1];
         return '<a class="gt-item" href="/p/' + esc(p.id) + '"><span class="gt-beeld">' + LK.productBeeld(p) + '</span>' +
-          '<span class="gt-tekst"><em>' + esc(x[0]) + '</em><strong>' + esc(p.titel) + '</strong><span class="prijs">' + LK.euro(p.prijs) + '</span></span>' + ic('rechts') + '</a>';
+          '<span class="gt-tekst"><em>' + esc(x[0]) + '</em><strong>' + esc(LK.zachtAf(p.titel)) + '</strong><span class="prijs">' + LK.euro(p.prijs) + '</span></span>' + ic('rechts') + '</a>';
       }).join('') + '</div></aside>';
   }
   /* Veelgestelde vragen (veld 'faq': [vraag, antwoord]). Klapvakjes, plus FAQ-gegevens zodat Google ze kan tonen. */

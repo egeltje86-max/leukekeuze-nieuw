@@ -229,7 +229,7 @@
     leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen, vergeetCache: vergeetCache,
     producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij, isNieuw: isNieuw,
     favorieten: favorieten, isFavoriet: isFavoriet, wisselFavoriet: wisselFavoriet,
-    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart
+    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf
   };
 })();
 

@@ -1022,7 +1022,8 @@ main, .footer-licht { --goud: #8F6620; --goud-licht: #8F6620; }
   /* Lijstpagina's: lange intro eerst 2 regels, met 'Lees meer'. */
   .paginakop p.intro.lang { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .paginakop p.intro.lang.open { display: block; -webkit-line-clamp: unset; }
-  .paginakop .intro-meer { all: unset; cursor: pointer; display: inline-block; margin-top: 4px; font: 600 14px/1.2 var(--f-ui); color: #D9A848; text-decoration: underline; text-underline-offset: 3px; }
+  /* 13-11-2026 (grote keuring): het tikvlak was 17px hoog; nu 45px (regel: minimaal 44px), het ziet er precies hetzelfde uit. */
+  .paginakop .intro-meer { all: unset; cursor: pointer; display: inline-block; margin: -10px 0 -14px; padding: 14px 18px 14px 0; font: 600 14px/1.2 var(--f-ui); color: #D9A848; text-decoration: underline; text-underline-offset: 3px; position: relative; }
   .paginakop .binnen { padding-top: 14px; padding-bottom: 16px; }
   .paginakop h1 { font-size: clamp(26px, 7vw, 36px); margin-top: 6px; }
   .lijst-kop .binnen { padding-top: 16px; padding-bottom: 16px; }
@@ -2266,3 +2267,21 @@ html.wz-bh:not(.lk-gestart) #app > .hero, html.wz-bh:not(.lk-gestart) #app > .bi
 
 /* 12-11-2026: vijf bedragen (Tot €10 erbij). Op heel smalle telefoons (onder 350px) in twee rijen, zodat €50-100 niet uit zijn knop steekt. */
 @media (max-width: 350px) { .wijzer .wz-bedrag { flex-wrap: wrap; } .wijzer .wz-bedrag .chip { flex: 1 1 28%; } }
+
+/* GROTE KEURING (13-11-2026): twee pagina's schoven zijwaarts op een smalle telefoon.
+   1. Onze winkels (360 en 320px): een lange winkelnaam uit één woord (Tandenborstel.com, Countrylifestyle) paste niet in zijn vak. Op smalle schermen mag zo'n naam nu afbreken.
+   2. Een gids met een doorgestreepte oude prijs (320px): prijs en oude prijs moesten naast elkaar blijven en duwden de kaart buiten het scherm. De oude prijs staat daar nu onder de prijs. */
+@media (max-width: 400px) {
+  html.nova7 .winkel-tekst strong { overflow-wrap: anywhere; -webkit-hyphens: auto; hyphens: auto; }
+}
+@media (max-width: 360px) {
+  .gi-onder .prijs { white-space: normal; }
+  .gi-onder .prijs s.oud { display: block; margin-left: 0; }
+}
+/* 3. Gidsen (320px, negen gidsen): een lang woord in een titel (zwangerschapskalender) of een lange springlink bovenaan rekte de hele pagina op.
+      De vakken zijn nu nooit breder dan het scherm, lange woorden breken af (met een streepje waar we de plek kennen) en een lange springlink loopt door op de volgende regel. */
+.gidsitems, .gt-lijst { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 760px) { .gt-lijst { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .gidsitems { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.gi-info h3, .gi-waarom, .gt-tekst strong { overflow-wrap: anywhere; }
+.springlinks .chip { white-space: normal; max-width: 100%; line-height: 1.25; }

@@ -27,17 +27,17 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611131324" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611131324" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611131324">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611131324">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611131619" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611131619" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611131619">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611131619">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
        binnen waren (op een trage telefoon na bijna 4 seconden); nu meteen, met lage voorrang zodat de foto's bovenaan eerst komen. -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611131324"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611131619"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
@@ -165,11 +165,11 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"bt-54811835138387":{"url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=253d27d08a04979b5610fb420f2e83e2&dl=products%2Frugby-herensokken-navy%3Fvariant%3D54811835171155&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-navy","verzendNoot":"Bartogi verstuurt gratis vanaf € 75. Daaronder zie je de verzendkosten bij het afrekenen. Terugsturen kost vanaf € 5,99.","gecontroleerd":"2026-10-31","subVast":true,"varianten":[{"kleur":"Blauw","beeld":"images/producten/bt-ab4454c931","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=253d27d08a04979b5610fb420f2e83e2&dl=products%2Frugby-herensokken-navy%3Fvariant%3D54811835171155&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-navy","prijs":24.99,"maten":[{"maat":"39-43","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=253d27d08a04979b5610fb420f2e83e2&dl=products%2Frugby-herensokken-navy%3Fvariant%3D54811835171155&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-navy?variant=54811835171155","prijs":24.99},{"maat":"44-47","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=b568ab82d32125dde67a542c19b4a104&dl=products%2Frugby-herensokken-navy%3Fvariant%3D54811835138387&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-navy?variant=54811835138387","prijs":24.99}]},{"kleur":"Grijs","beeld":"images/producten/bt-4f7c9c064c","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=753257e6083ec630a9556e831d90c92b&dl=products%2Frugby-herensokken-charcoal%3Fvariant%3D54811836416339&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-charcoal","prijs":24.99,"maten":[{"maat":"39-43","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=753257e6083ec630a9556e831d90c92b&dl=products%2Frugby-herensokken-charcoal%3Fvariant%3D54811836416339&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-charcoal?variant=54811836416339","prijs":24.99},{"maat":"44-47","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=faa1ca8c380858d1284bc0fdbfd1ea4f&dl=products%2Frugby-herensokken-charcoal%3Fvariant%3D54811836383571&ws=","winkelUrl":"https://www.bartogi.nl/products/rugby-herensokken-charcoal?variant=54811836383571","prijs":24.99}]}],"wil":70,"waarom":"Stevige, warme sokken van merinowol. Ruiken niet snel en blijven lang mooi. Kies je kleur met de pijltjes of de fotootjes. Kies daarna je maat: de knop brengt je dan direct naar die maat bij Bartogi."}};</script>
-  <script src="assets/js/data.js?v=202611131324"></script>
+  <script src="assets/js/data.js?v=202611131619"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/topkeuze.js?v=202611131324" async></script>
-  <script src="assets/js/gedeeld.js?v=202611131324"></script>
-  <script src="assets/js/app.js?v=202611131324"></script>
+  <script src="assets/js/topkeuze.js?v=202611131619" async></script>
+  <script src="assets/js/gedeeld.js?v=202611131619"></script>
+  <script src="assets/js/app.js?v=202611131619"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

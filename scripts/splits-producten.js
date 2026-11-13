@@ -14,7 +14,9 @@ const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurd
   'fotos', 'herkomst'];
 /* Snelheid (8-11-2026): 'waarom' (1,1 MB) blijft in de lijst alleen voor producten die in een gids staan of favoriet zijn (die teksten staan op lijstpagina's);
    voor de rest gaat hij naar details (productpagina's hebben hun eigen details al in de HTML). */
-const GIDS_IDS = (() => { try { const s = fs.readFileSync(path.join(ROOT, 'assets/js/app.js'), 'utf8'); const a = s.indexOf('var GIDSEN = ['); const b = s.indexOf('\n  ];', a); return new Set([...s.slice(a, b).matchAll(/'([a-z0-9]+-[a-z0-9-]+)'/g)].map(m => m[1])); } catch (e) { return new Set(); } })();
+/* 13-11-2026 (grote keuring): de nieuwe gidsen (leeftijd, kerst, 10/15 euro) schrijven hun ids tussen dubbele aanhalingstekens; die werden niet herkend.
+   Daardoor miste 'waarom' bij 349 gidsproducten en laadde elke nieuwe gids het hele detailbestand (1,3 MB ingepakt). Nu beide soorten, en ook GIDS_EXTRA. */
+const GIDS_IDS = (() => { try { const s = fs.readFileSync(path.join(ROOT, 'assets/js/app.js'), 'utf8'); const a = s.indexOf('var GIDSEN = ['); const e = s.indexOf('var GIDS_EXTRA = {', a); const b = e !== -1 ? s.indexOf('\n  };', e) : s.indexOf('\n  ];', a); return new Set([...s.slice(a, b).matchAll(/['"]([a-z0-9]+-[a-z0-9-]+)['"]/g)].map(m => m[1])); } catch (e) { return new Set(); } })();
 /* Keurkamer-slot (2-11-2026): de oordelen van Marius uit keurkamer/oordelen.json gelden bij ELKE bouw.
    Wat hij weg heeft gedaan blijft weg (ook als een ronde het product opnieuw aanlevert), verplaatst blijft verplaatst,
    'niet hier' blijft weg uit dat extra vakje, toppers blijven bovenaan. Zie scripts/keurkamer/verwerk.py. */

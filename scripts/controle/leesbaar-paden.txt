@@ -13,7 +13,7 @@
 /gelegenheid/verjaardag/
 /c/cadeaus/sinterklaas/
 /c/cadeaus/kerst/
-/sinterklaas/rijmmachine/
+/sint-rijmmachine/
 /gids/
 /gids/kerstcadeau-voor-hem/
 /winkels/
@@ -24,7 +24,6 @@
 /c/christelijk/
 /collectie/kortingscodes/
 /collectie/aanbiedingen/
-/sint-rijmmachine/
 /info/
 /hoe-het-werkt/
 /lijst/
@@ -43,3 +42,6 @@
 /vonk/?voor=haar
 /vonk/?voor=haar&moment=verjaardag
 /vonk/?voor=haar&moment=verjaardag&budget=tot25
+/gids/kraamcadeau/
+/gids/sinterklaasgedicht-maken/
+/gids/cadeau-kind-4-jaar/
