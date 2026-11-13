@@ -366,8 +366,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
   /* SNEL (13-11-2026): per lijstpagina een klein productbestand (pak), elk nagekeken tegen de hele lijst. Zie scripts/maak-pakken.js.
-     Staat UIT (voorstel, wacht op GO van Marius): het kost 144 MB aan bestanden en 8 minuten extra per bouw. Aan: LK_PAKKEN=1 node scripts/maak-paginas.js.
+     Staat AAN sinds 13-11-2026 (GO Marius), voor de drukste soorten pagina's (zie DRUK in maak-pakken.js). Uit: LK_PAKKEN=0. Alle pagina's: LK_PAKKEN=alles.
      Zonder pakken ruimen we de map op, zodat er nooit oude pakken bij een nieuwe bouw blijven liggen. */
-  if (process.env.LK_PAKKEN === '1') { try { require('./maak-pakken.js'); } catch (e) { console.error('pakken niet gemaakt (de site werkt gewoon, alleen zonder pakken):', e.message); } }
+  if (process.env.LK_PAKKEN !== '0') { try { require('./maak-pakken.js'); } catch (e) { console.error('pakken niet gemaakt (de site werkt gewoon, alleen zonder pakken):', e.message); } }
   else fs.rmSync(path.join(ROOT, 'assets', 'pak'), { recursive: true, force: true });
 })().catch(e => { console.error(e); process.exit(1); });

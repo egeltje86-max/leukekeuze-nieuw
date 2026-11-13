@@ -1,0 +1,53 @@
+[
+ {
+  "pad": "/",
+  "lcp": 2976,
+  "lang": 314,
+  "cls": 0,
+  "laatsteLang": 5435,
+  "fcp": 1820,
+  "app": 2920,
+  "pak": 4644,
+  "lijst": 5473,
+  "start": 5473,
+  "klaar": 5477,
+  "load": 5823,
+  "kb": 1213,
+  "jskb": 536,
+  "js": "data.js:2752 app.js:5268 teksten.js:1807 http://gc.zgo.at/count.js:1563 gedeeld.js:1728 http://127.0.0.1:8772/assets/pak/home.js:4574 topkeuze.js:7234"
+ },
+ {
+  "pad": "/voor/tieners/",
+  "lcp": 1768,
+  "lang": 571,
+  "cls": 0,
+  "laatsteLang": 5175,
+  "fcp": 1768,
+  "app": 4321,
+  "lijst": 5222,
+  "pak": 5222,
+  "start": 5222,
+  "klaar": 5231,
+  "load": 5220,
+  "kb": 867,
+  "jskb": 463,
+  "js": "app.js:4620 data.js:2496 teksten.js:4226 gedeeld.js:4047 http://gc.zgo.at/count.js:1418 http://127.0.0.1:8772/assets/pak/voor--tieners.js:4699"
+ },
+ {
+  "pad": "/c/cadeaus/sinterklaas/",
+  "lcp": 3256,
+  "lang": 340,
+  "cls": 0,
+  "laatsteLang": 4499,
+  "fcp": 1708,
+  "pak": 3228,
+  "app": 4196,
+  "lijst": 4543,
+  "start": 4543,
+  "klaar": 4547,
+  "load": 4545,
+  "kb": 786,
+  "jskb": 343,
+  "js": "app.js:4289 data.js:2635 teksten.js:4108 gedeeld.js:3959 http://gc.zgo.at/count.js:1358 http://127.0.0.1:8772/assets/pak/c--cadeaus--sinterklaas.js:3200"
+ }
+]

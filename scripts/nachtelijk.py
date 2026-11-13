@@ -204,8 +204,25 @@ try:
     w = subprocess.run([sys.executable, '-I', os.path.join(HIER, 'keurkamer', 'wacht.py'), '--producten', os.path.join(NZ, 'producten-site.json'), '--uit', NZ],
                        capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=3600)
     log('nazorg-controle:', (w.stdout or w.stderr).strip().splitlines()[-1:] if (w.stdout or w.stderr) else '')
-    # 8-11-2026 (piloot): het rapport gaat mee in de repo (keurkamer/nazorg/), zodat de dagelijkse piloot in de cloud het kan toepassen zonder de laptop.
     NZR = os.path.join(REPO, 'keurkamer', 'nazorg'); os.makedirs(NZR, exist_ok=True)
+    # 13-11-2026 (grote keuring, GO Marius): eens per 6 dagen de gewone winkelpagina nakijken van wat in geen enkele feed staat
+    # (prijs, voorraad, bestaat de pagina nog). Nooit een partnerlink, nooit bol of Amazon. De uitkomst komt in het nachtrapport,
+    # zodat de piloot hem met de grenzen van nazorg.py overneemt. Elke 6 dagen, zodat de controledatum binnen de week blijft.
+    # Mag het nachtrapport nooit tegenhouden.
+    try:
+        WC = os.path.join(NZR, 'winkelcheck-laatste.json'); dagen = 999
+        if os.path.exists(WC):
+            try: dagen = (datetime.date.today() - datetime.date.fromisoformat(json.load(open(WC, encoding='utf-8')).get('datum', ''))).days
+            except Exception: dagen = 999
+        if dagen >= 6:
+            c = subprocess.run([sys.executable, '-I', os.path.join(HIER, 'keurkamer', 'winkelcheck.py'), '--producten', os.path.join(NZ, 'producten-site.json'),
+                                '--wacht', os.path.join(NZ, 'wacht-laatste.json'), '--rapport', WC, '--stand', os.path.join(NZ, 'winkelcheck-stand.json')],
+                               capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=2700)
+            log('winkelcheck:', (c.stdout or c.stderr).strip().splitlines()[-1:])
+            if os.path.exists(WC): git('add', 'keurkamer/nazorg/winkelcheck-laatste.json')
+    except Exception as e:
+        log('winkelcheck overgeslagen:', e)
+    # 8-11-2026 (piloot): het rapport gaat mee in de repo (keurkamer/nazorg/), zodat de dagelijkse piloot in de cloud het kan toepassen zonder de laptop.
     shutil.copyfile(os.path.join(NZ, 'wacht-laatste.json'), os.path.join(NZR, 'wacht-laatste.json'))
     git('add', 'keurkamer/nazorg/wacht-laatste.json')
 except Exception as e:

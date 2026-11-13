@@ -99,7 +99,7 @@ function splits() {
     if (JSON.stringify(l.moment) === '["kerst","sinterklaas","verjaardag"]') delete l.moment;
     /* 13-11-2026 (grote keuring, GO Marius): op de kaart in een lijst alleen een doorgestreepte prijs als de prijs vers is (hooguit 7 dagen oud,
        zelfde regel als prijsOud() in app.js). De productpagina toonde een oude korting al niet; nu de lijsten ook niet. Na een verse controle komt hij vanzelf terug. */
-    if (l.oudePrijs) { const dd = p.gecontroleerd || p.sinds, t = Date.parse(dd || ''); if (!dd || !isFinite(t) || Date.now() - t > 7 * 864e5) { delete l.oudePrijs; nVanOud++; } }
+    if (l.oudePrijs) { const dd = p.gecontroleerd || p.sinds, t = Date.parse(dd || ''); if (!dd || !isFinite(t) || Date.now() - t > 7 * 864e5) { d.vanOud = l.oudePrijs; delete l.oudePrijs; nVanOud++; } } /* vanOud (in de details): de van-prijs blijft bewaard voor de nazorg (effectief-site.js), de site toont hem niet */
     lean.push(l); det[p.id] = d;
   }
   console.log('korting niet in de lijst omdat de prijs ouder is dan 7 dagen: ' + nVanOud);

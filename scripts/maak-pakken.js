@@ -10,7 +10,9 @@ const fs = require('fs'), path = require('path'), http = require('http');
 let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_PAD || 'playwright')); }
 const ROOT = path.resolve(__dirname, '..');
-const MAX = 5200;             /* grotere lijsten (Verjaardag: bijna alles) leveren te weinig op */
+/* Grotere lijsten leveren te weinig op. 13-11-2026: standaard tot 2000 producten per pak (homepage 0,9 MB tegen 2,7 MB voor de hele lijst;
+   Voor haar heeft 3900 producten nodig en wint bijna niets). Zo zijn het 73 pakken en 33 MB in plaats van 106 en 88 MB. Met LK_PAKKEN=alles: tot 5200. */
+const MAX = process.env.LK_PAKKEN === 'alles' ? 5200 : 2000;
 const PAKMAP = path.join(ROOT, 'assets', 'pak');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.xml': 'application/xml', '.txt': 'text/plain' };
 const SJ = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
@@ -41,8 +43,13 @@ const naamVan = pad => (pad.replace(/^\/|\/$/g, '').replace(/\//g, '--') || 'hom
 (async () => {
   const t0 = Date.now();
   /* welke pagina's: alles uit de sitemap behalve productpagina's en pagina's die de hele lijst nodig hebben */
-  const paden = (fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').match(/<loc>[^<]+<\/loc>/g) || []).map(x => x.replace(/<\/?loc>/g, '').replace('https://leukekeuze.nl', ''))
+  let paden = (fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').match(/<loc>[^<]+<\/loc>/g) || []).map(x => x.replace(/<\/?loc>/g, '').replace('https://leukekeuze.nl', ''))
     .filter(p => !/^\/(p|vonk|zoek|favorieten|lijst|winkels|categorieen|sint-rijmmachine|info)\//.test(p));
+  /* 13-11-2026 (GO Marius, voorstel 5 van de keuring): alleen de drukste soorten pagina's krijgen een pak: de homepage, de Voor wie-pagina's met hun
+     onderwerpen, de cadeaulijsten (Sinterklaas, Kerst, onder een bedrag), de collecties en de gelegenheden. Alle 640 pagina's kost 144 MB en 8 minuten
+     per bouw, en de site is al groter dan 1 GB. Toch alles: LK_PAKKEN=alles. */
+  const DRUK = /^\/$|^\/voor\/[^/]+\/([^/]+\/)?$|^\/c\/cadeaus\/[^/]+\/$|^\/collectie\/[^/]+\/$|^\/gelegenheid\/[^/]+\/$/;
+  if (process.env.LK_PAKKEN !== 'alles') paden = paden.filter(p => DRUK.test(p));
   const srv = await server(); const basis = 'http://localhost:' + srv.address().port;
   const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
   /* Twee schermen: de site tekent op de telefoon iets anders dan op de computer (bijv. 4 of 8 keuzes in beeld). Het pak moet voor allebei kloppen. */
@@ -130,5 +137,5 @@ const naamVan = pad => (pad.replace(/^\/|\/$/g, '').replace(/\//g, '--') || 'hom
   console.log('  geen pak:', JSON.stringify(uit.redenen));
   console.log('  grootste:', uit.grootste.slice(0, 5).map(x => x[2] + ' ' + x[1] + ' producten ' + Math.round(x[0] / 1024) + ' KB').join(' ; '));
   fs.writeFileSync(path.join(ROOT, 'keurkamer', 'data', 'pakken-laatste.json'), JSON.stringify({ datum: new Date().toISOString().slice(0, 10), gemaakt: uit.gemaakt, paginas: paden.length, vraagtOnbekend: uit.mis, mb: Math.round(uit.bytes / 104857.6) / 10, redenen: uit.redenen, zonder: uit.zonder, grootste: uit.grootste.slice(0, 20) }, null, 1));
-  if (fouten.length) { console.error('pakken: fouten op de pagina:', fouten.slice(0, 5)); process.exitCode = 1; }
-})().catch(e => { console.error('pakken mislukt (de site werkt gewoon, alleen zonder pakken):', e.message); process.exitCode = 1; });
+  if (fouten.length) console.error('pakken: fouten op de pagina (de pakken zelf zijn per pagina nagekeken):', fouten.slice(0, 5));
+})().catch(e => { console.error('pakken mislukt (de site werkt gewoon, alleen zonder pakken):', e.message); });

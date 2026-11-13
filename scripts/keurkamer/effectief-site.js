@@ -13,7 +13,7 @@ const uit = {};
 for (const p of w.LK_PRODUCTEN) {
   if (p.status !== 'goedgekeurd') continue;
   const d = (w.LK_DETAILS || {})[p.id] || {};
-  uit[p.id] = { id: p.id, titel: p.titel, prijs: p.prijs, oudePrijs: p.oudePrijs || null, shop: p.shop || 'bol', url: d.url || '', winkelUrl: d.winkelUrl || '' };
+  uit[p.id] = { id: p.id, titel: p.titel, prijs: p.prijs, oudePrijs: p.oudePrijs || d.vanOud || null, /* 13-11-2026: vanOud = een van-prijs die de lijst nu niet toont omdat de prijs ouder is dan 7 dagen; de nazorg moet hem wel kennen, anders raakt de korting kwijt bij een nieuwe prijs */ shop: p.shop || 'bol', url: d.url || '', winkelUrl: d.winkelUrl || '' };
 }
 const bestand = process.argv[2] || path.join(ROOT, 'keurkamer/data/producten-site.json');
 fs.mkdirSync(path.dirname(bestand), { recursive: true });
