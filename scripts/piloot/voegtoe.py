@@ -1,9 +1,9 @@
 """Piloot: gekozen kandidaten op de site zetten (producten.js + foto's + correcties.json).
 Gebruik: python3 scripts/piloot/voegtoe.py <kandidaten.json> <keuze.json> <fotomap> [--blok "naam van dit blok"]
 keuze.json = { "<i>": {"titel": "...", "vak": "afd/groep/vak", "ookIn": ["cadeaus/kerst"], "voor": ["haar"], "moment": ["kerst","verjaardag"], "waarom": "..."} , ... }
-Strenge poort: partnercode in de link, vak bestaat, prijs > 0, foto aanwezig, id nog niet op de site, titel niet bijna gelijk aan een bestaand product.
+Strenge poort: partnercode in de link, de link heeft een adres bij de winkel, vak bestaat, prijs > 0, foto aanwezig, id nog niet op de site, titel niet bijna gelijk aan een bestaand product.
 Wat niet door de poort komt wordt overgeslagen en gemeld (nooit stilletjes toegevoegd)."""
-import json, hashlib, re, sys, os, subprocess, datetime
+import json, hashlib, re, sys, os, subprocess, datetime, urllib.parse
 from PIL import Image
 HIER = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HIER))
 def arg(naam, standaard=None):
@@ -19,6 +19,15 @@ NAAM = {'Myka': 'MYKA', '999 Games': '999Games', 'Yourdecoration': 'YourDecorati
 PRE.update({'Decantalo': 'dc', 'Wijny': 'wny', 'Butchery.nl': 'butchery'}); NAAM.update({'Butchery.nl': 'Butchery'})
 # 13-11-2026 (ERBIJ-lijst gelegenheden): voorvoegsels voor winkels die er nog niet of maar half stonden
 PRE.update({'Looking Good Today': 'lgt', 'Westwing': 'ww', 'Pillowbuddies': 'pillow', 'eu.fragrance.com': 'eufr', 'invulboekjes.nl': 'invul'})
+def DOEL_LEEG(l):
+    """13-11-2026 (grote keuring): een partnerlink zonder adres bij de winkel (r=https://?channable=... in de feed van Massamarkt).
+    De winkelknop komt dan nergens uit. Waar = de link noemt wel een doel, maar dat doel is leeg."""
+    q = urllib.parse.parse_qs(urllib.parse.urlsplit(l).query, keep_blank_values=True)
+    for k in ('r', 'u', 'ued', 'murl', 'url'):
+        d = (q.get(k) or [''])[0]
+        if re.match(r'https?://', d): return not re.match(r'https?://[^/?#]+\.[a-z]{2,}', d, re.I)
+    if 'dl' in q: return not q['dl'][0].strip('/')
+    return False
 def DRANK(a):
     if a[0] != 'eten-drinken': return a[0], a[1]
     g, v = a[1], a[2]
@@ -38,6 +47,7 @@ for i, keus in KEUZE.items():
     x = K.get(str(i))
     if not x: over.append((i, 'kandidaat bestaat niet')); continue
     if not CODE.search(x['l']): over.append((i, 'geen partnercode')); continue
+    if DOEL_LEEG(x['l']): over.append((i, 'de link heeft geen adres bij de winkel (winkelknop zou nergens uitkomen)')); continue
     if keus['vak'] not in vak_ok: over.append((i, 'vak bestaat niet: ' + keus['vak'])); continue
     if not (float(x['p']) > 0): over.append((i, 'geen prijs')); continue
     fp = os.path.join(FOTOS, '%03d.bron' % int(i))
