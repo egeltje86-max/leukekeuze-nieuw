@@ -280,9 +280,9 @@
   /* 10-11-2026 (Marius: 'een pensioencadeau op Voor hem, dit kan niet'): cadeaus met een tekst voor één soort persoon of moment (p.smal, zie scripts/boom/paginaregels.json).
      [0] = bij welke Voor wie-personen ze mogen staan (null = bij allemaal), [1] = op welke pagina's ze gewoon meedoen. Past de pagina niet, dan zakken ze naar onderen. */
   var SMAL_PAG = {
-    pensioen: [/collega|opa-oma/, /pensioen|afscheid|opa-oma/], grootouder: [/opa-oma|baby/, /opa-oma|geboorte|baby/], zwanger: [/baby/, /babyshower|zwanger/],
+    pensioen: [/collega|opa-oma/, /pensioen|afscheid|opa-oma/], grootouder: [/opa-oma|baby/, /opa-oma|geboorte|baby|bedank/], zwanger: [/baby/, /babyshower|zwanger/],
     juf: [/collega/, /juf|collega|bedank/], leeftijd: [/opa-oma/, /verjaardag|opa-oma/], collega: [/collega/, /collega|bedank|afscheid/], trouw: [/geen/, /jubileum|bruiloft|trouw/],
-    ouder: [null, /moederdag|vaderdag|baby|geboorte|kraam|persoonlijk/],
+    ouder: [null, /moederdag|vaderdag|baby|geboorte|kraam|persoonlijk|bedank/], /* 13-11-2026: ook een bedankje voor mama of papa op Bedankt */
     /* 12-11-2026: snoepdoosjes met 'Het spijt me' op de wikkel (Droptelegram) staan alleen in hun eigen vakje en bij Chocolade & snoep. */
     sorry: [/geen/, /snoep-met-een-boodschap|chocolade-snoep/],
     /* 12-11-2026: doosjes met een tekst voor één moment (beterschap, gefeliciteerd, geslaagd, een kus) alleen op de pagina van dat moment. */

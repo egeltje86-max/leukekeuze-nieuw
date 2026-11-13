@@ -965,9 +965,9 @@ window.LK_GELEGENHEDEN = [
     tekst: 'Iemand gaat verhuizen of heeft een nieuw huis: iets moois voor in huis, een plant of iets om te proosten.',
     vakken: ['tag:housewarming', 'wonen/woondecoratie', 'wonen/kaarsen-geur', 'wonen/verlichting', 'wonen/woontextiel', 'wonen/tafelen', 'eten-drinken/bubbels', 'eten-drinken/cadeaupakketten'], maxPrijs: 75 /* 31-10-2026 strenger */ },
   { slug: 'sinterklaas', seizoen: ['10-15', '12-05'], naam: 'Sinterklaas', naar: '/c/cadeaus/sinterklaas', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp' },
-  { slug: 'bedankt', uit: /kerst|sinterklaas|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kilo|silo|\d{2,3} stuks|mix \(/i, naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
+  { slug: 'bedankt', uit: /kerst|sinterklaas|chocoladeletter|advent|\bpiet\b|pakjesavond|halloween|pasen|paas|kilo|silo|\d{2,3} stuks|mix \(/i, naam: 'Bedankt', beeld: 'images/sub/sub-eten-drinken-pakketten.webp', seoTitel: 'Bedankje – kleine cadeaus om dankjewel te zeggen',
     tekst: 'Een klein gebaar dat groot aankomt: iets lekkers, een kaars, een plantje of een goede fles.', maxPrijs: 25,
-    vakken: ['tag:juf-meester', 'eten-drinken/chocolade-snoep', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'beauty-verzorging/bad-douche'] /* 31-10-2026 strenger */ },
+    vakken: ['tag:bedankt', 'tag:juf-meester', 'eten-drinken/chocolade-snoep', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'beauty-verzorging/bad-douche'] /* 31-10-2026 strenger; 13-11-2026 tag:bedankt erbij (bedankt-mokken, kaarsje, snoepblikje) */ },
   { slug: 'juf-meester', voorWie: ['haar', 'hem'], /* stap 4: alleen juf (haar) of meester (hem) */ seizoen: ['06-10', '07-20'], uit: LK_GEEN_FEEST, naam: 'Juf & meester', beeld: 'images/sub/sub-boeken-media-agendas.webp', seoTitel: 'Cadeau voor de juf of meester – bedankje einde schooljaar',
     tekst: 'Dankjewel zeggen aan de juf of meester: aan het einde van het schooljaar of zomaar.', maxPrijs: 25,
     vakken: ['tag:juf-meester', 'eten-drinken/chocolade-snoep', 'wonen/kaarsen-geur', 'eten-drinken/cadeaupakketten', 'hobby/papier-planners', 'beauty-verzorging/bad-douche'] }, /* 31-10-2026: alleen kleine bedankjes (zie indeling.js) */

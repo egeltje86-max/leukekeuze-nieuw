@@ -17,6 +17,8 @@ PRE = {'Ditverzinjeniet': 'dvzn', 'Cadeau.nl': 'cadeau', 'Grote Kadoshop': 'grot
 NAAM = {'Myka': 'MYKA', '999 Games': '999Games', 'Yourdecoration': 'YourDecoration', 'Looking Good': 'Looking Good Today'}
 # zelfde voorvoegsel en winkelnaam als de producten die er al staan (11-11-2026)
 PRE.update({'Decantalo': 'dc', 'Wijny': 'wny', 'Butchery.nl': 'butchery'}); NAAM.update({'Butchery.nl': 'Butchery'})
+# 13-11-2026 (ERBIJ-lijst gelegenheden): voorvoegsels voor winkels die er nog niet of maar half stonden
+PRE.update({'Looking Good Today': 'lgt', 'Westwing': 'ww', 'Pillowbuddies': 'pillow', 'eu.fragrance.com': 'eufr', 'invulboekjes.nl': 'invul'})
 def DRANK(a):
     if a[0] != 'eten-drinken': return a[0], a[1]
     g, v = a[1], a[2]

@@ -81,6 +81,9 @@ function pas(alle, root) {
         if (pn.unisexMode && o.afd === 'mode-sieraden' && pn.unisexMode.indexOf(o.groep) !== -1 && (p.voor || []).indexOf('haar') !== -1) w = true;
         if (w && !grapKind && !(pn.behalve && new RegExp(pn.behalve, 'i').test(p.titel || ''))) weg = true;
       }
+      /* 13-11-2026: met de hand door Marius voor deze persoon gekozen (ERBIJ-lijst per tak), dan mag het toch */
+      const mh = (REGELS.met_de_hand || {})[pe.slug];
+      if (weg && Array.isArray(mh) && mh.indexOf(p.id) !== -1) weg = false;
       if (weg) (nietBij = nietBij || []).push(pe.slug);
     }
     if (niet) { p.nietOp = niet; tel.nietOp += niet.length; } else delete p.nietOp;

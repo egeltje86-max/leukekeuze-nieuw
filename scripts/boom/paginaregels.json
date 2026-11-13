@@ -584,7 +584,7 @@
   }
  },
  "smal": {
-  "_uitleg": "Cadeaus met een tekst voor één soort persoon of moment. Ze krijgen p.smal = soort. Op een Voor wie-pagina staan ze alleen als 'personen' past; 'ouder' blijft staan maar zakt naar onderen. Op andere pagina's zakken ze naar onderen als 'paginas' niet past (app.js: SMAL_PAG).",
+  "_uitleg": "Cadeaus met een tekst voor één soort persoon of moment. Ze krijgen p.smal = soort. Op een Voor wie-pagina staan ze alleen als 'personen' past; 'ouder' blijft staan maar zakt naar onderen. Op andere pagina's zakken ze naar onderen als 'paginas' niet past (app.js: SMAL_PAG). 13-11-2026: een bedankje voor mama, papa of opa en oma (bedankt-mok) mag ook op Bedankt.",
   "pensioen": {
    "woorden": "pensioen|\\bretired\\b|retirement|gepensioneerd",
    "personen": "collega|opa-oma",
@@ -594,7 +594,7 @@
    "woorden": "\\bopa'?s?\\b|\\boma'?s?\\b|grandpa|grandma|grandad|kleinkind|grootouder",
    "behalve": "granny square|opa big|waslijn|kieteltenen|oma koekie|opa jan",
    "personen": "opa-oma|baby",
-   "paginas": "opa-oma|geboorte|baby"
+   "paginas": "opa-oma|geboorte|baby|bedank"
   },
   "zwanger": {
    "woorden": "zwanger|babyshower|gender reveal|aanstaande (moeder|mama|papa|vader)|mama loading|mommy to be|promoted to big|going to be a big|broers en zussen babyboek|9 maanden",
@@ -625,7 +625,7 @@
    "woorden": "\\b(papa|pappa|daddy|dad|vaderdag|mama|mamma|mommy|mom|mam|pap|moederdag)\\b|\\b(beste|liefste|trotse|super|nieuwe) (vader|moeder)s?\\b",
    "behalve": "don papa|papa niet wakker|mama surprise|mama & baby|mamma mia|angry mama|opa's|kieteltenen",
    "zacht": 1,
-   "paginas": "moederdag|vaderdag|baby|geboorte|kraam|persoonlijk"
+   "paginas": "moederdag|vaderdag|baby|geboorte|kraam|persoonlijk|bedank"
   },
   "sorry": {
    "woorden": "wikkel 'het spijt me'",
@@ -760,5 +760,33 @@
     "wonen/kerstdecoratie"
    ]
   }
+ },
+ "met_de_hand": {
+  "_uitleg": "13-11-2026: cadeaus die Marius zelf voor deze persoon koos (ERBIJ-lijst gelegenheden, blokken per tak). Ze vallen buiten de veilige groepen van die persoon (bijv. mokken bij tieners, een kussen bij hem), maar zijn met de hand gekozen en nagelezen, dus ze mogen toch op diens pagina's. Alleen ids erbij zetten die Marius zelf voor die persoon koos.",
+  "tieners": [
+   "dvzn-4eb73fa3d5",
+   "dvzn-64bc062540",
+   "hema-3a25c3f36e",
+   "gadget-e762958c34",
+   "cg-fb32190cbf",
+   "anim-c5f0e77073",
+   "kado-fe5fa89ada"
+  ],
+  "kinderen": [
+   "dgsw-6b47c22e1d",
+   "dgsw-6cf238f58c",
+   "dvzn-2f0507089c"
+  ],
+  "hem": [
+   "pillow-bd4ca379da",
+   "pillow-30d29db7da",
+   "pillow-2ed16b017a",
+   "smartp-ee8a217092",
+   "grotek-15859a0b6b"
+  ],
+  "haar": [
+   "smartp-ee8a217092",
+   "country-21591490cc"
+  ]
  }
 }
