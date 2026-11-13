@@ -3966,7 +3966,7 @@
           ids: ['bol-9200000132162995', 'bol-9300000035078697', 'bol-1004004013389248', 'bol-9300000181433977'] }
       ],
       slot: 'Alle schoencadeautjes op een rij, met foto en prijs: <a href="/collectie/schoencadeautjes">bekijk de hele lijst</a>. Meer kleine cadeautjes vind je bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a> en <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond staat bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
-    { slug: 'sinterklaascadeau-man', beeld: 'bol-9300000238510035', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-hem', 'cadeaus/sint-onder-15', 'cadeaus/grappig'],
+    { slug: 'sinterklaascadeau-man', beeld: 'dvzn-c15dcffb40', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-hem', 'cadeaus/sint-onder-15', 'cadeaus/grappig'],
       titel: 'Sinterklaascadeau voor een man of vader: 20 ideeën die hij écht gebruikt', kort: 'Voor je vriend, man, vader of broer. Van lootjes tot iets wat hij echt gebruikt.',
       intro: 'Een sinterklaascadeau voor een man is vaak lastig, want mannen zeggen meestal dat ze niets nodig hebben. Toch zijn ze blij met iets grappigs voor pakjesavond, iets lekkers voor zichzelf of een handig ding dat ze elke dag gebruiken. Ik zette 20 ideeën op een rij, van klein tot iets groter, met ook vier ideeën speciaal voor je vader. Bijna alles kost minder dan 30 euro, dus het past ook bij lootjes.',
       delen: [
@@ -3975,7 +3975,7 @@
         { kop: 'Grappig voor pakjesavond', tekst: 'Cadeaus waar iedereen om moet lachen. Leuk in een surprise.',
           ids: ['superz-f16bbf44cc', 'cg-useless-box', 'bol-9300000187227306', 'cg-chocolade-game-controller'] },
         { kop: 'Handig voor elke dag (€20 tot €27)', tekst: 'Voor de man die van praktisch houdt: koken, klussen of buiten zijn.',
-          ids: ['bol-9200000002756942', 'bol-9300000238510035', 'cg-b320632dae', 'bol-9300000405787225'] }, /* 13-11-2026: muts met speakers in plaats van de handschoenen (weg) */
+          ids: ['bol-9200000002756942', 'cl-ll-p3', 'cg-b320632dae', 'bol-9300000405787225'] }, /* 13-11 avond: zaklamp in plaats van de hoofdlamp (weg) */ /* 13-11-2026: muts met speakers in plaats van de handschoenen (weg) */
         { kop: 'Spellen voor na het uitpakken', tekst: 'Zijn de pakjes open? Dan is een spel een mooie manier om de avond af te sluiten.',
           ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'kadov-23d3797d23'] },
         { kop: 'Voor je vader (€15 tot €35)', tekst: 'Vaders hebben vaak al alles. Kies dan iets voor zijn vaste gewoontes: zijn koffie, zijn biertje, zijn verzorging of iets lekkers.',
@@ -4476,13 +4476,13 @@
         { kop: 'Noodradio: de belangrijkste aankoop', tekst: 'Valt de stroom uit, dan doen internet en het mobiele netwerk het vaak ook niet lang meer. Via de radio hoor je dan wat je moet doen. Kies een noodradio die je kunt opwinden of opladen met een zonnepaneel. Veel modellen hebben ook een zaklamp en kunnen je telefoon een beetje opladen.',
           ids: ['bol-9300000184877600', 'prepz-46fa0db271', 'hema-ec5f8ec205', 'prepz-f826f694ec'] },
         { kop: 'Water en eten voor 3 dagen', tekst: 'Water is het allerbelangrijkst. Bewaar flessen water of lang houdbaar drinkwater, en zorg voor een filter voor als het water uit de kraan niet meer te vertrouwen is. Noodrantsoen is klein, licht en jarenlang houdbaar.',
-          ids: ['bol-9300000160167673', 'bushpa-9b7ba2d30d'] },
+          ids: ['cl-nalgene', 'bushpa-9b7ba2d30d'] }, /* 13-11 avond: de LifeStraw-fles is weg (WEG-lijst 12) */
         { kop: 'Licht als het donker wordt', tekst: 'Een hoofdlamp is handiger dan een zaklamp: je hebt je handen vrij. Een lamp die je met zonlicht of een slinger kunt opladen, heeft geen batterijen nodig.',
-          ids: ['bol-9300000238510035', 'cl-ll-hf4r', 'cl-kampeerlantaarn', 'bol-9300000234717251'] },
+          ids: ['cl-ll-hf4r', 'cl-flextail-helio', 'cl-kampeerlantaarn', 'bol-9300000234717251'] },
         { kop: 'EHBO en warmte', tekst: 'Een goede EHBO-set hoort in elk huis, ook zonder noodsituatie. Een nooddeken weegt bijna niets en houdt je warm als de verwarming uitvalt.',
           ids: ['bol-9300000340502828', 'dvzn-6a0d467ccc'] },
         { kop: 'Kant-en-klaar noodpakket kopen of zelf samenstellen?', tekst: 'Een kant-en-klaar pakket is makkelijk: je hebt meteen een tas met de basis. Maar let op. Volgens de Consumentenbond en Kassa missen veel pakketten juist water, hygiënespullen en contant geld, en zitten er soms gadgets in die je nooit gebruikt. Sommige pakketten kosten honderden euro’s. Mijn advies: koop een eenvoudig basispakket of stel het zelf samen, en geef je geld vooral uit aan een goede noodradio, een waterfilter en een fijne hoofdlamp.',
-          ids: ['bol-9300000241257631', 'bol-9300000256294004', 'dvzn-456925', 'bol-9300000258718720'] },
+          ids: ['bol-9300000235206215', 'bol-9300000256294004', 'dvzn-456925', 'bol-9300000258718720'] },
         { kop: 'Zo houd je je noodpakket op orde', tekst: 'Een noodpakket dat al jaren in de kast staat, werkt niet altijd meer. Doe dit twee keer per jaar, bijvoorbeeld als de klok verzet wordt:',
           stappen: [
             'Kijk naar de datum op het eten, het water en de medicijnen. Vervang wat bijna over de datum is.',
@@ -4776,7 +4776,7 @@
         { kop: 'Voor zijn hobby en ontspanning', tekst: 'Een mooi schaakbord, een dartset, een spel voor de familie of warme pantoffels voor de avond.',
           ids: ['bol-9300000271848241', 'bol-9300000163354878', 'cl-7wonders', 'bt-51963303362899'] },
         { kop: 'Om te dragen en te gebruiken', tekst: 'Een stoer horloge, een klassieke geur, een goede koptelefoon of een hoofdlamp voor buiten.',
-          ids: ['bol-9300000176286400', 'cl-le-male', 'tf-106136001', 'bol-9300000238510035'] }
+          ids: ['bol-9300000176286400', 'cl-le-male', 'tf-106136001', 'cl-flextail-helio'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gelegenheid/vaderdag">Vaderdag</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor een man</a>.' },
     { slug: 'cadeau-voor-oma', beeld: 'cl-17724', vakken: ['cadeaus/opa-oma', 'wonen/kussens-plaids'],
@@ -5071,7 +5071,7 @@
       ['Wat geef je een tiener die alles al heeft?', 'Iets voor hun eigen kamer of hun hobby: een lamp, oordopjes van een bekend merk of iets voor het gamen. Of iets van een film of serie waar ze nu fan van zijn.'],
       ['Is geld geven aan een tiener een goed idee?', 'Veel tieners vinden geld prima, maar het voelt minder persoonlijk. Een tussenweg: een klein cadeau dat bij ze past, met wat geld erbij voor iets groters.'],
       ['Wat kost een goed kerstcadeau voor een tiener?', 'In deze gids lopen de cadeaus van 15 tot 79 euro. Rond de 25 tot 50 euro vind je al echte merkspullen, zoals oordopjes of een controller.']] },
-    'noodpakket-checklist': { top: [['Begin hiermee', 'bol-9300000184877600'], ['Schoon water', 'bol-9300000160167673'], ['Licht', 'bol-9300000238510035']], faq: [
+    'noodpakket-checklist': { top: [['Begin hiermee', 'bol-9300000184877600'], ['Water bewaren', 'cl-nalgene'], ['Licht', 'cl-ll-hf4r']], faq: [
       ['Wat moet er minimaal in een noodpakket?', 'Water (3 liter per persoon per dag), eten dat je zonder koken kunt eten, een radio op batterijen of een opwindradio, een zaklamp, een EHBO-set, contant geld en een volle powerbank. Dat is de basis voor 72 uur.'],
       ['Hoeveel water heb je nodig voor 3 dagen?', 'Reken op 3 liter per persoon per dag. Voor een gezin van vier is dat 36 liter voor drie dagen. Vergeet je huisdieren niet.'],
       ['Krijg je een gratis noodpakket van de overheid?', 'Nee. Berichten over een gratis noodpakket waarvoor je moet klikken of betalen zijn bijna altijd oplichting. Klik niet op de link.']] },
