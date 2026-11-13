@@ -27,17 +27,17 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611130018" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611130018" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611130018">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611130018">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611130549" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611130549" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611130549">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611130549">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
        binnen waren (op een trage telefoon na bijna 4 seconden); nu meteen, met lage voorrang zodat de foto's bovenaan eerst komen. -->
   <!-- Snelheid (8-11-2026, GO Marius): op een productpagina (waar Google de meeste bezoekers heen stuurt) staat alles al in de HTML.
        Daar laadt de grote productlijst pas als je iets doet (tikken, scrollen) of 3 seconden na het laden. Andere pagina's laden hem meteen. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611130018"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611130549"; function laad() { if (laad.k) return; laad.k = 1; var e = document.createElement('script'); e.src = s; e.async = true; e.setAttribute('fetchpriority', 'low'); document.head.appendChild(e); }
     if (/^\/p\//.test(location.pathname)) { ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) { addEventListener(t, laad, { once: true, passive: true }); }); addEventListener('load', function () { setTimeout(laad, 3000); }); } else laad(); })();</script>
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
@@ -165,11 +165,11 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"tbl-tb0a5pyd214xl1":{"url":"https://rkn3.net/c/?si=15048&li=1654052&wi=433339&pid=51017d70f080065ba85b0b4cfa8aa7f5&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D2080114.427475843932061928585567%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.timberland.com%252Fde-de%252Fp%252Fherren-10029%252Fklassischer-bartley-wendegurtel-fur-herren-in-braun-schwarz-TB0A5PYD214&ws=","winkelUrl":"https://www.timberland.com/de-de/p/herren-10029/klassischer-bartley-wendegurtel-fur-herren-in-braun-schwarz-TB0A5PYD214","letOp":"De winkel opent in het Duits. Kies bovenaan Nederland als land als dat kan.","verzendNoot":"Je bestelt in de Duitse webshop van Timberland. De verzendkosten zie je bij het afrekenen.","gecontroleerd":"2026-10-22","wil":70,"waarom":"Draai deze leren riem van Timberland om en je kiest tussen bruin of zwart. Twee riemen in één, handig bij elke outfit."}};</script>
-  <script src="assets/js/data.js?v=202611130018"></script>
+  <script src="assets/js/data.js?v=202611130549"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/topkeuze.js?v=202611130018" async></script>
-  <script src="assets/js/gedeeld.js?v=202611130018"></script>
-  <script src="assets/js/app.js?v=202611130018"></script>
+  <script src="assets/js/topkeuze.js?v=202611130549" async></script>
+  <script src="assets/js/gedeeld.js?v=202611130549"></script>
+  <script src="assets/js/app.js?v=202611130549"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
