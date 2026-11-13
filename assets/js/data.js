@@ -89,8 +89,9 @@ window.LK_INSTELLINGEN = {
   },
   /* Stap 2 indeling: het blok 'Persoonlijk maakt bijzonder' (4 producten uit de collectie Persoonlijke cadeaus; ids mogen hier vast gezet worden). */
   persoonlijk: { kicker: 'Persoonlijk maakt bijzonder', titel: 'Een cadeau speciaal voor iemand', tekst: 'Met naam, gravure of eigen foto.', knop: 'Alle persoonlijke cadeaus', naar: '/collectie/persoonlijke-cadeaus',
-    /* Gekozen door Marius (6-11-2026, kieskaart). */
-    ids: ['bol-9300000426946863', 'bol-9300000156021043', 'bol-9300000136627314', 'myka-11001203989'] },
+    /* 13-11-2026 (grote keuring, GO Marius): de eerste vier van de handgekozen top van Met naam of foto, zonder sieraden en zonder bol
+       (was: drie van bol en een ketting van € 105, gekozen op 6-11). Sterrenhemel-poster, mok met geboortebloem, fotopuzzel, deurmat met huisdieren. */
+    ids: ['ptm-9', 'cg-pers-monthflower-mug', 'smartp-fe122a4434', 'cg-pers-doormatpets-doormat'] },
   /* Stap 2 indeling: de gelegenheden als tekstknopjes onder het persoonlijke blok. */
   gelegenheidKnopjes: [['Verjaardag', '/gelegenheid/verjaardag'], ['Trouwen & jubileum', '/gelegenheid/jubileum'], ['Geboorte', '/voor/baby'], ['Liefde', '/c/valentijn'], ['Housewarming', '/gelegenheid/housewarming'], ['Bedankt', '/gelegenheid/bedankt'], ['Brievenbus', '/collectie/brievenbuscadeaus']],
   /* Eigen producten: een vaste plek bovenaan de homepage (onder de seizoensblokken). */

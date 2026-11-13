@@ -71,6 +71,7 @@ function splits() {
   const ETALAGE_IDS = new Set();
   try { const pk = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, 'top/picks.json'), 'utf8')); Object.keys(pk).forEach(k => { if (Array.isArray(pk[k])) pk[k].forEach(i => ETALAGE_IDS.add(i)); }); } catch (e) {}
   const eersteZin = t => { const m = String(t).match(/^[^.!?]{10,}[.!?]/); let z = (m ? m[0] : String(t)).trim(); if (z.length > 100) z = z.slice(0, 98).replace(/\s+\S*$/, '') + '…'; return z; };
+  let nVanOud = 0;
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
@@ -96,8 +97,12 @@ function splits() {
     if (Array.isArray(l.ookIn) && !l.ookIn.length) delete l.ookIn;
     if (l.shop === 'bol') delete l.shop;
     if (JSON.stringify(l.moment) === '["kerst","sinterklaas","verjaardag"]') delete l.moment;
+    /* 13-11-2026 (grote keuring, GO Marius): op de kaart in een lijst alleen een doorgestreepte prijs als de prijs vers is (hooguit 7 dagen oud,
+       zelfde regel als prijsOud() in app.js). De productpagina toonde een oude korting al niet; nu de lijsten ook niet. Na een verse controle komt hij vanzelf terug. */
+    if (l.oudePrijs) { const dd = p.gecontroleerd || p.sinds, t = Date.parse(dd || ''); if (!dd || !isFinite(t) || Date.now() - t > 7 * 864e5) { delete l.oudePrijs; nVanOud++; } }
     lean.push(l); det[p.id] = d;
   }
+  console.log('korting niet in de lijst omdat de prijs ouder is dan 7 dagen: ' + nVanOud);
   /* Snelheid (31-10-2026): JSON.parse van een tekst is in browsers een stuk sneller dan het lezen van een JavaScript-object van 2,5 MB.
      De tekst staat tussen enkele quotes; alleen \ en ' hoeven dan ontsnapt te worden. */
   /* Lange woorden netjes afbreken op de telefoon (11-11-2026): alleen de woorden die nu in een titel staan gaan mee.

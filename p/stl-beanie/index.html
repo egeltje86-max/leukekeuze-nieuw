@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611132046" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611132046" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611132046">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611132046">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611132117" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611132117" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611132117">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611132117">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611132046", t = "assets/js/topkeuze.js?v=202611132046";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611132117", t = "assets/js/topkeuze.js?v=202611132117";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -205,10 +205,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"stl-beanie":{"url":"https://fr135.net/c/?si=15224&li=1660597&wi=433339&pid=9101dc5e1682dfe9a83438365c7dc561&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D782228.40455729469461%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.stellamccartney.com%252Fde%252Fde%252Fadidas%252Faccessoires%252Fbeanie-mit-logo-9413249999991000U.html%253Ftp%253D165040%2526amp%253Butm_campaign%253Dlinkshare_de&ws=","winkelUrl":"https://www.stellamccartney.com/de/de/adidas/accessoires/beanie-mit-logo-9413249999991000U.html","subVast":true,"letOp":"De winkel opent in het Duits. Kies bovenaan Nederland als land als dat kan.","gecontroleerd":"2026-11-13","varianten":[{"kleur":"Zwart","beeld":"images/producten/stl-306be09ec1","url":"https://fr135.net/c/?si=15224&li=1660597&wi=433339&pid=9101dc5e1682dfe9a83438365c7dc561&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D782228.40455729469461%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.stellamccartney.com%252Fde%252Fde%252Fadidas%252Faccessoires%252Fbeanie-mit-logo-9413249999991000U.html%253Ftp%253D165040%2526amp%253Butm_campaign%253Dlinkshare_de&ws=","winkelUrl":"https://www.stellamccartney.com/de/de/adidas/accessoires/beanie-mit-logo-9413249999991000U.html","prijs":55},{"kleur":"Bruin","beeld":"images/producten/stl-110bf2a20b","url":"https://fr135.net/c/?si=15224&li=1660597&wi=433339&pid=78eefbb7280d0d29f9d0e3bc8abaa1b0&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D782228.404552868176551%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.stellamccartney.com%252Fde%252Fde%252Fadidas%252Faccessoires%252Fbeanie-mit-logo-9414409999992000U.html%253Ftp%253D165040%2526amp%253Butm_campaign%253Dlinkshare_de&ws=","winkelUrl":"https://www.stellamccartney.com/de/de/adidas/accessoires/beanie-mit-logo-9414409999992000U.html","prijs":55},{"kleur":"Beige","beeld":"images/producten/stl-1aa4ba241d","url":"https://fr135.net/c/?si=15224&li=1660597&wi=433339&pid=9381c9f6d65550a0797a532a4f7482f9&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D782228.404552637096072%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.stellamccartney.com%252Fde%252Fde%252Fadidas%252Faccessoires%252Fbeanie-mit-logo-9414309999992505U.html%253Ftp%253D165040%2526amp%253Butm_campaign%253Dlinkshare_de&ws=","winkelUrl":"https://www.stellamccartney.com/de/de/adidas/accessoires/beanie-mit-logo-9414309999992505U.html","prijs":55},{"kleur":"Grijsblauw","beeld":"images/producten/stl-71dab0a7d0","url":"https://fr135.net/c/?si=15224&li=1660597&wi=433339&pid=d847475ea61ef445913c91222a0bac8e&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D782228.404552032947151%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.stellamccartney.com%252Fde%252Fde%252Fadidas%252Faccessoires%252Fbeanie-mit-logo-9415329999991202U.html%253Ftp%253D165040%2526amp%253Butm_campaign%253Dlinkshare_de&ws=","winkelUrl":"https://www.stellamccartney.com/de/de/adidas/accessoires/beanie-mit-logo-9415329999991202U.html","prijs":55}],"wil":75,"waarom":"Een warme muts met het logo van Stella McCartney. Kies zwart, bruin, beige of grijsblauw."}};</script>
-  <script src="assets/js/data.js?v=202611132046"></script>
+  <script src="assets/js/data.js?v=202611132117"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611132046"></script>
-  <script src="assets/js/app.js?v=202611132046"></script>
+  <script src="assets/js/gedeeld.js?v=202611132117"></script>
+  <script src="assets/js/app.js?v=202611132117"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
