@@ -2335,6 +2335,7 @@
     wine: 'wijn', beer: 'bier', chocolate: 'chocola|chocolade', coffee: 'koffie', cookbook: 'kookboek', apron: 'schort', phone: 'telefoon', charger: 'oplader', kitchen: 'keuken', garden: 'tuin', dog: 'hond', cat: 'kat|poes',
     ebike: 'ebike|elektrische fiets', fatbike: 'fatbike|elektrische fiets', estep: 'estep|elektrische step', escooter: 'escooter|elektrische step', kpop: 'kpop|k pop', zaklantaarn: 'zaklamp|zaklantaarn|lantaarn', pingpong: 'tafeltennis|ping pong|pingpong', barbecue: 'barbecue|bbq', barbeque: 'bbq|barbecue', bbq: 'bbq|barbecue',
     makeup: 'make up|makeup|lipgloss|mascara|oogschaduw|blush|lippenstift', pepernoten: 'pepernoten|kruidnoten|strooigoed', pepernoot: 'pepernoten|kruidnoten|strooigoed', kruidnoten: 'kruidnoten|pepernoten|strooigoed', ballonvaart: 'ballonvaart|ballonvlucht|luchtballon', cadeaubon: 'cadeaubon|cadeaukaart|giftcard|tegoedbon', cadeaukaart: 'cadeaukaart|cadeaubon|giftcard',
+    scheikunde: 'scheikunde|chemie|experiment', scheikundedoos: 'scheikunde|chemie|experiment', chemie: 'chemie|scheikunde', goochelen: 'goochel', goochel: 'goochel', goocheldoos: 'goochel', goochelset: 'goochel', goocheltruc: 'goochel', fidget: 'fidget|stressbal|pop it|popit', fidgets: 'fidget|stressbal|pop it|popit',
     beker: 'beker|mok', mok: 'mok|beker', kado: 'cadeau', gift: 'cadeau', sieradenmaken: 'sieraden-maken', kralen: 'kralen|sieraden-maken', lego: 'lego', jbl: 'jbl', airpod: 'airpods|oordopjes' };
   function zoekWoorden(tekst) {
     var v = vouw(tekst);

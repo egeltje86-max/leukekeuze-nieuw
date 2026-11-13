@@ -30,6 +30,7 @@ try { COR = JSON.parse(fs.readFileSync(path.join(__dirname, 'correcties.json'), 
 let TERUG4 = {}; try { TERUG4 = JSON.parse(fs.readFileSync(path.join(__dirname, 'verhuisd.json'), 'utf8')).terug || {}; } catch (e) {}
 function plaats(p) {
   const x = PL[p.id];
+  const cat0 = p.cat, sub0 = p.sub;
   if (x) {
     p.afd = x.a; p.groep = x.g; if (x.v) p.vak = x.v;
     if (x.oud) { const d = x.oud.split('/'); p.cat = d[0]; p.sub = d[1]; }
@@ -41,7 +42,7 @@ function plaats(p) {
     if (o) { p.afd = o[0]; p.groep = o[1]; if (o[2]) p.vak = o[2]; }
   }
   const l = (COR.links || {})[p.id]; if (l) { p.url = l.url; if (!p.winkelUrl) p.winkelUrl = l.winkelUrl; }
-  let v = (COR.vak || {})[p.id]; if (v) { const t = TERUG4[v.join('/')]; if (t) v = t.split('/'); /* 4.0: een vakje in de nieuwe indeling eerst terug naar zijn oude naam; splits-producten zet het daarna op de nieuwe plek */ p.afd = v[0]; p.groep = v[1]; p.vak = v[2]; }
+  let v = (COR.vak || {})[p.id]; if (v) { const t = TERUG4[v.join('/')]; if (t) v = t.split('/'); /* 4.0: een vakje in de nieuwe indeling eerst terug naar zijn oude naam; splits-producten zet het daarna op de nieuwe plek */ p.afd = v[0]; p.groep = v[1]; p.vak = v[2]; if (x && x.oud && v[0] !== x.a && cat0) { p.cat = cat0; p.sub = sub0; } /* 13-11-2026: met de hand verplaatst = de AI-plek klopte niet, dus ook zijn oude label niet (een Hello Kitty-blindbox en een chemieset stonden als 'bier'); dan het label uit producten.js */ }
   const z = (COR.samen || {})[p.id]; if (z && p.status === 'goedgekeurd') { p.status = 'samengevoegd'; p.samengevoegd = z; }
   const t = (COR.tekst || {})[p.id]; if (t) p.waarom = t;
   const ti = (COR.titel || {})[p.id]; if (ti) p.titel = ti;
