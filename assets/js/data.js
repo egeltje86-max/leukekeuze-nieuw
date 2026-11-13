@@ -1359,6 +1359,8 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   if (!s) return;
   if (!s.vakjes.some(function (v) { return v.slug === 'elektrische-fietsen'; })) s.vakjes.push({ slug: 'elektrische-fietsen', naam: 'Elektrische fietsen' });
   var voor = ['elektrische-steps', 'elektrische-fietsen'];
+  /* 13-11-2026: eigen rondjes van Nova (door Marius aangeleverd) */
+  s.vakjes.forEach(function (v) { if (voor.indexOf(v.slug) > -1) v.beeld = 'images/sub/iconen/icoon-sport-outdoor-' + v.slug + '.webp'; });
   s.vakjes = voor.map(function (k) { return s.vakjes.filter(function (v) { return v.slug === k; })[0]; }).filter(Boolean)
     .concat(s.vakjes.filter(function (v) { return voor.indexOf(v.slug) === -1; }));
 })();
@@ -1371,7 +1373,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'hobby' && !x.verborgen; })[0];
   if (!c || (c.subs || []).some(function (s) { return s.slug === 'rc-auto-s'; })) return;
   var g = { slug: 'rc-auto-s', naam: "Bestuurbare auto's", beeld: 'images/sub/iconen/icoon-hobby-rc-auto-s.webp', icoon2026: true,
-    vakjes: [{ slug: 'elektrische-rc-auto-s', naam: "Elektrische RC-auto's" }, { slug: 'rc-auto-s-op-brandstof', naam: "RC-auto's op brandstof" }, { slug: 'rc-auto-s-voor-beginners', naam: "RC-auto's voor kinderen en beginners" }] };
+    vakjes: [{ slug: 'elektrische-rc-auto-s', naam: "Elektrische RC-auto's", beeld: 'images/sub/iconen/icoon-hobby-elektrische-rc-auto-s.webp' }, { slug: 'rc-auto-s-op-brandstof', naam: "RC-auto's op brandstof", beeld: 'images/sub/iconen/icoon-hobby-rc-auto-s-op-brandstof.webp' }, { slug: 'rc-auto-s-voor-beginners', naam: "RC-auto's voor kinderen en beginners", beeld: 'images/sub/iconen/icoon-hobby-rc-auto-s-voor-beginners.webp' }] };
   var i = -1; (c.subs || []).forEach(function (s, k) { if (s.slug === 'modelbouw' && !s.verborgen && s.vakjes) i = k; });
   c.subs.splice(i === -1 ? c.subs.length : i + 1, 0, g);
 })();
@@ -1384,7 +1386,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'eten-drinken' && !x.verborgen; })[0];
   var s = c && (c.subs || []).filter(function (x) { return x.slug === 'chocolade-snoep' && x.vakjes && !x.verborgen; })[0];
   if (!s || s.vakjes.some(function (v) { return v.slug === 'snoep-met-een-boodschap'; })) return;
-  s.vakjes.push({ slug: 'snoep-met-een-boodschap', naam: 'Snoep met een boodschap', tekst: 'Zeg sorry, gefeliciteerd of beterschap met een doosje drop, snoep of bonbons door de brievenbus. Je kiest bij de winkel zelf de tekst op de wikkel en er gaat een kaartje met je eigen woorden bij.' });
+  s.vakjes.push({ slug: 'snoep-met-een-boodschap', naam: 'Snoep met een boodschap', beeld: 'images/sub/iconen/icoon-eten-drinken-snoep-met-een-boodschap.webp', tekst: 'Zeg sorry, gefeliciteerd of beterschap met een doosje drop, snoep of bonbons door de brievenbus. Je kiest bij de winkel zelf de tekst op de wikkel en er gaat een kaartje met je eigen woorden bij.' });
 })();
 /* ===== einde snoep met een boodschap ===== */
 
