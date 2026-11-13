@@ -4728,7 +4728,7 @@
             'Twijfel je over een geur? Kies een cadeauset van een merk dat ze al gebruikt.'
           ] },
         { kop: 'Sieraden die ze elke dag draagt', tekst: 'Een sieraad zie je terug, elke dag weer. Kies iets fijns en eenvoudigs, dan past het bij alles.',
-          ids: ['bp-l311', 'cl-myka-naam-hart', 'myka-11001332804', 'cl-guess-moon'] },
+          ids: ['bp-l311', 'cl-myka-naam-hart', 'cl-celeste', 'cl-guess-moon'] },
         { kop: 'Even helemaal verwend', tekst: 'Een fijne geur, een bad vol bruisballen of een kaars voor lange avonden: een moment voor haarzelf.',
           ids: ['cl-rit-sakura', 'cl-lveb', 'cl-dvzjn-hart', 'cl-ww-trilogy'] },
         { kop: 'Iets om samen te doen', tekst: 'Een spel voor jullie twee of met vrienden, of een fles om op iets te proosten.',
@@ -4816,7 +4816,7 @@
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en in de gids <a href="/gids/cadeau-voor-vriendin">Cadeau voor je vriendin</a>.' },
     { slug: 'kraamcadeau', beeld: 'knufk-bambam-pakket', vakken: ['cadeaus/baby-kraam', 'speelgoed/baby-peuter', 'cadeaus/voor-kinderen'],
-      titel: 'Kraamcadeau: ideeën waar ouders écht iets aan hebben', kort: 'Voor op kraamvisite: lief voor de baby, handig voor de ouders. Van €6 tot €65.',
+      titel: 'Kraamcadeau: ideeën waar ouders écht iets aan hebben', kort: 'Voor op kraamvisite: lief voor de baby, handig voor de ouders. Van €6 tot €56.',
       intro: 'Op kraamvisite ga je niet met lege handen. Maar wat neem je mee? De meeste ouders krijgen stapels rompertjes in maat 50 en meer knuffels dan er in de wieg passen. Het beste kraamcadeau is daarom iets waar ze over een paar maanden nog wat aan hebben, of iets voor de ouders zelf, want die worden op kraamvisite bijna altijd overgeslagen. Ik zette de beste ideeën op een rij, van een klein cadeautje tot iets om met een groepje te geven. En onthoud: het allerbeste wat je kunt meenemen is iets te eten en de vraag "zal ik de afwas even doen?".',
       delen: [
         { kop: 'Tips voor het kraamcadeau', tekst: 'Vijf dingen die kraamouders zelf zeggen:',
@@ -4832,7 +4832,7 @@
         { kop: 'Voor op de babykamer', tekst: 'Een nachtlampje of een wandkleed: elke avond in gebruik, en het staat er nog als de baby een kleuter is.',
           ids: ['dvzn-347250', 'tt-lamponline-51b017f92e', 'westwing-4a8bb904b1', 'bol-9300000183026688'] },
         { kop: 'Voor de ouders zelf', tekst: 'Een ketting voor de kersverse mama, een invulboek vol vragen of gewoon even gips om die bijzondere buik te bewaren (voor de volgende!).',
-          ids: ['myka-1100182088', 'cl-1000-dagen-vragen', 'hm-gipsbuik-set', 'bw-relax-mama-kalender'] }
+          ids: ['lgt-0940f22834', 'cl-1000-dagen-vragen', 'hm-gipsbuik-set', 'bw-relax-mama-kalender'] }
       ],
       slot: 'Alles voor de kleinste vind je bij <a href="/voor/baby">Babycadeaus</a>. Zoek je iets voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' },
     { slug: 'babyshower-cadeau', beeld: 'bol-9300000136627314', vakken: ['cadeaus/baby-kraam', 'speelgoed/baby-peuter'],
@@ -4930,16 +4930,16 @@
         { kop: 'Tip: schrijf er een kaartje bij', tekst: 'Het cadeau is mooi, maar de woorden blijven het langst. Schrijf er een paar zinnen bij over wat je zo leuk aan haar vindt. Dat kaartje bewaart ze vaak nog jaren.' }
       ],
       slot: 'Meer romantische ideeën staan bij <a href="/c/valentijn">Liefde & Valentijn</a>. Zoek je iets voor hem? Lees dan <a href="/gids/valentijnscadeau-voor-hem">Valentijnscadeau voor hem</a>.' },
-    { slug: 'valentijnscadeau-voor-hem', beeld: 'bol-9200000076851367', vakken: ['valentijn/voor-hem', 'valentijn', 'cadeaus/voor-hem'],
-      titel: 'Valentijnscadeau voor hem: romantisch, maar niet zoetsappig', kort: 'Een horloge, een leren armband, iets met zijn naam of een avond samen. Van €27 tot €110.',
+    { slug: 'valentijnscadeau-voor-hem', beeld: 'shelby-237b7f7f23', vakken: ['valentijn/voor-hem', 'valentijn', 'cadeaus/voor-hem'],
+      titel: 'Valentijnscadeau voor hem: romantisch, maar niet zoetsappig', kort: 'Een horloge, een leren armband, iets met zijn naam of een avond samen. Van €22 tot €80.',
       intro: 'Een valentijnscadeau voor hem vinden is lastig. Veel mannen houden niet van roze hartjes, maar vinden een romantisch gebaar stiekem wel heel fijn. Kies daarom iets wat hij echt gebruikt en wat toch iets van jou zegt: een mooi horloge, een armband die hij elke dag draagt of een avond samen. Hier zijn de beste ideeën.',
       delen: [
         { kop: 'Iets om elke dag te dragen', tekst: 'Een horloge of een stoere armband. Elke keer dat hij erop kijkt, denkt hij aan jou.',
-          ids: ['bol-9200000076851367', 'bol-9300000267824769', 'bol-9300000047747066', 'myka-11003216232', 'tbl-tb0a2dhs999os1'] },
-        { kop: 'Met zijn naam erop', tekst: 'Persoonlijk en toch stoer: manchetknopen, een ketting of een armband met een naam of letter.',
-          ids: ['myka-11017179911', 'myka-11015253511', 'myka-11001421304', 'myka-11003249788'] },
+          ids: ['shelby-237b7f7f23', 'cl-casio-a168', 'bol-9300000267824769', 'bol-9300000047747066', 'myka-11003216232'] },
+        { kop: 'Met zijn naam erop', tekst: 'Persoonlijk en toch stoer: een gegraveerde heupfles, een sleutelhanger of armband met een naam, of een bierglas met een tekening van jullie foto.',
+          ids: ['smartp-11ee960dc1', 'myka-1101505104', 'myka-11003446256', 'mmf-63b50c895d'] },
         { kop: 'Voor de man die van mooie spullen houdt', tekst: 'Een cocktailset voor een avond samen, een goede scheerset of een leren portemonnee.',
-          ids: ['bol-9300000170256799', 'dvzn-208667', 'bol-9300000272321914', 'as-5063320998032'] },
+          ids: ['bol-9300000170256799', 'dvzn-208667', 'bol-9300000272321914', 'lookin-f777c5ca61'] },
         { kop: 'Tip: plan er iets bij', tekst: 'Mannen vinden een gezamenlijke activiteit vaak het leukste cadeau. Geef bij je cadeau een plan: samen uit eten, een avond cocktails maken of een dagje weg.' }
       ],
       slot: 'Meer ideeën staan bij <a href="/c/valentijn/voor-hem">Liefde & Valentijn voor hem</a>. Zoek je iets voor haar? Lees dan <a href="/gids/valentijnscadeau-voor-haar">Valentijnscadeau voor haar</a>.' },
@@ -4960,8 +4960,8 @@
       titel: 'Cadeau voor je trouwdag of huwelijksjubileum: 12,5, 25, 40 of 50 jaar getrouwd', kort: 'Sieraden met jullie namen, iets moois voor in huis en een avond om samen te vieren. Van €25 tot €900.',
       intro: 'Een trouwdag is elk jaar weer een moment om stil te staan bij elkaar. Bij een groot jubileum, zoals 12,5, 25, 40 of 50 jaar getrouwd, hoort een cadeau dat blijft: een sieraad met jullie namen, iets moois voor in huis of een avond om het samen te vieren. Ook als je een cadeau zoekt voor je ouders of opa en oma die al zo lang samen zijn, vind je hier ideeën.',
       delen: [
-        { kop: 'Iets dat blijft', tekst: 'Een sieraad van echt goud met jullie namen of twee harten in elkaar. Voor een groot jubileum.',
-          ids: ['myka-11001365601', 'myka-11001131631', 'myka-11003211420', 'bol-9300000194463478'] },
+        { kop: 'Iets dat blijft', tekst: 'Een sieraad met jullie namen of twee harten in elkaar, van zilver tot echt goud. Voor een groot jubileum.',
+          ids: ['myka-11001132188', 'myka-11001320091', 'myka-11001131631', 'myka-11003211420'] },
         { kop: 'Iets moois voor jullie huis', tekst: 'Een kunstwerk om samen te bouwen, de stad van de liefde of een plank met jullie namen.',
           ids: ['lego-31214', 'lego-21064', 'bol-9300000074464628', 'bol-9300000070824603'] },
         { kop: 'Samen vieren', tekst: 'Een avond fonduen of een sterrenhemel op het plafond: vier jullie dag thuis.',
