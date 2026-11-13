@@ -722,9 +722,12 @@
     /* Productfoto's staan zonder extensie in de lijst (bijv. images/producten/bol-123): de kleine webp-versie gebruiken. */
     return /^https?:\/\//.test(p.beeld) || /\.(webp|jpe?g|png)$/i.test(p.beeld) ? p.beeld : p.beeld + '-klein.webp';
   }
-  function voorFilter(p, voor) {
+  function voorFilter(p, voor, hier) {
     if (!voor) return true;
     var pe = window.LK_PERSOON(voor); if (!pe) return true;
+    /* 13-11-2026 (Marius: 'elke tegel van een gelegenheid apart uitzoeken'): op de eigen gelegenheid mag een cadeau met een tekst voor één moment
+       wel bij een persoon (een 'Super juf'-mok op Juf & meester voor haar, een trouwposter op Jubileum voor hem, een pensioenmok op Afscheid voor hem). */
+    if (hier && p.smal && SMAL_PAG[p.smal] && SMAL_PAG[p.smal][1].test(hier) && !(p.nietBij && p.nietBij.indexOf(pe.slug) !== -1)) return (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) || (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
     /* 10-11-2026 (alleen zekere cadeaus): wat niet bij deze persoon hoort (p.nietBij) of een tekst voor een ander soort persoon heeft (p.smal), ook niet via het filter 'Voor wie' of op 'Verjaardag voor hem'. */
     if ((p.nietBij && p.nietBij.indexOf(pe.slug) !== -1) || (p.smal && !smalBij(p, pe.slug))) return false;
     return (p.voor || []).some(function (v) { return pe.labels.indexOf(v) !== -1; }) || (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
@@ -1565,7 +1568,9 @@
     BASIS = basis;
     TEL = function (nq) { return basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen) && extraFilter(p, q); });
-    lijst = sorteer(lijst, q.sort, pad);
+    /* 13-11-2026 (Marius: 'elke tegel apart uitzoeken'): 'Kerst voor hem' (/c/cadeaus/kerst?voor=hem) heeft een eigen, met de hand gekozen top. */
+    var topPad = (q.voor && window.LK_TOPVAST && window.LK_TOPVAST[pad + '?voor=' + q.voor]) ? pad + '?voor=' + q.voor : pad;
+    lijst = sorteer(lijst, q.sort, topPad);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
@@ -1925,7 +1930,7 @@
     var pv = voorSlug ? window.LK_PERSOON(voorSlug) : null;
     if (voorSlug && (!pv || g.labels || !g.vakken)) return nietGevonden();
     var voorNaam = pv ? pv.kort.replace(/^Voor /, '').toLowerCase() : '';
-    var alles = pv ? basisAlles.filter(function (p) { return voorFilter(p, pv.slug); }) : basisAlles;
+    var alles = pv ? basisAlles.filter(function (p) { return voorFilter(p, pv.slug, pad); }) : basisAlles;
     if (pv && alles.length < 10) return nietGevonden();
     var hoofdPad = pad; if (pv) pad = pad + '/' + pv.slug;
     zetTitel(pv ? (g.seoKort || g.naam) + ' voor ' + voorNaam + (g.seoKort ? '' : ': cadeau-ideeën') : (g.seoTitel || g.naam));
@@ -1935,7 +1940,7 @@
     if (!g.labels && g.vakken && !g.korting && !g.codes) {
       var vk = (g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
         var p2 = window.LK_PERSOON(slug); if (!p2) return '';
-        var n = basisAlles.filter(function (p) { return voorFilter(p, slug); }).length; if (n < 10) return '';
+        var n = basisAlles.filter(function (p) { return voorFilter(p, slug, hoofdPad); }).length; if (n < 10) return '';
         var hier = pv && pv.slug === slug;
         return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + hoofdPad + '/' + slug + '"' + (hier ? ' aria-current="page"' : '') + '>' + esc(p2.kort) + '</a>';
       }).join('');
@@ -1945,7 +1950,7 @@
         var VOORICO = { hem: '👔', haar: '👗', kinderen: '🧒', tieners: '🎧', 'opa-oma': '👵', collega: '💼', baby: '🍼' };
         voorKnopjes = slimNav((pv ? [{ id: 'iedereen', naam: 'Iedereen', naar: hoofdPad, icoon: '🎁' }] : []).concat((g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
           var p2 = window.LK_PERSOON(slug); if (!p2) return null;
-          var n = basisAlles.filter(function (p) { return voorFilter(p, slug); }).length; if (n < 10) return null;
+          var n = basisAlles.filter(function (p) { return voorFilter(p, slug, hoofdPad); }).length; if (n < 10) return null;
           return { id: slug, naam: p2.kort, beeld: p2.beeld, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n, icoon: VOORICO[slug] };
         }).filter(Boolean)), { titel: 'Voor wie zoek je iets?' }, 'Voor wie');
       }

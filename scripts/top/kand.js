@@ -21,7 +21,7 @@ function lijst(pad) {
       if (g.uit && g.uit.test(p.titel)) return false;
       let pl = PR.plekkenVan(p); if (p.afd) pl = pl.concat([p.afd + '/' + p.groep, p.afd + '/' + p.groep + '/' + p.vak]); { const o = PR.oud(p); if (o !== p) pl = pl.concat([o.afd + '/' + o.groep, o.afd + '/' + o.groep + '/' + o.vak]); } /* 4.0: gelegenheden noemen nog de groepen van vóór de verhuizing */
       return PR.past(pl, g.vakken || []);
-    }).filter(p => { if (!d[2]) return true; const pe = W.LK_PERSONEN.find(x => x.slug === d[2]); return PR.vanPersoon(p, pe) && PR.smalMagBij(p, pe.slug) && !(p.nietBij && p.nietBij.includes(pe.slug)); });
+    }).filter(p => { if (!d[2]) return true; const pe = W.LK_PERSONEN.find(x => x.slug === d[2]); return PR.vanPersoon(p, pe) && (PR.smalMagBij(p, pe.slug) || (p.smal && SMAL[p.smal] && SMAL[p.smal].test(d[1]))) && !(p.nietBij && p.nietBij.includes(pe.slug)); }); /* 13-11-2026: tekst voor één moment mag op de eigen gelegenheid ook per persoon */
   }
   if (d[0] === 'c' && d[1] === 'cadeaus') return P.filter(p => p.cat !== 'christelijk' && !p.los && !(p.smal && !SMAL[p.smal].test(pad)) && PR.plekkenVan(p).includes('cadeaus/' + d[2]));
   if (d[0] === 'c') return P.filter(p => p.afd === d[1] && (!d[2] || p.groep === d[2]) && (!d[3] || p.vak === d[3]));

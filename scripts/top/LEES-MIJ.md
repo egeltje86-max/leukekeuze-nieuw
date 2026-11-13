@@ -21,3 +21,10 @@ Uitzondering (11-11-2026): het vakje Hondenspeelgoed heeft wel een vaste top, om
 
 Uitzondering (11-11-2026): 'Grappige cadeaus voor kinderen' en '... voor tieners' staan niet meer in `gsubs.txt`. Hun top is met de hand gekozen (opdracht Marius: meer grappige cadeaus voor kinderen en tieners), dus `afleid.js` blijft ervan af.
 Ook 'Grappige cadeaus voor hem', '... voor haar' en '... voor collega' staan sinds 11-11-2026 niet meer in `gsubs.txt`: daar zijn met de hand nieuwe grappige cadeaus tussengevoegd.
+
+13-11-2026 (Marius: 'elke tegel van een gelegenheid apart uitzoeken, niet universeel'): alle 32 pagina's 'gelegenheid x persoon'
+(Verjaardag voor hem, Bedankt voor collega, Beterschap voor opa en oma …) zijn met de hand gekozen en staan niet meer in `gsubs.txt`.
+Ook 'Kerst voor hem/haar/tieners/collega/opa en oma' en 'Sinterklaas voor hem/haar' hebben een eigen top: sleutel `/c/cadeaus/kerst?voor=hem`
+(app.js gebruikt die als hij bestaat). Een product dat in een top hoort maar niet op de pagina staat: `correcties.json` → `ookInErbij`
+(bijv. `cadeaus/kerst`, `valentijn/voor-haar`) of `voorErbij` (persoon). Een cadeau met een tekst voor één moment (juf, trouw, pensioen,
+geslaagd) mag op zijn eigen gelegenheid ook per persoon staan (app.js `voorFilter`, kand.js).
