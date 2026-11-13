@@ -1,5 +1,5 @@
 {
- "gemaakt": "2026-11-12T21:29",
+ "gemaakt": "2026-11-13T21:14",
  "prijs": [
   {
    "id": "bol-9300000036602411",
@@ -56,48 +56,6 @@
    "nieuw": 67.99
   },
   {
-   "id": "bol-9300000151157925",
-   "titel": "Jean Paul Gaultier Le Male Le Parfum en Elixir",
-   "oud": 61.57,
-   "nieuw": 87.79
-  },
-  {
-   "id": "bol-9300000050712934",
-   "titel": "Dior Miss Dior",
-   "oud": 108.48,
-   "nieuw": 183.99
-  },
-  {
-   "id": "bol-9300000007170653",
-   "titel": "Maison Margiela Replica Lazy Sunday Morning",
-   "oud": 56.25,
-   "nieuw": 94.59
-  },
-  {
-   "id": "bol-9200000064854519",
-   "titel": "Dior J'adore",
-   "oud": 63.5,
-   "nieuw": 91.24
-  },
-  {
-   "id": "bol-9300000241675022",
-   "titel": "Clarins kerst-geschenkset huidverzorging",
-   "oud": 78.99,
-   "nieuw": 67.99
-  },
-  {
-   "id": "bol-9300000193746671",
-   "titel": "JBL Charge 6 speaker – kies je kleur",
-   "oud": 143.99,
-   "nieuw": 123.0
-  },
-  {
-   "id": "bol-9200000094413158",
-   "titel": "Tunturi weerstandsbanden (set van 5)",
-   "oud": 11.99,
-   "nieuw": 21.99
-  },
-  {
    "id": "bol-9300000153923470",
    "titel": "Fisher-Price cadeauset zintuigen (bijtring, rammelaar en bal)",
    "oud": 11.19,
@@ -140,46 +98,64 @@
    "nieuw": 14.95
   },
   {
-   "id": "cl-ninja-ds-xl",
-   "titel": "Ninja Double Stack XL airfryer",
-   "oud": 233.0,
-   "nieuw": 200.0
+   "id": "a-coolblue-nl-2857fe6592",
+   "titel": "Ninja Foodi Dual Zone airfryer met 2 lades (AF200)",
+   "oud": 100.0,
+   "nieuw": 157.0
   },
   {
-   "id": "cl-dl-magnifica-evo",
-   "titel": "De'Longhi Magnifica EVO",
-   "oud": 423.0,
-   "nieuw": 380.0
+   "id": "cl-hue-go",
+   "titel": "Philips Hue Go draagbare lamp",
+   "oud": 74.0,
+   "nieuw": 82.0
   },
   {
-   "id": "cb-g923-ps",
-   "titel": "Logitech G923 racestuur met pedalen (PS5/pc)",
-   "oud": 226.0,
-   "nieuw": 200.0
+   "id": "cl-braun-x",
+   "titel": "Braun Series X hybride trimmer",
+   "oud": 37.99,
+   "nieuw": 48.99
   },
   {
-   "id": "cl-medisana-mc600",
-   "titel": "Medisana shiatsu massagekussen MC 600",
-   "oud": 77.0,
-   "nieuw": 87.0
+   "id": "ts24-e7a8d0d6d3",
+   "titel": "Philipp Plein The $kull chronograaf herenhorloge, zwart (45 mm)",
+   "oud": 516.0,
+   "nieuw": 454.82
   },
   {
-   "id": "cb-galaxy-fit3",
-   "titel": "Samsung Galaxy Fit 3 activity tracker",
-   "oud": 48.99,
-   "nieuw": 55.0
+   "id": "mmf-6c5eebe477",
+   "titel": "Aquarel-portret van je huisdier (poster)",
+   "oud": 9.99,
+   "nieuw": 15.98
   },
   {
-   "id": "ts24-797ed7dbf4",
-   "titel": "Jacques Lemans Manchester herenhorloge, zwart met blauw (43 mm)",
-   "oud": 209.4,
-   "nieuw": 279.2
+   "id": "mmf-8d66b2ca75",
+   "titel": "Gouden kampioen-poster met je eigen foto",
+   "oud": 9.99,
+   "nieuw": 15.98
+  },
+  {
+   "id": "mmf-b4b1343fa9",
+   "titel": "Hollandse Meester-portret van je huisdier (poster)",
+   "oud": 9.99,
+   "nieuw": 15.98
+  },
+  {
+   "id": "mmf-283314896a",
+   "titel": "Potloodportret van je huisdier (poster)",
+   "oud": 9.99,
+   "nieuw": 15.98
+  },
+  {
+   "id": "pillow-bd4ca379da",
+   "titel": "Kussen 'Geslaagd! Hoe dan?!' (Pillow Buddies)",
+   "oud": 29.95,
+   "nieuw": 24.95
   },
   {
    "id": "topdea-955e8f176e",
    "titel": "Horlogedoos voor 5 horloges",
    "oud": 49.0,
-   "nieuw": 279.0
+   "nieuw": 189.0
   },
   {
    "id": "barrel-6069f66254",
@@ -188,172 +164,172 @@
    "nieuw": 129.95
   },
   {
-   "id": "kado-da9b788bf2",
-   "titel": "Cadeauset voor je zus: tijgerplaid en mok",
-   "oud": 22.98,
-   "nieuw": 20.45
-  },
-  {
-   "id": "kado-463d51a4db",
-   "titel": "Cadeauset voor je zus: panterplaid met mok",
-   "oud": 22.98,
-   "nieuw": 20.45
-  },
-  {
-   "id": "kadove-3b4ae5113e",
-   "titel": "Cadeauset Sweet 16: fleece plaid en mok – kies je print",
-   "oud": 22.98,
-   "nieuw": 20.45
-  },
-  {
-   "id": "kadove-88d388285c",
-   "titel": "Sarah-cadeauset met fleece plaid en mok (50 jaar)",
-   "oud": 22.98,
-   "nieuw": 20.45
-  },
-  {
-   "id": "kadove-f0a0dd3ec0",
-   "titel": "Cadeauset 60 jaar: fleece plaid en mok – kies je print",
-   "oud": 22.98,
-   "nieuw": 20.45
+   "id": "kadove-059d6fcf7f",
+   "titel": "Warmwaterkruik 2 liter met gebreide hoes – kies je print",
+   "oud": 8.79,
+   "nieuw": 10.99
   },
   {
    "id": "kadove-e15b613082",
    "titel": "Houten dienblad in de vorm van een hart",
-   "oud": 10.99,
-   "nieuw": 9.34
+   "oud": 9.34,
+   "nieuw": 10.99
+  },
+  {
+   "id": "kadove-88d388285c",
+   "titel": "Sarah-cadeauset met fleece plaid en mok (50 jaar)",
+   "oud": 20.45,
+   "nieuw": 22.98
   },
   {
    "id": "kadove-8f92ccb5f8",
    "titel": "Valentijnsset: fleece plaid en \"I love you\"-mok – kies je print",
-   "oud": 22.98,
-   "nieuw": 20.45
+   "oud": 20.45,
+   "nieuw": 22.98
+  },
+  {
+   "id": "kado-463d51a4db",
+   "titel": "Cadeauset voor je zus: panterplaid met mok",
+   "oud": 20.45,
+   "nieuw": 22.98
+  },
+  {
+   "id": "kado-da9b788bf2",
+   "titel": "Cadeauset voor je zus: tijgerplaid en mok",
+   "oud": 20.45,
+   "nieuw": 22.98
+  },
+  {
+   "id": "kadove-f0a0dd3ec0",
+   "titel": "Cadeauset 60 jaar: fleece plaid en mok – kies je print",
+   "oud": 20.45,
+   "nieuw": 22.98
+  },
+  {
+   "id": "kadove-3b4ae5113e",
+   "titel": "Cadeauset Sweet 16: fleece plaid en mok – kies je print",
+   "oud": 20.45,
+   "nieuw": 22.98
   },
   {
    "id": "kadove-f2393bf81e",
    "titel": "Valentijnsset: plaid, \"I love you\"-mok en beertje – kies je print",
-   "oud": 28.48,
-   "nieuw": 25.35
+   "oud": 25.35,
+   "nieuw": 28.48
   },
   {
-   "id": "kadove-059d6fcf7f",
-   "titel": "Warmwaterkruik 2 liter met gebreide hoes – kies je print",
-   "oud": 10.99,
-   "nieuw": 8.79
-  },
-  {
-   "id": "nedg-f6d0333b54",
-   "titel": "L.O.L. Surprise! Movie Night (game)",
-   "oud": 9.99,
-   "nieuw": 12.0
-  },
-  {
-   "id": "nedgam-efd74a107f",
-   "titel": "Pokémon TCG First Partner Illustration Collection (serie 2)",
-   "oud": 49.99,
-   "nieuw": 39.99
-  },
-  {
-   "id": "nedgam-76802f7777",
-   "titel": "Metroid Prime 4: Beyond (Switch 2 Edition)",
-   "oud": 34.99,
-   "nieuw": 44.0
-  },
-  {
-   "id": "nedg-ece6eb7663",
-   "titel": "L.O.L. Surprise! Remix We Rule the World (game)",
-   "oud": 12.0,
-   "nieuw": 9.99
+   "id": "grotek-63e4a37fbb",
+   "titel": "Eco Wood houten grammofoon om te bouwen",
+   "oud": 55.0,
+   "nieuw": 42.0
   },
   {
    "id": "nedg-f5c06688d6",
    "titel": "Nintendo Switch Lite geel",
-   "oud": 169.0,
-   "nieuw": 218.0
+   "oud": 218.0,
+   "nieuw": 149.0
   },
   {
-   "id": "nedgam-c49abba29a",
-   "titel": "Tamagotchi Paradise Blue Water",
-   "oud": 49.99,
+   "id": "nedg-00a23132ab",
+   "titel": "Final Fantasy Type-0 HD",
+   "oud": 18.0,
+   "nieuw": 14.99
+  },
+  {
+   "id": "nedgam-88d1203a8b",
+   "titel": "Pokémon slapende Pikachu knuffel (45 cm)",
+   "oud": 54.99,
    "nieuw": 44.0
   },
   {
-   "id": "hema-8fc8a01810",
-   "titel": "Nijntje houten klok",
-   "oud": 24.99,
-   "nieuw": 20.0
+   "id": "nedgam-e72bc67523",
+   "titel": "Pokémon TCG 30th Anniversary EX tin Sylveon",
+   "oud": 89.99,
+   "nieuw": 79.99
   },
   {
-   "id": "animal-283b6ee415",
-   "titel": "Tuinbeeld witte kip van Esschert Design",
-   "oud": 23.99,
-   "nieuw": 19.19
+   "id": "smartp-d7c0f300e2",
+   "titel": "Chocoladetelegram met eigen tekst (28 stukjes)",
+   "oud": 19.99,
+   "nieuw": 41.99
   },
   {
-   "id": "ag-knuf-zee-22-26",
-   "titel": "Knuffel zee- of waterdier (22 tot 26 cm)",
-   "oud": 8.99,
-   "nieuw": 7.64
+   "id": "smartp-fe122a4434",
+   "titel": "Fotopuzzel 500 stukjes",
+   "oud": 19.99,
+   "nieuw": 36.99
   },
   {
-   "id": "ag-knuf-fantasie-13-56",
-   "titel": "Knuffel eenhoorn of draak (13 tot 56 cm)",
-   "oud": 10.5,
-   "nieuw": 11.75
+   "id": "smartp-a583ad7af1",
+   "titel": "Theeset met gegraveerd theeglas",
+   "oud": 28.99,
+   "nieuw": 34.99
   },
   {
-   "id": "ag-knuf-bos-22-25",
-   "titel": "Knuffel bosdier (22 tot 25 cm)",
-   "oud": 10.99,
-   "nieuw": 8.79
+   "id": "smartp-c4444bc994",
+   "titel": "Koektrommel met eigen foto",
+   "oud": 26.99,
+   "nieuw": 36.99
   },
   {
-   "id": "ag-knuf-pool-18-21",
-   "titel": "Knuffel pooldier (18 tot 21 cm)",
-   "oud": 12.99,
-   "nieuw": 10.39
-  },
-  {
-   "id": "animal-428ae7da88",
-   "titel": "Esschert Design vogelbad nestje",
-   "oud": 18.99,
-   "nieuw": 15.19
-  },
-  {
-   "id": "anim-cff62bd7c1",
-   "titel": "Grote knuffelbeer van 1 meter (bruin)",
-   "oud": 41.99,
-   "nieuw": 33.59
-  },
-  {
-   "id": "ag-knuf-beren-18-21",
-   "titel": "Knuffelbeer, panda of koala (18 tot 21 cm)",
-   "oud": 9.99,
-   "nieuw": 7.99
-  },
-  {
-   "id": "ag-dierenpak",
-   "titel": "Dierenpak voor kinderen",
-   "oud": 25.59,
+   "id": "sp-babyset-nijntje",
+   "titel": "Babyset met rompertje en Nijntje-spaarpot",
+   "oud": 39.99,
    "nieuw": 31.99
   },
   {
-   "id": "animal-bf99184afc",
-   "titel": "Houten stempelsetje paarden",
-   "oud": 15.29,
-   "nieuw": 13.59
+   "id": "smartp-61af9185cb",
+   "titel": "Pepermolen met eigen foto",
+   "oud": 59.99,
+   "nieuw": 39.99
   },
   {
-   "id": "anim-ce7802cd8f",
-   "titel": "Mok panda met ornament (Puckator)",
-   "oud": 9.99,
-   "nieuw": 7.99
+   "id": "smartp-0130c86d9c",
+   "titel": "Speelkaarten met eigen foto's",
+   "oud": 14.99,
+   "nieuw": 17.99
+  },
+  {
+   "id": "bellat-73a92756bb",
+   "titel": "Houten notenkraker soldaat",
+   "oud": 35.99,
+   "nieuw": 28.79
   },
   {
    "id": "bell-644e33f780",
    "titel": "Foute kersttrui met rendier (dames, wit)",
-   "oud": 15.0,
-   "nieuw": 20.99
+   "oud": 20.99,
+   "nieuw": 15.0
+  },
+  {
+   "id": "bellat-c50471e085",
+   "titel": "Kerstknuffel pinguïn",
+   "oud": 9.99,
+   "nieuw": 7.99
+  },
+  {
+   "id": "lo-151411772",
+   "titel": "Lucide Pingi oplaadbare vloerlamp (binnen en buiten)",
+   "oud": 200.95,
+   "nieuw": 235.95
+  },
+  {
+   "id": "lo-138752812",
+   "titel": "Lucide draadlamp Danza in goud",
+   "oud": 44.95,
+   "nieuw": 51.95
+  },
+  {
+   "id": "lo-134396255",
+   "titel": "Lucide paddenstoellamp Fungo (opaal glas)",
+   "oud": 79.85,
+   "nieuw": 93.95
+  },
+  {
+   "id": "dvzn-611",
+   "titel": "Brandijzer voor de barbecue met losse letters",
+   "oud": 22.94,
+   "nieuw": 18.99
   },
   {
    "id": "tf-749c0d6817",
@@ -362,123 +338,21 @@
    "nieuw": 42.25
   },
   {
-   "id": "bloom-405104d9c1",
-   "titel": "Geurreis door Nederland: proefpakket met 5 parfums",
-   "oud": 39.95,
-   "nieuw": 9.95
+   "id": "kerstland-48112d2aae",
+   "titel": "Tuinsteker rendier met ledlampjes (77 cm)",
+   "oud": 46.65,
+   "nieuw": 19.99
   },
   {
-   "id": "dropte-ca850f2cfa",
-   "titel": "Cadeaudoosje Gefeliciteerd met zoute drop (door de brievenbus)",
-   "oud": 9.95,
+   "id": "legoshop-f91cb50b25",
+   "titel": "LEGO F1-pitstop met Ferrari-auto",
+   "oud": 29.99,
    "nieuw": 14.95
   },
   {
-   "id": "dropte-d980b40eb9",
-   "titel": "Zoete snoepmix door de brievenbus, wikkel 'Het spijt me' of andere tek",
+   "id": "dkam-13500706be",
+   "titel": "Draaiend kerstmolentje (goud)",
    "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-0f7ba1f3b1",
-   "titel": "Cadeaudoosje autodrop voor wie examen doet (door de brievenbus)",
-   "oud": 11.95,
-   "nieuw": 16.95
-  },
-  {
-   "id": "dropte-91b30a44b6",
-   "titel": "Katja Biggetjes door de brievenbus, wikkel 'Het spijt me' of andere te",
-   "oud": 11.95,
-   "nieuw": 16.95
-  },
-  {
-   "id": "dropte-c7138cc2fb",
-   "titel": "Katja Zoo mix door de brievenbus, wikkel 'Het spijt me' of andere teks",
-   "oud": 12.95,
-   "nieuw": 17.95
-  },
-  {
-   "id": "dropte-df200ec35a",
-   "titel": "Zoute dropmix door de brievenbus, wikkel 'Het spijt me' of andere teks",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-5b9a35bc50",
-   "titel": "Drop Fruit Duo's door de brievenbus, wikkel 'Het spijt me' of andere t",
-   "oud": 11.95,
-   "nieuw": 16.95
-  },
-  {
-   "id": "dropte-9863b3427d",
-   "titel": "Gesuikerde dropmix door de brievenbus, wikkel 'Het spijt me' of andere",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-80dbd1d2cd",
-   "titel": "Cadeaudoosje Kikker in je keel: beterschap met drop (door de brievenbu",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-f031965b8b",
-   "titel": "Katja Farm mix door de brievenbus, wikkel 'Het spijt me' of andere tek",
-   "oud": 12.95,
-   "nieuw": 17.95
-  },
-  {
-   "id": "dropte-cfa537ec4c",
-   "titel": "M&M's pinda door de brievenbus, wikkel 'Het spijt me' of andere tekst",
-   "oud": 14.95,
-   "nieuw": 19.95
-  },
-  {
-   "id": "dropte-a8d8695a0b",
-   "titel": "Opkikkertje: doosje snoepkikkers door de brievenbus",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-b8a5732dd8",
-   "titel": "Zoete dropmix door de brievenbus, wikkel 'Het spijt me' of andere teks",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-885f0a5f53",
-   "titel": "Engelse drop door de brievenbus, wikkel 'Het spijt me' of andere tekst",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-6da723822f",
-   "titel": "Cadeaudoosje Apetrots met snoep naar keuze (door de brievenbus)",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-551ff7ced0",
-   "titel": "Dropmix zoet en zout door de brievenbus, wikkel 'Het spijt me' of ande",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-ead5d964b0",
-   "titel": "Tum Tum-snoep door de brievenbus, wikkel 'Het spijt me' of andere teks",
-   "oud": 9.95,
-   "nieuw": 14.95
-  },
-  {
-   "id": "dropte-119ce12bdd",
-   "titel": "Bonbons door de brievenbus met wikkel 'Dikke kus'",
-   "oud": 14.95,
-   "nieuw": 19.95
-  },
-  {
-   "id": "dkam-be40e3e13b",
-   "titel": "Dille & Kamille kookschrift met ringband",
-   "oud": 15.95,
    "nieuw": 49.95
   },
   {
@@ -488,34 +362,130 @@
    "nieuw": 11.5
   },
   {
-   "id": "joybuy-7a2f170290",
-   "titel": "De'Longhi La Specialista Arte Evo espressomachine",
-   "oud": 457.93,
-   "nieuw": 506.37
+   "id": "invul-1e1c620b18",
+   "titel": "Botanisch puzzelboek",
+   "oud": 19.99,
+   "nieuw": 9.95
+  },
+  {
+   "id": "butchery-26811de868",
+   "titel": "BBQ dry rub Cattle Drive (Croix Valley)",
+   "oud": 14.5,
+   "nieuw": 34.95
+  },
+  {
+   "id": "westwing-5876b0962d",
+   "titel": "Broste Copenhagen handbeschilderd engeltje Fairy Tale",
+   "oud": 29.99,
+   "nieuw": 22.99
+  },
+  {
+   "id": "westwing-df9bc7bacc",
+   "titel": "Star Trading led-kerstkrans Winny met timer (Ø 28 cm)",
+   "oud": 19.99,
+   "nieuw": 16.99
   },
   {
    "id": "westwing-6dbc4bd6d2",
    "titel": "Deluxe Home Art handgemaakte LED-kaarsen Real Flame met afstandsbedien",
-   "oud": 89.99,
-   "nieuw": 77.99
+   "oud": 77.99,
+   "nieuw": 69.99
   },
   {
-   "id": "westwing-91009781dc",
-   "titel": "Zone Denmark mondgeblazen kandelaar Inu",
-   "oud": 34.99,
+   "id": "westwing-4fac053ff9",
+   "titel": "Printworks fotoalbum 'Good Times'",
+   "oud": 49.99,
+   "nieuw": 44.99
+  },
+  {
+   "id": "westwing-0d3505131f",
+   "titel": "House Doctor kerstkrans Giant met ledlampjes en timer",
+   "oud": 69.99,
+   "nieuw": 62.99
+  },
+  {
+   "id": "westwing-057650ccad",
+   "titel": "Ferm Living kerstboomkleed Vela",
+   "oud": 72.99,
+   "nieuw": 62.99
+  },
+  {
+   "id": "westwi-7aa6b6f74c",
+   "titel": "Draagbare tafeltennisset Ping Pong",
+   "oud": 92.99,
+   "nieuw": 82.99
+  },
+  {
+   "id": "westwing-374c578977",
+   "titel": "Printworks fotoalbum 'Dream Big Little One'",
+   "oud": 54.99,
    "nieuw": 47.99
   },
   {
-   "id": "myka-13758d88cd",
-   "titel": "MYKA juwelendoos (beige)",
-   "oud": 38.0,
-   "nieuw": 33.0
+   "id": "westwing-6d2fa2600e",
+   "titel": "Zielinski & Rozen diffuser Orange (sinaasappel & jasmijn), 425 ml",
+   "oud": 129.0,
+   "nieuw": 149.0
   },
   {
-   "id": "dropwinkel-be009eccf5",
-   "titel": "Merry Crunch Mix adventskalender",
-   "oud": 30.67,
-   "nieuw": 26.06
+   "id": "westwing-3803f8ade4",
+   "titel": "House Doctor handgemaakte kerstkrans Pine (Ø 48 cm)",
+   "oud": 44.99,
+   "nieuw": 39.99
+  },
+  {
+   "id": "westwing-a8fb2847f7",
+   "titel": "Zielinski & Rozen diffuser Pink Pepper (Pink Pepper, Elemi, Kaneel & L",
+   "oud": 129.0,
+   "nieuw": 149.0
+  },
+  {
+   "id": "westwing-ea864fdd54",
+   "titel": "Marimekko dubbelzijdige plaid Unikko met franjes",
+   "oud": 189.0,
+   "nieuw": 209.0
+  },
+  {
+   "id": "westwing-78e45cd5c0",
+   "titel": "Meraki diffuser Dark Wood (nootmuskaat, kruidnagel & amber), 100 ml",
+   "oud": 32.99,
+   "nieuw": 26.99
+  },
+  {
+   "id": "westwing-f683f8f0ce",
+   "titel": "Anna + Nina handbeschilderde mok Poodle",
+   "oud": 27.99,
+   "nieuw": 24.99
+  },
+  {
+   "id": "westwing-6029191646",
+   "titel": "House Doctor kerstboom Peuce met ledverlichting en timer",
+   "oud": 169.0,
+   "nieuw": 149.0
+  },
+  {
+   "id": "westwing-3e52bef1ef",
+   "titel": "Broste Copenhagen handgemaakte serviesset Nordic Sand (4 personen)",
+   "oud": 199.0,
+   "nieuw": 159.0
+  },
+  {
+   "id": "westwing-a88770a2f2",
+   "titel": "House Doctor handgemaakte opbergmand Mira van hennep",
+   "oud": 37.99,
+   "nieuw": 42.99
+  },
+  {
+   "id": "westwing-ec1ef106a5",
+   "titel": "Ferm Living kerstboomstandaard Flake",
+   "oud": 94.99,
+   "nieuw": 82.99
+  },
+  {
+   "id": "superz-40fb315180",
+   "titel": "Star Wars Black Series elektronische helm Shoretrooper",
+   "oud": 69.0,
+   "nieuw": 125.0
   }
  ],
  "uitverkocht": [],
@@ -543,11 +513,6 @@
   {
    "id": "bol-9300000133849812",
    "titel": "Bluey-familie: 4 speelfiguren",
-   "bron": "bol"
-  },
-  {
-   "id": "bol-9300000145384800",
-   "titel": "Squishmallows Hello Kitty (30 cm)",
    "bron": "bol"
   },
   {
@@ -688,11 +653,6 @@
   {
    "id": "bol-9300000196800292",
    "titel": "Real Madrid Voetbal",
-   "bron": "bol"
-  },
-  {
-   "id": "bol-9200000132733465",
-   "titel": "Barbie Droomvliegtuig",
    "bron": "bol"
   },
   {
@@ -1601,6 +1561,11 @@
    "bron": "Dille & Kamille"
   },
   {
+   "id": "dvzn-888578",
+   "titel": "Whiskyglazen in kerstmanpak (set van 2)",
+   "bron": "Ditverzinjeniet"
+  },
+  {
    "id": "999g-999kol23b",
    "titel": "Catan Junior (piratenspel voor kinderen)",
    "bron": "999Games"
@@ -1906,33 +1871,8 @@
    "bron": "Zadig & Voltaire"
   },
   {
-   "id": "zv-lwba00002011uni",
-   "titel": "Zadig & Voltaire Rock tas met studs (zwart leer)",
-   "bron": "Zadig & Voltaire"
-  },
-  {
    "id": "zv-lwba04535100uni",
    "titel": "Zadig & Voltaire Z Shopper met monogram",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-owsc01529011uni",
-   "titel": "Zadig & Voltaire zijden sjaal met bandanaprint",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-owjw01732026uni",
-   "titel": "Zadig & Voltaire ketting met ster (zilverkleurig)",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-lwog00065001a02",
-   "titel": "Zadig & Voltaire leren handschoenen Out of Hands",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-lmbt01069011a02",
-   "titel": "Zadig & Voltaire leren riem Colter voor hem",
    "bron": "Zadig & Voltaire"
   },
   {
@@ -2026,18 +1966,8 @@
    "bron": "Dr. Martens"
   },
   {
-   "id": "drm-81152414287967",
-   "titel": "Dr. Martens 2976 Vintage Chelsea boots (Made in England, zwart leer)",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "drm-44571080200835",
    "titel": "Dr. Martens 1461 Vintage schoenen (Made in England, zwart leer)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-66062918609923",
-   "titel": "Dr. Martens Jadon Max plateaulaarzen van zacht Buttero-leer",
    "bron": "Dr. Martens"
   },
   {
@@ -2048,16 +1978,6 @@
   {
    "id": "drm-81564603277816",
    "titel": "Dr. Martens leren Daytripper tas (zwart)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-51174496502765",
-   "titel": "Dr. Martens Maxi Overdrive leren draagtas (bruin)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-14838936083582",
-   "titel": "Dr. Martens leren draagtas (zwart)",
    "bron": "Dr. Martens"
   },
   {
@@ -2836,31 +2756,6 @@
    "bron": "Decantalo"
   },
   {
-   "id": "drm-48834507908038",
-   "titel": "Dr. Martens Jadon plateaulaarzen met warme voering (zwart leer)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-40279503089772",
-   "titel": "Dr. Martens 2976 Quad Chelsea boots met warme voering (zwart leer)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-79471497232898",
-   "titel": "Dr. Martens 2976 Alyson Wintergrip Chelsea boots",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-12976194218686",
-   "titel": "Dr. Martens 2976 Blizzard Wintergrip Chelsea boots (bruin)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-28705338766569",
-   "titel": "Dr. Martens 1460 Serena enkellaarzen met warme voering",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "drm-20267424505399",
    "titel": "Dr. Martens leren rugzak (zwart)",
    "bron": "Dr. Martens"
@@ -2869,26 +2764,6 @@
    "id": "drm-61702979571572",
    "titel": "Dr. Martens leren mini-rugzak (zwart)",
    "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-72608803091942",
-   "titel": "Dr. Martens leren clutch met studs (zwart)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-02026100863339",
-   "titel": "Dr. Martens Kiev leren handtas (zwart)",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "zv-lwba04125005uni",
-   "titel": "Zadig & Voltaire Rocky II tas (zwart leer)",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-lwba00001323uni",
-   "titel": "Zadig & Voltaire Pochette Rock (kaki leer, met strass)",
-   "bron": "Zadig & Voltaire"
   },
   {
    "id": "zv-lwba04310011uni",
@@ -2911,28 +2786,8 @@
    "bron": "Zadig & Voltaire"
   },
   {
-   "id": "zv-lwsg01193100uni",
-   "titel": "Zadig & Voltaire telefoontasje Rock (wit leer)",
-   "bron": "Zadig & Voltaire"
-  },
-  {
    "id": "zv-owjw00649038a01",
    "titel": "Zadig & Voltaire armband Rock Feather (zilverkleurig)",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-owsc01515098uni",
-   "titel": "Zadig & Voltaire wollen sjaal Judy met sterren",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-lwba04306011uni",
-   "titel": "Zadig & Voltaire rugzak Z Medium met monogram",
-   "bron": "Zadig & Voltaire"
-  },
-  {
-   "id": "zv-kmsw01860011x06",
-   "titel": "Zadig & Voltaire trui Kennedy van 100% kasjmier (zwart, heren)",
    "bron": "Zadig & Voltaire"
   },
   {
@@ -4256,36 +4111,6 @@
    "bron": "WoodWick"
   },
   {
-   "id": "bt-54936892571987",
-   "titel": "Hunter Original Gloss Chelsea laarzen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-53147084915027",
-   "titel": "Hunter Original Chelsea Leopard laarzen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-50472528511315",
-   "titel": "Hunter Original Tall Gloss regenlaarzen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-52032355598675",
-   "titel": "Hunter Original Refined Tall Onion Quilt regenlaarzen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-50469470667091",
-   "titel": "Hunter Original Short regenlaarzen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-51572967866707",
-   "titel": "Hunter Chelsea Commando laarzen voor heren",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-51172943298899",
    "titel": "Hunter Big Kids Play laarzen voor kinderen (maat 31–34)",
    "bron": "Bartogi"
@@ -4381,41 +4206,6 @@
    "bron": "Bartogi"
   },
   {
-   "id": "bt-54831997026643",
-   "titel": "Sockwell Lounge About sokken voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-54811835138387",
-   "titel": "Sockwell Rugby Crew sokken voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-42162693275823",
-   "titel": "Sockwell Powder Day sokken voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-42091736957103",
-   "titel": "Sockwell Snow Peak sokken voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-52474504053075",
-   "titel": "Sockwell Peaks sokken voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-51615005999443",
-   "titel": "Sockwell Modern Mountain Crew sokken voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-54680628691283",
-   "titel": "HEYDUDE Austin Edge Lounge laarzen voor dames",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-54549695562067",
    "titel": "HEYDUDE Remi Toastee Lo Tassel instappers voor dames",
    "bron": "Bartogi"
@@ -4428,16 +4218,6 @@
   {
    "id": "bt-54737015865683",
    "titel": "HEYDUDE Wally Slip Camp Nylon instappers voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-54737013047635",
-   "titel": "HEYDUDE Bradley II Classic laarzen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-52085251375443",
-   "titel": "KEEN Greta II laarzen voor dames",
    "bron": "Bartogi"
   },
   {
@@ -4471,21 +4251,6 @@
    "bron": "Timberland"
   },
   {
-   "id": "tbl-0a5thxa8m055w1",
-   "titel": "Timberland Stone Street boots met plateauzool, lichtroze",
-   "bron": "Timberland"
-  },
-  {
-   "id": "tbl-0a283gem7095w1",
-   "titel": "Timberland Stone Street gevoerde instapboots voor dames",
-   "bron": "Timberland"
-  },
-  {
-   "id": "tbl-0a2mwxamx075m1",
-   "titel": "Timberland Heritage 6-inch boots voor heren, bruin",
-   "bron": "Timberland"
-  },
-  {
    "id": "tbl-0a6bmeep0020m1",
    "titel": "Timberland Courma kinderboots, groen",
    "bron": "Timberland"
@@ -4493,11 +4258,6 @@
   {
    "id": "tbl-0a6h8gez0010m1",
    "titel": "Timberland babyslofjes met klittenband, geel",
-   "bron": "Timberland"
-  },
-  {
-   "id": "tbl-tb0a6as6280m1",
-   "titel": "Timberland knusse sokken, 2 paar",
    "bron": "Timberland"
   },
   {
@@ -4511,18 +4271,8 @@
    "bron": "Timberland"
   },
   {
-   "id": "tbl-tb0a67v2c35os1",
-   "titel": "Timberland gebreide muts voor heren, donkerbruin",
-   "bron": "Timberland"
-  },
-  {
    "id": "tbl-tb0a67zedf0os1",
    "titel": "Timberland geweven sjaal met franjes, lichtbruin",
-   "bron": "Timberland"
-  },
-  {
-   "id": "tbl-tb0a688j231os1",
-   "titel": "Timberland Heritage Fisherman sjaal, geel",
    "bron": "Timberland"
   },
   {
@@ -4531,38 +4281,13 @@
    "bron": "Timberland"
   },
   {
-   "id": "tbl-tb0a6846ajdm1",
-   "titel": "Timberland leren handschoenen voor heren",
-   "bron": "Timberland"
-  },
-  {
    "id": "tbl-tb0a5rzw919os1",
    "titel": "Timberland leren portemonnee voor heren, bruin",
    "bron": "Timberland"
   },
   {
-   "id": "tbl-tb0a5pyd214xl1",
-   "titel": "Timberland omkeerbare leren riem (bruin en zwart)",
-   "bron": "Timberland"
-  },
-  {
-   "id": "tbl-tb0a2jwvaqgos1",
-   "titel": "Timberland verzorgingsset voor schoenen",
-   "bron": "Timberland"
-  },
-  {
-   "id": "tbl-b0a6h2keymxxl1",
-   "titel": "Timberland Fair Isle trui voor heren",
-   "bron": "Timberland"
-  },
-  {
    "id": "as-5063320832374",
    "titel": "AllSaints lange ketting van sterling zilver",
-   "bron": "AllSaints"
-  },
-  {
-   "id": "as-5063320808065",
-   "titel": "AllSaints dubbele ring van sterling zilver",
    "bron": "AllSaints"
   },
   {
@@ -4573,21 +4298,6 @@
   {
    "id": "as-5063975063024",
    "titel": "AllSaints gebreide muts, zwart",
-   "bron": "AllSaints"
-  },
-  {
-   "id": "as-5063975064106",
-   "titel": "AllSaints gevlochten leren riem, zwart",
-   "bron": "AllSaints"
-  },
-  {
-   "id": "as-5063320946224",
-   "titel": "AllSaints pilotenzonnebril, zwart",
-   "bron": "AllSaints"
-  },
-  {
-   "id": "as-5063975000470",
-   "titel": "AllSaints Neo leren bikerjack, zwart",
    "bron": "AllSaints"
   },
   {
@@ -4836,6 +4546,11 @@
    "bron": "Dille & Kamille"
   },
   {
+   "id": "dvzn-542206",
+   "titel": "Luiaard leeslampje en boekenlegger",
+   "bron": "Ditverzinjeniet"
+  },
+  {
    "id": "dk-00018915",
    "titel": "Vogelvoederhanger van aardewerk, groen",
    "bron": "Dille & Kamille"
@@ -5044,6 +4759,11 @@
    "id": "ww-ani99001323744",
    "titel": "Voerbak Drama Queen",
    "bron": "Westwing"
+  },
+  {
+   "id": "dvzn-711514",
+   "titel": "Kaartspel Purranormal Cativity",
+   "bron": "Ditverzinjeniet"
   },
   {
    "id": "dvzn-859891",
@@ -6401,11 +6121,6 @@
    "bron": "LEGO"
   },
   {
-   "id": "bl-10490036",
-   "titel": "Lichtboom berk met 144 lampjes (160 cm)",
-   "bron": "Bellatio"
-  },
-  {
    "id": "an-10429639",
    "titel": "Hermann Teddy knuffel Border Collie",
    "bron": "Animals Giftshop"
@@ -6421,11 +6136,6 @@
    "bron": "Animals Giftshop"
   },
   {
-   "id": "dg-cac5ff65d9",
-   "titel": "Bruder MAN-vrachtwagen met hijskraan",
-   "bron": "De Grote Speelgoedwinkel"
-  },
-  {
    "id": "bol-9300000334065403",
    "titel": "Mooie meisjes – Karin Slaughter",
    "bron": "Boekenwereld.com"
@@ -6439,11 +6149,6 @@
    "id": "bol-9300000257077401",
    "titel": "LEGO Liefdesletters LOVE (40867)",
    "bron": "LEGO"
-  },
-  {
-   "id": "cg-chocolade-gereedschap",
-   "titel": "Gereedschap van chocolade",
-   "bron": "CoolGift"
   },
   {
    "id": "bol-9300000228511226",
@@ -6681,6 +6386,11 @@
    "bron": "De Grote Speelgoedwinkel"
   },
   {
+   "id": "bol-9300000257637905",
+   "titel": "LEGO Technic McLaren MCL39 F1 Auto",
+   "bron": "Coolblue"
+  },
+  {
    "id": "bol-9300000002863037",
    "titel": "Stapelgekke Speed Cups",
    "bron": "999Games"
@@ -6781,133 +6491,8 @@
    "bron": "Animals Giftshop"
   },
   {
-   "id": "drm-m-d5dcf536e2",
-   "titel": "Dr. Martens Maybole leren Chelsea laarzen met vierkante neus",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-f3a27c5d66",
-   "titel": "Dr. Martens 2976 Leonore II zachtleren Chelsea laarzen gevoerd met imi",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-97d72855ca",
-   "titel": "Dr. Martens Spence leren Chelsea laarzen met uitlopende hak",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-961e7a8cb5",
-   "titel": "Dr. Martens Maybole hoge leren Chelsea laarzen met vierkante neus",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-b74c0c0c8a",
-   "titel": "Dr. Martens 1460 Bex Smooth platform laarzen leer",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-13c6eab08f",
-   "titel": "Dr. Martens Jadon III Pisa platform laarzen leer",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-b08ba78c51",
-   "titel": "Dr. Martens Buzz Hi Wyoming leren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-43bf379fec",
-   "titel": "Dr. Martens Rejena leren laarzen met krokodilreliëf",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-e8028ef357",
-   "titel": "Dr. Martens 1460 zachtleren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-4906379d64",
-   "titel": "Dr. Martens 1460 Rain laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "drm-m-5f8d498527",
    "titel": "Dr. Martens 1460 Bex Dalmatian Hair-On leren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-c369b5d539",
-   "titel": "Dr. Martens 1460 Bex leren laarzen met Westerngesp",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-f3bff828c8",
-   "titel": "Dr. Martens 1460 lakleren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-63669f832e",
-   "titel": "Dr. Martens 1460 Vonda laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-34f3a3a960",
-   "titel": "Dr. Martens Spence Sendal leren laarzen met hak en Ritssluiting",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-8e830a2af6",
-   "titel": "Dr. Martens Dmxl leren laarzen met acht veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-3251bc84d1",
-   "titel": "Dr. Martens klassieke 1490 laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-d443d7349d",
-   "titel": "Dr. Martens Jesy Sendal leren hakken laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-fa834840bf",
-   "titel": "Dr. Martens Buzz Hi Gloss leren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-485ccfde21",
-   "titel": "Dr. Martens Kasey Lo Virginia leren laarzen met hak",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-4453806c2d",
-   "titel": "Dr. Martens 1460 Decayed Roses leren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-bbdc32f806",
-   "titel": "Dr. Martens Buzz Hi leren laarzen met slangenprint en rits",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-118df24e17",
-   "titel": "Dr. Martens Kasey hoge laarzen van Milled Gloss-Leer met hak",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-fbf8d446af",
-   "titel": "Dr. Martens Wayborne Brain Dead lederen laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-71c809b604",
-   "titel": "Dr. Martens 1B60 Bex Pisa leren kniehoge laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-c48b95a63b",
-   "titel": "Dr. Martens Rejena Explorer Wp hoge leren laarzen",
    "bron": "Dr. Martens"
   },
   {
@@ -6916,108 +6501,8 @@
    "bron": "Dr. Martens"
   },
   {
-   "id": "drm-m-662946e549",
-   "titel": "Dr. Martens Rick Owens Pull-On laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-b79406c234",
-   "titel": "Dr. Martens 1460 klassieke kalfsleren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-440e0af614",
-   "titel": "Dr. Martens 1460 Pascal Wanama leren veterlaarzen met bloemen en acht ",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-6a88c7f833",
-   "titel": "Dr. Martens 1460 Pascal Whimsigoth Arcadia leren veterlaarzen met fluw",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-efcecba4bc",
-   "titel": "Dr. Martens 1B99 Whimsigoth leren en fluwelen veterlaarzen met veertie",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-94b720de08",
-   "titel": "Dr. Martens 1460 Cappers klassiek kalfsleren veterlaarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-c562d84039",
-   "titel": "Dr. Martens Rejena Old Harness leren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-8caf13ebee",
-   "titel": "Dr. Martens Dmxl Lunar leren laarzen met veertien veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-4caecdcc36",
-   "titel": "Dr. Martens 1460 Pascal Flower Grizzly leren laarzen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-ff415be321",
-   "titel": "Dr. Martens Buzz leren schoenen met vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-3be7d62554",
-   "titel": "Dr. Martens Buzz Ballerina Gloss leren",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-99fb3650fa",
-   "titel": "Dr. Martens Lowell Print Moc Toe",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-46e1e8bad7",
-   "titel": "Dr. Martens Buzz Dalmatian Hair-On leren schoenen met vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "drm-m-045232c7e6",
    "titel": "Dr. Martens Buzz luipaard Mary Jane",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-01e7db0ffa",
-   "titel": "Dr. Martens Dmxl leren schoenen met rits",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-0ed2c71973",
-   "titel": "Dr. Martens 2976 Harness Analine leren Chelsea",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-823b2605cd",
-   "titel": "Dr. Martens Dmxl distressed lakleren Chelsea",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-3a09adf58c",
-   "titel": "Dr. Martens Buzz distressed lakleren schoenen met vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-0b9254ff52",
-   "titel": "Dr. Martens Buzz luipaard schoenen met vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-0139faffce",
-   "titel": "Dr. Martens DMXL Guard schoenen van suède en nubuck",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-0860f52db3",
-   "titel": "Dr. Martens Ramsey Wednesday platform creepers",
    "bron": "Dr. Martens"
   },
   {
@@ -7026,38 +6511,13 @@
    "bron": "Dr. Martens"
   },
   {
-   "id": "drm-m-d30586ad9b",
-   "titel": "Dr. Martens Buzz Hs getrommeld Gloss leren schoenen met vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-7504b57754",
-   "titel": "Dr. Martens Buzz leren schoenen met slangenprint en vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-a929dbf19c",
-   "titel": "Dr. Martens Buzz getrommelde nubuck schoenen met vijf veterogen",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "drm-m-631b6eddec",
    "titel": "Dr. Martens Aurix leren mules met satijnen afwerking",
    "bron": "Dr. Martens"
   },
   {
-   "id": "drm-m-2db1182828",
-   "titel": "Dr. Martens 1461 Metallica",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "drm-m-acef0274fb",
    "titel": "Dr. Martens Dmxl V2 Mary Jane",
-   "bron": "Dr. Martens"
-  },
-  {
-   "id": "drm-m-ca16996850",
-   "titel": "Dr. Martens Sinclair Flower Grizzly leren platform",
    "bron": "Dr. Martens"
   },
   {
@@ -7071,11 +6531,6 @@
    "bron": "Dr. Martens"
   },
   {
-   "id": "drm-m-22720dda03",
-   "titel": "Dr. Martens Buzz Powerpuff schoen met klittenbandsluiting",
-   "bron": "Dr. Martens"
-  },
-  {
    "id": "bt-m-1ea2a1341f",
    "titel": "KEEN KNX sneakers voor kinderen (maat 24–31)",
    "bron": "Bartogi"
@@ -7083,11 +6538,6 @@
   {
    "id": "bt-m-e1663711d8",
    "titel": "KEEN Hyperport H2 sandalen voor kinderen (maat 24–31)",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-6582b5a99b",
-   "titel": "HEYDUDE Hudson Lift Sport sneakers voor dames",
    "bron": "Bartogi"
   },
   {
@@ -7101,28 +6551,8 @@
    "bron": "Bartogi"
   },
   {
-   "id": "bt-m-5f8ab8eda9",
-   "titel": "Hunter Downpour Adjustable Tall regenlaarzen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-cbc7201f86",
-   "titel": "KEEN Targhee IV Mid wandelschoenen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-fd0475b22d",
-   "titel": "Hunter Balmoral Tall Side Adjustable regenlaarzen",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-m-1d80bcb1ac",
    "titel": "KEEN Knotch Creek sandalen voor kinderen (maat 32–39)",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-780db37581",
-   "titel": "KEEN Hightrail wandelschoenen voor heren",
    "bron": "Bartogi"
   },
   {
@@ -7141,33 +6571,13 @@
    "bron": "Bartogi"
   },
   {
-   "id": "bt-m-f94d37fc68",
-   "titel": "KEEN Roam trailschoenen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-67a1c73a4e",
-   "titel": "HEYDUDE Hudson Canvas sneakers voor heren",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-m-698055e377",
    "titel": "Jan Jansen Ieniemini Doublezip enkellaarsje",
    "bron": "Bartogi"
   },
   {
-   "id": "bt-m-c3e790955a",
-   "titel": "Jan Jansen Sneaker x Pump",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-m-7ddd6b92f9",
    "titel": "KEEN Hightrail wandelschoenen voor kinderen (maat 24–31)",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-b024055d35",
-   "titel": "KEEN Zionic ADV wandelsandalen voor dames",
    "bron": "Bartogi"
   },
   {
@@ -7186,28 +6596,8 @@
    "bron": "Bartogi"
   },
   {
-   "id": "bt-m-efdba1fc07",
-   "titel": "KEEN KNX sneakers voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-28c2b4d455",
-   "titel": "Piedi Nudi Imola sneakers voor dames",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-m-c4f1b1f615",
    "titel": "KEEN Jasper sneakers voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-97bbdf3024",
-   "titel": "Sockwell Circuit OTC sokken voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-985c23a36f",
-   "titel": "Hunter Play Tall regenlaarzen voor dames",
    "bron": "Bartogi"
   },
   {
@@ -7281,53 +6671,8 @@
    "bron": "Bartogi"
   },
   {
-   "id": "bt-m-05ebe9550a",
-   "titel": "KEEN Pyrenees bergschoenen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-51ce0b6cff",
-   "titel": "KEEN NXIS EVO wandelschoenen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-52e04d1d2c",
-   "titel": "KEEN WK400 wandelschoenen voor dames",
-   "bron": "Bartogi"
-  },
-  {
    "id": "bt-m-30c08b2688",
    "titel": "KEEN Hightrail Mid wandelschoenen voor kinderen (maat 24–31)",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-c78898b396",
-   "titel": "KEEN Hightrail wandelschoenen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-9fcda7fccd",
-   "titel": "KEEN Leiki wandelschoenen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-f2654d89d7",
-   "titel": "KEEN Targhee III wandelsandalen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-7d43b27e6b",
-   "titel": "KEEN Hightrail Mid wandelschoenen voor heren",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-af740d4bcd",
-   "titel": "KEEN Clearwater wandelsandalen voor dames",
-   "bron": "Bartogi"
-  },
-  {
-   "id": "bt-m-2516c89e49",
-   "titel": "KEEN Zionic wandelschoenen voor heren",
    "bron": "Bartogi"
   },
   {
@@ -7536,11 +6881,6 @@
    "bron": "LEGO"
   },
   {
-   "id": "stl-pet",
-   "titel": "Stella McCartney pet met logo – kies je model",
-   "bron": "Stella McCartney"
-  },
-  {
    "id": "stl-beanie",
    "titel": "Stella McCartney muts met logo – kies je kleur",
    "bron": "Stella McCartney"
@@ -7616,24 +6956,9 @@
    "bron": "Boekenwereld.com"
   },
   {
-   "id": "bellat-15fecca997",
-   "titel": "Zingende en dansende kerstboom",
-   "bron": "Bellatio"
-  },
-  {
    "id": "bol-9300000231659890",
    "titel": "Kerstdorp Haken met Mr. Cey",
    "bron": "Boekenwereld.com"
-  },
-  {
-   "id": "bellat-39d86aa14d",
-   "titel": "Foute kerstmuts Ho Ho Ho met lampjes",
-   "bron": "Bellatio"
-  },
-  {
-   "id": "bellat-bc56d26d4e",
-   "titel": "Foute kerstsokken Merry Fatmas (2 paar)",
-   "bron": "Bellatio"
   },
   {
    "id": "bol-9300000237345461",
@@ -7644,16 +6969,6 @@
    "id": "hema-1976c559e6",
    "titel": "HEMA karaokeset (zilver)",
    "bron": "HEMA"
-  },
-  {
-   "id": "bellat-6b5faa42ac",
-   "titel": "Kerstdorp met beweging en licht",
-   "bron": "Bellatio"
-  },
-  {
-   "id": "bellat-b007285fe1",
-   "titel": "Neon rendierlamp",
-   "bron": "Bellatio"
   },
   {
    "id": "bierch-39dea6c2d9",
@@ -7689,6 +7004,21 @@
    "id": "bol-9300000148509593",
    "titel": "Carolina Herrera Good Girl Blush eau de parfum (30 ml)",
    "bron": "Joybuy"
+  },
+  {
+   "id": "hema-866ecf650d",
+   "titel": "HEMA retro handheld game (paars)",
+   "bron": "HEMA"
+  },
+  {
+   "id": "hema-69e18303a9",
+   "titel": "HEMA reisföhn (paars)",
+   "bron": "HEMA"
+  },
+  {
+   "id": "hema-811ea72c01",
+   "titel": "HEMA satijnen krullers (6 stuks)",
+   "bron": "HEMA"
   },
   {
    "id": "bol-9300000237004451",
@@ -8244,6 +7574,11 @@
    "id": "westwing-d9c17d1366",
    "titel": "Glencairn whisky-proefglazen (6 stuks)",
    "bron": "Westwing"
+  },
+  {
+   "id": "a-emp-1fd51a7d4e",
+   "titel": "Snoopy kersttrui oversize (dames)",
+   "bron": "EMP"
   },
   {
    "id": "a-emp-dd262961e9",
@@ -8999,6 +8334,11 @@
    "id": "westwing-155baddc4e",
    "titel": "Paper Collective fotolijst 4 Woods",
    "bron": "Westwing"
+  },
+  {
+   "id": "a-coolblue-nl-35931b887f",
+   "titel": "Krups Dolce Gusto Genio S Touch",
+   "bron": "Coolblue"
   },
   {
    "id": "a-coolblue-nl-e7ab69cf6a",
@@ -9871,9 +9211,19 @@
    "bron": "Surprises-winkel"
   },
   {
+   "id": "westwing-6ffafec1c7",
+   "titel": "DBKD kandelaar Bubble, H 15 cm",
+   "bron": "Westwing"
+  },
+  {
    "id": "t2-grotekadoshop-0eb4d77001",
    "titel": "Led-stompkaarsen met bewegende vlam en afstandsbediening",
    "bron": "Grote Kadoshop"
+  },
+  {
+   "id": "westwing-fb6b6711c7",
+   "titel": "Broste Copenhagen stompkaars Twist",
+   "bron": "Westwing"
   },
   {
    "id": "tt-dvzn-9ffaea48b4",
@@ -9914,6 +9264,11 @@
    "id": "t2-grotekadoshop-7f50c00d41",
    "titel": "Ilum Vijg Arabesque Geurkaars Klein",
    "bron": "Grote Kadoshop"
+  },
+  {
+   "id": "westwing-a62ce30cbc",
+   "titel": "Meraki geurkaars White Garden (roos, cyclamen, cederhout)",
+   "bron": "Westwing"
   },
   {
    "id": "t2-kado-versturen-847b35ac94",
@@ -10011,11 +9366,6 @@
    "bron": "Ditverzinjeniet"
   },
   {
-   "id": "westwing-24d0b8d69c",
-   "titel": "Deluxe Home Art handgemaakte LED steekkaarsen Real Flame, H 24 cm, 2 s",
-   "bron": "Westwing"
-  },
-  {
    "id": "t2-grotekadoshop-14e63e9e12",
    "titel": "Bolsius Dinerkaars Rustiek Stormy Grijs 27 Cm",
    "bron": "Grote Kadoshop"
@@ -10029,6 +9379,11 @@
    "id": "t2-hema-455578df7b",
    "titel": "HEMA oplaadbare theelichtjes (4 stuks)",
    "bron": "HEMA"
+  },
+  {
+   "id": "westwing-fff7cfda46",
+   "titel": "Broste Copenhagen handgemaakte steekkaarsen Twist, 2-delig",
+   "bron": "Westwing"
   },
   {
    "id": "westwing-f704bef6cb",
@@ -11541,6 +10896,11 @@
    "bron": "Joybuy"
   },
   {
+   "id": "cl-cirqa",
+   "titel": "Garmin CIRQA Smart Band",
+   "bron": "Coolblue"
+  },
+  {
    "id": "cl-oura-maat",
    "titel": "Oura Ring maatset",
    "bron": "Coolblue"
@@ -11564,6 +10924,11 @@
    "id": "cl-lavalamp",
    "titel": "Lavalamp",
    "bron": "Fiftiesstore"
+  },
+  {
+   "id": "cl-homepod",
+   "titel": "Apple HomePod",
+   "bron": "Coolblue"
   },
   {
    "id": "cl-uxbridge",
@@ -11766,21 +11131,6 @@
    "bron": "HEMA"
   },
   {
-   "id": "cl-hema-touch",
-   "titel": "HEMA handschoenen met touchscreen",
-   "bron": "HEMA"
-  },
-  {
-   "id": "cl-lgt-touch",
-   "titel": "Touchscreen handschoenen wit",
-   "bron": "Looking Good Today"
-  },
-  {
-   "id": "cl-stetson",
-   "titel": "Stetson baseball pet Boss of the Plains",
-   "bron": "Fiftiesstore"
-  },
-  {
    "id": "cl-hema-heren-pyjama",
    "titel": "HEMA herenpyjama",
    "bron": "HEMA"
@@ -11811,11 +11161,6 @@
    "bron": "Yesgifts"
   },
   {
-   "id": "cl-soliver-hoodie",
-   "titel": "s.Oliver oversized hoodie",
-   "bron": "s.Oliver NL"
-  },
-  {
    "id": "cl-kersttrui",
    "titel": "Foute kersttrui",
    "bron": "Bellatio"
@@ -11824,6 +11169,11 @@
    "id": "cl-repeat-merino",
    "titel": "Repeat merinowollen trui",
    "bron": "Repeat Cashmere"
+  },
+  {
+   "id": "cl-mario-tee",
+   "titel": "Super Mario T-shirt",
+   "bron": "EMP"
   },
   {
    "id": "cl-pikachu-tee",
@@ -11936,6 +11286,16 @@
    "bron": "Kado-versturen"
   },
   {
+   "id": "cl-dyson-supersonic",
+   "titel": "Dyson Supersonic föhn",
+   "bron": "Coolblue"
+  },
+  {
+   "id": "cl-babyliss-stijltang",
+   "titel": "BaByliss Smooth Finish 230 stijltang",
+   "bron": "Coolblue"
+  },
+  {
    "id": "cl-remington-bigcurl",
    "titel": "Remington Pro Big Curl krultang 38 mm",
    "bron": "Coolblue"
@@ -11944,16 +11304,6 @@
    "id": "cl-hema-haarolie",
    "titel": "HEMA voedende haarolie",
    "bron": "HEMA"
-  },
-  {
-   "id": "cl-braun-x",
-   "titel": "Braun Series X hybride trimmer",
-   "bron": "Coolblue"
-  },
-  {
-   "id": "cl-philips-headshaver",
-   "titel": "Philips hoofdscheerapparaat",
-   "bron": "Coolblue"
   },
   {
    "id": "cl-nivea-aftershave",
@@ -15221,6 +14571,11 @@
    "bron": "EMP"
   },
   {
+   "id": "bell-aa25af3f94",
+   "titel": "Kersttrui kerstman en rendier (kinderen)",
+   "bron": "Bellatio"
+  },
+  {
    "id": "dgsw-ef851729b2",
    "titel": "Wasgij Christmas 21 kerstpuzzel (2 x 1000 stukjes)",
    "bron": "De Grote Speelgoedwinkel"
@@ -15293,6 +14648,11 @@
   {
    "id": "emp-772f0b51eb",
    "titel": "KPop Demon Hunters drinkfles",
+   "bron": "EMP"
+  },
+  {
+   "id": "emp-ea05ec9b56",
+   "titel": "Harry Potter kettinghorloge Golden Snitch",
    "bron": "EMP"
   },
   {
@@ -15414,11 +14774,6 @@
    "id": "mega-de65539d2c",
    "titel": "Reuzenwijnglas XXL",
    "bron": "Megagadgets"
-  },
-  {
-   "id": "kadove-274cfdc2ee",
-   "titel": "Flesopener in de vorm van een hamer",
-   "bron": "Kado-versturen"
   },
   {
    "id": "mega-b9f21c5d70",
@@ -15546,11 +14901,6 @@
    "bron": "Megagadgets"
   },
   {
-   "id": "kadove-858cf75653",
-   "titel": "Foppakket voor op de wc",
-   "bron": "Kado-versturen"
-  },
-  {
    "id": "mega-cf15325c3b",
    "titel": "Wc-golfset Potty Putter",
    "bron": "Megagadgets"
@@ -15611,28 +14961,8 @@
    "bron": "Kado-versturen"
   },
   {
-   "id": "kadove-a9049cd42f",
-   "titel": "Kruik met badstof hoes \"Little Mermaid\" (0,8 liter)",
-   "bron": "Kado-versturen"
-  },
-  {
-   "id": "kadove-52be56ec1b",
-   "titel": "Mok 18 jaar – kies je ontwerp",
-   "bron": "Kado-versturen"
-  },
-  {
    "id": "kadove-8eba8e32f1",
    "titel": "Mega deurposter \"I love you\" (A1)",
-   "bron": "Kado-versturen"
-  },
-  {
-   "id": "kadove-a0f2507909",
-   "titel": "Muziekdoosje met ballerina (roze)",
-   "bron": "Kado-versturen"
-  },
-  {
-   "id": "kadove-f736584343",
-   "titel": "Hangstoel oranje (100 x 60 cm)",
    "bron": "Kado-versturen"
   },
   {
@@ -15756,6 +15086,26 @@
    "bron": "Top4Running"
   },
   {
+   "id": "westwi-c349b743c7",
+   "titel": "Mondgeblazen kerstornament: kerststal",
+   "bron": "Westwing"
+  },
+  {
+   "id": "massa-f8c78671f6",
+   "titel": "Rendier met ledlampjes voor buiten (104 cm)",
+   "bron": "Massamarkt"
+  },
+  {
+   "id": "mmf-6495ae37e8",
+   "titel": "Adellijk portret van je eigen foto (poster)",
+   "bron": "Make Me Famous"
+  },
+  {
+   "id": "mmf-b99ea99ff6",
+   "titel": "Voetbalmok met je eigen foto",
+   "bron": "Make Me Famous"
+  },
+  {
    "id": "gestr-7cd5157478",
    "titel": "Sistema Itsy drinkflesje roze (380 ml)",
    "bron": "Gestrikt"
@@ -15789,6 +15139,16 @@
    "id": "massa-c86f190c42",
    "titel": "Mindmaze Mysterieus (raadselspel)",
    "bron": "Massamarkt"
+  },
+  {
+   "id": "parfum-7dcafd557e",
+   "titel": "Atelier Rebul handzeep Bosphorus (250 ml)",
+   "bron": "Parfumania"
+  },
+  {
+   "id": "hema-5c9392b1f3",
+   "titel": "HEMA arcadespel",
+   "bron": "HEMA"
   },
   {
    "id": "iscoot-9fed6c33b4",
@@ -16064,9 +15424,189 @@
    "id": "dropte-66ae173ff2",
    "titel": "Katja Apekoppen door de brievenbus, wikkel 'Het spijt me' of andere te",
    "bron": "Droptelegram"
+  },
+  {
+   "id": "woewoe-e554f7bca8",
+   "titel": "Houten leeuwenwelpje (Holztiger)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-bd834313f3",
+   "titel": "Nep-pepernoten en chocoladeletters om mee te spelen (Kiddi)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-2657e7b14e",
+   "titel": "Hexbug Nano: robotbeestje dat zelf rondrent",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-ff1c2aa222",
+   "titel": "Survival-armband met kompas, fluitje en vuurstarter",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-8659528c19",
+   "titel": "Houten jojo met glittersteen (Bauspiel)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-a65d54b368",
+   "titel": "Putty Big Bubble: kneedgom die knettert en plopt",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-4f1087a474",
+   "titel": "Magische waterstiften: tekening die op het water drijft",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-a502731314",
+   "titel": "Handvlieger met regenbooglinten",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-b7760a7ba2",
+   "titel": "Playfoam die oplicht in het donker (4 kleuren)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-fc0b0c3d9d",
+   "titel": "Lichtgevende sterren en planeten voor het plafond",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-299b07cf07",
+   "titel": "Herkleurbare placemat graafmachine",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-7c880d8044",
+   "titel": "Slijm maken dat oplicht in het donker (Zimpli Kids)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-19f73844ed",
+   "titel": "Zachte regenboog-stapelbekers (TickiT)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-572f67f4e3",
+   "titel": "Stapeltoren van zacht bijtspeelgoed (Jellystone)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-5dc11dd46b",
+   "titel": "Rammelaar die oplicht als je schudt (Glo Pals)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-d51dd376f3",
+   "titel": "Voeldonut watermeloen (Petit Boum)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-e82a6b64fe",
+   "titel": "Kraamcadeau door de brievenbus: boerderij",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-f2134ab48d",
+   "titel": "Houten autootje (Goki)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-46e6ec21fd",
+   "titel": "Badboekje dat van kleur verandert: huisdieren",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-1f2f74c95c",
+   "titel": "Elmo-badvriendje met lichtgevende blokjes (Glo Pals)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-5f1c2febc9",
+   "titel": "Rustfles met handvatten die oplichten in het donker",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-9d7ea8f15c",
+   "titel": "Badotter met baby en bruisballen (Zimpli Kids)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-b8ec70f718",
+   "titel": "Ruimte-badset met bruisballen en raket (Bath Beans)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-cde0792676",
+   "titel": "Waterdichte kindercamera voor foto en video (Kidywolf)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-f39eea0314",
+   "titel": "Elf on the Shelf met Nederlandstalig boek",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-8fac75777d",
+   "titel": "Echte mineralen uithakken (Expedition Natur)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-7f9378f486",
+   "titel": "Flockmen: houten acrobaten om te stapelen (16 delen)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-6e48434b3c",
+   "titel": "Connetix magnetische tegels: reisset in een blik",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-dfc845ea5c",
+   "titel": "Connetix magnetische tegels startset (60 stuks)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-745720144a",
+   "titel": "Grimm's houten regenboog (groot, naturel)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-7e9ef0d8af",
+   "titel": "Clixo magnetische bouwstukken regenboog (9 stuks)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-8114e4e94d",
+   "titel": "Stapelstein balansbord confetti",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-a4fccb8ad0",
+   "titel": "Makedo: bouwen met karton (50 onderdelen)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "woewoe-9c43e1c6bd",
+   "titel": "Buigzame autobaan van 4 meter (Roll & Race)",
+   "bron": "Woewoe"
+  },
+  {
+   "id": "lgt-a800e3c953",
+   "titel": "Leren sleutelhanger voor de autosleutel (camel)",
+   "bron": "Looking Good Today"
+  },
+  {
+   "id": "massa-33fd44d2a6",
+   "titel": "Delfts blauwe mok 'Pensioen'",
+   "bron": "Massamarkt"
   }
  ],
- "gecontroleerd": 6679,
+ "gecontroleerd": 6725,
  "bronnen": [
   "product-feed_baby-v2.csv.gz",
   "product-feed_computer-v2.csv.gz",
@@ -16094,8 +15634,8 @@
   "product-feed_sports-v2.csv.gz",
   "product-feed_supermarket-v2.csv.gz",
   "product-feed_toys-v2.csv.gz",
-  "a-namen.json",
   "a-kopp-verlag-de-at.json",
+  "a-namen.json",
   "a-yves-rocher-nl.json",
   "a-iscooter-eu.json",
   "a-s-oliver-nl.json",
@@ -16104,6 +15644,7 @@
   "a-intergard-tuinartikelen-nl.json",
   "a-nespresso-nl.json",
   "a-street-one-nl.json",
+  "a-uhrcenter-de.json",
   "a-timeshop24-de.json",
   "a-suitableshop-nl.json",
   "a-robotime-international-limited.json",
@@ -16330,7 +15871,6 @@
   "a-coolblue-nl-2092e12536",
   "a-coolblue-nl-22373bcaf7",
   "a-coolblue-nl-2857fe6592",
-  "a-coolblue-nl-35931b887f",
   "a-coolblue-nl-4b6ab5dcf5",
   "a-coolblue-nl-4e43f2c312",
   "a-coolblue-nl-546dabfcd1",
@@ -16363,7 +15903,6 @@
   "a-coolblue-nl-eb1dba0df7",
   "a-coolblue-nl-fdea36894a",
   "a-emp-0f4ebaaa15",
-  "a-emp-1fd51a7d4e",
   "a-emp-66e774ab70",
   "a-emp-7a45fc60b5",
   "a-emp-9d8519487f",
@@ -16413,10 +15952,13 @@
   "an-10434267",
   "an-10473689",
   "an-10505604",
+  "anim-112ddcda59",
   "anim-1d2bd3cdc3",
   "anim-347b348fd9",
+  "anim-43547929de",
   "anim-459dbc90d7",
   "anim-55168b9b9f",
+  "anim-671dc4a7cd",
   "anim-6bb824ce71",
   "anim-730548e9dd",
   "anim-831e90470f",
@@ -16425,8 +15967,10 @@
   "anim-9396070049",
   "anim-96a97d59d4",
   "anim-97c43c37a2",
+  "anim-c5f0e77073",
   "anim-ce7802cd8f",
   "anim-cff62bd7c1",
+  "anim-d912bda820",
   "anim-fe0dcc3ded",
   "animal-02d8d4f843",
   "animal-075be15a1d",
@@ -16456,7 +16000,6 @@
   "bell-8dd4d19400",
   "bell-a109554ea3",
   "bell-a7063fec9b",
-  "bell-aa25af3f94",
   "bell-b4fa6cfd40",
   "bell-b65301f5e3",
   "bell-b932b20f78",
@@ -16470,14 +16013,19 @@
   "bellat-0974547831",
   "bellat-0df389f522",
   "bellat-1300786b71",
+  "bellat-15fecca997",
+  "bellat-39d86aa14d",
   "bellat-446c4a1e04",
   "bellat-604225da5f",
+  "bellat-6b5faa42ac",
   "bellat-73a92756bb",
   "bellat-7525c29e2c",
   "bellat-775e28bcdf",
   "bellat-7b32f864c1",
   "bellat-80ddf1005c",
   "bellat-974a7b5866",
+  "bellat-b007285fe1",
+  "bellat-bc56d26d4e",
   "bellat-bde5780664",
   "bellat-c2b4aaef17",
   "bellat-c50471e085",
@@ -16506,7 +16054,7 @@
   "bgs-f04e05c013",
   "bgs-f60e3d1c57",
   "bgs-f69f771644",
-  "bivol-e0da6c7a70",
+  "bgs-f7d234d17e",
   "bl-10075513",
   "bl-10172914",
   "bl-10186493",
@@ -16514,14 +16062,23 @@
   "bl-10268469",
   "bl-10440614",
   "bl-10463706",
+  "bl-10490036",
+  "bloom-086a417205",
   "bloom-19cec43f1e",
   "bloom-2216bdea50",
   "bloom-405104d9c1",
+  "bloom-4161f2e988",
+  "bloom-4be1e38f2b",
+  "bloom-6d523c18f4",
   "bloom-7e63f703c6",
+  "bloom-92500350e5",
+  "bloom-a98a85168d",
   "bloom-b66878fe5c",
   "bloom-c9b56cd2e1",
   "bloom-dd3427675e",
   "bloom-dfefb6a832",
+  "bloom-e7ce06be21",
+  "bloom-f6daaba72c",
   "boeken-b4ca80eae9",
   "bol-1000004003218771",
   "bol-1000004005698820",
@@ -16714,7 +16271,6 @@
   "bol-9200000036922606",
   "bol-9200000037296159",
   "bol-9200000037409341",
-  "bol-9200000037554087",
   "bol-9200000037554089",
   "bol-9200000038306258",
   "bol-9200000038404235",
@@ -17066,8 +16622,6 @@
   "bol-9200000104713454",
   "bol-9200000104774768",
   "bol-9200000104809384",
-  "bol-9200000104835927",
-  "bol-9200000105015747",
   "bol-9200000105187560",
   "bol-9200000105204546",
   "bol-9200000105249191",
@@ -17105,7 +16659,6 @@
   "bol-9200000109805786",
   "bol-9200000109816291",
   "bol-9200000109816485",
-  "bol-9200000110072647",
   "bol-9200000110125746",
   "bol-9200000110197386",
   "bol-9200000110241041",
@@ -17113,7 +16666,6 @@
   "bol-9200000111001424",
   "bol-9200000111538771",
   "bol-9200000111948433",
-  "bol-9200000111976144",
   "bol-9200000112193748",
   "bol-9200000112314114",
   "bol-9200000112366639",
@@ -17158,7 +16710,6 @@
   "bol-9200000121559206",
   "bol-9200000121694914",
   "bol-9200000122182194",
-  "bol-9200000122477403",
   "bol-9200000122576444",
   "bol-9200000122876019",
   "bol-9200000122915078",
@@ -17172,7 +16723,6 @@
   "bol-9200000124010082",
   "bol-9200000124017691",
   "bol-9200000124947216",
-  "bol-9200000125025508",
   "bol-9200000125118307",
   "bol-9200000125481463",
   "bol-9200000125684992",
@@ -17197,8 +16747,6 @@
   "bol-9200000128066014",
   "bol-9200000128066020",
   "bol-9200000128066022",
-  "bol-9200000128141002",
-  "bol-9200000128141074",
   "bol-9200000128245018",
   "bol-9200000128456986",
   "bol-9200000129054415",
@@ -17308,7 +16856,6 @@
   "bol-9300000012199690",
   "bol-9300000012815860",
   "bol-9300000013218376",
-  "bol-9300000013231326",
   "bol-9300000013239995",
   "bol-9300000013635889",
   "bol-9300000013695043",
@@ -17357,7 +16904,6 @@
   "bol-9300000020446740",
   "bol-9300000020733914",
   "bol-9300000020893712",
-  "bol-9300000020992182",
   "bol-9300000020994080",
   "bol-9300000020994815",
   "bol-9300000021320065",
@@ -17421,7 +16967,6 @@
   "bol-9300000032546573",
   "bol-9300000032883991",
   "bol-9300000032912003",
-  "bol-9300000033150820",
   "bol-9300000033563858",
   "bol-9300000033617241",
   "bol-9300000033632654",
@@ -17431,7 +16976,6 @@
   "bol-9300000033682836",
   "bol-9300000033693372",
   "bol-9300000033972788",
-  "bol-9300000034103256",
   "bol-9300000034129529",
   "bol-9300000034159462",
   "bol-9300000034727777",
@@ -17552,7 +17096,6 @@
   "bol-9300000060650516",
   "bol-9300000061369291",
   "bol-9300000061742706",
-  "bol-9300000061789765",
   "bol-9300000061797315",
   "bol-9300000061797323",
   "bol-9300000062080105",
@@ -17561,7 +17104,6 @@
   "bol-9300000062937003",
   "bol-9300000062938632",
   "bol-9300000062956350",
-  "bol-9300000063217325",
   "bol-9300000064231476",
   "bol-9300000064385562",
   "bol-9300000064691879",
@@ -17757,7 +17299,6 @@
   "bol-9300000123794077",
   "bol-9300000123980541",
   "bol-9300000124097041",
-  "bol-9300000124200796",
   "bol-9300000124265945",
   "bol-9300000124495756",
   "bol-9300000124563618",
@@ -17861,7 +17402,6 @@
   "bol-9300000140194385",
   "bol-9300000140369594",
   "bol-9300000140568492",
-  "bol-9300000140770431",
   "bol-9300000141326647",
   "bol-9300000141384006",
   "bol-9300000141852763",
@@ -17927,7 +17467,6 @@
   "bol-9300000150508842",
   "bol-9300000150622907",
   "bol-9300000150634153",
-  "bol-9300000150694924",
   "bol-9300000150800868",
   "bol-9300000150810097",
   "bol-9300000150810101",
@@ -17998,7 +17537,6 @@
   "bol-9300000157910837",
   "bol-9300000157956251",
   "bol-9300000157956303",
-  "bol-9300000157956359",
   "bol-9300000158053937",
   "bol-9300000158400830",
   "bol-9300000158414106",
@@ -18062,14 +17600,12 @@
   "bol-9300000161906004",
   "bol-9300000161907676",
   "bol-9300000161992006",
-  "bol-9300000162044483",
   "bol-9300000162220917",
   "bol-9300000162818800",
   "bol-9300000162839311",
   "bol-9300000162843517",
   "bol-9300000162900803",
   "bol-9300000163354875",
-  "bol-9300000163354878",
   "bol-9300000163469374",
   "bol-9300000163793861",
   "bol-9300000164083567",
@@ -18095,7 +17631,6 @@
   "bol-9300000166565229",
   "bol-9300000166566946",
   "bol-9300000166566947",
-  "bol-9300000166623246",
   "bol-9300000166792756",
   "bol-9300000166820750",
   "bol-9300000167137746",
@@ -18111,7 +17646,6 @@
   "bol-9300000167755613",
   "bol-9300000167755650",
   "bol-9300000167766303",
-  "bol-9300000167796261",
   "bol-9300000167827419",
   "bol-9300000167884017",
   "bol-9300000167890550",
@@ -18225,10 +17759,8 @@
   "bol-9300000175318644",
   "bol-9300000175633563",
   "bol-9300000175662822",
-  "bol-9300000175725315",
   "bol-9300000175725335",
   "bol-9300000175725336",
-  "bol-9300000175795860",
   "bol-9300000175908748",
   "bol-9300000176004073",
   "bol-9300000176017450",
@@ -18299,7 +17831,6 @@
   "bol-9300000178940167",
   "bol-9300000178942859",
   "bol-9300000178970619",
-  "bol-9300000179094379",
   "bol-9300000179107821",
   "bol-9300000179107981",
   "bol-9300000179178134",
@@ -18333,13 +17864,11 @@
   "bol-9300000180764588",
   "bol-9300000180764598",
   "bol-9300000181192290",
-  "bol-9300000181364430",
   "bol-9300000181455730",
   "bol-9300000181455754",
   "bol-9300000181534651",
   "bol-9300000181538353",
   "bol-9300000181576893",
-  "bol-9300000181793298",
   "bol-9300000181797613",
   "bol-9300000181837271",
   "bol-9300000181912357",
@@ -18386,7 +17915,6 @@
   "bol-9300000183877651",
   "bol-9300000183877804",
   "bol-9300000183881537",
-  "bol-9300000183890165",
   "bol-9300000183894406",
   "bol-9300000184005918",
   "bol-9300000184006004",
@@ -18419,7 +17947,6 @@
   "bol-9300000185716142",
   "bol-9300000185781066",
   "bol-9300000186028245",
-  "bol-9300000186287122",
   "bol-9300000186465095",
   "bol-9300000186857929",
   "bol-9300000186907829",
@@ -18431,7 +17958,6 @@
   "bol-9300000187249569",
   "bol-9300000187249574",
   "bol-9300000187249632",
-  "bol-9300000187294796",
   "bol-9300000187297428",
   "bol-9300000187578594",
   "bol-9300000187578608",
@@ -18506,13 +18032,11 @@
   "bol-9300000193639901",
   "bol-9300000193693321",
   "bol-9300000193746659",
-  "bol-9300000193746671",
   "bol-9300000193778454",
   "bol-9300000193823831",
   "bol-9300000193830306",
   "bol-9300000193882009",
   "bol-9300000194026794",
-  "bol-9300000194026799",
   "bol-9300000194339928",
   "bol-9300000194463478",
   "bol-9300000194487246",
@@ -18545,7 +18069,6 @@
   "bol-9300000196787374",
   "bol-9300000196788950",
   "bol-9300000196801526",
-  "bol-9300000196801615",
   "bol-9300000196809261",
   "bol-9300000196866293",
   "bol-9300000196879570",
@@ -18587,7 +18110,6 @@
   "bol-9300000198643003",
   "bol-9300000198765600",
   "bol-9300000198823622",
-  "bol-9300000199026012",
   "bol-9300000199061770",
   "bol-9300000199063509",
   "bol-9300000199134399",
@@ -18655,7 +18177,6 @@
   "bol-9300000223188715",
   "bol-9300000223391580",
   "bol-9300000223398204",
-  "bol-9300000223645302",
   "bol-9300000223650588",
   "bol-9300000223650596",
   "bol-9300000223693762",
@@ -18692,7 +18213,6 @@
   "bol-9300000224670268",
   "bol-9300000224675460",
   "bol-9300000224681818",
-  "bol-9300000224716751",
   "bol-9300000224722496",
   "bol-9300000224730606",
   "bol-9300000224779656",
@@ -18723,7 +18243,6 @@
   "bol-9300000225710092",
   "bol-9300000225719483",
   "bol-9300000225801209",
-  "bol-9300000225801726",
   "bol-9300000225803811",
   "bol-9300000225854966",
   "bol-9300000225854987",
@@ -18762,7 +18281,6 @@
   "bol-9300000226609761",
   "bol-9300000226668272",
   "bol-9300000226734832",
-  "bol-9300000226738205",
   "bol-9300000226764061",
   "bol-9300000226764065",
   "bol-9300000226842334",
@@ -18774,7 +18292,6 @@
   "bol-9300000226894878",
   "bol-9300000226979576",
   "bol-9300000227082405",
-  "bol-9300000227108491",
   "bol-9300000227113255",
   "bol-9300000227114802",
   "bol-9300000227115983",
@@ -18915,7 +18432,6 @@
   "bol-9300000232180888",
   "bol-9300000232180897",
   "bol-9300000232183655",
-  "bol-9300000232240752",
   "bol-9300000232254380",
   "bol-9300000232471841",
   "bol-9300000232681622",
@@ -18927,7 +18443,6 @@
   "bol-9300000233149251",
   "bol-9300000233149508",
   "bol-9300000233155914",
-  "bol-9300000233155918",
   "bol-9300000233155942",
   "bol-9300000233305928",
   "bol-9300000233385723",
@@ -18953,7 +18468,6 @@
   "bol-9300000234970813",
   "bol-9300000235114023",
   "bol-9300000235234020",
-  "bol-9300000235330813",
   "bol-9300000235330884",
   "bol-9300000235345693",
   "bol-9300000235388441",
@@ -18968,7 +18482,6 @@
   "bol-9300000236027179",
   "bol-9300000236034534",
   "bol-9300000236076323",
-  "bol-9300000236204204",
   "bol-9300000236204216",
   "bol-9300000236204229",
   "bol-9300000236208265",
@@ -19050,7 +18563,6 @@
   "bol-9300000239191938",
   "bol-9300000239202018",
   "bol-9300000239208955",
-  "bol-9300000239314960",
   "bol-9300000239440112",
   "bol-9300000239466618",
   "bol-9300000239540729",
@@ -19115,7 +18627,6 @@
   "bol-9300000241985859",
   "bol-9300000242008723",
   "bol-9300000242085096",
-  "bol-9300000242085612",
   "bol-9300000242097819",
   "bol-9300000242118268",
   "bol-9300000242192692",
@@ -19132,7 +18643,6 @@
   "bol-9300000242622834",
   "bol-9300000242638313",
   "bol-9300000242642159",
-  "bol-9300000242659941",
   "bol-9300000242698427",
   "bol-9300000242745735",
   "bol-9300000242802354",
@@ -19249,7 +18759,6 @@
   "bol-9300000247705264",
   "bol-9300000247719933",
   "bol-9300000247753315",
-  "bol-9300000247805933",
   "bol-9300000247810383",
   "bol-9300000247814508",
   "bol-9300000247823018",
@@ -19317,9 +18826,7 @@
   "bol-9300000252262288",
   "bol-9300000252347049",
   "bol-9300000252617200",
-  "bol-9300000252617204",
   "bol-9300000252617215",
-  "bol-9300000253062720",
   "bol-9300000253062721",
   "bol-9300000253110781",
   "bol-9300000253110804",
@@ -19338,7 +18845,6 @@
   "bol-9300000254183758",
   "bol-9300000254448996",
   "bol-9300000254465192",
-  "bol-9300000254525374",
   "bol-9300000255560666",
   "bol-9300000255582457",
   "bol-9300000255940951",
@@ -19400,7 +18906,6 @@
   "bol-9300000257629466",
   "bol-9300000257637883",
   "bol-9300000257637886",
-  "bol-9300000257637905",
   "bol-9300000257684800",
   "bol-9300000257685097",
   "bol-9300000257692422",
@@ -19509,8 +19014,6 @@
   "bol-9300000262826881",
   "bol-9300000262897603",
   "bol-9300000263045759",
-  "bol-9300000263076901",
-  "bol-9300000263076902",
   "bol-9300000263290054",
   "bol-9300000263419633",
   "bol-9300000263626368",
@@ -19591,7 +19094,6 @@
   "bol-9300000267904723",
   "bol-9300000267977947",
   "bol-9300000267978282",
-  "bol-9300000267978333",
   "bol-9300000267987085",
   "bol-9300000268046655",
   "bol-9300000268067852",
@@ -19608,7 +19110,6 @@
   "bol-9300000268530526",
   "bol-9300000268631484",
   "bol-9300000269049236",
-  "bol-9300000269049372",
   "bol-9300000269049551",
   "bol-9300000269202725",
   "bol-9300000269251460",
@@ -19626,7 +19127,6 @@
   "bol-9300000269708154",
   "bol-9300000269708157",
   "bol-9300000269708160",
-  "bol-9300000269794615",
   "bol-9300000269832334",
   "bol-9300000269870256",
   "bol-9300000269935698",
@@ -19669,13 +19169,11 @@
   "bol-9300000274036926",
   "bol-9300000274323716",
   "bol-9300000274596871",
-  "bol-9300000275290677",
   "bol-9300000275654350",
   "bol-9300000275654380",
   "bol-9300000275658288",
   "bol-9300000275795322",
   "bol-9300000275849340",
-  "bol-9300000276057137",
   "bol-9300000276357459",
   "bol-9300000276357465",
   "bol-9300000276376648",
@@ -19773,7 +19271,6 @@
   "bol-9300000309591673",
   "bol-9300000309770614",
   "bol-9300000310309601",
-  "bol-9300000311177843",
   "bol-9300000312026114",
   "bol-9300000312026179",
   "bol-9300000312026421",
@@ -19926,7 +19423,6 @@
   "bol-9300000385251516",
   "bol-9300000385427140",
   "bol-9300000385427142",
-  "bol-9300000386311118",
   "bol-9300000386405805",
   "bol-9300000386459935",
   "bol-9300000386803507",
@@ -19944,7 +19440,6 @@
   "bol-9300000401315426",
   "bol-9300000401595764",
   "bol-9300000401832929",
-  "bol-9300000402045700",
   "bol-9300000402209724",
   "bol-9300000402223604",
   "bol-9300000402308712",
@@ -19998,8 +19493,10 @@
   "bushpa-d787be976d",
   "bushpa-fd154f12b0",
   "butchery-1950d8527e",
+  "butchery-26811de868",
   "butchery-3e32b4d605",
   "butchery-80f271721c",
+  "butchery-8ba201a540",
   "butchery-8db58e7e93",
   "butchery-a611ffe371",
   "butchery-f445ca8b89",
@@ -20223,10 +19720,12 @@
   "cg-296cdbc773",
   "cg-2e82b9f785",
   "cg-375eb38550",
+  "cg-37e1269b65",
   "cg-38d7c4e105",
   "cg-3d-pin-art",
   "cg-414075ccac",
   "cg-475e43592a",
+  "cg-47d4498cf1",
   "cg-487881e9eb",
   "cg-491cafc1c7",
   "cg-4f3ddf43bd",
@@ -20240,6 +19739,7 @@
   "cg-6ca65cead2",
   "cg-6da3b9f1ad",
   "cg-7fbf7836d1",
+  "cg-821ebcf435",
   "cg-82babf085e",
   "cg-8baaccbb2e",
   "cg-903f3003ed",
@@ -20260,12 +19760,14 @@
   "cg-c472f3ec05",
   "cg-c7cadef379",
   "cg-chocolade-game-controller",
+  "cg-chocolade-gereedschap",
   "cg-cocktail-shaker-set",
   "cg-constructive-eating-set",
   "cg-d045d2737e",
   "cg-d0e947b38d",
   "cg-d2e7f8a4b8",
   "cg-db7d0c2f45",
+  "cg-df3ffeabd6",
   "cg-drinkopoly",
   "cg-drinkspel-schaken-shot",
   "cg-e00ed5305d",
@@ -20282,6 +19784,7 @@
   "cg-f41fe38476",
   "cg-f5a80d0aad",
   "cg-f74b0e78fd",
+  "cg-fb32190cbf",
   "cg-fiets-spaak-verlichting",
   "cg-geitenyoga-partyspel",
   "cg-gloeilamp-vaas-set-van-6",
@@ -20410,7 +19913,6 @@
   "cl-9507",
   "cl-9522",
   "cl-a50",
-  "cl-acdc-cap",
   "cl-acdc-tee",
   "cl-action4",
   "cl-action5",
@@ -20426,7 +19928,6 @@
   "cl-aura-carver",
   "cl-aw-se3",
   "cl-babyliss-airwand",
-  "cl-babyliss-stijltang",
   "cl-babyliss-superx",
   "cl-babyliss-trio",
   "cl-basilisk",
@@ -20440,11 +19941,11 @@
   "cl-bounce2",
   "cl-braun-s5-aio",
   "cl-braun-wildcam",
+  "cl-braun-x",
   "cl-bresser-stellar",
   "cl-cadac-safari",
   "cl-casio-lks250",
   "cl-cd-kpop-demon",
-  "cl-cirqa",
   "cl-clara-bw",
   "cl-clara-colour",
   "cl-cloud3s",
@@ -20461,7 +19962,6 @@
   "cl-dualsense",
   "cl-dualsense-edge",
   "cl-dyson-airwrap",
-  "cl-dyson-supersonic",
   "cl-ecovacs-t50",
   "cl-elipsa",
   "cl-emp-beanie",
@@ -20488,12 +19988,10 @@
   "cl-govee-strip-s",
   "cl-gt6",
   "cl-gta6",
-  "cl-homepod",
   "cl-homepod-mini2",
   "cl-hp-alumni",
   "cl-hp-oor",
   "cl-hp-tee",
-  "cl-hp-vingerloos",
   "cl-hrm200",
   "cl-hue-bloom",
   "cl-hue-go",
@@ -20516,7 +20014,6 @@
   "cl-lego-f1",
   "cl-liberty",
   "cl-libra-colour",
-  "cl-mario-tee",
   "cl-marshall-major",
   "cl-medisana-mc600",
   "cl-melitta-look",
@@ -20541,6 +20038,7 @@
   "cl-philips-af-dual",
   "cl-philips-af-xl",
   "cl-philips-bt5780",
+  "cl-philips-headshaver",
   "cl-philips-mg7941",
   "cl-philips-s5466",
   "cl-philips-s7882",
@@ -20571,26 +20069,15 @@
   "cl-shokz-openmove",
   "cl-shokz-openrun",
   "cl-smeg-mff02",
-  "cl-soliver-brei",
-  "cl-soliver-creolen",
   "cl-soliver-hart",
-  "cl-soliver-kasjmier",
+  "cl-soliver-hoodie",
   "cl-soliver-kerst",
-  "cl-soliver-pet",
-  "cl-soliver-riem",
-  "cl-soliver-ring",
-  "cl-soliver-sjaal",
-  "cl-soliver-tee",
-  "cl-soliver-voering",
   "cl-sonos-roam2",
   "cl-split-fiction",
   "cl-starwars-tee",
   "cl-stitch-pyjamabroek",
   "cl-stitch-tee",
   "cl-stormtrooper-hoodie",
-  "cl-streetone-gem",
-  "cl-streetone-lus",
-  "cl-streetone-velours",
   "cl-switch-lite",
   "cl-switch2-mkw",
   "cl-switch2-pokopia",
@@ -20623,7 +20110,6 @@
   "cl-vortech",
   "cl-weber-kettle",
   "cl-weber-tang",
-  "cl-wednesday-vingerloos",
   "cl-wf1000xm5",
   "cl-wf1000xm6",
   "cl-whoop-one",
@@ -20647,8 +20133,11 @@
   "countr-e78e55b5cc",
   "country-07a3571b5a",
   "country-0b912b289f",
+  "country-0fd006d070",
   "country-12516ab309",
+  "country-1ac24d1517",
   "country-202663a9a0",
+  "country-21591490cc",
   "country-2949e51eee",
   "country-2955bd5e30",
   "country-2e33016849",
@@ -20671,10 +20160,12 @@
   "country-7e3ff78331",
   "country-80d23bfbf7",
   "country-8f0afc6754",
+  "country-9458043fd0",
   "country-a22c09a238",
   "country-a42c470712",
   "country-a50a0343f0",
   "country-b6527576a9",
+  "country-b8fd99e550",
   "country-bea353de46",
   "country-c0545e5ce2",
   "country-c57388da6b",
@@ -20730,6 +20221,7 @@
   "dg-96e6b6a9bc",
   "dg-ac31dabc62",
   "dg-b730b36165",
+  "dg-cac5ff65d9",
   "dg-d27edb1b66",
   "dg-d910d2acb4",
   "dg-dcf5dbd59c",
@@ -20756,6 +20248,7 @@
   "dgsw-21c3e111de",
   "dgsw-23926ccd09",
   "dgsw-2553a053ad",
+  "dgsw-2648395e24",
   "dgsw-28cdc38311",
   "dgsw-28d6e0fee5",
   "dgsw-28ec2c206d",
@@ -20787,15 +20280,19 @@
   "dgsw-59a58536ba",
   "dgsw-59cd3934a6",
   "dgsw-5c21b285d9",
+  "dgsw-5c2312daba",
   "dgsw-5c8459b122",
   "dgsw-5de25b3bb5",
   "dgsw-5e6bc6bc4f",
   "dgsw-63c7ef2336",
+  "dgsw-6b47c22e1d",
   "dgsw-6bb72a7b20",
   "dgsw-6bfb65947f",
+  "dgsw-6cf238f58c",
   "dgsw-6e8cbdfb96",
   "dgsw-6ff671ca76",
   "dgsw-71185b5d06",
+  "dgsw-73875b4eb0",
   "dgsw-7a381b5295",
   "dgsw-7ab4f79bd1",
   "dgsw-7b24aa2a93",
@@ -20827,6 +20324,7 @@
   "dgsw-b16899debf",
   "dgsw-b6218d357c",
   "dgsw-b650de6c41",
+  "dgsw-bb6a6c59d0",
   "dgsw-bcb99cad72",
   "dgsw-bdc114c4f0",
   "dgsw-bed7e54c6c",
@@ -20839,19 +20337,23 @@
   "dgsw-c56356b0bb",
   "dgsw-c6cdc75b4d",
   "dgsw-c704b700de",
+  "dgsw-c98e531d85",
   "dgsw-ca1b884d94",
   "dgsw-caa4a56e67",
   "dgsw-ce1707b7ab",
   "dgsw-d38a8b1311",
   "dgsw-d39d3ac317",
+  "dgsw-d65de9d89a",
   "dgsw-d76d4ebb3b",
   "dgsw-d876e3a9d0",
   "dgsw-d88cc64fa3",
   "dgsw-d96fe04bad",
+  "dgsw-d99c9676ba",
   "dgsw-d9be18c644",
   "dgsw-dc15cc6e74",
   "dgsw-dc728c0446",
   "dgsw-dca386c1d4",
+  "dgsw-dcba5f1bc9",
   "dgsw-ded7cea22a",
   "dgsw-dfd4f94811",
   "dgsw-e18493e55f",
@@ -20863,6 +20365,7 @@
   "dgsw-ef8ca3a24b",
   "dgsw-f00e304288",
   "dgsw-f158b5f582",
+  "dgsw-f2bf7aee25",
   "dgsw-f545db0668",
   "dgsw-f61b16814e",
   "dgsw-f6fe127b2a",
@@ -21038,10 +20541,14 @@
   "dk-fe6f7d9f70",
   "dkam-05cbd4bfcf",
   "dkam-11c55d9446",
+  "dkam-13500706be",
   "dkam-38e49e0c7e",
   "dkam-3c25a1697b",
   "dkam-47e31a7ff0",
+  "dkam-4ad5b1cc61",
   "dkam-4e94fbdc78",
+  "dkam-4efaf1205c",
+  "dkam-6a1471d1f7",
   "dkam-8940d20539",
   "dkam-8df4977bf0",
   "dkam-909e1ebd6f",
@@ -21055,6 +20562,7 @@
   "dkam-ba1424427d",
   "dkam-ba47a50350",
   "dkam-be40e3e13b",
+  "dkam-c99efae405",
   "dkam-ec47210634",
   "dkam-f56b17617e",
   "dkam-f866992534",
@@ -21079,6 +20587,7 @@
   "dropte-f031965b8b",
   "dropwinkel-be009eccf5",
   "dvzn-03096a2e31",
+  "dvzn-045d07751b",
   "dvzn-0482175e9a",
   "dvzn-04c8cc9a61",
   "dvzn-0574cf0f55",
@@ -21120,9 +20629,12 @@
   "dvzn-195987",
   "dvzn-196608",
   "dvzn-198055",
+  "dvzn-19948c60e9",
   "dvzn-1a61ae70d9",
   "dvzn-1bd71f35f4",
   "dvzn-1c2dd36351",
+  "dvzn-1deadb3602",
+  "dvzn-1efc3c8d3d",
   "dvzn-201474",
   "dvzn-203087",
   "dvzn-207301",
@@ -21161,12 +20673,18 @@
   "dvzn-279882",
   "dvzn-283580",
   "dvzn-284527",
+  "dvzn-29043e5ee8",
   "dvzn-291755",
   "dvzn-294182",
   "dvzn-296940",
   "dvzn-2a081e35e0",
+  "dvzn-2a6f553405",
+  "dvzn-2ac54b6d6d",
   "dvzn-2ae478263a",
+  "dvzn-2b383312f5",
+  "dvzn-2b85566004",
   "dvzn-2e93b23d66",
+  "dvzn-2f0507089c",
   "dvzn-2f06f30500",
   "dvzn-2ff8645a24",
   "dvzn-302017",
@@ -21209,6 +20727,7 @@
   "dvzn-386854",
   "dvzn-389378",
   "dvzn-394620",
+  "dvzn-39ecdcdb0f",
   "dvzn-3a57f564dd",
   "dvzn-3ee499eae7",
   "dvzn-401118",
@@ -21224,6 +20743,7 @@
   "dvzn-42755e27db",
   "dvzn-428654",
   "dvzn-429470",
+  "dvzn-42c660fefb",
   "dvzn-430498",
   "dvzn-433243",
   "dvzn-435735",
@@ -21253,14 +20773,19 @@
   "dvzn-494154",
   "dvzn-494959",
   "dvzn-499560",
+  "dvzn-49bb2362fd",
   "dvzn-49cff9772e",
+  "dvzn-4a2d44fc8f",
   "dvzn-4c1a69ab87",
   "dvzn-4d97c0ab44",
   "dvzn-4e151f5a0e",
+  "dvzn-4e9451d3df",
+  "dvzn-4eb73fa3d5",
   "dvzn-4f2fecd843",
   "dvzn-4fa2e47d16",
   "dvzn-50112199c1",
   "dvzn-502653",
+  "dvzn-506744c169",
   "dvzn-5086867292",
   "dvzn-511426",
   "dvzn-515371",
@@ -21274,8 +20799,8 @@
   "dvzn-533927",
   "dvzn-541316",
   "dvzn-541673",
-  "dvzn-542206",
   "dvzn-542600",
+  "dvzn-542e2689a0",
   "dvzn-549082",
   "dvzn-550252",
   "dvzn-553e02fbf0",
@@ -21288,6 +20813,7 @@
   "dvzn-567265",
   "dvzn-567465",
   "dvzn-569721",
+  "dvzn-56f047311d",
   "dvzn-5718c70e17",
   "dvzn-58068de5fa",
   "dvzn-582187",
@@ -21300,6 +20826,7 @@
   "dvzn-5c1606b166",
   "dvzn-5d7cbb4d4a",
   "dvzn-5d8fd7a707",
+  "dvzn-5dbf032a22",
   "dvzn-5eb6c4d8fb",
   "dvzn-602613",
   "dvzn-606464",
@@ -21320,15 +20847,20 @@
   "dvzn-633422",
   "dvzn-637174",
   "dvzn-639895",
+  "dvzn-63fc8fc0bd",
+  "dvzn-640ca3d05d",
   "dvzn-641720",
   "dvzn-647292",
   "dvzn-648493",
+  "dvzn-64bc062540",
   "dvzn-653282",
   "dvzn-655af9bd06",
   "dvzn-659841",
   "dvzn-660244",
+  "dvzn-660eedfb42",
   "dvzn-662540",
   "dvzn-663044",
+  "dvzn-66bf57a5ff",
   "dvzn-671060bdfd",
   "dvzn-675363",
   "dvzn-6791",
@@ -21340,12 +20872,14 @@
   "dvzn-6934eb427b",
   "dvzn-6a0d467ccc",
   "dvzn-6a6fb0dec6",
+  "dvzn-6aa21edc9a",
   "dvzn-6bf42f846e",
   "dvzn-6f05bbb089",
   "dvzn-702314",
-  "dvzn-711514",
+  "dvzn-70adc8c50c",
   "dvzn-712829",
   "dvzn-714098",
+  "dvzn-7152fbcfde",
   "dvzn-719998",
   "dvzn-722225",
   "dvzn-723463",
@@ -21381,6 +20915,7 @@
   "dvzn-7b60819205",
   "dvzn-7c4c1185c2",
   "dvzn-7c5be52edb",
+  "dvzn-7d30d49864",
   "dvzn-7e62ce4f3d",
   "dvzn-7ed319ef34",
   "dvzn-7f3420e5ad",
@@ -21397,7 +20932,11 @@
   "dvzn-817865",
   "dvzn-818791",
   "dvzn-822330",
+  "dvzn-82245ef037",
   "dvzn-829382",
+  "dvzn-82ace94f6a",
+  "dvzn-82c9fc5824",
+  "dvzn-8301e7ef8f",
   "dvzn-832856",
   "dvzn-833231",
   "dvzn-837008",
@@ -21407,11 +20946,13 @@
   "dvzn-849140",
   "dvzn-858695",
   "dvzn-859756",
+  "dvzn-8607550b45",
   "dvzn-8607c53284",
   "dvzn-863286",
   "dvzn-863632",
   "dvzn-8689e02134",
   "dvzn-868decc4c6",
+  "dvzn-86c555b6d6",
   "dvzn-871551",
   "dvzn-873615",
   "dvzn-878250",
@@ -21421,9 +20962,9 @@
   "dvzn-880ebf0fce",
   "dvzn-882928",
   "dvzn-887823",
-  "dvzn-888578",
   "dvzn-89115dea40",
   "dvzn-896662",
+  "dvzn-8e1b865150",
   "dvzn-903598",
   "dvzn-904632",
   "dvzn-905962",
@@ -21433,6 +20974,7 @@
   "dvzn-919980",
   "dvzn-91be613ae8",
   "dvzn-92130ccb88",
+  "dvzn-922f9ce250",
   "dvzn-924914",
   "dvzn-927119",
   "dvzn-936141",
@@ -21440,6 +20982,7 @@
   "dvzn-947979",
   "dvzn-965759",
   "dvzn-9688f84b76",
+  "dvzn-96ba2b1949",
   "dvzn-972727",
   "dvzn-976239",
   "dvzn-97babccebf",
@@ -21450,15 +20993,20 @@
   "dvzn-992721",
   "dvzn-995742",
   "dvzn-995816",
+  "dvzn-99610b59d5",
   "dvzn-998859",
   "dvzn-9b7575d0e1",
   "dvzn-9c6e6309c6",
   "dvzn-9d6cd49e75",
+  "dvzn-9dd9e73ceb",
+  "dvzn-9e1c688177",
   "dvzn-9fa32eee7e",
   "dvzn-9fcc4ad333",
   "dvzn-a003b63b40",
+  "dvzn-a1d0a53414",
   "dvzn-a3a5c81ea8",
   "dvzn-a4ed4f69b9",
+  "dvzn-a8efee7908",
   "dvzn-a97a32e968",
   "dvzn-a9b20a04c2",
   "dvzn-a9bd60aaf2",
@@ -21474,12 +21022,17 @@
   "dvzn-befe32d2ff",
   "dvzn-c0f94e2f2c",
   "dvzn-c15dcffb40",
+  "dvzn-c1f44ba685",
   "dvzn-c41aaff1ff",
+  "dvzn-c45264c679",
+  "dvzn-c478f312d8",
   "dvzn-c557b1a357",
+  "dvzn-c8b19fca1e",
   "dvzn-c943aff48a",
   "dvzn-cd48a1b57b",
   "dvzn-ce796768ef",
   "dvzn-cf5281b9f2",
+  "dvzn-cf771f14a8",
   "dvzn-d06d85e764",
   "dvzn-d16eec6ed0",
   "dvzn-d1e1776af6",
@@ -21488,15 +21041,22 @@
   "dvzn-dbce378d1c",
   "dvzn-dcc8e0b22d",
   "dvzn-dcd93d79e7",
+  "dvzn-dcf2cec7a7",
   "dvzn-ddab8fc83d",
   "dvzn-de850bc27f",
   "dvzn-df22fba87c",
+  "dvzn-e0769c29c2",
   "dvzn-e0d7171bb3",
   "dvzn-e3159cc06a",
+  "dvzn-e47370c6a2",
+  "dvzn-e572f57258",
   "dvzn-e5a1c9fee7",
   "dvzn-e5d9f429c7",
+  "dvzn-e869facee9",
   "dvzn-e8f2771b4a",
   "dvzn-e92d24af8c",
+  "dvzn-e9a4c2cf2b",
+  "dvzn-ea61704399",
   "dvzn-ebc9e55f71",
   "dvzn-ed71392698",
   "dvzn-ee583a5fcb",
@@ -21513,6 +21073,7 @@
   "dvzn-fcca193d6c",
   "dvzn-fdd7c310b4",
   "dvzn-fe5155cbab",
+  "dvzn-fef9e43e90",
   "dvzn-ff260a4e39",
   "dvzn-stroopwafelclip",
   "emp-011be2f8cb",
@@ -21551,10 +21112,10 @@
   "emp-d7c1dfbf74",
   "emp-e0ce32bb1c",
   "emp-e4f7c656bc",
-  "emp-ea05ec9b56",
   "emp-ed1055a6cd",
   "emp-fd8fab1038",
   "emp-fea1a14374",
+  "eufr-e624d8bb76",
   "ex-8807785ed8",
   "ex-9ab9a3a928",
   "ex-aea4a1f22e",
@@ -21618,8 +21179,10 @@
   "gadget-093c6c6544",
   "gadget-85e1fb69f3",
   "gadget-9725656615",
+  "gadget-a41364ea73",
   "gadget-aab95732a4",
   "gadget-d090d8ccf9",
+  "gadget-e762958c34",
   "gadget-fceaad5358",
   "gestr-13567ce9db",
   "gestr-13dc54a5cc",
@@ -21686,6 +21249,7 @@
   "grotek-10052fbb04",
   "grotek-105094ae86",
   "grotek-1334e22ed6",
+  "grotek-15859a0b6b",
   "grotek-17539dea7a",
   "grotek-17cc0144cb",
   "grotek-17f7841987",
@@ -21699,6 +21263,7 @@
   "grotek-2a1ce0cae3",
   "grotek-2aae603559",
   "grotek-2ccaa16da7",
+  "grotek-305954d3f2",
   "grotek-3091d26acf",
   "grotek-3199f6ec61",
   "grotek-32bd78a6c3",
@@ -21803,6 +21368,7 @@
   "grotek-d62dc6e0c2",
   "grotek-d8e6fe0f00",
   "grotek-dc1e642fe5",
+  "grotek-e10d77bab5",
   "grotek-e21245f3e6",
   "grotek-e47194c81a",
   "grotek-e4adcc775d",
@@ -21816,6 +21382,7 @@
   "grotek-f5db1e0bdb",
   "grotek-f5ed4dbeb8",
   "grotek-f6f917e2bb",
+  "grotek-f8b5d8b2e8",
   "grotek-f8ddd50af3",
   "grotek-fe9ee61228",
   "gt-22393",
@@ -21835,6 +21402,7 @@
   "hema-0d1083eb14",
   "hema-0e9d07774f",
   "hema-0ec2fd4e2e",
+  "hema-0f38890b29",
   "hema-0f3c441f72",
   "hema-0f5c9f375b",
   "hema-0fdbc8db9f",
@@ -21849,6 +21417,7 @@
   "hema-1935ad0898",
   "hema-195045a1d1",
   "hema-1a6e400f83",
+  "hema-1b0bd93990",
   "hema-216346a55d",
   "hema-22014fd170",
   "hema-242c9fc831",
@@ -21861,12 +21430,14 @@
   "hema-320d4759b0",
   "hema-32d780c657",
   "hema-33d8a73d1b",
+  "hema-3a25c3f36e",
   "hema-3bbc996968",
   "hema-3c25674700",
   "hema-3c2c0a86d3",
   "hema-3f2f9e7cee",
   "hema-3f5c3c1a76",
   "hema-3f60b72078",
+  "hema-3ff9f84d80",
   "hema-41132baf92",
   "hema-42468f36da",
   "hema-46ee772b3a",
@@ -21881,15 +21452,16 @@
   "hema-55e9be5dde",
   "hema-56b7b09988",
   "hema-57f2e6462b",
+  "hema-57f8ed0fec",
   "hema-58465f2eed",
   "hema-5b65ae0dd0",
   "hema-5b76d81493",
-  "hema-5c9392b1f3",
   "hema-5cc5f6717b",
   "hema-5ded232893",
   "hema-617bd49d84",
   "hema-62f36f32ac",
   "hema-63336aebde",
+  "hema-6374bb249a",
   "hema-642967c7b0",
   "hema-65495faedc",
   "hema-65b50fc23e",
@@ -21898,12 +21470,10 @@
   "hema-682d711a69",
   "hema-69263f530a",
   "hema-693e36f0cd",
-  "hema-69e18303a9",
   "hema-6bb48b68c9",
   "hema-6e2a617d71",
   "hema-700aacaee3",
   "hema-723549952a",
-  "hema-73ab34a8ad",
   "hema-73d07bacf3",
   "hema-73f4e662d2",
   "hema-747bcdc4d5",
@@ -21914,28 +21484,30 @@
   "hema-7d5fc62ef7",
   "hema-7f2c6ddbe8",
   "hema-7f363974d9",
+  "hema-7fccb73f49",
   "hema-804b7f818c",
   "hema-80b92bb823",
   "hema-80e43f0ce3",
-  "hema-811ea72c01",
   "hema-83ab868408",
   "hema-84046660d6",
   "hema-84812eeeed",
   "hema-84afebb566",
-  "hema-866ecf650d",
   "hema-86b7fdd260",
   "hema-89385b18cf",
   "hema-897c5eb87d",
+  "hema-8c25c71c2b",
   "hema-8eff9a5ada",
   "hema-8fc8a01810",
   "hema-8ff0da93bf",
   "hema-90cecb0d49",
   "hema-926fdb1ced",
   "hema-930b2223ce",
+  "hema-9330c9dee9",
   "hema-94fb5ddcf4",
   "hema-96634e61a9",
   "hema-97de057cac",
   "hema-986c321ef0",
+  "hema-9af19e566a",
   "hema-9b805157bb",
   "hema-9bfed9efff",
   "hema-9c923e1a87",
@@ -21947,6 +21519,7 @@
   "hema-a7c1cc7068",
   "hema-a7e88f01f6",
   "hema-a8140b9536",
+  "hema-a99447be88",
   "hema-aad5486d4c",
   "hema-abc0f34b81",
   "hema-acfc1be51e",
@@ -21961,6 +21534,7 @@
   "hema-b6111e4e84",
   "hema-b63d95e6a2",
   "hema-b83c24629b",
+  "hema-b87a9bfab9",
   "hema-bade0847e3",
   "hema-bbadfb5371",
   "hema-c0c2446134",
@@ -21969,11 +21543,12 @@
   "hema-c3f82b6414",
   "hema-c713f4b358",
   "hema-c71d8a5331",
+  "hema-c7f566b2b0",
   "hema-ca76ce30ea",
   "hema-cdd8e3ced5",
+  "hema-ce48ea31d7",
   "hema-cef194e8d2",
   "hema-d1e85c2ec7",
-  "hema-d2ace702bc",
   "hema-d2ad0bf468",
   "hema-d2cd56c14b",
   "hema-d5564babe6",
@@ -21982,6 +21557,7 @@
   "hema-d8cb03a416",
   "hema-d8f42713f8",
   "hema-d98fcda3b6",
+  "hema-d9941967d6",
   "hema-dcc94b7809",
   "hema-dccaac0118",
   "hema-de0aba6002",
@@ -22080,6 +21656,8 @@
   "inv-e842699001",
   "inv-fb4f1834be",
   "inv-fe762e87d1",
+  "invul-0d5427bbbe",
+  "invul-1e1c620b18",
   "j247-dd859db406",
   "jb-0154ea2cf9",
   "jb-0befccaf44",
@@ -22129,6 +21707,7 @@
   "kado-0fe0f7c936",
   "kado-11eb38ee30",
   "kado-2706ae274d",
+  "kado-339be930d3",
   "kado-347434f7bf",
   "kado-43ae99cf42",
   "kado-463d51a4db",
@@ -22139,12 +21718,15 @@
   "kado-895adc65f2",
   "kado-971a9f6a11",
   "kado-a2b920f5d8",
+  "kado-a511d84223",
   "kado-ab8b7864d7",
   "kado-d76439f7fb",
   "kado-da9b788bf2",
   "kado-e07eccd502",
   "kado-eaccad970e",
+  "kado-eec660bd30",
   "kado-f0bb10af84",
+  "kado-fe5fa89ada",
   "kadov-0cd8ba901c",
   "kadov-23d3797d23",
   "kadov-5c6b0c89f2",
@@ -22163,6 +21745,7 @@
   "kadove-2149d2a6b9",
   "kadove-22198e086d",
   "kadove-24b3fbab77",
+  "kadove-274cfdc2ee",
   "kadove-27b9965404",
   "kadove-2a3aa4f417",
   "kadove-30ec1eae56",
@@ -22176,6 +21759,7 @@
   "kadove-3b4ae5113e",
   "kadove-3d16861ba8",
   "kadove-428b8d7a18",
+  "kadove-52be56ec1b",
   "kadove-574e53e1c7",
   "kadove-57504d6312",
   "kadove-601378f249",
@@ -22186,6 +21770,7 @@
   "kadove-6b51e800d5",
   "kadove-72faf8d57a",
   "kadove-7484c178e5",
+  "kadove-858cf75653",
   "kadove-859cba3bd7",
   "kadove-8790eb0bc0",
   "kadove-88d388285c",
@@ -22195,10 +21780,12 @@
   "kadove-9607db7608",
   "kadove-9963451c15",
   "kadove-9b122f1087",
+  "kadove-a0f2507909",
   "kadove-a12b7bc61a",
   "kadove-a19f33db52",
   "kadove-a28f331035",
   "kadove-a3d6a89d48",
+  "kadove-a9049cd42f",
   "kadove-ae83582c6a",
   "kadove-b031821948",
   "kadove-b3aa8a0fe3",
@@ -22222,6 +21809,7 @@
   "kadove-f0a0dd3ec0",
   "kadove-f19168e700",
   "kadove-f2393bf81e",
+  "kadove-f736584343",
   "kadove-f8649b6c1b",
   "kadove-f922726999",
   "kadove-fd948b2c52",
@@ -22281,10 +21869,14 @@
   "lego-8c8933b891",
   "lego-ca4ffbd36a",
   "lego-dc433934b8",
+  "legoshop-05f7335d75",
   "legoshop-0ce36d7fff",
   "legoshop-18423efb5e",
   "legoshop-521626b009",
+  "legoshop-8e65b8eaee",
   "legoshop-9d0feabaa2",
+  "legoshop-f13ef33683",
+  "legoshop-f91cb50b25",
   "lgt-07f897f1f7",
   "lgt-0940f22834",
   "lgt-10626cbf63",
@@ -22342,8 +21934,21 @@
   "louiz-c49b9a4a17",
   "louiz-e26df60878",
   "majak-b0f584ad3e",
+  "massa-29252f9c5b",
+  "massa-2f15f5095b",
   "massa-4eb4710fb1",
-  "massa-f8c78671f6",
+  "massa-6d36452e0b",
+  "massa-7b616104be",
+  "massa-8de12f27af",
+  "massa-9716883190",
+  "massa-9d0ce139b9",
+  "massa-ac4ade09c4",
+  "massa-b14fda081d",
+  "massa-c3bcfb2760",
+  "massa-d13af0c18e",
+  "massa-d77496b447",
+  "massa-edcd8e2c84",
+  "massa-f5346056de",
   "meubel-f810f9d809",
   "miscota-50154fd205",
   "mmf-1d89397ad0",
@@ -22352,7 +21957,6 @@
   "mmf-5b1f4db6ac",
   "mmf-63b16f5c97",
   "mmf-63b50c895d",
-  "mmf-6495ae37e8",
   "mmf-653f045041",
   "mmf-6c5eebe477",
   "mmf-80a3b8bec4",
@@ -22362,7 +21966,6 @@
   "mmf-9ed87c2539",
   "mmf-aeb474ba2c",
   "mmf-b4b1343fa9",
-  "mmf-b99ea99ff6",
   "mmf-bf15b7d49c",
   "mmf-c68ebd1931",
   "mmf-caf9c1f36d",
@@ -22436,6 +22039,7 @@
   "nedg-alarmo",
   "nedg-b4f09e138f",
   "nedg-b54b64e97b",
+  "nedg-b55289e29d",
   "nedg-bcbaa0bfdc",
   "nedg-bf53660934",
   "nedg-bf75230f7f",
@@ -22557,7 +22161,6 @@
   "parfum-6aae891b32",
   "parfum-74f01b08b6",
   "parfum-79e274528c",
-  "parfum-7dcafd557e",
   "parfum-7e28f46e8a",
   "parfum-80840d7cc9",
   "parfum-9490aa6fa1",
@@ -22573,6 +22176,10 @@
   "parfum-de4b8c1c10",
   "parfum-deb03d0333",
   "parfum-ec207acbc6",
+  "pillow-2ed16b017a",
+  "pillow-30d29db7da",
+  "pillow-8d92fd5628",
+  "pillow-bd4ca379da",
   "placet-5afc5d2edc",
   "prepz-46fa0db271",
   "prepz-6b262c7087",
@@ -22583,17 +22190,8 @@
   "ptm-15550",
   "ptm-4",
   "ptm-9",
-  "repeat-201218e48b",
-  "repeat-36119136db",
-  "repeat-3d4c1b9c94",
-  "repeat-406fec543b",
-  "repeat-54ca5937aa",
-  "repeat-5fac440b7c",
   "repeat-ca82717cc9",
-  "repeat-cfed59750a",
-  "repeat-d59c9c2435",
   "repeat-e08aca9045",
-  "repeat-f2435ab7d0",
   "smartp-0130c86d9c",
   "smartp-0b86321706",
   "smartp-11ee960dc1",
@@ -22618,20 +22216,12 @@
   "smartp-cbb3356994",
   "smartp-d7c0f300e2",
   "smartp-da341204a6",
+  "smartp-ee8a217092",
   "smartp-f114dea3c5",
   "smartp-f1e0911ab7",
   "smartp-f3aa98fd26",
   "smartp-f6e8563993",
   "smartp-fe122a4434",
-  "so-bont-muts",
-  "so-bont-wanten",
-  "so-bonttas",
-  "so-boucle-sjaal",
-  "so-jacquard-sjaal",
-  "so-oorwarmers",
-  "so-pailletten-beanie",
-  "so-teddy-luipaard",
-  "so-teddy-shopper",
   "sp-babyset-nijntje",
   "spaar-0d768bd10c",
   "spaar-2dd1be4c7f",
@@ -22793,7 +22383,6 @@
   "westwi-5d48f07f48",
   "westwi-64b9123b6e",
   "westwi-7aa6b6f74c",
-  "westwi-c349b743c7",
   "westwing-00cfd262ee",
   "westwing-057650ccad",
   "westwing-06ec8fd9dd",
@@ -22815,6 +22404,7 @@
   "westwing-1cf0d3ddf8",
   "westwing-2056957062",
   "westwing-220c138689",
+  "westwing-24d0b8d69c",
   "westwing-26c990229a",
   "westwing-286fd1b2eb",
   "westwing-2d3b7e0cdc",
@@ -22858,7 +22448,6 @@
   "westwing-6d2fa2600e",
   "westwing-6dbc4bd6d2",
   "westwing-6fb6f16e7f",
-  "westwing-6ffafec1c7",
   "westwing-702556016f",
   "westwing-7294d703f2",
   "westwing-729efa318b",
@@ -22897,7 +22486,6 @@
   "westwing-a145c93c78",
   "westwing-a25a7d1a69",
   "westwing-a2f2a22104",
-  "westwing-a62ce30cbc",
   "westwing-a782ee0949",
   "westwing-a88770a2f2",
   "westwing-a8fb2847f7",
@@ -22952,11 +22540,9 @@
   "westwing-f1fed5f1f6",
   "westwing-f683f8f0ce",
   "westwing-fb2a163d0b",
-  "westwing-fb6b6711c7",
   "westwing-fc5f5bb7c1",
   "westwing-fedc7077a1",
   "westwing-ff826b515f",
-  "westwing-fff7cfda46",
   "wijnkring-f931d1f82b",
   "wk-3878b43168",
   "wny-066ae8130b",
@@ -22993,6 +22579,7 @@
   "wny-f28bc991db",
   "woodw-bbae996ce8",
   "woodwick-551d1881f4",
+  "ww-c8628dacb0",
   "wwk-17a10d7442",
   "wwk-8e7dadee89",
   "wwk-9f225f3ccf",
@@ -23003,10 +22590,10 @@
   "yourd-defb1a3ef4"
  ],
  "samenvatting": {
-  "live": 11337,
-  "gecontroleerd": 6679,
-  "prijsVeranderd": 86,
+  "live": 11325,
+  "gecontroleerd": 6725,
+  "prijsVeranderd": 81,
   "uitverkocht": 0,
-  "nietInFeed": 3109
+  "nietInFeed": 3023
  }
 }
