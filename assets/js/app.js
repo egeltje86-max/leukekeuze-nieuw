@@ -331,9 +331,18 @@
       var top = [], rest = [];
       l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
       top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
-      return sieradenLaat(top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel)), sleutel);
+      return kaartjesLaat(sieradenLaat(top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel)), sleutel), sleutel);
     }
-    return sieradenLaat(smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel), sleutel);
+    return kaartjesLaat(sieradenLaat(smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel), sleutel), sleutel);
+  }
+  /* 13-11-2026 (grote keuring, WEG-lijst ronde 2): een wenskaart van een paar euro is geen cadeau. Bij Christelijke cadeaus stonden kaartjes van
+     2 en 3 euro op plek 3 en 9, omdat de volgorde ze als 'goedkope ja' zag. Marius liet de kaarten van Kaartje2go staan; ze staan vooraan in hun
+     eigen vakje (Kaarten & posters) en schuiven op alle andere lijsten naar achteren. Uit: window.LK_KAARTJES_VOORAAN = true. */
+  function isKaartje(p) { return typeof p.prijs === 'number' && p.prijs < 5 && (p.shop === 'Kaartje2go' || /(^|\s)(kaart|kerstkaart|wenskaart|felicitatiekaart|doopkaart|sinterklaaskaart|verjaardagskaart)(\s|$|[:,])/i.test(p.titel || '')); }
+  function kaartjesLaat(l, sleutel) {
+    if (window.LK_KAARTJES_VOORAAN === true || /kaarten-posters/.test(String(sleutel || ''))) return l;
+    var voor = [], na = []; l.forEach(function (p) { (isKaartje(p) ? na : voor).push(p); });
+    return na.length && voor.length ? voor.concat(na) : l;
   }
   /* 11-11-2026 (wens Marius: 'veel te veel sieraden, kwaliteit voorop, ze mogen gewoon op hun categorie blijven'):
      sieraden (Mode & sieraden > Sieraden) staan alleen vooraan op pagina's die over sieraden gaan: hun eigen categorie en een onderwerp
@@ -3966,21 +3975,21 @@
         { kop: 'Grappig voor pakjesavond', tekst: 'Cadeaus waar iedereen om moet lachen. Leuk in een surprise.',
           ids: ['superz-f16bbf44cc', 'cg-useless-box', 'bol-9300000187227306', 'cg-chocolade-game-controller'] },
         { kop: 'Handig voor elke dag (€20 tot €27)', tekst: 'Voor de man die van praktisch houdt: koken, klussen of buiten zijn.',
-          ids: ['bol-9200000002756942', 'bol-9300000238510035', 'hema-d2ace702bc', 'bol-9300000405787225'] },
+          ids: ['bol-9200000002756942', 'bol-9300000238510035', 'cg-b320632dae', 'bol-9300000405787225'] }, /* 13-11-2026: muts met speakers in plaats van de handschoenen (weg) */
         { kop: 'Spellen voor na het uitpakken', tekst: 'Zijn de pakjes open? Dan is een spel een mooie manier om de avond af te sluiten.',
           ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'kadov-23d3797d23'] },
         { kop: 'Voor je vader (€15 tot €35)', tekst: 'Vaders hebben vaak al alles. Kies dan iets voor zijn vaste gewoontes: zijn koffie, zijn biertje, zijn verzorging of iets lekkers.',
           ids: ['cl-bialetti-moka', 'hema-d6fb696345', 'cl-rit-homme', 'cl-tony-sintbundel3'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
-    { slug: 'sinterklaascadeau-vrouw', beeld: 'tbl-tb0a6as6280m1', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
+    { slug: 'sinterklaascadeau-vrouw', beeld: 'dvzn-29043e5ee8', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
       titel: 'Sinterklaascadeau voor een vrouw of moeder: 20 ideeën om haar te verwennen', kort: 'Voor je vriendin, vrouw, moeder of zus. Om te verwennen, voor in huis of om zelf iets te maken.',
       intro: 'Zoek je een sinterklaascadeau voor een vrouw? Dan kun je bijna altijd scoren met iets om even lekker tot rust te komen. Denk aan warme sokken, een fijne geur of een creatief project voor de winteravonden. Ik koos 20 cadeaus, met ook vier ideeën speciaal voor je moeder. Bijna alles kost minder dan 30 euro, en de meeste zijn ook geschikt voor de lootjes.',
       delen: [
         { kop: 'Voor in de schoen of de lootjes (tot €15)', tekst: 'Kleine cadeautjes die laten zien dat je aan haar dacht.',
           ids: ['hema-84afebb566', 'dk-00043546', 'bol-9300000239540734', 'lego-40524'] },
         { kop: 'Om jezelf te verwennen', tekst: 'Zacht, warm en lekker ruikend: helemaal goed voor de koude decemberavonden.',
-          ids: ['bol-9300000188983674', 'tbl-tb0a6as6280m1', 'lr-350322363000', 'bol-9300000291533838'] },
+          ids: ['bol-9300000188983674', 'dvzn-29043e5ee8', 'hema-efaa95f521', 'bol-9300000291533838'] }, /* 13-11-2026: magnetronsloffen en teddy-hoodie in plaats van de Timberland-sokken (weg) en de plaid van La Redoute */
         { kop: 'Mooi voor in huis', tekst: 'Een geurkaars of een lief lampje maakt het meteen gezellig.',
           ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'bol-9300000124563618', 'dvzn-347250'] },
         { kop: 'Creatief en ontspannen', tekst: 'Voor de vrouw die graag iets met haar handen doet, of even helemaal uit wil schakelen.',
@@ -4742,7 +4751,7 @@
         { kop: 'Iets persoonlijks', tekst: 'Een armband met de geboortestenen van haar kinderen, een fotoboek of een camera voor nieuwe herinneringen.',
           ids: ['cl-myka-mama', 'cl-pf-hardcover', 'bp-l311', 'cl-instax12'] },
         { kop: 'Om even tot rust te komen', tekst: 'Warm, zacht en lekker ruikend: helemaal goed voor een avond op de bank.',
-          ids: ['lr-351519825000', 'cl-ww-trilogy', 'cl-beurer-fb12', 'cl-rit-sakura'] },
+          ids: ['dk-00044258', 'cl-ww-trilogy', 'cl-beurer-fb12', 'cl-rit-sakura'] },
         { kop: 'Voor de keuken en bij de thee', tekst: 'Een kookboek dat ze echt gebruikt, goede koffie of iets lekkers om uit te delen.',
           ids: ['bol-9300000258651028', 'cl-bialetti-moka', 'dk-00044932', 'bol-9300000158510566'] },
         { kop: 'Bloemen die blijven', tekst: 'Bloemen van LEGO om samen te bouwen, of droogbloemen die gewoon door de brievenbus passen.',
@@ -4770,7 +4779,7 @@
           ids: ['cl-gshock-5600', 'cl-le-male', 'tf-106136001', 'bol-9300000238510035'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gelegenheid/vaderdag">Vaderdag</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor een man</a>.' },
-    { slug: 'cadeau-voor-oma', beeld: 'lr-324495013000', vakken: ['cadeaus/opa-oma', 'wonen/kussens-plaids'],
+    { slug: 'cadeau-voor-oma', beeld: 'cl-17724', vakken: ['cadeaus/opa-oma', 'wonen/kussens-plaids'],
       titel: 'Cadeau voor oma: ideeën voor haar verjaardag, Kerst of zomaar', kort: 'Iets om samen met de kleinkinderen te doen, iets warms, herinneringen en iets lekkers.',
       intro: 'Oma zegt vaak dat ze niets nodig heeft, en dat ze vooral blij is als iedereen er is. Daar zit precies het geheim van een goed cadeau voor oma: iets waarmee ze tijd doorbrengt met de kleinkinderen, iets warms voor de koude avonden, of iets met herinneringen. En iets lekkers bij de koffie gaat er altijd in. Ik zette de beste ideeën op een rij, voor haar verjaardag, voor Kerst of gewoon zomaar.',
       delen: [
@@ -4784,7 +4793,7 @@
         { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die oma nog kent van vroeger en die kleinkinderen ook leuk vinden, en een invulboek voor samen.',
           ids: ['bol-1004004000008403', 'bol-9200000108574427', 'bol-9300000132852206', 'cl-wasgij'] },
         { kop: 'Warm en gezellig', tekst: 'Voor lange avonden in haar favoriete stoel.',
-          ids: ['lr-324495013000', 'cl-rohde', 'cl-beurer-fb12', 'bol-9200000075452260'] },
+          ids: ['cl-17724', 'cl-rohde', 'cl-beurer-fb12', 'bol-9200000075452260'] },
         { kop: 'Herinneringen', tekst: 'Een album om foto’s in te plakken of een fotolijst waar de familie zelf nieuwe foto’s naartoe stuurt.',
           ids: ['cl-pf-linnen', 'bol-9300000167329318'] },
         { kop: 'Iets lekkers bij de koffie', tekst: 'Marsepein, boterkoek door de brievenbus of een pakket om zelf appeltaart te bakken.',
@@ -4858,7 +4867,7 @@
             'Een kaartje met "veel geluk in jullie nieuwe huis" maakt elk cadeau persoonlijker.'
           ] },
         { kop: 'Licht en sfeer', tekst: 'Van een weckpot die overdag oplaadt in de vensterbank tot een lichtsnoer voor de tuin.',
-          ids: ['dvzn-530181', 'lr-351482827000', 'bol-9300000159425017', 'joybuy-234e86090b'] },
+          ids: ['dvzn-530181', 'cl-dk-marmer', 'bol-9300000159425017', 'joybuy-234e86090b'] },
         { kop: 'Voor aan tafel', tekst: 'Mooi servies en een flinke serveerplank: daar heeft elk nieuw huishouden wat aan.',
           ids: ['t2-hema-5623840130', 'tt-country-acc-40291bdfe5', 'dille-58dac9bd47', 'westwing-0a01a1d0b5'] },
         { kop: 'Vrolijke details', tekst: 'Een wiebelend geluksmannetje, een knipogende kattenklok of een vaas met kleur: kleine dingen die een huis eigen maken.',
@@ -5014,8 +5023,8 @@
       ['Hoe maak ik er een surprise van?', 'Verpak het cadeau in iets wat bij hem past, zoals een grote dartpijl of een bierflesje van karton. In onze gids Surprise maken staat een stappenplan.'],
       ['Wat is een goed sinterklaascadeau voor je vader?', 'Iets voor zijn vaste gewoontes: een goede koffiepot, een bierkist met breekijzer, een verzorgingsset of iets lekkers. In deze gids staan vier ideeën speciaal voor je vader.'],
       ['Wat geef je een volwassen man voor Sinterklaas?', 'Hetzelfde als voor een kind, alleen met een knipoog: iets grappigs voor pakjesavond en iets wat hij echt gebruikt. Met een plagerig gedicht erbij wordt elk cadeau persoonlijk.']] },
-    'sinterklaascadeau-vrouw': { top: [['Onze topkeuze', 'tbl-tb0a6as6280m1'], ['Beste koop', 'dk-00043546'], ['Om te verwennen', 'lr-350322363000']], faq: [
-      ['Wat geef je een vrouw voor Sinterklaas?', 'Iets om even tot rust te komen valt bijna altijd goed: warme sokken, een fijne geur of een plaid. Houdt ze van maken? Dan is een haakpakket of schilderen op nummer een schot in de roos.'],
+    'sinterklaascadeau-vrouw': { top: [['Onze topkeuze', 'dvzn-29043e5ee8'], ['Beste koop', 'dk-00043546'], ['Om te verwennen', 'hema-efaa95f521']], faq: [
+      ['Wat geef je een vrouw voor Sinterklaas?', 'Iets om even tot rust te komen valt bijna altijd goed: warme sloffen, een zachte hoodie of een fijne geur. Houdt ze van maken? Dan is een haakpakket of schilderen op nummer een schot in de roos.'],
       ['Wat is een goed lootjescadeau voor een vrouw onder de €15?', 'Fleece huissokken, een geurbalsem of de LEGO-zonnebloemen. Klein, maar ze gebruikt het echt.'],
       ['Is een geurkaars niet te standaard?', 'Niet als je een bijzondere geur kiest, zoals salted caramel. Met een grappig gedicht erbij wordt het meteen persoonlijk.'],
       ['Wat is een leuk sinterklaascadeau voor je moeder?', 'Iets wat alleen voor haar is: een verzorgingsset, marsepein of een koekjespakket voor bij de koffie. In deze gids staan vier ideeën speciaal voor je moeder.'],
@@ -5179,7 +5188,7 @@
       ['Wat geef je je vriendin voor haar verjaardag?', 'Iets wat ze elke dag draagt, zoals een fijne ketting, een verwenmoment, of iets om samen te doen. Kijk naar waar ze het de laatste tijd over had.'],
       ['Wat geef je een vriendin die alles al heeft?', 'Een moment in plaats van spullen: een spel voor jullie twee, een fles om op iets te proosten of LEGO-bloemen om samen te bouwen.'],
       ['Hoeveel geef je uit aan een cadeau voor je vriendin?', 'Dat bepaal je zelf. In deze gids lopen de ideeën van ongeveer 13 tot 80 euro, dus er is voor elk budget iets.']] },
-    'cadeau-voor-moeder': { top: [['Onze topkeuze', 'cl-myka-mama'], ['Beste koop', 'dk-00044932'], ['Om te verwennen', 'lr-351519825000']], faq: [
+    'cadeau-voor-moeder': { top: [['Onze topkeuze', 'cl-myka-mama'], ['Beste koop', 'dk-00044932'], ['Om te verwennen', 'dk-00044258']], faq: [
       ['Wat geef je je moeder die niets nodig heeft?', 'Iets persoonlijks of een moment voor haarzelf: een armband met de geboortestenen van haar kinderen, een fotoboek, of een warme plaid en een geurkaars.'],
       ['Wat is een origineel cadeau voor je moeder?', 'LEGO-bloemen om samen te bouwen, droogbloemen door de brievenbus of een pakket om samen appeltaart te bakken.'],
       ['Wanneer is het Moederdag?', 'Moederdag is in Nederland elk jaar op de tweede zondag van mei.']] },
@@ -5191,7 +5200,7 @@
       ['Wat is een babyshower?', 'Een feestje voor de aanstaande mama, een paar weken voordat de baby komt. Vrienden en familie komen samen, doen spelletjes en nemen een cadeautje mee.'],
       ['Wat neem je mee naar een babyshower?', 'Iets voor de mama en iets voor de baby, zoals een zwangerschapsdagboek of een zachte deken met naam. Vraag of er een verlanglijst is.'],
       ['Hoeveel geef je uit aan een babyshower cadeau?', 'Meestal 15 tot 30 euro per persoon. Met de groep kun je samen iets groters geven, zoals een babygym.']] },
-    'cadeau-voor-oma': { top: [['Onze topkeuze', 'lr-324495013000'], ['Samen doen', 'bol-1004004000008403'], ['Beste koop', 'bp-l303']], faq: [
+    'cadeau-voor-oma': { top: [['Onze topkeuze', 'cl-17724'], ['Samen doen', 'bol-1004004000008403'], ['Beste koop', 'bp-l303']], faq: [
       ['Wat geef je een oma die zegt dat ze niets nodig heeft?', 'Tijd samen: een spel om meteen met de kleinkinderen te spelen, of een invulboek voor oma en kleinkind.'],
       ['Wat is een goed cadeau voor oma van de kleinkinderen?', 'Iets met foto’s, zoals een fotoalbum of een digitale fotolijst, met een tekening of briefje van de kleinkinderen erbij.'],
       ['Wat geef je oma in de winter?', 'Iets warms: een wollen deken, warme pantoffels, een warmtekussen of een voetenbad.']] },
@@ -5671,7 +5680,8 @@
         if (stil) oudMeer.forEach(function (n, k) { var m = MEER_LIJSTEN[k]; if (m && n > m.getoond) toonMeer(k, n - m.getoond, tpl.content); }); /* wie al op 'Toon meer' tikte, houdt die kaarten */
         morph(app, tpl.content);
         if (window.LK_MORPH_TEST) { var proef = document.createElement('template'); proef.innerHTML = html; vulIconen(proef.content); netteLinks(proef.content);
-          var h1 = proef.innerHTML, h2 = app.innerHTML; if (h1 !== h2) { var vi = 0; while (vi < h1.length && h1.charAt(vi) === h2.charAt(vi)) vi++; console.error('MORPH-VERSCHIL op ' + location.pathname + location.search + ' vanaf teken ' + vi + ': verwacht [' + h1.slice(Math.max(0, vi - 40), vi + 80) + '] kreeg [' + h2.slice(Math.max(0, vi - 40), vi + 80) + ']'); } }
+          var mA = app.childNodes, mB = proef.content.childNodes, mOk = mA.length === mB.length, mI = 0; for (; mOk && mI < mA.length; mI++) mOk = mA[mI].isEqualNode(mB[mI]);
+          if (!mOk) console.error('MORPH-VERSCHIL op ' + location.pathname + location.search + ' bij onderdeel ' + mI + ' van ' + mA.length); }
       } catch (e) { if (window.LK_MORPH_TEST) console.error('MORPH-FOUT ' + (e && e.message)); app.innerHTML = html; }
     } else app.innerHTML = html;
     document.body.classList.remove('plak-open');
