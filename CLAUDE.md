@@ -335,3 +335,11 @@ Marius: 'verdeel de producten bij cadeaus voor hem opnieuw in; doe onderzoek naa
   - spullen van voetbalclubs (Ajax, PSV, Feyenoord) en meer F1 (petten, Max Verstappen);
   - goedkope gadgets onder € 25 van Ditverzinjeniet ter vervanging van wat uitverkocht is (USB-minikoelkastje, AI-beslissingsmonitor, houten bierdopjeskaart staan op afgekeurd);
   - grappige sokken en pantoffels voor heren bij HEMA of Ditverzinjeniet (niet bol).
+- **Voor haar (13-11)**: eigen cijfers: de meest bekeken productpagina is een parfumolie (Lattafa Yara Moi), verder kaarsen maken, de teddy-hoodie van HEMA, magnetronsloffen, een plaid, een dagboek, cadeaupakketten van Dille & Kamille en Atelier Rebul. TikTok: knus en verwennen scoort. Lootjestrekken: boek, keukenspullen (sterk stijgend bij vrouwen), douchegel en verzorging. De oude top begon met vier sieraden (botst met de regel 'sieraden alleen in hun eigen hoek') en twee producten van La Redoute; die twee staan er niet meer in, de sieraden staan achteraan. Nieuwe eerste 36: o.a. muziekdoosje maken, Atelier Rebul handset, teddy-hoodie, ghd föhn, popcornpantoffel voor twee, Moët, ramen-zeepnoedels, LEGO bonsai, hart-bruisballen, Teufel, geboortebloem-mok met tekst, boeklamp, kaarsen maken, Lattafa-parfumolie, HEMA-huissokken, serveerplank, wijnglas Good Day/Bad Day, droogbloemen door de brievenbus, puzzel kat in bad, Azul, bodyscrub, Garmin, DIY neonbord, Rebul-geurstokjes, zoutlamp, Exploding Kittens, gin-bruisballen, champagneglazen, luipaardkruik, geurkaars 'You got this', popcornmachine, kookboek Miljuschka, stoombloemen, fondueset, foto-tegeltje, cocktailshaker. Gemiddeld ongeveer € 36. Oude volgorde: scratchpad `haar-oud.json`.
+- **Wat we missen voor haar (later zoeken)**:
+  - verwenpakketten en cadeaudoosjes onder € 25 bij partners die geen bol zijn (bad, thee, kaars in één doos);
+  - feelgood-romans en kookboeken bij een partner die geen bol is (een boek staat bovenaan de verlanglijstjes);
+  - belevenissen die overal in het land kunnen (high tea, wellness, workshop thuis), nu vaak één adres;
+  - mooiere sieraden die Marius wel goed vindt (nu bewust achteraan);
+  - pantoffels voor dames van leuke merken, niet bol.
+- La Redoute: er staan nog 25 producten van La Redoute op de site (de cloud krijgt bij die winkel een 403; voor bezoekers werkt de link wel). Zet ze niet in een nieuwe top.
