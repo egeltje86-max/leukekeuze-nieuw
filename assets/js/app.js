@@ -431,12 +431,14 @@
   /* Getallen op z'n Nederlands: 1.409 */
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   var PER_KEER = 36, MEER_LIJSTEN = [];
-  function gridMeer(lijst, leegHtml, n, knopTekst) {
+  /* auto (13-11-2026, wens Marius: 'kunnen de andere producten er niet direct onder'): zoveel keer komt de volgende portie vanzelf als je naar beneden scrolt;
+     daarna staat er de knop. Zo kom je nog wel bij de tekst onderaan (Baymard: lazy-loading plus een knop 'meer laden'). */
+  function gridMeer(lijst, leegHtml, n, knopTekst, auto) {
     var per = n || PER_KEER;
     if (lijst.length <= per) return grid(lijst, leegHtml);
     var k = MEER_LIJSTEN.push({ lijst: lijst, getoond: per, per: per, tekst: knopTekst || '' }) - 1;
     if (knopTekst) return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
-      '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">' + knopTekst + '</button></div>';
+      '<div class="meer-knop' + (auto ? ' groot' : '') + '"><button class="knop knop-rand" type="button" data-meer="' + k + '"' + (auto ? ' data-auto="' + auto + '"' : '') + '>' + knopTekst + '</button></div>';
     return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
       '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">Toon meer <small>(' + per + ' van ' + getal(lijst.length) + ')</small></button></div>';
   }
@@ -1829,7 +1831,7 @@
         var hier = !!(s && s.slug === x.slug);
         return '<a class="chip" href="' + metBudget(hier ? '/voor/' + pe.slug : '/voor/' + pe.slug + '/' + x.slug) + '" aria-pressed="' + hier + '"' + (hier ? ' data-wz-hier' : '') + '>' + esc(x.naam) + '</a>';
       }).join('');
-      var wzN = Math.min(12, wzLijst.length);
+      var wzN = Math.min(24, wzLijst.length); /* 13-11-2026: 24 meteen in beeld (was 12) */
       var wzKop = !wzLijst.length ? '' : '<div class="wz-uit"><h2>' + (wzN === 1 ? 'Onze beste keuze' : 'Onze ' + wzN + ' beste keuzes') + '</h2>' +
         (wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
       return paginakop({
@@ -1844,8 +1846,9 @@
           (wzBedrag ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
           (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p><nav class="chips wz-chips wz-rol" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>' : '') +
         '</section>' +
-        wzKop + gridMeer(wzLijst, leeg, 12, 'Laat er nog 12 zien') +
-        (wzLijst.length > 12 ? '<p class="wz-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>Alle ' + getal(wzLijst.length) + ' cadeaus bekijken, met sorteren en filteren</a></p>' : '') +
+        /* 13-11-2026 (wens Marius): 24 cadeaus meteen, bij het scrollen nog 24 vanzelf, daarna één duidelijke knop; sorteren en filteren als echte knop */
+        wzKop + gridMeer(wzLijst, leeg, 24, 'Meer cadeaus laten zien', 1) +
+        (wzLijst.length > 24 ? '<p class="wz-alles"><a class="knop knop-rand" href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Sorteren en filteren <small>(alle ' + getal(wzLijst.length) + ')</small></a></p>' : '') +
         leesOok(pe.oud || 'voor/' + pe.slug) + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
         (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
         tekstLinks('Voor iemand anders?', anderen.map(function (x) { return [x.kort, x.subs ? '/voor/' + x.slug : x.naar]; })) +
@@ -5720,6 +5723,17 @@
       } else vulAlleWinkels(aw);
     }
 
+    /* 13-11-2026 (wens Marius): de volgende portie cadeaus komt vanzelf als de knop 'Meer cadeaus' bijna in beeld is (data-auto = hoe vaak). */
+    var autoKnop = $('[data-meer][data-auto]', app);
+    if (autoKnop && 'IntersectionObserver' in window) {
+      var autoKijker = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        var b = es[0].target, n = +b.getAttribute('data-auto') || 0;
+        if (n > 0) { b.setAttribute('data-auto', String(n - 1)); toonMeer(b.getAttribute('data-meer')); }
+        if (n <= 1 || !b.isConnected) autoKijker.disconnect();
+      }, { rootMargin: '0px 0px 700px 0px' });
+      autoKijker.observe(autoKnop);
+    }
     /* Plakbalk op de productpagina: alleen tonen als de echte knop uit beeld is (en alleen op kleine schermen, zie css). */
     var plak = $('[data-plak]', app), acties = $('[data-acties]', app);
     if (plak && acties && 'IntersectionObserver' in window) {

@@ -2287,3 +2287,20 @@ html.wz-bh:not(.lk-gestart):not(.wz-klaar) #app > .hero, html.wz-bh:not(.lk-gest
 @media (min-width: 900px) { .gidsitems { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .gi-info h3, .gi-waarom, .gt-tekst strong { overflow-wrap: anywhere; }
 .springlinks .chip { white-space: normal; max-width: 100%; line-height: 1.25; }
+
+/* ===== FOTO GROTER EN LIJST DOOR (13-11-2026, wens Marius: 'ik vind alle foto's veel te klein', 'kunnen de andere producten er niet direct onder') ===== */
+/* Productkaart: minder witte rand om de foto, zodat het product zelf groter is. */
+html.nova2 .prodkaart .beeld.echt:not(.sfeer) img { padding: 2%; }
+/* Productpagina op de telefoon: een grote vierkante foto in plaats van een strook van 210 px. Prijs en knop blijven op het eerste scherm
+   (gemeten op 390 x 844); scrol je verder, dan komt de plakbalk met prijs en knop onderin. */
+@media (max-width: 859px) {
+  body.pag-product .product-beeld { height: auto; aspect-ratio: 1 / 1; max-height: 44vh; }
+  body.pag-product .product-beeld.echt.studio img { padding: 3%; }
+}
+/* De knop voor meer cadeaus: marineblauw en over de hele breedte, zodat je hem niet mist. Sorteren en filteren eronder als gewone knop. */
+html.nova9 .meer-knop.groot .knop-rand, .meer-knop.groot .knop-rand { display: flex; width: 100%; max-width: 420px; margin: 0 auto; justify-content: center; min-height: 52px; background: #0A1020; border-color: #0A1020; color: #FFFFFF; font-size: 16px; font-weight: 800; }
+html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover { background: #141A2A; border-color: #141A2A; color: #FFFFFF; }
+.wijzer .wz-alles { margin: 10px 0 18px; }
+.wijzer .wz-alles a.knop { display: flex; width: 100%; max-width: 420px; margin: 0 auto; min-height: 48px; align-items: center; justify-content: center; gap: 8px; color: #141A2A; font-weight: 700; }
+.wijzer .wz-alles a.knop small { font-weight: 600; color: #5B6072; }
+.wijzer .wz-alles a.knop svg { width: 18px; height: 18px; }
