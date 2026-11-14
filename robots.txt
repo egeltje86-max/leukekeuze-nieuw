@@ -4,5 +4,6 @@ Disallow: /sjabloon.html
 Disallow: /keurkamer/
 Disallow: /scripts/
 Disallow: /*naar=winkel
+Disallow: /lootjes-trekken/?
 
 Sitemap: https://leukekeuze.nl/sitemap.xml

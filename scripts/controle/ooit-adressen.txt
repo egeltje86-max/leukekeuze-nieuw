@@ -987,6 +987,7 @@
 /info/over-ons/
 /info/privacy/
 /info/voorwaarden/
+/lootjes-trekken/
 /p/1dag-b495b19402/
 /p/999g-048e0e6e80/
 /p/999g-999bom01/

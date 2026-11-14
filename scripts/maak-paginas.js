@@ -23,7 +23,7 @@ for (const f of ['sjabloon.html', 'assets/js/app.js', 'assets/js/data.js', 'asse
   const p = path.join(ROOT, f);
   if (fs.existsSync(p) && /^(<{7}|>{7}) /m.test(fs.readFileSync(p, 'utf8'))) { console.error('STOP: samenvoegfout in ' + f + ' - eerst oplossen, er is niets gebouwd.'); process.exit(1); }
 }
-const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie', 'sint-rijmmachine'];
+const MAPPEN = ['c', 'p', 'info', 'gids', 'vonk', 'zoek', 'winkels', 'favorieten', 'categorieen', 'lijst', 'voor', 'gelegenheid', 'collectie', 'sint-rijmmachine', 'lootjes-trekken'];
 /* 9-11-2026 (GO Marius, Sitewacht): een vakje (/c/afdeling/groep/vakje/) met minder dan 6 producten oogt leeg.
    Google slaat het dan over (noindex, niet in de sitemap); de pagina en de producten blijven gewoon bereikbaar. Vanaf 6 producten telt hij vanzelf weer mee. */
 const DUN = (pad, aantal) => /^\/c\/[^/]+\/[^/]+\/[^/]+\/$/.test(pad) && typeof aantal === 'number' && aantal < 6;
@@ -204,7 +204,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   /* Sint-rijmmachine (7-11-2026): de pagina wordt ook los meegenomen (het blok op de homepage verdwijnt na 5 december). */
-  const gezien = new Set(['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/']), rij = ['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/'], paginas = [];
+  /* Lootjes trekken (14-11-2026): de pagina wordt ook los meegenomen. */
+  const gezien = new Set(['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/', '/lootjes-trekken/']), rij = ['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/', '/lootjes-trekken/'], paginas = [];
   /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
      Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
   /* UITVERKOCHT (14-11-2026, GO Marius): uitverkochte producten houden hun pagina (met 'uitverkocht' en wat erop lijkt), niet in de sitemap. */
