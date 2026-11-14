@@ -2417,3 +2417,4 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .lt-bewaar { margin: 12px 0 0; }
 .lt-bewaar .knop { min-height: 44px; background: #FFFCF7; }
 .lt-laden { text-align: center; padding: 30px 0; }
+.lt [hidden], .lt-form[hidden] { display: none !important; }

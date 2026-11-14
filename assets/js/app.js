@@ -3513,7 +3513,7 @@
     var budget = LOOT_BUDGET.map(function (b) { return '<label><input type="radio" name="budget" value="' + b[0] + '"' + (b[0] === 15 ? ' checked' : '') + '><span>' + b[1] + '</span></label>'; }).join('');
     var moment = [['s', '🎁 Sinterklaas'], ['k', '🎄 Kerst'], ['a', '🎉 Iets anders']].map(function (m) { return '<label><input type="radio" name="moment" value="' + m[0] + '"' + (m[0] === 's' ? ' checked' : '') + '><span>' + m[1] + '</span></label>'; }).join('');
     var naamVeld = function (i) { return '<div class="lt-naam"><span class="lt-nr">' + (i + 1) + '</span><input type="text" name="naam" maxlength="25" autocomplete="off" placeholder="Naam" aria-label="Naam ' + (i + 1) + '"></div>'; };
-    return paginakop({ titel: 'Lootjes trekken', tekst: 'Gratis en eerlijk: niemand kan zien wie wie heeft, ook de organisator niet. Eén linkje in de groepsapp is genoeg.', kruimel: [{ tekst: 'Lootjes trekken' }], donker: true, klasse: 'lt-kop' }) +
+    return paginakop({ titel: 'Lootjes trekken', tekst: 'Gratis en eerlijk: niemand ziet wie wie heeft, ook de organisator niet.', kruimel: [{ tekst: 'Lootjes trekken' }], donker: true, klasse: 'lt-kop' }) +
       '<div class="binnen lt"><form class="lt-form" data-loot novalidate>' +
         '<section class="lt-kaart"><h2><span class="lt-stap">1</span> Wie doen er mee?</h2><p class="lt-sub">Minstens 3 namen. Vergeet jezelf niet.</p>' +
           '<div class="lt-namen" data-loot-namen>' + [0, 1, 2, 3].map(naamVeld).join('') + '</div>' +
@@ -3576,10 +3576,11 @@
   function lootBewaar(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
   function lootLeesOpslag(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
   function lootGroepUrl(g) { return location.origin + '/lootjes-trekken/?g=' + encodeURIComponent(g); }
+  function lootEuro(b) { b = +b || 0; return '€ ' + (b % 1 ? b.toFixed(2).replace('.', ',') : String(b)); }
   function lootTel(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Lootjes', event: true }); } catch (e) {} }
   function lootGroepBericht(gr, url) {
     var m = LOOT_MOMENT[gr.moment] || LOOT_MOMENT.s;
-    return m[1] + ' Lootjes trekken' + (gr.naam ? ' voor ' + gr.naam : '') + '! Tik op het linkje, kies je eigen naam en zie wie jij hebt getrokken (budget ' + LK.euro(+gr.budget) + '). Niemand anders kan zien wie jij hebt. ' + url;
+    return m[1] + ' Lootjes trekken' + (gr.naam ? ' voor ' + gr.naam : '') + '! Tik op het linkje, kies je eigen naam en zie wie jij hebt getrokken (budget ' + lootEuro(gr.budget) + '). Niemand anders kan zien wie jij hebt. ' + url;
   }
   /* Het blok voor de organisator: groepslinkje delen, zien wie al heeft gekeken, opnieuw trekken. */
   function lootBeheerHtml(g, gr) {
@@ -3613,8 +3614,8 @@
     p.innerHTML = lootUitslag({ n: r.naam, t: r.getrokken, g: r.groep, b: r.budget, m: r.moment })
       .replace('<p class="lt-sub">Niet verder vertellen! 🤫</p>', '<p class="lt-sub">Niet verder vertellen! 🤫</p><p class="lt-bewaar"><button class="knop knop-rand" type="button" data-loot-kopieer="' + esc(url) + '">Bewaar je lootje: kopieer je eigen linkje</button></p>');
     var b = lootLeesOpslag('lkloot-b-' + g);
-    if (b) lootVraag({ actie: 'status', g: g, beheer: b }).then(function (gr) { var z = p.querySelector('.lt'); if (z) { z.insertAdjacentHTML('afterbegin', lootBeheerHtml(g, gr)); vulIconen(z); } }, function () {});
-    vulIconen(p);
+    if (b) lootVraag({ actie: 'status', g: g, beheer: b }).then(function (gr) { var z = p.querySelector('.lt'); if (z) { z.insertAdjacentHTML('beforeend', lootBeheerHtml(g, gr)); vulIconen(z); } }, function () {});
+    vulIconen(p); try { window.scrollTo(0, 0); } catch (e) {}
   }
   function lootLaadGroep(g, t) {
     var vak = document.querySelector('[data-loot-groep]'), kop = document.querySelector('[data-loot-kop]'); if (!vak) return;
@@ -3627,15 +3628,15 @@
     lootVraag({ actie: 'groep', g: g }).then(function (gr) {
       var b = lootLeesOpslag('lkloot-b-' + g), m = LOOT_MOMENT[gr.moment] || LOOT_MOMENT.s;
       if (kop) kop.textContent = 'Wie ben jij?';
-      var hoi = document.querySelector('.lt-hoi'); if (hoi) hoi.textContent = m[1] + ' Lootjes' + (gr.naam ? ' voor ' + gr.naam : '') + ' · budget ' + LK.euro(+gr.budget);
-      vak.innerHTML = (b ? lootBeheerHtml(g, gr) : '') +
-        '<section class="lt-kaart"><h2>Tik op je eigen naam</h2><p class="lt-sub">Je kunt maar één naam kiezen. Daarna zie je meteen wie jij hebt getrokken. Een naam die al is gekozen, kan niemand anders meer kiezen.</p>' +
+      var hoi = document.querySelector('.lt-hoi'); if (hoi) hoi.textContent = m[1] + ' Lootjes' + (gr.naam ? ' voor ' + gr.naam : '') + ' · budget ' + lootEuro(gr.budget);
+      vak.innerHTML = '<section class="lt-kaart"><h2>Tik op je eigen naam</h2><p class="lt-sub">Je kunt maar één naam kiezen. Daarna zie je meteen wie jij hebt getrokken. Een naam die al is gekozen, kan niemand anders meer kiezen.</p>' +
         '<div class="lt-namenraster">' + gr.namen.map(function (x) {
           return '<button class="lt-naamknop" type="button" data-loot-ik="' + x.nr + '" data-naam="' + esc(x.naam) + '"' + (x.gekozen ? ' disabled' : '') + '>' + esc(x.naam) + (x.gekozen ? '<small>al gekozen</small>' : '') + '</button>';
         }).join('') + '</div>' +
         '<div data-loot-zeker hidden><p class="lt-zeker-vraag"></p><div class="lt-rij2"><button class="knop knop-goud" type="button" data-loot-ja>Ja, dat ben ik</button><button class="knop knop-rand" type="button" data-loot-nee>Nee</button></div></div>' +
         '<div class="lt-fout" data-loot-kiesfout role="alert"></div></section>' +
-        '<p class="lt-privacy">🔒 We bewaren alleen de voornamen, en na 60 dagen gooien we alles weg. Niemand, ook de organisator niet, kan zien wie jij hebt getrokken.</p>';
+        '<p class="lt-privacy">🔒 We bewaren alleen de voornamen, en na 60 dagen gooien we alles weg. Niemand, ook de organisator niet, kan zien wie jij hebt getrokken.</p>' +
+        (b ? lootBeheerHtml(g, gr) : '');
       vulIconen(vak);
     }, fout);
   }
