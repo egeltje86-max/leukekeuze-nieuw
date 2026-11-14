@@ -13,8 +13,19 @@ const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
 require('./splits-producten.js')(); // producten.js -> producten-lean.js + producten-details.js
 /* Sint-rijmmachine (7-11-2026): cadeaulijst met alle producten voor de serverfunctie 'sint-rijm' (data/rijm-catalogus.json). */
 try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'rijmmachine/maak-rijm-catalogus.js'), path.join(__dirname, '../data/rijm-catalogus.json')], { stdio: 'inherit' }); } catch (e) { console.error('rijm-catalogus niet gelukt:', e.message); }
+/* Sneller voor wie vaker komt (14-11-2026, Marius: 'de website laad traag'): het nummer achter elk bestand komt nu uit de inhoud van dat
+   bestand zelf. Een telefoon haalt dus alleen opnieuw op wat echt veranderd is; eerst kreeg alles bij elke update een nieuw nummer
+   en moest een vaste bezoeker na elke update weer ongeveer 1 MB binnenhalen (app.js, de productlijst, de toppers ...). */
+const BESTANDS_VERSIE = {};
+function versieVan(rel) {
+  if (!BESTANDS_VERSIE[rel]) {
+    try { BESTANDS_VERSIE[rel] = String(parseInt(require('crypto').createHash('md5').update(fs.readFileSync(path.join(ROOT, rel))).digest('hex').slice(0, 12), 16)); }
+    catch (e) { BESTANDS_VERSIE[rel] = VERSIE; }
+  }
+  return BESTANDS_VERSIE[rel];
+}
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
-  .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app|topkeuze)\.js))(\?v=\d+)?"/g, '$1?v=' + VERSIE + '"'));
+  .replace(/(assets\/(?:css\/(?:stijl|licht)\.css|js\/(?:data|producten-lean|gedeeld|app|topkeuze|teksten)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 let SJ_UIT = ''; /* het sjabloon met de icoontjes van kop, menu en onderbalk er al in (zie verderop) */
 /* Veiligheidsslot (1-11-2026): staat er nog een half samengevoegd stuk (<<<<<<< / >>>>>>>) in het sjabloon of in de bronbestanden,

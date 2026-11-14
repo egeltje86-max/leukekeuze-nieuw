@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611141904" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611141904" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141904">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611141904">
+  <link rel="preload" as="script" href="assets/js/app.js?v=278358244704521" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=207452029310261" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
+  <link rel="stylesheet" href="assets/css/licht.css?v=245771193491632">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141904", t = "assets/js/topkeuze.js?v=202611141904";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=75432195973066", t = "assets/js/topkeuze.js?v=249372173438521";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,10 +207,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"bt-54414049968467":{"url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=d3a02fecc5fac8c0c3d2825ea2e69591&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414049870163&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue","letOp":"Twijfel je over de maat? Terugsturen kan, maar kost vanaf € 5,99.","verzendNoot":"Bartogi verstuurt gratis vanaf € 75. Daaronder zie je de verzendkosten bij het afrekenen. Terugsturen kost vanaf € 5,99.","gecontroleerd":"2026-11-13","subVast":true,"varianten":[{"kleur":"Blauw","beeld":"images/producten/bt-cfe5873533","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=d3a02fecc5fac8c0c3d2825ea2e69591&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414049870163&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue","prijs":65,"maten":[{"maat":"23","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=d3a02fecc5fac8c0c3d2825ea2e69591&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414049870163&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414049870163","prijs":65},{"maat":"24","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=88edf82e6901cb095602f15caed41904&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414049902931&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414049902931","prijs":65},{"maat":"25","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=1afc79948c4ec43e80ba1ddd6b9ce96c&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414049935699&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414049935699","prijs":65},{"maat":"26","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=ae9eeeca192201504fd6346407267fd6&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414049968467&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414049968467","prijs":65},{"maat":"27","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=be84582eb2c529b4dc8276dad4f183d4&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414050001235&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414050001235","prijs":65},{"maat":"28","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=8b92f345f7b50d924e3ecc7632121f47&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414050034003&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414050034003","prijs":65},{"maat":"29","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=ebc7db6e9d3c074cc7ed41af0b34ee54&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414050066771&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414050066771","prijs":65},{"maat":"30","url":"https://fr135.net/c/?si=15634&li=1771255&wi=433339&pid=19420ff869516ebbacc83f28b560ed52&dl=products%2Fpaw-patrol-chase-kids-boots-borealis-blue%3Fvariant%3D54414050099539&ws=","winkelUrl":"https://www.bartogi.nl/products/paw-patrol-chase-kids-boots-borealis-blue?variant=54414050099539","prijs":65}]}],"wil":70,"waarom":"Regenlaarsjes met Chase van Paw Patrol. Een feest voor fans. Kies daarna je maat: de knop brengt je dan direct naar die maat bij Bartogi."}};</script>
-  <script src="assets/js/data.js?v=202611141904"></script>
-  <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611141904"></script>
-  <script src="assets/js/app.js?v=202611141904"></script>
+  <script src="assets/js/data.js?v=207452029310261"></script>
+  <script src="assets/js/teksten.js?v=248022023955020"></script>
+  <script src="assets/js/gedeeld.js?v=222594717051442"></script>
+  <script src="assets/js/app.js?v=278358244704521"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -128,7 +128,7 @@ const naamVan = pad => (pad.replace(/^\/|\/$/g, '').replace(/\//g, '--') || 'hom
     const naam = naamVan(pad), js = 'window.LK_PAK=' + JSON.stringify(pak).replace(/</g, '\\u003c') + ';try{window.dispatchEvent(new Event("lk-pak"))}catch(e){}\n';
     fs.writeFileSync(path.join(PAKMAP, naam + '.js'), js);
     let h = fs.readFileSync(f, 'utf8');
-    if (h.indexOf('<script>window.LK_PAKPAD=') === -1 && h.indexOf(KOP) !== -1) { h = h.replace(KOP, '<script>window.LK_PAKPAD="assets/pak/' + naam + '.js?v=' + VERSIE + '";</script>\n  ' + KOP); fs.writeFileSync(f, h); }
+    if (h.indexOf('<script>window.LK_PAKPAD=') === -1 && h.indexOf(KOP) !== -1) { h = h.replace(KOP, '<script>window.LK_PAKPAD="assets/pak/' + naam + '.js?v=' + parseInt(require('crypto').createHash('md5').update(js).digest('hex').slice(0, 12), 16) + '";</script>\n  ' + KOP);  /* nummer uit de inhoud: alleen opnieuw ophalen als het pak echt anders is (14-11-2026) */ fs.writeFileSync(f, h); }
     uit.gemaakt++; uit.bytes += js.length; uit.grootste.push([js.length, prods.length, pad]);
   }
   await browser.close(); srv.close();
