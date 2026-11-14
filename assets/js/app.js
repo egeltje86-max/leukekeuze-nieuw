@@ -2186,12 +2186,57 @@
     sc.onerror = function () { detailsBezig = false; };
     document.head.appendChild(sc);
   }
+  /* UITVERKOCHT (14-11-2026): de pagina van een uitverkocht product blijft staan, met eerlijk 'uitverkocht' en cadeaus die erop lijken
+     en wel te koop zijn. Zo houdt Google de bezoeker (die kwam via de naam van het product) en kan die toch iets vinden.
+     Geen winkelknop, geen prijs. Niet in de sitemap (maak-paginas.js). Uit: window.LK_UITVERKOCHT = false (dan weer 'niet beschikbaar'). */
+  function uitverkochtPagina(p) {
+    var nc = p.afd && window.LK_CAT(p.afd), ns = nc && window.LK_SUB(nc, p.groep), nv = ns && window.LK_VAK(ns, p.vak);
+    zetTitel(p.titel + ' (uitverkocht)');
+    /* Wat erop lijkt (14-11, Marius: 'die cadeaus lijken er totaal niet op'): eerst op de woorden in de naam (rugzak, Dora, kat, stressbal)
+       en het merk, dan pas het vakje. Alleen cadeaus die minstens één echt woord of het merk delen, of in hetzelfde vakje staan én een woord delen. */
+    var STOP = /^(voor|met|van|een|het|der|den|and|the|set|stuks?|cadeau|kinderen|kind|jaar|vanaf|editie|nieuw|groot|klein|mini|kleur|kies|jouw|your|with|naam|incl|inclusief|delig|cm|ml)$/;
+    var woorden = function (t) { return (t || '').toLowerCase().replace(/[^a-z0-9à-ÿ ]+/g, ' ').split(/\s+/).filter(function (w) { return w.length >= 4 && !STOP.test(w) && !/^\d+$/.test(w); }); };
+    var mijn = woorden(p.titel), mijnMerk = (merkVan(p) || '').toLowerCase();
+    var prijsOk = function (x) { return !(p.prijs > 0) || (x.prijs >= p.prijs * 0.4 && x.prijs <= p.prijs * 2.5); };
+    var score = LK.zichtbaar().filter(function (x) { return x.id !== p.id && (p.cat === 'christelijk') === (x.cat === 'christelijk'); }).map(function (x) {
+      var w = woorden(x.titel), deel = mijn.filter(function (m) { return w.indexOf(m) !== -1; }).length;
+      var merk = mijnMerk && (merkVan(x) || '').toLowerCase() === mijnMerk ? 1 : 0;
+      var sc = deel * 3 + merk * 2 + (x.vak === p.vak && x.afd === p.afd ? 2 : x.groep === p.groep ? 1 : 0) + (prijsOk(x) ? 1 : 0);
+      return { x: x, sc: sc, ok: deel >= 2 || ((deel >= 1 || merk) && x.afd === p.afd) };
+    }).filter(function (o) { return o.ok && o.sc >= 4; });
+    score.sort(function (a, b) { return b.sc - a.sc; });
+    var alt = score.slice(0, 8).map(function (o) { return o.x; });
+    /* Te weinig dat echt lijkt? Aanvullen met hetzelfde vakje in dezelfde prijsklasse. */
+    if (alt.length < 4) {
+      var al = alt.map(function (x) { return x.id; });
+      var vak = LK.zichtbaar().filter(function (x) { return x.id !== p.id && al.indexOf(x.id) === -1 && x.afd === p.afd && x.vak === p.vak; });
+      var vp = vak.filter(prijsOk); alt = alt.concat(sorteer(vp.length >= 4 ? vp : vak)).slice(0, 8);
+    }
+    var naar = nv ? [nv.naam, '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug] : ns ? [ns.naam, '/c/' + nc.slug + '/' + ns.slug] : nc ? [nc.naam, '/c/' + nc.slug] : null;
+    return '<div class="binnen">' +
+      '<div style="padding-top:16px">' + kruimel(nc ? [{ tekst: nc.naam, naar: '/c/' + nc.slug }, { tekst: ns ? ns.naam : '', naar: ns ? '/c/' + nc.slug + '/' + ns.slug : '' }, { tekst: nv ? nv.naam : '', naar: nv ? '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug : '' }, { tekst: p.titel }].filter(function (x) { return x.tekst; }) : [{ tekst: p.titel }]) + '</div>' +
+      '<div class="product uitverkocht">' +
+        '<div class="product-beeld echt studio">' + LK.productBeeld(p, true) + '<span class="uv-label">Uitverkocht</span></div>' +
+        '<div class="product-info">' +
+          '<span class="shop">' + esc(p.shop) + '</span>' +
+          '<h1>' + esc(p.titel) + '</h1>' +
+          '<div class="uv-melding"><strong>' + ic('info') + 'Dit cadeau is uitverkocht</strong>' +
+            '<p>' + esc(p.shop) + ' heeft dit cadeau op dit moment niet meer. Hieronder staan cadeaus die erop lijken en die wel te koop zijn, met foto en prijs.</p>' +
+            (alt.length ? '<a class="knop knop-goud" href="#lijkt-erop">Bekijk wat erop lijkt ' + ic('pijl') + '</a>' : '') +
+          '</div>' +
+          (naar ? '<p class="terug-link"><a href="' + esc(naar[1]) + '">' + ic('vorige') + ' Alles bij ' + esc(naar[0]) + '</a></p>' : '') +
+        '</div>' +
+      '</div>' +
+      (alt.length ? '<section class="sectie" id="lijkt-erop"><div class="sectie-kop"><div><h2>Dit lijkt erop en is wel te koop</h2></div></div>' + grid(alt) + '</section>' : '') +
+    '</div>';
+  }
   function product(id) {
     var p = LK.vind(id);
     if (p && p.status === 'samengevoegd' && p.samengevoegd && LK.vind(p.samengevoegd)) {
       if (window.history && history.replaceState) history.replaceState(null, '', '/p/' + p.samengevoegd);
       return product(p.samengevoegd);
     }
+    if (p && p.status === 'uitverkocht' && window.LK_UITVERKOCHT !== false) return uitverkochtPagina(p);
     if (!p || p.status !== 'goedgekeurd') return nietGevonden('Dit product is (nog) niet beschikbaar.');
     if (!heeftDetails(p)) laadDetails(function () { if (location.pathname.indexOf('/p/' + id) === 0) toon(); });
     onthoudBekeken(p.id);

@@ -200,14 +200,15 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   });
   const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
   /* Stap 8 (1-11-2026): uitverkochte en weggehaalde producten krijgen geen 404, maar sturen door naar hun vakje (oude links, pins, Google). */
-  const weg = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => (p.status === 'uitverkocht' || p.status === 'afgekeurd') && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]));
+  const weg = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'afgekeurd' && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]));
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   /* Sint-rijmmachine (7-11-2026): de pagina wordt ook los meegenomen (het blok op de homepage verdwijnt na 5 december). */
   const gezien = new Set(['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/']), rij = ['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/'], paginas = [];
   /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
      Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
-  for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd').map(p => p.id))) {
+  /* UITVERKOCHT (14-11-2026, GO Marius): uitverkochte producten houden hun pagina (met 'uitverkocht' en wat erop lijkt), niet in de sitemap. */
+  for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd' || p.status === 'uitverkocht').map(p => p.id))) {
     const l = '/p/' + id + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
   }
   while (rij.length) {
@@ -227,7 +228,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
       let prodTekst = '';
       if (pad.indexOf('/p/') === 0) {
         const pr = window.LK.vind(pad.split('/')[2]);
-        if (pr) prodTekst = (pr.waarom ? pr.waarom.replace(/\s+/g, ' ').trim() + ' ' : '') + 'Te koop bij ' + pr.shop +
+        if (pr) prodTekst = (pr.waarom ? pr.waarom.replace(/\s+/g, ' ').trim() + ' ' : '') + (pr.status === 'uitverkocht' ? 'Uitverkocht bij ' + pr.shop + '; hieronder cadeaus die erop lijken. Laatst gezien' : 'Te koop bij ' + pr.shop) +
           (pr.prijs ? ' voor €' + Number(pr.prijs).toFixed(2).replace('.', ',') : '') + '.';
       }
       /* Gegevens voor Google (structured data): kruimelpad en, op productpagina's, het product. */
@@ -362,7 +363,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const vandaag = new Date().toISOString().slice(0, 10);
   /* lastmod: een echte datum per pagina (niet elke keer 'vandaag'), anders negeert Google hem. */
   const verhuisdPaden = Object.keys(VERHUISD).map(k => '/' + k + '/');
-  const urls = paginas.filter(p => !p.geenIndex && !HOOFDPAGINA[p.pad] && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
+  const urls = paginas.filter(p => !p.geenIndex && !(p.prod && p.prod.status === 'uitverkocht') && !HOOFDPAGINA[p.pad] && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
   /* SNEL (13-11-2026): per lijstpagina een klein productbestand (pak), elk nagekeken tegen de hele lijst. Zie scripts/maak-pakken.js.
