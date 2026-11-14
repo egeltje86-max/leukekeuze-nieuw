@@ -628,7 +628,7 @@ window.LK_PERSONEN = (function () {
   return [
   { slug: 'hem', naam: 'Voor hem', kort: 'Voor hem', labels: ['hem'], oud: 'cadeaus/voor-hem',
     beeld: B('cadeaus-voor-hem-2026b'), vaag: B('cadeaus-voor-hem-2026b'),
-    seoTitel: 'Cadeau voor hem of je vriend – de mooiste cadeaus voor mannen', tekst: 'Voor je vriend, je vader of je broer: van een goed horloge tot een fles whisky, met de hand gekozen cadeaus voor hem.',
+    seoTitel: 'Cadeau voor een man of je vriend – de mooiste cadeaus voor hem', tekst: 'Voor je vriend, je vader of je broer: van een goed horloge tot een fles whisky, met de hand gekozen cadeaus voor hem.',
     subs: [
       s('horloges-sieraden', 'Horloges & sieraden', 'mode-beauty-horloges', ['sieraden'], 'Horloge of sieraad voor hem – herenhorloges en armbanden', 'Een horloge, armband of ketting die hij elke dag draagt. Van strak en klassiek tot stoer.'),
       s('darts-sport', 'Darts & sport', 'sport-outdoor-darts', ['sport-outdoor/darts', 'sport-outdoor/fitness', 'sport-outdoor/golf', 'sport-outdoor/padel-tennis', 'sport-outdoor/voetbal-balsporten', 'sport-outdoor/hardlopen'], 'Darts en sportcadeau voor hem', 'Dartborden, pijlen en cadeaus voor de sportieve man: golf, padel, fitness en voetbal.') /* 7-11: alleen darts en sport, geen steps/multitools/speakers (Marius) */,
@@ -645,7 +645,7 @@ window.LK_PERSONEN = (function () {
       s('wonen-keuken', 'Wonen & keuken', 'wonen-woonaccessoires', ['wonen', 'keuken'], 'Woon- en keukencadeau voor hem', 'Stoere woonaccessoires, mooie glazen en keukenspullen.')
     ] },
   { slug: 'haar', naam: 'Voor haar', kort: 'Voor haar', labels: ['haar'], oud: 'cadeaus/voor-haar', beeld: B('cadeaus-voor-haar-2026b'), vaag: B('cadeaus-voor-haar-2026b'),
-    seoTitel: 'Cadeau voor haar of je vriendin – de mooiste cadeaus voor vrouwen', tekst: 'Voor je vriendin, je moeder of je zus: sieraden, geuren en iets moois voor in huis, met de hand gekozen.',
+    seoTitel: 'Cadeau voor een vrouw of je vriendin – de mooiste cadeaus voor haar', tekst: 'Voor je vriendin, je moeder of je zus: iets om te verwennen, een fijne geur en iets moois voor in huis, met de hand gekozen.',
     subs: [
       s('sieraden', 'Sieraden', 'sieraden-kettingen', SIERADEN, 'Sieraden cadeau voor haar – kettingen, oorbellen en armbanden', 'Een sieraad geef je met gevoel. Kettingen, oorbellen, ringen en armbanden, van betaalbaar tot echt goud.'),
       s('wonen-sfeer', 'Wonen & sfeer', 'wonen-kaarsen-geur', ['wonen'], 'Sfeervol woon- en decoratiecadeau voor haar', 'Kaarsen, geurstokjes, plaids en mooie dingen voor in huis.'),

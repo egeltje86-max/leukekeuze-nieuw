@@ -924,9 +924,14 @@
 /gids/belevenis-cadeau/
 /gids/cadeau-1-jaar-samen/
 /gids/cadeau-10-euro/
+/gids/cadeau-13-jaar/
+/gids/cadeau-14-jaar/
 /gids/cadeau-15-euro/
 /gids/cadeau-18-jaar/
+/gids/cadeau-30-jaar/
+/gids/cadeau-40-jaar/
 /gids/cadeau-50-jaar/
+/gids/cadeau-60-jaar/
 /gids/cadeau-hondenliefhebber/
 /gids/cadeau-kind-1-jaar/
 /gids/cadeau-kind-10-jaar/
