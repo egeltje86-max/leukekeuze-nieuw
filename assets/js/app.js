@@ -4284,7 +4284,7 @@
       intro: "Wat geef je een voetballer? Iets om mee te trainen of om binnen mee te spelen. Een goede bal gaat altijd mee naar het veldje, met een opvouwbaar doel en pionnen kun je in de tuin oefenen, en met een tafelvoetbal speel je ook als het regent. Voor wie ook graag gamet is er EA Sports FC. Hieronder staan 18 ideeën in zes soorten, voor kinderen, tieners en volwassenen.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een bal: maat 5 is de gewone maat vanaf ongeveer 12 jaar. Voor jongere kinderen zijn er kleinere ballen; kijk bij de winkel welke maat het is.", "Keepershandschoenen hebben een maat. Weet je die niet, vraag het dan even of kies iets anders.", "Een game? Vraag eerst welke spelcomputer hij of zij heeft.", "Speelt iemand bij een club, dan heeft hij vaak al een bal. Iets om thuis mee te oefenen is dan een goede keus."] },
-        { kop: "Een goede bal", tekst: "Voor op het veldje, de straat of het schoolplein.", ids: ["cl-adidas-bal", "cl-nike-bal", "cl-wk-bal", "cl-derbystar-street"] },
+        { kop: "Een goede bal", tekst: "Voor op het veldje, de straat of het schoolplein.", ids: ["cl-adidas-bal", "cl-nike-bal", "dgsw-tiro", "lego-5010262"] },
         { kop: "Trainen in de tuin", tekst: "Een doel, pionnen en handschoenen: zo oefen je ook thuis.", ids: ["cl-goal-vouw", "cl-pionnen", "bol-9300000262196770", "cl-reusch-keeper"] },
         { kop: "Binnen voetballen", tekst: "Tafelvoetbal en voetbalspellen voor als het regent.", ids: ["mega-322134bc0a", "cl-umbro-mini", "bol-9300000262242074", "cl-cougar-world"] },
         { kop: "Gamen en spellen", tekst: "Voetbal op de spelcomputer, aan tafel of in een puzzelboek.", ids: ["bol-9300000341079798", "dgsw-d39d3ac317", "cl-denksport-voetbal"] },
@@ -4701,13 +4701,13 @@
           ids: ['nedg-e1cd4db186', 'bol-9300000155871150', 'cl-beanboozled', 'bol-9300000255947352'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/c/cadeaus/sint-onder-15">alle Sinterklaascadeaus onder €15</a> en <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Tip: koop op tijd, rond 5 december zijn populaire cadeautjes vaak snel uitverkocht.' },
-    { slug: 'cadeau-voor-collega', beeld: 'bol-9300000143116033', vakken: ['cadeaus/collega', 'boeken-media/agendas-planners-kalenders'], titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
+    { slug: 'cadeau-voor-collega', beeld: 'dvzn-c15dcffb40', vakken: ['cadeaus/collega', 'boeken-media/agendas-planners-kalenders'], titel: 'Cadeau voor een collega: 12 ideeën die altijd goed vallen', kort: 'Voor een verjaardag, afscheid, kerst of gewoon als bedankje.',
       intro: 'Een cadeau voor een collega is lastig: je wilt iets persoonlijks, maar het mag niet te duur of te gek zijn. Deze cadeaus vallen bijna altijd goed, voor een verjaardag, een afscheid of als bedankje.',
       delen: [
         { kop: 'Kleine bedankjes (tot €20)', tekst: 'Iets lekkers of een klein plantje voor op het bureau. Niet te veel, wel attent.',
           ids: ['bol-9300000017147055', 'bol-9300000239566022', 'bp-l114', 'cl-beste-mok'] },
         { kop: 'Voor op de werkplek', tekst: 'Praktisch en toch een cadeau: dingen waar iemand elke werkdag plezier van heeft.',
-          ids: ['joybuy-600d2858b0', 'gt-lexon-usb-lamp', 'bol-9300000130428935', 'bol-9300000143116033'] },
+          ids: ['joybuy-600d2858b0', 'gt-lexon-usb-lamp', 'bol-9300000130428935', 'dvzn-c15dcffb40'] },
         { kop: 'Afscheid met een knipoog', tekst: 'Gaat een collega weg? Een grappig cadeau maakt het afscheid luchtiger. Leuk om met het hele team te geven.',
           ids: ['dvzn-990557', 'amz-b0dcw33ywj', 'bol-9300000225912982'] }
       ],
@@ -5175,7 +5175,7 @@
       ['Wat koop je voor 15 euro voor Sinterklaas?', 'Een knutselsetje, een spelletje of een puzzel, of voor volwassenen een mok of iets lekkers. Alles in deze gids blijft onder de 15 euro.'],
       ['Wat geef je een kind van 6 voor Sinterklaas?', 'Iets om te maken of te spelen: armbandjes maken, stenen beschilderen of een dansspel. Zulke cadeaus houden ze dagen zoet.'],
       ['Wanneer moet ik sinterklaascadeaus kopen?', 'Liefst een week of twee van tevoren. Rond 5 december zijn populaire cadeautjes vaak snel uitverkocht.']] },
-    'cadeau-voor-collega': { top: [['Onze topkeuze', 'bol-9300000143116033'], ['Klein bedankje', 'bp-l114'], ['Met een knipoog', 'dvzn-990557']], faq: [
+    'cadeau-voor-collega': { top: [['Onze topkeuze', 'dvzn-c15dcffb40'], ['Klein bedankje', 'bp-l114'], ['Met een knipoog', 'dvzn-990557']], faq: [
       ['Wat geef je een collega voor zijn of haar verjaardag?', 'Iets kleins en attents: lekkers, thee of een plantje voor op het bureau. Voor 10 tot 20 euro heb je al iets leuks.'],
       ['Wat is een goed bedankje voor een collega?', 'Een plantje door de brievenbus of een doos thee. Klein, maar het laat zien dat je de hulp waardeert.'],
       ['Wat geef je als een collega weggaat?', 'Een grappige mok of tegel, een boek waarin iedereen iets schrijft, of samen met het team iets groters. Meer ideeën staan in onze gids Afscheidscadeau voor een collega.']] },
