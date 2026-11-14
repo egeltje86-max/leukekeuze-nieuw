@@ -5295,12 +5295,6 @@
       ['Is een geurkaars niet te standaard?', 'Niet als je een bijzondere geur kiest, zoals salted caramel. Met een grappig gedicht erbij wordt het meteen persoonlijk.'],
       ['Wat is een leuk sinterklaascadeau voor je moeder?', 'Iets wat alleen voor haar is: een verzorgingsset, marsepein of een koekjespakket voor bij de koffie. In deze gids staan vier ideeën speciaal voor je moeder.'],
       ['Wat geef je een volwassen vrouw voor Sinterklaas?', 'Iets om te verwennen of iets voor in huis, met een gedicht dat haar een beetje plaagt. Een klein cadeau met een goed gedicht valt vaak beter dan een duur cadeau zonder.']] },
-    'surprise-maken': { top: [['Onmisbaar', 'bol-9300000226734832'], ['Voor in je surprise', 'bol-9300000345522498'], ['Iets lekkers erbij', 'bol-9300000010371405']], faq: [
-      ['Hoeveel tijd kost een surprise maken?', 'Reken op twee tot drie avonden. Verf en papier-maché moeten drogen, dus begin uiterlijk een week voor pakjesavond.'],
-      ['Wat heb je nodig om een surprise te maken?', 'Een doos of fles als basis, karton, plakband, een lijmpistool, verf of crêpepapier en een paar details zoals ogen of glitters. Met een lijmpistool gaat alles veel sneller.'],
-      ['Hoe lang moet een sinterklaasgedicht zijn?', 'Acht tot zestien regels is genoeg. Laat het rijmen op elke twee regels, plaag een beetje maar houd het lief, en onderteken met Sint en Piet.'],
-      ['Kan ik een surprise maken zonder te knutselen?', 'Ja. Verpak het cadeau in steeds kleinere dozen met bij elke doos een stukje gedicht, of plak een doos vol met chocoladerepen. In deze gids staan meer snelle ideeën.'],
-      ['Wat stop je in een surprise?', 'Het lootjescadeau, vaak tussen 10 en 25 euro, plus iets lekkers zoals een chocoladeletter of kruidnoten. Bij de kleine cadeautjes in deze gids staan ideeën onder de 15 euro.']] },
     'adventskalender-kiezen': { top: [['Onze topkeuze', 'bol-9300000186028245'], ['Net even anders', 'bol-9300000408782128'], ['Voor kinderen', 't2-handpoppen-bf7af21cea']], faq: [
       ['Wanneer begint een adventskalender?', 'Op 1 december. De meeste kalenders hebben 24 vakjes en lopen tot kerstavond. Sommige hebben er 25, tot en met eerste kerstdag.'],
       ['Wanneer moet ik een adventskalender bestellen?', 'Liefst vóór eind november. Dan heb je hem zeker op tijd, en de populairste kalenders zijn in december vaak uitverkocht.'],
@@ -5357,14 +5351,6 @@
       ['Wat koop je voor onder de 25 euro voor Kerst?', 'Iets lekkers in een mooie verpakking, iets gezelligs voor in huis, of een puzzel of spel voor de kerstdagen. Alles in deze gids blijft onder de 25 euro.'],
       ['Wat geef je iemand die je niet goed kent?', 'Iets dat op gaat: koffie, thee of chocolade. Dat valt bijna altijd goed en past in elk huis.'],
       ['Wanneer moet ik kerstcadeaus bestellen?', 'Liefst begin december. Vlak voor Kerst is het druk bij de bezorgers en zijn populaire cadeaus soms uitverkocht.']] },
-    'kerstcadeau-voor-haar': { top: [['Onze topkeuze', 'bol-9300000237452859'], ['Beste koop', 'bol-9300000225710092'], ['Om uit te pakken', 'cl-instax12']], faq: [
-      ['Wat geef je je vriendin met Kerst?', 'Iets om zichzelf te verwennen, zoals een cadeauset van Rituals, of iets met herinneringen, zoals een instant camera. Kijk naar wat ze zelf graag doet.'],
-      ['Is een cadeauset niet te makkelijk?', 'Een set van een merk dat ze mooi vindt is juist een veilige keuze. Maak het persoonlijk met een kaartje of iets kleins erbij.'],
-      ['Wat geef je je moeder met Kerst?', 'Thee, een goed boek, iets voor in huis of een verwenset. In deze gids staat in elke prijsklasse iets dat bij moeders goed valt.']] },
-    'kerstcadeau-voor-hem': { top: [['Onze topkeuze', 'bol-9300000083266771'], ['Grappigste', 'bol-9300000269870256'], ['Om uit te pakken', 'cl-emberton3']], faq: [
-      ['Wat geef je een man met Kerst die alles heeft?', 'Iets wat hij zelf niet snel koopt maar wel elke week gebruikt: goede steakmessen, een mooi horloge of een speaker. Of iets voor zijn hobby, zoals darts.'],
-      ['Wat geef je je vader met Kerst?', 'Iets voor zijn hobby of iets lekkers: een koffiepakket, mooie whiskyglazen of een weerstation voor in de tuin.'],
-      ['Wat is een goed kerstcadeau voor hem onder de €35?', 'Kerstsokken van Happy Socks, een geurset of ledstrips voor in de auto. Ze staan bovenaan deze gids.']] },
     'kerstcadeau-collega': { top: [['Onze topkeuze', 'bol-9300000130428935'], ['Klein bedankje', 'hema-8eff9a5ada'], ['Met het hele team', 'bol-9300000244887994']], faq: [
       ['Hoeveel geef je uit aan een kerstcadeau voor een collega?', 'Voor een losse collega is 5 tot 15 euro gebruikelijk. Geef je met het team, dan legt iedereen een paar euro in en kun je samen iets groters kiezen.'],
       ['Wat geef je een collega die je niet goed kent?', 'Iets dat op gaat of dat iedereen gebruikt: lekkers, een thermosmok of een plantje voor op het bureau. Niet te persoonlijk, wel attent.'],
