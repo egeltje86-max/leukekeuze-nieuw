@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611141123" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611141123" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141123">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611141123">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611141146" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611141146" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141146">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611141146">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141123", t = "assets/js/topkeuze.js?v=202611141123";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141146", t = "assets/js/topkeuze.js?v=202611141146";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -206,10 +206,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"kadove-52be56ec1b":{"url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10023818%2Fcartoon-cadeau-koffiemok-beker-18-jaar-verjaardagscadeau-300-ml-18e-verjaardag.html","winkelUrl":"https://www.kado-versturen.nl/product/10023818/cartoon-cadeau-koffiemok-beker-18-jaar-verjaardagscadeau-300-ml-18e-verjaardag.html","subVast":true,"gecontroleerd":"2026-11-14","herkomst":"superkeurkamer","varianten":[{"kleur":"Cartoon","beeld":"images/producten/kadove-52be56ec1b","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10023818%2Fcartoon-cadeau-koffiemok-beker-18-jaar-verjaardagscadeau-300-ml-18e-verjaardag.html","winkelUrl":"https://www.kado-versturen.nl/product/10023818/cartoon-cadeau-koffiemok-beker-18-jaar-verjaardagscadeau-300-ml-18e-verjaardag.html","prijs":6.99},{"kleur":"Gekleurd","beeld":"images/producten/kadove-52be56ec1b-v1","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10057163%2Fkoffie-mok-leeftijdmokken-18-jaar-verjaardag-cadeau-300ml-gekleurde-mok.html","winkelUrl":"https://www.kado-versturen.nl/product/10057163/koffie-mok-leeftijdmokken-18-jaar-verjaardag-cadeau-300ml-gekleurde-mok.html","prijs":6.99}],"waarom":"Een vrolijke mok voor wie 18 wordt. Kies zelf het ontwerp."}};</script>
-  <script src="assets/js/data.js?v=202611141123"></script>
+  <script src="assets/js/data.js?v=202611141146"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611141123"></script>
-  <script src="assets/js/app.js?v=202611141123"></script>
+  <script src="assets/js/gedeeld.js?v=202611141146"></script>
+  <script src="assets/js/app.js?v=202611141146"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
