@@ -62,7 +62,8 @@ window.LK_INSTELLINGEN = {
        Marshall Emberton II was uitverkocht -> Emberton III; Instax en Ticket to Ride staan op de site als samengevoegd product (cl-...).
        Reserve, zelfde ronde: bol-9300000179581364 (Swarovski), bol-9300000237950295 (Michael Kors), dc-1141534911 (Hibiki), bol-9300000271848241 (schaakbord), cl-ttr-europe, dvzn-647292 (rendier).
        De adventskalender na 1 december wisselen (stap 9: favorieten per seizoen). */
-    ids: ['cl-rit-advent', 'bol-9300000285253019', 'bol-9300000163354878', 'cl-instax12', 'bol-9300000131876375', 'cl-emberton3'] },
+    /* 15-11-2026 (Marius koos zelf, ERBIJ-lijst keuze/erbij-favorieten-1): lampjes die branden, een book nook, de Useless Box en Yara Moi. Oude zes: cl-rit-advent, bol-9300000285253019, bol-9300000163354878, cl-instax12, bol-9300000131876375, cl-emberton3. */
+    ids: ['dvzn-995816', 'bol-9300000240443530', 'cg-useless-box', 'cadeau-b56544b12a', 'dvzn-8cd9a3bdbb', 'grotek-7165b1437f'] },
   /* Stap 2 indeling (6-11-2026, GO Marius): het seizoensblok op de homepage: één grote kaart en twee kleine, op datum (deel 7 van het plan).
      De eerste kaart van een periode is de grote. Datums zijn maand-dag; het jaar maakt niet uit. */
   seizoen: {
