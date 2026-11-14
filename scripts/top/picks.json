@@ -156,6 +156,7 @@
   "dgsw-d65de9d89a",
   "bol-9300000253114953",
   "dgsw-d246c1887c",
+  "legoshop-3320eeaf7e",
   "dvzn-8607c53284",
   "woewoe-6e48434b3c",
   "dgsw-6cf238f58c",
@@ -973,8 +974,10 @@
   "cl-winmau-neutron",
   "grotek-57e49bc6a4",
   "bol-9300000163354878",
+  "legoshop-092f35d158",
   "cl-buffalo-sjoel",
   "kado-eb6b7bd701",
+  "dvzn-ef18feeba4",
   "bol-9300000265597317",
   "cl-vidaxl-voetbal",
   "cl-adidas-bal",
@@ -6451,6 +6454,7 @@
   "dgsw-d99c9676ba",
   "bol-9300000035078697",
   "cl-hw-monster",
+  "dvzn-6beee4c0d4",
   "massa-00284f3714",
   "amz-b09f5yx15j",
   "dvzn-3ee499eae7",
@@ -7004,5 +7008,13 @@
   "cl-stal-cosy",
   "bol-9300000176344032",
   "bol-9300000242622829"
+ ],
+ "/c/sport-outdoor/balsport-spel/voetbal": [
+  "dgsw-35ae303df3",
+  "dgsw-5f1d1ef72c",
+  "dgsw-4b942b51a8",
+  "dgsw-9c85c22f02",
+  "dgsw-9fb9eded27",
+  "dgsw-682a32fc6a"
  ]
 }
