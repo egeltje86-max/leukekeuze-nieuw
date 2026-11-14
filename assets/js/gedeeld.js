@@ -239,7 +239,8 @@
      Niet bij drank (18+), elektrische steps en fietsen (regels RDW, 25 km/u) en RC op brandstof: daar eerst de uitleg op de productpagina. */
   function koopKnop(p) {
     if (window.LK_KOOPKNOP === false || p.voorbeeld || !p.shop || (p.status && p.status !== 'goedgekeurd')) return '';
-    if (p.cat === 'dranken' || /elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || ''))) return '';
+    /* 14-11-2026 (Marius: 'zet gewoon die knop erop bij drank'): drank krijgt de knop ook; de winkel controleert zelf de leeftijd. */
+    if (/elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || ''))) return '';
     return '<div class="kaart-voet"><a class="kaart-koop" data-id="' + esc(p.id) + '" href="/p/' + esc(p.id) + '/?naar=winkel" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + icoon('pijl') + '</a></div>';
   }
   /* Alleen als de eerste zin kort genoeg is om heel te tonen; anders liever niets dan een afgekapte zin. */
