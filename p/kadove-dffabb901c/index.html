@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611132245" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611132245" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611132245">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611132245">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611140557" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611140557" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140557">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611140557">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611132245", t = "assets/js/topkeuze.js?v=202611132245";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140557", t = "assets/js/topkeuze.js?v=202611140557";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -76,7 +76,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <a class="aftel aftel-sint" href="/c/cadeaus/sinterklaas/" data-aftel="" aria-label="Nog 22 dagen tot pakjesavond. Bekijk de Sinterklaascadeaus"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">22</span> dagen tot pakjesavond</span><span class="aftel-knop">Sinterklaascadeaus →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
+  <a class="aftel aftel-sint" href="/c/cadeaus/sinterklaas/" data-aftel="" aria-label="Nog 21 dagen tot pakjesavond. Bekijk de Sinterklaascadeaus"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">21</span> dagen tot pakjesavond</span><span class="aftel-knop">Sinterklaascadeaus →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
 
   <div class="topbalk">
     <div class="binnen">
@@ -205,10 +205,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"kadove-dffabb901c":{"url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077982%2Fwierook-kegeltjes-aloe-vera-10x-st-huisgeur-ontspannende-geur.html","winkelUrl":"https://www.kado-versturen.nl/product/10077982/wierook-kegeltjes-aloe-vera-10x-st-huisgeur-ontspannende-geur.html","subVast":true,"gecontroleerd":"2026-11-09","herkomst":"superkeurkamer","varianten":[{"kleur":"Aloë vera","beeld":"images/producten/kadove-dffabb901c","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077982%2Fwierook-kegeltjes-aloe-vera-10x-st-huisgeur-ontspannende-geur.html","winkelUrl":"https://www.kado-versturen.nl/product/10077982/wierook-kegeltjes-aloe-vera-10x-st-huisgeur-ontspannende-geur.html","prijs":2.6},{"kleur":"Lavendel","beeld":"images/producten/kadove-dffabb901c-v1","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077988%2Fwierook-kegeltjes-in-huisgeur-lavendel-10x-kleine-kegeltjes-ontspannend.html","winkelUrl":"https://www.kado-versturen.nl/product/10077988/wierook-kegeltjes-in-huisgeur-lavendel-10x-kleine-kegeltjes-ontspannend.html","prijs":2.6},{"kleur":"Lotus","beeld":"images/producten/kadove-dffabb901c-v2","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077986%2Fwierook-kegeltjes-in-huisgeur-lotus-10x-kleine-kegeltjes-ontspannend.html","winkelUrl":"https://www.kado-versturen.nl/product/10077986/wierook-kegeltjes-in-huisgeur-lotus-10x-kleine-kegeltjes-ontspannend.html","prijs":2.6},{"kleur":"Musk","beeld":"images/producten/kadove-dffabb901c-v3","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077985%2Fwierook-kegeltjes-in-huisgeur-musk-10x-kleine-kegeltjes-ontspannend.html","winkelUrl":"https://www.kado-versturen.nl/product/10077985/wierook-kegeltjes-in-huisgeur-musk-10x-kleine-kegeltjes-ontspannend.html","prijs":2.6},{"kleur":"Opium","beeld":"images/producten/kadove-dffabb901c-v4","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077993%2Fwierook-kegeltjes-in-huisgeur-opium-10x-kleine-kegeltjes-ontspannend.html","winkelUrl":"https://www.kado-versturen.nl/product/10077993/wierook-kegeltjes-in-huisgeur-opium-10x-kleine-kegeltjes-ontspannend.html","prijs":2.6},{"kleur":"Patchouli","beeld":"images/producten/kadove-dffabb901c-v5","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077991%2Fwierook-kegeltjes-in-huisgeur-patchouli-10x-kleine-kegeltjes-ontspannend.html","winkelUrl":"https://www.kado-versturen.nl/product/10077991/wierook-kegeltjes-in-huisgeur-patchouli-10x-kleine-kegeltjes-ontspannend.html","prijs":2.6},{"kleur":"Sandelhout","beeld":"images/producten/kadove-dffabb901c-v6","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10077987%2Fwierook-kegeltjes-in-huisgeur-sandelhout-10x-kleine-kegeltjes-ontspannend.html","winkelUrl":"https://www.kado-versturen.nl/product/10077987/wierook-kegeltjes-in-huisgeur-sandelhout-10x-kleine-kegeltjes-ontspannend.html","prijs":2.6}],"waarom":"Kleine wierookkegeltjes van HEM, 10 stuks per doosje. Kegeltjes branden kort en geven snel geur."}};</script>
-  <script src="assets/js/data.js?v=202611132245"></script>
+  <script src="assets/js/data.js?v=202611140557"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611132245"></script>
-  <script src="assets/js/app.js?v=202611132245"></script>
+  <script src="assets/js/gedeeld.js?v=202611140557"></script>
+  <script src="assets/js/app.js?v=202611140557"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
