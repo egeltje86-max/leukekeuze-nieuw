@@ -45,6 +45,8 @@ function splits() {
      Het product dat blijft krijgt de labels van het weggevallen product erbij (voor wie, tags, extra vakjes, momenten),
      zodat het nergens van een pagina verdwijnt. 'voorWeg' blijft gelden. */
   const opId = {}; for (const p of alle) opId[p.id] = p;
+  /* 14-11-2026: een budgetvakje ('onder €15') gaat niet mee als het product dat blijft duurder is (Minecraft-lampje van Amazon €13 → Ditverzinjeniet €17,99) */
+  const BUDGET_SAMEN = { 'cadeaus/onder-15': 15, 'cadeaus/sint-onder-15': 15, 'cadeaus/onder-10': 10, 'cadeaus/sint-onder-10': 10, 'christelijk/onder-25': 25 };
   const COR = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/correcties.json'), 'utf8')); } catch (e) { return {}; } })();
   for (const p of alle) {
     if (p.status !== 'samengevoegd' || !p.samengevoegd) continue;
@@ -53,7 +55,7 @@ function splits() {
     for (const veld of ['voor', 'tags', 'ookIn', 'moment']) {
       if (!Array.isArray(p[veld])) continue;
       const lijst = Array.isArray(doel[veld]) ? doel[veld] : (doel[veld] = []);
-      for (const x of p[veld]) if (lijst.indexOf(x) === -1 && !(veld === 'voor' && weg.indexOf(x) !== -1) && !(veld === 'ookIn' && x === doel.cat + '/' + doel.sub)) lijst.push(x);
+      for (const x of p[veld]) if (lijst.indexOf(x) === -1 && !(veld === 'voor' && weg.indexOf(x) !== -1) && !(veld === 'ookIn' && x === doel.cat + '/' + doel.sub) && !(veld === 'ookIn' && BUDGET_SAMEN[x] && doel.prijs > BUDGET_SAMEN[x])) lijst.push(x);
     }
   }
   /* 10-11-2026: paginaregels (geen verkeerde producten op een pagina), zie scripts/boom/paginaregels.js */
