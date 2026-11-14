@@ -7798,3 +7798,364 @@ window.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, [{"id": "kado-eb6b7bd701", "
 /* ===== ERBIJ-lijst zoekwoorden en adventskalenders (14-11-2026): 28 producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */
 window.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, [{"id": "massa-152af9d255", "titel": "Adventskalender: 24 dagen armbandjes maken", "prijs": 14.25, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fadvent-kalender-24-dagen-diy-armband.html%3Fchannable%3D003a25736b750031353633343101%26cl2%3Dstandaard%26cl3%3Dkerst%26cl4%3D%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D156341", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fadvent-kalender-24-dagen-diy-armband.html%3Fchannable%3D003a25736b750031353633343101%26cl2%3Dstandaard%26cl3%3Dkerst%26cl4%3D%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D156341", "beeld": "images/producten/massa-152af9d255", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["eten-drinken/adventskalenders", "cadeaus/voor-kinderen", "cadeaus/kerst"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Elke dag een vakje open met kraaltjes en bedeltjes, en op kerstavond heb je zelf armbandjes gemaakt. Een adventskalender om mee te knutselen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-db3798f588", "titel": "Pizzasnijder in de vorm van een gitaar (Kikkerland)", "prijs": 13.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fkikkerland-gitaar-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fkikkerland-gitaar-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-db3798f588", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["hem", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een pizzasnijder die eruitziet als een gitaar: het wieltje is de klankkast. Grappig cadeau voor een muziekliefhebber die van pizza houdt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-8a7b4143e9", "titel": "Pizzasnijder in de vorm van een kat", "prijs": 9.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fkikkerland-kat-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fkikkerland-kat-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-8a7b4143e9", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["haar", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een zwarte kat met een snijwieltje als lijf. Voor iedereen die gek is op katten en op pizza.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-3b702f04ff", "titel": "Pizzasnijder platenspeler", "prijs": 6.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fplatenspeler-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fplatenspeler-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-3b702f04ff", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["hem", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Het snijwieltje is een grammofoonplaat en het handvat de arm van de platenspeler. Leuk voor wie van muziek en pizza houdt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-1cc54af289", "titel": "Pizzasnijder in de vorm van een fiets", "prijs": 5.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Ffiets-pizzasnijder-assorti%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Ffiets-pizzasnijder-assorti%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-1cc54af289", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een fietsje met twee snijwielen: je rijdt zo door je pizza heen. Echt Nederlands en goedkoop.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-ce2fbf220a", "titel": "Pizzasnijder in de vorm van een scooter", "prijs": 15.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fscooter-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fscooter-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-ce2fbf220a", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een scooter die door de pizza rijdt. Grappig om te geven aan iemand die van Italië houdt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-cf675c6d9f", "titel": "Pizzasnijder Puperoni (drol)", "prijs": 15.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fpuperoni-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fpuperoni-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-cf675c6d9f", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/grappig"], "voor": ["hem", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een pizzasnijder in de vorm van een drol. Flauw, maar je lacht er altijd om.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-ac9cf1842a", "titel": "Houten fiets-pizzasnijder", "prijs": 22.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fhouten-fiets-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fhouten-fiets-pizzasnijder%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-ac9cf1842a", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": [], "voor": ["hem", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een fiets van hout met twee snijwielen, mooi genoeg om op tafel te laten staan.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-5f467c85fa", "titel": "Pizzames Pizza Lover", "prijs": 9.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fpizza-lover-pizzames%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fpizza-lover-pizzames%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-5f467c85fa", "cat": "keuken", "sub": "messen-snijplanken", "subVast": true, "ookIn": ["cadeaus/onder-15"], "voor": ["haar", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een halfrond pizzames met de tekst pizza lover. Snijdt in een keer door de pizza.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-afce12f961", "titel": "Stressbal mediterende kat (Meowditation)", "prijs": 12.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmeowditation-stressbal%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmeowditation-stressbal%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-afce12f961", "cat": "elektronica", "sub": "gadgets", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["iedereen", "collega"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een kat in yogahouding om in te knijpen als je even rust nodig hebt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-bc39f8e8e4", "titel": "Stressbal Kalma Kitty", "prijs": 11.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fkalma-kitty-stressbal%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fkalma-kitty-stressbal%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-bc39f8e8e4", "cat": "elektronica", "sub": "gadgets", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["iedereen", "collega"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een grijze kat die je kunt knijpen. Leuk voor op het bureau.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-94bab9f12c", "titel": "Stressbal zwarte kat", "prijs": 9.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fzwarte-kat-stressbal%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fzwarte-kat-stressbal%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-94bab9f12c", "cat": "elektronica", "sub": "gadgets", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["iedereen", "collega"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een zachte zwarte kattenkop om in te knijpen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-56519d41d1", "titel": "Stressbal Baby Yoda (The Mandalorian)", "prijs": 8.49, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fdisney-star-wars-mandalorian-baby-yoda-stressbal%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fdisney-star-wars-mandalorian-baby-yoda-stressbal%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-56519d41d1", "cat": "elektronica", "sub": "gadgets", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["tiener", "hem", "iedereen"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Grogu uit The Mandalorian als stressbal. Voor Star Wars-fans.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dvzn-a3513a2ca2", "titel": "Minecraft-stressblok", "prijs": 9.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fminecraft-stressblok%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fminecraft-stressblok%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-a3513a2ca2", "cat": "elektronica", "sub": "gadgets", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["kind", "tiener"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een blokje uit Minecraft om in te knijpen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "massa-ee184f6222", "titel": "Knijpballen met glitter (4 stuks)", "prijs": 6.75, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fsquishdough-knijpballen-glitter-5cm-4st.html%3Fchannable%3D003a25736b750031353834343485%26cl2%3Dbudget%26cl3%3Dspeelgoed%26cl4%3D%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D158444", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fsquishdough-knijpballen-glitter-5cm-4st.html%3Fchannable%3D003a25736b750031353834343485%26cl2%3Dbudget%26cl3%3Dspeelgoed%26cl4%3D%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D158444", "beeld": "images/producten/massa-ee184f6222", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/onder-15"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Vier knijpballen met glitter. Leuk voor in de schoen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-4af34c3018", "titel": "Squishy Factory: maak je eigen squishy's", "prijs": 22.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbouwspeelgoed%2Fslime%2Fsquishy-factory-diy-canal-toys%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbouwspeelgoed%2Fslime%2Fsquishy-factory-diy-canal-toys%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-4af34c3018", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een fabriekje om zelf squishy's te maken en te versieren.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "massa-00284f3714", "titel": "Ufo-slijm met alien", "prijs": 5.25, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fjohn-toy-ufo-slime-met-alien.html%3Fchannable%3D003a25736b75003134373130314f%26cl2%3Dbudget%26cl3%3Dspeelgoed%26cl4%3Dwinning%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D147101", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fjohn-toy-ufo-slime-met-alien.html%3Fchannable%3D003a25736b75003134373130314f%26cl2%3Dbudget%26cl3%3Dspeelgoed%26cl4%3Dwinning%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D147101", "beeld": "images/producten/massa-00284f3714", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/grappig", "cadeaus/onder-15"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een ufo vol slijm met een alien erin. Klein cadeautje voor in de schoen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "legoshop-b46a3fcffa", "titel": "LEGO interstellair ruimteschip (60430)", "prijs": 19.99, "shop": "LEGO", "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8634b76c046897a80779ba3ec14484c7&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416470823%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Finterstellar-spaceship-60430&ws=", "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8634b76c046897a80779ba3ec14484c7&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416470823%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Finterstellar-spaceship-60430&ws=", "beeld": "images/producten/legoshop-b46a3fcffa", "cat": "speelgoed", "sub": "lego", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een ruimteschip van LEGO City om zelf te bouwen, met astronaut.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "legoshop-09134514d8", "titel": "LEGO Toy Story: alien met Pizza Planet-raket (43307)", "prijs": 59.99, "shop": "LEGO", "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=bd1c7c7a970f36d1c86489f22f6596d1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590207%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Falien-with-pizza-planet-rocket-ride-43307&ws=", "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=bd1c7c7a970f36d1c86489f22f6596d1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590207%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Falien-with-pizza-planet-rocket-ride-43307&ws=", "beeld": "images/producten/legoshop-09134514d8", "cat": "speelgoed", "sub": "lego", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind", "tiener"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "De aliens uit Toy Story in hun Pizza Planet-raket, van LEGO.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "superz-af109498fe", "titel": "Toy Story alien-lampje (Paladone)", "prijs": 17.5, "shop": "Superzero", "url": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-toy-story-alien-icon-light-pp16013tsid.html%3Fsource%3Dtradetracker", "winkelUrl": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-toy-story-alien-icon-light-pp16013tsid.html%3Fsource%3Dtradetracker", "beeld": "images/producten/superz-af109498fe", "cat": "wonen", "sub": "lampen", "subVast": true, "ookIn": [], "voor": ["kind", "tiener"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "De groene alien uit Toy Story als lampje voor de kamer.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "superz-b938608f06", "titel": "Toy Story alien-lamp van zacht siliconen (Paladone)", "prijs": 27.0, "shop": "Superzero", "url": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-toy-story-squishyglo-silicon-light-alien.html%3Fsource%3Dtradetracker", "winkelUrl": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-toy-story-squishyglo-silicon-light-alien.html%3Fsource%3Dtradetracker", "beeld": "images/producten/superz-b938608f06", "cat": "wonen", "sub": "lampen", "subVast": true, "ookIn": [], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een zachte alien-lamp die licht geeft, voor op het nachtkastje.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-8aa2383c63", "titel": "Wasgij Junior puzzel: invasie van buitenaardse wezens (240 stukjes)", "prijs": 9.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjumbo%2Fwasgij-puzzels%2Fjumbo-puzzel-wasgij-junior-4-invasie-buitenaardse-wezens-240%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjumbo%2Fwasgij-puzzels%2Fjumbo-puzzel-wasgij-junior-4-invasie-buitenaardse-wezens-240%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-8aa2383c63", "cat": "speelgoed", "sub": "puzzels", "subVast": true, "ookIn": ["cadeaus/onder-15"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een Wasgij-puzzel voor kinderen: je puzzelt wat de mensen op het plaatje zien.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-392f8505b4", "titel": "Treasure X: alien ontleden (groot)", "prijs": 17.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjongensspeelgoed%2Fdiversen%2Ftreasure-x-alien-dissection-groot%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjongensspeelgoed%2Fdiversen%2Ftreasure-x-alien-dissection-groot%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-392f8505b4", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een alien vol slijm waarin je op zoek gaat naar verborgen schatten.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "nedg-7ef290f340", "titel": "Toy Story alien-sneeuwbol", "prijs": 16.99, "shop": "Nedgame", "url": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fdisney-toy-story-alien-remix-snow-globe---buzz-lightyear%2F9961553236%2F", "winkelUrl": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fdisney-toy-story-alien-remix-snow-globe---buzz-lightyear%2F9961553236%2F", "beeld": "images/producten/nedg-7ef290f340", "cat": "wonen", "sub": "woondecoratie", "subVast": true, "ookIn": [], "voor": ["kind", "tiener"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een sneeuwbol met de alien uit Toy Story.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-d246c1887c", "titel": "Miniverse Hello Kitty (Make It Mini)", "prijs": 12.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fminiverse%2Fmgas-miniverse-make-it-mini-sanrio-hello-kitty%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fminiverse%2Fmgas-miniverse-make-it-mini-sanrio-hello-kitty%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-d246c1887c", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Piepkleine Hello Kitty-spulletjes om zelf te maken. Miniverse is nu een hype bij kinderen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-957227d9f2", "titel": "Miniverse Harry Potter toverdrankjes (Make It Mini)", "prijs": 13.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fharry-potter%2Fmgas-miniverse-make-it-mini-harry-potter-in-sidekick%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fharry-potter%2Fmgas-miniverse-make-it-mini-harry-potter-in-sidekick%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-957227d9f2", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind", "tiener"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Maak piepkleine toverdrankjes uit Harry Potter.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-2dd2326beb", "titel": "Miniverse Make It Mini spa", "prijs": 13.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fdiversen%2Fminiverse-make-it-mini-spa%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fdiversen%2Fminiverse-make-it-mini-spa%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-2dd2326beb", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Een mini-spa om zelf te maken, met piepkleine verzorgingsspulletjes.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}, {"id": "dgsw-978bdf54c6", "titel": "Miniverse Make It Mini Minecraft", "prijs": 12.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjongensspeelgoed%2Fminecraft%2Fminiverse-make-it-mini-licensed%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjongensspeelgoed%2Fminecraft%2Fminiverse-make-it-mini-licensed%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-978bdf54c6", "cat": "speelgoed", "sub": "knutselen-kleuren", "subVast": true, "ookIn": ["cadeaus/voor-kinderen"], "voor": ["kind"], "moment": ["sinterklaas", "kerst", "verjaardag", "zomaar"], "waarom": "Minecraft in het klein, om zelf te maken.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-14", "sinds": "2026-11-14", "herkomst": "piloot"}]);
 /* ===== einde ERBIJ-lijst zoekwoorden en adventskalenders (14-11-2026) ===== */
+
+/* ===== Piloot 2026-11-14: 11 producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */
+window.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, [
+ {
+  "id": "dvzn-f8532c385d",
+  "titel": "Clumsy Duck nachtlampje (eend die op zijn buik ligt)",
+  "prijs": 24.99,
+  "shop": "Ditverzinjeniet",
+  "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fclumsy-duck-nachtlampje%3Futm_campaign%3Dtt_feed_all",
+  "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fclumsy-duck-nachtlampje%3Futm_campaign%3Dtt_feed_all",
+  "beeld": "images/producten/dvzn-f8532c385d",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sinterklaas",
+   "cadeaus/kerst",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "tiener",
+   "kind",
+   "haar"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Een zacht lampje in de vorm van een eend die languit op zijn buik ligt. Grappig om te zien en fijn als zacht licht op de kamer.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "hema-92afe06c2f",
+  "titel": "HEMA nachtlampje kasteel (siliconen, 18,5 cm)",
+  "prijs": 12.99,
+  "shop": "HEMA",
+  "url": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fnachtlampje-led-%25E2%258C%258010.5x18.5cm-kasteel-siliconen-15100155.html",
+  "winkelUrl": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fnachtlampje-led-%25E2%258C%258010.5x18.5cm-kasteel-siliconen-15100155.html",
+  "beeld": "images/producten/hema-92afe06c2f",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Een led-nachtlampje in de vorm van een sprookjeskasteel, van zacht siliconen. Een rustig lichtje voor de kinderkamer.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dgsw-85c69aeb15",
+  "titel": "Squishmallows tashanger (9 cm)",
+  "prijs": 6.99,
+  "shop": "De Grote Speelgoedwinkel",
+  "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fsquishy%2Fsquishmallows-clip-on-plush-9-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fsquishy%2Fsquishmallows-clip-on-plush-9-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "beeld": "images/producten/dgsw-85c69aeb15",
+  "cat": "speelgoed",
+  "sub": "knuffels-squishmallows",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een mini-Squishmallow van 9 cm met clip, voor aan je tas of sleutels. Er zijn verschillende figuurtjes; welke je krijgt zie je bij de winkel.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dgsw-5c698ae13d",
+  "titel": "Airbrush Plush mystery mini knuffel neon (zelf kleuren)",
+  "prijs": 9.99,
+  "shop": "De Grote Speelgoedwinkel",
+  "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fknutselen%2Fknutselpakketten%2Fairbrush-mystery-mini-pluche-1-pack-neon%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fknutselen%2Fknutselpakketten%2Fairbrush-mystery-mini-pluche-1-pack-neon%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "beeld": "images/producten/dgsw-5c698ae13d",
+  "cat": "speelgoed",
+  "sub": "knutselen",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een verrassingsknuffel die je zelf versiert met neon airbrushstiften en sjablonen. Uitpakken en daarna meteen aan de slag.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dgsw-ed167c58cc",
+  "titel": "KPop Demon Hunters notitieboek met pluche kaft (A5)",
+  "prijs": 9.99,
+  "shop": "De Grote Speelgoedwinkel",
+  "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fkpop%2Fkpop-demon-hunter-plush-notitieboek%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fkpop%2Fkpop-demon-hunter-plush-notitieboek%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "beeld": "images/producten/dgsw-ed167c58cc",
+  "cat": "speelgoed",
+  "sub": "hypes-trends",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een A5-notitieboek met zachte paarse kaft en de Huntrix-meiden uit de film KPop Demon Hunters. Voor fans van de film.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "nedg-1ea36fd411",
+  "titel": "Pokémon-figuur Squirtle doorzichtig",
+  "prijs": 14.99,
+  "shop": "Nedgame",
+  "url": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fpokemon-translucent-figure---squirtle%2F5319280117%2F",
+  "winkelUrl": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fpokemon-translucent-figure---squirtle%2F5319280117%2F",
+  "beeld": "images/producten/nedg-1ea36fd411",
+  "cat": "speelgoed",
+  "sub": "figuren-voertuigen",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Squirtle als doorzichtig blauw beeldje. Leuk voor op een plank of bureau, voor wie Pokémon verzamelt.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "nedg-49b11339ee",
+  "titel": "Minecraft lamp toverdrankje (Potion Bottle)",
+  "prijs": 28.0,
+  "shop": "Nedgame",
+  "url": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fminecraft-illuminating-collector-replica---potion-bottle%2F8639671237%2F",
+  "winkelUrl": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fminecraft-illuminating-collector-replica---potion-bottle%2F8639671237%2F",
+  "beeld": "images/producten/nedg-49b11339ee",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sinterklaas",
+   "cadeaus/kerst",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "tiener",
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Het toverdrankje uit Minecraft als lamp, met kurk erop. Een lichtje voor op de gamekamer.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dvzn-f1d44f005d",
+  "titel": "Minecraft Axolotl nekkussen met slaapmasker",
+  "prijs": 13.99,
+  "shop": "Ditverzinjeniet",
+  "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fminecraft-axolotl-nekkussen-en-masker%3Futm_campaign%3Dtt_feed_all",
+  "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fminecraft-axolotl-nekkussen-en-masker%3Futm_campaign%3Dtt_feed_all",
+  "beeld": "images/producten/dvzn-f1d44f005d",
+  "cat": "speelgoed",
+  "sub": "hypes-trends",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een zacht nekkussen en slaapmasker in de vorm van de axolotl uit Minecraft. Handig voor lange autoritten en in het vliegtuig.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "superz-0abcd7e2c7",
+  "titel": "Minecraft lampje wolf (Paladone, 11 cm)",
+  "prijs": 15.0,
+  "shop": "Superzero",
+  "url": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-icon-lights-minecraft-wolf-pp16019mcfid.html%3Fsource%3Dtradetracker",
+  "winkelUrl": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-icon-lights-minecraft-wolf-pp16019mcfid.html%3Fsource%3Dtradetracker",
+  "beeld": "images/producten/superz-0abcd7e2c7",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "De tamme wolf uit Minecraft als lampje van 11 cm, van Paladone. Klein genoeg voor op het bureau of naast het bed.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "cadeau-57cdca51b2",
+  "titel": "Disney Stitch glitterbol met ledlicht",
+  "prijs": 28.99,
+  "shop": "Cadeau.nl",
+  "url": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fdisney-stitch-glitterbal-met-ledverlichting%2F%3Futm_campaign%3Dtt_feed_all",
+  "winkelUrl": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fdisney-stitch-glitterbal-met-ledverlichting%2F%3Futm_campaign%3Dtt_feed_all",
+  "beeld": "images/producten/cadeau-57cdca51b2",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sinterklaas",
+   "cadeaus/kerst",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Een glitterbol met Stitch erin en een lampje in de voet. Schud hem en de glitters dwarrelen in het licht.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "grotek-4da96ba1e7",
+  "titel": "TY Beanie Bouncers Stitch knuffel",
+  "prijs": 13.95,
+  "shop": "Grote Kadoshop",
+  "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7538242%2Fs%2Fxi-2016270%2F",
+  "winkelUrl": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7538242%2Fs%2Fxi-2016270%2F",
+  "beeld": "images/producten/grotek-4da96ba1e7",
+  "cat": "speelgoed",
+  "sub": "knuffels-squishmallows",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een ronde, zachte Stitch-knuffel van TY met grote oren. Een fijne knuffel voor fans van Lilo & Stitch.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ }
+]);
+/* ===== einde Piloot 2026-11-14 ===== */

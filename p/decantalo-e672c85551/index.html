@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611140722" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611140722" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140722">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611140722">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611140744" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611140744" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140744">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611140744">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140722", t = "assets/js/topkeuze.js?v=202611140722";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140744", t = "assets/js/topkeuze.js?v=202611140744";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -206,10 +206,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"decantalo-e672c85551":{"url":"https://bdt9.net/c/?si=18645&li=1845865&wi=433339&pid=f7ddb6760b31987e2eb066c2c4fb57f7&dl=nl%2Friedel-ouverture-red-wine-glass-2-glasses.html%23%2F61-formaat-accessoire%2F177-jaar-geen_jaar&ws=","winkelUrl":"https://bdt9.net/c/?si=18645&li=1845865&wi=433339&pid=f7ddb6760b31987e2eb066c2c4fb57f7&dl=nl%2Friedel-ouverture-red-wine-glass-2-glasses.html%23%2F61-formaat-accessoire%2F177-jaar-geen_jaar&ws=","subVast":true,"gecontroleerd":"2026-11-14","herkomst":"zoek","waarom":"Wijnglazen van het Oostenrijkse merk Riedel."}};</script>
-  <script src="assets/js/data.js?v=202611140722"></script>
+  <script src="assets/js/data.js?v=202611140744"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611140722"></script>
-  <script src="assets/js/app.js?v=202611140722"></script>
+  <script src="assets/js/gedeeld.js?v=202611140744"></script>
+  <script src="assets/js/app.js?v=202611140744"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
