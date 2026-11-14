@@ -1,0 +1,20 @@
+{
+ "datum": "2026-11-14",
+ "nagekeken": 1335,
+ "klopt": 789,
+ "prijs": 4,
+ "weg": 8,
+ "onbekend": 534,
+ "zonderAdres": 155,
+ "twijfelWinkels": [],
+ "grotePrijssprong": [],
+ "nietLeesbaar": [
+  "Decantalo: 280",
+  "LEGO: 59",
+  "Prydligt: 59",
+  "Wijnkring: 30",
+  "Megagadgets: 27",
+  "La Redoute: 24",
+  "Kaartje2go: 20"
+ ]
+}
