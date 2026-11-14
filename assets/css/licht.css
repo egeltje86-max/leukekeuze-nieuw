@@ -2401,3 +2401,19 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .rz-faq a { color: #8F6620; font-weight: 700; }
 /* 14-11-2026 (Marius: 'het scherm schuift van links naar rechts'): de pagina mag nooit zijwaarts schuiven, ook niet als iets net buiten het scherm steekt. */
 @supports (overflow: clip) { html, body { overflow-x: clip; } }
+/* Eerlijk lootjes trekken (14-11-2026): één groepslinkje, iedereen kiest zijn eigen naam */
+.lt-wa-groot { display: flex; width: 100%; min-height: 54px; font-size: 17px; margin: 12px 0 10px; }
+.lt-rij2 { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.lt-rij2 .knop { flex: 1 1 160px; min-height: 46px; }
+.lt-stat { font-size: 14px; font-weight: 700; color: #8F6620; white-space: nowrap; }
+.lt-gedaan .lt-stat { color: #1a7a3e; }
+.lt-namenraster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 12px; }
+@media (min-width: 640px) { .lt-namenraster { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.lt-naamknop { min-height: 56px; padding: 8px 10px; border: 1.5px solid #E5D7BE; border-radius: 14px; background: #FFFCF7; color: #0A1020; font: 800 17px 'Manrope', sans-serif; cursor: pointer; overflow-wrap: anywhere; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.lt-naamknop small { font-size: 12px; font-weight: 700; color: #6b7280; }
+.lt-naamknop:disabled { opacity: .55; cursor: default; background: #F7F3EC; }
+.lt-naamknop.gekozen { background: #0A1020; border-color: #0A1020; color: #FFFFFF; }
+.lt-zeker-vraag { font-weight: 800; font-size: 17px; color: #0A1020; margin: 6px 0; }
+.lt-bewaar { margin: 12px 0 0; }
+.lt-bewaar .knop { min-height: 44px; background: #FFFCF7; }
+.lt-laden { text-align: center; padding: 30px 0; }

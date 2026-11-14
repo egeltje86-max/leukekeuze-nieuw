@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611141503" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611141503" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141503">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611141503">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611141516" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611141516" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141516">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611141516">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141503", t = "assets/js/topkeuze.js?v=202611141503";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141516", t = "assets/js/topkeuze.js?v=202611141516";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,10 +207,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"cl-jbl-grip":{"url":"https://www.amazon.nl/dp/B0FMGXH38Q?tag=leukekeuze-21","subVast":true,"winkelUrl":"https://www.amazon.nl/dp/B0FMGXH38Q","varianten":[{"kleur":"Blauw","beeld":"images/producten/cl-jbl-grip-blauw","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-blauw%2F9300000232598794%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-blauw%2F9300000232598794%2F","prijs":70.09},{"kleur":"Zwart","beeld":"images/producten/cl-jbl-grip-zwart","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-zwart%2F9300000232598809%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-zwart%2F9300000232598809%2F","prijs":70.91},{"kleur":"Camo","beeld":"images/producten/cl-jbl-grip-camo","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-squad%2F9300000232598798%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-squad%2F9300000232598798%2F","prijs":71.19},{"kleur":"Roze","beeld":"images/producten/cl-jbl-grip-roze","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-roze%2F9300000232598806%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-roze%2F9300000232598806%2F","prijs":71.99},{"kleur":"Paars","beeld":"images/producten/cl-jbl-grip-paars","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-paars%2F9300000232598792%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-paars%2F9300000232598792%2F","prijs":73},{"kleur":"Rood","beeld":"images/producten/cl-jbl-grip-rood","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-rood%2F9300000232598830%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-rood%2F9300000232598830%2F","prijs":75.05},{"kleur":"Wit","beeld":"images/producten/cl-jbl-grip-wit","url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-wit%2F9300000232598829%2F","winkelUrl":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjbl-grip-portable-bluetooth-speaker-wit%2F9300000232598829%2F","prijs":76.26}],"wil":70,"gecontroleerd":"2026-11-12","waarom":"Nieuwe compacte speaker van JBL met sfeerlicht."}};</script>
-  <script src="assets/js/data.js?v=202611141503"></script>
+  <script src="assets/js/data.js?v=202611141516"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611141503"></script>
-  <script src="assets/js/app.js?v=202611141503"></script>
+  <script src="assets/js/gedeeld.js?v=202611141516"></script>
+  <script src="assets/js/app.js?v=202611141516"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -3507,12 +3507,13 @@
   }
   function lootjes(q) {
     if (q.l) return lootUitslag(lootLees(q.l));
+    if (q.g) return lootGroep(q);
     zetTitel('Lootjes trekken: gratis online, via WhatsApp');
     window.LK_SEO = 'Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Vul de namen in, stuur iedereen zijn eigen linkje via WhatsApp en zie meteen cadeautips binnen het budget.';
     var budget = LOOT_BUDGET.map(function (b) { return '<label><input type="radio" name="budget" value="' + b[0] + '"' + (b[0] === 15 ? ' checked' : '') + '><span>' + b[1] + '</span></label>'; }).join('');
     var moment = [['s', '🎁 Sinterklaas'], ['k', '🎄 Kerst'], ['a', '🎉 Iets anders']].map(function (m) { return '<label><input type="radio" name="moment" value="' + m[0] + '"' + (m[0] === 's' ? ' checked' : '') + '><span>' + m[1] + '</span></label>'; }).join('');
     var naamVeld = function (i) { return '<div class="lt-naam"><span class="lt-nr">' + (i + 1) + '</span><input type="text" name="naam" maxlength="25" autocomplete="off" placeholder="Naam" aria-label="Naam ' + (i + 1) + '"></div>'; };
-    return paginakop({ titel: 'Lootjes trekken', tekst: 'Gratis en zonder account. Iedereen krijgt zijn eigen linkje via WhatsApp.', kruimel: [{ tekst: 'Lootjes trekken' }], donker: true, klasse: 'lt-kop' }) +
+    return paginakop({ titel: 'Lootjes trekken', tekst: 'Gratis en eerlijk: niemand kan zien wie wie heeft, ook de organisator niet. Eén linkje in de groepsapp is genoeg.', kruimel: [{ tekst: 'Lootjes trekken' }], donker: true, klasse: 'lt-kop' }) +
       '<div class="binnen lt"><form class="lt-form" data-loot novalidate>' +
         '<section class="lt-kaart"><h2><span class="lt-stap">1</span> Wie doen er mee?</h2><p class="lt-sub">Minstens 3 namen. Vergeet jezelf niet.</p>' +
           '<div class="lt-namen" data-loot-namen>' + [0, 1, 2, 3].map(naamVeld).join('') + '</div>' +
@@ -3524,19 +3525,19 @@
             '<button class="knop knop-rand lt-erbij" type="button" data-loot-paar>+ Stel toevoegen</button></details></section>' +
         '<div data-loot-fout class="lt-fout" role="alert"></div>' +
         '<button class="knop knop-goud lt-trek" type="submit">🎲 Trek de lootjes</button>' +
-        '<p class="lt-privacy">🔒 We bewaren niets. Wie wie heeft, staat alleen versleuteld in de linkjes. Open dus alleen je eigen linkje, dan blijft het ook voor jou een verrassing.</p>' +
+        '<p class="lt-privacy">🔒 Eerlijk: de lootjes worden op onze server getrokken. Niemand kan zien wie wie heeft, ook jij niet. We bewaren alleen de voornamen, en na 60 dagen gooien we alles weg.</p>' +
       '</form><div data-loot-uit aria-live="polite"></div>' +
       '<section class="sectie lt-uitleg"><h2>Zo werkt lootjes trekken online</h2><ol class="lt-hoe">' +
         '<li><b>Namen invullen.</b> Iedereen die meedoet, ook jezelf.</li>' +
         '<li><b>Lootjes trekken.</b> Niemand trekt zichzelf. Wil je dat partners elkaar niet trekken, geef dat dan aan.</li>' +
-        '<li><b>Linkjes versturen.</b> Iedereen krijgt via WhatsApp zijn eigen linkje en ziet alleen zijn eigen lootje.</li>' +
+        '<li><b>Eén linkje versturen.</b> Stuur het groepslinkje in de groepsapp. Iedereen tikt op zijn eigen naam en ziet alleen zijn eigen lootje.</li>' +
         '<li><b>Cadeau kiezen.</b> Bij elk lootje staan cadeautips binnen het budget.</li></ol>' +
       '<h2>Vragen</h2><div class="lt-faq">' +
         '<details><summary>Kost lootjes trekken op LeukeKeuze iets?</summary><p>Nee, het is gratis. Je hoeft geen account te maken en geen e-mailadres in te vullen.</p></details>' +
-        '<details><summary>Kan de organisator zien wie wie heeft?</summary><p>Niet op het scherm: daar staan alleen de namen en hun linkjes. Wie wie heeft, staat versleuteld in de linkjes. Open als organisator dus alleen je eigen linkje.</p></details>' +
+        '<details><summary>Kan de organisator zien wie wie heeft?</summary><p>Nee. De lootjes worden op onze server getrokken. De organisator ziet alleen wie al heeft gekeken, niet wie wie heeft. Elke naam kan maar één keer gekozen worden, dus niemand kan stiekem bij een ander kijken.</p></details>' +
         '<details><summary>Kan ik mezelf trekken?</summary><p>Nee. Iedereen trekt altijd iemand anders.</p></details>' +
         '<details><summary>Met hoeveel mensen kan het?</summary><p>Vanaf 3 tot en met 40 mensen.</p></details>' +
-        '<details><summary>Wat als iemand zijn linkje kwijt is?</summary><p>Vraag de organisator het linkje nog een keer te sturen. Hij kan het opnieuw kopiëren zolang de pagina openstaat. Is de pagina dicht, trek dan opnieuw en stuur iedereen een nieuw linkje.</p></details>' +
+        '<details><summary>Ik zie mijn lootje niet meer. Wat nu?</summary><p>Open het groepslinkje weer op dezelfde telefoon: dan zie je je lootje meteen. Of gebruik je eigen linkje dat je hebt bewaard. Lukt het niet, dan kan de organisator opnieuw trekken; iedereen kiest dan opnieuw zijn naam.</p></details>' +
       '</div></section></div>';
   }
   function lootUitslag(o) {
@@ -3563,6 +3564,100 @@
         '<section class="sectie lt-zelf"><h2>Weet je niet wat je wilt hebben?</h2><p>Zet cadeaus op je verlanglijstje met het hartje en stuur het naar de groep.</p><a class="knop knop-rand" href="/gids/verlanglijstje-maken">❤ Verlanglijstje maken</a></section>' +
       '</div>';
   }
+  /* ===== EERLIJK LOOTJES TREKKEN (14-11-2026, GO Marius: 'nu kan de verzender zien wie welk lootje krijgt, dat is niet eerlijk') =====
+     De server (Supabase-functie 'lootjes') trekt en bewaart wie wie heeft; de organisator krijgt alleen één groepslinkje.
+     Iedereen kiest op zijn eigen telefoon zijn eigen naam (één keer) en ziet alleen zijn eigen lootje. Alleen voornamen, na 60 dagen weg.
+     Oude linkjes met ?l= blijven werken (lootUitslag). Organisator: localStorage 'lkloot-b-<groep>'; deelnemer: 'lkloot-t-<groep>'. */
+  var LOOT_API = 'https://oivhdejsvmsudfrulwsn.supabase.co/functions/v1/lootjes';
+  function lootVraag(data) {
+    return fetch(LOOT_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok || j.fout) throw new Error(j.fout || 'Het lukt even niet.'); return j; }); });
+  }
+  function lootBewaar(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  function lootLeesOpslag(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+  function lootGroepUrl(g) { return location.origin + '/lootjes-trekken/?g=' + encodeURIComponent(g); }
+  function lootTel(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Lootjes', event: true }); } catch (e) {} }
+  function lootGroepBericht(gr, url) {
+    var m = LOOT_MOMENT[gr.moment] || LOOT_MOMENT.s;
+    return m[1] + ' Lootjes trekken' + (gr.naam ? ' voor ' + gr.naam : '') + '! Tik op het linkje, kies je eigen naam en zie wie jij hebt getrokken (budget ' + LK.euro(+gr.budget) + '). Niemand anders kan zien wie jij hebt. ' + url;
+  }
+  /* Het blok voor de organisator: groepslinkje delen, zien wie al heeft gekeken, opnieuw trekken. */
+  function lootBeheerHtml(g, gr) {
+    var url = lootGroepUrl(g), gekozen = gr.namen.filter(function (x) { return x.gekozen; }).length;
+    return '<section class="lt-kaart lt-klaar" data-loot-beheer="' + esc(g) + '"><div class="lt-klaar-kop"><span class="lt-vink" aria-hidden="true">✓</span><div><h2>De lootjes zijn getrokken</h2>' +
+        '<p class="lt-sub">Niemand weet wie wie heeft, ook jij niet. Stuur nu <b>één linkje</b> naar de groep. Iedereen kiest daar zijn eigen naam en ziet alleen zijn eigen lootje.</p></div></div>' +
+      '<a class="lt-wa lt-wa-groot" href="https://wa.me/?text=' + encodeURIComponent(lootGroepBericht(gr, url)) + '" target="_blank" rel="noopener" data-loot-groepwa>' + ic('whatsapp') + '<span>Stuur het linkje naar de groep</span></a>' +
+      '<div class="lt-rij2"><button class="knop knop-rand" type="button" data-loot-kopieer="' + esc(url) + '">Kopieer het linkje</button>' +
+        '<a class="knop knop-goud" href="/lootjes-trekken/?g=' + esc(g) + '">Doe je zelf mee? Kies je naam</a></div>' +
+      '<p class="lt-teller">' + gekozen + ' van ' + gr.namen.length + ' hebben hun lootje bekeken</p>' +
+      '<ul class="lt-lijst">' + gr.namen.map(function (x) {
+        return '<li class="' + (x.gekozen ? 'lt-gedaan' : '') + '"><span class="lt-av" aria-hidden="true">' + esc(x.naam.charAt(0).toUpperCase()) + '</span><span class="lt-wie">' + esc(x.naam) + '</span>' +
+          '<span class="lt-stat">' + (x.gekozen ? '✓ bekeken' : 'nog niet') + '</span></li>';
+      }).join('') + '</ul>' +
+      '<div class="lt-rij2"><button class="knop knop-rand" type="button" data-loot-ververs="' + esc(g) + '">↻ Ververs</button>' +
+        '<button class="knop knop-rand" type="button" data-loot-hertrek="' + esc(g) + '">Opnieuw trekken</button></div>' +
+      '<div data-loot-hertrek-vraag hidden><p class="lt-sub">Weet je het zeker? Iedereen moet dan opnieuw zijn naam kiezen en krijgt misschien iemand anders.</p>' +
+        '<div class="lt-rij2"><button class="knop knop-goud" type="button" data-loot-hertrek-ja="' + esc(g) + '">Ja, opnieuw trekken</button><button class="knop knop-rand" type="button" data-loot-hertrek-nee>Nee</button></div></div>' +
+      '<p class="lt-sub lt-tip">💡 Bewaar deze pagina: open je hem later weer op deze telefoon, dan zie je wie al heeft gekeken.</p></section>';
+  }
+  /* Groepspagina (?g=): kies je naam, of zie je eigen lootje als je dat al hebt gedaan. */
+  function lootGroep(q) {
+    zetTitel('Lootjes trekken: kies je naam');
+    setTimeout(function () { lootLaadGroep(q.g, q.t || ''); }, 0);
+    return '<div data-loot-pagina><section class="lt-open"><div class="binnen"><p class="lt-hoi">Lootjes trekken</p><h1 data-loot-kop>Even laden…</h1></div></section>' +
+      '<div class="binnen lt"><div data-loot-groep><p class="lt-sub lt-laden">Even geduld…</p></div></div></div>';
+  }
+  function lootToonLot(g, r, token) {
+    var p = document.querySelector('[data-loot-pagina]'); if (!p) return;
+    var url = location.origin + '/lootjes-trekken/?g=' + encodeURIComponent(g) + '&t=' + encodeURIComponent(token);
+    p.innerHTML = lootUitslag({ n: r.naam, t: r.getrokken, g: r.groep, b: r.budget, m: r.moment })
+      .replace('<p class="lt-sub">Niet verder vertellen! 🤫</p>', '<p class="lt-sub">Niet verder vertellen! 🤫</p><p class="lt-bewaar"><button class="knop knop-rand" type="button" data-loot-kopieer="' + esc(url) + '">Bewaar je lootje: kopieer je eigen linkje</button></p>');
+    var b = lootLeesOpslag('lkloot-b-' + g);
+    if (b) lootVraag({ actie: 'status', g: g, beheer: b }).then(function (gr) { var z = p.querySelector('.lt'); if (z) { z.insertAdjacentHTML('afterbegin', lootBeheerHtml(g, gr)); vulIconen(z); } }, function () {});
+    vulIconen(p);
+  }
+  function lootLaadGroep(g, t) {
+    var vak = document.querySelector('[data-loot-groep]'), kop = document.querySelector('[data-loot-kop]'); if (!vak) return;
+    var fout = function (e) { if (kop) kop.textContent = 'Dit lukt even niet'; vak.innerHTML = '<p class="lt-fout">' + esc(e.message) + '</p><p class="lt-terug"><a class="knop knop-goud" href="/lootjes-trekken/">Zelf lootjes trekken</a></p>'; };
+    var token = t || lootLeesOpslag('lkloot-t-' + g);
+    if (token) {
+      return lootVraag({ actie: 'mijn', g: g, token: token }).then(function (r) { lootBewaar('lkloot-t-' + g, token); lootToonLot(g, r, token); },
+        function () { lootBewaar('lkloot-t-' + g, null); lootLaadGroep(g, ''); });
+    }
+    lootVraag({ actie: 'groep', g: g }).then(function (gr) {
+      var b = lootLeesOpslag('lkloot-b-' + g), m = LOOT_MOMENT[gr.moment] || LOOT_MOMENT.s;
+      if (kop) kop.textContent = 'Wie ben jij?';
+      var hoi = document.querySelector('.lt-hoi'); if (hoi) hoi.textContent = m[1] + ' Lootjes' + (gr.naam ? ' voor ' + gr.naam : '') + ' · budget ' + LK.euro(+gr.budget);
+      vak.innerHTML = (b ? lootBeheerHtml(g, gr) : '') +
+        '<section class="lt-kaart"><h2>Tik op je eigen naam</h2><p class="lt-sub">Je kunt maar één naam kiezen. Daarna zie je meteen wie jij hebt getrokken. Een naam die al is gekozen, kan niemand anders meer kiezen.</p>' +
+        '<div class="lt-namenraster">' + gr.namen.map(function (x) {
+          return '<button class="lt-naamknop" type="button" data-loot-ik="' + x.nr + '" data-naam="' + esc(x.naam) + '"' + (x.gekozen ? ' disabled' : '') + '>' + esc(x.naam) + (x.gekozen ? '<small>al gekozen</small>' : '') + '</button>';
+        }).join('') + '</div>' +
+        '<div data-loot-zeker hidden><p class="lt-zeker-vraag"></p><div class="lt-rij2"><button class="knop knop-goud" type="button" data-loot-ja>Ja, dat ben ik</button><button class="knop knop-rand" type="button" data-loot-nee>Nee</button></div></div>' +
+        '<div class="lt-fout" data-loot-kiesfout role="alert"></div></section>' +
+        '<p class="lt-privacy">🔒 We bewaren alleen de voornamen, en na 60 dagen gooien we alles weg. Niemand, ook de organisator niet, kan zien wie jij hebt getrokken.</p>';
+      vulIconen(vak);
+    }, fout);
+  }
+  function lootStuurMaak(f) {
+    var fout = f.querySelector('[data-loot-fout]'), namen = lootNamen(f), knop = f.querySelector('.lt-trek');
+    var zeg = function (t) { fout.textContent = t; fout.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+    if (namen.length < 3) return zeg('Vul minstens 3 verschillende namen in.');
+    if (namen.length > 40) return zeg('Het kan met hooguit 40 mensen.');
+    var stellen = [];
+    Array.prototype.forEach.call(f.querySelectorAll('.lt-paar'), function (p) { var s = p.querySelectorAll('select'); if (s[0].value && s[1].value && s[0].value !== s[1].value) stellen.push([s[0].value, s[1].value]); });
+    var v = new FormData(f), gr = { naam: String(v.get('groep') || '').trim().slice(0, 30), budget: +v.get('budget') || 15, moment: v.get('moment') || 's' };
+    fout.textContent = ''; knop.disabled = true; knop.textContent = 'Bezig met trekken…';
+    lootVraag({ actie: 'maak', naam: gr.naam, budget: gr.budget, moment: gr.moment, namen: namen, stellen: stellen }).then(function (r) {
+      lootBewaar('lkloot-b-' + r.g, r.beheer);
+      lootTel('lootjes/getrokken/' + namen.length);
+      f.hidden = true;
+      var uit = document.querySelector('[data-loot-uit]');
+      uit.innerHTML = lootBeheerHtml(r.g, { naam: gr.naam, budget: gr.budget, moment: gr.moment, namen: namen.map(function (n, i) { return { nr: i + 1, naam: n, gekozen: false }; }) });
+      vulIconen(uit); uit.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try { history.replaceState(null, '', '/lootjes-trekken/?g=' + encodeURIComponent(r.g)); } catch (e) {}
+    }, function (e) { knop.disabled = false; knop.textContent = '🎲 Trek de lootjes'; zeg(e.message); });
+  }
   function lootNaamVeld(i) { var d = document.createElement('div'); d.className = 'lt-naam'; d.innerHTML = '<span class="lt-nr">' + (i + 1) + '</span><input type="text" name="naam" maxlength="25" autocomplete="off" placeholder="Naam" aria-label="Naam ' + (i + 1) + '">'; return d; }
   function lootNamen(f) { var gezien = {}; return Array.prototype.map.call(f.querySelectorAll('[name="naam"]'), function (i) { return i.value.replace(/\s+/g, ' ').trim(); }).filter(function (n) { var k = n.toLowerCase(); if (!n || gezien[k]) return false; gezien[k] = 1; return true; }); }
   function lootParenVul(f) {
@@ -3576,38 +3671,40 @@
   document.addEventListener('submit', function (e) {
     var f = e.target && e.target.closest ? e.target.closest('form[data-loot]') : null;
     if (!f) return; e.preventDefault(); e.stopPropagation();
-    var fout = f.querySelector('[data-loot-fout]'), namen = lootNamen(f);
-    var zeg = function (t) { fout.textContent = t; fout.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
-    if (namen.length < 3) return zeg('Vul minstens 3 verschillende namen in.');
-    if (namen.length > 40) return zeg('Het kan met hooguit 40 mensen.');
-    var nietSamen = {};
-    Array.prototype.forEach.call(f.querySelectorAll('.lt-paar'), function (p) { var s = p.querySelectorAll('select'); var a = s[0].value, b = s[1].value; if (a && b && a !== b) { nietSamen[a] = b; nietSamen[b] = a; } });
-    var paren = lootTrek(namen, nietSamen);
-    if (!paren) return zeg('Met deze stellen lukt het niet om eerlijk te trekken. Haal een stel weg of zet er iemand bij.');
-    fout.textContent = '';
-    var v = new FormData(f), basis = { g: String(v.get('groep') || '').trim().slice(0, 30), b: +v.get('budget') || 15, m: v.get('moment') || 's' };
-    var adres = location.origin + '/lootjes-trekken/?l=';
-    var rij = paren.map(function (p) { var r = Object.assign({ n: p[0], t: p[1] }, basis), url = adres + lootCode(r); return { r: r, url: url }; });
-    f.hidden = true;
-    var uit = document.querySelector('[data-loot-uit]');
-    var kopIco = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>';
-    uit.innerHTML = '<section class="lt-kaart lt-klaar"><div class="lt-klaar-kop"><span class="lt-vink" aria-hidden="true">✓</span><div><h2>De lootjes zijn getrokken</h2>' +
-      '<p class="lt-sub">Stuur iedereen zijn <b>eigen</b> linkje. Open zelf alleen je eigen linkje, dan blijft het een verrassing.</p></div></div>' +
-      '<p class="lt-teller"><span data-loot-teller>0</span> van ' + rij.length + ' verstuurd</p>' +
-      '<ul class="lt-lijst">' + rij.map(function (x, i) {
-        return '<li><span class="lt-av" aria-hidden="true">' + esc(x.r.n.charAt(0).toUpperCase()) + '</span><span class="lt-wie">' + esc(x.r.n) + '</span>' +
-          '<a class="lt-wa" href="https://wa.me/?text=' + encodeURIComponent(lootBericht(x.r, x.url)) + '" target="_blank" rel="noopener" data-loot-wa="' + i + '">' + ic('whatsapp') + '<span>Stuur</span></a>' +
-          '<button class="lt-kp" type="button" data-loot-kopieer="' + esc(x.url) + '" aria-label="Kopieer het linkje van ' + esc(x.r.n) + '">' + kopIco + '</button></li>';
-      }).join('') + '</ul>' +
-      '<p class="lt-sub lt-tip">💡 Laat deze pagina openstaan tot iedereen zijn linkje heeft.</p>' +
-      '<button class="knop knop-rand lt-opnieuw" type="button" data-loot-opnieuw>↻ Opnieuw trekken</button></section>';
-    vulIconen(uit);
-    uit.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'lootjes/getrokken/' + namen.length, title: 'Lootjes getrokken', event: true }); } catch (e2) {}
+    lootStuurMaak(f);
   }, true);
   document.addEventListener('click', function (e) {
-    var t = e.target && e.target.closest ? e.target.closest('[data-loot-erbij],[data-loot-paar],[data-loot-kopieer],[data-loot-opnieuw],[data-loot-open],[data-loot-wa],.lt-paar-weg') : null;
+    var t = e.target && e.target.closest ? e.target.closest('[data-loot-erbij],[data-loot-paar],[data-loot-kopieer],[data-loot-opnieuw],[data-loot-open],[data-loot-wa],.lt-paar-weg,[data-loot-ik],[data-loot-ja],[data-loot-nee],[data-loot-ververs],[data-loot-hertrek],[data-loot-hertrek-ja],[data-loot-hertrek-nee],[data-loot-groepwa]') : null;
     if (!t) return;
+    var lg = (/[?&]g=([^&]+)/.exec(location.search) || [])[1]; lg = lg ? decodeURIComponent(lg) : '';
+    if (t.hasAttribute('data-loot-groepwa')) { lootTel('lootjes/groepslink-gedeeld'); return; }
+    if (t.hasAttribute('data-loot-ik')) {
+      var zk = document.querySelector('[data-loot-zeker]'); if (!zk) return;
+      Array.prototype.forEach.call(document.querySelectorAll('.lt-naamknop'), function (k) { k.classList.toggle('gekozen', k === t); });
+      zk.hidden = false; zk.setAttribute('data-nr', t.getAttribute('data-loot-ik'));
+      zk.querySelector('.lt-zeker-vraag').textContent = 'Ben jij ' + t.getAttribute('data-naam') + '? Je kunt maar één keer een naam kiezen.';
+      zk.scrollIntoView({ behavior: 'smooth', block: 'center' }); return;
+    }
+    if (t.hasAttribute('data-loot-nee')) { var zn = document.querySelector('[data-loot-zeker]'); if (zn) zn.hidden = true; Array.prototype.forEach.call(document.querySelectorAll('.lt-naamknop'), function (k) { k.classList.remove('gekozen'); }); return; }
+    if (t.hasAttribute('data-loot-ja')) {
+      var zj = document.querySelector('[data-loot-zeker]'), kf = document.querySelector('[data-loot-kiesfout]'); if (!zj || !lg) return;
+      t.disabled = true; t.textContent = 'Even geduld…';
+      lootVraag({ actie: 'kies', g: lg, nr: +zj.getAttribute('data-nr') }).then(function (r) { lootBewaar('lkloot-t-' + lg, r.token); lootTel('lootjes/naam-gekozen'); lootToonLot(lg, r, r.token); },
+        function (er) { t.disabled = false; t.textContent = 'Ja, dat ben ik'; if (kf) kf.textContent = er.message; lootLaadGroep(lg, ''); });
+      return;
+    }
+    if (t.hasAttribute('data-loot-ververs') || t.hasAttribute('data-loot-hertrek-ja')) {
+      var gg = t.getAttribute('data-loot-ververs') || t.getAttribute('data-loot-hertrek-ja'), bb = lootLeesOpslag('lkloot-b-' + gg), blok = t.closest('[data-loot-beheer]');
+      if (!bb || !blok) return;
+      t.disabled = true;
+      lootVraag({ actie: t.hasAttribute('data-loot-ververs') ? 'status' : 'opnieuw', g: gg, beheer: bb }).then(function (gr) {
+        if (t.hasAttribute('data-loot-hertrek-ja')) { lootBewaar('lkloot-t-' + gg, null); if (lg === gg) { lootLaadGroep(gg, ''); return; } }
+        blok.outerHTML = lootBeheerHtml(gg, gr); vulIconen(document.getElementById('app') || document.body);
+      }, function (er) { t.disabled = false; rijmToast(er.message); });
+      return;
+    }
+    if (t.hasAttribute('data-loot-hertrek')) { var hv = t.closest('[data-loot-beheer]').querySelector('[data-loot-hertrek-vraag]'); if (hv) hv.hidden = false; return; }
+    if (t.hasAttribute('data-loot-hertrek-nee')) { var hn = t.closest('[data-loot-hertrek-vraag]'); if (hn) hn.hidden = true; return; }
     var f = document.querySelector('form[data-loot]');
     if (t.hasAttribute('data-loot-erbij') && f) { var b = f.querySelector('[data-loot-namen]'), n = b.children.length; if (n < 40) { var d = lootNaamVeld(n); b.appendChild(d); d.querySelector('input').focus(); } return; }
     if (t.hasAttribute('data-loot-paar') && f) {
