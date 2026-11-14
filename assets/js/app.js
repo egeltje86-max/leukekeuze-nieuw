@@ -4697,7 +4697,7 @@
         { kop: "Gamen", tekst: "Games en iets voor bij de console.", ids: ["cl-minecraft", "cl-mkw", "cg-chocolade-game-controller", "dvzn-9688f84b76"] },
         { kop: "Voor de eigen kamer", tekst: "Lampjes en sterren aan het plafond.", ids: ["amz-b0gpf4v494", "dvzn-e572f57258", "hema-8c25c71c2b", "dvzn-b584c30354"] },
         { kop: "Spellen met vrienden", tekst: "Snel uitgelegd en altijd lachen.", ids: ["cl-exploding", "cl-hitster", "cl-flip7", "cl-beanboozled"] },
-        { kop: "Bouwen en maken", tekst: "LEGO, een book nook of iets om zelf te maken.", ids: ["lego-77243", "cl-cb-bookshop", "dvzn-114084", "boeken-b4ca80eae9"] },
+        { kop: "Bouwen en maken", tekst: "LEGO, een book nook of iets om zelf te maken.", ids: ["lego-77243", "cl-cb-midsummer", "dvzn-114084", "boeken-b4ca80eae9"] },
         { kop: "Verwennen en grappig", tekst: "Kleine cadeautjes waar je meteen om moet lachen.", ids: ["dvzn-671060bdfd", "cl-treacle-scrub", "dvzn-ebc9e55f71", "superz-f16bbf44cc"] },
         { kop: "Lezen en verzamelen", tekst: "Manga, een grappig boek of Pokémonkaarten.", ids: ["cl-demon-slayer-1", "cl-alex-tweelingbroer", "cl-pk-booster", "cl-pk-etb"] }
       ],
@@ -4735,7 +4735,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Port van 40 jaar oud bij een 40e verjaardag: dat onthoudt iedereen.", "Iets om te doen (een uitje, een bouwpakket) is vaak leuker dan nog een spullen-cadeau.", "Geef je met de hele familie of het werk? Kies dan een uitje of een goede fles.", "Iets persoonlijks zoals een fotoboek of een poster blijft het langst."] },
         { kop: "Voor het feest", tekst: "Iets geks voor op de verjaardag zelf.", ids: ["legoshop-f13ef33683", "legoshop-8e65b8eaee", "cg-1b56c4d8b5", "cg-57a56fb762"] },
         { kop: "Een goed glas", tekst: "Port van 40 jaar oud, whisky of champagne. Alleen voor 18 jaar en ouder.", ids: ["wny-10934", "dc-fb22636e49", "cl-laurent-perrier", "dvzn-208667"] },
-        { kop: "Iets om te bouwen", tekst: "LEGO en bouwpakketten voor volwassenen.", ids: ["lego-10348", "bol-9300000131876375", "legoshop-f91cb50b25", "cl-cb-bookshop"] },
+        { kop: "Iets om te bouwen", tekst: "LEGO en bouwpakketten voor volwassenen.", ids: ["lego-10348", "bol-9300000131876375", "legoshop-f91cb50b25", "cl-cb-midsummer"] },
         { kop: "Een uitje", tekst: "Iets wat je nooit vergeet.", ids: ["dk-85478160d2", "dk-904317b4e5", "dk-cd1e8497b2", "dk-3336fea059"] },
         { kop: "Iets om te onthouden", tekst: "Een poster, een fotoboek of een tegeltje.", ids: ["ptm-9", "ptm-15546", "cl-pf-hardcover", "mmf-9ed87c2539"] },
         { kop: "Om te verwennen", tekst: "Een fijne geur, goede muziek of warme voeten.", ids: ["parfum-79e274528c", "parfum-ab22c2229e", "tf-106136001", "cg-magnetron-sloffen"] }
@@ -5230,7 +5230,7 @@
       intro: 'Als de klok een uur terug gaat, is het ineens om half zes al donker. Een fel plafondlicht maakt het dan niet gezellig. Deze lampen geven sfeer, en het zijn ook leuke cadeaus voor tieners en volwassenen.',
       delen: [
         { kop: 'Lavalampen', tekst: 'De klassieker uit de jaren zeventig is weer helemaal terug. Rustgevend om naar te kijken.',
-          ids: ['dvzn-436068', 'bol-9300000021560153', 'bol-9300000372578161', 'bol-9300000178564836'] },
+          ids: ['dvzn-436068', 'cl-lavalamp', 'cadeau-48e1cbaa6e', 'dvzn-f5059f5782'] },
         { kop: 'Sterren en noorderlicht op je plafond', tekst: 'Projectors die een sterrenhemel of noorderlicht op je plafond toveren. Heerlijk om bij in slaap te vallen.',
           ids: ['bol-9300000193639901', 'dvzn-6795', 'bol-9300000164083567'] },
         { kop: 'Erbij voor een filmavond', tekst: 'Lichten uit, lamp aan, film starten.',
@@ -5701,7 +5701,7 @@
       ['Wat geef je opa en oma met Kerst?', 'Iets om samen met de kleinkinderen te doen, zoals Rummikub of sjoelen, iets warms voor de winter, of iets met foto’s van de kleinkinderen.'],
       ['Is een digitale fotolijst makkelijk voor opa en oma?', 'Een fotolijst met wifi is fijn, omdat de familie er zelf foto’s naartoe kan sturen. Zet hem wel samen met hen klaar, dan werkt hij meteen.'],
       ['Wat geef je een oma die zegt dat ze niets nodig heeft?', 'Tijd samen. Een spel, een invulboek met de kleinkinderen of een afspraak voor een dagje uit zegt vaak meer dan een duur cadeau.']] },
-    'sfeerlicht-donkere-avonden': { top: [['Onze topkeuze', 'bol-9300000193639901'], ['Beste koop', 'dvzn-6795'], ['Klassieker', 'bol-9300000021560153']], faq: [
+    'sfeerlicht-donkere-avonden': { top: [['Onze topkeuze', 'bol-9300000193639901'], ['Beste koop', 'dvzn-6795'], ['Klassieker', 'cl-lavalamp']], faq: [
       ['Hoe lang moet een lavalamp opwarmen?', 'Meestal een tot twee uur voordat de lava mooi gaat bewegen. Kijk in de handleiding hoe lang hij achter elkaar aan mag staan.'],
       ['Is een sterrenprojector geschikt voor kinderen?', 'Ja, veel kinderen vallen er rustig bij in slaap. Handig is er een met een timer, dan gaat hij vanzelf uit.'],
       ['Welke lamp geeft het meeste sfeer?', 'Warm, gedimd licht laag in de kamer. Een lavalamp of maanlamp naast de bank geeft meer sfeer dan een fel plafondlicht.']] },
