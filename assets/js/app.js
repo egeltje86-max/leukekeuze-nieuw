@@ -4433,7 +4433,7 @@
         { kop: 'Spullen om je surprise te maken', tekst: 'Met deze spullen kun je bijna elke surprise maken. Een lijmpistool is echt een aanrader: alles zit in een paar seconden vast.',
           ids: ['bol-9300000226734832', 'bol-9300000146207567', 'bol-9200000052919661'] },
         { kop: 'Kleine cadeautjes voor in je surprise', tekst: 'Bij lootjes trekken spreek je vaak een bedrag af. Deze cadeautjes passen in bijna elke surprise en blijven onder de €15.',
-          ids: ['cl-cr-geur', 'bol-9300000138803498', 'cl-buki-graaf', 'bol-9300000345522498', 'bol-9300000017407527', 'bol-9300000240237143'] },
+          ids: ['cl-cr-geur', 'bol-9300000138803498', 'cl-buki-graaf', 'dvzn-8e1b865150', 'bol-9300000017407527', 'bol-9300000240237143'] },
         { kop: 'Iets lekkers erbij', tekst: 'Een chocoladeletter of kruidnoten horen er gewoon bij. Leuk om in of naast je surprise te leggen.',
           ids: ['bol-9300000010371405', 'bol-9300000044730933', 'dk-00015052'] },
         { kop: 'Tips voor het gedicht', tekst: 'Het gedicht is minstens zo belangrijk als de surprise. Het mag plagen, maar houd het lief: iedereen moet erom kunnen lachen.',
@@ -5221,7 +5221,7 @@
         { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die opa en oma nog kennen van vroeger, en die kleinkinderen ook leuk vinden.',
           ids: ['bol-1004004000008403', 'bol-1004004011781804', 'bol-9200000108574427', 'bol-9300000132852206'] },
         { kop: 'Warm en gezellig de winter door', tekst: 'Voor lange winteravonden op de bank of in de stoel.',
-          ids: ['bol-9300000196514024', 'bol-9300000236851351', 'bol-9200000075452260', 'bol-9300000098766103'] },
+          ids: ['bol-9300000196514024', 'bol-9300000236851351', 'bol-9200000075452260', 'dvzn-662540'] },
         { kop: 'Herinneringen en muziek', tekst: 'Foto’s van de kleinkinderen of muziek van vroeger: daar raken ze niet op uitgekeken.',
           ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9200000099487936'] }
       ],
