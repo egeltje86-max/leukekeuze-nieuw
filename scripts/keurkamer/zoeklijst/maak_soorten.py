@@ -335,6 +335,112 @@ EXTRA = [
       ['iedereen', 'collega', 'kind'], 8, 'C', 'Voor wie niet drinkt, en kinderchampagne voor oud en nieuw.')),
 ]
 
+# 14-11-2026 19:00: nog meer soorten, zodat alles wat nu op de site staat een soort heeft.
+EXTRA += [
+    ('z1', S('Tafellampen, bureaulampen & lichtsnoeren', ['tafellamp', 'bureaulamp', 'leeslamp', 'vloerlamp', 'oplaadbare lamp', 'lichtsnoer', 'lichtgordijn', 'solar lamp', 'lampion'], LAMP_NIET, 15, 200,
+      ['haar', 'hem', 'iedereen'], 15, 'B', 'Mooie lampen om te geven: design, oplaadbaar of een lichtsnoer.')),
+    ('z1', S('Kaarsen, wierook & kandelaars', ['dinerkaars', 'ledkaars', 'kaars in de vorm', 'designkaars', 'wierook', 'kandelaar', 'lantaarn', 'theelichthouder', 'kaarsenhouder'], ['geurkaars'], 5, 60,
+      ['haar', 'collega', 'opa-oma'], 15, 'B', 'Gewone en gekke kaarsen, wierook en houders (geurkaarsen hebben een eigen soort).')),
+    ('z1', S('Kussens, vloerkleden & deurmatten', ['sierkussen', 'kussenhoes', 'vloerkleed', 'kindervloerkleed', 'deurmat', 'kokosmat'], ['hondenkussen', 'zitkussen tuin'], 8, 150,
+      ['haar', 'iedereen'], 15, 'B', 'Een grappige deurmat of een mooi kussen. Grote vloerkleden alleen als ze echt bijzonder zijn.')),
+    ('z11', S('Servies, mokken & theeglazen', ['serveerkom', 'serveerschaal', 'ontbijtbord', 'servies', 'theeglas', 'theeglazen', 'koffiekop', 'kop en schotel', 'theemok', 'bunzlau', 'wrendale', 'villeroy'], ['met naam', 'met foto', 'grappig'], 8, 100,
+      ['haar', 'opa-oma', 'collega'], 15, 'B', 'Mooi servies en mokken (grappige mokken en mokken met naam hebben een eigen soort).')),
+    ('z11', S('Pannen & keukengerei', ['pannenset', 'koekenpan', 'braadpan', 'keukengerei', 'keukenschaar', 'microplane', 'rasp', 'wokpan', 'gietijzeren pan'], ['reserve', 'deksel los'], 10, 200,
+      ['haar', 'hem'], 10, 'C', 'Alleen merken en sets die je cadeau geeft.')),
+    ('z11', S('Keukenapparaten & airfryers', ['airfryer', 'pizzamaker', 'pastamachine', 'keukenweegschaal', 'poffertjespan', 'vleesthermometer', 'blender', 'staafmixer', 'keukenmachine', 'waterkoker', 'broodrooster', 'sapcentrifuge'], ['onderdeel', 'reserve', 'filter los'], 15, 250,
+      ['haar', 'hem'], 10, 'C', 'Apparaten die mensen graag krijgen (airfryer, pizzamaker, pastamachine).')),
+    ('z11', S('Voorraadpotten, lunchboxen & opbergen', ['voorraadpot', 'voorraadbus', 'koektrommel', 'kruidenpotjes', 'broodtrommel', 'lunchbox', 'bento'], [], 5, 50,
+      ['haar', 'kind'], 8, 'C', 'Mooie potten en trommels, en lunchboxen voor kinderen.')),
+    ('z8', S('Speelfiguren & speelsets (Bluey, PAW Patrol)', ['bluey', 'paw patrol', 'beyblade', 'spidey', 'actiefiguur', 'speelset', 'peppa pig', 'gabby', 'schleich', 'dinofiguur'], ['kleding', 'pyjama', 'rugzak', 'beker', 'puzzel'], 5, 80,
+      ['kind'], 20, 'A', 'Figuren en speelsets uit series die kinderen nu kijken.')),
+    ('z8', S('Schommels, trampolines & zandbak', ['trampoline', 'schommel', 'nestschommel', 'glijbaan', 'zandbak', 'watertafel', 'speelhuisje', 'zandspeelgoed', 'blikgooien'], ['onderdeel', 'veerafdekking', 'overtrek', 'springmat', 'ladder', 'veiligheidsnet', 'beschermrand', 'rand '], 10, 400,
+      ['kind'], 10, 'C', 'Buiten spelen in de tuin.')),
+    ('z8', S('Poppen & poppenhuizen', ['poppenhuis', 'babypop', 'barbie', 'modepop', 'poppenwagen', 'baby born', 'sylvanian'], ['kleding los'], 8, 150,
+      ['kind'], 15, 'A', 'Poppen, poppenhuizen en wat erbij hoort.')),
+    ('z8', S('Toniebox, tiptoi & leren', ['toniebox', 'tonie ', 'tonies', 'tiptoi', 'microscoop', 'telescoop', 'wereldbol', 'leerspel'], [], 8, 120,
+      ['kind'], 12, 'B', 'Luisteren en leren: Toniebox met figuurtjes, tiptoi, microscoop.')),
+    ('z10', S('Tablets, e-readers & tv-spullen', ['tablet', 'ipad', 'e-reader', 'kobo', 'kindle', 'soundbar', 'beamer', 'robotstofzuiger', 'telefoonhouder', 'telefoonhoesje', 'slimme speaker'], ['hoesje tablet los', 'screenprotector', 'tabletten', 'tabletop', 'sleeve', 'hoes '], 20, 500,
+      ['hem', 'haar', 'opa-oma'], 10, 'C', 'Grotere tech-cadeaus.')),
+    ('z12', S('Kamperen, wandelen & zaklampen', ['campingtafel', 'kampvuur', 'campingbestek', 'thermosfles', 'zaklamp', 'hoofdlamp', 'wandelschoenen', 'hangmat', 'hengel', 'visset'], ['batterij los'], 10, 200,
+      ['hem'], 10, 'C', 'Buiten op avontuur. Marius haalde tenten en kampeerspullen eerder weg: alleen echte cadeaus.')),
+    ('z12', S('Fiets, zwemmen & wintersport', ['fietsbel', 'fietsverlichting', 'fietshelm', 'fietscomputer', 'fietsmand', 'zwembril', 'duikbril', 'slee ', 'sleetje', 'skibril'], ['band ', 'binnenband', 'ketting fiets', 'remblok'], 8, 120,
+      ['kind', 'hem'], 8, 'C', 'Leuke fietsbellen, helmen en spullen voor zwemmen en sneeuw.')),
+    ('z12', S('Tuin, planten & buiten zitten', ['windgong', 'tuinkabouter', 'vogelbad', 'tuindecoratie', 'plantenpot', 'bloempot', 'moestuin', 'zaden', 'kweekset', 'vuurkorf', 'terrasverwarmer', 'tuinmeubel', 'tuinthermometer'], ['kunstmest', 'onkruid'], 5, 200,
+      ['opa-oma', 'haar', 'hem'], 12, 'B', 'Opa en oma krijgen steeds vaker iets voor de tuin.')),
+    ('z12', S('Gereedschap & klussen', ['accuboormachine', 'boormachine', 'schroevendraaier', 'bitset', 'dopsleutelset', 'gereedschapsset', 'gereedschapskoffer', 'combinatietang', 'heggenschaar', 'grasmaaier', 'bladblazer', 'hogedrukreiniger'], ['accu los', 'boor los', 'reserve'], 15, 250,
+      ['hem'], 10, 'C', 'Alleen voor Voor hem en Vaderdag; niet in de toppers.')),
+    ('z3', S('Gezicht, bad & lichaam', ['gezichtsverzorging', 'serum', 'gezichtsreiniger', 'dagcreme', 'nachtcreme', 'badolie', 'badmelk', 'shampoobar', 'zeep', 'bodylotion', 'body butter', 'massage', 'elektrische tandenborstel', 'monddouche'], ['navulling', 'opzetborstel'], 5, 120,
+      ['haar', 'hem'], 15, 'B', 'Verzorging van bekende merken (The Ordinary, CeraVe, Weleda, Kneipp).')),
+    ('z3', S('Scheerapparaten & trimmers', ['scheerapparaat', 'trimmer', 'oneblade', 'multigroom', 'baardtrimmer', 'ontharing', 'ipl ontharing'], ['mesjes', 'opzetstuk los', 'reserve', 'gopro', 'pack'], 20, 300,
+      ['hem'], 8, 'C', 'Philips en Braun.')),
+    ('z4', S('Wijn- & baraccessoires', ['wijnkoeler', 'schenktuit', 'kurkentrekker', 'wijnset', 'decanteer', 'karaf', 'ijsballenvorm', 'whisky stones', 'cocktailset', 'wijnfleshouder'], [], 8, 150,
+      ['hem', 'haar', 'collega'], 10, 'B', 'Voor wie van wijn of een borrel houdt.')),
+    ('z14', S('Zonnebrillen, petten & riemen', ['zonnebril', 'ray-ban', 'oakley', 'pet ', 'cap ', 'riem '], ['brillenkoord', 'reserve glazen', 'masker', 'tegeltje', 'kostuum'], 10, 200,
+      ['hem', 'haar', 'tiener'], 8, 'C', 'Merken die mensen graag krijgen.')),
+    ('z14', S('Kleding met tekst & pyjama\'s', ['t-shirt met', 'rompertje', 'slabbetje', 'sweater', 'pyjama', 'onesie', 'big sister', 'big brother'], [], 8, 50,
+      ['iedereen', 'baby', 'kind'], 10, 'C', 'Alleen kleding die een grap of cadeau is (Marius haalde gewone kleding in maten weg).')),
+    ('z14', S('Schoenen & sneakers', ['sneaker', 'laarzen', 'boots', 'kinderschoen'], ['tegeltje', 'waszak', 'kong', 'customization', 'schoenpoets', 'veters'], 15, 150,
+      ['kind', 'tiener'], 5, 'C', 'Marius haalde bijna alle schoenen weg; alleen kinderschoenen en een paar bijzondere.')),
+    ('z16', S('Strips, puzzelboeken & weetboeken', ['kuifje', 'asterix', 'lucky luke', 'suske en wiske', 'donald duck', 'manga', 'stripboek', 'puzzelboek', 'kruiswoord', 'denksport', 'sudoku', 'weetboek'], ['kleurboek', 'ps4', 'ps5', 'switch', 'xbox', 'move compatible', 'game'], 5, 60,
+      ['opa-oma', 'kind', 'tiener', 'hem'], 12, 'B', 'Strips voor jong en oud en puzzelboeken voor opa en oma.')),
+    ('z16', S('Muziek & films (cd, lp, dvd)', [' cd', '(cd)', ' lp', '(lp)', 'vinyl', ' dvd', 'blu-ray'], ['cd-speler', 'lp-speler', 't-shirt', 'hoodie'], 10, 80,
+      ['hem', 'haar', 'tiener'], 8, 'C', 'Nieuwe albums en films.')),
+    ('z17', S('Kleine huisdieren, paarden & kippen', ['hamster', 'konijn', 'cavia', 'knaagdier', 'kippenhok', 'paardrijden', 'paard ', 'terrarium', 'aquarium', 'vogelkooi'], ['voer', 'hooi los', 'zaagsel', 'kostuum', 'hamsterz', 'hamster heroes', 'ps5', 'switch', 'game'], 5, 150,
+      ['kind', 'iedereen'], 8, 'C', 'Speeltjes en spullen voor kleine huisdieren en paardenmeisjes.')),
+]
+
+# Elke vakje-plek op de site hoort bij precies een soort (voor stap 2: de producten van de site ernaast leggen).
+# Het langste stuk dat past wint; staat een product ook bij een soort met zoekwoorden, dan telt die ook.
+VAK = {
+    'Tafellampen, bureaulampen & lichtsnoeren': ['wonen/verlichting/tafellampen', 'wonen/verlichting/lichtsnoeren', 'tuin-klussen/buiten-leven/buitenverlichting', 'elektronica/tablets-tv-slim-wonen/slimme-lampen-sfeerlicht'],
+    'Zoutlampen, maanlampen & sfeerlampen': ['wonen/verlichting'],
+    'Kaarsen, wierook & kandelaars': ['wonen/kaarsen-geur/kaarsen', 'wonen/kaarsen-geur/wierook', 'wonen/kaarsen-geur/kandelaars-lantaarns'],
+    'Geurkaarsen': ['wonen/kaarsen-geur/geurkaarsen'], 'Geurstokjes & huisparfum': ['wonen/kaarsen-geur/huisgeuren-geurstokjes'],
+    'Kussens, vloerkleden & deurmatten': ['wonen/woontextiel'], 'Plaids & fleecedekens': ['wonen/woontextiel/plaids'], 'Warmteknuffels & kruiken': ['wonen/woontextiel/kruiken-warmte'],
+    'Woondecoratie': ['wonen/woondecoratie'], 'Fotocadeaus': ['wonen/foto-persoonlijk'], 'Fotoboeken & kalenders': ['wonen/foto-persoonlijk/fotoboeken'],
+    'Kerstdecoratie & kerstverlichting': ['wonen/kerstdecoratie'],
+    'Servies, mokken & theeglazen': ['koken-tafelen/tafelen-borrel/servies', 'koken-tafelen/mokken-glazen'], 'Borrelplanken & tapas': ['koken-tafelen/tafelen-borrel'],
+    'Pannen & keukengerei': ['koken-tafelen/koken-bakken/pannen-messen'], 'Keukenapparaten & airfryers': ['koken-tafelen/koken-bakken/keukenapparaten', 'koken-tafelen/koken-bakken/airfryers'],
+    'Voorraadpotten, lunchboxen & opbergen': ['koken-tafelen/koken-bakken/opbergen-voorraadpotten', 'koken-tafelen/koken-bakken/drinkflessen-lunchboxen'],
+    'Mooie keukenspullen & bakken': ['koken-tafelen/koken-bakken'], 'Koffie- & theeapparaten en theepotten': ['koken-tafelen/koffie-thee-zetten'],
+    'Speelfiguren & speelsets (Bluey, PAW Patrol)': ['speelgoed/speelfiguren-voertuigen'], 'Speelgoedauto\'s, treinen & racebanen': ['speelgoed/speelfiguren-voertuigen/racebanen-treinen'],
+    'Schommels, trampolines & zandbak': ['speelgoed/buiten-spelen'], 'Rijden: loopfietsen, steps & loopauto\'s': ['speelgoed/buiten-spelen/steps-loopfietsen', 'sport-outdoor/fietsen-steps/skateboards'],
+    'Poppen & poppenhuizen': ['speelgoed/poppen-knuffels'], 'Knuffels & Squishmallows': ['speelgoed/poppen-knuffels/knuffels'],
+    'Toniebox, tiptoi & leren': ['speelgoed/leren-ontdekken'], 'Baby & peuter': ['speelgoed/baby-peuter'],
+    'Bouwen: knikkerbanen & magnetisch': ['speelgoed/bouwen'], 'LEGO & DUPLO': ['speelgoed/bouwen/lego'], 'Verkleden & rollenspel': ['speelgoed/rollenspel-verkleden'],
+    'Kinderspellen': ['spellen-puzzels/kinderspellen'], 'Bordspellen': ['spellen-puzzels/bordspellen'], 'Puzzels': ['spellen-puzzels/puzzels'], '3D-puzzels & houten bouwpakketten': ['spellen-puzzels/puzzels/3d-puzzels', 'hobby/modelbouw'],
+    'Pokémon & verzamelkaarten': ['spellen-puzzels/pokemon-verzamelkaarten'],
+    'Gaming & consoles (PlayStation, Xbox)': ['elektronica/gaming'], 'Gaming-accessoires': ['elektronica/gaming/controllers-accessoires', 'elektronica/gaming/gaming-headsets', 'elektronica/gaming/gamestoelen', 'elektronica/gaming/vr-brillen'],
+    'Tablets, e-readers & tv-spullen': ['elektronica/tablets-tv-slim-wonen'], 'Instax, camera\'s & foto': ['elektronica/foto-video'], 'Smartwatches & horloges': ['elektronica/smartwatches', 'mode-sieraden/horloges'],
+    'Bluetooth speakers': ['elektronica/audio/bluetooth-speakers'], 'Radio\'s & platenspelers': ['elektronica/audio/platenspelers', 'elektronica/audio/radio-s'],
+    'Slimme gadgets voor thuis': ['elektronica/gadgets/handige-gadgets'], 'Grappige gadgets': ['elektronica/gadgets/fun-retro-gadgets'],
+    'Kamperen, wandelen & zaklampen': ['sport-outdoor/outdoor-avontuur'], 'Multitools & zakmessen': ['sport-outdoor/outdoor-avontuur/messen-multitools'], 'Verrekijkers & natuur': ['sport-outdoor/outdoor-avontuur/verrekijkers'], 'Survival & noodpakketten': ['sport-outdoor/outdoor-avontuur/noodpakket-survival'],
+    'Fiets, zwemmen & wintersport': ['sport-outdoor/fietsen-steps/fietsaccessoires', 'sport-outdoor/fietsen-steps/fietshelmen', 'sport-outdoor/water-wintersport'], 'Elektrische steps & fietsen': ['sport-outdoor/fietsen-steps/elektrische'],
+    'Darts': ['sport-outdoor/darts'], 'Metaaldetectie & schatzoeken': ['sport-outdoor/metaaldetectie'], 'Voetbal & balsport': ['sport-outdoor/balsport-spel'], 'Golf': ['sport-outdoor/balsport-spel/golf'], 'Belevenissen & uitjes': ['belevenissen'],
+    'Tuin, planten & buiten zitten': ['tuin-klussen/tuin-planten', 'tuin-klussen/buiten-leven'], 'BBQ & buiten koken': ['tuin-klussen/buiten-leven/bbq-buitenkoken'], 'Gereedschap & klussen': ['tuin-klussen/klussen', 'tuin-klussen/tuingereedschap'],
+    'Gezicht, bad & lichaam': ['beauty-verzorging/bad-huid-spa'], 'Slapen & ontspannen': ['beauty-verzorging/bad-huid-spa/spa-ontspanning', 'beauty-verzorging/bad-huid-spa/massage'],
+    'Scheerapparaten & trimmers': ['beauty-verzorging/scheren-baard'], 'Giftsets voor hem & baardverzorging': ['beauty-verzorging/giftsets/giftsets-voor-hem', 'beauty-verzorging/scheren-baard/baardverzorging'], 'Giftsets voor haar': ['beauty-verzorging/giftsets/giftsets-voor-haar'],
+    'Parfum voor haar': ['beauty-verzorging/parfum/damesparfum', 'beauty-verzorging/parfum/parfumsets'], 'Parfum voor hem': ['beauty-verzorging/parfum/herenparfum'], 'Haar & make-up': ['beauty-verzorging/make-up-haar'],
+    'Lekkernijen & cadeaupakketten': ['eten-drinken/lekkernijen', 'eten-drinken/cadeaupakketten', 'eten-drinken/chocolade-snoep/koekjes-stroopwafels'], 'Koffie & thee cadeaus': ['eten-drinken/lekkernijen/thee', 'eten-drinken/lekkernijen/koffie'],
+    'Chocolade & bonbons': ['eten-drinken/chocolade-snoep'], 'Wijn, port & bubbels': ['eten-drinken/wijn-bubbels'], 'Whisky, rum & sterke drank': ['eten-drinken/bier-sterke-drank'], 'Bier: pakketten & glazen': ['eten-drinken/bier-sterke-drank/bierpakketten'],
+    'Wijn- & baraccessoires': ['eten-drinken/drankaccessoires'],
+    'Zonnebrillen, petten & riemen': ['mode-sieraden/accessoires'], 'Mutsen, sjaals & handschoenen (cadeau)': ['mode-sieraden/accessoires/sjaals-mutsen', 'mode-sieraden/accessoires/handschoenen'], 'Sleutelhangers & tashangers': ['mode-sieraden/accessoires/sleutelhangers'],
+    'Kleding met tekst & pyjama\'s': ['mode-sieraden/kleding'], 'Cadeausokken & warme sokken': ['mode-sieraden/kleding/sokken'], 'Foute kersttruien & feestkleding': ['mode-sieraden/kleding/kersttruien'],
+    'Schoenen & sneakers': ['mode-sieraden/schoenen-sloffen'], 'Pantoffels & sloffen': ['mode-sieraden/schoenen-sloffen/pantoffels-sloffen'],
+    'Rugzakken & tassen': ['mode-sieraden/tassen-portemonnees'], 'Portemonnees & pasjeshouders': ['mode-sieraden/tassen-portemonnees/portemonnees-pasjeshouders'],
+    'Kettingen & hangers': ['mode-sieraden/sieraden/kettingen', 'christelijk/sieraden/kettingen'], 'Oorbellen': ['mode-sieraden/sieraden/oorbellen'], 'Armbanden': ['mode-sieraden/sieraden/armbanden', 'christelijk/sieraden/armbanden'],
+    'Ringen': ['mode-sieraden/sieraden/ringen'], 'Sieraden met naam of letter': ['mode-sieraden/sieraden/sieraden-met-naam'], 'Sieraden- & horlogedozen': ['mode-sieraden/sieraden/sieradendozen'],
+    'Boeken voor volwassenen': ['boeken-media/boeken'], 'Strips, puzzelboeken & weetboeken': ['boeken-media/boeken/strips-manga', 'boeken-media/boeken/puzzelboeken'], 'Muziek & films (cd, lp, dvd)': ['boeken-media/muziek-films'],
+    'Christelijke cadeaus': ['christelijk'],
+    'Voor hondenliefhebbers': ['dieren/hond'], 'Voor kattenliefhebbers': ['dieren/kat'], 'Kleine huisdieren, paarden & kippen': ['dieren/andere-dieren'],
+    'Tekenen, schilderen & handwerken': ['hobby/schilderen-tekenen', 'hobby/handwerken', 'hobby/zelf-maken'],
+    'Kaartspellen & partyspellen': ['spellen-puzzels/kaart-partyspellen'], 'Breinbrekers & escape-spellen': ['spellen-puzzels/breinbrekers-escape'],
+    'Knutselen voor kinderen': ['speelgoed/knutselen'], 'Slijm, kinetisch zand & klei': ['speelgoed/knutselen/klei-slijm'],
+    "Agenda's, kalenders & notitieboeken": ['hobby/papier-planners'], 'Kinderboeken': ['boeken-media/kinderboeken'],
+    'Koptelefoons & oordopjes': ['elektronica/audio/koptelefoons', 'elektronica/audio/oordopjes'], 'Fitness, yoga & gezond': ['sport-outdoor/fitness-yoga'],
+    'Alcoholvrije drankjes': ['eten-drinken/alcoholvrij'], 'Bedels & bedelarmbanden': ['mode-sieraden/sieraden/bedels'], 'Muziek maken & karaoke': ['hobby/muziek-maken'], "Bestuurbare auto's, robots & drones": ['hobby/rc-auto-s'],
+}
+
 def cats():
     out, n = [], 1000
     for gi, (gnaam, soorten) in enumerate(G, 1):
@@ -352,6 +458,10 @@ def cats():
         d = {'id': 'z%d' % n, 'ouder': gid, 'volgorde': 50 + n}
         d.update(s)
         out.append(d)
+    namen = {d['naam']: d for d in out if d['ouder']}
+    for naam, vakken in VAK.items():
+        assert naam in namen, naam
+        namen[naam]['vak'] = vakken
     return out
 
 if __name__ == '__main__':
