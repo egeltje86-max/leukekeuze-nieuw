@@ -15,7 +15,7 @@ def S(naam, zoek, niet=(), mn=5, mx=60, voor=(), doel=15, prio='B', tip='', vol=
 
 LAMP_NIET = ['lampenkap', 'gloeilamp', 'ledlamp e27', 'e27', 'e14', 'gu10', 'fietslamp', 'fietsverlichting', 'zaklamp', 'hoofdlamp', 'werklamp',
              'plafond', 'kroonluchter', 'buitenlamp', 'wandlamp buiten', 'grondspot', 'inbouw', 'tl-buis', 'lichtbron', 'dimmer', 'koplamp', 'achterlicht']
-G.append(('Licht & sfeer', [
+G.append(('Licht, sfeer & wonen', [
     S('Nachtlampjes & figuurlampjes', ['nachtlamp', 'nachtlicht', 'night light', 'icon light', 'icon lamp', 'figuurlamp', 'lampje', 'boxlamp', 'light up'], LAMP_NIET, 5, 60,
       ['kind', 'tiener', 'haar'], 30, 'A', 'Figuurtjes uit games, films en dieren. Echte sfeerfoto met het licht aan. Paladone, Numskull en Fizz zijn goede merken.', 14800),
     S('Lavalampen & bewegend licht', ['lavalamp', 'lava lamp', 'glitterlamp', 'flow lamp', 'zandlamp', 'sandscape', 'kwallenlamp', 'jellyfish'], LAMP_NIET, 10, 70,
@@ -74,11 +74,11 @@ G.append(('Lekker & proosten', [
       ['iedereen', 'collega'], 15, 'A', 'Met een kaartje of tekst. Past door de brievenbus.', 1000),
     S('Koffie & thee cadeaus', ['koffie cadeau', 'koffiebox', 'koffiepakket', 'thee cadeau', 'theebox', 'theepakket', 'thee proeverij', 'koffieproeverij', 'matcha set'], ['koffiezetapparaat', 'filterzakjes', 'koffiepads 100'], 8, 60,
       ['haar', 'hem', 'collega', 'opa-oma'], 12, 'B', 'Proeverij of cadeaudoos.', 590),
-    S('Whisky, rum & cognac', ['whisky', 'whiskey', 'bourbon', 'single malt', 'spiced rum', 'dark rum', 'rhum', 'cognac', 'armagnac', 'portwijn', 'tawny', 'ruby port'], ['whiskyglas los', 'mixer'], 20, 150,
+    S('Whisky, rum & sterke drank', ['whisky', 'whiskey', 'bourbon', 'single malt', ' rum ', 'spiced rum', 'dark rum', 'rhum', 'cognac', 'armagnac', 'wodka', 'vodka', 'likeur', 'jenever', 'tequila', 'mezcal', 'calvados', 'grappa', 'amaretto'], ['whiskyglas los', 'mixer', 'rumrozijnen', 'bonbon', 'chocolade'], 15, 200,
       ['hem'], 20, 'A', 'Drankpakket staat op 1 bij mannen. In geschenkdoos of met glazen.', 170),
     S('Gin & cocktails', ['gin ', 'gin-tonic', 'cocktailset', 'cocktail set', 'cocktailshaker', 'cocktail kit', 'mixology', 'cocktailrook'], [], 15, 120,
       ['haar', 'hem'], 15, 'B', 'Gin met glazen of een set om cocktails te maken.', 2400),
-    S('Wijn & bubbels als cadeau', ['wijnpakket', 'wijnkist', 'wijn cadeau', 'champagne', 'prosecco', 'cava', 'wijn in kist', 'wijnproeverij'], ['wijnrek', 'wijnkoelkast'], 10, 120,
+    S('Wijn, port & bubbels', ['wijnpakket', 'wijnkist', 'wijn cadeau', 'champagne', 'prosecco', 'cava', 'wijn in kist', 'wijnproeverij', 'rode wijn', 'witte wijn', 'rose wijn', 'riesling', 'rioja', 'chianti', 'bordeaux', 'merlot', 'cabernet', 'chardonnay', 'sauvignon', 'pinot', ' port', 'portwijn', 'tempranillo', 'primitivo', 'malbec', 'syrah', 'nero d avola', 'gamay', 'amarone', 'barolo'], ['wijnrek', 'wijnkoelkast', 'wijnglas', 'wijnglazen', 'kurkentrekker', 'wijnazijn', 'koken met'], 6, 150,
       ['haar', 'hem', 'collega', 'opa-oma'], 15, 'B', 'In een kist, met glazen of met een eigen etiket.', 590),
     S('Bier: pakketten & glazen', ['bierpakket', 'bierbox', 'bierproeverij', 'speciaalbier', 'bierbrouwpakket', 'bierglas', 'bierpul', 'bierkist'], ['bierkrat leeg', 'biertap onderdeel'], 8, 80,
       ['hem'], 12, 'B', 'Echte bierpakketten zijn schaars bij onze partners (Beerwulf aanmelden).', 3600),
@@ -136,7 +136,7 @@ G.append(('Spellen & puzzels', [
       ['haar', 'opa-oma'], 12, 'B', 'Kaarsen maken en muziekdoosje maken werden veel bekeken.', 1300),
 ]))
 G.append(('Kinderen: speelgoed', [
-    S('LEGO & DUPLO', ['lego', 'duplo'], ['lego compatibel', 'compatible', 'opbergbox', 'plaat los', 'minifiguren los', 'lijst voor'], 8, 150,
+    S('LEGO & DUPLO', ['lego', 'duplo'], ['lego compatibel', 'compatible', 'opbergbox', 'plaat los', 'minifiguren los', 'lijst voor'], 8, 450,
       ['kind', 'tiener', 'hem'], 30, 'A', 'Altijd de doosfoto. Op leeftijd van de doos.', 301000),
     S('Playmobil & speelfiguren', ['playmobil', 'speelfiguur', 'speelset', 'schleich', 'figurenset'], [], 8, 90,
       ['kind'], 12, 'B', '', 33100),
@@ -292,6 +292,49 @@ G.append(('Sieraden', [
       ['kind'], 8, 'C', 'Alleen met ketting, armband of oorbel in de naam; let op kleine onderdelen.'),
 ]))
 
+
+# 14-11-2026 (avond): soorten die de site nu al heeft maar die in de eerste zoeklijst ontbraken (3.377 producten vielen nergens in).
+# Ze krijgen een plek in een bestaande groep, maar hun nummers komen achteraan (z1121 ...), zodat de eerdere nummers niet verschuiven.
+EXTRA_G = ['Boeken, schrijven & geloof', 'Dieren']   # worden z16 en z17
+EXTRA = [
+    ('z8', S('Bouwen: knikkerbanen & magnetisch', ['knikkerbaan', 'marble run', 'marble rush', 'magna-tiles', 'magna tiles', 'geomag', 'connetix', 'magnetische bouw', 'magnetisch bouw', 'plus-plus', 'meccano', 'k nex'], [], 10, 150,
+      ['kind'], 12, 'B', 'Bouwen zonder LEGO: knikkerbanen en magnetische tegels zijn geliefd.')),
+    ('z8', S('Speelgoedauto\'s, treinen & racebanen', ['hot wheels', 'matchbox', 'bruder', 'dickie', 'brio', 'racebaan', 'carrera', 'treinbaan', 'houten trein', 'speelgoedauto', 'speelgoedgarage', 'garage met'], ['onderdeel', 'losse rails 2'], 5, 150,
+      ['kind'], 15, 'A', 'Bruder, BRIO en Hot Wheels zijn bekende merken.')),
+    ('z16', S('Boeken voor volwassenen', ['thriller', 'bestseller', 'biografie', 'literaire', 'detectiveroman', 'feelgoodroman', 'feelgood roman', 'spannende roman', 'historische roman'], ['t-shirt', ' lp', '(lp)', 'vinyl', 'romance', 'romantic', 'romancing', 'romano', 'romani', 'romantisch', 'dagger', 'ballon', 'figure', 'wijn', 'game', 'ps5', 'switch', 'xbox', 'douchegel', 'showergel', 'sticker', 'kleurboek', 'kookboek', 'puzzelboek', 'fotoboek', 'notitieboek', 'invulboek', 'boekensteun', 'boeklamp', 'e-reader', 'kinderboek', 'prentenboek', 'bijbel'], 8, 60,
+      ['haar', 'hem', 'opa-oma'], 15, 'B', 'Een boek staat bovenaan de verlanglijstjes. Liefst een partner die geen bol is.', 1000)),
+    ('z8', S('Kinderboeken', ['kinderboek', 'prentenboek', 'voorleesboek', 'leesboek', 'dikkie dik', 'gruffalo', 'geronimo stilton', 'dagboek van een loser', 'kartonboek', 'flapjesboek', 'zoekboek', 'geluidenboek'], ['kleurboek', 'stickerboek'], 5, 40,
+      ['kind', 'baby'], 15, 'B', 'Voorlezen en zelf lezen, op leeftijd.')),
+    ('z16', S('Bijbels & christelijke boeken', ['kinderbijbel', 'nbv21', 'nbv ', 'statenvertaling', 'studiebijbel', 'huisbijbel', 'jongerenbijbel', 'bijbel in gewone taal', 'basisbijbel', 'bijbel hsv', 'bijbel nbg', 'liedboek', 'psalmen', 'gebedenboek', 'christelijk dagboek', 'bijbels dagboek', 'andachtsboek'], ['katholiek', 'rozenkrans', 'ketting', 'armband', 'oorbel', 'hanger', 'heupflacon', 'wildbijbel', 'wokbijbel', 'vleesbijbel', 'sausbijbel', 'airfryer', 'bbq', 'barbecue', 'bakbijbel', 'soepbijbel', 'kookbijbel', 'cocktail', 'wijnbijbel', 'whisky', 'kaas', 'groente', 'vegan', 'pasta', 'tapas', 'tuinbijbel', 'plantenbijbel'], 8, 100,
+      ['iedereen', 'kind', 'opa-oma'], 12, 'B', 'Gereformeerd breder, geen katholieke spullen.')),
+    ('z16', S('Christelijke cadeaus', ['christelijk', 'bijbeltekst', 'bijbelvers', 'geloof', 'gezegend', 'zegen', 'kerststal', 'doopkaars', 'doop', 'belijdenis', 'kruisje', 'god is'], ['katholiek', 'rozenkrans', 'maria', 'heilige', 'communie', 'kruisbeeld', 'ketting', 'armband', 'oorbel', 'hanger'], 5, 80,
+      ['iedereen', 'opa-oma', 'kind'], 15, 'B', 'Tegeltjes, kaarsen, kerststallen en doopcadeaus. Geen katholieke spullen.')),
+    ('z17', S('Voor hondenliefhebbers', ['hond ', 'honden', 'puppy', 'teckel', 'labrador', 'border collie', 'franse bulldog'], ['hondenvoer', 'brokken', 'kauwstaaf', 'vlooien', 'teken', 'ontworming', 'hondenbench', 'hondenhok', 'tuigje', 'riem ', 'halsband', 'hondenmand', 'hondenkussen'], 5, 60,
+      ['haar', 'hem', 'iedereen'], 10, 'B', 'Cadeaus voor wie gek is op zijn hond (mok, tegel, speeltje), geen voer of verzorging.')),
+    ('z17', S('Voor kattenliefhebbers', ['kat ', 'katten', 'poes', 'kitten'], ['kattenvoer', 'kattenbak', 'kattenbakvulling', 'brokken', 'vlooien', 'krabpaal', 'kattenluik', 'kattenmand'], 5, 60,
+      ['haar', 'iedereen'], 10, 'B', 'Cadeaus voor kattengekken: mok, lampje, sokken, puzzel.')),
+    ('z1', S('Woondecoratie', ['vaas', 'beeldje', 'beeld ', 'wanddecoratie', 'wandspiegel', 'boekensteun', 'windlicht', 'lantaarn', 'kandelaar', 'bloempot', 'schaal', 'dienblad', 'pip studio', 'riviera maison', 'house doctor', 'balvi'], ['onderdeel', 'tuinbeeld groot', 'plantenschaal plastic', 'weegschaal', 'schaal 1:'], 8, 120,
+      ['haar', 'opa-oma', 'iedereen'], 20, 'B', 'Mooi en bijzonder, niet wat elke woonwinkel heeft.')),
+    ('z3', S('Haar & make-up', ['fohn', 'stijltang', 'krultang', 'airwrap', 'air styler', 'tangle teezer', 'haarborstel', 'make up', 'make-up', 'lipgloss', 'lippenstift', 'oogschaduw', 'mascara', 'nagellak', 'manicure', 'make-up spiegel', 'ghd', 'dyson'], ['stofzuiger', 'ventilator', 'luchtreiniger'], 8, 500,
+      ['haar', 'tiener'], 15, 'B', 'HEMA-stijltang en ghd-föhn staan al in de toppen.')),
+    ('z11', S('Koffie- & theeapparaten en theepotten', ['koffiezetapparaat', 'espressomachine', 'espresso machine', 'senseo', 'nespresso', 'dolce gusto', 'melkopschuimer', 'theepot', 'theeset', 'thee-ei', 'v60', 'cold brew', 'french press', 'moka', 'percolator'], ['ontkalker', 'filterzakjes', 'koffiepads', 'capsules 100', 'onderdeel'], 8, 400,
+      ['iedereen', 'haar', 'opa-oma'], 12, 'B', 'Philips 2200 en Senseo staan al in de toppen.')),
+    ('z10', S('Radio\'s & platenspelers', ['platenspeler', 'radio', 'dab', 'jukebox', 'vinyl', 'cassettespeler'], ['radiografisch', 'autoradio', 'portofoon', 'radiator', 'babyfoon', 'radiostation'], 20, 400,
+      ['opa-oma', 'hem', 'haar'], 10, 'B', 'Crosley en Lenco; makkelijk te bedienen voor opa en oma.')),
+    ('z16', S('Agenda\'s, kalenders & notitieboeken', ['scheurkalender', 'agenda', 'planner', 'notitieboek', 'paperblanks', 'journal', 'bullet journal', 'weekplanner', 'familieplanner'], ['bureaukalender bedrukken'], 5, 50,
+      ['haar', 'collega', 'tiener'], 12, 'B', 'Scheurkalenders van bekende Nederlanders zijn populair rond de feestdagen.')),
+    ('z12', S('Tekenen, schilderen & handwerken', ['brushpen', 'aquarel', 'acrylverf', 'schildersset', 'tekenset', 'markers', 'haakpakket', 'breipakket', 'borduurpakket', 'punch needle', 'kalligrafie', 'handlettering', 'zelf beschilderen'], ['muurverf', 'lakverf', 'grondverf'], 8, 80,
+      ['haar', 'opa-oma', 'tiener'], 12, 'B', 'Compleet pakket om meteen te beginnen.')),
+    ('z12', S('Survival & noodpakketten', ['survival', 'noodpakket', 'noodradio', 'vuurstarter', 'paracord', 'kompas', 'overlevings', 'bushcraft'], ['tent ', 'slaapzak', 'luchtbed', 'code in a box', 'ps5', 'ps4', 'xbox', 'switch', 'nintendo', 'game', 'the survivalists', 'survival series'], 10, 150,
+      ['hem'], 8, 'C', 'Marius hield zakmessen en noodpakketten; tenten en kampeerspullen gingen eruit.')),
+    ('z11', S('Mooie keukenspullen & bakken', ['etagere', 'taartplateau', 'keukenschort', 'schort', 'theedoek', 'ovenschaal', 'le creuset', 'pip studio', 'joseph joseph', 'bakvorm', 'taartvorm', 'mengkom'], ['onderdeel', 'reserve'], 8, 100,
+      ['haar', 'opa-oma'], 10, 'C', 'Alleen wat mooi is om te geven; geen gewone pannen.')),
+    ('z12', S('Muziek maken & karaoke', ['ukelele', 'ukulele', 'gitaar', 'keyboard', 'piano', 'karaoke', 'speelgoedmicrofoon', 'drumstel', 'xylofoon', 'mondharmonica', 'kalimba', 'handpan'], ['gitaarsnaar', 'snaren', 'statief los', 'plectrum', 'kabel', 'mechanical', 'gaming', 'toetsenbord', 'bluetooth keyboard', 'draadloos keyboard', '8bitdo'], 10, 200,
+      ['kind', 'tiener', 'hem', 'haar'], 10, 'B', 'Karaoke en een kalimba of ukelele zijn leuke cadeaus.')),
+    ('z4', S('Alcoholvrije drankjes', ['alcoholvrij', 'alcoholvrije', '0.0', '0,0%', 'kinderchampagne', 'mocktail', 'zero alcohol'], ['deodorant', 'deo ', 'parfum', 'eau de', 'aftershave', 'mondwater', 'haarlak', 'toner', 'spray', 'lotion', 'creme', 'gel ', 'zeep', 'doekjes', 'reiniging'], 5, 60,
+      ['iedereen', 'collega', 'kind'], 8, 'C', 'Voor wie niet drinkt, en kinderchampagne voor oud en nieuw.')),
+]
+
 def cats():
     out, n = [], 1000
     for gi, (gnaam, soorten) in enumerate(G, 1):
@@ -302,6 +345,13 @@ def cats():
             d = {'id': 'z%d' % n, 'ouder': gid, 'volgorde': si}
             d.update(s)
             out.append(d)
+    for gi, gnaam in enumerate(EXTRA_G, len(G) + 1):
+        out.append({'id': 'z%d' % gi, 'naam': gnaam, 'ouder': None, 'volgorde': gi})
+    for gid, s in EXTRA:
+        n += 1
+        d = {'id': 'z%d' % n, 'ouder': gid, 'volgorde': 50 + n}
+        d.update(s)
+        out.append(d)
     return out
 
 if __name__ == '__main__':

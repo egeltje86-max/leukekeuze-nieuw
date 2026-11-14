@@ -412,11 +412,14 @@ def api_cats_post(body):
 
 
 def fts_term(t):
-    """Een zoekwoord uit de zoeklijst als FTS-zin. Een spatie aan het eind blijft staan ('gin ' vindt geen 'ging')."""
+    """Een zoekwoord uit de zoeklijst als FTS-zin. Een spatie aan het begin of eind blijft staan ('gin ' vindt geen 'ging', ' rum ' geen 'rumrozijn')."""
     eind = t.endswith(' ')
+    begin = t.startswith(' ')
     w = re.sub(r'\s+', ' ', plat(t)).strip()
     if eind:
         w += ' '
+    if begin:
+        w = ' ' + w
     return '"%s"' % w.replace('"', '') if len(w.strip()) >= 3 else ''
 
 
