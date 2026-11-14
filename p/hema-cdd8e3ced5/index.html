@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611140604" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611140604" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140604">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611140604">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611140617" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611140617" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140617">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611140617">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140604", t = "assets/js/topkeuze.js?v=202611140604";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140617", t = "assets/js/topkeuze.js?v=202611140617";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -205,11 +205,11 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script>window.LK_DETAILS_DEEL={"hema-cdd8e3ced5":{"url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-bordeauxrood-7326219.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-bordeauxrood-7326219.html","subVast":true,"gecontroleerd":"2026-11-13","varianten":[{"kleur":"Bordeauxrood","beeld":"images/producten/hema-cdd8e3ced5","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-bordeauxrood-7326219.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-bordeauxrood-7326219.html","prijs":23.49},{"kleur":"Taupe","beeld":"images/producten/hema-8725fad354","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-taupe-7326245.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-taupe-7326245.html","prijs":23.49},{"kleur":"Groen","beeld":"images/producten/hema-5731fbd2b8","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-groen-7326221.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-groen-7326221.html","prijs":23.49},{"kleur":"Bruin","beeld":"images/producten/hema-365d99ee38","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-bruin-7326220.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-bruin-7326220.html","prijs":23.49}],"wil":70,"waarom":"Een zachte plaid met een mooie bouclé-structuur. Staat leuk op de bank."}};</script>
-  <script src="assets/js/data.js?v=202611140604"></script>
+  <script>window.LK_DETAILS_DEEL={"hema-cdd8e3ced5":{"url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-bordeauxrood-7326219.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-bordeauxrood-7326219.html","subVast":true,"gecontroleerd":"2026-11-14","varianten":[{"kleur":"Bordeauxrood","beeld":"images/producten/hema-cdd8e3ced5","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-bordeauxrood-7326219.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-bordeauxrood-7326219.html","prijs":23.49},{"kleur":"Taupe","beeld":"images/producten/hema-8725fad354","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-taupe-7326245.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-taupe-7326245.html","prijs":23.49},{"kleur":"Groen","beeld":"images/producten/hema-5731fbd2b8","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-groen-7326221.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-groen-7326221.html","prijs":23.49},{"kleur":"Bruin","beeld":"images/producten/hema-365d99ee38","url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fwonen-slapen%2Fwonen%2Fplaids%2Fplaid-150x130cm-boucle-bruin-7326220.html","winkelUrl":"https://www.hema.nl/wonen-slapen/wonen/plaids/plaid-150x130cm-boucle-bruin-7326220.html","prijs":23.49}],"wil":70,"waarom":"Een zachte plaid met een mooie bouclé-structuur. Staat leuk op de bank."}};</script>
+  <script src="assets/js/data.js?v=202611140617"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611140604"></script>
-  <script src="assets/js/app.js?v=202611140604"></script>
+  <script src="assets/js/gedeeld.js?v=202611140617"></script>
+  <script src="assets/js/app.js?v=202611140617"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
