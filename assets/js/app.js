@@ -4124,7 +4124,9 @@
         { kop: 'Net even anders', tekst: 'Voor wie elk jaar al een chocoladekalender krijgt: jam, thee, popcorn, geurkaarsjes of een puzzelverhaal dat je in 24 dagen oplost.',
           ids: ['bol-9300000408782128', 'dw-680275066859', 'dw-4260611771720', 'wwk-2280887', '999g-999exi30'] },
         { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
-          ids: ['t2-handpoppen-bf7af21cea', 'amz-b0hmfl96b8'] }
+          ids: ['t2-handpoppen-bf7af21cea', 'amz-b0hmfl96b8', 'massa-152af9d255'] },
+        { kop: 'Nu in trek: LEGO', tekst: 'De adventskalenders van LEGO horen bij de best verkochte van dit moment. Elke dag bouw je een klein modelletje of krijg je een poppetje, en met kerst heb je een hele wereld bij elkaar. Kijk ook naar de prijs: bij Amazon zijn ze nu een stuk goedkoper dan de adviesprijs.',
+          ids: ['cl-lego-advent', 'bol-9300000265640019', 'amz-b0ggsqrft2'] }
       ],
       slot: 'Meer lekkers voor december vind je bij <a href="/c/eten-drinken">Eten &amp; drinken</a> en alle kerstspullen bij <a href="/c/cadeaus/kerst">Kerst</a>. Zoek je een kerstcadeau? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor haar</a> of <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor hem</a>.' },
     { slug: 'kerstcadeau-kind', beeld: 'woewoe-6e48434b3c', vakken: ['cadeaus/kerst', 'cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/lego'],
