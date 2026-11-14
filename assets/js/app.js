@@ -231,8 +231,10 @@
       var v = localStorage.getItem('lkwijzer') || '';
       if (v.charAt(1) === '!') { WIJZER_ZELF = true; return v.charAt(0) === 'b' ? 'b' : 'a'; }
       if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { WIJZER_ZELF = true; return 'a'; }
-      if (v !== 'a' && v !== 'b') { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
-      return v;
+      /* 14-11-2026 (keuze Marius: 'B'): de proef is voorbij, iedereen krijgt de nieuwe opzet. Er wordt niet meer geloot en niet meer geteld
+         (WIJZER_ZELF = true). Zelf de oude opzet bekijken kan nog met ?proef=wijzer-uit. */
+      WIJZER_ZELF = true; if (v !== 'b') localStorage.setItem('lkwijzer', 'b');
+      return 'b';
     } catch (e) { WIJZER_ZELF = true; return 'a'; }
   })();
   var ETALAGE = null;
