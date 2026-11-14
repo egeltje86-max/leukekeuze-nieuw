@@ -196,5 +196,29 @@
  "/tiktok/": {
   "titel": "Gezien op TikTok: alle cadeaus uit onze filmpjes",
   "omschrijving": "Alle cadeaus uit de filmpjes van LeukeKeuze op TikTok en Instagram, per filmpje op een rij, het nieuwste bovenaan. Met prijs en een knop naar de winkel."
+ },
+ "/gids/cadeau-voor-opa/": {
+  "titel": "Cadeau voor opa: 24 ideeën waar hij echt blij mee is",
+  "omschrijving": "Cadeau voor opa: 24 ideeën in zes soorten, van iets met de kleinkinderen en de tuin tot een puzzel, een goed glas en warme sloffen. Met de prijs erbij."
+ },
+ "/gids/cadeau-voor-vriend/": {
+  "titel": "Cadeau voor je vriend: 24 ideeën die hij echt leuk vindt",
+  "omschrijving": "Cadeau voor je vriend: 24 ideeën in zes soorten, van samen iets doen en een goed glas tot gadgets, iets grappigs en iets persoonlijks. Met de prijs erbij."
+ },
+ "/gids/cadeau-voor-broer/": {
+  "titel": "Cadeau voor je broer: 24 ideeën, van gamen tot een biertje",
+  "omschrijving": "Cadeau voor je broer: 24 ideeën in zes soorten, van gamen, LEGO en F1 tot darten, een biertje en iets grappigs. Voor een broer van 15 en van 45."
+ },
+ "/gids/cadeau-50-jaar/": {
+  "titel": "Cadeau 50 jaar: 24 ideeën voor Abraham en Sarah",
+  "omschrijving": "Cadeau voor iemand die 50 wordt: 24 ideeën voor een man (Abraham) of vrouw (Sarah), van een grappige mok tot champagne, een fotoboek en een uitje. Met de prijs erbij."
+ },
+ "/gids/cadeau-18-jaar/": {
+  "titel": "Cadeau 18 jaar: 24 ideeën voor jongens en meisjes",
+  "omschrijving": "Cadeau voor iemand die 18 wordt: 24 ideeën voor jongens en meisjes, van iets voor het rijbewijs en muziek tot spullen voor op kamers. Met de prijs erbij."
+ },
+ "/gids/cadeau-zwangere-vrouw/": {
+  "titel": "Cadeau zwangere vrouw: 20 ideeën om haar te verwennen",
+  "omschrijving": "Cadeau voor een zwangere vrouw of vriendin: 20 ideeën voor haar zelf, van een zwangerschapsdagboek en verzorging van Weleda tot warme sloffen en een mok met een grap."
  }
 }

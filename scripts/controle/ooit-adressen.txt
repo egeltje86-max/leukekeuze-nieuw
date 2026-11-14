@@ -925,6 +925,8 @@
 /gids/cadeau-1-jaar-samen/
 /gids/cadeau-10-euro/
 /gids/cadeau-15-euro/
+/gids/cadeau-18-jaar/
+/gids/cadeau-50-jaar/
 /gids/cadeau-hondenliefhebber/
 /gids/cadeau-kind-1-jaar/
 /gids/cadeau-kind-10-jaar/
@@ -940,14 +942,18 @@
 /gids/cadeau-kind-9-jaar/
 /gids/cadeau-trouwdag-jubileum/
 /gids/cadeau-voetballer/
+/gids/cadeau-voor-broer/
 /gids/cadeau-voor-collega/
 /gids/cadeau-voor-moeder/
 /gids/cadeau-voor-oma/
+/gids/cadeau-voor-opa/
 /gids/cadeau-voor-pensioen/
 /gids/cadeau-voor-vader/
+/gids/cadeau-voor-vriend/
 /gids/cadeau-voor-vriendin/
 /gids/cadeau-voor-zus/
 /gids/cadeau-wijnliefhebber/
+/gids/cadeau-zwangere-vrouw/
 /gids/geuren-trends-2026/
 /gids/housewarming-cadeau/
 /gids/hypes-2026/
