@@ -1,5 +1,5 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken.",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand).",
  "/p/bol-9300000252262265/": {
   "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
   "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
@@ -73,8 +73,8 @@
   "omschrijving": "Sinterklaascadeau voor een vrouw, moeder of zus: 20 ideeën om te verwennen, voor in huis of voor de lootjes. Bijna alles onder €30, met de prijs erbij."
  },
  "/gids/surprise-maken/": {
-  "titel": "Surprise maken: 25 ideeën, stappenplan en snelle tips",
-  "omschrijving": "Surprise maken voor Sinterklaas? Een stappenplan in 6 stappen, 25 ideeën per persoon, snelle surprises zonder knutselen en tips voor het gedicht."
+  "titel": "Surprise ideeën: 25 leuke surprises + zo maak je ze",
+  "omschrijving": "Surprise ideeën voor Sinterklaas: 25 ideeën per persoon, ideeën voor kinderen, een stappenplan in 6 stappen, snelle surprises zonder knutselen en tips voor het gedicht."
  },
  "/c/tuin-klussen/tuingereedschap/handgereedschap-tuin/": {
   "titel": "Handgereedschap voor de tuin: snoeischaren, schepjes en sets",

@@ -4237,7 +4237,7 @@
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
     { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren', 'hobby/origami-scrapbooking'],
-      titel: 'Surprise maken voor Sinterklaas: 25 ideeën, tips en wat je erin stopt', kort: 'Geen inspiratie voor je surprise? Hier vind je ideeën per persoon, een stappenplan en tips voor het gedicht.',
+      titel: 'Surprise ideeën: 25 leuke surprises maken, met stappenplan en tips', kort: 'Geen inspiratie voor je surprise? Hier vind je ideeën per persoon, een stappenplan en tips voor het gedicht.',
       intro: 'Lootjes getrokken en nu moet er een surprise komen? Een surprise is het leukste deel van pakjesavond: een zelfgemaakte verpakking die past bij de persoon, met een cadeautje erin en een gedicht erbij. Je hoeft er echt geen knutselkampioen voor te zijn. Met een doos, wat karton, een lijmpistool en verf kom je al heel ver. Hieronder vind je een simpel stappenplan, 25 ideeën per type persoon, tips voor het gedicht en de spullen die je nodig hebt.',
       delen: [
         { kop: 'Zo maak je een surprise in 6 stappen', tekst: 'Begin op tijd: reken op twee of drie avonden, want verf en papier-maché moeten drogen.',
@@ -4249,7 +4249,7 @@
             'Verf of beplak je surprise. Met crêpepapier of verf en een paar details (ogen, letters, glitters) maak je hem af.',
             'Stop het cadeautje erin, verstop het eventueel goed, en plak het gedicht erop. Klaar!'
           ] },
-        { kop: '25 surprise-ideeën per persoon', tekst: 'Pak een idee en maak het groot, gek of extra grappig. Hoe herkenbaarder voor de persoon, hoe leuker.',
+        { kop: '25 surprise ideeën per persoon', tekst: 'Pak een idee en maak het groot, gek of extra grappig. Hoe herkenbaarder voor de persoon, hoe leuker.',
           lijst: [
             'Voetballer: een voetbalschoen of een voetbalstadion met een doel',
             'Gamer: een grote controller of een Nintendo Switch van karton',
@@ -4277,6 +4277,14 @@
             'Rijbewijs gehaald: een auto of een groot verkeersbord',
             'Weet je niets? Een grote chocoladeletter, een pepernotenzak of een mijter doet het altijd'
           ] },
+        { kop: 'Surprise ideeën voor kinderen', tekst: 'Kinderen houden van iets groots en herkenbaars. Laat ze helpen met verven en plakken, dan is het maken al een feestje.',
+          lijst: [
+            'Dinosaurus: een T-rex of een dino-ei van papier-maché',
+            'Eenhoorn: een eenhoornhoofd met een gouden hoorn van karton',
+            'Raket: een wc-rol of chipsbus met een punt en vlammen van crêpepapier',
+            'Minecraft-blok: een vierkante doos beplakt met groene en bruine vakjes',
+            'Kasteel of poppenhuis: een schoenendoos met torens van wc-rollen'
+          ] },
         { kop: 'Geen tijd of niet zo handig? Zo wordt het toch leuk', tekst: 'Een surprise hoeft geen kunstwerk te zijn. Deze snelle ideeën kosten een uurtje en zijn net zo grappig.',
           lijst: [
             'Doos in een doos: verpak het cadeau in steeds kleinere dozen, met bij elke doos een stukje van het gedicht.',
@@ -4301,7 +4309,7 @@
             'Onderteken met "Sint en Piet" en schrijf het gedicht met de computer of netjes met de hand.'
           ], ids: ['bol-9300000039602281'] }
       ],
-      slot: 'Nog een gedicht nodig? De <a href="/sint-rijmmachine">Sint-rijmmachine</a> maakt er gratis een, met een passend cadeau erbij. Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
+      slot: 'Nog geen lootjes getrokken? Dat kan gratis met de <a href="/lootjes-trekken/">lootjes-trekker</a>, iedereen krijgt zijn eigen linkje via WhatsApp. Nog een gedicht nodig? De <a href="/sint-rijmmachine">Sint-rijmmachine</a> maakt er gratis een, met een passend cadeau erbij. Nog op zoek naar het cadeautje zelf? Kijk bij <a href="/c/cadeaus/sint-onder-15">Sinterklaascadeaus onder €15</a>, <a href="/c/cadeaus/sinterklaas">alles voor Sinterklaas</a> en in de gids <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a>. Tip: begin een week van tevoren, dan heb je geen stress op 5 december.' },
     { slug: 'sinterklaasgedicht-maken', beeld: 'bol-9300000039602281', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'eten-drinken/chocolade-snoep'],
       titel: 'Sinterklaasgedicht maken: zo schrijf je een leuk gedicht (met rijmwoorden)', kort: 'Een stappenplan, rijmwoorden die je altijd nodig hebt, voorbeeldregels en tips om te plagen zonder te kwetsen.',
       intro: 'Een cadeau uitpakken is leuk, maar het gedicht maakt pakjesavond pas echt. Veel mensen zien er tegenop: hoe begin je, en wat rijmt er op Piet? Goed nieuws: een sinterklaasgedicht hoeft geen kunstwerk te zijn. Iedereen lacht om een gedicht dat herkenbaar is, een beetje plaagt en lekker voorleest. Hieronder vind je een simpel stappenplan, een lijst rijmwoorden die je bij elk gedicht nodig hebt, voorbeeldregels om mee te beginnen en tips om te plagen zonder iemand te kwetsen. En voor wie er echt niet uitkomt: er zijn chocoladeletters met een kant-en-klaar gedicht erbij.',
@@ -5248,6 +5256,11 @@
   ];
   /* Gidsen 2.0 (7-11-2026): per gids 'Snel kiezen' (3 favorieten: [label, product-id]) en veelgestelde vragen ([vraag, antwoord]). */
   var GIDS_EXTRA = {
+    'surprise-maken': { top: [['Onze topkeuze', 'bol-9300000226734832'], ['Voor in de surprise', 'cl-cr-geur'], ['Iets lekkers', 'dk-00015052']], faq: [
+      ['Wat zijn leuke surprise ideeën?', 'Kies iets dat bij de persoon past: een grote controller voor een gamer, een voetbalschoen voor een voetballer, een koffiekopje voor een koffieleut of een wekker voor wie altijd te laat is. Hoe herkenbaarder, hoe leuker.'],
+      ['Wat heb je nodig om een surprise te maken?', 'Een doos of wc-rollen, karton, kranten, plakband, een lijmpistool en verf of crêpepapier. Met een lijmpistool zit alles in een paar seconden vast.'],
+      ['Hoe lang ben je bezig met een surprise?', 'Reken op twee of drie avonden, want verf en papier-maché moeten drogen. Een snelle surprise, zoals een doos in een doos, maak je in een uurtje.'],
+      ['Wat stop je in een surprise?', 'Het cadeautje dat je met lootjes trekken hebt afgesproken, vaak tot 15 of 25 euro, met een gedicht erbij. Een chocoladeletter of kruidnoten erbij is altijd goed.']] },
     'belevenis-cadeau': { top: [['Onze topkeuze', 'dk-78c5a18049'], ['Voor durfals', 'dk-904317b4e5'], ['Beste koop', 'dk-4c68d47ad3']], faq: [
       ['Wat is een belevenis cadeau?', 'Je geeft geen spullen, maar iets om te doen: een uitje, een workshop, een nachtje weg of een spannende activiteit. Je bestelt de belevenis bij Doenkado.'],
       ['Wat is een leuk belevenis cadeau voor een stel?', 'Een nachtje in een pod op de Veluwe, een rondvaart door Giethoorn, een wijnproeverij of samen een helikoptervlucht. Iets wat je samen doet, onthoud je samen.'],
