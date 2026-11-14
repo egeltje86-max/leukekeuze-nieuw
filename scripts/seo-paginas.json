@@ -1,5 +1,5 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand).",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man.",
  "/p/bol-9300000252262265/": {
   "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
   "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
@@ -180,5 +180,13 @@
  "/lootjes-trekken/": {
   "titel": "Lootjes trekken: gratis online, via WhatsApp",
   "omschrijving": "Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Iedereen krijgt zijn eigen linkje via WhatsApp, met cadeautips binnen het budget."
+ },
+ "/gids/kerstcadeau-voor-haar/": {
+  "titel": "Kerstcadeau vrouw: 24 ideeën om haar blij te maken",
+  "omschrijving": "Kerstcadeau voor een vrouw, vriendin of zus: 24 ideeën in zes soorten, van verwennen en knus tot iets lekkers of persoonlijks. Met de prijs erbij, veel onder de 25 euro."
+ },
+ "/gids/kerstcadeau-voor-hem/": {
+  "titel": "Kerstcadeau man: 24 ideeën waar hij echt blij mee is",
+  "omschrijving": "Kerstcadeau voor een man, vriend of broer: 24 ideeën in zes soorten, van whisky en gadgets tot LEGO, BBQ en grappige cadeaus. Met de prijs erbij."
  }
 }

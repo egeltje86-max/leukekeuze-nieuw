@@ -4789,28 +4789,33 @@
           ids: ['bol-9300000172981367', 'bol-9300000133136276', 'bol-9300000375928006'] }
       ],
       slot: 'Meer goedkope cadeaus vind je bij <a href="/c/cadeaus/onder-15">Cadeaus onder €15</a>. Alle kerstcadeaus staan bij <a href="/c/cadeaus/kerst">Kerst</a>.' },
-    { slug: 'kerstcadeau-voor-haar', beeld: 'cl-instax12', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar', 'mode-beauty', 'geuren-verzorging/parfum', 'geuren-verzorging/huidverzorging'], titel: 'Kerstcadeau voor een vrouw: van klein verwenmoment tot luxe', kort: 'Voor je vrouw, vriendin, moeder of zus. Van €17 tot €98.',
-      intro: 'Een kerstcadeau voor haar hoeft niet ingewikkeld te zijn. Iets om jezelf mee te verwennen, iets lekkers bij de thee, of iets moois voor in huis. Ik zette cadeaus in drie prijsklassen op een rij, zodat je snel iets vindt dat bij je budget past.',
+    /* 14-11-2026 (GO Marius, zoekwoorden 'kerstcadeau vrouw' 8.100 en 'kerstcadeau man' 6.600 per maand): 24 cadeaus in zes soorten, met de hand gekozen. */
+    { slug: 'kerstcadeau-voor-haar', beeld: 'parfum-45dbbae7b4', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar'],
+      titel: 'Kerstcadeau voor een vrouw: 24 ideeën om haar blij te maken', kort: 'Voor je vrouw, vriendin, zus of collega: om te verwennen, voor in huis, iets lekkers of iets persoonlijks.',
+      intro: 'Wat geef je een vrouw met Kerst? Iets waar ze even van geniet: een fijne geur, iets warms voor de winteravonden, iets lekkers of iets moois voor in huis. Hieronder staan 24 ideeën in zes soorten, van een hoodie-deken van 12 euro tot een fles champagne. Zoek je iets voor je moeder of je vriendin? Daar hebben we aparte lijstjes voor.',
       delen: [
-        { kop: 'Tot €25', tekst: 'Klein, maar met aandacht gekozen.',
-          ids: ['bol-9300000159912462', 'bol-9300000225710092', 'bol-9300000319966796', 'bol-9300000168710886'] },
-        { kop: '€25 tot €60', tekst: 'Cadeausets en mooie dingen voor in huis.',
-          ids: ['bol-9300000237452859', 'bol-9300000253909209', 'bol-9300000162839311', 'bol-9300000247719933'] },
-        { kop: 'Luxe (vanaf €60)', tekst: 'Voor als je echt wilt uitpakken.',
-          ids: ['bol-9300000331215829', 'cl-instax12', 'bol-9300000236208265'] }
+        { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Denk aan wat ze in de winter graag doet: op de bank met een plaid, in bad, puzzelen of koken.', 'Iets dat op gaat valt bijna altijd goed: verzorging, iets lekkers of een geurkaars.', 'Persoonlijk raakt vaak meer dan duur: een mok met haar geboortebloem of een tegeltje met een foto.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
+        { kop: 'Even verwennen', tekst: 'Verzorging en iets om even bij te komen.', ids: ['parfum-45dbbae7b4', 'bloom-f6daaba72c', 'dk-00045266', 'cl-gr-gluhwein'] },
+        { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['hema-efaa95f521', 'dvzn-640ca3d05d', 'bt-46901990228307', 'dvzn-e9a4c2cf2b'] },
+        { kop: 'Kerstsfeer in huis', tekst: 'Een geurkaars, lichtjes of iets moois voor de kersttafel.', ids: ['lego-10370', 'wwk-2279523', 'country-b8fd99e550', 'bp-p0061ke'] },
+        { kop: 'Iets lekkers en bubbels', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['cl-moet', 'bol-9300000020446164', 'dk-00043581', 'westwing-1360b3fb47'] },
+        { kop: 'Met een persoonlijk tintje', tekst: 'Een cadeau dat laat zien dat het echt voor háár is.', ids: ['cg-pers-monthflower-mug', 'mmf-63b16f5c97', 'dvzn-fcb853102a', 'dvzn-70adc8c50c'] },
+        { kop: 'Om te maken of te spelen', tekst: 'Voor de vrije dagen tussen Kerst en oud en nieuw.', ids: ['t2-cadeau-nl-6e2c684cbd', 'lego-10348', 'cl-azul', 'amz-b09sg9bb7m'] }
       ],
-      slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/c/geuren-verzorging/geuren">Geuren</a>.' },
-    { slug: 'kerstcadeau-voor-hem', beeld: 'cl-emberton3', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem', 'geuren-verzorging/parfum', 'sport-outdoor/darts', 'elektronica'], titel: 'Kerstcadeau voor een man: van grappig tot gadget', kort: 'Voor je man, vriend, vader of broer. Van €20 tot €111.',
-      intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: iets voor de auto, iets om mee te koken of te drinken, of een gadget. Hier staan ze in drie prijsklassen.',
+      slot: 'Meer ideeën vind je bij <a href="/gids/kerstcadeau-moeder">Kerstcadeau voor je moeder</a>, <a href="/gids/kerstcadeau-vriendin">Kerstcadeau voor je vriendin</a> en <a href="/c/cadeaus/kerst?voor=haar">alle kerstcadeaus voor haar</a>. Zoek je iets voor hem? Kijk bij <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor een man</a>.' },
+    { slug: 'kerstcadeau-voor-hem', beeld: 'dvzn-332357', vakken: ['cadeaus/kerst', 'cadeaus/voor-hem'],
+      titel: 'Kerstcadeau voor een man: 24 ideeën waar hij echt blij mee is', kort: 'Voor je man, vriend, broer of collega: iets te drinken, iets grappigs, een gadget of iets om te bouwen.',
+      intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: een goede fles, iets grappigs, een handige gadget of iets om te bouwen in de kerstvakantie. Hieronder staan 24 ideeën in zes soorten, van een flesopener van 8 euro tot oordopjes van Teufel. Zoek je iets voor je vader of je vriend? Daar hebben we aparte lijstjes voor.',
       delen: [
-        { kop: 'Tot €35', tekst: 'Leuk en betaalbaar.',
-          ids: ['bol-9300000269870256', 'bol-9300000191796264', 'dvzn-a4ed4f69b9', 'a-flextail-420ec05a0e'] },
-        { kop: '€35 tot €80', tekst: 'Dingen die hij elke week gebruikt.',
-          ids: ['bol-9300000083266771', 'cl-le-male', 'bol-9200000127709459'] },
-        { kop: 'Luxe (vanaf €80)', tekst: 'Voor een groot cadeau, of om met z’n allen te geven.',
-          ids: ['cl-emberton3', 'bol-9300000015405237', 'cl-netatmo-weer', 'bol-1004004012237893'] }
+        { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Kijk naar zijn hobby: voetbal, F1, gamen, koken of de barbecue. Een cadeau dat daarbij past wordt gebruikt.', 'Een goede fles valt bijna altijd goed. Kies iets dat hij zelf niet snel koopt.', 'Grappig mag, zolang hij er zelf om kan lachen.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
+        { kop: 'Iets te drinken', tekst: 'Whisky, port of gin, met iets erbij. Alleen voor 18 jaar en ouder.', ids: ['dvzn-332357', 'dvzn-63fc8fc0bd', 'wny-10932', 'dc-255153fc43'] },
+        { kop: 'Om te lachen', tekst: 'Voor de man die overal een grap van maakt.', ids: ['cl-kersttrui', 'dvzn-fef9e43e90', 'cg-useless-box', 'dvzn-0b435dbafd'] },
+        { kop: 'Gadgets en muziek', tekst: 'Handige en leuke snufjes.', ids: ['cg-b320632dae', 'tf-107000900', 'cl-atari-arcade', 'dvzn-a4ed4f69b9'] },
+        { kop: 'Bouwen en spelen', tekst: 'Voor de vrije dagen: LEGO voor volwassenen of een spel voor twee.', ids: ['lego-77243', 'lego-10363', 'lego-75438', '999g-999skt01'] },
+        { kop: 'Voor de keuken en de barbecue', tekst: 'Voor de man die graag kookt of buiten grilt.', ids: ['dvzn-1deadb3602', 'butchery-8ba201a540', 'dvzn-9fa32eee7e', 'cl-hema-kerstbonen'] },
+        { kop: 'Verzorging en warm', tekst: 'Een geurtje, baardolie of warme sloffen.', ids: ['parfum-79e274528c', 'anim-112ddcda59', 'eufr-e624d8bb76', 'hema-a7c1cc7068'] }
       ],
-      slot: 'Meer ideeën staan bij <a href="/voor/hem">Cadeaus voor hem</a>, <a href="/c/sport-outdoor/darts">Darts</a> en <a href="/c/dranken">Dranken</a>.' },
+      slot: 'Meer ideeën vind je bij <a href="/gids/kerstcadeau-vader">Kerstcadeau voor je vader</a>, <a href="/gids/kerstcadeau-vriend">Kerstcadeau voor je vriend</a> en <a href="/c/cadeaus/kerst?voor=hem">alle kerstcadeaus voor hem</a>. Zoek je iets voor haar? Kijk bij <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor een vrouw</a>.' },
     { slug: 'kerstcadeau-collega', beeld: 'bol-9300000237452859', vakken: ['cadeaus/kerst', 'cadeaus/collega'], titel: 'Kerstcadeau voor een collega of het hele team', kort: 'Echte cadeaus die ze blijven gebruiken: van een mooie pen tot een verwenset.',
       intro: 'Een kerstcadeau voor een collega moet niet te persoonlijk zijn en ook niet te duur. Maar het mag wel een echt cadeau zijn: iets wat ze elke werkdag gebruiken, of iets om thuis van te genieten. Dus geen zak chips of een reep chocola die je zo in de supermarkt koopt, maar iets waar ze nog lang aan terugdenken. Geef je met het hele team? Dan kun je wat groter denken.',
       delen: [
@@ -5256,6 +5261,14 @@
   ];
   /* Gidsen 2.0 (7-11-2026): per gids 'Snel kiezen' (3 favorieten: [label, product-id]) en veelgestelde vragen ([vraag, antwoord]). */
   var GIDS_EXTRA = {
+    'kerstcadeau-voor-haar': { top: [['Onze topkeuze', 'parfum-45dbbae7b4'], ['Onder de 15 euro', 'hema-efaa95f521'], ['Persoonlijk', 'cg-pers-monthflower-mug']], faq: [
+      ['Wat geef je een vrouw met Kerst?', 'Iets om te verwennen, zoals een verzorgingsset of geurkaars, iets warms voor de winter, iets lekkers of iets persoonlijks zoals een mok met haar geboortebloem.'],
+      ['Wat is een leuk kerstcadeau voor een vrouw onder de 25 euro?', 'Een hoodie-deken van HEMA, sloffen met een tekst, een bodyscrub, een geurkaars of een cadeauset door de brievenbus. In deze gids staan genoeg ideeën onder de 25 euro.'],
+      ['Wat geef je een vrouw die alles al heeft?', 'Iets dat op gaat (verzorging, bubbels, iets lekkers) of iets om te doen, zoals een muziekdoosje maken of een spel voor de feestdagen.']] },
+    'kerstcadeau-voor-hem': { top: [['Onze topkeuze', 'dvzn-332357'], ['Onder de 10 euro', 'dvzn-0b435dbafd'], ['Om te lachen', 'cl-kersttrui']], faq: [
+      ['Wat geef je een man met Kerst?', 'Iets dat bij zijn hobby past: een goede fles whisky of port, LEGO voor volwassenen, een gadget, iets voor de barbecue of een grappig cadeau zoals een foute kersttrui.'],
+      ['Wat is een leuk kerstcadeau voor een man onder de 25 euro?', 'Een muts met speakers, de Useless Box, LEGO Speed Champions, BBQ-gereedschap, warme pantoffels of een whisky-set met sokken. In deze gids staan genoeg ideeën onder de 25 euro.'],
+      ['Wat geef je een man die alles al heeft?', 'Iets dat op gaat, zoals een goede fles of een burgerpakket, of iets om te doen, zoals een bouwpakket of een spel voor twee.']] },
     'surprise-maken': { top: [['Onze topkeuze', 'bol-9300000226734832'], ['Voor in de surprise', 'cl-cr-geur'], ['Iets lekkers', 'dk-00015052']], faq: [
       ['Wat zijn leuke surprise ideeën?', 'Kies iets dat bij de persoon past: een grote controller voor een gamer, een voetbalschoen voor een voetballer, een koffiekopje voor een koffieleut of een wekker voor wie altijd te laat is. Hoe herkenbaarder, hoe leuker.'],
       ['Wat heb je nodig om een surprise te maken?', 'Een doos of wc-rollen, karton, kranten, plakband, een lijmpistool en verf of crêpepapier. Met een lijmpistool zit alles in een paar seconden vast.'],
