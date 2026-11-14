@@ -192,5 +192,9 @@
  "/gids/verlanglijstje-maken/": {
   "titel": "Verlanglijstje maken: gratis en delen via WhatsApp",
   "omschrijving": "Maak gratis een verlanglijstje zonder account: tik op het hartje bij cadeaus en deel je lijstje via WhatsApp. Familie en vrienden kiezen een cadeau en bestellen het meteen."
+ },
+ "/tiktok/": {
+  "titel": "Gezien op TikTok: alle cadeaus uit onze filmpjes",
+  "omschrijving": "Alle cadeaus uit de filmpjes van LeukeKeuze op TikTok en Instagram, per filmpje op een rij, het nieuwste bovenaan. Met prijs en een knop naar de winkel."
  }
 }

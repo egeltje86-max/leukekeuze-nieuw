@@ -2418,3 +2418,30 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .lt-bewaar .knop { min-height: 44px; background: #FFFCF7; }
 .lt-laden { text-align: center; padding: 30px 0; }
 .lt [hidden], .lt-form[hidden] { display: none !important; }
+
+/* ===== TIKTOK (14-11-2026): /tiktok, de link in het profiel. Per filmpje een rij cadeaus, het nieuwste bovenaan. ===== */
+.tt-hero { background: #0A1020; color: #F7F3EC; padding: 26px 0 22px; }
+.tt-hero .kicker { color: #F2CB74; margin: 0 0 6px; }
+.tt-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; line-height: 1.15; color: #FFFCF7; margin: 0 0 8px; font-size: clamp(1.7rem, 6.5vw, 2.4rem); text-wrap: balance; }
+.tt-hero p { margin: 0; font-size: 16px; line-height: 1.5; color: #F7F3EC; max-width: 60ch; }
+.tt { padding-top: 6px; padding-bottom: 28px; }
+.tt-reel { margin-top: 22px; }
+.tt-reel h2 { margin: 0 0 4px; display: flex; flex-direction: column; gap: 2px; }
+.tt-datum { font-family: Manrope, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #8F6620; }
+.tt-datum b { color: #B8862E; }
+.tt-kop, .tt-slot h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; color: #141A2A; }
+.tt-kop { font-size: clamp(1.25rem, 5vw, 1.6rem); line-height: 1.2; text-wrap: balance; }
+.tt-tekst { margin: 0 0 12px; color: #141A2A; font-size: 16px; }
+.tt-dicht { background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 16px; padding: 0 14px; }
+.tt-dicht > summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; cursor: pointer; padding: 10px 0; }
+.tt-dicht > summary::-webkit-details-marker { display: none; }
+.tt-dicht > summary h2 { margin: 0; }
+.tt-dicht .tt-kop, .tt-slot h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; color: #141A2A; }
+.tt-kop { font-size: 1.1rem; }
+.tt-open { flex: none; width: 12px; height: 12px; border-right: 2px solid #8F6620; border-bottom: 2px solid #8F6620; transform: rotate(45deg); margin: 0 6px 6px 0; transition: transform .15s; }
+.tt-dicht[open] .tt-open { transform: rotate(-135deg); margin: 6px 6px 0 0; }
+.tt-dicht[open] { padding-bottom: 14px; }
+.tt-slot { margin-top: 30px; }
+.tt-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 12px; }
+.tt-links .knop { min-height: 46px; padding-left: 16px; padding-right: 16px; max-width: 100%; white-space: normal; }
+.tt-klein { font-size: 14px; color: #141A2A; opacity: .8; }

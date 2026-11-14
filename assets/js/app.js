@@ -3505,6 +3505,43 @@
       .filter(function (p) { if (!p || gezien[p.id] || p.status !== 'goedgekeurd' || !(p.prijs <= budget) || p.prijs < budget * 0.35) return false; gezien[p.id] = 1; return true; });
     return lijst.slice(0, 12);
   }
+  /* ===== GEZIEN OP TIKTOK (14-11-2026, plan 'bekender worden' punt 4, GO Marius) =====
+     De link in het profiel op TikTok en Instagram: leukekeuze.nl/tiktok. Per filmpje een rij met dezelfde vijf cadeaus, het nieuwste bovenaan.
+     Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
+     De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
+  var TIKTOK_REELS = [
+    { datum: '14 november', kop: '5 verrassingen onder € 50', tekst: 'Iets nieuws geven? Vijf cadeaus die nog niet iedereen kent.', ids: ['dvzn-557193', 'dvzn-779391', 'cg-b320632dae', 'dvzn-648493', 'dvzn-a4ed4f69b9'] },
+    { datum: '14 november', kop: 'Sint is in het land, schoen zetten!', tekst: 'Vijf hypes tot € 10 voor in de schoen.', ids: ['dgsw-73875b4eb0', 'nedg-1ed80cdff7', 'dvzn-1efc3c8d3d', 'dgsw-d88cc64fa3', 'cl-beyblade'] },
+    { datum: '14 november', kop: '5 toppers onder € 50', tekst: 'Een cadeau voor iedereen.', ids: ['dvzn-995816', 'hema-efaa95f521', 'bol-9300000131876375', 'grotek-ac82c5461a', 'bol-9300000252617200'] },
+    { datum: '13 november', kop: 'Schoen zetten, 5 tot € 10', tekst: 'Kleine cadeautjes waar kinderen blij van worden.', ids: ['dvzn-4d97c0ab44', 'dgsw-d99c9676ba', 'dvzn-655af9bd06', 'dvzn-3ee499eae7', 'hema-ce48ea31d7'] },
+    { datum: '13 november', kop: '5 lampjes voor gamers, tot € 20', tekst: 'Voor de gamekamer of de tienerkamer.', ids: ['dvzn-19948c60e9', 'dvzn-96ba2b1949', 'dvzn-633422', 'dvzn-e0d7171bb3', 'supz-8176d5f538'] },
+    { datum: '13 november', kop: '5 cadeautjes onder € 10', tekst: 'Voor in de schoen: om te spelen, te knutselen en te ontdekken.', ids: ['woewoe-7c880d8044', 'woewoe-2657e7b14e', 'woewoe-4f1087a474', 'woewoe-ff1c2aa222', 'woewoe-fc0b0c3d9d'] },
+    { datum: '13 november', kop: '5 knusse cadeaus onder € 25', tekst: 'Voor koude avonden.', ids: ['dvzn-145895', 'tt-dvzn-65a776d941', 'cl-capibara-warm', 'dvzn-e5a1c9fee7', 'dvzn-fdd7c310b4'] },
+    { datum: '12 november', kop: 'Lootje getrokken? 5 grappige cadeaus onder € 15', tekst: 'Voor bij de lootjes van Sinterklaas.', ids: ['dvzn-1a61ae70d9', 'dvzn-7ed319ef34', 'dvzn-7670dc54f5', 'dvzn-326d5595a1', 'dvzn-a003b63b40'] },
+    { datum: '12 november', kop: 'Grappige cadeaus voor tieners', tekst: 'Om om te lachen.', ids: ['dvzn-9688f84b76', 'dvzn-ebc9e55f71', 'dvzn-fcca193d6c', 'dvzn-4c1a69ab87', 'dgsw-f8d291bf6b'] },
+    { datum: '12 november', kop: 'Grappige cadeaus voor kinderen', tekst: 'Gek, vies en grappig.', ids: ['dvzn-8607c53284', 'dvzn-880ebf0fce', 'dgsw-a42a4b129c', 'dvzn-655af9bd06', 'dvzn-3ee499eae7'] }
+  ];
+  function tiktokPagina() {
+    zetTitel('Gezien op TikTok: alle cadeaus uit onze filmpjes');
+    window.LK_SEO = 'Alle cadeaus uit de filmpjes van LeukeKeuze op TikTok en Instagram, per filmpje op een rij, het nieuwste bovenaan. Met prijs en een knop naar de winkel.';
+    var z = LK.zichtbaar(), opZ = {}; z.forEach(function (p) { opZ[p.id] = p; });
+    var rijen = TIKTOK_REELS.map(function (r, i) {
+      var l = r.ids.map(function (id) { return opZ[id]; }).filter(Boolean);
+      if (!l.length) return '';
+      var kop = '<span class="tt-datum">' + (i === 0 ? '<b>Nieuwste filmpje</b> · ' : '') + esc(r.datum) + '</span><span class="tt-kop">' + esc(r.kop) + '</span>';
+      var binnen = '<p class="tt-tekst">' + esc(r.tekst) + '</p><div class="prodgrid">' + l.map(LK.productKaart).join('') + '</div>';
+      return i < 3 ? '<section class="tt-reel" data-tel="tiktok/' + i + '"><h2>' + kop + '</h2>' + binnen + '</section>'
+        : '<details class="tt-reel tt-dicht"><summary><h2>' + kop + '</h2><span class="tt-open" aria-hidden="true"></span></summary>' + binnen + '</details>';
+    }).join('');
+    return '<section class="tt-hero"><div class="binnen"><p class="kicker">Gezien op TikTok</p><h1>Alle cadeaus uit onze filmpjes</h1>' +
+        '<p>Zag je iets leuks in een filmpje? Hier staat het, met de prijs en een knop naar de winkel. Het nieuwste filmpje staat bovenaan. Iets anders zoeken? Typ het in het zoekvak hierboven.</p>' +
+
+      '</div></section><div class="binnen tt">' + rijen +
+      '<section class="tt-slot"><h2>Nog meer ideeën</h2><div class="tt-links">' +
+        '<a class="knop knop-rand" href="/collectie/grappige-cadeaus">Grappige cadeaus</a><a class="knop knop-rand" href="/collectie/schoencadeautjes">Schoencadeautjes</a>' +
+        '<a class="knop knop-rand" href="/c/cadeaus/onder-15">Cadeaus onder € 15</a><a class="knop knop-rand" href="/lootjes-trekken/">Gratis lootjes trekken</a></div>' +
+        '<p class="tt-klein">De prijs kan bij de winkel iets anders zijn dan in het filmpje. Op de pagina van elk cadeau staat wanneer wij de prijs hebben gecontroleerd.</p></section></div>';
+  }
   function lootjes(q) {
     if (q.l) return lootUitslag(lootLees(q.l));
     if (q.g) return lootGroep(q);
@@ -6038,6 +6075,7 @@
     else if (d[0] === 'vonk') html = vonk(a.q);
     else if (d[0] === 'sint-rijmmachine') html = rijmmachine();
     else if (d[0] === 'lootjes-trekken' && window.LK_LOOTJES !== false) html = lootjes(a.q);
+    else if (d[0] === 'tiktok' && window.LK_TIKTOK !== false) html = tiktokPagina();
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);
