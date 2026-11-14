@@ -4041,7 +4041,7 @@
         { kop: 'Om jezelf te verwennen', tekst: 'Zacht, warm en lekker ruikend: helemaal goed voor de koude decemberavonden.',
           ids: ['bol-9300000188983674', 'dvzn-29043e5ee8', 'hema-efaa95f521', 'bol-9300000291533838'] }, /* 13-11-2026: magnetronsloffen en teddy-hoodie in plaats van de Timberland-sokken (weg) en de plaid van La Redoute */
         { kop: 'Mooi voor in huis', tekst: 'Een geurkaars of een lief lampje maakt het meteen gezellig.',
-          ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'bol-9300000124563618', 'dvzn-347250'] },
+          ids: ['dvzn-6934eb427b', 'bol-9300000224403531', 'hema-ada4815acd', 'dvzn-347250'] },
         { kop: 'Creatief en ontspannen', tekst: 'Voor de vrouw die graag iets met haar handen doet, of even helemaal uit wil schakelen.',
           ids: ['bol-9300000087608265', 'bol-9300000238015446', 'bol-9300000071174759', 'bol-9300000189482940'] },
         { kop: 'Voor je moeder (€15 tot €35)', tekst: 'Moeders denken vaak eerst aan een ander. Geef haar dus iets wat alleen voor haar is: om te verwennen of om van te snoepen bij de koffie.',
@@ -4621,7 +4621,7 @@
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
           ids: ['hema-8eff9a5ada', 'bol-9300000338660274', 'dk-00025723', 'bol-9300000256554614'] },
         { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
-          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9200000078061085', 'dvzn-562225'] },
+          ids: ['bol-9300000023740845', 'dvzn-172862', 'dille-d156476e88', 'dvzn-562225'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
           ids: ['bol-9300000242918333', 'bol-9300000244887994', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],
