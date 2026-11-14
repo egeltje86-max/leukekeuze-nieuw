@@ -7794,3 +7794,364 @@ window.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, [{"id": "dvzn-e869facee9", "
 /* ===== ERBIJ-lijst darts van partners (13-11-2026): 18 producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */
 window.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, [{"id": "kado-eb6b7bd701", "titel": "Longfield Professional dartbord met 3 pijlen (45,5 cm)", "prijs": 41.98, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10229248%2Fdartbord-longfield-professional-dia-455-cm-met-3x-goede-kwaliteit-dartpijltjes-darten.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10229248%2Fdartbord-longfield-professional-dia-455-cm-met-3x-goede-kwaliteit-dartpijltjes-darten.html", "beeld": "images/producten/kado-eb6b7bd701", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Dartbord van Longfield met een doorsnede van 45,5 centimeter, met drie dartpijlen erbij. Ophangen en je kunt meteen beginnen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-db85e7bb4c", "titel": "Rogue Bristle dartbord (45 cm)", "prijs": 29.24, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10233994%2Fdartbord-rogue-bristle-d45-cm-aluminium-ophangsysteem.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10233994%2Fdartbord-rogue-bristle-d45-cm-aluminium-ophangsysteem.html", "beeld": "images/producten/kado-db85e7bb4c", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Dartbord van 45 centimeter met een ophangsysteem van aluminium. Een mooi bord om thuis op te oefenen; de pijlen koop je er los bij.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-464b25b5ec", "titel": "Dubbelzijdig dartbord met 6 pijltjes (38 cm)", "prijs": 10.99, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10236548%2Fspeelgoed-dartbord-incl-6-dartpijltjes-dubbelzijdig-diameter-38-cm.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10236548%2Fspeelgoed-dartbord-incl-6-dartpijltjes-dubbelzijdig-diameter-38-cm.html", "beeld": "images/producten/kado-464b25b5ec", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["kind", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Dartbord van 38 centimeter met twee kanten en zes pijltjes erbij. Een goedkoop bord om thuis mee te beginnen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "massa-4ccdcf1e19", "titel": "Kinderdartbord met 6 darts", "prijs": 20.95, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fkinder-safety-dartbord-incl-6-darts.html%3Fchannable%3D003a25736b7500353837323906%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Doffline%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D58729", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fkinder-safety-dartbord-incl-6-darts.html%3Fchannable%3D003a25736b7500353837323906%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Doffline%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D58729", "beeld": "images/producten/massa-4ccdcf1e19", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["kind", "tiener"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Dartbord voor kinderen, met zes darts erbij. De winkel noemt het een safety-dartbord: bedoeld om veilig mee te gooien.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-d51c34b000", "titel": "Longfield dartpijlen van messing, 9 stuks (22 gram)", "prijs": 23.97, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10226958%2Flongfield-darts-dartpijlen-set-brass-barrel-9x-st-22-gram-darten-pijltjes-sport-artikelen.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10226958%2Flongfield-darts-dartpijlen-set-brass-barrel-9x-st-22-gram-darten-pijltjes-sport-artikelen.html", "beeld": "images/producten/kado-d51c34b000", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Negen dartpijlen van Longfield van messing, elk 22 gram. Handig als je met meer mensen tegelijk speelt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-a3dd8cff89", "titel": "Black Arrow dartpijlen, 3 stuks (21 gram)", "prijs": 14.99, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10236834%2F1x-set-van-3-dartpijlen-black-arrow-21-grams.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10236834%2F1x-set-van-3-dartpijlen-black-arrow-21-grams.html", "beeld": "images/producten/kado-a3dd8cff89", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Setje van drie dartpijlen van 21 gram in het zwart. Een betaalbaar cadeau voor wie thuis een bord heeft hangen.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-808a0f5a4f", "titel": "Club Brass dartpijlen, 3 stuks (19 gram)", "prijs": 12.99, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10236769%2Fdartpijlen-club-brass-setje-3-stuks-19-grams-messing-pvc-darten.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10236769%2Fdartpijlen-club-brass-setje-3-stuks-19-grams-messing-pvc-darten.html", "beeld": "images/producten/kado-808a0f5a4f", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Drie dartpijlen van messing van 19 gram. Licht van gewicht, dus ook fijn voor wie net begint.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-f0b7a25b2b", "titel": "Bear Brass dartpijlen, 3 stuks (19 gram)", "prijs": 10.49, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10233412%2Fdartpijlen-3x-stuks-bear-brass-19-grams-pijltjes-voor-darten.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10233412%2Fdartpijlen-3x-stuks-bear-brass-19-grams-pijltjes-voor-darten.html", "beeld": "images/producten/kado-f0b7a25b2b", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Drie dartpijlen van messing van 19 gram, met een opvallende flight. Leuk als klein cadeau voor een darter.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-be6e06fe52", "titel": "Longfield dartpijlen van messing met etui (23 gram)", "prijs": 6.99, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10237099%2Flongfield-darts-dartpijlen-3x-messing-23-gram-incl-etui-darten.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10237099%2Flongfield-darts-dartpijlen-3x-messing-23-gram-incl-etui-darten.html", "beeld": "images/producten/kado-be6e06fe52", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Drie dartpijlen van Longfield van 23 gram, in een etui om ze mee te nemen. Een klein cadeau voor weinig geld.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "kado-38a857e33b", "titel": "Longfield dartpijlen nickel silver, 3 stuks (24 gram)", "prijs": 7.99, "shop": "Kado-versturen", "url": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10237128%2Flongfields-dartpijlen-3x-stuks-24-grams-nickel-silver-darten.html", "winkelUrl": "https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10237128%2Flongfields-dartpijlen-3x-stuks-24-grams-nickel-silver-darten.html", "beeld": "images/producten/kado-38a857e33b", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Drie dartpijlen van Longfield van 24 gram, in zilverkleur. Goedkoop setje voor in de schoen of bij de lootjes.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "massa-1308b36e5c", "titel": "Darts-cadeauset van messing, zwart gecoat", "prijs": 8.98, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fdartset-brass-steeltip-black-coated.html%3Fchannable%3D003a25736b7500313031313741%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Dzero_sales%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D10117", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fdartset-brass-steeltip-black-coated.html%3Fchannable%3D003a25736b7500313031313741%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Dzero_sales%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D10117", "beeld": "images/producten/massa-1308b36e5c", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Cadeauset met dartpijlen van messing met een zwarte laag, in een doosje. Klaar om weg te geven.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "dgsw-cae7b18228", "titel": "Dartset in cadeauverpakking (messing)", "prijs": 9.99, "shop": "De Grote Speelgoedwinkel", "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fsportartikelen%2Fdart-artikelen%2Fdartset-kadoset-brass%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fsportartikelen%2Fdart-artikelen%2Fdartset-kadoset-brass%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker", "beeld": "images/producten/dgsw-cae7b18228", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Setje dartpijlen van messing in een cadeauverpakking. Een klein cadeau voor iemand die graag een pijltje gooit.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "grotek-cbb21a5df3", "titel": "Longfield softtip-dartpijlen, 3 stuks (18 gram)", "prijs": 12.95, "shop": "Grote Kadoshop", "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7540212%2Fs%2Fxi-6160633%2F", "winkelUrl": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7540212%2Fs%2Fxi-6160633%2F", "beeld": "images/producten/grotek-cbb21a5df3", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Drie dartpijlen van Longfield met een zachte punt, 18 gram. Softtip-pijlen zijn bedoeld voor een elektronisch dartbord.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "massa-61b3331aad", "titel": "Longfield darts-accessoireset (141-delig)", "prijs": 18.98, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Flongfield-darts-accessoireset-141-delig.html%3Fchannable%3D003a25736b75003133383937372a%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Doffline%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D138977", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Flongfield-darts-accessoireset-141-delig.html%3Fchannable%3D003a25736b75003133383937372a%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Doffline%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D138977", "beeld": "images/producten/massa-61b3331aad", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Doos met 141 losse onderdelen voor darts van Longfield, zoals flights en shafts. Handig voor wie vaak speelt en weleens iets kwijtraakt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "ontwer-e14b193aa0", "titel": "3D-ledlamp dartbord", "prijs": 34.95, "shop": "Ontwerp-zelf", "url": "https://partner.ontwerp-zelf.nl/c?c=37020&m=2489184&a=516846&r=&u=https%3A%2F%2Fontwerp-zelf.nl%2Fproducts%2F3d-led-lamp-dartbord", "winkelUrl": "https://partner.ontwerp-zelf.nl/c?c=37020&m=2489184&a=516846&r=&u=https%3A%2F%2Fontwerp-zelf.nl%2Fproducts%2F3d-led-lamp-dartbord", "beeld": "images/producten/ontwer-e14b193aa0", "cat": "wonen", "sub": "verlichting", "subVast": true, "ookIn": [], "voor": ["hem", "tiener"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Ledlamp met een dartbord dat diepte lijkt te hebben. Een sfeerlamp voor de kamer of de dartshoek van een fan.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "dvzn-11afe59939", "titel": "Golf-dartspel", "prijs": 27.99, "shop": "Ditverzinjeniet", "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fgolf-dartspel%3Futm_campaign%3Dtt_feed_all", "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fgolf-dartspel%3Futm_campaign%3Dtt_feed_all", "beeld": "images/producten/dvzn-11afe59939", "cat": "sport-outdoor", "sub": "balsport-spel", "subVast": true, "ookIn": [], "voor": ["hem", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Dartspel met een golfbaan als bord: je gooit in plaats van te slaan. Grappig cadeau voor iemand die van golf houdt.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "massa-133f82ee83", "titel": "Bijlgooi-set: dartspel met bijlen", "prijs": 10.68, "shop": "Massamarkt", "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fdartset-met-bijlen-bijlgooi-set.html%3Fchannable%3D003a25736b750031323333383173%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Dzero_sales%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D123381", "winkelUrl": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fdartset-met-bijlen-bijlgooi-set.html%3Fchannable%3D003a25736b750031323333383173%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Dzero_sales%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D123381", "beeld": "images/producten/massa-133f82ee83", "cat": "sport-outdoor", "sub": "balsport-spel", "subVast": true, "ookIn": [], "voor": ["kind", "tiener", "iedereen"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Gooispel met bijlen en een doelbord, als darts maar dan anders. Leuk voor kinderen, binnen of in de tuin.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}, {"id": "fiftie-97300b67e7", "titel": "Jack Daniel's dartkast met dartbord (Old No. 7)", "prijs": 349.0, "shop": "Fiftiesstore", "url": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fjack-daniel-s-old-no-7-dartboard-cabinet-set.html%3Fchannable%3D0191796964003631363935ae", "winkelUrl": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fjack-daniel-s-old-no-7-dartboard-cabinet-set.html%3Fchannable%3D0191796964003631363935ae", "beeld": "images/producten/fiftie-97300b67e7", "cat": "sport-outdoor", "sub": "darts", "subVast": true, "ookIn": [], "voor": ["hem"], "moment": ["kerst", "sinterklaas", "verjaardag"], "waarom": "Dartkast in de stijl van Jack Daniel's Old No. 7, met een dartbord erin en deurtjes die dicht kunnen. Een pronkstuk voor de mancave.", "status": "goedgekeurd", "nieuw": true, "gecontroleerd": "2026-11-13", "sinds": "2026-11-13", "herkomst": "piloot"}]);
 /* ===== einde ERBIJ-lijst darts van partners (13-11-2026) ===== */
+
+/* ===== Piloot 2026-11-14: 11 producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */
+window.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, [
+ {
+  "id": "dvzn-f8532c385d",
+  "titel": "Clumsy Duck nachtlampje (eend die op zijn buik ligt)",
+  "prijs": 24.99,
+  "shop": "Ditverzinjeniet",
+  "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fclumsy-duck-nachtlampje%3Futm_campaign%3Dtt_feed_all",
+  "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fclumsy-duck-nachtlampje%3Futm_campaign%3Dtt_feed_all",
+  "beeld": "images/producten/dvzn-f8532c385d",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sinterklaas",
+   "cadeaus/kerst",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "tiener",
+   "kind",
+   "haar"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Een zacht lampje in de vorm van een eend die languit op zijn buik ligt. Grappig om te zien en fijn als zacht licht op de kamer.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "hema-92afe06c2f",
+  "titel": "HEMA nachtlampje kasteel (siliconen, 18,5 cm)",
+  "prijs": 12.99,
+  "shop": "HEMA",
+  "url": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fnachtlampje-led-%25E2%258C%258010.5x18.5cm-kasteel-siliconen-15100155.html",
+  "winkelUrl": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fnachtlampje-led-%25E2%258C%258010.5x18.5cm-kasteel-siliconen-15100155.html",
+  "beeld": "images/producten/hema-92afe06c2f",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Een led-nachtlampje in de vorm van een sprookjeskasteel, van zacht siliconen. Een rustig lichtje voor de kinderkamer.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dgsw-85c69aeb15",
+  "titel": "Squishmallows tashanger (9 cm)",
+  "prijs": 6.99,
+  "shop": "De Grote Speelgoedwinkel",
+  "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fsquishy%2Fsquishmallows-clip-on-plush-9-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fsquishy%2Fsquishmallows-clip-on-plush-9-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "beeld": "images/producten/dgsw-85c69aeb15",
+  "cat": "speelgoed",
+  "sub": "knuffels-squishmallows",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een mini-Squishmallow van 9 cm met clip, voor aan je tas of sleutels. Er zijn verschillende figuurtjes; welke je krijgt zie je bij de winkel.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dgsw-5c698ae13d",
+  "titel": "Airbrush Plush mystery mini knuffel neon (zelf kleuren)",
+  "prijs": 9.99,
+  "shop": "De Grote Speelgoedwinkel",
+  "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fknutselen%2Fknutselpakketten%2Fairbrush-mystery-mini-pluche-1-pack-neon%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fknutselen%2Fknutselpakketten%2Fairbrush-mystery-mini-pluche-1-pack-neon%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "beeld": "images/producten/dgsw-5c698ae13d",
+  "cat": "speelgoed",
+  "sub": "knutselen",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een verrassingsknuffel die je zelf versiert met neon airbrushstiften en sjablonen. Uitpakken en daarna meteen aan de slag.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dgsw-ed167c58cc",
+  "titel": "KPop Demon Hunters notitieboek met pluche kaft (A5)",
+  "prijs": 9.99,
+  "shop": "De Grote Speelgoedwinkel",
+  "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fkpop%2Fkpop-demon-hunter-plush-notitieboek%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fkpop%2Fkpop-demon-hunter-plush-notitieboek%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+  "beeld": "images/producten/dgsw-ed167c58cc",
+  "cat": "speelgoed",
+  "sub": "hypes-trends",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een A5-notitieboek met zachte paarse kaft en de Huntrix-meiden uit de film KPop Demon Hunters. Voor fans van de film.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "nedg-1ea36fd411",
+  "titel": "Pokémon-figuur Squirtle doorzichtig",
+  "prijs": 14.99,
+  "shop": "Nedgame",
+  "url": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fpokemon-translucent-figure---squirtle%2F5319280117%2F",
+  "winkelUrl": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fpokemon-translucent-figure---squirtle%2F5319280117%2F",
+  "beeld": "images/producten/nedg-1ea36fd411",
+  "cat": "speelgoed",
+  "sub": "figuren-voertuigen",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Squirtle als doorzichtig blauw beeldje. Leuk voor op een plank of bureau, voor wie Pokémon verzamelt.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "nedg-49b11339ee",
+  "titel": "Minecraft lamp toverdrankje (Potion Bottle)",
+  "prijs": 28.0,
+  "shop": "Nedgame",
+  "url": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fminecraft-illuminating-collector-replica---potion-bottle%2F8639671237%2F",
+  "winkelUrl": "https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fmerchandise%2Fminecraft-illuminating-collector-replica---potion-bottle%2F8639671237%2F",
+  "beeld": "images/producten/nedg-49b11339ee",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sinterklaas",
+   "cadeaus/kerst",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "tiener",
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Het toverdrankje uit Minecraft als lamp, met kurk erop. Een lichtje voor op de gamekamer.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "dvzn-f1d44f005d",
+  "titel": "Minecraft Axolotl nekkussen met slaapmasker",
+  "prijs": 13.99,
+  "shop": "Ditverzinjeniet",
+  "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fminecraft-axolotl-nekkussen-en-masker%3Futm_campaign%3Dtt_feed_all",
+  "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fminecraft-axolotl-nekkussen-en-masker%3Futm_campaign%3Dtt_feed_all",
+  "beeld": "images/producten/dvzn-f1d44f005d",
+  "cat": "speelgoed",
+  "sub": "hypes-trends",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een zacht nekkussen en slaapmasker in de vorm van de axolotl uit Minecraft. Handig voor lange autoritten en in het vliegtuig.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "superz-0abcd7e2c7",
+  "titel": "Minecraft lampje wolf (Paladone, 11 cm)",
+  "prijs": 15.0,
+  "shop": "Superzero",
+  "url": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-icon-lights-minecraft-wolf-pp16019mcfid.html%3Fsource%3Dtradetracker",
+  "winkelUrl": "https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=https%3A%2F%2Fwww.superzero.nl%2Fpaladone-icon-lights-minecraft-wolf-pp16019mcfid.html%3Fsource%3Dtradetracker",
+  "beeld": "images/producten/superz-0abcd7e2c7",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "De tamme wolf uit Minecraft als lampje van 11 cm, van Paladone. Klein genoeg voor op het bureau of naast het bed.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "cadeau-57cdca51b2",
+  "titel": "Disney Stitch glitterbol met ledlicht",
+  "prijs": 28.99,
+  "shop": "Cadeau.nl",
+  "url": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fdisney-stitch-glitterbal-met-ledverlichting%2F%3Futm_campaign%3Dtt_feed_all",
+  "winkelUrl": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fdisney-stitch-glitterbal-met-ledverlichting%2F%3Futm_campaign%3Dtt_feed_all",
+  "beeld": "images/producten/cadeau-57cdca51b2",
+  "cat": "wonen",
+  "sub": "verlichting",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sinterklaas",
+   "cadeaus/kerst",
+   "cadeaus/voor-kinderen"
+  ],
+  "voor": [
+   "kind",
+   "tiener"
+  ],
+  "moment": [
+   "sinterklaas",
+   "kerst",
+   "verjaardag"
+  ],
+  "waarom": "Een glitterbol met Stitch erin en een lampje in de voet. Schud hem en de glitters dwarrelen in het licht.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ },
+ {
+  "id": "grotek-4da96ba1e7",
+  "titel": "TY Beanie Bouncers Stitch knuffel",
+  "prijs": 13.95,
+  "shop": "Grote Kadoshop",
+  "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7538242%2Fs%2Fxi-2016270%2F",
+  "winkelUrl": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7538242%2Fs%2Fxi-2016270%2F",
+  "beeld": "images/producten/grotek-4da96ba1e7",
+  "cat": "speelgoed",
+  "sub": "knuffels-squishmallows",
+  "subVast": true,
+  "ookIn": [
+   "cadeaus/sint-onder-15",
+   "cadeaus/onder-15",
+   "cadeaus/voor-kinderen",
+   "cadeaus/sinterklaas"
+  ],
+  "voor": [
+   "kind"
+  ],
+  "moment": [
+   "sinterklaas",
+   "verjaardag",
+   "kerst"
+  ],
+  "waarom": "Een ronde, zachte Stitch-knuffel van TY met grote oren. Een fijne knuffel voor fans van Lilo & Stitch.",
+  "status": "goedgekeurd",
+  "nieuw": true,
+  "gecontroleerd": "2026-11-14",
+  "sinds": "2026-11-14",
+  "herkomst": "piloot"
+ }
+]);
+/* ===== einde Piloot 2026-11-14 ===== */
