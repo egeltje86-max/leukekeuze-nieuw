@@ -1,0 +1,314 @@
+# -*- coding: utf-8 -*-
+"""Zoeklijst voor de Superkeurkamer (14-11-2026, opdracht Marius: 'maak categorieën die bij naam gezocht moeten worden').
+Elke soort = een vaste knop met slimme zoekwoorden (OF), woorden die eruit moeten (NIET), een prijsband,
+voor wie, hoeveel we er ongeveer willen (doel) en een tip waar je op let.
+Prioriteit: A = verkoopt/scoort nu bij ons of wordt heel veel gezocht, B = goed cadeau, C = kleiner/apart.
+Zoekvolumes (OpenSEO, NL, per maand, 14-11-2026) staan in 'vol' waar gemeten."""
+import json, sys
+
+NIET_TROEP = ['reserve', 'vervang', 'onderdeel', 'navulling', 'refill', 'adapter', 'kabel', 'schroef', 'bevestiging', 'montage']
+
+G = []  # (groep, [soorten])
+def S(naam, zoek, niet=(), mn=5, mx=60, voor=(), doel=15, prio='B', tip='', vol=None):
+    return {'naam': naam, 'zoek': list(zoek), 'niet': list(niet), 'min': mn, 'max': mx, 'voor': list(voor), 'doel': doel,
+            'prio': prio, 'tip': tip, **({'vol': vol} if vol else {})}
+
+LAMP_NIET = ['lampenkap', 'gloeilamp', 'ledlamp e27', 'e27', 'e14', 'gu10', 'fietslamp', 'fietsverlichting', 'zaklamp', 'hoofdlamp', 'werklamp',
+             'plafond', 'kroonluchter', 'buitenlamp', 'wandlamp buiten', 'grondspot', 'inbouw', 'tl-buis', 'lichtbron', 'dimmer', 'koplamp', 'achterlicht']
+G.append(('Licht & sfeer', [
+    S('Nachtlampjes & figuurlampjes', ['nachtlamp', 'nachtlicht', 'night light', 'icon light', 'icon lamp', 'figuurlamp', 'lampje', 'boxlamp', 'light up'], LAMP_NIET, 5, 60,
+      ['kind', 'tiener', 'haar'], 30, 'A', 'Figuurtjes uit games, films en dieren. Echte sfeerfoto met het licht aan. Paladone, Numskull en Fizz zijn goede merken.', 14800),
+    S('Lavalampen & bewegend licht', ['lavalamp', 'lava lamp', 'glitterlamp', 'flow lamp', 'zandlamp', 'sandscape', 'kwallenlamp', 'jellyfish'], LAMP_NIET, 10, 70,
+      ['tiener', 'haar', 'hem'], 15, 'A', 'Lava, glitter, zand of kwallen die bewegen: werkt heel goed op TikTok.', 9900),
+    S('Sterrenprojectors & galaxy-lampen', ['sterrenprojector', 'projector ster', 'galaxy projector', 'galaxy lamp', 'galaxy light', 'sterrenhemel lamp', 'sterrenhemel projector', 'nebula', 'projectielamp', 'star projector'], ['beamer', 'filmprojector', 'samsung', 'hoesje', 'cover'] + LAMP_NIET, 8, 70,
+      ['kind', 'tiener', 'haar'], 15, 'A', 'Sterren op het plafond. Liefst met foto van de kamer in het donker.', 590),
+    S('Neonlampen & lichtborden', ['neonlamp', 'neon lamp', 'neon light', 'neon led', 'neon bord', 'neon sign', 'led bord', 'ledbord', 'lichtbord', 'lightbox', 'letterbak'], LAMP_NIET + ['neonkleur', 'neon geel', 'neon roze'], 10, 80,
+      ['tiener', 'haar', 'hem'], 12, 'B', 'Regenboog, logo of tekst voor aan de muur.', 1900),
+    S('Book nooks & miniatuurhuisjes', ['book nook', 'booknook', 'miniatuurhuis', 'miniatuur huis', 'diy huisje', 'boekensteun lamp', 'miniature'], ['poppenhuis meubel'], 15, 120,
+      ['haar', 'tiener', 'hem'], 15, 'A', 'Zelf bouwen, met lampjes. Robotime/Rolife is het bekende merk.', 9900),
+    S('Zoutlampen, maanlampen & sfeerlampen', ['zoutlamp', 'maanlamp', 'moon lamp', 'sfeerlamp', 'tulpenlamp', 'paddenstoellamp', 'mushroom lamp', 'smiley lamp', 'wolkenlamp'], LAMP_NIET, 10, 80,
+      ['haar', 'iedereen'], 15, 'B', 'Mooi voor op de kast of het nachtkastje. Foto met licht aan.', 6600),
+    S('Geurkaarsen', ['geurkaars', 'scented candle', 'kaars in glas', 'kaars in pot'], ['kaarsenhouder', 'waxinelichtjes 100', 'dinerkaars', 'stompkaars', 'theelicht', 'kaarslont'], 8, 60,
+      ['haar', 'collega', 'opa-oma'], 20, 'A', 'Mooie pot of doos, bekende geur (Atelier Rebul eerst, dan Yankee/WoodWick/Rituals-achtig).', 9900),
+    S('Geurstokjes & huisparfum', ['geurstokjes', 'diffuser', 'huisparfum', 'roomspray', 'room spray', 'kussenspray'], ['navulling', 'refill', 'auto'], 8, 70,
+      ['haar', 'collega', 'opa-oma'], 12, 'B', 'Liefst een cadeaudoos.', 12100),
+]))
+G.append(('Knus & warm', [
+    S('Hoodie-dekens & draagbare dekens', ['hoodie deken', 'hoodie-deken', 'snuggle', 'draagbare deken', 'deken met mouwen', 'oversized hoodie', 'teddy hoodie'], [], 10, 60,
+      ['haar', 'tiener', 'kind', 'iedereen'], 15, 'A', 'De HEMA hoodie-deken is onze topper op TikTok.', 880),
+    S('Plaids & fleecedekens', ['plaid', 'fleece deken', 'fleecedeken', 'knuffeldeken', 'sherpa deken', 'gebreide deken', 'teddy deken', 'verwarmde deken', 'elektrische deken'], ['paardendeken', 'hondendeken', 'kattendeken', 'brandwerend', 'isolatie'], 15, 90,
+      ['haar', 'opa-oma', 'iedereen'], 15, 'A', 'Zacht en mooi van kleur of met een grappige print.', 9900),
+    S('Pantoffels & sloffen', ['pantoffel', 'slof', 'slipper', 'huissok', 'magnetronslof', 'hot feet', 'dierensloffen', 'knuffelslof'], ['badslipper', 'teenslipper', 'werkschoen', 'slipper sok'], 8, 50,
+      ['haar', 'hem', 'kind', 'opa-oma'], 20, 'A', 'Grappige vormen (popcorn, dieren) en magnetronsloffen doen het goed. Geen maten-gedoe: liefst one size of S/M/L.', 12100),
+    S('Warmteknuffels & kruiken', ['warmteknuffel', 'kruik', 'warmtekussen', 'magnetronknuffel', 'warmies', 'cozy plush', 'warm knuffel'], ['kruikhoes los'], 8, 45,
+      ['kind', 'haar', 'opa-oma'], 15, 'A', 'Knuffel die je in de magnetron opwarmt. Capibara en dieren scoren.', 14800),
+    S('Badjassen & ochtendjassen', ['badjas', 'ochtendjas', 'kamerjas', 'bathrobe'], ['badjas kind'], 25, 100,
+      ['haar', 'hem'], 8, 'B', 'Alleen als het echt een cadeau is: doos, borduursel of grappig model.', 18100),
+    S('Cadeausokken & warme sokken', ['sokken in', 'sokken cadeau', 'giftbox sokken', 'happy socks', 'grappige sokken', 'bedsokken', 'huissokken', 'sokken met tekst'], ['compressie', 'werksok', 'sportsok'], 5, 35,
+      ['hem', 'haar', 'collega'], 12, 'B', 'In een leuke doos of met tekst. Geen gewone multipacks.', 90),
+    S('Handwarmers & warmtekussens', ['handwarmer', 'hand warmer', 'nekwarmer', 'nekkussen warm', 'oplaadbare handwarmer'], [], 5, 40,
+      ['iedereen', 'collega', 'opa-oma'], 8, 'B', 'Oplaadbaar en mooi van vorm.'),
+]))
+G.append(('Verwennen & verzorging', [
+    S('Bruisballen & badsets', ['bruisbal', 'badbruis', 'bath bomb', 'badparel', 'badset', 'bad cadeau', 'badzout'], ['badkamermeubel', 'badmat'], 4, 40,
+      ['haar', 'kind', 'tiener'], 20, 'A', 'Grappige vormen (hartjes, gin, donuts) en mooie sets.', 1300),
+    S('Verwenpakketten & giftboxen', ['verwenpakket', 'verwenbox', 'giftbox', 'gift box', 'cadeaubox', 'pamper', 'spa set', 'wellness set'], [], 10, 70,
+      ['haar', 'collega'], 20, 'A', 'Bad + kaars + iets lekkers in één doos. Liefst niet bol.', 480),
+    S('Giftsets voor haar', ['giftset', 'gift set', 'cadeauset', 'geschenkset', 'beauty set', 'verzorgingsset'], ['heren', 'men', 'man ', 'baard', 'scheer'], 10, 90,
+      ['haar'], 20, 'A', 'Atelier Rebul eerst. Bekende merken in een cadeaudoos.', 1300),
+    S('Giftsets voor hem & baardverzorging', ['giftset heren', 'giftset men', 'baardset', 'baard set', 'baardolie', 'baardverzorging', 'scheerset', 'beard', 'grooming'], ['dames', 'women'], 10, 90,
+      ['hem'], 15, 'A', 'In een cadeaudoos. Mannen vragen dit veel (Lootjestrekken).', 1000),
+    S('Parfum voor haar', ['eau de parfum', 'eau de toilette', 'parfum', 'perfume'], ['heren', 'men', 'pour homme', 'tester', 'deodorant', 'sample', 'auto'], 15, 120,
+      ['haar'], 15, 'B', 'Alleen bekende geuren, geen testers.', 8100),
+    S('Parfum voor hem', ['pour homme', 'for men', 'eau de toilette heren', 'parfum heren', 'aftershave'], ['dames', 'women', 'pour femme', 'tester', 'sample'], 15, 120,
+      ['hem'], 12, 'B', 'Bekende geuren, mooie fles.', 8100),
+    S('Handcrème, lotion & douchegel', ['handcreme', 'hand cream', 'bodylotion', 'body lotion', 'douchegel', 'shower gel', 'body scrub', 'bodyscrub', 'body butter'], ['1 liter', '5 liter', 'navul'], 5, 50,
+      ['haar', 'collega', 'opa-oma'], 15, 'B', 'Klein cadeautje voor lootjes en collega\'s. Atelier Rebul, Sol de Janeiro.'),
+    S('Slapen & ontspannen', ['slaapmasker', 'sleep mask', 'nekkussen', 'massagekussen', 'massage', 'zijden kussensloop', 'slaapspray', 'acupressuur'], ['massagetafel', 'massagestoel'], 5, 80,
+      ['haar', 'opa-oma', 'collega'], 10, 'B', 'Ook goed voor beterschap.'),
+]))
+G.append(('Lekker & proosten', [
+    S('Chocolade & bonbons', ['chocolade', 'bonbon', 'truffel', 'chocoladeletter', 'tony', 'lindt', 'chocolate'], ['chocoladefontein onderdeel', 'cacaopoeder', 'bakchocolade', 'hagelslag'], 4, 50,
+      ['iedereen', 'collega', 'opa-oma'], 20, 'A', 'In een mooie verpakking of met een boodschap.', 1300),
+    S('Snoep & drop door de brievenbus', ['brievenbus', 'droptelegram', 'snoeppakket', 'snoepbox', 'drop', 'zoete', 'candy box'], ['brievenbus bevestiging', 'brievenbusklep'], 5, 35,
+      ['iedereen', 'collega'], 15, 'A', 'Met een kaartje of tekst. Past door de brievenbus.', 1000),
+    S('Koffie & thee cadeaus', ['koffie cadeau', 'koffiebox', 'koffiepakket', 'thee cadeau', 'theebox', 'theepakket', 'thee proeverij', 'koffieproeverij', 'matcha set'], ['koffiezetapparaat', 'filterzakjes', 'koffiepads 100'], 8, 60,
+      ['haar', 'hem', 'collega', 'opa-oma'], 12, 'B', 'Proeverij of cadeaudoos.', 590),
+    S('Whisky, rum & cognac', ['whisky', 'whiskey', 'bourbon', 'single malt', 'spiced rum', 'dark rum', 'rhum', 'cognac', 'armagnac', 'portwijn', 'tawny', 'ruby port'], ['whiskyglas los', 'mixer'], 20, 150,
+      ['hem'], 20, 'A', 'Drankpakket staat op 1 bij mannen. In geschenkdoos of met glazen.', 170),
+    S('Gin & cocktails', ['gin ', 'gin-tonic', 'cocktailset', 'cocktail set', 'cocktailshaker', 'cocktail kit', 'mixology', 'cocktailrook'], [], 15, 120,
+      ['haar', 'hem'], 15, 'B', 'Gin met glazen of een set om cocktails te maken.', 2400),
+    S('Wijn & bubbels als cadeau', ['wijnpakket', 'wijnkist', 'wijn cadeau', 'champagne', 'prosecco', 'cava', 'wijn in kist', 'wijnproeverij'], ['wijnrek', 'wijnkoelkast'], 10, 120,
+      ['haar', 'hem', 'collega', 'opa-oma'], 15, 'B', 'In een kist, met glazen of met een eigen etiket.', 590),
+    S('Bier: pakketten & glazen', ['bierpakket', 'bierbox', 'bierproeverij', 'speciaalbier', 'bierbrouwpakket', 'bierglas', 'bierpul', 'bierkist'], ['bierkrat leeg', 'biertap onderdeel'], 8, 80,
+      ['hem'], 12, 'B', 'Echte bierpakketten zijn schaars bij onze partners (Beerwulf aanmelden).', 3600),
+    S('Borrelplanken & tapas', ['borrelplank', 'serveerplank', 'tapasplank', 'kaasplank', 'tapas set', 'borrelpakket', 'kaasset', 'charcuterie'], [], 10, 70,
+      ['iedereen', 'haar', 'hem'], 15, 'A', 'Ook met naam of plattegrond van je stad.', 33100),
+    S('Mooie glazen & karaffen', ['wijnglazen', 'champagneglazen', 'whiskyglazen', 'whisky glazen', 'karaf', 'decanteer', 'cocktailglazen', 'gin glazen'], ['onderdeel', 'los glas 1'], 15, 90,
+      ['haar', 'hem', 'opa-oma'], 12, 'B', 'Een set in een mooie doos, of met tekst.', 12100),
+    S('Lekkernijen & cadeaupakketten', ['cadeaupakket', 'kerstpakket', 'proeverij', 'olijfolie set', 'delicatesse', 'kruidenset', 'sauzenset', 'hot sauce'], [], 10, 80,
+      ['iedereen', 'collega', 'opa-oma'], 15, 'B', 'Pakketten die je niet zomaar in de supermarkt koopt.', 1000),
+]))
+G.append(('Grappig & gek', [
+    S('Grappige gadgets', ['grappig', 'gadget', 'useless box', 'nutteloos', 'gek ', 'novelty', 'prank', 'fopartikel'], ['schroef', 'onderdeel'], 4, 40,
+      ['iedereen', 'tiener', 'hem', 'collega'], 30, 'A', 'Je moet meteen lachen als je de foto ziet. Ditverzinjeniet, CoolGift en Cadeau.nl verkopen goed.', 8100),
+    S('Stressballen & squishies', ['stressbal', 'stress bal', 'squishy', 'squeeze', 'knijpbal', 'dumpling'], ['fysiotherapie', 'handtrainer'], 3, 20,
+      ['kind', 'tiener', 'collega'], 15, 'A', 'Hamster, dumpling en bubble tea scoorden goed.', 5400),
+    S('Fidgets & friemelspeeltjes', ['fidget', 'pop it', 'friemel', 'spinner', 'infinity cube', 'magnetisch speelgoed', 'kinetic'], [], 3, 25,
+      ['kind', 'tiener'], 10, 'B', 'Kleine friemeldingen voor in de schoen.', 4400),
+    S('Grappige mokken', ['mok ', 'beker ', 'mug'], ['mok met naam', 'thermosbeker', 'drinkfles', 'set van 6', 'set van 4', 'mokkenrek', 'koffiemok basic'], 6, 25,
+      ['iedereen', 'collega', 'hem', 'haar'], 20, 'A', 'Met een grappige tekst, vorm of kleurwissel. De World\'s Best Boss-mok werd aangeklikt.', 6600),
+    S('Tegeltjes & bordjes met tekst', ['tegeltje', 'tegel met tekst', 'tekstbord', 'bordje', 'spreuk', 'wandbord'], [], 5, 30,
+      ['iedereen', 'collega', 'opa-oma'], 15, 'A', 'Het tegeltje koffie/bier is verkocht. Grappige Nederlandse teksten.', 5400),
+    S('Foute kersttruien & feestkleding', ['foute kersttrui', 'kersttrui', 'ugly christmas', 'feesthoed', 'carnaval', 'gekke trui'], [], 10, 50,
+      ['iedereen', 'hem', 'haar', 'collega'], 12, 'B', 'Zonder grove teksten. Ook voor kerstborrels.', 12100),
+    S('Wc- en badkamerhumor', ['wc ', 'wc-', 'toilettimer', 'toiletgolf', 'wc golf', 'wc voetbal', 'pleerol', 'toiletrolhouder grappig', 'badeend', 'douchekop'], ['toiletpot', 'toiletbril vervangend', 'reiniger', 'wc-papier 24'], 4, 30,
+      ['hem', 'collega', 'tiener'], 8, 'B', 'Wc-golf, toilettimer, wc-voetbal.'),
+    S('Bureau- en kantoorhumor', ['collega', 'kantoor', 'office', 'bureaugadget', 'bureau gadget', 'pen in de vorm', 'grappige pen', 'notitieboek', 'bureautherapeut'], ['bureaustoel', 'printer', 'inkt', 'archief', 'ventilator', 'stofzuiger', 'agenda', 'kalender', 'bureauset', 'bureauonderlegger'], 4, 30,
+      ['collega'], 12, 'B', 'Lootjes voor collega\'s: grappig, maar netjes.'),
+]))
+G.append(('Persoonlijk: met naam of foto', [
+    S('Mokken met naam of foto', ['mok met naam', 'mok met foto', 'gepersonaliseerde mok', 'eigen tekst mok', 'mok met tekst naar keuze', 'geboortebloem'], [], 8, 30,
+      ['iedereen', 'opa-oma', 'haar'], 12, 'A', 'Ook de mokken met namen van de kleinkinderen.', 1000),
+    S('Fotocadeaus', ['fotopuzzel', 'fotokussen', 'fotolijst', 'foto op', 'met eigen foto', 'fotoblok', 'foto tegel', 'fotokalender'], ['fotopapier', 'fotocamera'], 8, 60,
+      ['opa-oma', 'haar', 'iedereen'], 15, 'A', 'Wordt veel gezocht, vooral voor opa en oma.', 6600),
+    S('Posters: sterrenhemel, stad & kaart', ['sterrenhemel', 'star map', 'stadsposter', 'stadskaart', 'plattegrond poster', 'poster met naam', 'kaart poster'], [], 15, 80,
+      ['haar', 'hem', 'opa-oma'], 10, 'B', 'Persoonlijk en mooi voor jubileum of verjaardag.', 170),
+    S('Spullen met naam (plank, deurmat, sleutelhanger)', ['met naam', 'gepersonaliseerd', 'gegraveerd', 'met eigen tekst', 'graveren', 'personalised'], ['sieraad', 'ketting', 'armband', 'ring'], 8, 70,
+      ['iedereen', 'haar', 'hem'], 15, 'B', 'Snijplank, deurmat, heupfles met naam. Geen sieraden.'),
+    S('Fotoboeken & kalenders', ['fotoboek', 'fotokalender', 'verjaardagskalender', 'invulboek', 'invulboekje', 'vertel eens'], [], 8, 60,
+      ['opa-oma', 'haar', 'hem'], 10, 'C', '\'Opa, vertel eens\' en invulboekjes zijn mooi.', 9900),
+]))
+G.append(('Spellen & puzzels', [
+    S('Bordspellen', ['bordspel', 'board game', 'spel ', 'catan', 'ticket to ride', 'azul', 'wingspan', 'carcassonne', 'cascadia', '7 wonders'], ['uitbreiding', 'expansion', 'sleeves', 'insert', 'organizer', 'english edition'], 15, 80,
+      ['iedereen', 'haar', 'hem', 'tiener'], 25, 'A', 'Nederlandstalig, geen uitbreidingen. 999 Games en Boardgameshop.', 14800),
+    S('Kaartspellen & partyspellen', ['kaartspel', 'partyspel', 'party game', 'exploding kittens', 'uno', 'hitster', 'lama', 'weerwolven', 'skipbo', 'pesten', 'kwartet'], ['speelkaarten los', 'sleeves'], 5, 35,
+      ['iedereen', 'tiener', 'collega'], 20, 'A', 'Goedkoop en altijd raak voor lootjes.', 9900),
+    S('Puzzels', ['puzzel', 'legpuzzel', 'jigsaw', 'wasgij', 'jan van haasteren'], ['puzzelmat', 'puzzellijm', '3d', 'kruiswoord', 'sudoku', 'puzzelboek'], 8, 40,
+      ['opa-oma', 'haar', 'iedereen'], 20, 'A', 'Grappige of mooie afbeelding; Wasgij en Jan van Haasteren zijn bekend.', 40500),
+    S('3D-puzzels & houten bouwpakketten', ['3d puzzel', '3d-puzzel', 'houten bouwpakket', 'robotime', 'ugears', 'rokr', 'metal earth', 'mechanisch model', 'bouwpakket hout'], [], 12, 120,
+      ['hem', 'tiener', 'haar'], 15, 'A', 'Muziekdoosje maken en 3D-modellen werden veel bekeken.', 3600),
+    S('Breinbrekers & escape-spellen', ['escape room', 'exit spel', 'escape spel', 'breinbreker', 'puzzeldoos', 'iq puzzel', 'raadsel', 'puzzle box', 'smartgames'], [], 5, 50,
+      ['hem', 'tiener', 'iedereen'], 10, 'B', 'Voor wie van uitdaging houdt.', 1300),
+    S('Diamond painting & schilderen op nummer', ['diamond painting', 'schilderen op nummer', 'paint by number', 'diamond art'], ['losse steentjes', 'pen los'], 8, 50,
+      ['haar', 'opa-oma', 'tiener'], 10, 'B', 'Mooie afbeelding, compleet pakket.', 33100),
+    S('Hobbypakketten voor volwassenen', ['zelf maken', 'diy kit', 'maak je eigen', 'kaarsen maken', 'zeep maken', 'haken pakket', 'borduurpakket', 'macrame', 'pottenbakken', 'kalligrafie'], [], 10, 70,
+      ['haar', 'opa-oma'], 12, 'B', 'Kaarsen maken en muziekdoosje maken werden veel bekeken.', 1300),
+]))
+G.append(('Kinderen: speelgoed', [
+    S('LEGO & DUPLO', ['lego', 'duplo'], ['lego compatibel', 'compatible', 'opbergbox', 'plaat los', 'minifiguren los', 'lijst voor'], 8, 150,
+      ['kind', 'tiener', 'hem'], 30, 'A', 'Altijd de doosfoto. Op leeftijd van de doos.', 301000),
+    S('Playmobil & speelfiguren', ['playmobil', 'speelfiguur', 'speelset', 'schleich', 'figurenset'], [], 8, 90,
+      ['kind'], 12, 'B', '', 33100),
+    S('Knuffels & Squishmallows', ['knuffel', 'squishmallow', 'pluche', 'plush', 'jellycat', 'teddybeer'], ['knuffeldoek los', 'reservekleding', 'hondenspeeltje', 'kattenspeeltje'], 5, 50,
+      ['kind', 'tiener', 'haar', 'baby'], 25, 'A', 'Stitch, axolotl, capibara en chocomelk-knuffel scoorden.', 18100),
+    S('Reuzenknuffels (vanaf 60 cm)', ['100 cm', '1 meter', '80 cm', '70 cm', '60 cm', 'xxl knuffel', 'reuzenknuffel', 'mega knuffel', 'giant plush'], ['deken', 'kussensloop'], 20, 120,
+      ['kind', 'tiener', 'haar'], 10, 'B', 'Zet de maat in de titel.'),
+    S('Slijm, kinetisch zand & klei', ['slijm', 'slime', 'kinetic sand', 'kinetisch zand', 'magisch zand', 'play-doh', 'speelklei', 'kleiset', 'klei set', 'boetseer', 'foam clay'], ['tegellijm', 'kit'], 4, 35,
+      ['kind'], 15, 'A', 'Sushi-slijm en glow-slijm deden het goed.', 3600),
+    S('Experimenteren & ontdekken', ['experimenteer', 'scheikunde', 'chemie', 'wetenschap', 'science', 'kristal', 'microscoop', 'opgraaf', 'dig kit', 'telescoop', 'stem', 'triops'], ['laboratorium apparatuur'], 8, 70,
+      ['kind'], 15, 'A', 'Ook goed voor kinderen van 8 tot 12.', 20),
+    S('Knutselen voor kinderen', ['knutsel', 'kralen', 'armbandjes maken', 'tekenset', 'stiften', 'kleurpotloden set', 'stickerboek', 'kleurboek', 'waterverf'], ['kantoor stiften 100', 'navulling'], 4, 40,
+      ['kind'], 20, 'A', 'Vriendschapsarmbandjes en magische waterstiften scoorden.', 6600),
+    S('Verkleden & rollenspel', ['verkleed', 'kostuum', 'verkleedkleren', 'speelkeuken', 'dokterset', 'gereedschapset kind', 'winkeltje', 'toverstaf', 'dinomasker', 'dinosaurus masker'], ['sexy', 'slaapmasker', 'gezichtsmasker', 'haarmasker'], 8, 70,
+      ['kind'], 12, 'B', 'Dinosaurusmasker deed het goed.', 1300),
+    S('Bestuurbare auto\'s, robots & drones', ['bestuurbare', 'radiografisch', 'rc auto', 'rc car', 'robot', 'drone', 'hexbug', 'stunt auto'], ['stofzuiger', 'robotmaaier', 'grasmaaier', 'keukenrobot', 'accu los', 'reserve', 'onderdeel', 'velg', 'band ', 'schokdemper', 'motor los', 'servo', 'lader'], 10, 150,
+      ['kind', 'tiener', 'hem'], 20, 'A', 'Rijklaar, geen losse onderdelen. TopRC heeft aparte groep.', 9900),
+    S('Buitenspelen & bellenblaas', ['bellenblaas', 'waterpistool', 'stoepkrijt', 'vlieger', 'springtouw', 'frisbee', 'boemerang', 'slee', 'zandbak', 'nerf'], [], 4, 60,
+      ['kind'], 12, 'B', 'Bellenblaas-bazooka en -machine scoorden.'),
+    S('Pokémon & verzamelkaarten', ['pokemon', 'booster', 'trading card', 'verzamelkaart', 'elite trainer', 'tcg'], ['sleeves', 'binder los', 'deckbox'], 5, 80,
+      ['kind', 'tiener'], 15, 'A', 'Hype: Pokémon 30 jaar.', 49500),
+    S('Kinderspellen', ['kinderspel', 'spel kind', 'memory spel', 'memoryspel', 'vier op een rij', 'kwartet', 'ganzenbord', 'domino', 'poepspel', 'junior spel'], ['uitbreiding', 'foam', 'geheugenkaart'], 5, 40,
+      ['kind'], 15, 'A', 'Grappige spellen (poep, scheten) en klassiekers.'),
+    S('Baby & peuter', ['rammelaar', 'bijtring', 'speelkleed', 'babygym', 'stapelblok', 'stapeltoren', 'vormenstoof', 'activiteiten', 'nijntje', 'woezel', 'bumba', 'trekfiguur', 'muziekdoos baby'], ['flesje', 'speen', 'luier', 'babyvoeding', 'kinderwagen'], 5, 80,
+      ['baby', 'kind'], 25, 'A', 'Kraamcadeau en voor 1 tot 3 jaar. Woewoe en De Grote Speelgoedwinkel.', 6600),
+    S('Rijden: loopfietsen, steps & loopauto\'s', ['loopfiets', 'loopauto', 'loopwagen', 'step kind', 'driewieler', 'skelter', 'hobbeldier', 'hobbelpaard'], ['onderdeel', 'band', 'remblok'], 25, 150,
+      ['kind', 'baby'], 10, 'B', '', 12100),
+    S('Spaarpotten, wekkers & kinderkamer', ['spaarpot', 'wekker kind', 'kinderwekker', 'groeimeter', 'wandsticker', 'sterren plafond', 'kinderkamer'], [], 5, 40,
+      ['kind'], 12, 'B', 'Spaarmonster en Mario-spaarpot.', 9900),
+]))
+G.append(('Fans & hypes', [
+    S('Stitch & Disney', ['stitch', 'disney', 'frozen', 'winnie', 'mickey', 'minnie', 'dombo', 'lilo'], ['dekbedovertrek', 'kostuum volwassen'], 5, 80,
+      ['kind', 'tiener', 'haar'], 20, 'A', 'Stitch is een grote hype.', 49500),
+    S('Minecraft', ['minecraft', 'creeper', 'piglin', 'enderman'], [], 5, 80,
+      ['kind', 'tiener'], 15, 'A', 'Lampjes, LEGO en knuffels.', 480),
+    S('Super Mario & Nintendo', ['mario', 'nintendo', 'zelda', 'luigi', 'yoshi', 'kirby', 'switch'], ['game los zonder doos'], 5, 100,
+      ['kind', 'tiener', 'hem'], 15, 'A', 'Lampen, LEGO, spaarpotten.', 70),
+    S('Harry Potter', ['harry potter', 'zweinstein', 'hogwarts', 'griffoendor', 'snaai', 'patronus'], [], 5, 100,
+      ['tiener', 'haar', 'kind'], 15, 'A', 'De Gouden Snaai-lamp is verkocht.', 590),
+    S('Gaming & consoles (PlayStation, Xbox)', ['playstation', 'xbox', 'controller', 'gamepad', 'gaming'], ['oplaadkabel', 'reserve', 'skin sticker'], 8, 100,
+      ['tiener', 'hem', 'kind'], 15, 'A', 'Lampen, mokken, controllers en headsets.', 3600),
+    S('Star Wars & Marvel', ['star wars', 'marvel', 'spider-man', 'spiderman', 'batman', 'avengers', 'grogu', 'stormtrooper'], [], 5, 100,
+      ['tiener', 'hem', 'kind'], 12, 'B', '', 140),
+    S('Anime & K-pop (One Piece, KPop Demon Hunters)', ['one piece', 'anime', 'naruto', 'dragon ball', 'kpop', 'k-pop', 'demon hunters', 'hello kitty', 'kuromi'], [], 5, 80,
+      ['tiener', 'kind'], 12, 'B', 'Hypes onder tieners.', 49500),
+    S('Labubu, blindboxes & verzamelfiguren', ['labubu', 'blind box', 'blindbox', 'pop mart', 'mystery', 'funko', 'verrassing'], ['nep', 'replica'], 5, 60,
+      ['tiener', 'haar'], 10, 'B', 'Alleen echte merken.', 49500),
+    S('F1, racing & voetbalclubs', ['formule 1', 'f1 ', 'red bull racing', 'verstappen', 'ferrari', 'ajax', 'psv', 'feyenoord', 'knvb'], [], 8, 120,
+      ['hem', 'tiener', 'kind'], 12, 'B', 'Gezocht maar nog weinig op de site.', 1600),
+]))
+G.append(('Tech & gadgets', [
+    S('Koptelefoons & oordopjes', ['koptelefoon', 'headphone', 'oordopjes', 'earbuds', 'airpods', 'in-ear', 'over-ear'], ['oordopjes slapen schuim', 'gehoorbescherming', 'vervangende', 'kussentjes'], 15, 300,
+      ['tiener', 'hem', 'haar'], 15, 'A', 'JBL, Sony, Teufel, Apple.', 27100),
+    S('Bluetooth speakers', ['speaker', 'luidspreker', 'jbl', 'boombox', 'bluetooth box'], ['inbouw', 'auto speaker', 'kabel'], 15, 250,
+      ['tiener', 'hem', 'iedereen'], 12, 'A', 'JBL Go is een topper.', 12100),
+    S('Instax, camera\'s & foto', ['instax', 'polaroid', 'instant camera', 'fotocamera', 'actioncam', 'fotoprinter'], ['film los', 'lens los', 'statief'], 25, 250,
+      ['tiener', 'haar'], 10, 'A', '', 22200),
+    S('Powerbanks & opladers', ['powerbank', 'draadloze oplader', 'oplaadstation', 'magsafe', 'wireless charger'], ['kabel 1m', 'stekker los'], 10, 80,
+      ['iedereen', 'hem', 'tiener'], 10, 'B', 'Mooi of slim, geen saaie zwarte blokjes.', 60500),
+    S('Smartwatches & horloges', ['smartwatch', 'horloge', 'activity tracker', 'garmin', 'fitbit'], ['bandje los', 'horlogeband', 'batterij', 'oplaadkabel'], 20, 350,
+      ['hem', 'haar', 'tiener'], 20, 'B', 'Horloges staan los van sieraden.', 40500),
+    S('Gaming-accessoires', ['gaming headset', 'gaming muis', 'toetsenbord gaming', 'controller', 'gamestoel', 'racestuur', 'mario kart stuur'], ['vervangende', 'kabel'], 10, 200,
+      ['tiener', 'hem'], 12, 'A', '', 3600),
+    S('Slimme gadgets voor thuis', ['gadget', 'slimme', 'airtag', 'tracker', 'smart home', 'handig', 'uitvinding'], ['kabel', 'adapter', 'e27', 'schakelaar', 'inbouw', 'stekkerdoos', 'camera beveiliging'], 10, 150,
+      ['hem', 'iedereen'], 15, 'B', 'Dingen waarvan je niet wist dat ze bestonden.', 8100),
+    S('Wekkers & klokken', ['wekker', 'klok', 'wake-up light', 'lichtwekker', 'flipklok'], ['klokwerk', 'uurwerk los'], 10, 100,
+      ['iedereen', 'kind', 'tiener'], 10, 'B', '', 33100),
+    S('Elektrische steps & fietsen', ['elektrische step', 'e-step', 'elektrische fiets', 'e-bike', 'fatbike'], ['accu los', 'lader', 'band'], 150, 1500,
+      ['hem', 'tiener'], 8, 'C', 'iScooter. Altijd de regels van de RDW erbij.', 165000),
+]))
+G.append(('Koken, tafelen & drinken', [
+    S('Keukengadgets', ['keuken gadget', 'keukengadget', 'pizzasnijder', 'hamburgerpers', 'eierkoker', 'kruidenmolen', 'ijsschep', 'flessenopener', 'kurkentrekker', 'spatel', 'snijder'], ['onderdeel', 'reserve', 'mes los 1'], 5, 50,
+      ['iedereen', 'hem', 'haar'], 15, 'A', 'Grappig of slim: pizzabijl, machete-spatel.', 320),
+    S('Fondue, gourmet & raclette', ['fondue', 'gourmet', 'raclette', 'steengrill', 'chocoladefontein'], ['vervangende', 'pannetjes los'], 20, 150,
+      ['iedereen'], 10, 'B', 'Past bij de feestdagen.', 2900),
+    S('Popcorn, wafels & snack-apparaten', ['popcornmachine', 'wafelijzer', 'tosti', 'suikerspin', 'ijsmachine', 'slushmachine', 'donut maker', 'cakepop'], ['onderdeel'], 15, 120,
+      ['iedereen', 'kind'], 10, 'B', '', 12100),
+    S('Kookboeken & bakken', ['kookboek', 'bakboek', 'bakset', 'bakvorm', 'taartvorm', 'cupcake', 'koekjes uitsteker'], [], 8, 50,
+      ['haar', 'hem'], 10, 'B', 'Kookboeken bij een partner die geen bol is.', 8100),
+    S('BBQ & buiten koken', ['bbq', 'barbecue', 'grill', 'rookhout', 'kamado', 'smoker', 'grilltang', 'bbq set'], ['hoes', 'onderdeel', 'rooster los', 'gasfles'], 10, 200,
+      ['hem'], 15, 'A', 'BBQ-cadeaupakketten en hete sauzen ontbreken nog.', 2900),
+    S('Messen, planken & snijden', ['messenset', 'koksmes', 'snijplank', 'santoku', 'messenblok', 'damast'], ['vervangend mes', 'slijpsteen los'], 15, 150,
+      ['hem', 'haar'], 10, 'B', '', 8100),
+    S('Drinkbekers & thermosflessen', ['stanley', 'owala', 'quencher', 'drinkbeker', 'thermosbeker', 'drinkfles', 'isoleerbeker', 'koffiebeker to go'], ['deksel los', 'rietje los'], 10, 60,
+      ['tiener', 'haar', 'collega'], 10, 'A', 'Stanley en Owala zijn een hype bij meiden.'),
+]))
+G.append(('Hobby, sport & buiten', [
+    S('Darts', ['dartbord', 'dartpijl', 'darts', 'dartkabinet', 'dartset', 'winmau', 'harrows'], ['shaft los', 'flight los', 'punt los', 'dartmat'], 10, 200,
+      ['hem', 'tiener'], 15, 'A', 'Borden en sets, geen losse onderdelen.', 22200),
+    S('Multitools & zakmessen', ['multitool', 'zakmes', 'leatherman', 'victorinox', 'zwitsers zakmes', 'bijl', 'opinel'], ['vervangend', 'holster los'], 15, 200,
+      ['hem'], 12, 'A', '', 18100),
+    S('Verrekijkers & natuur', ['verrekijker', 'telescoop', 'natuurgids', 'vogelboek', 'insectenhotel', 'egelhuis'], [], 15, 200,
+      ['hem', 'opa-oma'], 10, 'B', '', 14800),
+    S('Vogelhuisjes & tuincadeaus', ['vogelhuis', 'vogelvoeder', 'voederhuis', 'nestkast', 'vogelvoer', 'tuinstekker', 'plantenset', 'kweekset', 'zaden'], ['zak 20 kg', 'kunstmest'], 5, 70,
+      ['opa-oma', 'hem', 'haar'], 15, 'A', 'Stijgend bij opa en oma (Lootjestrekken).', 14800),
+    S('Planten & bloemen door de brievenbus', ['bloemen door de brievenbus', 'brievenbusbloemen', 'droogbloemen', 'plant cadeau', 'bonsai', 'vetplant', 'kamerplant'], ['kunstplant', 'potgrond'], 10, 60,
+      ['haar', 'collega', 'opa-oma'], 10, 'B', '', 320),
+    S('Voetbal & balsport', ['voetbal', 'voetbaldoel', 'tafelvoetbal', 'basketbal', 'padel', 'tafeltennis', 'pingpong'], ['voetbalschoen', 'scheenbeschermer', 'net los'], 8, 150,
+      ['kind', 'tiener', 'hem'], 10, 'B', '', 1600),
+    S('Fitness, yoga & gezond', ['yogamat', 'yoga', 'fitness', 'weerstandsband', 'massagegun', 'foam roller', 'springtouw'], [], 10, 150,
+      ['haar', 'hem'], 8, 'C', '', 5400),
+    S('Golf', ['golf', 'golfbal', 'golfset', 'putter'], ['golfkar', 'golfauto'], 10, 150,
+      ['hem', 'opa-oma'], 6, 'C', 'Ook voor pensioen.', 320),
+    S('Belevenissen & uitjes', ['belevenis', 'workshop', 'high tea', 'diner bon', 'uitje', 'overnachting', 'escape room bon', 'ballonvaart', 'quad', 'karten'], [], 20, 200,
+      ['haar', 'hem', 'iedereen'], 12, 'B', 'Liefst overal in het land te gebruiken.', 40500),
+    S('Metaaldetectie & schatzoeken', ['metaaldetector', 'pinpointer', 'schatzoeken', 'garrett', 'minelab', 'nokta'], ['rookmelder', 'co-melder', 'koolmonoxide', 'rookdetector'], 20, 500,
+      ['hem', 'kind'], 6, 'C', '', 9900),
+]))
+G.append(('Seizoen & feestdagen', [
+    S('Adventskalenders', ['adventskalender', 'advent calendar', 'kerstkalender', 'aftelkalender'], [], 10, 120,
+      ['iedereen', 'kind', 'haar', 'hem'], 15, 'A', 'LEGO via Amazon is goedkoper dan LEGO zelf.', 33100),
+    S('Kerstdecoratie & kerstverlichting', ['kerst', 'kerstbal', 'kerstverlichting', 'kerstfiguur', 'kerstdorp', 'rendier', 'kerstman', 'kerststal'], ['kerstboom 210', 'kunstkerstboom groot', 'piek los', 'lichtsnoer 500'], 8, 80,
+      ['haar', 'opa-oma', 'iedereen'], 15, 'B', 'Mooie, verrassende stukken. Niet bij haar of collega op de persoonspagina.', 6600),
+    S('Schoencadeautjes (tot € 10)', ['speelgoed', 'knuffel', 'lampje', 'stressbal', 'tashanger', 'sleutelhanger', 'slijm', 'kralen', 'booster'], ['onderdeel'], 2, 10,
+      ['kind'], 25, 'A', 'Hypes tot € 10: Stitch, Pokémon, Mario Kart, Beyblade.', 3600),
+    S('Uitdeelcadeautjes', ['uitdeel', 'traktatie', 'party favor', 'set van 6', 'set van 12', 'mini'], [], 1, 10,
+      ['kind'], 6, 'C', 'Per stuk onder € 2 is schaars bij partners.'),
+]))
+G.append(('Tassen & accessoires', [
+    S('Sleutelhangers & tashangers', ['sleutelhanger', 'tashanger', 'bag charm', 'keychain', 'keyring'], ['sleutelkastje', 'karabiner los'], 3, 25,
+      ['tiener', 'kind', 'iedereen'], 15, 'A', 'Mario Kart-tashanger en Pokémon scoorden.', 18100),
+    S('Portemonnees & pasjeshouders', ['portemonnee', 'pasjeshouder', 'cardholder', 'card holder', 'wallet', 'moneyclip'], [], 10, 90,
+      ['hem', 'haar'], 10, 'B', 'Leer of slim (RFID). Geen modemerken in maten.', 22200),
+    S('Rugzakken & tassen', ['rugzak', 'backpack', 'tas ', 'weekendtas', 'toilettas', 'kanken', 'shopper'], ['laptophoes los', 'schooltas set 5'], 15, 150,
+      ['tiener', 'haar', 'hem'], 10, 'B', 'Kånken, toilettassen. Geen dure mode.', 18100),
+    S('Sieraden- & horlogedozen', ['sieradendoos', 'sieradenkistje', 'horlogedoos', 'horlogebox', 'sieradenboom', 'juwelendoos'], [], 10, 80,
+      ['haar', 'hem'], 8, 'B', '', 8100),
+    S('Mutsen, sjaals & handschoenen (cadeau)', ['muts met', 'speakermuts', 'muts bluetooth', 'sjaal cadeau', 'touchscreen handschoen', 'oorwarmer'], [], 10, 50,
+      ['tiener', 'hem', 'haar'], 6, 'C', 'Alleen als het een cadeau is (speakermuts), geen kleding in maten.', 12100),
+]))
+
+# 14-11-2026 (Marius: 'sieraden met al hun vormen zoals ringen, oorbellen, armbanden, kettingen, broche mogen er allemaal bij;
+# ik vond de uitgekozen niet mooi, er zijn natuurlijk wel mooie'). Achteraan gezet zodat de nummers van de andere soorten gelijk blijven.
+SIER_NIET = ['sieradendoos', 'sieradenbox', 'opbergen', 'reiniger', 'poetsdoek', 'ringmaat', 'sluiting los', 'kettingslot', 'fietsketting',
+             'sneeuwketting', 'hondenketting', 'kettingzaag', 'lichtketting', 'sleutelring', 'gordijnring', 'servetring', 'o-ring', 'horlogeband', 'zweetband',
+             'festivalband', 'piercing', 'nep', 'replica', 'gordijn', 'jaloezie', 'vouwgordijn']
+G.append(('Sieraden', [
+    S('Kettingen & hangers', ['ketting', 'collier', 'hanger', 'necklace', 'choker'], SIER_NIET + ['kerstbal hanger', 'kledinghanger', 'deurhanger', 'tashanger', 'sleutelhanger'], 10, 150,
+      ['haar'], 20, 'A', 'Kies alleen wat jij echt mooi vindt: fijn, tijdloos of bijzonder. Liefst echt zilver, goud of edelstaal dat niet verkleurt, en een mooie foto.', 18100),
+    S('Oorbellen', ['oorbel', 'oorknop', 'creool', 'oorhanger', 'ear cuff', 'earring'], SIER_NIET, 8, 120,
+      ['haar', 'tiener'], 20, 'A', 'Kleine knopjes en creolen zijn het makkelijkst als cadeau.', 27100),
+    S('Armbanden', ['armband', 'bracelet', 'bangle', 'schakelarmband', 'tennisarmband'], SIER_NIET + ['horloge', 'fitness', 'activity'], 8, 150,
+      ['haar', 'hem', 'tiener'], 20, 'A', 'Ook armbanden voor heren (leer, kralen, staal).', 8100),
+    S('Ringen', ['zilveren ring', 'gouden ring', 'ring zilver', 'ring goud', 'edelstaal ring', 'stalen ring', 'verstelbare ring', 'damesring', 'herenring', 'ring dames', 'ring heren', 'ringset', 'zegelring', 'aanschuifring', 'solitaire ring', 'zirkonia ring', 'statement ring'], SIER_NIET + ['ringband', 'ringmap', 'ringbandmap', 'oorring', 'boxring', 'ring light', 'ringlamp', 'ringleiding', 'ringbinder', 'bijtring', 'zwemring', 'basketbalring', 'ringtoss', 'string', 'kandelaar', 'kerst', 'spel'], 10, 150,
+      ['haar', 'hem'], 15, 'B', 'Verstelbaar is handig als cadeau (je weet de maat vaak niet).', 40500),
+    S('Broches & speldjes', ['broche', 'pin badge', 'reverspin', 'enamel pin', 'emaille speld', 'speldje'], SIER_NIET + ['veiligheidsspeld', 'kopspeld', 'punaise', 'haarspeld', 'speldenkussen'], 5, 80,
+      ['haar', 'opa-oma'], 8, 'C', 'Mooi voor oma of voor op een jas.'),
+    S('Sieraden met naam of letter', ['naamketting', 'naam ketting', 'naamarmband', 'naam armband', 'letterketting', 'initiaal ketting', 'initiaal armband', 'letter ketting', 'geboortesteen', 'coordinaten armband', 'gegraveerde ring', 'gegraveerde ketting', 'gegraveerde armband', 'graveer ketting'], SIER_NIET, 15, 120,
+      ['haar', 'hem'], 12, 'B', 'Persoonlijk en geliefd voor moederdag, jubileum en verjaardag. Myka is een bekend merk.'),
+    S('Bedels & bedelarmbanden', ['bedel', 'charms', 'bedelarmband'], SIER_NIET + ['bag charm', 'telefoon'], 8, 100,
+      ['haar', 'tiener'], 8, 'C', ''),
+    S('Kindersieraden', ['kinderketting', 'kinderarmband', 'kinderoorbellen', 'kindersieraden', 'meisjes ketting', 'meisjes armband', 'oorbellen kind', 'armband kind', 'ketting kind', 'kids necklace', 'kids bracelet'], SIER_NIET, 5, 50,
+      ['kind'], 8, 'C', 'Alleen met ketting, armband of oorbel in de naam; let op kleine onderdelen.'),
+]))
+
+def cats():
+    out, n = [], 1000
+    for gi, (gnaam, soorten) in enumerate(G, 1):
+        gid = 'z%d' % gi
+        out.append({'id': gid, 'naam': gnaam, 'ouder': None, 'volgorde': gi})
+        for si, s in enumerate(soorten, 1):
+            n += 1
+            d = {'id': 'z%d' % n, 'ouder': gid, 'volgorde': si}
+            d.update(s)
+            out.append(d)
+    return out
+
+if __name__ == '__main__':
+    c = cats()
+    data = {'uitleg': 'Zoeklijst LeukeKeuze (14-11-2026). Elke soort zoekt slim in alle partners: zoek = woorden (een van deze), niet = woorden die eruit moeten, min/max = prijs, doel = ongeveer hoeveel we er willen, prio A/B/C.',
+            'cats': c, 'volgende': 2000}
+    json.dump(data, open(sys.argv[1], 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    s = [x for x in c if x['ouder']]
+    print('groepen', len(G), 'soorten', len(s), 'doel totaal', sum(x['doel'] for x in s),
+          'A', sum(1 for x in s if x['prio'] == 'A'), 'B', sum(1 for x in s if x['prio'] == 'B'), 'C', sum(1 for x in s if x['prio'] == 'C'))
