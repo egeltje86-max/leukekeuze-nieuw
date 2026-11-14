@@ -2389,3 +2389,13 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .lt-opnieuw { min-height: 44px; }
 @media (max-width: 359px) { .lt-lijst li { grid-template-columns: minmax(0, 1fr) auto 44px; gap: 8px; padding: 8px 10px; } .lt-av { display: none; } .lt-wa { min-width: 0; padding: 0 12px; } .lt-gedaan .lt-wa svg { display: none; } }
 .rz-toast { position: fixed; bottom: 96px; left: 50%; transform: translateX(-50%); z-index: 60; background: #0A1020; color: #FFFFFF; border-radius: 999px; padding: 10px 16px; font-weight: 700; font-size: 15px; box-shadow: 0 8px 24px rgba(10,16,32,.3); }
+/* Sint-rijmmachine: uitleg en vragen onder het formulier (14-11-2026) */
+.rz-uitleg { max-width: 760px; margin: 28px auto 8px; padding: 20px 18px; background: #FFFFFF; border: 1px solid #E5D7BE; border-radius: 18px; color: #141A2A; }
+.rz-uitleg h2 { font-family: 'Playfair Display', serif; font-size: 24px; color: #0A1020; margin: 0 0 8px; }
+.rz-uitleg h2 + p, .rz-uitleg ol { line-height: 1.55; font-size: 16px; }
+.rz-uitleg ol { padding-left: 22px; margin: 10px 0 20px; }
+.rz-uitleg li { margin-bottom: 6px; }
+.rz-faq details { border-bottom: 1px solid #EFE4D0; }
+.rz-faq summary { min-height: 48px; display: flex; align-items: center; font-weight: 700; cursor: pointer; }
+.rz-faq p { margin: 0 0 12px; color: #3a4256; line-height: 1.5; }
+.rz-faq a { color: #8F6620; font-weight: 700; }

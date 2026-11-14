@@ -5,13 +5,13 @@
   <meta name="p:domain_verify" content="62160e1e88cc9ed807f134e87aacb15d"/>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Lootjes trekken: gratis online, via WhatsApp | LeukeKeuze</title>
-  <meta name="description" content="Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Vul de namen in, stuur iedereen zijn eigen linkje via WhatsApp en zie…">
+  <title>Lootjes trekken: gratis online, via WhatsApp</title>
+  <meta name="description" content="Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Iedereen krijgt zijn eigen linkje via WhatsApp, met cadeautips binnen het budget.">
   <link rel="canonical" href="https://leukekeuze.nl/lootjes-trekken/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LeukeKeuze">
-  <meta property="og:title" content="Lootjes trekken: gratis online, via WhatsApp | LeukeKeuze">
-  <meta property="og:description" content="Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Vul de namen in, stuur iedereen zijn eigen linkje via WhatsApp en zie…">
+  <meta property="og:title" content="Lootjes trekken: gratis online, via WhatsApp">
+  <meta property="og:description" content="Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Iedereen krijgt zijn eigen linkje via WhatsApp, met cadeautips binnen het budget.">
   <meta property="og:url" content="https://leukekeuze.nl/lootjes-trekken/">
   <meta property="og:image" content="https://leukekeuze.nl/images/deel-afbeelding.jpg">
   <meta property="og:image:width" content="1200">
@@ -29,10 +29,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611141307" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611141307" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141307">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611141307">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611141331" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611141331" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611141331">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611141331">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -42,7 +42,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141307", t = "assets/js/topkeuze.js?v=202611141307";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611141331", t = "assets/js/topkeuze.js?v=202611141331";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -63,6 +63,7 @@
   <!-- VROEG-NOVA (13-11-2026, grote keuring): de klassen van de huisstijl (NOVA-001 t/m 009) staan nu al op de pagina voordat app.js binnen is.
        Eerder zette app.js ze pas: op een trage telefoon zag je de pagina dan eerst ongeveer een seconde in de oude stijl, en daarna versprong alles. Zelfde schakelaars als in app.js. -->
   <script>(function () { var c = '', i, n = [1, 2, 3, 5, 6, 7, 9]; for (i = 0; i < n.length; i++) if (window['LK_NOVA' + n[i]] !== false) c += ' nova' + n[i]; document.documentElement.className += c; })();</script>
+<meta name="lk-titel" data-pad="/lootjes-trekken/" content="Lootjes trekken: gratis online, via WhatsApp">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://leukekeuze.nl/"},{"@type":"ListItem","position":2,"name":"Lootjes trekken","item":"https://leukekeuze.nl/lootjes-trekken/"}]}</script>
 </head>
 <body>
@@ -205,10 +206,10 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script src="assets/js/data.js?v=202611141307"></script>
+  <script src="assets/js/data.js?v=202611141331"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611141307"></script>
-  <script src="assets/js/app.js?v=202611141307"></script>
+  <script src="assets/js/gedeeld.js?v=202611141331"></script>
+  <script src="assets/js/app.js?v=202611141331"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -3411,7 +3411,7 @@
       '<input class="rz-zelf" id="' + id + '" type="text" name="' + naam + '" maxlength="' + max + '" placeholder="' + esc(hulp) + '" autocomplete="off">', id);
   }
   function rijmmachine() {
-    zetTitel('Sint-rijmmachine: grappig Sinterklaasgedicht met cadeaus erbij');
+    zetTitel('Sinterklaasgedicht maken: gratis, grappig en persoonlijk');
     window.LK_SEO = 'Sint weet alles, en rijmt er nog op ook. Laat Sint voorlezen uit zijn Grote Boek: een grappig, persoonlijk Sinterklaasgedicht met een cadeau dat er precies bij past. Gratis.';
     var kies = function (naam, opties, standaard) {
       return opties.map(function (o) {
@@ -3450,6 +3450,20 @@
           '<button class="rz-knop rz-vol rz-groot" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20 15.5 8.5" stroke="#5b3a10" stroke-width="2.4" stroke-linecap="round"/><path d="M17.5 2.5l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9zM21 10l.5 1.2 1.2.5-1.2.5L21 13.4l-.5-1.2-1.2-.5 1.2-.5zM11 2.8l.5 1.2 1.2.5-1.2.5-.5 1.2-.5-1.2-1.2-.5 1.2-.5z" fill="#fff6d6"/></svg>Laat Sint dichten <span aria-hidden="true">→</span></button>' +
           '<p class="rz-privacy">🔒 We bewaren niets van wat je invult. Je tekst gaat alleen naar de dichtmachine (OpenAI) om het gedicht te maken. Vul geen adres of telefoonnummer in. <a href="/info/privacy">Meer over privacy</a>.</p>' +
         '</form>' +
+        /* 14-11-2026 (GO Marius, zoekwoord 'sinterklaas gedicht' 14.800 per maand): uitleg en vragen onder het formulier, voor bezoekers en voor Google. */
+        '<section class="rz-uitleg"><h2>Zo maak je een Sinterklaasgedicht</h2>' +
+          '<p>Een goed Sinterklaasgedicht is persoonlijk en een beetje plagerig, maar nooit gemeen. Het rijmt, het is niet te lang en het eindigt met een hint naar het cadeau. De Sint-rijmmachine doet dat voor je: jij vertelt wie het is en wat hem of haar typeert, Sint maakt er een gedicht van.</p>' +
+          '<ol><li><b>Vul de naam in</b> en kies wie het is: je partner, een collega, opa of oma.</li>' +
+          '<li><b>Kies wat hem of haar typeert</b> en wat hij of zij graag doet. Hoe meer je invult, hoe persoonlijker het gedicht.</li>' +
+          '<li><b>Iets grappigs erbij?</b> Altijd te laat, altijd de sleutels kwijt: daar wordt het gedicht leuk van.</li>' +
+          '<li><b>Kopieer, print of deel</b> het gedicht. Sint zoekt er meteen een cadeau bij dat past binnen je budget.</li></ol>' +
+          '<h2>Vragen</h2><div class="rz-faq">' +
+          '<details><summary>Is de Sint-rijmmachine gratis?</summary><p>Ja. Je hoeft geen account te maken en je kunt zo vaak een nieuw gedicht laten maken als je wilt.</p></details>' +
+          '<details><summary>Hoe lang is het gedicht?</summary><p>Lang genoeg om hardop voor te lezen, kort genoeg om het leuk te houden. Het maken duurt een halve tot een hele minuut.</p></details>' +
+          '<details><summary>Kan ik het gedicht aanpassen?</summary><p>Ja. Kopieer het gedicht en verander wat je wilt. Of tik op Nieuw gedicht voor een andere versie.</p></details>' +
+          '<details><summary>Wordt wat ik invul bewaard?</summary><p>Nee. Je tekst gaat alleen naar de dichtmachine om het gedicht te maken. Vul geen adres of telefoonnummer in.</p></details>' +
+          '<details><summary>Ik zoek nog een surprise of een cadeau</summary><p>Kijk bij <a href="/gids/surprise-maken">Surprise maken</a>, de <a href="/c/cadeaus/sinterklaas">Sinterklaascadeaus</a> of trek eerst <a href="/lootjes-trekken/">gratis lootjes</a> met je familie of collega’s.</p></details>' +
+          '</div></section>' +
       '</div>' +
       '<div data-rijm-uit aria-live="polite"></div>' +
       '</div>';
@@ -3727,6 +3741,7 @@
     if (t.hasAttribute('data-rijm-print')) window.print();
     if (t.hasAttribute('data-rijm-deel')) {
       var tekst = rijmTekst();
+      tekst += '\n\nGratis gemaakt met de Sint-rijmmachine: https://leukekeuze.nl/sint-rijmmachine/'; /* 14-11-2026: elk gedeeld gedicht noemt LeukeKeuze */
       if (navigator.share) navigator.share({ title: 'Mijn Sintgedicht', text: tekst }).catch(function () {});
       else window.open('https://wa.me/?text=' + encodeURIComponent(tekst), '_blank', 'noopener');
     }
