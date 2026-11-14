@@ -4163,7 +4163,7 @@
         { kop: "Warm en knus", tekst: "Voor de koude avonden op de bank.", ids: ["cl-hema-teddy", "cg-magnetron-sloffen", "bt-49287145423187", "hema-73f4e662d2"] },
         { kop: "Iets lekkers", tekst: "Pralines, marsepein of een glaasje port: iets voor bij de koffie of na het eten.", ids: ["cl-lindt-pralines", "dw-4000161100379", "cl-burmester", "cl-px-gonzalez"] },
         { kop: "Sfeer in huis", tekst: "Een geurkaars of geurstokjes voor een warm huis in de wintermaanden.", ids: ["parfum-6aae891b32", "parfum-ab22c2229e", "cl-impressions", "parfum-981dabec99"] },
-        { kop: "Met een persoonlijk tintje", tekst: "Een cadeau dat laat zien dat het echt voor háár is.", ids: ["cg-pers-namesinwordmug-mug", "bol-9300000275864639", "grotek-d62dc6e0c2", "dvzn-253656"] },
+        { kop: "Met een persoonlijk tintje", tekst: "Een cadeau dat laat zien dat het echt voor háár is.", ids: ["cg-pers-namesinwordmug-mug", "mmf-bf15b7d49c", "grotek-d62dc6e0c2", "dvzn-253656"] },
         { kop: "Voor haar hobby", tekst: "Koken, puzzelen of lezen: iets voor haar vaste vrije uurtjes.", ids: ["bol-9300000258651028", "dvzn-791023", "cl-wasgij", "bol-9300000277719246"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-haar\">Kerstcadeau voor haar</a> en <a href=\"/voor/haar\">Cadeaus voor haar</a>. Zoek je ook iets voor je vader? Kijk bij <a href=\"/gids/kerstcadeau-vader\">Kerstcadeau voor je vader</a>." },
@@ -4176,7 +4176,7 @@
         { kop: "Iets lekkers", tekst: "Iets lekkers voor bij de koffie of na het eten.", ids: ["cg-chocolade-game-controller", "cl-lindt-pralines", "bol-9300000158510566", "cl-wijny-kopke"] },
         { kop: "Handig voor elke dag", tekst: "Een goed zakmes of iets voor de barbecue: dingen die hij echt gebruikt.", ids: ["cl-vx-huntsman", "dvzn-386854", "dvzn-859756", "dvzn-611"] },
         { kop: "Warm en knus", tekst: "Sloffen, sokken en een plaid voor de koude avonden.", ids: ["cl-hema-teddy", "bt-51963303362899", "cl-pizza-sokken", "bol-9300000187227306"] },
-        { kop: "Met een persoonlijk tintje", tekst: "Een cadeau met zijn naam of zijn verhaal erin.", ids: ["cl-pap-vertel-eens", "bol-9300000156021043", "cl-pos-f1", "cl-cameralens"] },
+        { kop: "Met een persoonlijk tintje", tekst: "Een cadeau met zijn naam of zijn verhaal erin.", ids: ["cl-pap-vertel-eens", "mmf-63b50c895d", "cl-pos-f1", "cl-cameralens"] },
         { kop: "Voor zijn hobby", tekst: "Darten, lezen, puzzelen of koken: iets voor zijn vrije uurtjes.", ids: ["cl-winmau-neutron", "cl-het-ultieme-geheim", "cl-wasgij", "bol-9300000277719246"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-hem\">Kerstcadeau voor hem</a> en <a href=\"/voor/hem\">Cadeaus voor hem</a>. Zoek je ook iets voor je moeder? Kijk bij <a href=\"/gids/kerstcadeau-moeder\">Kerstcadeau voor je moeder</a>." },
@@ -4188,7 +4188,7 @@
         { kop: "Verwennen", tekst: "Een fijne geur of verzorging: iets om zelf van te genieten.", ids: ["parfum-45dbbae7b4", "parfum-45d8b68540", "dvzn-671060bdfd", "parfum-79e274528c"] },
         { kop: "Knus samen", tekst: "Voor de winteravonden op de bank, met z'n tweeën.", ids: ["dvzn-779391", "cl-hema-teddy", "cg-magnetron-sloffen", "bt-49287145423187"] },
         { kop: "Samen doen", tekst: "Een spel voor twee of een uitje: een avond samen als cadeau.", ids: ["bgs-f04e05c013", "bol-9300000227775720", "cl-escape2", "dk-1d0dec2fb3"] },
-        { kop: "Iets moois voor in huis", tekst: "Een geurkaars of een bijzondere lamp voor een warm huis.", ids: ["cl-impressions", "parfum-6aae891b32", "cl-diy-neon", "dvzn-614881"] },
+        { kop: "Iets moois voor in huis", tekst: "Een geurkaars, een bijzondere lamp of een tegeltje met de sterren van jullie dag.", ids: ["mmf-c68ebd1931", "parfum-6aae891b32", "cl-diy-neon", "dvzn-614881"] },
         { kop: "Iets lekkers", tekst: "Champagne, pralines of marsepein om samen te proosten.", ids: ["cl-lindt-pralines", "cl-moet", "cl-baron-fuente", "dw-4000161100379"] },
         { kop: "Voor haar hobby", tekst: "Haken, schilderen of plannen: iets voor haar vrije uurtjes.", ids: ["dvzn-915298", "cl-hema-agenda", "cl-sp-jaarplanner", "dvzn-494959"] }
       ],
