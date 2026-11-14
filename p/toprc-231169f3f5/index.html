@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=202611140634" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=202611140634" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140634">
-  <link rel="stylesheet" href="assets/css/licht.css?v=202611140634">
+  <link rel="preload" as="script" href="assets/js/app.js?v=202611140617" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=202611140617" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=202611140617">
+  <link rel="stylesheet" href="assets/css/licht.css?v=202611140617">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140634", t = "assets/js/topkeuze.js?v=202611140634";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=202611140617", t = "assets/js/topkeuze.js?v=202611140617";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -53,7 +53,8 @@
     else laad(); })();</script>
   <!-- WIJZER (proef 11-11-2026): wie de nieuwe opzet van de Voor wie-pagina's krijgt, ziet de oude onderdelen niet eerst even staan. Zie app.js. -->
   <script>(function () { try { var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search), v = m ? (m[1] ? 'a!' : 'b!') : localStorage.getItem('lkwijzer') || '';
-    if (!v && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = Math.random() < 0.5 ? 'a' : 'b'; localStorage.setItem('lkwijzer', v); }
+    /* 14-11-2026 (keuze Marius: 'B'): geen loting meer, iedereen de nieuwe opzet; alleen wie zelf ?proef=wijzer-uit kiest ziet de oude. */
+    if (v.charAt(1) !== '!' && !navigator.webdriver && !/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { v = 'b'; localStorage.setItem('lkwijzer', v); }
     if (v.charAt(0) === 'b' && /^\/voor\/[^\/]+/.test(location.pathname) && !/[?&]alles=1/.test(location.search)) document.documentElement.className += ' wz-b';
     if (v.charAt(0) === 'b' && location.pathname === '/') document.documentElement.className += ' wz-bh';
     if (v.charAt(0) === 'b') document.documentElement.className += ' wz-v'; } catch (e) {} })();</script>
@@ -205,10 +206,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"toprc-231169f3f5":{"url":"https://tc.tradetracker.net/?c=3937&m=1694484&a=516846&r=&u=https%3A%2F%2Fwww.toprc.nl%2Fftx-carnage-nitro-truck-rtr.html%3Futm_source%3Dtradetracker%26utm_campaign%3Dtradetracker","winkelUrl":"https://www.toprc.nl/ftx-carnage-nitro-truck-rtr.html?utm_source=tradetracker&utm_campaign=tradetracker","subVast":true,"gecontroleerd":"2026-11-13","herkomst":"piloot","waarom":"De bekende FTX Carnage, maar dan met een nitromotor: snel, krachtig en lekker luid. Rijklaar met vierwielaandrijving en afstandsbediening. De brandstof koop je apart; kijk bij de winkel wat je verder nodig hebt om te starten. Dit is een hobbymodel, geen kinderspeelgoed."}};</script>
-  <script src="assets/js/data.js?v=202611140634"></script>
+  <script src="assets/js/data.js?v=202611140617"></script>
   <script src="assets/js/teksten.js?v=202610270930"></script>
-  <script src="assets/js/gedeeld.js?v=202611140634"></script>
-  <script src="assets/js/app.js?v=202611140634"></script>
+  <script src="assets/js/gedeeld.js?v=202611140617"></script>
+  <script src="assets/js/app.js?v=202611140617"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
