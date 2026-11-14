@@ -2399,3 +2399,5 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .rz-faq summary { min-height: 48px; display: flex; align-items: center; font-weight: 700; cursor: pointer; }
 .rz-faq p { margin: 0 0 12px; color: #3a4256; line-height: 1.5; }
 .rz-faq a { color: #8F6620; font-weight: 700; }
+/* 14-11-2026 (Marius: 'het scherm schuift van links naar rechts'): de pagina mag nooit zijwaarts schuiven, ook niet als iets net buiten het scherm steekt. */
+@supports (overflow: clip) { html, body { overflow-x: clip; } }

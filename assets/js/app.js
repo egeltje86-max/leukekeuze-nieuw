@@ -226,16 +226,16 @@
   var WIJZER = (function () {
     try {
       if (window.LK_WIJZER === false) return 'a';
+      /* 14-11-2026 (Marius zag op zijn telefoon nog de oude opzet: 'deze versie was dat niet!'): de proef is voorbij, iedereen krijgt B.
+         Een oude keuze 'a!' uit de proeftijd telt niet meer. De oude opzet zie je alleen nog in dezelfde sessie na ?proef=wijzer-uit. */
       var m = /[?&]proef=wijzer(-uit)?(&|$)/.exec(location.search);
-      if (m) localStorage.setItem('lkwijzer', m[1] ? 'a!' : 'b!');
-      var v = localStorage.getItem('lkwijzer') || '';
-      if (v.charAt(1) === '!') { WIJZER_ZELF = true; return v.charAt(0) === 'b' ? 'b' : 'a'; }
-      if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) { WIJZER_ZELF = true; return 'a'; }
-      /* 14-11-2026 (keuze Marius: 'B'): de proef is voorbij, iedereen krijgt de nieuwe opzet. Er wordt niet meer geloot en niet meer geteld
-         (WIJZER_ZELF = true). Zelf de oude opzet bekijken kan nog met ?proef=wijzer-uit. */
-      WIJZER_ZELF = true; if (v !== 'b') localStorage.setItem('lkwijzer', 'b');
+      if (m) { if (m[1]) sessionStorage.setItem('lkwijzer-uit', '1'); else sessionStorage.removeItem('lkwijzer-uit'); }
+      WIJZER_ZELF = true;
+      if (sessionStorage.getItem('lkwijzer-uit') === '1') return 'a';
+      if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) return 'a';
+      if (localStorage.getItem('lkwijzer') !== 'b') localStorage.setItem('lkwijzer', 'b');
       return 'b';
-    } catch (e) { WIJZER_ZELF = true; return 'a'; }
+    } catch (e) { WIJZER_ZELF = true; return 'b'; }
   })();
   var ETALAGE = null;
   /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
