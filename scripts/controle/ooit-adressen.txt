@@ -979,6 +979,7 @@
 /gids/surprise-maken/
 /gids/valentijnscadeau-voor-haar/
 /gids/valentijnscadeau-voor-hem/
+/gids/verlanglijstje-maken/
 /gids/virale-cadeaus-2026/
 /info/colofon/
 /info/contact/

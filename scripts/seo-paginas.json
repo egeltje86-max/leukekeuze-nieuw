@@ -1,5 +1,5 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man.",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man. 14-11-2026: gids verlanglijstje-maken.",
  "/p/bol-9300000252262265/": {
   "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
   "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
@@ -188,5 +188,9 @@
  "/gids/kerstcadeau-voor-hem/": {
   "titel": "Kerstcadeau man: 24 ideeën waar hij echt blij mee is",
   "omschrijving": "Kerstcadeau voor een man, vriend of broer: 24 ideeën in zes soorten, van whisky en gadgets tot LEGO, BBQ en grappige cadeaus. Met de prijs erbij."
+ },
+ "/gids/verlanglijstje-maken/": {
+  "titel": "Verlanglijstje maken: gratis en delen via WhatsApp",
+  "omschrijving": "Maak gratis een verlanglijstje zonder account: tik op het hartje bij cadeaus en deel je lijstje via WhatsApp. Familie en vrienden kiezen een cadeau en bestellen het meteen."
  }
 }

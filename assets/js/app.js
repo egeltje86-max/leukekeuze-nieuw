@@ -3560,7 +3560,7 @@
         (tips.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Cadeautips tot ' + LK.euro(b) + '</h2><p>Met de hand uitgezocht. Tik op een cadeau voor meer uitleg.</p></div></div>' +
           grid(tips) + '<p class="lt-terug"><a class="knop knop-rand" href="' + m[2] + '?prijs=' + (b <= 10 ? 'r0-10' : 'tot25') + '">Meer cadeaus voor ' + esc(m[0]) + '</a></p></section>' : '') +
         '<section class="sectie lt-zelf"><h2>Zelf ook lootjes trekken?</h2><p>Met je familie, vrienden of collega’s. Gratis en zonder account.</p><a class="knop knop-goud" href="/lootjes-trekken/">🎲 Lootjes trekken</a></section>' +
-        '<section class="sectie lt-zelf"><h2>Weet je niet wat je wilt hebben?</h2><p>Zet cadeaus op je verlanglijstje met het hartje en stuur het naar de groep.</p><a class="knop knop-rand" href="/lijst/">❤ Mijn verlanglijstje</a></section>' +
+        '<section class="sectie lt-zelf"><h2>Weet je niet wat je wilt hebben?</h2><p>Zet cadeaus op je verlanglijstje met het hartje en stuur het naar de groep.</p><a class="knop knop-rand" href="/gids/verlanglijstje-maken">❤ Verlanglijstje maken</a></section>' +
       '</div>';
   }
   function lootNaamVeld(i) { var d = document.createElement('div'); d.className = 'lt-naam'; d.innerHTML = '<span class="lt-nr">' + (i + 1) + '</span><input type="text" name="naam" maxlength="25" autocomplete="off" placeholder="Naam" aria-label="Naam ' + (i + 1) + '">'; return d; }
@@ -4790,6 +4790,29 @@
       ],
       slot: 'Meer goedkope cadeaus vind je bij <a href="/c/cadeaus/onder-15">Cadeaus onder €15</a>. Alle kerstcadeaus staan bij <a href="/c/cadeaus/kerst">Kerst</a>.' },
     /* 14-11-2026 (GO Marius, zoekwoorden 'kerstcadeau vrouw' 8.100 en 'kerstcadeau man' 6.600 per maand): 24 cadeaus in zes soorten, met de hand gekozen. */
+    /* 14-11-2026 (GO Marius, zoekwoord 'verlanglijstje maken' 8.100 per maand): uitleg hoe je op LeukeKeuze een verlanglijstje maakt en deelt. */
+    { slug: 'verlanglijstje-maken', beeld: 'cl-instax12', vakken: ['cadeaus/sinterklaas', 'cadeaus/kerst'],
+      titel: 'Verlanglijstje maken: gratis, zonder account en delen via WhatsApp', kort: 'Zet cadeaus op je lijstje met het hartje en stuur het naar familie of vrienden. Zij kiezen een cadeau en bestellen het meteen bij de winkel.',
+      intro: 'Een verlanglijstje maken op LeukeKeuze is gratis en je hebt geen account nodig. Je tikt op het hartje bij een cadeau dat je graag wilt hebben, en het staat op je lijstje. Daarna stuur je het lijstje via WhatsApp naar wie je wilt. Zij zien je cadeaus met foto en prijs, kiezen er een uit en bestellen het meteen bij de winkel. Handig voor Sinterklaas, Kerst, je verjaardag of als je lootjes trekt.',
+      delen: [
+        { kop: 'Zo maak je je verlanglijstje in 4 stappen', tekst: 'Het kost een paar minuten.',
+          stappen: [
+            'Zoek cadeaus die je leuk vindt: via de zoekbalk, Voor wie of de categorieën.',
+            'Tik op het hartje bij elk cadeau dat je graag wilt hebben. Het hartje wordt rood en het cadeau staat op je lijstje.',
+            'Open je lijstje met het hartje onderaan het scherm (Lijstje). Vul je naam in en kies waarvoor het is.',
+            'Tik op Deel via WhatsApp of kopieer de link. Wie de link opent, ziet je cadeaus en kan er meteen een bestellen.'
+          ] },
+        { kop: 'Tips voor een goed verlanglijstje', tekst: 'Zo wordt het voor de gever makkelijk:', lijst: [
+            'Zet cadeaus in verschillende prijzen op je lijstje, zodat iedereen iets kan kiezen.',
+            'Kies een paar kleine dingen voor lootjes of de schoen, en een paar grotere wensen.',
+            'Trek je lootjes? Stuur je lijstje in de groepsapp, dan weet degene die jou heeft wat je leuk vindt.',
+            'Je lijstje blijft op je eigen telefoon bewaard. Wis je je browser, dan is het lijstje weg; stuur het dus op tijd door.'
+          ] },
+        { kop: 'Vaak gewenst door volwassenen', tekst: 'Populaire cadeaus om op je lijstje te zetten.', ids: ['cl-hitster', 'parfum-45dbbae7b4', 'lego-10348', 'cg-b320632dae'] },
+        { kop: 'Vaak gewenst door tieners', tekst: 'Lampjes, gadgets en iets knus.', ids: ['dvzn-995816', 'hema-efaa95f521', 'amz-b0gpf4v494', 'cg-useless-box'] },
+        { kop: 'Vaak gewenst door kinderen', tekst: 'Speelgoed en knuffels die nu in trek zijn.', ids: ['cl-sq-stitch20', 'dgsw-dcba5f1bc9', 'lego-60312', 'dvzn-367899'] }
+      ],
+      slot: 'Klaar om te beginnen? Kijk bij <a href="/voor">Voor wie</a> of <a href="/categorieen">Zoek een product</a> en tik op het hartje bij wat je wilt hebben. Je lijstje vind je onder <a href="/favorieten">Lijstje</a>. Lootjes trekken met de hele groep? Dat kan gratis met de <a href="/lootjes-trekken/">lootjes-trekker</a>.' },
     { slug: 'kerstcadeau-voor-haar', beeld: 'parfum-45dbbae7b4', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar'],
       titel: 'Kerstcadeau voor een vrouw: 24 ideeën om haar blij te maken', kort: 'Voor je vrouw, vriendin, zus of collega: om te verwennen, voor in huis, iets lekkers of iets persoonlijks.',
       intro: 'Wat geef je een vrouw met Kerst? Iets waar ze even van geniet: een fijne geur, iets warms voor de winteravonden, iets lekkers of iets moois voor in huis. Hieronder staan 24 ideeën in zes soorten, van een hoodie-deken van 12 euro tot een fles champagne. Zoek je iets voor je moeder of je vriendin? Daar hebben we aparte lijstjes voor.',
@@ -5261,6 +5284,11 @@
   ];
   /* Gidsen 2.0 (7-11-2026): per gids 'Snel kiezen' (3 favorieten: [label, product-id]) en veelgestelde vragen ([vraag, antwoord]). */
   var GIDS_EXTRA = {
+    'verlanglijstje-maken': { top: [['Vaak gewenst', 'cl-hitster'], ['Voor tieners', 'dvzn-995816'], ['Voor kinderen', 'cl-sq-stitch20']], faq: [
+      ['Hoe maak je een verlanglijstje op LeukeKeuze?', 'Tik op het hartje bij elk cadeau dat je wilt hebben. Open daarna je lijstje (Lijstje onderaan het scherm), vul je naam in en deel het via WhatsApp of met een link.'],
+      ['Heb ik een account nodig?', 'Nee. Je lijstje wordt op je eigen telefoon of computer bewaard. Je hoeft geen account te maken en geen e-mailadres in te vullen.'],
+      ['Kunnen anderen zien wat er al gekocht is?', 'Nee, dat houden we niet bij. Spreek in de groepsapp af wie wat koopt, zodat je niet twee keer hetzelfde krijgt.'],
+      ['Is een verlanglijstje maken gratis?', 'Ja. Maken en delen is gratis. Wie een cadeau koopt, betaalt de gewone prijs bij de winkel.']] },
     'kerstcadeau-voor-haar': { top: [['Onze topkeuze', 'parfum-45dbbae7b4'], ['Onder de 15 euro', 'hema-efaa95f521'], ['Persoonlijk', 'cg-pers-monthflower-mug']], faq: [
       ['Wat geef je een vrouw met Kerst?', 'Iets om te verwennen, zoals een verzorgingsset of geurkaars, iets warms voor de winter, iets lekkers of iets persoonlijks zoals een mok met haar geboortebloem.'],
       ['Wat is een leuk kerstcadeau voor een vrouw onder de 25 euro?', 'Een hoodie-deken van HEMA, sloffen met een tekst, een bodyscrub, een geurkaars of een cadeauset door de brievenbus. In deze gids staan genoeg ideeën onder de 25 euro.'],
