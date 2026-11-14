@@ -14,3 +14,4 @@ Elke regel is één dagelijkse run. Meer details staan in de commit van die dag.
 - 2026-11-14 06:07: Piloot 2026-11-14: 55 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
 - 2026-11-14 06:25: Stap 3 (nieuwe producten) overgeslagen: laptop offline. De 24 rare prijzen zijn grotendeels dezelfde als eerdere dagen (bol-feed van 6-11, Teufel, Atelier Rebul, horlogedoos, schort); nieuw: LEGO F1-pitstop 29,99 -> 14,95, kerstmolentje 9,95 -> 49,95, chocoladetelegram 19,99 -> 41,99, Botanisch puzzelboek 19,99 -> 9,95, BBQ rub 14,50 -> 34,95. Niet overgenomen, site houdt de oude prijs.
 - 2026-11-14 06:44: Piloot 2026-11-14: 55 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
+- 2026-11-14 06:55: Piloot 2026-11-14: 55 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
