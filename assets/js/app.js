@@ -4617,7 +4617,7 @@
         { kop: 'De chocolade-klassiekers', tekst: 'Je kunt niet misgaan met chocolade. Dit zijn de bekende merken, van Tony’s tot Lindt.',
           ids: ['bol-9300000186028245', 'bol-9300000187297428', 'bol-9300000237632552', 'dw-7622210598837'] },
         { kop: 'Net even anders', tekst: 'Voor wie elk jaar al een chocoladekalender krijgt: jam, thee, popcorn, geurkaarsjes of een puzzelverhaal dat je in 24 dagen oplost.',
-          ids: ['bol-9300000408782128', 'dw-680275066859', 'dw-4260611771720', 'wwk-2280887', '999g-999exi30'] },
+          ids: ['bol-9300000408782128', 'dw-680275066859', 'mindf-6e1985bec2', 'wwk-2280887', '999g-999exi30'] },
         { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
           ids: ['t2-handpoppen-bf7af21cea', 'amz-b0hmfl96b8', 'massa-152af9d255'] },
         { kop: 'Nu in trek: LEGO', tekst: 'De adventskalenders van LEGO horen bij de best verkochte van dit moment. Elke dag bouw je een klein modelletje of krijg je een poppetje, en met kerst heb je een hele wereld bij elkaar. Kijk ook naar de prijs: bij Amazon zijn ze nu een stuk goedkoper dan de adviesprijs.',
@@ -4636,7 +4636,7 @@
             'Geef je een spel? Kies er een die het kind met opa, oma of het hele gezin kan spelen tijdens de kerstdagen.'
           ] },
         { kop: 'Voor de kleintjes (tot 4 jaar)', tekst: 'Stevig hout en DUPLO: hier kan een peuter niets aan kapot maken, en ze spelen er jaren mee.',
-          ids: ['lego-10441', 'lego-10473', 'dk-00040677', 'cl-ld-stapelbekers'] },
+          ids: ['lego-10441', 'lego-10473', 'cl-ld-driehoek', 'cl-ld-stapelbekers'] },
         { kop: 'Bouwen en maken (5 tot 9 jaar)', tekst: 'Op deze leeftijd willen kinderen iets máken. Magnetische tegels, LEGO of een echte robot op zonne-energie.',
           ids: ['woewoe-6e48434b3c', 'lego-60312', 't2-cadeau-nl-8189fb6f8b', 'dk-00025946'] },
         { kop: 'Spellen voor de kerstvakantie', tekst: 'Voor aan tafel tussen Kerst en Oud en Nieuw: snelle kaartspellen waar het hele gezin om moet lachen.',
@@ -4654,7 +4654,7 @@
       intro: "Wat geef je je moeder met Kerst? Iets waardoor ze even tijd voor zichzelf neemt. Moeders zorgen vaak voor iedereen en zeggen zelf dat ze niets nodig hebben. Juist dan valt iets om te verwennen goed: een fijne geur, iets warms voor de winteravonden of iets lekkers. Hieronder staan 24 ideeën in zes soorten, van pralines van een paar euro tot een geurset van Atelier Rebul.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Denk aan haar vaste gewoontes: haar thee, haar bad, haar puzzel. Een cadeau dat daarbij past wordt gebruikt.", "Iets persoonlijks, zoals een mok of kaars met de namen van de kinderen, raakt vaak meer dan iets duurs.", "Twijfel je? Iets lekkers of een geurkaars valt bijna altijd goed.", "Bestel op tijd: rond Kerst duren pakketjes vaak langer."] },
-        { kop: "Even tot rust komen", tekst: "Verzorging en iets om even bij te komen: een cadeau om zelf van te genieten.", ids: ["parfum-45dbbae7b4", "parfum-45d8b68540", "dvzn-671060bdfd", "cl-chillpill"] },
+        { kop: "Even tot rust komen", tekst: "Verzorging en iets om even bij te komen: een cadeau om zelf van te genieten.", ids: ["parfum-45dbbae7b4", "parfum-45d8b68540", "dvzn-671060bdfd", "dvzn-2a6f553405"] },
         { kop: "Warm en knus", tekst: "Voor de koude avonden op de bank.", ids: ["cl-hema-teddy", "cg-magnetron-sloffen", "bt-49287145423187", "hema-73f4e662d2"] },
         { kop: "Iets lekkers", tekst: "Pralines, marsepein, boterkoek of warme chocolade: iets voor bij de koffie of na het eten.", ids: ["cl-lindt-pralines", "dw-4000161100379", "bp-l303", "cl-svinando-cioccolata"] },
         { kop: "Sfeer in huis", tekst: "Een geurkaars of geurstokjes voor een warm huis in de wintermaanden.", ids: ["parfum-6aae891b32", "parfum-ab22c2229e", "cl-impressions", "parfum-981dabec99"] },
@@ -5061,7 +5061,7 @@
         { kop: "Ontdekken en grijpen", tekst: "Rammelen, voelen en draaien: speelgoed om met de handen te ontdekken.", ids: ["cl-vtech-speeltafel", "cl-ld-vos", "dg-ac31dabc62", "cl-ld-driehoek"] },
         { kop: "Stapelen en sorteren", tekst: "Stapelen en weer omgooien. Klein en goedkoop, en ze spelen er lang mee.", ids: ["dk-00040686", "cl-fp-ringpiramide", "bol-9200000079252023", "cl-ld-stapelbekers"] },
         { kop: "Duwen en lopen", tekst: "Voor de eerste stapjes: een loopwagen om tegen te duwen, of een auto om op te zitten.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-bol-bobbycar", "cl-dolu-3in1"] },
-        { kop: "Knuffels en badspeelgoed", tekst: "Iets zachts om mee te slapen, of iets leuks voor in bad.", ids: ["cl-ld-knuffel", "bol-9300000111370441", "cl-steiff-trex", "cl-hema-knuffel"] },
+        { kop: "Knuffels en badspeelgoed", tekst: "Iets zachts om mee te slapen, of iets leuks voor in bad.", ids: ["hema-84812eeeed", "bol-9300000111370441", "cl-steiff-trex", "cl-hema-knuffel"] },
         { kop: "Eerste boekjes en muziek", tekst: "Stevige boekjes met grote plaatjes, en speelgoed om geluid mee te maken.", ids: ["cl-nijntje", "cl-rupsje-nooitgenoeg", "bol-9300000166820750", "cl-dikkie-dik-bad"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/baby\">Cadeaus voor baby's</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-2-jaar\">een kind van 2</a>." },
@@ -5072,7 +5072,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kies grote onderdelen: DUPLO in plaats van gewone LEGO.", "Een loopfiets is een cadeau waar een kind jaren plezier van heeft, en het leert er later makkelijker door fietsen.", "Doen alsof is op deze leeftijd het leukste spel: een babypop, een keukentje of een gereedschapsset.", "Geef je een boekje? Kies er een met grote plaatjes en weinig tekst."] },
         { kop: "Bouwen met grote blokken", tekst: "DUPLO en houten blokken: groot genoeg voor kleine handjes.", ids: ["cl-duplo-10421", "dk-00040686", "cl-duplo-10475", "cl-duplo-10459"] },
         { kop: "Duwen, rijden en lopen", tekst: "Een loopfiets of loopwagen: een cadeau waar ze jaren mee spelen.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-puky-lino", "cl-gl-gobike"] },
-        { kop: "Poppen en knuffels", tekst: "Een pop om te verzorgen of een knuffel om mee te slapen.", ids: ["cl-ld-knuffel", "cl-steiff-trex", "cl-hema-knuffel", "cl-ld-bunny"] },
+        { kop: "Poppen en knuffels", tekst: "Een pop om te verzorgen of een knuffel om mee te slapen.", ids: ["hema-d2cd56c14b", "cl-steiff-trex", "cl-hema-knuffel", "cl-ld-bunny"] },
         { kop: "Boekjes", tekst: "Voorlezen is op deze leeftijd een van de leukste dingen. Stevige boekjes met grote plaatjes.", ids: ["cl-nijntje", "cl-rupsje-nooitgenoeg", "cl-dikkie-dik-bad"] },
         { kop: "Muziek en luisteren", tekst: "Speelgoed om op te trommelen, te tikken en te spelen.", ids: ["bol-9300000166820750", "cl-hape-piano", "cl-fp-muziektafel", "cl-fp-xylofoon"] }
       ],
@@ -5125,7 +5125,7 @@
         { kop: "Spellen", tekst: "Spellen om samen te spelen, met het gezin of met vriendjes.", ids: ["cl-uno", "cl-mens-erger", "bol-9300000280626381", "bol-9300000002863037"] },
         { kop: "Knutselen en maken", tekst: "Kraskaarten, klei en slijm: iets maken dat je daarna kunt laten zien.", ids: ["cl-scratch-gabby", "cl-pd-supercolor", "cl-pd-peppa", "cl-ses-slime"] },
         { kop: "Figuren en fans", tekst: "Pokémon en Squishmallows: als je weet waar een kind fan van is, zit je goed.", ids: ["cl-sq-eevee", "cl-pk-booster", "cl-sq-stitch20", "cl-pk-charizard-tin"] },
-        { kop: "Ontdekken", tekst: "Proefjes en ontdekken: iets waarbij echt iets gebeurt.", ids: ["bol-9300000253114953", "cl-cl-hp-terra", "cl-ko-stuiter", "cl-cl-dierenarts"] },
+        { kop: "Ontdekken", tekst: "Proefjes en ontdekken: iets waarbij echt iets gebeurt.", ids: ["bol-9300000253114953", "cl-cl-hp-terra", "cl-ko-stuiter", "cl-cl-bruis"] },
         { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-adidas-bal", "cl-nerf-target", "cl-gl-goup", "bol-9300000220460976"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/collectie/schoencadeautjes\">Schoencadeautjes</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-5-jaar\">een kind van 5</a> en <a href=\"/gids/cadeau-kind-7-jaar\">een kind van 7</a>." },
@@ -5138,7 +5138,7 @@
         { kop: "Spellen", tekst: "Spellen om samen te spelen, met het gezin of met vriendjes.", ids: ["cl-uno", "bol-9300000280626381", "bol-9300000002863037", "bol-9300000281033787"] },
         { kop: "Knutselen en maken", tekst: "Kraskaarten, klei en slijm: iets maken dat je daarna kunt laten zien.", ids: ["cl-pd-supercolor", "cl-pd-peppa", "cl-ses-slime", "cl-ds-maker"] },
         { kop: "Figuren en fans", tekst: "Pokémon en Squishmallows: als je weet waar een kind fan van is, zit je goed.", ids: ["cl-sq-eevee", "cl-pk-booster", "cl-pk-charizard-tin", "cl-pk-battledeck"] },
-        { kop: "Ontdekken", tekst: "Proefjes en ontdekken: iets waarbij echt iets gebeurt.", ids: ["bol-9300000253114953", "cl-cl-hp-terra", "cl-ko-stuiter", "cl-cl-dierenarts"] },
+        { kop: "Ontdekken", tekst: "Proefjes en ontdekken: iets waarbij echt iets gebeurt.", ids: ["bol-9300000253114953", "cl-cl-hp-terra", "cl-ko-stuiter", "cl-cl-bruis"] },
         { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-adidas-bal", "cl-nerf-target", "cl-gl-goup", "bol-9300000220460976"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/collectie/schoencadeautjes\">Schoencadeautjes</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-6-jaar\">een kind van 6</a> en <a href=\"/gids/cadeau-kind-8-jaar\">een kind van 8</a>." },
@@ -5337,7 +5337,7 @@
         { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee en chocolade in een mooie verpakking. Altijd goed, voor iedereen.',
           ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000251768734', 'bol-9300000241393562'] },
         { kop: 'Gezellig in huis', tekst: 'Lichtjes, een kandelaar of kerstbekers: cadeaus waar je de hele decembermaand wat aan hebt.',
-          ids: ['bol-9300000229498501', 'kl-57357716193604', 'bol-9300000182787559', 'bol-9300000238623285'] },
+          ids: ['bol-9300000229498501', 'dkam-13500706be', 'bol-9300000182787559', 'bol-9300000238623285'] },
         { kop: 'Samen aan tafel', tekst: 'Een puzzel of spel voor de dagen tussen Kerst en Oud en Nieuw.',
           ids: ['bol-9300000172981367', 'bol-9300000133136276', 'bol-9300000375928006'] }
       ],
@@ -5444,7 +5444,7 @@
       intro: 'Je kent het vast: je scrolt door TikTok of Instagram en ziet steeds weer hetzelfde product. Sommige daarvan zijn echt een hype geworden, en dat zijn vaak precies de cadeaus waar iemand stiekem op hoopt. Ik zette de bekendste op een rij, van een lippenbalsem van een paar tientjes tot een ijsmachine. Alles van bekende merken en via bol te bestellen.',
       delen: [
         { kop: 'De apparaten die iedereen wil', tekst: 'Zelf ijs maken, vlees en friet tegelijk klaar, koffie die urenlang warm blijft en zachte golven in je haar.',
-          ids: ['bol-9300000267208012', 'bol-9300000228952527', 'bol-9300000272998289', 'bol-9300000239958237'] },
+          ids: ['bol-9300000267208012', 'cl-dyson-airwrap', 'bol-9300000272998289', 'bol-9300000239958237'] },
         { kop: 'Muziek mee, overal', tekst: 'Kleine speakers met groot geluid en oordopjes die het lawaai om je heen wegfilteren.',
           ids: ['bol-9300000252617200', 'bol-9300000193746659', 'bol-9300000279417145', 'bol-9300000191626158'] },
         { kop: 'Bloemen die nooit verwelken', tekst: 'LEGO-bloemen zijn een hit bij volwassenen: rustig bouwen en daarna een mooi stuk decoratie.',
@@ -5539,7 +5539,7 @@
         { kop: 'Met een knipoog', tekst: 'Voor op de afscheidsreceptie. Daar wordt om gelachen.',
           ids: ['dvzn-734300', 'amz-b0hgq4q3pd', 'bol-9300000234965416', 'bol-9300000385427142'] },
         { kop: 'Om te bewaren', tekst: 'Laat collega’s, familie en vrienden iets schrijven. Dat leest iemand later nog vaak terug.',
-          ids: ['amz-b0b3tdry1m', 'dvzn-542206', 'dvzn-452003', 'amz-9465708399'] },
+          ids: ['amz-b0b3tdry1m', 'dvzn-662540', 'dvzn-452003', 'amz-9465708399'] },
         { kop: 'Voor de nieuwe hobby', tekst: 'Eindelijk tijd voor wat je altijd al wilde doen. Met deze cadeaus kan iemand meteen beginnen.',
           ids: ['bol-9300000171232502', 'bol-9200000018494649', 'bol-9200000075382464', 'bol-9300000057830180', 'bol-9300000007378766'] },
         { kop: 'Tip: geef er een afspraak bij', tekst: 'Het mooiste cadeau voor iemand met pensioen is soms gewoon tijd samen. Schrijf op een kaartje bij je cadeau een afspraak: samen fietsen, samen naar de vogels kijken of een dagje uit. Dan heeft het cadeau meteen een plan erbij.' }
@@ -5559,7 +5559,7 @@
         { kop: 'Sieraden die ze elke dag draagt', tekst: 'Een sieraad zie je terug, elke dag weer. Kies iets fijns en eenvoudigs, dan past het bij alles.',
           ids: ['bp-l311', 'cl-myka-naam-hart', 'cl-celeste', 'cl-guess-moon'] },
         { kop: 'Even helemaal verwend', tekst: 'Een fijne geur, een bad vol bruisballen of een kaars voor lange avonden: een moment voor haarzelf.',
-          ids: ['cl-rit-sakura', 'cl-lveb', 'cl-dvzjn-hart', 'cl-ww-trilogy'] },
+          ids: ['cl-rit-sakura', 'cl-lveb', 'dvzn-43cb3e6645', 'cl-ww-trilogy'] },
         { kop: 'Iets om samen te doen', tekst: 'Een spel voor jullie twee of met vrienden, of mooie glazen om op iets te proosten.',
           ids: ['999g-999win01', 'cl-ttr-europe', 'cl-the-mind', 'dc-2163335415'] },
         { kop: 'Mooi voor in huis', tekst: 'Bloemen die nooit verwelken, een lamp die overdag zonlicht opslaat en een camera voor alle mooie momenten.',
@@ -5636,7 +5636,7 @@
         { kop: 'Iets van jullie twee', tekst: 'Een invulboek om samen te maken, een ketting met een knipoog of een boek over zussen.',
           ids: ['bol-9300000147583964', 'cl-lucardi-sister', 'bol-9200000089454350'] },
         { kop: 'Om haar te verwennen', tekst: 'Een fijne geur, bruisballen voor in bad en een kaars die heerlijk ruikt.',
-          ids: ['cl-rit-sakura', 'cl-ch-goodgirl', 'cl-dvzjn-hart', 'cl-ww-trilogy'] },
+          ids: ['cl-rit-sakura', 'cl-ch-goodgirl', 'dvzn-43cb3e6645', 'cl-ww-trilogy'] },
         { kop: 'Samen spelen', tekst: 'Een spel voor jullie twee, of voor de hele familie tijdens de feestdagen.',
           ids: ['cl-the-mind', 'cl-pictionary', 'cl-ttr-europe'] },
         { kop: 'Mooi voor in huis', tekst: 'Bloemen die blijven, een lamp op zonne-energie en een camera voor jullie mooiste momenten.',
@@ -5659,7 +5659,7 @@
         { kop: 'Lief voor de baby', tekst: 'Zacht, veilig en net even mooier dan standaard: hier kijken ouders blij van op.',
           ids: ['hema-d2cd56c14b', 'tbl-0a6h8gez0010m1', 'knufk-bambam-pakket', 'cl-eendjes-familie'] },
         { kop: 'Voor op de babykamer', tekst: 'Een nachtlampje of een wandkleed: elke avond in gebruik, en het staat er nog als de baby een kleuter is.',
-          ids: ['dvzn-347250', 'tt-lamponline-51b017f92e', 'westwing-4a8bb904b1', 'bol-9300000183026688'] },
+          ids: ['dvzn-347250', 'tt-lamponline-51b017f92e', 'ptm-4', 'bol-9300000183026688'] },
         { kop: 'Voor de ouders zelf', tekst: 'Een ketting voor de kersverse mama, een invulboek vol vragen of gewoon even gips om die bijzondere buik te bewaren (voor de volgende!).',
           ids: ['lgt-0940f22834', 'cl-1000-dagen-vragen', 'hm-gipsbuik-set', 'bw-relax-mama-kalender'] }
       ],
@@ -5678,7 +5678,7 @@
         { kop: 'Voor de aanstaande mama', tekst: 'Iets om de zwangerschap te bewaren of om er nog even van te genieten.',
           ids: ['sp-zwangerschapsdagboek', 'bw-relax-mama-kalender', 'kv-mommy-to-be-sweater', 'hm-gipsbuik-set'] },
         { kop: 'Voor de baby', tekst: 'Zacht, veilig en net even mooier: een deken met naam, een knuffel om te ontdekken en de allerkleinste slofjes.',
-          ids: ['bol-9300000136627314', 'cl-ld-knuffel', 'cl-steiff-trex', 'tbl-0a6h8gez0010m1'] },
+          ids: ['bol-9300000136627314', 'woewoe-5dc11dd46b', 'cl-steiff-trex', 'tbl-0a6h8gez0010m1'] },
         { kop: 'Met de hele groep', tekst: 'Als iedereen een paar tientjes geeft, kun je samen iets geven wat de ouders echt gaan gebruiken.',
           ids: ['cl-bol-fp-jungle', 'knufk-bambam-pakket', 'cl-vtech-speeltafel', 'bol-9300000144690906'] }
       ],
@@ -5696,7 +5696,7 @@
             'Een kaartje met "veel geluk in jullie nieuwe huis" maakt elk cadeau persoonlijker.'
           ] },
         { kop: 'Licht en sfeer', tekst: 'Van een weckpot die overdag oplaadt in de vensterbank tot een lichtsnoer voor de tuin.',
-          ids: ['dvzn-530181', 'cl-dk-marmer', 'bol-9300000159425017', 'joybuy-234e86090b'] },
+          ids: ['dvzn-530181', 'cl-led-glas', 'bol-9300000159425017', 'joybuy-234e86090b'] },
         { kop: 'Voor aan tafel', tekst: 'Mooi servies en een flinke serveerplank: daar heeft elk nieuw huishouden wat aan.',
           ids: ['t2-hema-5623840130', 'tt-country-acc-40291bdfe5', 'dille-58dac9bd47', 'westwing-0a01a1d0b5'] },
         { kop: 'Vrolijke details', tekst: 'Een wiebelend geluksmannetje, een knipogende kattenklok of een vaas met kleur: kleine dingen die een huis eigen maken.',
@@ -5779,7 +5779,7 @@
         { kop: 'Iets van jullie twee', tekst: 'Twee vogeltjes tegen elkaar aan of een kistje voor jullie herinneringen.',
           ids: ['ww-kaj73364965349', 'bol-9300000181912357'] },
         { kop: 'Samen iets doen', tekst: 'Vragen die jullie nog nooit aan elkaar stelden, een puzzel voor een rustige avond of warme chocolade om fruit in te dippen.',
-          ids: ['bol-9300000226609761', 'bol-9300000161370142', 'bol-9300000075413777', 'bol-9300000169524759', 'bol-9300000227831932'] },
+          ids: ['bol-9300000226609761', 'bol-9300000161370142', 'bol-9300000075413777', '999g-sch58877', 'bol-9300000227831932'] },
         { kop: 'Een klein gebaar', tekst: 'Een rood neonhart of een fonduepannetje voor twee. Klein, maar het zegt genoeg.',
           ids: ['bol-9300000084984419', 'bol-9300000164551900'] },
         { kop: 'Tip: maak er een dag van', tekst: 'Ga terug naar de plek waar jullie elkaar voor het eerst zagen, of doe nog eens wat jullie op jullie eerste date deden. Het cadeau maakt de dag compleet.' }
