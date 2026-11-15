@@ -202,7 +202,10 @@ button{font:inherit;color:inherit;cursor:pointer}
   cv.addEventListener('wheel', function (e) { e.preventDefault(); vlucht = null; zoomOm(e.clientX, e.clientY, Math.exp(-e.deltaY * .0015)); weg(); }, { passive: false });
   function tik(sx, sy) {
     var w = naarWereld(sx, sy), nu = performance.now(), dubbel = nu - laatsteTik < 300; laatsteTik = nu;
-    if (cam.z >= 18) { var hit = null, b = bakken[Math.floor(w[0] / BAK) + ',' + Math.floor(w[1] / BAK)] || []; b.forEach(function (i) { var c = cellen[i]; if (w[0] >= c.x && w[0] < c.x + 1 && w[1] >= c.y && w[1] < c.y + 1) hit = c; }); if (hit) { K.openBlad(hit.p.id); return; } }
+    if (cam.z >= 18) { var hit = null, bd = 1e9, gx = Math.floor(w[0] / BAK), gy = Math.floor(w[1] / BAK);
+      for (var dx = -1; dx <= 0; dx++) for (var dy = -1; dy <= 0; dy++) { (bakken[(gx + dx) + ',' + (gy + dy)] || []).forEach(function (i) { var c = cellen[i], ox = w[0] - c.x, oy = w[1] - c.y;
+        if (ox >= -.1 && ox < 1.1 && oy >= -.1 && oy < 1.1) { var d = Math.abs(ox - .5) + Math.abs(oy - .5); if (d < bd) { bd = d; hit = c; } } }); }
+      if (hit) { K.openBlad(hit.p.id); return; } }
     var e = eilanden.find(function (e) { return w[0] >= e.x - 1.6 && w[0] <= e.x + e.w + 1.6 && w[1] >= e.y - 3.5 && w[1] <= e.y + e.h + 1.6; });
     if (!e) { if (dubbel) zoomAnim(sx, sy, 2.5); return; }
     if (cam.z < 4) { naarEiland(e); return; }

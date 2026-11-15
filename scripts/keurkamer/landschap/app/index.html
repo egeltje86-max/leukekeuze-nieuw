@@ -195,6 +195,7 @@ h1 span{color:var(--rood)}
   /* ---------- camera ---------- */
   var cv = document.getElementById('kaart'), ctx = cv.getContext('2d'), dpr = Math.min(2, window.devicePixelRatio || 1), VW, VH;
   var cam = { x: 0, y: 0, z: 1 }, ZMIN = .1, ZMAX = 200;
+  if (q.get('test')) window.__ls = { cam: cam, weg: function () { return WEG.size; } };
   function maat() { VW = cv.clientWidth; VH = cv.clientHeight; cv.width = VW * dpr; cv.height = VH * dpr; vuil(); }
   function heel() { var z = Math.min((VW - 30) / WW, (VH - 60) / (WH + 4)); ZMIN = z * .7; return { x: WW / 2 - VW / 2 / z, y: (WH - 4) / 2 - VH / 2 / z, z: z }; }
   function naarScherm(wx, wy) { return [(wx - cam.x) * cam.z, (wy - cam.y) * cam.z]; }
@@ -234,7 +235,7 @@ h1 span{color:var(--rood)}
       ctx.fillStyle = '#FBF7EE'; rr(a[0], a[1], w, h, Math.min(24, z * 2)); ctx.fill(); ctx.strokeStyle = e.kleur; ctx.lineWidth = Math.max(1.5, Math.min(4, z * .25)); ctx.stroke();
     });
     var x0 = Math.floor(cam.x / BAK) - 1, y0 = Math.floor(cam.y / BAK) - 1, x1 = Math.floor((cam.x + VW / z) / BAK) + 1, y1 = Math.floor((cam.y + VH / z) / BAK) + 1;
-    var fotos = cel >= 16, pad = fotos ? Math.max(1.5, cel * .05) : Math.max(.3, cel * .12), r = Math.min(9, cel * .12), titels = cel >= 120;
+    var fotos = cel >= 12, pad = fotos ? Math.max(1.5, cel * .05) : Math.max(.3, cel * .12), r = Math.min(9, cel * .12), titels = cel >= 120;
     for (var bx = x0; bx <= x1; bx++) for (var by = y0; by <= y1; by++) { var b = bakken[bx + ',' + by]; if (!b) continue;
       for (var j = 0; j < b.length; j++) { var i = b[j], c = cellen[i], s = naarScherm(c.x, c.y), sx = s[0] + pad, sy = s[1] + pad, sw = cel - pad * 2; if (sx > VW || sy > VH || sx + sw < 0 || sy + sw < 0) continue;
         var weg = WEG.has(c.p.id), aan = !filtert || passend[i], zonde = ZONDE[c.p.id];
@@ -264,20 +265,28 @@ h1 span{color:var(--rood)}
       if (z >= 4 && z < 70) e.groepen.forEach(function (gr) { var gw = gr.sp.s * z; if (gw < 60) return; var p = naarScherm(gr.ax + gr.sp.s / 2, gr.ay - .1); if (p[0] < -150 || p[0] > VW + 150 || p[1] < -30 || p[1] > VH + 30) return;
         var fs = Math.max(11, Math.min(15, gw / 10)); ctx.font = '700 ' + fs + 'px Segoe UI, sans-serif'; var t = gr.naam + ' ' + gr.l.length, tw = ctx.measureText(t).width + 14; ctx.fillStyle = 'rgba(255,255,255,.95)'; rr(p[0] - tw / 2, p[1] - fs * .8, tw, fs * 1.6, fs * .8); ctx.fill(); ctx.strokeStyle = e.kleur; ctx.lineWidth = 1.5; ctx.stroke(); ctx.fillStyle = '#13202B'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(t, p[0], p[1]); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; });
     });
-    waarEl.textContent = z < 3 ? 'Klik op een eiland om erheen te gaan · scroll om te zoomen' : (z < 16 ? (midden ? midden.naam + ' · klik op een wijk of zoom verder in' : '') : 'Klik = weg / blijft · Shift + slepen = vak trekken');
+    waarEl.textContent = z < 3 ? 'Klik op een eiland om erheen te gaan · scroll om te zoomen' : (z < 12 ? (midden ? midden.naam + ' · klik op een wijk of zoom verder in' : '') : 'Klik = weg / blijft · Shift + slepen = vak trekken');
   }
   function lus(t) { if (vlucht) vlucht(t); if (moet) { moet = false; teken(); } requestAnimationFrame(lus); }
 
   /* ---------- zweef-kaartje ---------- */
   var tip = document.getElementById('tip');
-  function celOp(sx, sy) { var w = naarWereld(sx, sy), b = bakken[Math.floor(w[0] / BAK) + ',' + Math.floor(w[1] / BAK)] || []; for (var j = 0; j < b.length; j++) { var c = cellen[b[j]]; if (w[0] >= c.x && w[0] < c.x + 1 && w[1] >= c.y && w[1] < c.y + 1) return b[j]; } return -1; }
+  /* welk cadeau ligt onder de muis? Een vakje kan over de rand van een bak heen liggen (de wijken beginnen niet op hele getallen),
+     dus ook de bak links en boven nakijken. Klik je net tussen twee foto's, dan telt de dichtstbijzijnde (net ernaast telt nog mee). */
+  function celOp(sx, sy) {
+    var w = naarWereld(sx, sy), bx = Math.floor(w[0] / BAK), by = Math.floor(w[1] / BAK), best = -1, bd = 1e9;
+    for (var dx = -1; dx <= 0; dx++) for (var dy = -1; dy <= 0; dy++) { var b = bakken[(bx + dx) + ',' + (by + dy)]; if (!b) continue;
+      for (var j = 0; j < b.length; j++) { var c = cellen[b[j]], ox = w[0] - c.x, oy = w[1] - c.y;
+        if (ox >= -.1 && ox < 1.1 && oy >= -.1 && oy < 1.1) { var d = Math.abs(ox - .5) + Math.abs(oy - .5); if (d < bd) { bd = d; best = b[j]; } } } }
+    return best;
+  }
   function toonTip(i, mx, my) {
     if (i < 0 || cam.z < 7) { tip.style.display = 'none'; if (hoverI !== -1) { hoverI = -1; vuil(); } return; }
     if (i !== hoverI) {
       hoverI = i; vuil(); var p = cellen[i].p, weg = WEG.has(p.id);
       tip.innerHTML = '<img src="' + groot(p) + '" alt=""><div class="in"><b>' + esc(p.titel) + '</b><div class="r"><strong>' + euro(p.prijs) + '</strong>' + esc(p.shop) + '</div><div class="r">' + esc(plek(p)) + '</div>' +
         (ZONDE[p.id] ? '<span class="lab zonde">zonde? met de hand gekozen</span>' : '') + (korting(p) ? '<span class="lab korting">korting</span>' : '') + (weg ? '<span class="lab weg">gaat weg</span>' : '') +
-        '<div class="doe">' + (cam.z >= 16 ? (weg ? 'Klik: toch laten staan' : 'Klik: weg') : 'Zoom verder in om te kiezen') + '</div></div>';
+        '<div class="doe">' + (cam.z >= 12 ? (weg ? 'Klik: toch laten staan' : 'Klik: weg') : 'Zoom verder in om te kiezen') + '</div></div>';
     }
     tip.style.display = 'block';
     var r = cv.getBoundingClientRect(), x = r.left + mx + 18, y = r.top + my + 18;
@@ -307,7 +316,7 @@ h1 span{color:var(--rood)}
     if (trek) { rh.style.display = 'none'; var a = naarWereld(Math.min(trek.x, trek.x2), Math.min(trek.y, trek.y2)), b = naarWereld(Math.max(trek.x, trek.x2), Math.max(trek.y, trek.y2)), filtert = fShop || fZoek || fMin || fMax;
       var ids = []; if (Math.abs(trek.x2 - trek.x) + Math.abs(trek.y2 - trek.y) > 6) cellen.forEach(function (c, i) { if (c.x + .5 >= a[0] && c.x + .5 <= b[0] && c.y + .5 >= a[1] && c.y + .5 <= b[1] && (!filtert || passend[i]) && !(fZonde && !trek.terug && ZONDE[c.p.id])) ids.push(c.p.id); });
       var n = zetWeg(ids, !trek.terug); MELD = n ? (trek.terug ? n + ' teruggezet' : n + ' in één keer weg') + ' (Ctrl+Z = ongedaan) · ' : ''; if (!n) statusEl.textContent = 'Niets veranderd in dat vak'; trek = null; return; }
-    if (wijzers.size === 0) { if (beweegd < 6) klik(pos(e)); sleep = null; }
+    if (wijzers.size === 0) { if (beweegd < 10) klik(pos(e)); sleep = null; }
     else { var q = Array.from(wijzers.values())[0]; sleep = { x: q[0], y: q[1], cx: cam.x, cy: cam.y }; }
   }
   cv.addEventListener('pointerup', los); cv.addEventListener('pointercancel', los);
@@ -315,12 +324,12 @@ h1 span{color:var(--rood)}
   cv.addEventListener('wheel', function (e) { e.preventDefault(); vlucht = null; zoomOm(pos(e)[0], pos(e)[1], Math.exp(-e.deltaY * .0016)); toonTip(-1); }, { passive: false });
   function klik(p) {
     var w = naarWereld(p[0], p[1]);
-    if (cam.z >= 16) { var i = celOp(p[0], p[1]); if (i >= 0) { var id = cellen[i].p.id; zetWeg([id], !WEG.has(id)); hoverI = -2; toonTip(i, p[0], p[1]); return; } }
+    if (cam.z >= 12) { var i = celOp(p[0], p[1]); if (i >= 0) { var id = cellen[i].p.id; zetWeg([id], !WEG.has(id)); hoverI = -2; toonTip(i, p[0], p[1]); return; } }
     var e = eilanden.find(function (e) { return w[0] >= e.x - 1.6 && w[0] <= e.x + e.w + 1.6 && w[1] >= e.y - 3.5 && w[1] <= e.y + e.h + 1.6; });
     if (!e) return;
     if (cam.z < 4) { naarVak(e.x, e.y - 2, e.w, e.h + 2); return; }
     var g = e.groepen.find(function (g) { return w[0] >= g.ax - .5 && w[0] <= g.ax + g.sp.s + .5 && w[1] >= g.ay - .5 && w[1] <= g.ay + g.sp.s + .5; });
-    if (g && cam.z < 16) { naarVak(g.ax, g.ay - 1, g.sp.s, g.sp.s + 1, 160); return; }
+    if (g && cam.z < 12) { naarVak(g.ax, g.ay - 1, g.sp.s, g.sp.s + 1, 160); return; }
     var nz = Math.min(ZMAX, cam.z * 2.2); vlieg({ z: nz, x: w[0] - VW / 2 / nz, y: w[1] - VH / 2 / nz }, 400);
   }
   document.getElementById('plus').onclick = function () { var nz = Math.min(ZMAX, cam.z * 2), w = naarWereld(VW / 2, VH / 2); vlieg({ z: nz, x: w[0] - VW / 2 / nz, y: w[1] - VH / 2 / nz }, 350); };
