@@ -237,6 +237,20 @@
       return 'b';
     } catch (e) { WIJZER_ZELF = true; return 'b'; }
   })();
+  /* RUST (testversie, 15-11-2026, opdracht Marius: 'maak een website die in jouw ogen optimaal is: goed gevonden door Google, prettig voor klanten,
+     niet rommelig en druk, niet overvol van producten maar genoeg om klanten geïnteresseerd te houden'; 'maak hem in een test versie').
+     Alleen wie ?proef=rust opent ziet hem (blijft onthouden in dit apparaat); weer uit met ?proef=rust-uit. Gewone bezoekers, zoekmachines en de bouw zien er niets van.
+     Adressen blijven gelijk. Code: rustHome(), het blok 'RUST' in persoon() en het blok 'RUST' onderaan licht.css. */
+  var RUST = (function () {
+    try {
+      var m = /[?&]proef=rust(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.removeItem('lkrust'); else localStorage.setItem('lkrust', '1'); }
+      if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) return false;
+      return localStorage.getItem('lkrust') === '1';
+    } catch (e) { return false; }
+  })();
+  if (RUST) document.documentElement.classList.add('rust');
+  if (RUST) document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-rh-meer]'); if (b) { b.parentNode.classList.add('open'); } });
   var ETALAGE = null;
   /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
   function etalageEerst(l) {
@@ -432,12 +446,13 @@
      Wonen had 1.409 kaarten in de pagina staan; op een telefoon kostte dat seconden. Nu staan er 24. */
   /* Getallen op z'n Nederlands: 1.409 */
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
-  var PER_KEER = 36, MEER_LIJSTEN = [];
+  var PER_KEER = RUST ? 24 : 36, MEER_LIJSTEN = []; /* RUST: 24 per keer, net als op de Voor wie-pagina's */
   /* auto (13-11-2026, wens Marius: 'kunnen de andere producten er niet direct onder'): zoveel keer komt de volgende portie vanzelf als je naar beneden scrolt;
      daarna staat er de knop. Zo kom je nog wel bij de tekst onderaan (Baymard: lazy-loading plus een knop 'meer laden'). */
   function gridMeer(lijst, leegHtml, n, knopTekst, auto) {
     var per = n || PER_KEER;
     if (lijst.length <= per) return grid(lijst, leegHtml);
+    if (RUST && !knopTekst) knopTekst = 'Laat er nog ' + per + ' zien'; /* RUST: geen '36 van 1.776' in de knop */
     var k = MEER_LIJSTEN.push({ lijst: lijst, getoond: per, per: per, tekst: knopTekst || '' }) - 1;
     if (knopTekst) return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
       '<div class="meer-knop' + (auto ? ' groot' : '') + '"><button class="knop knop-rand" type="button" data-meer="' + k + '"' + (auto ? ' data-auto="' + auto + '"' : '') + '>' + knopTekst + '</button></div>';
@@ -1112,6 +1127,7 @@
   }
   function home() {
     zetTitel('');
+    if (RUST) return rustHome();
     var CATS_VOOR = ['wonen', 'mode-sieraden', 'beauty-verzorging', 'elektronica', 'eten-drinken', 'speelgoed'];
     var CATS_REST = ['spellen-puzzels', 'koken-tafelen', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'].filter(function (s) { var c = window.LK_CAT(s); return c && !c.verborgen; }); /* 4.0: Spellen & puzzels en Koken & tafelen erbij (alleen als ze bestaan) */
     var cat = function (slug, extra) {
@@ -1219,6 +1235,64 @@
       seizoenBlok() + belevenisBlok() + favorietenBlok() + winkelTopBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
       tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; }).concat([['Acties en kortingscodes', '/collectie/aanbiedingen']])) +
       gidsenCompact() + eigenKaart() + zoWerkt +
+    '</div>';
+  }
+  /* RUST: de homepage in de testversie. Eén vraag bovenaan, daaronder hooguit drie korte rijen en een paar links. Geen lange blokken onder elkaar.
+     Volgorde (onderzoek: keuzestress, Baymard 'homepage'): 1. voor wie (+ bedrag), 2. het moment van nu, 3. onze favorieten, 4. snel en grappig onder €25,
+     5. soorten cadeau, 6. favoriete winkels (Atelier Rebul eerst), 7. vragen die mensen stellen, 8. hoe het werkt in één zin. */
+  function rustHome() {
+    var z = LK.zichtbaar(), per = {}; z.forEach(function (p) { per[p.id] = p; });
+    var uitTop = function (sleutel, n, max) {
+      var T = Object.assign({}, window.LK_TOPKEUZE || {}, window.LK_TOPVAST || {}), uit = [], gehad = {};
+      (T[sleutel] || []).forEach(function (id) { var p = per[id]; if (p && !gehad[p.id] && uit.length < n && (!max || p.prijs <= max) && !/sieraden/.test(p.vak || '')) { gehad[p.id] = 1; uit.push(p); } });
+      return uit;
+    };
+    var tegel = function (naam, naar, beeld, icoon) {
+      return '<a class="rh-tegel" href="' + naar + '">' + (beeld ? '<span class="rh-rond"><img src="' + beeld + '" alt="" width="64" height="64" decoding="async"></span>' : '<span class="rh-rond rh-icoon">' + ic(icoon) + '</span>') + '<span class="rh-naam">' + esc(naam) + '</span></a>';
+    };
+    var rij = function (kop, sub, naar, knop, lijst) {
+      if (lijst.length < 4) return '';
+      return '<section class="sectie rh-rij"><div class="rh-kop"><div><h2>' + esc(kop) + '</h2>' + (sub ? '<p>' + esc(sub) + '</p>' : '') + '</div>' +
+        (naar ? '<a class="rh-meer" href="' + naar + '">' + esc(knop) + ' ' + ic('pijl') + '</a>' : '') + '</div>' +
+        '<div class="prodgrid rh-grid">' + lijst.slice(0, 6).map(LK.productKaart).join('') + '</div></section>';
+    };
+    var fav = ((INST.favorieten || {}).ids || []).map(function (id) { return per[id]; }).filter(Boolean);
+    if (fav.length < 6) fav = fav.concat(uitTop('/collectie/toppers-van-nu', 12).filter(function (p) { return fav.indexOf(p) === -1; })).slice(0, 6);
+    var kort = uitTop('/collectie/grappige-cadeaus', 12, 25).filter(function (p) { return fav.indexOf(p) === -1; }).slice(0, 6);
+    /* het moment van nu: de eerste kaart van het seizoen (Sinterklaas, Black Friday, Kerst ...), met lootjes en het gedicht als twee kleine links */
+    var sz = INST.seizoen, nu = (function () { var d = new Date(); return ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); })();
+    var periode = sz ? (sz.periodes || []).filter(function (p) { return p.vanaf <= p.tot ? (nu >= p.vanaf && nu <= p.tot) : (nu >= p.vanaf || nu <= p.tot); })[0] : null;
+    var mom = periode ? sz.kaarten[periode.kaarten[0]] : null;
+    var sint = rijmSeizoen();
+    var moment = !mom ? '' : '<section class="sectie rh-moment"><a class="rh-mkaart" href="' + esc(mom.naar) + '">' +
+      (mom.beeldMobiel ? '<picture><source media="(min-width: 760px)" srcset="' + esc(mom.beeld) + '"><img src="' + esc(mom.beeldMobiel) + '" alt="" loading="lazy" decoding="async"></picture>' : '<img src="' + esc(mom.beeld) + '" alt="" loading="lazy" decoding="async">') +
+      '<span class="rh-mtekst"><small>' + esc(mom.kicker) + '</small><b>' + esc(mom.titel) + '</b><span class="rh-mknop">' + esc(mom.knop) + ' ' + ic('pijl') + '</span></span></a>' +
+      (sint ? '<div class="rh-hulp">' + (window.LK_LOOTJES !== false ? '<a href="/lootjes-trekken/">' + ic('cadeau') + '<span><b>Lootjes trekken</b><small>Gratis, via WhatsApp</small></span></a>' : '') +
+        '<a href="/sint-rijmmachine/">' + ic('vonk') + '<span><b>Sint-gedicht</b><small>Klaar in een minuut</small></span></a></div>' : '') +
+      '</section>';
+    var winkels = WINKELTOP.map(function (w) { return '<a class="chip" href="/zoek?winkel=' + encodeURIComponent(w.shop) + '">' + esc(w.naam || w.shop) + '</a>'; }).join('');
+    var vragen = ['sinterklaascadeau-man', 'sinterklaascadeau-vrouw', 'surprise-maken', 'kerstcadeau-ideeen', 'cadeau-voor-man', 'cadeau-voor-vrouw', 'cadeau-25-euro']
+      .map(function (sl) { return GIDSEN.filter(function (g) { return g.slug === sl; })[0]; }).filter(Boolean)
+      .map(function (g) { return '<li><a href="/gids/' + g.slug + '">' + esc(g.titel.split(':')[0]) + ' ' + ic('rechts') + '</a></li>'; }).join('');
+    return '<div class="binnen rust-home">' +
+      '<div class="rh-test">Testversie · <a href="/?proef=rust-uit">terug naar de gewone site</a></div>' +
+      '<section class="sectie eerste rh-vraag" data-tel="voor-wie"><h1>Voor wie zoek je een cadeau?</h1><p class="rh-sub">Tik op een plaatje. Wij hebben de mooiste cadeaus al voor je gekozen.</p>' +
+        '<nav class="rh-raster" aria-label="Voor wie zoek je een cadeau?">' +
+          window.LK_PERSONEN.map(function (x) { return tegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
+          tegel('Iets anders', '/categorieen', '', 'raster') +
+        '</nav>' +
+        '<p class="rh-vraag2">Of kies een bedrag</p><nav class="chips rh-chips" aria-label="Bedrag">' +
+          (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip" href="/c/cadeaus/?prijs=' + p.id + '">' + p.label + '</a>'; }).join('') +
+        '</nav></section>' +
+      moment +
+      rij('Onze favorieten', 'Met de hand gekozen. Hier zouden we zelf blij mee zijn.', '/collectie/toppers-van-nu', 'Meer', fav) +
+      rij('Leuk en onder de € 25', 'Grappig, slim of gewoon heel gezellig.', '/collectie/grappige-cadeaus', 'Meer', kort) +
+      '<section class="sectie rh-soort"><h2>Of kies een soort cadeau</h2><nav class="mini-raster breed" aria-label="Soort cadeau">' +
+        [['Grappige cadeaus', '/collectie/grappige-cadeaus', 'col-grappige-cadeaus'], ['Originele cadeaus', '/collectie/originele-cadeaus', 'col-originele-cadeaus'], ['Met naam of foto', '/collectie/persoonlijke-cadeaus', 'col-persoonlijke-cadeaus'], ['Belevenissen', '/c/belevenissen', '../sub-belevenissen-avontuur-snelheid']]
+          .map(function (k) { return miniTegel(k[0], k[1], 'images/sub/rond/' + k[2] + '-klein.webp'); }).join('') + '</nav></section>' +
+      (winkels ? '<section class="sectie rh-winkels"><h2>Onze favoriete winkels</h2><nav class="chips rh-chips" aria-label="Winkels">' + winkels + '</nav></section>' : '') +
+      (vragen ? '<section class="sectie rh-vragen"><h2>Hulp bij het kiezen</h2><ul>' + vragen + '</ul><a class="rh-meer" href="/gids">Alle tips ' + ic('pijl') + '</a></section>' : '') +
+      '<p class="rh-zo">Wij kiezen de cadeaus uit, jij koopt bij de winkel. Prijzen controleren we elke week. Via onze links krijgen wij soms een kleine vergoeding; jij betaalt niets extra.</p>' +
     '</div>';
   }
   /* Seizoensblok: de periode van vandaag bepaalt welke kaarten er staan; de eerste is groot. */
@@ -1820,6 +1894,8 @@
     LK.redenAltijd = !!wzAan;
     if (wzAan) {
       var wzLijst = sieradenLaat(etalageEerst(lijst), pad);
+      var wzTotaal = wzLijst.length;
+      if (RUST) wzLijst = wzLijst.slice(0, 96); /* RUST: niet overvol. Eerst de met de hand gekozen top, samen hooguit 96; de rest via 'Alles bekijken' */
       var wzNaam = /^(hem|haar|kinderen|tieners)$/.test(naam) ? naam : naam.toLowerCase();
       var wzPrijs = (window.LK_PRIJZEN || []).filter(function (p) { return p.id === q.prijs; })[0];
       var wzBedrag = (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) {
@@ -1840,9 +1916,16 @@
         var hier = !!(s && s.slug === x.slug);
         return '<a class="chip" href="' + metBudget(hier ? '/voor/' + pe.slug : '/voor/' + pe.slug + '/' + x.slug) + '" aria-pressed="' + hier + '"' + (hier ? ' data-wz-hier' : '') + '>' + esc(x.naam) + '</a>';
       }).join('');
+      /* RUST: eerst de zes onderwerpen waar het meest naar gezocht wordt, de rest achter 'Meer onderwerpen' (staat het gekozen onderwerp verder, dan meteen alles open) */
+      var wzRolOpen = '';
+      if (RUST && volleSubsP.length > 7) {
+        var wzHierPlek = s ? volleSubsP.slice().sort(function (u, v) { return wzPlek(u) - wzPlek(v); }).map(function (x) { return x.slug; }).indexOf(s.slug) : -1;
+        wzRolOpen = wzHierPlek > 5 ? ' open' : '';
+        wzSubs += '<button class="chip rh-nogmeer" type="button" data-rh-meer>Meer onderwerpen ' + ic('omlaag') + '</button>';
+      }
       var wzN = Math.min(24, wzLijst.length); /* 13-11-2026: 24 meteen in beeld (was 12) */
       var wzKop = !wzLijst.length ? '' : '<div class="wz-uit"><h2>' + (wzN === 1 ? 'Onze beste keuze' : 'Onze ' + wzN + ' beste keuzes') + '</h2>' +
-        (wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
+        (RUST ? '<p>Met de hand gekozen voor ' + esc(wzNaam) + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '.</p>' : wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
       return paginakop({
         titel: s ? s.naam + ' voor ' + naam : pe.naam,
         tekst: '', /* de inleiding staat in de gebouwde pagina (voor Google); in de nieuwe opzet gaan de keuzes en de cadeaus voor */
@@ -1853,11 +1936,12 @@
         '<section class="sectie eerste wz-keuze" aria-label="Kies een bedrag en een onderwerp">' +
           (wzLeeftijd ? '<p class="wz-vraag">Hoe oud is het kind?</p><nav class="chips wz-chips wz-bedrag" aria-label="Leeftijd">' + wzLeeftijd + '</nav>' : '') +
           (wzBedrag ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
-          (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p><nav class="chips wz-chips wz-rol" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>' : '') +
+          (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p><nav class="chips wz-chips wz-rol' + wzRolOpen + '" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>' : '') +
         '</section>' +
         /* 13-11-2026 (wens Marius): 24 cadeaus meteen, bij het scrollen nog 24 vanzelf, daarna één duidelijke knop; sorteren en filteren als echte knop */
-        wzKop + gridMeer(wzLijst, leeg, 24, 'Meer cadeaus laten zien', 1) +
-        (wzLijst.length > 24 ? '<p class="wz-alles"><a class="knop knop-rand" href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Sorteren en filteren <small>(alle ' + getal(wzLijst.length) + ')</small></a></p>' : '') +
+        wzKop + (RUST ? gridMeer(wzLijst, leeg, 24, 'Laat er nog 24 zien') : gridMeer(wzLijst, leeg, 24, 'Meer cadeaus laten zien', 1)) +
+        (RUST && wzTotaal > 24 ? '<p class="wz-alles rh-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Alles bekijken en filteren</a></p>' : '') +
+        (!RUST && wzLijst.length > 24 ? '<p class="wz-alles"><a class="knop knop-rand" href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Sorteren en filteren <small>(alle ' + getal(wzLijst.length) + ')</small></a></p>' : '') +
         leesOok(pe.oud || 'voor/' + pe.slug) + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
         (tips ? '<section class="sectie gids" aria-label="Tips">' + tips.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
         tekstLinks('Voor iemand anders?', anderen.map(function (x) { return [x.kort, x.subs ? '/voor/' + x.slug : x.naar]; })) +

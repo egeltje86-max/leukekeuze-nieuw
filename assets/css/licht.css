@@ -2458,3 +2458,79 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .zoek-tips .zt-direct .zt-pijl { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(#f8dc95, #e6b452); color: #221b1f; }
 .zoek-tips .zt-direct .zt-pijl svg { width: 16px; height: 16px; }
 .zoek-tips .zt-item:not(.zt-pagina):not(.zt-direct) img { border: 1px solid #EFE6D6; }
+
+/* ===== RUST (testversie, 15-11-2026, opdracht Marius: rustig, niet overvol, goed te vinden). Alleen actief met html.rust (?proef=rust). Code: rustHome() en het blok RUST in persoon() in app.js. ===== */
+/* Productkaart: alleen foto, naam, prijs en de knop. Geen winkelnaam boven de titel (staat al op de knop), geen 'Nieuw' of 'Onze favoriet', geen extra zin. */
+html.rust .prodkaart .info .shop, html.rust .prodkaart .reden, html.rust .prodkaart .label.nieuw, html.rust .prodkaart .label.favo { display: none; }
+html.rust .prodkaart .kaart-koop { background: #FFFCF7; border: 1px solid #B8862E; box-shadow: none; color: #6B4C14; font-weight: 700; min-height: 44px; }
+html.rust .prodkaart .kaart-koop:hover { background: #F2CB74; color: #141A2A; filter: none; }
+html.rust .prodkaart .kaart-voet { padding-top: 10px; }
+html.rust .prodgrid { gap: 14px 12px; }
+/* Homepage */
+.rust-home { padding-bottom: 24px; }
+.rh-test { margin: 10px 0 0; font: 600 13px/1.4 var(--f-tekst, Manrope, sans-serif); color: #6B5A3A; }
+.rh-test a { color: #8F6620; }
+.rh-vraag { padding-top: 14px; }
+.rh-vraag h1 { font: 700 clamp(28px, 7.4vw, 40px)/1.12 var(--f-kop, 'Playfair Display', serif); color: #141A2A; margin: 0 0 6px; letter-spacing: -.3px; text-wrap: balance; }
+.rh-sub { margin: 0 0 16px; font-size: 16px; color: #4A4F5E; }
+.rh-raster { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 8px; }
+.rh-tegel { display: flex; flex-direction: column; align-items: center; gap: 7px; min-width: 0; text-decoration: none; color: #141A2A; font: 700 13.5px/1.2 var(--f-tekst, Manrope, sans-serif); text-align: center; padding: 4px 0; min-height: 44px; }
+.rh-rond { width: 66px; height: 66px; border-radius: 50%; overflow: hidden; border: 2px solid #F2CB74; background: #FFFCF7; display: grid; place-items: center; box-shadow: 0 4px 12px rgba(20,26,42,.08); }
+.rh-rond img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rh-rond.rh-icoon { background: #0A1020; color: #F2CB74; }
+.rh-rond.rh-icoon svg { width: 26px; height: 26px; }
+.rh-naam { overflow-wrap: anywhere; hyphens: auto; }
+.rh-vraag2 { margin: 22px 0 8px; font: 700 15px/1.3 var(--f-tekst, Manrope, sans-serif); color: #141A2A; }
+.rh-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.rh-chips .chip { min-height: 44px; display: inline-flex; align-items: center; padding: 0 16px; font-size: 15px; font-weight: 700; background: #FFFCF7; border: 1px solid #E5D7BE; color: #141A2A; border-radius: 999px; text-decoration: none; }
+.rh-chips .chip:hover { border-color: #B8862E; }
+.rust-home .sectie { margin-top: 34px; }
+.rust-home .sectie.eerste { margin-top: 6px; }
+.rust-home h2 { font: 700 24px/1.2 var(--f-kop, 'Playfair Display', serif); color: #141A2A; margin: 0 0 4px; }
+.rh-kop { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.rh-kop p { margin: 2px 0 0; color: #4A4F5E; font-size: 15px; }
+.rh-meer { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; flex: none; font: 700 14.5px/1 var(--f-tekst, Manrope, sans-serif); color: #8F6620; text-decoration: none; }
+.rh-meer svg { width: 16px; height: 16px; }
+/* het moment van nu */
+.rh-mkaart { position: relative; display: block; border-radius: 18px; overflow: hidden; text-decoration: none; color: #FFFFFF; background: #0A1020; min-height: 170px; }
+.rh-mkaart img { width: 100%; height: 190px; object-fit: cover; display: block; opacity: .82; }
+.rh-mtekst { position: absolute; inset: auto 0 0 0; padding: 16px; background: linear-gradient(0deg, rgba(10,16,32,.92), rgba(10,16,32,0)); display: flex; flex-direction: column; gap: 4px; }
+.rh-mtekst small { font: 700 12px/1.2 var(--f-tekst, Manrope, sans-serif); letter-spacing: .08em; text-transform: uppercase; color: #F2CB74; }
+.rh-mtekst b { font: 700 24px/1.15 var(--f-kop, 'Playfair Display', serif); }
+.rh-mknop { display: inline-flex; align-items: center; gap: 4px; font: 700 14.5px/1 var(--f-tekst, Manrope, sans-serif); color: #F2CB74; margin-top: 4px; }
+.rh-mknop svg { width: 16px; height: 16px; }
+.rh-hulp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.rh-hulp a { display: flex; align-items: center; gap: 10px; min-height: 60px; padding: 10px 12px; background: #FFFFFF; border: 1px solid #E5D7BE; border-radius: 16px; text-decoration: none; color: #141A2A; min-width: 0; }
+.rh-hulp a > svg { width: 26px; height: 26px; color: #B8862E; flex: none; }
+.rh-hulp b { display: block; font: 700 15px/1.2 var(--f-tekst, Manrope, sans-serif); }
+.rh-hulp small { display: block; font-size: 13px; color: #4A4F5E; margin-top: 2px; }
+.rh-hulp span { min-width: 0; }
+/* winkels, vragen, uitleg */
+.rh-winkels h2, .rh-soort h2, .rh-vragen h2 { margin-bottom: 12px; }
+.rh-vragen ul { list-style: none; margin: 0; padding: 0; background: #FFFFFF; border: 1px solid #E5D7BE; border-radius: 16px; overflow: hidden; }
+.rh-vragen li + li { border-top: 1px solid #EFE6D6; }
+.rh-vragen li a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 52px; padding: 10px 14px; text-decoration: none; color: #141A2A; font: 600 15.5px/1.3 var(--f-tekst, Manrope, sans-serif); }
+.rh-vragen li a svg { width: 16px; height: 16px; color: #B8862E; flex: none; }
+.rh-vragen .rh-meer { margin-top: 4px; }
+.rh-zo { margin: 30px 0 0; padding: 14px 16px; border-radius: 14px; background: #FFFCF7; border: 1px solid #EFE6D6; font-size: 14px; line-height: 1.5; color: #4A4F5E; }
+@media (min-width: 760px) {
+  .rh-raster { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 14px; }
+  .rh-rond { width: 84px; height: 84px; }
+  .rh-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .rh-mkaart img { height: 220px; }
+  .rh-hulp { max-width: 640px; }
+  .rh-vragen ul { max-width: 720px; }
+}
+@media (max-width: 359px) { .rh-raster { gap: 8px 4px; } .rh-rond { width: 56px; height: 56px; } .rh-tegel { font-size: 12.5px; } .rh-hulp { grid-template-columns: 1fr; } }
+/* Voor wie-pagina's in de testversie: onderwerpen lopen om in plaats van een schuifrij waarvan je er maar twee ziet */
+html.rust .wijzer .wz-rol { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; }
+html.rust .rh-alles { text-align: center; margin: 14px 0 0; }
+html.rust .rh-alles a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #8F6620; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+html.rust .rh-alles a svg { width: 16px; height: 16px; }
+/* ===== einde RUST ===== */
+html.rust .wijzer .wz-rol:not(.open) .chip:nth-child(n+7):not(.rh-nogmeer) { display: none; }
+html.rust .wijzer .wz-rol.open .rh-nogmeer { display: none; }
+html.rust .rh-nogmeer { gap: 4px; color: #8F6620 !important; border-style: dashed !important; cursor: pointer; font: inherit; font-weight: 700; }
+html.rust .rh-nogmeer svg { width: 16px; height: 16px; }
+/* RUST: op categorie-, gelegenheid- en collectiepagina's geen 'Meer in onze winkels' (niet door ons gekeurd); in het zoeken blijft het staan */
+html.rust .alle-winkels[data-sleutel] { display: none; }
