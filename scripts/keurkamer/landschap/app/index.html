@@ -82,7 +82,7 @@ h1 span{color:var(--rood)}
     <div class="twee"><label>Prijs vanaf<input type="number" id="fMin" min="0" placeholder="€"></label><label>Prijs tot<input type="number" id="fMax" min="0" placeholder="€"></label></div>
     <label class="vink"><input type="checkbox" id="fZonde"> Toppers (gouden rand) niet meenemen bij slepen</label>
     <label class="vink"><input type="checkbox" id="fVerberg"> Wat al weg is lichter tonen</label>
-    <label class="vink"><input type="checkbox" id="fZonderBol" checked> <b>Zonder bol</b>: laat zien wat er overblijft</label>
+    <label class="vink"><input type="checkbox" id="fZonderBol"> <b>Zonder bol</b>: laat zien wat er overblijft</label>
     <div class="passen" id="passen"></div>
   </div>
   <div class="teller"><b id="nWeg">0</b><span>weg gekozen</span><small id="nZonde"></small></div>
@@ -161,8 +161,8 @@ h1 span{color:var(--rood)}
   var GAP = 1.2, EIL_GAP = 7, eilanden = [], cellen = [], bakken = {}, BAK = 8, WW = 0, WH = 0, passend;
   var KLEUR = ['#F59E0B', '#EC4899', '#8B5CF6', '#10B981', '#3B82F6', '#EF4444', '#14B8A6', '#F97316', '#6366F1', '#84CC16', '#06B6D4', '#D946EF', '#22C55E', '#A855F7', '#0EA5E9', '#E11D48', '#65A30D', '#7C3AED'];
   function spiraal(n) { var s = Math.ceil(Math.sqrt(n)), c = (s - 1) / 2, l = []; for (var y = 0; y < s; y++) for (var x = 0; x < s; x++) l.push([x, y, (x - c) * (x - c) + (y - c) * (y - c) + x * .001]); l.sort(function (a, b) { return a[2] - b[2]; }); return { s: s, cel: l.slice(0, n) }; }
-  var indeling = 'afd', zonderBol = true;
-  try { if (localStorage.getItem('ls-zonderbol') === '0') zonderBol = false; } catch (e) {}
+  var indeling = 'afd', zonderBol = false;
+  try { if (localStorage.getItem('ls-zb2') === '1') zonderBol = true; } catch (e) {}
   function isBol(p) { return /^bol/i.test(p.shop || ''); }
   var NBOL = ALLES.filter(isBol).length;
   function bouw() {
@@ -369,7 +369,7 @@ h1 span{color:var(--rood)}
   document.getElementById('fZonde').onchange = function () { fZonde = this.checked; };
   document.getElementById('fVerberg').onchange = function () { fVerberg = this.checked; vuil(); };
   var zb = document.getElementById('fZonderBol'); zb.checked = zonderBol;
-  zb.onchange = function () { zonderBol = this.checked; try { localStorage.setItem('ls-zonderbol', zonderBol ? '1' : '0'); } catch (e) {} bouw(); vlieg(heel()); };
+  zb.onchange = function () { zonderBol = this.checked; try { localStorage.setItem('ls-zb2', zonderBol ? '1' : '0'); } catch (e) {} bouw(); vlieg(heel()); };
 
   maat(); bouw(); var s0 = heel(); cam.x = s0.x; cam.y = s0.y; cam.z = s0.z; lijst();
   if (opgeslagen && opgeslagen.bijgewerkt) statusEl.textContent = WEG.size + ' keuzes van de vorige keer teruggezet';
