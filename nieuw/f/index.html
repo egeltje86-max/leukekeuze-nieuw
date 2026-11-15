@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – het cadeau-kraslot</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD F (15-11-2026, Marius: 'we gaan door tot ik zeg dit nemen we'): het cadeau-kraslot.
+     Kies voor wie en hoeveel, kras de goudlaag weg met je vinger, eronder zit een echt cadeau uit onze handgekozen toppen.
+     Geen loterij: er valt niets gratis te winnen, het is een manier om een cadeau-idee te ontdekken. -->
+<style>
+:root{--rood:#C8102E;--rood-d:#8E0B20;--room:#FFF6E3;--papier:#FFFBF1;--inkt:#2A1A12;--goud:#D4A017;--goud-l:#F6D776;--groen:#1F7A4D;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;min-height:100dvh;background:var(--rood) radial-gradient(circle at 20% 10%,#E0283F 0 18%,transparent 19%) 0 0/120px 120px;background-color:var(--rood);color:var(--inkt);font:600 16px/1.45 var(--f)}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:repeating-conic-gradient(from 0deg at 50% -20%,rgba(255,255,255,.07) 0 6deg,transparent 6deg 12deg)}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:460px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left)) 40px}
+.kop{text-align:center;color:#fff;margin:6px 0 14px}
+.kop small{display:inline-block;font:800 12px/1 var(--f);letter-spacing:3px;text-transform:uppercase;color:var(--goud-l);margin-bottom:8px}
+.kop h1{margin:0;font:900 clamp(34px,10vw,50px)/.95 var(--k);letter-spacing:-.5px;text-shadow:0 3px 0 var(--rood-d),0 6px 18px rgba(0,0,0,.25)}
+.kop h1 em{font-style:italic;color:var(--goud-l)}
+.lot{position:relative;background:var(--papier);border-radius:18px;padding:16px 16px 18px;box-shadow:0 18px 40px rgba(60,0,10,.45);overflow:hidden}
+.lot::before,.lot::after{content:'';position:absolute;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:var(--rood)}
+.lot::before{left:-13px}.lot::after{right:-13px}
+.rand{position:absolute;inset:6px;border:2px dashed #E3C98E;border-radius:13px;pointer-events:none}
+.lotkop{display:flex;justify-content:space-between;align-items:center;gap:8px;font:800 11.5px/1.2 var(--f);letter-spacing:1.5px;text-transform:uppercase;color:#9A7B4F;margin:2px 4px 10px}
+.lotkop b{color:var(--rood);font-size:13px;letter-spacing:1px}
+.vraag{font:800 15px/1.2 var(--f);margin:10px 4px 8px}
+.keus{display:flex;flex-wrap:wrap;gap:7px;margin:0 2px}
+.keus button{min-height:42px;padding:0 13px;border-radius:999px;border:2px solid #E7D3A6;background:#fff;font:800 14px/1 var(--f)}
+.keus button[aria-pressed="true"]{background:var(--rood);border-color:var(--rood);color:#fff}
+.veld{position:relative;margin:14px 2px 0;aspect-ratio:1;border-radius:16px;overflow:hidden;background:#fff;border:3px solid var(--goud);box-shadow:inset 0 0 0 4px #fff}
+.veld img{width:100%;height:100%;object-fit:contain;padding:8%}
+.veld canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
+.veld .stempel{position:absolute;right:10px;top:10px;background:var(--groen);color:#fff;font:800 13px/1 var(--f);padding:8px 11px;border-radius:999px;transform:rotate(6deg) scale(.4);opacity:0;transition:transform .35s cubic-bezier(.2,1.8,.4,1),opacity .2s}
+.veld.open .stempel{opacity:1;transform:rotate(6deg) scale(1)}
+.tip{text-align:center;color:#9A7B4F;font-size:13.5px;margin:10px 0 0}
+.uitslag{margin:14px 4px 0;text-align:center}
+.uitslag[hidden]{display:none}
+.uitslag h2{font:800 21px/1.2 var(--f);margin:0 0 6px;letter-spacing:-.3px}
+.uitslag p{margin:0 0 12px;color:#6B5640;font-size:14.5px}
+.rij{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.bedrag{font:900 28px/1 var(--k);color:var(--rood)}
+.winkel{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 22px;border-radius:999px;background:var(--rood);color:#fff;text-decoration:none;font:800 15.5px/1 var(--f);box-shadow:0 5px 0 var(--rood-d)}
+.winkel svg{width:18px;height:18px}
+.k-hart{width:48px;height:48px;border-radius:50%;border:2px solid #E7D3A6;background:#fff;display:grid;place-items:center;color:var(--inkt)}
+.k-hart svg{width:21px;height:21px}
+.k-hart[aria-pressed="true"] svg{fill:var(--rood);stroke:var(--rood)}
+.knoppen{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.nieuw{min-height:50px;padding:0 20px;border-radius:999px;border:0;background:var(--goud);color:var(--inkt);font:800 15.5px/1 var(--f);box-shadow:0 5px 0 #A67C0E}
+.nieuw:active,.winkel:active{transform:translateY(3px);box-shadow:0 2px 0 #A67C0E}
+.zacht{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid #E7D3A6;background:#fff;font:800 14px/1 var(--f);color:var(--inkt);text-decoration:none;display:inline-flex;align-items:center}
+.klein{font-size:12.5px;color:#9A7B4F;margin:12px 0 0}
+.eerlijk{color:#FFE3E7;text-align:center;font-size:13px;margin:16px 6px 0}
+.verzameling{margin-top:20px}
+.verzameling h3{color:#fff;font:800 14px/1 var(--f);letter-spacing:1.5px;text-transform:uppercase;margin:0 0 10px}
+.plank{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.plank::-webkit-scrollbar{display:none}
+.plank button{flex:none;width:72px;height:72px;border-radius:12px;border:3px solid var(--goud-l);background:#fff;padding:0;overflow:hidden}
+.plank img{width:100%;height:100%;object-fit:contain;padding:8%}
+.snipper{position:fixed;top:-20px;width:9px;height:14px;z-index:90;pointer-events:none;animation:val linear forwards}
+@keyframes val{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){.veld .stempel{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="kop"><small>LeukeKeuze presenteert</small><h1>Het cadeau-<em>kraslot</em></h1></header>
+  <section class="lot" aria-label="Kraslot">
+    <div class="rand"></div>
+    <div class="lotkop"><span>Serie 2026 · <b id="nr">Nr. 000001</b></span><span>Altijd een cadeau</span></div>
+    <div class="vraag">Voor wie?</div>
+    <div class="keus" id="wie"></div>
+    <div class="vraag">Hoeveel?</div>
+    <div class="keus" id="hoeveel"></div>
+    <div class="veld" id="veld"><img id="foto" alt="" draggable="false"><canvas id="laag" aria-label="Kras hier met je vinger"></canvas><span class="stempel">Gekrast!</span></div>
+    <p class="tip" id="tip">Kras de goudlaag weg met je vinger. <button class="zacht" type="button" id="alles" style="min-height:34px;padding:0 10px;font-size:12.5px;margin-left:4px">Alles openkrassen</button></p>
+    <div class="uitslag" id="uitslag" hidden></div>
+  </section>
+  <p class="eerlijk">Geen loterij: er valt niets gratis te winnen. Onder elk lot zit een cadeau dat wij zelf hebben uitgekozen en dat je bij de winkel kunt kopen.</p>
+  <section class="verzameling" id="verz" hidden><h3>Jouw gekraste cadeaus</h3><div class="plank" id="plank"></div></section>
+</div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc, t = K.uitTop;
+  K.wisselBalk('F');
+  function schoon(l) { return K.uniek(l).filter(function (p) { return !K.sieraad(p); }); }
+  function mix() { var ls = Array.prototype.slice.call(arguments).map(schoon), uit = [], g = {}, m = Math.max.apply(null, ls.map(function (l) { return l.length; })); for (var i = 0; i < m; i++) ls.forEach(function (l) { var p = l[i]; if (p && !g[p.id]) { g[p.id] = 1; uit.push(p); } }); return uit; }
+  var WIE = [
+    ['Iedereen', function () { return mix(t('/collectie/grappige-cadeaus'), t('/collectie/toppers-van-nu'), t('/collectie/originele-cadeaus'), t('/voor/haar'), t('/voor/tieners')).filter(function (p) { return !K.drank(p); }); }],
+    ['Haar', function () { return mix(t('/voor/haar')); }],
+    ['Hem', function () { return mix(t('/voor/hem')); }],
+    ['Kind', function () { return mix(t('/voor/kinderen'), t('/collectie/schoencadeautjes')); }],
+    ['Tiener', function () { return mix(t('/voor/tieners'), t('/voor/tieners/kamer')); }],
+    ['Opa of oma', function () { return mix(t('/voor/opa-oma')); }],
+    ['Collega', function () { return mix(t('/voor/collega'), t('/voor/collega/lootjes')); }]
+  ];
+  var BEDRAG = [['Tot € 10', 10], ['Tot € 25', 25], ['Tot € 50', 50], ['Maakt niet uit', 0]];
+  var wie = 0, max = 25, gehad = {}, nu = null, open = false, nr = 1;
+  var verz = []; try { verz = JSON.parse(sessionStorage.getItem('lkkras') || '[]').filter(function (id) { return K.PER[id]; }); } catch (e) {}
+  function knoppen(el, lijst, kies, isAan) {
+    el.innerHTML = lijst.map(function (x, i) { return '<button type="button" data-i="' + i + '" aria-pressed="' + isAan(i) + '">' + esc(x[0]) + '</button>'; }).join('');
+    el.addEventListener('click', function (e) { var b = e.target.closest('[data-i]'); if (!b) return; kies(+b.getAttribute('data-i')); el.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); nieuwLot(); });
+  }
+  knoppen(document.getElementById('wie'), WIE, function (i) { wie = i; }, function (i) { return i === wie; });
+  knoppen(document.getElementById('hoeveel'), BEDRAG, function (i) { max = BEDRAG[i][1]; }, function (i) { return BEDRAG[i][1] === max; });
+
+  var veld = document.getElementById('veld'), foto = document.getElementById('foto'), laag = document.getElementById('laag'), ctx = laag.getContext('2d'), uit = document.getElementById('uitslag');
+  var dpr = Math.min(2, window.devicePixelRatio || 1), W, H, krassen = 0, vorig = null;
+
+  function kies() {
+    var l = WIE[wie][1]().filter(function (p) { return !max || p.prijs <= max; });
+    var vers = l.filter(function (p) { return !gehad[p.id]; });
+    if (!vers.length) { gehad = {}; vers = l; }
+    var p = vers[Math.floor(Math.random() * Math.min(vers.length, 40))];
+    if (p) gehad[p.id] = 1;
+    return p;
+  }
+  function folie() {
+    var r = veld.getBoundingClientRect(); W = Math.round(r.width * dpr); H = Math.round(r.height * dpr); laag.width = W; laag.height = H;
+    ctx.globalCompositeOperation = 'source-over';
+    var g = ctx.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#B8860B'); g.addColorStop(.25, '#F6D776'); g.addColorStop(.5, '#C9971C'); g.addColorStop(.75, '#F9E39A'); g.addColorStop(1, '#A87A0A');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (var i = 0; i < 900; i++) { ctx.fillStyle = 'rgba(255,255,255,' + (Math.random() * .25) + ')'; ctx.fillRect(Math.random() * W, Math.random() * H, 2 * dpr, 2 * dpr); }
+    ctx.save(); ctx.translate(W / 2, H / 2); ctx.rotate(-0.2); ctx.fillStyle = 'rgba(120,80,0,.18)'; ctx.font = '800 ' + Math.round(W / 16) + 'px Manrope, sans-serif'; ctx.textAlign = 'center';
+    for (var y = -H; y < H; y += W / 7) for (var x = -W; x < W; x += W / 2.4) ctx.fillText('LEUKEKEUZE', x + (y / (W / 7) % 2 ? W / 4.8 : 0), y);
+    ctx.restore();
+    ctx.fillStyle = '#7A4E00'; ctx.textAlign = 'center'; ctx.font = '900 ' + Math.round(W / 9) + 'px "Playfair Display", Georgia, serif'; ctx.fillText('KRAS HIER', W / 2, H / 2);
+    ctx.font = '800 ' + Math.round(W / 22) + 'px Manrope, sans-serif'; ctx.fillText('met je vinger', W / 2, H / 2 + W / 12);
+  }
+  function nieuwLot() {
+    nu = kies(); open = false; krassen = 0; uit.hidden = true; veld.classList.remove('open');
+    document.getElementById('tip').hidden = false; laag.style.transition = ''; laag.style.opacity = 1;
+    nr = Math.floor(Math.random() * 900000) + 1000; document.getElementById('nr').textContent = 'Nr. ' + String(nr).padStart(6, '0');
+    if (!nu) { foto.removeAttribute('src'); folie(); return; }
+    foto.src = K.groot(nu); foto.alt = '';
+    folie();
+  }
+  function kras(x, y) {
+    ctx.globalCompositeOperation = 'destination-out'; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = 46 * dpr;
+    ctx.beginPath(); if (vorig) ctx.moveTo(vorig[0], vorig[1]); else ctx.moveTo(x - .1, y); ctx.lineTo(x, y); ctx.stroke(); vorig = [x, y];
+    if (++krassen % 12 === 0) meet();
+  }
+  function meet() {
+    if (open) return; var d = ctx.getImageData(0, 0, W, H).data, leeg = 0, tot = 0, stap = 4 * Math.round(12 * dpr);
+    for (var i = 3; i < d.length; i += stap) { tot++; if (d[i] < 40) leeg++; }
+    if (leeg / tot > 0.5) onthul();
+  }
+  function punt(e) { var r = laag.getBoundingClientRect(); return [(e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr]; }
+  var bezig = false;
+  laag.addEventListener('pointerdown', function (e) { if (open || !nu) return; bezig = true; vorig = null; try { laag.setPointerCapture(e.pointerId); } catch (x) {} var p = punt(e); kras(p[0], p[1]); });
+  laag.addEventListener('pointermove', function (e) { if (!bezig) return; var p = punt(e); kras(p[0], p[1]); });
+  ['pointerup', 'pointercancel'].forEach(function (ev) { laag.addEventListener(ev, function () { bezig = false; vorig = null; meet(); }); });
+  document.getElementById('alles').addEventListener('click', function () { if (nu) onthul(); });
+
+  function onthul() {
+    if (open) return; open = true; laag.style.transition = 'opacity .5s'; laag.style.opacity = 0; veld.classList.add('open'); document.getElementById('tip').hidden = true;
+    try { navigator.vibrate && navigator.vibrate([20, 40, 20]); } catch (e) {}
+    if (verz.indexOf(nu.id) === -1) verz.unshift(nu.id); try { sessionStorage.setItem('lkkras', JSON.stringify(verz.slice(0, 30))); } catch (e) {} plank();
+    toon(nu); feest();
+  }
+  function toon(p) {
+    var r = K.reden(p), deel = 'Ik kraste dit cadeau op LeukeKeuze: ' + p.titel + ' ' + location.origin + '/nieuw/f/';
+    uit.innerHTML = '<h2>' + esc(p.titel) + '</h2>' + (r ? '<p>' + esc(r) + '</p>' : '') +
+      '<div class="rij"><span class="bedrag">' + K.euro(p.prijs) + '</span>' + K.hartKnop(p) + '</div>' +
+      '<div class="knoppen"><a class="winkel" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + K.ic('uit') + '</a></div>' +
+      '<div class="knoppen"><button class="nieuw" type="button" data-nieuw>Nieuw kraslot</button><a class="zacht" href="https://wa.me/?text=' + encodeURIComponent(deel) + '" target="_blank" rel="noopener">Deel</a><button class="zacht" type="button" data-blad="' + esc(p.id) + '">Meer info</button></div>' +
+      '<p class="klein">De prijs kan bij de winkel net anders zijn.</p>';
+    uit.hidden = false;
+  }
+  uit.addEventListener('click', function (e) { if (e.target.closest('[data-nieuw]')) { nieuwLot(); document.getElementById('veld').scrollIntoView({ behavior: 'smooth', block: 'center' }); } });
+  function plank() {
+    var s = document.getElementById('verz'); if (!verz.length) { s.hidden = true; return; } s.hidden = false;
+    document.getElementById('plank').innerHTML = verz.map(function (id) { var p = K.PER[id]; return '<button type="button" data-blad="' + esc(id) + '" aria-label="' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button>'; }).join('');
+  }
+  function feest() {
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var kl = ['#F6D776', '#FFFFFF', '#1F7A4D', '#FFB3C0', '#D4A017'];
+    for (var i = 0; i < 70; i++) { var s = document.createElement('i'); s.className = 'snipper'; s.style.left = Math.random() * 100 + 'vw'; s.style.background = kl[i % kl.length]; s.style.animationDuration = (1.3 + Math.random() * 1.5) + 's'; s.style.animationDelay = (Math.random() * .3) + 's'; document.body.appendChild(s); (function (x) { setTimeout(function () { x.remove(); }, 3300); })(s); }
+  }
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!open) folie(); }, 200); });
+  plank();
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(nieuwLot);
+})();
+</script>
+</body>
+</html>
