@@ -790,13 +790,24 @@
   ]
  },
  "drank_niet_bij_personen": {
-  "_uitleg": "15-11-2026 (Marius: 'haal zowiezo alle drank bij personen weg, dat is geen gezicht'). Flessen wijn, bubbels, bier, sterke drank en alcoholvrije drank staan op geen enkele Voor wie-pagina, ook niet als ze met de hand voor iemand gekozen zijn. Ze blijven in Eten & drinken. Drankaccessoires (glazen, karaffen, openers) blijven gewoon. Groepen van vóór de verhuizing.",
+  "_uitleg": "15-11-2026 (Marius: 'haal zowiezo alle drank bij personen weg, dat is geen gezicht'). Flessen wijn, bubbels, bier, sterke drank en alcoholvrije drank staan op geen enkele Voor wie-pagina, ook niet als ze met de hand voor iemand gekozen zijn. Ze blijven in Eten & drinken. Drankaccessoires (glazen, karaffen, openers) blijven gewoon. Groepen van vóór de verhuizing. 15-11-2026 later (Marius: 'overal moet drank weg, alleen op de drank plek moet dat staan'): dezelfde producten krijgen p.drank = 1 en staan alleen nog op hun eigen plek (Wijn & bubbels, Bier & sterke drank, Alcoholvrij, hun eigen vakje), in de gids voor een wijnliefhebber en als de bezoeker er zelf om vraagt (zoekwoord, interesse 'Een lekker drankje'). 'pakket' = wijn- en portproefpakketten die bij de cadeaupakketten staan.",
   "groep": [
    "eten-drinken/wijn",
    "eten-drinken/bier",
    "eten-drinken/sterke-drank",
    "eten-drinken/bubbels",
    "eten-drinken/alcoholvrij"
-  ]
+  ],
+  "pakket": {
+   "groep": "eten-drinken/cadeaupakketten",
+   "woorden": "\\b(wijnen?|port|whisk(e)?y|gin|rum|bier|champagne|prosecco|likeur|ros[eé])\\b",
+   "behalve": "bruisbal|thee|sokken",
+   "winkels": [
+    "Wijny",
+    "Decantalo",
+    "Wijnkring",
+    "Svinando"
+   ]
+  }
  }
 }

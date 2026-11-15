@@ -332,6 +332,16 @@
     if (v.indexOf('kind') !== -1 || v.indexOf('kinderen') !== -1 || v.indexOf('baby') !== -1) return true;
     return !v.length && (p.afd === 'speelgoed' || /kinder/.test((p.groep || '') + ' ' + (p.vak || '')));
   }
+  /* 15-11-2026 (Marius: 'overal moet drank weg, alleen op de drank plek moet dat staan'): flessen wijn, bubbels, bier, sterke drank en
+     alcoholvrije drank (p.drank, gezet door scripts/boom/paginaregels.js) staan alleen nog op hun eigen plek: Wijn & bubbels, Bier & sterke drank,
+     Alcoholvrij en hun eigen vakje, in de gids voor een wijnliefhebber, en als de bezoeker er zelf om vraagt (een zoekwoord als 'whisky' of
+     'champagne', de interesse 'Een lekker drankje' in de kieshulp, een winkel die alleen drank verkoopt). Glazen, karaffen, openers en
+     cocktailsets (Drankaccessoires) zijn geen drank en blijven overal. Uit: window.LK_DRANK_OVERAL = true. */
+  var DRANK_GROEP = { 'wijn-bubbels': 1, 'bier-sterke-drank': 1, 'alcoholvrij': 1 };
+  var DRANK_WOORD = /^(drank\w*|alcohol\w*|wijn\w*|wine|ros[eé]|bubbel\w*|champagn\w*|prosecco|cava|cr[eé]mant|porto?|sherry|whisk\w*|bourbon|gin|rum|wodka|vodka|likeur\w*|cognac|brandy|armagnac|calvados|jenever|tequila|mezcal|sake|bier\w*|ipa|cider|amaretto|baileys|limoncello|aperol|martini|vermout\w*|borrel\w*|decantalo|wijnkring|svinando|wijny)$/i;
+  function geenDrank(l) { return window.LK_DRANK_OVERAL === true ? l : l.filter(function (p) { return !p.drank; }); }
+  /* Vraagt de bezoeker zelf om drank? Elk los woord (ook de varianten 'wijn|wijnen' van het zoeken) wordt nagekeken. */
+  function drankGevraagd(t) { return String(t || '').toLowerCase().split(/[^a-z0-9éèëïöüç]+/).some(function (w) { return w && DRANK_WOORD.test(w); }); }
   function smalOnder(l, sleutel) {
     if (!sleutel) return l;
     var goed = [], onder = [];
@@ -1241,7 +1251,7 @@
      Volgorde (onderzoek: keuzestress, Baymard 'homepage'): 1. voor wie (+ bedrag), 2. het moment van nu, 3. onze favorieten, 4. snel en grappig onder €25,
      5. soorten cadeau, 6. favoriete winkels (Atelier Rebul eerst), 7. vragen die mensen stellen, 8. hoe het werkt in één zin. */
   function rustHome() {
-    var z = LK.zichtbaar(), per = {}; z.forEach(function (p) { per[p.id] = p; });
+    var z = geenDrank(LK.zichtbaar()), per = {}; z.forEach(function (p) { per[p.id] = p; });
     var uitTop = function (sleutel, n, max) {
       var T = Object.assign({}, window.LK_TOPKEUZE || {}, window.LK_TOPVAST || {}), uit = [], gehad = {};
       (T[sleutel] || []).forEach(function (id) { var p = per[id]; if (p && !gehad[p.id] && uit.length < n && (!max || p.prijs <= max) && !/sieraden/.test(p.vak || '')) { gehad[p.id] = 1; uit.push(p); } });
@@ -1316,7 +1326,7 @@
   /* Persoonlijk maakt bijzonder: 4 producten uit de collectie Persoonlijke cadeaus (vaste ids, anders de mooiste met sfeerfoto). */
   function persoonlijkBlok() {
     var f = INST.persoonlijk; if (!f) return '';
-    var z = LK.zichtbaar(), l = (f.ids || []).map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
+    var z = geenDrank(LK.zichtbaar()), l = (f.ids || []).map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
     if (l.length < 4) {
       var g = window.LK_COLLECTIE && window.LK_COLLECTIE('persoonlijke-cadeaus');
       var kand = g ? sorteer(verzamelLijst(g)).filter(function (p) { return l.indexOf(p) === -1; }) : [];
@@ -1383,7 +1393,7 @@
      Onderzoek: 81% van de kijktijd zit in de eerste 3 schermen; producten stonden op scherm 6. Lijst staat in LK_INSTELLINGEN.favorieten. */
   function favorietenBlok() {
     var f = INST.favorieten; if (!f || !(f.ids || []).length) return '';
-    var z = LK.zichtbaar();
+    var z = geenDrank(LK.zichtbaar());
     var l = f.ids.map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
     if (!l.length) return '';
     return '<section class="sectie favorieten" id="favorieten" data-tel="favorieten">' +
@@ -1429,8 +1439,8 @@
     /* 15-11-2026 (Marius: 'de leukste cadeaus per winkel neemt te veel ruimte in'): compacte tegels, één foto en de naam per winkel,
        twee naast elkaar op de telefoon, vier op de computer. Een tik gaat naar alle cadeaus van die winkel. */
     if (!WT_AAN) return '';
-    var z = LK.zichtbaar(), tops = window.LK_TOPVAST || {};
-    var goed = function (id, shop) { var p = LK.vind(id); return p && p.status === 'goedgekeurd' && p.shop === shop && p.beeld ? p : null; };
+    var z = geenDrank(LK.zichtbaar()), tops = window.LK_TOPVAST || {};
+    var goed = function (id, shop) { var p = LK.vind(id); return p && p.status === 'goedgekeurd' && !p.drank && p.shop === shop && p.beeld ? p : null; };
     var tegels = WINKELTOP.map(function (w) {
       var p = w.beeld && goed(w.beeld, w.shop);
       if (!p) { [w.top || '/winkel/' + w.slug].concat(Object.keys(tops)).some(function (k) { return (tops[k] || []).some(function (id) { p = goed(id, w.shop); return !!p; }); }); }
@@ -1448,6 +1458,8 @@
   function winkelPagina(q) {
     var laag = String(q.winkel).toLowerCase();
     var alle = LK.zichtbaar().filter(function (p) { return String(p.shop || '').toLowerCase() === laag; });
+    /* 15-11-2026: drank alleen op de drankplek; bij een winkel die vooral drank verkoopt (Decantalo, Wijnkring) blijft hij staan. */
+    var zonder = geenDrank(alle); if (zonder.length >= alle.length / 2) alle = zonder;
     var naam = alle.length ? alle[0].shop : String(q.winkel);
     var w = WINKEL_INFO.filter(function (x) { return x.shop === naam; })[0];
     var lijst = sorteer(alle, q.sort, w && w.top ? w.top : '/winkel/' + winkelSlug(naam));
@@ -1463,7 +1475,7 @@
   }
   function eigenBlok() {
     var e = INST.eigen; if (!e || !(e.ids || []).length) return '';
-    var z = LK.zichtbaar();
+    var z = geenDrank(LK.zichtbaar());
     var l = e.ids.map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
     if (!l.length) return '';
     return '<section class="sectie etalage eigen">' +
@@ -1472,7 +1484,7 @@
   }
   function etalage() {
     var e = INST.etalage; if (!e || !(e.ids || []).length) return '';
-    var z = LK.zichtbaar();
+    var z = geenDrank(LK.zichtbaar());
     var l = e.ids.map(function (id) { return z.filter(function (p) { return p.id === id; })[0]; }).filter(Boolean);
     if (!l.length) return '';
     return '<section class="sectie etalage">' +
@@ -1508,7 +1520,7 @@
   }
   function sfeerEerst(l) { return l.filter(function (p) { return p.sfeer; }).concat(l.filter(function (p) { return !p.sfeer; })); }
   function uitgelicht(tab) {
-    var l = LK.zichtbaar().filter(nietChristelijk);
+    var l = geenDrank(LK.zichtbaar()).filter(nietChristelijk);
     if (tab === 'favoriet') l = l.filter(function (p) { return p.favoriet || p.populair; });
     if (tab === 'onder25') l = l.filter(function (p) { return p.prijs <= 25 && p.cat !== 'dranken'; });
     if (tab === 'nieuw') l = l.filter(LK.isNieuw);
@@ -1697,6 +1709,9 @@
     var pad = '/c/' + c.slug + (s ? '/' + s.slug : '') + (v ? '/' + v.slug : '');
     var knoppen = (v && v.knoppen) || (s && s.knoppen) || c.knoppen || [];
     var basis = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, s && s.slug, v && v.slug); });
+    /* 15-11-2026: drank alleen op de drankplek (zie geenDrank). Op de eigen groepen van drank en in het eigen vakje van een product blijft hij staan. */
+    var drankPlek = c.slug === 'dranken' || (c.slug === 'eten-drinken' && s && DRANK_GROEP[s.slug]);
+    if (!drankPlek && window.LK_DRANK_OVERAL !== true) basis = basis.filter(function (p) { return !p.drank || (v && p.afd === c.slug && p.groep === s.slug && p.vak === v.slug); });
     BASIS = basis;
     TEL = function (nq) { return basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen) && extraFilter(p, q); });
@@ -1983,6 +1998,7 @@
   function verzamelLijst(g) {
     return LK.zichtbaar().filter(function (p) {
       if (p.cat === 'christelijk' || p.los) return false;
+      if (p.drank && !g.drank && window.LK_DRANK_OVERAL !== true) return false; /* 15-11-2026: drank alleen op de drankplek (geenDrank) */
       if (p.smal && SMAL_PAG[p.smal] && !SMAL_PAG[p.smal][1].test(g.slug || '')) return false; /* pensioen-, opa/oma-, mama-cadeaus e.d. alleen op een passende gelegenheid */ /* p.los: losse onderdelen niet op cadeaupagina's (paginaregels, 10-11-2026) */
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
       if (g.kind && !kindCadeau(p)) return false; /* 11-11-2026: een collectie met alleen kindercadeaus (Schoencadeautjes) */
@@ -2297,7 +2313,8 @@
     var woorden = function (t) { return (t || '').toLowerCase().replace(/[^a-z0-9à-ÿ ]+/g, ' ').split(/\s+/).filter(function (w) { return w.length >= 4 && !STOP.test(w) && !/^\d+$/.test(w); }); };
     var mijn = woorden(p.titel), mijnMerk = (merkVan(p) || '').toLowerCase();
     var prijsOk = function (x) { return !(p.prijs > 0) || (x.prijs >= p.prijs * 0.4 && x.prijs <= p.prijs * 2.5); };
-    var score = LK.zichtbaar().filter(function (x) { return x.id !== p.id && (p.cat === 'christelijk') === (x.cat === 'christelijk'); }).map(function (x) {
+    var pDrank = p.drank || (p.afd === 'eten-drinken' && DRANK_GROEP[p.groep]); /* een uitverkocht product draagt het vlaggetje drank niet meer mee */
+    var score = LK.zichtbaar().filter(function (x) { return x.id !== p.id && (!x.drank || pDrank || window.LK_DRANK_OVERAL === true) && (p.cat === 'christelijk') === (x.cat === 'christelijk'); }).map(function (x) {
       var w = woorden(x.titel), deel = mijn.filter(function (m) { return w.indexOf(m) !== -1; }).length;
       var merk = mijnMerk && (merkVan(x) || '').toLowerCase() === mijnMerk ? 1 : 0;
       var sc = deel * 3 + merk * 2 + (x.vak === p.vak && x.afd === p.afd ? 2 : x.groep === p.groep ? 1 : 0) + (prijsOk(x) ? 1 : 0);
@@ -2363,7 +2380,7 @@
 
     /* 'Ook leuk': eerst uit dezelfde subcategorie, daarna uit dezelfde categorie (of met dezelfde 'ook in'). */
     var verwant = LK.zichtbaar().filter(function (x) {
-      return x.id !== p.id && (p.cat === 'christelijk') === (x.cat === 'christelijk') && (x.cat === p.cat || (x.ookIn || []).some(function (o) { return (p.ookIn || []).indexOf(o) !== -1; }));
+      return x.id !== p.id && (!x.drank || p.drank || window.LK_DRANK_OVERAL === true) && (p.cat === 'christelijk') === (x.cat === 'christelijk') && (x.cat === p.cat || (x.ookIn || []).some(function (o) { return (p.ookIn || []).indexOf(o) !== -1; }));
     });
     var zelfdeSub = function (x) { return x.cat === p.cat && x.sub === p.sub; };
     /* 8-11-2026 (Fable P1-9): 'Ook leuk' = echt passende alternatieven: eerst hetzelfde vakje, dan dezelfde groep, en in dezelfde prijsklasse (half tot dubbel). */
@@ -2726,6 +2743,7 @@
   function gewoonWoord(w) { return w.indexOf('|') === -1 && w.indexOf(' ') === -1; }
   function zoekLijst(woorden, prijs) {
     var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
+    if (!drankGevraagd(woorden.join(' '))) basis = geenDrank(basis); /* 15-11-2026: drank alleen als het zoekwoord erom vraagt ('whisky', 'champagne') */
     var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return bevatEen(t, w); }); });
     var en = function (ww) { return basis.filter(function (p) { var t = zoekTekstV(p); return ww.every(function (w) { return bevatEen(t, w); }); }); };
     var komtVoor = function (w) { return basis.some(function (p) { return bevatEen(zoekTekstV(p), w); }); };
@@ -3262,6 +3280,8 @@
     var alle = LK.zichtbaar().filter(function (p) { return hobby === 'christelijk' ? p.cat === 'christelijk' : nietChristelijk(p); }).filter(function (p) {
       return q.voor === 'iedereen' || hobby === 'dieren' || (watW.length && !hobby) || p.cat !== 'dieren'; /* 6-11: 'vader die vist' (hobby sport) geeft geen aquarium- of vogelspullen */
     }).filter(function (p) { return binnenPrijs(p, q.budget); });   /* budget is heilig */
+    /* 15-11-2026: drank alleen als de bezoeker erom vraagt (interesse 'Een lekker drankje' of een woord als 'whisky'), zie geenDrank. */
+    if (hobby !== 'drankje' && !drankGevraagd(q.wat)) alle = geenDrank(alle);
     /* Getypt woord (bijv. 'lego' of 'vissen'): streng, alleen echte treffers (wens van Marius, 01-11-2026). */
     /* Nakijkbeurt 6-11-2026: eerst producten met álle woorden ('knuffel met naam' = knuffels met een naam), pas als dat niets geeft één woord. */
     if (watW.length) {
@@ -3596,7 +3616,7 @@
     var top = (window.LK_TOPVAST || {})[(LOOT_MOMENT[moment] || LOOT_MOMENT.s)[2]] || [], gezien = {};
     var lijst = top.concat((window.LK_TOPVAST || {})['/collectie/grappige-cadeaus'] || [], (window.LK_TOPVAST || {})['/c/cadeaus/onder-15'] || [])
       .map(function (id) { return LK.vind(id); })
-      .filter(function (p) { if (!p || gezien[p.id] || p.status !== 'goedgekeurd' || !(p.prijs <= budget) || p.prijs < budget * 0.35) return false; gezien[p.id] = 1; return true; });
+      .filter(function (p) { if (!p || gezien[p.id] || p.status !== 'goedgekeurd' || (p.drank && window.LK_DRANK_OVERAL !== true) || !(p.prijs <= budget) || p.prijs < budget * 0.35) return false; gezien[p.id] = 1; return true; }); /* 15-11-2026: geen drank (geenDrank) */
     return lijst.slice(0, 12);
   }
   /* ===== GEZIEN OP TIKTOK (14-11-2026, plan 'bekender worden' punt 4, GO Marius) =====
@@ -3623,7 +3643,7 @@
   function tiktokPagina() {
     zetTitel('Gezien op TikTok: alle cadeaus uit onze filmpjes');
     window.LK_SEO = 'Alle cadeaus uit de filmpjes van LeukeKeuze op TikTok en Instagram, per filmpje op een rij, het nieuwste bovenaan. Met prijs en een knop naar de winkel.';
-    var z = LK.zichtbaar(), opZ = {}; z.forEach(function (p) { opZ[p.id] = p; });
+    var z = geenDrank(LK.zichtbaar()), opZ = {}; z.forEach(function (p) { opZ[p.id] = p; });
     var rijen = TIKTOK_REELS.map(function (r, i) {
       var l = r.ids.map(function (id) { return opZ[id]; }).filter(Boolean);
       if (!l.length) return '';
@@ -4451,7 +4471,7 @@
         { kop: 'Spellen voor na het uitpakken', tekst: 'Zijn de pakjes open? Dan is een spel een mooie manier om de avond af te sluiten.',
           ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'kadov-23d3797d23'] },
         { kop: 'Voor je vader (€15 tot €35)', tekst: 'Vaders hebben vaak al alles. Kies dan iets voor zijn vaste gewoontes: zijn koffie, zijn biertje, zijn verzorging of iets lekkers.',
-          ids: ['cl-bialetti-moka', 'hema-d6fb696345', 'cl-rit-homme', 'cl-tony-sintbundel3'] }
+          ids: ['cl-bialetti-moka', 'dvzn-868decc4c6', 'cl-rit-homme', 'cl-tony-sintbundel3'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
     { slug: 'sinterklaascadeau-vrouw', beeld: 'dvzn-29043e5ee8', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
@@ -4636,19 +4656,19 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Denk aan haar vaste gewoontes: haar thee, haar bad, haar puzzel. Een cadeau dat daarbij past wordt gebruikt.", "Iets persoonlijks, zoals een mok of kaars met de namen van de kinderen, raakt vaak meer dan iets duurs.", "Twijfel je? Iets lekkers of een geurkaars valt bijna altijd goed.", "Bestel op tijd: rond Kerst duren pakketjes vaak langer."] },
         { kop: "Even tot rust komen", tekst: "Verzorging en iets om even bij te komen: een cadeau om zelf van te genieten.", ids: ["parfum-45dbbae7b4", "parfum-45d8b68540", "dvzn-671060bdfd", "cl-chillpill"] },
         { kop: "Warm en knus", tekst: "Voor de koude avonden op de bank.", ids: ["cl-hema-teddy", "cg-magnetron-sloffen", "bt-49287145423187", "hema-73f4e662d2"] },
-        { kop: "Iets lekkers", tekst: "Pralines, marsepein of een glaasje port: iets voor bij de koffie of na het eten.", ids: ["cl-lindt-pralines", "dw-4000161100379", "cl-burmester", "cl-px-gonzalez"] },
+        { kop: "Iets lekkers", tekst: "Pralines, marsepein, boterkoek of warme chocolade: iets voor bij de koffie of na het eten.", ids: ["cl-lindt-pralines", "dw-4000161100379", "bp-l303", "cl-svinando-cioccolata"] },
         { kop: "Sfeer in huis", tekst: "Een geurkaars of geurstokjes voor een warm huis in de wintermaanden.", ids: ["parfum-6aae891b32", "parfum-ab22c2229e", "cl-impressions", "parfum-981dabec99"] },
-        { kop: "Met een persoonlijk tintje", tekst: "Een cadeau dat laat zien dat het echt voor háár is.", ids: ["cg-pers-namesinwordmug-mug", "mmf-bf15b7d49c", "grotek-d62dc6e0c2", "dvzn-253656"] },
+        { kop: "Met een persoonlijk tintje", tekst: "Een cadeau dat laat zien dat het echt voor háár is.", ids: ["cg-pers-namesinwordmug-mug", "mmf-bf15b7d49c", "grotek-d62dc6e0c2", "cadeau-9aedd672f2"] },
         { kop: "Voor haar hobby", tekst: "Koken, puzzelen of lezen: iets voor haar vaste vrije uurtjes.", ids: ["bol-9300000258651028", "dvzn-791023", "cl-wasgij", "bol-9300000277719246"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-haar\">Kerstcadeau voor haar</a> en <a href=\"/voor/haar\">Cadeaus voor haar</a>. Zoek je ook iets voor je vader? Kijk bij <a href=\"/gids/kerstcadeau-vader\">Kerstcadeau voor je vader</a>." },
     { slug: "kerstcadeau-vader", beeld: "dvzn-648493", vakken: ['cadeaus/kerst'],
       titel: "Kerstcadeau voor je vader: 24 ideeën voor de man die niets nodig heeft", kort: "Voor je vader of schoonvader: een goed glas, iets handigs, iets warms of iets voor zijn hobby.",
-      intro: "Wat geef je je vader met Kerst? Iets voor zijn vaste gewoontes. Veel vaders zeggen dat ze niets nodig hebben, maar een goed glas whisky, iets voor de barbecue, warme sloffen of een spannend boek gaat altijd op. Hieronder staan 24 ideeën in zes soorten, van een F1-poster van 8 euro tot een fles whisky.",
+      intro: "Wat geef je je vader met Kerst? Iets voor zijn vaste gewoontes. Veel vaders zeggen dat ze niets nodig hebben, maar mooie whiskyglazen, iets voor de barbecue, warme sloffen of een spannend boek gaat altijd op. Hieronder staan 24 ideeën in zes soorten, van een F1-poster van 8 euro tot een whiskykaraf als wereldbol.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar wat hij elke week doet: barbecueën, darten, lezen, klussen. Een cadeau dat daarbij past wordt gebruikt.", "Drank is een veilige keus. Kies iets dat hij zelf niet zo snel koopt.", "Iets persoonlijks, zoals een invulboek of een plankje met zijn naam, maakt het speciaal.", "Bestel op tijd: rond Kerst duren pakketjes vaak langer."] },
-        { kop: "Een goed glas", tekst: "Whisky of gin, of een set om je whisky een rooksmaak te geven. Alleen voor 18 jaar en ouder.", ids: ["dvzn-648493", "cl-chivas-12", "dc-255153fc43", "cl-bushmills"] },
-        { kop: "Iets lekkers", tekst: "Iets lekkers voor bij de koffie of na het eten.", ids: ["cg-chocolade-game-controller", "cl-lindt-pralines", "bol-9300000158510566", "cl-wijny-kopke"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie whiskyglazen, een karaf of een set om zijn whisky een rooksmaak te geven.", ids: ["dvzn-648493", "cg-rocking-whisky-glazen", "smartp-48b3d1162c", "dvzn-332357"] },
+        { kop: "Iets lekkers", tekst: "Iets lekkers voor bij de koffie of na het eten.", ids: ["cg-chocolade-game-controller", "cl-lindt-pralines", "bol-9300000158510566", "cl-oa-duo"] },
         { kop: "Handig voor elke dag", tekst: "Een goed zakmes of iets voor de barbecue: dingen die hij echt gebruikt.", ids: ["cl-vx-huntsman", "dvzn-386854", "dvzn-859756", "dvzn-611"] },
         { kop: "Warm en knus", tekst: "Sloffen, sokken en een plaid voor de koude avonden.", ids: ["cl-hema-teddy", "bt-51963303362899", "cl-pizza-sokken", "bol-9300000187227306"] },
         { kop: "Met een persoonlijk tintje", tekst: "Een cadeau met zijn naam of zijn verhaal erin.", ids: ["cl-pap-vertel-eens", "mmf-63b50c895d", "cl-pos-f1", "cl-cameralens"] },
@@ -4657,14 +4677,14 @@
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-hem\">Kerstcadeau voor hem</a> en <a href=\"/voor/hem\">Cadeaus voor hem</a>. Zoek je ook iets voor je moeder? Kijk bij <a href=\"/gids/kerstcadeau-moeder\">Kerstcadeau voor je moeder</a>." },
     { slug: "kerstcadeau-vriendin", beeld: "dvzn-779391", vakken: ['cadeaus/kerst'],
       titel: "Kerstcadeau voor je vriendin: 24 ideeën om haar te verrassen", kort: "Voor je vriendin of vrouw: om te verwennen, voor knusse avonden of om samen te doen.",
-      intro: "Wat geef je je vriendin met Kerst? Iets om haar te verwennen, of iets om samen te doen. Een fijne geur of verzorgingsset, iets knus voor de winteravonden op de bank, een spel voor twee of een proeverij laat zien dat je aan haar denkt. Hieronder staan 24 ideeën in zes soorten, van pralines tot champagne.",
+      intro: "Wat geef je je vriendin met Kerst? Iets om haar te verwennen, of iets om samen te doen. Een fijne geur of verzorgingsset, iets knus voor de winteravonden op de bank, een spel voor twee of een proeverij laat zien dat je aan haar denkt. Hieronder staan 24 ideeën in zes soorten, van pralines tot een spel voor twee.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Let de weken ervoor goed op: wat noemt ze terloops? Daar zit vaak het beste cadeau.", "Iets om samen te doen, zoals een spel voor twee of een proeverij, geeft jullie een extra avond samen.", "Een fijne geur of verzorging valt bijna altijd goed. Kies een merk dat ze nog niet heeft.", "Doe er een kaartje bij met een paar woorden van jezelf."] },
         { kop: "Verwennen", tekst: "Een fijne geur of verzorging: iets om zelf van te genieten.", ids: ["parfum-45dbbae7b4", "parfum-45d8b68540", "dvzn-671060bdfd", "parfum-79e274528c"] },
         { kop: "Knus samen", tekst: "Voor de winteravonden op de bank, met z'n tweeën.", ids: ["dvzn-779391", "cl-hema-teddy", "cg-magnetron-sloffen", "bt-49287145423187"] },
         { kop: "Samen doen", tekst: "Een spel voor twee of een uitje: een avond samen als cadeau.", ids: ["bgs-f04e05c013", "bol-9300000227775720", "cl-escape2", "dk-1d0dec2fb3"] },
         { kop: "Iets moois voor in huis", tekst: "Een geurkaars, een bijzondere lamp of een tegeltje met de sterren van jullie dag.", ids: ["mmf-c68ebd1931", "parfum-6aae891b32", "cl-diy-neon", "dvzn-614881"] },
-        { kop: "Iets lekkers", tekst: "Champagne, pralines of marsepein om samen te proosten.", ids: ["cl-lindt-pralines", "cl-moet", "cl-baron-fuente", "dw-4000161100379"] },
+        { kop: "Iets lekkers", tekst: "Pralines, marsepein of mooie glazen om samen te proosten.", ids: ["cl-lindt-pralines", "westwing-1360b3fb47", "bol-9300000020446164", "dw-4000161100379"] },
         { kop: "Voor haar hobby", tekst: "Haken, schilderen of plannen: iets voor haar vrije uurtjes.", ids: ["dvzn-915298", "cl-hema-agenda", "cl-sp-jaarplanner", "dvzn-494959"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-haar\">Kerstcadeau voor haar</a> en <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>. Voor hem: <a href=\"/gids/kerstcadeau-vriend\">Kerstcadeau voor je vriend</a>." },
@@ -4674,7 +4694,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar zijn hobby: gamen, darten, buiten zijn of een biertje. Daar zit het beste cadeau.", "Iets om samen te doen geeft jullie een extra avond samen.", "Een geurtje? Kies er een die hij nog niet heeft, of geef een verzorgingsset.", "Een game? Vraag eerst welke spelcomputer hij heeft, als je het niet zeker weet."] },
         { kop: "Samen doen", tekst: "Een spel voor twee of een uitje: een avond samen als cadeau.", ids: ["g999-3322111a37", "bgs-9e0ca975e5", "dk-15d8cc0fbd", "bol-9300000242642159"] },
-        { kop: "Een goed glas", tekst: "Bier, cocktails of whisky. Alleen voor 18 jaar en ouder.", ids: ["hema-d6fb696345", "cg-bierbrouw-pakket", "cl-shaker-recepten", "cl-chivas-12"] },
+        { kop: "Voor bij een goed glas", tekst: "Bierglazen met jullie foto, een cocktailshaker of een whiskyset.", ids: ["smartp-1ed3987d88", "cadeau-aa0550d68e", "cl-shaker-recepten", "dvzn-208667"] },
         { kop: "Gadgets en muziek", tekst: "Een speaker of een grappige gadget voor op zijn bureau.", ids: ["cg-useless-box", "cg-pratende-flessenopener", "cg-rock-on-koptelefoonhouder", "bol-9300000252617200"] },
         { kop: "Gamen", tekst: "Een game of controller. Weet je niet welke spelcomputer hij heeft? Vraag het eerst even.", ids: ["cl-dualsense", "cl-spiderman2", "cl-gt7", "cl-joycon-laad"] },
         { kop: "Verzorging", tekst: "Een geurtje of verzorgingsset van een bekend merk.", ids: ["cl-kingc-starter", "cl-le-male", "cl-ysl-y", "cl-rit-homme"] },
@@ -4703,7 +4723,7 @@
         { kop: "Zo kies je een cadeau van 15 euro", tekst: "Vier dingen die helpen:", lijst: ["Bij lootjes is 15 euro een veelgebruikt bedrag. Een spel of iets grappigs doet het dan vaak goed.", "Een gezelschapsspel is een cadeau voor de hele familie: je speelt het samen.", "Voor een collega: iets voor op het bureau of iets lekkers voor bij de koffie.", "Doe er een kaartje of een gedichtje bij. Dat maakt een klein cadeau persoonlijk."] },
         { kop: "Voor kinderen", tekst: "Om mee te spelen of te lachen, voor in de schoen of onder de boom.", ids: ["dvzn-8607c53284", "superz-20e81fdb0d", "bol-9300000273887351", "dw-6931722318439"] },
         { kop: "Grappig", tekst: "Voor lootjes of iemand met gevoel voor humor.", ids: ["cg-chocolade-game-controller", "cg-toilet-basketball", "dvzn-7317cbf13a", "cl-beanboozled"] },
-        { kop: "Iets lekkers", tekst: "Truffels, chocolade, boterkoek door de brievenbus of een glaasje port (port alleen voor 18 jaar en ouder).", ids: ["bol-9300000224227519", "bol-9200000117297651", "bp-l303", "wk-0531718"] },
+        { kop: "Iets lekkers", tekst: "Truffels, chocolade, boterkoek door de brievenbus of Italiaanse warme chocolade.", ids: ["bol-9300000224227519", "bol-9200000117297651", "bp-l303", "cl-svinando-cioccolata"] },
         { kop: "Verwennen en knus", tekst: "Een fijne geur in de douche, warme sloffen of iets leuks voor in bad.", ids: ["parfum-18c6d9dd8c", "cg-eenhoorn-sloffen", "dvzn-43cb3e6645", "cl-gr-gin"] },
         { kop: "Iets moois voor in huis", tekst: "Bloemen die nooit verwelken, een mini-zentuin of een lampje om bij te lezen.", ids: ["lego-40460", "dvzn-810911", "dvzn-582187", "dvzn-5a4a71bc8a"] },
         { kop: "Spellen", tekst: "Kaartspellen die je met het hele gezin of met vrienden speelt.", ids: ["bol-9200000073803176", "bol-1004004005605390", "cl-weerwolven", "dgsw-f8d291bf6b"] }
@@ -4728,7 +4748,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar zijn hobby: gamen, darten, F1, de barbecue of een biertje.", "Iets om samen te doen geeft jullie een extra avond of dag samen.", "Nog niet lang samen? Kies iets kleins en leuks. Iets heel persoonlijks kan dan te veel voelen.", "Een geurtje? Kies er een die hij nog niet heeft."] },
         { kop: "Samen doen", tekst: "Een spel, een uitje of een nacht weg: tijd samen als cadeau.", ids: ["dk-dd67a6f2bc", "cl-ttr-europe", "dk-2cf3416932", "cl-hitster"] },
-        { kop: "Een goed glas", tekst: "Whisky, gin of bier, met iets erbij. Alleen voor 18 jaar en ouder.", ids: ["dvzn-648493", "dc-255153fc43", "dvzn-208667", "hema-d6fb696345"] },
+        { kop: "Voor bij een goed glas", tekst: "Whiskyglazen, een bierpul of iets om een cocktail rokerig te maken.", ids: ["dvzn-648493", "cg-rocking-whisky-glazen", "dvzn-208667", "dvzn-868decc4c6"] },
         { kop: "Gadgets", tekst: "Handig, grappig of gewoon heel gaaf om te hebben.", ids: ["cg-b320632dae", "cg-useless-box", "cl-atari-arcade", "tt-dvzn-d0fc92f962"] },
         { kop: "Om te lachen", tekst: "Voor de vriend die overal een grap van maakt.", ids: ["dvzn-c15dcffb40", "dvzn-0b435dbafd", "cg-toilet-football", "dvzn-9fa32eee7e"] },
         { kop: "Iets persoonlijks", tekst: "Iets van jullie twee: de sterrenhemel van jullie dag, jullie plek of een gegraveerde heupfles.", ids: ["ptm-9", "ptm-15546", "smartp-11ee960dc1", "dvzn-70adc8c50c"] },
@@ -4740,7 +4760,7 @@
       intro: "Wat geef je een man? Op de verlanglijstjes van mannen staat een drankpakket bovenaan, daarna verzorging, gereedschap, een kookboek en een geurtje (Lootjestrekken.nl, 2,2 miljoen lijstjes). Daar sluiten deze 24 ideeën op aan, in zes soorten: een goed glas, de barbecue, darten en F1, iets handigs, iets om te lachen en verzorging. Voor je man, vader, broer, collega of zwager, van huissokken van 10 euro tot een compleet dartbord.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar zijn hobby: darten, F1, de barbecue, gamen of een biertje. Daar zit bijna altijd het beste cadeau.", "Een man die alles al heeft? Kies iets om te doen of iets lekkers: dat raakt nooit op de verkeerde manier op.", "Grappig mag, zolang hij er zelf om kan lachen.", "Twijfel je over een geurtje of een maat? Kies dan iets anders, of iets waarvan hij de kleur zelf kan kiezen."] },
-        { kop: "Een goed glas", tekst: "Whisky, gin of wijn, in een doos die klaar is om te geven. Alleen voor 18 jaar en ouder.", ids: ["dvzn-63fc8fc0bd", "cadeau-aa0550d68e", "dc-f248fbc5e8", "dc-f5efe492e2"] },
+        { kop: "Voor bij een goed glas", tekst: "Whiskyglazen, een karaf of een set in een doos die klaar is om te geven.", ids: ["dvzn-63fc8fc0bd", "cadeau-aa0550d68e", "hobbym-cc513083ec", "dvzn-332357"] },
         { kop: "Voor de barbecue", tekst: "Voor de man die de baas is bij de barbecue.", ids: ["butchery-8ba201a540", "butchery-26811de868", "dvzn-1deadb3602", "cl-weber-kettle"] },
         { kop: "Darten, F1 en gamen", tekst: "Om te bouwen, te gooien of te spelen.", ids: ["legoshop-05f7335d75", "dvzn-533927", "bol-9300000163354878", "tf-465bd8d2c7"] },
         { kop: "Handig om te hebben", tekst: "Gereedschap en geluid: dingen die hij elke week gebruikt.", ids: ["cl-vx-huntsman", "cl-bosch-ixo", "fiftie-35cf30a631", "tf-106136001"] },
@@ -4768,10 +4788,10 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Geef samen: met het hele team kun je iets mooiers kiezen, en een invulboek of fotoboek laat zien wat ze voor jullie betekende.", "Een knipoog mag: een mok of tegeltje over het afscheid wordt vaak het cadeau dat ze bewaart.", "Weet je waar ze naartoe gaat? Iets voor de nieuwe baan of het nieuwe bureau is een leuk gebaar.", "Gaat ze met pensioen? Kies iets voor de vrije tijd die eraan komt: de tuin, reizen of een puzzel."] },
         { kop: "Met een knipoog", tekst: "Mokken en tegeltjes over het afscheid, om te lachen en te bewaren.", ids: ["kado-a511d84223", "kadove-ae83582c6a", "amz-b0g3hmpmjf", "bol-9300000242745735"] },
         { kop: "Van het hele team", tekst: "Iedereen schrijft iets, plakt een foto of deelt een recept.", ids: ["amz-9465708399", "bol-9300000095312857", "bol-9300000132871111", "cl-sp-fb-large"] },
-        { kop: "Iets lekkers", tekst: "Om samen op te proosten op de laatste dag. Drank alleen voor 18 jaar en ouder.", ids: ["bp-l303", "dk-00044934", "cl-wijny-kopke", "dc-2811763302"] },
+        { kop: "Iets lekkers", tekst: "Iets lekkers om samen van te genieten op de laatste dag.", ids: ["bp-l303", "dk-00044934", "dk-00043581", "cl-svinando-cioccolata"] },
         { kop: "Iets blijvends", tekst: "Voor op het nieuwe bureau of thuis.", ids: ["parfum-6aae891b32", "bol-9300000131876375", "smartp-48b3d1162c", "cg-ledwordclock"] },
         { kop: "Een klein bedankje", tekst: "Voor als je alleen iets kleins wilt geven.", ids: ["cl-merci-bedankt", "hema-8eff9a5ada", "bp-l001", "coolgi-098cedb937"] },
-        { kop: "Met pensioen", tekst: "Voor de collega die na al die jaren stopt met werken.", ids: ["coolgi-7ce683a16c", "dvzn-60c464eb38", "bp-bloomparty-pensioen", "bol-9300000317113944"] }
+        { kop: "Met pensioen", tekst: "Voor de collega die na al die jaren stopt met werken.", ids: ["coolgi-7ce683a16c", "cadeau-09b838b56a", "bp-bloomparty-pensioen", "bol-9300000317113944"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/gelegenheid/afscheid-pensioen/collega\">Afscheid voor een collega</a>, <a href=\"/gids/cadeau-voor-pensioen\">Cadeau voor iemand met pensioen</a> en <a href=\"/gids/cadeau-voor-collega\">Cadeau voor een collega</a>." },
     { slug: "kerstcadeau-ideeen", beeld: "dvzn-995816", vakken: ["cadeaus/kerst"],
@@ -4781,7 +4801,7 @@
         { kop: "Zo kies je het goede kerstcadeau", tekst: "Vier dingen die helpen:", lijst: ["Spreek een bedrag af met de familie of vrienden, dan is het voor iedereen eerlijk.", "Bestel op tijd: rond kerst duurt bezorgen vaak langer.", "Een spel geeft iets extra's: dan heb je met kerst meteen iets om samen te doen.", "Lootjes trekken met de familie? Dat kan gratis bij ons op de pagina Lootjes trekken, en niemand ziet wie wie heeft."] },
         { kop: "Kleine cadeautjes onder de 15 euro", tekst: "Voor onder de boom of naast het bord.", ids: ["hema-57f8ed0fec", "hema-9330c9dee9", "cl-lindt-teddy", "dkam-4ad5b1cc61"] },
         { kop: "Voor haar", tekst: "Een geur voor in huis, bloemen die nooit verwelken en iets lekkers.", ids: ["parfum-981dabec99", "bol-9300000131876375", "cl-25949", "dvzn-801397"] },
-        { kop: "Voor hem", tekst: "Een goed glas, een foute trui of iets om te bouwen. Drank alleen voor 18 jaar en ouder.", ids: ["dvzn-506744c169", "wk-0531566", "tt-bellatio-880a93e375", "bol-9300000237345417"] },
+        { kop: "Voor hem", tekst: "Sokken in een ginfles, whiskyglazen, een foute trui of iets om te bouwen.", ids: ["dvzn-506744c169", "cg-rocking-whisky-glazen", "tt-bellatio-880a93e375", "bol-9300000237345417"] },
         { kop: "Voor kinderen en tieners", tekst: "Lampjes, een kersttrui en een knuffel.", ids: ["dvzn-995816", "lego-27b82426d9", "t2-nedgame-8b7f297dc1", "hema-8c25c71c2b"] },
         { kop: "Samen spelen met kerst", tekst: "Voor na het kerstdiner, met de hele familie.", ids: ["dvzn-4e9451d3df", "cl-30seconds", "999g-999bom01", "cl-flip7"] },
         { kop: "Iets persoonlijks", tekst: "Met eigen foto's, of iets om ieder jaar weer neer te zetten.", ids: ["smartp-4849c81cba", "cl-instax12", "lego-8c8933b891", "country-0fd006d070"] }
@@ -4802,37 +4822,37 @@
       slot: "Meer ideeën staan bij <a href=\"/voor/tieners\">Cadeaus voor tieners</a>, <a href=\"/gids/cadeau-14-jaar\">Cadeau 14 jaar</a> en <a href=\"/gids/cadeau-18-jaar\">Cadeau 18 jaar</a>." },
     { slug: "cadeau-voor-schoonouders", beeld: "cl-12413", vakken: ["cadeaus/voor-hem", "cadeaus/voor-haar"],
       titel: "Cadeau voor je schoonvader of schoonmoeder: 24 ideeën", kort: "Voor bij de borrel, thee en koffie, voor de tuin, lekker aan tafel, puzzelen en spelen en iets persoonlijks.",
-      intro: "Een cadeau voor je schoonvader of schoonmoeder kiezen is vaak lastig: je wilt het goed doen, maar je kent hun smaak nog niet altijd. Veilig en toch persoonlijk zijn een goede fles, een mooie theeset, iets voor de tuin, iets lekkers voor bij de borrel of een puzzel. Hieronder staan 24 ideeën in zes soorten, van een handcrème van 9 euro tot port van 40 jaar oud.",
+      intro: "Een cadeau voor je schoonvader of schoonmoeder kiezen is vaak lastig: je wilt het goed doen, maar je kent hun smaak nog niet altijd. Veilig en toch persoonlijk zijn een whiskyset, een mooie theeset, iets voor de tuin, iets lekkers voor bij de borrel of een puzzel. Hieronder staan 24 ideeën in zes soorten, van een handcrème van 9 euro tot een luxe kaas- en borrelpakket.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Vraag je partner wat ze graag doen: tuinieren, koken, puzzelen of een glas wijn.", "Kies liever iets moois dat opgaat dan iets voor in huis: smaak in huis is persoonlijk.", "Geef samen met je partner, dan voelt het minder spannend.", "Iets met een foto van de kleinkinderen doet het bij opa en oma altijd goed."] },
-        { kop: "Voor bij de borrel", tekst: "Port, wijn, whisky of kaas. Drank alleen voor 18 jaar en ouder.", ids: ["wny-10934", "dc-0699f11ed4", "hobbym-cc513083ec", "cl-oa-duo"] },
+        { kop: "Voor bij de borrel", tekst: "Kaas, borrelhapjes of een whiskyset met glazen.", ids: ["dk-00044934", "bol-9300000245107849", "hobbym-cc513083ec", "cl-oa-duo"] },
         { kop: "Thee en koffie", tekst: "Mooi servies voor het kopje thee van elke dag.", ids: ["cl-12413", "cl-27618", "dk-00022235", "cl-26422"] },
         { kop: "Voor de tuin", tekst: "Voor wie graag buiten is en vogels kijkt.", ids: ["dk-00041649", "dk-00041643", "cl-windgong", "dvzn-368715"] },
-        { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "dc-7bb55b720d", "cl-truffel-parmigiano", "cl-svinando-cioccolata"] },
+        { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "westwing-1360b3fb47", "cl-truffel-parmigiano", "cl-svinando-cioccolata"] },
         { kop: "Puzzelen en spelen", tekst: "Voor rustige avonden of een spel met de familie.", ids: ["bgs-f7d234d17e", "invul-1e1c620b18", "999g-sch58877", "cl-lama"] },
         { kop: "Iets persoonlijks", tekst: "Met een foto, of iets om haar mee te verwennen.", ids: ["parfum-5519078921", "smartp-7b3879ec1c", "mmf-9ed87c2539", "cl-huisnummer-foto"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/gids/cadeau-voor-vader\">Cadeau voor je vader</a>, <a href=\"/gids/cadeau-voor-moeder\">Cadeau voor je moeder</a> en <a href=\"/voor/opa-oma\">Cadeaus voor opa en oma</a>." },
     { slug: "cadeau-25-euro", beeld: "dvzn-82c9fc5824", vakken: [], max: 25,
       titel: "Cadeau van 25 euro: 24 leuke ideeën tot €25", kort: "Voor haar, voor hem, voor tieners, voor kinderen, voor een collega en iets om te lachen.",
-      intro: "Wil je een cadeau van ongeveer 25 euro geven? Voor dat bedrag heb je al echt iets leuks: een selfielamp, een LEGO-set, een fles prosecco of sloffen met een tekst. Hieronder staan 24 cadeaus tot 25 euro in zes soorten: voor haar, voor hem, voor tieners, voor kinderen, voor een collega en iets om te lachen.",
+      intro: "Wil je een cadeau van ongeveer 25 euro geven? Voor dat bedrag heb je al echt iets leuks: een selfielamp, een LEGO-set, een whiskyglas met je eigen tekst of sloffen met een tekst. Hieronder staan 24 cadeaus tot 25 euro in zes soorten: voor haar, voor hem, voor tieners, voor kinderen, voor een collega en iets om te lachen.",
       delen: [
         { kop: "Zo kies je een cadeau van 25 euro", tekst: "Vier dingen die helpen:", lijst: ["Kies iets dat ze niet snel zelf kopen: dat voelt als een echt cadeau.", "Let op de verzendkosten: die komen er bij sommige winkels nog bij.", "Lootjes of een spel bij een feestje? Spreek het bedrag van tevoren af.", "Wordt een cadeau duurder dan 25 euro, dan halen we het hier vanzelf weg."] },
         { kop: "Voor haar", tekst: "Sloffen, een mini-stijltang, een kookboek of een mooie schaal.", ids: ["dvzn-a1d0a53414", "dvzn-922f9ce250", "bol-9300000124200796", "dille-63032ca960"] },
-        { kop: "Voor hem", tekst: "Gin met sokken, whiskey of iets voor bij het voetbal. Drank alleen voor 18 jaar en ouder.", ids: ["dvzn-506744c169", "dc-1078238160", "dvzn-868decc4c6", "cg-ijsblok-bierkoeler"] },
+        { kop: "Voor hem", tekst: "Gin-sokken, een whiskyglas met eigen tekst of iets voor bij het voetbal.", ids: ["dvzn-506744c169", "smartp-48b3d1162c", "dvzn-868decc4c6", "cg-ijsblok-bierkoeler"] },
         { kop: "Voor tieners", tekst: "Lampjes, een grote beker en een spelcomputer aan je sleutelbos.", ids: ["dvzn-82c9fc5824", "gadget-e762958c34", "amz-b0cx9gt83j", "dvzn-6aa21edc9a"] },
         { kop: "Voor kinderen", tekst: "Om te bouwen, te spelen en voor bij het slapen.", ids: ["dgsw-6b47c22e1d", "dvzn-cf771f14a8", "dvzn-762707", "grotek-32bd78a6c3"] },
-        { kop: "Voor een collega", tekst: "Voor op het bureau of voor de vrijdagmiddag.", ids: ["dvzn-339379", "dvzn-147958", "dvzn-362282", "dc-2811763302"] },
+        { kop: "Voor een collega", tekst: "Voor op het bureau of voor de vrijdagmiddag.", ids: ["dvzn-339379", "dvzn-147958", "dvzn-362282", "dvzn-fcb853102a"] },
         { kop: "Om te lachen", tekst: "Gekke cadeaus waar iedereen om moet lachen.", ids: ["dvzn-34abc02c79", "dvzn-f9a524b9f9", "cg-goudstaaf-deurstop", "cg-geitenyoga-partyspel"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/gids/cadeau-15-euro\">Cadeau van 15 euro</a>, <a href=\"/gids/cadeau-50-euro\">Cadeau van 50 euro</a> en <a href=\"/c/cadeaus?prijs=tot25\">Alle cadeaus tot €25</a>." },
     { slug: "cadeau-50-euro", beeld: "dvzn-195987", vakken: [], max: 50,
       titel: "Cadeau van 50 euro: 24 mooie ideeën tot €50", kort: "Voor haar, voor hem, voor tieners, voor kinderen, iets origineels en om samen te spelen.",
-      intro: "Wil je een cadeau van ongeveer 50 euro geven? Voor dat bedrag geef je echt iets bijzonders: een LEGO-set, een mooie fles wijn met glazen, een Stanley-beker, een 3D-puzzel of een goed spel. Hieronder staan 24 cadeaus tot 50 euro in zes soorten: voor haar, voor hem, voor tieners, voor kinderen, iets origineels en om samen te spelen.",
+      intro: "Wil je een cadeau van ongeveer 50 euro geven? Voor dat bedrag geef je echt iets bijzonders: een LEGO-set, een wijnset in een boek, een Stanley-beker, een 3D-puzzel of een goed spel. Hieronder staan 24 cadeaus tot 50 euro in zes soorten: voor haar, voor hem, voor tieners, voor kinderen, iets origineels en om samen te spelen.",
       delen: [
         { kop: "Zo kies je een cadeau van 50 euro", tekst: "Vier dingen die helpen:", lijst: ["Voor 50 euro kun je iets kiezen dat lang meegaat: een goed spel, een lamp of een set glazen.", "Geef je samen? Dan wordt 50 euro al snel een groot cadeau voor iemand.", "Let op de verzendkosten: die komen er bij sommige winkels nog bij.", "Wordt een cadeau duurder dan 50 euro, dan halen we het hier vanzelf weg."] },
         { kop: "Voor haar", tekst: "Een geur voor in huis, een boeklamp, een retro waterkoker of een mooi spel.", ids: ["parfum-ab22c2229e", "dvzn-614881", "t2-fiftiesstore-325391a8c0", "999g-999win01"] },
-        { kop: "Voor hem", tekst: "Wijn met glazen, cocktails, whiskey of goede dartpijlen. Drank alleen voor 18 jaar en ouder.", ids: ["dc-0699f11ed4", "cl-mixology-kit", "cadeau-aa0550d68e", "bol-9300000320060897"] },
+        { kop: "Voor hem", tekst: "Een wijnset, cocktails, een whiskeyset of goede dartpijlen.", ids: ["dvzn-243456", "cl-mixology-kit", "cadeau-aa0550d68e", "bol-9300000320060897"] },
         { kop: "Voor tieners", tekst: "De beker die iedereen wil, LEGO, muziek en licht voor de kamer.", ids: ["bol-9300000183624857", "lego-77241", "fiftie-c634bd1714", "dvzn-403290"] },
         { kop: "Voor kinderen", tekst: "LEGO, een spel en een lamp.", ids: ["legoshop-3320eeaf7e", "lego-42684", "999g-999kol23b", "dvzn-848628"] },
         { kop: "Iets origineels", tekst: "Cadeaus die je niet overal ziet.", ids: ["dvzn-195987", "cl-wrebbit-hp-express", "cg-kattendeurbel", "spaar-0d768bd10c"] },
@@ -4847,7 +4867,7 @@
         { kop: "Gamen", tekst: "Voor de broer die altijd achter de console zit.", ids: ["cl-dualsense", "dvzn-a4ed4f69b9", "cg-chocolade-game-controller", "dvzn-9688f84b76"] },
         { kop: "LEGO en F1", tekst: "Om te bouwen, of voor aan de muur.", ids: ["lego-77243", "legoshop-f91cb50b25", "legoshop-05f7335d75", "cl-pos-f1"] },
         { kop: "Darten en voetbal", tekst: "Voor de sportieve broer, ook als hij alleen op de bank meekijkt.", ids: ["cl-winmau-neutron", "grotek-57e49bc6a4", "dvzn-868decc4c6", "cg-toilet-football"] },
-        { kop: "Voor bij een biertje", tekst: "Alleen voor 18 jaar en ouder.", ids: ["hema-d6fb696345", "cg-bierbrouw-pakket", "cg-pratende-flessenopener", "fiftie-b848fd6c6e"] },
+        { kop: "Voor bij een biertje", tekst: "Een vilten tas voor zes flesjes, glazen met jullie foto of een flesopener die zijn biertjes telt.", ids: ["dvzn-5718c70e17", "smartp-1ed3987d88", "cg-pratende-flessenopener", "fiftie-b848fd6c6e"] },
         { kop: "Om te lachen", tekst: "Gekke cadeaus waar hij nog lang over praat.", ids: ["cg-useless-box", "dvzn-dcf2cec7a7", "dvzn-a003b63b40", "t2-cadeau-nl-31dfd27d21"] },
         { kop: "Muziek en handig", tekst: "Goede oordopjes, een speaker of een powerbank.", ids: ["tf-106136001", "tf-107001396", "bol-9300000252617200", "jb-samsung-pb20k"] }
       ],
@@ -4859,7 +4879,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een grap over 50 jaar mag, zolang de jarige er zelf om kan lachen.", "Geef je met de hele familie of het werk? Kies dan iets groters, zoals een uitje of een goede fles.", "Iets om te onthouden blijft het langst: een fotoboek, een poster of een tegeltje met een foto.", "Kom je op het feest? Neem iets kleins mee voor erbij, zoals de quiz Hoera 50 jaar."] },
         { kop: "Abraham en Sarah", tekst: "Met een knipoog naar de 50.", ids: ["massa-d13af0c18e", "kadove-428b8d7a18", "kadove-88d388285c", "massa-8de12f27af"] },
         { kop: "Voor het feest", tekst: "Een spel, LEGO-cijfers of een taart van marsepein.", ids: ["massa-b14fda081d", "legoshop-f13ef33683", "legoshop-8e65b8eaee", "dw-4000161470748"] },
-        { kop: "Een goed glas", tekst: "Champagne, oude port of een goede whisky. Alleen voor 18 jaar en ouder.", ids: ["cl-moet", "wny-10932", "dc-fb22636e49", "westwing-1360b3fb47"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een whiskyset of iets met een eigen tekst erop.", ids: ["cl-26772", "smartp-11ee960dc1", "smartp-48b3d1162c", "westwing-1360b3fb47"] },
         { kop: "Iets om te onthouden", tekst: "Een poster, een fotoboek of een tegeltje met een foto.", ids: ["ptm-9", "cl-pf-hardcover", "mmf-63b16f5c97", "cg-37e1269b65"] },
         { kop: "Samen erop uit", tekst: "Een uitje als cadeau: iets wat je nooit vergeet.", ids: ["dk-dd67a6f2bc", "dk-904317b4e5", "dk-78c5a18049", "dk-2cf3416932"] },
         { kop: "Om te verwennen", tekst: "Een fijne verzorgingsset, een geur of iets moois voor in huis.", ids: ["parfum-45dbbae7b4", "parfum-79e274528c", "t2-cadeau-nl-6e2c684cbd", "lego-10348"] }
@@ -4936,20 +4956,20 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een grap over 30 jaar mag, zolang de jarige er zelf om kan lachen.", "Woont de jarige net op zichzelf? Iets voor het eigen huis wordt elke dag gebruikt.", "Iets om samen te doen is vaak het leukste cadeau: een uitje of een spel voor een avond met vrienden.", "Geef je met een groep? Dan kun je samen iets groters kiezen."] },
         { kop: "Om de dag te vieren", tekst: "Iets kleins voor op de verjaardag zelf.", ids: ["massa-9195e5bedc", "legoshop-f13ef33683", "cg-57a56fb762", "bloom-6d523c18f4"] },
-        { kop: "Een goed glas", tekst: "Port van 30 jaar of champagne. Alleen voor 18 jaar en ouder.", ids: ["dc-2170541655", "wny-14949", "cl-moet", "westwing-1360b3fb47"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een cocktailset, een whiskykaraf of een heupfles met eigen tekst.", ids: ["cg-cocktail-shaker-set", "dvzn-332357", "smartp-11ee960dc1", "westwing-1360b3fb47"] },
         { kop: "Voor het eigen huis", tekst: "Een plank, een lamp of een popcornmachine voor een filmavond.", ids: ["dille-58dac9bd47", "t2-fiftiesstore-0200cce51e", "dvzn-530181", "tt-country-acc-40291bdfe5"] },
         { kop: "Samen doen", tekst: "Een uitje of een spel voor een avond met vrienden.", ids: ["dk-dd67a6f2bc", "dk-4c68d47ad3", "cl-hitster", "cl-wavelength"] },
         { kop: "Om te lachen", tekst: "Voor de jarige met humor.", ids: ["dvzn-c15dcffb40", "cg-useless-box", "dvzn-ebc9e55f71", "dvzn-fcb853102a"] },
         { kop: "Om te verwennen", tekst: "Iets fijns voor jezelf, of een camera voor alle feestjes.", ids: ["parfum-45dbbae7b4", "dvzn-648493", "lego-10348", "bol-9300000303263562"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/gelegenheid/verjaardag\">Verjaardag</a>. Wordt iemand 40 of 50? Kijk bij <a href=\"/gids/cadeau-40-jaar\">Cadeau 40 jaar</a> en <a href=\"/gids/cadeau-50-jaar\">Cadeau 50 jaar</a>." },
-    { slug: "cadeau-40-jaar", beeld: "wny-10934", vakken: ["cadeaus/voor-hem", "cadeaus/voor-haar"],
+    { slug: "cadeau-40-jaar", beeld: "dk-85478160d2", vakken: ["cadeaus/voor-hem", "cadeaus/voor-haar"],
       titel: "Cadeau 40 jaar: 24 ideeën voor iemand die 40 wordt", kort: "Voor het feest, een goed glas, iets om te bouwen, een uitje, iets om te onthouden en iets om te verwennen.",
-      intro: "Veertig worden vieren veel mensen groot. Een cadeau mag dan ook iets meer zijn dan normaal: een fles port van 40 jaar oud, een rit in een sportwagen, LEGO voor volwassenen of een poster van de sterrenhemel op de dag van de geboorte. Hieronder staan 24 ideeën in zes soorten, van een zingende kaart tot een helikoptervlucht.",
+      intro: "Veertig worden vieren veel mensen groot. Een cadeau mag dan ook iets meer zijn dan normaal: een rit in een sportwagen, een whiskyset, LEGO voor volwassenen of een poster van de sterrenhemel op de dag van de geboorte. Hieronder staan 24 ideeën in zes soorten, van een zingende kaart tot een helikoptervlucht.",
       delen: [
-        { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Port van 40 jaar oud bij een 40e verjaardag: dat onthoudt iedereen.", "Iets om te doen (een uitje, een bouwpakket) is vaak leuker dan nog een spullen-cadeau.", "Geef je met de hele familie of het werk? Kies dan een uitje of een goede fles.", "Iets persoonlijks zoals een fotoboek of een poster blijft het langst."] },
+        { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een whiskyglas of heupfles met een eigen tekst en het jaartal: dat onthoudt iedereen.", "Iets om te doen (een uitje, een bouwpakket) is vaak leuker dan nog een spullen-cadeau.", "Geef je met de hele familie of het werk? Kies dan een uitje of een goede fles.", "Iets persoonlijks zoals een fotoboek of een poster blijft het langst."] },
         { kop: "Voor het feest", tekst: "Iets geks voor op de verjaardag zelf.", ids: ["legoshop-f13ef33683", "legoshop-8e65b8eaee", "cg-1b56c4d8b5", "cg-57a56fb762"] },
-        { kop: "Een goed glas", tekst: "Port van 40 jaar oud, whisky of champagne. Alleen voor 18 jaar en ouder.", ids: ["wny-10934", "dc-fb22636e49", "cl-laurent-perrier", "dvzn-208667"] },
+        { kop: "Voor bij een goed glas", tekst: "Een whiskyset, een heupfles of glas met eigen tekst, of een rookmaker voor cocktails.", ids: ["cl-26772", "smartp-11ee960dc1", "smartp-48b3d1162c", "dvzn-208667"] },
         { kop: "Iets om te bouwen", tekst: "LEGO en bouwpakketten voor volwassenen.", ids: ["lego-10348", "bol-9300000131876375", "legoshop-f91cb50b25", "cl-cb-midsummer"] },
         { kop: "Een uitje", tekst: "Iets wat je nooit vergeet.", ids: ["dk-85478160d2", "dk-904317b4e5", "dk-cd1e8497b2", "dk-3336fea059"] },
         { kop: "Iets om te onthouden", tekst: "Een poster, een fotoboek of een tegeltje.", ids: ["ptm-9", "ptm-15546", "cl-pf-hardcover", "mmf-9ed87c2539"] },
@@ -4962,7 +4982,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Heeft de jarige alles al? Kies iets dat op gaat of iets om samen te doen.", "Iets met de (klein)kinderen raakt bijna altijd: een foto, hun namen of een fotoboek.", "Kijk naar de hobby: de tuin, puzzelen, een borrel of muziek.", "Geef je met de familie? Dan kun je samen een uitje of iets groters kiezen."] },
         { kop: "Met 60 erop", tekst: "Om de dag te vieren.", ids: ["kadove-a19f33db52", "kadove-f0a0dd3ec0", "cg-57a56fb762", "dw-4000161470748"] },
-        { kop: "Een goed glas", tekst: "Oude port, champagne of glazen voor erbij. Alleen voor 18 jaar en ouder.", ids: ["wny-2413", "cl-moet", "cg-rocking-whisky-glazen", "dvzn-243456"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie glazen, een whiskyset of een wijnset in een boek.", ids: ["westwing-1360b3fb47", "cl-26772", "cg-rocking-whisky-glazen", "dvzn-243456"] },
         { kop: "Voor de tuin", tekst: "Voor wie graag naar de vogels kijkt of in de tuin bezig is.", ids: ["an-10283182", "dk-00007580", "cl-24943", "dk-00043982"] },
         { kop: "Puzzelen en spelen", tekst: "Voor de lange avonden en met de familie.", ids: ["dg-311a752fd8", "cl-wasgij", "999g-giggcqa", "dgsw-c98e531d85"] },
         { kop: "Iets om te onthouden", tekst: "Een fotoboek, een poster of een tegeltje met een foto.", ids: ["cl-pf-hardcover", "cg-37e1269b65", "mmf-63b16f5c97", "ptm-9"] },
@@ -4982,16 +5002,16 @@
       ],
       slot: "Meer vind je bij <a href=\"/c/sport-outdoor\">Sport & outdoor</a> en <a href=\"/voor/tieners\">cadeaus voor tieners</a>. Voor kinderen: <a href=\"/voor/kinderen\">cadeaus voor kinderen</a>." },
     { slug: "kerstpakket-ideeen", beeld: "dk-00044934", vakken: ['cadeaus/kerst', 'eten-drinken'],
-      titel: "Kerstpakket ideeën: 24 pakketten en cadeausets om te geven", kort: "Voor familie, vrienden of collega's: zoet, een borrel, een goed glas, verwennen of samen een film.",
+      titel: "Kerstpakket ideeën: 24 pakketten en cadeausets om te geven", kort: "Voor familie, vrienden of collega's: zoet, een borrel, een echt kerstpakket, verwennen of samen een film.",
       intro: "Wat stop je in een kerstpakket? Iets waar de ontvanger samen met anderen van kan genieten. In plaats van zelf een pakket samen te stellen, kun je ook een kant-en-klaar pakket of een cadeauset geven: chocolade, een borrelpakket, iets voor bij de thee, een goede fles of een filmavond. Hieronder staan 24 ideeën in zes soorten, van een blik stroopwafels tot een luxe cadeauset.",
       delen: [
         { kop: "Zo kies je het goede kerstpakket", tekst: "Vier dingen die helpen:", lijst: ["Een pakket voor collega's? Kies iets dat iedereen kan gebruiken; niet iedereen drinkt alcohol.", "Iets om samen te doen, zoals een filmavond of een borrel, maakt er een gezellige avond van.", "Een brievenbuspakket hoeft niet thuis afgehaald te worden: het past door de brievenbus.", "Bestel op tijd: rond Kerst is het druk bij de bezorgers."] },
         { kop: "Verwenpakketten", tekst: "Een cadeauset met zeep, douchegel en lotion: om van te genieten.", ids: ["parfum-7e28f46e8a", "parfum-45d8b68540", "cl-rit-sakura", "cl-grace-cole"] },
         { kop: "Zoet en lekker", tekst: "Chocolade en karamel om te delen.", ids: ["bol-9300000251768734", "bol-9200000117297651", "bol-9300000158510566", "bol-9300000000837154"] },
         { kop: "Borrelpakketten", tekst: "Voor bij de borrel of de barbecue: hapjes, sauzen en olijfolie.", ids: ["dk-00044934", "bp-l229", "cl-jackdaniels-bbq", "cl-olijfolie-proef"] },
-        { kop: "Met een goed glas", tekst: "Bier, wijn, champagne of whiskey in een mooie doos. Alleen voor 18 jaar en ouder.", ids: ["cl-gouden-carolus", "cl-wijny-proef-rose", "dc-1652149584", "dc-1162537413"] },
+        { kop: "Echte kerstpakketten", tekst: "Kant-en-klaar in een mooie doos: voor collega's, familie of vrienden.", ids: ["bol-9300000444859249", "bol-9300000195684144", "bol-9300000057001441", "bol-9300000442610569"] },
         { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dk-00040239", "dk-00044932", "dk-00043581", "hema-8eff9a5ada"] },
-        { kop: "Samen thuis", tekst: "Een filmavond, iets voor de Formule 1-fan of zelf bier brouwen.", ids: ["bol-9300000340258889", "cl-filmpakket", "dvzn-533927", "cl-brew-monkey"] }
+        { kop: "Samen thuis", tekst: "Een filmavond, iets voor de Formule 1-fan of een fondue.", ids: ["bol-9300000340258889", "cl-filmpakket", "dvzn-533927", "dvzn-801397"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>, <a href=\"/gids/kerstcadeau-moeder\">Kerstcadeau voor je moeder</a> en <a href=\"/gids/kerstcadeau-vader\">Kerstcadeau voor je vader</a>." },
     { slug: "cadeau-kind-1-jaar", beeld: "cl-vtech-speeltafel", vakken: [], leeftijd: 1,
@@ -5309,13 +5329,13 @@
       slot: 'Klaar om te beginnen? Kijk bij <a href="/voor">Voor wie</a> of <a href="/categorieen">Zoek een product</a> en tik op het hartje bij wat je wilt hebben. Je lijstje vind je onder <a href="/favorieten">Lijstje</a>. Lootjes trekken met de hele groep? Dat kan gratis met de <a href="/lootjes-trekken/">lootjes-trekker</a>.' },
     { slug: 'kerstcadeau-voor-haar', beeld: 'parfum-45dbbae7b4', vakken: ['cadeaus/kerst', 'cadeaus/voor-haar'],
       titel: 'Kerstcadeau voor een vrouw: 24 ideeën om haar blij te maken', kort: 'Voor je vrouw, vriendin, zus of collega: om te verwennen, voor in huis, iets lekkers of iets persoonlijks.',
-      intro: 'Wat geef je een vrouw met Kerst? Iets waar ze even van geniet: een fijne geur, iets warms voor de winteravonden, iets lekkers of iets moois voor in huis. Hieronder staan 24 ideeën in zes soorten, van een hoodie-deken van 12 euro tot een fles champagne. Zoek je iets voor je moeder of je vriendin? Daar hebben we aparte lijstjes voor.',
+      intro: 'Wat geef je een vrouw met Kerst? Iets waar ze even van geniet: een fijne geur, iets warms voor de winteravonden, iets lekkers of iets moois voor in huis. Hieronder staan 24 ideeën in zes soorten, van een hoodie-deken van 12 euro tot iets moois voor de kersttafel. Zoek je iets voor je moeder of je vriendin? Daar hebben we aparte lijstjes voor.',
       delen: [
         { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Denk aan wat ze in de winter graag doet: op de bank met een plaid, in bad, puzzelen of koken.', 'Iets dat op gaat valt bijna altijd goed: verzorging, iets lekkers of een geurkaars.', 'Persoonlijk raakt vaak meer dan duur: een mok met haar geboortebloem of een tegeltje met een foto.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
         { kop: 'Even verwennen', tekst: 'Verzorging en iets om even bij te komen.', ids: ['parfum-45dbbae7b4', 'bloom-f6daaba72c', 'dk-00045266', 'cl-gr-gluhwein'] },
         { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['hema-efaa95f521', 'dvzn-640ca3d05d', 'bt-46901990228307', 'dvzn-e9a4c2cf2b'] },
         { kop: 'Kerstsfeer in huis', tekst: 'Een geurkaars, lichtjes of iets moois voor de kersttafel.', ids: ['lego-10370', 'dkam-4c55c33197', 'country-b8fd99e550', 'bp-p0061ke'] },
-        { kop: 'Iets lekkers en bubbels', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['cl-moet', 'bol-9300000020446164', 'dk-00043581', 'westwing-1360b3fb47'] },
+        { kop: 'Iets lekkers', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['dw-4000161100379', 'bol-9300000020446164', 'dk-00043581', 'westwing-1360b3fb47'] },
         { kop: 'Met een persoonlijk tintje', tekst: 'Een cadeau dat laat zien dat het echt voor háár is.', ids: ['cg-pers-monthflower-mug', 'mmf-63b16f5c97', 'dvzn-fcb853102a', 'dvzn-70adc8c50c'] },
         { kop: 'Om te maken of te spelen', tekst: 'Voor de vrije dagen tussen Kerst en oud en nieuw.', ids: ['t2-cadeau-nl-6e2c684cbd', 'lego-10348', 'cl-azul', 'amz-b09sg9bb7m'] }
       ],
@@ -5325,7 +5345,7 @@
       intro: 'Mannen zeggen vaak dat ze niets nodig hebben. Toch zijn er genoeg cadeaus waar ze stiekem blij mee zijn: een goede fles, iets grappigs, een handige gadget of iets om te bouwen in de kerstvakantie. Hieronder staan 24 ideeën in zes soorten, van een flesopener van 8 euro tot oordopjes van Teufel. Zoek je iets voor je vader of je vriend? Daar hebben we aparte lijstjes voor.',
       delen: [
         { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Kijk naar zijn hobby: voetbal, F1, gamen, koken of de barbecue. Een cadeau dat daarbij past wordt gebruikt.', 'Een goede fles valt bijna altijd goed. Kies iets dat hij zelf niet snel koopt.', 'Grappig mag, zolang hij er zelf om kan lachen.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
-        { kop: 'Iets te drinken', tekst: 'Whisky, port of gin, met iets erbij. Alleen voor 18 jaar en ouder.', ids: ['dvzn-332357', 'dvzn-63fc8fc0bd', 'wny-10932', 'dc-255153fc43'] },
+        { kop: 'Voor bij een goed glas', tekst: 'Een whiskykaraf, glazen die schommelen of sokken in een whiskeyfles.', ids: ['dvzn-332357', 'dvzn-63fc8fc0bd', 'cg-rocking-whisky-glazen', 'hobbym-cc513083ec'] },
         { kop: 'Om te lachen', tekst: 'Voor de man die overal een grap van maakt.', ids: ['cl-kersttrui', 'dvzn-fef9e43e90', 'cg-useless-box', 'dvzn-0b435dbafd'] },
         { kop: 'Gadgets en muziek', tekst: 'Handige en leuke snufjes.', ids: ['cg-b320632dae', 'tf-107000900', 'cl-atari-arcade', 'dvzn-a4ed4f69b9'] },
         { kop: 'Bouwen en spelen', tekst: 'Voor de vrije dagen: LEGO voor volwassenen of een spel voor twee.', ids: ['lego-77243', 'lego-10363', 'lego-75438', '999g-999skt01'] },
@@ -5501,8 +5521,8 @@
           ids: ['bp-l311', 'cl-myka-naam-hart', 'cl-celeste', 'cl-guess-moon'] },
         { kop: 'Even helemaal verwend', tekst: 'Een fijne geur, een bad vol bruisballen of een kaars voor lange avonden: een moment voor haarzelf.',
           ids: ['cl-rit-sakura', 'cl-lveb', 'cl-dvzjn-hart', 'cl-ww-trilogy'] },
-        { kop: 'Iets om samen te doen', tekst: 'Een spel voor jullie twee of met vrienden, of een fles om op iets te proosten.',
-          ids: ['999g-999win01', 'cl-ttr-europe', 'cl-the-mind', 'dc-1665638250'] },
+        { kop: 'Iets om samen te doen', tekst: 'Een spel voor jullie twee of met vrienden, of mooie glazen om op iets te proosten.',
+          ids: ['999g-999win01', 'cl-ttr-europe', 'cl-the-mind', 'dc-2163335415'] },
         { kop: 'Mooi voor in huis', tekst: 'Bloemen die nooit verwelken, een lamp die overdag zonlicht opslaat en een camera voor alle mooie momenten.',
           ids: ['bol-9300000131876375', 'dvzn-530181', 'dvzn-647292', 'cl-instax12'] }
       ],
@@ -5536,11 +5556,11 @@
           lijst: [
             'Kijk naar wat hij elke week doet: koken, de tuin, sporten, klussen. Een beter stuk gereedschap daarvoor valt altijd goed.',
             'Kies kwaliteit boven gadgets: liever één goed mes dan een la vol snufjes.',
-            'Drinkt hij graag een glas? Een goede whisky of mooie glazen maakt het af.',
+            'Drinkt hij graag een glas? Mooie glazen of een rookset maken het af.',
             'Geef er een moment bij: samen een spel spelen of samen proeven.'
           ] },
-        { kop: 'Voor bij de borrel', tekst: 'Een goede whisky, een rookset om er iets bijzonders van te maken, of een kist speciaalbier.',
-          ids: ['dc-2468345961', 'dvzn-648493', 'hema-d6fb696345', 'bol-9300000015405237'] },
+        { kop: 'Voor bij de borrel', tekst: 'Mooie whiskyglazen, een rookset om er iets bijzonders van te maken, of een bierpul voor bij het voetbal.',
+          ids: ['cg-rocking-whisky-glazen', 'dvzn-648493', 'dvzn-868decc4c6', 'bol-9300000015405237'] },
         { kop: 'Voor de keuken en de barbecue', tekst: 'Dingen die hij elke week gebruikt, en die net wat beter zijn dan wat hij al heeft.',
           ids: ['bol-9300000083266771', 'bol-9200000002756942', 'bol-9300000258651028'] },
         { kop: 'Voor zijn hobby en ontspanning', tekst: 'Een mooi schaakbord, een dartset, een spel voor de familie of warme pantoffels voor de avond.',
@@ -5632,7 +5652,7 @@
           lijst: [
             'Twijfel je over hun smaak? Kies iets dat op gaat: een mooie fles, een geurkaars, iets lekkers.',
             'Licht is bijna altijd raak: een nieuwe woning heeft nooit genoeg sfeerverlichting.',
-            'Geef iets voor het eerste avondje thuis: glazen, een plank vol lekkers, een fles bubbels.',
+            'Geef iets voor het eerste avondje thuis: glazen, een plank vol lekkers, iets voor de fondue.',
             'Met een groep? Leg samen in voor één mooi cadeau in plaats van vijf kleine.',
             'Een kaartje met "veel geluk in jullie nieuwe huis" maakt elk cadeau persoonlijker.'
           ] },
@@ -5642,11 +5662,11 @@
           ids: ['t2-hema-5623840130', 'tt-country-acc-40291bdfe5', 'dille-58dac9bd47', 'westwing-0a01a1d0b5'] },
         { kop: 'Vrolijke details', tekst: 'Een wiebelend geluksmannetje, een knipogende kattenklok of een vaas met kleur: kleine dingen die een huis eigen maken.',
           ids: ['westwing-0f62b95423', 't2-fiftiesstore-52c8a41b59', 't2-hema-52e407e77f'] },
-        { kop: 'Om te proosten op het nieuwe huis', tekst: 'Champagne, mooie glazen of een karaf: het eerste feestje in het nieuwe huis kan beginnen.',
-          ids: ['dc-1665638250', 'decantalo-4c6ef11dc4', 'dc-2163335415'] }
+        { kop: 'Om te proosten op het nieuwe huis', tekst: 'Mooie glazen of een karaf: het eerste feestje in het nieuwe huis kan beginnen.',
+          ids: ['westwing-1360b3fb47', 'decantalo-4c6ef11dc4', 'dc-2163335415'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/gelegenheid/housewarming">Housewarming</a> en <a href="/c/wonen">Wonen</a>.' },
-    { slug: 'cadeau-wijnliefhebber', beeld: 'decantalo-4c6ef11dc4', vakken: ['eten-drinken/wijn', 'eten-drinken/bubbels', 'eten-drinken/drankaccessoires'],
+    { slug: 'cadeau-wijnliefhebber', drank: true, beeld: 'decantalo-4c6ef11dc4', vakken: ['eten-drinken/wijn', 'eten-drinken/bubbels', 'eten-drinken/drankaccessoires'],
       titel: 'Cadeau voor een wijnliefhebber: van mooie fles tot Riedel-glazen', kort: 'Wijn geven zonder zelf kenner te zijn: veilige flessen, mooie glazen en luxe om uit te pakken.',
       intro: 'Een fles wijn geven aan iemand die er verstand van heeft: veel mensen vinden dat spannend. Niet nodig. Er zijn flessen waar vrijwel elke wijnliefhebber blij van wordt, en je hoeft er zelf geen kenner voor te zijn. De veiligste keuze is een Rioja Reserva uit Spanje: een klassieker die bij bijna iedereen goed valt. En wil je iets geven dat níét op gaat, kies dan mooie glazen of een karaf. Daar denkt iemand bij elk glas weer even aan je. Alle wijnen hieronder komen van een echte wijnwinkel, niet uit het supermarktschap.',
       delen: [
@@ -5786,9 +5806,9 @@
     'kerstcadeau-voor-haar': { top: [['Onze topkeuze', 'parfum-45dbbae7b4'], ['Onder de 15 euro', 'hema-efaa95f521'], ['Persoonlijk', 'cg-pers-monthflower-mug']], faq: [
       ['Wat geef je een vrouw met Kerst?', 'Iets om te verwennen, zoals een verzorgingsset of geurkaars, iets warms voor de winter, iets lekkers of iets persoonlijks zoals een mok met haar geboortebloem.'],
       ['Wat is een leuk kerstcadeau voor een vrouw onder de 25 euro?', 'Een hoodie-deken van HEMA, sloffen met een tekst, een bodyscrub, een geurkaars of een cadeauset door de brievenbus. In deze gids staan genoeg ideeën onder de 25 euro.'],
-      ['Wat geef je een vrouw die alles al heeft?', 'Iets dat op gaat (verzorging, bubbels, iets lekkers) of iets om te doen, zoals een muziekdoosje maken of een spel voor de feestdagen.']] },
+      ['Wat geef je een vrouw die alles al heeft?', 'Iets dat op gaat (verzorging, iets lekkers) of iets om te doen, zoals een muziekdoosje maken of een spel voor de feestdagen.']] },
     'kerstcadeau-voor-hem': { top: [['Onze topkeuze', 'dvzn-332357'], ['Onder de 10 euro', 'dvzn-0b435dbafd'], ['Om te lachen', 'cl-kersttrui']], faq: [
-      ['Wat geef je een man met Kerst?', 'Iets dat bij zijn hobby past: een goede fles whisky of port, LEGO voor volwassenen, een gadget, iets voor de barbecue of een grappig cadeau zoals een foute kersttrui.'],
+      ['Wat geef je een man met Kerst?', 'Iets dat bij zijn hobby past: mooie whiskyglazen, LEGO voor volwassenen, een gadget, iets voor de barbecue of een grappig cadeau zoals een foute kersttrui.'],
       ['Wat is een leuk kerstcadeau voor een man onder de 25 euro?', 'Een muts met speakers, de Useless Box, LEGO Speed Champions, BBQ-gereedschap, warme pantoffels of een whisky-set met sokken. In deze gids staan genoeg ideeën onder de 25 euro.'],
       ['Wat geef je een man die alles al heeft?', 'Iets dat op gaat, zoals een goede fles of een burgerpakket, of iets om te doen, zoals een bouwpakket of een spel voor twee.']] },
     'surprise-maken': { top: [['Onze topkeuze', 'bol-9300000226734832'], ['Voor in de surprise', 'cl-cr-geur'], ['Iets lekkers', 'dk-00015052']], faq: [
@@ -5809,7 +5829,7 @@
       ['Wat geef je een man die zegt dat hij niets nodig heeft?', 'Iets wat hij zelf niet zou kopen maar wel gebruikt: een goede hoofdlamp, een vleesthermometer of een spel voor na het uitpakken. Of maak het grappig, daar is pakjesavond voor.'],
       ['Wat is een leuk lootjescadeau voor een man onder de €15?', 'Een bierbon, een verzorgingsset of een handig stuk gereedschap zoals een precisieschroevendraaier. In deze gids staan vier ideeën tot €12.'],
       ['Hoe maak ik er een surprise van?', 'Verpak het cadeau in iets wat bij hem past, zoals een grote dartpijl of een bierflesje van karton. In onze gids Surprise maken staat een stappenplan.'],
-      ['Wat is een goed sinterklaascadeau voor je vader?', 'Iets voor zijn vaste gewoontes: een goede koffiepot, een bierkist met breekijzer, een verzorgingsset of iets lekkers. In deze gids staan vier ideeën speciaal voor je vader.'],
+      ['Wat is een goed sinterklaascadeau voor je vader?', 'Iets voor zijn vaste gewoontes: een goede koffiepot, een bierpul voor bij het voetbal, een verzorgingsset of iets lekkers. In deze gids staan vier ideeën speciaal voor je vader.'],
       ['Wat geef je een volwassen man voor Sinterklaas?', 'Hetzelfde als voor een kind, alleen met een knipoog: iets grappigs voor pakjesavond en iets wat hij echt gebruikt. Met een plagerig gedicht erbij wordt elk cadeau persoonlijk.']] },
     'sinterklaascadeau-vrouw': { top: [['Onze topkeuze', 'dvzn-29043e5ee8'], ['Beste koop', 'dk-00043546'], ['Om te verwennen', 'hema-efaa95f521']], faq: [
       ['Wat geef je een vrouw voor Sinterklaas?', 'Iets om even tot rust te komen valt bijna altijd goed: warme sloffen, een zachte hoodie of een fijne geur. Houdt ze van maken? Dan is een haakpakket of schilderen op nummer een schot in de roos.'],
@@ -5825,34 +5845,34 @@
       ['Hoeveel geef je uit aan een kerstcadeau voor een kind?', 'Dat is heel persoonlijk. Veel mensen geven 20 tot 50 euro uit aan een eigen kind en wat minder aan neefjes, nichtjes of kleinkinderen. Spreek het in de familie af, dan voelt niemand zich bezwaard.'],
       ['Wat geef je een kind dat alles al heeft?', 'Iets om te dóén in plaats van te hebben: een bouwset, een spel voor de kerstvakantie of iets om zelf te maken. Daar hebben ze langer plezier van dan van nog een knuffel.'],
       ['Welk speelgoed past bij een kind van 2 of 3 jaar?', 'Stevig hout en DUPLO: groot, zonder kleine onderdelen en bijna niet kapot te krijgen. Kijk altijd naar de leeftijd op de verpakking.']] },
-    "kerstcadeau-moeder": { top: [["Onze topkeuze", "parfum-6aae891b32"], ["Onder de 10 euro", "cl-lindt-pralines"], ["Persoonlijk", "cg-pers-namesinwordmug-mug"]], faq: [["Wat geef je je moeder met Kerst?", "Iets om te verwennen of tot rust te komen: een verzorgingsset, een geurkaars of geurstokjes, een warme plaid of iets lekkers. Wil je het persoonlijk maken, kies dan een mok of kaars met de namen van de kinderen."], ["Wat geef je een moeder die alles al heeft?", "Iets dat op gaat, zoals een verzorgingsset, pralines of een goede port. Of iets persoonlijks, zoals kraskaarten met redenen waarom zij de beste moeder is."], ["Hoeveel geef je uit aan een kerstcadeau voor je moeder?", "Dat bepaal je zelf. In deze gids staat van alles iets, van pralines onder de 10 euro tot een geurset van rond de 75 euro."]] },
-    "kerstcadeau-vader": { top: [["Onze topkeuze", "dvzn-648493"], ["Onder de 10 euro", "cl-pos-f1"], ["Persoonlijk", "cl-pap-vertel-eens"]], faq: [["Wat geef je je vader met Kerst?", "Iets voor zijn vaste gewoontes: een goede whisky of gin, iets voor de barbecue, een zakmes, warme sloffen of een spannend boek. Persoonlijk wordt het met het invulboek \"Pap, vertel eens\" of een plankje met zijn naam."], ["Wat geef je een vader die alles al heeft?", "Iets dat op gaat, zoals een goede fles of iets lekkers, of iets om samen te doen. \"Pap, vertel eens\" is een invulboek waarin hij over zijn leven vertelt; dat heeft hij vast nog niet."], ["Hoeveel geef je uit aan een kerstcadeau voor je vader?", "Dat bepaal je zelf. In deze gids staat van alles iets, van een poster van 8 euro tot een proefpakket van rond de 50 euro."]] },
-    "kerstcadeau-vriendin": { top: [["Onze topkeuze", "dvzn-779391"], ["Onder de 10 euro", "cl-lindt-pralines"], ["Samen doen", "bgs-f04e05c013"]], faq: [["Wat geef je je vriendin met Kerst?", "Iets om haar te verwennen, zoals een verzorgingsset of geurkaars, iets knus voor op de bank, een spel voor twee of een uitje samen. Iets lekkers zoals champagne of pralines kan er altijd bij."], ["Wat geef je je vriendin als jullie nog niet lang samen zijn?", "Iets kleins en leuks, zoals een geurkaars, pralines of een spel voor twee. Iets heel duurs of heel persoonlijks kan dan te veel voelen."], ["Hoeveel geef je uit aan een kerstcadeau voor je vriendin?", "Dat bepaal je zelf. In deze gids staat van alles iets, van pralines onder de 10 euro tot een wijnproeverij van rond de 65 euro."]] },
+    "kerstcadeau-moeder": { top: [["Onze topkeuze", "parfum-6aae891b32"], ["Onder de 10 euro", "cl-lindt-pralines"], ["Persoonlijk", "cg-pers-namesinwordmug-mug"]], faq: [["Wat geef je je moeder met Kerst?", "Iets om te verwennen of tot rust te komen: een verzorgingsset, een geurkaars of geurstokjes, een warme plaid of iets lekkers. Wil je het persoonlijk maken, kies dan een mok of kaars met de namen van de kinderen."], ["Wat geef je een moeder die alles al heeft?", "Iets dat op gaat, zoals een verzorgingsset, pralines of marsepein. Of iets persoonlijks, zoals kraskaarten met redenen waarom zij de beste moeder is."], ["Hoeveel geef je uit aan een kerstcadeau voor je moeder?", "Dat bepaal je zelf. In deze gids staat van alles iets, van pralines onder de 10 euro tot een geurset van rond de 75 euro."]] },
+    "kerstcadeau-vader": { top: [["Onze topkeuze", "dvzn-648493"], ["Onder de 10 euro", "cl-pos-f1"], ["Persoonlijk", "cl-pap-vertel-eens"]], faq: [["Wat geef je je vader met Kerst?", "Iets voor zijn vaste gewoontes: mooie whiskyglazen, iets voor de barbecue, een zakmes, warme sloffen of een spannend boek. Persoonlijk wordt het met het invulboek \"Pap, vertel eens\" of een plankje met zijn naam."], ["Wat geef je een vader die alles al heeft?", "Iets dat op gaat, zoals iets lekkers, of iets om samen te doen. \"Pap, vertel eens\" is een invulboek waarin hij over zijn leven vertelt; dat heeft hij vast nog niet."], ["Hoeveel geef je uit aan een kerstcadeau voor je vader?", "Dat bepaal je zelf. In deze gids staat van alles iets, van een poster van 8 euro tot een proefpakket van rond de 50 euro."]] },
+    "kerstcadeau-vriendin": { top: [["Onze topkeuze", "dvzn-779391"], ["Onder de 10 euro", "cl-lindt-pralines"], ["Samen doen", "bgs-f04e05c013"]], faq: [["Wat geef je je vriendin met Kerst?", "Iets om haar te verwennen, zoals een verzorgingsset of geurkaars, iets knus voor op de bank, een spel voor twee of een uitje samen. Iets lekkers zoals pralines of marsepein kan er altijd bij."], ["Wat geef je je vriendin als jullie nog niet lang samen zijn?", "Iets kleins en leuks, zoals een geurkaars, pralines of een spel voor twee. Iets heel duurs of heel persoonlijks kan dan te veel voelen."], ["Hoeveel geef je uit aan een kerstcadeau voor je vriendin?", "Dat bepaal je zelf. In deze gids staat van alles iets, van pralines onder de 10 euro tot een wijnproeverij van rond de 65 euro."]] },
     "kerstcadeau-vriend": { top: [["Onze topkeuze", "bol-9300000252617200"], ["Klein cadeau", "cg-pratende-flessenopener"], ["Samen doen", "g999-3322111a37"]], faq: [["Wat geef je je vriend met Kerst?", "Iets voor zijn hobby of iets om samen te doen: een spel voor twee, een escape room, een speaker, een game, een geurtje of iets voor bij een biertje."], ["Wat geef je je vriend als jullie nog niet lang samen zijn?", "Iets kleins en leuks, zoals een spel voor twee, een grappige gadget of een cocktailshaker. Iets heel duurs of heel persoonlijks kan dan te veel voelen."], ["Hoeveel geef je uit aan een kerstcadeau voor je vriend?", "Dat bepaal je zelf. In deze gids staat van alles iets, van een dartset van rond de 14 euro tot een escape room of een controller van rond de 70 euro."]] },
     "cadeau-10-euro": { top: [["Onze topkeuze", "dvzn-4d97c0ab44"], ["Om te lachen", "dvzn-655af9bd06"], ["Iets lekkers", "cl-lindt-pralines"]], faq: [["Wat is een leuk cadeau van 10 euro?", "Iets dat je meteen snapt als je het uitpakt: een grappige pen in de vorm van een gillende kip, een mini-arcadespel, een doos pralines, een kaartspel of een handcrème. In deze gids staan 24 ideeën tot 10 euro."], ["Wat geef je bij lootjes van 10 euro?", "Kijk eerst op het verlanglijstje. Is er geen lijstje, kies dan iets grappigs of iets lekkers: dat valt bijna altijd goed."], ["Wat geef je een collega voor 10 euro?", "Een mok, een massageroller voor de nek, een spel voor de pauze of iets lekkers voor bij de koffie."]] },
     "cadeau-15-euro": { top: [["Onze topkeuze", "cg-chocolade-game-controller"], ["Voor in huis", "lego-40460"], ["Voor het hele gezin", "bol-9200000073803176"]], faq: [["Wat is een leuk cadeau van 15 euro?", "Een kaartspel voor de hele familie, een LEGO-set, een grappige mok, warme sloffen of iets lekkers. In deze gids staan 24 ideeën tot 15 euro."], ["Wat geef je bij lootjes van 15 euro?", "Kijk eerst op het verlanglijstje. Is er geen lijstje, dan doet een spel of iets grappigs het vaak goed, zoals een gamecontroller van chocolade of een basketbalnetje voor de wc."], ["Wat geef je een kind voor 15 euro?", "Iets om mee te spelen of om te lachen: een dinosaurusmasker, een Super Mario-lampje, een Squishmallow of een snoepautomaatje."]] },
     "cadeau-voor-opa": { top: [["Onze topkeuze", "dg-311a752fd8"], ["Onder de 10 euro", "dk-00007580"], ["Met de kleinkinderen", "mmf-63b16f5c97"]], faq: [["Wat geef je een opa die alles heeft?", "Iets met de kleinkinderen, zoals een tegeltje met een foto of een familieposter met hun namen. Of iets om te doen: een 3D-puzzel, Rummikub of een voederhuisje om de vogels te bekijken."], ["Wat is een leuk cadeau voor opa onder de 20 euro?", "Een voederhuisje voor vogelpindakaas, een tegeltje met een foto, schommelende whiskyglazen, een kaartspel met tuintips of het Handboek voor opa’s en oma’s."], ["Wat geef je opa met Kerst?", "Iets warms, zoals sloffen die je in de magnetron opwarmt of een elektrische deken, of iets voor de kerstdagen: een puzzel, een spel of bonbons."]] },
-    "afscheidscadeau-collega": { top: [["Onze topkeuze", "amz-9465708399"], ["Onder de 15 euro", "kado-a511d84223"], ["Iets blijvends", "bol-9300000131876375"]], faq: [["Wat geef je een collega die weggaat?", "Iets van het hele team: een invulboek of fotoboek waarin iedereen iets schrijft, met iets lekkers of een mok met een knipoog erbij. Zo neemt ze een mooie herinnering mee."], ["Hoeveel geef je voor een afscheidscadeau?", "Alleen geef je meestal 5 tot 15 euro. Met het team samen leggen veel mensen een paar euro per persoon in, en dan kun je iets mooiers kiezen."], ["Wat is een leuk afscheidscadeau onder de 15 euro?", "Een mok 'Leukste en beste kanjers', een brievenbus-boterkoek, een doosje Merci, brievenbusrozen of een massageroller voor de nek."], ["Wat geef je een collega die met pensioen gaat?", "Iets voor de vrije tijd die eraan komt: een bucketlist om te reizen, een pensioenmok met naam, een fles wijn met een grappig etiket of iets voor de tuin."]] },
+    "afscheidscadeau-collega": { top: [["Onze topkeuze", "amz-9465708399"], ["Onder de 15 euro", "kado-a511d84223"], ["Iets blijvends", "bol-9300000131876375"]], faq: [["Wat geef je een collega die weggaat?", "Iets van het hele team: een invulboek of fotoboek waarin iedereen iets schrijft, met iets lekkers of een mok met een knipoog erbij. Zo neemt ze een mooie herinnering mee."], ["Hoeveel geef je voor een afscheidscadeau?", "Alleen geef je meestal 5 tot 15 euro. Met het team samen leggen veel mensen een paar euro per persoon in, en dan kun je iets mooiers kiezen."], ["Wat is een leuk afscheidscadeau onder de 15 euro?", "Een mok 'Leukste en beste kanjers', een brievenbus-boterkoek, een doosje Merci, brievenbusrozen of een massageroller voor de nek."], ["Wat geef je een collega die met pensioen gaat?", "Iets voor de vrije tijd die eraan komt: een bucketlist om te reizen, een pensioenmok met naam, een tegeltje voor het pensioen of iets voor de tuin."]] },
     "kerstcadeau-ideeen": { top: [["Onze topkeuze", "dvzn-995816"], ["Onder de 15 euro", "hema-57f8ed0fec"], ["Samen spelen", "dvzn-4e9451d3df"]], faq: [["Wanneer is het kerst in 2026?", "Eerste kerstdag is vrijdag 25 december 2026, tweede kerstdag zaterdag 26 december."], ["Wat is een leuk kerstcadeau?", "Iets dat bij de persoon past en bij de feestdagen: een geurset voor in huis, een kerstmok met warme chocolademelk, een foute kersttrui, een spel voor na het kerstdiner of kerst-speelkaarten met eigen foto's."], ["Wat is een leuk kerstcadeau onder de 15 euro?", "Een koekblik met kerstmok, een mok met een kerstboom, Lindt TEDDY, Christmas crackers of een sterrenprojector van HEMA."], ["Hoe doe je lootjes trekken voor kerst?", "Gratis op de pagina Lootjes trekken van LeukeKeuze: je vult de namen in en deelt één linkje in de groepsapp. Iedereen ziet alleen zijn eigen lootje."]] },
     "cadeau-16-jaar": { top: [["Onze topkeuze", "dvzn-87965e50f5"], ["Onder de 15 euro", "dgsw-f8d291bf6b"], ["Voor gamers", "cl-spiderman2"]], faq: [["Wat geef je een jongen van 16?", "Een game of gaming-headset, draadloze oordopjes, een lamp voor zijn kamer, een spel voor met vrienden of een fleece deken van Harry Potter."], ["Wat geef je een meisje van 16?", "Een sfeerlamp voor haar kamer, een instant camera, een lekkere mist van Sol de Janeiro, een selfielamp of een knusse hoodie."], ["Wat is een leuk cadeau voor 16 jaar onder de 25 euro?", "Taco Cat Goat Cheese Pizza, Wizard, de selfielamp met kattenoren, een paddenstoellamp, de Pac-Man-spelcomputer aan je sleutelbos of de capibara-warmtekussen."], ["Is geld geven aan een 16-jarige een goed idee?", "Veel 16-jarigen sparen voor iets groots. Geld met een klein cadeautje erbij, zoals een lampje of een spel, is dan een fijne combinatie."]] },
-    "cadeau-voor-schoonouders": { top: [["Onze topkeuze", "cl-12413"], ["Voor je schoonvader", "wny-10934"], ["Onder de 15 euro", "cl-svinando-cioccolata"]], faq: [["Wat geef je je schoonvader?", "Iets voor bij de borrel (een oude port, wijn met glazen of een whiskyset), iets voor de tuin zoals een nestkast, of een puzzel of spel."], ["Wat geef je je schoonmoeder?", "Een mooie theeset of theeglazen, iets lekkers zoals een kaaspakket, een handcrème van Atelier Rebul, of iets met een foto van de kleinkinderen."], ["Wat is een veilig cadeau voor schoonouders?", "Iets moois dat opgaat: een goede fles, iets lekkers voor bij de borrel of chocolade. Spullen voor in huis zijn persoonlijker, en daar is smaak verschillend."], ["Hoeveel geef je aan je schoonouders?", "Dat verschilt per familie. Overleg met je partner, of geef samen één groter cadeau."]] },
-    "cadeau-25-euro": { top: [["Onze topkeuze", "dvzn-82c9fc5824"], ["Voor hem", "dvzn-506744c169"], ["Om te lachen", "dvzn-34abc02c79"]], faq: [["Wat is een leuk cadeau van 25 euro?", "Een selfielamp met kattenoren, Socks on the Rocks met gin, een KPop Demon Hunters-set, een houten sudoku, een fles prosecco of een warmtekussen in de vorm van een boze hotdog."], ["Wat geef je een vrouw voor 25 euro?", "Sloffen met een tekst, een mini-stijltang, het kookboek van Miljuschka of een serveerschaal van Dille & Kamille."], ["Wat geef je een man voor 25 euro?", "Gin of whiskey in een cadeaudoos, een bierpul voor bij het voetbal of een ijskoeler voor een bierkrat."], ["Is 25 euro genoeg voor een verjaardagscadeau?", "Ja. Voor vrienden, collega's en familie is 20 tot 25 euro een gewoon bedrag, en daarvoor heb je al echt iets leuks."]] },
-    "cadeau-50-euro": { top: [["Onze topkeuze", "dvzn-195987"], ["Voor tieners", "bol-9300000183624857"], ["Om samen te spelen", "999g-999kol01e"]], faq: [["Wat is een leuk cadeau van 50 euro?", "Een Stanley-beker, een LEGO-set, wijn met glazen, een 3D-puzzel van de Hogwarts Express, een stormglas in de vorm van een vliegende schotel of een goed spel zoals Catan."], ["Wat geef je een vrouw voor 50 euro?", "Geurstokjes van Atelier Rebul, een lamp in de vorm van een boek, een retro waterkoker of het spel Wingspan."], ["Wat geef je een man voor 50 euro?", "Twee flessen wijn met glazen, een cocktailset, een whiskey- en sigarenset of dartpijlen van Michael van Gerwen."], ["Wat geef je een kind voor 50 euro?", "Een LEGO-set zoals het eenhoorn-droomcafé of de LEGO van Kylian Mbappé, Catan Junior of een Stitch-lamp."]] },
-    "cadeau-voor-man": { top: [["Onze topkeuze", "dvzn-63fc8fc0bd"], ["Onder de 15 euro", "dvzn-c15dcffb40"], ["Voor de barbecue", "butchery-8ba201a540"]], faq: [["Wat is een leuk cadeau voor een man?", "Iets dat bij zijn hobby past: een whiskyset of gin-box, iets voor de barbecue, dartpijlen of een LEGO F1-auto. Op verlanglijstjes van mannen staat een drankpakket bovenaan, daarna verzorging, gereedschap, een kookboek en een geurtje."], ["Wat geef je een man die alles al heeft?", "Iets dat opgaat of iets om te doen: een barbecuepakket, een goede fles in een geschenkdoos, een bierbrouwpakket of een uitje. Of iets grappigs waar hij om moet lachen, zoals een tegeltje met een tekst."], ["Wat is een leuk cadeau voor een man onder de 25 euro?", "Het tegeltje 'Koffie in de ochtend, bier in de avond', de whiskey-cadeauset met sokken van Socks on the Rocks, een barbecuepakket van Butchery, een LEGO F1-coureur of de King C. Gillette-set."], ["Mag ik een geurtje geven?", "Ja, als je weet wat hij lekker vindt of welk geurtje hij al gebruikt. Twijfel je? Kies dan baardolie, een scheerset of iets anders uit de lijst."]] },
+    "cadeau-voor-schoonouders": { top: [["Onze topkeuze", "cl-12413"], ["Voor je schoonvader", "hobbym-cc513083ec"], ["Onder de 15 euro", "cl-svinando-cioccolata"]], faq: [["Wat geef je je schoonvader?", "Iets voor bij de borrel (kaas, borrelhapjes of een whiskyset), iets voor de tuin zoals een nestkast, of een puzzel of spel."], ["Wat geef je je schoonmoeder?", "Een mooie theeset of theeglazen, iets lekkers zoals een kaaspakket, een handcrème van Atelier Rebul, of iets met een foto van de kleinkinderen."], ["Wat is een veilig cadeau voor schoonouders?", "Iets moois dat opgaat: iets lekkers voor bij de borrel, kaas of chocolade. Spullen voor in huis zijn persoonlijker, en daar is smaak verschillend."], ["Hoeveel geef je aan je schoonouders?", "Dat verschilt per familie. Overleg met je partner, of geef samen één groter cadeau."]] },
+    "cadeau-25-euro": { top: [["Onze topkeuze", "dvzn-82c9fc5824"], ["Voor hem", "dvzn-506744c169"], ["Om te lachen", "dvzn-34abc02c79"]], faq: [["Wat is een leuk cadeau van 25 euro?", "Een selfielamp met kattenoren, Socks on the Rocks met gin, een KPop Demon Hunters-set, een houten sudoku, een wijnglas Good Day, Bad Day of een warmtekussen in de vorm van een boze hotdog."], ["Wat geef je een vrouw voor 25 euro?", "Sloffen met een tekst, een mini-stijltang, het kookboek van Miljuschka of een serveerschaal van Dille & Kamille."], ["Wat geef je een man voor 25 euro?", "Sokken in een ginfles, een whiskyglas met eigen tekst, een bierpul voor bij het voetbal of een ijskoeler voor een bierkrat."], ["Is 25 euro genoeg voor een verjaardagscadeau?", "Ja. Voor vrienden, collega's en familie is 20 tot 25 euro een gewoon bedrag, en daarvoor heb je al echt iets leuks."]] },
+    "cadeau-50-euro": { top: [["Onze topkeuze", "dvzn-195987"], ["Voor tieners", "bol-9300000183624857"], ["Om samen te spelen", "999g-999kol01e"]], faq: [["Wat is een leuk cadeau van 50 euro?", "Een Stanley-beker, een LEGO-set, een wijnset in een boek, een 3D-puzzel van de Hogwarts Express, een stormglas in de vorm van een vliegende schotel of een goed spel zoals Catan."], ["Wat geef je een vrouw voor 50 euro?", "Geurstokjes van Atelier Rebul, een lamp in de vorm van een boek, een retro waterkoker of het spel Wingspan."], ["Wat geef je een man voor 50 euro?", "Een wijnset in een boek, een cocktailset, een whiskey- en sigarenset of dartpijlen van Michael van Gerwen."], ["Wat geef je een kind voor 50 euro?", "Een LEGO-set zoals het eenhoorn-droomcafé of de LEGO van Kylian Mbappé, Catan Junior of een Stitch-lamp."]] },
+    "cadeau-voor-man": { top: [["Onze topkeuze", "dvzn-63fc8fc0bd"], ["Onder de 15 euro", "dvzn-c15dcffb40"], ["Voor de barbecue", "butchery-8ba201a540"]], faq: [["Wat is een leuk cadeau voor een man?", "Iets dat bij zijn hobby past: een whiskyset, iets voor de barbecue, dartpijlen of een LEGO F1-auto. Op verlanglijstjes van mannen staat een drankpakket bovenaan, daarna verzorging, gereedschap, een kookboek en een geurtje."], ["Wat geef je een man die alles al heeft?", "Iets dat opgaat of iets om te doen: een barbecuepakket, mooie whiskyglazen in een geschenkdoos of een uitje. Of iets grappigs waar hij om moet lachen, zoals een tegeltje met een tekst."], ["Wat is een leuk cadeau voor een man onder de 25 euro?", "Het tegeltje 'Koffie in de ochtend, bier in de avond', de whiskey-cadeauset met sokken van Socks on the Rocks, een barbecuepakket van Butchery, een LEGO F1-coureur of de King C. Gillette-set."], ["Mag ik een geurtje geven?", "Ja, als je weet wat hij lekker vindt of welk geurtje hij al gebruikt. Twijfel je? Kies dan baardolie, een scheerset of iets anders uit de lijst."]] },
     "cadeau-voor-vrouw": { top: [["Onze topkeuze", "parfum-45dbbae7b4"], ["Onder de 15 euro", "dvzn-43cb3e6645"], ["Om zelf te maken", "dvzn-310643"]], faq: [["Wat is een leuk cadeau voor een vrouw?", "Iets om te verwennen (een handset of stoombloemen), iets knus (magnetronsloffen of een massagekussen), iets lekkers om samen te maken of iets persoonlijks, zoals een poster van de sterrenhemel op haar dag."], ["Wat geef je een vrouw die alles al heeft?", "Iets dat opgaat of iets om te doen: een theeproeverij, een sushiset voor twee of iets om zelf te maken, zoals een lichtgevend terrarium of een kintsugi-set waarmee je kapot servies met goud repareert."], ["Wat is een leuk cadeau voor een vrouw onder de 25 euro?", "Ramen-zeepnoedels voor in bad, stoombloemen, magnetronsloffen, een leeslampje in de vorm van een poes of een sterrenhemel-poster."], ["Is een sieraad een goed idee?", "Alleen als je weet wat ze mooi vindt. Twijfel je? Kies dan iets om te verwennen of iets persoonlijks met haar naam of foto."]] },
     "cadeau-voor-vriend": { top: [["Onze topkeuze", "dvzn-648493"], ["Onder de 15 euro", "dvzn-c15dcffb40"], ["Samen doen", "dk-dd67a6f2bc"]], faq: [["Wat geef je je vriend voor zijn verjaardag?", "Iets dat bij zijn hobby past, iets om samen te doen (een spel, een uitje, een nacht weg) of iets persoonlijks, zoals een poster van de sterrenhemel op jullie dag."], ["Wat is een leuk cadeau voor je vriend onder de 25 euro?", "Een grappig tegeltje, een muts met speakers, de Useless Box, een sterrenhemel-poster, Hitster of een BBQ-spatel in de vorm van een machete."], ["Wat geef je je vriend als jullie nog niet lang samen zijn?", "Iets kleins en leuks, zoals een spel voor twee, een grappige gadget of iets voor bij een biertje. Iets heel duurs of heel persoonlijks kan dan te veel voelen."]] },
-    "cadeau-voor-broer": { top: [["Onze topkeuze", "lego-77243"], ["Klein cadeau", "cg-chocolade-game-controller"], ["Om te lachen", "cg-useless-box"]], faq: [["Wat geef je je broer?", "Iets dat bij zijn hobby past: een game of controller, LEGO van zijn favoriete F1-team, dartpijlen of iets voor bij een biertje. Of iets grappigs, zoals de Useless Box."], ["Wat is een leuk cadeau voor je broer onder de 20 euro?", "Een gamecontroller van chocolade, LEGO Speed Champions, een F1-poster, een SportX-dartset, een voetbaldoeltje voor de wc of de Useless Box."], ["Wat geef je een broer die alles heeft?", "Iets om te doen, zoals een bierbrouwpakket of een LEGO-set, of iets grappigs waar hij om moet lachen."]] },
-    "cadeau-50-jaar": { top: [["Onze topkeuze", "massa-8de12f27af"], ["Om te onthouden", "ptm-9"], ["Samen erop uit", "dk-dd67a6f2bc"]], faq: [["Wat geef je iemand die 50 wordt?", "Iets met een knipoog naar Abraham of Sarah, een goede fles champagne of port, een poster van de sterrenhemel op de dag van de geboorte, of een uitje zoals een helikoptervlucht of een nacht in een pod."], ["Wat geef je een man van 50 jaar?", "Een mok of T-shirt met Abraham, een goede whisky, oude port, LEGO voor volwassenen of een uitje zoals quad rijden."], ["Wat geef je een vrouw van 50 jaar?", "Een Sarah-cadeauset met plaid en mok, champagne, een verzorgingsset van Atelier Rebul, een fotoboek of een nacht weg."], ["Wat betekent Abraham en Sarah zien?", "In Nederland zeg je dat een man die 50 wordt Abraham ziet, en een vrouw Sarah. Vaak zet de familie een grote pop van Abraham of Sarah in de tuin."]] },
+    "cadeau-voor-broer": { top: [["Onze topkeuze", "lego-77243"], ["Klein cadeau", "cg-chocolade-game-controller"], ["Om te lachen", "cg-useless-box"]], faq: [["Wat geef je je broer?", "Iets dat bij zijn hobby past: een game of controller, LEGO van zijn favoriete F1-team, dartpijlen of iets voor bij een biertje. Of iets grappigs, zoals de Useless Box."], ["Wat is een leuk cadeau voor je broer onder de 20 euro?", "Een gamecontroller van chocolade, LEGO Speed Champions, een F1-poster, een SportX-dartset, een voetbaldoeltje voor de wc of de Useless Box."], ["Wat geef je een broer die alles heeft?", "Iets om te doen, zoals een LEGO-set of een spel, of iets grappigs waar hij om moet lachen."]] },
+    "cadeau-50-jaar": { top: [["Onze topkeuze", "massa-8de12f27af"], ["Om te onthouden", "ptm-9"], ["Samen erop uit", "dk-dd67a6f2bc"]], faq: [["Wat geef je iemand die 50 wordt?", "Iets met een knipoog naar Abraham of Sarah, mooie champagneglazen, een poster van de sterrenhemel op de dag van de geboorte, of een uitje zoals een helikoptervlucht of een nacht in een pod."], ["Wat geef je een man van 50 jaar?", "Een mok of T-shirt met Abraham, een whiskyset, LEGO voor volwassenen of een uitje zoals quad rijden."], ["Wat geef je een vrouw van 50 jaar?", "Een Sarah-cadeauset met plaid en mok, mooie champagneglazen, een verzorgingsset van Atelier Rebul, een fotoboek of een nacht weg."], ["Wat betekent Abraham en Sarah zien?", "In Nederland zeg je dat een man die 50 wordt Abraham ziet, en een vrouw Sarah. Vaak zet de familie een grote pop van Abraham of Sarah in de tuin."]] },
     "black-friday-2026": { top: [["Veel gezocht", "cl-airpods5"], ["Voor de gamer", "bol-9300000223645302"], ["Klein cadeau", "lego-77243"]], faq: [["Wanneer is Black Friday 2026?", "Black Friday is op vrijdag 27 november 2026, de dag na Thanksgiving in Amerika. Veel winkels beginnen al eerder met aanbiedingen."], ["Wanneer is Cyber Monday 2026?", "Cyber Monday is op maandag 30 november 2026, de maandag na Black Friday. Dan gaan vooral online winkels en elektronica nog eens in de aanbieding."], ["Is de korting op Black Friday echt?", "Niet altijd. Een winkel moet als van-prijs de laagste prijs van de 30 dagen ervoor tonen (een Europese regel), maar vergelijk zelf ook even. Wij tonen alleen korting op een echte van-prijs, en bij elk cadeau staat wanneer wij de prijs hebben gecontroleerd."], ["Kan ik met Black Friday mijn Sinterklaas- en kerstcadeaus kopen?", "Ja. Black Friday valt ruim een week vóór pakjesavond en vier weken vóór kerst. Let wel op de levertijd als het cadeau vóór 5 december binnen moet zijn."]] },
     "cadeau-18-jaar": { top: [["Onze topkeuze", "bol-9300000303263562"], ["Onder de 10 euro", "dvzn-86c555b6d6"], ["Met 18 erop", "kadove-52be56ec1b"]], faq: [["Wat geef je iemand die 18 wordt?", "Iets voor de nieuwe tijd die begint: iets voor het rijbewijs en de eerste auto, oordopjes of een Instax-camera, iets gezelligs voor op kamers, of een mok of shirt met 18 erop."], ["Wat geef je een jongen van 18?", "Een draadloze autolader, een JBL-speaker, Hitster, een powerbank of goede oordopjes."], ["Wat geef je een meisje van 18?", "Een Instax-camera, Sol de Janeiro, een neonlamp voor haar kamer, de teddy-hoodie van HEMA of AirPods."]] },
     "cadeau-zwangere-vrouw": { top: [["Onze topkeuze", "sp-zwangerschapsdagboek"], ["Om te verwennen", "joybuy-eab1c70854"], ["Met een knipoog", "kv-mama-loading-mok"]], faq: [["Wat geef je een zwangere vrouw?", "Iets voor haar zelf: een dagboek om de zwangerschap te onthouden, verzorging die voor zwangere vrouwen gemaakt is, warme sloffen, een zachte hoodie of een mok met een grap."], ["Wat is een leuk cadeau voor een zwangere vriendin?", "Een mok \"Mama loading\", een sweater \"Mommy to be\", een zwangerschapsdagboek met haar eigen foto op de kaft of de body butter van Weleda."], ["Wat kun je beter niet geven aan een zwangere vrouw?", "Alcohol, en verzorging met sterke geuren of oliën die niet voor zwangere vrouwen gemaakt zijn. Twijfel je? Kies dan iets dat niets met eten of verzorging te maken heeft, zoals een dagboek of iets warms."]] },
     "cadeau-13-jaar": { top: [["Onze topkeuze", "cl-minecraft"], ["Onder de 10 euro", "dvzn-ebc9e55f71"], ["Met vrienden", "cl-hitster"]], faq: [["Wat geef je een kind van 13 jaar?", "Iets dat niet kinderachtig is: een game zoals Minecraft, een lampje of sterrenprojector voor de eigen kamer, een spel als Hitster, LEGO Speed Champions of manga."], ["Wat is een leuk cadeau voor een jongen van 13?", "Een game of controller, LEGO Speed Champions, Pokémonkaarten, het Minecraft-lampje of een opblaasbare stoel in de vorm van een controller."], ["Wat is een leuk cadeau voor een meisje van 13?", "Een Stitch-projectielamp, bubble tea badparels, een kralenset voor vriendschapsarmbandjes, een book nook of een neonlamp voor haar kamer."]] },
     "cadeau-14-jaar": { top: [["Onze topkeuze", "bol-9300000303263562"], ["Klein cadeau", "dvzn-7fa21f9ec9"], ["Voor de kamer", "dvzn-515371"]], faq: [["Wat geef je een tiener van 14 jaar?", "Iets voor muziek of foto’s (oordopjes, een speaker of een Instax), een game, verzorging die tieners zelf gebruiken of een lamp voor de eigen kamer."], ["Wat is een leuk cadeau voor een jongen van 14?", "Een PS5-controller, een JBL-speaker, Tetris in een blikje, de Minecraft-zwaardlamp of goede oordopjes."], ["Wat is een leuk cadeau voor een meisje van 14?", "Een Instax-camera, Sol de Janeiro, Laneige, een sterrenhemel-projector of de teddy-hoodie van HEMA."]] },
-    "cadeau-30-jaar": { top: [["Onze topkeuze", "dk-dd67a6f2bc"], ["Onder de 10 euro", "massa-9195e5bedc"], ["Een goed glas", "dc-2170541655"]], faq: [["Wat geef je iemand die 30 wordt?", "Iets voor het eigen huis, een uitje om samen te doen, een goede fles zoals port van 30 jaar, of iets grappigs met 30 erop."], ["Wat geef je een vriend of vriendin die 30 wordt?", "Een avond samen (een uitje of een spel als Hitster), een geurkaars met 30 erop, een Instax voor alle feestjes of een tegeltje met een grap."], ["Hoeveel geef je uit aan een cadeau voor iemand van 30?", "Dat bepaal je zelf. Voor een vriend of collega kiezen veel mensen iets van 15 tot 30 euro; geef je met een groep, dan kan het meer zijn."]] },
-    "cadeau-40-jaar": { top: [["Onze topkeuze", "wny-10934"], ["Een uitje", "dk-85478160d2"], ["Om te onthouden", "ptm-9"]], faq: [["Wat geef je iemand die 40 wordt?", "Een fles port van 40 jaar oud, een uitje zoals een rit in een Ferrari of een helikoptervlucht, LEGO voor volwassenen of een poster van de sterrenhemel op de dag van de geboorte."], ["Wat geef je een man van 40?", "Port van 40 jaar oud, een goede whisky, LEGO F1, een rit in een sportwagen of een koptelefoon van Teufel."], ["Wat geef je een vrouw van 40?", "Champagne, een geur of geurstokjes van Atelier Rebul, een LEGO-bonsai of -bloemen, een theeproeverij of een fotoboek."]] },
-    "cadeau-60-jaar": { top: [["Onze topkeuze", "kadove-f0a0dd3ec0"], ["Om te onthouden", "cl-pf-hardcover"], ["Samen erop uit", "dk-c4e8d984dc"]], faq: [["Wat geef je iemand die 60 wordt?", "Iets om te onthouden (een fotoboek of een familieposter), iets voor de hobby (een puzzel, een voederhuisje), een goede fles oude port of een uitje zoals een rondvaart door Giethoorn."], ["Wat geef je een man van 60?", "Oude port, schommelende whiskyglazen, een 3D-puzzel, een retro radio of een egelhuis voor de tuin."], ["Wat geef je een vrouw van 60?", "Een cadeauset met plaid en mok, een fotoboek, een kweekset met theekruiden, een theeproeverij of een puzzel."]] },
+    "cadeau-30-jaar": { top: [["Onze topkeuze", "dk-dd67a6f2bc"], ["Onder de 10 euro", "massa-9195e5bedc"], ["Een goed glas", "dvzn-332357"]], faq: [["Wat geef je iemand die 30 wordt?", "Iets voor het eigen huis, een uitje om samen te doen, een cocktailset of whiskykaraf, of iets grappigs met 30 erop."], ["Wat geef je een vriend of vriendin die 30 wordt?", "Een avond samen (een uitje of een spel als Hitster), een geurkaars met 30 erop, een Instax voor alle feestjes of een tegeltje met een grap."], ["Hoeveel geef je uit aan een cadeau voor iemand van 30?", "Dat bepaal je zelf. Voor een vriend of collega kiezen veel mensen iets van 15 tot 30 euro; geef je met een groep, dan kan het meer zijn."]] },
+    "cadeau-40-jaar": { top: [["Onze topkeuze", "cl-26772"], ["Een uitje", "dk-85478160d2"], ["Om te onthouden", "ptm-9"]], faq: [["Wat geef je iemand die 40 wordt?", "Een uitje zoals een rit in een Ferrari of een helikoptervlucht, LEGO voor volwassenen of een poster van de sterrenhemel op de dag van de geboorte."], ["Wat geef je een man van 40?", "Een whiskyset, een heupfles met eigen tekst, LEGO F1, een rit in een sportwagen of een koptelefoon van Teufel."], ["Wat geef je een vrouw van 40?", "Een geur of geurstokjes van Atelier Rebul, een LEGO-bonsai of -bloemen, een theeproeverij of een fotoboek."]] },
+    "cadeau-60-jaar": { top: [["Onze topkeuze", "kadove-f0a0dd3ec0"], ["Om te onthouden", "cl-pf-hardcover"], ["Samen erop uit", "dk-c4e8d984dc"]], faq: [["Wat geef je iemand die 60 wordt?", "Iets om te onthouden (een fotoboek of een familieposter), iets voor de hobby (een puzzel, een voederhuisje), mooie glazen of een uitje zoals een rondvaart door Giethoorn."], ["Wat geef je een man van 60?", "Schommelende whiskyglazen, een 3D-puzzel, een retro radio of een egelhuis voor de tuin."], ["Wat geef je een vrouw van 60?", "Een cadeauset met plaid en mok, een fotoboek, een kweekset met theekruiden, een theeproeverij of een puzzel."]] },
     "cadeau-voetballer": { top: [["Onze topkeuze", "cl-adidas-bal"], ["Om thuis te trainen", "cl-goal-vouw"], ["Voor als het regent", "cl-umbro-mini"]], faq: [["Wat geef je een voetballer?", "Iets om mee te trainen of binnen mee te spelen: een goede bal, een opvouwbaar doel, pionnen, keepershandschoenen, een tafelvoetbal of EA Sports FC."], ["Welke maat bal geef je een kind?", "Maat 5 is de gewone maat vanaf ongeveer 12 jaar. Voor jongere kinderen zijn er kleinere ballen. Kijk bij de winkel welke maat het is."], ["Wat geef je een voetballer die alles al heeft?", "Iets persoonlijks, zoals een voetballamp met zijn of haar naam, of iets grappigs, zoals een voetbaldoeltje voor op de wc."]] },
-    "kerstpakket-ideeen": { top: [["Onze topkeuze", "dk-00044934"], ["Om te verwennen", "parfum-7e28f46e8a"], ["Samen thuis", "bol-9300000340258889"]], faq: [["Wat stop je in een kerstpakket?", "Iets om van te genieten, het liefst samen: chocolade, hapjes voor de borrel, thee en koekjes, een goede fles of een filmavond met popcorn. Je kunt ook een kant-en-klaar pakket of een cadeauset geven."], ["Wat is een goed kerstpakket voor collega's?", "Iets dat iedereen kan gebruiken, zoals chocolade, iets voor bij de thee of een borrelpakket. Niet iedereen drinkt alcohol, dus kies daar voorzichtig mee."], ["Kan een kerstpakket door de brievenbus?", "Ja, er zijn brievenbuspakketten, zoals het borrelpakketje van Bloompost. Dan hoeft de ontvanger niet thuis te zijn."]] },
+    "kerstpakket-ideeen": { top: [["Onze topkeuze", "dk-00044934"], ["Om te verwennen", "parfum-7e28f46e8a"], ["Samen thuis", "bol-9300000340258889"]], faq: [["Wat stop je in een kerstpakket?", "Iets om van te genieten, het liefst samen: chocolade, hapjes voor de borrel, thee en koekjes of een filmavond met popcorn. Je kunt ook een kant-en-klaar pakket of een cadeauset geven."], ["Wat is een goed kerstpakket voor collega's?", "Iets dat iedereen kan gebruiken, zoals chocolade, iets voor bij de thee of een borrelpakket. Niet iedereen drinkt alcohol, dus kies daar voorzichtig mee."], ["Kan een kerstpakket door de brievenbus?", "Ja, er zijn brievenbuspakketten, zoals het borrelpakketje van Bloompost. Dan hoeft de ontvanger niet thuis te zijn."]] },
     "cadeau-kind-1-jaar": { top: [["Onze topkeuze", "cl-vtech-speeltafel"], ["Onder de 10 euro", "cl-fp-ringpiramide"], ["Iets groters", "cl-bol-janod-ezel"]], faq: [["Wat geef je een kind van 1 jaar?", "Iets om mee te ontdekken: stapelbekers, een ringpiramide, een loopwagen of een stevig eerste boekje zoals Nijntje. Kies speelgoed zonder kleine onderdelen."], ["Wat kan een kind van 1 al?", "Veel kinderen gaan rond hun eerste verjaardag staan of lopen, ze stapelen en sorteren en kijken graag naar plaatjes. Elk kind gaat in zijn eigen tempo."], ["Waar let ik op bij speelgoed voor een kind van 1?", "Op kleine onderdelen: alles gaat in de mond. Kijk op de doos vanaf welke leeftijd het is, en kies stevig speelgoed van hout of zacht materiaal."]] },
     "cadeau-kind-2-jaar": { top: [["Onze topkeuze", "cl-duplo-10421"], ["Onder de 10 euro", "cl-nijntje"], ["Iets groters", "cl-duplo-10459"]], faq: [["Wat geef je een kind van 2 jaar?", "DUPLO, een loopfiets, een babypop of knuffel, of muziekspeelgoed zoals een xylofoon. Op deze leeftijd spelen kinderen graag na wat grote mensen doen."], ["Wat is een leuk cadeau voor een jongen van 2?", "Iets om mee te rijden of te bouwen: een loopfiets, DUPLO of een loopwagen. Maar ook jongens van 2 spelen graag met een pop of een keukentje. Kijk vooral naar wat hij nu leuk vindt."], ["Wat is een leuk cadeau voor een meisje van 2?", "Een babypop, DUPLO, een loopfiets of een xylofoon. Ook hier geldt: kijk naar wat ze nu graag doet."], ["Hoeveel geef je uit aan een cadeau voor een kind van 2?", "Dat bepaal je zelf. In deze gids staat van alles iets, van een boekje van een paar euro tot een loopfiets."]] },
     "cadeau-kind-3-jaar": { top: [["Onze topkeuze", "cl-k-miele"], ["Onder de 10 euro", "bol-9300000263559033"], ["Iets groters", "cl-gl-goup"]], faq: [["Wat geef je een kind van 3 jaar?", "Iets om te doen alsof, zoals een speelkeuken of dierenartsset, een treinbaan of DUPLO, dieren van Schleich, of een eerste step. Ook kleuren en kleien vinden kinderen van 3 leuk."], ["Wat is een leuk cadeau voor een jongen van 3?", "Een treinbaan, DUPLO, dino's, een step of een gereedschapsset. Kijk vooral naar waar hij nu gek op is."], ["Wat is een leuk cadeau voor een meisje van 3?", "Een speelkeuken, een pop, paarden van Schleich, een step of iets om mee te kleuren. Ook hier: haar favoriete spel zegt meer dan of het een meisje is."], ["Hoeveel geef je uit aan een cadeau voor een kind van 3?", "Dat bepaal je zelf. In deze gids staat van alles iets, van een Schleich-dier van een paar euro tot een houten speelkeuken."]] },
@@ -5941,10 +5961,10 @@
       ['Wat neem je mee op kraamvisite?', 'Een klein cadeautje voor de baby, en liefst ook iets voor de ouders, zoals iets lekkers. Blijf niet te lang: een half uur is meestal genoeg.'],
       ['Hoeveel geef je uit aan een kraamcadeau?', 'Veel mensen geven 15 tot 30 euro. Voor familie of goede vrienden mag het wat meer zijn.'],
       ['Welke maat kleding geef je als kraamcadeau?', 'Liever maat 68 of 74 dan maat 50 of 56. Daar groeien baby’s binnen een paar weken uit, en die kleine maten krijgen ouders al heel veel.']] },
-    'housewarming-cadeau': { top: [['Onze topkeuze', 'dvzn-530181'], ['Voor aan tafel', 'tt-country-acc-40291bdfe5'], ['Om te proosten', 'dc-1665638250']], faq: [
-      ['Wat neem je mee naar een housewarming?', 'Iets wat het nieuwe huis gezellig maakt: licht, iets voor aan tafel of een fles om op het nieuwe huis te proosten.'],
+    'housewarming-cadeau': { top: [['Onze topkeuze', 'dvzn-530181'], ['Voor aan tafel', 'tt-country-acc-40291bdfe5'], ['Om te proosten', 'dc-2163335415']], faq: [
+      ['Wat neem je mee naar een housewarming?', 'Iets wat het nieuwe huis gezellig maakt: licht, iets voor aan tafel of mooie glazen om op het nieuwe huis te proosten.'],
       ['Hoeveel geef je uit aan een housewarming cadeau?', 'Meestal 15 tot 40 euro per persoon. Met een groep vrienden kun je samen voor één groter cadeau gaan.'],
-      ['Wat als ik hun smaak niet ken?', 'Kies iets dat op gaat of dat in elk interieur past, zoals een geurkaars, champagne of een houten serveerplank.']] },
+      ['Wat als ik hun smaak niet ken?', 'Kies iets dat op gaat of dat in elk interieur past, zoals een geurkaars, mooie glazen of een houten serveerplank.']] },
     'cadeau-wijnliefhebber': { top: [['Onze topkeuze', 'dc-2096174492'], ['Beste koop', 'dc-2073674337'], ['Gaat nooit op', 'dc-2163335415']], faq: [
       ['Welke wijn geef je cadeau als je er geen verstand van hebt?', 'Een Rioja Reserva uit Spanje is een veilige keuze: soepel, klassiek en bijna iedereen vindt het lekker.'],
       ['Hoeveel geef je uit aan een fles wijn als cadeau?', 'Tussen de 15 en 25 euro zit je goed. Dan geef je duidelijk iets beters dan de gewone supermarktwijn.'],
@@ -5980,15 +6000,15 @@
       ['Mag je plagen in een sinterklaasgedicht?', 'Ja, dat hoort erbij. Plaag over gewoontes en grappige momenten, niet over uiterlijk of dingen waar iemand verdriet van heeft. Als iedereen lacht, ook degene over wie het gaat, is het goed.']] },
     'cadeau-voor-vriendin': { top: [['Onze topkeuze', 'bol-9300000131876375'], ['Beste koop', 'cl-rit-sakura'], ['Iets blijvends', 'bp-l311']], faq: [
       ['Wat geef je je vriendin voor haar verjaardag?', 'Iets wat ze elke dag draagt, zoals een fijne ketting, een verwenmoment, of iets om samen te doen. Kijk naar waar ze het de laatste tijd over had.'],
-      ['Wat geef je een vriendin die alles al heeft?', 'Een moment in plaats van spullen: een spel voor jullie twee, een fles om op iets te proosten of LEGO-bloemen om samen te bouwen.'],
+      ['Wat geef je een vriendin die alles al heeft?', 'Een moment in plaats van spullen: een spel voor jullie twee, mooie glazen om op iets te proosten of LEGO-bloemen om samen te bouwen.'],
       ['Hoeveel geef je uit aan een cadeau voor je vriendin?', 'Dat bepaal je zelf. In deze gids lopen de ideeën van ongeveer 13 tot 80 euro, dus er is voor elk budget iets.']] },
     'cadeau-voor-moeder': { top: [['Onze topkeuze', 'cl-myka-mama'], ['Beste koop', 'dk-00044932'], ['Om te verwennen', 'dk-00044258']], faq: [
       ['Wat geef je je moeder die niets nodig heeft?', 'Iets persoonlijks of een moment voor haarzelf: een armband met de geboortestenen van haar kinderen, een fotoboek, of een warme plaid en een geurkaars.'],
       ['Wat is een origineel cadeau voor je moeder?', 'LEGO-bloemen om samen te bouwen, droogbloemen door de brievenbus of een pakket om samen appeltaart te bakken.'],
       ['Wanneer is het Moederdag?', 'Moederdag is in Nederland elk jaar op de tweede zondag van mei.']] },
-    'cadeau-voor-vader': { top: [['Onze topkeuze', 'bol-9300000083266771'], ['Beste koop', 'hema-d6fb696345'], ['Om uit te pakken', 'dc-2468345961']], faq: [
+    'cadeau-voor-vader': { top: [['Onze topkeuze', 'bol-9300000083266771'], ['Beste koop', 'cg-rocking-whisky-glazen'], ['Om uit te pakken', 'bol-9300000015405237']], faq: [
       ['Wat geef je een vader die niets nodig heeft?', 'Iets wat hij elke week gebruikt maar zelf niet snel koopt: goede steakmessen, een vleesthermometer of een mooi schaakbord.'],
-      ['Wat is een goed cadeau voor een vader die van whisky houdt?', 'Een goede single malt in een geschenkdoos, mooie whiskyglazen of een rookset om zijn whisky een rokerige smaak te geven.'],
+      ['Wat is een goed cadeau voor een vader die van whisky houdt?', 'Mooie whiskyglazen, een whiskykaraf of een rookset om zijn whisky een rokerige smaak te geven.'],
       ['Wanneer is het Vaderdag?', 'Vaderdag is in Nederland elk jaar op de derde zondag van juni.']] },
     'babyshower-cadeau': { top: [['Onze topkeuze', 'bol-9300000136627314'], ['Voor de mama', 'sp-zwangerschapsdagboek'], ['Met de groep', 'cl-bol-fp-jungle']], faq: [
       ['Wat is een babyshower?', 'Een feestje voor de aanstaande mama, een paar weken voordat de baby komt. Vrienden en familie komen samen, doen spelletjes en nemen een cadeautje mee.'],
@@ -6040,7 +6060,7 @@
   /* Prijsbereik van een gids, uitgerekend met de prijzen van nu (vaste bedragen in teksten raakten verouderd). */
   function gidsZichtbaar(g) {
     var uit = [];
-    g.delen.forEach(function (d) { (d.ids || []).forEach(function (id) { var p = LK.vind(id); if (p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && uit.indexOf(p) < 0) uit.push(p); }); });
+    g.delen.forEach(function (d) { (d.ids || []).forEach(function (id) { var p = LK.vind(id); if (p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true) && uit.indexOf(p) < 0) uit.push(p); }); });
     return uit;
   }
   function gidsBereik(g) {
@@ -6055,6 +6075,7 @@
   function gidsKaart(g) {
     /* Kaartbeeld: het product in 'beeld' (met de hand gekozen), anders het eerste product uit de gids. */
     var eerste = (g.beeld && LK.vind(g.beeld)) || g.delen[0].ids.map(function (id) { return LK.vind(id); }).filter(Boolean)[0];
+    if (eerste && eerste.drank && !g.drank) eerste = gidsZichtbaar(g)[0] || null; /* 15-11-2026: geen fles als plaatje van een gewone gids */
     return '<a class="gidskaart" href="/gids/' + g.slug + '">' + '<span class="gidsbeeld">' + (eerste ? LK.productBeeld(eerste) : '') + '</span>' +
       '<span><strong>' + esc(g.titel) + '</strong><small>' + esc(gidsKort(g)) + '</small></span></a>';
   }
@@ -6073,7 +6094,7 @@
   }
   /* Vak 'Snel kiezen': de 3 favorieten uit de gids (veld 'top' in GIDS_EXTRA: [label, product-id]). Uitverkocht = weggelaten. */
   function gidsTop(g) {
-    var t = (g.top || []).map(function (x) { var p = LK.vind(x[1]); return p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) ? [x[0], p] : null; }).filter(Boolean);
+    var t = (g.top || []).map(function (x) { var p = LK.vind(x[1]); return p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true) ? [x[0], p] : null; }).filter(Boolean);
     if (!t.length) return '';
     return '<aside class="gids-top" aria-label="Snel kiezen"><div class="gt-kop">' + ic('ster') + '<div><h2>Snel kiezen</h2><p>Weinig tijd? Dit zijn onze ' + (t.length === 3 ? 'drie' : t.length) + ' favorieten uit deze gids.</p></div></div>' +
       '<div class="gt-lijst">' + t.map(function (x) {
@@ -6109,7 +6130,7 @@
     var introKort = zinnen.slice(0, 3).join('').trim(), introRest = zinnen.slice(3).join('').trim();
     var delenMet = g.delen.map(function (d, i) { return Object.assign({ nr: i + 1 }, d); }).filter(function (d) {
       if (!d.ids) return true;
-      d.lijst2 = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p); })); /* uitverkochte producten niet tonen; in een gids met een prijsgrens ook niets dat inmiddels duurder is */
+      d.lijst2 = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true); })); /* 15-11-2026: drank alleen in een drankgids (g.drank) */ /* uitverkochte producten niet tonen; in een gids met een prijsgrens ook niets dat inmiddels duurder is */
       return d.lijst2.length > 0;
     });
     var spring = delenMet.length > 1 ? '<nav class="chips vakjesrij omlopend springlinks" aria-label="In deze gids">' + delenMet.map(function (d) { return '<a class="chip" href="#deel-' + d.nr + '">' + esc(d.kop) + '</a>'; }).join('') + (g.faq && g.faq.length ? '<a class="chip" href="#vragen">Vragen</a>' : '') + '</nav>' : '';

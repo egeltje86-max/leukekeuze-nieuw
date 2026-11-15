@@ -32,7 +32,7 @@ function magOp(p, regel, thema) {
   return regel.afd.indexOf(o.afd) !== -1 || regel.groep.indexOf(o.afd + '/' + o.groep) !== -1 || thema.test(p.titel || '');
 }
 function pas(alle, root) {
-  const PE = personen(root); const tel = { label: 0, los: 0, nietOp: 0, smal: 0, nietBij: 0 };
+  const PE = personen(root); const tel = { label: 0, los: 0, nietOp: 0, smal: 0, nietBij: 0, drank: 0 };
   const thema = {}; for (const k of Object.keys(REGELS.sub)) thema[k] = new RegExp(REGELS.sub[k].thema || '$^', 'i');
   for (const p of alle) {
     if (p.status !== 'goedgekeurd') continue;
@@ -56,6 +56,11 @@ function pas(alle, root) {
       const r = REGELS.smal[k];
       if (SMAL_RE[k].w.test(p.titel || '') && !(SMAL_RE[k].b && SMAL_RE[k].b.test(p.titel || '')) && !(r.nietAfd && r.nietAfd.indexOf(o.afd) !== -1)) { p.smal = k; tel.smal++; break; }
     }
+    /* 15-11-2026 (Marius: 'overal moet drank weg, alleen op de drank plek moet dat staan'): flessen wijn, bubbels, bier, sterke drank
+       en alcoholvrije drank krijgen p.drank = 1. app.js toont ze dan alleen op hun eigen plek (Wijn & bubbels, Bier & sterke drank,
+       Alcoholvrij, hun eigen vakje) en als de bezoeker er zelf om vraagt (zoekwoord, interesse in de kieshulp). Drankaccessoires niet. */
+    const dnb0 = REGELS.drank_niet_bij_personen;
+    if (dnb0 && (dnb0.groep.indexOf(o.afd + '/' + o.groep) !== -1 || (dnb0.pakket && o.afd + '/' + o.groep === dnb0.pakket.groep && ((dnb0.pakket.winkels || []).indexOf(p.shop) !== -1 || new RegExp(dnb0.pakket.woorden, 'i').test(p.titel || '')) && !new RegExp(dnb0.pakket.behalve, 'i').test(p.titel || '')))) { p.drank = 1; tel.drank++; } else delete p.drank;
     if (p.cat === 'christelijk') continue;
     const pl = plekkenVan(p); let niet = null, nietBij = null;
     for (const pe of PE) {
@@ -85,7 +90,7 @@ function pas(alle, root) {
       const mh = (REGELS.met_de_hand || {})[pe.slug];
       if (weg && Array.isArray(mh) && mh.indexOf(p.id) !== -1) weg = false;
       /* 15-11-2026 (Marius): nooit drank op een Voor wie-pagina, ook niet met de hand gekozen */
-      const dnb = REGELS.drank_niet_bij_personen; if (dnb && dnb.groep.indexOf(o.afd + '/' + o.groep) !== -1) weg = true;
+      if (p.drank) weg = true;
       if (weg) (nietBij = nietBij || []).push(pe.slug);
     }
     if (niet) { p.nietOp = niet; tel.nietOp += niet.length; } else delete p.nietOp;

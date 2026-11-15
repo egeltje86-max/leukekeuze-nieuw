@@ -60,7 +60,7 @@ function splits() {
   }
   /* 10-11-2026: paginaregels (geen verkeerde producten op een pagina), zie scripts/boom/paginaregels.js */
   const prTel = require('./boom/paginaregels.js').pas(alle, ROOT);
-  console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp, '| smal (tekst voor één soort persoon)', prTel.smal, '| van een Voor wie-pagina af (niet zeker)', prTel.nietBij);
+  console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp, '| smal (tekst voor één soort persoon)', prTel.smal, '| van een Voor wie-pagina af (niet zeker)', prTel.nietBij, '| drank (alleen op de drankplek)', prTel.drank);
   /* 4.0 (proef 11-11-2026): de nieuwe indeling. De paginaregels hierboven werken nog met de plek van vóór de verhuizing;
      daarna krijgt elk product zijn nieuwe afdeling, groep en vakje (scripts/boom/verhuisd.json, gemaakt door scripts/boom/verhuis.js).
      Bestaat dat bestand niet, dan verandert er niets. */

@@ -2,7 +2,7 @@
    Gebruik: node scripts/controle/gidsen.js . [bestand met ids die als weg tellen (json-lijst)] [streng]
    Een gids wordt met de hand gevuld. Haal je daarna producten weg (WEG-lijst, nazorg, uitverkocht), dan valt zo'n
    product stil uit de gids. Dit hulpje laat zien waar dat een gat geeft:
-   FOUT   = het plaatje van de gids of een favoriet ('Snel kiezen') bestaat niet meer, of een rij heeft minder dan 2 cadeaus over.
+   FOUT   = het plaatje van de gids of een favoriet ('Snel kiezen') bestaat niet meer (of is drank in een gewone gids), of een rij heeft minder dan 2 cadeaus over.
    LET OP = een rij mist een cadeau of een cadeau staat twee keer in dezelfde gids. ('Van €.. tot €..' rekent de site zelf uit: gidsBereik in app.js.)
    Draai na een bouw (leest producten-lean.js, dus de stand ná de correcties). Met 'streng' is de uitkomst 1 bij een FOUT. */
 const fs = require('fs'); const path = require('path'); const R = path.resolve(process.argv[2] || '.') + '/';
@@ -11,7 +11,9 @@ const STRENG = process.argv.indexOf('streng') !== -1;
 global.window = { dispatchEvent() {} }; global.Event = function () {}; global.document = { createEvent: () => ({ initEvent() {} }) };
 require(R + 'assets/js/producten-lean.js'); const M = {}; window.LK_PRODUCTEN.forEach(p => M[p.id] = p);
 const eind = i => { const p = M[i]; return p && p.samengevoegd ? p.samengevoegd : i; };
-const goed = i => { const e = eind(i), p = M[e]; return !!p && p.status === 'goedgekeurd' && !extra.has(i) && !extra.has(e); };
+/* 15-11-2026: drank (p.drank) telt in een gewone gids als weg; alleen een drankgids (drank: true, de gids voor een wijnliefhebber) mag drank tonen. */
+let DRANKGIDS = false;
+const goed = i => { const e = eind(i), p = M[e]; return !!p && p.status === 'goedgekeurd' && (!p.drank || DRANKGIDS) && !extra.has(i) && !extra.has(e); };
 const A = fs.readFileSync(R + 'assets/js/app.js', 'utf8').split('\n');
 const van = A.findIndex(l => /var GIDSEN\s*=\s*\[/.test(l)), tot = A.findIndex(l => /var GIDS_EXTRA\s*=/.test(l));
 if (van < 0 || tot < 0) { console.error('GIDSEN of GIDS_EXTRA niet gevonden in app.js'); process.exit(2); }
@@ -20,7 +22,7 @@ const lijst = t => (t.match(/['"]([^'"]+)['"]/g) || []).map(x => x.slice(1, -1))
 const G = []; let g = null, kop = '';
 for (let i = van; i < tot; i++) {
   const l = A[i]; let m = l.match(new RegExp('\\{\\s*slug:\\s*' + Q + '([a-z0-9-]+)' + Q));
-  if (m) { g = { slug: m[1], regel: i + 1, beeld: str(l, 'beeld'), rijen: [], kort: '', max: null }; G.push(g); }
+  if (m) { g = { slug: m[1], regel: i + 1, beeld: str(l, 'beeld'), rijen: [], kort: '', max: null, drank: /\bdrank:\s*true\b/.test(l) }; G.push(g); }
   if (!g) continue;
   const k = str(l, 'kort'); if (k !== null && !g.kort) g.kort = k;
   m = l.match(/\bmax:\s*([0-9.]+)/); if (m && g.max == null) g.max = +m[1];
@@ -30,6 +32,7 @@ for (let i = van; i < tot; i++) {
 const TOP = {}; for (let i = tot; i < A.length; i++) { const m = A[i].match(new RegExp('^\\s*' + Q + '([a-z0-9-]+)' + Q + ':\\s*\\{\\s*top:\\s*\\[(.*?)\\]\\]')); if (m) TOP[m[1]] = (m[2] + ']').split('],').map(x => lijst(x)[1]).filter(Boolean); if (/GIDSEN\.forEach/.test(A[i])) break; }
 let fout = 0, letop = 0, nIds = 0; const uit = [];
 for (const x of G) {
+  DRANKGIDS = !!x.drank;
   const r = []; const alle = [].concat(...x.rijen.map(q => q.ids)); nIds += alle.length;
   if (x.beeld && !goed(x.beeld)) { fout++; r.push('FOUT   plaatje van de gids bestaat niet meer: ' + x.beeld); }
   (TOP[x.slug] || []).forEach(t => { if (!goed(t)) { fout++; r.push('FOUT   favoriet (Snel kiezen) bestaat niet meer: ' + t); } else if (alle.indexOf(t) === -1) { letop++; r.push('LET OP favoriet staat niet in een rij van de gids: ' + t); } });

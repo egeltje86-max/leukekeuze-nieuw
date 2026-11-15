@@ -15,7 +15,7 @@ function lijst(pad) {
   if (d[0] === 'gelegenheid' || d[0] === 'collectie') {
     const g = (d[0] === 'gelegenheid' ? W.LK_GELEGENHEID : W.LK_COLLECTIE)(d[1]);
     return P.filter(p => {
-      if (p.cat === 'christelijk' || p.los) return false; if (p.smal && !SMAL[p.smal].test(g.slug)) return false;
+      if (p.cat === 'christelijk' || p.los || p.drank) return false; if (p.smal && !SMAL[p.smal].test(g.slug)) return false; /* 15-11-2026: drank alleen op de drankplek */
       if (g.labels && !(p.voor || []).some(v => g.labels.includes(v))) return false;
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
@@ -23,8 +23,8 @@ function lijst(pad) {
       return PR.past(pl, g.vakken || []);
     }).filter(p => { if (!d[2]) return true; const pe = W.LK_PERSONEN.find(x => x.slug === d[2]); return PR.vanPersoon(p, pe) && (PR.smalMagBij(p, pe.slug) || (p.smal && SMAL[p.smal] && SMAL[p.smal].test(d[1]))) && !(p.nietBij && p.nietBij.includes(pe.slug)); }); /* 13-11-2026: tekst voor één moment mag op de eigen gelegenheid ook per persoon */
   }
-  if (d[0] === 'c' && d[1] === 'cadeaus') return P.filter(p => p.cat !== 'christelijk' && !p.los && !(p.smal && !SMAL[p.smal].test(pad)) && PR.plekkenVan(p).includes('cadeaus/' + d[2]));
-  if (d[0] === 'c') return P.filter(p => p.afd === d[1] && (!d[2] || p.groep === d[2]) && (!d[3] || p.vak === d[3]));
+  if (d[0] === 'c' && d[1] === 'cadeaus') return P.filter(p => p.cat !== 'christelijk' && !p.los && !p.drank && !(p.smal && !SMAL[p.smal].test(pad)) && PR.plekkenVan(p).includes('cadeaus/' + d[2]));
+  if (d[0] === 'c') return P.filter(p => p.afd === d[1] && (!d[2] || p.groep === d[2]) && (!d[3] || p.vak === d[3]) && (!p.drank || /^(wijn-bubbels|bier-sterke-drank|alcoholvrij)$/.test(d[2] || '') || (d[3] && p.vak === d[3])));
   throw new Error('onbekend pad ' + pad);
 }
 const KORT = process.env.KORT; module.exports = { lijst };
