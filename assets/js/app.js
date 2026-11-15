@@ -3596,6 +3596,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '15 november', kop: 'Pokémon bouwen! Mega en LEGO', tekst: 'Van een Mega Pikachu van € 9,99 tot het grote LEGO-pronkstuk.', ids: ['cl-mc-charmander', 'cl-mc-pikachu', 'cl-mc-lapras', 'lego-72151', 'bol-9300000257600058'] },
     { datum: '15 november', kop: 'Schoen zetten? Alles onder € 10', tekst: 'Vijf leuke cadeautjes voor in de schoen.', ids: ['dvzn-f8c667585b', 'dvzn-685253dc97', 'dvzn-2b383312f5', 'dvzn-553e02fbf0', 'dvzn-6beee4c0d4'] },
     { datum: '14 november', kop: '5 lampjes om van te dromen', tekst: 'Door Marius zelf uitgekozen: van een tulpenlamp tot een Zweinstein-lamp met toverstaf.', ids: ['cadeau-786ef2dca5', 'cadeau-32797fb340', 'cadeau-1c5fc02b40', 'cadeau-d7158dab60', 'cadeau-b56544b12a'] },
     { datum: '14 november', kop: '5 mooie lampjes tot € 35', tekst: 'Kamer vol sfeer: vijf lampjes om verliefd op te worden.', ids: ['amz-b0fcsxm3vp', 'dvzn-f8532c385d', 'cadeau-a30d8b9e4b', 'cadeau-89157ed70e', 'dvzn-e572f57258'] },
