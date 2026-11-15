@@ -1,0 +1,18 @@
+LANDSCHAP-KEURKAMER LEUKEKEUZE
+
+Openen: dubbelklik op "Landschap openen.cmd" (of op de snelkoppeling op het bureaublad).
+Er opent een klein zwart venster (laten staan) en je browser met de kaart.
+
+Alle cadeaus die nu op leukekeuze.nl staan liggen op een kaart. Elk eiland is een afdeling
+(of een winkel, met de knop "per winkel"). Scroll om in te zoomen, sleep om te schuiven.
+
+- Klik op een cadeau: het gaat weg (rood kruis). Nog een keer klikken: het blijft.
+- Shift ingedrukt houden en slepen: alles in dat vak gaat in een keer weg
+  (alleen wat bij je filter past, dus bijvoorbeeld eerst winkel "bol" kiezen).
+- Alt + Shift + slepen: terugzetten.
+- Ctrl+Z: ongedaan maken.
+- Gouden rand = "zonde?": staat bovenaan een met de hand gekozen lijst. Even goed kijken.
+
+Je keuzes worden meteen bewaard in "mijn keuzes\weg-landschap.json".
+Klaar? Klik op "Klaar: bewaar voor Claude" en zeg in de chat: klaar landschap.
+Er gaat niets van de site af tot Claude je keuzes heeft verwerkt.

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – alleen de top 3</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD N (15-11-2026, Marius: 'kun je er nog 3 verzinnen'): alleen de top 3.
+     Tik op een vraag ('beste cadeau voor een gamer') en je krijgt er maar drie: onze winnaar, de voordelige keus en de uitpakker
+     (zoals Wirecutter: our pick, budget pick, upgrade pick). Minder keus = sneller kiezen. Alles uit de handgekozen toppen. -->
+<style>
+:root{--bg:#F4F1EA;--inkt:#16181D;--zacht:#676B74;--goud:#C9952B;--zilver:#8C96A3;--brons:#B8703F;--wit:#FFFFFF;--lijn:#E3DDD0;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--inkt);font:500 16px/1.5 var(--f)}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:900px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-left)) 60px}
+.kop{text-align:center;margin:6px 0 18px}
+.kop .drie{display:inline-flex;gap:6px;margin-bottom:10px}
+.kop .drie i{width:14px;height:14px;border-radius:50%}
+.kop h1{font:900 clamp(32px,9vw,52px)/1 var(--k);margin:0;letter-spacing:-1px}
+.kop p{color:var(--zacht);margin:8px auto 0;max-width:46ch}
+.vragen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:640px){.vragen{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vraag{display:flex;align-items:center;gap:10px;text-align:left;background:var(--wit);border:1.5px solid var(--lijn);border-radius:18px;padding:8px 10px 8px 8px;min-height:72px}
+.vraag span{flex:none;width:54px;height:54px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--lijn)}
+.vraag img{width:100%;height:100%;object-fit:contain;padding:6%}
+.vraag div{min-width:0}.vraag b{overflow-wrap:anywhere;font:800 14.5px/1.25 var(--f)}
+.vraag small{display:block;color:var(--zacht);font:600 12px/1.2 var(--f);margin-top:2px}
+.vraag:active{transform:scale(.98)}
+.verras{display:block;margin:16px auto 0;min-height:50px;padding:0 22px;border-radius:999px;border:0;background:var(--inkt);color:#fff;font:800 15px/1 var(--f)}
+.terug{display:inline-flex;align-items:center;gap:6px;border:0;background:none;font:800 14px/1 var(--f);color:var(--zacht);min-height:44px;padding:0}
+.uit h2{font:900 clamp(26px,7vw,40px)/1.08 var(--k);margin:4px 0 6px;letter-spacing:-.5px;text-wrap:balance}
+.uit .u{color:var(--zacht);margin:0 0 18px}
+.drie3{display:grid;gap:14px}
+@media (min-width:760px){.drie3{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}.drie3 .plek1{order:2;transform:translateY(-14px)}.drie3 .plek2{order:1}.drie3 .plek3{order:3}}
+.plek{position:relative;background:var(--wit);border-radius:22px;border:2px solid var(--lijn);overflow:hidden;animation:op .4s cubic-bezier(.2,1.4,.4,1) both}
+.plek1{border-color:var(--goud);box-shadow:0 10px 30px rgba(201,149,43,.22)}
+.plek2{animation-delay:.08s}.plek3{animation-delay:.16s}
+@keyframes op{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1}}
+.lint{display:flex;align-items:center;gap:8px;padding:10px 14px;font:800 13px/1 var(--f);letter-spacing:.6px;text-transform:uppercase;color:#fff}
+.plek1 .lint{background:var(--goud)}.plek2 .lint{background:var(--zilver)}.plek3 .lint{background:var(--brons)}
+.lint .m{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;font:900 14px/1 var(--k)}
+.plek .f{position:relative;display:block;width:100%;aspect-ratio:1;background:#fff;border:0;padding:0}
+.plek .f img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6%}
+.plek .t{padding:12px 14px 14px}
+.plek h3{font:800 18px/1.25 var(--f);margin:0 0 6px}
+.plek p{margin:0 0 12px;color:#41454D;font-size:14.5px}
+.plek .rij{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.plek .prijs{font:900 24px/1 var(--k);margin-right:auto}
+.knop{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;margin-top:12px;border-radius:14px;background:var(--inkt);color:#fff;text-decoration:none;font:800 15px/1 var(--f);padding:0 12px;white-space:nowrap;overflow:hidden}
+.knop span{overflow:hidden;text-overflow:ellipsis}.knop svg{width:17px;height:17px;flex:none}
+.plek1 .knop{background:var(--goud);color:#1F1504}
+.k-hart{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;display:grid;place-items:center;color:var(--inkt)}
+.k-hart svg{width:20px;height:20px}
+.k-hart[aria-pressed="true"] svg{fill:#E11D48;stroke:#E11D48}
+.waarom{margin:22px 0 0;padding:14px 16px;border-radius:16px;background:#ECE6DA;color:#41454D;font-size:14px}
+.waarom b{color:var(--inkt)}
+.verder{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.verder button{min-height:42px;padding:0 14px;border-radius:999px;border:1.5px solid var(--lijn);background:var(--wit);font:700 14px/1 var(--f)}
+@media (max-width:759px){.plek{display:grid;grid-template-columns:118px minmax(0,1fr)}.plek1{grid-template-columns:150px minmax(0,1fr)}.plek .lint{grid-column:1/-1}.plek .f{align-self:start;margin:10px 0 10px 10px;border-radius:14px;border:1px solid var(--lijn);overflow:hidden;width:auto}.plek .t{padding:10px 12px 12px}.plek h3{font-size:15.5px}.plek p{font-size:13.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}.plek .prijs{font-size:21px}.k-hart{width:44px;height:44px}.knop{min-height:46px;margin-top:8px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){.plek{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc, t = K.uitTop, app = document.getElementById('app');
+  K.wisselBalk('N');
+  function r(re) { return function (p) { return re.test(p.titel + ' ' + (p.merk || '')); }; }
+  /* elke vraag: bronnen (handgekozen toppen) en eventueel een filter */
+  var V = [
+    { v: 'Voor een gamer', k: 'tieners en volwassenen', b: ['/voor/tieners/gaming-gadgets', '/voor/hem/gadgets-gaming'] },
+    { v: 'Voor een theeleut', k: 'thee, mokken en meer', b: ['/voor/haar/keuken-koffie-thee', '/voor/opa-oma/koffie-thee'], f: r(/\bthee|\bmok\b|mokken|theepot|theeset|theeglas/i) },
+    { v: 'Voor een koffie\u00ADliefhebber', k: 'van mok tot apparaat', b: ['/voor/haar/keuken-koffie-thee', '/voor/opa-oma/koffie-thee', '/voor/hem/wonen-keuken'], f: r(/koffie|espresso|nespresso|senseo|barista|moka|latte|cappuccino/i) },
+    { v: 'Lootje voor een collega', k: 'netjes en niet duur', b: ['/voor/collega/lootjes', '/voor/collega'], max: 25 },
+    { v: 'In de schoen', k: 'kinderen, tot € 10', b: ['/collectie/schoencadeautjes'], max: 10 },
+    { v: 'Om te lachen', k: 'voor iedereen', b: ['/collectie/grappige-cadeaus'] },
+    { v: 'Voor wie alles heeft', k: 'origineel en verrassend', b: ['/collectie/originele-cadeaus'] },
+    { v: 'Iets knus', k: 'warm op de bank', b: ['/voor/haar/pantoffels-sjaals-kleding', '/voor/opa-oma/warm-comfortabel', '/voor/haar'], f: r(/plaid|deken|slof|pantoffel|kruik|hoodie|warm/i) },
+    { v: 'Voor in bad', k: 'verwennen', b: ['/voor/haar/parfum-verzorging', '/voor/haar'], f: r(/bad|bruis|scrub|zeep|douche|spa|rebul/i) },
+    { v: 'Een lampje voor de kamer', k: 'sfeer voor tieners', b: ['/voor/tieners/kamer', '/voor/tieners'], f: r(/lamp|licht|neon|projector/i) },
+    { v: 'Voor een LEGO-fan', k: 'kinderen en volwassenen', b: ['/voor/kinderen/bouwen', '/voor/hem/lego-spellen', '/voor/tieners/lego-creatief'], f: r(/lego/i) },
+    { v: 'Voor een spelletjesavond', k: 'met vrienden of familie', b: ['/voor/haar/puzzels-spellen', '/voor/hem/lego-spellen', '/voor/tieners/spellen-puzzels', '/voor/kinderen/spellen'], f: r(/spel|kaart|hitster|uno|catan|azul|kittens|weerwolven/i) },
+    { v: 'Voor oma', k: 'met liefde gekozen', b: ['/voor/opa-oma'], g: 'v' },
+    { v: 'Voor opa', k: 'voor de stoere opa', b: ['/voor/opa-oma'], g: 'm' },
+    { v: 'Voor een kook\u00ADliefhebber', k: 'in de keuken', b: ['/voor/haar/keuken-koffie-thee', '/voor/hem/wonen-keuken', '/voor/hem/bbq-lekkers'], f: r(/kook|bbq|pan|mes|plank|kruiden|pizza|fondue|wok/i) },
+    { v: 'Voor een whisky\u00ADliefhebber', k: 'alleen voor 18+', b: ['/voor/hem/whisky-bier-drank'], f: r(/whisk/i), drank: true },
+    { v: 'Voor de vogel\u00ADliefhebber', k: 'tuin en natuur', b: ['/voor/opa-oma/tuin-vogels', '/voor/opa-oma'], f: r(/vogel|voeder|nestkast|egel|eekhoorn|insect|bijen|vlinder/i) },
+    { v: 'Voor een baby', k: 'kraamcadeau', b: ['/voor/baby'] },
+    { v: 'Voor een kleuter', k: '4 tot 6 jaar', b: ['/voor/kinderen'], f: function (p) { return p.leeftijd && p.leeftijd[0] <= 5 && p.leeftijd[0] >= 2; } },
+    { v: 'Voor een kind van 8', k: 'jongens en meisjes', b: ['/voor/kinderen'], f: function (p) { return p.leeftijd && p.leeftijd[0] <= 8 && p.leeftijd[1] >= 8; } },
+    { v: 'Voor een tienermeisje', k: '13 tot 17 jaar', b: ['/voor/tieners', '/voor/tieners/geuren-verzorging', '/voor/tieners/kamer'], f: function (p) { return (p.voor || []).indexOf('haar') >= 0 || /lamp|knuffel|squish|stanley|sol de|laneige|hoodie|slof|kralen/i.test(p.titel); } },
+    { v: 'Voor een tienerjongen', k: '13 tot 17 jaar', b: ['/voor/tieners', '/voor/tieners/gaming-gadgets', '/voor/tieners/sport-darts'], f: function (p) { return (p.voor || []).indexOf('hem') >= 0 || /gam|controller|lego|minecraft|voetbal|dart/i.test(p.titel); } },
+    { v: 'Met naam of foto', k: 'persoonlijk', b: ['/collectie/persoonlijke-cadeaus'] },
+    { v: 'Toppers van nu', k: 'waar iedereen het over heeft', b: ['/collectie/toppers-van-nu'] }
+  ];
+  function lijstVan(q) {
+    var l = K.uniek([].concat.apply([], q.b.map(t))).filter(function (p) { return !K.sieraad(p) && (q.drank || !K.drank(p)) && (!q.max || p.prijs <= q.max) && (!q.f || q.f(p)); });
+    if (q.g === 'v') l = l.filter(function (p) { return (p.voor || []).indexOf('hem') < 0 || (p.voor || []).indexOf('haar') >= 0; });
+    if (q.g === 'm') l = l.filter(function (p) { return (p.voor || []).indexOf('haar') < 0 || (p.voor || []).indexOf('hem') >= 0; });
+    return l;
+  }
+  /* winnaar = hoogste in de handgekozen top; voordelig = goedkoopste goede; uitpakker = duurder en anders.
+     Voorkeur: niet al bij een andere vraag gebruikt, en geen bijna-hetzelfde (zelfde lange woorden in de titel). */
+  var GEBRUIKT = {};
+  function woorden(p) { return (p.titel.toLowerCase().match(/[a-z\u00e0-\u00ff]{5,}/g) || []).filter(function (w) { return !/^(voor|met|cadeau|cadeauset|set|stuks|kleur|kies|houten|grote|kleine)$/.test(w); }); }
+  function lijkt(a, b) { var wa = woorden(a); return woorden(b).some(function (w) { return wa.some(function (x) { return x.indexOf(w) >= 0 || w.indexOf(x) >= 0; }); }); }
+  function kies(lijst, extra) {
+    var t1 = lijst.filter(function (p) { return !GEBRUIKT[p.id] && extra.every(function (q) { return !lijkt(p, q); }); });
+    var t2 = lijst.filter(function (p) { return extra.every(function (q) { return !lijkt(p, q); }); });
+    return t1[0] || t2[0] || lijst[0];
+  }
+  function top3(q) {
+    var l = lijstVan(q); if (l.length < 3) return null;
+    var goed = l.slice(0, Math.max(12, Math.ceil(l.length * .5)));
+    var w = goed.filter(function (p) { return !GEBRUIKT[p.id]; })[0] || goed[0];
+    var med = goed.map(function (p) { return p.prijs; }).sort(function (a, b) { return a - b; })[Math.floor(goed.length / 2)];
+    var vk = goed.filter(function (p) { return p !== w && p.prijs < Math.min(w.prijs * .8, med); }).sort(function (a, b) { return a.prijs - b.prijs; });
+    if (!vk.length) vk = goed.filter(function (p) { return p !== w && p.prijs < w.prijs; }).sort(function (a, b) { return a.prijs - b.prijs; });
+    var v = kies(vk, [w]);
+    var uk = goed.filter(function (p) { return p !== w && p !== v && p.prijs > Math.max(w.prijs * 1.3, med); });
+    if (!uk.length) uk = goed.filter(function (p) { return p !== w && p !== v && p.prijs > w.prijs; });
+    var u = kies(uk, [w, v].filter(Boolean));
+    if (!v) v = kies(goed.filter(function (p) { return p !== w && p !== u; }), [w]);
+    if (!u) u = kies(goed.filter(function (p) { return p !== w && p !== v; }), [w, v]);
+    var plekken = [w, v, u].filter(Boolean);
+    if (plekken.length !== 3) return null;
+    plekken.forEach(function (p) { GEBRUIKT[p.id] = 1; });
+    return plekken;
+  }
+  var KLAAR = V.map(function (q) { q.drie = top3(q); return q; }).filter(function (q) { return q.drie; });
+
+  function start() {
+    app.innerHTML = '<div class="kop"><div class="drie"><i style="background:var(--goud)"></i><i style="background:var(--zilver)"></i><i style="background:var(--brons)"></i></div><h1>Alleen de top 3</h1><p>Geen lijsten van honderden cadeaus. Tik op een vraag en krijg er drie: onze winnaar, de voordelige keus en de uitpakker.</p></div>' +
+      '<div class="vragen">' + KLAAR.map(function (q, i) { return '<button class="vraag" type="button" data-q="' + i + '"><span><img src="' + K.klein(q.drie[0]) + '" alt="" loading="lazy"></span><div><b>' + esc(q.v) + '</b><small>' + esc(q.k) + '</small></div></button>'; }).join('') + '</div>' +
+      '<button class="verras" type="button" data-verras>Verras me met een vraag</button>';
+  }
+  var LBL = [['1', 'Onze winnaar', 'Als je er maar één kunt kiezen, kies deze.'], ['2', 'Voordelige keus', 'Bijna net zo leuk, voor minder geld.'], ['3', 'De uitpakker', 'Mag het iets meer kosten? Hier word je blij van.']];
+  function toon(i) {
+    var q = KLAAR[i];
+    app.innerHTML = '<button class="terug" type="button" data-terug>← Alle vragen</button><section class="uit"><h2>Het beste cadeau: ' + esc(q.v.charAt(0).toLowerCase() + q.v.slice(1)) + '</h2><p class="u">Drie keuzes, met de hand uitgezocht. Klaar.</p><div class="drie3">' +
+      q.drie.map(function (p, j) { var rd = K.reden(p);
+        return '<article class="plek plek' + (j + 1) + '"><div class="lint"><span class="m">' + LBL[j][0] + '</span>' + LBL[j][1] + '</div><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="' + esc(p.titel) + '"><img src="' + K.groot(p) + '" alt=""></button>' +
+          '<div class="t"><h3>' + esc(p.titel) + '</h3><p>' + esc(rd || LBL[j][2]) + '</p><div class="rij"><span class="prijs">' + K.euro(p.prijs) + '</span>' + K.hartKnop(p) + '</div>' +
+          '<a class="knop" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener"><span>Bekijk bij ' + esc(p.shop) + '</span>' + K.ic('uit') + '</a></div></article>'; }).join('') + '</div>' +
+      '<p class="waarom"><b>Hoe kiezen wij?</b> De winnaar staat het hoogst in onze eigen, met de hand gemaakte lijst. De voordelige keus is de goedkoopste van de goede cadeaus, de uitpakker een duurdere die net iets anders is. Niemand betaalt ons om bovenaan te staan.</p>' +
+      '<div class="verder">' + KLAAR.map(function (x, j) { return j === i ? '' : '<button type="button" data-q="' + j + '">' + esc(x.v) + '</button>'; }).join('') + '</div></section>';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try { history.replaceState(null, '', '#' + i); } catch (e) {}
+  }
+  app.addEventListener('click', function (e) {
+    var x;
+    if ((x = e.target.closest('[data-q]'))) { toon(+x.getAttribute('data-q')); return; }
+    if (e.target.closest('[data-verras]')) { toon(Math.floor(Math.random() * KLAAR.length)); return; }
+    if (e.target.closest('[data-terug]')) { start(); try { history.replaceState(null, '', location.pathname); } catch (e2) {} window.scrollTo({ top: 0 }); }
+  });
+  var h = parseInt(location.hash.slice(1), 10); if (h >= 0 && h < KLAAR.length) toon(h); else start();
+})();
+</script>
+</body>
+</html>
