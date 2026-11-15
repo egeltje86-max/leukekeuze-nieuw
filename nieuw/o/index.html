@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – het cadeauhuis</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD O (15-11-2026, Marius: 'werk die 2 verder uit, we gaan een nieuw pad in'): het cadeauhuis = kamer-tour (M) + budget-schuif (L).
+     1. Voor wie? 2. Je loopt door het huis van die persoon (alleen de kamers die bij hem of haar passen). 3. Tik op een plek.
+     4. In het blad: de budget-schuif bovenin, de cadeaus glijden mee. Het bedrag blijft staan als je naar een andere plek gaat.
+     Onderzoek: Baymard (prijsschuif: niet-lineair, waarde live tonen, snel bijwerken, vaste bedragen ernaast; één knop, geen twee).
+     Kamers getekend in /nieuw/kamers.js. Alleen cadeaus die bij die persoon passen; geen sieraden; drank alleen bij het wijnrek en het koelkastje. -->
+<style>
+:root{--bg:#FBF6EE;--inkt:#2A2420;--zacht:#7A6F66;--terra:#D9643A;--terra2:#B84E28;--lijn:#EADFCF;--wit:#fff;--zand:#F3EADB;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--inkt);font:500 16px/1.5 var(--f)}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:860px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left)) 70px}
+h1{font:900 clamp(30px,8.5vw,48px)/1.05 var(--k);margin:8px 0 6px;letter-spacing:-.6px;text-wrap:balance}
+.sub{color:var(--zacht);margin:0 0 16px;max-width:52ch}
+/* stap 1: voor wie */
+.wie{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:700px){.wie{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.wie button{display:flex;flex-direction:column;align-items:center;gap:8px;background:var(--wit);border:1.5px solid var(--lijn);border-radius:20px;padding:14px 10px 12px;text-align:center}
+.wie button:active{transform:scale(.98)}
+.wie .rond{width:84px;height:84px;border-radius:50%;overflow:hidden;background:#fff;border:3px solid var(--zand);box-shadow:0 0 0 2px var(--terra)}
+.wie .rond img{width:100%;height:100%;object-fit:contain;padding:8%}
+.wie b{font:800 16px/1.2 var(--f)}
+.wie small{color:var(--zacht);font:600 12.5px/1.3 var(--f)}
+/* stap 2: het huis */
+.terug{display:inline-flex;align-items:center;gap:6px;border:0;background:none;font:800 14px/1 var(--f);color:var(--zacht);min-height:44px;padding:0}
+.kamers{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:4px -2px 12px;padding:2px}
+.kamers::-webkit-scrollbar{display:none}
+.kamers button{flex:none;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--lijn);background:var(--wit);font:800 14px/1 var(--f)}
+.kamers button[aria-pressed="true"]{background:var(--inkt);border-color:var(--inkt);color:#fff}
+.scene{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(60,40,20,.14);aspect-ratio:4/3;background:#eee;animation:in .35s ease both}
+@keyframes in{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
+.scene svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hot{position:absolute;transform:translate(-50%,-50%);border:0;background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:44px;min-height:44px;justify-content:center}
+.hot .s{position:relative;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--terra);box-shadow:0 2px 8px rgba(0,0,0,.25);display:grid;place-items:center;font:900 15px/1 var(--f);color:var(--terra)}
+.hot .s::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid #fff;animation:puls 1.8s ease-out infinite}
+@keyframes puls{from{transform:scale(.6);opacity:1}to{transform:scale(1.5);opacity:0}}
+.hot .l{position:absolute;top:calc(50% + 15px);left:50%;transform:translateX(-50%);background:rgba(42,36,32,.84);color:#fff;font:800 11.5px/1 var(--f);padding:4px 7px;border-radius:999px;white-space:nowrap}
+.hot.r .l{left:auto;right:4px;transform:none}.hot.lft .l{left:4px;transform:none}
+.tip{margin:10px 2px 0;color:var(--zacht);font-size:14px;text-align:center}
+.plekken{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+@media (min-width:700px){.plekken{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.plekken button{display:flex;align-items:center;gap:10px;text-align:left;background:#fff;border:1.5px solid var(--lijn);border-radius:14px;padding:6px 8px 6px 6px;min-height:60px}
+.plekken img{width:46px;height:46px;object-fit:contain;border-radius:10px;flex:none}
+.plekken span{min-width:0}.plekken b{display:block;font:800 14px/1.2 var(--f)}.plekken small{display:block;font:600 12px/1.25 var(--f);color:var(--zacht)}
+.budgetbalk{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 0;padding:10px 14px;border-radius:14px;background:var(--zand);font-size:14px}
+.budgetbalk b{font:900 16px/1 var(--f)}
+.budgetbalk button{border:0;background:none;color:var(--terra2);font:800 14px/1 var(--f);min-height:40px}
+/* het blad met schuif */
+.dek{position:fixed;inset:0;z-index:29;background:rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .25s}
+.dek.open{opacity:1;pointer-events:auto}
+.blad{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--wit);border-radius:22px 22px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.25);height:86vh;height:86dvh;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .32s cubic-bezier(.2,.9,.2,1);max-width:860px;margin:0 auto}
+.blad.open{transform:none}
+.blad .kop{display:flex;align-items:center;gap:10px;padding:12px 16px 6px}
+.blad h2{font:900 23px/1.1 var(--k);margin:0}
+.blad .kop small{display:block;font:600 13px/1.3 var(--f);color:var(--zacht);margin-top:3px}
+.blad .x{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:#F2EBE0;font:800 20px/1 var(--f)}
+.schuifblok{padding:4px 16px 10px;border-bottom:1px solid var(--lijn)}
+.bedrag{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.bedrag .g{font:900 30px/1 var(--k);font-variant-numeric:tabular-nums}
+.bedrag .n{font:700 13px/1.2 var(--f);color:var(--zacht);text-align:right}
+.histo{height:26px;margin-top:6px;display:flex;align-items:flex-end;gap:2px}
+.histo i{flex:1;background:#E8DCCB;border-radius:2px 2px 0 0;min-height:2px}
+.histo i.aan{background:var(--terra)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:40px;background:transparent;margin:0;touch-action:pan-y;display:block}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:8px;background:linear-gradient(90deg,var(--terra) var(--pos,100%),#E8DCCB var(--pos,100%))}
+input[type=range]::-moz-range-track{height:8px;border-radius:8px;background:#E8DCCB}
+input[type=range]::-moz-range-progress{height:8px;border-radius:8px;background:var(--terra)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;margin-top:-12px;border-radius:50%;background:#fff;border:4px solid var(--terra);box-shadow:0 3px 10px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid var(--terra)}
+.snel{display:flex;gap:6px}
+.snel button{flex:1 1 0;min-width:0;white-space:nowrap;min-height:38px;padding:0 4px;border-radius:10px;border:1.5px solid var(--lijn);background:#fff;font:800 13px/1 var(--f)}
+.snel button.aan{background:var(--inkt);border-color:var(--inkt);color:#fff}
+.in{flex:1;overflow:auto;padding:12px 16px calc(18px + env(safe-area-inset-bottom));overscroll-behavior:contain}
+.rij{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:640px){.rij{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.k{border:1.5px solid var(--lijn);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.k.nieuw{animation:kin .3s ease both}
+@keyframes kin{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+.k .f{position:relative;aspect-ratio:1;border:0;padding:0;background:#fff;display:block;width:100%}
+.k .f img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6%}
+.k .t{padding:7px 10px 10px;display:flex;flex-direction:column;flex:1}
+.k h3{font:700 13.5px/1.3 var(--f);margin:0 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.k .r{display:flex;align-items:center;gap:6px;margin-top:auto}
+.k .p{font:900 18px/1 var(--k);margin-right:auto;font-variant-numeric:tabular-nums}
+.k-hart{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;display:grid;place-items:center;flex:none}
+.k-hart svg{width:18px;height:18px}.k-hart[aria-pressed="true"] svg{fill:#E11D48;stroke:#E11D48}
+.k .knop span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.k .knop{display:flex;align-items:center;justify-content:center;min-height:42px;margin-top:8px;border-radius:12px;background:var(--inkt);color:#fff;text-decoration:none;font:800 13px/1 var(--f);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.leeg{grid-column:1/-1;text-align:center;color:var(--zacht);padding:24px 8px}
+.leeg button{margin-top:8px;border:0;background:var(--zand);border-radius:999px;min-height:42px;padding:0 16px;font:800 14px/1 var(--f)}
+.meer{display:block;margin:14px auto 0;min-height:48px;padding:0 22px;border-radius:999px;border:0;background:var(--terra);color:#fff;font:800 15px/1 var(--f)}
+@media (prefers-reduced-motion:reduce){.hot .s::after,.scene,.k.nieuw{animation:none}.blad{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="dek" id="dek"></div>
+<section class="blad" id="lade" aria-hidden="true">
+  <div class="kop"><div style="flex:1;min-width:0"><h2 id="lTitel"></h2><small id="lSub"></small></div><button class="x" type="button" id="dicht" aria-label="Sluiten">×</button></div>
+  <div class="schuifblok">
+    <div class="bedrag"><span class="g" id="getal">Alle bedragen</span><span class="n" id="aantal"></span></div>
+    <div class="histo" id="histo" aria-hidden="true"></div>
+    <input type="range" id="schuif" min="0" max="1000" value="1000" aria-label="Hoeveel wil je uitgeven?">
+    <div class="snel" id="snel"></div>
+  </div>
+  <div class="in" id="lIn"><div class="rij" id="rij"></div><button class="meer" type="button" id="meer">Laat er meer zien</button></div>
+</section>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script src="/nieuw/kamers.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc, SC = window.KAMER_SCENES, app = document.getElementById('app');
+  K.wisselBalk('O');
+
+  /* ---------- wie en welke kamers ---------- */
+  var WIE = [
+    { id: 'haar', naam: 'Voor haar', kop: 'Het huis van haar', slug: 'haar', kamers: ['woon', 'keuken', 'slaap', 'bad', 'tuin'] },
+    { id: 'hem', naam: 'Voor hem', kop: 'Het huis van hem', slug: 'hem', kamers: ['woon', 'keuken', 'schuur', 'tuin', 'bad'] },
+    { id: 'tiener', naam: 'Een tiener', kop: 'De kamer van je tiener', slug: 'tieners', kamers: ['tiener', 'bad'] },
+    { id: 'kind', naam: 'Een kind', kop: 'De kamer van het kind', slug: 'kinderen', kamers: ['kind', 'bad', 'tuin'] },
+    { id: 'opa-oma', naam: 'Opa en oma', kop: 'Bij opa en oma thuis', slug: 'opa-oma', kamers: ['woon', 'keuken', 'tuin', 'slaap'] },
+    { id: 'collega', naam: 'Een collega', kop: 'Op het werk', slug: 'collega', kamers: ['werk', 'keuken'] },
+    { id: 'baby', naam: 'Een baby', kop: 'De babykamer', slug: 'baby', kamers: ['baby', 'bad'] }
+  ];
+  var KNAAM = { woon: 'Woonkamer', keuken: 'Keuken', slaap: 'Slaapkamer', bad: 'Badkamer', tuin: 'Tuin', schuur: 'Schuur', tiener: 'Tienerkamer', kind: 'Kinderkamer', werk: 'Bureau', baby: 'Babykamer' };
+  var KNAAM_WIE = { 'collega/keuken': 'Koffiehoek', 'kind/bad': 'In bad', 'baby/bad': 'Badje' };
+
+  /* ---------- plekken per kamer (woordfilter op de naam) ---------- */
+  var PLEK = {
+    woon: [
+      { x: 34, y: 54, t: 'Op de bank', s: 'Knus en warm', re: /plaid|\bdeken\b|sierkussen|kussen met|\bslof|sloffen|pantoffel|snuggle|hoodie-?deken|deken met mouwen|snug-rug|\bkruik\b|warmtekussen|massagekussen|kersenpitkussen/i, niet: /hond|\bkat\b|katten|huisdier|vensterbank|olla|vaas|kussenspray|stress|enterknop|hoofdkussen|kruikmodel/i },
+      { x: 43, y: 72, t: 'Op tafel', s: 'Spellen voor samen', re: /\bspel\b|spellen|kaartspel|hitster|uno\b|catan|azul|kittens|weerwolven|ticket to ride|carcassonne|rummikub|puzzel/i, niet: /puzzelboek/i },
+      { x: 83, y: 32, t: 'In de kast', s: 'Om neer te zetten', re: /book nook|boekensteun|lego (botanic|bonsai|wilde|bloem|roz|orchid)|bonsai|wereldbol|3d-puzzel/i },
+      { x: 64, y: 22, t: 'Lampje', s: 'Sfeer in huis', re: /\blamp\b|\blampje|nachtlamp|leeslamp|tafellamp|\bgeurkaars|\bkaars\b/i, niet: /hoofdlamp|zaklamp|fiets|pomp|speaker/i },
+      { x: 81, y: 50, t: 'Muziek', s: 'Platen en speakers', re: /platenspeler|speaker|\bradio|\blp\b|vinyl|karaoke/i },
+      { x: 27, y: 18, t: 'Aan de muur', s: 'Posters en klokken', re: /poster|klok|tegeltje|fotolijst|wandkalender/i }
+    ],
+    keuken: [
+      { x: 10, y: 52, t: 'Koffie & thee', s: 'Mokken en meer', re: /koffie|espresso|senseo|\bmoka\b|\bthee|theepot|theeset|\bmok\b|mokken/i, niet: /stapelbeker|lego|duplo|adventskalender/i },
+      { x: 44, y: 54, t: 'Op het fornuis', s: 'Koken en bakken', re: /\bkook|\bpan\b|braadpan|koekenpan|\bwok\b|fondue|pizzaoven|pizzasteen|pizzaschaar|bbq|barbecue|steakmes|bakvorm|\bsauzen/i, niet: /lego|duplo|play-doh|\bspel/i },
+      { x: 64, y: 47, t: 'De snoeppot', s: 'Iets lekkers', re: /chocola|snoep|drop|stroopwafel|koek|bonbon|marsepein|lindt|tony/i },
+      { x: 89, y: 30, t: 'Het wijnrek', s: 'Alleen voor 18+', re: /\bwijn|whisk|\bgin\b|champagne|prosecco|\brum\b|\bport\b|cognac|karaf|kurkentrekker/i, niet: /vaas|zonder wijn/i, drank: true },
+      { x: 87, y: 72, t: 'Op tafel', s: 'Borrel en serveren', re: /plank\b|plankje|serveer|borrel|kaasset|kaasmes|tapas|onderzetter/i, niet: /vogel|lego/i }
+    ],
+    slaap: [
+      { x: 62, y: 57, t: 'Op bed', s: 'Lekker warm', re: /plaid|\bdeken|kussen|knuffel|slaapmasker|\bkruik|pyjama|onesie|hoodie|kussenspray/i, niet: /hoofdkussen/i },
+      { x: 26, y: 44, t: 'Het nachtkastje', s: 'Lezen en slapen', re: /\bboek\b|leeslamp|nachtlamp|lampje|wekker|book nook|geurkaars|kussenspray/i, niet: /kleurboek|puzzelboek|hoofdlamp/i },
+      { x: 90, y: 30, t: 'De kaptafel', s: 'Verzorgen', re: /parfum|eau de|make-up|nagellak|stijltang|f[oö]hn|lipbalm|haarborstel|rebul|giftset|bodycr|lotion/i },
+      { x: 56, y: 20, t: 'Aan de muur', s: 'Met een eigen foto', re: /poster|fotolijst|sterrenhemel|klok|tegeltje/i }
+    ],
+    bad: [
+      { x: 30, y: 56, t: 'In bad', s: 'Bruisen en ontspannen', re: /bruis|badparel|badeend|badzout|badolie|badbom|badschuim|bad ?(&|en) ?body|zeepnoedel|badspeel/i },
+      { x: 80, y: 46, t: 'Bij de wastafel', s: 'Zeep en handcrème', re: /zeep|handcr[eè]me|hand care|scrub|lotion/i, niet: /zeepbel|bellenblaas/i },
+      { x: 40, y: 15, t: 'Op het plankje', s: 'Geuren', re: /parfum|eau de|geur|rebul|diffuser|geurstok/i },
+      { x: 15, y: 30, t: 'Aan het rek', s: 'Badjas en handdoek', re: /badjas|handdoek|badslipper|haarband|slaapmasker|spa\b|badcape/i }
+    ],
+    tuin: [
+      { x: 27, y: 38, t: 'Het vogelhuisje', s: 'Voor vogels en egels', re: /\bvogel|voederhuis|voederschaal|vogelvoer|nestkast|egelhuis|\begel\b|eekhoorn|insectenhotel|bijenhotel|vlinder/i, niet: /leeslamp|glazen|\bmok\b|tegel|lamp|trein|speelkleed|wanddecoratie/i },
+      { x: 55, y: 74, t: 'Rond het vuur', s: 'Buiten zitten en grillen', re: /vuurkorf|vuurschaal|tafelvuur|solo stove|bbq|barbecue|weber|marshmallow/i, niet: /play-doh|speelset/i },
+      { x: 84, y: 64, t: 'De moestuin', s: 'Kweken en planten', re: /\bkweek|zaadjes|\bzaden|bloemzaad|moestuin|kruidentuin|bloembollen|snoeischaar|\bolla\b|tuinset|tuingereedschap/i },
+      { x: 62, y: 13, t: 'Lampjes', s: 'Licht in de tuin', re: /solar|zonne-energie|lichtsnoer|tuinlamp|lantaarn|tuinfontein/i, niet: /robot|puzzel|boek/i },
+      { x: 35, y: 86, t: 'Spelen', s: 'Buitenspellen', re: /kubb|jeu de boules|m[oö]lkky|badminton|voetbaldoel|frisbee|croquet|spikeball|bellenblaas|stoepkrijt|trampoline|zandbak|waterpistool|super soaker|vlieger/i }
+    ],
+    schuur: [
+      { x: 25, y: 57, t: 'De werkbank', s: 'Handig gereedschap', re: /zakmes|multitool|leatherman|victorinox|zaklamp|gereedschap|schroevendra|bitset|hamer|meetlint|hoofdlamp/i },
+      { x: 25, y: 25, t: 'De hobbyhoek', s: 'Bouwen en sturen', re: /lego technic|modelbouw|bouwpakket|ugears|bestuurbare|\brc[- ]|metaaldetector|3d-puzzel/i },
+      { x: 65, y: 27, t: 'Het dartbord', s: 'Darts', re: /\bdart|winmau|harrows|karella|target darts/i },
+      { x: 88, y: 50, t: 'Het koelkastje', s: 'Alleen voor 18+', re: /\bbier|whisk|\bgin\b|\brum\b|cognac|jack daniel|bierpul|borrel/i, drank: true },
+      { x: 68, y: 80, t: 'De fiets', s: 'Voor onderweg', re: /fiets|\bstep\b|e-step|e-bike|fietslamp|fietsbel|fietstas/i, niet: /fietspomp/i }
+    ],
+    tiener: [
+      { x: 24, y: 42, t: 'Het bureau', s: 'Gamen en gadgets', re: /gaming|controller|minecraft|mario|nintendo|playstation|ps5|switch|game\b|koptelefoon|powerbank|oordopjes/i },
+      { x: 78, y: 54, t: 'Op bed', s: 'Knuffels en knus', re: /squish|knuffel|snuggle|hoodie|slof|sloffen|kussen|plaid|deken/i },
+      { x: 25, y: 16, t: 'Aan de muur', s: 'Lampjes en neon', re: /neon|\bled[- ]|projector|lichtsnoer|fotokoord|sterrenhemel|\blamp\b|\blampje|discolamp/i, niet: /hoofdlamp|harnas|fiets|zaklamp|pomp/i },
+      { x: 78, y: 24, t: 'Op de plank', s: 'Bouwen en sparen', re: /lego|pok[eé]mon|funko|figuur|verzamel|hylkies|blind ?box|labubu/i },
+      { x: 50, y: 36, t: 'De spiegel', s: 'Verzorging', re: /sol de|laneige|stijltang|krultang|make-up|bruisbal|lipbalm|haarborstel|nagellak|parfum/i }
+    ],
+    kind: [
+      { x: 50, y: 80, t: 'Op het speelkleed', s: 'Bouwen en rijden', re: /lego|duplo|brio|blokken|\btrein|\bauto|racebaan|knikkerbaan|connetix|magna/i, niet: /bloem|roz|bonsai|botanic/i },
+      { x: 20, y: 52, t: 'In bed', s: 'Knuffels en nachtlampjes', re: /knuffel|nachtlamp|lampje|kruik|squish|slaap/i },
+      { x: 84, y: 54, t: 'De knutseltafel', s: 'Tekenen en maken', re: /knutsel|tekenset|tekenen|kleurboek|kleurpotlo|\bklei\b|slijm|kralen|play-doh|stiften|stoepkrijt|\bverf/i },
+      { x: 51, y: 42, t: 'In de kast', s: 'Spelletjes en puzzels', re: /\bspel\b|spelletje|puzzel|memory|kaartspel|junior/i, niet: /denksport|puzzelboek|afdruklijst/i },
+      { x: 75, y: 16, t: 'Spelen buiten', s: 'Voor de tuin', re: /bellenblaas|stoepkrijt|voetbal|step\b|trampoline|zandbak|waterpistool|super soaker|vlieger/i }
+    ],
+    werk: [
+      { x: 41, y: 30, t: 'Op het bureau', s: 'Om mee te lachen', re: /stressbal|bureau|gadget|fidget|useless box|newton|pickleball|nekroller|lampje|muismat|telefoonhouder/i },
+      { x: 60, y: 52, t: 'De koffiemok', s: 'Mokken en thee', re: /\bmok\b|mokken|beker|koffie|\bthee\b|thermos/i, niet: /stapelbeker/i },
+      { x: 18, y: 35, t: 'De plant', s: 'Groen op je bureau', re: /\bplant|bonsai|\bkweek|cactus|zaadjes/i, niet: /lego/i },
+      { x: 24, y: 57, t: 'Iets lekkers', s: 'Voor bij de koffie', re: /chocola|snoep|drop|stroopwafel|koek|bonbon|boterkoek|tony/i },
+      { x: 85, y: 40, t: 'Op de plank', s: 'Boekjes en spelletjes', re: /\bboek\b|puzzel|sudoku|quiz|kaartspel|\bspel\b|weerwolven|hitster/i, niet: /kleurboek/i }
+    ],
+    baby: [
+      { x: 28, y: 56, t: 'In het bedje', s: 'Knuffels en slapen', re: /knuffel|speendoek|slaapzak|rammelaar|lammetje|nachtlamp/i },
+      { x: 28, y: 26, t: 'Boven het bedje', s: 'Mobiel en muziek', re: /mobiel|muziekdoos|nachtlampje|projector|knuffel met muziek/i },
+      { x: 77, y: 58, t: 'De commode', s: 'Kraamcadeaus', re: /kraam|badcape|luier|rompertje|romper|slab|badje|verzorging|setje/i },
+      { x: 72, y: 23, t: 'Aan de muur', s: 'Met de naam erop', re: /geboorte|poster|\bnaam|letters|fotolijst|afdruk/i },
+      { x: 52, y: 84, t: 'Het speelkleed', s: 'Spelen en ontdekken', re: /speelkleed|babygym|rammelaar|blokken|bijtring|activiteit|stapel/i }
+    ]
+  };
+
+  /* ---------- welke cadeaus passen bij wie ---------- */
+  var RANG = {}; Object.keys(K.TOP).forEach(function (k) { K.TOP[k].forEach(function (id, i) { var v = i / Math.max(K.TOP[k].length, 12); if (RANG[id] == null || v < RANG[id]) RANG[id] = v; }); });
+  var POOL = {};
+  function pool(w) {
+    if (POOL[w.id]) return POOL[w.id];
+    var r = {}; Object.keys(K.TOP).forEach(function (k) { if (k === '/voor/' + w.slug || k.indexOf('/voor/' + w.slug + '/') === 0) K.TOP[k].forEach(function (id, i) { var v = i / Math.max(K.TOP[k].length, 12); if (r[id] == null || v < r[id]) r[id] = v; }); });
+    var l = K.ALLES.filter(function (p) {
+      if (K.sieraad(p) || !(p.prijs > 0)) return false;
+      if (r[p.id] != null) return true;
+      /* dezelfde regels als de Voor wie-pagina's: niet zeker bij deze persoon, of een tekst voor iemand anders */
+      if ((p.nietBij || []).indexOf(w.slug) >= 0) return false;
+      if (p.smal && !((p.smal === 'grootouder' && w.id === 'opa-oma') || (p.smal === 'collega' && w.id === 'collega'))) return false;
+      if (/dieren/.test(p.afd || '')) return false;
+      if (w.id === 'hem' && /\broze\b|\bpink\b/i.test(p.titel)) return false;
+      /* geen kleding in maten (Marius 13-11) */
+      if (/truien-hoodies|t-shirts|sneakers|laarzen|handschoenen/.test(p.vak || '')) return false;
+      var v = p.voor || [], lt = p.leeftijd;
+      if (w.id === 'haar' || w.id === 'hem') return v.indexOf(w.id) >= 0 || (v.indexOf('iedereen') >= 0 && !(lt && lt[1] && lt[1] <= 12) && v.indexOf('kind') < 0 && v.indexOf('baby') < 0);
+      if (w.id === 'tiener') return v.indexOf('tiener') >= 0;
+      if (w.id === 'kind') return v.indexOf('kind') >= 0 && !(lt && lt[0] > 10);
+      return v.indexOf(w.id) >= 0;
+    });
+    l.forEach(function (p) { p._r = r[p.id] != null ? r[p.id] : 1 + (RANG[p.id] != null ? RANG[p.id] : 1); });
+    l.sort(function (a, b) { return a._r - b._r; });
+    var volw = w.id === 'haar' || w.id === 'hem' || w.id === 'opa-oma' || w.id === 'collega';
+    return (POOL[w.id] = { l: l, volw: volw });
+  }
+  function zoek(w, pl) {
+    var P = pool(w), uit = P.l.filter(function (p) {
+      var t = p.titel + ' ' + (p.merk || '');
+      if (!pl.re.test(t) || (pl.niet && pl.niet.test(t))) return false;
+      if (/\bhoodie\b|\btrui\b|t-shirt/i.test(t) && !/snuggle|deken|teddy|kerst/i.test(t)) return false; /* geen kleding in maten */
+      return !K.drank(p) || (pl.drank && P.volw);
+    });
+    /* hooguit 3 uit hetzelfde vakje bovenaan, de rest erachter */
+    var tel = {}, voor = [], na = [];
+    uit.forEach(function (p) { var v = p.vak || ''; tel[v] = (tel[v] || 0) + 1; (tel[v] <= 3 ? voor : na).push(p); });
+    return voor.concat(na);
+  }
+
+  /* ---------- schermen ---------- */
+  var wie = null, kamer = null, budget = 0; /* 0 = alle bedragen */
+  function start() {
+    wie = null; kamer = null;
+    app.innerHTML = '<h1>Voor wie zoek je een cadeau?</h1><p class="sub">We lopen samen door het huis van die persoon. Tik op een plek en kies je bedrag.</p><div class="wie">' +
+      WIE.map(function (w) { var top = K.uitTop('/voor/' + w.slug).filter(function (p) { return !K.sieraad(p) && !K.drank(p); })[0];
+        return '<button type="button" data-wie="' + w.id + '"><span class="rond">' + (top ? '<img src="' + K.klein(top) + '" alt="" loading="lazy">' : '') + '</span><b>' + esc(w.naam) + '</b><small>' + kamersVan(w).length + ' ' + (kamersVan(w).length === 1 ? 'kamer' : 'kamers') + ' om rond te kijken</small></button>'; }).join('') + '</div>';
+    zetAdres('');
+  }
+  function plekkenVan(w, km) { return (PLEK[km] || []).map(function (pl) { return { pl: pl, l: zoek(w, pl) }; }).filter(function (x) { return x.l.length >= 4; }); }
+  /* een kamer telt alleen mee als er genoeg te zien is: minstens 2 plekken en 12 cadeaus */
+  function kamersVan(w) { if (w._k) return w._k; w._k = w.kamers.filter(function (k) { var pk = plekkenVan(w, k), n = 0; pk.forEach(function (x) { n += x.l.length; }); return pk.length >= 2 && n >= 12; }); return w._k; }
+  function huis(w, km) {
+    var ks = kamersVan(w); wie = w; kamer = ks.indexOf(km) >= 0 ? km : ks[0];
+    var pk = plekkenVan(w, kamer), naamK = function (k) { return KNAAM_WIE[w.id + '/' + k] || KNAAM[k]; };
+    app.innerHTML = '<button class="terug" type="button" data-terug>← Iemand anders</button><h1>' + esc(w.kop) + '</h1>' +
+      (ks.length > 1 ? '<div class="kamers" role="group" aria-label="Kamer">' + ks.map(function (k) { return '<button type="button" data-kamer="' + k + '" aria-pressed="' + (k === kamer) + '">' + esc(naamK(k)) + '</button>'; }).join('') + '</div>' : '') +
+      '<div class="scene"><svg viewBox="0 0 400 300" role="img" aria-label="' + esc(naamK(kamer)) + '">' + SC[kamer] + '</svg>' +
+      pk.map(function (x, i) { return '<button class="hot' + (x.pl.x > 76 ? ' r' : x.pl.x < 16 ? ' lft' : '') + '" type="button" data-p="' + i + '" style="left:' + x.pl.x + '%;top:' + x.pl.y + '%"><span class="s">+</span><span class="l">' + esc(x.pl.t) + '</span></button>'; }).join('') + '</div>' +
+      '<p class="tip">Tik op een rondje met een <b>+</b>, of kies hieronder</p><div class="plekken">' +
+      pk.map(function (x, i) { return '<button type="button" data-p="' + i + '"><img src="' + K.klein(x.l[0]) + '" alt="" loading="lazy"><span><b>' + esc(x.pl.t) + '</b><small>' + esc(x.pl.s) + ' · ' + x.l.length + '</small></span></button>'; }).join('') + '</div>' +
+      (budget ? '<div class="budgetbalk"><span>Je bedrag: <b>' + bedragTekst(budget) + '</b></span><button type="button" data-geenbudget>Alle bedragen</button></div>' : '');
+    app._pk = pk;
+    zetAdres(w.id + '-' + kamer);
+  }
+  function zetAdres(h) { try { history.replaceState(null, '', h ? '#' + h : location.pathname); } catch (e) {} }
+
+  /* ---------- het blad met de schuif ---------- */
+  var MIN = 5, MAX = 150, lade = document.getElementById('lade'), dek = document.getElementById('dek'), rij = document.getElementById('rij'), schuif = document.getElementById('schuif');
+  var huidig = null, toon = 12;
+  function naarPrijs(v) { return MIN * Math.pow(MAX / MIN, v / 960); }
+  function naarSchuif(e) { return e ? Math.round(960 * Math.log(e / MIN) / Math.log(MAX / MIN)) : 1000; }
+  function rond(e) { return e < 20 ? Math.round(e) : e < 60 ? Math.round(e / 5) * 5 : Math.round(e / 10) * 10; }
+  function bedragTekst(e) { return e ? 'Tot € ' + rond(e) : 'Alle bedragen'; }
+  function lijst() {
+    if (!huidig) return [];
+    var l = huidig.l;
+    if (!budget) return l;
+    var b = rond(budget);
+    var binnen = l.filter(function (p) { return p.prijs <= b; });
+    /* wie een bedrag kiest, wil daar vaak dichtbij blijven: eerst wat tussen de helft en het bedrag kost */
+    var dicht = binnen.filter(function (p) { return p.prijs >= b * .45; }), ver = binnen.filter(function (p) { return p.prijs < b * .45; });
+    return dicht.concat(ver);
+  }
+  function kaart(p) {
+    return '<article class="k nieuw" data-id="' + esc(p.id) + '"><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button><div class="t"><h3>' + esc(p.titel) + '</h3><div class="r"><span class="p">' + K.euro(p.prijs) + '</span>' + K.hartKnop(p) + '</div><a class="knop" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener"><span>Bekijk bij ' + esc(p.shop) + '</span></a></div></article>';
+  }
+  function teken() {
+    var l = lijst(), zien = l.slice(0, toon);
+    document.getElementById('getal').textContent = bedragTekst(budget);
+    document.getElementById('aantal').innerHTML = l.length + ' cadeaus<br>' + (budget ? 'binnen je bedrag' : 'op deze plek');
+    var oud = {}; rij.querySelectorAll('.k').forEach(function (el) { oud[el.getAttribute('data-id')] = { el: el, r: el.getBoundingClientRect() }; });
+    var frag = document.createDocumentFragment();
+    zien.forEach(function (p) { var o = oud[p.id], el; if (o) { el = o.el; el.classList.remove('nieuw'); el._r = o.r; } else { var d = document.createElement('div'); d.innerHTML = kaart(p); el = d.firstChild; } frag.appendChild(el); });
+    rij.innerHTML = ''; rij.appendChild(frag);
+    if (!zien.length) rij.innerHTML = '<div class="leeg">Hier vinden we niets tot ' + esc(K.euro(rond(budget))) + '.<br><button type="button" data-geenbudget>Laat alle bedragen zien</button></div>';
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) rij.querySelectorAll('.k').forEach(function (el) { if (!el._r) return; var n = el.getBoundingClientRect(), dx = el._r.left - n.left, dy = el._r.top - n.top; el._r = null; if (dx || dy) el.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 300, easing: 'cubic-bezier(.2,.8,.2,1)' }); });
+    document.getElementById('meer').hidden = l.length <= toon;
+    kleur();
+  }
+  /* staafjes: waar zitten de cadeaus van deze plek qua prijs */
+  var B = 28;
+  function bak(prijs) { return Math.min(B - 1, Math.max(0, Math.floor(naarSchuif(Math.min(prijs, MAX)) / 960 * B))); }
+  function histo() { var t = new Array(B).fill(0); (huidig ? huidig.l : []).forEach(function (p) { t[bak(p.prijs)]++; }); var m = Math.max.apply(null, t) || 1; document.getElementById('histo').innerHTML = t.map(function (n) { return '<i style="height:' + Math.max(6, Math.round(n / m * 100)) + '%"></i>'; }).join(''); }
+  function kleur() { var g = budget ? bak(rond(budget)) : B; document.querySelectorAll('#histo i').forEach(function (b, i) { b.classList.toggle('aan', i <= g); }); }
+  var SNEL = [10, 15, 25, 50, 0];
+  document.getElementById('snel').innerHTML = SNEL.map(function (e) { return '<button type="button" data-e="' + e + '">' + (e ? 'Tot € ' + e : 'Alles') + '</button>'; }).join('');
+  function zet(e, vanSchuif) {
+    budget = e; toon = 12;
+    if (!vanSchuif) schuif.value = naarSchuif(e);
+    schuif.style.setProperty('--pos', (schuif.value / 10) + '%');
+    document.querySelectorAll('#snel button').forEach(function (b) { var x = +b.getAttribute('data-e'); b.classList.toggle('aan', x ? (budget && rond(budget) === x) : !budget); });
+    plan();
+  }
+  var wacht = 0; function plan() { if (wacht) return; wacht = requestAnimationFrame(function () { wacht = 0; teken(); }); }
+  schuif.addEventListener('input', function () { var v = +schuif.value; zet(v >= 975 ? 0 : naarPrijs(Math.min(v, 960)), true); });
+  document.getElementById('snel').addEventListener('click', function (e) { var b = e.target.closest('[data-e]'); if (b) zet(+b.getAttribute('data-e')); });
+  function open(i) {
+    var x = app._pk[i]; huidig = x; toon = 12;
+    var naamK = KNAAM_WIE[wie.id + '/' + kamer] || KNAAM[kamer];
+    document.getElementById('lTitel').textContent = x.pl.t;
+    document.getElementById('lSub').textContent = naamK + ' · ' + x.pl.s;
+    rij.innerHTML = ''; histo(); zet(budget);
+    lade.classList.add('open'); dek.classList.add('open'); lade.setAttribute('aria-hidden', 'false'); document.getElementById('lIn').scrollTop = 0;
+  }
+  function dicht() { lade.classList.remove('open'); dek.classList.remove('open'); lade.setAttribute('aria-hidden', 'true'); if (wie) huis(wie, kamer); }
+  document.getElementById('dicht').onclick = dicht; dek.onclick = dicht;
+  document.getElementById('meer').onclick = function () { toon += 12; teken(); };
+  lade.addEventListener('click', function (e) { if (e.target.closest('[data-geenbudget]')) zet(0); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lade.classList.contains('open') && document.querySelector('.k-blad').hidden) dicht(); });
+  app.addEventListener('click', function (e) {
+    var b;
+    if ((b = e.target.closest('[data-wie]'))) { huis(WIE.filter(function (w) { return w.id === b.getAttribute('data-wie'); })[0]); window.scrollTo({ top: 0 }); return; }
+    if ((b = e.target.closest('[data-kamer]'))) { huis(wie, b.getAttribute('data-kamer')); return; }
+    if ((b = e.target.closest('[data-p]'))) { open(+b.getAttribute('data-p')); return; }
+    if (e.target.closest('[data-terug]')) { start(); window.scrollTo({ top: 0 }); return; }
+    if (e.target.closest('[data-geenbudget]')) { budget = 0; schuif.value = 1000; huis(wie, kamer); }
+  });
+  /* adres: #tiener-tiener of #opa-oma-tuin */
+  var h = location.hash.slice(1), gev = null;
+  WIE.forEach(function (w) { if (h === w.id || h.indexOf(w.id + '-') === 0) { var k = h.slice(w.id.length + 1); gev = [w, k]; } });
+  if (gev) huis(gev[0], gev[1]); else start();
+})();
+</script>
+</body>
+</html>
