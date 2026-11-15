@@ -27,7 +27,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=492144958625" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=152249361332029" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=97709054549375" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
   <link rel="stylesheet" href="assets/css/licht.css?v=45648219451839">
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=211517850861118", t = "assets/js/topkeuze.js?v=60338078009752";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=178382219850948", t = "assets/js/topkeuze.js?v=60338078009752";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -206,11 +206,11 @@
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script>window.LK_DETAILS_DEEL={"tt-bellatio-880a93e375":{"url":"https://partner.bellatio-kerstversiering.nl/c?c=31217&m=1639683&a=516846&r=&u=https%3A%2F%2Fwww.bellatio-kerstversiering.nl%2Fproduct%2F10126865%2Fbd-foute-kersttrui-sweater-pinguin-vriendjes-groen-voor-heren.html","winkelUrl":"https://partner.bellatio-kerstversiering.nl/c?c=31217&m=1639683&a=516846&r=&u=https%3A%2F%2Fwww.bellatio-kerstversiering.nl%2Fproduct%2F10126865%2Fbd-foute-kersttrui-sweater-pinguin-vriendjes-groen-voor-heren.html","subVast":true,"gecontroleerd":"2026-11-15","herkomst":"zoek","waarom":"Twee pinguïns met kerstmutsen: \"Christmas Buddies\". Grappig zonder grof te zijn."}};</script>
+  <script>window.LK_DETAILS_DEEL={"tt-bellatio-880a93e375":{"url":"https://partner.bellatio-kerstversiering.nl/c?c=31217&m=1639683&a=516846&r=&u=https%3A%2F%2Fwww.bellatio-kerstversiering.nl%2Fproduct%2F10126865%2Fbd-foute-kersttrui-sweater-pinguin-vriendjes-groen-voor-heren.html","winkelUrl":"https://partner.bellatio-kerstversiering.nl/c?c=31217&m=1639683&a=516846&r=&u=https%3A%2F%2Fwww.bellatio-kerstversiering.nl%2Fproduct%2F10126865%2Fbd-foute-kersttrui-sweater-pinguin-vriendjes-groen-voor-heren.html","subVast":true,"gecontroleerd":"2026-11-15","herkomst":"zoek"}};</script>
   <script src="assets/js/data.js?v=97709054549375"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=222594717051442"></script>
-  <script src="assets/js/app.js?v=492144958625"></script>
+  <script src="assets/js/app.js?v=152249361332029"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

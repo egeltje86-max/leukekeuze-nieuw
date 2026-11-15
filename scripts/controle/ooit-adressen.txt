@@ -928,9 +928,12 @@
 /gids/cadeau-13-jaar/
 /gids/cadeau-14-jaar/
 /gids/cadeau-15-euro/
+/gids/cadeau-16-jaar/
 /gids/cadeau-18-jaar/
+/gids/cadeau-25-euro/
 /gids/cadeau-30-jaar/
 /gids/cadeau-40-jaar/
+/gids/cadeau-50-euro/
 /gids/cadeau-50-jaar/
 /gids/cadeau-60-jaar/
 /gids/cadeau-hondenliefhebber/
@@ -955,6 +958,7 @@
 /gids/cadeau-voor-oma/
 /gids/cadeau-voor-opa/
 /gids/cadeau-voor-pensioen/
+/gids/cadeau-voor-schoonouders/
 /gids/cadeau-voor-vader/
 /gids/cadeau-voor-vriend/
 /gids/cadeau-voor-vriendin/
@@ -966,6 +970,7 @@
 /gids/housewarming-cadeau/
 /gids/hypes-2026/
 /gids/kerstcadeau-collega/
+/gids/kerstcadeau-ideeen/
 /gids/kerstcadeau-kind/
 /gids/kerstcadeau-moeder/
 /gids/kerstcadeau-onder-25/
