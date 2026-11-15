@@ -27,8 +27,8 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=166451413503879" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=97709054549375" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=144320054091400" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=245573289177189" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
   <link rel="stylesheet" href="assets/css/licht.css?v=25076310497595">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=171218726467397", t = "assets/js/topkeuze.js?v=271778680111950";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=160205742777412", t = "assets/js/topkeuze.js?v=137834260827513";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,10 +207,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"kadove-8e067c21c7":{"url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10154837%2F18-jaar-goud-glitter-verjaardag-kado-shirt-wit-heren.html","winkelUrl":"https://www.kado-versturen.nl/product/10154837/18-jaar-goud-glitter-verjaardag-kado-shirt-wit-heren.html","subVast":true,"gecontroleerd":"2026-11-15","herkomst":"superkeurkamer","varianten":[{"kleur":"18 jaar goud (heren, wit)","beeld":"images/producten/kadove-8e067c21c7","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10154837%2F18-jaar-goud-glitter-verjaardag-kado-shirt-wit-heren.html","winkelUrl":"https://www.kado-versturen.nl/product/10154837/18-jaar-goud-glitter-verjaardag-kado-shirt-wit-heren.html","prijs":16.99},{"kleur":"18 jaar \"so give me wine\" (dames, zwart)","beeld":"images/producten/kadove-8e067c21c7-v1","url":"https://partner.kado-versturen.nl/c?c=13055&m=466600&a=516846&r=&u=https%3A%2F%2Fwww.kado-versturen.nl%2Fproduct%2F10275289%2Fverjaardag-cadeau-t-shirt-18-jaar-this-beautiful-woman-is-18-give-wine-zwart-voor-dames.html","winkelUrl":"https://www.kado-versturen.nl/product/10275289/verjaardag-cadeau-t-shirt-18-jaar-this-beautiful-woman-is-18-give-wine-zwart-voor-dames.html","prijs":16.99}]}};</script>
-  <script src="assets/js/data.js?v=97709054549375"></script>
+  <script src="assets/js/data.js?v=245573289177189"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=199902073164775"></script>
-  <script src="assets/js/app.js?v=166451413503879"></script>
+  <script src="assets/js/app.js?v=144320054091400"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

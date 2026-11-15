@@ -276,5 +276,17 @@
  "/gids/cadeau-50-euro/": {
   "titel": "Cadeau van 50 euro: 24 mooie ideeën tot €50",
   "omschrijving": "Cadeau van 50 euro: 24 mooie ideeën tot €50 voor haar, hem, tieners en kinderen, iets origineels en spellen om samen te spelen. Met de prijs erbij."
+ },
+ "/gids/kerstcadeau-ouders/": {
+  "titel": "Kerstcadeau ouders of schoonouders: 24 ideeën",
+  "omschrijving": "Kerstcadeau voor je ouders, schoonmoeder of schoonvader: iets om samen te doen, iets lekkers, warm en knus, voor in huis en tuin en iets met de (klein)kinderen. Met de prijs erbij."
+ },
+ "/gids/klein-cadeau-man/": {
+  "titel": "Klein cadeau voor een man: 24 ideeën tot €15",
+  "omschrijving": "Klein cadeau voor een man of lootje tot 15 euro: grappige cadeaus, iets voor bij een biertje, voor de gamer en F1-fan, iets lekkers en spelletjes. Met de prijs erbij."
+ },
+ "/gids/klein-cadeautje-vrouw/": {
+  "titel": "Klein cadeautje voor een vrouw: 24 ideeën tot €15",
+  "omschrijving": "Klein cadeautje voor een vrouw, vriendin of collega tot 15 euro: iets om te verwennen, warm en knus, lampjes, iets met een knipoog en spelletjes. Met de prijs erbij."
  }
 }

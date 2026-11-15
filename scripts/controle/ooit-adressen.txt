@@ -975,6 +975,7 @@
 /gids/kerstcadeau-moeder/
 /gids/kerstcadeau-onder-25/
 /gids/kerstcadeau-opa-oma/
+/gids/kerstcadeau-ouders/
 /gids/kerstcadeau-tiener/
 /gids/kerstcadeau-vader/
 /gids/kerstcadeau-voor-haar/
@@ -984,6 +985,8 @@
 /gids/kerstpakket-ideeen/
 /gids/kerststal-kopen/
 /gids/kinderbijbel-kiezen/
+/gids/klein-cadeau-man/
+/gids/klein-cadeautje-vrouw/
 /gids/kraamcadeau/
 /gids/noodpakket-checklist/
 /gids/schoencadeautjes/
