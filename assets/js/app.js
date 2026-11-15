@@ -3510,6 +3510,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '15 november', kop: 'Sint is aangekomen! Schoen zetten?', tekst: 'Vijf cadeautjes onder € 10 voor in de schoen.', ids: ['amz-b09f5yx15j', 'dvzn-a3513a2ca2', 'hema-1b0bd93990', 'dgsw-f545db0668', 'massa-00284f3714'] },
     { datum: '14 november', kop: '5 lampjes om van te dromen', tekst: 'Door Marius zelf uitgekozen: van een tulpenlamp tot een Zweinstein-lamp met toverstaf.', ids: ['cadeau-786ef2dca5', 'cadeau-32797fb340', 'cadeau-1c5fc02b40', 'cadeau-d7158dab60', 'cadeau-b56544b12a'] },
     { datum: '14 november', kop: '5 mooie lampjes tot € 35', tekst: 'Kamer vol sfeer: vijf lampjes om verliefd op te worden.', ids: ['amz-b0fcsxm3vp', 'dvzn-f8532c385d', 'cadeau-a30d8b9e4b', 'cadeau-89157ed70e', 'dvzn-e572f57258'] },
     { datum: '14 november', kop: '5 verrassingen onder € 50', tekst: 'Iets nieuws geven? Vijf cadeaus die nog niet iedereen kent.', ids: ['dvzn-557193', 'dvzn-779391', 'cg-b320632dae', 'dvzn-648493', 'dvzn-a4ed4f69b9'] },
