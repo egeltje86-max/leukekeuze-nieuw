@@ -27,7 +27,10 @@ h1 span{color:var(--rood)}
 .blok label{display:grid;gap:3px;font-size:12px;font-weight:700;color:var(--zacht)}
 .blok input[type=text],.blok input[type=number],.blok select{width:100%;padding:7px 9px;border:1px solid #D6CDBB;border-radius:8px;background:#fff;font-size:14px;font-weight:500;color:var(--inkt)}
 .twee{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.wissel{display:flex;border:1px solid #D6CDBB;border-radius:9px;overflow:hidden}
+.wissel{display:grid;grid-template-columns:1fr 1fr;border:1px solid #D6CDBB;border-radius:9px;overflow:hidden;gap:1px;background:#D6CDBB}
+.wissel.twee{grid-template-columns:1fr 1fr}
+.nbkeus{display:none}.nbkeus.aan{display:grid}
+.lab.nb{background:#FFEDD5;color:#9A3412}
 .wissel button{flex:1;border:0;background:#fff;padding:7px 4px;font-weight:700;font-size:13px}
 .wissel button[aria-pressed="true"]{background:var(--inkt);color:#fff}
 .vink{display:flex!important;align-items:center;gap:7px;color:var(--inkt)!important;font-weight:600!important;font-size:13px!important}
@@ -76,7 +79,8 @@ h1 span{color:var(--rood)}
     <p class="uitleg"><b>Klik</b> op een cadeau: weg (nog een keer: blijft). <b>Shift + slepen</b>: alles in het vak weg. <b>Alt + Shift + slepen</b>: terug. <b>Ctrl+Z</b>: ongedaan. Gouden rand = <b>zonde?</b> (met de hand gekozen topper).</p>
   </div>
   <div class="blok">
-    <div class="wissel" id="indeling"><button type="button" data-v="afd" aria-pressed="true">Eilanden per afdeling</button><button type="button" data-v="shop" aria-pressed="false">per winkel</button></div>
+    <div class="wissel" id="indeling"><button type="button" data-v="afd" aria-pressed="true">Per afdeling</button><button type="button" data-v="groep" aria-pressed="false">Per groep</button><button type="button" data-v="voorwie" aria-pressed="false">Voor wie</button><button type="button" data-v="shop" aria-pressed="false">Per winkel</button></div>
+    <div class="wissel nbkeus" id="nbkeus"><button type="button" data-k="nb" aria-pressed="true">Klik = niet bij deze persoon</button><button type="button" data-k="weg" aria-pressed="false">Klik = weg van de site</button></div>
     <label>Winkel<select id="fShop"><option value="">Alle winkels</option></select></label>
     <label>Woord in de naam<input type="text" id="fZoek" placeholder="bijv. sokken, ketting, mok"></label>
     <div class="twee"><label>Prijs vanaf<input type="number" id="fMin" min="0" placeholder="€"></label><label>Prijs tot<input type="number" id="fMax" min="0" placeholder="€"></label></div>
@@ -125,8 +129,17 @@ h1 span{color:var(--rood)}
   function korting(p) { return p.van && p.van > p.prijs; }
 
   /* ---------- keuzes ---------- */
-  var WEG = new Map(), KLAAR = false;
+  var WEG = new Map(), NB = new Map(), KLAAR = false, klikNB = true;
   ((opgeslagen && opgeslagen.weg) || []).forEach(function (x) { if (x && x.id) WEG.set(x.id, x); });
+  ((opgeslagen && opgeslagen.nietbij) || []).forEach(function (x) { if (x && x.id && x.voor) NB.set(x.id + '|' + x.voor, x); });
+  var PNAAM = {}; (window.LK_PERSONEN || []).forEach(function (pe) { PNAAM[pe.slug] = pe.naam || pe.slug; });
+  function pk(slug) { return String(PNAAM[slug] || slug).toLowerCase().replace(/^voor /, ''); }
+  function zetNB(keys, aan) {
+    var veranderd = [];
+    keys.forEach(function (k) { var d = k.split('|'), p = PER[d[0]]; if (!p) return; if (aan && !NB.has(k)) { NB.set(k, { id: p.id, voor: d[1], titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), gekozen_op: new Date().toISOString() }); veranderd.push(k); } else if (!aan && NB.has(k)) { NB.delete(k); veranderd.push(k); } });
+    if (veranderd.length) { STAPPEN.push({ nb: veranderd, aan: aan }); KLAAR = false; bewaarStraks(); lijst(); vuil(); }
+    return veranderd.length;
+  }
   var STAPPEN = [];
   function zetWeg(ids, aan) {
     var veranderd = [];
@@ -134,11 +147,11 @@ h1 span{color:var(--rood)}
     if (veranderd.length) { STAPPEN.push({ ids: veranderd, aan: aan }); KLAAR = false; bewaarStraks(); lijst(); vuil(); }
     return veranderd.length;
   }
-  function ongedaan() { var s = STAPPEN.pop(); if (!s) return; s.ids.forEach(function (id) { if (s.aan) WEG.delete(id); else { var p = PER[id]; if (p) WEG.set(id, { id: id, titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), zonde: !!ZONDE[id], gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); }
+  function ongedaan() { var s = STAPPEN.pop(); if (!s) return; if (s.nb) { s.nb.forEach(function (k) { if (s.aan) NB.delete(k); else { var d = k.split('|'), p = PER[d[0]]; if (p) NB.set(k, { id: p.id, voor: d[1], titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); return; } s.ids.forEach(function (id) { if (s.aan) WEG.delete(id); else { var p = PER[id]; if (p) WEG.set(id, { id: id, titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), zonde: !!ZONDE[id], gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); }
   var MELD = '', tBewaar = 0, statusEl = document.getElementById('status');
   function bewaarStraks() { clearTimeout(tBewaar); statusEl.textContent = 'Bewaren…'; tBewaar = setTimeout(bewaar, 700); }
   function bewaar() {
-    var data = { bijgewerkt: new Date().toISOString(), klaar: KLAAR, aantal: WEG.size, weg: Array.from(WEG.values()) };
+    var data = { bijgewerkt: new Date().toISOString(), klaar: KLAAR, aantal: WEG.size, weg: Array.from(WEG.values()), nietbij: Array.from(NB.values()) };
     return fetch('/api/bewaar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { if (!r.ok) throw 0; var d = new Date(); statusEl.textContent = MELD + (KLAAR ? 'Klaar en bewaard om ' : 'Bewaard om ') + d.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) + (KLAAR ? '. Zeg tegen Claude: klaar landschap' : ''); MELD = ''; })
       .catch(function () { statusEl.textContent = 'Niet bewaard! Staat het zwarte venster van de keurkamer nog open?'; });
@@ -161,31 +174,40 @@ h1 span{color:var(--rood)}
   var GAP = 1.2, EIL_GAP = 7, eilanden = [], cellen = [], bakken = {}, BAK = 8, WW = 0, WH = 0, passend;
   var KLEUR = ['#F59E0B', '#EC4899', '#8B5CF6', '#10B981', '#3B82F6', '#EF4444', '#14B8A6', '#F97316', '#6366F1', '#84CC16', '#06B6D4', '#D946EF', '#22C55E', '#A855F7', '#0EA5E9', '#E11D48', '#65A30D', '#7C3AED'];
   function spiraal(n) { var s = Math.ceil(Math.sqrt(n)), c = (s - 1) / 2, l = []; for (var y = 0; y < s; y++) for (var x = 0; x < s; x++) l.push([x, y, (x - c) * (x - c) + (y - c) * (y - c) + x * .001]); l.sort(function (a, b) { return a[2] - b[2]; }); return { s: s, cel: l.slice(0, n) }; }
-  var indeling = 'afd', zonderBol = false;
+  var indeling = 'afd', zonderBol = false, VOORWIE = null;
   try { if (localStorage.getItem('ls-zb2') === '1') zonderBol = true; } catch (e) {}
   function isBol(p) { return /^bol/i.test(p.shop || ''); }
   var NBOL = ALLES.filter(isBol).length;
   function bouw() {
     eilanden = []; cellen = [];
-    var per = {};
-    ALLES.forEach(function (p) {
+    var per = {}, EN = {}, WN = {}, EA = {};
+    function zet(e, en, w, wn, p, a) { EN[e] = en; EA[e] = a || e; WN[e + '|' + w] = wn; ((per[e] || (per[e] = {}))[w] || (per[e][w] = [])).push(p); }
+    if (indeling === 'voorwie' && VOORWIE) {
+      VOORWIE.personen.forEach(function (pe) {
+        var sub = {}; pe.subs.forEach(function (s) { s.ids.forEach(function (id) { if (!sub[id]) sub[id] = s; }); });
+        pe.ids.forEach(function (id) { var p = PER[id]; if (!p || (zonderBol && isBol(p))) return; var s = sub[id];
+          zet(pe.slug, 'Voor ' + pk(pe.slug), s ? s.slug : 'overig', s ? s.naam : 'Overig', p); });
+      });
+    } else ALLES.forEach(function (p) {
       if (zonderBol && isBol(p)) return;
-      var e = indeling === 'afd' ? p.afd : p.shop, w = indeling === 'afd' ? p.groep : p.afd;
-      ((per[e] || (per[e] = {}))[w] || (per[e][w] = [])).push(p);
+      if (indeling === 'shop') zet(p.shop, p.shop, p.afd, ANAAM[p.afd] || mens(p.afd), p);
+      else if (indeling === 'groep') zet(p.afd + '/' + p.groep, GNAAM[p.afd + '/' + p.groep] || mens(p.groep), p.vak || '-', VNAAM[p.afd + '/' + p.groep + '/' + p.vak] || mens(p.vak || 'overig'), p, p.afd);
+      else zet(p.afd, ANAAM[p.afd] || mens(p.afd), p.groep, GNAAM[p.afd + '/' + p.groep] || mens(p.groep), p);
     });
-    var lijstE = Object.keys(per).map(function (a) { var n = 0; for (var g in per[a]) n += per[a][g].length; return [a, n]; }).sort(function (x, y) { return y[1] - x[1]; });
+    var lijstE = Object.keys(per).map(function (a) { var n = 0; for (var g in per[a]) n += per[a][g].length; return [a, n]; }), AT = {}; lijstE.forEach(function (x) { AT[EA[x[0]]] = (AT[EA[x[0]]] || 0) + x[1]; });
+    var AV = Object.keys(AT).sort(function (a, b) { return AT[b] - AT[a]; }); lijstE.sort(function (x, y) { return AV.indexOf(EA[x[0]]) - AV.indexOf(EA[y[0]]) || y[1] - x[1]; });
     lijstE.forEach(function (af, ai) {
       var groepen = Object.keys(per[af[0]]).map(function (g) { var l = per[af[0]][g].sort(function (a, b) { return (RANG[b.id] || 0) - (RANG[a.id] || 0); }); return { slug: g, l: l, sp: spiraal(l.length) }; }).sort(function (a, b) { return b.l.length - a.l.length; });
       var opp = 0; groepen.forEach(function (g) { opp += (g.sp.s + GAP) * (g.sp.s + GAP); });
       var breed = Math.max(groepen[0].sp.s + GAP, Math.ceil(Math.sqrt(opp) * 1.15)), x = 0, y = 0, rijH = 0, maxX = 0;
       groepen.forEach(function (g) { var s = g.sp.s; if (x > 0 && x + s > breed) { x = 0; y += rijH + GAP; rijH = 0; } g.x = x; g.y = y; x += s + GAP; if (s > rijH) rijH = s; if (x > maxX) maxX = x; });
-      var naam = indeling === 'afd' ? (ANAAM[af[0]] || mens(af[0])) : af[0];
-      eilanden.push({ slug: af[0], naam: naam, n: af[1], kleur: KLEUR[ai % KLEUR.length], groepen: groepen, w: maxX - GAP, h: y + rijH });
+      var naam = EN[af[0]];
+      eilanden.push({ slug: af[0], a: EA[af[0]], naam: naam, n: af[1], kleur: KLEUR[(indeling === 'groep' ? AV.indexOf(EA[af[0]]) : ai) % KLEUR.length], groepen: groepen, w: maxX - GAP, h: y + rijH });
     });
     var totaal = 0; eilanden.forEach(function (e) { totaal += (e.w + EIL_GAP) * (e.h + EIL_GAP + 4); });
     var ASP = Math.max(.6, Math.min(2.4, cv.clientWidth / Math.max(300, cv.clientHeight))), WB = Math.sqrt(totaal * ASP) * 1.05, ex = 0, ey = 0, rh = 0; WW = 0; WH = 0;
     eilanden.forEach(function (e) { if (ex > 0 && ex + e.w > WB) { ex = 0; ey += rh + EIL_GAP + 4; rh = 0; } e.x = ex; e.y = ey + 4; ex += e.w + EIL_GAP; if (e.h + 4 > rh) rh = e.h + 4; WW = Math.max(WW, ex); WH = Math.max(WH, e.y + e.h); });
-    eilanden.forEach(function (e) { e.groepen.forEach(function (g) { g.ax = e.x + g.x; g.ay = e.y + g.y; g.naam = indeling === 'afd' ? (GNAAM[e.slug + '/' + g.slug] || mens(g.slug)) : (ANAAM[g.slug] || mens(g.slug)); g.l.forEach(function (p, i) { var c = g.sp.cel[i]; cellen.push({ p: p, x: g.ax + c[0], y: g.ay + c[1], e: e, g: g }); }); }); });
+    eilanden.forEach(function (e) { e.groepen.forEach(function (g) { g.ax = e.x + g.x; g.ay = e.y + g.y; g.naam = WN[e.slug + '|' + g.slug]; g.l.forEach(function (p, i) { var c = g.sp.cel[i]; cellen.push({ p: p, x: g.ax + c[0], y: g.ay + c[1], e: e, g: g, vw: indeling === 'voorwie' ? e.slug : '' }); }); }); });
     bakken = {}; cellen.forEach(function (c, i) { var k = Math.floor(c.x / BAK) + ',' + Math.floor(c.y / BAK); (bakken[k] || (bakken[k] = [])).push(i); });
     filter();
   }
@@ -200,7 +222,7 @@ h1 span{color:var(--rood)}
   /* ---------- camera ---------- */
   var cv = document.getElementById('kaart'), ctx = cv.getContext('2d'), dpr = Math.min(2, window.devicePixelRatio || 1), VW, VH;
   var cam = { x: 0, y: 0, z: 1 }, ZMIN = .1, ZMAX = 200;
-  if (q.get('test')) window.__ls = { cam: cam, weg: function () { return WEG.size; } };
+  if (q.get('test')) window.__ls = { cam: cam, weg: function () { return WEG.size; }, nb: function () { return NB.size; }, cellen: function () { return cellen; }, vuil: function () { vuil(); } };
   function maat() { VW = cv.clientWidth; VH = cv.clientHeight; cv.width = VW * dpr; cv.height = VH * dpr; vuil(); }
   function heel() { var z = Math.min((VW - 30) / WW, (VH - 60) / (WH + 4)); ZMIN = z * .7; return { x: WW / 2 - VW / 2 / z, y: (WH - 4) / 2 - VH / 2 / z, z: z }; }
   function naarScherm(wx, wy) { return [(wx - cam.x) * cam.z, (wy - cam.y) * cam.z]; }
@@ -243,18 +265,19 @@ h1 span{color:var(--rood)}
     var fotos = cel >= 12, pad = fotos ? Math.max(1.5, cel * .05) : Math.max(.3, cel * .12), r = Math.min(9, cel * .12), titels = cel >= 120;
     for (var bx = x0; bx <= x1; bx++) for (var by = y0; by <= y1; by++) { var b = bakken[bx + ',' + by]; if (!b) continue;
       for (var j = 0; j < b.length; j++) { var i = b[j], c = cellen[i], s = naarScherm(c.x, c.y), sx = s[0] + pad, sy = s[1] + pad, sw = cel - pad * 2; if (sx > VW || sy > VH || sx + sw < 0 || sy + sw < 0) continue;
-        var weg = WEG.has(c.p.id), aan = !filtert || passend[i], zonde = ZONDE[c.p.id];
+        var weg = WEG.has(c.p.id), nb = c.vw && NB.has(c.p.id + '|' + c.vw), aan = !filtert || passend[i], zonde = ZONDE[c.p.id];
         ctx.globalAlpha = aan ? (weg && fVerberg ? .25 : 1) : .12;
         if (fotos) {
           var img = foto(c.p); ctx.fillStyle = '#fff'; rr(sx, sy, sw, sw, r); ctx.fill();
           if (img) { ctx.save(); rr(sx, sy, sw, sw, r); ctx.clip(); ctx.drawImage(img, sx + sw * .04, sy + sw * .04, sw * .92, sw * .92); ctx.restore(); }
           if (zonde) { ctx.strokeStyle = '#C9952B'; ctx.lineWidth = Math.max(2, sw * .04); rr(sx, sy, sw, sw, r); ctx.stroke(); }
           if (weg) { ctx.fillStyle = 'rgba(200,30,30,.45)'; rr(sx, sy, sw, sw, r); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, sw * .07); ctx.lineCap = 'round'; var m = sw * .28; ctx.beginPath(); ctx.moveTo(sx + m, sy + m); ctx.lineTo(sx + sw - m, sy + sw - m); ctx.moveTo(sx + sw - m, sy + m); ctx.lineTo(sx + m, sy + sw - m); ctx.stroke(); }
+          else if (nb) { ctx.fillStyle = 'rgba(234,88,12,.45)'; rr(sx, sy, sw, sw, r); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, sw * .08); ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(sx + sw * .25, sy + sw / 2); ctx.lineTo(sx + sw * .75, sy + sw / 2); ctx.stroke(); }
           if (titels && aan) { var fs = Math.round(Math.min(13, cel * .085)); ctx.font = '600 ' + fs + 'px Segoe UI, sans-serif'; var rg = regels(c.p.titel, sw - 12, 2), bh = rg.length * (fs + 3) + 26; ctx.globalAlpha = 1; ctx.fillStyle = 'rgba(255,255,255,.94)'; ctx.fillRect(sx, sy + sw - bh, sw, bh); ctx.fillStyle = '#13202B'; rg.forEach(function (t, k) { ctx.fillText(t, sx + 6, sy + sw - bh + fs + 4 + k * (fs + 3)); }); ctx.font = '800 ' + fs + 'px Segoe UI, sans-serif'; ctx.fillText(euro(c.p.prijs) + '  ·  ' + c.p.shop, sx + 6, sy + sw - 8); }
           if (i === hoverI) { ctx.globalAlpha = 1; ctx.strokeStyle = '#13202B'; ctx.lineWidth = 2.5; rr(sx - 2, sy - 2, sw + 4, sw + 4, r + 2); ctx.stroke(); }
         } else {
-          ctx.fillStyle = weg ? '#C81E1E' : (zonde ? '#C9952B' : (aan && filtert ? '#13202B' : c.e.kleur));
-          if (!weg && !filtert && !zonde) ctx.globalAlpha = .5;
+          ctx.fillStyle = weg ? '#C81E1E' : nb ? '#EA580C' : (zonde ? '#C9952B' : (aan && filtert ? '#13202B' : c.e.kleur));
+          if (!weg && !nb && !filtert && !zonde) ctx.globalAlpha = .5;
           ctx.fillRect(sx, sy, sw, sw);
         }
       } }
@@ -270,7 +293,7 @@ h1 span{color:var(--rood)}
       if (z >= 4 && z < 70) e.groepen.forEach(function (gr) { var gw = gr.sp.s * z; if (gw < 60) return; var p = naarScherm(gr.ax + gr.sp.s / 2, gr.ay - .1); if (p[0] < -150 || p[0] > VW + 150 || p[1] < -30 || p[1] > VH + 30) return;
         var fs = Math.max(11, Math.min(15, gw / 10)); ctx.font = '700 ' + fs + 'px Segoe UI, sans-serif'; var t = gr.naam + ' ' + gr.l.length, tw = ctx.measureText(t).width + 14; ctx.fillStyle = 'rgba(255,255,255,.95)'; rr(p[0] - tw / 2, p[1] - fs * .8, tw, fs * 1.6, fs * .8); ctx.fill(); ctx.strokeStyle = e.kleur; ctx.lineWidth = 1.5; ctx.stroke(); ctx.fillStyle = '#13202B'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(t, p[0], p[1]); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; });
     });
-    waarEl.textContent = z < 3 ? 'Klik op een eiland om erheen te gaan · scroll om te zoomen' : (z < 12 ? (midden ? midden.naam + ' · klik op een wijk of zoom verder in' : '') : 'Klik = weg / blijft · Shift + slepen = vak trekken');
+    waarEl.textContent = z < 3 ? 'Klik op een eiland om erheen te gaan · scroll om te zoomen' : (z < 12 ? (midden ? (indeling === 'groep' && ANAAM[midden.a] ? ANAAM[midden.a] + ' › ' : '') + midden.naam + ' · klik op een wijk of zoom verder in' : '') : (indeling === 'voorwie' && klikNB ? 'Klik = niet bij deze persoon (blijft op de site) · Shift + slepen = vak trekken' : 'Klik = weg / blijft · Shift + slepen = vak trekken'));
   }
   function lus(t) { if (vlucht) vlucht(t); if (moet) { moet = false; teken(); } requestAnimationFrame(lus); }
 
@@ -288,10 +311,10 @@ h1 span{color:var(--rood)}
   function toonTip(i, mx, my) {
     if (i < 0 || cam.z < 7) { tip.style.display = 'none'; if (hoverI !== -1) { hoverI = -1; vuil(); } return; }
     if (i !== hoverI) {
-      hoverI = i; vuil(); var p = cellen[i].p, weg = WEG.has(p.id);
+      hoverI = i; vuil(); var c0 = cellen[i], p = c0.p, weg = WEG.has(p.id), nbK = c0.vw ? p.id + '|' + c0.vw : '', nb = nbK && NB.has(nbK), pn = c0.vw ? pk(c0.vw) : '';
       tip.innerHTML = '<img src="' + groot(p) + '" alt=""><div class="in"><b>' + esc(p.titel) + '</b><div class="r"><strong>' + euro(p.prijs) + '</strong>' + esc(p.shop) + '</div><div class="r">' + esc(plek(p)) + '</div>' +
-        (ZONDE[p.id] ? '<span class="lab zonde">zonde? met de hand gekozen</span>' : '') + (korting(p) ? '<span class="lab korting">korting</span>' : '') + (weg ? '<span class="lab weg">gaat weg</span>' : '') +
-        '<div class="doe">' + (cam.z >= 12 ? (weg ? 'Klik: toch laten staan' : 'Klik: weg') : 'Zoom verder in om te kiezen') + '</div></div>';
+        (ZONDE[p.id] ? '<span class="lab zonde">zonde? met de hand gekozen</span>' : '') + (korting(p) ? '<span class="lab korting">korting</span>' : '') + (weg ? '<span class="lab weg">gaat weg</span>' : '') + (nb ? '<span class="lab nb">niet bij ' + esc(pn) + '</span>' : '') +
+        '<div class="doe">' + (cam.z >= 12 ? (nbK && klikNB ? (nb ? 'Klik: toch bij ' + esc(pn) + ' laten staan' : 'Klik: niet bij ' + esc(pn) + ' (blijft wel op de site)') : (weg ? 'Klik: toch laten staan' : 'Klik: weg van de site')) : 'Zoom verder in om te kiezen') + '</div></div>';
     }
     tip.style.display = 'block';
     var r = cv.getBoundingClientRect(), x = r.left + mx + 18, y = r.top + my + 18;
@@ -319,8 +342,8 @@ h1 span{color:var(--rood)}
   function los(e) {
     if (!wijzers.has(e.pointerId)) return; wijzers.delete(e.pointerId); if (wijzers.size < 2) knijp = null;
     if (trek) { rh.style.display = 'none'; var a = naarWereld(Math.min(trek.x, trek.x2), Math.min(trek.y, trek.y2)), b = naarWereld(Math.max(trek.x, trek.x2), Math.max(trek.y, trek.y2)), filtert = fShop || fZoek || fMin || fMax;
-      var ids = []; if (Math.abs(trek.x2 - trek.x) + Math.abs(trek.y2 - trek.y) > 6) cellen.forEach(function (c, i) { if (c.x + .5 >= a[0] && c.x + .5 <= b[0] && c.y + .5 >= a[1] && c.y + .5 <= b[1] && (!filtert || passend[i]) && !(fZonde && !trek.terug && ZONDE[c.p.id])) ids.push(c.p.id); });
-      var n = zetWeg(ids, !trek.terug); MELD = n ? (trek.terug ? n + ' teruggezet' : n + ' in één keer weg') + ' (Ctrl+Z = ongedaan) · ' : ''; if (!n) statusEl.textContent = 'Niets veranderd in dat vak'; trek = null; return; }
+      var ids = [], nbs = indeling === 'voorwie' && klikNB; if (Math.abs(trek.x2 - trek.x) + Math.abs(trek.y2 - trek.y) > 6) cellen.forEach(function (c, i) { if (c.x + .5 >= a[0] && c.x + .5 <= b[0] && c.y + .5 >= a[1] && c.y + .5 <= b[1] && (!filtert || passend[i]) && !(fZonde && !trek.terug && ZONDE[c.p.id])) ids.push(nbs ? c.p.id + '|' + c.vw : c.p.id); });
+      var n = nbs ? zetNB(ids, !trek.terug) : zetWeg(ids, !trek.terug); MELD = n ? (trek.terug ? n + ' teruggezet' : n + ' in één keer weg') + ' (Ctrl+Z = ongedaan) · ' : ''; if (!n) statusEl.textContent = 'Niets veranderd in dat vak'; trek = null; return; }
     if (wijzers.size === 0) { if (beweegd < 10) klik(pos(e)); sleep = null; }
     else { var q = Array.from(wijzers.values())[0]; sleep = { x: q[0], y: q[1], cx: cam.x, cy: cam.y }; }
   }
@@ -329,7 +352,7 @@ h1 span{color:var(--rood)}
   cv.addEventListener('wheel', function (e) { e.preventDefault(); vlucht = null; zoomOm(pos(e)[0], pos(e)[1], Math.exp(-e.deltaY * .0016)); toonTip(-1); }, { passive: false });
   function klik(p) {
     var w = naarWereld(p[0], p[1]);
-    if (cam.z >= 12) { var i = celOp(p[0], p[1]); if (i >= 0) { var id = cellen[i].p.id; zetWeg([id], !WEG.has(id)); hoverI = -2; toonTip(i, p[0], p[1]); return; } }
+    if (cam.z >= 12) { var i = celOp(p[0], p[1]); if (i >= 0) { var c1 = cellen[i], id = c1.p.id; if (c1.vw && klikNB) { var k = id + '|' + c1.vw; zetNB([k], !NB.has(k)); } else zetWeg([id], !WEG.has(id)); hoverI = -2; toonTip(i, p[0], p[1]); return; } }
     var e = eilanden.find(function (e) { return w[0] >= e.x - 1.6 && w[0] <= e.x + e.w + 1.6 && w[1] >= e.y - 3.5 && w[1] <= e.y + e.h + 1.6; });
     if (!e) return;
     if (cam.z < 4) { naarVak(e.x, e.y - 2, e.w, e.h + 2); return; }
@@ -353,14 +376,20 @@ h1 span{color:var(--rood)}
   function lijst() {
     var l = Array.from(WEG.values()).reverse(), z = l.filter(function (x) { return x.zonde; }).length;
     document.getElementById('nWeg').textContent = WEG.size;
-    document.getElementById('nZonde').textContent = z ? z + ' met gouden rand' : '';
+    document.getElementById('nZonde').textContent = (z ? z + ' met gouden rand' : '') + (NB.size ? (z ? ' · ' : '') + NB.size + ' niet bij een persoon' : '');
+    if (indeling === 'voorwie' && NB.size) { var n2 = Array.from(NB.entries()).reverse();
+      lijstEl.innerHTML = n2.slice(0, 300).map(function (kv) { var x = kv[1], p = PER[x.id]; return '<div class="it" data-ga="' + esc(x.id) + '">' + (p ? '<img src="' + klein(p) + '" alt="" loading="lazy">' : '<img alt="">') + '<div class="t">' + esc(x.titel) + '<i>niet bij ' + esc(pk(x.voor)) + ' · ' + euro(x.prijs) + '</i></div><button class="x" type="button" data-nbterug="' + esc(kv[0]) + '" title="Toch laten staan">×</button></div>'; }).join('') + (l.length ? '<p class="leeg">En ' + l.length + ' weg van de site (zie de andere kaarten).</p>' : ''); return; }
     lijstEl.innerHTML = l.length ? l.slice(0, 300).map(function (x) { var p = PER[x.id]; return '<div class="it" data-ga="' + esc(x.id) + '">' + (p ? '<img src="' + klein(p) + '" alt="" loading="lazy">' : '<img alt="">') + '<div class="t">' + esc(x.titel) + '<i>' + euro(x.prijs) + ' · ' + esc(x.shop) + (x.zonde ? ' · zonde?' : '') + '</i></div><button class="x" type="button" data-terug="' + esc(x.id) + '" title="Toch laten staan">×</button></div>'; }).join('') + (l.length > 300 ? '<p class="leeg">… en nog ' + (l.length - 300) + '</p>' : '')
       : '<p class="leeg">Nog niets gekozen. Klik op cadeaus die weg mogen.</p>';
   }
-  lijstEl.addEventListener('click', function (e) { var b = e.target.closest('[data-terug]'); if (b) { zetWeg([b.getAttribute('data-terug')], false); return; } var it = e.target.closest('[data-ga]'); if (it) naarCadeau(it.getAttribute('data-ga')); });
+  lijstEl.addEventListener('click', function (e) { var nbb = e.target.closest('[data-nbterug]'); if (nbb) { zetNB([nbb.getAttribute('data-nbterug')], false); return; } var b = e.target.closest('[data-terug]'); if (b) { zetWeg([b.getAttribute('data-terug')], false); return; } var it = e.target.closest('[data-ga]'); if (it) naarCadeau(it.getAttribute('data-ga')); });
   document.getElementById('terug').onclick = ongedaan;
   document.getElementById('klaar').onclick = function () { KLAAR = true; clearTimeout(tBewaar); bewaar(); };
-  document.getElementById('indeling').addEventListener('click', function (e) { var b = e.target.closest('[data-v]'); if (!b || b.getAttribute('data-v') === indeling) return; indeling = b.getAttribute('data-v'); this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); bouw(); var s = heel(); vlieg(s); });
+  document.getElementById('indeling').addEventListener('click', function (e) { var b = e.target.closest('[data-v]'); if (!b || b.getAttribute('data-v') === indeling) return; var v = b.getAttribute('data-v'), knoppen = this.querySelectorAll('button');
+    function doe() { indeling = v; knoppen.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); document.getElementById('nbkeus').classList.toggle('aan', v === 'voorwie'); bouw(); lijst(); vlieg(heel()); }
+    if (v === 'voorwie' && !VOORWIE) { statusEl.textContent = 'Voor wie-pagina\'s ophalen…'; laad('/assets/data/voorwie.js').then(function () { VOORWIE = window.LK_VOORWIE; if (!VOORWIE) throw 0; statusEl.textContent = ''; doe(); }).catch(function () { statusEl.textContent = 'Kon de Voor wie-pagina\'s niet ophalen. Probeer het over een kwartier nog eens.'; }); return; }
+    doe(); });
+  document.getElementById('nbkeus').addEventListener('click', function (e) { var b = e.target.closest('[data-k]'); if (!b) return; klikNB = b.getAttribute('data-k') === 'nb'; this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); hoverI = -2; });
   var tF = 0; function filterStraks() { clearTimeout(tF); tF = setTimeout(filter, 150); }
   document.getElementById('fShop').onchange = function () { fShop = this.value; filter(); };
   document.getElementById('fZoek').oninput = function () { fZoek = norm(this.value.trim()); filterStraks(); };

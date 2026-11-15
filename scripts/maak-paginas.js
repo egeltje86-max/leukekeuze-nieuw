@@ -381,6 +381,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   /* SNEL (13-11-2026): per lijstpagina een klein productbestand (pak), elk nagekeken tegen de hele lijst. Zie scripts/maak-pakken.js.
      Staat AAN sinds 13-11-2026 (GO Marius), voor de drukste soorten pagina's (zie DRUK in maak-pakken.js). Uit: LK_PAKKEN=0. Alle pagina's: LK_PAKKEN=alles.
      Zonder pakken ruimen we de map op, zodat er nooit oude pakken bij een nieuwe bouw blijven liggen. */
+  /* 15-11-2026: welke cadeaus op welke Voor wie-pagina staan, voor de Landschap-keurkamer van Marius (assets/data/voorwie.js). Mislukt het, dan bouwt de site gewoon door. */
+  try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'keurkamer', 'landschap', 'voorwie.js')], { stdio: 'inherit' }); } catch (e) { console.error('voorwie.js niet gemaakt:', e.message); }
   if (process.env.LK_PAKKEN !== '0') { try { require('./maak-pakken.js'); } catch (e) { console.error('pakken niet gemaakt (de site werkt gewoon, alleen zonder pakken):', e.message); } }
   else fs.rmSync(path.join(ROOT, 'assets', 'pak'), { recursive: true, force: true });
 })().catch(e => { console.error(e); process.exit(1); });
