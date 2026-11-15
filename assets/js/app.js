@@ -6703,14 +6703,28 @@
     if (lijst.woorden) woorden = lijst.woorden;
     var sc = {}; lijst.forEach(function (p) { sc[p.id] = Math.max(zoekScore(p, woorden), samen ? zoekScore(p, samen) + 5 : 0); });
     lijst.sort(function (a, b) { return sc[b.id] - sc[a.id]; });
-    var html = paginaTips(woorden).slice(0, 4).map(function (t) {
+    /* Zoekbalk 2.0: de pagina die precies past staat bovenaan, groot en met plaatje. */
+    var dt = zoekDirect(q), html = '';
+    if (dt) html += '<a class="zt-item zt-direct" href="' + dt.naar + '">' + (dt.beeld ? '<img class="zt-rond" src="' + esc(dt.beeld) + '" alt="">' : '<span class="zt-ic">' + ic('rechts') + '</span>') +
+      '<span class="zt-titel"><small>Ga naar</small>' + esc(dt.titel || dt.naam) + '</span><span class="zt-pijl">' + ic('pijl') + '</span></a>';
+    var pt = paginaTips(woorden).filter(function (t) { return !dt || netjes(t.naar) !== netjes(dt.naar); }).slice(0, dt ? 3 : 4);
+    if (pt.length) html += '<div class="zt-kop">' + (dt ? 'Ook handig' : 'Pagina’s') + '</div>' + pt.map(function (t) {
       return '<a class="zt-item zt-pagina" href="' + t.naar + '"><span class="zt-ic">' + ic('rechts') + '</span><span class="zt-titel">' + t.naam + '</span></a>';
     }).join('');
+    /* Noemt het zoekwoord een pagina (geen productsoort), dan de handgekozen top van die pagina in plaats van losse treffers op het woord. */
+    var paginaTop = null;
+    if (dt && !dt.streng) {
+      var ids = (window.LK_TOPVAST || {})[dt.naar] || (window.LK_TOPKEUZE || {})[dt.naar] || [];
+      paginaTop = ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd'; }).slice(0, 5);
+      lijst = paginaTop;
+    }
+    if (lijst.length) html += '<div class="zt-kop">' + (paginaTop ? 'Uit ' + esc(dt.titel || dt.naam) : 'Cadeaus') + '</div>';
     html += lijst.slice(0, 5).map(function (p) {
       return '<a class="zt-item" href="/p/' + esc(p.id) + '"><img src="' + esc(p.beeld) + '-klein.webp" alt="" loading="lazy">' +
         '<span class="zt-titel">' + esc(p.titel) + '</span><span class="zt-prijs">' + LK.euro(p.prijs) + '</span></a>';
     }).join('');
-    html += '<a class="zt-alles" href="' + esc(maakAdres('/zoek', { q: q })) + '">' + (lijst.length ? 'Toon alle ' + lijst.length + ' resultaten voor “' + esc(q) + '”' : 'Zoek “' + esc(q) + '” ook in al onze winkels') + ' ' + ic('pijl') + '</a>';
+    if (paginaTop) html += '<a class="zt-alles" href="' + esc(dt.naar) + '">' + (paginaTop.length ? 'Bekijk alle cadeaus van ' + esc(dt.titel || dt.naam) : 'Ga naar ' + esc(dt.titel || dt.naam)) + ' ' + ic('pijl') + '</a>';
+    else html += '<a class="zt-alles" href="' + esc(maakAdres('/zoek', { q: q })) + '">' + (lijst.length ? 'Toon alle ' + lijst.length + ' resultaten voor “' + esc(q) + '”' : 'Zoek “' + esc(q) + '” ook in al onze winkels') + ' ' + ic('pijl') + '</a>';
     var t = f.querySelector('.zoek-tips');
     if (!t) { t = document.createElement('div'); t.className = 'zoek-tips'; t.setAttribute('role', 'listbox'); f.appendChild(t); }
     t.innerHTML = html;
@@ -6745,6 +6759,101 @@
     if (a) { var f = a.closest('[data-zoek]'); setTimeout(function () { sluitTips(f); if (f) f.querySelector('input').blur(); }, 0); }
   });
 
+  /* ===== Zoekbalk 2.0 (15-11-2026, Marius typte 'schoencadeautjes' en kreeg willekeurige cadeaus van VONK:
+     'pas de zoekbalk aan, maak hem mooier en vooral veel beter, zodat mensen echt vinden wat ze zoeken').
+     1. Directe treffer: noemt het zoekwoord een pagina die we hebben (ook met een tikfout of in andere woorden), dan meteen naar die pagina.
+     2. Eén persoon of moment ('oma', 'kerst', 'kerst voor haar'): naar die (handgekozen) pagina, niet naar VONK.
+     3. VONK alleen bij een echte vraag: een bedrag, een leeftijd, of een persoon/moment samen met iets anders ('oma max 25', 'lego 8 jaar').
+     Test: scratchpad zoek2/route.js (typ, Enter, waar kom je uit). Uit: window.LK_ZOEK2 = false. */
+  var ZOEK_DIRECT = [
+    ['/collectie/schoencadeautjes', 'schoencadeau|schoencadeautje|schoen cadeau|schoen cadeautje|schoen kado|schoenkado|schoenkadootje|cadeautje voor in de schoen|cadeau voor in de schoen|cadeautjes voor in de schoen|iets voor in de schoen|voor in de schoen|in de schoen|schoen zetten|schoentje zetten|schoentje|schoen vullen'],
+    ['/lootjes-trekken', 'lootjes trekken|lootje trekken|lootjestrekken|lootjes|lootje|loten trekken|loting|lootjes maken|namen trekken|secret santa|lootjes app'],
+    ['/sint-rijmmachine', 'sinterklaasgedicht|sinterklaas gedicht|sintgedicht|sint gedicht|gedicht|gedichten|gedichtje|rijm|rijmpje|rijmen|rijmmachine|gedicht maken|gedicht schrijven|sinterklaasrijm'],
+    ['/gids/surprise-maken', 'surprise|surprise maken|surprise ideeen|surprise idee|surprises|suprise|surprice'],
+    ['/gids/cadeau-50-jaar', '50 jaar|abraham|sarah|vijftig jaar|50ste verjaardag|50e verjaardag|man 50 jaar|vrouw 50 jaar|50 jaar man|50 jaar vrouw|abraham cadeau|sarah cadeau'],
+    ['/gids/cadeau-18-jaar', '18 jaar|18e verjaardag|18de verjaardag|achttien jaar|18 worden|meisje 18 jaar|jongen 18 jaar'],
+    ['/gids/kerstpakket-ideeen', 'kerstpakket|kerstpakketten|kerst pakket|kerstpakket ideeen|kerstbox'],
+    ['/collectie/grappige-cadeaus', 'grappig|grappige|grappig cadeau|grappig cadeautje|grappige cadeautjes|gekke cadeaus|gek cadeau|fun cadeau|humor|humor cadeau|lachen|om te lachen|grap|grappen|fop|foppen|fopartikelen|prank'],
+    ['/collectie/originele-cadeaus', 'origineel|originele|origineel cadeau|iets origineels|uniek cadeau|unieke cadeaus|bijzonder cadeau|bijzondere cadeaus|iets bijzonders|apart cadeau|iemand die alles heeft|heeft alles|alles heeft|verrassend cadeau'],
+    ['/collectie/persoonlijke-cadeaus', 'met naam|cadeau met naam|naam erop|met tekst|gepersonaliseerd|gepersonaliseerde cadeaus|persoonlijk|persoonlijk cadeau|met foto|eigen foto|foto cadeau|fotocadeau|gegraveerd|graveren|gravure'],
+    ['/collectie/kleine-cadeautjes', 'klein cadeau|klein cadeautje|kleine cadeautjes|kleinigheidje|kleinigheid|attentie|attentietje|iets kleins'],
+    ['/collectie/brievenbuscadeaus', 'brievenbuscadeau|brievenbus cadeau|brievenbus|door de brievenbus|brievenbuspakje|brievenbuspost'],
+    ['/collectie/adventskalenders', 'adventskalender|advent kalender|adventkalender|adventskalenders|aftelkalender'],
+    ['/collectie/black-friday', 'black friday|blackfriday|black friday deals|cyber monday'],
+    ['/collectie/aanbiedingen', 'aanbieding|korting|kortingen|sale|deals|deal|uitverkoop|afgeprijsd|dagdeal'],
+    ['/collectie/cadeaubonnen', 'cadeaubon|cadeaukaart|giftcard|gift card|waardebon|tegoedbon'],
+    ['/collectie/belevenissen', 'belevenis|beleving|uitje|uitjes|dagje uit|ervaring|ervaringscadeau|activiteit cadeau'],
+    ['/collectie/cadeaupakketten', 'cadeaupakket|verwenpakket|verwenpakketten|giftbox|cadeaubox|cadeaumand|geschenkmand|pakket'],
+    ['/collectie/toppers-van-nu', 'toppers|topper|populair|populaire cadeaus|trending|trend|hype|hypes|meest verkocht|bestsellers|wat is nu populair'],
+    ['/c/cadeaus/sinterklaas', 'sinterklaas|sinterklaascadeau|sint|sint cadeau|pakjesavond|5 december|sinterklaasavond|sinterklaas cadeautjes'],
+    ['/c/cadeaus/kerst', 'kerst|kerstcadeau|kerstcadeautje|kerstcadeaus|kerstmis|kerstavond|kerstfeest|kerst cadeau|onder de kerstboom'],
+    ['/c/valentijn', 'valentijn|valentijnsdag|valentijnscadeau|liefde|romantisch|voor mijn lief'],
+    ['/gelegenheid/verjaardag', 'verjaardag|jarig|verjaardagscadeau|verjaardagscadeautje|verjaardag cadeau'],
+    ['/gelegenheid/housewarming', 'housewarming|nieuw huis|nieuwe woning|verhuizing|verhuiscadeau|eerste huis'],
+    ['/gelegenheid/geslaagd', 'geslaagd|diploma|rijbewijs|examen|geslaagd cadeau'],
+    ['/gelegenheid/beterschap', 'beterschap|ziek|sterkte|ziekenhuis|opkikkertje|herstel'],
+    ['/gelegenheid/afscheid-pensioen', 'pensioen|met pensioen|afscheid|afscheidscadeau|vut'],
+    ['/gelegenheid/juf-meester', 'juf|meester|juf en meester|juffrouw|leerkracht|docent|bedankje juf'],
+    ['/gelegenheid/bedankt', 'bedankt|bedankje|bedankjes|dankjewel|dank je wel|bedank cadeau'],
+    ['/gelegenheid/jubileum', 'jubileum|trouwen|bruiloft|huwelijk|getrouwd|trouwdag|huwelijkscadeau'],
+    ['/gelegenheid/moederdag', 'moederdag'], ['/gelegenheid/vaderdag', 'vaderdag'],
+    ['/gelegenheid/uitdeelcadeautjes', 'uitdeelcadeautjes|uitdeelcadeautje|traktatie|uitdelen|kinderfeestje'],
+    ['/voor/baby', 'baby|kraamcadeau|kraam|geboorte|babyshower|pasgeboren|newborn'], ['/gids/cadeau-zwangere-vrouw', 'zwanger|zwangere|zwangere vrouw|zwangerschap|cadeau zwangere'],
+    ['/tiktok', 'tiktok|tik tok|gezien op tiktok|instagram|filmpje|reels'],
+    ['/favorieten', 'mijn lijstje|verlanglijst|verlanglijstje|wensenlijst|favorieten'],
+    ['/vonk', 'kieshulp|vonk|help mij kiezen|help me kiezen|cadeauzoeker|weet niet wat'],
+    ['/winkels', 'winkels|webshops|partners|onze winkels']
+  ];
+  var ZD = null;
+  function zoekKort(s) { return vouw(String(s || '').replace(/<small>.*?<\/small>/g, '')).replace(/&/g, ' en ').replace(/[^a-z0-9]+/g, ''); }
+  /* Vulwoorden die niets zeggen over welke pagina je zoekt ('leuke', 'ideeen', 'kopen'). */
+  var ZOEK_VUL = /^(cadeau|cadeaus|cadeautje|cadeautjes|kado|kados|kadootje|leuke|leuk|mooie|mooi|goede|beste|top|ideeen|ideeën|idee|tips|tip|kopen|bestellen|online|zoeken|zoek|ik|een|wat|de|het|nl|leukekeuze)$/;
+  function zoekDirectLijst() {
+    if (ZD) return ZD;
+    var l = [], vh = {};
+    var titel = {}, plaatje = {};
+    var voeg = function (naam, naar, beeld, streng) { var k = zoekKort(naam); if (!titel[naar]) titel[naar] = String(naam).charAt(0).toUpperCase() + String(naam).slice(1); if (beeld && !plaatje[naar]) plaatje[naar] = beeld; if (k.length < 3 || vh[k]) return; vh[k] = 1; l.push({ k: k, naar: naar, naam: naam, beeld: beeld, streng: streng }); };
+    var beeldVan = {};
+    (window.LK_COLLECTIES || []).forEach(function (c) { beeldVan['/collectie/' + c.slug] = c.beeld; voeg(c.naam, '/collectie/' + c.slug, c.beeld); });
+    (window.LK_GELEGENHEDEN || []).forEach(function (g) { var n = g.naar || '/gelegenheid/' + g.slug; beeldVan[n] = g.beeld; voeg(g.naam, n, g.beeld); });
+    ZOEK_DIRECT.forEach(function (r) { r[1].split('|').forEach(function (w) { voeg(w, r[0], beeldVan[r[0]]); }); });
+    (window.LK_PERSONEN || []).forEach(function (pe) { voeg(pe.naam, '/voor/' + pe.slug, pe.beeld); });
+    Object.keys(WL_PERSOON).forEach(function (k) { var pe = window.LK_PERSOON(k); if (pe) WL_PERSOON[k].split(' ').forEach(function (w) { if (!/^(hem|haar)$/.test(w)) voeg(w, '/voor/' + pe.slug, pe.beeld); }); });
+    voeg('voor hem', '/voor/hem'); voeg('voor haar', '/voor/haar'); voeg('cadeau voor hem', '/voor/hem'); voeg('cadeau voor haar', '/voor/haar');
+    /* Productgroepen en hun soorten alleen bij precies de naam (geen tikfout: 'kaarten' is geen 'kaarsen'). */
+    SRT_VAAK.forEach(function (s) { voeg(s[0], s[1], null, true); });
+    ALLECATS.forEach(function (c) { if (c.verborgen) return; voeg(c.naam, '/c/' + c.slug, null, true);
+      (c.subs || []).forEach(function (su) { if (!su.naar && !su.verborgen) voeg(su.naam, '/c/' + c.slug + '/' + su.slug, null, true); }); });
+    l.forEach(function (x) { x.titel = titel[x.naar]; x.beeld = x.beeld || plaatje[x.naar]; });
+    return (ZD = l);
+  }
+  /* Geeft {naar, naam, beeld} als het hele zoekwoord een pagina noemt, anders null. */
+  /* 'kado' schrijven veel mensen: dat is 'cadeau'. */
+  function zoekKado(q) { return vouw(q).replace(/kadootje/g, 'cadeautje').replace(/kado'?s\b/g, 'cadeaus').replace(/kado/g, 'cadeau'); }
+  function zoekDirect(q) {
+    if (window.LK_ZOEK2 === false) return null;
+    q = zoekKado(q);
+    var schoon = vouw(q).split(/[^a-z0-9]+/).filter(function (w) { return w && !ZOEK_VUL.test(w); }).join(' ');
+    var vormen = [zoekKort(q), zoekKort(schoon)].filter(function (x, i, a) { return x.length >= 3 && a.indexOf(x) === i; });
+    if (!vormen.length) return null;
+    var L = zoekDirectLijst(), st = function (x) { return x.replace(/(tjes|tje|jes|je|en|s)$/, ''); };
+    for (var r = 0; r < 3; r++) for (var v = 0; v < vormen.length; v++) for (var i = 0; i < L.length; i++) {
+      var a = vormen[v], b = L[i].k;
+      if (r === 0 ? a === b : r === 1 ? (st(a) === st(b) && st(a).length >= 4) :
+          (!L[i].streng && !/\d/.test(a + b) && a.length >= 7 && b.length >= 7 && afstand(a, b, a.length >= 12 ? 2 : 1) <= (a.length >= 12 ? 2 : 1))) return L[i];
+    }
+    return null;
+  }
+  /* Na de directe treffer: alleen een persoon en/of moment genoemd? Dan de pagina daarvan (met 'voor' erbij als dat er is). */
+  function zoekPersoonMoment(q, vl) {
+    if (window.LK_ZOEK2 === false || !vl) return null;
+    if (vl.budget !== 'geen' || vl.leeftijd || vl.soort || vl.hobby) return null;
+    var woorden = zoekWoorden(q), wt = woordenTips(woorden);
+    var restW = (vl.wat || '').split(' ').filter(function (w) { return w && !/^(cadeau|cadeaus|cadeautje|cadeautjes|kado|kadootje|iets|voor)$/.test(w); });
+    if (restW.length) return null;
+    return wt[0] || null;
+  }
+
   document.addEventListener('submit', function (e) {
     var v = e.target.closest('[data-vonk-typ]');
     if (v) { e.preventDefault(); var zin = v.querySelector('input').value.trim(); if (zin) ga(maakAdres('/vonk', Object.assign(vonkLees(zin), { zin: zin }))); return; }
@@ -6754,7 +6863,15 @@
     var q = f.querySelector('input').value.trim();
     /* Eén slimme zoekbalk (01-11-2026): noemt de zin een persoon, budget, leeftijd of moment ('collega', 'oma max €25'),
        dan kiest VONK. Een los woord ('lego', 'kaars') gaat naar de gewone zoekresultaten. */
-    var vl = q ? vonkLees(q) : null;
+    var dt = q ? zoekDirect(q) : null;
+    if (dt) { sluitTips(f); f.querySelector('input').blur(); try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'zoek/direct/' + dt.naar.replace(/^\//, '').replace(/\//g, '-'), title: q, event: true }); } catch (er) {} ga(dt.naar); return; }
+    var vl = q ? vonkLees(q.replace(/\b(spider|bat|super|iron|ant|he|pac|aqua)[- ]?man\b/gi, '$1man')) : null;
+    var pm = zoekPersoonMoment(q, vl);
+    if (pm) { sluitTips(f); f.querySelector('input').blur(); ga(pm.naar); return; }
+    /* Zoekbalk 2.0: VONK alleen bij een echte vraag (een bedrag, een leeftijd, of twee dingen samen zoals 'telescoop kind').
+       Eén los ding ('kerstbal', 'kersttrui') zijn gewoon zoekresultaten. */
+    if (vl && window.LK_ZOEK2 !== false) { var tal = [vl.voor !== 'iedereen', vl.moment !== 'iedereen', !!vl.soort, !!(vl.wat || vl.hobby)].filter(Boolean).length;
+      if (vl.budget === 'geen' && !vl.leeftijd && tal < 2) vl = null; }
     if (vl && (vl.voor !== 'iedereen' || vl.budget !== 'geen' || vl.moment !== 'iedereen' || vl.leeftijd || vl.soort)) {
       sluitTips(f); f.querySelector('input').blur();
       ga(maakAdres('/vonk', Object.assign(vl, { zin: q }))); return;
