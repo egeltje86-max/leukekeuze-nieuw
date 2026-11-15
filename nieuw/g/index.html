@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – de cadeau-waarzegster</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD G (15-11-2026, Marius: 'we gaan door tot ik zeg dit nemen we'): de cadeau-waarzegster.
+     Madame Keuze stelt een paar ja/nee-vragen en 'ziet' dan in haar glazen bol het cadeau. Achter de schermen: de handgekozen toppen per persoon en onderwerp. -->
+<style>
+:root{--nacht:#0E0824;--paars:#2B145C;--violet:#8B5CF6;--turkoois:#2DD4BF;--goud:#F5C76B;--wit:#FFF8EC;--zacht:#BBA9E6;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;min-height:100dvh;color:var(--wit);font:600 16px/1.5 var(--f);background:radial-gradient(80% 50% at 50% 30%,#3A1C78 0%,#1A0D3D 45%,var(--nacht) 80%)}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 72% 12%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 85% 40%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 70%,#fff 50%,transparent 51%),radial-gradient(1.2px 1.2px at 55% 88%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 8% 55%,#fff 50%,transparent 51%),radial-gradient(1.3px 1.3px at 92% 80%,#fff 50%,transparent 51%);animation:twinkel 5s ease-in-out infinite alternate}
+@keyframes twinkel{to{opacity:.45}}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:460px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left)) 40px;text-align:center}
+h1{font:italic 700 clamp(30px,9vw,44px)/1 var(--k);margin:8px 0 4px;color:var(--goud);text-shadow:0 0 18px rgba(245,199,107,.45)}
+.sub{color:var(--zacht);font-size:14.5px;margin:0 0 18px}
+.bol{position:relative;width:min(70vw,250px);aspect-ratio:1;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),rgba(255,255,255,0) 22%),radial-gradient(circle at 50% 55%,#5B3BC4,#2A1466 60%,#140934);box-shadow:0 0 50px rgba(139,92,246,.65),inset 0 -18px 40px rgba(0,0,0,.45),inset 0 0 30px rgba(45,212,191,.25);overflow:hidden}
+.bol::before{content:'';position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent,rgba(45,212,191,.35),transparent 30%,rgba(245,199,107,.25),transparent 60%,rgba(139,92,246,.45),transparent);filter:blur(14px);animation:draai 9s linear infinite}
+.bol.denkt::before{animation-duration:1.2s}
+.bol.denkt{animation:puls .6s ease-in-out infinite alternate}
+@keyframes draai{to{transform:rotate(360deg)}}
+@keyframes puls{to{box-shadow:0 0 90px rgba(45,212,191,.9),inset 0 -18px 40px rgba(0,0,0,.45),inset 0 0 40px rgba(45,212,191,.5)}}
+.bol img{position:absolute;inset:14%;width:72%;height:72%;object-fit:contain;border-radius:50%;background:#fff;padding:6%;opacity:0;transform:scale(.6);filter:blur(10px);transition:opacity 1.2s,transform 1.2s,filter 1.4s}
+.bol.ziet img{opacity:1;transform:none;filter:none}
+.voet{width:min(46vw,160px);height:26px;margin:-8px auto 0;border-radius:0 0 50% 50%/0 0 100% 100%;background:linear-gradient(#C9962E,#7A5414);box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.wolk{position:relative;margin:22px auto 0;background:rgba(255,255,255,.06);border:1px solid rgba(245,199,107,.35);border-radius:22px;padding:18px 18px 16px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.wolk::before{content:'';position:absolute;left:50%;top:-9px;width:16px;height:16px;margin-left:-8px;background:#241246;border-left:1px solid rgba(245,199,107,.35);border-top:1px solid rgba(245,199,107,.35);transform:rotate(45deg)}
+.naam{font:800 12px/1 var(--f);letter-spacing:2px;text-transform:uppercase;color:var(--goud);margin-bottom:8px}
+.zin{font:italic 600 clamp(21px,6vw,26px)/1.3 var(--k);margin:0 0 16px;text-wrap:balance;min-height:2.6em}
+.antw{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.antw button{min-height:50px;min-width:92px;padding:0 18px;border-radius:999px;border:2px solid rgba(245,199,107,.55);background:rgba(245,199,107,.08);font:800 16px/1 var(--f);color:var(--wit);transition:background .15s}
+.antw button.ja{background:var(--goud);border-color:var(--goud);color:#2A1466}
+.antw button:active{transform:scale(.96)}
+.stip{display:flex;gap:6px;justify-content:center;margin-top:14px}
+.stip i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2)}
+.stip i.aan{background:var(--turkoois);box-shadow:0 0 8px var(--turkoois)}
+.uitslag{margin-top:6px}
+.uitslag h2{font:800 22px/1.2 var(--f);margin:6px 0 6px}
+.uitslag p{color:var(--zacht);margin:0 0 12px;font-size:14.5px}
+.rij{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.bedrag{font:800 26px/1 var(--f);color:var(--turkoois);text-shadow:0 0 10px rgba(45,212,191,.5)}
+.winkel{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 22px;border-radius:999px;background:var(--goud);color:#2A1466;text-decoration:none;font:800 15.5px/1 var(--f);box-shadow:0 0 22px rgba(245,199,107,.45)}
+.winkel svg{width:18px;height:18px}
+.k-hart{width:48px;height:48px;border-radius:50%;border:2px solid rgba(245,199,107,.55);background:transparent;display:grid;place-items:center;color:var(--wit)}
+.k-hart svg{width:21px;height:21px}
+.k-hart[aria-pressed="true"] svg{fill:#FF6B9A;stroke:#FF6B9A}
+.knoppen{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.zacht{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid rgba(245,199,107,.45);background:transparent;font:800 14.5px/1 var(--f);color:var(--wit);text-decoration:none;display:inline-flex;align-items:center}
+.ook{margin-top:20px;text-align:left}
+.ook h3{font:800 13px/1 var(--f);letter-spacing:1.5px;text-transform:uppercase;color:var(--goud);margin:0 0 10px;text-align:center}
+.ook .twee{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ook button{display:block;width:100%;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(245,199,107,.25);border-radius:16px;padding:8px;color:var(--wit)}
+.ook button span{display:block;background:#fff;border-radius:10px;aspect-ratio:1;overflow:hidden}
+.ook button img{width:100%;height:100%;object-fit:contain;padding:6%}
+.ook button b{display:block;font:700 13.5px/1.3 var(--f);margin:8px 2px 2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ook button em{font-style:normal;font-weight:800;color:var(--turkoois);margin:0 2px}
+.klein{font-size:12.5px;color:#8F80B8;margin:14px 0 0}
+@media (prefers-reduced-motion:reduce){.bol::before,body::before{animation:none}.bol.denkt{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Madame Keuze</h1>
+  <p class="sub">Denk aan iemand. Zij ziet welk cadeau erbij past.</p>
+  <div class="bol" id="bol"><img id="visioen" alt=""></div><div class="voet"></div>
+  <div class="wolk"><div class="naam">Madame Keuze</div><p class="zin" id="zin"></p><div id="onder"></div></div>
+</div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc, t = K.uitTop;
+  K.wisselBalk('G');
+  var VRAGEN = {
+    hem: [['Drinkt hij graag een goed glas?', 'whisky-bier-drank'], ['Is hij gek op gamen of gadgets?', 'gadgets-gaming'], ['Gooit hij graag een pijltje of sport hij graag?', 'darts-sport'], ['Staat hij graag bij de barbecue?', 'bbq-lekkers'], ['Klust of kampeert hij graag?', 'zakmessen-gereedschap'], ['Bouwt hij graag met LEGO of speelt hij spellen?', 'lego-spellen']],
+    haar: [['Houdt ze van een gezellig huis met kaarsjes?', 'wonen-sfeer'], ['Verwent ze zichzelf graag met lekkere geurtjes?', 'parfum-verzorging'], ['Zit ze graag knus op de bank met warme sokken?', 'pantoffels-sjaals-kleding'], ['Is ze creatief, haakt of knutselt ze graag?', 'haken-breien-creatief'], ['Houdt ze van bubbels en lekker eten?', 'champagne-wijn-lekkers'], ['Doet ze graag spelletjes of puzzels?', 'puzzels-spellen']],
+    kinderen: [['Bouwt het kind graag met LEGO?', 'bouwen'], ['Knutselt het kind graag?', 'knutselen'], ['Speelt het graag met poppen, auto’s of knuffels?', 'figuren'], ['Is het gek op gamen?', 'gaming'], ['Speelt het graag buiten?', 'buiten'], ['Doet het graag spelletjes?', 'spellen']],
+    tieners: [['Gamet die tiener veel?', 'gaming-gadgets'], ['Wil die een gave kamer met lampjes?', 'kamer'], ['Is die bezig met skincare en geurtjes?', 'geuren-verzorging'], ['Bouwt die graag met LEGO of is die creatief?', 'lego-creatief'], ['Sport die graag of gooit die pijltjes?', 'sport-darts'], ['Doet die graag spelletjes met vrienden?', 'spellen-puzzels']],
+    'opa-oma': [['Kijkt die graag naar vogels in de tuin?', 'tuin-vogels'], ['Puzzelt die graag?', 'puzzels-spellen'], ['Houdt die van foto’s van de kleinkinderen?', 'fotos-herinneringen'], ['Zit die graag warm onder een dekentje?', 'warm-comfortabel'], ['Luistert die graag naar muziek of de radio?', 'radio-muziek'], ['Drinkt die graag koffie of thee?', 'koffie-thee']],
+    collega: [['Gaat je collega weg of met pensioen?', 'afscheid-pensioen'], ['Wil je je collega bedanken?', 'bedankje'], ['Is het voor de lootjes?', 'lootjes']]
+  };
+  var bol = document.getElementById('bol'), vis = document.getElementById('visioen'), zin = document.getElementById('zin'), onder = document.getElementById('onder');
+  var st, stap;
+  function wacht(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  async function typ(tekst) { zin.textContent = ''; for (var i = 0; i < tekst.length; i++) { zin.textContent += tekst[i]; if (i % 2) await wacht(16); } }
+  function stippen() { return '<div class="stip">' + [0, 1, 2, 3, 4, 5].map(function (i) { return '<i class="' + (i < stap ? 'aan' : '') + '"></i>'; }).join('') + '</div>'; }
+  async function vraag(tekst, opties) {
+    onder.innerHTML = ''; await typ(tekst);
+    return new Promise(function (klaar) {
+      onder.innerHTML = '<div class="antw">' + opties.map(function (o, i) { return '<button type="button" class="' + (i === 0 ? 'ja' : '') + '" data-i="' + i + '">' + esc(o) + '</button>'; }).join('') + '</div>' + stippen();
+      onder.querySelector('.antw').addEventListener('click', function (e) { var b = e.target.closest('[data-i]'); if (!b) return; stap++; klaar(+b.getAttribute('data-i')); });
+    });
+  }
+  var JN = ['Ja', 'Nee', 'Weet ik niet'];
+  async function start() {
+    st = { wie: null, sub: null, max: 0 }; stap = 0; bol.classList.remove('ziet', 'denkt'); vis.removeAttribute('src');
+    var a = await vraag('Denk aan iemand voor wie je een cadeau zoekt. Is het een kind of een tiener?', JN);
+    if (a === 0) { st.wie = (await vraag('Is die al 13 jaar of ouder?', JN)) === 0 ? 'tieners' : 'kinderen'; }
+    else if ((await vraag('Is het een collega?', JN)) === 0) st.wie = 'collega';
+    else if ((await vraag('Is het een opa of oma?', JN)) === 0) st.wie = 'opa-oma';
+    else { var v = await vraag('Is het een vrouw?', JN); st.wie = v === 0 ? 'haar' : v === 1 ? 'hem' : (Math.random() < .5 ? 'haar' : 'hem'); }
+    var lijst = (VRAGEN[st.wie] || []).filter(function (q) { return t('/voor/' + st.wie + '/' + q[1]).length >= 4; });
+    lijst = K.schud(lijst, Math.floor(Math.random() * 99));
+    for (var i = 0; i < Math.min(4, lijst.length) && !st.sub; i++) { if ((await vraag(lijst[i][0], JN)) === 0) st.sub = lijst[i][1]; }
+    if (st.wie !== 'collega') { var b = await vraag('Mag het meer dan € 25 kosten?', JN); st.max = b === 1 ? 25 : 0; } else st.max = 30;
+    onthul();
+  }
+  function kandidaten() {
+    var basis = st.sub ? t('/voor/' + st.wie + '/' + st.sub).concat(t('/voor/' + st.wie)) : t('/voor/' + st.wie);
+    var drankMag = /drank|bubbels|wijn|lekkers-drank/.test(st.sub || '') && st.wie !== 'kinderen' && st.wie !== 'tieners';
+    var l = K.uniek(basis).filter(function (p) { return !K.sieraad(p) && (drankMag || !K.drank(p)) && (!st.max || p.prijs <= st.max); });
+    if (!l.length) l = K.uniek(t('/voor/' + st.wie)).filter(function (p) { return !K.sieraad(p) && !K.drank(p); });
+    return l;
+  }
+  async function onthul() {
+    onder.innerHTML = ''; bol.classList.add('denkt');
+    await typ('Stil… ik zie iets in de bol…');
+    var l = kandidaten(), keus = K.schud(l.slice(0, 10), Math.floor(Math.random() * 999)), p = keus[0], ook = keus.slice(1, 3);
+    if (!p) { await typ('De bol is troebel vandaag. Zullen we het nog eens proberen?'); onder.innerHTML = '<div class="knoppen"><button class="zacht" type="button" data-opnieuw>Opnieuw</button></div>'; bol.classList.remove('denkt'); return; }
+    vis.src = K.groot(p); await new Promise(function (r) { if (vis.complete) r(); else { vis.onload = r; vis.onerror = r; } });
+    await wacht(1400); bol.classList.remove('denkt'); bol.classList.add('ziet'); try { navigator.vibrate && navigator.vibrate(40); } catch (e) {}
+    await wacht(500); await typ('Ik zie het! Dit wordt het:');
+    var r = K.reden(p), deel = 'Madame Keuze zag dit cadeau in haar glazen bol: ' + p.titel + ' ' + location.origin + '/nieuw/g/';
+    onder.innerHTML = '<div class="uitslag"><h2>' + esc(p.titel) + '</h2>' + (r ? '<p>' + esc(r) + '</p>' : '') +
+      '<div class="rij"><span class="bedrag">' + K.euro(p.prijs) + '</span>' + K.hartKnop(p) + '</div>' +
+      '<div class="knoppen"><a class="winkel" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + K.ic('uit') + '</a></div>' +
+      '<div class="knoppen"><button class="zacht" type="button" data-opnieuw>Vraag het nog eens</button><a class="zacht" href="https://wa.me/?text=' + encodeURIComponent(deel) + '" target="_blank" rel="noopener">Deel</a></div>' +
+      (ook.length ? '<div class="ook"><h3>De bol toont ook…</h3><div class="twee">' + ook.map(function (q) { return '<button type="button" data-blad="' + esc(q.id) + '"><span><img src="' + K.klein(q) + '" alt="" loading="lazy"></span><b>' + esc(q.titel) + '</b><em>' + K.euro(q.prijs) + '</em></button>'; }).join('') + '</div></div>' : '') +
+      '<p class="klein">Madame Keuze kiest uit cadeaus die wij met de hand hebben uitgezocht. De prijs kan bij de winkel net anders zijn.</p></div>';
+  }
+  onder.addEventListener('click', function (e) { if (e.target.closest('[data-opnieuw]')) { window.scrollTo({ top: 0, behavior: 'smooth' }); start(); } });
+  start();
+})();
+</script>
+</body>
+</html>
