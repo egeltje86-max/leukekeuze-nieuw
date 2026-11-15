@@ -219,6 +219,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const gezien = new Set(['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/', '/lootjes-trekken/', '/tiktok/']), rij = ['/', '/categorieen/', '/lijst/', '/sint-rijmmachine/', '/lootjes-trekken/', '/tiktok/'], paginas = [];
   /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
      Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
+  /* MINDER PRODUCTPAGINA'S IN GOOGLE (15-11-2026, GO Marius): zie scripts/seo/google-producten.js. */
+  const GOOGLE = require('./seo/google-producten.js').googleProducten(ROOT, await page.evaluate(() => (window.LK_PRODUCTEN || []).map(p => ({ id: p.id, status: p.status, favoriet: !!p.favoriet, samengevoegd: p.samengevoegd || '' }))));
+  console.log(GOOGLE ? 'productpagina\'s voor Google: ' + GOOGLE.size + ' (de rest noindex, wel op de site)' : 'productpagina\'s voor Google: allemaal');
   /* UITVERKOCHT (14-11-2026, GO Marius): uitverkochte producten houden hun pagina (met 'uitverkocht' en wat erop lijkt), niet in de sitemap. */
   for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd' || p.status === 'uitverkocht').map(p => p.id))) {
     const l = '/p/' + id + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
@@ -293,7 +296,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
     paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
-      beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) });
+      beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) || !!(GOOGLE && r.prod && r.prod.status === 'goedgekeurd' && !GOOGLE.has(r.prod.id)) });
   }
   await browser.close(); srv.close();
   if (fouten.length) { console.error('Fouten op de pagina:', fouten.slice(0, 5)); process.exit(1); }
