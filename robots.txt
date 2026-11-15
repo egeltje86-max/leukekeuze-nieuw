@@ -3,6 +3,7 @@ Allow: /
 Disallow: /sjabloon.html
 Disallow: /keurkamer/
 Disallow: /scripts/
+Disallow: /nieuw/
 Disallow: /*naar=winkel
 Disallow: /lootjes-trekken/?
 

@@ -43,7 +43,7 @@
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
   <script>window.LK_PAKPAD="assets/pak/c--cadeaus--kerst.js?v=245425806615829";</script>
-  <script>(function () { var s = "assets/js/producten-lean.js?v=178382219850948", t = "assets/js/topkeuze.js?v=60338078009752";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=115970768015016", t = "assets/js/topkeuze.js?v=60338078009752";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
