@@ -86,7 +86,7 @@
   /* wisselbalk A · B · C · D bovenaan */
   function wisselBalk(hier) {
     var d = document.createElement('div'); d.className = 'k-wissel';
-    d.innerHTML = '<span>Testvoorbeeld</span>' + [['A', '/nieuw/'], ['B', '/nieuw/b/'], ['C', '/nieuw/c/'], ['D', '/nieuw/d/']].map(function (x) { return '<a href="' + x[1] + '"' + (x[0] === hier ? ' aria-current="page"' : '') + '>' + x[0] + '</a>'; }).join('') + '<a class="k-uit" href="/">naar de gewone site</a>';
+    d.innerHTML = '<span>Testvoorbeeld</span>' + [['A', '/nieuw/'], ['B', '/nieuw/b/'], ['C', '/nieuw/c/'], ['D', '/nieuw/d/'], ['E', '/nieuw/e/']].map(function (x) { return '<a href="' + x[1] + '"' + (x[0] === hier ? ' aria-current="page"' : '') + '>' + x[0] + '</a>'; }).join('') + '<a class="k-uit" href="/">naar de gewone site</a>';
     document.body.insertBefore(d, document.body.firstChild);
   }
 

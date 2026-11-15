@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – de cadeau-grijper</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD E (15-11-2026, Marius: 'zo gek dat mensen denken wtf, dit heb ik nog nooit gezien'): een grijpautomaat vol echte cadeaus.
+     Elke bal is een cadeau uit onze handgekozen toppen; wat je grijpt kun je echt kopen. Gemaakt om te filmen voor TikTok. -->
+<style>
+:root{--nacht:#0B0618;--paars:#2A1150;--roze:#FF3EA5;--geel:#FFE14D;--cyaan:#3DF2FF;--groen:#5CFF8A;--wit:#FFFFFF;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;min-height:100dvh;background:radial-gradient(120% 70% at 50% 0%,#3B1474 0%,#140A2E 45%,var(--nacht) 80%);color:var(--wit);font:600 16px/1.45 var(--f);-webkit-user-select:none;user-select:none}
+body::after{content:'';position:fixed;inset:auto 0 0;height:38vh;pointer-events:none;z-index:-1;background:linear-gradient(transparent,rgba(255,62,165,.12)),repeating-linear-gradient(90deg,rgba(61,242,255,.18) 0 1px,transparent 1px 44px),repeating-linear-gradient(0deg,rgba(61,242,255,.18) 0 1px,transparent 1px 44px);transform:perspective(300px) rotateX(55deg);transform-origin:bottom}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:480px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-left)) 40px}
+h1{margin:6px 0 2px;text-align:center;font:800 clamp(30px,9vw,44px)/1 var(--f);letter-spacing:-1px;text-transform:uppercase;color:#fff;text-shadow:0 0 6px var(--roze),0 0 18px var(--roze),0 0 40px var(--roze);animation:flak 4s infinite}
+h1 span{color:var(--geel);text-shadow:0 0 6px #ffb300,0 0 20px #ffb300}
+@keyframes flak{0%,92%,100%{opacity:1}93%{opacity:.4}94%{opacity:1}96%{opacity:.6}97%{opacity:1}}
+.ondertitel{text-align:center;color:#CBB9F2;font-size:14.5px;margin:6px 0 10px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;padding:0 15px;border-radius:999px;border:2px solid #5B3A99;background:rgba(255,255,255,.04);font:800 14px/1 var(--f);white-space:nowrap}
+.chip[aria-pressed="true"]{border-color:var(--cyaan);color:var(--cyaan);box-shadow:0 0 12px rgba(61,242,255,.55),inset 0 0 10px rgba(61,242,255,.25)}
+/* de kast */
+.kast{position:relative;border-radius:26px;padding:12px;background:linear-gradient(160deg,#FF3EA5,#9B2CFF 55%,#3DF2FF);box-shadow:0 0 30px rgba(255,62,165,.5),0 20px 60px rgba(0,0,0,.6)}
+.kast::before{content:'';position:absolute;left:18px;right:18px;top:-6px;height:12px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--geel) 0 10px,transparent 10px 22px);filter:drop-shadow(0 0 6px var(--geel));animation:lamp 1s steps(2) infinite}
+@keyframes lamp{50%{background-position:11px 0}}
+.glas{position:relative;height:min(50vh,440px);min-height:300px;border-radius:16px;overflow:hidden;background:radial-gradient(90% 60% at 50% 20%,rgba(255,255,255,.10),transparent 60%),linear-gradient(#1A0B36,#0E0622);border:3px solid rgba(255,255,255,.25);touch-action:none}
+.glas::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.14) 0 8%,transparent 8% 20%,rgba(255,255,255,.07) 20% 23%,transparent 23%);z-index:9}
+.rail{position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(#C9C9D6,#6E6E85);z-index:6;box-shadow:0 3px 8px rgba(0,0,0,.5)}
+.klauw{position:absolute;left:0;top:6px;width:76px;z-index:7;will-change:transform}
+.blok{position:absolute;left:23px;top:0;width:30px;height:16px;border-radius:5px;background:linear-gradient(#FFE14D,#E0A800)}
+.touw{position:absolute;left:36px;top:14px;width:4px;background:linear-gradient(90deg,#999,#eee,#999)}
+.grijper{position:absolute;left:0;width:76px;height:62px}
+.grijper svg{width:76px;height:62px;overflow:visible}
+.arm{transition:transform .28s ease}
+.armL{transform-origin:30px 14px}.armR{transform-origin:46px 14px}
+.grijper.open .armL{transform:rotate(26deg)}.grijper.open .armR{transform:rotate(-26deg)}
+.goot{position:absolute;left:0;bottom:0;width:23%;height:30%;z-index:8;background:linear-gradient(#2B1458,#170A33);border-top:3px solid var(--geel);border-right:3px solid var(--geel);border-top-right-radius:12px;display:grid;place-items:center;text-align:center;font:800 12px/1.15 var(--f);color:var(--geel);text-shadow:0 0 8px #ffb300;letter-spacing:.5px}
+.bal{position:absolute;border-radius:50%;background:#fff;border:3px solid var(--k);box-shadow:inset 0 -8px 14px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.45);overflow:hidden;z-index:3;transition:filter .2s}
+.bal img{width:100%;height:100%;object-fit:contain;padding:12%}
+.bal::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--k) 0 47%,rgba(255,255,255,0) 47%);opacity:.38;z-index:1}
+.bal::after{content:'';position:absolute;left:16%;top:9%;width:30%;height:18%;border-radius:50%;background:rgba(255,255,255,.8);filter:blur(1px);z-index:2}
+.bal.vast{z-index:6;filter:drop-shadow(0 0 10px var(--k))}
+.tekst{position:absolute;left:0;right:0;top:30%;text-align:center;z-index:10;pointer-events:none;font:800 clamp(26px,8vw,40px)/1 var(--f);text-transform:uppercase;opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s}
+.tekst.aan{opacity:1;transform:scale(1)}
+.tekst.mis{color:var(--roze);text-shadow:0 0 12px var(--roze)}
+.tekst.raak{color:var(--groen);text-shadow:0 0 12px var(--groen)}
+/* bediening */
+.bedien{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:10px;margin-top:12px;align-items:center}
+.pijl{height:64px;border-radius:18px;border:0;background:linear-gradient(#4A2A86,#2A1150);box-shadow:0 6px 0 #170A33,0 0 14px rgba(155,44,255,.5);display:grid;place-items:center}
+.pijl:active,.pijl.druk{transform:translateY(4px);box-shadow:0 2px 0 #170A33}
+.pijl svg{width:32px;height:32px}
+.grijp{height:84px;border-radius:50%;aspect-ratio:1;justify-self:center;border:0;background:radial-gradient(circle at 35% 30%,#FF8BC8,#FF3EA5 45%,#B3006A);box-shadow:0 8px 0 #6D0041,0 0 26px rgba(255,62,165,.85);font:800 19px/1 var(--f);letter-spacing:.5px;text-transform:uppercase}
+.grijp:active{transform:translateY(5px);box-shadow:0 3px 0 #6D0041,0 0 26px rgba(255,62,165,.85)}
+.grijp[disabled]{filter:grayscale(.6) brightness(.8)}
+.hint{text-align:center;color:#A893D6;font-size:13.5px;margin:12px 0 0}
+/* buit */
+.buit{margin-top:22px}
+.buit h2{font:800 15px/1 var(--f);letter-spacing:1.5px;text-transform:uppercase;color:var(--geel);margin:0 0 10px;text-shadow:0 0 8px #ffb300}
+.plank{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;min-height:76px;scrollbar-width:none}
+.plank::-webkit-scrollbar{display:none}
+.plank button{flex:none;width:70px;height:70px;border-radius:50%;border:3px solid var(--k);background:#fff;padding:0;overflow:hidden}
+.plank img{width:100%;height:100%;object-fit:contain;padding:10%}
+.leeg{color:#8C78B8;font-size:14px;align-self:center}
+/* prijs! */
+.prijs{position:fixed;inset:0;z-index:70;background:rgba(8,3,20,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
+.prijs[hidden]{display:none}
+.doos{position:relative;z-index:2;width:100%;max-width:400px;background:#160A30;border:3px solid var(--geel);border-radius:28px;padding:18px;text-align:center;box-shadow:0 0 40px rgba(255,225,77,.45);animation:pop .45s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{transform:scale(.3) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+.doos .kop{font:800 13px/1 var(--f);letter-spacing:2px;text-transform:uppercase;color:var(--geel);margin:4px 0 12px}
+.doos .foto{background:#fff;border-radius:20px;aspect-ratio:1;max-height:42vh;margin:0 auto;overflow:hidden;border:0;padding:0;width:100%}
+.doos .foto img{width:100%;height:100%;object-fit:contain;padding:10px}
+.doos h3{font:800 21px/1.2 var(--f);margin:14px 0 6px;letter-spacing:-.3px}
+.doos p{color:#CBB9F2;font-size:14.5px;margin:0 0 12px}
+.doos .rij{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.doos .bedrag{font:800 26px/1 var(--f);color:var(--groen);text-shadow:0 0 10px rgba(92,255,138,.6)}
+.winkel{display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 20px;border-radius:999px;background:var(--geel);color:#1B0B33;text-decoration:none;font:800 15.5px/1 var(--f)}
+.winkel svg{width:18px;height:18px}
+.doos .knoppen{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.zacht{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid #5B3A99;background:transparent;font:800 14.5px/1 var(--f);display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff}
+.k-hart{width:46px;height:46px;border-radius:50%;border:2px solid #5B3A99;background:transparent;display:grid;place-items:center;color:#fff}
+.k-hart svg{width:20px;height:20px}
+.k-hart[aria-pressed="true"] svg{fill:var(--roze);stroke:var(--roze)}
+.klein{font-size:12.5px;color:#8C78B8;margin:12px 0 0}
+.snipper{position:fixed;top:-20px;width:9px;height:14px;z-index:1;pointer-events:none;animation:val linear forwards}
+@keyframes val{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){h1,.kast::before{animation:none}.doos{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cadeau-<span>grijper</span></h1>
+  <p class="ondertitel">Elke bal is een echt cadeau dat wij hebben uitgekozen. Wat je grijpt, kun je kopen.</p>
+  <div class="chips" id="chips" role="group" aria-label="Wat zit er in de automaat"></div>
+  <div class="kast">
+    <div class="glas" id="glas" aria-label="Grijpautomaat">
+      <div class="rail"></div>
+      <div class="klauw" id="klauw"><div class="blok"></div><div class="touw" id="touw"></div>
+        <div class="grijper" id="grijper"><svg viewBox="0 0 76 62" aria-hidden="true">
+          <g class="arm armL"><path d="M30 14 L14 40 L22 56" fill="none" stroke="#E8E8F0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="arm armR"><path d="M46 14 L62 40 L54 56" fill="none" stroke="#E8E8F0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <rect x="24" y="4" width="28" height="16" rx="6" fill="#FFE14D"/><circle cx="38" cy="12" r="3.5" fill="#FF3EA5"/></svg></div>
+      </div>
+      <div class="goot">PAK<br>HIER</div>
+      <div class="tekst" id="tekst"></div>
+    </div>
+  </div>
+  <div class="bedien">
+    <button class="pijl" type="button" id="links" aria-label="Naar links"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="grijp" type="button" id="grijp">Grijp!</button>
+    <button class="pijl" type="button" id="rechts" aria-label="Naar rechts"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <p class="hint">Tik in de kast om de grijper te sturen, of houd de pijlen ingedrukt.</p>
+  <section class="buit"><h2>Jouw buit</h2><div class="plank" id="plank"><span class="leeg">Nog niks gegrepen. Waag een gokje!</span></div></section>
+</div>
+<div class="prijs" id="prijs" hidden></div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc, t = K.uitTop;
+  K.wisselBalk('E');
+  var KLEUR = ['#FF3EA5', '#3DF2FF', '#FFE14D', '#5CFF8A', '#B36BFF', '#FF8A3D'];
+  function schoon(l) { return K.uniek(l).filter(function (p) { return !K.sieraad(p) && !K.drank(p); }); }
+  function mix() { var ls = Array.prototype.slice.call(arguments).map(schoon), uit = [], g = {}, m = Math.max.apply(null, ls.map(function (l) { return l.length; })); for (var i = 0; i < m; i++) ls.forEach(function (l) { var p = l[i]; if (p && !g[p.id]) { g[p.id] = 1; uit.push(p); } }); return uit; }
+  var F = [
+    ['Alles', function () { return mix(t('/collectie/grappige-cadeaus'), t('/collectie/toppers-van-nu'), t('/voor/kinderen'), t('/voor/tieners'), t('/voor/haar'), t('/voor/hem'), t('/collectie/originele-cadeaus')); }],
+    ['Kinderen', function () { return mix(t('/voor/kinderen'), t('/collectie/schoencadeautjes'), t('/collectie/grappige-cadeaus/kinderen')); }],
+    ['Tieners', function () { return mix(t('/voor/tieners'), t('/voor/tieners/kamer'), t('/collectie/grappige-cadeaus/tieners')); }],
+    ['Voor haar', function () { return mix(t('/voor/haar')); }],
+    ['Voor hem', function () { return mix(t('/voor/hem')); }],
+    ['Tot € 10', function () { return mix(t('/collectie/schoencadeautjes'), t('/c/cadeaus/onder-15'), t('/collectie/kleine-cadeautjes'), t('/collectie/grappige-cadeaus')).filter(function (p) { return p.prijs <= 10; }); }],
+    ['Grappig', function () { return mix(t('/collectie/grappige-cadeaus')); }]
+  ];
+  var glas = document.getElementById('glas'), klauw = document.getElementById('klauw'), touw = document.getElementById('touw'), grijper = document.getElementById('grijper'), tekst = document.getElementById('tekst'), grijpK = document.getElementById('grijp');
+  var W, H, S, KW = 76, GH = 62, L0 = 14, plekken = [], ballen = [], rij = [], keus = 0, bezig = false, vast = null, dir = 0;
+  var st = { x: 0, l: L0 };
+  var buit = []; try { buit = JSON.parse(sessionStorage.getItem('lkgrijp') || '[]').filter(function (id) { return K.PER[id]; }); } catch (e) {}
+
+  function wacht(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function tween(ms, f) { return new Promise(function (r) { var t0 = performance.now(); function s(n) { var k = Math.min(1, (n - t0) / ms); f(k); if (k < 1) requestAnimationFrame(s); else r(); } requestAnimationFrame(s); }); }
+  function zacht(k) { return k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; }
+  function teken() {
+    klauw.style.transform = 'translateX(' + (st.x - KW / 2) + 'px)';
+    touw.style.height = st.l + 'px'; grijper.style.top = (st.l + 8) + 'px';
+    if (vast) { vast.el.style.left = (st.x - S / 2) + 'px'; vast.el.style.top = (st.l + 8 + GH * 0.62 - S / 2) + 'px'; }
+  }
+  function zeg(woord, soort) { tekst.textContent = woord; tekst.className = 'tekst aan ' + soort; clearTimeout(zeg.t); zeg.t = setTimeout(function () { tekst.className = 'tekst'; }, 1100); }
+
+  /* plekken voor de ballen: rechts van de goot, in rijen op elkaar */
+  function maakPlekken() {
+    W = glas.clientWidth; H = glas.clientHeight; S = Math.round(Math.min(104, Math.max(64, W / 4.3)));
+    var links = W * 0.25, breed = W - links - 4, perRij = Math.max(3, Math.floor(breed / (S * 0.9))), stap = (breed - S) / (perRij - 1);
+    plekken = [];
+    for (var r = 0; r < 4; r++) for (var i = 0; i < perRij - (r % 2); i++) {
+      plekken.push({ x: Math.round(links + i * stap + (r % 2 ? stap / 2 : 0) + (Math.sin(i * 7 + r * 3) * 5)), y: Math.round(H - S - 4 - r * S * 0.78 + Math.cos(i * 5 + r) * 4) });
+    }
+  }
+  function nieuweBal(plek, i, vallen) {
+    var p = rij.shift(); if (!p) return;
+    var el = document.createElement('div'); el.className = 'bal';
+    el.style.cssText = 'width:' + S + 'px;height:' + S + 'px;left:' + plek.x + 'px;top:' + (vallen ? -S : plek.y) + 'px;--k:' + KLEUR[(i + p.id.length) % KLEUR.length];
+    el.innerHTML = '<img src="' + K.klein(p) + '" alt="" draggable="false">';
+    glas.insertBefore(el, klauw);
+    var b = { p: p, el: el, x: plek.x, y: plek.y, plek: plek };
+    ballen.push(b);
+    if (vallen) tween(520 + i * 25, function (k) { var e = k < .8 ? (k / .8) * (k / .8) : 1 - Math.sin((k - .8) / .2 * Math.PI) * .04; el.style.top = (-S + (plek.y + S) * e) + 'px'; });
+  }
+  function vul(vallen) {
+    ballen.forEach(function (b) { b.el.remove(); }); ballen = [];
+    rij = F[keus][1](); if (keus === 0) rij = K.schud(rij.slice(0, 120), 11);
+    maakPlekken();
+    plekken.forEach(function (pl, i) { nieuweBal(pl, i, vallen); });
+    st.x = W * 0.6; st.l = L0; teken();
+  }
+  function bijvullen(plek) { if (!rij.length) rij = F[keus][1]().filter(function (p) { return !ballen.some(function (b) { return b.p.id === p.id; }); }); nieuweBal(plek, ballen.length, true); }
+
+  /* sturen */
+  var vorige = 0;
+  function lus(n) { var dt = vorige ? Math.min(40, n - vorige) : 16; vorige = n; if (dir && !bezig) { st.x = Math.max(KW / 2, Math.min(W - KW / 2, st.x + dir * dt * 0.32)); teken(); } requestAnimationFrame(lus); }
+  requestAnimationFrame(lus);
+  function houd(id, d) {
+    var el = document.getElementById(id);
+    el.addEventListener('pointerdown', function (e) { e.preventDefault(); dir = d; el.classList.add('druk'); try { el.setPointerCapture(e.pointerId); } catch (x) {} });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) { el.addEventListener(ev, function () { if (dir === d) dir = 0; el.classList.remove('druk'); }); });
+  }
+  houd('links', -1); houd('rechts', 1);
+  glas.addEventListener('pointerdown', function (e) {
+    if (bezig) return; var r = glas.getBoundingClientRect(), doel = Math.max(KW / 2, Math.min(W - KW / 2, e.clientX - r.left)), van = st.x;
+    bezig = true; tween(Math.min(700, Math.abs(doel - van) * 2.2 + 120), function (k) { st.x = van + (doel - van) * zacht(k); teken(); }).then(function () { bezig = false; });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') dir = -1; else if (e.key === 'ArrowRight') dir = 1; else if (e.key === ' ' || e.key === 'Enter') { if (document.getElementById('prijs').hidden) { e.preventDefault(); grijp(); } } });
+  document.addEventListener('keyup', function (e) { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') dir = 0; });
+
+  /* grijpen */
+  var pogingen = 0;
+  async function grijp() {
+    if (bezig) return; bezig = true; grijpK.disabled = true; dir = 0; pogingen++;
+    var kand = ballen.filter(function (b) { return Math.abs(b.x + S / 2 - st.x) < S * 0.55; }).sort(function (a, b) { return a.y - b.y; })[0];
+    var diep = kand ? kand.y + S / 2 - GH * 0.62 - 8 : H - GH - 14;
+    grijper.classList.add('open');
+    await tween(950, function (k) { st.l = L0 + (diep - L0) * zacht(k); teken(); });
+    grijper.classList.remove('open'); await wacht(380);
+    if (kand) { vast = kand; ballen.splice(ballen.indexOf(kand), 1); kand.el.classList.add('vast'); try { navigator.vibrate && navigator.vibrate(30); } catch (e) {} }
+    var glip = vast && pogingen > 1 && Math.random() < 0.2, geglipt = false;
+    await tween(950, function (k) {
+      st.l = diep + (L0 - diep) * zacht(k); teken();
+      if (glip && !geglipt && k > 0.45) { geglipt = true; var b = vast; vast = null; var y0 = parseFloat(b.el.style.top), x0 = parseFloat(b.el.style.left); b.el.classList.remove('vast');
+        tween(500, function (q) { b.el.style.top = (y0 + (b.y - y0) * q * q) + 'px'; b.el.style.left = (x0 + (b.x - x0) * q) + 'px'; }); ballen.push(b); zeg('Glipt eruit!', 'mis'); }
+    });
+    if (!vast) { if (!kand) zeg('Mis!', 'mis'); grijper.classList.add('open'); await wacht(250); grijper.classList.remove('open'); bezig = false; grijpK.disabled = false; return; }
+    var van = st.x, naar = W * 0.115;
+    await tween(Math.abs(van - naar) * 2.4 + 200, function (k) { st.x = van + (naar - van) * zacht(k); teken(); });
+    var b2 = vast; vast = null; grijper.classList.add('open');
+    var y1 = parseFloat(b2.el.style.top);
+    await tween(420, function (k) { b2.el.style.top = (y1 + (H + S - y1) * k * k) + 'px'; });
+    b2.el.remove(); grijper.classList.remove('open'); zeg('Raak!', 'raak');
+    bijvullen(b2.plek);
+    await wacht(350);
+    winst(b2.p);
+    st.l = L0; teken(); bezig = false; grijpK.disabled = false;
+  }
+  grijpK.addEventListener('click', grijp);
+
+  /* prijs: wat je gegrepen hebt */
+  var prijs = document.getElementById('prijs');
+  function winst(p, zonderFeest) {
+    if (!zonderFeest) { if (buit.indexOf(p.id) === -1) buit.unshift(p.id); try { sessionStorage.setItem('lkgrijp', JSON.stringify(buit.slice(0, 30))); } catch (e) {} plank(); }
+    var r = K.reden(p), deel = 'Ik heb dit gegrepen in de cadeau-grijper van LeukeKeuze: ' + p.titel + ' ' + location.origin + '/nieuw/e/';
+    prijs.innerHTML = '<div class="doos" role="dialog" aria-modal="true" aria-label="Jouw cadeau"><div class="kop">' + (zonderFeest ? 'Uit jouw buit' : '🎉 Gegrepen! 🎉') + '</div>' +
+      '<button class="foto" type="button" data-blad="' + esc(p.id) + '" aria-label="Meer over dit cadeau"><img src="' + K.groot(p) + '" alt="' + esc(p.titel) + '"></button>' +
+      '<h3>' + esc(p.titel) + '</h3>' + (r ? '<p>' + esc(r) + '</p>' : '') +
+      '<div class="rij"><span class="bedrag">' + K.euro(p.prijs) + '</span>' + K.hartKnop(p) + '</div>' +
+      '<div class="knoppen"><a class="winkel" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + ' ' + K.ic('uit') + '</a></div>' +
+      '<div class="knoppen"><button class="zacht" type="button" data-weer>Nog een keer grijpen</button><a class="zacht" href="https://wa.me/?text=' + encodeURIComponent(deel) + '" target="_blank" rel="noopener">Deel</a></div>' +
+      '<p class="klein">De prijs kan bij de winkel net anders zijn.</p></div>';
+    prijs.hidden = false; if (!zonderFeest) feest();
+  }
+  prijs.addEventListener('click', function (e) { if (e.target === prijs || e.target.closest('[data-weer]')) prijs.hidden = true; });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') prijs.hidden = true; });
+  function plank() {
+    var pl = document.getElementById('plank');
+    if (!buit.length) return;
+    pl.innerHTML = buit.map(function (id, i) { var p = K.PER[id]; return '<button type="button" data-buit="' + esc(id) + '" style="--k:' + KLEUR[i % KLEUR.length] + '" aria-label="' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button>'; }).join('');
+  }
+  document.getElementById('plank').addEventListener('click', function (e) { var b = e.target.closest('[data-buit]'); if (b) winst(K.PER[b.getAttribute('data-buit')], true); });
+  function feest() {
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    for (var i = 0; i < 60; i++) { var s = document.createElement('i'); s.className = 'snipper'; s.style.left = Math.random() * 100 + 'vw'; s.style.background = KLEUR[i % KLEUR.length]; s.style.animationDuration = (1.4 + Math.random() * 1.4) + 's'; s.style.animationDelay = (Math.random() * .4) + 's'; prijs.appendChild(s); (function (x) { setTimeout(function () { x.remove(); }, 3400); })(s); }
+  }
+
+  /* wat zit er in de automaat */
+  var chips = document.getElementById('chips');
+  chips.innerHTML = F.map(function (f, i) { return '<button class="chip" type="button" data-f="' + i + '" aria-pressed="' + (i === 0) + '">' + esc(f[0]) + '</button>'; }).join('');
+  chips.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (!b || bezig) return; keus = +b.getAttribute('data-f'); chips.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c === b); }); vul(true); });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!bezig) vul(false); }, 200); });
+  plank(); vul(true);
+})();
+</script>
+</body>
+</html>
