@@ -1,6 +1,6 @@
 {
  "_uitleg": "Paginaregels (10-11-2026, opdracht Marius: geen verkeerde producten meer op een pagina). Wordt toegepast door scripts/boom/paginaregels.js bij elke bouw en nagekeken door scripts/controle/paginas.js. sub: per Voor wie-onderwerp welke afdelingen (afd) en losse groepen (groep) erop mogen; een product van buiten mag alleen blijven als de titel bij het thema past (thema = regex). Zo n product verdwijnt alleen van dat onderwerp (veld nietOp), niet van de site. label_vak_niet: een vakje dat niet bij een doelgroep past haalt dat label weg (tenzij de titel bij behalve past). los: losse onderdelen en uitbreidingen staan niet op cadeaupagina s (Voor wie, gelegenheden, collecties), wel in hun eigen vakje. label_titel_niet: woorden in de titel die niet bij een doelgroep passen (binnen de genoemde afdelingen) halen dat label weg.",
- "los": "\\b(uitbreidingsset|uitbreiding|navulling|navulset|navullingen|refill|vervangende|vervangings\\w*|reserveonderde\\w*|bouwplaat|grondplaat|opzetborstels?|borstelkop\\w*|extension|expansion)\\b",
+ "los": "\\b(uitbreidingsset|uitbreiding|navulling|navulset|navullingen|refill|vervangende|vervangings\\w*|reserveonderde\\w*|bouwplaat|grondplaat|opzetborstels?|borstelkop\\w*|extension|expansion|maatset|sizing\\s?kit|screen\\s?protector|screenprotector|beschermfolie|laadkabel)\\b",
  "label_vak_niet": {
   "haar": {
    "vakken": [
