@@ -1209,13 +1209,14 @@
           window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
           wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel(SOORTEN ? 'Producten' : 'Categorieën', '/categorieen', '', 'raster') +
         '</nav></section>' +
+      rijmBlok('home') + /* 15-11-2026: lootjes trekken en de rijmmachine direct onder 'Voor wie' (seizoen, tot en met 5 december) */
       /* 11-11-2026 (Marius: 'kijk wat nog meer goed is om op de homepage te zetten'): wat het best loopt (grappig en origineel) en kiezen op bedrag. */
       '<section class="sectie wzh-soort" data-tel="soort"><p class="wz-vraag">Of kies een soort cadeau</p><nav class="mini-raster breed" aria-label="Soort cadeau">' +
         [['Grappige cadeaus', '/collectie/grappige-cadeaus', 'col-grappige-cadeaus'], ['Originele cadeaus', '/collectie/originele-cadeaus', 'col-originele-cadeaus'], ['Met naam of foto', '/collectie/persoonlijke-cadeaus', 'col-persoonlijke-cadeaus'], ['Toppers van nu', '/collectie/toppers-van-nu', 'col-toppers-van-nu']]
           .map(function (k) { return miniTegel(k[0], k[1], 'images/sub/rond/' + k[2] + '-klein.webp'); }).join('') + '</nav>' +
         '<p class="wz-vraag">Of kies een bedrag</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' +
         (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip" href="/c/cadeaus/?prijs=' + p.id + '">' + p.label + '</a>'; }).join('') + '</nav></section>' +
-      rijmBlok('home') + seizoenBlok() + belevenisBlok() + favorietenBlok() + winkelTopBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
+      seizoenBlok() + belevenisBlok() + favorietenBlok() + winkelTopBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
       tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; }).concat([['Acties en kortingscodes', '/collectie/aanbiedingen']])) +
       gidsenCompact() + eigenKaart() + zoWerkt +
     '</div>';
@@ -3245,10 +3246,11 @@
       '@media (max-width:380px){.rz-smal b{font-size:16px}.rz-smal small{font-size:12.5px}.rz-smal img{width:50px;height:50px}}' +
       '@media (prefers-reduced-motion:reduce){.rz-smal,.rz-smal .ga{transition:none}}' +
       '</style>' +
-      '<a class="rz-smal" href="/sint-rijmmachine/" data-tel="rijmblok-home"><img src="/images/banners/rijm-sint-piet.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
-      '<span class="t"><b>Nieuw: <em>Sint-rijmmachine</em></b><small>Grappig gedicht + een cadeau dat past</small></span><span class="ga" aria-hidden="true">→</span></a>' +
+      /* 15-11-2026 (Marius: 'geld verdienen', punt 2: lootjes trekken groot maken): lootjes trekken eerst, daarna de rijmmachine. */
       (window.LK_LOOTJES !== false ? '<a class="rz-smal" href="/lootjes-trekken/" data-tel="lootjesblok-home"><img src="/images/sub/rond/cad-sinterklaas-klein.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
-      '<span class="t"><b>Gratis <em>lootjes trekken</em></b><small>Iedereen zijn eigen linkje via WhatsApp</small></span><span class="ga" aria-hidden="true">→</span></a>' : '');
+      '<span class="t"><b>Gratis <em>lootjes trekken</em></b><small>Via WhatsApp. Niemand ziet wie wie heeft, ook jij niet.</small></span><span class="ga" aria-hidden="true">→</span></a>' : '') +
+      '<a class="rz-smal" href="/sint-rijmmachine/" data-tel="rijmblok-home"><img src="/images/banners/rijm-sint-piet.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
+      '<span class="t"><b>Nieuw: <em>Sint-rijmmachine</em></b><small>Grappig gedicht + een cadeau dat past</small></span><span class="ga" aria-hidden="true">→</span></a>';
     return RIJM_STIJL + '<style>' +
       '.rz-blok{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;margin:20px 0 6px;padding:26px 28px;border-radius:24px;overflow:hidden;color:#fff;text-decoration:none;background:radial-gradient(circle at 80% 30%,rgba(119,66,39,.35) 0 90px,transparent 220px),linear-gradient(140deg,#0b1225,#15132a 70%,#3a1727);box-shadow:0 16px 42px rgba(20,20,35,.18)}' +
       '.rz-blok .rz-eyebrow{color:#f7d77f}' +
@@ -3539,7 +3541,7 @@
     return '<section class="tt-hero"><div class="binnen"><p class="kicker">Gezien op TikTok</p><h1>Alle cadeaus uit onze filmpjes</h1>' +
         '<p>Zag je iets leuks in een filmpje? Hier staat het, met de prijs en een knop naar de winkel. Het nieuwste filmpje staat bovenaan. Iets anders zoeken? Typ het in het zoekvak hierboven.</p>' +
 
-      '</div></section><div class="binnen tt">' + rijen +
+      '</div></section><div class="binnen tt">' + rijmBlok('home') + rijen +
       '<section class="tt-slot"><h2>Nog meer ideeën</h2><div class="tt-links">' +
         '<a class="knop knop-rand" href="/collectie/grappige-cadeaus">Grappige cadeaus</a><a class="knop knop-rand" href="/collectie/schoencadeautjes">Schoencadeautjes</a>' +
         '<a class="knop knop-rand" href="/c/cadeaus/onder-15">Cadeaus onder € 15</a><a class="knop knop-rand" href="/lootjes-trekken/">Gratis lootjes trekken</a></div>' +
