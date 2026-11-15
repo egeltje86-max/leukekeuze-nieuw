@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – de cadeau-landkaart</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD I (15-11-2026, Marius: 'maak ze alle drie, ik wil ze ervaren'): de cadeau-landkaart.
+     Alle cadeaus op één kaart (canvas): elke afdeling is een eiland, elke groep een wijk, de beste cadeaus in het midden.
+     Knijpen/scrollen om te zoomen, slepen om te schuiven, tik op een eiland om erheen te vliegen, tik op een foto voor het cadeau.
+     Voor wie en bedrag laten alleen de passende cadeaus oplichten. Foto's worden pas geladen als ze groot genoeg in beeld zijn. -->
+<style>
+:root{--zee:#CFE6EE;--zee2:#B9DAE5;--inkt:#13202B;--wit:#FFFFFF;--accent:#0F766E;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--zee);color:var(--inkt);font:600 15px/1.4 var(--f)}
+button{font:inherit;color:inherit;cursor:pointer}
+#kaart{position:fixed;inset:0;width:100%;height:100%;touch-action:none;display:block;cursor:grab}
+#kaart:active{cursor:grabbing}
+.balk{position:fixed;left:0;right:0;top:0;z-index:5;padding:8px max(12px,env(safe-area-inset-left)) 6px;pointer-events:none}
+.balk>*{pointer-events:auto}
+.k-wissel{position:static!important}
+.kop{display:flex;align-items:center;gap:10px;margin-top:6px}
+.kop h1{margin:0;font:700 20px/1 var(--k);background:rgba(255,255,255,.92);padding:9px 14px;border-radius:999px;box-shadow:0 2px 10px rgba(0,40,60,.15)}
+.kop h1 i{color:var(--accent)}
+.rij{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-top:8px;padding-bottom:2px}
+.rij::-webkit-scrollbar{display:none}
+.rij button{flex:none;min-height:38px;padding:0 13px;border-radius:999px;border:0;background:rgba(255,255,255,.94);box-shadow:0 1px 6px rgba(0,40,60,.14);font:800 13.5px/1 var(--f)}
+.rij button[aria-pressed="true"]{background:var(--inkt);color:#fff}
+.teller{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;font:800 12.5px/1 var(--f);padding:7px 11px;border-radius:999px}
+.zoom{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:calc(84px + env(safe-area-inset-bottom));z-index:5;display:flex;flex-direction:column;gap:8px}
+.zoom button{width:48px;height:48px;border-radius:14px;border:0;background:#fff;box-shadow:0 2px 10px rgba(0,40,60,.2);font:800 22px/1 var(--f);display:grid;place-items:center}
+.zoom svg{width:22px;height:22px}
+.waar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom));z-index:5;background:rgba(19,32,43,.88);color:#fff;font:700 14px/1.2 var(--f);padding:10px 16px;border-radius:999px;max-width:calc(100% - 32px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;transition:opacity .3s}
+.hint{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;background:rgba(19,32,43,.9);color:#fff;padding:16px 20px;border-radius:18px;text-align:center;font:700 15px/1.4 var(--f);pointer-events:none;transition:opacity .6s;max-width:300px}
+.hint b{display:block;font:800 18px/1.2 var(--f);margin-bottom:4px}
+.laden{position:fixed;inset:0;display:grid;place-items:center;z-index:9;background:var(--zee);font:700 16px/1 var(--f)}
+.k-hart{width:48px;height:48px;border-radius:50%;border:2px solid #e5e7eb;background:#fff;display:grid;place-items:center;color:var(--inkt)}
+.k-hart svg{width:21px;height:21px}
+.k-hart[aria-pressed="true"] svg{fill:#E11D48;stroke:#E11D48}
+</style>
+</head>
+<body>
+<canvas id="kaart" aria-label="Kaart met alle cadeaus. Knijp of scroll om te zoomen, sleep om te schuiven, tik op een cadeau voor meer."></canvas>
+<div class="balk" id="balk">
+  <div class="kop"><h1>De cadeau-<i>landkaart</i></h1></div>
+  <div class="rij" id="wie"></div>
+  <div class="rij" id="geld"></div>
+  <span class="teller" id="teller"></span>
+</div>
+<div class="zoom"><button type="button" id="plus" aria-label="Inzoomen">+</button><button type="button" id="min" aria-label="Uitzoomen">−</button><button type="button" id="thuis" aria-label="Hele kaart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
+<div class="waar" id="waar"></div>
+<div class="hint" id="hint"><b>Alle cadeaus op één kaart</b>Knijp of scroll om in te zoomen. Tik op een eiland om erheen te vliegen, tik op een foto voor het cadeau.</div>
+<div class="laden" id="laden">Kaart tekenen…</div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN;
+  K.wisselBalk('I');
+  var balk = document.getElementById('balk'), w = document.querySelector('.k-wissel'); if (w) balk.insertBefore(w, balk.firstChild);
+
+  /* ---------- namen en kleuren per afdeling ---------- */
+  var ANAAM = {}, GNAAM = {};
+  (window.LK_CATEGORIEEN || []).forEach(function (c) { ANAAM[c.slug] = c.naam; (c.subs || []).forEach(function (s) { GNAAM[c.slug + '/' + s.slug] = s.naam; }); });
+  function mens(s) { s = String(s || '').replace(/-/g, ' '); return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  /* ---------- rang: handgekozen toppen eerst ---------- */
+  var RANG = {}; Object.keys(K.TOP).forEach(function (k) { (K.TOP[k] || []).forEach(function (id, i) { var v = 1 - i / 80; if (v > (RANG[id] || 0)) RANG[id] = v; }); });
+  var P = K.ALLES.filter(function (p) { return !K.sieraad(p) && p.afd && p.groep; });
+
+  /* ---------- de wereld opbouwen: eiland per afdeling, wijk per groep ---------- */
+  var GAP = 1.2, EIL_GAP = 7, eilanden = [], cellen = [];
+  var perAfd = {}; P.forEach(function (p) { ((perAfd[p.afd] || (perAfd[p.afd] = {}))[p.groep] || (perAfd[p.afd][p.groep] = [])).push(p); });
+  var afds = Object.keys(perAfd).map(function (a) { var n = 0; for (var g in perAfd[a]) n += perAfd[a][g].length; return [a, n]; }).sort(function (x, y) { return y[1] - x[1]; });
+  var KLEUR = ['#F59E0B', '#EC4899', '#8B5CF6', '#10B981', '#3B82F6', '#EF4444', '#14B8A6', '#F97316', '#6366F1', '#84CC16', '#06B6D4', '#D946EF', '#22C55E', '#A855F7', '#0EA5E9', '#E11D48', '#65A30D', '#7C3AED'];
+  function spiraal(n) { var s = Math.ceil(Math.sqrt(n)), c = (s - 1) / 2, lijst = []; for (var y = 0; y < s; y++) for (var x = 0; x < s; x++) lijst.push([x, y, (x - c) * (x - c) + (y - c) * (y - c) + (x * .001)]); lijst.sort(function (a, b) { return a[2] - b[2]; }); return { s: s, cel: lijst.slice(0, n) }; }
+  afds.forEach(function (af, ai) {
+    var groepen = Object.keys(perAfd[af[0]]).map(function (g) { var l = perAfd[af[0]][g].sort(function (a, b) { return (RANG[b.id] || 0) + (b.rang || 0) * .3 - (RANG[a.id] || 0) - (a.rang || 0) * .3; }); return { slug: g, l: l, sp: spiraal(l.length) }; }).sort(function (a, b) { return b.l.length - a.l.length; });
+    var opp = 0; groepen.forEach(function (g) { opp += (g.sp.s + GAP) * (g.sp.s + GAP); });
+    var breed = Math.max(groepen[0].sp.s + GAP, Math.ceil(Math.sqrt(opp) * 1.15)), x = 0, y = 0, rijH = 0, maxX = 0;
+    groepen.forEach(function (g) { var s = g.sp.s; if (x > 0 && x + s > breed) { x = 0; y += rijH + GAP; rijH = 0; } g.x = x; g.y = y; x += s + GAP; if (s > rijH) rijH = s; if (x > maxX) maxX = x; });
+    var e = { slug: af[0], naam: ANAAM[af[0]] || mens(af[0]), n: af[1], kleur: KLEUR[ai % KLEUR.length], groepen: groepen, w: maxX - GAP, h: y + rijH };
+    eilanden.push(e);
+  });
+  /* eilanden op rijen leggen */
+  var totaal = 0; eilanden.forEach(function (e) { totaal += (e.w + EIL_GAP) * (e.h + EIL_GAP + 4); });
+  var ASP = Math.max(.45, Math.min(2.2, innerWidth / Math.max(300, innerHeight - 280))), WB = Math.sqrt(totaal * ASP) * 1.05, ex = 0, ey = 0, rh = 0, WW = 0, WH = 0;
+  eilanden.forEach(function (e) { if (ex > 0 && ex + e.w > WB) { ex = 0; ey += rh + EIL_GAP + 4; rh = 0; } e.x = ex; e.y = ey + 4; ex += e.w + EIL_GAP; if (e.h + 4 > rh) rh = e.h + 4; WW = Math.max(WW, ex); WH = Math.max(WH, e.y + e.h); });
+  eilanden.forEach(function (e) { e.groepen.forEach(function (g) { g.ax = e.x + g.x; g.ay = e.y + g.y; g.naam = GNAAM[e.slug + '/' + g.slug] || mens(g.slug); g.l.forEach(function (p, i) { var c = g.sp.cel[i]; cellen.push({ p: p, x: g.ax + c[0], y: g.ay + c[1], e: e, g: g }); }); }); });
+  /* snel opzoeken: raster van 8x8 eenheden */
+  var BAK = 8, bakken = {}; cellen.forEach(function (c, i) { var k = Math.floor(c.x / BAK) + ',' + Math.floor(c.y / BAK); (bakken[k] || (bakken[k] = [])).push(i); });
+
+  /* ---------- filters ---------- */
+  var WIE = [['Iedereen', null], ['Haar', 'haar'], ['Hem', 'hem'], ['Kind', 'kind'], ['Tiener', 'tiener'], ['Opa & oma', 'opa-oma'], ['Collega', 'collega'], ['Baby', 'baby']];
+  var GELD = [['Elk bedrag', 0], ['Tot € 10', 10], ['Tot € 25', 25], ['Tot € 50', 50]];
+  var fWie = null, fMax = 0, passend = new Uint8Array(cellen.length);
+  function past(p) {
+    if (fMax && p.prijs > fMax) return false; if (!fWie) return true;
+    var v = p.voor || [], l = p.leeftijd;
+    if ((fWie === 'kind' || fWie === 'tiener' || fWie === 'baby') && K.drank(p)) return false;
+    if (fWie === 'kind') return v.indexOf('kind') >= 0 || v.indexOf('kinderen') >= 0 || (l && l[0] < 12);
+    if (fWie === 'tiener') return v.indexOf('tiener') >= 0 || (v.indexOf('iedereen') >= 0 && !(l && l[0] >= 18));
+    if (fWie === 'baby') return v.indexOf('baby') >= 0;
+    return v.indexOf(fWie) >= 0 || v.indexOf('iedereen') >= 0;
+  }
+  function filter() { var n = 0; cellen.forEach(function (c, i) { passend[i] = past(c.p) ? 1 : 0; n += passend[i]; }); document.getElementById('teller').textContent = n.toLocaleString('nl-NL') + ' cadeaus passen' + (fWie || fMax ? '' : ' (alles)'); vuil(); }
+  function knoppen(id, lijst, zet) {
+    var el = document.getElementById(id);
+    el.innerHTML = lijst.map(function (x, i) { return '<button type="button" data-i="' + i + '" aria-pressed="' + (i === 0) + '">' + K.esc(x[0]) + '</button>'; }).join('');
+    el.addEventListener('click', function (e) { var b = e.target.closest('[data-i]'); if (!b) return; zet(lijst[+b.getAttribute('data-i')][1]); el.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); filter(); });
+  }
+  knoppen('wie', WIE, function (v) { fWie = v; }); knoppen('geld', GELD, function (v) { fMax = v; });
+
+  /* ---------- camera ---------- */
+  var cv = document.getElementById('kaart'), ctx = cv.getContext('2d'), dpr = Math.min(2, window.devicePixelRatio || 1), VW, VH;
+  var cam = { x: 0, y: 0, z: 1 }, ZMIN, ZMAX = 260;
+  function maat() { VW = innerWidth; VH = innerHeight; cv.width = VW * dpr; cv.height = VH * dpr; vuil(); }
+  function past1() { var top = balk.getBoundingClientRect().bottom + 10, h = VH - top - 70; var z = Math.min((VW - 20) / WW, h / WH); ZMIN = z * .8; return { x: WW / 2 - (VW / 2) / z, y: WH / 2 - (top + h / 2) / z, z: z }; }
+  function naarScherm(wx, wy) { return [(wx - cam.x) * cam.z, (wy - cam.y) * cam.z]; }
+  function naarWereld(sx, sy) { return [sx / cam.z + cam.x, sy / cam.z + cam.y]; }
+  function zoomOm(sx, sy, f) { var w = naarWereld(sx, sy), nz = Math.max(ZMIN, Math.min(ZMAX, cam.z * f)); cam.z = nz; cam.x = w[0] - sx / nz; cam.y = w[1] - sy / nz; vuil(); }
+  var vlucht = null;
+  function vlieg(doel, ms) { var van = { x: cam.x, y: cam.y, z: cam.z }, t0 = performance.now(); ms = ms || 700;
+    vlucht = function (t) { var k = Math.min(1, (t - t0) / ms), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2, lz = Math.log(van.z) + (Math.log(doel.z) - Math.log(van.z)) * e, z = Math.exp(lz);
+      var cx0 = van.x + VW / 2 / van.z, cy0 = van.y + VH / 2 / van.z, cx1 = doel.x + VW / 2 / doel.z, cy1 = doel.y + VH / 2 / doel.z, cx = cx0 + (cx1 - cx0) * e, cy = cy0 + (cy1 - cy0) * e;
+      cam.z = z; cam.x = cx - VW / 2 / z; cam.y = cy - VH / 2 / z; vuil(); if (k >= 1) vlucht = null; }; vuil(); }
+  function naarEiland(e) { var top = balk.getBoundingClientRect().bottom + 10, h = VH - top - 80, z = Math.min((VW - 24) / (e.w + 2), h / (e.h + 3)); vlieg({ z: z, x: e.x + e.w / 2 - VW / 2 / z, y: e.y + e.h / 2 - (top + h / 2) / z - 1 / z * 0 }); }
+  function naarGroep(g) { var top = balk.getBoundingClientRect().bottom + 10, h = VH - top - 80, s = g.sp.s, z = Math.min((VW - 24) / (s + 1), h / (s + 2), 150); vlieg({ z: z, x: g.ax + s / 2 - VW / 2 / z, y: g.ay + s / 2 - (top + h / 2) / z }); }
+
+  /* ---------- foto's laden (alleen wat groot genoeg in beeld is) ---------- */
+  var FOTO = new Map(), bezig = 0, wachtrij = [], MAXF = 700;
+  function foto(p) {
+    var f = FOTO.get(p.id); if (f) { f.t = performance.now(); return f.img.complete && f.img.naturalWidth ? f.img : null; }
+    if (bezig > 14) { if (wachtrij.indexOf(p) < 0 && wachtrij.length < 60) wachtrij.push(p); return null; }
+    bezig++; var img = new Image(); img.decoding = 'async'; f = { img: img, t: performance.now() }; FOTO.set(p.id, f);
+    img.onload = img.onerror = function () { bezig--; vuil(); var v = wachtrij.shift(); if (v) foto(v); };
+    img.src = K.klein(p);
+    if (FOTO.size > MAXF) { var oud = Array.from(FOTO.entries()).sort(function (a, b) { return a[1].t - b[1].t; }).slice(0, 120); oud.forEach(function (x) { FOTO.delete(x[0]); }); }
+    return null;
+  }
+
+  /* ---------- tekenen ---------- */
+  var moet = true; function vuil() { moet = true; }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  var waarEl = document.getElementById('waar');
+  function teken() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var g = ctx.createLinearGradient(0, 0, 0, VH); g.addColorStop(0, '#D6ECF3'); g.addColorStop(1, '#BCDDE8'); ctx.fillStyle = g; ctx.fillRect(0, 0, VW, VH);
+    var z = cam.z, cel = z, filtert = fWie || fMax;
+    /* eilanden */
+    eilanden.forEach(function (e) {
+      var a = naarScherm(e.x - 1.6, e.y - 1.6), w = (e.w + 3.2) * z, h = (e.h + 3.2) * z; if (a[0] > VW || a[1] > VH || a[0] + w < 0 || a[1] + h < 0) return;
+      ctx.fillStyle = 'rgba(0,60,80,.10)'; rr(a[0] + 3, a[1] + 5, w, h, Math.min(28, z * 2.2)); ctx.fill();
+      ctx.fillStyle = '#FBF7EE'; rr(a[0], a[1], w, h, Math.min(28, z * 2.2)); ctx.fill();
+      ctx.strokeStyle = e.kleur; ctx.lineWidth = Math.max(1.5, Math.min(4, z * .25)); ctx.stroke();
+    });
+    /* cadeaus */
+    var x0 = Math.floor(cam.x / BAK) - 1, y0 = Math.floor(cam.y / BAK) - 1, x1 = Math.floor((cam.x + VW / z) / BAK) + 1, y1 = Math.floor((cam.y + VH / z) / BAK) + 1;
+    var fotos = cel >= 18, pad = cel >= 18 ? Math.max(1.5, cel * .06) : Math.max(.4, cel * .14), r = Math.min(10, cel * .14);
+    for (var bx = x0; bx <= x1; bx++) for (var by = y0; by <= y1; by++) { var b = bakken[bx + ',' + by]; if (!b) continue;
+      for (var j = 0; j < b.length; j++) { var i = b[j], c = cellen[i], s = naarScherm(c.x, c.y), sx = s[0] + pad, sy = s[1] + pad, sw = cel - pad * 2; if (sx > VW || sy > VH || sx + sw < 0 || sy + sw < 0) continue;
+        var aan = !filtert || passend[i];
+        ctx.globalAlpha = aan ? 1 : .13;
+        if (fotos) { var img = foto(c.p); ctx.fillStyle = '#fff'; rr(sx, sy, sw, sw, r); ctx.fill(); if (img) { ctx.save(); rr(sx, sy, sw, sw, r); ctx.clip(); ctx.drawImage(img, sx + sw * .04, sy + sw * .04, sw * .92, sw * .92); ctx.restore(); }
+          if (aan && cel >= 90) { ctx.globalAlpha = 1; var pr = K.euro(c.p.prijs); ctx.font = '800 ' + Math.round(Math.min(15, cel * .12)) + 'px Manrope, sans-serif'; var tw = ctx.measureText(pr).width + 12; ctx.fillStyle = 'rgba(19,32,43,.86)'; rr(sx + 6, sy + sw - 26, tw, 20, 10); ctx.fill(); ctx.fillStyle = '#fff'; ctx.fillText(pr, sx + 12, sy + sw - 11); }
+        } else { ctx.fillStyle = aan && filtert ? c.e.kleur : (aan ? c.e.kleur : '#9CA3AF'); if (!filtert) ctx.globalAlpha = .55 + .45 * Math.min(1, (RANG[c.p.id] || 0) + .2); ctx.fillRect(sx, sy, sw, sw); }
+      } }
+    ctx.globalAlpha = 1;
+    /* namen: eilanden als je ver weg bent, wijken als je dichterbij komt */
+    var midden = null, best = 1e9;
+    eilanden.forEach(function (e) {
+      var a = naarScherm(e.x + e.w / 2, e.y - 1.6), w = e.w * z; if (a[0] < -200 || a[0] > VW + 200 || a[1] < -40 || a[1] > VH + 40) {} else if (w > 60) {
+        var fs = Math.max(12, Math.min(22, w / 9)); ctx.font = '800 ' + fs + 'px Manrope, sans-serif'; var t = e.naam, tw = ctx.measureText(t).width + 22; if (tw <= w * 1.15) {
+        ctx.fillStyle = e.kleur; rr(a[0] - tw / 2, a[1] - fs * .9, tw, fs * 1.8, fs * .9); ctx.fill(); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(t, a[0], a[1]); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; } }
+      var m = naarScherm(e.x + e.w / 2, e.y + e.h / 2), d = Math.hypot(m[0] - VW / 2, m[1] - VH / 2); if (d < best) { best = d; midden = e; }
+      if (z >= 5 && z < 60) e.groepen.forEach(function (gr) { var gw = gr.sp.s * z; if (gw < 70) return; var p = naarScherm(gr.ax + gr.sp.s / 2, gr.ay + gr.sp.s / 2); if (p[0] < -100 || p[0] > VW + 100 || p[1] < -30 || p[1] > VH + 30) return;
+        var fs = Math.max(11, Math.min(16, gw / 10)); ctx.font = '800 ' + fs + 'px Manrope, sans-serif'; var tw = ctx.measureText(gr.naam).width + 16; ctx.fillStyle = 'rgba(255,255,255,.93)'; rr(p[0] - tw / 2, p[1] - fs * .85, tw, fs * 1.7, fs * .85); ctx.fill(); ctx.strokeStyle = e.kleur; ctx.lineWidth = 1.5; ctx.stroke(); ctx.fillStyle = '#13202B'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(gr.naam, p[0], p[1]); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; });
+    });
+    waarEl.textContent = z < 3 ? 'Tik op een eiland om erheen te vliegen' : (midden ? midden.naam + (z >= 6 ? ' · tik op een wijk of zoom verder' : '') : '');
+    if (z >= 18) waarEl.textContent = 'Tik op een foto voor het cadeau';
+  }
+  function lus(t) { if (vlucht) vlucht(t); if (moet) { moet = false; teken(); } requestAnimationFrame(lus); }
+
+  /* ---------- vingers en muis ---------- */
+  var wijzers = new Map(), sleep = null, knijp = null, beweegd = 0, laatsteTik = 0, hintWeg = false;
+  function weg() { if (!hintWeg) { hintWeg = true; document.getElementById('hint').style.opacity = 0; } }
+  cv.addEventListener('pointerdown', function (e) { cv.setPointerCapture(e.pointerId); wijzers.set(e.pointerId, [e.clientX, e.clientY]); vlucht = null; beweegd = 0;
+    if (wijzers.size === 1) sleep = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y };
+    if (wijzers.size === 2) { var p = Array.from(wijzers.values()); knijp = { d: Math.hypot(p[0][0] - p[1][0], p[0][1] - p[1][1]), z: cam.z, m: [(p[0][0] + p[1][0]) / 2, (p[0][1] + p[1][1]) / 2] }; knijp.w = naarWereld(knijp.m[0], knijp.m[1]); sleep = null; } weg(); });
+  cv.addEventListener('pointermove', function (e) { if (!wijzers.has(e.pointerId)) return; wijzers.set(e.pointerId, [e.clientX, e.clientY]);
+    if (knijp && wijzers.size >= 2) { var p = Array.from(wijzers.values()), d = Math.hypot(p[0][0] - p[1][0], p[0][1] - p[1][1]), m = [(p[0][0] + p[1][0]) / 2, (p[0][1] + p[1][1]) / 2], nz = Math.max(ZMIN, Math.min(ZMAX, knijp.z * d / knijp.d)); cam.z = nz; cam.x = knijp.w[0] - m[0] / nz; cam.y = knijp.w[1] - m[1] / nz; beweegd = 99; vuil(); }
+    else if (sleep) { var dx = e.clientX - sleep.x, dy = e.clientY - sleep.y; beweegd = Math.max(beweegd, Math.abs(dx) + Math.abs(dy)); cam.x = sleep.cx - dx / cam.z; cam.y = sleep.cy - dy / cam.z; vuil(); } });
+  function los(e) { if (!wijzers.has(e.pointerId)) return; wijzers.delete(e.pointerId); if (wijzers.size < 2) knijp = null;
+    if (wijzers.size === 0) { if (beweegd < 8) tik(e.clientX, e.clientY); sleep = null; }
+    else { var p = Array.from(wijzers.values())[0]; sleep = { x: p[0], y: p[1], cx: cam.x, cy: cam.y }; } }
+  cv.addEventListener('pointerup', los); cv.addEventListener('pointercancel', los);
+  cv.addEventListener('wheel', function (e) { e.preventDefault(); vlucht = null; zoomOm(e.clientX, e.clientY, Math.exp(-e.deltaY * .0015)); weg(); }, { passive: false });
+  function tik(sx, sy) {
+    var w = naarWereld(sx, sy), nu = performance.now(), dubbel = nu - laatsteTik < 300; laatsteTik = nu;
+    if (cam.z >= 18) { var hit = null, b = bakken[Math.floor(w[0] / BAK) + ',' + Math.floor(w[1] / BAK)] || []; b.forEach(function (i) { var c = cellen[i]; if (w[0] >= c.x && w[0] < c.x + 1 && w[1] >= c.y && w[1] < c.y + 1) hit = c; }); if (hit) { K.openBlad(hit.p.id); return; } }
+    var e = eilanden.find(function (e) { return w[0] >= e.x - 1.6 && w[0] <= e.x + e.w + 1.6 && w[1] >= e.y - 3.5 && w[1] <= e.y + e.h + 1.6; });
+    if (!e) { if (dubbel) zoomAnim(sx, sy, 2.5); return; }
+    if (cam.z < 4) { naarEiland(e); return; }
+    var g = e.groepen.find(function (g) { return w[0] >= g.ax - .5 && w[0] <= g.ax + g.sp.s + .5 && w[1] >= g.ay - .5 && w[1] <= g.ay + g.sp.s + .5; });
+    if (g && g.sp.s * cam.z < VW * .8) { naarGroep(g); return; }
+    zoomAnim(sx, sy, 2.5);
+  }
+  function zoomAnim(sx, sy, f) { var w = naarWereld(sx, sy), nz = Math.max(ZMIN, Math.min(ZMAX, cam.z * f)); vlieg({ z: nz, x: w[0] - VW / 2 / nz, y: w[1] - VH / 2 / nz }, 450); }
+  document.getElementById('plus').onclick = function () { zoomAnim(VW / 2, VH / 2, 2.2); weg(); };
+  document.getElementById('min').onclick = function () { zoomAnim(VW / 2, VH / 2, 1 / 2.2); weg(); };
+  document.getElementById('thuis').onclick = function () { vlieg(past1()); weg(); };
+  window.addEventListener('resize', function () { maat(); });
+
+  maat(); var s = past1(); cam.x = s.x; cam.y = s.y; cam.z = s.z; filter();
+  document.getElementById('laden').remove(); requestAnimationFrame(lus);
+  setTimeout(weg, 6000);
+})();
+</script>
+</body>
+</html>
