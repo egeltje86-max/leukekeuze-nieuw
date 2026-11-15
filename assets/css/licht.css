@@ -2534,3 +2534,23 @@ html.rust .rh-nogmeer { gap: 4px; color: #8F6620 !important; border-style: dashe
 html.rust .rh-nogmeer svg { width: 16px; height: 16px; }
 /* RUST: op categorie-, gelegenheid- en collectiepagina's geen 'Meer in onze winkels' (niet door ons gekeurd); in het zoeken blijft het staan */
 html.rust .alle-winkels[data-sleutel] { display: none; }
+
+/* TOPWINKELS (15-11-2026, Marius: 'de leukste cadeaus per winkel neemt te veel ruimte in, zet de topwinkels erop'):
+   compacte tegels, één foto en de naam per winkel; twee naast elkaar op de telefoon, vier op de computer. Heel smal (onder 370px): foto boven, naam eronder. */
+.wt-raster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.wt-tegel { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 44px; padding: 8px; background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 16px; box-shadow: 0 4px 14px rgba(10, 16, 32, .05); color: #141A2A; text-decoration: none; }
+.wt-tegel img { flex: 0 0 auto; width: 52px; height: 52px; object-fit: cover; border-radius: 12px; border: 1px solid #E5D7BE; background: #FFFFFF; }
+.wt-tekst { display: flex; flex-direction: column; min-width: 0; }
+.wt-tekst b { font-family: Manrope, sans-serif; font-weight: 800; font-size: .95rem; line-height: 1.2; overflow-wrap: normal; word-break: normal; hyphens: manual; }
+.wt-tekst small { margin-top: 2px; color: #8F6620; font-family: Manrope, sans-serif; font-weight: 700; font-size: .82rem; }
+.wt-tegel:hover b { text-decoration: underline; }
+@media (max-width: 369px) {
+  .wt-tegel { flex-direction: column; text-align: center; }
+  .wt-tekst { align-items: center; max-width: 100%; }
+}
+@media (min-width: 760px) {
+  .wt-raster { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .wt-tegel { gap: 12px; }
+  .wt-tegel img { width: 72px; height: 72px; }
+  .wt-tekst b { font-size: 1rem; }
+}

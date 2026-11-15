@@ -1397,17 +1397,24 @@
      De kaartjes gaan naar onze eigen productpagina; 'Alle cadeaus van …' gaat naar /zoek?winkel=<naam> (alles van die winkel, de uitgekozen cadeaus eerst).
      Live voor iedereen sinds 11-11-2026 (GO Marius). Helemaal uit: window.LK_WINKELTOP = false. */
   var WINKELTOP = [
-    /* 11-11-2026 (wens Marius): Atelier Rebul op plek 1. Het is een merk, te koop bij onze partner Parfumania; 'naam' is wat op de kaart staat,
-       'shop' is de winkel waar de knop heen gaat. Van Parfumania staan alleen de cadeaus van Atelier Rebul op de site. */
+    /* 15-11-2026 (Marius: 'zet de topwinkels erop, zet die rc-winkel erbij'; 'atelier interesseert me niet meer'): acht topwinkels op volgorde.
+       'beeld' = het product waarvan de foto op de tegel staat (met de hand gekozen); weg of uitverkocht, dan vanzelf het eerste uit een vaste top. */
+    { shop: 'Ditverzinjeniet', slug: 'ditverzinjeniet', beeld: 'dvzn-96ba2b1949', tekst: 'Grappige en vreemde cadeaus die je nergens anders ziet.' },
+    { shop: 'Dille & Kamille', slug: 'dille-kamille', beeld: 'dk-00044934', tekst: 'Natuurlijke spullen voor keuken, huis en tuin.' },
+    { shop: 'HEMA', slug: 'hema', beeld: 'hema-efaa95f521', tekst: 'Leuke cadeaus voor weinig geld.' },
+    { shop: 'TopRC', slug: 'toprc', beeld: 'toprc-6fdb8431da', top: '/c/hobby/rc-auto-s', tekst: 'Bestuurbare auto\'s: elektrisch en op brandstof, voor beginners en voor hobbyisten.' },
+    /* 12-11-2026 (wens Marius): nieuwe partner iScooter. */
+    { shop: 'iScooter', slug: 'iscooter', beeld: 'iscoot-6e61870fe5', tekst: 'Elektrische steps en fietsen, ook voor kinderen. De steps zijn voor eigen terrein.' },
+    { shop: 'LEGO', slug: 'lego', beeld: 'lego-40460', tekst: 'Bouwsets voor kinderen en voor grote mensen.' },
+    { shop: 'CoolGift', slug: 'coolgift', beeld: 'cg-chocolade-game-controller', tekst: 'Grappige en originele cadeaus voor jong en oud.' },
+    { shop: 'De Grote Speelgoedwinkel', slug: 'de-grote-speelgoedwinkel', beeld: 'cl-sq-stitch20', tekst: 'Speelgoed, knuffels en de hypes van nu voor kinderen.' }
+  ];
+  /* Winkels die niet (meer) bij de topwinkels staan, maar wel een eigen tekst of top hebben op /zoek?winkel=<naam>. */
+  var WINKEL_OOK = [
     { shop: 'Parfumania', naam: 'Atelier Rebul', slug: 'atelier-rebul', tekst: 'Geuren en verzorging uit Istanbul, sinds 1895: geurstokjes, geurkaarsen en cadeausets. Te koop bij Parfumania.' },
-    /* 12-11-2026 (wens Marius: 'zet ze ook in de top 5'): nieuwe partner iScooter. */
-    { shop: 'iScooter', slug: 'iscooter', tekst: 'Elektrische steps en fietsen, ook voor kinderen. De steps zijn voor eigen terrein.' },
-    { shop: 'Dille & Kamille', slug: 'dille-kamille', tekst: 'Natuurlijke spullen voor keuken, huis en tuin.' },
-    { shop: 'Ditverzinjeniet', slug: 'ditverzinjeniet', tekst: 'Grappige en vreemde cadeaus die je nergens anders ziet.' },
-    { shop: 'LEGO', slug: 'lego', tekst: 'Bouwsets voor kinderen en voor grote mensen.' },
-    { shop: 'HEMA', slug: 'hema', tekst: 'Leuke cadeaus voor weinig geld.' },
     { shop: 'Decantalo', slug: 'decantalo', tekst: 'Mooie flessen: whisky, gin, wijn en bubbels (18+).' }
   ];
+  var WINKEL_INFO = WINKELTOP.concat(WINKEL_OOK);
   var WT_AAN = (function () {
     /* 11-11-2026, 17:53: GO van Marius: het blok staat aan voor iedereen. Zelf vergelijken zonder blok: ?proef=winkels-uit (weer aan: ?proef=winkels). */
     if (window.LK_WINKELTOP === false) return false;
@@ -1417,32 +1424,33 @@
       return localStorage.getItem('lkwinkels') !== '0';
     } catch (e) { return true; }
   })();
-  function winkelSlug(naam) { var w = WINKELTOP.filter(function (x) { return x.shop.toLowerCase() === String(naam).toLowerCase(); })[0]; return w ? w.slug : vouw(String(naam)).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+  function winkelSlug(naam) { var w = WINKEL_INFO.filter(function (x) { return x.shop.toLowerCase() === String(naam).toLowerCase(); })[0]; return w ? w.slug : vouw(String(naam)).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
   function winkelTopBlok() {
+    /* 15-11-2026 (Marius: 'de leukste cadeaus per winkel neemt te veel ruimte in'): compacte tegels, één foto en de naam per winkel,
+       twee naast elkaar op de telefoon, vier op de computer. Een tik gaat naar alle cadeaus van die winkel. */
     if (!WT_AAN) return '';
-    var z = LK.zichtbaar(), opId = function (id) { var p = LK.vind(id); return p && p.status === 'goedgekeurd' ? p : null; }; /* SNEL: per id opzoeken in plaats van de hele lijst aflopen */
-    var kaarten = WINKELTOP.map(function (w) {
-      var top = ((window.LK_TOPVAST || {})['/winkel/' + w.slug] || []).map(function (id) { return opId(id); }).filter(function (p) { return p && p.shop === w.shop && p.beeld; }).slice(0, 5);
-      if (top.length < 5) return '';
-      var n = z.filter(function (p) { return p.shop === w.shop; }).length;
-      return '<article class="wtop-kaart"><h3>' + esc(w.naam || w.shop) + '</h3><p>' + esc(w.tekst) + '</p>' +
-        '<div class="wtop-rij">' + top.map(function (p) {
-          return '<a class="wtop-prod" href="/p/' + esc(p.id) + '" aria-label="' + esc(p.titel) + '"><img src="/' + esc(p.beeld) + '-klein.webp" alt="' + esc(p.titel) + '" loading="lazy" decoding="async" width="400" height="400"><span>' + LK.euro(p.prijs) + '</span></a>';
-        }).join('') + '</div>' +
-        '<a class="wtop-meer" href="/zoek?winkel=' + encodeURIComponent(w.shop) + '">Alle ' + getal(n) + ' cadeaus van ' + esc(w.naam || w.shop) + ' ' + ic('pijl') + '</a></article>';
+    var z = LK.zichtbaar(), tops = window.LK_TOPVAST || {};
+    var goed = function (id, shop) { var p = LK.vind(id); return p && p.status === 'goedgekeurd' && p.shop === shop && p.beeld ? p : null; };
+    var tegels = WINKELTOP.map(function (w) {
+      var p = w.beeld && goed(w.beeld, w.shop);
+      if (!p) { [w.top || '/winkel/' + w.slug].concat(Object.keys(tops)).some(function (k) { return (tops[k] || []).some(function (id) { p = goed(id, w.shop); return !!p; }); }); }
+      var n = z.filter(function (q) { return q.shop === w.shop; }).length;
+      if (!p || n < 5) return '';
+      return '<a class="wt-tegel" href="/zoek?winkel=' + encodeURIComponent(w.shop) + '"><img src="/' + esc(p.beeld) + '-klein.webp" alt="" loading="lazy" decoding="async" width="400" height="400">' +
+        '<span class="wt-tekst"><b>' + esc(w.naam || w.shop).replace('Ditverzinjeniet', 'Ditverzin&shy;jeniet').replace('Speelgoedwinkel', 'Speelgoed&shy;winkel') + '</b><small>' + getal(n) + ' cadeaus</small></span></a>';
     }).filter(Boolean);
-    if (!kaarten.length) return '';
+    if (!tegels.length) return '';
     return '<section class="sectie wtop" id="winkeltop" data-tel="winkeltop">' +
-      '<div class="sectie-kop"><div><span class="kicker">Onze favoriete winkels</span><h2>De leukste cadeaus per winkel</h2><p>Per winkel hebben wij de mooiste, leukste en gekste cadeaus uitgezocht.</p></div></div>' +
-      '<div class="wtop-raster">' + kaarten.join('') + '</div></section>';
+      '<div class="sectie-kop"><div><span class="kicker">Onze favoriete winkels</span><h2>Topwinkels</h2></div><a class="meer" href="/winkels">Alle winkels ' + ic('pijl') + '</a></div>' +
+      '<div class="wt-raster">' + tegels.join('') + '</div></section>';
   }
   /* Alles van één winkel (/zoek?winkel=<naam>): de met de hand uitgekozen cadeaus van die winkel eerst, daarna de rest. */
   function winkelPagina(q) {
     var laag = String(q.winkel).toLowerCase();
     var alle = LK.zichtbaar().filter(function (p) { return String(p.shop || '').toLowerCase() === laag; });
     var naam = alle.length ? alle[0].shop : String(q.winkel);
-    var w = WINKELTOP.filter(function (x) { return x.shop === naam; })[0];
-    var lijst = sorteer(alle, q.sort, '/winkel/' + winkelSlug(naam));
+    var w = WINKEL_INFO.filter(function (x) { return x.shop === naam; })[0];
+    var lijst = sorteer(alle, q.sort, w && w.top ? w.top : '/winkel/' + winkelSlug(naam));
     var kop = w && w.naam ? w.naam : naam; /* Atelier Rebul: het merk in de kop, de winkel staat in de tekst eronder */
     zetTitel('Cadeaus van ' + kop);
     window.LK_SEO = 'De leukste cadeaus van ' + kop + ', door ons met de hand uitgezocht.';
@@ -3596,7 +3604,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
-    { datum: '15 november', kop: 'Knusse avond? Alles onder € 20', tekst: 'Voor koude avonden op de bank: van een poes-leeslamp tot bontsloffen.', ids: ['cl-poes-leeslamp', 'cl-heatable-hot', 'cl-hema-teddy', 'cg-xxl-warmwaterkruik', 'hema-216346a55d'] },
+    { datum: '15 november', kop: 'Knusse avond? Alles onder € 20', tekst: 'Voor koude avonden op de bank: van een poes-leeslamp tot pantersloffen.', ids: ['cl-poes-leeslamp', 'cl-heatable-hot', 'cl-hema-teddy', 'cg-xxl-warmwaterkruik', 'trendm-7d10a12abb'] },
     { datum: '15 november', kop: 'Pokémon bouwen! Mega en LEGO', tekst: 'Van een Mega Pikachu van € 9,99 tot het grote LEGO-pronkstuk.', ids: ['cl-mc-charmander', 'cl-mc-pikachu', 'cl-mc-lapras', 'lego-72151', 'bol-9300000257600058'] },
     { datum: '15 november', kop: 'Schoen zetten? Alles onder € 10', tekst: 'Vijf leuke cadeautjes voor in de schoen.', ids: ['dvzn-f8c667585b', 'dvzn-685253dc97', 'dvzn-2b383312f5', 'dvzn-553e02fbf0', 'dvzn-6beee4c0d4'] },
     { datum: '14 november', kop: '5 lampjes om van te dromen', tekst: 'Door Marius zelf uitgekozen: van een tulpenlamp tot een Zweinstein-lamp met toverstaf.', ids: ['cadeau-786ef2dca5', 'cadeau-32797fb340', 'cadeau-1c5fc02b40', 'cadeau-d7158dab60', 'cadeau-b56544b12a'] },
