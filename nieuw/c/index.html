@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – voorbeeld C</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VOORBEELD C (15-11-2026): etalage. Bovenaan 'Cadeau van de dag', daaronder rijen om opzij te vegen (zoals Netflix). -->
+<style>
+:root{--groen:#123A2F;--groen2:#1D4D3F;--room:#F6F1E7;--wit:#FFFDF8;--inkt:#1B211E;--zacht:#5E6B64;--goud:#D9A441;--lijn:#E6DECF;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--room);color:var(--inkt);font:500 16px/1.5 var(--f);overflow-x:clip}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+a{color:inherit}
+.kop{background:var(--groen);color:#fff}
+.kop .in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:10px;height:60px;padding:0 max(16px,env(safe-area-inset-left))}
+.logo{font:700 22px/1 var(--k);letter-spacing:-.3px;color:#fff;text-decoration:none}
+.logo i{font-style:normal;color:var(--goud)}
+.kop a.hart{margin-left:auto;position:relative;width:44px;height:44px;display:grid;place-items:center;color:#fff}
+.kop a.hart svg{width:24px;height:24px}
+.teller{position:absolute;top:4px;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--goud);color:var(--groen);font:800 11px/18px var(--f);text-align:center}
+.held{background:var(--groen);color:#fff;padding:6px 0 30px}
+.held .in{max-width:1200px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left));display:grid;gap:18px;align-items:center}
+.held .lbl{display:inline-block;font:800 12px/1 var(--f);letter-spacing:1.4px;text-transform:uppercase;color:var(--goud);margin-bottom:10px}
+.held h1{font:700 clamp(28px,7vw,44px)/1.08 var(--k);margin:0 0 10px;letter-spacing:-.5px;text-wrap:balance}
+.held p{margin:0 0 18px;color:#CFE0D8;max-width:52ch}
+.held .foto{background:#fff;border-radius:24px;aspect-ratio:1;max-height:min(70vw,420px);margin:0 auto;width:100%;max-width:420px;overflow:hidden;border:0;padding:0;cursor:pointer}
+.held .foto img{width:100%;height:100%;object-fit:contain;padding:14px}
+.held .rij{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.held .prijs{font:800 26px/1 var(--f)}
+.knop{display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 22px;border-radius:999px;background:var(--goud);color:var(--groen);text-decoration:none;font:800 15.5px/1 var(--f)}
+.knop svg{width:18px;height:18px}
+.held .k-hart{border-color:#3D6A5C;background:transparent;color:#fff}
+.zoek{max-width:1200px;margin:-22px auto 0;padding:0 max(16px,env(safe-area-inset-left));position:relative;z-index:2}
+.zoek form{display:flex;background:var(--wit);border-radius:999px;box-shadow:0 6px 20px rgba(18,58,47,.14);overflow:hidden}
+.zoek input{flex:1;min-width:0;border:0;background:transparent;padding:0 20px;min-height:54px;font:600 16px/1 var(--f);color:var(--inkt);outline:0}
+.zoek button{border:0;background:transparent;width:56px;display:grid;place-items:center;cursor:pointer;color:var(--groen)}
+.zoek button svg{width:22px;height:22px}
+main{max-width:1200px;margin:0 auto;padding:22px 0 60px}
+.rijkop{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 max(16px,env(safe-area-inset-left));margin:26px 0 10px}
+.rijkop h2{font:700 22px/1.2 var(--k);margin:0;letter-spacing:-.2px}
+.rijkop a{font:800 14px/1 var(--f);color:var(--groen2);text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+.strook{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(16px,env(safe-area-inset-left)) 10px;scrollbar-width:none;scroll-padding-left:max(16px,env(safe-area-inset-left))}
+.strook::-webkit-scrollbar{display:none}
+.kaart{flex:0 0 46%;max-width:210px;scroll-snap-align:start;position:relative}
+.kaart .f{display:block;width:100%;aspect-ratio:1;background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--lijn);padding:0;cursor:pointer}
+.kaart .f img{width:100%;height:100%;object-fit:contain;padding:8px}
+.kaart h3{font:700 14.5px/1.3 var(--f);margin:8px 2px 2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+.kaart .p{font:800 16px/1.2 var(--f);margin:0 2px}
+.kaart .k-hart{position:absolute;top:8px;right:8px;width:40px;height:40px;background:rgba(255,253,248,.92)}
+.k-hart{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--inkt)}
+.k-hart svg{width:20px;height:20px}
+.k-hart[aria-pressed="true"] svg{fill:#E2466B;stroke:#E2466B}
+.meer{flex:0 0 46%;max-width:210px;scroll-snap-align:start;aspect-ratio:1;border-radius:18px;background:var(--groen);color:#fff;display:grid;place-items:center;text-align:center;text-decoration:none;font:800 15px/1.3 var(--f);padding:12px}
+.meer svg{width:26px;height:26px;margin:0 auto 6px;display:block}
+.voet{text-align:center;color:var(--zacht);font-size:14px;padding:20px max(16px,env(safe-area-inset-left)) 40px;max-width:60ch;margin:0 auto}
+@media (min-width:700px){.kaart,.meer{flex-basis:200px}.held .in{grid-template-columns:1fr 1fr}.held{padding:20px 0 50px}}
+@media (min-width:1100px){.kaart,.meer{flex-basis:210px}}
+</style>
+</head>
+<body>
+<header class="kop"><div class="in">
+  <a class="logo" href="/nieuw/c/">Leuke<i>Keuze</i></a>
+  <a class="hart" href="/nieuw/#/lijstje" aria-label="Mijn lijstje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg><span class="teller" data-teller hidden></span></a>
+</div></header>
+<section class="held" id="held"></section>
+<div class="zoek"><form id="zoek" role="search"><input id="q" type="search" placeholder="Zoek een cadeau, bijv. lampje" aria-label="Zoek een cadeau" enterkeyhint="search"><button aria-label="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button></form></div>
+<main id="rijen"></main>
+<p class="voet">Elk cadeau is met de hand uitgekozen. Je koopt bij de winkel zelf; prijzen kunnen daar net anders zijn.</p>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc;
+  K.wisselBalk('C'); K.tel();
+  function schoon(l) { return K.uniek(l).filter(function (p) { return !K.sieraad(p); }); }
+  function knus(p) { return /pantoffel|slof|plaid|deken|kruik|hoodie|sokken|warmte|handwarmer/i.test(p.titel); }
+  var GEBRUIKT = {};
+  function vers(l, n) { var uit = []; l.forEach(function (p) { if (uit.length < n && !GEBRUIKT[p.id]) { uit.push(p); } }); uit.forEach(function (p) { GEBRUIKT[p.id] = 1; }); return uit; }
+
+  /* cadeau van de dag: elke dag een ander, uit toppers en grappig, nooit drank */
+  var dagPool = schoon(K.uitTop('/collectie/toppers-van-nu').concat(K.uitTop('/collectie/grappige-cadeaus'))).filter(function (p) { return !K.drank(p) && p.prijs <= 40; });
+  var dag = K.schud(dagPool, 7)[0];
+  if (dag) {
+    GEBRUIKT[dag.id] = 1;
+    document.getElementById('held').innerHTML = '<div class="in"><div><span class="lbl">Cadeau van de dag</span><h1>' + esc(dag.titel) + '</h1>' + (K.reden(dag) ? '<p>' + esc(K.reden(dag)) + '</p>' : '') +
+      '<div class="rij"><span class="prijs">' + K.euro(dag.prijs) + '</span><a class="knop" href="' + K.winkelLink(dag) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(dag.shop) + ' ' + K.ic('uit') + '</a>' + K.hartKnop(dag) + '</div></div>' +
+      '<button class="foto" type="button" data-blad="' + esc(dag.id) + '" aria-label="Meer over dit cadeau"><img src="' + K.groot(dag) + '" alt="' + esc(dag.titel) + '" fetchpriority="high"></button></div>';
+  }
+
+  var tien = schoon(K.uitTop('/collectie/schoencadeautjes').concat(K.uitTop('/c/cadeaus/onder-15'))).filter(function (p) { return p.prijs <= 10; });
+  var knusL = schoon([].concat(K.uitTop('/voor/haar'), K.uitTop('/voor/opa-oma'), K.uitTop('/voor/tieners'), K.uitTop('/c/cadeaus/kerst'), K.ALLES)).filter(knus);
+  var hem = schoon(K.uitTop('/voor/hem')), hemZonder = hem.filter(function (p) { return !K.drank(p); }), hemDrank = hem.filter(K.drank);
+  hem = []; for (var i = 0; i < hemZonder.length || i < hemDrank.length; i++) { if (hemZonder[i]) hem.push(hemZonder[i]); if (i % 3 === 2 && hemDrank[(i - 2) / 3]) hem.push(hemDrank[(i - 2) / 3]); }
+  var RIJEN = [
+    ['Schoencadeautjes tot € 10', tien, '/collectie/schoencadeautjes/'],
+    ['Om te lachen', schoon(K.uitTop('/collectie/grappige-cadeaus')), '/collectie/grappige-cadeaus/'],
+    ['Knus en warm', knusL, '/voor/haar/pantoffels-sjaals-kleding/'],
+    ['Voor de tienerkamer', schoon(K.uitTop('/voor/tieners/kamer').concat(K.uitTop('/voor/tieners'))), '/voor/tieners/kamer/'],
+    ['Voor haar', schoon(K.uitTop('/voor/haar')), '/voor/haar/'],
+    ['Voor hem', hem, '/voor/hem/'],
+    ['Voor kinderen', schoon(K.uitTop('/voor/kinderen')), '/voor/kinderen/'],
+    ['Voor opa en oma', schoon(K.uitTop('/voor/opa-oma')), '/voor/opa-oma/'],
+    ['Toppers van nu', schoon(K.uitTop('/collectie/toppers-van-nu')), '/collectie/toppers-van-nu/'],
+    ['Lootje voor een collega', schoon(K.uitTop('/voor/collega/lootjes').concat(K.uitTop('/voor/collega'))).filter(function (p) { return p.prijs <= 25; }), '/voor/collega/']
+  ];
+  function kaart(p) {
+    return '<div class="kaart"><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy" decoding="async"></button>' + K.hartKnop(p) +
+      '<h3>' + esc(p.titel) + '</h3><p class="p">' + K.euro(p.prijs) + '</p></div>';
+  }
+  document.getElementById('rijen').innerHTML = RIJEN.map(function (r) {
+    var l = vers(r[1], 10); if (l.length < 4) return '';
+    return '<section><div class="rijkop"><h2>' + esc(r[0]) + '</h2><a href="' + r[2] + '">Alles ' + K.ic('pijl').replace('<svg', '<svg width="16" height="16"') + '</a></div><div class="strook">' + l.map(kaart).join('') +
+      '<a class="meer" href="' + r[2] + '">' + K.ic('pijl') + 'Meer ' + esc(r[0].toLowerCase()) + '</a></div></section>';
+  }).join('');
+  document.getElementById('zoek').addEventListener('submit', function (e) { e.preventDefault(); var q = document.getElementById('q').value.trim(); if (q) location.href = '/nieuw/#/zoek/' + encodeURIComponent(q); });
+})();
+</script>
+</body>
+</html>

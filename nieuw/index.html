@@ -38,7 +38,7 @@ button{font:inherit;color:inherit}
 .kopknop{width:44px;height:44px;border-radius:50%;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;position:relative;text-decoration:none}
 .kopknop svg{width:24px;height:24px}
 .teller{position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--koraal);color:#fff;font:800 11px/18px var(--f);text-align:center}
-.test{background:var(--nacht);color:#E9E2D6;font:600 13px/1.3 var(--f);text-align:center;padding:7px 12px}
+.test{background:var(--nacht);color:#E9E2D6;font:600 13px/1.3 var(--f);text-align:center;padding:7px 12px}.test a{color:#E9E2D6}.test .wv{display:inline-grid;place-items:center;min-width:34px;min-height:32px;border-radius:999px;border:1px solid #4A443C;text-decoration:none;font-weight:800;margin:0 1px}.test .wv[aria-current]{background:#FFC9B8;color:#141210;border-color:#FFC9B8}
 .test a{color:#FFC9B8}
 /* typografie */
 h1{font:800 clamp(34px,9vw,52px)/1.02 var(--f);letter-spacing:-1.4px;margin:26px 0 10px;text-wrap:balance}
@@ -170,7 +170,7 @@ main.vol{padding-bottom:0}
 </style>
 </head>
 <body>
-<div class="test">Testversie van een nieuwe LeukeKeuze · <a href="/">naar de gewone site</a></div>
+<div class="test">Testvoorbeeld <a href="/nieuw/" aria-current="page" class="wv">A</a> <a href="/nieuw/b/" class="wv">B</a> <a href="/nieuw/c/" class="wv">C</a> <a href="/nieuw/d/" class="wv">D</a> · <a href="/">naar de gewone site</a></div>
 <header class="kop" id="kop"><div class="wrap">
   <a class="logo" href="#/"><i>✦</i><span>Leuke<b>Keuze</b></span></a>
   <div style="display:flex;gap:2px">
