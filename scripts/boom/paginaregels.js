@@ -84,6 +84,8 @@ function pas(alle, root) {
       /* 13-11-2026: met de hand door Marius voor deze persoon gekozen (ERBIJ-lijst per tak), dan mag het toch */
       const mh = (REGELS.met_de_hand || {})[pe.slug];
       if (weg && Array.isArray(mh) && mh.indexOf(p.id) !== -1) weg = false;
+      /* 15-11-2026 (Marius): nooit drank op een Voor wie-pagina, ook niet met de hand gekozen */
+      const dnb = REGELS.drank_niet_bij_personen; if (dnb && dnb.groep.indexOf(o.afd + '/' + o.groep) !== -1) weg = true;
       if (weg) (nietBij = nietBij || []).push(pe.slug);
     }
     if (niet) { p.nietOp = niet; tel.nietOp += niet.length; } else delete p.nietOp;

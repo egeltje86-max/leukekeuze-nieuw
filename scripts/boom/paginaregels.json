@@ -788,5 +788,15 @@
    "smartp-ee8a217092",
    "country-21591490cc"
   ]
+ },
+ "drank_niet_bij_personen": {
+  "_uitleg": "15-11-2026 (Marius: 'haal zowiezo alle drank bij personen weg, dat is geen gezicht'). Flessen wijn, bubbels, bier, sterke drank en alcoholvrije drank staan op geen enkele Voor wie-pagina, ook niet als ze met de hand voor iemand gekozen zijn. Ze blijven in Eten & drinken. Drankaccessoires (glazen, karaffen, openers) blijven gewoon. Groepen van vóór de verhuizing.",
+  "groep": [
+   "eten-drinken/wijn",
+   "eten-drinken/bier",
+   "eten-drinken/sterke-drank",
+   "eten-drinken/bubbels",
+   "eten-drinken/alcoholvrij"
+  ]
  }
 }
