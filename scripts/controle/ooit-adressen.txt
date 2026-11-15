@@ -994,6 +994,7 @@
 /gids/sinterklaas-onder-10/
 /gids/sinterklaas-onder-15/
 /gids/sinterklaas-voor-volwassenen/
+/gids/sinterklaascadeau-ideeen/
 /gids/sinterklaascadeau-man/
 /gids/sinterklaascadeau-vrouw/
 /gids/sinterklaasgedicht-maken/

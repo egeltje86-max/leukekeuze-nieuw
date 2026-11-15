@@ -5295,6 +5295,19 @@
         { kop: 'Pas op voor nep-acties', tekst: 'De overheid deelt geen gratis noodpakketten uit. Krijg je een mail, sms of WhatsApp-bericht over een gratis noodpakket waarvoor je moet klikken of betalen? Dan is het bijna zeker oplichting. Klik niet op de link.' }
       ],
       slot: 'Alle spullen staan bij <a href="/c/noodpakket-survival">Noodpakket &amp; survival</a>. Zoek je iets specifieks? Kijk bij <a href="/c/noodpakket-survival/noodradio">Noodradio’s</a>, <a href="/c/noodpakket-survival/water-eten">Water &amp; eten</a> of <a href="/c/noodpakket-survival/licht-stroom">Licht &amp; stroom</a>. Meer informatie vind je op denkvooruit.nl van de Rijksoverheid.' },
+    { slug: 'sinterklaascadeau-ideeen', beeld: 'dvzn-995816', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15'],
+      titel: 'Sinterklaascadeau ideeën: 24 cadeaus voor iedereen', kort: 'In de schoen, voor kinderen, voor tieners, voor lootjes, iets lekkers en samen spelen op pakjesavond.',
+      intro: 'Wat geef je met Sinterklaas? Voor kinderen iets om mee te spelen of iets kleins in de schoen, voor tieners iets wat ze zelf ook graag willen hebben, en bij lootjes iets grappigs of iets lekkers. Pakjesavond is op zaterdag 5 december 2026. Hieronder staan 24 ideeën in zes soorten, van een chocoladeletter tot een LEGO-raceauto. De prijs controleren we; de actuele prijs zie je bij de winkel.',
+      delen: [
+        { kop: 'Zo kies je een sinterklaascadeau', tekst: 'Vier dingen die helpen:', lijst: ['Schoen zetten? Kies iets kleins tot 10 euro dat een kind meteen snapt: een knuffel, een squishy of een robotbeestje.', 'Lootjes trekken? Spreek samen een bedrag af. Bij 10 of 15 euro doet iets grappigs of lekkers het bijna altijd goed.', 'Doe er een gedicht bij of maak er een surprise van: dat hoort bij Sinterklaas.', 'Speel op pakjesavond het dobbelspel: een grote dobbelsteen en een stapel kleine cadeautjes.'] },
+        { kop: 'In de schoen (tot €10)', tekst: 'Klein, leuk en meteen te snappen.', ids: ['hema-ce48ea31d7', 'woewoe-2657e7b14e', 'dgsw-d99c9676ba', 'dvzn-655af9bd06'] },
+        { kop: 'Voor kinderen', tekst: 'Iets om te bouwen, te ontdekken of om mee te spelen.', ids: ['dvzn-762707', 'lego-77243', 'dvzn-366531e682', 'cadeau-f11acf837b'] },
+        { kop: 'Voor tieners', tekst: 'Een lamp van hun favoriete film of game, iets voor de selfie of een mok die verandert.', ids: ['dvzn-995816', 'dvzn-82c9fc5824', 'superz-f16bbf44cc', 'hema-efaa95f521'] },
+        { kop: 'Voor lootjes onder €15', tekst: 'Voor een collega, je zus of je oom: grappig of gezellig.', ids: ['dvzn-c15dcffb40', 'dvzn-ebc9e55f71', 'dvzn-2a6f553405', 'dvzn-8301e7ef8f'] },
+        { kop: 'Iets lekkers', tekst: 'Een chocoladeletter hoort erbij, net als nougat en drop.', ids: ['hema-0d1083eb14', 'bol-9300000402714971', 'dk-00042285', 'dw-8712514990242'] },
+        { kop: 'Samen spelen op pakjesavond', tekst: 'Het dobbelspel, sjoelen met kruidnoten of een kaartspel voor na het uitpakken.', ids: ['t2-handpoppen-fe548a291e', 'hema-90cecb0d49', 'dvzn-045d07751b', 'cl-flip7'] }
+      ],
+      slot: 'Meer ideeën: <a href="/collectie/schoencadeautjes">Schoencadeautjes</a>, <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a>, <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaas voor volwassenen</a> en <a href="/c/cadeaus/sinterklaas">alle sinterklaascadeaus</a>. Een gedicht maak je gratis met de <a href="/sint-rijmmachine/">Sint-rijmmachine</a>, lootjes trek je met <a href="/lootjes-trekken/">Lootjes trekken</a>.' },
     { slug: 'sinterklaas-onder-10', beeld: 'bol-9300000157956217', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'cadeaus/voor-kinderen', 'cadeaus/onder-15', 'speelgoed'], titel: 'Sinterklaascadeaus onder de €10: voor in de schoen en als klein pakje', kort: 'Kleine cadeautjes voor de schoen en pakjesavond, allemaal onder een tientje.',
       intro: 'Elke avond een schoen zetten, en dan ook nog pakjesavond: dat loopt snel op. Daarom koos ik cadeautjes onder de 10 euro waar kinderen echt blij van worden. Kleine setjes, boekjes en spelletjes, van merken die je kent.',
       delen: [
@@ -5939,6 +5952,11 @@
       ['Wat moet er minimaal in een noodpakket?', 'Water (3 liter per persoon per dag), eten dat je zonder koken kunt eten, een radio op batterijen of een opwindradio, een zaklamp, een EHBO-set, contant geld en een volle powerbank. Dat is de basis voor 72 uur.'],
       ['Hoeveel water heb je nodig voor 3 dagen?', 'Reken op 3 liter per persoon per dag. Voor een gezin van vier is dat 36 liter voor drie dagen. Vergeet je huisdieren niet.'],
       ['Krijg je een gratis noodpakket van de overheid?', 'Nee. Berichten over een gratis noodpakket waarvoor je moet klikken of betalen zijn bijna altijd oplichting. Klik niet op de link.']] },
+    'sinterklaascadeau-ideeen': { top: [['Onze topkeuze', 'dvzn-995816'], ['In de schoen', 'hema-ce48ea31d7'], ['Voor lootjes', 'dvzn-c15dcffb40']], faq: [
+      ['Wanneer is pakjesavond 2026?', 'Pakjesavond is op zaterdag 5 december 2026. De verjaardag van Sinterklaas is op 6 december.'],
+      ['Wat is een leuk sinterklaascadeau?', 'Voor kinderen iets om mee te spelen, zoals LEGO, een raket om te bouwen of een lampje. Voor tieners iets wat ze zelf ook willen, zoals een lamp van hun favoriete film of game. Bij lootjes iets grappigs of iets lekkers.'],
+      ['Wat doe je in de schoen?', 'Iets kleins tot 10 euro: een chocoladeletter, een knuffel die naar chocola ruikt, een squishy, een Hexbug of een grappige pen. Meer ideeën staan bij Schoencadeautjes.'],
+      ['Hoeveel geef je uit bij lootjes met Sinterklaas?', 'Dat spreek je samen af. Vaak is het 10, 15 of 20 euro. In deze gids staan genoeg ideeën onder de 15 euro.']] },
     'sinterklaas-onder-10': { top: [['Onze topkeuze', 'bol-9300000157956217'], ['Voor in de schoen', 'woewoe-2657e7b14e'], ['Om voor te lezen', 'bol-9200000006380085']], faq: [
       ['Wat koop je voor een kind voor onder de 10 euro?', 'Kleine LEGO- en Playmobil-setjes, knutselsetjes, dierfiguren en sinterklaasboekjes. Alles in deze gids kost minder dan een tientje.'],
       ['Is 10 euro genoeg voor een sinterklaascadeau?', 'Voor in de schoen of als extra pakje zeker. Kinderen kijken meer naar het uitpakken dan naar de prijs.'],
