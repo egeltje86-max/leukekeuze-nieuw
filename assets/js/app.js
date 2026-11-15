@@ -2527,7 +2527,7 @@
     wine: 'wijn', beer: 'bier', chocolate: 'chocola|chocolade', coffee: 'koffie', cookbook: 'kookboek', apron: 'schort', phone: 'telefoon', charger: 'oplader', kitchen: 'keuken', garden: 'tuin', dog: 'hond', cat: 'kat|poes',
     ebike: 'ebike|elektrische fiets', fatbike: 'fatbike|elektrische fiets', estep: 'estep|elektrische step', escooter: 'escooter|elektrische step', kpop: 'kpop|k pop', zaklantaarn: 'zaklamp|zaklantaarn|lantaarn', pingpong: 'tafeltennis|ping pong|pingpong', barbecue: 'barbecue|bbq', barbeque: 'bbq|barbecue', bbq: 'bbq|barbecue',
     makeup: 'make up|makeup|lipgloss|mascara|oogschaduw|blush|lippenstift', pepernoten: 'pepernoten|kruidnoten|strooigoed', pepernoot: 'pepernoten|kruidnoten|strooigoed', kruidnoten: 'kruidnoten|pepernoten|strooigoed', ballonvaart: 'ballonvaart|ballonvlucht|luchtballon', cadeaubon: 'cadeaubon|cadeaukaart|giftcard|tegoedbon', cadeaukaart: 'cadeaukaart|cadeaubon|giftcard',
-    scheikunde: 'scheikunde|chemie|experiment', scheikundedoos: 'scheikunde|chemie|experiment', chemie: 'chemie|scheikunde', goochelen: 'goochel', goochel: 'goochel', goocheldoos: 'goochel', goochelset: 'goochel', goocheltruc: 'goochel', fidget: 'fidget|stressbal|pop it|popit', fidgets: 'fidget|stressbal|pop it|popit',
+    scheikunde: 'scheikunde|chemie|experiment', scheikundedoos: 'scheikunde|chemie|experiment', chemie: 'chemie|scheikunde', goochelen: 'goochel', goochel: 'goochel', goocheldoos: 'goochel', goochelset: 'goochel', goocheltruc: 'goochel', fidget: 'fidget|stressbal|pop it|popit', knus: 'plaid|kruik|warmtekussen|sloffen|pantoffel|huissokken|snuggle|hoodie-deken|deken', knusse: 'plaid|kruik|warmtekussen|sloffen|pantoffel|huissokken|snuggle|hoodie-deken|deken', fidgets: 'fidget|stressbal|pop it|popit',
     beker: 'beker|mok', mok: 'mok|beker', kado: 'cadeau', gift: 'cadeau', sieradenmaken: 'sieraden-maken', kralen: 'kralen|sieraden-maken', lego: 'lego', jbl: 'jbl', airpod: 'airpods|oordopjes' };
   function zoekWoorden(tekst) {
     var v = vouw(tekst);
@@ -3596,6 +3596,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '15 november', kop: 'Knusse avond? Alles onder € 20', tekst: 'Voor koude avonden op de bank: van een poes-leeslamp tot bontsloffen.', ids: ['cl-poes-leeslamp', 'cl-heatable-hot', 'cl-hema-teddy', 'cg-xxl-warmwaterkruik', 'hema-216346a55d'] },
     { datum: '15 november', kop: 'Pokémon bouwen! Mega en LEGO', tekst: 'Van een Mega Pikachu van € 9,99 tot het grote LEGO-pronkstuk.', ids: ['cl-mc-charmander', 'cl-mc-pikachu', 'cl-mc-lapras', 'lego-72151', 'bol-9300000257600058'] },
     { datum: '15 november', kop: 'Schoen zetten? Alles onder € 10', tekst: 'Vijf leuke cadeautjes voor in de schoen.', ids: ['dvzn-f8c667585b', 'dvzn-685253dc97', 'dvzn-2b383312f5', 'dvzn-553e02fbf0', 'dvzn-6beee4c0d4'] },
     { datum: '14 november', kop: '5 lampjes om van te dromen', tekst: 'Door Marius zelf uitgekozen: van een tulpenlamp tot een Zweinstein-lamp met toverstaf.', ids: ['cadeau-786ef2dca5', 'cadeau-32797fb340', 'cadeau-1c5fc02b40', 'cadeau-d7158dab60', 'cadeau-b56544b12a'] },
