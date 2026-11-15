@@ -950,6 +950,7 @@
 /gids/cadeau-voetballer/
 /gids/cadeau-voor-broer/
 /gids/cadeau-voor-collega/
+/gids/cadeau-voor-man/
 /gids/cadeau-voor-moeder/
 /gids/cadeau-voor-oma/
 /gids/cadeau-voor-opa/
@@ -957,6 +958,7 @@
 /gids/cadeau-voor-vader/
 /gids/cadeau-voor-vriend/
 /gids/cadeau-voor-vriendin/
+/gids/cadeau-voor-vrouw/
 /gids/cadeau-voor-zus/
 /gids/cadeau-wijnliefhebber/
 /gids/cadeau-zwangere-vrouw/
