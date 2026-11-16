@@ -3612,12 +3612,72 @@
   }
   var LOOT_MOMENT = { s: ['Sinterklaas', '🎁', '/c/cadeaus/sinterklaas'], k: ['Kerst', '🎄', '/c/cadeaus/kerst'], a: ['het feest', '🎉', '/c/cadeaus'] };
   var LOOT_BUDGET = [[10, '€ 10'], [15, '€ 15'], [20, '€ 20'], [25, '€ 25'], [50, '€ 50']];
-  function lootTips(budget, moment) {
-    var top = (window.LK_TOPVAST || {})[(LOOT_MOMENT[moment] || LOOT_MOMENT.s)[2]] || [], gezien = {};
-    var lijst = top.concat((window.LK_TOPVAST || {})['/collectie/grappige-cadeaus'] || [], (window.LK_TOPVAST || {})['/c/cadeaus/onder-15'] || [])
-      .map(function (id) { return LK.vind(id); })
-      .filter(function (p) { if (!p || gezien[p.id] || p.status !== 'goedgekeurd' || (p.drank && window.LK_DRANK_OVERAL !== true) || !(p.prijs <= budget) || p.prijs < budget * 0.35) return false; gezien[p.id] = 1; return true; }); /* 15-11-2026: geen drank (geenDrank) */
-    return lijst.slice(0, 12);
+  /* ===== CADEAUTIPS ONDER HET LOOTJE (16-11-2026, Marius: 'kijk of die cadeautips goede producten vertonen, niet alleen snoep of chocolade, dat kunnen
+     ze in de winkel ook kopen; laat echte producten zien waarvan ze het wauw-effect krijgen') =====
+     1. LOOT_WOW: met de hand gekozen cadeaus met een wauw-effect (titels gelezen; geen eten, snoep, drank, kaartjes of sieraden). Nieuwe erbij: zelf de titel lezen.
+     2. Prijs tussen de helft van het budget en het budget; wat dicht bij het budget zit eerst (twee dichtbij, dan één lager).
+     3. Elk lootje krijgt een eigen volgorde (zaad = de naam op het lootje), zodat niet iedereen in de groep dezelfde twaalf ziet.
+     4. Hooguit één cadeau in het thema van het feest (LOOT_THEMA), op plek 3.
+     5. Niet te veel van één soort (lootSoort): hooguit 3 lampjes, 2 spellen, 2 LEGO, 1 mok, 1 paar sloffen enz.
+     6. Te weinig? Dan vult de oude bron aan (top van het feest, grappig, onder € 15, toppers, origineel) met dezelfde regels. */
+  var LOOT_WOW = [
+    'dvzn-ebc9e55f71', 'dvzn-a8efee7908', 'dvzn-f8c667585b', 'mega-a6823ad51f', 'cl-rb-pokebal', 'dvzn-704963', 'dvzn-8301e7ef8f', 'dvzn-8e1b865150',
+    'dvzn-279882', 'dvzn-b2aa854352', 'dvzn-655af9bd06', 'dvzn-1a61ae70d9', 'dvzn-2ac54b6d6d', 'dvzn-0b435dbafd', 'woewoe-2657e7b14e', 'coolgi-098cedb937',
+    'dvzn-4d97c0ab44', 'dvzn-96ba2b1949', 'hema-efaa95f521', 'grotek-c664e1adbd', 'dvzn-c15dcffb40', 'dvzn-6795', 'hema-9af19e566a', 'dgsw-5c2312daba',
+    'cadeau-32797fb340', 'dvzn-7fa21f9ec9', 'legoshop-05f7335d75', 'cl-capibara-warm', 'bol-9200000122182194', 'dvzn-8607c53284', 'dvzn-43cb3e6645', 'dvzn-8cd9a3bdbb',
+    'dvzn-6791', 'dgsw-dcba5f1bc9', 'lego-40460', 'cg-hidden-safe-clock', 'dvzn-284527', 'cg-toilet-basketball', 'dgsw-f8d291bf6b', 'cl-weerwolven',
+    'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon', 'dvzn-849140', 'cg-c472f3ec05', 'dvzn-f9a524b9f9', 't2-cadeau-nl-31dfd27d21', 'dvzn-29043e5ee8',
+    'dvzn-561478', 'cg-goudstaaf-deurstop', 'dvzn-633422', 'dvzn-9688f84b76', 'dvzn-b584c30354', 'cl-hitster', 'cl-exploding', 'dvzn-880ebf0fce',
+    'dvzn-5dbf032a22', 'cg-useless-box', 'dvzn-9fa32eee7e', 'dvzn-bb1222d1cd', 'dvzn-e0d7171bb3', 'dvzn-6aa21edc9a', 'mmf-63b16f5c97', 'cl-laneige-lip',
+    'amz-b0cp1927qy', 'dvzn-dcd93d79e7', 'amz-b0fcsxm3vp', 'amz-b0cx9gt83j', 'dvzn-df22fba87c', 'lego-77243', 'cg-b320632dae', 'dgsw-fc2899235e',
+    't2-nedgame-4639e1bcd1', 'parfum-45d8b68540', 'dvzn-995816', 'dvzn-4fa2e47d16', 'dvzn-403290', 'amz-b0851y4314', 'dvzn-614881', 'dvzn-1deadb3602',
+    'dvzn-746890', 'nedg-7c1aa8ede0', 'bol-9300000377799800', 'spaar-0d768bd10c', 'legoshop-f91cb50b25', 'dvzn-801397', 'dvzn-530181', 'dvzn-557193',
+    'dvzn-334815', 'dvzn-e572f57258', 't2-cadeau-nl-6e2c684cbd', 'dvzn-a4ed4f69b9', 'dvzn-195987', 'cl-wrebbit-hp-express', 'dvzn-814850', 'dvzn-436068',
+    'dvzn-779391', 'parfum-79e274528c', 'cl-vx-huntsman', 'bol-9300000060629305', 'bol-9300000183624857', 'bol-9300000236575345', 'dvzn-515371', 't2-fiftiesstore-0200cce51e',
+    'bol-9300000252617200', 'lego-10348', 'bol-9300000131876375', 'cl-atari-arcade', 'lego-72151', 'dgsw-labubu-big-into-energy', 'cl-azul'
+  ];
+  var LOOT_THEMA = {
+    s: ['cl-jvh-sint'],
+    k: ['smartp-4849c81cba', 'dvzn-fef9e43e90', 't2-nedgame-8b7f297dc1', 'dvzn-4e9451d3df', 'lego-27b82426d9']
+  };
+  function lootSoort(p) {
+    var t = (p.titel || '').toLowerCase();
+    if (/lamp|projector|neon|lichtje|berichtenbord|sun jar|wereldbol/.test(t)) return ['lamp', 3];
+    if (/\bmok\b|beker|tumbler|quencher/.test(t)) return ['mok', 1];
+    if (/lego/.test(t)) return ['lego', 2];
+    if (/sloffen|pantoffel/.test(t)) return ['slof', 1];
+    if (/stressbal/.test(t)) return ['stressbal', 1];
+    if (/pizzasnijder/.test(t)) return ['pizza', 1];
+    if (/spaarpot/.test(t)) return ['spaarpot', 1];
+    if (/tegeltje/.test(t)) return ['tegel', 1];
+    if (/warmtekussen|kruik|deken|hoodie/.test(t)) return ['knus', 1];
+    if (/tamagotchi|arcade|spelcomputer|tetris/.test(t)) return ['spelcomputer', 1];
+    if (/puzzel/.test(t)) return ['puzzel', 1];
+    if (p.groep === 'kaart-partyspellen' || p.groep === 'bordspellen' || /spel\b|speelkaarten|hitster|exploding|weerwolven|taco cat|azul/.test(t)) return ['spel', 2];
+    return [p.groep || p.sub || '?', 2];
+  }
+  function lootTips(budget, moment, zaad) {
+    var T = window.LK_TOPVAST || {}, mom = LOOT_MOMENT[moment] || LOOT_MOMENT.s;
+    var h = 2166136261; String(zaad || '').split('').forEach(function (c) { h = Math.imul(h ^ c.charCodeAt(0), 16777619); });
+    var rnd = function () { h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909); return ((h ^= h >>> 16) >>> 0) / 4294967296; };
+    var schud = function (l) { l = l.slice(); for (var i = l.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var x = l[i]; l[i] = l[j]; l[j] = x; } return l; };
+    var gezien = {}, tel = {}, uit = [];
+    var mag = function (p, laag) { return p && p.status === 'goedgekeurd' && !gezien[p.id] && !(p.drank && window.LK_DRANK_OVERAL !== true) && p.afd !== 'eten-drinken' &&
+      !isKaartje(p) && !isSieraad(p) && !/cracker/i.test(p.titel || '') && p.prijs <= budget && p.prijs >= budget * laag; };
+    var neem = function (p) { var s = lootSoort(p); if ((tel[s[0]] || 0) >= s[1]) return false; tel[s[0]] = (tel[s[0]] || 0) + 1; gezien[p.id] = 1; uit.push(p); return true; };
+    var vul = function (ids, laag) {
+      var l = schud(ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return mag(p, laag); }));
+      var dicht = l.filter(function (p) { return p.prijs >= budget * 0.7; }), lager = l.filter(function (p) { return p.prijs < budget * 0.7; }), rij = [];
+      while (dicht.length || lager.length) { if (dicht.length) rij.push(dicht.shift()); if (dicht.length) rij.push(dicht.shift()); if (lager.length) rij.push(lager.shift()); }
+      rij.forEach(function (p) { if (uit.length < 12 && mag(p, laag)) neem(p); });
+    };
+    vul(LOOT_WOW, 0.5);
+    var thema = schud((LOOT_THEMA[moment] || []).map(function (id) { return LK.vind(id); }).filter(function (p) { return mag(p, 0.5); }))[0];
+    if (thema) { if (uit.length >= 12) { var weg = uit.pop(); delete gezien[weg.id]; var s0 = lootSoort(weg)[0]; tel[s0]--; } gezien[thema.id] = 1; uit.splice(Math.min(2, uit.length), 0, thema); }
+    var oud = (T[mom[2]] || []).concat(T['/collectie/grappige-cadeaus'] || [], T['/c/cadeaus/onder-15'] || [], T['/collectie/toppers-van-nu'] || [], T['/collectie/originele-cadeaus'] || []);
+    if (uit.length < 12) vul(oud, 0.5);
+    if (uit.length < 12) vul(LOOT_WOW.concat(oud), 0.35);
+    return uit.slice(0, 12);
   }
   /* ===== GEZIEN OP TIKTOK (14-11-2026, plan 'bekender worden' punt 4, GO Marius) =====
      De link in het profiel op TikTok en Instagram: leukekeuze.nl/tiktok. Per filmpje een rij met dezelfde vijf cadeaus, het nieuwste bovenaan.
@@ -3705,7 +3765,7 @@
     }
     var m = LOOT_MOMENT[o.m] || LOOT_MOMENT.s, b = +o.b || 15;
     zetTitel('Je lootje' + (o.g ? ' voor ' + o.g : ''));
-    var tips = lootTips(b, o.m);
+    var tips = lootTips(b, o.m, o.t || o.n);
     return '<section class="lt-open"><div class="binnen">' +
         '<p class="lt-hoi">Hoi ' + esc(o.n) + '!</p>' +
         '<h1>Je lootje' + (o.g ? ' voor ' + esc(o.g) : '') + '</h1>' +
