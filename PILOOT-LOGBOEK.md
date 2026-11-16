@@ -19,3 +19,4 @@ Elke regel is één dagelijkse run. Meer details staan in de commit van die dag.
 - 2026-11-15 06:11: Piloot 2026-11-15: 114 prijzen bijgewerkt, 8 uitverkocht van de lijsten; controle schoon, live gezet.
 - 2026-11-15 06:15: Stap 3 (nieuwe producten) overgeslagen: laptop offline. 25 rare prijzen niet overgenomen; nieuw vandaag vooral bol (14 stuks, o.a. QP kippenhok 69 -> 340, Shepherd-sloffen 47 -> 95, Bluey-smartwatch 17 -> 42); de rest (Teufel, Atelier Rebul, horlogedoos, schort, LEGO voetbal, kerstmolentje) zijn dezelfde als eerdere dagen.
 - 2026-11-16 06:07: Piloot 2026-11-16: 48 prijzen bijgewerkt, 10 uitverkocht van de lijsten; controle schoon, live gezet.
+- 2026-11-16 06:23: Piloot 2026-11-16: 48 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
