@@ -82,6 +82,8 @@ function splits() {
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */
     if (/^https?:\/\/(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?\/c\/|^https?:\/\/aff\.svinando\.be\/c\//.test(p.url || '')) l.dc = 1;
     if (p.varianten && p.varianten.length > 1) l.kleuren = p.varianten.length; // kaartje: 'x kleuren'
+    /* 17-11-2026: zelf gekozen in de Superkeurkamer (herkomst staat in details); klein vlaggetje voor de proef AFWISSELING in app.js (MIX). */
+    if (p.herkomst === 'superkeurkamer') l.zk = 1;
     /* 9-11-2026 (wens Marius): op heren-pagina's geen roze foto. Is de hoofdfoto roze en is er een andere kleur, dan krijgt het kaartje daar die foto. */
     if (p.varianten && p.varianten.length > 1 && (p.voor || []).indexOf('hem') !== -1) {
       const ROZE = /roze|pink|ros[eé]\b|rozé|lila|lavendel|paars|purple|blush/i;

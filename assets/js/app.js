@@ -250,13 +250,43 @@
     } catch (e) { return false; }
   })();
   if (RUST) document.documentElement.classList.add('rust');
+  /* AFWISSELING (testversie, 17-11-2026; Marius: 'ik zie weinig variatie in mijn spullen, het is allemaal zo gewoontjes, terwijl we genoeg spullen hebben om uit te kiezen';
+     'alles door elkaar'). Alleen wie ?proef=mix opent ziet het (blijft onthouden in dit apparaat); weer uit met ?proef=mix-uit. Gewone bezoekers, zoekmachines en de bouw zien er niets van.
+     Wat het doet: (1) in een vaste top komt na elke twee handgekozen cadeaus één cadeau dat Marius zelf in de Superkeurkamer koos (p.zk) en dat op die pagina past,
+     telkens uit een ander vakje (mengEigen); (2) in de rest van elke lijst gaan zijn eigen keuzes naar voren (mix) en tellen ze als 'wow' in de heldenrij. */
+  var MIX = (function () {
+    try {
+      var m = /[?&]proef=mix(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.removeItem('lkmix'); else localStorage.setItem('lkmix', '1'); }
+      if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) return false;
+      return localStorage.getItem('lkmix') === '1';
+    } catch (e) { return false; }
+  })();
+  /* 17-11-2026 (nachtcontrole): grove grappen (mok 'Bakkie pleur op', middelvinger-paraplu) schuiven in de proef niet naar voren, behalve bij Grappige cadeaus */
+  var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
+  function zkMix(p, sleutel) { return MIX && p.zk && (!GROF_T.test(p.titel || '') || /grappig/.test(sleutel || '')); }
+  function mengEigen(top, rest, sleutel) {
+    var kand = rest.filter(function (p) { return zkMix(p, sleutel) && p.beeld; });
+    if (!kand.length) return { top: top, rest: rest };
+    var uit = [], gebruikt = {}, vakIn = {}, ki = 0, max = 18;
+    function vk(p) { return p ? (p.vak || p.sub || '') : ''; }
+    for (var i = 0; i < top.length; i++) {
+      uit.push(top[i]);
+      if (i % 2 === 1 && Object.keys(gebruikt).length < max) {
+        var volgende = top[i + 1], kies = null;
+        for (var j = 0; j < kand.length && !kies; j++) { var c = kand[j]; if (!gebruikt[c.id] && !vakIn[vk(c)] && vk(c) !== vk(top[i]) && vk(c) !== vk(volgende)) kies = c; }
+        if (kies) { uit.push(kies); gebruikt[kies.id] = 1; vakIn[vk(kies)] = 1; }
+      }
+    }
+    return { top: uit, rest: rest.filter(function (p) { return !gebruikt[p.id]; }) };
+  }
   if (RUST) document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-rh-meer]'); if (b) { b.parentNode.classList.add('open'); } });
   var ETALAGE = null;
   /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
   function etalageEerst(l) {
     if (!window.LK_TOPVAST) return l;
     if (!ETALAGE) { ETALAGE = {}; Object.keys(window.LK_TOPVAST).forEach(function (k) { (window.LK_TOPVAST[k] || []).forEach(function (id) { ETALAGE[id] = 1; }); }); }
-    var voor = [], na = []; l.forEach(function (p) { (ETALAGE[p.id] ? voor : na).push(p); }); return voor.concat(na);
+    var voor = [], na = []; l.forEach(function (p) { (ETALAGE[p.id] || zkMix(p) ? voor : na).push(p); }); return voor.concat(na); /* proef AFWISSELING: eigen keuzes horen ook bij de etalage */
   }
   var VOLGORDE = (function () { try { if (/[?&]proef=volgorde-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkvolgorde', '0'); else if (/[?&]proef=volgorde(&|$)/.test(location.search)) sessionStorage.removeItem('lkvolgorde'); return window.LK_VOLGORDE !== false && sessionStorage.getItem('lkvolgorde') !== '0'; } catch (e) { return window.LK_VOLGORDE !== false; } })();
   var BEKEND = /\b(lego|duplo|rituals|dyson|philips|casio|seiko|apple|sony|jbl|nintendo|playmobil|pok[eé]mon|barbie|ravensburger|tony'?s|lindt|nike|adidas|samsung|bose|garmin|swarovski|pandora|fossil|tommy hilfiger|calvin klein|hugo boss|paco rabanne|carolina herrera|yankee candle|woodwick|riviera maison|stanley|smeg|nespresso|le creuset|bosch|makita|999 games|squishmallows?|paw patrol|disney|star wars|marvel|hot wheels|gravitrax|little dutch|nijntje|douwe egberts|pickwick|dopper|victorinox|leatherman|weber|fj[aä]llr[aä]ven|eastpak|guess|michael kors|g-shock|oral-b|sonicare|theragun|ghd|babyliss|lacoste|versace|armani|jean paul gaultier|lanc[oô]me|marc jacobs|bluey|minecraft|harry potter|monopoly|rummikub|jellycat|hema|blond amsterdam|pip studio|villeroy|iittala|marshall|sonos|kobo|fitbit|polaroid|instax|stabilo|moleskine|leuchtturm|target|winmau|unicorn)\b/i;
@@ -270,7 +300,7 @@
     var jaMax = collega ? 10 : 15, ankerMin = Math.max(p80, med * 1.6), ankerMax = collega ? 35 : Math.max(p95, ankerMin * 1.5); /* het anker is duur, maar niet het allerduurste van de pagina */
     var bekend = function (p) { return p.populair || BEKEND.test((p.merk || '') + ' ' + p.titel); };
     var TAKEN = [
-      function (p) { return isApart(p); },                                                                             /* 1 wow: apart, grappig of 'wist je dat dit bestond?' */
+      function (p) { return isApart(p) || zkMix(p); },                                                            /* 1 wow: apart, grappig of 'wist je dat dit bestond?' (proef AFWISSELING: ook wat Marius zelf koos) */
       function (p) { return bekend(p) && p.prijs >= jaMax && p.prijs < ankerMin; },                                    /* 2 herkenning */
       function (p) { return p.prijs < jaMax; },                                                                        /* 3 makkelijke ja */
       function (p) { return p.prijs >= ankerMin && p.prijs <= ankerMax; },                                             /* 4 anker */
@@ -357,6 +387,7 @@
       var top = [], rest = [];
       l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
       top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
+      if (MIX) { var me = mengEigen(top, rest, sleutel); top = me.top; rest = me.rest; }
       return kaartjesLaat(sieradenLaat(top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel)), sleutel), sleutel);
     }
     return kaartjesLaat(sieradenLaat(smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel), sleutel), sleutel);
@@ -423,6 +454,7 @@
       /* 13-11-2026 (grote keuring): La Redoute kan de cloud niet nakijken (403), dus de prijs wordt nooit ververst ('ca.' op de productpagina).
          Die cadeaus staan daarom niet meer vooraan; ze blijven in hun vakje en via zoeken gewoon vindbaar. */
       if (p.shop === 'La Redoute') s -= 0.25;
+      if (zkMix(p)) s += 0.2; /* proef AFWISSELING: wat Marius zelf in de Superkeurkamer koos naar voren */
       if (kind) s += (p.afd === 'speelgoed' || p.afd === 'spellen-puzzels') ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'koken-tafelen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
       if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen' || (p.afd === 'spellen-puzzels' && p.groep !== 'puzzels'))) s += 0.1;
       /* 9-11-2026 (GO Marius): bezoekers klikken vooral op cadeaus onder €25 (middelste klikprijs €21, op de site €28).
@@ -2308,9 +2340,12 @@
     /* 02-11-2026: zelfde als bij de personen: geen dubbele bovenaan, en afwisselen in winkel en soort. */
     if (!q.sort || q.sort === 'aanbevolen') {
       var inSel2 = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel2[p.id] = 1; });
-      lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(lijst.filter(function (p) { return inSel2[p.id]; }));
+      /* 17-11-2026 (nachtcontrole): bij 'Deals van vandaag' stonden die 12 deals ook nog eens in 'Alle deals' (4 keer dubbel in beeld). Ze staan nu maar één keer op de pagina. */
+      lijst = afwisselen(lijst.filter(function (p) { return !inSel2[p.id]; }), 60).concat(g.dagdeals ? [] : lijst.filter(function (p) { return inSel2[p.id]; }));
       if (!g.korting && !g.codes) lijst = bovenaan(lijst, pad); /* 10-11-2026: ook na het afwisselen de aparte cadeaus eerst (of de heldenrij) */
     }
+    /* 17-11-2026 (nachtcontrole): bij Aanbiedingen staat de lijst standaard op 'grootste korting'; dan stonden 4 van de 12 'Deals van vandaag' ook in 'Alle deals'. Nu nooit dubbel. */
+    if (g.dagdeals && selectie.length && (!q.prijs || q.prijs === 'alle')) { var inSel3 = {}; selectie.forEach(function (p) { inSel3[p.id] = 1; }); lijst = lijst.filter(function (p) { return !inSel3[p.id]; }); }
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({
       titel: pv ? (g.kop || g.naam) + ' voor ' + voorNaam : (g.kop || g.naam),
@@ -3219,6 +3254,8 @@
       function heeftWoord(x, w) { return w.length >= 5 ? x.z.indexOf(' ' + w) !== -1 : (x.z + ' ').indexOf(' ' + w + ' ') !== -1; }
       var merkF = (sec.getAttribute('data-merk') || '').toLowerCase();
       var hits = alles.filter(function (x) {
+        /* 17-11-2026 (nachtcontrole): in de feed van Westwing staan producten zonder naam in het adres (westwing.nl/null-en-…); die laten we weg. */
+        if (/(%2F|%252F|\/)null-en-/.test(x.l || '')) return false;
         if (merkF && merkNorm(x.m).toLowerCase() !== merkF) return false;
         if (x.p < pf.min || x.p > pf.max) return false;
         if (maxP && x.p >= maxP) return false;
@@ -5635,7 +5672,7 @@
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
           ids: ['hema-8eff9a5ada', 'bol-9300000338660274', 'dk-00025723', 'bol-9300000256554614'] },
         { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
-          ids: ['bol-9300000023740845', 'dvzn-172862', 'dille-d156476e88', 'dvzn-562225'] },
+          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9300000130428935', 'dvzn-562225'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
           ids: ['bol-9300000242918333', 'bol-9300000244887994', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],

@@ -12,6 +12,10 @@ let COR = { links: {}, vak: {}, samen: {} };
 /* 11-11-2026 (Marius: 'uitzondering, het zijn Black Friday-deals, die zijn altijd enorm afgeprijsd'): de deals die Marius zelf koos
    (LK_TOPKEUZE['/collectie/black-friday'] in topkeuze.js) mogen een doorgestreepte prijs tot 70% korting tonen; voor al het andere is de grens 50%. */
 const BF_EIGEN = {};
+/* 17-11-2026: grove grappen niet bij Sinterklaas, Kerst en de budgetpagina's (zie verderop) */
+const GROF = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
+const GROF_NIET = /^cadeaus\/(sinterklaas|kerst|onder-10|onder-15|sint-onder-10|sint-onder-15|schoencadeautjes)$/;
+const GROF_MAG = { 'dvzn-871551': 1 };
 try {
   const m = /LK_TOPKEUZE\["\/collectie\/black-friday"\]\s*=\s*(\[[^\]]*\])/.exec(fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'js', 'topkeuze.js'), 'utf8'));
   if (m) JSON.parse(m[1]).forEach((id) => { BF_EIGEN[id] = 1; });
@@ -65,6 +69,15 @@ function plaats(p) {
   if (ni) {
     p.ookIn = (p.ookIn || []).filter((x) => ni.indexOf(x) === -1);
     if (ni.indexOf(p.cat + '/' + p.sub) !== -1 && p.afd) { p.cat = p.afd; p.sub = p.groep; }
+  }
+  /* 17-11-2026 (nachtcontrole): cadeaus met een scheldwoord, gebaar of seksgrap (mokken 'Lekker pik', 'Bakkie pleur op',
+     middelvinger-paraplu en -kaars ...) horen alleen bij Grappige cadeaus, in hun eigen vakje en bij hem en haar (regel CLAUDE.md §28).
+     Ze stonden ook bij Sinterklaas, Kerst en de budgetpagina's, waar gezinnen kijken. Die vakjes vallen nu weg, en het label kind/tiener ook.
+     Uitzondering: het Sinterklaastegeltje van Ditverzinjeniet (een grap over Sinterklaas zelf, stond er al lang). */
+  if (GROF.test(p.titel || '') && !GROF_MAG[p.id]) {
+    p.ookIn = (p.ookIn || []).filter((x) => !GROF_NIET.test(x));
+    if (GROF_NIET.test(p.cat + '/' + p.sub) && p.afd) { p.cat = p.afd; p.sub = p.groep; }
+    if (Array.isArray(p.voor)) p.voor = p.voor.filter((x) => ['kind', 'kinderen', 'tiener', 'tieners', 'baby'].indexOf(x) === -1);
   }
   if (v && v[0] === 'christelijk') p.cat = 'christelijk'; /* christelijk alleen bij Christelijk (regel Marius) */
   if (p.cat === 'geuren-verzorging' && p.afd && p.afd !== 'beauty-verzorging') { p.cat = p.afd; p.sub = p.groep; } /* 10-11-2026: een oud vakje Geuren & verzorging mag geen koekjes, servies of speelgoed op de parfumpagina's zetten */
