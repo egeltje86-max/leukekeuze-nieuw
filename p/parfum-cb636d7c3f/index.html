@@ -29,7 +29,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=186552489610633" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=245573289177189" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=240300604269222" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
   <link rel="stylesheet" href="assets/css/licht.css?v=200063911906544">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=95605747972094", t = "assets/js/topkeuze.js?v=279552391090859";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=49128854768500", t = "assets/js/topkeuze.js?v=12975273990407";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -208,7 +208,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"parfum-cb636d7c3f":{"url":"https://jf79.net/c/?si=16384&li=1704728&wi=433339&pid=014d293fd6bfc8577ed1962af415ecd9&dl=Parfum%2FOrtigia%2FSandalo%2Fsandalo-geurkaars-in-gedecoreerd-glas-small-p-20916.html%3Futm_term%3DGeurkaarsen%26utm_content%3D20916%26utm_medium%3Daffiliate%26utm_source%3Ddaisycon&ws=","winkelUrl":"https://jf79.net/c/?si=16384&li=1704728&wi=433339&pid=014d293fd6bfc8577ed1962af415ecd9&dl=Parfum%2FOrtigia%2FSandalo%2Fsandalo-geurkaars-in-gedecoreerd-glas-small-p-20916.html%3Futm_term%3DGeurkaarsen%26utm_content%3D20916%26utm_medium%3Daffiliate%26utm_source%3Ddaisycon&ws=","subVast":true,"gecontroleerd":"2026-11-16","herkomst":"piloot","waarom":"Een geurkaars voor een gezellige avond. Fijn om te geven en fijn om te krijgen."}};</script>
-  <script src="assets/js/data.js?v=245573289177189"></script>
+  <script src="assets/js/data.js?v=240300604269222"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=199902073164775"></script>
   <script src="assets/js/app.js?v=186552489610633"></script>

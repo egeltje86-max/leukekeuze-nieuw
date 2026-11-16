@@ -1392,6 +1392,17 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde snoep met een boodschap ===== */
 
+/* ===== 16-11-2026 (keuze Marius in de Superkeurkamer: 'ik heb ook leuke paraplu's gevonden, neem die mee'): eigen vakje "Paraplu's"
+   bij Mode & sieraden > Accessoires: grappige paraplu's, paraplu's met een figuur voor kinderen en fans, en stevige stormparaplu's.
+   Dit blok staat bewust los van de gemaakte boom (3.0) en voor de verhuizing (4.0). ===== */
+(function () {
+  var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'mode-sieraden' && !x.verborgen; })[0];
+  var s = c && (c.subs || []).filter(function (x) { return x.slug === 'accessoires' && x.vakjes && !x.verborgen; })[0];
+  if (!s || s.vakjes.some(function (v) { return v.slug === 'paraplus'; })) return;
+  s.vakjes.push({ slug: 'paraplus', naam: "Paraplu's", tekst: "Een paraplu is een cadeau dat iemand echt gebruikt. Hier vind je grappige paraplu's, paraplu's met een figuur voor kinderen en fans, en stevige paraplu's die een storm aankunnen." });
+})();
+/* ===== einde paraplu's ===== */
+
 /* ===== 4.0 VERHUIZING (proef 11-11-2026): 15 hoofdcategorieën. GEMAAKT DOOR scripts/boom/verhuis.js uit scripts/boom/verhuizing.json – niet met de hand bewerken.
    De boom hierboven (3.0 en alle aanvullingen) wordt hier omgezet naar de nieuwe indeling. Oude adressen sturen door; zie scripts/boom/verhuis-kern.js voor de uitleg. ===== */
 function LK_VERHUIS(L, T) {
