@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – etalage in rijen</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- TESTVERSIE 'Etalage in rijen' (16-11-2026 23:41, Marius: 'je hebt de zoekbalk net weer ingewikkelder gemaakt, verzin een andere manier om de producten te laten zien';
+     daarvoor: 'ik zie weinig variatie in mijn spullen, het is allemaal zo gewoontjes, terwijl we genoeg spullen hebben om uit te kiezen').
+     Alleen via de testlink /nieuw/rijen/ (noindex + Disallow: /nieuw/ in robots.txt). Op de echte site verandert niets.
+     Geen vragen en geen filters: één pagina met rijen, elke rij is één soort cadeau, opzij vegen. Bovenaan wat Marius zelf koos.
+     Er is maar één keuze en die hoeft niet: voor wie. 'Alles' bij een rij toont die hele soort.
+     Volgorde in een rij: eerst wat Marius zelf in de Superkeurkamer koos (eigen.js), dan de handgekozen toppen, dan de rest;
+     nooit twee uit hetzelfde vakje of met bijna dezelfde naam naast elkaar.
+     eigen.js opnieuw maken: python3 met re.finditer op '"herkomst": "superkeurkamer"' in assets/js/producten.js (zie de kop van eigen.js). -->
+<style>
+:root{--marine:#0A1020;--tekst:#141A2A;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--goud:#B8862E;--dgoud:#8F6620;--lgoud:#F2CB74;--rand:#E5D7BE;--zacht:#5C6272;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--creme);color:var(--tekst);font:500 16px/1.5 var(--f)}
+img{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.test{background:var(--marine);color:#E8E2D6;font:600 13px/1.3 var(--f);text-align:center;padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left))}
+.test a{color:var(--lgoud);font-weight:800}
+.kop{padding:10px max(16px,env(safe-area-inset-right),calc((100% - 1180px) / 2 + 16px)) 10px max(16px,env(safe-area-inset-left),calc((100% - 1180px) / 2 + 16px));background:var(--ivoor);border-bottom:1px solid var(--rand)}
+.kop a{text-decoration:none;font:700 20px/1 var(--k);color:var(--marine)}
+.kop a span{color:var(--goud)}
+.wrap{max-width:1180px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-right)) 70px max(16px,env(safe-area-inset-left))}
+h1{font:700 clamp(25px,6.6vw,36px)/1.12 var(--k);margin:0 0 4px;color:var(--marine);text-wrap:balance}
+.sub{color:var(--zacht);margin:0 0 12px;font-size:15px;line-height:1.4}
+
+/* voor wie: één rij knopjes, mag leeg blijven */
+.wie{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-left))) 6px;padding:2px max(16px,env(safe-area-inset-left)) 6px}
+.wie::-webkit-scrollbar{display:none}
+.wie button{flex:0 0 auto;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--rand);background:var(--wit);font-weight:800;font-size:14.5px;color:var(--marine);white-space:nowrap}
+.wie button[aria-pressed="true"]{background:var(--marine);border-color:var(--marine);color:#fff}
+@media (min-width:760px){.wie{margin-left:0;margin-right:0;padding-left:0;padding-right:0;flex-wrap:wrap;overflow:visible}}
+
+/* de rijen */
+.rij{margin:22px 0 0}
+.rkop{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 10px}
+.rkop h2{font:700 21px/1.2 var(--k);margin:0;color:var(--marine);min-width:0}
+.rkop h2 small{display:block;font:600 13.5px/1.3 var(--f);color:var(--zacht);margin-top:2px}
+.alles{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:0 4px;border:0;background:none;font-weight:800;font-size:14.5px;color:var(--dgoud);white-space:nowrap}
+.alles svg{width:16px;height:16px;stroke:var(--goud)}
+.band{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-left)));padding:2px max(16px,env(safe-area-inset-left)) 8px;-webkit-overflow-scrolling:touch}
+.band::-webkit-scrollbar{display:none}
+.band .kaart{flex:0 0 152px;scroll-snap-align:start}
+@media (min-width:760px){.band{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:0;padding:2px 0 4px;overflow:visible}.band .kaart:nth-child(n+6),.band .eind{display:none}.band.mix .kaart:nth-child(n+6){display:flex}.band.mix .kaart:nth-child(n+11){display:none}}
+.eind{flex:0 0 120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px dashed var(--goud);border-radius:16px;background:var(--ivoor);font-weight:800;font-size:14.5px;color:var(--marine);text-align:center;padding:10px}
+.eind i{width:44px;height:44px;border-radius:50%;background:var(--marine);display:grid;place-items:center}
+.eind i svg{width:20px;height:20px;stroke:var(--lgoud)}
+
+/* kaart, zoals op de echte site */
+.kaart{display:flex;flex-direction:column;background:var(--wit);border:1px solid var(--rand);border-radius:16px;overflow:hidden;box-shadow:0 3px 12px rgba(10,16,32,.06);min-width:0}
+.kaart .f{display:block;aspect-ratio:1;max-width:100%;background:#fff;border:0;padding:0;width:100%}
+.kaart .f img{width:100%;height:100%;object-fit:contain;padding:4%}
+.kaart .in{display:flex;flex-direction:column;gap:6px;padding:4px 10px 10px;flex:1;border-top:1px solid #F1E9DA}
+.kaart .t{font-weight:700;font-size:14px;line-height:1.3;color:var(--tekst);hyphens:manual;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;background:none;border:0;padding:6px 0 0;min-height:calc(2 * 1.3em + 6px)}
+.kaart .p{font-weight:800;font-size:16.5px;color:var(--marine);margin-top:auto;line-height:1.2}
+.kaart .k{display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 8px;border-radius:999px;background:linear-gradient(180deg,#F2CB74 0%,#D9A848 100%);border:1px solid var(--goud);color:var(--tekst);text-decoration:none;font-weight:700;font-size:13px;line-height:1.2;text-align:center;text-wrap:balance;box-shadow:0 3px 10px rgba(184,134,46,.22)}
+.kaart .k:focus-visible{outline:3px solid var(--marine);outline-offset:2px}
+
+/* één soort helemaal */
+.terug{display:inline-flex;align-items:center;gap:6px;min-height:44px;border:0;background:none;padding:0;font-weight:800;font-size:15px;color:var(--dgoud);margin:0 0 4px}
+.terug svg{width:18px;height:18px;stroke:var(--goud)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+@media (min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.aantal{color:var(--zacht);font-weight:700;margin:4px 0 0}
+.aantal b{color:var(--marine)}
+.meer{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:18px;border:0;border-radius:14px;background:var(--marine);color:#fff;font-weight:800;font-size:16.5px}
+.nog{margin:10px 0 0;text-align:center;color:var(--zacht);font-size:14px}
+.eerlijk{font-size:13.5px;color:var(--zacht);margin:26px 0 0}
+.k-knop{background:var(--marine)!important}
+</style>
+</head>
+<body>
+<div class="test">Testversie, alleen via deze link. <a href="/">Naar de gewone site</a></div>
+<header class="kop"><a href="/">Leuke<span>Keuze</span></a></header>
+<main class="wrap">
+  <div id="etalage">
+    <h1>Kijk rond</h1>
+    <p class="sub">Elke rij is een soort cadeau. Veeg opzij, of tik op Alles.</p>
+    <div class="wie" id="wie" role="group" aria-label="Voor wie"></div>
+    <div id="rijen"></div>
+  </div>
+  <div id="soort" hidden></div>
+  <p class="eerlijk">Prijzen komen van de winkels en kunnen net anders zijn als je bestelt. Bestellen doe je bij de winkel.</p>
+</main>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/rijen/eigen.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc;
+  function euro(n) { var s = (Math.round(n * 100) / 100).toFixed(2).split('.'); return '€ ' + s[0] + ',' + s[1]; }
+  function svg(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; }
+  var PIJL = svg('<path d="M9 6l6 6-6 6"/>'), TERUG = svg('<path d="M15 6l-6 6 6 6"/>');
+  function heeft(l, x) { return (l || []).indexOf(x) !== -1; }
+  function g(p) { return (p.afd || '') + '/' + (p.groep || '') + '/' + (p.vak || ''); }
+  function pad(re) { return function (p) { return re.test(g(p)); }; }
+
+  /* ---------- handgekozen toppen en de eigen keuzes van Marius ---------- */
+  var TOPIN = {}, RANG = {};
+  Object.keys(K.TOP).forEach(function (k) { var l = K.TOP[k]; l.forEach(function (id, i) { (TOPIN[id] = TOPIN[id] || []).push(k); var v = i / Math.max(l.length, 12); if (RANG[id] == null || v < RANG[id]) RANG[id] = v; }); });
+  function inTop(p, pre) { return (TOPIN[p.id] || []).some(function (k) { return k.indexOf(pre) === 0 && (k.length === pre.length || k[pre.length] === '/' || k[pre.length] === '?'); }); }
+  var EIGEN = {}; (window.LK_EIGEN || []).forEach(function (id, i) { EIGEN[id] = i; });
+  var NU = new Date(), MD = (NU.getMonth() + 1) * 100 + NU.getDate();
+
+  /* ---------- de rijen: elke rij één soort ---------- */
+  function grappig(p) { return heeft(p.ookIn, 'cadeaus/grappig') || heeft(p.tags, 'grappig') || inTop(p, '/collectie/grappige-cadeaus'); }
+  var RIJ = [
+    { id: 'mooist', naam: 'Van elke soort de mooiste', uitleg: 'Met de hand uitgezocht, elke dag een andere mix', f: function (p) { return EIGEN[p.id] != null || RANG[p.id] != null; }, mix: true },
+    MD >= 1015 && MD <= 1205 ? { id: 'schoen', naam: 'Sinterklaas onder € 15', uitleg: 'Voor in de schoen of voor je lootje', f: function (p) { return p.prijs <= 15 && (heeft(p.ookIn, 'cadeaus/sinterklaas') || heeft(p.ookIn, 'cadeaus/sint-onder-15') || inTop(p, '/collectie/schoencadeautjes') || inTop(p, '/c/cadeaus/sinterklaas')); } } : null,
+    MD >= 1206 && MD <= 1226 ? { id: 'kerst', naam: 'Onder de kerstboom', f: function (p) { return heeft(p.ookIn, 'cadeaus/kerst') || inTop(p, '/c/cadeaus/kerst'); } } : null,
+    { id: 'grappig', naam: 'Om te lachen', f: grappig },
+    { id: 'lampjes', naam: 'Lampjes', f: pad(/^wonen\/verlichting/) },
+    { id: 'knus', naam: 'Plaids & sloffen', f: function (p) { return /^wonen\/woontextiel|^mode-sieraden\/schoenen-sloffen\/(pantoffels|sloffen)/.test(g(p)); } },
+    { id: 'oorbellen', naam: 'Oorbellen & sieraden', f: pad(/^mode-sieraden\/sieraden/) },
+    { id: 'mokken', naam: 'Mokken & glazen', f: pad(/^koken-tafelen\/mokken-glazen/) },
+    { id: 'kaarsen', naam: 'Kaarsen & geur', f: pad(/^wonen\/kaarsen-geur/) },
+    { id: 'spaar', naam: 'Spaarpotten', f: pad(/^wonen\/woondecoratie\/spaarpotten/) },
+    { id: 'lego', naam: 'LEGO & bouwen', f: pad(/^speelgoed\/bouwen/) },
+    { id: 'spellen', naam: 'Spellen & puzzels', f: pad(/^spellen-puzzels\/(bordspellen|kaart-partyspellen|kinderspellen|breinbrekers-escape|puzzels)/) },
+    { id: 'knuffels', naam: 'Knuffels', f: pad(/^speelgoed\/poppen-knuffels/) },
+    { id: 'gaming', naam: 'Gaming', f: pad(/^elektronica\/gaming/) },
+    { id: 'gadgets', naam: 'Slimme snufjes', f: pad(/^elektronica\/gadgets/) },
+    { id: 'verzorging', naam: 'Verwennen & verzorgen', f: pad(/^beauty-verzorging\/(bad-huid-spa|giftsets|make-up-haar|scheren-baard|parfum)/) },
+    { id: 'chocolade', naam: 'Chocolade & snoep', f: pad(/^eten-drinken\/chocolade-snoep/) },
+    { id: 'knutselen', naam: 'Knutselen & maken', f: pad(/^speelgoed\/knutselen|^hobby\/(schilderen-tekenen|zelf-maken|handwerken)/) },
+    { id: 'buiten', naam: 'Buiten spelen', f: pad(/^speelgoed\/buiten-spelen/) },
+    { id: 'paraplu', naam: "Paraplu's", f: pad(/^mode-sieraden\/accessoires\/paraplus/) },
+    { id: 'naam', naam: 'Met naam of foto', f: function (p) { return heeft(p.ookIn, 'cadeaus/met-naam') || inTop(p, '/collectie/persoonlijke-cadeaus') || /^wonen\/foto-persoonlijk/.test(g(p)); } },
+    { id: 'boeken', naam: 'Boeken', f: pad(/^boeken-media\//) },
+    { id: 'darts', naam: 'Darts', f: pad(/^sport-outdoor\/darts/) },
+    { id: 'horloges', naam: 'Horloges', f: pad(/^mode-sieraden\/horloges/) },
+    { id: 'audio', naam: 'Speakers & koptelefoons', f: pad(/^elektronica\/audio/) },
+    { id: 'rc', naam: "RC-auto's, e-steps & bouwpakketten", f: pad(/^hobby\/(rc-auto-s|modelbouw)|^sport-outdoor\/fietsen-steps/) },
+    { id: 'kerstdeco', naam: 'Kerst in huis', f: pad(/^wonen\/kerstdecoratie/) },
+    { id: 'belevenis', naam: 'Iets beleven', f: pad(/^belevenissen\//) }
+  ].filter(Boolean);
+  var RIJP = {}; RIJ.forEach(function (r) { RIJP[r.id] = r; });
+  var WIE = [['', 'Iedereen'], ['haar', 'Voor haar'], ['hem', 'Voor hem'], ['kinderen', 'Kind'], ['tieners', 'Tiener'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega'], ['baby', 'Baby']];
+
+  /* ---------- wat mag erop: zelfde regels als de Voor wie-pagina's ---------- */
+  var ALLES = K.ALLES.filter(function (p) {
+    if (!(p.prijs > 0) || p.los || p.drank) return false;
+    if (/^eten-drinken\/(wijn-bubbels|bier-sterke-drank|alcoholvrij)/.test(g(p))) return false;
+    if (p.prijs < 5 && (p.shop === 'Kaartje2go' || /(^|\s)(kaart|kerstkaart|wenskaart)(\s|$|[:,])/i.test(p.titel || ''))) return false;
+    if (/truien-hoodies|t-shirts|sneakers|laarzen|handschoenen/.test(p.vak || '')) return false;
+    return true;
+  });
+  /* grappen met een scheldwoord of gebaar alleen als iemand zelf 'voor haar' of 'voor hem' kiest, nooit bij iedereen, kinderen of tieners */
+  var GROF = /middelvinger|fuck|f\*ck|lekker pik|piemel|borsten|bitch|kut|shit|lul\b|kont\b/i;
+  function wieOk(p, w) {
+    if (GROF.test(p.titel || '') && w !== 'haar' && w !== 'hem') return false;
+    if (!w) return !p.smal;
+    var v = p.voor || [], lt = p.leeftijd;
+    if ((p.nietBij || []).indexOf(w) !== -1) return false;
+    if (p.smal && !((p.smal === 'grootouder' && w === 'opa-oma') || (p.smal === 'collega' && w === 'collega'))) return false;
+    if (w === 'hem' && /\broze\b|\bpink\b/i.test(p.titel || '')) return false;
+    if (w === 'haar' || w === 'hem') return heeft(v, w) || (heeft(v, 'iedereen') && !heeft(v, 'kind') && !heeft(v, 'baby') && !(lt && lt[1] && lt[1] <= 12));
+    if (w === 'kinderen') return heeft(v, 'kind');
+    if (w === 'tieners') return heeft(v, 'tiener');
+    return heeft(v, w);
+  }
+
+  /* ---------- volgorde in een rij: eigen keuze, dan handgekozen top, dan de rest; afwisselend ---------- */
+  /* elke dag een andere volgorde binnen dezelfde groep, zodat de rijen er fris uitzien */
+  var DAG = NU.getFullYear() * 400 + NU.getMonth() * 31 + NU.getDate();
+  function lot(id) { var h = DAG; for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 1000003; return (h % 1000) / 1000; }
+  function score(p, r, wie) {
+    var s;
+    if (EIGEN[p.id] != null) s = (RANG[p.id] != null ? RANG[p.id] * 0.5 : 0.35) + lot(p.id) * 0.2;
+    else if (RANG[p.id] != null) s = 0.6 + RANG[p.id];
+    else s = 2.5 + (1 - (p.rang || 0));
+    if (wie && inTop(p, '/voor/' + wie)) s -= 0.5;
+    if (p.shop === 'bol') s += 0.15;
+    /* eten en drinken alleen vooraan in de rij Chocolade & snoep */
+    if (r.id !== 'chocolade' && p.afd === 'eten-drinken') s += 0.8;
+    return s;
+  }
+  function kern(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3; }).slice(0, 2).join(' '); }
+  /* nooit twee uit hetzelfde vakje of met bijna dezelfde naam achter elkaar; per 10 hooguit 2 uit hetzelfde vakje */
+  function afwisselen(l) {
+    var uit = [], rest = l.slice();
+    while (rest.length) {
+      var tel = {}, blok = [], volg = [], vorige = uit.length ? uit[uit.length - 1] : null;
+      rest.forEach(function (p) {
+        var v = p.vak || '?', laatste = blok.length ? blok[blok.length - 1] : vorige;
+        var ok = blok.length < 10 && (tel[v] || 0) < 2 && !(laatste && (laatste.vak === p.vak || kern(laatste.titel) === kern(p.titel)));
+        if (ok) { tel[v] = (tel[v] || 0) + 1; blok.push(p); } else volg.push(p);
+      });
+      if (!blok.length) { blok = volg.splice(0, 1); }
+      uit = uit.concat(blok); rest = volg;
+    }
+    return uit;
+  }
+  function lijst(r, wie) {
+    var l = ALLES.filter(function (p) { return r.f(p) && wieOk(p, wie); });
+    l.forEach(function (p) { p._s = score(p, r, wie); });
+    l.sort(function (a, b) { return a._s - b._s; });
+    return afwisselen(l);
+  }
+
+  /* lange woorden netjes afbreken met de nagelezen tabel van de echte site (LK_AFBREEK) */
+  var AFB = {}; (window.LK_AFBREEK || '').split('|').forEach(function (w) { if (w) AFB[w.replace(/-/g, '')] = w; });
+  function zachtAf(t) { return String(t).replace(/[A-Za-zÀ-ÿ]{12,}/g, function (w) { var a = AFB[w.toLowerCase()]; if (!a) return w; var u = '', k = 0; for (var i = 0; i < a.length; i++) { if (a[i] === '-') u += '­'; else u += w[k++]; } return u; }); }
+  function kaart(p) {
+    return '<article class="kaart"><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="Meer over ' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button><div class="in"><button class="t" type="button" data-blad="' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</button><span class="p">' + euro(p.prijs) + '</span><a class="k" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + '</a></div></article>';
+  }
+
+  /* ---------- tekenen ---------- */
+  var S = { wie: '', soort: '', n: 24 }, GEDUWD = false, PLEK = 0;
+  function lees() {
+    var h = new URLSearchParams((location.hash || '').slice(1));
+    S.wie = WIE.some(function (w) { return w[0] && w[0] === h.get('wie'); }) ? h.get('wie') : '';
+    S.soort = RIJP[h.get('soort')] ? h.get('soort') : '';
+    S.n = 24;
+  }
+  function schrijf() { var h = new URLSearchParams(); if (S.wie) h.set('wie', S.wie); if (S.soort) h.set('soort', S.soort); var t = h.toString(); history.replaceState(null, '', t ? '#' + t : location.pathname); }
+  function wieKnoppen() { document.getElementById('wie').innerHTML = WIE.map(function (w) { return '<button type="button" data-wie="' + w[0] + '" aria-pressed="' + (S.wie === w[0]) + '">' + esc(w[1]) + '</button>'; }).join(''); }
+  function etalage() {
+    var gezien = {}, html = '', L = {};
+    RIJ.forEach(function (r) { if (!r.mix) L[r.id] = lijst(r, S.wie); });
+    /* eerste rij: van elke andere rij het beste cadeau dat Marius zelf koos (anders het eerste), dus elke kaart een ander soort */
+    RIJ.forEach(function (r) {
+      if (!r.mix) return;
+      var m = [], al = {};
+      RIJ.forEach(function (x) { if (x.mix || x.id === 'schoen' || !L[x.id] || L[x.id].length < 6) return; var top = L[x.id].slice(0, 12).filter(function (q) { return !al[q.id] && !al[q.vak]; }), p = top.filter(function (q) { return EIGEN[q.id] != null; })[0] || top[0]; if (p) { al[p.id] = al[p.vak] = 1; m.push(p); } });
+      L[r.id] = m;
+    });
+    RIJ.forEach(function (r) {
+      var l = L[r.id];
+      if (l.length < 6) return;
+      /* wat al in een rij hoger stond komt niet nog eens vooraan in een volgende rij */
+      var voor = r.mix ? l.slice(0, 14) : l.filter(function (p) { return !gezien[p.id]; }).concat(l.filter(function (p) { return gezien[p.id]; })).slice(0, 10);
+      voor.forEach(function (p) { gezien[p.id] = 1; });
+      html += '<section class="rij"><div class="rkop"><h2>' + esc(r.naam) + (r.uitleg ? '<small>' + esc(r.uitleg) + '</small>' : '') + '</h2>' + (r.mix ? '' : '<button type="button" class="alles" data-soort="' + r.id + '">Alles (' + l.length.toLocaleString('nl-NL') + ')' + PIJL + '</button>') + '</div>' +
+        '<div class="band' + (r.mix ? ' mix' : '') + '">' + voor.map(kaart).join('') + (!r.mix && l.length > 10 ? '<button type="button" class="eind" data-soort="' + r.id + '"><i>' + PIJL + '</i>Alle ' + l.length.toLocaleString('nl-NL') + ' bekijken</button>' : '') + '</div></section>';
+    });
+    document.getElementById('rijen').innerHTML = html || '<p class="sub">Hier vonden we niets bij.</p>';
+  }
+  function soortPagina() {
+    var r = RIJP[S.soort], l = lijst(r, S.wie), wie = WIE.filter(function (w) { return w[0] === S.wie; })[0][1];
+    var el = document.getElementById('soort');
+    el.innerHTML = '<button type="button" class="terug" data-terug>' + TERUG + 'Terug naar alle rijen</button><h1>' + esc(r.naam) + '</h1>' +
+      '<div class="wie" role="group" aria-label="Voor wie">' + WIE.map(function (w) { return '<button type="button" data-wie="' + w[0] + '" aria-pressed="' + (S.wie === w[0]) + '">' + esc(w[1]) + '</button>'; }).join('') + '</div>' +
+      '<p class="aantal"><b>' + l.length.toLocaleString('nl-NL') + '</b> cadeaus' + (S.wie ? ' · ' + esc(wie.toLowerCase()) : '') + '</p>' +
+      '<div class="grid">' + l.slice(0, S.n).map(kaart).join('') + '</div>' +
+      (l.length > S.n ? '<p class="nog">Je ziet er ' + S.n + ' van ' + l.length.toLocaleString('nl-NL') + '</p><button class="meer" type="button" data-meer>Laat er nog 24 zien</button>' : '');
+  }
+  function teken() {
+    var opSoort = !!S.soort;
+    document.getElementById('etalage').hidden = opSoort; document.getElementById('soort').hidden = !opSoort;
+    if (opSoort) soortPagina(); else { wieKnoppen(); etalage(); }
+  }
+  document.addEventListener('click', function (e) {
+    var t;
+    if ((t = e.target.closest('[data-wie]'))) { S.wie = t.getAttribute('data-wie'); S.n = 24; schrijf(); teken(); return; }
+    /* een soort openen telt als een nieuwe stap, zodat de terugknop van de telefoon weer bij de rijen uitkomt */
+    if ((t = e.target.closest('[data-soort]'))) { var h = new URLSearchParams(); if (S.wie) h.set('wie', S.wie); h.set('soort', t.getAttribute('data-soort')); GEDUWD = true; location.hash = h.toString(); window.scrollTo(0, 0); return; }
+    if (e.target.closest('[data-terug]')) { if (GEDUWD) { history.back(); return; } S.soort = ''; schrijf(); teken(); window.scrollTo(0, 0); return; }
+    if (e.target.closest('[data-meer]')) { var oud = S.n; S.n += 24; teken(); var k = document.querySelectorAll('#soort .kaart')[oud]; if (k) k.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+  });
+  window.addEventListener('hashchange', function () { var was = S.soort; if (!was) PLEK = window.scrollY; lees(); teken(); if (was && !S.soort) { GEDUWD = false; window.scrollTo(0, PLEK); } });
+  lees(); teken();
+})();
+</script>
+</body>
+</html>
