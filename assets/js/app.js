@@ -5772,7 +5772,7 @@
             'Een kaartje met "veel geluk in jullie nieuwe huis" maakt elk cadeau persoonlijker.'
           ] },
         { kop: 'Licht en sfeer', tekst: 'Van een weckpot die overdag oplaadt in de vensterbank tot een lichtsnoer voor de tuin.',
-          ids: ['dvzn-530181', 'cl-led-glas', 'bol-9300000159425017', 'joybuy-234e86090b'] },
+          ids: ['dvzn-530181', 'cl-led-glas', 'bol-9300000159425017', 'cl-bijen-solar'] },
         { kop: 'Voor aan tafel', tekst: 'Mooi servies en een flinke serveerplank: daar heeft elk nieuw huishouden wat aan.',
           ids: ['t2-hema-5623840130', 'tt-country-acc-40291bdfe5', 'dille-58dac9bd47', 'westwing-0a01a1d0b5'] },
         { kop: 'Vrolijke details', tekst: 'Een wiebelend geluksmannetje, een knipogende kattenklok of een vaas met kleur: kleine dingen die een huis eigen maken.',
