@@ -3684,6 +3684,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '16 november', kop: 'Te mooi om aan te steken: 6 kaarsen met lef', tekst: 'Van een smeltend hart en een torso-kaars voor hem en haar tot cocktails die je niet kunt drinken.', ids: ['megaga-6067071002', 'sissyb-5747d02176', 'ww-f8f6d12ecc', 'ww-fa986cf0c1', 'hema-2d64a8f6d4', 'joybuy-6516355e12', 'tt-dvzn-a93ae6dedc'] },
     { datum: '16 november', kop: 'Zonde om aan te steken: 5 gekke kaarsen', tekst: 'Door Marius zelf uitgekozen: van een bierpul tot een stuk kaas, allemaal kaarsen.', ids: ['surpri-271f87fd8b', 'joybuy-6516355e12', 'sissyb-f809bf27f0', 'dvzn-770d60cf83', 'speelg-285ac4a6c8'] },
     { datum: '16 november', kop: 'Goedemorgen! Alles onder € 25', tekst: 'Vijf vrolijke cadeaus voor de ochtend: van een spiegelei-mok tot een Harry Potter-wekker.', ids: ['cl-mok-spiegelei', 'tt-dvzn-c0a7b1a834', 'dvzn-995742', 'dvzn-608847', 'dvzn-c15dcffb40'] },
     { datum: '15 november', kop: 'Knusse avond? Alles onder € 20', tekst: 'Voor koude avonden op de bank: van een poes-leeslamp tot pantersloffen.', ids: ['cl-poes-leeslamp', 'cl-heatable-hot', 'cl-hema-teddy', 'cg-xxl-warmwaterkruik', 'trendm-7d10a12abb'] },
