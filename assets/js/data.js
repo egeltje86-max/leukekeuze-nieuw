@@ -1402,6 +1402,14 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   s.vakjes.push({ slug: 'paraplus', naam: "Paraplu's", tekst: "Een paraplu is een cadeau dat iemand echt gebruikt. Hier vind je grappige paraplu's, paraplu's met een figuur voor kinderen en fans, en stevige paraplu's die een storm aankunnen." });
 })();
 /* ===== einde paraplu's ===== */
+/* ===== 16-11-2026 (keuze Marius in de Superkeurkamer: 'ik heb spaarpotten'): eigen vakje "Spaarpotten & kluisjes" bij Woondecoratie, net als de paraplu's. ===== */
+(function () {
+  var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'wonen' && !x.verborgen; })[0];
+  var s = c && (c.subs || []).filter(function (x) { return x.slug === 'woondecoratie' && x.vakjes && !x.verborgen; })[0];
+  if (!s || s.vakjes.some(function (v) { return v.slug === 'spaarpotten'; })) return;
+  s.vakjes.push({ slug: 'spaarpotten', naam: 'Spaarpotten & kluisjes', tekst: 'Een spaarpot is een cadeau dat elke dag blijft staan. Hier vind je grappige spaarpotten (schedels, biervaatjes, een klomp), spaarpotten van games en films, spaarvarkens voor kinderen en echte kluisjes met een code.' });
+})();
+/* ===== einde spaarpotten ===== */
 
 /* ===== 4.0 VERHUIZING (proef 11-11-2026): 15 hoofdcategorieën. GEMAAKT DOOR scripts/boom/verhuis.js uit scripts/boom/verhuizing.json – niet met de hand bewerken.
    De boom hierboven (3.0 en alle aanvullingen) wordt hier omgezet naar de nieuwe indeling. Oude adressen sturen door; zie scripts/boom/verhuis-kern.js voor de uitleg. ===== */
