@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – welke reactie wil je zien?</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- TESTVERSIE 'Welke reactie wil je zien?' (16-11-2026, keuze Marius: idee 1 van vijf zoek-ideeën; idee 4 'iedereen in één keer' vond hij 'heel slecht').
+     Alleen via de testlink /nieuw/reactie/ (noindex + Disallow: /nieuw/ in robots.txt). Op de echte site verandert niets.
+     Eén vraag, geen categorie: tik de reactie aan die je wilt zien als het cadeau wordt uitgepakt (Haha, Wauw, Aaah lief, Handig, Mmm lekker),
+     en meteen staan de cadeaus er. Voor wie en bedrag mogen erbij, hoeven niet.
+     Verkooppsychologie: mensen kopen een cadeau voor het moment van uitpakken (de reactie van de ander), niet voor een productsoort;
+     één duidelijke vraag met vijf antwoorden is makkelijker dan een menu met categorieën (minder keuzestress).
+     Welke cadeaus bij welke reactie horen komt uit wat er al is: Grappige cadeaus, Originele cadeaus en Toppers van nu, Met naam of foto,
+     het soort cadeau (origineel, luxe, praktisch, persoonlijk) en de afdeling. Handgekozen toppen eerst.
+     Regels als de Voor wie-pagina's: nietBij, smal, geen sieraden, drank, kaartjes, kleding in maten, dieren, e-steps. -->
+<style>
+:root{--marine:#0A1020;--tekst:#141A2A;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--goud:#B8862E;--dgoud:#8F6620;--lgoud:#F2CB74;--rand:#E5D7BE;--zacht:#5C6272;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--creme);color:var(--tekst);font:500 16px/1.5 var(--f)}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+.test{background:var(--marine);color:#E8E2D6;font:600 13.5px/1.3 var(--f);text-align:center;padding:9px max(16px,env(safe-area-inset-left))}
+.test a{color:var(--lgoud);font-weight:800}
+.kop{display:flex;align-items:center;justify-content:space-between;padding:12px max(16px,env(safe-area-inset-left));background:var(--ivoor);border-bottom:1px solid var(--rand)}
+.kop a{text-decoration:none;font:700 21px/1 var(--k);color:var(--marine)}
+.wrap{max-width:980px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left)) 80px max(16px,env(safe-area-inset-right))}
+h1{font:700 clamp(28px,7.4vw,44px)/1.12 var(--k);margin:4px 0 6px;color:var(--marine);text-wrap:balance}
+.sub{color:var(--zacht);margin:0 0 16px}
+
+/* de vijf reacties */
+.re{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:720px){.re{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.rk{display:grid;grid-template-columns:58px minmax(0,1fr) 20px;align-items:center;gap:14px;background:var(--wit);border:1px solid var(--rand);border-radius:18px;padding:12px 16px 12px 12px;text-align:left;box-shadow:0 2px 10px rgba(10,16,32,.05);min-height:80px}
+.rk .e{width:58px;height:58px;border-radius:50%;background:var(--ivoor);box-shadow:0 0 0 2px var(--wit),0 0 0 3.5px var(--goud);display:grid;place-items:center;font-size:31px;line-height:1}
+.rk b{display:block;font:800 19px/1.2 var(--f);color:var(--marine)}
+.rk span.u{display:block;font-size:14.5px;color:var(--zacht);line-height:1.35;margin-top:2px}
+.rk svg{width:20px;height:20px;stroke:var(--goud)}
+@media (min-width:720px){.rk{grid-template-columns:1fr;justify-items:center;text-align:center;padding:18px 10px}.rk svg{display:none}.rk .e{width:68px;height:68px;font-size:36px}}
+.rk:active{transform:scale(.99)}
+
+/* na de keuze: compacte rij om te wisselen */
+.wissel{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-left))) 14px;padding:2px max(16px,env(safe-area-inset-left))}
+.wissel::-webkit-scrollbar{display:none}
+.wissel button{flex:0 0 auto;display:flex;align-items:center;gap:7px;min-height:46px;padding:0 15px 0 8px;border-radius:999px;border:1px solid var(--rand);background:var(--wit);font-weight:800;font-size:15px;white-space:nowrap}
+.wissel button i{font-style:normal;font-size:22px;line-height:1}
+.wissel button[aria-pressed="true"]{background:var(--marine);border-color:var(--marine);color:#fff}
+.uitkop h2{font:700 clamp(24px,6vw,34px)/1.15 var(--k);color:var(--marine);margin:0 0 4px;text-wrap:balance}
+.uitkop p{margin:0 0 12px;color:var(--zacht)}
+.fil{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 6px;max-width:520px}
+.fil label{position:relative;display:block}
+.fil label span{position:absolute;left:14px;top:7px;font-size:12px;color:var(--zacht);pointer-events:none}
+.fil select{width:100%;min-height:52px;appearance:none;-webkit-appearance:none;border:1px solid var(--rand);border-radius:14px;background:var(--wit) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B8862E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding:20px 36px 4px 14px;font:800 15.5px/1.2 var(--f);color:var(--marine)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+@media (min-width:720px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+.kaart{display:flex;flex-direction:column;background:var(--wit);border:1px solid var(--rand);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(10,16,32,.05);min-width:0}
+.kaart .f{display:block;aspect-ratio:1;background:#fff;border:0;padding:0;width:100%}
+.kaart .f img{width:100%;height:100%;object-fit:contain;padding:6px}
+.kaart .in{display:flex;flex-direction:column;gap:4px;padding:8px 10px 10px;flex:1}
+.kaart .t{font-weight:700;font-size:14.5px;line-height:1.3;color:var(--tekst);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;background:none;border:0;padding:0}
+.kaart .w{font-size:13px;line-height:1.35;color:var(--zacht);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.kaart .p{font-weight:800;font-size:16px;color:var(--marine);margin-top:auto}
+.kaart .k{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background:var(--goud);color:#fff;text-decoration:none;font-weight:800;font-size:14px;line-height:1.2;text-align:center;padding:6px 8px}
+.meer{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:16px;border:0;border-radius:14px;background:var(--marine);color:#fff;font-weight:800;font-size:16.5px}
+.leeg{background:var(--ivoor);border:1px solid var(--rand);border-radius:16px;padding:16px;color:var(--zacht)}
+.eerlijk{font-size:13.5px;color:var(--zacht);margin:14px 0 0}
+.k-knop{background:var(--marine)!important}
+</style>
+</head>
+<body>
+<div class="test">Testversie: alleen jij ziet dit via deze link. <a href="/">Naar de gewone site</a></div>
+<header class="kop"><a href="/">LeukeKeuze</a></header>
+<main class="wrap">
+  <section id="start">
+    <h1>Welke reactie wil je zien?</h1>
+    <p class="sub">Als het cadeau wordt uitgepakt. Tik er één aan, dan staan de cadeaus er meteen.</p>
+    <div class="re" id="re"></div>
+  </section>
+  <section id="uit" hidden>
+    <div class="wissel" id="wissel" role="group" aria-label="Andere reactie kiezen"></div>
+    <div class="uitkop" id="uitkop"></div>
+    <div id="filters"></div>
+    <div class="grid" id="grid"></div>
+    <div id="meer"></div>
+    <p class="eerlijk">Prijzen komen van de winkels en kunnen net anders zijn als je bestelt. Bestellen doe je bij de winkel.</p>
+  </section>
+</main>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc;
+  function euro(n) { var s = (Math.round(n * 100) / 100).toFixed(2).split('.'); return '€ ' + s[0] + ',' + s[1]; }
+  var PIJL = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+  /* ---------- welke cadeaus horen bij welke reactie ---------- */
+  function inTop(p, pre) { return TOPIN[p.id] && TOPIN[p.id].some(function (k) { return k === pre || k.indexOf(pre + '/') === 0; }); }
+  var TOPIN = {}, RANG = {};
+  Object.keys(K.TOP).forEach(function (k) {
+    var l = K.TOP[k];
+    l.forEach(function (id, i) { (TOPIN[id] = TOPIN[id] || []).push(k); var v = i / Math.max(l.length, 12); if (RANG[id] == null || v < RANG[id]) RANG[id] = v; });
+  });
+  function g(p) { return (p.afd || '') + '/' + (p.groep || ''); }
+  function heeft(l, x) { return (l || []).indexOf(x) !== -1; }
+  function persoonlijk(p) { return heeft(p.ookIn, 'cadeaus/met-naam') || inTop(p, '/collectie/persoonlijke-cadeaus') || p.soort === 'persoonlijk' || /^wonen\/foto-persoonlijk/.test(g(p)) || heeft(p.tags, 'baby-knuffels-naam'); }
+  function grappig(p) { return heeft(p.ookIn, 'cadeaus/grappig') || heeft(p.tags, 'grappig') || inTop(p, '/collectie/grappige-cadeaus'); }
+  var RE = [
+    { id: 'haha', e: '😂', naam: 'Haha!', uit: 'Om te lachen', kop: 'Haha! Cadeaus waar ze om moeten lachen', top: '/collectie/grappige-cadeaus',
+      past: grappig },
+    { id: 'wauw', e: '🤩', naam: 'Wauw!', uit: 'Verrassend en bijzonder', kop: 'Wauw! Cadeaus die ze niet hadden verwacht', top: '/collectie/originele-cadeaus',
+      past: function (p) { return !grappig(p) && !persoonlijk(p) && (inTop(p, '/collectie/originele-cadeaus') || inTop(p, '/collectie/toppers-van-nu') || p.soort === 'origineel' || p.soort === 'luxe' || /^(wonen\/verlichting|hobby\/modelbouw|speelgoed\/bouwen|elektronica\/audio|belevenissen\/)/.test(g(p))); } },
+    { id: 'lief', e: '🥹', naam: 'Aaah, lief', uit: 'Persoonlijk en ontroerend', kop: 'Aaah, lief! Cadeaus die iets zeggen', top: '/collectie/persoonlijke-cadeaus',
+      past: function (p) { return !grappig(p) && (persoonlijk(p) || /^speelgoed\/poppen-knuffels/.test(g(p)) || (p.ookIn || []).some(function (x) { return x.indexOf('valentijn/') === 0; })); } },
+    { id: 'handig', e: '👍', naam: 'Hé, handig!', uit: 'Iets wat ze echt gebruiken', kop: 'Hé, handig! Cadeaus die ze elke dag gebruiken', top: '',
+      past: function (p) { return !grappig(p) && !/^tuin-klussen\//.test(g(p)) && (p.soort === 'praktisch' || /handige-gadgets/.test(p.vak || '') || /^(koken-tafelen\/koken-bakken|koken-tafelen\/koffie-thee-zetten)/.test(g(p)) || heeft(p.tags, 'zakmes')); } },
+    { id: 'mmm', e: '😋', naam: 'Mmm, lekker!', uit: 'Lekkers en verwennen', kop: 'Mmm, lekker! Om van te genieten', top: '/collectie/cadeaupakketten',
+      past: function (p) { return !grappig(p) && (/^(eten-drinken\/(chocolade-snoep|lekkernijen|cadeaupakketten)|beauty-verzorging\/bad-huid-spa)/.test(g(p)) || heeft(p.tags, 'warm')) && !/scheer|gillette|baard/i.test(p.titel || ''); } }
+  ];
+  var REP = {}; RE.forEach(function (r) { REP[r.id] = r; });
+
+  var WIE = [['', 'Iedereen'], ['haar', 'Haar'], ['hem', 'Hem'], ['kinderen', 'Kind'], ['tieners', 'Tiener'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega']];
+  var BED = [[0, 'Alle bedragen'], [10, 'Tot € 10'], [25, 'Tot € 25'], [50, 'Tot € 50']];
+
+  function weg(p) {
+    if (!(p.prijs > 0) || K.sieraad(p) || K.drank(p) || p.drank || p.los) return true;
+    if (p.prijs < 5 && (p.shop === 'Kaartje2go' || /(^|\s)(kaart|kerstkaart|wenskaart|felicitatiekaart|sinterklaaskaart|verjaardagskaart)(\s|$|[:,])/i.test(p.titel || ''))) return true;
+    if (/elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || ''))) return true;
+    if (/truien-hoodies|t-shirts|sneakers|laarzen|handschoenen/.test(p.vak || '')) return true;
+    if (/\bhoodie\b|\btrui\b|t-shirt/i.test(p.titel || '') && !/deken|teddy|kerst|snuggle/i.test(p.titel || '')) return true;
+    if (/^eten-drinken\/drankaccessoires/.test(g(p))) return true;
+    return /^dieren\//.test(g(p));
+  }
+  function voorWie(p, w) {
+    var v = p.voor || [], lt = p.leeftijd;
+    if (!w) {
+      if (p.smal) return false;
+      return !(v.length && v.every(function (x) { return x === 'baby'; }));
+    }
+    if ((p.nietBij || []).indexOf(w) !== -1) return false;
+    if (p.smal && !((p.smal === 'grootouder' && w === 'opa-oma') || (p.smal === 'collega' && w === 'collega'))) return false;
+    if (w === 'hem' && /\broze\b|\bpink\b/i.test(p.titel || '')) return false;
+    if (w === 'haar' || w === 'hem') return heeft(v, w) || (heeft(v, 'iedereen') && !heeft(v, 'kind') && !heeft(v, 'baby') && !(lt && lt[1] && lt[1] <= 12));
+    if (w === 'kinderen') return heeft(v, 'kind');
+    if (w === 'tieners') return heeft(v, 'tiener');
+    return heeft(v, w);
+  }
+  var CACHE = {};
+  function lijst(r, w, max) {
+    var sl = r.id + '|' + w + '|' + max;
+    if (CACHE[sl]) return CACHE[sl];
+    var l = K.ALLES.filter(function (p) { return !weg(p) && (!max || p.prijs <= max) && voorWie(p, w) && r.past(p); });
+    /* handgekozen toppen eerst; de eigen collectie van deze reactie telt extra */
+    l.forEach(function (p) { var b = RANG[p.id] != null ? RANG[p.id] : 3 + (1 - (p.rang || 0)); if (r.top && inTop(p, r.top)) b -= 0.6; p._s = b; });
+    l.sort(function (a, b) { return a._s - b._s; });
+    /* afwisselen: per 12 cadeaus hooguit 2 uit hetzelfde vakje, zodat het niet één soort wordt */
+    var uit = [], rest = l;
+    while (rest.length) {
+      var tel = {}, blok = [], volgende = [];
+      rest.forEach(function (p) { var v = p.vak || '?'; if (blok.length < 12 && (tel[v] || 0) < 2) { tel[v] = (tel[v] || 0) + 1; blok.push(p); } else volgende.push(p); });
+      uit = uit.concat(blok); rest = volgende;
+    }
+    return (CACHE[sl] = uit);
+  }
+
+  /* ---------- tekenen ---------- */
+  var elRe = document.getElementById('re'), elStart = document.getElementById('start'), elUit = document.getElementById('uit');
+  elRe.innerHTML = RE.map(function (r) {
+    return '<button class="rk" type="button" data-re="' + r.id + '"><span class="e" aria-hidden="true">' + r.e + '</span><span><b>' + esc(r.naam) + '</b><span class="u">' + esc(r.uit) + '</span></span>' + PIJL + '</button>';
+  }).join('');
+  var NU = { re: '', wie: '', max: 0, n: 24 };
+  function lees() {
+    var h = (location.hash || '').slice(1).match(/^([a-z]+)(?:-(iedereen|haar|hem|kinderen|tieners|opa-oma|collega))?(?:-(\d+))?$/) || [];
+    NU.re = REP[h[1]] ? h[1] : '';
+    NU.wie = h[2] && h[2] !== 'iedereen' ? h[2] : '';
+    NU.max = +h[3] || 0; if (!BED.some(function (b) { return b[0] === NU.max; })) NU.max = 0;
+    NU.n = 24;
+  }
+  function zetHash() { var s = NU.re + (NU.wie || NU.max ? '-' + (NU.wie || 'iedereen') : '') + (NU.max ? '-' + NU.max : ''); if (location.hash.slice(1) !== s) history.replaceState(null, '', '#' + s); }
+  function kaart(p) {
+    var w = K.reden(p);
+    return '<article class="kaart"><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="Meer over ' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button><div class="in"><button class="t" type="button" data-blad="' + esc(p.id) + '">' + esc(p.titel) + '</button>' + (w ? '<span class="w">' + esc(w) + '</span>' : '') + '<span class="p">' + euro(p.prijs) + '</span><a class="k" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + '</a></div></article>';
+  }
+  function teken(scroll) {
+    if (!NU.re) { elStart.hidden = false; elUit.hidden = true; return; }
+    var r = REP[NU.re], l = lijst(r, NU.wie, NU.max);
+    elStart.hidden = true; elUit.hidden = false;
+    document.getElementById('wissel').innerHTML = RE.map(function (x) { return '<button type="button" data-re="' + x.id + '" aria-pressed="' + (x.id === NU.re) + '"><i aria-hidden="true">' + x.e + '</i>' + esc(x.naam) + '</button>'; }).join('');
+    document.getElementById('uitkop').innerHTML = '<h2>' + esc(r.kop) + '</h2><p>' + l.length + ' cadeaus, de leukste eerst.</p>';
+    document.getElementById('filters').innerHTML = '<div class="fil">' +
+      '<label><span>Voor wie</span><select data-sel="wie" aria-label="Voor wie">' + WIE.map(function (x) { return '<option value="' + x[0] + '"' + (NU.wie === x[0] ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
+      '<label><span>Bedrag</span><select data-sel="max" aria-label="Bedrag">' + BED.map(function (x) { return '<option value="' + x[0] + '"' + (NU.max === x[0] ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label></div>';
+    document.getElementById('grid').innerHTML = l.length ? l.slice(0, NU.n).map(kaart).join('') : '';
+    document.getElementById('meer').innerHTML = !l.length ? '<p class="leeg">Hier vonden we niets bij. Kies een ander bedrag of iemand anders.</p>' : (l.length > NU.n ? '<button class="meer" type="button" data-meer>Laat er nog 24 zien</button>' : '');
+    var a = document.querySelector('#wissel [aria-pressed="true"]'); if (a && a.scrollIntoView) a.scrollIntoView({ block: 'nearest', inline: 'center' });
+    if (scroll) window.scrollTo({ top: 0 });
+  }
+  document.addEventListener('click', function (e) {
+    var t;
+    if ((t = e.target.closest('[data-re]'))) { var nieuw = t.getAttribute('data-re'); var was = NU.re; NU.re = nieuw; NU.n = 24; zetHash(); teken(!was); return; }
+    if ((t = e.target.closest('[data-wie]'))) { NU.wie = t.getAttribute('data-wie'); NU.n = 24; zetHash(); teken(false); return; }
+    if ((t = e.target.closest('[data-max]'))) { NU.max = +t.getAttribute('data-max'); NU.n = 24; zetHash(); teken(false); return; }
+    if ((t = e.target.closest('[data-meer]'))) { var oud = NU.n; NU.n += 24; teken(false); var k = document.querySelectorAll('#grid .kaart')[oud]; if (k) k.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+  });
+  document.addEventListener('change', function (e) {
+    var t = e.target; if (!t.hasAttribute || !t.hasAttribute('data-sel')) return;
+    if (t.getAttribute('data-sel') === 'wie') NU.wie = t.value; else NU.max = +t.value;
+    NU.n = 24; zetHash(); teken(false);
+  });
+  window.addEventListener('hashchange', function () { lees(); teken(true); });
+  lees(); teken(false);
+})();
+</script>
+</body>
+</html>
