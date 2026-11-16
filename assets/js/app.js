@@ -469,6 +469,142 @@
     return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
       '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">Toon meer <small>(' + per + ' van ' + getal(lijst.length) + ')</small></button></div>';
   }
+  /* ===== PRIJSSCHUIF (16-11-2026, GO Marius: 'die prijsbalk die je gisteren had bedacht, blauw met goud; dan zien de klanten alle producten
+     vlug achter elkaar, de producten veranderen zonder dat ze echt hoeven te scrollen').
+     Op de Voor wie-pagina's (ook de onderwerpen) staat vlak boven de cadeaus één schuif: 'Tot € 25'. Schuiven = de cadeaus eronder veranderen meteen;
+     wat blijft staan glijdt naar zijn nieuwe plek, wat nieuw is komt erbij. Het middenstuk (bedrag, staafjes, schuif) blijft boven in beeld als je
+     naar beneden scrolt (plakt onder de kop), zo kun je ook halverwege de lijst nog schuiven. Het blijft even hoog, dus de pagina springt niet.
+     Bedrag van € 5 tot € 150 (niet-lineair: kleine bedragen hebben meer ruimte), helemaal rechts = alle bedragen; daaronder vaste knoppen
+     €10, €15, €25, €50, Alles (Baymard: schuif met vaste bedragen ernaast, waarde live tonen). De staafjes laten zien waar de meeste cadeaus zitten.
+     Volgorde: de handgekozen top van de pagina, maar wat tussen ongeveer de helft en het bedrag kost eerst (bij 'tot € 25' eerst € 12 tot € 25).
+     Het adres onthoudt het bedrag als ?prijs=tot25 (het oude filter kent dat al), dus terugknop, delen en de onderwerpen kloppen.
+     Telt in GoatCounter: prijsschuif/tot-<bedrag> (bij loslaten). Uit: window.LK_PRIJSSCHUIF = false (dan weer de knoppen). ===== */
+  var PS = window.LK_PRIJSSCHUIF !== false, PS_LIJSTEN = [], PS_MIN = 5, PS_MAX = 150;
+  function psNaarPrijs(v) {
+    if (v >= 975) return 0;
+    var x = PS_MIN * Math.pow(PS_MAX / PS_MIN, Math.min(v, 960) / 960);
+    return x < 20 ? Math.round(x) : x < 60 ? Math.round(x / 5) * 5 : Math.round(x / 10) * 10;
+  }
+  function psNaarSchuif(x) { if (!x) return 1000; return Math.round(960 * Math.log(Math.max(PS_MIN, Math.min(PS_MAX, x)) / PS_MIN) / Math.log(PS_MAX / PS_MIN)); }
+  function psStart(q) {
+    var p = String(q.prijs || ''), m = /^(?:tot|r0-)(\d{1,4})$/.exec(p);
+    if (m) return Math.max(PS_MIN, Math.min(PS_MAX, +m[1]));
+    return ({ '25-50': 50, '50-100': 100 })[p] || 0;
+  }
+  function psFilter(vol, x) {
+    if (!x) return vol;
+    var eerst = [], dan = [];
+    vol.forEach(function (p) { if (p.prijs <= x) (p.prijs >= x * 0.45 ? eerst : dan).push(p); });
+    return eerst.concat(dan);
+  }
+  function psLabel(x) { return x ? 'Tot €\u00a0' + x : 'Alle bedragen'; }
+  function psAantal(n) { return getal(n) + (n === 1 ? ' cadeau' : ' cadeaus'); }
+  function psLeeg() { return leegBlok('Niets in dit bedrag', 'Schuif het bedrag wat hoger, dan komen er cadeaus bij.', ''); }
+  function psBak(v) { return Math.min(23, Math.floor(v / 1000 * 24)); }
+  function prijsSchuif(vol, x, k) {
+    var bak = []; for (var i = 0; i < 24; i++) bak.push(0);
+    vol.forEach(function (p) { bak[psBak(psNaarSchuif(p.prijs))]++; });
+    /* het laatste staafje (alles vanaf ongeveer € 130) telt niet mee voor de hoogte, anders worden de andere te klein om iets te zien */
+    var hoog = Math.max.apply(null, bak.slice(0, 23)) || 1, v = psNaarSchuif(x);
+    return '<div class="ps-boven"><p class="ps-vraag">Hoeveel wil je uitgeven?</p></div>' +
+      '<div class="ps-wacht" aria-hidden="true"></div>' +
+      '<div class="pschuif" data-pschuif="' + k + '" data-x="' + x + '">' +
+        '<div class="ps-kop"><span class="ps-bedrag" data-ps-g>' + psLabel(x) + '</span><span class="ps-n" data-ps-n>' + psAantal(psFilter(vol, x).length) + '</span></div>' +
+        '<div class="ps-histo" aria-hidden="true">' + bak.map(function (c, j) { return '<i style="height:' + Math.max(8, Math.min(100, Math.round(c / hoog * 100))) + '%"' + (j <= psBak(v) ? ' class="aan"' : '') + '></i>'; }).join('') + '</div>' +
+        '<input class="ps-r" type="range" min="0" max="1000" step="1" value="' + v + '" style="--pos:' + (v / 10) + '%" aria-label="Hoeveel wil je uitgeven?" aria-valuetext="' + psLabel(x) + '">' +
+      '</div>' +
+      '<div class="ps-snel" role="group" aria-label="Snel een bedrag kiezen">' + [10, 15, 25, 50, 0].map(function (b) { return '<button type="button" data-ps-snel="' + b + '" aria-pressed="' + (b === x) + '">' + (b ? '€ ' + b : 'Alles') + '</button>'; }).join('') + '</div>';
+  }
+  /* Na het schuiven: de cadeaus eronder opnieuw, zonder nieuwe pagina. Kaarten die blijven worden hergebruikt en glijden naar hun nieuwe plek. */
+  function psToon(el, x) {
+    var m = PS_LIJSTEN[+el.getAttribute('data-pschuif')], wrap = el.parentNode, uit = wrap && wrap.querySelector('[data-ps-uit]');
+    if (!m || !uit) return;
+    var lijst = psFilter(m.vol, x); if (RUST) lijst = lijst.slice(0, 96);
+    var n = Math.min(24, lijst.length), k = -1;
+    var kop = uit.querySelector('.wz-uit');
+    var kopHtml = !lijst.length ? '' : '<h2>' + (n === 1 ? 'Onze beste keuze' : 'Onze ' + n + ' beste keuzes') + '</h2>' +
+      (lijst.length > 12 ? '<p>Gekozen uit ' + getal(lijst.length) + ' cadeaus voor ' + esc(m.naam) + m.lft + (x ? ', tot €&nbsp;' + x : '') + (m.sub ? ', bij ' + esc(m.sub) : '') + '. Wij hebben al voor je gekozen.</p>' : '');
+    if (kop && kopHtml) kop.innerHTML = kopHtml;
+    else if (kop) kop.remove();
+    else if (kopHtml) { var kd = document.createElement('div'); kd.className = 'wz-uit'; kd.innerHTML = kopHtml; uit.insertBefore(kd, uit.firstChild); }
+    var oud = uit.querySelector('.prodgrid'), oudKnop = uit.querySelector('.meer-knop');
+    var waren = {}, plek = {};
+    if (oud) [].slice.call(oud.children).forEach(function (c) { var f = c.querySelector('[data-fav]'); if (f) { var id = f.getAttribute('data-fav'); waren[id] = c; plek[id] = c.getBoundingClientRect(); } });
+    var g = document.createElement('div'); g.className = 'prodgrid';
+    var nieuw = [];
+    if (!lijst.length) g.innerHTML = psLeeg();
+    else {
+      k = MEER_LIJSTEN.push({ lijst: lijst, getoond: n, per: 24, tekst: 'Meer cadeaus laten zien' }) - 1;
+      g.setAttribute('data-meer-grid', k);
+      lijst.slice(0, n).forEach(function (p) {
+        var c = waren[p.id];
+        if (!c) { var tmp = document.createElement('div'); tmp.innerHTML = LK.productKaart(p); c = tmp.firstChild; c.classList.add('ps-in'); nieuw.push(c); }
+        g.appendChild(c);
+      });
+      vulIconen(g); netteLinks(g);
+    }
+    if (oud) oud.parentNode.replaceChild(g, oud); else uit.appendChild(g);
+    if (oudKnop) oudKnop.remove();
+    if (lijst.length > n) {
+      var mk = document.createElement('div'); mk.className = 'meer-knop groot';
+      mk.innerHTML = '<button class="knop knop-rand" type="button" data-meer="' + k + '">Meer cadeaus laten zien</button>';
+      g.parentNode.insertBefore(mk, g.nextSibling); psAuto(mk.firstChild);
+    }
+    /* Glijden: wat al in beeld stond, beweegt van zijn oude naar zijn nieuwe plek (alleen als de telefoon geen 'minder beweging' vraagt). */
+    if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      [].slice.call(g.children).forEach(function (c) {
+        var f = c.querySelector && c.querySelector('[data-fav]'), a = f && plek[f.getAttribute('data-fav')];
+        if (!a || nieuw.indexOf(c) !== -1 || !c.animate) return;
+        var b = c.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        if (Math.abs(dy) > window.innerHeight * 1.5) return; /* van ver buiten beeld: niet over het hele scherm laten vliegen */
+        c.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      });
+    }
+    var alleLink = wrap.parentNode && wrap.parentNode.querySelector('[data-wz-alles] small'); if (alleLink) alleLink.textContent = '(alle ' + getal(lijst.length) + ')';
+  }
+  /* Eén keer vanzelf de volgende 24 als je bij de knop komt (zoals de gewone lijst), daarna de knop. */
+  function psAuto(knop) {
+    if (!knop || !('IntersectionObserver' in window)) return;
+    var kijk = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      kijk.disconnect(); if (knop.isConnected) toonMeer(knop.getAttribute('data-meer'));
+    }, { rootMargin: '0px 0px 700px 0px' });
+    kijk.observe(knop);
+  }
+  function psZet(el, x, klaar) {
+    var m = PS_LIJSTEN[+el.getAttribute('data-pschuif')]; if (!m) return;
+    var r = el.querySelector('.ps-r'), v = psNaarSchuif(x), wrap = el.parentNode;
+    if (r) { r.style.setProperty('--pos', (+r.value / 10) + '%'); r.setAttribute('aria-valuetext', psLabel(x)); }
+    if (el.getAttribute('data-x') !== String(x)) {
+      el.setAttribute('data-x', String(x));
+      var gl = el.querySelector('[data-ps-g]'), nl = el.querySelector('[data-ps-n]');
+      if (gl) gl.textContent = psLabel(x);
+      if (nl) nl.textContent = psAantal(psFilter(m.vol, x).length);
+      [].slice.call(el.querySelectorAll('.ps-histo i')).forEach(function (b, j) { b.classList.toggle('aan', j <= psBak(v)); });
+      [].slice.call(wrap.querySelectorAll('[data-ps-snel]')).forEach(function (b) { b.setAttribute('aria-pressed', String(+b.getAttribute('data-ps-snel') === x)); });
+      if (!el._psRaf) el._psRaf = requestAnimationFrame(function () { el._psRaf = 0; psToon(el, +el.getAttribute('data-x')); });
+      /* Het bedrag in het adres en in de links naar de onderwerpen en 'Sorteren en filteren' (als ?prijs=tot25). */
+      try { history.replaceState(history.state, '', maakAdres(m.pad, Object.assign({}, m.basis, x ? { prijs: 'tot' + x } : {}))); laatstGetoond = huidigAdres(); } catch (e) {}
+      [].slice.call(app.querySelectorAll('.wz-keuze a.chip, [data-wz-alles]')).forEach(function (a) {
+        try { var u = new URL(a.getAttribute('href'), location.origin); if (x) u.searchParams.set('prijs', 'tot' + x); else u.searchParams.delete('prijs'); a.setAttribute('href', u.pathname + u.search); } catch (e) {}
+      });
+    }
+    if (klaar) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'prijsschuif/' + (x ? 'tot-' + x : 'alles'), title: 'Prijsschuif: ' + psLabel(x), event: true }); } catch (e) {} }
+  }
+  document.addEventListener('input', function (e) {
+    var r = e.target; if (!r || !r.classList || !r.classList.contains('ps-r')) return;
+    var el = r.closest('[data-pschuif]'); if (el) psZet(el, psNaarPrijs(+r.value));
+  });
+  document.addEventListener('change', function (e) {
+    var r = e.target; if (!r || !r.classList || !r.classList.contains('ps-r')) return;
+    var el = r.closest('[data-pschuif]'); if (el) psZet(el, psNaarPrijs(+r.value), true);
+  });
+  document.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest && e.target.closest('[data-ps-snel]'); if (!b) return;
+    var wrap = b.closest('.ps-wrap'), el = wrap && wrap.querySelector('[data-pschuif]'), r = el && el.querySelector('.ps-r'); if (!el || !r) return;
+    var x = +b.getAttribute('data-ps-snel'); r.value = psNaarSchuif(x); psZet(el, x, true);
+  });
   /* Volgende portie kaarten erbij zetten (knop 'Toon meer', of terugkomen op een lijst waar je al verder was). */
   function toonMeer(k, aantal, waar) {
     waar = waar || app;
@@ -1893,7 +2029,9 @@
     if (selectie.length < 4) selectie = [];
     selectie = []; /* 8-11-2026 (GO Marius): 'Onze selectie' ook van de Voor wie-pagina's af, net als bij de gelegenheden. */
     /* 02-11-2026: wat al in 'Onze selectie' staat, niet meteen nog eens bovenaan de lijst eronder (dat leek dubbel). En afwisselen in winkel en soort. */
-    if (!s && (!q.sort || q.sort === 'aanbevolen')) {
+    /* PRIJSSCHUIF (16-11-2026): de volgorde hieronder staat in een functie, zodat de schuif dezelfde volgorde kan maken zonder prijsfilter. */
+    var ordenP = function (lijst) {
+      if (s || (q.sort && q.sort !== 'aanbevolen')) return lijst;
       var inSel = {}; if (!q.prijs || q.prijs === 'alle') selectie.forEach(function (p) { inSel[p.id] = 1; });
       var basis = lijst.filter(function (p) { return !inSel[p.id]; });
       /* Bovenaan om de beurt uit elk vakje van deze persoon (volgorde = waar het meest naar gezocht wordt): een sieraad, een parfum, iets voor in huis... */
@@ -1902,8 +2040,9 @@
       var top = [], gehad = {};
       for (var r = 0; top.length < 60 && r < 12; r++) perVak.forEach(function (l) { var t = 0; while (t < l.length && gehad[l[t].id]) t++; var p = l[t]; if (p && top.length < 60) { gehad[p.id] = 1; top.push(p); l.splice(0, t + 1); } });
       lijst = afwisselen(top, 60).concat(basis.filter(function (p) { return !gehad[p.id]; })).concat(lijst.filter(function (p) { return inSel[p.id]; }));
-      lijst = bovenaan(lijst, pad); /* 10-11-2026: ook na het om-en-om mixen de aparte cadeaus eerst (of de heldenrij) */
-    }
+      return bovenaan(lijst, pad); /* 10-11-2026: ook na het om-en-om mixen de aparte cadeaus eerst (of de heldenrij) */
+    };
+    lijst = ordenP(lijst);
     var anderen = window.LK_PERSONEN.filter(function (x) { return x.slug !== pe.slug; });
 
     /* WIJZER (proef): de nieuwe opzet. Alleen zonder eigen sortering of filters; met ?alles=1 krijg je de gewone lijst met werkbalk. */
@@ -1917,6 +2056,20 @@
     LK.redenAltijd = !!wzAan;
     if (wzAan) {
       var wzLijst = sieradenLaat(etalageEerst(lijst), pad);
+      /* PRIJSSCHUIF (16-11-2026, GO Marius): één schuif in marineblauw en goud vlak boven de cadeaus. Schuif je, dan veranderen de cadeaus meteen,
+         zonder nieuwe pagina. Uitgangspunt: alle cadeaus van deze pagina in dezelfde volgorde, zonder prijsfilter. Het bedrag staat in het adres
+         als ?prijs=tot25 (zelfde als het oude filter), dus de onderwerpen, de terugknop en 'Sorteren en filteren' nemen het vanzelf mee. */
+      var psAan = false, psK = -1, psX = 0;
+      if (PS) {
+        var psVol = (q.prijs && q.prijs !== 'alle') ? sieradenLaat(etalageEerst(ordenP(sorteer(alles.filter(function (p) { return knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad))), pad) : wzLijst;
+        if (psVol.length >= 8) {
+          psAan = true; psX = psStart(q);
+          psK = PS_LIJSTEN.push({ vol: psVol, pad: pad, basis: q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {},
+            naam: /^(hem|haar|kinderen|tieners)$/.test(naam) ? naam : naam.toLowerCase(), sub: s ? s.naam.toLowerCase() : '',
+            lft: q.leeftijd && wzLft ? ' van ' + q.leeftijd.replace('-', ' tot ') + ' jaar' : '' }) - 1;
+          wzLijst = psFilter(psVol, psX);
+        }
+      }
       var wzTotaal = wzLijst.length;
       if (RUST) wzLijst = wzLijst.slice(0, 96); /* RUST: niet overvol. Eerst de met de hand gekozen top, samen hooguit 96; de rest via 'Alles bekijken' */
       var wzNaam = /^(hem|haar|kinderen|tieners)$/.test(naam) ? naam : naam.toLowerCase();
@@ -1948,7 +2101,7 @@
       }
       var wzN = Math.min(24, wzLijst.length); /* 13-11-2026: 24 meteen in beeld (was 12) */
       var wzKop = !wzLijst.length ? '' : '<div class="wz-uit"><h2>' + (wzN === 1 ? 'Onze beste keuze' : 'Onze ' + wzN + ' beste keuzes') + '</h2>' +
-        (RUST ? '<p>Met de hand gekozen voor ' + esc(wzNaam) + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '.</p>' : wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
+        (RUST ? '<p>Met de hand gekozen voor ' + esc(wzNaam) + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '.</p>' : wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (psAan ? (psX ? ', tot €&nbsp;' + psX : '') : wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
       return paginakop({
         titel: s ? s.naam + ' voor ' + naam : pe.naam,
         tekst: '', /* de inleiding staat in de gebouwde pagina (voor Google); in de nieuwe opzet gaan de keuzes en de cadeaus voor */
@@ -1958,11 +2111,12 @@
       '<div class="binnen wijzer">' +
         '<section class="sectie eerste wz-keuze" aria-label="Kies een bedrag en een onderwerp">' +
           (wzLeeftijd ? '<p class="wz-vraag">Hoe oud is het kind?</p><nav class="chips wz-chips wz-bedrag" aria-label="Leeftijd">' + wzLeeftijd + '</nav>' : '') +
-          (wzBedrag ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
+          (wzBedrag && !psAan ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
           (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p><nav class="chips wz-chips wz-rol' + wzRolOpen + '" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>' : '') +
         '</section>' +
         /* 13-11-2026 (wens Marius): 24 cadeaus meteen, bij het scrollen nog 24 vanzelf, daarna één duidelijke knop; sorteren en filteren als echte knop */
-        wzKop + (RUST ? gridMeer(wzLijst, leeg, 24, 'Laat er nog 24 zien') : gridMeer(wzLijst, leeg, 24, 'Meer cadeaus laten zien', 1)) +
+        (psAan ? '<div class="ps-wrap">' + prijsSchuif(PS_LIJSTEN[psK].vol, psX, psK) + '<div data-ps-uit>' : '') +
+        wzKop + (RUST ? gridMeer(wzLijst, leeg, 24, 'Laat er nog 24 zien') : gridMeer(wzLijst, psAan ? psLeeg() : leeg, 24, 'Meer cadeaus laten zien', 1)) + (psAan ? '</div></div>' : '') +
         (RUST && wzTotaal > 24 ? '<p class="wz-alles rh-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Alles bekijken en filteren</a></p>' : '') +
         (!RUST && wzLijst.length > 24 ? '<p class="wz-alles"><a class="knop knop-rand" href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Sorteren en filteren <small>(alle ' + getal(wzLijst.length) + ')</small></a></p>' : '') +
         leesOok(pe.oud || 'voor/' + pe.slug) + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +
@@ -3684,6 +3838,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '16 november', kop: 'Lootje getrokken? 10 nieuwe cadeaus', tekst: 'Net nieuw op de site: van een Pikachu-mok en een kluis-spaarpot tot een paraplu in een whiskyfles.', ids: ['nedg-4c81f01c66', 'bigsiz-4e5500270d', 'cadeau-b636db132b', 'gadget-7e31d86ce4', 'cadeau-bb87e54fa2', 'cadeau-c3439f355f', 'dvzn-cce4b58a90', 'cadeau-13138252a6', 'nedg-aa85125d5b', 'cadeau-c6c97ade65'] },
     { datum: '16 november', kop: 'Te mooi om aan te steken: 6 kaarsen met lef', tekst: 'Van een smeltend hart en een torso-kaars voor hem en haar tot cocktails die je niet kunt drinken.', ids: ['megaga-6067071002', 'sissyb-5747d02176', 'ww-f8f6d12ecc', 'ww-fa986cf0c1', 'hema-2d64a8f6d4', 'joybuy-6516355e12', 'tt-dvzn-a93ae6dedc'] },
     { datum: '16 november', kop: 'Zonde om aan te steken: 5 gekke kaarsen', tekst: 'Door Marius zelf uitgekozen: van een bierpul tot een stuk kaas, allemaal kaarsen.', ids: ['surpri-271f87fd8b', 'joybuy-6516355e12', 'sissyb-f809bf27f0', 'dvzn-770d60cf83', 'speelg-285ac4a6c8'] },
     { datum: '16 november', kop: 'Goedemorgen! Alles onder € 25', tekst: 'Vijf vrolijke cadeaus voor de ochtend: van een spiegelei-mok tot een Harry Potter-wekker.', ids: ['cl-mok-spiegelei', 'tt-dvzn-c0a7b1a834', 'dvzn-995742', 'dvzn-608847', 'dvzn-c15dcffb40'] },
@@ -6579,7 +6734,7 @@
       var verhuisdSub = { horloges: '/c/sieraden/horloges', geuren: '/c/geuren-verzorging/geuren', verzorging: '/c/geuren-verzorging/verzorging' }[d[2]];
       if (verhuisdSub) { ga(verhuisdSub + (a.q.prijs ? '?prijs=' + a.q.prijs : ''), true); return; }
     }
-    TEL = null; BASIS = null; MEER_LIJSTEN = [];
+    TEL = null; BASIS = null; MEER_LIJSTEN = []; PS_LIJSTEN = [];
     /* 9-11-2026 (wens Marius): op pagina's voor mannen geen roze productfoto's (zie productKaart). */
     window.LK_KAART_HEM = (d[0] === 'voor' && /^(hem|vader|vriend|opa)$/.test(d[1] || '')) || a.q.wie === 'heren' || a.q.voor === 'hem' || d.indexOf('herenhorloges') !== -1;
     if (!d.length) html = home();
@@ -6672,6 +6827,13 @@
         if (n <= 1 || !b.isConnected) autoKijker.disconnect();
       }, { rootMargin: '0px 0px 700px 0px' });
       autoKijker.observe(autoKnop);
+    }
+    /* PRIJSSCHUIF: plakt het middenstuk boven, dan schaduw en ronde hoeken onder (alleen uiterlijk, de hoogte blijft gelijk). */
+    var psEl = $('[data-pschuif]', app), psW = $('.ps-wacht', app);
+    if (psEl && psW && 'IntersectionObserver' in window) {
+      var psKopH = Math.round(($('.header') || { getBoundingClientRect: function () { return { height: 64 }; } }).getBoundingClientRect().height);
+      new IntersectionObserver(function (es) { psEl.classList.toggle('klein', !es[0].isIntersecting && es[0].boundingClientRect.top < psKopH + 4); },
+        { rootMargin: '-' + (psKopH + 1) + 'px 0px 0px 0px', threshold: 0 }).observe(psW);
     }
     /* Plakbalk op de productpagina: alleen tonen als de echte knop uit beeld is (en alleen op kleine schermen, zie css). */
     var plak = $('[data-plak]', app), acties = $('[data-acties]', app);

@@ -2570,3 +2570,45 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
   .wt-tegel img { width: 72px; height: 72px; }
   .wt-tekst b { font-size: 1rem; }
 }
+
+/* ===== PRIJSSCHUIF (16-11-2026, GO Marius: 'die prijsbalk, mooi blauw met goud'). Voor wie-pagina's (nieuwe opzet), vlak boven de cadeaus.
+   Drie stukken op een rij die samen één marineblauwe kaart vormen: de vraag (boven), het middenstuk dat blijft plakken onder de kop
+   (bedrag, staafjes, schuif) en de vaste bedragen (onder). Het middenstuk verandert nooit van hoogte, dus de lijst springt niet.
+   Code: blok 'PRIJSSCHUIF' in app.js. Uit: window.LK_PRIJSSCHUIF = false. ===== */
+.ps-wrap { margin: 14px 0 0; }
+.ps-boven, .pschuif, .ps-snel { background: #0A1020; color: #FFFFFF; }
+.ps-boven { border-radius: 18px 18px 0 0; padding: 14px 16px 0; }
+.ps-vraag { margin: 0; font: 800 12.5px/1.3 var(--f-tekst, Manrope, sans-serif); letter-spacing: .08em; text-transform: uppercase; color: #F2CB74; }
+.ps-wacht { height: 0; }
+.pschuif { position: sticky; top: var(--header-h, 64px); z-index: 25; padding: 6px 16px 2px; transition: box-shadow .2s ease, border-radius .2s ease; }
+.pschuif.klein { border-radius: 0 0 18px 18px; box-shadow: 0 12px 22px -12px rgba(10, 16, 32, .6); }
+.ps-kop { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; min-width: 0; }
+.ps-bedrag { flex: none; font: 600 26px/1.15 var(--f-kop, "Playfair Display", Georgia, serif); color: #FFFFFF; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ps-n { min-width: 0; overflow: hidden; text-overflow: ellipsis; font: 700 13.5px/1.2 var(--f-tekst, Manrope, sans-serif); color: #D5D9E3; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ps-histo { display: flex; align-items: flex-end; gap: 2px; height: 22px; margin: 6px 15px 0; }
+.ps-histo i { flex: 1; min-width: 0; background: #2A3550; border-radius: 2px 2px 0 0; transition: background .15s; }
+.ps-histo i.aan { background: #B8862E; }
+.ps-r { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 38px; margin: 0; padding: 0; background: transparent; cursor: pointer; }
+.ps-r::-webkit-slider-runnable-track { height: 8px; border-radius: 8px; background: linear-gradient(90deg, #F2CB74 0, #B8862E var(--pos, 50%), #2A3550 var(--pos, 50%)); }
+.ps-r::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 30px; height: 30px; margin-top: -11px; border-radius: 50%; background: #FFFFFF; border: 4px solid #B8862E; box-shadow: 0 3px 10px rgba(0, 0, 0, .4); }
+.ps-r::-moz-range-track { height: 8px; border-radius: 8px; background: #2A3550; }
+.ps-r::-moz-range-progress { height: 8px; border-radius: 8px; background: #B8862E; }
+.ps-r::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF; border: 4px solid #B8862E; box-shadow: 0 3px 10px rgba(0, 0, 0, .4); }
+.ps-r:focus { outline: none; }
+.ps-r:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 5px rgba(242, 203, 116, .45); }
+.ps-r:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 5px rgba(242, 203, 116, .45); }
+.ps-snel { display: flex; gap: 6px; padding: 6px 16px 14px; border-radius: 0 0 18px 18px; }
+.ps-snel button { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 0 4px; border: 1px solid #2A3550; border-radius: 12px; background: #141C30; color: #FFFFFF; font: 700 14.5px/1 var(--f-ui, Manrope, sans-serif); white-space: nowrap; cursor: pointer; }
+.ps-snel button[aria-pressed="true"] { background: #F2CB74; border-color: #F2CB74; color: #0A1020; }
+.ps-snel button:focus-visible { outline: 2px solid #F2CB74; outline-offset: 2px; }
+.ps-wrap .wz-uit { margin-top: 16px; padding-top: 0; border-top: 0; }
+.ps-wrap .prodkaart.ps-in { animation: psIn .28s ease-out both; }
+@keyframes psIn { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+@media (prefers-reduced-motion: reduce) { .ps-wrap .prodkaart.ps-in { animation: none; } .pschuif { transition: none; } }
+@media (max-width: 360px) { .ps-bedrag { font-size: 22px; } .ps-n { font-size: 12.5px; } .ps-snel button { font-size: 13.5px; } }
+@media (min-width: 760px) {
+  .ps-boven, .pschuif, .ps-snel { padding-left: max(20px, calc((100% - 720px) / 2)); padding-right: max(20px, calc((100% - 720px) / 2)); }
+  .ps-snel { justify-content: center; }
+  .ps-snel button { flex: 0 1 120px; }
+}
+/* ===== einde PRIJSSCHUIF ===== */
