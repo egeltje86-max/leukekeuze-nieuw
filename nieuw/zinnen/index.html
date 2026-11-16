@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – wat zegt hij altijd?</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- TESTVERSIE 'Wat zegt hij of zij altijd?' (16-11-2026, Marius: 'bedenk iets wat nog nooit vertoond is').
+     Alleen via de testlink /nieuw/zinnen/ (noindex + Disallow: /nieuw/ in robots.txt). Op de echte site verandert niets.
+     Idee: je hoeft niet te weten wat iemand wil, je weet wél wat hij altijd zegt. 'Ik heb het koud!', 'Waar is mijn oplader?',
+     'Ik heb helemaal niks nodig hoor.' Tik de zinnen aan die je herkent; bij elke zin staan de cadeaus die erbij passen,
+     en wat bij twee of meer zinnen past staat bovenaan ('Raak!').
+     Verkooppsychologie: herkennen gaat makkelijker dan bedenken (recognition over recall); een reden ('omdat ze altijd zegt…')
+     maakt een keuze makkelijker en geeft het cadeau een verhaal; humor maakt het deelbaar.
+     Regels als de Voor wie-pagina's: handgekozen toppen eerst, nietBij en smal, geen sieraden, drank, kaartjes, kleding in maten, e-steps. -->
+<style>
+:root{--marine:#0A1020;--tekst:#141A2A;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--goud:#B8862E;--dgoud:#8F6620;--lgoud:#F2CB74;--rand:#E5D7BE;--zacht:#5C6272;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--creme);color:var(--tekst);font:500 16px/1.5 var(--f)}
+img{display:block;max-width:100%}
+button,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.test{background:var(--marine);color:#E8E2D6;font:600 13.5px/1.3 var(--f);text-align:center;padding:9px max(16px,env(safe-area-inset-left))}
+.test a{color:var(--lgoud);font-weight:800}
+.kop{display:flex;align-items:center;justify-content:space-between;padding:12px max(16px,env(safe-area-inset-left));background:var(--ivoor);border-bottom:1px solid var(--rand)}
+.kop a{text-decoration:none;font:700 21px/1 var(--k);color:var(--marine)}
+.wrap{max-width:980px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left)) 80px max(16px,env(safe-area-inset-right))}
+h1{font:700 clamp(28px,7.4vw,44px)/1.12 var(--k);margin:4px 0 6px;color:var(--marine);text-wrap:balance}
+.sub{color:var(--zacht);margin:0 0 14px;max-width:56ch}
+.wie{display:inline-grid;grid-template-columns:repeat(3,auto);gap:4px;background:var(--wit);border:1px solid var(--rand);border-radius:999px;padding:4px;margin:0 0 16px}
+.wie button{min-height:42px;padding:0 16px;border-radius:999px;border:0;background:none;font-weight:800;font-size:15px}
+.wie button[aria-pressed="true"]{background:var(--marine);color:#fff}
+
+/* de muur met zinnen: tekstballonnen */
+.muur{display:flex;flex-wrap:wrap;gap:12px 10px;padding-bottom:4px}
+.bal{position:relative;max-width:100%;border:1px solid var(--rand);background:var(--wit);border-radius:20px 20px 20px 6px;padding:11px 16px;min-height:46px;font:700 16px/1.3 var(--f);color:var(--tekst);text-align:left;box-shadow:0 2px 8px rgba(10,16,32,.05)}
+.bal:nth-child(even){border-radius:20px 20px 6px 20px}
+.bal[aria-pressed="true"]{background:var(--marine);border-color:var(--marine);color:#fff;box-shadow:0 0 0 2px var(--lgoud)}
+.bal[aria-pressed="true"]::after{content:"✓";position:absolute;top:-8px;right:-6px;width:24px;height:24px;border-radius:12px;background:var(--goud);color:#fff;font-size:14px;line-height:24px;text-align:center}
+.knop{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:18px;border:0;border-radius:14px;background:var(--marine);color:#fff;font-weight:800;font-size:17px;padding:0 16px;text-align:center}
+.knop:disabled{background:#B9BCC6;cursor:default}
+.tip{font-size:14px;color:var(--zacht);margin:8px 0 0;text-align:center}
+
+/* uitkomst */
+.uit[hidden]{display:none}
+.terug{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--rand);background:var(--ivoor);font-weight:800;font-size:14.5px;margin-bottom:12px}
+.bedrag{display:block;max-width:260px;margin:0 0 6px;position:relative}
+.bedrag span{position:absolute;left:14px;top:7px;font-size:12px;color:var(--zacht);pointer-events:none}
+.bedrag select{width:100%;min-height:52px;appearance:none;-webkit-appearance:none;border:1px solid var(--rand);border-radius:14px;background:var(--wit) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B8862E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding:20px 36px 4px 14px;font:800 15.5px/1.2 var(--f);color:var(--marine)}
+.blok{margin-top:22px}
+.blok .zeg{display:inline-block;max-width:100%;background:var(--marine);color:#fff;border-radius:20px 20px 20px 6px;padding:10px 16px;font:700 18px/1.3 var(--f);margin:0 0 6px}
+.blok .zeg.raak{background:var(--goud)}
+.blok .dan{margin:0 0 10px;color:var(--zacht);font-size:15px}
+.rij{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,44%);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-left)));padding:2px max(16px,env(safe-area-inset-left)) 6px}
+.rij::-webkit-scrollbar{display:none}
+@media (min-width:720px){.rij{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-columns:auto;overflow:visible;margin:0;padding:0}}
+.kaart{scroll-snap-align:start;display:flex;flex-direction:column;background:var(--wit);border:1px solid var(--rand);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(10,16,32,.05);min-width:0}
+.kaart .f{display:block;aspect-ratio:1;background:#fff;border:0;padding:0;width:100%}
+.kaart .f img{width:100%;height:100%;object-fit:contain;padding:6px}
+.kaart .in{display:flex;flex-direction:column;gap:4px;padding:8px 10px 10px;flex:1}
+.kaart .t{font-weight:700;font-size:14.5px;line-height:1.3;color:var(--tekst);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;background:none;border:0;padding:0}
+.kaart .r{font-size:12.5px;font-weight:800;color:var(--dgoud);line-height:1.3}
+.kaart .p{font-weight:800;font-size:16px;color:var(--marine);margin-top:auto}
+.kaart .k{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background:var(--goud);color:#fff;text-decoration:none;font-weight:800;font-size:14px;line-height:1.2;text-align:center;padding:6px 8px}
+.veeg{font-size:13.5px;color:var(--zacht);margin:2px 0 0}
+@media (min-width:720px){.veeg{display:none}}
+.leeg{background:var(--ivoor);border:1px solid var(--rand);border-radius:16px;padding:14px 16px;color:var(--zacht);margin:0}
+.eerlijk{font-size:13.5px;color:var(--zacht);margin:22px 0 0}
+.k-knop{background:var(--marine)!important}
+</style>
+</head>
+<body>
+<div class="test">Testversie: alleen jij ziet dit via deze link. <a href="/">Naar de gewone site</a></div>
+<header class="kop"><a href="/">LeukeKeuze</a></header>
+<main class="wrap">
+  <section id="start">
+    <h1>Wat zegt hij of zij altijd?</h1>
+    <p class="sub">Je weet niet wat je moet geven, maar je weet wel wat ze altijd zeggen. Tik de zinnen aan die je herkent.</p>
+    <div class="wie" role="group" aria-label="Over wie gaat het?" id="wie"></div>
+    <div class="muur" id="muur"></div>
+    <button class="knop" id="toon" type="button" disabled>Tik minstens één zin aan</button>
+    <p class="tip">Hoe meer zinnen je herkent, hoe beter we raden.</p>
+  </section>
+  <section class="uit" id="uit" hidden>
+    <button class="terug" type="button" data-terug>← Andere zinnen kiezen</button>
+    <h1 id="uitkop">Dit past bij wat ze zeggen</h1>
+    <label class="bedrag"><span>Bedrag</span><select id="bedrag" aria-label="Bedrag"><option value="0">Alle bedragen</option><option value="10">Tot € 10</option><option value="25">Tot € 25</option><option value="50">Tot € 50</option></select></label>
+    <div id="blokken"></div>
+    <p class="eerlijk">Prijzen komen van de winkels en kunnen net anders zijn als je bestelt. Bestellen doe je bij de winkel.</p>
+  </section>
+</main>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc;
+  function euro(n) { var s = (Math.round(n * 100) / 100).toFixed(2).split('.'); return '€ ' + s[0] + ',' + s[1]; }
+  function g(p) { return (p.afd || '') + '/' + (p.groep || '') + '/' + (p.vak || ''); }
+  function heeft(l, x) { return (l || []).indexOf(x) !== -1; }
+  var TOPIN = {}, RANG = {};
+  Object.keys(K.TOP).forEach(function (k) { K.TOP[k].forEach(function (id, i) { (TOPIN[id] = TOPIN[id] || []).push(k); var v = i / Math.max(K.TOP[k].length, 12); if (RANG[id] == null || v < RANG[id]) RANG[id] = v; }); });
+  function grappig(p) { return heeft(p.ookIn, 'cadeaus/grappig') || heeft(p.tags, 'grappig') || (TOPIN[p.id] || []).some(function (k) { return k.indexOf('/collectie/grappige-cadeaus') === 0; }); }
+
+  /* de zinnen: t = woorden in de titel, plek = afdeling/groep/vakje, niet = woorden die er niet bij horen */
+  var ZIN = {
+    volw: [
+      { z: 'Ik heb het koud!', t: /plaid|deken|sloffen|pantoffel|kruik|warmtekussen|warmteknuffel|handwarmer|fleece|huissok|bedsok/i, niet: /hond|kat\b|baby|chocolade|olla|plant/i },
+      { z: 'Eerst koffie.', t: /koffie|espresso|cappuccino|latte|melkopschuim|barista|koffiebon/i, niet: /borrelplank|tegeltje/i },
+      { z: 'Waar is mijn oplader?', t: /oplader|powerbank|laadstation|draadloos laden|draadloze lader|laadkabel|magsafe/i, niet: /vr2|fitbit|galaxy fit|nood|controller|dualsense|joy-con/i },
+      { z: 'Ik heb helemaal niks nodig hoor.', plek: /^belevenissen\//, t: /brievenbus|cadeaupakket|bonbon|stroopwafel|chocoladeletter|proeverij|high tea|workshop/i },
+      { z: 'Wat eten we vanavond?', t: /kookboek|recept|pizza|bbq|barbecue|fondue|gourmet|wok|airfryer|snijplank|messenset|kruiden|tapas|tosti/i, niet: /speelgoed|kweek|thee/i },
+      { z: 'Ik ben zó moe.', t: /slaapmasker|slaapspray|kussenspray|bruisbal|massage|spa\b|ontspan|badzout|badbom|oogmasker|lavendel|nekkussen|wellness/i, niet: /slaapzak|camping/i },
+      { z: 'Nog één potje!', plek: /^spellen-puzzels\/(bordspellen|kaart-partyspellen)|^sport-outdoor\/darts/, t: /spel\b|kaartspel|bordspel|darts|dobbel|hitster|uno\b|catan|azul/i, niet: /pijlen|flights|shafts|reserve/i },
+      { z: 'Haha, moet je dit zien!', f: grappig },
+      { z: 'Kijk hoe mijn plantje groeit!', t: /plant|kweek|bonsai|terrarium|zaden|cactus|vetplant|moestuin|bloembol|amaryllis|bloemen/i, niet: /plassend|foto/i },
+      { z: 'Ik lees nog even een hoofdstukje.', t: /leeslamp|book nook|boekensteun|bladwijzer|leeskussen|boekenlegger|e-reader|kobo|boekklem/i, plek: /^boeken-media\/boeken\//, niet: /puzzeldoos/i },
+      { z: 'Kom je ook kijken naar de wedstrijd?', t: /voetbal|darts|formule 1|\bf1\b|verstappen|ajax|psv|feyenoord|stadion/i, niet: /vaas/i },
+      { z: 'Even muziek aan.', t: /speaker|koptelefoon|oordop|platenspeler|radio|karaoke|jbl|marshall|bose|sonos/i, niet: /nood/i },
+      { z: 'Ik ga even een rondje.', t: /hardloop|wandel|fiets|stappenteller|sporthorloge|smartwatch|drinkfles|bidon|yoga|fitness|garmin/i, niet: /elektrische|kinder|sandalen|schoen/i },
+      { z: 'Waar zijn mijn sleutels?', t: /airtag|sleutelvinder|sleutelzoeker|keyfinder|smarttag|smart tag|sleutelkastje|sleutelhouder|sleutelrek|sleutelhanger/i, niet: /puzzel|zilver|goud|ketting/i },
+      { z: 'Ik maak het zelf wel.', plek: /^hobby\//, t: /knutsel|haak|brei|borduur|schilder|diamond painting|kaarsen maken|zelf maken|naaien|pottenbak/i }
+    ],
+    tiener: [
+      { z: 'Nog heel even op mijn telefoon.', t: /telefoon|selfie|ringlamp|powerbank|oplader|houder|oordop|airpods/i },
+      { z: 'Nog één potje!', plek: /^elektronica\/gaming/, t: /gaming|game|controller|playstation|nintendo|switch|xbox|minecraft|mario/i },
+      { z: 'Niet aan mijn kamer komen!', t: /lamp|neon|ledstrip|projector|lichtsnoer|poster|lavalamp|sterren/i, niet: /fiets|zaklamp|hoofdlamp|nagel|watch|spiegel/i },
+      { z: 'Ik verveel me.', t: /puzzel|kaartspel|stressbal|fidget|squish|rubik|breinbreker|escape/i },
+      { z: 'Haha, moet je dit zien!', f: grappig },
+      { z: 'Even muziek aan.', t: /speaker|koptelefoon|oordop|karaoke|microfoon|platenspeler|jbl/i },
+      { z: 'Kijk mijn haar!', t: /\bhaar(?!d)|stijltang|krultang|föhn|scrunchie|nagel|lipgloss|make-up|skincare|sol de janeiro|laneige|bodymist/i, niet: /baard|tondeuse|scheer/i },
+      { z: 'Ik heb honger!', t: /snoep|chocolade|popcorn|ramen|chips|candy|beanboozled/i, niet: /kandelaar|zeep|kaars|bad\b|robotime/i },
+      { z: 'Ik ga sporten.', t: /voetbal|basketbal|darts|sport|skate|fitness|bidon|drinkfles|stanley|owala/i }
+    ],
+    kind: [
+      { z: 'Ik verveel me!', t: /spel\b|kaartspel|puzzel|knutsel|klei|slijm|tekenset|stickers/i },
+      { z: 'Kijk, ik heb het zelf gebouwd!', t: /lego|duplo|knikkerbaan|gravitrax|magnetisch|bouwset|bouwstenen|connetix|playmobil/i, niet: /mok|graphic novel|boek|adventskalender|kerststal/i },
+      { z: 'Waarom? Waarom? Waarom?', t: /experiment|proef|microscoop|wereldbol|ruimte|dino|telescoop|kristal|vulkaan|wetenschap|opgraaf|triops|orboot/i },
+      { z: 'Ik durf niet te slapen.', t: /nachtlamp|nachtlampje|sterrenprojector|projector|lichtgevend|slaapknuffel|kruik/i, niet: /lolly|snoep|kerststal/i },
+      { z: 'Mag ik een huisdier?', t: /bitzee|tamagotchi|interactie|robot.*(hond|dier)|furreal|knuffel|squishmallow/i, niet: /wereldbol|engel|kleurboek|lamp/i },
+      { z: 'Poep! Haha!', f: function (p) { return /poep|scheet|prank|\bgrap|masker|boksende|gillende|\bnep|slijm|stink/i.test(p.titel || '') || ((heeft(p.ookIn, 'cadeaus/grappig') || heeft(p.tags, 'grappig')) && !/microscoop|kristal|candy machine/i.test(p.titel || '')); } },
+      { z: 'Nog één verhaaltje!', plek: /^boeken-media\/kinderboeken\//, t: /voorleesboek|prentenboek|kinderboek|tonie|toniebox/i, niet: /kleurboek|kijk- en zoek|stickerboek/i },
+      { z: 'Mag ik nog even buiten spelen?', plek: /^speelgoed\/buiten-spelen\//, t: /step|loopfiets|vlieger|boemerang|bellenblaas|stoepkrijt|skippybal|slee/i },
+      { z: 'Kijk mij eens!', t: /verkleed|kostuum|microfoon|karaoke|dansmat|toverstaf|prinses|superheld/i },
+      { z: 'Ik ga tekenen!', t: /teken|stift|kleurpotlo|krijt|verf|kleurboek|schilder/i, niet: /play-doh|washimals|miniverse|nagel|vraagteken|lamp/i }
+    ]
+  };
+  var WIE = [['volw', 'Volwassene'], ['tiener', 'Tiener'], ['kind', 'Kind']];
+
+  function weg(p) {
+    if (!(p.prijs > 0) || K.sieraad(p) || K.drank(p) || p.drank || p.los) return true;
+    if (p.prijs < 5 && (p.shop === 'Kaartje2go' || /(^|\s)(kaart|kerstkaart|wenskaart|felicitatiekaart|sinterklaaskaart|verjaardagskaart)(\s|$|[:,])/i.test(p.titel || ''))) return true;
+    if (/elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || ''))) return true;
+    if (/truien-hoodies|t-shirts|sneakers|laarzen|handschoenen/.test(p.vak || '')) return true;
+    if (/\bhoodie\b|\btrui\b|t-shirt/i.test(p.titel || '') && !/deken|teddy|kerst|snuggle/i.test(p.titel || '')) return true;
+    if (/^eten-drinken\/drankaccessoires/.test(g(p)) || /^dieren\//.test(g(p))) return true;
+    return !!p.smal;
+  }
+  function voorWie(p, w) {
+    var v = p.voor || [], lt = p.leeftijd;
+    if (w === 'kind') return heeft(v, 'kind') && (p.nietBij || []).indexOf('kinderen') === -1;
+    if (w === 'tiener') return heeft(v, 'tiener') && (p.nietBij || []).indexOf('tieners') === -1;
+    if (heeft(v, 'kind') || heeft(v, 'baby')) return heeft(v, 'haar') || heeft(v, 'hem') || heeft(v, 'opa-oma');
+    if (lt && lt[1] && lt[1] <= 12) return false;
+    return heeft(v, 'haar') || heeft(v, 'hem') || heeft(v, 'iedereen') || heeft(v, 'opa-oma') || heeft(v, 'collega');
+  }
+  function past(p, z) {
+    if (z.f) return z.f(p);
+    if (z.niet && z.niet.test(p.titel || '')) return false;
+    return (z.t && z.t.test((p.titel || '') + ' ' + (p.merk || ''))) || (z.plek && z.plek.test(g(p)));
+  }
+  var POOL = {};
+  function pool(w) {
+    if (POOL[w]) return POOL[w];
+    var l = K.ALLES.filter(function (p) { return !weg(p) && voorWie(p, w); });
+    l.forEach(function (p) { p._s = RANG[p.id] != null ? RANG[p.id] : 3 + (1 - (p.rang || 0)); });
+    l.sort(function (a, b) { return a._s - b._s; });
+    return (POOL[w] = l);
+  }
+  /* per 8 cadeaus hooguit 2 uit hetzelfde vakje */
+  function mix(l) {
+    var uit = [], rest = l;
+    while (rest.length) { var tel = {}, blok = [], volg = []; rest.forEach(function (p) { var v = p.vak || '?'; if (blok.length < 8 && (tel[v] || 0) < 2) { tel[v] = (tel[v] || 0) + 1; blok.push(p); } else volg.push(p); }); uit = uit.concat(blok); rest = volg; }
+    return uit;
+  }
+
+  /* ---------- scherm 1: de muur met zinnen ---------- */
+  var NU = { w: 'volw', zinnen: [], max: 0 };
+  var elWie = document.getElementById('wie'), elMuur = document.getElementById('muur'), elToon = document.getElementById('toon');
+  function tekenStart() {
+    elWie.innerHTML = WIE.map(function (x) { return '<button type="button" data-w="' + x[0] + '" aria-pressed="' + (NU.w === x[0]) + '">' + x[1] + '</button>'; }).join('');
+    elMuur.innerHTML = ZIN[NU.w].map(function (z, i) { return '<button class="bal" type="button" data-z="' + i + '" aria-pressed="' + (NU.zinnen.indexOf(i) !== -1) + '">“' + esc(z.z) + '”</button>'; }).join('');
+    var n = NU.zinnen.length;
+    elToon.disabled = !n;
+    elToon.textContent = n ? 'Laat zien wat erbij past (' + n + (n === 1 ? ' zin)' : ' zinnen)') : 'Tik minstens één zin aan';
+  }
+  /* ---------- scherm 2: per zin de cadeaus, eerst wat bij meer zinnen past ---------- */
+  function kaart(p, reden) {
+    return '<article class="kaart"><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="Meer over ' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button><div class="in"><button class="t" type="button" data-blad="' + esc(p.id) + '">' + esc(p.titel) + '</button>' + (reden ? '<span class="r">' + esc(reden) + '</span>' : '') + '<span class="p">' + euro(p.prijs) + '</span><a class="k" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + '</a></div></article>';
+  }
+  function tekenUit() {
+    var zinnen = NU.zinnen.map(function (i) { return ZIN[NU.w][i]; });
+    var l = pool(NU.w).filter(function (p) { return !NU.max || p.prijs <= NU.max; });
+    var per = zinnen.map(function (z) { return mix(l.filter(function (p) { return past(p, z); })); });
+    var html = '', gebruikt = {};
+    /* Raak: wat bij twee of meer zinnen past */
+    if (zinnen.length > 1) {
+      var tel = {}; per.forEach(function (lijst, i) { lijst.forEach(function (p) { (tel[p.id] = tel[p.id] || []).push(i); }); });
+      var raak = l.filter(function (p) { return tel[p.id] && tel[p.id].length > 1; }).sort(function (a, b) { return tel[b.id].length - tel[a.id].length || a._s - b._s; }).slice(0, 8);
+      if (raak.length) {
+        html += '<div class="blok"><div class="zeg raak">Raak! Past bij meer van wat ze zeggen</div><p class="dan">Deze cadeaus passen bij twee of meer zinnen tegelijk.</p><div class="rij">' +
+          raak.map(function (p) { gebruikt[p.id] = 1; return kaart(p, tel[p.id].map(function (i) { return '“' + zinnen[i].z + '”'; }).join(' + ')); }).join('') + '</div>' + (raak.length > 2 ? '<p class="veeg">Veeg opzij voor meer →</p>' : '') + '</div>';
+      }
+    }
+    zinnen.forEach(function (z, i) {
+      var lijst = per[i].filter(function (p) { return !gebruikt[p.id]; }).slice(0, 8);
+      lijst.forEach(function (p) { gebruikt[p.id] = 1; });
+      html += '<div class="blok"><div class="zeg">“' + esc(z.z) + '”</div><p class="dan">Dan past dit:</p>' +
+        (lijst.length ? '<div class="rij">' + lijst.map(function (p) { return kaart(p, ''); }).join('') + '</div>' + (lijst.length > 2 ? '<p class="veeg">Veeg opzij voor meer →</p>' : '') : '<p class="leeg">Voor dit bedrag vonden we hier niets bij. Kies een ander bedrag.</p>') + '</div>';
+    });
+    document.getElementById('blokken').innerHTML = html;
+    document.getElementById('uitkop').textContent = zinnen.length > 1 ? 'Dit past bij wat ze zeggen' : 'Dit past erbij';
+  }
+  function naarUit() { document.getElementById('start').hidden = true; document.getElementById('uit').hidden = false; tekenUit(); window.scrollTo({ top: 0 }); history.replaceState(null, '', '#' + NU.w + '-' + NU.zinnen.join('.') + (NU.max ? '-' + NU.max : '')); }
+  function naarStart() { document.getElementById('uit').hidden = true; document.getElementById('start').hidden = false; tekenStart(); window.scrollTo({ top: 0 }); history.replaceState(null, '', location.pathname); }
+  document.addEventListener('click', function (e) {
+    var t;
+    if ((t = e.target.closest('[data-w]'))) { if (NU.w !== t.getAttribute('data-w')) { NU.w = t.getAttribute('data-w'); NU.zinnen = []; } tekenStart(); return; }
+    if ((t = e.target.closest('[data-z]'))) { var i = +t.getAttribute('data-z'), k = NU.zinnen.indexOf(i); if (k === -1) NU.zinnen.push(i); else NU.zinnen.splice(k, 1); tekenStart(); return; }
+    if (e.target.closest('#toon')) { naarUit(); return; }
+    if (e.target.closest('[data-terug]')) { naarStart(); return; }
+  });
+  document.getElementById('bedrag').addEventListener('change', function (e) { NU.max = +e.target.value; tekenUit(); history.replaceState(null, '', '#' + NU.w + '-' + NU.zinnen.join('.') + (NU.max ? '-' + NU.max : '')); });
+  /* een gedeeld adres (#volw-0.5.7) opent meteen de uitkomst */
+  var h = (location.hash || '').slice(1).match(/^(volw|tiener|kind)-([\d.]+)(?:-(\d+))?$/);
+  if (h) { NU.w = h[1]; NU.zinnen = h[2].split('.').map(Number).filter(function (i) { return ZIN[NU.w][i]; }); NU.max = +h[3] || 0; document.getElementById('bedrag').value = String(NU.max); }
+  if (h && NU.zinnen.length) naarUit(); else tekenStart();
+})();
+</script>
+</body>
+</html>
