@@ -44,7 +44,15 @@ def bewaar(pad, data):
 
 
 SITE_JS = os.environ.get('SKK_SITE', r'C:\Users\egelt\Documents\LeukeKeuze-Zoekindex\assets\js\producten.js')
-SITE = {'tijd': None, 'titels': set(), 'urls': set()}
+# 16-11-2026 (Marius: 'als ik ga kijken moeten er alleen spullen staan die we nog niet hebben'):
+# wat al op leukekeuze.nl staat (of stond en is weggehaald) laat de Superkeurkamer niet meer zien.
+# Bron: de live productlijst van de site (elk half uur vers, kopie in data/site-cache) plus de nachtelijke kopie hierboven.
+SITE_LIVE = os.environ.get('SKK_LIVE', 'https://leukekeuze.nl')
+SITE_CACHE = os.path.join(DATA, 'site-cache')
+SITE = {'sleutel': None, 'gecheckt': 0, 'versie': 0, 'titels': set(), 'urls': set(), 'hash': set(), 'lego': set()}
+PARAM_DIEP = ('r', 'u', 'ued', 'murl', 'dl', 'url', 'desturl', 'redirect')
+LEGO_NR = re.compile(r'\b(\d{5})\b')
+VELD = re.compile(r"""["']?(id|titel|url|winkelUrl)["']?\s*:\s*("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')""")
 
 
 def titel_kern(t):
@@ -58,32 +66,134 @@ def url_kern(u):
     return u if '/' in u else ''
 
 
-def site_index():
-    """Titels en winkellinks van de producten die al op leukekeuze.nl staan (uit de nachtelijke kopie van de site)."""
+def diep(u):
+    """Partnerlink -> de gewone winkelpagina die erin zit (r=, u=, ued=, murl=, dl=)."""
     try:
-        t = os.path.getmtime(SITE_JS)
+        q = parse_qs(urlparse(u or '').query)
+    except Exception:
+        return ''
+    for k in PARAM_DIEP:
+        for v in q.get(k, []):
+            if v.startswith('http'):
+                return v
+    return ''
+
+
+def url_kernen(*us):
+    """Winkelpagina's (zonder partnerlink eromheen). Een partnerlink zelf telt niet: die is voor veel producten gelijk."""
+    uit = set()
+    for u in us:
+        k = url_kern(diep(u) or u)
+        if k and len(k.split('/', 1)[1]) >= 6 and not re.search(r'(tradetracker|awin1|daisycon|partner\.|/c$|cread\.php|/tt/?$|/click)', k):
+            uit.add(k)
+    return uit
+
+
+def link_hash(u):
+    """Een product-id op de site is winkel + de eerste 10 tekens van md5(link)."""
+    return hashlib.md5(u.encode('utf-8')).hexdigest()[:10] if u else ''
+
+
+def lego_nrs(t):
+    t = plat(t or '')
+    return set(LEGO_NR.findall(t)) if 'lego' in t else set()
+
+
+def haal_live(naam):
+    """Een bestand van leukekeuze.nl, hooguit een half uur oud. Geen internet: de laatste kopie."""
+    os.makedirs(SITE_CACHE, exist_ok=True)
+    pad = os.path.join(SITE_CACHE, naam)
+    try:
+        if not os.path.exists(pad) or time.time() - os.path.getmtime(pad) > 1800:
+            import urllib.request
+            req = urllib.request.Request(SITE_LIVE + '/assets/js/' + naam + '?t=' + str(int(time.time() // 1800)),
+                                         headers={'User-Agent': 'Superkeurkamer'})
+            b = urllib.request.urlopen(req, timeout=40).read()
+            if len(b) > 100000:
+                tmp = pad + '.tmp'
+                with open(tmp, 'wb') as f:
+                    f.write(b)
+                os.replace(tmp, pad)
+    except Exception:
+        pass
+    try:
+        return open(pad, encoding='utf-8').read(), os.path.getmtime(pad)
     except OSError:
-        return SITE
+        return '', 0
+
+
+def lees_waarde(v):
+    if v[0] == "'":
+        v = '"' + v[1:-1].replace("\\'", "'").replace('"', '\\"') + '"'
+    try:
+        return json.loads(v)
+    except Exception:
+        return v[1:-1]
+
+
+def site_index():
+    """Wat al op leukekeuze.nl staat of stond: titels, winkelpagina's, link-codes en LEGO-nummers."""
     with SLOT:
-        if SITE['tijd'] != t:
-            tekst = open(SITE_JS, encoding='utf-8').read()
-            titels, urls = set(), set()
-            for m in re.finditer(r'"titel"\s*:\s*"((?:[^"\\]|\\.)*)"', tekst):
-                try:
-                    titels.add(titel_kern(json.loads('"' + m.group(1) + '"')))
-                except Exception:
-                    pass
-            for m in re.finditer(r'"winkelUrl"\s*:\s*"((?:[^"\\]|\\.)*)"', tekst):
-                k = url_kern(m.group(1).replace('\\/', '/'))
-                if k:
-                    urls.add(k)
-            SITE.update(tijd=t, titels=titels, urls=urls)
+        if SITE['sleutel'] and time.time() - SITE['gecheckt'] < 60:
+            return SITE
+        SITE['gecheckt'] = time.time()
+        lean, t1 = haal_live('producten-lean.js')
+        det, t2 = haal_live('producten-details.js')
+        try:
+            t0 = os.path.getmtime(SITE_JS)
+        except OSError:
+            t0 = 0
+        sleutel = (t0, t1, t2)
+        if SITE['sleutel'] == sleutel:
+            return SITE
+        # de lijst van de site staat in JSON.parse('...'): daar staat elke backslash dubbel
+        teksten = [lean.replace('\\\\', '\\'), det]
+        if t0:
+            try:
+                teksten.append(open(SITE_JS, encoding='utf-8').read())
+            except OSError:
+                pass
+        titels, urls, hashes, lego = set(), set(), set(), set()
+        for tekst in teksten:
+            for m in VELD.finditer(tekst):
+                naam, v = m.group(1), lees_waarde(m.group(2))
+                if not isinstance(v, str) or not v:
+                    continue
+                if naam == 'id':
+                    h = v.rsplit('-', 1)[-1]
+                    if re.fullmatch(r'[0-9a-f]{10}', h):
+                        hashes.add(h)
+                elif naam == 'titel':
+                    k = titel_kern(v)
+                    if k:
+                        titels.add(k)
+                    lego |= lego_nrs(v)
+                else:
+                    urls |= url_kernen(v.replace('\\/', '/'))
+        SITE.update(sleutel=sleutel, versie=SITE['versie'] + 1, titels=titels, urls=urls, hash=hashes, lego=lego)
     return SITE
 
 
-def op_site(t, u):
+def op_site(t, u, l=None):
+    """Staat dit product al op de site (of stond het er en is het weggehaald)? Op naam, winkelpagina, link-code of LEGO-nummer."""
     s = site_index()
-    return titel_kern(t) in s['titels'] or (url_kern(u) in s['urls'] if url_kern(u) else False)
+    if titel_kern(t) in s['titels']:
+        return True
+    if url_kernen(u, l) & s['urls']:
+        return True
+    if link_hash(l) in s['hash'] or link_hash(u) in s['hash']:
+        return True
+    nrs = lego_nrs(t)
+    return bool(nrs and nrs & s['lego'])
+
+
+def op_site_p(p):
+    """Zelfde, maar onthouden per product van een partner (tot de lijst van de site verandert)."""
+    o = p.get('_os')
+    if not o or o[0] != SITE['versie']:
+        o = (SITE['versie'], op_site(p.get('t'), p.get('u'), p.get('l')))
+        p['_os'] = o
+    return o[1]
 
 
 def sleutel(pid, p):
@@ -122,7 +232,8 @@ def filter_producten(d, q):
     kenm = [k for k in q.get('kenmerk', [''])[0].split('|') if k]
     lo = float(q.get('min', ['0'])[0] or 0)
     hi = float(q.get('max', ['0'])[0] or 0)
-    basis = [p for p in d['producten'] if p['g'][:len(pad)] == pad]
+    site_index()
+    basis = [p for p in d['producten'] if p['g'][:len(pad)] == pad and not op_site_p(p)]   # 16-11-2026: alleen wat we nog niet hebben
     uit = []
     for p in basis:
         if zoek and not all(w in p['_z'] for w in zoek):
@@ -181,14 +292,14 @@ def api_producten(q):
     pagina = int(q.get('pagina', ['1'])[0] or 1)
     per = 60
     stuk = uit[(pagina - 1) * per: pagina * per]
-    return {'totaal': len(uit), 'basis': len(basis), 'pagina': pagina, 'paginas': max(1, -(-len(uit) // per)),
+    return {'totaal': len(uit), 'basis': len(basis), 'verborgen': sum(1 for p in d['producten'] if p['g'][:len(pad)] == pad and p.get('_os', (0, False))[1]), 'pagina': pagina, 'paginas': max(1, -(-len(uit) // per)),
             'kinderen': kinderen,
             'kenmerken': [[k, n] for k, n in km.most_common(16) if n < len(uit) or len(uit) < 4],
             'merken': [[k, n] for k, n in mk.most_common(40)],
             'korting': sum(1 for p in uit if p['o']), 'populair': sum(1 for p in uit if p['pop']),
-            'producten': [{k: v for k, v in p.items() if k not in ('_z',)} | {'gekozen': p['key'] in gekozen,
+            'producten': [{k: v for k, v in p.items() if k not in ('_z', '_os')} | {'gekozen': p['key'] in gekozen,
                          'inCat': bool(actief) and actief in cats_van.get(p['key'], []),
-                         'opsite': op_site(p['t'], p['u'])} for p in stuk]}
+                         'opsite': False} for p in stuk]}
 
 
 CATA = {'tijd': None, 'feed': {}}
@@ -497,23 +608,32 @@ def api_zoek(q):
             c.execute('CREATE TEMP TABLE slim(id INTEGER PRIMARY KEY)')
             c.executemany('INSERT INTO temp.slim VALUES (?)', ((i,) for i in ids[1]))
         basis = ' AND '.join(waar) or '1'
-        partners = c.execute('SELECT pid, winkel, count(*) FROM p WHERE %s GROUP BY pid ORDER BY 3 DESC LIMIT 80' % basis, args).fetchall()
-        w2, a2 = list(waar), list(args)
-        if pid:
-            w2.append('p.pid = ?'); a2.append(pid)
-        w2 = w2 or ['1']
-        totaal = c.execute('SELECT count(*) FROM p WHERE %s' % ' AND '.join(w2), a2).fetchone()[0]
         sort = q.get('sort', ['beste'])[0]
         orde = {'korting': 'p.pct DESC, p.p', 'prijs-op': 'p.p', 'prijs-af': 'p.p DESC', 'naam': 'p.t'}.get(sort, '')
+        oargs = []
         if not orde:
             orde = '(instr(lower(p.t), ?) > 0) DESC, p.pop DESC, (p.pct >= 10) DESC, (p.f != \'\') DESC, p.st DESC, length(p.t)'
             if soort:
                 orde = ("(CASE WHEN p.pid IN (%s) THEN 0 WHEN p.pid IN (%s) THEN 2 ELSE 1 END), " % (','.join("'%s'" % x for x in FIJN), ','.join("'%s'" % x for x in LAAG))) + orde
-            a2 = a2 + [woorden[0] if woorden else (re.sub(r'\s+', ' ', plat(soort['zoek'][0])).strip() if soort else merk)]
+            oargs = [woorden[0] if woorden else (re.sub(r'\s+', ' ', plat(soort['zoek'][0])).strip() if soort else merk)]
+        # 16-11-2026 (Marius: 'als ik ga kijken moeten er alleen spullen staan die we nog niet hebben'):
+        # eerst alles wat past, op volgorde; dan weg wat al op de site staat of stond; dan pas de bladzijde.
+        site_index()
+        kand = c.execute('SELECT p.id, p.pid, p.winkel, p.t, p.u, p.l FROM p WHERE %s ORDER BY %s' % (basis, orde), args + oargs).fetchall()
+        vrij = [r for r in kand if not op_site(r[3], r[4], r[5])]
+        verborgen = len(kand) - len(vrij)
+        tel = Counter((r[1], r[2]) for r in vrij)
+        partners = [(a, b, n) for (a, b), n in tel.most_common(80)]
+        sel = [r[0] for r in vrij if not pid or r[1] == pid]
+        totaal = len(sel)
         pagina = int(q.get('pagina', ['1'])[0] or 1)
         heeft_e = any(r[1] == 'e' for r in c.execute('PRAGMA table_info(p)'))
-        rijen = c.execute('SELECT pid, winkel, key, t, m, p, o, pct, f, u, l, g, k, pop, st, v%s FROM p WHERE %s ORDER BY %s LIMIT 60 OFFSET %d'
-                          % (", e" if heeft_e else ", ''", ' AND '.join(w2), orde, (pagina - 1) * 60), a2).fetchall()
+        ids = sel[(pagina - 1) * 60: pagina * 60]
+        rijen = []
+        if ids:
+            rij = {r[0]: r[1:] for r in c.execute('SELECT p.id, pid, winkel, key, t, m, p, o, pct, f, u, l, g, k, pop, st, v%s FROM p WHERE p.id IN (%s)'
+                                                    % (", e" if heeft_e else ", ''", ','.join('?' * len(ids))), ids)}
+            rijen = [rij[i] for i in ids if i in rij]
         # zelfde product (zelfde barcode) bij andere winkels: prijs vergelijken
         ook = {}
         eans = sorted({r[16] for r in rijen if r[16] and len(r[16]) >= 8})
@@ -540,10 +660,10 @@ def api_zoek(q):
         uit.append({'partner': r[0], 'winkel': r[1], 'key': r[2], 't': r[3], 'm': r[4], 'p': r[5], 'o': r[6], 'pct': r[7], 'f': r[8],
                     'u': r[9], 'l': r[10], 'g': json.loads(r[11]), 'k': [k for k in r[12].split('|') if k], 'pop': r[13], 'st': r[14],
                     'v': r[15], 'gekozen': bool(x), 'inCat': bool(x and cat in x.get('categorieen', [])),
-                    'opsite': op_site(r[3], r[9]), 'ean': r[16],
+                    'opsite': False, 'ean': r[16],
                     'ook': sorted([{'winkel': w, 'p': op} for opid, w, op in ook.get(r[16], []) if opid != r[0]], key=lambda y: y['p'])[:4],
                     'min30': (pinfo.get(r[2]) or {}).get('min30'), 'sinds': (pinfo.get(r[2]) or {}).get('sinds')})
-    return {'totaal': totaal, 'pagina': pagina, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
+    return {'totaal': totaal, 'verborgen': verborgen, 'pagina': pagina, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
             'partners': [{'id': a, 'naam': b, 'n': n} for a, b, n in partners], 'producten': uit}
 
 

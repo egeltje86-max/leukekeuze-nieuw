@@ -76,7 +76,7 @@ h1 span{color:var(--rood)}
 <aside class="paneel">
   <div class="boven">
     <h1>Landschap-<span>keurkamer</span></h1>
-    <p class="uitleg"><b>Klik</b> op een cadeau: weg (nog een keer: blijft). <b>Shift + slepen</b>: alles in het vak weg. <b>Alt + Shift + slepen</b>: terug. <b>Ctrl+Z</b>: ongedaan. Gouden rand = <b>zonde?</b> (met de hand gekozen topper).</p>
+    <p class="uitleg"><b>Klik</b> op een cadeau: weg (nog een keer: blijft). <b>Shift + slepen</b>: alles in het vak weg. <b>Alt + Shift + slepen</b>: terug. <b>Ctrl+Z</b>: ongedaan. Gouden rand = <b>zonde?</b> (met de hand gekozen topper). Goud vinkje = <b>blijft staan</b>: klanten komen erop af (klik = toch weg).</p>
   </div>
   <div class="blok">
     <div class="wissel" id="indeling"><button type="button" data-v="afd" aria-pressed="true">Per afdeling</button><button type="button" data-v="groep" aria-pressed="false">Per groep</button><button type="button" data-v="voorwie" aria-pressed="false">Voor wie</button><button type="button" data-v="shop" aria-pressed="false">Per winkel</button></div>
@@ -101,9 +101,10 @@ h1 span{color:var(--rood)}
 (function () {
   'use strict';
   var q = new URLSearchParams(location.search), BRON = (q.get('bron') || 'https://leukekeuze.nl').replace(/\/$/, '');
-  var uur = Math.floor(Date.now() / 36e5);
+  var uur = Math.floor(Date.now() / 12e4); /* 16-11-2026: elke 2 minuten vers (was elk uur: weggehaalde producten bleven dan nog tot een uur op de kaart) */
   function laad(src) { return new Promise(function (ok, nee) { var s = document.createElement('script'); s.src = BRON + src + '?t=' + uur; s.onload = ok; s.onerror = function () { nee(new Error(src)); }; document.head.appendChild(s); }); }
   laad('/assets/js/data.js').then(function () { return laad('/assets/js/topkeuze.js'); }).then(function () { return laad('/assets/js/producten-lean.js'); })
+    .then(function () { return new Promise(function (ok) { var s = document.createElement('script'); s.src = '/blijft.js?t=' + Date.now(); s.onload = ok; s.onerror = ok; document.head.appendChild(s); }); })
     .then(function () { return fetch('/api/keuzes').then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); })
     .then(start).catch(function (e) { document.getElementById('laden').textContent = 'Kon de producten niet ophalen (' + e.message + '). Staat het internet aan?'; });
 
@@ -132,6 +133,12 @@ h1 span{color:var(--rood)}
   var WEG = new Map(), NB = new Map(), KLAAR = false, klikNB = true;
   ((opgeslagen && opgeslagen.weg) || []).forEach(function (x) { if (x && x.id) WEG.set(x.id, x); });
   ((opgeslagen && opgeslagen.nietbij) || []).forEach(function (x) { if (x && x.id && x.voor) NB.set(x.id + '|' + x.voor, x); });
+  /* 16-11-2026: bij het openen opruimen. Wat al van de site is, of bewust blijft staan (app/blijft.js: klanten komen erop af), staat niet meer als 'weg' op de kaart. */
+  var BLIJFT = window.LK_BLIJFT || {}, OPGERUIMD = 0;
+  if (ALLES.length > 5000) {
+    WEG.forEach(function (x, id) { if (!PER[id] || (BLIJFT[id] && !x.toch)) { WEG.delete(id); OPGERUIMD++; } });
+    NB.forEach(function (x, k) { if (!PER[x.id]) { NB.delete(k); OPGERUIMD++; } });
+  }
   var PNAAM = {}; (window.LK_PERSONEN || []).forEach(function (pe) { PNAAM[pe.slug] = pe.naam || pe.slug; });
   function pk(slug) { return String(PNAAM[slug] || slug).toLowerCase().replace(/^voor /, ''); }
   function zetNB(keys, aan) {
@@ -143,11 +150,11 @@ h1 span{color:var(--rood)}
   var STAPPEN = [];
   function zetWeg(ids, aan) {
     var veranderd = [];
-    ids.forEach(function (id) { var p = PER[id]; if (!p) return; if (aan && !WEG.has(id)) { WEG.set(id, { id: id, titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), zonde: !!ZONDE[id], gekozen_op: new Date().toISOString() }); veranderd.push(id); } else if (!aan && WEG.has(id)) { WEG.delete(id); veranderd.push(id); } });
+    ids.forEach(function (id) { var p = PER[id]; if (!p) return; if (aan && !WEG.has(id)) { WEG.set(id, { id: id, titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), zonde: !!ZONDE[id], toch: !!BLIJFT[id], gekozen_op: new Date().toISOString() }); veranderd.push(id); } else if (!aan && WEG.has(id)) { WEG.delete(id); veranderd.push(id); } });
     if (veranderd.length) { STAPPEN.push({ ids: veranderd, aan: aan }); KLAAR = false; bewaarStraks(); lijst(); vuil(); }
     return veranderd.length;
   }
-  function ongedaan() { var s = STAPPEN.pop(); if (!s) return; if (s.nb) { s.nb.forEach(function (k) { if (s.aan) NB.delete(k); else { var d = k.split('|'), p = PER[d[0]]; if (p) NB.set(k, { id: p.id, voor: d[1], titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); return; } s.ids.forEach(function (id) { if (s.aan) WEG.delete(id); else { var p = PER[id]; if (p) WEG.set(id, { id: id, titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), zonde: !!ZONDE[id], gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); }
+  function ongedaan() { var s = STAPPEN.pop(); if (!s) return; if (s.nb) { s.nb.forEach(function (k) { if (s.aan) NB.delete(k); else { var d = k.split('|'), p = PER[d[0]]; if (p) NB.set(k, { id: p.id, voor: d[1], titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); return; } s.ids.forEach(function (id) { if (s.aan) WEG.delete(id); else { var p = PER[id]; if (p) WEG.set(id, { id: id, titel: p.titel, shop: p.shop, prijs: p.prijs, plek: plek(p), zonde: !!ZONDE[id], toch: !!BLIJFT[id], gekozen_op: new Date().toISOString() }); } }); bewaarStraks(); lijst(); vuil(); }
   var MELD = '', tBewaar = 0, statusEl = document.getElementById('status');
   function bewaarStraks() { clearTimeout(tBewaar); statusEl.textContent = 'Bewaren…'; tBewaar = setTimeout(bewaar, 700); }
   function bewaar() {
@@ -265,19 +272,20 @@ h1 span{color:var(--rood)}
     var fotos = cel >= 12, pad = fotos ? Math.max(1.5, cel * .05) : Math.max(.3, cel * .12), r = Math.min(9, cel * .12), titels = false; /* 16-11-2026, Marius: geen tekst meer op de foto's bij inzoomen; de beschrijving staat al bij de muis */
     for (var bx = x0; bx <= x1; bx++) for (var by = y0; by <= y1; by++) { var b = bakken[bx + ',' + by]; if (!b) continue;
       for (var j = 0; j < b.length; j++) { var i = b[j], c = cellen[i], s = naarScherm(c.x, c.y), sx = s[0] + pad, sy = s[1] + pad, sw = cel - pad * 2; if (sx > VW || sy > VH || sx + sw < 0 || sy + sw < 0) continue;
-        var weg = WEG.has(c.p.id), nb = c.vw && NB.has(c.p.id + '|' + c.vw), aan = !filtert || passend[i], zonde = ZONDE[c.p.id];
+        var weg = WEG.has(c.p.id), nb = c.vw && NB.has(c.p.id + '|' + c.vw), aan = !filtert || passend[i], zonde = ZONDE[c.p.id], blijft = !weg && BLIJFT[c.p.id];
         ctx.globalAlpha = aan ? (weg && fVerberg ? .25 : 1) : .12;
         if (fotos) {
           var img = foto(c.p); ctx.fillStyle = '#fff'; rr(sx, sy, sw, sw, r); ctx.fill();
           if (img) { ctx.save(); rr(sx, sy, sw, sw, r); ctx.clip(); ctx.drawImage(img, sx + sw * .04, sy + sw * .04, sw * .92, sw * .92); ctx.restore(); }
           if (zonde) { ctx.strokeStyle = '#C9952B'; ctx.lineWidth = Math.max(2, sw * .04); rr(sx, sy, sw, sw, r); ctx.stroke(); }
+          if (blijft) { ctx.strokeStyle = '#C9952B'; ctx.lineWidth = Math.max(3, sw * .07); rr(sx, sy, sw, sw, r); ctx.stroke(); var br = Math.max(5, sw * .13), kx = sx + sw - br - sw * .04, ky = sy + br + sw * .04; ctx.fillStyle = '#C9952B'; ctx.beginPath(); ctx.arc(kx, ky, br, 0, 7); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(1.5, br * .3); ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(kx - br * .45, ky); ctx.lineTo(kx - br * .1, ky + br * .38); ctx.lineTo(kx + br * .5, ky - br * .35); ctx.stroke(); }
           if (weg) { ctx.fillStyle = 'rgba(200,30,30,.45)'; rr(sx, sy, sw, sw, r); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, sw * .07); ctx.lineCap = 'round'; var m = sw * .28; ctx.beginPath(); ctx.moveTo(sx + m, sy + m); ctx.lineTo(sx + sw - m, sy + sw - m); ctx.moveTo(sx + sw - m, sy + m); ctx.lineTo(sx + m, sy + sw - m); ctx.stroke(); }
           else if (nb) { ctx.fillStyle = 'rgba(234,88,12,.45)'; rr(sx, sy, sw, sw, r); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(2, sw * .08); ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(sx + sw * .25, sy + sw / 2); ctx.lineTo(sx + sw * .75, sy + sw / 2); ctx.stroke(); }
           if (titels && aan) { var fs = Math.round(Math.min(13, cel * .085)); ctx.font = '600 ' + fs + 'px Segoe UI, sans-serif'; var rg = regels(c.p.titel, sw - 12, 2), bh = rg.length * (fs + 3) + 26; ctx.globalAlpha = 1; ctx.fillStyle = 'rgba(255,255,255,.94)'; ctx.fillRect(sx, sy + sw - bh, sw, bh); ctx.fillStyle = '#13202B'; rg.forEach(function (t, k) { ctx.fillText(t, sx + 6, sy + sw - bh + fs + 4 + k * (fs + 3)); }); ctx.font = '800 ' + fs + 'px Segoe UI, sans-serif'; ctx.fillText(euro(c.p.prijs) + '  ·  ' + c.p.shop, sx + 6, sy + sw - 8); }
           if (i === hoverI) { ctx.globalAlpha = 1; ctx.strokeStyle = '#13202B'; ctx.lineWidth = 2.5; rr(sx - 2, sy - 2, sw + 4, sw + 4, r + 2); ctx.stroke(); }
         } else {
-          ctx.fillStyle = weg ? '#C81E1E' : nb ? '#EA580C' : (zonde ? '#C9952B' : (aan && filtert ? '#13202B' : c.e.kleur));
-          if (!weg && !nb && !filtert && !zonde) ctx.globalAlpha = .5;
+          ctx.fillStyle = weg ? '#C81E1E' : nb ? '#EA580C' : (zonde || blijft ? '#C9952B' : (aan && filtert ? '#13202B' : c.e.kleur));
+          if (!weg && !nb && !filtert && !zonde && !blijft) ctx.globalAlpha = .5;
           ctx.fillRect(sx, sy, sw, sw);
         }
       } }
@@ -311,10 +319,10 @@ h1 span{color:var(--rood)}
   function toonTip(i, mx, my) {
     if (i < 0 || cam.z < 7) { tip.style.display = 'none'; if (hoverI !== -1) { hoverI = -1; vuil(); } return; }
     if (i !== hoverI) {
-      hoverI = i; vuil(); var c0 = cellen[i], p = c0.p, weg = WEG.has(p.id), nbK = c0.vw ? p.id + '|' + c0.vw : '', nb = nbK && NB.has(nbK), pn = c0.vw ? pk(c0.vw) : '';
+      hoverI = i; vuil(); var c0 = cellen[i], p = c0.p, weg = WEG.has(p.id), nbK = c0.vw ? p.id + '|' + c0.vw : '', nb = nbK && NB.has(nbK), pn = c0.vw ? pk(c0.vw) : '', bl = !weg && BLIJFT[p.id];
       tip.innerHTML = '<img src="' + groot(p) + '" alt=""><div class="in"><b>' + esc(p.titel) + '</b><div class="r"><strong>' + euro(p.prijs) + '</strong>' + esc(p.shop) + '</div><div class="r">' + esc(plek(p)) + '</div>' +
-        (ZONDE[p.id] ? '<span class="lab zonde">zonde? met de hand gekozen</span>' : '') + (korting(p) ? '<span class="lab korting">korting</span>' : '') + (weg ? '<span class="lab weg">gaat weg</span>' : '') + (nb ? '<span class="lab nb">niet bij ' + esc(pn) + '</span>' : '') +
-        '<div class="doe">' + (cam.z >= 12 ? (nbK && klikNB ? (nb ? 'Klik: toch bij ' + esc(pn) + ' laten staan' : 'Klik: niet bij ' + esc(pn) + ' (blijft wel op de site)') : (weg ? 'Klik: toch laten staan' : 'Klik: weg van de site')) : 'Zoom verder in om te kiezen') + '</div></div>';
+        (ZONDE[p.id] ? '<span class="lab zonde">zonde? met de hand gekozen</span>' : '') + (korting(p) ? '<span class="lab korting">korting</span>' : '') + (weg ? '<span class="lab weg">gaat weg</span>' : '') + (bl ? '<span class="lab zonde">blijft staan: ' + esc(bl) + '</span>' : '') + (nb ? '<span class="lab nb">niet bij ' + esc(pn) + '</span>' : '') +
+        '<div class="doe">' + (cam.z >= 12 ? (nbK && klikNB ? (nb ? 'Klik: toch bij ' + esc(pn) + ' laten staan' : 'Klik: niet bij ' + esc(pn) + ' (blijft wel op de site)') : (weg ? 'Klik: toch laten staan' : (bl ? 'Klik: toch weg van de site' : 'Klik: weg van de site'))) : 'Zoom verder in om te kiezen') + '</div></div>';
     }
     tip.style.display = 'block';
     var r = cv.getBoundingClientRect(), x = r.left + mx + 18, y = r.top + my + 18;
@@ -343,7 +351,7 @@ h1 span{color:var(--rood)}
     if (!wijzers.has(e.pointerId)) return; wijzers.delete(e.pointerId); if (wijzers.size < 2) knijp = null;
     if (trek) { rh.style.display = 'none'; var a = naarWereld(Math.min(trek.x, trek.x2), Math.min(trek.y, trek.y2)), b = naarWereld(Math.max(trek.x, trek.x2), Math.max(trek.y, trek.y2)), filtert = fShop || fZoek || fMin || fMax;
       var ids = [], nbs = indeling === 'voorwie' && klikNB; if (Math.abs(trek.x2 - trek.x) + Math.abs(trek.y2 - trek.y) > 6) cellen.forEach(function (c, i) { if (c.x + .5 >= a[0] && c.x + .5 <= b[0] && c.y + .5 >= a[1] && c.y + .5 <= b[1] && (!filtert || passend[i]) && !(fZonde && !trek.terug && ZONDE[c.p.id])) ids.push(nbs ? c.p.id + '|' + c.vw : c.p.id); });
-      var n = nbs ? zetNB(ids, !trek.terug) : zetWeg(ids, !trek.terug); MELD = n ? (trek.terug ? n + ' teruggezet' : n + ' in één keer weg') + ' (Ctrl+Z = ongedaan) · ' : ''; if (!n) statusEl.textContent = 'Niets veranderd in dat vak'; trek = null; return; }
+      var n = nbs ? zetNB(ids, !trek.terug) : zetWeg(trek.terug ? ids : ids.filter(function (id) { return !BLIJFT[id]; }), !trek.terug); /* een vak trekken laat 'blijft staan' liggen; alleen één klik haalt die toch weg */ MELD = n ? (trek.terug ? n + ' teruggezet' : n + ' in één keer weg') + ' (Ctrl+Z = ongedaan) · ' : ''; if (!n) statusEl.textContent = 'Niets veranderd in dat vak'; trek = null; return; }
     if (wijzers.size === 0) { if (beweegd < 10) klik(pos(e)); sleep = null; }
     else { var q = Array.from(wijzers.values())[0]; sleep = { x: q[0], y: q[1], cx: cam.x, cy: cam.y }; }
   }
@@ -379,7 +387,7 @@ h1 span{color:var(--rood)}
     document.getElementById('nZonde').textContent = (z ? z + ' met gouden rand' : '') + (NB.size ? (z ? ' · ' : '') + NB.size + ' niet bij een persoon' : '');
     if (indeling === 'voorwie' && NB.size) { var n2 = Array.from(NB.entries()).reverse();
       lijstEl.innerHTML = n2.slice(0, 300).map(function (kv) { var x = kv[1], p = PER[x.id]; return '<div class="it" data-ga="' + esc(x.id) + '">' + (p ? '<img src="' + klein(p) + '" alt="" loading="lazy">' : '<img alt="">') + '<div class="t">' + esc(x.titel) + '<i>niet bij ' + esc(pk(x.voor)) + ' · ' + euro(x.prijs) + '</i></div><button class="x" type="button" data-nbterug="' + esc(kv[0]) + '" title="Toch laten staan">×</button></div>'; }).join('') + (l.length ? '<p class="leeg">En ' + l.length + ' weg van de site (zie de andere kaarten).</p>' : ''); return; }
-    lijstEl.innerHTML = l.length ? l.slice(0, 300).map(function (x) { var p = PER[x.id]; return '<div class="it" data-ga="' + esc(x.id) + '">' + (p ? '<img src="' + klein(p) + '" alt="" loading="lazy">' : '<img alt="">') + '<div class="t">' + esc(x.titel) + '<i>' + euro(x.prijs) + ' · ' + esc(x.shop) + (x.zonde ? ' · zonde?' : '') + '</i></div><button class="x" type="button" data-terug="' + esc(x.id) + '" title="Toch laten staan">×</button></div>'; }).join('') + (l.length > 300 ? '<p class="leeg">… en nog ' + (l.length - 300) + '</p>' : '')
+    lijstEl.innerHTML = l.length ? l.slice(0, 300).map(function (x) { var p = PER[x.id]; return '<div class="it" data-ga="' + esc(x.id) + '">' + (p ? '<img src="' + klein(p) + '" alt="" loading="lazy">' : '<img alt="">') + '<div class="t">' + esc(x.titel) + '<i>' + euro(x.prijs) + ' · ' + esc(x.shop) + (x.zonde ? ' · zonde?' : '') + (x.toch ? ' · toch weg' : '') + '</i></div><button class="x" type="button" data-terug="' + esc(x.id) + '" title="Toch laten staan">×</button></div>'; }).join('') + (l.length > 300 ? '<p class="leeg">… en nog ' + (l.length - 300) + '</p>' : '')
       : '<p class="leeg">Nog niets gekozen. Klik op cadeaus die weg mogen.</p>';
   }
   lijstEl.addEventListener('click', function (e) { var nbb = e.target.closest('[data-nbterug]'); if (nbb) { zetNB([nbb.getAttribute('data-nbterug')], false); return; } var b = e.target.closest('[data-terug]'); if (b) { zetWeg([b.getAttribute('data-terug')], false); return; } var it = e.target.closest('[data-ga]'); if (it) naarCadeau(it.getAttribute('data-ga')); });
@@ -402,6 +410,7 @@ h1 span{color:var(--rood)}
 
   maat(); bouw(); var s0 = heel(); cam.x = s0.x; cam.y = s0.y; cam.z = s0.z; lijst();
   if (opgeslagen && opgeslagen.bijgewerkt) statusEl.textContent = WEG.size + ' keuzes van de vorige keer teruggezet';
+  if (OPGERUIMD) { MELD = OPGERUIMD + ' oude keuzes opgeruimd (al van de site, of blijven staan) · '; bewaarStraks(); }
   document.getElementById('laden').remove(); requestAnimationFrame(lus);
   }
 })();
