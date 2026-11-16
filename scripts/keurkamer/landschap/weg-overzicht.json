@@ -1,7 +1,8 @@
 {
  "_uitleg": [
   "Wat Marius op 15-11-2026 met de landschap-keurkamer van de site haalde, per plek. Bedoeld om later echt mooie nieuwe cadeaus te kiezen voor deze plekken (Marius 15-11: \"voor de producten die weggaan kies ik later weer nieuwe maar dan echt mooi, onthoud globaal wat weg gaat\").",
-  "Alleen plekken en voorbeelden, geen cijfers over bezoek."
+  "Alleen plekken en voorbeelden, geen cijfers over bezoek.",
+  "Ronde 2 (16-11-2026): nog eens 723 weg, vooral Wonen en Beauty; zie ronde2."
  ],
  "datum": "2026-11-15",
  "totaal": 794,
@@ -957,5 +958,710 @@
     "Waytoplay flexibele autoweg (8-delig)"
    ]
   }
- ]
+ ],
+ "ronde2": {
+  "datum": "2026-11-16",
+  "totaal": 723,
+  "plekken": [
+   {
+    "plek": "Wonen › Verlichting › Sfeerlampen",
+    "aantal": 46,
+    "winkels": "Fiftiesstore 8, Fietsweb 8, Coolblue 7",
+    "prijs": "€ 6 – 183",
+    "voorbeelden": [
+     "Govee Lightstrip S, ledstrip 10 meter",
+     "Lucide bankierslamp met groene glazen kap",
+     "Philips Sleep & Wake-up Light HF3654",
+     "Fisura lavalamp blauw met groene lava"
+    ]
+   },
+   {
+    "plek": "Wonen › Woontextiel › Plaids",
+    "aantal": 45,
+    "winkels": "Westwing 22, Countrylifestyle 8, HEMA 6",
+    "prijs": "€ 10 – 359",
+    "voorbeelden": [
+     "Zeemeermindeken",
+     "Bloomingville katoenen plaid Eviaya met kwastjes",
+     "Plaid Peppe, gebroken wit",
+     "Wollen plaid Faro met kasjmier"
+    ]
+   },
+   {
+    "plek": "Wonen › Kaarsen & geur › Kaarsen",
+    "aantal": 42,
+    "winkels": "Westwing 14, Dille & Kamille 7, HEMA 6",
+    "prijs": "€ 4 – 39",
+    "voorbeelden": [
+     "Bolsius Kaars 13x6,8 cm Fading Parel Champagne",
+     "Dille & Kamille adventskaarsen met hulst, set van 4",
+     "Kaars in de vorm van een engel (offwhite, 17 cm)",
+     "Lumineo led-kaarsen goud met bewegende vlam (set van 3)"
+    ]
+   },
+   {
+    "plek": "Wonen › Verlichting › Tafellampen",
+    "aantal": 36,
+    "winkels": "Westwing 16, Lamponline 10, Countrylifestyle 2",
+    "prijs": "€ 9 – 349",
+    "voorbeelden": [
+     "Lucide oplaadbare tafellamp Joy (zwart)",
+     "Lucide Lavale LED-bureaulamp, okergeel",
+     "Mobiele dimbare outdoor LED-tafellamp Lola met touchfunctie",
+     "Tafellamp Lekar antiek brons met smoke glas"
+    ]
+   },
+   {
+    "plek": "Wonen › Kaarsen & geur › Kandelaars & lantaarns",
+    "aantal": 36,
+    "winkels": "Westwing 16, Dille & Kamille 4, Grote Kadoshop 3",
+    "prijs": "€ 5 – 142",
+    "voorbeelden": [
+     "Broste Copenhagen mondgeblazen lantaarn Anya, H 23 cm",
+     "Handgemaakte glazen kandelaar Fish",
+     "Theelichthouder Luca koper",
+     "Theelichthouders glas (6 stuks)"
+    ]
+   },
+   {
+    "plek": "Wonen › Kaarsen & geur › Huisgeuren & geurstokjes",
+    "aantal": 36,
+    "winkels": "Westwing 17, Tuincentrumoutlet 6, Dille & Kamille 5",
+    "prijs": "€ 3 – 159",
+    "voorbeelden": [
+     "Aromaverstuiver Zazen met 7 kleuren licht",
+     "Amberblokjes cadeauset met geurbrander",
+     "Culti Milano diffuser Stile Amara (bergamot & sandelhout), 1",
+     "Ilum Belgravia Lux Geurdiffuser Klein"
+    ]
+   },
+   {
+    "plek": "Wonen › Woontextiel › Kussens",
+    "aantal": 35,
+    "winkels": "Countrylifestyle 21, Westwing 7, HEMA 3",
+    "prijs": "€ 5 – 109",
+    "voorbeelden": [
+     "Boyfriend kussen",
+     "Maison Deux kussenhoes Candy Wrap van Nieuw-Zeelandse wol",
+     "House Doctor handgeweven kussenhoes Bota",
+     "Knit Factory Aran kussen, lichtgrijs (50 x 50 cm)"
+    ]
+   },
+   {
+    "plek": "Wonen › Kerst › Kerstbomen & kransen",
+    "aantal": 33,
+    "winkels": "Kerstland 17, Westwing 7, Dille & Kamille 3",
+    "prijs": "€ 7 – 349",
+    "voorbeelden": [
+     "Smalle kunstkerstboom Lodge Pine (180 cm)",
+     "Pencil Pine smalle kunstkerstboom",
+     "Everlands smalle kunstkerstboom Pencil Pine met sneeuw (150 ",
+     "Black Box kunstkerstboompje in pot met bevroren puntjes (90 "
+    ]
+   },
+   {
+    "plek": "Wonen › Kerst › Kerstballen & hangers",
+    "aantal": 30,
+    "winkels": "Westwing 7, Dille & Kamille 7, Bellatio 5",
+    "prijs": "€ 5 – 32",
+    "voorbeelden": [
+     "Kersthangers gouden hakken (6 stuks)",
+     "Handgemaakt kerstornament Golden Glow",
+     "Mini-kerststerren van papier (set van 3)",
+     "HEMA kersthangers borrelplank (3 stuks)"
+    ]
+   },
+   {
+    "plek": "Wonen › Woondecoratie › Vazen",
+    "aantal": 27,
+    "winkels": "Westwing 11, La Redoute 5, Countrylifestyle 4",
+    "prijs": "€ 9 – 82",
+    "voorbeelden": [
+     "Terracotta flesvaas blauw (50 cm hoog)",
+     "3D-geprinte porseleinen vaas Melody",
+     "Beschilderde glazen vaas Hedi, oudbrons (AM.PM)",
+     "Vaas kruikmodel terracotta"
+    ]
+   },
+   {
+    "plek": "Wonen › Kerst › Kerstverlichting",
+    "aantal": 25,
+    "winkels": "Kerstland 8, Bellatio 6, Westwing 3",
+    "prijs": "€ 5 – 149",
+    "voorbeelden": [
+     "Kerstverlichting op batterijen (192 lampjes)",
+     "Porseleinen lichthuisje, wit",
+     "Lumineo kerstboomverlichting 23 meter",
+     "LED kegel kerstboom 60 cm"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knutselen › Klei & slijm",
+    "aantal": 21,
+    "winkels": "bol 11, De Grote Speelgoedwinkel 5, Woewoe 2",
+    "prijs": "€ 6 – 49",
+    "voorbeelden": [
+     "Kinetic Sand IJsjesset",
+     "Kinetic Sand speelzand (907 gram)",
+     "Kinetic Sand Smoothie Mixer",
+     "Play-Doh Confetti 6-pack"
+    ]
+   },
+   {
+    "plek": "Wonen › Verlichting › Lichtsnoeren",
+    "aantal": 17,
+    "winkels": "HEMA 3, Coolblue 3, Ditverzinjeniet 2",
+    "prijs": "€ 10 – 188",
+    "voorbeelden": [
+     "HEMA Nijntje lichtsnoer met 12 hoofdjes, 2,8 meter",
+     "WiZ slim lichtsnoer voor buiten, wit en gekleurd licht",
+     "HEMA Takkie en Siepie lichtsnoer 3m",
+     "Lichtsnoer met caravannetjes"
+    ]
+   },
+   {
+    "plek": "Wonen › Foto & persoonlijk › Fotolijsten",
+    "aantal": 17,
+    "winkels": "Westwing 4, Surprises-winkel 2, La Redoute 2",
+    "prijs": "€ 8 – 249",
+    "voorbeelden": [
+     "Houten collage fotolijst voor 8 foto’s (naturel)",
+     "Fotolijst van glas met marmer of travertijn, Gentiana (AM.PM",
+     "Dille & Kamille fotolijst van eikenhout (13 x 18 cm)",
+     "Umbra Exhibit set fotolijstjes voor de muur"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Make-up & haar › Föhns & stijltangen",
+    "aantal": 15,
+    "winkels": "bol 7, Coolblue 4, HEMA 3",
+    "prijs": "€ 9 – 149",
+    "voorbeelden": [
+     "Carmen föhn 2000 W",
+     "Remington Pro Big Curl krultang 38 mm",
+     "HEMA haarföhn met koffer",
+     "HEMA reisföhn (paars)"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Make-up & haar › Make-up",
+    "aantal": 14,
+    "winkels": "bol 9, HEMA 4, Joybuy 1",
+    "prijs": "€ 3 – 37",
+    "voorbeelden": [
+     "Fenty Beauty Liquid Killawatt highlighter",
+     "NYX Duck Plump lipgloss (Pure Plum-P)",
+     "NYX Ultimate Shadow Palette Tropic Shock",
+     "HEMA glow gezichtspalet"
+    ]
+   },
+   {
+    "plek": "Wonen › Woondecoratie › Opbergen & dienbladen",
+    "aantal": 14,
+    "winkels": "Westwing 5, Countrylifestyle 4, Dille & Kamille 2",
+    "prijs": "€ 11 – 59",
+    "voorbeelden": [
+     "Homebound schaal op voet (goud)",
+     "House Doctor handgemaakte opbergmand Mira van hennep",
+     "Anna + Nina handgeschilderde schaal 'I Love You'",
+     "Riviera Maison dienblad Portofino Flax"
+    ]
+   },
+   {
+    "plek": "Sport & outdoor › Fitness & yoga › Fitness thuis",
+    "aantal": 13,
+    "winkels": "bol 12, Top4Running 1",
+    "prijs": "€ 8 – 108",
+    "voorbeelden": [
+     "Avento gietijzeren kettlebell 12 kg",
+     "Tunturi Power Band weerstandsband (10–35 kg)",
+     "Kine-MAX foam roller (massagerol)",
+     "adidas push-up bars"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Gezichtsverzorging",
+    "aantal": 12,
+    "winkels": "bol 11, Joybuy 1",
+    "prijs": "€ 7 – 149",
+    "voorbeelden": [
+     "Nanoleaf LED-lichttherapie gezichtsmasker",
+     "Beauty of Joseon Glow Replenishing Rice Milk (100 ml)",
+     "The Ordinary Target & Treat set",
+     "SKIN1004 Madagascar Centella Ampoule"
+    ]
+   },
+   {
+    "plek": "Wonen › Woondecoratie › Beelden & decoratie",
+    "aantal": 12,
+    "winkels": "Countrylifestyle 3, Grote Kadoshop 2, Handpoppen-winkel 2",
+    "prijs": "€ 9 – 110",
+    "voorbeelden": [
+     "Gift Republic vinyl boekensteunen",
+     "Notenkraker soldaat beeld 30 cm",
+     "Sinterklaas-sneeuwbol met speeldoos",
+     "Wandornament Monkey goud"
+    ]
+   },
+   {
+    "plek": "Wonen › Woontextiel › Kruiken & warmte",
+    "aantal": 12,
+    "winkels": "Ditverzinjeniet 4, Grote Kadoshop 3, HEMA 3",
+    "prijs": "€ 12 – 101",
+    "voorbeelden": [
+     "Nedis elektrische deken 1-persoons",
+     "Beurer UB90 verwarmde onderdeken met voetzone",
+     "Warmtekussen egel (klein)",
+     "Bitten warmtekussen teckel"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Bad- & doucheproducten",
+    "aantal": 11,
+    "winkels": "bol 7, Dille & Kamille 2, Bloompost 2",
+    "prijs": "€ 6 – 21",
+    "voorbeelden": [
+     "Douchegel eucalyptus en rozemarijn",
+     "Shampoobar voor alle haartypen",
+     "Kneipp Sugar & Oil Body Scrub",
+     "Therme Zen White Lotus badolie"
+    ]
+   },
+   {
+    "plek": "Wonen › Woontextiel › Vloerkleden",
+    "aantal": 11,
+    "winkels": "Meubello 5, Westwing 2, Grote Kadoshop 1",
+    "prijs": "€ 25 – 184",
+    "voorbeelden": [
+     "Konges Sløjd kindervloerkleed Navy Dot",
+     "Bloemenkracht, tapijt, Ø110 cm",
+     "WOOOD Ross vloerkleed jute (150 cm)",
+     "Wollen designvloerkleed lichtbeige"
+    ]
+   },
+   {
+    "plek": "Wonen › Kaarsen & geur › Geurkaarsen",
+    "aantal": 11,
+    "winkels": "Dille & Kamille 4, WoodWick 3, Parfumania 2",
+    "prijs": "€ 5 – 32",
+    "voorbeelden": [
+     "Dille & Kamille geurkaars zuiver & sereen",
+     "Esteban mini-geurkaars Ambre",
+     "WoodWick Ellipse geurkaars Fireside",
+     "Dille & Kamille geurkaars zacht & sensitief"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Massage",
+    "aantal": 10,
+    "winkels": "bol 5, Coolblue 4, Dille & Kamille 1",
+    "prijs": "€ 23 – 199",
+    "voorbeelden": [
+     "Rituals The Ritual of Jing cadeauset met massageolie",
+     "Medisana nekkussen met massage",
+     "Tunturi MG40 massage gun",
+     "Beurer massagepistool CompactPower"
+    ]
+   },
+   {
+    "plek": "Wonen › Woondecoratie › Klokken",
+    "aantal": 10,
+    "winkels": "bol 4, Westwing 2, Kado-versturen 1",
+    "prijs": "€ 12 – 79",
+    "voorbeelden": [
+     "Karlsson wekker",
+     "Vintage tafelklok goud",
+     "LEXON Optical wandklok",
+     "House Doctor handgemaakte klok Loko van travertijn"
+    ]
+   },
+   {
+    "plek": "Wonen › Woondecoratie › Spiegels",
+    "aantal": 10,
+    "winkels": "Kado-versturen 7, Westwing 2, Barokspiegel 1",
+    "prijs": "€ 12 – 319",
+    "voorbeelden": [
+     "Rotan wandspiegel bloem Daisy (38,5 cm)",
+     "Wandspiegel ovaal bronsgoud",
+     "New Works decoratieve spiegel Aura van edelstaal",
+     "Barokspiegel Cesarino zwart, gemaakt in Italië"
+    ]
+   },
+   {
+    "plek": "Wonen › Foto & persoonlijk › Fotoboeken",
+    "aantal": 10,
+    "winkels": "Boekenwereld 3, Westwing 2, HEMA 2",
+    "prijs": "€ 12 – 47",
+    "voorbeelden": [
+     "Printworks fotoalbum 'Good Times'",
+     "Het Schoolfotoboek (Lannoo)",
+     "Kinderjarenplakboek",
+     "HEMA fotoboek met strik zilver"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Lichaamsverzorging",
+    "aantal": 9,
+    "winkels": "bol 9",
+    "prijs": "€ 7 – 24",
+    "voorbeelden": [
+     "Neutrogena handcrème Noorse formule",
+     "The Body Shop Body Butter",
+     "NYX Fat Oil Body Butter mini",
+     "NIVEA Care bodycrème"
+    ]
+   },
+   {
+    "plek": "Wonen › Kerst › Kerstfiguren",
+    "aantal": 9,
+    "winkels": "Bellatio 2, Dille & Kamille 2, Westwing 2",
+    "prijs": "€ 8 – 74",
+    "voorbeelden": [
+     "Konstsmide sneeuwbollantaarn met kerstman",
+     "Houten 3D-kerstboompjes om zelf te maken (3 stuks)",
+     "Riviera Maison sneeuwpop van rotan",
+     "WURM notenkraker van mangohout (40 cm)"
+    ]
+   },
+   {
+    "plek": "Wonen › Woondecoratie › Wanddecoratie & posters",
+    "aantal": 8,
+    "winkels": "Grote Kadoshop 3, YourDecoration 2, Place the Moment 1",
+    "prijs": "€ 3 – 34",
+    "voorbeelden": [
+     "Gastenboek-poster bruiloft: sterrenhemel met namen",
+     "Stranger Things poster",
+     "Krasposter: 100 boeken om te lezen",
+     "Posterlijst 61 x 91,5 cm"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Drankaccessoires › Glazen & karaffen",
+    "aantal": 7,
+    "winkels": "Decantalo 3, Handpoppen-winkel 2, Countrylifestyle 2",
+    "prijs": "€ 9 – 50",
+    "voorbeelden": [
+     "Vivalto wijnglazen Shiraz (4)",
+     "Zalto Bourgogne wijnglas, mondgeblazen",
+     "Riedel Vinum Pinot Noir wijnglazen (set van 2)",
+     "PiP Studio champagneglas Winter Wonderland (goud)"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Scheren & baard › Scheerapparaten & trimmers",
+    "aantal": 6,
+    "winkels": "Coolblue 4, bol 2",
+    "prijs": "€ 24 – 229",
+    "voorbeelden": [
+     "Philips hoofdscheerapparaat",
+     "Braun IPL Silk·expert ontharingsapparaat",
+     "Philips Series 3000 Multigroom 7-in-1 trimmer",
+     "Remington Power-X X6 tondeuse"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Make-up & haar › Nagels",
+    "aantal": 6,
+    "winkels": "bol 6",
+    "prijs": "€ 6 – 60",
+    "voorbeelden": [
+     "essence press-on nails Press & Go",
+     "essie sneldrogende nagellak (blauw)",
+     "Moyra Gel Look nagellak",
+     "Nagelknipper set 3-delig"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Giftsets › Giftsets voor haar",
+    "aantal": 4,
+    "winkels": "bol 4",
+    "prijs": "€ 17 – 40",
+    "voorbeelden": [
+     "Weleda verzorgingsset voor de aanstaande mama",
+     "Ted Sparks cadeauset Vanilla & Cedarwood",
+     "Clarins Hydra Essential dagcrème giftset",
+     "Kneipp luxe geschenkset lavendel"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Make-up & haar › Haarverzorging",
+    "aantal": 4,
+    "winkels": "bol 2, HEMA 2",
+    "prijs": "€ 6 – 28",
+    "voorbeelden": [
+     "Wet Brush Original Detangler",
+     "Zijden scrunchies set van 3",
+     "HEMA scrunchietoren",
+     "HEMA voedende haarolie"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Elektrische tandenborstels",
+    "aantal": 4,
+    "winkels": "bol 4",
+    "prijs": "€ 49 – 100",
+    "voorbeelden": [
+     "Laifen Wave Pro elektrische tandenborstel",
+     "Philips Sonicare waterflosser (draadloos)",
+     "Oral-B iO 5S elektrische tandenborstel roze",
+     "Oral-B iO 3 elektrische tandenborstel (roze)"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Bruisballen",
+    "aantal": 4,
+    "winkels": "Grote Kadoshop 2, bol 1, Ditverzinjeniet 1",
+    "prijs": "€ 10 – 25",
+    "voorbeelden": [
+     "Bomb Cosmetics bruisballen-set 'Land of Nod'",
+     "Dinopoep bruisballen",
+     "Koffieboon bruisballen",
+     "Gift Republic rozen bruisballen"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Buiten spelen › Trampolines & speeltoestellen",
+    "aantal": 4,
+    "winkels": "bol 3, Woewoe 1",
+    "prijs": "€ 38 – 379",
+    "voorbeelden": [
+     "Salta First Class trampoline met net en ladder (251 cm)",
+     "EXIT Silhouette trampoline (183 cm)",
+     "Kettler trampoline Jump (244 cm)",
+     "Stapelstein balansbord confetti"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Buiten spelen › Buitenspellen & ballen",
+    "aantal": 4,
+    "winkels": "Woewoe 2, bol 1, De Grote Speelgoedwinkel 1",
+    "prijs": "€ 4 – 29",
+    "voorbeelden": [
+     "Handvlieger met regenbooglinten",
+     "Houten jojo met glittersteen (Bauspiel)",
+     "Small Foot houten Kubb met cijfers",
+     "Number Kubb: houten werpspel van Wahu"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Buiten spelen › Steps & loopfietsen",
+    "aantal": 4,
+    "winkels": "bol 3, Grote Kadoshop 1",
+    "prijs": "€ 59 – 136",
+    "voorbeelden": [
+     "Street Surfing Torpedo step (wit/zwart)",
+     "Hudora BigWheel 205 step (zwart/rood)",
+     "Micro Sprite opvouwbare step met ledwielen",
+     "Globber GS 360 stuntstep"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Drankaccessoires › Wijnaccessoires",
+    "aantal": 4,
+    "winkels": "bol 3, Countrylifestyle 1",
+    "prijs": "€ 31 – 64",
+    "voorbeelden": [
+     "Eva Solo schenktuit voor wijn (druppelt niet)",
+     "Present Time wijnrek Cuadro (lichtgoud)",
+     "Wijnrek Salbris voor 12 flessen (antiekbrons)",
+     "Le Creuset wijnkoeler (deep teal)"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Scheren & baard › Baardverzorging",
+    "aantal": 3,
+    "winkels": "bol 2, Grote Kadoshop 1",
+    "prijs": "€ 8 – 26",
+    "voorbeelden": [
+     "Houten baardkam",
+     "Proraso aluinblok",
+     "Gift Republic baardverzorgingsset"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Spa & ontspanning",
+    "aantal": 3,
+    "winkels": "Surprises-winkel 1, HEMA 1, Handpoppen-winkel 1",
+    "prijs": "€ 5 – 10",
+    "voorbeelden": [
+     "Badkussen met zuignappen",
+     "HEMA slaapmasker gewatteerd (roze)",
+     "Fluffy vos kruik en slaapmasker cadeauset"
+    ]
+   },
+   {
+    "plek": "Sport & outdoor › Fitness & yoga › Hardlopen",
+    "aantal": 3,
+    "winkels": "bol 1, HEMA 1, Top4Running 1",
+    "prijs": "€ 24 – 49",
+    "voorbeelden": [
+     "Rogelli reflecterend hardloopvest",
+     "HEMA hardloopharnas met reflectie en led",
+     "Silva Discover hoofdlamp voor hardlopen in het donker"
+    ]
+   },
+   {
+    "plek": "Wonen › Foto & persoonlijk › Foto op canvas & glas",
+    "aantal": 3,
+    "winkels": "Smartphoto 2, Profotonet 1",
+    "prijs": "€ 14 – 39",
+    "voorbeelden": [
+     "Gegraveerde fotohouder",
+     "Ronde foto op aluminium",
+     "Smartphoto foto op canvas"
+    ]
+   },
+   {
+    "plek": "Wonen › Woontextiel › Deurmatten",
+    "aantal": 3,
+    "winkels": "Countrylifestyle 2, Westwing 1",
+    "prijs": "€ 27 – 65",
+    "voorbeelden": [
+     "Gietijzeren deurmat met kokosmat",
+     "Deurmat zittende teckel",
+     "Handgetufte kerstdeurmat Yarrow"
+    ]
+   },
+   {
+    "plek": "Wonen › Kaarsen & geur › Wierook & geurbranders",
+    "aantal": 3,
+    "winkels": "Dille & Kamille 2, Ditverzinjeniet 1",
+    "prijs": "€ 4 – 16",
+    "voorbeelden": [
+     "Dille & Kamille wierookhouder, keramiek, wit gespikkeld",
+     "Dille & Kamille wierookstokjes, Palo santo, 15 stuks",
+     "Gift Republic luiaard wierookhouder"
+    ]
+   },
+   {
+    "plek": "Dieren › Andere dieren › Konijn & knaagdier",
+    "aantal": 2,
+    "winkels": "bol 2",
+    "prijs": "€ 12 – 43",
+    "voorbeelden": [
+     "Duvo+ opvouwbare speelren met net en deurtje",
+     "Beeztees Dorix denkspel voor knaagdieren"
+    ]
+   },
+   {
+    "plek": "Sport & outdoor › Water & winter › Zwemmen",
+    "aantal": 2,
+    "winkels": "bol 2",
+    "prijs": "€ 17 – 35",
+    "voorbeelden": [
+     "Aqua Sphere Focus frontsnorkel",
+     "Speedo Futura Classic zwembril"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Leren & ontdekken › Microscopen & telescopen",
+    "aantal": 2,
+    "winkels": "bol 2",
+    "prijs": "€ 25 – 29",
+    "voorbeelden": [
+     "Learning Resources opblaasbare wereldbol (68 cm)",
+     "Carson MicroFlip zakmicroscoop"
+    ]
+   },
+   {
+    "plek": "Hobby & creatief › Schilderen & tekenen › Verf & schildersets",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 90 – 90",
+    "voorbeelden": [
+     "Rembrandt aquarelverf in metalen doos (12 napjes en penseel)"
+    ]
+   },
+   {
+    "plek": "Dieren › Kat › Krabpalen & manden",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 16 – 16",
+    "voorbeelden": [
+     "Beeztees Sleepy kattenhangmat"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Bad, huid & spa › Monddouches & flossers",
+    "aantal": 1,
+    "winkels": "Tandenborstel.com 1",
+    "prijs": "€ 79 – 79",
+    "voorbeelden": [
+     "Waterpik Ultra monddouche"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Parfum › Parfumsets",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 95 – 95",
+    "voorbeelden": [
+     "YSL Libre geschenkset met douchegel"
+    ]
+   },
+   {
+    "plek": "Sport & outdoor › Metaaldetectie › Pinpointers & uitrusting",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 45 – 45",
+    "voorbeelden": [
+     "Quest Diamond Digger graafmes"
+    ]
+   },
+   {
+    "plek": "Beauty & verzorging › Parfum › Damesparfum",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 45 – 45",
+    "voorbeelden": [
+     "Marc Jacobs Daisy Love eau de toilette (50 ml)"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Buiten spelen › Zand & water",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 12 – 12",
+    "voorbeelden": [
+     "Quut Triplet zandvormen"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Leren & ontdekken › Programmeren & robots",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 35 – 35",
+    "voorbeelden": [
+     "Learning Resources Code & Go robotmuis"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Rammelaars & bijtringen",
+    "aantal": 1,
+    "winkels": "Speelgoedpostorder 1",
+    "prijs": "€ 8 – 8",
+    "voorbeelden": [
+     "Happy Horse rammelaar draak Tine"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Babygyms & activiteitenspeelgoed",
+    "aantal": 1,
+    "winkels": "Westwing 1",
+    "prijs": "€ 42 – 42",
+    "voorbeelden": [
+     "Ronde speeldeken Play"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Badspeelgoed",
+    "aantal": 1,
+    "winkels": "Handpoppen-winkel 1",
+    "prijs": "€ 5 – 5",
+    "voorbeelden": [
+     "Duckiez hengelspel eendjes vangen"
+    ]
+   }
+  ]
+ }
 }
