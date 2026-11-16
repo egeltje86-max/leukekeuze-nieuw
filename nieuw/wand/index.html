@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>LeukeKeuze – de cadeauwand</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- TESTVERSIE 'De Cadeauwand' (16-11-2026, Marius: 'het is een doolhof, dingen staan verstopt, alles is onduidelijk';
+     'verzin een super systeem waardoor we geen categorieën nodig hebben en het toch duidelijk is voor de klant wat hij kan kiezen').
+     Alleen via de testlink /nieuw/wand/ (noindex + Disallow: /nieuw/ in robots.txt). Op de echte site verandert niets.
+     Geen boom (afdeling > groep > vakje) meer, maar één wand met alle cadeaus en vier vragen erboven: Voor wie? Hoeveel? Wat voor iets? Waarvoor?
+     Alles los te kiezen, in elke volgorde, de cadeaus veranderen meteen. Bij elke keuze het aantal; een keuze met 0 verdwijnt (nooit een lege pagina).
+     Wat gekozen is staat als knopje met een kruisje. De cadeaus staan altijd op het eerste scherm.
+     Onderzoek: bij een grote, gemengde verzameling waarin één ding bij meerdere soorten hoort (een chocoladeletter is chocolade, Sinterklaas,
+     voor een kind én onder € 10) werkt filteren op kenmerken beter dan een boom, want in een boom moet de klant raden waar iets staat
+     (Nielsen Norman Group over faceted navigation; Baymard over filters met aantallen en zichtbare gekozen filters).
+     'Wat voor iets?' is één platte lijst met gewone woorden (Chocolade, Snoep & drop, Lampjes, Kaarsen, Knuffels, LEGO …), gemaakt uit de
+     bestaande vakjes; een product mag in meer soorten staan (Grappig, Met naam of foto). Drank alleen als iemand zelf Drank kiest,
+     sieraden achteraan tenzij iemand Sieraden kiest (zoals op de echte site). Regels als de Voor wie-pagina's: nietBij en smal. -->
+<style>
+:root{--marine:#0A1020;--tekst:#141A2A;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--goud:#B8862E;--dgoud:#8F6620;--lgoud:#F2CB74;--rand:#E5D7BE;--zacht:#5C6272;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--creme);color:var(--tekst);font:500 16px/1.5 var(--f)}
+body.vast{overflow:hidden}
+img{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.test{background:var(--marine);color:#E8E2D6;font:600 13.5px/1.3 var(--f);text-align:center;padding:9px max(16px,env(safe-area-inset-left))}
+.test a{color:var(--lgoud);font-weight:800}
+.kop{display:flex;align-items:center;justify-content:space-between;padding:12px max(16px,env(safe-area-inset-left));background:var(--ivoor);border-bottom:1px solid var(--rand)}
+.kop a{text-decoration:none;font:700 21px/1 var(--k);color:var(--marine)}
+.wrap{max-width:1080px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left)) 80px max(16px,env(safe-area-inset-right))}
+h1{font:700 clamp(26px,7vw,38px)/1.12 var(--k);margin:0 0 4px;color:var(--marine)}
+.sub{color:var(--zacht);margin:0 0 12px;font-size:15px}
+
+.zoek{position:relative;margin:0 0 10px}
+.zoek input{width:100%;min-height:50px;border:1px solid var(--rand);border-radius:14px;background:var(--wit);padding:0 44px 0 44px;font-size:16px;outline:none}
+.zoek input:focus{border-color:var(--goud)}
+.zoek svg{position:absolute;left:14px;top:15px;width:20px;height:20px;stroke:var(--zacht)}
+.zoek button{position:absolute;right:4px;top:4px;width:42px;height:42px;border:0;background:none;display:grid;place-items:center;font-size:22px;color:var(--zacht)}
+.zoek button[hidden]{display:none}
+
+/* de vier vragen */
+.vragen{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (min-width:760px){.vragen{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.vr{position:relative;display:block;text-align:left;min-height:58px;border:1px solid var(--rand);border-radius:14px;background:var(--wit);padding:8px 34px 8px 14px;box-shadow:0 2px 8px rgba(10,16,32,.04)}
+.vr small{display:block;font-size:12.5px;color:var(--zacht);line-height:1.2}
+.vr b{display:block;font-weight:800;font-size:15.5px;color:var(--marine);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vr svg{position:absolute;right:12px;top:50%;width:18px;height:18px;margin-top:-9px;stroke:var(--goud)}
+.vr.aan{background:var(--marine);border-color:var(--marine)}
+.vr.aan small{color:#C9CCD6}
+.vr.aan b{color:#fff}
+.vr.aan svg{stroke:var(--lgoud)}
+.gekozen{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.gekozen:empty{display:none}
+.gekozen button{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:999px;border:1px solid var(--goud);background:var(--ivoor);font-weight:800;font-size:14px}
+.gekozen button span{font-size:17px;line-height:1;color:var(--dgoud)}
+.gekozen .wis{border-color:var(--rand);background:none;font-weight:700;color:var(--zacht)}
+.aantal{margin:14px 0 8px;font-weight:800;color:var(--marine)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+.kaart{display:flex;flex-direction:column;background:var(--wit);border:1px solid var(--rand);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(10,16,32,.05);min-width:0}
+.kaart .f{display:block;aspect-ratio:1;background:#fff;border:0;padding:0;width:100%}
+.kaart .f img{width:100%;height:100%;object-fit:contain;padding:6px}
+.kaart .in{display:flex;flex-direction:column;gap:4px;padding:8px 10px 10px;flex:1}
+.kaart .t{font-weight:700;font-size:14.5px;line-height:1.3;color:var(--tekst);hyphens:manual;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;background:none;border:0;padding:0}
+.kaart .p{font-weight:800;font-size:16px;color:var(--marine);margin-top:auto}
+.kaart .k{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background:var(--goud);color:#fff;text-decoration:none;font-weight:800;font-size:14px;line-height:1.2;text-align:center;padding:6px 8px}
+.meer{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:16px;border:0;border-radius:14px;background:var(--marine);color:#fff;font-weight:800;font-size:16.5px}
+.leeg{background:var(--ivoor);border:1px solid var(--rand);border-radius:16px;padding:16px;color:var(--zacht)}
+.eerlijk{font-size:13.5px;color:var(--zacht);margin:18px 0 0}
+
+/* keuzeblad */
+.blad{position:fixed;inset:0;z-index:70;background:rgba(10,16,32,.5);display:flex;align-items:flex-end;justify-content:center}
+.blad[hidden]{display:none}
+.doos{background:var(--creme);width:100%;max-width:720px;max-height:88dvh;display:flex;flex-direction:column;border-radius:22px 22px 0 0;overflow:hidden}
+@media (min-width:760px){.blad{align-items:center}.doos{border-radius:22px;max-height:82vh}}
+.dkop{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px max(16px,env(safe-area-inset-left)) 10px;background:var(--ivoor);border-bottom:1px solid var(--rand)}
+.dkop h2{font:700 22px/1.2 var(--k);margin:0;color:var(--marine)}
+.dkop button{width:44px;height:44px;border-radius:22px;border:0;background:var(--creme);font-size:22px;line-height:1}
+.dzoek{padding:10px max(16px,env(safe-area-inset-left)) 0}
+.dzoek input{width:100%;min-height:46px;border:1px solid var(--rand);border-radius:12px;background:var(--wit);padding:0 14px;font-size:16px;outline:none}
+.opties{overflow-y:auto;padding:12px max(16px,env(safe-area-inset-left)) 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-content:start}
+@media (max-width:359px){.opties{grid-template-columns:1fr}}
+@media (min-width:560px){.opties{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.op{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:10px;min-height:60px;text-align:left;border:1px solid var(--rand);border-radius:14px;background:var(--wit);padding:7px 10px 7px 8px}
+.op.geenbeeld{grid-template-columns:minmax(0,1fr);padding-left:14px}
+.op i{width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--ivoor);box-shadow:0 0 0 1.5px var(--goud)}
+.op i img{width:100%;height:100%;object-fit:cover}
+.op b{display:block;font-weight:800;font-size:14.5px;line-height:1.2;color:var(--marine);overflow-wrap:normal;hyphens:manual}
+.op small{display:block;font-size:13px;color:var(--zacht);line-height:1.2}
+.op[aria-pressed="true"]{background:var(--marine);border-color:var(--marine)}
+.op[aria-pressed="true"] b{color:#fff}
+.op[aria-pressed="true"] small{color:#C9CCD6}
+.dvoet{display:flex;gap:8px;padding:10px max(16px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));background:var(--ivoor);border-top:1px solid var(--rand)}
+.dvoet button{flex:1;min-height:52px;border-radius:14px;font-weight:800;font-size:16px}
+.dvoet .wis2{flex:0 0 auto;padding:0 16px;border:1px solid var(--rand);background:var(--wit)}
+.dvoet .toon{border:0;background:var(--marine);color:#fff}
+.k-knop{background:var(--marine)!important}
+</style>
+</head>
+<body>
+<div class="test">Testversie: alleen jij ziet dit via deze link. <a href="/">Naar de gewone site</a></div>
+<header class="kop"><a href="/">LeukeKeuze</a></header>
+<main class="wrap">
+  <h1>Vind een cadeau</h1>
+  <p class="sub">Kies wat je weet. De rest mag leeg blijven.</p>
+  <div class="zoek"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Of typ wat je zoekt, bijv. lego" aria-label="Zoeken" autocomplete="off"><button type="button" id="qweg" aria-label="Zoekwoord wissen" hidden>×</button></div>
+  <div class="vragen" id="vragen"></div>
+  <div class="gekozen" id="gekozen"></div>
+  <p class="aantal" id="aantal"></p>
+  <div class="grid" id="grid"></div>
+  <div id="meer"></div>
+  <p class="eerlijk">Prijzen komen van de winkels en kunnen net anders zijn als je bestelt. Bestellen doe je bij de winkel.</p>
+</main>
+<div class="blad" id="blad" hidden><div class="doos" role="dialog" aria-modal="true" aria-labelledby="bkop"><div class="dkop"><h2 id="bkop"></h2><button type="button" data-dicht aria-label="Sluiten">×</button></div><div class="dzoek" id="dzoek" hidden><input id="dq" type="search" placeholder="Zoek een soort, bijv. kaars" aria-label="Zoek een soort" autocomplete="off"></div><div class="opties" id="opties"></div><div class="dvoet" id="dvoet" hidden><button type="button" class="wis2" data-wis-soort>Wis</button><button type="button" class="toon" data-dicht id="toonknop">Toon cadeaus</button></div></div></div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var K = window.KERN, esc = K.esc;
+  function euro(n) { var s = (Math.round(n * 100) / 100).toFixed(2).split('.'); return '€ ' + s[0] + ',' + s[1]; }
+  var PIJL = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+  function heeft(l, x) { return (l || []).indexOf(x) !== -1; }
+  function g(p) { return (p.afd || '') + '/' + (p.groep || '') + '/' + (p.vak || ''); }
+  function norm(s) { return String(s || '').replace(/\u00ad/g, '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  var TOPIN = {}, RANG = {};
+  Object.keys(K.TOP).forEach(function (k) { K.TOP[k].forEach(function (id, i) { (TOPIN[id] = TOPIN[id] || []).push(k); var v = i / Math.max(K.TOP[k].length, 12); if (RANG[id] == null || v < RANG[id]) RANG[id] = v; }); });
+  function inTop(p, pre) { return (TOPIN[p.id] || []).some(function (k) { return k.indexOf(pre) === 0 && (k.length === pre.length || k[pre.length] === '/' || k[pre.length] === '?'); }); }
+  function grappig(p) { return heeft(p.ookIn, 'cadeaus/grappig') || heeft(p.tags, 'grappig') || inTop(p, '/collectie/grappige-cadeaus'); }
+  function persoonlijk(p) { return heeft(p.ookIn, 'cadeaus/met-naam') || inTop(p, '/collectie/persoonlijke-cadeaus') || p.soort === 'persoonlijk' || /^wonen\/foto-persoonlijk/.test(g(p)); }
+
+  /* ---------- de vier vragen ---------- */
+  var WIE = [
+    { id: 'haar', naam: 'Voor haar', beeld: 'voor-haar' }, { id: 'hem', naam: 'Voor hem', beeld: 'voor-hem' },
+    { id: 'kinderen', naam: 'Kind', beeld: 'voor-kinderen' }, { id: 'tieners', naam: 'Tiener', beeld: 'voor-tieners' },
+    { id: 'opa-oma', naam: 'Opa & oma', beeld: 'voor-opa-oma' }, { id: 'collega', naam: 'Collega', beeld: 'voor-collega' },
+    { id: 'baby', naam: 'Baby', beeld: 'voor-baby' }
+  ];
+  var BED = [{ id: '10', naam: 'Tot € 10', lo: 0, hi: 10 }, { id: '25', naam: '€ 10 – 25', lo: 10, hi: 25 }, { id: '50', naam: '€ 25 – 50', lo: 25, hi: 50 }, { id: '100', naam: '€ 50 – 100', lo: 50, hi: 100 }, { id: 'meer', naam: 'Meer dan € 100', lo: 100, hi: 1e9 }];
+  var MOM = [
+    { id: 'sinterklaas', naam: 'Sinterklaas', beeld: 'gel-sinterklaas', f: function (p) { return heeft(p.ookIn, 'cadeaus/sinterklaas') || heeft(p.ookIn, 'cadeaus/sint-onder-15') || inTop(p, '/c/cadeaus/sinterklaas') || inTop(p, '/collectie/schoencadeautjes') || /sinterklaas|pepernoot|kruidnoot|chocoladeletter/i.test(p.titel); } },
+    { id: 'kerst', naam: 'Kerst', beeld: 'gel-kerst', f: function (p) { return heeft(p.ookIn, 'cadeaus/kerst') || inTop(p, '/c/cadeaus/kerst') || /\bkerst/i.test(p.titel) || /kerstdecoratie/.test(g(p)); } },
+    { id: 'verjaardag', naam: 'Verjaardag', beeld: 'gel-verjaardag', f: function (p) { return inTop(p, '/gelegenheid/verjaardag') || heeft(p.tags, 'verjaardag') || /verjaardag|jarig|happy birthday/i.test(p.titel); } },
+    { id: 'bedankt', naam: 'Bedankje', beeld: 'gel-bedankt', f: function (p) { return heeft(p.tags, 'bedankt') || heeft(p.tags, 'collega-bedankje') || inTop(p, '/gelegenheid/bedankt') || /bedankt|merci|dankjewel/i.test(p.titel); } },
+    { id: 'housewarming', naam: 'Nieuw huis', beeld: 'gel-housewarming', f: function (p) { return heeft(p.tags, 'housewarming') || inTop(p, '/gelegenheid/housewarming'); } },
+    { id: 'valentijn', naam: 'Valentijn', beeld: 'gel-valentijn', f: function (p) { return (p.ookIn || []).some(function (x) { return x.indexOf('valentijn/') === 0; }) || inTop(p, '/c/valentijn'); } },
+    { id: 'geslaagd', naam: 'Geslaagd', beeld: 'gel-geslaagd', f: function (p) { return heeft(p.tags, 'geslaagd') || inTop(p, '/gelegenheid/geslaagd') || /geslaagd|rijbewijs|examen/i.test(p.titel); } },
+    { id: 'beterschap', naam: 'Beterschap', beeld: 'gel-beterschap', f: function (p) { return heeft(p.tags, 'beterschap') || inTop(p, '/gelegenheid/beterschap') || /beterschap/i.test(p.titel); } },
+    { id: 'pensioen', naam: 'Afscheid & pensioen', beeld: 'gel-afscheid-pensioen', f: function (p) { return heeft(p.tags, 'afscheid') || heeft(p.tags, 'collega-afscheid') || inTop(p, '/gelegenheid/afscheid-pensioen') || /pensioen|afscheid/i.test(p.titel); } }
+  ];
+  /* 'Wat voor iets?': één platte lijst; een product mag in meer soorten staan */
+  function pad(re) { return function (p) { return re.test(g(p)); }; }
+  var SOORT = [
+    { id: 'grappig', naam: 'Grappig', f: grappig },
+    { id: 'naam', naam: 'Met naam of foto', f: persoonlijk },
+    { id: 'lampjes', naam: 'Lampjes', f: pad(/^wonen\/verlichting/) },
+    { id: 'knus', naam: 'Plaids & sloffen', f: function (p) { return /^wonen\/woontextiel|^mode-sieraden\/schoenen-sloffen/.test(g(p)); } },
+    { id: 'chocolade', naam: 'Chocolade', f: pad(/^eten-drinken\/chocolade-snoep\/(chocolade|chocoladeletters)/) },
+    { id: 'snoep', naam: 'Snoep & drop', f: pad(/^eten-drinken\/chocolade-snoep\/(snoep|snoep-drop|snoep-met-een-boodschap)/) },
+    { id: 'koek', naam: 'Koek & lekkers', f: pad(/^eten-drinken\/(chocolade-snoep\/koekjes|lekkernijen)/) },
+    { id: 'pakket', naam: 'Cadeau\u00adpakketten', f: pad(/^eten-drinken\/cadeaupakketten/) },
+    { id: 'kaarsen', naam: 'Kaarsen & geur', f: pad(/^wonen\/kaarsen-geur/) },
+    { id: 'mokken', naam: 'Mokken & glazen', f: pad(/^koken-tafelen\/mokken-glazen|^eten-drinken\/drankaccessoires/) },
+    { id: 'koffie', naam: 'Koffie & thee', f: pad(/^koken-tafelen\/koffie-thee/) },
+    { id: 'koken', naam: 'Koken & tafelen', f: pad(/^koken-tafelen\/(koken-bakken|tafelen-borrel)/) },
+    { id: 'wonen', naam: 'Voor in huis', f: pad(/^wonen\/(woondecoratie|foto-persoonlijk)/) },
+    { id: 'kerst', naam: 'Kerst\u00adversiering', f: pad(/^wonen\/kerstdecoratie/) },
+    { id: 'knuffels', naam: 'Knuffels & poppen', f: pad(/^speelgoed\/poppen-knuffels/) },
+    { id: 'lego', naam: 'LEGO & bouwen', f: pad(/^speelgoed\/bouwen/) },
+    { id: 'speelgoed', naam: 'Speelgoed', f: pad(/^speelgoed\/(speelfiguren-voertuigen|rollenspel-verkleden|leren-ontdekken)/) },
+    { id: 'baby', naam: 'Baby & peuter', f: pad(/^speelgoed\/baby-peuter/) },
+    { id: 'buiten', naam: 'Buiten spelen', f: pad(/^speelgoed\/buiten-spelen/) },
+    { id: 'knutselen', naam: 'Knutselen & hobby', f: pad(/^speelgoed\/knutselen|^hobby\/(schilderen-tekenen|zelf-maken|handwerken|papier-planners)/) },
+    { id: 'spellen', naam: 'Spellen', f: pad(/^spellen-puzzels\/(bordspellen|kaart-partyspellen|kinderspellen|breinbrekers-escape)/) },
+    { id: 'puzzels', naam: 'Puzzels', f: pad(/^spellen-puzzels\/puzzels/) },
+    { id: 'pokemon', naam: 'Pokémon & verzamel\u00adkaarten', f: pad(/^spellen-puzzels\/pokemon/) },
+    { id: 'gaming', naam: 'Gaming', f: pad(/^elektronica\/gaming/) },
+    { id: 'gadgets', naam: 'Gadgets', f: pad(/^elektronica\/gadgets/) },
+    { id: 'muziek', naam: 'Speakers & kop\u00adtelefoons', f: pad(/^elektronica\/audio|^hobby\/muziek-maken/) },
+    { id: 'slim', naam: 'Smart\u00adwatches & camera\'s', f: pad(/^elektronica\/(smartwatches|foto-video|tablets-tv-slim-wonen)/) },
+    { id: 'horloges', naam: 'Horloges', f: pad(/^mode-sieraden\/horloges/) },
+    { id: 'tassen', naam: 'Tassen & accessoires', f: pad(/^mode-sieraden\/(tassen-portemonnees|accessoires|kleding)/) },
+    { id: 'parfum', naam: 'Parfum', f: pad(/^beauty-verzorging\/parfum/) },
+    { id: 'verzorging', naam: 'Verzorging & spa', f: pad(/^beauty-verzorging\/(bad-huid-spa|giftsets|make-up-haar|scheren-baard)/) },
+    { id: 'boeken', naam: 'Boeken', f: pad(/^boeken-media\//) },
+    { id: 'darts', naam: 'Darts', f: pad(/^sport-outdoor\/darts/) },
+    { id: 'sport', naam: 'Sport & buiten', f: pad(/^sport-outdoor\/(outdoor-avontuur|balsport-spel|fitness-yoga|water-wintersport|metaaldetectie)/) },
+    { id: 'steps', naam: 'E-steps & fietsen', f: pad(/^sport-outdoor\/fietsen-steps/) },
+    { id: 'bouwpakket', naam: 'Bouw\u00adpakketten & RC-auto\'s', f: pad(/^hobby\/(modelbouw|rc-auto-s)/) },
+    { id: 'tuin', naam: 'Tuin & planten', f: pad(/^tuin-klussen\/(tuin-planten|buiten-leven)/) },
+    { id: 'klussen', naam: 'Gereed\u00adschap', f: pad(/^tuin-klussen\/(klussen|tuingereedschap)/) },
+    { id: 'belevenis', naam: 'Beleve\u00adnissen', f: pad(/^belevenissen\//) },
+    { id: 'dieren', naam: 'Voor het huisdier', f: pad(/^dieren\//) },
+    { id: 'christelijk', naam: 'Christelijk', f: pad(/^christelijk\//) },
+    { id: 'sieraden', naam: 'Sieraden', f: pad(/^mode-sieraden\/sieraden/) },
+    { id: 'drank', naam: 'Drank', f: function (p) { return !!p.drank || /^eten-drinken\/(wijn-bubbels|bier-sterke-drank|alcoholvrij)/.test(g(p)); } }
+  ];
+
+  /* ---------- welke producten mogen erop ---------- */
+  var SOORTP = {}; SOORT.forEach(function (s) { SOORTP[s.id] = s; });
+  var SMAL_MOM = { pensioen: 'pensioen', geslaagd: 'geslaagd', beterschap: 'beterschap', liefde: 'valentijn', felicitatie: 'verjaardag', sorry: null };
+  var ALLES = K.ALLES.filter(function (p) {
+    if (!(p.prijs > 0) || p.los) return false;
+    if (p.prijs < 5 && (p.shop === 'Kaartje2go' || /(^|\s)(kaart|kerstkaart|wenskaart|felicitatiekaart|sinterklaaskaart|verjaardagskaart)(\s|$|[:,])/i.test(p.titel || ''))) return false;
+    if (/truien-hoodies|t-shirts|sneakers|laarzen|handschoenen/.test(p.vak || '')) return false;
+    return true;
+  });
+  ALLES.forEach(function (p) {
+    p._so = SOORT.filter(function (s) { return s.f(p); }).map(function (s) { return s.id; });
+    p._mo = MOM.filter(function (m) { return m.f(p); }).map(function (m) { return m.id; });
+    p._sier = K.sieraad(p); p._dr = !!p.drank || heeft(p._so, 'drank');
+  });
+  ALLES.forEach(function (p) { p._t = norm(p.titel + ' ' + (p.merk || '') + ' ' + p._so.map(function (id) { return SOORTP[id].naam; }).join(' ')); });
+  function wieOk(p, w) {
+    if (!w) return true;
+    var v = p.voor || [], lt = p.leeftijd;
+    if ((p.nietBij || []).indexOf(w) !== -1) return false;
+    if (w === 'hem' && /\broze\b|\bpink\b/i.test(p.titel || '')) return false;
+    if (w === 'haar' || w === 'hem') return heeft(v, w) || (heeft(v, 'iedereen') && !heeft(v, 'kind') && !heeft(v, 'baby') && !(lt && lt[1] && lt[1] <= 12));
+    if (w === 'kinderen') return heeft(v, 'kind');
+    if (w === 'tieners') return heeft(v, 'tiener');
+    return heeft(v, w);
+  }
+  function smalOk(p, s) {
+    if (!p.smal) return true;
+    if (p.smal === 'grootouder') return s.wie === 'opa-oma';
+    if (p.smal === 'collega') return s.wie === 'collega';
+    var m = SMAL_MOM[p.smal];
+    return !!m && s.mom === m;
+  }
+  function drankMag(s) { return heeft(s.soort, 'drank') || /whisk|wijn|gin\b|bier|champagne|prosecco|rum\b|port\b|likeur|cognac/.test(s.q || ''); }
+  function past(p, s, zonder) {
+    if (zonder !== 'wie' && !wieOk(p, s.wie)) return false;
+    if (!smalOk(p, s)) return false;
+    if (zonder !== 'bed' && s.bed) { var b = BEDP[s.bed]; if (!(p.prijs > b.lo && p.prijs <= b.hi) && !(b.lo === 0 && p.prijs <= b.hi)) return false; }
+    if (zonder !== 'mom' && s.mom && !heeft(p._mo, s.mom)) return false;
+    if (zonder !== 'soort' && s.soort.length && !s.soort.some(function (id) { return heeft(p._so, id); })) return false;
+    /* drank alleen als iemand zelf Drank kiest (of ernaar zoekt) */
+    if (p._dr && !drankMag(s) && zonder !== 'soort') return false;
+    if (s.q) { var w = s.q.split(/\s+/).filter(Boolean); for (var i = 0; i < w.length; i++) if (p._t.indexOf(w[i]) === -1) return false; }
+    return true;
+  }
+  var BEDP = {}; BED.forEach(function (b) { BEDP[b.id] = b; });
+
+  /* ---------- volgorde: handgekozen eerst, per 12 hooguit 2 uit hetzelfde vakje, sieraden achteraan ---------- */
+  function score(p, s) {
+    var r = RANG[p.id] != null ? RANG[p.id] : 3 + (1 - (p.rang || 0));
+    var sl = [];
+    if (s.wie) sl.push('/voor/' + s.wie);
+    if (s.mom) sl.push({ sinterklaas: '/c/cadeaus/sinterklaas', kerst: '/c/cadeaus/kerst', verjaardag: '/gelegenheid/verjaardag', bedankt: '/gelegenheid/bedankt', housewarming: '/gelegenheid/housewarming', valentijn: '/c/valentijn', geslaagd: '/gelegenheid/geslaagd', beterschap: '/gelegenheid/beterschap', pensioen: '/gelegenheid/afscheid-pensioen' }[s.mom]);
+    sl.forEach(function (k) { if (inTop(p, k)) r -= 0.7; });
+    if (p._sier && !heeft(s.soort, 'sieraden')) r += 10;
+    return r;
+  }
+  function orden(l, s) {
+    l.forEach(function (p) { p._s = score(p, s); });
+    l.sort(function (a, b) { return a._s - b._s; });
+    var uit = [], rest = l;
+    while (rest.length) { var tel = {}, blok = [], volg = []; rest.forEach(function (p) { var v = p.vak || '?'; if (blok.length < 12 && (tel[v] || 0) < 2) { tel[v] = (tel[v] || 0) + 1; blok.push(p); } else volg.push(p); }); uit = uit.concat(blok); rest = volg; }
+    return uit;
+  }
+
+  /* ---------- toestand in het adres (#wie=haar&bed=25&soort=chocolade,snoep&mom=kerst&q=lego) ---------- */
+  var S = { wie: '', bed: '', soort: [], mom: '', q: '', n: 24 };
+  function lees() {
+    var h = new URLSearchParams((location.hash || '').slice(1));
+    S.wie = WIE.some(function (x) { return x.id === h.get('wie'); }) ? h.get('wie') : '';
+    S.bed = BEDP[h.get('bed')] ? h.get('bed') : '';
+    S.mom = MOM.some(function (x) { return x.id === h.get('mom'); }) ? h.get('mom') : '';
+    S.soort = (h.get('soort') || '').split(',').filter(function (id) { return SOORTP[id]; });
+    S.q = norm(h.get('q') || ''); document.getElementById('q').value = h.get('q') || '';
+    S.n = 24;
+  }
+  function schrijf() {
+    var h = new URLSearchParams();
+    if (S.wie) h.set('wie', S.wie); if (S.bed) h.set('bed', S.bed); if (S.soort.length) h.set('soort', S.soort.join(',')); if (S.mom) h.set('mom', S.mom);
+    var q = document.getElementById('q').value.trim(); if (q) h.set('q', q);
+    var t = h.toString(); history.replaceState(null, '', t ? '#' + t : location.pathname);
+  }
+
+  /* ---------- tekenen ---------- */
+  function naamVan(lijst, id) { var x = lijst.filter(function (y) { return y.id === id; })[0]; return x ? x.naam : ''; }
+  function vragen() {
+    var soortTxt = S.soort.length ? (S.soort.length === 1 ? SOORTP[S.soort[0]].naam : S.soort.length + ' soorten') : 'Alles';
+    var v = [
+      ['wie', 'Voor wie?', S.wie ? naamVan(WIE, S.wie) : 'Iedereen', !!S.wie],
+      ['bed', 'Hoeveel?', S.bed ? BEDP[S.bed].naam : 'Alle bedragen', !!S.bed],
+      ['soort', 'Wat voor iets?', soortTxt, S.soort.length > 0],
+      ['mom', 'Waarvoor?', S.mom ? naamVan(MOM, S.mom) : 'Maakt niet uit', !!S.mom]
+    ];
+    document.getElementById('vragen').innerHTML = v.map(function (x) { return '<button type="button" class="vr' + (x[3] ? ' aan' : '') + '" data-vraag="' + x[0] + '"><small>' + x[1] + '</small><b>' + esc(x[2]) + '</b>' + PIJL + '</button>'; }).join('');
+    var c = [];
+    if (S.wie) c.push(['wie', '', naamVan(WIE, S.wie)]);
+    if (S.bed) c.push(['bed', '', BEDP[S.bed].naam]);
+    S.soort.forEach(function (id) { c.push(['soort', id, SOORTP[id].naam]); });
+    if (S.mom) c.push(['mom', '', naamVan(MOM, S.mom)]);
+    var q = document.getElementById('q').value.trim(); if (q) c.push(['q', '', '“' + q + '”']);
+    document.getElementById('gekozen').innerHTML = c.map(function (x) { return '<button type="button" data-weg="' + x[0] + '" data-id="' + esc(x[1]) + '">' + esc(x[2]) + ' <span aria-hidden="true">×</span><span class="sr" hidden> weghalen</span></button>'; }).join('') + (c.length > 1 ? '<button type="button" class="wis" data-alleswis>Alles wissen</button>' : '');
+  }
+  /* lange woorden netjes afbreken met de nagelezen tabel van de echte site (LK_AFBREEK) */
+  var AFB = {}; (window.LK_AFBREEK || '').split('|').forEach(function (w) { if (w) AFB[w.replace(/-/g, '')] = w; });
+  function zachtAf(t) { return String(t).replace(/[A-Za-zÀ-ÿ]{12,}/g, function (w) { var a = AFB[w.toLowerCase()]; if (!a) return w; var u = '', k = 0; for (var i = 0; i < a.length; i++) { if (a[i] === '-') u += '\u00ad'; else u += w[k++]; } return u; }); }
+  function kaart(p) {
+    return '<article class="kaart"><button class="f" type="button" data-blad="' + esc(p.id) + '" aria-label="Meer over ' + esc(p.titel) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></button><div class="in"><button class="t" type="button" data-blad="' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</button><span class="p">' + euro(p.prijs) + '</span><a class="k" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + '</a></div></article>';
+  }
+  var LIJST = [];
+  function teken() {
+    LIJST = orden(ALLES.filter(function (p) { return past(p, S); }), S);
+    vragen();
+    document.getElementById('aantal').textContent = LIJST.length === 1 ? '1 cadeau' : LIJST.length.toLocaleString('nl-NL') + ' cadeaus';
+    document.getElementById('grid').innerHTML = LIJST.slice(0, S.n).map(kaart).join('');
+    document.getElementById('meer').innerHTML = !LIJST.length ? '<p class="leeg">Hier vonden we niets bij. Haal een keuze weg met het kruisje.</p>' : (LIJST.length > S.n ? '<button class="meer" type="button" data-meer>Laat er nog 24 zien</button>' : '');
+    document.getElementById('qweg').hidden = !document.getElementById('q').value;
+  }
+  /* aantallen per keuze: tel met alle andere keuzes aan */
+  function tellen(vraag) {
+    var t = {};
+    ALLES.forEach(function (p) {
+      if (!past(p, S, vraag)) return;
+      if (vraag === 'wie') WIE.forEach(function (w) { if (wieOk(p, w.id) && smalOk(p, { wie: w.id, mom: S.mom })) t[w.id] = (t[w.id] || 0) + 1; });
+      else if (vraag === 'bed') BED.forEach(function (b) { if (p.prijs > b.lo && p.prijs <= b.hi || (b.lo === 0 && p.prijs <= b.hi)) t[b.id] = (t[b.id] || 0) + 1; });
+      else if (vraag === 'mom') p._mo.forEach(function (id) { t[id] = (t[id] || 0) + 1; });
+      else if (vraag === 'soort') { if (p._dr && !drankMag(S)) t.drank = (t.drank || 0) + 1; else p._so.forEach(function (id) { t[id] = (t[id] || 0) + 1; }); }
+    });
+    return t;
+  }
+  /* plaatje per soort: het eerste handgekozen cadeau van die soort */
+  var SBEELD = {};
+  (function () { var l = ALLES.slice().sort(function (a, b) { return (RANG[a.id] != null ? RANG[a.id] : 9) - (RANG[b.id] != null ? RANG[b.id] : 9); }); SOORT.forEach(function (s) { for (var i = 0; i < l.length; i++) if (heeft(l[i]._so, s.id) && !(l[i]._sier && s.id !== 'sieraden')) { SBEELD[s.id] = K.klein(l[i]); break; } }); })();
+  var BLAD = '', elBlad = document.getElementById('blad');
+  function opent(vraag) {
+    BLAD = vraag;
+    document.getElementById('bkop').textContent = { wie: 'Voor wie?', bed: 'Hoeveel wil je uitgeven?', soort: 'Wat voor iets?', mom: 'Waarvoor?' }[vraag];
+    document.getElementById('dzoek').hidden = vraag !== 'soort'; document.getElementById('dq').value = '';
+    document.getElementById('dvoet').hidden = vraag !== 'soort';
+    tekenOpties();
+    elBlad.hidden = false; document.body.classList.add('vast');
+  }
+  function tekenOpties() {
+    var t = tellen(BLAD), dq = norm(document.getElementById('dq').value.trim()), html = '';
+    function op(id, naam, beeld, n, aan) { return '<button type="button" class="op' + (beeld ? '' : ' geenbeeld') + '" data-kies="' + id + '" aria-pressed="' + aan + '">' + (beeld ? '<i><img src="' + beeld + '" alt="" loading="lazy"></i>' : '') + '<span><b>' + esc(naam) + '</b><small>' + (n || 0).toLocaleString('nl-NL') + ' cadeaus</small></span></button>'; }
+    var alle = ALLES.filter(function (p) { return past(p, S, BLAD); }).length;
+    if (BLAD === 'wie') html = op('', 'Iedereen', '/images/sub/rond/col-originele-cadeaus-klein.webp', alle, !S.wie) + WIE.filter(function (w) { return t[w.id]; }).map(function (w) { return op(w.id, w.naam, '/images/sub/rond/' + w.beeld + '-klein.webp', t[w.id], S.wie === w.id); }).join('');
+    if (BLAD === 'bed') html = op('', 'Alle bedragen', '', alle, !S.bed) + BED.filter(function (b) { return t[b.id]; }).map(function (b) { return op(b.id, b.naam, '', t[b.id], S.bed === b.id); }).join('');
+    if (BLAD === 'mom') html = op('', 'Maakt niet uit', '', alle, !S.mom) + MOM.filter(function (m) { return t[m.id]; }).map(function (m) { return op(m.id, m.naam, '/images/sub/rond/' + m.beeld + '-klein.webp', t[m.id], S.mom === m.id); }).join('');
+    if (BLAD === 'soort') {
+      html = SOORT.filter(function (s) { return (t[s.id] || heeft(S.soort, s.id)) && (!dq || norm(s.naam).indexOf(dq) !== -1); }).map(function (s) { return op(s.id, s.naam, SBEELD[s.id], t[s.id], heeft(S.soort, s.id)); }).join('') || '<p class="leeg" style="grid-column:1/-1">Geen soort gevonden. Probeer het zoekvak bovenaan de pagina.</p>';
+      var n = ALLES.filter(function (p) { return past(p, S); }).length;
+      document.getElementById('toonknop').textContent = 'Toon ' + n.toLocaleString('nl-NL') + (n === 1 ? ' cadeau' : ' cadeaus');
+    }
+    document.getElementById('opties').innerHTML = html;
+  }
+  function dicht() { elBlad.hidden = true; document.body.classList.remove('vast'); BLAD = ''; S.n = 24; schrijf(); teken(); }
+
+  document.addEventListener('click', function (e) {
+    var t;
+    if ((t = e.target.closest('[data-vraag]'))) { opent(t.getAttribute('data-vraag')); return; }
+    if ((t = e.target.closest('[data-kies]'))) {
+      var id = t.getAttribute('data-kies');
+      if (BLAD === 'soort') { var i = S.soort.indexOf(id); if (i === -1) S.soort.push(id); else S.soort.splice(i, 1); tekenOpties(); return; }
+      S[BLAD] = id; dicht(); return;
+    }
+    if (e.target.closest('[data-wis-soort]')) { S.soort = []; tekenOpties(); return; }
+    if (e.target.closest('[data-dicht]') || e.target === elBlad) { dicht(); return; }
+    if ((t = e.target.closest('[data-weg]'))) {
+      var w = t.getAttribute('data-weg');
+      if (w === 'soort') S.soort.splice(S.soort.indexOf(t.getAttribute('data-id')), 1);
+      else if (w === 'q') { document.getElementById('q').value = ''; S.q = ''; }
+      else S[w] = '';
+      S.n = 24; schrijf(); teken(); return;
+    }
+    if (e.target.closest('[data-alleswis]')) { S.wie = S.bed = S.mom = ''; S.soort = []; S.q = ''; document.getElementById('q').value = ''; S.n = 24; schrijf(); teken(); return; }
+    if (e.target.closest('#qweg')) { document.getElementById('q').value = ''; S.q = ''; S.n = 24; schrijf(); teken(); return; }
+    if (e.target.closest('[data-meer]')) { var oud = S.n; S.n += 24; teken(); var k = document.querySelectorAll('#grid .kaart')[oud]; if (k) k.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !elBlad.hidden) dicht(); });
+  var wacht = 0;
+  document.getElementById('q').addEventListener('input', function (e) { clearTimeout(wacht); wacht = setTimeout(function () { S.q = norm(e.target.value.trim()); S.n = 24; schrijf(); teken(); }, 180); });
+  document.getElementById('dq').addEventListener('input', tekenOpties);
+  window.addEventListener('hashchange', function () { lees(); teken(); });
+  lees(); teken();
+})();
+</script>
+</body>
+</html>
