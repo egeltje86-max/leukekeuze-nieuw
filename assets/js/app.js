@@ -3684,6 +3684,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '16 november', kop: 'Zonde om aan te steken: 5 gekke kaarsen', tekst: 'Door Marius zelf uitgekozen: van een bierpul tot een stuk kaas, allemaal kaarsen.', ids: ['surpri-271f87fd8b', 'joybuy-6516355e12', 'sissyb-f809bf27f0', 'dvzn-770d60cf83', 'speelg-285ac4a6c8'] },
     { datum: '16 november', kop: 'Goedemorgen! Alles onder € 25', tekst: 'Vijf vrolijke cadeaus voor de ochtend: van een spiegelei-mok tot een Harry Potter-wekker.', ids: ['cl-mok-spiegelei', 'tt-dvzn-c0a7b1a834', 'dvzn-995742', 'dvzn-608847', 'dvzn-c15dcffb40'] },
     { datum: '15 november', kop: 'Knusse avond? Alles onder € 20', tekst: 'Voor koude avonden op de bank: van een poes-leeslamp tot pantersloffen.', ids: ['cl-poes-leeslamp', 'cl-heatable-hot', 'cl-hema-teddy', 'cg-xxl-warmwaterkruik', 'trendm-7d10a12abb'] },
     { datum: '15 november', kop: 'Pokémon bouwen! Mega en LEGO', tekst: 'Van een Mega Pikachu van € 9,99 tot het grote LEGO-pronkstuk.', ids: ['cl-mc-charmander', 'cl-mc-pikachu', 'cl-mc-lapras', 'lego-72151', 'bol-9300000257600058'] },
