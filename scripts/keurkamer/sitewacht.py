@@ -147,7 +147,7 @@ def winkel_sectie():
                  '. Die slaat Google vanzelf over (noindex, niet in de sitemap) tot ze vol genoeg zijn; de producten blijven bereikbaar.')
     if vol:
         r.append('- %d vakjes zijn erg vol (meer dan 120 producten; keuzestress): ' % len(vol) + ', '.join('%s (%d)' % (namen.get(v, v), a) for a, v in vol[:8]))
-        actie(35, 'Marius', 'Volle vakjes in de Keurkamer strenger keuren (alleen leuke keuzes laten staan): %s.' % ', '.join(namen.get(v, v) for a, v in vol[:4]))
+        actie(35, 'Marius', 'Volle vakjes strenger keuren op de landkaart (alleen leuke keuzes laten staan): %s.' % ', '.join(namen.get(v, v) for a, v in vol[:4]))
     # prijsmix en winkelmix per vakje
     eenzijdig = []; eenwinkel = []
     for v, x in echte.items():
@@ -176,15 +176,24 @@ def winkel_sectie():
     if probleem:
         r.append('- Regelmotor, open punten: ' + ', '.join('%s %s' % (c, uitleg.get(k, k)) for k, c in sorted(probleem.items(), key=lambda x: -x[1])))
     dubbel = vl.get('dubbel', 0); geenvak = vl.get('geen-echt-vakje', 0)
-    if dubbel: actie(60, 'Marius', '%d dubbele producten samenvoegen tot één product met keuzes (in de Keurkamer: filter "dubbel", knop "Die weg").' % dubbel)
+    if dubbel: actie(40, 'samen', '%d producten lijken twee keer op de site te staan (zelfde winkelpagina of titel); Claude zet ze op een WEG-lijst of voegt de echte dubbelen samen.' % dubbel)
     # 9-11-2026: 'geen echt vakje' komt uit de oude catalogus-indeling; op de site heeft elk product een vakje (nieuwe boom). Geen actie meer.
     for k, gew, wie, tekst in (('link-geen-partner', 50, 'Claude', 'links zonder partnercode repareren (anders geen commissie)'), ('titel-engels', 30, 'Claude', 'Engelse titels vertalen'), ('foto-klein', 25, 'Claude', 'te kleine foto\'s vervangen door een grotere uit de feed'), ('tekst-kort', 28, 'Claude', 'te korte teksten herschrijven')):
         if probleem.get(k): actie(gew, wie, '%d %s.' % (probleem[k], tekst))
-    # keurkamer-voortgang
-    klaar = sum(1 for v, s in (O.get('vakjes') or {}).items() if s.get('status') == 'klaar'); beoordeeld = len(O.get('producten') or {})
-    kern['keurkamer'] = {'vakjes_klaar': klaar, 'producten_beoordeeld': beoordeeld, 'weg': sum(1 for x in (O.get('producten') or {}).values() if x.get('oordeel') == 'weg')}
-    r.append('- Keurkamer: **%d van %d vakjes klaar**, %s producten door Marius beoordeeld, %d weggehaald.' % (klaar, len(echte), n(beoordeeld), kern['keurkamer']['weg']))
-    # 9-11-2026: Marius keurt nu via de keurlijsten en de Superkeurkamer (op zijn laptop); deze oude Keurkamer-telling is geen actie meer.
+    # 16-11-2026: Marius keurt via de ERBIJ- en WEG-lijsten, de landkaart (landschap-keurkamer) en de Superkeurkamer; de oude Keurkamer
+    # (oordelen.json) gebruikt hij niet meer. Tel dus wat hij echt gekozen heeft: weggehaald (correcties.json -> status afgekeurd),
+    # 'niet bij deze persoon' (voorWeg) en zijn Superkeurkamer-keuzes die op de site staan (herkomst superkeurkamer).
+    COR = lees(os.path.join(ROOT, 'scripts', 'boom', 'correcties.json'), {}) or {}
+    weg_m = sum(1 for k, v in (COR.get('status') or {}).items() if not k.startswith('_') and v == 'afgekeurd')
+    nietbij_m = sum(1 for k in (COR.get('voorWeg') or {}) if not k.startswith('_'))
+    skk = 0
+    try:
+        for m in re.finditer(r'"id": "([^"]+)"[^{}]*?"herkomst": "superkeurkamer', open(os.path.join(ROOT, 'assets', 'js', 'producten.js'), encoding='utf-8').read()):
+            if m.group(1) in P: skk += 1
+    except Exception: pass
+    kern['keuring'] = {'weg': weg_m, 'niet_bij': nietbij_m, 'superkeurkamer': skk}
+    kern['keurkamer'] = {'vakjes_klaar': 0}  # oude Keurkamer, alleen voor oudere rapporten
+    r.append('- Jouw keuring (lijsten, landkaart en Superkeurkamer): **%s producten van de site gehaald**, %s keer "niet bij deze persoon", **%s cadeaus uit de Superkeurkamer** op de site.' % (n(weg_m), n(nietbij_m), n(skk)))
     # AI-advies
     if AI:
         weg = verpl = twijfel = 0; per_vak = collections.Counter(); leuk = []
@@ -205,9 +214,10 @@ def winkel_sectie():
     r.append('- Nieuw op de site in de laatste 7 dagen: %s producten.' % n(nieuw))
     # cijfer winkel
     cijfer = 10.0
-    cijfer -= min(2, len(dun) / 10.0); cijfer -= min(2, (dubbel + vl.get('lijkt-dubbel', 0)) / 100.0); cijfer -= min(1.5, geenvak / 150.0)
+    # 16-11-2026: 'geen echt vakje' telt niet meer mee (op de site heeft elk product een vakje in de nieuwe indeling)
+    cijfer -= min(2, len(dun) / 10.0); cijfer -= min(2, (dubbel + vl.get('lijkt-dubbel', 0)) / 100.0)
     cijfer -= min(1.5, sum(c for k, c in probleem.items() if k not in ('dubbel', 'lijkt-dubbel', 'geen-echt-vakje')) / 300.0)
-    cijfer -= 2.0 * (1 - min(1.0, klaar / float(max(1, len(echte)))))   # keuring: 0 klaar = -2, alles klaar = 0
+    cijfer -= 0 if (weg_m or skk) else 2.0   # keuring: telt mee zodra Marius via lijsten, landkaart of Superkeurkamer kiest
     return r, max(0, round(cijfer, 1)), kern
 
 # ======================================================================
@@ -216,7 +226,7 @@ def winkel_sectie():
 BEWUST_CANON = {'/collectie/grappige-cadeaus/'}  # 8-11-2026 GO Marius: wijst bewust naar /c/cadeaus/grappig/ (zie HOOFDPAGINA in maak-paginas.js)
 RE_TITLE = re.compile(r'<title>(.*?)</title>', re.S); RE_DESC = re.compile(r'<meta name="description" content="([^"]*)"'); RE_CANON = re.compile(r'<link rel="canonical" href="([^"]*)"')
 RE_H1 = re.compile(r'<h1[^>]*>(.*?)</h1>', re.S); RE_HREF = re.compile(r'href="([^"#]*)"'); RE_SRC = re.compile(r'(?:src|data-src)="([^"]*)"'); RE_ROBOTS = re.compile(r'<meta name="robots" content="([^"]*)"'); RE_LD = re.compile(r'application/ld\+json')
-OVERSLAAN = {'assets', 'images', 'scripts', 'keurkamer', 'node_modules', '.git', 'pins', 'tools', '.github'}
+OVERSLAAN = {'assets', 'images', 'scripts', 'keurkamer', 'node_modules', '.git', 'pins', 'tools', '.github', 'nieuw'}  # 16-11-2026: /nieuw/ = testpagina's (noindex), geen echte fouten
 def bestand_voor(pad):
     """Zet een sitepad (/c/hobby/) om in een bestand in de repo; None als het niet bestaat."""
     p = pad.split('?')[0]
@@ -341,7 +351,15 @@ def techniek_sectie(snel):
 # ======================================================================
 def feeds_sectie():
     w = lees(os.path.join(WACHT, 'wacht-laatste.json'))
-    if not w: return ['Nog geen feedcontrole (scripts/keurkamer/wacht.py draait op de laptop, waar de feeds staan).'], None
+    if not w:
+        # 16-11-2026: de avondrun (21:00, laptop) zet zijn feedcontrole in keurkamer/nazorg/; de piloot neemt prijzen en uitverkocht elke ochtend vanzelf over.
+        a = lees(os.path.join(KK, 'nazorg', 'wacht-laatste.json'))
+        if not a: return ['Nog geen feedcontrole (de avondrun op de laptop maakt die).'], None
+        s = a.get('samenvatting', {})
+        r = ['Laatste feedcontrole van de avondrun: %s. %s van de %s producten teruggevonden in de feeds van de winkels.' % (str(a.get('gemaakt', ''))[:16].replace('T', ' '), n(s.get('gecontroleerd', 0)), n(s.get('live', 0)))]
+        r.append('- %s prijzen veranderd en %s uitverkocht: de piloot neemt dat elke ochtend vanzelf over (rare sprongen niet, die blijven staan).' % (n(s.get('prijsVeranderd', 0)), n(s.get('uitverkocht', 0))))
+        if s.get('nietInFeed'): r.append('- %s producten staan in geen enkele feed (oude links of winkels zonder feed); die kijkt de winkelcheck in de avondrun eens per 6 dagen na op de winkelpagina zelf.' % n(s['nietInFeed']))
+        return r, s
     s = w.get('samenvatting', {}); r = ['Laatste feedcontrole: %s. %s producten teruggevonden in de feeds.' % (str(w.get('gemaakt', ''))[:16], n(s.get('gecontroleerd', 0)))]
     if s.get('uitverkocht'): r.append('- **%d producten zijn uitverkocht / niet leverbaar**: ' % s['uitverkocht'] + ', '.join(x['titel'][:40] for x in w['uitverkocht'][:5])); actie(78, 'Claude', '%d uitverkochte producten verbergen (status wachten) en bij terugkeer weer tonen.' % s['uitverkocht'])
     if s.get('prijsVeranderd'): r.append('- %d producten met een prijsverschil van 10%% of meer: ' % s['prijsVeranderd'] + ', '.join('%s (€%s → €%s)' % (x['titel'][:30], x['oud'], x['nieuw']) for x in w['prijs'][:5])); actie(55, 'Claude', '%d prijzen bijwerken uit de feeds.' % s['prijsVeranderd'])
@@ -366,15 +384,16 @@ def main():
     if totaal is not None:
         uit.append('**Sitecijfer: %s / 10**  (Google %s · Winkel %s · Techniek %s)%s' % (totaal, g_c if g_c is not None else '-', w_c if w_c is not None else '-', t_c if t_c is not None else '-', ('  — vorige keer %s' % vorige.get('cijfer')) if vorige and vorige.get('cijfer') is not None else ''))
     if g_k.get('klikken') is not None: uit.append('- Google: %s klikken en %s vertoningen in de periode, %s klikken per dag de laatste week.' % (n(g_k['klikken']), n(g_k['vertoningen']), g_k.get('per_dag', '?')))
-    if w_k.get('producten'): uit.append('- Winkel: %s producten in %d vakjes; %d te dun; Keurkamer %d vakjes klaar.' % (n(w_k['producten']), w_k['vakjes'], w_k.get('dun', 0), (w_k.get('keurkamer') or {}).get('vakjes_klaar', 0)))
+    if w_k.get('producten'): uit.append('- Winkel: %s producten op de site; %d vakjes te dun; jij haalde er %s weg en koos %s uit de Superkeurkamer.' % (n(w_k['producten']), w_k.get('dun', 0), n((w_k.get('keuring') or {}).get('weg', 0)), n((w_k.get('keuring') or {}).get('superkeurkamer', 0))))
+    if vorige and str(vorige.get('datum', '')) < '2026-11-16': uit.append('- Let op: vanaf 16-11-2026 rekent het winkelcijfer met wat er echt op de site staat en met jouw eigen keuring, en tellen de testpagina\'s onder /nieuw/ niet meer mee. Vergelijk het cijfer daarom niet één op één met vorige weken.')
     if t_k.get('paginas'): uit.append("- Techniek: %s pagina's; %d kapotte links; %d ontbrekende foto's; %s kB scripts per pagina (gezipt)." % (n(t_k['paginas']), t_k['kapotte_links'], t_k['fotos_missen'], n(t_k.get('js_css_gz_kb', 0))))
     uit.append(''); uit.append('## Top 10 acties deze week')
     for i, (gew, wie, tekst) in enumerate(top, 1): uit.append('%d. **[%s]** %s' % (i, wie, tekst))
     if not top: uit.append('Geen open acties gevonden.')
-    uit += ['', '## 1. Google'] + g_r + ['', '## 2. Winkel (catalogus en Keurkamer)'] + w_r + ['', '## 3. Techniek'] + t_r + ['', '## 4. Feeds van de winkels'] + f_r
+    uit += ['', '## 1. Google'] + g_r + ['', '## 2. Winkel (catalogus en keuring)'] + w_r + ['', '## 3. Techniek'] + t_r + ['', '## 4. Feeds van de winkels'] + f_r
     uit += ['', '## Eerlijk over de top 10 van Nederland',
             'Een plek bij de grootste cadeausites van Nederland is niet iets wat je in een paar weken haalt: die sites bestaan jaren en krijgen duizenden bezoekers per dag uit Google. ',
-            'Wat wél werkt, stap voor stap: (1) alleen leuke keuzes op de site (Keurkamer), (2) elke week een paar gidsen die een echte vraag beantwoorden, (3) snelle, foutloze pagina\'s, (4) elke week dit rapport lezen en de top-acties doen. ',
+            'Wat wél werkt, stap voor stap: (1) alleen leuke keuzes op de site (jouw lijsten, de landkaart en de Superkeurkamer), (2) elke week een paar gidsen die een echte vraag beantwoorden, (3) snelle, foutloze pagina\'s, (4) elke week dit rapport lezen en de top-acties doen. ',
             'De mijlpalen hierboven (klikken per dag) laten zien waar we staan. Dit rapport meet het elke week opnieuw, zodat we zien of het werkt.', '',
             '_Gemaakt door scripts/keurkamer/sitewacht.py. Google-bron: %s._' % (os.path.basename(gsc_pad) if gsc_pad else 'geen')]
     tekst = '\n'.join(uit)

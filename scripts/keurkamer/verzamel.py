@@ -107,9 +107,24 @@ def regels_check(p):
 def dubbelen():
     """Zelfde product twee keer: zelfde winkelpagina, zelfde titel-sleutel, of (binnen dezelfde afdeling) bijna dezelfde woorden."""
     per_url, per_sleutel = collections.defaultdict(list), collections.defaultdict(list)
+    from urllib.parse import urlsplit, parse_qs
+    def adres(u):
+        """16-11-2026: bij veel producten is winkelUrl een partnerlink (awin1.com/pclick.php?…, partner.bol.com/click/click?…, winkel.nl/tradetracker/?…).
+        Zonder het stuk na het vraagteken leken honderden producten dan op één adres te staan ('3.546 dubbelen'). Pak daarom het echte
+        winkeladres uit de link (r=, u=, ued=, murl=, dl=, url=, p=); lukt dat niet, dan telt het adres niet mee als dubbel-sleutel."""
+        u = (u or '').strip()
+        if not u: return ''
+        try:
+            d = urlsplit(u); q = parse_qs(d.query)
+            for k in ('url', 'r', 'u', 'ued', 'murl', 'dl', 'p'):
+                for v in q.get(k, []):
+                    if v.startswith('http'): return re.sub(r'[?#].*$', '', v.lower().rstrip('/'))
+            if d.query and re.search(r'(tradetracker|pclick|click|/c/?$|/c$)', d.path + '|' + d.netloc): return ''
+        except Exception: return ''
+        return re.sub(r'[?#].*$', '', u.lower().rstrip('/'))
     for p in P.values():
-        u = re.sub(r'[?#].*$', '', p['winkelUrl'].lower().rstrip('/'))
-        if u: per_url[u].append(p['id'])
+        u = adres(p['winkelUrl']) or adres(p.get('url', ''))
+        if u and len(urlsplit(u).path.strip('/')) > 1: per_url[u].append(p['id'])
         per_sleutel[sleutel(p['titel'])].append(p['id'])
     D = collections.defaultdict(set); L = collections.defaultdict(set)
     for groep in list(per_url.values()) + list(per_sleutel.values()):
