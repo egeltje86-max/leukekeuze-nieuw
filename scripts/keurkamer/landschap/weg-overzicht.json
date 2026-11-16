@@ -2,7 +2,8 @@
  "_uitleg": [
   "Wat Marius op 15-11-2026 met de landschap-keurkamer van de site haalde, per plek. Bedoeld om later echt mooie nieuwe cadeaus te kiezen voor deze plekken (Marius 15-11: \"voor de producten die weggaan kies ik later weer nieuwe maar dan echt mooi, onthoud globaal wat weg gaat\").",
   "Alleen plekken en voorbeelden, geen cijfers over bezoek.",
-  "Ronde 2 (16-11-2026): nog eens 723 weg, vooral Wonen en Beauty; zie ronde2."
+  "Ronde 2 (16-11-2026): nog eens 723 weg, vooral Wonen en Beauty; zie ronde2.",
+  "Ronde 3 (16-11-2026, middag): nog eens 557 weg, vooral Elektronica, tassen, schoenen en speelgoed; zie ronde3."
  ],
  "datum": "2026-11-15",
  "totaal": 794,
@@ -1660,6 +1661,870 @@
     "prijs": "€ 5 – 5",
     "voorbeelden": [
      "Duckiez hengelspel eendjes vangen"
+    ]
+   }
+  ]
+ },
+ "ronde3": {
+  "datum": "2026-11-16",
+  "totaal": 557,
+  "plekken": [
+   {
+    "plek": "Elektronica & gaming › Audio › Koptelefoons",
+    "aantal": 31,
+    "winkels": "bol 9, Coolblue 8, Amazon 6",
+    "prijs": "€ 14 – 539",
+    "voorbeelden": [
+     "JBL Tune 530BT draadloze koptelefoon – kies je kleur",
+     "Marshall Monitor II draadloze koptelefoon met ruisonderdrukk",
+     "Sony WH-1000XM4C (2026) – kies je kleur",
+     "Sony ULT Wear koptelefoon met noise cancelling"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Audio › Oordopjes",
+    "aantal": 29,
+    "winkels": "Coolblue 13, bol 8, Amazon 5",
+    "prijs": "€ 19 – 284",
+    "voorbeelden": [
+     "Bose Sport open oordopjes – kies je kleur",
+     "Nothing Ear (a) – kies je kleur",
+     "Marshall Minor IV oordopjes – kies je kleur",
+     "Teufel AIRY OPEN TWS open oordopjes (grijs)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Audio › Platenspelers",
+    "aantal": 23,
+    "winkels": "bol 11, Fiftiesstore 8, Coolblue 3",
+    "prijs": "€ 18 – 649",
+    "voorbeelden": [
+     "Crosley RSD3 mini-platenspeler",
+     "Pro-Ject E1.2 platenspeler met bluetooth",
+     "Crosley Miles platenspeler – kies je kleur",
+     "Sony PS-LX5BT platenspeler met bluetooth"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Audio › Radio's",
+    "aantal": 23,
+    "winkels": "bol 18, Coolblue 2, Teufel 1",
+    "prijs": "€ 27 – 799",
+    "voorbeelden": [
+     "Teufel RADIO 3SIXTY met DAB+, internetradio en Bluetooth (zw",
+     "Lenco DAB+ wekkerradio",
+     "JBL Tuner 3 draagbare radio en speaker",
+     "Roberts Rambler Uno retro radio – kies je kleur"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Foto & video › Camera's & instant camera's",
+    "aantal": 20,
+    "winkels": "bol 14, HEMA 3, Coolblue 2",
+    "prijs": "€ 12 – 506",
+    "voorbeelden": [
+     "HEMA analoge fotocamera 35 mm (mint)",
+     "Alecto babyfoon met camera DVM71 (met nachtzicht)",
+     "Kodak Printomatic instant camera – kies je kleur",
+     "Polaroid Hi-Print: fotoprinter voor je telefoon"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Audio › Bluetooth-speakers",
+    "aantal": 18,
+    "winkels": "Teufel 6, Coolblue 4, bol 3",
+    "prijs": "€ 9 – 507",
+    "voorbeelden": [
+     "Teufel BOOMSTER GO bluetooth-speaker",
+     "Sony ULT Tower 5 feestspeaker",
+     "König drijvende speaker",
+     "HEMA draadloze speaker (zwart)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Powerbanks & opladers",
+    "aantal": 16,
+    "winkels": "Coolblue 7, bol 6, HEMA 2",
+    "prijs": "€ 26 – 85",
+    "voorbeelden": [
+     "Belkin draadloze powerbank (5.000 mAh)",
+     "Anker MagGo 3-in-1 opvouwbare draadloze lader",
+     "Anker MagGo 3-in-1 opvouwbare oplader",
+     "Anker MagGo 3-in-1 oplaadstation"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knutselen › Knutselsets",
+    "aantal": 16,
+    "winkels": "bol 12, De Grote Speelgoedwinkel 2, Hobbymax 1",
+    "prijs": "€ 7 – 22",
+    "voorbeelden": [
+     "Kinderschort voor koken en knutselen (wit)",
+     "Mini-knutselset kerstballen, rendier en sneeuwpop",
+     "PlayMais mozaïek beroepen (5000 stukjes)",
+     "Janod knutselset papieren vliegtuigjes"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Schoenen & sloffen › Pantoffels & sloffen",
+    "aantal": 16,
+    "winkels": "Bartogi 11, bol 4, HEMA 1",
+    "prijs": "€ 19 – 134",
+    "voorbeelden": [
+     "UGG Disquette damessloffen (zwart)",
+     "KEEN Howser III Slide sloffen voor dames",
+     "KEEN Seacamp II CNX sandalen voor kinderen (maat 32–39)",
+     "KEEN Hyperport H2 sandalen voor kinderen (maat 24–31)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gaming › Gaming-headsets",
+    "aantal": 15,
+    "winkels": "bol 6, Coolblue 5, Joybuy 2",
+    "prijs": "€ 20 – 240",
+    "voorbeelden": [
+     "Sony INZONE H9 II met ruisonderdrukking – kies je kleur",
+     "Logitech G321 Lightspeed draadloos",
+     "SteelSeries Arctis Nova 1",
+     "SteelSeries Arctis Nova 5 draadloos – kies je console"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knuffels & poppen › Knuffels",
+    "aantal": 15,
+    "winkels": "Animals Giftshop 6, bol 5, Cartoon Megastore 2",
+    "prijs": "€ 10 – 79",
+    "voorbeelden": [
+     "Knuffel havik (18 cm)",
+     "Kaloo Lapinoo konijn crème (35 cm)",
+     "Happy Horse konijn Richie muziekknuffel roze",
+     "Warmies warmteknuffel"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Accessoires › Zonnebrillen",
+    "aantal": 15,
+    "winkels": "bol 15",
+    "prijs": "€ 14 – 159",
+    "voorbeelden": [
+     "Polaroid kinderzonnebril (blauw, gepolariseerd)",
+     "Polaroid zonnebril PLD 6247 (grijs, gepolariseerd)",
+     "Carrera C Sport 13/S gepolariseerd",
+     "Tommy Hilfiger TH 1976/S"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gaming › Gamestoelen",
+    "aantal": 14,
+    "winkels": "bol 11, Coolblue 3",
+    "prijs": "€ 91 – 375",
+    "voorbeelden": [
+     "X Rocker PlayStation Geist gamestoel met speakers",
+     "Razer Fujin Mesh ergonomische gamestoel",
+     "Huzaro Force 2.5 mesh gamestoel",
+     "Trust GXT 721 Ruya Pro gamestoel"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Drankaccessoires › Glazen & karaffen",
+    "aantal": 13,
+    "winkels": "bol 3, Decantalo 2, Handpoppen-winkel 2",
+    "prijs": "€ 9 – 123",
+    "voorbeelden": [
+     "Schott Zwiesel For You rode wijnglazen (4 stuks)",
+     "Zalto Mystique decanteerkaraf",
+     "Leonardo Daily decanteerkaraf (0,75 liter)",
+     "Pilsglazen (4)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Tassen › Rugzakken",
+    "aantal": 13,
+    "winkels": "bol 12, Dr. Martens 1",
+    "prijs": "€ 20 – 200",
+    "voorbeelden": [
+     "Eastpak Back to Work rugzak met laptopvak (zwart)",
+     "Fjällräven Ulvö 23 rugzak (mountain blue)",
+     "Fjällräven Re-Kånken rugzak (dark olive)",
+     "Rains W3 waterdichte rugzak (zwart)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gadgets › Handige gadgets",
+    "aantal": 11,
+    "winkels": "bol 5, Coolblue 3, CoolGift 1",
+    "prijs": "€ 19 – 275",
+    "voorbeelden": [
+     "CASO ultrasone reiniger",
+     "Opvouwbare bedtafel",
+     "Beurer TL 45 daglichtlamp (10.000 lux)",
+     "Insta360 Flow 2 Pro AI-gimbal voor je telefoon"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Tassen › Toilettassen",
+    "aantal": 11,
+    "winkels": "bol 6, HEMA 3, Countrylifestyle 2",
+    "prijs": "€ 8 – 52",
+    "voorbeelden": [
+     "Herschel Cloudform toilettasje (zwart)",
+     "PiP Studio fluwelen toilettas (groen, gewatteerd)",
+     "PiP Studio toilettas Fleur Grandeur (groen)",
+     "Tommy Hilfiger toilettas zwart"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gaming › Controllers & accessoires",
+    "aantal": 10,
+    "winkels": "Coolblue 5, bol 4, Amazon 1",
+    "prijs": "€ 25 – 293",
+    "voorbeelden": [
+     "Logitech G Powerplay 2 muismat met draadloos opladen",
+     "Razer Strider muismat (roze, groot)",
+     "PlayStation-bureaumat (groot)",
+     "Logitech G413 SE mechanisch gamingtoetsenbord"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Rollenspel & verkleden › Verkleedkleding",
+    "aantal": 10,
+    "winkels": "Animals Giftshop 3, HEMA 3, Cartoon Megastore 1",
+    "prijs": "€ 7 – 25",
+    "voorbeelden": [
+     "Lichtzwaard met licht en geluid",
+     "Eenhoorn verkleedjurkje",
+     "Dierenpak voor kinderen",
+     "Kerstman verkleedset met baard en bril"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Tassen › Koffers & reistassen",
+    "aantal": 10,
+    "winkels": "bol 5, HEMA 4, Dr. Martens 1",
+    "prijs": "€ 24 – 330",
+    "voorbeelden": [
+     "Princess Traveller PT01 Deluxe handbagagekoffer (peony pink,",
+     "Eastpak Tranverz S handbagagekoffer (sunday grey)",
+     "Dr. Martens leren weekendtas (zwart)",
+     "Eastpak Leatherface S+ reistas (38 liter)"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Drankaccessoires › Wijnaccessoires",
+    "aantal": 9,
+    "winkels": "Surprises-winkel 2, Decantalo 2, Yesgifts 2",
+    "prijs": "€ 9 – 54",
+    "voorbeelden": [
+     "Wijnrek bamboe 5 flessen",
+     "Alessi Parrot kurkentrekker (blauw)",
+     "Pulltex Pulltap's kurkentrekker",
+     "Peugeot Mathus kurkentrekker (zwart)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Foto & video › Actioncam's",
+    "aantal": 9,
+    "winkels": "Coolblue 9",
+    "prijs": "€ 70 – 589",
+    "voorbeelden": [
+     "DJI Osmo Action 6 actioncam (Standard Combo)",
+     "Agfa Photo Action Cam AC 9000",
+     "GoPro HERO",
+     "GoPro MAX2 360-gradencamera"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knutselen › Tekenen & kleuren",
+    "aantal": 9,
+    "winkels": "bol 5, HEMA 2, Dille & Kamille 1",
+    "prijs": "€ 6 – 29",
+    "voorbeelden": [
+     "SES My First magnetisch tekenbord",
+     "HEMA kliedervrije verfmachine",
+     "Crayola Colour Me Plush: eenhoorn om in te kleuren",
+     "Krijtjes van sojawas (8 stuks)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Schoenen & sloffen › Sneakers",
+    "aantal": 9,
+    "winkels": "Bartogi 6, bol 3",
+    "prijs": "€ 35 – 103",
+    "voorbeelden": [
+     "Veja Volley",
+     "KEEN Jasper Zionic wandelschoenen voor kinderen (maat 24–31)",
+     "KEEN Zionic wandelschoenen voor kinderen (maat 24–31)",
+     "New Balance 9060"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Rammelaars & bijtringen",
+    "aantal": 8,
+    "winkels": "bol 3, Speelgoedpostorder 2, Woewoe 1",
+    "prijs": "€ 7 – 23",
+    "voorbeelden": [
+     "Voeldonut watermeloen (Petit Boum)",
+     "Oli & Carol handgemaakte bijtring",
+     "Jollein rammelaar giraf",
+     "Happy Horse Lammy rammelaar"
+    ]
+   },
+   {
+    "plek": "Koken & tafelen › Koken & bakken › Bakken",
+    "aantal": 8,
+    "winkels": "Dille & Kamille 3, Surprises-winkel 2, Westwing 1",
+    "prijs": "€ 5 – 94",
+    "voorbeelden": [
+     "Etagère 3 laags porselein",
+     "LSA International mondgeblazen glazen taartplateau Serve",
+     "Bakmix voor speculaas (biologisch, 500 gram)",
+     "Riviera Maison taartplateau Clement"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Drankaccessoires › Cocktailsets",
+    "aantal": 7,
+    "winkels": "Handpoppen-winkel 2, Kado-versturen 2, Dille & Kamille 1",
+    "prijs": "€ 12 – 33",
+    "voorbeelden": [
+     "Dille & Kamille cocktailshaker",
+     "Cocktailshaker set 13-delig met glazen",
+     "Salt & Pepper cocktailset goud (7-delig)",
+     "Zilveren barset 6-delig"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Slimme lampen & sfeerlicht",
+    "aantal": 7,
+    "winkels": "bol 3, Applamp 2, Coolblue 2",
+    "prijs": "€ 16 – 214",
+    "voorbeelden": [
+     "Nanoleaf Shapes lichtpanelen hexagon startset",
+     "Ring Video Deurbel Plus met gong",
+     "Govee slimme ledstrip",
+     "Lumie Bodyclock Glow 150 wake-up light"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Robotstofzuigers",
+    "aantal": 7,
+    "winkels": "Coolblue 5, bol 2",
+    "prijs": "€ 187 – 699",
+    "voorbeelden": [
+     "Ecovacs Winbot mini 2 ramenrobot",
+     "eufy RoboVac X8 Pro SES",
+     "Roborock Qrevo 2 ProX",
+     "Roborock E5"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › E-readers",
+    "aantal": 7,
+    "winkels": "Coolblue 6, bol 1",
+    "prijs": "€ 99 – 396",
+    "voorbeelden": [
+     "PocketBook Verse",
+     "Kobo Elipsa 2E met pen",
+     "PocketBook Verse Pro Color",
+     "PocketBook Verse Pro"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Badspeelgoed",
+    "aantal": 7,
+    "winkels": "HEMA 3, Grote Kadoshop 2, bol 1",
+    "prijs": "€ 5 – 21",
+    "voorbeelden": [
+     "Sophie de giraf badspeeltje So'Pure",
+     "Little Stars grote badeend met 3 kleine eendjes",
+     "HEMA baddiertje",
+     "Eberhard Faber badkrijt (10 stuks met vormpjes)"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knutselen › Strijkkralen & sieraden maken",
+    "aantal": 7,
+    "winkels": "bol 5, De Grote Speelgoedwinkel 2",
+    "prijs": "€ 12 – 15",
+    "voorbeelden": [
+     "Hama strijkkralen in pot glitter (9000 stuks)",
+     "SES vriendschapsarmbandjes met knoopwiel",
+     "Totum knutselkoffer armbandjes maken (500+ kralen)",
+     "Hama strijkkralen met grote kralen (600 stuks)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Sieraden › Armbanden",
+    "aantal": 7,
+    "winkels": "bol 5, Looking Good Today 1, MYKA 1",
+    "prijs": "€ 19 – 70",
+    "voorbeelden": [
+     "Guess tennisarmband met 4G-logo",
+     "Fossil herenarmband met tijgeroog kralen",
+     "Fossil Machine herenarmband van gevlochten leer",
+     "Memphis set van 3 kralenarmbanden The Warrior"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Tassen › Portemonnees & pasjeshouders",
+    "aantal": 7,
+    "winkels": "bol 4, HEMA 1, AllSaints 1",
+    "prijs": "€ 16 – 225",
+    "voorbeelden": [
+     "HEMA leren portemonnee met flap",
+     "Charm London leren portemonnee (babyblauw)",
+     "AllSaints leren pasjeshouder, blauw",
+     "DSTRCT leren dames portemonnee met RFID (zwart)"
+    ]
+   },
+   {
+    "plek": "Koken & tafelen › Koken & bakken › Drinkflessen & lunchboxen",
+    "aantal": 7,
+    "winkels": "HEMA 3, Dille & Kamille 1, Superzero 1",
+    "prijs": "€ 8 – 39",
+    "voorbeelden": [
+     "Broodtrommel van beukenhout",
+     "HEMA drinkbeker met rietje 900 ml",
+     "HEMA isoleerfles 500 ml",
+     "Fortnite-reisbeker"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Babygyms & activiteitenspeelgoed",
+    "aantal": 6,
+    "winkels": "bol 2, Westwing 2, Woewoe 1",
+    "prijs": "€ 17 – 54",
+    "voorbeelden": [
+     "Rustfles met handvatten die oplichten in het donker",
+     "Jollein boxkleed rond bouclé (95 cm)",
+     "Melissa & Doug houten bord met sloten",
+     "Ferm Living muziekmobiel"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Bouwen & LEGO › LEGO",
+    "aantal": 6,
+    "winkels": "LEGO 5, Coolblue 1",
+    "prijs": "€ 24 – 137",
+    "voorbeelden": [
+     "LEGO 12 dagen adventspuzzels met minifiguren",
+     "LEGO officieel logo WK 2026 (43032)",
+     "LEGO Cristiano Ronaldo – voetballegende (43016)",
+     "LEGO Vini Jr. – voetbalhoogtepunten (43027)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Tassen › Handtassen",
+    "aantal": 6,
+    "winkels": "bol 5, HEMA 1",
+    "prijs": "€ 6 – 104",
+    "voorbeelden": [
+     "Tommy Hilfiger Icon mini handtas (zwart)",
+     "Eastpak Doggy Bag heuptas (denim)",
+     "HEMA schoudertas teddy (crème)",
+     "Kipling Abanu Multi crossbodytasje (zwart)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Accessoires › Sleutelhangers",
+    "aantal": 6,
+    "winkels": "Animals Giftshop 2, HEMA 1, Prepz 1",
+    "prijs": "€ 4 – 65",
+    "voorbeelden": [
+     "Pluche dieren-sleutelhanger",
+     "HEMA sleutelhanger met fotoboekje",
+     "Zippo aansteker hoogglans",
+     "Metalen dieren-sleutelhanger (5 cm)"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Baby & peuter › Stapelen & sorteren",
+    "aantal": 5,
+    "winkels": "De Grote Speelgoedwinkel 2, HEMA 1, Dille & Kamille 1",
+    "prijs": "€ 9 – 24",
+    "voorbeelden": [
+     "HEMA houten stapelpuzzel vormen",
+     "Clementoni puzzelsorteerder 6-delig",
+     "Jipy vormenstoof (bioplastic, 10-delig)",
+     "Houten sorteer- en kleurspel met bakjes (vanaf 18 maanden)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Tassen › Reisaccessoires",
+    "aantal": 5,
+    "winkels": "bol 4, HEMA 1",
+    "prijs": "€ 16 – 36",
+    "voorbeelden": [
+     "HEMA oprolbaar nekkussen traagschuim",
+     "Beurer HC 25 opvouwbare reisföhn",
+     "Thule inpakzak schoon en vuil",
+     "Samsonite opvouwbare tas voor onder de stoel"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Accessoires › Sjaals & mutsen",
+    "aantal": 5,
+    "winkels": "Looking Good Today 1, s.Oliver NL 1, HEMA 1",
+    "prijs": "€ 17 – 74",
+    "voorbeelden": [
+     "Stone Valley sjaal van kasjmier en wol (khaki)",
+     "s.Oliver muts met kleurverloop en fleece",
+     "HEMA damesponcho (bruin)",
+     "BUFF merino muts"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Lekkernijen › Sauzen & kruiden",
+    "aantal": 4,
+    "winkels": "Dille & Kamille 2, Kantinewinkel 1, Olijfolie Concurrent 1",
+    "prijs": "€ 6 – 16",
+    "voorbeelden": [
+     "Gaetano Giurlani extra vierge olijfolie",
+     "Dille & Kamille olijfolie met basilicum",
+     "Dille & Kamille balsamico framboos",
+     "Olijfolie in twee smaken (2 x 250 ml)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gaming › VR-brillen",
+    "aantal": 4,
+    "winkels": "Coolblue 3, Nedgame 1",
+    "prijs": "€ 59 – 499",
+    "voorbeelden": [
+     "BlueBuilt VR Link-kabel voor Meta Quest",
+     "Meta Quest 3 512 GB (refurbished, met garantie)",
+     "Meta Quest 3/3S Elite Strap – kies je uitvoering",
+     "PlayStation VR2 pc-adapter"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Telefoonaccessoires",
+    "aantal": 4,
+    "winkels": "bol 4",
+    "prijs": "€ 25 – 99",
+    "voorbeelden": [
+     "Joby GripTight GorillaPod Stand PRO (telefoonstatief)",
+     "Insta360 Flow gimbal voor je telefoon (wit)",
+     "Baseus magnetische pasjeshouder met standaard (MagSafe)",
+     "JOBY GripTight Pro TelePod statief voor telefoon"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Slimme speakers",
+    "aantal": 4,
+    "winkels": "Coolblue 2, Amazon 1, bol 1",
+    "prijs": "€ 129 – 473",
+    "voorbeelden": [
+     "Amazon Echo Dot Max (nieuwste generatie)",
+     "Google Home Speaker + Google TV Streamer",
+     "Sonos Era 100",
+     "Sonos Era 300"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knuffels & poppen › Modepoppen",
+    "aantal": 4,
+    "winkels": "bol 4",
+    "prijs": "€ 17 – 35",
+    "voorbeelden": [
+     "Monster High Cleo De Nile zelfzorgset",
+     "Bratz Pop Starz Jade",
+     "Polly Pocket Knuffelbeer Speelset",
+     "Monster High Frankie Stein (25 cm)"
+    ]
+   },
+   {
+    "plek": "Koken & tafelen › Koken & bakken › Pannen & messen",
+    "aantal": 4,
+    "winkels": "Dille & Kamille 2, HEMA 1, Coolblue 1",
+    "prijs": "€ 9 – 79",
+    "voorbeelden": [
+     "Dille & Kamille 3-laags rvs koekenpan zonder PFAS (28 cm)",
+     "IJsbolknijper van roestvrij staal (bolletjes van 4 cm)",
+     "BK hapjespan 28 cm keramisch (groen)",
+     "BK Bourgogne gietijzeren braadpan 24 cm (crème)"
+    ]
+   },
+   {
+    "plek": "Koken & tafelen › Koken & bakken › Opbergen & voorraadpotten",
+    "aantal": 4,
+    "winkels": "Countrylifestyle 4",
+    "prijs": "€ 29 – 49",
+    "voorbeelden": [
+     "Riviera Maison theedoos van mangohout en glas",
+     "Riviera Maison Sint voorraadpot",
+     "Emma Bridgewater voorraadpot Coffee (Black Toast)",
+     "Riviera Maison voorraadpot Sardis (medium)"
+    ]
+   },
+   {
+    "plek": "Koken & tafelen › Koken & bakken › Keukenapparaten",
+    "aantal": 4,
+    "winkels": "Countrylifestyle 1, bol 1, Grote Kadoshop 1",
+    "prijs": "€ 23 – 69",
+    "voorbeelden": [
+     "Riviera Maison Classic broodrooster",
+     "Patisse poffertjespan (16 poffertjes)",
+     "Soehnle digitale keukenweegschaal Compact",
+     "Ariete vintage hakmolen (groen)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gadgets › Fun & retro gadgets",
+    "aantal": 3,
+    "winkels": "Ditverzinjeniet 2, Cadeau.nl 1",
+    "prijs": "€ 12 – 18",
+    "voorbeelden": [
+     "Sticky notes met penhouder",
+     "Suck UK fleslamp met usb",
+     "Newtonpendel met houten voet"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Tablets",
+    "aantal": 3,
+    "winkels": "Coolblue 2, Joybuy 1",
+    "prijs": "€ 168 – 951",
+    "voorbeelden": [
+     "Samsung Galaxy Tab A11 Plus (11 inch)",
+     "Lenovo Tab K11 (2e generatie, 11 inch)",
+     "Samsung Galaxy Tab S11"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Sieraden › Kettingen",
+    "aantal": 3,
+    "winkels": "MYKA 1, Looking Good Today 1, Fashionize 1",
+    "prijs": "€ 15 – 34",
+    "voorbeelden": [
+     "Boze oog ketting (Myka)",
+     "Elenza zilveren ketting met zon en maan",
+     "Gouden ketting met geboortesteen december"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Bouwen & LEGO › Andere bouwstenen",
+    "aantal": 2,
+    "winkels": "bol 2",
+    "prijs": "€ 20 – 23",
+    "voorbeelden": [
+     "Plus-Plus Learn to Build bouwset (600 stukjes)",
+     "Plus-Plus Basic (600 stukjes)"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Leren & ontdekken › Muziekspeelgoed & karaoke",
+    "aantal": 2,
+    "winkels": "bol 2",
+    "prijs": "€ 17 – 26",
+    "voorbeelden": [
+     "Kidywolf Kidymic draadloze karaokemicrofoon (roze)",
+     "Lexibook Barbie karaokemicrofoon met licht"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Leren & ontdekken › Experimenteren & wetenschap",
+    "aantal": 2,
+    "winkels": "Grote Kadoshop 1, HEMA 1",
+    "prijs": "€ 9 – 19",
+    "voorbeelden": [
+     "Clementoni eerste chemieset",
+     "HEMA verhalenprojector ridders en prinsessen"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knutselen › Klei & slijm",
+    "aantal": 2,
+    "winkels": "De Grote Speelgoedwinkel 1, bol 1",
+    "prijs": "€ 15 – 16",
+    "voorbeelden": [
+     "SES slijm studio lab",
+     "Kinetic Sand softijsjes speelset"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Rollenspel & verkleden › Speelkeukens & winkeltjes",
+    "aantal": 2,
+    "winkels": "bol 2",
+    "prijs": "€ 27 – 49",
+    "voorbeelden": [
+     "Klein Bosch Tassimo speelgoed-koffiezetapparaat",
+     "Little Dutch houten koffiezetapparaat met 13 accessoires"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knuffels & poppen › Babypoppen",
+    "aantal": 2,
+    "winkels": "HEMA 1, bol 1",
+    "prijs": "€ 14 – 31",
+    "voorbeelden": [
+     "HEMA knuffel babypop",
+     "Käthe Kruse Kruselings pop"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Knuffels & poppen › Poppenhuizen & accessoires",
+    "aantal": 2,
+    "winkels": "Joybuy 1, bol 1",
+    "prijs": "€ 22 – 59",
+    "voorbeelden": [
+     "Sylvanian Families zeeotterfamilie",
+     "Sylvanian Families babykasteel zeemeermin (5701)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Schoenen & sloffen › Laarzen & boots",
+    "aantal": 2,
+    "winkels": "Dr. Martens 1, Bartogi 1",
+    "prijs": "€ 85 – 168",
+    "voorbeelden": [
+     "Dr. Martens Buzz Wyoming leren kinderschoenen met klittenban",
+     "Jan Jansen Ieniemini Doublezip enkellaarsje"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Kleding › Sokken",
+    "aantal": 2,
+    "winkels": "HEMA 1, bol 1",
+    "prijs": "€ 12 – 13",
+    "voorbeelden": [
+     "HEMA herensokken rib (5 paar)",
+     "Burlington Lord herensokken"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Cadeaupakketten & bloemen › Brievenbuscadeaus",
+    "aantal": 1,
+    "winkels": "Bloompost 1",
+    "prijs": "€ 22 – 22",
+    "voorbeelden": [
+     "Lavendel Pracht"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Lekkernijen › Kaas, worst & honing",
+    "aantal": 1,
+    "winkels": "Dille & Kamille 1",
+    "prijs": "€ 9 – 9",
+    "voorbeelden": [
+     "Biologische balsamico met vijg (250 ml)"
+    ]
+   },
+   {
+    "plek": "Eten & drinken › Lekkernijen › Koffie",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 30 – 30",
+    "voorbeelden": [
+     "Alessi Big Love koffielepeltjes (4 stuks)"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Tablets, tv & slim wonen › Soundbars",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 525 – 525",
+    "voorbeelden": [
+     "JBL Bar 800 Pro soundbar met afneembare achterspeakers"
+    ]
+   },
+   {
+    "plek": "Elektronica & gaming › Gaming › Games",
+    "aantal": 1,
+    "winkels": "Nedgame 1",
+    "prijs": "€ 68 – 68",
+    "voorbeelden": [
+     "Jack Jeanne Limited Edition (Switch)"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Leren & ontdekken › Programmeren & robots",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 14 – 14",
+    "voorbeelden": [
+     "VTech Switch & Go dino Spinosaurus"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Auto's, treinen & figuren › Actiefiguren & superhelden",
+    "aantal": 1,
+    "winkels": "Superzero 1",
+    "prijs": "€ 12 – 12",
+    "voorbeelden": [
+     "McFarlane DC Retro Batman '66 Space Batman"
+    ]
+   },
+   {
+    "plek": "Speelgoed › Auto's, treinen & figuren › Speelgoedauto's & garages",
+    "aantal": 1,
+    "winkels": "De Grote Speelgoedwinkel 1",
+    "prijs": "€ 99 – 99",
+    "voorbeelden": [
+     "Claas traptractor met aanhanger"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Sieraden › Oorbellen",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 59 – 59",
+    "voorbeelden": [
+     "TI SENTO zilveren oorbellen met zirkonia"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Horloges › Herenhorloges",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 21 – 21",
+    "voorbeelden": [
+     "Casio F-91W digitaal horloge"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Kleding › Pyjama's & badjassen",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 29 – 29",
+    "voorbeelden": [
+     "Kerst onesie voor kinderen"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Kleding › Truien & hoodies",
+    "aantal": 1,
+    "winkels": "s.Oliver NL 1",
+    "prijs": "€ 25 – 25",
+    "voorbeelden": [
+     "s.Oliver oversized hoodie"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Kleding › Kersttruien",
+    "aantal": 1,
+    "winkels": "Bellatio 1",
+    "prijs": "€ 5 – 5",
+    "voorbeelden": [
+     "Foute kerststropdas met kerstprint (rood)"
+    ]
+   },
+   {
+    "plek": "Mode & sieraden › Accessoires › Riemen & petten",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 30 – 30",
+    "voorbeelden": [
+     "The North Face Mudder Trucker cap"
+    ]
+   },
+   {
+    "plek": "Spellen & puzzels › Puzzels › 3D-puzzels",
+    "aantal": 1,
+    "winkels": "bol 1",
+    "prijs": "€ 18 – 18",
+    "voorbeelden": [
+     "Ravensburger Vaas Organic Beige 3D-puzzel"
     ]
    }
   ]
