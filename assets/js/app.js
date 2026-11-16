@@ -380,7 +380,10 @@
     var sl = String(sleutel || '').replace(/\/$/, '');
     /* Op de hoofdpagina Mode & sieraden gaan kleding, tassen, horloges en accessoires voor (11-11-2026); de groep Sieraden zelf blijft zoals hij is. */
     /* 13-11-2026 (grote keuring): /c/cadeaus/... en /c/valentijn/... zijn themalijsten (Kerst, Met naam), geen eigen hoek van sieraden: ook daar schuiven ze naar achteren. */
-    if (window.LK_SIERADEN_VOORAAN === true || !sl || (sl !== '/c/mode-sieraden' && (/sieraden/.test(sl) || /^\/c\/(?!(cadeaus|valentijn)(\/|\?|$))/.test(sl)))) return l;
+    /* 16-11-2026 23:12 (Marius: 'sieraden hoeft niet meer achteraan, ik heb het uitgezocht, alle producten kunnen in goede volgorde gezien worden'):
+       staat UIT. Sieraden staan weer gewoon op hun plek in de lijst. Weer aan (achteraan): window.LK_SIERADEN_ACHTER = true. */
+    if (window.LK_SIERADEN_ACHTER !== true) return l;
+    if (window.LK_SIERADEN_VOORAAN === true || !sl ||(sl !== '/c/mode-sieraden' && (/sieraden/.test(sl) || /^\/c\/(?!(cadeaus|valentijn)(\/|\?|$))/.test(sl)))) return l;
     var voor = [], na = []; l.forEach(function (p) { (isSieraad(p) ? na : voor).push(p); });
     return na.length && voor.length ? voor.concat(na) : l;
   }
