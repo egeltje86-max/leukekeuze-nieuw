@@ -479,7 +479,8 @@
      Volgorde: de handgekozen top van de pagina, maar wat tussen ongeveer de helft en het bedrag kost eerst (bij 'tot € 25' eerst € 12 tot € 25).
      Het adres onthoudt het bedrag als ?prijs=tot25 (het oude filter kent dat al), dus terugknop, delen en de onderwerpen kloppen.
      Telt in GoatCounter: prijsschuif/tot-<bedrag> (bij loslaten). Uit: window.LK_PRIJSSCHUIF = false (dan weer de knoppen). ===== */
-  var PS = window.LK_PRIJSSCHUIF !== false, PS_LIJSTEN = [], PS_MIN = 5, PS_MAX = 150;
+  /* 16-11-2026 22:08 (Marius: 'die balk mag weg die is irritant', keuze: hele prijsschuif weg): staat uit, weer aan met window.LK_PRIJSSCHUIF = true */
+  var PS = window.LK_PRIJSSCHUIF === true, PS_LIJSTEN = [], PS_MIN = 5, PS_MAX = 150;
   function psNaarPrijs(v) {
     if (v >= 975) return 0;
     var x = PS_MIN * Math.pow(PS_MAX / PS_MIN, Math.min(v, 960) / 960);

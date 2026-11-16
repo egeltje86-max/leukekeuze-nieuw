@@ -58,6 +58,8 @@ for i, keus in KEUZE.items():
     # Amazon: zelfde vorm als de 137 die er al staan (amz-<ASIN>), 13-11-2026
     am = re.search(r'amazon\.nl/dp/([A-Z0-9]{10})', x['l'])
     if x['w'] == 'Amazon' and am: pid = 'amz-' + am.group(1).lower()
+    # 16-11-2026: bol uit de officiële feed krijgt hetzelfde id als de bol-producten die er al staan (bol-<productId>)
+    if x.get('id'): pid = x['id']
     if '"' + pid + '"' in bestaand: over.append((i, 'staat al op de site: ' + pid)); continue
     # --titels-nagelezen (11-11-2026): voor een reeks van één merk (Atelier Rebul: zelfde naam, andere geur of maat) waarvan de titels met de hand zijn nagelezen
     if '--titels-nagelezen' not in sys.argv and re.sub(r'[^a-z0-9]', '', keus['titel'].lower())[:30] in titels: over.append((i, 'bijna dezelfde titel bestaat al')); continue
@@ -69,7 +71,7 @@ for i, keus in KEUZE.items():
     sq.resize((400, 400), Image.LANCZOS).save(os.path.join(ROOT, 'images/producten/%s-klein.webp' % pid), 'WEBP', quality=80)
     a = keus['vak'].split('/')
     cs = DRANK(a)  # drank hoort bij het label 'dranken' (anders ontbreekt het op 'Whisky, bier & drank' bij Voor hem), 11-11-2026
-    uit.append({"id": pid, "titel": keus['titel'], "prijs": float(x['p']), "shop": NAAM.get(x['w'], x['w']), "url": x['l'], "winkelUrl": x['l'], "beeld": "images/producten/" + pid, "cat": cs[0], "sub": cs[1], "subVast": True, "ookIn": keus.get('ookIn', []), "voor": keus.get('voor', ['iedereen']), "moment": keus.get('moment', ['verjaardag', 'kerst', 'zomaar']), "waarom": keus['waarom'], "status": "goedgekeurd", "nieuw": True, "gecontroleerd": vandaag, "sinds": vandaag, "herkomst": "piloot"})
+    uit.append({"id": pid, "titel": keus['titel'], "prijs": float(x['p']), "shop": NAAM.get(x['w'], x['w']), "url": x['l'], "winkelUrl": x.get('u') or x['l'], "beeld": "images/producten/" + pid, "cat": cs[0], "sub": cs[1], "subVast": True, "ookIn": keus.get('ookIn', []), "voor": keus.get('voor', ['iedereen']), "moment": keus.get('moment', ['verjaardag', 'kerst', 'zomaar']), "waarom": keus['waarom'], "status": "goedgekeurd", "nieuw": True, "gecontroleerd": x.get('g') or vandaag, "sinds": vandaag, "herkomst": keus.get('herkomst', 'piloot')})
     vak[pid] = a; titels.add(re.sub(r'[^a-z0-9]', '', keus['titel'].lower())[:30])
 if uit:
     tekst = '\n/* ===== ' + blok + ': ' + str(len(uit)) + ' producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */\nwindow.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, ' + json.dumps(uit, ensure_ascii=False) + ');\n/* ===== einde ' + blok + ' ===== */\n'
