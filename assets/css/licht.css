@@ -2404,7 +2404,7 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 /* Eerlijk lootjes trekken (14-11-2026): één groepslinkje, iedereen kiest zijn eigen naam */
 .lt-wa-groot { display: flex; width: 100%; min-height: 54px; font-size: 17px; margin: 12px 0 10px; }
 .lt-rij2 { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
-.lt-rij2 .knop { flex: 1 1 160px; min-height: 46px; }
+.lt-rij2 .knop { flex: 1 1 160px; min-height: 46px; white-space: normal; text-align: center; line-height: 1.25; padding-top: 8px; padding-bottom: 8px; }
 .lt-stat { font-size: 14px; font-weight: 700; color: #8F6620; white-space: nowrap; }
 .lt-gedaan .lt-stat { color: #1a7a3e; }
 .lt-namenraster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 8px 0 12px; }
@@ -2418,6 +2418,22 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .lt-bewaar .knop { min-height: 44px; background: #FFFCF7; }
 .lt-laden { text-align: center; padding: 30px 0; }
 .lt [hidden], .lt-form[hidden] { display: none !important; }
+
+/* Lootjes mooier (16-11-2026, Marius: 'gewoon mooier maken, niet teveel veranderen'): labels in de kop, feest en bedrag als gelijke vakjes, het lootje met een gestippelde rand. */
+.lt-vertrouw { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; }
+.lt-vertrouw li { border: 1px solid rgba(242,203,116,.55); color: #F2CB74; background: rgba(242,203,116,.08); border-radius: 999px; padding: 5px 11px; font-weight: 700; font-size: 13px; line-height: 1.3; }
+.lt-keuzes-3, .lt-keuzes-5 { display: grid; gap: 8px; }
+.lt-keuzes-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lt-keuzes-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.lt-keuzes-3 label, .lt-keuzes-5 label { min-width: 0; }
+.lt-keuzes-3 span, .lt-keuzes-5 span { display: flex; width: 100%; justify-content: center; text-align: center; padding: 8px 4px; border-radius: 14px; white-space: nowrap; }
+.lt-keuzes-3 span { flex-direction: column; gap: 2px; min-height: 64px; font-size: 14px; white-space: normal; line-height: 1.2; }
+.lt-keuzes-3 span i { font-style: normal; font-size: 22px; line-height: 1; }
+.lt-keuzes-5 span { min-height: 48px; font-size: 15px; }
+.lt-envelop { position: relative; }
+.lt-envelop::before { content: ''; position: absolute; inset: 7px; border: 1.5px dashed #C9A45C; border-radius: 12px; pointer-events: none; }
+.lt-privacy { background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 14px; padding: 12px 14px; }
+.lt-nw { white-space: nowrap; }
 
 /* ===== TIKTOK (14-11-2026): /tiktok, de link in het profiel. Per filmpje een rij cadeaus, het nieuwste bovenaan. ===== */
 .tt-hero { background: #0A1020; color: #F7F3EC; padding: 26px 0 22px; }

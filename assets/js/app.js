@@ -1681,7 +1681,7 @@
     /* Snelheid (8-11-2026, GO Marius): de vage achtergrond is het grootste beeld bovenaan (LCP). Hij wordt toch vervaagd, dus de kleine versie (-klein) is genoeg; en hij krijgt voorrang. */
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(kleinBeeld(o.vaag)) + '" alt="" fetchpriority="high" decoding="async"></div>';
     return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + (o.klasse ? ' ' + o.klasse : '') + '">' + achter +
-      '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p class="intro' + (o.tekst.length > 110 ? ' lang' : '') + '">' + esc(o.tekst) + '</p>' + (o.tekst.length > 110 ? '<button type="button" class="intro-meer" data-intro-meer aria-expanded="false">Lees meer</button>' : '') : '') + '</div></section>';
+      '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p class="intro' + (o.tekst.length > 110 ? ' lang' : '') + '">' + esc(o.tekst) + '</p>' + (o.tekst.length > 110 ? '<button type="button" class="intro-meer" data-intro-meer aria-expanded="false">Lees meer</button>' : '') : '') + (o.naHtml || '') + '</div></section>';
   }
   /* Eerste scherm op de telefoon (8-11-2026, Fable P1-6): een lange intro laat eerst 2 regels zien; tik op 'Lees meer' voor de rest. */
   document.addEventListener('click', function (e) {
@@ -3728,15 +3728,17 @@
     zetTitel('Lootjes trekken: gratis online, via WhatsApp');
     window.LK_SEO = 'Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Vul de namen in, stuur iedereen zijn eigen linkje via WhatsApp en zie meteen cadeautips binnen het budget.';
     var budget = LOOT_BUDGET.map(function (b) { return '<label><input type="radio" name="budget" value="' + b[0] + '"' + (b[0] === 15 ? ' checked' : '') + '><span>' + b[1] + '</span></label>'; }).join('');
-    var moment = [['s', '🎁 Sinterklaas'], ['k', '🎄 Kerst'], ['a', '🎉 Iets anders']].map(function (m) { return '<label><input type="radio" name="moment" value="' + m[0] + '"' + (m[0] === 's' ? ' checked' : '') + '><span>' + m[1] + '</span></label>'; }).join('');
+    /* 16-11-2026 (Marius: 'maak het lootjes trekken mooier, niet teveel veranderen'): feest en bedrag als gelijke vakjes op één rij, drie geruststellende labels in de kop. */
+    var moment = [['s', '🎁', 'Sinterklaas'], ['k', '🎄', 'Kerst'], ['a', '🎉', 'Iets anders']].map(function (m) { return '<label><input type="radio" name="moment" value="' + m[0] + '"' + (m[0] === 's' ? ' checked' : '') + '><span><i aria-hidden="true">' + m[1] + '</i>' + m[2] + '</span></label>'; }).join('');
     var naamVeld = function (i) { return '<div class="lt-naam"><span class="lt-nr">' + (i + 1) + '</span><input type="text" name="naam" maxlength="25" autocomplete="off" placeholder="Naam" aria-label="Naam ' + (i + 1) + '"></div>'; };
-    return paginakop({ titel: 'Lootjes trekken', tekst: 'Gratis en eerlijk: niemand ziet wie wie heeft, ook de organisator niet.', kruimel: [{ tekst: 'Lootjes trekken' }], donker: true, klasse: 'lt-kop' }) +
+    return paginakop({ titel: 'Lootjes trekken', tekst: 'Gratis en eerlijk: niemand ziet wie wie heeft, ook de organisator niet.', kruimel: [{ tekst: 'Lootjes trekken' }], donker: true, klasse: 'lt-kop',
+        naHtml: '<ul class="lt-vertrouw"><li>✓ Gratis</li><li>✓ Zonder account</li><li>✓ Via WhatsApp</li></ul>' }) +
       '<div class="binnen lt"><form class="lt-form" data-loot novalidate>' +
         '<section class="lt-kaart"><h2><span class="lt-stap">1</span> Wie doen er mee?</h2><p class="lt-sub">Minstens 3 namen. Vergeet jezelf niet.</p>' +
           '<div class="lt-namen" data-loot-namen>' + [0, 1, 2, 3].map(naamVeld).join('') + '</div>' +
           '<button class="knop knop-rand lt-erbij" type="button" data-loot-erbij>+ Nog iemand</button></section>' +
-        '<section class="lt-kaart"><h2><span class="lt-stap">2</span> Voor welk feest?</h2><div class="lt-keuzes">' + moment + '</div>' +
-          '<h2 class="lt-h2b">Hoeveel mag het cadeau kosten?</h2><div class="lt-keuzes">' + budget + '</div>' +
+        '<section class="lt-kaart"><h2><span class="lt-stap">2</span> Voor welk feest?</h2><div class="lt-keuzes lt-keuzes-3">' + moment + '</div>' +
+          '<h2 class="lt-h2b">Hoeveel mag het cadeau kosten?</h2><div class="lt-keuzes lt-keuzes-5">' + budget + '</div>' +
           '<label class="lt-veld">Naam van de groep <small>(mag leeg)</small><input type="text" name="groep" maxlength="30" autocomplete="off" placeholder="Bijv. Familie Jansen of Team Inkoop"></label>' +
           '<details class="lt-meer"><summary>Mogen partners elkaar niet trekken?</summary><p class="lt-sub">Kies wie bij elkaar horen. Die trekken elkaar dan niet.</p><div data-loot-paren></div>' +
             '<button class="knop knop-rand lt-erbij" type="button" data-loot-paar>+ Stel toevoegen</button></details></section>' +
@@ -3771,11 +3773,11 @@
         '<h1>Je lootje' + (o.g ? ' voor ' + esc(o.g) : '') + '</h1>' +
         '<button class="lt-envelop" type="button" data-loot-open aria-label="Tik om je lootje te openen"><span class="lt-dicht">' + m[1] + '<b>Tik om je lootje te openen</b></span>' +
           '<span class="lt-naamgroot" hidden>Je hebt <strong>' + esc(o.t) + '</strong> getrokken!</span></button>' +
-        '<p class="lt-info">' + m[1] + ' Voor ' + esc(m[0]) + ' · budget <b>' + LK.euro(b) + '</b></p>' +
+        '<p class="lt-info">' + m[1] + ' Voor ' + esc(m[0]) + ' · budget <b>' + lootEuro(b) + '</b></p>' +
         '<p class="lt-sub">Niet verder vertellen! 🤫</p>' +
       '</div></section>' +
       '<div class="binnen lt">' +
-        (tips.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Cadeautips tot ' + LK.euro(b) + '</h2><p>Met de hand uitgezocht. Tik op een cadeau voor meer uitleg.</p></div></div>' +
+        (tips.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Cadeautips tot ' + lootEuro(b) + '</h2><p>Met de hand uitgezocht. Tik op een cadeau voor meer uitleg.</p></div></div>' +
           grid(tips) + '<p class="lt-terug"><a class="knop knop-rand" href="' + m[2] + '?prijs=' + (b <= 10 ? 'r0-10' : 'tot25') + '">Meer cadeaus voor ' + esc(m[0]) + '</a></p></section>' : '') +
         '<section class="sectie lt-zelf"><h2>Zelf ook lootjes trekken?</h2><p>Met je familie, vrienden of collega’s. Gratis en zonder account.</p><a class="knop knop-goud" href="/lootjes-trekken/">🎲 Lootjes trekken</a></section>' +
         '<section class="sectie lt-zelf"><h2>Weet je niet wat je wilt hebben?</h2><p>Zet cadeaus op je verlanglijstje met het hartje en stuur het naar de groep.</p><a class="knop knop-rand" href="/gids/verlanglijstje-maken">❤ Verlanglijstje maken</a></section>' +
@@ -3845,7 +3847,7 @@
     lootVraag({ actie: 'groep', g: g }).then(function (gr) {
       var b = lootLeesOpslag('lkloot-b-' + g), m = LOOT_MOMENT[gr.moment] || LOOT_MOMENT.s;
       if (kop) kop.textContent = 'Wie ben jij?';
-      var hoi = document.querySelector('.lt-hoi'); if (hoi) hoi.textContent = m[1] + ' Lootjes' + (gr.naam ? ' voor ' + gr.naam : '') + ' · budget ' + lootEuro(gr.budget);
+      var hoi = document.querySelector('.lt-hoi'); if (hoi) hoi.innerHTML = esc(m[1] + ' Lootjes' + (gr.naam ? ' voor ' + gr.naam : '')) + ' · <span class="lt-nw">budget ' + esc(lootEuro(gr.budget)) + '</span>';
       vak.innerHTML = '<section class="lt-kaart"><h2>Tik op je eigen naam</h2><p class="lt-sub">Je kunt maar één naam kiezen. Daarna zie je meteen wie jij hebt getrokken. Een naam die al is gekozen, kan niemand anders meer kiezen.</p>' +
         '<div class="lt-namenraster">' + gr.namen.map(function (x) {
           return '<button class="lt-naamknop" type="button" data-loot-ik="' + x.nr + '" data-naam="' + esc(x.naam) + '"' + (x.gekozen ? ' disabled' : '') + '>' + esc(x.naam) + (x.gekozen ? '<small>al gekozen</small>' : '') + '</button>';
@@ -3884,7 +3886,7 @@
   }
   function lootBericht(r, url) {
     var m = LOOT_MOMENT[r.m] || LOOT_MOMENT.s;
-    return 'Hoi ' + r.n + '! ' + m[1] + ' Je lootje' + (r.g ? ' voor ' + r.g : '') + ' staat klaar (budget ' + LK.euro(+r.b) + '). Tik op het linkje om te zien wie jij hebt getrokken. Niet verder vertellen! ' + url;
+    return 'Hoi ' + r.n + '! ' + m[1] + ' Je lootje' + (r.g ? ' voor ' + r.g : '') + ' staat klaar (budget ' + lootEuro(+r.b) + '). Tik op het linkje om te zien wie jij hebt getrokken. Niet verder vertellen! ' + url;
   }
   document.addEventListener('submit', function (e) {
     var f = e.target && e.target.closest ? e.target.closest('form[data-loot]') : null;
