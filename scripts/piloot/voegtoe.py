@@ -18,7 +18,7 @@ NAAM = {'Myka': 'MYKA', '999 Games': '999Games', 'Yourdecoration': 'YourDecorati
 # zelfde voorvoegsel en winkelnaam als de producten die er al staan (11-11-2026)
 PRE.update({'Decantalo': 'dc', 'Wijny': 'wny', 'Butchery.nl': 'butchery'}); NAAM.update({'Butchery.nl': 'Butchery'})
 # 13-11-2026 (ERBIJ-lijst gelegenheden): voorvoegsels voor winkels die er nog niet of maar half stonden
-PRE.update({'Looking Good Today': 'lgt', 'Westwing': 'ww', 'Pillowbuddies': 'pillow', 'eu.fragrance.com': 'eufr', 'invulboekjes.nl': 'invul'})
+PRE.update({'Looking Good Today': 'lgt', 'Westwing': 'ww', 'Pillowbuddies': 'pillow', 'eu.fragrance.com': 'eufr', 'invulboekjes.nl': 'invul', 'Make Me Famous': 'mmf'})
 def DOEL_LEEG(l):
     """13-11-2026 (grote keuring): een partnerlink zonder adres bij de winkel (r=https://?channable=... in de feed van Massamarkt).
     De winkelknop komt dan nergens uit. Waar = de link noemt wel een doel, maar dat doel is leeg."""

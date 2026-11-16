@@ -262,7 +262,7 @@ h1 span{color:var(--rood)}
       ctx.fillStyle = '#FBF7EE'; rr(a[0], a[1], w, h, Math.min(24, z * 2)); ctx.fill(); ctx.strokeStyle = e.kleur; ctx.lineWidth = Math.max(1.5, Math.min(4, z * .25)); ctx.stroke();
     });
     var x0 = Math.floor(cam.x / BAK) - 1, y0 = Math.floor(cam.y / BAK) - 1, x1 = Math.floor((cam.x + VW / z) / BAK) + 1, y1 = Math.floor((cam.y + VH / z) / BAK) + 1;
-    var fotos = cel >= 12, pad = fotos ? Math.max(1.5, cel * .05) : Math.max(.3, cel * .12), r = Math.min(9, cel * .12), titels = cel >= 120;
+    var fotos = cel >= 12, pad = fotos ? Math.max(1.5, cel * .05) : Math.max(.3, cel * .12), r = Math.min(9, cel * .12), titels = false; /* 16-11-2026, Marius: geen tekst meer op de foto's bij inzoomen; de beschrijving staat al bij de muis */
     for (var bx = x0; bx <= x1; bx++) for (var by = y0; by <= y1; by++) { var b = bakken[bx + ',' + by]; if (!b) continue;
       for (var j = 0; j < b.length; j++) { var i = b[j], c = cellen[i], s = naarScherm(c.x, c.y), sx = s[0] + pad, sy = s[1] + pad, sw = cel - pad * 2; if (sx > VW || sy > VH || sx + sw < 0 || sy + sw < 0) continue;
         var weg = WEG.has(c.p.id), nb = c.vw && NB.has(c.p.id + '|' + c.vw), aan = !filtert || passend[i], zonde = ZONDE[c.p.id];
