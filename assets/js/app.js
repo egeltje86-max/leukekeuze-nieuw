@@ -1487,10 +1487,19 @@
     var kop = '', tegels = [];
     if (MD >= 1015 && MD <= 1205) { kop = 'Sinterklaas · ' + (nS <= 0 ? 'vandaag is het pakjesavond' : 'nog ' + nS + (nS === 1 ? ' dag' : ' dagen')); tegels = [loot, gedicht]; }
     else if (MD >= 1206 && MD <= 1224) { kop = 'Kerst · nog ' + nK + (nK === 1 ? ' dag' : ' dagen'); loot.ic = 'images/sub/rond/gel-kerst-klein.webp'; tegels = [loot]; }
-    if (!tegels.length) return '';
-    return '<section class="wkh-toonbank" data-tel="toonbank"><h3>' + esc(kop) + '</h3><div class="wkh-tb-r' + (tegels.length === 1 ? ' een' : '') + '">' + tegels.map(function (t) {
-      return '<a class="wkh-tb" href="' + t.naar + '"><img src="' + t.ic + '" alt="" width="46" height="46"><span><b>' + esc(t.b) + '</b><small>' + esc(t.s) + '</small><i>' + esc(t.i) + ' →</i></span></a>';
-    }).join('') + '</div></section>';
+    var tegel = function (t) {
+      return '<a class="wkh-tb" href="' + t.naar + '"' + (t.ext ? ' target="_blank" rel="sponsored noopener"' : '') + '><img src="' + t.ic + '" alt="" width="46" height="46"><span><b>' + esc(t.b) + '</b><small>' + esc(t.s) + '</small><i>' + esc(t.i) + ' →</i></span></a>';
+    };
+    /* 17-11-2026 (Marius: 'moet overal niet de knop naar de tiktok site en naar Amazon komen op de homepage'): wie een filmpje zag en zelf leukekeuze.nl typt,
+       vindt hier meteen de cadeaus uit de filmpjes (/tiktok) en de lijsten op de Amazon Storefront. Altijd, niet alleen in een seizoen. */
+    var nieuwste = (TIKTOK_REELS[0] && TIKTOK_REELS[0].ids || [])[0];
+    var film = [
+      { naar: '/tiktok/', ic: nieuwste ? 'images/producten/' + nieuwste + '-klein.webp' : 'images/sub/rond/col-grappige-cadeaus-klein.webp', b: 'Gezien op TikTok', s: 'Alle cadeaus uit onze filmpjes', i: 'Bekijk' },
+      { naar: AMZ_SHOP, ext: true, ic: 'images/sub/rond/col-kleine-cadeautjes-klein.webp', b: 'Ook op Amazon', s: 'Onze cadeaulijsten bij Amazon', i: 'Bekijk' }
+    ];
+    var filmBlok = '<section class="wkh-toonbank wkh-film" data-tel="filmpjes"><h3>Uit onze filmpjes</h3><div class="wkh-tb-r">' + film.map(tegel).join('') + '</div></section>';
+    if (!tegels.length) return filmBlok;
+    return '<section class="wkh-toonbank" data-tel="toonbank"><h3>' + esc(kop) + '</h3><div class="wkh-tb-r' + (tegels.length === 1 ? ' een' : '') + '">' + tegels.map(tegel).join('') + '</div></section>' + filmBlok;
   }
   function wkLeesHash() {
     var h = (location.hash || '').replace('#', '').split('-'), w = '', t = 0;
@@ -4099,6 +4108,8 @@
      De link in het profiel op TikTok en Instagram: leukekeuze.nl/tiktok. Per filmpje een rij met dezelfde vijf cadeaus, het nieuwste bovenaan.
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
+  /* 17-11-2026: de Amazon Storefront (ideeënlijsten), met partnercode. Gebruikt op /tiktok, in het menu en op de homepage. */
+  var AMZ_SHOP = 'https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21';
   var TIKTOK_REELS = [
     { datum: '17 november', kop: 'Nieuw: de Pokémon-hoek', tekst: 'Alle losse boosterpakjes op één plek, plus knuffels, tassen, spullen voor je kamer en keuken, games en boxen voor verzamelaars.', ids: ['nedg-9ea779e8fa', 'nedg-797a79ea8e', 'nedg-ecbc668ad4', 'nedg-4175fe9fd9', 'nedg-adb164ecbd', 'nedg-a10f0c326e', 'emp-029a340781', 'cl-pokopia', 'nedg-e3dfabf90c', 'nedg-13e07a300d'] },
     { datum: '17 november', kop: 'Gespot bij Ditverzinjeniet: alles onder € 15', tekst: 'Een fopspeen met een snor, een katje dat je munten steelt en een nepsteen voor je reservesleutel.', ids: ['dvzn-58068de5fa', 'dvzn-6791', 'dvzn-48bcf6ed40', 'dvzn-726291', 'dvzn-22f0aff1dc'] },
@@ -4140,13 +4151,13 @@
         /* 17-11-2026 (Marius: 'het is jouw website, klanten geven wat ze willen'; brief Amazon Storefront): de reels 'Gespot bij Amazon' verwijzen naar de link in het profiel (deze pagina).
            Die cadeaus staan in de ideeënlijsten op de Amazon Storefront, dus hier één duidelijke knop ernaartoe. */
         '<p class="tt-amz"><span>Filmpje met <b>Gespot bij Amazon</b>? Die cadeaus staan in onze lijsten op Amazon.</span>' +
-        '<a class="knop knop-goud" href="https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21" target="_blank" rel="sponsored noopener">Ook op Amazon: bekijk onze lijsten</a></p>' +
+        '<a class="knop knop-goud" href="' + AMZ_SHOP + '" target="_blank" rel="sponsored noopener">Ook op Amazon: bekijk onze lijsten</a></p>' +
 
       '</div></section><div class="binnen tt">' + rijmBlok('home') + rijen +
       '<section class="tt-slot"><h2>Nog meer ideeën</h2><div class="tt-links">' +
         '<a class="knop knop-rand" href="/collectie/grappige-cadeaus">Grappige cadeaus</a><a class="knop knop-rand" href="/collectie/schoencadeautjes">Schoencadeautjes</a>' +
         '<a class="knop knop-rand" href="/c/cadeaus/onder-15">Cadeaus onder € 15</a><a class="knop knop-rand" href="/lootjes-trekken/">Gratis lootjes trekken</a>' +
-        '<a class="knop knop-rand" href="https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21" target="_blank" rel="sponsored noopener">Onze lijsten op Amazon</a></div>' +
+        '<a class="knop knop-rand" href="' + AMZ_SHOP + '" target="_blank" rel="sponsored noopener">Onze lijsten op Amazon</a></div>' +
         '<p class="tt-klein">De prijs kan bij de winkel iets anders zijn dan in het filmpje. Op de pagina van elk cadeau staat wanneer wij de prijs hebben gecontroleerd.</p></section></div>';
   }
   function lootjes(q) {
@@ -6769,6 +6780,9 @@
       '<div class="lade-label">Voor wie?</div><div class="lade-personen">' + window.LK_PERSONEN.map(function (x) {
         return '<a href="' + (x.subs ? '/voor/' + x.slug : x.naar) + '"><img src="' + esc(kleinBeeld(x.beeld)) + '" alt="" loading="lazy"><span>' + esc(x.kort) + '</span></a>';
       }).join('') + '</div>' +
+      /* 17-11-2026 (Marius): op elke pagina via het menu bij de cadeaus uit de filmpjes en de lijsten op Amazon. */
+      '<div class="lade-label">Uit onze filmpjes</div><div class="lade-links">' + link('/tiktok/', 'Gezien op TikTok') +
+        '<a href="' + AMZ_SHOP + '" target="_blank" rel="sponsored noopener">Onze lijsten op Amazon</a></div>' +
       '<div class="lade-label">Categorieën</div><ul>' + cats.map(ladeRij).join('') + '</ul>' +
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
       '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
