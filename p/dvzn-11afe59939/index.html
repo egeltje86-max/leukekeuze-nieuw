@@ -28,7 +28,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=52086063035177" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=176209769611369" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=177810825432258" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
   <link rel="stylesheet" href="assets/css/licht.css?v=120933500744912">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=45074870539160", t = "assets/js/topkeuze.js?v=264388310338401";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=73365852117778", t = "assets/js/topkeuze.js?v=271784530891404";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,7 +207,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"dvzn-11afe59939":{"url":"https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fgolf-dartspel%3Futm_campaign%3Dtt_feed_all","winkelUrl":"https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fgolf-dartspel%3Futm_campaign%3Dtt_feed_all","subVast":true,"gecontroleerd":"2026-11-17","herkomst":"piloot","waarom":"Dartspel met een golfbaan als bord: je gooit in plaats van te slaan. Grappig cadeau voor iemand die van golf houdt."}};</script>
-  <script src="assets/js/data.js?v=176209769611369"></script>
+  <script src="assets/js/data.js?v=177810825432258"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=199902073164775"></script>
   <script src="assets/js/app.js?v=52086063035177"></script>
