@@ -2690,3 +2690,16 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 .wkh-leeg { background: var(--wk-ivoor); border: 1px solid var(--wk-rand); border-radius: 16px; padding: 20px; text-align: center; color: var(--wk-zacht); }
 .wkh-leeg button { margin-top: 10px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 0; background: var(--wk-marine); color: #fff; font-weight: 800; }
 /* ===== einde WINKELTJE ===== */
+/* WINKELTJE smaller (17-11-2026, Marius: 'die balk is te breed, die moet smaller met rondjes en bedragen'): kleinere rondjes en prijskaartjes,
+   minder ruimte; de balk is nu ongeveer half zo hoog. De tikvlakken blijven 44px hoog (onzichtbare rand om de prijskaartjes). */
+.wkh-kies { padding: 6px 0 4px; margin-top: 14px; }
+.wkh-r { gap: 4px; }
+.wkh-wie { width: 58px; gap: 2px; font-size: 11.5px; }
+.wkh-wie img { width: 38px; height: 38px; border-width: 1.5px; }
+.wkh-wie[aria-pressed="true"] img { border-width: 2.5px; transform: none; }
+.wkh-tot { min-height: 30px; margin: 4px 2px 2px; padding: 0 10px 0 16px; font-size: 13px; }
+.wkh-tot::after { content: ""; position: absolute; left: -2px; right: -2px; top: -7px; bottom: -7px; }
+.wkh-wrap { padding-top: 20px; }
+@media (min-width: 760px) { .wkh-wie { width: 64px; } }
+.wkh .wkh-wie { width: auto; min-width: 54px; padding: 0 2px; font-size: 11.5px; line-height: 1.15; white-space: nowrap; }
+.wkh .wkh-tot { font-size: 13px; }
