@@ -1410,6 +1410,15 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   s.vakjes.push({ slug: 'spaarpotten', naam: 'Spaarpotten & kluisjes', tekst: 'Een spaarpot is een cadeau dat elke dag blijft staan. Hier vind je grappige spaarpotten (schedels, biervaatjes, een klomp), spaarpotten van games en films, spaarvarkens voor kinderen en echte kluisjes met een code.' });
 })();
 /* ===== einde spaarpotten ===== */
+/* ===== 17-11-2026 (keuze Marius in de Superkeurkamer: fidgets en spinners): eigen vakje "Fidgets & tollen" bij Speelgoed > Speelfiguren & voertuigen,
+   net als de paraplu's en spaarpotten. 'fidget' werd gezocht en we hadden er geen plek voor. ===== */
+(function () {
+  var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'speelgoed' && !x.verborgen; })[0];
+  var s = c && (c.subs || []).filter(function (x) { return x.slug === 'speelfiguren-voertuigen' && x.vakjes && !x.verborgen; })[0];
+  if (!s || s.vakjes.some(function (v) { return v.slug === 'fidgets-tollen'; })) return;
+  s.vakjes.push({ slug: 'fidgets-tollen', naam: 'Fidgets & tollen', tekst: 'Pop-its, fidget spinners, friemelwormen en andere fidgets om je handen bezig te houden, en tollen om tegen elkaar te laten vechten, zoals Beyblade, Spinner Mad en de battle spinners van Pokémon.' });
+})();
+/* ===== einde fidgets en tollen ===== */
 
 /* ===== 4.0 VERHUIZING (proef 11-11-2026): 15 hoofdcategorieën. GEMAAKT DOOR scripts/boom/verhuis.js uit scripts/boom/verhuizing.json – niet met de hand bewerken.
    De boom hierboven (3.0 en alle aanvullingen) wordt hier omgezet naar de nieuwe indeling. Oude adressen sturen door; zie scripts/boom/verhuis-kern.js voor de uitleg. ===== */
