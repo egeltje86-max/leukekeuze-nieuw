@@ -2,6 +2,7 @@
  "_uitleg": [
   "4.0 – nieuwe indeling (proef 11-11-2026, voorstel uit de Superkeurkamer + drie aanpassingen van Claude; NIET live zonder GO van Marius).",
   "15 hoofdcategorieën. Per hoofdcategorie de groepen, en per groep waar hij uit bestaat ('uit'): een oude groep 'afd/groep' of één oud vakje 'afd/groep/vak'.",
+  "17-11-2026 (keuze Marius): 'weg' bij een groep = vakjes zonder echte cadeaus uit het menu; de producten blijven in de groep, het oude adres stuurt door naar de groep (correcties.json -> adressen).",
   "17-11-2026 (Marius): nieuwe groep KPop Demon Hunters bij Speelgoed (blok KPOP DEMON HUNTERS-HOEK in data.js).",
   "17-11-2026 (wens Marius): nieuwe groep Hello Kitty & vriendjes bij Speelgoed (blok HELLO KITTY-HOEK in data.js).",
   "17-11-2026 (wens Marius): de groep Pokémon & verzamelkaarten heet nu Pokémon en krijgt ook de vakjes van de verborgen groep speelgoed/pokemon-hoek (blok POKÉMON-HOEK in data.js).",
@@ -43,17 +44,17 @@
      { "slug": "gaming", "naam": "Gaming", "uit": ["elektronica/gaming"] },
      { "slug": "audio", "naam": "Audio", "uit": ["elektronica/audio"] },
      { "slug": "smartwatches", "naam": "Smartwatches", "uit": ["elektronica/smartwatches"] },
-     { "slug": "foto-video", "naam": "Foto & video", "uit": ["elektronica/foto-video"] },
+     { "slug": "foto-video", "naam": "Foto & video", "weg": ["actioncam-s"], "uit": ["elektronica/foto-video"] },
      { "slug": "gadgets", "naam": "Gadgets", "uit": ["elektronica/gadgets"] },
-     { "slug": "tablets-tv-slim-wonen", "naam": "Tablets, tv & slim wonen", "uit": ["elektronica/tablets-e-readers", "elektronica/tv-beeld", "elektronica/slim-wonen"],
+     { "slug": "tablets-tv-slim-wonen", "naam": "Tablets, tv & slim wonen", "weg": ["televisies", "soundbars", "beamers", "e-readers"], "uit": ["elektronica/tablets-e-readers", "elektronica/tv-beeld", "elektronica/slim-wonen"],
        "tekst": "Tablets en e-readers, opladers en powerbanks, soundbars en beamers, en slimme lampen, speakers en robotstofzuigers.", "seoTitel": "Tablets, e-readers, tv en slim wonen" }
     ] },
   { "slug": "mode-sieraden", "naam": "Mode & sieraden", "kort": "Mode & sieraden",
     "groepen": [
      { "slug": "sieraden", "naam": "Sieraden", "uit": ["mode-sieraden/sieraden"] },
      { "slug": "horloges", "naam": "Horloges", "uit": ["mode-sieraden/horloges"] },
-     { "slug": "tassen-portemonnees", "naam": "Tassen", "uit": ["mode-sieraden/tassen-portemonnees"] },
-     { "slug": "accessoires", "naam": "Accessoires", "uit": ["mode-sieraden/accessoires"] },
+     { "slug": "tassen-portemonnees", "naam": "Tassen", "weg": ["koffers-reistassen", "toilettassen", "reisaccessoires"], "uit": ["mode-sieraden/tassen-portemonnees"] },
+     { "slug": "accessoires", "naam": "Accessoires", "weg": ["zonnebrillen", "handschoenen"], "uit": ["mode-sieraden/accessoires"] },
      { "slug": "kleding", "naam": "Kleding", "uit": ["mode-sieraden/kleding"] },
      { "slug": "schoenen-sloffen", "naam": "Schoenen & sloffen", "uit": ["mode-sieraden/schoenen-sloffen"] }
     ] },
@@ -61,7 +62,7 @@
     "groepen": [
      { "slug": "parfum", "naam": "Parfum", "uit": ["beauty-verzorging/parfum"] },
      { "slug": "giftsets", "naam": "Giftsets", "uit": ["beauty-verzorging/giftsets"] },
-     { "slug": "bad-huid-spa", "naam": "Bad, huid & spa", "uit": ["beauty-verzorging/bad-douche", "beauty-verzorging/huid-gezicht", "beauty-verzorging/wellness", "beauty-verzorging/mond-tanden"],
+     { "slug": "bad-huid-spa", "naam": "Bad, huid & spa", "weg": ["elektrische-tandenborstels", "monddouches-flossers"], "uit": ["beauty-verzorging/bad-douche", "beauty-verzorging/huid-gezicht", "beauty-verzorging/wellness", "beauty-verzorging/mond-tanden"],
        "tekst": "Alles om goed voor jezelf te zorgen: bad en douche, verzorging voor gezicht en lichaam, massage en een thuis-spa.", "seoTitel": "Bad, huid en spa – verzorging en ontspanning" },
      { "slug": "make-up-haar", "naam": "Make-up & haar", "uit": ["beauty-verzorging/make-up-nagels", "beauty-verzorging/haar"],
        "tekst": "Make-up en nagels, haarverzorging en föhns en stijltangen.", "seoTitel": "Make-up, nagels en haar" },
@@ -70,7 +71,7 @@
   { "slug": "wonen", "naam": "Wonen", "kort": "Wonen",
     "tekst": "Maak het thuis mooi en gezellig: decoratie, kaarsen en geur, lampen, plaids en kussens, en alles voor kerst.",
     "groepen": [
-     { "slug": "woondecoratie", "naam": "Woondecoratie", "uit": ["wonen/woondecoratie"] },
+     { "slug": "woondecoratie", "naam": "Woondecoratie", "weg": ["spiegels", "opbergen-dienbladen"], "uit": ["wonen/woondecoratie"] },
      { "slug": "kaarsen-geur", "naam": "Kaarsen & geur", "uit": ["wonen/kaarsen-geur"] },
      { "slug": "verlichting", "naam": "Verlichting", "uit": ["wonen/verlichting"] },
      { "slug": "woontextiel", "naam": "Woontextiel", "uit": ["wonen/woontextiel"] },
@@ -95,7 +96,7 @@
      { "slug": "cadeaupakketten", "naam": "Cadeaupakketten & bloemen", "uit": ["eten-drinken/cadeaupakketten"] },
      { "slug": "lekkernijen", "naam": "Lekkernijen", "uit": ["eten-drinken/delicatessen", "eten-drinken/koffie-thee-cacao"],
        "tekst": "Lekkers om te geven of zelf van te genieten: kaas, worst en honing, sauzen en kruiden, noten, en koffie, thee en warme chocolademelk.", "seoTitel": "Lekkernijen – delicatessen, koffie, thee en chocolademelk" },
-     { "slug": "wijn-bubbels", "naam": "Wijn & bubbels", "uit": ["eten-drinken/wijn", "eten-drinken/bubbels"],
+     { "slug": "wijn-bubbels", "naam": "Wijn & bubbels", "weg": ["sake"], "uit": ["eten-drinken/wijn", "eten-drinken/bubbels"],
        "tekst": "Rode, witte en rosé wijn, port en dessertwijn, en champagne, prosecco en cava om iets te vieren.", "seoTitel": "Wijn en bubbels – wijn, champagne, prosecco en cava" },
      { "slug": "bier-sterke-drank", "naam": "Bier & sterke drank", "uit": ["eten-drinken/sterke-drank", "eten-drinken/bier"],
        "tekst": "Whisky, gin, rum, cognac, likeur, tequila en wodka, en speciaalbier en bierpakketten.", "seoTitel": "Bier en sterke drank – whisky, gin, rum en speciaalbier" },
@@ -114,9 +115,9 @@
     ] },
   { "slug": "sport-outdoor", "naam": "Sport & outdoor", "kort": "Sport & outdoor",
     "groepen": [
-     { "slug": "darts", "naam": "Darts", "uit": ["sport-outdoor/darts"] },
-     { "slug": "fitness-yoga", "naam": "Fitness & yoga", "uit": ["sport-outdoor/fitness-yoga", "sport-outdoor/wandelen-hardlopen/hardlopen"] },
-     { "slug": "outdoor-avontuur", "naam": "Outdoor & avontuur", "uit": ["sport-outdoor/kamperen-outdoor", "sport-outdoor/wandelen-hardlopen/wandelen", { "van": "sport-outdoor/noodpakket-survival", "alsVak": { "slug": "noodpakket-survival", "naam": "Noodpakket & survival" } }],
+     { "slug": "darts", "naam": "Darts", "weg": ["verlichting-surrounds"], "uit": ["sport-outdoor/darts"] },
+     { "slug": "fitness-yoga", "naam": "Fitness & yoga", "weg": ["yoga-pilates"], "uit": ["sport-outdoor/fitness-yoga", "sport-outdoor/wandelen-hardlopen/hardlopen"] },
+     { "slug": "outdoor-avontuur", "naam": "Outdoor & avontuur", "weg": ["klimmen-boulderen"], "uit": ["sport-outdoor/kamperen-outdoor", "sport-outdoor/wandelen-hardlopen/wandelen", { "van": "sport-outdoor/noodpakket-survival", "alsVak": { "slug": "noodpakket-survival", "naam": "Noodpakket & survival" } }],
        "erf": "sport-outdoor/kamperen-outdoor",
        "tekst": "Voor wie graag buiten is: kamperen, wandelen, vissen, messen en multitools, verrekijkers en zaklampen, en een noodpakket voor als het tegenzit.", "seoTitel": "Outdoor en avontuur – kamperen, wandelen en survival" },
      { "slug": "fietsen-steps", "naam": "Fietsen & steps", "uit": ["sport-outdoor/fietsen-steps"] },
@@ -127,9 +128,9 @@
   { "slug": "tuin-klussen", "naam": "Tuin & klussen", "kort": "Tuin & klussen",
     "groepen": [
      { "slug": "tuin-planten", "naam": "Tuin & planten", "uit": ["tuin-klussen/tuin-planten"] },
-     { "slug": "buiten-leven", "naam": "Buiten leven", "uit": ["tuin-klussen/buiten-leven"] },
-     { "slug": "klussen", "naam": "Klussen", "uit": ["tuin-klussen/klussen"] },
-     { "slug": "tuingereedschap", "naam": "Tuingereedschap", "uit": ["tuin-klussen/tuingereedschap"] }
+     { "slug": "buiten-leven", "naam": "Buiten leven", "weg": ["tuinmeubelen"], "uit": ["tuin-klussen/buiten-leven"] },
+     { "slug": "klussen", "naam": "Klussen", "weg": ["gereedschapssets"], "uit": ["tuin-klussen/klussen"] },
+     { "slug": "tuingereedschap", "naam": "Tuingereedschap", "weg": ["handgereedschap-tuin"], "uit": ["tuin-klussen/tuingereedschap"] }
     ] },
   { "slug": "boeken-media", "naam": "Boeken & muziek", "kort": "Boeken & muziek",
     "groepen": [
@@ -140,9 +141,9 @@
     ] },
   { "slug": "dieren", "naam": "Dieren", "kort": "Dieren",
     "groepen": [
-     { "slug": "hond", "naam": "Hond", "uit": ["dieren/hond"] },
+     { "slug": "hond", "naam": "Hond", "weg": ["riemen-halsbanden"], "uit": ["dieren/hond"] },
      { "slug": "kat", "naam": "Kat", "uit": ["dieren/kat"] },
-     { "slug": "andere-dieren", "naam": "Andere dieren", "uit": ["dieren/klein-dier", "dieren/paard", "dieren/vogels-vissen"],
+     { "slug": "andere-dieren", "naam": "Andere dieren", "weg": ["reptielen-terrarium", "aquarium", "kippen"], "uit": ["dieren/klein-dier", "dieren/paard", "dieren/vogels-vissen"],
        "tekst": "Voor konijnen en knaagdieren, kippen, reptielen, vogels en vissen, en voor wie paardrijdt.", "seoTitel": "Andere dieren – konijn, kippen, reptielen, vogels, vissen en paard" }
     ] },
   { "slug": "belevenissen", "naam": "Belevenissen", "kort": "Belevenissen",

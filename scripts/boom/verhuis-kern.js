@@ -37,7 +37,7 @@ function LK_VERHUIS(L, T) {
         if (u.alsVak) s.vakjes.push({ slug: u.alsVak.slug, naam: u.alsVak.naam, beeld: os.beeld });
         vv.forEach(function (v) {
           var nv = u.alsVak ? u.alsVak.slug : v.slug, ok = d[0] + '/' + d[1] + '/' + v.slug;
-          if (!u.alsVak) s.vakjes.push(v);
+          if (!u.alsVak && !(G.weg && G.weg.indexOf(nv) !== -1)) s.vakjes.push(v); /* 17-11-2026: 'weg' = vakje uit het menu (geen echte cadeaus); de producten blijven in de groep */
           uit.vak[ok] = [A.slug, G.slug, nv];
           (doelVanGroep[d[0] + '/' + d[1]] = doelVanGroep[d[0] + '/' + d[1]] || []).push([A.slug, G.slug, nv]);
           bezet[ok] = 1;
