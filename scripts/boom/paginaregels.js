@@ -76,13 +76,19 @@ function pas(alle, root) {
       /* 11-11-2026: grappige cadeaus met het label 'kind' (met de hand gezet) mogen ook uit de gadgets en de bruisballen */
       const grapKind = !!(v && v.grappig && v.grappig.indexOf(o.afd + '/' + o.groep) !== -1 && (p.voor || []).indexOf('kind') !== -1 && (p.ookIn || []).indexOf('cadeaus/grappig') !== -1);
       const veilig = v && (v.afd.indexOf(o.afd) !== -1 || v.groep.indexOf(o.afd + '/' + o.groep) !== -1 || grapKind);
-      let weg = !opOnderwerp && !veilig;
+      /* 17-11-2026 (Marius): 'alleen zekere cadeaus' geldt alleen nog voor de personen in alleen_zeker (baby); voor de rest beslist het label, met persoon_niet als vangnet */
+      const zeker = ((REGELS.alleen_zeker || {}).personen || []).indexOf(pe.slug) !== -1;
+      let weg = zeker && !opOnderwerp && !veilig;
+      /* 17-11-2026: wat bij niemand op een Voor wie-pagina hoort (dieren, tandenborstels, tuingereedschap, fietsonderdelen ...) */
+      const pa = (REGELS.persoon_niet || {})._alle;
+      if (!weg && pa && ((pa.groep || []).some((x) => x === o.afd || x === o.afd + '/' + o.groep) || (pa.woorden && new RegExp(pa.woorden, 'i').test(p.titel || '')))) weg = true;
       /* alleen veilige cadeaus: groepen die bij deze persoon niet op de pagina's horen */
       const pn = (REGELS.persoon_niet || {})[pe.slug];
       if (pn && !weg) {
         const g = o.afd + '/' + o.groep; const inL = (l) => l.indexOf(g) !== -1 || l.indexOf(o.afd) !== -1;
         let w = pn.groep ? inL(pn.groep) : false;
         if (pn.alleen) w = !inL(pn.alleen);
+        if (!w && pn.woorden && new RegExp(pn.woorden, 'i').test(p.titel || '')) w = true; /* 17-11-2026: woorden in de titel die niet bij deze persoon passen */
         if (pn.unisexMode && o.afd === 'mode-sieraden' && pn.unisexMode.indexOf(o.groep) !== -1 && (p.voor || []).indexOf('haar') !== -1) w = true;
         if (w && !grapKind && !(pn.behalve && new RegExp(pn.behalve, 'i').test(p.titel || ''))) weg = true;
       }

@@ -676,18 +676,11 @@
   }
  },
  "persoon_niet": {
-  "_uitleg": "10-11-2026 (Marius: alleen veilige cadeaus op de Voor wie-pagina's). 'groep' = afdelingen/groepen die bij deze persoon van de pagina's af gaan (ze blijven in hun eigen vakje). 'alleen' = alleen deze afdelingen/groepen mogen. 'unisexMode' = mode met ook het label 'haar' niet bij hem (ziet eruit als damesmode). 'behalve' = staat dit in de titel, dan mag het toch.",
+  "_uitleg": "10-11-2026 (Marius: alleen veilige cadeaus op de Voor wie-pagina's). 'groep' = afdelingen/groepen die bij deze persoon van de pagina's af gaan (ze blijven in hun eigen vakje). 'alleen' = alleen deze afdelingen/groepen mogen. 'unisexMode' = mode met ook het label 'haar' niet bij hem (ziet eruit als damesmode). 'behalve' = staat dit in de titel, dan mag het toch. 17-11-2026 (Marius: 'haal die alleen zekere cadeaus weg of zet wat anders, mensen moeten goede producten zien'): de regel 'alleen als het op een nagekeken onderwerp staat' geldt niet meer (alleen nog voor baby, zie alleen_zeker). Het label van de persoon beslist; deze lijst houdt eraf wat geen cadeau is voor die persoon. '_alle' geldt voor iedereen ('woorden' = staat dit in de titel, dan niet op een Voor wie-pagina). Per groep met de hand nagekeken op voorbeelden (scratchpad vw/analyse.js).",
   "hem": {
    "groep": [
     "wonen/kerstdecoratie",
-    "wonen/woontextiel",
-    "wonen/kaarsen-geur",
-    "beauty-verzorging/mond-tanden",
-    "beauty-verzorging/bad-douche",
-    "beauty-verzorging/huid-gezicht",
-    "hobby/papier-planners",
-    "tuin-klussen/tuin-planten",
-    "sport-outdoor/fietsen-steps"
+    "beauty-verzorging/huid-gezicht"
    ],
    "unisexMode": [
     "schoenen-sloffen",
@@ -699,22 +692,14 @@
   },
   "haar": {
    "groep": [
-    "wonen/kerstdecoratie",
     "elektronica/tv-beeld",
     "elektronica/slim-wonen",
-    "elektronica/gaming",
     "eten-drinken/bier",
-    "hobby/modelbouw",
     "sport-outdoor/kamperen-outdoor",
-    "sport-outdoor/fietsen-steps",
-    "sport-outdoor/balsport-spel",
-    "sport-outdoor/water-wintersport",
     "sport-outdoor/metaaldetectie",
     "beauty-verzorging/scheren-baard",
-    "beauty-verzorging/mond-tanden",
-    "dieren",
-    "tuin-klussen/klussen",
-    "tuin-klussen/buiten-leven"
+    "tuin-klussen/buiten-leven",
+    "tuin-klussen/klussen"
    ],
    "behalve": "dames|vrouwen|voor haar"
   },
@@ -723,46 +708,70 @@
     "speelgoed",
     "boeken-media/kinderboeken",
     "elektronica/gaming",
-    "eten-drinken/chocolade-snoep"
+    "eten-drinken/chocolade-snoep",
+    "wonen/verlichting",
+    "wonen/woondecoratie",
+    "wonen/woontextiel",
+    "wonen/koffie-thee-zetten",
+    "wonen/koken-bakken",
+    "wonen/kerstdecoratie",
+    "elektronica/smartwatches",
+    "elektronica/gadgets",
+    "elektronica/foto-video",
+    "elektronica/audio",
+    "hobby",
+    "sport-outdoor/balsport-spel",
+    "sport-outdoor/water-wintersport",
+    "sport-outdoor/kamperen-outdoor",
+    "sport-outdoor/metaaldetectie",
+    "mode-sieraden",
+    "belevenissen",
+    "tuin-klussen/tuin-planten",
+    "eten-drinken/koffie-thee-cacao"
    ],
-   "behalve": "\\bkind|kinder|\\bkids\\b|junior|jongens|meisjes|\\d\\+|vanaf \\d+ jaar|\\d+ ?(t/m|tot|-) ?\\d+ jaar|pok[eé]mon|disney|paw patrol|bluey|peppa|nijntje|minecraft|mario|sonic|squishmallow|\\blego\\b|playmobil|barbie|hot wheels|\\bnerf\\b|eenhoorn|dino|knuffel|kleurboek|stickers?\\b|spiderman|spider-man|frozen|harry potter|stitch"
+   "behalve": "\\bkind|kinder|\\bkids\\b|junior|jongens|meisjes|\\d\\+|vanaf \\d+ jaar|\\d+ ?(t/m|tot|-) ?\\d+ jaar|pok[eé]mon|disney|paw patrol|bluey|peppa|nijntje|minecraft|mario|sonic|squishmallow|\\blego\\b|playmobil|barbie|hot wheels|\\bnerf\\b|eenhoorn|dino|knuffel|kleurboek|stickers?\\b|spiderman|spider-man|frozen|harry potter|stitch",
+   "woorden": "volwassenen|\\b18\\+"
   },
   "tieners": {
    "groep": [
-    "wonen/kerstdecoratie",
-    "wonen/koken-bakken",
-    "wonen/tafelen",
-    "wonen/koffie-thee-zetten",
     "tuin-klussen",
-    "eten-drinken/koffie-thee-cacao",
-    "eten-drinken/drankaccessoires",
     "eten-drinken/delicatessen",
-    "eten-drinken/alcoholvrij",
-    "speelgoed/poppen-knuffels",
-    "speelgoed/speelfiguren-voertuigen",
-    "speelgoed/knutselen",
-    "sport-outdoor/kamperen-outdoor"
+    "eten-drinken/drankaccessoires",
+    "eten-drinken/alcoholvrij"
    ],
    "behalve": "tiener|teen"
   },
   "opa-oma": {
    "groep": [
-    "speelgoed/bouwen",
     "elektronica/slim-wonen"
    ]
   },
   "collega": {
    "groep": [
-    "speelgoed/poppen-knuffels",
-    "speelgoed/speelfiguren-voertuigen",
-    "elektronica/gaming",
-    "mode-sieraden/kleding",
-    "wonen/kerstdecoratie"
+    "tuin-klussen/klussen",
+    "elektronica/slim-wonen"
    ]
+  },
+  "_alle": {
+   "groep": [
+    "dieren",
+    "beauty-verzorging/mond-tanden",
+    "tuin-klussen/tuingereedschap",
+    "sport-outdoor/fietsen-steps"
+   ],
+   "woorden": "regenton|grasmaaier|hogedrukreiniger|heggenschaar|bladblazer|tandenborstel|monddouche|knaagdier|hooiruif|kattenbak|krabpaal|kunstkerstboom|kerstverlichting|piek met verlichting|buitenwandlamp"
   }
  },
- "fanhoek": {"_uitleg": "17-11-2026 (Marius: 'zet ook die shit bij tieners, dit is toch tienerspeelgoed'): cadeaus uit de fanhoeken (One Piece & anime, Hello Kitty, KPop Demon Hunters, Pokémon) met het label van deze persoon mogen op diens pagina's, ook als ze op geen nagekeken onderwerp passen (figuren, knuffels, mokken). In app.js telt elke hoek als één soort (mix), dus ze overspoelen de pagina niet. Groepen in de oude indeling (3.0).", "tieners": ["speelgoed/one-piece-anime", "speelgoed/hello-kitty", "speelgoed/kpop-demon-hunters", "speelgoed/pokemon-hoek"]},
-  "met_de_hand": {
+ "fanhoek": {
+  "_uitleg": "17-11-2026 (Marius: 'zet ook die shit bij tieners, dit is toch tienerspeelgoed'): cadeaus uit de fanhoeken (One Piece & anime, Hello Kitty, KPop Demon Hunters, Pokémon) met het label van deze persoon mogen op diens pagina's, ook als ze op geen nagekeken onderwerp passen (figuren, knuffels, mokken). In app.js telt elke hoek als één soort (mix), dus ze overspoelen de pagina niet. Groepen in de oude indeling (3.0).",
+  "tieners": [
+   "speelgoed/one-piece-anime",
+   "speelgoed/hello-kitty",
+   "speelgoed/kpop-demon-hunters",
+   "speelgoed/pokemon-hoek"
+  ]
+ },
+ "met_de_hand": {
   "_uitleg": "13-11-2026: cadeaus die Marius zelf voor deze persoon koos (ERBIJ-lijst gelegenheden, blokken per tak). Ze vallen buiten de veilige groepen van die persoon (bijv. mokken bij tieners, een kussen bij hem), maar zijn met de hand gekozen en nagelezen, dus ze mogen toch op diens pagina's. Alleen ids erbij zetten die Marius zelf voor die persoon koos.",
   "tieners": [
    "dvzn-4eb73fa3d5",
@@ -810,5 +819,11 @@
     "Svinando"
    ]
   }
+ },
+ "alleen_zeker": {
+  "_uitleg": "17-11-2026: alleen bij deze personen moet een cadeau nog op een nagekeken onderwerp staan (of in hoofd_veilig vallen) om op hun pagina's te komen. Voor de rest beslist het label, met persoon_niet als vangnet.",
+  "personen": [
+   "baby"
+  ]
  }
 }
