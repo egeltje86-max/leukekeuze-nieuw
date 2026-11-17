@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Snel zoeken A</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/nieuw/zoek/zoek.css">
+<style>
+.plak{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rand);padding:8px 0}
+.kopbalk .veld{border-color:var(--lgoud)}
+</style>
+
+</head>
+<body>
+<div class="test">Testvoorbeeld snel zoeken, alleen via deze link. <a href="/">Naar de gewone site</a><nav aria-label="Voorbeelden"><a href="/nieuw/zoek/a/" aria-current="page">A · Foto's terwijl je typt</a><a href="/nieuw/zoek/b/">B · Planken die meezoeken</a><a href="/nieuw/zoek/c/">C · Zoek met plaatjes</a><a href="/nieuw/zoek/d/">D · Zoeklade met koopknop</a></nav></div>
+<header class="kopbalk"><a class="logo" href="/nieuw/zoek/a/"><img src="/assets/logo-icoon.svg" alt="" width="26" height="26">Leuke<span class="k">Keuze</span></a>
+<label class="veld"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="q" type="search" placeholder="Typ wat je zoekt, bijv. lampje" aria-label="Zoek een cadeau" autocomplete="off" enterkeyhint="search"><button class="wis" id="wis" type="button" aria-label="Wissen" hidden>×</button></label></header>
+<div class="plak" id="plak"><div class="chips" id="wie"></div><div class="chips" id="tot" style="margin-top:6px"></div></div>
+<section class="uitleg" id="intro"><h1>Foto's terwijl je typt</h1><p>Elke letter die je typt laat meteen de cadeaus zien, met foto en prijs. Geen Enter, geen nieuwe pagina.</p></section>
+<div id="uit"></div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script src="/nieuw/zoek/zoekkern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var Z = window.ZOEK, K = window.KERN, esc = K.esc;
+  var S = { q: '', wie: '', tot: 0, vak: '', n: 24 };
+  var WIE = [['', 'Iedereen'], ['haar', 'Haar'], ['hem', 'Hem'], ['kinderen', 'Kind'], ['tieners', 'Tiener'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega']];
+  var TOT = [[0, 'Elk bedrag'], [10, 'Tot € 10'], [15, 'Tot € 15'], [25, 'Tot € 25'], [50, 'Tot € 50']];
+  var VAAK = [['Lampjes', 'lamp', 'wonen-verlichting'], ['Knuffels', 'knuffel', 'speelgoed-poppen-knuffels'], ['LEGO', 'lego', 'speelgoed-bouwen'], ['Spellen', 'spel', 'speelgoed-spellen'],
+    ['Kaarsen', 'kaars', 'wonen-kaarsen-geur'], ['Gaming', 'gaming', 'elektronica-gaming'], ['Chocolade', 'chocolade', 'eten-drinken-chocolade-snoep'], ['Sloffen', 'pantoffels', 'mode-sieraden-schoenen-sloffen'],
+    ['Puzzels', 'puzzel', 'speelgoed-puzzels'], ['Verwennen', 'bruisbal', 'beauty-verzorging-wellness'], ['Darts', 'darts', 'sport-outdoor-darts'], ['Knutselen', 'knutsel', 'speelgoed-knutselen']];
+  function kaart(p) { return '<a class="kaart" href="' + K.productLink(p) + '"><span class="f"><img src="' + K.klein(p) + '" alt="" loading="lazy" width="400" height="400"></span><span class="t"><span class="pr">' + K.euro(p.prijs) + '</span><span class="nm">' + esc(p.titel) + '</span><span class="ws">bij ' + esc(p.shop) + '</span></span></a>'; }
+  function chips() {
+    document.getElementById('wie').innerHTML = WIE.map(function (w) { return '<button class="chip" type="button" data-wie="' + w[0] + '" aria-pressed="' + (S.wie === w[0]) + '">' + w[1] + '</button>'; }).join('');
+    document.getElementById('tot').innerHTML = TOT.map(function (t) { return '<button class="chip" type="button" data-tot="' + t[0] + '" aria-pressed="' + (S.tot === t[0]) + '">' + t[1] + '</button>'; }).join('');
+  }
+  function teken() {
+    chips();
+    var uit = document.getElementById('uit'), intro = document.getElementById('intro');
+    document.getElementById('wis').hidden = !S.q;
+    if (!S.q.trim()) {
+      intro.hidden = false;
+      var pop = K.uniek(K.uitTop('/collectie/toppers-van-nu').concat(K.uitTop('/collectie/grappige-cadeaus'))).filter(function (p) { return (!S.wie || Z.wieOk(p, S.wie)) && (!S.tot || p.prijs <= S.tot) && !K.drank(p); }).slice(0, 12);
+      uit.innerHTML = '<h2 class="sectiekop">Vaak gezocht · tik er een aan</h2><div class="rond">' + VAAK.map(function (v) { return '<button type="button" data-zoek="' + v[1] + '"><img src="/images/sub/iconen/icoon-' + v[2] + '-klein.webp" alt=""><span>' + v[0] + '</span></button>'; }).join('') + '</div>' +
+        '<h2 class="sectiekop">Populair nu</h2><div class="raster">' + pop.map(kaart).join('') + '</div>';
+      return;
+    }
+    intro.hidden = true;
+    var m = Z.meet(function () { return Z.zoek(S.q, { wie: S.wie, tot: S.tot }); }), alle = m.r;
+    var lijst = S.vak ? alle.filter(function (p) { return Z.inVak(p, S.vak); }) : alle;
+    var vakken = Z.perVak(alle, 6);
+    var h = '<p class="tel"><b>' + lijst.length + ' cadeaus</b> voor ‘' + esc(S.q.trim()) + '’ · gevonden in ' + m.ms + ' ms</p>';
+    if (vakken.length > 1) h += '<div class="chips" style="margin-top:8px"><button class="chip" type="button" data-vak="" aria-pressed="' + !S.vak + '">Alles <small>' + alle.length + '</small></button>' + vakken.map(function (v) { return '<button class="chip" type="button" data-vak="' + esc(v.k) + '" aria-pressed="' + (S.vak === v.k) + '">' + esc(v.naam) + ' <small>' + v.n + '</small></button>'; }).join('') + '</div>';
+    h += lijst.length ? '<div class="raster">' + lijst.slice(0, S.n).map(kaart).join('') + '</div>' + (lijst.length > S.n ? '<div class="meer"><button type="button" data-meer>Laat er nog 24 zien</button></div>' : '')
+      : '<div class="leeg">Niets gevonden voor ‘' + esc(S.q) + '’. Probeer een ander woord, bijvoorbeeld <b>lampje</b>, <b>knuffel</b> of <b>mok</b>.</div>';
+    uit.innerHTML = h;
+  }
+  var q = document.getElementById('q');
+  q.addEventListener('input', function () { S.q = q.value; S.vak = ''; S.n = 24; teken(); });
+  document.getElementById('wis').addEventListener('click', function () { q.value = ''; S.q = ''; teken(); q.focus(); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-wie],[data-tot],[data-vak],[data-zoek],[data-meer]'); if (!b) return;
+    if (b.hasAttribute('data-wie')) S.wie = b.getAttribute('data-wie');
+    else if (b.hasAttribute('data-tot')) S.tot = +b.getAttribute('data-tot');
+    else if (b.hasAttribute('data-vak')) S.vak = b.getAttribute('data-vak');
+    else if (b.hasAttribute('data-zoek')) { S.q = b.getAttribute('data-zoek'); q.value = S.q; S.vak = ''; window.scrollTo(0, 0); }
+    else if (b.hasAttribute('data-meer')) S.n += 24;
+    S.n = b.hasAttribute('data-meer') ? S.n : 24; teken();
+  });
+  teken();
+})();
+</script>
+</body>
+</html>

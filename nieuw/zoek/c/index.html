@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Snel zoeken C</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/nieuw/zoek/zoek.css">
+<style>
+.woorden{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 6px;padding:14px var(--gut) 40px;max-width:980px;margin:0 auto}
+@media (min-width:760px){.woorden{grid-template-columns:repeat(8,minmax(0,1fr))}}
+.woord{border:0;background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:5px;font-weight:700;font-size:12.5px;line-height:1.15;color:var(--tekst);min-height:44px}
+.woord img{width:64px;height:64px;border-radius:50%;border:2px solid var(--rand);background:#fff;object-fit:cover;transition:transform .15s}
+.woord[aria-expanded="true"] img{border:3px solid var(--goud);transform:scale(1.06)}
+.woord[aria-expanded="true"] span{color:var(--dgoud)}
+.paneel{grid-column:1/-1;background:var(--ivoor);border:1.5px solid var(--goud);border-radius:18px;padding:12px;position:relative;animation:open .2s ease}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.paneel h2{margin:0 0 2px;font:700 19px/1.2 var(--k);color:var(--marine)}
+.paneel .sub{margin:0 0 10px;font-size:13px;color:var(--zacht)}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:760px){.mini{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.mini a{display:flex;flex-direction:column;text-decoration:none;background:#fff;border:1px solid var(--rand);border-radius:12px;overflow:hidden;color:var(--tekst)}
+.mini img{aspect-ratio:1;width:100%;object-fit:contain;padding:4px}
+.mini b{font-size:13.5px;padding:2px 6px 0;color:var(--marine)}
+.mini span{font-size:12px;line-height:1.25;margin:0 6px 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:2.5em}
+.paneel .alles{display:flex;justify-content:center;margin-top:10px}
+.paneel .dicht{position:absolute;right:8px;top:8px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:20px}
+</style>
+
+</head>
+<body>
+<div class="test">Testvoorbeeld snel zoeken, alleen via deze link. <a href="/">Naar de gewone site</a><nav aria-label="Voorbeelden"><a href="/nieuw/zoek/a/">A · Foto's terwijl je typt</a><a href="/nieuw/zoek/b/">B · Planken die meezoeken</a><a href="/nieuw/zoek/c/" aria-current="page">C · Zoek met plaatjes</a><a href="/nieuw/zoek/d/">D · Zoeklade met koopknop</a></nav></div>
+<header class="kopbalk"><a class="logo" href="/nieuw/zoek/c/"><img src="/assets/logo-icoon.svg" alt="" width="26" height="26">Leuke<span class="k">Keuze</span></a></header>
+<section class="uitleg"><h1>Zoek met plaatjes</h1><p>Niets typen. Tik op een plaatje en de cadeaus klappen er meteen onder open.</p></section>
+<div class="chips" id="wie" style="margin:12px 0 4px"></div>
+<div class="woorden" id="woorden"></div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script src="/nieuw/zoek/zoekkern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var Z = window.ZOEK, K = window.KERN, esc = K.esc;
+  var WIE = [['', 'Iedereen'], ['haar', 'Haar'], ['hem', 'Hem'], ['kinderen', 'Kind'], ['tieners', 'Tiener'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega']];
+  var W = [['Lampjes', 'lamp', 'wonen-verlichting'], ['Knuffels', 'knuffel', 'speelgoed-poppen-knuffels'], ['LEGO', 'lego', 'speelgoed-bouwen'], ['Spellen', 'spel', 'speelgoed-spellen'],
+    ['Kaarsen', 'kaars', 'wonen-kaarsen-geur'], ['Gaming', 'gaming', 'elektronica-gaming'], ['Chocolade', 'chocolade', 'eten-drinken-chocolade-snoep'], ['Sloffen', 'pantoffels', 'mode-sieraden-schoenen-sloffen'],
+    ['Puzzels', 'puzzel', 'speelgoed-puzzels'], ['Verwennen', 'bruisbal', 'beauty-verzorging-wellness'], ['Darts', 'darts', 'sport-outdoor-darts'], ['Knutselen', 'knutsel', 'speelgoed-knutselen'],
+    ['Mokken', 'mok', 'wonen-tafelen'], ['Parfum', 'parfum', 'beauty-verzorging-parfum'], ['Horloges', 'horloge', 'mode-sieraden-horloges'], ['Sieraden', 'oorbellen', 'mode-sieraden-sieraden'],
+    ['Koptelefoons', 'koptelefoon', 'elektronica-audio'], ['Boeken', 'boek', 'boeken-media-boeken'], ['Koffie & thee', 'thee', 'eten-drinken-koffie-thee-cacao'], ['Buiten spelen', 'buiten', 'speelgoed-buiten-spelen'],
+    ['Kerst', 'kerst', 'wonen-kerstdecoratie'], ["RC-auto's", 'rc auto', 'hobby-rc-auto-s'], ['Honden', 'hond', 'dieren-hond'], ['Katten', 'kat', 'dieren-kat']];
+  var S = { wie: '', open: -1 };
+  function kolommen() { var el = document.getElementById('woorden'); return getComputedStyle(el).gridTemplateColumns.split(' ').length; }
+  function paneel(i) {
+    var w = W[i], m = Z.meet(function () { return Z.zoek(w[1], { wie: S.wie }); }), l = m.r;
+    return '<div class="paneel" role="region" aria-label="' + esc(w[0]) + '"><button class="dicht" type="button" data-dicht aria-label="Dichtklappen">×</button><h2>' + esc(w[0]) + '</h2><p class="sub">' + l.length + ' cadeaus · ' + m.ms + ' ms</p>' +
+      (l.length ? '<div class="mini">' + l.slice(0, 6).map(function (p) { return '<a href="' + K.productLink(p) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"><b>' + K.euro(p.prijs) + '</b><span>' + esc(p.titel) + '</span></a>'; }).join('') + '</div>' +
+        '<div class="alles"><a class="knop" href="/zoek?q=' + encodeURIComponent(w[1]) + '">Alle ' + l.length + ' ' + esc(w[0].toLowerCase()) + ' bekijken</a></div>' : '<p class="sub">Voor deze keuze is er nu niets.</p>') + '</div>';
+  }
+  function teken() {
+    document.getElementById('wie').innerHTML = WIE.map(function (x) { return '<button class="chip" type="button" data-wie="' + x[0] + '" aria-pressed="' + (S.wie === x[0]) + '">' + x[1] + '</button>'; }).join('');
+    var k = kolommen(), h = '', eindRij = S.open >= 0 ? Math.min(W.length - 1, Math.floor(S.open / k) * k + k - 1) : -1;
+    W.forEach(function (w, i) {
+      h += '<button class="woord" type="button" data-woord="' + i + '" aria-expanded="' + (S.open === i) + '"><img src="/images/sub/iconen/icoon-' + w[2] + '-klein.webp" alt=""><span>' + esc(w[0]) + '</span></button>';
+      if (i === eindRij) h += paneel(S.open);
+    });
+    document.getElementById('woorden').innerHTML = h;
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-woord],[data-wie],[data-dicht]'); if (!b) return;
+    if (b.hasAttribute('data-wie')) S.wie = b.getAttribute('data-wie');
+    else if (b.hasAttribute('data-dicht')) S.open = -1;
+    else { var i = +b.getAttribute('data-woord'); S.open = S.open === i ? -1 : i; }
+    teken();
+    var p = document.querySelector('.paneel'); if (p && b.hasAttribute('data-woord')) { var r = p.getBoundingClientRect(); if (r.bottom > innerHeight) window.scrollBy({ top: r.bottom - innerHeight + 20, behavior: 'smooth' }); }
+  });
+  window.addEventListener('resize', teken);
+  teken();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Snel zoeken B</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/nieuw/zoek/zoek.css">
+<style>
+.gevel{background:var(--ivoor);border-bottom:1px solid var(--rand);padding:16px var(--gut) 18px;text-align:center;position:sticky;top:0;z-index:20}
+.gevel h1{font:700 clamp(22px,6vw,34px)/1.1 var(--k);margin:0 0 2px;color:var(--marine)}
+.gevel p{margin:0 auto 10px;max-width:34em;color:var(--zacht);font-size:14px;line-height:1.35}
+.wrap{max-width:1180px;margin:0 auto;padding:6px var(--gut) 60px}
+.tel{padding:6px 0 10px}
+.plank{margin:0 0 30px}
+.bord{display:inline-flex;align-items:center;gap:10px;background:var(--ivoor);color:var(--marine);border:1.5px solid var(--goud);border-radius:12px;padding:8px 14px 8px 10px;box-shadow:0 4px 12px rgba(143,102,32,.12);position:relative;margin:10px 0 12px}
+.bord::before,.bord::after{content:"";position:absolute;top:-10px;width:2px;height:10px;background:var(--goud)}.bord::before{left:18px}.bord::after{right:18px}
+.bord img{width:34px;height:34px;border-radius:50%}
+.bord h2{margin:0;font:700 19px/1.15 var(--k)}
+.bord small{display:block;font:700 12.5px/1.2 var(--f);color:var(--dgoud)}
+.rij{display:flex;align-items:flex-end;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--gut));padding:0 var(--gut)}
+.rij::-webkit-scrollbar{display:none}
+.hout{height:16px;margin:0 calc(-1*var(--gut));background:linear-gradient(180deg,#D7B07A 0,#B98A4F 55%,#8F6634 100%);border-radius:2px;box-shadow:0 10px 14px -6px rgba(60,40,15,.45)}
+@media (min-width:760px){.rij,.hout{margin-left:0;margin-right:0}}
+.ding{flex:0 0 138px;display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--tekst);text-align:center;padding:0 2px;animation:in .18s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (min-width:760px){.ding{flex-basis:168px}}
+.ding .ft{width:100%;aspect-ratio:1;display:flex;align-items:flex-end;justify-content:center;padding:8% 8% 2px}
+.ding .ft img{width:100%;height:100%;object-fit:cover;border-radius:10px;border:1px solid var(--rand);background:#fff;box-shadow:0 6px 12px -6px rgba(60,40,15,.45)}
+.prijs{margin:10px 0 0;padding:3px 9px;background:var(--ivoor);border:1px solid var(--goud);border-radius:4px 10px 10px 4px;font-weight:800;font-size:14px;color:var(--marine);transform:rotate(-3deg)}
+.naam{margin:6px 0 4px;font-weight:700;font-size:13.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+</style>
+
+</head>
+<body>
+<div class="test">Testvoorbeeld snel zoeken, alleen via deze link. <a href="/">Naar de gewone site</a><nav aria-label="Voorbeelden"><a href="/nieuw/zoek/a/">A · Foto's terwijl je typt</a><a href="/nieuw/zoek/b/" aria-current="page">B · Planken die meezoeken</a><a href="/nieuw/zoek/c/">C · Zoek met plaatjes</a><a href="/nieuw/zoek/d/">D · Zoeklade met koopknop</a></nav></div>
+<header class="gevel"><h1>Het cadeauwinkeltje</h1><p>Typ wat je zoekt: de planken laten meteen alleen zien wat erbij past.</p>
+<label class="veld"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="q" type="search" placeholder="Zoek op de planken, bijv. kat" aria-label="Zoek op de planken" autocomplete="off" enterkeyhint="search"><button class="wis" id="wis" type="button" aria-label="Wissen" hidden>×</button></label></header>
+<main class="wrap"><p class="tel" id="tel"></p><div id="planken"></div></main>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script src="/nieuw/zoek/zoekkern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var Z = window.ZOEK, K = window.KERN, esc = K.esc;
+  var g = function (p) { return (p.afd || '') + '/' + (p.groep || '') + '/' + (p.vak || ''); };
+  var I = '/images/sub/iconen/icoon-', RO = '/images/sub/rond/';
+  var PLANK = [
+    ['Om te lachen', RO + 'col-grappige-cadeaus', function (p) { return (p.ookIn || []).indexOf('cadeaus/grappig') !== -1; }],
+    ['Licht & sfeer', I + 'wonen-verlichting', function (p) { return /^wonen\/(verlichting|kaarsen-geur)/.test(g(p)); }],
+    ['Warm & knus', I + 'wonen-woontextiel', function (p) { return /^wonen\/woontextiel|^mode-sieraden\/schoenen-sloffen\/pantoffels|pyjama-s-badjassen/.test(g(p)); }],
+    ['Op tafel & in de kast', I + 'wonen-woondecoratie', function (p) { return /^koken-tafelen\/mokken-glazen|^wonen\/woondecoratie/.test(g(p)); }],
+    ['Spelen & bouwen', I + 'speelgoed-bouwen', function (p) { return /^speelgoed\/|^spellen-puzzels\//.test(g(p)); }],
+    ['Gamers & snufjes', I + 'elektronica-gaming', function (p) { return /^elektronica\//.test(g(p)); }],
+    ['Even verwennen', I + 'beauty-verzorging-wellness', function (p) { return /^beauty-verzorging\//.test(g(p)); }],
+    ['Iets lekkers', I + 'eten-drinken-chocolade-snoep', function (p) { return /^eten-drinken\/(chocolade-snoep|delicatessen|cadeaupakketten)/.test(g(p)); }],
+    ['Sieraden & horloges', I + 'mode-sieraden-sieraden', function (p) { return /^mode-sieraden\/(sieraden|horloges)/.test(g(p)); }],
+    ['Zelf maken', I + 'hobby-knutselen', function (p) { return /^hobby\//.test(g(p)); }],
+    ['Naar buiten', I + 'sport-outdoor-kamperen-outdoor', function (p) { return /^sport-outdoor\/|^tuin-klussen\//.test(g(p)); }]
+  ];
+  function ding(p) { return '<a class="ding" href="' + K.productLink(p) + '"><span class="ft"><img src="' + K.klein(p) + '" alt="" loading="lazy"></span><span class="prijs">' + K.euro(p.prijs) + '</span><span class="naam">' + esc(p.titel) + '</span></a>'; }
+  function plank(naam, ic, lijst, n) { return '<section class="plank"><div class="bord"><img src="' + ic + '-klein.webp" alt=""><div><h2>' + esc(naam) + '</h2>' + (n != null ? '<small>' + n + ' gevonden</small>' : '') + '</div></div><div class="rij">' + lijst.slice(0, 14).map(ding).join('') + '</div><div class="hout"></div></section>'; }
+  var leeg = (function () { var top = K.uniek(K.uitTop('/collectie/toppers-van-nu').concat(K.uitTop('/collectie/grappige-cadeaus'), K.uitTop('/voor/haar'), K.uitTop('/voor/hem'), K.uitTop('/voor/kinderen'), K.uitTop('/voor/tieners'))).filter(function (p) { return !K.drank(p); }); return top; })();
+  function teken(q) {
+    var el = document.getElementById('planken'), tel = document.getElementById('tel'), h = '';
+    document.getElementById('wis').hidden = !q;
+    if (!q.trim()) {
+      tel.textContent = 'Zo staat het winkeltje er nu bij. Typ een woord en kijk wat er gebeurt.';
+      PLANK.forEach(function (pl) { var l = leeg.filter(pl[2]); if (l.length >= 5) h += plank(pl[0], pl[1], l); });
+      el.innerHTML = h; return;
+    }
+    var m = Z.meet(function () { return Z.zoek(q); }), alle = m.r;
+    tel.innerHTML = '<b>' + alle.length + ' cadeaus</b> voor ‘' + esc(q.trim()) + '’ · ' + m.ms + ' ms';
+    if (!alle.length) { el.innerHTML = '<div class="leeg">Niets gevonden. Probeer een ander woord, bijvoorbeeld <b>kat</b>, <b>lampje</b> of <b>sokken</b>.</div>'; return; }
+    h += plank('Beste treffers', '/images/sub/rond/col-toppers-van-nu', alle, null);
+    PLANK.forEach(function (pl) { var l = alle.filter(pl[2]); if (l.length) h += plank(pl[0], pl[1], l, l.length); });
+    el.innerHTML = h;
+  }
+  var q = document.getElementById('q');
+  q.addEventListener('input', function () { teken(q.value); });
+  document.getElementById('wis').addEventListener('click', function () { q.value = ''; teken(''); q.focus(); });
+  teken('');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Snel zoeken D</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/nieuw/zoek/zoek.css">
+<style>
+.nepveld{display:flex;align-items:center;gap:10px;width:100%;max-width:680px;margin:0 auto;min-height:52px;padding:0 16px;border-radius:999px;border:2px solid var(--lgoud);background:#fff;color:var(--zacht);font-weight:600;font-size:16px}
+.nepveld svg{width:22px;height:22px;color:var(--dgoud)}
+.achter{height:900px;background:repeating-linear-gradient(180deg,#FFFCF7 0 180px,#fff 180px 360px);opacity:.6}
+.zweef{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;min-height:56px;padding:0 22px;border-radius:999px;border:0;background:var(--goud);color:var(--marine);font-weight:800;font-size:16px;box-shadow:0 10px 24px rgba(10,16,32,.28)}
+.zweef svg{width:22px;height:22px}
+.lade{position:fixed;inset:0;z-index:50;background:#fff;overflow-y:auto;animation:schuif .2s ease}
+@keyframes schuif{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.lkop{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;padding:10px var(--gut);background:var(--marine)}
+.lkop .veld{flex:1;margin:0;border-color:var(--lgoud);min-height:48px}
+.lkop .veld input{padding:10px 0}
+.terug{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;flex:0 0 auto}
+.terug svg{width:22px;height:22px}
+.lade .chips{padding-top:10px;padding-bottom:4px}
+.rijtje{list-style:none;margin:0;padding:6px var(--gut) 30px;max-width:760px;margin:0 auto}
+.rijtje li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rand)}
+.rijtje .ft{width:84px;height:84px;border-radius:12px;border:1px solid var(--rand);background:#fff;overflow:hidden;display:block}
+.rijtje .ft img{width:100%;height:100%;object-fit:contain;padding:4px}
+.rijtje .info{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rijtje .nm{font-weight:700;font-size:14.5px;line-height:1.3;color:var(--tekst);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rijtje .onder{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.rijtje .pr{font-weight:800;font-size:17px;color:var(--marine)}
+.rijtje .koop{min-height:44px;padding:0 14px;border-radius:999px;background:var(--goud);color:var(--marine);font-weight:800;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
+.pop{display:flex;flex-wrap:wrap;gap:8px;padding:6px var(--gut) 20px;max-width:760px;margin:0 auto}
+</style>
+
+</head>
+<body>
+<div class="test">Testvoorbeeld snel zoeken, alleen via deze link. <a href="/">Naar de gewone site</a><nav aria-label="Voorbeelden"><a href="/nieuw/zoek/a/">A · Foto's terwijl je typt</a><a href="/nieuw/zoek/b/">B · Planken die meezoeken</a><a href="/nieuw/zoek/c/">C · Zoek met plaatjes</a><a href="/nieuw/zoek/d/" aria-current="page">D · Zoeklade met koopknop</a></nav></div>
+<header class="kopbalk"><a class="logo" href="/nieuw/zoek/d/"><img src="/assets/logo-icoon.svg" alt="" width="26" height="26">Leuke<span class="k">Keuze</span></a>
+<button class="nepveld" type="button" data-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>Zoek een cadeau</button></header>
+<section class="uitleg"><h1>Zoeklade met koopknop</h1><p>Tik op het zoekvak of op de gouden knop onderaan. Er schuift een lade open: typen, en bij elk cadeau staat meteen de knop naar de winkel. In twee tikken bij de winkel.</p></section>
+<div class="achter" aria-hidden="true"></div>
+<button class="zweef" type="button" data-open aria-label="Zoek een cadeau"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>Zoek</button>
+<div class="lade" id="lade" role="dialog" aria-modal="true" aria-label="Zoek een cadeau" hidden>
+  <div class="lkop"><button class="terug" type="button" data-dicht aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+  <label class="veld"><input id="q" type="search" placeholder="Wat zoek je? bijv. sloffen" aria-label="Zoek een cadeau" autocomplete="off" enterkeyhint="search"><button class="wis" id="wis" type="button" aria-label="Wissen" hidden>×</button></label></div>
+  <div class="chips" id="wie"></div>
+  <div id="uit"></div>
+</div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/nieuw/kern.js"></script>
+<script src="/nieuw/zoek/zoekkern.js"></script>
+<script>
+(function () {
+  'use strict';
+  var Z = window.ZOEK, K = window.KERN, esc = K.esc;
+  var WIE = [['', 'Iedereen'], ['haar', 'Haar'], ['hem', 'Hem'], ['kinderen', 'Kind'], ['tieners', 'Tiener'], ['opa-oma', 'Opa & oma'], ['collega', 'Collega']];
+  var POP = ['lampje', 'sloffen', 'knuffel', 'lego', 'mok', 'puzzel', 'darts', 'kaars', 'chocolade', 'badjas', 'stressbal', 'spel'];
+  var S = { q: '', wie: '', n: 30 }, LAAT = [];
+  try { LAAT = JSON.parse(localStorage.getItem('lkzoek-laatst') || '[]'); } catch (e) {}
+  var lade = document.getElementById('lade'), q = document.getElementById('q');
+  function open() { lade.hidden = false; document.body.style.overflow = 'hidden'; teken(); setTimeout(function () { q.focus(); }, 30); }
+  function dicht() { lade.hidden = true; document.body.style.overflow = ''; }
+  function rij(p) {
+    var koop = /elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || '')) ? '<a class="koop" href="' + K.productLink(p) + '">Lees eerst dit</a>' : '<a class="koop" href="' + K.winkelLink(p) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + esc(p.shop) + '</a>';
+    return '<li><a class="ft" href="' + K.productLink(p) + '"><img src="' + K.klein(p) + '" alt="" loading="lazy"></a><div class="info"><a class="nm" href="' + K.productLink(p) + '">' + esc(p.titel) + '</a><div class="onder"><span class="pr">' + K.euro(p.prijs) + '</span>' + koop + '</div></div></li>';
+  }
+  function teken() {
+    document.getElementById('wie').innerHTML = WIE.map(function (w) { return '<button class="chip" type="button" data-wie="' + w[0] + '" aria-pressed="' + (S.wie === w[0]) + '">' + w[1] + '</button>'; }).join('');
+    document.getElementById('wis').hidden = !S.q;
+    var uit = document.getElementById('uit');
+    if (!S.q.trim()) {
+      uit.innerHTML = (LAAT.length ? '<h2 class="sectiekop">Laatst gezocht</h2><div class="pop">' + LAAT.map(function (w) { return '<button class="chip" type="button" data-zoek="' + esc(w) + '">' + esc(w) + '</button>'; }).join('') + '</div>' : '') +
+        '<h2 class="sectiekop">Vaak gezocht</h2><div class="pop">' + POP.map(function (w) { return '<button class="chip" type="button" data-zoek="' + w + '">' + w + '</button>'; }).join('') + '</div>';
+      return;
+    }
+    var m = Z.meet(function () { return Z.zoek(S.q, { wie: S.wie }); }), l = m.r;
+    uit.innerHTML = '<p class="tel"><b>' + l.length + ' cadeaus</b> · ' + m.ms + ' ms</p>' + (l.length ? '<ul class="rijtje">' + l.slice(0, S.n).map(rij).join('') + '</ul>' + (l.length > S.n ? '<div class="meer"><button type="button" data-meer>Meer laten zien</button></div>' : '') : '<div class="leeg">Niets gevonden. Probeer <b>lampje</b>, <b>knuffel</b> of <b>mok</b>.</div>');
+  }
+  function onthoud() { var w = S.q.trim().toLowerCase(); if (w.length < 3) return; LAAT = [w].concat(LAAT.filter(function (x) { return x !== w; })).slice(0, 6); try { localStorage.setItem('lkzoek-laatst', JSON.stringify(LAAT)); } catch (e) {} }
+  q.addEventListener('input', function () { S.q = q.value; S.n = 30; teken(); });
+  q.addEventListener('keydown', function (e) { if (e.key === 'Enter') { onthoud(); q.blur(); } });
+  document.getElementById('wis').addEventListener('click', function () { q.value = ''; S.q = ''; teken(); q.focus(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lade.hidden) dicht(); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-open],[data-dicht],[data-wie],[data-zoek],[data-meer],.koop,.nm,.ft'); if (!b) return;
+    if (b.matches('.koop,.nm,.ft')) { onthoud(); return; }
+    if (b.hasAttribute('data-open')) return open();
+    if (b.hasAttribute('data-dicht')) return dicht();
+    if (b.hasAttribute('data-wie')) S.wie = b.getAttribute('data-wie');
+    else if (b.hasAttribute('data-zoek')) { S.q = b.getAttribute('data-zoek'); q.value = S.q; }
+    else if (b.hasAttribute('data-meer')) S.n += 30;
+    teken();
+  });
+})();
+</script>
+</body>
+</html>
