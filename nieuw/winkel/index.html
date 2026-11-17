@@ -16,7 +16,7 @@
      Verkooppsychologie: een winkel om in rond te kijken (ontdekken in plaats van zoeken), het product zelf in beeld in plaats van een kaartje,
      een prijskaartje zoals in een echte winkel, en weinig tekst. -->
 <style>
-:root{--marine:#0A1020;--tekst:#141A2A;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--goud:#B8862E;--dgoud:#8F6620;--lgoud:#F2CB74;--rand:#E5D7BE;--zacht:#5C6272;--muur:#F3ECDF;--hout1:#D7B07A;--hout2:#B98A4F;--hout3:#8F6634;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
+:root{--marine:#0A1020;--tekst:#141A2A;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--goud:#B8862E;--dgoud:#8F6620;--lgoud:#F2CB74;--rand:#E5D7BE;--zacht:#5C6272;--muur:#FFFFFF;--hout1:#D7B07A;--hout2:#B98A4F;--hout3:#8F6634;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;--k:'Playfair Display',Georgia,serif;color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}
 html,body{overflow-x:clip}
@@ -24,23 +24,23 @@ body{margin:0;background:var(--muur);color:var(--tekst);font:500 16px/1.5 var(--
 img{display:block;max-width:100%}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:inherit}
-.test{background:var(--marine);color:#E8E2D6;font:600 13px/1.3 var(--f);text-align:center;padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left))}
-.test a{color:var(--lgoud);font-weight:800}
+.test{background:var(--creme);color:var(--zacht);border-bottom:1px solid var(--rand);font:600 13px/1.3 var(--f);text-align:center;padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left))}
+.test a{color:var(--dgoud);font-weight:800}
 /* uithangbord */
-.gevel{background:var(--marine);color:#fff;padding:22px max(16px,env(safe-area-inset-right)) 26px max(16px,env(safe-area-inset-left));text-align:center;position:relative}
-.gevel::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;background:repeating-linear-gradient(90deg,#B8862E 0 24px,#F7F3EC 24px 48px);clip-path:polygon(0 0,100% 0,100% 40%,97.5% 100%,95% 40%,92.5% 100%,90% 40%,87.5% 100%,85% 40%,82.5% 100%,80% 40%,77.5% 100%,75% 40%,72.5% 100%,70% 40%,67.5% 100%,65% 40%,62.5% 100%,60% 40%,57.5% 100%,55% 40%,52.5% 100%,50% 40%,47.5% 100%,45% 40%,42.5% 100%,40% 40%,37.5% 100%,35% 40%,32.5% 100%,30% 40%,27.5% 100%,25% 40%,22.5% 100%,20% 40%,17.5% 100%,15% 40%,12.5% 100%,10% 40%,7.5% 100%,5% 40%,2.5% 100%,0 40%)}
-.gevel a{text-decoration:none;font:700 15px/1 var(--k);color:var(--lgoud);letter-spacing:.06em;text-transform:uppercase}
+.gevel{background:var(--ivoor);color:var(--marine);border-bottom:1px solid var(--rand);padding:22px max(16px,env(safe-area-inset-right)) 26px max(16px,env(safe-area-inset-left));text-align:center;position:relative}
+.gevel::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;background:repeating-linear-gradient(90deg,#F2CB74 0 24px,#FFFFFF 24px 48px);clip-path:polygon(0 0,100% 0,100% 40%,97.5% 100%,95% 40%,92.5% 100%,90% 40%,87.5% 100%,85% 40%,82.5% 100%,80% 40%,77.5% 100%,75% 40%,72.5% 100%,70% 40%,67.5% 100%,65% 40%,62.5% 100%,60% 40%,57.5% 100%,55% 40%,52.5% 100%,50% 40%,47.5% 100%,45% 40%,42.5% 100%,40% 40%,37.5% 100%,35% 40%,32.5% 100%,30% 40%,27.5% 100%,25% 40%,22.5% 100%,20% 40%,17.5% 100%,15% 40%,12.5% 100%,10% 40%,7.5% 100%,5% 40%,2.5% 100%,0 40%)}
+.gevel a{text-decoration:none;font:700 15px/1 var(--k);color:var(--dgoud);letter-spacing:.06em;text-transform:uppercase}
 .gevel h1{font:700 clamp(28px,7.5vw,44px)/1.1 var(--k);margin:8px 0 6px}
-.gevel p{margin:0 auto;max-width:34em;color:#D8DBE4;font-size:15.5px}
+.gevel p{margin:0 auto;max-width:34em;color:var(--zacht);font-size:15.5px}
 .wrap{max-width:1180px;margin:0 auto;padding:34px max(16px,env(safe-area-inset-right)) 70px max(16px,env(safe-area-inset-left))}
 /* een plank */
 .plank{margin:0 0 34px}
-.bord{display:inline-flex;align-items:center;gap:10px;background:var(--marine);color:#fff;border-radius:10px;padding:8px 14px 8px 10px;box-shadow:0 4px 12px rgba(10,16,32,.18);position:relative;margin:0 0 14px}
+.bord{display:inline-flex;align-items:center;gap:10px;background:var(--ivoor);color:var(--marine);border:1.5px solid var(--goud);border-radius:12px;padding:8px 14px 8px 10px;box-shadow:0 4px 12px rgba(143,102,32,.12);position:relative;margin:0 0 14px}
 .bord::before,.bord::after{content:"";position:absolute;top:-10px;width:2px;height:10px;background:var(--goud)}
 .bord::before{left:18px}.bord::after{right:18px}
 .bord img{width:34px;height:34px;border-radius:50%}
-.bord h2{margin:0;font:700 19px/1.15 var(--k);color:#fff}
-.bord small{display:block;font:600 12.5px/1.2 var(--f);color:var(--lgoud)}
+.bord h2{margin:0;font:700 19px/1.15 var(--k);color:var(--marine)}
+.bord small{display:block;font:600 12.5px/1.2 var(--f);color:var(--dgoud)}
 .rek{position:relative}
 .rij{display:flex;align-items:flex-end;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-left)));padding:0 max(16px,env(safe-area-inset-left)) 0;-webkit-overflow-scrolling:touch}
 .rij::-webkit-scrollbar{display:none}
@@ -60,7 +60,7 @@ a{color:inherit}
 .prijs::before{content:"";position:absolute;left:5px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--muur);box-shadow:inset 0 0 0 1px var(--goud)}
 .naam{margin:6px 0 0;font-weight:700;font-size:13.5px;line-height:1.3;color:var(--tekst);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(2 * 1.3em);hyphens:manual}
 .verder{flex:0 0 120px;align-self:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:150px;margin:0 8px 0 4px;border:2px dashed var(--goud);border-radius:16px;text-decoration:none;font-weight:800;font-size:14px;color:var(--marine);text-align:center;padding:12px;background:rgba(255,252,247,.6)}
-.verder i{width:42px;height:42px;border-radius:50%;background:var(--marine);display:grid;place-items:center}
+.verder i{width:42px;height:42px;border-radius:50%;background:var(--goud);display:grid;place-items:center}
 .verder svg{width:20px;height:20px;stroke:var(--lgoud)}
 .veeg{font-size:13px;color:var(--zacht);margin:8px 0 0}
 @media (min-width:760px){.veeg{display:none}}
@@ -71,7 +71,7 @@ a{color:inherit}
 .eerlijk{font-size:13.5px;color:var(--zacht);margin:22px 0 0;text-align:center}
 .k-knop{background:var(--marine)!important}
 /* v2 (17-11-2026): bordjes 'voor wie' en prijskaartjes 'hoeveel', blijven bovenaan staan */
-.kies{position:sticky;top:0;z-index:20;background:rgba(243,236,223,.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--rand);padding:10px 0 8px}
+.kies{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--rand);padding:10px 0 8px}
 .kies .r{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px max(16px,env(safe-area-inset-right)) 2px max(16px,env(safe-area-inset-left));max-width:1180px;margin:0 auto}
 .kies .r::-webkit-scrollbar{display:none}
 .kies .r{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
@@ -82,8 +82,8 @@ a{color:inherit}
 .wie[aria-pressed="true"] span{color:var(--dgoud)}
 .tot{flex:0 0 auto;position:relative;min-height:36px;padding:0 12px 0 18px;margin-top:6px;background:var(--ivoor);border:1px solid var(--goud);border-radius:4px 10px 10px 4px;font-weight:800;font-size:14px;color:var(--marine);display:inline-flex;align-items:center;white-space:nowrap}
 .tot::before{content:"";position:absolute;left:6px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--muur);box-shadow:inset 0 0 0 1px var(--goud)}
-.tot[aria-pressed="true"]{background:var(--marine);color:var(--lgoud);border-color:var(--marine)}
-.tot[aria-pressed="true"]::before{background:var(--lgoud);box-shadow:none}
+.tot[aria-pressed="true"]{background:var(--lgoud);color:var(--marine);border-color:var(--goud)}
+.tot[aria-pressed="true"]::before{background:var(--marine);box-shadow:none}
 @media (min-width:760px){.kies .r{justify-content:center}}
 .winkel{display:block;margin-top:1px;font-size:12px;font-weight:600;color:var(--zacht)}
 .leeg{background:var(--ivoor);border:1px solid var(--rand);border-radius:16px;padding:20px;text-align:center;color:var(--zacht)}
