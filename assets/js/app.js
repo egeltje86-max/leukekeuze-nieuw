@@ -1333,6 +1333,8 @@
     ['Puzzeltocht', 'escape-rooms-puzzeltochten', 'puzzel-speurtochten', 'dk-4c68d47ad3'],
     ['Overnachten', 'dagjes-uit-overnachten', 'overnachten', 'dk-35d0e56982']];
   function belevenisBlok() {
+    /* 17-11-2026 (Marius: 'haal Belevenissen weg van de homepage'): het blok staat niet meer op de homepage. Weer aan: window.LK_BELEVENIS_HOME = true */
+    if (window.LK_BELEVENIS_HOME !== true) return '';
     var alle = LK.zichtbaar().filter(function (p) { return p.afd === 'belevenissen'; });
     if (alle.length < 6) return '';
     var min = function (l) { return l.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9); };

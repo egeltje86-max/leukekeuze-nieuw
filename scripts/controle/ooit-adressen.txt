@@ -560,6 +560,7 @@
 /c/speelgoed/buitenspeelgoed/
 /c/speelgoed/figuren-voertuigen/
 /c/speelgoed/hello-kitty/
+/c/speelgoed/hello-kitty/beauty/
 /c/speelgoed/hello-kitty/figuren/
 /c/speelgoed/hello-kitty/games-spellen/
 /c/speelgoed/hello-kitty/kamer/
@@ -597,8 +598,11 @@
 /c/speelgoed/leren-ontdekken/tiptoi-leersystemen/
 /c/speelgoed/muziek-karaoke/
 /c/speelgoed/one-piece-anime/
+/c/speelgoed/one-piece-anime/andere-anime/
 /c/speelgoed/one-piece-anime/demon-slayer/
 /c/speelgoed/one-piece-anime/dragon-ball/
+/c/speelgoed/one-piece-anime/ghibli/
+/c/speelgoed/one-piece-anime/jujutsu-kaisen/
 /c/speelgoed/one-piece-anime/naruto/
 /c/speelgoed/one-piece-anime/one-piece/
 /c/speelgoed/playmobil/
