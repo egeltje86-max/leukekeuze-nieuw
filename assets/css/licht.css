@@ -2759,3 +2759,7 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
   .srij .srij-item { flex: 0 0 104px; font-size: 14px; }
   .srij .srij-rond { width: 76px; height: 76px; }
 }
+/* Homepage: 'Of kies een categorie' (17-11-2026, Marius: 'je kan geen categorieën kiezen, ik kom er niet bij'): alle 15 als rondjes, vier naast elkaar. */
+.wzh-cat { padding-top: 4px; }
+.wzh-cat-kop { margin: 0 0 10px; font: 600 21px/1.25 'Playfair Display', Georgia, serif; color: #141A2A; }
+@media (min-width: 760px) { .wzh-cat .srij-baan { justify-content: flex-start; } }
