@@ -91,6 +91,8 @@
     if (p.p3 && sub === 'hello-kitty' && cat === 'speelgoed') return !vak || p.p3 === vak;
     /* KPOP DEMON HUNTERS-HOEK (17-11-2026): p4 = het vakje daar (scripts/boom/kpop.js). */
     if (p.p4 && sub === 'kpop-demon-hunters' && cat === 'speelgoed') return !vak || p.p4 === vak;
+    /* ONE PIECE & ANIME-HOEK (17-11-2026): p5 = het vakje van de serie (scripts/boom/anime.js). */
+    if (p.p5 && sub === 'one-piece-anime' && cat === 'speelgoed') return !vak || p.p5 === vak;
     var HZ = hbZoek(cat, sub), nc = HZ.nc, ns = HZ.ns;
     if (nc && p.afd && (!sub || (ns && ns.vakjes))) {
       if (cat === 'christelijk' && sub === 'onder-25') { /* valt hieronder */ }
