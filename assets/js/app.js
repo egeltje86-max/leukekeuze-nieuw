@@ -2788,6 +2788,8 @@
           '<span class="shop">' + esc(p.shop) + '</span>' +
           '<h1>' + esc(p.titel) + '</h1>' +
           '<div class="prijs">' + (prijsOud(p) ? '<span class="circa" title="prijs kan veranderd zijn">ca.</span> ' : '') + '<span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs && !prijsOud(p) ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+          /* 17-11-2026 (GO Marius): korting uit onze eigen prijsgeschiedenis; we zeggen eerlijk waar de doorgestreepte prijs vandaan komt. */
+          (p.laag30 && p.oudePrijs > p.prijs && !prijsOud(p) ? '<p class="laag30">Doorgestreept: de laagste prijs die wij in de 30 dagen vóór deze prijsdaling zagen.</p>' : '') +
           /* Stap 5 indeling (6-11-2026, plan deel 8): de knop direct onder de prijs, binnen het eerste scherm; kleur en maat eronder. */
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +

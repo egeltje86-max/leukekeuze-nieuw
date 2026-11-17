@@ -76,6 +76,10 @@ function splits() {
   try { const pk = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, 'top/picks.json'), 'utf8')); Object.keys(pk).forEach(k => { if (Array.isArray(pk[k])) pk[k].forEach(i => ETALAGE_IDS.add(i)); }); } catch (e) {}
   const eersteZin = t => { const m = String(t).match(/^[^.!?]{10,}[.!?]/); let z = (m ? m[0] : String(t)).trim(); if (z.length > 100) z = z.slice(0, 98).replace(/\s+\S*$/, '') + '…'; return z; };
   let nVanOud = 0;
+  /* 17-11-2026 (GO Marius): prijsgeschiedenis. Elke verse prijs van vandaag wordt genoteerd (scripts/prijs/historie.json);
+     is de prijs nu lager dan de laagste prijs van de 30 dagen ervoor, dan tonen we die laagste prijs als van-prijs (eerlijke deal, Omnibus). Zie scripts/prijs/historie.js. */
+  const HIST = require('./prijs/historie.js'); let H30 = null, nLaag30 = 0;
+  if (HIST.AAN) { const nNot = HIST.noteer(alle); H30 = HIST.lees(); console.log('prijsgeschiedenis: ' + nNot + ' verse prijzen genoteerd'); }
   for (const p of alle) {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
@@ -110,9 +114,11 @@ function splits() {
     /* 13-11-2026 (grote keuring, GO Marius): op de kaart in een lijst alleen een doorgestreepte prijs als de prijs vers is (hooguit 7 dagen oud,
        zelfde regel als prijsOud() in app.js). De productpagina toonde een oude korting al niet; nu de lijsten ook niet. Na een verse controle komt hij vanzelf terug. */
     if (l.oudePrijs) { const dd = p.gecontroleerd || p.sinds, t = Date.parse(dd || ''); if (!dd || !isFinite(t) || Date.now() - t > 7 * 864e5) { d.vanOud = l.oudePrijs; delete l.oudePrijs; nVanOud++; } } /* vanOud (in de details): de van-prijs blijft bewaard voor de nazorg (effectief-site.js), de site toont hem niet */
+    /* Eerlijke deal uit onze eigen prijsgeschiedenis, alleen als de winkel zelf geen van-prijs geeft. */
+    if (H30 && !l.oudePrijs && p.status === 'goedgekeurd' && !p.samengevoegd) { const dl = HIST.deal(H30, p.id, p.prijs); if (dl) { l.oudePrijs = dl.van; l.laag30 = 1; d.laag30 = dl; nLaag30++; } }
     lean.push(l); det[p.id] = d;
   }
-  console.log('korting niet in de lijst omdat de prijs ouder is dan 7 dagen: ' + nVanOud);
+  console.log('korting niet in de lijst omdat de prijs ouder is dan 7 dagen: ' + nVanOud + ' | deal uit eigen prijsgeschiedenis (lager dan de laagste prijs van 30 dagen): ' + nLaag30);
   /* Snelheid (31-10-2026): JSON.parse van een tekst is in browsers een stuk sneller dan het lezen van een JavaScript-object van 2,5 MB.
      De tekst staat tussen enkele quotes; alleen \ en ' hoeven dan ontsnapt te worden. */
   /* Lange woorden netjes afbreken op de telefoon (11-11-2026): alleen de woorden die nu in een titel staan gaan mee.

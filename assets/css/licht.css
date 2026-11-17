@@ -2707,3 +2707,5 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
    met 'Laat er nog 11 zien' en klein erachter hoeveel je er al ziet. Op een smalle telefoon gaat het kleine stukje netjes naar de tweede regel. */
 .meer-knop.groot .knop-rand { flex-wrap: wrap; align-items: center; column-gap: 6px; row-gap: 0; text-align: center; padding-top: 10px; padding-bottom: 10px; }
 .meer-knop.groot .knop-rand small { margin-left: 0; font-size: 14px; }
+/* LAAG30 (17-11-2026): uitleg onder de prijs bij een korting uit onze eigen prijsgeschiedenis */
+.laag30 { margin: 4px 0 10px; font-size: 14px; line-height: 1.4; color: #5B6072; }
