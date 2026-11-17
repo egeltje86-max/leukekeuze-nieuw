@@ -88,17 +88,59 @@ a{color:inherit}
 .winkel{display:block;margin-top:1px;font-size:12px;font-weight:600;color:var(--zacht)}
 .leeg{background:var(--ivoor);border:1px solid var(--rand);border-radius:16px;padding:20px;text-align:center;color:var(--zacht)}
 .leeg button{margin-top:10px;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--marine);color:#fff;font-weight:800}
+/* startpagina: kop, zoekbalk, menu, toonbank, onderbalk (17-11-2026) */
+body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+.kop{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff;padding:6px max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left));border-bottom:1px solid var(--rand)}
+.kop .ik{display:grid;place-items:center;width:44px;height:44px;border:0;background:none;color:var(--marine);border-radius:12px}
+.kop .ik svg{width:26px;height:26px}
+.kop .logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--marine);font:700 22px/1 var(--k)}
+.kop .logo .k{color:var(--goud)}
+.zoekbalk{display:flex;align-items:center;gap:10px;margin:10px max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));min-height:48px;padding:0 16px;background:#fff;border:1.5px solid var(--rand);border-radius:999px;box-shadow:0 2px 8px rgba(143,102,32,.06)}
+.zoekbalk svg{width:22px;height:22px;flex:0 0 auto;color:var(--dgoud)}
+.zoekbalk input{flex:1;min-width:0;border:0;outline:0;background:none;font:500 16px/1.2 var(--f);color:var(--tekst);padding:12px 0}
+.zoekbalk:focus-within{border-color:var(--goud)}
+@media (min-width:760px){.zoekbalk{max-width:640px;margin-left:auto;margin-right:auto}}
+.gevel.klein{padding-top:10px;padding-bottom:14px;margin-top:10px}
+.gevel.klein h1{font-size:clamp(24px,6.6vw,38px);margin:0 0 2px}
+.gevel.klein p{font-size:14.5px;line-height:1.35}
+.lade-scherm{position:fixed;inset:0;z-index:60;background:rgba(10,16,32,.35)}
+.lade{position:fixed;top:0;bottom:0;left:0;z-index:61;width:min(320px,86vw);background:#fff;padding:12px max(16px,env(safe-area-inset-left)) calc(20px + env(safe-area-inset-bottom,0px)) 16px;box-shadow:8px 0 30px rgba(10,16,32,.2);overflow-y:auto}
+.lade .dicht{display:grid;place-items:center;width:44px;height:44px;margin:0 0 6px auto;border:0;background:none;font-size:28px;color:var(--marine)}
+.lade a{display:flex;align-items:center;min-height:48px;padding:0 6px;border-bottom:1px solid var(--rand);text-decoration:none;color:var(--marine);font-weight:700;font-size:16.5px}
+.toonbank{margin:-10px 0 28px}
+.toonbank h3{margin:0 0 10px;font:800 12.5px/1.2 var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--dgoud)}
+.tb-r{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tb-r.een{grid-template-columns:1fr}
+.tb{display:flex;flex-direction:row;align-items:center;gap:10px;text-align:left;background:var(--ivoor);border:1.5px solid var(--goud);border-radius:14px;padding:10px 10px;text-decoration:none;color:var(--marine);box-shadow:0 4px 12px rgba(143,102,32,.10);min-width:0}
+.tb img{flex:0 0 auto;width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--lgoud);background:#fff}
+.tb span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tb b{font:700 16px/1.15 var(--k)}
+.tb small{font:500 12.5px/1.25 var(--f);color:var(--zacht)}
+.tb i{font-style:normal;font:800 12.5px/1.1 var(--f);color:var(--dgoud);margin-top:2px}
+.tb-r.een .tb{padding:12px 16px}
+@media (min-width:760px){.tb-r{max-width:640px}}
+@media (max-width:360px){.tb{gap:8px;padding:9px 8px}.tb img{width:38px;height:38px}.tb b{font-size:15px}}
+.onder{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--rand);padding:4px max(4px,env(safe-area-inset-right)) calc(4px + env(safe-area-inset-bottom,0px)) max(4px,env(safe-area-inset-left));box-shadow:0 -4px 14px rgba(10,16,32,.06)}
+.onder a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:52px;text-decoration:none;color:var(--zacht);font:700 12px/1.1 var(--f)}
+.onder a svg{width:24px;height:24px}
+.onder a.hier{color:var(--dgoud)}
+@media (min-width:1024px){.onder{display:none}body{padding-bottom:0}}
 </style>
 </head>
 <body>
 <div class="test">Testversie, alleen via deze link. <a href="/">Naar de gewone site</a></div>
-<header class="gevel"><a href="/">LeukeKeuze</a><h1>Het cadeauwinkeltje</h1><p>Loop rustig langs de planken. Zie je iets leuks? Tik erop.</p></header>
+<header class="kop"><button class="ik" type="button" id="menuknop" aria-label="Menu openen" aria-expanded="false" aria-controls="lade"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><a class="logo" href="/" aria-label="LeukeKeuze, naar de homepage"><img src="/assets/logo-icoon.svg" alt="" width="28" height="28"><span>Leuke<span class="k">Keuze</span></span></a><a class="ik" href="/favorieten" aria-label="Mijn lijstje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-8-4.6-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.6C20 15.4 12 20 12 20Z"/></svg></a></header>
+<form class="zoekbalk" action="/zoek" method="get" role="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input type="search" name="q" placeholder="Typ wat je zoekt, bijv. lego" aria-label="Zoeken in alle cadeaus" enterkeyhint="search"></form>
+<header class="gevel klein"><h1>Het cadeauwinkeltje</h1><p>Zie je iets leuks op de plank? Tik erop.</p></header>
+<div class="lade-scherm" id="ladescherm" hidden></div><nav class="lade" id="lade" aria-label="Menu" hidden><button class="dicht" type="button" id="ladedicht" aria-label="Menu sluiten">×</button><a href="/voor">Voor wie?</a><a href="/categorieen/">Zoek een product</a><a href="/gelegenheid">Gelegenheden</a><a href="/collectie/aanbiedingen">Acties</a><a href="/gids">Cadeaugidsen</a><a href="/lootjes-trekken/">Lootjes trekken</a><a href="/sint-rijmmachine/">Sint-gedicht maken</a><a href="/vonk">Kieshulp</a><a href="/favorieten">Mijn lijstje</a></nav>
 <nav class="kies" id="kies" aria-label="Voor wie en hoeveel"></nav>
 <main class="wrap">
+  <div id="toonbank"></div>
   <div id="planken"></div>
   <div class="uitgang"><h2>Niet gevonden wat je zocht?</h2><p>Typ gewoon wat je zoekt, of kies voor wie het is.</p><a href="/zoek">Zoeken in alle cadeaus</a></div>
   <p class="eerlijk">Prijzen komen van de winkels en kunnen net anders zijn als je bestelt. Bestellen doe je bij de winkel.</p>
 </main>
+<nav class="onder" aria-label="Snelmenu"><a class="hier" href="/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5.5v-6h-5v6H4Z"/></svg>Home</a><a href="/categorieen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Producten</a><a href="/vonk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 14.5 9.5"/><path d="m13 8 3 3"/><path d="M17 3.5v3M15.5 5h3M20 8.5v2M19 9.5h2M10 3v2M9 4h2"/><path d="M18.5 13.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6Z"/></svg>Kieshulp</a><a href="/favorieten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-8-4.6-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.6C20 15.4 12 20 12 20Z"/></svg>Lijstje</a></nav>
 <script src="/assets/js/data.js"></script>
 <script src="/assets/js/topkeuze.js"></script>
 <script src="/assets/js/producten-lean.js"></script>
@@ -258,7 +300,32 @@ a{color:inherit}
     var top = document.getElementById('planken').getBoundingClientRect().top + window.scrollY - document.getElementById('kies').offsetHeight - 10;
     if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
   });
-  leesHash(); teken();
+  /* toonbank: lootjes trekken en Sint-gedicht, alleen in het seizoen (17-11-2026) */
+  function toonbank() {
+    var el = document.getElementById('toonbank'); if (!el) return;
+    var dag = 864e5, j = NU.getFullYear(), vandaag = new Date(j, NU.getMonth(), NU.getDate());
+    var nS = Math.round((new Date(j, 11, 5) - vandaag) / dag), nK = Math.round((new Date(j, 11, 25) - vandaag) / dag);
+    var loot = { naar: '/lootjes-trekken/', ic: '/images/sub/rond/cad-sint-onder-15-klein.webp', b: 'Lootjes trekken', s: 'Gratis, via WhatsApp', i: 'Begin' };
+    var gedicht = { naar: '/sint-rijmmachine/', ic: '/images/banners/rijm-held-sint.webp', b: 'Sint‑gedicht maken', s: 'Klaar in een minuut', i: 'Maak er een' };
+    var kop = '', tegels = [];
+    if (MD >= 1015 && MD <= 1205) { kop = 'Sinterklaas · ' + (nS <= 0 ? 'vandaag is het pakjesavond' : 'nog ' + nS + (nS === 1 ? ' dag' : ' dagen')); tegels = [loot, gedicht]; }
+    else if (MD >= 1206 && MD <= 1224) { kop = 'Kerst · nog ' + nK + (nK === 1 ? ' dag' : ' dagen'); loot.ic = '/images/sub/rond/gel-kerst-klein.webp'; tegels = [loot]; }
+    if (!tegels.length) { el.innerHTML = ''; return; }
+    el.innerHTML = '<section class="toonbank"><h3>' + esc(kop) + '</h3><div class="tb-r' + (tegels.length === 1 ? ' een' : '') + '">' + tegels.map(function (t) {
+      return '<a class="tb" href="' + t.naar + '"><img src="' + t.ic + '" alt="" width="46" height="46"><span><b>' + esc(t.b) + '</b><small>' + esc(t.s) + '</small><i>' + esc(t.i) + ' →</i></span></a>';
+    }).join('') + '</div></section>';
+  }
+  /* menu (lade) */
+  (function () {
+    var knop = document.getElementById('menuknop'), lade = document.getElementById('lade'), scherm = document.getElementById('ladescherm'), dicht = document.getElementById('ladedicht');
+    if (!knop || !lade) return;
+    function zet(open) { lade.hidden = !open; scherm.hidden = !open; knop.setAttribute('aria-expanded', open ? 'true' : 'false'); if (open) dicht.focus(); }
+    knop.addEventListener('click', function () { zet(true); });
+    dicht.addEventListener('click', function () { zet(false); });
+    scherm.addEventListener('click', function () { zet(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lade.hidden) zet(false); });
+  })();
+  toonbank(); leesHash(); teken();
 })();
 </script>
 </body>
