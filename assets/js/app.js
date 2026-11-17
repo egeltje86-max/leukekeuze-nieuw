@@ -3879,6 +3879,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '17 november', kop: 'Gespot bij Ditverzinjeniet: alles onder € 15', tekst: 'Een fopspeen met een snor, een katje dat je munten steelt en een nepsteen voor je reservesleutel.', ids: ['dvzn-58068de5fa', 'dvzn-6791', 'dvzn-48bcf6ed40', 'dvzn-726291', 'dvzn-22f0aff1dc'] },
     { datum: '17 november', kop: 'Gespot bij HEMA: alles onder € 15', tekst: 'Van een geurkaars in een peperkoekmannetje tot een Nijntje-fondue en een kat die je handen warm houdt.', ids: ['hema-36f500cd52', 'hema-e8aced2a21', 'hema-9c923e1a87', 'hema-32d780c657', 'hema-b059bba7b0'] },
     { datum: '16 november', kop: 'Lootje getrokken? 10 nieuwe cadeaus', tekst: 'Net nieuw op de site: van een Pikachu-mok en een kluis-spaarpot tot een paraplu in een whiskyfles.', ids: ['nedg-4c81f01c66', 'bigsiz-4e5500270d', 'cadeau-b636db132b', 'gadget-7e31d86ce4', 'cadeau-bb87e54fa2', 'cadeau-c3439f355f', 'dvzn-cce4b58a90', 'cadeau-13138252a6', 'nedg-aa85125d5b', 'cadeau-c6c97ade65'] },
     { datum: '16 november', kop: 'Te mooi om aan te steken: 6 kaarsen met lef', tekst: 'Van een smeltend hart en een torso-kaars voor hem en haar tot cocktails die je niet kunt drinken.', ids: ['megaga-6067071002', 'sissyb-5747d02176', 'ww-f8f6d12ecc', 'ww-fa986cf0c1', 'hema-2d64a8f6d4', 'joybuy-6516355e12', 'tt-dvzn-a93ae6dedc'] },
