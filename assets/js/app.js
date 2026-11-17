@@ -505,7 +505,13 @@
     if (knopTekst) return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
       '<div class="meer-knop' + (auto ? ' groot' : '') + '"><button class="knop knop-rand" type="button" data-meer="' + k + '"' + (auto ? ' data-auto="' + auto + '"' : '') + '>' + knopTekst + '</button></div>';
     return '<div class="prodgrid" data-meer-grid="' + k + '">' + lijst.slice(0, per).map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div>' +
-      '<div class="meer-knop"><button class="knop knop-rand" type="button" data-meer="' + k + '">Toon meer <small>(' + per + ' van ' + getal(lijst.length) + ')</small></button></div>';
+      '<div class="meer-knop groot"><button class="knop knop-rand" type="button" data-meer="' + k + '">' + meerTekst(per, lijst.length, per) + '</button></div>';
+  }
+  /* 17-11-2026 (Marius: 'Toon meer moet duidelijker'): marineblauwe knop over de hele breedte (zoals op de Voor wie-pagina's)
+     en een tekst die zegt wat er gebeurt: 'Laat er nog 11 zien', met klein eronder hoeveel je er al ziet. */
+  function meerTekst(getoond, totaal, per) {
+    var nog = Math.min(per, totaal - getoond);
+    return 'Laat er nog ' + getal(nog) + ' zien <small>(' + getal(getoond) + ' van ' + getal(totaal) + ')</small>';
   }
   /* ===== PRIJSSCHUIF (16-11-2026, GO Marius: 'die prijsbalk die je gisteren had bedacht, blauw met goud; dan zien de klanten alle producten
      vlug achter elkaar, de producten veranderen zonder dat ze echt hoeven te scrollen').
@@ -658,7 +664,7 @@
       m.getoond = tot;
     }
     var knop = $('[data-meer="' + k + '"]', waar);
-    if (knop) { if (tot >= m.lijst.length) knop.parentNode.remove(); else if (!m.tekst) knop.innerHTML = 'Toon meer <small>(' + tot + ' van ' + getal(m.lijst.length) + ')</small>'; }
+    if (knop) { if (tot >= m.lijst.length) knop.parentNode.remove(); else if (!m.tekst) knop.innerHTML = meerTekst(tot, m.lijst.length, m.per); }
   }
   /* Keuzes bovenaan een lijstpagina (stap 3 indeling): een vast raster van rondjes dat omloopt, 4 per rij op een telefoon.
      Meer dan 8? Dan staan de eerste 8 in beeld en de rest achter één knop 'Meer'. Geen schuifrijen meer: op een telefoon zag je alleen wat vooraan stond. */
