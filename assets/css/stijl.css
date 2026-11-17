@@ -185,7 +185,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
   font: 600 13px/1 var(--f-ui); color: var(--tekst); background: rgba(10,16,32,.35); white-space: nowrap;
 }
 .chip:hover { border-color: var(--lijn-sterk); color: var(--goud-licht); }
-.chip[aria-pressed="true"], .chip.actief { background: var(--goud-verloop); color: var(--navy); border-color: transparent; }
+.chip:is([aria-pressed="true"],[aria-current="true"]), .chip.actief { background: var(--goud-verloop); color: var(--navy); border-color: transparent; }
 @media (min-width: 1024px) { .chips { flex-wrap: wrap; overflow: visible; padding: 2px 0; margin: 0; } }
 
 /* ---------- Zoekveld ---------- */
@@ -320,7 +320,7 @@ body.lade-open .lade-bg { opacity: 1; pointer-events: auto; }
 
 /* ---------- Tabs ---------- */
 .tabs { margin-bottom: 16px; }
-.tabs .chip:not([aria-pressed="true"]) { background: transparent; }
+.tabs .chip:not([aria-pressed="true"]):not([aria-current="true"]) { background: transparent; }
 
 /* ---------- Productkaarten ---------- */
 .prodgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }

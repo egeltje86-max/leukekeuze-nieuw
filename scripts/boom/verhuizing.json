@@ -143,7 +143,7 @@
     "groepen": [
      { "slug": "hond", "naam": "Hond", "weg": ["riemen-halsbanden"], "uit": ["dieren/hond"] },
      { "slug": "kat", "naam": "Kat", "uit": ["dieren/kat"] },
-     { "slug": "andere-dieren", "naam": "Andere dieren", "weg": ["reptielen-terrarium", "aquarium", "kippen", "vogels"], "uit": ["dieren/klein-dier", "dieren/paard", "dieren/vogels-vissen"],
+     { "slug": "andere-dieren", "naam": "Andere dieren", "weg": ["reptielen-terrarium", "aquarium", "kippen", "vogels"], "wegNaar": {"vogels": "/c/tuin-klussen/tuin-planten/vogelhuisjes-insectenhotels"}, "uit": ["dieren/klein-dier", "dieren/paard", "dieren/vogels-vissen"],
        "tekst": "Voor konijnen en knaagdieren, kippen, reptielen, vogels en vissen, en voor wie paardrijdt.", "seoTitel": "Andere dieren – konijn, kippen, reptielen, vogels, vissen en paard" }
     ] },
   { "slug": "belevenissen", "naam": "Belevenissen", "kort": "Belevenissen",

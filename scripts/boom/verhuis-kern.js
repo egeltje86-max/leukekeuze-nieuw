@@ -11,7 +11,7 @@ function LK_VERHUIS(L, T) {
   for (i = 0; i < L.length; i++) if (!L[i].verborgen) zicht[L[i].slug] = L[i];
   function oudSub(a, g) { var c = zicht[a], s = c ? c.subs || [] : []; for (var k = 0; k < s.length; k++) if (s[k].slug === g && !s[k].verborgen && s[k].vakjes) return s[k]; return null; }
   function kopie(o, niet) { var n = {}; for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k) && niet.indexOf(k) === -1) n[k] = o[k]; return n; }
-  var uit = { cats: [], pad: {}, vak: {}, groep: {}, terug: {} }, nieuweAfd = {}, bezet = {}, doelVanGroep = {}, erfVan = {};
+  var uit = { cats: [], pad: {}, vak: {}, groep: {}, terug: {} }, nieuweAfd = {}, bezet = {}, doelVanGroep = {}, erfVan = {}, wegVak = {};
   /* 1. de nieuwe afdelingen en groepen opbouwen uit de oude vakjes */
   T.forEach(function (A) {
     var oud = zicht[A.slug], bron = oud || zicht[A.van] || {};
@@ -37,7 +37,8 @@ function LK_VERHUIS(L, T) {
         if (u.alsVak) s.vakjes.push({ slug: u.alsVak.slug, naam: u.alsVak.naam, beeld: os.beeld });
         vv.forEach(function (v) {
           var nv = u.alsVak ? u.alsVak.slug : v.slug, ok = d[0] + '/' + d[1] + '/' + v.slug;
-          if (!u.alsVak && !(G.weg && G.weg.indexOf(nv) !== -1)) s.vakjes.push(v); /* 17-11-2026: 'weg' = vakje uit het menu (geen echte cadeaus); de producten blijven in de groep */
+          if (!u.alsVak && !(G.weg && G.weg.indexOf(nv) !== -1)) s.vakjes.push(v);
+          if (G.weg && G.weg.indexOf(nv) !== -1) wegVak[A.slug + '/' + G.slug + '/' + nv] = (G.wegNaar && G.wegNaar[nv]) || ('/c/' + A.slug + '/' + G.slug); /* 17-11-2026: 'weg' = vakje uit het menu (geen echte cadeaus); de producten blijven in de groep */
           uit.vak[ok] = [A.slug, G.slug, nv];
           (doelVanGroep[d[0] + '/' + d[1]] = doelVanGroep[d[0] + '/' + d[1]] || []).push([A.slug, G.slug, nv]);
           bezet[ok] = 1;
@@ -57,7 +58,8 @@ function LK_VERHUIS(L, T) {
     if (!zelfde) uit.groep[ok] = hoofd || [doelen[0][0], doelen[0][1]];
     os.vakjes.forEach(function (v) {
       var x = uit.vak[ok + '/' + v.slug]; if (!x) return;
-      if (x[0] !== d[0] || x[1] !== d[1] || x[2] !== v.slug) { uit.pad['/c/' + ok + '/' + v.slug] = '/c/' + x.join('/'); uit.terug[x.join('/')] = ok + '/' + v.slug; }
+      if (wegVak[x.join('/')]) { uit.pad['/c/' + ok + '/' + v.slug] = wegVak[x.join('/')]; uit.pad['/c/' + x.join('/')] = wegVak[x.join('/')]; uit.terug[x.join('/')] = ok + '/' + v.slug; } /* 17-11-2026: vakje 'weg' = oud adres naar de groep */
+      else if (x[0] !== d[0] || x[1] !== d[1] || x[2] !== v.slug) { uit.pad['/c/' + ok + '/' + v.slug] = '/c/' + x.join('/'); uit.terug[x.join('/')] = ok + '/' + v.slug; }
     });
     if (zelfde) return;
     var naar = hoofd ? '/c/' + hoofd.join('/') : '/c/' + doelen[0][0];

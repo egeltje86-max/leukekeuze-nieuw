@@ -891,7 +891,7 @@
       if (n !== null && n < MIN_KNOP && huidig !== p.id) return '';
       if (n !== null) echt.push(n);
       var nq = Object.assign({}, q, { prijs: p.id });
-      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + (huidig === p.id) + '">' + p.label + chipTal(n) + '</a>';
+      return '<a class="chip" href="' + maakAdres(pad, nq) + '"' + (((huidig === p.id)) ? ' aria-current="true"' : '') + '>' + p.label + chipTal(n) + '</a>';
     }).join('');
     if (TEL && huidig === 'alle' && !filterNut(echt, telKeuze(q, 'prijs', ''))) return '';
     return '<div class="chips" role="group" aria-label="Budget">' + html + '</div>';
@@ -905,7 +905,7 @@
       if (n !== null && n < MIN_KNOP && huidig !== v[0]) return '';
       if (n !== null) echt.push(n);
       var nq = Object.assign({}, q, { voor: v[0] });
-      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + (huidig === v[0]) + '">' + v[1] + chipTal(n) + '</a>';
+      return '<a class="chip" href="' + maakAdres(pad, nq) + '"' + (((huidig === v[0])) ? ' aria-current="true"' : '') + '>' + v[1] + chipTal(n) + '</a>';
     }).join('');
     if (TEL && !huidig && !filterNut(echt, telKeuze(q, 'voor', ''))) return '';
     return '<div class="chips voor-chips" role="group" aria-label="Voor wie">' + html + '</div>';
@@ -924,7 +924,7 @@
         var n = o[0] && TEL ? TEL(nq) : null;
         if (n !== null && n < MIN_KNOP && huidig !== o[0]) return '';
         if (n !== null) echt.push(n);
-        return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + (huidig === o[0]) + '">' + esc(o[1]) + chipTal(n) + '</a>';
+        return '<a class="chip" href="' + maakAdres(pad, nq) + '"' + (((huidig === o[0])) ? ' aria-current="true"' : '') + '>' + esc(o[1]) + chipTal(n) + '</a>';
       }).join('');
     if (TEL && !huidig && !filterNut(echt, telKeuze(q, k.param, ''))) return '';
     return '<div class="chips knop-chips" role="group" aria-label="' + esc(k.titel) + '">' + html + '</div>';
@@ -983,12 +983,12 @@
       var aan = huidig.toLowerCase() === w.toLowerCase();
       if (n < MIN_KNOP && !aan) return '';
       echt.push(n);
-      return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + aan + '">' + esc(w) + chipTal(n) + '</a>';
+      return '<a class="chip" href="' + maakAdres(pad, nq) + '"' + ((aan) ? ' aria-current="true"' : '') + '>' + esc(w) + chipTal(n) + '</a>';
     }).join('');
     var zonder = Object.assign({}, q); delete zonder[sleutel];
     if (!huidig && !filterNut(echt, TEL(zonder))) return '';
     return '<div class="knop-groep"><div class="chips-titel">' + titel + '</div><div class="chips knop-chips" role="group" aria-label="' + titel + '">' +
-      '<a class="chip" href="' + maakAdres(pad, zonder) + '" aria-pressed="' + !huidig + '">Alles</a>' + html + '</div></div>';
+      '<a class="chip" href="' + maakAdres(pad, zonder) + '"' + ((!huidig) ? ' aria-current="true"' : '') + '>Alles</a>' + html + '</div></div>';
   }
   /* 9-11-2026 (wens Marius): "niemand kijkt naar de winkels, ze kijken naar het product". Geen filter Winkel meer, wel Soort
      (whisky, wodka, gin …): de naam van het vakje waar het product in staat. Oude links met ?winkel= blijven werken. */
@@ -1261,7 +1261,7 @@
           merkWinkelChips(pad, q).replace(/<div class="knop-groep"><div class="chips-titel">([^<]+)<\/div><div class="chips knop-chips"/g, '<h3>$1</h3><div class="chips filter-chips"').replace(/<\/div><\/div>/g, '</div>') +
           (prijsChips(pad, q) ? '<h3>Budget</h3>' + prijsChips(pad, q).replace('class="chips"', 'class="chips filter-chips"') : '') +
           (sorteerOpties ? '<h3>Sorteren</h3><div class="chips filter-chips">' + sorteerOpties.map(function (o) {
-            return '<a class="chip" href="' + maakAdres(pad, Object.assign({}, q, { sort: o[0] === 'aanbevolen' ? '' : o[0] })) + '" aria-pressed="' + ((q.sort || 'aanbevolen') === o[0]) + '">' + o[1] + '</a>';
+            return '<a class="chip" href="' + maakAdres(pad, Object.assign({}, q, { sort: o[0] === 'aanbevolen' ? '' : o[0] })) + '"' + ((((q.sort || 'aanbevolen') === o[0])) ? ' aria-current="true"' : '') + '>' + o[1] + '</a>';
           }).join('') + '</div>' : '') +
           /* 5-11-2026 (wens Marius): het paneel blijft open bij elke keuze; met deze knop sluit je het en zie je de producten. */
           '<div class="filter-voet"><a class="knop knop-rand" href="' + maakAdres(pad, {}) + '">Wissen</a>' +
@@ -2404,19 +2404,19 @@
         var hier = q.prijs === p.id, n = alles.filter(function (x) { return binnenPrijs(x, p.id); }).length;
         if (n < MIN_KNOP && !hier) return '';
         var mt = q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {};
-        return '<a class="chip" href="' + maakAdres(pad, hier ? mt : Object.assign({ prijs: p.id }, mt)) + '" aria-pressed="' + hier + '">' + p.label + '</a>';
+        return '<a class="chip" href="' + maakAdres(pad, hier ? mt : Object.assign({ prijs: p.id }, mt)) + '"' + ((hier) ? ' aria-current="true"' : '') + '>' + p.label + '</a>';
       }).join('');
       var wzLeeftijd = !wzLft ? '' : wzLft.opties.map(function (o) {
         var hier = q.leeftijd === o[0], n = TEL(Object.assign({}, q, { leeftijd: o[0] }));
         if (n < MIN_KNOP && !hier) return '';
         var nq = q.prijs && q.prijs !== 'alle' ? { prijs: q.prijs } : {}; if (!hier) nq.leeftijd = o[0];
-        return '<a class="chip" href="' + maakAdres(pad, nq) + '" aria-pressed="' + hier + '">' + esc(o[1]) + '</a>';
+        return '<a class="chip" href="' + maakAdres(pad, nq) + '"' + ((hier) ? ' aria-current="true"' : '') + '>' + esc(o[1]) + '</a>';
       }).join('');
       /* Volgorde van de onderwerpen: eerst waar het meest naar gezocht wordt (de 'top' van de onderwerpkaarten), dan de rest. */
       var wzTop = ((SLIM['/voor/' + pe.slug] || {}).top || []), wzPlek = function (x) { var i = wzTop.indexOf(x.slug); return i === -1 ? (x.slug === 'sieraden' ? 999 : 99) : i; };
       var wzSubs = volleSubsP.slice().sort(function (u, v) { return wzPlek(u) - wzPlek(v); }).map(function (x) {
         var hier = !!(s && s.slug === x.slug);
-        return '<a class="chip" href="' + metBudget(hier ? '/voor/' + pe.slug : '/voor/' + pe.slug + '/' + x.slug) + '" aria-pressed="' + hier + '"' + (hier ? ' data-wz-hier' : '') + '>' + esc(x.naam) + '</a>';
+        return '<a class="chip" href="' + metBudget(hier ? '/voor/' + pe.slug : '/voor/' + pe.slug + '/' + x.slug) + '"' + (hier ? ' aria-current="true" data-wz-hier' : '') + '>' + esc(x.naam) + '</a>';
       }).join('');
       /* RUST: eerst de zes onderwerpen waar het meest naar gezocht wordt, de rest achter 'Meer onderwerpen' (staat het gekozen onderwerp verder, dan meteen alles open) */
       var wzRolOpen = '';
@@ -3432,7 +3432,7 @@
   function merkNorm(m) { m = (m || '').trim(); return MERK_NORM[m.toLowerCase()] || m; }
   function merkChip(pad, zonder, m, n, huidig) {
     var aan = huidig.toLowerCase() === m.toLowerCase();
-    return '<a class="chip" data-merk="' + esc(m) + '" href="' + maakAdres(pad, Object.assign({}, zonder, { merk: m })) + '" aria-pressed="' + aan + '">' + esc(m) + ' <span class="mz-tal">' + n + '</span></a>';
+    return '<a class="chip" data-merk="' + esc(m) + '" href="' + maakAdres(pad, Object.assign({}, zonder, { merk: m })) + '"' + ((aan) ? ' aria-current="true"' : '') + '>' + esc(m) + ' <span class="mz-tal">' + n + '</span></a>';
   }
   function merkZoeker(pad, q, basis, sleutel) {
     var tel = {}; basis.forEach(function (p) { var m = merkNorm(merkVan(p)); if (m) tel[m] = (tel[m] || 0) + 1; });
@@ -4763,7 +4763,7 @@
       var chipRij = function (opties, sl, huidig, extra) {
         return '<div class="chips filter-chips">' + opties.map(function (o) {
           var w = {}; w[sl] = huidig === o.id && sl === 'hobby' ? null : o.id; Object.assign(w, extra || {});
-          return '<a class="chip" href="' + adres(w) + '" aria-pressed="' + (huidig === o.id) + '">' + esc(o.label) + '</a>';
+          return '<a class="chip" href="' + adres(w) + '"' + (((huidig === o.id)) ? ' aria-current="true"' : '') + '>' + esc(o.label) + '</a>';
         }).join('') + '</div>';
       };
       var eigenB = q.budget && !BUDGET.some(function (o) { return o.id === q.budget; }) ? [{ id: q.budget, label: prijsFilter(q.budget).label }] : [];
@@ -6874,7 +6874,7 @@
   function openLade() {
     laatsteFocus = document.activeElement;
     document.body.classList.add('lade-open');
-    $('#lade').setAttribute('aria-hidden', 'false');
+    $('#lade').setAttribute('aria-hidden', 'false'); $('#lade').removeAttribute('inert');
     $$('.menuknop').forEach(function (b) { b.setAttribute('aria-expanded', 'true'); });
     setTimeout(function () { var b = $('.lade [data-sluit-lade]'); if (b) b.focus(); }, 60);
     /* extra stap in de geschiedenis: de terugknop van de telefoon sluit dan eerst het menu */
@@ -6883,7 +6883,7 @@
   function sluitLade() {
     if (!document.body.classList.contains('lade-open')) return;
     document.body.classList.remove('lade-open');
-    $('#lade').setAttribute('aria-hidden', 'true');
+    $('#lade').setAttribute('aria-hidden', 'true'); $('#lade').setAttribute('inert', '');
     $$('.menuknop').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
     if (laatsteFocus && document.contains(laatsteFocus)) laatsteFocus.focus();
     /* menu met de hand gesloten: de extra geschiedenis-stap weer weghalen */

@@ -28,10 +28,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=204753731197506" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=40821764227774" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
-  <link rel="stylesheet" href="assets/css/licht.css?v=50036746444451">
+  <link rel="preload" as="script" href="assets/js/app.js?v=165574515651252" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=153101428498755" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
+  <link rel="stylesheet" href="assets/css/licht.css?v=101950934650840">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=156977359869079", t = "assets/js/topkeuze.js?v=183251673665806";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=156977359869079", t = "assets/js/topkeuze.js?v=247518709862173";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -79,7 +79,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <a class="aftel aftel-sint" href="/c/cadeaus/sinterklaas/" data-aftel="" aria-label="Nog 18 dagen tot pakjesavond. Bekijk de Sinterklaascadeaus"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">18</span> dagen tot pakjesavond</span><span class="aftel-knop">Sinterklaascadeaus →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
+  <a class="aftel aftel-sint" href="/c/cadeaus/sinterklaas/" data-aftel="" aria-label="Nog 17 dagen tot pakjesavond. Bekijk de Sinterklaascadeaus"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">17</span> dagen tot pakjesavond</span><span class="aftel-knop">Sinterklaascadeaus →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
 
   <div class="topbalk">
     <div class="binnen">
@@ -192,7 +192,7 @@
       for (i = 0; i < l.length; i++) { t = l[i].lastChild; if (t && t.nodeType === 3 && /VONK/.test(t.nodeValue)) t.nodeValue = 'Kieshulp'; } } } catch (e) {} })();</script>
 
   <div class="lade-bg" data-sluit-lade></div>
-  <aside class="lade" id="lade" aria-label="Categorieën" aria-hidden="true">
+  <aside class="lade" id="lade" aria-label="Categorieën" aria-hidden="true" inert>
     <div class="lade-kop">
       <span class="lade-titel">Ontdek LeukeKeuze</span>
       <button class="icoonknop" type="button" data-sluit-lade aria-label="Menu sluiten"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
@@ -208,10 +208,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"cl-rt-chocolate":{"url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frobotime-sweet-chocolate-shop-rolife-diy-miniature-house-series-ds046-miniatuur-bouwpakket-cadeautip-modelbouw%2F9300000264838851%2F","subVast":true,"wil":65,"waarom":"Klein winkeltje met piepkleine chocolaatjes."}};</script>
-  <script src="assets/js/data.js?v=40821764227774"></script>
+  <script src="assets/js/data.js?v=153101428498755"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=201194907520150"></script>
-  <script src="assets/js/app.js?v=204753731197506"></script>
+  <script src="assets/js/app.js?v=165574515651252"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
