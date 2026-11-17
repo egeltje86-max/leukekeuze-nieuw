@@ -32,7 +32,7 @@
   <link rel="preload" as="script" href="assets/js/app.js?v=101160107556641" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=49386735864492" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
-  <link rel="stylesheet" href="assets/css/licht.css?v=254927289786859">
+  <link rel="stylesheet" href="assets/css/licht.css?v=186110433868656">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -42,8 +42,8 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>window.LK_PAKPAD="assets/pak/voor--kinderen--knutselen.js?v=43776667556612";</script>
-  <script>(function () { var s = "assets/js/producten-lean.js?v=268407934562052", t = "assets/js/topkeuze.js?v=183251673665806";
+  <script>window.LK_PAKPAD="assets/pak/voor--kinderen--knutselen.js?v=159138548823385";</script>
+  <script>(function () { var s = "assets/js/producten-lean.js?v=62124857342979", t = "assets/js/topkeuze.js?v=183251673665806";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
