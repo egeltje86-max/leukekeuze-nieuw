@@ -262,6 +262,18 @@
       return localStorage.getItem('lkmix') === '1';
     } catch (e) { return false; }
   })();
+  /* STRAK (live 17-11-2026, keuze Marius 'Mix: B en A' na voorbeeld; aanleiding: 'het is een doolhof', 'dingen staan verstopt'): op de
+     categoriepagina's staan de soorten niet meer als grote tegels in drie rijen met 'Bekijk alle onderwerpen', maar klein en allemaal zichtbaar:
+     op een afdeling en een groep vier kleine rondjes naast elkaar (raster), op een vakje één rij om opzij te vegen, zodat de cadeaus op het
+     eerste telefoonscherm staan. Geldt voor iedereen, ook voor de bouw en zoekmachines (dus geen verspringen). Zelf de oude opzet bekijken:
+     ?proef=strak-uit (weer aan: ?proef=strak); helemaal uit: window.LK_STRAK = false. Code: soortRij() en het blok 'STRAK' in categorie(). */
+  var STRAK = window.LK_STRAK !== false && (function () {
+    try {
+      var m = /[?&]proef=strak(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.setItem('lkstrak', 'uit'); else localStorage.removeItem('lkstrak'); }
+      return localStorage.getItem('lkstrak') !== 'uit';
+    } catch (e) { return true; }
+  })();
   /* 17-11-2026 (nachtcontrole): grove grappen (mok 'Bakkie pleur op', middelvinger-paraplu) schuiven in de proef niet naar voren, behalve bij Grappige cadeaus */
   var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
   function zkMix(p, sleutel) { return MIX && p.zk && (!GROF_T.test(p.titel || '') || /grappig/.test(sleutel || '')); }
@@ -808,6 +820,25 @@
   function slimVast(pad) {
     var cfg = SLIM[pad]; if (!cfg || !cfg.vast) return '';
     return slimNav(cfg.vast.map(function (x) { return { id: x[0], naam: x[1], naar: x[2], icoon: x[3], beeld: x[4] || (NOVA1 ? padBeeld(x[2]) : '') }; }), { titel: cfg.titel, top: cfg.vast.slice(0, 6).map(function (x) { return x[0]; }) });
+  }
+  /* STRAK: de soorten van een categoriepagina als kleine rondjes met de naam eronder (zie STRAK bovenaan). vorm 'raster' = vier naast elkaar,
+     alles in beeld; 'rij' = één rij om opzij te vegen. Op een vakje staat 'Alles' (de groep) eerst en het vakje waar je bent direct daarna, zodat je het zonder vegen ziet. */
+  function soortRij(items, cfg, label, vorm) {
+    if (!items || items.length < 2) return '';
+    cfg = cfg || {};
+    var voor = [], rest = items.filter(function (x) { return !x.alles && !x.actief; });
+    items.forEach(function (x) { if (x.alles) voor.push(x); });
+    items.forEach(function (x) { if (x.actief) voor.push(x); });
+    var top = [];
+    (cfg.top || []).forEach(function (k) { var i = rest.map(function (x) { return x.id; }).indexOf(k); if (i !== -1) top.push(rest.splice(i, 1)[0]); });
+    rest.sort(function (a, b) { return (b.n || 0) - (a.n || 0); });
+    var af = function (t) { return String(t).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }); };
+    return '<nav class="srij srij-' + (vorm === 'rij' ? 'rij' : 'raster') + '" aria-label="' + esc(label || 'Soorten') + '"><div class="srij-baan">' + voor.concat(top, rest).map(function (x) {
+      var b = rondjeVan(x.beeld);
+      return '<a class="srij-item' + (x.actief ? ' actief' : '') + (x.alles ? ' alles' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
+        '<span class="srij-rond" aria-hidden="true">' + (x.alles ? '<span class="srij-ico">' + ic('raster') + '</span>' : b ? '<img src="' + esc(kleinBeeld(b)) + '" alt="" loading="lazy" decoding="async" width="64" height="64">' : '<span class="srij-ico">' + (x.icoon || slimIco(x.naam)) + '</span>') + '</span>' +
+        '<span class="srij-naam">' + af(esc(x.naam)) + '</span></a>';
+    }).join('') + '</div></nav>';
   }
   /* Onderaan elke lijstpagina: verder kijken als tekstlinks (geen rij met plaatjes die je voorbij moet schuiven). */
   function tekstLinks(kop, links) {
@@ -2081,7 +2112,7 @@
     /* Snelheid (8-11-2026, GO Marius): de vage achtergrond is het grootste beeld bovenaan (LCP). Hij wordt toch vervaagd, dus de kleine versie (-klein) is genoeg; en hij krijgt voorrang. */
     else if (o.vaag) achter = '<div class="achter vaag"><img src="' + esc(kleinBeeld(o.vaag)) + '" alt="" fetchpriority="high" decoding="async"></div>';
     return '<section class="paginakop' + (achter ? '' : ' zonder') + (o.donker ? ' donker' : '') + (o.klasse ? ' ' + o.klasse : '') + '">' + achter +
-      '<div class="binnen">' + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p class="intro' + (o.tekst.length > 110 ? ' lang' : '') + '">' + esc(o.tekst) + '</p>' + (o.tekst.length > 110 ? '<button type="button" class="intro-meer" data-intro-meer aria-expanded="false">Lees meer</button>' : '') : '') + (o.naHtml || '') + '</div></section>';
+      '<div class="binnen">' + (o.terug ? '<nav class="kruimel-kort" aria-label="Terug"><a href="' + esc(o.terug.naar) + '">\u2039 ' + esc(o.terug.tekst) + '</a></nav>' : '') + kruimel(o.kruimel || []) + '<h1>' + esc(o.titel) + '</h1>' + (o.tekst ? '<p class="intro' + (o.tekst.length > 110 ? ' lang' : '') + '">' + esc(o.tekst) + '</p>' + (o.tekst.length > 110 ? '<button type="button" class="intro-meer" data-intro-meer aria-expanded="false">Lees meer</button>' : '') : '') + (o.naHtml || '') + '</div></section>';
   }
   /* Eerste scherm op de telefoon (8-11-2026, Fable P1-6): een lange intro laat eerst 2 regels zien; tik op 'Lees meer' voor de rest. */
   document.addEventListener('click', function (e) {
@@ -2162,6 +2193,16 @@
       }), SLIM['/c/' + c.slug + '/' + s.slug] || { titel: 'Soorten ' + s.naam.toLowerCase() }, 'Soorten in ' + s.naam);
       else subs = '';
     }
+    /* STRAK: kleine rondjes in plaats van de grote tegels. Afdeling en groep: raster (alles in beeld). Vakje: rij om te vegen met 'Alles' (de groep)
+       en het vakje waar je bent vooraan. Seizoenspagina's met vaste tegels (Sinterklaas, Kerst) blijven zoals ze zijn. */
+    if (STRAK && !(SLIM[pad] && SLIM[pad].vast)) {
+      if (!s) subs = soortRij(groepen.map(function (x) { var l = LK.zichtbaar().filter(function (p) { return LK.hoortBij(p, c.slug, x.slug); }); return { id: x.slug, naam: x.naam, beeld: x.beeld || beeldUit(l), naar: metBudget(subAdres(c, x)), n: l.length }; }),
+        SLIM[pad], 'Groepen in ' + c.naam, 'raster');
+      else if (volleVakjes.length > 1) subs = soortRij((v ? [{ id: '_alles', alles: true, naam: 'Alles', naar: metBudget('/c/' + c.slug + '/' + s.slug) }] : []).concat(volleVakjes.map(function (x) {
+        var l = inGroep.filter(function (p) { return p.vak === x.slug; });
+        return { id: x.slug, naam: x.naam, beeld: x.beeld || beeldUit(l), naar: metBudget('/c/' + c.slug + '/' + s.slug + '/' + x.slug), actief: !!(v && v.slug === x.slug), n: l.length };
+      })), SLIM['/c/' + c.slug + '/' + s.slug], 'Soorten in ' + s.naam, v ? 'rij' : 'raster');
+    }
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     var werkbalk = '<div class="werkbalk">' + mobielBalk(pad, q, knoppen, sorteerOpties) + filterLabels(pad, q, knoppen) + (knoppen.length ? knopChips(pad, q, knoppen) : (c.slug !== 'christelijk' && c.slug !== 'noodpakket-survival') ? voorChips(pad, q) : '') + merkWinkelChips(pad, q) + prijsChips(pad, q) +
       '<div class="werkbalk-onder"><span class="aantal">' + getal(lijst.length) + (lijst.length === 1 ? ' product' : ' producten') + '</span>' +
@@ -2186,6 +2227,8 @@
       })() : ''),
       tekst: v ? (v.tekst || T.tekst || 'Met de hand gekozen: ' + v.naam.toLowerCase() + '.') : s ? (s.tekst || T.tekst || (s.vakjes ? 'Met de hand gekozen: ' + (function (n, meer) { return meer ? n.join(', ') + ' en meer' : n.length > 1 ? n.slice(0, -1).join(', ') + ' en ' + n[n.length - 1] : n[0]; })(s.vakjes.slice(0, 4).map(function (x, i) { return i ? x.naam.replace(/^[A-Z](?![A-Z])/, function (l) { return l.toLowerCase(); }) : x.naam; }), s.vakjes.length > 4) + '.' : 'Met de hand gekozen ' + s.naam.toLowerCase() + ' uit ' + c.naam.toLowerCase() + '.')) : (c.tekst || T.tekst),
       banner: c.banner, vaag: !c.banner ? c.tegel : '',
+      /* STRAK: op de telefoon alleen een terugknop naar het niveau erboven in plaats van het hele kruimelpad (dat liep over twee regels). */
+      terug: STRAK && s ? (v ? { tekst: s.naam, naar: '/c/' + c.slug + '/' + s.slug } : { tekst: c.naam, naar: '/c/' + c.slug }) : null,
       kruimel: (ouder ? [{ tekst: ouder.naam, naar: '/c/' + ouder.slug }] : []).concat(v ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam, naar: '/c/' + c.slug + '/' + s.slug }, { tekst: v.naam }] : s ? [{ tekst: c.naam, naar: '/c/' + c.slug }, { tekst: s.naam }] : [{ tekst: c.naam }])
     }) +
     '<div class="binnen">' +

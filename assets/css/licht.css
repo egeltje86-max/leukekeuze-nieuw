@@ -2722,3 +2722,40 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 .wkh-film .wkh-tb img { width: 36px; height: 36px; }
 .wkh-film .wkh-tb b { font-size: 15px; }
 .wkh-film .wkh-tb small, .wkh-film .wkh-tb i { display: none; }
+
+/* ===== STRAK (live 17-11-2026, keuze Marius 'Mix: B en A'): soorten op categoriepagina's als kleine rondjes, zodat de cadeaus
+   op het eerste telefoonscherm staan. .srij-raster = vier naast elkaar (afdeling, groep), .srij-rij = één rij om te vegen (vakje).
+   Zie STRAK en soortRij() in app.js. ===== */
+.kruimel-kort { display: none; }
+@media (max-width: 759px) {
+  .paginakop .kruimel-kort { display: block; margin: 0 0 2px; }
+  .paginakop .kruimel-kort a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; color: var(--tekst-3); font-family: Manrope, sans-serif; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .paginakop .kruimel-kort + .kruimel { display: none; }
+}
+.keuzes-sectie:has(> .srij) { padding-top: 6px; padding-bottom: 0; }
+.srij { margin: 0 0 6px; }
+.srij-baan { display: flex; gap: 4px; }
+.srij-item { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; padding: 4px 2px 6px; border-radius: 14px; color: #141A2A; text-decoration: none; text-align: center;
+  font-family: Manrope, sans-serif; font-weight: 700; font-size: 13px; line-height: 1.2; hyphens: manual; -webkit-hyphens: manual; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.srij-rond { width: 62px; height: 62px; flex: none; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: #0A1020; box-shadow: 0 0 0 1.5px #D6B56A; }
+.srij-rond img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.04); }
+.srij-ico { font-size: 26px; line-height: 1; }
+.srij-item.alles .srij-ico { color: #F2CB74; display: grid; place-items: center; }
+.srij-item.alles .srij-ico svg { width: 26px; height: 26px; }
+.srij-naam { max-width: 100%; overflow-wrap: break-word; }
+.srij-item.actief .srij-rond { box-shadow: 0 0 0 3px #B8862E; }
+.srij-item.actief .srij-naam { color: #0A1020; font-weight: 800; text-decoration: underline; text-decoration-color: #B8862E; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.srij-item:hover .srij-rond { box-shadow: 0 0 0 2.5px #B8862E; }
+.srij-item:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+/* rij om opzij te vegen (telefoon); de volgende staat half in beeld, zodat je ziet dat er meer is */
+.srij-rij .srij-baan { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: none; margin: 0 -16px; padding: 2px 16px 4px; }
+.srij-rij .srij-baan::-webkit-scrollbar { display: none; }
+.srij-rij .srij-item { flex: 0 0 82px; scroll-snap-align: start; }
+/* raster: vier naast elkaar, alles in beeld */
+.srij-raster .srij-baan { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 4px; }
+@media (max-width: 359px) { .srij-rij .srij-item { flex-basis: 74px; } .srij-item { font-size: 12.5px; } .srij-rond { width: 56px; height: 56px; } }
+@media (min-width: 760px) {
+  .srij .srij-baan, .srij-rij .srij-baan, .srij-raster .srij-baan { display: flex; flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; gap: 10px 8px; }
+  .srij .srij-item { flex: 0 0 104px; font-size: 14px; }
+  .srij .srij-rond { width: 76px; height: 76px; }
+}
