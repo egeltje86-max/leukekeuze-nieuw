@@ -2713,3 +2713,5 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 .meer-knop.groot .knop-rand small { margin-left: 0; font-size: 14px; }
 /* LAAG30 (17-11-2026): uitleg onder de prijs bij een korting uit onze eigen prijsgeschiedenis */
 .laag30 { margin: 4px 0 10px; font-size: 14px; line-height: 1.4; color: #5B6072; }
+/* 17-11-2026: rij 'Uit onze filmpjes' op de homepage (TikTok-pagina en Amazon-lijsten), direct onder de seizoensrij. */
+.wkh-toonbank + .wkh-film { margin-top: -14px; }
