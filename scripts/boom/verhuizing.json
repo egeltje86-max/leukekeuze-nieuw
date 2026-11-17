@@ -2,6 +2,7 @@
  "_uitleg": [
   "4.0 – nieuwe indeling (proef 11-11-2026, voorstel uit de Superkeurkamer + drie aanpassingen van Claude; NIET live zonder GO van Marius).",
   "15 hoofdcategorieën. Per hoofdcategorie de groepen, en per groep waar hij uit bestaat ('uit'): een oude groep 'afd/groep' of één oud vakje 'afd/groep/vak'.",
+  "17-11-2026 (wens Marius): nieuwe groep Hello Kitty & vriendjes bij Speelgoed (blok HELLO KITTY-HOEK in data.js).",
   "17-11-2026 (wens Marius): de groep Pokémon & verzamelkaarten heet nu Pokémon en krijgt ook de vakjes van de verborgen groep speelgoed/pokemon-hoek (blok POKÉMON-HOEK in data.js).",
   "Vakjes houden hun eigen adresnaam; 'alsVak' voegt alle vakjes van een oude groep samen tot één vakje.",
   "Hierna draaien: node scripts/boom/verhuis.js  (schrijft scripts/boom/verhuisd.json en het 4.0-blok onderaan assets/js/data.js). Daarna bouwen + controleren."
@@ -17,7 +18,8 @@
      { "slug": "rollenspel-verkleden", "naam": "Rollenspel & verkleden", "uit": ["speelgoed/rollenspel-verkleden"] },
      { "slug": "knutselen", "naam": "Knutselen", "uit": ["speelgoed/knutselen"] },
      { "slug": "leren-ontdekken", "naam": "Leren & ontdekken", "uit": ["speelgoed/leren-ontdekken"] },
-     { "slug": "buiten-spelen", "naam": "Buiten spelen", "uit": ["speelgoed/buiten-spelen"] }
+     { "slug": "buiten-spelen", "naam": "Buiten spelen", "uit": ["speelgoed/buiten-spelen"] },
+     { "slug": "hello-kitty", "naam": "Hello Kitty & vriendjes", "beeld": "images/sub/sub-speelgoed-hello-kitty.webp", "uit": ["speelgoed/hello-kitty"], "tekst": "Alles voor fans van Hello Kitty, Kuromi, My Melody en Cinnamoroll, jong en oud: knuffels, Funko Pops, tassen, sieraden, mokken, spullen voor je kamer, games en schoolspullen. Gesorteerd per soort, zodat je meteen ziet wat er is.", "seoTitel": "Hello Kitty cadeaus – knuffels, Kuromi, Funko, tassen, sieraden en meer" }
     ] },
   { "slug": "spellen-puzzels", "naam": "Spellen & puzzels", "kort": "Spellen", "nieuw": true, "van": "speelgoed", "icoon": "dobbel",
     "rond": "images/categorieen/rond/cat-spellen-puzzels.webp", "tegel": "images/categorieen/categorie-spellen-puzzels.webp", "banner": "images/banners/banner-cat-spellen-puzzels.webp",

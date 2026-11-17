@@ -27,8 +27,8 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=269482230861185" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=238702934597340" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=98358227979700" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=84979187666702" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=217217413542570">
   <link rel="stylesheet" href="assets/css/licht.css?v=35688340280489">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=44534610532511", t = "assets/js/topkeuze.js?v=46729109606689";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=217774789429798", t = "assets/js/topkeuze.js?v=207800103580230";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,10 +207,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"cl-ls-toren-rammel":{"url":"https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7540285%2Fs%2Fxi-71000a%2F","subVast":true,"wil":70,"gecontroleerd":"2026-11-17","waarom":"Zachte stapelringen met een rammelaar erin. Geschikt voor de kleinsten."}};</script>
-  <script src="assets/js/data.js?v=238702934597340"></script>
+  <script src="assets/js/data.js?v=84979187666702"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=68824530770373"></script>
-  <script src="assets/js/app.js?v=269482230861185"></script>
+  <script src="assets/js/gedeeld.js?v=147852438054121"></script>
+  <script src="assets/js/app.js?v=98358227979700"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

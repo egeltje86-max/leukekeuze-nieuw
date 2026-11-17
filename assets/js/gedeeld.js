@@ -87,6 +87,8 @@
        per pagina). De indeling verandert niet terwijl de pagina open staat: we zoeken hem één keer op per afdeling en groep. */
     /* POKÉMON-HOEK (17-11-2026): een Pokémon-product uit een ander vakje (Knuffels, Mokken, LEGO ...) staat óók in de hoek; p2 = het vakje daar (scripts/boom/pokemon.js). */
     if (p.p2 && sub === 'pokemon-verzamelkaarten' && cat === 'spellen-puzzels') return !vak || p.p2 === vak;
+    /* HELLO KITTY-HOEK (17-11-2026): zelfde voor de groep Hello Kitty & vriendjes; p3 = het vakje daar (scripts/boom/hellokitty.js). */
+    if (p.p3 && sub === 'hello-kitty' && cat === 'speelgoed') return !vak || p.p3 === vak;
     var HZ = hbZoek(cat, sub), nc = HZ.nc, ns = HZ.ns;
     if (nc && p.afd && (!sub || (ns && ns.vakjes))) {
       if (cat === 'christelijk' && sub === 'onder-25') { /* valt hieronder */ }
