@@ -4071,6 +4071,7 @@
      Nieuwe fotoreel: zet hem BOVENAAN in TIKTOK_REELS (datum, kop zoals op de voorkant, korte regel, de vijf ids). Na een paar weken de oudste weghalen.
      De eerste drie filmpjes staan open, de rest klapt in. Uit: window.LK_TIKTOK = false. */
   var TIKTOK_REELS = [
+    { datum: '17 november', kop: 'Nieuw: de Pokémon-hoek', tekst: 'Alle losse boosterpakjes op één plek, plus knuffels, tassen, spullen voor je kamer en keuken, games en boxen voor verzamelaars.', ids: ['nedg-9ea779e8fa', 'nedg-797a79ea8e', 'nedg-ecbc668ad4', 'nedg-4175fe9fd9', 'nedg-adb164ecbd', 'nedg-a10f0c326e', 'emp-029a340781', 'cl-pokopia', 'nedg-e3dfabf90c', 'nedg-13e07a300d'] },
     { datum: '17 november', kop: 'Gespot bij Ditverzinjeniet: alles onder € 15', tekst: 'Een fopspeen met een snor, een katje dat je munten steelt en een nepsteen voor je reservesleutel.', ids: ['dvzn-58068de5fa', 'dvzn-6791', 'dvzn-48bcf6ed40', 'dvzn-726291', 'dvzn-22f0aff1dc'] },
     { datum: '17 november', kop: 'Gespot bij HEMA: alles onder € 15', tekst: 'Van een geurkaars in een peperkoekmannetje tot een Nijntje-fondue en een kat die je handen warm houdt.', ids: ['hema-36f500cd52', 'hema-e8aced2a21', 'hema-9c923e1a87', 'hema-32d780c657', 'hema-b059bba7b0'] },
     { datum: '16 november', kop: 'Lootje getrokken? 10 nieuwe cadeaus', tekst: 'Net nieuw op de site: van een Pikachu-mok en een kluis-spaarpot tot een paraplu in een whiskyfles.', ids: ['nedg-4c81f01c66', 'bigsiz-4e5500270d', 'cadeau-b636db132b', 'gadget-7e31d86ce4', 'cadeau-bb87e54fa2', 'cadeau-c3439f355f', 'dvzn-cce4b58a90', 'cadeau-13138252a6', 'nedg-aa85125d5b', 'cadeau-c6c97ade65'] },
@@ -4903,8 +4904,8 @@
             'Kies dingen waar ze meteen mee aan de slag kunnen: bouwen, kleuren of een spelletje.',
             'Let bij kleine kinderen op losse onderdelen. Bij elk product staat vanaf welke leeftijd het is.'
           ] },
-        { kop: 'Bouwen en spelen (tot €7)', tekst: 'Kleine bouwsetjes, figuurtjes en een robotbeestje dat zelf rondrent. Snel klaar, en ze spelen er daarna nog lang mee.',
-          ids: ['bol-9300000265640005', 'woewoe-2657e7b14e', 'bol-9300000192994578'] },
+        { kop: 'Bouwen en spelen (tot €7)', tekst: 'Kleine bouwsetjes, figuurtjes en een rekbare beer die licht geeft. Snel klaar, en ze spelen er daarna nog lang mee.',
+          ids: ['bol-9300000265640005', 'dgsw-190e813ae6', 'bol-9300000192994578'] },
         { kop: 'Knutselen en kleuren (€5 tot €7)', tekst: 'Voor kinderen die graag iets maken: armbandjes, kraskaarten en stickers.',
           ids: ['bol-9300000183264805', 'bol-9300000221675733', 'bol-9300000182484745', 'cl-cr-geur'] },
         { kop: 'Voor de allerkleinsten', tekst: 'Zacht, veilig en makkelijk vast te pakken. Voor baby’s en peuters.',
@@ -5189,7 +5190,7 @@
       intro: "Wat geef je voor 10 euro? Meer dan je denkt. Voor een tientje heb je een grappige pen, een spel, iets lekkers of iets om te verwennen. Handig bij lootjes trekken, voor een collega, in de schoen of als klein bedankje. Alles in deze gids kost 10 euro of minder; de prijs controleren we en de actuele prijs zie je bij de winkel. Hieronder staan 24 ideeën in zes soorten.",
       delen: [
         { kop: "Zo kies je een cadeau van 10 euro", tekst: "Vier dingen die helpen:", lijst: ["Kies iets dat je meteen snapt als je het uitpakt: grappig, lekker of handig.", "Bij lootjes: kijk op het verlanglijstje, of kies iets waar iedereen om kan lachen.", "Iets lekkers gaat altijd op, ook als je de ander niet goed kent.", "Let op verzendkosten: bestel je bij een winkel met meer cadeaus, dan bespaar je die vaak."] },
-        { kop: "Voor kinderen", tekst: "Kleine cadeautjes waar kinderen echt mee spelen, ook goed voor in de schoen.", ids: ["dvzn-4d97c0ab44", "dvzn-f8c667585b", "nedg-1ed80cdff7", "lego-60312"] },
+        { kop: "Voor kinderen", tekst: "Kleine cadeautjes waar kinderen echt mee spelen, ook goed voor in de schoen.", ids: ["dvzn-4d97c0ab44", "dgsw-d95eba0a04", "nedg-1ed80cdff7", "lego-60312"] },
         { kop: "Grappig", tekst: "Om om te lachen bij het uitpakken: voor lootjes of iemand die alles al heeft.", ids: ["dvzn-655af9bd06", "gadget-d090d8ccf9", "dvzn-1a61ae70d9", "dvzn-ebc9e55f71"] },
         { kop: "Iets lekkers", tekst: "Chocolade, pralines of stroopwafels: lekker voor iedereen.", ids: ["cl-lindt-pralines", "hema-8eff9a5ada", "dk-00015052", "cl-chocmakers-liefde"] },
         { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets voor een voetenbadje.", ids: ["parfum-5519078921", "cl-gr-fortune", "cl-kneipp-voetbad", "bol-9300000338660274"] },
@@ -5754,8 +5755,8 @@
       titel: 'Sinterklaascadeau ideeën: 24 cadeaus voor iedereen', kort: 'In de schoen, voor kinderen, voor tieners, voor lootjes, iets lekkers en samen spelen op pakjesavond.',
       intro: 'Wat geef je met Sinterklaas? Voor kinderen iets om mee te spelen of iets kleins in de schoen, voor tieners iets wat ze zelf ook graag willen hebben, en bij lootjes iets grappigs of iets lekkers. Pakjesavond is op zaterdag 5 december 2026. Hieronder staan 24 ideeën in zes soorten, van een chocoladeletter tot een LEGO-raceauto. De prijs controleren we; de actuele prijs zie je bij de winkel.',
       delen: [
-        { kop: 'Zo kies je een sinterklaascadeau', tekst: 'Vier dingen die helpen:', lijst: ['Schoen zetten? Kies iets kleins tot 10 euro dat een kind meteen snapt: een knuffel, een squishy of een robotbeestje.', 'Lootjes trekken? Spreek samen een bedrag af. Bij 10 of 15 euro doet iets grappigs of lekkers het bijna altijd goed.', 'Doe er een gedicht bij of maak er een surprise van: dat hoort bij Sinterklaas.', 'Speel op pakjesavond het dobbelspel: een grote dobbelsteen en een stapel kleine cadeautjes.'] },
-        { kop: 'In de schoen (tot €10)', tekst: 'Klein, leuk en meteen te snappen.', ids: ['hema-ce48ea31d7', 'woewoe-2657e7b14e', 'dgsw-d99c9676ba', 'dvzn-655af9bd06'] },
+        { kop: 'Zo kies je een sinterklaascadeau', tekst: 'Vier dingen die helpen:', lijst: ['Schoen zetten? Kies iets kleins tot 10 euro dat een kind meteen snapt: een knuffel, een squishy of een pakje Pokémon-kaarten.', 'Lootjes trekken? Spreek samen een bedrag af. Bij 10 of 15 euro doet iets grappigs of lekkers het bijna altijd goed.', 'Doe er een gedicht bij of maak er een surprise van: dat hoort bij Sinterklaas.', 'Speel op pakjesavond het dobbelspel: een grote dobbelsteen en een stapel kleine cadeautjes.'] },
+        { kop: 'In de schoen (tot €10)', tekst: 'Klein, leuk en meteen te snappen.', ids: ['hema-ce48ea31d7', 'nedg-9ea779e8fa', 'dgsw-d99c9676ba', 'dvzn-655af9bd06'] },
         { kop: 'Voor kinderen', tekst: 'Iets om te bouwen, te ontdekken of om mee te spelen.', ids: ['dvzn-762707', 'lego-77243', 'dvzn-366531e682', 'cadeau-f11acf837b'] },
         { kop: 'Voor tieners', tekst: 'Een lamp van hun favoriete film of game, iets voor de selfie of een mok die verandert.', ids: ['dvzn-995816', 'dvzn-82c9fc5824', 'superz-f16bbf44cc', 'hema-efaa95f521'] },
         { kop: 'Voor lootjes onder €15', tekst: 'Voor een collega, je zus of je oom: grappig of gezellig.', ids: ['dvzn-c15dcffb40', 'dvzn-ebc9e55f71', 'dvzn-2a6f553405', 'dvzn-8301e7ef8f'] },
@@ -5767,7 +5768,7 @@
       intro: 'Elke avond een schoen zetten, en dan ook nog pakjesavond: dat loopt snel op. Daarom koos ik cadeautjes onder de 10 euro waar kinderen echt blij van worden. Kleine setjes, boekjes en spelletjes, van merken die je kent.',
       delen: [
         { kop: 'Voor in de schoen', tekst: 'Klein genoeg om in een schoen te passen, en toch iets om mee te spelen.',
-          ids: ['woewoe-2657e7b14e', 'bol-9200000088621923', 'bol-9300000039278002'] },
+          ids: ['dgsw-190e813ae6', 'bol-9200000088621923', 'bol-9300000039278002'] },
         { kop: 'Zelf maken en ontdekken (€5 tot €10)', tekst: 'Knutselen en proefjes doen: daar zijn ze na pakjesavond nog dagen mee bezig.',
           ids: ['bol-9300000169748884', 'bol-9300000025044624', 'bol-9200000104835927', 'bol-9300000168680075'] },
         { kop: 'Boekjes en spelletjes (tot €10)', tekst: 'Een sinterklaasboekje om voor te lezen, of een spel om meteen samen te spelen.',
@@ -6328,7 +6329,7 @@
       ['Wat is een leuk belevenis cadeau voor een stel?', 'Een nachtje in een pod op de Veluwe, een rondvaart door Giethoorn, een wijnproeverij of samen een helikoptervlucht. Iets wat je samen doet, onthoud je samen.'],
       ['Wat als iemand ver weg woont?', 'Veel belevenissen kun je op meerdere plekken in Nederland doen. Ferrari rijden kan bijvoorbeeld op 15 plekken en een escape room in veel steden. Bij elke belevenis staat waar je hem kunt doen.'],
       ['Is er ook een goedkoop belevenis cadeau?', 'Ja. Er zijn belevenissen vanaf €9,99, zoals een smaaksafari, kickbiken op de Veluwe of een rondvaart door Delft.']] },
-    'schoencadeautjes': { top: [['Onze topkeuze', 'woewoe-2657e7b14e'], ['Voor de kleintjes', 'bol-9300000320683306'], ['Om samen te spelen', 'bol-9200000132162995']], faq: [
+    'schoencadeautjes': { top: [['Onze topkeuze', 'dgsw-190e813ae6'], ['Voor de kleintjes', 'bol-9300000320683306'], ['Om samen te spelen', 'bol-9200000132162995']], faq: [
       ['Hoeveel geef je uit aan een schoencadeautje?', 'De meeste ouders houden 2 tot 5 euro per schoen aan en bewaren het grotere cadeau voor pakjesavond. Niet elke schoen hoeft een cadeautje te hebben: een mandarijn, een chocolademuntje of een tekening van Piet is ook feest.'],
       ['Hoe vaak mag je je schoen zetten?', 'Dat verschilt per gezin. Veel kinderen zetten hun schoen een paar keer in de weken tussen de intocht en 5 december, bijvoorbeeld op vaste dagen. Spreek het van tevoren af, dan weet iedereen waar hij aan toe is.'],
       ['Wat is een goed schoencadeautje voor een peuter?', 'Iets zachts en stevigs zonder kleine onderdelen: een rammelaar, een stevig boekje of een groot dierfiguur. Kijk altijd naar de leeftijd op de verpakking.']] },
@@ -6410,9 +6411,9 @@
     'sinterklaascadeau-ideeen': { top: [['Onze topkeuze', 'dvzn-995816'], ['In de schoen', 'hema-ce48ea31d7'], ['Voor lootjes', 'dvzn-c15dcffb40']], faq: [
       ['Wanneer is pakjesavond 2026?', 'Pakjesavond is op zaterdag 5 december 2026. De verjaardag van Sinterklaas is op 6 december.'],
       ['Wat is een leuk sinterklaascadeau?', 'Voor kinderen iets om mee te spelen, zoals LEGO, een raket om te bouwen of een lampje. Voor tieners iets wat ze zelf ook willen, zoals een lamp van hun favoriete film of game. Bij lootjes iets grappigs of iets lekkers.'],
-      ['Wat doe je in de schoen?', 'Iets kleins tot 10 euro: een chocoladeletter, een knuffel die naar chocola ruikt, een squishy, een Hexbug of een grappige pen. Meer ideeën staan bij Schoencadeautjes.'],
+      ['Wat doe je in de schoen?', 'Iets kleins tot 10 euro: een chocoladeletter, een knuffel die naar chocola ruikt, een squishy, een pakje Pokémon-kaarten of een grappige pen. Meer ideeën staan bij Schoencadeautjes.'],
       ['Hoeveel geef je uit bij lootjes met Sinterklaas?', 'Dat spreek je samen af. Vaak is het 10, 15 of 20 euro. In deze gids staan genoeg ideeën onder de 15 euro.']] },
-    'sinterklaas-onder-10': { top: [['Onze topkeuze', 'bol-9300000157956217'], ['Voor in de schoen', 'woewoe-2657e7b14e'], ['Om voor te lezen', 'bol-9200000006380085']], faq: [
+    'sinterklaas-onder-10': { top: [['Onze topkeuze', 'bol-9300000157956217'], ['Voor in de schoen', 'dgsw-190e813ae6'], ['Om voor te lezen', 'bol-9200000006380085']], faq: [
       ['Wat koop je voor een kind voor onder de 10 euro?', 'Kleine LEGO- en Playmobil-setjes, knutselsetjes, dierfiguren en sinterklaasboekjes. Alles in deze gids kost minder dan een tientje.'],
       ['Is 10 euro genoeg voor een sinterklaascadeau?', 'Voor in de schoen of als extra pakje zeker. Kinderen kijken meer naar het uitpakken dan naar de prijs.'],
       ['Waar let ik op bij goedkoop speelgoed?', 'Op veiligheid: kijk naar de leeftijd die op de verpakking staat en kies bekende merken. Alles in deze gids is van merken als LEGO, Playmobil, Schleich en SES.']] },
@@ -7566,6 +7567,7 @@
     ['/gelegenheid/moederdag', 'moederdag'], ['/gelegenheid/vaderdag', 'vaderdag'],
     ['/gelegenheid/uitdeelcadeautjes', 'uitdeelcadeautjes|uitdeelcadeautje|traktatie|uitdelen|kinderfeestje'],
     ['/voor/baby', 'baby|kraamcadeau|kraam|geboorte|babyshower|pasgeboren|newborn'], ['/gids/cadeau-zwangere-vrouw', 'zwanger|zwangere|zwangere vrouw|zwangerschap|cadeau zwangere'],
+    ['/c/spellen-puzzels/pokemon-verzamelkaarten/verzamelkaarten-pokemon', 'pokemon kaarten|pokemonkaarten|pokemon kaartjes|pokemon booster|pokemon boosters|boosterpakje|boosterpakjes|booster pack|boosterpack|booster packs|pokemon pakjes|pokemon pakje'],
     ['/tiktok', 'tiktok|tik tok|gezien op tiktok|instagram|filmpje|reels'],
     ['/favorieten', 'mijn lijstje|verlanglijst|verlanglijstje|wensenlijst|favorieten'],
     ['/vonk', 'kieshulp|vonk|help mij kiezen|help me kiezen|cadeauzoeker|weet niet wat'],
