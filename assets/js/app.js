@@ -1307,6 +1307,185 @@
       '<a class="knop knop-rand bh-alle" href="/c/belevenissen">Bekijk alle ' + alle.length + ' belevenissen ' + ic('pijl') + '</a>' +
     '</section>';
   }
+  /* ===== WINKELTJE (live 17-11-2026, GO Marius na de test /nieuw/winkel/: 'Go') =====
+     De homepage is een cadeauwinkeltje: een uithangbord, een balk 'voor wie' en 'hoeveel' die bovenaan blijft staan, de toonbank met het seizoen
+     (lootjes trekken en het Sint-gedicht) en planken met cadeaus. Elke plank heeft een bordje (Om te lachen, Licht & sfeer ...) en is een mix:
+     nooit twee uit hetzelfde vakje naast elkaar; eerst wat Marius zelf in de Superkeurkamer koos (p.zk) en de handgekozen toppen, elke dag een andere mix.
+     Foto's met een witte achtergrond (p.wt, uit nieuw/winkel/wit.js via splits-producten.js) staan los op de plank, de rest als doosje.
+     Tik op een cadeau = de productpagina. Kop, zoekvak, menu en onderbalk zijn die van de gewone site; al het andere blijft zoals het was.
+     Alleen voor bezoekers met de nieuwe opzet (WIJZER 'b' = iedereen); zoekmachines krijgen de oude homepage (zelfde links).
+     Uit: window.LK_WINKELTJE = false of ?proef=winkeltje-uit (dan de homepage van voor 17-11; weer aan met ?proef=winkeltje). CSS: blok 'WINKELTJE' onderaan licht.css. */
+  var WINKEL = (function () {
+    try {
+      if (window.LK_WINKELTJE === false) return false;
+      var m = /[?&]proef=winkeltje(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) sessionStorage.setItem('lkwinkel-uit', '1'); else sessionStorage.removeItem('lkwinkel-uit'); }
+      return sessionStorage.getItem('lkwinkel-uit') !== '1';
+    } catch (e) { return true; }
+  })();
+  var WK = { wie: '', tot: 0 };
+  var WK_TOT = [0, 10, 15, 25, 50];
+  var WK_WIE = [
+    { id: '', naam: 'Iedereen', beeld: 'images/sub/rond/col-kleine-cadeautjes-klein.webp' },
+    { id: 'haar', naam: 'Haar' }, { id: 'hem', naam: 'Hem' }, { id: 'kinderen', naam: 'Kind' },
+    { id: 'tieners', naam: 'Tiener' }, { id: 'opa-oma', naam: 'Opa & oma' }, { id: 'collega', naam: 'Collega' }
+  ];
+  var WK_GROF = /middelvinger|f[u*]ck|lekker pik|piemel|borsten|bitch|\bkut\b|shit|\blul\b|\bkont\b|pleur op|sexy as hell|\bjoint\b/i;
+  var WK_PIJL = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+  var wkCache = null;
+  function wkVoorbereid() {
+    var lijst = LK.zichtbaar();
+    if (wkCache && wkCache.lijst === lijst) return wkCache;
+    var NU = new Date(), MD = (NU.getMonth() + 1) * 100 + NU.getDate(), DAG = NU.getFullYear() * 400 + NU.getMonth() * 31 + NU.getDate();
+    var heeft = function (l, x) { return (l || []).indexOf(x) !== -1; };
+    var g = function (p) { return (p.afd || '') + '/' + (p.groep || '') + '/' + (p.vak || ''); };
+    var pad = function (re) { return function (p) { return re.test(g(p)); }; };
+    var TOP = Object.assign({}, window.LK_TOPKEUZE || {}, window.LK_TOPVAST || {});
+    var TOPIN = {}, RANG = {}, DRUK = /^\/(voor|collectie|gelegenheid)\/|^\/c\/cadeaus\//;
+    /* RANG telt alleen de drukke toppen (Voor wie, collecties, gelegenheden, Sint en Kerst), niet de toppen van één vakje: anders staan oorbellen vooraan */
+    Object.keys(TOP).forEach(function (k) { var l = TOP[k] || []; l.forEach(function (id, i) { (TOPIN[id] = TOPIN[id] || []).push(k); if (!DRUK.test(k)) return; var v = i / Math.max(l.length, 12); if (RANG[id] == null || v < RANG[id]) RANG[id] = v; }); });
+    var inTop = function (p, pre) { return (TOPIN[p.id] || []).some(function (k) { return k.indexOf(pre) === 0; }); };
+    var I = 'images/sub/iconen/icoon-', RO = 'images/sub/rond/';
+    var PLANK = [
+      { id: 'eigen', naam: 'Zelf uitgezocht', klein: 'Onze lievelingen van nu', ic: RO + 'col-toppers-van-nu', f: function (p) { return p.zk && !/^mode-sieraden\/(sieraden|horloges)/.test(g(p)); } },
+      MD >= 1015 && MD <= 1205 ? { id: 'schoen', naam: 'In de schoen', klein: 'Tot € 15', ic: RO + 'col-schoencadeautjes', naar: '/collectie/schoencadeautjes/', f: function (p) { return p.prijs <= 15 && (heeft(p.ookIn, 'cadeaus/sinterklaas') || heeft(p.ookIn, 'cadeaus/sint-onder-15') || inTop(p, '/collectie/schoencadeautjes') || inTop(p, '/c/cadeaus/sinterklaas')); } } : null,
+      { id: 'lachen', naam: 'Om te lachen', klein: 'Gekke dingen', ic: RO + 'col-grappige-cadeaus', naar: '/collectie/grappige-cadeaus/', f: function (p) { return heeft(p.ookIn, 'cadeaus/grappig') || heeft(p.tags, 'grappig') || inTop(p, '/collectie/grappige-cadeaus'); } },
+      { id: 'licht', naam: 'Licht & sfeer', klein: 'Lampjes en kaarsen', ic: I + 'wonen-verlichting', naar: '/c/wonen/verlichting/', f: function (p) { return /^wonen\/(verlichting|kaarsen-geur\/(kaarsen|geurkaarsen|kandelaars))/.test(g(p)) && !/citronella|mug/i.test(p.titel); } },
+      { id: 'knus', naam: 'Warm & knus', klein: 'Plaids, kruiken, sloffen', ic: I + 'wonen-woontextiel', naar: '/c/wonen/woontextiel/', f: function (p) { return /^wonen\/woontextiel\/(plaids|kruiken-warmte|kussens)|^mode-sieraden\/schoenen-sloffen\/pantoffels/.test(g(p)) && !/crocs|clogs/i.test(p.titel); } },
+      { id: 'kast', naam: 'Op tafel & in de kast', klein: 'Mokken, spaarpotten, mooie dingen', ic: I + 'wonen-woondecoratie', naar: '/c/wonen/', f: pad(/^koken-tafelen\/mokken-glazen|^wonen\/woondecoratie/) },
+      { id: 'glinster', naam: 'Iets dat glinstert', klein: 'Sieraden en horloges', ic: I + 'mode-sieraden-sieraden', naar: '/c/mode-sieraden/sieraden/', f: pad(/^mode-sieraden\/(sieraden|horloges)/) },
+      { id: 'spelen', naam: 'Spelen & bouwen', klein: 'Voor jong en oud', ic: I + 'speelgoed-bouwen', naar: '/c/speelgoed/', f: pad(/^speelgoed\/(bouwen|poppen-knuffels|speelfiguren-voertuigen|leren-ontdekken)|^spellen-puzzels\//) },
+      { id: 'game', naam: 'Gamers & snufjes', klein: 'Slimme en gekke gadgets', ic: I + 'elektronica-gaming', naar: '/c/elektronica/gaming/', f: pad(/^elektronica\/(gaming|gadgets|audio)/) },
+      { id: 'verwen', naam: 'Even verwennen', klein: 'Bad, geur en zachte zeep', ic: I + 'beauty-verzorging-wellness', naar: '/c/beauty-verzorging/', f: pad(/^beauty-verzorging\//) },
+      { id: 'zoet', naam: 'Iets lekkers', klein: 'Chocolade en snoep', ic: I + 'eten-drinken-chocolade-snoep', naar: '/c/eten-drinken/chocolade-snoep/', f: pad(/^eten-drinken\/chocolade-snoep/) },
+      { id: 'maken', naam: 'Zelf maken', klein: 'Knutselen en hobby', ic: I + 'speelgoed-knutselen', naar: '/c/speelgoed/knutselen/', f: pad(/^speelgoed\/knutselen|^hobby\//) },
+      { id: 'buiten', naam: 'Naar buiten', klein: 'Spelen en sporten', ic: I + 'speelgoed-buiten-spelen', naar: '/c/speelgoed/buiten-spelen/', f: pad(/^speelgoed\/buiten-spelen|^sport-outdoor\/(darts|balsport-spel|outdoor-avontuur)/) }
+    ].filter(Boolean);
+    /* wat er op mag: geen drank, geen grove grappen, geen losse onderdelen, kaartjes of kleding in maten; Valentijn alleen van 15 januari tot 14 februari */
+    var VAL = MD >= 115 && MD <= 214;
+    var ALLES = lijst.filter(function (p) {
+      return p.beeld && p.prijs >= 4 && !p.los && !p.drank && (VAL || !(/valentijn|i love you|love you/i.test(p.titel || '') || (p.ookIn || []).some(function (x) { return x.indexOf('valentijn/') === 0; }))) &&
+        (!p.smal || p.smal === 'grootouder' || p.smal === 'collega') && !WK_GROF.test(p.titel || '') &&
+        !/^eten-drinken\/(wijn-bubbels|bier-sterke-drank|alcoholvrij)/.test(g(p)) && !/truien-hoodies|t-shirts|sneakers|laarzen|handschoenen|pyjama-s-badjassen/.test(p.vak || '') &&
+        !(p.prijs < 5 && /(^|\s)(kaart|wenskaart)(\s|$)/i.test(p.titel || ''));
+    });
+    wkCache = { lijst: lijst, ALLES: ALLES, PLANK: PLANK, TOP: TOP, RANG: RANG, DAG: DAG, MD: MD, NU: NU, heeft: heeft };
+    return wkCache;
+  }
+  function wkLot(id, dag) { var h = dag; for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 1000003; return (h % 1000) / 1000; }
+  function wkWieOk(p, w) {
+    var v = p.voor || [], lt = p.leeftijd, heeft = function (l, x) { return (l || []).indexOf(x) !== -1; };
+    if (!w) return !p.smal;
+    if ((p.nietBij || []).indexOf(w) !== -1) return false;
+    if (p.smal === 'grootouder' && w !== 'opa-oma') return false;
+    if (p.smal === 'collega' && w !== 'collega') return false;
+    if (w === 'hem' && /\broze\b|\bpink\b/i.test(p.titel || '')) return false;
+    if (w === 'haar' || w === 'hem') return heeft(v, w) || (heeft(v, 'iedereen') && !heeft(v, 'kind') && !heeft(v, 'baby') && !(lt && lt[1] && lt[1] <= 12));
+    if (w === 'kinderen') return heeft(v, 'kind');
+    if (w === 'tieners') return heeft(v, 'tiener');
+    return heeft(v, w);
+  }
+  function wkKern(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3; }).slice(0, 2).join(' '); }
+  function wkPlank(c, pl, al, PRANG) {
+    var l = c.ALLES.filter(function (p) { return pl.f(p) && !al[p.id] && wkWieOk(p, WK.wie) && (!WK.tot || p.prijs <= WK.tot); });
+    l.forEach(function (p) {
+      var lot = wkLot(p.id, c.DAG), r = c.RANG[p.id];
+      var s = p.zk ? (r != null ? r * 0.4 : 0.45) + lot * 0.35 : r != null ? 0.7 + r + lot * 0.2 : 2 + lot;
+      if (PRANG[p.id] != null) s = Math.min(s, PRANG[p.id] * 0.5 + lot * 0.2);
+      if (p.shop === 'bol') s += 0.15;
+      if (!p.wt) s += 0.1;
+      p._wk = s;
+    });
+    l.sort(function (a, b) { return a._wk - b._wk; });
+    var uit = [], vak = {};
+    for (var ronde = 0; ronde < 2 && uit.length < 12; ronde++) {
+      for (var i = 0; i < l.length && uit.length < 12; i++) {
+        var p = l[i], vorige = uit[uit.length - 1];
+        if (uit.indexOf(p) !== -1 || (vak[p.vak] || 0) >= (ronde ? 3 : 1)) continue;
+        if (vorige && (vorige.vak === p.vak || wkKern(vorige.titel) === wkKern(p.titel))) continue;
+        uit.push(p); vak[p.vak] = (vak[p.vak] || 0) + 1;
+      }
+    }
+    return uit;
+  }
+  function wkNaam(p) {
+    var t = String(p.titel || ''), k = t.replace(/\s*\([^)]*\)/g, '').trim(), m = k.match(/^(.{12,}?)(\s+[–—]|:)\s+/);
+    if (m) k = m[1];
+    m = k.match(/^(.{16,}?),\s/); if (m) k = m[1];
+    if (k.length < 6) k = t;
+    var w = String(p.shop || '').trim();
+    if (w.length >= 3) { var z = k.replace(new RegExp('^' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s+', 'i'), ''); if (z !== k && z.length >= 6) k = z.charAt(0).toUpperCase() + z.slice(1); }
+    return k;
+  }
+  function wkEuro(n) { var s = (Math.round(n * 100) / 100).toFixed(2).split('.'); return '€ ' + s[0] + ',' + s[1]; }
+  function wkDing(p) {
+    return '<a class="wkh-ding" href="/p/' + esc(p.id) + '/" aria-label="' + esc(p.titel) + ', ' + wkEuro(p.prijs) + '"><span class="wkh-foto' + (p.wt ? '' : ' doos') + '"><img src="' + esc(p.beeld) + '-klein.webp" alt="" width="400" height="400" loading="lazy" decoding="async"></span>' +
+      '<span class="wkh-prijs">' + wkEuro(p.prijs) + '</span><span class="wkh-naam">' + esc(LK.zachtAf(wkNaam(p))) + '</span>' + (p.shop ? '<span class="wkh-winkel">bij ' + esc(p.shop) + '</span>' : '') + '</a>';
+  }
+  function wkKies() {
+    return '<div class="wkh-r">' + WK_WIE.map(function (w) {
+      return '<button type="button" class="wkh-wie" data-wk-wie="' + w.id + '" aria-pressed="' + (WK.wie === w.id) + '"><img src="' + (w.beeld || 'images/sub/rond/voor-' + w.id + '-klein.webp') + '" alt="" width="52" height="52"><span>' + esc(w.naam) + '</span></button>';
+    }).join('') + '</div><div class="wkh-r">' + WK_TOT.map(function (t) {
+      return '<button type="button" class="wkh-tot" data-wk-tot="' + t + '" aria-pressed="' + (WK.tot === t) + '">' + (t ? 'Tot € ' + t : 'Elk bedrag') + '</button>';
+    }).join('') + '</div>';
+  }
+  function wkPlanken() {
+    var c = wkVoorbereid(), PRANG = {}, al = {}, html = '', n = 0;
+    if (WK.wie) (c.TOP['/voor/' + WK.wie] || []).forEach(function (id, i, l) { PRANG[id] = i / Math.max(l.length, 12); });
+    c.PLANK.forEach(function (pl) {
+      var l = wkPlank(c, pl, al, PRANG); if (l.length < 5) return;
+      l.forEach(function (p) { al[p.id] = 1; });
+      var naar = pl.naar ? pl.naar + (WK.tot ? '?prijs=tot' + WK.tot : '') : '';
+      /* in de schoen is voor kinderen; voor een volwassene heet die plank Sinterklaas (lootjes) */
+      var pnaam = pl.naam, pklein = pl.klein; if (pl.id === 'schoen' && WK.wie && WK.wie !== 'kinderen') { pnaam = 'Voor Sinterklaas'; pklein = 'Lootjes tot € 15'; }
+      html += '<section class="wkh-plank" data-tel="plank-' + pl.id + '"><div class="wkh-bord"><img src="' + pl.ic + '-klein.webp" alt="" width="34" height="34"><div><h2>' + esc(pnaam) + '</h2><small>' + esc(pklein) + '</small></div></div>' +
+        '<div class="wkh-rek"><div class="wkh-rij">' + l.map(wkDing).join('') + (naar ? '<a class="wkh-verder" href="' + naar + '"><i>' + WK_PIJL + '</i>Alles van ' + esc(pnaam.toLowerCase()) + '</a>' : '') + '</div><div class="wkh-hout"></div></div>' +
+        (n === 0 ? '<p class="wkh-veeg">Veeg de plank opzij voor meer.</p>' : '') + '</section>';
+      n++;
+    });
+    return n ? html : '<div class="wkh-leeg">Voor deze keuze staat er nu te weinig op de planken.<br><button type="button" data-wk-tot="0">Toon elk bedrag</button></div>';
+  }
+  function wkToonbank() {
+    var c = wkVoorbereid(), NU = c.NU, MD = c.MD, dag = 864e5, j = NU.getFullYear(), vandaag = new Date(j, NU.getMonth(), NU.getDate());
+    var nS = Math.round((new Date(j, 11, 5) - vandaag) / dag), nK = Math.round((new Date(j, 11, 25) - vandaag) / dag);
+    var loot = { naar: '/lootjes-trekken/', ic: 'images/sub/rond/cad-sint-onder-15-klein.webp', b: 'Lootjes trekken', s: 'Gratis, via WhatsApp', i: 'Begin', tel: 'lootjes' };
+    var gedicht = { naar: '/sint-rijmmachine/', ic: 'images/banners/rijm-held-sint.webp', b: 'Sint-gedicht maken', s: 'Klaar in een minuut', i: 'Maak er een', tel: 'gedicht' };
+    var kop = '', tegels = [];
+    if (MD >= 1015 && MD <= 1205) { kop = 'Sinterklaas · ' + (nS <= 0 ? 'vandaag is het pakjesavond' : 'nog ' + nS + (nS === 1 ? ' dag' : ' dagen')); tegels = [loot, gedicht]; }
+    else if (MD >= 1206 && MD <= 1224) { kop = 'Kerst · nog ' + nK + (nK === 1 ? ' dag' : ' dagen'); loot.ic = 'images/sub/rond/gel-kerst-klein.webp'; tegels = [loot]; }
+    if (!tegels.length) return '';
+    return '<section class="wkh-toonbank" data-tel="toonbank"><h3>' + esc(kop) + '</h3><div class="wkh-tb-r' + (tegels.length === 1 ? ' een' : '') + '">' + tegels.map(function (t) {
+      return '<a class="wkh-tb" href="' + t.naar + '"><img src="' + t.ic + '" alt="" width="46" height="46"><span><b>' + esc(t.b) + '</b><small>' + esc(t.s) + '</small><i>' + esc(t.i) + ' →</i></span></a>';
+    }).join('') + '</div></section>';
+  }
+  function wkLeesHash() {
+    var h = (location.hash || '').replace('#', '').split('-'), w = '', t = 0;
+    h.forEach(function (x) { if (/^\d+$/.test(x) && WK_TOT.indexOf(+x) !== -1) t = +x; else if (WK_WIE.some(function (y) { return y.id && y.id === x; })) w = x; if (x === 'opa') w = 'opa-oma'; });
+    WK.wie = w; WK.tot = t;
+  }
+  function winkelHome() {
+    wkLeesHash();
+    return '<div class="wkh">' +
+      '<header class="wkh-gevel"><h1>Het cadeauwinkeltje</h1><p>Zie je iets leuks op de plank? Tik erop.</p></header>' +
+      '<nav class="wkh-kies" id="wkh-kies" aria-label="Voor wie en hoeveel">' + wkKies() + '</nav>' +
+      '<div class="wkh-wrap">' + wkToonbank() + '<div id="wkh-planken">' + wkPlanken() + '</div>' +
+        '<div class="wkh-uitgang"><h2>Niet gevonden wat je zocht?</h2><p>Typ gewoon wat je zoekt, of kies voor wie het is.</p><a href="/zoek">Zoeken in alle cadeaus</a> <a class="wkh-tweede" href="/voor">Kies voor wie</a></div>' +
+        '<p class="wkh-eerlijk">Prijzen komen van de winkels en kunnen net anders zijn als je bestelt. Bestellen doe je bij de winkel.</p>' +
+      '</div></div>';
+  }
+  /* voor wie en hoeveel: alleen de planken opnieuw tekenen; de keuze staat in het adres (#haar, #haar-15, #15), zodat de terugknop en delen werken */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-wk-wie],[data-wk-tot]'); if (!b) return;
+    var pl = document.getElementById('wkh-planken'), kies = document.getElementById('wkh-kies'); if (!pl || !kies) return;
+    if (b.hasAttribute('data-wk-wie')) WK.wie = b.getAttribute('data-wk-wie'); else WK.tot = +b.getAttribute('data-wk-tot');
+    var d = [WK.wie, WK.tot || ''].filter(Boolean).join('-');
+    try { history.replaceState(history.state, '', d ? '#' + d : location.pathname + location.search); } catch (x) {}
+    pl.innerHTML = wkPlanken(); kies.innerHTML = wkKies();
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'winkeltje/' + (WK.wie || 'iedereen') + '/' + (WK.tot || 'elk'), title: 'Winkeltje: keuze', event: true }); } catch (x) {}
+    var top = pl.getBoundingClientRect().top + window.scrollY - kies.offsetHeight - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 0) - 10;
+    if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+  /* ===== einde WINKELTJE ===== */
   function home() {
     zetTitel('');
     if (RUST) return rustHome();
@@ -1395,6 +1574,7 @@
         '</section>' +
       '</div>';
     if (WIJZER !== 'b') return klassiek;
+    if (WINKEL) return winkelHome(); /* WINKELTJE (live 17-11-2026, GO Marius): de homepage is een cadeauwinkeltje, zie het blok WINKELTJE hierboven */
     /* WIJZER (proef, 11-11-2026, GO Marius): de homepage stelt één vraag. Eerste scherm: voor wie? Daaronder alleen het seizoen, onze favorieten,
        de gelegenheden en gidsen als gewone links, de eigen kleurboeken en 'zo werkt het'. Categorieën, bedrag, acties en belevenissen staan in het menu. */
     var zoWerkt = (/<section class="sectie" data-tel="zo-werkt-het">[\s\S]*?<\/section>/.exec(klassiek) || [''])[0];

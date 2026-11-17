@@ -4,6 +4,7 @@
    Zo laadt de site op een telefoon een stuk sneller. Draait automatisch mee in maak-paginas.js.
    Los draaien: node scripts/splits-producten.js */
 const fs = require('fs'), path = require('path');
+const WIT_IDS = new Set((() => { try { const s = require('fs').readFileSync(require('path').join(__dirname, '..', 'nieuw', 'winkel', 'wit.js'), 'utf8'); const m = /LK_WIT\s*=\s*"([^"]*)"/.exec(s); return m ? m[1].split('|').filter(Boolean) : []; } catch (e) { return []; } })());
 const ROOT = path.resolve(__dirname, '..');
 const { deel } = require('./indeling.js');
 const { plaats } = require('./boom/plaats.js'); // 3.0: nieuwe boom (afd > groep > vak), zie scripts/boom/ // 2.1: nieuwe indeling (vakjes, tags, leeftijd) – producten.js blijft zoals hij is
@@ -84,6 +85,8 @@ function splits() {
     if (p.varianten && p.varianten.length > 1) l.kleuren = p.varianten.length; // kaartje: 'x kleuren'
     /* 17-11-2026: zelf gekozen in de Superkeurkamer (herkomst staat in details); klein vlaggetje voor de proef AFWISSELING in app.js (MIX). */
     if (p.herkomst === 'superkeurkamer') l.zk = 1;
+    /* 17-11-2026 (WINKELTJE, homepage): foto met een witte achtergrond (rand van 8% voor 97% wit, nieuw/winkel/wit.js). Die staat los op de plank; de rest als doosje. */
+    if (WIT_IDS.has(p.id)) l.wt = 1;
     /* 9-11-2026 (wens Marius): op heren-pagina's geen roze foto. Is de hoofdfoto roze en is er een andere kleur, dan krijgt het kaartje daar die foto. */
     if (p.varianten && p.varianten.length > 1 && (p.voor || []).indexOf('hem') !== -1) {
       const ROZE = /roze|pink|ros[eé]\b|rozé|lila|lavendel|paars|purple|blush/i;
