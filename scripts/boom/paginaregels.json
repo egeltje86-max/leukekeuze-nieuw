@@ -761,7 +761,8 @@
    ]
   }
  },
- "met_de_hand": {
+ "fanhoek": {"_uitleg": "17-11-2026 (Marius: 'zet ook die shit bij tieners, dit is toch tienerspeelgoed'): cadeaus uit de fanhoeken (One Piece & anime, Hello Kitty, KPop Demon Hunters, Pokémon) met het label van deze persoon mogen op diens pagina's, ook als ze op geen nagekeken onderwerp passen (figuren, knuffels, mokken). In app.js telt elke hoek als één soort (mix), dus ze overspoelen de pagina niet. Groepen in de oude indeling (3.0).", "tieners": ["speelgoed/one-piece-anime", "speelgoed/hello-kitty", "speelgoed/kpop-demon-hunters", "speelgoed/pokemon-hoek"]},
+  "met_de_hand": {
   "_uitleg": "13-11-2026: cadeaus die Marius zelf voor deze persoon koos (ERBIJ-lijst gelegenheden, blokken per tak). Ze vallen buiten de veilige groepen van die persoon (bijv. mokken bij tieners, een kussen bij hem), maar zijn met de hand gekozen en nagelezen, dus ze mogen toch op diens pagina's. Alleen ids erbij zetten die Marius zelf voor die persoon koos.",
   "tieners": [
    "dvzn-4eb73fa3d5",

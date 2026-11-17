@@ -89,6 +89,9 @@ function pas(alle, root) {
       /* 13-11-2026: met de hand door Marius voor deze persoon gekozen (ERBIJ-lijst per tak), dan mag het toch */
       const mh = (REGELS.met_de_hand || {})[pe.slug];
       if (weg && Array.isArray(mh) && mh.indexOf(p.id) !== -1) weg = false;
+      /* 17-11-2026 (Marius): cadeaus uit de fanhoeken (anime, Hello Kitty, KPop, Pokémon) met het label van deze persoon mogen bij tieners (fanhoek in paginaregels.json) */
+      const fh = (REGELS.fanhoek || {})[pe.slug];
+      if (weg && Array.isArray(fh) && fh.indexOf(o.afd + '/' + o.groep) !== -1) weg = false;
       /* 15-11-2026 (Marius): nooit drank op een Voor wie-pagina, ook niet met de hand gekozen */
       if (p.drank) weg = true;
       if (weg) (nietBij = nietBij || []).push(pe.slug);
