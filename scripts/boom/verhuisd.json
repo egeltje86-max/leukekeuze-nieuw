@@ -51,6 +51,61 @@
    "pokemon-verzamelkaarten",
    "verzamelkaarten-pokemon"
   ],
+  "speelgoed/pokemon-hoek/boxen-collecties": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "boxen-collecties"
+  ],
+  "speelgoed/pokemon-hoek/kaartmappen": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "kaartmappen"
+  ],
+  "speelgoed/pokemon-hoek/knuffels": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "knuffels"
+  ],
+  "speelgoed/pokemon-hoek/figuren": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "figuren"
+  ],
+  "speelgoed/pokemon-hoek/games": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "games"
+  ],
+  "speelgoed/pokemon-hoek/mokken-keuken": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "mokken-keuken"
+  ],
+  "speelgoed/pokemon-hoek/tassen": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "tassen"
+  ],
+  "speelgoed/pokemon-hoek/kleding": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "kleding"
+  ],
+  "speelgoed/pokemon-hoek/kamer": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "kamer"
+  ],
+  "speelgoed/pokemon-hoek/spellen-school": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "spellen-school"
+  ],
+  "speelgoed/pokemon-hoek/andere-verzamelkaarten": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten",
+   "andere-verzamelkaarten"
+  ],
   "elektronica/tablets-e-readers/tablets": [
    "elektronica",
    "tablets-tv-slim-wonen",
@@ -576,6 +631,10 @@
    "spellen-puzzels",
    "puzzels"
   ],
+  "speelgoed/pokemon-hoek": [
+   "spellen-puzzels",
+   "pokemon-verzamelkaarten"
+  ],
   "elektronica/tablets-e-readers": [
    "elektronica",
    "tablets-tv-slim-wonen"
@@ -732,6 +791,17 @@
   "spellen-puzzels/puzzels/legpuzzels": "speelgoed/puzzels/legpuzzels",
   "spellen-puzzels/puzzels/3d-puzzels": "speelgoed/puzzels/3d-puzzels",
   "spellen-puzzels/puzzels/kinderpuzzels": "speelgoed/puzzels/kinderpuzzels",
+  "spellen-puzzels/pokemon-verzamelkaarten/boxen-collecties": "speelgoed/pokemon-hoek/boxen-collecties",
+  "spellen-puzzels/pokemon-verzamelkaarten/kaartmappen": "speelgoed/pokemon-hoek/kaartmappen",
+  "spellen-puzzels/pokemon-verzamelkaarten/knuffels": "speelgoed/pokemon-hoek/knuffels",
+  "spellen-puzzels/pokemon-verzamelkaarten/figuren": "speelgoed/pokemon-hoek/figuren",
+  "spellen-puzzels/pokemon-verzamelkaarten/games": "speelgoed/pokemon-hoek/games",
+  "spellen-puzzels/pokemon-verzamelkaarten/mokken-keuken": "speelgoed/pokemon-hoek/mokken-keuken",
+  "spellen-puzzels/pokemon-verzamelkaarten/tassen": "speelgoed/pokemon-hoek/tassen",
+  "spellen-puzzels/pokemon-verzamelkaarten/kleding": "speelgoed/pokemon-hoek/kleding",
+  "spellen-puzzels/pokemon-verzamelkaarten/kamer": "speelgoed/pokemon-hoek/kamer",
+  "spellen-puzzels/pokemon-verzamelkaarten/spellen-school": "speelgoed/pokemon-hoek/spellen-school",
+  "spellen-puzzels/pokemon-verzamelkaarten/andere-verzamelkaarten": "speelgoed/pokemon-hoek/andere-verzamelkaarten",
   "elektronica/tablets-tv-slim-wonen/tablets": "elektronica/tablets-e-readers/tablets",
   "elektronica/tablets-tv-slim-wonen/e-readers": "elektronica/tablets-e-readers/e-readers",
   "elektronica/tablets-tv-slim-wonen/powerbanks-opladers": "elektronica/tablets-e-readers/powerbanks-opladers",

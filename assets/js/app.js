@@ -455,13 +455,16 @@
          Die cadeaus staan daarom niet meer vooraan; ze blijven in hun vakje en via zoeken gewoon vindbaar. */
       if (p.shop === 'La Redoute') s -= 0.25;
       if (zkMix(p)) s += 0.2; /* proef AFWISSELING: wat Marius zelf in de Superkeurkamer koos naar voren */
-      if (kind) s += (p.afd === 'speelgoed' || p.afd === 'spellen-puzzels') ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'koken-tafelen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
-      if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen' || (p.afd === 'spellen-puzzels' && p.groep !== 'puzzels'))) s += 0.1;
+      /* POKÉMON-HOEK (17-11-2026): de hoek staat bij Spellen & puzzels, maar mokken, tassen en knuffels daaruit krijgen niet het voordeel van speelgoed en spellen */
+      var pkg = p.groep === 'pokemon-verzamelkaarten' && p.vak !== 'verzamelkaarten-pokemon';
+      if (kind) s += (p.afd === 'speelgoed' || (p.afd === 'spellen-puzzels' && !pkg)) ? 0.18 : (p.afd === 'hobby' || p.afd === 'tuin-klussen' || p.afd === 'wonen' || p.afd === 'koken-tafelen' || p.afd === 'beauty-verzorging') ? -0.12 : 0;
+      if (tiener && (p.afd === 'elektronica' || p.groep === 'spellen' || (p.afd === 'spellen-puzzels' && p.groep !== 'puzzels' && !pkg))) s += 0.1;
       /* 9-11-2026 (GO Marius): bezoekers klikken vooral op cadeaus onder €25 (middelste klikprijs €21, op de site €28).
          Die komen daarom wat vaker vooraan; duurdere blijven er gewoon tussen (goedkoop en duur door elkaar). */
       if (typeof p.prijs === 'number') s += p.prijs < 15 ? 0.1 : p.prijs < 25 ? 0.08 : p.prijs < 40 ? 0.03 : p.prijs > 100 ? -0.05 : 0;
       var b = 0; while (typeof p.prijs === 'number' && p.prijs >= GRENZEN[b]) b++;
-      return { p: p, s: s, v: p.vak || p.groep || (p.cat + '/' + p.sub), w: p.shop, b: b };
+      /* Pokémon telt als één soort (anders staan er mokken, tassen en knuffels van Pokémon vlak na elkaar, want dat zijn allemaal andere vakjes) */
+      return { p: p, s: s, v: (p.groep === 'pokemon-verzamelkaarten' || p.p2) ? 'pokemon' : (p.vak || p.groep || (p.cat + '/' + p.sub)), w: p.shop, b: b };
     });
     l.sort(function (x, y) { return y.s - x.s; });
     /* SNEL (13-11-2026): we kiezen steeds de beste van de eerste 14. Eerder schoof daarna de hele lijst één plek op (bij 5.000 cadeaus miljoenen
@@ -728,6 +731,8 @@
     '/c/eten-drinken': { titel: 'Wat zoek je?', top: ['chocolade-snoep', 'cadeaupakketten', 'lekkernijen', 'wijn-bubbels', 'bier-sterke-drank', 'drankaccessoires', 'delicatessen', 'koffie-thee-cacao', 'sterke-drank', 'wijn'] },
     '/c/sport-outdoor': { titel: 'Wat zoek je?', top: ['darts', 'fitness-yoga', 'outdoor-avontuur', 'fietsen-steps', 'balsport-spel', 'metaaldetectie', 'wandelen-hardlopen', 'kamperen-outdoor'] },
     '/c/spellen-puzzels': { titel: 'Wat zoek je?', top: ['bordspellen', 'kaart-partyspellen', 'puzzels', 'kinderspellen', 'breinbrekers-escape', 'pokemon-verzamelkaarten'] },
+    /* POKÉMON-HOEK (17-11-2026): eerst de kaarten (daar komen de meeste fans voor), dan knuffels, figuren, games en tassen */
+    '/c/spellen-puzzels/pokemon-verzamelkaarten': { titel: 'Wat zoek je?', top: ['verzamelkaarten-pokemon', 'boxen-collecties', 'knuffels', 'figuren', 'games', 'tassen'] },
     '/c/koken-tafelen': { titel: 'Wat zoek je?', top: ['koken-bakken', 'koffie-thee-zetten', 'mokken-glazen', 'tafelen-borrel'] },
     /* 9-11-2026 (GO Marius): Belevenissen. Eerst zijn zes favorieten, de rest onder 'Bekijk alle onderwerpen'. */
     '/c/belevenissen': { titel: 'Waar heb je zin in?', vast: [
@@ -1355,6 +1360,8 @@
       { id: 'kast', naam: 'Op tafel & in de kast', klein: 'Mokken, spaarpotten, mooie dingen', ic: I + 'wonen-woondecoratie', naar: '/c/wonen/', f: pad(/^koken-tafelen\/mokken-glazen|^wonen\/woondecoratie/) },
       { id: 'glinster', naam: 'Iets dat glinstert', klein: 'Sieraden en horloges', ic: I + 'mode-sieraden-sieraden', naar: '/c/mode-sieraden/sieraden/', f: pad(/^mode-sieraden\/(sieraden|horloges)/) },
       { id: 'spelen', naam: 'Spelen & bouwen', klein: 'Voor jong en oud', ic: I + 'speelgoed-bouwen', naar: '/c/speelgoed/', f: pad(/^speelgoed\/(bouwen|poppen-knuffels|speelfiguren-voertuigen|leren-ontdekken)|^spellen-puzzels\//) },
+      /* POKÉMON-HOEK (17-11-2026): een eigen plank voor de vele Pokémon-fans; op de andere planken hooguit één of twee Pokémon-dingen (wkPlank) */
+      { id: 'pokemon', naam: 'Voor Pokémon-fans', klein: 'Kaarten, knuffels en meer', ic: 'images/sub/sub-speelgoed-pokemon-verzamelkaarten-w', naar: '/c/spellen-puzzels/pokemon-verzamelkaarten/', f: wkPoke },
       { id: 'game', naam: 'Gamers & snufjes', klein: 'Slimme en gekke gadgets', ic: I + 'elektronica-gaming', naar: '/c/elektronica/gaming/', f: pad(/^elektronica\/(gaming|gadgets|audio)/) },
       { id: 'verwen', naam: 'Even verwennen', klein: 'Bad, geur en zachte zeep', ic: I + 'beauty-verzorging-wellness', naar: '/c/beauty-verzorging/', f: pad(/^beauty-verzorging\//) },
       { id: 'zoet', naam: 'Iets lekkers', klein: 'Chocolade en snoep', ic: I + 'eten-drinken-chocolade-snoep', naar: '/c/eten-drinken/chocolade-snoep/', f: pad(/^eten-drinken\/chocolade-snoep/) },
@@ -1386,6 +1393,8 @@
     return heeft(v, w);
   }
   function wkKern(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3; }).slice(0, 2).join(' '); }
+  /* POKÉMON-HOEK (17-11-2026): alles uit de Pokémon-hoek (ook wat via p2 in een ander vakje staat) */
+  function wkPoke(p) { return p.groep === 'pokemon-verzamelkaarten' || !!p.p2 || /pok[eé]mon|pikachu/i.test(p.titel || ''); }
   function wkPlank(c, pl, al, PRANG) {
     var l = c.ALLES.filter(function (p) { return pl.f(p) && !al[p.id] && wkWieOk(p, WK.wie) && (!WK.tot || p.prijs <= WK.tot); });
     l.forEach(function (p) {
@@ -1397,13 +1406,14 @@
       p._wk = s;
     });
     l.sort(function (a, b) { return a._wk - b._wk; });
-    var uit = [], vak = {};
+    var uit = [], vak = {}, npk = 0;
     for (var ronde = 0; ronde < 2 && uit.length < 12; ronde++) {
       for (var i = 0; i < l.length && uit.length < 12; i++) {
         var p = l[i], vorige = uit[uit.length - 1];
         if (uit.indexOf(p) !== -1 || (vak[p.vak] || 0) >= (ronde ? 3 : 1)) continue;
+        if (pl.id !== 'pokemon' && wkPoke(p) && npk >= (ronde ? 2 : 1)) continue; /* Pokémon heeft een eigen plank */
         if (vorige && (vorige.vak === p.vak || wkKern(vorige.titel) === wkKern(p.titel))) continue;
-        uit.push(p); vak[p.vak] = (vak[p.vak] || 0) + 1;
+        uit.push(p); vak[p.vak] = (vak[p.vak] || 0) + 1; if (wkPoke(p)) npk++;
       }
     }
     return uit;
@@ -1928,6 +1938,8 @@
     zetTitel('Zoek een product – alle soorten op een rij');
     var tel = {}, per = {}, z = LK.zichtbaar();
     for (var i = 0; i < z.length; i++) { var p = z[i]; if (!p.afd) continue; var k = p.afd + '/' + p.groep; tel[k] = (tel[k] || 0) + 1; (per[k] = per[k] || []).push(p); if (p.vak) { k += '/' + p.vak; tel[k] = (tel[k] || 0) + 1; (per[k] = per[k] || []).push(p); } }
+    /* POKÉMON-HOEK (17-11-2026): Pokémon-spullen uit andere vakjes tellen ook mee in de hoek (p2, zie hoortBij in gedeeld.js) */
+    for (var i2 = 0; i2 < z.length; i2++) { var q = z[i2]; if (!q.p2) continue; var k2 = 'spellen-puzzels/pokemon-verzamelkaarten'; tel[k2] = (tel[k2] || 0) + 1; (per[k2] = per[k2] || []).push(q); k2 += '/' + q.p2; tel[k2] = (tel[k2] || 0) + 1; (per[k2] = per[k2] || []).push(q); }
     /* Strakke tegel: rond plaatje boven, naam eronder; alle vakken even breed (zelfde vorm als de onderwerpkaarten op een groepspagina). */
     function soortTegel(naam, naar, beeld, zoek) {
       return '<a class="srt-st srt-kies" href="' + esc(naar) + '" data-z="' + esc(zoek) + '"><span class="srt-st-rond' + (beeld ? '' : ' srt-vt-ico') + '">' + (beeld ? '<img src="' + esc(beeld) + '" alt="" loading="lazy" decoding="async" width="60" height="60">' : ic('raster')) +

@@ -2,6 +2,7 @@
  "_uitleg": [
   "4.0 – nieuwe indeling (proef 11-11-2026, voorstel uit de Superkeurkamer + drie aanpassingen van Claude; NIET live zonder GO van Marius).",
   "15 hoofdcategorieën. Per hoofdcategorie de groepen, en per groep waar hij uit bestaat ('uit'): een oude groep 'afd/groep' of één oud vakje 'afd/groep/vak'.",
+  "17-11-2026 (wens Marius): de groep Pokémon & verzamelkaarten heet nu Pokémon en krijgt ook de vakjes van de verborgen groep speelgoed/pokemon-hoek (blok POKÉMON-HOEK in data.js).",
   "Vakjes houden hun eigen adresnaam; 'alsVak' voegt alle vakjes van een oude groep samen tot één vakje.",
   "Hierna draaien: node scripts/boom/verhuis.js  (schrijft scripts/boom/verhuisd.json en het 4.0-blok onderaan assets/js/data.js). Daarna bouwen + controleren."
  ],
@@ -30,7 +31,7 @@
      { "slug": "kinderspellen", "naam": "Kinderspellen", "beeld": "images/sub/sub-spellen-kinderspellen.webp", "seoTitel": "Kinderspellen – bord- en kaartspellen voor kinderen", "uit": ["speelgoed/spellen/kinderspellen"] },
      { "slug": "breinbrekers-escape", "naam": "Breinbrekers & escape", "seoTitel": "Breinbrekers en escape room-spellen voor thuis", "beeld": "images/sub/sub-voor-tieners-spellen-puzzels-gw-klein.webp", "uit": ["speelgoed/spellen/escape-room-breinbrekers"] },
      { "slug": "puzzels", "naam": "Puzzels", "uit": ["speelgoed/puzzels"] },
-     { "slug": "pokemon-verzamelkaarten", "naam": "Pokémon & verzamelkaarten", "uit": ["speelgoed/spellen/verzamelkaarten-pokemon"] }
+     { "slug": "pokemon-verzamelkaarten", "naam": "Pokémon", "beeld": "images/sub/sub-speelgoed-pokemon-verzamelkaarten-w.webp", "uit": ["speelgoed/spellen/verzamelkaarten-pokemon", "speelgoed/pokemon-hoek"], "tekst": "Alles voor Pokémon-fans, jong en oud: boosterpakjes en Elite Trainer Boxes, kaartmappen, knuffels, Funko Pops, games, mokken, rugzakken en spullen voor je kamer. Gesorteerd per soort, zodat je meteen ziet wat er is.", "seoTitel": "Pokémon cadeaus – kaarten, boosters, knuffels, games en meer" }
     ] },
   { "slug": "elektronica", "naam": "Elektronica & gaming", "kort": "Elektronica",
     "groepen": [

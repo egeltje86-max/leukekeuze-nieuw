@@ -85,6 +85,8 @@
        Oude adressen en de themapagina's (Cadeaus, Valentijn) werken nog via p.cat/p.sub/ookIn hieronder. */
     /* SNEL (13-11-2026): de afdeling en de groep werden bij elk product opnieuw opgezocht (drie keer zoeken per vraag, honderdduizenden vragen
        per pagina). De indeling verandert niet terwijl de pagina open staat: we zoeken hem één keer op per afdeling en groep. */
+    /* POKÉMON-HOEK (17-11-2026): een Pokémon-product uit een ander vakje (Knuffels, Mokken, LEGO ...) staat óók in de hoek; p2 = het vakje daar (scripts/boom/pokemon.js). */
+    if (p.p2 && sub === 'pokemon-verzamelkaarten' && cat === 'spellen-puzzels') return !vak || p.p2 === vak;
     var HZ = hbZoek(cat, sub), nc = HZ.nc, ns = HZ.ns;
     if (nc && p.afd && (!sub || (ns && ns.vakjes))) {
       if (cat === 'christelijk' && sub === 'onder-25') { /* valt hieronder */ }

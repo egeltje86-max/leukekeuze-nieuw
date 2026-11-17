@@ -71,6 +71,7 @@ function splits() {
       const x = VERH.vak[p.afd + '/' + p.groep + '/' + p.vak] || VERH.groep[p.afd + '/' + p.groep];
       if (x) { p.afd = x[0]; p.groep = x[1]; if (x[2]) p.vak = x[2]; n++; } }
     console.log('4.0 nieuwe indeling: ' + n + ' producten op een nieuwe plek'); }
+  const POKE = require('./boom/pokemon.js');
   const ETALAGE_IDS = new Set();
   try { const pk = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, 'top/picks.json'), 'utf8')); Object.keys(pk).forEach(k => { if (Array.isArray(pk[k])) pk[k].forEach(i => ETALAGE_IDS.add(i)); }); } catch (e) {}
   const eersteZin = t => { const m = String(t).match(/^[^.!?]{10,}[.!?]/); let z = (m ? m[0] : String(t)).trim(); if (z.length > 100) z = z.slice(0, 98).replace(/\s+\S*$/, '') + '…'; return z; };
@@ -87,6 +88,8 @@ function splits() {
     if (p.herkomst === 'superkeurkamer') l.zk = 1;
     /* 17-11-2026 (WINKELTJE, homepage): foto met een witte achtergrond (rand van 8% voor 97% wit, nieuw/winkel/wit.js). Die staat los op de plank; de rest als doosje. */
     if (WIT_IDS.has(p.id)) l.wt = 1;
+    /* 17-11-2026 POKÉMON-HOEK: een Pokémon-product in een ander vakje (Knuffels, Mokken, LEGO ...) staat óók in de hoek, bij dit vakje (scripts/boom/pokemon.js). */
+    { const p2 = POKE.tweedePlek(p); if (p2) l.p2 = p2; }
     /* 9-11-2026 (wens Marius): op heren-pagina's geen roze foto. Is de hoofdfoto roze en is er een andere kleur, dan krijgt het kaartje daar die foto. */
     if (p.varianten && p.varianten.length > 1 && (p.voor || []).indexOf('hem') !== -1) {
       const ROZE = /roze|pink|ros[eé]\b|rozé|lila|lavendel|paars|purple|blush/i;
