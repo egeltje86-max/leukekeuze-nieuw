@@ -73,6 +73,7 @@ function splits() {
     console.log('4.0 nieuwe indeling: ' + n + ' producten op een nieuwe plek'); }
   const POKE = require('./boom/pokemon.js');
   const HK = require('./boom/hellokitty.js');
+  const KP = require('./boom/kpop.js');
   const ETALAGE_IDS = new Set();
   try { const pk = JSON.parse(require('fs').readFileSync(require('path').join(__dirname, 'top/picks.json'), 'utf8')); Object.keys(pk).forEach(k => { if (Array.isArray(pk[k])) pk[k].forEach(i => ETALAGE_IDS.add(i)); }); } catch (e) {}
   const eersteZin = t => { const m = String(t).match(/^[^.!?]{10,}[.!?]/); let z = (m ? m[0] : String(t)).trim(); if (z.length > 100) z = z.slice(0, 98).replace(/\s+\S*$/, '') + '…'; return z; };
@@ -97,6 +98,8 @@ function splits() {
     { const p2 = POKE.tweedePlek(p); if (p2) l.p2 = p2; }
     /* 17-11-2026 HELLO KITTY-HOEK: zelfde, maar dan voor de groep Hello Kitty & vriendjes (veld p3, scripts/boom/hellokitty.js). */
     { const p3 = HK.derdePlek(p); if (p3) l.p3 = p3; }
+    /* 17-11-2026 KPOP DEMON HUNTERS-HOEK: veld p4 (scripts/boom/kpop.js). */
+    { const p4 = KP.vierdePlek(p); if (p4) l.p4 = p4; }
     /* 9-11-2026 (wens Marius): op heren-pagina's geen roze foto. Is de hoofdfoto roze en is er een andere kleur, dan krijgt het kaartje daar die foto. */
     if (p.varianten && p.varianten.length > 1 && (p.voor || []).indexOf('hem') !== -1) {
       const ROZE = /roze|pink|ros[eé]\b|rozé|lila|lavendel|paars|purple|blush/i;

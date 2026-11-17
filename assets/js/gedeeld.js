@@ -89,6 +89,8 @@
     if (p.p2 && sub === 'pokemon-verzamelkaarten' && cat === 'spellen-puzzels') return !vak || p.p2 === vak;
     /* HELLO KITTY-HOEK (17-11-2026): zelfde voor de groep Hello Kitty & vriendjes; p3 = het vakje daar (scripts/boom/hellokitty.js). */
     if (p.p3 && sub === 'hello-kitty' && cat === 'speelgoed') return !vak || p.p3 === vak;
+    /* KPOP DEMON HUNTERS-HOEK (17-11-2026): p4 = het vakje daar (scripts/boom/kpop.js). */
+    if (p.p4 && sub === 'kpop-demon-hunters' && cat === 'speelgoed') return !vak || p.p4 === vak;
     var HZ = hbZoek(cat, sub), nc = HZ.nc, ns = HZ.ns;
     if (nc && p.afd && (!sub || (ns && ns.vakjes))) {
       if (cat === 'christelijk' && sub === 'onder-25') { /* valt hieronder */ }
