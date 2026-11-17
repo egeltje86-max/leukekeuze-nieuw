@@ -4137,11 +4137,16 @@
     }).join('');
     return '<section class="tt-hero"><div class="binnen"><p class="kicker">Gezien op TikTok</p><h1>Alle cadeaus uit onze filmpjes</h1>' +
         '<p>Zag je iets leuks in een filmpje? Hier staat het, met de prijs en een knop naar de winkel. Het nieuwste filmpje staat bovenaan. Iets anders zoeken? Typ het in het zoekvak hierboven.</p>' +
+        /* 17-11-2026 (Marius: 'het is jouw website, klanten geven wat ze willen'; brief Amazon Storefront): de reels 'Gespot bij Amazon' verwijzen naar de link in het profiel (deze pagina).
+           Die cadeaus staan in de ideeënlijsten op de Amazon Storefront, dus hier één duidelijke knop ernaartoe. */
+        '<p class="tt-amz"><span>Filmpje met <b>Gespot bij Amazon</b>? Die cadeaus staan in onze lijsten op Amazon.</span>' +
+        '<a class="knop knop-goud" href="https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21" target="_blank" rel="sponsored noopener">Ook op Amazon: bekijk onze lijsten</a></p>' +
 
       '</div></section><div class="binnen tt">' + rijmBlok('home') + rijen +
       '<section class="tt-slot"><h2>Nog meer ideeën</h2><div class="tt-links">' +
         '<a class="knop knop-rand" href="/collectie/grappige-cadeaus">Grappige cadeaus</a><a class="knop knop-rand" href="/collectie/schoencadeautjes">Schoencadeautjes</a>' +
-        '<a class="knop knop-rand" href="/c/cadeaus/onder-15">Cadeaus onder € 15</a><a class="knop knop-rand" href="/lootjes-trekken/">Gratis lootjes trekken</a></div>' +
+        '<a class="knop knop-rand" href="/c/cadeaus/onder-15">Cadeaus onder € 15</a><a class="knop knop-rand" href="/lootjes-trekken/">Gratis lootjes trekken</a>' +
+        '<a class="knop knop-rand" href="https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21" target="_blank" rel="sponsored noopener">Onze lijsten op Amazon</a></div>' +
         '<p class="tt-klein">De prijs kan bij de winkel iets anders zijn dan in het filmpje. Op de pagina van elk cadeau staat wanneer wij de prijs hebben gecontroleerd.</p></section></div>';
   }
   function lootjes(q) {

@@ -2461,6 +2461,10 @@ html.nova9 .meer-knop.groot .knop-rand:hover, .meer-knop.groot .knop-rand:hover 
 .tt-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 12px; }
 .tt-links .knop { min-height: 46px; padding-left: 16px; padding-right: 16px; max-width: 100%; white-space: normal; }
 .tt-klein { font-size: 14px; color: #141A2A; opacity: .8; }
+/* 17-11-2026: knop naar de Amazon-lijsten (Storefront) in de kop van /tiktok. */
+.tt-hero .tt-amz { margin: 14px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.tt-hero .tt-amz b { color: #F2CB74; font-weight: 700; }
+.tt-hero .tt-amz .knop { min-height: 46px; padding-left: 16px; padding-right: 16px; max-width: 100%; white-space: normal; text-align: center; }
 
 /* ===== ZOEKBALK 2.0 (15-11-2026, Marius: 'maak hem mooier en vooral veel beter'). Tips onder het zoekvak:
    bovenaan de pagina die precies past (groot, rond plaatje, 'Ga naar'), dan andere pagina's, dan cadeaus met foto en prijs. */
