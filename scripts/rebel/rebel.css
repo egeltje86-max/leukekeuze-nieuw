@@ -1,0 +1,197 @@
+/* =========================================================
+   NOVA REBEL – DUTCH OVERDRIVE (voorbeeld, 18-11-2026)
+   Alleen het uiterlijk. Alles hangt aan html.rebel; zonder die klasse verandert er niets.
+   Kleuren uit de icoontjes van Nova: zwart, knalgeel, rood-wit-blauw.
+   ========================================================= */
+html.rebel {
+  --rb-zwart: #0B0B0B;
+  --rb-geel: #FFF200;
+  --rb-geel-2: #FFE800;
+  --rb-rood: #E8101E;
+  --rb-blauw: #0038E8;
+  --rb-papier: #FFFFFF;
+  --rb-grijs: #F4F4F0;
+  --rb-hard: 4px 4px 0 var(--rb-zwart);
+  --rb-hard-s: 3px 3px 0 var(--rb-zwart);
+  --rb-vlag: linear-gradient(180deg, var(--rb-rood) 0 33.4%, #FFFFFF 33.4% 66.6%, var(--rb-blauw) 66.6% 100%);
+  --rb-dots: radial-gradient(circle, rgba(11,11,11,.16) 1.3px, transparent 1.7px);
+
+  --bg: #FFFFFF;
+  --bg-2: #FFFFFF;
+  --kaart: #FFFFFF;
+  --kaart-2: var(--rb-grijs);
+  --knop-bg: #FFFFFF;
+  --knop-bg-hover: var(--rb-geel);
+  --knop-lijn: var(--rb-zwart);
+  --lijn: rgba(11,11,11,.18);
+  --lijn-sterk: var(--rb-zwart);
+  --lijn-zacht: rgba(11,11,11,.1);
+  --goud: var(--rb-zwart);
+  --goud-licht: var(--rb-geel);
+  --goud-donker: var(--rb-blauw);
+  --tekst: #0B0B0B;
+  --tekst-2: #2E2E2E;
+  --tekst-3: #4A4A4A;
+  --f-kop: 'Manrope', system-ui, sans-serif;
+  --schaduw: var(--rb-hard-s);
+  --gloed: 0 0 0 2px var(--rb-zwart), var(--rb-hard-s);
+}
+html.rebel body { background: #FFFFFF; color: var(--rb-zwart); }
+
+/* ---------- Koppen: zwaar en strak in plaats van sierlijk ---------- */
+html.rebel :is(h1, h2, h3, .sectie-kop h2, .wz-uit h2, .paginakop h1, .product-info h1) {
+  font-family: 'Manrope', system-ui, sans-serif !important; font-weight: 800 !important; letter-spacing: -.025em; color: var(--rb-zwart);
+}
+html.rebel :is(h1, .paginakop h1) { line-height: 1.08; }
+/* gele markeerstift onder de grote koppen */
+html.rebel :is(.wzh-vraag h1, .paginakop h1, .wz-uit h2, .sectie-kop h2, .wzh-cat-kop, .product-info h1, .verder h2) {
+  text-decoration-line: underline; text-decoration-color: var(--rb-geel); text-decoration-thickness: .34em;
+  text-underline-offset: -.2em; text-decoration-skip-ink: none;
+}
+html.rebel .sectie-kop h2::after { width: 54px !important; height: 7px !important; border-radius: 0 !important; background: var(--rb-vlag) !important; box-shadow: 0 0 0 1.5px var(--rb-zwart); transform: skewX(-18deg); }
+html.rebel .sectie-kop h2 { padding-bottom: 14px; }
+/* labels boven een kop: zwarte schuine sticker met gele letters */
+html.rebel :is(.sectie-kop .kicker, .kicker) { display: inline-block; background: var(--rb-zwart); color: var(--rb-geel) !important; padding: 5px 9px 4px; transform: skewX(-10deg); letter-spacing: .14em; font-weight: 800; }
+html.rebel :is(.wz-vraag, .srt-kies, .wzh-soort .wz-vraag) { color: var(--rb-zwart) !important; font-weight: 800 !important; letter-spacing: .12em; }
+
+/* ---------- Kop, zoekbalk en vlag ---------- */
+html.rebel .topbalk { background: #000; color: #EDEDED; }
+html.rebel .topbalk svg { color: var(--rb-geel); }
+html.rebel .header, html.rebel .zoekrij { background: #000 !important; }
+html.rebel .logo { color: #FFFFFF; font-family: 'Manrope', sans-serif; font-weight: 800; letter-spacing: -.02em; }
+html.rebel .logo .k { color: var(--rb-geel) !important; }
+html.rebel .logo img { filter: saturate(1.6) brightness(1.18) hue-rotate(8deg); }
+html.rebel .icoonknop { color: #FFFFFF; }
+html.rebel .icoonknop .teller { background: var(--rb-geel); color: #000; }
+html.rebel .zoekrij { position: relative; padding-bottom: 18px !important; }
+html.rebel .zoekrij::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; background: var(--rb-vlag); }
+html.rebel .zoek { background: #FFFFFF !important; border: 3px solid var(--rb-geel) !important; box-shadow: none !important; border-radius: 999px; }
+html.rebel .zoek input { color: #000; font-weight: 600; }
+html.rebel .zoek input::placeholder { color: #555; }
+html.rebel .zoek button { background: var(--rb-geel) !important; color: #000 !important; border: 2px solid #000 !important; box-shadow: none !important; }
+html.rebel .aftel-getal { background: var(--rb-geel) !important; color: #000 !important; border: 2px solid #000; box-shadow: none !important; }
+html.rebel .aftel-zin { text-shadow: 0 2px 6px rgba(0,0,0,.9); }
+
+/* ---------- Knoppen ---------- */
+html.rebel :is(.knop-goud, .prodkaart .kaart-koop) {
+  background: var(--rb-geel) !important; color: #000 !important; border: 2.5px solid #000 !important;
+  box-shadow: var(--rb-hard-s) !important; font-family: 'Manrope', sans-serif; font-weight: 800 !important; text-shadow: none !important;
+}
+html.rebel .knop-goud::after { display: none !important; }
+html.rebel :is(.knop-goud, .prodkaart .kaart-koop):active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000 !important; }
+html.rebel .prodkaart .kaart-koop { border-radius: 12px !important; }
+html.rebel .knop-rand { background: #FFFFFF !important; border: 2.5px solid #000 !important; color: #000 !important; box-shadow: var(--rb-hard-s) !important; font-weight: 800; }
+html.rebel .meer-knop.groot .knop-rand { background: #000 !important; color: var(--rb-geel) !important; }
+html.rebel .meer-knop.groot .knop-rand small { color: #FFFFFF !important; }
+html.rebel .chip { background: #FFFFFF !important; border: 2px solid #000 !important; color: #000 !important; font-weight: 800 !important; box-shadow: 2px 2px 0 #000; }
+html.rebel .chip:is([aria-pressed="true"], [aria-current="true"], .aan) { background: #000 !important; color: var(--rb-geel) !important; }
+html.rebel a.meer, html.rebel .meer { color: var(--rb-blauw) !important; font-weight: 800; }
+html.rebel :is(.feiten a, .kruimel a, .product-info a:not(.knop)) { color: var(--rb-blauw); text-decoration-color: var(--rb-blauw); }
+html.rebel .kruimel { color: #333; }
+
+/* ---------- Homepage ---------- */
+/* het blok 'Voor wie' wordt geel met stipjes, zoals de icoontjes */
+html.rebel .wzh-vraag { position: relative; isolation: isolate; padding-top: 18px; padding-bottom: 22px; margin-bottom: 8px; }
+html.rebel .wzh-vraag::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%);
+  background-color: var(--rb-geel); background-image: var(--rb-dots); background-size: 9px 9px; border-bottom: 3px solid #000; }
+html.rebel .wzh-vraag h1 { text-decoration: none; font-size: clamp(30px, 8.4vw, 44px); }
+html.rebel .wzh-vraag .wzh-sub { color: #111 !important; font-weight: 600; }
+html.rebel .srt-wissel a { background: #FFFFFF !important; border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; color: #000 !important; }
+html.rebel .srt-wissel a.aan { background: #000 !important; color: #FFFFFF !important; }
+html.rebel .srt-wissel a.aan .srt-w-t small { color: var(--rb-geel) !important; }
+html.rebel .srt-wissel a :is(svg, .srt-pijl, .srt-vink) { color: #000; }
+html.rebel .srt-wissel a.aan :is(svg, .srt-vink) { color: var(--rb-geel); }
+html.rebel .srt-wissel a img { box-shadow: 0 0 0 2px #000; }
+html.rebel .wzh-tegel { background: #FFFFFF !important; border: 2.5px solid #000 !important; border-radius: 14px !important; box-shadow: var(--rb-hard) !important; color: #000 !important; font-weight: 800; }
+html.rebel .wzh-tegel:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #000 !important; }
+html.rebel .wzh-rond { border: 2.5px solid #000 !important; background: #000; }
+html.rebel .wzh-rond.wzh-icoon { background: #000 !important; color: var(--rb-geel) !important; }
+html.rebel .srij-rond { box-shadow: 0 0 0 3px var(--rb-geel), 0 0 0 5.5px #000 !important; background: #000; }
+html.rebel .srij-item { color: #000; font-weight: 800; }
+html.rebel .srij-rond:has(svg) { color: var(--rb-geel); }
+html.rebel .mini-tegel { background: #FFFFFF !important; border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; color: #000 !important; font-weight: 800; }
+html.rebel .mini-tegel .mt-rond { box-shadow: 0 0 0 2px #000 !important; background: #000 !important; }
+html.rebel .mini-tegel .mt-rond.mt-ico { color: var(--rb-geel) !important; }
+/* lootjes en rijmmachine: zwarte balk met geel */
+html.rebel .rz-smal { background: #000 !important; border: 2.5px solid #000 !important; box-shadow: 4px 4px 0 var(--rb-geel), 4px 4px 0 2.5px #000 !important; color: #FFFFFF !important; }
+html.rebel .rz-smal b, html.rebel .rz-smal b * { color: #FFFFFF !important; }
+html.rebel .rz-smal b em, html.rebel .rz-smal b span { color: var(--rb-geel) !important; }
+html.rebel .rz-smal small { color: #E6E6E6 !important; }
+html.rebel .rz-smal img { box-shadow: 0 0 0 2.5px var(--rb-geel) !important; border-color: var(--rb-geel) !important; }
+html.rebel :is(.rz-smal, .seizoen-kaart, .eigen-link) .ga { background: var(--rb-geel) !important; color: #000 !important; border: 2px solid #000; box-shadow: none !important; }
+/* seizoenkaarten */
+html.rebel .seizoen-kaart { border: 3px solid #000 !important; box-shadow: var(--rb-hard) !important; border-radius: 16px !important; }
+html.rebel .seizoen-kaart :is(.kicker) { background: var(--rb-geel); color: #000 !important; }
+html.rebel .seizoen-kaart .knop, html.rebel .seizoen-kaart .actie-knop { background: var(--rb-geel) !important; color: #000 !important; border: 2px solid #000 !important; box-shadow: none !important; }
+/* favoriete winkels, gidsen */
+html.rebel :is(.wt-tegel, .gidskaart, .eigen-link) { border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; border-radius: 14px !important; background: #FFFFFF; }
+html.rebel .tekstlinks a { color: var(--rb-blauw); font-weight: 700; }
+
+/* ---------- Productkaart ---------- */
+html.rebel .prodkaart { background: #FFFFFF !important; border: 2.5px solid #000 !important; border-radius: 14px !important; box-shadow: var(--rb-hard) !important; }
+html.rebel .prodkaart .beeld { border-bottom: 2.5px solid #000; background: #FFFFFF; }
+html.rebel .prodkaart .shop { color: var(--rb-blauw) !important; font-weight: 800 !important; letter-spacing: .08em; }
+html.rebel .prodkaart h3, html.rebel .prodkaart h3 a { color: #000 !important; font-family: 'Manrope', sans-serif !important; font-weight: 800 !important; text-decoration: none; letter-spacing: -.01em; }
+html.rebel .prodkaart .prijs, html.rebel .product .prijs { color: #000 !important; font-family: 'Manrope', sans-serif; font-weight: 800 !important; }
+html.rebel .prodkaart .reden { color: #2E2E2E !important; }
+html.rebel .prodkaart .reden::before, html.rebel .prodkaart .reden svg { color: var(--rb-rood) !important; }
+html.rebel .prodkaart .ruil { color: #1A1A1A !important; }
+html.rebel .prodkaart .ruil svg { color: var(--rb-blauw) !important; }
+html.rebel .hartje, html.rebel .hartknop { background: #FFFFFF !important; border: 2px solid #000 !important; color: #000 !important; box-shadow: 2px 2px 0 #000 !important; }
+html.rebel .hartje[aria-pressed="true"], html.rebel .hartknop[aria-pressed="true"] { background: var(--rb-rood) !important; color: #FFFFFF !important; }
+html.rebel .prodkaart .beeld .label, html.rebel .prodkaart .label { background: #000 !important; color: var(--rb-geel) !important; border: 0 !important; font-weight: 800 !important; letter-spacing: .1em; transform: skewX(-8deg); border-radius: 3px !important; }
+html.rebel .prodkaart .label.fav, html.rebel .prodkaart .label:is(.favoriet, .topkeuze) { background: var(--rb-rood) !important; color: #FFFFFF !important; }
+html.rebel .prodkaart .label.korting, html.rebel .prodkaart .label.deal { background: var(--rb-rood) !important; color: #FFFFFF !important; }
+
+/* ---------- Lijstpagina (Voor haar, categorieën) ---------- */
+html.rebel .paginakop { background: var(--rb-geel) !important; background-image: var(--rb-dots) !important; background-size: 9px 9px !important; border-bottom: 3px solid #000; }
+html.rebel .paginakop .achter { display: none !important; }
+html.rebel .paginakop h1 { text-decoration: none; font-size: clamp(34px, 9vw, 52px); }
+html.rebel .paginakop .kruimel, html.rebel .paginakop .kruimel a { color: #000 !important; font-weight: 600; }
+html.rebel .paginakop :is(p, .intro) { color: #111 !important; }
+html.rebel .wz-uit p { color: #2E2E2E; }
+html.rebel .sectie hr, html.rebel .wz-keuze { border-color: #000 !important; }
+
+/* ---------- Productpagina ---------- */
+html.rebel .product-beeld { border: 2.5px solid #000 !important; box-shadow: var(--rb-hard) !important; border-radius: 14px !important; background: #FFFFFF !important; }
+html.rebel .product-info .shop { color: var(--rb-blauw) !important; font-weight: 800; letter-spacing: .1em; }
+html.rebel .product-acties .knop-goud { border-radius: 14px !important; min-height: 56px; font-size: 17px; }
+html.rebel .product-plak { background: #000 !important; border-top: 3px solid var(--rb-geel) !important; }
+html.rebel .product-plak .prijs { color: #FFFFFF !important; }
+html.rebel :is(.wh-bezorg, .gedicht-knop, .waarom) { border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; border-radius: 14px !important; background: #FFFFFF !important; }
+html.rebel .waarom { border-left-width: 10px !important; border-left-color: var(--rb-geel) !important; outline: 0; }
+html.rebel .waarom h2 { color: #000 !important; text-decoration: none; }
+html.rebel .waarom h2 svg { color: var(--rb-rood) !important; }
+html.rebel :is(.wh-bezorg h2) { text-decoration: none; }
+html.rebel :is(.wh-bezorg, .gedicht-knop, .feiten) svg { color: var(--rb-blauw) !important; }
+html.rebel .verder-rij, html.rebel .verder a, html.rebel .zoekverder a { border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; }
+
+/* ---------- Onderbalk, menu en voet ---------- */
+html.rebel .onderbalk { background: #000 !important; border-top: 0 !important; }
+html.rebel .onderbalk::before { content: ""; position: absolute; left: 0; right: 0; top: -6px; height: 6px; background: var(--rb-vlag); }
+html.rebel .onderbalk :is(a, button) { color: #FFFFFF !important; font-weight: 700; }
+html.rebel .onderbalk [aria-current="page"] { color: var(--rb-geel) !important; }
+html.rebel .onderbalk [aria-current="page"] svg { color: var(--rb-geel) !important; }
+html.rebel .footer { background: #000 !important; color: #E6E6E6 !important; border-top: 0; position: relative; }
+html.rebel .footer::before { content: ""; display: block; height: 9px; background: var(--rb-vlag); }
+html.rebel .footer :is(h3, h4, strong) { color: var(--rb-geel) !important; }
+html.rebel .footer a { color: #FFFFFF !important; }
+html.rebel .naarboven { background: var(--rb-geel) !important; color: #000 !important; border: 2px solid #000 !important; box-shadow: var(--rb-hard-s) !important; }
+
+/* ---------- Rechtzettingen na de eerste schermafbeeldingen ---------- */
+html.rebel .paginakop::after, html.rebel .paginakop::before { display: none !important; }
+html.rebel .paginakop { border-bottom: 3px solid #000 !important; }
+html.rebel :is(.actie, .seizoen-kaart) :is(h2, h3) { color: #FFFFFF !important; text-decoration: none !important; text-shadow: 0 2px 8px rgba(0,0,0,.85); }
+html.rebel .seizoen-kaart.klein :is(h2, h3) { font-size: 17px !important; line-height: 1.12; overflow-wrap: normal; word-break: normal; hyphens: auto; }
+html.rebel .seizoen-kaart.klein .kicker { letter-spacing: .06em !important; font-size: 9.5px !important; }
+html.rebel .seizoen-kaart :is(p) { color: #F2F2F2 !important; }
+html.rebel .srt-wissel .srt-w-p { background: var(--rb-geel) !important; color: #000 !important; box-shadow: 0 0 0 2px #000; }
+html.rebel .srt-wissel a.aan .srt-w-p { background: var(--rb-geel) !important; color: #000 !important; box-shadow: none; }
+html.rebel .srt-wissel .srt-w-t small { color: #333 !important; }
+html.rebel .srt-wissel a.aan .srt-w-t small { color: var(--rb-geel) !important; }
+html.rebel .srt-pijl { color: #000 !important; }
+html.rebel :is(.werkbalk, .mobiel-balk, .filterpaneel) { background: #FFFFFF !important; border-color: #000 !important; }
+html.rebel .mobiel-balk { border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; border-radius: 14px !important; }
+html.rebel :is(.mb-sorteer, .mb-filter, .filterknop, .sorteer) { color: #000 !important; font-weight: 800 !important; border-color: #000 !important; }
+html.rebel .werkbalk-onder { border-color: rgba(0,0,0,.2) !important; }
+@media (max-width: 759px) { html.rebel .seizoen-kaart.klein :is(h2, h3) { font-size: 14.5px !important; letter-spacing: -.03em; } }
