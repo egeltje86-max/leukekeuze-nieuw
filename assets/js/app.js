@@ -5464,8 +5464,8 @@
           ids: ['bol-9300000408782128', 'dw-680275066859', 'mindf-6e1985bec2', 'wwk-2280887', '999g-999exi30'] },
         { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
           ids: ['amz-b0gr96fwxr', 'amz-b0hmfl96b8', 'massa-152af9d255'] },
-        { kop: 'Nu in trek: LEGO', tekst: 'De adventskalenders van LEGO horen bij de best verkochte van dit moment. Elke dag bouw je een klein modelletje of krijg je een poppetje, en met kerst heb je een hele wereld bij elkaar. Kijk ook naar de prijs: bij Amazon zijn ze nu een stuk goedkoper dan de adviesprijs.',
-          ids: ['cl-lego-advent', 'bol-9300000265640019'] }
+        { kop: 'Om te bouwen: LEGO, Playmobil en Mega', tekst: 'Elke dag bouw je een klein modelletje of krijg je een poppetje, en met kerst heb je een hele wereld bij elkaar.',
+          ids: ['bol-9300000265640019', 'bol-9300000384469927', 'cl-mc-advent', 'cl-lego-advent'] } /* 18-11-2026: geen 'goedkoper dan de adviesprijs' meer; LEGO City is uitverkocht bij Amazon (andere verkopers, te duur) */
       ],
       slot: 'Meer lekkers voor december vind je bij <a href="/c/eten-drinken">Eten &amp; drinken</a> en alle kerstspullen bij <a href="/c/cadeaus/kerst">Kerst</a>. Zoek je een kerstcadeau? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor haar</a> of <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor hem</a>.' },
     { slug: 'kerstcadeau-kind', beeld: 'woewoe-6e48434b3c', vakken: ['cadeaus/kerst', 'cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/lego'],
@@ -6961,10 +6961,30 @@
   }
   /* 12-11-2026: een gids met een prijsgrens ('max', bijv. Cadeau van 10 euro) toont nooit iets dat duurder is geworden. */
   function gidsTeDuur(g, p) { return !!(g && g.max && Number(p.prijs) > g.max); }
+  /* 18-11-2026: een product dat is samengevoegd (zelfde product, andere winkel) telt in een gids als het product waarin het is opgegaan.
+     Eerder viel het gewoon weg: 'Sinterklaascadeau voor een man' beloofde 20 ideeën en toonde er 19 (Hitster). */
+  function gidsVind(id) {
+    var p = LK.vind(id);
+    if (p && p.status === 'samengevoegd' && p.samengevoegd) { var q = LK.vind(p.samengevoegd); if (q) return q; }
+    return p;
+  }
+  function gidsOk(g, p) { return !!(p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true)); }
+  /* 18-11-2026: belooft de titel een aantal ('20 ideeën'), dan volgt dat getal overal in de gids (titel, inleiding, vragen) het aantal cadeaus
+     dat de gids echt toont. Alleen het getal uit de titel, en alleen als het hoger is dan wat er te zien is (een cadeau is uitverkocht of te duur
+     geworden). Andere getallen ('24 cadeautjes' in een adventskalender) blijven staan. De bouw doet hetzelfde met de Google-titel (LK_GIDS_GETAL). */
+  var GIDS_GETAL = /\b(\d+)(?=\s+(?:(?:leuke|goede|mooie|originele|toffe|kleine|handige|grappige|warme)\s+)?(?:ideeën|ideeen|cadeaus|cadeau-ideeën|cadeautjes|kerstcadeaus|cadeautips)\b)/g;
+  function gidsBelooft(g) { GIDS_GETAL.lastIndex = 0; var m = GIDS_GETAL.exec(g.titel || ''); GIDS_GETAL.lastIndex = 0; return m ? +m[1] : 0; }
+  function gidsGetal(g, t) {
+    if (!t || !g || !g.delen) return t;
+    var b = gidsBelooft(g); if (!b) return t;
+    var n = gidsZichtbaar(g).length;
+    return n && n < b ? String(t).replace(GIDS_GETAL, function (m) { return +m === b ? String(n) : m; }) : t;
+  }
+  function gidsTitel(g) { return gidsGetal(g, g.titel); }
   /* Prijsbereik van een gids, uitgerekend met de prijzen van nu (vaste bedragen in teksten raakten verouderd). */
   function gidsZichtbaar(g) {
     var uit = [];
-    g.delen.forEach(function (d) { (d.ids || []).forEach(function (id) { var p = LK.vind(id); if (p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true) && uit.indexOf(p) < 0) uit.push(p); }); });
+    g.delen.forEach(function (d) { (d.ids || []).forEach(function (id) { var p = gidsVind(id); if (gidsOk(g, p) && uit.indexOf(p) < 0) uit.push(p); }); });
     return uit;
   }
   function gidsBereik(g) {
@@ -6978,10 +6998,10 @@
   }
   function gidsKaart(g) {
     /* Kaartbeeld: het product in 'beeld' (met de hand gekozen), anders het eerste product uit de gids. */
-    var eerste = (g.beeld && LK.vind(g.beeld)) || g.delen[0].ids.map(function (id) { return LK.vind(id); }).filter(Boolean)[0];
+    var eerste = (g.beeld && gidsVind(g.beeld)) || g.delen[0].ids.map(function (id) { return gidsVind(id); }).filter(Boolean)[0];
     if (eerste && eerste.drank && !g.drank) eerste = gidsZichtbaar(g)[0] || null; /* 15-11-2026: geen fles als plaatje van een gewone gids */
     return '<a class="gidskaart" href="/gids/' + g.slug + '">' + '<span class="gidsbeeld">' + (eerste ? LK.productBeeld(eerste) : '') + '</span>' +
-      '<span><strong>' + esc(g.titel) + '</strong><small>' + esc(gidsKort(g)) + '</small></span></a>';
+      '<span><strong>' + esc(gidsTitel(g)) + '</strong><small>' + esc(gidsGetal(g, gidsKort(g))) + '</small></span></a>';
   }
   /* Gidsen 2.0: één cadeau als rij met foto, winkel, naam, de uitleg 'waarom' (uit de productgegevens), prijs en een knop. */
   function gidsItem(p, i) {
@@ -6998,7 +7018,7 @@
   }
   /* Vak 'Snel kiezen': de 3 favorieten uit de gids (veld 'top' in GIDS_EXTRA: [label, product-id]). Uitverkocht = weggelaten. */
   function gidsTop(g) {
-    var t = (g.top || []).map(function (x) { var p = LK.vind(x[1]); return p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true) ? [x[0], p] : null; }).filter(Boolean);
+    var t = (g.top || []).map(function (x) { var p = gidsVind(x[1]); return gidsOk(g, p) ? [x[0], p] : null; }).filter(Boolean);
     if (!t.length) return '';
     return '<aside class="gids-top" aria-label="Snel kiezen"><div class="gt-kop">' + ic('ster') + '<div><h2>Snel kiezen</h2><p>Weinig tijd? Dit zijn onze ' + (t.length === 3 ? 'drie' : t.length) + ' favorieten uit deze gids.</p></div></div>' +
       '<div class="gt-lijst">' + t.map(function (x) {
@@ -7010,12 +7030,14 @@
   /* Veelgestelde vragen (veld 'faq': [vraag, antwoord]). Klapvakjes, plus FAQ-gegevens zodat Google ze kan tonen. */
   function gidsFaq(g) {
     if (!g.faq || !g.faq.length) return '';
-    var ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faq.map(function (f) { return { '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }; }) };
+    var faq = g.faq.map(function (f) { return [gidsGetal(g, f[0]), gidsGetal(g, f[1])]; }); /* 18-11-2026: ook hier het echte aantal */
+    var ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(function (f) { return { '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }; }) };
     return '<section class="tekstpagina gids gids-faq" id="vragen"><h2>Veelgestelde vragen</h2>' +
-      g.faq.map(function (f) { return '<details><summary>' + esc(f[0]) + ic('omlaag') + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join('') +
+      faq.map(function (f) { return '<details><summary>' + esc(f[0]) + ic('omlaag') + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join('') +
       '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script></section>';
   }
   function gids(slug) {
+    window.LK_GIDS_GETAL = null;
     if (!slug) {
       zetTitel('Cadeaugidsen');
       window.LK_SEO = 'Cadeaugidsen van LeukeKeuze: per gelegenheid de beste cadeau-ideeën op een rij, met de hand gekozen en in gewone woorden uitgelegd.';
@@ -7024,17 +7046,20 @@
     }
     var g = GIDSEN.filter(function (x) { return x.slug === slug; })[0];
     if (!g) return nietGevonden();
-    zetTitel(g.titel);
+    var gTitel = gidsTitel(g);
+    window.LK_GIDS_GETAL = [gidsBelooft(g), gidsZichtbaar(g).length]; /* voor de bouw: beloofd en echt */
+    zetTitel(gTitel);
     /* 8-11-2026: de 'waarom'-teksten van gidsproducten staan in de lijst; ontbreekt er toch een (nieuw product), dan de details erbij laden. */
     if (!window.LK_DETAILS && (g.delen || []).some(function (d) { return (d.ids || []).some(function (id) { var p = LK.vind(id); return p && !p.waarom; }); })) laadDetails(function () { if (location.pathname.indexOf('/gids/' + slug) === 0) toon(); });
-    window.LK_SEO = gidsKort(g) + ' ' + g.intro.split('. ')[0] + '.';
+    window.LK_SEO = gidsGetal(g, gidsKort(g) + ' ' + g.intro.split('. ')[0] + '.');
     /* Stap 6 indeling (6-11-2026, plan deel 8): intro van 3 zinnen (de rest achter 'Lees verder'), springlinks naar de delen,
        per deel producten 2 naast elkaar, onderaan 'Lees ook' en de link naar het vakje. */
-    var zinnen = g.intro.match(/[^.!?]+[.!?]+(\s|$)/g) || [g.intro];
+    var intro = gidsGetal(g, g.intro), zinnen = intro.match(/[^.!?]+[.!?]+(\s|$)/g) || [intro];
     var introKort = zinnen.slice(0, 3).join('').trim(), introRest = zinnen.slice(3).join('').trim();
+    var gidsGezien = {};
     var delenMet = g.delen.map(function (d, i) { return Object.assign({ nr: i + 1 }, d); }).filter(function (d) {
       if (!d.ids) return true;
-      d.lijst2 = sfeerEerst(d.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && !p.verborgen && p.status === 'goedgekeurd' && !gidsTeDuur(g, p) && (!p.drank || g.drank || window.LK_DRANK_OVERAL === true); })); /* 15-11-2026: drank alleen in een drankgids (g.drank) */ /* uitverkochte producten niet tonen; in een gids met een prijsgrens ook niets dat inmiddels duurder is */
+      d.lijst2 = sfeerEerst(d.ids.map(function (id) { return gidsVind(id); }).filter(function (p) { if (!gidsOk(g, p) || gidsGezien[p.id]) return false; gidsGezien[p.id] = 1; return true; })); /* 18-11-2026: samengevoegd = het product waarin het opging, en geen cadeau twee keer */ /* 15-11-2026: drank alleen in een drankgids (g.drank) */ /* uitverkochte producten niet tonen; in een gids met een prijsgrens ook niets dat inmiddels duurder is */
       return d.lijst2.length > 0;
     });
     var spring = delenMet.length > 1 ? '<nav class="chips vakjesrij omlopend springlinks" aria-label="In deze gids">' + delenMet.map(function (d) { return '<a class="chip" href="#deel-' + d.nr + '">' + esc(d.kop) + '</a>'; }).join('') + (g.faq && g.faq.length ? '<a class="chip" href="#vragen">Vragen</a>' : '') + '</nav>' : '';
@@ -7046,7 +7071,7 @@
     var meta = '<p class="gids-meta"><span>' + ic('klok') + Math.max(2, Math.round(woorden / 200)) + ' min lezen</span>' +
       (aantal ? '<span>' + ic('cadeau') + aantal + ' cadeaus' + (gidsBereik(g) ? ', ' + gidsBereik(g).replace('Van', 'van').replace('.', '') : '') + '</span>' : '') +
       '<span>' + ic('vink') + 'Bijgewerkt ' + (g.bijgewerkt || 'november 2026') + '</span></p>';
-    var h = paginakop({ titel: g.titel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: g.titel }] }) +
+    var h = paginakop({ titel: gTitel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: gTitel }] }) +
       '<div class="binnen"><article class="tekstpagina gids">' + meta + '<p class="gids-intro">' + esc(introKort) + '</p>' +
       (introRest ? '<details class="lees-verder"><summary>Lees verder</summary><p>' + esc(introRest) + '</p></details>' : '') + '</article>' +
       (g.slug === 'sinterklaasgedicht-maken' ? '<div class="tekstpagina gids">' + rijmBlok('gids') + '</div>' : '') +

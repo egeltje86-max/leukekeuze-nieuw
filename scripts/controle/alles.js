@@ -27,6 +27,7 @@ run('leeftijd', 'leeftijd.js');
 run('links', 'links.js');
 run('doelgroep', 'doelgroep.js');
 run('paginas', 'paginas.js'); // 10-11-2026: geen verkeerde producten op een Voor wie-onderwerp (paginaregels)
+run('prijsclaim', 'prijsclaim.js'); // 18-11-2026: geen 'Nu 30% korting' of 'Van €80 naar €68' in vaste teksten
 fs.writeFileSync(path.join(UITMAP, 'controle-' + datum + '.json'), JSON.stringify(uit, null, 1));
 fs.writeFileSync(path.join(UITMAP, 'controle-laatste.json'), JSON.stringify(uit, null, 1));
 console.log('CONTROLE', datum, uit.schoon ? 'SCHOON' : 'NIET SCHOON', Object.entries(uit.onderdelen).map(([k, v]) => k + ':' + (v.ok ? 'ok' : 'FOUT')).join(' '));

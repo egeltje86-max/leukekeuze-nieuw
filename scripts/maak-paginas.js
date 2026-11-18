@@ -108,6 +108,11 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     if (eigen.omschrijving) { const d = seoDatum(info.datum); info.omschrijving = d ? eigen.omschrijving.replace('{datum}', d) : eigen.omschrijving.replace(/, prijs gecontroleerd op \{datum\}/, ''); }
     /* 12-11-2026: de met de hand geschreven titels noemden een vaste prijs (Peekimo: €29,99 terwijl hij €24,99 is).
        Een productprijs ('– €29,99', '€29,99 bij bol') volgt nu altijd de echte prijs van het product. */
+    /* 18-11-2026: '20 ideeën' in een met de hand geschreven gidstitel volgt het echte aantal cadeaus in de gids (zelfde regel als gidsGetal in app.js). */
+    if (info.gidsGetal && info.gidsGetal[0] > info.gidsGetal[1] && info.gidsGetal[1] > 0) {
+      const [b, n] = info.gidsGetal, getal = s => s && s.replace(/\b(\d+)(?=\s+(?:(?:leuke|goede|mooie|originele|toffe|kleine|handige|grappige|warme)\s+)?(?:ideeën|ideeen|cadeaus|cadeau-ideeën|cadeautjes|kerstcadeaus|cadeautips)\b)/g, m => (+m === b ? String(n) : m));
+      info.titel = getal(info.titel); info.omschrijving = getal(info.omschrijving);
+    }
     if (info.prod && Number(info.prod.prijs) > 0) {
       const pr = Number(info.prod.prijs), nu = '€' + (pr % 1 ? pr.toFixed(2).replace('.', ',') : String(pr));
       const zet = s => s && s.replace(/€\s?\d+(?:,\d{2})?(?=( bij |$|\.$))/g, nu);
@@ -272,7 +277,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
         titel: document.title, inhoud: app.innerHTML.replace(/[\u00AD\u200B]/g, ''), links, aantal, /* vaste HTML voor zoekmachines en ChatGPT: zonder de onzichtbare afbreekstreepjes */
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
-        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum
+        tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum,
+        gidsGetal: pad.indexOf('/gids/') === 0 && window.LK_GIDS_GETAL ? window.LK_GIDS_GETAL : null /* 18-11-2026: [beloofd in de titel, echt getoond], voor de Google-titel */
       };
       /* 13-11-2026: dezelfde pagina in de nieuwe opzet van de proef WIJZER (alleen de homepage en de Voor wie-pagina's hebben die). */
       if ((pad === '/' || /^\/voor\/[^/]+\//.test(pad)) && window.LK._wijzer) {
@@ -300,7 +306,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     if (/:$/.test(oms)) oms = r.h1 + ' van LeukeKeuze: met de hand gekozen cadeaus, je koopt bij bekende winkels.';
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) || !!(GOOGLE && r.prod && r.prod.status === 'goedgekeurd' && !GOOGLE.has(r.prod.id)) });
   }
   await browser.close(); srv.close();

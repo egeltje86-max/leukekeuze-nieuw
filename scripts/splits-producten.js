@@ -43,6 +43,7 @@ function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
   const alle = w.LK_PRODUCTEN.map((p0) => plaats(keurkamerSlot(deel(p0))));
+  console.log('teksten zonder kortingsbelofte (prijsclaim.js): ' + require('./boom/plaats.js').CLAIM_WEG.n + ' producten');
   /* Nakijkbeurt (6-11-2026): bij dubbele producten blijft er één over (correcties.json 'samen').
      Het product dat blijft krijgt de labels van het weggevallen product erbij (voor wie, tags, extra vakjes, momenten),
      zodat het nergens van een pagina verdwijnt. 'voorWeg' blijft gelden. */

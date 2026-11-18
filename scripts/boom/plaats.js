@@ -31,6 +31,7 @@ function ttOmweg(u) {
 }
 const OUDP = { kind: 'cadeaus/voor-kinderen', kinderen: 'cadeaus/voor-kinderen', haar: 'cadeaus/voor-haar', hem: 'cadeaus/voor-hem', collega: 'cadeaus/collega', baby: 'cadeaus/baby-kraam', 'opa-oma': 'cadeaus/opa-oma' };
 try { COR = JSON.parse(fs.readFileSync(path.join(__dirname, 'correcties.json'), 'utf8')); } catch (e) {}
+const { zonderClaim } = require('./prijsclaim.js'); const CLAIM_WEG = { n: 0 };
 let TERUG4 = {}; try { TERUG4 = JSON.parse(fs.readFileSync(path.join(__dirname, 'verhuisd.json'), 'utf8')).terug || {}; } catch (e) {}
 function plaats(p) {
   const x = PL[p.id];
@@ -49,6 +50,7 @@ function plaats(p) {
   let v = (COR.vak || {})[p.id]; if (v) { const t = TERUG4[v.join('/')]; if (t) v = t.split('/'); /* 4.0: een vakje in de nieuwe indeling eerst terug naar zijn oude naam; splits-producten zet het daarna op de nieuwe plek */ p.afd = v[0]; p.groep = v[1]; p.vak = v[2]; if (x && x.oud && v[0] !== x.a && cat0) { p.cat = cat0; p.sub = sub0; } /* 13-11-2026: met de hand verplaatst = de AI-plek klopte niet, dus ook zijn oude label niet (een Hello Kitty-blindbox en een chemieset stonden als 'bier'); dan het label uit producten.js */ }
   const z = (COR.samen || {})[p.id]; if (z && p.status === 'goedgekeurd') { p.status = 'samengevoegd'; p.samengevoegd = z; }
   const t = (COR.tekst || {})[p.id]; if (t) p.waarom = t;
+  if (p.waarom) { const w0 = p.waarom; p.waarom = zonderClaim(w0); if (p.waarom !== w0) CLAIM_WEG.n++; } /* 18-11-2026: geen 'Nu 30% korting' of 'Van €80 naar €68' in vaste teksten (scripts/boom/prijsclaim.js) */
   const ti = (COR.titel || {})[p.id]; if (ti) p.titel = ti;
   const vb = (COR.voorErbij || {})[p.id]; if (vb) { p.voor = (p.voor || []).slice(); for (const x of vb) if (p.voor.indexOf(x) === -1) p.voor.push(x); } /* nakijkbeurt 6-11-2026: voor-wie erbij */
   const oi = (COR.ookInErbij || {})[p.id]; if (oi) { p.ookIn = (p.ookIn || []).slice(); for (const x of oi) if (p.ookIn.indexOf(x) === -1) p.ookIn.push(x); } /* 13-11-2026: met de hand gekozen voor een gelegenheid (bijv. 'cadeaus/kerst', 'valentijn/voor-haar') */
@@ -101,4 +103,4 @@ function plaats(p) {
   }
   return p;
 }
-module.exports = { plaats };
+module.exports = { plaats, CLAIM_WEG };
