@@ -22,6 +22,8 @@ PRE.update({'Decantalo': 'dc', 'Wijny': 'wny', 'Butchery.nl': 'butchery'}); NAAM
 PRE.update({'De Boer Lederwaren & Bijoux': 'dbl', 'Top4Running': 't4r', 'Boekenwereld': 'boeken', 'Coppens Warenhuis': 'coppens', 'Prestara': 'presta', 'Fietsweb': 'fietsw', 'IJzersterke geschenken': 'ijz'})
 # 17-11-2026 (Hello Kitty-hoek): zelfde voorvoegsel als de producten die er al staan
 PRE.update({'Timeshop24': 'ts24', 'Warentuin': 'warent', 'Trendmax': 'trendm', 'Fiftiesstore': 'fiftie', 'Grote Kadoshop': 'grotek'})
+# 18-11-2026 (messen): zelfde voorvoegsel als de producten die er al staan
+PRE.update({'Megagadgets': 'mega', 'Massamarkt': 'massa', 'Kantinewinkel': 'kw', 'Soellaart': 'soella', 'K-ook': 'kook'})
 PRE.update({'Looking Good Today': 'lgt', 'Westwing': 'ww', 'Pillowbuddies': 'pillow', 'eu.fragrance.com': 'eufr', 'invulboekjes.nl': 'invul', 'Make Me Famous': 'mmf'})
 def DOEL_LEEG(l):
     """13-11-2026 (grote keuring): een partnerlink zonder adres bij de winkel (r=https://?channable=... in de feed van Massamarkt).
