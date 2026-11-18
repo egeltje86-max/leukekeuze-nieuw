@@ -1,0 +1,13 @@
+/* VEILIG (18-11-2026): TikTok legt de zoekbalk bovenaan (tot ~260px) en naam en tekst onderaan (vanaf ~1600px) over de foto, en de knoppen rechts (x>920, y 820-1680). Alles wat gelezen moet worden staat daartussen. Nooit een winkelnaam: alleen leukekeuze.nl. */
+.merk{top:290px!important}.lijn{top:350px!important}
+.nr{top:385px!important;left:90px!important}.prijs{top:385px!important;right:90px!important}
+.kaart{top:430px!important;height:760px!important;left:80px!important;right:80px!important}
+.soort{top:1215px!important;font-size:70px!important;left:150px!important;right:150px!important}
+.sub{top:1305px!important;font-size:38px!important;left:150px!important;right:150px!important}
+.voet{bottom:auto!important;top:1440px!important;font-size:44px!important;background:#0A1020;color:#fff!important;left:0!important;right:0!important;margin:0 auto;width:fit-content;padding:16px 40px;border-radius:999px;white-space:nowrap}
+.voet b{color:#F2CB74!important}
+#p0 .kk1{top:285px!important;font-size:34px!important}#p0 .kk2{top:335px!important}
+#p0 .nr,#p0 .prijs{top:480px!important}#p0 .kaart{top:520px!important;height:680px!important}
+#p0 .soort{top:1222px!important;font-size:68px!important}#p0 .sub{top:1310px!important;font-size:36px!important}
+.klein{bottom:auto!important;top:1420px!important}
+#eind .t1{top:420px!important}#eind .t2{top:500px!important}#eind .zoek{top:820px!important;left:150px!important;right:150px!important}#eind .t4{top:1050px!important}#eind .eindsub{top:1230px!important}

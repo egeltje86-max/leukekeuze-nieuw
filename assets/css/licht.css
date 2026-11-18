@@ -2767,3 +2767,16 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 /* ===== TOEGANKELIJK (18-11-2026, nachtcontrole met axe): genoeg contrast voor de doorgestreepte prijs en de datum op de TikTok-pagina ===== */
 .prijs s.oud { color: #5F667A; }
 .tt-datum b { color: #8F6620; }
+
+/* ===== WINKELHULP (18-11-2026): bezorgen en retour per winkel + 'Doe er iets bij van <winkel>' (alleen zichtbaar met ?proef=winkelhulp tot de GO) ===== */
+.wh-bezorg { margin: 14px 0 4px; padding: 14px 16px; background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 16px; }
+.wh-bezorg h2 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font: 800 16px/1.3 Manrope, system-ui, sans-serif; color: #141A2A; }
+.wh-bezorg h2 svg { width: 18px; height: 18px; color: #8F6620; flex: none; }
+.wh-bezorg ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.wh-bezorg li { display: flex; gap: 8px; align-items: flex-start; font-size: 15px; line-height: 1.4; color: #141A2A; }
+.wh-bezorg li svg { width: 16px; height: 16px; margin-top: 2px; color: #B8862E; flex: none; }
+.wh-bezorg li span { min-width: 0; }
+.wh-bron { margin: 8px 0 0; font-size: 13px; line-height: 1.4; color: #5F667A; }
+.wh-erbij .sectie-kop h2 { margin-bottom: 4px; }
+.wh-zin { margin: 0; font-size: 15px; line-height: 1.45; color: #141A2A; max-width: 60ch; }
+.wh-zin strong { color: #8F6620; }

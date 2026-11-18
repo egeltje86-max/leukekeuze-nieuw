@@ -294,6 +294,64 @@
   }
   if (RUST) document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-rh-meer]'); if (b) { b.parentNode.classList.add('open'); } });
   var ETALAGE = null;
+  /* ===== WINKELHULP (18-11-2026, 'go allebei' van Marius op het nachtrapport) =====
+     1) 'Doe er iets bij van <winkel>' op de productpagina: kleine cadeaus van dezelfde winkel, met de grens voor gratis verzending.
+        Onderbouwing: Baymard (extra kosten zijn de grootste reden om af te haken; grote winkels tonen naast alternatieven ook aanvullingen). Commissie geldt over de hele bestelling.
+     2) Bezorgen en retour per winkel, onder de winkelknop. Alleen wat de winkel zelf op zijn site zegt, met de datum waarop wij het nakeken; geen gegevens = geen blok.
+     Eerst alleen via de testlink ?proef=winkelhulp (blijft onthouden op dat apparaat; uit: ?proef=winkelhulp-uit). Voor iedereen: window.LK_WINKELHULP = true. */
+  var WINKELHULP = (function () { if (window.LK_WINKELHULP === true) return true; if (window.LK_WINKELHULP === false) return false; try { if (/[?&]proef=winkelhulp-uit(&|$)/.test(location.search)) localStorage.removeItem('lkwinkelhulp'); else if (/[?&]proef=winkelhulp(&|$)/.test(location.search)) localStorage.setItem('lkwinkelhulp', '1'); return localStorage.getItem('lkwinkelhulp') === '1'; } catch (e) { return false; } })();
+  var BEZORG_DATUM = '18 november 2026';
+  var BEZORG_INFO = {
+    'Ditverzinjeniet': { gratis: 60, snel: 'Snelle verzending vanuit Nederland', kosten: 'Gratis verzending vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)', naamNiet: 'Met naam of eigen tekst kun je niet retourneren' },
+    'Cadeau.nl': { gratis: 60, morgen: true, snel: 'Voor 22:45 besteld, morgen in huis', kosten: 'Verzenden vanaf € 4,99, gratis vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)' },
+    'De Grote Speelgoedwinkel': { morgen: true, snel: 'Op werkdagen voor 17:00 besteld: dezelfde dag verzonden, meestal morgen in huis', kosten: 'Brievenbuspakje € 4,95, gewoon pakket € 6,49', retour: '14 dagen bedenktijd' },
+    'CoolGift': { gratis: 49, snel: 'In Nederland 1 werkdag na verzending (met naam of foto: een paar dagen langer)', kosten: 'Verzenden € 4,95, gratis vanaf € 49', retour: 'Tot 90 dagen ruilen of retour' },
+    'Coolblue': { gratis: 0, kosten: 'Gratis bezorgd', retour: 'Gratis ruilen' },
+    'HEMA': { retour: 'Binnen 30 dagen gratis retour' },
+    'Dille & Kamille': { retour: 'Tot 100 dagen retour' },
+    'LEGO': { gratis: 55, kosten: 'Gratis bezorgd vanaf € 55 (voorwaarden bij LEGO)', retour: 'Gratis retour; besteld tussen 1 november en 24 december: tot 90 dagen' },
+    'Boekenwereld.com': { gratis: 19.95, morgen: true, snel: 'Op werkdagen voor 22:00 besteld, volgende werkdag in huis', kosten: 'Verzenden € 2,95, gratis vanaf € 19,95' },
+    'Grote Kadoshop': { retour: '14 dagen bedenktijd, terugsturen op eigen kosten' },
+    'Parfumania': { morgen: true, snel: 'Vandaag besteld, morgen in huis (voorwaarden bij Parfumania)', retour: '30 dagen retour' },
+    'Countrylifestyle': { retour: '14 dagen retour' }
+  };
+  function euroKort(n) { return '€ ' + (Math.round(n * 100) % 100 ? Number(n).toFixed(2).replace('.', ',') : String(Math.round(n))); }
+  function bezorgBlok(p) {
+    var w = WINKELHULP && BEZORG_INFO[p.shop]; if (!w) return '';
+    var r = [];
+    if (w.snel) r.push(['klok', w.snel]);
+    if (w.kosten) r.push(['cadeau', w.kosten]);
+    if (w.retour) r.push(['vorige', w.retour + (w.naamNiet && PERSOONLIJK.test(p.titel || '') ? '. ' + w.naamNiet : '')]);
+    if (!r.length) return '';
+    return '<div class="wh-bezorg"><h2>' + ic('winkel') + 'Bezorgen en retour bij ' + esc(p.shop) + '</h2><ul>' +
+      r.map(function (x) { return '<li>' + ic(x[0]) + '<span>' + esc(x[1]) + '</span></li>'; }).join('') +
+      '</ul><p class="wh-bron">Zo staat het op de site van ' + esc(p.shop) + ' (nagekeken op ' + BEZORG_DATUM + '). Kijk bij het bestellen even of het nog klopt.</p></div>';
+  }
+  function whHash(t) { var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0; return h >>> 0; }
+  function doeErBij(p) {
+    if (!WINKELHULP || !p.shop || /^(bol|Amazon)$/.test(p.shop) || !(p.prijs > 0)) return '';
+    if (!ETALAGE) etalageEerst([]);
+    var w = BEZORG_INFO[p.shop] || {}, heeftGrens = typeof w.gratis === 'number';
+    var nog = heeftGrens && w.gratis > 0 && p.prijs < w.gratis ? Math.round((w.gratis - p.prijs) * 100) / 100 : 0;
+    var max = nog ? Math.min(30, Math.max(15, nog + 5)) : 20;
+    var woord = function (t) { return String(t || '').toLowerCase().split(/[^a-z0-9à-ÿ]+/).filter(function (x) { return x.length > 3; }).slice(0, 2).join(' '); };
+    var l = geenDrank(LK.zichtbaar()).filter(function (x) {
+      return x.shop === p.shop && x.id !== p.id && x.prijs > 0 && x.prijs <= max && !x.smal && !GROF_T.test(x.titel || '') &&
+        !/elektrische-steps|elektrische-fietsen|op-brandstof/.test((x.vak || '') + ' ' + (x.sub || '')) && woord(x.titel) !== woord(p.titel);
+    });
+    l.sort(function (a, b) {
+      var sa = (ETALAGE[a.id] ? 3 : 0) + (a.zk ? 2 : 0) + (a.favoriet ? 1 : 0) + (a.vak !== p.vak ? 1 : 0), sb = (ETALAGE[b.id] ? 3 : 0) + (b.zk ? 2 : 0) + (b.favoriet ? 1 : 0) + (b.vak !== p.vak ? 1 : 0);
+      return sb - sa || whHash(p.id + a.id) - whHash(p.id + b.id);
+    });
+    var uit = [], vak = {}, wd = {};
+    l.forEach(function (x) { if (uit.length >= 4 || vak[x.vak] || wd[woord(x.titel)]) return; vak[x.vak] = 1; wd[woord(x.titel)] = 1; uit.push(x); });
+    if (uit.length < 2) return '';
+    var zin = nog ? esc(p.shop) + ' verzendt gratis vanaf ' + euroKort(w.gratis) + '. Met dit cadeau zit je op ' + LK.euro(p.prijs) + ': nog <strong>' + LK.euro(nog) + '</strong> en de verzending is gratis.'
+      : heeftGrens && w.gratis === 0 ? esc(p.shop) + ' bezorgt gratis. Doe er iets kleins bij en bestel alles in één keer.'
+      : heeftGrens ? 'Dit cadeau wordt al gratis verzonden. Doe er iets kleins bij en bestel alles in één keer bij ' + esc(p.shop) + '.'
+      : 'Bestel je meer tegelijk bij ' + esc(p.shop) + ', dan betaal je de verzendkosten maar één keer.';
+    return '<section class="sectie wh-erbij" data-tel-bron="doe-er-iets-bij"><div class="sectie-kop"><div><h2>Doe er iets bij van ' + esc(p.shop) + '</h2><p class="wh-zin">' + zin + '</p></div></div>' + grid(uit) + '</section>';
+  }
   /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
   function etalageEerst(l) {
     if (!window.LK_TOPVAST) return l;
@@ -2892,6 +2950,7 @@
           /* Mobiel: als de knop uit beeld is gescrold, blijft onderin een smalle balk met prijs en knop staan. */
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
+          bezorgBlok(p) + /* WINKELHULP 18-11-2026 */
           (p.waarom ? '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom) + '</p></div>' : '') +
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
@@ -2914,6 +2973,7 @@
           '</ul>' +
         '</div>' +
       '</div>' +
+      doeErBij(p) + /* WINKELHULP 18-11-2026 */
       /* Stap 5 indeling: terug naar het vakje als tekstlink (ontbrak). */
       (function () { var t = nv ? [nv.naam, '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug] : ns ? [ns.naam, '/c/' + nc.slug + '/' + ns.slug] : (s && !s.verborgen ? [s.naam, '/c/' + c.slug + '/' + s.slug] : c ? [c.naam, '/c/' + c.slug] : null);
         return t ? '<p class="terug-link"><a href="' + esc(t[1]) + '">' + ic('vorige') + ' Terug naar ' + esc(t[0]) + '</a></p>' : ''; })() +
@@ -4173,8 +4233,9 @@
   /* 17-11-2026: de Amazon Storefront (ideeënlijsten), met partnercode. Gebruikt op /tiktok, in het menu en op de homepage. */
   var AMZ_SHOP = 'https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21';
   var TIKTOK_REELS = [
+    { datum: '18 november', kop: 'Nieuw: de Hello Kitty-hoek', tekst: '167 cadeaus voor fans van Hello Kitty, Kuromi, My Melody en Cinnamoroll: Funko Pops, knuffels, nachtlampjes, tassen, sieraden, mokken, schoolspullen en games.', ids: ['nedg-22009b572a', 'bol-9300000145384800', 'nedg-a3cd45cffc', 'emp-1111323c44', 'dvzn-83cb621761', 'amz-b0f8nh1d8c', 'emp-9856d43bce', 'emp-c150731016', 'dgsw-d246c1887c', 'nedg-6e0ef6b467'], naar: '/c/speelgoed/hello-kitty', naarTekst: 'Alle Hello Kitty-cadeaus bekijken' },
     { datum: '17 november', kop: 'Net binnen: 10 nieuwe cadeaus', tekst: 'Van een Boo-neonlamp en een bol die sterren op je muur tovert tot zingende magneten en een kaars die op een taartje lijkt.', ids: ['dvzn-88a9a4b2f6', 'massa-da20a7c4ab', 'dgsw-bd110d5515', 'megaga-208a1e8993', 'dvzn-f07c98d9de', 'nedg-aaef75274b', 'tensti-f2878e99ca', 'dvzn-97fb304293', 'bol-9300000156641539', 'cg-db4d6afc28'] },
-    { datum: '17 november', kop: 'Nieuw: de Pokémon-hoek', tekst: 'Alle losse boosterpakjes op één plek, plus knuffels, tassen, spullen voor je kamer en keuken, games en boxen voor verzamelaars.', ids: ['nedg-9ea779e8fa', 'nedg-797a79ea8e', 'nedg-ecbc668ad4', 'nedg-4175fe9fd9', 'nedg-adb164ecbd', 'nedg-a10f0c326e', 'emp-029a340781', 'cl-pokopia', 'nedg-e3dfabf90c', 'nedg-13e07a300d'] },
+    { datum: '17 november', kop: 'Nieuw: de Pokémon-hoek', tekst: 'Alle losse boosterpakjes op één plek, plus knuffels, tassen, spullen voor je kamer en keuken, games en boxen voor verzamelaars.', ids: ['nedg-9ea779e8fa', 'nedg-797a79ea8e', 'nedg-ecbc668ad4', 'nedg-4175fe9fd9', 'nedg-adb164ecbd', 'nedg-a10f0c326e', 'emp-029a340781', 'cl-pokopia', 'nedg-e3dfabf90c', 'nedg-13e07a300d'], naar: '/c/spellen-puzzels/pokemon-verzamelkaarten', naarTekst: 'Alle Pokémon-cadeaus bekijken' },
     { datum: '17 november', kop: 'Gespot bij Ditverzinjeniet: alles onder € 15', tekst: 'Een fopspeen met een snor, een katje dat je munten steelt en een nepsteen voor je reservesleutel.', ids: ['dvzn-58068de5fa', 'dvzn-6791', 'dvzn-48bcf6ed40', 'dvzn-726291', 'dvzn-22f0aff1dc'] },
     { datum: '17 november', kop: 'Gespot bij HEMA: alles onder € 15', tekst: 'Van een geurkaars in een peperkoekmannetje tot een Nijntje-fondue en een kat die je handen warm houdt.', ids: ['hema-36f500cd52', 'hema-e8aced2a21', 'hema-9c923e1a87', 'hema-32d780c657', 'hema-b059bba7b0'] },
     { datum: '16 november', kop: 'Lootje getrokken? 10 nieuwe cadeaus', tekst: 'Net nieuw op de site: van een Pikachu-mok en een kluis-spaarpot tot een paraplu in een whiskyfles.', ids: ['nedg-4c81f01c66', 'bigsiz-4e5500270d', 'cadeau-b636db132b', 'gadget-7e31d86ce4', 'cadeau-bb87e54fa2', 'cadeau-c3439f355f', 'dvzn-cce4b58a90', 'cadeau-13138252a6', 'nedg-aa85125d5b', 'cadeau-c6c97ade65'] },
@@ -4205,7 +4266,8 @@
       var l = r.ids.map(function (id) { return opZ[id]; }).filter(Boolean);
       if (!l.length) return '';
       var kop = '<span class="tt-datum">' + (i === 0 ? '<b>Nieuwste filmpje</b> · ' : '') + esc(r.datum) + '</span><span class="tt-kop">' + esc(r.kop) + '</span>';
-      var binnen = '<p class="tt-tekst">' + esc(r.tekst) + '</p><div class="prodgrid">' + l.map(LK.productKaart).join('') + '</div>';
+      var binnen = '<p class="tt-tekst">' + esc(r.tekst) + '</p><div class="prodgrid">' + l.map(LK.productKaart).join('') + '</div>' +
+        (r.naar ? '<div class="meer-knop groot tt-naar"><a class="knop-rand" href="' + r.naar + '" data-tel="tiktok/naar">' + esc(r.naarTekst || 'Alles bekijken') + '</a></div>' : ''); /* 18-11-2026: reel over een hele hoek = knop naar die hoek */
       return i < 3 ? '<section class="tt-reel" data-tel="tiktok/' + i + '"><h2>' + kop + '</h2>' + binnen + '</section>'
         : '<details class="tt-reel tt-dicht"><summary><h2>' + kop + '</h2><span class="tt-open" aria-hidden="true"></span></summary>' + binnen + '</details>';
     }).join('');
