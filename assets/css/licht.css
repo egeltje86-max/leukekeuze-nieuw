@@ -2866,3 +2866,30 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 @media (min-width: 721px) { .wijzer .wz-keuze .srij-rij .srij-baan { -webkit-mask-image: none; mask-image: none; padding-right: 0; } }
 @media (max-width: 380px) { .wijzer .wz-bedrag { gap: 4px; } .wijzer .wz-bedrag .chip { padding: 0 3px; font-size: 13px; } }
 /* ===== einde WZ-RONDJES ===== */
+/* ===== BEDRAG-RONDJES (18-11-2026, Marius: 'ik vind die balkjes ook niet mooi, kun je er gekleurde rondjes van maken met bedragen'):
+   bedrag en leeftijd als gekleurde rondjes met het bedrag of de leeftijd erin, gouden rand zoals de onderwerp-rondjes; gekozen = dikke
+   gouden rand met een vinkje. Uit: window.LK_MUNTEN = false. ===== */
+.wijzer .wz-munten { display: grid; grid-template-columns: repeat(5, minmax(0, 64px)); justify-content: start; gap: 10px; flex-wrap: nowrap; overflow: visible; padding: 5px 5px 4px; margin: 0 -5px; }
+.wijzer .wz-munten .chip.munt { position: relative; width: 100%; aspect-ratio: 1; min-height: 0; height: auto; min-width: 0; padding: 0; border: 0; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; text-align: center; line-height: 1.05; white-space: nowrap;
+  background: var(--m-bg, #FFFCF7); color: var(--m-fg, #141A2A); box-shadow: 0 0 0 1.5px #D6B56A, 0 2px 6px rgba(10, 16, 32, .08); transition: transform .15s ease, box-shadow .15s ease; -webkit-tap-highlight-color: transparent; }
+.wijzer .wz-munten .munt .m-g { font-size: 16px; font-weight: 800; letter-spacing: -.01em; }
+.wijzer .wz-munten .munt .m-k { font-size: 10.5px; font-weight: 700; opacity: .9; }
+.wijzer .wz-munten .chip.munt:active { transform: scale(.93); }
+.wijzer .wz-munten .chip.munt[aria-current="true"] { background: var(--m-bg, #FFFCF7); color: var(--m-fg, #141A2A); box-shadow: 0 0 0 3px #B8862E, 0 4px 12px rgba(10, 16, 32, .18); }
+.wijzer .wz-munten .chip.munt[aria-current="true"]::after { content: "\2713"; position: absolute; top: -5px; right: -5px; width: 20px; height: 20px; border-radius: 50%;
+  background: #B8862E; color: #FFFFFF; font-size: 12px; font-weight: 800; line-height: 20px; text-align: center; box-shadow: 0 0 0 2px #FFFFFF; }
+/* bedragen: van licht en vrolijk naar luxe */
+.wijzer .wz-munten .m-tot10 { --m-bg: #DCF0E3; --m-fg: #1B5534; }
+.wijzer .wz-munten .m-tot25 { --m-bg: #D9E8F7; --m-fg: #1A4270; }
+.wijzer .wz-munten .m-25-50 { --m-bg: #E8DFF6; --m-fg: #46297A; }
+.wijzer .wz-munten .m-50-100 { --m-bg: #FADFCF; --m-fg: #833414; }
+.wijzer .wz-munten .m-boven100 { --m-bg: #0A1020; --m-fg: #F2CB74; }
+/* leeftijden */
+.wijzer .wz-munten .m-l0-2 { --m-bg: #FBE1EA; --m-fg: #842648; }
+.wijzer .wz-munten .m-l3-5 { --m-bg: #FBEFC6; --m-fg: #634800; }
+.wijzer .wz-munten .m-l6-8 { --m-bg: #D5EFEC; --m-fg: #185551; }
+.wijzer .wz-munten .m-l9-12 { --m-bg: #E0E4F9; --m-fg: #2B3680; }
+@media (min-width: 721px) { .wijzer .wz-munten { grid-template-columns: repeat(5, 72px); gap: 12px; } .wijzer .wz-munten .munt .m-g { font-size: 17px; } }
+@media (max-width: 350px) { .wijzer .wz-munten { gap: 7px; } .wijzer .wz-munten .munt .m-g { font-size: 14.5px; } .wijzer .wz-munten .munt .m-k { font-size: 10px; } }
+/* ===== einde BEDRAG-RONDJES ===== */

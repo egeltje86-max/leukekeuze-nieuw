@@ -1223,6 +1223,23 @@
   function soortAan() { return SOORT_PROEF && FILTER2 && window.matchMedia && window.matchMedia('(max-width: 759px)').matches; }
   var soortDoel = ''; try { soortDoel = sessionStorage.getItem('lksoortdoel') || ''; } catch (e) {}
   var soortScroll = false;
+  /* WZ-SCROLL (18-11-2026, Marius: 'het beeld springt steeds naar boven als je op de knoppen drukt in plaats van naar beneden'):
+     tik je op de Voor wie-pagina op een leeftijd, bedrag of onderwerp, dan komt die rij bovenaan het scherm (onder de kopbalk)
+     met de cadeaus eronder, in plaats van terug naar de bovenkant van de pagina. Bewaart welke rij (aria-label van de nav). */
+  var wzNaarLijst = '';
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('.wijzer .wz-keuze a');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    var nv = a.closest('nav'); wzNaarLijst = (nv && nv.getAttribute('aria-label')) || '*';
+  }, true);
+  /* BEDRAG-RONDJES (18-11-2026, Marius: 'ik vind die balkjes ook niet mooi, kun je er gekleurde rondjes van maken met bedragen'):
+     de knoppen voor bedrag en leeftijd zijn gekleurde rondjes met het bedrag of de leeftijd erin (gouden rand zoals de onderwerp-rondjes).
+     Uit: window.LK_MUNTEN = false (dan weer de balkjes). */
+  var MUNTEN = window.LK_MUNTEN !== false;
+  var MUNT_TEKST = { tot10: ['tot', '€10'], tot25: ['tot', '€25'], '25-50': ['€25 tot', '€50'], '50-100': ['€50 tot', '€100'], boven100: ['vanaf', '€100'] };
+  function muntBedrag(p) { var m = MUNT_TEKST[p.id]; return MUNTEN && m ? '<span class="m-k">' + esc(m[0]) + '</span><b class="m-g">' + esc(m[1]) + '</b>' : esc(p.label); }
+  function muntLeeftijd(o) { var g = String(o[1]).replace(/\s*jaar$/, ''); return MUNTEN ? '<b class="m-g">' + esc(g) + '</b><span class="m-k">jaar</span>' : esc(o[1]); }
+  function muntKlas(soort, id) { return MUNTEN ? ' munt m-' + soort + String(id).replace(/[^a-z0-9-]/gi, '') : ''; }
   if (SOORT_PROEF) document.addEventListener('click', function (e) {
     var k = e.target && e.target.closest && e.target.closest('.slimnav a.sn-knop');
     if (!k || k.classList.contains('actief') || e.metaKey || e.ctrlKey || e.shiftKey || !soortAan()) return;
@@ -1807,8 +1824,8 @@
       '<section class="sectie wzh-soort" data-tel="soort"><p class="wz-vraag">Of kies een soort cadeau</p><nav class="mini-raster breed" aria-label="Soort cadeau">' +
         [['Grappige cadeaus', '/collectie/grappige-cadeaus', 'col-grappige-cadeaus'], ['Originele cadeaus', '/collectie/originele-cadeaus', 'col-originele-cadeaus'], ['Met naam of foto', '/collectie/persoonlijke-cadeaus', 'col-persoonlijke-cadeaus'], ['Toppers van nu', '/collectie/toppers-van-nu', 'col-toppers-van-nu']]
           .map(function (k) { return miniTegel(k[0], k[1], 'images/sub/rond/' + k[2] + '-klein.webp'); }).join('') + '</nav>' +
-        '<p class="wz-vraag">Of kies een bedrag</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' +
-        (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip" href="/c/cadeaus/?prijs=' + p.id + '">' + p.label + '</a>'; }).join('') + '</nav>' +
+        '<p class="wz-vraag">Of kies een bedrag</p><nav class="chips wz-chips wz-bedrag' + (MUNTEN ? ' wz-munten' : '') + '" aria-label="Bedrag">' +
+        (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip' + muntKlas('', p.id) + '" href="/c/cadeaus/?prijs=' + p.id + '" aria-label="' + esc(p.label) + '">' + muntBedrag(p) + '</a>'; }).join('') + '</nav>' +
         /* 17-11-2026 (Marius: 'moet overal niet de knop naar de tiktok site en naar Amazon komen op de homepage'): stond op het winkeltje; nu het winkeltje uit is ook hier. */
         '<p class="wz-vraag">Uit onze filmpjes</p><nav class="mini-raster breed" aria-label="Uit onze filmpjes">' +
         miniTegel('Gezien op TikTok', '/tiktok/', (TIKTOK_REELS[0] && TIKTOK_REELS[0].ids && TIKTOK_REELS[0].ids[0]) ? 'images/producten/' + TIKTOK_REELS[0].ids[0] + '-klein.webp' : 'images/sub/rond/col-grappige-cadeaus-klein.webp') +
@@ -2530,13 +2547,13 @@
         var hier = q.prijs === p.id, n = alles.filter(function (x) { return binnenPrijs(x, p.id); }).length;
         if (n < MIN_KNOP && !hier) return '';
         var mt = q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {};
-        return '<a class="chip" href="' + maakAdres(pad, hier ? mt : Object.assign({ prijs: p.id }, mt)) + '"' + ((hier) ? ' aria-current="true"' : '') + '>' + p.label + '</a>';
+        return '<a class="chip' + muntKlas('', p.id) + '" href="' + maakAdres(pad, hier ? mt : Object.assign({ prijs: p.id }, mt)) + '"' + ((hier) ? ' aria-current="true"' : '') + ' aria-label="' + esc(p.label) + '">' + muntBedrag(p) + '</a>';
       }).join('');
       var wzLeeftijd = !wzLft ? '' : wzLft.opties.map(function (o) {
         var hier = q.leeftijd === o[0], n = TEL(Object.assign({}, q, { leeftijd: o[0] }));
         if (n < MIN_KNOP && !hier) return '';
         var nq = q.prijs && q.prijs !== 'alle' ? { prijs: q.prijs } : {}; if (!hier) nq.leeftijd = o[0];
-        return '<a class="chip" href="' + maakAdres(pad, nq) + '"' + ((hier) ? ' aria-current="true"' : '') + '>' + esc(o[1]) + '</a>';
+        return '<a class="chip' + muntKlas('l', o[0]) + '" href="' + maakAdres(pad, nq) + '"' + ((hier) ? ' aria-current="true"' : '') + ' aria-label="' + esc(o[1]) + '">' + muntLeeftijd(o) + '</a>';
       }).join('');
       /* Volgorde van de onderwerpen: eerst waar het meest naar gezocht wordt (de 'top' van de onderwerpkaarten), dan de rest. */
       var wzTop = ((SLIM['/voor/' + pe.slug] || {}).top || []), wzPlek = function (x) { var i = wzTop.indexOf(x.slug); return i === -1 ? (x.slug === 'sieraden' ? 999 : 99) : i; };
@@ -2570,8 +2587,8 @@
       }) +
       '<div class="binnen wijzer">' +
         '<section class="sectie eerste wz-keuze" aria-label="Kies een bedrag en een onderwerp">' +
-          (wzLeeftijd ? '<p class="wz-vraag">Hoe oud is het kind?</p><nav class="chips wz-chips wz-bedrag" aria-label="Leeftijd">' + wzLeeftijd + '</nav>' : '') +
-          (wzBedrag && !psAan ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
+          (wzLeeftijd ? '<p class="wz-vraag">Hoe oud is het kind?</p><nav class="chips wz-chips wz-bedrag' + (MUNTEN ? ' wz-munten' : '') + '" aria-label="Leeftijd">' + wzLeeftijd + '</nav>' : '') +
+          (wzBedrag && !psAan ? '<p class="wz-vraag">Hoeveel wil je uitgeven?</p><nav class="chips wz-chips wz-bedrag' + (MUNTEN ? ' wz-munten' : '') + '" aria-label="Bedrag">' + wzBedrag + '</nav>' : '') +
           (wzSubs ? '<p class="wz-vraag">' + esc((SLIM['/voor/' + pe.slug] || {}).titel || 'Wat zoek je voor ' + naam + '?') + '</p>' + (wzRond || '<nav class="chips wz-chips wz-rol' + wzRolOpen + '" aria-label="Onderwerpen voor ' + esc(naam) + '">' + wzSubs + '</nav>') : '') +
         '</section>' +
         /* 13-11-2026 (wens Marius): 24 cadeaus meteen, bij het scrollen nog 24 vanzelf, daarna één duidelijke knop; sorteren en filteren als echte knop */
@@ -7512,6 +7529,19 @@
     /* NOVA-010: onderwerp zonder nuttige vervolgkeuze -> meteen bij de producten uitkomen (niet bovenaan de pagina) */
     if (soortScroll) { soortScroll = false; var swb = $('.werkbalk', app);
       if (swb) { var skop = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height; window.scrollTo(0, Math.max(0, swb.getBoundingClientRect().top + window.scrollY - skop - 8)); } }
+    /* WZ-SCROLL: na een keuze op de Voor wie-pagina komt de rij waarop je tikte bovenaan (onder de kopbalk), met de cadeaus eronder. */
+    if (wzNaarLijst) {
+      var wzRij = wzNaarLijst; wzNaarLijst = '';
+      var wzBlok = !hersteld && $('.wijzer .wz-keuze', app);
+      if (wzBlok) {
+        var wzNavs = $$('nav', wzBlok), wzNav = wzNavs.filter(function (n) { return n.getAttribute('aria-label') === wzRij; })[0] || wzNavs[wzNavs.length - 1];
+        var wzVoor = wzNav && wzNav.previousElementSibling, wzDoel = wzVoor && wzVoor.classList.contains('wz-vraag') ? wzVoor : (wzNav || wzBlok);
+        var wzKop = ($('.header') || { getBoundingClientRect: function () { return { height: 60 }; } }).getBoundingClientRect().height;
+        var wzY = Math.max(0, wzDoel.getBoundingClientRect().top + window.scrollY - wzKop - 8);
+        var wzRustig = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || a.pad !== vorigPad;
+        if (Math.abs(window.scrollY - wzY) > 4) window.scrollTo({ top: wzY, behavior: wzRustig ? 'auto' : 'smooth' });
+      }
+    }
     /* VONK: na een keuze (of 'Vorige vraag') niet naar de bovenkant springen, maar de volgende vraag
        netjes onder de vaste kopbalk zetten. De hoogte van die balk meten we, dus elk scherm klopt. (wens Marius 2-11-2026) */
     if (d[0] === 'vonk' && a.pad === vorigPad && location.search !== vorigeVonk && !hersteld) {
