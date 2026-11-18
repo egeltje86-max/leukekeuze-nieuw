@@ -29,7 +29,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=233479182483587" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=274154521617186" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=150809281436576" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=157780719364522">
@@ -42,7 +42,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>window.LK_PAKPAD="assets/pak/c--cadeaus--met-naam.js?v=264941865100942";</script>
+  <script>window.LK_PAKPAD="assets/pak/c--cadeaus--met-naam.js?v=14159299490955";</script>
   <script>(function () { var s = "assets/js/producten-lean.js?v=151339052558462", t = "assets/js/topkeuze.js?v=87941351613941";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
@@ -210,7 +210,7 @@
   <script src="assets/js/data.js?v=150809281436576"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
-  <script src="assets/js/app.js?v=233479182483587"></script>
+  <script src="assets/js/app.js?v=274154521617186"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
