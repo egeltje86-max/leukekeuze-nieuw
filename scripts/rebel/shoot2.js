@@ -2,7 +2,9 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const pre = process.argv[2], css = process.argv[3], dpr = +(process.argv[4] || 2);
-const PAG = [['/', 'home', [0, '.wzh-cat', '.seizoen', '.favorieten .prodgrid']], ['/voor/haar/', 'haar', [0, '.prodgrid']], ['/p/hema-efaa95f521/', 'product', [0, '.wh-bezorg']], ['/c/speelgoed/', 'speelgoed', [0]]];
+const ALLE = [['/', 'home', [0, '.wzh-cat', '.srij-baan', '.seizoen', '.favorieten .prodgrid']], ['/voor/haar/', 'haar', [0, '.prodgrid']], ['/p/hema-efaa95f521/', 'product', [0, '.wh-bezorg']], ['/c/speelgoed/', 'speelgoed', [0]], ['/gelegenheid/', 'gelegenheden', [0, 700]], ['/categorieen/', 'producten', ['.srt-lijst']]];
+/* 5e argument: alleen deze pagina's (namen met komma's), bijv. home,gelegenheden */
+const PAG = process.argv[5] ? ALLE.filter(x => process.argv[5].split(',').includes(x[1])) : ALLE;
 (async () => {
   const b = await chromium.launch();
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: dpr, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' });
@@ -16,8 +18,9 @@ const PAG = [['/', 'home', [0, '.wzh-cat', '.seizoen', '.favorieten .prodgrid']]
       kijk();
       document.addEventListener('DOMContentLoaded', () => { zet(); const s = document.getElementById('rebel-css'); if (s) document.head.appendChild(s); });
     }, txt);
-    await ctx.route(/\/images\/sub\/rond\/(voor-[a-z-]+?)(-klein)?\.webp/, (route) => {
-      const m = route.request().url().match(/\/images\/sub\/rond\/(voor-[a-z-]+?)(-klein)?\.webp/);
+    /* nieuwe icoontjes van Nova: voor wie (voor-), hoofdcategorieën (cat-) en gelegenheden (gel-) uit scripts/rebel/rond */
+    await ctx.route(/\/images\/(?:sub|categorieen)\/rond\/((?:voor|cat|gel)-[a-z-]+?)(-klein)?\.webp/, (route) => {
+      const m = route.request().url().match(/\/images\/(?:sub|categorieen)\/rond\/((?:voor|cat|gel)-[a-z-]+?)(-klein)?\.webp/);
       const f = __dirname + '/rond/' + m[1] + (m[2] || '') + '.webp';
       if (fs.existsSync(f)) return route.fulfill({ path: f, contentType: 'image/webp' });
       return route.continue();

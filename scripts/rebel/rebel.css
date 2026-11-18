@@ -195,3 +195,14 @@ html.rebel .mobiel-balk { border: 2.5px solid #000 !important; box-shadow: var(-
 html.rebel :is(.mb-sorteer, .mb-filter, .filterknop, .sorteer) { color: #000 !important; font-weight: 800 !important; border-color: #000 !important; }
 html.rebel .werkbalk-onder { border-color: rgba(0,0,0,.2) !important; }
 @media (max-width: 759px) { html.rebel .seizoen-kaart.klein :is(h2, h3) { font-size: 14.5px !important; letter-spacing: -.03em; } }
+
+/* ---------- Nova levering 001/002 (18-11-2026): gelegenheden en Zoek een product ---------- */
+html.rebel .keuzerond { background: #FFFFFF !important; border: 2.5px solid #000 !important; border-radius: 14px !important; box-shadow: var(--rb-hard-s) !important; color: #000 !important; }
+html.rebel .keuzerond .naam { color: #000 !important; font-weight: 800 !important; }
+html.rebel .keuzerond .rond { box-shadow: 0 0 0 2.5px #000 !important; border: 0 !important; background: var(--rb-geel) !important; }
+html.rebel .srt-blok { background: #FFFFFF !important; border: 2.5px solid #000 !important; border-radius: 14px !important; box-shadow: var(--rb-hard-s) !important; }
+html.rebel .srt-blok summary img { border: 0 !important; box-shadow: 0 0 0 2px #000 !important; border-radius: 50%; }
+html.rebel .srt-blok h2 { color: #000 !important; }
+html.rebel .srt-vt { background: #FFFFFF !important; border: 2.5px solid #000 !important; box-shadow: var(--rb-hard-s) !important; color: #000 !important; font-weight: 800; }
+html.rebel .srt-vt-rond { box-shadow: 0 0 0 2px #000 !important; }
+html.rebel :is(.srt-lijst, .srt-vaak) :is(h2.kicker, .kicker, .srt-label) { color: #000 !important; }
