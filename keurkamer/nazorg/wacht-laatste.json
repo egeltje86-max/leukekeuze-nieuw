@@ -1,5 +1,5 @@
 {
- "gemaakt": "2026-11-17T21:12",
+ "gemaakt": "2026-11-18T21:12",
  "prijs": [
   {
    "id": "bol-9300000036602411",
@@ -44,142 +44,100 @@
    "nieuw": 14.95
   },
   {
-   "id": "cl-dr-d20",
-   "titel": "Dreame D20 Pro Plus",
-   "oud": 236.0,
-   "nieuw": 199.0
+   "id": "a-coolblue-nl-2857fe6592",
+   "titel": "Ninja Foodi Dual Zone airfryer met 2 lades (AF200)",
+   "oud": 157.0,
+   "nieuw": 132.0
   },
   {
-   "id": "cb-streamdeck-mini",
-   "titel": "Elgato Stream Deck Mini",
-   "oud": 60.0,
-   "nieuw": 49.99
-  },
-  {
-   "id": "emp-f0e78533e5",
-   "titel": "Harry Potter-badjas met Griffoendor-kraag",
-   "oud": 64.99,
-   "nieuw": 79.99
-  },
-  {
-   "id": "emp-e278def6fd",
-   "titel": "Ernie-badjas in streepjes (Sesamstraat)",
-   "oud": 64.99,
-   "nieuw": 79.99
-  },
-  {
-   "id": "emp-f15ccac6bf",
-   "titel": "Koekiemonster-badjas met ogen op de capuchon",
-   "oud": 64.99,
-   "nieuw": 79.99
-  },
-  {
-   "id": "emp-8bf5fbd7e6",
-   "titel": "Kuromi-badjas (Hello Kitty and Friends)",
-   "oud": 64.99,
-   "nieuw": 79.99
-  },
-  {
-   "id": "emp-0fdf94344c",
-   "titel": "Dune-badjas House Atreides",
-   "oud": 64.99,
-   "nieuw": 79.99
-  },
-  {
-   "id": "pillow-30d29db7da",
-   "titel": "Kussen 'Meester bedankt' (Pillow Buddies)",
-   "oud": 24.95,
-   "nieuw": 34.95
-  },
-  {
-   "id": "pillow-8d92fd5628",
-   "titel": "Kussen 'Juf bedankt' (Pillow Buddies)",
-   "oud": 34.95,
-   "nieuw": 29.95
-  },
-  {
-   "id": "pillow-2ed16b017a",
-   "titel": "Kussen 'Met pensioen gaan' (Pillow Buddies)",
-   "oud": 34.95,
-   "nieuw": 29.95
+   "id": "cb-streamdeck-mk2",
+   "titel": "Elgato Stream Deck MK.2",
+   "oud": 151.0,
+   "nieuw": 120.0
   },
   {
    "id": "pillow-bd4ca379da",
    "titel": "Kussen 'Geslaagd! Hoe dan?!' (Pillow Buddies)",
+   "oud": 24.95,
+   "nieuw": 29.95
+  },
+  {
+   "id": "pillow-30d29db7da",
+   "titel": "Kussen 'Meester bedankt' (Pillow Buddies)",
    "oud": 34.95,
    "nieuw": 24.95
   },
   {
-   "id": "massa-43196052df",
-   "titel": "Hartkaarsen in een cementen pot (2 stuks)",
-   "oud": 3.94,
-   "nieuw": 5.0
+   "id": "pillow-8d92fd5628",
+   "titel": "Kussen 'Juf bedankt' (Pillow Buddies)",
+   "oud": 29.95,
+   "nieuw": 24.95
   },
   {
-   "id": "massa-ab23656f59",
-   "titel": "Infinity-kerstboom met ledlampjes en eindeloos lichteffect (32 cm)",
-   "oud": 19.98,
-   "nieuw": 16.27
-  },
-  {
-   "id": "massa-29252f9c5b",
-   "titel": "Kinderboek 'Bobbi naar het ziekenhuis'",
-   "oud": 9.98,
-   "nieuw": 22.5
-  },
-  {
-   "id": "massa-d14373c13d",
-   "titel": "Esschert Design kinderparaplu kameleon (88 cm)",
-   "oud": 9.99,
-   "nieuw": 11.98
-  },
-  {
-   "id": "massa-61b3331aad",
-   "titel": "Longfield darts-accessoireset (141-delig)",
-   "oud": 18.98,
-   "nieuw": 37.0
+   "id": "pillow-2ed16b017a",
+   "titel": "Kussen 'Met pensioen gaan' (Pillow Buddies)",
+   "oud": 29.95,
+   "nieuw": 24.95
   },
   {
    "id": "massa-ce9dd68f09",
    "titel": "Ravensburger 3D-puzzelbal Pokémon Heal Ball (54 stukjes)",
    "oud": 10.18,
-   "nieuw": 23.75
-  },
-  {
-   "id": "massa-6d36452e0b",
-   "titel": "Cozy Noxxiez handwarmer en knuffel egel",
-   "oud": 19.49,
-   "nieuw": 26.25
-  },
-  {
-   "id": "massa-fa1f24e2dc",
-   "titel": "Geurkaars in sorbetglas aardbei",
-   "oud": 14.94,
-   "nieuw": 28.75
-  },
-  {
-   "id": "massa-c86f190c42",
-   "titel": "Mindmaze Mysterieus (raadselspel)",
-   "oud": 11.87,
-   "nieuw": 21.25
+   "nieuw": 11.98
   },
   {
    "id": "massa-1308b36e5c",
    "titel": "Darts-cadeauset van messing, zwart gecoat",
-   "oud": 8.98,
-   "nieuw": 9.98
+   "oud": 9.98,
+   "nieuw": 15.5
   },
   {
-   "id": "massa-4b42a22927",
-   "titel": "Geurkaars orange soda",
+   "id": "massa-d14373c13d",
+   "titel": "Esschert Design kinderparaplu kameleon (88 cm)",
    "oud": 11.98,
-   "nieuw": 21.0
+   "nieuw": 20.25
   },
   {
-   "id": "massa-33fd44d2a6",
-   "titel": "Delfts blauwe mok 'Pensioen'",
-   "oud": 6.93,
-   "nieuw": 16.25
+   "id": "massa-fa1f24e2dc",
+   "titel": "Geurkaars in sorbetglas aardbei",
+   "oud": 28.75,
+   "nieuw": 14.94
+  },
+  {
+   "id": "massa-29ef026ba4",
+   "titel": "Paraplu met een stadsgezicht (je krijgt één van zes ontwerpen)",
+   "oud": 5.78,
+   "nieuw": 12.75
+  },
+  {
+   "id": "massa-2bc8ae6da8",
+   "titel": "Spider-Man-kinderparaplu Rainy Days",
+   "oud": 18.25,
+   "nieuw": 7.83
+  },
+  {
+   "id": "massa-d0db28b201",
+   "titel": "Deltas: de coolste voetbalpuzzels",
+   "oud": 10.51,
+   "nieuw": 24.5
+  },
+  {
+   "id": "massa-ab23656f59",
+   "titel": "Infinity-kerstboom met ledlampjes en eindeloos lichteffect (32 cm)",
+   "oud": 16.27,
+   "nieuw": 38.0
+  },
+  {
+   "id": "massa-6d36452e0b",
+   "titel": "Cozy Noxxiez handwarmer en knuffel egel",
+   "oud": 26.25,
+   "nieuw": 18.75
+  },
+  {
+   "id": "massa-64351a22bb",
+   "titel": "Pokémon-gymtas Pikachu (zwart)",
+   "oud": 17.75,
+   "nieuw": 7.62
   },
   {
    "id": "massa-d3bbafbc28",
@@ -188,10 +146,16 @@
    "nieuw": 36.25
   },
   {
-   "id": "massa-97618861ea",
-   "titel": "Peppa Pig-kinderparaplu (71 cm)",
-   "oud": 9.4,
-   "nieuw": 13.25
+   "id": "massa-1462bff796",
+   "titel": "Esschert Design kinderparaplu met bosdieren (70 cm)",
+   "oud": 7.99,
+   "nieuw": 17.75
+  },
+  {
+   "id": "massa-33fd44d2a6",
+   "titel": "Delfts blauwe mok 'Pensioen'",
+   "oud": 6.93,
+   "nieuw": 16.25
   },
   {
    "id": "fotof-3bcf2fe71a",
@@ -200,15 +164,27 @@
    "nieuw": 219.99
   },
   {
-   "id": "fotof-275bc1f9eb",
-   "titel": "Fotofabriek fotoboek hardcover (15 x 15 cm)",
-   "oud": 19.99,
-   "nieuw": 11.99
+   "id": "hobbym-997b3d2db4",
+   "titel": "Mok “Working at home champion”",
+   "oud": 9.99,
+   "nieuw": 8.99
   },
   {
-   "id": "fotof-74083af5d9",
-   "titel": "Klein vierkant fotoboek (15 x 15 cm)",
-   "oud": 14.99,
+   "id": "hobbym-cfe3d81cbf",
+   "titel": "Mok 'koffieleut'",
+   "oud": 6.99,
+   "nieuw": 8.99
+  },
+  {
+   "id": "hobbym-c698125695",
+   "titel": "Mok “Bedankt collega voor je top inzet”",
+   "oud": 9.99,
+   "nieuw": 8.99
+  },
+  {
+   "id": "hobbym-ba00737426",
+   "titel": "Mok “Colleagues like you are hard to find”",
+   "oud": 9.99,
    "nieuw": 8.99
   },
   {
@@ -218,430 +194,208 @@
    "nieuw": 199.0
   },
   {
+   "id": "prepz-86b7da2e19",
+   "titel": "Wilderniskaarten speelkaarten met 70 knopen",
+   "oud": 9.95,
+   "nieuw": 7.9
+  },
+  {
+   "id": "prepz-f826f694ec",
+   "titel": "Totle Ace noodradio met zaklamp, leeslamp en 6000 mAh powerbank",
+   "oud": 48.99,
+   "nieuw": 29.39
+  },
+  {
+   "id": "prepz-46fa0db271",
+   "titel": "Totle Essential Plus noodradio met zonnepaneel en slinger (2000 mAh)",
+   "oud": 34.94,
+   "nieuw": 20.96
+  },
+  {
    "id": "barrel-6069f66254",
    "titel": "Leren barbecueschort",
    "oud": 25.0,
    "nieuw": 129.95
   },
   {
-   "id": "grotek-a4333ddbda",
-   "titel": "Tone-Cheer book nook Cyber City",
-   "oud": 47.0,
-   "nieuw": 40.0
+   "id": "grotek-65ad974508",
+   "titel": "Bouwpakket Titanic met verlichting",
+   "oud": 20.2,
+   "nieuw": 17.85
   },
   {
-   "id": "cl-cb-midsummer",
-   "titel": "CuteBee miniatuurhuisje Midsummer Night's Dream",
-   "oud": 24.0,
-   "nieuw": 17.0
+   "id": "cl-pm-coffee",
+   "titel": "Book nook koffiehuis met lampje",
+   "oud": 27.25,
+   "nieuw": 23.0
   },
   {
-   "id": "dvzn-4d97c0ab44",
-   "titel": "Mini-arcadespelcomputer",
-   "oud": 9.99,
-   "nieuw": 10.99
+   "id": "grotek-7165b1437f",
+   "titel": "Book nook Mystical Magical Power met licht",
+   "oud": 27.25,
+   "nieuw": 23.0
   },
   {
-   "id": "nedg-b4f09e138f",
-   "titel": "Pokémon Surprise Attack Game",
-   "oud": 20.0,
-   "nieuw": 18.0
+   "id": "grotek-0eaa9a7518",
+   "titel": "Book nook Edo Sakura Journey met lampje",
+   "oud": 27.25,
+   "nieuw": 23.0
   },
   {
-   "id": "nedg-76971c3de2",
-   "titel": "Pokémon Sun Fan Edition (3DS)",
-   "oud": 59.99,
-   "nieuw": 78.0
-  },
-  {
-   "id": "nedg-f6d0333b54",
-   "titel": "L.O.L. Surprise! Movie Night (game)",
-   "oud": 9.99,
-   "nieuw": 12.0
-  },
-  {
-   "id": "nedg-47b49d76bd",
-   "titel": "One Piece Odyssey (PS5)",
-   "oud": 14.99,
-   "nieuw": 18.0
-  },
-  {
-   "id": "bol-9300000238405632",
-   "titel": "Kirby Air Riders (Switch 2)",
-   "oud": 38.0,
-   "nieuw": 29.99
+   "id": "grotek-f6f917e2bb",
+   "titel": "Bouwpakket drijvende boekwinkel met verlichting",
+   "oud": 20.2,
+   "nieuw": 17.85
   },
   {
    "id": "bol-9200000103387305",
    "titel": "Crash Team Racing Nitro-Fueled (Switch)",
-   "oud": 22.99,
-   "nieuw": 28.0
-  },
-  {
-   "id": "nedg-83292534e9",
-   "titel": "Pokémon Y (3DS)",
-   "oud": 69.99,
-   "nieuw": 88.0
-  },
-  {
-   "id": "nedg-9447253d15",
-   "titel": "Pokémon Brilliant Diamond (Switch)",
-   "oud": 39.99,
-   "nieuw": 48.0
+   "oud": 28.0,
+   "nieuw": 22.99
   },
   {
    "id": "nedg-ece6eb7663",
    "titel": "L.O.L. Surprise! Remix We Rule the World (game)",
-   "oud": 9.99,
-   "nieuw": 12.0
+   "oud": 12.0,
+   "nieuw": 9.99
   },
   {
-   "id": "nedg-72d5ea72ce",
-   "titel": "Pokémon Shield (Switch)",
+   "id": "nedg-8753a04ebc",
+   "titel": "Pokémon Violet (Switch)",
    "oud": 39.99,
    "nieuw": 48.0
   },
   {
-   "id": "nedg-d675d8743f",
-   "titel": "Hello Kitty-beker om mee te nemen (rvs)",
-   "oud": 18.0,
-   "nieuw": 15.0
+   "id": "nedg-22d2632cf6",
+   "titel": "Pokémon Moon (3DS)",
+   "oud": 44.99,
+   "nieuw": 55.0
   },
   {
-   "id": "ned-hogwarts",
-   "titel": "Hogwarts Legacy (PS5)",
-   "oud": 18.0,
-   "nieuw": 22.0
-  },
-  {
-   "id": "nedg-46106ffe17",
-   "titel": "Pokémon Sword (Switch)",
-   "oud": 39.99,
-   "nieuw": 48.0
+   "id": "cl-dk-bananza",
+   "titel": "Donkey Kong Bananza (Switch 2)",
+   "oud": 68.0,
+   "nieuw": 54.99
   },
   {
    "id": "cl-switch-oled",
    "titel": "Nintendo Switch OLED-model",
-   "oud": 318.0,
-   "nieuw": 229.0
+   "oud": 229.0,
+   "nieuw": 318.0
+  },
+  {
+   "id": "nedg-f1836917b2",
+   "titel": "Pokémon Moon Fan Edition (3DS)",
+   "oud": 69.99,
+   "nieuw": 99.99
+  },
+  {
+   "id": "nedg-95c5361dc6",
+   "titel": "Pokémon Legends: Arceus (Switch)",
+   "oud": 39.99,
+   "nieuw": 48.0
+  },
+  {
+   "id": "nedg-e17c903507",
+   "titel": "New Pokémon Snap (Switch)",
+   "oud": 39.99,
+   "nieuw": 48.0
+  },
+  {
+   "id": "nedg-9c9869a1a2",
+   "titel": "Pokémon Ultra Sun (3DS)",
+   "oud": 69.99,
+   "nieuw": 88.0
+  },
+  {
+   "id": "nedg-145fdbf137",
+   "titel": "Detective Pikachu (3DS)",
+   "oud": 34.99,
+   "nieuw": 44.0
   },
   {
    "id": "cl-sp-jaarplanner",
    "titel": "Jaarplanner met eigen foto's",
-   "oud": 9.99,
-   "nieuw": 5.99
+   "oud": 5.99,
+   "nieuw": 9.99
   },
   {
-   "id": "smartp-c4444bc994",
-   "titel": "Koektrommel met eigen foto",
-   "oud": 21.99,
-   "nieuw": 26.99
-  },
-  {
-   "id": "smartp-61af9185cb",
-   "titel": "Pepermolen met eigen foto",
-   "oud": 39.99,
-   "nieuw": 59.99
+   "id": "smartp-cbb3356994",
+   "titel": "Badjas met eigen geborduurde tekst (antraciet)",
+   "oud": 44.99,
+   "nieuw": 54.99
   },
   {
    "id": "smartp-d7c0f300e2",
    "titel": "Chocoladetelegram met eigen tekst (28 stukjes)",
-   "oud": 19.99,
-   "nieuw": 32.99
-  },
-  {
-   "id": "sp-babyset-nijntje",
-   "titel": "Babyset met rompertje en Nijntje-spaarpot",
-   "oud": 41.99,
-   "nieuw": 31.99
-  },
-  {
-   "id": "smartp-aed49c4945",
-   "titel": "Keukenschort met eigen foto",
-   "oud": 47.99,
-   "nieuw": 33.99
-  },
-  {
-   "id": "cl-sp-bloempot",
-   "titel": "Bloempot met eigen foto",
-   "oud": 29.99,
-   "nieuw": 15.99
+   "oud": 32.99,
+   "nieuw": 25.99
   },
   {
    "id": "smartp-fe122a4434",
    "titel": "Fotopuzzel 500 stukjes",
-   "oud": 18.99,
-   "nieuw": 22.99
+   "oud": 22.99,
+   "nieuw": 13.99
+  },
+  {
+   "id": "smartp-c4444bc994",
+   "titel": "Koektrommel met eigen foto",
+   "oud": 26.99,
+   "nieuw": 36.99
+  },
+  {
+   "id": "sp-babyset-nijntje",
+   "titel": "Babyset met rompertje en Nijntje-spaarpot",
+   "oud": 31.99,
+   "nieuw": 41.99
+  },
+  {
+   "id": "smartp-aed49c4945",
+   "titel": "Keukenschort met eigen foto",
+   "oud": 33.99,
+   "nieuw": 26.99
+  },
+  {
+   "id": "smartp-9919f48ef7",
+   "titel": "Mok met jullie namen en een liefdestekst",
+   "oud": 14.99,
+   "nieuw": 24.99
   },
   {
    "id": "t2-smartphoto-826fc164c4",
    "titel": "Fleece deken met je eigen foto (120 x 150 cm)",
-   "oud": 52.99,
-   "nieuw": 33.99
+   "oud": 33.99,
+   "nieuw": 52.99
   },
   {
-   "id": "anim-347b348fd9",
-   "titel": "Mok rode kat \"great cat moments\"",
-   "oud": 8.99,
-   "nieuw": 9.99
-  },
-  {
-   "id": "bellat-c50471e085",
-   "titel": "Kerstknuffel pinguïn",
-   "oud": 7.99,
-   "nieuw": 9.99
-  },
-  {
-   "id": "anim-459dbc90d7",
-   "titel": "Katoenen tas \"Birds are serious cool\"",
-   "oud": 9.5,
-   "nieuw": 10.99
-  },
-  {
-   "id": "cl-dino-mega",
-   "titel": "Mega dinosauruspuzzel (127 cm lang)",
-   "oud": 14.39,
-   "nieuw": 16.19
-  },
-  {
-   "id": "cl-luiaard-kussen",
-   "titel": "Luiaard kussentje",
-   "oud": 11.05,
-   "nieuw": 13.99
-  },
-  {
-   "id": "bellat-80ddf1005c",
-   "titel": "Kersttrui Christmas Diva (dames)",
-   "oud": 25.69,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-0c91584e40",
-   "titel": "Foute kersttrui \"Lelijke kersttrui\" (heren, groen)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-31d4aefd41",
-   "titel": "Foute kersttrui \"Merry X-mas wine\"",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-78ebd4e947",
-   "titel": "Foute kersttrui \"Mijn foute kersttrui zit in de was\" (dames, groen)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-c9d5a5298f",
-   "titel": "Foute kersttrui \"All I want for Christmas is money\"",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bellat-ea77460c59",
-   "titel": "Foute kersttrui Rudolf (groen, heren)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "cl-kersttrui",
-   "titel": "Foute kersttrui",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-644e33f780",
-   "titel": "Foute kersttrui met rendier (dames, wit)",
-   "oud": 20.99,
-   "nieuw": 15.0
-  },
-  {
-   "id": "bell-a109554ea3",
-   "titel": "Kersttrui Mama Claus (dames, zwart)",
-   "oud": 22.5,
-   "nieuw": 19.99
-  },
-  {
-   "id": "cl-lantaarn-led",
-   "titel": "Lantaarn met LED (2 stuks)",
-   "oud": 19.58,
-   "nieuw": 15.78
-  },
-  {
-   "id": "bell-2366e42136",
-   "titel": "Kerstboom-hoedjes op een diadeem (2 stuks)",
-   "oud": 9.78,
-   "nieuw": 7.72
-  },
-  {
-   "id": "cl-mini-boom",
-   "titel": "Mini kerstboom met sneeuw en verlichting",
-   "oud": 15.98,
-   "nieuw": 14.38
-  },
-  {
-   "id": "bell-20b1ef7920",
-   "titel": "Kersttrui \"Don't fart at Christmas\" (dames)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-f5a744df5e",
-   "titel": "Foute kersttrui \"Kerst is f*cking kut\" (dames, grijs)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-880a93e375",
-   "titel": "Foute kersttrui pinguïn-vriendjes (heren)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-a7063fec9b",
-   "titel": "Foute kersttrui Reinbeer (heren, groen)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-4af4dd8247",
-   "titel": "Foute kersttrui \"All I want for Christmas is beer\"",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-84f9c2a215",
-   "titel": "Foute kersttrui DJ Santa met koptelefoon (heren, blauw)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-8869ea2f4b",
-   "titel": "Foute kersttrui pinguïn-vriendjes (dames)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-ca74b35fa3",
-   "titel": "Foute kersttrui \"Calories don't count at Christmas\" (grote maten)",
-   "oud": 26.44,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-c66b103cb9",
-   "titel": "Foute kersttrui regenboog-Rudolf (dames)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-b932b20f78",
-   "titel": "Foute kersttrui \"Mijn foute kersttrui zit in de was\" (heren, groen)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-2f1beb6878",
-   "titel": "Foute kersttrui \"Last Christmas I gave you my heart\" met skelet (heren",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-62ae85e5fe",
-   "titel": "Kersttrui zingende kerstman (heren, grote maten)",
-   "oud": 26.44,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bl-10172914",
-   "titel": "Foute trui \"Nobody f*cks with Sinterklaas\"",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "cl-stal-kinderen",
-   "titel": "Kerststal voor kinderen met licht",
+   "id": "cl-sp-kerstbal-foto",
+   "titel": "Kerstballen met glitters en eigen foto (2)",
    "oud": 19.99,
    "nieuw": 15.99
   },
   {
-   "id": "bellat-bde5780664",
-   "titel": "Kerstmok met kerstman op motor",
+   "id": "hema-afbcd467f5",
+   "titel": "Philips airfryer 6,2 liter",
+   "oud": 109.0,
+   "nieuw": 79.99
+  },
+  {
+   "id": "bellat-c50471e085",
+   "titel": "Kerstknuffel pinguïn",
    "oud": 9.99,
-   "nieuw": 8.99
+   "nieuw": 7.99
   },
   {
-   "id": "cl-sneeuwbol-muziek",
-   "titel": "Sneeuwbol kerstman met muziek",
-   "oud": 15.89,
-   "nieuw": 12.71
-  },
-  {
-   "id": "cl-stal-31",
-   "titel": "Kerststal compleet met beeldjes 31 cm",
-   "oud": 19.89,
-   "nieuw": 15.91
-  },
-  {
-   "id": "cl-stal-compleet-30",
-   "titel": "Feeric compleet kerststalletje 30 cm",
-   "oud": 19.99,
-   "nieuw": 14.99
-  },
-  {
-   "id": "bell-baefae724b",
-   "titel": "Verlichte kerststal met 9 beeldjes en achtergrond",
-   "oud": 27.98,
-   "nieuw": 25.18
-  },
-  {
-   "id": "bell-8484c03c9c",
-   "titel": "Kersttrui \"Santa hates vegans\" (dames)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-8dd4d19400",
-   "titel": "Foute kersttrui met bier drinkende kerstman (dames)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bell-f631eec84f",
-   "titel": "Foute kersttrui \"Merry Miauw Christmas\" (dames)",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "bellat-c2b4aaef17",
-   "titel": "Foute kersttrui met verliefde kerstman",
-   "oud": 22.99,
-   "nieuw": 19.99
-  },
-  {
-   "id": "tt-bellatio-e2e524c5ac",
-   "titel": "Foute kersttrui \"Cheers\" kerstman en Rudolf (heren)",
-   "oud": 22.99,
-   "nieuw": 19.99
+   "id": "tt-lamponline-2e9c5d1372",
+   "titel": "Lucide Flamingo tafellamp met gekleurd licht",
+   "oud": 59.95,
+   "nieuw": 69.95
   },
   {
    "id": "tt-lamponline-71e410f54f",
    "titel": "Lucide Hannelore tafellamp, mat goud",
-   "oud": 79.85,
-   "nieuw": 89.95
-  },
-  {
-   "id": "dvzn-d79ce0f76c",
-   "titel": "Klok gemaakt van een grammofoonplaat (goud)",
-   "oud": 36.99,
-   "nieuw": 41.99
-  },
-  {
-   "id": "dvzn-52168e65a7",
-   "titel": "Tegeltje \"Alles is grappig, zolang het iemand anders overkomt\"",
-   "oud": 9.49,
-   "nieuw": 10.99
+   "oud": 89.95,
+   "nieuw": 79.85
   },
   {
    "id": "tf-749c0d6817",
@@ -656,28 +410,16 @@
    "nieuw": 27.99
   },
   {
-   "id": "razer-f3b65a344e",
-   "titel": "Razer Cobra gamingmuis Pokémon Edition",
-   "oud": 69.99,
-   "nieuw": 49.95
-  },
-  {
    "id": "invul-1e1c620b18",
    "titel": "Botanisch puzzelboek",
    "oud": 19.99,
    "nieuw": 9.95
   },
   {
-   "id": "joybuy-7a2f170290",
-   "titel": "De'Longhi La Specialista Arte Evo espressomachine",
-   "oud": 506.37,
-   "nieuw": 455.0
-  },
-  {
-   "id": "joybuy-752875ce8a",
-   "titel": "GAN 356 M magnetische speedcube",
-   "oud": 22.39,
-   "nieuw": 25.19
+   "id": "joybuy-77b00c1c8e",
+   "titel": "Star Wars-neonlamp (30 cm)",
+   "oud": 18.45,
+   "nieuw": 20.5
   },
   {
    "id": "joybuy-d8ae331649",
@@ -686,67 +428,51 @@
    "nieuw": 8.99
   },
   {
-   "id": "joybuy-978f1ed48e",
-   "titel": "Geurkaars in een schelp, blauw (oceaangeur)",
-   "oud": 7.99,
-   "nieuw": 4.99
-  },
-  {
-   "id": "joybuy-b4596f9fec",
-   "titel": "Aromaverstuiver wolk met 2 oliën (Emma Molly)",
-   "oud": 44.91,
-   "nieuw": 39.99
-  },
-  {
-   "id": "joybuy-97190085dd",
-   "titel": "Emma Molly set van 3 geurkaarsen",
-   "oud": 15.21,
-   "nieuw": 8.99
-  },
-  {
-   "id": "joybuy-528657d1a0",
-   "titel": "Navee K100 Pro elektrische step voor kinderen",
-   "oud": 175.3,
-   "nieuw": 279.0
-  },
-  {
    "id": "butchery-26811de868",
    "titel": "BBQ dry rub Cattle Drive (Croix Valley)",
    "oud": 14.5,
    "nieuw": 31.5
   },
   {
-   "id": "superz-708e682831",
-   "titel": "Star Wars-mok met lichtzwaarden, verandert met warmte",
-   "oud": 7.0,
-   "nieuw": 14.0
+   "id": "stroop-b040a82c1b",
+   "titel": "Daelmans stroopwafels, 24 stuks apart verpakt",
+   "oud": 10.58,
+   "nieuw": 12.45
+  },
+  {
+   "id": "inv-a4fb5ba1d6",
+   "titel": "TechnoMarine Cruise TM-118136 dameshorloge, goud met zwarte band (40 m",
+   "oud": 129.0,
+   "nieuw": 149.0
+  },
+  {
+   "id": "inv-56647850ff",
+   "titel": "TechnoMarine Cruise TM-118134 dameshorloge, zwart en goud (40 mm)",
+   "oud": 129.0,
+   "nieuw": 149.0
+  },
+  {
+   "id": "superz-3a21f02550",
+   "titel": "Funko Pop! Star Wars Ezra Bridger",
+   "oud": 5.0,
+   "nieuw": 10.0
   }
  ],
  "uitverkocht": [
   {
-   "id": "joybuy-2fd252ae9f",
-   "titel": "Geurverspreider met 10 geuroliën",
+   "id": "joybuy-77b00c1c8e",
+   "titel": "Star Wars-neonlamp (30 cm)",
    "bron": "x-joybuy.json"
   },
   {
-   "id": "myka-2b20f77533",
-   "titel": "Kralenketting met gegraveerde hanger (verguld)",
-   "bron": "x-myka.json"
+   "id": "stroop-0313332d99",
+   "titel": "Daelmans stroopwafels in toefzak",
+   "bron": "x-stroopwafels.json"
   },
   {
-   "id": "legoshop-4aa791462c",
-   "titel": "LEGO NINJAGO Cole vs. slechte Cole in spinner (71873)",
-   "bron": "x-lego.json"
-  },
-  {
-   "id": "legoshop-84146466a0",
-   "titel": "LEGO NINJAGO Lloyd vs. Ras spinnerduel (71875)",
-   "bron": "x-lego.json"
-  },
-  {
-   "id": "dvzn-46c02d8a20",
-   "titel": "Sloffen 'Fuck Off' (zwart)",
-   "bron": "x-dvzn.json"
+   "id": "dropwinkel-be009eccf5",
+   "titel": "Merry Crunch Mix adventskalender",
+   "bron": "x-dropwinkel.json"
   }
  ],
  "nietInFeed": [
@@ -2661,11 +2387,6 @@
    "bron": "Coolblue"
   },
   {
-   "id": "lego-72032",
-   "titel": "LEGO Mario Kart standaardkart (72032)",
-   "bron": "LEGO"
-  },
-  {
    "id": "lego-10441",
    "titel": "LEGO DUPLO vormenstoof: puppyhuis (10441)",
    "bron": "LEGO"
@@ -3101,11 +2822,6 @@
    "bron": "Prydligt"
   },
   {
-   "id": "pry-k1916",
-   "titel": "Zilveren bolle hartjes-oorbellen",
-   "bron": "Prydligt"
-  },
-  {
    "id": "pry-k6917",
    "titel": "Gouden oorknopjes in de vorm van een krakeling",
    "bron": "Prydligt"
@@ -3136,11 +2852,6 @@
    "bron": "Prydligt"
   },
   {
-   "id": "pry-k5310",
-   "titel": "Open gouden ring met twee bolletjes",
-   "bron": "Prydligt"
-  },
-  {
    "id": "pry-k579",
    "titel": "Gouden ring met cactus en steentjes",
    "bron": "Prydligt"
@@ -3148,11 +2859,6 @@
   {
    "id": "pry-k222",
    "titel": "Brede gouden golvende ring",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-k66",
-   "titel": "Gouden ring van gestapelde hartjes",
    "bron": "Prydligt"
   },
   {
@@ -3173,11 +2879,6 @@
   {
    "id": "pry-k1312",
    "titel": "Bolle gouden ring",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-k1710",
-   "titel": "Gouden ketting met drie laagjes",
    "bron": "Prydligt"
   },
   {
@@ -3231,11 +2932,6 @@
    "bron": "Prydligt"
   },
   {
-   "id": "pry-k85",
-   "titel": "Gouden armband met groene steentjes",
-   "bron": "Prydligt"
-  },
-  {
    "id": "pry-k492",
    "titel": "Tennisarmband met heldere steentjes",
    "bron": "Prydligt"
@@ -3246,11 +2942,6 @@
    "bron": "Prydligt"
   },
   {
-   "id": "pry-y632",
-   "titel": "Tom Cole leren armband met stalen sluiting (bruin)",
-   "bron": "Prydligt"
-  },
-  {
    "id": "pry-y731",
    "titel": "Tom Cole blauwe touwarmband met steentjes",
    "bron": "Prydligt"
@@ -3258,11 +2949,6 @@
   {
    "id": "pry-y326",
    "titel": "Tom Cole armband met tijgeroog en gouden kroon",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-y821",
-   "titel": "Tom Cole leren armband met gouden anker",
    "bron": "Prydligt"
   },
   {
@@ -4951,11 +4637,6 @@
    "bron": "EMP"
   },
   {
-   "id": "pry-sw-safebuddy-gtm",
-   "titel": "Safebuddy smartwatch voor kinderen met spelletjes (GTM)",
-   "bron": "Prydligt"
-  },
-  {
    "id": "pry-sw-lp41",
    "titel": "Philippe Palmer smartwatch LP41 met bellen",
    "bron": "Prydligt"
@@ -4966,33 +4647,8 @@
    "bron": "Prydligt"
   },
   {
-   "id": "pry-sw-lp58",
-   "titel": "Philippe Palmer smartwatch LP58 met AMOLED-scherm en stalen band",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-sw-lp72",
-   "titel": "Philippe Palmer smartwatch LP72 met stalen band",
-   "bron": "Prydligt"
-  },
-  {
    "id": "pry-sw-lp79",
    "titel": "Philippe Palmer smartwatch LP79, extra dun",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-sw-lp56",
-   "titel": "Philippe Palmer smartwatch LP56 met rond AMOLED-scherm",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-sw-lp63",
-   "titel": "Philippe Palmer smartwatch LP63, stoer model",
-   "bron": "Prydligt"
-  },
-  {
-   "id": "pry-sw-lp77",
-   "titel": "Philippe Palmer smartwatch LP77, dun met stalen band",
    "bron": "Prydligt"
   },
   {
@@ -5036,11 +4692,6 @@
    "bron": "LEGO"
   },
   {
-   "id": "lego-5010262",
-   "titel": "Nike x LEGO voetbal",
-   "bron": "LEGO"
-  },
-  {
    "id": "stl-beanie",
    "titel": "Stella McCartney muts met logo – kies je kleur",
    "bron": "Stella McCartney"
@@ -5049,11 +4700,6 @@
    "id": "stl-slippers",
    "titel": "adidas by Stella McCartney badslippers (zwart)",
    "bron": "Stella McCartney"
-  },
-  {
-   "id": "bol-9300000233701878",
-   "titel": "Murdle Jr puzzelboek 2: Aan de lijn, klaar, speuren maar!",
-   "bron": "De Grote Speelgoedwinkel"
   },
   {
    "id": "bol-9300000322634455",
@@ -5084,11 +4730,6 @@
    "id": "bol-9300000225873781",
    "titel": "LEGO mini-woestijntuin",
    "bron": "LEGO"
-  },
-  {
-   "id": "bol-9300000193732235",
-   "titel": "Philips TAR1609 noodradio met zonnepaneel en slinger",
-   "bron": "Coolblue"
   },
   {
    "id": "joybuy-aabb00b393",
@@ -5126,6 +4767,11 @@
    "bron": "Dille & Kamille"
   },
   {
+   "id": "joybuy-9d8623a07e",
+   "titel": "Mendale oversized hoodie deken, extra dik en zacht",
+   "bron": "Joybuy"
+  },
+  {
    "id": "t2-cadeau-nl-e817df9223",
    "titel": "Fisura roze kruik met ogen",
    "bron": "Cadeau.nl"
@@ -5141,28 +4787,13 @@
    "bron": "Ditverzinjeniet"
   },
   {
-   "id": "a-coolblue-nl-35931b887f",
-   "titel": "Krups Dolce Gusto Genio S Touch",
-   "bron": "Coolblue"
-  },
-  {
    "id": "a-coolblue-nl-9835323383",
    "titel": "Sage Nespresso Creatista Uno",
    "bron": "Coolblue"
   },
   {
-   "id": "a-coolblue-nl-e7ab69cf6a",
-   "titel": "Ninja Luxe Café Pro espressomachine (ES701)",
-   "bron": "Coolblue"
-  },
-  {
    "id": "a-coolblue-nl-282ec383cd",
    "titel": "De Buyer Mineral B koekenpan van plaatstaal (28 cm)",
-   "bron": "Coolblue"
-  },
-  {
-   "id": "a-coolblue-nl-92a6118004",
-   "titel": "G3 Ferrari pizzaoven Delizia (rood)",
    "bron": "Coolblue"
   },
   {
@@ -5221,11 +4852,6 @@
    "bron": "Joybuy"
   },
   {
-   "id": "cb-streamdeck-mk2",
-   "titel": "Elgato Stream Deck MK.2",
-   "bron": "Coolblue"
-  },
-  {
    "id": "cb-switch-lite-ac",
    "titel": "Nintendo Switch Lite Animal Crossing-editie",
    "bron": "Coolblue"
@@ -5254,6 +4880,11 @@
    "id": "kerstland-9a66f23c4d",
    "titel": "Decoris theelichthouder van ijzer set van 3, zwart, 20cm",
    "bron": "Kerstland"
+  },
+  {
+   "id": "westwing-6dbc4bd6d2",
+   "titel": "Deluxe Home Art handgemaakte LED-kaarsen Real Flame met afstandsbedien",
+   "bron": "Westwing"
   },
   {
    "id": "t2-smartphoto-c5d0ad7924",
@@ -5671,6 +5302,11 @@
    "bron": "Coolblue"
   },
   {
+   "id": "cl-ka-waterkoker",
+   "titel": "KitchenAid Artisan waterkoker",
+   "bron": "Coolblue"
+  },
+  {
    "id": "cl-senseo",
    "titel": "Philips Senseo Original Plus",
    "bron": "Coolblue"
@@ -5718,6 +5354,11 @@
   {
    "id": "cl-pos-friends",
    "titel": "Friends poster Central Perk",
+   "bron": "YourDecoration"
+  },
+  {
+   "id": "cl-pos-onepiece",
+   "titel": "One Piece poster Wanted Shanks",
    "bron": "YourDecoration"
   },
   {
@@ -6221,16 +5862,6 @@
    "bron": "HEMA"
   },
   {
-   "id": "inv-a4fb5ba1d6",
-   "titel": "TechnoMarine Cruise TM-118136 dameshorloge, goud met zwarte band (40 m",
-   "bron": "Invicta"
-  },
-  {
-   "id": "inv-56647850ff",
-   "titel": "TechnoMarine Cruise TM-118134 dameshorloge, zwart en goud (40 mm)",
-   "bron": "Invicta"
-  },
-  {
    "id": "italst-fad61e6b92",
    "titel": "HangSheng Inverno herenhorloge, zwart",
    "bron": "Italian Style"
@@ -6391,11 +6022,6 @@
    "bron": "Megagadgets"
   },
   {
-   "id": "mega-30ae5e417a",
-   "titel": "Schrikdoosje met nepspin",
-   "bron": "Megagadgets"
-  },
-  {
    "id": "mega-17628b67f2",
    "titel": "Geldpistool met 100 nepbiljetten",
    "bron": "Megagadgets"
@@ -6489,11 +6115,6 @@
    "id": "mega-cf15325c3b",
    "titel": "Wc-golfset Potty Putter",
    "bron": "Megagadgets"
-  },
-  {
-   "id": "kadove-8eba8e32f1",
-   "titel": "Mega deurposter \"I love you\" (A1)",
-   "bron": "Kado-versturen"
   },
   {
    "id": "coppens-4c7edbccfd",
@@ -6629,11 +6250,6 @@
    "id": "dvzn-880ebf0fce",
    "titel": "Boksende handpop kangoeroe",
    "bron": "Ditverzinjeniet"
-  },
-  {
-   "id": "g999-8e4be8595b",
-   "titel": "Schmidt kinderpuzzel Brandweer (3 x 24 stukjes)",
-   "bron": "999Games"
   },
   {
    "id": "iscoot-9fed6c33b4",
@@ -8011,6 +7627,11 @@
    "bron": "Wizarding World"
   },
   {
+   "id": "ww-f3bc1d3d25",
+   "titel": "Kaarshouder Bellure, goud",
+   "bron": "Westwing"
+  },
+  {
    "id": "warent-0e38c82024",
    "titel": "Dennenappelkaars met 3D-ledvlam, brons (10 cm, Anna's Collection)",
    "bron": "Warentuin"
@@ -8078,6 +7699,11 @@
   {
    "id": "massa-ac2d45bdec",
    "titel": "Kaarsje in de vorm van een roos (6 x 4 cm)",
+   "bron": "Massamarkt"
+  },
+  {
+   "id": "massa-43196052df",
+   "titel": "Hartkaarsen in een cementen pot (2 stuks)",
    "bron": "Massamarkt"
   },
   {
@@ -8239,11 +7865,6 @@
    "id": "dbl-bb03d200f7",
    "titel": "Doppler stokparaplu Liverpool, zwart",
    "bron": "De Boer Lederwaren & Bijoux"
-  },
-  {
-   "id": "hobbym-600fec049a",
-   "titel": "Bruynzeel schetsboek A3 (40 vellen) met 24 kleurpotloden",
-   "bron": "Hobbymax"
   },
   {
    "id": "dgsw-2d002bd01f",
@@ -8756,6 +8377,11 @@
    "bron": "Trendmax"
   },
   {
+   "id": "ts24-3adc6fa002",
+   "titel": "Thomas Sabo Hello Kitty-bedel met roze strik",
+   "bron": "Timeshop24"
+  },
+  {
    "id": "fietsw-550d5f976c",
    "titel": "Hello Kitty-boodschappentas met ijsjes",
    "bron": "Fietsweb"
@@ -8774,6 +8400,11 @@
    "id": "dgsw-1a63889da9",
    "titel": "Hello Kitty and Friends-knuffelsleutelhanger (verrassing)",
    "bron": "De Grote Speelgoedwinkel"
+  },
+  {
+   "id": "emp-708f6fefc5",
+   "titel": "Kuromi-paraplu (lila)",
+   "bron": "EMP"
   },
   {
    "id": "dgsw-3eb9c08bed",
@@ -8846,7 +8477,7 @@
    "bron": "YourDecoration"
   }
  ],
- "gecontroleerd": 7129,
+ "gecontroleerd": 7068,
  "bronnen": [
   "product-feed_baby-v2.csv.gz",
   "product-feed_computer-v2.csv.gz",
@@ -8874,8 +8505,8 @@
   "product-feed_sports-v2.csv.gz",
   "product-feed_supermarket-v2.csv.gz",
   "product-feed_toys-v2.csv.gz",
-  "a-namen.json",
   "a-kopp-verlag-de-at.json",
+  "a-namen.json",
   "a-finbike-com-nl.json",
   "a-yves-rocher-nl.json",
   "a-iscooter-eu.json",
@@ -9115,6 +8746,7 @@
   "a-coolblue-nl-2092e12536",
   "a-coolblue-nl-22373bcaf7",
   "a-coolblue-nl-2857fe6592",
+  "a-coolblue-nl-35931b887f",
   "a-coolblue-nl-4b6ab5dcf5",
   "a-coolblue-nl-4e43f2c312",
   "a-coolblue-nl-62df1cb04f",
@@ -9136,9 +8768,6 @@
   "a-s-oliver-nl-af0fa2c87e",
   "a-suitableshop-nl-c3178dcf4c",
   "aerov-e1abf208cb",
-  "anim-347b348fd9",
-  "anim-459dbc90d7",
-  "anim-97c43c37a2",
   "badkam-062abadc95",
   "barrel-5137806955",
   "barrel-6069f66254",
@@ -9329,6 +8958,7 @@
   "bol-9200000017138647",
   "bol-9200000018034252",
   "bol-9200000018294373",
+  "bol-9200000018386804",
   "bol-9200000018494649",
   "bol-9200000018521669",
   "bol-9200000019064871",
@@ -9801,6 +9431,7 @@
   "bol-9300000020405193",
   "bol-9300000020446164",
   "bol-9300000020446740",
+  "bol-9300000020550739",
   "bol-9300000020733914",
   "bol-9300000020893712",
   "bol-9300000020994080",
@@ -9855,6 +9486,8 @@
   "bol-9300000033972788",
   "bol-9300000034129529",
   "bol-9300000034159462",
+  "bol-9300000034727770",
+  "bol-9300000034727771",
   "bol-9300000035078697",
   "bol-9300000035078782",
   "bol-9300000035128726",
@@ -9892,6 +9525,7 @@
   "bol-9300000044113442",
   "bol-9300000044119664",
   "bol-9300000044314489",
+  "bol-9300000044680076",
   "bol-9300000044730933",
   "bol-9300000044903333",
   "bol-9300000044915653",
@@ -9981,6 +9615,7 @@
   "bol-9300000082254801",
   "bol-9300000082254848",
   "bol-9300000083266771",
+  "bol-9300000083338024",
   "bol-9300000083339892",
   "bol-9300000083423907",
   "bol-9300000084268898",
@@ -9998,7 +9633,6 @@
   "bol-9300000092100189",
   "bol-9300000094195565",
   "bol-9300000094871791",
-  "bol-9300000095218292",
   "bol-9300000095312857",
   "bol-9300000095475921",
   "bol-9300000095876912",
@@ -10073,6 +9707,7 @@
   "bol-9300000127614041",
   "bol-9300000127699829",
   "bol-9300000127897587",
+  "bol-9300000128468759",
   "bol-9300000129430304",
   "bol-9300000130260497",
   "bol-9300000130428935",
@@ -10206,6 +9841,7 @@
   "bol-9300000153232432",
   "bol-9300000153357879",
   "bol-9300000153365170",
+  "bol-9300000153485321",
   "bol-9300000153798461",
   "bol-9300000153919643",
   "bol-9300000153923423",
@@ -10256,6 +9892,7 @@
   "bol-9300000160493415",
   "bol-9300000160517165",
   "bol-9300000160517168",
+  "bol-9300000160598157",
   "bol-9300000160628461",
   "bol-9300000160642140",
   "bol-9300000161076165",
@@ -10336,6 +9973,7 @@
   "bol-9300000169798467",
   "bol-9300000170256755",
   "bol-9300000170256799",
+  "bol-9300000170301720",
   "bol-9300000170354844",
   "bol-9300000170493371",
   "bol-9300000170743133",
@@ -10401,6 +10039,7 @@
   "bol-9300000176044519",
   "bol-9300000176116258",
   "bol-9300000176116276",
+  "bol-9300000176138823",
   "bol-9300000176218112",
   "bol-9300000176286400",
   "bol-9300000176344032",
@@ -10430,6 +10069,7 @@
   "bol-9300000177675794",
   "bol-9300000177676070",
   "bol-9300000177685771",
+  "bol-9300000177824112",
   "bol-9300000178199190",
   "bol-9300000178263903",
   "bol-9300000178266215",
@@ -10694,6 +10334,7 @@
   "bol-9300000222764491",
   "bol-9300000222945148",
   "bol-9300000223398204",
+  "bol-9300000223421791",
   "bol-9300000223650596",
   "bol-9300000223693762",
   "bol-9300000223702544",
@@ -10904,6 +10545,7 @@
   "bol-9300000233637453",
   "bol-9300000233664828",
   "bol-9300000233667308",
+  "bol-9300000233701878",
   "bol-9300000233701967",
   "bol-9300000233709985",
   "bol-9300000233716133",
@@ -10914,6 +10556,7 @@
   "bol-9300000234302195",
   "bol-9300000234304052",
   "bol-9300000234575492",
+  "bol-9300000234702488",
   "bol-9300000234717251",
   "bol-9300000234965416",
   "bol-9300000234970813",
@@ -11464,8 +11107,10 @@
   "bol-9300000272162486",
   "bol-9300000272162490",
   "bol-9300000272321914",
+  "bol-9300000272673578",
   "bol-9300000272674473",
   "bol-9300000272674476",
+  "bol-9300000272904858",
   "bol-9300000272925536",
   "bol-9300000272998289",
   "bol-9300000273583385",
@@ -11538,6 +11183,7 @@
   "bol-9300000291508370",
   "bol-9300000291533838",
   "bol-9300000292340141",
+  "bol-9300000292788159",
   "bol-9300000292800244",
   "bol-9300000292800277",
   "bol-9300000292800300",
@@ -11625,6 +11271,7 @@
   "bol-9300000338893126",
   "bol-9300000340258889",
   "bol-9300000340502828",
+  "bol-9300000340510244",
   "bol-9300000340513473",
   "bol-9300000340640267",
   "bol-9300000340930163",
@@ -11916,6 +11563,7 @@
   "cb-rog-xbox-ally",
   "cb-sonic-racing",
   "cb-streamdeck-mini",
+  "cb-streamdeck-mk2",
   "cb-streamdeck-neo",
   "cb-switch-lite-mk8",
   "cb-switch-lite-tomodachi",
@@ -12092,7 +11740,6 @@
   "cl-abrick-cijfertrein",
   "cl-abrick-dino",
   "cl-abrick-trein",
-  "cl-acacia-plank",
   "cl-acdc-tee",
   "cl-airfryer-kookboek",
   "cl-airpods5",
@@ -12104,27 +11751,20 @@
   "cl-anna-120",
   "cl-appassimento",
   "cl-appassimento-bianco",
-  "cl-apres-muts",
   "cl-aquacare6",
-  "cl-aroma-diffuser",
   "cl-atari-arcade",
-  "cl-avento-yogaset",
   "cl-aw-se3",
   "cl-azul",
   "cl-baby-eerste-jaar",
   "cl-babyliss-airwand",
   "cl-babyliss-stijltang",
   "cl-badminton-set",
-  "cl-badplank",
   "cl-barolo",
   "cl-baron-fuente",
   "cl-basilisk",
   "cl-bbq-set-8",
   "cl-belkin-2in1",
   "cl-belkin-pro-pb",
-  "cl-beste-mok",
-  "cl-bfb-bijenhotel",
-  "cl-bfb-nestkast",
   "cl-bgt-dagboek",
   "cl-bgt-paperback",
   "cl-bialetti-moka",
@@ -12145,10 +11785,8 @@
   "cl-braun-wildcam",
   "cl-bresser-stellar",
   "cl-budgetplanner",
-  "cl-bukowski-konijn",
   "cl-cadac-safari",
   "cl-calusari",
-  "cl-cameralens",
   "cl-canella-bellini",
   "cl-capibara-warm",
   "cl-casio-lks250",
@@ -12166,10 +11804,8 @@
   "cl-chicco-kubusboek",
   "cl-chicco-taart",
   "cl-chiminea",
-  "cl-choco-fondue",
   "cl-cielo-gold",
   "cl-cielo-prosecco",
-  "cl-cirkelzaag",
   "cl-cirqa",
   "cl-cl-airo",
   "cl-cl-bruis",
@@ -12197,7 +11833,6 @@
   "cl-denksport-pubquiz",
   "cl-denksport-voetbal",
   "cl-dikkie-dik-bad",
-  "cl-dino-mega",
   "cl-dirkjan-28",
   "cl-dit-wordt-toch-niks",
   "cl-diy-neon",
@@ -12229,17 +11864,12 @@
   "cl-dyson-supersonic",
   "cl-ecovacs-t50",
   "cl-een-vraag-per-dag",
-  "cl-eendje-hoera",
-  "cl-eendjes-familie",
   "cl-eerste-jaar",
   "cl-elmer",
   "cl-emp-beanie",
   "cl-escape-boek",
   "cl-escape-boek-kluis",
   "cl-esk-valley",
-  "cl-esschert-silo",
-  "cl-esschert-vogelbad",
-  "cl-esschert-zeegras",
   "cl-essencio-a5",
   "cl-essenza-mini",
   "cl-extra-tijd",
@@ -12264,10 +11894,7 @@
   "cl-garmin-edge",
   "cl-garmin-etrex",
   "cl-garmin-instinct",
-  "cl-geurbrander-omega",
-  "cl-goal-vouw",
   "cl-google-home",
-  "cl-goud-shaker",
   "cl-gouden-carolus",
   "cl-gr-fortune",
   "cl-gr-gin",
@@ -12310,7 +11937,6 @@
   "cl-hema-trekdier",
   "cl-hema-wandelsok",
   "cl-het-ultieme-geheim",
-  "cl-heunec-giraf",
   "cl-hl-boek",
   "cl-hl-starter",
   "cl-hof-versplinterde",
@@ -12331,7 +11957,6 @@
   "cl-hw-monster",
   "cl-impressions",
   "cl-injusa-motor",
-  "cl-insectenhotel",
   "cl-instax12",
   "cl-io2",
   "cl-io5",
@@ -12347,7 +11972,6 @@
   "cl-jbl-auth200",
   "cl-jbl-auth500",
   "cl-jbl-live",
-  "cl-jdb",
   "cl-jean-villare",
   "cl-jenga",
   "cl-jip-janneke",
@@ -12361,8 +11985,6 @@
   "cl-jvh-sint",
   "cl-jw-trex",
   "cl-ka-forged-set",
-  "cl-ka-waterkoker",
-  "cl-kabouter",
   "cl-kamado-33",
   "cl-kampeerlantaarn",
   "cl-kat-kurkentrekker",
@@ -12401,7 +12023,6 @@
   "cl-lambrusco",
   "cl-lamotte",
   "cl-lantaarn-led",
-  "cl-lasvegas",
   "cl-laurent-perrier",
   "cl-lavalamp",
   "cl-ld-bootjes",
@@ -12416,12 +12037,10 @@
   "cl-lebolle",
   "cl-led-240",
   "cl-led-glas",
-  "cl-led-spiegel",
   "cl-leef-2027",
   "cl-legends-za",
   "cl-lego-76470",
   "cl-lego-f1",
-  "cl-leisteen-kaas",
   "cl-lekker-winters",
   "cl-lgt-cuban",
   "cl-lgt-wax",
@@ -12440,12 +12059,9 @@
   "cl-ls-toren-rammel",
   "cl-ls-vormenemmer",
   "cl-lt-hobbelpaard",
-  "cl-luiaard-kussen",
   "cl-luiaard-warm",
   "cl-magic-blue",
   "cl-mam-pap-vertellen",
-  "cl-mama-kruik",
-  "cl-mancave-bord",
   "cl-mando-giftset",
   "cl-mario-kussen",
   "cl-marsala",
@@ -12463,7 +12079,6 @@
   "cl-memphis-lava",
   "cl-metallica-hoodie",
   "cl-metallica-tee",
-  "cl-meuwissen-station",
   "cl-minecraft",
   "cl-mini-boom",
   "cl-mixology-kit",
@@ -12472,7 +12087,6 @@
   "cl-moet",
   "cl-moet-reserve",
   "cl-mok-spiegelei",
-  "cl-montreux",
   "cl-mora-companion",
   "cl-moscatel-setubal",
   "cl-multitool-pen",
@@ -12501,9 +12115,7 @@
   "cl-nirvana-tee",
   "cl-nordic-walking",
   "cl-notenkraker-38",
-  "cl-notenkraker-hangers",
   "cl-novation-mini25",
-  "cl-np-trekdier",
   "cl-oball-giftset",
   "cl-oball-rainstick",
   "cl-onepiece",
@@ -12518,7 +12130,6 @@
   "cl-padelset-kids",
   "cl-pandemic",
   "cl-pap-vertel-eens",
-  "cl-paw-emmer",
   "cl-peuterbijbel-kerststal",
   "cl-pf-alu",
   "cl-pf-blocks",
@@ -12538,7 +12149,6 @@
   "cl-pikachu-tee",
   "cl-pinkfloyd-tee",
   "cl-pinot-grigio",
-  "cl-pionnen",
   "cl-piper",
   "cl-pippi",
   "cl-pixel5",
@@ -12565,7 +12175,6 @@
   "cl-polar-h9",
   "cl-polar-pacer",
   "cl-pos-f1",
-  "cl-pos-onepiece",
   "cl-pos-pokemon",
   "cl-pos-stitch",
   "cl-pos-zelda",
@@ -12581,7 +12190,6 @@
   "cl-quest3s",
   "cl-qwixx",
   "cl-raad-eens",
-  "cl-ravensden-set",
   "cl-rb-bigben",
   "cl-rb-stad",
   "cl-regenmeter",
@@ -12598,20 +12206,11 @@
   "cl-sc-kids",
   "cl-schiereiland",
   "cl-schildpadjes",
-  "cl-sd-bijou",
-  "cl-sd-dubai",
   "cl-sd-eenhoorn",
-  "cl-sd-fluweel",
-  "cl-sd-glas",
-  "cl-sd-glitter",
   "cl-sd-hand",
   "cl-sd-hema-muziek",
-  "cl-sd-horlogebox",
   "cl-sd-muziek",
   "cl-sd-nijntje",
-  "cl-sdg-espresso",
-  "cl-sdg-penang",
-  "cl-sdg-serveerplank",
   "cl-senioren-puzzelboek",
   "cl-ses-montessori",
   "cl-shaker-recepten",
@@ -12622,8 +12221,6 @@
   "cl-skippy",
   "cl-smeg-mff02",
   "cl-sneeuwbol-muziek",
-  "cl-solar-feest",
-  "cl-solar-huisnummer",
   "cl-soliver-kerst",
   "cl-sonos-roam2",
   "cl-sp-bloempot",
@@ -12647,7 +12244,6 @@
   "cl-stal-dieren",
   "cl-stal-hout",
   "cl-stal-kinderen",
-  "cl-stal-mini-led",
   "cl-stalen-korf",
   "cl-starwars-tee",
   "cl-stef",
@@ -12657,7 +12253,6 @@
   "cl-sup-intex",
   "cl-sup-vidaxl",
   "cl-superfamily",
-  "cl-sushi-set",
   "cl-suske-wiske-witje",
   "cl-svinando-adore",
   "cl-svinando-cioccolata",
@@ -12681,8 +12276,6 @@
   "cl-terug-naar-hildegard",
   "cl-texel",
   "cl-the-mind",
-  "cl-theedoos-bamboe",
-  "cl-theedoos-tol",
   "cl-theo-in-golden",
   "cl-theragun-mini",
   "cl-ting-planagenda",
@@ -12700,11 +12293,7 @@
   "cl-ttr-europe",
   "cl-tuinfontein-led",
   "cl-twister",
-  "cl-utopia-mix",
   "cl-uxbridge",
-  "cl-v-ijsprinses",
-  "cl-v-prinses-geel",
-  "cl-v-ridder",
   "cl-va6",
   "cl-vacuvin-cooler",
   "cl-valdobbiadene",
@@ -12715,8 +12304,6 @@
   "cl-vidaxl-voetbal",
   "cl-villa-maria",
   "cl-vivosmart5",
-  "cl-vlaamse-gaai",
-  "cl-vogelklok",
   "cl-vriendenboek-capibara",
   "cl-vriendenboek-eenhoorn",
   "cl-vtech-sorteerwagen",
@@ -12732,9 +12319,7 @@
   "cl-weber-kettle",
   "cl-weber-tang",
   "cl-weerwolven",
-  "cl-whisky-bord",
   "cl-whisky-stones-e",
-  "cl-whisky-wereldbol",
   "cl-whoop-one",
   "cl-wijnacc-fles",
   "cl-wijny-kopke",
@@ -12749,13 +12334,15 @@
   "cl-yes-badjas",
   "cl-yugioh",
   "cl-zeeslag",
-  "cl-zen-tuin",
   "cl-zinfandel",
   "cl-zoete-zusjes-show",
   "cls-deken-rammelaar",
   "coolbl-23c71fad2f",
   "coolbl-382cda0ab8",
+  "coolbl-730c94e2ea",
+  "coolbl-acc6e496d0",
   "coolbl-bce97b138f",
+  "coolbl-d464ca04f1",
   "coolbl-e814b9f7e5",
   "coolgi-098cedb937",
   "coolgi-29be901732",
@@ -12937,6 +12524,7 @@
   "dgsw-6ff671ca76",
   "dgsw-71185b5d06",
   "dgsw-73875b4eb0",
+  "dgsw-79771645b2",
   "dgsw-79f4186022",
   "dgsw-7a381b5295",
   "dgsw-7ab4f79bd1",
@@ -13038,6 +12626,7 @@
   "dgsw-e18493e55f",
   "dgsw-e4346f412a",
   "dgsw-e7e3188ef3",
+  "dgsw-e80132aa5a",
   "dgsw-e92541d8f6",
   "dgsw-ea9185075f",
   "dgsw-ed167c58cc",
@@ -13048,11 +12637,13 @@
   "dgsw-f00e304288",
   "dgsw-f05ac6c180",
   "dgsw-f158b5f582",
+  "dgsw-f24be9bb45",
   "dgsw-f2bf7aee25",
   "dgsw-f545db0668",
   "dgsw-f61b16814e",
   "dgsw-f6fe127b2a",
   "dgsw-f7a5288698",
+  "dgsw-f8c781258a",
   "dgsw-f8d291bf6b",
   "dgsw-fa7e6f4f87",
   "dgsw-fac2ab0178",
@@ -13382,6 +12973,7 @@
   "dvzn-358202",
   "dvzn-35d91b12fb",
   "dvzn-362282",
+  "dvzn-363bb0eb04",
   "dvzn-366531e682",
   "dvzn-367899",
   "dvzn-368715",
@@ -13434,7 +13026,6 @@
   "dvzn-46257e630e",
   "dvzn-469432",
   "dvzn-469600",
-  "dvzn-46c02d8a20",
   "dvzn-471735",
   "dvzn-47304eb09a",
   "dvzn-474812",
@@ -13447,6 +13038,7 @@
   "dvzn-493447",
   "dvzn-494154",
   "dvzn-494959",
+  "dvzn-49871d6984",
   "dvzn-499560",
   "dvzn-49bb2362fd",
   "dvzn-49f9f37aa8",
@@ -13559,6 +13151,7 @@
   "dvzn-6aa21edc9a",
   "dvzn-6beee4c0d4",
   "dvzn-6bf42f846e",
+  "dvzn-6c402fed2b",
   "dvzn-6c52139bf6",
   "dvzn-6e4b6990db",
   "dvzn-6f05bbb089",
@@ -13717,6 +13310,7 @@
   "dvzn-afce12f961",
   "dvzn-afe60bc91e",
   "dvzn-airhockey",
+  "dvzn-b0436ca63a",
   "dvzn-b0d117aada",
   "dvzn-b2451c0bf0",
   "dvzn-b2aa854352",
@@ -13751,6 +13345,7 @@
   "dvzn-c744a36a72",
   "dvzn-c8b19fca1e",
   "dvzn-c943aff48a",
+  "dvzn-caa6b644e0",
   "dvzn-cce4b58a90",
   "dvzn-cd54ccbe3b",
   "dvzn-ce2fbf220a",
@@ -13764,6 +13359,7 @@
   "dvzn-d16eec6ed0",
   "dvzn-d1842f5c1c",
   "dvzn-d1e1776af6",
+  "dvzn-d5b4cf8326",
   "dvzn-d79ce0f76c",
   "dvzn-d7a2ba19d3",
   "dvzn-dad92d924c",
@@ -13923,7 +13519,6 @@
   "emp-6baf416ca1",
   "emp-6de38e6678",
   "emp-6e0a79985d",
-  "emp-708f6fefc5",
   "emp-70bc2d021d",
   "emp-72177e30d2",
   "emp-72906d2989",
@@ -14136,6 +13731,7 @@
   "g999-575cc304d0",
   "g999-61048e40a3",
   "g999-89eea87e26",
+  "g999-8e4be8595b",
   "g999-94cd4809c5",
   "g999-a899a22640",
   "g999-dc0a8ad3ab",
@@ -14275,6 +13871,7 @@
   "grotek-9175fbf9b7",
   "grotek-9235126f56",
   "grotek-93795ed133",
+  "grotek-93d7efd322",
   "grotek-9aa994e1a5",
   "grotek-9c3f31b455",
   "grotek-9c84549f8c",
@@ -14490,6 +14087,7 @@
   "hobbym-4bfbcff9e0",
   "hobbym-4e695f5cfe",
   "hobbym-52438feb97",
+  "hobbym-600fec049a",
   "hobbym-694cba7deb",
   "hobbym-754fc0a2c0",
   "hobbym-990fac919e",
@@ -14499,11 +14097,11 @@
   "hobbym-c698125695",
   "hobbym-cc513083ec",
   "hobbym-cd3e05cf88",
+  "hobbym-cd4bbe7261",
   "hobbym-cfe3d81cbf",
   "hobbym-e6ce08eaa7",
   "hobbym-edeb21f133",
-  "hpw-romper-drinking-buddy",
-  "hpw-romper-straight-outta",
+  "ijz-289c1ba488",
   "ijz-557ffbe334",
   "ijz-7ad8e22123",
   "ijz-88b74e1999",
@@ -14530,9 +14128,11 @@
   "inv-115d94b618",
   "inv-15c0ec276f",
   "inv-348e0bc07e",
+  "inv-56647850ff",
   "inv-5afe1d198e",
   "inv-71f19c84ce",
   "inv-859d2da0d8",
+  "inv-a4fb5ba1d6",
   "inv-bfe04f83f8",
   "inv-cb28b57a4d",
   "inv-e842699001",
@@ -14561,7 +14161,6 @@
   "joybuy-19b3aeb5c2",
   "joybuy-1cc741857a",
   "joybuy-2e4d494240",
-  "joybuy-2fd252ae9f",
   "joybuy-3ff0d62016",
   "joybuy-528657d1a0",
   "joybuy-53dc3365c7",
@@ -14582,7 +14181,6 @@
   "joybuy-9322e53b6e",
   "joybuy-97190085dd",
   "joybuy-978f1ed48e",
-  "joybuy-9d8623a07e",
   "joybuy-a081af5cb1",
   "joybuy-a5f5bba7bc",
   "joybuy-ae460db994",
@@ -14614,23 +14212,6 @@
   "kaartj-894de4a575",
   "kaartj-93a9a33a52",
   "kaartj-a2e85249bc",
-  "kado-0fe0f7c936",
-  "kado-347434f7bf",
-  "kado-63cf516b7e",
-  "kado-74c1606f2f",
-  "kado-a2b920f5d8",
-  "kadove-01643f66e4",
-  "kadove-27b9965404",
-  "kadove-3979d4f3d3",
-  "kadove-428b8d7a18",
-  "kadove-72faf8d57a",
-  "kadove-8f92ccb5f8",
-  "kadove-9b122f1087",
-  "kadove-a9049cd42f",
-  "kadove-c141091798",
-  "kadove-e6f7255edb",
-  "kadove-ed51bd09ea",
-  "kadove-f2393bf81e",
   "kerstl-00eb10e357",
   "kerstl-a4597fe8fb",
   "kerstland-51fae0ebdf",
@@ -14638,8 +14219,6 @@
   "knufk-d227b986c5",
   "knufp-71c264828f",
   "kopp-220f34d9c7",
-  "kv-mama-loading-mok",
-  "kv-mommy-to-be-sweater",
   "lego-10344",
   "lego-10363",
   "lego-10368",
@@ -14676,10 +14255,8 @@
   "legoshop-0ce36d7fff",
   "legoshop-18423efb5e",
   "legoshop-3320eeaf7e",
-  "legoshop-4aa791462c",
   "legoshop-521626b009",
   "legoshop-7152d90188",
-  "legoshop-84146466a0",
   "legoshop-86b9f7adeb",
   "legoshop-8e65b8eaee",
   "legoshop-9d0feabaa2",
@@ -14766,7 +14343,6 @@
   "massa-346b0c4054",
   "massa-36563e4257",
   "massa-3b2f4461eb",
-  "massa-43196052df",
   "massa-4405870abb",
   "massa-4b42a22927",
   "massa-4ccdcf1e19",
@@ -14848,7 +14424,6 @@
   "mmf-df4c76416c",
   "myka-13758d88cd",
   "myka-21651ceb0a",
-  "myka-2b20f77533",
   "myka-2d9fbc086b",
   "myka-8bdf9c6450",
   "myka-9b82f2b483",
@@ -14971,6 +14546,7 @@
   "nedg-30c5f35c46",
   "nedg-31a88bb452",
   "nedg-322cee8c55",
+  "nedg-333a3dbc27",
   "nedg-33632cc719",
   "nedg-3431fbf4b2",
   "nedg-34464ef64e",
@@ -14981,6 +14557,7 @@
   "nedg-3719bfce4a",
   "nedg-379a2fb1ea",
   "nedg-37f518349d",
+  "nedg-3846a931c6",
   "nedg-3877b0a794",
   "nedg-39491e759c",
   "nedg-3977c15a08",
@@ -14988,6 +14565,7 @@
   "nedg-3a5c3cd447",
   "nedg-3bb724f735",
   "nedg-3bc26dc4c6",
+  "nedg-3bf32ced17",
   "nedg-3c15e2841c",
   "nedg-3cdf3e5178",
   "nedg-3d45a52d0b",
@@ -15004,6 +14582,7 @@
   "nedg-4175fe9fd9",
   "nedg-41aca5124d",
   "nedg-422c796ef4",
+  "nedg-423c2ebd0c",
   "nedg-4374b4bbea",
   "nedg-4527fb9cef",
   "nedg-45e4ea8cf4",
@@ -15045,6 +14624,7 @@
   "nedg-545f141a5f",
   "nedg-547ee36389",
   "nedg-55b64c9722",
+  "nedg-55ccbca8a3",
   "nedg-58294e773e",
   "nedg-58309cb914",
   "nedg-58482cd4f3",
@@ -15130,6 +14710,7 @@
   "nedg-78a641361b",
   "nedg-79709f6bce",
   "nedg-79ec7c6b20",
+  "nedg-7ba4dcffa4",
   "nedg-7bf6692db0",
   "nedg-7c021e1575",
   "nedg-7c1aa8ede0",
@@ -15176,6 +14757,7 @@
   "nedg-8b4e5dd306",
   "nedg-8b50e2d844",
   "nedg-8c1e2f60a4",
+  "nedg-8c3cd64912",
   "nedg-8c737e8eab",
   "nedg-8cf8d488d5",
   "nedg-8e8f2abc5f",
@@ -15225,6 +14807,7 @@
   "nedg-a01b611ac6",
   "nedg-a0aebb0083",
   "nedg-a0ce98b87d",
+  "nedg-a0fee9f960",
   "nedg-a10f0c326e",
   "nedg-a13c19503b",
   "nedg-a262067ad5",
@@ -15257,6 +14840,7 @@
   "nedg-aacd217859",
   "nedg-aad850797a",
   "nedg-aaef75274b",
+  "nedg-ab30ba6d73",
   "nedg-ab3d5ba0ae",
   "nedg-ab8f365462",
   "nedg-ab925ba048",
@@ -15266,6 +14850,7 @@
   "nedg-adb164ecbd",
   "nedg-adcb329ba4",
   "nedg-ade9a249c9",
+  "nedg-adf39588e9",
   "nedg-ae74551c32",
   "nedg-afa4f961b9",
   "nedg-afe250d262",
@@ -15792,7 +15377,6 @@
   "supz-91eb795c4c",
   "supz-b83356d67b",
   "supz-dc1454c082",
-  "surpr-33e82ea133",
   "surpro-3601199181",
   "surpro-3d6fe025f4",
   "surpro-3ead34f5fd",
@@ -15865,17 +15449,6 @@
   "t2-grotekadoshop-42fb3c9123",
   "t2-grotekadoshop-80d8b2edff",
   "t2-grotekadoshop-e5c3109d84",
-  "t2-handpoppen-00db6d725e",
-  "t2-handpoppen-2b3601f263",
-  "t2-handpoppen-354637198b",
-  "t2-handpoppen-4b32fdfdd9",
-  "t2-handpoppen-9833fa78a2",
-  "t2-handpoppen-a4421970ef",
-  "t2-handpoppen-bb49ad724f",
-  "t2-handpoppen-c1d3455215",
-  "t2-handpoppen-d9093ca59f",
-  "t2-handpoppen-e49e8acc3e",
-  "t2-handpoppen-fb2c776400",
   "t2-hema-22b797950a",
   "t2-hema-25079ba55b",
   "t2-hema-2827294afd",
@@ -15950,7 +15523,6 @@
   "ts24-2e13ed0182",
   "ts24-2f9f014d5b",
   "ts24-3516921190",
-  "ts24-3adc6fa002",
   "ts24-42ce6d63ce",
   "ts24-444188744b",
   "ts24-49175cc71f",
@@ -16100,7 +15672,6 @@
   "westwing-3ae08c1dab",
   "westwing-584152c704",
   "westwing-5876b0962d",
-  "westwing-6dbc4bd6d2",
   "westwing-97c9f3a195",
   "westwing-9f89e48bbc",
   "westwing-af91a1a97d",
@@ -16150,7 +15721,6 @@
   "ww-c8628dacb0",
   "ww-caf578638d",
   "ww-d191022171",
-  "ww-f3bc1d3d25",
   "ww-f8f6d12ecc",
   "ww-fa986cf0c1",
   "xmas-740741f766",
@@ -16235,10 +15805,10 @@
   "zinzi-fc39406a5d"
  ],
  "samenvatting": {
-  "live": 9770,
-  "gecontroleerd": 7129,
-  "prijsVeranderd": 120,
-  "uitverkocht": 5,
-  "nietInFeed": 1619
+  "live": 9690,
+  "gecontroleerd": 7068,
+  "prijsVeranderd": 76,
+  "uitverkocht": 3,
+  "nietInFeed": 1600
  }
 }
