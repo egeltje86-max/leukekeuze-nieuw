@@ -227,7 +227,10 @@
     if (window.LK_KAART_HEM && p.beeldHem) p = Object.assign({}, p, { beeld: p.beeldHem });
     var fav = isFavoriet(p.id);
     /* Black Friday (5-11-2026): bij minstens 20% korting toont de kaart het kortingspercentage in plaats van 'Nieuw'. */
-    var label = p.voorbeeld ? '<span class="label">Voorbeeld</span>' : p.eigen ? '<span class="label vol favo">★ Zelf gemaakt</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : ((p.oudePrijs > p.prijs && p.prijs / p.oudePrijs <= 0.8) ? '<span class="label vol">-' + Math.round((1 - p.prijs / p.oudePrijs) * 100) + '%</span>' : (isNieuw(p) ? '<span class="label vol nieuw">Nieuw</span>' : '')));
+    /* 18-11-2026 (GO Marius, onderzoek koopgedrag: 68% wantrouwt Black Friday-kortingen): een deal uit onze eigen prijsgeschiedenis (laag30 = lager dan de
+       laagste prijs die wij zelf in de 30 dagen ervoor zagen) krijgt het label 'Echt lager'. Uit: window.LK_ECHT_LAGER = false. */
+    var echtLager = window.LK_ECHT_LAGER !== false && p.laag30 && p.oudePrijs > p.prijs && !p.voorbeeld;
+    var label = echtLager ? '<span class="label vol echt-lager">Echt lager -' + Math.round((1 - p.prijs / p.oudePrijs) * 100) + '%</span>' : p.voorbeeld ? '<span class="label">Voorbeeld</span>' : p.eigen ? '<span class="label vol favo">★ Zelf gemaakt</span>' : (p.favoriet ? '<span class="label vol favo">★ Onze favoriet</span>' : ((p.oudePrijs > p.prijs && p.prijs / p.oudePrijs <= 0.8) ? '<span class="label vol">-' + Math.round((1 - p.prijs / p.oudePrijs) * 100) + '%</span>' : (isNieuw(p) ? '<span class="label vol nieuw">Nieuw</span>' : '')));
     return '<article class="prodkaart">' +
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + (p.sfeer ? ' sfeer' : '') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icoon('hart') + '</button>' +

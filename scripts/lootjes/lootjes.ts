@@ -3,6 +3,8 @@
 // Werking: de organisator maakt een groep; de server trekt meteen en bewaart wie wie heeft, maar geeft dat NIET aan de organisator.
 // Iedereen opent het groepslinkje, kiest zijn eigen naam (één keer, daarna is die naam vergeven) en ziet alleen zijn eigen lootje.
 // Bewaard: alleen voornamen. Alles ouder dan 60 dagen wordt bij elke aanroep weggegooid.
+// 18-11-2026 (GO Marius 'Go allemaal' op het onderzoek koopgedrag): verlanglijstje. Wie zijn naam kiest kan 3 tot 5 cadeaus van de site aantikken
+// (alleen product-ids) en een korte eigen wens; alleen wie die naam getrokken heeft ziet ze ('wens' bewaart, 'kies' en 'mijn' geven ze terug).
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.45.4";
 
@@ -56,6 +58,17 @@ async function deelnemers(g: string) {
   const { data } = await db.from("lk_loot_deelnemers").select("nr,naam,getrokken,token,gekozen").eq("groep_id", g).order("nr");
   return data || [];
 }
+function wensIds(x: unknown): string[] {
+  const uit: string[] = [];
+  for (const v of Array.isArray(x) ? x : []) { const s = String(v || "").toLowerCase(); if (/^[a-z0-9-]{3,40}$/.test(s) && !uit.includes(s)) uit.push(s); if (uit.length >= 5) break; }
+  return uit;
+}
+// Mijn eigen wensen en die van wie ik getrokken heb (opgezocht op naam; namen zijn uniek binnen een groep).
+async function wensen(g: string, mijnNaam: string, getrokken: string) {
+  const { data } = await db.from("lk_loot_deelnemers").select("naam,wensen,wens_tekst").eq("groep_id", g).in("naam", [mijnNaam, getrokken]);
+  const mij = (data || []).find((x) => x.naam === mijnNaam), hem = (data || []).find((x) => x.naam === getrokken);
+  return { mijnWensen: wensIds(mij?.wensen), mijnTekst: mij?.wens_tekst || "", zijnWensen: wensIds(hem?.wensen), zijnTekst: hem?.wens_tekst || "" };
+}
 function openbaar(gr: { naam: string; budget: number; moment: string; ronde: number }, d: { nr: number; naam: string; gekozen: string | null }[]) {
   return { naam: gr.naam, budget: gr.budget, moment: gr.moment, ronde: gr.ronde, namen: d.map((x) => ({ nr: x.nr, naam: x.naam, gekozen: !!x.gekozen })) };
 }
@@ -103,14 +116,23 @@ Deno.serve(async (req: Request) => {
       const { data, error } = await db.from("lk_loot_deelnemers").update({ token, gekozen: new Date().toISOString() }).eq("groep_id", g).eq("nr", nr).is("gekozen", null).select("naam,getrokken");
       if (error) throw error;
       if (!data || !data.length) return antwoord({ fout: "Deze naam is al gekozen. Ben jij dit en zie je je lootje niet? Vraag de organisator om opnieuw te trekken." }, 409, origin);
-      return antwoord({ token, naam: data[0].naam, getrokken: data[0].getrokken, groep: gr.naam, budget: gr.budget, moment: gr.moment }, 200, origin);
+      return antwoord({ token, naam: data[0].naam, getrokken: data[0].getrokken, groep: gr.naam, budget: gr.budget, moment: gr.moment, ...(await wensen(g, data[0].naam, data[0].getrokken)) }, 200, origin);
     }
     if (actie === "mijn") {
       const token = schoon(inv.token, 30);
       if (token.length < 20) return antwoord({ fout: "Dit lootje is niet gevonden." }, 404, origin);
       const { data } = await db.from("lk_loot_deelnemers").select("naam,getrokken").eq("groep_id", g).eq("token", token).maybeSingle();
       if (!data) return antwoord({ fout: "Dit lootje is niet (meer) gevonden. Misschien is er opnieuw getrokken: kies je naam dan opnieuw." }, 404, origin);
-      return antwoord({ naam: data.naam, getrokken: data.getrokken, groep: gr.naam, budget: gr.budget, moment: gr.moment }, 200, origin);
+      return antwoord({ naam: data.naam, getrokken: data.getrokken, groep: gr.naam, budget: gr.budget, moment: gr.moment, ...(await wensen(g, data.naam, data.getrokken)) }, 200, origin);
+    }
+    if (actie === "wens") {
+      const token = schoon(inv.token, 30);
+      if (token.length < 20) return antwoord({ fout: "Dit lootje is niet gevonden." }, 404, origin);
+      const lijst = wensIds(inv.wensen), tekst = schoon(inv.tekst, 100);
+      const { data, error } = await db.from("lk_loot_deelnemers").update({ wensen: lijst, wens_tekst: tekst || null }).eq("groep_id", g).eq("token", token).select("naam");
+      if (error) throw error;
+      if (!data || !data.length) return antwoord({ fout: "Dit lootje is niet (meer) gevonden. Misschien is er opnieuw getrokken: kies je naam dan opnieuw." }, 404, origin);
+      return antwoord({ ok: true, mijnWensen: lijst, mijnTekst: tekst }, 200, origin);
     }
     if (actie === "status" || actie === "opnieuw") {
       if (schoon(inv.beheer, 30) !== gr.beheer) return antwoord({ fout: "Alleen de organisator kan dit doen." }, 403, origin);

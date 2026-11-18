@@ -374,6 +374,50 @@
       : 'Bestel je meer tegelijk bij ' + esc(p.shop) + ', dan betaal je de verzendkosten maar één keer.';
     return '<section class="sectie wh-erbij" data-tel-bron="doe-er-iets-bij"><div class="sectie-kop"><div><h2>Doe er iets bij van ' + esc(p.shop) + '</h2><p class="wh-zin">' + zin + '</p></div></div>' + grid(uit) + '</section>';
   }
+  /* 'Maak er een Sint-gedicht bij' (18-11-2026, GO Marius 'Go allemaal' op het onderzoek koopgedrag: 45% wil een AI-hulp voor het Sint-gedicht).
+     Op de productpagina, van 15 oktober tot en met 5 december. Opent de rijmmachine met dit cadeau al gekozen (?cadeau=<id>); de functie sint-rijm (live-15v)
+     dicht er dan speciaal over. Niet bij drank (die kan bij een kind of tiener niet) en niet boven 250 euro (grens van de rijmmachine). Uit: window.LK_GEDICHT_KNOP = false. */
+  function gedichtKnop(p) {
+    if (window.LK_GEDICHT_KNOP === false || !p || p.voorbeeld || p.drank || !(p.prijs > 0) || p.prijs > 250 || p.status !== 'goedgekeurd') return '';
+    var md = new Date().toISOString().slice(5, 10); if (md < '10-15' || md > '12-05') return '';
+    return '<a class="gedicht-knop" href="/sint-rijmmachine/?cadeau=' + encodeURIComponent(p.id) + '">' + ic('vonk') +
+      '<span><strong>Maak er een Sint-gedicht bij</strong><small>Gratis: Sint rijmt over dit cadeau, klaar in een halve minuut</small></span>' + ic('rechts') + '</a>';
+  }
+  /* Schoenzet-mandjes (18-11-2026, GO Marius 'Go allemaal' op het onderzoek koopgedrag): op Schoencadeautjes per winkel vijf kleine cadeautjes
+     die je in één bestelling haalt, met het totaal en de verzendregel van die winkel. Onderzoek: één klik levert vaak een groter mandje op, en de
+     commissie geldt over de hele bestelling. Alleen in het seizoen van de collectie (g.seizoen). Uit: window.LK_MANDJES = false. */
+  function mandjesNu(g) {
+    if (!g || !g.mandjes || window.LK_MANDJES === false) return [];
+    if (g.seizoen) { var md = new Date().toISOString().slice(5, 10); if (md < g.seizoen[0] || md > g.seizoen[1]) return []; }
+    return g.mandjes.map(function (m) {
+      var l = m.ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd' && p.prijs > 0 && p.beeld; });
+      return l.length >= 4 ? { shop: m.shop, l: l } : null;
+    }).filter(Boolean);
+  }
+  function mandjesTeaser(g) {
+    var m = mandjesNu(g); if (!m.length) return '';
+    /* een knop, geen #-link: de pagina heeft een <base href="/">, dus '#mandjes' zou naar de homepage gaan */
+    return '<button type="button" class="mandje-teaser" data-naar-mandjes>' + ic('cadeau') + '<span><strong>Schoen vullen in één bestelling?</strong> ' + m.length + ' kant-en-klare mandjes per winkel</span>' + ic('omlaag') + '</button>';
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-naar-mandjes]') : null; if (!t) return;
+    var m = document.getElementById('mandjes'); if (m) m.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'schoenmandje/naar', title: 'Schoenmandjes bekeken', event: true }); } catch (x) {}
+  });
+  function mandjesBlok(g) {
+    var m = mandjesNu(g); if (!m.length) return '';
+    return '<section class="sectie mandjes" id="mandjes" data-tel-bron="schoenmandje"><div class="sectie-kop"><div><h2>Schoen vullen in één bestelling</h2>' +
+      '<p>Per winkel vijf kleine cadeautjes die je samen bestelt. Zo betaal je de verzendkosten maar één keer. Tik op een cadeautje om het te bekijken.</p></div></div>' +
+      '<div class="mandjes-raster">' + m.map(function (x) {
+        var som = Math.round(x.l.reduce(function (s, p) { return s + p.prijs; }, 0) * 100) / 100;
+        var w = BEZORG_INFO[x.shop] || {};
+        var verz = typeof w.gratis === 'number' && w.gratis > 0 ? (som >= w.gratis ? 'Samen boven ' + euroKort(w.gratis) + ': gratis verzending.' : 'Gratis verzending vanaf ' + euroKort(w.gratis) + ': nog ' + LK.euro(Math.round((w.gratis - som) * 100) / 100) + '.')
+          : w.kosten ? esc(w.kosten) + '.' : 'Eén bestelling, één keer verzendkosten.';
+        return '<article class="mandje"><h3>' + ic('winkel') + 'Bij ' + esc(x.shop) + '</h3><ul class="mandje-rij">' + x.l.map(function (p) {
+          return '<li><a href="/p/' + esc(p.id) + '/" class="mandje-item"><span class="mandje-foto">' + LK.productBeeld(p) + '</span><span class="mandje-naam">' + esc(p.titel) + '</span><span class="mandje-prijs">' + LK.euro(p.prijs) + '</span></a></li>';
+        }).join('') + '</ul><p class="mandje-som">Samen <strong>' + LK.euro(som) + '</strong> voor ' + x.l.length + ' cadeautjes</p><p class="mandje-verzend">' + verz + '</p></article>';
+      }).join('') + '</div><p class="mandje-noot">Prijzen zoals wij ze het laatst zagen; de winkel heeft de prijs van vandaag. Verzendregels van de site van de winkel, nagekeken op ' + BEZORG_DATUM + '.</p></section>';
+  }
   /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
   function etalageEerst(l) {
     if (!window.LK_TOPVAST) return l;
@@ -2624,11 +2668,19 @@
         return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + esc(maakAdres(pad, Object.assign({}, q, { afd: hier ? '' : a }))) + '"' + (hier ? ' aria-current="true"' : '') + '>' + esc(kort(a)) + ' <small>' + tel[a] + '</small></a>';
       }).join('') + '</nav>';
   }
+  /* 18-11-2026 (GO Marius, onderzoek koopgedrag): in de Black Friday-week kopen mensen al voor Sinterklaas en Kerst (65% van wie speelgoed koopt,
+     NielsenIQ) en ze wantrouwen kortingen (68%). Dus bij 'beste deals': een echte prijsdaling uit onze eigen geschiedenis (laag30) en speelgoed en
+     cadeaus voor Sint en Kerst eerder, gewone elektronica (geen gaming) later. De eigen deals van Marius blijven bovenaan. Uit: window.LK_BF_ORDE = false. */
+  function bfOrde(p) {
+    if (window.LK_BF_ORDE === false) return 0;
+    var feest = (p.moment || []).some(function (m) { return m === 'sinterklaas' || m === 'kerst'; }) || (p.ookIn || []).some(function (v) { return /^cadeaus\/(sinterklaas|kerst|sint-onder-15)/.test(v); }) || p.afd === 'speelgoed' || p.afd === 'spellen-puzzels';
+    return (p.laag30 ? 0.12 : 0) + (feest ? 0.12 : 0) - (p.afd === 'elektronica' && !/gaming/.test(p.groep || '') ? 0.1 : 0);
+  }
   function besteDeals(lijst) {
     /* 8-11-2026: de deals die Marius zelf koos (LK_TOPKEUZE['/collectie/black-friday']) komen bovenaan, nog steeds gemixt. */
     var bfTop = {}; ((window.LK_TOPKEUZE || {})['/collectie/black-friday'] || []).forEach(function (id) { bfTop[id] = 1; });
     var l = lijst.map(function (p) {
-      var s = (bfTop[p.id] ? 1 : 0) + kortingPct(p) / 100 * 0.55 + (typeof p.rang === 'number' ? p.rang : 0.5) * 0.45 + (p.favoriet ? 0.08 : 0) + (p.populair ? 0.04 : 0) + (p.beeld ? 0 : -1);
+      var s = (bfTop[p.id] ? 1 : 0) + kortingPct(p) / 100 * 0.55 + (typeof p.rang === 'number' ? p.rang : 0.5) * 0.45 + (p.favoriet ? 0.08 : 0) + (p.populair ? 0.04 : 0) + (p.beeld ? 0 : -1) + bfOrde(p);
       return { p: p, s: s, v: p.vak || p.groep || (p.cat + '/' + p.sub), w: p.shop };
     }).sort(function (a, b) { return b.s - a.s; });
     var uit = [];
@@ -2749,13 +2801,16 @@
     }) +
     '<div class="binnen">' +
       (g.korting || g.codes ? dealsNav(g.slug) : '') + (g.codes ? codesBlok() : '') +
+      /* 18-11-2026 (GO Marius): eerlijke regel bovenaan de Black Friday-pagina, in één zin. */
+      (g.eerlijk ? '<p class="eerlijk-regel">' + ic('vonk') + '<span>' + esc(g.eerlijk) + '</span></p>' : '') +
+      (pv ? '' : mandjesTeaser(g)) +
       (voorKnopjes ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + voorKnopjes + '</section>' : '') +
       /* Stap 4 indeling: 'Onze selectie' als vast raster (geen schuifrij). Deals van vandaag (Acties) blijven 12 stuks. */
       /* Stap 6 indeling: op een collectie (Cadeau-ideeën) geen selectie: meteen filter en producten. Acties houden 'Deals van vandaag'. */
       (selectie.length ? '<section class="sectie' + (voorKnopjes ? '' : ' eerste') + ' sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       (g.korting ? afdChips(pad, q, alles) : '') +
       '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? (q.afd && window.LK_CAT(q.afd) ? 'Deals in ' + esc(window.LK_CAT(q.afd).naam.toLowerCase()) : 'Alle deals') + (q.sort === 'korting' ? ', grootste korting eerst' : ', beste eerst') : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : g.lijstKop ? esc(g.lijstKop) : esc(lijstKopVan(g, isGelegenheid)))) + '</h2></div></div></section>' +
-      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) + (g.faq ? gidsFaq(g) : '') +
+      werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) + (pv ? '' : mandjesBlok(g)) + (g.faq ? gidsFaq(g) : '') +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       /* Verder kijken, onderaan als tekstlinks (gelegenheden op datum: eerst wat eraan komt). */
       (isGelegenheid ? tekstLinks('Andere gelegenheden', andere.map(function (x) { return [x.naam, x.naar || '/gelegenheid/' + x.slug]; })) : '') +
@@ -2986,7 +3041,7 @@
           '<h1>' + esc(p.titel) + '</h1>' +
           '<div class="prijs">' + (prijsOud(p) ? '<span class="circa" title="prijs kan veranderd zijn">ca.</span> ' : '') + '<span data-variant-prijs>' + LK.euro(p.prijs) + '</span>' + (p.oudePrijs > p.prijs && !prijsOud(p) ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</div>' +
           /* 17-11-2026 (GO Marius): korting uit onze eigen prijsgeschiedenis; we zeggen eerlijk waar de doorgestreepte prijs vandaan komt. */
-          (p.laag30 && p.oudePrijs > p.prijs && !prijsOud(p) ? '<p class="laag30">Doorgestreept: de laagste prijs die wij in de 30 dagen vóór deze prijsdaling zagen.</p>' : '') +
+          (p.laag30 && p.oudePrijs > p.prijs && !prijsOud(p) ? '<p class="laag30"><b>Echt lager.</b> Doorgestreept: de laagste prijs die wij in de 30 dagen vóór deze prijsdaling zagen.</p>' : '') +
           /* Stap 5 indeling (6-11-2026, plan deel 8): de knop direct onder de prijs, binnen het eerste scherm; kleur en maat eronder. */
           '<div class="product-acties" data-acties>' + knop +
             '<button class="hartknop" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + ic('hart') + '</button>' +
@@ -2998,6 +3053,7 @@
           (p.url && !p.voorbeeld ? '<div class="product-plak" data-plak aria-hidden="true"><div class="binnen"><span class="prijs" data-variant-prijs>' + LK.euro(p.prijs) + '</span>' +
             '<a class="knop knop-goud" data-winkel href="' + esc(winkelLink(p)) + '" target="_blank" rel="sponsored nofollow noopener" tabindex="-1">Bekijk bij ' + esc(p.shop) + ' ' + ic('pijl') + '</a></div></div>' : '') +
           bezorgBlok(p) + /* WINKELHULP 18-11-2026 */
+          gedichtKnop(p) + /* KOOPGEDRAG 18-11-2026 */
           (p.waarom ? '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom) + '</p></div>' : '') +
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
@@ -4130,6 +4186,12 @@
     };
     var rel = [['partner', 'Mijn partner'], ['ouder', 'Vader of moeder'], ['grootouder', 'Opa of oma'], ['broerzus', 'Broer of zus'], ['vriend', 'Vriend(in)'],
       ['collega', 'Collega'], ['baas', 'Baas'], ['juf', 'Juf of meester'], ['schoon', 'Schoonfamilie'], ['buren', 'Buren'], ['tiener', 'Tiener'], ['kind', 'Kind'], ['anders', 'Iemand anders']];
+    /* 18-11-2026 (KOOPGEDRAG): 'Maak er een Sint-gedicht bij' op de productpagina opent deze pagina met ?cadeau=<id>. Dat cadeau staat dan vast. */
+    var vastId = ''; try { vastId = (new URLSearchParams(location.search).get('cadeau') || '').toLowerCase(); } catch (e) {}
+    var vastP = /^[a-z0-9-]{3,60}$/.test(vastId) ? LK.vind(vastId) : null;
+    if (vastP && (vastP.status !== 'goedgekeurd' || vastP.drank || !(vastP.prijs > 0) || vastP.prijs > 250)) vastP = null;
+    var vastHtml = vastP ? '<div class="rz-vast" data-rijm-vast><span class="rz-vast-foto">' + LK.productBeeld(vastP) + '</span><div><span class="rz-vast-kop">Sint dicht over dit cadeau</span><b>' + esc(vastP.titel) + '</b><em>' + LK.euro(vastP.prijs) + ' bij ' + esc(vastP.shop) + '</em>' +
+      '<a href="/sint-rijmmachine/">Liever een ander cadeau? Laat Sint kiezen</a></div><input type="hidden" name="cadeau" value="' + esc(vastP.id) + '"></div>' : '';
     return RIJM_CSS +
       '<div class="rijm-z rz-pagina">' +
       '<div data-rijm-stap="form">' +
@@ -4140,7 +4202,7 @@
             '<g fill="#d8a64a"><rect x="88" y="10" width="24" height="16" rx="2"/><rect x="86" y="6" width="28" height="6" rx="1.5"/></g><path d="M100 6v20" stroke="#fff3cf" stroke-width="2.4"/><path d="M100 6c-3-6-11-6-9-1 1 2 6 2 9 1zm0 0c3-6 11-6 9-1-1 2-6 2-9 1z" fill="#d8a64a"/></svg>' +
           '<p>Beantwoord een paar korte vragen en Sint maakt een persoonlijk gedicht.</p>' +
         '</header>' +
-        '<form class="rz-form" data-rijm novalidate>' +
+        '<form class="rz-form" data-rijm novalidate>' + vastHtml +
           rijmKaart(1, 'persoon', 'Voor wie is het gedicht?', '', '', 'rz-naam',
             '<div class="rz-twee"><input id="rz-naam" type="text" name="naam" maxlength="40" placeholder="Naam (bijv. Ingrid)" autocomplete="off" required aria-label="Naam">' +
             '<select id="rz-rel" name="relatie" aria-label="Wie is het?">' + rel.map(function (r) { return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('') + '</select></div>') +
@@ -4362,10 +4424,11 @@
         '<li><b>Namen invullen.</b> Iedereen die meedoet, ook jezelf.</li>' +
         '<li><b>Lootjes trekken.</b> Niemand trekt zichzelf. Wil je dat partners elkaar niet trekken, geef dat dan aan.</li>' +
         '<li><b>Eén linkje versturen.</b> Stuur het groepslinkje in de groepsapp. Iedereen tikt op zijn eigen naam en ziet alleen zijn eigen lootje.</li>' +
-        '<li><b>Cadeau kiezen.</b> Bij elk lootje staan cadeautips binnen het budget.</li></ol>' +
+        '<li><b>Wensen doorgeven.</b> Wie zijn naam kiest, kan een verlanglijstje maken. Wie hem getrokken heeft, ziet dat bij zijn lootje, met cadeautips binnen het budget.</li></ol>' +
       '<h2>Vragen</h2><div class="lt-faq">' +
         '<details><summary>Kost lootjes trekken op LeukeKeuze iets?</summary><p>Nee, het is gratis. Je hoeft geen account te maken en geen e-mailadres in te vullen.</p></details>' +
         '<details><summary>Kan de organisator zien wie wie heeft?</summary><p>Nee. De lootjes worden op onze server getrokken. De organisator ziet alleen wie al heeft gekeken, niet wie wie heeft. Elke naam kan maar één keer gekozen worden, dus niemand kan stiekem bij een ander kijken.</p></details>' +
+        '<details><summary>Kan ik een verlanglijstje maken?</summary><p>Ja. Als je je eigen naam hebt gekozen, tik je 3 tot 5 cadeaus aan of schrijf je zelf wat je graag wilt. Alleen wie jou heeft getrokken ziet het, verder niemand.</p></details>' +
         '<details><summary>Kan ik mezelf trekken?</summary><p>Nee. Iedereen trekt altijd iemand anders.</p></details>' +
         '<details><summary>Met hoeveel mensen kan het?</summary><p>Vanaf 3 tot en met 40 mensen.</p></details>' +
         '<details><summary>Ik zie mijn lootje niet meer. Wat nu?</summary><p>Open het groepslinkje weer op dezelfde telefoon: dan zie je je lootje meteen. Of gebruik je eigen linkje dat je hebt bewaard. Lukt het niet, dan kan de organisator opnieuw trekken; iedereen kiest dan opnieuw zijn naam.</p></details>' +
@@ -4411,7 +4474,7 @@
   function lootTel(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Lootjes', event: true }); } catch (e) {} }
   function lootGroepBericht(gr, url) {
     var m = LOOT_MOMENT[gr.moment] || LOOT_MOMENT.s;
-    return m[1] + ' Lootjes trekken' + (gr.naam ? ' voor ' + gr.naam : '') + '! Tik op het linkje, kies je eigen naam en zie wie jij hebt getrokken (budget ' + lootEuro(gr.budget) + '). Niemand anders kan zien wie jij hebt. ' + url;
+    return m[1] + ' Lootjes trekken' + (gr.naam ? ' voor ' + gr.naam : '') + '! Tik op het linkje, kies je eigen naam en zie wie jij hebt getrokken (budget ' + lootEuro(gr.budget) + '). Zet er ook je eigen verlanglijstje bij. Niemand anders kan zien wie jij hebt. ' + url;
   }
   /* Het blok voor de organisator: groepslinkje delen, zien wie al heeft gekeken, opnieuw trekken. */
   function lootBeheerHtml(g, gr) {
@@ -4439,11 +4502,89 @@
     return '<div data-loot-pagina><section class="lt-open"><div class="binnen"><p class="lt-hoi">Lootjes trekken</p><h1 data-loot-kop>Even laden…</h1></div></section>' +
       '<div class="binnen lt"><div data-loot-groep><p class="lt-sub lt-laden">Even geduld…</p></div></div></div>';
   }
+  /* ===== VERLANGLIJSTJE IN DE LOOTJES (18-11-2026, GO Marius 'Go allemaal' op het onderzoek koopgedrag) =====
+     Wie zijn naam kiest, tikt 3 tot 5 cadeaus van de site aan (binnen het budget) en mag een korte eigen wens typen. Wie hem getrokken heeft,
+     ziet die wensen op zijn lootje ('Wat wil jouw lootje graag hebben?', zonder naam, want het lootje is dan misschien nog dicht).
+     De server bewaart alleen product-ids en de korte tekst bij de deelnemer (functie 'lootjes', actie 'wens'); alles gaat na 60 dagen weg met de groep.
+     Onderzoek: wie een cadeau krijgt is blijer met iets wat hij zelf wilde (Gino en Flynn 2011). Uit: window.LK_LOOT_WENS = false. */
+  var LW = null, LW_TIMER = null;
+  function lwMag(p) { return p && p.status === 'goedgekeurd' && !p.drank && p.prijs > 0 && p.prijs <= LW.budget && !isKaartje(p); }
+  function lwZijn(r) {
+    var l = (r.zijnWensen || []).map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd'; });
+    var tekst = String(r.zijnTekst || '').trim();
+    if (l.length || tekst) lootTel('lootjes/wens-gezien');
+    return '<section class="sectie lw-zijn"><div class="sectie-kop"><div><h2>Wat wil jouw lootje graag hebben?</h2>' +
+      (l.length || tekst ? '<p>Dit staat op het verlanglijstje van jouw lootje. Tik op een cadeau om het te bekijken.</p>' : '<p>Jouw lootje heeft nog geen wensen opgegeven. Kijk later nog eens: zodra er wensen zijn, staan ze hier. Tot die tijd helpen de cadeautips hieronder.</p>') + '</div></div>' +
+      (tekst ? '<p class="lw-tekst">“' + esc(tekst) + '”</p>' : '') + (l.length ? grid(l) : '') + '</section>';
+  }
+  function lwTegel(p) {
+    var aan = LW.ids.indexOf(p.id) !== -1;
+    return '<button class="lw-tegel" type="button" data-lw="' + esc(p.id) + '" aria-pressed="' + aan + '"><span class="lw-foto">' + LK.productBeeld(p) + '<span class="lw-vink" aria-hidden="true">✓</span></span>' +
+      '<span class="lw-naam">' + esc(p.titel) + '</span><span class="lw-prijs">' + LK.euro(p.prijs) + '</span></button>';
+  }
+  function lwKand(zoek) {
+    if (zoek) {
+      var w = zoek.toLowerCase().split(/[^a-z0-9à-ÿ]+/).filter(function (x) { return x.length > 1; }); if (!w.length) return [];
+      return LK.zichtbaar().filter(function (p) { if (!lwMag(p)) return false; var t = ((p.titel || '') + ' ' + (p.merk || '')).toLowerCase(); return w.every(function (x) { return t.indexOf(x) !== -1; }); }).slice(0, 8);
+    }
+    var gezien = {}, uit = [];
+    ((LK.favorieten() || []).map(function (id) { return LK.vind(id); }).filter(lwMag)).concat(lootTips(LW.budget, LW.moment, LW.naam + '-wens')).forEach(function (p) { if (!gezien[p.id] && uit.length < 10) { gezien[p.id] = 1; uit.push(p); } });
+    return uit;
+  }
+  function lwTeken(zoek) {
+    var blok = document.querySelector('[data-lw-blok]'); if (!blok || !LW) return;
+    var gk = blok.querySelector('[data-lw-gekozen]'), lijst = blok.querySelector('[data-lw-lijst]');
+    var gekozen = LW.ids.map(function (id) { return LK.vind(id); }).filter(Boolean);
+    gk.innerHTML = '<p class="lw-teller">' + (gekozen.length ? 'Gekozen: <b>' + gekozen.length + ' van 5</b>' : 'Nog niets gekozen') + '</p>' +
+      (gekozen.length ? '<ul class="lw-chips">' + gekozen.map(function (p) { return '<li><span>' + esc(p.titel) + '</span><button type="button" data-lw-weg="' + esc(p.id) + '" aria-label="Haal ' + esc(p.titel) + ' van je verlanglijstje">✕</button></li>'; }).join('') + '</ul>' : '');
+    if (zoek === undefined) zoek = (blok.querySelector('[data-lw-zoek]') || {}).value || '';
+    var k = lwKand(zoek.trim());
+    lijst.innerHTML = k.length ? '<div class="lw-raster">' + k.map(lwTegel).join('') + '</div>' : '<p class="lt-sub">Niets gevonden tot ' + lootEuro(LW.budget) + '. Probeer een ander woord, of schrijf hieronder zelf wat je graag wilt.</p>';
+  }
+  function lwMijn() {
+    return '<section class="sectie lw-mijn" data-lw-blok><div class="sectie-kop"><div><h2>Jouw verlanglijstje</h2><p>Wie jou heeft getrokken, ziet hier wat jij graag wilt. Tik 3 tot 5 cadeaus aan tot ' + lootEuro(LW.budget) + ', of schrijf zelf iets. Je kunt het later nog veranderen.</p></div></div>' +
+      '<div data-lw-gekozen></div>' +
+      '<label class="lw-zoek"><span class="verborgen">Zoek een cadeau voor je verlanglijstje</span><input type="search" data-lw-zoek maxlength="40" placeholder="Zoek, bijv. lego of sokken" autocomplete="off" enterkeyhint="search"></label>' +
+      '<div data-lw-lijst></div>' +
+      '<label class="lt-veld lw-eigen">Zelf iets typen <small>(mag leeg)</small><input type="text" data-lw-tekst maxlength="100" autocomplete="off" placeholder="Bijv. iets voor in de tuin of een spannend boek" value="' + esc(LW.tekst) + '"></label>' +
+      '<button class="knop knop-goud lw-bewaar" type="button" data-lw-bewaar>Bewaar mijn verlanglijstje</button><p class="lt-sub lw-status" data-lw-status role="status"></p></section>';
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-lw],[data-lw-weg],[data-lw-bewaar]') : null;
+    if (!t || !LW) return;
+    var st = document.querySelector('[data-lw-status]');
+    if (t.hasAttribute('data-lw') || t.hasAttribute('data-lw-weg')) {
+      var id = t.getAttribute('data-lw') || t.getAttribute('data-lw-weg'), i = LW.ids.indexOf(id);
+      if (i !== -1) LW.ids.splice(i, 1);
+      else if (LW.ids.length >= 5) { if (st) st.textContent = 'Je kunt er hooguit 5 kiezen. Haal er eerst een weg.'; return; }
+      else LW.ids.push(id);
+      if (st) st.textContent = '';
+      lwTeken(); return;
+    }
+    var tx = document.querySelector('[data-lw-tekst]'), tekst = tx ? tx.value.replace(/\s+/g, ' ').trim().slice(0, 100) : '';
+    if (!LW.ids.length && !tekst) { if (st) st.textContent = 'Tik eerst een paar cadeaus aan, of schrijf zelf iets.'; return; }
+    t.disabled = true; t.textContent = 'Even geduld…';
+    lootVraag({ actie: 'wens', g: LW.g, token: LW.token, wensen: LW.ids, tekst: tekst }).then(function (r) {
+      LW.ids = r.mijnWensen || LW.ids; LW.tekst = r.mijnTekst || '';
+      t.disabled = false; t.textContent = 'Bewaar mijn verlanglijstje';
+      if (st) st.textContent = 'Bewaard! Wie jou heeft getrokken, ziet je verlanglijstje nu bij zijn lootje.';
+      lootTel('lootjes/wens-bewaard/' + LW.ids.length); lwTeken();
+    }, function (er) { t.disabled = false; t.textContent = 'Bewaar mijn verlanglijstje'; if (st) st.textContent = er.message; });
+  });
+  document.addEventListener('input', function (e) {
+    if (!LW || !e.target || !e.target.matches || !e.target.matches('[data-lw-zoek]')) return;
+    clearTimeout(LW_TIMER); var v = e.target.value; LW_TIMER = setTimeout(function () { lwTeken(v); }, 180);
+  });
   function lootToonLot(g, r, token) {
     var p = document.querySelector('[data-loot-pagina]'); if (!p) return;
     var url = location.origin + '/lootjes-trekken/?g=' + encodeURIComponent(g) + '&t=' + encodeURIComponent(token);
+    var wens = window.LK_LOOT_WENS !== false;
+    LW = wens ? { g: g, token: token, budget: +r.budget || 15, moment: r.moment, naam: r.naam, ids: (r.mijnWensen || []).slice(0, 5), tekst: r.mijnTekst || '' } : null;
     p.innerHTML = lootUitslag({ n: r.naam, t: r.getrokken, g: r.groep, b: r.budget, m: r.moment })
-      .replace('<p class="lt-sub">Niet verder vertellen! 🤫</p>', '<p class="lt-sub">Niet verder vertellen! 🤫</p><p class="lt-bewaar"><button class="knop knop-rand" type="button" data-loot-kopieer="' + esc(url) + '">Bewaar je lootje: kopieer je eigen linkje</button></p>');
+      .replace('<p class="lt-sub">Niet verder vertellen! 🤫</p>', '<p class="lt-sub">Niet verder vertellen! 🤫</p><p class="lt-bewaar"><button class="knop knop-rand" type="button" data-loot-kopieer="' + esc(url) + '">Bewaar je lootje: kopieer je eigen linkje</button></p>')
+      .replace('<div class="binnen lt">', function (m) { return m + (wens ? lwZijn(r) : ''); }) /* functie: tekst van bezoekers met $ wordt zo nooit een vervangpatroon */
+      .replace(/<section class="sectie lt-zelf"><h2>Weet je niet wat je wilt hebben\?<\/h2>[\s\S]*?<\/section>/, function (m) { return wens ? lwMijn() : m; });
+    if (wens) lwTeken('');
     var b = lootLeesOpslag('lkloot-b-' + g);
     if (b) lootVraag({ actie: 'status', g: g, beheer: b }).then(function (gr) { var z = p.querySelector('.lt'); if (z) { z.insertAdjacentHTML('beforeend', lootBeheerHtml(g, gr)); vulIconen(z); } }, function () {});
     vulIconen(p); try { window.scrollTo(0, 0); } catch (e) {}
@@ -4573,21 +4714,21 @@
     var tekst = String(r.gedicht || '').replace(/\n*\s*Sint\s*(en|&)\s*Piet\.?\s*$/i, '').trim();
     return '<div class="rz-uitslag" data-rijm-uitslag>' +
       '<button class="rz-terug" type="button" data-rijm-aanpassen>← Ingevulde gegevens aanpassen</button>' +
-      '<div class="rz-kop"><span class="rz-eyebrow">✦ De Sint heeft gesproken</span><h2>Dit gaat over ' + esc(naam) + '!</h2><p>En dat is niet alles… Sint heeft er ook een cadeau bij gezocht dat precies past.</p></div>' +
+      '<div class="rz-kop"><span class="rz-eyebrow">✦ De Sint heeft gesproken</span><h2>Dit gaat over ' + esc(naam) + '!</h2><p>' + (r.vast ? 'Sint heeft gerijmd over het cadeau dat jij koos.' : 'En dat is niet alles… Sint heeft er ook een cadeau bij gezocht dat precies past.') + '</p></div>' +
       '<div class="rz-grid"><div>' +
         '<article class="rz-gedicht" data-rijm-gedicht><span class="rz-eyebrow">Uit het Grote Boek</span><h2>' + esc(r.titel || 'Een gedicht van Sint') + '</h2><div class="rz-tekst">' + esc(tekst) + '</div><div class="rz-handtekening">Sint &amp; Piet ✍</div></article>' +
         '<div class="rz-acties"><button class="rz-knop rz-wit" type="button" data-rijm-kopieer>▣ Kopieer gedicht</button><button class="rz-knop rz-wit" type="button" data-rijm-print>🖨 Print gedicht</button>' +
           '<button class="rz-knop rz-wit" type="button" data-rijm-opnieuw>↻ Nieuw gedicht</button><button class="rz-knop rz-wit" type="button" data-rijm-deel>↗ Deel gedicht</button></div>' +
         '<p class="rz-tip">Maak je er ook een surprise bij? <a href="/gids/surprise-maken">25 ideeën en een stappenplan</a></p>' +
       '</div>' +
-      '<aside class="rz-cadeaus"><h2>🎁 Het cadeau van Sint</h2><p>Klik op het cadeau om het bij de winkel te bekijken en te bestellen.</p>' +
+      '<aside class="rz-cadeaus"><h2>🎁 ' + (r.vast ? 'Jouw cadeau' : 'Het cadeau van Sint') + '</h2><p>Klik op het cadeau om het bij de winkel te bekijken en te bestellen.</p>' +
         r.cadeaus.map(function (c) {
           var winkel = c.winkel || 'Amazon';
           return '<a class="rz-cadeau" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-cadeau="' + esc(c.id) + '"><img src="' + esc(rijmBeeld(c.beeld)) + '" alt="" loading="lazy" width="78" height="78"><div><b>' + esc(c.titel) + '</b><small>bij ' + esc(winkel) + '</small><em>ongeveer ' + rijmEuro(c.prijs) + '</em></div><span class="pijl" aria-hidden="true">›</span></a>';
         }).join('') +
         (r.cadeaus.length > 1 ? '<div class="rz-totaal">Samen ongeveer ' + rijmEuro(r.totaal) + '</div>' : '') +
         /* 8-11-2026 (GO Marius): het gedicht noemt de hobby, dus de klant kan zelf een ander passend cadeau kiezen (geen nieuw gedicht nodig). */
-        (r.meer && r.meer.length ? '<div class="rz-meerkeus"><h3>Liever iets anders? Kies zelf</h3><p>Het gedicht past ook bij deze cadeaus.</p><div class="rz-meergrid">' +
+        (r.meer && r.meer.length ? '<div class="rz-meerkeus"><h3>' + (r.vast ? 'Nog iets erbij?' : 'Liever iets anders? Kies zelf') + '</h3><p>' + (r.vast ? 'Deze passen ook bij ' + esc(naam) + '.' : 'Het gedicht past ook bij deze cadeaus.') + '</p><div class="rz-meergrid">' +
           r.meer.map(function (c) {
             return '<a class="rz-mini" href="' + esc(c.link) + '" target="_blank" rel="sponsored nofollow noopener" data-rijm-cadeau="' + esc(c.id) + '"><img src="' + esc(rijmBeeld(c.beeld)) + '" alt="" loading="lazy" width="120" height="120"><b>' + esc(c.titel) + '</b><em>ongeveer ' + rijmEuro(c.prijs) + '</em><small>bij ' + esc(c.winkel || 'de winkel') + '</small></a>';
           }).join('') + '</div></div>' : '') +
@@ -4605,6 +4746,7 @@
     if (RIJM_BEZIG) return;
     var uit = $('[data-rijm-uit]'), fout = $('[data-rijm-fout]');
     var fd = new FormData(f), gegevens = { naam: (fd.get('naam') || '').trim(), relatie: fd.get('relatie'), geslacht: fd.get('geslacht') || '', type: (fd.get('type') || '').trim(), gekop: (fd.get('gekop') || '').trim(), typisch: (fd.get('typisch') || '').trim(), budget: Number(fd.get('budget') || 25), stand: fd.get('stand') || 'hilarisch' };
+    if (fd.get('cadeau')) gegevens.cadeau = String(fd.get('cadeau'));
     var meld = function (t) { if (fout) { fout.innerHTML = '<p class="rz-fout">' + esc(t) + '</p>'; } };
     if (!gegevens.naam) { meld('Vul eerst een naam in.'); return; }
     if (!gegevens.type && !gegevens.gekop) { meld('Vul vraag 1 of 2 in. Tik gerust een voorbeeld aan.'); return; }
@@ -4630,6 +4772,7 @@
         clearInterval(klok); RIJM_BEZIG = false;
         uit.innerHTML = rijmUitslag(r, gegevens.naam);
         try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'rijmmachine-gedicht-' + r.stand, title: 'Rijmmachine gedicht', event: true }); } catch (e) {}
+        try { if (gegevens.cadeau && window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'rijmmachine/met-cadeau/' + (r.vast ? 'ja' : 'nee'), title: 'Rijmmachine met eigen cadeau', event: true }); } catch (e) {}
         var g = $('[data-rijm-uitslag]'); if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
       })
       .catch(function () { mislukt('Sint kan de dichtmachine nu niet bereiken. Controleer je internet en probeer het opnieuw.'); });

@@ -6,5 +6,6 @@ Disallow: /scripts/
 Disallow: /nieuw/
 Disallow: /*naar=winkel
 Disallow: /lootjes-trekken/?
+Disallow: /*cadeau=
 
 Sitemap: https://leukekeuze.nl/sitemap.xml

@@ -1013,12 +1013,14 @@ window.LK_COLLECTIES = [
     zoek: 'kortingscode kortingscodes code codes actiecode couponcode coupon voucher promotiecode gratis verzending', codes: true, vakken: LK_ALLE_GROEPEN },
   /* Black Friday (5-11-2026, GO Marius): alle echte deals van minstens 20% korting, grootste korting eerst. Tot en met Cyber Monday. */
   { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'Deals op een rij', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 (vrijdag 27 november): deals op een rij', gids: 'black-friday-2026',
-    tekst: 'Black Friday 2026 is op vrijdag 27 november, Cyber Monday op maandag 30 november. Hier staan de kortingen van al onze winkels op één plek, allemaal minstens 20% korting op een echte van-prijs. Bovenaan staan de deals die wij zelf hebben uitgekozen; kies hieronder je categorie.',
+    tekst: 'Black Friday 2026 is op vrijdag 27 november, Cyber Monday op maandag 30 november. Hier staan de kortingen van al onze winkels op één plek, allemaal minstens 20% korting op de van-prijs van de winkel. Bovenaan staan de deals die wij zelf hebben uitgekozen; kies hieronder je categorie.',
+    /* 18-11-2026 (GO Marius): de eerlijke regel in één zin bovenaan de pagina (68% wantrouwt Black Friday-kortingen). */
+    eerlijk: 'Eerlijk: wij tonen alleen kortingen met een prijs van deze week. Staat er Echt lager, dan zagen wij zelf dat de prijs lager is dan de laagste prijs van de 30 dagen ervoor.',
     zoek: 'black friday blackfriday cyber monday deals deal aanbieding aanbiedingen korting sale uitverkoop', korting: 20, vakken: LK_ALLE_GROEPEN,
     /* 7-11-2026: veelgestelde vragen (ook als FAQ-gegevens voor Google). */
     faq: [
       ['Wanneer is Black Friday 2026?', 'Black Friday is op vrijdag 27 november 2026. Veel winkels beginnen al eerder met een Black Friday-week, en op maandag 30 november is het Cyber Monday.'],
-      ['Zijn de kortingen echt?', 'Wij tonen de van-prijs die de winkel zelf opgeeft. Twijfel je? Kijk dan of het product de weken ervoor ook al zo goedkoop was. Een goede deal is een prijs die je anders niet krijgt, niet alleen een hoog percentage.'],
+      ['Zijn de kortingen echt?', 'Meestal tonen wij de van-prijs die de winkel zelf opgeeft, en alleen met een prijs van deze week. Staat er Echt lager, dan hebben wij het zelf nagekeken: de prijs is lager dan de laagste prijs die wij in de 30 dagen ervoor zagen. Een goede deal is een prijs die je anders niet krijgt, niet alleen een hoog percentage.'],
       ['Hoe kies ik een goede Black Friday-deal?', 'Maak vooraf een lijstje van wat je echt wilt kopen en vergelijk de prijs met andere winkels. Bovenaan deze pagina staan de deals die wij zelf hebben uitgekozen: korting op cadeaus waar mensen echt blij mee zijn, niet alleen het hoogste percentage.'],
       ['Kan ik met Black Friday mijn Sinterklaas- en kerstcadeaus kopen?', 'Ja. Black Friday valt ruim een week vóór pakjesavond en vier weken vóór kerst. Veel mensen kopen dan al hun cadeaus in één keer. Let wel op de levertijd als het cadeau vóór 5 december binnen moet zijn.'],
       ['Waar gaat mijn bestelling heen?', 'Je koopt altijd bij de winkel zelf, zoals bol, Coolblue of HEMA. Daar betaal je, en daar regel je ook bezorging en retour. De prijs bij de winkel is altijd leidend.']
@@ -1038,6 +1040,15 @@ window.LK_COLLECTIES = [
     tekst: 'Kleine cadeautjes voor in de schoen. Alles is voor kinderen en kost hooguit 10 euro. Kies hieronder de leeftijd.',
     zoek: 'schoencadeau schoencadeautje schoencadeautjes schoen zetten sinterklaas klein cadeautje',
     kind: true, maxPrijs: 10, voorWie: [], knoppen: ['leeftijd'], vakken: LK_ALLE_GROEPEN, gids: 'schoencadeautjes', seizoen: ['10-15', '12-05'], lijstKop: 'Alle schoencadeautjes',
+    /* Schoenzet-mandjes (18-11-2026, GO Marius 'Go allemaal' op het onderzoek koopgedrag): per winkel vijf kleine cadeautjes die je in één bestelling haalt,
+       met het totaal en de verzendregel van die winkel (BEZORG_INFO in app.js). Met de hand gekozen op titel en foto; geen sleutelhangers, snoep of kostuums (zie 'uit').
+       Een product dat er niet meer is valt vanzelf weg; een mandje met minder dan 4 wordt niet getoond. Uit: window.LK_MANDJES = false. */
+    mandjes: [
+      { shop: 'Ditverzinjeniet', ids: ['dvzn-655af9bd06', 'dvzn-3ee499eae7', 'dvzn-cce4b58a90', 'dvzn-a3513a2ca2', 'dvzn-5d8fd7a707'] },
+      { shop: 'De Grote Speelgoedwinkel', ids: ['dgsw-d8c8bc0090', 'dgsw-190e813ae6', 'dgsw-8430b81635', 'cl-hw-monster', 'dgsw-d99c9676ba'] },
+      { shop: 'HEMA', ids: ['hema-ce48ea31d7', 'hema-90cecb0d49', 'hema-1a6e400f83', 'hema-c81336bab1', 'hema-402e636676'] },
+      { shop: 'Woewoe', ids: ['woewoe-ff1c2aa222', 'woewoe-4f1087a474', 'woewoe-fc0b0c3d9d', 'woewoe-7c880d8044', 'woewoe-bd834313f3'] }
+    ],
     uit: /kerst|christmas|advent|halloween|pasen|paas|grinch|lindt|lindor|criollo|chocolatemakers|hartjesreep|stroopwafel|lolly|candy|snoep|skippybal|vlieger|honkbal|bezem|kostuum|lichtzwaard|knutselkleed|muismat|autoweg|romper|pyjama|lepels|kraamcadeau|hoera een baby|sleutelhanger/i },
   /* Nog op tijd voor pakjesavond (18-11-2026, GO Marius op voorstel 2): alleen Sinterklaascadeaus van winkels die zelf zeggen dat je bestelling de volgende (werk)dag in huis is
      (BEZORG_INFO in app.js, nagekeken 18-11-2026 op hun eigen site). In de menu's van 1 t/m 5 december; de pagina zelf bestaat altijd (Google heeft tijd nodig). */

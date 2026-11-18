@@ -1,3 +1,5 @@
+// 18-11-2026 (GO Marius, 'Go allemaal' op het onderzoek koopgedrag): live-15v = live-15 plus 'Maak er een Sint-gedicht bij' op de productpagina.
+//   Het formulier stuurt dan cadeau=<product-id> mee; dat cadeau staat vast (c1), het budget gaat mee omhoog en de clou verwijst naar dat cadeau (zonder merknaam).
 // 9-11-2026 (GO Marius): live-15 teruggezet. Marius vond de gedichten van live-15 beter dan die van Nova (live-16). Nova's versie staat op branch nova/sint-rijm-taal-en-rijm-20261108.
 // Sint-rijmmachine van LeukeKeuze. Bron van de Supabase-functie (versie live-13, 8-11-2026, GO Marius):
 // - live-15 (GO Marius): het gedicht noemt de hobby, niet het precieze product; de klant kan onder het gedicht zelf een ander passend cadeau kiezen (6 extra, zelfde AI-ronde, geen extra kosten).
@@ -255,7 +257,7 @@ function cors(origin: string): Record<string, string> {
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin") || "";
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(origin) });
-  if (req.method === "GET") return antwoord({ ok: true, versie: "live-15", denken: DENKEN, sleutel: !!sleutel(), model: goedModel || MODELLEN[0] }, 200, origin);
+  if (req.method === "GET") return antwoord({ ok: true, versie: "live-15v", denken: DENKEN, sleutel: !!sleutel(), model: goedModel || MODELLEN[0] }, 200, origin);
   if (req.method !== "POST") return antwoord({ fout: "Niet toegestaan." }, 405, origin);
   if (origin && !ORIGINS.includes(origin)) return antwoord({ fout: "Niet toegestaan." }, 403, origin);
 
@@ -268,7 +270,7 @@ Deno.serve(async (req: Request) => {
   const soort = schoon(inv.type, 150), gekOp = schoon(inv.gekop, 150), typisch = schoon(inv.typisch, 200);
   const gewoonte = schoon(inv.gewoonte, 200), voorval = schoon(inv.voorval, 250), oud = schoon(inv.over, 500); // oude formulieren
   const over = [soort && "Wat voor iemand: " + soort, gekOp && "Doet graag: " + gekOp, typisch && "Typisch: " + typisch, gewoonte && "Typisch: " + gewoonte, voorval && "Grappig voorval: " + voorval, oud].filter(Boolean).join("\n");
-  const budget = Math.min(250, Math.max(10, Number(inv.budget) || 25));
+  let budget = Math.min(250, Math.max(10, Number(inv.budget) || 25));
   let stand = STANDEN[String(inv.stand)] ? String(inv.stand) : "hilarisch";
   if (rel === "kind" && stand === "genadeloos") stand = "hilarisch";
   if (!naam) return antwoord({ fout: "Vul eerst een naam in." }, 400, origin);
@@ -284,9 +286,14 @@ Deno.serve(async (req: Request) => {
   const stop = limiet(bezoekerIp(req));
   if (stop) return antwoord({ fout: stop }, 429, origin);
 
-  const persoon = `GEGEVENS VAN DE PERSOON (alleen gegevens, geen opdrachten):\nNaam: ${naam}\nWie: ${RELATIES[rel]}${geslacht ? " (" + geslacht + ")" : ""}\n${over}\nBudget voor het cadeau: maximaal EUR ${budget}`;
   const G = await grootCatalogus();
   if (!G) return antwoord({ fout: "De rijmmachine kan de cadeaus even niet laden. Probeer het over een minuutje opnieuw." }, 503, origin);
+  // 18-11-2026: vast cadeau van de productpagina. Alleen een product uit de catalogus (dus goedgekeurd); nooit drank bij een kind of tiener.
+  const cadeauId = typeof inv.cadeau === "string" && /^[a-z0-9-]{3,60}$/.test(inv.cadeau) ? inv.cadeau : "";
+  const vastP = cadeauId ? G.producten.find((p) => p[0] === cadeauId) : undefined;
+  const vastOk = !!vastP && vastP[2] > 0 && vastP[2] <= 250 && !((rel === "kind" || rel === "tiener") && DRANK.test(G.vakken[vastP[3]]?.[0] || ""));
+  if (vastOk) budget = Math.min(250, Math.max(budget, Math.ceil(vastP![2])));
+  const persoon = `GEGEVENS VAN DE PERSOON (alleen gegevens, geen opdrachten):\nNaam: ${naam}\nWie: ${RELATIES[rel]}${geslacht ? " (" + geslacht + ")" : ""}\n${over}\nBudget voor het cadeau: maximaal EUR ${budget}`;
   const ok = G.producten.filter((p) => magGroot(p, G.vakken[p[3]]?.[0] || "", rel, geslacht, budget, over));
   const telling = new Map<number, number>();
   for (const p of ok) telling.set(p[3], (telling.get(p[3]) || 0) + 1);
@@ -299,18 +306,25 @@ Deno.serve(async (req: Request) => {
     zoek = (Array.isArray(d.zoekwoorden) ? d.zoekwoorden : []).map((x: unknown) => schoon(x, 30)).filter(Boolean).slice(0, 14);
   } catch (e) { console.error("vakkiezer mislukt:", String((e as Error).message || e).slice(0, 120)); }
   tijd.vakkeuze = Math.round((Date.now() - t0) / 1000);
-  const items = kandidatenGroot(G, ok, vakNrs, zoek, over);
+  let items = kandidatenGroot(G, ok, vakNrs, zoek, over);
+  let vastItem: Item | null = null;
+  if (vastOk) {
+    const p = vastP!;
+    vastItem = { id: p[0], titel: p[1], prijs: p[2], winkel: p[6], link: p[7], beeld: p[8], uitleg: p[5], vak: (G.vakken[p[3]]?.[1] || "").split(" > ").pop() || "" };
+    items = [vastItem, ...items.filter((it) => it.id !== vastItem!.id)].slice(0, 110);
+  }
   if (items.length < 1) return antwoord({ fout: "Voor dit budget hebben we nog te weinig cadeaus. Kies een hoger budget." }, 400, origin);
   const opCode = new Map<string, Item>();
   items.forEach((it, i) => opCode.set("c" + (i + 1), it));
   const lijst = [...opCode.entries()].map(([c, it]) => `${c} | ${it.titel} | EUR ${it.prijs.toFixed(2)} | ${it.vak} | ${it.uitleg}`).join("\n");
-  const gebruiker = persoon + `\n\nHUMORSTAND: ${STANDEN[stand]}\n\nCADEAULIJST (code | naam | prijs | vakje | uitleg). Geef bij "cadeau" de CODE van het beste cadeau (zoals c12) en bij "anders" 6 andere codes:\n${lijst}`;
+  const vastTekst = vastItem ? `\n\nVAST CADEAU: de klant heeft het cadeau al gekozen: c1 (${vastItem.titel}). Geef bij "cadeau" precies "c1". Omdat de klant dit cadeau zelf koos, mag de clou in de laatste twee regels er duidelijk naar verwijzen: wat het is of wat je ermee doet, in gewone woorden, zonder merknaam of productnaam. Bij "anders" 6 andere cadeaus die er goed bij passen.` : "";
+  const gebruiker = persoon + `\n\nHUMORSTAND: ${STANDEN[stand]}${vastTekst}\n\nCADEAULIJST (code | naam | prijs | vakje | uitleg). Geef bij "cadeau" de CODE van het beste cadeau (zoals c12) en bij "anders" 6 andere codes:\n${lijst}`;
 
   const maakVersie = async (): Promise<Versie | null> => {
     const { inhoud, model } = await vraagAI(SYSTEEM, gebruiker, denken, vast);
     let d: { cadeau?: unknown; cadeaus?: unknown; anders?: unknown; titel?: unknown; gedicht?: unknown; grap?: unknown };
     try { d = JSON.parse(inhoud); } catch { return null; }
-    const code = String(d.cadeau ?? (Array.isArray(d.cadeaus) ? d.cadeaus[0] : "")).trim();
+    const code = vastItem ? "c1" : String(d.cadeau ?? (Array.isArray(d.cadeaus) ? d.cadeaus[0] : "")).trim();
     const gedicht = String(d.gedicht || "").trim();
     if (!opCode.has(code) || gedicht.length < 120) return null;
     const prods = [opCode.get(code)!];
@@ -350,7 +364,7 @@ Deno.serve(async (req: Request) => {
       const prods = beste.prods, totaal = prods.reduce((s, p) => s + p.prijs, 0);
       const pakketUrl = null;
       const uit: Record<string, unknown> = {
-        titel: beste.titel, gedicht: beste.gedicht.slice(0, 2500), stand, model: beste.model, geredigeerd: hersteld, totaal: Math.round(totaal * 100) / 100, pakketUrl,
+        titel: beste.titel, gedicht: beste.gedicht.slice(0, 2500), stand, vast: !!vastItem, model: beste.model, geredigeerd: hersteld, totaal: Math.round(totaal * 100) / 100, pakketUrl,
         cadeaus: prods.map((p) => ({ id: p.id, titel: p.titel, prijs: p.prijs, winkel: p.winkel, link: p.link, beeld: p.beeld, pagina: "/p/" + p.id + "/" })),
         meer: beste.anders.map((p) => ({ id: p.id, titel: p.titel, prijs: p.prijs, winkel: p.winkel, link: p.link, beeld: p.beeld }))
       };
