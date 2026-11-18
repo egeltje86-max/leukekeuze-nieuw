@@ -38,6 +38,7 @@ function keurkamerSlot(p) {
   p.ookIn = (p.ookIn || []).filter((v, i, a) => v !== p.cat + '/' + p.sub && a.indexOf(v) === i);
   return p;
 }
+function zoekW() { try { return fs.readdirSync(path.join(ROOT, 'assets/zoek/w')).filter(f => /\.json$/.test(f) && f[0] !== '_').map(f => f.slice(0, -5)).sort().join('|'); } catch (e) { return ''; } }
 function splits() {
   const w = {}; new Function('window', fs.readFileSync(path.join(ROOT, 'assets/js/producten.js'), 'utf8'))(w);
   const lean = [], det = {};
@@ -171,6 +172,8 @@ function splits() {
     '  for (j = 0; j < V.length; j++) { k = V[j]; if (typeof p[k] === "number") { v = T[p[k]]; p[k] = Array.isArray(v) ? v.slice() : (v && typeof v === "object" ? JSON.parse(JSON.stringify(v)) : v); } }\n' +
     '  if (p.beeld === undefined) p.beeld = "images/producten/" + p.id; if (!p.status) p.status = "goedgekeurd"; if (p.nieuw === undefined) p.nieuw = true; else if (p.nieuw === false) delete p.nieuw; if (!p.ookIn) p.ookIn = []; if (!p.shop) p.shop = "bol"; if (!p.moment) p.moment = ["kerst", "sinterklaas", "verjaardag"]; } })(window.LK_PRODUCTEN, JSON.parse(' + ontsnap(JSON.stringify(TAB)) + '), ' + JSON.stringify(VELD) + ');\n' +
     'window.LK_AFBREEK = "' + afbreek + '";\n' +
+    /* 18-11-2026: welke vakjes een eigen bestand 'Meer in onze winkels' hebben (assets/zoek/w/). Zonder bestand vroeg de app het toch op (404). */
+    'window.LK_ZOEKW = "' + zoekW() + '";\n' +
     /* Snelheid (31-10-2026): dit bestand laadt nu 'async' (zie sjabloon.html); de site wacht op dit seintje. */
     'try { window.dispatchEvent(new Event("lk-producten")); } catch (e) { var ev = document.createEvent("Event"); ev.initEvent("lk-producten", false, false); window.dispatchEvent(ev); }\n');
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-details.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_DETAILS = ' + JSON.stringify(det) + ';\n');

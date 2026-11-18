@@ -274,6 +274,17 @@
       return localStorage.getItem('lkstrak') !== 'uit';
     } catch (e) { return true; }
   })();
+  /* STRAK2 (18-11-2026, TESTVERSIE, alleen via de testlink ?proef=strak2; uit: ?proef=strak2-uit): op collecties en gelegenheden ('Grappige cadeaus',
+     'Verjaardag') staan de personen niet meer als vijf tot zeven grote tegels maar als kleine rondjes, vier naast elkaar, net als STRAK op de
+     categoriepagina's. Aanleiding: daar stond het eerste cadeau pas na ruim een scherm (Grappige cadeaus 978 px, Verjaardag 989 px op 390 x 844).
+     Gewone bezoekers, Google en de bouw zien niets anders. Voor iedereen pas na GO van Marius: window.LK_STRAK2 = true of de standaard omzetten. */
+  var STRAK2 = window.LK_STRAK2 === true || (window.LK_STRAK2 !== false && (function () {
+    try {
+      var m = /[?&]proef=strak2(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.removeItem('lkstrak2'); else localStorage.setItem('lkstrak2', '1'); }
+      return localStorage.getItem('lkstrak2') === '1';
+    } catch (e) { return false; }
+  })());
   /* 17-11-2026 (nachtcontrole): grove grappen (mok 'Bakkie pleur op', middelvinger-paraplu) schuiven in de proef niet naar voren, behalve bij Grappige cadeaus */
   var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
   function zkMix(p, sleutel) { return MIX && p.zk && (!GROF_T.test(p.titel || '') || /grappig/.test(sleutel || '')); }
@@ -330,7 +341,8 @@
   }
   function whHash(t) { var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0; return h >>> 0; }
   function doeErBij(p) {
-    if (!WINKELHULP || !p.shop || /^(bol|Amazon)$/.test(p.shop) || !(p.prijs > 0)) return '';
+    /* 18-11-2026: niet bij belevenissen (Doenkado e.d.: een bon, geen pakket, dus geen verzendkosten om te delen). */
+    if (!WINKELHULP || !p.shop || /^(bol|Amazon)$/.test(p.shop) || !(p.prijs > 0) || p.afd === 'belevenissen') return '';
     if (!ETALAGE) etalageEerst([]);
     var w = BEZORG_INFO[p.shop] || {}, heeftGrens = typeof w.gratis === 'number';
     var nog = heeftGrens && w.gratis > 0 && p.prijs < w.gratis ? Math.round((w.gratis - p.prijs) * 100) / 100 : 0;
@@ -338,12 +350,20 @@
     var woord = function (t) { return String(t || '').toLowerCase().split(/[^a-z0-9à-ÿ]+/).filter(function (x) { return x.length > 3; }).slice(0, 2).join(' '); };
     var l = geenDrank(LK.zichtbaar()).filter(function (x) {
       return x.shop === p.shop && x.id !== p.id && x.prijs > 0 && x.prijs <= max && !x.smal && !GROF_T.test(x.titel || '') &&
-        !/elektrische-steps|elektrische-fietsen|op-brandstof/.test((x.vak || '') + ' ' + (x.sub || '')) && woord(x.titel) !== woord(p.titel);
+        x.afd !== 'belevenissen' && !/elektrische-steps|elektrische-fietsen|op-brandstof/.test((x.vak || '') + ' ' + (x.sub || '')) && woord(x.titel) !== woord(p.titel);
     });
-    l.sort(function (a, b) {
-      var sa = (ETALAGE[a.id] ? 3 : 0) + (a.zk ? 2 : 0) + (a.favoriet ? 1 : 0) + (a.vak !== p.vak ? 1 : 0), sb = (ETALAGE[b.id] ? 3 : 0) + (b.zk ? 2 : 0) + (b.favoriet ? 1 : 0) + (b.vak !== p.vak ? 1 : 0);
-      return sb - sa || whHash(p.id + a.id) - whHash(p.id + b.id);
-    });
+    /* 18-11-2026: liefst voor dezelfde soort ontvanger (bij een babyspeeltje geen weekplanner, bij een bloemenpers voor volwassenen geen scheetgrappen-blik). */
+    var KIND = /^(kind|kinderen|baby|tiener)$/, VOL = /^(haar|hem|opa-oma|collega)$/;
+    var voorP = (p.voor || []).filter(function (v) { return v !== 'iedereen'; });
+    var pKind = voorP.some(function (v) { return KIND.test(v); }), pVol = voorP.length && voorP.every(function (v) { return VOL.test(v); });
+    var punt = function (x) {
+      var vx = (x.voor || []).filter(function (v) { return v !== 'iedereen'; });
+      var samen = vx.some(function (v) { return voorP.indexOf(v) !== -1; });
+      var xKind = vx.some(function (v) { return KIND.test(v); }), xVol = vx.length && vx.every(function (v) { return VOL.test(v); });
+      var mis = (pKind && xVol) || (pVol && xKind && !vx.some(function (v) { return VOL.test(v); }));
+      return (ETALAGE[x.id] ? 2 : 0) + (x.zk ? 2 : 0) + (x.favoriet ? 1 : 0) + (x.vak !== p.vak ? 1 : 0) + (samen ? 2 : 0) + (x.afd === p.afd ? 1 : 0) - (mis ? 4 : 0);
+    };
+    l.sort(function (a, b) { return punt(b) - punt(a) || whHash(p.id + a.id) - whHash(p.id + b.id); });
     var uit = [], vak = {}, wd = {};
     l.forEach(function (x) { if (uit.length >= 4 || vak[x.vak] || wd[woord(x.titel)]) return; vak[x.vak] = 1; wd[woord(x.titel)] = 1; uit.push(x); });
     if (uit.length < 2) return '';
@@ -2631,6 +2651,19 @@
      Elk knopje is een eigen adres (/gelegenheid/verjaardag/haar): 'verjaardagscadeau voor haar' wordt 3.600 keer per maand gezocht.
      Alleen knopjes met minstens 10 producten. */
   var GELEGENHEID_VOOR = ['haar', 'hem', 'kinderen', 'tieners', 'collega', 'opa-oma'];
+  /* 18-11-2026: de kop boven de lijst zei 'Alle cadeaus voor grappige cadeaus' en 'Alle cadeaus voor bedankt'. Nu: collectie = 'Alle grappige cadeaus',
+     gelegenheid = 'Alle cadeaus voor verjaardag', met een paar eigen zinnen waar dat niet goed loopt. Kerst, Sinterklaas en Valentijn met een hoofdletter. */
+  var LIJSTKOP_G = { bedankt: 'Alle bedankjes', uitdeelcadeautjes: 'Alle uitdeelcadeautjes', geslaagd: 'Alle cadeaus voor wie geslaagd is', valentijn: 'Alle cadeaus voor Valentijn' };
+  /* 18-11-2026: 'cadeaus voor hem, voor verjaardag' en 'voor haar, voor bedankt' liepen niet. */
+  var GEL_MOMENT = { moederdag: 'voor Moederdag', vaderdag: 'voor Vaderdag', kerst: 'voor Kerst', geboorte: 'bij een geboorte', valentijn: 'voor Valentijnsdag',
+    verjaardag: 'voor een verjaardag', jubileum: 'bij een bruiloft of jubileum', housewarming: 'voor een nieuw huis', sinterklaas: 'voor Sinterklaas', bedankt: 'om iemand te bedanken',
+    'juf-meester': 'als bedankje voor de juf of meester', uitdeelcadeautjes: 'om uit te delen', beterschap: 'als steun of bij ziekte', geslaagd: 'voor wie geslaagd is',
+    'afscheid-pensioen': 'bij een afscheid of pensioen', 'doop-belijdenis': 'voor een doop of belijdenis' };
+  function lijstKopVan(g, isGel) {
+    if (isGel && LIJSTKOP_G[g.slug]) return LIJSTKOP_G[g.slug];
+    var n = String(g.naam || '').toLowerCase().replace(/\b(kerst|sinterklaas|valentijn)\b/g, function (w) { return w.charAt(0).toUpperCase() + w.slice(1); });
+    return isGel ? 'Alle cadeaus voor ' + n : 'Alle ' + n;
+  }
   function verzameling(g, pad, kruimelKop, q, voorSlug) {
     var knoppen = g.knoppen || [];
     var basisAlles = verzamelLijst(g);
@@ -2662,6 +2695,14 @@
           var n = basisAlles.filter(function (p) { return voorFilter(p, slug, hoofdPad); }).length; if (n < 10) return null;
           return { id: slug, naam: p2.kort, beeld: p2.beeld, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n, icoon: VOORICO[slug] };
         }).filter(Boolean)), { titel: 'Voor wie zoek je iets?' }, 'Voor wie');
+      }
+      /* STRAK2 (testversie, zie bovenaan): kleine rondjes in plaats van grote tegels. */
+      if (STRAK && STRAK2 && vk) {
+        voorKnopjes = '<h2 class="srij-kop">Voor wie?</h2>' + soortRij((pv ? [{ id: '_alles', alles: true, naam: 'Iedereen', naar: hoofdPad }] : []).concat((g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
+          var p2 = window.LK_PERSOON(slug); if (!p2) return null;
+          var n = basisAlles.filter(function (p) { return voorFilter(p, slug, hoofdPad); }).length; if (n < 10) return null;
+          return { id: slug, naam: p2.kort, beeld: p2.beeld, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n };
+        }).filter(Boolean)), {}, 'Voor wie', 'raster'); /* volgorde: meeste cadeaus eerst, net als de tegels nu */
       }
     }
     if ((g.korting || g.codes) && !q.sort) q = Object.assign({}, q, { sort: g.korting ? 'beste' : 'korting' }); /* Black Friday: standaard de beste deals eerst */
@@ -2702,7 +2743,7 @@
     var andere = window.LK_GELEGENHEDEN_NU().filter(function (x) { return x.slug !== g.slug; });
     return paginakop({
       titel: pv ? (g.kop || g.naam) + ' voor ' + voorNaam : (g.kop || g.naam),
-      tekst: pv ? (pad.indexOf('/collectie/') === 0 ? (g.kop || g.naam) + ' voor ' + voorNaam + ', met de hand gekozen. ' + (g.tekst || '') : 'Met de hand gekozen cadeaus voor ' + voorNaam + ', voor ' + g.naam.toLowerCase() + '.') : g.tekst, vaag: g.beeld,
+      tekst: pv ? (pad.indexOf('/collectie/') === 0 ? (g.kop || g.naam) + ' voor ' + voorNaam + ', met de hand gekozen. ' + (g.tekst || '') : 'Met de hand gekozen cadeaus voor ' + voorNaam + ', ' + (GEL_MOMENT[g.slug] || 'voor ' + g.naam.toLowerCase()) + '.') : g.tekst, vaag: g.beeld,
       kruimel: [{ tekst: kruimelKop.tekst, naar: kruimelKop.naar }].concat(pv ? [{ tekst: g.naam, naar: hoofdPad }, { tekst: pv.kort }] : [{ tekst: g.naam }])
     }) +
     '<div class="binnen">' +
@@ -2712,7 +2753,7 @@
       /* Stap 6 indeling: op een collectie (Cadeau-ideeën) geen selectie: meteen filter en producten. Acties houden 'Deals van vandaag'. */
       (selectie.length ? '<section class="sectie' + (voorKnopjes ? '' : ' eerste') + ' sfeer-modus"><div class="sectie-kop"><div><h2>' + (g.dagdeals ? 'Deals van vandaag' : 'Onze selectie') + '</h2>' + (g.dagdeals ? '<p>Elke dag 12 andere topdeals.</p>' : '') + '</div></div><div class="prodgrid vier">' + selectie.map(LK.productKaart).join('') + '</div></section>' : '') +
       (g.korting ? afdChips(pad, q, alles) : '') +
-      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? (q.afd && window.LK_CAT(q.afd) ? 'Deals in ' + esc(window.LK_CAT(q.afd).naam.toLowerCase()) : 'Alle deals') + (q.sort === 'korting' ? ', grootste korting eerst' : ', beste eerst') : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : g.lijstKop ? esc(g.lijstKop) : 'Alle cadeaus voor ' + esc(g.naam.toLowerCase()))) + '</h2></div></div></section>' +
+      '<section class="sectie"><div class="sectie-kop"><div><h2>' + (g.codes ? 'Producten van deze winkels' : g.korting ? (q.afd && window.LK_CAT(q.afd) ? 'Deals in ' + esc(window.LK_CAT(q.afd).naam.toLowerCase()) : 'Alle deals') + (q.sort === 'korting' ? ', grootste korting eerst' : ', beste eerst') : (pv ? 'Alle cadeaus voor ' + esc(voorNaam) : g.lijstKop ? esc(g.lijstKop) : esc(lijstKopVan(g, isGelegenheid)))) + '</h2></div></div></section>' +
       werkbalk + gridMeer(lijst, leeg) + filterPaneel(pad, q, sorteerOpties, knoppen, lijst.length) + (g.faq ? gidsFaq(g) : '') +
       (g.gids && GIDSEN.some(function (x) { return x.slug === g.gids; }) ? '<nav class="lees-ook" aria-label="Cadeaugidsen">' + ic('vonk') + '<span>Lees ook:</span><a href="/gids/' + g.gids + '">' + esc(GIDSEN.filter(function (x) { return x.slug === g.gids; })[0].titel.split(':')[0]) + '</a></nav>' : '') +
       /* Verder kijken, onderaan als tekstlinks (gelegenheden op datum: eerst wat eraan komt). */
@@ -3101,7 +3142,7 @@
     blanket: 'plaid|deken', deken: 'deken|plaid', plaid: 'plaid|deken', slipper: 'slof|pantoffel', sloffen: 'slof|pantoffel', slof: 'slof|pantoffel', pantoffel: 'pantoffel|slof', sweater: 'trui', jumper: 'trui',
     wine: 'wijn', beer: 'bier', chocolate: 'chocola|chocolade', coffee: 'koffie', cookbook: 'kookboek', apron: 'schort', phone: 'telefoon', charger: 'oplader', kitchen: 'keuken', garden: 'tuin', dog: 'hond', cat: 'kat|poes',
     ebike: 'ebike|elektrische fiets', fatbike: 'fatbike|elektrische fiets', estep: 'estep|elektrische step', escooter: 'escooter|elektrische step', kpop: 'kpop|k pop', zaklantaarn: 'zaklamp|zaklantaarn|lantaarn', pingpong: 'tafeltennis|ping pong|pingpong', barbecue: 'barbecue|bbq', barbeque: 'bbq|barbecue', bbq: 'bbq|barbecue',
-    makeup: 'make up|makeup|lipgloss|mascara|oogschaduw|blush|lippenstift', pepernoten: 'pepernoten|kruidnoten|strooigoed', pepernoot: 'pepernoten|kruidnoten|strooigoed', kruidnoten: 'kruidnoten|pepernoten|strooigoed', ballonvaart: 'ballonvaart|ballonvlucht|luchtballon', cadeaubon: 'cadeaubon|cadeaukaart|giftcard|tegoedbon', cadeaukaart: 'cadeaukaart|cadeaubon|giftcard',
+    makeup: 'make up|makeup|lipgloss|mascara|oogschaduw|blush|lippenstift', pepernoten: 'pepernoten|kruidnoten|strooigoed', pepernoot: 'pepernoten|kruidnoten|strooigoed', kruidnoten: 'kruidnoten|pepernoten|strooigoed', ballonvaart: 'ballonvaart|ballonvlucht|luchtballon', owala: 'quencher|drinkbeker|drinkfles|thermosfles|waterfles', /* 18-11-2026: Owala hebben de partners niet; wel deze bekers en flessen */ cadeaubon: 'cadeaubon|cadeaukaart|giftcard|tegoedbon', cadeaukaart: 'cadeaukaart|cadeaubon|giftcard',
     scheikunde: 'scheikunde|chemie|experiment', scheikundedoos: 'scheikunde|chemie|experiment', chemie: 'chemie|scheikunde', goochelen: 'goochel', goochel: 'goochel', goocheldoos: 'goochel', goochelset: 'goochel', goocheltruc: 'goochel', fidget: 'fidget|stressbal|pop it|popit', knus: 'plaid|kruik|warmtekussen|sloffen|pantoffel|huissokken|snuggle|hoodie-deken|deken', knusse: 'plaid|kruik|warmtekussen|sloffen|pantoffel|huissokken|snuggle|hoodie-deken|deken', fidgets: 'fidget|stressbal|pop it|popit',
     beker: 'beker|mok', mok: 'mok|beker', kado: 'cadeau', gift: 'cadeau', sieradenmaken: 'sieraden-maken', kralen: 'kralen|sieraden-maken', lego: 'lego', jbl: 'jbl', airpod: 'airpods|oordopjes' };
   function zoekWoorden(tekst) {
@@ -3556,6 +3597,8 @@
     else if (sleutel === 'cadeaus/onder-15') attr = ' data-max="15"';
     /* 2.1 (30-10-2026): elk vakje heeft een eigen, al gefilterd bestand (scripts/maak-zoekindex.py, zelfde regels als onze eigen
        producten). Geen zoekwoorden meer nodig; bestaat het bestand niet, dan verdwijnt het blok vanzelf. */
+    /* 18-11-2026: heeft dit vakje geen eigen bestand (lijst LK_ZOEKW, gemaakt door splits-producten.js), dan geen blok: eerst vroeg de app het toch op (404). */
+    if (typeof window.LK_ZOEKW === 'string' && window.LK_ZOEKW && ('|' + window.LK_ZOEKW + '|').indexOf('|' + sleutel.replace(/\//g, '--') + '|') === -1) return '';
     var NW = window.LK_NIETWOORDEN || {};
     if (NW[sleutel]) attr += ' data-niet="' + esc(NW[sleutel]) + '"';
     if (merk) attr += ' data-merk="' + esc(merk) + '"';
@@ -7728,8 +7771,11 @@
     ['/collectie/adventskalenders', 'adventskalender|advent kalender|adventkalender|adventskalenders|aftelkalender'],
     ['/collectie/black-friday', 'black friday|blackfriday|black friday deals|cyber monday'],
     ['/collectie/aanbiedingen', 'aanbieding|korting|kortingen|sale|deals|deal|uitverkoop|afgeprijsd|dagdeal'],
-    ['/collectie/cadeaubonnen', 'cadeaubon|cadeaukaart|giftcard|gift card|waardebon|tegoedbon'],
-    ['/collectie/belevenissen', 'belevenis|beleving|uitje|uitjes|dagje uit|ervaring|ervaringscadeau|activiteit cadeau'],
+    /* 18-11-2026: cadeaubon en belevenis gingen naar twee verborgen collecties (Cadeaubonnen was leeg: 0 cadeaus). De gebouwde pagina's daarvan
+       sturen al door naar /c/belevenissen, dus de zoekbalk nu ook. Een belevenis geef je als bon; een losse winkelcadeaukaart hebben we niet. */
+    ['/c/belevenissen', 'cadeaubon|cadeaubonnen|cadeaukaart|giftcard|gift card|waardebon|tegoedbon|belevenis|beleving|uitje|uitjes|dagje uit|ervaring|ervaringscadeau|activiteit cadeau'],
+    /* 18-11-2026: geen ballonvaart bij onze partners; dit zijn de belevenissen in de lucht (helikopter, paragliden). 'luchtballon' gaf eerst een maanlamp en een luchtbed. */
+    ['/c/belevenissen/avontuur-snelheid/paragliden-helikoptervlucht', 'ballonvaart|ballonvlucht|luchtballon|luchtballonvaart|ballonvaren|helikoptervlucht|helikopter vlucht|paragliden|paragliding|vliegen cadeau|rondvlucht'],
     ['/collectie/cadeaupakketten', 'cadeaupakket|verwenpakket|verwenpakketten|giftbox|cadeaubox|cadeaumand|geschenkmand|pakket'],
     ['/collectie/toppers-van-nu', 'toppers|topper|populair|populaire cadeaus|trending|trend|hype|hypes|meest verkocht|bestsellers|wat is nu populair'],
     ['/c/cadeaus/sinterklaas', 'sinterklaas|sinterklaascadeau|sint|sint cadeau|pakjesavond|5 december|sinterklaasavond|sinterklaas cadeautjes'],
@@ -7770,7 +7816,8 @@
     var titel = {}, plaatje = {};
     var voeg = function (naam, naar, beeld, streng) { var k = zoekKort(naam); if (!titel[naar]) titel[naar] = String(naam).charAt(0).toUpperCase() + String(naam).slice(1); if (beeld && !plaatje[naar]) plaatje[naar] = beeld; if (k.length < 3 || vh[k]) return; vh[k] = 1; l.push({ k: k, naar: naar, naam: naam, beeld: beeld, streng: streng }); };
     var beeldVan = {};
-    (window.LK_COLLECTIES || []).forEach(function (c) { beeldVan['/collectie/' + c.slug] = c.beeld; voeg(c.naam, '/collectie/' + c.slug, c.beeld); });
+    var verb = window.LK_COLLECTIE_VERBORGEN || []; /* 18-11-2026: verborgen collecties (Cadeaubonnen was leeg) nooit als zoektreffer */
+    (window.LK_COLLECTIES || []).forEach(function (c) { if (verb.indexOf(c.slug) !== -1) return; beeldVan['/collectie/' + c.slug] = c.beeld; voeg(c.naam, '/collectie/' + c.slug, c.beeld); });
     (window.LK_GELEGENHEDEN || []).forEach(function (g) { var n = g.naar || '/gelegenheid/' + g.slug; beeldVan[n] = g.beeld; voeg(g.naam, n, g.beeld); });
     ZOEK_DIRECT.forEach(function (r) { r[1].split('|').forEach(function (w) { voeg(w, r[0], beeldVan[r[0]]); }); });
     (window.LK_PERSONEN || []).forEach(function (pe) { voeg(pe.naam, '/voor/' + pe.slug, pe.beeld); });

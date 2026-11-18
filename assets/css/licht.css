@@ -2780,3 +2780,7 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 .wh-erbij .sectie-kop h2 { margin-bottom: 4px; }
 .wh-zin { margin: 0; font-size: 15px; line-height: 1.45; color: #141A2A; max-width: 60ch; }
 .wh-zin strong { color: #8F6620; }
+
+/* ===== STRAK2 (18-11-2026, testversie via ?proef=strak2): kopje boven de rondjes 'Voor wie?' op collecties en gelegenheden ===== */
+.srij-kop { margin: 0 0 8px; font: 800 15px/1.3 Manrope, system-ui, sans-serif; color: #141A2A; letter-spacing: 0; }
+.keuzes-sectie:has(> .srij-kop) { padding-top: 10px; padding-bottom: 0; }
