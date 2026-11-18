@@ -2852,3 +2852,7 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 .lw-eigen { margin-top: 14px; }
 .lw-bewaar { width: 100%; min-height: 50px; margin-top: 12px; }
 .lw-status { min-height: 1.4em; margin: 8px 0 0; }
+
+/* ===== MAKKELIJK TE RUILEN (live 18-11-2026, GO Marius) ===== */
+.prodkaart .ruil { display: flex; align-items: center; gap: 5px; margin: 2px 0 0; font: 600 13px/1.3 Manrope, system-ui, sans-serif; color: #3F4A5C; min-width: 0; }
+.prodkaart .ruil svg { width: 14px; height: 14px; color: #8F6620; flex: none; }

@@ -175,6 +175,7 @@
     links: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
     rechts: '<path d="m9 6 6 6-6 6"/>',
     vorige: '<path d="m15 6-6 6 6 6"/>',
+    ruil: '<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v3.5H8"/>',
     ring: '<path d="M9 4h6l2 3-5 4-5-4z"/><path d="M7 7h10"/><circle cx="12" cy="15.5" r="5.5"/>',
     detector: '<path d="M6 20.5h6.5"/><ellipse cx="7" cy="18.2" rx="4.2" ry="1.9"/><path d="M8.5 16.5 17 5"/><rect x="14.6" y="3.2" width="5.2" height="4" rx="1" transform="rotate(37 17.2 5.2)"/><path d="M13.6 9.6l2 1.5"/>',
     omlaag: '<path d="m6 9 6 6 6-6"/>',
@@ -222,6 +223,19 @@
       return uit;
     });
   }
+  /* MAKKELIJK TE RUILEN (18-11-2026, voorbeeld voor Marius; onderzoek Ipsos: de grootste zorg bij een cadeau is 'verkeerd kiezen').
+     Een korte regel op de kaart bij winkels die ruim retour geven, met hun eigen woorden (nagekeken op hun site op 18-11-2026, zie BEZORG_INFO in app.js).
+     Niet bij cadeaus met naam, foto of eigen tekst en niet bij eten en drinken (die kun je meestal niet terugsturen). bol en Amazon niet: daar hangt het af van de verkoper.
+     Live voor iedereen sinds 18-11-2026 13:35 (GO Marius). Zelf zonder bekijken: ?proef=ruil-uit (weer aan: ?proef=ruil); helemaal uit: window.LK_RUIL = false. */
+  var RUIL = { 'Ditverzinjeniet': '365 dagen retour', 'Cadeau.nl': '365 dagen retour', 'Dille & Kamille': '100 dagen retour', 'CoolGift': '90 dagen ruilen of retour',
+    'HEMA': '30 dagen gratis retour', 'Coolblue': 'Gratis ruilen', 'LEGO': 'Gratis retour', 'Parfumania': '30 dagen retour' };
+  var RUIL_AAN = (function () { if (window.LK_RUIL === false) return false; try { if (/[?&]proef=ruil-uit(&|$)/.test(location.search)) localStorage.setItem('lkruil', '0'); else if (/[?&]proef=ruil(&|$)/.test(location.search)) localStorage.removeItem('lkruil'); return localStorage.getItem('lkruil') !== '0'; } catch (e) { return true; } })();
+  var EIGEN_NAAM = /met (je |eigen )?(naam|foto|tekst)|gegraveerd|graveren|gepersonaliseerd|personaliseer|eigen foto|initiaal|naamketting|naambord/i;
+  function ruilRegel(p) {
+    var t = RUIL_AAN && !p.voorbeeld && RUIL[p.shop];
+    if (!t || EIGEN_NAAM.test(p.titel || '') || p.afd === 'eten-drinken' || p.drank) return ''; /* eten en drinken kun je meestal niet terugsturen */
+    return '<span class="ruil" title="Zo staat het op de site van ' + esc(p.shop) + ' (nagekeken op 18 november 2026)">' + icoon('ruil') + esc(t) + '</span>';
+  }
   function productKaart(p) {
     /* 9-11-2026 (wens Marius): op heren-pagina's de niet-roze kleur laten zien (beeldHem, gemaakt door splits-producten.js). */
     if (window.LK_KAART_HEM && p.beeldHem) p = Object.assign({}, p, { beeld: p.beeldHem });
@@ -238,6 +252,7 @@
         '<span class="shop">' + esc(p.shop) + '</span>' +
         '<h3><a href="/p/' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</a></h3>' +
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+        ruilRegel(p) +
         (p.kleuren > 1 ? '<span class="kleuren"><i></i><i></i><i></i>' + p.kleuren + ' ' + (p.keuzeMeervoud || 'kleuren') + '</span>' : '') +
         /* 2.0: alleen bij onze favorieten één korte, echte reden (de eerste zin van 'waarom wij dit kozen'). */
         (kaartReden(p) ? '<p class="reden">' + esc(kaartReden(p)) + '</p>' : '') +
