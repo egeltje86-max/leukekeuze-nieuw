@@ -29,3 +29,4 @@ Elke regel is één dagelijkse run. Meer details staan in de commit van die dag.
 - 2026-11-17 21:26: Piloot 2026-11-17: 52 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon (niet gepusht, op verzoek).
 - 2026-11-17 21:36: Piloot 2026-11-17: 101 prijzen bijgewerkt, 5 uitverkocht van de lijsten; controle schoon (niet gepusht, op verzoek).
 - 2026-11-17 21:37: Piloot 2026-11-17: 101 prijzen bijgewerkt, 5 uitverkocht van de lijsten; menu en homepage 'Uit onze filmpjes' (TikTok en Amazon); controle schoon, live gezet.
+- 2026-11-18 06:05: Piloot 2026-11-18: 101 prijzen bijgewerkt, 0 uitverkocht van de lijsten; controle schoon, live gezet.
