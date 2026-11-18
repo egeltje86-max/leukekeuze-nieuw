@@ -226,6 +226,11 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd' || p.status === 'uitverkocht').map(p => p.id))) {
     const l = '/p/' + id + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
   }
+  /* 18-11-2026: een collectie met een seizoen staat buiten dat seizoen in geen enkel menu, dus de kruipbeurt vindt hem dan niet.
+     De pagina moet er wel altijd zijn (Google heeft tijd nodig): 'Nog op tijd voor pakjesavond' en 'Schoencadeautjes'. */
+  for (const slug of await page.evaluate(() => (window.LK_COLLECTIES || []).filter(c => c.seizoen && (window.LK_COLLECTIE_VERBORGEN || []).indexOf(c.slug) === -1).map(c => c.slug))) {
+    const l = '/collectie/' + slug + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); }
+  }
   while (rij.length) {
     const pad = rij.shift();
     const r = await page.evaluate(pad => {

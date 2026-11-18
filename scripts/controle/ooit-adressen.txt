@@ -889,6 +889,13 @@
 /collectie/kleine-cadeautjes/opa-oma/
 /collectie/kleine-cadeautjes/tieners/
 /collectie/kortingscodes/
+/collectie/op-tijd-voor-pakjesavond/
+/collectie/op-tijd-voor-pakjesavond/collega/
+/collectie/op-tijd-voor-pakjesavond/haar/
+/collectie/op-tijd-voor-pakjesavond/hem/
+/collectie/op-tijd-voor-pakjesavond/kinderen/
+/collectie/op-tijd-voor-pakjesavond/opa-oma/
+/collectie/op-tijd-voor-pakjesavond/tieners/
 /collectie/originele-cadeaus/
 /collectie/originele-cadeaus/collega/
 /collectie/originele-cadeaus/haar/

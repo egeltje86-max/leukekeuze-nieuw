@@ -1039,6 +1039,13 @@ window.LK_COLLECTIES = [
     zoek: 'schoencadeau schoencadeautje schoencadeautjes schoen zetten sinterklaas klein cadeautje',
     kind: true, maxPrijs: 10, voorWie: [], knoppen: ['leeftijd'], vakken: LK_ALLE_GROEPEN, gids: 'schoencadeautjes', seizoen: ['10-15', '12-05'], lijstKop: 'Alle schoencadeautjes',
     uit: /kerst|christmas|advent|halloween|pasen|paas|grinch|lindt|lindor|criollo|chocolatemakers|hartjesreep|stroopwafel|lolly|candy|snoep|skippybal|vlieger|honkbal|bezem|kostuum|lichtzwaard|knutselkleed|muismat|autoweg|romper|pyjama|lepels|kraamcadeau|hoera een baby|sleutelhanger/i },
+  /* Nog op tijd voor pakjesavond (18-11-2026, GO Marius op voorstel 2): alleen Sinterklaascadeaus van winkels die zelf zeggen dat je bestelling de volgende (werk)dag in huis is
+     (BEZORG_INFO in app.js, nagekeken 18-11-2026 op hun eigen site). In de menu's van 1 t/m 5 december; de pagina zelf bestaat altijd (Google heeft tijd nodig). */
+  { slug: 'op-tijd-voor-pakjesavond', naam: 'Nog op tijd voor pakjesavond', kicker: 'Snel in huis', beeld: 'images/sub/sub-cadeaus-sinterklaas.webp', seoTitel: 'Nog op tijd voor pakjesavond – snel in huis',
+    tekst: 'Laat met je cadeau? Hier staan alleen Sinterklaascadeaus van winkels die zelf zeggen dat je bestelling de volgende (werk)dag in huis is als je op tijd bestelt: Cadeau.nl (voor 22:45 besteld, morgen in huis), De Grote Speelgoedwinkel (op werkdagen voor 17:00 besteld, meestal morgen in huis), Boekenwereld.com (op werkdagen voor 22:00 besteld, volgende werkdag in huis) en Parfumania (vandaag besteld, morgen in huis, met voorwaarden). Pakjesavond is zaterdag 5 december: bestel liefst uiterlijk donderdag 3 december, want bij drukte kan een pakket een dag later komen.',
+    zoek: 'op tijd pakjesavond snel in huis morgen in huis last minute sinterklaas',
+    winkels: ['Cadeau.nl', 'De Grote Speelgoedwinkel', 'Boekenwereld.com', 'Parfumania'], moment: 'sinterklaas', vakken: LK_ALLE_GROEPEN, seizoen: ['12-01', '12-05'], lijstKop: 'Alle cadeaus die snel in huis zijn',
+    uit: /kerst|christmas|halloween|pasen|paas/i },
   { slug: 'kleine-cadeautjes', naam: 'Kleine cadeautjes', kicker: 'Klein maar fijn', beeld: 'images/sub/sub-cadeaus-sint-onder-15-2026b.webp', seoTitel: 'Kleine cadeautjes – leuke cadeaus tot €10, €25 of €50',
     tekst: 'Leuke kleine cadeautjes voor weinig geld. Kies hieronder je budget.', maxPrijs: 50, uit: LK_GEEN_FEEST, vakken: LK_ALLE_GROEPEN },
   { slug: 'originele-cadeaus', naam: 'Originele cadeaus', kicker: 'Net even anders', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp', seoTitel: 'Originele cadeaus – unieke en bijzondere cadeau-ideeën',

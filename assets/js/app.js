@@ -299,7 +299,8 @@
         Onderbouwing: Baymard (extra kosten zijn de grootste reden om af te haken; grote winkels tonen naast alternatieven ook aanvullingen). Commissie geldt over de hele bestelling.
      2) Bezorgen en retour per winkel, onder de winkelknop. Alleen wat de winkel zelf op zijn site zegt, met de datum waarop wij het nakeken; geen gegevens = geen blok.
      Eerst alleen via de testlink ?proef=winkelhulp (blijft onthouden op dat apparaat; uit: ?proef=winkelhulp-uit). Voor iedereen: window.LK_WINKELHULP = true. */
-  var WINKELHULP = (function () { if (window.LK_WINKELHULP === true) return true; if (window.LK_WINKELHULP === false) return false; try { if (/[?&]proef=winkelhulp-uit(&|$)/.test(location.search)) localStorage.removeItem('lkwinkelhulp'); else if (/[?&]proef=winkelhulp(&|$)/.test(location.search)) localStorage.setItem('lkwinkelhulp', '1'); return localStorage.getItem('lkwinkelhulp') === '1'; } catch (e) { return false; } })();
+  /* 18-11-2026 07:32: GO Marius ('Go'): aan voor iedereen. Zelf zonder bekijken: ?proef=winkelhulp-uit (weer aan: ?proef=winkelhulp); helemaal uit: window.LK_WINKELHULP = false. */
+  var WINKELHULP = (function () { if (window.LK_WINKELHULP === false) return false; try { if (/[?&]proef=winkelhulp-uit(&|$)/.test(location.search)) localStorage.setItem('lkwinkelhulp', '0'); else if (/[?&]proef=winkelhulp(&|$)/.test(location.search)) localStorage.removeItem('lkwinkelhulp'); return localStorage.getItem('lkwinkelhulp') !== '0'; } catch (e) { return true; } })();
   var BEZORG_DATUM = '18 november 2026';
   var BEZORG_INFO = {
     'Ditverzinjeniet': { gratis: 60, snel: 'Snelle verzending vanuit Nederland', kosten: 'Gratis verzending vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)', naamNiet: 'Met naam of eigen tekst kun je niet retourneren' },
@@ -841,6 +842,8 @@
       ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫', 'images/sub/iconen/icoon-eten-drinken-chocolade-snoep.webp'], ['o10', 'Onder €10', '/c/cadeaus/sinterklaas?prijs=r0-10', '💶', 'images/sub/rond/col-kleine-cadeautjes.webp'],
       ['surprise', 'Surprise maken', '/gids/surprise-maken', '🎨'], ['gedicht', 'Gedicht laten maken', '/sint-rijmmachine', '📜'], ['trek', 'Lootjes trekken', '/lootjes-trekken/', '🎲']] }
   };
+  /* 18-11-2026 (GO Marius, voorstel 2): van 1 t/m 5 december vooraan op de Sinterklaaspagina een tegel naar 'Nog op tijd voor pakjesavond'. */
+  (function () { var md = new Date().toISOString().slice(5, 10); if (md >= '12-01' && md <= '12-05' && SLIM['/c/cadeaus/sinterklaas']) SLIM['/c/cadeaus/sinterklaas'].vast.unshift(['optijd', 'Nog op tijd', '/collectie/op-tijd-voor-pakjesavond', '🚚', 'images/sub/rond/gel-sinterklaas-klein.webp']); })();
   /* NOVA-001: een bestaand beeld bij een knop zonder eigen icoon: de foto van een gekozen product uit dat onderwerp (geen nieuwe beelden). */
   function beeldUit(lijst) { return rondBeeld(null, (lijst || []).slice().sort(function (a, b) { return (b.wil || 0) - (a.wil || 0); })); }
   function padBeeld(naar) {
@@ -2540,6 +2543,8 @@
       if (p.smal && SMAL_PAG[p.smal] && !SMAL_PAG[p.smal][1].test(g.slug || '')) return false; /* pensioen-, opa/oma-, mama-cadeaus e.d. alleen op een passende gelegenheid */ /* p.los: losse onderdelen niet op cadeaupagina's (paginaregels, 10-11-2026) */
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
       if (g.kind && !kindCadeau(p)) return false; /* 11-11-2026: een collectie met alleen kindercadeaus (Schoencadeautjes) */
+      if (g.winkels && g.winkels.indexOf(p.shop) === -1) return false; /* 18-11-2026: alleen winkels die zelf 'morgen in huis' zeggen (Nog op tijd voor pakjesavond) */
+      if (g.moment && (p.moment || []).indexOf(g.moment) === -1) return false;
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
@@ -7706,6 +7711,7 @@
      3. VONK alleen bij een echte vraag: een bedrag, een leeftijd, of een persoon/moment samen met iets anders ('oma max 25', 'lego 8 jaar').
      Test: scratchpad zoek2/route.js (typ, Enter, waar kom je uit). Uit: window.LK_ZOEK2 = false. */
   var ZOEK_DIRECT = [
+    ['/collectie/op-tijd-voor-pakjesavond', 'op tijd voor pakjesavond|nog op tijd|snel in huis|morgen in huis|last minute sinterklaas|last minute cadeau|lastminute cadeau'],
     ['/collectie/schoencadeautjes', 'schoencadeau|schoencadeautje|schoen cadeau|schoen cadeautje|schoen kado|schoenkado|schoenkadootje|cadeautje voor in de schoen|cadeau voor in de schoen|cadeautjes voor in de schoen|iets voor in de schoen|voor in de schoen|in de schoen|schoen zetten|schoentje zetten|schoentje|schoen vullen'],
     ['/lootjes-trekken', 'lootjes trekken|lootje trekken|lootjestrekken|lootjes|lootje|loten trekken|loting|lootjes maken|namen trekken|secret santa|lootjes app'],
     ['/sint-rijmmachine', 'sinterklaasgedicht|sinterklaas gedicht|sintgedicht|sint gedicht|gedicht|gedichten|gedichtje|rijm|rijmpje|rijmen|rijmmachine|gedicht maken|gedicht schrijven|sinterklaasrijm'],
