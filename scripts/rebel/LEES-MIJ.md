@@ -18,3 +18,4 @@ dan voor iedereen. Let op paragraaf 8 van CLAUDE.md (huisstijl): die verandert d
 - `rebel.css` kreeg regels voor de tegels op /gelegenheid/ (`.keuzerond`) en Zoek een product (`.srt-blok`, `.srt-vt`).
 - Opmerking voor Nova: Boeken & muziek en Christelijke cadeaus zijn allebei een open boek (met een muzieknoot of een kruis); op 44 px lijken ze op elkaar. 'Vaak gezocht' toont nog de oude plaatjes tot die reeks binnen is.
 - Live zetten (na GO): de webp's uit `rond/` over de oude beelden zetten (de oude eerst bewaren). Let op: een plaatje met dezelfde naam kan bij vaste bezoekers nog uit het geheugen van hun telefoon komen; kijk na of de bouw er een versie achter zet, anders nieuwe bestandsnamen gebruiken.
+- **Mening Marius (18-11-2026 avond):** 'heel eerlijk, ik vind het echt lelijk, dat gele'. Het knalgele vlak (kop, blok achter 'Voor wie', knoppen) gaat zo niet live. Geef dit door aan Nova voordat er meer in deze stijl wordt gemaakt.
