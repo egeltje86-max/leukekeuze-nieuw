@@ -274,17 +274,18 @@
       return localStorage.getItem('lkstrak') !== 'uit';
     } catch (e) { return true; }
   })();
-  /* STRAK2 (18-11-2026, TESTVERSIE, alleen via de testlink ?proef=strak2; uit: ?proef=strak2-uit): op collecties en gelegenheden ('Grappige cadeaus',
-     'Verjaardag') staan de personen niet meer als vijf tot zeven grote tegels maar als kleine rondjes, vier naast elkaar, net als STRAK op de
+  /* STRAK2 (live voor iedereen sinds 18-11-2026 10:09, GO Marius 'go'): op collecties en gelegenheden ('Grappige cadeaus', 'Verjaardag')
+     staan de personen niet meer als vijf tot zeven grote tegels maar als kleine rondjes, vier naast elkaar, net als STRAK op de
      categoriepagina's. Aanleiding: daar stond het eerste cadeau pas na ruim een scherm (Grappige cadeaus 978 px, Verjaardag 989 px op 390 x 844).
-     Gewone bezoekers, Google en de bouw zien niets anders. Voor iedereen pas na GO van Marius: window.LK_STRAK2 = true of de standaard omzetten. */
-  var STRAK2 = window.LK_STRAK2 === true || (window.LK_STRAK2 !== false && (function () {
+     De bouw tekent het mee (geen verspringen). Zelf de oude tegels zien: ?proef=strak2-uit (weer aan: ?proef=strak2); helemaal uit:
+     window.LK_STRAK2 = false. */
+  var STRAK2 = window.LK_STRAK2 !== false && (function () {
     try {
       var m = /[?&]proef=strak2(-uit)?(&|$)/.exec(location.search);
-      if (m) { if (m[1]) localStorage.removeItem('lkstrak2'); else localStorage.setItem('lkstrak2', '1'); }
-      return localStorage.getItem('lkstrak2') === '1';
-    } catch (e) { return false; }
-  })());
+      if (m) { if (m[1]) localStorage.setItem('lkstrak2', 'uit'); else localStorage.removeItem('lkstrak2'); }
+      return localStorage.getItem('lkstrak2') !== 'uit';
+    } catch (e) { return true; }
+  })();
   /* 17-11-2026 (nachtcontrole): grove grappen (mok 'Bakkie pleur op', middelvinger-paraplu) schuiven in de proef niet naar voren, behalve bij Grappige cadeaus */
   var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
   function zkMix(p, sleutel) { return MIX && p.zk && (!GROF_T.test(p.titel || '') || /grappig/.test(sleutel || '')); }
@@ -2696,7 +2697,7 @@
           return { id: slug, naam: p2.kort, beeld: p2.beeld, naar: hoofdPad + '/' + slug, actief: !!(pv && pv.slug === slug), n: n, icoon: VOORICO[slug] };
         }).filter(Boolean)), { titel: 'Voor wie zoek je iets?' }, 'Voor wie');
       }
-      /* STRAK2 (testversie, zie bovenaan): kleine rondjes in plaats van grote tegels. */
+      /* STRAK2 (live 18-11-2026, zie bovenaan): kleine rondjes in plaats van grote tegels. */
       if (STRAK && STRAK2 && vk) {
         voorKnopjes = '<h2 class="srij-kop">Voor wie?</h2>' + soortRij((pv ? [{ id: '_alles', alles: true, naam: 'Iedereen', naar: hoofdPad }] : []).concat((g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
           var p2 = window.LK_PERSOON(slug); if (!p2) return null;
