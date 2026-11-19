@@ -29,7 +29,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=174418985945429" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=198737841219831" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=186627907387163" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=152437195240426">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=3302308696884", t = "assets/js/topkeuze.js?v=249066373503333";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=115441546019443", t = "assets/js/topkeuze.js?v=249066373503333";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -208,7 +208,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"cb-nova-pro-wl":{"url":"https://www.awin1.com/pclick.php?p=46089310243&a=3110079&m=85161","winkelUrl":"https://www.awin1.com/pclick.php?p=46089310243&a=3110079&m=85161","subVast":true,"gecontroleerd":"2026-11-19","verzendNoot":"Coolblue bezorgt gratis als je bij het bestellen een hele dag kiest.","varianten":[{"kleur":"Wit","beeld":"images/producten/cb-nova-pro-wl-wit","url":"https://www.awin1.com/pclick.php?p=46089310243&a=3110079&m=85161","winkelUrl":"https://www.awin1.com/pclick.php?p=46089310243&a=3110079&m=85161","prijs":265},{"kleur":"Zwart","beeld":"images/producten/cb-nova-pro-wl-zwart","url":"https://www.awin1.com/pclick.php?p=38561493087&a=3110079&m=85161","winkelUrl":"https://www.awin1.com/pclick.php?p=38561493087&a=3110079&m=85161","prijs":299}],"advies":{"voor":"Fanatieke gamers.","niet":"Er al een goede gamingheadset is.","alt":["dvzn-a4ed4f69b9","cl-minecraft"],"meer":[["Cadeau voor een man","/gids/cadeau-voor-man/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"De Arctis Nova Pro Wireless van SteelSeries: een draadloze gamingheadset met een los GameDAC-kastje om het geluid in te stellen, met surroundgeluid. Kies je kleur bij de winkel."}};</script>
-  <script src="assets/js/data.js?v=198737841219831"></script>
+  <script src="assets/js/data.js?v=186627907387163"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
   <script src="assets/js/app.js?v=174418985945429"></script>

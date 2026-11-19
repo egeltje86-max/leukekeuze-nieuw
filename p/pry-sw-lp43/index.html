@@ -28,7 +28,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=174418985945429" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=198737841219831" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=186627907387163" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=152437195240426">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=3302308696884", t = "assets/js/topkeuze.js?v=249066373503333";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=115441546019443", t = "assets/js/topkeuze.js?v=249066373503333";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,7 +207,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"pry-sw-lp43":{"url":"https://bdt9.net/c/?si=18475&li=1814773&wi=433339&pid=1ef13ff64813880887472e6071b498af&dl=smart-watches%2Fphilippe-palmer-smart-watch-lp43-pink.html%3FtwsCurrency%3DEUR%26twsShipmentCountry%3DNL&ws=","winkelUrl":"https://www.prydligt.eu/black-november-early-access/black-november-heren/smart-watches/philippe-palmer-smart-watch-lp43-black.html?twsCurrency=EUR&twsShipmentCountry=NL","subVast":true,"verzendNoot":"Prydligt verzendt gratis vanaf €80. Daaronder betaal je €4,90 verzendkosten.","gecontroleerd":"2026-10-31","varianten":[{"kleur":"Zwart","beeld":"images/producten/pry-sw-4735110f49","url":"https://bdt9.net/c/?si=18475&li=1814773&wi=433339&pid=1ac4e5720513faf6757afc77ca848da2&dl=black-november-early-access%2Fblack-november-heren%2Fsmart-watches%2Fphilippe-palmer-smart-watch-lp43-black.html%3FtwsCurrency%3DEUR%26twsShipmentCountry%3DNL&ws=","winkelUrl":"https://www.prydligt.eu/black-november-early-access/black-november-heren/smart-watches/philippe-palmer-smart-watch-lp43-black.html?twsCurrency=EUR&twsShipmentCountry=NL","prijs":34},{"kleur":"Roze","beeld":"images/producten/pry-sw-2534527349","url":"https://bdt9.net/c/?si=18475&li=1814773&wi=433339&pid=1ef13ff64813880887472e6071b498af&dl=smart-watches%2Fphilippe-palmer-smart-watch-lp43-pink.html%3FtwsCurrency%3DEUR%26twsShipmentCountry%3DNL&ws=","winkelUrl":"https://www.prydligt.eu/smart-watches/philippe-palmer-smart-watch-lp43-pink.html?twsCurrency=EUR&twsShipmentCountry=NL","prijs":34},{"kleur":"Zilver","beeld":"images/producten/pry-sw-643a347a7d","url":"https://bdt9.net/c/?si=18475&li=1814773&wi=433339&pid=ad9c601fbeaa532f25979e1ea98d9217&dl=smart-watches%2Fphilippe-palmer-smart-watch-lp43-silver.html%3FtwsCurrency%3DEUR%26twsShipmentCountry%3DNL&ws=","winkelUrl":"https://www.prydligt.eu/smart-watches/philippe-palmer-smart-watch-lp43-silver.html?twsCurrency=EUR&twsShipmentCountry=NL","prijs":44.9}],"wil":65,"uitverkochtSinds":"2026-11-05","waarom":"Een betaalbare smartwatch met meldingen, stappenteller en hartslagmeter. Werkt met iPhone en Android en kan tegen water (IP67). Kies zwart, roze of zilver."}};</script>
-  <script src="assets/js/data.js?v=198737841219831"></script>
+  <script src="assets/js/data.js?v=186627907387163"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
   <script src="assets/js/app.js?v=174418985945429"></script>

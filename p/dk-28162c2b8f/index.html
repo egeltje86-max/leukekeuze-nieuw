@@ -28,7 +28,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=174418985945429" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=198737841219831" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=186627907387163" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=152437195240426">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=3302308696884", t = "assets/js/topkeuze.js?v=249066373503333";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=115441546019443", t = "assets/js/topkeuze.js?v=249066373503333";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,7 +207,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"dk-28162c2b8f":{"url":"https://ds1.nl/c/?si=1305&li=1927997&wi=433339&pid=28a2c8e8037b1576afb220725045544d&dl=product%2Fbeleef-de-natuur-bij-lubosch-land%2F%3Fattribute_locatie%3DRandsdaal&ws=","winkelUrl":"https://ds1.nl/c/?si=1305&li=1927997&wi=433339&pid=28a2c8e8037b1576afb220725045544d&dl=product%2Fbeleef-de-natuur-bij-lubosch-land%2F%3Fattribute_locatie%3DRandsdaal&ws=","subVast":true,"gecontroleerd":"2026-11-19","herkomst":"doenkado","advies":{"voor":"Een ouder of opa en oma die samen met een kind de natuur in wil.","niet":"Je niet naar Limburg kunt komen.","alt":["dk-00a888b1c8","dk-aa9282d7f3"],"meer":[["Cadeau voor een vrouw","/gids/cadeau-voor-vrouw/"],["Kerstcadeaus","/c/cadeaus/kerst/"]]},"waarom":"Een rondleiding van 1,5 uur bij Lubosch Land in Limburg voor één kind en één volwassene: over biodiversiteit, een voedselbos en anders boeren, met koffie, thee of fris en een kleine proeverij. Gaat altijd door, dus trek dichte schoenen aan."}};</script>
-  <script src="assets/js/data.js?v=198737841219831"></script>
+  <script src="assets/js/data.js?v=186627907387163"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
   <script src="assets/js/app.js?v=174418985945429"></script>

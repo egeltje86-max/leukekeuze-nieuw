@@ -28,7 +28,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=174418985945429" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=198737841219831" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=186627907387163" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=152437195240426">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=3302308696884", t = "assets/js/topkeuze.js?v=249066373503333";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=115441546019443", t = "assets/js/topkeuze.js?v=249066373503333";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -207,7 +207,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"fiftie-587ea446e1":{"url":"https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fretro-kleding%2Fchristian-audigier-mens-winged-crown-watch.html%3Fchannable%3D0191796964003435373930c9","winkelUrl":"https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fretro-kleding%2Fchristian-audigier-mens-winged-crown-watch.html%3Fchannable%3D0191796964003435373930c9","subVast":true,"gecontroleerd":"2026-11-19","herkomst":"superkeurkamer","verzendNoot":"Fiftiesstore verzendt gratis binnen Nederland vanaf €75.","advies":{"voor":"Liefhebbers van Ed Hardy en opvallende horloges.","niet":"Je een horloge zoekt dat meteen werkt: de batterij moet nog vervangen worden.","alt":["bol-9300000176286400","cl-casio-a168"],"meer":[["Cadeau voor een man","/gids/cadeau-voor-man/"],["Kerstcadeaus","/c/cadeaus/kerst/"]]},"waarom":"Het Winged Crown-herenhorloge van ontwerper Christian Audigier, bekend van zijn werk voor Ed Hardy. Het komt in een luxe doosje. Let op: volgens de winkel is de batterij leeg, dus die moet eerst vervangen worden."}};</script>
-  <script src="assets/js/data.js?v=198737841219831"></script>
+  <script src="assets/js/data.js?v=186627907387163"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
   <script src="assets/js/app.js?v=174418985945429"></script>

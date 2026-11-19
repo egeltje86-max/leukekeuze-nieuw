@@ -1517,15 +1517,68 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde One Piece & anime-hoek ===== */
 
-/* 19-11-2026: rondjes van Nova (deel 4 en 6) voor een paar soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
-   Bestand: images/sub/iconen/icoon-<afdeling>-<groep>-<vakje>.webp (oude namen van afdeling en groep). */
+/* 19-11-2026: rondjes van Nova (deel 4, 6 en 7) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
+   Sleutel = oude plek van het vakje (afdeling/groep/vakje), waarde = naam van het bestand images/sub/iconen/icoon-<waarde>.webp (meestal de nieuwe plek). */
 (function () {
-  var V = ['speelgoed/baby-peuter/badspeelgoed', 'speelgoed/baby-peuter/stapelen-sorteren', 'speelgoed/baby-peuter/rammelaars-bijtringen', 'speelgoed/baby-peuter/loopwagens-duwspeelgoed',
-    'speelgoed/baby-peuter/babygyms-activiteitenspeelgoed', 'speelgoed/bouwen/knikkerbanen', 'speelgoed/bouwen/lego-duplo', 'speelgoed/bouwen/magnetisch-bouwen', 'speelgoed/bouwen/andere-bouwstenen',
-    'speelgoed/poppen-knuffels/poppenhuizen-accessoires', 'speelgoed/bouwen/lego', 'speelgoed/poppen-knuffels/knuffels', 'elektronica/audio/koptelefoons', 'eten-drinken/chocolade-snoep/chocolade'];
+  var B = {
+    'speelgoed/baby-peuter/badspeelgoed': 'speelgoed-baby-peuter-badspeelgoed',
+    'speelgoed/baby-peuter/stapelen-sorteren': 'speelgoed-baby-peuter-stapelen-sorteren',
+    'speelgoed/baby-peuter/rammelaars-bijtringen': 'speelgoed-baby-peuter-rammelaars-bijtringen',
+    'speelgoed/baby-peuter/loopwagens-duwspeelgoed': 'speelgoed-baby-peuter-loopwagens-duwspeelgoed',
+    'speelgoed/baby-peuter/babygyms-activiteitenspeelgoed': 'speelgoed-baby-peuter-babygyms-activiteitenspeelgoed',
+    'speelgoed/bouwen/knikkerbanen': 'speelgoed-bouwen-knikkerbanen',
+    'speelgoed/bouwen/lego-duplo': 'speelgoed-bouwen-lego-duplo',
+    'speelgoed/bouwen/magnetisch-bouwen': 'speelgoed-bouwen-magnetisch-bouwen',
+    'speelgoed/bouwen/andere-bouwstenen': 'speelgoed-bouwen-andere-bouwstenen',
+    'speelgoed/poppen-knuffels/poppenhuizen-accessoires': 'speelgoed-poppen-knuffels-poppenhuizen-accessoires',
+    'speelgoed/bouwen/lego': 'speelgoed-bouwen-lego',
+    'speelgoed/poppen-knuffels/knuffels': 'speelgoed-poppen-knuffels-knuffels',
+    'elektronica/audio/koptelefoons': 'elektronica-audio-koptelefoons',
+    'eten-drinken/chocolade-snoep/chocolade': 'eten-drinken-chocolade-snoep-chocolade',
+    'elektronica/audio/platenspelers': 'elektronica-audio-platenspelers',
+    'elektronica/audio/radio-s': 'elektronica-audio-radio-s',
+    'elektronica/gaming/consoles': 'elektronica-gaming-consoles',
+    'elektronica/gaming/controllers-accessoires': 'elektronica-gaming-controllers-accessoires',
+    'elektronica/gaming/games': 'elektronica-gaming-games',
+    'elektronica/gaming/gamestoelen': 'elektronica-gaming-gamestoelen',
+    'elektronica/gaming/gaming-headsets': 'elektronica-gaming-gaming-headsets',
+    'elektronica/gaming/vr-brillen': 'elektronica-gaming-vr-brillen',
+    'speelgoed/buiten-spelen/buitenspellen-ballen': 'speelgoed-buiten-spelen-buitenspellen-ballen',
+    'speelgoed/buiten-spelen/steps-loopfietsen': 'speelgoed-buiten-spelen-steps-loopfietsen',
+    'speelgoed/buiten-spelen/trampolines-speeltoestellen': 'speelgoed-buiten-spelen-trampolines-speeltoestellen',
+    'speelgoed/buiten-spelen/zand-water': 'speelgoed-buiten-spelen-zand-water',
+    'speelgoed/knutselen/klei-slijm': 'speelgoed-knutselen-klei-slijm',
+    'speelgoed/knutselen/knutselsets': 'speelgoed-knutselen-knutselsets',
+    'speelgoed/knutselen/strijkkralen-sieraden-maken': 'speelgoed-knutselen-strijkkralen-sieraden-maken',
+    'speelgoed/knutselen/tekenen-kleuren': 'speelgoed-knutselen-tekenen-kleuren',
+    'speelgoed/leren-ontdekken/experimenteren-wetenschap': 'speelgoed-leren-ontdekken-experimenteren-wetenschap',
+    'speelgoed/leren-ontdekken/luisterboxen-toniebox': 'speelgoed-leren-ontdekken-luisterboxen-toniebox',
+    'speelgoed/leren-ontdekken/microscopen-telescopen': 'speelgoed-leren-ontdekken-microscopen-telescopen',
+    'speelgoed/leren-ontdekken/muziekspeelgoed-karaoke': 'speelgoed-leren-ontdekken-muziekspeelgoed-karaoke',
+    'speelgoed/leren-ontdekken/programmeren-robots': 'speelgoed-leren-ontdekken-programmeren-robots',
+    'speelgoed/leren-ontdekken/tiptoi-leersystemen': 'speelgoed-leren-ontdekken-tiptoi-leersystemen',
+    'speelgoed/poppen-knuffels/babypoppen': 'speelgoed-poppen-knuffels-babypoppen',
+    'speelgoed/poppen-knuffels/modepoppen': 'speelgoed-poppen-knuffels-modepoppen',
+    'speelgoed/rollenspel-verkleden/gereedschap-dokterssets': 'speelgoed-rollenspel-verkleden-gereedschap-dokterssets',
+    'speelgoed/rollenspel-verkleden/speelkeukens-winkeltjes': 'speelgoed-rollenspel-verkleden-speelkeukens-winkeltjes',
+    'speelgoed/rollenspel-verkleden/verkleedkleding': 'speelgoed-rollenspel-verkleden-verkleedkleding',
+    'speelgoed/speelfiguren-voertuigen/actiefiguren-superhelden': 'speelgoed-speelfiguren-voertuigen-actiefiguren-superhelden',
+    'speelgoed/speelfiguren-voertuigen/dieren-dinofiguren': 'speelgoed-speelfiguren-voertuigen-dieren-dinofiguren',
+    'speelgoed/speelfiguren-voertuigen/fidgets-tollen': 'speelgoed-speelfiguren-voertuigen-fidgets-tollen',
+    'speelgoed/speelfiguren-voertuigen/racebanen-treinen': 'speelgoed-speelfiguren-voertuigen-racebanen-treinen',
+    'speelgoed/speelfiguren-voertuigen/radiografisch-bestuurbaar': 'speelgoed-speelfiguren-voertuigen-radiografisch-bestuurbaar',
+    'speelgoed/speelfiguren-voertuigen/speelgoedauto-s-garages': 'speelgoed-speelfiguren-voertuigen-speelgoedauto-s-garages',
+    'speelgoed/spellen/bordspellen-voor-het-gezin': 'spellen-puzzels-bordspellen-bordspellen-voor-het-gezin',
+    'speelgoed/spellen/strategiespellen': 'spellen-puzzels-bordspellen-strategiespellen',
+    'speelgoed/spellen/kaart-dobbelspellen': 'spellen-puzzels-kaart-partyspellen-kaart-dobbelspellen',
+    'speelgoed/spellen/partyspellen': 'spellen-puzzels-kaart-partyspellen-partyspellen',
+    'speelgoed/puzzels/3d-puzzels': 'spellen-puzzels-puzzels-3d-puzzels',
+    'speelgoed/puzzels/kinderpuzzels': 'spellen-puzzels-puzzels-kinderpuzzels',
+    'speelgoed/puzzels/legpuzzels': 'spellen-puzzels-puzzels-legpuzzels'
+  };
   (window.LK_CATEGORIEEN || []).forEach(function (c) { (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
     var k = c.slug + '/' + s.slug + '/' + v.slug;
-    if (V.indexOf(k) !== -1) v.beeld = 'images/sub/iconen/icoon-' + k.replace(/\//g, '-') + '.webp';
+    if (B[k]) v.beeld = 'images/sub/iconen/icoon-' + B[k] + '.webp';
   }); }); });
 })();
 
