@@ -60,9 +60,12 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-naturesgift': '&standard_id=1&language_code=nl&locale_id=1&program_id=17750',     # Nature's Gift, goedgekeurd 9-11-2026
     'x-olijfolie': '&standard_id=4&language_code=nl&locale_id=1&program_id=20259',       # Olijfolie Concurrent, goedgekeurd 10-11-2026
     'x-majakoi': '&standard_id=1&language_code=nl&locale_id=1&program_id=15904',         # MaJa Koi (vijver/aquarium), goedgekeurd 10-11-2026
+    'x-fitwinkel': '&standard_id=1&language_code=nl&locale_id=1&program_id=12318',       # Fitwinkel (sport), feedlink van Marius 19-11-2026
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
+    # Fitwinkel: vooral sportkleding in maten (Gorilla Wear) en supplementen; alleen sport- en spelcadeaus bewaren (19-11-2026).
+    'x-fitwinkel': (r'^(?!.*(gorilla|shirt|short|legging|hoodie|tank top|broek|\bbh\b|sport bra|jacket|jas\b|sokken|schoen|supplement|vitamine|eiwit|protein))(?=.*(boks|vechtsport|voetbaltafel|tafelvoetbal|airhockey|pingpong|tafeltennis|badminton|basketbal|voetbal|yoga|pilates|waterfles|golf|paddleboard|sup-board|sup board|balans|springtouw|massage|foamroller|biljart|pooltafel|reflexbal|speedball|bosu|centr|sklz|blackroll|garlando|trampoline))', 5, 800),
     'x-westwing': (r'kaars|kandelaar|lantaarn|vaas|vazen|plaid|deken|kussen|geur|diffuser|lamp|lampje|fotolijst|spiegel|dienblad|mok|kop en schotel|glazen|karaf|schaal|kom|kerst|decoratie|beeld|klok|mand|bloempot|pot\b|kunstbloem|kunstplant|bord|servies|bestek|theedoek|handdoek|badjas|koffietafelboek|toys|health|beauty|baby|animals|pet|media|office', 3, 250),
 }
 ok = 0

@@ -123,6 +123,7 @@ WINKELS = [  # (feedbestand, winkelnaam, basis-url voor relatieve links)
     ('x-invulboekjes.json', 'invulboekjes.nl', ''),
     ('x-doenkado.json', 'Doenkado', ''),
     ('x-naturesgift.json', "Nature's Gift", ''),
+    ('x-fitwinkel.json', 'Fitwinkel', ''),  # 19-11-2026, alleen sport- en spelcadeaus (FILTER in nachtelijk.py)
     # Awin (a-*.json, opgehaald met Feedzoeker\programma\awin-ophalen.py; 04-11-2026, wens Marius). Bewust niet: Kopp Verlag,
     # de enorme kledingcatalogi van s.Oliver en Street One (wel als winkeltegel), en reizen/vervoer.
     ('a-coolblue-nl.json', 'Coolblue', ''),
