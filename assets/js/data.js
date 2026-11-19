@@ -1517,12 +1517,15 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde One Piece & anime-hoek ===== */
 
-/* 19-11-2026: rondjes van Nova (deel 6) voor een paar soorten (vakjes) bij Speelgoed. Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep. */
+/* 19-11-2026: rondjes van Nova (deel 4 en 6) voor een paar soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
+   Bestand: images/sub/iconen/icoon-<afdeling>-<groep>-<vakje>.webp (oude namen van afdeling en groep). */
 (function () {
-  var V = ['baby-peuter/badspeelgoed', 'baby-peuter/stapelen-sorteren', 'baby-peuter/rammelaars-bijtringen', 'baby-peuter/loopwagens-duwspeelgoed', 'baby-peuter/babygyms-activiteitenspeelgoed',
-    'bouwen/knikkerbanen', 'bouwen/lego-duplo', 'bouwen/magnetisch-bouwen', 'bouwen/andere-bouwstenen', 'poppen-knuffels/poppenhuizen-accessoires'];
-  (window.LK_CATEGORIEEN || []).forEach(function (c) { if (c.slug !== 'speelgoed') return; (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
-    if (V.indexOf(s.slug + '/' + v.slug) !== -1) v.beeld = 'images/sub/iconen/icoon-speelgoed-' + s.slug + '-' + v.slug + '.webp';
+  var V = ['speelgoed/baby-peuter/badspeelgoed', 'speelgoed/baby-peuter/stapelen-sorteren', 'speelgoed/baby-peuter/rammelaars-bijtringen', 'speelgoed/baby-peuter/loopwagens-duwspeelgoed',
+    'speelgoed/baby-peuter/babygyms-activiteitenspeelgoed', 'speelgoed/bouwen/knikkerbanen', 'speelgoed/bouwen/lego-duplo', 'speelgoed/bouwen/magnetisch-bouwen', 'speelgoed/bouwen/andere-bouwstenen',
+    'speelgoed/poppen-knuffels/poppenhuizen-accessoires', 'speelgoed/bouwen/lego', 'speelgoed/poppen-knuffels/knuffels', 'elektronica/audio/koptelefoons', 'eten-drinken/chocolade-snoep/chocolade'];
+  (window.LK_CATEGORIEEN || []).forEach(function (c) { (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
+    var k = c.slug + '/' + s.slug + '/' + v.slug;
+    if (V.indexOf(k) !== -1) v.beeld = 'images/sub/iconen/icoon-' + k.replace(/\//g, '-') + '.webp';
   }); }); });
 })();
 
