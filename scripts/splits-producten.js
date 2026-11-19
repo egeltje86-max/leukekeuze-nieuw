@@ -66,6 +66,9 @@ function splits() {
   /* 10-11-2026: paginaregels (geen verkeerde producten op een pagina), zie scripts/boom/paginaregels.js */
   const prTel = require('./boom/paginaregels.js').pas(alle, ROOT);
   console.log('paginaregels: label weg', prTel.label, '| los onderdeel', prTel.los, '| van een onderwerp af', prTel.nietOp, '| smal (tekst voor één soort persoon)', prTel.smal, '| van een Voor wie-pagina af (niet zeker)', prTel.nietBij, '| drank (alleen op de drankplek)', prTel.drank);
+  /* 19-11-2026 CADEAUKEURMEESTER (opdracht Nova via Marius): per gelegenheid en ontvanger een aftrek (veld km), zie scripts/keurmeester/. */
+  const kmTel = require('./keurmeester/pas.js').pas(alle, ROOT);
+  console.log('cadeaukeurmeester: ' + kmTel.producten + ' producten met aftrek op sommige pagina\'s | ' + Object.entries(kmTel.regels).map(([k, v]) => k + ' ' + v).join(', '));
   /* 4.0 (proef 11-11-2026): de nieuwe indeling. De paginaregels hierboven werken nog met de plek van vóór de verhuizing;
      daarna krijgt elk product zijn nieuwe afdeling, groep en vakje (scripts/boom/verhuisd.json, gemaakt door scripts/boom/verhuis.js).
      Bestaat dat bestand niet, dan verandert er niets. */
@@ -154,7 +157,7 @@ function splits() {
   const TAB = [], tabNr = {};
   const nr = (v) => { const s = JSON.stringify(v); if (!(s in tabNr)) { tabNr[s] = TAB.length; TAB.push(v); } return tabNr[s]; };
   const PLEK = ['cat', 'sub', 'afd', 'groep', 'vak'];
-  const VELD = ['moment', 'voor', 'ookIn', 'tags', 'soort', 'nietBij', 'nietOp', 'sinds', 'shop', 'merk', 'keuzeLabel', 'keuzeMeervoud', 'leeftijd'];
+  const VELD = ['moment', 'voor', 'ookIn', 'tags', 'soort', 'nietBij', 'nietOp', 'sinds', 'shop', 'merk', 'keuzeLabel', 'keuzeMeervoud', 'leeftijd', 'km'];
   const kort = lean.map((l) => {
     const o = {};
     for (const k of Object.keys(l)) {

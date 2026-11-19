@@ -28,6 +28,7 @@ run('links', 'links.js');
 run('doelgroep', 'doelgroep.js');
 run('paginas', 'paginas.js'); // 10-11-2026: geen verkeerde producten op een Voor wie-onderwerp (paginaregels)
 run('prijsclaim', 'prijsclaim.js'); // 18-11-2026: geen 'Nu 30% korting' of 'Van €80 naar €68' in vaste teksten
+run('keurmeester', 'keurmeester.js'); // 19-11-2026 CADEAUKEURMEESTER: de fouten uit de steekproef van Nova (grafsteenkaars bij Bedankje voor collega ...) komen niet terug, goede cadeaus blijven
 run('seowacht', 'seo-wacht.js'); // 19-11-2026 GOOGLE-HERSTEL: nooit ongemerkt veel adressen of productpagina's tegelijk erbij of eraf (GO Marius nodig: LK_SEO_GO=1)
 fs.writeFileSync(path.join(UITMAP, 'controle-' + datum + '.json'), JSON.stringify(uit, null, 1));
 fs.writeFileSync(path.join(UITMAP, 'controle-laatste.json'), JSON.stringify(uit, null, 1));

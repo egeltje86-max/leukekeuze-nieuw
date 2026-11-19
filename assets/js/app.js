@@ -434,10 +434,27 @@
       }).join('') + '</div><p class="mandje-noot">Prijzen zoals wij ze het laatst zagen; de winkel heeft de prijs van vandaag. Verzendregels van de site van de winkel, nagekeken op ' + BEZORG_DATUM + '.</p></section>';
   }
   /* De etalage: alles wat in een met de hand nagekeken top staat (LK_TOPVAST). Die producten komen in de nieuwe opzet eerst; de volgorde binnen elke groep blijft. */
-  function etalageEerst(l) {
+  /* CADEAUKEURMEESTER (19-11-2026): op een Voor wie-pagina telt als etalage alleen wat met de hand gekozen is voor díe persoon
+     (zijn eigen toppen, 'Verjaardag voor hem', 'Kerst voor collega' ...), op zijn hoofdpagina en bij Bedankje, Afscheid en Lootjes. Eerst schoof alles wat in welke top dan ook stond naar voren:
+     zo kwam de grafsteenkaars uit de top van Verjaardag op 'Bedankje voor collega's'. Uit: window.LK_ETALAGE_ALLES = true. */
+  var ETALAGE_P = {};
+  function etalageVan(pad) {
+    /* Alleen op de hoofdpagina van een persoon en op de onderwerpen die een gelegenheid zijn (Bedankje, Afscheid, Lootjes). Op een onderwerp als
+       Gaming of Sieraden gaat het onderwerp voor: daar blijft de etalage van alle toppen (een Pokémon-game uit de Pokémon-top hoort bij Gaming). */
+    var m = /^\/voor\/([^/?]+)(?:\/([^/?]+))?\/?$/.exec(String(pad || '').split('?')[0]); if (!m || (m[2] && !KM_SUB[m[2]]) || window.LK_ETALAGE_ALLES === true || !window.LK_TOPVAST) return null;
+    var pe = m[1]; if (ETALAGE_P[pe]) return ETALAGE_P[pe];
+    var oud = (window.LK_PERSOON && window.LK_PERSOON(pe) || {}).oud, e = {};
+    Object.keys(window.LK_TOPVAST).forEach(function (k) {
+      var kk = k.replace(/\/$/, '');
+      if (kk.indexOf('/voor/' + pe) === 0 || new RegExp('/' + pe + '$').test(kk) || kk.indexOf('voor=' + pe) !== -1 || (oud && kk === '/c/' + oud)) (window.LK_TOPVAST[k] || []).forEach(function (id) { e[id] = 1; });
+    });
+    return (ETALAGE_P[pe] = e);
+  }
+  function etalageEerst(l, pad) {
     if (!window.LK_TOPVAST) return l;
     if (!ETALAGE) { ETALAGE = {}; Object.keys(window.LK_TOPVAST).forEach(function (k) { (window.LK_TOPVAST[k] || []).forEach(function (id) { ETALAGE[id] = 1; }); }); }
-    var voor = [], na = []; l.forEach(function (p) { (ETALAGE[p.id] || zkMix(p) ? voor : na).push(p); }); return voor.concat(na); /* proef AFWISSELING: eigen keuzes horen ook bij de etalage */
+    var E = etalageVan(pad) || ETALAGE;
+    var voor = [], na = []; l.forEach(function (p) { (E[p.id] || zkMix(p) ? voor : na).push(p); }); return voor.concat(na); /* proef AFWISSELING: eigen keuzes horen ook bij de etalage */
   }
   var VOLGORDE = (function () { try { if (/[?&]proef=volgorde-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkvolgorde', '0'); else if (/[?&]proef=volgorde(&|$)/.test(location.search)) sessionStorage.removeItem('lkvolgorde'); return window.LK_VOLGORDE !== false && sessionStorage.getItem('lkvolgorde') !== '0'; } catch (e) { return window.LK_VOLGORDE !== false; } })();
   var BEKEND = /\b(lego|duplo|rituals|dyson|philips|casio|seiko|apple|sony|jbl|nintendo|playmobil|pok[eé]mon|barbie|ravensburger|tony'?s|lindt|nike|adidas|samsung|bose|garmin|swarovski|pandora|fossil|tommy hilfiger|calvin klein|hugo boss|paco rabanne|carolina herrera|yankee candle|woodwick|riviera maison|stanley|smeg|nespresso|le creuset|bosch|makita|999 games|squishmallows?|paw patrol|disney|star wars|marvel|hot wheels|gravitrax|little dutch|nijntje|douwe egberts|pickwick|dopper|victorinox|leatherman|weber|fj[aä]llr[aä]ven|eastpak|guess|michael kors|g-shock|oral-b|sonicare|theragun|ghd|babyliss|lacoste|versace|armani|jean paul gaultier|lanc[oô]me|marc jacobs|bluey|minecraft|harry potter|monopoly|rummikub|jellycat|hema|blond amsterdam|pip studio|villeroy|iittala|marshall|sonos|kobo|fitbit|polaroid|instax|stabilo|moleskine|leuchtturm|target|winmau|unicorn)\b/i;
@@ -523,6 +540,45 @@
   function geenDrank(l) { return window.LK_DRANK_OVERAL === true ? l : l.filter(function (p) { return !p.drank; }); }
   /* Vraagt de bezoeker zelf om drank? Elk los woord (ook de varianten 'wijn|wijnen' van het zoeken) wordt nagekeken. */
   function drankGevraagd(t) { return String(t || '').toLowerCase().split(/[^a-z0-9éèëïöüç]+/).some(function (w) { return w && DRANK_WOORD.test(w); }); }
+  /* CADEAUKEURMEESTER (19-11-2026, opdracht Nova via Marius; GO Marius 'jij fixed alles'). Een vakje of label alleen is niet genoeg:
+     elk product heeft (scripts/keurmeester, bij de bouw) per gelegenheid en ontvanger een aftrek in p.km, bijv. 'g.bedankt55,p.collega20'.
+     Op een pagina tellen we de aftrek van zijn gelegenheid en ontvanger op (75 punten min aftrek): onder 50 = staat er niet, 50 tot 74 = onderaan.
+     Aanleiding: een grafsteen-verjaardagskaars bij 'Bedankje voor collega's', chocoladeletters bij Afscheid & pensioen, een kauwbot bij kinderen.
+     Het product blijft op de site (eigen vakje, zoeken, Grappige cadeaus ...). Uit: window.LK_KEURMEESTER = false of ?proef=keurmeester-uit. */
+  var KM = (function () { try { if (/[?&]proef=keurmeester-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkkm', '0'); else if (/[?&]proef=keurmeester(&|$)/.test(location.search)) sessionStorage.removeItem('lkkm'); return window.LK_KEURMEESTER !== false && sessionStorage.getItem('lkkm') !== '0'; } catch (e) { return window.LK_KEURMEESTER !== false; } })();
+  var KM_G = { bedankt: 'bedankt', 'afscheid-pensioen': 'afscheid', verjaardag: 'verjaardag', jubileum: 'jubileum', housewarming: 'housewarming', beterschap: 'beterschap',
+    geslaagd: 'geslaagd', 'juf-meester': 'juf', moederdag: 'moederdag', vaderdag: 'vaderdag', uitdeelcadeautjes: 'uitdelen' };
+  var KM_SUB = { bedankje: 'bedankt', 'afscheid-pensioen': 'afscheid', lootjes: 'lootjes' };
+  var KM_COL = { 'grappige-cadeaus': 'grappig', 'kleine-cadeautjes': 'lootjes', schoencadeautjes: 'schoen', 'op-tijd-voor-pakjesavond': 'sinterklaas' };
+  var KM_CAD = { kerst: 'kerst', sinterklaas: 'sinterklaas', 'sint-onder-10': 'sinterklaas', 'sint-onder-15': 'sinterklaas', 'onder-10': 'lootjes', 'onder-15': 'lootjes', grappig: 'grappig', schoencadeautjes: 'schoen', valentijn: 'valentijn' };
+  var KM_CADP = { collega: 'collega', 'voor-kinderen': 'kinderen', 'voor-haar': 'haar', 'voor-hem': 'hem', 'opa-oma': 'opa-oma', 'baby-kraam': 'baby', schoencadeautjes: 'kinderen' };
+  var KM_P = { hem: 1, haar: 1, kinderen: 1, tieners: 1, 'opa-oma': 1, collega: 1, baby: 1 };
+  function kmCtx(pad) {
+    var t = String(pad || ''), i = t.indexOf('?'), pd = i === -1 ? t : t.slice(0, i), q = i === -1 ? '' : t.slice(i + 1);
+    var d = pd.split('/').filter(Boolean), g = '', pe = '', vm = /(?:^|&)voor=([^&]+)/.exec(q);
+    if (d[0] === 'voor') { pe = d[1] || ''; g = KM_SUB[d[2]] || ''; }
+    else if (d[0] === 'gelegenheid') { g = KM_G[d[1]] || ''; pe = d[2] || ''; }
+    else if (d[0] === 'collectie') { g = KM_COL[d[1]] || ''; pe = d[2] || ''; }
+    else if (d[0] === 'c' && d[1] === 'cadeaus') { g = KM_CAD[d[2]] || ''; pe = KM_CADP[d[2]] || ''; }
+    else if (d[0] === 'c' && d[1] === 'valentijn') g = 'valentijn';
+    if (vm) pe = vm[1] === 'kind' ? 'kinderen' : vm[1];
+    if (!KM_P[pe]) pe = '';
+    return g || pe ? { g: g, pe: pe } : null;
+  }
+  function kmAftrek(p, c) {
+    if (!p.km) return 0;
+    if (p._km === undefined) { var o = {}; String(p.km).split(',').forEach(function (x) { var m = /^([gp]\.[a-z-]+?)(\d+)$/.exec(x); if (m) o[m[1]] = +m[2]; }); p._km = o; }
+    return (c.g ? p._km['g.' + c.g] || 0 : 0) + (c.pe ? p._km['p.' + c.pe] || 0 : 0);
+  }
+  function kmUit(l, pad) {
+    var c = KM && kmCtx(pad); if (!c) return l;
+    return l.filter(function (p) { return kmAftrek(p, c) < 26; });
+  }
+  function kmOrde(l, pad) {
+    var c = KM && kmCtx(pad); if (!c) return l;
+    var goed = [], onder = []; l.forEach(function (p) { var a = kmAftrek(p, c); if (a < 26) (a ? onder : goed).push(p); });
+    return onder.length ? goed.concat(onder) : (goed.length === l.length ? l : goed);
+  }
   function smalOnder(l, sleutel) {
     if (!sleutel) return l;
     var goed = [], onder = [];
@@ -539,9 +595,9 @@
       l.forEach(function (p) { (plek[p.id] ? top : rest).push(p); });
       top.sort(function (a, b) { return plek[a.id] - plek[b.id]; });
       if (MIX) { var me = mengEigen(top, rest, sleutel); top = me.top; rest = me.rest; }
-      return kaartjesLaat(sieradenLaat(top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel)), sleutel), sleutel);
+      return kmOrde(kaartjesLaat(sieradenLaat(top.concat(smalOnder(VOLGORDE ? heldenrij(rest, sleutel) : rest, sleutel)), sleutel), sleutel), sleutel);
     }
-    return kaartjesLaat(sieradenLaat(smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel), sleutel), sleutel);
+    return kmOrde(kaartjesLaat(sieradenLaat(smalOnder(VOLGORDE ? heldenrij(l, sleutel) : apartEerst(l, sleutel), sleutel), sleutel), sleutel), sleutel);
   }
   /* 13-11-2026 (grote keuring, WEG-lijst ronde 2): een wenskaart van een paar euro is geen cadeau. Bij Christelijke cadeaus stonden kaartjes van
      2 en 3 euro op plek 3 en 9, omdat de volgorde ze als 'goedkope ja' zag. Marius liet de kaarten van Kaartje2go staan; ze staan vooraan in hun
@@ -570,7 +626,7 @@
     return na.length && voor.length ? voor.concat(na) : l;
   }
   function sorteer(lijst, hoe, sleutel) {
-    var l = lijst.slice();
+    var l = kmUit(lijst.slice(), sleutel);
     if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return bovenaan(m || mix(l), sleutel); }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
@@ -2336,6 +2392,7 @@
     BASIS = basis;
     TEL = function (nq) { return basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen) && extraFilter(p, q); });
+    lijst = kmUit(lijst, pad + (q.voor ? '?voor=' + q.voor : '')); /* CADEAUKEURMEESTER */
     /* 13-11-2026 (Marius: 'elke tegel apart uitzoeken'): 'Kerst voor hem' (/c/cadeaus/kerst?voor=hem) heeft een eigen, met de hand gekozen top. */
     var topPad = (q.voor && window.LK_TOPVAST && window.LK_TOPVAST[pad + '?voor=' + q.voor]) ? pad + '?voor=' + q.voor : pad;
     lijst = sorteer(lijst, q.sort, topPad);
@@ -2488,6 +2545,7 @@
     var alles = persoonProducten(pe, s ? s.vakken : null);
     var nietOp = (window.LK_NIETOP && window.LK_NIETOP[pad]) || []; /* 7-11-2026: past niet op deze subpagina */
     if (nietOp.length) alles = alles.filter(function (p) { return nietOp.indexOf(p.id) === -1; });
+    alles = kmUit(alles, pad); /* CADEAUKEURMEESTER: past niet bij deze persoon of dit onderwerp */
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
@@ -2552,13 +2610,13 @@
     var wzAan = WIJZER === 'b' && !q.alles && alles.length && !(q.sort && q.sort !== 'aanbevolen') && !wzFilters.some(function (k) { return q[k]; });
     LK.redenAltijd = !!wzAan;
     if (wzAan) {
-      var wzLijst = sieradenLaat(etalageEerst(lijst), pad);
+      var wzLijst = kmOrde(sieradenLaat(etalageEerst(lijst, pad), pad), pad);
       /* PRIJSSCHUIF (16-11-2026, GO Marius): één schuif in marineblauw en goud vlak boven de cadeaus. Schuif je, dan veranderen de cadeaus meteen,
          zonder nieuwe pagina. Uitgangspunt: alle cadeaus van deze pagina in dezelfde volgorde, zonder prijsfilter. Het bedrag staat in het adres
          als ?prijs=tot25 (zelfde als het oude filter), dus de onderwerpen, de terugknop en 'Sorteren en filteren' nemen het vanzelf mee. */
       var psAan = false, psK = -1, psX = 0;
       if (PS) {
-        var psVol = (q.prijs && q.prijs !== 'alle') ? sieradenLaat(etalageEerst(ordenP(sorteer(alles.filter(function (p) { return knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad))), pad) : wzLijst;
+        var psVol = (q.prijs && q.prijs !== 'alle') ? kmOrde(sieradenLaat(etalageEerst(ordenP(sorteer(alles.filter(function (p) { return knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad)), pad), pad), pad) : wzLijst;
         if (psVol.length >= 8) {
           psAan = true; psX = psStart(q);
           psK = PS_LIJSTEN.push({ vol: psVol, pad: pad, basis: q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {},
@@ -2775,6 +2833,7 @@
     var basisAlles = verzamelLijst(g);
     var nietOpG = (window.LK_NIETOP && window.LK_NIETOP[pad + (voorSlug ? '/' + voorSlug : '')]) || []; /* 7-11-2026: past niet op deze pagina (nagekeken) */
     if (nietOpG.length) basisAlles = basisAlles.filter(function (p) { return nietOpG.indexOf(p.id) === -1; });
+    basisAlles = kmUit(basisAlles, pad + (voorSlug ? '/' + voorSlug : '')); /* CADEAUKEURMEESTER */
     var pv = voorSlug ? window.LK_PERSOON(voorSlug) : null;
     if (voorSlug && (!pv || g.labels || !g.vakken)) return nietGevonden();
     var voorNaam = pv ? pv.kort.replace(/^Voor /, '').toLowerCase() : '';
@@ -8218,7 +8277,7 @@
   window.addEventListener('lk-pak', function () { if (klaarVoorStart()) start(); });
   /* Hulpjes voor het bouwen en nakijken van de pakken (scripts/maak-pakken.js). De site zelf gebruikt ze niet. */
   LK._toonPad = function (pad) { try { history.replaceState({}, '', netjes(pad)); } catch (e) {} toon(); return LAATSTE_HTML; };
-  LK._wijzer = function (v) { WIJZER = v; }; LK._merk = merkVan; LK._reset = function () { MERKEN = null; ETALAGE = null; };
+  LK._wijzer = function (v) { WIJZER = v; }; LK._merk = merkVan; LK._reset = function () { MERKEN = null; ETALAGE = null; ETALAGE_P = {}; };
   if (klaarVoorStart()) start();
   else {
     window.addEventListener('lk-producten', function () { if (klaarVoorStart()) start(); });

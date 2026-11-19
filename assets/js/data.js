@@ -1517,7 +1517,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde One Piece & anime-hoek ===== */
 
-/* 19-11-2026: rondjes van Nova (deel 4 tot en met 9) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
+/* 19-11-2026: rondjes van Nova (deel 4 tot en met 11) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
    Sleutel = oude plek van het vakje (afdeling/groep/vakje), waarde = naam van het bestand images/sub/iconen/icoon-<waarde>.webp (meestal de nieuwe plek). */
 (function () {
   var B = {
@@ -1654,7 +1654,47 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
     'wonen/woontextiel/kruiken-warmte': 'wonen-woontextiel-kruiken-warmte',
     'wonen/woontextiel/kussens': 'wonen-woontextiel-kussens',
     'wonen/woontextiel/plaids': 'wonen-woontextiel-plaids',
-    'wonen/woontextiel/vloerkleden': 'wonen-woontextiel-vloerkleden'
+    'wonen/woontextiel/vloerkleden': 'wonen-woontextiel-vloerkleden',
+    'eten-drinken/alcoholvrij/alcoholvrije-wijn-bier': 'eten-drinken-alcoholvrij-alcoholvrije-wijn-bier',
+    'eten-drinken/alcoholvrij/siropen-mocktails': 'eten-drinken-alcoholvrij-siropen-mocktails',
+    'eten-drinken/drankaccessoires/cocktailsets': 'eten-drinken-drankaccessoires-cocktailsets',
+    'eten-drinken/drankaccessoires/glazen-karaffen': 'eten-drinken-drankaccessoires-glazen-karaffen',
+    'eten-drinken/drankaccessoires/wijnaccessoires': 'eten-drinken-drankaccessoires-wijnaccessoires',
+    'hobby/handwerken/borduren-punch-needle': 'hobby-handwerken-borduren-punch-needle',
+    'hobby/handwerken/diamond-painting': 'hobby-handwerken-diamond-painting',
+    'hobby/handwerken/haken-breien': 'hobby-handwerken-haken-breien',
+    'hobby/handwerken/naaien': 'hobby-handwerken-naaien',
+    'hobby/modelbouw/bouwpakketten': 'hobby-modelbouw-bouwpakketten',
+    'hobby/modelbouw/miniatuurhuisjes': 'hobby-modelbouw-miniatuurhuisjes',
+    'hobby/modelbouw/modeltreinen': 'hobby-modelbouw-modeltreinen',
+    'hobby/muziek-maken/gitaren-ukelele-s': 'hobby-muziek-maken-gitaren-ukelele-s',
+    'hobby/muziek-maken/keyboards-piano-s': 'hobby-muziek-maken-keyboards-piano-s',
+    'hobby/muziek-maken/muziekaccessoires': 'hobby-muziek-maken-muziekaccessoires',
+    'hobby/papier-planners/agenda-s-planners': 'hobby-papier-planners-agenda-s-planners',
+    'hobby/papier-planners/bullet-journal': 'hobby-papier-planners-bullet-journal',
+    'hobby/papier-planners/notitieboeken': 'hobby-papier-planners-notitieboeken',
+    'hobby/papier-planners/scrapbooking-origami': 'hobby-papier-planners-scrapbooking-origami',
+    'hobby/rc-auto-s/elektrische-rc-auto-s': 'hobby-rc-auto-s-elektrische-rc-auto-s',
+    'hobby/rc-auto-s/rc-auto-s-op-brandstof': 'hobby-rc-auto-s-rc-auto-s-op-brandstof',
+    'hobby/rc-auto-s/rc-auto-s-voor-beginners': 'hobby-rc-auto-s-rc-auto-s-voor-beginners',
+    'hobby/schilderen-tekenen/kalligrafie-handlettering': 'hobby-schilderen-tekenen-kalligrafie-handlettering',
+    'hobby/schilderen-tekenen/tekenen-schetsen': 'hobby-schilderen-tekenen-tekenen-schetsen',
+    'hobby/schilderen-tekenen/verf-schildersets': 'hobby-schilderen-tekenen-verf-schildersets',
+    'hobby/zelf-maken/3d-pennen': 'hobby-zelf-maken-3d-pennen',
+    'hobby/zelf-maken/kaarsen-zeep-maken': 'hobby-zelf-maken-kaarsen-zeep-maken',
+    'hobby/zelf-maken/klei-pottenbakken-epoxy': 'hobby-zelf-maken-klei-pottenbakken-epoxy',
+    'hobby/zelf-maken/sieraden-maken': 'hobby-zelf-maken-sieraden-maken',
+    'sport-outdoor/darts/dartborden': 'sport-outdoor-darts-dartborden',
+    'sport-outdoor/darts/dartmatten-oches': 'sport-outdoor-darts-dartmatten-oches',
+    'sport-outdoor/darts/dartpijlen': 'sport-outdoor-darts-dartpijlen',
+    'sport-outdoor/darts/elektronische-dartborden': 'sport-outdoor-darts-elektronische-dartborden',
+    'sport-outdoor/darts/flights-shafts': 'sport-outdoor-darts-flights-shafts',
+    'sport-outdoor/fitness-yoga/fitness-thuis': 'sport-outdoor-fitness-yoga-fitness-thuis',
+    'sport-outdoor/wandelen-hardlopen/hardlopen': 'sport-outdoor-fitness-yoga-hardlopen',
+    'sport-outdoor/kamperen-outdoor/hengelsport': 'sport-outdoor-outdoor-avontuur-hengelsport',
+    'sport-outdoor/kamperen-outdoor/messen-multitools': 'sport-outdoor-outdoor-avontuur-messen-multitools',
+    'sport-outdoor/kamperen-outdoor/verrekijkers': 'sport-outdoor-outdoor-avontuur-verrekijkers',
+    'sport-outdoor/kamperen-outdoor/zaklampen-hoofdlampen': 'sport-outdoor-outdoor-avontuur-zaklampen-hoofdlampen'
   };
   (window.LK_CATEGORIEEN || []).forEach(function (c) { (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
     var k = c.slug + '/' + s.slug + '/' + v.slug;
