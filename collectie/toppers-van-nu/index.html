@@ -42,8 +42,8 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>window.LK_PAKPAD="assets/pak/collectie--toppers-van-nu.js?v=204595652426024";</script>
-  <script>(function () { var s = "assets/js/producten-lean.js?v=96324442568457", t = "assets/js/topkeuze.js?v=7681559795052";
+  <script>window.LK_PAKPAD="assets/pak/collectie--toppers-van-nu.js?v=107005487115279";</script>
+  <script>(function () { var s = "assets/js/producten-lean.js?v=106455682332905", t = "assets/js/topkeuze.js?v=7681559795052";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -79,7 +79,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <a class="aftel aftel-sint" href="/c/cadeaus/sinterklaas/" data-aftel="" aria-label="Nog 17 dagen tot pakjesavond. Bekijk de Sinterklaascadeaus"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">17</span> dagen tot pakjesavond</span><span class="aftel-knop">Sinterklaascadeaus →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
+  <a class="aftel aftel-sint" href="/c/cadeaus/sinterklaas/" data-aftel="" aria-label="Nog 16 dagen tot pakjesavond. Bekijk de Sinterklaascadeaus"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">16</span> dagen tot pakjesavond</span><span class="aftel-knop">Sinterklaascadeaus →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
 
   <div class="topbalk">
     <div class="binnen">
