@@ -920,10 +920,10 @@
       ['schoen', 'Schoencadeaus', '/collectie/schoencadeautjes', '🥿', 'images/sub/rond/cad-schoencadeautjes-klein.webp'], ['kind', 'Voor kinderen', '/voor/kinderen/sinterklaas', '🧒', 'images/sub/rond/voor-kinderen.webp'], ['man', 'Voor hem', '/c/cadeaus/sinterklaas?voor=hem', '🎩', 'images/sub/rond/voor-hem.webp'],
       ['vrouw', 'Voor haar', '/c/cadeaus/sinterklaas?voor=haar', '💐', 'images/sub/rond/voor-haar.webp'], ['lootjes', 'Lootjes', '/voor/collega/lootjes', '🎟️', 'images/sub/rond/voor-collega-klein.webp'], ['o15', 'Onder €15', '/c/cadeaus/sint-onder-15', '💶', 'images/sub/rond/gel-sinterklaas-klein.webp'],
       ['lekkers', 'Chocolade & lekkers', '/c/eten-drinken/chocolade-snoep/chocoladeletters', '🍫', 'images/sub/iconen/icoon-eten-drinken-chocolade-snoep.webp'], ['o10', 'Onder €10', '/c/cadeaus/sinterklaas?prijs=r0-10', '💶', 'images/sub/rond/col-kleine-cadeautjes.webp'],
-      ['surprise', 'Surprise maken', '/gids/surprise-maken', '🎨'], ['gedicht', 'Gedicht laten maken', '/sint-rijmmachine', '📜'], ['trek', 'Lootjes trekken', '/lootjes-trekken/', '🎲']] }
+      ['surprise', 'Surprise maken', '/gids/surprise-maken', '🎨', 'images/sub/rond/h-surprise-maken.webp'], ['gedicht', 'Gedicht laten maken', '/sint-rijmmachine', '📜', 'images/sub/rond/h-sint-gedicht.webp'], ['trek', 'Lootjes trekken', '/lootjes-trekken/', '🎲', 'images/sub/rond/h-lootjes-trekken.webp']] }
   };
   /* 18-11-2026 (GO Marius, voorstel 2): van 1 t/m 5 december vooraan op de Sinterklaaspagina een tegel naar 'Nog op tijd voor pakjesavond'. */
-  (function () { var md = new Date().toISOString().slice(5, 10); if (md >= '12-01' && md <= '12-05' && SLIM['/c/cadeaus/sinterklaas']) SLIM['/c/cadeaus/sinterklaas'].vast.unshift(['optijd', 'Nog op tijd', '/collectie/op-tijd-voor-pakjesavond', '🚚', 'images/sub/rond/gel-sinterklaas-klein.webp']); })();
+  (function () { var md = new Date().toISOString().slice(5, 10); if (md >= '12-01' && md <= '12-05' && SLIM['/c/cadeaus/sinterklaas']) SLIM['/c/cadeaus/sinterklaas'].vast.unshift(['optijd', 'Nog op tijd', '/collectie/op-tijd-voor-pakjesavond', '🚚', 'images/sub/rond/col-op-tijd-voor-pakjesavond-klein.webp']); })();
   /* NOVA-001: een bestaand beeld bij een knop zonder eigen icoon: de foto van een gekozen product uit dat onderwerp (geen nieuwe beelden). */
   function beeldUit(lijst) { return rondBeeld(null, (lijst || []).slice().sort(function (a, b) { return (b.wil || 0) - (a.wil || 0); })); }
   function padBeeld(naar) {
@@ -1676,7 +1676,7 @@
   function wkToonbank() {
     var c = wkVoorbereid(), NU = c.NU, MD = c.MD, dag = 864e5, j = NU.getFullYear(), vandaag = new Date(j, NU.getMonth(), NU.getDate());
     var nS = Math.round((new Date(j, 11, 5) - vandaag) / dag), nK = Math.round((new Date(j, 11, 25) - vandaag) / dag);
-    var loot = { naar: '/lootjes-trekken/', ic: 'images/sub/rond/cad-sint-onder-15-klein.webp', b: 'Lootjes trekken', s: 'Gratis, via WhatsApp', i: 'Begin', tel: 'lootjes' };
+    var loot = { naar: '/lootjes-trekken/', ic: 'images/sub/rond/h-lootjes-trekken-klein.webp', b: 'Lootjes trekken', s: 'Gratis, via WhatsApp', i: 'Begin', tel: 'lootjes' };
     var gedicht = { naar: '/sint-rijmmachine/', ic: 'images/banners/rijm-held-sint.webp', b: 'Sint-gedicht maken', s: 'Klaar in een minuut', i: 'Maak er een', tel: 'gedicht' };
     var kop = '', tegels = [];
     if (MD >= 1015 && MD <= 1205) { kop = 'Sinterklaas · ' + (nS <= 0 ? 'vandaag is het pakjesavond' : 'nog ' + nS + (nS === 1 ? ' dag' : ' dagen')); tegels = [loot, gedicht]; }
@@ -1688,8 +1688,8 @@
        vindt hier meteen de cadeaus uit de filmpjes (/tiktok) en de lijsten op de Amazon Storefront. Altijd, niet alleen in een seizoen. */
     var nieuwste = (TIKTOK_REELS[0] && TIKTOK_REELS[0].ids || [])[0];
     var film = [
-      { naar: '/tiktok/', ic: nieuwste ? 'images/producten/' + nieuwste + '-klein.webp' : 'images/sub/rond/col-grappige-cadeaus-klein.webp', b: 'Gezien op TikTok', s: 'Alle cadeaus uit onze filmpjes', i: 'Bekijk' },
-      { naar: AMZ_SHOP, ext: true, ic: 'images/sub/rond/col-kleine-cadeautjes-klein.webp', b: 'Ook op Amazon', s: 'Onze cadeaulijsten bij Amazon', i: 'Bekijk' }
+      { naar: '/tiktok/', ic: 'images/sub/rond/h-tiktok-klein.webp', b: 'Gezien op TikTok', s: 'Alle cadeaus uit onze filmpjes', i: 'Bekijk' },
+      { naar: AMZ_SHOP, ext: true, ic: 'images/sub/rond/h-amazon-lijsten-klein.webp', b: 'Ook op Amazon', s: 'Onze cadeaulijsten bij Amazon', i: 'Bekijk' }
     ];
     var filmBlok = '<section class="wkh-toonbank wkh-film" data-tel="filmpjes"><h3>Uit onze filmpjes</h3><div class="wkh-tb-r">' + film.map(tegel).join('') + '</div></section>';
     if (!tegels.length) return filmBlok;
@@ -1763,7 +1763,7 @@
         '<section class="sectie eerste" data-tel="voor-wie">' +
           '<div class="sectie-kop"><div><h2>Voor wie zoek je een cadeau?</h2></div><a class="meer" href="/voor">Iedereen ' + ic('pijl') + '</a></div>' +
           '<div class="persoon-subs home zeven">' + ['haar', 'hem', 'kinderen', 'collega', 'baby', 'opa-oma', 'tieners'].map(persoon).join('') + '</div>' +
-          '<div class="voorwie-links mini-raster alleen-mobiel">' + ['baby', 'opa-oma', 'tieners'].map(persoonLink).join('') + miniTegel('Iedereen', '/voor', '', 'cadeau') + '</div>' +
+          '<div class="voorwie-links mini-raster alleen-mobiel">' + ['baby', 'opa-oma', 'tieners'].map(persoonLink).join('') + miniTegel('Iedereen', '/voor', 'images/sub/rond/voor-iedereen-klein.webp') + '</div>' +
         '</section>' +
 
         /* 2b. Belevenissen (9-11-2026, GO Marius): banner van Nova + zes tegels om te swipen. */
@@ -1788,7 +1788,7 @@
         '<section class="sectie" data-tel="categorieen">' +
           '<div class="sectie-kop"><div><h2>Ontdek onze categorieën</h2></div><a class="meer" href="/categorieen">Alle categorieën ' + ic('pijl') + '</a></div>' +
           '<div class="catbalken">' + CATS_VOOR.map(function (s) { return cat(s, false); }).join('') + CATS_REST.map(function (s) { return cat(s, true); }).join('') + '</div>' +
-          '<div class="cat-links mini-raster alleen-mobiel">' + CATS_REST.map(function (s) { var c = window.LK_CAT(s); return c ? miniTegel(c.naam, '/c/' + c.slug, c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') : ''; }).join('') + miniTegel('Alle categorieën', '/categorieen', '', 'raster') + '</div>' +
+          '<div class="cat-links mini-raster alleen-mobiel">' + CATS_REST.map(function (s) { var c = window.LK_CAT(s); return c ? miniTegel(c.naam, '/c/' + c.slug, c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') : ''; }).join('') + miniTegel('Alle categorieën', '/categorieen', 'images/sub/rond/h-alle-categorieen-klein.webp') + '</div>' +
         '</section>' +
 
         /* 8. Persoonlijk + gelegenheden als tekstknopjes. */
@@ -1822,7 +1822,7 @@
       '<section class="sectie eerste wzh-vraag" data-tel="voor-wie">' + soortWissel('cadeau') + '<h1>Voor wie zoek je een cadeau?</h1><p class="wzh-sub">Tik op één plaatje. Je ziet meteen onze beste keuzes.</p>' +
         '<nav class="wzh-raster" aria-label="Voor wie zoek je een cadeau?">' +
           window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
-          wzTegel('Zelf zoeken', '/zoek', '', 'zoek') + wzTegel(SOORTEN ? 'Producten' : 'Categorieën', '/categorieen', '', 'raster') +
+          wzTegel('Zelf zoeken', '/zoek', 'images/sub/rond/h-zelf-zoeken-klein.webp') + wzTegel(SOORTEN ? 'Producten' : 'Categorieën', '/categorieen', 'images/sub/rond/h-alle-categorieen-klein.webp') +
         '</nav></section>' +
       /* 17-11-2026 (Marius: 'je kan geen categorieën kiezen, het is te lastig, ik kom er niet bij; het moet makkelijk zijn om overal te komen
          wat de website te bieden heeft en het moet er goed uitzien'): alle 15 categorieën direct onder 'Voor wie', als kleine rondjes (vier naast
@@ -1832,7 +1832,7 @@
           return '<a class="srij-item" href="/c/' + c.slug + '"><span class="srij-rond" aria-hidden="true"><img src="' + esc(c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" loading="lazy" decoding="async" width="64" height="64"></span>' +
             '<span class="srij-naam">' + esc(c.naam).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }) + '</span></a>';
         }).join('') +
-        '<a class="srij-item alles" href="/categorieen"><span class="srij-rond" aria-hidden="true"><span class="srij-ico">' + ic('raster') + '</span></span><span class="srij-naam">Alle producten</span></a>' +
+        '<a class="srij-item alles" href="/categorieen"><span class="srij-rond" aria-hidden="true"><img src="images/sub/rond/h-alle-categorieen-klein.webp" alt="" loading="lazy" decoding="async" width="64" height="64"></span><span class="srij-naam">Alle producten</span></a>' +
       '</div></nav></section>' +
       rijmBlok('home') + /* 15-11-2026: lootjes trekken en de rijmmachine direct onder 'Voor wie' (seizoen, tot en met 5 december) */
       /* 11-11-2026 (Marius: 'kijk wat nog meer goed is om op de homepage te zetten'): wat het best loopt (grappig en origineel) en kiezen op bedrag. */
@@ -1843,8 +1843,8 @@
         (window.LK_PRIJZEN || []).filter(function (p) { return p.id !== 'alle'; }).map(function (p) { return '<a class="chip' + muntKlas('', p.id) + '" href="/c/cadeaus/?prijs=' + p.id + '" aria-label="' + esc(p.label) + '">' + muntBedrag(p) + '</a>'; }).join('') + '</nav>' +
         /* 17-11-2026 (Marius: 'moet overal niet de knop naar de tiktok site en naar Amazon komen op de homepage'): stond op het winkeltje; nu het winkeltje uit is ook hier. */
         '<p class="wz-vraag">Uit onze filmpjes</p><nav class="mini-raster breed" aria-label="Uit onze filmpjes">' +
-        miniTegel('Gezien op TikTok', '/tiktok/', (TIKTOK_REELS[0] && TIKTOK_REELS[0].ids && TIKTOK_REELS[0].ids[0]) ? 'images/producten/' + TIKTOK_REELS[0].ids[0] + '-klein.webp' : 'images/sub/rond/col-grappige-cadeaus-klein.webp') +
-        miniTegel('Ook op Amazon', AMZ_SHOP, 'images/sub/rond/col-kleine-cadeautjes-klein.webp').replace('<a class="mini-tegel"', '<a class="mini-tegel" target="_blank" rel="sponsored noopener"') +'</nav></section>' +
+        miniTegel('Gezien op TikTok', '/tiktok/', 'images/sub/rond/h-tiktok-klein.webp') +
+        miniTegel('Ook op Amazon', AMZ_SHOP, 'images/sub/rond/h-amazon-lijsten-klein.webp').replace('<a class="mini-tegel"', '<a class="mini-tegel" target="_blank" rel="sponsored noopener"') +'</nav></section>' +
       seizoenBlok() + belevenisBlok() + favorietenBlok() + winkelTopBlok() + /* belevenissen terug op wens van Marius (11-11-2026) */
       tekstLinks('Of kies een gelegenheid', (INST.gelegenheidKnopjes || []).map(function (k) { return [k[0], k[1]]; }).concat([['Acties en kortingscodes', '/collectie/aanbiedingen']])) +
       gidsenCompact() + eigenKaart() + zoWerkt +
@@ -2169,7 +2169,7 @@
         '<span class="srt-w-t"><small>Ik zoek een</small><b>' + soort + '</b></span><span class="srt-w-p" aria-hidden="true">' + (actief ? '&#10003;' : '&rsaquo;') + '</span></a>';
     }
     return '<div class="srt-wisselblok"><div class="srt-kies">Kies wat je zoekt</div><nav class="srt-wissel" aria-label="Wat zoek je?">' +
-      knop('/', 'cadeau', 'col-kleine-cadeautjes', aan === 'cadeau') + knop('/categorieen', 'product', 'col-originele-cadeaus', aan === 'product') + '</nav></div>';
+      knop('/', 'cadeau', 'h-ik-zoek-cadeau', aan === 'cadeau') + knop('/categorieen', 'product', 'h-ik-zoek-product', aan === 'product') + '</nav></div>';
   }
   /* Lange woorden in de namen van soorten breken netjes af met een streepje (met de hand nagelezen). */
   var SRT_AF = { "metaaldetectie": "metaal-detectie", "buitenspeelgoed": "buiten-speelgoed", "kinderboeken": "kinder-boeken", "kinderkamer": "kinder-kamer", "accessoires": "acces-soires", "herinneringen": "herinne-ringen", "comfortabel": "comfor-tabel", "kleinigheidjes": "kleinig-heidjes", "kraamcadeaus": "kraam-cadeaus", "babykleding": "baby-kleding", "speelkleden": "speel-kleden", "babyshower": "baby-shower", "actiefiguren": "actie-figuren", "actioncam's": "action-cam's", "babypoppen": "baby-poppen", "badspeelgoed": "bad-speelgoed", "bierpakketten": "bier-pakketten", "boottochten": "boot-tochten", "borrelplanken": "borrel-planken", "buitenspellen": "buiten-spellen", "cocktailsets": "cocktail-sets", "damesparfum": "dames-parfum", "drinkflessen": "drink-flessen", "elektronische": "elektro-nische", "experimenteren": "experi-menteren", "fietshelmen": "fiets-helmen", "fotograferen": "foto-graferen", "gamestoelen": "game-stoelen", "geurkaarsen": "geur-kaarsen", "handschoenen": "hand-schoenen", "hengelsport": "hengel-sport", "herenparfum": "heren-parfum", "invulboeken": "invul-boeken", "kerstfiguren": "kerst-figuren", "kinderbijbels": "kinder-bijbels", "kinderpuzzels": "kinder-puzzels", "kleurboeken": "kleur-boeken", "knikkerbanen": "knikker-banen", "kookboeken": "kook-boeken", "lichtsnoeren": "licht-snoeren", "loopwagens": "loop-wagens", "luisterboxen": "luister-boxen", "microscopen": "micro-scopen", "modeltreinen": "model-treinen", "modepoppen": "mode-poppen", "monddouches": "mond-douches", "overnachten": "over-nachten", "partyspellen": "party-spellen", "platenspelers": "platen-spelers", "poppenhuizen": "poppen-huizen", "portemonnees": "porte-monnees", "programmeren": "program-meren", "psalmboeken": "psalm-boeken", "radiografisch": "radio-grafisch", "rammelaars": "ramme-laars", "regentonnen": "regen-tonnen", "scrapbooking": "scrap-booking", "sfeerlampen": "sfeer-lampen", "skateboards": "skate-boards", "speciaalbier": "speciaal-bier", "speelkeukens": "speel-keukens", "squishmallows": "squish-mallows", "tafellampen": "tafel-lampen", "tafelvoetbal": "tafel-voetbal", "toilettassen": "toilet-tassen", "trampolines": "trampo-lines", "tuinmachines": "tuin-machines", "wanddecoratie": "wand-decoratie", "zonnebrillen": "zonne-brillen", "bestuurbaar": "bestuur-baar", "bouwstenen": "bouw-stenen", "buitenkoken": "buiten-koken", "chocolademelk": "chocolade-melk", "dobbelspellen": "dobbel-spellen", "duwspeelgoed": "duw-speelgoed", "handlettering": "hand-lettering", "hoofdlampen": "hoofd-lampen", "kerstcadeaus": "kerst-cadeaus", "leersystemen": "leer-systemen", "ontspanning": "ont-spanning", "pottenbakken": "potten-bakken", "schildersets": "schilder-sets", "speurtochten": "speur-tochten", "stroopwafels": "stroop-wafels", "superhelden": "super-helden", "telefoons": "tele-foons", "wandborden": "wand-borden", "wetenschap": "weten-schap", "smartwatches": "smart-watches", "gereedschap": "gereed-schap", "koptelefoons": "kop-telefoons", "chocolade": "choco-lade", "activiteitenspeelgoed": "activiteiten-speelgoed", "speelgoedauto's": "speelgoed-auto's", "verkleedkleding": "verkleed-kleding", "muziekspeelgoed": "muziek-speelgoed", "strategiespellen": "strategie-spellen", "telefoonaccessoires": "telefoon-accessoires", "robotstofzuigers": "robot-stofzuigers", "reisaccessoires": "reis-accessoires", "doucheproducten": "douche-producten", "gezichtsverzorging": "gezichts-verzorging", "lichaamsverzorging": "lichaams-verzorging", "scheerapparaten": "scheer-apparaten", "baardverzorging": "baard-verzorging", "haarverzorging": "haar-verzorging", "kerstverlichting": "kerst-verlichting", "keukenapparaten": "keuken-apparaten", "chocoladeletters": "chocolade-letters", "cadeaupakketten": "cadeau-pakketten", "brievenbuscadeaus": "brievenbus-cadeaus", "wijnaccessoires": "wijn-accessoires", "miniatuurhuisjes": "miniatuur-huisjes", "muziekaccessoires": "muziek-accessoires", "kampeerspullen": "kampeer-spullen", "fietsaccessoires": "fiets-accessoires", "metaaldetectors": "metaal-detectors", "buitenverlichting": "buiten-verlichting", "terrasverwarmers": "terras-verwarmers", "handgereedschap": "hand-gereed-schap", "gereedschapssets": "gereed-schaps-sets", "voorleesboeken": "voorlees-boeken", "hondenspeelgoed": "honden-speelgoed", "kattenspeelgoed": "katten-speelgoed", "helikoptervlucht": "helikopter-vlucht", "sieradendozen": "sieraden-dozen", "dameshorloges": "dames-horloges", "herenhorloges": "heren-horloges", "koffiemachines": "koffie-machines", "bouwpakketten": "bouw-pakketten", "notitieboeken": "notitie-boeken", "prentenboeken": "prenten-boeken", "wandeltochten": "wandel-tochten", "magneetvissen": "magneet-vissen", "sleutelhangers": "sleutel-hangers", "tuindecoratie": "tuin-decoratie", "luisterboeken": "luister-boeken", "puzzelboeken": "puzzel-boeken", "tuinmeubelen": "tuin-meubelen", "insectenhotels": "insecten-hotels", "vogelhuisjes": "vogel-huisjes", "speeltoestellen": "speel-toestellen", "pasjeshouders": "pasjes-houders", "tandenborstels": "tanden-borstels", "geurstokjes": "geur-stokjes", "geurbranders": "geur-branders", "voorraadpotten": "voorraad-potten", "belevenissen": "beleve-nissen", "christelijke": "christe-lijke", "elektronica": "elektro-nica" }, SRT_AF_RE = /[A-Za-zÀ-ÿ']{9,}/g;
@@ -2240,7 +2240,7 @@
       '<section class="sectie srt-cadeau"><div class="sectie-kop"><div><h2>Zoek je liever een cadeau?</h2><p>Kies voor wie het is, dan zoeken wij de leukste cadeaus bij elkaar.</p></div></div>' +
       '<nav class="mini-raster breed" aria-label="Voor wie">' + (window.LK_PERSONEN || []).filter(function (p) { return !p.verborgen; }).map(function (p) {
         return miniTegel(p.naam, '/voor/' + p.slug, 'images/sub/rond/voor-' + p.slug + '-klein.webp');
-      }).join('') + miniTegel('Alle personen', '/voor', '', 'cadeau') + '</nav></section></div>';
+      }).join('') + miniTegel('Alle personen', '/voor', 'images/sub/rond/voor-iedereen-klein.webp') + '</nav></section></div>';
   }
 
   /* ---------- Alle categorieën ---------- */
@@ -2277,7 +2277,7 @@
       '<section class="sectie"><div class="sectie-kop"><div><h2>Of kies voor wie</h2></div><a class="meer" href="/voor">Alle personen ' + ic('pijl') + '</a></div>' +
       '<nav class="mini-raster breed" aria-label="Voor wie">' + (window.LK_PERSONEN || []).filter(function (p) { return !p.verborgen; }).map(function (p) {
         return miniTegel(p.naam, '/voor/' + p.slug, 'images/sub/rond/voor-' + p.slug + '-klein.webp');
-      }).join('') + miniTegel('Alle personen', '/voor', '', 'cadeau') + '</nav></section></div>';
+      }).join('') + miniTegel('Alle personen', '/voor', 'images/sub/rond/voor-iedereen-klein.webp') + '</nav></section></div>';
   }
 
   /* Kleine versie van een rond plaatje (220px) voor de rondjes: scheelt zo'n 90% aan data per rondje. */
@@ -4052,7 +4052,7 @@
       '@media (prefers-reduced-motion:reduce){.rz-smal,.rz-smal .ga{transition:none}}' +
       '</style>' +
       /* 15-11-2026 (Marius: 'geld verdienen', punt 2: lootjes trekken groot maken): lootjes trekken eerst, daarna de rijmmachine. */
-      (window.LK_LOOTJES !== false ? '<a class="rz-smal" href="/lootjes-trekken/" data-tel="lootjesblok-home"><img src="/images/sub/rond/cad-sinterklaas-klein.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
+      (window.LK_LOOTJES !== false ? '<a class="rz-smal" href="/lootjes-trekken/" data-tel="lootjesblok-home"><img src="/images/sub/rond/h-lootjes-trekken-klein.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
       '<span class="t"><b>Gratis <em>lootjes trekken</em></b><small>Via WhatsApp. Niemand ziet wie wie heeft, ook jij niet.</small></span><span class="ga" aria-hidden="true">→</span></a>' : '') +
       '<a class="rz-smal" href="/sint-rijmmachine/" data-tel="rijmblok-home"><img src="/images/banners/rijm-sint-piet.webp" alt="" width="58" height="58" loading="lazy" decoding="async">' +
       '<span class="t"><b>Nieuw: <em>Sint-rijmmachine</em></b><small>Grappig gedicht + een cadeau dat past</small></span><span class="ga" aria-hidden="true">→</span></a>';
