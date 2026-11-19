@@ -117,13 +117,12 @@
     "groepen": [
      { "slug": "darts", "naam": "Darts", "weg": ["verlichting-surrounds"], "uit": ["sport-outdoor/darts"] },
      { "slug": "fitness-yoga", "naam": "Fitness & yoga", "weg": ["yoga-pilates"], "uit": ["sport-outdoor/fitness-yoga", "sport-outdoor/wandelen-hardlopen/hardlopen"] },
-     { "slug": "outdoor-avontuur", "naam": "Outdoor & avontuur", "weg": ["klimmen-boulderen"], "uit": ["sport-outdoor/kamperen-outdoor", "sport-outdoor/wandelen-hardlopen/wandelen", { "van": "sport-outdoor/noodpakket-survival", "alsVak": { "slug": "noodpakket-survival", "naam": "Noodpakket & survival" } }],
+     { "slug": "outdoor-avontuur", "naam": "Outdoor & avontuur", "weg": ["klimmen-boulderen", "metaaldetectors", "pinpointers-uitrusting", "magneetvissen", "munten-vondsten"], "uit": ["sport-outdoor/kamperen-outdoor", "sport-outdoor/wandelen-hardlopen/wandelen", "sport-outdoor/metaaldetectie", { "van": "sport-outdoor/noodpakket-survival", "alsVak": { "slug": "noodpakket-survival", "naam": "Noodpakket & survival" } }],
        "erf": "sport-outdoor/kamperen-outdoor",
        "tekst": "Voor wie graag buiten is: kamperen, wandelen, vissen, messen en multitools, verrekijkers en zaklampen, en een noodpakket voor als het tegenzit.", "seoTitel": "Outdoor en avontuur – kamperen, wandelen en survival" },
      { "slug": "fietsen-steps", "naam": "Fietsen & steps", "uit": ["sport-outdoor/fietsen-steps"] },
      { "slug": "balsport-spel", "naam": "Balsport & spel", "uit": ["sport-outdoor/balsport-spel"] },
-     { "slug": "water-wintersport", "naam": "Water & winter", "uit": ["sport-outdoor/water-wintersport"] },
-     { "slug": "metaaldetectie", "naam": "Metaaldetectie", "uit": ["sport-outdoor/metaaldetectie"] }
+     { "slug": "water-wintersport", "naam": "Water & winter", "uit": ["sport-outdoor/water-wintersport"] }
     ] },
   { "slug": "tuin-klussen", "naam": "Tuin & klussen", "kort": "Tuin & klussen",
     "groepen": [

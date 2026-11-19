@@ -426,6 +426,26 @@
    "outdoor-avontuur",
    "wandelen"
   ],
+  "sport-outdoor/metaaldetectie/munten-vondsten": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "munten-vondsten"
+  ],
+  "sport-outdoor/metaaldetectie/magneetvissen": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "magneetvissen"
+  ],
+  "sport-outdoor/metaaldetectie/pinpointers-uitrusting": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "pinpointers-uitrusting"
+  ],
+  "sport-outdoor/metaaldetectie/metaaldetectors": [
+   "sport-outdoor",
+   "outdoor-avontuur",
+   "metaaldetectors"
+  ],
   "sport-outdoor/noodpakket-survival/noodpakketten": [
    "sport-outdoor",
    "outdoor-avontuur",
@@ -715,6 +735,10 @@
    "sport-outdoor",
    "outdoor-avontuur"
   ],
+  "sport-outdoor/metaaldetectie": [
+   "sport-outdoor",
+   "outdoor-avontuur"
+  ],
   "sport-outdoor/noodpakket-survival": [
    "sport-outdoor",
    "outdoor-avontuur"
@@ -876,6 +900,10 @@
   "sport-outdoor/outdoor-avontuur/hengelsport": "sport-outdoor/kamperen-outdoor/hengelsport",
   "sport-outdoor/outdoor-avontuur/messen-multitools": "sport-outdoor/kamperen-outdoor/messen-multitools",
   "sport-outdoor/outdoor-avontuur/kampeerspullen": "sport-outdoor/kamperen-outdoor/kampeerspullen",
+  "sport-outdoor/outdoor-avontuur/munten-vondsten": "sport-outdoor/metaaldetectie/munten-vondsten",
+  "sport-outdoor/outdoor-avontuur/magneetvissen": "sport-outdoor/metaaldetectie/magneetvissen",
+  "sport-outdoor/outdoor-avontuur/pinpointers-uitrusting": "sport-outdoor/metaaldetectie/pinpointers-uitrusting",
+  "sport-outdoor/outdoor-avontuur/metaaldetectors": "sport-outdoor/metaaldetectie/metaaldetectors",
   "sport-outdoor/outdoor-avontuur/noodpakket-survival": "sport-outdoor/noodpakket-survival/noodradio-s",
   "tuin-klussen/buiten-leven/tuinmeubelen": "tuin-klussen/buiten-leven/tuinmeubelen",
   "tuin-klussen/klussen/gereedschapssets": "tuin-klussen/klussen/gereedschapssets",
