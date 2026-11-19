@@ -16,6 +16,7 @@
    Alles weer voor Google: LK_ALLE_PRODUCTEN_GOOGLE=1 node scripts/maak-paginas.js, of AAN hieronder op false. */
 const fs = require('fs'), path = require('path');
 const AAN = true;
+const NIEUW_VANAF = '2026-11-19'; /* GOOGLE-HERSTEL: vanaf deze datum eerst beoordelen, dan pas Google */
 
 function googleProducten(ROOT, producten) {
   if (!AAN || process.env.LK_ALLE_PRODUCTEN_GOOGLE === '1') return null; /* null = alles mag */
@@ -37,6 +38,14 @@ function googleProducten(ROOT, producten) {
   for (const m of src.matchAll(/"id":\s*"([^"]+)"[^}]*?"herkomst":\s*"superkeurkamer"/g)) zet(m[1]);
   /* al bezoek gehad */
   try { JSON.parse(fs.readFileSync(path.join(__dirname, 'google-houden.json'), 'utf8')).ids.forEach(zet); } catch (e) { console.error('google-producten: google-houden.json niet gelezen:', e.message); }
+  /* GOOGLE-HERSTEL (19-11-2026, opdracht Marius): nieuwe productpagina's gaan standaard NIET naar Google tot ze beoordeeld zijn.
+     Een product met 'sinds' op of na NIEUW_VANAF komt pas in Google als zijn id in google-beoordeeld.json staat
+     (eigen tekst en advies, productgegevens nagekeken). Zo kan er nooit meer ongemerkt een grote reeks productpagina's tegelijk naar Google. */
+  let beoordeeld = new Set();
+  try { beoordeeld = new Set(JSON.parse(fs.readFileSync(path.join(__dirname, 'google-beoordeeld.json'), 'utf8')).ids); } catch (e) { console.error('google-producten: google-beoordeeld.json niet gelezen:', e.message); }
+  let wacht = 0;
+  producten.forEach(p => { if (p.sinds && p.sinds >= NIEUW_VANAF && houd.has(p.id) && !beoordeeld.has(p.id)) { houd.delete(p.id); wacht++; } });
+  if (wacht) console.log('google-producten: ' + wacht + ' nieuwe productpagina\'s wachten op beoordeling (niet in Google)');
   /* veiligheidsslot: valt het ineens veel lager uit dan verwacht (kapot bestand), dan liever alles laten staan */
   if (houd.size < 1500) { console.error('google-producten: maar ' + houd.size + ' producten, dat klopt niet; alles blijft voor Google.'); return null; }
   return houd;

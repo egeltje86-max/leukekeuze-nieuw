@@ -80,7 +80,12 @@ function maakLd(info, url) {
     const ean = (p.id.match(/^(?:dw|kw|inv|dgsw|dvzn|tf|bt|drm|hema)-(\d{13})$/) || [])[1];
     const eanOk = ean && (10 - ean.split('').slice(0, 12).reduce((s, c, i) => s + (+c) * (i % 2 ? 3 : 1), 0) % 10) % 10 === +ean[12];
     uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, gtin13: eanOk ? ean : undefined, brand: p.merk ? { '@type': 'Brand', name: p.merk } : undefined, description: p.tekst || undefined, image: beeld, url,
-      offers: { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: p.status === 'uitverkocht' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
+      /* GOOGLE-HERSTEL (19-11-2026, VOORSTEL, staat UIT): verkopersvermeldingen zijn volgens Google alleen voor pagina's waar je zelf koopt.
+         Met LK_AGGREGATE=1 krijgt een productpagina 'AggregateOffer' (het voorbeeld van Google voor sites die naar andere winkels verwijzen)
+         in plaats van 'Offer' met verkoper. Pas aanzetten na GO van Marius (raakt alle productpagina's). */
+      offers: process.env.LK_AGGREGATE === '1'
+        ? { '@type': 'AggregateOffer', lowPrice: Number(p.prijs).toFixed(2), highPrice: Number(p.prijs).toFixed(2), offerCount: 1, priceCurrency: 'EUR', availability: p.status === 'uitverkocht' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock' }
+        : { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: p.status === 'uitverkocht' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
   }
   return uit;
 }
@@ -225,7 +230,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
      Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
   /* MINDER PRODUCTPAGINA'S IN GOOGLE (15-11-2026, GO Marius): zie scripts/seo/google-producten.js. */
-  const GOOGLE = require('./seo/google-producten.js').googleProducten(ROOT, await page.evaluate(() => (window.LK_PRODUCTEN || []).map(p => ({ id: p.id, status: p.status, favoriet: !!p.favoriet, samengevoegd: p.samengevoegd || '' }))));
+  const GOOGLE = require('./seo/google-producten.js').googleProducten(ROOT, await page.evaluate(() => (window.LK_PRODUCTEN || []).map(p => ({ id: p.id, status: p.status, favoriet: !!p.favoriet, samengevoegd: p.samengevoegd || '', sinds: p.sinds || '' }))));
   console.log(GOOGLE ? 'productpagina\'s voor Google: ' + GOOGLE.size + ' (de rest noindex, wel op de site)' : 'productpagina\'s voor Google: allemaal');
   /* UITVERKOCHT (14-11-2026, GO Marius): uitverkochte producten houden hun pagina (met 'uitverkocht' en wat erop lijkt), niet in de sitemap. */
   for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd' || p.status === 'uitverkocht').map(p => p.id))) {
@@ -329,7 +334,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     'p/dk-00044532': '/c/wonen/huisgeuren/', 'p/dk-35072707': '/c/wonen/huisgeuren/',
     'cadeaugids/cadeau-voor-collega': '/gids/cadeau-voor-collega/',
     'cadeaugids/sinterklaas': '/c/cadeaus/sinterklaas/',
-    'cadeaugids/cadeau-voor-vriendin': '/voor/haar/',
+    'cadeaugids/cadeau-voor-vriendin': '/gids/cadeau-voor-vriendin/',
     'cadeaugids/origineel-cadeau-voor-vader': '/voor/hem/',
     'cadeaugids/cadeau-voor-dierenliefhebber': '/c/dieren/',
     'christelijke-cadeaus': '/c/christelijk/', 'cadeaus-voor-kinderen': '/voor/kinderen/',
@@ -389,7 +394,33 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const vandaag = new Date().toISOString().slice(0, 10);
   /* lastmod: een echte datum per pagina (niet elke keer 'vandaag'), anders negeert Google hem. */
   const verhuisdPaden = Object.keys(VERHUISD).map(k => '/' + k + '/');
-  const urls = paginas.filter(p => !p.geenIndex && !(p.prod && p.prod.status === 'uitverkocht') && !HOOFDPAGINA[p.pad] && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + (/^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag) + '</lastmod></url>');
+  /* GOOGLE-HERSTEL (19-11-2026, tip Nova, GO Marius): lastmod verandert alleen als de inhoud van een pagina echt verandert.
+     Eerst kreeg een productpagina de datum van de laatste prijscontrole (elke nacht nieuw) en andere pagina's 'vandaag': op 5 november
+     hadden 3.869 adressen dezelfde datum. Google negeert lastmod als die niet te vertrouwen is. Nu: per pagina een vingerafdruk van wat er
+     echt toe doet (product: titel, prijs, tekst, advies; andere pagina's: titel, omschrijving zonder datums en welke producten erop staan).
+     Is die gelijk aan de vorige keer, dan blijft de datum staan. Bewaard in scripts/seo/lastmod.json (niet op de site).
+     Eerste keer: de datum uit de sitemap die nu live staat. Uit: LK_LASTMOD_OUD=1. */
+  const LM_F = path.join(ROOT, 'scripts', 'seo', 'lastmod.json');
+  let LM = {}; try { LM = JSON.parse(fs.readFileSync(LM_F, 'utf8')); } catch (e) { LM = {}; }
+  const smOud = {}; try { for (const m of fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>https:\/\/leukekeuze\.nl([^<]+)<\/loc><lastmod>(\d{4}-\d\d-\d\d)<\/lastmod>/g)) smOud[m[1]] = m[2]; } catch (e) {}
+  const zonderDatum = s => String(s || '').replace(/\d{1,2}[-/]\d{1,2}[-/]\d{2,4}|\d{1,2} (januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)( \d{4})?|\d{4}-\d\d-\d\d/gi, '');
+  const vinger = p => {
+    if (p.prod) return require('crypto').createHash('md5').update([p.titel, p.prod.naam, p.prod.prijs, p.prod.tekst, p.prod.status, JSON.stringify((p.deel || {}).advies || '')].join('|')).digest('hex').slice(0, 12);
+    const ids = [...new Set([...String(p.inhoud || '').matchAll(/p\/([a-z0-9][a-z0-9-]{3,60})\//g)].map(m => m[1]))].sort().join(',');
+    return require('crypto').createHash('md5').update([zonderDatum(p.titel), zonderDatum(p.omschrijving), ids].join('|')).digest('hex').slice(0, 12);
+  };
+  const lastmod = p => {
+    const oudeManier = /^\d{4}-\d\d-\d\d$/.test(p.datum || '') && p.datum <= vandaag ? p.datum : vandaag;
+    if (process.env.LK_LASTMOD_OUD === '1') return oudeManier;
+    const v = vinger(p), r = LM[p.pad];
+    if (r && r.v === v) return r.d;
+    const d = r || (p.deel && p.deel.advies) ? vandaag : (smOud[p.pad] && smOud[p.pad] <= vandaag ? smOud[p.pad] : oudeManier); /* nieuw advies = echt veranderd */
+    LM[p.pad] = { v, d };
+    return d;
+  };
+  const urls = paginas.filter(p => !p.geenIndex && !(p.prod && p.prod.status === 'uitverkocht') && !HOOFDPAGINA[p.pad] && verhuisdPaden.indexOf(p.pad) === -1).map(p => '  <url><loc>' + SITE + p.pad + '</loc><lastmod>' + lastmod(p) + '</lastmod></url>');
+  try { const k = Object.keys(LM).sort(); fs.writeFileSync(LM_F, '{\n' + k.map(x => JSON.stringify(x) + ':' + JSON.stringify(LM[x])).join(',\n') + '\n}\n'); } catch (e) { console.error('lastmod.json niet bewaard:', e.message); }
+  { const tel = {}; urls.forEach(u => { const d = (u.match(/<lastmod>([^<]+)/) || [])[1]; tel[d] = (tel[d] || 0) + 1; }); console.log('sitemap lastmod (alleen bij echte verandering): vandaag ' + (tel[vandaag] || 0) + ' van ' + urls.length + ' adressen'); }
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n');
   console.log('Klaar:', paginas.length, 'pagina\'s,', urls.length, 'in de sitemap');
   /* SNEL (13-11-2026): per lijstpagina een klein productbestand (pak), elk nagekeken tegen de hele lijst. Zie scripts/maak-pakken.js.

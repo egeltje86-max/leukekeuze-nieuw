@@ -329,6 +329,21 @@
     'Countrylifestyle': { retour: '14 dagen retour' }
   };
   function euroKort(n) { return '€ ' + (Math.round(n * 100) % 100 ? Number(n).toFixed(2).replace('.', ',') : String(Math.round(n))); }
+  /* GOOGLE-HERSTEL (19-11-2026, GO Marius): eigen cadeau-advies op productpagina's die Google eerder goed liet zien.
+     Velden (correcties.json -> advies[id]): voor, niet, alt (product-ids of een pad), meer ([naam, pad]). Alleen feiten uit de feed of de winkel.
+     Gebruikt de bestaande opmaak van 'Specificaties', dus het uiterlijk van de site verandert niet. Uit: window.LK_ADVIES = false. */
+  function adviesBlok(p) {
+    var a = p.advies; if (!a || window.LK_ADVIES === false) return '';
+    var rij = function (k, v) { return v ? '<div><dt>' + esc(k) + '</dt><dd>' + v + '</dd></div>' : ''; };
+    var alt = (a.alt || []).map(function (x) {
+      if (x.charAt(0) === '/') return '';
+      var q = LK.vind(x); if (!q || q.status !== 'goedgekeurd' || q.id === p.id) return '';
+      return '<a href="/p/' + esc(q.id) + '/">' + esc(q.titel) + '</a> (' + LK.euro(q.prijs) + ')';
+    }).filter(Boolean).join(', ');
+    var meer = (a.meer || []).map(function (m) { return '<a href="' + esc(m[1]) + '">' + esc(m[0]) + '</a>'; }).join(', ');
+    var body = rij('Voor wie', esc(a.voor || '')) + rij('Liever niet als', esc(a.niet || '')) + rij('Ook goed', alt) + rij('Meer ideeën', meer);
+    return body ? '<div class="specs advies"><h2>' + ic('cadeau') + 'Ons cadeau-advies</h2><dl>' + body + '</dl></div>' : '';
+  }
   function bezorgBlok(p) {
     var w = WINKELHULP && BEZORG_INFO[p.shop]; if (!w) return '';
     var r = [];
@@ -3080,6 +3095,7 @@
           bezorgBlok(p) + /* WINKELHULP 18-11-2026 */
           gedichtKnop(p) + /* KOOPGEDRAG 18-11-2026 */
           (p.waarom ? '<div class="waarom"><h2>' + ic('ster') + 'Waarom wij dit kozen</h2><p>' + esc(p.waarom) + '</p></div>' : '') +
+          adviesBlok(p) + /* GOOGLE-HERSTEL 19-11-2026: eigen cadeau-advies (correcties.json -> advies), in de bestaande stijl van 'Specificaties' */
           (p.specs && p.specs.length ? '<div class="specs"><h2>' + ic('info') + 'Specificaties</h2><dl>' +
             p.specs.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') +
             '</dl><p class="specs-noot">Volgens de gegevens van de winkel. Twijfel je? Kijk dan ook even bij ' + esc(p.shop) + '.</p></div>' : '') +

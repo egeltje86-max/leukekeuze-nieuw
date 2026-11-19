@@ -52,6 +52,7 @@ function plaats(p) {
   const t = (COR.tekst || {})[p.id]; if (t) p.waarom = t;
   if (p.waarom) { const w0 = p.waarom; p.waarom = zonderClaim(w0); if (p.waarom !== w0) CLAIM_WEG.n++; } /* 18-11-2026: geen 'Nu 30% korting' of 'Van €80 naar €68' in vaste teksten (scripts/boom/prijsclaim.js) */
   const ti = (COR.titel || {})[p.id]; if (ti) p.titel = ti;
+  const adv = (COR.advies || {})[p.id]; if (adv) { p.advies = Object.assign({}, adv); ['voor', 'niet'].forEach((k) => { if (p.advies[k]) p.advies[k] = zonderClaim(p.advies[k]); }); } /* 19-11-2026 GOOGLE-HERSTEL: eigen cadeau-advies (voor wie, liever niet als, ook goed, meer ideeën) */
   const vb = (COR.voorErbij || {})[p.id]; if (vb) { p.voor = (p.voor || []).slice(); for (const x of vb) if (p.voor.indexOf(x) === -1) p.voor.push(x); } /* nakijkbeurt 6-11-2026: voor-wie erbij */
   const oi = (COR.ookInErbij || {})[p.id]; if (oi) { p.ookIn = (p.ookIn || []).slice(); for (const x of oi) if (p.ookIn.indexOf(x) === -1) p.ookIn.push(x); } /* 13-11-2026: met de hand gekozen voor een gelegenheid (bijv. 'cadeaus/kerst', 'valentijn/voor-haar') */
   const tb = (COR.tagErbij || {})[p.id]; if (tb) { p.tags = (p.tags || []).slice(); for (const x of tb) if (p.tags.indexOf(x) === -1) p.tags.push(x); } /* 10-11-2026: tag erbij (bijv. 'origineel' voor de etalage Originele cadeaus) */

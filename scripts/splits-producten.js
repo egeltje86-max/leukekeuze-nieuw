@@ -12,7 +12,9 @@ const DETAILS = ['url', 'winkelUrl', 'specs', 'verzendNoot', 'letOp', 'afgekeurd
   /* Snelheid (5-11-2026): deze velden gebruikt de site in lijsten niet, dus die laden pas op de productpagina. */
   'subVast', 'wil', 'uitverkochtSinds',
   /* Snelheid (8-11-2026, Fable P2): ook deze alleen op de productpagina. */
-  'fotos', 'herkomst'];
+  'fotos', 'herkomst',
+  /* 19-11-2026 GOOGLE-HERSTEL: eigen cadeau-advies, alleen op de productpagina. */
+  'advies'];
 /* Snelheid (8-11-2026): 'waarom' (1,1 MB) blijft in de lijst alleen voor producten die in een gids staan of favoriet zijn (die teksten staan op lijstpagina's);
    voor de rest gaat hij naar details (productpagina's hebben hun eigen details al in de HTML). */
 /* 13-11-2026 (grote keuring): de nieuwe gidsen (leeftijd, kerst, 10/15 euro) schrijven hun ids tussen dubbele aanhalingstekens; die werden niet herkend.
