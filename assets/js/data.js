@@ -1517,7 +1517,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde One Piece & anime-hoek ===== */
 
-/* 19-11-2026: rondjes van Nova (deel 4, 6 en 7) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
+/* 19-11-2026: rondjes van Nova (deel 4, 6, 7 en 8) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
    Sleutel = oude plek van het vakje (afdeling/groep/vakje), waarde = naam van het bestand images/sub/iconen/icoon-<waarde>.webp (meestal de nieuwe plek). */
 (function () {
   var B = {
@@ -1574,7 +1574,47 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
     'speelgoed/spellen/partyspellen': 'spellen-puzzels-kaart-partyspellen-partyspellen',
     'speelgoed/puzzels/3d-puzzels': 'spellen-puzzels-puzzels-3d-puzzels',
     'speelgoed/puzzels/kinderpuzzels': 'spellen-puzzels-puzzels-kinderpuzzels',
-    'speelgoed/puzzels/legpuzzels': 'spellen-puzzels-puzzels-legpuzzels'
+    'speelgoed/puzzels/legpuzzels': 'spellen-puzzels-puzzels-legpuzzels',
+    'beauty-verzorging/parfum/damesparfum': 'beauty-verzorging-parfum-damesparfum',
+    'beauty-verzorging/parfum/herenparfum': 'beauty-verzorging-parfum-herenparfum',
+    'elektronica/audio/bluetooth-speakers': 'elektronica-audio-bluetooth-speakers',
+    'elektronica/audio/oordopjes': 'elektronica-audio-oordopjes',
+    'elektronica/foto-video/camera-s-instant-camera-s': 'elektronica-foto-video-camera-s-instant-camera-s',
+    'elektronica/foto-video/drones': 'elektronica-foto-video-drones',
+    'elektronica/gadgets/fun-retro-gadgets': 'elektronica-gadgets-fun-retro-gadgets',
+    'elektronica/gadgets/handige-gadgets': 'elektronica-gadgets-handige-gadgets',
+    'elektronica/smartwatches/activity-trackers': 'elektronica-smartwatches-activity-trackers',
+    'elektronica/smartwatches/smartwatches': 'elektronica-smartwatches-smartwatches',
+    'elektronica/tablets-e-readers/powerbanks-opladers': 'elektronica-tablets-tv-slim-wonen-powerbanks-opladers',
+    'elektronica/slim-wonen/robotstofzuigers': 'elektronica-tablets-tv-slim-wonen-robotstofzuigers',
+    'elektronica/slim-wonen/slimme-lampen-sfeerlicht': 'elektronica-tablets-tv-slim-wonen-slimme-lampen-sfeerlicht',
+    'elektronica/slim-wonen/slimme-speakers': 'elektronica-tablets-tv-slim-wonen-slimme-speakers',
+    'elektronica/tablets-e-readers/tablets': 'elektronica-tablets-tv-slim-wonen-tablets',
+    'elektronica/tablets-e-readers/telefoonaccessoires': 'elektronica-tablets-tv-slim-wonen-telefoonaccessoires',
+    'mode-sieraden/accessoires/paraplus': 'mode-sieraden-accessoires-paraplus',
+    'mode-sieraden/accessoires/riemen-petten': 'mode-sieraden-accessoires-riemen-petten',
+    'mode-sieraden/accessoires/sjaals-mutsen': 'mode-sieraden-accessoires-sjaals-mutsen',
+    'mode-sieraden/accessoires/sleutelhangers': 'mode-sieraden-accessoires-sleutelhangers',
+    'mode-sieraden/horloges/dameshorloges': 'mode-sieraden-horloges-dameshorloges',
+    'mode-sieraden/horloges/herenhorloges': 'mode-sieraden-horloges-herenhorloges',
+    'mode-sieraden/kleding/kersttruien': 'mode-sieraden-kleding-kersttruien',
+    'mode-sieraden/kleding/pyjama-s-badjassen': 'mode-sieraden-kleding-pyjama-s-badjassen',
+    'mode-sieraden/kleding/sokken': 'mode-sieraden-kleding-sokken',
+    'mode-sieraden/kleding/t-shirts-met-print': 'mode-sieraden-kleding-t-shirts-met-print',
+    'mode-sieraden/kleding/truien-hoodies': 'mode-sieraden-kleding-truien-hoodies',
+    'mode-sieraden/schoenen-sloffen/laarzen-boots': 'mode-sieraden-schoenen-sloffen-laarzen-boots',
+    'mode-sieraden/schoenen-sloffen/pantoffels-sloffen': 'mode-sieraden-schoenen-sloffen-pantoffels-sloffen',
+    'mode-sieraden/schoenen-sloffen/sneakers': 'mode-sieraden-schoenen-sloffen-sneakers',
+    'mode-sieraden/sieraden/armbanden': 'mode-sieraden-sieraden-armbanden',
+    'mode-sieraden/sieraden/bedels': 'mode-sieraden-sieraden-bedels',
+    'mode-sieraden/sieraden/kettingen': 'mode-sieraden-sieraden-kettingen',
+    'mode-sieraden/sieraden/oorbellen': 'mode-sieraden-sieraden-oorbellen',
+    'mode-sieraden/sieraden/ringen': 'mode-sieraden-sieraden-ringen',
+    'mode-sieraden/sieraden/sieraden-met-naam': 'mode-sieraden-sieraden-sieraden-met-naam',
+    'mode-sieraden/sieraden/sieradendozen': 'mode-sieraden-sieraden-sieradendozen',
+    'mode-sieraden/tassen-portemonnees/handtassen': 'mode-sieraden-tassen-portemonnees-handtassen',
+    'mode-sieraden/tassen-portemonnees/portemonnees-pasjeshouders': 'mode-sieraden-tassen-portemonnees-portemonnees-pasjeshouders',
+    'mode-sieraden/tassen-portemonnees/rugzakken': 'mode-sieraden-tassen-portemonnees-rugzakken'
   };
   (window.LK_CATEGORIEEN || []).forEach(function (c) { (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
     var k = c.slug + '/' + s.slug + '/' + v.slug;
