@@ -2893,3 +2893,29 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 @media (min-width: 721px) { .wijzer .wz-munten { grid-template-columns: repeat(5, 72px); gap: 12px; } .wijzer .wz-munten .munt .m-g { font-size: 17px; } }
 @media (max-width: 350px) { .wijzer .wz-munten { gap: 7px; } .wijzer .wz-munten .munt .m-g { font-size: 14.5px; } .wijzer .wz-munten .munt .m-k { font-size: 10px; } }
 /* ===== einde BEDRAG-RONDJES ===== */
+
+/* ===== RONDJES OP HUN PLEK (19-11-2026, Marius: 'als je een rondje aanklikt verhuist die naar voren, dat is erg vervelend'; 'ik zag niet dat er nog meer rondjes zijn'):
+   geen veegrij meer; een raster van vier naast elkaar met hooguit zeven rondjes en 'Nog N', dat de rest openklapt. Zie soortRij() in app.js. ===== */
+.srij-plooi .srij-extra { display: none; }
+.srij-plooi.open .srij-extra { display: flex; }
+.srij-plooi.open .srij-meer { display: none; }
+.srij-meer { border: 0; background: none; cursor: pointer; font: inherit; font-family: Manrope, sans-serif; font-weight: 800; font-size: 13px; color: #0A1020; }
+.srij-meer .srij-rond { background: #FFFCF7; box-shadow: 0 0 0 1.5px #B8862E; }
+.srij-plus { font: 800 20px/1 Manrope, sans-serif; color: #8F6620; }
+.srij-meer:hover .srij-rond { background: #F2CB74; }
+.srij-meer:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+@media (min-width: 760px) { .srij-plooi .srij-extra { display: flex; } .srij-plooi .srij-meer { display: none; } }
+/* ===== einde RONDJES OP HUN PLEK ===== */
+
+/* ===== RONDJES ZONDER GOUDEN RAND (19-11-2026, Marius: 'wil je ook die dubbele gouden randjes weghalen, het ziet er niet uit; snij die gouden
+   randen helemaal weg, laat het alleen plaatjes zijn'): de rondjes van Nova zijn bijgesneden tot binnen hun gouden ring, en de site zet er zelf
+   ook geen gouden ring meer omheen. Alleen het gekozen rondje (.actief) en de knop 'Nog N' houden een rand. ===== */
+.srij-rond, .mini-tegel .mt-rond, .srt-st-rond { box-shadow: none; border: 0; }
+.srij-rond img { transform: none; }
+.srij-item:not(.actief):hover .srij-rond { box-shadow: none; }
+.srij-meer .srij-rond { box-shadow: 0 0 0 1.5px #B8862E; }
+.wzh-rond { border: 0; }
+.catbalk-rond { box-shadow: 0 6px 14px -7px rgba(0,0,0,.55); }
+.catbalk:hover .catbalk-rond { box-shadow: 0 10px 18px -8px rgba(0,0,0,.6); }
+html.nova9 .slimnav .sn-beeld.sn-rond { box-shadow: none; }
+/* ===== einde RONDJES ZONDER GOUDEN RAND ===== */

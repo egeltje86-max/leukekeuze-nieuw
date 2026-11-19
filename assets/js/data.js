@@ -1517,7 +1517,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde One Piece & anime-hoek ===== */
 
-/* 19-11-2026: rondjes van Nova (deel 4, 6, 7 en 8) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
+/* 19-11-2026: rondjes van Nova (deel 4 tot en met 9) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
    Sleutel = oude plek van het vakje (afdeling/groep/vakje), waarde = naam van het bestand images/sub/iconen/icoon-<waarde>.webp (meestal de nieuwe plek). */
 (function () {
   var B = {
@@ -1614,7 +1614,47 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
     'mode-sieraden/sieraden/sieradendozen': 'mode-sieraden-sieraden-sieradendozen',
     'mode-sieraden/tassen-portemonnees/handtassen': 'mode-sieraden-tassen-portemonnees-handtassen',
     'mode-sieraden/tassen-portemonnees/portemonnees-pasjeshouders': 'mode-sieraden-tassen-portemonnees-portemonnees-pasjeshouders',
-    'mode-sieraden/tassen-portemonnees/rugzakken': 'mode-sieraden-tassen-portemonnees-rugzakken'
+    'mode-sieraden/tassen-portemonnees/rugzakken': 'mode-sieraden-tassen-portemonnees-rugzakken',
+    'beauty-verzorging/bad-douche/bad-doucheproducten': 'beauty-verzorging-bad-huid-spa-bad-doucheproducten',
+    'beauty-verzorging/bad-douche/bruisballen': 'beauty-verzorging-bad-huid-spa-bruisballen',
+    'beauty-verzorging/huid-gezicht/gezichtsverzorging': 'beauty-verzorging-bad-huid-spa-gezichtsverzorging',
+    'beauty-verzorging/huid-gezicht/lichaamsverzorging': 'beauty-verzorging-bad-huid-spa-lichaamsverzorging',
+    'beauty-verzorging/wellness/massage': 'beauty-verzorging-bad-huid-spa-massage',
+    'beauty-verzorging/wellness/spa-ontspanning': 'beauty-verzorging-bad-huid-spa-spa-ontspanning',
+    'beauty-verzorging/giftsets/giftsets-voor-haar': 'beauty-verzorging-giftsets-giftsets-voor-haar',
+    'beauty-verzorging/giftsets/giftsets-voor-hem': 'beauty-verzorging-giftsets-giftsets-voor-hem',
+    'beauty-verzorging/haar/fohns-stijltangen': 'beauty-verzorging-make-up-haar-fohns-stijltangen',
+    'beauty-verzorging/haar/haarverzorging': 'beauty-verzorging-make-up-haar-haarverzorging',
+    'beauty-verzorging/make-up-nagels/make-up': 'beauty-verzorging-make-up-haar-make-up',
+    'beauty-verzorging/make-up-nagels/nagels': 'beauty-verzorging-make-up-haar-nagels',
+    'beauty-verzorging/parfum/parfumsets': 'beauty-verzorging-parfum-parfumsets',
+    'beauty-verzorging/scheren-baard/baardverzorging': 'beauty-verzorging-scheren-baard-baardverzorging',
+    'beauty-verzorging/scheren-baard/scheerapparaten-trimmers': 'beauty-verzorging-scheren-baard-scheerapparaten-trimmers',
+    'wonen/foto-persoonlijk/foto-op-canvas-glas': 'wonen-foto-persoonlijk-foto-op-canvas-glas',
+    'wonen/foto-persoonlijk/fotoboeken': 'wonen-foto-persoonlijk-fotoboeken',
+    'wonen/foto-persoonlijk/fotolijsten': 'wonen-foto-persoonlijk-fotolijsten',
+    'wonen/kaarsen-geur/geurkaarsen': 'wonen-kaarsen-geur-geurkaarsen',
+    'wonen/kaarsen-geur/huisgeuren-geurstokjes': 'wonen-kaarsen-geur-huisgeuren-geurstokjes',
+    'wonen/kaarsen-geur/kaarsen': 'wonen-kaarsen-geur-kaarsen',
+    'wonen/kaarsen-geur/kandelaars-lantaarns': 'wonen-kaarsen-geur-kandelaars-lantaarns',
+    'wonen/kaarsen-geur/wierook': 'wonen-kaarsen-geur-wierook',
+    'wonen/kerstdecoratie/kerstballen-hangers': 'wonen-kerstdecoratie-kerstballen-hangers',
+    'wonen/kerstdecoratie/kerstbomen-kransen': 'wonen-kerstdecoratie-kerstbomen-kransen',
+    'wonen/kerstdecoratie/kerstfiguren': 'wonen-kerstdecoratie-kerstfiguren',
+    'wonen/kerstdecoratie/kerstverlichting': 'wonen-kerstdecoratie-kerstverlichting',
+    'wonen/verlichting/lichtsnoeren': 'wonen-verlichting-lichtsnoeren',
+    'wonen/verlichting/sfeerlampen': 'wonen-verlichting-sfeerlampen',
+    'wonen/verlichting/tafellampen': 'wonen-verlichting-tafellampen',
+    'wonen/woondecoratie/beelden-decoratie': 'wonen-woondecoratie-beelden-decoratie',
+    'wonen/woondecoratie/klokken': 'wonen-woondecoratie-klokken',
+    'wonen/woondecoratie/spaarpotten': 'wonen-woondecoratie-spaarpotten',
+    'wonen/woondecoratie/vazen': 'wonen-woondecoratie-vazen',
+    'wonen/woondecoratie/wanddecoratie-posters': 'wonen-woondecoratie-wanddecoratie-posters',
+    'wonen/woontextiel/deurmatten': 'wonen-woontextiel-deurmatten',
+    'wonen/woontextiel/kruiken-warmte': 'wonen-woontextiel-kruiken-warmte',
+    'wonen/woontextiel/kussens': 'wonen-woontextiel-kussens',
+    'wonen/woontextiel/plaids': 'wonen-woontextiel-plaids',
+    'wonen/woontextiel/vloerkleden': 'wonen-woontextiel-vloerkleden'
   };
   (window.LK_CATEGORIEEN || []).forEach(function (c) { (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
     var k = c.slug + '/' + s.slug + '/' + v.slug;

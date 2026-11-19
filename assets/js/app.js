@@ -967,20 +967,33 @@
   function soortRij(items, cfg, label, vorm) {
     if (!items || items.length < 2) return '';
     cfg = cfg || {};
-    var voor = [], rest = items.filter(function (x) { return !x.alles && !x.actief; });
-    items.forEach(function (x) { if (x.alles) voor.push(x); });
-    items.forEach(function (x) { if (x.actief) voor.push(x); });
+    /* 19-11-2026 (Marius: 'als je een rondje aanklikt verhuist die naar voren, dat is erg vervelend'; 'ik zag niet dat er nog meer rondjes zijn'):
+       het gekozen rondje blijft op zijn eigen plek (alleen 'Alles' staat vast vooraan), en er is geen rij om opzij te vegen meer.
+       Vroeger 'rij' = nu een raster van vier naast elkaar: hooguit zeven rondjes en als achtste 'Nog N', dat de rest openklapt (staat het gekozen
+       rondje bij de rest, dan staat alles meteen open). Op de computer staat altijd alles open. */
+    var voor = items.filter(function (x) { return x.alles; }), rest = items.filter(function (x) { return !x.alles; });
     var top = [];
     (cfg.top || []).forEach(function (k) { var i = rest.map(function (x) { return x.id; }).indexOf(k); if (i !== -1) top.push(rest.splice(i, 1)[0]); });
     rest.sort(function (a, b) { return (b.n || 0) - (a.n || 0); });
     var af = function (t) { return String(t).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }); };
-    return '<nav class="srij srij-' + (vorm === 'rij' ? 'rij' : 'raster') + '" aria-label="' + esc(label || 'Soorten') + '"><div class="srij-baan">' + voor.concat(top, rest).map(function (x) {
+    var alle = voor.concat(top, rest), plooi = vorm === 'rij' && alle.length > 8, zicht = plooi ? 7 : alle.length;
+    var open = plooi && alle.some(function (x, i) { return x.actief && i >= zicht; });
+    var tegel = function (x, i) {
       var b = rondjeVan(x.beeld);
-      return '<a class="srij-item' + (x.actief ? ' actief' : '') + (x.alles ? ' alles' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
+      return '<a class="srij-item' + (x.actief ? ' actief' : '') + (x.alles ? ' alles' : '') + (i >= zicht ? ' srij-extra' : '') + '" href="' + esc(x.naar) + '"' + (x.actief ? ' aria-current="page"' : '') + '>' +
         '<span class="srij-rond" aria-hidden="true">' + (x.alles ? '<span class="srij-ico">' + ic('raster') + '</span>' : b ? '<img src="' + esc(kleinBeeld(b)) + '" alt="" loading="lazy" decoding="async" width="64" height="64">' : '<span class="srij-ico">' + (x.icoon || slimIco(x.naam)) + '</span>') + '</span>' +
         '<span class="srij-naam">' + af(esc(x.naam)) + '</span></a>';
-    }).join('') + '</div></nav>';
+    };
+    var meer = plooi ? '<button class="srij-item srij-meer" type="button" data-srij-meer aria-expanded="' + open + '"><span class="srij-rond" aria-hidden="true"><span class="srij-plus">+' + (alle.length - zicht) + '</span></span><span class="srij-naam">Nog ' + (alle.length - zicht) + '</span></button>' : '';
+    return '<nav class="srij srij-raster' + (plooi ? ' srij-plooi' + (open ? ' open' : '') : '') + '" aria-label="' + esc(label || 'Soorten') + '"><div class="srij-baan">' +
+      alle.slice(0, zicht).map(tegel).join('') + meer + alle.slice(zicht).map(function (x, j) { return tegel(x, zicht + j); }).join('') + '</div></nav>';
   }
+  document.addEventListener('click', function (e) {
+    var k = e.target && e.target.closest ? e.target.closest('[data-srij-meer]') : null; if (!k) return;
+    var n = k.closest('.srij-plooi'); if (!n) return;
+    n.classList.add('open'); k.setAttribute('aria-expanded', 'true');
+    var eerste = n.querySelector('.srij-extra'); if (eerste) try { eerste.focus({ preventScroll: true }); } catch (er) {}
+  });
   /* Onderaan elke lijstpagina: verder kijken als tekstlinks (geen rij met plaatjes die je voorbij moet schuiven). */
   function tekstLinks(kop, links) {
     if (!links.length) return '';
