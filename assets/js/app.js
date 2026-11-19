@@ -287,7 +287,7 @@
     } catch (e) { return true; }
   })();
   /* 17-11-2026 (nachtcontrole): grove grappen (mok 'Bakkie pleur op', middelvinger-paraplu) schuiven in de proef niet naar voren, behalve bij Grappige cadeaus */
-  var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
+  var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch(es)?\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
   function zkMix(p, sleutel) { return MIX && p.zk && (!GROF_T.test(p.titel || '') || /grappig/.test(sleutel || '')); }
   function mengEigen(top, rest, sleutel) {
     var kand = rest.filter(function (p) { return zkMix(p, sleutel) && p.beeld; });

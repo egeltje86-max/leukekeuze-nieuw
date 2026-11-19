@@ -13,7 +13,7 @@ let COR = { links: {}, vak: {}, samen: {} };
    (LK_TOPKEUZE['/collectie/black-friday'] in topkeuze.js) mogen een doorgestreepte prijs tot 70% korting tonen; voor al het andere is de grens 50%. */
 const BF_EIGEN = {};
 /* 17-11-2026: grove grappen niet bij Sinterklaas, Kerst en de budgetpagina's (zie verderop) */
-const GROF = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
+const GROF = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch(es)?\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
 const GROF_NIET = /^cadeaus\/(sinterklaas|kerst|onder-10|onder-15|sint-onder-10|sint-onder-15|schoencadeautjes)$/;
 const GROF_MAG = { 'dvzn-871551': 1 };
 try {
