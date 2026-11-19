@@ -40,7 +40,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=95336557927299", t = "assets/js/topkeuze.js?v=7681559795052";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=255364030144464", t = "assets/js/topkeuze.js?v=7681559795052";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -64,7 +64,7 @@
   <script>(function () { var c = '', i, n = [1, 2, 3, 5, 6, 7, 9]; for (i = 0; i < n.length; i++) if (window['LK_NOVA' + n[i]] !== false) c += ' nova' + n[i]; document.documentElement.className += c; })();</script>
   <link rel="preload" as="image" href="images/producten/cl-bol-fp-jungle.webp" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://leukekeuze.nl/"},{"@type":"ListItem","position":2,"name":"Speelgoed","item":"https://leukekeuze.nl/c/speelgoed/"},{"@type":"ListItem","position":3,"name":"Baby & peuter","item":"https://leukekeuze.nl/c/speelgoed/baby-peuter/"},{"@type":"ListItem","position":4,"name":"Babygyms & activiteitenspeelgoed","item":"https://leukekeuze.nl/c/speelgoed/baby-peuter/babygyms-activiteitenspeelgoed/"},{"@type":"ListItem","position":5,"name":"Fisher-Price babygym 3-in-1 jungle","item":"https://leukekeuze.nl/p/cl-bol-fp-jungle/"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Fisher-Price babygym 3-in-1 jungle","description":"Grote babygym met muziek en speeltjes die meegroeit: eerst liggen, later zitten en spelen.","image":"https://leukekeuze.nl/images/producten/cl-bol-fp-jungle.webp","url":"https://leukekeuze.nl/p/cl-bol-fp-jungle/","offers":{"@type":"Offer","price":"79.00","priceCurrency":"EUR","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition","url":"https://www.amazon.nl/dp/B0B5HWPH5F","seller":{"@type":"Organization","name":"Amazon"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Fisher-Price babygym 3-in-1 jungle","description":"Grote babygym met muziek en speeltjes die meegroeit: eerst liggen, later zitten en spelen.","image":"https://leukekeuze.nl/images/producten/cl-bol-fp-jungle.webp","url":"https://leukekeuze.nl/p/cl-bol-fp-jungle/","offers":{"@type":"AggregateOffer","lowPrice":"79.00","highPrice":"79.00","offerCount":1,"priceCurrency":"EUR","availability":"https://schema.org/InStock"}}</script>
 </head>
 <body>
   <!-- 13-11-2026 (grote keuring): de klassen die de app op <body> zet (NOVA-004 en NOVA-006, productpagina) staan er nu al voor de app start.

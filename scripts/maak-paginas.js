@@ -80,10 +80,11 @@ function maakLd(info, url) {
     const ean = (p.id.match(/^(?:dw|kw|inv|dgsw|dvzn|tf|bt|drm|hema)-(\d{13})$/) || [])[1];
     const eanOk = ean && (10 - ean.split('').slice(0, 12).reduce((s, c, i) => s + (+c) * (i % 2 ? 3 : 1), 0) % 10) % 10 === +ean[12];
     uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, gtin13: eanOk ? ean : undefined, brand: p.merk ? { '@type': 'Brand', name: p.merk } : undefined, description: p.tekst || undefined, image: beeld, url,
-      /* GOOGLE-HERSTEL (19-11-2026, VOORSTEL, staat UIT): verkopersvermeldingen zijn volgens Google alleen voor pagina's waar je zelf koopt.
-         Met LK_AGGREGATE=1 krijgt een productpagina 'AggregateOffer' (het voorbeeld van Google voor sites die naar andere winkels verwijzen)
-         in plaats van 'Offer' met verkoper. Pas aanzetten na GO van Marius (raakt alle productpagina's). */
-      offers: process.env.LK_AGGREGATE === '1'
+      /* GOOGLE-HERSTEL (19-11-2026, GO Marius 08:12): verkopersvermeldingen zijn volgens Google alleen voor pagina's waar je zelf koopt
+         ('not pages with links to other sites that sell the product'). Daarom krijgt een productpagina 'AggregateOffer' (het voorbeeld van Google
+         voor sites die naar andere winkels verwijzen) in plaats van 'Offer' met verkoper. Getest in de test van Google: alleen 'productfragment'.
+         Terug naar de oude vorm: LK_AGGREGATE=0. */
+      offers: process.env.LK_AGGREGATE !== '0'
         ? { '@type': 'AggregateOffer', lowPrice: Number(p.prijs).toFixed(2), highPrice: Number(p.prijs).toFixed(2), offerCount: 1, priceCurrency: 'EUR', availability: p.status === 'uitverkocht' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock' }
         : { '@type': 'Offer', price: Number(p.prijs).toFixed(2), priceCurrency: 'EUR', availability: p.status === 'uitverkocht' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', url: p.url, seller: { '@type': 'Organization', name: p.winkel } } });
   }
@@ -168,17 +169,24 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   const srv = await server();
   const basis = 'http://localhost:' + srv.address().port;
   const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
-  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const fouten = [];
-  page.on('pageerror', e => fouten.push(e.message));
-  await page.route('**/*.{webp,jpg,png,woff2}', r => r.abort());
-  await page.route('https://**', r => r.abort());
-  await page.goto(basis + '/');
-  await page.waitForFunction(() => window.LK && window.LK.ga && document.querySelector('#app').children.length);
-  /* Details (winkellinks, varianten, specs) alvast laden, zodat elke productpagina compleet gebouwd wordt
-     en de details van dát product in de HTML kunnen (snelheid, 31-10-2026). */
-  await page.addScriptTag({ url: basis + '/assets/js/producten-details.js' });
-  await page.evaluate(() => { const D = window.LK_DETAILS || {}; (window.LK_PRODUCTEN || []).forEach(p => { if (D[p.id]) Object.assign(p, D[p.id]); }); });
+  /* 19-11-2026: de browser van de bouw liep een paar keer vast ('Target crashed') na duizenden pagina's in één tabblad.
+     Daarom kan de bouw een nieuw tabblad openen en verder gaan waar hij was (zelfde instellingen, zelfde gegevens). */
+  async function nieuwePagina() {
+    const pg = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    pg.on('pageerror', e => fouten.push(e.message));
+    await pg.route('**/*.{webp,jpg,png,woff2}', r => r.abort());
+    await pg.route('https://**', r => r.abort());
+    await pg.goto(basis + '/');
+    await pg.waitForFunction(() => window.LK && window.LK.ga && document.querySelector('#app').children.length);
+    /* Details (winkellinks, varianten, specs) alvast laden, zodat elke productpagina compleet gebouwd wordt
+       en de details van dát product in de HTML kunnen (snelheid, 31-10-2026). */
+    await pg.addScriptTag({ url: basis + '/assets/js/producten-details.js' });
+    await pg.evaluate(() => { const D = window.LK_DETAILS || {}; (window.LK_PRODUCTEN || []).forEach(p => { if (D[p.id]) Object.assign(p, D[p.id]); }); });
+    return pg;
+  }
+  let page = await nieuwePagina();
+  let herstart = 0;
   /* Aftelbalk (Sinterklaas/kerst) alvast in de HTML zetten: anders schuift de hele pagina omlaag zodra de site hem toont (CLS). */
   const aftel = await page.evaluate(() => { const a = document.querySelector('[data-aftel]'); return a && !a.hidden ? a.outerHTML : ''; });
   /* Zoekbalk onder de kop ook alvast in de HTML (31-10-2026): anders schoof de pagina 50px omlaag zodra app.js hem maakte (CLS 0,06-0,09). */
@@ -243,7 +251,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   }
   while (rij.length) {
     const pad = rij.shift();
-    const r = await page.evaluate(pad => {
+    const bouwPad = (pg) => pg.evaluate(pad => {
       window.LK.ga(pad, true);
       const app = document.querySelector('#app').cloneNode(true);
       const links = Array.from(document.querySelectorAll('a[href^="/"]')).map(a => a.getAttribute('href'))
@@ -297,6 +305,15 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
       }
       return uit;
     }, pad);
+    let r;
+    try { r = await bouwPad(page); }
+    catch (e) {
+      if (!/crash|closed|Target/i.test(String(e && e.message)) || herstart >= 5) throw e;
+      herstart++; console.log('browser vastgelopen bij ' + pad + ', nieuw tabblad (' + herstart + ')');
+      try { await page.close(); } catch (e2) { /* al dicht */ }
+      page = await nieuwePagina();
+      r = await bouwPad(page);
+    }
     for (const l0 of r.links) { const l = /\/$/.test(l0) ? l0 : l0 + '/'; if (!gezien.has(l)) { gezien.add(l); rij.push(l); } } /* altijd met slash: één adres per pagina */
     if (r.nietGevonden) { console.log('overgeslagen (niet gevonden):', pad); continue; }
     let oms = r.seo || '';
