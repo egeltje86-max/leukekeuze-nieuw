@@ -7,5 +7,18 @@ Disallow: /nieuw/
 Disallow: /*naar=winkel
 Disallow: /lootjes-trekken/?
 Disallow: /*cadeau=
+# Filteradressen (19-11-2026, GOOGLE-HERSTEL, GO Marius): dezelfde pagina met een filter erachter.
+# Google telt toch alleen de gewone pagina (canonical), dus hier hoeft hij geen tijd aan te besteden.
+Disallow: /*prijs=
+Disallow: /*sort=
+Disallow: /*soort=
+Disallow: /*merk=
+Disallow: /*voor=
+Disallow: /*leeftijd=
+Disallow: /*wie=
+Disallow: /*kind=
+Disallow: /*kal=
+Disallow: /*niveau=
+Disallow: /*alles=
 
 Sitemap: https://leukekeuze.nl/sitemap.xml
