@@ -313,20 +313,20 @@
      Eerst alleen via de testlink ?proef=winkelhulp (blijft onthouden op dat apparaat; uit: ?proef=winkelhulp-uit). Voor iedereen: window.LK_WINKELHULP = true. */
   /* 18-11-2026 07:32: GO Marius ('Go'): aan voor iedereen. Zelf zonder bekijken: ?proef=winkelhulp-uit (weer aan: ?proef=winkelhulp); helemaal uit: window.LK_WINKELHULP = false. */
   var WINKELHULP = (function () { if (window.LK_WINKELHULP === false) return false; try { if (/[?&]proef=winkelhulp-uit(&|$)/.test(location.search)) localStorage.setItem('lkwinkelhulp', '0'); else if (/[?&]proef=winkelhulp(&|$)/.test(location.search)) localStorage.removeItem('lkwinkelhulp'); return localStorage.getItem('lkwinkelhulp') !== '0'; } catch (e) { return true; } })();
-  var BEZORG_DATUM = '18 november 2026';
+  var BEZORG_DATUM = '18 november 2026'; /* 20-11-2026: per winkel 'datum' als die later opnieuw is nagekeken (controlroom\verzend-zoek.py). */
   var BEZORG_INFO = {
-    'Ditverzinjeniet': { gratis: 60, snel: 'Snelle verzending vanuit Nederland', kosten: 'Gratis verzending vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)', naamNiet: 'Met naam of eigen tekst kun je niet retourneren' },
-    'Cadeau.nl': { gratis: 60, morgen: true, snel: 'Voor 22:45 besteld, morgen in huis', kosten: 'Verzenden vanaf € 4,99, gratis vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)' },
-    'De Grote Speelgoedwinkel': { morgen: true, snel: 'Op werkdagen voor 17:00 besteld: dezelfde dag verzonden, meestal morgen in huis', kosten: 'Brievenbuspakje € 4,95, gewoon pakket € 6,49', retour: '14 dagen bedenktijd' },
-    'CoolGift': { gratis: 49, snel: 'In Nederland 1 werkdag na verzending (met naam of foto: een paar dagen langer)', kosten: 'Verzenden € 4,95, gratis vanaf € 49', retour: 'Tot 90 dagen ruilen of retour' },
-    'Coolblue': { gratis: 0, kosten: 'Gratis bezorgd', retour: 'Gratis ruilen' },
-    'HEMA': { retour: 'Binnen 30 dagen gratis retour' },
+    'Ditverzinjeniet': { datum: '20 november 2026', gratis: 60, snel: 'Snelle verzending vanuit Nederland', kosten: 'Gratis verzending vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)', naamNiet: 'Met naam of eigen tekst kun je niet retourneren' },
+    'Cadeau.nl': { datum: '20 november 2026', gratis: 60, morgen: true, snel: 'Voor 22:45 besteld, morgen in huis', kosten: 'Verzenden vanaf € 4,99, gratis vanaf € 60', retour: 'Tot 365 dagen retour (€ 2,99 per retour)' },
+    'De Grote Speelgoedwinkel': { datum: '20 november 2026', morgen: true, snel: 'Op werkdagen voor 17:00 besteld: dezelfde dag verzonden, meestal morgen in huis', kosten: 'Brievenbuspakje € 4,95, gewoon pakket € 6,49', retour: '14 dagen bedenktijd' },
+    'CoolGift': { datum: '20 november 2026', gratis: 49, snel: 'In Nederland 1 werkdag na verzending (met naam of foto: een paar dagen langer)', kosten: 'Verzenden € 4,95, gratis vanaf € 49', retour: 'Tot 90 dagen ruilen of retour' },
+    'Coolblue': { datum: '20 november 2026', gratis: 0, kosten: 'Gratis bezorgd', retour: 'Gratis ruilen' },
+    'HEMA': { datum: '20 november 2026', retour: 'Binnen 30 dagen gratis retour' },
     'Dille & Kamille': { retour: 'Tot 100 dagen retour' },
     'LEGO': { gratis: 55, kosten: 'Gratis bezorgd vanaf € 55 (voorwaarden bij LEGO)', retour: 'Gratis retour; besteld tussen 1 november en 24 december: tot 90 dagen' },
-    'Boekenwereld.com': { gratis: 19.95, morgen: true, snel: 'Op werkdagen voor 22:00 besteld, volgende werkdag in huis', kosten: 'Verzenden € 2,95, gratis vanaf € 19,95' },
-    'Grote Kadoshop': { retour: '14 dagen bedenktijd, terugsturen op eigen kosten' },
-    'Parfumania': { morgen: true, snel: 'Vandaag besteld, morgen in huis (voorwaarden bij Parfumania)', retour: '30 dagen retour' },
-    'Countrylifestyle': { retour: '14 dagen retour' }
+    'Boekenwereld.com': { datum: '20 november 2026', gratis: 19.95, morgen: true, snel: 'Op werkdagen voor 22:00 besteld, volgende werkdag in huis', kosten: 'Verzenden € 2,95, gratis vanaf € 19,95' },
+    'Grote Kadoshop': { datum: '20 november 2026', retour: '14 dagen bedenktijd, terugsturen op eigen kosten' },
+    'Parfumania': { datum: '20 november 2026', morgen: true, snel: 'Vandaag besteld, morgen in huis (voorwaarden bij Parfumania)', retour: '30 dagen retour' },
+    'Countrylifestyle': { datum: '20 november 2026', retour: '14 dagen retour' }
   };
   function euroKort(n) { return '€ ' + (Math.round(n * 100) % 100 ? Number(n).toFixed(2).replace('.', ',') : String(Math.round(n))); }
   /* GOOGLE-HERSTEL (19-11-2026, GO Marius): eigen cadeau-advies op productpagina's die Google eerder goed liet zien.
@@ -359,7 +359,7 @@
     if (!r.length) return '';
     return '<div class="wh-bezorg"><h2>' + ic('winkel') + 'Bezorgen en retour bij ' + esc(p.shop) + '</h2><ul>' +
       r.map(function (x) { return '<li>' + ic(x[0]) + '<span>' + esc(x[1]) + '</span></li>'; }).join('') +
-      '</ul><p class="wh-bron">Zo staat het op de site van ' + esc(p.shop) + ' (nagekeken op ' + BEZORG_DATUM + '). Kijk bij het bestellen even of het nog klopt.</p></div>';
+      '</ul><p class="wh-bron">Zo staat het op de site van ' + esc(p.shop) + ' (nagekeken op ' + (w.datum || BEZORG_DATUM) + '). Kijk bij het bestellen even of het nog klopt.</p></div>';
   }
   function whHash(t) { var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0; return h >>> 0; }
   function doeErBij(p) {
