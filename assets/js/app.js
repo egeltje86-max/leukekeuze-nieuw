@@ -286,6 +286,18 @@
       return localStorage.getItem('lkstrak2') !== 'uit';
     } catch (e) { return true; }
   })();
+  /* RIJTJES (voorbeeld 20-11-2026, Marius: 'ja doe' op 'per onderwerp een rijtje, net als bij de categorieën'): op Voor hem en Voor haar niet één
+     lange gemengde lijst, maar eerst 'Onze favorieten' (vier uit de handgekozen top) en daaronder per onderwerp een rijtje van vier met 'Alle …'.
+     Baymard: een overzichtspagina mag per soort een paar producten tonen, zolang de keuze van de soort (de rondjes) bovenaan blijft.
+     Nu alleen te zien via ?proef=rijtjes (uit: ?proef=rijtjes-uit); voor iedereen aan: window.LK_RIJTJES = true. De bouw tekent het niet. */
+  var RIJTJES = window.LK_RIJTJES === true || (window.LK_RIJTJES !== false && (function () {
+    try {
+      var m = /[?&]proef=rijtjes(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.removeItem('lkrijtjes'); else localStorage.setItem('lkrijtjes', 'aan'); }
+      return localStorage.getItem('lkrijtjes') === 'aan';
+    } catch (e) { return false; }
+  })());
+  var RIJTJES_VOOR = ['hem', 'haar'];
   /* 17-11-2026 (nachtcontrole): grove grappen (mok 'Bakkie pleur op', middelvinger-paraplu) schuiven in de proef niet naar voren, behalve bij Grappige cadeaus */
   var GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch(es)?\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
   function zkMix(p, sleutel) { return MIX && p.zk && (!GROF_T.test(p.titel || '') || /grappig/.test(sleutel || '')); }
@@ -957,8 +969,12 @@
   function slimIco(naam) { for (var i = 0; i < SLIM_ICO.length; i++) if (SLIM_ICO[i][0].test(naam)) return SLIM_ICO[i][1]; return '🎁'; }
   /* Per pagina: titel en de handmatig gekozen top 6 (sleutels = bestaande slugs). Niet gevonden of leeg = niet tonen. */
   var SLIM = {
-    '/voor/hem': { titel: 'Waar houdt hij van?', top: ['gadgets-gaming', 'darts-sport', 'bbq-lekkers', 'horloges-sieraden', 'parfum-verzorging', 'zakmessen-gereedschap'] }, /* 15-11-2026: drank niet meer bij personen, dus 'Glazen & barspullen' niet meer bij de eerste zes */
-    '/voor/haar': { titel: 'Waar houdt ze van?', top: ['parfum-verzorging', 'pantoffels-sjaals-kleding', 'wonen-sfeer', 'champagne-wijn-lekkers', 'gadgets-audio', 'bloemen-planten'] }, /* 11-11-2026: 'sieraden' uit de eerste zes (wens Marius) */
+    /* 20-11-2026 (Marius: 'ja doe' op een betere volgorde van de onderwerpen): de hele volgorde vast, op wat verkoopt en aangeklikt wordt.
+       Verkocht: HEMA-pyjama en teddy-hoodie (kleding), tegeltje (wonen), 3D-pen (spellen); meest aangeklikt: Useless Box (gadgets).
+       Op de telefoon staan de eerste zeven in beeld, de rest achter 'Nog …'. Horloges en sieraden zijn nog nooit verkocht, dus verder naar achteren,
+       behalve Sieraden bij haar (plek 7): Marius koos daar op 16-11 zelf 121 nieuwe oorbellen en ringen voor uit. */
+    '/voor/hem': { titel: 'Waar houdt hij van?', top: ['gadgets-gaming', 'pantoffels-kleding', 'darts-sport', 'lego-spellen', 'bbq-lekkers', 'zakmessen-gereedschap', 'parfum-verzorging', 'wonen-keuken', 'whisky-bier-drank', 'boeken-muziek', 'horloges-sieraden', 'portemonnees-tassen', 'belevenissen'] }, /* 15-11-2026: drank niet meer bij personen, dus 'Glazen & barspullen' niet meer bij de eerste zes */
+    '/voor/haar': { titel: 'Waar houdt ze van?', top: ['pantoffels-sjaals-kleding', 'wonen-sfeer', 'parfum-verzorging', 'met-naam', 'champagne-wijn-lekkers', 'puzzels-spellen', 'sieraden', 'keuken-koffie-thee', 'boeken-agendas', 'bloemen-planten', 'gadgets-audio', 'haken-breien-creatief', 'yoga-sport', 'tassen-portemonnees', 'horloges', 'belevenissen'] }, /* 11-11-2026: 'sieraden' uit de eerste zes (wens Marius) */
     '/voor/kinderen': { titel: 'Waar speelt je kind graag mee?', top: ['bouwen', 'figuren', 'spellen', 'buiten', 'knutselen', 'boeken'] },
     '/voor/tieners': { titel: 'Waar is je tiener mee bezig?', top: ['gaming-gadgets', 'lego-creatief', 'mode', 'geuren-verzorging', 'sport-darts', 'spellen-puzzels'] }, /* 11-11-2026: 'sieraden' uit de eerste zes (wens Marius) */
     '/voor/opa-oma': { titel: 'Waar worden ze blij van?', top: ['fotos-herinneringen', 'lekkers-drank', 'boeken', 'tuin-vogels', 'puzzels-spellen', 'warm-comfortabel'] },
@@ -2694,6 +2710,29 @@
       var wzN = Math.min(24, wzLijst.length); /* 13-11-2026: 24 meteen in beeld (was 12) */
       var wzKop = !wzLijst.length ? '' : '<div class="wz-uit"><h2>' + (wzN === 1 ? 'Onze beste keuze' : 'Onze ' + wzN + ' beste keuzes') + '</h2>' +
         (RUST ? '<p>Met de hand gekozen voor ' + esc(wzNaam) + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '.</p>' : wzLijst.length > 12 ? '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus voor ' + esc(wzNaam) + (q.leeftijd && wzLft ? ' van ' + esc(q.leeftijd.replace('-', ' tot ')) + ' jaar' : '') + (psAan ? (psX ? ', tot €&nbsp;' + psX : '') : wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + (s ? ', bij ' + esc(s.naam.toLowerCase()) : '') + '. Wij hebben al voor je gekozen.</p>' : '') + '</div>';
+      /* RIJTJES (voorbeeld, zie bovenaan): eerst vier favorieten, dan per onderwerp (zelfde volgorde als de rondjes) de eerste vier van dat onderwerp,
+         precies zoals de pagina van dat onderwerp ze zelf toont. Geen cadeau twee keer; een onderwerp met minder dan twee cadeaus (bijv. door het
+         gekozen bedrag) valt weg. */
+      var wzRij = '';
+      if (RIJTJES && !s && !RUST && !psAan && RIJTJES_VOOR.indexOf(pe.slug) !== -1 && wzLijst.length > 24) {
+        var rGehad = {}, rNeem = function (l, n) { var uit = []; for (var i = 0; i < l.length && uit.length < n; i++) if (!rGehad[l[i].id]) { rGehad[l[i].id] = 1; uit.push(l[i]); } return uit; };
+        var rFav = rNeem(wzLijst, 4);
+        var rRijen = volleSubsP.slice().sort(function (u, v) { return wzPlek(u) - wzPlek(v); }).map(function (x) {
+          var sp = '/voor/' + pe.slug + '/' + x.slug;
+          var sa = persoonProducten(pe, x.vakken), no = (window.LK_NIETOP && window.LK_NIETOP[sp]) || [];
+          if (no.length) sa = sa.filter(function (p) { return no.indexOf(p.id) === -1; });
+          sa = kmUit(sa, sp);
+          var sl = sorteer(sa.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), '', sp);
+          sl = kmOrde(sieradenLaat(etalageEerst(sl, sp), sp), sp);
+          var vier = rNeem(sl, 4);
+          if (vier.length < 2) return '';
+          return '<section class="wz-rij" data-tel="rij-' + x.slug + '"><div class="wz-rij-kop"><h2>' + esc(x.naam) + '</h2><a href="' + metBudget(sp) + '">Alle ' + getal(sl.length) + ' ' + ic('pijl') + '</a></div>' +
+            '<div class="prodgrid">' + vier.map(LK.productKaart).join('') + '</div></section>';
+        }).join('');
+        wzRij = '<section class="wz-rij wz-rij-fav" data-tel="rij-favorieten"><div class="wz-rij-kop"><h2>Onze favorieten voor ' + esc(wzNaam) + '</h2></div>' +
+          '<p>Gekozen uit ' + getal(wzLijst.length) + ' cadeaus' + (wzPrijs ? ' ' + esc(wzPrijs.label.toLowerCase()) : '') + '. Daaronder per onderwerp de beste vier.</p>' +
+          '<div class="prodgrid">' + rFav.map(function (p, i) { return eerstSnel(LK.productKaart(p), i); }).join('') + '</div></section>' + rRijen;
+      }
       return paginakop({
         titel: s ? s.naam + ' voor ' + naam : pe.naam,
         tekst: '', /* de inleiding staat in de gebouwde pagina (voor Google); in de nieuwe opzet gaan de keuzes en de cadeaus voor */
@@ -2708,7 +2747,7 @@
         '</section>' +
         /* 13-11-2026 (wens Marius): 24 cadeaus meteen, bij het scrollen nog 24 vanzelf, daarna één duidelijke knop; sorteren en filteren als echte knop */
         (psAan ? '<div class="ps-wrap">' + prijsSchuif(PS_LIJSTEN[psK].vol, psX, psK) + '<div data-ps-uit>' : '') +
-        wzKop + (RUST ? gridMeer(wzLijst, leeg, 24, 'Laat er nog 24 zien') : gridMeer(wzLijst, psAan ? psLeeg() : leeg, 24, 'Meer cadeaus laten zien', 1)) + (psAan ? '</div></div>' : '') +
+        (wzRij || wzKop + (RUST ? gridMeer(wzLijst, leeg, 24, 'Laat er nog 24 zien') : gridMeer(wzLijst, psAan ? psLeeg() : leeg, 24, 'Meer cadeaus laten zien', 1))) + (psAan ? '</div></div>' : '') +
         (RUST && wzTotaal > 24 ? '<p class="wz-alles rh-alles"><a href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Alles bekijken en filteren</a></p>' : '') +
         (!RUST && wzLijst.length > 24 ? '<p class="wz-alles"><a class="knop knop-rand" href="' + maakAdres(pad, Object.assign({}, q.prijs ? { prijs: q.prijs } : {}, q.leeftijd && wzLft ? { leeftijd: q.leeftijd } : {}, { alles: '1' })) + '" data-wz-alles>' + ic('filter') + 'Sorteren en filteren <small>(alle ' + getal(wzLijst.length) + ')</small></a></p>' : '') +
         leesOok(pe.oud || 'voor/' + pe.slug) + (pe.slug === 'kinderen' && !s ? leeftijdRij() : '') +

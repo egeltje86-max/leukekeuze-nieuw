@@ -2929,3 +2929,13 @@ html.nova9 .slimnav .sn-beeld.sn-rond { box-shadow: none; }
   .wzh .wzh-wie .wzh-cat-kop { text-align: center; }
 }
 /* ===== einde CATEGORIEËN EERST ===== */
+/* ===== RIJTJES PER ONDERWERP (voorbeeld 20-11-2026, alleen via ?proef=rijtjes): op Voor hem en Voor haar eerst vier favorieten,
+   daaronder per onderwerp een rijtje van vier met 'Alle …'. Code: RIJTJES en wzRij in app.js. ===== */
+.wijzer .wz-rij { margin: 20px 0 4px; padding-top: 16px; border-top: 1px solid #E5D7BE; }
+.wijzer .wz-rij-kop { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.wijzer .wz-rij-kop h2 { margin: 0; min-width: 0; font: 600 21px/1.2 var(--f-kop, "Playfair Display", serif); color: #141A2A; text-wrap: balance; }
+.wijzer .wz-rij-kop a { flex: none; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; font: 700 14px/1 var(--f-ui, Manrope, sans-serif); color: #8F6620; text-decoration: none; white-space: nowrap; }
+.wijzer .wz-rij-kop a svg { width: 16px; height: 16px; }
+.wijzer .wz-rij > p { margin: -4px 0 12px; font-size: 14px; color: #5B6072; }
+@media (min-width: 760px) { .wijzer .wz-rij .prodgrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* ===== einde RIJTJES PER ONDERWERP ===== */
