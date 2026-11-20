@@ -29,7 +29,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="preload" as="script" href="assets/js/app.js?v=221212362885435" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=186432004871519" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=269637867276576" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=108812805480285">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=112916445217564", t = "assets/js/topkeuze.js?v=112630685527372";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=235202593147524", t = "assets/js/topkeuze.js?v=112630685527372";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -208,7 +208,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"nedg-635d05fe70":{"url":"https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fplaystation-5%2Fsand-land-collector-s-edition%2F1841564398%2F","winkelUrl":"https://www.nedgame.nl/tradetracker/?tt=558_1597395_516846_&r=https%3A%2F%2Fwww.nedgame.nl%2Fplaystation-5%2Fsand-land-collector-s-edition%2F1841564398%2F","subVast":true,"gecontroleerd":"2026-11-20","herkomst":"kieslijst","advies":{"voor":"Fans van Dragon Ball-tekenaar Akira Toriyama.","niet":"Je alleen het spel wilt, zonder extra's.","alt":["dvzn-a4ed4f69b9","cl-minecraft"],"meer":[["Cadeaus voor tieners","/voor/tieners/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"Sand Land Collector's Edition voor de PS5: een avontuur in de woestijnwereld van Akira Toriyama, met de demonenprins Beelzebub. Nedgame verkoopt het spel nieuw en tweedehands; kijk bij de winkel wat je krijgt."}};</script>
-  <script src="assets/js/data.js?v=186432004871519"></script>
+  <script src="assets/js/data.js?v=269637867276576"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
   <script src="assets/js/app.js?v=221212362885435"></script>
