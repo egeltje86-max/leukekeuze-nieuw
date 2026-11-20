@@ -1914,23 +1914,24 @@
     var wzTegel = function (naam, naar, beeld, icoon) {
       return '<a class="wzh-tegel" href="' + naar + '">' + (beeld ? '<span class="wzh-rond"><img src="' + beeld + '" alt="" width="64" height="64" decoding="async"></span>' : '<span class="wzh-rond wzh-icoon">' + ic(icoon) + '</span>') + '<span>' + esc(naam) + '</span></a>';
     };
+    /* 20-11-2026 (Marius: 'zullen we die omdraaien, de categorieën eerst; ik vind de categorieën het mooist ingedeeld'): eerst alle 15 categorieën
+       (kleine rondjes, vier naast elkaar, als zestiende 'Alle producten'), daaronder 'Voor wie'. Daarvoor stond 'Voor wie' bovenaan.
+       De categorieën staan sinds 17-11-2026 op de homepage (Marius: 'je kan geen categorieën kiezen, het is te lastig, ik kom er niet bij'). */
+    var wzCat = '<nav class="srij srij-raster" aria-label="Categorieën"><div class="srij-baan">' +
+        CATS.map(function (c) {
+          return '<a class="srij-item" href="/c/' + c.slug + '"><span class="srij-rond" aria-hidden="true"><img src="' + esc(c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" decoding="async" width="64" height="64"></span>' +
+            '<span class="srij-naam">' + esc(c.naam).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }) + '</span></a>';
+        }).join('') +
+        '<a class="srij-item alles" href="/categorieen"><span class="srij-rond" aria-hidden="true"><img src="images/sub/rond/h-alle-categorieen-klein.webp" alt="" decoding="async" width="64" height="64"></span><span class="srij-naam">Alle producten</span></a>' +
+      '</div></nav>';
     return '<div class="binnen wzh wijzer">' +
-      '<section class="sectie eerste wzh-vraag" data-tel="voor-wie">' + soortWissel('cadeau') + '<h1>Voor wie zoek je een cadeau?</h1><p class="wzh-sub">Tik op één plaatje. Je ziet meteen onze beste keuzes.</p>' +
+      '<section class="sectie eerste wzh-vraag wzh-cat" data-tel="categorie">' + soortWissel('cadeau') + '<h1>Kies een categorie</h1><p class="wzh-sub">Tik op een rondje. Je ziet meteen onze mooiste cadeaus.</p>' + wzCat + '</section>' +
+      '<section class="sectie wzh-wie" data-tel="voor-wie"><h2 class="wzh-cat-kop">Of kies voor wie het is</h2>' +
         '<nav class="wzh-raster" aria-label="Voor wie zoek je een cadeau?">' +
           window.LK_PERSONEN.map(function (x) { return wzTegel(x.kort, x.subs ? '/voor/' + x.slug : x.naar, 'images/sub/rond/voor-' + x.slug + '-klein.webp'); }).join('') +
           wzTegel('Zelf zoeken', '/zoek', 'images/sub/rond/h-zelf-zoeken-klein.webp') + wzTegel(SOORTEN ? 'Producten' : 'Categorieën', '/categorieen', 'images/sub/rond/h-alle-categorieen-klein.webp') +
         '</nav></section>' +
-      /* 17-11-2026 (Marius: 'je kan geen categorieën kiezen, het is te lastig, ik kom er niet bij; het moet makkelijk zijn om overal te komen
-         wat de website te bieden heeft en het moet er goed uitzien'): alle 15 categorieën direct onder 'Voor wie', als kleine rondjes (vier naast
-         elkaar, zelfde als op de categoriepagina's), en als zestiende 'Alle producten' naar Zoek een product. */
-      '<section class="sectie wzh-cat" data-tel="categorie"><h2 class="wzh-cat-kop">Of kies een categorie</h2><nav class="srij srij-raster" aria-label="Categorieën"><div class="srij-baan">' +
-        CATS.map(function (c) {
-          return '<a class="srij-item" href="/c/' + c.slug + '"><span class="srij-rond" aria-hidden="true"><img src="' + esc(c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" loading="lazy" decoding="async" width="64" height="64"></span>' +
-            '<span class="srij-naam">' + esc(c.naam).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }) + '</span></a>';
-        }).join('') +
-        '<a class="srij-item alles" href="/categorieen"><span class="srij-rond" aria-hidden="true"><img src="images/sub/rond/h-alle-categorieen-klein.webp" alt="" loading="lazy" decoding="async" width="64" height="64"></span><span class="srij-naam">Alle producten</span></a>' +
-      '</div></nav></section>' +
-      rijmBlok('home') + /* 15-11-2026: lootjes trekken en de rijmmachine direct onder 'Voor wie' (seizoen, tot en met 5 december) */
+      rijmBlok('home') + /* 15-11-2026: lootjes trekken en de rijmmachine direct onder de categorieën en 'Voor wie' (seizoen, tot en met 5 december) */
       /* 11-11-2026 (Marius: 'kijk wat nog meer goed is om op de homepage te zetten'): wat het best loopt (grappig en origineel) en kiezen op bedrag. */
       '<section class="sectie wzh-soort" data-tel="soort"><p class="wz-vraag">Of kies een soort cadeau</p><nav class="mini-raster breed" aria-label="Soort cadeau">' +
         [['Grappige cadeaus', '/collectie/grappige-cadeaus', 'col-grappige-cadeaus'], ['Originele cadeaus', '/collectie/originele-cadeaus', 'col-originele-cadeaus'], ['Met naam of foto', '/collectie/persoonlijke-cadeaus', 'col-persoonlijke-cadeaus'], ['Toppers van nu', '/collectie/toppers-van-nu', 'col-toppers-van-nu']]

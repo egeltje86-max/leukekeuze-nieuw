@@ -2919,3 +2919,13 @@ html.rust .alle-winkels[data-sleutel] { display: none; }
 .catbalk:hover .catbalk-rond { box-shadow: 0 10px 18px -8px rgba(0,0,0,.6); }
 html.nova9 .slimnav .sn-beeld.sn-rond { box-shadow: none; }
 /* ===== einde RONDJES ZONDER GOUDEN RAND ===== */
+/* ===== CATEGORIEËN EERST (20-11-2026, Marius: 'zullen we die omdraaien, de categorieën eerst'): op de homepage staan de 15 categorieën
+   bovenaan en 'Voor wie' eronder. Het eerste blok houdt de ruimte van een eerste blok; op de computer staat alles in het midden. ===== */
+.wzh .sectie.eerste.wzh-cat { padding-top: 18px; }
+.wzh .wzh-vraag.wzh-cat .wzh-sub { margin-bottom: 12px; }
+.wzh .wzh-wie { padding-top: 4px; }
+@media (min-width: 760px) {
+  .wzh .wzh-vraag.wzh-cat .srij-baan { justify-content: center; }
+  .wzh .wzh-wie .wzh-cat-kop { text-align: center; }
+}
+/* ===== einde CATEGORIEËN EERST ===== */
