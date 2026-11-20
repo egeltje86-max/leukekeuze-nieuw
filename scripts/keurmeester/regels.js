@@ -168,7 +168,8 @@ function regels(smalPag) {
       uitleg: 'Past bij een bepaalde hobby of smaak (gamen, whisky, bier, golf, voetbal). Mooi als je die kent, maar als algemeen bedankje of voor een collega pas na de cadeaus die bij iedereen passen.',
       voorstel: 'Bij Bedankt, Juf & meester, Beterschap en collega’s een paar rijen lager.' },
     { naam: 'huid-en-bad', zacht: true, test: (p) => R.huid.test(T(p)) && !R.pakketStreng.test(T(p)),
-      g: { bedankt: 8, juf: 8 }, p: {},
+      /* 20-11-2026: niet bij Bedankt voor kinderen: grappige bruisballen zijn daar speelgoed voor in bad (Nova: dinopoep-bruisballen goed). */
+      g: {}, p: {}, gp: { bedankt_: 8, bedankt_hem: 8, bedankt_haar: 8, bedankt_tieners: 8, bedankt_collega: 8, 'bedankt_opa-oma': 8, juf_: 8, juf_hem: 8, juf_haar: 8 },
       uitleg: 'Scrub, zeep of bruisballen: persoonlijke smaak. Als bedankje pas na de neutrale cadeaus.',
       voorstel: 'Bij Bedankt en Juf & meester een paar rijen lager.' },
     { naam: 'jubileum-van-een-bepaald-jaar', zacht: true, test: (p) => R.jubileumJaar.test(T(p)),
@@ -184,7 +185,7 @@ function regels(smalPag) {
       uitleg: 'Voor één leeftijd (Abraham, 50 jaar). Op de gewone verjaardagspagina pas na de cadeaus voor elke leeftijd; met de knop voor die leeftijd staat het vooraan.',
       voorstel: 'Bij Verjaardag een paar rijen lager.' },
     { naam: 'voor-een-stel', zacht: true, test: (p) => R.stel.test(T(p)),
-      g: {}, p: {}, gp: { _hem: 8, _haar: 8, housewarming_: 8, housewarming_hem: 8, housewarming_haar: 8, bedankt_hem: 8, bedankt_haar: 8 }, /* bij Valentijn en Jubileum gewoon */
+      g: {}, p: {}, gp: { _hem: 8, _haar: 8, housewarming_hem: 8, housewarming_haar: 8, bedankt_hem: 8, bedankt_haar: 8 }, /* bij Valentijn en Jubileum gewoon; 20-11-2026: ook op de gewone Housewarming-pagina (samenwonen is daar juist het onderwerp; Nova: serveerplank 'Samenwonen' goed) */
       uitleg: 'Voor een stel of je partner (Mr & Mrs, I love you). Op de gewone pagina’s voor hem en haar pas na de rest; bij Valentijn en Jubileum gewoon vooraan.',
       voorstel: 'Bij hem en haar een paar rijen lager.' },
     { naam: 'veel-snoep-in-een-keer', zacht: true, test: (p) => R.veelSnoep.test(T(p)) && R.snoep.test(T(p)),

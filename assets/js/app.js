@@ -571,8 +571,10 @@
     return (c.g ? p._km['g.' + c.g] || 0 : 0) + (c.pe ? p._km['p.' + c.pe] || 0 : 0);
   }
   /* Fase 2 (20-11-2026): zachte aftrek (km 'zg.'/'zp.'): het cadeau schuift een paar rijen naar achteren, maar gaat nooit van de pagina. */
+  /* Zelf vergelijken zonder de zachte regels: ?proef=zacht-uit (weer aan: ?proef=zacht); helemaal uit: window.LK_KM_ZACHT = false. */
+  var KM_Z = (function () { try { if (/[?&]proef=zacht-uit(&|$)/.test(location.search)) sessionStorage.setItem('lkkmz', '0'); else if (/[?&]proef=zacht(&|$)/.test(location.search)) sessionStorage.removeItem('lkkmz'); return window.LK_KM_ZACHT !== false && sessionStorage.getItem('lkkmz') !== '0'; } catch (e) { return window.LK_KM_ZACHT !== false; } })();
   function kmZacht(p, c) {
-    if (!p.km) return 0; kmAftrek(p, c);
+    if (!p.km || !KM_Z) return 0; kmAftrek(p, c);
     return (c.g ? p._km['zg.' + c.g] || 0 : 0) + (c.pe ? p._km['zp.' + c.pe] || 0 : 0) + (p._km['zx.' + (c.g || '') + '_' + (c.pe || '')] || 0);
   }
   function kmUit(l, pad) {

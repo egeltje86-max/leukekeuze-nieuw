@@ -431,7 +431,7 @@
    ],
    "groep": [],
    "thema": "spel\\b|spellen|speelkaart|puzzel",
-   "niet": "\\blego\\b"
+   "niet": "\\blego\\b(?!.*puzzel)"
   },
   "voor/tieners/kamer": {
    "afd": [

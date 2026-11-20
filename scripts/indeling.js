@@ -11,6 +11,8 @@ const MOEDERDAG_IDS = new Set(FEEST_IDS.moederdag), VADERDAG_IDS = new Set(FEEST
 /* Collectie 'Toppers van nu' (01-11-2026): vaste lijst + bekende hits op titel. */
 const TOPPERS = require('./toppers-van-nu.json'), TOPPERS_IDS = new Set(TOPPERS.ids), TOPPERS_WOORD = new RegExp(TOPPERS.woorden, 'i');
 const COLLEGA = require('./collega.json');
+/* Met de hand gekozen voor een pagina 'Originele cadeaus' (scripts/top/picks.json). */
+const ORIG_TOP = (() => { try { const pk = require('./top/picks.json'); return new Set(Object.keys(pk).filter((k) => /^\/collectie\/originele-cadeaus(\/|$)/.test(k)).reduce((a, k) => a.concat(pk[k]), [])); } catch (e) { return new Set(); } })();
 /* 20-11-2026 (Cadeaukeurmeester fase 2): de vaste regels van de keurmeester worden al bij het indelen gebruikt, zodat een grafsteenkaars of een
    potje truffelcrème niet eerst het label 'bedankje voor een collega' krijgt (en de keurmeester het daarna weer moet weghalen). */
 const KM = require('./keurmeester/regels.js'); const KM_L = KM.regels({});
@@ -459,6 +461,9 @@ function deel(p0) {
   if (/belevenis|ervaring|workshop|ballonvaart|high ?tea arrangement|overnachting|dagje uit|escape ?room|uitje|wellness ?arrangement|bongo/i.test(titel)) tags.add('belevenis');
   /* Origineel: heel bijzondere of opvallende cadeaus. */
   /* 20-11-2026: 'gek' en 'apart' alleen als los woord (niet 'gekleurd'). Een ruimere ingreep haalde ook cadeaus weg die Nova goed vond (Instax mini, mini-zentuin). */
+  /* 20-11-2026: wat met de hand in de top van een pagina 'Originele cadeaus' staat, blijft origineel (de KPop-soundtrack op gekleurd vinyl en het
+     shiatsu-massagekussen stonden daar alleen door 'gekleurd' en 'massagekussen'; Nova vond ze daar goed). Niet La Redoute (staat in geen top meer). */
+  if (ORIG_TOP.has(p.id) && /gek|apart/i.test(titel) && p.shop !== 'La Redoute') tags.add('origineel'); /* alleen terugzetten wat er al stond, niets nieuws erbij */
   if (/origineel|uniek|bijzonder|grappig|\bgekke?\b|\bapart\b|opvallend|ludiek|verrassend|mini |miniatuur|book ?nook|levitat|zwevend|sterrenkaart|star ?map|moon ?lamp|maanlamp|3d|lichtgevend|in ?glas|terrarium|kraskaart|scratch|wereldkaart|kweekset|grow ?your ?own|bonsai/i.test(titel)) tags.add('origineel');
 
   /* Metaaldetectie: niveau. */
@@ -479,7 +484,10 @@ function deel(p0) {
     const bedanktTekst = /bedankt|dankjewel|dank je|thank|merci|top collega|beste collega|super collega|goud waard|\bjuf\b|meester/i.test(titel);
     const afscheid = !COL_NIET_A.has(p.id) && (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id) || COL_A.has(p.id));
     if (afscheid) tags.add('collega-afscheid');
-    const nietBedank = kmHard(p, ['g.bedankt', 'p.collega']) || smalAnders(titel, 'bedankje bedankt'), nietLoot = kmHard(p, ['g.lootjes', 'p.collega']);
+    /* 20-11-2026: een tekst voor een ander moment (verjaardag, beterschap, gefeliciteerd) is ook geen lootje: die cadeaus kregen na de vorige
+       regel het label 'collega-lootjes' als vangnet. Ze staan nog wel bij Collega's en bij hun eigen gelegenheid. */
+    const anderMoment = smalAnders(titel, 'collega lootjes') || (KM.R.verjaardag.test(titel) && !/verjaardags?kalender/i.test(titel));
+    const nietBedank = kmHard(p, ['g.bedankt', 'p.collega']) || smalAnders(titel, 'bedankje bedankt'), nietLoot = kmHard(p, ['g.lootjes', 'p.collega']) || anderMoment;
     if (COL_B.has(p.id) || (!afscheid && !nietBedank && (bedanktTekst || (lekker && p.prijs <= 40)))) tags.add('collega-bedankje');
     if (COL_L.has(p.id) || (!afscheid && !nietLoot && !COL_B.has(p.id) && !bedanktTekst && !lekker && p.prijs <= 25)) tags.add('collega-lootjes');
     /* 5-11-2026 (Marius: bij bedankje stond van alles): alleen nog lootjes als vangnet (tot €25). Duurdere losse dingen
