@@ -28,8 +28,8 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=221212362885435" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=269637867276576" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=34251116316780" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=38952208662865" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=108812805480285">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=21950829199753", t = "assets/js/topkeuze.js?v=112630685527372";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=2980911897716", t = "assets/js/topkeuze.js?v=112630685527372";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -208,10 +208,10 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"louiz-bc20ce8335":{"url":"https://louiz.nl/jewellery/?tt=39858_2476044_516846_&r=https%3A%2F%2Flouiz.nl%2Farmband-met-schelpen-parels%2F","winkelUrl":"https://louiz.nl/jewellery/?tt=39858_2476044_516846_&r=https%3A%2F%2Flouiz.nl%2Farmband-met-schelpen-parels%2F","subVast":true,"gecontroleerd":"2026-11-20","herkomst":"kieslijst","advies":{"voor":"Vrouwen die van een zomerse uitstraling houden.","niet":"Ze geen armbanden draagt.","alt":["dvzn-647292","fashio-c11f99d7d5"],"meer":[["Cadeau voor een vrouw","/gids/cadeau-voor-vrouw/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"Een armband van Louiz met witte schelpparels en kleine goudkleurige kralen."}};</script>
-  <script src="assets/js/data.js?v=269637867276576"></script>
+  <script src="assets/js/data.js?v=38952208662865"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=12786163368064"></script>
-  <script src="assets/js/app.js?v=221212362885435"></script>
+  <script src="assets/js/app.js?v=34251116316780"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
