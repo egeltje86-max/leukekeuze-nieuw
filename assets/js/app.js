@@ -680,7 +680,7 @@
   /* 'Aanbevolen': een mooie mix. Favorieten eerst, daarna goedkoop en duur door elkaar,
      verschillende winkels om en om, nieuwe producten iets naar voren.
      De volgorde schuift elke week een beetje, zodat nieuwe producten vanzelf meedoen. */
-  var WINKEL_VERKOOPT = { 'Ditverzinjeniet': 1, 'Dille & Kamille': 1, 'HEMA': 1, 'Amazon': 1 }; /* winkels waar bij ons echt gekocht is (12-11-2026) */
+  var WINKEL_VERKOOPT = { 'Ditverzinjeniet': 1, 'Dille & Kamille': 1, 'HEMA': 1, 'Amazon': 1, 'Doenkado': 1 }; /* winkels waar bij ons echt gekocht is (12-11-2026; Doenkado 20-11-2026) */
   function mixGetal(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
   /* 3.0 (5-11-2026, Marius en Nova): 'Aanbevolen' = de beste, meest gezochte cadeaus bovenaan, goed gemixt.
      p.rang komt uit scripts/boom/rang.py (cadeau-niveau van het vakje, wat klanten graag willen, toppers, nieuwe toppers, echte kliks).
