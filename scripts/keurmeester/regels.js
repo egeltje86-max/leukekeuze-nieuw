@@ -70,7 +70,14 @@ const R = {
   /* Een gokspelletje voor kinderen. */
   kansspel: /gokkast|jackpot|casino|roulette|\bpoker\b|\bbingo\b/i,
   /* Uitdelen: een multipack of iets van een paar euro. */
-  uitdeelPak: /\b\d+ ?(stuks|st\.)|set van \d|uitdeel|traktatie|feestzakje|goodie ?bag|multipack|\b\d+-pack\b/i
+  uitdeelPak: /\b\d+ ?(stuks|st\.)|set van \d|uitdeel|traktatie|feestzakje|goodie ?bag|multipack|\b\d+-pack\b/i,
+  /* Een los bord- of kaartspel (oude en nieuwe indeling); verzamelkaarten en boosterpakjes zijn geen spel. */
+  losSpel: (p) => !/verzamelkaart|booster|ruilkaart|toploader/i.test(p.titel || '') && (
+    (p.afd === 'speelgoed' && p.groep === 'spellen' && /^(bordspellen-voor-het-gezin|strategiespellen|kaart-dobbelspellen|partyspellen|kinderspellen)$/.test(p.vak || '')) ||
+    (p.afd === 'spellen-puzzels' && /^(bordspellen|kaart-partyspellen|kinderspellen)$/.test(p.groep || '')) ||
+    (p.cat === 'speelgoed' && p.sub === 'bord-kaartspellen' && !p.afd)),
+  /* Romans voor volwassenen met expliciete scènes. */
+  volwassenBoek: /colleen hoover|sarah j\.? maas|rebecca yarros|\bana huang\b|hof van (doorns|mist|vleugels|ijs|zilveren|versplinterde)|fourth wing|iron flame|onyx storm/i
 };
 /* Merken en producten die Marius zelf vooraan wil (CLAUDE.md): krijgen geen aftrek van de zachte regels.
    Atelier Rebul (merk van familie; 'zet in een nieuwe top voor geur, kaarsen of verzorging eerst een cadeau van Atelier Rebul'),
@@ -201,10 +208,23 @@ function regels(smalPag) {
       gFn: (p, g) => g === 'bedankt' ? (p.prijs > 50 ? 15 : 8) : 0, p: {},
       uitleg: 'Meer dan 35 euro: als bedankje voor één persoon veel; eerder een teamcadeau.',
       voorstel: 'Bij Bedankt en Juf & meester lager.' },
-    { naam: 'duur-voor-de-lootjes', zacht: true, test: (p) => typeof p.prijs === 'number' && p.prijs > 25 && p.prijs <= 50, /* Kleine cadeautjes gaat tot 50 euro */
+    { naam: 'duur-voor-de-lootjes', zacht: true, test: (p) => typeof p.prijs === 'number' && p.prijs > 25 && p.prijs <= 50, /* 20-11-2026: Kleine cadeautjes gaat nu tot 25 euro (maxPrijs in data.js); deze regel geldt nog voor Lootjes bij collega */
       g: { lootjes: 8 }, p: {},
       uitleg: 'Meer dan 25 euro: bij Kleine cadeautjes en de lootjes eerst de echt kleine cadeaus.',
       voorstel: 'Bij Kleine cadeautjes en Lootjes een paar rijen lager.' },
+    /* 20-11-2026 (Marius: 'Uitdeelcadeautjes: geen losse bord- en kaartspellen'). Een uitdeelpak of multipack (tag 'uitdelen', '12 stuks') mag wel;
+       verzamelkaarten (Pokémon-pakjes) zijn geen spel en vallen er niet onder. */
+    { naam: 'los-bord-of-kaartspel', test: (p) => R.losSpel(p) && !((p.tags || []).includes('uitdelen')) && !R.uitdeelPak.test(T(p)),
+      g: { uitdelen: 40 }, p: {},
+      uitleg: 'Een los bord- of kaartspel (UNO, partyspel, spel in een blikje): geen uitdeelcadeautje.',
+      voorstel: 'Niet bij Uitdeelcadeautjes; wel bij spellen, Sinterklaas, lootjes en de personen.' },
+    /* 20-11-2026 (Marius: 'Volwassen boeken alleen bij oudere tieners als ze geschikt zijn'). Romans met expliciete scènes (Colleen Hoover,
+       Sarah J. Maas, Rebecca Yarros, Ana Huang; Common Sense Media: Verity 17+, Hof van versplinterde harmonieën 16+). Voor tieners maakt de site
+       geen onderscheid in leeftijd, dus bij tieners onderaan (voor de oudere tieners) en nooit bij kinderen. */
+    { naam: 'boek-voor-oudere-tieners', test: (p) => R.volwassenBoek.test(T(p) + ' ' + (p.merk || '')),
+      g: { schoen: 60, uitdelen: 60 }, p: { tieners: 15, kinderen: 60, baby: 60 },
+      uitleg: 'Een roman voor volwassenen met expliciete scènes: past bij een oudere tiener (vanaf 16), niet bij een jonge tiener of een kind.',
+      voorstel: 'Bij tieners onderaan, niet bij kinderen.' },
     /* Alleen wat op Uitdeelcadeautjes kan staan: tot 10 euro, voor kinderen of tieners. */
     { naam: 'los-om-uit-te-delen', zacht: true, test: (p) => !((p.tags || []).includes('uitdelen')) && !R.uitdeelPak.test(T(p)) && typeof p.prijs === 'number' && p.prijs > 5 && p.prijs <= 10 && (p.voor || []).some((v) => /^(kind|kinderen|tiener)$/.test(v)),
       g: { uitdelen: 8 }, p: {},

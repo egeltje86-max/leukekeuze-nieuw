@@ -59,7 +59,7 @@ function keur(p, smalPag, L) {
   if (!pe.length) uit.info.push('geen ontvanger: staat alleen in zijn vakje, niet op een Voor wie-pagina');
   if (kindLabel && p.cat === 'speelgoed' && !p.leeftijd) uit.info.push('speelgoed zonder bekende leeftijd');
   /* Waarschuwingen: klopt waarschijnlijk niet helemaal, even nakijken. */
-  if (pe.includes('hem') && /\broze\b|\bpink\b/i.test(T(p))) uit.waarschuwingen.push('roze product met het label hem (kies een andere kleur voor de foto bij hem)');
+  /* 20-11-2026 (Marius): geen waarschuwing meer voor roze producten bij hem: 'Kleur bepaalt niet voor wie een cadeau geschikt is.' */
   if ((p.ookIn || []).some((x) => /met-naam$/.test(x)) && PERS && !PERS.test(T(p))) uit.waarschuwingen.push("staat bij 'Met naam', maar de titel noemt geen naam, foto of eigen tekst");
   for (const g of gel) { const n = (a['g.' + g] || [0])[0]; if (n >= 26) uit.waarschuwingen.push('gekozen voor ' + NAAM_G[g] + ', maar de keurmeester haalt het daar weg (' + a['g.' + g][1].join(', ') + ')'); }
   for (const x of pe) { const n = (a['p.' + x] || [0])[0]; if (n >= 26) uit.waarschuwingen.push('label ' + NAAM_P[x] + ', maar de keurmeester haalt het daar weg (' + a['p.' + x][1].join(', ') + ')'); }

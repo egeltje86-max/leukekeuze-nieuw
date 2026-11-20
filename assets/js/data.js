@@ -1061,8 +1061,8 @@ window.LK_COLLECTIES = [
     zoek: 'op tijd pakjesavond snel in huis morgen in huis last minute sinterklaas',
     winkels: ['Cadeau.nl', 'De Grote Speelgoedwinkel', 'Boekenwereld.com', 'Parfumania'], moment: 'sinterklaas', vakken: LK_ALLE_GROEPEN, seizoen: ['12-01', '12-05'], lijstKop: 'Alle cadeaus die snel in huis zijn',
     uit: /kerst|christmas|halloween|pasen|paas/i },
-  { slug: 'kleine-cadeautjes', naam: 'Kleine cadeautjes', kicker: 'Klein maar fijn', beeld: 'images/sub/sub-cadeaus-sint-onder-15-2026b.webp', seoTitel: 'Kleine cadeautjes – leuke cadeaus tot €10, €25 of €50',
-    tekst: 'Leuke kleine cadeautjes voor weinig geld. Kies hieronder je budget.', maxPrijs: 50, uit: LK_GEEN_FEEST, vakken: LK_ALLE_GROEPEN },
+  { slug: 'kleine-cadeautjes', naam: 'Kleine cadeautjes', kicker: 'Klein maar fijn', beeld: 'images/sub/sub-cadeaus-sint-onder-15-2026b.webp', seoTitel: 'Kleine cadeautjes – leuke cadeaus tot €10 of €25',
+    tekst: 'Leuke kleine cadeautjes voor weinig geld. Kies hieronder je budget.', maxPrijs: 25, /* 20-11-2026 (Marius: 'Kleine cadeautjes maximaal € 25'; was 50) */ uit: LK_GEEN_FEEST, vakken: LK_ALLE_GROEPEN },
   { slug: 'originele-cadeaus', naam: 'Originele cadeaus', kicker: 'Net even anders', beeld: 'images/sub/sub-elektronica-slimme-gadgets.webp', seoTitel: 'Originele cadeaus – unieke en bijzondere cadeau-ideeën',
     tekst: 'Bijzondere, verrassende cadeaus die niet iedereen al heeft: van slimme gadgets en bijzondere lampen tot iets om samen te maken. Fijn voor iemand die alles al lijkt te hebben.', uit: LK_GEEN_FEEST, vakken: ['tag:origineel', 'cadeaus/grappig'] },
   /* Adventskalenders (6-11-2026, GO Marius): 33.100 zoekopdrachten per maand. Alle kalenders met tag 'advent', van beauty tot LEGO en chocolade. */

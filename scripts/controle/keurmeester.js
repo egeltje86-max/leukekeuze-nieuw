@@ -14,7 +14,7 @@ const aftrek = (p, g, pe) => { const o = km(p); return (g ? o['g.' + g] || 0 : 0
 const zacht = (p, g, pe) => { const o = km(p); return (g ? o['zg.' + g] || 0 : 0) + (pe ? o['zp.' + pe] || 0 : 0) + (o['zx.' + (g || '') + '_' + (pe || '')] || 0); };
 const score = (p, g, pe) => { const h = aftrek(p, g, pe), z = zacht(p, g, pe); let s = 75 - h - (z > 0 ? Math.min(z, 10) : 0); if (h < 26) s = Math.max(s, 50); return Math.min(75, s); };
 const vind = (w) => typeof w === 'string' && /^[a-z]+-[\w-]+$/.test(w) ? PR.filter((p) => p.id === w) : PR.filter((p) => w.test(p.titel || ''));
-/* [wat, gelegenheid, ontvanger, verwachting, uitleg]. Verwachting: 'weg' (<50), 'onder' (<75), 'goed' (>=75). */
+/* [wat, gelegenheid, ontvanger, verwachting, uitleg]. Verwachting: 'weg' (<50), 'onder' (<75), 'goed' (>=75), 'blijft' (>=50: op de pagina, hoog of laag). */
 const TESTS = [
   ['dvzn-770d60cf83', 'bedankt', 'collega', 'weg', 'Nova: grafsteenkaars bij Bedankje voor collega'],
   ['dvzn-770d60cf83', 'afscheid', '', 'weg', 'grafsteenkaars bij Afscheid'],
@@ -72,14 +72,23 @@ const TESTS = [
   ['dvzn-70adc8c50c', 'jubileum', 'haar', 'goed', "cadeauset 'I Love You' bij Jubileum: gewoon"],
   ['cg-chocolade-game-controller', 'bedankt', 'tieners', 'goed', 'gamecontroller van chocolade bij Bedankt voor tieners: gewoon (Nova: goed)'],
   ['dw-6931722318439', 'grappig', 'kinderen', 'goed', 'snoep-gokkastjes bij Grappige cadeaus voor kinderen: gewoon (Nova: goed)'],
-  ['cl-ttr-europe', 'lootjes', 'hem', 'onder', 'Nova: Ticket to Ride (45 euro) bij Kleine cadeautjes: lager'],
-  ['cl-uno', 'uitdelen', '', 'onder', 'Nova: UNO los bij Uitdeelcadeautjes: lager']
+  ['cl-ttr-europe', 'lootjes', 'hem', 'onder', 'Nova: Ticket to Ride (45 euro) bij de lootjes: lager (Kleine cadeautjes gaat sinds 20-11 tot 25 euro, daar staat hij niet meer)'],
+  /* 20-11-2026, keuzes van Marius */
+  ['cl-uno', 'uitdelen', '', 'weg', "Marius: geen losse bord- en kaartspellen bij Uitdeelcadeautjes (UNO)"],
+  [/^HEMA partyspel Zeg geen Uhm/, 'uitdelen', '', 'weg', 'Marius: los partyspel niet bij Uitdeelcadeautjes'],
+  [/^Tiny Tins: Vlotte Geesten/, 'uitdelen', '', 'weg', 'Marius: spel in een blikje niet bij Uitdeelcadeautjes'],
+  ['cl-uno', 'sinterklaas', '', 'goed', 'UNO bij Sinterklaas: blijft'],
+  [/^Pokémon TCG .*boosterpakje/, 'uitdelen', '', 'blijft', 'Pokémon-boosterpakjes (verzamelkaarten, geen spel) bij Uitdeelcadeautjes: blijven op de pagina'],
+  ['bol-9300000338745858', '', 'tieners', 'onder', 'Marius: Verity (17+) bij tieners alleen onderaan, voor oudere tieners'],
+  ['bol-9300000338745858', '', 'haar', 'goed', 'Verity bij Voor haar: gewoon'],
+  ['cl-hof-versplinterde', '', 'tieners', 'onder', 'Marius: Hof van versplinterde harmonieën (16+) bij tieners alleen onderaan'],
+  ['cl-hof-versplinterde', '', 'kinderen', 'weg', 'roman met expliciete scènes nooit bij kinderen']
 ];
 const uit = { tests: [], fout: [], toppen: {} };
 for (const [wat, g, pe, ver, uitleg] of TESTS) {
   const l = vind(wat);
   if (!l.length) { uit.tests.push({ uitleg, ok: true, opm: 'product niet (meer) op de site' }); continue; }
-  const slecht = l.filter((p) => { const s = score(p, g, pe); return ver === 'weg' ? s >= 50 : ver === 'onder' ? s >= 75 || s < 50 : s < 75; });
+  const slecht = l.filter((p) => { const s = score(p, g, pe); return ver === 'weg' ? s >= 50 : ver === 'onder' ? s >= 75 || s < 50 : ver === 'blijft' ? s < 50 : s < 75; });
   /* 'goed' over een hele groep (pensioen, chocoladeletters): de meeste moeten blijven; een enkele met een andere reden mag eraf. */
   const ok = ver === 'goed' && l.length > 3 ? slecht.length <= Math.floor(l.length * 0.1) : slecht.length === 0;
   uit.tests.push({ uitleg, ok, n: l.length, slecht: slecht.slice(0, 5).map((p) => p.id + ' ' + p.titel.slice(0, 60) + ' (' + score(p, g, pe) + ')') });
