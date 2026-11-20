@@ -30,6 +30,18 @@ run('paginas', 'paginas.js'); // 10-11-2026: geen verkeerde producten op een Voo
 run('prijsclaim', 'prijsclaim.js'); // 18-11-2026: geen 'Nu 30% korting' of 'Van €80 naar €68' in vaste teksten
 run('keurmeester', 'keurmeester.js'); // 19-11-2026 CADEAUKEURMEESTER: de fouten uit de steekproef van Nova (grafsteenkaars bij Bedankje voor collega ...) komen niet terug, goede cadeaus blijven
 run('seowacht', 'seo-wacht.js'); // 19-11-2026 GOOGLE-HERSTEL: nooit ongemerkt veel adressen of productpagina's tegelijk erbij of eraf (GO Marius nodig: LK_SEO_GO=1)
+// 20-11-2026 (Marius: 'werk de dagelijkse controles bij, zodat ze de nieuwste dingen checken'): deze twee draaiden tot nu alleen met de hand.
+// De piloot (dag.py) gebruikt alles.js, dus nu ook elke ochtend.
+function runLos(naam, script, args) {
+  let ok = true, tekst = '';
+  try { tekst = execFileSync('node', [path.join(R, 'scripts/controle', script)].concat(args), { encoding: 'utf8', maxBuffer: 64 << 20, cwd: R }); }
+  catch (e) { ok = false; tekst = (e.stdout || '') + (e.stderr || ''); }
+  uit.onderdelen[naam] = { ok, samenvatting: tekst.split('\n').filter(Boolean).slice(0, 12).join('\n') };
+  if (!ok) uit.schoon = false;
+  return ok;
+}
+runLos('oudeAdressen', 'ooit.js', [R]); // 12-11-2026: elk adres dat ooit in de sitemap stond bestaat nog of stuurt door (Google: geen 404's)
+runLos('gidsen', 'gidsen.js', [R, 'streng']); // 13-11-2026: geen gids met een verdwenen favoriet, plaatje of een rij met minder dan twee cadeaus
 fs.writeFileSync(path.join(UITMAP, 'controle-' + datum + '.json'), JSON.stringify(uit, null, 1));
 fs.writeFileSync(path.join(UITMAP, 'controle-laatste.json'), JSON.stringify(uit, null, 1));
 console.log('CONTROLE', datum, uit.schoon ? 'SCHOON' : 'NIET SCHOON', Object.entries(uit.onderdelen).map(([k, v]) => k + ':' + (v.ok ? 'ok' : 'FOUT')).join(' '));
