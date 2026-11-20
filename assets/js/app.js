@@ -347,6 +347,12 @@
   function bezorgBlok(p) {
     var w = WINKELHULP && BEZORG_INFO[p.shop]; if (!w) return '';
     var r = [];
+    /* 20-11-2026: een kortingscode die voor (bijna) alles van deze winkel geldt (LK_CODES met 'opProduct', bijv. BLACK15 van Ditverzinjeniet)
+       staat bovenaan dit blok, alleen zolang hij geldt. Tekst en voorwaarden komen van de site van de winkel zelf. Uit: window.LK_CODE_OP_PRODUCT = false. */
+    if (window.LK_CODE_OP_PRODUCT !== false) {
+      var vandaagC = new Date().toISOString().slice(0, 10);
+      (window.LK_CODES || []).forEach(function (c) { if (c.opProduct && c.code && c.winkel === p.shop && (!c.vanaf || c.vanaf <= vandaagC) && (!c.tot || c.tot >= vandaagC)) r.push(['cadeau', c.opProduct]); });
+    }
     if (w.snel) r.push(['klok', w.snel]);
     if (w.kosten) r.push(['cadeau', w.kosten]);
     if (w.retour) r.push(['vorige', w.retour + (w.naamNiet && PERSOONLIJK.test(p.titel || '') ? '. ' + w.naamNiet : '')]);
@@ -2939,6 +2945,10 @@
       (g.korting || g.codes ? dealsNav(g.slug) : '') + (g.codes ? codesBlok() : '') +
       /* 18-11-2026 (GO Marius): eerlijke regel bovenaan de Black Friday-pagina, in één zin. */
       (g.eerlijk ? '<p class="eerlijk-regel">' + ic('vonk') + '<span>' + esc(g.eerlijk) + '</span></p>' : '') +
+      /* 20-11-2026: op de deal-pagina's (niet op Kortingscodes zelf) een regel met de codes die voor (bijna) een hele winkel gelden, zoals BLACK15. */
+      (g.korting && !g.codes && window.LK_CODE_OP_PRODUCT !== false ? codesNu().filter(function (c) { var v = new Date().toISOString().slice(0, 10); return c.opProduct && c.code && (!c.vanaf || c.vanaf <= v); }).map(function (c) {
+        return '<p class="eerlijk-regel code-regel">' + ic('cadeau') + '<span>Extra bij ' + esc(c.winkel) + ': ' + esc(c.opProduct.replace(/^Black Week: /, '')) + '. <a href="/collectie/kortingscodes">Alle codes en voorwaarden</a></span></p>';
+      }).join('') : '') +
       (pv ? '' : mandjesTeaser(g)) +
       (voorKnopjes ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + voorKnopjes + '</section>' : '') +
       /* Stap 4 indeling: 'Onze selectie' als vast raster (geen schuifrij). Deals van vandaag (Acties) blijven 12 stuks. */
@@ -4481,6 +4491,7 @@
   /* 17-11-2026: de Amazon Storefront (ideeënlijsten), met partnercode. Gebruikt op /tiktok, in het menu en op de homepage. */
   var AMZ_SHOP = 'https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21';
   var TIKTOK_REELS = [
+    { datum: '20 november', kop: 'Lootje getrokken? Wie heb jij?', tekst: 'Zes lootjes, zes cadeaus onder € 15: een vaas met armen en benen voor je vriendin, een Bijna weekend-mok voor je collega, een Mario-paraplu voor een kind, een Wasgij-puzzel voor opa of oma, een discolamp voor een tiener en een cactus-autolader voor je vader.', ids: ['dvzn-4595133637', 'dvzn-aea1a3388a', 'grotek-6b88521a6e', 'cl-wasgij', 'hema-9af19e566a', 'dvzn-86c555b6d6'], naar: '/lootjes-trekken/', naarTekst: 'Zelf lootjes trekken? Gratis en zonder account' },
     { datum: '19 november', kop: 'Van alles wat: zes mensen, zes cadeaus', tekst: 'Een twijfelend eendje als nachtlampje, een paraplu van Max Verstappen, een kandelaar als stapel snoepjes, airhockey die oplicht in het donker, een ufo vol doolhof en een Game Over-mok.', ids: ['dvzn-fefa9fc445', 'parfum-4b477c5c6c', 'housev-e62afe1fc1', 'megaga-d03d4974c4', 'cg-b2176baf5e', 'cadeau-eaff32d056'] },
     { datum: '19 november', kop: 'Voor tieners: anime en KPop', tekst: 'Luffy’s duivelsvrucht als lampje, een mok die verandert als je er iets warms in schenkt, een verrassingsfiguurtje van KPop Demon Hunters, de Akatsuki-wolk als lamp, Chainsaw Man als Funko Pop en Chopper als lampje.', ids: ['dvzn-323de59399', 'superz-0deb3f2e23', 'dgsw-8ac317da46', 'emp-5fdfb36835', 'superz-95040f06c2', 'superz-f6728a4cdc'], naar: '/voor/tieners', naarTekst: 'Alle cadeaus voor tieners bekijken' },
     { datum: '19 november', kop: 'Wat doet dít nou? Deel 2: 6 cadeaus onder € 15', tekst: 'Noedels die zeep zijn, een klok met een geheim vak, een fles vol wijnspullen, een kat die pizza snijdt, een basketbalnetje boven de wc en een zwaailicht op je bureau.', ids: ['dvzn-43cb3e6645', 'cg-hidden-safe-clock', 'cl-wijnacc-fles', 'dvzn-8a7b4143e9', 'cg-toilet-basketball', 'mega-a6823ad51f'], naar: '/collectie/grappige-cadeaus', naarTekst: 'Meer grappige cadeaus bekijken' },

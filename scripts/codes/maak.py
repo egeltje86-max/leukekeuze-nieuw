@@ -7,6 +7,10 @@ in assets/js/data.js (tussen de CODES-markers).
 - Awin: Toolbox > My Offers > download (CSV)
 Per netwerk wordt het resultaat bewaard in scripts/codes/bron-<netwerk>.json, zodat een
 nieuw bestand van één netwerk de codes van de andere netwerken laat staan.
+bron-tradetracker.json schrijf je met de hand (20-11-2026): TradeTracker heeft geen export, dus alleen codes
+die de winkel zelf op zijn site zet, letterlijk overgenomen, met de voorwaarden van de winkel. Veld 'opProduct'
+(een korte zin) = de code geldt voor (bijna) alles van die winkel en staat ook op de productpagina's van die winkel.
+Alleen opnieuw opbouwen (zonder export): python3 -I scripts/codes/maak.py
 
 Gebruik:  python3 -I scripts/codes/maak.py <export.csv> [<export2.csv> ...]
 
