@@ -361,7 +361,13 @@
    ],
    "groep": [],
    "thema": "kamer|lamp|nachtlamp|dekbed|poster",
-   "niet": "\\bmok\\b|\\bbeker\\b|drinkfles|drinkbeker|servies|lunchbox|broodtrommel"
+   "niet": "\\bmok\\b|\\bbeker\\b|drinkfles|drinkbeker|servies|lunchbox|broodtrommel",
+   "nietSub": [
+    "wonen/tafelen",
+    "wonen/koken-bakken",
+    "wonen/koffie-thee-zetten",
+    "keuken"
+   ]
   },
   "voor/kinderen/schoenen-kleding": {
    "afd": [
@@ -463,7 +469,10 @@
    ],
    "groep": [],
    "thema": "boek|lees|journal|dagboek|notitie|planner",
-   "niet": "\\(lp\\)|\\blp\\b|vinyl|\\bcd\\b|soundtrack|blu-?ray|\\bdvd\\b|lightstick|platenspeler"
+   "niet": "\\(lp\\)|\\blp\\b|vinyl|\\bcd\\b|soundtrack|blu-?ray|\\bdvd\\b|lightstick|platenspeler",
+   "nietSub": [
+    "boeken-media/films-series"
+   ]
   },
   "voor/tieners/lekkers": {
    "afd": [
@@ -594,7 +603,7 @@
     "mode-sieraden",
     "beauty-verzorging"
    ],
-   "woorden": "collier|choker|\\bparels?\\b|hartjes?\\b|vlinder|bloemetje|\\broze\\b|ros[eé]goud",
+   "woorden": "collier|choker|\\bparels?\\b|hartjes?\\b|vlinder|bloemetje",
    "behalve": "heren|mannen|unisex|voor hem"
   }
  },
@@ -841,5 +850,5 @@
    "baby"
   ]
  },
- "_uitleg_fase2": "20-11-2026 (Cadeaukeurmeester fase 2, Nova's herkeuring): sub-regels kunnen 'niet' hebben (woorden in de titel die nooit op dat onderwerp horen, ook niet als de afdeling klopt). 'Met naam' bij Voor haar: alleen wat je echt persoonlijk maakt (naam, letter, datum, foto, eigen tekst, gravure); dezelfde woorden staan als LK_PERSOONLIJK in data.js."
+ "_uitleg_fase2": "20-11-2026 (Cadeaukeurmeester fase 2, Nova's herkeuring): sub-regels kunnen 'niet' hebben (woorden in de titel die nooit op dat onderwerp horen, ook niet als de afdeling klopt). 'Met naam' bij Voor haar: alleen wat je echt persoonlijk maakt (naam, letter, datum, foto, eigen tekst, gravure); dezelfde woorden staan als LK_PERSOONLIJK in data.js. | 20-11-2026 (Marius): nietSub = oude labels (cat/sub, of alleen cat) die nooit op dit onderwerp horen: films niet bij Boeken & journals voor tieners, glazen, bekers, flessen en servies niet bij Kinderkamer. De producten blijven op de site en bij de persoon. label_titel_niet.hem zonder roze en roségoud (kleur bepaalt niet voor wie)."
 }

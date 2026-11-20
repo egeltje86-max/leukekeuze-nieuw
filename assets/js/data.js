@@ -722,7 +722,7 @@ window.LK_PERSONEN = (function () {
       s('kraamcadeaus', 'Kraamcadeaus & pakketten', 'cadeaus-baby-kraam-2026b', ['tag:baby-kraampakketten'], 'Kraamcadeau en kraampakket', 'Mooie kraampakketten en cadeaus om op kraamvisite mee te nemen.'),
       s('kleding-dekentjes', 'Babykleding & dekentjes', 'mode-beauty-kleding', ['tag:baby-kleding'], 'Babykleding en dekentjes cadeau', 'Zachte rompertjes, slabbetjes, mutsjes en dekentjes.'),
       s('speelkleden-rammelaars', 'Speelkleden & rammelaars', 'speelgoed-baby-peuter', ['tag:baby-speelgoed'], 'Speelkleed en rammelaar cadeau', 'Speelkleden, rammelaars, bijtringen en eerste speelgoed.'),
-      s('knuffels-met-naam', 'Knuffels met naam', 'cadeaus-met-naam-2026b', ['tag:baby-knuffels-naam'], 'Knuffel met naam als kraamcadeau', 'Een knuffel of knuffeldoekje met de naam van de baby erop.'),
+      s('knuffels-met-naam', 'Knuffels & knuffeldoekjes', '', ['tag:baby-knuffels-naam'], 'Knuffel of knuffeldoekje als kraamcadeau', 'Een zachte knuffel of een knuffeldoekje voor de baby, soms met de naam erop.', { beeld: 'images/sub/iconen/icoon-speelgoed-poppen-knuffels-knuffels.webp' }), /* 20-11-2026 (Marius): heette 'Knuffels met naam'; het adres blijft gelijk */
       s('babyshower', 'Babyshower', 'cadeaus-baby-kraam-2026b', ['tag:baby-babyshower'], 'Babyshower cadeau', 'Cadeaus voor de aanstaande moeder en de babyshower.')
     ] }
   ];

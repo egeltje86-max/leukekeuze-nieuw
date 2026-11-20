@@ -113,8 +113,8 @@ function splits() {
     { const p4 = KP.vierdePlek(p); if (p4) l.p4 = p4; }
     /* 17-11-2026 ONE PIECE & ANIME-HOEK: veld p5 = het vakje van de serie (scripts/boom/anime.js). */
     { const p5 = AN.vijfdePlek(p); if (p5) l.p5 = p5; }
-    /* 9-11-2026 (wens Marius): op heren-pagina's geen roze foto. Is de hoofdfoto roze en is er een andere kleur, dan krijgt het kaartje daar die foto. */
-    if (p.varianten && p.varianten.length > 1 && (p.voor || []).indexOf('hem') !== -1) {
+    /* 9-11-2026 (wens Marius): op heren-pagina's geen roze foto. UIT sinds 20-11-2026 (Marius: 'kleur bepaalt niet voor wie een cadeau geschikt is'). Weer aan: LK_ROZE_HEM=1 bij de bouw. */
+    if (process.env.LK_ROZE_HEM === '1' && p.varianten && p.varianten.length > 1 && (p.voor || []).indexOf('hem') !== -1) {
       const ROZE = /roze|pink|ros[eé]\b|rozé|lila|lavendel|paars|purple|blush/i;
       const hoofd = p.varianten.filter((v) => v && v.beeld === p.beeld)[0];
       const hoofdRoze = hoofd ? ROZE.test(hoofd.kleur || '') : ROZE.test((p.titel || '') + ' ' + (p.winkelUrl || ''));

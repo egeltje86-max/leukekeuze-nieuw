@@ -33,6 +33,8 @@ const NIET_RE = {};
 function magOp(p, regel, thema) {
   const o = oud(p);
   if (regel.niet) { const re = NIET_RE[regel.niet] || (NIET_RE[regel.niet] = new RegExp(regel.niet, 'i')); if (re.test(p.titel || '')) return false; }
+  /* 20-11-2026 (Marius): nietSub = oude labels (cat/sub of alleen cat) die nooit op dit onderwerp horen (films bij Boeken & journals, glazen en bekers bij Kinderkamer) */
+  if (regel.nietSub && regel.nietSub.some((x) => x === p.cat || x === p.cat + '/' + p.sub)) return false;
   return regel.afd.indexOf(o.afd) !== -1 || regel.groep.indexOf(o.afd + '/' + o.groep) !== -1 || thema.test(p.titel || '');
 }
 function pas(alle, root) {

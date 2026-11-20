@@ -1684,7 +1684,7 @@
     if ((p.nietBij || []).indexOf(w) !== -1) return false;
     if (p.smal === 'grootouder' && w !== 'opa-oma') return false;
     if (p.smal === 'collega' && w !== 'collega') return false;
-    if (w === 'hem' && /\broze\b|\bpink\b/i.test(p.titel || '')) return false;
+    /* 20-11-2026 (Marius): geen kleurregel meer bij hem ('kleur bepaalt niet voor wie een cadeau geschikt is') */
     if (w === 'haar' || w === 'hem') return heeft(v, w) || (heeft(v, 'iedereen') && !heeft(v, 'kind') && !heeft(v, 'baby') && !(lt && lt[1] && lt[1] <= 12));
     if (w === 'kinderen') return heeft(v, 'kind');
     if (w === 'tieners') return heeft(v, 'tiener');
