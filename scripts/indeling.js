@@ -11,6 +11,13 @@ const MOEDERDAG_IDS = new Set(FEEST_IDS.moederdag), VADERDAG_IDS = new Set(FEEST
 /* Collectie 'Toppers van nu' (01-11-2026): vaste lijst + bekende hits op titel. */
 const TOPPERS = require('./toppers-van-nu.json'), TOPPERS_IDS = new Set(TOPPERS.ids), TOPPERS_WOORD = new RegExp(TOPPERS.woorden, 'i');
 const COLLEGA = require('./collega.json');
+/* 20-11-2026 (Cadeaukeurmeester fase 2): de vaste regels van de keurmeester worden al bij het indelen gebruikt, zodat een grafsteenkaars of een
+   potje truffelcrème niet eerst het label 'bedankje voor een collega' krijgt (en de keurmeester het daarna weer moet weghalen). */
+const KM = require('./keurmeester/regels.js'); const KM_L = KM.regels({});
+const kmHard = (p, sleutels) => { const a = KM.aftrek(p, {}, KM_L).kort; return sleutels.some((k) => a[k] && a[k][0] >= 26); };
+/* Een tekst voor een ander moment (beterschap, geslaagd, sorry, gefeliciteerd ...: paginaregels.json smal) krijgt geen label 'juf-meester' of 'bedankje'. */
+const SMAL = (() => { try { const r = require('./boom/paginaregels.json').smal || {}; return Object.keys(r).filter((k) => k[0] !== '_' && r[k].woorden && r[k].paginas).map((k) => [new RegExp(r[k].woorden, 'i'), r[k].behalve ? new RegExp(r[k].behalve, 'i') : null, new RegExp(r[k].paginas)]); } catch (e) { return []; } })();
+const smalAnders = (titel, pagina) => SMAL.some(([w, b, pg]) => w.test(titel) && !(b && b.test(titel)) && !pg.test(pagina));
 const COL_A = new Set(COLLEGA.afscheid), COL_B = new Set(COLLEGA.bedankje), COL_L = new Set(COLLEGA.lootjes), COL_NIET_A = new Set(COLLEGA.nietAfscheid);
 const AFSCHEID_IDS = new Set(["amz-9465708399", "amz-b0b3tdry1m", "amz-b0cnkf8w3q", "amz-b0d95l6674", "amz-b0g3hmpmjf", "amz-b0hgq4q3pd", "bol-9200000010409823", "bol-9200000018494649", "bol-9200000064944767", "bol-9200000075382464", "bol-9300000007378766", "bol-9300000039415364", "bol-9300000057830180", "bol-9300000141326647", "bol-9300000171232502", "bol-9300000174098365", "bol-9300000234965416", "bol-9300000238049219", "bol-9300000242745735", "bol-9300000242918318", "bol-9300000256133316", "bol-9300000385427142", "cadeau-78a0e6aecb", "dvzn-452003", "dvzn-542206", "dvzn-734300", "dvzn-847923"]);
 
@@ -435,7 +442,8 @@ function deel(p0) {
     if ((/(?<![a-z])kraam|pakket|cadeaubox|cadeauset|giftset|gift ?box|luiertaart|geboorte(?!steen|bloem|jaar)|cadeaumand/i.test(titel) || oud === 'cadeaus/baby-kraam') && !/babyfoon|nachtlamp|zwangerschapskussen|markt|ijskraam|tompouce/i.test(titel)) tags.add('baby-kraampakketten');
     if (/romper|kleding|pakje|\bslab|mutsje|dekentje|\bdeken|hydrofiel|swaddle|slofjes|schoentjes|sokjes|badcape|omslagdoek|kruippakje|pyjama|boxpakje/i.test(titel)) tags.add('baby-kleding');
     if (/speelkleed|rammelaar|bijtring|mobiel|activity|knisper|babygym|badspeelgoed|stapel|sorteer|muziekdoos|speelboog|loopwagen|houten/i.test(titel) || oud === 'speelgoed/baby-peuter') tags.add('baby-speelgoed');
-    if (/knuffel|met naam|naam|knuffeldoek|gepersonaliseerd|tutteldoek/i.test(titel)) tags.add('baby-knuffels-naam');
+    /* 20-11-2026 (Nova): alleen knuffels en knuffeldoekjes; een babydeken met naam hoort bij Babykleding & dekentjes. */
+    if (/knuffel|knuffeldoek|tutteldoek|pluche/i.test(titel) && !/\bdeken|dekentje|plaid|omslagdoek|swaddle/i.test(titel)) tags.add('baby-knuffels-naam');
   }
 
   /* Warm & comfortabel (opa & oma). */
@@ -450,7 +458,8 @@ function deel(p0) {
   if (/cadeaubon|cadeaukaart|giftcard|gift ?card|boekenbon|vvv/i.test(titel)) tags.add('cadeaubon');
   if (/belevenis|ervaring|workshop|ballonvaart|high ?tea arrangement|overnachting|dagje uit|escape ?room|uitje|wellness ?arrangement|bongo/i.test(titel)) tags.add('belevenis');
   /* Origineel: heel bijzondere of opvallende cadeaus. */
-  if (/origineel|uniek|bijzonder|grappig|gek|apart|opvallend|ludiek|verrassend|mini |miniatuur|book ?nook|levitat|zwevend|sterrenkaart|star ?map|moon ?lamp|maanlamp|3d|lichtgevend|in ?glas|terrarium|kraskaart|scratch|wereldkaart|kweekset|grow ?your ?own|bonsai/i.test(titel)) tags.add('origineel');
+  /* 20-11-2026: 'gek' en 'apart' alleen als los woord (niet 'gekleurd'). Een ruimere ingreep haalde ook cadeaus weg die Nova goed vond (Instax mini, mini-zentuin). */
+  if (/origineel|uniek|bijzonder|grappig|\bgekke?\b|\bapart\b|opvallend|ludiek|verrassend|mini |miniatuur|book ?nook|levitat|zwevend|sterrenkaart|star ?map|moon ?lamp|maanlamp|3d|lichtgevend|in ?glas|terrarium|kraskaart|scratch|wereldkaart|kweekset|grow ?your ?own|bonsai/i.test(titel)) tags.add('origineel');
 
   /* Metaaldetectie: niveau. */
   if (p.cat === 'metaaldetectie' && p.sub === 'detectors') {
@@ -470,11 +479,12 @@ function deel(p0) {
     const bedanktTekst = /bedankt|dankjewel|dank je|thank|merci|top collega|beste collega|super collega|goud waard|\bjuf\b|meester/i.test(titel);
     const afscheid = !COL_NIET_A.has(p.id) && (AFSCHEID.test(titel) || AFSCHEID_IDS.has(p.id) || COL_A.has(p.id));
     if (afscheid) tags.add('collega-afscheid');
-    if (COL_B.has(p.id) || (!afscheid && (bedanktTekst || (lekker && p.prijs <= 40)))) tags.add('collega-bedankje');
-    if (COL_L.has(p.id) || (!afscheid && !COL_B.has(p.id) && !bedanktTekst && !lekker && p.prijs <= 25)) tags.add('collega-lootjes');
+    const nietBedank = kmHard(p, ['g.bedankt', 'p.collega']) || smalAnders(titel, 'bedankje bedankt'), nietLoot = kmHard(p, ['g.lootjes', 'p.collega']);
+    if (COL_B.has(p.id) || (!afscheid && !nietBedank && (bedanktTekst || (lekker && p.prijs <= 40)))) tags.add('collega-bedankje');
+    if (COL_L.has(p.id) || (!afscheid && !nietLoot && !COL_B.has(p.id) && !bedanktTekst && !lekker && p.prijs <= 25)) tags.add('collega-lootjes');
     /* 5-11-2026 (Marius: bij bedankje stond van alles): alleen nog lootjes als vangnet (tot €25). Duurdere losse dingen
        (powerbanks, yogamatten, beeldjes) staan wel bij Collega's, maar niet meer onder 'Bedankje'. */
-    if (![...tags].some((t) => t.indexOf('collega-') === 0) && p.prijs <= 25) tags.add('collega-lootjes');
+    if (![...tags].some((t) => t.indexOf('collega-') === 0) && p.prijs <= 25 && !nietLoot) tags.add('collega-lootjes');
   }
 
   /* Verjaardag: leeftijd in de titel (18, 30, 40, 50, 60, 65 jaar; Abraham en Sarah = 50). */
@@ -492,7 +502,9 @@ function deel(p0) {
   /* 31-10-2026: juf & meester = kleine bedankjes (tot €20): bedankt-cadeaus, chocolade, koekjes, plantjes/zaadjes door de brievenbus en kleine geurkaarsen. */
   if (p.prijs <= 20 && (/bedankt|dankjewel|dank je wel|thank you|\bmerci\b/i.test(titel) || /^eten-drinken\/(chocolade|koekjes-stroopwafels)$/.test(p.cat + '/' + p.sub) ||
       /door de brievenbus|zaadjes|lichtplantje|luchtplantjes/i.test(titel) || (p.cat === 'wonen' && /geurkaars/i.test(titel))) &&
-      !/wijn|pensioen|geboorte|verjaardag|whisky|gentleman|sokken|siroop|zout|grootverpakking|los verpakt|doos met 24|kruidkoek|ontbijtkoek|gamecontroller|mam\b/i.test(titel)) tags.add('juf-meester');
+      !/wijn|pensioen|geboorte|verjaardag|whisky|gentleman|sokken|siroop|zout|grootverpakking|los verpakt|doos met 24|kruidkoek|ontbijtkoek|gamecontroller|mam\b|chocoladeletter|kruidnoten|pepernoten|sint\b|kerst|christmas/i.test(titel) && !kmHard(p, ['g.juf']) && !smalAnders(titel, 'juf-meester')) tags.add('juf-meester');
+  /* 20-11-2026: een bedankje met 'bedankt' in de titel (ook 'Bedankt collega') hoort bij Bedankt, ook als het niet bij Juf & meester past. */
+  if (/bedankt|dankjewel|dank je wel|thank you|\bmerci\b/i.test(titel) && !smalAnders(titel, 'bedankje bedankt') && !kmHard(p, ['g.bedankt'])) tags.add('bedankt');
   if (/uitdeel|traktatie|kinderfeestje|feestzakje|goodiebag|goodie ?bag|uitdelen/i.test(titel)) tags.add('uitdelen');
   if (/beterschap|sterkte|get well|herstel|beter worden|condoleance|troost|in gedachten|denk aan je|knuffel ?(op afstand|in een doosje)|hug in a box|zorg goed voor/i.test(titel)) tags.add('beterschap');
   if (/geslaagd|diploma|rijbewijs|afgestudeerd|graduat|examen|cum laude|nieuwe auto|eerste auto/i.test(titel)) tags.add('geslaagd');

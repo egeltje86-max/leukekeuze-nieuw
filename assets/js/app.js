@@ -567,17 +567,35 @@
   }
   function kmAftrek(p, c) {
     if (!p.km) return 0;
-    if (p._km === undefined) { var o = {}; String(p.km).split(',').forEach(function (x) { var m = /^([gp]\.[a-z-]+?)(\d+)$/.exec(x); if (m) o[m[1]] = +m[2]; }); p._km = o; }
+    if (p._km === undefined) { var o = {}; String(p.km).split(',').forEach(function (x) { var m = /^(z?[gpx]\.[a-z_-]+?)(-?\d+)$/.exec(x); if (m) o[m[1]] = +m[2]; }); p._km = o; }
     return (c.g ? p._km['g.' + c.g] || 0 : 0) + (c.pe ? p._km['p.' + c.pe] || 0 : 0);
+  }
+  /* Fase 2 (20-11-2026): zachte aftrek (km 'zg.'/'zp.'): het cadeau schuift een paar rijen naar achteren, maar gaat nooit van de pagina. */
+  function kmZacht(p, c) {
+    if (!p.km) return 0; kmAftrek(p, c);
+    return (c.g ? p._km['zg.' + c.g] || 0 : 0) + (c.pe ? p._km['zp.' + c.pe] || 0 : 0) + (p._km['zx.' + (c.g || '') + '_' + (c.pe || '')] || 0);
   }
   function kmUit(l, pad) {
     var c = KM && kmCtx(pad); if (!c) return l;
-    return l.filter(function (p) { return kmAftrek(p, c) < 26; });
+    var log = window.LK_KM_LOG; /* alleen bij de controle (scripts/controle/keurmeester-kruip.js): wat valt hier weg? */
+    return l.filter(function (p) { var a = kmAftrek(p, c); if (a >= 26 && log) log.push([pad, p.id, a]); return a < 26; });
   }
+  /* Fase 2 (20-11-2026, Nova's herkeuring): drie standen. Aftrek 1 tot 10 = 'zacht': het cadeau blijft, maar schuift 24 plekken naar achteren
+     (eerst de cadeaus die bij bijna iedereen passen). 11 tot 25 = onderaan. 26 of meer = niet op deze pagina (kmUit). */
+  var KM_ZACHT = 10, KM_SCHUIF = 24;
   function kmOrde(l, pad) {
     var c = KM && kmCtx(pad); if (!c) return l;
-    var goed = [], onder = []; l.forEach(function (p) { var a = kmAftrek(p, c); if (a < 26) (a ? onder : goed).push(p); });
-    return onder.length ? goed.concat(onder) : (goed.length === l.length ? l : goed);
+    var uit = [], onder = [], wacht = [], n = 0, anders = false;
+    l.forEach(function (p) {
+      var a = kmAftrek(p, c);
+      if (a >= 26) { anders = true; return; }
+      if (a > KM_ZACHT) { onder.push(p); anders = true; return; }
+      if (a > 0 || kmZacht(p, c) > 0) { wacht.push([n + KM_SCHUIF, p]); anders = true; return; }
+      uit.push(p); n++;
+      while (wacht.length && wacht[0][0] <= n) uit.push(wacht.shift()[1]);
+    });
+    if (!anders) return l;
+    return uit.concat(wacht.map(function (x) { return x[1]; }), onder);
   }
   function smalOnder(l, sleutel) {
     if (!sleutel) return l;
@@ -2724,6 +2742,8 @@
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
       if (g.uit && g.uit.test(p.titel)) return false;
+      /* 20-11-2026 (Cadeaukeurmeester fase 2, Nova): een collectie kan eisen dat de titel laat zien wat de pagina belooft (een pakket, iets met naam of foto). */
+      if (g.moet && !g.moet.test(p.titel || '') && !(g.moetTag && (p.tags || []).indexOf(g.moetTag) !== -1) && !(g.moetWinkel && g.moetWinkel.indexOf(p.shop) !== -1)) return false;
       /* Black Friday (5-11-2026): alleen echte korting van minstens g.korting procent. */
       if (g.korting && kortingPct(p) < g.korting) return false;
       /* Kortingscodes (5-11-2026): alleen producten van winkels die nu een code of actie hebben. */

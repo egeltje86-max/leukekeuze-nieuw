@@ -69,6 +69,9 @@ function splits() {
   /* 19-11-2026 CADEAUKEURMEESTER (opdracht Nova via Marius): per gelegenheid en ontvanger een aftrek (veld km), zie scripts/keurmeester/. */
   const kmTel = require('./keurmeester/pas.js').pas(alle, ROOT);
   console.log('cadeaukeurmeester: ' + kmTel.producten + ' producten met aftrek op sommige pagina\'s | ' + Object.entries(kmTel.regels).map(([k, v]) => k + ' ' + v).join(', '));
+  /* 20-11-2026 (fase 2): keuring van wat de laatste twee weken nieuw op de site kwam (soort, ontvanger, gelegenheid, leeftijd, geschiktheid). */
+  try { const kn = require('./keurmeester/nieuw.js').rapport(alle, 14); fs.mkdirSync(path.join(ROOT, 'keurkamer/data'), { recursive: true }); fs.writeFileSync(path.join(ROOT, 'keurkamer/data/keuring-nieuw.json'), JSON.stringify(kn, null, 1));
+    console.log('keuring nieuwe producten (14 dagen): ' + kn.producten + ' | met een fout: ' + kn.metFout + ' | met een waarschuwing: ' + kn.metWaarschuwing); } catch (e) { console.log('keuring nieuwe producten mislukt: ' + e.message); }
   /* 4.0 (proef 11-11-2026): de nieuwe indeling. De paginaregels hierboven werken nog met de plek van vóór de verhuizing;
      daarna krijgt elk product zijn nieuwe afdeling, groep en vakje (scripts/boom/verhuisd.json, gemaakt door scripts/boom/verhuis.js).
      Bestaat dat bestand niet, dan verandert er niets. */

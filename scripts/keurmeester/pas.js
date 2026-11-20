@@ -29,6 +29,9 @@ function marius(root) {
     const PR = JSON.parse(fs.readFileSync(path.join(root, 'scripts/boom/paginaregels.json'), 'utf8'));
     for (const [pe, ids] of Object.entries(PR.met_de_hand || {})) if (Array.isArray(ids)) for (const id of ids) zet(id, 'p.' + (VOOR_P[pe] || pe));
   } catch (e) {}
+  /* 20-11-2026 (fase 2, 'bescherm alle handmatig geselecteerde producten van Marius'): rondes die Marius voor één gelegenheid of persoon
+     keurde (Ronde Bedankje, Afscheid & pensioen, Babyknuffels ...) houden daar ook hun plek. Zie marius.js. */
+  try { const M = require('./marius.js').lees(root); for (const [id, m] of Object.entries(M)) for (const k of m.tak) zet(id, k); } catch (e) { console.log('keurmeester: keuzes van Marius niet gelezen: ' + e.message); }
   return vrij;
 }
 function smalPag(root) {

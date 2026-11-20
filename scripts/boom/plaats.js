@@ -16,6 +16,11 @@ const BF_EIGEN = {};
 const GROF = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch(es)?\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
 const GROF_NIET = /^cadeaus\/(sinterklaas|kerst|onder-10|onder-15|sint-onder-10|sint-onder-15|schoencadeautjes)$/;
 const GROF_MAG = { 'dvzn-871551': 1 };
+/* 20-11-2026 (Cadeaukeurmeester fase 2, Nova): een extra plek 'Met naam' alleen als je het cadeau echt persoonlijk maakt (naam, letter, datum,
+   foto, eigen tekst, gravure) of als de winkel alleen persoonlijke cadeaus maakt. Zelfde woorden als 'Met naam' in paginaregels.json. */
+let PERS_RE = null; try { PERS_RE = new RegExp(JSON.parse(fs.readFileSync(path.join(__dirname, 'paginaregels.json'), 'utf8')).sub['voor/haar/met-naam'].thema, 'i'); } catch (e) {}
+const PERS_WINKEL = new Set(['Smartphoto', 'Place the Moment', 'YourSurprise', 'Fotofabriek', 'Ontwerp-zelf', 'Foto-in-glas', 'Kaartje2go', 'Printworks', 'Profotonet']);
+const MET_NAAM = { 'cadeaus/met-naam': 1, 'valentijn/met-naam': 1 };
 try {
   const m = /LK_TOPKEUZE\["\/collectie\/black-friday"\]\s*=\s*(\[[^\]]*\])/.exec(fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'js', 'topkeuze.js'), 'utf8'));
   if (m) JSON.parse(m[1]).forEach((id) => { BF_EIGEN[id] = 1; });
@@ -86,11 +91,13 @@ function plaats(p) {
   if (p.cat === 'geuren-verzorging' && p.afd && p.afd !== 'beauty-verzorging') { p.cat = p.afd; p.sub = p.groep; } /* 10-11-2026: een oud vakje Geuren & verzorging mag geen koekjes, servies of speelgoed op de parfumpagina's zetten */
   /* Budgetbelofte (8-11-2026, Fable-opdracht P0): een vak dat 'onder €X' belooft mag geen duurder product laten zien.
      Het product blijft gewoon op de site in zijn eigen vakje; alleen het budgetvakje valt weg. Uitdeelverpakkingen (per stuk goedkoop) mogen blijven. */
+  if (PERS_RE && (p.ookIn || []).some((x) => MET_NAAM[x]) && !PERS_RE.test(p.titel || '') && !PERS_WINKEL.has(p.shop)) p.ookIn = p.ookIn.filter((x) => !MET_NAAM[x]);
   const BUDGET = { 'cadeaus/onder-15': 15, 'cadeaus/sint-onder-15': 15, 'cadeaus/onder-10': 10, 'cadeaus/sint-onder-10': 10, 'christelijk/onder-25': 25 };
   if (typeof p.prijs === 'number' && !(p.tags || []).includes('uitdelen')) {
-    p.ookIn = (p.ookIn || []).filter((x) => !(BUDGET[x] && p.prijs > BUDGET[x]));
+    /* 20-11-2026 (Nova): 'onder €15' betekent onder, dus een product van precies €15,00 valt er ook uit. */
+    p.ookIn = (p.ookIn || []).filter((x) => !(BUDGET[x] && p.prijs >= BUDGET[x]));
     const eigen = p.cat + '/' + p.sub;
-    if (BUDGET[eigen] && p.prijs > BUDGET[eigen]) { if (p.afd && p.afd + '/' + p.groep !== eigen) { p.cat = p.afd; p.sub = p.groep; } else { p.cat = 'cadeaus'; p.sub = eigen.indexOf('sint') !== -1 ? 'sinterklaas' : 'kerst'; } }
+    if (BUDGET[eigen] && p.prijs >= BUDGET[eigen]) { if (p.afd && p.afd + '/' + p.groep !== eigen) { p.cat = p.afd; p.sub = p.groep; } else { p.cat = 'cadeaus'; p.sub = eigen.indexOf('sint') !== -1 ? 'sinterklaas' : 'kerst'; } }
   }
   /* Leeftijd en veiligheid (8-11-2026, Fable P0-2): speelgoed vanaf 3 jaar (of met kleine onderdelen) hoort niet in een babyselectie.
      Het product blijft op de site; alleen het label 'baby' en het vakje Baby & kraam vallen weg. Zit het in Baby & peuter en hoort het

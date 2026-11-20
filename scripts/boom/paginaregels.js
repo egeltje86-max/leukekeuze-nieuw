@@ -27,8 +27,12 @@ function vanPersoon(p, pe) {
   return (p.voor || []).some((v) => pe.labels.indexOf(v) !== -1) || (pe.oud && (p.cat + '/' + p.sub === pe.oud || (p.ookIn || []).indexOf(pe.oud) !== -1));
 }
 /* Mag dit product op dit onderwerp? (zelfde vraag als de controle stelt) */
+/* 20-11-2026 (Cadeaukeurmeester fase 2, Nova): 'niet' = woorden in de titel die nooit bij dit onderwerp horen, ook niet als de afdeling klopt
+   (een lp bij Boeken & journals, een starterdeck of een tol bij Poppen, auto's & knuffels, een whiskyglas bij Lekkers & kaas). */
+const NIET_RE = {};
 function magOp(p, regel, thema) {
   const o = oud(p);
+  if (regel.niet) { const re = NIET_RE[regel.niet] || (NIET_RE[regel.niet] = new RegExp(regel.niet, 'i')); if (re.test(p.titel || '')) return false; }
   return regel.afd.indexOf(o.afd) !== -1 || regel.groep.indexOf(o.afd + '/' + o.groep) !== -1 || thema.test(p.titel || '');
 }
 function pas(alle, root) {

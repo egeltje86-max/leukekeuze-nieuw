@@ -8,8 +8,11 @@ ctx.window.window = ctx.window; vm.createContext(ctx);
 for (const f of ['assets/js/producten-lean.js', 'assets/js/topkeuze.js']) vm.runInContext(fs.readFileSync(path.join(R, f), 'utf8'), ctx);
 const KM = require(path.join(R, 'scripts/keurmeester/regels.js'));
 const W = ctx.window, PR = (W.LK_PRODUCTEN || []).filter((p) => !p.status || p.status === 'goedgekeurd');
-const aftrek = (p, g, pe) => { const o = {}; String(p.km || '').split(',').forEach((x) => { const m = /^([gp]\.[a-z-]+?)(\d+)$/.exec(x); if (m) o[m[1]] = +m[2]; }); return (g ? o['g.' + g] || 0 : 0) + (pe ? o['p.' + pe] || 0 : 0); };
-const score = (p, g, pe) => 75 - aftrek(p, g, pe);
+/* Zelfde rekensom als app.js: gewone aftrek (g., p.) kan een cadeau weghalen; zachte aftrek (zg., zp.) zet het hooguit lager (nooit onder 50). */
+const km = (p) => { const o = {}; String(p.km || '').split(',').forEach((x) => { const m = /^(z?[gpx]\.[a-z_-]+?)(-?\d+)$/.exec(x); if (m) o[m[1]] = +m[2]; }); return o; };
+const aftrek = (p, g, pe) => { const o = km(p); return (g ? o['g.' + g] || 0 : 0) + (pe ? o['p.' + pe] || 0 : 0); };
+const zacht = (p, g, pe) => { const o = km(p); return (g ? o['zg.' + g] || 0 : 0) + (pe ? o['zp.' + pe] || 0 : 0) + (o['zx.' + (g || '') + '_' + (pe || '')] || 0); };
+const score = (p, g, pe) => { const h = aftrek(p, g, pe), z = zacht(p, g, pe); let s = 75 - h - (z > 0 ? Math.min(z, 10) : 0); if (h < 26) s = Math.max(s, 50); return Math.min(75, s); };
 const vind = (w) => typeof w === 'string' && /^[a-z]+-[\w-]+$/.test(w) ? PR.filter((p) => p.id === w) : PR.filter((p) => w.test(p.titel || ''));
 /* [wat, gelegenheid, ontvanger, verwachting, uitleg]. Verwachting: 'weg' (<50), 'onder' (<75), 'goed' (>=75). */
 const TESTS = [
@@ -44,7 +47,33 @@ const TESTS = [
   ['cl-lindt-pralines', 'bedankt', 'collega', 'goed', 'Lindt pralines bij Bedankje voor collega'],
   [/^Atelier Rebul.*handcr/i, 'bedankt', 'collega', 'goed', 'Atelier Rebul handcrème bij Bedankje voor collega'],
   [/HEMA herenpyjama/i, '', 'hem', 'goed', 'HEMA-pyjama (verkocht) bij Voor hem'],
-  [/teddy.*hoodie|hoodie.*teddy/i, '', 'haar', 'goed', 'HEMA teddy-hoodie (verkocht) bij Voor haar']
+  [/teddy.*hoodie|hoodie.*teddy/i, '', 'haar', 'goed', 'HEMA teddy-hoodie (verkocht) bij Voor haar'],
+  /* Fase 2 (20-11-2026): onterecht weggehaald in fase 1 */
+  [/^Leatherman Skeletool/, '', 'opa-oma', 'goed', "Leatherman Skeletool bij opa en oma (was 'skelet')"],
+  [/Santa Montefiore/, 'moederdag', '', 'goed', "roman van Santa Montefiore bij Moederdag (was 'Santa' = kerst)"],
+  [/^Olijfolie in drie smaken/, 'bedankt', 'collega', 'goed', 'olijfolie in drie smaken (een pakketje) bij Bedankje voor collega'],
+  [/^Foute kersttrui .*skelet/i, 'kerst', 'collega', 'onder', 'foute kersttrui met skelet bij Kerst voor collega: mag, niet vooraan'],
+  /* Fase 2: keuzes van Marius voor één tak blijven daar staan */
+  [/^F\*ck it list book voor collega/, 'afscheid', 'collega', 'goed', "F*ck it list (Marius keurde hem voor Afscheid & pensioen)"],
+  ['kw-tonys-bedankt-15', 'bedankt', 'collega', 'goed', "Tony's Bedankt 15 repen (Marius keurde hem voor Bedankje)"],
+  [/^Atelier Rebul handcr/i, 'juf', 'haar', 'goed', 'Atelier Rebul handcrème bij Juf & meester (merk dat Marius vooraan wil)'],
+  ['dvzn-c15dcffb40', '', 'collega', 'goed', 'tegeltje koffie/bier (verkocht) bij Collega’s'],
+  /* Fase 2: Nova's twijfels = een paar rijen lager, niet weg */
+  ['cg-chocolade-game-controller', 'bedankt', 'hem', 'onder', 'Nova: gamecontroller van chocolade bij Bedankt voor hem: lager'],
+  ['cl-dk-scrub', 'juf', '', 'onder', 'Nova: bodyscrub bij Juf & meester: lager'],
+  ['cg-47d4498cf1', 'bedankt', '', 'goed', 'bedankt-mok voor mama bij Bedankt: Marius koos hem zelf voor Bedankt (Nova twijfelde)'],
+  ['cg-df3ffeabd6', 'bedankt', 'opa-oma', 'goed', 'bedankt-mok voor opa en oma bij Bedankt voor opa en oma: gewoon'],
+  ['dw-5011053021671', 'beterschap', 'kinderen', 'onder', 'Nova: 24 lolly-ringen bij Beterschap voor kinderen: lager'],
+  ['dvzn-5beb611cdc', 'jubileum', 'opa-oma', 'onder', "Nova: tegeltje '25 jaar getrouwd' bij Jubileum: lager"],
+  ['massa-d13af0c18e', 'verjaardag', 'hem', 'goed', "mok 'Abraham' bij Verjaardag: Marius koos hem zelf voor Verjaardag (Nova twijfelde)"],
+  ['dvzn-70adc8c50c', '', 'haar', 'onder', "Nova: cadeauset 'I Love You' bij Voor haar: lager"],
+  ['dvzn-70adc8c50c', 'valentijn', 'haar', 'goed', "cadeauset 'I Love You' bij Valentijn: gewoon"],
+  ['country-9458043fd0', 'housewarming', 'hem', 'goed', "tegeltje 'Mr & Mrs' bij Housewarming: Marius koos hem zelf voor Housewarming (Nova twijfelde)"],
+  ['dvzn-70adc8c50c', 'jubileum', 'haar', 'goed', "cadeauset 'I Love You' bij Jubileum: gewoon"],
+  ['cg-chocolade-game-controller', 'bedankt', 'tieners', 'goed', 'gamecontroller van chocolade bij Bedankt voor tieners: gewoon (Nova: goed)'],
+  ['dw-6931722318439', 'grappig', 'kinderen', 'goed', 'snoep-gokkastjes bij Grappige cadeaus voor kinderen: gewoon (Nova: goed)'],
+  ['cl-ttr-europe', 'lootjes', 'hem', 'onder', 'Nova: Ticket to Ride (45 euro) bij Kleine cadeautjes: lager'],
+  ['cl-uno', 'uitdelen', '', 'onder', 'Nova: UNO los bij Uitdeelcadeautjes: lager']
 ];
 const uit = { tests: [], fout: [], toppen: {} };
 for (const [wat, g, pe, ver, uitleg] of TESTS) {
@@ -64,8 +93,20 @@ for (const [k, ids] of Object.entries(W.LK_TOPVAST || {})) {
   ids.slice(0, 24).forEach((id) => { const p = P[id]; if (!p) return; n++; const s = score(p, c.g, c.pe); if (s < 50) { weg++; wegL.push(k + ' ' + id + ' ' + p.titel.slice(0, 50)); } else if (s < 75) onder++; });
 }
 uit.toppen = { geteld: n, weg, onder, wegLijst: wegL };
+/* Fase 2 (20-11-2026): keuzes van Marius voor één gelegenheid of persoon (marius.js) krijgen daar nooit aftrek; Atelier Rebul en verkochte producten
+   nooit aftrek van de zachte regels. */
+try {
+  const M = require(path.join(R, 'scripts/keurmeester/marius.js')).lees(R); const fout = [];
+  for (const [id, m] of Object.entries(M)) { const p = P[id]; if (!p || !p.km || !m.tak.length) continue; const o = {}; String(p.km).split(',').forEach((x) => { const mm = /^(z?[gpx]\.[a-z_-]+?)(-?\d+)$/.exec(x); if (mm) o[mm[1]] = +mm[2]; });
+    for (const k of m.tak) if (o[k] > 0 || o['z' + k] > 0) fout.push(id + ' ' + k + ' ' + p.titel.slice(0, 40)); }
+  uit.marius = { metTak: Object.values(M).filter((m) => m.tak.length).length, aftrekOpEigenTak: fout };
+  if (fout.length) uit.fout.push('keuzes van Marius krijgen aftrek op hun eigen gelegenheid: ' + fout.slice(0, 5).join('; '));
+  const kn = JSON.parse(fs.readFileSync(path.join(R, 'keurkamer/data/keuring-nieuw.json'), 'utf8')); uit.nieuw = { producten: kn.producten, metFout: kn.metFout, metWaarschuwing: kn.metWaarschuwing };
+  if (kn.metFout) uit.fout.push('nieuwe producten met een fout in de keuring: ' + kn.keuringen.filter((k) => k.fouten.length).map((k) => k.id + ' (' + k.fouten.join(', ') + ')').slice(0, 5).join('; '));
+} catch (e) { uit.marius = { fout: e.message }; }
 if (n && weg / n > 0.03) uit.fout.push('te veel handgekozen toppers vallen weg: ' + weg + ' van ' + n);
 if (RAP) fs.writeFileSync(RAP, JSON.stringify(uit, null, 1));
-console.log('keurmeester: ' + uit.tests.filter((t) => t.ok).length + ' van ' + uit.tests.length + ' tests goed | handgekozen toppers (eerste 24): ' + weg + ' weg, ' + onder + ' onderaan van ' + n);
+console.log('keurmeester: ' + uit.tests.filter((t) => t.ok).length + ' van ' + uit.tests.length + ' tests goed | handgekozen toppers (eerste 24): ' + weg + ' weg, ' + onder + ' lager van ' + n + ' | keuzes van Marius met eigen tak: ' + ((uit.marius || {}).metTak || 0) + ', aftrek daar: ' + (((uit.marius || {}).aftrekOpEigenTak || []).length) + ' | nieuwe producten: ' + ((uit.nieuw || {}).producten || 0) + ', met fout: ' + ((uit.nieuw || {}).metFout || 0));
+uit.fout.filter((f) => !/^Nova|^grafsteen/.test(f) && !uit.tests.some((t) => t.uitleg === f)).forEach((f) => console.log('FOUT: ' + f));
 uit.tests.filter((t) => !t.ok).forEach((t) => console.log('FOUT: ' + t.uitleg + ' -> ' + (t.slecht || []).join(' ; ')));
 process.exit(uit.fout.length ? 1 : 0);

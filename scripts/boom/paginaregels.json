@@ -68,7 +68,8 @@
     "mode-sieraden"
    ],
    "groep": [],
-   "thema": "horloge|watch|sieraad|sieraden|ketting|armband|oorbel|\\bring"
+   "thema": "horloge|watch|sieraad|sieraden|ketting|armband|oorbel|\\bring",
+   "niet": "voor dames|\\bdames|damesarmband|dameshorloge"
   },
   "voor/hem/darts-sport": {
    "afd": [
@@ -218,7 +219,8 @@
     "eten-drinken"
    ],
    "groep": [],
-   "thema": "champagne|prosecco|cava|bubbel|wijn|wine|chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie"
+   "thema": "champagne|prosecco|cava|bubbel|wijn|wine|chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie",
+   "niet": "glas\\b|glazen|\\bkaraf|opener|wijnset|stopper|schenktuit|shaker|ijsemmer|kurkentrekker|decanteer|whiskysteen|whisky stones|koelstenen"
   },
   "voor/haar/horloges": {
    "afd": [
@@ -268,7 +270,8 @@
     "elektronica/tablets-e-readers",
     "hobby/papier-planners"
    ],
-   "thema": "boek|lees|agenda|planner|kalender|journal|notitie"
+   "thema": "boek|lees|agenda|planner|kalender|journal|notitie",
+   "niet": "\\(lp\\)|\\blp\\b|vinyl|\\bcd\\b|soundtrack|blu-?ray|\\bdvd\\b|lightstick|platenspeler"
   },
   "voor/haar/keuken-koffie-thee": {
    "afd": [
@@ -299,7 +302,8 @@
     "speelgoed"
    ],
    "groep": [],
-   "thema": "bouw|lego|blokken|magnet"
+   "thema": "bouw|lego|blokken|magnet",
+   "niet": "racebaan|carrera|\\bgo!!!"
   },
   "voor/kinderen/knutselen": {
    "afd": [
@@ -324,7 +328,8 @@
    "groep": [
     "elektronica/gadgets"
    ],
-   "thema": "figu|pop\\b|poppen|knuffel|barbie|playmobil"
+   "thema": "figu|pop\\b|poppen|knuffel|barbie|playmobil",
+   "niet": "starter ?deck|\\bdeck\\b|booster|verzamelkaart|ruilkaart|speelkaarten|\\bkaarten\\b|verkleed|kostuum|loodgieterspak|\\btol\\b|tollen|spinner|beyblade|fidget"
   },
   "voor/kinderen/spellen": {
    "afd": [
@@ -338,7 +343,8 @@
     "boeken-media"
    ],
    "groep": [],
-   "thema": "boek|lees"
+   "thema": "boek|lees",
+   "niet": "\\(lp\\)|\\blp\\b|vinyl|\\bcd\\b|soundtrack|blu-?ray|\\bdvd\\b|lightstick|platenspeler"
   },
   "voor/kinderen/gaming": {
    "afd": [
@@ -354,7 +360,8 @@
     "wonen"
    ],
    "groep": [],
-   "thema": "kamer|lamp|nachtlamp|dekbed|poster"
+   "thema": "kamer|lamp|nachtlamp|dekbed|poster",
+   "niet": "\\bmok\\b|\\bbeker\\b|drinkfles|drinkbeker|servies|lunchbox|broodtrommel"
   },
   "voor/kinderen/schoenen-kleding": {
    "afd": [
@@ -423,7 +430,8 @@
     "speelgoed"
    ],
    "groep": [],
-   "thema": "spel\\b|spellen|speelkaart|puzzel"
+   "thema": "spel\\b|spellen|speelkaart|puzzel",
+   "niet": "\\blego\\b"
   },
   "voor/tieners/kamer": {
    "afd": [
@@ -454,7 +462,8 @@
     "hobby"
    ],
    "groep": [],
-   "thema": "boek|lees|journal|dagboek|notitie|planner"
+   "thema": "boek|lees|journal|dagboek|notitie|planner",
+   "niet": "\\(lp\\)|\\blp\\b|vinyl|\\bcd\\b|soundtrack|blu-?ray|\\bdvd\\b|lightstick|platenspeler"
   },
   "voor/tieners/lekkers": {
    "afd": [
@@ -537,14 +546,16 @@
     "elektronica/tablets-e-readers",
     "wonen/verlichting"
    ],
-   "thema": "boek|lees"
+   "thema": "boek|lees",
+   "niet": "\\(lp\\)|\\blp\\b|vinyl|\\bcd\\b|soundtrack|blu-?ray|\\bdvd\\b|lightstick|platenspeler"
   },
   "voor/opa-oma/lekkers-drank": {
    "afd": [
     "eten-drinken"
    ],
    "groep": [],
-   "thema": "chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie|drank|gin|rum|cocktail|wijn"
+   "thema": "chocola|snoep|koek|lekker|bonbon|drop\\b|thee|koffie|drank|gin|rum|cocktail|wijn",
+   "niet": "glas\\b|glazen|\\bkaraf|opener|wijnset|stopper|schenktuit|shaker|ijsemmer|kurkentrekker|decanteer|whiskysteen|whisky stones|koelstenen"
   },
   "voor/baby/kleding-dekentjes": {
    "afd": [
@@ -567,10 +578,14 @@
    "afd": [
     "speelgoed"
    ],
-   "groep": [
-    "wonen/woontextiel"
-   ],
-   "thema": "knuffel|pluche|beer\\b|naam"
+   "groep": [],
+   "thema": "knuffel|pluche|beer\\b|naam",
+   "niet": "\\bdeken|dekentje|plaid|omslagdoek|swaddle|hydrofiel"
+  },
+  "voor/haar/met-naam": {
+   "afd": [],
+   "groep": [],
+   "thema": "met (je |jouw |eigen |de |hun |haar |zijn |een )?(naam|namen|tekst|foto|foto's|datum|initia|gravure)|naam naar keuze|eigen (naam|tekst|foto|ontwerp|afbeelding|stem|handschrift|tekening|huisdier)|jouw (eigen )?(foto|naam|tekst)|van je (foto|huisdier)|je foto|gepersonaliseerd|personaliseer|personalis|graveer|gegraveerd|gravure|initia(al|len)|monogram|beginletter|letters\\b|naamarmband|sterrenhemel|sterrenkaart|star ?map|stadskaart|plattegrond|portret|karikatuur|fotoboek|fotoalbum|fotokalender|fotopuzzel|fotolijst|foto op |foto-|photo|met naam|naamketting|naambord|naamsticker|letter ?(ketting|armband|hanger)|geboorte(poster|bord|kaart|steen|stenen)|\\bnaam\\b|\\bnamen\\b|\\bfoto's?\\b|eigen tekst|tekst naar keuze|datum naar keuze|trouwdatum|voetafdruk|handafdruk|handgeschreven|zelf (te )?(vullen|invullen|schrijven)"
   }
  },
  "label_titel_niet": {
@@ -825,5 +840,6 @@
   "personen": [
    "baby"
   ]
- }
+ },
+ "_uitleg_fase2": "20-11-2026 (Cadeaukeurmeester fase 2, Nova's herkeuring): sub-regels kunnen 'niet' hebben (woorden in de titel die nooit op dat onderwerp horen, ook niet als de afdeling klopt). 'Met naam' bij Voor haar: alleen wat je echt persoonlijk maakt (naam, letter, datum, foto, eigen tekst, gravure); dezelfde woorden staan als LK_PERSOONLIJK in data.js."
 }

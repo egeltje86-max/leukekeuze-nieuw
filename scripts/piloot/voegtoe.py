@@ -1,5 +1,5 @@
 """Piloot: gekozen kandidaten op de site zetten (producten.js + foto's + correcties.json).
-Gebruik: python3 scripts/piloot/voegtoe.py <kandidaten.json> <keuze.json> <fotomap> [--blok "naam van dit blok"]
+Gebruik: python3 scripts/piloot/voegtoe.py <kandidaten.json> <keuze.json> <fotomap> [--blok "naam van dit blok"] [--toch]
 keuze.json = { "<i>": {"titel": "...", "vak": "afd/groep/vak", "ookIn": ["cadeaus/kerst"], "voor": ["haar"], "moment": ["kerst","verjaardag"], "waarom": "..."} , ... }
 Strenge poort: partnercode in de link, de link heeft een adres bij de winkel, vak bestaat, prijs > 0, foto aanwezig, id nog niet op de site, titel niet bijna gelijk aan een bestaand product.
 Wat niet door de poort komt wordt overgeslagen en gemeld (nooit stilletjes toegevoegd)."""
@@ -77,6 +77,20 @@ for i, keus in KEUZE.items():
     cs = DRANK(a)  # drank hoort bij het label 'dranken' (anders ontbreekt het op 'Whisky, bier & drank' bij Voor hem), 11-11-2026
     uit.append({"id": pid, "titel": keus['titel'], "prijs": float(x['p']), "shop": NAAM.get(x['w'], x['w']), "url": x['l'], "winkelUrl": x.get('u') or x['l'], "beeld": "images/producten/" + pid, "cat": cs[0], "sub": cs[1], "subVast": True, "ookIn": keus.get('ookIn', []), "voor": keus.get('voor', ['iedereen']), "moment": keus.get('moment', ['verjaardag', 'kerst', 'zomaar']), "waarom": keus['waarom'], "status": "goedgekeurd", "nieuw": True, "gecontroleerd": x.get('g') or vandaag, "sinds": vandaag, "herkomst": keus.get('herkomst', 'piloot')})
     vak[pid] = a; titels.add(re.sub(r'[^a-z0-9]', '', keus['titel'].lower())[:30])
+# 20-11-2026 (Cadeaukeurmeester fase 2): elk nieuw product meteen keuren op soort, ontvanger, gelegenheid, leeftijd en geschiktheid.
+# Een FOUT (bijv. een grove grap of drank met het label kind) houdt het product tegen, tenzij --toch. Waarschuwingen worden gemeld.
+if uit:
+    import tempfile
+    tf = tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8'); json.dump(uit, tf, ensure_ascii=False); tf.close()
+    uitk = tf.name + '.uit.json'
+    r = subprocess.run(['node', os.path.join(ROOT, 'scripts/keurmeester/nieuw.js'), tf.name, '--json', uitk], cwd=ROOT, capture_output=True, text=True)
+    print(r.stdout.rstrip())
+    try: keuring = {k['id']: k for k in json.load(open(uitk, encoding='utf-8'))}
+    except Exception as e: keuring = {}; print('keuring mislukt:', e, r.stderr[-300:])
+    if '--toch' not in sys.argv:
+        fout = [u for u in uit if keuring.get(u['id'], {}).get('fouten')]
+        for u in fout: over.append((u['id'], 'keurmeester: ' + '; '.join(keuring[u['id']]['fouten']))); vak.pop(u['id'], None)
+        uit = [u for u in uit if u not in fout]
 if uit:
     tekst = '\n/* ===== ' + blok + ': ' + str(len(uit)) + ' producten (automatische piloot, poort: partnercode, vak, foto, geen dubbel) ===== */\nwindow.LK_PRODUCTEN.push.apply(window.LK_PRODUCTEN, ' + json.dumps(uit, ensure_ascii=False) + ');\n/* ===== einde ' + blok + ' ===== */\n'
     open(os.path.join(ROOT, 'assets/js/producten.js'), 'a', encoding='utf-8').write(tekst)
