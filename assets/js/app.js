@@ -1596,15 +1596,16 @@
      dus de boodschap is 'samen iets beleven'. Weinig keuzes op de homepage (6 tegels), de rest op /c/belevenissen.
      De 'vanaf'-prijzen rekent de site zelf uit, zodat ze altijd kloppen. */
   var BELEVENIS_TEGELS = [
-    ['Droomauto rijden', 'snelheid-avontuur', 'droomauto-rijden', 'dk-9c89e99aa6'],
+    ['Droomauto rijden', 'snelheid-avontuur', 'droomauto-rijden', 'dk-9393c6d57b'],
     ['Paragliden', 'in-de-lucht', '', 'dk-d8f37a3161'],
     ['Flyboard & waterski', 'water-strand', 'waterskien-kitesurfen-flyboarden', 'dk-da9d4b8898'],
     ['Escape room', 'escape-rooms-puzzeltochten', 'escape-rooms', 'dk-f69947b4d7'],
     ['Puzzeltocht', 'escape-rooms-puzzeltochten', 'puzzel-speurtochten', 'dk-4c68d47ad3'],
     ['Overnachten', 'dagjes-uit-overnachten', 'overnachten', 'dk-35d0e56982']];
   function belevenisBlok() {
-    /* 17-11-2026 (Marius: 'haal Belevenissen weg van de homepage'): het blok staat niet meer op de homepage. Weer aan: window.LK_BELEVENIS_HOME = true */
-    if (window.LK_BELEVENIS_HOME !== true) return '';
+    /* 17-11-2026 (Marius: 'haal Belevenissen weg van de homepage') stond het blok uit. Sinds 20-11-2026 weer aan (Marius: 'zet belevenissen terug',
+       na de eerste verkoop via Doenkado: Lamborghini-race, € 11,85 commissie). Uit: window.LK_BELEVENIS_HOME = false */
+    if (window.LK_BELEVENIS_HOME === false) return '';
     var alle = LK.zichtbaar().filter(function (p) { return p.afd === 'belevenissen'; });
     if (alle.length < 6) return '';
     var min = function (l) { return l.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9); };
