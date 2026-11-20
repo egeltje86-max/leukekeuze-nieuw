@@ -1,20 +1,33 @@
 {
- "datum": "2026-11-14",
- "nagekeken": 1335,
- "klopt": 789,
- "prijs": 4,
- "weg": 8,
- "onbekend": 534,
- "zonderAdres": 155,
- "twijfelWinkels": [],
- "grotePrijssprong": [],
+ "datum": "2026-11-20",
+ "nagekeken": 1467,
+ "klopt": 643,
+ "prijs": 85,
+ "weg": 20,
+ "onbekend": 699,
+ "zonderAdres": 100,
+ "twijfelWinkels": [
+  "AliExpress",
+  "De Grote Speelgoedwinkel"
+ ],
+ "grotePrijssprong": [
+  "myka-11001411904: Dubbele ketting met naam en een steentje (zilver) van 40.00 naar 130.00",
+  "myka-11001374404: Ketting \"mom\" in sierlijke letters (zilver) van 18.00 naar 52.00",
+  "myka-11001215122: Hartjesketting met naam, echt 10 karaat goud van 98.00 naar 520.00",
+  "shoesb-440e5ca055: Rohde pantoffels 2607 (grijs) van 25.00 naar 59.95"
+ ],
  "nietLeesbaar": [
-  "Decantalo: 280",
-  "LEGO: 59",
-  "Prydligt: 59",
+  "Decantalo: 266",
+  "LEGO: 56",
+  "Badjasparadijs.nl: 46",
+  "Prydligt: 45",
+  "Megagadgets: 45",
+  "Joybuy: 44",
   "Wijnkring: 30",
-  "Megagadgets: 27",
-  "La Redoute: 24",
-  "Kaartje2go: 20"
+  "Bartogi: 22",
+  "Babyslofje-online.nl: 19",
+  "iScooter: 17",
+  "Kaartje2go: 13",
+  "The Mindful Shop: 10"
  ]
 }
