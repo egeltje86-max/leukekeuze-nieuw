@@ -1,7 +1,7 @@
-// Fotoreel-sjabloon (18-11-2026). Gebruik: node maak.js <naam> [dia] in een map met reels.json en de foto's (c0.jpg ...). Geen winkelnamen op de foto's, alleen leukekeuze.nl; veilige zone zie veilig.css en CLAUDE.md §12.
+// Fotoreel-sjabloon (18-11-2026; 20-11: merk per foto en de echte lettertypes Playfair Display en Manrope uit assets/fonts). Gebruik: node maak.js <naam> [dia] in een map met reels.json en de foto's (c0.jpg ...). Geen winkelnamen op de foto's, alleen leukekeuze.nl; veilige zone zie veilig.css en CLAUDE.md §12.
 const fs = require('fs'); const { chromium } = require('playwright'); const { execSync } = require('child_process');
 const R = JSON.parse(fs.readFileSync(__dirname + '/reels.json', 'utf8')); const welke = process.argv[2]; const alleenDia = process.argv[3] === 'dia';
-const CSS = `*{box-sizing:border-box;margin:0;padding:0}
+const CSS = `@font-face{font-family:'Manrope';src:url(file://${process.env.LK_FONTS||'/home/claude/leukekeuze-nieuw/assets/fonts'}/manrope-600-latin.woff2) format('woff2');font-weight:200 800}@font-face{font-family:'Playfair Display';src:url(file://${process.env.LK_FONTS||'/home/claude/leukekeuze-nieuw/assets/fonts'}/playfair-display-600-latin.woff2) format('woff2');font-weight:400 900}*{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#F7F3EC;font-family:'Manrope',sans-serif;color:#141A2A}
 .s{position:absolute;inset:0;display:none;overflow:hidden}
 .navy{background:#0A1020 url(bokeh.png) center/cover no-repeat;color:#fff}
@@ -52,10 +52,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#F7F3EC;font-fam
 #p0 .nr,#p0 .prijs{top:480px!important}#p0 .kaart{top:520px!important;height:680px!important}
 #p0 .soort{top:1222px!important;font-size:68px!important}#p0 .sub{top:1310px!important;font-size:36px!important}
 .klein{bottom:auto!important;top:1420px!important}
-#eind .t1{top:420px!important}#eind .t2{top:500px!important}#eind .zoek{top:820px!important;left:150px!important;right:150px!important}#eind .t4{top:1050px!important}#eind .eindsub{top:1230px!important}
+#eind .t1{top:420px!important}#eind .t2{top:500px!important}#eind .zoek{top:820px!important;left:150px!important;right:180px!important}#eind .t4{top:1050px!important}#eind .eindsub{top:1230px!important}
 `;
 function html(r) {
-  const P = r.p.map((p, i) => `<div class="s prod${r.bg?' bgp':''}" id="p${i}">${i===0?'<div class="kk1">'+r.k1+'</div><div class="kk2">'+r.k2+'</div>':''}<div class="merk">${r.merk}</div><div class="lijn"></div><div class="nr">${i + 1}</div><div class="prijs">${p.pr}</div><div class="kaart${p.vul ? ' vul' : ''}"><img src="${p.f}"></div><div class="soort">${p.n}</div><div class="sub">${p.s}</div><div class="voet">Alles op leukekeuze<b>.nl</b></div></div>`).join('\n');
+  const P = r.p.map((p, i) => `<div class="s prod${r.bg?' bgp':''}" id="p${i}">${i===0?'<div class="kk1">'+r.k1+'</div><div class="kk2">'+r.k2+'</div>':''}<div class="merk">${p.merk||r.merk}</div><div class="lijn"></div><div class="nr">${i + 1}</div><div class="prijs">${p.pr}</div><div class="kaart${p.vul ? ' vul' : ''}"><img src="${p.f}"></div><div class="soort">${p.n}</div><div class="sub">${p.s}</div><div class="voet">Alles op leukekeuze<b>.nl</b></div></div>`).join('\n');
   return `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
 <div class="s navy" id="kop" style="display:none"><div class="t1">${r.t1}</div><div class="t2">${r.t2}</div><div class="t3">${r.t3}</div><div class="rij">${r.p.map(p => '<span><img src="' + p.f + '"></span>').join('')}</div><div class="t4">Veeg door &rarr;</div></div>
 ${P}
