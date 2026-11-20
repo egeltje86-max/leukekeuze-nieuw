@@ -720,7 +720,7 @@ window.LK_PERSONEN = (function () {
     seoTitel: 'Kraamcadeau – cadeaus voor baby en ouders', tekst: 'Kraamcadeaus, zachte kleertjes, knuffels met naam en iets voor de babyshower.',
     subs: [
       s('kraamcadeaus', 'Kraamcadeaus & pakketten', 'cadeaus-baby-kraam-2026b', ['tag:baby-kraampakketten'], 'Kraamcadeau en kraampakket', 'Mooie kraampakketten en cadeaus om op kraamvisite mee te nemen.'),
-      s('kleding-dekentjes', 'Babykleding & dekentjes', 'mode-beauty-kleding', ['tag:baby-kleding'], 'Babykleding en dekentjes cadeau', 'Zachte rompertjes, slabbetjes, mutsjes en dekentjes.'),
+      s('kleding-dekentjes', 'Babykleding & dekentjes', 'mode-beauty-kleding', ['tag:baby-kleding'], 'Babykleding en dekentjes cadeau', 'Zachte rompertjes, slabbetjes, mutsjes en dekentjes.', { beeld: 'images/sub/rond/voor-baby-kleding.webp' }),
       s('speelkleden-rammelaars', 'Speelkleden & rammelaars', 'speelgoed-baby-peuter', ['tag:baby-speelgoed'], 'Speelkleed en rammelaar cadeau', 'Speelkleden, rammelaars, bijtringen en eerste speelgoed.'),
       s('knuffels-met-naam', 'Knuffels & knuffeldoekjes', '', ['tag:baby-knuffels-naam'], 'Knuffel of knuffeldoekje als kraamcadeau', 'Een zachte knuffel of een knuffeldoekje voor de baby, soms met de naam erop.', { beeld: 'images/sub/iconen/icoon-speelgoed-poppen-knuffels-knuffels.webp' }), /* 20-11-2026 (Marius): heette 'Knuffels met naam'; het adres blijft gelijk */
       s('babyshower', 'Babyshower', 'cadeaus-baby-kraam-2026b', ['tag:baby-babyshower'], 'Babyshower cadeau', 'Cadeaus voor de aanstaande moeder en de babyshower.')
@@ -1220,7 +1220,7 @@ window.LK_HOME_GROEPEN = ['speelgoed', 'mode-sieraden', 'beauty-verzorging', 'el
 (function () {
   (window.LK_PERSONEN || []).forEach(function (p) {
     if (['haar', 'hem', 'kinderen'].indexOf(p.slug) === -1 || !p.subs || p.subs.some(function (s) { return s.slug === 'belevenissen'; })) return;
-    p.subs.push({ slug: 'belevenissen', naam: 'Belevenissen', beeld: 'images/categorieen/belevenissen-home.webp', vakken: ['belevenissen'],
+    p.subs.push({ slug: 'belevenissen', naam: 'Belevenissen', beeld: 'images/categorieen/rond/cat-belevenissen.webp', vakken: ['belevenissen'],
       seoTitel: p.slug === 'kinderen' ? 'Uitje cadeau voor kinderen – zeehonden, speurtochten en meer' : 'Belevenis cadeau ' + p.naam.toLowerCase() + ' – een uitje dat ze nooit vergeten',
       tekst: p.slug === 'kinderen' ? 'Een uitje om samen te doen: bevers speuren, zeehonden kijken, een speurtocht of alpaca’s knuffelen.' : 'Geen spullen, maar een herinnering: van Ferrari rijden en een helikoptervlucht tot een nachtje weg.' });
   });
@@ -1295,7 +1295,7 @@ window.LK_HOME_GROEPEN = ['speelgoed', 'mode-sieraden', 'beauty-verzorging', 'el
 "sport-outdoor/balsport-spel": "images/sub/iconen/icoon-sport-outdoor-balsport-spel.webp",
 "sport-outdoor/water-wintersport": "images/sub/iconen/icoon-sport-outdoor-water-wintersport.webp",
 "sport-outdoor/metaaldetectie": "images/sub/iconen/icoon-sport-outdoor-metaaldetectie.webp",
-"sport-outdoor/noodpakket-survival": "images/sub/iconen/icoon-sport-outdoor-noodpakket-survival.webp",
+"sport-outdoor/noodpakket-survival": "images/sub/iconen/icoon-sport-outdoor-outdoor-avontuur-noodpakket-survival.webp",
 "tuin-klussen/tuin-planten": "images/sub/iconen/icoon-tuin-klussen-tuin-planten.webp",
 "tuin-klussen/buiten-leven": "images/sub/iconen/icoon-tuin-klussen-buiten-leven.webp",
 "tuin-klussen/tuingereedschap": "images/sub/iconen/icoon-tuin-klussen-tuingereedschap.webp",
@@ -1525,7 +1525,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
 })();
 /* ===== einde One Piece & anime-hoek ===== */
 
-/* 19-11-2026: rondjes van Nova (deel 4 tot en met 13) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
+/* 19-11-2026: rondjes van Nova (deel 4 tot en met 14) voor de soorten (vakjes). Staat vóór de 4.0 VERHUIZING, zodat de vakjes ze meenemen naar hun nieuwe groep.
    Sleutel = oude plek van het vakje (afdeling/groep/vakje), waarde = naam van het bestand images/sub/iconen/icoon-<waarde>.webp (meestal de nieuwe plek). */
 (function () {
   var B = {
@@ -1785,7 +1785,49 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
     'dieren/hond/hondenspeelgoed': 'dieren-hond-hondenspeelgoed',
     'dieren/hond/manden-kussens': 'dieren-hond-manden-kussens',
     'dieren/kat/kattenspeelgoed': 'dieren-kat-kattenspeelgoed',
-    'dieren/kat/krabpalen-manden': 'dieren-kat-krabpalen-manden'
+    'dieren/kat/krabpalen-manden': 'dieren-kat-krabpalen-manden',
+    'eten-drinken/bier/bierpakketten': 'eten-drinken-bier-sterke-drank-bierpakketten',
+    'eten-drinken/sterke-drank/cognac': 'eten-drinken-bier-sterke-drank-cognac',
+    'eten-drinken/sterke-drank/gin': 'eten-drinken-bier-sterke-drank-gin',
+    'eten-drinken/sterke-drank/likeur': 'eten-drinken-bier-sterke-drank-likeur',
+    'eten-drinken/sterke-drank/rum': 'eten-drinken-bier-sterke-drank-rum',
+    'eten-drinken/bier/speciaalbier': 'eten-drinken-bier-sterke-drank-speciaalbier',
+    'eten-drinken/sterke-drank/tequila': 'eten-drinken-bier-sterke-drank-tequila',
+    'eten-drinken/sterke-drank/whisky': 'eten-drinken-bier-sterke-drank-whisky',
+    'eten-drinken/sterke-drank/wodka': 'eten-drinken-bier-sterke-drank-wodka',
+    'eten-drinken/cadeaupakketten/bloemen-rozen': 'eten-drinken-cadeaupakketten-bloemen-rozen',
+    'eten-drinken/cadeaupakketten/brievenbuscadeaus': 'eten-drinken-cadeaupakketten-brievenbuscadeaus',
+    'eten-drinken/cadeaupakketten/cadeaupakketten-manden': 'eten-drinken-cadeaupakketten-cadeaupakketten-manden',
+    'eten-drinken/chocolade-snoep/chocoladeletters': 'eten-drinken-chocolade-snoep-chocoladeletters',
+    'eten-drinken/chocolade-snoep/koekjes-stroopwafels': 'eten-drinken-chocolade-snoep-koekjes-stroopwafels',
+    'eten-drinken/chocolade-snoep/snoep-drop': 'eten-drinken-chocolade-snoep-snoep-drop',
+    'eten-drinken/chocolade-snoep/snoep-met-een-boodschap': 'eten-drinken-chocolade-snoep-snoep-met-een-boodschap',
+    'eten-drinken/delicatessen/kaas-worst': 'eten-drinken-lekkernijen-kaas-worst',
+    'eten-drinken/koffie-thee-cacao/koffie': 'eten-drinken-lekkernijen-koffie',
+    'eten-drinken/delicatessen/noten-zoutjes': 'eten-drinken-lekkernijen-noten-zoutjes',
+    'eten-drinken/delicatessen/sauzen-kruiden': 'eten-drinken-lekkernijen-sauzen-kruiden',
+    'eten-drinken/koffie-thee-cacao/thee': 'eten-drinken-lekkernijen-thee',
+    'eten-drinken/koffie-thee-cacao/warme-chocolademelk': 'eten-drinken-lekkernijen-warme-chocolademelk',
+    'eten-drinken/bubbels/champagne': 'eten-drinken-wijn-bubbels-champagne',
+    'eten-drinken/wijn/port-dessertwijn': 'eten-drinken-wijn-bubbels-port-dessertwijn',
+    'eten-drinken/bubbels/prosecco-cava': 'eten-drinken-wijn-bubbels-prosecco-cava',
+    'eten-drinken/wijn/rode-wijn': 'eten-drinken-wijn-bubbels-rode-wijn',
+    'eten-drinken/wijn/rose': 'eten-drinken-wijn-bubbels-rose',
+    'eten-drinken/wijn/witte-wijn': 'eten-drinken-wijn-bubbels-witte-wijn',
+    'wonen/koffie-thee-zetten/koffiemachines': 'koken-tafelen-koffie-thee-zetten-koffiemachines',
+    'wonen/koffie-thee-zetten/theepotten': 'koken-tafelen-koffie-thee-zetten-theepotten',
+    'wonen/koken-bakken/airfryers': 'koken-tafelen-koken-bakken-airfryers',
+    'wonen/koken-bakken/bakken': 'koken-tafelen-koken-bakken-bakken',
+    'wonen/koken-bakken/drinkflessen-lunchboxen': 'koken-tafelen-koken-bakken-drinkflessen-lunchboxen',
+    'wonen/koken-bakken/keukenapparaten': 'koken-tafelen-koken-bakken-keukenapparaten',
+    'wonen/koken-bakken/opbergen-voorraadpotten': 'koken-tafelen-koken-bakken-opbergen-voorraadpotten',
+    'wonen/koken-bakken/pannen-messen': 'koken-tafelen-koken-bakken-pannen-messen',
+    'wonen/tafelen/glazen': 'koken-tafelen-mokken-glazen-glazen',
+    'wonen/koffie-thee-zetten/mokken-theeglazen': 'koken-tafelen-mokken-glazen-mokken-theeglazen',
+    'wonen/tafelen/borrelplanken-serveren': 'koken-tafelen-tafelen-borrel-borrelplanken-serveren',
+    'wonen/tafelen/servies': 'koken-tafelen-tafelen-borrel-servies',
+    'speelgoed/poppen-knuffels/squishmallows': 'speelgoed-poppen-knuffels-squishmallows',
+    'speelgoed/speelfiguren-voertuigen/playmobil': 'speelgoed-speelfiguren-voertuigen-playmobil'
   };
   (window.LK_CATEGORIEEN || []).forEach(function (c) { (c.subs || []).forEach(function (s) { (s.vakjes || []).forEach(function (v) {
     var k = c.slug + '/' + s.slug + '/' + v.slug;
