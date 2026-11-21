@@ -29,11 +29,11 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=23268516535205" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=210064839670507" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=164856849627079" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
-  <link rel="stylesheet" href="assets/css/licht.css?v=147108608610768">
-  <link rel="stylesheet" href="assets/css/straat.css?v=47876922468487">
+  <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
+  <link rel="stylesheet" href="assets/css/straat.css?v=14994716419079">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -61,7 +61,16 @@
     if (sessionStorage.getItem('lkwijzer-uit') === '1' || navigator.webdriver || /bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)) v = 'a'; else localStorage.setItem('lkwijzer', 'b');
     if (v.charAt(0) === 'b' && /^\/voor\/[^\/]+/.test(location.pathname) && !/[?&]alles=1/.test(location.search)) document.documentElement.className += ' wz-b';
     if (v.charAt(0) === 'b' && location.pathname === '/') document.documentElement.className += ' wz-bh';
+    if (v.charAt(0) === 'b' && /^\/(c|gelegenheid|collectie)\/[^\/]+/.test(location.pathname) && window.LK_WINKELSTIJL !== false) document.documentElement.className += ' wz-bw';
     if (v.charAt(0) === 'b') document.documentElement.className += ' wz-v'; } catch (e) {} })();</script>
+  <!-- CADEAUSTRAAT (21-11-2026): op de homepage staat voor bezoekers de Cadeaustraat, met bovenaan alleen het logo en het zoekvak (zoals de testversie).
+       De klasse sh-thuis staat er meteen, anders zie je eerst even de oude kop. straat.js houdt hem daarna bij (alleen zolang de straat in #app staat). -->
+  <script>(function () { try { var h = document.documentElement, q = location.search;
+    if (!/(^| )wz-v( |$)/.test(h.className) || window.LK_STRAAT_AAN === false || /[?&]proef=straat-uit\b/.test(q)) return;
+    if (sessionStorage.getItem('lkstraat-uit') && !/[?&]proef=straat\b(?!-)/.test(q)) return;
+    /* WINKELSTIJL (21-11-2026): op elke pagina dezelfde lichte kop als in de straat (logo en zoekvak). Zelfde schakelaars als winkelstijl() in straat.js. */
+    if (window.LK_WINKELSTIJL !== false && !/[?&]proef=winkelstijl-uit\b/.test(q) && (!sessionStorage.getItem('lkws-uit') || /[?&]proef=winkelstijl\b(?!-)/.test(q))) h.className += ' sh-kop';
+    if (/(^| )wz-bh( |$)/.test(h.className)) h.className += ' sh-thuis'; } catch (e) {} })();</script>
   <!-- VROEG-NOVA (13-11-2026, grote keuring): de klassen van de huisstijl (NOVA-001 t/m 009) staan nu al op de pagina voordat app.js binnen is.
        Eerder zette app.js ze pas: op een trage telefoon zag je de pagina dan eerst ongeveer een seconde in de oude stijl, en daarna versprong alles. Zelfde schakelaars als in app.js. -->
   <script>(function () { var c = '', i, n = [1, 2, 3, 5, 6, 7, 9]; for (i = 0; i < n.length; i++) if (window['LK_NOVA' + n[i]] !== false) c += ' nova' + n[i]; document.documentElement.className += c; })();</script>
@@ -127,7 +136,7 @@
   <!-- WIJZER (13-11-2026, grote keuring): staat de nieuwe opzet van deze pagina klaar (<template id="app-b">, gemaakt door maak-paginas.js) en krijgt
        deze bezoeker de nieuwe opzet, dan wisselen we hem hier meteen in, nog voor er iets getekend is. Alleen op het kale adres (zonder filter of sortering). -->
   <script>(function () { try { var h = document.documentElement, t = document.getElementById('app-b'), q, i;
-    if (!t || !/(^| )wz-bh?( |$)/.test(h.className) || window.LK_WIJZER === false) return;
+    if (!t || !/(^| )wz-b[hw]?( |$)/.test(h.className) || window.LK_WIJZER === false) return;
     q = location.search.replace(/^\?/, '').split('&');
     for (i = 0; i < q.length; i++) if (q[i] && !/^(utm_[a-z_]+|gclid|fbclid|msclkid|srsltid|gad_source|gbraid|wbraid|proef)=/i.test(q[i])) return;
     document.getElementById('app').innerHTML = t.innerHTML; h.className += ' wz-klaar'; } catch (e) {} })();</script>
@@ -210,8 +219,8 @@
   <script src="assets/js/data.js?v=164856849627079"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=111802525743477"></script>
-  <script src="assets/js/straat.js?v=186228218051634"></script>
-  <script src="assets/js/app.js?v=23268516535205"></script>
+  <script src="assets/js/straat.js?v=190887998822492"></script>
+  <script src="assets/js/app.js?v=210064839670507"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -177,19 +177,6 @@
 .sh .snel h2+div+h2{margin-top:18px}
 .sh .snel .kr{background:#FFF6EA}
 .sh .snel .kn{hyphens:manual}
-.sh .afd-kaarten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-@media (min-width:700px){.sh .afd-kaarten{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}}
-@media (min-width:1000px){.sh .afd-kaarten{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.sh .afd{display:flex;align-items:center;gap:10px;min-height:58px;padding:7px 10px 7px 7px;background:#FFFCF7;border:1px solid #E5D7BE;border-color:color-mix(in srgb,var(--k) 22%,#E5D7BE);border-radius:14px;text-decoration:none;color:var(--marine);box-shadow:0 1px 2px rgba(80,50,20,.06);transition:border-color .15s,box-shadow .15s}
-.sh .afd img{width:42px;height:42px;border-radius:50%;flex:none;background:#FFF6EA;object-fit:cover}
-.sh .afd span{flex:1;min-width:0;font-weight:700;font-size:14px;line-height:1.2;hyphens:manual}
-.sh .afd i{font-style:normal;flex:none;color:var(--kd);font-weight:700;font-size:19px;line-height:1;opacity:.7}
-.sh .afd:hover,.sh .afd:focus-visible{border-color:var(--k);box-shadow:0 3px 8px -4px rgba(80,50,20,.35)}
-.sh .afd:hover i{opacity:1}
-.sh .afd:focus-visible{outline:3px solid var(--goud);outline-offset:2px}
-@media (max-width:359px){.sh .afd{gap:7px;padding:6px 8px 6px 6px}
-.sh .afd img{width:36px;height:36px}
-.sh .afd span{font-size:13px}}
 .sh .sh-binnen .plattegrond{border-bottom:0;padding-bottom:0}
 .sh .gang-kop img{background:#FFF6EA;object-fit:cover}
 .sh .gang-kop h2{hyphens:manual}
@@ -218,6 +205,103 @@
 .sh .gv-raam.kiosk>span{position:relative}
 .sh .gv-raam.kiosk>span::before{content:"";position:absolute;left:0;right:0;top:0;height:9%;background:var(--kd);z-index:1}
 .sh .sh-extra a img{width:32px;height:32px;border-radius:50%;margin:0 8px 0 -8px;background:#FFF6EA}
-.sh .sh-sprong{margin:8px 0 0}
-.sh .sh-sprong button{font:inherit;font-weight:700;font-size:15px;color:var(--dgoud);background:none;border:0;padding:10px 0;min-height:44px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-align:left}
-.sh #afdelingen{scroll-margin-top:80px}
+/* Kaartjes en venster zoals in de testversie (21-11-2026) */
+.sh .sh-schap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:700px){.sh .sh-schap{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+.sh .pk{display:flex;flex-direction:column;text-align:left;background:#fff;border:1px solid var(--rand);border-radius:16px;padding:8px;cursor:pointer;font:inherit;color:inherit;min-width:0;box-shadow:0 1px 3px rgba(10,16,32,.05)}
+.sh .pk:focus-visible{outline:3px solid var(--goud);outline-offset:2px}
+.sh .pk-foto{aspect-ratio:1;border-radius:10px;overflow:hidden;background:#fff;display:block}
+.sh .pk-foto img{width:100%;height:100%;object-fit:contain}
+.sh .pk-t{font-size:14px;line-height:1.3;font-weight:600;margin:8px 2px 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em;overflow-wrap:anywhere}
+.sh .pk-p{font-weight:800;font-size:16px;margin:auto 2px 2px;color:var(--marine)}
+.sh .pk-w{font-size:12px;color:var(--zacht);margin:0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sh .sh-binnen .pk-p,.sh .top-etalage .pk-p{align-self:flex-start;background:var(--kd);color:#fff;padding:3px 10px 3px 15px;border-radius:4px 12px 12px 4px;position:relative;font-size:15px;margin-top:auto}
+.sh .sh-binnen .pk-p::before,.sh .top-etalage .pk-p::before{content:"";position:absolute;left:5px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:#fff}
+.sh .sh-binnen .pk-w,.sh .top-etalage .pk-w{margin-top:4px}
+@media (max-width:359px){.sh .pk-t{font-size:13px}}
+.k-blad{position:fixed;inset:0;z-index:120;background:rgba(20,18,16,.55);display:flex;align-items:flex-end;justify-content:center;--marine:#0A1020;--zacht:#5F667A;--dgoud:#8F6620;--lgoud:#F2CB74}
+.k-blad[hidden]{display:none}
+.k-blad .k-doos{position:relative;background:#FFFCF7;color:#141A2A;width:100%;max-width:640px;max-height:92dvh;overflow-y:auto;border-radius:26px 26px 0 0;padding:0 max(18px,env(safe-area-inset-left,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-right,0px));font:500 16px/1.5 Manrope,system-ui,sans-serif;box-shadow:0 -8px 30px rgba(80,50,20,.25)}
+.k-blad .k-doos::before{content:"";display:block;height:16px;margin:0 calc(-1 * max(18px,env(safe-area-inset-left,0px))) 0;border-radius:26px 26px 0 0;background:repeating-linear-gradient(90deg,var(--k,#8F6620) 0 22px,#fff 22px 44px)}
+.k-blad .k-greep{width:44px;height:5px;border-radius:3px;background:#E2D3BA;margin:8px auto 12px}
+.k-blad .k-sluit{position:absolute;right:12px;top:24px;width:44px;height:44px;border-radius:50%;border:0;background:#F3E9D8;color:#141A2A;display:grid;place-items:center;cursor:pointer}
+.k-blad .k-sluit svg{width:20px;height:20px}
+.k-blad .k-foto{background:#fff;border-radius:20px;aspect-ratio:1;max-height:46dvh;margin:0 auto;overflow:hidden;border:1px solid #E5D7BE;box-shadow:0 8px 18px -12px rgba(80,50,20,.45)}
+.k-blad .k-foto img{width:100%;height:100%;object-fit:contain;padding:12px}
+.k-blad .k-doos h3{font:700 23px/1.2 "Playfair Display",Georgia,serif;color:var(--marine);margin:14px 0 6px;text-wrap:balance}
+.k-blad .k-doos p{margin:0 0 14px;color:#4A4A55}
+.k-blad .k-onder{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.k-blad .k-prijs{font:800 20px/1 Manrope,system-ui,sans-serif;background:var(--kd,#6B4C18);color:#fff;padding:7px 14px 7px 20px;border-radius:5px 16px 16px 5px;position:relative}
+.k-blad .k-prijs::before{content:"";position:absolute;left:7px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:#fff}
+.k-blad .k-hart{position:static;width:44px;height:44px;flex:none}
+.k-blad .k-knop{flex:1 1 200px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 20px;border-radius:999px;background:var(--marine);color:#fff;text-decoration:none;font:800 15.5px/1.15 Manrope,system-ui,sans-serif;text-align:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25),0 0 0 2px var(--lgoud)}
+.k-blad .k-knop svg{width:18px;height:18px;flex:none}
+.k-blad .k-klein{font-size:13.5px;color:var(--zacht);margin:12px 0 0}
+.k-blad .k-klein a{color:var(--dgoud);font-weight:700}
+/* ===== GROTER EN DUIDELIJKER (21-11-2026, Marius: 'alles te klein, bijna niet leesbaar; het is moeilijk te zien wat voor winkel het is').
+   Twee gevels naast elkaar zoals in de testversie; eronder groot in gewone woorden wat voor winkel het is, en de vanaf-prijs. ===== */
+.sh .gv-onder{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:8px;text-align:center;line-height:1.25}
+.sh .gv-onder>*{white-space:normal}
+.sh .gv-wat{font:700 18px/1.15 "Playfair Display",Georgia,serif;color:var(--marine);text-wrap:balance}
+.sh .gv-tel{font-size:14.5px;font-weight:700;color:var(--zacht)}
+.sh .gv-dicht .gv-wat{color:#5F667A}
+@media (min-width:700px){.sh .gv-wat{font-size:20px}.sh .gv-tel{font-size:15px}}
+@media (max-width:359px){.sh .gv-wat{font-size:16.5px}.sh .gv-tel{font-size:13.5px}}
+.sh .welkom.nova>p{font-size:17px}
+.sh .kn{font-size:14.5px}
+@media (max-width:359px){.sh .kn{font-size:13px}}
+.sh .stand{font-size:16px}
+.sh .pk-t{font-size:15px}
+.sh .pk-w{font-size:13px}
+.sh .gang-kop h2{font-size:23px}
+.sh .naar{font-size:16px}
+.sh .sh-meer{font-size:15.5px}
+/* ===== AFDELINGEN OPZIJ VEGEN (21-11-2026, Marius: 'zet ze in een zijwaarts scrollende balk, dan kom je sneller bij de producten').
+   Dunne balkjes op één rij; rechts een zachte rand en een pijltje zolang er meer staat. Op een brede computer passen ze naast elkaar. ===== */
+.sh .wegwijzer-rij{position:relative}
+.sh .wegwijzer{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding:2px 2px 6px;margin:0 -2px;gap:8px}
+.sh .wegwijzer::-webkit-scrollbar{display:none}
+.sh .wegwijzer a{flex:none;scroll-snap-align:start;white-space:nowrap;min-height:44px;padding:0 15px;font-size:15px}
+.sh .wegwijzer a small{font-size:13px}
+.sh .wegwijzer-rij.sh-veeg-meer::after{content:"";position:absolute;right:0;top:0;bottom:6px;width:72px;background:linear-gradient(90deg,rgba(247,243,236,0),#F7F3EC 62%);pointer-events:none}
+.sh .veeg-pijl{position:absolute;right:0;top:2px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--rand);background:#fff;color:var(--kd,var(--dgoud));font:800 24px/1 Manrope,system-ui,sans-serif;display:grid;place-items:center;padding:0 0 3px;box-shadow:0 2px 6px rgba(80,50,20,.18);cursor:pointer}
+.sh .veeg-pijl[hidden]{display:none}
+@media (min-width:1000px){.sh .wegwijzer{flex-wrap:wrap;overflow:visible}}
+/* ===== KOP VAN DE STRAAT (21-11-2026, Marius: 'IK WIL NIKS MEER VAN DE OUDE SITE'): bovenaan alleen het logo en het zoekvak, licht,
+   zoals in de testversie. html.sh-thuis staat er alleen zolang de straat op de homepage staat (sjabloon.html en straat.js).
+   Het zoekvak is het gewone zoekvak van de site (met de suggesties), alleen naast het logo gezet. Geen aftelbalk, menu, hartje of onderbalk. ===== */
+html.sh-thuis,html.sh-kop{--header-h:60px}
+html.sh-thuis body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3EC;padding-bottom:0}
+html.sh-thuis .aftel,html.sh-kop .aftel,html.sh-thuis .topbalk,html.sh-kop .topbalk,html.sh-thuis .header .menuknop,html.sh-kop .header .menuknop,html.sh-thuis .header .hoofdnav,html.sh-kop .header .hoofdnav,html.sh-thuis .header .header-rechts,html.sh-kop .header .header-rechts,html.sh-thuis .megamenu,html.sh-kop .megamenu,html.sh-thuis .onderbalk,html.sh-kop .onderbalk,html.sh-thuis .naarboven,html.sh-kop .naarboven,html.sh-thuis .lichtsnoer,html.sh-kop .lichtsnoer{display:none!important}
+html.sh-thuis.feest body::after{display:none}
+html.sh-thuis .header,html.sh-kop .header{height:var(--header-h);background:#FFFCF7;border-bottom:1px solid #E5D7BE;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+html.sh-thuis .header .binnen,html.sh-kop .header .binnen{max-width:1180px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+html.sh-thuis .header .logo,html.sh-kop .header .logo{width:116px;min-height:44px;gap:0;font:700 21px/1 "Playfair Display",Georgia,serif;letter-spacing:0;color:#0A1020;white-space:nowrap}
+html.sh-thuis .header .logo img,html.sh-kop .header .logo img,html.sh-thuis .header .logo svg,html.sh-kop .header .logo svg{display:none}
+html.sh-thuis .header .logo .k,html.sh-kop .header .logo .k{color:#B8862E}
+html.sh-thuis .zoekrij,html.sh-kop .zoekrij{position:sticky;top:0;z-index:41;height:var(--header-h);margin-top:calc(-1 * var(--header-h));background:transparent;border:0;pointer-events:none}
+html.sh-thuis .zoekrij .binnen,html.sh-kop .zoekrij .binnen{height:100%;display:flex;align-items:center;max-width:1180px;padding-top:0;padding-bottom:0;padding-left:calc(max(16px,env(safe-area-inset-left,0px)) + 128px);padding-right:max(16px,env(safe-area-inset-right,0px))}
+html.sh-thuis .zoekrij .zoek,html.sh-kop .zoekrij .zoek{pointer-events:auto;flex:1;min-width:0;max-width:none;margin:0;height:44px;padding:0 16px;background:#fff;border:1px solid #E5D7BE;border-radius:999px;box-shadow:none}
+html.sh-thuis .zoekrij .zoek:focus-within,html.sh-kop .zoekrij .zoek:focus-within{outline:2px solid #B8862E;outline-offset:1px}
+html.sh-thuis .zoekrij .zoek svg.lp,html.sh-kop .zoekrij .zoek svg.lp,html.sh-thuis .zoekrij .zoek button,html.sh-kop .zoekrij .zoek button{display:none}
+html.sh-thuis .zoekrij .zoek input,html.sh-kop .zoekrij .zoek input{padding:0;height:100%;font:500 15px/1.2 Manrope,system-ui,sans-serif;color:#141A2A}
+html.sh-thuis .zoekrij .zoek input::placeholder,html.sh-kop .zoekrij .zoek input::placeholder{color:#5F667A}
+html.sh-thuis .zoekrij .zoek-tips,html.sh-kop .zoekrij .zoek-tips{pointer-events:auto}
+html.sh-thuis #app{padding-top:0}
+html.sh-kop body{padding-bottom:0}
+html.sh-kop.feest body::after{display:none}
+/* ===== WINKELSTIJL voor afdelingen en groepen (voorbeeld 21-11-2026): /c/koken-tafelen/ als De Kookwinkel. Alleen met ?proef=winkelstijl. ===== */
+.sh .binnen-kop .in-winkel{margin:0 0 2px;font:800 12.5px/1.2 Manrope,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--kd)}
+.sh .alles-lijst{margin:28px 0 8px;text-align:center}
+.sh .alles-lijst a{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:12px 22px;border-radius:999px;background:var(--kd);color:#fff;text-decoration:none;font-weight:800;font-size:16px;line-height:1.3;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18);text-wrap:balance}
+.sh .wegwijzer a.ws-aan{background:var(--marine);border-color:var(--marine);color:#fff}
+.sh .wegwijzer a.ws-aan::before{background:#F2CB74}
+.sh .ws-etalage{--k:#8F6620;background:#FFF9EE!important;border-color:#EEDDB8!important}
+.sh .ws-licht .ik-leeg{height:54px;background:linear-gradient(180deg,#F3E6D2,#FBF5EB)}
+.sh .ws-licht .embleem{background:#FFFCF7;object-fit:cover}
+.sh .ws .gang-kop img{object-fit:cover}
+.sh .pk-foto{position:relative}
+.sh .pk-korting{position:absolute;left:6px;top:6px;background:#B3261E;color:#fff;font:800 12.5px/1 Manrope,system-ui,sans-serif;padding:5px 8px;border-radius:999px}
+.sh .pk-korting.echt{background:#1F5B3A}
+.sh .pk-oud{font-size:13.5px;color:#5F667A;margin:3px 2px 0;align-self:flex-start}
+.sh a.pk{text-decoration:none;color:inherit}

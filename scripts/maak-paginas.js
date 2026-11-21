@@ -294,7 +294,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
         gidsGetal: pad.indexOf('/gids/') === 0 && window.LK_GIDS_GETAL ? window.LK_GIDS_GETAL : null /* 18-11-2026: [beloofd in de titel, echt getoond], voor de Google-titel */
       };
       /* 13-11-2026: dezelfde pagina in de nieuwe opzet van de proef WIJZER (alleen de homepage en de Voor wie-pagina's hebben die). */
-      if ((pad === '/' || /^\/voor\/[^/]+\//.test(pad)) && window.LK._wijzer) {
+      /* 21-11-2026 WINKELSTIJL: ook elke afdeling, groep, soort, gelegenheid en collectie heeft voor bezoekers een eigen opzet (een winkel in de straat). */
+      if ((pad === '/' || /^\/(voor|c|gelegenheid|collectie)\/[^/]+\//.test(pad)) && window.LK._wijzer) {
         window.LK._wijzer('b'); window.LK.ga(pad, true);
         const appB = document.querySelector('#app').cloneNode(true);
         appB.querySelectorAll('[data-meer]').forEach(x => x.parentNode.remove());

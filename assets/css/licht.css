@@ -2939,3 +2939,55 @@ html.nova9 .slimnav .sn-beeld.sn-rond { box-shadow: none; }
 .wijzer .wz-rij > p { margin: -4px 0 12px; font-size: 14px; color: #5B6072; }
 @media (min-width: 760px) { .wijzer .wz-rij .prodgrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* ===== einde RIJTJES PER ONDERWERP ===== */
+
+/* ===== LICHT OVERAL (21-11-2026, Marius: 'ik wil dat het is zoals op de testversie, ik wil die donkere kleuren niet meer'; 'ja overal licht').
+   Kop, zoekbalk, aftelbalk, onderbalk, voettekst, knopje naar boven en de plakbalk op productpagina's zijn licht, zoals de kop van de testversie
+   (ivoor, dunne goud-ivoor rand, logo marine met 'Keuze' in goud). Knoppen en gekozen keuzes blijven marine, zoals in de testversie.
+   De ronde plaatjes van Nova (boutique) hebben een lichte achtergrond; de vakjes erachter zijn nu ook licht. Terug: dit blok weghalen. ===== */
+html body .topbalk { background: #F3EBDD; color: #5F667A; border-bottom: 1px solid #E5D7BE; }
+html body .topbalk svg { color: #8F6620; }
+html body .header { background: #FFFCF7; border-bottom: 1px solid #E5D7BE; box-shadow: none; }
+html body .logo { color: #0A1020; }
+html body .logo .k { color: #B8862E; }
+html body .header .icoonknop { color: #0A1020; }
+html body .header .icoonknop:hover { background: rgba(184,134,46,.10); color: #8F6620; }
+html body .hoofdnav a, html body .hoofdnav button { color: #141A2A; }
+html body .hoofdnav a:hover, html body .hoofdnav button:hover, html body .hoofdnav [aria-expanded="true"], html body .hoofdnav [aria-current="page"] { color: #8F6620; }
+html body .zoekrij { background: #FFFCF7; border-bottom: 1px solid #E5D7BE; }
+html body .zoekrij .zoek { background: #fff; border: 1px solid #E5D7BE; box-shadow: none; }
+html body .zoekrij .zoek input { color: #141A2A; }
+html body .zoekrij .zoek input::placeholder { color: #5F667A; }
+html body .zoekrij .zoek svg.lp { color: #8F6620; }
+/* aftelbalk: licht, de tekst marine; het getal blijft een gouden blokje */
+html body .aftel, html body .aftel-bf, html body .aftel-sint, html body .aftel-kerst { background: #F3EBDD; color: #0A1020; border-bottom: 1px solid #E5D7BE; }
+html body .aftel-zin { text-shadow: none; color: #0A1020; }
+html body .aftel-sint .aftel-getal, html body .aftel-kerst .aftel-getal { color: #fff; }
+html body .aftel-knop { box-shadow: none; }
+/* onderbalk */
+html.nova5 body .onderbalk, html body .onderbalk { background: rgba(255,252,247,.98); border-top: 1px solid #E5D7BE; box-shadow: 0 -4px 14px rgba(80,50,20,.08); }
+html.nova5 body .onderbalk a, html.nova5 body .onderbalk button, html body .onderbalk a, html body .onderbalk button { color: #4A5063; }
+html body .onderbalk [aria-current="page"] { color: #8F6620; }
+html body.nova5 .onderbalk [aria-current="page"], html.nova5 body .onderbalk [aria-current="page"] { color: #8F6620; }
+/* knopje naar boven en de plakbalk op de productpagina */
+html body .naarboven { background: #FFFCF7; color: #0A1020; border: 1px solid #E5D7BE; box-shadow: 0 4px 12px rgba(80,50,20,.15); }
+html body .product-plak { background: rgba(255,252,247,.98); border-top: 1px solid #E5D7BE; box-shadow: 0 -4px 14px rgba(80,50,20,.10); }
+html body .product-plak .prijs, html.nova2 body.pag-product .product-plak .prijs { color: #0A1020; }
+/* voettekst */
+html body .footer { background: #F3EBDD; color: #4A5063; border-top: 1px solid #E5D7BE; }
+html body .footer h3, html body .footer h4, html body .footer strong { color: #8F6620; }
+html body .footer p, html body .footer a, html body .footer li a, html body .footer-onder a { color: #2B3245; }
+html body .footer li a:hover, html body .footer li a:focus-visible { color: #8F6620; }
+html body .footer .logo { color: #0A1020; }
+html body .footer-yara { border-top-color: #E5D7BE; }
+html body .footer-yara .binnen { color: #8F6620; }
+html body .footer-onder { border-top-color: #E5D7BE; }
+html body .footer-onder .binnen { color: #4A5063; }
+/* donkere paginakop (bijv. Lootjes trekken) */
+html body .paginakop.donker { background: radial-gradient(120% 140% at 100% 0%, rgba(217,168,72,.18), transparent 55%), #F3EBDD; border-bottom: 1px solid #E5D7BE; }
+html body .paginakop.donker h1 { color: #0A1020; }
+html body .paginakop.donker h1::first-letter { color: #8F6620; }
+html body .paginakop.donker p { color: #4A5063; }
+html body .paginakop.donker .kruimel, html body .paginakop.donker .kruimel a { color: #5F667A; }
+/* vakjes achter de ronde plaatjes: licht (de nieuwe plaatjes van Nova zijn licht) */
+html body .catbalk-rond, html body .slimnav .sn-beeld.sn-rond, html body .mini-tegel .mt-rond, html body .srt-vt-rond, html body .srij-rond { background: #F6EBDD; }
+html body .wzh-rond.wzh-icoon, html body .srt-st-rond.srt-vt-ico, html body .rh-rond.rh-icoon { background: #F6EBDD; color: #8F6620; }

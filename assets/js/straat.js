@@ -349,7 +349,7 @@
     return '#' + (d.join('-') || 'straat');
   }
   function leesAdres() {
-    var h = (location.hash || '').slice(1);
+    var h = (location.hash || '').slice(1).replace(/\/$/, ''); /* netteLinks zet soms een / achter /#winkel-… */
     if (WINKELS.some(function (w) { return w.id === h; })) return { winkel: h, wie: '', max: 0 };
     var m = h.match(/^(?:winkel-([a-z]+))?-?(?:voor-(opa-oma|haar|hem|kind|tiener|collega|baby))?-?(?:tot-(\d+))?$/) || [];
     var max = +(m[3] || 0); if ([0, 10, 15, 25, 50].indexOf(max) === -1) max = 0;
@@ -414,19 +414,36 @@
     return '<img class="gv-beeld" src="' + NB + 'gevel-' + id + '-klein.webp" srcset="' + NB + 'gevel-' + id + '-klein.webp 300w, ' + NB + 'gevel-' + id + '.webp 600w" sizes="' + GV_SIZES + '" alt="" loading="lazy" decoding="async">';
   }
   function gvBord(naam) { return '<span class="gv-bord' + (naam.length > 19 ? ' sh-lang' : '') + '">' + esc(naam) + '</span>'; }
+  /* Wat voor winkel het is, in gewone woorden (21-11-2026, Marius: 'alles te klein, het is moeilijk te zien wat voor winkel het is').
+     Op de telefoon staat dit groot naast de gevel, op de computer eronder. */
+  var WAT = { pakjeshuis: 'Sinterklaas', kerstmarkt: 'Kerst', speelgoedwinkel: 'Speelgoed', gamewinkel: 'Games & fans', grappenmaker: 'Grappige cadeaus',
+    cadeausuper: 'Alles tot € 15', koffiehuis: 'Lekkers, koffie & thee', woonwinkel: 'Wonen & lampjes', parfumerie: 'Geur & verwennen',
+    elektronicazaak: 'Elektronica & gadgets', spellenwinkel: 'Spellen & puzzels', boetiek: 'Sieraden, horloges & tassen', sportwinkel: 'Sport & buiten',
+    boekhandel: 'Boeken, muziek & films', hobbywinkel: 'Hobby & zelf maken', kookwinkel: 'Koken & tafelen', slijterij: 'Wijn & drank',
+    tuincentrum: 'Tuin, planten & dieren', uitjesbureau: 'Belevenissen & uitjes', christelijk: 'Christelijke cadeaus', kiosk: 'Cadeaugidsen' };
+  /* Onder de gevel: groot in gewone woorden wat voor winkel het is, daaronder de vanaf-prijs. Zin en knop staan al op de gevel zelf. */
+  function gvTekst(wat, zin, van, knop, dicht) {
+    return '<span class="gv-onder' + (dicht ? ' gv-dicht' : '') + '"><b class="gv-wat">' + esc(wat) + '</b>' + (van ? '<span class="gv-tel">' + esc(van) + '</span>' : '') + '</span>';
+  }
+  /* Afdelingen in een winkel: dunne balkjes op één rij om opzij te vegen (21-11-2026, Marius: 'zet ze in een zijwaarts scrollende balk,
+     dan kom je sneller bij de producten'; grote tegels gaven het gevoel dat je eerst moest kiezen). Rechts een zachte rand met pijltje als er meer is. */
+  function wegwijzer(kop, links) {
+    return '<nav class="plattegrond" aria-label="' + esc(kop) + '"><h2>' + esc(kop) + '</h2><div class="wegwijzer-rij"><div class="wegwijzer" data-sh-veeg>' + links.join('') + '</div>' +
+      '<button class="veeg-pijl" type="button" data-sh-veegpijl aria-label="Meer ' + esc(kop.toLowerCase()) + '" hidden>›</button></div></nav>';
+  }
   function gevelNova(x, st) {
     var w = x.w;
     if (!x.open) {
       var zin = st.pr.wie ? 'Niets ' + st.pr.tekst + (st.max ? ' ' + tekstBedrag(st.max) : '') : 'Niets ' + tekstBedrag(st.max);
       return '<a class="gevel nova dicht" href="' + adres(w.id, '', 0) + '" style="--k:' + w.k + '" aria-label="' + esc(w.naam + ': ' + zin + '. Toch kijken') + '">' +
         '<span class="gv"><span class="gv-raam toe"><b>' + esc(zin) + '</b></span>' + gvBeeld(w.id) + gvBord(w.naam) +
-        '<span class="gv-deur">Toch kijken</span></span><span class="stoep"></span><span class="gv-onder">Rolluik dicht</span></a>';
+        '<span class="gv-deur">Toch kijken</span></span><span class="stoep"></span>' + gvTekst(WAT[w.id] || w.naam, zin, 'Rolluik dicht', 'Toch kijken', true) + '</a>';
     }
     return '<a class="gevel nova" href="' + adres(w.id, st.pr.wie, st.max) + '" style="--k:' + w.k + '" aria-label="' + esc(w.naam + ': ' + w.zin) + '">' +
       '<span class="gv"><span class="gv-raam">' + x.raam.map(function (p) { return '<span><img loading="lazy" decoding="async" src="' + K.klein(p) + '" alt=""></span>'; }).join('') + '</span>' +
       gvBeeld(w.id) + gvBord(w.naam) + '<span class="gv-deur">Naar binnen</span>' +
       (w.label ? '<span class="gv-label">' + esc(w.label) + '</span>' : '') + '</span><span class="stoep"></span>' +
-      '<span class="gv-onder">vanaf ' + euro(x.van) + '</span></a>';
+      gvTekst(WAT[w.id] || w.naam, w.zin, 'vanaf ' + euro(x.van), 'Naar binnen') + '</a>';
   }
   /* Het Cadeauloket: de kieshulp (VONK) als eerste gevel van de straat */
   function loket(st) {
@@ -434,7 +451,7 @@
     return '<a class="gevel nova loket-gevel" href="' + ['', 'vonk', ''].join('/') + q + '" style="--k:#C9962E" aria-label="Het Cadeauloket: weet je het niet? Beantwoord drie vragen en krijg meteen ideeën">' +
       '<span class="gv"><span class="gv-raam loket"><img src="' + NB + 'rond/winkel-cadeauloket-klein.webp" alt="" loading="lazy"><b>Drie vragen, meteen ideeën</b></span>' +
       gvBeeld('cadeauloket') + gvBord('Het Cadeauloket') + '<span class="gv-deur">Vraag het loket</span></span><span class="stoep"></span>' +
-      '<span class="gv-onder"><b>Weet je het niet?</b> <span>· kieshulp</span></span></a>';
+      gvTekst('Weet je het niet?', 'Beantwoord drie vragen en krijg meteen cadeau-ideeën.', 'Onze kieshulp', 'Vraag het loket') + '</a>';
   }
 
   function gevel(x, st) {
@@ -456,7 +473,18 @@
       '</span><span class="stoep"></span></a>';
   }
 
-  function kaart(p) { return window.LK && window.LK.productKaart ? window.LK.productKaart(p) : ''; }
+  /* Kaartjes zoals in de testversie (21-11-2026, Marius: 'ik wil dat het is zoals op de testversie'): foto, naam, prijs in de kleur van de winkel, 'bij …'.
+     Tik = het warme venster met foto, uitleg en de knop naar de winkel (die telt als klik, zie blad hieronder). */
+  function kaart(p) {
+    /* Korting alleen zoals de rest van de site hem toont: oudePrijs staat alleen in de lijst als hij klopt (vers, echte van-prijs of eigen prijsgeschiedenis) */
+    var kort = p.oudePrijs > p.prijs ? Math.round((1 - p.prijs / p.oudePrijs) * 100) : 0;
+    var echt = kort && p.laag30 && window.LK_ECHT_LAGER !== false;
+    return '<a class="pk" href="/p/' + esc(p.id) + '/" data-sh-blad="' + esc(p.id) + '">' + /* een link: werkt ook al voordat de site helemaal geladen is */
+      '<span class="pk-foto"><img loading="lazy" src="' + K.klein(p) + '" alt="">' + (kort >= 5 ? '<span class="pk-korting' + (echt ? ' echt' : '') + '">' + (echt ? 'Echt lager ' : '') + '-' + kort + '%</span>' : '') + '</span>' +
+      '<span class="pk-t">' + esc(p.titel) + '</span>' +
+      '<span class="pk-p">' + euro(p.prijs) + '</span>' + (kort ? '<s class="pk-oud">' + euro(p.oudePrijs) + '</s>' : '') +
+      '<span class="pk-w">bij ' + esc(p.shop || '') + '</span></a>';
+  }
 
   var PER_KEER = 4, MAX_IN_GANG = 12;
   function voorPad(st) { return ['', 'voor', st.pr.slug].join('/') + (st.max ? '?prijs=tot' + st.max : ''); }
@@ -520,9 +548,7 @@
     var cats = window.LK_CATEGORIEEN || [], gels = window.LK_GELEGENHEDEN || [], cols = window.LK_COLLECTIES || [], verb = window.LK_COLLECTIE_VERBORGEN || [];
     var naamCat = function (s) { var c = cats.filter(function (x) { return x.slug === s; })[0]; return c ? (c.kort || c.naam) : s; };
     var g = GEL_VOLG.map(function (s) { return gels.filter(function (x) { return x.slug === s; })[0]; }).filter(function (x) { return x && inSeizoen(x.seizoen); });
-    return '<section class="snel" aria-label="Meteen naar een persoon, afdeling, gelegenheid of collectie"><h2>Alle cadeaus per persoon</h2><div class="kies-wie">' +
-      PERS.filter(function (x) { return x.slug; }).map(function (x) { return rondje(pad('voor/' + x.slug), novaRond(x.ic), x.tekst.charAt(0).toUpperCase() + x.tekst.slice(1)); }).join('') +
-      '</div><h2 id="afdelingen">Liever meteen naar een afdeling?</h2><div class="kies-wie">' +
+    return '<section class="snel" aria-label="Meteen naar een afdeling, gelegenheid of collectie"><h2>Liever meteen naar een afdeling?</h2><div class="kies-wie">' +
       AFD.map(function (s) { return rondje(pad('c/' + s), novaRond('cat-' + s), naamCat(s)); }).join('') +
       rondje(pad('categorieen'), novaRond('h-alle-categorieen'), 'Alle producten') +
       '</div><h2>Of zoek op gelegenheid</h2><div class="kies-wie">' +
@@ -541,15 +567,14 @@
     var h = '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
       '<img src="' + NB + 'straat-hero-telefoon.webp" alt="" fetchpriority="high"></picture>' +
       '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
-      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p>' +
-      '<p class="sh-sprong"><button type="button" data-sh-sprong>Liever meteen naar een afdeling? Alle afdelingen ›</button></p></section>' + kiezer(st);
+      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st);
     h += '<section class="straat-kop" id="straat-kop"><h2>' + esc(st.pr.wie ? naam : 'Alle winkels') + (st.max ? ' <span>' + esc(tekstBedrag(st.max)) + '</span>' : '') + '</h2>' +
       '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
       (keuze ? ' · <button type="button" class="link" data-sh-naar-kies>andere keuze</button> · <a href="#straat" data-sh-kies>alles weer tonen</a>' : '') + '</p></section>';
     if (st.etalage.length) {
       h += '<section class="gang top-etalage"><div class="gang-kop"><img src="' + novaRond(st.pr.ic) + '" alt="" loading="lazy">' +
         '<div><small>De etalage</small><h2>' + esc(st.pr.wie ? 'Onze beste cadeaus ' + st.pr.tekst : 'Onze beste cadeaus van dit moment') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') + '</h2></div></div>' +
-        '<div class="prodgrid sh-schap" data-sh-schap="top">' + st.etalage.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
+        '<div class="sh-schap" data-sh-schap="top">' + st.etalage.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
         '<div class="gang-voet">' + (st.etalage.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="top">Laat er nog ' + Math.min(PER_KEER, st.etalage.length - PER_KEER) + ' zien</button>' : '') +
         (st.pr.slug ? '<a class="naar" href="' + voorPad(st) + '">Alle cadeaus ' + esc(st.pr.tekst) + ' ›</a>' : '') + '</div></section>';
     }
@@ -581,15 +606,13 @@
     if (!x.gangen.length) {
       return h + '<p class="sh-leeg">Hier liggen geen cadeaus ' + esc(keuze) + '. <a href="' + adres(w.id, '', 0) + '">Bekijk alles in deze winkel</a>.</p>';
     }
-    h += '<nav class="plattegrond" aria-label="Afdelingen"><h2>Afdelingen</h2><div class="afd-kaarten">' +
-      x.gangen.map(function (y, n) { return '<a class="afd" href="' + adres(w.id, st.pr.wie, st.max) + '" data-sh-gang="' + n + '"><img src="' + gangIcoon(w, y) + '" alt="" loading="lazy"><span>' + afbr(y.g.naam) + '</span><i aria-hidden="true">›</i></a>'; }).join('') +
-      '</div></nav>';
+    h += wegwijzer('Afdelingen', x.gangen.map(function (y, n) { return '<a href="' + adres(w.id, st.pr.wie, st.max) + '" data-sh-gang="' + n + '">' + esc(y.g.naam) + ' <small>' + y.lijst.length + '</small></a>'; }));
     x.gangen.forEach(function (y, n) {
       var naar = w.super ? w.naar : naarVan(y.g);
       naar = metKeuze(naar, st);
       h += '<section class="gang" id="gang-' + n + '"><div class="gang-kop"><img src="' + gangIcoon(w, y) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
         '<div><small>Afdeling ' + (n + 1) + '</small><h2>' + afbr(y.g.naam) + '</h2></div></div>' +
-        '<div class="prodgrid sh-schap" data-sh-schap="' + n + '">' + y.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
+        '<div class="sh-schap" data-sh-schap="' + n + '">' + y.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
         '<div class="gang-voet">' + (y.lijst.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="' + n + '">Laat er nog ' + Math.min(PER_KEER, y.lijst.length - PER_KEER) + ' zien</button>' : '') +
         '<a class="naar" href="' + naar + '">Alles uit deze afdeling ›</a></div></section>';
     });
@@ -723,7 +746,7 @@
     var w = KIOSK;
     return '<a class="gevel nova" href="' + adres('kiosk', st.pr.wie, st.max) + '" style="--k:' + w.k + '" aria-label="De Kiosk: onze cadeaugidsen">' +
       '<span class="gv"><span class="gv-raam kiosk">' + raam.map(function (sl) { return '<span><img loading="lazy" decoding="async" src="' + gidsBeeld(sl) + '" alt=""></span>'; }).join('') + '</span>' +
-      gvBeeld(w.gevel) + gvBord(w.naam) + '<span class="gv-deur">Naar binnen</span></span><span class="stoep"></span><span class="gv-onder">cadeaugidsen</span></a>';
+      gvBeeld(w.gevel) + gvBord(w.naam) + '<span class="gv-deur">Naar binnen</span></span><span class="stoep"></span>' + gvTekst(WAT.kiosk, w.zin, 'Alle cadeaugidsen', 'Naar binnen') + '</a>';
   }
   function kiosk(st) {
     var w = KIOSK, rek = kioskRekken(st);
@@ -732,11 +755,10 @@
       '<section class="binnen-kop gevel nova kiosk-kop" style="--k:' + w.k + '"><span class="luifel"></span><span class="ik ik-leeg"><img class="embleem" src="' + novaRond('winkel-kiosk') + '" alt=""></span>' +
       '<div class="pui"><h1>' + esc(w.naam) + '</h1><p>' + esc(w.zin) + '</p>' +
       (st.pr.wie ? '<p class="filter">Je ziet alleen gidsen <b>' + esc(st.pr.tekst) + '</b> · <a href="' + adres('kiosk', '', 0) + '">alle gidsen</a></p>' : '') + '</div></section>';
-    h += '<nav class="plattegrond" aria-label="Rekken"><h2>Rekken</h2><div class="afd-kaarten">' +
-      rek.map(function (x, n) { return '<a class="afd" href="' + adres('kiosk', st.pr.wie, st.max) + '" data-sh-gang="' + n + '"><img src="' + novaRond(x.r.ic) + '" alt="" loading="lazy"><span>' + afbr(x.r.naam) + '</span><i aria-hidden="true">›</i></a>'; }).join('') + '</div></nav>';
+    h += wegwijzer('Rekken', rek.map(function (x, n) { return '<a href="' + adres('kiosk', st.pr.wie, st.max) + '" data-sh-gang="' + n + '">' + esc(x.r.naam) + ' <small>' + x.gidsen.length + '</small></a>'; }));
     rek.forEach(function (x, n) {
       h += '<section class="gang" id="gang-' + n + '"><div class="gang-kop"><img src="' + novaRond(x.r.ic) + '" alt="" loading="lazy"><div><small>Rek ' + (n + 1) + '</small><h2>' + afbr(x.r.naam) + '</h2></div></div>' +
-        '<div class="prodgrid sh-schap" data-sh-schap="k' + n + '">' + x.gidsen.slice(0, PER_KEER).map(gidsKaart).join('') + '</div>' +
+        '<div class="sh-schap" data-sh-schap="k' + n + '">' + x.gidsen.slice(0, PER_KEER).map(gidsKaart).join('') + '</div>' +
         (x.gidsen.length > PER_KEER ? '<div class="gang-voet"><button class="sh-meer" type="button" data-sh-kmeer="' + n + '">Laat er nog ' + Math.min(PER_KEER, x.gidsen.length - PER_KEER) + ' zien</button></div>' : '') + '</section>';
     });
     h += '<a class="terug" href="' + adres('', st.pr.wie, st.max) + '">‹ Terug naar het begin van de straat</a>';
@@ -751,8 +773,135 @@
     if (a.winkel === 'kiosk') { huidig = { kiosk: kioskRekken(st), st: st }; return { html: '<div class="sh"><div class="sh-binnen" style="--k:' + KIOSK.k + '">' + kiosk(st) + '</div></div>', binnen: true }; }
     return { html: '<div class="sh">' + (x ? '<div class="sh-binnen" style="--k:' + x.w.k + '">' + winkel(x, st) + '</div>' : straat(st)) + '</div>', binnen: !!x };
   }
+  /* ===== WINKELSTIJL (21-11-2026, Marius: 'elke categorie moet een winkel worden, zodat je elke soort cadeau kunt zien als je scrolt,
+     in plaats van bovenaan die suffe knoppen'). Elke pagina met cadeaus (afdeling, groep, soort, onderwerp van Voor wie, gelegenheid, collectie)
+     ziet eruit als een winkel in de straat: bovenaan de winkel (interieur van Nova, of een luifel met het rondje), dan de soorten op één rij
+     om opzij te vegen, dan de etalage (de handgekozen top van die pagina) en per soort vier cadeaus. Onderaan de hele lijst met sorteren en
+     filteren (?alles=1). De lijst en de volgorde komen van app.js (vaste top, keurmeester, drank, smal): er verandert niets aan wélke cadeaus
+     ergens staan, alleen hoe je ze ziet. Zelfde adressen; zoekmachines krijgen de pagina's zoals ze waren. ===== */
+  var AFD_WINKEL = { speelgoed: 'speelgoedwinkel', 'spellen-puzzels': 'spellenwinkel', elektronica: 'elektronicazaak', 'mode-sieraden': 'boetiek',
+    'beauty-verzorging': 'parfumerie', wonen: 'woonwinkel', 'koken-tafelen': 'kookwinkel', 'eten-drinken': 'koffiehuis', hobby: 'hobbywinkel',
+    'sport-outdoor': 'sportwinkel', 'tuin-klussen': 'tuincentrum', 'boeken-media': 'boekhandel', dieren: 'tuincentrum', belevenissen: 'uitjesbureau', christelijk: 'christelijk',
+    'cadeaus/sinterklaas': 'pakjeshuis', 'cadeaus/sint-onder-15': 'cadeausuper', 'cadeaus/kerst': 'kerstmarkt', 'cadeaus/onder-15': 'cadeausuper', 'cadeaus/onder-10': 'cadeausuper',
+    'cadeaus/grappig': 'grappenmaker', 'eten-drinken/wijn-bubbels': 'slijterij', 'eten-drinken/bier-sterke-drank': 'slijterij', 'eten-drinken/alcoholvrij': 'slijterij',
+    'eten-drinken/drankaccessoires': 'slijterij', 'elektronica/gaming': 'gamewinkel',
+    'spellen-puzzels/pokemon-verzamelkaarten': 'gamewinkel', 'speelgoed/hello-kitty': 'gamewinkel', 'speelgoed/kpop-demon-hunters': 'gamewinkel', 'speelgoed/one-piece-anime': 'gamewinkel',
+    'gelegenheid/sinterklaas': 'pakjeshuis', 'gelegenheid/kerst': 'kerstmarkt', 'collectie/schoencadeautjes': 'pakjeshuis', 'collectie/op-tijd-voor-pakjesavond': 'pakjeshuis',
+    'collectie/grappige-cadeaus': 'grappenmaker', 'collectie/kleine-cadeautjes': 'cadeausuper' };
+  function winkelVan(sleutels) { for (var i = 0; i < sleutels.length; i++) { var id = AFD_WINKEL[sleutels[i]]; if (id) { var w = WINKELS.filter(function (x) { return x.id === id; })[0]; if (w) return w; } } return null; }
+  function catVan(afd) { return (window.LK_CATEGORIEEN || []).filter(function (c) { return c.slug === afd; })[0] || null; }
+  function subVan(afd, groep) { var c = catVan(afd); return c && c.subs ? c.subs.filter(function (x) { return x.slug === groep; })[0] || null : null; }
+  function groepIcoon(afd, groep) {
+    if (NOVA_AFD[afd + '/' + groep]) return novaRond('icoon-' + afd + '-' + groep);
+    var sb = subVan(afd, groep); return sb && sb.beeld ? '/' + sb.beeld : '';
+  }
+  /* Een lijst met cadeaus uit allerlei hoeken in soorten delen: per groep van de site, in de volgorde waarin ze in de lijst opduiken
+     (dus de soort met de beste handgekozen cadeaus eerst), alleen soorten met minstens 4 cadeaus, hooguit 18. */
+  function deelPerGroep(lijst) {
+    var idx = {}, uit = [];
+    lijst.forEach(function (p) {
+      if (!p.afd || !p.groep) return;
+      var k = p.afd + '/' + p.groep;
+      if (!idx[k]) { var sb = subVan(p.afd, p.groep); if (!sb) return; idx[k] = { naam: sb.naam, naar: '/c/' + k + '/', ic: groepIcoon(p.afd, p.groep), lijst: [], los: true }; uit.push(idx[k]); }
+      idx[k].lijst.push(p);
+    });
+    return uit.filter(function (x) { return x.lijst.length >= 4; }).slice(0, 18);
+  }
+  var WS_KLEUR = '#8F6620';
+  function winkelKop(o, w) {
+    var k = w ? w.k : (o.kleur || WS_KLEUR);
+    var ik = w ? '<span class="ik"><picture><source media="(min-width:700px)" srcset="' + NB + 'interieur-' + w.id + '.webp"><img src="' + NB + 'interieur-' + w.id + '-telefoon.webp" alt=""></picture>' +
+        '<img class="embleem" src="' + novaRond('winkel-' + w.id) + '" alt=""></span>'
+      : '<span class="ik ik-leeg">' + (o.rond ? '<img class="embleem" src="' + o.rond + '" alt="" onerror="this.style.display=\'none\'">' : '') + '</span>';
+    var label = (w && (!o.label || /^(Gelegenheid|Collectie)$/.test(o.label))) ? w.naam : (o.label || '');
+    return '<section class="binnen-kop gevel nova ws-kop' + (w ? '' : ' ws-licht') + '" style="--k:' + k + '"><span class="luifel"></span>' + ik +
+      '<div class="pui">' + (label ? '<p class="in-winkel">' + esc(label) + '</p>' : '') + '<h1>' + esc(o.h1) + '</h1>' +
+      (o.tekst ? '<p>' + esc(String(o.tekst).replace(/\s*(Kies|Klik|Tik) (hieronder|een|op)[^.!?]*[.!?]/g, '').trim()) + '</p>' : '') +
+      '<p class="tel">' + getal(o.totaal) + ' cadeaus' + (o.van < 1e9 ? ' · vanaf ' + euro(o.van) : '') + '</p>' +
+      (w && w.let ? '<p class="let">' + esc(w.let) + '</p>' : '') +
+      (w && w.extra && o.extra !== false ? '<div class="sh-extra">' + w.extra.map(function (e) { return '<a href="' + e[1] + '">' + (e[2] ? '<img src="' + novaRond(e[2]) + '" alt="">' : '') + esc(e[0]) + '</a>'; }).join('') + '</div>' : '') +
+      '</div></section>';
+  }
+  /* o: { sleutels (voor het interieur), label, h1, tekst, rond, kleur, terug: [adres, tekst], lijst (gesorteerd), delen: [{naam, naar, ic, lijst}],
+         etalage (true/false), kopDelen ('Soorten'/'Afdelingen'), voor: [{naam, naar, aan}], alles: adres van de lijst met filters, eenLijst (soort-pagina) } */
+  function winkelWeergave(o) {
+    var w = winkelVan(o.sleutels || []);
+    var lijst = o.lijst || [];
+    if (!lijst.length) return '';
+    var van = lijst.reduce(function (m, p) { return Math.min(m, p.prijs || 1e9); }, 1e9);
+    var gangen = [];
+    if (o.eenLijst) gangen.push({ naam: o.h1, lijst: lijst, ic: o.ic || '', een: true });
+    else {
+      if (o.etalage !== false && lijst.length >= 12) gangen.push({ naam: 'Onze beste keuzes', lijst: lijst.slice(0, 12), ic: o.rond || '', top: true });
+      (o.delen || []).forEach(function (d) { if (d.lijst && d.lijst.length >= (d.min || 3)) gangen.push(d); });
+    }
+    if (!gangen.length || (gangen.length === 1 && gangen[0].top)) return '';
+    huidig = { afd: gangen };
+    var h = (o.terug ? '<a class="terug" href="' + o.terug[0] + '">‹ ' + esc(o.terug[1]) + '</a>' : '') + '<div class="lampjes" aria-hidden="true"></div>' +
+      winkelKop({ label: o.label, h1: o.h1, tekst: o.tekst, rond: o.rond, kleur: o.kleur, totaal: o.totaal || lijst.length, van: van, extra: o.extra }, w);
+    if (o.boven) h += '<div class="ws-boven">' + o.boven + '</div>';
+    if (o.voor && o.voor.length) h += wegwijzer('Voor wie', o.voor.map(function (x) { return '<a href="' + x.naar + '"' + (x.aan ? ' aria-current="page" class="ws-aan"' : '') + '>' + esc(x.naam) + '</a>'; }));
+    if (o.buren && o.buren.length) h += wegwijzer(o.kopDelen || 'Soorten', o.buren.map(function (x) { return '<a href="' + x.naar + '"' + (x.aan ? ' aria-current="page" class="ws-aan"' : '') + '>' + esc(x.naam) + (x.n ? ' <small>' + x.n + '</small>' : '') + '</a>'; }));
+    else {
+      var gs = gangen.map(function (x, n) { return x.top ? '' : '<a href="' + (x.naar || '#') + '" data-sh-gang="' + n + '">' + esc(x.naam) + ' <small>' + x.lijst.length + '</small></a>'; }).filter(Boolean);
+      if (gs.length > 1) h += wegwijzer(o.kopDelen || 'Soorten', gs);
+    }
+    var max = o.eenLijst ? 1e9 : MAX_IN_GANG, perKeer = o.eenLijst ? 12 : PER_KEER, nr = 0;
+    gangen.forEach(function (x, n) {
+      if (!x.top && !x.een) nr++;
+      var klein = x.top ? 'De etalage' : x.een ? '' : (o.kopDelen === 'Afdelingen' ? 'Afdeling ' : 'Soort ') + nr;
+      h += '<section class="gang' + (x.top ? ' ws-etalage' : '') + '" id="gang-' + n + '"><div class="gang-kop">' + (x.ic ? '<img src="' + x.ic + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : '') +
+        '<div>' + (klein ? '<small>' + esc(klein) + '</small>' : '') + '<h2>' + afbr(x.naam) + '</h2></div></div>' +
+        '<div class="sh-schap" data-sh-schap="a' + n + '">' + x.lijst.slice(0, perKeer).map(kaart).join('') + '</div>' +
+        '<div class="gang-voet">' + (x.lijst.length > perKeer && perKeer < max ? '<button class="sh-meer" type="button" data-sh-meer="a' + n + '" data-sh-max="' + (x.een ? 'alles' : '') + '">Laat er nog ' + Math.min(perKeer, Math.min(x.lijst.length, max) - perKeer) + ' zien</button>' : '') +
+        (x.naar && !x.top ? '<a class="naar" href="' + x.naar + '">' + (x.los ? 'Alles uit ' + esc(x.naam) : 'Alle ' + getal(x.lijst.length) + ' uit ' + esc(x.naam)) + ' ›</a>' : '') + '</div></section>';
+      if (x.top && o.naEtalage) h += '<div class="ws-extra">' + o.naEtalage + '</div>';
+    });
+    if (o.alles) h += '<p class="alles-lijst"><a href="' + o.alles + '">Alle ' + getal(o.totaal || lijst.length) + ' cadeaus in één lijst, met sorteren en filteren ›</a></p>';
+    h += '<a class="terug" href="/">‹ Terug naar de Cadeaustraat</a>';
+    return '<div class="sh ws"><div class="sh-binnen" style="--k:' + (w ? w.k : (o.kleur || WS_KLEUR)) + '">' + h + '</div></div>';
+  }
+  /* Afdeling, groep of soort van de site (/c/…) */
+  function afdPagina(c, s, v, lijst, pad) {
+    pad = String(pad).replace(/\/?$/, '/');
+    var hz = window.LK && window.LK.hoortBij;
+    var o = { lijst: lijst, h1: (v || s || c).naam, alles: pad + '?alles=1' };
+    var sleutels = [c.slug + (s ? '/' + s.slug : ''), c.slug];
+    if (v) {
+      var vakken = (s.vakjes || []).filter(function (x) { return x.slug === v.slug || (hz && window.LK.zichtbaar().some(function (p) { return hz(p, c.slug, s.slug, x.slug); })); });
+      o.eenLijst = true; o.label = s.naam; o.terug = ['/c/' + c.slug + '/' + s.slug + '/', 'Terug naar ' + s.naam]; o.etalage = false;
+      o.tekst = v.tekst || ''; o.ic = v.beeld ? '/' + v.beeld : groepIcoon(c.slug, s.slug);
+      o.buren = vakken.map(function (x) { return { naam: x.naam, naar: '/c/' + c.slug + '/' + s.slug + '/' + x.slug + '/', aan: x.slug === v.slug }; });
+    } else if (s) {
+      o.terug = ['/c/' + c.slug + '/', 'Terug naar ' + c.naam]; o.label = c.naam; o.tekst = s.tekst || '';
+      if (s.vakjes && s.vakjes.length && hz) o.delen = s.vakjes.map(function (x) { return { naam: x.naam, naar: pad + x.slug + '/', ic: x.beeld ? '/' + x.beeld : '', lijst: lijst.filter(function (p) { return hz(p, c.slug, s.slug, x.slug); }) }; });
+      else o.delen = deelPerGroep(lijst);
+      if (!o.delen.filter(function (d) { return d.lijst.length >= 3; }).length) o.delen = deelPerGroep(lijst);
+    } else {
+      o.terug = ['/', 'Naar de Cadeaustraat']; o.tekst = c.tekst || ''; o.kopDelen = 'Afdelingen';
+      o.delen = (c.subs || []).filter(function (x) { return !x.verborgen; }).map(function (x) { return { naam: x.naam, naar: pad + x.slug + '/', ic: groepIcoon(c.slug, x.slug) || (x.beeld ? '/' + x.beeld : ''), lijst: hz ? lijst.filter(function (p) { return hz(p, c.slug, x.slug); }) : [] }; });
+    }
+    o.sleutels = sleutels; o.rond = (c.rond ? '/' + c.rond : '');
+    var w = winkelVan(sleutels); if (w && !o.label) o.label = w.naam; else if (w && !v && s) o.label = w.naam + ' · ' + c.naam;
+    return winkelWeergave(o);
+  }
+  /* Onderwerp van Voor wie (/voor/haar/wonen-sfeer), gelegenheid, collectie (ook per persoon) */
+  function lijstPagina(o) {
+    if (o.rondNaam && !o.rond) o.rond = novaRond(o.rondNaam);
+    o.delen = deelPerGroep(o.lijst);
+    return winkelWeergave(o);
+  }
   function meer(m) {
-    var n = m.getAttribute('data-sh-meer'), lijst = n === 'top' ? huidig.st.etalage : huidig.x.gangen[+n].lijst, schap = document.querySelector('[data-sh-schap="' + n + '"]');
+    var n = m.getAttribute('data-sh-meer');
+    if (/^a\d+$/.test(n) && huidig && huidig.afd) {
+      var alles = m.getAttribute('data-sh-max') === 'alles', amax = alles ? 1e9 : MAX_IN_GANG, astap = alles ? 12 : PER_KEER;
+      var al = huidig.afd[+n.slice(1)].lijst, as = document.querySelector('[data-sh-schap="' + n + '"]'), anu = as.children.length;
+      as.insertAdjacentHTML('beforeend', al.slice(anu, Math.min(anu + astap, amax)).map(kaart).join(''));
+      var aover = Math.min(al.length, amax) - as.children.length;
+      if (aover > 0) m.textContent = 'Laat er nog ' + Math.min(astap, aover) + ' zien'; else m.remove();
+      return;
+    }
+    var lijst = n === 'top' ? huidig.st.etalage : huidig.x.gangen[+n].lijst, schap = document.querySelector('[data-sh-schap="' + n + '"]');
     var nu = schap.children.length, erbij = lijst.slice(nu, Math.min(nu + PER_KEER, MAX_IN_GANG));
     schap.insertAdjacentHTML('beforeend', erbij.map(kaart).join(''));
     var over = Math.min(lijst.length, MAX_IN_GANG) - schap.children.length;
@@ -764,7 +913,12 @@
     var over0 = kl2.length - ks.children.length;
     if (over0 > 0) km.textContent = 'Laat er nog ' + Math.min(PER_KEER, over0) + ' zien'; else km.parentNode.remove();
   }
-  return { render: render, meer: meer, kmeer: kmeer, adres: leesAdres };
+  /* WINKELSTIJL voor de Voor wie-pagina's (voorbeeld): /voor/haar is de straat voor haar. De links naar de winkels gaan naar de straat op de homepage. */
+  function voorPagina(wie) {
+    var st = staat(wie, 0); huidig = { st: st };
+    return '<div class="sh">' + straat(st).replace(/href="#/g, 'href="/#') + '</div>';
+  }
+  return { render: render, meer: meer, kmeer: kmeer, adres: leesAdres, afd: afdPagina, voor: voorPagina, lijst: lijstPagina };
   }
 
   var S = null, TITEL0 = '';
@@ -791,14 +945,112 @@
         return '';
       }
       TITEL0 = document.title; /* app.js heeft net de titel van de homepage gezet */
-      if (!S) S = maak();
+      if (!S || S._deel) { S = maak(); S._deel = false; } /* de straat altijd met de hele lijst */
       var a = S.adres();
       if (a.wie && !window.LK_VOORWIE) laadVoorwie(herteken);
       return S.render().html;
     }
   };
+  /* WINKELSTIJL voor afdelingen en groepen: voorbeeld, alleen met ?proef=winkelstijl (uit: ?proef=winkelstijl-uit). Nog niet voor iedereen. */
+  /* WINKELSTIJL staat aan voor alle bezoekers. Zelf de oude pagina's zien: ?proef=winkelstijl-uit (in dat tabblad; weer aan: ?proef=winkelstijl).
+     Helemaal uit: window.LK_WINKELSTIJL = false. */
+  function winkelstijl() {
+    if (!aan() || window.LK_WINKELSTIJL === false) return false;
+    try { if (/[?&]proef=winkelstijl-uit\b/.test(location.search)) sessionStorage.setItem('lkws-uit', '1'); else if (/[?&]proef=winkelstijl\b/.test(location.search)) sessionStorage.removeItem('lkws-uit');
+      return !sessionStorage.getItem('lkws-uit'); } catch (e) { return true; }
+  }
+  /* Een winkel-pagina kan al getekend worden met het kleine productbestand van die pagina (pak, LK_DEEL): de winkel gebruikt alleen de cadeaus
+     van die pagina. De straat zelf (homepage) wacht op de hele lijst; daarom maken we de straat opnieuw zodra die er is. */
+  function zorgS() { var deel = !!window.LK_DEEL; if (!S || S._deel !== deel) { S = maak(); S._deel = deel; } return S; }
+  var VOOR_WIE = { haar: 'haar', hem: 'hem', kinderen: 'kind', tieners: 'tiener', 'opa-oma': 'opa-oma', collega: 'collega', baby: 'baby' };
+  window.LK_STRAAT_VOOR = {
+    html: function (slug) {
+      if (!winkelstijl() || !VOOR_WIE[slug] || !window.LK_PRODUCTEN) return '';
+      if (!window.LK_VOORWIE && !navigator.webdriver) { laadVoorwie(function () { if (window.LK && window.LK.ga) window.LK.ga(location.pathname + location.search, true); }); }
+      zorgS();
+      return S.voor(VOOR_WIE[slug]);
+    }
+  };
+  window.LK_STRAAT_AFD = {
+    html: function (c, s, v, lijst, pad) {
+      if (!winkelstijl() || !window.LK_PRODUCTEN) return '';
+      zorgS();
+      return S.afd(c, s, v, lijst, pad);
+    }
+  };
+  window.LK_STRAAT_LIJST = {
+    html: function (o) {
+      if (!winkelstijl() || !window.LK_PRODUCTEN) return '';
+      zorgS();
+      return S.lijst(o);
+    }
+  };
   function opHome() { return (location.pathname === '/' || location.pathname === '') && document.querySelector('#app > .sh'); }
   function herteken() { if (!S || !opHome()) return; var y = window.scrollY; document.getElementById('app').innerHTML = S.render().html; window.scrollTo(0, y); }
+  /* Bovenaan de straat alleen het logo en het zoekvak, zoals in de testversie (21-11-2026, Marius: 'IK WIL NIKS MEER VAN DE OUDE SITE').
+     html.sh-thuis staat er al vóór de app start (stukje in de kop van sjabloon.html) en volgt daarna of de straat in #app staat. */
+  function kopZetten() {
+    var thuis = !!document.querySelector('#app > .sh');
+    document.documentElement.classList.toggle('sh-thuis', thuis);
+    /* Alleen voor bezoekers met de nieuwe opzet (wz-v, gezet in de kop van sjabloon.html); zoekmachines houden de kop zoals hij was */
+    var mens = /(^| )wz-v( |$)/.test(document.documentElement.className);
+    document.documentElement.classList.toggle('sh-kop', mens && winkelstijl());
+    if (thuis) veegPijlen();
+  }
+  /* Afdelingen opzij vegen: pijltje rechts zolang er nog meer staat */
+  function veegPijlen() {
+    var rijen = document.querySelectorAll('#app .sh [data-sh-veeg]');
+    for (var i = 0; i < rijen.length; i++) {
+      var r = rijen[i], b = r.parentNode.querySelector('[data-sh-veegpijl]'), meer = r.scrollWidth - r.clientWidth - r.scrollLeft > 8;
+      if (b) b.hidden = !meer;
+      r.parentNode.classList.toggle('sh-veeg-meer', meer);
+    }
+  }
+  document.addEventListener('scroll', function (e) { var t = e.target; if (t && t.nodeType === 1 && t.hasAttribute('data-sh-veeg')) veegPijlen(); }, true);
+  window.addEventListener('resize', veegPijlen);
+  function kijkApp() {
+    var appEl = document.getElementById('app');
+    if (!appEl) return;
+    kopZetten();
+    if (window.MutationObserver) {
+      new MutationObserver(kopZetten).observe(appEl, { childList: true });
+    }
+  }
+  if (document.getElementById('app')) kijkApp(); else document.addEventListener('DOMContentLoaded', kijkApp);
+  /* Het warme venster (zoals in de testversie). De knop is een gewone kaart-knop van de site (a.kaart-koop met data-id),
+     dus app.js telt hem als klik/<winkel>/<id> en hij loopt via /p/<id>/?naar=winkel met dezelfde partnerlink als de productpagina. */
+  var blad = null, bladStap = false;
+  function icn(n) { return window.LK && window.LK.icoon ? window.LK.icoon(n) : ''; }
+  function openBlad(id, kleur) {
+    var p = window.LK && window.LK.vind ? window.LK.vind(id) : null; if (!p) return;
+    if (!blad) { blad = document.createElement('div'); blad.className = 'k-blad'; blad.hidden = true; document.body.appendChild(blad);
+      blad.addEventListener('click', function (e) { if (e.target === blad || e.target.closest('[data-sluit-blad]')) sluitBlad(); }); }
+    var e2 = window.LK.esc, fav = window.LK.isFavoriet(p.id), pp = '/p/' + e2(p.id) + '/';
+    var geenKnop = /elektrische-steps|elektrische-fietsen|op-brandstof/.test((p.vak || '') + ' ' + (p.sub || ''));
+    var knop = geenKnop ? '<a class="k-knop" href="' + pp + '">Bekijk dit cadeau ' + icn('pijl') + '</a>'
+      : '<a class="k-knop kaart-koop" data-id="' + e2(p.id) + '" href="' + pp + '?naar=winkel" target="_blank" rel="sponsored nofollow noopener">Bekijk bij ' + e2(p.shop || 'de winkel') + ' ' + icn('pijl') + '</a>';
+    blad.style.setProperty('--k', kleur || '#8F6620'); blad.style.setProperty('--kd', 'color-mix(in srgb,' + (kleur || '#8F6620') + ' 72%,#000)');
+    blad.innerHTML = '<div class="k-doos" role="dialog" aria-modal="true" aria-label="' + e2(p.titel) + '"><div class="k-greep"></div>' +
+      '<button class="k-sluit" type="button" data-sluit-blad aria-label="Sluiten">' + icn('sluit') + '</button>' +
+      '<div class="k-foto"><img src="/' + e2(p.beeld) + '.webp" alt="' + e2(p.titel) + '"></div><h3>' + e2(p.titel) + '</h3>' + (p.waarom ? '<p>' + e2(p.waarom) + '</p>' : '') +
+      '<div class="k-onder"><span class="k-prijs">' + window.LK.euro(p.prijs) + '</span>' +
+      '<button class="hartje k-hart" type="button" data-fav="' + e2(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icn('hart') + '</button>' + knop + '</div>' +
+      '<p class="k-klein">De prijs kan bij de winkel net anders zijn. <a href="' + pp + '">Alles over dit cadeau</a></p></div>';
+    blad.hidden = false; document.body.style.overflow = 'hidden';
+    /* eigen stap in de geschiedenis: de terugknop van de telefoon sluit eerst het venster */
+    if (!bladStap) { try { history.pushState({ kblad: 1 }, '', location.href); bladStap = true; } catch (e) {} }
+    tel('straat/venster/' + (p.shop || 'winkel') + '/' + p.id, 'Cadeaustraat: venster');
+  }
+  function verbergBlad() { if (!blad) return; blad.hidden = true; blad.innerHTML = ''; document.body.style.overflow = ''; }
+  function sluitBlad() { verbergBlad(); if (bladStap) { bladStap = false; history.back(); } }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && blad && !blad.hidden) sluitBlad(); });
+  /* Terugknop: dit luistert vóór app.js (straat.js laadt eerst). Sluit het venster, of laat een stap binnen de straat (#winkel-…) aan de straat,
+     zodat app.js niet denkt dat je de site verlaat ('Tik nog een keer op terug …'). */
+  window.addEventListener('popstate', function (e) {
+    if (blad && !blad.hidden) { bladStap = false; verbergBlad(); e.stopImmediatePropagation(); return; }
+    if (bladStap) { bladStap = false; e.stopImmediatePropagation(); return; }
+    if (S && location.pathname === '/' && location.hash !== vorige && document.querySelector('#app > .sh')) e.stopImmediatePropagation();
+  });
   var naarStraat = false;
   /* Logo of 'Home' terwijl je in een winkel staat (/#winkel-…): terug naar het begin van de straat. app.js ziet hetzelfde adres en sluit alleen het menu. */
   document.addEventListener('click', function (e) {
@@ -812,13 +1064,15 @@
   });
   document.addEventListener('click', function (e) {
     if (!S || !e.target.closest || !e.target.closest('#app .sh')) return;
+    var pb = e.target.closest('[data-sh-blad]');
+    if (pb && !(e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) { e.preventDefault(); openBlad(pb.getAttribute('data-sh-blad'), getComputedStyle(pb).getPropertyValue('--k').trim()); return; }
     if (e.target.closest('[data-sh-kies]')) naarStraat = true;
     var km = e.target.closest('[data-sh-kmeer]'); if (km) { S.kmeer(km); return; }
     var m = e.target.closest('[data-sh-meer]'); if (m) { S.meer(m); return; }
+    var vp = e.target.closest('[data-sh-veegpijl]');
+    if (vp) { var rij = vp.parentNode.querySelector('[data-sh-veeg]'); if (rij) rij.scrollBy({ left: Math.round(rij.clientWidth * 0.7), behavior: 'smooth' }); return; }
     var gw = e.target.closest('[data-sh-gang]');
     if (gw) { e.preventDefault(); var d = document.getElementById('gang-' + gw.getAttribute('data-sh-gang')); if (d) d.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
-    var sp = e.target.closest('[data-sh-sprong]');
-    if (sp) { var af = document.getElementById('afdelingen'); if (af) af.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     var nk = e.target.closest('[data-sh-naar-kies]');
     if (nk) { var k = document.querySelector('#app .sh .kies'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });

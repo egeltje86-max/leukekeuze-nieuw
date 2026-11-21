@@ -2432,6 +2432,8 @@
   });
 
   /* ---------- Categorie & subcategorie ---------- */
+  /* Een pagina zonder filter, sortering of andere keuze in het adres (alleen ?proef= mag) */
+  function kaalAdres(q) { return !Object.keys(q || {}).some(function (k) { return q[k] && k !== 'proef'; }); }
   function categorie(slug, subSlug, vakSlug, q) {
     var c = window.LK_CAT(slug);
     if (!c) return nietGevonden();
@@ -2460,6 +2462,9 @@
     /* 13-11-2026 (Marius: 'elke tegel apart uitzoeken'): 'Kerst voor hem' (/c/cadeaus/kerst?voor=hem) heeft een eigen, met de hand gekozen top. */
     var topPad = (q.voor && window.LK_TOPVAST && window.LK_TOPVAST[pad + '?voor=' + q.voor]) ? pad + '?voor=' + q.voor : pad;
     lijst = sorteer(lijst, q.sort, topPad);
+    /* WINKELSTIJL (21-11-2026, Marius: 'elke categorie moet een winkel worden'): voor bezoekers is deze pagina een winkel in de Cadeaustraat,
+       met dezelfde cadeaus in dezelfde volgorde. Alleen op het kale adres; met een filter, sortering of ?alles=1 de lijst zoals hij was. Zie straat.js. */
+    if (WIJZER === 'b' && window.LK_STRAAT_AFD && kaalAdres(q)) { var winkelHtml = window.LK_STRAAT_AFD.html(c, s, v, lijst, pad); if (winkelHtml) return winkelHtml; }
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
@@ -2597,6 +2602,10 @@
     var s = subSlug ? pe.subs.filter(function (x) { return x.slug === subSlug; })[0] : null;
     if (subSlug && !s) return nietGevonden();
     zetTitel(s ? (s.seoTitel || s.naam + ' voor ' + pe.naam.replace(/^Voor /, '')) : pe.seoTitel || pe.naam);
+    /* WINKELSTIJL (21-11-2026): /voor/haar is voor bezoekers 'de straat voor haar' (zelfde cadeaus als de straat met Haar gekozen). Alleen op het kale adres. Zie straat.js. */
+    if (WIJZER === 'b' && !s && window.LK_STRAAT_VOOR && kaalAdres(q)) {
+      var straatVoor = window.LK_STRAAT_VOOR.html(slug); if (straatVoor) return straatVoor;
+    }
     /* Teksten en tips van de oude pagina (/c/cadeaus/voor-hem …) gaan mee naar de nieuwe. */
     var oudSub = null;
     if (pe.oud) { var od = pe.oud.split('/'), oc = window.LK_CAT(od[0]); oudSub = oc ? window.LK_SUB(oc, od[1]) : null; }
@@ -2613,6 +2622,13 @@
     BASIS = alles;
     TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
+    /* WINKELSTIJL: een onderwerp (/voor/haar/wonen-sfeer) is voor bezoekers een winkel in de straat voor haar, per soort cadeau. */
+    if (WIJZER === 'b' && s && window.LK_STRAAT_LIJST && kaalAdres(q)) {
+      var pkort = pe.kort.charAt(0).toLowerCase() + pe.kort.slice(1);
+      var wsOnd = window.LK_STRAAT_LIJST.html({ lijst: lijst, h1: s.naam + ' voor ' + naam, tekst: s.tekst || '', label: 'De straat ' + pkort,
+        rond: s.beeld ? '/' + rondjeVan(s.beeld) : '', terug: ['/voor/' + pe.slug + '/', 'Terug naar de straat ' + pkort], alles: pad + '/?alles=1' });
+      if (wsOnd) return wsOnd;
+    }
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var metBudget = function (adres) { var nq = {}; if (q.prijs && q.prijs !== 'alle') nq.prijs = q.prijs; ['kind', 'leeftijd'].forEach(function (k) { if (q[k]) nq[k] = q[k]; }); return Object.keys(nq).length ? maakAdres(adres, nq) : adres; };
 
@@ -2918,6 +2934,7 @@
     return isGel ? 'Alle cadeaus voor ' + n : 'Alle ' + n;
   }
   function verzameling(g, pad, kruimelKop, q, voorSlug) {
+    var wsKaal = kaalAdres(q); /* WINKELSTIJL: vóór Black Friday hieronder zelf een sortering kiest */
     var knoppen = g.knoppen || [];
     var basisAlles = verzamelLijst(g);
     var nietOpG = (window.LK_NIETOP && window.LK_NIETOP[pad + (voorSlug ? '/' + voorSlug : '')]) || []; /* 7-11-2026: past niet op deze pagina (nagekeken) */
@@ -2961,6 +2978,24 @@
     }
     if ((g.korting || g.codes) && !q.sort) q = Object.assign({}, q, { sort: g.korting ? 'beste' : 'korting' }); /* Black Friday: standaard de beste deals eerst */
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
+    /* WINKELSTIJL: een gelegenheid of collectie is voor bezoekers een winkel in de straat, per soort cadeau, met bovenaan 'Voor wie'. Niet bij kortingscodes. */
+    if (WIJZER === 'b' && window.LK_STRAAT_LIJST && wsKaal && !g.codes) {
+      var isGel = hoofdPad.indexOf('/gelegenheid/') === 0;
+      var wsVoor = (!g.labels && g.vakken && !g.korting) ? (g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
+        var p2 = window.LK_PERSOON(slug); if (!p2) return null;
+        if (basisAlles.filter(function (p) { return voorFilter(p, slug, hoofdPad); }).length < 10) return null;
+        return { naam: p2.kort, naar: hoofdPad + '/' + slug + '/', aan: !!(pv && pv.slug === slug) };
+      }).filter(Boolean) : [];
+      if (wsVoor.length) wsVoor.unshift({ naam: 'Iedereen', naar: hoofdPad + '/', aan: !pv });
+      var wsBoven = (g.eerlijk ? '<p class="eerlijk-regel">' + ic('vonk') + '<span>' + esc(g.eerlijk) + '</span></p>' : '') +
+        (g.korting && window.LK_CODE_OP_PRODUCT !== false ? codesNu().filter(function (c) { var v = new Date().toISOString().slice(0, 10); return c.opProduct && c.code && (!c.vanaf || c.vanaf <= v); }).map(function (c) {
+          return '<p class="eerlijk-regel code-regel">' + ic('cadeau') + '<span>Extra bij ' + esc(c.winkel) + ': ' + esc(c.opProduct.replace(/^Black Week: /, '')) + '. <a href="/collectie/kortingscodes">Alle codes en voorwaarden</a></span></p>';
+        }).join('') : '');
+      var wsVerz = window.LK_STRAAT_LIJST.html({ lijst: lijst, h1: pv ? g.naam + ' voor ' + voorNaam : g.naam, tekst: g.tekst || '', voor: wsVoor, boven: wsBoven, naEtalage: pv ? '' : mandjesBlok(g),
+        label: pv ? g.naam : (isGel ? 'Gelegenheid' : 'Collectie'), sleutels: [hoofdPad.slice(1)], rondNaam: (isGel ? 'gel-' : 'col-') + g.slug,
+        terug: pv ? [hoofdPad + '/', 'Terug naar ' + g.naam] : ['/', 'Naar de Cadeaustraat'], alles: pad + '/?alles=1' });
+      if (wsVerz) return wsVerz;
+    }
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
     var sorteerOpties = [['aanbevolen', 'Aanbevolen'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag'], ['nieuw', 'Nieuwste eerst']];
     if (g.korting || g.codes) sorteerOpties = (g.korting ? [['beste', 'Beste deals']] : []).concat([['korting', 'Grootste korting']], sorteerOpties.slice(1));
