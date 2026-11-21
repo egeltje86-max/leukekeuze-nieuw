@@ -621,7 +621,15 @@ img{max-width:100%;display:block}
     var nk = e.target.closest('[data-naar-kies]');
     if (nk) { var k = app.querySelector('.kies'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
-  window.addEventListener('hashchange', teken);
+  /* Terug naar waar je was: met de terugknop kom je weer op dezelfde plek in de straat of winkel (21-11-2026) */
+  var POS = {}, vorige = location.hash, vooruit = false;
+  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href^="#"]'); if (a) vooruit = true; }, true);
+  window.addEventListener('hashchange', function () {
+    POS[vorige] = window.scrollY;
+    var terug = !vooruit; vooruit = false; vorige = location.hash;
+    teken();
+    if (terug && POS[location.hash] !== undefined) window.scrollTo(0, POS[location.hash]);
+  });
   teken();
 })();
 </script>

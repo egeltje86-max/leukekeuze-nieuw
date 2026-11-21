@@ -77,8 +77,14 @@
       '<p class="k-klein">De prijs kan bij de winkel net anders zijn. <a href="' + productLink(p) + '" target="_blank">Alles over dit cadeau</a></p></div>';
     blad.querySelector('.k-onder .k-sluit').style.position = 'static';
     blad.hidden = false; document.body.style.overflow = 'hidden';
+    /* 21-11-2026 (Marius: 'als ik terug druk blijft het scherm open en gaat de website erachter terug'):
+       het venster krijgt een eigen stap in de geschiedenis, zodat de terugknop van de telefoon eerst het venster sluit. */
+    if (!bladStap) { try { history.pushState({ kblad: 1 }, '', location.href); bladStap = true; } catch (e) {} }
   }
-  function sluitBlad() { blad.hidden = true; blad.innerHTML = ''; document.body.style.overflow = ''; }
+  var bladStap = false;
+  function verbergBlad() { blad.hidden = true; blad.innerHTML = ''; document.body.style.overflow = ''; }
+  function sluitBlad() { verbergBlad(); if (bladStap) { bladStap = false; history.back(); } }
+  window.addEventListener('popstate', function () { if (bladStap || !blad.hidden) { bladStap = false; verbergBlad(); } });
   blad.addEventListener('click', function (e) { if (e.target === blad || e.target.closest('[data-sluit]')) sluitBlad(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !blad.hidden) sluitBlad(); });
   document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-blad]'); if (b) { e.preventDefault(); openBlad(b.getAttribute('data-blad')); } });
