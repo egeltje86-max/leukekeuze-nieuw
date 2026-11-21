@@ -194,6 +194,9 @@
   }
 
   /* Productfoto met kleine versie voor mobiel */
+  /* Productfoto die niet laadt (21-11-2026, Marius zag bij een e-bike een kapot plaatje terwijl de foto er gewoon staat):
+     één keer opnieuw proberen, zonder srcset en met een kenmerkje erachter zodat de telefoon hem echt opnieuw ophaalt. */
+  var BEELD_OPNIEUW = ' onerror="if(!this.dataset.r){this.dataset.r=1;this.removeAttribute(\'srcset\');this.src=this.src.split(\'?\')[0]+\'?r=1\'}"';
   function productBeeld(p, groot) {
     if (!p.beeld) {
       var c = window.LK_CAT(p.cat);
@@ -204,7 +207,7 @@
     }
     return '<img src="' + esc(p.beeld) + (groot ? '' : '-klein') + '.webp" ' +
       (groot ? '' : 'srcset="' + esc(p.beeld) + '-klein.webp 400w, ' + esc(p.beeld) + '.webp 640w" sizes="(min-width: 1100px) 250px, 50vw" ') +
-      'alt="' + esc(p.titel) + '"' + (groot ? ' fetchpriority="high" decoding="async">' : ' loading="lazy" decoding="async">');
+      'alt="' + esc(p.titel) + '"' + BEELD_OPNIEUW + (groot ? ' fetchpriority="high" decoding="async">' : ' loading="lazy" decoding="async">');
   }
 
   /* Lange woorden in een producttitel netjes afbreken (11-11-2026, fout gezien op /voor/kinderen/ op 390px: 'Bellenblaasmachi|ne').
