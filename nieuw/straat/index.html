@@ -629,7 +629,7 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
 
   /* Beelden van Nova (NOVA-BOUTIQUE): alleen in dit voorbeeld, map /nieuw/straat/beeld/ */
   var NB = '/nieuw/straat/beeld/';
-  var NOVA_GEVEL = { pakjeshuis: 1, kerstmarkt: 1, speelgoedwinkel: 1, gamewinkel: 1, grappenmaker: 1, cadeausuper: 1, koffiehuis: 1, woonwinkel: 1, parfumerie: 1, elektronicazaak: 1,
+  var NOVA_GEVEL = { kiosk: 1, pakjeshuis: 1, kerstmarkt: 1, speelgoedwinkel: 1, gamewinkel: 1, grappenmaker: 1, cadeausuper: 1, koffiehuis: 1, woonwinkel: 1, parfumerie: 1, elektronicazaak: 1,
     spellenwinkel: 1, boetiek: 1, sportwinkel: 1, boekhandel: 1, hobbywinkel: 1, kookwinkel: 1, slijterij: 1, tuincentrum: 1, uitjesbureau: 1, christelijk: 1, cadeauloket: 1 };
   var NOVA_CAT = { speelgoed: 1, 'spellen-puzzels': 1, elektronica: 1, 'mode-sieraden': 1, 'beauty-verzorging': 1, wonen: 1, 'koken-tafelen': 1, 'eten-drinken': 1, hobby: 1,
     'sport-outdoor': 1, 'tuin-klussen': 1, 'boeken-media': 1, dieren: 1, belevenissen: 1, christelijk: 1 };
@@ -649,43 +649,32 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
   /* Boutique-rondje per afdeling. Waar Nova nog geen eigen rondje maakte, het best passende uit haar set (tijdelijk).
      Komt er een eigen rondje 'afd-<winkel>-<naam>', zet het dan hier. */
   var GANG_NB = {
-    'speelgoedwinkel|LEGO & bouwen': 'cat-speelgoed', 'speelgoedwinkel|Poppen & knuffels': 'voor-kinderen', 'speelgoedwinkel|Auto’s, figuren & treinen': 'cad-voor-kinderen',
-    'speelgoedwinkel|Baby & peuter': 'voor-baby', 'speelgoedwinkel|Ontdekken & leren': 'h-zelf-zoeken', 'speelgoedwinkel|Knutselen': 'cat-hobby',
-    'speelgoedwinkel|Buiten spelen': 'cat-sport-outdoor', 'speelgoedwinkel|Verkleden & doen alsof': 'h-surprise-maken', 'speelgoedwinkel|Spellen voor kinderen': 'cat-spellen-puzzels',
-    'gamewinkel|Gaming': 'winkel-gamewinkel',
-    'koffiehuis|Chocolade': 'gel-bedankt', 'koffiehuis|Koek & stroopwafels': 'cat-eten-drinken', 'koffiehuis|Mokken & bekers': 'cad-collega',
-    'koffiehuis|Snoep & drop': 'gel-uitdeelcadeautjes', 'koffiehuis|Koffie & thee': 'gel-beterschap', 'koffiehuis|Koffiezetten & theepotten': 'winkel-koffiehuis',
-    'woonwinkel|Lampjes & licht': 'cat-wonen', 'woonwinkel|Kaarsen & geur': 'winkel-woonwinkel', 'woonwinkel|Plaids & kussens': 'voor-opa-oma',
-    'woonwinkel|Decoratie': 'gel-housewarming', 'woonwinkel|Met je eigen foto': 'col-persoonlijke-cadeaus',
-    'parfumerie|Parfum': 'winkel-parfumerie', 'parfumerie|Cadeausets': 'gel-moederdag', 'parfumerie|Bad, huid & spa': 'cat-beauty-verzorging',
-    'parfumerie|Haar & make-up': 'voor-haar', 'parfumerie|Scheren & baard': 'voor-hem',
-    'elektronicazaak|Snufjes & gadgets': 'cat-elektronica', 'elektronicazaak|Koptelefoons & speakers': 'cad-voor-hem', 'elektronicazaak|Smartwatches': 'winkel-elektronicazaak',
-    'elektronicazaak|Foto & video': 'voor-tieners', 'elektronicazaak|Tablets & slim wonen': 'h-tiktok',
-    'spellenwinkel|Kaart- & partyspellen': 'gel-verjaardag', 'spellenwinkel|Bordspellen': 'winkel-spellenwinkel', 'spellenwinkel|Puzzels': 'cat-spellen-puzzels',
-    'spellenwinkel|Breinbrekers & escape': 'h-ik-zoek-cadeau',
-    'boetiek|Sieraden': 'winkel-boetiek', 'boetiek|Horloges': 'col-originele-cadeaus', 'boetiek|Pantoffels & sloffen': 'cad-schoencadeautjes',
-    'boetiek|Tassen & portemonnees': 'cat-mode-sieraden', 'boetiek|Accessoires & paraplu’s': 'voor-haar', 'boetiek|Kleding': 'cad-voor-haar',
-    'sportwinkel|Darts': 'winkel-sportwinkel', 'sportwinkel|Balsport & spel': 'cat-sport-outdoor', 'sportwinkel|Buiten op avontuur': 'h-zelf-zoeken',
-    'sportwinkel|Fietsen & steps': 'winkel-uitjesbureau', 'sportwinkel|Fitness & yoga': 'voor-tieners', 'sportwinkel|Water & winter': 'h-kieshulp',
-    'boekhandel|Boeken': 'winkel-boekhandel', 'boekhandel|Kinderboeken': 'gel-juf-meester', 'boekhandel|Muziek & films': 'cat-boeken-media',
-    'hobbywinkel|Bestuurbare auto’s': 'cad-voor-kinderen', 'hobbywinkel|Modelbouw & book nooks': 'h-ik-zoek-product', 'hobbywinkel|Schilderen & tekenen': 'cat-hobby',
-    'hobbywinkel|Zelf maken': 'h-surprise-maken', 'hobbywinkel|Breien, haken & naaien': 'voor-opa-oma', 'hobbywinkel|Papier & planners': 'h-verlanglijstje',
-    'hobbywinkel|Muziek maken': 'cat-boeken-media',
-    'kookwinkel|Koken & bakken': 'cat-keuken', 'kookwinkel|Tafelen & borrel': 'cat-koken-tafelen', 'kookwinkel|Glazen': 'gel-jubileum', 'kookwinkel|Delicatessen': 'cat-eten-drinken',
-    'slijterij|Wijn & bubbels': 'winkel-slijterij', 'slijterij|Whisky, gin & meer': 'winkel-slijterij', 'slijterij|Alcoholvrij': 'cat-dranken',
-    'slijterij|Glazen, karaffen & cocktails': 'gel-jubileum',
-    'tuincentrum|Tuin & planten': 'winkel-tuincentrum', 'tuincentrum|Buiten leven': 'cat-tuin-klussen', 'tuincentrum|Bloemen': 'gel-moederdag',
-    'tuincentrum|Klussen & gereedschap': 'cat-tuin-klussen', 'tuincentrum|Voor de hond': 'cat-dieren', 'tuincentrum|Voor de kat': 'cat-dieren', 'tuincentrum|Andere dieren': 'cat-dieren',
-    'uitjesbureau|Snelheid & avontuur': 'cat-belevenissen', 'uitjesbureau|Op het water': 'winkel-uitjesbureau', 'uitjesbureau|Workshops & proeverijen': 'gel-jubileum',
-    'uitjesbureau|Uitjes & natuur': 'h-zelf-zoeken',
+    'koffiehuis|Koek & stroopwafels': 'icoon-eten-drinken-lekkernijen', 'koffiehuis|Koffie & thee': 'gel-beterschap', 'koffiehuis|Snoep & drop': 'gel-uitdeelcadeautjes',
+    'tuincentrum|Bloemen': 'gel-moederdag', 'boetiek|Tassen & portemonnees': 'cat-mode-sieraden',
+    'sportwinkel|Balsport & spel': 'cat-sport-outdoor', 'sportwinkel|Water & winter': 'icoon-belevenissen-water-strand',
     'grappenmaker|Voor een collega': 'cad-collega', 'grappenmaker|Voor hem': 'cad-voor-hem', 'grappenmaker|Voor haar': 'cad-voor-haar', 'grappenmaker|Voor kinderen': 'cad-voor-kinderen'
   };
+  /* Eigen rondjes van Nova per afdeling (NOVA-BOUTIQUE-007 en 008, 21-11-2026): rond/icoon-<afdeling>-<groep> */
+  var NOVA_AFD = {};
+  ('beauty-verzorging/bad-huid-spa beauty-verzorging/giftsets beauty-verzorging/make-up-haar beauty-verzorging/parfum beauty-verzorging/scheren-baard ' +
+   'belevenissen/avontuur-snelheid belevenissen/uitjes-natuur belevenissen/water-strand belevenissen/workshops-escape-proeven ' +
+   'boeken-media/boeken boeken-media/kinderboeken boeken-media/muziek-films dieren/andere-dieren dieren/hond dieren/kat ' +
+   'elektronica/audio elektronica/foto-video elektronica/gadgets elektronica/gaming elektronica/smartwatches elektronica/tablets-tv-slim-wonen ' +
+   'eten-drinken/alcoholvrij eten-drinken/bier-sterke-drank eten-drinken/cadeaupakketten eten-drinken/chocolade-snoep eten-drinken/drankaccessoires eten-drinken/lekkernijen eten-drinken/wijn-bubbels ' +
+   'hobby/handwerken hobby/modelbouw hobby/muziek-maken hobby/papier-planners hobby/rc-auto-s hobby/schilderen-tekenen hobby/zelf-maken ' +
+   'koken-tafelen/koffie-thee-zetten koken-tafelen/koken-bakken koken-tafelen/mokken-glazen koken-tafelen/tafelen-borrel ' +
+   'mode-sieraden/accessoires mode-sieraden/horloges mode-sieraden/kleding mode-sieraden/schoenen-sloffen mode-sieraden/sieraden ' +
+   'speelgoed/baby-peuter speelgoed/bouwen speelgoed/buiten-spelen speelgoed/knutselen speelgoed/leren-ontdekken speelgoed/poppen-knuffels speelgoed/rollenspel-verkleden speelgoed/speelfiguren-voertuigen ' +
+   'spellen-puzzels/bordspellen spellen-puzzels/breinbrekers-escape spellen-puzzels/kaart-partyspellen spellen-puzzels/kinderspellen spellen-puzzels/puzzels ' +
+   'sport-outdoor/darts sport-outdoor/fietsen-steps sport-outdoor/fitness-yoga sport-outdoor/outdoor-avontuur tuin-klussen/buiten-leven tuin-klussen/klussen tuin-klussen/tuin-planten ' +
+   'wonen/foto-persoonlijk wonen/kaarsen-geur wonen/kerstdecoratie wonen/verlichting wonen/woondecoratie wonen/woontextiel').split(' ').forEach(function (n) { NOVA_AFD[n] = 1; });
   function gangIcoon(w, x) {
     var g = x.g;
     if (GANG_NB[w.id + '|' + g.naam]) return novaRond(GANG_NB[w.id + '|' + g.naam]);
-    if (g.ic) return rond(g.ic);
     if (g.hoek && x.lijst[0]) return K.klein(x.lijst[0]);
     var y = g.g ? [].concat(g.g)[0] : (g.v ? g.v[0].split('/').slice(0, 2).join('/') : '');
+    if (NOVA_AFD[y]) return novaRond('icoon-' + y.replace('/', '-'));
+    if (g.ic) return rond(g.ic);
     return y ? '/images/sub/iconen/icoon-' + y.replace('/', '-') + '.webp' : novaRond('winkel-' + w.id);
   }
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
@@ -969,9 +958,9 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
     'belevenis-cadeau':['Belevenis cadeau geven','dk-35d0e56982'],
     'kerstcadeau-opa-oma':['Kerstcadeau voor opa en oma',''],
     'sfeerlicht-donkere-avonden':['Sfeerlicht voor donkere avonden','']};
-  /* De Kiosk (21-11-2026, punt van Nova): alle cadeaugidsen als rekken met tijdschriften. Gevel tijdelijk tot Nova hem levert. */
-  var KIOSK = { id: 'kiosk', naam: 'De Kiosk', zin: 'Onze cadeaugidsen: per persoon, per leeftijd, per bedrag en voor elk moment.', k: '#5A3557',
-    gevel: 'kiosk-tijdelijk', rekken: [
+  /* De Kiosk (21-11-2026, punt van Nova): alle cadeaugidsen als rekken met tijdschriften. Gevel van Nova (NOVA-BOUTIQUE-007). */
+  var KIOSK = { id: 'kiosk', naam: 'De Kiosk', zin: 'Onze cadeaugidsen: per persoon, per leeftijd, per bedrag en voor elk moment.', k: '#6F8F9C',
+    gevel: 'kiosk', rekken: [
       { naam: 'Sinterklaas', ic: 'gel-sinterklaas', seizoen: ['10-15', '12-05'], gidsen: ['sinterklaascadeau-ideeen', 'schoencadeautjes', 'sinterklaas-onder-10', 'sinterklaas-onder-15', 'sinterklaascadeau-man', 'sinterklaascadeau-vrouw', 'sinterklaas-voor-volwassenen', 'surprise-maken', 'sinterklaasgedicht-maken'] },
       { naam: 'Kerst', ic: 'gel-kerst', seizoen: ['11-01', '12-26'], gidsen: ['kerstcadeau-ideeen', 'kerstcadeau-voor-haar', 'kerstcadeau-voor-hem', 'kerstcadeau-moeder', 'kerstcadeau-vader', 'kerstcadeau-vriendin', 'kerstcadeau-vriend', 'kerstcadeau-ouders', 'kerstcadeau-kind', 'kerstcadeau-tiener', 'kerstcadeau-opa-oma', 'kerstcadeau-collega', 'kerstcadeau-onder-25', 'kerstpakket-ideeen', 'adventskalender-kiezen', 'kerststal-kopen'] },
       { naam: 'Deals en trends', ic: 'col-toppers-van-nu', gidsen: ['black-friday-2026', 'hypes-2026', 'virale-cadeaus-2026', 'speelgoed-van-het-jaar-2026', 'geuren-trends-2026', 'sfeerlicht-donkere-avonden'] },
