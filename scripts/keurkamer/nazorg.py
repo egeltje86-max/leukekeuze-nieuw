@@ -33,19 +33,33 @@ def main():
     for u in W.get('uitverkocht', []):
         if u['id'] in COR['status']: continue
         COR['status'][u['id']] = 'uitverkocht'; rap['uitverkocht'] += 1
+    geweigerd = set()
     for p in W.get('prijs', []):
         if p['id'] in COR['status']: continue
         oud, nieuw = float(p['oud']), float(p['nieuw'])
-        if nieuw <= 0 or nieuw > 2 * oud or nieuw < 0.5 * oud:
+        if nieuw <= 0: continue
+        # 21-11-2026: bij bol is de feedregel precies het product van de link ('exact'): die prijs is wat de klant betaalt,
+        # dus altijd overnemen; een grote sprong wel melden (vaak is het goedkope aanbod weg en verkoopt nu een andere verkoper).
+        if p.get('exact'):
+            if nieuw > 1.5 * oud or nieuw < 0.5 * oud:
+                rap['gemeld'].append('%s: %s van %.2f naar %.2f (bol, overgenomen)' % (p['id'], p['titel'], oud, nieuw))
+        elif nieuw > 2 * oud or nieuw < 0.5 * oud:
+            # niet overgenomen, en dan ook geen verse controledatum: anders staat een oude prijs als 'vandaag gecontroleerd' op de site
+            geweigerd.add(p['id'])
             rap['gemeld'].append('%s: %s van %.2f naar %.2f (niet overgenomen)' % (p['id'], p['titel'], oud, nieuw)); continue
         # 8-11-2026: een echte van-prijs (hoger dan de nieuwe prijs) blijft staan, anders verdwijnen deals van de Black Friday-pagina.
         van = float((SITE.get(p['id']) or {}).get('oudePrijs') or 0)
         COR['prijs'][p['id']] = [round(nieuw, 2), van] if van > nieuw else [round(nieuw, 2)]; rap['prijs'] += 1
     # 8-11-2026 (Fable P0-4): alles wat vandaag in een feed is teruggevonden krijgt de controledatum van vandaag (ook als de prijs gelijk bleef).
     COR.setdefault('gezien', {}); vandaag = datetime.date.today().isoformat(); rap['gezien'] = 0
+    # 21-11-2026: de controledatum is de datum van de feed (bol-feeds ververst Marius met de hand), niet de dag van de nazorg.
+    fd = W.get('feedDatum') or {}
     for pid in W.get('gezien', []):
-        if pid in COR['status']: continue
-        COR['gezien'][pid] = vandaag; rap['gezien'] += 1
+        if pid in COR['status'] or pid in geweigerd: continue
+        d = fd.get(pid) or vandaag
+        if d > vandaag: d = vandaag
+        if COR['gezien'].get(pid, '') > d: continue  # nooit een nieuwere datum terugzetten naar een oudere
+        COR['gezien'][pid] = d; rap['gezien'] += 1
     if not droog:
         json.dump(COR, open(COR_PAD, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(json.dumps(rap, ensure_ascii=False, indent=1))

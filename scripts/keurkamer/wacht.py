@@ -6,7 +6,7 @@ Draait op de laptop van Marius (daar staan de feeds) of hier met gekopieerde fee
   python wacht.py [--bol-feeds <map>] [--tt-feeds <map>] [--uit <map>]
 Standaard: %USERPROFILE%/Documents/LeukeKeuze-Bol/feeds en %USERPROFILE%/Documents/zoekindex-feeds.
 Uitvoer: <uit>/wacht-JJJJ-MM-DD.json en wacht-laatste.json (de Keurkamer-app en het sitewacht-rapport lezen die)."""
-import json, os, re, sys, csv, gzip, glob, datetime, hashlib, collections
+import json, os, re, sys, csv, gzip, glob, datetime, hashlib, collections, urllib.parse
 HIER = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HIER))
 csv.field_size_limit(10 ** 9)
 def arg(naam, standaard):
@@ -22,19 +22,39 @@ E = json.load(open(bron, encoding='utf-8')); P = E['producten']
 vandaag = datetime.date.today().isoformat()
 uit = {'gemaakt': datetime.datetime.now().isoformat(timespec='minutes'), 'prijs': [], 'uitverkocht': [], 'nietInFeed': [], 'gecontroleerd': 0, 'bronnen': []}
 
-def prijsverschil(pid, oud, nieuw):
+def prijsverschil(pid, oud, nieuw, exact=False):
     try: oud = float(oud); nieuw = float(nieuw)
     except (TypeError, ValueError): return
-    if oud > 0 and abs(nieuw - oud) / oud >= 0.10: uit['prijs'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'oud': oud, 'nieuw': round(nieuw, 2)})
+    # 21-11-2026: bij bol is de feedregel precies het product van de link, dus elke afwijking telt (exact). Anders 10%.
+    if oud > 0 and ((exact and abs(nieuw - oud) >= 0.01) or abs(nieuw - oud) / oud >= 0.10):
+        r = {'id': pid, 'titel': P[pid]['titel'][:70], 'oud': oud, 'nieuw': round(nieuw, 2)}
+        if exact: r['exact'] = True
+        uit['prijs'].append(r)
+def feed_datum(f):
+    try: return datetime.date.fromtimestamp(os.path.getmtime(f)).isoformat()
+    except Exception: return vandaag
+uit['feedDatum'] = {}
 
-# ---- bol: productId staat in het id (bol-<productId>) ----
+# ---- bol ----
 # 8-11-2026: alleen producten die nog echt naar bol linken (sinds 7-11 linken veel bol-ids naar een partner)
-bol_ids = {pid[4:]: pid for pid in P if pid.startswith('bol-') and 'bol.com' in (P[pid].get('url') or '')}
+# 21-11-2026 (controle partnerlinks): zoek op het productnummer in de LINK, want dat is wat de klant krijgt. Eerst op het id
+# (bol-<productId>): ruim 800 producten met een ander id (999g-, dgsw-, cl-...) linken naar bol en werden nooit nagekeken,
+# en bij 6 bol-ids wees de link naar een ander product dan het id (andere maat), terwijl de prijs van het id kwam.
+def bol_nr(u):
+    u = urllib.parse.unquote(urllib.parse.unquote(str(u or '')))
+    m = re.search(r'bol\.com/nl/nl/p/[^/?#]*/(\d{10,16})', u)
+    return m.group(1) if m else None
+bol_ids = collections.defaultdict(list)
+for pid in P:
+    u = P[pid].get('url') or ''
+    if 'bol.com' not in u: continue
+    nr = bol_nr(u) or (pid[4:] if pid.startswith('bol-') else None)
+    if nr: bol_ids[nr].append(pid)
 gevonden = set()
 feeds = sorted(glob.glob(os.path.join(BOL, 'product-feed_*-v2.csv.gz')))
 if feeds and bol_ids:
     for f in feeds:
-        print('bol-feed', os.path.basename(f), flush=True); uit['bronnen'].append(os.path.basename(f))
+        print('bol-feed', os.path.basename(f), flush=True); uit['bronnen'].append(os.path.basename(f)); fdat = feed_datum(f)
         try:
             # snel: productId is de eerste kolom ("9300000026539489"|...). Alleen regels van onze producten echt parsen.
             with gzip.open(f, 'rt', encoding='utf-8', errors='replace', newline='') as h:
@@ -44,18 +64,20 @@ if feeds and bol_ids:
                 for regel in h:
                     if not regel.startswith('"'): continue
                     e = regel.find('"', 1); bid = regel[1:e]
-                    pid = bol_ids.get(bid)
-                    if not pid or pid in gevonden: continue
+                    pids = [x for x in bol_ids.get(bid, ()) if x not in gevonden]
+                    if not pids: continue
                     try: row = next(csv.reader([regel], delimiter='|'))
                     except Exception: continue
-                    gevonden.add(pid)
-                    if i_prijs >= 0 and i_prijs < len(row): prijsverschil(pid, P[pid]['prijs'], (row[i_prijs] or '0').replace(',', '.'))
-                    if i_lever >= 0 and i_lever < len(row) and (row[i_lever] or '').upper() != 'Y': uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol'})
+                    for pid in pids:
+                        gevonden.add(pid); uit['feedDatum'][pid] = fdat
+                        if i_prijs >= 0 and i_prijs < len(row): prijsverschil(pid, P[pid]['prijs'], (row[i_prijs] or '0').replace(',', '.'), exact=True)
+                        if i_lever >= 0 and i_lever < len(row) and (row[i_lever] or '').upper() != 'Y': uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol'})
         except Exception as e:
             print('fout bij', f, e)
     uit['gecontroleerd'] += len(gevonden)
-    for b, pid in bol_ids.items():
-        if pid not in gevonden: uit['nietInFeed'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol'})
+    for b, pids in bol_ids.items():
+        for pid in pids:
+            if pid not in gevonden: uit['nietInFeed'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol'})
 else:
     print('geen bol-feeds gevonden in', BOL)
 
@@ -120,7 +142,7 @@ for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, re
             pid = per_url.get(w)
         if not pid and link: pid = per_pad.get(doel_pad(link))
         if not pid or pid in gevonden_tt: continue
-        gevonden_tt.add(pid); n += 1
+        gevonden_tt.add(pid); n += 1; uit['feedDatum'][pid] = feed_datum(f)
         prijsverschil(pid, P[pid]['prijs'], r.get('prijs'))
         if str(r.get('voorraad', 'true')).lower() in ('false', '0', 'nee', 'no'): uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': naam})
     if n: print(naam, n, 'producten teruggevonden', flush=True)

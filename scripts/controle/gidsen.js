@@ -32,13 +32,16 @@ for (let i = van; i < tot; i++) {
   const kp = str(l, 'kop'); if (kp !== null) kop = kp;
   m = l.match(/\bids:\s*\[([^\]]*)\]/); if (m) g.rijen.push({ regel: i + 1, kop, ids: lijst(m[1]) });
 }
-const TOP = {}; for (let i = tot; i < A.length; i++) { const m = A[i].match(new RegExp('^\\s*' + Q + '([a-z0-9-]+)' + Q + ':\\s*\\{\\s*top:\\s*\\[(.*?)\\]\\]')); if (m) TOP[m[1]] = (m[2] + ']').split('],').map(x => lijst(x)[1]).filter(Boolean); if (/GIDSEN\.forEach/.test(A[i])) break; }
+/* 21-11-2026: een favoriet met 'Onder de 10 euro' moet ook echt onder dat bedrag blijven (de nachtrun past prijzen aan; de Lindt-pralines werden € 11,04). */
+const LABEL = {};
+const TOP = {}; for (let i = tot; i < A.length; i++) { const m = A[i].match(new RegExp('^\\s*' + Q + '([a-z0-9-]+)' + Q + ':\\s*\\{\\s*top:\\s*\\[(.*?)\\]\\]')); if (m) { const paren = (m[2] + ']').split('],').map(x => lijst(x)); TOP[m[1]] = paren.map(x => x[1]).filter(Boolean); LABEL[m[1]] = paren.filter(x => x[1]); } if (/GIDSEN\.forEach/.test(A[i])) break; }
 let fout = 0, letop = 0, nIds = 0; const uit = [];
 for (const x of G) {
   DRANKGIDS = !!x.drank; MAXG = x.max || null;
   const r = []; const alle = [].concat(...x.rijen.map(q => q.ids)); nIds += alle.length;
   if (x.beeld && !goed(x.beeld)) { fout++; r.push('FOUT   plaatje van de gids bestaat niet meer (of is duurder dan de max): ' + x.beeld); }
   (TOP[x.slug] || []).forEach(t => { if (!goed(t)) { fout++; r.push('FOUT   favoriet (Snel kiezen) bestaat niet meer (of is duurder dan de max): ' + t); } else if (alle.indexOf(t) === -1) { letop++; r.push('LET OP favoriet staat niet in een rij van de gids: ' + t); } });
+  (LABEL[x.slug] || []).forEach(([lab, t]) => { const mm = /onder (?:de )?(\d+) euro/i.exec(lab || ''); const pr = M[eind(t)] && Number(M[eind(t)].prijs); if (mm && pr && pr >= +mm[1]) { fout++; r.push('FOUT   favoriet "' + lab + '" kost nu \u20ac ' + pr.toFixed(2) + ': ' + t); } });
   for (const q of x.rijen) { const ok = q.ids.filter(goed), weg = q.ids.filter(i => !goed(i)).map(i => M[eind(i)] && M[eind(i)].status === 'goedgekeurd' && MAXG && M[eind(i)].prijs > MAXG ? i + ' (te duur: €' + M[eind(i)].prijs + ')' : i);
     if (!ok.length || (ok.length < 2 && q.ids.length >= 2)) { fout++; r.push('FOUT   regel ' + q.regel + ' "' + q.kop + '": nog ' + ok.length + ' van de ' + q.ids.length + ' over (' + weg.join(', ') + ')'); }
     else if (weg.length) { letop++; r.push('LET OP regel ' + q.regel + ' "' + q.kop + '": ' + weg.length + ' weg (' + weg.join(', ') + ')'); } }
