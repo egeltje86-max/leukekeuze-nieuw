@@ -210,7 +210,9 @@ if os.path.isdir(SKK):
         if (datetime.date.today() - datetime.date.fromisoformat(feed_datum(f))).days > 2: continue
         try: d = json.load(open(f, encoding='utf-8'))
         except Exception: continue
-        L = [{'link': p.get('l') or '', 'winkelUrl': p.get('u') or '', 'prijs': p.get('p'), 'voorraad': 'true' if p.get('st') else 'false'} for p in d.get('producten', [])]
+        # 'st' van de Superkeurkamer is GEEN betrouwbare voorraad (proef 21-11: 13 producten met st=0 waren volgens de winkelpagina gewoon
+        # op voorraad). Deze bron telt dus alleen voor prijs en 'staat nog in de feed', nooit voor uitverkocht.
+        L = [{'link': p.get('l') or '', 'winkelUrl': p.get('u') or '', 'prijs': p.get('p'), 'voorraad': 'true'} for p in d.get('producten', [])]
         voor = len(gevonden_tt); verwerk('superkeurkamer/' + w, L, feed_datum(f)); uit['skk'][w] = len(gevonden_tt) - voor
 uit['gecontroleerd'] += len(gevonden_tt)
 uit['gezien'] = sorted(set(gevonden) | set(gevonden_tt))  # 8-11-2026: welke producten vandaag in een feed teruggevonden zijn (voor de controledatum)

@@ -55,10 +55,10 @@ def main():
         auto_uit(u['id'], b, 'niet op voorraad volgens ' + str(u.get('bron')) + (': ' + u['reden'] if u.get('reden') else ''), u.get('nr'))
     # 21-11-2026: bol zonder aanbod. Alleen als de bol-feeds compleet en vers zijn, en hooguit 4% van de bol-producten tegelijk.
     bf = W.get('bolFeeds') or {}; rap['bolWeg'] = 0
+    try: oud = (datetime.date.today() - datetime.date.fromisoformat(bf.get('oudste') or '2000-01-01')).days
+    except ValueError: oud = 999
     bolweg = [u for u in W.get('nietInFeed', []) if u.get('bron') == 'bol' and u.get('uitLink') and str(u.get('nr', '')).isdigit() and u['id'] not in COR['status']]
     if bolweg:
-        try: oud = (datetime.date.today() - datetime.date.fromisoformat(bf.get('oudste') or '2000-01-01')).days
-        except ValueError: oud = 999
         n_bol = bf.get('producten') or 1
         reden = ''
         if (bf.get('aantal') or 0) < BOL_MIN_FEEDS: reden = 'maar %s bol-feeds gevonden' % bf.get('aantal')
@@ -76,6 +76,7 @@ def main():
     for t in W.get('terug', []):
         pid = t['id']
         if pid not in AU['producten'] or COR['status'].get(pid) != 'uitverkocht': continue
+        if t.get('bron') == 'bol' and oud > BOL_MAX_OUD: continue  # oude bol-feeds zeggen niets over 'nu'
         del COR['status'][pid]; AU['producten'].pop(pid, None); rap['terug'] += 1
         COR['prijs'][pid] = [round(float(t['prijs']), 2)]
         d = min(t.get('feedDatum') or vandaag, vandaag)
