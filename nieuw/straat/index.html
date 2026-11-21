@@ -97,6 +97,44 @@ img{max-width:100%;display:block}
 .verder{padding-block:30px 10px}
 .verder h2{font:700 22px/1.2 "Playfair Display",Georgia,serif;margin:0 0 12px;color:var(--marine)}
 .voet{padding-block:30px 40px;color:var(--zacht);font-size:13.5px;text-align:center}
+
+/* voor wie en hoeveel */
+.kies{background:var(--ivoor);border:1px solid var(--rand);border-radius:18px;padding:14px 12px 12px;margin-top:14px;box-shadow:0 1px 3px rgba(10,16,32,.05)}
+.kies h2{font:700 19px/1.2 "Playfair Display",Georgia,serif;margin:0 0 10px;color:var(--marine);text-align:center}
+.kies h2+div+h2{margin-top:16px}
+.kies-wie{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 6px}
+@media (min-width:700px){.kies-wie{grid-template-columns:repeat(8,minmax(0,1fr))}}
+.kies-wie a{display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;color:var(--tekst);min-height:44px}
+.kr{position:relative;width:64px;height:64px;border-radius:50%;background:#fff;border:2px solid var(--rand);overflow:visible;display:block}
+.kr img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.kn{font-size:13.5px;font-weight:700;text-align:center;line-height:1.15}
+.kies a.aan .kr{border:3px solid var(--goud);box-shadow:0 0 0 3px #F6E7C4}
+.kies a.aan .kr::after,.kies a.aan .munt::after{content:"✓";position:absolute;right:-4px;top:-4px;width:22px;height:22px;border-radius:50%;background:var(--marine);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center;line-height:1}
+.kies a.aan .kn{color:var(--marine);text-decoration:underline;text-decoration-color:var(--goud);text-decoration-thickness:2px;text-underline-offset:3px}
+.kies-geld{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.kies-geld a{text-decoration:none;color:var(--marine)}
+.munt{position:relative;width:60px;height:60px;border-radius:50%;background:var(--m);border:2px solid var(--rand);display:grid;place-content:center;text-align:center;font-weight:800;font-size:15px;line-height:1.05}
+.munt small{display:block;font-size:11px;font-weight:700;color:var(--zacht)}
+.kies-geld a:first-child .munt{font-size:11.5px}
+.kies-geld a.aan .munt{border:3px solid var(--goud);box-shadow:0 0 0 3px #F6E7C4}
+@media (max-width:359px){.munt{width:50px;height:50px;font-size:13px}.kies-geld{gap:5px}.kr{width:54px;height:54px}.kn{font-size:12px}}
+.straat-kop{padding-block:22px 2px;scroll-margin-top:66px}
+.straat-kop h2{font:700 clamp(24px,6.5vw,36px)/1.15 "Playfair Display",Georgia,serif;margin:0;color:var(--marine);text-wrap:balance}
+.straat-kop h2 span{color:var(--dgoud)}
+.stand{margin:6px 0 0;color:var(--zacht);font-size:15px}
+.stand b{color:var(--marine)}
+.stand a,.stand .link{color:var(--dgoud);font-weight:700}
+.stand .link{background:none;border:0;padding:0;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.kies{scroll-margin-top:70px}
+.top-etalage{background:#FFF9EE;border:1px solid #EEDDB8;border-radius:18px;padding:14px 10px 10px;margin-top:14px}
+.straat-titel{font:700 20px/1.2 "Playfair Display",Georgia,serif;margin:26px 0 0;color:var(--marine)}
+.dicht-titel{color:var(--zacht);font-size:18px}
+.gevel.dicht{filter:grayscale(.75);opacity:.8}
+.rolluik{aspect-ratio:1;border-radius:8px;background:repeating-linear-gradient(180deg,#A9AFB8 0 7px,#C9CDD3 7px 10px);display:grid;place-items:center;padding:8px;border:4px solid #8D939C}
+.rolluik span{background:#fff;color:var(--tekst);border-radius:6px;padding:5px 8px;font-size:12.5px;font-weight:800;line-height:1.25;text-align:center}
+.filter{background:#F6E7C4;border-radius:10px;padding:8px 10px;font-size:14px!important;color:var(--tekst)!important}
+.filter a{color:var(--dgoud);font-weight:700}
+.leeg{padding-block:24px;font-size:16px}
 @media (max-width:359px){.bord{font-size:14.5px}.deur{font-size:12px}.pk-t{font-size:13px}}
 </style>
 </head>
@@ -110,6 +148,7 @@ img{max-width:100%;display:block}
 <script src="/assets/js/data.js"></script>
 <script src="/assets/js/topkeuze.js"></script>
 <script src="/assets/js/producten-lean.js"></script>
+<script src="/assets/data/voorwie.js"></script>
 <script src="/nieuw/kern.js"></script>
 <script>
 (function () {
@@ -332,9 +371,8 @@ img{max-width:100%;display:block}
     return uit.concat(wacht);
   }
 
-  /* Bouw per winkel de gangen met hun cadeaus */
+  /* ===== Basis: per winkel en gang de geordende cadeaus, voor iedereen en elk bedrag (één keer) ===== */
   WINKELS.forEach(function (w) {
-    var alle = {};
     w.gangen.forEach(function (g) {
       var lijst;
       if (g.ook) lijst = ordenen(K.ALLES.filter(function (p) { return magIn(w, p) && ookVan(p, g.ook) && wieVan(p, g.wie) && (!g.max || p.prijs <= g.max); }), [g.top, g.ook === 'cadeaus/grappig' ? '/collectie/grappige-cadeaus' : '/c/' + g.ook]);
@@ -348,38 +386,125 @@ img{max-width:100%;display:block}
         if (w.super) sl.push('/c/cadeaus/onder-15', '/collectie/schoencadeautjes', '/collectie/kleine-cadeautjes');
         lijst = ordenen(lijst, sl);
       }
-      g.lijst = spreid(lijst);
-      g.lijst.forEach(function (p) { alle[p.id] = p; });
+      g.basis = spreid(lijst);
     });
-    w.gangen = w.gangen.filter(function (g) { return g.lijst.length >= 2; });
-    var ps = Object.keys(alle).map(function (id) { return alle[id]; });
-    w.aantal = ps.length;
-    w.van = ps.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9);
-    /* Etalage: het eerste cadeau uit de eerste vier gangen, elk een ander */
-    var raam = [], g2 = {};
-    for (var r = 0; r < 3 && raam.length < 4; r++) w.gangen.forEach(function (g) { var p = g.lijst[r]; if (p && !g2[p.id] && raam.length < 4) { g2[p.id] = 1; raam.push(p); } });
-    w.raam = raam;
   });
+
+  /* ===== Voor wie en hoeveel (21-11-2026, Marius: 'ja bouw dit': de straat bouwt zich om voor de persoon) =====
+     Welke cadeaus bij een persoon horen komt uit assets/data/voorwie.js: precies wat op die Voor wie-pagina staat,
+     met dezelfde regels (geen drank bij personen, cadeaus voor één soort persoon alleen daar, enz.). */
+  var PERS = [
+    { wie: '', knop: 'Iedereen', ic: 'voor-iedereen' },
+    { wie: 'haar', knop: 'Haar', slug: 'haar', tekst: 'voor haar', ic: 'voor-haar' },
+    { wie: 'hem', knop: 'Hem', slug: 'hem', tekst: 'voor hem', ic: 'voor-hem' },
+    { wie: 'kind', knop: 'Kind', slug: 'kinderen', tekst: 'voor kinderen', ic: 'voor-kinderen' },
+    { wie: 'tiener', knop: 'Tiener', slug: 'tieners', tekst: 'voor tieners', ic: 'voor-tieners' },
+    { wie: 'opa-oma', knop: 'Opa & oma', slug: 'opa-oma', tekst: 'voor opa en oma', ic: 'voor-opa-oma' },
+    { wie: 'collega', knop: 'Collega', slug: 'collega', tekst: 'voor collega’s', ic: 'voor-collega' },
+    { wie: 'baby', knop: 'Baby', slug: 'baby', tekst: 'voor baby’s', ic: 'voor-baby' }
+  ];
+  var BEDRAG = [[0, 'Elk bedrag', '#FFFCF7'], [10, '€ 10', '#CDEFE0'], [15, '€ 15', '#FFE7A8'], [25, '€ 25', '#CFE3FA'], [50, '€ 50', '#E2D6F5']];
+  var SET = {};
+  ((window.LK_VOORWIE && window.LK_VOORWIE.personen) || []).forEach(function (x) { var o = {}; x.ids.forEach(function (id) { o[id] = 1; }); SET[x.slug] = o; });
+  function persVan(wie) { return PERS.filter(function (x) { return x.wie === wie; })[0] || PERS[0]; }
+  function gangWieOk(gw, wie) {
+    if (!gw || !wie) return true;
+    if (gw === 'volw') return /^(haar|hem|collega|opa-oma)$/.test(wie);
+    return gw === wie;
+  }
+  function tekstBedrag(max) { return max ? 'tot € ' + max : ''; }
+
+  var CACHE = {};
+  function staat(wie, max) {
+    var sleutel = wie + '|' + max; if (CACHE[sleutel]) return CACHE[sleutel];
+    var pr = persVan(wie), set = pr.slug ? (SET[pr.slug] || {}) : null, ptop = pr.slug ? (K.TOP['/voor/' + pr.slug] || []) : [];
+    var pIdx = {}; ptop.forEach(function (id, i) { if (pIdx[id] === undefined) pIdx[id] = i; });
+    var alleUit = {};
+    var winkels = WINKELS.map(function (w) {
+      var alle = {}, gangen = [];
+      w.gangen.forEach(function (g) {
+        if (!gangWieOk(g.wie, wie)) return;
+        var l = g.basis.filter(function (p) { return (!max || p.prijs <= max) && (!set || set[p.id]); });
+        if (set) { /* wat met de hand voor deze persoon gekozen is eerst */
+          var voor = l.filter(function (p) { return pIdx[p.id] !== undefined; }).sort(function (x, y) { return pIdx[x.id] - pIdx[y.id]; });
+          l = spreid(voor.concat(l.filter(function (p) { return pIdx[p.id] === undefined; })));
+        }
+        if (l.length < 2) return;
+        gangen.push({ g: g, lijst: l });
+        l.forEach(function (p) { alle[p.id] = p; });
+      });
+      var ps = Object.keys(alle).map(function (id) { return alle[id]; });
+      var raam = [], g2 = {};
+      for (var r = 0; r < 12 && raam.length < 4; r++) gangen.forEach(function (x) { var p = x.lijst[r]; if (p && !g2[p.id] && raam.length < 4) { g2[p.id] = 1; raam.push(p); } });
+      var open = ps.length >= 4 && raam.length >= 4;
+      if (open) ps.forEach(function (p) { alleUit[p.id] = 1; });
+      return { w: w, gangen: gangen, aantal: ps.length, van: ps.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9), raam: raam, open: open };
+    });
+    var open = winkels.filter(function (x) { return x.open; }), dicht = winkels.filter(function (x) { return !x.open; });
+    if (wie || max) open.sort(function (a, b) {
+      var sa = a.w.seizoen ? 1 : 0, sb = b.w.seizoen ? 1 : 0;
+      if (sa !== sb) return sb - sa;
+      if (sa && sb) return WINKELS.indexOf(a.w) - WINKELS.indexOf(b.w);
+      return b.aantal - a.aantal;
+    });
+    /* De etalage bovenaan: de beste cadeaus uit de handgekozen top van deze persoon */
+    var bron = pr.slug ? ptop : K.uniek([].concat(inSeizoen(['10-15', '12-05']) ? (K.TOP['/c/cadeaus/sinterklaas'] || []).slice(0, 24) : [], K.TOP['/collectie/toppers-van-nu'] || [], K.TOP['/collectie/grappige-cadeaus'] || []).map(function (id) { return K.PER[id]; })).map(function (p) { return p.id; });
+    var etalage = [], ge = {};
+    bron.forEach(function (id) {
+      var p = K.PER[id]; if (!p || ge[id]) return;
+      if (max && p.prijs > max) return;
+      if (set && !set[id]) return;
+      if (p.drank || K.drank(p) || GROF.test(p.titel) || p.prijs < 3) return;
+      ge[id] = 1; etalage.push(p);
+    });
+    var uit = { pr: pr, max: max, open: open, dicht: dicht, totaal: Object.keys(alleUit).length, etalage: spreid(etalage) };
+    CACHE[sleutel] = uit; return uit;
+  }
+
+  /* ===== Adressen: #voor-tiener-tot-25, #winkel-gamewinkel-voor-tiener-tot-25, #tot-10 ===== */
+  function adres(winkelId, wie, max) {
+    var d = [];
+    if (winkelId) d.push('winkel-' + winkelId);
+    if (wie) d.push('voor-' + wie);
+    if (max) d.push('tot-' + max);
+    return '#' + (d.join('-') || 'straat');
+  }
+  function leesAdres() {
+    var h = (location.hash || '').slice(1);
+    if (WINKELS.some(function (w) { return w.id === h; })) return { winkel: h, wie: '', max: 0 };
+    var m = h.match(/^(?:winkel-([a-z]+))?-?(?:voor-(opa-oma|haar|hem|kind|tiener|collega|baby))?-?(?:tot-(\d+))?$/) || [];
+    var max = +(m[3] || 0); if ([0, 10, 15, 25, 50].indexOf(max) === -1) max = 0;
+    return { winkel: m[1] || '', wie: m[2] || '', max: max };
+  }
 
   function rond(ic) {
     if (!ic) return '';
     return /\.webp$/.test(ic) ? '/' + ic : '/images/categorieen/rond/cat-' + ic + '.webp';
   }
-  function gangIcoon(w, g) {
+  function gangIcoon(w, x) {
+    var g = x.g;
     if (g.ic) return rond(g.ic);
-    if (g.hoek && g.lijst[0]) return K.klein(g.lijst[0]);
-    var x = g.g ? [].concat(g.g)[0] : (g.v ? g.v[0].split('/').slice(0, 2).join('/') : '');
-    return x ? '/images/sub/iconen/icoon-' + x.replace('/', '-') + '.webp' : rond(w.ic);
+    if (g.hoek && x.lijst[0]) return K.klein(x.lijst[0]);
+    var y = g.g ? [].concat(g.g)[0] : (g.v ? g.v[0].split('/').slice(0, 2).join('/') : '');
+    return y ? '/images/sub/iconen/icoon-' + y.replace('/', '-') + '.webp' : rond(w.ic);
   }
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
 
-  function gevel(w) {
-    return '<a class="gevel" href="#' + w.id + '" style="--k:' + w.k + '" aria-label="' + esc(w.naam + ': ' + w.zin) + '">' +
+  function gevel(x, st) {
+    var w = x.w;
+    if (!x.open) {
+      var zin = st.pr.wie ? 'Niets ' + st.pr.tekst + (st.max ? ' ' + tekstBedrag(st.max) : '') : 'Niets ' + tekstBedrag(st.max);
+      return '<a class="gevel dicht" href="' + adres(w.id, '', 0) + '" style="--k:' + w.k + '" aria-label="' + esc(w.naam + ': ' + zin + '. Toch kijken') + '">' +
+        '<span class="luifel"></span><span class="pui"><span class="bord">' + esc(w.naam) + '</span>' +
+        '<span class="rolluik"><span>' + esc(zin) + '</span></span>' +
+        '<span class="deur"><span>Rolluik dicht</span><b>Toch kijken ›</b></span></span><span class="stoep"></span></a>';
+    }
+    return '<a class="gevel" href="' + adres(w.id, st.pr.wie, st.max) + '" style="--k:' + w.k + '" aria-label="' + esc(w.naam + ': ' + w.zin) + '">' +
       '<span class="luifel"></span><span class="pui">' +
       (w.label ? '<span class="seizoen">' + esc(w.label) + '</span>' : '') +
       '<span class="bord">' + esc(w.naam) + '</span>' +
-      '<span class="raam">' + w.raam.map(function (p) { return '<span><img loading="lazy" src="' + K.klein(p) + '" alt=""></span>'; }).join('') + '</span>' +
-      '<span class="deur"><span>' + getal(w.aantal) + ' cadeaus</span><b>Naar binnen ›</b></span>' +
+      '<span class="raam">' + x.raam.map(function (p) { return '<span><img loading="lazy" src="' + K.klein(p) + '" alt=""></span>'; }).join('') + '</span>' +
+      '<span class="deur"><span>' + getal(x.aantal) + ' cadeaus</span><b>Naar binnen ›</b></span>' +
       '</span><span class="stoep"></span></a>';
   }
 
@@ -392,64 +517,109 @@ img{max-width:100%;display:block}
   }
 
   var PER_KEER = 4, MAX_IN_GANG = 12;
+  function voorPad(st) { return ['', 'voor', st.pr.slug].join('/') + (st.max === 10 || st.max === 25 ? '?prijs=tot' + st.max : ''); }
 
-  function straat() {
-    document.title = 'LeukeKeuze – de Cadeaustraat';
-    var pers = [['Voor haar', '/voor/haar'], ['Voor hem', '/voor/hem'], ['Kinderen', '/voor/kinderen'], ['Tieners', '/voor/tieners'], ['Opa & oma', '/voor/opa-oma'], ['Collega', '/voor/collega'], ['Baby', '/voor/baby']];
-    return '<section class="welkom"><h1>De Cadeaustraat</h1>' +
-      '<p>Loop een winkel binnen. Alles in de etalage is echt te koop.</p></section>' +
-      '<section class="straat" aria-label="De winkels">' + WINKELS.map(gevel).join('') + '</section>' +
-      '<div class="voorwie"><span>Of zoek je voor iemand?</span>' + pers.map(function (x) { return '<a href="' + x[1] + '">' + x[0] + '</a>'; }).join('') + '</div>' +
-      '<p class="voet">Dit is een voorbeeld. De cadeaus, prijzen en links zijn dezelfde als op de gewone site.</p>';
-  }
-
-  function winkel(w) {
-    document.title = w.naam + ' – LeukeKeuze';
-    var i = WINKELS.indexOf(w), buren = [WINKELS[(i + 1) % WINKELS.length], WINKELS[(i + 2) % WINKELS.length]];
-    var h = '<a class="terug" href="#straat">‹ Terug naar de straat</a>' +
-      '<section class="binnen-kop gevel" style="--k:' + w.k + '"><span class="luifel"></span><div class="pui">' +
-      '<h1>' + esc(w.naam) + '</h1><p>' + esc(w.zin) + '</p>' +
-      '<p class="tel">' + getal(w.aantal) + ' cadeaus · vanaf ' + euro(w.van) + '</p>' +
-      (w.let ? '<p class="let">' + esc(w.let) + '</p>' : '') +
-      (w.extra ? '<div class="extra">' + w.extra.map(function (x) { return '<a href="' + x[1] + '">' + esc(x[0]) + '</a>'; }).join('') + '</div>' : '') +
-      '</div></section>';
-    var veel = w.gangen.length > 6;
-    h += '<nav class="plattegrond" aria-label="Afdelingen"><h2>Afdelingen</h2><div class="wegwijzer' + (veel ? ' dicht' : '') + '">' +
-      w.gangen.map(function (g, n) { return '<a href="#' + w.id + '" data-gang="' + n + '">' + esc(g.naam) + ' <small>' + g.lijst.length + '</small></a>'; }).join('') +
-      (veel ? '<button type="button" data-alle-gangen>+ ' + (w.gangen.length - 6) + ' meer</button>' : '') + '</div></nav>';
-    w.gangen.forEach(function (g, n) {
-      h += '<section class="gang" id="gang-' + n + '"><div class="gang-kop"><img src="' + gangIcoon(w, g) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
-        '<div><small>Afdeling ' + (n + 1) + '</small><h2>' + esc(g.naam) + '</h2></div></div>' +
-        '<div class="schap" data-schap="' + n + '">' + g.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
-        '<div class="gang-voet">' + (g.lijst.length > PER_KEER ? '<button class="meer" type="button" data-meer="' + n + '">Laat er nog ' + Math.min(PER_KEER, g.lijst.length - PER_KEER) + ' zien</button>' : '') +
-        '<a class="naar" href="' + (w.super ? w.naar : naarVan(g)) + '">Alles uit deze afdeling ›</a></div></section>';
-    });
-    h += '<section class="verder"><h2>Verder in de straat</h2><div class="straat">' + buren.map(gevel).join('') + '</div>' +
-      '<a class="terug" href="#straat">‹ Terug naar het begin van de straat</a></section>';
+  function kiezer(st) {
+    var h = '<section class="kies" aria-label="Voor wie en hoeveel"><h2>Voor wie zoek je?</h2><div class="kies-wie">' +
+      PERS.map(function (x) {
+        var aan = x.wie === st.pr.wie;
+        return '<a href="' + adres('', x.wie, st.max) + '" data-kies class="' + (aan ? 'aan' : '') + '"' + (aan ? ' aria-current="true"' : '') + '>' +
+          '<span class="kr"><img src="/images/sub/rond/' + x.ic + '.webp" alt="" loading="lazy"></span><span class="kn">' + esc(x.knop) + '</span></a>';
+      }).join('') + '</div><h2>Hoeveel mag het kosten?</h2><div class="kies-geld">' +
+      BEDRAG.map(function (b) {
+        var aan = b[0] === st.max;
+        return '<a href="' + adres('', st.pr.wie, b[0]) + '" data-kies class="' + (aan ? 'aan' : '') + '"' + (aan ? ' aria-current="true"' : '') + ' style="--m:' + b[2] + '">' +
+          '<span class="munt">' + (b[0] ? '<small>tot</small>' + esc(b[1]) : 'Elk<br>bedrag') + '</span></a>';
+      }).join('') + '</div></section>';
     return h;
   }
 
-  var app = document.getElementById('app'), huidig = null;
+  function straat(st) {
+    var naam = st.pr.wie ? 'De straat ' + st.pr.tekst : 'De Cadeaustraat';
+    document.title = 'LeukeKeuze – ' + naam;
+    var keuze = [st.pr.wie ? st.pr.knop : '', tekstBedrag(st.max)].filter(Boolean).join(' · ');
+    var h = '<section class="welkom"><h1>De Cadeaustraat</h1>' +
+      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st);
+    h += '<section class="straat-kop" id="straat-kop"><h2>' + esc(st.pr.wie ? naam : 'Alle winkels') + (st.max ? ' <span>' + esc(tekstBedrag(st.max)) + '</span>' : '') + '</h2>' +
+      '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
+      (keuze ? ' · <button type="button" class="link" data-naar-kies>andere keuze</button> · <a href="#straat" data-kies>alles weer tonen</a>' : '') + '</p></section>';
+    if (st.etalage.length) {
+      h += '<section class="gang top-etalage"><div class="gang-kop"><img src="/images/sub/rond/' + st.pr.ic + '.webp" alt="" loading="lazy">' +
+        '<div><small>De etalage</small><h2>' + esc(st.pr.wie ? 'Onze beste cadeaus ' + st.pr.tekst : 'Onze beste cadeaus van dit moment') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') + '</h2></div></div>' +
+        '<div class="schap" data-schap="top">' + st.etalage.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
+        '<div class="gang-voet">' + (st.etalage.length > PER_KEER ? '<button class="meer" type="button" data-meer="top">Laat er nog ' + Math.min(PER_KEER, st.etalage.length - PER_KEER) + ' zien</button>' : '') +
+        (st.pr.slug ? '<a class="naar" href="' + voorPad(st) + '">Alle cadeaus ' + esc(st.pr.tekst) + ' ›</a>' : '') + '</div></section>';
+    }
+    h += '<h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Deze winkels hebben iets ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Loop een winkel binnen') + '</h2>';
+    h += '<section class="straat" aria-label="Open winkels">' + st.open.map(function (x) { return gevel(x, st); }).join('') + '</section>';
+    if (st.dicht.length) h += '<h2 class="straat-titel dicht-titel">Rolluik dicht ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') + '</h2>' +
+      '<section class="straat" aria-label="Gesloten winkels">' + st.dicht.map(function (x) { return gevel(x, st); }).join('') + '</section>';
+    h += '<p class="voet">Dit is een voorbeeld. De cadeaus, prijzen en links zijn dezelfde als op de gewone site.</p>';
+    return h;
+  }
+
+  function winkel(x, st) {
+    var w = x.w;
+    document.title = w.naam + ' – LeukeKeuze';
+    var keuze = [st.pr.wie ? st.pr.tekst : '', tekstBedrag(st.max)].filter(Boolean).join(' ');
+    var lijst = st.open, i = lijst.indexOf(x), buren = [];
+    for (var n = 1; n < lijst.length && buren.length < 2; n++) { var b = lijst[(Math.max(i, 0) + n) % lijst.length]; if (b !== x) buren.push(b); }
+    var h = '<a class="terug" href="' + adres('', st.pr.wie, st.max) + '">‹ Terug naar de straat' + (st.pr.wie ? ' ' + esc(st.pr.tekst) : '') + '</a>' +
+      '<section class="binnen-kop gevel" style="--k:' + w.k + '"><span class="luifel"></span><div class="pui">' +
+      '<h1>' + esc(w.naam) + '</h1><p>' + esc(w.zin) + '</p>' +
+      (keuze ? '<p class="filter">Je ziet alleen cadeaus <b>' + esc(keuze) + '</b> · <a href="' + adres(w.id, '', 0) + '">alles in deze winkel</a></p>' : '') +
+      '<p class="tel">' + getal(x.aantal) + ' cadeaus' + (x.aantal ? ' · vanaf ' + euro(x.van) : '') + '</p>' +
+      (w.let ? '<p class="let">' + esc(w.let) + '</p>' : '') +
+      (w.extra ? '<div class="extra">' + w.extra.map(function (e) { return '<a href="' + e[1] + '">' + esc(e[0]) + '</a>'; }).join('') + '</div>' : '') +
+      '</div></section>';
+    if (!x.gangen.length) {
+      return h + '<p class="leeg">Hier liggen geen cadeaus ' + esc(keuze) + '. <a href="' + adres(w.id, '', 0) + '">Bekijk alles in deze winkel</a>.</p>';
+    }
+    var veel = x.gangen.length > 6;
+    h += '<nav class="plattegrond" aria-label="Afdelingen"><h2>Afdelingen</h2><div class="wegwijzer' + (veel ? ' dicht' : '') + '">' +
+      x.gangen.map(function (y, n) { return '<a href="' + adres(w.id, st.pr.wie, st.max) + '" data-gang="' + n + '">' + esc(y.g.naam) + ' <small>' + y.lijst.length + '</small></a>'; }).join('') +
+      (veel ? '<button type="button" data-alle-gangen>+ ' + (x.gangen.length - 6) + ' meer</button>' : '') + '</div></nav>';
+    x.gangen.forEach(function (y, n) {
+      var naar = w.super ? w.naar : naarVan(y.g);
+      if ((st.max === 10 || st.max === 25) && /^\/c\//.test(naar) && naar.indexOf('?') === -1) naar += '?prijs=tot' + st.max;
+      h += '<section class="gang" id="gang-' + n + '"><div class="gang-kop"><img src="' + gangIcoon(w, y) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+        '<div><small>Afdeling ' + (n + 1) + '</small><h2>' + esc(y.g.naam) + '</h2></div></div>' +
+        '<div class="schap" data-schap="' + n + '">' + y.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
+        '<div class="gang-voet">' + (y.lijst.length > PER_KEER ? '<button class="meer" type="button" data-meer="' + n + '">Laat er nog ' + Math.min(PER_KEER, y.lijst.length - PER_KEER) + ' zien</button>' : '') +
+        '<a class="naar" href="' + naar + '">Alles uit deze afdeling ›</a></div></section>';
+    });
+    if (buren.length) h += '<section class="verder"><h2>Verder in de straat</h2><div class="straat">' + buren.map(function (y) { return gevel(y, st); }).join('') + '</div>';
+    h += '<a class="terug" href="' + adres('', st.pr.wie, st.max) + '">‹ Terug naar het begin van de straat</a>' + (buren.length ? '</section>' : '');
+    return h;
+  }
+
+  var app = document.getElementById('app'), huidig = null, naarStraat = false;
   function teken() {
-    var id = (location.hash || '').slice(1), w = WINKELS.filter(function (x) { return x.id === id; })[0];
-    huidig = w || null;
-    app.innerHTML = w ? winkel(w) : straat();
-    window.scrollTo(0, 0);
+    var a = leesAdres(), st = staat(a.wie, a.max);
+    var x = a.winkel ? st.open.concat(st.dicht).filter(function (y) { return y.w.id === a.winkel; })[0] : null;
+    huidig = x ? { x: x, st: st } : { st: st };
+    app.innerHTML = x ? winkel(x, st) : straat(st);
+    var doel = naarStraat && !x ? document.getElementById('straat-kop') : null;
+    naarStraat = false;
+    if (doel) doel.scrollIntoView({ block: 'start' }); else window.scrollTo(0, 0);
   }
   app.addEventListener('click', function (e) {
+    if (e.target.closest('[data-kies]')) naarStraat = true;
     var m = e.target.closest('[data-meer]');
     if (m && huidig) {
-      var n = +m.getAttribute('data-meer'), g = huidig.gangen[n], schap = app.querySelector('[data-schap="' + n + '"]');
-      var nu = schap.children.length, erbij = g.lijst.slice(nu, Math.min(nu + PER_KEER, MAX_IN_GANG));
+      var n = m.getAttribute('data-meer'), lijst = n === 'top' ? huidig.st.etalage : huidig.x.gangen[+n].lijst, schap = app.querySelector('[data-schap="' + n + '"]');
+      var nu = schap.children.length, erbij = lijst.slice(nu, Math.min(nu + PER_KEER, MAX_IN_GANG));
       schap.insertAdjacentHTML('beforeend', erbij.map(kaart).join(''));
-      var over = Math.min(g.lijst.length, MAX_IN_GANG) - schap.children.length;
+      var over = Math.min(lijst.length, MAX_IN_GANG) - schap.children.length;
       if (over > 0) m.textContent = 'Laat er nog ' + Math.min(PER_KEER, over) + ' zien'; else m.remove();
       return;
     }
     var gw = e.target.closest('[data-gang]');
-    if (gw) { e.preventDefault(); var doel = document.getElementById('gang-' + gw.getAttribute('data-gang')); if (doel) doel.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    if (gw) { e.preventDefault(); var d = document.getElementById('gang-' + gw.getAttribute('data-gang')); if (d) d.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     var ag = e.target.closest('[data-alle-gangen]');
     if (ag) { ag.parentNode.classList.remove('dicht'); ag.remove(); }
+    var nk = e.target.closest('[data-naar-kies]');
+    if (nk) { var k = app.querySelector('.kies'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
   window.addEventListener('hashchange', teken);
   teken();
