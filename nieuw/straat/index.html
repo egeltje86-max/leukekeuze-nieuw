@@ -226,6 +226,7 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
 .snel h2+div+h2{margin-top:18px}
 .snel .kr{background:#FFF6EA}
 .snel .kn{hyphens:manual}
+.extra a img{width:32px;height:32px;border-radius:50%;margin:0 8px 0 -8px;background:#FFF6EA}
 </style>
 </head>
 <body>
@@ -258,25 +259,25 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
      filter = eigen regel. naar = de echte pagina. */
   var WINKELS = [
     { id: 'pakjeshuis', naam: 'Het Pakjeshuis', zin: 'Alles voor Sinterklaas: de schoen, de lootjes en pakjesavond.', k: '#B3261E', seizoen: ['10-15', '12-05'], label: 'Tot 5 december',
-      extra: [['Lootjes trekken', '/lootjes-trekken/'], ['Sint-gedicht laten maken', '/sint-rijmmachine/']],
+      extra: [['Lootjes trekken', '/lootjes-trekken/', 'h-lootjes-trekken'], ['Sint-gedicht laten maken', '/sint-rijmmachine/', 'h-sint-gedicht']],
       gangen: [
-        { naam: 'In de schoen', top: '/collectie/schoencadeautjes', naar: '/collectie/schoencadeautjes', ic: 'images/sub/rond/col-schoencadeautjes.webp' },
-        { naam: 'Lootjes tot € 15', ook: 'cadeaus/sinterklaas', max: 15, wie: 'volw', top: '/c/cadeaus/sint-onder-15', naar: '/c/cadeaus/sint-onder-15', ic: 'images/sub/rond/h-lootjes-trekken.webp' },
-        { naam: 'Voor de kinderen', ook: 'cadeaus/sinterklaas', wie: 'kind', top: '/voor/kinderen/sinterklaas', naar: '/voor/kinderen/sinterklaas', ic: 'images/sub/rond/voor-kinderen.webp' },
+        { naam: 'In de schoen', top: '/collectie/schoencadeautjes', naar: '/collectie/schoencadeautjes', ic: 'nova:cad-schoencadeautjes' },
+        { naam: 'Lootjes tot € 15', ook: 'cadeaus/sinterklaas', max: 15, wie: 'volw', top: '/c/cadeaus/sint-onder-15', naar: '/c/cadeaus/sint-onder-15', ic: 'nova:cad-sint-onder-15' },
+        { naam: 'Voor de kinderen', ook: 'cadeaus/sinterklaas', wie: 'kind', top: '/voor/kinderen/sinterklaas', naar: '/voor/kinderen/sinterklaas', ic: 'nova:cad-voor-kinderen' },
         { naam: 'Voor tieners', ook: 'cadeaus/sinterklaas', wie: 'tiener', top: '/c/cadeaus/sinterklaas', naar: '/c/cadeaus/sinterklaas', ic: 'images/sub/rond/voor-tieners.webp' },
-        { naam: 'Voor hem', ook: 'cadeaus/sinterklaas', wie: 'hem', top: '/c/cadeaus/sinterklaas?voor=hem', naar: '/c/cadeaus/sinterklaas?voor=hem', ic: 'images/sub/rond/voor-hem.webp' },
-        { naam: 'Voor haar', ook: 'cadeaus/sinterklaas', wie: 'haar', top: '/c/cadeaus/sinterklaas?voor=haar', naar: '/c/cadeaus/sinterklaas?voor=haar', ic: 'images/sub/rond/voor-haar.webp' },
-        { naam: 'Chocoladeletters & snoep', v: ['eten-drinken/chocolade-snoep/chocoladeletters', 'eten-drinken/chocolade-snoep/snoep-drop'], naar: '/c/eten-drinken/chocolade-snoep' }
+        { naam: 'Voor hem', ook: 'cadeaus/sinterklaas', wie: 'hem', top: '/c/cadeaus/sinterklaas?voor=hem', naar: '/c/cadeaus/sinterklaas?voor=hem', ic: 'nova:cad-voor-hem' },
+        { naam: 'Voor haar', ook: 'cadeaus/sinterklaas', wie: 'haar', top: '/c/cadeaus/sinterklaas?voor=haar', naar: '/c/cadeaus/sinterklaas?voor=haar', ic: 'nova:cad-voor-haar' },
+        { naam: 'Chocoladeletters & snoep', v: ['eten-drinken/chocolade-snoep/chocoladeletters', 'eten-drinken/chocolade-snoep/snoep-drop'], naar: '/c/eten-drinken/chocolade-snoep', ic: 'nova:cad-sinterklaas' }
       ] },
     { id: 'kerstmarkt', naam: 'De Kerstmarkt', zin: 'Kerstcadeaus voor iedereen, en alles om je huis gezellig te maken.', k: '#1F5B3A', seizoen: ['11-01', '12-26'], label: 'Tot Kerst',
       gangen: [
-        { naam: 'Kerstcadeaus voor haar', ook: 'cadeaus/kerst', wie: 'haar', top: '/c/cadeaus/kerst?voor=haar', naar: '/c/cadeaus/kerst?voor=haar', ic: 'images/sub/rond/voor-haar.webp' },
-        { naam: 'Kerstcadeaus voor hem', ook: 'cadeaus/kerst', wie: 'hem', top: '/c/cadeaus/kerst?voor=hem', naar: '/c/cadeaus/kerst?voor=hem', ic: 'images/sub/rond/voor-hem.webp' },
+        { naam: 'Kerstcadeaus voor haar', ook: 'cadeaus/kerst', wie: 'haar', top: '/c/cadeaus/kerst?voor=haar', naar: '/c/cadeaus/kerst?voor=haar', ic: 'nova:cad-voor-haar' },
+        { naam: 'Kerstcadeaus voor hem', ook: 'cadeaus/kerst', wie: 'hem', top: '/c/cadeaus/kerst?voor=hem', naar: '/c/cadeaus/kerst?voor=hem', ic: 'nova:cad-voor-hem' },
         { naam: 'Voor tieners', ook: 'cadeaus/kerst', wie: 'tiener', top: '/c/cadeaus/kerst?voor=tieners', naar: '/c/cadeaus/kerst?voor=tieners', ic: 'images/sub/rond/voor-tieners.webp' },
-        { naam: 'Voor de kinderen', ook: 'cadeaus/kerst', wie: 'kind', top: '/c/cadeaus/kerst', naar: '/c/cadeaus/kerst', ic: 'images/sub/rond/voor-kinderen.webp' },
-        { naam: 'Voor opa en oma', ook: 'cadeaus/kerst', wie: 'opa-oma', top: '/c/cadeaus/kerst?voor=opa-oma', naar: '/c/cadeaus/kerst?voor=opa-oma', ic: 'images/sub/rond/voor-opa-oma.webp' },
-        { naam: 'Voor een collega', ook: 'cadeaus/kerst', wie: 'collega', top: '/c/cadeaus/kerst?voor=collega', naar: '/c/cadeaus/kerst?voor=collega', ic: 'images/sub/rond/voor-collega.webp' },
-        { naam: 'Kerst in huis', g: 'wonen/kerstdecoratie', naar: '/c/wonen/kerstdecoratie' }
+        { naam: 'Voor de kinderen', ook: 'cadeaus/kerst', wie: 'kind', top: '/c/cadeaus/kerst', naar: '/c/cadeaus/kerst', ic: 'nova:cad-voor-kinderen' },
+        { naam: 'Voor opa en oma', ook: 'cadeaus/kerst', wie: 'opa-oma', top: '/c/cadeaus/kerst?voor=opa-oma', naar: '/c/cadeaus/kerst?voor=opa-oma', ic: 'nova:cad-opa-oma' },
+        { naam: 'Voor een collega', ook: 'cadeaus/kerst', wie: 'collega', top: '/c/cadeaus/kerst?voor=collega', naar: '/c/cadeaus/kerst?voor=collega', ic: 'nova:cad-collega' },
+        { naam: 'Kerst in huis', g: 'wonen/kerstdecoratie', naar: '/c/wonen/kerstdecoratie', ic: 'nova:cad-kerst' }
       ] },
     { id: 'speelgoedwinkel', naam: 'De Speelgoedwinkel', zin: 'Van rammelaar tot racebaan, voor elke leeftijd.', k: '#C8402E', ic: 'speelgoed',
       gangen: [
@@ -317,7 +318,7 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
         { naam: 'Snoep & drop', v: ['eten-drinken/chocolade-snoep/snoep-drop', 'eten-drinken/chocolade-snoep/snoep-met-een-boodschap'], naar: '/c/eten-drinken/chocolade-snoep' },
         { naam: 'Koffie & thee', v: ['eten-drinken/lekkernijen/koffie', 'eten-drinken/lekkernijen/thee', 'eten-drinken/lekkernijen/warme-chocolademelk'], naar: '/c/eten-drinken/lekkernijen' },
         { naam: 'Koffiezetten & theepotten', g: 'koken-tafelen/koffie-thee-zetten' },
-        { naam: 'Pakketten & door de brievenbus', v: ['eten-drinken/cadeaupakketten/cadeaupakketten-manden', 'eten-drinken/cadeaupakketten/brievenbuscadeaus'], naar: '/c/eten-drinken/cadeaupakketten' }
+        { naam: 'Pakketten & door de brievenbus', v: ['eten-drinken/cadeaupakketten/cadeaupakketten-manden', 'eten-drinken/cadeaupakketten/brievenbuscadeaus'], naar: '/c/eten-drinken/cadeaupakketten', ic: 'nova:col-cadeaupakketten' }
       ] },
     { id: 'woonwinkel', naam: 'De Woonwinkel', zin: 'Lampjes, kaarsen, plaids en dingen die een huis gezellig maken.', k: '#6E8B6A', ic: 'wonen',
       gangen: [
@@ -391,7 +392,7 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
       ] },
     { id: 'christelijk', naam: 'De Christelijke boekwinkel', zin: 'Bijbels, doopcadeaus, kerststallen en teksten voor aan de muur.', k: '#23395B', ic: 'christelijk',
       gangen: [
-        { naam: 'Doop & belijdenis', g: 'christelijk/doop-belijdenis-kinderen', ic: 'images/sub/rond/chr-doop-belijdenis.webp' }, { naam: 'Bijbels & boeken', g: 'christelijk/bijbels-boeken', ic: 'images/sub/rond/chr-bijbels-psalmboeken.webp' },
+        { naam: 'Doop, belijdenis & kinderen', g: 'christelijk/doop-belijdenis-kinderen', ic: 'images/sub/rond/chr-doop-belijdenis.webp' }, { naam: 'Bijbels & boeken', g: 'christelijk/bijbels-boeken', ic: 'images/sub/rond/chr-bijbels-psalmboeken.webp' },
         { naam: 'Kerst', g: 'christelijk/kerst', ic: 'images/sub/rond/chr-kerst.webp' }, { naam: 'Teksten aan de muur', g: 'christelijk/wanddecoratie-teksten', ic: 'images/sub/rond/chr-wanddecoratie-teksten.webp' },
         { naam: 'Sieraden', g: 'christelijk/sieraden', ic: 'images/sub/rond/chr-sieraden.webp' }
       ] }
@@ -576,11 +577,16 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
     spellenwinkel: 1, boetiek: 1, sportwinkel: 1, boekhandel: 1, hobbywinkel: 1, kookwinkel: 1, slijterij: 1, tuincentrum: 1, uitjesbureau: 1, christelijk: 1, cadeauloket: 1 };
   var NOVA_CAT = { speelgoed: 1, 'spellen-puzzels': 1, elektronica: 1, 'mode-sieraden': 1, 'beauty-verzorging': 1, wonen: 1, 'koken-tafelen': 1, 'eten-drinken': 1, hobby: 1,
     'sport-outdoor': 1, 'tuin-klussen': 1, 'boeken-media': 1, dieren: 1, belevenissen: 1, christelijk: 1 };
+  var NOVA_ROND = {};
+  ('voor-iedereen voor-haar voor-hem voor-kinderen voor-tieners voor-opa-oma voor-collega voor-baby chr-bijbels-psalmboeken chr-boeken-muziek chr-doop-belijdenis chr-kerst chr-sieraden chr-voor-kinderen chr-wanddecoratie-teksten ' +
+    'col-aanbiedingen col-adventskalenders col-black-friday col-brievenbuscadeaus col-cadeaupakketten col-grappige-cadeaus col-kortingscodes col-op-tijd-voor-pakjesavond col-originele-cadeaus col-persoonlijke-cadeaus col-schoencadeautjes col-toppers-van-nu ' +
+    'cad-baby-kraam cad-collega cad-grappig cad-kerst cad-met-naam cad-onder-15 cad-opa-oma cad-schoencadeautjes cad-sint-onder-15 cad-sinterklaas cad-voor-haar cad-voor-hem cad-voor-kinderen').split(' ').forEach(function (n) { NOVA_ROND[n] = 1; });
   function novaRond(naam) { return NB + 'rond/' + naam + '-klein.webp'; }
   function rond(ic) {
     if (!ic) return '';
-    var m = /images\/sub\/rond\/(voor-[a-z-]+)\.webp$/.exec(ic);
-    if (m) return novaRond(m[1]);
+    if (/^nova:/.test(ic)) return novaRond(ic.slice(5));
+    var m = /images\/sub\/rond\/((?:voor|chr|col|cad)-[a-z0-9-]+)\.webp$/.exec(ic);
+    if (m && NOVA_ROND[m[1]]) return novaRond(m[1]);
     if (!/\.webp$/.test(ic)) return NOVA_CAT[ic] ? novaRond('cat-' + ic) : '/images/categorieen/rond/cat-' + ic + '.webp';
     return '/' + ic;
   }
@@ -673,17 +679,37 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
   var GEL_PAD = { kerst: 'c/cadeaus/kerst', sinterklaas: 'c/cadeaus/sinterklaas', geboorte: 'c/cadeaus/baby-kraam', valentijn: 'c/valentijn', 'doop-belijdenis': 'c/christelijk/doop-belijdenis-kinderen' };
   var GEL_VOLG = ['sinterklaas', 'kerst', 'verjaardag', 'bedankt', 'housewarming', 'geslaagd', 'beterschap', 'jubileum', 'juf-meester', 'afscheid-pensioen', 'geboorte', 'doop-belijdenis', 'uitdeelcadeautjes', 'moederdag', 'vaderdag', 'valentijn'];
   function pad(p) { return '/' + p + '/'; }
-  var AFBR = { Uitdeelcadeautjes: 'Uitdeel\u00ADcadeautjes', Housewarming: 'House\u00ADwarming', Belevenissen: 'Beleve\u00ADnissen', Elektronica: 'Elektro\u00ADnica' };
-  function rondje(href, beeld, naam) { return '<a href="' + href + '"><span class="kr"><img src="' + beeld + '" alt="" loading="lazy"></span><span class="kn">' + esc(naam).split(' ').map(function (w) { return AFBR[w] || w; }).join(' ') + '</span></a>'; }
+  /* Collecties: [slug, korte naam, rondje van Nova]; een collectie met een seizoen staat er alleen in dat seizoen */
+  var COL = [['toppers-van-nu', 'Toppers van nu', 'col-toppers-van-nu'], ['grappige-cadeaus', 'Grappige cadeaus', 'col-grappige-cadeaus'],
+    ['originele-cadeaus', 'Originele cadeaus', 'col-originele-cadeaus'], ['persoonlijke-cadeaus', 'Met naam of foto', 'col-persoonlijke-cadeaus'],
+    ['kleine-cadeautjes', 'Kleine cadeautjes', 'cad-onder-15'], ['schoencadeautjes', 'Schoencadeautjes', 'col-schoencadeautjes'],
+    ['op-tijd-voor-pakjesavond', 'Nog op tijd', 'col-op-tijd-voor-pakjesavond'], ['black-friday', 'Black Friday', 'col-black-friday'],
+    ['adventskalenders', 'Adventskalenders', 'col-adventskalenders'], ['cadeaupakketten', 'Cadeaupakketten', 'col-cadeaupakketten'],
+    ['brievenbuscadeaus', 'Brievenbuscadeaus', 'col-brievenbuscadeaus'], ['aanbiedingen', 'Aanbiedingen', 'col-aanbiedingen'],
+    ['kortingscodes', 'Kortingscodes', 'col-kortingscodes']];
+  /* Handig: [adres, naam, rondje van Nova, seizoen, extern] */
+  var HANDIG = [[pad('lootjes-trekken'), 'Lootjes trekken', 'h-lootjes-trekken'], [pad('sint-rijmmachine'), 'Sint-gedicht', 'h-sint-gedicht', ['10-15', '12-05']],
+    [pad('gids/surprise-maken'), 'Surprise maken', 'h-surprise-maken', ['10-15', '12-05']], [pad('vonk'), 'Kieshulp', 'h-kieshulp'],
+    [pad('favorieten'), 'Mijn lijstje', 'h-verlanglijstje'], [pad('zoek'), 'Zelf zoeken', 'h-zelf-zoeken'],
+    [pad('tiktok'), 'Gezien op TikTok', 'h-tiktok'], ['https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21', 'Onze lijsten op Amazon', 'h-amazon-lijsten', null, true]];
+  /* Lange namen breken netjes af op een vaste plek (zachte streepjes) */
+  /* Lange namen breken netjes af op een vaste plek (zachte streepjes) */
+  var AFBR = { Uitdeelcadeautjes: 'Uitdeel\u00ADcadeau\u00ADtjes', Housewarming: 'House\u00ADwarming', Belevenissen: 'Beleve\u00ADnissen', Elektronica: 'Elektro\u00ADnica', Schoencadeautjes: 'Schoen\u00ADcadeau\u00ADtjes', Aanbiedingen: 'Aan\u00ADbiedingen', Kortingscodes: 'Kortings\u00ADcodes', Sinterklaas: 'Sinter\u00ADklaas', Beterschap: 'Beter\u00ADschap', cadeautjes: 'cadeau\u00ADtjes', Brievenbuscadeaus: 'Brieven\u00ADbus\u00ADcadeaus', Adventskalenders: 'Advents\u00ADkalenders', Cadeaupakketten: 'Cadeau\u00ADpakketten', Verjaardag: 'Verjaar\u00ADdag', Christelijk: 'Christe\u00ADlijk' };
+  function rondje(href, beeld, naam, buiten) { return '<a href="' + href + '"' + (buiten ? ' target="_blank" rel="sponsored noopener"' : '') + '><span class="kr"><img src="' + beeld + '" alt="" loading="lazy"></span><span class="kn">' + esc(naam).split(' ').map(function (w) { return AFBR[w] || w; }).join(' ') + '</span></a>'; }
   function snel() {
-    var cats = window.LK_CATEGORIEEN || [], gels = window.LK_GELEGENHEDEN || [];
+    var cats = window.LK_CATEGORIEEN || [], gels = window.LK_GELEGENHEDEN || [], cols = window.LK_COLLECTIES || [], verb = window.LK_COLLECTIE_VERBORGEN || [];
     var naamCat = function (s) { var c = cats.filter(function (x) { return x.slug === s; })[0]; return c ? (c.kort || c.naam) : s; };
     var g = GEL_VOLG.map(function (s) { return gels.filter(function (x) { return x.slug === s; })[0]; }).filter(function (x) { return x && inSeizoen(x.seizoen); });
-    return '<section class="snel" aria-label="Meteen naar een afdeling of gelegenheid"><h2>Liever meteen naar een afdeling?</h2><div class="kies-wie">' +
+    return '<section class="snel" aria-label="Meteen naar een afdeling, gelegenheid of collectie"><h2>Liever meteen naar een afdeling?</h2><div class="kies-wie">' +
       AFD.map(function (s) { return rondje(pad('c/' + s), novaRond('cat-' + s), naamCat(s)); }).join('') +
-      rondje(pad('categorieen'), novaRond('winkel-cadeausuper'), 'Alle producten') +
+      rondje(pad('categorieen'), novaRond('h-alle-categorieen'), 'Alle producten') +
       '</div><h2>Of zoek op gelegenheid</h2><div class="kies-wie">' +
-      g.map(function (x) { return rondje(pad(GEL_PAD[x.slug] || 'gelegenheid/' + x.slug), novaRond('gel-' + x.slug), x.naam); }).join('') + '</div></section>';
+      g.map(function (x) { return rondje(pad(GEL_PAD[x.slug] || 'gelegenheid/' + x.slug), novaRond('gel-' + x.slug), x.naam); }).join('') +
+      '</div><h2>Onze collecties</h2><div class="kies-wie">' +
+      COL.filter(function (c) { var x = cols.filter(function (y) { return y.slug === c[0]; })[0]; return x && verb.indexOf(c[0]) === -1 && inSeizoen(x.seizoen); })
+        .map(function (c) { return rondje(pad('collectie/' + c[0]), novaRond(c[2]), c[1]); }).join('') +
+      '</div><h2>Handig</h2><div class="kies-wie">' +
+      HANDIG.filter(function (x) { return inSeizoen(x[3]); }).map(function (x) { return rondje(x[0], novaRond(x[2]), x[1], x[4]); }).join('') + '</div></section>';
   }
 
   function straat(st) {
@@ -728,7 +754,7 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
       (keuze ? '<p class="filter">Je ziet alleen cadeaus <b>' + esc(keuze) + '</b> · <a href="' + adres(w.id, '', 0) + '">alles in deze winkel</a></p>' : '') +
       '<p class="tel">' + getal(x.aantal) + ' cadeaus' + (x.aantal ? ' · vanaf ' + euro(x.van) : '') + '</p>' +
       (w.let ? '<p class="let">' + esc(w.let) + '</p>' : '') +
-      (w.extra ? '<div class="extra">' + w.extra.map(function (e) { return '<a href="' + e[1] + '">' + esc(e[0]) + '</a>'; }).join('') + '</div>' : '') +
+      (w.extra ? '<div class="extra">' + w.extra.map(function (e) { return '<a href="' + e[1] + '">' + (e[2] ? '<img src="' + novaRond(e[2]) + '" alt="">' : '') + esc(e[0]) + '</a>'; }).join('') + '</div>' : '') +
       '</div></section>';
     if (!x.gangen.length) {
       return h + '<p class="leeg">Hier liggen geen cadeaus ' + esc(keuze) + '. <a href="' + adres(w.id, '', 0) + '">Bekijk alles in deze winkel</a>.</p>';
