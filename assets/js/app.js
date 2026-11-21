@@ -1854,6 +1854,9 @@
   function home() {
     zetTitel('');
     if (RUST) return rustHome();
+    /* CADEAUSTRAAT (21-11-2026, GO Marius): voor bezoekers is de homepage de winkelstraat (assets/js/straat.js). Zoekmachines en de bouw (WIJZER 'a')
+       krijgen de homepage zoals hij was, met dezelfde titel en links. Uit: window.LK_STRAAT_AAN = false of ?proef=straat-uit (weer aan: ?proef=straat). */
+    if (WIJZER === 'b' && window.LK_STRAAT_HOME) { var straatHtml = window.LK_STRAAT_HOME.html(); if (straatHtml) return straatHtml; }
     var CATS_VOOR = ['wonen', 'mode-sieraden', 'beauty-verzorging', 'elektronica', 'eten-drinken', 'speelgoed'];
     var CATS_REST = ['spellen-puzzels', 'koken-tafelen', 'hobby', 'sport-outdoor', 'tuin-klussen', 'boeken-media', 'dieren'].filter(function (s) { var c = window.LK_CAT(s); return c && !c.verborgen; }); /* 4.0: Spellen & puzzels en Koken & tafelen erbij (alleen als ze bestaan) */
     var cat = function (slug, extra) {

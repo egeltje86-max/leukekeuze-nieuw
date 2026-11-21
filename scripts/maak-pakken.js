@@ -45,10 +45,11 @@ const naamVan = pad => (pad.replace(/^\/|\/$/g, '').replace(/\//g, '--') || 'hom
   /* welke pagina's: alles uit de sitemap behalve productpagina's en pagina's die de hele lijst nodig hebben */
   let paden = (fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').match(/<loc>[^<]+<\/loc>/g) || []).map(x => x.replace(/<\/?loc>/g, '').replace('https://leukekeuze.nl', ''))
     .filter(p => !/^\/(p|vonk|zoek|favorieten|lijst|winkels|categorieen|sint-rijmmachine|info)\//.test(p));
-  /* 13-11-2026 (GO Marius, voorstel 5 van de keuring): alleen de drukste soorten pagina's krijgen een pak: de homepage, de Voor wie-pagina's met hun
+  /* 13-11-2026 (GO Marius, voorstel 5 van de keuring): alleen de drukste soorten pagina's krijgen een pak: de Voor wie-pagina's met hun
      onderwerpen, de cadeaulijsten (Sinterklaas, Kerst, onder een bedrag), de collecties en de gelegenheden. Alle 640 pagina's kost 144 MB en 8 minuten
-     per bouw, en de site is al groter dan 1 GB. Toch alles: LK_PAKKEN=alles. */
-  const DRUK = /^\/$|^\/voor\/[^/]+\/([^/]+\/)?$|^\/c\/cadeaus\/[^/]+\/$|^\/collectie\/[^/]+\/$|^\/gelegenheid\/[^/]+\/$/;
+     per bouw, en de site is al groter dan 1 GB. Toch alles: LK_PAKKEN=alles.
+     21-11-2026: de homepage niet meer: dat is nu de Cadeaustraat (assets/js/straat.js), die de hele lijst nodig heeft. */
+  const DRUK = /^\/voor\/[^/]+\/([^/]+\/)?$|^\/c\/cadeaus\/[^/]+\/$|^\/collectie\/[^/]+\/$|^\/gelegenheid\/[^/]+\/$/;
   if (process.env.LK_PAKKEN !== 'alles') paden = paden.filter(p => DRUK.test(p));
   const srv = await server(); const basis = 'http://localhost:' + srv.address().port;
   const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});

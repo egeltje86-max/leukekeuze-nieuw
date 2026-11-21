@@ -176,7 +176,7 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
 /* ===== NOVA BOUTIQUE (21-11-2026): de beelden van Nova (NOVA-BOUTIQUE-001 t/m 005) in het voorbeeld.
    De gevel is een beeld met een doorzichtig etalagevak; naam, aantal, cadeaus en deur zet de code erop.
    Vaste zones (sjabloon 600 x 840): naambord y165-255, aantal y262-292, etalage x60-540 y300-720, deur x90-510 y735-830. */
-.lampjes{background:url(/nieuw/straat/beeld/lichtsnoer.webp) repeat-x center top/auto 100%;height:34px}
+.lampjes{background:url(/images/straat/lichtsnoer.webp) repeat-x center top/auto 100%;height:34px}
 .welkom.nova{padding-block:12px 0}
 .hero{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 24px -14px rgba(80,50,20,.55);background:#F6E3CF}
 .hero img{width:100%;aspect-ratio:1080/980;object-fit:cover;object-position:50% 100%}
@@ -199,14 +199,14 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
 @media (max-width:359px){.gv-onder{font-size:12px}}
 .gv-deur{position:absolute;left:15%;top:87.5%;width:70%;height:11.3%;z-index:2;display:grid;place-items:center;font:800 max(11px,6.2cqw)/1 Manrope,system-ui,sans-serif;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
 .gv-label{position:absolute;right:-2%;top:-3%;z-index:3;background:var(--marine);color:#fff;font:800 max(10.5px,4.8cqw)/1 Manrope,system-ui,sans-serif;padding:2.2cqw 3.2cqw;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.25);white-space:nowrap}
-.gevel.nova .stoep{height:12px;margin-top:-1px;background:#C9B79A url(/nieuw/straat/beeld/klinkers.webp) center/auto 24px;border-radius:0 0 8px 8px;box-shadow:inset 0 2px 3px rgba(0,0,0,.12)}
+.gevel.nova .stoep{height:12px;margin-top:-1px;background:#C9B79A url(/images/straat/klinkers.webp) center/auto 24px;border-radius:0 0 8px 8px;box-shadow:inset 0 2px 3px rgba(0,0,0,.12)}
 .gevel.nova:hover .gv,.gevel.nova:focus-visible .gv{transform:translateY(-2px)}
 .gv{transition:transform .15s ease}
 @media (prefers-reduced-motion:reduce){.gv{transition:none}}
 .gevel.nova:hover .gv-bord{text-decoration:underline;text-decoration-color:var(--goud);text-decoration-thickness:1px}
 .gevel.nova.dicht{filter:none;opacity:1}
 .gevel.nova.dicht .gv{filter:saturate(.45) drop-shadow(0 6px 8px rgba(80,50,20,.18))}
-.gv-raam.toe{padding:0;background:#E9E1D2 url(/nieuw/straat/beeld/rolluik.webp) center/100% 100%;display:grid;place-items:center;grid-template-columns:1fr;grid-template-rows:1fr}
+.gv-raam.toe{padding:0;background:#E9E1D2 url(/images/straat/rolluik.webp) center/100% 100%;display:grid;place-items:center;grid-template-columns:1fr;grid-template-rows:1fr}
 .gv-raam.toe::after{display:none}
 .gv-raam.toe b{z-index:2;background:#fff;color:var(--tekst);border-radius:2cqw;padding:2cqw 3cqw;font:800 4.6cqw/1.25 Manrope,system-ui,sans-serif;text-align:center;max-width:86%;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .gv-raam.loket{grid-template-columns:1fr;grid-template-rows:auto auto;place-content:center;justify-items:center;gap:3cqw;text-align:center}
@@ -627,8 +627,8 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
     return { winkel: m[1] || '', wie: m[2] || '', max: max };
   }
 
-  /* Beelden van Nova (NOVA-BOUTIQUE): alleen in dit voorbeeld, map /nieuw/straat/beeld/ */
-  var NB = '/nieuw/straat/beeld/';
+  /* Beelden van Nova (NOVA-BOUTIQUE): alleen in dit voorbeeld, map /images/straat/ */
+  var NB = '/images/straat/';
   var NOVA_GEVEL = { kiosk: 1, pakjeshuis: 1, kerstmarkt: 1, speelgoedwinkel: 1, gamewinkel: 1, grappenmaker: 1, cadeausuper: 1, koffiehuis: 1, woonwinkel: 1, parfumerie: 1, elektronicazaak: 1,
     spellenwinkel: 1, boetiek: 1, sportwinkel: 1, boekhandel: 1, hobbywinkel: 1, kookwinkel: 1, slijterij: 1, tuincentrum: 1, uitjesbureau: 1, christelijk: 1, cadeauloket: 1 };
   var NOVA_CAT = { speelgoed: 1, 'spellen-puzzels': 1, elektronica: 1, 'mode-sieraden': 1, 'beauty-verzorging': 1, wonen: 1, 'koken-tafelen': 1, 'eten-drinken': 1, hobby: 1,
