@@ -352,13 +352,13 @@ def techniek_sectie(snel):
 def feeds_sectie():
     w = lees(os.path.join(WACHT, 'wacht-laatste.json'))
     if not w:
-        # 16-11-2026: de avondrun (21:00, laptop) zet zijn feedcontrole in keurkamer/nazorg/; de piloot neemt prijzen en uitverkocht elke ochtend vanzelf over.
+        # 16-11-2026: de ochtendrun (sinds 21-11 om 09:00, laptop) zet zijn feedcontrole in keurkamer/nazorg/; de piloot neemt prijzen en uitverkocht elke ochtend vanzelf over.
         a = lees(os.path.join(KK, 'nazorg', 'wacht-laatste.json'))
-        if not a: return ['Nog geen feedcontrole (de avondrun op de laptop maakt die).'], None
+        if not a: return ['Nog geen feedcontrole (de ochtendrun op de laptop maakt die).'], None
         s = a.get('samenvatting', {})
-        r = ['Laatste feedcontrole van de avondrun: %s. %s van de %s producten teruggevonden in de feeds van de winkels.' % (str(a.get('gemaakt', ''))[:16].replace('T', ' '), n(s.get('gecontroleerd', 0)), n(s.get('live', 0)))]
+        r = ['Laatste feedcontrole van de ochtendrun: %s. %s van de %s producten teruggevonden in de feeds van de winkels.' % (str(a.get('gemaakt', ''))[:16].replace('T', ' '), n(s.get('gecontroleerd', 0)), n(s.get('live', 0)))]
         r.append('- %s prijzen veranderd en %s uitverkocht: de piloot neemt dat elke ochtend vanzelf over (rare sprongen niet, die blijven staan).' % (n(s.get('prijsVeranderd', 0)), n(s.get('uitverkocht', 0))))
-        if s.get('nietInFeed'): r.append('- %s producten staan in geen enkele feed (oude links of winkels zonder feed); die kijkt de winkelcheck in de avondrun eens per 6 dagen na op de winkelpagina zelf.' % n(s['nietInFeed']))
+        if s.get('nietInFeed'): r.append('- %s producten staan in geen enkele feed (oude links of winkels zonder feed); die kijkt de winkelcheck in de ochtendrun elke dag na op de winkelpagina zelf.' % n(s['nietInFeed']))
         return r, s
     s = w.get('samenvatting', {}); r = ['Laatste feedcontrole: %s. %s producten teruggevonden in de feeds.' % (str(w.get('gemaakt', ''))[:16], n(s.get('gecontroleerd', 0)))]
     if s.get('uitverkocht'): r.append('- **%d producten zijn uitverkocht / niet leverbaar**: ' % s['uitverkocht'] + ', '.join(x['titel'][:40] for x in w['uitverkocht'][:5])); actie(78, 'Claude', '%d uitverkochte producten verbergen (status wachten) en bij terugkeer weer tonen.' % s['uitverkocht'])

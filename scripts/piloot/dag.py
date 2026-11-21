@@ -6,7 +6,10 @@ Doet, in deze volgorde:
   4. schoon? dan vastleggen en live zetten (push naar main en verbouwing-boom). Niet schoon? dan NIET pushen.
   5. een regel in PILOOT-LOGBOEK.md en een rapport in keurkamer/data/piloot-<datum>.json
 
-Gebruik: python3 scripts/piloot/dag.py [--wacht <wacht-laatste.json>] [--niet-pushen] [--alleen-controle]
+Gebruik: python3 scripts/piloot/dag.py [--wacht <wacht-laatste.json>] [--niet-pushen] [--alleen-controle] [--inhaal]
+  --inhaal  (21-11-2026) tweede run van de dag: doet alleen iets als er een nieuw ochtendrapport van de laptop is dat nog niet
+            is toegepast (de laptop stond om 09:00 uit en draaide later). Anders stopt hij meteen, zonder bouwen of logboekregel.
+De ochtendrun op de laptop draait sinds 21-11-2026 om 09:00 (was 21:00); de piloot daarom om 10:17, met een inhaalrun om 13:17.
 Afsluitcode 0 = alles goed; 2 = niet schoon (niet live gezet); 3 = nazorg gestopt (feeds raar).
 De uitvoer eindigt altijd met een regel 'PILOOT: ...' die de agent aan Marius kan doorgeven."""
 import os, sys, json, subprocess, datetime, shutil
@@ -41,21 +44,31 @@ if c != 0:
     if c != 0: klaar(2, 'Kon origin/main niet mergen (conflict). Niets veranderd, niets live gezet. Marius hoeft niets te doen; de volgende run probeert het opnieuw, maar als dit blijft: melden.')
 
 # 2. nazorg (prijzen en voorraad)
-wacht = arg('--wacht') or os.path.join(ROOT, 'keurkamer', 'nazorg', 'wacht-laatste.json')  # standaard: het nachtrapport dat de laptop in de repo zet
-vers = False
+wacht = arg('--wacht') or os.path.join(ROOT, 'keurkamer', 'nazorg', 'wacht-laatste.json')  # standaard: het ochtendrapport dat de laptop in de repo zet
+vers = False; stempel = ''
+TOEGEPAST = os.path.join(ROOT, 'keurkamer', 'nazorg', 'toegepast.json')  # 21-11-2026: welk rapport al is toegepast (gaat mee in de commit)
+try: al = json.load(open(TOEGEPAST, encoding='utf-8')).get('gemaakt', '')
+except Exception: al = ''
 if wacht and os.path.exists(wacht):
     try:
-        gemaakt = json.load(open(wacht, encoding='utf-8')).get('gemaakt', '')[:10]
-        vers = (datetime.date.today() - datetime.date.fromisoformat(gemaakt)).days <= 1
+        stempel = json.load(open(wacht, encoding='utf-8')).get('gemaakt', '')
+        vers = (datetime.date.today() - datetime.date.fromisoformat(stempel[:10])).days <= 1
     except Exception: vers = False
-    if not vers: stap('nazorg', True, 'nachtrapport is ouder dan 1 dag, niet toegepast (laptop stond uit?)'); rap['melden'].append('Geen vers nachtrapport van de laptop (prijzen niet bijgewerkt).')
+    if not vers: stap('nazorg', True, 'ochtendrapport is ouder dan 1 dag, niet toegepast (laptop stond uit?)'); rap['melden'].append('Geen vers ochtendrapport van de laptop (prijzen niet bijgewerkt).')
+if arg('--inhaal') and not (vers and stempel and stempel != al and stempel[:10] == vandaag):
+    print('PILOOT: inhaalrun: geen nieuw ochtendrapport van vandaag om toe te passen, niets gedaan.'); sys.exit(0)
+if vers and stempel and stempel == al:
+    stap('nazorg', True, 'ochtendrapport %s is al toegepast' % stempel); vers = False
 if wacht and os.path.exists(wacht) and vers:
     c, t = run(['node', 'scripts/keurkamer/effectief-site.js']); stap('site-prijzen verzamelen', c == 0, t)
     c, t = run([sys.executable, 'scripts/keurkamer/nazorg.py', wacht]); stap('nazorg toepassen', c in (0, 3), t)
     try: rap['nazorg'] = json.loads(t[t.index('{'):t.rindex('}') + 1]) if c == 0 else {'gestopt': t.strip().splitlines()[0] if t.strip() else 'onbekend'}
     except Exception: rap['nazorg'] = {'ruw': t[-500:]}
     if c == 3: rap['melden'].append('Nazorg gestopt: ' + str(rap['nazorg'].get('gestopt', '')))
-    if rap['nazorg'] and rap['nazorg'].get('gemeld'): rap['melden'].append('%d prijzen die verdubbelden of halveerden niet overgenomen (handmatig nakijken).' % len(rap['nazorg']['gemeld']))
+    if rap['nazorg'] and rap['nazorg'].get('gemeld'): rap['melden'].append('%d meldingen van de nazorg (grote prijssprongen of bol niet weggehaald), zie het rapport.' % len(rap['nazorg']['gemeld']))
+    if c == 0:
+        try: json.dump({'gemaakt': stempel, 'toegepast': datetime.datetime.now().isoformat(timespec='minutes')}, open(TOEGEPAST, 'w', encoding='utf-8'))
+        except Exception: pass
 elif not (wacht and os.path.exists(wacht)):
     stap('nazorg', True, 'geen nachtrapport gevonden, overgeslagen')
 
@@ -85,7 +98,7 @@ if c != 0:
 c, t = run(['git', 'status', '--porcelain']); veranderd = bool(t.strip())
 if not veranderd: klaar(0, 'Niets veranderd vandaag; controle schoon.')
 nz = rap['nazorg'] or {}
-zin = 'Piloot %s: %s prijzen bijgewerkt, %s uitverkocht van de lijsten; controle schoon' % (vandaag, nz.get('prijs', 0), nz.get('uitverkocht', 0))
+zin = 'Piloot %s: %s prijzen bijgewerkt, %s uitverkocht van de lijsten, %s bij bol niet meer te koop, %s weer te koop; controle schoon' % (vandaag, nz.get('prijs', 0), nz.get('uitverkocht', 0), nz.get('bolWeg', 0), nz.get('terug', 0))
 if arg('--niet-pushen'): klaar(0, zin + ' (niet gepusht, op verzoek).')
 # logboekregel vóór het vastleggen, zodat hij in dezelfde commit zit (controle Opus 8-11-2026)
 try:

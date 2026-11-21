@@ -1,7 +1,14 @@
-"""Elke nacht: alle feeds ophalen bij Daisycon en TradeTracker, de zoekindex opnieuw maken en online zetten.
-Draait op de laptop van Marius (Taakplanner), vanuit een kopie van de repo.
+"""De ochtendrun (sinds 21-11-2026 om 09:00; daarvoor 21:00, de 'avondrun'). Draait op de laptop van Marius (Taakplanner,
+taak 'LeukeKeuze zoekindex'), vanuit een kopie van de repo. Doet elke dag, in deze volgorde:
+  1. de bol-feeds verversen (als ze ouder zijn dan 20 uur) met Marius' eigen VERNIEUW-BOL-FEEDS.cmd;
+  2. alle feeds ophalen bij Daisycon, TradeTracker en Awin;
+  3. de zoekindex opnieuw maken;
+  4. prijs en voorraad van alle producten op de site nakijken (wacht.py: bol-feeds, partnerfeeds, Superkeurkamer-feeds);
+  5. de gewone winkelpagina nakijken van wat in geen feed staat (winkelcheck.py, elke dag);
+  6. het rapport in de repo zetten (keurkamer/nazorg/), zodat de piloot in de cloud het om 10:17 toepast, bouwt, controleert en live zet.
+Waarom 's ochtends (Marius 21-11-2026): 'doe dit 9 uur 's ochtends als nog niet veel gekocht wordt'.
 Gebruik: python scripts/nachtelijk.py   (vanuit de hoofdmap van de repo)"""
-import os, sys, subprocess, urllib.request, datetime, json, shutil
+import os, sys, subprocess, urllib.request, datetime, json, shutil, glob, time
 sys.stdout.reconfigure(encoding='utf-8')
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
@@ -68,6 +75,28 @@ FILTER = {
     'x-fitwinkel': (r'^(?!.*(gorilla|shirt|short|legging|hoodie|tank top|broek|\bbh\b|sport bra|jacket|jas\b|sokken|schoen|supplement|vitamine|eiwit|protein))(?=.*(boks|vechtsport|voetbaltafel|tafelvoetbal|airhockey|pingpong|tafeltennis|badminton|basketbal|voetbal|yoga|pilates|waterfles|golf|paddleboard|sup-board|sup board|balans|springtouw|massage|foamroller|biljart|pooltafel|reflexbal|speedball|bosu|centr|sklz|blackroll|garlando|trampoline))', 5, 800),
     'x-westwing': (r'kaars|kandelaar|lantaarn|vaas|vazen|plaid|deken|kussen|geur|diffuser|lamp|lampje|fotolijst|spiegel|dienblad|mok|kop en schotel|glazen|karaf|schaal|kom|kerst|decoratie|beeld|klok|mand|bloempot|pot\b|kunstbloem|kunstplant|bord|servies|bestek|theedoek|handdoek|badjas|koffietafelboek|toys|health|beauty|baby|animals|pet|media|office', 3, 250),
 }
+# 21-11-2026 (opdracht Marius: 'controleer de prijs en of het product nog beschikbaar is'): de bol-feeds werden alleen met de hand
+# ververst (laatst 19-11), dus bol-prijzen en -voorraad liepen achter. Nu elke ochtend, met Marius' eigen script (dat leest zijn
+# eigen inloggegevens; wij lezen het niet en loggen alleen of het lukte). Lukt het niet, dan blijven de oude feeds staan.
+BOLDIR = os.path.join(os.environ.get('USERPROFILE') or os.path.expanduser('~'), 'Documents', 'LeukeKeuze-Bol')
+def bol_stand():
+    f = glob.glob(os.path.join(BOLDIR, 'feeds', 'product-feed_*-v2.csv.gz'))
+    return len(f), (min(os.path.getmtime(x) for x in f) if f else 0)
+try:
+    n_voor, oud_voor = bol_stand(); CMD = os.path.join(BOLDIR, 'VERNIEUW-BOL-FEEDS.cmd')
+    if '--test' not in sys.argv and os.path.exists(CMD) and time.time() - oud_voor > 20 * 3600:
+        t0 = time.time()
+        try:
+            r = subprocess.run(['cmd', '/c', CMD], cwd=BOLDIR, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=3600)
+            code = r.returncode
+        except subprocess.TimeoutExpired: code = 'tijdslimiet'
+        n_na, oud_na = bol_stand()
+        log('bol-feeds ververst:' if oud_na > oud_voor else 'bol-feeds NIET ververst (code %s), oude blijven:' % code,
+            n_na, 'bestanden, oudste van', datetime.datetime.fromtimestamp(oud_na).strftime('%d-%m %H:%M') if oud_na else '-', '(%d min)' % ((time.time() - t0) / 60))
+    else:
+        log('bol-feeds zijn vers genoeg:', n_voor, 'bestanden, oudste van', datetime.datetime.fromtimestamp(oud_voor).strftime('%d-%m %H:%M') if oud_voor else '-')
+except Exception as e:
+    log('bol-feeds verversen overgeslagen:', e)
 ok = 0
 for naam, q in FEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')
@@ -208,16 +237,17 @@ try:
                        capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=3600)
     log('nazorg-controle:', (w.stdout or w.stderr).strip().splitlines()[-1:] if (w.stdout or w.stderr) else '')
     NZR = os.path.join(REPO, 'keurkamer', 'nazorg'); os.makedirs(NZR, exist_ok=True)
-    # 13-11-2026 (grote keuring, GO Marius): eens per 6 dagen de gewone winkelpagina nakijken van wat in geen enkele feed staat
+    # 13-11-2026 (grote keuring, GO Marius): de gewone winkelpagina nakijken van wat in geen enkele feed staat
     # (prijs, voorraad, bestaat de pagina nog). Nooit een partnerlink, nooit bol of Amazon. De uitkomst komt in het nachtrapport,
-    # zodat de piloot hem met de grenzen van nazorg.py overneemt. Elke 6 dagen, zodat de controledatum binnen de week blijft.
+    # zodat de piloot hem met de grenzen van nazorg.py overneemt. Sinds 21-11-2026 elke dag (was eens per 6 dagen; opdracht Marius:
+    # 'controleer de prijs en of het product nog beschikbaar is'): wat in geen feed staat wordt zo ook dagelijks nagekeken.
     # Mag het nachtrapport nooit tegenhouden.
     try:
         WC = os.path.join(NZR, 'winkelcheck-laatste.json'); dagen = 999
         if os.path.exists(WC):
             try: dagen = (datetime.date.today() - datetime.date.fromisoformat(json.load(open(WC, encoding='utf-8')).get('datum', ''))).days
             except Exception: dagen = 999
-        if dagen >= 6:
+        if dagen >= 1:
             c = subprocess.run([sys.executable, '-I', os.path.join(HIER, 'keurkamer', 'winkelcheck.py'), '--producten', os.path.join(NZ, 'producten-site.json'),
                                 '--wacht', os.path.join(NZ, 'wacht-laatste.json'), '--rapport', WC, '--stand', os.path.join(NZ, 'winkelcheck-stand.json')],
                                capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=2700)
@@ -230,6 +260,10 @@ try:
     git('add', 'keurkamer/nazorg/wacht-laatste.json')
 except Exception as e:
     log('nazorg-controle overgeslagen:', e)
+# 21-11-2026: UIT (Marius: 'als het niks toevoegt kun je het uitzetten'). Elke test is een echte klik op een partnerlink en telt bij
+# het netwerk; sinds 20-11 is de regel 'nooit een script dat partnerlinks opent of volgt'. Dode productpagina's vindt de dagelijkse
+# winkelcheck al (gewoon winkeladres), en kapotte doorstuurpaden van winkels staan in TT_OMWEG (plaats.js). Weer aan: LINKTEST = True.
+LINKTEST = False
 # 11-11-2026 (grote controle, JA Marius): eens per 30 dagen de winkelknoppen naklikken, één product per doorstuuradres.
 # Vier winkels gaven 'pagina niet gevonden' terwijl het product er gewoon was; dat ziet alleen een echte klik. Elke test telt
 # bij het netwerk als klik, daarom niet vaker. Alleen een rapport (keurkamer/nazorg/linktest-laatste.json); de dagelijkse piloot
@@ -239,7 +273,7 @@ try:
     if os.path.exists(LT):
         try: dagen = (datetime.date.today() - datetime.date.fromisoformat(json.load(open(LT, encoding='utf-8')).get('datum', ''))).days
         except Exception: dagen = 999
-    if dagen >= 30:
+    if LINKTEST and dagen >= 30:
         e = subprocess.run(['node', os.path.join(HIER, 'controle', 'eindpunten.js'), REPO], capture_output=True, text=True, encoding='utf-8', timeout=300)
         rij = (e.stdout or '').strip()
         if rij:

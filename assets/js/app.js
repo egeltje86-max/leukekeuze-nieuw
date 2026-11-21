@@ -5481,9 +5481,9 @@
         { kop: 'Knutselen en kleuren (€5 tot €7)', tekst: 'Voor kinderen die graag iets maken: armbandjes, kraskaarten en stickers.',
           ids: ['bol-9300000183264805', 'bol-9300000221675733', 'bol-9300000182484745', 'cl-cr-geur'] },
         { kop: 'Voor de allerkleinsten', tekst: 'Zacht, veilig en makkelijk vast te pakken. Voor baby’s en peuters.',
-          ids: ['bol-9300000109164502', 'lego-10471', 'bol-9300000320683306', 'bol-9300000187578608'] },
+          ids: ['bol-9200000095428715', 'lego-10471', 'bol-9300000320683306', 'woewoe-46e6ec21fd'] },
         { kop: 'Spelletjes en puzzels (tot €10)', tekst: 'Iets om samen te spelen, ook als de Sint weer weg is.',
-          ids: ['bol-9200000132162995', 'bol-9300000035078697', 'bol-1004004013389248', 'bol-9300000181433977'] }
+          ids: ['bol-9200000132162995', 'bol-9300000035078697', 'bol-1004004013389248', 'dgsw-ba4a8301fa'] }
       ],
       slot: 'Alle schoencadeautjes op een rij, met foto en prijs: <a href="/collectie/schoencadeautjes">bekijk de hele lijst</a>. Meer kleine cadeautjes vind je bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a> en <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond staat bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'sinterklaascadeau-man', beeld: 'dvzn-c15dcffb40', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-hem', 'cadeaus/sint-onder-15', 'cadeaus/grappig'],
@@ -5518,7 +5518,7 @@
           ids: ['cl-rit-sakura', 'dw-4000161100379', 'dk-00043581', 'cl-bodyshop-set'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/haar">Cadeaus voor haar</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
-    { slug: 'surprise-maken', beeld: 'bol-9300000226734832', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren', 'hobby/origami-scrapbooking'],
+    { slug: 'surprise-maken', beeld: 'cl-amsterdam-meng', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren', 'hobby/origami-scrapbooking'],
       titel: 'Surprise ideeën: 25 leuke surprises maken, met stappenplan en tips', kort: 'Geen inspiratie voor je surprise? Hier vind je ideeën per persoon, een stappenplan en tips voor het gedicht.',
       intro: 'Lootjes getrokken en nu moet er een surprise komen? Een surprise is het leukste deel van pakjesavond: een zelfgemaakte verpakking die past bij de persoon, met een cadeautje erin en een gedicht erbij. Je hoeft er echt geen knutselkampioen voor te zijn. Met een doos, wat karton, een lijmpistool en verf kom je al heel ver. Hieronder vind je een simpel stappenplan, 25 ideeën per type persoon, tips voor het gedicht en de spullen die je nodig hebt.',
       delen: [
@@ -5576,7 +5576,7 @@
             'Nog geen gedicht? Laat de Sint-rijmmachine van LeukeKeuze er gratis een maken en pas het aan waar je wilt.'
           ] },
         { kop: 'Spullen om je surprise te maken', tekst: 'Met deze spullen kun je bijna elke surprise maken. Een lijmpistool is echt een aanrader: alles zit in een paar seconden vast.',
-          ids: ['bol-9300000226734832', 'bol-9300000146207567', 'bol-9200000052919661'] },
+          ids: ['cl-amsterdam-meng', 'bol-9300000146207567', 'bol-9200000052919661'] },
         { kop: 'Kleine cadeautjes voor in je surprise', tekst: 'Bij lootjes trekken spreek je vaak een bedrag af. Deze cadeautjes passen in bijna elke surprise en blijven onder de €15.',
           ids: ['cl-cr-geur', 'bol-9300000138803498', 'cl-buki-graaf', 'dvzn-8e1b865150', 'bol-9300000017407527', 'bol-9300000240237143'] },
         { kop: 'Iets lekkers erbij', tekst: 'Een chocoladeletter of kruidnoten horen er gewoon bij. Leuk om in of naast je surprise te leggen.',
@@ -5630,7 +5630,7 @@
           ids: ['bol-9300000320406800', 'bol-9300000042944655', 'cl-sinterklaas-voorlees'] }
       ],
       slot: 'Maak je er ook een surprise bij? Lees dan <a href="/gids/surprise-maken">Surprise maken: 25 ideeën</a>. Zoek je nog een cadeautje? Kijk bij <a href="/gids/sinterklaas-onder-15">Sinterklaascadeaus onder de €15</a> en <a href="/gids/schoencadeautjes">Schoencadeautjes</a>.' },
-    { slug: 'adventskalender-kiezen', beeld: 'bol-9300000408782128', vakken: ['cadeaus/kerst', 'eten-drinken/adventskalenders', 'eten-drinken/chocolade-snoep', 'wonen/kerstdecoratie'],
+    { slug: 'adventskalender-kiezen', beeld: 'bol-9300000186028245', vakken: ['cadeaus/kerst', 'eten-drinken/adventskalenders', 'eten-drinken/chocolade-snoep', 'wonen/kerstdecoratie'],
       titel: 'Adventskalender kopen: de leukste kalenders van 2026', kort: 'Chocolade, thee, popcorn of een kaars: 24 dagen aftellen naar Kerst. Van €7 tot €65.',
       intro: 'Vanaf 1 december elke dag een vakje openmaken: een adventskalender maakt van het wachten op Kerst een klein feestje. Vroeger zat er alleen een plaatje of een chocolaatje in, nu is er voor iedereen wat: thee voor je moeder, popcorn voor filmavonden, een puzzelverhaal dat je in 24 dagen oplost. Het is ook een heel dankbaar cadeau, want je geeft eigenlijk 24 cadeautjes tegelijk. Ik zette de leukste op een rij, van klein tot flink uitpakken. Eén tip vooraf: bestel vóór eind november, want op 1 december wil je beginnen en de populairste kalenders zijn dan op.',
       delen: [
@@ -5645,11 +5645,11 @@
         { kop: 'De chocolade-klassiekers', tekst: 'Je kunt niet misgaan met chocolade. Dit zijn de bekende merken, van Tony’s tot Lindt.',
           ids: ['bol-9300000186028245', 'bol-9300000187297428', 'bol-9300000237632552', 'dw-7622210598837'] },
         { kop: 'Net even anders', tekst: 'Voor wie elk jaar al een chocoladekalender krijgt: jam, thee, popcorn, geurkaarsjes of een puzzelverhaal dat je in 24 dagen oplost.',
-          ids: ['bol-9300000408782128', 'dw-680275066859', 'mindf-6e1985bec2', 'wwk-2280887', '999g-999exi30'] },
+          ids: ['dw-4260282697312', 'dw-680275066859', 'mindf-6e1985bec2', 'wwk-2280887', '999g-999exi30'] },
         { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
           ids: ['amz-b0gr96fwxr', 'amz-b0hmfl96b8', 'massa-152af9d255'] },
         { kop: 'Om te bouwen: LEGO, Playmobil en Mega', tekst: 'Elke dag bouw je een klein modelletje of krijg je een poppetje, en met kerst heb je een hele wereld bij elkaar.',
-          ids: ['bol-9300000265640019', 'bol-9300000384469927', 'cl-mc-advent', 'bol-9300000384469926'] } /* 18-11-2026: geen 'goedkoper dan de adviesprijs' meer. 20-11-2026: LEGO City was uitverkocht, nu de Playmobil Dino Expeditie op die plek */
+          ids: ['bol-9300000265640019', 'bol-9300000384469927', 'cl-mc-advent', 'bol-9300000225695697'] } /* 18-11-2026: geen 'goedkoper dan de adviesprijs' meer. 20-11-2026: LEGO City was uitverkocht, nu de Playmobil Dino Expeditie op die plek */
       ],
       slot: 'Meer lekkers voor december vind je bij <a href="/c/eten-drinken">Eten &amp; drinken</a> en alle kerstspullen bij <a href="/c/cadeaus/kerst">Kerst</a>. Zoek je een kerstcadeau? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor haar</a> of <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor hem</a>.' },
     { slug: 'kerstcadeau-kind', beeld: 'woewoe-6e48434b3c', vakken: ['cadeaus/kerst', 'cadeaus/voor-kinderen', 'speelgoed', 'speelgoed/lego'],
@@ -5696,7 +5696,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar wat hij elke week doet: barbecueën, darten, lezen, klussen. Een cadeau dat daarbij past wordt gebruikt.", "Drank is een veilige keus. Kies iets dat hij zelf niet zo snel koopt.", "Iets persoonlijks, zoals een invulboek of een plankje met zijn naam, maakt het speciaal.", "Bestel op tijd: rond Kerst duren pakketjes vaak langer."] },
         { kop: "Voor bij een goed glas", tekst: "Mooie whiskyglazen, een karaf of een set om zijn whisky een rooksmaak te geven.", ids: ["dvzn-648493", "cg-rocking-whisky-glazen", "smartp-48b3d1162c", "dvzn-332357"] },
-        { kop: "Iets lekkers", tekst: "Iets lekkers voor bij de koffie of na het eten.", ids: ["cg-chocolade-game-controller", "cl-lindt-pralines", "bol-9300000158510566", "cl-oa-duo"] },
+        { kop: "Iets lekkers", tekst: "Iets lekkers voor bij de koffie of na het eten.", ids: ["cg-chocolade-game-controller", "cl-lindt-pralines", "bol-9300000158510566", "cl-oa-trio"] },
         { kop: "Handig voor elke dag", tekst: "Een goed zakmes of iets voor de barbecue: dingen die hij echt gebruikt.", ids: ["cl-vx-huntsman", "dvzn-386854", "dvzn-859756", "dvzn-611"] },
         { kop: "Warm en knus", tekst: "Sloffen, sokken en een plaid voor de koude avonden.", ids: ["cl-hema-teddy", "bt-51963303362899", "cl-pizza-sokken", "bol-9300000187227306"] },
         { kop: "Met een persoonlijk tintje", tekst: "Een cadeau met zijn naam of zijn verhaal erin.", ids: ["cl-pap-vertel-eens", "mmf-63b50c895d", "cl-pos-f1", "mmf-b99ea99ff6"] },
@@ -5726,7 +5726,7 @@
         { kop: "Gadgets en muziek", tekst: "Een speaker of een grappige gadget voor op zijn bureau.", ids: ["cg-useless-box", "cg-pratende-flessenopener", "cg-rock-on-koptelefoonhouder", "bol-9300000252617200"] },
         { kop: "Gamen", tekst: "Een game of controller. Weet je niet welke spelcomputer hij heeft? Vraag het eerst even.", ids: ["cl-dualsense", "cl-spiderman2", "cl-gt7", "cl-joycon-laad"] },
         { kop: "Verzorging", tekst: "Een geurtje of verzorgingsset van een bekend merk.", ids: ["cl-kingc-starter", "cl-le-male", "cl-ysl-y", "cl-rit-homme"] },
-        { kop: "Voor zijn hobby", tekst: "Darten, kamperen of buiten zijn: iets voor zijn vrije uurtjes.", ids: ["bol-1004004012064527", "dvzn-549082", "dvzn-456925", "grotek-57e49bc6a4"] }
+        { kop: "Voor zijn hobby", tekst: "Darten, kamperen of buiten zijn: iets voor zijn vrije uurtjes.", ids: ["bol-9300000177612715", "dvzn-549082", "dvzn-456925", "grotek-57e49bc6a4"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-hem\">Kerstcadeau voor hem</a> en <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>. Voor haar: <a href=\"/gids/kerstcadeau-vriendin\">Kerstcadeau voor je vriendin</a>." },
     /* Antwoordpagina's (12-11-2026, GO Marius): 'cadeau 10 euro' en 'cadeau 15 euro' (1.000-1.300 zoekers per maand), 'cadeau voetballer' (1.600)
@@ -5767,7 +5767,7 @@
         { kop: "Iets lekkers", tekst: "Chocolade, pralines of stroopwafels: lekker voor iedereen.", ids: ["t2-hema-2a7e38607b", "hema-8eff9a5ada", "dk-00015052", "cl-chocmakers-liefde"] },
         { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets voor een voetenbadje.", ids: ["parfum-5519078921", "cl-gr-fortune", "cl-kneipp-voetbad", "hema-4f711f0ecd"] },
         { kop: "Voor op het werk", tekst: "Voor een collega: een mok, iets voor op het bureau of een spel voor de pauze.", ids: ["coolgi-098cedb937", "hobbym-cfe3d81cbf", "dvzn-279882", "dvzn-296965"] },
-        { kop: "Spelletjes", tekst: "Een kaartspel of klein spel om samen te spelen, thuis of onderweg.", ids: ["cl-uno", "bol-9300000118781147", "dgsw-fa7e6f4f87", "bol-9300000166566947"] }
+        { kop: "Spelletjes", tekst: "Een kaartspel of klein spel om samen te spelen, thuis of onderweg.", ids: ["cl-uno", "dvzn-49bb2362fd", "dgsw-fa7e6f4f87", "bol-9300000166566947"] }
       ],
       slot: "Iets meer te besteden? Kijk bij <a href=\"/gids/cadeau-15-euro\">Cadeau van 15 euro</a> of <a href=\"/c/cadeaus/onder-15\">alle cadeaus onder €15</a>. Voor in de schoen: <a href=\"/collectie/schoencadeautjes\">Schoencadeautjes</a>." },
     { slug: "cadeau-15-euro", beeld: "cg-chocolade-game-controller", vakken: ['cadeaus/onder-15', 'cadeaus/sint-onder-15'], max: 15,
@@ -5879,10 +5879,10 @@
       intro: "Een cadeau voor je schoonvader of schoonmoeder kiezen is vaak lastig: je wilt het goed doen, maar je kent hun smaak nog niet altijd. Veilig en toch persoonlijk zijn een whiskyset, een mooie theeset, iets voor de tuin, iets lekkers voor bij de borrel of een puzzel. Hieronder staan 24 ideeën in zes soorten, van een handcrème van 9 euro tot een luxe kaas- en borrelpakket.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Vraag je partner wat ze graag doen: tuinieren, koken, puzzelen of een glas wijn.", "Kies liever iets moois dat opgaat dan iets voor in huis: smaak in huis is persoonlijk.", "Geef samen met je partner, dan voelt het minder spannend.", "Iets met een foto van de kleinkinderen doet het bij opa en oma altijd goed."] },
-        { kop: "Voor bij de borrel", tekst: "Kaas, borrelhapjes of een whiskyset met glazen.", ids: ["dk-00044934", "bol-9300000245107849", "hobbym-cc513083ec", "cl-oa-duo"] },
+        { kop: "Voor bij de borrel", tekst: "Kaas, borrelhapjes of een whiskyset met glazen.", ids: ["dk-00044934", "bol-9300000245107849", "hobbym-cc513083ec", "cl-old-amsterdam"] },
         { kop: "Thee en koffie", tekst: "Mooi servies voor het kopje thee van elke dag.", ids: ["cl-12413", "cl-27618", "dk-00022235", "cl-26422"] },
         { kop: "Voor de tuin", tekst: "Voor wie graag buiten is en vogels kijkt.", ids: ["dk-00041649", "dk-00041643", "cl-windgong", "dvzn-368715"] },
-        { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "westwing-1360b3fb47", "cl-truffel-parmigiano", "cl-svinando-cioccolata"] },
+        { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "westwing-1360b3fb47", "dk-00042761", "cl-svinando-cioccolata"] },
         { kop: "Puzzelen en spelen", tekst: "Voor rustige avonden of een spel met de familie.", ids: ["bgs-f7d234d17e", "invul-1e1c620b18", "999g-sch58877", "cl-lama"] },
         { kop: "Iets persoonlijks", tekst: "Met een foto, of iets om haar mee te verwennen.", ids: ["parfum-5519078921", "smartp-7b3879ec1c", "mmf-9ed87c2539", "cl-huisnummer-foto"] }
       ],
@@ -6090,7 +6090,7 @@
         { kop: "Stapelen en sorteren", tekst: "Stapelen en weer omgooien. Klein en goedkoop, en ze spelen er lang mee.", ids: ["dk-00040686", "cl-fp-ringpiramide", "bol-9200000079252023", "cl-ld-stapelbekers"] },
         { kop: "Duwen en lopen", tekst: "Voor de eerste stapjes: een loopwagen om tegen te duwen, of een auto om op te zitten.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-bol-bobbycar", "cl-dolu-3in1"] },
         { kop: "Knuffels en badspeelgoed", tekst: "Iets zachts om mee te slapen, of iets leuks voor in bad.", ids: ["hema-84812eeeed", "bol-9300000111370441", "cl-steiff-trex", "cl-hema-knuffel"] },
-        { kop: "Eerste boekjes en muziek", tekst: "Stevige boekjes met grote plaatjes, en speelgoed om geluid mee te maken.", ids: ["cl-nijntje", "cl-rupsje-nooitgenoeg", "bol-9300000166820750", "cl-dikkie-dik-bad"] }
+        { kop: "Eerste boekjes en muziek", tekst: "Stevige boekjes met grote plaatjes, en speelgoed om geluid mee te maken.", ids: ["cl-nijntje", "cl-rupsje-nooitgenoeg", "bol-9200000099483858", "cl-dikkie-dik-bad"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/baby\">Cadeaus voor baby's</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-2-jaar\">een kind van 2</a>." },
     { slug: "cadeau-kind-2-jaar", beeld: "cl-duplo-10421", vakken: [], leeftijd: 2,
@@ -6099,10 +6099,10 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kies grote onderdelen: DUPLO in plaats van gewone LEGO.", "Een loopfiets is een cadeau waar een kind jaren plezier van heeft, en het leert er later makkelijker door fietsen.", "Doen alsof is op deze leeftijd het leukste spel: een babypop, een keukentje of een gereedschapsset.", "Geef je een boekje? Kies er een met grote plaatjes en weinig tekst."] },
         { kop: "Bouwen met grote blokken", tekst: "DUPLO en houten blokken: groot genoeg voor kleine handjes.", ids: ["cl-duplo-10421", "dk-00040686", "cl-duplo-10475", "cl-duplo-10459"] },
-        { kop: "Duwen, rijden en lopen", tekst: "Een loopfiets of loopwagen: een cadeau waar ze jaren mee spelen.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-puky-lino", "cl-gl-gobike"] },
+        { kop: "Duwen, rijden en lopen", tekst: "Een loopfiets of loopwagen: een cadeau waar ze jaren mee spelen.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-puky-lino", "cl-cf-1jaar"] },
         { kop: "Poppen en knuffels", tekst: "Een pop om te verzorgen of een knuffel om mee te slapen.", ids: ["hema-d2cd56c14b", "cl-steiff-trex", "cl-hema-knuffel", "cl-ld-bunny"] },
         { kop: "Boekjes", tekst: "Voorlezen is op deze leeftijd een van de leukste dingen. Stevige boekjes met grote plaatjes.", ids: ["cl-nijntje", "cl-rupsje-nooitgenoeg", "cl-dikkie-dik-bad"] },
-        { kop: "Muziek en luisteren", tekst: "Speelgoed om op te trommelen, te tikken en te spelen.", ids: ["bol-9300000166820750", "cl-hape-piano", "cl-fp-muziektafel", "cl-fp-xylofoon"] }
+        { kop: "Muziek en luisteren", tekst: "Speelgoed om op te trommelen, te tikken en te spelen.", ids: ["bol-9200000059681670", "cl-hape-piano", "cl-fp-muziektafel", "cl-fp-xylofoon"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/baby\">Cadeaus voor baby's</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-1-jaar\">een kind van 1</a> en <a href=\"/gids/cadeau-kind-3-jaar\">een kind van 3</a>." },
     { slug: "cadeau-kind-3-jaar", beeld: "cl-k-miele", vakken: [], leeftijd: 3,
@@ -6113,7 +6113,7 @@
         { kop: "Doen alsof", tekst: "Koken, dokter spelen of de pop verzorgen: spelen wat grote mensen doen.", ids: ["cl-k-miele", "cl-bb-nacht", "cl-k-hape-fornuis", "bol-9200000091570802"] },
         { kop: "Bouwen", tekst: "Iets bouwen en daarna mee spelen.", ids: ["bol-9300000224716751", "cl-brio-bluey", "cl-duplo-10421", "cl-duplo-10475"] },
         { kop: "Dieren en dino's", tekst: "Dieren en dino's van Schleich: stevig, echt en voor jaren.", ids: ["dg-73874cdb55", "cl-sl-stal", "bol-9300000263559033", "bol-9200000088621923"] },
-        { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-gl-goup", "cl-gl-gobike", "bol-9300000220460976", "cl-pustefix"] },
+        { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-gl-goup", "cl-ba-retro", "bol-9300000220460976", "cl-pustefix"] },
         { kop: "Kleuren en kleien", tekst: "Kleuren, tekenen en kleien: iets maken om te laten zien.", ids: ["bol-9300000343476066", "cl-pd-8", "cl-ses-myfirst", "bol-9200000088209209"] },
         { kop: "Luisteren en leren", tekst: "Speelgoed dat praat en uitlegt: spelenderwijs letters, cijfers en woorden leren.", ids: ["bol-9300000264938785", "bol-9300000244025531", "cl-tt-nijntje", "cl-vt-bluey"] }
       ],
@@ -6164,7 +6164,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een kind van 7 bouwt zelf. LEGO Mario Kart staat op de doos 'vanaf 7'.", "Verzamelen is op deze leeftijd heel populair: Pokémonkaarten, Squishmallows of figuurtjes.", "Kies een spel dat het hele gezin kan spelen, dan wordt het vaak gespeeld.", "Voor een feestje van een klasgenootje: in elke soort staat ook iets van rond de 10 euro of minder."] },
         { kop: "Bouwen", tekst: "Iets bouwen en daarna mee spelen.", ids: ["lego-72045", "bol-9300000266727667", "bol-9300000237345416", "cl-maxbricks"] },
         { kop: "Spellen", tekst: "Spellen om samen te spelen, met het gezin of met vriendjes.", ids: ["cl-uno", "bol-9300000280626381", "bol-9300000002863037", "bol-9300000281033787"] },
-        { kop: "Knutselen en maken", tekst: "Kraskaarten, klei en slijm: iets maken dat je daarna kunt laten zien.", ids: ["cl-pd-supercolor", "cl-pd-peppa", "cl-ses-slime", "cl-ds-maker"] },
+        { kop: "Knutselen en maken", tekst: "Kraskaarten, klei en slijm: iets maken dat je daarna kunt laten zien.", ids: ["cl-pd-supercolor", "cl-pd-peppa", "cl-ses-slime", "dgsw-4af34c3018"] },
         { kop: "Figuren en fans", tekst: "Pokémon en Squishmallows: als je weet waar een kind fan van is, zit je goed.", ids: ["cl-sq-eevee", "cl-pk-booster", "cl-pk-charizard-tin", "cl-pk-battledeck"] },
         { kop: "Ontdekken", tekst: "Proefjes en ontdekken: iets waarbij echt iets gebeurt.", ids: ["bol-9300000253114953", "cl-cl-hp-terra", "cl-ko-stuiter", "cl-cl-bruis"] },
         { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-adidas-bal", "cl-nerf-target", "cl-gl-goup", "bol-9300000220460976"] }
@@ -6188,7 +6188,7 @@
         { kop: 'Proefjes en ontdekken', tekst: 'Slijm, stuiterballen en toverdrankjes: proefjes waarbij echt iets gebeurt.',
           ids: ['cl-ses-slime', 'cl-ko-stuiter', 'bol-9300000277687709', 'cl-br-junior'] },
         { kop: 'Zelf iets maken', tekst: 'Armbandjes, strijkkralen en squishy\'s: iets maken dat je daarna kunt laten zien of weggeven.',
-          ids: ['cl-hama-3000', 'bol-9300000251039737', 'cl-ds-maker', 'cl-cl-hp-terra'] },
+          ids: ['cl-hama-3000', 'bol-9300000251039737', 'dvzn-565641', 'cl-cl-hp-terra'] },
         { kop: 'Voor de fans', tekst: 'Pokémon, Minecraft en KPop Demon Hunters zijn dit jaar de grote hypes op het schoolplein.',
           ids: ['cl-pk-booster', 'cl-pikachu-cord', 'cl-minecraft', 'bol-9300000252262288'] },
         { kop: 'Buiten en bewegen', tekst: 'Voor het kind dat niet stil kan zitten: voetballen, schieten op een doel, racen of rolschaatsen.',
@@ -6203,9 +6203,9 @@
         { kop: "Bouwen", tekst: "Iets bouwen en daarna mee spelen.", ids: ["cl-bol-gravitrax-start", "lego-72045", "bol-9300000157956303", "cl-bol-gravitrax-pro"] },
         { kop: "Spellen", tekst: "Spellen om samen te spelen, met het gezin of met vriendjes.", ids: ["cl-exploding", "cl-uno", "cl-ttr-europe", "cl-mens-erger"] },
         { kop: "Proefjes en techniek", tekst: "Kristallen kweken, triops uitbroeden of toverdrankjes maken: proefjes die echt werken.", ids: ["cl-cl-hp-terra", "cl-ko-kristal", "cl-ko-stuiter", "cl-ko-triops"] },
-        { kop: "Zelf iets maken", tekst: "Iets maken dat je daarna kunt laten zien of weggeven.", ids: ["cl-ses-slime", "cl-ds-maker", "cl-scratch-maskers", "bol-9300000143961709"] },
+        { kop: "Zelf iets maken", tekst: "Iets maken dat je daarna kunt laten zien of weggeven.", ids: ["cl-ses-slime", "dgsw-4af34c3018", "cl-scratch-maskers", "bol-9300000143961709"] },
         { kop: "Gamen en fans", tekst: "Pokémon, Minecraft en Mario: grote favorieten op het schoolplein.", ids: ["cl-pk-booster", "cl-minecraft", "cl-legends-za", "cl-mkw"] },
-        { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-adidas-bal", "cl-nerf-target", "cl-exost-rally", "cl-exost-monster"] }
+        { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-adidas-bal", "cl-nerf-target", "cl-exost-rocket", "cl-exost-monster"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/collectie/schoencadeautjes\">Schoencadeautjes</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-8-jaar\">een kind van 8</a> en <a href=\"/gids/cadeau-kind-10-jaar\">een kind van 10</a>." },
     { slug: "cadeau-kind-10-jaar", beeld: "lego-77243", vakken: [], leeftijd: 10,
@@ -6216,9 +6216,9 @@
         { kop: "Bouwen", tekst: "Iets bouwen en daarna mee spelen.", ids: ["lego-77243", "bol-9300000157956303", "cl-bol-gravitrax-start", "lego-21595"] },
         { kop: "Spellen", tekst: "Spellen om samen te spelen, met het gezin of met vriendjes.", ids: ["cl-exploding", "cl-ttr-europe", "cl-lama", "cl-the-mind"] },
         { kop: "Proefjes en techniek", tekst: "Kristallen kweken, triops uitbroeden of toverdrankjes maken: proefjes die echt werken.", ids: ["cl-ko-kristal", "cl-ko-triops", "bol-9300000277687709", "cl-ko-brain"] },
-        { kop: "Zelf iets maken", tekst: "Iets maken dat je daarna kunt laten zien of weggeven.", ids: ["bol-9300000143961709", "cl-ses-hp-diamond", "bol-9300000179894059", "bol-1004004007092873"] },
+        { kop: "Zelf iets maken", tekst: "Iets maken dat je daarna kunt laten zien of weggeven.", ids: ["bol-9300000143961709", "cl-ses-hp-diamond", "dvzn-565641", "bol-1004004007092873"] },
         { kop: "Gamen en fans", tekst: "Pokémon, Minecraft en Mario: grote favorieten op het schoolplein.", ids: ["cl-pk-booster", "cl-minecraft", "cl-legends-za", "cl-mkw"] },
-        { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-exost-rally", "cl-adidas-bal", "bol-9300000225966664", "bol-9300000228440183"] }
+        { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-exost-rocket", "cl-adidas-bal", "bol-9300000225966664", "bol-9300000228440183"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/collectie/schoencadeautjes\">Schoencadeautjes</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-9-jaar\">een kind van 9</a> en <a href=\"/gids/cadeau-kind-11-jaar\">een kind van 11</a>." },
     { slug: "cadeau-kind-11-jaar", beeld: "cl-minecraft", vakken: [], leeftijd: 11,
@@ -6227,7 +6227,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Vraag naar de hobby. Op deze leeftijd heeft een kind vaak al één ding waar het helemaal in zit.", "Een game of controller? Vraag eerst welke spelcomputer het kind heeft.", "Tekenspullen van een echt merk (zoals Posca of Tombow) voelen als een cadeau voor grote mensen.", "Een goed boek blijft een mooi cadeau. Kies een serie, dan weet je het volgende cadeau ook."] },
         { kop: "Gamen", tekst: "Games en een controller. Vraag eerst welke spelcomputer het kind heeft.", ids: ["cl-minecraft", "cl-legends-za", "cl-mkw", "cl-dualsense"] },
-        { kop: "Bouwen en techniek", tekst: "Serieuze bouwsets en een bestuurbare auto: niet kinderachtig.", ids: ["lego-77243", "lego-21595", "bol-9300000157956303", "cl-exost-rally"] },
+        { kop: "Bouwen en techniek", tekst: "Serieuze bouwsets en een bestuurbare auto: niet kinderachtig.", ids: ["lego-77243", "lego-21595", "bol-9300000157956303", "cl-exost-rocket"] },
         { kop: "Spellen met vrienden", tekst: "Snelle spellen om te spelen met vrienden of de hele familie.", ids: ["cl-exploding", "cl-lama", "cl-the-mind", "cl-flip7"] },
         { kop: "Zelf iets maken", tekst: "Iets maken dat je daarna kunt laten zien of weggeven.", ids: ["dvzn-114084", "cl-posca-4", "cl-fimo-effect-24", "cl-tombow-manga"] },
         { kop: "Lezen", tekst: "Spannende en grappige boeken om zelf te lezen.", ids: ["cl-griezelbus-1", "cl-alex-tweelingbroer", "cl-waterpark", "cl-loser-20"] },
@@ -6244,7 +6244,7 @@
         { kop: "Spellen met vrienden", tekst: "Snelle spellen om te spelen met vrienden of de hele familie.", ids: ["cl-exploding", "cl-hitster", "cl-30seconds", "cl-lama"] },
         { kop: "Zelf iets maken", tekst: "Iets maken dat je daarna kunt laten zien of weggeven.", ids: ["dvzn-606537", "cl-posca-4", "cl-fimo-effect-24", "cl-tombow-manga"] },
         { kop: "Lezen", tekst: "Spannende en grappige boeken om zelf te lezen.", ids: ["cl-demon-slayer-1", "cl-jujutsu-kaisen-1", "cl-griezelbus-1", "cl-alex-tweelingbroer"] },
-        { kop: "Buiten en sport", tekst: "Voor buiten: springen, voetballen of een Nerf-gevecht.", ids: ["bol-9300000228440183", "cl-adidas-bal", "bol-9300000225966664", "cl-exost-rally"] }
+        { kop: "Buiten en sport", tekst: "Voor buiten: springen, voetballen of een Nerf-gevecht.", ids: ["bol-9300000228440183", "cl-adidas-bal", "bol-9300000225966664", "cl-exost-rocket"] }
       ],
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-11-jaar\">een kind van 11</a> en <a href=\"/gids/cadeau-13-jaar\">13 jaar</a>." },
     { slug: 'kerstcadeau-tiener', beeld: 'tt-dvzn-d0fc92f962', vakken: ['cadeaus/kerst', 'speelgoed/hypes-trends', 'elektronica/gaming', 'sieraden/kettingen', 'voor/tieners'],
@@ -6307,7 +6307,7 @@
         { kop: 'Water en eten voor 3 dagen', tekst: 'Water is het allerbelangrijkst. Bewaar flessen water of lang houdbaar drinkwater, en zorg voor een filter voor als het water uit de kraan niet meer te vertrouwen is. Noodrantsoen is klein, licht en jarenlang houdbaar.',
           ids: ['cl-nalgene', 'bushpa-9b7ba2d30d'] }, /* 13-11 avond: de LifeStraw-fles is weg (WEG-lijst 12) */
         { kop: 'Licht als het donker wordt', tekst: 'Een hoofdlamp is handiger dan een zaklamp: je hebt je handen vrij. Een lamp die je met zonlicht of een slinger kunt opladen, heeft geen batterijen nodig.',
-          ids: ['cl-ll-hf4r', 'cl-flextail-helio', 'cl-kampeerlantaarn', 'bol-9300000234717251'] },
+          ids: ['cl-bd-astro', 'cl-flextail-helio', 'cl-kampeerlantaarn', 'bol-9300000234717251'] },
         { kop: 'EHBO en warmte', tekst: 'Een goede EHBO-set hoort in elk huis, ook zonder noodsituatie. Een nooddeken weegt bijna niets en houdt je warm als de verwarming uitvalt.',
           ids: ['bol-9300000340502828', 'dvzn-6a0d467ccc'] },
         { kop: 'Kant-en-klaar noodpakket kopen of zelf samenstellen?', tekst: 'Een kant-en-klaar pakket is makkelijk: je hebt meteen een tas met de basis. Maar let op. Volgens de Consumentenbond en Kassa missen veel pakketten juist water, hygiënespullen en contant geld, en zitten er soms gadgets in die je nooit gebruikt. Sommige pakketten kosten honderden euro’s. Mijn advies: koop een eenvoudig basispakket of stel het zelf samen, en geef je geld vooral uit aan een goede noodradio, een waterfilter en een fijne hoofdlamp.',
@@ -6344,7 +6344,7 @@
         { kop: 'Zelf maken en ontdekken (€5 tot €10)', tekst: 'Knutselen en proefjes doen: daar zijn ze na pakjesavond nog dagen mee bezig.',
           ids: ['bol-9300000169748884', 'bol-9300000025044624', 'bol-9200000104835927', 'bol-9300000168680075'] },
         { kop: 'Boekjes en spelletjes (tot €10)', tekst: 'Een sinterklaasboekje om voor te lezen, of een spel om meteen samen te spelen.',
-          ids: ['bol-9300000181968006', 'bol-9200000006380085', 'bol-9300000157956217'] }
+          ids: ['cl-sinterklaas-voorlees', 'bol-9200000006380085', 'bol-9300000157956217'] }
       ],
       slot: 'Meer kleine cadeautjes staan bij <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'speelgoed-van-het-jaar-2026', beeld: 'bol-9300000246863962', vakken: ['speelgoed', 'speelgoed/bord-kaartspellen', 'speelgoed/lego', 'speelgoed/autos-treinen-rc', 'speelgoed/baby-houten', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas'],
@@ -6365,9 +6365,9 @@
       intro: 'Sinterklaas is niet alleen voor kinderen. Veel families en vriendengroepen trekken lootjes, vaak met een vast bedrag van 10 of 15 euro. Dit zijn cadeaus die het goed doen bij volwassenen: iets om te spelen, iets lekkers, of iets dat je echt gebruikt.',
       delen: [
         { kop: 'Voor de lootjes (rond €15)', tekst: 'Een spel voor na het uitpakken, een grote mok, of een puzzel van de intocht.',
-          ids: ['bol-9300000192994012', 'bol-9300000345522494', 'cl-jvh-sint', 'bol-1004004005951228'] },
+          ids: ['bol-9300000192994012', 'dvzn-401757', 'cl-jvh-sint', 'bol-1004004005951228'] },
         { kop: 'Lekkers van de Sint', tekst: 'Kruidnoten en chocolade, maar dan net even anders dan uit de supermarkt.',
-          ids: ['bol-9300000161275021', 'bol-9300000243180019', 'dw-4000161470748'] },
+          ids: ['hema-90cecb0d49', 'bol-9300000243180019', 'dw-4000161470748'] },
         { kop: 'Iets groters (€20 tot €40)', tekst: 'Als je iets meer mag uitgeven: cadeaus die lang meegaan.',
           ids: ['bol-9200000091821418', 'bol-9200000016853146', 'bol-9300000343902998', 'bol-9300000005044757'] }
       ],
@@ -6457,7 +6457,7 @@
             'Elk jaar iets erbij: bij een merk als Ostheimer kun je elk jaar een figuur bijkopen. Zo groeit de kerststal mee met het gezin.'
           ] },
         { kop: 'Houten kerststallen voor kinderen', tekst: 'Om mee te spelen en het kerstverhaal na te vertellen. Stevig hout, dus het mag een keer vallen.',
-          ids: ['bol-9200000101182379', 'bol-9300000229915007', 'bol-9200000019512265', 'bol-9200000091616642', 'bol-9300000161906004'] },
+          ids: ['bol-9300000228059899', 'bol-9300000229915007', 'bol-9200000019512265', 'cl-stal-kinderen', 'bol-9300000161906004'] },
         { kop: 'Sfeervolle kerststallen voor in de kamer', tekst: 'Voor op de kast, de schoorsteenmantel of onder de kerstboom.',
           ids: ['bol-9300000361763981', 'bol-9300000354379582', 'bol-9300000354373407', 'bol-9300000168431338', 'bl-10203173', 'bol-9300000237391244'] },
         { kop: 'Klein en bijzonder', tekst: 'Voor in de vensterbank, als cadeautje, of voor wie weinig ruimte heeft.',
@@ -6473,11 +6473,11 @@
         { kop: 'De hits van het schoolplein', tekst: 'De Tamagotchi is helemaal terug, en KPop Demon Hunters is de film waar elk kind het over heeft.',
           ids: ['nedgam-25aaf9dace', 'bol-9300000236575345', 'bol-9300000273887351', 'bol-9300000354107444'] },
         { kop: 'Verrassingsdoosjes en tashangers', tekst: 'Uitpakken is de helft van de pret: je weet nooit welke je krijgt. Tashangers zijn dé trend voor aan je rugzak.',
-          ids: ['bol-9300000264493695', 'bol-9300000268338286', 'bol-9300000261371860', 'bol-9300000227351372'] },
+          ids: ['bol-9300000264493695', 'bol-9300000268338286', 'bol-9300000261371860', 'dgsw-ccdbb8ca31'] },
         { kop: 'Pokémon en Stitch', tekst: 'Al jaren populair, en in 2026 groter dan ooit: Pokémon viert zijn 30e verjaardag.',
           ids: ['bol-9300000377799800', 'bol-9300000331860190', 'bol-9300000159234222', 'bol-9300000026009635'] },
         { kop: 'Voor de kleine vlogger en gamer', tekst: 'Zelf filmpjes maken, een eigen horloge of de nieuwste Pokémon-game: voor kinderen die graag met techniek bezig zijn.',
-          ids: ['bol-9300000273861930', 'bol-9300000152351739', 'bol-9300000240660527', 'bol-9300000183040640'] }
+          ids: ['bol-9300000273861930', 'bol-9300000225252957', 'bol-9300000240660527', 'bol-9300000183040640'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/kinderen">Cadeaus voor kinderen</a> en in de gids <a href="/gids/speelgoed-van-het-jaar-2026">Speelgoed van het Jaar 2026</a>. Tip: hypes zijn rond Sinterklaas en Kerst vaak als eerste uitverkocht.' },
     { slug: 'virale-cadeaus-2026', beeld: 'bol-9300000243481710', vakken: ['cadeaus/voor-haar', 'cadeaus/voor-hem', 'elektronica/speakers', 'keuken/keukenapparaten', 'speelgoed/lego', 'geuren-verzorging/huidverzorging'],
@@ -6508,13 +6508,13 @@
           ids: ['bol-9300000228928212', 'cl-set-acqua', 'bol-9300000247496139', 'bol-9300000265211555'] }
       ],
       slot: 'Alle geuren vind je bij <a href="/c/geuren-verzorging/geuren">Geuren</a>. Tip: twijfel je? Kies een ontdekkingsset, dan kan de ander zelf de favoriet uitzoeken.' },
-    { slug: 'sinterklaas-onder-15', beeld: 'bol-9300000181433977', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren'], titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
+    { slug: 'sinterklaas-onder-15', beeld: 'cl-kpop', vakken: ['cadeaus/sinterklaas', 'cadeaus/sint-onder-15', 'speelgoed/knutselen-kleuren'], titel: 'Sinterklaascadeaus onder de €15', kort: 'Leuke surprises en kleine cadeautjes voor pakjesavond, zonder dat het veel kost.',
       intro: 'Op pakjesavond gaat het niet om dure cadeaus, maar om iets leuks om uit te pakken. Daarom zette ik de beste cadeautjes onder de 15 euro op een rij. Handig als je meerdere kinderen hebt, of als je lootjes trekt met een vast bedrag.',
       delen: [
         { kop: 'Voor kinderen die graag iets maken', tekst: 'Knutselsetjes zijn ideaal voor de schoen of als klein pakje: goedkoop, en ze zijn er na pakjesavond nog dagen zoet mee.',
-          ids: ['bol-9300000071114106', 'bol-9300000169748883', 'bol-1004004007096491', 'bol-9200000109023395'] },
+          ids: ['bol-9300000071114106', 'bol-9300000169748883', 'bol-1004004007096491', 'hema-c81336bab1'] },
         { kop: 'Puzzels en spelletjes', tekst: 'Een puzzel of spelletje kun je meteen samen doen, als de pakjes open zijn.',
-          ids: ['bol-9300000181433977', 'bol-9300000178728048', 'bol-9300000020405193', 'bol-9300000221675724'] },
+          ids: ['cl-kpop', 'bol-9300000178728048', 'dgsw-ca1b884d94', 'bol-9300000221675724'] },
         { kop: 'Voor de lootjes onder volwassenen en tieners', tekst: 'Een mok van hun favoriete serie of film, of iets lekkers: altijd raak.',
           ids: ['nedg-e1cd4db186', 'bol-9300000155871150', 'cl-beanboozled', 'bol-9300000255947352'] }
       ],
@@ -6891,7 +6891,7 @@
       ['Wat geef je een man met Kerst?', 'Iets dat bij zijn hobby past: mooie whiskyglazen, LEGO voor volwassenen, een gadget, iets voor de barbecue of een grappig cadeau zoals een foute kersttrui.'],
       ['Wat is een leuk kerstcadeau voor een man onder de 25 euro?', 'Een muts met speakers, de Useless Box, LEGO Speed Champions, BBQ-gereedschap, warme pantoffels of een whisky-set met sokken. In deze gids staan genoeg ideeën onder de 25 euro.'],
       ['Wat geef je een man die alles al heeft?', 'Iets dat op gaat, zoals een goede fles of een burgerpakket, of iets om te doen, zoals een bouwpakket of een spel voor twee.']] },
-    'surprise-maken': { top: [['Onze topkeuze', 'bol-9300000226734832'], ['Voor in de surprise', 'cl-cr-geur'], ['Iets lekkers', 'dk-00015052']], faq: [
+    'surprise-maken': { top: [['Onze topkeuze', 'cl-amsterdam-meng'], ['Voor in de surprise', 'cl-cr-geur'], ['Iets lekkers', 'dk-00015052']], faq: [
       ['Wat zijn leuke surprise ideeën?', 'Kies iets dat bij de persoon past: een grote controller voor een gamer, een voetbalschoen voor een voetballer, een koffiekopje voor een koffieleut of een wekker voor wie altijd te laat is. Hoe herkenbaarder, hoe leuker.'],
       ['Wat heb je nodig om een surprise te maken?', 'Een doos of wc-rollen, karton, kranten, plakband, een lijmpistool en verf of crêpepapier. Met een lijmpistool zit alles in een paar seconden vast.'],
       ['Hoe lang ben je bezig met een surprise?', 'Reken op twee of drie avonden, want verf en papier-maché moeten drogen. Een snelle surprise, zoals een doos in een doos, maak je in een uurtje.'],
@@ -6917,7 +6917,7 @@
       ['Is een geurkaars niet te standaard?', 'Niet als je een bijzondere geur kiest, zoals salted caramel. Met een grappig gedicht erbij wordt het meteen persoonlijk.'],
       ['Wat is een leuk sinterklaascadeau voor je moeder?', 'Iets wat alleen voor haar is: een verzorgingsset, marsepein of een koekjespakket voor bij de koffie. In deze gids staan vier ideeën speciaal voor je moeder.'],
       ['Wat geef je een volwassen vrouw voor Sinterklaas?', 'Iets om te verwennen of iets voor in huis, met een gedicht dat haar een beetje plaagt. Een klein cadeau met een goed gedicht valt vaak beter dan een duur cadeau zonder.']] },
-    'adventskalender-kiezen': { top: [['Onze topkeuze', 'bol-9300000186028245'], ['Net even anders', 'bol-9300000408782128'], ['Voor kinderen', 'amz-b0gr96fwxr']], faq: [
+    'adventskalender-kiezen': { top: [['Onze topkeuze', 'bol-9300000186028245'], ['Net even anders', 'dw-4260282697312'], ['Voor kinderen', 'amz-b0gr96fwxr']], faq: [
       ['Wanneer begint een adventskalender?', 'Op 1 december. De meeste kalenders hebben 24 vakjes en lopen tot kerstavond. Sommige hebben er 25, tot en met eerste kerstdag.'],
       ['Wanneer moet ik een adventskalender bestellen?', 'Liefst vóór eind november. Dan heb je hem zeker op tijd, en de populairste kalenders zijn in december vaak uitverkocht.'],
       ['Is advent hetzelfde als de adventskalender?', 'Niet helemaal. Advent zijn de vier zondagen voor Kerst; daar hoort de adventskrans met vier kaarsen bij. De adventskalender telt de dagen af vanaf 1 december.']] },
@@ -6976,7 +6976,7 @@
       ['Wat geef je een tiener die alles al heeft?', 'Iets voor hun eigen kamer of hun hobby: een lamp, oordopjes van een bekend merk of iets voor het gamen. Of iets van een film of serie waar ze nu fan van zijn.'],
       ['Is geld geven aan een tiener een goed idee?', 'Veel tieners vinden geld prima, maar het voelt minder persoonlijk. Een tussenweg: een klein cadeau dat bij ze past, met wat geld erbij voor iets groters.'],
       ['Wat kost een goed kerstcadeau voor een tiener?', 'In deze gids lopen de cadeaus van 15 tot 79 euro. Rond de 25 tot 50 euro vind je al echte merkspullen, zoals oordopjes of een controller.']] },
-    'noodpakket-checklist': { top: [['Begin hiermee', 'bol-9300000184877600'], ['Water bewaren', 'cl-nalgene'], ['Licht', 'cl-ll-hf4r']], faq: [
+    'noodpakket-checklist': { top: [['Begin hiermee', 'bol-9300000184877600'], ['Water bewaren', 'cl-nalgene'], ['Licht', 'cl-bd-astro']], faq: [
       ['Wat moet er minimaal in een noodpakket?', 'Water (3 liter per persoon per dag), eten dat je zonder koken kunt eten, een radio op batterijen of een opwindradio, een zaklamp, een EHBO-set, contant geld en een volle powerbank. Dat is de basis voor 72 uur.'],
       ['Hoeveel water heb je nodig voor 3 dagen?', 'Reken op 3 liter per persoon per dag. Voor een gezin van vier is dat 36 liter voor drie dagen. Vergeet je huisdieren niet.'],
       ['Krijg je een gratis noodpakket van de overheid?', 'Nee. Berichten over een gratis noodpakket waarvoor je moet klikken of betalen zijn bijna altijd oplichting. Klik niet op de link.']] },
@@ -7005,7 +7005,7 @@
       ['Hoeveel geef je uit aan een kerstcadeau voor een collega?', 'Voor een losse collega is 5 tot 15 euro gebruikelijk. Geef je met het team, dan legt iedereen een paar euro in en kun je samen iets groters kiezen.'],
       ['Wat geef je een collega die je niet goed kent?', 'Iets dat op gaat of dat iedereen gebruikt: lekkers, een thermosmok of een plantje voor op het bureau. Niet te persoonlijk, wel attent.'],
       ['Mag een kerstcadeau voor een collega grappig zijn?', 'Als je elkaar een beetje kent wel. Houd het vriendelijk, zodat iedereen erom kan lachen.']] },
-    'kerststal-kopen': { top: [['Voor kinderen', 'bol-9200000101182379'], ['Voor in de kamer', 'bol-9300000168431338'], ['Klein en bijzonder', 'bol-9300000409796863']], faq: [
+    'kerststal-kopen': { top: [['Voor kinderen', 'bol-9300000228059899'], ['Voor in de kamer', 'bol-9300000168431338'], ['Klein en bijzonder', 'bol-9300000409796863']], faq: [
       ['Welke figuren horen in een kerststal?', 'Maria, Jozef en het kindje Jezus in de kribbe, met een os en een ezel. Vaak komen er herders met schapen, een engel en de drie wijzen bij.'],
       ['Wanneer zet je de kerststal neer?', 'Veel mensen zetten hem neer aan het begin van de adventstijd of in de week voor Kerst. Een mooie traditie: leg het kindje Jezus pas op kerstavond in de kribbe en laat de wijzen op 6 januari aankomen.'],
       ['Welke kerststal is geschikt voor kinderen?', 'Een stevige houten stal waarmee ze mogen spelen. Porselein en steen zijn mooi, maar breken als ze vallen.']] },

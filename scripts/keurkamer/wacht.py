@@ -15,12 +15,20 @@ def arg(naam, standaard):
 HOME = os.environ.get('USERPROFILE') or os.path.expanduser('~')
 BOL = arg('--bol-feeds', os.path.join(HOME, 'Documents', 'LeukeKeuze-Bol', 'feeds'))
 TTF = arg('--tt-feeds', os.path.join(HOME, 'Documents', 'zoekindex-feeds'))
+# 21-11-2026 (opdracht Marius: 'alle lijsten van producten goed nakijken, prijs en of het product nog beschikbaar is'):
+# ook de feeds van de Superkeurkamer (elke ochtend om 05:10 ververst, ruim 300 winkels) als extra bron, voor winkels die niet in de ochtendrun zitten.
+SKK = arg('--skk-map', os.path.join(HOME, 'Desktop', 'Superkeurkamer LeukeKeuze', 'data', 'p'))
+# 21-11-2026: producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei 'niet op voorraad').
+# Staan ze weer leverbaar in een feed, dan meldt wacht.py ze onder 'terug' en zet nazorg.py ze weer op de site.
+AUTO = arg('--auto-uit', os.path.join(ROOT, 'scripts', 'keurkamer', 'auto-uitverkocht.json'))
+try: AU = json.load(open(AUTO, encoding='utf-8')).get('producten', {})
+except Exception: AU = {}
 UIT = arg('--uit', os.path.join(ROOT, 'keurkamer', 'wacht')); os.makedirs(UIT, exist_ok=True)
 bron = os.path.join(ROOT, 'keurkamer', 'data', 'producten-effectief.json')
 bron = arg('--producten', bron)  # 8-11-2026: een opgegeven bestand gaat altijd voor
 E = json.load(open(bron, encoding='utf-8')); P = E['producten']
 vandaag = datetime.date.today().isoformat()
-uit = {'gemaakt': datetime.datetime.now().isoformat(timespec='minutes'), 'prijs': [], 'uitverkocht': [], 'nietInFeed': [], 'gecontroleerd': 0, 'bronnen': []}
+uit = {'gemaakt': datetime.datetime.now().isoformat(timespec='minutes'), 'prijs': [], 'uitverkocht': [], 'nietInFeed': [], 'gecontroleerd': 0, 'bronnen': [], 'terug': []}
 
 def prijsverschil(pid, oud, nieuw, exact=False):
     try: oud = float(oud); nieuw = float(nieuw)
@@ -42,7 +50,7 @@ uit['feedDatum'] = {}
 # en bij 6 bol-ids wees de link naar een ander product dan het id (andere maat), terwijl de prijs van het id kwam.
 def bol_nr(u):
     u = urllib.parse.unquote(urllib.parse.unquote(str(u or '')))
-    m = re.search(r'bol\.com/nl/nl/p/[^/?#]*/(\d{10,16})', u)
+    m = re.search(r'bol\.com/nl/nl/p/[^/?#]*/(\d{9,16})', u)
     return m.group(1) if m else None
 bol_ids = collections.defaultdict(list)
 for pid in P:
@@ -50,8 +58,12 @@ for pid in P:
     if 'bol.com' not in u: continue
     nr = bol_nr(u) or (pid[4:] if pid.startswith('bol-') else None)
     if nr: bol_ids[nr].append(pid)
-gevonden = set()
+au_bol = {}
+for pid, a in AU.items():
+    if a.get('bron') == 'bol' and a.get('nr') and pid not in P: au_bol.setdefault(str(a['nr']), []).append(pid)
+gevonden = set(); terug_gezien = set()
 feeds = sorted(glob.glob(os.path.join(BOL, 'product-feed_*-v2.csv.gz')))
+uit['bolFeeds'] = {'aantal': len(feeds), 'oudste': min((feed_datum(f) for f in feeds), default=''), 'nieuwste': max((feed_datum(f) for f in feeds), default=''), 'producten': sum(len(v) for v in bol_ids.values())}
 if feeds and bol_ids:
     for f in feeds:
         print('bol-feed', os.path.basename(f), flush=True); uit['bronnen'].append(os.path.basename(f)); fdat = feed_datum(f)
@@ -65,19 +77,27 @@ if feeds and bol_ids:
                     if not regel.startswith('"'): continue
                     e = regel.find('"', 1); bid = regel[1:e]
                     pids = [x for x in bol_ids.get(bid, ()) if x not in gevonden]
-                    if not pids: continue
+                    terug = [x for x in au_bol.get(bid, ()) if x not in terug_gezien]
+                    if not pids and not terug: continue
                     try: row = next(csv.reader([regel], delimiter='|'))
                     except Exception: continue
+                    for pid in terug:
+                        terug_gezien.add(pid)
+                        lever = i_lever < 0 or i_lever >= len(row) or (row[i_lever] or '').upper() == 'Y'
+                        try: pr = round(float((row[i_prijs] or '0').replace(',', '.')), 2) if 0 <= i_prijs < len(row) else 0
+                        except ValueError: pr = 0
+                        if lever and pr > 0: uit['terug'].append({'id': pid, 'prijs': pr, 'bron': 'bol', 'feedDatum': fdat})
                     for pid in pids:
                         gevonden.add(pid); uit['feedDatum'][pid] = fdat
                         if i_prijs >= 0 and i_prijs < len(row): prijsverschil(pid, P[pid]['prijs'], (row[i_prijs] or '0').replace(',', '.'), exact=True)
-                        if i_lever >= 0 and i_lever < len(row) and (row[i_lever] or '').upper() != 'Y': uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol'})
+                        if i_lever >= 0 and i_lever < len(row) and (row[i_lever] or '').upper() != 'Y': uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol', 'nr': bid})
         except Exception as e:
             print('fout bij', f, e)
     uit['gecontroleerd'] += len(gevonden)
+    uit['bolFeeds']['gevonden'] = len(gevonden)
     for b, pids in bol_ids.items():
         for pid in pids:
-            if pid not in gevonden: uit['nietInFeed'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol'})
+            if pid not in gevonden: uit['nietInFeed'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': 'bol', 'nr': b, 'uitLink': bool(bol_nr(P[pid].get('url')))})
 else:
     print('geen bol-feeds gevonden in', BOL)
 
@@ -122,6 +142,46 @@ for pid, p in tt_live.items():
         if dp: _pad[dp].add(pid)
 per_pad = {k: list(v)[0] for k, v in _pad.items() if len(v) == 1}
 gevonden_tt = set()
+# 21-11-2026: automatisch uitverkochte partnerproducten (bron 'feed') herkennen, zodat ze terugkomen als de feed ze weer op voorraad heeft.
+au_url, au_pad = {}, {}
+for pid, a in AU.items():
+    if a.get('bron') != 'feed' or pid in P: continue
+    if a.get('winkelUrl') and 'awin1.com' not in a['winkelUrl']: au_url[url_sleutel(a['winkelUrl'])] = pid
+    for u in (a.get('winkelUrl'), a.get('url')):
+        dp = doel_pad(u)
+        if dp: au_pad[dp] = pid
+au_terug = set()
+def zoek_pid(r):
+    link = r.get('link') or r.get('url') or ''
+    pid = per_awin.get(awin_p(link)) if awin_p(link) else None
+    if not pid: pid = per_md5.get(hashlib.md5(link.encode()).hexdigest()[:10]) if link else None
+    w = ''
+    if not pid:
+        w = url_sleutel(r.get('winkelUrl') or re.sub(r'^.*[?&](?:r|u|url)=', '', link) if link else '')
+        try: w = url_sleutel(urllib.parse.unquote(w))
+        except Exception: pass
+        pid = per_url.get(w)
+    if not pid and link: pid = per_pad.get(doel_pad(link))
+    return pid, link, w
+def verwerk(naam, L, datum):
+    uit['bronnen'].append(naam); n = 0
+    for r in L:
+        pid, link, w = zoek_pid(r)
+        op_voorraad = str(r.get('voorraad', 'true')).lower() not in ('false', '0', 'nee', 'no')
+        if not pid:
+            a = au_url.get(w) if w else None
+            if not a and link: a = au_pad.get(doel_pad(link))
+            if not a and r.get('winkelUrl'): a = au_pad.get(doel_pad(r['winkelUrl']))
+            if a and a not in au_terug and op_voorraad:
+                try: pr = round(float(r.get('prijs') or 0), 2)
+                except (TypeError, ValueError): pr = 0
+                if pr > 0: au_terug.add(a); uit['terug'].append({'id': a, 'prijs': pr, 'bron': naam, 'feedDatum': datum})
+            continue
+        if pid in gevonden_tt: continue
+        gevonden_tt.add(pid); n += 1; uit['feedDatum'][pid] = datum
+        prijsverschil(pid, P[pid]['prijs'], r.get('prijs'))
+        if not op_voorraad: uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': naam})
+    if n: print(naam, n, 'producten teruggevonden', flush=True)
 # 8-11-2026: nieuwste bestanden eerst (een product telt maar één keer, dus de verste prijs moet winnen)
 for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, reverse=True):
     naam = os.path.basename(f)
@@ -129,23 +189,29 @@ for f in sorted(glob.glob(os.path.join(TTF, '*.json')), key=os.path.getmtime, re
     try: L = json.load(open(f, encoding='utf-8'))
     except Exception: continue
     if isinstance(L, dict): L = L.get('producten') or L.get('items') or []
-    uit['bronnen'].append(naam); n = 0
-    for r in L:
-        link = r.get('link') or r.get('url') or ''
-        pid = per_awin.get(awin_p(link)) if awin_p(link) else None
-        if not pid: pid = per_md5.get(hashlib.md5(link.encode()).hexdigest()[:10]) if link else None
-        if not pid:
-            w = url_sleutel(r.get('winkelUrl') or re.sub(r'^.*[?&](?:r|u|url)=', '', link) if link else '')
-            try:
-                import urllib.parse; w = url_sleutel(urllib.parse.unquote(w))
-            except Exception: pass
-            pid = per_url.get(w)
-        if not pid and link: pid = per_pad.get(doel_pad(link))
-        if not pid or pid in gevonden_tt: continue
-        gevonden_tt.add(pid); n += 1; uit['feedDatum'][pid] = feed_datum(f)
-        prijsverschil(pid, P[pid]['prijs'], r.get('prijs'))
-        if str(r.get('voorraad', 'true')).lower() in ('false', '0', 'nee', 'no'): uit['uitverkocht'].append({'id': pid, 'titel': P[pid]['titel'][:70], 'bron': naam})
-    if n: print(naam, n, 'producten teruggevonden', flush=True)
+    verwerk(naam, L, feed_datum(f))
+# 21-11-2026: daarna de Superkeurkamer-feeds (ververst om 05:10), alleen van winkels waar nog producten van niet teruggevonden zijn,
+# en alleen als het bestand hooguit 2 dagen oud is. Nooit de winkels die naar dailyathome.nl verhuisden (links dood).
+DOOD = {'kadoversturen', 'animalsgiftshop', 'cartoonmegastore', 'surpriseswinkel', 'handpoppenwinkel', 'speelgoedpostorder', 'bandanawinkel',
+        'bigsizeshirts', 'spaarpottenwinkel', 'fashionstore', 'aliexpress', 'laredoute', 'yesgifts'}
+def winkelnaam(x):
+    x = re.sub(r'[^a-z0-9]', '', str(x or '').lower())
+    return re.sub(r'(nl|com|eu)$', '', x) if len(x) > 6 else x
+nodig = collections.Counter(winkelnaam(p['shop']) for pid, p in tt_live.items() if pid not in gevonden_tt)
+for a in AU.values():
+    if a.get('bron') == 'feed': nodig[winkelnaam(a.get('shop'))] += 1
+uit['skk'] = {}
+if os.path.isdir(SKK):
+    for f in sorted(glob.glob(os.path.join(SKK, '*.json'))):
+        w = os.path.basename(f)[:-5]
+        if w in DOOD: continue
+        sleutel = winkelnaam(w)
+        if not nodig.get(sleutel) and not nodig.get(w): continue
+        if (datetime.date.today() - datetime.date.fromisoformat(feed_datum(f))).days > 2: continue
+        try: d = json.load(open(f, encoding='utf-8'))
+        except Exception: continue
+        L = [{'link': p.get('l') or '', 'winkelUrl': p.get('u') or '', 'prijs': p.get('p'), 'voorraad': 'true' if p.get('st') else 'false'} for p in d.get('producten', [])]
+        voor = len(gevonden_tt); verwerk('superkeurkamer/' + w, L, feed_datum(f)); uit['skk'][w] = len(gevonden_tt) - voor
 uit['gecontroleerd'] += len(gevonden_tt)
 uit['gezien'] = sorted(set(gevonden) | set(gevonden_tt))  # 8-11-2026: welke producten vandaag in een feed teruggevonden zijn (voor de controledatum)
 for pid, p in tt_live.items():
