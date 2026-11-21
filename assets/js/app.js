@@ -663,9 +663,24 @@
     var voor = [], na = []; l.forEach(function (p) { (isSieraad(p) ? na : voor).push(p); });
     return na.length && voor.length ? voor.concat(na) : l;
   }
+  /* MEEST GEZOCHT BOVENAAN (21-11-2026, opdracht Marius: 'zoek per subcategorie de 3 meest gezochte producten en zet die bovenaan').
+     Op elke groep en elk vakje (/c/...) staan eerst de 3 cadeaus waar in Nederland het meest op gezocht wordt in Google (LK_GEZOCHT in
+     topkeuze.js, gemaakt met scripts/seo/gezocht.js; per pagina 5 kandidaten, de eerste 3 die op de pagina staan tellen). Daarna de vaste
+     top en de rest zoals altijd. Alleen bij 'Aanbevolen'. Uit: window.LK_GEZOCHT_UIT = true of ?proef=gezocht-uit (weer aan: ?proef=gezocht). */
+  var GEZOCHT_UIT = (function () { try { var q = location.search; if (/proef=gezocht-uit/.test(q)) sessionStorage.setItem('lkgezocht-uit', '1'); else if (/proef=gezocht(&|$)/.test(q)) sessionStorage.removeItem('lkgezocht-uit'); return sessionStorage.getItem('lkgezocht-uit') === '1'; } catch (e) { return false; } })();
+  function gezochtEerst(l, sleutel) {
+    if (GEZOCHT_UIT || window.LK_GEZOCHT_UIT === true || !window.LK_GEZOCHT || !sleutel) return l;
+    var ids = window.LK_GEZOCHT[String(sleutel).replace(/\/$/, '')];
+    if (!ids || !ids.length) return l;
+    var plek = {}; l.forEach(function (p, i) { plek[p.id] = i; });
+    var voor = [], gezien = {};
+    for (var i = 0; i < ids.length && voor.length < 3; i++) if (plek[ids[i]] !== undefined && !gezien[ids[i]]) { voor.push(l[plek[ids[i]]]); gezien[ids[i]] = 1; }
+    if (!voor.length) return l;
+    return voor.concat(l.filter(function (p) { return !gezien[p.id]; }));
+  }
   function sorteer(lijst, hoe, sleutel) {
     var l = kmUit(lijst.slice(), sleutel);
-    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return bovenaan(m || mix(l), sleutel); }
+    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return gezochtEerst(bovenaan(m || mix(l), sleutel), sleutel); }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
@@ -680,7 +695,7 @@
   /* 'Aanbevolen': een mooie mix. Favorieten eerst, daarna goedkoop en duur door elkaar,
      verschillende winkels om en om, nieuwe producten iets naar voren.
      De volgorde schuift elke week een beetje, zodat nieuwe producten vanzelf meedoen. */
-  var WINKEL_VERKOOPT = { 'Ditverzinjeniet': 1, 'Dille & Kamille': 1, 'HEMA': 1, 'Amazon': 1, 'Doenkado': 1 }; /* winkels waar bij ons echt gekocht is (12-11-2026; Doenkado 20-11-2026) */
+  var WINKEL_VERKOOPT = { 'Dille & Kamille': 1, 'HEMA': 1, 'Amazon': 1, 'Doenkado': 1 }; /* winkels waar bij ons echt gekocht is (12-11-2026; Doenkado 20-11-2026). 21-11-2026: Ditverzinjeniet eruit (Marius: 'omdat wij cadeaus verkochten van Ditverzinjeniet betekent niet dat iedereen daarop zit te wachten') */
   function mixGetal(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return ((h >>> 0) % 100000) / 100000; }
   /* 3.0 (5-11-2026, Marius en Nova): 'Aanbevolen' = de beste, meest gezochte cadeaus bovenaan, goed gemixt.
      p.rang komt uit scripts/boom/rang.py (cadeau-niveau van het vakje, wat klanten graag willen, toppers, nieuwe toppers, echte kliks).
