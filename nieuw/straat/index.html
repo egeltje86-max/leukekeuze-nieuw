@@ -159,6 +159,8 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
 .stand b{color:var(--marine)}
 .stand a,.stand .link{color:var(--dgoud);font-weight:700}
 .stand .link{background:none;border:0;padding:0;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.stand a,.stand .link{display:inline-block;padding-block:11px}
+.logo{min-height:44px;display:inline-flex;align-items:center}
 .kies{scroll-margin-top:70px}
 .top-etalage{background:#FFF9EE;border:1px solid #EEDDB8;border-radius:18px;padding:14px 10px 10px;margin-top:14px}
 .straat-titel{font:700 20px/1.2 "Playfair Display",Georgia,serif;margin:26px 0 0;color:var(--marine)}
@@ -335,9 +337,9 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
       ] },
     { id: 'christelijk', naam: 'De Christelijke boekwinkel', zin: 'Bijbels, doopcadeaus, kerststallen en teksten voor aan de muur.', k: '#23395B', ic: 'christelijk',
       gangen: [
-        { naam: 'Doop & belijdenis', g: 'christelijk/doop-belijdenis-kinderen' }, { naam: 'Bijbels & boeken', g: 'christelijk/bijbels-boeken' },
-        { naam: 'Kerst', g: 'christelijk/kerst' }, { naam: 'Teksten aan de muur', g: 'christelijk/wanddecoratie-teksten' },
-        { naam: 'Sieraden', g: 'christelijk/sieraden' }
+        { naam: 'Doop & belijdenis', g: 'christelijk/doop-belijdenis-kinderen', ic: 'images/sub/rond/chr-doop-belijdenis.webp' }, { naam: 'Bijbels & boeken', g: 'christelijk/bijbels-boeken', ic: 'images/sub/rond/chr-bijbels-psalmboeken.webp' },
+        { naam: 'Kerst', g: 'christelijk/kerst', ic: 'images/sub/rond/chr-kerst.webp' }, { naam: 'Teksten aan de muur', g: 'christelijk/wanddecoratie-teksten', ic: 'images/sub/rond/chr-wanddecoratie-teksten.webp' },
+        { naam: 'Sieraden', g: 'christelijk/sieraden', ic: 'images/sub/rond/chr-sieraden.webp' }
       ] }
   ].filter(function (w) { return inSeizoen(w.seizoen); });
 
@@ -494,6 +496,9 @@ body{background:linear-gradient(180deg,#EFE6D6 0,#F7F3EC 420px) no-repeat,#F7F3E
     var uit = { pr: pr, max: max, open: open, dicht: dicht, totaal: Object.keys(alleUit).length, etalage: spreid(etalage) };
     CACHE[sleutel] = uit; return uit;
   }
+
+  /* Voor het dossier en tests: de winkels en de berekening per persoon zijn van buiten te lezen (alleen in dit voorbeeld). */
+  window.LK_STRAAT = { winkels: WINKELS, staat: function (wie, max) { return staat(wie || '', max || 0); }, pers: PERS, gangIcoon: gangIcoon, rond: rond };
 
   /* ===== Adressen: #voor-tiener-tot-25, #winkel-gamewinkel-voor-tiener-tot-25, #tot-10 ===== */
   function adres(winkelId, wie, max) {
