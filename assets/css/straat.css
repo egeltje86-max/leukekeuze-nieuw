@@ -334,3 +334,21 @@ html.combi .sh .gang-voet{flex-direction:column;align-items:stretch}
 .lade-thema button small{font-size:11.5px;color:#5F667A}
 .lade-thema button[aria-pressed="true"]{background:#0A1020;border-color:#0A1020;color:#fff}
 .lade-thema button[aria-pressed="true"] small{color:#E5D7BE}
+
+/* ===== COMBI DONKERE KOP (22-11-2026, Marius: 'laten we de kleuren iets minder donker maken en de huidige lichte balk boven ook donker').
+   In de lichte versie zijn de kop (logo, menu, hartje) en de strook met het zoekvak samen één donker blok in een zachter marineblauw (#1F2B48 in plaats van #0A1020);
+   het zoekvak zelf blijft wit. De drie aftellers zijn iets lichter. In de donkere versie verandert hier niets (die heeft zijn eigen palet in scripts/donker/maak.js).
+   Terug: dit blok weghalen. ===== */
+html.combi:not(.donker) body .header{background:#1F2B48;border-bottom:0;box-shadow:none}
+html.combi:not(.donker) body .logo{color:#fff}
+html.combi:not(.donker) body .logo .k{color:#F2CB74}
+html.combi:not(.donker) body .header .icoonknop{color:#F4ECDD}
+html.combi:not(.donker) body .header .icoonknop:hover{background:rgba(255,255,255,.10);color:#F2CB74}
+html.combi:not(.donker) body .hoofdnav a,html.combi:not(.donker) body .hoofdnav button{color:#F4ECDD}
+html.combi:not(.donker) body .hoofdnav a:hover,html.combi:not(.donker) body .hoofdnav button:hover,html.combi:not(.donker) body .hoofdnav [aria-expanded="true"],html.combi:not(.donker) body .hoofdnav [aria-current="page"]{color:#F2CB74}
+html.combi:not(.donker) body .zoekrij{background:#1F2B48;border-bottom:2px solid #C99434}
+html.combi:not(.donker) body .zoekrij .zoek{background:#fff;border:1px solid rgba(242,203,116,.55);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+html.combi body .aftel3 .a3-bf{background:radial-gradient(120% 140% at 50% 0%,#36477C 0%,#24325C 55%,#192442 100%)}
+html.combi body .aftel3 .a3-sint{background:radial-gradient(120% 140% at 50% 0%,#A2293C 0%,#7A1A2C 55%,#581222 100%)}
+html.combi body .aftel3 .a3-kerst{background:radial-gradient(120% 140% at 50% 0%,#317F50 0%,#215C39 55%,#174129 100%)}
+/* ===== einde COMBI DONKERE KOP ===== */

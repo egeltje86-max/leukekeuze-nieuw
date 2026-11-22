@@ -57,7 +57,8 @@ function schrijf(c) {
 }
 const metA = (hex, a) => { const c = lees(hex); c.a = a; return c; };
 /* Het donkere palet (gebaseerd op het oude donkere LeukeKeuze: stijl.css --bg #0A1020, --kaart #121B2F, goud #D9A848, tekst #F4ECDD) */
-const P = { pagina: '#0D1322', kaart: '#161F33', hoger: '#1D2740', hoogst: '#26314D', marine: '#17244A', tekst: '#EEE7DA', tekst2: '#C3C8D4', tekst3: '#A3AABA', rand: '#2B3550' };
+/* 22-11-2026 (Marius: 'laten we de kleuren iets minder donker maken'): pagina, kaarten en randen een stapje lichter (was #0D1322, #161F33, #1D2740, #26314D, #2B3550). */
+const P = { pagina: '#141C2F', kaart: '#1C263C', hoger: '#232E47', hoogst: '#2C3854', marine: '#1C2A52', tekst: '#EEE7DA', tekst2: '#C3C8D4', tekst3: '#A3AABA', rand: '#33405E' };
 
 const kleurrijk = (x) => x.s >= .5 && x.c >= .2 && x.l >= .28 && x.l <= .84;          /* goud, rood, groen, licht goud: blijft */
 function achtergrond(c) {
@@ -222,6 +223,7 @@ function regels(lijst, inSprong) {
   for (const n of lijst) {
     if (n.kids) { const k = regels(n.kids, inSprong + ' '); if (k.length) uit.push(n.at + '{\n' + k.join('\n') + '\n}'); continue; }
     if (/(^|[\s,])(@|from|to|\d+%)\s*$/.test(n.sel)) continue;
+    if (/:not\(\.donker\)/.test(n.sel)) continue;   /* regels die alleen voor de lichte versie zijn (bijv. COMBI DONKERE KOP) */
     const bg = soortAchtergrond(n.decls), nieuw = [], behoud = BEHOUD.test(n.sel);
     for (const d of n.decls) {
       const rol = ROL(d.p); if (!rol) continue;

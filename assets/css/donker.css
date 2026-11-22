@@ -1,8 +1,8 @@
 /* DONKERE VERSIE van LeukeKeuze, gemaakt door scripts/donker/maak.js (niet met de hand aanpassen; met de hand: scripts/donker/extra.css). */
-html.donker{color-scheme:dark;background:#0D1322}
-html.donker body{background:#0D1322;color:#EEE7DA}
+html.donker{color-scheme:dark;background:#141C2F}
+html.donker body{background:#141C2F;color:#EEE7DA}
 /* ---- uit assets/css/stijl.css ---- */
-html.donker body{background:#0d1322;color:#eee7da}
+html.donker body{background:#141c2f;color:#eee7da}
 html.donker :focus-visible{outline:2px solid #b8862e}
 html.donker .spring{background:#1f2d52;color:#ffffff}
 html.donker .spring:focus{outline:3px solid #c9a23a}
@@ -13,18 +13,18 @@ html.donker .header{background:rgba(22,35,71,0.93);border-bottom:1px solid rgba(
 html.donker .logo{color:#ffffff}
 html.donker .logo .k{color:#dfbb7d}
 html.donker .icoonknop{color:#eee7da}
-html.donker .icoonknop:hover{background:rgba(22,31,51,0.06);color:#dfbb7d}
+html.donker .icoonknop:hover{background:rgba(28,38,60,0.06);color:#dfbb7d}
 html.donker .teller{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
 @media (min-width: 1024px){
 html.donker .hoofdnav a,html.donker .hoofdnav button{color:#eee7da}
 html.donker .hoofdnav a:hover,html.donker .hoofdnav button:hover,html.donker .hoofdnav [aria-expanded="true"],html.donker .hoofdnav [aria-current="page"]{color:#dfbb7d}
 }
-html.donker .megamenu{background:#161f33;border-bottom:1px solid rgba(255,255,255,0.152);box-shadow:0 30px 60px rgba(0,0,0,0.6)}
+html.donker .megamenu{background:#1c263c;border-bottom:1px solid rgba(255,255,255,0.152);box-shadow:0 30px 60px rgba(0,0,0,0.6)}
 html.donker .megamenu h3 a{color:#dfbb7d}
 html.donker .megamenu li a{color:#c3c8d4}
 html.donker .megamenu li a:hover{color:#eee7da}
 html.donker .lade-bg{background:rgba(14,21,37,0.6)}
-html.donker .lade{background:#161f33;border-right:1px solid rgba(255,255,255,0.152)}
+html.donker .lade{background:#1c263c;border-right:1px solid rgba(255,255,255,0.152)}
 html.donker .lade-kop{border-bottom:1px solid rgba(255,255,255,0.108)}
 html.donker .lade-uitgelicht{border:1px solid rgba(184,134,46,0.6);background:linear-gradient(135deg, rgba(217,168,72,0.18), rgba(217,168,72,0.04))}
 html.donker .lade-uitgelicht .rond{background:rgba(217,168,72,0.15);color:#dfbb7d}
@@ -43,24 +43,24 @@ html.donker .knop-goud{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 10
 html.donker .knop-goud:hover{box-shadow:0 8px 28px rgba(0,0,0,0.6)}
 html.donker .knop-rand{border:1px solid rgba(184,134,46,0.6);color:#dfbb7d}
 html.donker .knop-rand:hover{background:rgba(217,168,72,0.08)}
-html.donker .knop[disabled],html.donker .knop.uit{background:rgba(22,31,51,0.07);color:#a3aaba}
-html.donker .chip{border:1px solid rgba(43,53,80,0.18);color:#eee7da;background:rgba(255,255,255,0.14)}
+html.donker .knop[disabled],html.donker .knop.uit{background:rgba(28,38,60,0.07);color:#a3aaba}
+html.donker .chip{border:1px solid rgba(51,64,94,0.18);color:#eee7da;background:rgba(255,255,255,0.14)}
 html.donker .chip:hover{border-color:rgba(184,134,46,0.6);color:#dfbb7d}
 html.donker .chip:is([aria-pressed="true"],[aria-current="true"]),html.donker .chip.actief{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
-html.donker .zoek{background:#0d1322;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+html.donker .zoek{background:#141c2f;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
 html.donker .zoek svg.lp{color:#c3c8d4}
 html.donker .zoek input{color:#eee7da}
 html.donker .zoek input::placeholder{color:#999ca3}
 html.donker .zoek button{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
 html.donker .zoekrij{border-bottom:1px solid rgba(255,255,255,0.108);background:rgba(22,35,71,0.6)}
-html.donker .zoekrij .zoek{background:#161f33;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
-html.donker .zoek-tips{background:#161f33;box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+html.donker .zoekrij .zoek{background:#1c263c;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+html.donker .zoek-tips{background:#1c263c;box-shadow:0 18px 40px rgba(0,0,0,0.6)}
 html.donker .zoek-tips a{color:#eee7da}
-html.donker .zoek-tips a:hover,html.donker .zoek-tips a:focus{background:#1d2740}
-html.donker .zoek-tips img{background:#161f33}
+html.donker .zoek-tips a:hover,html.donker .zoek-tips a:focus{background:#232e47}
+html.donker .zoek-tips img{background:#1c263c}
 html.donker .zoek-tips .zt-prijs{color:#f0d8a6}
 html.donker .zoek-tips .zt-alles{border-top:1px solid rgba(217,168,72,0.3);color:#f0d8a6}
-html.donker .hero{background:#0d1322}
+html.donker .hero{background:#141c2f}
 html.donker .hero::after{background:linear-gradient(180deg, rgba(10,16,32,0) 22%, rgba(10,16,32,.75) 48%, #F7F3EC 70%)}
 html.donker .kicker{color:#dfbb7d}
 html.donker .hero h1 em{color:#dfbb7d}
@@ -81,19 +81,19 @@ html.donker .vonk-kaart .rond-pijl{background:linear-gradient(180deg, #F4D07D 0%
 html.donker .vonk-punten{color:#c3c8d4}
 html.donker .vonk-punten svg{color:#dfbb7d}
 }
-html.donker .catknop{border:1px solid rgba(255,255,255,0.174);background:#1d2740}
+html.donker .catknop{border:1px solid rgba(255,255,255,0.174);background:#232e47}
 html.donker .catknop svg{color:#dfbb7d}
-html.donker .catknop:hover{border-color:rgba(184,134,46,0.6);background:#1d2740}
+html.donker .catknop:hover{border-color:rgba(184,134,46,0.6);background:#232e47}
 html.donker .catknop.actief{border-color:#b8862e;box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.374);color:#dfbb7d}
-html.donker .catkaart{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .catkaart{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .catkaart:hover{border-color:rgba(184,134,46,0.6)}
-html.donker .catkaart .beeld{background:#1d2740}
+html.donker .catkaart .beeld{background:#232e47}
 html.donker .catkaart .beeld svg{color:#dfbb7d}
 html.donker .catkaart p{color:#c3c8d4}
 html.donker .catkaart .rond-pijl{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
-html.donker .prodkaart{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .prodkaart{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .prodkaart:hover{border-color:rgba(184,134,46,0.6)}
-html.donker .prodkaart .beeld{background:#1d2740}
+html.donker .prodkaart .beeld{background:#232e47}
 html.donker .prodkaart .beeld > svg{color:#dfbb7d}
 html.donker .hartje{background:rgba(22,35,71,0.6);color:#ffffff}
 html.donker .hartje[aria-pressed="true"]{color:#dfbb7d}
@@ -101,9 +101,9 @@ html.donker .prodkaart .shop{color:#dfbb7d}
 html.donker .prijs{color:#eee7da}
 html.donker .label{background:rgba(22,35,71,0.72);color:#dfbb7d;border:1px solid rgba(255,255,255,0.152)}
 html.donker .label.vol{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
-html.donker .leeg{border:1px dashed rgba(255,255,255,0.152);color:#c3c8d4;background:#161f33}
+html.donker .leeg{border:1px dashed rgba(255,255,255,0.152);color:#c3c8d4;background:#1c263c}
 html.donker .leeg strong{color:#eee7da}
-html.donker .stap{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .stap{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .stap .nr{border:1px solid rgba(184,134,46,0.6);color:#dfbb7d}
 html.donker .stap p{color:#c3c8d4}
 html.donker .paginakop{border-bottom:1px solid rgba(255,255,255,0.108)}
@@ -113,15 +113,15 @@ html.donker .paginakop p{color:#c3c8d4}
 html.donker .kruimel{color:#a3aaba}
 html.donker .kruimel a{color:#c3c8d4}
 html.donker .kruimel a:hover{color:#dfbb7d}
-html.donker .subkaart .rond{border:2px solid rgba(255,255,255,0.152);background:#1d2740}
+html.donker .subkaart .rond{border:2px solid rgba(255,255,255,0.152);background:#232e47}
 html.donker .subkaart .rond svg{color:#dfbb7d}
 html.donker .subkaart:hover .rond{border-color:rgba(184,134,46,0.6)}
 html.donker .subkaart.actief .rond{border-color:#b8862e;box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.374)}
 html.donker .subkaart.actief{color:#dfbb7d}
 html.donker .aantal{color:#c3c8d4}
-html.donker .sorteer select{background:#161f33;color:#eee7da;border:1px solid rgba(255,255,255,0.108)}
+html.donker .sorteer select{background:#1c263c;color:#eee7da;border:1px solid rgba(255,255,255,0.108)}
 html.donker .sorteer svg{color:#dfbb7d}
-html.donker .product-beeld{border:1px solid rgba(255,255,255,0.108);background:#1d2740}
+html.donker .product-beeld{border:1px solid rgba(255,255,255,0.108);background:#232e47}
 html.donker .product-beeld > svg{color:#dfbb7d}
 html.donker .product-info .shop{color:#dfbb7d}
 html.donker .product-info .prijsnoot{color:#a3aaba}
@@ -132,10 +132,10 @@ html.donker .waarom p{color:#eee7da}
 html.donker .feiten{color:#c3c8d4}
 html.donker .feiten svg{color:#dfbb7d}
 html.donker .feiten a{color:#dfbb7d}
-html.donker .vonk-stapjes span{background:rgba(22,31,51,0.1)}
+html.donker .vonk-stapjes span{background:rgba(28,38,60,0.1)}
 html.donker .vonk-stapjes span.aan{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%)}
-html.donker .keuze{border:1px solid rgba(255,255,255,0.174);background:#1d2740}
-html.donker .keuze:hover{border-color:rgba(184,134,46,0.6);background:#1d2740}
+html.donker .keuze{border:1px solid rgba(255,255,255,0.174);background:#232e47}
+html.donker .keuze:hover{border-color:rgba(184,134,46,0.6);background:#232e47}
 html.donker .keuze[aria-pressed="true"]{border-color:#b8862e;box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.374);color:#dfbb7d}
 html.donker .vonk-terug{color:#c3c8d4}
 html.donker .vonk-noot{color:#c3c8d4}
@@ -155,16 +155,16 @@ html.donker .footer-onder .binnen{color:#a3aaba}
 html.donker .onderbalk{background:rgba(19,32,63,0.96);border-top:1px solid rgba(255,255,255,0.152)}
 html.donker .onderbalk a,html.donker .onderbalk button{color:#a3aaba}
 html.donker .onderbalk [aria-current="page"]{color:#dfbb7d}
-html.donker .toast{background:#1d2740;border:1px solid rgba(184,134,46,0.6);color:#eee7da}
-html.donker .prodkaart .beeld.echt,html.donker .product-beeld.echt{background:#161f33}
+html.donker .toast{background:#232e47;border:1px solid rgba(184,134,46,0.6);color:#eee7da}
+html.donker .prodkaart .beeld.echt,html.donker .product-beeld.echt{background:#1c263c}
 html.donker .prijs s.oud{color:var(--tekst-zacht, #969ba6)}
-html.donker .winkelkaart{border:1px solid rgba(255,255,255,0.174);background:#1d2740}
-html.donker .winkelkaart:hover{border-color:rgba(184,134,46,0.6);background:#1d2740}
+html.donker .winkelkaart{border:1px solid rgba(255,255,255,0.174);background:#232e47}
+html.donker .winkelkaart:hover{border-color:rgba(184,134,46,0.6);background:#232e47}
 html.donker .winkelkaart strong{color:#dfbb7d}
 html.donker .winkelkaart span{color:#c3c8d4}
 html.donker .winkelkaart em{color:#eee7da}
 html.donker .winkelkaart em svg{color:#dfbb7d}
-html.donker .winkelfotos{background:#161f33}
+html.donker .winkelfotos{background:#1c263c}
 html.donker .naarboven{background:rgba(22,35,71,0.82);color:#dfbb7d;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
 html.donker .naarboven .spoor{stroke:rgba(222,179,95,0.18)}
 html.donker .naarboven .vulling{stroke:#dfbb7d}
@@ -176,9 +176,9 @@ html.donker .actie:hover{border-color:rgba(184,134,46,0.6)}
 html.donker .actie .kicker{color:#dfbb7d}
 html.donker .actie h3{color:#eee7da}
 html.donker .actie p{color:#c3c8d4}
-html.donker .catmini a{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .catmini a{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .catmini a:hover{border-color:rgba(184,134,46,0.6)}
-html.donker .catmini .rond{border:1px solid rgba(255,255,255,0.152);background:#1d2740}
+html.donker .catmini .rond{border:1px solid rgba(255,255,255,0.152);background:#232e47}
 html.donker .catmini .rond svg{color:#dfbb7d}
 html.donker .catmini .naam{color:#eee7da}
 html.donker .catmini small{color:#a3aaba}
@@ -188,7 +188,7 @@ html.donker .alle-winkels .uitleg{color:#a3aaba}
 html.donker .aw-laden{color:#c3c8d4}
 html.donker .awkaart .shop{color:#dfbb7d}
 html.donker .awkaart .prijs{color:#eee7da}
-html.donker .awkaart .beeld{background:#161f33}
+html.donker .awkaart .beeld{background:#1c263c}
 html.donker .vonk-kaart.zoek-alle h2{color:#eee7da}
 html.donker .galerij-knop{border:1px solid rgba(255,255,255,0.185);background:rgba(22,35,71,0.72);color:#ffffff}
 html.donker .galerij-knop:hover{background:#b8862e;color:#0A1020}
@@ -197,10 +197,10 @@ html.donker .galerij-punten span.aan{background:#b8862e}
 html.donker .galerij-teller{background:rgba(22,35,71,0.72);color:#ffffff}
 html.donker .specs h2 svg{color:#dfbb7d}
 html.donker .specs dl{border:1px solid rgba(255,255,255,0.108)}
-html.donker .specs dl > div:nth-child(odd){background:rgba(22,31,51,0.03)}
+html.donker .specs dl > div:nth-child(odd){background:rgba(28,38,60,0.03)}
 html.donker .specs dt{color:#a3aaba}
 html.donker .specs-noot{color:#a3aaba}
-html.donker .etalage.eigen{background:linear-gradient(180deg, #1d2740, #161f33);border:1px solid rgba(184,134,46,0.6);box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.374)}
+html.donker .etalage.eigen{background:linear-gradient(180deg, #232e47, #1c263c);border:1px solid rgba(184,134,46,0.6);box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.374)}
 html.donker .aftel{color:#f7e7c1;border-bottom:1px solid rgba(217,168,72,0.45)}
 html.donker .aftel-sint{background:radial-gradient(120% 140% at 50% 0%, #7A1424 0%, #4A0C18 45%, #10162E 100%)}
 html.donker .aftel-kerst{background:radial-gradient(120% 140% at 50% 0%, #1E5A36 0%, #0F3A23 50%, #08160F 100%)}
@@ -210,7 +210,7 @@ html.donker .aftel-sint .aftel-getal{background:linear-gradient(180deg, #C42235,
 html.donker .aftel-kerst .aftel-getal{background:linear-gradient(180deg, #C42235, #7E0F1E)}
 html.donker .aftel-knop{color:#1A1206;background:linear-gradient(180deg, #F4D07D, #D9A443)}
 @media (min-width: 1024px){
-html.donker .catrij-pijl{border:1px solid rgba(184,134,46,0.6);background:#161f33;color:#dfbb7d}
+html.donker .catrij-pijl{border:1px solid rgba(184,134,46,0.6);background:#1c263c;color:#dfbb7d}
 html.donker .catrij-pijl:hover{border-color:#b8862e}
 }
 html.donker .aw-laadknop .uitleg{color:#a3aaba}
@@ -220,22 +220,22 @@ html.donker .product-plak{background:rgba(19,32,63,0.96);border-top:1px solid rg
 html.donker .filterknop{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020;box-shadow:0 10px 28px rgba(0,0,0,0.6)}
 html.donker .filter-teller{background:#162347;color:#dfbb7d}
 html.donker .filter-achter{background:rgba(255,255,255,0.14)}
-html.donker .filter-blad{background:#161f33;border-top:1px solid rgba(255,255,255,0.152)}
+html.donker .filter-blad{background:#1c263c;border-top:1px solid rgba(255,255,255,0.152)}
 html.donker .filter-sluit{color:#c3c8d4}
 html.donker .filter-blad h3{color:#dfbb7d}
 html.donker .footer-onder a{color:#c3c8d4}
 html.donker .gids h2{color:#dfbb7d}
 html.donker .gids p{color:#c3c8d4}
-html.donker .gidskaart{border:1px solid rgba(184,134,46,0.6);background:#161f33}
+html.donker .gidskaart{border:1px solid rgba(184,134,46,0.6);background:#1c263c}
 html.donker .gidskaart:hover{border-color:#b8862e}
-html.donker .gidsbeeld{background:#161f33}
+html.donker .gidsbeeld{background:#1c263c}
 html.donker .gidskaart small{color:#c3c8d4}
 html.donker .lees-ook{border:1px solid rgba(255,255,255,0.152);color:#c3c8d4}
 html.donker .lees-ook svg{color:#dfbb7d}
 html.donker .lees-ook span{color:#eee7da}
 html.donker .lees-ook a{color:#dfbb7d}
 html.donker .lees-ook a + a::before{color:#c3c8d4}
-html.donker .prodkaart .beeld.echt:not(.sfeer),html.donker .product-beeld.echt.studio{background:radial-gradient(120% 95% at 50% 28%, #161f33 0%, #1d2740 58%, #382e1e 100%)}
+html.donker .prodkaart .beeld.echt:not(.sfeer),html.donker .product-beeld.echt.studio{background:radial-gradient(120% 95% at 50% 28%, #1c263c 0%, #232e47 58%, #382e1e 100%)}
 html.donker .prodkaart .beeld.echt:not(.sfeer)::after,html.donker .product-beeld.echt.studio::after{background:radial-gradient(closest-side, rgba(90, 62, 30, .28), rgba(90, 62, 30, 0))}
 html.donker.feest body::before{background-image:radial-gradient(1.2px 1.2px at 12% 18%, rgba(255,240,200,.75), transparent 60%),
     radial-gradient(1px 1px at 68% 9%, rgba(255,255,255,.6), transparent 60%),
@@ -253,42 +253,42 @@ html.donker .lijst-deel{background:linear-gradient(135deg, rgba(217,168,72,0.12)
 html.donker .lijst-deel-tekst{color:var(--tekst-zacht, #c9cbd3)}
 html.donker .lijst-deel-tekst strong{color:#dfbb7d}
 html.donker .lijst-deel-velden label{color:var(--tekst-zacht, #c9cbd3)}
-html.donker .lijst-deel-velden input,html.donker .lijst-deel-velden select{background:rgba(22,31,51,0.06);border:1px solid rgba(184,134,46,0.6);color:#ffffff}
+html.donker .lijst-deel-velden input,html.donker .lijst-deel-velden select{background:rgba(28,38,60,0.06);border:1px solid rgba(184,134,46,0.6);color:#ffffff}
 html.donker .lijst-deel-velden select option{color:#eee7da}
 html.donker .knop-whatsapp{background:#25d366;color:#06301a}
 html.donker .knop-whatsapp:hover{background:#2fe375}
 html.donker .lijst-weg{color:#dfbb7d}
 html.donker .lijst-zelf{color:var(--tekst-zacht, #c9cbd3);border-top:1px solid rgba(255,255,255,0.152)}
 html.donker .lijst-zelf strong{color:#ffffff}
-html.donker .rond img[src*="images/producten/"]{background:#161f33}
+html.donker .rond img[src*="images/producten/"]{background:#1c263c}
 html.donker .persoon-subs .subkaart small{color:#c3c8d4}
-html.donker .groep{border:1px solid rgba(255,255,255,0.152);background:#1d2740}
+html.donker .groep{border:1px solid rgba(255,255,255,0.152);background:#232e47}
 html.donker .groep span{color:#ffffff;background:linear-gradient(transparent, rgba(8,14,30,.85))}
 html.donker .lade-personen a{color:#eee7da}
 html.donker .lade-personen img{border:2px solid rgba(255,255,255,0.152)}
 html.donker .deals-nav .chip[aria-current="page"]{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#141A2A;border-color:#b8862e}
-html.donker .code-kaart{border:1px solid rgba(255,255,255,0.152);background:#161f33;box-shadow:0 8px 24px rgba(0,0,0,0.194)}
+html.donker .code-kaart{border:1px solid rgba(255,255,255,0.152);background:#1c263c;box-shadow:0 8px 24px rgba(0,0,0,0.194)}
 html.donker .code-kaart.met-code{border-color:rgba(184,134,46,0.6)}
-html.donker .code-kop img{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .code-kop img{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .code-tijd{color:#a3aaba}
 html.donker .code-badge{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#141A2A}
 html.donker .code-kaart p{color:#c3c8d4}
 html.donker .code-knop{border:2px dashed #b8862e}
-html.donker .code-vak{background:#1d2740}
+html.donker .code-vak{background:#232e47}
 html.donker .code-actie{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#141A2A}
-html.donker .code-knop.wacht .code-actie{background:#1d2740;color:#c3c8d4}
+html.donker .code-knop.wacht .code-actie{background:#232e47;color:#c3c8d4}
 html.donker .code-voorwaarden{color:#a3aaba}
 html.donker .code-logo{background:#162347;color:#f2cb74}
-html.donker .zoek-ruim{background:#1d2740;color:#c3c8d4}
+html.donker .zoek-ruim{background:#232e47;color:#c3c8d4}
 /* ---- uit assets/css/licht.css ---- */
-html.donker body{background:#0d1322;color:#eee7da}
+html.donker body{background:#141c2f;color:#eee7da}
 html.donker .topbalk{background:#13203f;color:#bdb6a8}
 html.donker .topbalk svg{color:#deb35f}
 html.donker .header{background:#162347}
 html.donker .logo{color:#ffffff}
 html.donker .logo .k{color:#f2cb74}
 html.donker .icoonknop{color:#f4ecdd}
-html.donker .icoonknop:hover{background:rgba(22,31,51,0.08);color:#f2cb74}
+html.donker .icoonknop:hover{background:rgba(28,38,60,0.08);color:#f2cb74}
 html.donker .hoofdnav a,html.donker .hoofdnav button{color:#f4ecdd}
 html.donker .hoofdnav a:hover,html.donker .hoofdnav button:hover,html.donker .hoofdnav [aria-expanded="true"],html.donker .hoofdnav [aria-current="page"]{color:#f2cb74}
 html.donker .zoekrij{background:#162347}
@@ -304,29 +304,29 @@ html.donker .hero .kicker{color:#deb35f}
 html.donker .hero h1 em{color:#f2cb74}
 html.donker .hero p{color:#d9d2c4}
 html.donker .hero .populair > span{color:#f2cb74}
-html.donker .hero .chip{background:rgba(22,35,71,0.62);border-color:rgba(43,53,80,0.35);color:#ffffff}
+html.donker .hero .chip{background:rgba(22,35,71,0.62);border-color:rgba(51,64,94,0.35);color:#ffffff}
 html.donker .hero .chip:hover{background:rgba(22,35,71,0.8);border-color:#b8862e}
 @media (min-width: 760px){
 html.donker .hero::after{background:linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.75) 38%, rgba(10,16,32,.15) 70%, rgba(10,16,32,0) 100%)}
 }
-html.donker .lade{background:#161f33;color:#eee7da}
+html.donker .lade{background:#1c263c;color:#eee7da}
 html.donker .lade-uitgelicht{background:linear-gradient(135deg, rgba(184,134,46,0.14), rgba(184,134,46,0.04))}
-html.donker .megamenu{background:#161f33;box-shadow:0 24px 50px rgba(0,0,0,0.374)}
+html.donker .megamenu{background:#1c263c;box-shadow:0 24px 50px rgba(0,0,0,0.374)}
 html.donker .megamenu li a:hover{color:#eee7da}
-html.donker .chip{background:#161f33;border-color:rgba(255,255,255,0.196);color:#eee7da}
+html.donker .chip{background:#1c263c;border-color:rgba(255,255,255,0.196);color:#eee7da}
 html.donker .chip:hover{border-color:#b8862e;color:#e7c893}
 html.donker .chip:is([aria-pressed="true"],[aria-current="true"]),html.donker .chip.actief{background:#162347;color:#ffffff;border-color:#243a75}
-html.donker .tabs .chip:not([aria-pressed="true"]):not([aria-current="true"]){background:#161f33}
+html.donker .tabs .chip:not([aria-pressed="true"]):not([aria-current="true"]){background:#1c263c}
 html.donker .knop-goud{color:#eee7da;box-shadow:0 6px 18px rgba(0,0,0,0.554)}
 html.donker .knop-rand{border-color:#b8862e;color:#e7c893}
 html.donker .knop-rand:hover{background:rgba(184,134,46,0.08)}
-html.donker .knop[disabled],html.donker .knop.uit{background:#1d2740;color:#a3aaba}
-html.donker .prodkaart,html.donker .catkaart,html.donker .groep,html.donker .awkaart,html.donker .gidskaart{background:#161f33;border-color:rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker .knop[disabled],html.donker .knop.uit{background:#232e47;color:#a3aaba}
+html.donker .prodkaart,html.donker .catkaart,html.donker .groep,html.donker .awkaart,html.donker .gidskaart{background:#1c263c;border-color:rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
 html.donker .prodkaart:hover,html.donker .catkaart:hover{border-color:#b8862e}
-html.donker .prodkaart .beeld,html.donker .prodkaart .beeld.echt{background:#161f33}
+html.donker .prodkaart .beeld,html.donker .prodkaart .beeld.echt{background:#1c263c}
 html.donker .prodkaart .shop,html.donker .shop{color:#e7c893}
 html.donker .prodkaart .prijs,html.donker .product .prijs{color:#eee7da}
-html.donker .subkaart .rond{border-color:#2b3550;background:#161f33;box-shadow:0 3px 12px rgba(0,0,0,0.266)}
+html.donker .subkaart .rond{border-color:#33405e;background:#1c263c;box-shadow:0 3px 12px rgba(0,0,0,0.266)}
 html.donker .subkaart:hover .rond,html.donker .subkaart.actief .rond{border-color:#b8862e}
 html.donker .subkaart.actief{color:#e7c893}
 html.donker .persoon-subs .subkaart small{color:#a3aaba}
@@ -336,8 +336,8 @@ html.donker .sectie-kop .meer,html.donker .sectie-kop a{color:#e7c893}
 html.donker .actie{color:#f4ecdd}
 html.donker .actie h3{color:#ffffff}
 html.donker .actie p{color:#d9d2c4}
-html.donker .paginakop{background:#161f33}
-html.donker .paginakop::after{background:linear-gradient(90deg, rgba(13,19,34,0.95) 0%, rgba(13,19,34,0.8) 50%, rgba(13,19,34,0.5) 100%)}
+html.donker .paginakop{background:#1c263c}
+html.donker .paginakop::after{background:linear-gradient(90deg, rgba(20,28,47,0.95) 0%, rgba(20,28,47,0.8) 50%, rgba(20,28,47,0.5) 100%)}
 html.donker .paginakop h1{color:#eee7da}
 html.donker .paginakop p{color:#c3c8d4}
 html.donker .kruimel,html.donker .kruimel a{color:#a3aaba}
@@ -346,14 +346,14 @@ html.donker .vonk-kaart h2{color:#ffffff}
 html.donker .vonk-kaart p{color:#bdb6a8}
 html.donker .vonk-kaart .rond-pijl{color:#eee7da}
 html.donker .werkbalk .aantal{color:#c3c8d4}
-html.donker .sorteer select{color:#eee7da;background:#161f33}
-html.donker .filter-paneel,html.donker .toast{background:#161f33;color:#eee7da}
+html.donker .sorteer select{color:#eee7da;background:#1c263c}
+html.donker .filter-paneel,html.donker .toast{background:#1c263c;color:#eee7da}
 html.donker .specs dl > div:nth-child(odd){background:rgba(255,255,255,0.027)}
 html.donker .stap .nr{color:#eee7da}
-html.donker .stappen{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .stappen{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .alle-winkels .aw-brug{color:#e7c893;border-top-color:rgba(184,134,46,0.3)}
 html.donker .lees-ook span{color:#eee7da}
-html.donker .lijst-deel-velden input,html.donker .lijst-deel-velden select{background:#161f33;color:#eee7da}
+html.donker .lijst-deel-velden input,html.donker .lijst-deel-velden select{background:#1c263c;color:#eee7da}
 html.donker .lijst-zelf strong{color:#eee7da}
 html.donker .gids,html.donker .gids p{color:#c3c8d4}
 html.donker .gids h2{color:#eee7da}
@@ -364,7 +364,7 @@ html.donker .prodkaart{box-shadow:0 2px 10px rgba(0,0,0,0.14)}
 html.donker .prodkaart:hover{box-shadow:0 10px 26px rgba(0,0,0,0.23)}
 html.donker .knop-goud{background:linear-gradient(180deg, #F2CB74 0%, #D9A848 100%);border:1px solid #b8862e;color:#141A2A;box-shadow:0 4px 14px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.11)}
 html.donker .knop-goud:hover{background:linear-gradient(180deg, #F6D68A 0%, #E0B055 100%);box-shadow:0 8px 22px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.11)}
-html.donker .werkbalk{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .werkbalk{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .sorteer select{border:1px solid rgba(255,255,255,0.152)}
 html.donker .subkaarten .subkaart .rond{box-shadow:0 4px 14px rgba(0,0,0,0.302)}
 html.donker .collectie-banner{border:1px solid rgba(255,255,255,0.152);box-shadow:0 8px 24px rgba(0,0,0,0.194);color:#f4ecdd}
@@ -373,19 +373,19 @@ html.donker .collectie-tekst .kicker{color:#f2cb74}
 html.donker .collectie-tekst h2{color:#ffffff}
 html.donker .collectie-tekst p{color:#d9d2c4}
 html.donker .vonk-stapjes span{background:rgba(255,255,255,0.09)}
-html.donker .vonk-keuze,html.donker .vonk-optie{background:#161f33;border:1px solid rgba(255,255,255,0.152);color:#eee7da}
+html.donker .vonk-keuze,html.donker .vonk-optie{background:#1c263c;border:1px solid rgba(255,255,255,0.152);color:#eee7da}
 html.donker .vonk-keuze:hover,html.donker .vonk-optie:hover{border-color:#b8862e}
 html.donker .sectie-kop .kicker{color:#e7c893}
-html.donker .bedoel{background:#161f33;border:1px solid rgba(255,255,255,0.152);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
+html.donker .bedoel{background:#1c263c;border:1px solid rgba(255,255,255,0.152);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
 html.donker .bedoel svg{color:#e7c893}
 html.donker .bedoel small{color:#a3aaba}
-html.donker .bedoel.persoon{border-color:rgba(184,134,46,0.45);background:#161f33}
+html.donker .bedoel.persoon{border-color:rgba(184,134,46,0.45);background:#1c263c}
 html.donker .bedoel:hover{border-color:#b8862e}
-html.donker .zoek-tips .zt-pagina{background:#161f33}
+html.donker .zoek-tips .zt-pagina{background:#1c263c}
 html.donker .zoek-tips .zt-pagina + .zt-item:not(.zt-pagina){border-top:1px solid rgba(255,255,255,0.108)}
 html.donker .zoek-tips .zt-ic{color:#e7c893}
 html.donker .zoek-tips .zt-titel small{color:#a3aaba}
-html.donker .verder-knop{background:#161f33;border:1px solid rgba(255,255,255,0.152);box-shadow:0 2px 10px rgba(0,0,0,0.14);color:#eee7da}
+html.donker .verder-knop{background:#1c263c;border:1px solid rgba(255,255,255,0.152);box-shadow:0 2px 10px rgba(0,0,0,0.14);color:#eee7da}
 html.donker .verder-knop > svg{color:#e7c893}
 html.donker .verder-knop small{color:#a3aaba}
 html.donker .verder-knop .pijl{color:#a3aaba}
@@ -393,13 +393,13 @@ html.donker .verder-knop:hover{border-color:#b8862e}
 html.donker .werkbalk .voor-chips{border-bottom:1px dashed rgba(255,255,255,0.108)}
 html.donker .prodkaart .reden{color:#c3c8d4}
 html.donker .prodkaart .reden::before{color:#dfbb7d}
-html.donker .chip.verras{border-color:rgba(184,134,46,0.5);color:#e7c893;background:#161f33}
+html.donker .chip.verras{border-color:rgba(184,134,46,0.5);color:#e7c893;background:#1c263c}
 html.donker .paginakop.donker{background:radial-gradient(120% 140% at 100% 0%, rgba(217,168,72,.18), transparent 55%), #0A1020;border-bottom:1px solid rgba(217,168,72,0.35)}
 html.donker .paginakop.donker h1{color:#f4ecdd}
 html.donker .paginakop.donker h1::first-letter{color:#f2cb74}
 html.donker .paginakop.donker p{color:#bdb6a8}
 html.donker .paginakop.donker .kruimel,html.donker .paginakop.donker .kruimel a{color:#a7a5a0}
-html.donker .lijst-deel{background:#161f33;border:1px solid rgba(184,134,46,0.35);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker .lijst-deel{background:#1c263c;border:1px solid rgba(184,134,46,0.35);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
 html.donker .lijst-deel-tekst{color:#c3c8d4}
 html.donker .lijst-deel-tekst strong{color:#eee7da}
 html.donker .lijst-deel-velden label{color:#c3c8d4}
@@ -412,8 +412,8 @@ html.donker .lijst-kop p{color:#d9d2c4}
 html.donker .lijst-kop .lijst-gelegenheid{color:#ffffff}
 html.donker .lijst-kop .lijst-vraag{color:#ffffff}
 html.donker .sectie-kop p{color:#c3c8d4}
-html.donker .cadeaukaart{background:#161f33;border:1px solid rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
-html.donker .cadeaukaart .beeld{background:#161f33}
+html.donker .cadeaukaart{background:#1c263c;border:1px solid rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker .cadeaukaart .beeld{background:#1c263c}
 html.donker .cadeaukaart .shop{color:#e7c893}
 html.donker .cadeaukaart .prijs{color:#eee7da}
 html.donker .lijst-zelf{border-top:1px solid rgba(255,255,255,0.152);color:#c3c8d4}
@@ -427,19 +427,19 @@ html.donker .knop-groep .chips-titel{color:var(--grijs, #a3aaba)}
 html.donker .prodkaart .kleuren{color:#a3aaba}
 html.donker .prodkaart .kleuren i{border:1px solid rgba(255,255,255,0.22)}
 html.donker .prodkaart .kleuren i:nth-child(1){background:#c9a86a}
-html.donker .prodkaart .kleuren i:nth-child(2){background:#26314d}
+html.donker .prodkaart .kleuren i:nth-child(2){background:#2c3854}
 html.donker .prodkaart .kleuren i:nth-child(3){background:#222f59}
 html.donker .kleurkeuze p{color:#eee7da}
 html.donker .kleurkeuze p .klein{color:#a3aaba}
-html.donker .kleurstalen button{border:1.5px solid rgba(255,255,255,0.174);background:#161f33}
+html.donker .kleurstalen button{border:1.5px solid rgba(255,255,255,0.174);background:#1c263c}
 html.donker .kleurstalen button[aria-pressed="true"]{border-color:#b8862e;box-shadow:0 0 0 2px rgba(0,0,0,0.6)}
-html.donker .product-beeld.varianten .galerij-rij img{background:#161f33}
+html.donker .product-beeld.varianten .galerij-rij img{background:#1c263c}
 html.donker .maatkeuze p{color:#eee7da}
 html.donker .maatkeuze p.klein{color:#a3aaba}
-html.donker .maten button,html.donker .maten span{border:1.5px solid rgba(255,255,255,0.196);background:#161f33;color:#eee7da}
+html.donker .maten button,html.donker .maten span{border:1.5px solid rgba(255,255,255,0.196);background:#1c263c;color:#eee7da}
 html.donker .maten button:hover{border-color:#b8862e}
 html.donker .maten button[aria-pressed="true"]{background:#1f2d52;border-color:#314068;color:#ffffff}
-html.donker .maten span{background:#1d2740;color:#c3c8d4}
+html.donker .maten span{background:#232e47;color:#c3c8d4}
 html.donker .catkaart .lees-verder{color:#e7c893}
 html.donker .groep img[src*="-gw"],html.donker .catkaart .beeld img[src*="-gw"]{background:#022679}
 html.donker .groep:has(img[src*="-gw"]),html.donker .catkaart .beeld:has(img[src*="-gw"]){background:#022679}
@@ -456,7 +456,7 @@ html.donker .vonk-icoon{background:radial-gradient(circle at 35% 30%, #1B2742, #
 html.donker .vonk-waarom{color:#e5d2a9}
 html.donker .vonk-waarom svg{color:#dfbb7d}
 html.donker .vonk-typ label{color:#eee7da}
-html.donker .vonk-typ input{border:1.5px solid rgba(184,134,46,0.55);background:#161f33;color:#eee7da}
+html.donker .vonk-typ input{border:1.5px solid rgba(184,134,46,0.55);background:#1c263c;color:#eee7da}
 html.donker .vonk-typ input:focus{border-color:#b8862e;box-shadow:0 0 0 3px rgba(0,0,0,0.5)}
 html.donker .vonk-of{color:#a3aaba}
 html.donker .vonk-of::before,html.donker .vonk-of::after{background:rgba(184,134,46,0.3)}
@@ -466,12 +466,12 @@ html.donker .vonk-icoon{box-shadow:0 6px 20px rgba(0,0,0,0.446)}
 html.donker .vonk-home-icoon{box-shadow:0 4px 14px rgba(0,0,0,0.5)}
 html.donker .vonk-typ-home input{border-color:rgba(217,168,72,0.6)}
 html.donker .vonk-home-vragen{color:#e2b85a}
-html.donker .vonk-balk{background:rgba(13,19,34,0.96);border-bottom:1px solid rgba(184,134,46,0.2)}
+html.donker .vonk-balk{background:rgba(20,28,47,0.96);border-bottom:1px solid rgba(184,134,46,0.2)}
 html.donker .vlabel{background:#022679;color:#f4ecdd}
 html.donker .vlabel-weg{color:#e2b85a}
-html.donker .vonk-aanpassen{border:1.5px solid #b8862e;background:#161f33;color:#eee7da}
-html.donker .vonk-paneel-voet{background:#161f33}
-html.donker .vonk-leeg{background:#161f33;border:1px solid rgba(184,134,46,0.25)}
+html.donker .vonk-aanpassen{border:1.5px solid #b8862e;background:#1c263c;color:#eee7da}
+html.donker .vonk-paneel-voet{background:#1c263c}
+html.donker .vonk-leeg{background:#1c263c;border:1px solid rgba(184,134,46,0.25)}
 html.donker .vonk-leeg p{color:#c3c8d4}
 html.donker .vonk-paneel-voet{box-shadow:0 -8px 16px -10px rgba(0,0,0,0.32)}
 html.donker .vonk-tip{color:#c3c8d4}
@@ -481,41 +481,41 @@ html.donker .actie.actie-breed::before{background:linear-gradient(90deg, rgba(10
 @media (min-width: 900px){
 html.donker .actie.actie-breed::before{background:linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.6) 35%, rgba(10,16,32,0) 50%)}
 }
-html.donker .vonk-pers{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .vonk-pers{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .vonk-pers > svg{color:#dfbb7d}
 html.donker .vonk-pers label span{color:#eee7da}
-html.donker .vonk-pers select{border:1px solid #b8862e;color:#eee7da;background:#161f33 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23B8862E' stroke-width='2'/></svg>") no-repeat right 12px center}
+html.donker .vonk-pers select{border:1px solid #b8862e;color:#eee7da;background:#1c263c url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23B8862E' stroke-width='2'/></svg>") no-repeat right 12px center}
 html.donker .vonk-kaart.zoek-alle h2{color:#f4ecdd}
-html.donker .inapp-tip{border:1px solid #e6cf95;background:#0d1322;color:#eee7da}
+html.donker .inapp-tip{border:1px solid #e6cf95;background:#141c2f;color:#eee7da}
 html.donker .inapp-tip > svg{color:#e1bd7d}
 html.donker .inapp-stap{color:#e4d7b3}
-html.donker .werkbalk{background:#161f33;border:1px solid rgba(184,134,46,0.22);box-shadow:0 6px 18px -12px rgba(0,0,0,0.5)}
-html.donker .werkbalk .chip{background:#0d1322;color:#eee7da}
-html.donker .werkbalk .chip:hover{background:#161f33;border-color:#b8862e;color:#e7c893}
+html.donker .werkbalk{background:#1c263c;border:1px solid rgba(184,134,46,0.22);box-shadow:0 6px 18px -12px rgba(0,0,0,0.5)}
+html.donker .werkbalk .chip{background:#141c2f;color:#eee7da}
+html.donker .werkbalk .chip:hover{background:#1c263c;border-color:#b8862e;color:#e7c893}
 html.donker .werkbalk .chip:is([aria-pressed="true"],[aria-current="true"]){background:#162347;color:#f3d68a;border-color:#243a75}
-html.donker .werkbalk .chip.verras{background:#161f33;border-color:rgba(184,134,46,0.5);color:#e7c893}
+html.donker .werkbalk .chip.verras{background:#1c263c;border-color:rgba(184,134,46,0.5);color:#e7c893}
 html.donker .werkbalk .werkbalk-onder{border-top:1px solid rgba(255,255,255,0.097)}
 html.donker .werkbalk .aantal{color:#c3c8d4}
-html.donker .werkbalk .sorteer select{background:#0d1322}
+html.donker .werkbalk .sorteer select{background:#141c2f}
 @media all{
 html.donker .werkbalk .knop-groep,html.donker .werkbalk > .chips{border-bottom:1px dashed rgba(255,255,255,0.119)}
 html.donker .werkbalk .knop-groep .chips-titel{color:#a3aaba}
-html.donker .werkbalk > .chips::before{color:#a3aaba;background:#161f33}
+html.donker .werkbalk > .chips::before{color:#a3aaba;background:#1c263c}
 }
-html.donker .vakjesrij .chip{border:1.5px solid rgba(255,255,255,0.152);background:#161f33}
+html.donker .vakjesrij .chip{border:1.5px solid rgba(255,255,255,0.152);background:#1c263c}
 html.donker .vakjesrij .chip:is([aria-pressed="true"],[aria-current="true"]),html.donker .vakjesrij .chip.actief{background:linear-gradient(180deg, #F2CB74, #D9A848);color:#141A2A;border-color:#b8862e}
-html.donker .actief-label{background:#0d1322;border:1px solid rgba(184,134,46,0.45);color:#ebd9b1}
+html.donker .actief-label{background:#141c2f;border:1px solid rgba(184,134,46,0.45);color:#ebd9b1}
 html.donker .actief-label svg{background:rgba(184,134,46,0.18)}
 html.donker .actief-label:hover{background:#38301e}
 html.donker .actief-wis{color:#c3c8d4}
 @media (max-width: 759px){
 html.donker .mb-filter{background:linear-gradient(180deg, #1A2440, #0A1020);color:#ffffff;box-shadow:0 6px 16px -8px rgba(0,0,0,0.6)}
 html.donker .mb-teller{background:#b8862e;color:#141A2A}
-html.donker .mb-sorteer{background:#161f33;color:#eee7da;border:1.5px solid rgba(184,134,46,0.6)}
+html.donker .mb-sorteer{background:#1c263c;color:#eee7da;border:1.5px solid rgba(184,134,46,0.6)}
 html.donker .mb-sorteer .mb-pijl{color:#e7c893}
 }
 html.donker .subkaart.actief .subnaam{background:linear-gradient(180deg, #F2CB74, #D9A848);color:#141A2A;box-shadow:0 3px 8px -4px rgba(0,0,0,0.6)}
-html.donker .filter-voet{background:#161f33;box-shadow:0 -8px 16px -10px rgba(0,0,0,0.374)}
+html.donker .filter-voet{background:#1c263c;box-shadow:0 -8px 16px -10px rgba(0,0,0,0.374)}
 html.donker .subkaart .rond:has(img[src*="/iconen/icoon-"]){box-shadow:0 8px 18px -10px rgba(0,0,0,0.6)}
 html.donker .subkaart.actief .rond:has(img[src*="/iconen/icoon-"]){box-shadow:0 0 0 3px rgba(0,0,0,0.6), 0 8px 18px -8px rgba(0,0,0,0.6)}
 html.donker .catbalk{background:linear-gradient(180deg, #16213D 0%, #0A1124 100%);border:2px solid #c9a24a;box-shadow:0 6px 16px -8px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.018)}
@@ -532,7 +532,7 @@ html.donker .hero.hero-2026 .kicker{color:#f2cb74}
 html.donker .hero.hero-2026::after{background:linear-gradient(90deg, rgba(8,13,30,.95) 0%, rgba(8,13,30,.82) 45%, rgba(8,13,30,.3) 75%, rgba(8,13,30,.1) 100%)}
 }
 html.donker .catbalk-rond{box-shadow:0 0 0 1.5px rgba(0,0,0,0.6), 0 4px 10px -5px rgba(0,0,0,0.6)}
-html.donker .catrond{background:#161f33;border:1px solid rgba(184,134,46,0.2);box-shadow:0 6px 18px -12px rgba(0,0,0,0.6)}
+html.donker .catrond{background:#1c263c;border:1px solid rgba(184,134,46,0.2);box-shadow:0 6px 18px -12px rgba(0,0,0,0.6)}
 html.donker .catrond:hover{border-color:#b8862e}
 html.donker .catrond-beeld{box-shadow:0 6px 14px -8px rgba(0,0,0,0.6)}
 html.donker .catrond-naam{color:#eee7da}
@@ -544,25 +544,25 @@ html.donker .catbalk-rond{box-shadow:0 6px 14px -7px rgba(0,0,0,0.6)}
 html.donker .catbalk:hover .catbalk-rond{box-shadow:0 10px 18px -8px rgba(0,0,0,0.6)}
 html.donker .aftel-bf{background:radial-gradient(120% 140% at 50% 0%, #1A2240 0%, #0E1428 50%, #070B16 100%)}
 html.donker .aftel-bf .aftel-getal{background:linear-gradient(180deg, #E0B54A, #B8862E);color:#10162E}
-html.donker .hero-knoppen .knop-rand{background:rgba(22,35,71,0.62);border-color:rgba(43,53,80,0.5);color:#ffffff}
+html.donker .hero-knoppen .knop-rand{background:rgba(22,35,71,0.62);border-color:rgba(51,64,94,0.5);color:#ffffff}
 html.donker .hero-knoppen .knop-rand:hover{background:rgba(22,35,71,0.82);border-color:#c9a23a}
 html.donker .seizoen-kaart.klein::before{background:linear-gradient(180deg, rgba(10,16,32,.15) 0%, rgba(10,16,32,.85) 70%)}
 html.donker .gelegenheid-knopjes > span{color:#c3c8d4}
-html.donker .actie-kaart{background:#161f33;border:1px solid rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14);color:#eee7da}
+html.donker .actie-kaart{background:#1c263c;border:1px solid rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14);color:#eee7da}
 html.donker .actie-kaart:hover{border-color:#b8862e}
 html.donker .actie-badge{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
 html.donker .actie-winkel{color:#e7c893}
 html.donker .actie-kaart small{color:#c3c8d4}
-html.donker .eigen-link{border:1px solid rgba(217,168,72,0.45);background:linear-gradient(135deg, #161f33 0%, #0d1322 100%);color:#eee7da}
+html.donker .eigen-link{border:1px solid rgba(217,168,72,0.45);background:linear-gradient(135deg, #1c263c 0%, #141c2f 100%);color:#eee7da}
 html.donker .eigen-link:hover{border-color:#b8862e}
-html.donker .eigen-beeld img{background:#161f33}
+html.donker .eigen-beeld img{background:#1c263c}
 html.donker .eigen-tekst small{color:#c3c8d4}
 html.donker .keuzerond{color:#eee7da}
-html.donker .keuzerond .rond{border:2px solid rgba(255,255,255,0.108);background:#161f33;box-shadow:0 4px 12px -8px rgba(0,0,0,0.6)}
+html.donker .keuzerond .rond{border:2px solid rgba(255,255,255,0.108);background:#1c263c;box-shadow:0 4px 12px -8px rgba(0,0,0,0.6)}
 html.donker .keuzerond .rond svg{color:#dfbb7d}
 html.donker .keuzerond:hover .rond{border-color:#b8862e;box-shadow:0 6px 16px -8px rgba(0,0,0,0.6)}
 html.donker .keuzerond.actief .naam{background:linear-gradient(180deg, #F2CB74, #D9A848);color:#141A2A}
-html.donker .keuzes-meer{border:1.5px solid rgba(184,134,46,0.5);background:#161f33;color:#e7c893}
+html.donker .keuzes-meer{border:1.5px solid rgba(184,134,46,0.5);background:#1c263c;color:#e7c893}
 html.donker .keuzes-meer small{color:#c3c8d4}
 html.donker .sectie.verder h2{color:#c3c8d4}
 html.donker .tekstlinks a{color:#eee7da;text-decoration-color:rgba(223,187,125,0.55)}
@@ -572,29 +572,29 @@ html.donker .terug-link a{color:#eee7da;text-decoration-color:rgba(223,187,125,0
 html.donker .terug-link a svg{color:#e7c893}
 html.donker .terug-link a:hover{color:#e7c893}
 html.donker .lees-verder summary{color:#e7c893}
-html.donker .winkel-rij{background:#161f33;border:1px solid rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14);color:#eee7da}
+html.donker .winkel-rij{background:#1c263c;border:1px solid rgba(255,255,255,0.108);box-shadow:0 2px 10px rgba(0,0,0,0.14);color:#eee7da}
 html.donker .winkel-rij:hover{border-color:#b8862e}
-html.donker .winkel-logo{background:#161f33;border:1px solid rgba(255,255,255,0.108)}
+html.donker .winkel-logo{background:#1c263c;border:1px solid rgba(255,255,255,0.108)}
 html.donker .winkel-letter{background:linear-gradient(180deg, #F4D07D 0%, #D9A443 100%);color:#0A1020}
 html.donker .winkel-tekst small{color:#c3c8d4}
 html.donker .tekstpagina .springlinks a{color:#eee7da}
 html.donker .gids-meta{color:#c3c8d4}
 html.donker .gids-meta svg{color:#dfbb7d}
 html.donker .gids .gids-intro{color:#eee7da}
-html.donker .gids-top{background:linear-gradient(160deg, #0d1322 0%, #161f33 70%);border:1px solid rgba(184,134,46,0.35);box-shadow:0 6px 22px rgba(0,0,0,0.158)}
+html.donker .gids-top{background:linear-gradient(160deg, #141c2f 0%, #1c263c 70%);border:1px solid rgba(184,134,46,0.35);box-shadow:0 6px 22px rgba(0,0,0,0.158)}
 html.donker .gt-kop > svg{color:#fff;background:linear-gradient(180deg, #F2CB74, #D9A848)}
 html.donker .gt-kop h2{color:#eee7da}
 html.donker .gt-kop p{color:#c3c8d4}
-html.donker .gt-item{background:#161f33;border:1px solid rgba(255,255,255,0.152)}
+html.donker .gt-item{background:#1c263c;border:1px solid rgba(255,255,255,0.152)}
 html.donker .gt-item:hover{border-color:#b8862e}
-html.donker .gt-beeld{background:#1d2740}
+html.donker .gt-beeld{background:#232e47}
 html.donker .gt-tekst em{color:#e7c893}
 html.donker .gt-tekst strong{color:#eee7da}
 html.donker .gt-item > svg{color:#dfbb7d}
 html.donker .gids-deel .tekstpagina.gids h2,html.donker .gids-tip h2,html.donker .gids-faq h2{color:#eee7da}
-html.donker .gidsitem{background:#161f33;border:1px solid rgba(255,255,255,0.152);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker .gidsitem{background:#1c263c;border:1px solid rgba(255,255,255,0.152);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
 html.donker .gidsitem:hover{box-shadow:0 10px 26px rgba(0,0,0,0.23)}
-html.donker .gi-beeld{background:#1d2740}
+html.donker .gi-beeld{background:#232e47}
 html.donker .gi-info .shop{color:#e7c893}
 html.donker .gi-info h3 a{color:#eee7da}
 html.donker .gi-waarom{color:#c3c8d4}
@@ -602,7 +602,7 @@ html.donker .gi-onder .prijs{color:#eee7da}
 html.donker .gi-knop{color:#141A2A!important;background:linear-gradient(180deg, #F2CB74 0%, #D9A848 100%);border:1px solid #b8862e}
 html.donker .vinklijst li svg{color:#fff;background:#3e8e5e}
 html.donker .stappenlijst li::before{color:#141A2A;background:linear-gradient(180deg, #F2CB74, #D9A848)}
-html.donker .tekstpagina.gids-tip{background:#0d1322;border:1px solid rgba(184,134,46,0.35);border-left:5px solid #d9a848}
+html.donker .tekstpagina.gids-tip{background:#141c2f;border:1px solid rgba(184,134,46,0.35);border-left:5px solid #d9a848}
 html.donker .gids-tip h2 svg{color:#dfbb7d}
 html.donker .gids-faq details{border-bottom:1px solid rgba(255,255,255,0.152)}
 html.donker .gids-faq summary{color:#eee7da}
@@ -610,15 +610,15 @@ html.donker .gids-faq summary svg{color:#dfbb7d}
 html.donker .afd-chips .chip.actief{background:#1f2d52;color:#ffffff;border-color:#314068}
 html.donker .knop:focus-visible,html.donker .chip:focus-visible{outline:3px solid #137ca8}
 html.donker .knop-goud{background:linear-gradient(180deg, #FCE7AD 0%, #F0C96C 48%, #DBA646 100%);border:1px solid #b8862e;color:#141A2A;box-shadow:inset 0 1px 0 rgba(255,255,255,0.165), inset 0 -2px 0 rgba(0,0,0,0.41), 0 3px 0 rgba(0,0,0,0.6), 0 8px 18px rgba(0,0,0,0.41)}
-html.donker .knop-goud::after{background:linear-gradient(100deg, transparent, rgba(22,31,51,0.55), transparent)}
+html.donker .knop-goud::after{background:linear-gradient(100deg, transparent, rgba(28,38,60,0.55), transparent)}
 html.donker .knop-goud:hover{background:linear-gradient(180deg, #FDEBB8 0%, #F3CF78 48%, #E0AD4E 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.165), inset 0 -2px 0 rgba(0,0,0,0.41), 0 4px 0 rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.518)}
 html.donker .knop-goud:active{box-shadow:inset 0 1px 0 rgba(255,255,255,0.132), 0 1px 0 rgba(0,0,0,0.6), 0 3px 8px rgba(0,0,0,0.374)}
-html.donker .knop-goud.uit,html.donker .knop-goud[disabled]{border-color:#2b3550}
-html.donker .knop-rand{background:linear-gradient(180deg, #161f33, #0d1322);border:1.5px solid #dcc48f;color:#e7c893;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 2px 0 rgba(230,213,176,0.22), 0 4px 10px rgba(0,0,0,0.158)}
-html.donker .knop-rand:hover{background:#161f33;border-color:#b8862e;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 3px 0 rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.23)}
+html.donker .knop-goud.uit,html.donker .knop-goud[disabled]{border-color:#33405e}
+html.donker .knop-rand{background:linear-gradient(180deg, #1c263c, #141c2f);border:1.5px solid #dcc48f;color:#e7c893;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 2px 0 rgba(230,213,176,0.22), 0 4px 10px rgba(0,0,0,0.158)}
+html.donker .knop-rand:hover{background:#1c263c;border-color:#b8862e;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22), 0 3px 0 rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.23)}
 html.donker .hero-knoppen .knop-rand{box-shadow:0 4px 14px rgba(0,0,0,0.5)}
 html.donker .hero-knoppen .knop-rand:hover{box-shadow:0 6px 18px rgba(0,0,0,0.59)}
-html.donker .chip{background:linear-gradient(180deg, #161f33, #0d1322);box-shadow:0 1px 0 rgba(0,0,0,0.23)}
+html.donker .chip{background:linear-gradient(180deg, #1c263c, #141c2f);box-shadow:0 1px 0 rgba(0,0,0,0.23)}
 html.donker .chip:hover{box-shadow:0 3px 8px rgba(0,0,0,0.266)}
 html.donker .chip:is([aria-pressed="true"],[aria-current="true"]),html.donker .chip.actief{background:linear-gradient(180deg, #1D2A4B, #0A1020);color:#ffe39b;border-color:#c9a23a;box-shadow:inset 0 1px 0 rgba(255,255,255,0.031), 0 0 0 2px rgba(0,0,0,0.446), 0 3px 8px rgba(0,0,0,0.41)}
 html.donker .zoek button{background:linear-gradient(180deg, #FCE7AD 0%, #F0C96C 48%, #DBA646 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.154), inset 0 -2px 0 rgba(0,0,0,0.41), 0 2px 6px rgba(0,0,0,0.374)}
@@ -635,24 +635,24 @@ html.donker .product-info .prijsnoot.oud{background:#544520;border-color:#765c23
 html.donker .paginakop .intro-meer{color:#deb35f}
 }
 html.donker .prodgrid.top6 > .prodkaart:nth-child(-n+6) .beeld::after{background:linear-gradient(180deg, #F2CB74, #D9A848);color:#141A2A;box-shadow:0 2px 8px rgba(0,0,0,0.374)}
-html.donker .vonk-mini{color:#c3c8d4;border:1.5px solid rgba(255,255,255,0.152);background:#161f33}
+html.donker .vonk-mini{color:#c3c8d4;border:1.5px solid rgba(255,255,255,0.152);background:#1c263c}
 html.donker .vonk-mini:hover,html.donker .vonk-mini:focus-visible{border-color:#b8862e;color:#eee7da}
 html.donker .vonk-mini-noot{color:#a3aaba}
-html.donker .merkzoeker{border:1px solid rgba(255,255,255,0.13);background:#161f33}
-html.donker .mz-veld{border:1.5px solid rgba(255,255,255,0.196);background:#161f33}
+html.donker .merkzoeker{border:1px solid rgba(255,255,255,0.13);background:#1c263c}
+html.donker .mz-veld{border:1.5px solid rgba(255,255,255,0.196);background:#1c263c}
 html.donker .mz-veld:focus-within{border-color:#b8862e}
 html.donker .mz-veld input{color:#eee7da}
 html.donker .mz-melding{color:var(--tekst-zacht, #c3c8d4)}
 html.donker .rz-tip a{color:#e7c893}
 html.donker .sn-titel{color:#eee7da}
-html.donker .sn-knop{background:#0d1322;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
-html.donker .sn-knop:hover{border-color:#c9a45c;background:#161f33}
+html.donker .sn-knop{background:#141c2f;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .sn-knop:hover{border-color:#c9a45c;background:#1c263c}
 html.donker .sn-knop:focus-visible{outline:3px solid #137ca8}
 html.donker .sn-knop.actief{border-color:#c9a45c;background:#38311e;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.6)}
 html.donker .sn-alle summary{color:#eee7da}
 html.donker .sn-alle summary svg{color:#dfbb7d}
 html.donker .sn-alle summary:focus-visible{outline:3px solid #137ca8}
-html.donker .fp2-kop{background:#161f33;border-bottom:1px solid rgba(255,255,255,0.108)}
+html.donker .fp2-kop{background:#1c263c;border-bottom:1px solid rgba(255,255,255,0.108)}
 html.donker .fp2-kop strong{color:#eee7da}
 html.donker .fp2-terug{color:#eee7da}
 html.donker .fp2-terug:focus-visible,html.donker .fp2-rij:focus-visible,html.donker .fp2-optie:focus-visible,html.donker .fp2-label:focus-visible,html.donker .fp2-alle:focus-visible{outline:3px solid #137ca8}
@@ -664,50 +664,50 @@ html.donker .fp2-w{color:#c3c8d4}
 html.donker .fp2-rij.aan .fp2-w{color:#e7c893}
 html.donker .fp2-n{color:#c3c8d4}
 html.donker .fp2-pijl{color:#dfbb7d}
-html.donker .fp2-vink{border:2px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .fp2-vink{border:2px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .fp2-optie.aan .fp2-vink{border-color:#263e73;background:radial-gradient(circle, #14213D 0 6px, #fff 7px)}
 html.donker .fp2-sub,html.donker .fp2-letter{color:#e7c893}
-html.donker .fp2-alle{border:1px solid rgba(217,168,72,0.3);background:#0d1322;color:#eee7da}
-html.donker .fp2-zoek input{border:1.5px solid rgba(217,168,72,0.3);background:#161f33}
-html.donker .fp2-zelf{border:1px solid rgba(217,168,72,0.3);background:#0d1322}
+html.donker .fp2-alle{border:1px solid rgba(217,168,72,0.3);background:#141c2f;color:#eee7da}
+html.donker .fp2-zoek input{border:1.5px solid rgba(217,168,72,0.3);background:#1c263c}
+html.donker .fp2-zelf{border:1px solid rgba(217,168,72,0.3);background:#141c2f}
 html.donker .fp2-zelf .fp2-t{color:#eee7da}
 html.donker .fp2-van-tot label{color:#eee7da}
-html.donker .fp2-van-tot input{border:1.5px solid rgba(217,168,72,0.3);background:#161f33}
-html.donker .fp2-voet{background:#161f33;box-shadow:0 -8px 16px -10px rgba(0,0,0,0.374)}
-html.donker .bh-banner{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 6px 20px rgba(0,0,0,0.194)}
-html.donker .bh-tekst{background:linear-gradient(180deg, #0d1322, #161f33)}
+html.donker .fp2-van-tot input{border:1.5px solid rgba(217,168,72,0.3);background:#1c263c}
+html.donker .fp2-voet{background:#1c263c;box-shadow:0 -8px 16px -10px rgba(0,0,0,0.374)}
+html.donker .bh-banner{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 6px 20px rgba(0,0,0,0.194)}
+html.donker .bh-tekst{background:linear-gradient(180deg, #141c2f, #1c263c)}
 html.donker .bh-kicker{color:#ecc684}
 html.donker .bh-sub{color:#c3c8d4}
-html.donker .bh-tegel{color:#eee7da;background:#161f33;border:1px solid rgba(217,168,72,0.3)}
-html.donker .bh-foto{background:#1d2740}
+html.donker .bh-tegel{color:#eee7da;background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
+html.donker .bh-foto{background:#232e47}
 html.donker .bh-prijs{color:#ecc684}
 html.donker .nova1 .slimnav .sn-titel{color:#eee7da}
-html.donker .nova1 .slimnav .sn-knop{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #161f33 0%, #0d1322 100%);box-shadow:0 3px 10px rgba(0,0,0,0.176);color:#eee7da}
-html.donker .nova1 .slimnav .sn-knop:hover{border-color:#b8862e;background:linear-gradient(180deg, #161f33 0%, #0d1322 100%);box-shadow:0 5px 15px rgba(0,0,0,0.23)}
+html.donker .nova1 .slimnav .sn-knop{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #1c263c 0%, #141c2f 100%);box-shadow:0 3px 10px rgba(0,0,0,0.176);color:#eee7da}
+html.donker .nova1 .slimnav .sn-knop:hover{border-color:#b8862e;background:linear-gradient(180deg, #1c263c 0%, #141c2f 100%);box-shadow:0 5px 15px rgba(0,0,0,0.23)}
 html.donker .nova1 .slimnav .sn-knop:focus-visible{outline:3px solid #186d92}
-html.donker .nova1 .slimnav .sn-knop.actief,html.donker .nova1 .slimnav .sn-knop[aria-current="page"]{border:2px solid #b8862e;background:linear-gradient(180deg, #161f33 0%, #38301e 100%);box-shadow:0 0 0 2px rgba(0,0,0,0.266)}
+html.donker .nova1 .slimnav .sn-knop.actief,html.donker .nova1 .slimnav .sn-knop[aria-current="page"]{border:2px solid #b8862e;background:linear-gradient(180deg, #1c263c 0%, #38301e 100%);box-shadow:0 0 0 2px rgba(0,0,0,0.266)}
 html.donker .nova1 .slimnav .sn-ico,html.donker .nova1 .slimnav .sn-beeld{box-shadow:0 0 0 2px rgba(255,255,255,0.22), 0 0 0 3px rgba(0,0,0,0.6), 0 3px 8px rgba(0,0,0,0.338)}
 html.donker .nova1 .slimnav .sn-ico{background:#162347}
-html.donker .nova1 .slimnav .sn-beeld{background:#1d2740}
+html.donker .nova1 .slimnav .sn-beeld{background:#232e47}
 html.donker .nova1 .slimnav .sn-beeld.sn-rond{background:#162347}
-html.donker .nova1 .slimnav .sn-beeld.sn-product{background:#161f33}
+html.donker .nova1 .slimnav .sn-beeld.sn-product{background:#1c263c}
 html.donker .nova1 .slimnav .sn-naam{color:#eee7da}
-html.donker .nova1 .slimnav .sn-alle summary{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
+html.donker .nova1 .slimnav .sn-alle summary{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
 html.donker .nova1 .slimnav .sn-alle summary:hover{border-color:#b8862e}
-html.donker.nova2 .prodkaart{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 14px rgba(0,0,0,0.167)}
+html.donker.nova2 .prodkaart{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 14px rgba(0,0,0,0.167)}
 html.donker.nova2 .prodkaart:hover{border-color:#b8862e;box-shadow:0 7px 22px rgba(0,0,0,0.23)}
 html.donker.nova2 .prodkaart .shop{color:#d1c8b6}
 html.donker.nova2 .prodkaart h3,html.donker.nova2 .prodkaart.awkaart h3{color:#eee7da}
 html.donker.nova2 .prodkaart .prijs,html.donker.nova2 .prodkaart.awkaart .prijs{color:#eee7da}
 html.donker.nova2 .prodkaart .oud{color:#a3aaba}
 html.donker.nova2 .prodkaart .reden{color:#c3c8d4}
-html.donker.nova2 .prodkaart .beeld.echt:not(.sfeer){background:#161f33}
-html.donker.nova2 .prodkaart .hartje{background:rgba(22,31,51,0.96);color:#eee7da;border:1px solid rgba(217,168,72,0.3)}
+html.donker.nova2 .prodkaart .beeld.echt:not(.sfeer){background:#1c263c}
+html.donker.nova2 .prodkaart .hartje{background:rgba(28,38,60,0.96);color:#eee7da;border:1px solid rgba(217,168,72,0.3)}
 html.donker.nova2 .prodkaart .hartje[aria-pressed="true"]{color:#e7c893}
 html.donker.nova2 .prodkaart .hartje:focus-visible{outline:3px solid #186d92}
-html.donker.nova2 body.pag-product .product-beeld{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 20px rgba(0,0,0,0.158)}
+html.donker.nova2 body.pag-product .product-beeld{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 20px rgba(0,0,0,0.158)}
 html.donker.nova2 body.pag-product .product-info .shop{color:#d1c8b6}
-html.donker.nova2 body.pag-product .waarom{background:#161f33;border:1px solid rgba(217,168,72,0.3);border-left:3px solid #b8862e;box-shadow:0 4px 16px rgba(0,0,0,0.131)}
+html.donker.nova2 body.pag-product .waarom{background:#1c263c;border:1px solid rgba(217,168,72,0.3);border-left:3px solid #b8862e;box-shadow:0 4px 16px rgba(0,0,0,0.131)}
 html.donker.nova2 body.pag-product .waarom h2{color:#e7c893}
 html.donker.nova2 body.pag-product .feiten{color:#c3c8d4}
 html.donker.nova2 body.pag-product .product-plak .prijs{color:#fff4dd}
@@ -720,71 +720,71 @@ html.donker.nova3 #app > .hero .hero-knoppen .knop-rand{border-color:rgba(217,16
 html.donker.nova3 #app > .hero .hero-knoppen .knop:focus-visible{outline:3px solid #f2cb74}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .persoon-subs.home.zeven .subkaart{color:#eee7da}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .persoon-subs.home.zeven .subkaart .rond{border:2px solid rgba(217,168,72,0.3);box-shadow:0 0 0 1.5px rgba(0,0,0,0.6), 0 5px 14px rgba(0,0,0,0.266)}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .voorwie-links .chip,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .cat-links .chip{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-banner{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-tekst{background:linear-gradient(180deg, #0d1322, #161f33)}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-tegel{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .voorwie-links .chip,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .cat-links .chip{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-banner{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-tekst{background:linear-gradient(180deg, #141c2f, #1c263c)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-tegel{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-naam{color:#eee7da}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .belevenis-home .bh-prijs{color:#e7c893}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .seizoen .seizoen-kaart{border:1px solid rgba(184,134,46,0.38);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .budget-knop{background:linear-gradient(180deg, #161f33, #0d1322);border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 2px 9px rgba(0,0,0,0.14)}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .budget-knop:hover{background:#0d1322;border-color:#b8862e}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .catbalk{background:linear-gradient(180deg, #161f33 0%, #0d1322 100%);border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .catbalk-rond{border:2px solid #2b3550;box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.302)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .budget-knop{background:linear-gradient(180deg, #1c263c, #141c2f);border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 2px 9px rgba(0,0,0,0.14)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .budget-knop:hover{background:#141c2f;border-color:#b8862e}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .catbalk{background:linear-gradient(180deg, #1c263c 0%, #141c2f 100%);border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .catbalk-rond{border:2px solid #33405e;box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.302)}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .catbalk-naam{color:#eee7da}
-html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .acties-blok .actie-kaart,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .gidslijst.compact .gidskaart,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .eigen-kaart .eigen-link,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .stappen.klein .stap{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
+html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .acties-blok .actie-kaart,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .gidslijst.compact .gidskaart,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .eigen-kaart .eigen-link,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .stappen.klein .stap{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 16px rgba(0,0,0,0.176)}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .gidslijst.compact .gidskaart strong,html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .acties-blok .actie-kaart strong{color:#eee7da}
 html.donker.nova3 #app:is(:has(> .hero), :has(> .wzh)) .persoonlijk .gelegenheid-knopjes .chip{border-color:rgba(217,168,72,0.3)}
-html.donker body.nova4-target .paginakop{background:#161f33;border-bottom:1px solid rgba(217,168,72,0.3)}
-html.donker body.nova4-target .paginakop::after{background:linear-gradient(90deg, rgba(13,19,34,0.96) 0%, rgba(13,19,34,0.86) 58%, rgba(13,19,34,0.55) 100%)}
+html.donker body.nova4-target .paginakop{background:#1c263c;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker body.nova4-target .paginakop::after{background:linear-gradient(90deg, rgba(20,28,47,0.96) 0%, rgba(20,28,47,0.86) 58%, rgba(20,28,47,0.55) 100%)}
 html.donker body.nova4-target .paginakop h1{color:#eee7da}
 html.donker body.nova4-target .paginakop p{color:#c3c8d4}
 html.donker body.nova4-target .paginakop .kruimel,html.donker body.nova4-target .paginakop .kruimel a{color:#a3aaba}
-html.donker body.nova4-overzicht .keuzes.groot .keuzerond{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #161f33 0%, #0d1322 100%);box-shadow:0 3px 12px rgba(0,0,0,0.176);color:#eee7da}
+html.donker body.nova4-overzicht .keuzes.groot .keuzerond{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #1c263c 0%, #141c2f 100%);box-shadow:0 3px 12px rgba(0,0,0,0.176);color:#eee7da}
 html.donker body.nova4-overzicht .keuzes.groot .keuzerond:hover{border-color:#b8862e;box-shadow:0 7px 19px rgba(0,0,0,0.23)}
 html.donker body.nova4-overzicht .keuzes.groot .keuzerond:focus-visible{outline:3px solid #186d92}
-html.donker body.nova4-overzicht .keuzes.groot .keuzerond .rond{border:2px solid #2b3550;background:#162347;box-shadow:0 0 0 2px rgba(0,0,0,0.6), 0 5px 12px rgba(0,0,0,0.302)}
+html.donker body.nova4-overzicht .keuzes.groot .keuzerond .rond{border:2px solid #33405e;background:#162347;box-shadow:0 0 0 2px rgba(0,0,0,0.6), 0 5px 12px rgba(0,0,0,0.302)}
 html.donker body.nova4-overzicht .keuzes.groot .keuzerond .naam{color:#eee7da}
-html.donker body.nova4-target .sectie.verder .tekstlinks a{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
-html.donker body.nova4-target .sectie.verder .tekstlinks a:hover{border-color:#b8862e;background:#0d1322}
+html.donker body.nova4-target .sectie.verder .tekstlinks a{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker body.nova4-target .sectie.verder .tekstlinks a:hover{border-color:#b8862e;background:#141c2f}
 html.donker body.nova4-target .sectie.verder .tekstlinks a:focus-visible{outline:3px solid #186d92}
-html.donker.nova5 .zoekrij .zoek,html.donker.nova5 #app .zoek{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 14px rgba(0,0,0,0.284), inset 0 1px 0 rgba(255,255,255,0.22)}
+html.donker.nova5 .zoekrij .zoek,html.donker.nova5 #app .zoek{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 14px rgba(0,0,0,0.284), inset 0 1px 0 rgba(255,255,255,0.22)}
 html.donker.nova5 .zoek:focus-within{border-color:#b8862e;box-shadow:0 0 0 3px rgba(0,0,0,0.482), 0 6px 18px rgba(0,0,0,0.284)}
 html.donker.nova5 .zoek input{color:#eee7da}
 html.donker.nova5 .zoek input::placeholder{color:#a3aaba}
 html.donker.nova5 .zoek button{background:linear-gradient(180deg, #FCE6A6, #E5B454);color:#0A1020;box-shadow:inset 0 1px 0 rgba(255,255,255,0.143), 0 2px 5px rgba(0,0,0,0.338)}
 html.donker.nova5 .zoek button:focus-visible{outline:3px solid #186d92}
-html.donker.nova5 .zoek-tips{border:1px solid rgba(217,168,72,0.3);background:#161f33;box-shadow:0 14px 34px rgba(0,0,0,0.41)}
+html.donker.nova5 .zoek-tips{border:1px solid rgba(217,168,72,0.3);background:#1c263c;box-shadow:0 14px 34px rgba(0,0,0,0.41)}
 html.donker.nova5 .zoek-tips a{color:#eee7da}
-html.donker.nova5 .zoek-tips a:hover,html.donker.nova5 .zoek-tips a:focus-visible{background:#0d1322;color:#eee7da}
+html.donker.nova5 .zoek-tips a:hover,html.donker.nova5 .zoek-tips a:focus-visible{background:#141c2f;color:#eee7da}
 html.donker.nova5 .zoek-tips .zt-prijs,html.donker.nova5 .zoek-tips .zt-alles{color:#e7c893}
-html.donker.nova5 .werkbalk{background:linear-gradient(180deg, #161f33 0%, #161f33 100%);border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.167)}
+html.donker.nova5 .werkbalk{background:linear-gradient(180deg, #1c263c 0%, #1c263c 100%);border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.167)}
 html.donker.nova5 .werkbalk .chip:is([aria-pressed="true"],[aria-current="true"]),html.donker.nova5 .werkbalk .chip.actief{background:#162347;color:#fce6a6;border-color:#b8862e}
 html.donker.nova5 .werkbalk .chip:focus-visible,html.donker.nova5 .werkbalk .sorteer select:focus-visible{outline:3px solid #186d92}
-html.donker.nova5 .actief-label{background:#0d1322;border-color:#d6ba82;color:#efd5a9}
+html.donker.nova5 .actief-label{background:#141c2f;border-color:#d6ba82;color:#efd5a9}
 html.donker.nova5 .actief-wis{color:#a3aaba}
 @media (max-width: 759px){
 html.donker.nova5 .mb-filter{background:linear-gradient(180deg, #1B2949, #0A1020);color:#ffffff;border:1px solid #c9a45c;box-shadow:0 4px 12px rgba(0,0,0,0.356)}
-html.donker.nova5 .mb-sorteer{background:#161f33;border:1.5px solid #d1b781;color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.167)}
+html.donker.nova5 .mb-sorteer{background:#1c263c;border:1.5px solid #d1b781;color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.167)}
 html.donker.nova5 .mb-filter:focus-visible,html.donker.nova5 .mb-sorteer:focus-within{outline:3px solid #186d92}
 }
-html.donker.nova5 .filterpaneel:not(.vonk-paneel) .filter-blad{background:#161f33;border-top-color:#d6ba82;box-shadow:0 -16px 40px rgba(0,0,0,0.338)}
-html.donker.nova5 .filterpaneel.fp2 .fp2-kop{background:#161f33;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker.nova5 .filterpaneel:not(.vonk-paneel) .filter-blad{background:#1c263c;border-top-color:#d6ba82;box-shadow:0 -16px 40px rgba(0,0,0,0.338)}
+html.donker.nova5 .filterpaneel.fp2 .fp2-kop{background:#1c263c;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker.nova5 .filterpaneel.fp2 .fp2-kop strong{color:#eee7da}
 html.donker.nova5 .filterpaneel.fp2 .fp2-rij,html.donker.nova5 .filterpaneel.fp2 .fp2-optie{color:#eee7da;border-bottom-color:rgba(217,168,72,0.3)}
-html.donker.nova5 .filterpaneel.fp2 .fp2-rij:hover,html.donker.nova5 .filterpaneel.fp2 .fp2-optie:hover{background:#0d1322}
+html.donker.nova5 .filterpaneel.fp2 .fp2-rij:hover,html.donker.nova5 .filterpaneel.fp2 .fp2-optie:hover{background:#141c2f}
 html.donker.nova5 .filterpaneel.fp2 .fp2-optie.aan{background:#38311e;color:#eee7da}
 html.donker.nova5 .filterpaneel.fp2 .fp2-label{background:#38301e;border-color:#c9a45c}
-html.donker.nova5 .filterpaneel.fp2 .fp2-voet{background:#161f33}
+html.donker.nova5 .filterpaneel.fp2 .fp2-voet{background:#1c263c}
 html.donker.nova5 .filterpaneel:not(.vonk-paneel) .filter-sluit:focus-visible,html.donker.nova5 .filterpaneel:not(.vonk-paneel) .fp2-terug:focus-visible{outline:3px solid #186d92}
-html.donker.nova5 .hoofdnav a:hover,html.donker.nova5 .hoofdnav button:hover,html.donker.nova5 .hoofdnav [aria-expanded="true"],html.donker.nova5 .hoofdnav [aria-current="page"]{background:rgba(22,31,51,0.07);color:#f8d88b}
+html.donker.nova5 .hoofdnav a:hover,html.donker.nova5 .hoofdnav button:hover,html.donker.nova5 .hoofdnav [aria-expanded="true"],html.donker.nova5 .hoofdnav [aria-current="page"]{background:rgba(28,38,60,0.07);color:#f8d88b}
 html.donker.nova5 .hoofdnav a:focus-visible,html.donker.nova5 .hoofdnav button:focus-visible{outline:2px solid #f2cb74}
-html.donker.nova5 .megamenu{background:#161f33;border-bottom:1px solid #d1b781;box-shadow:0 18px 34px rgba(0,0,0,0.374)}
+html.donker.nova5 .megamenu{background:#1c263c;border-bottom:1px solid #d1b781;box-shadow:0 18px 34px rgba(0,0,0,0.374)}
 html.donker.nova5 .megamenu h3 a{color:#e7c893}
 html.donker.nova5 .megamenu li a{color:#eee7da}
 html.donker.nova5 .megamenu li a:hover,html.donker.nova5 .megamenu li a:focus-visible{color:#eee7da;background:#38301e}
-html.donker.nova5 .lade{background:#161f33;border-right-color:rgba(217,168,72,0.3)}
-html.donker.nova5 .lade-kop{background:#161f33;border-bottom-color:rgba(217,168,72,0.3)}
+html.donker.nova5 .lade{background:#1c263c;border-right-color:rgba(217,168,72,0.3)}
+html.donker.nova5 .lade-kop{background:#1c263c;border-bottom-color:rgba(217,168,72,0.3)}
 html.donker.nova5 .lade-uitgelicht{border-color:rgba(217,168,72,0.3)}
 html.donker.nova5 .lade-label{color:#e7c893}
 html.donker.nova5 .lade li + li{border-top-color:rgba(217,168,72,0.3)}
@@ -795,33 +795,33 @@ html.donker.nova5 .lade-subs a:focus-visible,html.donker.nova5 .lade-rij:focus-v
 html.donker.nova5 .onderbalk{background:rgba(22,35,71,0.98);border-top:1px solid rgba(201,164,92,0.5);box-shadow:0 -5px 18px rgba(0,0,0,0.338)}
 html.donker.nova5 .onderbalk [aria-current="page"]{color:#f8d88b}
 html.donker.nova5 .onderbalk a:focus-visible,html.donker.nova5 .onderbalk button:focus-visible{outline:2px solid #f8d88b}
-html.donker.nova6 body.nova6-vonk .vonk-vraag{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#161f33,#161f33);box-shadow:0 4px 16px rgba(0,0,0,0.167)}
+html.donker.nova6 body.nova6-vonk .vonk-vraag{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#1c263c,#1c263c);box-shadow:0 4px 16px rgba(0,0,0,0.167)}
 html.donker.nova6 body.nova6-vonk .vonk-vraag h2{color:#eee7da}
-html.donker.nova6 body.nova6-vonk .vonk-vraag .keuze{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#161f33,#0d1322);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
+html.donker.nova6 body.nova6-vonk .vonk-vraag .keuze{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#1c263c,#141c2f);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
 html.donker.nova6 body.nova6-vonk .vonk-vraag .keuze:focus-visible{outline:3px solid #186d92}
-html.donker.nova6 body.nova6-favorieten .lijst-deel{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#161f33,#161f33);box-shadow:0 5px 18px rgba(0,0,0,0.167)}
+html.donker.nova6 body.nova6-favorieten .lijst-deel{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#1c263c,#1c263c);box-shadow:0 5px 18px rgba(0,0,0,0.167)}
 html.donker.nova6 body.nova6-favorieten .lijst-deel-tekst strong{color:#eee7da}
 html.donker.nova6 body.nova6-favorieten .lijst-deel-velden label{color:#eee7da}
 html.donker.nova6 body.nova6-favorieten .lijst-deel-velden input,html.donker.nova6 body.nova6-favorieten .lijst-deel-velden select{border:1px solid rgba(217,168,72,0.3)}
-html.donker.nova6 body.nova6-gedeeld .cadeaukaart{border:1px solid rgba(217,168,72,0.3);background:#161f33;box-shadow:0 3px 13px rgba(0,0,0,0.167)}
-html.donker.nova7 .gidslijst:not(.compact) .gidskaart{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#161f33 0%,#161f33 100%);box-shadow:0 4px 14px rgba(0,0,0,0.158)}
+html.donker.nova6 body.nova6-gedeeld .cadeaukaart{border:1px solid rgba(217,168,72,0.3);background:#1c263c;box-shadow:0 3px 13px rgba(0,0,0,0.167)}
+html.donker.nova7 .gidslijst:not(.compact) .gidskaart{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#1c263c 0%,#1c263c 100%);box-shadow:0 4px 14px rgba(0,0,0,0.158)}
 html.donker.nova7 .gidslijst:not(.compact) .gidskaart:hover{border-color:#b8862e;box-shadow:0 7px 18px rgba(0,0,0,0.23)}
-html.donker.nova7 .gidslijst:not(.compact) .gidsbeeld{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker.nova7 .gidslijst:not(.compact) .gidsbeeld{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker.nova7 .gidslijst:not(.compact) .gidskaart strong{color:#eee7da}
 html.donker.nova7 .gidslijst:not(.compact) .gidskaart small{color:#a3aaba}
 html.donker.nova7 .tekstpagina.gids h2{color:#eee7da}
-html.donker.nova7 .gidsitem,html.donker.nova7 .gids-top{border-color:rgba(217,168,72,0.3);background:#161f33;box-shadow:0 4px 14px rgba(0,0,0,0.158)}
-html.donker.nova7 .gids-faq details{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker.nova7 .gidsitem,html.donker.nova7 .gids-top{border-color:rgba(217,168,72,0.3);background:#1c263c;box-shadow:0 4px 14px rgba(0,0,0,0.158)}
+html.donker.nova7 .gids-faq details{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker.nova7 .tekstpagina:not(.gids) p,html.donker.nova7 .tekstpagina:not(.gids) li{color:#c3c8d4}
 html.donker.nova7 .tekstpagina:not(.gids) h2{color:#eee7da}
 html.donker.nova7 .tekstpagina:not(.gids) a:not([class]){color:#e7c893}
-html.donker.nova7 .tekstpagina:not(.gids) .let-op{border-color:#d6bc8a;background:#0d1322;color:#c3c8d4}
-html.donker.nova7 .winkel-rij{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#161f33,#161f33);box-shadow:0 3px 12px rgba(0,0,0,0.149)}
+html.donker.nova7 .tekstpagina:not(.gids) .let-op{border-color:#d6bc8a;background:#141c2f;color:#c3c8d4}
+html.donker.nova7 .winkel-rij{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#1c263c,#1c263c);box-shadow:0 3px 12px rgba(0,0,0,0.149)}
 html.donker.nova7 .winkel-rij:hover{border-color:#b8862e;box-shadow:0 6px 16px rgba(0,0,0,0.212)}
 html.donker.nova7 .winkel-tekst strong{color:#eee7da}
 html.donker.nova7 .winkel-tekst small{color:#c3c8d4}
 html.donker.nova7 .winkel-rij:focus-visible,html.donker.nova7 .gidskaart:focus-visible{outline:3px solid #186d92}
-html.donker.nova7 .catronden .catrond{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#161f33,#161f33);box-shadow:0 4px 12px rgba(0,0,0,0.149)}
+html.donker.nova7 .catronden .catrond{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg,#1c263c,#1c263c);box-shadow:0 4px 12px rgba(0,0,0,0.149)}
 html.donker.nova7 .catronden .catrond:hover{border-color:#b8862e;box-shadow:0 7px 18px rgba(0,0,0,0.212)}
 html.donker.nova7 .catronden .catrond-naam{color:#eee7da}
 html.donker.nova7 .catronden .catrond-tekst{color:#c3c8d4}
@@ -837,40 +837,40 @@ html.donker.nova7 .footer-yara{border-top-color:rgba(217,168,72,0.2)}
 @media (max-width: 759px){
 html.donker.nova9 .werkbalk > .werkbalk-onder{border-bottom:1px solid rgba(255,255,255,0.108)}
 html.donker.nova9 .werkbalk .werkbalk-onder .aantal{color:#eee7da}
-html.donker.nova9 .werkbalk .werkbalk-onder .chip.verras{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#e7c893}
-html.donker.nova9 .werkbalk .mb-filter,html.donker.nova9 .werkbalk .mb-sorteer{background:#161f33;color:#eee7da;border:1.5px solid rgba(217,168,72,0.3);box-shadow:0 2px 8px rgba(0,0,0,0.158)}
+html.donker.nova9 .werkbalk .werkbalk-onder .chip.verras{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#e7c893}
+html.donker.nova9 .werkbalk .mb-filter,html.donker.nova9 .werkbalk .mb-sorteer{background:#1c263c;color:#eee7da;border:1.5px solid rgba(217,168,72,0.3);box-shadow:0 2px 8px rgba(0,0,0,0.158)}
 html.donker.nova9 .werkbalk .mb-filter svg,html.donker.nova9 .werkbalk .mb-tekst svg{color:#e7c893}
 html.donker.nova9 .werkbalk .mb-filter:has(.mb-teller){background:#162347;color:#ffffff;border-color:#243a75}
 html.donker.nova9 .werkbalk .mb-filter:has(.mb-teller) svg{color:#f2cb74}
 html.donker.nova9 .werkbalk > .mb-snel{border-top:1px dashed rgba(255,255,255,0.13)}
 }
-html.donker.nova9 .slimnav .sn-knop{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
-html.donker.nova9 .slimnav .sn-knop:hover{border-color:#b8862e;box-shadow:0 6px 18px rgba(0,0,0,0.212);background:#161f33}
-html.donker.nova9 .slimnav .sn-beeld:not(.sn-rond){background:#1d2740}
+html.donker.nova9 .slimnav .sn-knop{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker.nova9 .slimnav .sn-knop:hover{border-color:#b8862e;box-shadow:0 6px 18px rgba(0,0,0,0.212);background:#1c263c}
+html.donker.nova9 .slimnav .sn-beeld:not(.sn-rond){background:#232e47}
 html.donker.nova9 .slimnav .sn-beeld.sn-rond,html.donker.nova9 .slimnav .sn-ico{box-shadow:0 0 0 2px rgba(255,255,255,0.22), 0 0 0 3px rgba(217,195,154,0.22)}
 html.donker.nova9 .slimnav .sn-naam{color:#eee7da}
-html.donker.nova9 .slimnav .sn-knop.actief,html.donker.nova9 .slimnav .sn-knop[aria-current="page"]{border:2px solid #243a75;box-shadow:0 0 0 3px rgba(0,0,0,0.194);background:#161f33}
+html.donker.nova9 .slimnav .sn-knop.actief,html.donker.nova9 .slimnav .sn-knop[aria-current="page"]{border:2px solid #243a75;box-shadow:0 0 0 3px rgba(0,0,0,0.194);background:#1c263c}
 html.donker.nova9 .slimnav .sn-knop.actief .sn-naam,html.donker.nova9 .slimnav .sn-knop[aria-current="page"] .sn-naam{color:#eee7da}
-html.donker.nova9 .slimnav .sn-alle summary{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker.nova9 .slimnav .sn-alle summary{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker.nova9 .slimnav .sn-alle summary:hover{border-color:#b8862e}
-html.donker.nova9 .meer-knop .knop-rand,html.donker.nova9 .knop.knop-rand{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
-html.donker.nova9 .meer-knop .knop-rand:hover,html.donker.nova9 .knop.knop-rand:hover{border-color:#b8862e;background:#161f33}
+html.donker.nova9 .meer-knop .knop-rand,html.donker.nova9 .knop.knop-rand{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
+html.donker.nova9 .meer-knop .knop-rand:hover,html.donker.nova9 .knop.knop-rand:hover{border-color:#b8862e;background:#1c263c}
 html.donker.nova9 #app > .hero .hero-knoppen .knop.knop-rand,html.donker.nova9 .hero-knoppen .knop.knop-rand{color:#ffffff;background:rgba(22,35,71,0.75);border-color:rgba(217,168,72,0.216)}
 html.donker.nova9 #app > .hero .hero-knoppen .knop.knop-rand:hover,html.donker.nova9 .hero-knoppen .knop.knop-rand:hover{color:#ffffff;background:rgba(22,35,71,0.88);border-color:#f2cb74}
 html.donker.nova9 .prodkaart{border-color:rgba(217,168,72,0.3)}
-html.donker.nova9 .prodkaart .beeld.echt:not(.sfeer){background:#161f33}
-html.donker.nova9 .prodkaart .beeld .label,html.donker.nova9 .prodgrid.top6 > .prodkaart:nth-child(-n+6) .beeld::after{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#e7c893}
+html.donker.nova9 .prodkaart .beeld.echt:not(.sfeer){background:#1c263c}
+html.donker.nova9 .prodkaart .beeld .label,html.donker.nova9 .prodgrid.top6 > .prodkaart:nth-child(-n+6) .beeld::after{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#e7c893}
 html.donker.nova9 .prodkaart .beeld .label.vol{background:#162347;color:#f2cb74;border-color:#243a75}
-html.donker .filterpaneel.fp2.direct .filter-achter{background:#0d1322}
+html.donker .filterpaneel.fp2.direct .filter-achter{background:#141c2f}
 html.donker .filterpaneel.fp2.direct .fp2-direct-hulp strong{color:#eee7da}
-html.donker .mini-tegel{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #161f33, #161f33);box-shadow:0 2px 8px rgba(0,0,0,0.14);color:#eee7da}
+html.donker .mini-tegel{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #1c263c, #1c263c);box-shadow:0 2px 8px rgba(0,0,0,0.14);color:#eee7da}
 html.donker .mini-tegel:hover{border-color:#b8862e}
 html.donker .mini-tegel:focus-visible{outline:3px solid #186d92}
 html.donker .mini-tegel .mt-rond{background:#162347;box-shadow:0 0 0 1.5px rgba(0,0,0,0.6)}
 html.donker .mini-tegel .mt-rond.mt-ico{color:#f2cb74}
 html.donker .gelegenheid-strak h3{color:#eee7da}
 html.donker .wijzer .wz-vraag{color:#a3aaba}
-html.donker .wijzer .wz-chips .chip{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .wijzer .wz-chips .chip{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .wijzer .wz-chips .chip:is([aria-pressed="true"],[aria-current="true"]){background:#162347;border-color:#243a75;color:#ffffff}
 html.donker .wijzer .wz-uit{border-top:1px solid rgba(217,168,72,0.3)}
 html.donker .wijzer .wz-uit h2{color:#eee7da}
@@ -878,44 +878,44 @@ html.donker .wijzer .wz-uit p{color:#a3aaba}
 html.donker .wijzer .wz-alles a{color:#e7c893}
 html.donker .wzh .wzh-vraag h1{color:#eee7da}
 html.donker .wzh .wzh-sub{color:#a3aaba}
-html.donker .wzh-tegel{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 10px rgba(0,0,0,0.122);color:#eee7da}
+html.donker .wzh-tegel{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 10px rgba(0,0,0,0.122);color:#eee7da}
 html.donker .wzh-rond{border:2px solid #f2cb74}
 html.donker .wzh-rond.wzh-icoon{background:#162347;color:#f2cb74}
-html.donker .wtop-kaart{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 6px 18px rgba(0,0,0,0.158)}
+html.donker .wtop-kaart{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 6px 18px rgba(0,0,0,0.158)}
 html.donker .wtop-kaart h3{color:#eee7da}
 html.donker .wtop-kaart p{color:#eee7da}
 html.donker .wtop-prod{color:#eee7da}
-html.donker .wtop-prod img{border:1px solid rgba(217,168,72,0.3);background:#161f33}
-html.donker .wtop-meer{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
-html.donker .vonk-keus,html.donker.nova6 body.nova6-vonk .vonk-keus{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 5px 18px rgba(0,0,0,0.167)}
+html.donker .wtop-prod img{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
+html.donker .wtop-meer{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker .vonk-keus,html.donker.nova6 body.nova6-vonk .vonk-keus{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 5px 18px rgba(0,0,0,0.167)}
 html.donker .vonk-keus .vonk-waarom,html.donker.nova6 body.nova6-vonk .vonk-keus .vonk-waarom{border-top:1px solid rgba(217,168,72,0.3)}
-html.donker .vonk-keus .vonk-mini{background:#161f33}
+html.donker .vonk-keus .vonk-mini{background:#1c263c}
 html.donker .srt-kies{color:#e7c893}
-html.donker .srt-wissel a{background:#161f33;border:2px solid #b8862e;box-shadow:0 4px 12px rgba(0,0,0,0.23);color:#eee7da}
+html.donker .srt-wissel a{background:#1c263c;border:2px solid #b8862e;box-shadow:0 4px 12px rgba(0,0,0,0.23);color:#eee7da}
 html.donker .srt-wissel .srt-w-t small{color:#a3aaba}
 html.donker .srt-wissel .srt-w-p{background:#f2cb74;color:#0A1020}
 html.donker .srt-wissel a.aan{background:#162347;border-color:#f2cb74;color:#ffffff;box-shadow:0 6px 16px rgba(0,0,0,0.446)}
 html.donker .srt-wissel a.aan .srt-w-t small{color:#e5d7be}
 @media (hover: hover){
-html.donker .srt-wissel a:not(.aan):hover{background:#161f33;border-color:#8f6620}
+html.donker .srt-wissel a:not(.aan):hover{background:#1c263c;border-color:#8f6620}
 }
-html.donker .srt-zoek{background:#161f33;border:1.5px solid #b8862e;box-shadow:0 5px 16px rgba(0,0,0,0.158)}
+html.donker .srt-zoek{background:#1c263c;border:1.5px solid #b8862e;box-shadow:0 5px 16px rgba(0,0,0,0.158)}
 html.donker .srt-zoek svg{color:#e7c893}
 html.donker .srt-zoek input{color:#eee7da}
 html.donker .srt-label{color:#e7c893}
-html.donker .srt-vt{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 10px rgba(0,0,0,0.14);color:#eee7da}
+html.donker .srt-vt{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 3px 10px rgba(0,0,0,0.14);color:#eee7da}
 html.donker .srt-vt:hover{border-color:#b8862e}
 html.donker .srt-vt-rond{background:#162347;box-shadow:0 6px 14px rgba(0,0,0,0.374)}
 html.donker .srt-vt-rond.srt-vt-ico{color:#f2cb74}
-html.donker .srt-st{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .srt-st{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .srt-st:hover{border-color:#b8862e}
-html.donker .srt-st-rond{border:1.5px solid #d6b56a;background:#161f33}
+html.donker .srt-st-rond{border:1.5px solid #d6b56a;background:#1c263c}
 html.donker .srt-st-rond.srt-vt-ico{background:#162347;color:#f2cb74}
-html.donker .srt-alles{border:1px solid rgba(217,168,72,0.3);background:#0d1322;color:#eee7da}
+html.donker .srt-alles{border:1px solid rgba(217,168,72,0.3);background:#141c2f;color:#eee7da}
 html.donker .srt-alles small{color:#a3aaba}
 html.donker .srt-alles svg{color:#e7c893}
-html.donker .srt-blok{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 5px 16px rgba(0,0,0,0.14)}
-html.donker .srt-blok > summary img{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .srt-blok{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 5px 16px rgba(0,0,0,0.14)}
+html.donker .srt-blok > summary img{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .srt-kop h2{color:#eee7da}
 html.donker .srt-kop small{color:#a3aaba}
 html.donker .srt-pijl{color:#e7c893}
@@ -928,17 +928,17 @@ html.donker.nova9 .meer-knop.groot .knop-rand:hover,html.donker .meer-knop.groot
 html.donker .wijzer .wz-alles a.knop{color:#eee7da}
 html.donker .wijzer .wz-alles a.knop small{color:#a3aaba}
 html.donker .uv-label{background:#162347;color:#f2cb74}
-html.donker .uv-melding{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .uv-melding{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .uv-melding strong{color:#eee7da}
 html.donker .uv-melding strong svg{color:#e7c893}
-html.donker .lt-kaart{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 6px 20px rgba(0,0,0,0.158)}
+html.donker .lt-kaart{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 6px 20px rgba(0,0,0,0.158)}
 html.donker .lt-kaart h2{color:#eee7da}
 html.donker .lt-stap{background:#162347;color:#f2cb74}
 html.donker .lt-sub{color:#c3c8d4}
 html.donker .lt-nr{color:#e7c893}
-html.donker .lt-naam input,html.donker .lt-veld input,html.donker .lt-paar select{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
-html.donker .lt-naam input:focus,html.donker .lt-veld input:focus,html.donker .lt-paar select:focus{outline:2px solid #b8862e;background:#161f33}
-html.donker .lt-keuzes span{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
+html.donker .lt-naam input,html.donker .lt-veld input,html.donker .lt-paar select{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker .lt-naam input:focus,html.donker .lt-veld input:focus,html.donker .lt-paar select:focus{outline:2px solid #b8862e;background:#1c263c}
+html.donker .lt-keuzes span{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
 html.donker .lt-keuzes input:checked + span{background:#162347;border-color:#243a75;color:#ffffff}
 html.donker .lt-keuzes input:focus-visible + span{outline:2px solid #b8862e}
 html.donker .lt-veld{color:#eee7da}
@@ -946,8 +946,8 @@ html.donker .lt-veld small{color:#c3c8d4}
 html.donker .lt-meer{border-top:1px solid rgba(217,168,72,0.3)}
 html.donker .lt-meer summary{color:#e7c893}
 html.donker .lt-paar span{color:#c3c8d4}
-html.donker .lt-paar-weg{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#c3c8d4}
-html.donker .lt-fout:not(:empty){background:#0d1322;border:1px solid #e8b79a;color:#f1b79e}
+html.donker .lt-paar-weg{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#c3c8d4}
+html.donker .lt-fout:not(:empty){background:#141c2f;border:1px solid #e8b79a;color:#f1b79e}
 html.donker .lt-privacy{color:#c3c8d4}
 html.donker .lt-uitleg h2{color:#eee7da}
 html.donker .lt-hoe{color:#eee7da}
@@ -957,42 +957,42 @@ html.donker .lt-faq p{color:#c3c8d4}
 html.donker .lt-open{background:#162347;color:#ffffff}
 html.donker .lt-open h1{color:#ffffff}
 html.donker .lt-hoi{color:#f2cb74}
-html.donker .lt-envelop{border:2px solid #b8862e;background:linear-gradient(180deg, #161f33, #0d1322);color:#eee7da;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+html.donker .lt-envelop{border:2px solid #b8862e;background:linear-gradient(180deg, #1c263c, #141c2f);color:#eee7da;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
 html.donker .lt-naamgroot strong{color:#e7c893}
 html.donker .lt-info{color:#f7f3ec}
 html.donker .lt-open .lt-sub{color:#f2cb74}
-html.donker .lt-zelf{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .lt-zelf{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .lt-zelf h2{color:#eee7da}
 html.donker .lt-zelf p{color:#c3c8d4}
 html.donker .lt-vink{background:#162347;color:#f2cb74}
 html.donker .lt-teller{color:#e7c893}
-html.donker .lt-lijst{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .lt-lijst{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .lt-lijst li + li{border-top:1px solid rgba(217,168,72,0.3)}
-html.donker .lt-av{background:#161f33;border:1.5px solid #c9a45c;color:#e7c893}
+html.donker .lt-av{background:#1c263c;border:1.5px solid #c9a45c;color:#e7c893}
 html.donker .lt-wie{color:#eee7da}
 html.donker .lt-wa{background:#1faf54;color:#FFFFFF;box-shadow:0 3px 10px rgba(0,0,0,0.5)}
-html.donker .lt-kp{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#c3c8d4}
+html.donker .lt-kp{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#c3c8d4}
 html.donker .lt-kp.lt-ok{background:#162347;color:#f2cb74;border-color:#243a75}
-html.donker .lt-gedaan{background:#161f33}
-html.donker .lt-gedaan .lt-wa{background:#161f33;color:#9eeabb;border:1px solid #2b3550}
+html.donker .lt-gedaan{background:#1c263c}
+html.donker .lt-gedaan .lt-wa{background:#1c263c;color:#9eeabb;border:1px solid #33405e}
 html.donker .lt-gedaan .lt-av{background:#1faf54;border-color:#1faf54;color:#FFFFFF}
 html.donker .rz-toast{background:#162347;color:#ffffff;box-shadow:0 8px 24px rgba(0,0,0,0.59)}
-html.donker .rz-uitleg{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .rz-uitleg{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .rz-uitleg h2{color:#eee7da}
 html.donker .rz-faq details{border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker .rz-faq p{color:#c3c8d4}
 html.donker .rz-faq a{color:#e7c893}
 html.donker .lt-stat{color:#e7c893}
 html.donker .lt-gedaan .lt-stat{color:#9eeabb}
-html.donker .lt-naamknop{border:1.5px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
+html.donker .lt-naamknop{border:1.5px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
 html.donker .lt-naamknop small{color:#a3aaba}
-html.donker .lt-naamknop:disabled{background:#0d1322}
+html.donker .lt-naamknop:disabled{background:#141c2f}
 html.donker .lt-naamknop.gekozen{background:#162347;border-color:#243a75;color:#ffffff}
 html.donker .lt-zeker-vraag{color:#eee7da}
-html.donker .lt-bewaar .knop{background:#161f33}
+html.donker .lt-bewaar .knop{background:#1c263c}
 html.donker .lt-vertrouw li{border:1px solid rgba(242,203,116,0.55);color:#f2cb74;background:rgba(242,203,116,0.08)}
 html.donker .lt-envelop::before{border:1.5px dashed #c9a45c}
-html.donker .lt-privacy{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .lt-privacy{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .tt-hero{background:#162347;color:#f7f3ec}
 html.donker .tt-hero .kicker{color:#f2cb74}
 html.donker .tt-hero h1{color:#fffcf7}
@@ -1001,31 +1001,31 @@ html.donker .tt-datum{color:#e7c893}
 html.donker .tt-datum b{color:#dfbb7d}
 html.donker .tt-kop,html.donker .tt-slot h2{color:#eee7da}
 html.donker .tt-tekst{color:#eee7da}
-html.donker .tt-dicht{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .tt-dicht{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .tt-dicht .tt-kop,html.donker .tt-slot h2{color:#eee7da}
 html.donker .tt-open{border-right:2px solid #8f6620;border-bottom:2px solid #8f6620}
 html.donker .tt-klein{color:#eee7da}
 html.donker .tt-hero .tt-amz b{color:#f2cb74}
-html.donker .zoek-tips .zt-kop{color:#e7c893;background:#161f33}
-html.donker .zoek-tips a.zt-direct{border:1.5px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #161f33, #0d1322)}
-html.donker .zoek-tips a.zt-direct:hover,html.donker .zoek-tips a.zt-direct:focus-visible{border-color:#b8862e;background:#0d1322}
-html.donker .zoek-tips .zt-direct .zt-rond{border:2px solid #f2cb74;background:#161f33}
+html.donker .zoek-tips .zt-kop{color:#e7c893;background:#1c263c}
+html.donker .zoek-tips a.zt-direct{border:1.5px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #1c263c, #141c2f)}
+html.donker .zoek-tips a.zt-direct:hover,html.donker .zoek-tips a.zt-direct:focus-visible{border-color:#b8862e;background:#141c2f}
+html.donker .zoek-tips .zt-direct .zt-rond{border:2px solid #f2cb74;background:#1c263c}
 html.donker .zoek-tips .zt-direct .zt-ic{background:#162347;color:#f2cb74}
 html.donker .zoek-tips .zt-direct .zt-titel{color:#eee7da}
 html.donker .zoek-tips .zt-direct .zt-titel small{color:#e7c893}
 html.donker .zoek-tips .zt-direct .zt-pijl{background:linear-gradient(#f8dc95, #e6b452);color:#221b1f}
 html.donker .zoek-tips .zt-item:not(.zt-pagina):not(.zt-direct) img{border:1px solid rgba(217,168,72,0.3)}
-html.donker.rust .prodkaart .kaart-koop{background:#161f33;border:1px solid #b8862e;color:#eed5a6}
+html.donker.rust .prodkaart .kaart-koop{background:#1c263c;border:1px solid #b8862e;color:#eed5a6}
 html.donker.rust .prodkaart .kaart-koop:hover{background:#f2cb74;color:#141A2A}
 html.donker .rh-test{color:#c3c8d4}
 html.donker .rh-test a{color:#e7c893}
 html.donker .rh-vraag h1{color:#eee7da}
 html.donker .rh-sub{color:#c3c8d4}
 html.donker .rh-tegel{color:#eee7da}
-html.donker .rh-rond{border:2px solid #f2cb74;background:#161f33;box-shadow:0 4px 12px rgba(0,0,0,0.194)}
+html.donker .rh-rond{border:2px solid #f2cb74;background:#1c263c;box-shadow:0 4px 12px rgba(0,0,0,0.194)}
 html.donker .rh-rond.rh-icoon{background:#162347;color:#f2cb74}
 html.donker .rh-vraag2{color:#eee7da}
-html.donker .rh-chips .chip{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .rh-chips .chip{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .rh-chips .chip:hover{border-color:#b8862e}
 html.donker .rust-home h2{color:#eee7da}
 html.donker .rh-kop p{color:#c3c8d4}
@@ -1034,18 +1034,18 @@ html.donker .rh-mkaart{color:#ffffff;background:#162347}
 html.donker .rh-mtekst{background:linear-gradient(0deg, rgba(10,16,32,.92), rgba(10,16,32,0))}
 html.donker .rh-mtekst small{color:#f2cb74}
 html.donker .rh-mknop{color:#f2cb74}
-html.donker .rh-hulp a{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .rh-hulp a{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .rh-hulp a > svg{color:#dfbb7d}
 html.donker .rh-hulp small{color:#c3c8d4}
-html.donker .rh-vragen ul{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .rh-vragen ul{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .rh-vragen li + li{border-top:1px solid rgba(217,168,72,0.3)}
 html.donker .rh-vragen li a{color:#eee7da}
 html.donker .rh-vragen li a svg{color:#dfbb7d}
-html.donker .rh-zo{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#c3c8d4}
+html.donker .rh-zo{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#c3c8d4}
 html.donker.rust .rh-alles a{color:#e7c893}
 html.donker.rust .rh-nogmeer{color:#e7c893!important}
-html.donker .wt-tegel{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.14);color:#eee7da}
-html.donker .wt-tegel img{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .wt-tegel{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.14);color:#eee7da}
+html.donker .wt-tegel img{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .wt-tekst small{color:#e7c893}
 html.donker .ps-boven,html.donker .pschuif,html.donker .ps-snel{background:#162347;color:#ffffff}
 html.donker .ps-vraag{color:#f2cb74}
@@ -1055,57 +1055,57 @@ html.donker .ps-n{color:#d5d9e3}
 html.donker .ps-histo i{background:#223259}
 html.donker .ps-histo i.aan{background:#b8862e}
 html.donker .ps-r::-webkit-slider-runnable-track{background:linear-gradient(90deg, #F2CB74 0, #B8862E var(--pos, 50%), #2A3550 var(--pos, 50%))}
-html.donker .ps-r::-webkit-slider-thumb{background:#161f33;border:4px solid #b8862e;box-shadow:0 3px 10px rgba(0,0,0,0.6)}
+html.donker .ps-r::-webkit-slider-thumb{background:#1c263c;border:4px solid #b8862e;box-shadow:0 3px 10px rgba(0,0,0,0.6)}
 html.donker .ps-r::-moz-range-track{background:#223259}
 html.donker .ps-r::-moz-range-progress{background:#b8862e}
-html.donker .ps-r::-moz-range-thumb{background:#161f33;border:4px solid #b8862e;box-shadow:0 3px 10px rgba(0,0,0,0.6)}
+html.donker .ps-r::-moz-range-thumb{background:#1c263c;border:4px solid #b8862e;box-shadow:0 3px 10px rgba(0,0,0,0.6)}
 html.donker .ps-r:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px rgba(242,203,116,0.099)}
 html.donker .ps-r:focus-visible::-moz-range-thumb{box-shadow:0 0 0 5px rgba(242,203,116,0.099)}
 html.donker .ps-snel button{border:1px solid #324167;background:#213056;color:#ffffff}
 html.donker .ps-snel button[aria-pressed="true"]{background:#f2cb74;border-color:#f2cb74;color:#0A1020}
 html.donker .ps-snel button:focus-visible{outline:2px solid #f2cb74}
-html.donker .wkh{background:#161f33;color:#eee7da}
-html.donker .wkh-gevel{background:#161f33;color:#eee7da;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .wkh{background:#1c263c;color:#eee7da}
+html.donker .wkh-gevel{background:#1c263c;color:#eee7da;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker .wkh-gevel::after{background:repeating-linear-gradient(90deg, #F2CB74 0 24px, #FFFFFF 24px 48px)}
 html.donker .wkh-gevel h1{color:#eee7da}
 html.donker .wkh-gevel p{color:#a3aaba}
-html.donker .wkh-kies{background:rgba(22,31,51,0.96);border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .wkh-kies{background:rgba(28,38,60,0.96);border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker .wkh-wie{color:#eee7da}
-html.donker .wkh-wie img{border:2px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .wkh-wie img{border:2px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .wkh-wie[aria-pressed="true"] img{border:3px solid #b8862e}
 html.donker .wkh-wie[aria-pressed="true"] span{color:#e7c893}
-html.donker .wkh-tot{background:#161f33;border:1px solid #b8862e;color:#eee7da}
-html.donker .wkh-tot::before{background:#161f33;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.6)}
+html.donker .wkh-tot{background:#1c263c;border:1px solid #b8862e;color:#eee7da}
+html.donker .wkh-tot::before{background:#1c263c;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.6)}
 html.donker .wkh-tot[aria-pressed="true"]{background:#f2cb74;color:#0A1020;border-color:#b8862e}
 html.donker .wkh-tot[aria-pressed="true"]::before{background:#162347}
 html.donker .wkh-toonbank h3{color:#e7c893}
-html.donker .wkh-tb{background:#161f33;border:1.5px solid #b8862e;color:#eee7da;box-shadow:0 4px 12px rgba(0,0,0,0.23)}
-html.donker .wkh-tb img{border:2px solid #f2cb74;background:#161f33}
+html.donker .wkh-tb{background:#1c263c;border:1.5px solid #b8862e;color:#eee7da;box-shadow:0 4px 12px rgba(0,0,0,0.23)}
+html.donker .wkh-tb img{border:2px solid #f2cb74;background:#1c263c}
 html.donker .wkh-tb small{color:#a3aaba}
 html.donker .wkh-tb i{color:#e7c893}
-html.donker .wkh-bord{background:#161f33;color:#eee7da;border:1.5px solid #b8862e;box-shadow:0 4px 12px rgba(0,0,0,0.266)}
+html.donker .wkh-bord{background:#1c263c;color:#eee7da;border:1.5px solid #b8862e;box-shadow:0 4px 12px rgba(0,0,0,0.266)}
 html.donker .wkh-bord::before,html.donker .wkh-bord::after{background:#b8862e}
 html.donker .wkh-bord h2{color:#eee7da}
 html.donker .wkh-bord small{color:#e7c893}
 html.donker .wkh-hout{background:linear-gradient(180deg, #D7B07A 0, #B98A4F 55%, #8F6634 100%);box-shadow:0 10px 14px -6px rgba(0,0,0,0.6)}
 html.donker .wkh-ding{color:#eee7da}
 html.donker .wkh-foto::after{background:radial-gradient(ellipse at center, rgba(60,40,15,.32) 0, rgba(60,40,15,0) 70%)}
-html.donker .wkh-foto.doos img{border:1px solid rgba(217,168,72,0.3);background:#161f33;box-shadow:0 6px 12px -6px rgba(0,0,0,0.6)}
-html.donker .wkh-prijs{background:#161f33;border:1px solid #b8862e;color:#eee7da;box-shadow:0 2px 5px rgba(0,0,0,0.266)}
-html.donker .wkh-prijs::before{background:#161f33;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.6)}
+html.donker .wkh-foto.doos img{border:1px solid rgba(217,168,72,0.3);background:#1c263c;box-shadow:0 6px 12px -6px rgba(0,0,0,0.6)}
+html.donker .wkh-prijs{background:#1c263c;border:1px solid #b8862e;color:#eee7da;box-shadow:0 2px 5px rgba(0,0,0,0.266)}
+html.donker .wkh-prijs::before{background:#1c263c;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.6)}
 html.donker .wkh-naam{color:#eee7da}
 html.donker .wkh-winkel{color:#a3aaba}
-html.donker .wkh-verder{border:2px dashed #b8862e;color:#eee7da;background:rgba(22,31,51,0.6)}
+html.donker .wkh-verder{border:2px dashed #b8862e;color:#eee7da;background:rgba(28,38,60,0.6)}
 html.donker .wkh-verder i{background:#b8862e}
 html.donker .wkh-verder svg{stroke:#f2cb74}
 html.donker .wkh-veeg{color:#a3aaba}
-html.donker .wkh-uitgang{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .wkh-uitgang{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .wkh-uitgang h2{color:#eee7da}
 html.donker .wkh-uitgang p{color:#a3aaba}
 html.donker .wkh-uitgang a{background:#162347;color:#ffffff}
-html.donker .wkh-uitgang a.wkh-tweede{background:#161f33;color:#eee7da;border:1.5px solid #b8862e}
+html.donker .wkh-uitgang a.wkh-tweede{background:#1c263c;color:#eee7da;border:1.5px solid #b8862e}
 html.donker .wkh-eerlijk{color:#a3aaba}
-html.donker .wkh-leeg{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#a3aaba}
+html.donker .wkh-leeg{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#a3aaba}
 html.donker .wkh-leeg button{background:#162347;color:#ffffff}
 html.donker .laag30{color:#a3aaba}
 @media (max-width: 759px){
@@ -1121,7 +1121,7 @@ html.donker .srij-item:focus-visible{outline:3px solid #186d92}
 html.donker .wzh-cat-kop{color:#eee7da}
 html.donker .prijs s.oud{color:#a3aaba}
 html.donker .tt-datum b{color:#e7c893}
-html.donker .wh-bezorg{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .wh-bezorg{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .wh-bezorg h2{color:#eee7da}
 html.donker .wh-bezorg h2 svg{color:#e7c893}
 html.donker .wh-bezorg li{color:#eee7da}
@@ -1130,53 +1130,53 @@ html.donker .wh-bron{color:#a3aaba}
 html.donker .wh-zin{color:#eee7da}
 html.donker .wh-zin strong{color:#e7c893}
 html.donker .srij-kop{color:#eee7da}
-html.donker .eerlijk-regel{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .eerlijk-regel{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .eerlijk-regel svg{color:#dfbb7d}
-html.donker .mandje-teaser{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .mandje-teaser{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .mandje-teaser strong{color:#eee7da}
 html.donker .mandje-teaser svg{color:#dfbb7d}
 html.donker .mandje-teaser:hover,html.donker .mandje-teaser:focus-visible{border-color:#b8862e}
-html.donker .mandje{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.14)}
+html.donker .mandje{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.14)}
 html.donker .mandje h3{color:#eee7da}
 html.donker .mandje h3 svg{color:#e7c893}
 html.donker .mandje-item{color:#eee7da}
-html.donker .mandje-foto{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .mandje-foto{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .mandje-foto svg{color:#dfbb7d}
 html.donker .mandje-prijs{color:#eee7da}
 html.donker .mandje-som{border-top:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .mandje-som strong{color:#eee7da}
 html.donker .mandje-verzend{color:#a3aaba}
 html.donker .mandje-noot{color:#a3aaba}
-html.donker .gedicht-knop{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .gedicht-knop{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .gedicht-knop > svg:first-child{color:#dfbb7d}
 html.donker .gedicht-knop > svg:last-child{color:#e7c893}
 html.donker .gedicht-knop strong{color:#eee7da}
 html.donker .gedicht-knop small{color:#a3aaba}
 html.donker .gedicht-knop:hover,html.donker .gedicht-knop:focus-visible{border-color:#b8862e}
-html.donker .rz-vast{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
-html.donker .rz-vast-foto{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .rz-vast{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .rz-vast-foto{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .rz-vast-kop{color:#e7c893}
 html.donker .rz-vast b{color:#eee7da}
 html.donker .rz-vast em{color:#eee7da}
 html.donker .rz-vast a{color:#e7c893}
-html.donker .lw-tekst{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
-html.donker .lw-mijn{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.14)}
+html.donker .lw-tekst{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .lw-mijn{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 14px rgba(0,0,0,0.14)}
 html.donker .lw-teller{color:#eee7da}
 html.donker .lw-chips li{background:#162347;color:#ffffff}
 html.donker .lw-chips button{color:#f2cb74}
-html.donker .lw-zoek input{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
-html.donker .lw-tegel{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
-html.donker .lw-tegel[aria-pressed="true"]{border:2px solid #243a75;background:#161f33}
-html.donker .lw-foto{background:#161f33}
+html.donker .lw-zoek input{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker .lw-tegel{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .lw-tegel[aria-pressed="true"]{border:2px solid #243a75;background:#1c263c}
+html.donker .lw-foto{background:#1c263c}
 html.donker .lw-vink{background:#162347;color:#f2cb74}
 html.donker .lw-prijs{color:#eee7da}
 html.donker .prodkaart .ruil{color:#c3c8d4}
 html.donker .prodkaart .ruil svg{color:#e7c893}
-html.donker .wijzer .wz-munten .chip.munt{background:var(--m-bg, #161f33);color:var(--m-fg, #eee7da);box-shadow:0 0 0 1.5px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.194)}
-html.donker .wijzer .wz-munten .chip.munt[aria-current="true"]{background:var(--m-bg, #161f33);color:var(--m-fg, #eee7da);box-shadow:0 0 0 3px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.374)}
+html.donker .wijzer .wz-munten .chip.munt{background:var(--m-bg, #1c263c);color:var(--m-fg, #eee7da);box-shadow:0 0 0 1.5px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.194)}
+html.donker .wijzer .wz-munten .chip.munt[aria-current="true"]{background:var(--m-bg, #1c263c);color:var(--m-fg, #eee7da);box-shadow:0 0 0 3px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.374)}
 html.donker .wijzer .wz-munten .chip.munt[aria-current="true"]::after{background:#b8862e;color:#FFFFFF;box-shadow:0 0 0 2px rgba(255,255,255,0.22)}
 html.donker .srij-meer{color:#eee7da}
-html.donker .srij-meer .srij-rond{background:#161f33;box-shadow:0 0 0 1.5px rgba(0,0,0,0.6)}
+html.donker .srij-meer .srij-rond{background:#1c263c;box-shadow:0 0 0 1.5px rgba(0,0,0,0.6)}
 html.donker .srij-plus{color:#e7c893}
 html.donker .srij-meer:hover .srij-rond{background:#f2cb74}
 html.donker .srij-meer:focus-visible{outline:3px solid #186d92}
@@ -1187,31 +1187,31 @@ html.donker .wijzer .wz-rij{border-top:1px solid rgba(217,168,72,0.3)}
 html.donker .wijzer .wz-rij-kop h2{color:#eee7da}
 html.donker .wijzer .wz-rij-kop a{color:#e7c893}
 html.donker .wijzer .wz-rij > p{color:#a3aaba}
-html.donker body .topbalk{background:#1d2740;color:#a3aaba;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker body .topbalk{background:#232e47;color:#a3aaba;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker body .topbalk svg{color:#e7c893}
-html.donker body .header{background:#161f33;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker body .header{background:#1c263c;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker body .logo{color:#eee7da}
 html.donker body .logo .k{color:#dfbb7d}
 html.donker body .header .icoonknop{color:#eee7da}
 html.donker body .header .icoonknop:hover{background:rgba(184,134,46,0.1);color:#e7c893}
 html.donker body .hoofdnav a,html.donker body .hoofdnav button{color:#eee7da}
 html.donker body .hoofdnav a:hover,html.donker body .hoofdnav button:hover,html.donker body .hoofdnav [aria-expanded="true"],html.donker body .hoofdnav [aria-current="page"]{color:#e7c893}
-html.donker body .zoekrij{background:#161f33;border-bottom:1px solid rgba(217,168,72,0.3)}
-html.donker body .zoekrij .zoek{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker body .zoekrij{background:#1c263c;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker body .zoekrij .zoek{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker body .zoekrij .zoek input{color:#eee7da}
 html.donker body .zoekrij .zoek input::placeholder{color:#a3aaba}
 html.donker body .zoekrij .zoek svg.lp{color:#e7c893}
-html.donker body .aftel,html.donker body .aftel-bf,html.donker body .aftel-sint,html.donker body .aftel-kerst{background:#1d2740;color:#eee7da;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker body .aftel,html.donker body .aftel-bf,html.donker body .aftel-sint,html.donker body .aftel-kerst{background:#232e47;color:#eee7da;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker body .aftel-zin{color:#eee7da}
 html.donker body .aftel-sint .aftel-getal,html.donker body .aftel-kerst .aftel-getal{color:#ffffff}
-html.donker.nova5 body .onderbalk,html.donker body .onderbalk{background:rgba(22,31,51,0.98);border-top:1px solid rgba(217,168,72,0.3);box-shadow:0 -4px 14px rgba(0,0,0,0.194)}
+html.donker.nova5 body .onderbalk,html.donker body .onderbalk{background:rgba(28,38,60,0.98);border-top:1px solid rgba(217,168,72,0.3);box-shadow:0 -4px 14px rgba(0,0,0,0.194)}
 html.donker.nova5 body .onderbalk a,html.donker.nova5 body .onderbalk button,html.donker body .onderbalk a,html.donker body .onderbalk button{color:#c3c8d4}
 html.donker body .onderbalk [aria-current="page"]{color:#e7c893}
 html.donker body.nova5 .onderbalk [aria-current="page"],html.donker.nova5 body .onderbalk [aria-current="page"]{color:#e7c893}
-html.donker body .naarboven{background:#161f33;color:#eee7da;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 12px rgba(0,0,0,0.32)}
-html.donker body .product-plak{background:rgba(22,31,51,0.98);border-top:1px solid rgba(217,168,72,0.3);box-shadow:0 -4px 14px rgba(0,0,0,0.23)}
+html.donker body .naarboven{background:#1c263c;color:#eee7da;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 12px rgba(0,0,0,0.32)}
+html.donker body .product-plak{background:rgba(28,38,60,0.98);border-top:1px solid rgba(217,168,72,0.3);box-shadow:0 -4px 14px rgba(0,0,0,0.23)}
 html.donker body .product-plak .prijs,html.donker.nova2 body.pag-product .product-plak .prijs{color:#eee7da}
-html.donker body .footer{background:#1d2740;color:#c3c8d4;border-top:1px solid rgba(217,168,72,0.3)}
+html.donker body .footer{background:#232e47;color:#c3c8d4;border-top:1px solid rgba(217,168,72,0.3)}
 html.donker body .footer h3,html.donker body .footer h4,html.donker body .footer strong{color:#e7c893}
 html.donker body .footer p,html.donker body .footer a,html.donker body .footer li a,html.donker body .footer-onder a{color:#eee7da}
 html.donker body .footer li a:hover,html.donker body .footer li a:focus-visible{color:#e7c893}
@@ -1220,76 +1220,76 @@ html.donker body .footer-yara{border-top-color:rgba(217,168,72,0.3)}
 html.donker body .footer-yara .binnen{color:#e7c893}
 html.donker body .footer-onder{border-top-color:rgba(217,168,72,0.3)}
 html.donker body .footer-onder .binnen{color:#c3c8d4}
-html.donker body .paginakop.donker{background:radial-gradient(120% 140% at 100% 0%, rgba(217,168,72,0.18), transparent 55%), #1d2740;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker body .paginakop.donker{background:radial-gradient(120% 140% at 100% 0%, rgba(217,168,72,0.18), transparent 55%), #232e47;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker body .paginakop.donker h1{color:#eee7da}
 html.donker body .paginakop.donker h1::first-letter{color:#e7c893}
 html.donker body .paginakop.donker p{color:#c3c8d4}
 html.donker body .paginakop.donker .kruimel,html.donker body .paginakop.donker .kruimel a{color:#a3aaba}
-html.donker body .catbalk-rond,html.donker body .slimnav .sn-beeld.sn-rond,html.donker body .mini-tegel .mt-rond,html.donker body .srt-vt-rond,html.donker body .srij-rond{background:#1d2740}
-html.donker body .wzh-rond.wzh-icoon,html.donker body .srt-st-rond.srt-vt-ico,html.donker body .rh-rond.rh-icoon{background:#1d2740;color:#e7c893}
+html.donker body .catbalk-rond,html.donker body .slimnav .sn-beeld.sn-rond,html.donker body .mini-tegel .mt-rond,html.donker body .srt-vt-rond,html.donker body .srij-rond{background:#232e47}
+html.donker body .wzh-rond.wzh-icoon,html.donker body .srt-st-rond.srt-vt-ico,html.donker body .rh-rond.rh-icoon{background:#232e47;color:#e7c893}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
 html.donker .sh .welkom p{color:#a3aaba}
-html.donker .sh .sh-voorwie a{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
-html.donker .sh .stoep{background:repeating-linear-gradient(90deg,#26314d 0 38px,#1d2740 38px 40px)}
-html.donker .sh .luifel{background:repeating-linear-gradient(90deg,var(--k) 0 18px,#161f33 18px 36px);box-shadow:0 2px 0 rgba(0,0,0,0.194)}
-html.donker .sh .luifel::after{background:radial-gradient(circle at 9px 0,var(--k) 8.5px,transparent 9px) 0 0/36px 9px repeat-x,radial-gradient(circle at 27px 0,#161f33 8.5px,transparent 9px) 0 0/36px 9px repeat-x}
-html.donker .sh .pui{background:#161f33;border:3px solid var(--k)}
+html.donker .sh .sh-voorwie a{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
+html.donker .sh .stoep{background:repeating-linear-gradient(90deg,#2c3854 0 38px,#232e47 38px 40px)}
+html.donker .sh .luifel{background:repeating-linear-gradient(90deg,var(--k) 0 18px,#1c263c 18px 36px);box-shadow:0 2px 0 rgba(0,0,0,0.194)}
+html.donker .sh .luifel::after{background:radial-gradient(circle at 9px 0,var(--k) 8.5px,transparent 9px) 0 0/36px 9px repeat-x,radial-gradient(circle at 27px 0,#1c263c 8.5px,transparent 9px) 0 0/36px 9px repeat-x}
+html.donker .sh .pui{background:#1c263c;border:3px solid var(--k)}
 html.donker .sh .bord{color:#eee7da}
 html.donker .sh .raam{background:var(--k)}
-html.donker .sh .raam span{background:#161f33}
+html.donker .sh .raam span{background:#1c263c}
 html.donker .sh .deur{color:#a3aaba}
 html.donker .sh .deur b{color:#eee7da}
 html.donker .sh .gevel:hover .bord,html.donker .sh .gevel:focus-visible .bord{text-decoration-color:#dfbb7d}
 html.donker .sh .gevel:focus-visible{outline:3px solid #b8862e}
 html.donker .sh .sh-seizoen{color:#e7c893}
 html.donker .sh .terug{color:#eee7da}
-html.donker .sh .binnen-kop .luifel{background:repeating-linear-gradient(90deg,var(--k) 0 26px,#161f33 26px 52px)}
-html.donker .sh .binnen-kop .luifel::after{background:radial-gradient(circle at 13px 0,var(--k) 12.5px,transparent 13px) 0 0/52px 12px repeat-x,radial-gradient(circle at 39px 0,#161f33 12.5px,transparent 13px) 0 0/52px 12px repeat-x}
+html.donker .sh .binnen-kop .luifel{background:repeating-linear-gradient(90deg,var(--k) 0 26px,#1c263c 26px 52px)}
+html.donker .sh .binnen-kop .luifel::after{background:radial-gradient(circle at 13px 0,var(--k) 12.5px,transparent 13px) 0 0/52px 12px repeat-x,radial-gradient(circle at 39px 0,#1c263c 12.5px,transparent 13px) 0 0/52px 12px repeat-x}
 html.donker .sh .binnen-kop h1{color:#eee7da}
 html.donker .sh .binnen-kop p{color:#a3aaba}
-html.donker .sh .let{background:#0d1322;border:1px solid #f0d5a8}
+html.donker .sh .let{background:#141c2f;border:1px solid #f0d5a8}
 html.donker .sh .sh-extra a{background:#162347;color:#ffffff}
 html.donker .sh .plattegrond{border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker .sh .plattegrond h2{color:#e7c893}
-html.donker .sh .wegwijzer a{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
+html.donker .sh .wegwijzer a{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da}
 html.donker .sh .wegwijzer a small{color:#a3aaba}
 html.donker .sh .wegwijzer button{border:1px dashed #b8862e;color:#e7c893}
-html.donker .sh .gang-kop img{background:#161f33}
+html.donker .sh .gang-kop img{background:#1c263c}
 html.donker .sh .gang-kop small{color:#e7c893}
 html.donker .sh .gang-kop h2{color:#eee7da}
-html.donker .sh .sh-meer{border:1px solid #243a75;background:#161f33;color:#eee7da}
+html.donker .sh .sh-meer{border:1px solid #243a75;background:#1c263c;color:#eee7da}
 html.donker .sh .naar{color:#e7c893}
 html.donker .sh .sh-verder h2{color:#eee7da}
 html.donker .sh .voet{color:#a3aaba}
 html.donker .sh .welkom .straatbord{background:#162347;color:#ffffff;box-shadow:inset 0 0 0 3px rgba(0,0,0,0.6),inset 0 0 0 5px rgba(255,255,255,0.22),0 6px 14px -6px rgba(0,0,0,0.6)}
 html.donker .sh .welkom .straatbord small{color:#f2cb74}
-html.donker .sh .gevel .pui{background:#161f33;background:color-mix(in srgb,var(--k) 9%,#161f33)}
-html.donker .sh .luifel{background-image:linear-gradient(180deg,rgba(22,31,51,0.18),rgba(255,255,255,0.09)),repeating-linear-gradient(90deg,var(--k) 0 18px,#161f33 18px 36px)}
-html.donker .sh .bord{background:#161f33;border:1.5px solid #b8862e;box-shadow:0 2px 0 rgba(0,0,0,0.446)}
+html.donker .sh .gevel .pui{background:#1c263c;background:color-mix(in srgb,var(--k) 9%,#1c263c)}
+html.donker .sh .luifel{background-image:linear-gradient(180deg,rgba(28,38,60,0.18),rgba(255,255,255,0.09)),repeating-linear-gradient(90deg,var(--k) 0 18px,#1c263c 18px 36px)}
+html.donker .sh .bord{background:#1c263c;border:1.5px solid #b8862e;box-shadow:0 2px 0 rgba(0,0,0,0.446)}
 html.donker .sh .sh-aantal{color:#a3aaba}
 html.donker .sh .raam{box-shadow:0 0 0 1px rgba(255,255,255,0.11) inset,0 0 20px rgba(242,203,116,0.11)}
-html.donker .sh .raam span{background:#161f33}
+html.donker .sh .raam span{background:#1c263c}
 html.donker .sh .deur .deurtje{background:var(--kd);color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,0.374)}
 html.donker .sh .deurtje::after{background:#f2cb74}
 html.donker .sh .gevel.dicht .deur .deurtje{background:#6b717a}
-html.donker .sh .stoep{background-color:#26314d;background-image:linear-gradient(90deg,rgba(90,70,50,.2) 1px,transparent 1px),linear-gradient(0deg,rgba(90,70,50,.2) 1px,transparent 1px)}
+html.donker .sh .stoep{background-color:#2c3854;background-image:linear-gradient(90deg,rgba(90,70,50,.2) 1px,transparent 1px),linear-gradient(0deg,rgba(90,70,50,.2) 1px,transparent 1px)}
 html.donker .sh .sh-binnen .sh-extra a{background:var(--kd);box-shadow:inset 0 -3px 0 rgba(0,0,0,0.374)}
 html.donker .sh .sh-binnen .wegwijzer a{border-color:rgba(217,168,72,0.3);border-color:color-mix(in srgb,var(--k) 30%,rgba(217,168,72,0.3))}
 html.donker .sh .sh-binnen .wegwijzer a::before{background:var(--k)}
-html.donker .sh .sh-binnen .gang,html.donker .sh .top-etalage{background:#161f33;background:color-mix(in srgb,var(--k) 6%,#161f33);border:1px solid rgba(217,168,72,0.3);border-bottom:9px solid #b98a5c;box-shadow:0 8px 14px -10px rgba(0,0,0,0.6)}
+html.donker .sh .sh-binnen .gang,html.donker .sh .top-etalage{background:#1c263c;background:color-mix(in srgb,var(--k) 6%,#1c263c);border:1px solid rgba(217,168,72,0.3);border-bottom:9px solid #b98a5c;box-shadow:0 8px 14px -10px rgba(0,0,0,0.6)}
 html.donker .sh .sh-binnen .gang-kop small,html.donker .sh .top-etalage .gang-kop small{color:var(--kd)}
 html.donker .sh .sh-binnen .gang-kop img,html.donker .sh .top-etalage .gang-kop img{box-shadow:0 0 0 2px rgba(255,255,255,0.22),0 0 0 4px var(--k)}
 html.donker .sh .sh-binnen .pk-p{background:var(--kd);color:#fff}
-html.donker .sh .sh-binnen .pk-p::before{background:#161f33}
+html.donker .sh .sh-binnen .pk-p::before{background:#1c263c}
 html.donker .sh .sh-binnen .sh-meer,html.donker .sh .top-etalage .sh-meer{border-color:var(--k)}
 html.donker .sh .sh-binnen .naar,html.donker .sh .top-etalage .naar{color:var(--kd)}
 html.donker .sh .binnen-kop .pui{box-shadow:0 10px 20px -14px rgba(0,0,0,0.6)}
-html.donker .sh .kies{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 1px 3px rgba(0,0,0,0.14)}
+html.donker .sh .kies{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 1px 3px rgba(0,0,0,0.14)}
 html.donker .sh .kies h2{color:#eee7da}
 html.donker .sh .kies-wie a{color:#eee7da}
-html.donker .sh .kr{background:#161f33;border:2px solid rgba(217,168,72,0.3)}
+html.donker .sh .kr{background:#1c263c;border:2px solid rgba(217,168,72,0.3)}
 html.donker .sh .kies a.sh-aan .kr{border:3px solid #b8862e;box-shadow:0 0 0 3px rgba(246,231,196,0.22)}
 html.donker .sh .kies a.sh-aan .kr::after,html.donker .sh .kies a.sh-aan .sh-munt::after{background:#0A1020;color:#fff}
 html.donker .sh .kies a.sh-aan .kn{color:#eee7da;text-decoration-color:#dfbb7d}
@@ -1302,11 +1302,11 @@ html.donker .sh .straat-kop h2 span{color:#e7c893}
 html.donker .sh .stand{color:#a3aaba}
 html.donker .sh .stand b{color:#eee7da}
 html.donker .sh .stand a,html.donker .sh .stand .link{color:#e7c893}
-html.donker .sh .top-etalage{background:#161f33;border:1px solid #eeddb8}
+html.donker .sh .top-etalage{background:#1c263c;border:1px solid #eeddb8}
 html.donker .sh .straat-titel{color:#eee7da}
 html.donker .sh .dicht-titel{color:#a3aaba}
 html.donker .sh .rolluik{background:repeating-linear-gradient(180deg,#A9AFB8 0 7px,#C9CDD3 7px 10px);border:4px solid #8d939c}
-html.donker .sh .rolluik span{background:#161f33;color:#eee7da}
+html.donker .sh .rolluik span{background:#1c263c;color:#eee7da}
 html.donker .sh .filter{background:#38311e;color:#eee7da!important}
 html.donker .sh .filter a{color:#e7c893}
 html.donker .sh .sh-hero{box-shadow:0 10px 24px -14px rgba(0,0,0,0.6);background:#382c1e}
@@ -1326,55 +1326,55 @@ html.donker .sh .gv-raam.toe{background:#E9E1D2 url(/images/straat/rolluik.webp)
 html.donker .sh .gv-raam.toe b{background:#fff;color:#141A2A;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 html.donker .sh .gv-raam.loket b{color:#0A1020}
 html.donker .sh .binnen-kop.nova .ik{border:4px solid var(--k);background:#382e1e}
-html.donker .sh .binnen-kop.nova .embleem{background:#161f33;box-shadow:0 0 0 3px rgba(255,255,255,0.22),0 0 0 5px var(--k),0 6px 12px -4px rgba(0,0,0,0.6)}
+html.donker .sh .binnen-kop.nova .embleem{background:#1c263c;box-shadow:0 0 0 3px rgba(255,255,255,0.22),0 0 0 5px var(--k),0 6px 12px -4px rgba(0,0,0,0.6)}
 html.donker .sh .binnen-kop.nova .luifel{box-shadow:0 4px 6px -2px rgba(0,0,0,0.5)}
-html.donker .sh .snel{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .sh .snel{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .sh .snel h2{color:#eee7da}
-html.donker .sh .snel .kr{background:#0d1322}
-html.donker .sh .gang-kop img{background:#0d1322}
-html.donker .sh .binnen-kop.nova .ik-leeg{background:linear-gradient(180deg,#382e1e,#0d1322)}
-html.donker .sh .dicht-blok{border:1px dashed rgba(217,168,72,0.3);background:#0d1322}
+html.donker .sh .snel .kr{background:#141c2f}
+html.donker .sh .gang-kop img{background:#141c2f}
+html.donker .sh .binnen-kop.nova .ik-leeg{background:linear-gradient(180deg,#382e1e,#141c2f)}
+html.donker .sh .dicht-blok{border:1px dashed rgba(217,168,72,0.3);background:#141c2f}
 html.donker .sh .dicht-blok summary{color:#a3aaba}
 html.donker .sh .dicht-blok summary b{color:#e7c893}
-html.donker .sh .gids-k{background:#161f33;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 1px 3px rgba(0,0,0,0.14)}
-html.donker .sh .gids-k .gk-foto{background:#0d1322}
-html.donker .sh .gids-k .gk-foto img{background:#161f33}
-html.donker .sh .gids-k .gk-foto .gk-leeg{background:#0d1322}
+html.donker .sh .gids-k{background:#1c263c;border:1px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:0 1px 3px rgba(0,0,0,0.14)}
+html.donker .sh .gids-k .gk-foto{background:#141c2f}
+html.donker .sh .gids-k .gk-foto img{background:#1c263c}
+html.donker .sh .gids-k .gk-foto .gk-leeg{background:#141c2f}
 html.donker .sh .gids-k .gk-foto::before{background:var(--kd);color:#fff}
 html.donker .sh .gids-k .gk-l{color:var(--kd)}
 html.donker .sh .gids-k:focus-visible{outline:3px solid #b8862e}
 html.donker .sh .gv-raam.kiosk>span::before{background:var(--kd)}
-html.donker .sh .sh-extra a img{background:#0d1322}
-html.donker .sh .pk{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 1px 3px rgba(0,0,0,0.14)}
+html.donker .sh .sh-extra a img{background:#141c2f}
+html.donker .sh .pk{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 1px 3px rgba(0,0,0,0.14)}
 html.donker .sh .pk:focus-visible{outline:3px solid #b8862e}
-html.donker .sh .pk-foto{background:#161f33}
+html.donker .sh .pk-foto{background:#1c263c}
 html.donker .sh .pk-p{color:#eee7da}
 html.donker .sh .pk-w{color:#a3aaba}
 html.donker .sh .sh-binnen .pk-p,html.donker .sh .top-etalage .pk-p{background:var(--kd);color:#fff}
-html.donker .sh .sh-binnen .pk-p::before,html.donker .sh .top-etalage .pk-p::before{background:#161f33}
+html.donker .sh .sh-binnen .pk-p::before,html.donker .sh .top-etalage .pk-p::before{background:#1c263c}
 html.donker .k-blad{background:rgba(255,255,255,0.14)}
-html.donker .k-blad .k-doos{background:#161f33;color:#eee7da;box-shadow:0 -8px 30px rgba(0,0,0,0.5)}
+html.donker .k-blad .k-doos{background:#1c263c;color:#eee7da;box-shadow:0 -8px 30px rgba(0,0,0,0.5)}
 html.donker .k-blad .k-doos::before{background:repeating-linear-gradient(90deg,var(--k,#8F6620) 0 22px,#fff 22px 44px)}
 html.donker .k-blad .k-greep{background:#382f1e}
-html.donker .k-blad .k-sluit{background:#1d2740;color:#eee7da}
-html.donker .k-blad .k-foto{background:#161f33;border:1px solid rgba(217,168,72,0.3);box-shadow:0 8px 18px -12px rgba(0,0,0,0.6)}
+html.donker .k-blad .k-sluit{background:#232e47;color:#eee7da}
+html.donker .k-blad .k-foto{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 8px 18px -12px rgba(0,0,0,0.6)}
 html.donker .k-blad .k-doos h3{color:#eee7da}
 html.donker .k-blad .k-doos p{color:#c3c8d4}
 html.donker .k-blad .k-prijs{background:var(--kd,#644716);color:#ffffff}
-html.donker .k-blad .k-prijs::before{background:#161f33}
+html.donker .k-blad .k-prijs::before{background:#1c263c}
 html.donker .k-blad .k-knop{background:#162347;color:#ffffff;box-shadow:inset 0 -3px 0 rgba(0,0,0,0.5),0 0 0 2px rgba(242,203,116,0.22)}
 html.donker .k-blad .k-klein{color:#a3aaba}
 html.donker .k-blad .k-klein a{color:#e7c893}
 html.donker .sh .gv-wat{color:#eee7da}
 html.donker .sh .gv-tel{color:#a3aaba}
 html.donker .sh .gv-dicht .gv-wat{color:#a3aaba}
-html.donker .sh .wegwijzer-rij.sh-veeg-meer::after{background:linear-gradient(90deg,rgba(247,243,236,0),#0d1322 62%)}
-html.donker .sh .veeg-pijl{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:var(--kd,var(--dgoud));box-shadow:0 2px 6px rgba(0,0,0,0.374)}
-html.donker.sh-thuis body{background:linear-gradient(180deg,#1d2740 0,#0d1322 420px) no-repeat,#0d1322}
-html.donker.sh-thuis .header,html.donker.sh-kop .header{background:#161f33;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .sh .wegwijzer-rij.sh-veeg-meer::after{background:linear-gradient(90deg,rgba(247,243,236,0),#141c2f 62%)}
+html.donker .sh .veeg-pijl{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:var(--kd,var(--dgoud));box-shadow:0 2px 6px rgba(0,0,0,0.374)}
+html.donker.sh-thuis body{background:linear-gradient(180deg,#232e47 0,#141c2f 420px) no-repeat,#141c2f}
+html.donker.sh-thuis .header,html.donker.sh-kop .header{background:#1c263c;border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker.sh-thuis .header .logo,html.donker.sh-kop .header .logo{color:#eee7da}
 html.donker.sh-thuis .header .logo .k,html.donker.sh-kop .header .logo .k{color:#dfbb7d}
-html.donker.sh-thuis .zoekrij .zoek,html.donker.sh-kop .zoekrij .zoek{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker.sh-thuis .zoekrij .zoek,html.donker.sh-kop .zoekrij .zoek{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker.sh-thuis .zoekrij .zoek:focus-within,html.donker.sh-kop .zoekrij .zoek:focus-within{outline:2px solid #b8862e}
 html.donker.sh-thuis .zoekrij .zoek input,html.donker.sh-kop .zoekrij .zoek input{color:#eee7da}
 html.donker.sh-thuis .zoekrij .zoek input::placeholder,html.donker.sh-kop .zoekrij .zoek input::placeholder{color:#a3aaba}
@@ -1382,9 +1382,9 @@ html.donker .sh .binnen-kop .in-winkel{color:var(--kd)}
 html.donker .sh .alles-lijst a{background:var(--kd);color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,0.374)}
 html.donker .sh .wegwijzer a.ws-aan{background:#162347;border-color:#243a75;color:#ffffff}
 html.donker .sh .wegwijzer a.ws-aan::before{background:#f2cb74}
-html.donker .sh .ws-etalage{background:#161f33!important;border-color:#eeddb8!important}
-html.donker .sh .ws-licht .ik-leeg{background:linear-gradient(180deg,#382e1e,#0d1322)}
-html.donker .sh .ws-licht .embleem{background:#161f33}
+html.donker .sh .ws-etalage{background:#1c263c!important;border-color:#eeddb8!important}
+html.donker .sh .ws-licht .ik-leeg{background:linear-gradient(180deg,#382e1e,#141c2f)}
+html.donker .sh .ws-licht .embleem{background:#1c263c}
 html.donker .sh .pk-korting{background:#b3261e;color:#fff}
 html.donker .sh .pk-korting.echt{background:#1f5b3a}
 html.donker .sh .pk-oud{color:#a3aaba}
@@ -1399,16 +1399,19 @@ html.donker .aftel3 .a3 b{color:#F7D77F}
 html.donker .aftel3 .a3:focus-visible{outline:3px solid #F2CB74}
 html.donker.combi .sh .sh-meer{background:#162347;border:1px solid #243a75;color:#ffffff}
 html.donker.combi .sh .sh-meer:hover{background:#1f2d52}
-html.donker .lade-thema button{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#eee7da}
+html.donker .lade-thema button{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
 html.donker .lade-thema button small{color:#a3aaba}
 html.donker .lade-thema button[aria-pressed="true"]{background:#162347;border-color:#243a75;color:#ffffff}
 html.donker .lade-thema button[aria-pressed="true"] small{color:#e5d7be}
+html.donker.combi body .aftel3 .a3-bf{background:radial-gradient(120% 140% at 50% 0%,#36477C 0%,#24325C 55%,#192442 100%)}
+html.donker.combi body .aftel3 .a3-sint{background:radial-gradient(120% 140% at 50% 0%,#A2293C 0%,#7A1A2C 55%,#581222 100%)}
+html.donker.combi body .aftel3 .a3-kerst{background:radial-gradient(120% 140% at 50% 0%,#317F50 0%,#215C39 55%,#174129 100%)}
 /* ---- uit de <style>-blokken in app.js ---- */
 html.donker .rijm-z{color:var(--rz-ink)}
 html.donker .rijm-z .rz-eyebrow{color:#eccc9c}
 html.donker .rijm-z .rz-knop{border:1px solid #c99740;background:linear-gradient(#f8dc95,#e6b452);color:#221b1f;box-shadow:0 6px 0 rgba(0,0,0,0.6),0 10px 26px rgba(0,0,0,0.32)}
 html.donker .rijm-z .rz-knop:active{box-shadow:0 4px 0 rgba(0,0,0,0.6)}
-html.donker .rijm-z .rz-knop.rz-wit{background:#161f33;border-color:rgba(217,168,72,0.3);color:#eee7da}
+html.donker .rijm-z .rz-knop.rz-wit{background:#1c263c;border-color:rgba(217,168,72,0.3);color:#eee7da}
 html.donker .rijm-z button:focus-visible,html.donker .rijm-z a:focus-visible,html.donker .rijm-z input:focus-visible,html.donker .rijm-z textarea:focus-visible,html.donker .rijm-z select:focus-visible{outline:3px solid #137ca8}
 html.donker .rz-smal{color:#ffffff;background:linear-gradient(110deg,#0b1225,#1a1632 65%,#3a1727);border:1px solid rgba(228,183,90,0.55);box-shadow:0 8px 22px rgba(0,0,0,0.338)}
 html.donker .rz-smal:hover{box-shadow:0 12px 28px rgba(0,0,0,0.446)}
@@ -1426,44 +1429,44 @@ html.donker .rz-blok p{color:#e9e7e3}
 html.donker .rz-blok .rz-beeld{background:#17254c}
 html.donker .rz-held{background:#17254c;box-shadow:var(--rz-shadow)}
 html.donker .rz-kop p{color:var(--rz-muted)}
-html.donker .rz-kaart{border:2px solid #d9b46a;background:linear-gradient(180deg,#161f33,#38311e);box-shadow:var(--rz-shadow)}
+html.donker .rz-kaart{border:2px solid #d9b46a;background:linear-gradient(180deg,#1c263c,#38311e);box-shadow:var(--rz-shadow)}
 html.donker .rz-kaartkop{background:linear-gradient(100deg,#81172f,#aa263e);color:#fff}
 html.donker .rz-kaartkop span{border:1px solid #ffc674;color:#ffe7a7}
 html.donker .rz-veld>label,html.donker .rz-veld legend{color:#eee7da}
-html.donker .rz-veld input[type=text],html.donker .rz-veld select,html.donker .rz-veld textarea{background:#161f33;border:1.5px solid #2b3550;color:#eee7da}
+html.donker .rz-veld input[type=text],html.donker .rz-veld select,html.donker .rz-veld textarea{background:#1c263c;border:1.5px solid #33405e;color:#eee7da}
 html.donker .rz-veld input:focus,html.donker .rz-veld textarea:focus,html.donker .rz-veld select:focus{border-color:#ba8d40}
 html.donker .rz-veld small{color:#c3c8d4}
 html.donker .rz-veld ::placeholder{color:#a3aaba}
-html.donker .rz-keuzes label{border:1.5px solid #cdb98f;background:#161f33;color:#eee7da}
+html.donker .rz-keuzes label{border:1.5px solid #cdb98f;background:#1c263c;color:#eee7da}
 html.donker .rz-keuzes label:has(input:checked){background:#1d315e;color:#ffe39b;border-color:#bb8d46;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.6)}
 html.donker .rz-keuzes label:has(input:focus-visible){outline:3px solid #137ca8}
 html.donker .rz-humor small{color:#c3c8d4}
 html.donker .rz-keuzes label:has(input:checked) small{color:#f7e3b0}
 html.donker .rz-acties-form{border-top:1px solid rgba(217,168,72,0.3)}
 html.donker .rz-acties-form p{color:#c3c8d4}
-html.donker .rz-fout{background:#161f33;border:1px solid #e9b7aa;color:#eabcb1}
+html.donker .rz-fout{background:#1c263c;border:1px solid #e9b7aa;color:#eabcb1}
 html.donker .rz-wacht{background:radial-gradient(circle at 50% 20%,#273251,#0b1225 65%)}
-html.donker .rz-wachtkaart{background:#161f33;border:2px solid #debc78;box-shadow:0 28px 90px rgba(0,0,0,0.6)}
-html.donker .rz-stappen{background:linear-gradient(180deg,#161f33,#38301e);border:1px solid #e2c17c}
+html.donker .rz-wachtkaart{background:#1c263c;border:2px solid #debc78;box-shadow:0 28px 90px rgba(0,0,0,0.6)}
+html.donker .rz-stappen{background:linear-gradient(180deg,#1c263c,#38301e);border:1px solid #e2c17c}
 html.donker .rz-stappen li{border-bottom:1px solid #ecdcb8;color:#c3c8d4}
 html.donker .rz-stappen li span{border:3px dotted #c99740}
 html.donker .rz-stappen li.bezig{color:#eee7da}
 html.donker .rz-stappen li.klaar{color:#eee7da}
 html.donker .rz-stappen li.klaar span{background:#2e9e4a url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 12.5l4 4 8-9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E") center/16px no-repeat}
 html.donker .rz-grap{color:#ed9cb0}
-html.donker .rz-balk{background:#1d2740}
+html.donker .rz-balk{background:#232e47}
 html.donker .rz-balk:before{background:linear-gradient(90deg,#cf9d44,#ffe6a8)}
 html.donker .rz-noot{color:#c3c8d4}
 html.donker .rz-terug{color:#c3c8d4}
-html.donker .rz-gedicht{background:linear-gradient(180deg,#161f33,#38301e);border:2px solid #d6b575;box-shadow:0 18px 45px rgba(0,0,0,0.194)}
+html.donker .rz-gedicht{background:linear-gradient(180deg,#1c263c,#38301e);border:2px solid #d6b575;box-shadow:0 18px 45px rgba(0,0,0,0.194)}
 html.donker .rz-gedicht:before{color:#f3e4c9}
 html.donker .rz-gedicht .rz-eyebrow{color:#ddba87}
 html.donker .rz-handtekening{color:#ea879d}
-html.donker .rz-cadeaus{background:linear-gradient(180deg,#161f33,#38301e);border:2px solid #d6b575;box-shadow:var(--rz-shadow)}
+html.donker .rz-cadeaus{background:linear-gradient(180deg,#1c263c,#38301e);border:2px solid #d6b575;box-shadow:var(--rz-shadow)}
 html.donker .rz-cadeaus>p{color:#c3c8d4}
-html.donker .rz-cadeau{border:1px solid rgba(217,168,72,0.3);background:#161f33}
+html.donker .rz-cadeau{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
 html.donker .rz-cadeau:hover{border-color:#d6b575}
-html.donker .rz-cadeau img{background:#161f33}
+html.donker .rz-cadeau img{background:#1c263c}
 html.donker .rz-cadeau small{color:#c3c8d4}
 html.donker .rz-cadeau em{color:#e5bd89}
 html.donker .rz-cadeau .pijl{background:#f3d27a}
@@ -1471,14 +1474,14 @@ html.donker .rz-totaal{background:#38311e;border:1px solid #e2c17c;color:#eee7da
 html.donker .rz-klein{color:#c3c8d4!important}
 html.donker .rz-toast{background:#225941;color:#ffffff;box-shadow:var(--rz-shadow)}
 html.donker .rijm-z .rz-knop{border:1px solid #b8862e;background:linear-gradient(180deg,#fce7ad 0%,#f0c96c 48%,#dba646 100%);color:#1d1626;box-shadow:inset 0 1px 0 rgba(255,255,255,0.165),inset 0 -2px 0 rgba(0,0,0,0.446),0 4px 0 rgba(0,0,0,0.6),0 10px 22px rgba(0,0,0,0.446)}
-html.donker .rijm-z .rz-knop:after{background:linear-gradient(100deg,transparent,rgba(22,31,51,0.55),transparent)}
+html.donker .rijm-z .rz-knop:after{background:linear-gradient(100deg,transparent,rgba(28,38,60,0.55),transparent)}
 html.donker .rijm-z .rz-knop:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,0.165),inset 0 -2px 0 rgba(0,0,0,0.446),0 5px 0 rgba(0,0,0,0.6),0 14px 28px rgba(0,0,0,0.518)}
 html.donker .rijm-z .rz-knop:active{box-shadow:inset 0 1px 0 rgba(255,255,255,0.132),0 1px 0 rgba(0,0,0,0.6),0 4px 10px rgba(0,0,0,0.374)}
 html.donker .rijm-z .rz-knop:focus-visible{outline:3px solid #137ca8}
-html.donker .rijm-z .rz-knop.rz-wit{background:linear-gradient(180deg,#161f33,#0d1322);border:1.5px solid #dfc894;color:#eee7da;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(227,208,168,0.22),0 5px 12px rgba(0,0,0,0.176)}
-html.donker .rijm-z .rz-knop.rz-wit:hover{border-color:#c99740;background:#161f33;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 3px 0 rgba(0,0,0,0.6),0 8px 16px rgba(0,0,0,0.23)}
+html.donker .rijm-z .rz-knop.rz-wit{background:linear-gradient(180deg,#1c263c,#141c2f);border:1.5px solid #dfc894;color:#eee7da;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(227,208,168,0.22),0 5px 12px rgba(0,0,0,0.176)}
+html.donker .rijm-z .rz-knop.rz-wit:hover{border-color:#c99740;background:#1c263c;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 3px 0 rgba(0,0,0,0.6),0 8px 16px rgba(0,0,0,0.23)}
 html.donker .rijm-z .rz-knop.rz-wit:active{box-shadow:0 0 0 rgba(255,255,255,0.22)}
-html.donker .rz-keuzes label{background:linear-gradient(180deg,#161f33,#0d1322);border-color:rgba(217,168,72,0.3);box-shadow:0 1px 0 rgba(0,0,0,0.266)}
+html.donker .rz-keuzes label{background:linear-gradient(180deg,#1c263c,#141c2f);border-color:rgba(217,168,72,0.3);box-shadow:0 1px 0 rgba(0,0,0,0.266)}
 html.donker .rz-keuzes label:hover{border-color:#c99740;box-shadow:0 3px 8px rgba(0,0,0,0.266)}
 html.donker .rz-keuzes label:has(input:checked){background:linear-gradient(180deg,#1d2a4b,#0b1225);color:#ffe39b;border-color:#c99740;box-shadow:inset 0 1px 0 rgba(255,255,255,0.031),0 0 0 2px rgba(0,0,0,0.554),0 4px 10px rgba(0,0,0,0.446)}
 html.donker .rz-kaartkop{background:linear-gradient(100deg,#7a142c,#a8263f 60%,#8f1b34);border-bottom:2px solid #d9b46a;box-shadow:inset 0 1px 0 rgba(255,255,255,0.031)}
@@ -1490,40 +1493,40 @@ html.donker .rz-balk:before{background:linear-gradient(90deg,rgba(217,164,65,.2)
 html.donker .rz-totaal{background:linear-gradient(180deg,#38321e,#38311e);border:1.5px solid #e2c17c;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 6px rgba(0,0,0,0.194)}
 html.donker .rz-cadeau:hover{box-shadow:0 8px 18px rgba(0,0,0,0.23)}
 html.donker .rz-cadeau .pijl{background:linear-gradient(180deg,#fce7ad,#e2ad4c);color:#3a2a10;box-shadow:inset 0 1px 0 rgba(255,255,255,0.154),0 2px 4px rgba(0,0,0,0.5)}
-html.donker .rz-terug{background:linear-gradient(180deg,#161f33,#0d1322);border:1.5px solid rgba(217,168,72,0.3);box-shadow:0 2px 0 rgba(232,217,186,0.22)}
+html.donker .rz-terug{background:linear-gradient(180deg,#1c263c,#141c2f);border:1.5px solid rgba(217,168,72,0.3);box-shadow:0 2px 0 rgba(232,217,186,0.22)}
 html.donker .rz-terug:hover{border-color:#c99740}
 html.donker .rz-meer{border:1.5px dashed rgba(201,151,63,0.5)}
 html.donker .rz-meer summary{color:#eee7da}
 html.donker .rz-meer summary::before{color:#d7b372}
 html.donker .rz-meer summary small{color:#a3aaba}
 html.donker .rz-nr{color:#5a1424;background:linear-gradient(180deg,#fce7ad,#e2ad4c)}
-html.donker .rz-vb button{border:1px solid rgba(217,168,72,0.3);background:#161f33;color:#c3c8d4}
+html.donker .rz-vb button{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#c3c8d4}
 html.donker .rz-vb button:hover{border-color:#c99740}
 html.donker .rz-vb button[aria-pressed=true]{background:#17254c;color:#ffe39b;border-color:#c99740}
 html.donker .rz-vb button:focus-visible{outline:3px solid #137ca8}
 html.donker .rz-meerkeus{border-top:1px dashed #d6b575}
 html.donker .rz-meerkeus>p{color:#c3c8d4}
-html.donker .rz-mini{background:#161f33;border:1px solid rgba(217,168,72,0.3)}
+html.donker .rz-mini{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .rz-mini:hover{border-color:#d6b575;box-shadow:0 6px 14px rgba(0,0,0,0.194)}
-html.donker .rz-mini img{background:#161f33}
+html.donker .rz-mini img{background:#1c263c}
 html.donker .rz-mini em{color:#e5bd89}
 html.donker .rz-mini small{color:#c3c8d4}
-html.donker .rz-held2{background:radial-gradient(ellipse at 50% 35%,#161f33 0%,#1d2740 62%,#382f1e 100%)}
+html.donker .rz-held2{background:radial-gradient(ellipse at 50% 35%,#1c263c 0%,#232e47 62%,#382f1e 100%)}
 html.donker .rz-held2 h1{color:#eee7da;text-shadow:0 0 14px rgba(255,248,236,0.22),0 0 4px rgba(255,248,236,0.22)}
 html.donker .rz-held2 p{color:#eee7da;text-shadow:0 0 10px rgba(255,248,236,0.22)}
-html.donker .rz-stap{background:linear-gradient(180deg,#161f33,#0d1322);border:1.5px solid #e8d3a2;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(0,0,0,0.338),0 8px 18px rgba(0,0,0,0.158)}
+html.donker .rz-stap{background:linear-gradient(180deg,#1c263c,#141c2f);border:1.5px solid #e8d3a2;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(0,0,0,0.338),0 8px 18px rgba(0,0,0,0.158)}
 html.donker .rz-num{color:#fff;background:radial-gradient(circle at 35% 30%,#c42a43,#7c0f27 75%);box-shadow:inset 0 -2px 3px rgba(0,0,0,0.5),0 2px 4px rgba(0,0,0,0.59)}
 html.donker .rz-ico{fill:#daaf63;color:#daaf63;filter:drop-shadow(0 1px 0 rgba(0,0,0,0.6))}
 html.donker .rz-staptitel{color:#eee7da}
 html.donker .rz-stapsub{color:#c3c8d4}
-html.donker .rz-stap .rz-vb button{border:1.5px solid #e2c88f;background:linear-gradient(180deg,#161f33,#38301e);color:#eee7da;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(0,0,0,0.446)}
+html.donker .rz-stap .rz-vb button{border:1.5px solid #e2c88f;background:linear-gradient(180deg,#1c263c,#38301e);color:#eee7da;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(0,0,0,0.446)}
 html.donker .rz-stap .rz-vb button[aria-pressed=true]{background:linear-gradient(180deg,#1d2a4b,#0b1225);color:#ffe39b;border-color:#c99740}
-html.donker .rz-zelf,html.donker .rz-twee input,html.donker .rz-twee select{background:#161f33;border:1.5px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:inset 0 1px 2px rgba(0,0,0,0.122)}
-html.donker .rz-zelf{background:#161f33}
-html.donker .rz-zelf:not(:placeholder-shown){background:#161f33}
+html.donker .rz-zelf,html.donker .rz-twee input,html.donker .rz-twee select{background:#1c263c;border:1.5px solid rgba(217,168,72,0.3);color:#eee7da;box-shadow:inset 0 1px 2px rgba(0,0,0,0.122)}
+html.donker .rz-zelf{background:#1c263c}
+html.donker .rz-zelf:not(:placeholder-shown){background:#1c263c}
 html.donker .rz-zelf:focus,html.donker .rz-twee input:focus,html.donker .rz-twee select:focus{border-color:#c99740;box-shadow:0 0 0 4px rgba(0,0,0,0.446)}
 html.donker .rz-zelf::placeholder,html.donker .rz-twee ::placeholder{color:#a3aaba}
-html.donker .rz-meer2{background:linear-gradient(180deg,#161f33,#0d1322);border:1.5px solid #e8d3a2;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(0,0,0,0.338)}
+html.donker .rz-meer2{background:linear-gradient(180deg,#1c263c,#141c2f);border:1.5px solid #e8d3a2;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 2px 0 rgba(0,0,0,0.338)}
 html.donker .rz-meer2 summary b{color:#eee7da}
 html.donker .rz-meer2 summary small{color:#c3c8d4}
 html.donker .rz-meer2 .rz-pijl{color:#eee7da}

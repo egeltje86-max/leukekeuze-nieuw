@@ -4255,7 +4255,7 @@
       var mt = document.querySelector('meta[name="lk-donker"]'); l.href = '/' + (mt ? mt.content : 'assets/css/donker.css');
       l.onload = function () { h.classList.add('donker'); }; document.head.appendChild(l);
     } else h.classList.toggle('donker', donker);
-    var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', donker ? '#0B1120' : '#0A1020');
+    var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', donker ? '#141C2F' : '#1F2B48');
     [].forEach.call(document.querySelectorAll('[data-thema]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-thema') === k ? 'true' : 'false'); });
   }
   if (COMBI && MQ_DONKER) { var mqWissel = function () { if (themaKeuze() === 'auto') themaZetten(); }; if (MQ_DONKER.addEventListener) MQ_DONKER.addEventListener('change', mqWissel); else if (MQ_DONKER.addListener) MQ_DONKER.addListener(mqWissel); }
