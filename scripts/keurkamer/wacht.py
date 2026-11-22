@@ -111,7 +111,13 @@ def netwerk(u):
     if 'awin1.com' in u: return 'awin'
     return 'direct'
 tt_live = {pid: p for pid, p in P.items() if (p.get('netwerk') or netwerk(p.get('url'))) in ('tradetracker', 'daisycon', 'awin')}
-per_url = {url_sleutel(p['winkelUrl']): pid for pid, p in tt_live.items() if p['winkelUrl'] and 'awin1.com' not in p['winkelUrl']}
+# 22-11-2026 (controle van de site): alleen een gewoon winkeladres dat bij precies één product hoort. Eerder stond hier ook de
+# partnerlink als 'winkeladres' (https://ds1.nl/c, https://lt45.net/c, .../tradetracker ...). Elke Daisycon-feedregel zonder eigen
+# winkeladres kwam dan bij dat ene product uit: zo kreeg de 'Zen Again'-set (9,95) de prijs van een belevenis van Doenkado (89),
+# en vonden de Lamborghini-race en 16 andere belevenissen hun eigen feedregel nooit terug (geen verse prijs, 'ca.' op de site).
+_url_tel = collections.Counter(url_sleutel(p['winkelUrl']) for p in tt_live.values() if p.get('winkelUrl'))
+per_url = {url_sleutel(p['winkelUrl']): pid for pid, p in tt_live.items()
+           if p.get('winkelUrl') and netwerk(p['winkelUrl']) == 'direct' and _url_tel[url_sleutel(p['winkelUrl'])] == 1}
 per_md5 = {pid.split('-', 1)[1]: pid for pid in tt_live if '-' in pid}
 # 8-11-2026: Awin (Coolblue, EMP, s.Oliver...) herkennen we aan het productnummer p= in de awin-link
 def awin_p(u):
@@ -146,11 +152,41 @@ gevonden_tt = set()
 au_url, au_pad = {}, {}
 for pid, a in AU.items():
     if a.get('bron') != 'feed' or pid in P: continue
-    if a.get('winkelUrl') and 'awin1.com' not in a['winkelUrl']: au_url[url_sleutel(a['winkelUrl'])] = pid
+    if a.get('winkelUrl') and netwerk(a['winkelUrl']) == 'direct': au_url[url_sleutel(a['winkelUrl'])] = pid
     for u in (a.get('winkelUrl'), a.get('url')):
         dp = doel_pad(u)
         if dp: au_pad[dp] = pid
 au_terug = set()
+# 22-11-2026 (controle van de site): op het pad alleen koppelen als feedregel en product bij dezelfde winkel horen. Het pad laat het
+# domein weg, dus 'ruimte-mok' van Ditverzinjeniet kwam ook bij de Ruimtemok van Cadeau.nl uit. Een Daisycon-regel noemt alleen het pad
+# (dl=...): dan moet het programma (si=) gelijk zijn, en alleen voor winkels waarvan de feed op 22-11 met de winkelpagina is vergeleken.
+# Niet vertrouwd: Decantalo (feed ruim 10% duurder dan de winkel: Jameson 28,10 tegen 24,95), Droptelegram (verzendkosten in de prijs),
+# de Daisycon-feed van Ditverzinjeniet (voorraad klopt niet; die winkel loopt via TradeTracker), en varianten per maat of formaat
+# (MYKA, Kaartje2go, Westwing, Joybuy, Wijnkring, Dropwinkel). Die blijven bij de controle van de winkelpagina.
+DC_PAD_OK = {'Doenkado', 'Bloompost', 'Butchery', 'Butchery.nl', 'Razer'}
+def _dom(u):
+    try: d = urllib.parse.urlsplit(u).netloc.lower()
+    except Exception: return ''
+    return d[4:] if d.startswith('www.') else d
+def winkel_sleutels(*links):
+    """Wat een link over de winkel zegt: het Daisycon-programma (si=) en het domein van de winkelpagina waar hij heen gaat."""
+    uit = set()
+    for u in links:
+        u = str(u or '')
+        if not u: continue
+        try: q = urllib.parse.parse_qs(urllib.parse.urlsplit(u).query)
+        except Exception: q = {}
+        if netwerk(u) == 'daisycon' and q.get('si'): uit.add(('si', q['si'][0]))
+        for k in ('r', 'u', 'ued', 'url', 'murl'):
+            if k in q and re.match(r'https?://', q[k][0]): uit.add(('dom', _dom(q[k][0])))
+        if netwerk(u) == 'direct' and re.match(r'https?://', u): uit.add(('dom', _dom(u)))
+    return uit
+def zelfde_winkel(link, wurl, p):
+    rij = winkel_sleutels(link, wurl); prod = winkel_sleutels(p.get('url'), p.get('winkelUrl'))
+    if not rij & prod: return False
+    if not any(t == 'dom' for t, _ in rij):   # alleen een Daisycon-pad, geen echt winkeladres
+        return (p.get('shop') or '') in DC_PAD_OK
+    return True
 def zoek_pid(r):
     link = r.get('link') or r.get('url') or ''
     pid = per_awin.get(awin_p(link)) if awin_p(link) else None
@@ -161,7 +197,9 @@ def zoek_pid(r):
         try: w = url_sleutel(urllib.parse.unquote(w))
         except Exception: pass
         pid = per_url.get(w)
-    if not pid and link: pid = per_pad.get(doel_pad(link))
+    if not pid and link:
+        k = per_pad.get(doel_pad(link))
+        if k and zelfde_winkel(link, r.get('winkelUrl'), P[k]): pid = k
     return pid, link, w
 def verwerk(naam, L, datum):
     uit['bronnen'].append(naam); n = 0

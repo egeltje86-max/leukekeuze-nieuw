@@ -5478,7 +5478,7 @@
       '<h2>Wat verdienen wij eraan?</h2><p>Koop je iets via onze link, dan krijgen wij soms een kleine vergoeding van de winkel. Jij betaalt daardoor niets extra.</p>'],
     'over-ons': ['Over LeukeKeuze',
       '<p>Hoi, ik ben Marius uit Dordrecht. Ik maak LeukeKeuze naast mijn werk in de keuken. Het idee is simpel: een cadeau zoeken kost vaak veel tijd. Je klikt door honderden webwinkels en weet aan het eind nog steeds niet wat je moet kiezen. LeukeKeuze moet dat makkelijker maken.</p>' +
-      '<h2>Wat je hier vindt</h2><p>Op LeukeKeuze staan cadeaus en producten die ik met de hand heb uitgekozen. Ze zijn geordend op <a href="/c/cadeaus">voor wie</a>, op <a href="/c/cadeaus/onder-15">budget</a> en op onderwerp, van <a href="/c/christelijk">christelijke cadeaus</a> tot <a href="/c/metaaldetectie">metaaldetectie</a> (mijn eigen hobby). In de <a href="/gids">cadeaugidsen</a> zet ik per gelegenheid de beste ideeën op een rij, en met <a href="/vonk">VONK</a> vind je in een paar klikken iets passends.</p>' +
+      '<h2>Wat je hier vindt</h2><p>Op LeukeKeuze staan cadeaus en producten die ik met de hand heb uitgekozen. Ze zijn geordend op <a href="/c/cadeaus">voor wie</a>, op <a href="/c/cadeaus/onder-15">budget</a> en op onderwerp, van <a href="/c/christelijk">christelijke cadeaus</a> tot <a href="/c/hobby/rc-auto-s">bestuurbare auto\'s</a>. In de <a href="/gids">cadeaugidsen</a> zet ik per gelegenheid de beste ideeën op een rij, en met <a href="/vonk">VONK</a> vind je in een paar klikken iets passends.</p>' +
       '<h2>Hoe ik producten kies</h2><ul>' +
       '<li>Elk product bekijk ik eerst zelf: foto, prijs, omschrijving en de winkel.</li>' +
       '<li>Liever een goed product dan tien bijna dezelfde. Andere kleuren van hetzelfde product zet ik er niet allemaal op.</li>' +
@@ -5841,7 +5841,7 @@
         { kop: "Warm en knus", tekst: "Voor koude avonden op de bank.", ids: ["hema-efaa95f521", "hema-84afebb566", "dvzn-2a6f553405", "dvzn-e9a4c2cf2b"] },
         { kop: "Lampjes en sfeer", tekst: "Een leeslampje, lichtjes voor foto's of bloemen die nooit verwelken.", ids: ["cl-poes-leeslamp", "dvzn-8e1b865150", "dvzn-8301e7ef8f", "lego-40460"] },
         { kop: "Met een knipoog", tekst: "Voor een vriendin of collega met gevoel voor humor.", ids: ["dvzn-fcb853102a", "dvzn-91be613ae8", "cl-kat-kurkentrekker", "dvzn-06e0c194cf"] },
-        { kop: "Om van te genieten", tekst: "Voor bij de thee, iets lekkers of iets moois door de brievenbus.", ids: ["dvzn-995742", "cg-pers-monthflower-mug", "bloom-f6daaba72c", "cl-lindt-teddy"] },
+        { kop: "Om van te genieten", tekst: "Voor bij de thee, iets lekkers of iets moois door de brievenbus.", ids: ["dvzn-995742", "cg-pers-monthflower-mug", "bp-l001", "cl-lindt-teddy"] },
         { kop: "Spelletjes en zelf maken", tekst: "Een kaartspel voor een avond met vriendinnen of zelf kaarsen maken.", ids: ["cl-flip7", "cl-lama", "amz-b09sg9bb7m", "cl-uno"] }
       ],
       slot: "Iets meer te besteden? Kijk bij <a href=\"/gids/cadeau-25-euro\">Cadeau van 25 euro</a> of <a href=\"/gids/cadeau-voor-vrouw\">Cadeau voor een vrouw</a>. Meer kleine cadeaus vind je bij <a href=\"/collectie/kleine-cadeautjes/haar\">kleine cadeautjes voor haar</a>." },

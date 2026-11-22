@@ -145,6 +145,11 @@ def dc_direct(link):
 # Wens Marius (28-10-2026): ook tijdens de pauze ALLE winkels tonen, zodat bezoekers de echte, volle site zien.
 # Tijdens de pauze sturen we Daisycon-links rechtstreeks naar de winkel (zonder Daisycon ertussen), dan werkt elke klik.
 WINKELS = [w for w in WINKELS if w[0] != 'x-dvzn.json']
+# 22-11-2026 (controle van de site): winkels waarvan de productpagina's niet meer bestaan (404, sinds 16/17-11 doorgestuurd naar
+# dailyathome.nl) en Yesgifts (relatiegeschenken per 5 of meer stuks, prijs zonder btw) niet meer in 'Meer in onze winkels' en het zoeken.
+# Komt Daily at Home met een eigen feed, dan die gebruiken en de oude winkel hier weer weghalen.
+WEG_WINKELS = {'Kado-versturen', 'Cartoon Megastore', 'Animals Giftshop', 'Spaarpotten-winkel', 'Yesgifts'}
+WINKELS = [w for w in WINKELS if w[1] not in WEG_WINKELS]
 print('Daisycon-pauze:', PAUZE, '-', len(WINKELS), 'feeds')
 from urllib.parse import urlparse, parse_qs
 WINKELROOT = {'999 Games': 'https://www.999games.nl/', 'Bartogi': 'https://bartogi.nl/', 'Bloompost': 'https://www.bloompost.nl/',
