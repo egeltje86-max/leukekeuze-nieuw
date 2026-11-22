@@ -29,7 +29,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=222397405780538" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=276770801618955" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
   <link rel="stylesheet" href="assets/css/licht.css?v=240031266723681">
@@ -43,8 +43,8 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>window.LK_PAKPAD="assets/pak/voor--tieners--lekkers.js?v=145543986186951";</script>
-  <script>(function () { var s = "assets/js/producten-lean.js?v=250296049765056", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>window.LK_PAKPAD="assets/pak/voor--tieners--lekkers.js?v=216442159205551";</script>
+  <script>(function () { var s = "assets/js/producten-lean.js?v=206960284056743", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -241,7 +241,7 @@
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=159967515905872"></script>
   <script src="assets/js/straat.js?v=271835745966948"></script>
-  <script src="assets/js/app.js?v=222397405780538"></script>
+  <script src="assets/js/app.js?v=276770801618955"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
