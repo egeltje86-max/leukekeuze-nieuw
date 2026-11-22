@@ -3917,7 +3917,9 @@
         (q.q ? '<div class="sectie-kop" style="margin-top:6px"><div><h2>★ Door ons gekozen</h2></div></div>' : '') +
         gridMeer(lijst, leegBlok(q.q ? 'Nog niets uitgekozen voor dit woord' : 'Niets gevonden', q.q ? 'Kijk hieronder in het aanbod van onze winkels, of laat VONK zoeken.' : 'Probeer een ander woord, een ander budget, of laat VONK zoeken.',
           '<a class="knop knop-goud" href="/vonk">Probeer VONK</a>'), q.q ? 8 : 24) +
-        (q.q ? '<section class="sectie alle-winkels" data-alle-winkels data-q="' + esc(q.q) + '" data-prijs="' + esc(q.prijs || 'alle') + '">' +
+        /* 22-11-2026 (Marius: 'waarom kan ik er dan meer dan 700 zien'; 'ja is goed'): 'Meer in onze winkels' alleen als we zelf minder dan 12 cadeaus hebben, en dan hooguit 12, zonder pakken en dubbele. */
+        (q.q && lijst.length >= 12 && !/rebul/i.test(q.q) ? '<div class="aw-bol"><a class="knop knop-rand" href="' + esc(bolZoek(q.q)) + '" target="_blank" rel="sponsored nofollow noopener">Zoek ook op bol naar “' + esc(q.q) + '” ' + ic('pijl') + '</a></div>' : '') +
+        (q.q && lijst.length < 12 ? '<section class="sectie alle-winkels" data-alle-winkels data-kort="12" data-q="' + esc(q.q) + '" data-prijs="' + esc(q.prijs || 'alle') + '">' +
           '<div class="sectie-kop"><div><h2>Meer in onze winkels</h2><p class="uitleg">Alles wat onze partnerwinkels verkopen. Deze producten hebben wij niet zelf gekeurd.</p></div></div>' +
           '<div class="aw-inhoud"><p class="aw-laden">Even zoeken in alle winkels…</p></div>' +
           /* 11-11-2026 (Marius: 'als je naar Atelier Rebul zoekt wil ik niet naar bol doorgestuurd worden'): bij dit merk geen knop naar bol; het loopt alleen via Parfumania. */
@@ -4071,6 +4073,15 @@
       });
       /* 13-11-2026 (grote keuring): wat al tussen onze eigen cadeaus staat (zelfde winkel, zelfde naam) niet nog eens hieronder tonen. */
       var eigenT = eigenTitels(); hits = hits.filter(function (x) { return !eigenT[sleutelT(x.w, x.t)]; });
+      var kort = +sec.getAttribute('data-kort') || 0;
+      if (kort) {
+        /* zoekpagina: geen pakken van veel stuks en niet hetzelfde product bij twee winkels */
+        var PAK = /\b(\d{2,}|[6-9])\s*(stuks|st\.?|pack|pak|x)\b|\bset van \d|\b\d+\s*x\s|\bmultipack\b|\bvoordeelpak|\bdoos van \d/i, gezienT = {};
+        hits = hits.filter(function (x) {
+          if (PAK.test(x.t)) return false;
+          var n = x.tl.replace(/[^a-z0-9]+/g, ' ').trim(); if (gezienT[n]) return false; gezienT[n] = 1; return true;
+        });
+      }
       if (!hits.length && !q) { sec.remove(); return; }
       var st = { winkel: 'alle', sort: 'relevant', toon: PER_KEER, prijs: 'alle' };
       /* 'Best passend': eerst de beste woord-treffers. Zijn die er niet (bv. bij Voor haar), dan een afwisselende mix
@@ -4111,6 +4122,7 @@
           [['relevant', 'Best passend'], ['prijs-op', 'Prijs laag – hoog'], ['prijs-af', 'Prijs hoog – laag']].map(function (o) { return '<option value="' + o[0] + '"' + (st.sort === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
           '</select>' + ic('omlaag') + '</label>';
         /* Geen maximum meer: steeds een stukje erbij met 'Toon meer', zodat je alles kunt zien. */
+        if (kort) l = l.slice(0, kort);
         var toon = l.slice(0, st.toon);
         var kaarten = toon.map(function (x) {
           return '<article class="prodkaart awkaart">' +
