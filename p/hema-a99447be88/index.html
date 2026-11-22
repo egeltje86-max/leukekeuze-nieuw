@@ -28,7 +28,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=261141536812333" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=169876364252327" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=52545124123821" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
   <link rel="stylesheet" href="assets/css/licht.css?v=224765128020713">
@@ -42,7 +42,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=65035224796555", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=98587442762168", t = "assets/js/topkeuze.js?v=46718504127920";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -239,9 +239,9 @@
   <script>window.LK_DETAILS_DEEL={"hema-a99447be88":{"url":"https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fspeelgoed-hobby%2Feducatief-speelgoed%2Flichtknuffel-22x20cm-konijn-38400051.html","winkelUrl":"https://www.hema.nl/speelgoed-hobby/educatief-speelgoed/lichtknuffel-22x20cm-konijn-38400051.html","subVast":true,"gecontroleerd":"2026-11-22","herkomst":"piloot","advies":{"voor":"Kinderen die een lichtje nodig hebben in het donker.","niet":"Er al een nachtlampje is.","alt":["dvzn-637174","hema-84812eeeed"],"meer":[["Cadeaus voor een baby","/voor/baby/"],["Schoencadeautjes","/collectie/schoencadeautjes/"]]},"waarom":"Een zacht knuffelkonijn van HEMA met een nachtlampje erin dat je eruit haalt om op te laden (usb-kabel erbij)."}};</script>
   <script src="assets/js/data.js?v=52545124123821"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=159967515905872"></script>
+  <script src="assets/js/gedeeld.js?v=190933670939703"></script>
   <script src="assets/js/straat.js?v=142020597390107"></script>
-  <script src="assets/js/app.js?v=261141536812333"></script>
+  <script src="assets/js/app.js?v=169876364252327"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

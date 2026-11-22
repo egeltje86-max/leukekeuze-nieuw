@@ -240,7 +240,8 @@
      Niet bij cadeaus met naam, foto of eigen tekst en niet bij eten en drinken (die kun je meestal niet terugsturen). bol en Amazon niet: daar hangt het af van de verkoper.
      Live voor iedereen sinds 18-11-2026 13:35 (GO Marius). Zelf zonder bekijken: ?proef=ruil-uit (weer aan: ?proef=ruil); helemaal uit: window.LK_RUIL = false. */
   var RUIL = { 'Ditverzinjeniet': '365 dagen retour', 'Cadeau.nl': '365 dagen retour', 'Dille & Kamille': '100 dagen retour', 'CoolGift': '90 dagen ruilen of retour',
-    'HEMA': '30 dagen gratis retour', 'Coolblue': 'Gratis ruilen', 'LEGO': 'Gratis retour', 'Parfumania': '30 dagen retour' };
+    'HEMA': '30 dagen gratis retour', 'Coolblue': 'Gratis ruilen', 'LEGO': 'Gratis retour', 'Parfumania': '30 dagen retour',
+    'Bax Music': '30 dagen niet goed, geld terug' }; /* Bax: nagekeken 22-11-2026 */
   var RUIL_AAN = (function () { if (window.LK_RUIL === false) return false; try { if (/[?&]proef=ruil-uit(&|$)/.test(location.search)) localStorage.setItem('lkruil', '0'); else if (/[?&]proef=ruil(&|$)/.test(location.search)) localStorage.removeItem('lkruil'); return localStorage.getItem('lkruil') !== '0'; } catch (e) { return true; } })();
   var EIGEN_NAAM = /met (je |eigen )?(naam|foto|tekst)|gegraveerd|graveren|gepersonaliseerd|personaliseer|eigen foto|initiaal|naamketting|naambord/i;
   function ruilRegel(p) {

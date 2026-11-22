@@ -184,6 +184,9 @@ TTFEED = {'t-dvzn': '1736161', 't-country-acc': '1479822', 't-country-licht': '1
           't-fotoinglas': '2120869',  # Foto-in-glas
           't-favoshop': '2562877',  # Favoshop
           't-zonnerij': '2180753',  # Zonnerij
+          # 22-11-2026: Bax Music (muziekwinkel, keyboards en digitale piano's van de ERBIJ-lijst keyboards). Alleen voor prijs en voorraad;
+          # bewust niet in de zoekindex (13.000 instrumenten en onderdelen, geen cadeauwinkel).
+          't-bax': '2090520',  # Bax Music
 }
 for naam, fid in TTFEED.items():
     xml = os.path.join(FEEDS, naam + '.xml'); js = os.path.join(FEEDS, naam + '.json')

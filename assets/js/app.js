@@ -332,6 +332,7 @@
     'De Grote Speelgoedwinkel': { datum: '20 november 2026', morgen: true, snel: 'Op werkdagen voor 17:00 besteld: dezelfde dag verzonden, meestal morgen in huis', kosten: 'Brievenbuspakje € 4,95, gewoon pakket € 6,49', retour: '14 dagen bedenktijd' },
     'CoolGift': { datum: '20 november 2026', gratis: 49, snel: 'In Nederland 1 werkdag na verzending (met naam of foto: een paar dagen langer)', kosten: 'Verzenden € 4,95, gratis vanaf € 49', retour: 'Tot 90 dagen ruilen of retour' },
     'Coolblue': { datum: '20 november 2026', gratis: 0, kosten: 'Gratis bezorgd', retour: 'Gratis ruilen' },
+    'Bax Music': { datum: '22 november 2026', gratis: 99, morgen: true, snel: 'Voor 23:00 besteld, morgen in huis (als het op voorraad is)', kosten: 'Gratis verzending vanaf € 99', retour: '30 dagen \'niet goed, geld terug\'' },
     'HEMA': { datum: '20 november 2026', retour: 'Binnen 30 dagen gratis retour' },
     'Dille & Kamille': { retour: 'Tot 100 dagen retour' },
     'LEGO': { gratis: 55, kosten: 'Gratis bezorgd vanaf € 55 (voorwaarden bij LEGO)', retour: 'Gratis retour; besteld tussen 1 november en 24 december: tot 90 dagen' },
