@@ -1425,6 +1425,11 @@ html.donker .lade-thema button[aria-pressed="true"] small{color:#e5d7be}
 html.donker.combi body .aftel3 .a3-bf{background:radial-gradient(120% 140% at 50% 0%,#36477C 0%,#24325C 55%,#192442 100%)}
 html.donker.combi body .aftel3 .a3-sint{background:radial-gradient(120% 140% at 50% 0%,#A2293C 0%,#7A1A2C 55%,#581222 100%)}
 html.donker.combi body .aftel3 .a3-kerst{background:radial-gradient(120% 140% at 50% 0%,#317F50 0%,#215C39 55%,#174129 100%)}
+html.donker .sh .kraam-proef{background:#38311e;border:1px dashed #b8862e;color:#eee7da}
+html.donker .sh .kraam-proef a{color:#e7c893}
+html.donker .sh .kraam-uitleg{color:#c3c8d4}
+html.donker .sh .kraam > .luifel::after{background:radial-gradient(circle at 9px 0,var(--k) 8.5px,transparent 9px) 0 0/36px 8px repeat-x,radial-gradient(circle at 27px 0,#1c263c 8.5px,transparent 9px) 0 0/36px 8px repeat-x}
+html.donker .sh .kraam-van{color:#c3c8d4}
 /* ---- uit de <style>-blokken in app.js ---- */
 html.donker .rijm-z{color:var(--rz-ink)}
 html.donker .rijm-z .rz-eyebrow{color:#eccc9c}
