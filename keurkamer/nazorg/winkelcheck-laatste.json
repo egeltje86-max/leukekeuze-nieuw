@@ -1,22 +1,22 @@
 {
- "datum": "2026-11-21",
- "nagekeken": 1059,
- "klopt": 517,
- "prijs": 8,
- "weg": 4,
- "onbekend": 515,
- "zonderAdres": 97,
+ "datum": "2026-11-22",
+ "nagekeken": 1066,
+ "klopt": 531,
+ "prijs": 3,
+ "weg": 5,
+ "onbekend": 510,
+ "zonderAdres": 102,
  "twijfelWinkels": [
   "AliExpress",
   "De Grote Speelgoedwinkel"
  ],
  "grotePrijssprong": [],
  "nietLeesbaar": [
-  "Decantalo: 267",
-  "LEGO: 55",
+  "Decantalo: 266",
+  "LEGO: 54",
   "Prydligt: 45",
   "Joybuy: 45",
-  "Kaartje2go: 33",
-  "Wijnkring: 30"
+  "Wijnkring: 30",
+  "Kaartje2go: 28"
  ]
 }
