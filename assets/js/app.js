@@ -1642,6 +1642,21 @@
       '<a class="knop knop-rand bh-alle" href="/c/belevenissen">Bekijk alle ' + alle.length + ' belevenissen ' + ic('pijl') + '</a>' +
     '</section>';
   }
+  /* 22-11-2026 16:56 (Marius: 'de belevenissen dwars door de cadeaupagina heen, zo groot'; 'probeer er een smalle balk van te maken'):
+     op de homepage na de etalage een smalle balk in plaats van het grote blok: foto van de Lamborghini-race (best verdienende cadeau),
+     'Geef een belevenis', vanaf-prijs en aantal; tik = alle belevenissen. Het grote blok terug: window.LK_BELEVENIS_GROOT = true. */
+  function belevenisBalk() {
+    if (window.LK_BELEVENIS_HOME === false) return '';
+    if (window.LK_BELEVENIS_GROOT === true) return belevenisBlok();
+    var alle = LK.zichtbaar().filter(function (p) { return p.afd === 'belevenissen'; });
+    if (alle.length < 6) return '';
+    var van = alle.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9);
+    var eu = '€' + (van % 1 ? van.toFixed(2).replace('.', ',') : String(van));
+    return '<a class="bh-balk" href="/c/belevenissen" data-tel="belevenissen-balk">' +
+      '<img src="images/producten/dk-9393c6d57b-klein.webp" alt="" loading="lazy" decoding="async" width="400" height="400">' +
+      '<span class="bh-balk-tekst"><small>Belevenissen</small><strong>Geef een belevenis</strong><span>Racen, vliegen, duiken · vanaf ' + eu + '</span></span>' +
+      '<span class="bh-balk-pijl" aria-hidden="true">›</span></a>';
+  }
   /* ===== WINKELTJE (live 17-11-2026, GO Marius na de test /nieuw/winkel/: 'Go') =====
      De homepage is een cadeauwinkeltje: een uithangbord, een balk 'voor wie' en 'hoeveel' die bovenaan blijft staan, de toonbank met het seizoen
      (lootjes trekken en het Sint-gedicht) en planken met cadeaus. Elke plank heeft een bordje (Om te lachen, Licht & sfeer ...) en is een mix:
@@ -4273,7 +4288,7 @@
     window.LK_STRAAT_NA_KIES = opHome(function () { var r = rijmBlok('home'); return (r ? '<div class="cb-rijm">' + r + '</div>' : '') + '<div class="cb-blok cb-seizoen">' + seizoenBlok() + '</div>'; });
     /* Wat met de straat van de homepage was verdwenen en goed werkte (Marius 22-11-2026: 'blijven opletten dat er geen dingen verloren gaan die goed zijn'):
        het blok Belevenissen met de Lamborghini-race (best verdienende cadeau), de topwinkels, de eigen kleurboeken en 'zo werkt het'. */
-    window.LK_STRAAT_NA_ETALAGE = opHome(function () { return '<div class="cb-blok">' + belevenisBlok() + '</div>'; });
+    window.LK_STRAAT_NA_ETALAGE = opHome(function () { return '<div class="cb-blok">' + belevenisBalk() + '</div>'; });
     window.LK_STRAAT_ONDER = opHome(function () { return '<div class="cb-blok">' + winkelTopBlok() + eigenKaart() + zoWerktBlok() + '</div>'; });
   }
   function themaKeuze() { try { return localStorage.getItem('lkthema') || 'auto'; } catch (e) { return 'auto'; } }

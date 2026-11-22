@@ -366,3 +366,13 @@ html.combi body .aftel3 .a3-kerst{background:radial-gradient(120% 140% at 50% 0%
 .sh .kraam-van{display:block;font-size:13.5px;color:#4A5063;margin-top:2px}
 .sh .kraam .gang-voet{justify-content:space-between}
 .sh .kraam .naar{font-weight:800}
+
+/* ===== BELEVENISSEN-BALK (22-11-2026, Marius: 'probeer er een smalle balk van te maken'): smalle balk na de etalage in plaats van het grote blok ===== */
+.bh-balk{display:flex;align-items:center;gap:12px;margin:14px 0 6px;padding:10px 14px 10px 10px;background:#1F2B48;border:1px solid #B8862E;border-radius:16px;color:#fff;text-decoration:none;min-height:64px;box-shadow:0 2px 8px rgba(20,26,42,.12)}
+.bh-balk img{flex:0 0 52px;width:52px;height:52px;border-radius:12px;object-fit:cover;background:#fff}
+.bh-balk-tekst{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.bh-balk-tekst small{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#F2CB74}
+.bh-balk-tekst strong{font-size:16.5px;font-weight:800;color:#fff}
+.bh-balk-tekst span{font-size:13.5px;color:#E9E2D4}
+.bh-balk-pijl{flex:0 0 auto;font-size:28px;line-height:1;color:#F2CB74;font-weight:700}
+.bh-balk:hover{border-color:#F2CB74}

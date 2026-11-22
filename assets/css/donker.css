@@ -1430,6 +1430,13 @@ html.donker .sh .kraam-proef a{color:#e7c893}
 html.donker .sh .kraam-uitleg{color:#c3c8d4}
 html.donker .sh .kraam > .luifel::after{background:radial-gradient(circle at 9px 0,var(--k) 8.5px,transparent 9px) 0 0/36px 8px repeat-x,radial-gradient(circle at 27px 0,#1c263c 8.5px,transparent 9px) 0 0/36px 8px repeat-x}
 html.donker .sh .kraam-van{color:#c3c8d4}
+html.donker .bh-balk{background:#223259;border:1px solid #b8862e;color:#ffffff;box-shadow:0 2px 8px rgba(0,0,0,0.266)}
+html.donker .bh-balk img{background:#1c263c}
+html.donker .bh-balk-tekst small{color:#f2cb74}
+html.donker .bh-balk-tekst strong{color:#ffffff}
+html.donker .bh-balk-tekst span{color:#e9e2d4}
+html.donker .bh-balk-pijl{color:#f2cb74}
+html.donker .bh-balk:hover{border-color:#f2cb74}
 /* ---- uit de <style>-blokken in app.js ---- */
 html.donker .rijm-z{color:var(--rz-ink)}
 html.donker .rijm-z .rz-eyebrow{color:#eccc9c}
