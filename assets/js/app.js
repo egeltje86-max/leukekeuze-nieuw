@@ -374,7 +374,9 @@
       '</ul><p class="wh-bron">Zo staat het op de site van ' + esc(p.shop) + ' (nagekeken op ' + (w.datum || BEZORG_DATUM) + '). Kijk bij het bestellen even of het nog klopt.</p></div>';
   }
   function whHash(t) { var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0; return h >>> 0; }
-  function doeErBij(p) {
+  function doeErBij(p, weg) {
+    /* 22-11-2026 (controle): geen cadeau dat ook al bij 'Ook leuk' op dezelfde pagina staat. */
+    weg = weg || [];
     /* 18-11-2026: niet bij belevenissen (Doenkado e.d.: een bon, geen pakket, dus geen verzendkosten om te delen). */
     if (!WINKELHULP || !p.shop || /^(bol|Amazon)$/.test(p.shop) || !(p.prijs > 0) || p.afd === 'belevenissen') return '';
     if (!ETALAGE) etalageEerst([]);
@@ -383,7 +385,7 @@
     var max = nog ? Math.min(30, Math.max(15, nog + 5)) : 20;
     var woord = function (t) { return String(t || '').toLowerCase().split(/[^a-z0-9à-ÿ]+/).filter(function (x) { return x.length > 3; }).slice(0, 2).join(' '); };
     var l = geenDrank(LK.zichtbaar()).filter(function (x) {
-      return x.shop === p.shop && x.id !== p.id && x.prijs > 0 && x.prijs <= max && !x.smal && !GROF_T.test(x.titel || '') &&
+      return x.shop === p.shop && x.id !== p.id && weg.indexOf(x.id) === -1 && x.prijs > 0 && x.prijs <= max && !x.smal && !GROF_T.test(x.titel || '') &&
         x.afd !== 'belevenissen' && !/elektrische-steps|elektrische-fietsen|op-brandstof/.test((x.vak || '') + ' ' + (x.sub || '')) && woord(x.titel) !== woord(p.titel);
     });
     /* 18-11-2026: liefst voor dezelfde soort ontvanger (bij een babyspeeltje geen weekplanner, bij een bloemenpers voor volwassenen geen scheetgrappen-blik). */
@@ -3321,7 +3323,7 @@
           '</ul>' +
         '</div>' +
       '</div>' +
-      doeErBij(p) + /* WINKELHULP 18-11-2026 */
+      doeErBij(p, verwant.map(function (x) { return x.id; })) + /* WINKELHULP 18-11-2026 */
       /* Stap 5 indeling: terug naar het vakje als tekstlink (ontbrak). */
       (function () { var t = nv ? [nv.naam, '/c/' + nc.slug + '/' + ns.slug + '/' + nv.slug] : ns ? [ns.naam, '/c/' + nc.slug + '/' + ns.slug] : (s && !s.verborgen ? [s.naam, '/c/' + c.slug + '/' + s.slug] : c ? [c.naam, '/c/' + c.slug] : null);
         return t ? '<p class="terug-link"><a href="' + esc(t[1]) + '">' + ic('vorige') + ' Terug naar ' + esc(t[0]) + '</a></p>' : ''; })() +
