@@ -4671,24 +4671,34 @@
      5. Niet te veel van één soort (lootSoort): hooguit 3 lampjes, 2 spellen, 2 LEGO, 1 mok, 1 paar sloffen enz.
      6. Te weinig? Dan vult de oude bron aan (top van het feest, grappig, onder € 15, toppers, origineel) met dezelfde regels. */
   var LOOT_WOW = [
-    'dvzn-ebc9e55f71', 'dvzn-a8efee7908', 'dvzn-f8c667585b', 'mega-a6823ad51f', 'cl-rb-pokebal', 'dvzn-704963', 'dvzn-8301e7ef8f', 'dvzn-8e1b865150',
-    'dvzn-279882', 'dvzn-b2aa854352', 'dvzn-655af9bd06', 'dvzn-1a61ae70d9', 'dvzn-2ac54b6d6d', 'dvzn-0b435dbafd', 'woewoe-2657e7b14e', 'coolgi-098cedb937',
-    'dvzn-4d97c0ab44', 'dvzn-96ba2b1949', 'hema-efaa95f521', 'grotek-c664e1adbd', 'dvzn-c15dcffb40', 'dvzn-6795', 'hema-9af19e566a', 'dgsw-5c2312daba',
-    'cadeau-32797fb340', 'dvzn-7fa21f9ec9', 'legoshop-05f7335d75', 'cl-capibara-warm', 'bol-9200000122182194', 'dvzn-8607c53284', 'dvzn-43cb3e6645', 'dvzn-8cd9a3bdbb',
-    'dvzn-6791', 'dgsw-dcba5f1bc9', 'lego-40460', 'cg-hidden-safe-clock', 'dvzn-284527', 'cg-toilet-basketball', 'dgsw-f8d291bf6b', 'cl-weerwolven',
-    'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon', 'dvzn-849140', 'cg-c472f3ec05', 'dvzn-f9a524b9f9', 't2-cadeau-nl-31dfd27d21', 'dvzn-29043e5ee8',
-    'dvzn-561478', 'cg-goudstaaf-deurstop', 'dvzn-633422', 'dvzn-9688f84b76', 'dvzn-b584c30354', 'cl-hitster', 'cl-exploding', 'dvzn-880ebf0fce',
-    'dvzn-5dbf032a22', 'cg-useless-box', 'dvzn-9fa32eee7e', 'dvzn-bb1222d1cd', 'dvzn-e0d7171bb3', 'dvzn-6aa21edc9a', 'mmf-63b16f5c97', 'cl-laneige-lip',
-    'amz-b0cp1927qy', 'dvzn-dcd93d79e7', 'amz-b0fcsxm3vp', 'amz-b0cx9gt83j', 'dvzn-df22fba87c', 'lego-77243', 'cg-b320632dae', 'dgsw-fc2899235e',
-    't2-nedgame-4639e1bcd1', 'parfum-45d8b68540', 'dvzn-995816', 'dvzn-4fa2e47d16', 'dvzn-403290', 'amz-b0851y4314', 'dvzn-614881', 'dvzn-1deadb3602',
-    'dvzn-746890', 'nedg-7c1aa8ede0', 'bol-9300000377799800', 'legoshop-f91cb50b25', 'dvzn-801397', 'dvzn-530181', 'dvzn-557193',
-    'dvzn-334815', 'dvzn-e572f57258', 't2-cadeau-nl-6e2c684cbd', 'dvzn-a4ed4f69b9', 'dvzn-195987', 'cl-wrebbit-hp-express', 'dvzn-814850', 'dvzn-436068',
-    'dvzn-779391', 'parfum-79e274528c', 'cl-vx-huntsman', 'bol-9300000060629305', 'bol-9300000183624857', 'bol-9300000236575345', 'dvzn-515371', 't2-fiftiesstore-0200cce51e',
-    'bol-9300000252617200', 'lego-10348', 'bol-9300000131876375', 'cl-atari-arcade', 'lego-72151', 'dgsw-labubu-big-into-energy', 'cl-azul'
+    'dvzn-ebc9e55f71', 'dvzn-a8efee7908', 'mega-a6823ad51f', 'cl-rb-pokebal', 'dvzn-704963', 'dvzn-8301e7ef8f', 'dvzn-8e1b865150', 'dvzn-279882',
+    'dvzn-b2aa854352', 'dvzn-655af9bd06', 'dvzn-1a61ae70d9', 'dvzn-2ac54b6d6d', 'dvzn-0b435dbafd', 'coolgi-098cedb937', 'dvzn-4d97c0ab44', 'dvzn-96ba2b1949',
+    'hema-efaa95f521', 'dvzn-c15dcffb40', 'dvzn-6795', 'hema-9af19e566a', 'dgsw-5c2312daba', 'cadeau-32797fb340', 'dvzn-7fa21f9ec9', 'legoshop-05f7335d75',
+    'cl-capibara-warm', 'bol-9200000122182194', 'dvzn-8607c53284', 'dvzn-43cb3e6645', 'dvzn-8cd9a3bdbb', 'dvzn-6791', 'dgsw-dcba5f1bc9', 'lego-40460',
+    'cg-hidden-safe-clock', 'dvzn-284527', 'cg-toilet-basketball', 'dgsw-f8d291bf6b', 'cl-weerwolven', 'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon',
+    'dvzn-849140', 'cg-c472f3ec05', 'dvzn-f9a524b9f9', 't2-cadeau-nl-31dfd27d21', 'dvzn-29043e5ee8', 'dvzn-561478', 'cg-goudstaaf-deurstop', 'dvzn-633422',
+    'dvzn-9688f84b76', 'dvzn-b584c30354', 'cl-hitster', 'cl-exploding', 'dvzn-880ebf0fce', 'dvzn-5dbf032a22', 'cg-useless-box', 'dvzn-9fa32eee7e',
+    'dvzn-bb1222d1cd', 'dvzn-e0d7171bb3', 'dvzn-6aa21edc9a', 'mmf-63b16f5c97', 'cl-laneige-lip', 'amz-b0cp1927qy', 'dvzn-dcd93d79e7', 'amz-b0fcsxm3vp',
+    'amz-b0cx9gt83j', 'dvzn-df22fba87c', 'lego-77243', 'cg-b320632dae', 'dgsw-fc2899235e', 't2-nedgame-4639e1bcd1', 'parfum-45d8b68540', 'dvzn-995816',
+    'dvzn-4fa2e47d16', 'dvzn-403290', 'amz-b0851y4314', 'dvzn-614881', 'dvzn-1deadb3602', 'dvzn-746890', 'nedg-7c1aa8ede0', 'bol-9300000377799800',
+    'legoshop-f91cb50b25', 'dvzn-801397', 'dvzn-530181', 'dvzn-557193', 'dvzn-334815', 'dvzn-e572f57258', 't2-cadeau-nl-6e2c684cbd', 'dvzn-a4ed4f69b9',
+    'dvzn-195987', 'cl-wrebbit-hp-express', 'dvzn-814850', 'dvzn-436068', 'dvzn-779391', 'parfum-79e274528c', 'cl-vx-huntsman', 'bol-9300000060629305',
+    'bol-9300000183624857', 'bol-9300000236575345', 'dvzn-515371', 't2-fiftiesstore-0200cce51e', 'bol-9300000252617200', 'lego-10348', 'bol-9300000131876375', 'cl-atari-arcade',
+    'lego-72151', 'dgsw-labubu-big-into-energy', 'cl-azul', 'dvzn-0486864a03', 'cadeau-eaff32d056', 'dvzn-22f0aff1dc', 'dvzn-2bdaf68398', 'dvzn-86c555b6d6',
+    'nedg-9ea779e8fa', 'dgsw-8ac317da46', 'cg-913caa57b8', 'gadget-7e31d86ce4', 'cl-wolk-slaapmasker', 'dvzn-8a7b4143e9', 'dvzn-726291', 'hema-521a727d68',
+    'hema-32d780c657', 'cg-7fbf7836d1', 'coppens-f4f52115ac', 'dgsw-bd110d5515', 'dvzn-befe32d2ff', 'cadeau-13138252a6', 'nedg-aaef75274b', 'amz-b0gpf4v494',
+    'cadeau-8c9432bedb', 'dvzn-2a6f553405', 'dvzn-f42a99b966', 'dvzn-aea1a3388a', 'dvzn-56f047311d', 'dgsw-d246c1887c', 'dvzn-48bcf6ed40', 'dvzn-afce12f961',
+    'grotek-6da0c12381', 'parfum-4b477c5c6c', 'hobbym-edeb21f133', 'cadeau-0a6bd54cbe', 'dvzn-268544', 'cadeau-b636db132b', 'massa-da20a7c4ab', 'cg-b2176baf5e',
+    'cg-a2fee2ef6d', 'cadeau-fbccab6a9f', 'superz-0deb3f2e23', 'dvzn-671060bdfd', 'dvzn-34abc02c79', 'cg-pratende-flessenopener', 'nedg-22009b572a', 'bol-9300000156641539',
+    'nedg-a3cd45cffc', 'bol-9300000157550414', 'dvzn-5e2b855171', 'bol-9300000407615426', 'myzenf-3d83dcc6e1', 'nedg-76649e7ebb', 'dvzn-a26cec5b63', 'dvzn-fefa9fc445',
+    'megaga-d03d4974c4', 'dvzn-88a9a4b2f6', 'superz-f6728a4cdc', 'nedg-577c5da1d2', 'dvzn-323de59399', 'dvzn-83cb621761', 'emp-5fdfb36835', 'cg-kattendeurbel',
+    'nedg-e3dfabf90c', 'cl-30seconds', 'dgsw-43da623e7f', 'nedg-6e0ef6b467', 'badjas-458f974bf7'
   ];
+  /* 22-11-2026: meer kerst bij elk budget (twee derde van de groepen trekt nu voor Kerst); bij Kerst hooguit twee, bij Sint één. */
   var LOOT_THEMA = {
-    s: ['cl-jvh-sint'],
-    k: ['smartp-4849c81cba', 'dvzn-fef9e43e90', 't2-nedgame-8b7f297dc1', 'dvzn-4e9451d3df', 'lego-27b82426d9']
+    s: ['cl-jvh-sint', 'dvzn-871551', 'hema-b06ddc03f9'],
+    k: ['dgsw-5a269fe458', 'hema-e8aced2a21', 'hema-36f500cd52', 'massa-ab23656f59', 'dvzn-fef9e43e90', 'smartp-4849c81cba', 'cl-25949',
+        'dvzn-4e9451d3df', 'bell-e9cd4a0a33', 'lego-27b82426d9', 'sissyb-2eafdefabc']
   };
   function lootSoort(p) {
     var t = (p.titel || '').toLowerCase();
@@ -4722,8 +4732,11 @@
       rij.forEach(function (p) { if (uit.length < 12 && mag(p, laag)) neem(p); });
     };
     vul(LOOT_WOW, 0.5);
-    var thema = schud((LOOT_THEMA[moment] || []).map(function (id) { return LK.vind(id); }).filter(function (p) { return mag(p, 0.5); }))[0];
-    if (thema) { if (uit.length >= 12) { var weg = uit.pop(); delete gezien[weg.id]; var s0 = lootSoort(weg)[0]; tel[s0]--; } gezien[thema.id] = 1; uit.splice(Math.min(2, uit.length), 0, thema); }
+    var themas = schud((LOOT_THEMA[moment] || []).map(function (id) { return LK.vind(id); }).filter(function (p) { return mag(p, 0.5); })).slice(0, moment === 'k' ? 2 : 1);
+    themas.forEach(function (thema, i) {
+      if (uit.length >= 12) { var weg = uit.pop(); delete gezien[weg.id]; var s0 = lootSoort(weg)[0]; tel[s0]--; }
+      gezien[thema.id] = 1; uit.splice(Math.min(i ? 6 : 2, uit.length), 0, thema);
+    });
     var oud = (T[mom[2]] || []).concat(T['/collectie/grappige-cadeaus'] || [], T['/c/cadeaus/onder-15'] || [], T['/collectie/toppers-van-nu'] || [], T['/collectie/originele-cadeaus'] || []);
     if (uit.length < 12) vul(oud, 0.5);
     if (uit.length < 12) vul(LOOT_WOW.concat(oud), 0.35);
@@ -4856,7 +4869,7 @@
       '</div></section>' +
       '<div class="binnen lt">' +
         (tips.length ? '<section class="sectie"><div class="sectie-kop"><div><h2>Cadeautips tot ' + lootEuro(b) + '</h2><p>Met de hand uitgezocht. Tik op een cadeau voor meer uitleg.</p></div></div>' +
-          grid(tips) + '<p class="lt-terug"><a class="knop knop-rand" href="' + m[2] + '?prijs=' + (b <= 10 ? 'r0-10' : 'tot25') + '">Meer cadeaus voor ' + esc(m[0]) + '</a></p></section>' : '') +
+          grid(tips) + '<p class="lt-terug"><a class="knop knop-rand" href="' + m[2] + '?prijs=r0-' + b + '">Meer cadeaus voor ' + esc(m[0]) + '</a></p></section>' : '') +
         '<section class="sectie lt-zelf"><h2>Zelf ook lootjes trekken?</h2><p>Met je familie, vrienden of collega’s. Gratis en zonder account.</p><a class="knop knop-goud" href="/lootjes-trekken/">🎲 Lootjes trekken</a></section>' +
         '<section class="sectie lt-zelf"><h2>Weet je niet wat je wilt hebben?</h2><p>Zet cadeaus op je verlanglijstje met het hartje en stuur het naar de groep.</p><a class="knop knop-rand" href="/gids/verlanglijstje-maken">❤ Verlanglijstje maken</a></section>' +
       '</div>';
