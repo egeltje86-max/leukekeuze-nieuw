@@ -561,6 +561,61 @@
       HANDIG.filter(function (x) { return inSeizoen(x[3]); }).map(function (x) { return rondje(x[0], novaRond(x[2]), x[1], x[4]); }).join('') + '</div></section>';
   }
 
+  /* ===== KRAAMPJES (testversie 22-11-2026, alleen met ?proef=kraampjes; uit: ?proef=kraampjes-uit) =====
+     Marius: 'ik dacht dat als je naar beneden scrolt je automatisch per 4 van de winkels ziet, een blokje van 4 van dit en een blokje van 4
+     van dat, om minder te tikken en al een verscheidenheid van producten te zien zonder op een kraampje te drukken; 4 of 5 open kraampjes
+     direct als producten van 4 en daaronder misschien nog meer: kijk in deze winkels'.
+     Onder de etalage staan de eerste vijf open winkels als open kraampje: luifel in de kleur van de winkel, wat voor winkel het is en vier
+     cadeaus (elk uit een andere afdeling van die winkel), 'Laat er nog 4 zien' (tot 12) en 'Naar binnen'. Geen cadeau twee keer:
+     niet uit de etalage en niet uit een kraampje erboven. Daaronder 'Kijk ook in deze winkels' met de gevels van de rest. */
+  var KRAAM_AANTAL = 5, KRAAM = [];
+  function kraamAan() {
+    if (window.LK_KRAAM === true) return true;
+    if (window.LK_KRAAM === false) return false;
+    try {
+      if (/[?&]proef=kraampjes-uit\b/.test(location.search)) localStorage.removeItem('lkkraam');
+      else if (/[?&]proef=kraampjes\b/.test(location.search)) localStorage.setItem('lkkraam', '1');
+      return localStorage.getItem('lkkraam') === '1';
+    } catch (e) { return false; }
+  }
+  function kraamLijst(x, al) {
+    var uit = [], rij = {};
+    for (var r = 0; r < 40 && uit.length < MAX_IN_GANG; r++) x.gangen.forEach(function (y) {
+      var p = y.lijst[r];
+      if (!p || al[p.id] || rij[p.id] || uit.length >= MAX_IN_GANG) return;
+      if (p.drank || K.drank(p) || GROF.test(p.titel)) return;
+      rij[p.id] = 1; uit.push(p);
+    });
+    return uit;
+  }
+  function kraampjes(st) {
+    var al = {}, kr = [], rest = [];
+    st.etalage.slice(0, MAX_IN_GANG).forEach(function (p) { al[p.id] = 1; });
+    st.open.forEach(function (x) {
+      if (kr.length >= KRAAM_AANTAL) { rest.push(x); return; }
+      var l = kraamLijst(x, al);
+      if (l.length < 4) { rest.push(x); return; }
+      l.forEach(function (p) { al[p.id] = 1; });
+      kr.push({ x: x, lijst: l });
+    });
+    KRAAM = kr.map(function (k) { return k.lijst; });
+    var h = '<p class="kraam-proef">Testversie: open kraampjes · <a href="?proef=kraampjes-uit">terug naar de gevels</a></p>' +
+      '<h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Rondkijken in de winkels ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Rondkijken in de straat') + '</h2>' +
+      '<p class="kraam-uitleg">Van elke winkel vier cadeaus. Scroll verder, of loop een winkel binnen voor de rest.</p>';
+    h += kr.map(function (k, n) {
+      var w = k.x.w, ic = NOVA_GEVEL[w.id] ? NB + 'rond/winkel-' + w.id + '-klein.webp' : '';
+      return '<section class="gang top-etalage kraam" style="--k:' + w.k + '"><span class="luifel" aria-hidden="true"></span>' +
+        '<div class="gang-kop">' + (ic ? '<img src="' + ic + '" alt="" loading="lazy">' : '') +
+        '<div><small>' + esc(w.naam) + (w.label ? ' · ' + esc(w.label) : '') + '</small><h2>' + esc(WAT[w.id] || w.naam) + '</h2>' +
+        '<span class="kraam-van">' + getal(k.x.aantal) + ' cadeaus, vanaf ' + euro(k.x.van) + '</span></div></div>' +
+        '<div class="sh-schap" data-sh-schap="r' + n + '">' + k.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
+        '<div class="gang-voet">' + (k.lijst.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="r' + n + '">Laat er nog ' + Math.min(PER_KEER, k.lijst.length - PER_KEER) + ' zien</button>' : '') +
+        '<a class="naar" href="' + adres(w.id, st.pr.wie, st.max) + '">Naar binnen bij ' + esc(w.naam) + ' ›</a></div></section>';
+    }).join('');
+    h += '<div class="lampjes" aria-hidden="true"></div><h2 class="straat-titel">Kijk ook in deze winkels</h2>';
+    h += '<section class="straat" aria-label="Meer winkels">' + loket(st) + rest.map(function (x) { return gevel(x, st); }).join('') + kioskGevel(st) + '</section>';
+    return h;
+  }
   function straat(st, opt) {
     opt = opt || {};
     var naam = st.pr.wie ? 'De straat ' + st.pr.tekst : 'De Cadeaustraat';
@@ -589,8 +644,11 @@
         (st.pr.slug ? '<a class="naar" href="' + voorPad(st) + '">Alle cadeaus ' + esc(st.pr.tekst) + ' in één lijst ›</a>' : '') + '</div></section>';
     }
     h += haak('LK_STRAAT_NA_ETALAGE');
+    if (kraamAan()) h += kraampjes(st);
+    else {
     h += '<div class="lampjes" aria-hidden="true"></div><h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Deze winkels hebben iets ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Loop een winkel binnen') + '</h2>';
     h += '<section class="straat" aria-label="Open winkels">' + loket(st) + st.open.map(function (x) { return gevel(x, st); }).join('') + kioskGevel(st) + '</section>';
+    }
     if (st.dicht.length) h += '<details class="dicht-blok"><summary>Rolluik dicht bij ' + st.dicht.length + (st.dicht.length === 1 ? ' winkel' : ' winkels') + ' <b><span class="toon">Toon ›</span><span class="verberg">Verberg</span></b></summary>' +
       '<section class="straat" aria-label="Gesloten winkels">' + st.dicht.map(function (x) { return gevel(x, st); }).join('') + '</section></details>';
     if (opt.voor) h += kiezer(st);
@@ -924,7 +982,7 @@
       if (aover > 0) m.textContent = 'Laat er nog ' + Math.min(astap, aover) + ' zien'; else m.remove();
       return;
     }
-    var lijst = n === 'top' ? huidig.st.etalage : huidig.x.gangen[+n].lijst, schap = document.querySelector('[data-sh-schap="' + n + '"]');
+    var lijst = n === 'top' ? huidig.st.etalage : /^r\d+$/.test(n) ? KRAAM[+n.slice(1)] : huidig.x.gangen[+n].lijst, schap = document.querySelector('[data-sh-schap="' + n + '"]');
     var nu = schap.children.length, erbij = lijst.slice(nu, Math.min(nu + PER_KEER, MAX_IN_GANG));
     schap.insertAdjacentHTML('beforeend', erbij.map(kaart).join(''));
     var over = Math.min(lijst.length, MAX_IN_GANG) - schap.children.length;

@@ -354,3 +354,15 @@ html.combi body .aftel3 .a3-bf{background:radial-gradient(120% 140% at 50% 0%,#3
 html.combi body .aftel3 .a3-sint{background:radial-gradient(120% 140% at 50% 0%,#A2293C 0%,#7A1A2C 55%,#581222 100%)}
 html.combi body .aftel3 .a3-kerst{background:radial-gradient(120% 140% at 50% 0%,#317F50 0%,#215C39 55%,#174129 100%)}
 /* ===== einde COMBI DONKERE KOP ===== */
+
+/* ===== KRAAMPJES (testversie 22-11-2026, ?proef=kraampjes): de eerste vijf winkels als open kraampje met vier cadeaus ===== */
+.sh .kraam-proef{margin:22px 0 0;padding:8px 12px;border-radius:10px;background:#FFF3D6;border:1px dashed #B8862E;font-size:14px;color:#141A2A}
+.sh .kraam-proef a{color:#8F6620;font-weight:700}
+.sh .kraam-uitleg{margin:4px 0 0;font-size:15px;color:#4A5063}
+.sh .kraam{position:relative;overflow:hidden;padding-top:0;margin-top:18px}
+.sh .kraam > .luifel{display:block;margin:0 -10px 16px;border-radius:18px 18px 0 0;height:22px}
+.sh .kraam > .luifel::after{bottom:-8px;height:8px;background:radial-gradient(circle at 9px 0,var(--k) 8.5px,transparent 9px) 0 0/36px 8px repeat-x,radial-gradient(circle at 27px 0,#fff 8.5px,transparent 9px) 0 0/36px 8px repeat-x}
+.sh .kraam .gang-kop h2{font-size:22px}
+.sh .kraam-van{display:block;font-size:13.5px;color:#4A5063;margin-top:2px}
+.sh .kraam .gang-voet{justify-content:space-between}
+.sh .kraam .naar{font-weight:800}
