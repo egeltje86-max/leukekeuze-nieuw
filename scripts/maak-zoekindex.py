@@ -148,7 +148,8 @@ WINKELS = [w for w in WINKELS if w[0] != 'x-dvzn.json']
 # 22-11-2026 (controle van de site): winkels waarvan de productpagina's niet meer bestaan (404, sinds 16/17-11 doorgestuurd naar
 # dailyathome.nl) en Yesgifts (relatiegeschenken per 5 of meer stuks, prijs zonder btw) niet meer in 'Meer in onze winkels' en het zoeken.
 # Komt Daily at Home met een eigen feed, dan die gebruiken en de oude winkel hier weer weghalen.
-WEG_WINKELS = {'Kado-versturen', 'Cartoon Megastore', 'Animals Giftshop', 'Spaarpotten-winkel', 'Yesgifts'}
+# 22-11-2026 (Marius: 'onzin allemaal'): ook Razer, waarvan alle links naar de Franse winkel gaan (razer.com/fr-fr).
+WEG_WINKELS = {'Kado-versturen', 'Cartoon Megastore', 'Animals Giftshop', 'Spaarpotten-winkel', 'Yesgifts', 'Razer', 'Timberland', 'Stella McCartney'}
 WINKELS = [w for w in WINKELS if w[1] not in WEG_WINKELS]
 print('Daisycon-pauze:', PAUZE, '-', len(WINKELS), 'feeds')
 from urllib.parse import urlparse, parse_qs

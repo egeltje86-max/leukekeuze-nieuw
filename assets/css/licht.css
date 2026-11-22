@@ -2991,3 +2991,49 @@ html body .paginakop.donker .kruimel, html body .paginakop.donker .kruimel a { c
 /* vakjes achter de ronde plaatjes: licht (de nieuwe plaatjes van Nova zijn licht) */
 html body .catbalk-rond, html body .slimnav .sn-beeld.sn-rond, html body .mini-tegel .mt-rond, html body .srt-vt-rond, html body .srij-rond { background: #F6EBDD; }
 html body .wzh-rond.wzh-icoon, html body .srt-st-rond.srt-vt-ico, html body .rh-rond.rh-icoon { background: #F6EBDD; color: #8F6620; }
+/* ===== BLACK FRIDAY BIJ ONZE WINKELS (22-11-2026): de Black Friday-pagina's van onze partners, met wat de winkel er zelf over zegt.
+   Donkere kaarten met goud, twee naast elkaar op de telefoon, vijf op de computer. ===== */
+.bfw { margin-top: 28px; }
+.bfw .sectie-kop p { max-width: 62ch; }
+.bfw-raster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 760px) { .bfw-raster { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } }
+@media (min-width: 1100px) { .bfw-raster { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.bfw-kaart { display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 132px; padding: 14px 14px 12px; border-radius: 16px;
+  background: linear-gradient(165deg, #1F2B48 0%, #141A2A 100%); border: 1px solid #3A3220; color: #F7F3EC; text-decoration: none;
+  box-shadow: 0 8px 18px -14px rgba(10, 16, 32, .7); }
+.bfw-kaart:hover, .bfw-kaart:focus-visible { border-color: #B8862E; }
+.bfw-kaart strong { font: 700 17px/1.2 "Playfair Display", Georgia, serif; color: #F2CB74; overflow-wrap: anywhere; }
+.bfw-kaart .bfw-zin { font-size: 14px; line-height: 1.4; color: #EEE7DA; flex: 1; }
+.bfw-kaart .bfw-tot { font-size: 12.5px; font-weight: 700; color: #D9C9A8; }
+.bfw-kaart .bfw-ga { margin-top: 4px; font-weight: 800; font-size: 14px; color: #F2CB74; }
+.sh .ws-extra .bfw { margin-top: 4px; }
+@media (max-width: 359px) { .bfw-kaart { padding: 12px 11px 10px; } .bfw-kaart strong { font-size: 15.5px; } .bfw-kaart .bfw-zin { font-size: 13.5px; } }
+/* ===== GIDSEN 3.0 (22-11-2026, Marius: 'maak de cadeaugidsen mooier en sterker, fijn om in te lezen en te kijken').
+   Overzicht per soort gids, een rij foto's bovenaan, 'Goed om te weten', genummerde delen, grotere foto's. Uit: window.LK_GIDS3 = false. ===== */
+.gids-index .gi-thema { margin: 4px 0 6px; }
+.gids-index .gi-thema .chip small { font-weight: 700; color: var(--tekst-2); margin-left: 2px; }
+.gids-index .gg-groep { scroll-margin-top: 130px; padding-top: 10px; }
+.gids-index .gg-groep .sectie-kop h2 { font-family: var(--f-kop); font-weight: 600; font-size: 25px; }
+.gids-index .gg-groep .sectie-kop p { margin-top: 2px; color: var(--tekst-2); }
+.gids3 .gids-beelden { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 4px 0 16px; max-width: 640px; }
+.gids3 .gids-beelden a { display: block; aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid #E5D7BE; box-shadow: 0 4px 12px -8px rgba(10,16,32,.35); }
+.gids3 .gids-beelden a:nth-child(even) { transform: translateY(6px); }
+.gids3 .gids-beelden img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.gids3 .gids-intro { font-size: 17.5px; line-height: 1.75; }
+.gids3 .gids-intro::first-letter { font-family: var(--f-kop); font-size: 1.25em; color: var(--goud-donker); }
+.gids-nu { display: flex; gap: 12px; align-items: flex-start; max-width: 760px; margin: 14px 0 6px; padding: 14px 16px; border-radius: 16px; background: #FFFCF7; border: 1px solid #E5D7BE; border-left: 4px solid #B8862E; }
+.gids-nu > svg { width: 22px; height: 22px; flex: none; color: #8F6620; margin-top: 2px; }
+.gids-nu strong { display: block; font: 800 12.5px/1.2 var(--f-ui); letter-spacing: .08em; text-transform: uppercase; color: #8F6620; margin-bottom: 4px; }
+.gids-nu p { margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: var(--tekst); }
+.gids-nu a { color: #8F6620; font-weight: 700; }
+.gids3 .gids-deel .tekstpagina.gids h2 { display: flex; align-items: center; gap: 10px; font-size: 24px; }
+.gids3 .gd-nr { flex: none; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(180deg, #F2CB74, #D9A848); border: 1px solid #B8862E; color: #141A2A; font: 700 17px/1 "Playfair Display", Georgia, serif; }
+.gids3 .gi-beeld { flex-basis: 128px; width: 128px; height: 128px; background: #fff; border: 1px solid #F0E6D4; }
+.gids3 .gi-beeld img { object-fit: contain; }
+.gids3 .gi-waarom { -webkit-line-clamp: 4; }
+.gids3 .gidsitem .hartje { left: 20px; top: 20px; }
+.gids-meer { max-width: 760px; margin: 12px 0 0; text-align: right; }
+.gids-meer a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-weight: 800; color: #8F6620; text-decoration: none; }
+.gids-meer a:hover { text-decoration: underline; }
+@media (max-width: 380px) { .gids3 .gi-beeld { flex-basis: 100px; width: 100px; height: 100px; } .gids3 .gidsitem .hartje { left: 16px; top: 16px; } .gids3 .gids-deel .tekstpagina.gids h2 { font-size: 21px; } }
+@media (min-width: 900px) { .gids3 .gids-meer { max-width: none; } }

@@ -837,6 +837,16 @@
     else {
       if (o.etalage !== false && lijst.length >= 12) gangen.push({ naam: 'Onze beste keuzes', lijst: lijst.slice(0, 12), ic: o.rond || '', top: true });
       (o.delen || []).forEach(function (d) { if (d.lijst && d.lijst.length >= (d.min || 3)) gangen.push(d); });
+      /* 22-11-2026: wat al in de etalage staat, staat in zijn soort achteraan, zodat je in elke soort eerst cadeaus ziet die je nog niet zag.
+         Er gaat niets weg: het aantal per soort blijft gelijk. */
+      if (gangen.length && gangen[0].top) {
+        var inEt = {}; gangen[0].lijst.forEach(function (p) { inEt[p.id] = 1; });
+        gangen = gangen.map(function (x) {
+          if (x.top) return x;
+          var nieuw = x.lijst.filter(function (p) { return !inEt[p.id]; });
+          return nieuw.length >= 4 ? Object.assign({}, x, { lijst: nieuw.concat(x.lijst.filter(function (p) { return inEt[p.id]; })) }) : x;
+        });
+      }
     }
     if (!gangen.length || (gangen.length === 1 && gangen[0].top)) return '';
     huidig = { afd: gangen };

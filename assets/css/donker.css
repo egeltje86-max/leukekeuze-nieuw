@@ -1227,6 +1227,25 @@ html.donker body .paginakop.donker p{color:#c3c8d4}
 html.donker body .paginakop.donker .kruimel,html.donker body .paginakop.donker .kruimel a{color:#a3aaba}
 html.donker body .catbalk-rond,html.donker body .slimnav .sn-beeld.sn-rond,html.donker body .mini-tegel .mt-rond,html.donker body .srt-vt-rond,html.donker body .srij-rond{background:#232e47}
 html.donker body .wzh-rond.wzh-icoon,html.donker body .srt-st-rond.srt-vt-ico,html.donker body .rh-rond.rh-icoon{background:#232e47;color:#e7c893}
+html.donker .bfw-kaart{background:linear-gradient(165deg, #1F2B48 0%, #141A2A 100%);border:1px solid #3A3220;color:#F7F3EC;box-shadow:0 8px 18px -14px rgba(10, 16, 32, .7)}
+html.donker .bfw-kaart:hover,html.donker .bfw-kaart:focus-visible{border-color:#B8862E}
+html.donker .bfw-kaart strong{color:#F2CB74}
+html.donker .bfw-kaart .bfw-zin{color:#EEE7DA}
+html.donker .bfw-kaart .bfw-tot{color:#D9C9A8}
+html.donker .bfw-kaart .bfw-ga{color:#F2CB74}
+html.donker .gids-index .gi-thema .chip small{color:#c3c8d4}
+html.donker .gids-index .gg-groep .sectie-kop p{color:#c3c8d4}
+html.donker .gids3 .gids-beelden a{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 4px 12px -8px rgba(0,0,0,0.6)}
+html.donker .gids3 .gids-beelden img{background:#1c263c}
+html.donker .gids3 .gids-intro::first-letter{color:#e7c893}
+html.donker .gids-nu{background:#1c263c;border:1px solid rgba(217,168,72,0.3);border-left:4px solid #b8862e}
+html.donker .gids-nu > svg{color:#e7c893}
+html.donker .gids-nu strong{color:#e7c893}
+html.donker .gids-nu p{color:#eee7da}
+html.donker .gids-nu a{color:#e7c893}
+html.donker .gids3 .gd-nr{background:linear-gradient(180deg, #F2CB74, #D9A848);border:1px solid #b8862e;color:#141A2A}
+html.donker .gids3 .gi-beeld{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
+html.donker .gids-meer a{color:#e7c893}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}

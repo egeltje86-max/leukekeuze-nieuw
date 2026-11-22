@@ -1014,7 +1014,7 @@ window.LK_COLLECTIES = [
     tekst: 'Echte kortingscodes en acties van onze winkels, rechtstreeks van de winkels zelf. Verlopen codes halen we er vanzelf af.',
     zoek: 'kortingscode kortingscodes code codes actiecode couponcode coupon voucher promotiecode gratis verzending', codes: true, vakken: LK_ALLE_GROEPEN },
   /* Black Friday (5-11-2026, GO Marius): alle echte deals van minstens 20% korting, grootste korting eerst. Tot en met Cyber Monday. */
-  { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'Deals op een rij', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 (vrijdag 27 november): deals op een rij', gids: 'black-friday-2026',
+  { slug: 'black-friday', naam: 'Black Friday deals', kicker: 'Deals op een rij', kleur: '#141A2A', beeld: 'images/collecties/black-friday-rond.webp', seoTitel: 'Black Friday 2026 (vrijdag 27 november): deals op een rij', gids: 'black-friday-2026',
     tekst: 'Black Friday 2026 is op vrijdag 27 november, Cyber Monday op maandag 30 november. Hier staan de kortingen van al onze winkels op één plek, allemaal minstens 20% korting op de van-prijs van de winkel. Bovenaan staan de deals die wij zelf hebben uitgekozen; kies hieronder je categorie.',
     /* 18-11-2026 (GO Marius): de eerlijke regel in één zin bovenaan de pagina (68% wantrouwt Black Friday-kortingen). */
     eerlijk: 'Eerlijk: wij tonen alleen kortingen met een prijs van deze week. Staat er Echt lager, dan zagen wij zelf dat de prijs lager is dan de laagste prijs van de 30 dagen ervoor.',

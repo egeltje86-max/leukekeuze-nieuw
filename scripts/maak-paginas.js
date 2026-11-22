@@ -71,6 +71,16 @@ function maakLd(info, url) {
   /* Handboek P1 (12-11-2026): wie de site maakt, alleen echte gegevens (naam, adres, logo). Geen winkel, geen reviews. */
   if (info.pad === '/') uit.push({ '@context': 'https://schema.org', '@type': 'Organization', name: 'LeukeKeuze', url: SITE + '/', logo: SITE + '/favicon-512.png',
     description: 'Nederlandse cadeausite: met de hand gekozen cadeaus van bekende winkels. LeukeKeuze verkoopt zelf niets; je koopt bij de winkel.' });
+  /* 22-11-2026 (GIDSEN 3.0, opdracht Marius: beter vindbaar voor ChatGPT en andere doorverwijzers): een gids krijgt Article-gegevens
+     (wie hem maakt, wanneer hij echt veranderde) en een ItemList met de cadeaus erin, in de volgorde van de gids. */
+  if (info.gidsItems && info.gidsItems.length >= 3) {
+    const gb = deelBeeld(info.pad);
+    uit.push({ '@context': 'https://schema.org', '@type': 'Article', headline: (info.h1 || info.titel || '').slice(0, 110), description: info.omschrijving, inLanguage: 'nl-NL', url,
+      mainEntityOfPage: url, image: gb ? SITE + '/' + gb : undefined, dateModified: info.gidsDatum || undefined,
+      author: { '@type': 'Organization', name: 'LeukeKeuze', url: SITE + '/' }, publisher: { '@type': 'Organization', name: 'LeukeKeuze', url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/favicon-512.png' } } });
+    uit.push({ '@context': 'https://schema.org', '@type': 'ItemList', name: info.h1 || info.titel, numberOfItems: info.gidsItems.length,
+      itemListElement: info.gidsItems.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam, url: SITE + String(x.naar || '').replace(/\/?$/, '/') })) });
+  }
   const k = (info.kruimel || []).filter(x => x.naam);
   if (info.prod && k.length && k[k.length - 1].naar) k.push({ naam: info.prod.naam, naar: '' });
   if (k.length > 1) uit.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: k.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam,
@@ -293,7 +303,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
         leeg: !!app.querySelector('.leeg') && aantal === 0,
         nietGevonden: /Even kwijt|niet beschikbaar/.test(app.textContent) && aantal === 0,
         tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum,
-        gidsGetal: pad.indexOf('/gids/') === 0 && window.LK_GIDS_GETAL ? window.LK_GIDS_GETAL : null /* 18-11-2026: [beloofd in de titel, echt getoond], voor de Google-titel */
+        gidsGetal: pad.indexOf('/gids/') === 0 && window.LK_GIDS_GETAL ? window.LK_GIDS_GETAL : null, /* 18-11-2026: [beloofd in de titel, echt getoond], voor de Google-titel */
+        /* 22-11-2026 (GIDSEN 3.0, beter vindbaar voor ChatGPT en andere zoekers): de cadeaus van een gids, voor de ItemList-gegevens. */
+        gidsItems: /^\/gids\/[^/]+\/$/.test(pad) ? Array.from(document.querySelectorAll('#app .gidsitem h3 a')).slice(0, 40).map(a => ({ naam: a.textContent.replace(/[\u00AD\u200B]/g, '').trim(), naar: a.getAttribute('href') })) : null
       };
       /* 13-11-2026: dezelfde pagina in de nieuwe opzet van de proef WIJZER (alleen de homepage en de Voor wie-pagina's hebben die). */
       /* 21-11-2026 WINKELSTIJL: ook elke afdeling, groep, soort, gelegenheid en collectie heeft voor bezoekers een eigen opzet (een winkel in de straat). */
@@ -331,13 +343,26 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     if (/:$/.test(oms)) oms = r.h1 + ' van LeukeKeuze: met de hand gekozen cadeaus, je koopt bij bekende winkels.';
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, h1: r.h1, gidsItems: r.gidsItems || null, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) || !!(GOOGLE && r.prod && r.prod.status === 'goedgekeurd' && !GOOGLE.has(r.prod.id)) });
   }
   await browser.close(); srv.close();
   if (fouten.length) { console.error('Fouten op de pagina:', fouten.slice(0, 5)); process.exit(1); }
 
   for (const m of MAPPEN) fs.rmSync(path.join(ROOT, m), { recursive: true, force: true });
+  /* 22-11-2026 (GIDSEN 3.0): datum voor 'dateModified' van een gids = de lastmod van de vorige bouw als de gids niet echt veranderde
+     (zelfde vingerafdruk als voor de sitemap), anders vandaag. */
+  {
+    let LMv = {}; try { LMv = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'seo', 'lastmod.json'), 'utf8')); } catch (e) {}
+    const zd = s => String(s || '').replace(/\d{1,2}[-/]\d{1,2}[-/]\d{2,4}|\d{1,2} (januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)( \d{4})?|\d{4}-\d\d-\d\d/gi, '');
+    const dag = new Date().toISOString().slice(0, 10);
+    for (const p of paginas) {
+      if (!p.gidsItems) continue;
+      const ids = [...new Set([...String(p.inhoud || '').matchAll(/p\/([a-z0-9][a-z0-9-]{3,60})\//g)].map(m => m[1]))].sort().join(',');
+      const v = require('crypto').createHash('md5').update([zd(p.titel), zd(p.omschrijving), ids].join('|')).digest('hex').slice(0, 12);
+      p.gidsDatum = LMv[p.pad] && LMv[p.pad].v === v ? LMv[p.pad].d : dag;
+    }
+  }
   for (const p of paginas) {
     const doel = path.join(ROOT, p.pad, 'index.html');
     fs.mkdirSync(path.dirname(doel), { recursive: true });

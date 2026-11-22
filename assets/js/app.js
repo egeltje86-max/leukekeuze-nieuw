@@ -2890,6 +2890,35 @@
         return '<a class="chip' + (hier ? ' actief' : '') + '" href="' + esc(maakAdres(pad, Object.assign({}, q, { afd: hier ? '' : a }))) + '"' + (hier ? ' aria-current="true"' : '') + '>' + esc(kort(a)) + ' <small>' + tel[a] + '</small></a>';
       }).join('') + '</nav>';
   }
+  /* BLACK FRIDAY BIJ ONZE WINKELS (22-11-2026, Marius: 'ga daarna black friday doen'): de Black Friday-pagina's van onze partners, met wat de
+     winkel er zelf over zegt (nagekeken op hun eigen site, datum in BF_DATUM). Elke link is een partnerlink naar de actiepagina van de winkel.
+     Alleen woorden en percentages die de winkel zelf noemt; 'tot' alleen als de winkel een einddatum noemt. Het blok verdwijnt na BF_EIND.
+     Staat op /collectie/black-friday (na de etalage) en in de gids Black Friday 2026. Klik telt als klik/blackfriday/<winkel>. Uit: window.LK_BF_WINKELS = false. */
+  var BF_DATUM = '22 november 2026', BF_EIND = '2026-11-30';
+  var BF_WINKELS = [
+    { w: 'Ditverzinjeniet', zin: 'Black Week: 15% korting met code BLACK15, ook op aanbiedingen', tot: '2026-11-30', l: 'https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=' + encodeURIComponent('https://www.ditverzinjeniet.nl/themas/black-friday') },
+    { w: 'HEMA', zin: 'Black Friday bij HEMA: kortingen tot wel 50%', l: 'https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=' + encodeURIComponent('https://www.hema.nl/black-friday') },
+    { w: 'Cadeau.nl', zin: 'Black Week: cadeaus met korting', l: 'https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=' + encodeURIComponent('https://www.cadeau.nl/sale/') },
+    { w: 'YourSurprise', zin: 'Black Friday Deals: tot 30% korting op cadeaus met naam of foto', l: 'https://www.yoursurprise.nl/tradetracker?tt=546_250583_516846_&r=' + encodeURIComponent('https://www.yoursurprise.nl/black-friday') },
+    { w: 'Parfumania', zin: 'Black Friday Deals op parfum, elke dag nieuwe deals', l: 'https://jf79.net/c/?si=16384&li=1704728&wi=433339&ws=blackfriday&dl=' + encodeURIComponent('Black-Friday-Deals!/-c-2783.html') },
+    { w: 'Boekenwereld', zin: 'Black Friday 2026: deals op boeken en e-books', l: 'https://www.boekenwereld.com/TT?tt=12322_2486848_516846_&r=' + encodeURIComponent('https://www.boekenwereld.com/acties/black-friday') },
+    { w: 'Superzero', zin: 'Black Friday-actieweken op actiefiguren en verzamelfiguren', tot: '2026-11-30', l: 'https://www.superzero.nl/tracking/tradetracker/redirect/?tt=35986_2084231_516846_&r=' + encodeURIComponent('https://www.superzero.nl/black-friday/') },
+    { w: 'Fiftiesstore', zin: 'Black Friday Retro Sale: vinyl, klokken en retro', l: 'https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=' + encodeURIComponent('https://www.fiftiesstore.nl/sale/black-friday-sale.html') },
+    { w: 'iScooter', zin: 'Black Friday is live: tot 50% korting op e-steps en e-bikes', l: 'https://www.awin1.com/cread.php?awinmid=116989&awinaffid=3110079&clickref=blackfriday&ued=' + encodeURIComponent('https://www.iscooterglobal.eu/nl') },
+    { w: 'Fitwinkel', zin: 'Black Friday Weeks: tot wel 70% korting op fitness', l: 'https://rep2.fitwinkel.nl/c/?si=12318&li=1555148&wi=433339&ws=blackfriday&dl=' + encodeURIComponent('collections/black-friday') }
+  ];
+  function bfWinkelsBlok(waar) {
+    var nu = new Date().toISOString().slice(0, 10);
+    if (window.LK_BF_WINKELS === false || nu > BF_EIND) return '';
+    var l = BF_WINKELS.filter(function (x) { return !x.tot || x.tot >= nu; });
+    if (!l.length) return '';
+    return '<section class="sectie bfw" data-tel-bron="blackfriday-winkels" aria-labelledby="bfw-kop-' + waar + '"><div class="sectie-kop"><div><h2 id="bfw-kop-' + waar + '">Black Friday bij onze winkels</h2>' +
+      '<p>Zo staat het op hun eigen site (nagekeken op ' + BF_DATUM + '). Je koopt bij de winkel zelf; hoeveel korting er is, verschilt per product.</p></div></div>' +
+      '<div class="bfw-raster">' + l.map(function (x) {
+        return '<a class="bfw-kaart" href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener"><strong>' + esc(x.w) + '</strong><span class="bfw-zin">' + esc(x.zin) + '</span>' +
+          (x.tot ? '<span class="bfw-tot">t/m ' + esc(datumNl(x.tot)) + '</span>' : '') + '<span class="bfw-ga">Naar de deals ›</span></a>';
+      }).join('') + '</div></section>';
+  }
   /* 18-11-2026 (GO Marius, onderzoek koopgedrag): in de Black Friday-week kopen mensen al voor Sinterklaas en Kerst (65% van wie speelgoed koopt,
      NielsenIQ) en ze wantrouwen kortingen (68%). Dus bij 'beste deals': een echte prijsdaling uit onze eigen geschiedenis (laag30) en speelgoed en
      cadeaus voor Sint en Kerst eerder, gewone elektronica (geen gaming) later. De eigen deals van Marius blijven bovenaan. Uit: window.LK_BF_ORDE = false. */
@@ -2997,7 +3026,7 @@
         (g.korting && window.LK_CODE_OP_PRODUCT !== false ? codesNu().filter(function (c) { var v = new Date().toISOString().slice(0, 10); return c.opProduct && c.code && (!c.vanaf || c.vanaf <= v); }).map(function (c) {
           return '<p class="eerlijk-regel code-regel">' + ic('cadeau') + '<span>Extra bij ' + esc(c.winkel) + ': ' + esc(c.opProduct.replace(/^Black Week: /, '')) + '. <a href="/collectie/kortingscodes">Alle codes en voorwaarden</a></span></p>';
         }).join('') : '');
-      var wsVerz = window.LK_STRAAT_LIJST.html({ lijst: lijst, h1: pv ? g.naam + ' voor ' + voorNaam : g.naam, tekst: g.tekst || '', voor: wsVoor, boven: wsBoven, naEtalage: pv ? '' : mandjesBlok(g),
+      var wsVerz = window.LK_STRAAT_LIJST.html({ lijst: lijst, h1: pv ? g.naam + ' voor ' + voorNaam : g.naam, tekst: g.tekst || '', voor: wsVoor, boven: wsBoven, naEtalage: pv ? '' : mandjesBlok(g) + (g.slug === 'black-friday' ? bfWinkelsBlok('ws') : ''), kleur: g.kleur,
         label: pv ? g.naam : (isGel ? 'Gelegenheid' : 'Collectie'), sleutels: [hoofdPad.slice(1)], rondNaam: (isGel ? 'gel-' : 'col-') + g.slug,
         terug: pv ? [hoofdPad + '/', 'Terug naar ' + g.naam] : ['/', 'Naar de Cadeaustraat'], alles: pad + '/?alles=1' });
       if (wsVerz) return wsVerz;
@@ -3049,7 +3078,7 @@
       (g.korting && !g.codes && window.LK_CODE_OP_PRODUCT !== false ? codesNu().filter(function (c) { var v = new Date().toISOString().slice(0, 10); return c.opProduct && c.code && (!c.vanaf || c.vanaf <= v); }).map(function (c) {
         return '<p class="eerlijk-regel code-regel">' + ic('cadeau') + '<span>Extra bij ' + esc(c.winkel) + ': ' + esc(c.opProduct.replace(/^Black Week: /, '')) + '. <a href="/collectie/kortingscodes">Alle codes en voorwaarden</a></span></p>';
       }).join('') : '') +
-      (pv ? '' : mandjesTeaser(g)) +
+      (pv ? '' : mandjesTeaser(g)) + (g.slug === 'black-friday' && !pv ? bfWinkelsBlok('lijst') : '') +
       (voorKnopjes ? '<section class="sectie keuzes-sectie" aria-label="Keuzes">' + voorKnopjes + '</section>' : '') +
       /* Stap 4 indeling: 'Onze selectie' als vast raster (geen schuifrij). Deals van vandaag (Acties) blijven 12 stuks. */
       /* Stap 6 indeling: op een collectie (Cadeau-ideeën) geen selectie: meteen filter en producten. Acties houden 'Deals van vandaag'. */
@@ -6788,7 +6817,7 @@
             'Vraag van tevoren of je iets kunt meenemen, zoals eten voor de vriezer. Daar help je ze pas echt mee.'
           ] },
         { kop: 'Lief voor de baby', tekst: 'Zacht, veilig en net even mooier dan standaard: hier kijken ouders blij van op.',
-          ids: ['hema-d2cd56c14b', 'tbl-0a6h8gez0010m1', 'knufk-bambam-pakket', 'cl-jipy-eendjes'] },
+          ids: ['hema-d2cd56c14b', 'hema-8e735eb45d', 'knufk-bambam-pakket', 'cl-jipy-eendjes'] },
         { kop: 'Voor op de babykamer', tekst: 'Een nachtlampje of een wandkleed: elke avond in gebruik, en het staat er nog als de baby een kleuter is.',
           ids: ['dvzn-347250', 'tt-lamponline-51b017f92e', 'ptm-4', 'bol-9300000183026688'] },
         { kop: 'Voor de ouders zelf', tekst: 'Een ketting voor de kersverse mama, een invulboek vol vragen of gewoon even gips om die bijzondere buik te bewaren (voor de volgende!).',
@@ -6809,7 +6838,7 @@
         { kop: 'Voor de aanstaande mama', tekst: 'Iets om de zwangerschap te bewaren of om er nog even van te genieten.',
           ids: ['sp-zwangerschapsdagboek', 'bw-relax-mama-kalender', 't2-boekenwereld-c8dc9b1642', 'hm-gipsbuik-set'] },
         { kop: 'Voor de baby', tekst: 'Zacht, veilig en net even mooier: een deken met naam, een knuffel om te ontdekken en de allerkleinste slofjes.',
-          ids: ['bol-9300000136627314', 'woewoe-5dc11dd46b', 'cl-steiff-trex', 'tbl-0a6h8gez0010m1'] },
+          ids: ['bol-9300000136627314', 'woewoe-5dc11dd46b', 'cl-steiff-trex', 'hema-79390a87a8'] },
         { kop: 'Met de hele groep', tekst: 'Als iedereen een paar tientjes geeft, kun je samen iets geven wat de ouders echt gaan gebruiken.',
           ids: ['cl-bol-fp-jungle', 'knufk-bambam-pakket', 'cl-vtech-speeltafel', 'bol-9300000144690906'] }
       ],
@@ -7270,6 +7299,55 @@
     var k = g.kort.replace(/\s*Van (€ ?)?[\d.,]+( euro)? tot (€ ?)?[\d.,]+( euro)?\.?/, '').trim(), b = gidsBereik(g);
     return b ? k + ' ' + b : k;
   }
+  /* GIDSEN 3.0 (22-11-2026, Marius: 'maak de cadeaugidsen mooier en sterker, geef ze allemaal een update zodat het fijn is er in te lezen en te kijken').
+     Overzicht per soort gids, bovenaan elke gids een rij foto's, een vak 'Goed om te weten' met de datums van nu, genummerde delen met onderaan
+     een link naar de afdeling waar die cadeaus staan, en grotere foto's. Alles uit: window.LK_GIDS3 = false. */
+  function gidsUniek() { var gezien = {}; return GIDSEN.filter(function (g) { if (gezien[g.slug]) return false; gezien[g.slug] = 1; return true; }); }
+  function gidsGroepen() {
+    var nu = new Date().toISOString().slice(0, 10), sintEerst = nu <= '2026-12-05';
+    var G = [
+      { id: 'sinterklaas', naam: 'Sinterklaas', zin: 'Schoencadeautjes, lootjes, surprises en het gedicht.', re: /sinterklaas|schoencadeautjes|surprise/ },
+      { id: 'kerst', naam: 'Kerst', zin: 'Voor onder de boom, voor het team en de adventskalender.', re: /kerst|advent/ },
+      { id: 'trends', naam: 'Black Friday en trends', zin: 'Wat nu gewild is, en hoe je een echte deal herkent.', re: /black-friday|hypes|virale|speelgoed-van-het-jaar|trends|sfeerlicht/ },
+      { id: 'kind', naam: 'Per leeftijd', zin: 'Van 1 jaar tot 60: voor jongens en meisjes, tieners en volwassenen.', re: /cadeau-kind-|cadeau-\d+-jaar$/ },
+      { id: 'persoon', naam: 'Per persoon', zin: 'Voor je moeder, vader, vriend, zus, opa of collega.', re: /cadeau-voor-|zwangere|schoonouders/ },
+      { id: 'bedrag', naam: 'Per bedrag', zin: 'Kleine cadeaus en lootjes van 10, 15, 25 of 50 euro.', re: /euro|klein-cadeau/ },
+      { id: 'moment', naam: 'Gelegenheden', zin: 'Afscheid, pensioen, kraam, nieuw huis, Valentijn en jubileum.', re: /afscheid|pensioen|kraam|babyshower|housewarming|valentijn|samen|trouwdag|belevenis/ },
+      { id: 'hobby', naam: 'Hobby en handig', zin: 'Voor de voetballer, de wijnliefhebber, de hond en meer.', re: /./ }
+    ];
+    if (!sintEerst) G.push(G.shift());
+    G.forEach(function (x) { x.l = []; });
+    gidsUniek().forEach(function (g) { for (var i = 0; i < G.length; i++) if (G[i].re.test(g.slug)) { G[i].l.push(g); return; } });
+    return G.filter(function (x) { return x.l.length; });
+  }
+  /* Een rij van 4 foto's bovenaan: uit verschillende delen, niet de drie van 'Snel kiezen'. */
+  function gidsBeelden(g, delen) {
+    var top = {}; (g.top || []).forEach(function (x) { var p = gidsVind(x[1]); if (p) top[p.id] = 1; });
+    var uit = [], i = 0;
+    while (uit.length < 4 && i < 6) { delen.forEach(function (d) { var p = d.lijst2 && d.lijst2.filter(function (x) { return !top[x.id] && uit.indexOf(x) < 0 && x.beeld; })[i ? 0 : 0]; if (p && uit.length < 4 && uit.indexOf(p) < 0) uit.push(p); }); i++; }
+    if (uit.length < 3) return '';
+    return '<div class="gids-beelden" aria-hidden="true">' + uit.map(function (p) { return '<a href="/p/' + esc(p.id) + '" tabindex="-1">' + LK.productBeeld(p) + '</a>'; }).join('') + '</div>';
+  }
+  /* 'Goed om te weten': de datums van nu (Black Friday, pakjesavond, kerst). Geen 'over N dagen': de pagina wordt één keer per dag gebouwd. */
+  function gidsNu(g) {
+    if (/noodpakket|kinderbijbel/.test(g.slug)) return '';
+    var nu = new Date().toISOString().slice(0, 10), r = [];
+    var kerstGids = /kerst|advent/.test(g.slug), liefde = /valentijn|samen|trouwdag|kraam|babyshower|housewarming|afscheid|pensioen/.test(g.slug);
+    if (nu <= '2026-11-30' && g.slug !== 'black-friday-2026' && !liefde) r.push('Black Friday is op vrijdag 27 november, Cyber Monday op maandag 30 november. Veel van onze winkels hebben nu al acties: <a href="/collectie/black-friday">bekijk de deals</a>.');
+    if (nu <= '2026-12-05' && !kerstGids && !liefde) r.push('Pakjesavond is op zaterdag 5 december. Bestel liefst uiterlijk donderdag 3 december; ben je laat, kijk dan bij <a href="/collectie/op-tijd-voor-pakjesavond">Nog op tijd voor pakjesavond</a>.');
+    if (nu <= '2026-12-24' && (kerstGids || nu > '2026-12-05') && !liefde) r.push('Kerst is op vrijdag 25 en zaterdag 26 december. Bestel ruim op tijd: rond kerst bezorgen winkels vaak een dag later.');
+    if (!r.length) return '';
+    return '<aside class="gids-nu" aria-label="Goed om te weten">' + ic('klok') + '<div><strong>Goed om te weten</strong>' + r.map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</div></aside>';
+  }
+  /* Onder een deel: 'Meer …' naar de groep van de site waar de meeste cadeaus van dat deel staan. */
+  function gidsMeer(d) {
+    var tel = {}, best = '', n = 0;
+    (d.lijst2 || []).forEach(function (p) { if (!p.afd || !p.groep) return; var k = p.afd + '/' + p.groep; tel[k] = (tel[k] || 0) + 1; if (tel[k] > n) { n = tel[k]; best = k; } });
+    if (!best || n < 2) return '';
+    var x = best.split('/'), c = window.LK_CAT && window.LK_CAT(x[0]), sb = c && window.LK_SUB ? window.LK_SUB(c, x[1]) : null;
+    if (!c || !sb || sb.verborgen) return '';
+    return '<p class="gids-meer"><a href="' + (sb.naar || '/c/' + c.slug + '/' + sb.slug) + '">Meer ' + esc(sb.naam.toLowerCase()) + ' bekijken ›</a></p>';
+  }
   function gidsKaart(g) {
     /* Kaartbeeld: het product in 'beeld' (met de hand gekozen), anders het eerste product uit de gids. */
     var eerste = (g.beeld && gidsVind(g.beeld)) || g.delen[0].ids.map(function (id) { return gidsVind(id); }).filter(Boolean)[0];
@@ -7315,12 +7393,16 @@
     if (!slug) {
       zetTitel('Cadeaugidsen');
       window.LK_SEO = 'Cadeaugidsen van LeukeKeuze: per gelegenheid de beste cadeau-ideeën op een rij, met de hand gekozen en in gewone woorden uitgelegd.';
-      return paginakop({ titel: 'Cadeaugidsen', tekst: 'Per gelegenheid de beste ideeën op een rij, met uitleg.', kruimel: [{ tekst: 'Cadeaugidsen' }] }) +
+      if (window.LK_GIDS3 === false) return paginakop({ titel: 'Cadeaugidsen', tekst: 'Per gelegenheid de beste ideeën op een rij, met uitleg.', kruimel: [{ tekst: 'Cadeaugidsen' }] }) +
         '<div class="binnen"><div class="gidslijst">' + GIDSEN.map(gidsKaart).join('') + '</div></div>';
+      var gr = gidsGroepen();
+      return paginakop({ titel: 'Cadeaugidsen', tekst: 'Per gelegenheid, persoon, leeftijd en bedrag de beste ideeën, met prijzen.', kruimel: [{ tekst: 'Cadeaugidsen' }] }) +
+        '<div class="binnen gids-index"><nav class="chips vakjesrij omlopend springlinks gi-thema" aria-label="Soorten gidsen">' + gr.map(function (x) { return '<a class="chip" href="#gg-' + x.id + '">' + esc(x.naam) + ' <small>' + x.l.length + '</small></a>'; }).join('') + '</nav>' +
+        gr.map(function (x) { return '<section class="sectie gg-groep" id="gg-' + x.id + '"><div class="sectie-kop"><div><h2>' + esc(x.naam) + '</h2>' + (x.zin ? '<p>' + esc(x.zin) + '</p>' : '') + '</div></div><div class="gidslijst">' + x.l.map(gidsKaart).join('') + '</div></section>'; }).join('') + '</div>';
     }
     var g = GIDSEN.filter(function (x) { return x.slug === slug; })[0];
     if (!g) return nietGevonden();
-    var gTitel = gidsTitel(g);
+    var gTitel = gidsTitel(g), G3 = window.LK_GIDS3 !== false;
     window.LK_GIDS_GETAL = [gidsBelooft(g), gidsZichtbaar(g).length]; /* voor de bouw: beloofd en echt */
     zetTitel(gTitel);
     /* 8-11-2026: de 'waarom'-teksten van gidsproducten staan in de lijst; ontbreekt er toch een (nieuw product), dan de details erbij laden. */
@@ -7328,7 +7410,9 @@
     window.LK_SEO = gidsGetal(g, gidsKort(g) + ' ' + g.intro.split('. ')[0] + '.');
     /* Stap 6 indeling (6-11-2026, plan deel 8): intro van 3 zinnen (de rest achter 'Lees verder'), springlinks naar de delen,
        per deel producten 2 naast elkaar, onderaan 'Lees ook' en de link naar het vakje. */
-    var intro = gidsGetal(g, g.intro), zinnen = intro.match(/[^.!?]+[.!?]+(\s|$)/g) || [intro];
+    /* 22-11-2026 (controle): alleen knippen bij een punt, vraagteken of uitroepteken met een spatie erna. De oude manier sloeg een zin met
+       'Lootjestrekken.nl' of 'bol.com' erin helemaal over (intro van Cadeau voor een man, een vrouw en Kraamcadeau). */
+    var intro = gidsGetal(g, g.intro), zinnen = intro.replace(/([.!?])\s+/g, '$1\u0001').split('\u0001').filter(Boolean).map(function (z, i, a) { return i < a.length - 1 ? z + ' ' : z; });
     var introKort = zinnen.slice(0, 3).join('').trim(), introRest = zinnen.slice(3).join('').trim();
     var gidsGezien = {};
     var delenMet = g.delen.map(function (d, i) { return Object.assign({ nr: i + 1 }, d); }).filter(function (d) {
@@ -7346,10 +7430,11 @@
       (aantal ? '<span>' + ic('cadeau') + aantal + ' cadeaus' + (gidsBereik(g) ? ', ' + gidsBereik(g).replace('Van', 'van').replace('.', '') : '') + '</span>' : '') +
       '<span>' + ic('vink') + 'Bijgewerkt ' + (g.bijgewerkt || 'november 2026') + '</span></p>';
     var h = paginakop({ titel: gTitel, kruimel: [{ tekst: 'Cadeaugidsen', naar: '/gids' }, { tekst: gTitel }] }) +
-      '<div class="binnen"><article class="tekstpagina gids">' + meta + '<p class="gids-intro">' + esc(introKort) + '</p>' +
+      '<div class="binnen' + (G3 ? ' gids3' : '') + '"><article class="tekstpagina gids">' + meta + (G3 ? gidsBeelden(g, delenMet) : '') + '<p class="gids-intro">' + esc(introKort) + '</p>' +
       (introRest ? '<details class="lees-verder"><summary>Lees verder</summary><p>' + esc(introRest) + '</p></details>' : '') + '</article>' +
       (g.slug === 'sinterklaasgedicht-maken' ? '<div class="tekstpagina gids">' + rijmBlok('gids') + '</div>' : '') +
-      gidsTop(g) + '<div class="tekstpagina gids">' + spring + '</div>';
+      gidsTop(g) + (G3 ? gidsNu(g) : '') + (g.slug === 'black-friday-2026' ? bfWinkelsBlok('gids') : '') + '<div class="tekstpagina gids">' + spring + '</div>';
+    var nrDeel = 0;
     delenMet.forEach(function (d) {
       /* Een deel kan ook alleen tekst zijn (zonder producten), met een lijstje (veld 'lijst') of genummerde stappen (veld 'stappen'). */
       var extra = (d.lijst ? '<ul class="vinklijst">' + d.lijst.map(function (r) { return '<li>' + ic('vink') + '<span>' + esc(r) + '</span></li>'; }).join('') + '</ul>' : '') +
@@ -7359,8 +7444,9 @@
         h += '<article class="tekstpagina gids' + (tip ? ' gids-tip' : '') + '" id="deel-' + d.nr + '"><h2>' + (tip ? ic(/^pas op/i.test(d.kop) ? 'info' : 'vonk') : '') + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</article>';
         return;
       }
-      h += '<section class="sectie gids-deel" id="deel-' + d.nr + '"><div class="tekstpagina gids"><h2>' + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</div>' +
-        '<div class="gidsitems">' + d.lijst2.map(gidsItem).join('') + '</div></section>';
+      nrDeel++;
+      h += '<section class="sectie gids-deel" id="deel-' + d.nr + '"><div class="tekstpagina gids"><h2>' + (G3 ? '<span class="gd-nr" aria-hidden="true">' + nrDeel + '</span>' : '') + esc(d.kop) + '</h2><p>' + esc(d.tekst) + '</p>' + extra + '</div>' +
+        '<div class="gidsitems">' + d.lijst2.map(gidsItem).join('') + '</div>' + (G3 ? gidsMeer(d) : '') + '</section>';
     });
     h += gidsFaq(g);
     /* Onderaan: slot, 'Lees ook' (gidsen over hetzelfde vak), de link naar het vakje, en alle gidsen als tekstlink. */
@@ -7970,6 +8056,7 @@
       var kaart = a.closest('.product-info, .product-plak');
       var ck = a.closest('.cadeaukaart');
       if (kaart) { var id = (location.pathname.match(/\/p\/([^\/]+)/) || [])[1] || ''; var p = id && LK.vind(id); if (p) { prod = p; winkel = p.shop; pad = 'klik/' + p.shop + '/' + p.id; titel = p.shop + ': ' + p.titel; } }
+      else if (a.classList.contains('bfw-kaart')) { winkel = schoon((a.querySelector('strong') || {}).textContent); pad = 'klik/blackfriday/' + winkel; titel = 'Black Friday bij ' + winkel; }
       else if (a.classList.contains('winkelkaart')) { winkel = schoon((a.querySelector('strong') || {}).textContent); pad = 'klik/winkel/' + winkel; titel = 'Winkeltegel: ' + winkel; }
       else if (a.closest('.awkaart')) { var k = a.closest('.awkaart'); winkel = schoon((k.querySelector('.shop') || {}).textContent); pad = 'klik/feed/' + winkel; titel = 'Uit alle winkels: ' + (k.querySelector('h3') || {}).textContent; }
       else if (a.closest('.aw-bol')) { winkel = 'bol'; pad = 'klik/feed/bol-zoeken'; titel = 'Zoek ook op bol'; }
