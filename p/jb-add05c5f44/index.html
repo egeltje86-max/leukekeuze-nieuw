@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=276770801618955" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=79817298266161" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=52545124123821" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
-  <link rel="stylesheet" href="assets/css/licht.css?v=240031266723681">
+  <link rel="stylesheet" href="assets/css/licht.css?v=224765128020713">
   <link rel="stylesheet" href="assets/css/straat.css?v=213641597469023">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=206960284056743", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=65035224796555", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -73,7 +73,7 @@
        Eerst alleen met ?proef=combi, nu voor iedereen (zie hieronder): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
        en een donkere versie die de instelling van de telefoon of computer volgt (keuze in het menu: Automatisch, Licht of Donker; ook ?thema=donker|licht|auto).
        Het donkere bestand laadt alleen als de donkere versie aan staat. -->
-  <meta name="lk-donker" content="assets/css/donker.css?v=228924391338421">
+  <meta name="lk-donker" content="assets/css/donker.css?v=156246224079157">
   <!-- LIVE voor iedereen sinds 22-11-2026 09:18 (Marius: 'Dit is fantastisch go'). Zelf de lichte kop van 21-11 zien: ?proef=combi-uit (blijft onthouden; weer aan: ?proef=combi).
        Helemaal uit: window.LK_COMBI = false. -->
   <script>(function () { try { var h = document.documentElement, q = location.search, ls = null, uit = false;
@@ -236,11 +236,11 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"jb-add05c5f44":{"url":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=90ce985495f9c81e76b06e436fb858a9&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100023420529450%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fvoxorai-blauw-kinder-smartwatch-ondersteunt-gps%252F100023420529450%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","winkelUrl":"https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=90ce985495f9c81e76b06e436fb858a9&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100023420529450%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fvoxorai-blauw-kinder-smartwatch-ondersteunt-gps%252F100023420529450%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=","subVast":true,"gecontroleerd":"2026-11-22","herkomst":"superkeurkamer","verzendNoot":"Joybuy bezorgt gratis vanaf €29.","advies":{"voor":"Ouders die hun kind bereikbaar willen houden.","niet":"Je geen extra simkaart wilt: die is nodig om te bellen.","alt":["cl-aw-se3","cl-gw9"],"meer":[["Cadeau voor een kind van 6 jaar","/gids/cadeau-kind-6-jaar/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"De VoxorAI-kindersmartwatch in blauw met 4G voor video- en spraakbellen (met een simkaart), GPS, veilige zones en een SOS-knop die drie contacten belt. Met een camera en een schoolmodus. Batterij 2 à 3 dagen, kan tegen spetters (IPX5)."}};</script>
-  <script src="assets/js/data.js?v=270658874710233"></script>
+  <script src="assets/js/data.js?v=52545124123821"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=159967515905872"></script>
-  <script src="assets/js/straat.js?v=271835745966948"></script>
-  <script src="assets/js/app.js?v=276770801618955"></script>
+  <script src="assets/js/straat.js?v=135920616791077"></script>
+  <script src="assets/js/app.js?v=79817298266161"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
