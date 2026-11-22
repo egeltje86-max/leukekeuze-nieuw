@@ -558,20 +558,26 @@
       HANDIG.filter(function (x) { return inSeizoen(x[3]); }).map(function (x) { return rondje(x[0], novaRond(x[2]), x[1], x[4]); }).join('') + '</div></section>';
   }
 
-  function straat(st) {
+  function straat(st, opt) {
+    opt = opt || {};
     var naam = st.pr.wie ? 'De straat ' + st.pr.tekst : 'De Cadeaustraat';
     if (TITEL0) document.title = st.pr.wie ? 'Cadeaus ' + st.pr.tekst + ' – LeukeKeuze' : TITEL0;
     var keuze = [st.pr.wie ? st.pr.knop : '', tekstBedrag(st.max)].filter(Boolean).join(' · ');
     /* COMBI (22-11-2026, voorbeeld): app.js kan boven de straat en onder de keuze voor wie iets zetten (de keuze cadeau of product, lootjes en rijmmachine) */
     var haak = function (n) { return typeof window[n] === 'function' ? window[n]() : ''; };
     var boven = haak('LK_STRAAT_BOVEN'), naKies = haak('LK_STRAAT_NA_KIES');
-    var h = boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
-      '<img src="' + NB + 'straat-hero-telefoon.webp" alt="" fetchpriority="high"></picture>' +
-      '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
-      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st) + naKies;
-    h += '<section class="straat-kop" id="straat-kop"><h2>' + esc(st.pr.wie ? naam : 'Alle winkels') + (st.max ? ' <span>' + esc(tekstBedrag(st.max)) + '</span>' : '') + '</h2>' +
+    /* 22-11-2026 (Marius: 'als je op voor haar klikt blijf je op de home page en zie je niet de winkel voor haar'):
+       de straat voor een persoon (/voor/haar) begint meteen met 'De straat voor haar' en zijn winkels, niet met het welkomstbord
+       van de homepage. Wie iemand anders wil kiezen, vindt de keuze onder de winkels ('andere keuze' springt erheen). */
+    var kh = opt.voor ? 'h1' : 'h2';
+    var kop = '<section class="straat-kop" id="straat-kop"><' + kh + '>' + esc(st.pr.wie ? naam : 'Alle winkels') + (st.max ? ' <span>' + esc(tekstBedrag(st.max)) + '</span>' : '') + '</' + kh + '>' +
       '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
       (keuze ? ' · <button type="button" class="link" data-sh-naar-kies>andere keuze</button> · <a href="#straat" data-sh-kies>alles weer tonen</a>' : '') + '</p></section>';
+    var h = opt.voor ? '<a class="terug" href="/">‹ Naar de hele Cadeaustraat</a>' + kop :
+      boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
+      '<img src="' + NB + 'straat-hero-telefoon.webp" alt="" fetchpriority="high"></picture>' +
+      '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
+      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st) + naKies + kop;
     if (st.etalage.length) {
       h += '<section class="gang top-etalage"><div class="gang-kop"><img src="' + novaRond(st.pr.ic) + '" alt="" loading="lazy">' +
         '<div><small>De etalage</small><h2>' + esc(st.pr.wie ? 'Onze beste cadeaus ' + st.pr.tekst : 'Onze beste cadeaus van dit moment') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') + '</h2></div></div>' +
@@ -584,6 +590,7 @@
     h += '<section class="straat" aria-label="Open winkels">' + loket(st) + st.open.map(function (x) { return gevel(x, st); }).join('') + kioskGevel(st) + '</section>';
     if (st.dicht.length) h += '<details class="dicht-blok"><summary>Rolluik dicht bij ' + st.dicht.length + (st.dicht.length === 1 ? ' winkel' : ' winkels') + ' <b><span class="toon">Toon ›</span><span class="verberg">Verberg</span></b></summary>' +
       '<section class="straat" aria-label="Gesloten winkels">' + st.dicht.map(function (x) { return gevel(x, st); }).join('') + '</section></details>';
+    if (opt.voor) h += kiezer(st);
     h += haak('LK_STRAAT_ONDER');
     h += snel();
     return h;
@@ -929,7 +936,7 @@
   /* WINKELSTIJL voor de Voor wie-pagina's (voorbeeld): /voor/haar is de straat voor haar. De links naar de winkels gaan naar de straat op de homepage. */
   function voorPagina(wie) {
     var st = staat(wie, 0); huidig = { st: st };
-    return '<div class="sh">' + straat(st).replace(/href="#/g, 'href="/#') + '</div>';
+    return '<div class="sh">' + straat(st, { voor: true }).replace(/href="#/g, 'href="/#') + '</div>';
   }
   return { render: render, meer: meer, kmeer: kmeer, adres: leesAdres, afd: afdPagina, voor: voorPagina, lijst: lijstPagina };
   }
@@ -947,6 +954,30 @@
     return true;
   }
   function tel(pad, titel) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: titel, event: true }); } catch (e) {} }
+  /* 22-11-2026 (Marius: 'als je op voor haar klikt blijf je op de home page en zie je niet de winkel voor haar'):
+     kom je op de homepage binnen met een keuze in het adres (/#voor-haar: een link van een andere pagina, of de pagina opnieuw geladen),
+     dan meteen naar 'De straat voor haar'. Met de terugknop niet: dan kom je terug waar je was. */
+  var kopNaStart = (function () {
+    try { var n = performance.getEntriesByType('navigation')[0]; if (n && n.type === 'back_forward') return false; } catch (e) {}
+    return /^#(?:voor-|tot-)/.test(location.hash);
+  })();
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="/#voor-"],a[href^="/#tot-"]');
+    if (a && location.pathname !== '/' && !(e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) kopNaStart = true;
+  }, true);
+  function kopNaRender() {
+    if (!kopNaStart) return;
+    kopNaStart = false;
+    var gezet = -1;
+    var naarKop = function () {
+      var a = S && S.adres(), k = document.getElementById('straat-kop');
+      if (!k || !opHome() || !a || a.winkel) return;
+      k.scrollIntoView({ block: 'start' }); gezet = window.scrollY;
+    };
+    setTimeout(naarKop, 60);
+    /* nog één keer als er boven de straat iets later is ingeladen (plaatjes), maar alleen als je zelf nog niet hebt gescrold */
+    setTimeout(function () { if (gezet >= 0 && Math.abs(window.scrollY - gezet) < 4) naarKop(); }, 900);
+  }
   /* app.js vraagt hier de homepage op (home()). Leeg = de oude homepage. */
   window.LK_STRAAT_HOME = {
     aan: aan,
@@ -961,7 +992,9 @@
       if (!S || S._deel) { S = maak(); S._deel = false; } /* de straat altijd met de hele lijst */
       var a = S.adres();
       if (a.wie && !window.LK_VOORWIE) laadVoorwie(herteken);
-      return S.render().html;
+      var r = S.render();
+      if (!r.binnen) kopNaRender();
+      return r.html;
     }
   };
   /* WINKELSTIJL voor afdelingen en groepen: voorbeeld, alleen met ?proef=winkelstijl (uit: ?proef=winkelstijl-uit). Nog niet voor iedereen. */
@@ -1089,7 +1122,19 @@
     var gw = e.target.closest('[data-sh-gang]');
     if (gw) { e.preventDefault(); var d = document.getElementById('gang-' + gw.getAttribute('data-sh-gang')); if (d) d.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     var nk = e.target.closest('[data-sh-naar-kies]');
-    if (nk) { var k = document.querySelector('#app .sh .kies'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    if (nk) { var k = document.querySelector('#app .sh .kies'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    /* 22-11-2026: een #-adres in de straat (persoon, bedrag, winkel) is een stap binnen de pagina. Stond er iets achter het adres
+       (?utm_source=chatgpt.com, ?fbclid=… van TikTok en Instagram), dan liet <base href="/"> de browser de hele pagina opnieuw laden
+       en stond je weer bovenaan de homepage. Nu blijft het adres staan en verandert alleen het stukje na #. */
+    var ha = e.target.closest('a[href^="#"]');
+    if (ha && opHome() && !(e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) {
+      var nh = ha.getAttribute('href');
+      if (nh.length > 1) {
+        e.preventDefault();
+        if (nh !== location.hash) location.hash = nh;
+        else if (naarStraat) { naarStraat = false; var k0 = document.getElementById('straat-kop'); if (k0) k0.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    }
   });
   /* Terug naar waar je was: met de terugknop kom je weer op dezelfde plek in de straat of winkel */
   var POS = {}, vorige = location.hash, vooruit = false;
