@@ -1138,6 +1138,20 @@ window.LK_COLLECTIE = function (slug) { return (window.LK_COLLECTIES || []).find
   psub('tieners', 'spellen-puzzels', S('voor-tieners-spellen-puzzels'));
   psub('tieners', 'metaaldetectie', S('voor-tieners-metaaldetectie'));
   psub('collega', 'lootjes', S('voor-collega-lootjes'));
+  /* 22-11-2026: lichte rondjes van Nova (NOVA-BOUTIQUE-009/010) voor onderwerpen van Voor wie. Niet bij Voor haar > Lekkers & pakketten (wijnfles op het rondje). */
+  psub('hem', 'bbq-lekkers', 'images/sub/rond/voor-hem-bbq-lekkers.webp');
+  psub('hem', 'boeken-muziek', 'images/sub/rond/voor-hem-boeken-muziek.webp');
+  psub('hem', 'portemonnees-tassen', 'images/sub/rond/voor-hem-portemonnees-tassen.webp');
+  psub('haar', 'puzzels-spellen', 'images/sub/rond/voor-haar-puzzels-spellen.webp');
+  psub('haar', 'tassen-portemonnees', 'images/sub/rond/voor-haar-tassen-portemonnees.webp');
+  psub('opa-oma', 'puzzels-spellen', 'images/sub/rond/voor-opa-oma-puzzels-spellen.webp');
+  psub('opa-oma', 'tuin-vogels', 'images/sub/rond/voor-opa-oma-tuin-vogels.webp');
+  psub('opa-oma', 'keuken', 'images/sub/rond/voor-opa-oma-keuken.webp');
+  psub('opa-oma', 'lekkers-drank', 'images/sub/rond/voor-opa-oma-lekkers-drank.webp');
+  psub('tieners', 'mode', 'images/sub/rond/voor-tieners-mode.webp');
+  psub('tieners', 'spellen-puzzels', 'images/sub/rond/voor-tieners-spellen-puzzels.webp');
+  psub('kinderen', 'spellen', 'images/sub/rond/voor-kinderen-spellen.webp');
+  psub('baby', 'knuffels-met-naam', 'images/sub/rond/voor-baby-knuffels-met-naam.webp');
   /* 1-11-2026 (3): banners, Tuin-kaart en vakjes Sieraden, Parfum en Mode */
   ['boeken-media', 'christelijk', 'dieren', 'eten-drinken', 'hobby', 'metaaldetectie', 'sieraden', 'speelgoed', 'sport-outdoor', 'tuin-klussen'].forEach(function (n) { cg(n, 'banner', 'images/banners/banner-cat-' + n + '-gw.webp'); });
   cg('tuin-klussen', 'tegel', 'images/categorieen/categorie-tuin-klussen-gw.webp');
@@ -1580,6 +1594,8 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
     'speelgoed/spellen/strategiespellen': 'spellen-puzzels-bordspellen-strategiespellen',
     'speelgoed/spellen/kaart-dobbelspellen': 'spellen-puzzels-kaart-partyspellen-kaart-dobbelspellen',
     'speelgoed/spellen/partyspellen': 'spellen-puzzels-kaart-partyspellen-partyspellen',
+    'speelgoed/spellen/kinderspellen': 'spellen-puzzels-kinderspellen-kinderspellen',
+    'speelgoed/spellen/escape-room-breinbrekers': 'spellen-puzzels-breinbrekers-escape-escape-room-breinbrekers',
     'speelgoed/puzzels/3d-puzzels': 'spellen-puzzels-puzzels-3d-puzzels',
     'speelgoed/puzzels/kinderpuzzels': 'spellen-puzzels-puzzels-kinderpuzzels',
     'speelgoed/puzzels/legpuzzels': 'spellen-puzzels-puzzels-legpuzzels',

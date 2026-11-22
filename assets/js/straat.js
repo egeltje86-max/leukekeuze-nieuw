@@ -379,11 +379,9 @@
      Komt er een eigen rondje 'afd-<winkel>-<naam>', zet het dan hier. */
   var GANG_NB = {
     'koffiehuis|Koek & stroopwafels': 'icoon-eten-drinken-lekkernijen', 'koffiehuis|Koffie & thee': 'gel-beterschap', 'koffiehuis|Snoep & drop': 'gel-uitdeelcadeautjes',
-    'tuincentrum|Bloemen': 'gel-moederdag', 'boetiek|Tassen & portemonnees': 'cat-mode-sieraden',
-    'sportwinkel|Balsport & spel': 'cat-sport-outdoor', 'sportwinkel|Water & winter': 'icoon-belevenissen-water-strand',
-    'grappenmaker|Voor een collega': 'cad-collega', 'grappenmaker|Voor hem': 'cad-voor-hem', 'grappenmaker|Voor haar': 'cad-voor-haar', 'grappenmaker|Voor kinderen': 'cad-voor-kinderen'
+    'tuincentrum|Bloemen': 'gel-moederdag', 'grappenmaker|Voor een collega': 'cad-collega', 'grappenmaker|Voor hem': 'cad-voor-hem', 'grappenmaker|Voor haar': 'cad-voor-haar', 'grappenmaker|Voor kinderen': 'cad-voor-kinderen'
   };
-  /* Eigen rondjes van Nova per afdeling (NOVA-BOUTIQUE-007 en 008, 21-11-2026): rond/icoon-<afdeling>-<groep> */
+  /* Eigen rondjes van Nova per afdeling (NOVA-BOUTIQUE-007 en 008, 21-11-2026; 009/010 op 22-11: tassen, balsport, water & winter, tuingereedschap): rond/icoon-<afdeling>-<groep> */
   var NOVA_AFD = {};
   ('beauty-verzorging/bad-huid-spa beauty-verzorging/giftsets beauty-verzorging/make-up-haar beauty-verzorging/parfum beauty-verzorging/scheren-baard ' +
    'belevenissen/avontuur-snelheid belevenissen/uitjes-natuur belevenissen/water-strand belevenissen/workshops-escape-proeven ' +
@@ -395,7 +393,7 @@
    'mode-sieraden/accessoires mode-sieraden/horloges mode-sieraden/kleding mode-sieraden/schoenen-sloffen mode-sieraden/sieraden ' +
    'speelgoed/baby-peuter speelgoed/bouwen speelgoed/buiten-spelen speelgoed/knutselen speelgoed/leren-ontdekken speelgoed/poppen-knuffels speelgoed/rollenspel-verkleden speelgoed/speelfiguren-voertuigen ' +
    'spellen-puzzels/bordspellen spellen-puzzels/breinbrekers-escape spellen-puzzels/kaart-partyspellen spellen-puzzels/kinderspellen spellen-puzzels/puzzels ' +
-   'sport-outdoor/darts sport-outdoor/fietsen-steps sport-outdoor/fitness-yoga sport-outdoor/outdoor-avontuur tuin-klussen/buiten-leven tuin-klussen/klussen tuin-klussen/tuin-planten ' +
+   'sport-outdoor/balsport-spel sport-outdoor/darts sport-outdoor/fietsen-steps sport-outdoor/fitness-yoga sport-outdoor/outdoor-avontuur sport-outdoor/water-wintersport tuin-klussen/buiten-leven tuin-klussen/klussen tuin-klussen/tuin-planten tuin-klussen/tuingereedschap mode-sieraden/tassen-portemonnees ' +
    'wonen/foto-persoonlijk wonen/kaarsen-geur wonen/kerstdecoratie wonen/verlichting wonen/woondecoratie wonen/woontextiel').split(' ').forEach(function (n) { NOVA_AFD[n] = 1; });
   function gangIcoon(w, x) {
     var g = x.g;
