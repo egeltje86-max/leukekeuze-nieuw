@@ -29,7 +29,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=210064839670507" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=104493390898302" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=164856849627079" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
@@ -43,8 +43,8 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>window.LK_PAKPAD="assets/pak/gelegenheid--bedankt.js?v=240655250282742";</script>
-  <script>(function () { var s = "assets/js/producten-lean.js?v=6144036893826", t = "assets/js/topkeuze.js?v=4699811632657";
+  <script>window.LK_PAKPAD="assets/pak/gelegenheid--bedankt.js?v=71488487961635";</script>
+  <script>(function () { var s = "assets/js/producten-lean.js?v=30913170541479", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -89,7 +89,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <a class="aftel aftel-bf" href="/collectie/black-friday/" data-aftel="" aria-label="Nog 6 dagen tot Black Friday. Bekijk de Black Friday deals"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">6</span> dagen tot Black Friday</span><span class="aftel-knop">Bekijk de deals →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
+  <a class="aftel aftel-bf" href="/collectie/black-friday/" data-aftel="" aria-label="Nog 5 dagen tot Black Friday. Bekijk de Black Friday deals"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">5</span> dagen tot Black Friday</span><span class="aftel-knop">Bekijk de deals →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
 
   <div class="topbalk">
     <div class="binnen">
@@ -222,7 +222,7 @@
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=111802525743477"></script>
   <script src="assets/js/straat.js?v=118066124460197"></script>
-  <script src="assets/js/app.js?v=210064839670507"></script>
+  <script src="assets/js/app.js?v=104493390898302"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

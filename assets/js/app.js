@@ -6115,7 +6115,7 @@
         { kop: "Zo kies je het goede kerstpakket", tekst: "Vier dingen die helpen:", lijst: ["Een pakket voor collega's? Kies iets dat iedereen kan gebruiken; niet iedereen drinkt alcohol.", "Iets om samen te doen, zoals een filmavond of een borrel, maakt er een gezellige avond van.", "Een brievenbuspakket hoeft niet thuis afgehaald te worden: het past door de brievenbus.", "Bestel op tijd: rond Kerst is het druk bij de bezorgers."] },
         { kop: "Verwenpakketten", tekst: "Een cadeauset met zeep, douchegel en lotion: om van te genieten.", ids: ["parfum-7e28f46e8a", "parfum-45d8b68540", "cl-rit-sakura", "cl-grace-cole"] },
         { kop: "Zoet en lekker", tekst: "Chocolade en karamel om te delen.", ids: ["bol-9300000251768734", "bol-9200000117297651", "bol-9300000158510566", "bol-9300000000837154"] },
-        { kop: "Borrelpakketten", tekst: "Voor bij de borrel of de barbecue: hapjes, sauzen en olijfolie.", ids: ["dk-00044934", "bp-l229", "cl-jackdaniels-bbq", "cl-olijfolie-proef"] },
+        { kop: "Borrelpakketten", tekst: "Voor bij de borrel, de barbecue of een pastadiner: hapjes, sauzen en truffel.", ids: ["dk-00044934", "bp-l229", "cl-jackdaniels-bbq", "bol-9300000250399375"] },
         { kop: "Echte kerstpakketten", tekst: "Kant-en-klaar in een mooie doos: voor collega's, familie of vrienden.", ids: ["bol-9300000444859249", "bol-9300000195684144", "bol-9300000057001441", "bol-9300000442610569"] },
         { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dk-00040239", "dk-00044932", "dk-00043581", "hema-8eff9a5ada"] },
         { kop: "Samen thuis", tekst: "Een filmavond, iets voor de Formule 1-fan of een fondue.", ids: ["bol-9300000340258889", "cl-filmpakket", "dvzn-533927", "dvzn-801397"] }
@@ -6415,8 +6415,8 @@
     { slug: 'kerstcadeau-onder-25', beeld: 'bol-9300000238623285', vakken: ['cadeaus/kerst', 'cadeaus/onder-15', 'eten-drinken', 'wonen/kerst'], titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten. Van €10 tot €24.',
       intro: 'Met Kerst geef je vaak aan meer mensen tegelijk. Dan is het fijn als een cadeau niet te duur is, maar wel echt leuk om te krijgen. Deze cadeaus kosten allemaal minder dan 25 euro.',
       delen: [
-        { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee en chocolade in een mooie verpakking. Altijd goed, voor iedereen.',
-          ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000251768734', 'bol-9300000241393562'] },
+        { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee, chocolade of truffelsaus in een mooie verpakking. Altijd goed, voor iedereen.',
+          ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000251768734', 'bol-9300000241393562', 'bol-9300000250399375'] },
         { kop: 'Gezellig in huis', tekst: 'Lichtjes, een kandelaar of kerstbekers: cadeaus waar je de hele decembermaand wat aan hebt.',
           ids: ['bol-9300000229498501', 'dkam-13500706be', 'bol-9300000182787559', 'bol-9300000238623285'] },
         { kop: 'Samen aan tafel', tekst: 'Een puzzel of spel voor de dagen tussen Kerst en Oud en Nieuw.',
@@ -6478,8 +6478,8 @@
       delen: [
         { kop: 'Klein bedankje (tot €15)', tekst: 'Voor de collega die je iets wilt geven, zonder dat het gek wordt. Klein, maar ze gebruiken het echt.',
           ids: ['hema-8eff9a5ada', 'bol-9300000338660274', 'dk-00025723', 'bol-9300000256554614'] },
-        { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan of een fijne geur: daar heeft iemand de hele winter plezier van.',
-          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9300000130428935', 'dvzn-562225'] },
+        { kop: 'Iets moois voor op het bureau of thuis (€15 tot €25)', tekst: 'Een goede pen, een plantje dat bijna niet dood kan, een fijne geur of iets lekkers voor in de keuken: daar heeft iemand de hele winter plezier van.',
+          ids: ['bol-9300000023740845', 'dvzn-172862', 'bol-9300000130428935', 'dvzn-562225', 'bol-9300000250399375'] },
         { kop: 'Met het hele team (€25 en meer)', tekst: 'Als je met z’n allen iets geeft, bijvoorbeeld aan de baas of aan iemand die weggaat: een verwenset of iets van een topmerk.',
           ids: ['bol-9300000242918333', 'bol-9300000244887994', 'bol-9300000225803811', 'bol-9300000021869451'] }
       ],
