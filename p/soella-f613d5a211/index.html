@@ -27,7 +27,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=104493390898302" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=93576583425915" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=30913170541479", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=147125539046826", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -219,9 +219,9 @@
   <script>window.LK_DETAILS_DEEL={"soella-f613d5a211":{"url":"https://partner.soellaart.nl/c?c=35735&m=2042236&a=516846&r=&u=https%3A%2F%2Fwww.soellaart.nl%2Fwaiter-zakmes-rood-159399-0.html%3Futm_campaign%3Dalgemeen%26utm_content%3D7611160000064%26utm_source%3Dtradetracker%26utm_medium%3Daffiliates%26utm_term%3D","winkelUrl":"https://www.soellaart.nl/waiter-zakmes-rood-159399-0.html","subVast":true,"gecontroleerd":"2026-11-21","herkomst":"erbij-messen","advies":{"voor":"Wie graag op de camping of bij een borrel een fles opentrekt.","niet":"Het voor iemand onder de 18 is.","alt":["soella-e86097f404","yoursu-c97a20b2a9"],"meer":[["Cadeau voor een man","/gids/cadeau-voor-man/"],["Kerstcadeaus","/c/cadeaus/kerst/"]]},"waarom":"Klein Zwitsers zakmes met flesopener en kurkentrekker. Handig op de camping en bij een borrel."}};</script>
   <script src="assets/js/data.js?v=270658874710233"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=111802525743477"></script>
-  <script src="assets/js/straat.js?v=192822479734537"></script>
-  <script src="assets/js/app.js?v=104493390898302"></script>
+  <script src="assets/js/gedeeld.js?v=186899647837128"></script>
+  <script src="assets/js/straat.js?v=273182225302029"></script>
+  <script src="assets/js/app.js?v=93576583425915"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

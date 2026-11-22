@@ -28,7 +28,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=104493390898302" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=93576583425915" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
@@ -42,7 +42,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=30913170541479", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=147125539046826", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -220,9 +220,9 @@
   <script>window.LK_DETAILS_DEEL={"massa-995c05e41b":{"url":"https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fjumbo-hitster-celebration.html%3Fchannable%3D003a25736b7500313531343831a3%26cl2%3Dpremium%26cl3%3Dspeelgoed%26cl4%3D%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D151481","winkelUrl":"https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fjumbo-hitster-celebration.html%3Fchannable%3D003a25736b7500313531343831a3%26cl2%3Dpremium%26cl3%3Dspeelgoed%26cl4%3D%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D151481","subVast":true,"gecontroleerd":"2026-11-21","herkomst":"piloot","advies":{"voor":"Feestjes en verjaardagen.","niet":"Er al deze editie in de kast ligt.","alt":["cl-exploding","cl-uno"],"meer":[["Cadeau voor een vrouw","/gids/cadeau-voor-vrouw/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"Hitster Celebration van Jumbo: de feesteditie van het muziekspel, in een blik."}};</script>
   <script src="assets/js/data.js?v=270658874710233"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=111802525743477"></script>
-  <script src="assets/js/straat.js?v=192822479734537"></script>
-  <script src="assets/js/app.js?v=104493390898302"></script>
+  <script src="assets/js/gedeeld.js?v=186899647837128"></script>
+  <script src="assets/js/straat.js?v=273182225302029"></script>
+  <script src="assets/js/app.js?v=93576583425915"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

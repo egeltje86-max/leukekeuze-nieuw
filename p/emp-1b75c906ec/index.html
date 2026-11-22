@@ -27,7 +27,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=104493390898302" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=93576583425915" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=30913170541479", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=147125539046826", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -219,9 +219,9 @@
   <script>window.LK_DETAILS_DEEL={"emp-1b75c906ec":{"url":"https://www.awin1.com/pclick.php?p=43561701727&a=3110079&m=39930","winkelUrl":"https://www.awin1.com/pclick.php?p=43561701727&a=3110079&m=39930","subVast":true,"gecontroleerd":"2026-11-21","wil":65,"advies":{"voor":"Pokémon-fans die een eigen horloge willen.","niet":"Je een smartwatch zoekt.","alt":["nedg-c1af4fbe3c","emp-7d9572a67b"],"meer":[["Cadeau voor een kind van 6 jaar","/gids/cadeau-kind-6-jaar/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"Een horloge met Eevee en Pikachu in een Pokémon-doosje. De kast is ongeveer 3,4 cm en de band past om een pols van ongeveer 17 tot 22 cm."}};</script>
   <script src="assets/js/data.js?v=270658874710233"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=111802525743477"></script>
-  <script src="assets/js/straat.js?v=192822479734537"></script>
-  <script src="assets/js/app.js?v=104493390898302"></script>
+  <script src="assets/js/gedeeld.js?v=186899647837128"></script>
+  <script src="assets/js/straat.js?v=273182225302029"></script>
+  <script src="assets/js/app.js?v=93576583425915"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

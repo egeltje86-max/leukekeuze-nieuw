@@ -27,7 +27,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=104493390898302" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=93576583425915" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
@@ -41,7 +41,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=30913170541479", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=147125539046826", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -219,9 +219,9 @@
   <script>window.LK_DETAILS_DEEL={"amz-b0h6hy6473":{"url":"https://www.amazon.nl/dp/B0H6HY6473?tag=leukekeuze-21","winkelUrl":"https://www.amazon.nl/dp/B0H6HY6473","gecontroleerd":"2026-10-25","subVast":true,"wil":80,"advies":{"voor":"Vrouwen en meiden die van make-up en verzorging houden.","niet":"Ze vaste merken heeft waar ze niet van afwijkt.","alt":["parfum-45dbbae7b4","parfum-7e28f46e8a"],"meer":[["Cadeau voor een vrouw","/gids/cadeau-voor-vrouw/"],["Kerstcadeaus","/c/cadeaus/kerst/"]]},"waarom":"24 make-up- en beautyverrassingen om naar kerst toe te tellen. Leuk voor make-upliefhebbers."}};</script>
   <script src="assets/js/data.js?v=270658874710233"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=111802525743477"></script>
-  <script src="assets/js/straat.js?v=192822479734537"></script>
-  <script src="assets/js/app.js?v=104493390898302"></script>
+  <script src="assets/js/gedeeld.js?v=186899647837128"></script>
+  <script src="assets/js/straat.js?v=273182225302029"></script>
+  <script src="assets/js/app.js?v=93576583425915"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

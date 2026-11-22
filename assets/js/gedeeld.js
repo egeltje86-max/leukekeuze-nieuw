@@ -41,10 +41,19 @@
     o.map = function (fn, t) { O.alles = (O.alles || 0) + 1; return Array.prototype.map.call(z, fn, t); };
     return o;
   }
-  function zichtbaar() {
+  /* STIL (22-11-2026, Marius over 46 extra Tamagotchi's: 'ze moeten allemaal te koop zijn maar niet allemaal te zien, anders wordt de site zo vol'):
+     een product met p.stil = 1 is gewoon te koop (eigen productpagina, winkelknop) en te vinden met de zoekbalk, het lijstje en het verlanglijstje,
+     maar staat niet in de lijsten (afdelingen, Voor wie, gelegenheden, collecties, straat, kieshulp). zichtbaar(true) = met de stille erbij.
+     Alles weer overal: window.LK_STIL_OOK = true. */
+  var metStilCache = null;
+  function zichtbaar(metStil) {
     var l = producten();
-    if (!zichtbaarCache || zichtbaarBron !== l) { zichtbaarBron = l; zichtbaarCache = l.filter(function (p) { return p.status === 'goedgekeurd'; }); }
-    return window.LK_OPNAME ? opname(zichtbaarCache) : zichtbaarCache;
+    if (!zichtbaarCache || zichtbaarBron !== l) {
+      zichtbaarBron = l; metStilCache = l.filter(function (p) { return p.status === 'goedgekeurd'; });
+      zichtbaarCache = window.LK_STIL_OOK === true ? metStilCache : metStilCache.filter(function (p) { return !p.stil; });
+    }
+    var z = metStil ? metStilCache : zichtbaarCache;
+    return window.LK_OPNAME ? opname(z) : z;
   }
   var vindKaart = null, vindBron = null;
   function vind(id) {

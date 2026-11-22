@@ -3580,7 +3580,7 @@
   function vocab() {
     if (VOC) return VOC;
     var n = {}, kl = {}, per = {};
-    LK.zichtbaar().forEach(function (p) {
+    LK.zichtbaar(true).forEach(function (p) { /* STIL: de zoekbalk vindt ook de stille producten */
       var b = zoekBoom(p), gezien = {};
       vouw(p.titel + ' ' + (p.merk || '') + ' ' + b.vak + ' ' + b.groep).split(/[^a-z0-9]+/).forEach(function (x) {
         if (x.length < 3 || /^\d/.test(x)) return; x = stam(x); if (gezien[x]) return; gezien[x] = 1; n[x] = (n[x] || 0) + 1;
@@ -3631,7 +3631,7 @@
   }
   function gewoonWoord(w) { return w.indexOf('|') === -1 && w.indexOf(' ') === -1; }
   function zoekLijst(woorden, prijs) {
-    var basis = LK.zichtbaar().filter(function (p) { return binnenPrijs(p, prijs); });
+    var basis = LK.zichtbaar(true).filter(function (p) { return binnenPrijs(p, prijs); }); /* STIL: zoeken vindt alles wat te koop is */
     if (!drankGevraagd(woorden.join(' '))) basis = geenDrank(basis); /* 15-11-2026: drank alleen als het zoekwoord erom vraagt ('whisky', 'champagne') */
     var lijst = basis.filter(function (p) { var t = zoekTekstV(p); return woorden.every(function (w) { return bevatEen(t, w); }); });
     var en = function (ww) { return basis.filter(function (p) { var t = zoekTekstV(p); return ww.every(function (w) { return bevatEen(t, w); }); }); };
@@ -4585,6 +4585,7 @@
   /* 17-11-2026: de Amazon Storefront (ideeënlijsten), met partnercode. Gebruikt op /tiktok, in het menu en op de homepage. */
   var AMZ_SHOP = 'https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21';
   var TIKTOK_REELS = [
+    { datum: '22 november', kop: 'De Tamagotchi wordt 30!', tekst: "Op 23 november 1996 kwam het eerste Tamagotchi-eitje uit in Japan. Hij is er nog steeds: de Original van toen, de Connection die contact maakt met die van een vriend of vriendin, de nieuwe Paradise met een zoomknop, Tamagotchi's voor fans van BTS en dino's, en knuffels en figuurtjes vanaf € 9,99.", ids: ['bol-9300000407615426', 'nedg-c987c4fbaa', 'nedg-80d4ae9d98', 'nedg-3ba95cb5ba', 'nedg-577c5da1d2', 'nedg-1086f9c88d'], naar: '/zoek?q=tamagotchi', naarTekst: "Alle Tamagotchi's bekijken" },
     { datum: '21 november', kop: 'Welterusten: 6 cadeaus voor in bed', tekst: 'Alles onder € 20: maan en sterren die oplichten op het plafond, een slaapmasker met een blauwe lucht, een warmtekussen in de vorm van een bassethond, een maanlamp die ook de lucht bevochtigt, een boekwinkeltje om te bouwen met een lampje erin en Bob de Minion als nachtlampje.', ids: ['hobbym-edeb21f133', 'cl-wolk-slaapmasker', 'dvzn-2a6f553405', 'myzenf-3d83dcc6e1', 'grotek-6da0c12381', 'dvzn-bb1222d1cd'], naar: '/c/wonen/verlichting', naarTekst: 'Meer lampjes en sfeerlicht' },
     { datum: '21 november', kop: 'Dit wil elke fan: Pokémon, Potter en lampjes', tekst: 'Zeven cadeaus van € 14,99 tot € 89,95: een wafelijzer dat wafels in de vorm van Pikachu bakt, een Hedwig-lampje, een boek dat licht geeft als je hem openklapt, een Snorlax-mok, een lichtsnoer uit de toverstaf van Harry, neon van echt glas en een knuffel Charmander.', ids: ['nedg-ed5180d3f3', 'dvzn-746890', 'dvzn-614881', 'nedg-76649e7ebb', 'cadeau-fbccab6a9f', 'fiftie-84e03e3983', 'nedg-3c15e2841c'], naar: '/c/spellen-puzzels/pokemon-verzamelkaarten', naarTekst: 'Naar de hele Pokémon-hoek' },
     { datum: '21 november', kop: 'Dit willen ze écht: 6 luxe toppers', tekst: 'Van € 79 tot € 299: zelf rijden in een Lamborghini, een Dyson Supersonic, AirPods 5, de RB20 van Red Bull Racing in LEGO, een helikoptervlucht over Nederland en een grote speaker die tegen water kan.', ids: ['dk-9393c6d57b', 'cl-dyson-supersonic', 'cl-airpods5', 'lego-42206', 'dk-904317b4e5', 'tf-107001609'], naar: '/collectie/toppers-van-nu', naarTekst: 'Meer toppers van nu bekijken' },
@@ -4622,7 +4623,7 @@
   function tiktokPagina() {
     zetTitel('Gezien op TikTok: alle cadeaus uit onze filmpjes');
     window.LK_SEO = 'Alle cadeaus uit de filmpjes van LeukeKeuze op TikTok en Instagram, per filmpje op een rij, het nieuwste bovenaan. Met prijs en een knop naar de winkel.';
-    var z = geenDrank(LK.zichtbaar()), opZ = {}; z.forEach(function (p) { opZ[p.id] = p; });
+    var z = geenDrank(LK.zichtbaar(true)) /* STIL: een reel toont ook stille producten */, opZ = {}; z.forEach(function (p) { opZ[p.id] = p; });
     var rijen = TIKTOK_REELS.map(function (r, i) {
       var l = r.ids.map(function (id) { return opZ[id]; }).filter(Boolean);
       if (!l.length) return '';
@@ -4775,7 +4776,7 @@
   function lwKand(zoek) {
     if (zoek) {
       var w = zoek.toLowerCase().split(/[^a-z0-9à-ÿ]+/).filter(function (x) { return x.length > 1; }); if (!w.length) return [];
-      return LK.zichtbaar().filter(function (p) { if (!lwMag(p)) return false; var t = ((p.titel || '') + ' ' + (p.merk || '')).toLowerCase(); return w.every(function (x) { return t.indexOf(x) !== -1; }); }).slice(0, 8);
+      return LK.zichtbaar(true).filter(function (p) { if (!lwMag(p)) return false; var t = ((p.titel || '') + ' ' + (p.merk || '')).toLowerCase(); return w.every(function (x) { return t.indexOf(x) !== -1; }); }).slice(0, 8);
     }
     var gezien = {}, uit = [];
     ((LK.favorieten() || []).map(function (id) { return LK.vind(id); }).filter(lwMag)).concat(lootTips(LW.budget, LW.moment, LW.naam + '-wens')).forEach(function (p) { if (!gezien[p.id] && uit.length < 10) { gezien[p.id] = 1; uit.push(p); } });
@@ -5354,7 +5355,7 @@
   function favorieten() {
     zetTitel('Mijn lijstje');
     var ids = LK.favorieten();
-    var lijst = LK.zichtbaar().filter(function (p) { return ids.indexOf(p.id) !== -1; });
+    var lijst = LK.zichtbaar(true).filter(function (p) { return ids.indexOf(p.id) !== -1; });
     var naam = ''; try { naam = localStorage.getItem('lk-lijst-naam') || ''; } catch (e) {}
     var deel = !lijst.length ? '' :
       '<div class="lijst-deel"><div class="lijst-deel-tekst"><strong>Deel je verlanglijstje</strong>' +

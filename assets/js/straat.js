@@ -8,7 +8,7 @@
   'use strict';
   var K = null, esc, euro;
   function kernMaken() {
-    var ALLES = (window.LK_PRODUCTEN || []).filter(function (p) { return p.status === 'goedgekeurd' && p.beeld && !p.verborgen; });
+    var ALLES = (window.LK_PRODUCTEN || []).filter(function (p) { return p.status === 'goedgekeurd' && p.beeld && !p.verborgen && (!p.stil || window.LK_STIL_OOK === true); }); /* STIL (22-11-2026): stille producten staan niet in de straat */
     var PER = {}; ALLES.forEach(function (p) { PER[p.id] = p; });
     var TOP = Object.assign({}, window.LK_TOPKEUZE || {}, window.LK_TOPVAST || {});
     return {
