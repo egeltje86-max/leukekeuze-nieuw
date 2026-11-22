@@ -1,0 +1,8 @@
+/* Met de hand bij de donkere versie (scripts/donker/maak.js plakt dit onderaan assets/css/donker.css). */
+html.donker .sh{color-scheme:dark}
+/* Muntjes met bedragen: lichte kleur met donkere letters, net als overdag */
+html.donker .sh .sh-munt{color:#141A2A}
+html.donker .sh .sh-munt small{color:#4F556A}
+/* Tekst in de kleur van de winkel: in het donker een lichtere tint van die kleur */
+html.donker .sh .sh-binnen .gang-kop small,html.donker .sh .top-etalage .gang-kop small,html.donker .sh .sh-binnen .naar,html.donker .sh .top-etalage .naar,
+html.donker .sh .gids-k .gk-l,html.donker .sh .binnen-kop .in-winkel{color:color-mix(in srgb,var(--k) 45%,#fff)}

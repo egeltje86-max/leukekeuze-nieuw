@@ -4226,6 +4226,40 @@
      Komen alle 3 van Amazon, dan gaan ze met één knop in het Amazon-winkelmandje; anders heeft elk cadeau zijn eigen knop.
      Op deze pagina verdwijnt de onderbalk (focusmodus), zodat hij niet over het formulier of het gedicht valt. */
   var RIJM_URL = 'https://oivhdejsvmsudfrulwsn.supabase.co/functions/v1/sint-rijm';
+  /* ===== COMBI en DONKER (22-11-2026, voorbeeld voor Marius, alleen met ?proef=combi; zie sjabloon.html) =====
+     Marius: 'dat oude moest wel behouden blijven en er moeten donkere tinten terug komen'; 'het mag meer een combinatie zijn van de 2'; 'het moet een dynamische pagina worden'.
+     Boven de straat weer 'Kies wat je zoekt' (cadeau of product), onder 'Voor wie zoek je?' de balken lootjes en rijmmachine.
+     Donker: volgt de instelling van de telefoon of computer (Automatisch), of de keuze in het menu (Licht, Donker); onthouden in localStorage 'lkthema'. */
+  var COMBI = /(^| )combi( |$)/.test(document.documentElement.className);
+  if (COMBI) {
+    window.LK_STRAAT_BOVEN = function () { return '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; };
+    window.LK_STRAAT_NA_KIES = function () { var r = rijmBlok('home'); return r ? '<div class="cb-rijm">' + r + '</div>' : ''; };
+  }
+  function themaKeuze() { try { return localStorage.getItem('lkthema') || 'auto'; } catch (e) { return 'auto'; } }
+  var MQ_DONKER = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function themaZetten() {
+    if (!COMBI) return;
+    var k = themaKeuze(), donker = k === 'donker' || (k === 'auto' && !!(MQ_DONKER && MQ_DONKER.matches)), h = document.documentElement;
+    if (donker && !document.getElementById('lk-donker')) {
+      var l = document.createElement('link'); l.rel = 'stylesheet'; l.id = 'lk-donker';
+      var mt = document.querySelector('meta[name="lk-donker"]'); l.href = '/' + (mt ? mt.content : 'assets/css/donker.css');
+      l.onload = function () { h.classList.add('donker'); }; document.head.appendChild(l);
+    } else h.classList.toggle('donker', donker);
+    var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', donker ? '#0B1120' : '#0A1020');
+    [].forEach.call(document.querySelectorAll('[data-thema]'), function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-thema') === k ? 'true' : 'false'); });
+  }
+  if (COMBI && MQ_DONKER) { var mqWissel = function () { if (themaKeuze() === 'auto') themaZetten(); }; if (MQ_DONKER.addEventListener) MQ_DONKER.addEventListener('change', mqWissel); else if (MQ_DONKER.addListener) MQ_DONKER.addListener(mqWissel); }
+  if (COMBI) document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-thema]'); if (!b) return;
+    try { localStorage.setItem('lkthema', b.getAttribute('data-thema')); } catch (x) {}
+    themaZetten(); try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'weergave/' + b.getAttribute('data-thema'), title: 'Weergave', event: true }); } catch (x2) {}
+  });
+  function themaKnoppen() {
+    if (!COMBI) return '';
+    var k = themaKeuze(), knop = function (w, naam, uitleg) { return '<button type="button" data-thema="' + w + '" aria-pressed="' + (k === w ? 'true' : 'false') + '"><b>' + naam + '</b><small>' + uitleg + '</small></button>'; };
+    return '<div class="lade-label">Weergave</div><div class="lade-thema" role="group" aria-label="Weergave">' +
+      knop('auto', 'Automatisch', 'zoals je telefoon') + knop('licht', 'Licht', 'altijd licht') + knop('donker', 'Donker', 'altijd donker') + '</div>';
+  }
   var RIJM_STIJL = '<style>' +
     '.rijm-z{--rz-navy:#0b1225;--rz-gold:#e4b75a;--rz-goldl:#f7d77f;--rz-paper:#fffdf8;--rz-ink:#172034;--rz-muted:#4a5163;--rz-burg:#8a1530;--rz-line:#e9dbc3;--rz-shadow:0 16px 42px rgba(20,20,35,.12);color:var(--rz-ink)}' +
     '.rijm-z .rz-eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7d5418}' +
@@ -7380,7 +7414,7 @@
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
       '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
       '<div class="lade-label">Cadeau-ideeën</div><div class="lade-links">' + collectiesVan('ideeen').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
-      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>';
+      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
   }
   /* Collecties in twee groepen: acties (kortingen) en cadeau-ideeën. Verborgen collecties blijven bereikbaar via hun adres. */
   var COLLECTIE_ACTIES = ['black-friday', 'aanbiedingen', 'kortingscodes'];

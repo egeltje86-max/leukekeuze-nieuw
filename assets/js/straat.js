@@ -562,10 +562,12 @@
     var naam = st.pr.wie ? 'De straat ' + st.pr.tekst : 'De Cadeaustraat';
     if (TITEL0) document.title = st.pr.wie ? 'Cadeaus ' + st.pr.tekst + ' – LeukeKeuze' : TITEL0;
     var keuze = [st.pr.wie ? st.pr.knop : '', tekstBedrag(st.max)].filter(Boolean).join(' · ');
-    var h = '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
+    /* COMBI (22-11-2026, voorbeeld): app.js kan boven de straat en onder de keuze voor wie iets zetten (de keuze cadeau of product, lootjes en rijmmachine) */
+    var boven = typeof window.LK_STRAAT_BOVEN === 'function' ? window.LK_STRAAT_BOVEN() : '', naKies = typeof window.LK_STRAAT_NA_KIES === 'function' ? window.LK_STRAAT_NA_KIES() : '';
+    var h = boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
       '<img src="' + NB + 'straat-hero-telefoon.webp" alt="" fetchpriority="high"></picture>' +
       '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
-      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st);
+      '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st) + naKies;
     h += '<section class="straat-kop" id="straat-kop"><h2>' + esc(st.pr.wie ? naam : 'Alle winkels') + (st.max ? ' <span>' + esc(tekstBedrag(st.max)) + '</span>' : '') + '</h2>' +
       '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
       (keuze ? ' · <button type="button" class="link" data-sh-naar-kies>andere keuze</button> · <a href="#straat" data-sh-kies>alles weer tonen</a>' : '') + '</p></section>';
@@ -989,10 +991,12 @@
      html.sh-thuis staat er al vóór de app start (stukje in de kop van sjabloon.html) en volgt daarna of de straat in #app staat. */
   function kopZetten() {
     var thuis = !!document.querySelector('#app > .sh');
-    document.documentElement.classList.toggle('sh-thuis', thuis);
+    /* COMBI (22-11-2026, voorbeeld): de kop zoals hij was, dus geen lichte straatkop (zie sjabloon.html) */
+    var combi = /(^| )combi( |$)/.test(document.documentElement.className);
+    document.documentElement.classList.toggle('sh-thuis', thuis && !combi);
     /* Alleen voor bezoekers met de nieuwe opzet (wz-v, gezet in de kop van sjabloon.html); zoekmachines houden de kop zoals hij was */
     var mens = /(^| )wz-v( |$)/.test(document.documentElement.className);
-    document.documentElement.classList.toggle('sh-kop', mens && winkelstijl());
+    document.documentElement.classList.toggle('sh-kop', mens && winkelstijl() && !combi);
     if (thuis) veegPijlen();
   }
   /* Afdelingen opzij vegen: pijltje rechts zolang er nog meer staat */

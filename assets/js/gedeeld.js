@@ -314,6 +314,22 @@
   var start = Date.UTC(jaar, 9, 1);          /* vanaf 1 oktober tonen */
   if (nu < start || nu > Date.UTC(jaar, 11, 26)) return;
   var thema, n, tekst, link;
+  /* COMBI (22-11-2026, voorbeeld; Marius: 'ik mis ook nog zoveel dagen tot Black Friday, Sinterklaas en kerst'): drie aftellers naast elkaar,
+     elk in zijn eigen donkere kleur en elk een link. Een feest dat voorbij is valt weg. */
+  if (/(^| )combi( |$)/.test(document.documentElement.className)) {
+    var feesten = [[Date.UTC(jaar, 10, 27), 'bf', 'Black Friday', '/collectie/black-friday', Date.UTC(jaar, 10, 20)],
+      [sint, 'sint', 'Pakjesavond', '/c/cadeaus/sinterklaas', start], [kerst, 'kerst', 'Kerst', '/c/cadeaus/kerst', start]].filter(function (f) { return nu >= f[4] && nu <= f[0]; });
+    if (!feesten.length) return;
+    var a3 = document.createElement('div'); a3.className = 'aftel aftel3'; a3.setAttribute('data-aftel', ''); a3.setAttribute('role', 'navigation'); a3.setAttribute('aria-label', 'Aftellen');
+    a3.innerHTML = feesten.map(function (f) {
+      var d = Math.round((f[0] - nu) / dag);
+      return '<a class="a3 a3-' + f[1] + '" href="' + f[3] + '"><span class="a3-r">' + (d === 0 ? '<small>Vandaag is het</small>' : '<span class="a3-getal">' + d + '</span><small>' + (d === 1 ? 'dag tot' : 'dagen tot') + '</small>') +
+        '</span><b>' + f[2] + '</b></a>';
+    }).join('');
+    el.parentNode.replaceChild(a3, el);
+    document.documentElement.classList.add('met-aftel');
+    return;
+  }
   /* Stap 1 indeling (6-11-2026, GO Marius): van 20 t/m 27 november is Black Friday de boodschap (27-11-2026). Daarna weer Sinterklaas, vanaf 6 december Kerst. */
   var bf = Date.UTC(jaar, 10, 27), bfStart = Date.UTC(jaar, 10, 20);
   if (nu >= bfStart && nu <= bf) {

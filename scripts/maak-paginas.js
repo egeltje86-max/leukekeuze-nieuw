@@ -25,7 +25,7 @@ function versieVan(rel) {
   return BESTANDS_VERSIE[rel];
 }
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
-  .replace(/(assets\/(?:css\/(?:stijl|licht|straat)\.css|js\/(?:data|producten-lean|gedeeld|straat|app|topkeuze|teksten)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
+  .replace(/(assets\/(?:css\/(?:stijl|licht|straat|donker)\.css|js\/(?:data|producten-lean|gedeeld|straat|app|topkeuze|teksten)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 let SJ_UIT = ''; /* het sjabloon met de icoontjes van kop, menu en onderbalk er al in (zie verderop) */
 /* Veiligheidsslot (1-11-2026): staat er nog een half samengevoegd stuk (<<<<<<< / >>>>>>>) in het sjabloon of in de bronbestanden,
