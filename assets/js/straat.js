@@ -564,8 +564,10 @@
      direct als producten van 4 en daaronder misschien nog meer: kijk in deze winkels'.
      Onder de etalage staan de eerste vijf open winkels als open kraampje: luifel in de kleur van de winkel, wat voor winkel het is en vier
      cadeaus (elk uit een andere afdeling van die winkel), 'Laat er nog 4 zien' (tot 12) en 'Naar binnen'. Geen cadeau twee keer:
-     niet uit de etalage en niet uit een kraampje erboven. Daaronder 'Kijk ook in deze winkels' met de gevels van de rest. */
-  var KRAAM_AANTAL = 5, KRAAM = [];
+     niet uit de etalage en niet uit een kraampje erboven. Daaronder 'Kijk ook in deze winkels' met de gevels van de rest.
+     16:19 (Marius: 'we zouden het zo doen dat ze niet meer hoeven te klikken en we iedere categorie zouden zien als je naar beneden scrolt'):
+     alle open winkels staan open (niet alleen de eerste vijf); onderaan alleen nog het Cadeauloket, de Kiosk en winkels met te weinig cadeaus. */
+  var KRAAM_AANTAL = Infinity, KRAAM = [];
   function kraamAan() {
     if (window.LK_KRAAM === true) return true;
     if (window.LK_KRAAM === false) return false;
