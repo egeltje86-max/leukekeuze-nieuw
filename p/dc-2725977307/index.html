@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="LeukeKeuze – de leukste cadeautips">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://leukekeuze.nl/images/producten/dc-2725977307.webp">
-  <meta name="theme-color" content="#0A1020">
+  <meta name="theme-color" content="#1F2B48">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/assets/logo-icoon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -28,11 +28,11 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=91331626408008" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=222397405780538" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
-  <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
-  <link rel="stylesheet" href="assets/css/straat.css?v=41588291738725">
+  <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
+  <link rel="stylesheet" href="assets/css/licht.css?v=240031266723681">
+  <link rel="stylesheet" href="assets/css/straat.css?v=213641597469023">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -42,7 +42,7 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>(function () { var s = "assets/js/producten-lean.js?v=147125539046826", t = "assets/js/topkeuze.js?v=219353231496703";
+  <script>(function () { var s = "assets/js/producten-lean.js?v=247489551166166", t = "assets/js/topkeuze.js?v=219353231496703";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -74,7 +74,7 @@
        Eerst alleen met ?proef=combi, nu voor iedereen (zie hieronder): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
        en een donkere versie die de instelling van de telefoon of computer volgt (keuze in het menu: Automatisch, Licht of Donker; ook ?thema=donker|licht|auto).
        Het donkere bestand laadt alleen als de donkere versie aan staat. -->
-  <meta name="lk-donker" content="assets/css/donker.css?v=262074261072294">
+  <meta name="lk-donker" content="assets/css/donker.css?v=228924391338421">
   <!-- LIVE voor iedereen sinds 22-11-2026 09:18 (Marius: 'Dit is fantastisch go'). Zelf de lichte kop van 21-11 zien: ?proef=combi-uit (blijft onthouden; weer aan: ?proef=combi).
        Helemaal uit: window.LK_COMBI = false. -->
   <script>(function () { try { var h = document.documentElement, q = location.search, ls = null, uit = false;
@@ -87,7 +87,7 @@
     try { if (t) ls.setItem('lkthema', t[1]); k = ls.getItem('lkthema') || k; } catch (e) {}
     if (k === 'donker' || (k === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
       h.className += ' donker'; document.write('<link rel="stylesheet" id="lk-donker" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-donker"]').content) + '>');
-      var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', '#0B1120'); }
+      var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', '#141C2F'); }
   } catch (e) {} })();</script>
   <!-- VROEG-NOVA (13-11-2026, grote keuring): de klassen van de huisstijl (NOVA-001 t/m 009) staan nu al op de pagina voordat app.js binnen is.
        Eerder zette app.js ze pas: op een trage telefoon zag je de pagina dan eerst ongeveer een seconde in de oude stijl, en daarna versprong alles. Zelfde schakelaars als in app.js. -->
@@ -241,7 +241,7 @@
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=159967515905872"></script>
   <script src="assets/js/straat.js?v=271835745966948"></script>
-  <script src="assets/js/app.js?v=91331626408008"></script>
+  <script src="assets/js/app.js?v=222397405780538"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
