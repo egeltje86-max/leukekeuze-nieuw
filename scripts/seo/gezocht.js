@@ -192,6 +192,13 @@ for (const sl of Object.keys(pag).sort()) {
   else nGeen++;
 }
 console.log('meest gezocht: ' + nPag + " pagina's met een keuze, " + nGeen + ' zonder (te weinig zoekvolume)');
+/* 22-11-2026: per product de gewogen vraag (zoekvolume per maand, zelfde weging, in zijn eigen hoek), voor scripts/top/belang.js.
+   Niet in git (keurkamer/data/vraag.json): alleen de volgorde die eruit komt staat in picks.json. */
+{ const VR = {};
+  for (const p of L) { const S = sleutels[p.id]; let b = 0;
+    for (const k of S.ks.keys()) { if (!VOL[k]) continue; let sc = VOL[k] * gewicht(k, S.m, true, S.ks.get(k), p.afd); if (/\b(uitbreiding|expansion|navulling|refill)\b/i.test(p.titel)) sc *= 0.3; if (sc > b) b = sc; }
+    if (b >= 50) VR[p.id] = Math.round(b); }
+  fs.writeFileSync(path.join(ROOT, 'keurkamer/data/vraag.json'), JSON.stringify(VR)); console.log('vraag per product: ' + Object.keys(VR).length); }
 if (DROOG) process.exit(0);
 
 const f = path.join(ROOT, 'assets/js/topkeuze.js');
