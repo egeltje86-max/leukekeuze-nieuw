@@ -6,3 +6,5 @@ html.donker .sh .sh-munt small{color:#4F556A}
 /* Tekst in de kleur van de winkel: in het donker een lichtere tint van die kleur */
 html.donker .sh .sh-binnen .gang-kop small,html.donker .sh .top-etalage .gang-kop small,html.donker .sh .sh-binnen .naar,html.donker .sh .top-etalage .naar,
 html.donker .sh .gids-k .gk-l,html.donker .sh .binnen-kop .in-winkel{color:color-mix(in srgb,var(--k) 45%,#fff)}
+/* Keuze licht/donker in het menu: wat aan staat krijgt een gouden rand */
+html.donker .lade-thema button[aria-pressed="true"]{border-color:#D9A848;box-shadow:0 0 0 1px #D9A848 inset}

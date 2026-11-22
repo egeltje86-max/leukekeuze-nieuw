@@ -328,9 +328,9 @@ html.combi .sh .sh-meer{display:flex;width:100%;max-width:420px;margin:0 auto;ju
 html.combi .sh .sh-meer:hover{background:#141A2A}
 html.combi .sh .gang-voet{flex-direction:column;align-items:stretch}
 /* Keuze licht/donker in het menu */
-.lade-thema{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 16px 18px}
-.lade-thema button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;border-radius:14px;border:1px solid #E5D7BE;background:#FFFCF7;color:#141A2A;font-family:Manrope,system-ui,sans-serif;cursor:pointer}
-.lade-thema button b{font-size:14.5px;font-weight:800}
+.lade-thema{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 0 18px}
+.lade-thema button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:56px;padding:6px 4px;border-radius:14px;border:1px solid #E5D7BE;background:#FFFCF7;color:#141A2A;font-family:Manrope,system-ui,sans-serif;text-align:center;cursor:pointer}
+.lade-thema button b{font-size:13.5px;font-weight:800;overflow-wrap:anywhere}
 .lade-thema button small{font-size:11.5px;color:#5F667A}
 .lade-thema button[aria-pressed="true"]{background:#0A1020;border-color:#0A1020;color:#fff}
 .lade-thema button[aria-pressed="true"] small{color:#E5D7BE}

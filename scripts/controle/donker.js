@@ -20,13 +20,13 @@ const sj = fs.readFileSync(path.join(__dirname, '..', '..', 'sjabloon.html'), 'u
       await p.goto('http://localhost:8765' + pad, { waitUntil: 'domcontentloaded' }).catch(() => {}); await p.waitForTimeout(1200);
       await p.evaluate(async () => { for (let y = 0; y < Math.min(document.body.scrollHeight, 9000); y += 700) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); } window.scrollTo(0, 0); }).catch(() => {});
       const r = await p.evaluate(() => {
-        const rgb = (s) => { const m = /rgba?\(([^)]+)\)/.exec(s); if (!m) return null; const d = m[1].split(/[\s,\/]+/).filter(Boolean).map(Number); return { r: d[0], g: d[1], b: d[2], a: d.length > 3 ? d[3] : 1 }; };
+        const rgb = (s) => { const cm = /color\(srgb ([\d.]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.]+))?\)/.exec(s); if (cm) return { r: cm[1] * 255, g: cm[2] * 255, b: cm[3] * 255, a: cm[4] ? +cm[4] : 1 }; const m = /rgba?\(([^)]+)\)/.exec(s); if (!m) return null; const d = m[1].split(/[\s,\/]+/).filter(Boolean).map(Number); return { r: d[0], g: d[1], b: d[2], a: d.length > 3 ? d[3] : 1 }; };
         const lum = (c) => { const f = (v) => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return .2126 * f(c.r) + .7152 * f(c.g) + .0722 * f(c.b); };
         const con = (x, y) => { const p = lum(x), q = lum(y); return (Math.max(p, q) + .05) / (Math.min(p, q) + .05); };
         const meng = (v, o) => ({ r: v.r * v.a + o.r * (1 - v.a), g: v.g * v.a + o.g * (1 - v.a), b: v.b * v.a + o.b * (1 - v.a), a: 1 });
         const achter = (e) => { const lagen = [];
           for (let x = e; x; x = x.parentElement) { const cs = getComputedStyle(x);
-            if (cs.backgroundImage !== 'none') { if (/url\(/.test(cs.backgroundImage) && !/gradient/.test(cs.backgroundImage)) return null; const m = cs.backgroundImage.match(/rgba?\([^)]+\)/g); if (m) { const k = rgb(m[Math.floor(m.length / 2)]); if (k && k.a > 0) { lagen.push(k); if (k.a >= 1) break; } } }
+            if (cs.backgroundImage !== 'none') { if (/url\(/.test(cs.backgroundImage) && !/gradient/.test(cs.backgroundImage)) return null; const m = cs.backgroundImage.match(/rgba?\([^)]+\)|color\(srgb[^)]+\)/g); if (m) { const k = rgb(m[Math.floor(m.length / 2)]); if (k && k.a > 0) { lagen.push(k); if (k.a >= 1) break; } } }
             const c = rgb(cs.backgroundColor); if (c && c.a > 0) { lagen.push(c); if (c.a >= 1) break; }
             if (x.tagName === 'PICTURE' || (x.querySelector && x !== e && x.firstElementChild && x.firstElementChild.tagName === 'IMG' && getComputedStyle(x.firstElementChild).position === 'absolute')) return null; }
           let basis = rgb(getComputedStyle(document.documentElement).backgroundColor) || { r: 255, g: 255, b: 255, a: 1 }; if (basis.a < 1) basis = { r: 255, g: 255, b: 255, a: 1 };
@@ -40,6 +40,8 @@ const sj = fs.readFileSync(path.join(__dirname, '..', '..', 'sjabloon.html'), 'u
           const cs = getComputedStyle(e); if (cs.visibility === 'hidden' || +cs.opacity < .3) continue;
           const rc = e.getBoundingClientRect(); if (rc.width < 4 || rc.height < 4) continue;
           if (getComputedStyle(e).webkitTextFillColor && /rgba?\(0, 0, 0, 0\)/.test(getComputedStyle(e).webkitTextFillColor)) continue; /* verloop-tekst */
+          const mx = rc.left + rc.width / 2, my = rc.top + rc.height / 2;
+          if (my > 0 && my < innerHeight && document.elementsFromPoint(mx, my).some(x => x.tagName === 'IMG' && !e.contains(x))) continue; /* tekst op een tekening of foto */
           const bg = achter(e); if (!bg) continue; const kl = rgb(cs.webkitTextFillColor && cs.webkitTextFillColor !== cs.color ? cs.webkitTextFillColor : cs.color); if (!kl || kl.a < .3) continue;
           const k = con(meng(kl, bg), bg); const groot = parseFloat(cs.fontSize) >= 18.5 || (parseFloat(cs.fontSize) >= 14 && +cs.fontWeight >= 700);
           if (k < (groot ? 2.6 : 3.2)) { let id = e.tagName.toLowerCase() + (e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).slice(0, 2).join('.') : ''); const ouder = e.parentElement; if (ouder && ouder.className && typeof ouder.className === 'string') id = '.' + ouder.className.trim().split(/\s+/)[0] + ' > ' + id;

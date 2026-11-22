@@ -1933,13 +1933,7 @@
         eigenKaart() +
 
         /* 11. Zo werkt het. */
-        '<section class="sectie" data-tel="zo-werkt-het">' +
-          '<div class="stappen klein">' +
-            '<div class="stap"><span class="nr">1</span><div><h3>Wij zoeken uit</h3><p>Alleen wat we echt goed vinden, komt op de site.</p></div></div>' +
-            '<div class="stap"><span class="nr">2</span><div><h3>Jij kiest</h3><p>Op persoon, categorie of met VONK.</p></div></div>' +
-            '<div class="stap"><span class="nr">3</span><div><h3>Je koopt bij de winkel</h3><p>Je bestelt en betaalt zoals je gewend bent. Via onze links krijgen wij soms een kleine vergoeding; jij betaalt niets extra.</p></div></div>' +
-          '</div>' +
-        '</section>' +
+        zoWerktBlok() +
       '</div>';
     if (WIJZER !== 'b') return klassiek;
     if (WINKEL) return winkelHome(); /* WINKELTJE (live 17-11-2026, GO Marius): de homepage is een cadeauwinkeltje, zie het blok WINKELTJE hierboven */
@@ -2041,6 +2035,16 @@
     '</div>';
   }
   /* Seizoensblok: de periode van vandaag bepaalt welke kaarten er staan; de eerste is groot. */
+  /* Zo werkt het: drie stappen die laten zien dat je bij de winkel zelf koopt (vertrouwen). Ook in de straat bij COMBI. */
+  function zoWerktBlok() {
+    return '<section class="sectie" data-tel="zo-werkt-het">' +
+      '<div class="stappen klein">' +
+        '<div class="stap"><span class="nr">1</span><div><h3>Wij zoeken uit</h3><p>Alleen wat we echt goed vinden, komt op de site.</p></div></div>' +
+        '<div class="stap"><span class="nr">2</span><div><h3>Jij kiest</h3><p>Op persoon, categorie of met VONK.</p></div></div>' +
+        '<div class="stap"><span class="nr">3</span><div><h3>Je koopt bij de winkel</h3><p>Je bestelt en betaalt zoals je gewend bent. Via onze links krijgen wij soms een kleine vergoeding; jij betaalt niets extra.</p></div></div>' +
+      '</div>' +
+    '</section>';
+  }
   function seizoenBlok() {
     var s = INST.seizoen; if (!s) return '';
     var d = new Date(), nu = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
@@ -4232,8 +4236,14 @@
      Donker: volgt de instelling van de telefoon of computer (Automatisch), of de keuze in het menu (Licht, Donker); onthouden in localStorage 'lkthema'. */
   var COMBI = /(^| )combi( |$)/.test(document.documentElement.className);
   if (COMBI) {
-    window.LK_STRAAT_BOVEN = function () { return '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; };
-    window.LK_STRAAT_NA_KIES = function () { var r = rijmBlok('home'); return r ? '<div class="cb-rijm">' + r + '</div>' : ''; };
+    /* alleen op de homepage; de straat voor een persoon (/voor/haar) houdt zijn eigen opzet */
+    var opHome = function (f) { return function () { return location.pathname === '/' || location.pathname === '' ? f() : ''; }; };
+    window.LK_STRAAT_BOVEN = opHome(function () { return '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; });
+    window.LK_STRAAT_NA_KIES = opHome(function () { var r = rijmBlok('home'); return (r ? '<div class="cb-rijm">' + r + '</div>' : '') + '<div class="cb-blok cb-seizoen">' + seizoenBlok() + '</div>'; });
+    /* Wat met de straat van de homepage was verdwenen en goed werkte (Marius 22-11-2026: 'blijven opletten dat er geen dingen verloren gaan die goed zijn'):
+       het blok Belevenissen met de Lamborghini-race (best verdienende cadeau), de topwinkels, de eigen kleurboeken en 'zo werkt het'. */
+    window.LK_STRAAT_NA_ETALAGE = opHome(function () { return '<div class="cb-blok">' + belevenisBlok() + '</div>'; });
+    window.LK_STRAAT_ONDER = opHome(function () { return '<div class="cb-blok">' + winkelTopBlok() + eigenKaart() + zoWerktBlok() + '</div>'; });
   }
   function themaKeuze() { try { return localStorage.getItem('lkthema') || 'auto'; } catch (e) { return 'auto'; } }
   var MQ_DONKER = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;

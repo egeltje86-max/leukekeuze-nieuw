@@ -563,7 +563,8 @@
     if (TITEL0) document.title = st.pr.wie ? 'Cadeaus ' + st.pr.tekst + ' – LeukeKeuze' : TITEL0;
     var keuze = [st.pr.wie ? st.pr.knop : '', tekstBedrag(st.max)].filter(Boolean).join(' · ');
     /* COMBI (22-11-2026, voorbeeld): app.js kan boven de straat en onder de keuze voor wie iets zetten (de keuze cadeau of product, lootjes en rijmmachine) */
-    var boven = typeof window.LK_STRAAT_BOVEN === 'function' ? window.LK_STRAAT_BOVEN() : '', naKies = typeof window.LK_STRAAT_NA_KIES === 'function' ? window.LK_STRAAT_NA_KIES() : '';
+    var haak = function (n) { return typeof window[n] === 'function' ? window[n]() : ''; };
+    var boven = haak('LK_STRAAT_BOVEN'), naKies = haak('LK_STRAAT_NA_KIES');
     var h = boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
       '<img src="' + NB + 'straat-hero-telefoon.webp" alt="" fetchpriority="high"></picture>' +
       '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
@@ -578,10 +579,12 @@
         '<div class="gang-voet">' + (st.etalage.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="top">Laat er nog ' + Math.min(PER_KEER, st.etalage.length - PER_KEER) + ' zien</button>' : '') +
         (st.pr.slug ? '<a class="naar" href="' + voorPad(st) + '">Alle cadeaus ' + esc(st.pr.tekst) + ' ›</a>' : '') + '</div></section>';
     }
+    h += haak('LK_STRAAT_NA_ETALAGE');
     h += '<div class="lampjes" aria-hidden="true"></div><h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Deze winkels hebben iets ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Loop een winkel binnen') + '</h2>';
     h += '<section class="straat" aria-label="Open winkels">' + loket(st) + st.open.map(function (x) { return gevel(x, st); }).join('') + kioskGevel(st) + '</section>';
     if (st.dicht.length) h += '<details class="dicht-blok"><summary>Rolluik dicht bij ' + st.dicht.length + (st.dicht.length === 1 ? ' winkel' : ' winkels') + ' <b><span class="toon">Toon ›</span><span class="verberg">Verberg</span></b></summary>' +
       '<section class="straat" aria-label="Gesloten winkels">' + st.dicht.map(function (x) { return gevel(x, st); }).join('') + '</section></details>';
+    h += haak('LK_STRAAT_ONDER');
     h += snel();
     return h;
   }

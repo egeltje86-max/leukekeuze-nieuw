@@ -11,6 +11,8 @@ const SITE = 'https://leukekeuze.nl';
 /* Versienummer achter css/js, zodat telefoons na elke update meteen de nieuwe versie laden (geen oude cache). */
 const VERSIE = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
 require('./splits-producten.js')(); // producten.js -> producten-lean.js + producten-details.js
+/* DONKERE VERSIE (22-11-2026): assets/css/donker.css opnieuw maken uit de stijlbestanden (scripts/donker/maak.js), vóór de versienummers. */
+try { require('./donker/maak.js'); } catch (e) { console.log('donker.css niet gemaakt: ' + e.message); }
 /* Sint-rijmmachine (7-11-2026): cadeaulijst met alle producten voor de serverfunctie 'sint-rijm' (data/rijm-catalogus.json). */
 try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'rijmmachine/maak-rijm-catalogus.js'), path.join(__dirname, '../data/rijm-catalogus.json')], { stdio: 'inherit' }); } catch (e) { console.error('rijm-catalogus niet gelukt:', e.message); }
 /* Sneller voor wie vaker komt (14-11-2026, Marius: 'de website laad traag'): het nummer achter elk bestand komt nu uit de inhoud van dat
