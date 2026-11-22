@@ -1,6 +1,6 @@
 {
  "uitleg": "Producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei niet op voorraad). Staan ze weer leverbaar in een feed, dan zet de controle ze vanzelf terug op de site. Wat met de hand op uitverkocht of afgekeurd staat, komt hier nooit in.",
- "bijgewerkt": "2026-11-21",
+ "bijgewerkt": "2026-11-22",
  "producten": {
   "bol-9200000091616642": {
    "datum": "2026-11-21",
@@ -1795,6 +1795,51 @@
    "url": "https://www.warentuin.nl/tuincentrum/?tt=17057_2041935_516846_&r=https%3A%2F%2Fwww.warentuin.nl%2Fparaplu-160led-105x66-cm-klassiek-warm-anna-s-collection",
    "winkelUrl": "https://www.warentuin.nl/paraplu-160led-105x66-cm-klassiek-warm-anna-s-collection",
    "titel": "Paraplu met 160 warm witte ledlampjes (Anna's Collection)"
+  },
+  "ww-vod67428170400": {
+   "datum": "2026-11-22",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Westwing",
+   "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=5a1636d6a4d8115ec9baf94876440b8c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904911932293137966395962%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fornament-glass-rose-black-and-blue-caviar-tin-can-h75cm-en-25vod67428.html%253Fsimple%253DDEQ25VOD67428-170400&ws=",
+   "winkelUrl": "https://www.westwing.nl/ornament-glass-rose-black-and-blue-caviar-tin-can-h75cm-en-25vod67428.html?simple=DEQ25VOD67428-170400",
+   "titel": "Glazen kersthanger blikje kaviaar"
+  },
+  "g999-1da3e93a63": {
+   "datum": "2026-11-22",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "999Games",
+   "url": "https://lt45.net/c/?si=13450&li=1594951&wi=433339&pid=59c741544e95e26af84de6b5d013cc5c&dl=product%2Fquoridor-classic%2F3421273323318&ws=",
+   "winkelUrl": "https://lt45.net/c/?si=13450&li=1594951&wi=433339&pid=59c741544e95e26af84de6b5d013cc5c&dl=product%2Fquoridor-classic%2F3421273323318&ws=",
+   "titel": "Quoridor Classic (denkspel met muren)"
+  },
+  "dkam-4efaf1205c": {
+   "datum": "2026-11-22",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=545b3614c3ef0b1cecdbe33cda439838&dl=gieter-kamerplanten-metaal-kiezelgrijs-1-liter-00044733.html%3Fchannable%3D01240b736b7500303030343437333394&ws=",
+   "winkelUrl": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=545b3614c3ef0b1cecdbe33cda439838&dl=gieter-kamerplanten-metaal-kiezelgrijs-1-liter-00044733.html%3Fchannable%3D01240b736b7500303030343437333394&ws=",
+   "titel": "Gieter voor kamerplanten (metaal, kiezelgrijs)"
+  },
+  "themin-0a0702522c": {
+   "datum": "2026-11-22",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "The Mindful Shop",
+   "url": "https://partner.themindfulshop.nl/c?c=40544&m=2518423&a=516846&r=&u=https%3A%2F%2Fthemindfulshop.nl%2Fproducts%2Fzoutlamp-ruw-mood-mini-600-gr-usb-led-wit",
+   "winkelUrl": "https://themindfulshop.nl/products/zoutlamp-ruw-mood-mini-600-gr-usb-led-wit",
+   "titel": "Mini-zoutlamp ruw met usb (wit)"
+  },
+  "themin-48bae1c641": {
+   "datum": "2026-11-22",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "The Mindful Shop",
+   "url": "https://partner.themindfulshop.nl/c?c=40544&m=2518423&a=516846&r=&u=https%3A%2F%2Fthemindfulshop.nl%2Fproducts%2Fzoutlamp-bol-mood-mini-450-gr-usb-led-wit",
+   "winkelUrl": "https://themindfulshop.nl/products/zoutlamp-bol-mood-mini-450-gr-usb-led-wit",
+   "titel": "Mini-zoutlamp bol met usb (wit)"
   }
  }
 }
