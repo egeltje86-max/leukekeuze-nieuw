@@ -34,7 +34,7 @@ const ALLE = ctx.window.LK_PRODUCTEN || [];
 const TOP = ctx.window.LK_TOPVAST || {};
 const GROF_T = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch(es)?\b|middelvinger|shit happens|bullshit|\bjoint\b/i;
 function isKaartje(p) { return typeof p.prijs === 'number' && p.prijs < 5 && (p.shop === 'Kaartje2go' || /(^|\s)(kaart|kerstkaart|wenskaart|felicitatiekaart|doopkaart|sinterklaaskaart|verjaardagskaart)(\s|$|[:,])/i.test(p.titel || '')); }
-const L = ALLE.filter(p => p.status === 'goedgekeurd' && p.prijs > 0 && !p.samengevoegd && p.shop !== 'La Redoute' && !isKaartje(p) && !GROF_T.test(p.titel || ''));
+const L = ALLE.filter(p => p.status === 'goedgekeurd' && p.prijs > 0 && !p.samengevoegd && p.shop !== 'La Redoute' && !isKaartje(p) && !GROF_T.test(p.titel || '') && !/rebul/i.test((p.titel || '') + ' ' + (p.merk || ''))); /* 22-11-2026 Marius: Atelier Rebul niet meer bovenaan */
 
 function norm(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’'"“”™®]/g, '').replace(/[^a-z0-9& ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
 const SHOP = new Set(L.map(p => norm(p.shop)));

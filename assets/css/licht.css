@@ -3037,3 +3037,27 @@ html body .wzh-rond.wzh-icoon, html body .srt-st-rond.srt-vt-ico, html body .rh-
 .gids-meer a:hover { text-decoration: underline; }
 @media (max-width: 380px) { .gids3 .gi-beeld { flex-basis: 100px; width: 100px; height: 100px; } .gids3 .gidsitem .hartje { left: 16px; top: 16px; } .gids3 .gids-deel .tekstpagina.gids h2 { font-size: 21px; } }
 @media (min-width: 900px) { .gids3 .gids-meer { max-width: none; } }
+
+/* ===== GIDS FEEST (22-11-2026, Marius: 'het moet een feestje zijn om het te lezen, met graphics'; plaatjes van Nova in images/gidsen/).
+   Getekende kop per thema, strikje of confetti tussen de delen, stickers. Uit: window.LK_GIDS_FEEST = false. ===== */
+.gids-kop { margin: 4px 0 14px; max-width: 760px; border-radius: 18px; overflow: hidden; border: 1px solid #E5D7BE; box-shadow: 0 8px 24px -14px rgba(10,16,32,.45); background: #F7F3EC; }
+.gids-kop img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 2; object-fit: cover; }
+.gids-index .gg-groep .gids-kop { margin: 6px 0 12px; }
+.gids-lijn { max-width: 760px; margin: 22px 0 4px; display: flex; justify-content: center; }
+.gids-lijn img { width: min(320px, 80%); height: auto; }
+.gids-sticker { display: block; flex: none; object-fit: contain; }
+.gt-kop .gs-kop { width: 44px; height: 44px; margin-top: -4px; filter: drop-shadow(0 3px 4px rgba(10,16,32,.18)); }
+.gids-nu .gs-nu { width: 40px; height: 40px; margin-top: -2px; filter: drop-shadow(0 3px 4px rgba(10,16,32,.15)); }
+.gids-feest .gids-nu { border-left-width: 1px; }
+.gt-beeld { position: relative; }
+.gt-rozet { position: absolute; top: -6px; left: -6px; width: 44px; height: 44px; display: grid; place-items: center; background: url(/images/gidsen/sticker-topkeuze.webp) center / contain no-repeat; filter: drop-shadow(0 2px 3px rgba(10,16,32,.25)); }
+.gt-rozet span { font: 800 7.5px/1.05 var(--f-ui); color: #141A2A; text-align: center; text-transform: uppercase; letter-spacing: .02em; }
+.gt-item:first-child .gt-beeld { overflow: visible; }
+.gt-item:first-child .gt-beeld img { border-radius: 10px; }
+.gids-slot { position: relative; padding-right: 72px; }
+.gids-slot .gs-slot { position: absolute; right: 4px; top: 2px; width: 56px; height: 56px; transform: rotate(8deg); filter: drop-shadow(0 3px 4px rgba(10,16,32,.15)); }
+@media (min-width: 760px) {
+  .gt-rozet { width: 64px; height: 64px; top: -10px; left: -10px; }
+  .gt-rozet span { font-size: 10px; }
+  .gids-lijn img { width: 360px; }
+}
