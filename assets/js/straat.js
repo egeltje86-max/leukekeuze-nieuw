@@ -485,10 +485,7 @@
   }
 
   var PER_KEER = 4, MAX_IN_GANG = 12;
-  /* 22-11-2026 (Marius: 'als je op Alle cadeaus voor hem drukt kom je op dezelfde winkels, dat is dubbel'): /voor/hem is zelf de straat voor hem,
-     dus 'Alle cadeaus voor hem' gaat naar de hele lijst (?alles=1, met sorteren en filteren) en niet nog een keer naar dezelfde straat. */
   function prijsPar(max) { return max === 50 ? 'r0-50' : 'tot' + max; } /* ?prijs=tot50 betekent in de oude lijst €25-50 (LK_PRIJS_OUD); r0-50 = tot €50 */
-  function voorPad(st) { return '/voor/' + st.pr.slug + '/?alles=1' + (st.max ? '&prijs=' + prijsPar(st.max) : ''); }
   /* Doorgaan naar de volledige collectie: persoon en bedrag gaan mee, zoals de gewone site ze kent (?voor=, ?prijs=tot..) */
   function metKeuze(naar, st) {
     var d = [];
@@ -641,7 +638,7 @@
         '<div><small>De etalage</small><h2>' + esc(st.pr.wie ? 'Onze beste cadeaus ' + st.pr.tekst : 'Onze beste cadeaus van dit moment') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') + '</h2></div></div>' +
         '<div class="sh-schap" data-sh-schap="top">' + st.etalage.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
         '<div class="gang-voet">' + (st.etalage.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="top">Laat er nog ' + Math.min(PER_KEER, st.etalage.length - PER_KEER) + ' zien</button>' : '') +
-        (st.pr.slug ? '<a class="naar" href="' + voorPad(st) + '">Alle cadeaus ' + esc(st.pr.tekst) + ' in één lijst ›</a>' : '') + '</div></section>';
+        '</div></section>'; /* 22-11-2026 (Marius: 'ik heb niet gevraagd om een knop naar alle cadeaus'): geen link 'Alle cadeaus voor …' meer; je bent al in de straat voor die persoon */
     }
     h += haak('LK_STRAAT_NA_ETALAGE');
     if (kraamAan()) h += kraampjes(st);
@@ -1039,27 +1036,6 @@
     /* nog één keer als er boven de straat iets later is ingeladen (plaatjes), maar alleen als je zelf nog niet hebt gescrold */
     setTimeout(function () { if (gezet >= 0 && Math.abs(window.scrollY - gezet) < 4) naarKop(); }, 900);
   }
-  /* 22-11-2026: 'Alle cadeaus voor hem in één lijst' (etalage) brengt je meteen bij de lijst met sorteren en filteren,
-     niet eerst bij de onderwerpen bovenaan die pagina. Werkt ook als de pagina helemaal opnieuw laadt (sessionStorage). */
-  var naarLijstTot = 0;
-  function naarLijst() {
-    if (!naarLijstTot || Date.now() > naarLijstTot) { naarLijstTot = 0; return; }
-    var app = document.getElementById('app'), wb = app && /[?&]alles=1/.test(location.search) && app.querySelector('.werkbalk');
-    if (!wb) { setTimeout(naarLijst, 100); return; }
-    naarLijstTot = 0; try { sessionStorage.removeItem('lknaarlijst'); } catch (x) {}
-    var wy = wb.getBoundingClientRect().top, doel = wb;
-    [].forEach.call(app.querySelectorAll('h2'), function (h) { var hy = h.getBoundingClientRect().top; if (hy <= wy && wy - hy < 200) doel = h; });
-    var kop = document.querySelector('.header') || document.querySelector('header'), kh = kop ? kop.getBoundingClientRect().height : 60;
-    window.scrollTo(0, Math.max(0, doel.getBoundingClientRect().top + window.scrollY - kh - 8));
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('#app .sh a.naar[href*="alles=1"]');
-    if (!a || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    naarLijstTot = Date.now() + 5000;
-    try { sessionStorage.setItem('lknaarlijst', String(naarLijstTot)); } catch (x) {}
-    setTimeout(naarLijst, 80);
-  }, true);
-  try { var nlt = +sessionStorage.getItem('lknaarlijst'); if (nlt && Date.now() < nlt) { naarLijstTot = nlt; setTimeout(naarLijst, 150); } else sessionStorage.removeItem('lknaarlijst'); } catch (x) {}
   /* app.js vraagt hier de homepage op (home()). Leeg = de oude homepage. */
   window.LK_STRAAT_HOME = {
     aan: aan,
