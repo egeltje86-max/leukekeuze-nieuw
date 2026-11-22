@@ -1316,8 +1316,8 @@ html.donker .sh .kies-geld a{color:#eee7da}
 html.donker .sh .sh-munt{background:var(--m);border:2px solid #E5D7BE}
 html.donker .sh .sh-munt small{color:#5F667A}
 html.donker .sh .kies-geld a.sh-aan .sh-munt{border:3px solid #B8862E;box-shadow:0 0 0 3px #F6E7C4}
-html.donker .sh .straat-kop h2{color:#eee7da}
-html.donker .sh .straat-kop h2 span{color:#e7c893}
+html.donker .sh .straat-kop h2,html.donker .sh .straat-kop h1{color:#eee7da}
+html.donker .sh .straat-kop h2 span,html.donker .sh .straat-kop h1 span{color:#e7c893}
 html.donker .sh .stand{color:#a3aaba}
 html.donker .sh .stand b{color:#eee7da}
 html.donker .sh .stand a,html.donker .sh .stand .link{color:#e7c893}
