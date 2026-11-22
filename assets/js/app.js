@@ -4303,7 +4303,9 @@
     return RIJM_STIJL + '<style>' +
       '.rz-blok{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;margin:20px 0 6px;padding:26px 28px;border-radius:24px;overflow:hidden;color:#fff;text-decoration:none;background:radial-gradient(circle at 80% 30%,rgba(119,66,39,.35) 0 90px,transparent 220px),linear-gradient(140deg,#0b1225,#15132a 70%,#3a1727);box-shadow:0 16px 42px rgba(20,20,35,.18)}' +
       '.rz-blok .rz-eyebrow{color:#f7d77f}' +
-      '.rz-blok h2{font:700 clamp(28px,4.4vw,44px)/1.05 var(--f-kop);letter-spacing:-.5px;margin:10px 0 12px;color:#fff}.rz-blok h2 em{font-style:normal;color:#f7d77f}' +
+      '.rz-blok h2,html .gids .rz-blok h2,html.nova7 .tekstpagina.gids .rz-blok h2{font:700 clamp(28px,4.4vw,44px)/1.05 var(--f-kop);letter-spacing:-.5px;margin:10px 0 12px;color:#fff}' +
+      /* 22-11-2026: in een gids won de kleur van de gidskoppen (donker op donker) en de onderstreping van gewone links; nu niet meer. */
+      '.tekstpagina a.rz-blok{color:#fff;text-decoration:none}.rz-blok h2 em{font-style:normal;color:#f7d77f}' +
       '.rz-blok p{margin:0 0 20px;color:#e9e7e3;font-size:16px;max-width:460px}' +
       '.rz-blok .rz-beeld{grid-row:1/3;grid-column:2;align-self:stretch;margin:-26px -28px -26px 0;min-height:260px;background:#0b1225}.rz-blok .rz-beeld img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}' +
       '.rz-blok .rz-knop{justify-self:start}' +

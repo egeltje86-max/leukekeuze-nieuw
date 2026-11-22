@@ -60,8 +60,9 @@
 .sh .voet{padding-block:30px 40px;color:var(--zacht);font-size:13.5px;text-align:center}
 .sh .gevel,.sh .sh-binnen,.sh .top-etalage{--kd:color-mix(in srgb,var(--k) 72%,#000)}
 .sh .welkom{text-align:center}
-.sh .welkom .straatbord{display:inline-block;background:var(--marine);color:#fff;font:700 clamp(24px,7vw,34px)/1 "Playfair Display",Georgia,serif;padding:12px 22px 13px;border-radius:10px;box-shadow:inset 0 0 0 3px var(--marine),inset 0 0 0 5px #fff,0 6px 14px -6px rgba(10,16,32,.5);margin:6px 0 0;letter-spacing:.2px}
-.sh .welkom .straatbord small{display:block;font:800 10.5px/1 Manrope,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--lgoud);margin-bottom:6px}
+/* Bord in de kleuren van een echt Nederlands straatnaambord (22-11-2026, Marius): verkeersblauw (RAL 5017), witte letters zonder schreef en een witte kaderrand. */
+.sh .welkom .straatbord{display:inline-block;background:#0E518D;color:#fff;font:800 clamp(24px,7vw,34px)/1 Manrope,system-ui,sans-serif;padding:13px 22px 14px;border-radius:8px;box-shadow:inset 0 0 0 4px #0E518D,inset 0 0 0 6.5px #fff,0 6px 14px -6px rgba(10,16,32,.5);margin:6px 0 0;letter-spacing:.01em}
+.sh .welkom .straatbord small{display:block;font:700 10.5px/1 Manrope,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:6px}
 .sh .welkom p{margin:8px auto 0}
 .sh .gevel .pui{background:#FFFCF7;background:color-mix(in srgb,var(--k) 9%,#FFFCF7)}
 .sh .luifel{background-image:linear-gradient(180deg,rgba(255,255,255,.18),rgba(0,0,0,.1)),repeating-linear-gradient(90deg,var(--k) 0 18px,#fff 18px 36px)}
@@ -324,7 +325,7 @@ html.combi body .aftel.aftel3{display:flex;align-items:stretch;height:54px;paddi
 html.combi .sh .cb-wissel{margin:14px 0 4px}
 html.combi .sh .cb-wissel .srt-wisselblok{max-width:560px;margin:0 auto}
 html.combi .sh .cb-rijm{max-width:620px;margin:0 auto 10px}
-html.combi .sh .sh-meer{display:flex;width:100%;max-width:420px;margin:0 auto;justify-content:center;align-items:center;min-height:52px;background:#0A1020;border:1px solid #0A1020;color:#fff;font-size:16px}
+html.combi .sh .sh-meer{display:flex;width:100%;max-width:420px;margin:0 auto;justify-content:center;align-items:center;min-height:52px;background:#1F2B48;border:1px solid #1F2B48;color:#fff;font-size:16px}
 html.combi .sh .sh-meer:hover{background:#141A2A}
 html.combi .sh .gang-voet{flex-direction:column;align-items:stretch}
 /* Keuze licht/donker in het menu */
@@ -332,7 +333,7 @@ html.combi .sh .gang-voet{flex-direction:column;align-items:stretch}
 .lade-thema button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:56px;padding:6px 4px;border-radius:14px;border:1px solid #E5D7BE;background:#FFFCF7;color:#141A2A;font-family:Manrope,system-ui,sans-serif;text-align:center;cursor:pointer}
 .lade-thema button b{font-size:13.5px;font-weight:800;overflow-wrap:anywhere}
 .lade-thema button small{font-size:11.5px;color:#5F667A}
-.lade-thema button[aria-pressed="true"]{background:#0A1020;border-color:#0A1020;color:#fff}
+.lade-thema button[aria-pressed="true"]{background:#1F2B48;border-color:#1F2B48;color:#fff}
 .lade-thema button[aria-pressed="true"] small{color:#E5D7BE}
 
 /* ===== COMBI DONKERE KOP (22-11-2026, Marius: 'laten we de kleuren iets minder donker maken en de huidige lichte balk boven ook donker').
