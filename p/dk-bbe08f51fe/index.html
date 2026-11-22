@@ -28,11 +28,11 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=93576583425915" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=91331626408008" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=270658874710233" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=251957811839490">
   <link rel="stylesheet" href="assets/css/licht.css?v=27864327534894">
-  <link rel="stylesheet" href="assets/css/straat.css?v=14994716419079">
+  <link rel="stylesheet" href="assets/css/straat.css?v=41588291738725">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -70,6 +70,21 @@
     /* WINKELSTIJL (21-11-2026): op elke pagina dezelfde lichte kop als in de straat (logo en zoekvak). Zelfde schakelaars als winkelstijl() in straat.js. */
     if (window.LK_WINKELSTIJL !== false && !/[?&]proef=winkelstijl-uit\b/.test(q) && (!sessionStorage.getItem('lkws-uit') || /[?&]proef=winkelstijl\b(?!-)/.test(q))) h.className += ' sh-kop';
     if (/(^| )wz-bh( |$)/.test(h.className)) h.className += ' sh-thuis'; } catch (e) {} })();</script>
+  <!-- COMBI en DONKER (22-11-2026, voorbeeld voor Marius: 'dat oude moest wel behouden blijven en er moeten donkere tinten terug komen'; 'het moet een dynamische pagina worden').
+       Alleen met ?proef=combi (blijft onthouden op dit apparaat; uit: ?proef=combi-uit): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
+       en een donkere versie die de instelling van de telefoon of computer volgt (keuze in het menu: Automatisch, Licht of Donker; ook ?thema=donker|licht|auto).
+       Het donkere bestand laadt alleen als de donkere versie aan staat. -->
+  <meta name="lk-donker" content="assets/css/donker.css?v=262074261072294">
+  <script>(function () { try { var h = document.documentElement, q = location.search, ls = window.localStorage;
+    var m = /[?&]proef=combi(-uit)?\b/.exec(q); if (m) { if (m[1]) ls.removeItem('lkcombi'); else ls.setItem('lkcombi', '1'); }
+    if (!(window.LK_COMBI === true || (window.LK_COMBI !== false && ls.getItem('lkcombi') === '1'))) return;
+    h.className = h.className.replace(/(^| )(sh-kop|sh-thuis)(?= |$)/g, '') + ' combi';
+    var t = /[?&]thema=(licht|donker|auto)\b/.exec(q); if (t) ls.setItem('lkthema', t[1]);
+    var k = ls.getItem('lkthema') || 'auto';
+    if (k === 'donker' || (k === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      h.className += ' donker'; document.write('<link rel="stylesheet" id="lk-donker" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-donker"]').content) + '>');
+      var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', '#0B1120'); }
+  } catch (e) {} })();</script>
   <!-- VROEG-NOVA (13-11-2026, grote keuring): de klassen van de huisstijl (NOVA-001 t/m 009) staan nu al op de pagina voordat app.js binnen is.
        Eerder zette app.js ze pas: op een trage telefoon zag je de pagina dan eerst ongeveer een seconde in de oude stijl, en daarna versprong alles. Zelfde schakelaars als in app.js. -->
   <script>(function () { var c = '', i, n = [1, 2, 3, 5, 6, 7, 9]; for (i = 0; i < n.length; i++) if (window['LK_NOVA' + n[i]] !== false) c += ' nova' + n[i]; document.documentElement.className += c; })();</script>
@@ -220,9 +235,9 @@
   <script>window.LK_DETAILS_DEEL={"dk-bbe08f51fe":{"url":"https://ds1.nl/c/?si=1305&li=1927997&wi=433339&pid=ee9147a3bd05eb52a93e0a93ef3ca9ee&dl=product%2Fdagje-zeilen-in-friesland-1%2F%3Fattribute_locatie%3DSneek&ws=","winkelUrl":"https://ds1.nl/c/?si=1305&li=1927997&wi=433339&pid=ee9147a3bd05eb52a93e0a93ef3ca9ee&dl=product%2Fdagje-zeilen-in-friesland-1%2F%3Fattribute_locatie%3DSneek&ws=","subVast":true,"gecontroleerd":"2026-11-21","herkomst":"doenkado","advies":{"voor":"Wie graag zeilt of het wil proberen.","niet":"Hij of zij niet van water houdt.","alt":["dk-da9d4b8898","dk-c4e8d984dc"],"meer":[["Cadeau voor een vrouw","/gids/cadeau-voor-vrouw/"],["Kerstcadeaus","/c/cadeaus/kerst/"]]},"waarom":"Een dag zeilen in een polyvalk op het Sneekermeer in Friesland."}};</script>
   <script src="assets/js/data.js?v=270658874710233"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=186899647837128"></script>
-  <script src="assets/js/straat.js?v=273182225302029"></script>
-  <script src="assets/js/app.js?v=93576583425915"></script>
+  <script src="assets/js/gedeeld.js?v=238324785577896"></script>
+  <script src="assets/js/straat.js?v=271835745966948"></script>
+  <script src="assets/js/app.js?v=91331626408008"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
