@@ -1246,6 +1246,12 @@ html.donker .gids-nu a{color:#e7c893}
 html.donker .gids3 .gd-nr{background:linear-gradient(180deg, #F2CB74, #D9A848);border:1px solid #b8862e;color:#141A2A}
 html.donker .gids3 .gi-beeld{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
 html.donker .gids-meer a{color:#e7c893}
+html.donker .gids-kop{border:1px solid rgba(217,168,72,0.3);box-shadow:0 8px 24px -14px rgba(0,0,0,0.6);background:#141c2f}
+html.donker .gt-kop .gs-kop{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.374))}
+html.donker .gids-nu .gs-nu{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.32))}
+html.donker .gt-rozet{filter:drop-shadow(0 2px 3px rgba(0,0,0,0.5))}
+html.donker .gt-rozet span{color:#eee7da}
+html.donker .gids-slot .gs-slot{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.32))}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
