@@ -163,7 +163,11 @@ au_terug = set()
 # Niet vertrouwd: Decantalo (feed ruim 10% duurder dan de winkel: Jameson 28,10 tegen 24,95), Droptelegram (verzendkosten in de prijs),
 # de Daisycon-feed van Ditverzinjeniet (voorraad klopt niet; die winkel loopt via TradeTracker), en varianten per maat of formaat
 # (MYKA, Kaartje2go, Westwing, Joybuy, Wijnkring, Dropwinkel). Die blijven bij de controle van de winkelpagina.
-DC_PAD_OK = {'Doenkado', 'Bloompost', 'Butchery', 'Butchery.nl', 'Razer'}
+# Vergeleken op 22-11-2026: bij deze winkels gaf de feed op het pad precies de prijs die op de site staat (Dille & Kamille 113,
+# LEGO 79, 999 Games 46, Prydligt 43 ...), dus de koppeling klopt en ze krijgen weer elke dag een verse controle uit de feed.
+DC_PAD_OK = {'Doenkado', 'Bloompost', 'Butchery', 'Butchery.nl', 'Razer', 'Dille & Kamille', 'LEGO', '999Games', 'Prydligt', 'Kerstland',
+             'Svinando', 'Bartogi', 'Teufel', 'Invicta', 'Fietsparadijs', 'Top4Running', 'WoodWick', 'Zadig & Voltaire', 'Dr. Martens',
+             "Nature's Gift", 'La Redoute'}
 def _dom(u):
     try: d = urllib.parse.urlsplit(u).netloc.lower()
     except Exception: return ''
