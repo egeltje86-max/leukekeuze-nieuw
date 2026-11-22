@@ -568,14 +568,21 @@
      16:19 (Marius: 'we zouden het zo doen dat ze niet meer hoeven te klikken en we iedere categorie zouden zien als je naar beneden scrolt'):
      alle open winkels staan open (niet alleen de eerste vijf); onderaan alleen nog het Cadeauloket, de Kiosk en winkels met te weinig cadeaus. */
   var KRAAM_AANTAL = Infinity, KRAAM = [];
-  function kraamAan() {
+  /* 16:29 (Marius bij een schermafbeelding van een open kraampje: 'zo wil ik het hebben als je op voor hem klikt of voor haar en dat je dan
+     kan scrollen en alle winkels zo ziet'): live voor iedereen zodra er een persoon gekozen is (/voor/hem, /voor/haar, /#voor-…).
+     De homepage zonder keuze houdt de gevels. Zelf vergelijken: ?proef=kraampjes-uit (gevels) of ?proef=kraampjes (ook zonder keuze open). */
+  function kraamAan(st) {
     if (window.LK_KRAAM === true) return true;
     if (window.LK_KRAAM === false) return false;
+    var v = null;
     try {
-      if (/[?&]proef=kraampjes-uit\b/.test(location.search)) localStorage.removeItem('lkkraam');
+      if (/[?&]proef=kraampjes-uit\b/.test(location.search)) localStorage.setItem('lkkraam', '0');
       else if (/[?&]proef=kraampjes\b/.test(location.search)) localStorage.setItem('lkkraam', '1');
-      return localStorage.getItem('lkkraam') === '1';
-    } catch (e) { return false; }
+      v = localStorage.getItem('lkkraam');
+    } catch (e) {}
+    if (v === '0') return false;
+    if (v === '1') return true;
+    return !!(st && st.pr && st.pr.wie);
   }
   function kraamLijst(x, al) {
     var uit = [], rij = {};
@@ -598,8 +605,7 @@
       kr.push({ x: x, lijst: l });
     });
     KRAAM = kr.map(function (k) { return k.lijst; });
-    var h = '<p class="kraam-proef">Testversie: open kraampjes · <a href="?proef=kraampjes-uit">terug naar de gevels</a></p>' +
-      '<h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Rondkijken in de winkels ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Rondkijken in de straat') + '</h2>' +
+    var h = '<h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Rondkijken in de winkels ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Rondkijken in de straat') + '</h2>' +
       '<p class="kraam-uitleg">Van elke winkel vier cadeaus. Scroll verder, of loop een winkel binnen voor de rest.</p>';
     h += kr.map(function (k, n) {
       var w = k.x.w, ic = NOVA_GEVEL[w.id] ? NB + 'rond/winkel-' + w.id + '-klein.webp' : '';
@@ -643,7 +649,7 @@
         '</div></section>'; /* 22-11-2026 (Marius: 'ik heb niet gevraagd om een knop naar alle cadeaus'): geen link 'Alle cadeaus voor …' meer; je bent al in de straat voor die persoon */
     }
     h += haak('LK_STRAAT_NA_ETALAGE');
-    if (kraamAan()) h += kraampjes(st);
+    if (kraamAan(st)) h += kraampjes(st);
     else {
     h += '<div class="lampjes" aria-hidden="true"></div><h2 class="straat-titel">' + (st.pr.wie || st.max ? 'Deze winkels hebben iets ' + esc(st.pr.wie ? st.pr.tekst : '') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') : 'Loop een winkel binnen') + '</h2>';
     h += '<section class="straat" aria-label="Open winkels">' + loket(st) + st.open.map(function (x) { return gevel(x, st); }).join('') + kioskGevel(st) + '</section>';
