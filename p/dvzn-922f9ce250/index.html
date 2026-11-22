@@ -70,16 +70,20 @@
     if (window.LK_WINKELSTIJL !== false && !/[?&]proef=winkelstijl-uit\b/.test(q) && (!sessionStorage.getItem('lkws-uit') || /[?&]proef=winkelstijl\b(?!-)/.test(q))) h.className += ' sh-kop';
     if (/(^| )wz-bh( |$)/.test(h.className)) h.className += ' sh-thuis'; } catch (e) {} })();</script>
   <!-- COMBI en DONKER (22-11-2026, voorbeeld voor Marius: 'dat oude moest wel behouden blijven en er moeten donkere tinten terug komen'; 'het moet een dynamische pagina worden').
-       Alleen met ?proef=combi (blijft onthouden op dit apparaat; uit: ?proef=combi-uit): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
+       Eerst alleen met ?proef=combi, nu voor iedereen (zie hieronder): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
        en een donkere versie die de instelling van de telefoon of computer volgt (keuze in het menu: Automatisch, Licht of Donker; ook ?thema=donker|licht|auto).
        Het donkere bestand laadt alleen als de donkere versie aan staat. -->
   <meta name="lk-donker" content="assets/css/donker.css?v=262074261072294">
-  <script>(function () { try { var h = document.documentElement, q = location.search, ls = window.localStorage;
-    var m = /[?&]proef=combi(-uit)?\b/.exec(q); if (m) { if (m[1]) ls.removeItem('lkcombi'); else ls.setItem('lkcombi', '1'); }
-    if (!(window.LK_COMBI === true || (window.LK_COMBI !== false && ls.getItem('lkcombi') === '1'))) return;
+  <!-- LIVE voor iedereen sinds 22-11-2026 09:18 (Marius: 'Dit is fantastisch go'). Zelf de lichte kop van 21-11 zien: ?proef=combi-uit (blijft onthouden; weer aan: ?proef=combi).
+       Helemaal uit: window.LK_COMBI = false. -->
+  <script>(function () { try { var h = document.documentElement, q = location.search, ls = null, uit = false;
+    try { ls = window.localStorage; } catch (e) {}
+    var m = /[?&]proef=combi(-uit)?\b/.exec(q);
+    try { if (m) { if (m[1]) ls.setItem('lkcombi', '0'); else ls.removeItem('lkcombi'); } uit = ls.getItem('lkcombi') === '0'; } catch (e) { uit = !!(m && m[1]); }
+    if (window.LK_COMBI === false || (window.LK_COMBI !== true && uit)) return;
     h.className = h.className.replace(/(^| )(sh-kop|sh-thuis)(?= |$)/g, '') + ' combi';
-    var t = /[?&]thema=(licht|donker|auto)\b/.exec(q); if (t) ls.setItem('lkthema', t[1]);
-    var k = ls.getItem('lkthema') || 'auto';
+    var t = /[?&]thema=(licht|donker|auto)\b/.exec(q), k = t ? t[1] : 'auto';
+    try { if (t) ls.setItem('lkthema', t[1]); k = ls.getItem('lkthema') || k; } catch (e) {}
     if (k === 'donker' || (k === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
       h.className += ' donker'; document.write('<link rel="stylesheet" id="lk-donker" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-donker"]').content) + '>');
       var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', '#0B1120'); }
@@ -103,7 +107,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <a class="aftel aftel-bf" href="/collectie/black-friday/" data-aftel="" aria-label="Nog 5 dagen tot Black Friday. Bekijk de Black Friday deals"><span class="aftel-beeld links" aria-hidden="true"></span><span class="aftel-midden"><span class="aftel-zin">Nog <span class="aftel-getal">5</span> dagen tot Black Friday</span><span class="aftel-knop">Bekijk de deals →</span></span><span class="aftel-beeld rechts" aria-hidden="true"></span></a>
+  <div class="aftel aftel3" data-aftel="" role="navigation" aria-label="Aftellen"><a class="a3 a3-bf" href="/collectie/black-friday/"><span class="a3-r"><span class="a3-getal">5</span><small>dagen tot</small></span><b>Black Friday</b></a><a class="a3 a3-sint" href="/c/cadeaus/sinterklaas/"><span class="a3-r"><span class="a3-getal">13</span><small>dagen tot</small></span><b>Pakjesavond</b></a><a class="a3 a3-kerst" href="/c/cadeaus/kerst/"><span class="a3-r"><span class="a3-getal">33</span><small>dagen tot</small></span><b>Kerst</b></a></div>
 
   <div class="topbalk">
     <div class="binnen">
@@ -234,7 +238,7 @@
   <script>window.LK_DETAILS_DEEL={"dvzn-922f9ce250":{"url":"https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmini-stijltang-met-reisetui%3Futm_campaign%3Dtt_feed_all","winkelUrl":"https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmini-stijltang-met-reisetui%3Futm_campaign%3Dtt_feed_all","subVast":true,"gecontroleerd":"2026-11-21","herkomst":"piloot","advies":{"voor":"Tieners en vrouwen die hun haar onderweg willen bijwerken.","niet":"Je lang of dik haar helemaal steil wilt maken: dit is een kleine tang voor tussendoor.","alt":["dvzn-380a317e19","hema-fe3ef7029d"],"meer":[["Cadeaus voor tieners","/voor/tieners/"],["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]}}};</script>
   <script src="assets/js/data.js?v=270658874710233"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=238324785577896"></script>
+  <script src="assets/js/gedeeld.js?v=159967515905872"></script>
   <script src="assets/js/straat.js?v=271835745966948"></script>
   <script src="assets/js/app.js?v=91331626408008"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).

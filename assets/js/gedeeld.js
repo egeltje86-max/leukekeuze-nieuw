@@ -330,6 +330,8 @@
     document.documentElement.classList.add('met-aftel');
     return;
   }
+  /* Sinds COMBI voor iedereen staan de drie aftellers al in de gebouwde pagina (een div). Wie COMBI uit heeft gezet krijgt hier weer de ene balk (een link). */
+  if (el.tagName !== 'A') { var a1 = document.createElement('a'); a1.setAttribute('data-aftel', ''); a1.hidden = true; el.parentNode.replaceChild(a1, el); el = a1; }
   /* Stap 1 indeling (6-11-2026, GO Marius): van 20 t/m 27 november is Black Friday de boodschap (27-11-2026). Daarna weer Sinterklaas, vanaf 6 december Kerst. */
   var bf = Date.UTC(jaar, 10, 27), bfStart = Date.UTC(jaar, 10, 20);
   if (nu >= bfStart && nu <= bf) {
