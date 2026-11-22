@@ -43,8 +43,8 @@
   <!-- SNEL (13-11-2026, grote keuring): heeft de pagina een eigen klein productbestand (pak, window.LK_PAKPAD gezet door scripts/maak-pakken.js),
        dan laadt dat eerst en start de site daarmee; de hele lijst en de hele lijst met toppers komen daarna (LK_LAAD_VOL, door app.js aangeroepen).
        Uit: ?proef=pak-uit (onthouden in deze browser; weer aan: ?proef=pak). Lukt het pak niet, dan na 5 seconden gewoon de hele lijst. -->
-  <script>window.LK_PAKPAD="assets/pak/voor--opa-oma--fotos-herinneringen.js?v=45061178234930";</script>
-  <script>(function () { var s = "assets/js/producten-lean.js?v=245877061300298", t = "assets/js/topkeuze.js?v=61920651285862";
+  <script>window.LK_PAKPAD="assets/pak/voor--opa-oma--fotos-herinneringen.js?v=26160306904248";</script>
+  <script>(function () { var s = "assets/js/producten-lean.js?v=263382536527565", t = "assets/js/topkeuze.js?v=61920651285862";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -108,7 +108,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <div class="aftel aftel3" data-aftel="" role="navigation" aria-label="Aftellen"><a class="a3 a3-bf" href="/collectie/black-friday/"><span class="a3-r"><span class="a3-getal">5</span><small>dagen tot</small></span><b>Black Friday</b></a><a class="a3 a3-sint" href="/c/cadeaus/sinterklaas/"><span class="a3-r"><span class="a3-getal">13</span><small>dagen tot</small></span><b>Pakjesavond</b></a><a class="a3 a3-kerst" href="/c/cadeaus/kerst/"><span class="a3-r"><span class="a3-getal">33</span><small>dagen tot</small></span><b>Kerst</b></a></div>
+  <div class="aftel aftel3" data-aftel="" role="navigation" aria-label="Aftellen"><a class="a3 a3-bf" href="/collectie/black-friday/"><span class="a3-r"><span class="a3-getal">4</span><small>dagen tot</small></span><b>Black Friday</b></a><a class="a3 a3-sint" href="/c/cadeaus/sinterklaas/"><span class="a3-r"><span class="a3-getal">12</span><small>dagen tot</small></span><b>Pakjesavond</b></a><a class="a3 a3-kerst" href="/c/cadeaus/kerst/"><span class="a3-r"><span class="a3-getal">32</span><small>dagen tot</small></span><b>Kerst</b></a></div>
 
   <div class="topbalk">
     <div class="binnen">

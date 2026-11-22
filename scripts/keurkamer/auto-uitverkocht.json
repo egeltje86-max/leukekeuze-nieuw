@@ -1,6 +1,6 @@
 {
  "uitleg": "Producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei niet op voorraad). Staan ze weer leverbaar in een feed, dan zet de controle ze vanzelf terug op de site. Wat met de hand op uitverkocht of afgekeurd staat, komt hier nooit in.",
- "bijgewerkt": "2026-11-22",
+ "bijgewerkt": "2026-11-23",
  "producten": {
   "bol-9200000091616642": {
    "datum": "2026-11-21",
@@ -1840,6 +1840,78 @@
    "url": "https://partner.themindfulshop.nl/c?c=40544&m=2518423&a=516846&r=&u=https%3A%2F%2Fthemindfulshop.nl%2Fproducts%2Fzoutlamp-bol-mood-mini-450-gr-usb-led-wit",
    "winkelUrl": "https://themindfulshop.nl/products/zoutlamp-bol-mood-mini-450-gr-usb-led-wit",
    "titel": "Mini-zoutlamp bol met usb (wit)"
+  },
+  "jb-dyson-airwrap-origin": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=6ceefb23433a997d556fef1bce8fd942&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D102141853%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fdyson-hs02-airwrap-origin-multistyler-en%252F102141853%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Dyson Airwrap Origin multistyler (nikkel/koper)"
+  },
+  "jb-set-verveine": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=8d5c27c7b853280d66b026e9af774f7d&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10477798%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Floccitane-verveine-cadeauset-350-ml-eau%252F10477798%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "L'Occitane Verveine cadeauset (eau de toilette + d"
+  },
+  "cl-set-1million": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=3abfc3ba6ee43e15414713ad98cc9ded&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10295877%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252F1-million-cadeauset-120-ml-eau%252F10295877%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Rabanne 1 Million cadeauset (100 ml + reisspray 20"
+  },
+  "jb-set-mk-homme": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=43f5aa3278e2172264bed7a4e4e8eb8e&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10377933%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fmichael-kors-pour-homme-geschenkset-parfum%252F10377933%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Michael Kors Pour Homme giftset (parfum, aftershav"
+  },
+  "jb-aw-ultra3": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=03912f4d2d36bb37cd81b4282f5aff58&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D10406202%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fapple-watch-ultra-3-trail-loop%252F10406202%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Apple Watch Ultra 3 – kies je kleur"
+  },
+  "jb-scandal-homme": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=90b236e1f30d9fb27a7175aae7d1c3ba&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100006205031752%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fjean-paul-gaultier-scandal-pour-homme%252F100006205031752%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Jean Paul Gaultier Scandal Pour Homme eau de toile"
+  },
+  "joybuy-a0b476df6d": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Joybuy",
+   "url": "",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=e7226d07e381726f11830003e4665a49&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D102289620%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fgeurkaars-gingerbread-6-stuks-40-g%252F102289620%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Geurkaarsjes gingerbread (6 stuks)"
+  },
+  "cl-homepod": {
+   "datum": "2026-11-23",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Coolblue",
+   "url": "",
+   "winkelUrl": "",
+   "titel": "Apple HomePod"
   }
  }
 }

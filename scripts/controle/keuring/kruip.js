@@ -42,6 +42,10 @@ async function eenPagina(ctx, pad) {
       uit.dubbelTitel = Object.keys(tt).filter(i => tt[i] > 1).slice(0, 8);
       uit.top = kaarten.slice(0, 12).map((k, i) => ids[i] + '|' + ((k.querySelector('h3') || {}).textContent || '').trim().slice(0, 44) + '|' + ((k.querySelector('.prijs') || {}).textContent || '').trim().slice(0, 16) + '|' + ((k.querySelector('.shop') || {}).textContent || '').trim().slice(0, 14));
       uit.zonderPrijs = kaarten.filter(k => !/\d/.test((k.querySelector('.prijs') || {}).textContent || '')).length;
+      // winkelstraat (straat.js): kaartjes zijn a.pk met .pk-t (naam) en .pk-p (prijs)
+      const pk = [...app.querySelectorAll('a.pk')]; uit.pk = pk.length;
+      uit.pkZonderPrijs = pk.filter(k => !/\d/.test((k.querySelector('.pk-p') || {}).textContent || '')).length;
+      uit.pkZonderNaam = pk.filter(k => !((k.querySelector('.pk-t') || {}).textContent || '').trim()).length;
       // plaatjes
       const imgs = [...document.images];
       uit.plaatjes = imgs.length;
@@ -92,8 +96,10 @@ async function eenPagina(ctx, pad) {
 
 (async () => {
   const b = await chromium.launch();
-  const ctx = await b.newContext(mobiel ? { viewport: { width: BR, height: 800 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, userAgent: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36' } : { viewport: { width: BR, height: 900 } });
+  const ctx = await b.newContext(mobiel ? { viewport: { width: BR, height: 800 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, userAgent: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36' } : Object.assign({ viewport: { width: BR, height: 900 } }, process.env.MENS ? { userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' } : {}));
   await ctx.route('**/*', route => route.request().url().startsWith(BASIS) ? route.continue() : route.abort());
+  // MENS=1: als een gewone bezoeker (zoekmachines en Playwright krijgen anders de opzet voor Google)
+  if (process.env.MENS) await ctx.addInitScript(() => { try { Object.defineProperty(Navigator.prototype, 'webdriver', { get: () => false }); } catch (e) {} });
   let i = 0; const t0 = Date.now();
   const werker = async () => { while (i < paden.length) { const pad = paden[i++]; await eenPagina(ctx, pad); if (i % 50 === 0) console.log(i + '/' + paden.length, Math.round((Date.now() - t0) / 1000) + 's'); } };
   await Promise.all(Array.from({ length: PAR }, werker));
