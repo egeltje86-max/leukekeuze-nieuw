@@ -6262,14 +6262,15 @@
       ],
       slot: "Meer ideeën staan bij <a href=\"/gids/kerstcadeau-moeder\">Kerstcadeau voor je moeder</a>, <a href=\"/gids/kerstcadeau-vader\">Kerstcadeau voor je vader</a>, <a href=\"/gids/cadeau-voor-schoonouders\">Cadeau voor je schoonouders</a> en <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>." },
     { slug: "kerstpakket-ideeen", beeld: "dk-00044934", vakken: ['cadeaus/kerst', 'eten-drinken'],
-      titel: "Kerstpakket ideeën: 24 pakketten en cadeausets om te geven", kort: "Voor familie, vrienden of collega's: zoet, een borrel, een echt kerstpakket, verwennen of samen een film.",
-      intro: "Wat stop je in een kerstpakket? Iets waar de ontvanger samen met anderen van kan genieten. In plaats van zelf een pakket samen te stellen, kun je ook een kant-en-klaar pakket of een cadeauset geven: chocolade, een borrelpakket, iets voor bij de thee, een goede fles of een filmavond. Hieronder staan 24 ideeën in zes soorten, van een blik stroopwafels tot een luxe cadeauset.",
+      titel: "Kerstpakket ideeën: 28 pakketten en cadeausets om te geven", kort: "Voor familie, vrienden, collega's of je personeel: zoet, een borrel, een echt kerstpakket, verwennen of samen een film.",
+      intro: "Wat stop je in een kerstpakket? Iets waar de ontvanger samen met anderen van kan genieten. In plaats van zelf een pakket samen te stellen, kun je ook een kant-en-klaar pakket of een cadeauset geven: chocolade, een borrelpakket, iets voor bij de thee, een goede fles of een filmavond. Hieronder staan 28 ideeën in zeven soorten, van een blik stroopwafels tot een luxe cadeauset, met ook een rij voor je personeel of klanten.",
       delen: [
         { kop: "Zo kies je het goede kerstpakket", tekst: "Vier dingen die helpen:", lijst: ["Een pakket voor collega's? Kies iets dat iedereen kan gebruiken; niet iedereen drinkt alcohol.", "Iets om samen te doen, zoals een filmavond of een borrel, maakt er een gezellige avond van.", "Een brievenbuspakket hoeft niet thuis afgehaald te worden: het past door de brievenbus.", "Bestel op tijd: rond Kerst is het druk bij de bezorgers."] },
         { kop: "Verwenpakketten", tekst: "Een cadeauset met zeep, douchegel en lotion: om van te genieten.", ids: ["parfum-7e28f46e8a", "parfum-45d8b68540", "cl-rit-sakura", "cl-grace-cole"] },
         { kop: "Zoet en lekker", tekst: "Chocolade en karamel om te delen.", ids: ["bol-9300000251768734", "bol-9200000117297651", "bol-9300000158510566", "bol-9300000000837154"] },
         { kop: "Borrelpakketten", tekst: "Voor bij de borrel, de barbecue of een pastadiner: hapjes, sauzen en truffel.", ids: ["dk-00044934", "bp-l229", "cl-jackdaniels-bbq", "bol-9300000250399375"] },
         { kop: "Echte kerstpakketten", tekst: "Kant-en-klaar in een mooie doos: voor collega's, familie of vrienden.", ids: ["bol-9300000444859249", "bol-9300000195684144", "bol-9300000057001441", "bol-9300000442610569"] },
+        { kop: "Voor je personeel of klanten", tekst: "Iets wat iedereen lust, zonder alcohol en onder de 25 euro, zodat je er makkelijk tien of twintig van bestelt. De brievenbuspakketten worden thuis bezorgd, ook bij wie thuiswerkt. Bestel ruim op tijd: bij grote aantallen kijk je bij de winkel of er genoeg op voorraad is.", ids: ["bol-9300000183768479", "bol-9300000240085621", "bol-9300000257112864", "bp-l303"] },
         { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dk-00040239", "dk-00044932", "dk-00043581", "hema-8eff9a5ada"] },
         { kop: "Samen thuis", tekst: "Een filmavond, iets voor de Formule 1-fan of een fondue.", ids: ["bol-9300000340258889", "cl-filmpakket", "dvzn-533927", "dvzn-801397"] }
       ],
@@ -7053,6 +7054,23 @@
       ],
       slot: 'Meer bijbels en boeken staan bij <a href="/c/christelijk/bijbels">Bijbels</a> en <a href="/c/christelijk/voor-kinderen">Christelijke cadeaus voor kinderen</a>. Zoek je een cadeau voor een doop? Kijk bij <a href="/c/christelijk/doop-belijdenis">Doop &amp; belijdenis</a>.' },
     /* 9-11-2026 (GO Marius): gids Belevenis cadeau geven. 'Belevenis cadeau' wordt 1.300 keer per maand gezocht. */
+    { slug: 'weekendje-weg-cadeau', beeld: 'vipio-4c8d4882cb', vakken: ['belevenissen'], titel: 'Weekendje weg cadeau geven: 24 bijzondere overnachtingen en uitjes', kort: 'Slapen in een molen, een kerk of onder de sterren, op het ss Rotterdam of in een boomhut. Een nacht die ze nooit vergeten.',
+      intro: 'Een nachtje weg is het cadeau voor wie al alles heeft: je ouders, je partner of een stel dat iets te vieren heeft. Geef geen gewoon hotel, maar een plek waar ze zelf nooit op zouden komen. Deze overnachtingen boek je bij Vipio. Wil je de datum niet zelf kiezen, geef dan een Vipio-cadeaubon (vanaf 30 euro, twee jaar geldig): de ontvanger zoekt zelf een plek en een datum uit. De prijzen zijn per nacht en hangen af van de datum.',
+      delen: [
+        { kop: 'Slapen in een toren, molen of kerk', tekst: 'Een watertoren, een molen uit 1851, een hele kerk uit 1621 voor jezelf of een kamer in de kerktoren van Arnhem. Hier praten ze nog jaren over.',
+          ids: ['vipio-f1bc780274', 'vipio-f6037ea61c', 'vipio-0a60e15372', 'vipio-0b05148bf9'] },
+        { kop: 'Een kasteel of klooster', tekst: 'Over de ophaalbrug naar je kamer, of slapen in een klooster uit de 17e eeuw midden in Gent.',
+          ids: ['vipio-c715c9d836', 'vipio-0c7062060b', 'vipio-7a5fba5d8c', 'vipio-d8ac641a0a'] },
+        { kop: 'Op het water of in een trein', tekst: 'Een nacht op het oude vlaggenschip van de Holland-Amerika Lijn, in een treinrijtuig uit de jaren 20 of op een houseboat op het Sneekermeer.',
+          ids: ['vipio-2f1b44ec47', 'vipio-64fdd627bf', 'vipio-bdee48a6e3', 'vipio-67aa4c5217'] },
+        { kop: 'Onder de sterren', tekst: 'Een kubus, bubbel of tiny house met een doorzichtig dak: je kijkt vanuit bed naar de sterren.',
+          ids: ['vipio-4c8d4882cb', 'vipio-cad371b7f6', 'vipio-d21b80f3cd', 'vipio-3063ea3e49'] },
+        { kop: 'In een boomhut of met het gezin', tekst: 'Boomhutten, een pipowagen op een eilandje en een safaritent met eigen hottub op de Veluwe. Ook leuk als opa en oma de kleinkinderen meenemen.',
+          ids: ['vipio-9553912119', 'vipio-f512f45379', 'vipio-52183dfe86', 'vipio-6308ec3c92'] },
+        { kop: 'Liever een dag dan een nacht?', tekst: 'Zelf rijden in een Lamborghini, een helikoptervlucht of samen een escape room. Die bestel je bij Doenkado.',
+          ids: ['dk-9393c6d57b', 'dk-904317b4e5', 'dk-dd67a6f2bc', 'dk-da9d4b8898'] }
+      ],
+      slot: 'Meer overnachtingen en uitjes vind je bij <a href="/c/belevenissen">Belevenissen</a>. Een overnachting staat op een vaste plek: kies er een die past bij waar de ontvanger woont of graag heen wil.' },
     { slug: 'belevenis-cadeau', beeld: 'dk-35d0e56982', vakken: ['belevenissen'], titel: 'Belevenis cadeau geven: de leukste uitjes voor iedereen', kort: 'Van zeehondensafari tot Ferrari rijden: een cadeau dat ze nooit vergeten. Al vanaf €9,99.',
       intro: 'Een belevenis is een cadeau dat je niet in de kast zet. Uit onderzoek blijkt dat mensen zich na een uitje dichter bij de gever voelen dan na een gewoon cadeau, omdat het meer gevoel geeft. Daarom zette ik de leukste belevenissen per persoon op een rij: voor een stel, voor wie van snelheid houdt, voor het gezin en voor iemand die alles al heeft.',
       delen: [
@@ -7064,6 +7082,8 @@
           ids: ['dk-78c5a18049', 'dk-f09931c85d', 'dk-4c68d47ad3', 'dk-1ed1b33cb8'] },
         { kop: 'Voor iemand die alles al heeft', tekst: 'Iets wat ze zelf nooit zouden boeken: vliegen boven het water, paragliden, ontsnappen uit een escape room of zelf kaas maken.',
           ids: ['dk-da9d4b8898', 'dk-d8f37a3161', 'dk-15d8cc0fbd', 'dk-46fd9a9a7d'] },
+        { kop: 'Een nachtje op een bijzondere plek', tekst: 'Slapen in een molen, onder de sterren of op het ss Rotterdam. Die boek je bij Vipio, of je geeft een Vipio-cadeaubon.',
+          ids: ['vipio-4c8d4882cb', 'vipio-f1bc780274', 'vipio-2f1b44ec47', 'vipio-f512f45379'] },
         { kop: 'Kleine belevenissen onder €20', tekst: 'Een uitje hoeft niet duur te zijn. Leuk voor de lootjes of als extraatje bij een ander cadeau.',
           ids: ['dk-1a1d8d2d06', 'dk-02f248b8b4', 'dk-04e115fae5', 'dk-97953ebc63'] }
       ],
@@ -7089,6 +7109,11 @@
       ['Wat heb je nodig om een surprise te maken?', 'Een doos of wc-rollen, karton, kranten, plakband, een lijmpistool en verf of crêpepapier. Met een lijmpistool zit alles in een paar seconden vast.'],
       ['Hoe lang ben je bezig met een surprise?', 'Reken op twee of drie avonden, want verf en papier-maché moeten drogen. Een snelle surprise, zoals een doos in een doos, maak je in een uurtje.'],
       ['Wat stop je in een surprise?', 'Het cadeautje dat je met lootjes trekken hebt afgesproken, vaak tot 15 of 25 euro, met een gedicht erbij. Een chocoladeletter of kruidnoten erbij is altijd goed.']] },
+    'weekendje-weg-cadeau': { top: [['Onze topkeuze', 'vipio-4c8d4882cb'], ['Echt Hollands', 'vipio-f1bc780274'], ['Beste koop', 'vipio-52183dfe86']], faq: [
+      ['Hoe geef je een weekendje weg cadeau?', 'Je boekt zelf een datum bij Vipio, of je geeft een Vipio-cadeaubon. Met de bon kiest de ontvanger zelf een plek en een datum. De bon is er vanaf 30 euro en is twee jaar geldig.'],
+      ['Wat is een origineel weekendje weg?', 'Slapen op een plek waar je nooit komt: een molen, een watertoren, een kerk, een treinrijtuig, het ss Rotterdam of een bubbel onder de sterren.'],
+      ['Wat kost een weekendje weg?', 'De overnachtingen in deze gids kosten tussen ongeveer 79 en 223 euro per nacht. De precieze prijs hangt af van de datum en het aantal personen.'],
+      ['Wat geef je je ouders die alles al hebben?', 'Een nachtje weg op een bijzondere plek. Spullen hebben ze genoeg, een herinnering niet.']] },
     'belevenis-cadeau': { top: [['Onze topkeuze', 'dk-78c5a18049'], ['Voor durfals', 'dk-904317b4e5'], ['Beste koop', 'dk-4c68d47ad3']], faq: [
       ['Wat is een belevenis cadeau?', 'Je geeft geen spullen, maar iets om te doen: een uitje, een workshop, een nachtje weg of een spannende activiteit. Je bestelt de belevenis bij Doenkado.'],
       ['Wat is een leuk belevenis cadeau voor een stel?', 'Een nachtje in een pod op de Veluwe, een rondvaart door Giethoorn, een wijnproeverij of samen een helikoptervlucht. Iets wat je samen doet, onthoud je samen.'],

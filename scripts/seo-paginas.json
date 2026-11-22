@@ -171,7 +171,8 @@
   "titel": "Cadeau voor een voetballer: 18 ideeën voor jong en oud"
  },
  "/gids/kerstpakket-ideeen/": {
-  "titel": "Kerstpakket ideeën: 24 pakketten en cadeausets"
+  "titel": "Kerstpakket ideeën: 28 pakketten, ook voor personeel",
+  "omschrijving": "Kerstpakket ideeën voor familie, vrienden, collega's, personeel of klanten: zoet, borrel, thee en koffie, verwennen en brievenbuspakketten. Met de prijs erbij."
  },
  "/sint-rijmmachine/": {
   "titel": "Sinterklaasgedicht maken: gratis, grappig en persoonlijk",
@@ -292,5 +293,9 @@
  "/gids/sinterklaascadeau-ideeen/": {
   "titel": "Sinterklaascadeau ideeën 2026: 24 cadeaus voor iedereen",
   "omschrijving": "Sinterklaascadeau ideeën: cadeautjes voor in de schoen, voor kinderen en tieners, voor lootjes onder 15 euro, iets lekkers en spellen voor pakjesavond (5 december). Met de prijs erbij."
+ },
+ "/gids/weekendje-weg-cadeau/": {
+  "titel": "Weekendje weg cadeau: 24 bijzondere overnachtingen en uitjes",
+  "omschrijving": "Een weekendje weg cadeau geven: slapen in een molen, kerk of onder de sterren, op het ss Rotterdam of in een boomhut. Met prijs per nacht en hoe de cadeaubon werkt."
  }
 }
