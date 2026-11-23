@@ -18,12 +18,12 @@
 
   /* Wie: de ontvangers van Nova, gekoppeld aan de Voor wie-pagina's van de site */
   var WIE = [
-    { id: 'vader', naam: 'Vader', p: 'hem', hij: 'hij', zijn: 'je vader', beeld: 'voor-hem', smal: /ouder|papa|vader/ },
-    { id: 'moeder', naam: 'Moeder', p: 'haar', hij: 'zij', zijn: 'je moeder', beeld: 'voor-haar', smal: /ouder|mama|moeder/ },
-    { id: 'vriend', naam: 'Partner of vriend', p: 'hem', hij: 'hij', zijn: 'hem', beeld: 'voor-hem' },
-    { id: 'vriendin', naam: 'Partner of vriendin', p: 'haar', hij: 'zij', zijn: 'haar', beeld: 'voor-haar' },
-    { id: 'opa', naam: 'Opa', p: 'opa-oma', hij: 'hij', zijn: 'opa', beeld: 'voor-opa-oma', g: 'hem' },
-    { id: 'oma', naam: 'Oma', p: 'opa-oma', hij: 'zij', zijn: 'oma', beeld: 'voor-opa-oma', g: 'haar' },
+    { id: 'vader', naam: 'Vader', p: 'hem', hij: 'hij', zijn: 'je vader', eigen: 'vonk-vader', beeld: 'voor-hem', smal: /ouder|papa|vader/ },
+    { id: 'moeder', naam: 'Moeder', p: 'haar', hij: 'zij', zijn: 'je moeder', eigen: 'vonk-moeder', beeld: 'voor-haar', smal: /ouder|mama|moeder/ },
+    { id: 'vriend', naam: 'Partner of vriend', p: 'hem', hij: 'hij', zijn: 'hem', eigen: 'vonk-vriend', beeld: 'voor-hem' },
+    { id: 'vriendin', naam: 'Partner of vriendin', p: 'haar', hij: 'zij', zijn: 'haar', eigen: 'vonk-vriendin', beeld: 'voor-haar' },
+    { id: 'opa', naam: 'Opa', p: 'opa-oma', hij: 'hij', zijn: 'opa', eigen: 'vonk-opa', beeld: 'voor-opa-oma', g: 'hem' },
+    { id: 'oma', naam: 'Oma', p: 'opa-oma', hij: 'zij', zijn: 'oma', eigen: 'vonk-oma', beeld: 'voor-opa-oma', g: 'haar' },
     { id: 'kind', naam: 'Kind', p: 'kinderen', hij: 'het kind', zijn: 'het kind', beeld: 'voor-kinderen', kind: true },
     { id: 'tiener', naam: 'Tiener', p: 'tieners', hij: 'de tiener', zijn: 'de tiener', beeld: 'voor-tieners' },
     { id: 'baby', naam: 'Baby', p: 'baby', hij: 'de baby', zijn: 'de baby', beeld: 'voor-baby' },
@@ -271,7 +271,7 @@
     vast.hidden = true; stapLabel.textContent = S.stap >= 1 && S.stap <= 4 ? 'Vraag ' + S.stap + ' van 4' : '';
     var w = wieVan(), h = '';
     if (S.stap === 0) {
-      h = '<button type="button" class="held" data-verder aria-label="Start VONK"><img src="/images/vonk/vonk2-hero.webp" alt="VONK, jouw persoonlijke cadeauverrasser" width="1200" height="675"></button>' +
+      h = '<button type="button" class="held" data-verder aria-label="Start VONK"><img class="m" src="/images/vonk/vonk2-hero-mobiel.webp" alt="VONK, jouw persoonlijke cadeauverrasser" width="720" height="900"><img class="d" src="/images/vonk/vonk2-hero.webp" alt="VONK, jouw persoonlijke cadeauverrasser" width="1200" height="675"></button>' +
         '<div class="start-t"><h1>Jij kent de persoon. Ik vind het cadeau.</h1><p>Vier korte vragen, dan laat VONK drie cadeaus zien die echt passen. Niet goed? Laat VONK opnieuw zoeken in de richting die jij kiest.</p></div>' +
         '<form class="zin" id="zinForm"><label for="zinIn"><b>Of vertel het VONK in één zin</b></label><div class="zin-rij"><input id="zinIn" type="text" maxlength="120" autocomplete="off" placeholder="Bijv. mijn vader van 74 houdt van tuinieren en bier, max 50 euro"><button type="submit" class="goud">Zoek</button></div><p class="zin-uitleg">VONK haalt eruit voor wie, wat diegene leuk vindt en je budget. Daarna kun je alles nog aanpassen.</p></form>' +
         '<div class="stappen-uitleg"><div><b>1</b>Voor wie?</div><div><b>2</b>Waar wordt diegene blij van?</div><div><b>3</b>Wat mag het kosten?</div><div><b>4</b>Hoe verrassend?</div></div>';
@@ -279,7 +279,7 @@
     }
     if (S.stap === 1) {
       h = balk(1) + '<div class="vraag"><h2>Voor wie zoeken we een cadeau?</h2><p class="uitleg">Tik er één aan.</p><div class="tegels">' + WIE.map(function (x) {
-        return '<button type="button" class="tegel" data-wie="' + x.id + '" aria-pressed="' + (S.wie === x.id) + '"><img src="/images/sub/rond/' + x.beeld + '-klein.webp" alt="" width="58" height="58"><span class="n">' + esc(x.naam) + '</span></button>';
+        return '<button type="button" class="tegel" data-wie="' + x.id + '" aria-pressed="' + (S.wie === x.id) + '">' + (x.eigen ? '<img class="scene" src="/images/vonk/' + x.eigen + '.webp" alt="" width="72" height="72">' : '<img src="/images/sub/rond/' + x.beeld + '-klein.webp" alt="" width="58" height="58">') + '<span class="n">' + esc(x.naam) + '</span></button>';
       }).join('') + '</div>' +
         (w && w.kind ? '<div class="leeftijd" id="lftBlok"><b>Hoe oud is het kind?</b><span class="uitleg">Mag je overslaan; dan kiest VONK cadeaus vanaf 3 jaar.</span><div class="chips">' + LEEFTIJD.map(function (l) { return '<button type="button" class="chip" data-lft="' + l.id + '" aria-pressed="' + (S.lft === l.id) + '">' + l.n + '</button>'; }).join('') + '</div></div>' : '') + '</div>';
       vastKnop('Volgende', !S.wie);
@@ -299,7 +299,7 @@
     }
     if (S.stap === 4) {
       h = balk(4) + terug() + '<div class="vraag"><h2>Hoe verrassend mag het zijn?</h2><p class="uitleg">Dit verandert echt welke cadeaus VONK kiest.</p><div class="verras">' + VERRAS.map(function (v) {
-        return '<button type="button" class="vt" data-vr="' + v.id + '" aria-pressed="' + (S.vr === v.id) + '"><span class="ico" aria-hidden="true">' + v.ico + '</span><span><b>' + v.n + '</b><span>' + v.o + '</span></span></button>';
+        return '<button type="button" class="vt" data-vr="' + v.id + '" aria-pressed="' + (S.vr === v.id) + '"><img class="ico" src="/images/vonk/vonk-' + v.id + '.webp" alt="" width="64" height="64"><span><b>' + v.n + '</b><span>' + v.o + '</span></span></button>';
       }).join('') + '</div><details class="extra"' + (S.mom || S.vrij ? ' open' : '') + '><summary>Nog iets dat VONK mag weten? (mag je overslaan)</summary><b>Voor welk moment?</b><div class="chips">' + MOMENT.map(function (m) {
         return '<button type="button" class="chip" data-mom="' + m.id + '" aria-pressed="' + (S.mom === m.id) + '">' + m.n + '</button>'; }).join('') + '</div>' +
         '<label for="vrij"><b>Nog iets over ' + esc(w ? w.zijn : 'diegene') + '?</b></label><input type="text" id="vrij" maxlength="80" placeholder="Bijv. houdt van katten, drinkt veel koffie" value="' + esc(S.vrij) + '"></details></div>';
@@ -339,7 +339,7 @@
     var zo = S.richting === 'zoals' && PER[S.zoals[0]];
     var rnaam = zo ? 'Meer zoals ' + zo.titel : /^meer:/.test(S.richting) ? 'Meer ' + klein((U.ints.filter(function (i) { return 'meer:' + i.id === S.richting; })[0] || {}).n || '') : RICHT[S.richting];
     var n = U.drie.length;
-    var h = '<div class="uk"><img src="/images/vonk/vonk2-duim.webp" alt="" width="120" height="76"><div><h1>' + (n ? 'VONK heeft <em>' + (n === 1 ? '1 verrassing' : n + ' verrassingen') + '</em> voor je gevonden!' : 'VONK zoekt verder') + '</h1><p>' + sam + '</p></div></div>';
+    var h = '<div class="uk"><img src="/images/vonk/vonk-robot-duim.webp" alt="" width="96" height="108"><div><h1>' + (n ? 'VONK heeft <em>' + (n === 1 ? '1 verrassing' : n + ' verrassingen') + '</em> voor je gevonden!' : 'VONK zoekt verder') + '</h1><p>' + sam + '</p></div></div>';
     if (S.begrepen) h += '<div class="begrepen"><b>VONK begreep:</b> ' + esc(S.begrepen) + ' <button type="button" class="link" data-wijzig>Klopt niet? Pas aan</button></div>';
     if (rnaam) h += '<p style="margin:12px 0 0"><span class="richting">Nieuwe ronde: ' + esc(rnaam.length > 70 ? rnaam.slice(0, 66) + '…' : rnaam) + '</span></p>';
     if (U.melding) h += '<div class="melding">' + esc(U.melding) + '</div>';
@@ -412,7 +412,7 @@
   /* even 'VONK zoekt…' (0,6 s): het kiezen zelf duurt een paar milliseconden, maar zo voelt de onthulling als een onthulling */
   function zoekEven() {
     vast.hidden = true; stapLabel.textContent = '';
-    app.innerHTML = '<div class="zoekt" role="status"><img src="/images/vonk/vonk-icoon.webp" alt="" width="96" height="96"><p>VONK zoekt de mooiste cadeaus…</p></div>';
+    app.innerHTML = '<div class="zoekt" role="status"><img src="/images/vonk/vonk-robot-zoekt.webp" alt="" width="130" height="150"><p>VONK zoekt de mooiste cadeaus…</p></div>';
     window.scrollTo(0, 0);
     setTimeout(function () { teken(); }, window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 650);
   }
