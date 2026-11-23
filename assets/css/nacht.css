@@ -64,3 +64,44 @@ html.nacht .sh .kies-geld a.sh-aan .sh-munt,html.nacht .wijzer .wz-munten .chip.
 /* Geen streepjesluifels meer, ook niet bij de kraampjes */
 html.nacht .sh .luifel{display:none!important}
 html.nacht .sh .sh-munt *,html.nacht .wijzer .wz-munten .chip.munt *{color:#FFDF9A!important;opacity:1!important}
+
+/* GROTER (23-11-2026, Marius: 'kan alles groter, de rondjes, de etalages, het is zo klein') */
+/* De straat: op de telefoon één winkel per rij, dan is de etalage twee keer zo groot; computer drie naast elkaar */
+html.nacht .sh .straat{grid-template-columns:minmax(0,1fr);gap:34px 0}
+html.nacht .sh .straat>.gevel{max-width:460px;width:100%;justify-self:center}
+@media (min-width:700px){html.nacht .sh .straat{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px}html.nacht .sh .straat>.gevel{max-width:none}}
+@media (min-width:1000px){html.nacht .sh .straat{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* In de etalage: minder rand om de cadeaus, dus grotere foto's */
+html.nacht .sh .gv-raam{gap:2.4cqw;padding:2.8cqw}
+html.nacht .sh .gv-raam img{padding:.6cqw}
+html.nacht .sh .gv-wat{font-size:24px}
+html.nacht .sh .gv-tel{font-size:17px}
+@media (min-width:700px){html.nacht .sh .gv-wat{font-size:24px}html.nacht .sh .gv-tel{font-size:17px}}
+/* Voor wie: grote rondjes die hun vak vullen */
+html.nacht .sh .kies{padding:16px 8px 14px}
+html.nacht .sh .kies h2{font-size:22px}
+html.nacht .sh .kies-wie{gap:14px 4px}
+html.nacht .sh .kr{width:min(84px,21vw);height:min(84px,21vw)}
+html.nacht .sh .kn{font-size:15px}
+@media (min-width:700px){html.nacht .sh .kr{width:104px;height:104px}html.nacht .sh .kn{font-size:16px}}
+html.nacht .sh .sh-munt{width:min(62px,16.4vw);height:min(62px,16.4vw);font-size:16px}
+html.nacht .sh .kies-geld{gap:5px;flex-wrap:nowrap}
+@media (max-width:359px){html.nacht .sh .sh-munt{width:54px;height:54px;font-size:14px}}
+/* Rondjes van categorieën en soorten: ook groter */
+html.nacht .srij-raster .srij-baan{gap:12px 4px}
+html.nacht .srij-rond{width:min(80px,20vw);height:min(80px,20vw)}
+html.nacht .srij-item{font-size:14px}
+html.nacht .srij-rij .srij-item{flex-basis:98px}
+html.nacht .srij-rij .srij-rond{width:84px;height:84px}
+@media (min-width:760px){html.nacht .srij .srij-item{flex:0 0 128px;font-size:15px}html.nacht .srij .srij-rond{width:100px;height:100px}}
+/* Ronde emblemen van de winkels: groter in de kraampjes en bij binnenkomst */
+html.nacht .sh .gang-kop img{width:72px;height:72px}
+html.nacht .sh .gang-kop{gap:14px}
+html.nacht .sh .binnen-kop.nova .embleem{width:96px;height:96px;bottom:-42px}
+html.nacht .sh .binnen-kop.nova .pui{padding-top:50px}
+@media (min-width:700px){html.nacht .sh .gang-kop img{width:84px;height:84px}html.nacht .sh .binnen-kop.nova .embleem{width:120px;height:120px;bottom:-52px}html.nacht .sh .binnen-kop.nova .pui{padding-top:62px}}
+/* Zoek een product: grotere rondjes bij de soorten */
+html.nacht .srt-st-rond{width:84px;height:84px}
+html.nacht .srt-vt-rond{width:96px;height:96px}
+html.nacht .mini-tegel .mt-rond{flex-basis:56px;width:56px;height:56px}
+@media (max-width:359px){html.nacht .srt-st-rond{width:70px;height:70px}html.nacht .srt-vt-rond{width:80px;height:80px}}
