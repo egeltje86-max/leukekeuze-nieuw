@@ -1448,6 +1448,22 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   s.vakjes.push({ slug: 'spaarpotten', naam: 'Spaarpotten & kluisjes', tekst: 'Een spaarpot is een cadeau dat elke dag blijft staan. Hier vind je grappige spaarpotten (schedels, biervaatjes, een klomp), spaarpotten van games en films, spaarvarkens voor kinderen en echte kluisjes met een code.' });
 })();
 /* ===== einde spaarpotten ===== */
+/* ===== 23-11-2026 (Marius: 'orden het op de site, ps5 bij ps5, nintendo bij nintendo, het is een rommeltje als alles door elkaar staat'): games per spelcomputer.
+   Twee nieuwe vakjes (PlayStation-games, Nintendo Switch-games); het oude vakje Games (zelfde adres) heet nu 'Xbox en voor elke console'. ===== */
+(function () {
+  var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'elektronica' && !x.verborgen; })[0];
+  var s = c && (c.subs || []).filter(function (x) { return x.slug === 'gaming' && x.vakjes && !x.verborgen; })[0];
+  if (!s || s.vakjes.some(function (v) { return v.slug === 'games-playstation'; })) return;
+  var i = -1; s.vakjes.forEach(function (v, j) { if (v.slug === 'games') i = j; });
+  var oud = i >= 0 ? s.vakjes[i] : null;
+  if (oud) { oud.naam = 'Xbox en voor elke console'; oud.tekst = 'Games voor de Xbox, games die je voor elke spelcomputer kiest (zoals GTA VI, EA Sports FC en Minecraft) en tegoed om zelf games te kopen.'; }
+  var nieuw = [
+    { slug: 'games-playstation', naam: 'PlayStation-games', tekst: 'Games voor de PlayStation 5: van Ghost of Yōtei, Gran Turismo en Spider-Man tot Astro Bot, LEGO en sportgames. Voor tieners, volwassenen en het hele gezin.', beeld: 'images/sub/iconen/icoon-elektronica-gaming-games.webp' },
+    { slug: 'games-nintendo-switch', naam: 'Nintendo Switch-games', tekst: 'Games voor de Nintendo Switch en de Switch 2: Mario Kart, Pokémon, Zelda, Animal Crossing, Mario Party en meer. Bij elke game staat voor welke Switch hij is.', beeld: 'images/sub/iconen/icoon-elektronica-gaming-games.webp' }
+  ];
+  s.vakjes.splice(i >= 0 ? i : s.vakjes.length, 0, nieuw[0], nieuw[1]);
+})();
+/* ===== einde games per spelcomputer ===== */
 /* ===== 23-11-2026 (GO Marius: 'go 2'): dunne belevenis-vakjes samengevoegd, zodat er geen vakjes met 3 tot 5 belevenissen meer zijn.
    Droomauto rijden heet nu 'Rijden & racen' (zelfde adres) en krijgt de belevenissen van 4x4, quad & motor en Slipcursus;
    nieuw: Watersport (Kano & SUP, Waterskiën, kitesurfen & flyboarden, Duiken) en Workshops (Zelf maken, Fotograferen).

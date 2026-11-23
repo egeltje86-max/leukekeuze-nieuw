@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1F2B48">
+<title>VONK 2.0 – testversie</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<!-- VONK 2.0 (23-11-2026, opdracht Nova via Marius: 'Jij kent de persoon. Ik vind het cadeau.'). TESTVERSIE, niet live, niet in Google.
+     Vier vragen (voor wie, waar wordt diegene blij van, budget, hoe verrassend), daarna 3 cadeaus met een eerlijke uitleg,
+     en 'Verras me opnieuw' in een richting die je zelf kiest. Alle antwoorden blijven staan, getoonde cadeaus komen niet terug.
+     Gebruikt alleen de eigen gegevens van de site: de Voor wie-pagina's (assets/data/voorwie.js, dus dezelfde regels),
+     de keurmeester (p.km), de handgekozen toppen; het budget is hard. Geen AI, geen kosten per vraag. -->
+<style>
+:root{--navy:#1F2B48;--goud:#B8862E;--goud2:#8F6620;--lgoud:#F2CB74;--creme:#F7F3EC;--ivoor:#FFFCF7;--wit:#fff;--inkt:#141A2A;--zacht:#5B6070;--rand:#E5D7BE;
+  --k:'Playfair Display',Georgia,serif;--f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--creme);color:var(--inkt);font:500 16px/1.5 var(--f)}
+img{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid #137ca8;outline-offset:3px}
+.test{background:#FFE8A3;color:#3A2A05;font:700 13px/1.3 var(--f);text-align:center;padding:7px 12px}
+.test a{font-weight:800}
+.kop{background:var(--navy);color:#fff;padding:10px max(16px,env(safe-area-inset-right)) 10px max(16px,env(safe-area-inset-left));display:flex;align-items:center;gap:10px}
+.kop a{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;font:800 17px var(--f)}
+.kop img{width:34px;height:34px}
+.kop .stap{margin-left:auto;font:700 13px var(--f);color:var(--lgoud)}
+.wrap{max-width:880px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-right)) 120px max(16px,env(safe-area-inset-left))}
+.held{display:block;width:100%;border:0;padding:0;background:var(--navy);border-radius:22px;overflow:hidden;box-shadow:0 14px 40px rgba(20,26,42,.25)}
+.held img{width:100%;height:auto}
+.held .m{display:block}.held .d{display:none}
+@media (min-width:720px){.held .m{display:none}.held .d{display:block}}
+.start-t{text-align:center;margin:18px auto 0;max-width:560px}
+.start-t h1{font:700 clamp(28px,7vw,42px)/1.1 var(--k);margin:0 0 6px;text-wrap:balance}
+.start-t p{color:var(--zacht);margin:0 0 16px}
+.stappen-uitleg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 0}
+@media (min-width:720px){.stappen-uitleg{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stappen-uitleg div{background:var(--ivoor);border:1px solid var(--rand);border-radius:16px;padding:12px;text-align:center;font-weight:700;font-size:14px}
+.stappen-uitleg b{display:grid;place-items:center;width:30px;height:30px;margin:0 auto 6px;border-radius:50%;background:var(--navy);color:var(--lgoud);font:800 15px var(--f)}
+.goud{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border:1px solid #C99740;border-radius:999px;background:linear-gradient(#F8DC95,#E3B04F);color:#1E1608;font:800 17px var(--f);box-shadow:0 6px 0 #9C6C24,0 12px 26px rgba(156,108,36,.25);transition:transform .12s}
+.goud:active{transform:translateY(3px);box-shadow:0 3px 0 #9C6C24}
+.goud[disabled]{opacity:.45;box-shadow:none;cursor:not-allowed}
+.goud.vol{width:100%}
+.lijn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border:1.5px solid var(--rand);border-radius:999px;background:var(--wit);font:700 15px var(--f);text-decoration:none}
+.vraag h2{font:700 clamp(24px,6vw,34px)/1.15 var(--k);margin:6px 0 4px;text-wrap:balance}
+.vraag .uitleg{color:var(--zacht);margin:0 0 14px}
+.balk{height:6px;border-radius:3px;background:#E9E0CF;overflow:hidden;margin:4px 0 14px}
+.balk i{display:block;height:100%;background:linear-gradient(90deg,var(--goud),var(--lgoud));transition:width .3s}
+.terug{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--zacht);font:700 14px var(--f);padding:8px 0;min-height:44px}
+.tegels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (min-width:720px){.tegels{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.tegel{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px 10px;background:var(--ivoor);border:1.5px solid var(--rand);border-radius:18px;text-align:center;min-height:118px;position:relative}
+.tegel img{width:58px;height:58px;border-radius:50%;object-fit:cover;background:#fff}
+.tegel .n{font:800 14px/1.2 var(--f);hyphens:auto;overflow-wrap:anywhere}
+.tegel[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.tegel[aria-pressed=true]::after{content:'✓';position:absolute;top:6px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--lgoud);color:var(--navy);font:900 13px/22px var(--f)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--rand);background:var(--wit);font:700 15px var(--f)}
+.chip[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.leeftijd{margin-top:16px;padding:14px;border-radius:18px;background:var(--ivoor);border:1px solid var(--rand)}
+.leeftijd b{display:block;margin-bottom:2px}
+.teller{font:700 14px var(--f);color:var(--goud2);margin:10px 0 0;min-height:21px}
+.budget{background:var(--navy);color:#fff;border-radius:22px;padding:20px 18px 16px}
+.budget .groot{font:700 44px/1 var(--k);color:var(--lgoud);text-align:center}
+.budget .klein{text-align:center;color:#D9DCE6;font-size:14px;margin:6px 0 10px}
+.budget input[type=range]{width:100%;accent-color:#E3B04F;height:36px}
+.budget .chips .chip{background:transparent;color:#fff;border-color:#55617F}
+.budget .chips .chip[aria-pressed=true]{background:var(--lgoud);color:var(--navy);border-color:var(--lgoud)}
+.verras{display:grid;gap:10px}
+@media (min-width:720px){.verras{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vt{display:flex;gap:12px;align-items:center;text-align:left;padding:14px;border-radius:18px;background:var(--ivoor);border:1.5px solid var(--rand);min-height:84px}
+.vt .ico{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:28px;background:#fff;border:1px solid var(--rand)}
+.vt b{display:block;font:800 16px var(--f)}
+.vt span{display:block;color:var(--zacht);font-size:14px;line-height:1.35}
+.vt[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.vt[aria-pressed=true] span{color:#D9DCE6}
+.vt[aria-pressed=true] .ico{background:var(--lgoud);border-color:var(--lgoud)}
+details.extra{margin:16px 0 0;background:var(--ivoor);border:1px solid var(--rand);border-radius:18px;padding:4px 14px}
+details.extra summary{min-height:48px;display:flex;align-items:center;font-weight:800;cursor:pointer}
+details.extra input[type=text]{width:100%;min-height:48px;border:1.5px solid var(--rand);border-radius:12px;padding:0 12px;background:#fff;margin:6px 0 12px}
+.vast{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px max(16px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));background:linear-gradient(rgba(247,243,236,0),var(--creme) 30%)}
+.vast .binnen{max-width:880px;margin:0 auto}
+.uk{display:flex;gap:12px;align-items:center;background:var(--navy);color:#fff;border-radius:22px;padding:14px 14px 14px 10px;overflow:hidden}
+.uk img{width:120px;height:auto;flex:none;border-radius:14px}
+@media (max-width:380px){.uk img{width:84px}}
+.uk h1{font:700 clamp(21px,5.4vw,30px)/1.15 var(--k);margin:0 0 4px;color:#fff;text-wrap:balance}
+.uk h1 em{font-style:normal;color:var(--lgoud)}
+.uk p{margin:0;color:#D9DCE6;font-size:14px;line-height:1.4}
+.drie{display:grid;gap:14px;margin:16px 0}
+@media (min-width:760px){.drie{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kaart{background:var(--wit);border:1px solid var(--rand);border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(20,26,42,.08);display:flex;flex-direction:column;position:relative;animation:op .5s both;min-width:0}
+.kaart:nth-child(2){animation-delay:.12s}.kaart:nth-child(3){animation-delay:.24s}
+@keyframes op{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.kaart{animation:none}}
+.kaart .foto{aspect-ratio:4/3;background:#fff;display:block;min-height:0;overflow:hidden;flex:none}
+@media (min-width:760px){.kaart .foto{aspect-ratio:1}}
+.kaart .foto img{width:100%;height:100%;object-fit:contain;padding:12px}
+.kaart .fav{position:absolute;top:12px;left:12px;z-index:2;background:var(--navy);color:var(--lgoud);font:800 12px var(--f);padding:6px 10px;border-radius:999px}
+.kaart .hart{position:absolute;top:10px;right:10px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--rand);background:#fff;display:grid;place-items:center}
+.kaart .hart svg{width:22px;height:22px}
+.kaart .hart[aria-pressed=true]{background:#FCE8EA;border-color:#E8A0A8;color:#C0392B}
+.kaart .hart[aria-pressed=true] svg{fill:currentColor}
+.kaart .in{padding:12px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kaart h3{font:800 17px/1.3 var(--f);margin:0;overflow-wrap:anywhere}
+.kaart .pr{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.kaart .pr b{font:800 21px var(--f)}
+.kaart .pr span{color:var(--zacht);font-size:14px}
+.kaart ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.kaart li{display:flex;gap:8px;font-size:14px;line-height:1.4;color:#2C3242}
+.kaart li::before{content:'✦';color:var(--goud);flex:none}
+.kaart .bekijk{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:var(--navy);color:#fff;text-decoration:none;font:800 16px var(--f)}
+.opnieuw{background:var(--ivoor);border:1px solid var(--rand);border-radius:22px;padding:16px}
+.opnieuw h2{font:700 22px/1.2 var(--k);margin:0 0 2px}
+.opnieuw p{margin:0 0 4px;color:var(--zacht);font-size:14px}
+.melding{background:#FFF6DD;border:1px solid #F0D58A;border-radius:16px;padding:12px 14px;margin:14px 0;font-size:15px}
+.onder{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
+.noot{font-size:13px;color:var(--zacht);margin:14px 0 0}
+.richting{display:inline-block;margin:0 0 6px;background:var(--lgoud);color:var(--navy);font:800 13px var(--f);padding:5px 12px;border-radius:999px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="test">Testversie van VONK 2.0, nog niet voor bezoekers. <a href="/vonk/">Naar de huidige VONK</a></div>
+<header class="kop"><a href="/"><img src="/images/vonk/vonk-icoon-klein.webp" alt="" width="34" height="34">VONK</a><span class="stap" id="stapLabel"></span></header>
+<main class="wrap" id="app" aria-live="polite"></main>
+<div class="vast" id="vast" hidden><div class="binnen" id="vastIn"></div></div>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/topkeuze.js"></script>
+<script src="/assets/js/producten-lean.js"></script>
+<script src="/assets/data/voorwie.js"></script>
+<script src="/nieuw/vonk2/rondje.js"></script>
+<script src="/nieuw/vonk2/vonk2.js"></script>
+</body>
+</html>
