@@ -1024,15 +1024,13 @@
     '/c/koken-tafelen': { titel: 'Wat zoek je?', top: ['koken-bakken', 'koffie-thee-zetten', 'mokken-glazen', 'tafelen-borrel'] },
     /* 9-11-2026 (GO Marius): Belevenissen. Eerst zijn zes favorieten, de rest onder 'Bekijk alle onderwerpen'. */
     '/c/belevenissen': { titel: 'Waar heb je zin in?', vast: [
-      ['auto', 'Droomauto rijden', '/c/belevenissen/snelheid-avontuur/droomauto-rijden', '🏎️'], ['lucht', 'Paragliden & helikopter', '/c/belevenissen/in-de-lucht', '🪂'],
-      ['fly', 'Flyboarden & waterskiën', '/c/belevenissen/water-strand/waterskien-kitesurfen-flyboarden', '🌊'], ['escape', 'Escape rooms', '/c/belevenissen/escape-rooms-puzzeltochten/escape-rooms', '🔐'],
+      ['auto', 'Rijden & racen', '/c/belevenissen/snelheid-avontuur/droomauto-rijden', '🏎️'], ['lucht', 'Paragliden & helikopter', '/c/belevenissen/in-de-lucht', '🪂'],
+      ['fly', 'Watersport', '/c/belevenissen/water-strand/watersport', '🌊'], ['escape', 'Escape rooms', '/c/belevenissen/escape-rooms-puzzeltochten/escape-rooms', '🔐'],
       ['puzzel', 'Puzzeltochten', '/c/belevenissen/escape-rooms-puzzeltochten/puzzel-speurtochten', '🧩'], ['slapen', 'Overnachten', '/c/belevenissen/dagjes-uit-overnachten/overnachten', '🛖'],
       ['boot', 'Boottochten & zeilen', '/c/belevenissen/water-strand/boottochten-zeilen', '⛵'], ['dieren', 'Dieren kijken', '/c/belevenissen/natuur-dieren/dieren-kijken-knuffelen', '🦭'],
-      ['modder', '4x4, quad & motor', '/c/belevenissen/snelheid-avontuur/4x4-quad-motor', '🚙'], ['slip', 'Slipcursus', '/c/belevenissen/snelheid-avontuur/slipcursus', '🛞'],
-      ['kano', 'Kano & SUP', '/c/belevenissen/water-strand/kano-sup', '🛶'], ['duik', 'Duiken', '/c/belevenissen/water-strand/duiken', '🤿'],
       ['strand', 'Blokarten & powerkiten', '/c/belevenissen/water-strand/blokarten-powerkiten', '🪁'], ['wandel', 'Wandeltochten', '/c/belevenissen/natuur-dieren/wandeltochten', '🥾'],
-      ['fiets', 'Fietsen, steppen & scooteren', '/c/belevenissen/natuur-dieren/fietsen-steppen-scooteren', '🚲'], ['maak', 'Zelf maken', '/c/belevenissen/workshops-proeven/zelf-maken', '🧀'],
-      ['proef', 'Proeven & eettours', '/c/belevenissen/workshops-proeven/proeven-eettours', '🍷'], ['foto', 'Fotograferen', '/c/belevenissen/workshops-proeven/fotograferen', '📷'],
+      ['fiets', 'Fietsen, steppen & scooteren', '/c/belevenissen/natuur-dieren/fietsen-steppen-scooteren', '🚲'], ['maak', 'Workshops', '/c/belevenissen/workshops-escape-proeven/workshops', '🧀'],
+      ['proef', 'Proeven & eettours', '/c/belevenissen/workshops-proeven/proeven-eettours', '🍷'],
       ['yoga', 'Yoga & ontspanning', '/c/belevenissen/workshops-proeven', '🧘'], ['dag', 'Dagjes uit', '/c/belevenissen/dagjes-uit-overnachten/dagjes-uit', '🗺️'],
       ['meer', 'Nog meer uitjes', '/c/belevenissen/dagjes-uit-overnachten/nog-meer-uitjes', '✨']] },
     '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-boeken', 'sieraden', 'wanddecoratie-teksten', 'kerst', 'doop-belijdenis-kinderen', 'bijbels-psalmboeken', 'boeken-muziek', 'voor-kinderen', 'doop-belijdenis'] },
@@ -1628,7 +1626,7 @@
   var BELEVENIS_TEGELS = [
     ['Droomauto rijden', 'snelheid-avontuur', 'droomauto-rijden', 'dk-9393c6d57b'],
     ['Paragliden', 'in-de-lucht', '', 'dk-d8f37a3161'],
-    ['Flyboard & waterski', 'water-strand', 'waterskien-kitesurfen-flyboarden', 'dk-da9d4b8898'],
+    ['Watersport', 'water-strand', 'watersport', 'dk-da9d4b8898'],
     ['Escape room', 'escape-rooms-puzzeltochten', 'escape-rooms', 'dk-f69947b4d7'],
     ['Puzzeltocht', 'escape-rooms-puzzeltochten', 'puzzel-speurtochten', 'dk-4c68d47ad3'],
     ['Overnachten', 'dagjes-uit-overnachten', 'overnachten', 'dk-35d0e56982']];

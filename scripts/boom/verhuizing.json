@@ -8,6 +8,7 @@
   "17-11-2026 (wens Marius): nieuwe groep Hello Kitty & vriendjes bij Speelgoed (blok HELLO KITTY-HOEK in data.js).",
   "17-11-2026 (wens Marius): de groep Pokémon & verzamelkaarten heet nu Pokémon en krijgt ook de vakjes van de verborgen groep speelgoed/pokemon-hoek (blok POKÉMON-HOEK in data.js).",
   "Vakjes houden hun eigen adresnaam; 'alsVak' voegt alle vakjes van een oude groep samen tot één vakje.",
+  "23-11-2026 (GO Marius: 'go 2'): dunne belevenis-vakjes samengevoegd. 4x4, quad & motor en Slipcursus gaan op in Droomauto rijden (heet nu Rijden & racen); Kano & SUP, Waterskiën en Duiken in het nieuwe vakje Watersport; Zelf maken en Fotograferen in het nieuwe vakje Workshops (blok in data.js na 'einde spaarpotten'). De oude adressen sturen door naar het nieuwe vakje (wegNaar).",
   "Hierna draaien: node scripts/boom/verhuis.js  (schrijft scripts/boom/verhuisd.json en het 4.0-blok onderaan assets/js/data.js). Daarna bouwen + controleren."
  ],
  "afdelingen": [
@@ -148,12 +149,12 @@
     ] },
   { "slug": "belevenissen", "naam": "Belevenissen", "kort": "Belevenissen",
     "groepen": [
-     { "slug": "avontuur-snelheid", "naam": "Avontuur & snelheid", "beeld": "images/sub/iconen/icoon-belevenissen-avontuur-snelheid.webp", "uit": ["belevenissen/snelheid-avontuur", "belevenissen/in-de-lucht"],
+     { "slug": "avontuur-snelheid", "naam": "Avontuur & snelheid", "weg": ["4x4-quad-motor", "slipcursus"], "wegNaar": {"4x4-quad-motor": "/c/belevenissen/avontuur-snelheid/droomauto-rijden", "slipcursus": "/c/belevenissen/avontuur-snelheid/droomauto-rijden"}, "beeld": "images/sub/iconen/icoon-belevenissen-avontuur-snelheid.webp", "uit": ["belevenissen/snelheid-avontuur", "belevenissen/in-de-lucht"],
        "tekst": "Voor wie van spanning houdt: in een droomauto rijden, een slipcursus, met een quad door de modder, paragliden of een helikoptervlucht.", "seoTitel": "Avontuur en snelheid cadeau geven – droomauto, slipcursus, helikoptervlucht" },
-     { "slug": "water-strand", "naam": "Water & strand", "beeld": "images/sub/iconen/icoon-belevenissen-water-strand.webp", "uit": ["belevenissen/water-strand"] },
+     { "slug": "water-strand", "naam": "Water & strand", "weg": ["kano-sup", "waterskien-kitesurfen-flyboarden", "duiken"], "wegNaar": {"kano-sup": "/c/belevenissen/water-strand/watersport", "waterskien-kitesurfen-flyboarden": "/c/belevenissen/water-strand/watersport", "duiken": "/c/belevenissen/water-strand/watersport"}, "beeld": "images/sub/iconen/icoon-belevenissen-water-strand.webp", "uit": ["belevenissen/water-strand"] },
      { "slug": "uitjes-natuur", "naam": "Uitjes & natuur", "beeld": "images/sub/iconen/icoon-belevenissen-uitjes-natuur.webp", "uit": ["belevenissen/dagjes-uit-overnachten", "belevenissen/natuur-dieren"],
        "tekst": "Samen eropuit: een dagje uit, een bijzondere overnachting, dieren kijken en knuffelen, wandelen, fietsen of steppen.", "seoTitel": "Uitjes en natuur cadeau geven – dagje uit, overnachten en dieren" },
-     { "slug": "workshops-escape-proeven", "naam": "Workshops, escape & proeven", "beeld": "images/sub/iconen/icoon-belevenissen-workshops-escape-proeven.webp", "uit": ["belevenissen/escape-rooms-puzzeltochten", "belevenissen/workshops-proeven"],
+     { "slug": "workshops-escape-proeven", "naam": "Workshops, escape & proeven", "weg": ["zelf-maken", "fotograferen"], "wegNaar": {"zelf-maken": "/c/belevenissen/workshops-escape-proeven/workshops", "fotograferen": "/c/belevenissen/workshops-escape-proeven/workshops"}, "beeld": "images/sub/iconen/icoon-belevenissen-workshops-escape-proeven.webp", "uit": ["belevenissen/escape-rooms-puzzeltochten", "belevenissen/workshops-proeven"],
        "tekst": "Samen iets doen of maken: een escape room, een puzzel- of speurtocht, een workshop, een proeverij of een eettour.", "seoTitel": "Workshops, escape rooms en proeverijen cadeau geven" }
     ] },
   { "slug": "christelijk", "naam": "Christelijke cadeaus", "kort": "Christelijk",
