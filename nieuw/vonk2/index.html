@@ -121,6 +121,22 @@ details.extra input[type=text]{width:100%;min-height:48px;border:1.5px solid var
 .onder{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
 .noot{font-size:13px;color:var(--zacht);margin:14px 0 0}
 .richting{display:inline-block;margin:0 0 6px;background:var(--lgoud);color:var(--navy);font:800 13px var(--f);padding:5px 12px;border-radius:999px}
+.zin{margin:18px 0 0;background:var(--ivoor);border:1.5px solid var(--rand);border-radius:20px;padding:14px}
+.zin label{display:block;margin-bottom:8px}
+.zin-rij{display:flex;gap:8px}
+.zin-rij input{flex:1;min-width:0;min-height:52px;border:1.5px solid var(--rand);border-radius:14px;padding:0 14px;background:#fff;font-size:16px}
+.zin-rij .goud{min-height:52px;padding:0 18px;box-shadow:0 4px 0 #9C6C24}
+.zin-uitleg{margin:8px 0 0;font-size:13.5px;color:var(--zacht)}
+.stuur{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stuur button{min-height:44px;border-radius:999px;border:1.5px solid var(--rand);background:var(--ivoor);font:700 13.5px var(--f);padding:0 8px}
+.stuur button:active{background:var(--navy);color:#fff}
+.begrepen{margin:12px 0 0;background:#fff;border:1px solid var(--rand);border-radius:16px;padding:10px 14px;font-size:14.5px}
+.link{border:0;background:none;padding:0 0 0 4px;color:var(--goud2);font:800 14px var(--f);text-decoration:underline;min-height:32px}
+.zoekt{min-height:60vh;display:grid;place-items:center;align-content:center;gap:14px;text-align:center}
+.zoekt img{width:96px;height:96px;animation:fonkel 1.1s ease-in-out infinite}
+.zoekt p{font:700 20px var(--k);margin:0;color:var(--navy)}
+@keyframes fonkel{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(-6deg);filter:drop-shadow(0 0 14px #F2CB74)}}
+@media (prefers-reduced-motion:reduce){.zoekt img{animation:none}}
 [hidden]{display:none!important}
 </style>
 </head>

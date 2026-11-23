@@ -91,7 +91,7 @@
   }
 
   /* ---------- toestand ---------- */
-  var LEEG = { stap: 0, wie: '', lft: '', int: [], max: 50, geen: false, vr: 'verrassend', mom: '', vrij: '', richting: '', extraMax: 0, gezien: [] };
+  var LEEG = { stap: 0, wie: '', lft: '', int: [], max: 50, geen: false, vr: 'verrassend', mom: '', vrij: '', richting: '', extraMax: 0, gezien: [], zoals: [], nietVak: [] };
   var S = JSON.parse(JSON.stringify(LEEG));
   (function leesHash() {
     var h = location.hash.replace(/^#/, ''); if (!h) return;
@@ -113,6 +113,7 @@
     if (!p._km) { var o = {}; String(p.km).split(',').forEach(function (x) { var m = /^(z?[gpx]\.[a-z_-]+?)(-?\d+)$/.exec(x); if (m) o[m[1]] = +m[2]; }); p._km = o; }
     return p._km['p.' + pe] || 0;
   }
+  function kmG(p, g) { if (!p.km) return 0; kmAftrek(p, 'x'); return (p._km || {})['g.' + g] || 0; }
   function leeftijdPast(p, l) { if (!l) return true; var a = p.leeftijd; if (!a) return l.van >= 3; return a[0] <= l.tot && a[1] >= l.van; }
   function soort(p, s) { return (p.soort || []).indexOf(s) !== -1; }
   function woorden2(t) { return String(t).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (x) { return x.length > 3; }).slice(0, 2).join(' '); }
@@ -127,8 +128,10 @@
       if (!(maxPrijs === Infinity || p.prijs <= maxPrijs)) return false;           /* budget is heilig */
       if (p.drank && !drankMag) return false;                                     /* drank alleen als je erom vraagt */
       if (w && w.p && kmAftrek(p, w.p) >= 26) return false;                        /* de keurmeester */
+      if (w && w.p === 'collega' && (kmG(p, 'bedankt') >= 26 || kmG(p, 'lootjes') >= 26)) return false;   /* collega = bedankje of lootje */
       if (p.smal && /ouder|papa|mama|opa|oma/.test(p.smal) && !(w && w.smal && w.smal.test(p.smal)) && !(w && w.p === 'opa-oma' && /opa|oma/.test(p.smal))) return false;
       if (w && w.kind && !leeftijdPast(p, l)) return false;
+      if (S.nietVak.indexOf(p.vak) !== -1) return false;                            /* 'Niet dit soort' */
       if (S.mom === 'sinterklaas' && KERSTW.test(p.titel)) return false;
       if (S.mom === 'kerst' && SINTW.test(p.titel)) return false;
       return true;
@@ -148,6 +151,10 @@
     if (ctx.richting === 'origineler') { if (soort(p, 'origineel') || ORIG.has(p.id)) n += 3; if (soort(p, 'praktisch')) n -= 1; }
     if (ctx.richting === 'praktischer') { if (soort(p, 'praktisch')) n += 3; if (GRAP.has(p.id)) n -= 2; }
     if (ctx.richting === 'persoonlijker' && PERSOONLIJK.has(p.id)) n += 6;
+    if (ctx.zoals.length) ctx.zoals.forEach(function (z) {           /* 'Meer zoals dit': zelfde vakje, groep of merk telt mee */
+      if (p.vak === z.vak) n += 5; else if (p.groep === z.groep) n += 2.5;
+      if (p.merk && p.merk === z.merk) n += 1.5;
+      if (ctx.ints.some(function (i) { return i.ids.has(p.id) && i.ids.has(z.id); })) n += 1; });
     if (S.mom && (p.moment || []).indexOf(S.mom) !== -1) n += 1;
     if (ctx.max !== Infinity) { var r = p.prijs / ctx.max; if (r >= 0.4) n += 1.5; else if (r < 0.15) n -= 1; }
     if (ctx.woorden.length) { var t = (p.titel + ' ' + (p.merk || '') + ' ' + (p.kort || '')).toLowerCase(); ctx.woorden.forEach(function (x) { if (t.indexOf(x) !== -1) n += 4; }); }
@@ -167,7 +174,8 @@
     var top = {}; (TOP['/voor/' + (w && w.p)] || []).forEach(function (id, i) { if (top[id] === undefined) top[id] = i; });
     var woorden = String(S.vrij || '').toLowerCase().split(/[^a-z0-9à-ü]+/).filter(function (x) { return x.length > 3 && !/^(houdt|graag|heel|veel|leuk|leuke|mooi|iets|niet|voor|zijn|haar|hem|van|een|die|dat|ook|drinkt|speelt|heeft)$/.test(x); })
       .map(function (x) { return x.replace(/(en|s)$/, ''); });
-    var ctx = { ints: ints, top: top, vr: S.vr, richting: S.richting, max: max, woorden: woorden };
+    var zoals = S.zoals.map(function (id) { return PER[id]; }).filter(Boolean);
+    var ctx = { ints: ints, top: top, vr: S.vr, richting: S.richting, max: max, woorden: woorden, zoals: zoals };
     var binnen = function (p) { return !ints.length || ints.some(function (i) { return i.ids.has(p.id); }); };
     var ri = richtInt && ints.filter(function (i) { return i.id === richtInt; })[0];
     if (ri) binnen = function (p) { return ri.ids.has(p.id); };
@@ -213,6 +221,41 @@
     return r.slice(0, 4);
   }
 
+  /* ---------- in één zin (geen AI: woordenlijsten, kost niets) ---------- */
+  var ZIN_WIE = [[/\b(opa|grootvader|opi)\b/, 'opa'], [/\b(oma|grootmoeder|omi)\b/, 'oma'], [/\b(collega|baas|leidinggevende|manager|juf|meester)\b/, 'collega'],
+    [/\b(baby|pasgeboren|kraam|kraamcadeau|newborn)\b/, 'baby'], [/\b(tiener|puber|tienerzoon|tienerdochter)\b/, 'tiener'],
+    [/\b(zoon|zoontje|dochter|dochtertje|kind|kindje|neefje|nichtje|kleinkind|kleinzoon|kleindochter|jongen|jongetje|meisje|petekind)\b/, 'kind'],
+    [/\b(vader|papa|pa|schoonvader)\b/, 'vader'], [/\b(moeder|mama|ma|schoonmoeder)\b/, 'moeder'],
+    [/\b(man|vriend|echtgenoot|partner|broer|zwager|oom|buurman)\b/, 'vriend'], [/\b(vrouw|vriendin|echtgenote|zus|schoonzus|tante|buurvrouw)\b/, 'vriendin']];
+  var ZIN_INT = [[/tuin|tuinier|planten|bloemen|vogel|natuur/, /tuin|bloemen|natuur/], [/voetbal|sport|fiets|wielren|hardlo|fitness|golf|tennis|padel|zwem|yoga/, /sport/],
+    [/dart/, /dart/], [/bbq|barbecue|vlees|grill/, /bbq/], [/kook|koken|keuken|bakken|bakt/, /keuken|koken/], [/lees|lezen|boek|roman/, /boek/],
+    [/muziek|vinyl|platen|gitaar|radio/, /muziek|radio/], [/game|gamen|gamer|gaming|playstation|ps5|switch|xbox|nintendo/, /gaming|gadgets/],
+    [/lego|bouwen/, /lego|bouwen/], [/puzzel|spel|spelletje/, /puzzel|spel/], [/knutsel|creatief|haken|breien|tekenen|schilder/, /creatief|knutsel|haken|hobby/],
+    [/parfum|geur|verzorging|verwen|skincare|make-?up|wellness|spa/, /parfum|verzorging|geuren|verwennen/], [/kaars|sfeer|interieur|wonen/, /wonen|sfeer|kamer/],
+    [/koffie|thee/, /koffie|keuken/], [/snoep|chocola|lekker|zoetekauw|drop/, /lekker/], [/grap|humor|lachen|grappig|lol/, /lachen/],
+    [/bier|wijn|whisk|gin|drank|borrel|cocktail/, /glazen|drank|bar|lekkers/], [/foto|herinnering/, /foto|naam/], [/naam|persoonlijk|gegraveerd/, /naam/],
+    [/horloge/, /horloge/], [/sieraa|ketting|oorbel|armband/, /sieraden/], [/pantoffel|slof|warm|knus|plaid/, /pantoffel|warm|kleding/], [/uitje|belevenis|dagje|ervaring/, /belevenis/]];
+  function leesZin(zin) {
+    var t = ' ' + zin.toLowerCase().replace(/[,.!?;:]/g, ' ') + ' ', m, uit = {};
+    ZIN_WIE.some(function (r) { var mm = r[0].exec(t); if (mm) { uit.wie = r[1]; uit.woord = mm[1]; return true; } return false; });
+    if ((m = t.match(/\b(\d{1,2})\s*(jaar|jr)\b|\bwordt (\d{1,2})\b|\bvan (\d{1,2})\b(?! ?(euro|eur))/))) {
+      var jr = +(m[1] || m[3] || m[4]);
+      if (jr <= 12 && (!uit.wie || uit.wie === 'kind' || uit.wie === 'vriend' || uit.wie === 'vriendin')) { uit.wie = jr <= 1 ? 'baby' : 'kind'; uit.lft = jr <= 2 ? '0-2' : jr <= 5 ? '3-5' : jr <= 8 ? '6-8' : '9-12'; }
+      else if (jr >= 13 && jr <= 17 && (!uit.wie || uit.wie === 'kind')) uit.wie = 'tiener';
+    }
+    if ((m = t.match(/\b(max|maximaal|tot|onder|hooguit|budget|niet meer dan|rond|ongeveer)\s*(de\s*|een\s*|van\s*)?(€\s*)?(\d{1,4})/) || t.match(/€\s*(\d{1,4})/) || t.match(/\b(\d{1,4})\s*(euro|eur)\b/))) {
+      var b = +(m[4] || m[1]); if (b >= 3 && b <= 2000) uit.max = /rond|ongeveer/.test(m[1] || '') ? Math.ceil(b * 1.15) : b;
+    }
+    if (/originee?l|bijzonder|verras|uniek|apart|gek\b/.test(t)) uit.vr = 'onverwacht'; else if (/praktisch|handig|nuttig|gebruik/.test(t)) uit.vr = 'vertrouwd';
+    MOMENT.forEach(function (mo) { if (new RegExp(mo.id === 'sinterklaas' ? 'sinterklaas|\\bsint\\b|pakjesavond|schoen' : mo.id === 'verjaardag' ? 'verjaardag|jarig|wordt \\d' : mo.id).test(t)) uit.mom = uit.mom || mo.id; });
+    var w = WIE.filter(function (x) { return x.id === (uit.wie || 'iemand'); })[0], ints = interesses(w), gekozen = [];
+    ZIN_INT.forEach(function (r) { if (!r[0].test(t) || gekozen.length >= 3) return;
+      var i = ints.filter(function (x) { return gekozen.indexOf(x.id) === -1 && r[1].test(x.id + ' ' + x.n.toLowerCase()); })[0]; if (i) gekozen.push(i.id); });
+    uit.int = gekozen; uit.vrij = zin.slice(0, 120);
+    return uit;
+  }
+  var BUDGET_STD = { vader: 50, moeder: 50, vriend: 50, vriendin: 50, opa: 25, oma: 25, kind: 25, tiener: 25, baby: 25, collega: 15, iemand: 25 };
+
   /* ---------- lijstje (zelfde bewaarplek als de site) ---------- */
   var K_FAV = 'lk-favorieten-v1';
   function favs() { try { return JSON.parse(localStorage.getItem(K_FAV) || '[]'); } catch (e) { return []; } }
@@ -230,6 +273,7 @@
     if (S.stap === 0) {
       h = '<button type="button" class="held" data-verder aria-label="Start VONK"><img src="/images/vonk/vonk2-hero.webp" alt="VONK, jouw persoonlijke cadeauverrasser" width="1200" height="675"></button>' +
         '<div class="start-t"><h1>Jij kent de persoon. Ik vind het cadeau.</h1><p>Vier korte vragen, dan laat VONK drie cadeaus zien die echt passen. Niet goed? Laat VONK opnieuw zoeken in de richting die jij kiest.</p></div>' +
+        '<form class="zin" id="zinForm"><label for="zinIn"><b>Of vertel het VONK in één zin</b></label><div class="zin-rij"><input id="zinIn" type="text" maxlength="120" autocomplete="off" placeholder="Bijv. mijn vader van 74 houdt van tuinieren en bier, max 50 euro"><button type="submit" class="goud">Zoek</button></div><p class="zin-uitleg">VONK haalt eruit voor wie, wat diegene leuk vindt en je budget. Daarna kun je alles nog aanpassen.</p></form>' +
         '<div class="stappen-uitleg"><div><b>1</b>Voor wie?</div><div><b>2</b>Waar wordt diegene blij van?</div><div><b>3</b>Wat mag het kosten?</div><div><b>4</b>Hoe verrassend?</div></div>';
       vastKnop('✦ Start VONK');
     }
@@ -289,13 +333,15 @@
     var U = UIT, f = favs();
     var naamInts = U.ints.map(function (i) { return klein(i.n); });
     var lft = LEEFTIJD.filter(function (l) { return l.id === S.lft; })[0];
-    var sam = 'Voor ' + esc(w ? w.zijn : 'diegene') + (lft ? ' (' + lft.n + ')' : '') +
+    var sam = 'Voor ' + esc(S.wieNaam || (w ? w.zijn : 'diegene')) + (lft ? ' (' + lft.n + ')' : '') +
       (naamInts.length ? ', die blij wordt van ' + esc(naamInts.join(', ').replace(/, ([^,]*)$/, ' en $1')) : '') + ', ' + (U.max === Infinity ? 'elk bedrag' : 'tot ' + euroKort(U.max)) + ', ' + VERRAS.filter(function (v) { return v.id === S.vr; })[0].n.toLowerCase() + '.';
     var RICHT = { origineler: 'Nog origineler', praktischer: 'Praktischer', persoonlijker: 'Persoonlijker', goedkoper: 'Goedkoper' };
-    var rnaam = /^meer:/.test(S.richting) ? 'Meer ' + klein((U.ints.filter(function (i) { return 'meer:' + i.id === S.richting; })[0] || {}).n || '') : RICHT[S.richting];
+    var zo = S.richting === 'zoals' && PER[S.zoals[0]];
+    var rnaam = zo ? 'Meer zoals ' + zo.titel : /^meer:/.test(S.richting) ? 'Meer ' + klein((U.ints.filter(function (i) { return 'meer:' + i.id === S.richting; })[0] || {}).n || '') : RICHT[S.richting];
     var n = U.drie.length;
     var h = '<div class="uk"><img src="/images/vonk/vonk2-duim.webp" alt="" width="120" height="76"><div><h1>' + (n ? 'VONK heeft <em>' + (n === 1 ? '1 verrassing' : n + ' verrassingen') + '</em> voor je gevonden!' : 'VONK zoekt verder') + '</h1><p>' + sam + '</p></div></div>';
-    if (rnaam) h += '<p style="margin:12px 0 0"><span class="richting">Nieuwe ronde: ' + esc(rnaam) + '</span></p>';
+    if (S.begrepen) h += '<div class="begrepen"><b>VONK begreep:</b> ' + esc(S.begrepen) + ' <button type="button" class="link" data-wijzig>Klopt niet? Pas aan</button></div>';
+    if (rnaam) h += '<p style="margin:12px 0 0"><span class="richting">Nieuwe ronde: ' + esc(rnaam.length > 70 ? rnaam.slice(0, 66) + '…' : rnaam) + '</span></p>';
     if (U.melding) h += '<div class="melding">' + esc(U.melding) + '</div>';
     h += '<div class="drie">' + U.drie.map(function (x) {
       var p = x.p, op = f.indexOf(p.id) !== -1, link = PRODUCT + encodeURIComponent(p.id) + '/';
@@ -303,7 +349,8 @@
         '<button type="button" class="hart" data-hart="' + esc(p.id) + '" aria-pressed="' + op + '" aria-label="' + (op ? 'Van je lijstje halen' : 'Op je lijstje zetten') + '">' + HART + '</button>' +
         '<a class="foto" href="' + link + '" data-klik="' + esc(p.id) + '"><img src="/' + esc(p.beeld) + '.webp" alt="' + esc(p.titel) + '" loading="lazy"></a>' +
         '<div class="in"><h3>' + esc(p.titel) + '</h3><div class="pr"><b>' + euro(p.prijs) + '</b><span>bij ' + esc(p.shop) + '</span></div><ul>' + waarom(x, U).map(function (z) { return '<li>' + esc(z) + '</li>'; }).join('') + '</ul>' +
-        '<a class="bekijk" href="' + link + '" data-klik="' + esc(p.id) + '">Bekijk cadeau</a></div></article>';
+        '<a class="bekijk" href="' + link + '" data-klik="' + esc(p.id) + '">Bekijk cadeau</a>' +
+        '<div class="stuur"><button type="button" data-zoals="' + esc(p.id) + '">Meer zoals dit</button><button type="button" data-niet="' + esc(p.id) + '">Niet dit soort</button></div></div></article>';
     }).join('') + '</div>';
     var chips = [['origineler', 'Nog origineler']].concat(U.ints.filter(function (i) { return i.id !== 'met-naam'; }).map(function (i) { return ['meer:' + i.id, 'Meer ' + klein(i.n)]; }), [['persoonlijker', 'Persoonlijker'], ['praktischer', 'Praktischer']]);
     if (n && Math.max.apply(null, U.drie.map(function (x) { return x.p.prijs; })) > 8) chips.push(['goedkoper', 'Goedkoper']);
@@ -320,26 +367,37 @@
     if (t.hasAttribute('data-verder')) {
       if (t.disabled) return;
       if (S.stap === 0) tel('start');
-      if (S.stap === 4) { var v = document.getElementById('vrij'); S.vrij = v ? v.value.trim() : ''; S.gezien = []; S.richting = ''; S.extraMax = 0; UIT = null; try { history.replaceState(null, '', hashVan()); } catch (x) {} tel('klaar/' + S.wie + '/' + S.vr); }
-      S.stap = Math.min(5, S.stap + 1); teken(); return;
+      if (S.stap === 4) { var v = document.getElementById('vrij'); S.vrij = v ? v.value.trim() : ''; S.gezien = []; S.richting = ''; S.extraMax = 0; S.zoals = []; S.nietVak = []; S.begrepen = ''; UIT = null; try { history.replaceState(null, '', hashVan()); } catch (x) {} tel('klaar/' + S.wie + '/' + S.vr); }
+      S.stap = Math.min(5, S.stap + 1); if (S.stap === 5) zoekEven(); else teken(); return;
     }
     if (t.hasAttribute('data-terug')) { S.stap = Math.max(0, S.stap - 1); teken(); return; }
     if (t.dataset.wie) {
-      if (S.wie !== t.dataset.wie) { S.int = []; S.lft = ''; }
-      S.wie = t.dataset.wie;
+      if (S.wie !== t.dataset.wie) { S.int = []; S.lft = ''; S.wieNaam = ''; }
+      S.wie = t.dataset.wie; if (!S.budgetGekozen) S.max = BUDGET_STD[S.wie] || 25;
       if (wieVan().kind) { teken(false); var lb = document.getElementById('lftBlok'); if (lb) lb.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
       else { S.stap = 2; teken(); }
       return;
     }
     if (t.dataset.lft) { S.lft = S.lft === t.dataset.lft ? '' : t.dataset.lft; [].forEach.call(document.querySelectorAll('[data-lft]'), function (b) { b.setAttribute('aria-pressed', b.dataset.lft === S.lft); }); return; }
     if (t.dataset.int) { var i = S.int.indexOf(t.dataset.int); if (i !== -1) S.int.splice(i, 1); else if (S.int.length < 3) S.int.push(t.dataset.int); teken(false); return; }
-    if (t.dataset.max) { if (t.dataset.max === 'geen') S.geen = true; else { S.geen = false; S.max = +t.dataset.max; } var s = document.getElementById('bSchuif'); if (s) { s.value = S.geen ? 1000 : naarSchuif(S.max); s._zet(true); } return; }
+    if (t.dataset.max) { S.budgetGekozen = true; if (t.dataset.max === 'geen') S.geen = true; else { S.geen = false; S.max = +t.dataset.max; } var s = document.getElementById('bSchuif'); if (s) { s.value = S.geen ? 1000 : naarSchuif(S.max); s._zet(true); } return; }
     if (t.dataset.vr) { S.vr = t.dataset.vr; [].forEach.call(document.querySelectorAll('[data-vr]'), function (b) { b.setAttribute('aria-pressed', b.dataset.vr === S.vr); }); return; }
     if (t.dataset.mom) { S.mom = S.mom === t.dataset.mom ? '' : t.dataset.mom; [].forEach.call(document.querySelectorAll('[data-mom]'), function (b) { b.setAttribute('aria-pressed', b.dataset.mom === S.mom); }); return; }
+    if (t.dataset.zoals) { S.zoals = [t.dataset.zoals]; S.richting = 'zoals'; tel('zoals'); UIT = null; zoekEven(); return; }
+    if (t.dataset.niet) {
+      var pn = PER[t.dataset.niet]; if (pn && S.nietVak.indexOf(pn.vak) === -1) S.nietVak.push(pn.vak); tel('niet');
+      /* alleen dat ene cadeau wisselen; de andere twee blijven staan */
+      var rest = UIT.drie.filter(function (x) { return x.p.id !== t.dataset.niet; });
+      var nieuw = kies().drie.filter(function (x) { return rest.every(function (r) { return r.p.vak !== x.p.vak && r.p.id !== x.p.id; }); })[0];
+      UIT.drie = UIT.drie.map(function (x) { return x.p.id === t.dataset.niet ? nieuw : x; }).filter(Boolean);
+      if (nieuw) S.gezien.push(nieuw.p.id); if (UIT.fav === t.dataset.niet) UIT.fav = '';
+      if (!nieuw) UIT.melding = 'Geen ander cadeau meer dat past. Kies hieronder een richting of pas je antwoorden aan.';
+      teken(false); return;
+    }
     if (t.dataset.richting) {
       S.richting = t.dataset.richting;
       if (S.richting === 'goedkoper' && UIT && UIT.drie.length) S.extraMax = Math.floor(Math.max.apply(null, UIT.drie.map(function (x) { return x.p.prijs; })) * 0.7);
-      tel('opnieuw/' + S.richting.replace(':', '-')); UIT = null; teken(); return;
+      tel('opnieuw/' + S.richting.replace(':', '-')); UIT = null; zoekEven(); return;
     }
     if (t.dataset.hart) { var aan = wisselFav(t.dataset.hart); t.setAttribute('aria-pressed', aan); t.setAttribute('aria-label', aan ? 'Van je lijstje halen' : 'Op je lijstje zetten'); if (aan) tel('lijstje'); return; }
     if (t.dataset.klik) { tel('klik'); return; }
@@ -348,8 +406,25 @@
       var tekst = 'VONK vond deze cadeaus voor ' + (w ? w.zijn : 'iemand') + ':\n' + UIT.drie.map(function (x) { return '• ' + x.p.titel + ' (' + euro(x.p.prijs) + ') ' + location.origin + PRODUCT + x.p.id + '/'; }).join('\n') + '\n\nProbeer VONK zelf: ' + url;
       tel('deel'); window.open('https://wa.me/?text=' + encodeURIComponent(tekst), '_blank', 'noopener'); return;
     }
-    if (t.hasAttribute('data-wijzig')) { S.stap = 4; teken(); return; }
+    if (t.hasAttribute('data-wijzig')) { S.begrepen = ''; S.stap = 1; teken(); return; }
     if (t.hasAttribute('data-nieuw')) { S = JSON.parse(JSON.stringify(LEEG)); S.stap = 1; UIT = null; try { history.replaceState(null, '', location.pathname); } catch (x) {} teken(); return; }
+  });
+  /* even 'VONK zoekt…' (0,6 s): het kiezen zelf duurt een paar milliseconden, maar zo voelt de onthulling als een onthulling */
+  function zoekEven() {
+    vast.hidden = true; stapLabel.textContent = '';
+    app.innerHTML = '<div class="zoekt" role="status"><img src="/images/vonk/vonk-icoon.webp" alt="" width="96" height="96"><p>VONK zoekt de mooiste cadeaus…</p></div>';
+    window.scrollTo(0, 0);
+    setTimeout(function () { teken(); }, window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 650);
+  }
+  document.addEventListener('submit', function (e) {
+    if (e.target.id !== 'zinForm') return; e.preventDefault();
+    var z = document.getElementById('zinIn').value.trim(); if (!z) return;
+    var r = leesZin(z), w = WIE.filter(function (x) { return x.id === (r.wie || 'iemand'); })[0];
+    S = JSON.parse(JSON.stringify(LEEG)); S.wie = w.id; S.lft = r.lft || ''; S.int = r.int; S.max = r.max || BUDGET_STD[w.id] || 25; S.vr = r.vr || 'verrassend'; S.mom = r.mom || ''; S.vrij = r.vrij; S.wieNaam = r.woord && !/^(kind|kindje|tiener|baby|partner|collega)$/.test(r.woord) ? 'je ' + r.woord : '';
+    var ints = interesses(w).filter(function (i) { return S.int.indexOf(i.id) !== -1; }).map(function (i) { return klein(i.n); });
+    S.begrepen = 'voor ' + (S.wieNaam || w.zijn) + (S.lft ? ' (' + LEEFTIJD.filter(function (l) { return l.id === S.lft; })[0].n + ')' : '') + (ints.length ? ', houdt van ' + ints.join(', ') : '') + ', tot ' + euroKort(S.max) + (r.max ? '' : ' (zelf gekozen bedrag: pas aan als je wilt)') + '.';
+    if (r.max) S.budgetGekozen = true;
+    tel('zin/' + w.id); UIT = null; S.stap = 5; try { history.replaceState(null, '', hashVan()); } catch (x) {} zoekEven();
   });
   window.V2 = { get S() { return S; }, kies: kies, basis: basis, interesses: interesses, WIE: WIE, zet: function (o) { Object.assign(S, o); UIT = null; } };   /* voor de test */
   teken();
