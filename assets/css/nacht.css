@@ -12,8 +12,8 @@ html.nacht .sh h2,html.nacht .sh .gang-kop h2{color:#fff}
 
 /* Bovenaan: de boulevard */
 html.nacht .sh .sh-hero{background:var(--n-bg);border-radius:22px;box-shadow:0 0 0 1px rgba(95,227,255,.25),0 18px 50px -18px rgba(95,227,255,.45)}
-html.nacht .sh .sh-hero img{aspect-ratio:900/1040;object-position:50% 12%}
-@media (min-width:700px){html.nacht .sh .sh-hero img{aspect-ratio:1600/620;object-position:50% 40%}}
+html.nacht .sh .sh-hero img{aspect-ratio:1080/1250;object-position:50% 50%}
+@media (min-width:700px){html.nacht .sh .sh-hero img{aspect-ratio:2400/930;object-position:50% 50%}}
 html.nacht .sh .sh-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,24,.55) 0,rgba(6,11,24,0) 32%,rgba(6,11,24,0) 70%,rgba(6,11,24,.6) 100%);pointer-events:none}
 html.nacht .sh .sh-hero .straatbord{z-index:1;background:none!important;box-shadow:none!important;padding:0;top:6%;color:#fff;font:800 clamp(30px,9vw,54px)/1 Manrope,system-ui,sans-serif;letter-spacing:-.01em;
   text-shadow:0 0 10px rgba(242,203,116,.75),0 0 30px rgba(242,203,116,.45),0 2px 0 rgba(0,0,0,.4)}
