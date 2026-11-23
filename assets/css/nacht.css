@@ -1,0 +1,66 @@
+/* NACHT (voorbeeld 23-11-2026, Marius: 'ik wil heel de site anders, dit is te oudbollig, niet van deze tijd'; koos een cadeauboulevard bij nacht).
+   Alleen met de klasse nacht op <html> (testlink ?proef=nacht). Bouwt op de donkere versie (donker.css): nachtblauw, goud en ijsblauw. */
+html.nacht{--n-bg:#060B18;--n-bg2:#0B1428;--n-kaart:#0F1A33;--n-rand:rgba(242,203,116,.22);--n-goud:#F2CB74;--n-goud2:#FFDF9A;--n-ijs:#5FE3FF;--n-tekst:#EEF3FF;--n-zacht:#A9B6D3}
+html.nacht body{background:var(--n-bg) radial-gradient(1200px 600px at 50% -200px,#13244A 0,transparent 70%) no-repeat;color:var(--n-tekst)}
+html.nacht .header,html.nacht .zoekrij{background:rgba(6,11,24,.92)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+html.nacht .header{box-shadow:0 1px 0 rgba(95,227,255,.25),0 8px 24px -12px rgba(95,227,255,.35)}
+
+/* De koppen: geen ouderwetse schreefletter meer, strak en licht */
+html.nacht body,html.nacht body *{font-family:Manrope,system-ui,sans-serif!important}
+html.nacht h1,html.nacht h2,html.nacht h3,html.nacht .gv-wat{letter-spacing:-.01em}
+html.nacht .sh h2,html.nacht .sh .gang-kop h2{color:#fff}
+
+/* Bovenaan: de boulevard */
+html.nacht .sh .sh-hero{background:var(--n-bg);border-radius:22px;box-shadow:0 0 0 1px rgba(95,227,255,.25),0 18px 50px -18px rgba(95,227,255,.45)}
+html.nacht .sh .sh-hero img{aspect-ratio:900/1040;object-position:50% 12%}
+@media (min-width:700px){html.nacht .sh .sh-hero img{aspect-ratio:1600/620;object-position:50% 40%}}
+html.nacht .sh .sh-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,24,.55) 0,rgba(6,11,24,0) 32%,rgba(6,11,24,0) 70%,rgba(6,11,24,.6) 100%);pointer-events:none}
+html.nacht .sh .sh-hero .straatbord{z-index:1;background:none!important;box-shadow:none!important;padding:0;top:6%;color:#fff;font:800 clamp(30px,9vw,54px)/1 Manrope,system-ui,sans-serif;letter-spacing:-.01em;
+  text-shadow:0 0 10px rgba(242,203,116,.75),0 0 30px rgba(242,203,116,.45),0 2px 0 rgba(0,0,0,.4)}
+html.nacht .sh .sh-hero .straatbord small{color:var(--n-ijs);font-size:12px;letter-spacing:.3em;margin-bottom:10px;text-shadow:0 0 10px rgba(95,227,255,.8)}
+@media (min-width:700px){html.nacht .sh .sh-hero .straatbord{top:8%;font-size:58px}}
+html.nacht .sh .welkom .lampjes{display:none}
+html.nacht .sh .welkom.nova>p{color:var(--n-zacht)}
+
+/* Lichtsnoeren in de straat: goud en ijsblauw */
+html.nacht .sh .lampjes{background:none!important;height:18px;position:relative}
+html.nacht .sh .lampjes::before{content:"";position:absolute;left:0;right:0;top:8px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--n-goud) 15%,var(--n-ijs) 50%,var(--n-goud) 85%,transparent);box-shadow:0 0 12px rgba(242,203,116,.6),0 0 24px rgba(95,227,255,.35);opacity:.85}
+
+/* Kaarten en blokken: donker glas met een dunne gouden rand */
+html.nacht .sh .gang,html.nacht .sh .kraam,html.nacht .rz-smal,html.nacht .seizoen-kaart,html.nacht .sh .straat-kop,html.nacht .wt-tegel,html.nacht .cb-wissel a{
+  background:linear-gradient(180deg,rgba(19,33,66,.85),rgba(11,20,40,.92))!important;border-color:var(--n-rand)!important}
+html.nacht .sh a.pk,html.nacht .prodkaart{background:var(--n-kaart)!important;border:1px solid rgba(255,255,255,.07)!important;box-shadow:0 10px 24px -16px rgba(0,0,0,.8)}
+html.nacht .sh .pk-foto,html.nacht .prodkaart .beeld{background:#fff!important;border-radius:12px}
+html.nacht .sh .pk-p,html.nacht .prodkaart .prijs{color:var(--n-goud2)!important}
+
+/* Knoppen: goud dat licht geeft */
+html.nacht .sh-meer,html.nacht .meer-knop.groot,html.nacht .sh .gang-voet button{background:linear-gradient(180deg,#FFE3A0,#E2AE45)!important;color:#1A1405!important;border:0!important;box-shadow:0 0 0 1px rgba(255,223,154,.5),0 0 22px -4px rgba(242,203,116,.65)}
+
+/* Voor wie: rondjes met een ijsblauwe gloed als ze gekozen zijn */
+html.nacht .sh .kies-wie a img{box-shadow:0 0 0 2px rgba(95,227,255,.25)}
+html.nacht .sh .kies-wie a.sh-aan img{box-shadow:0 0 0 3px var(--n-ijs),0 0 18px rgba(95,227,255,.7)}
+
+/* Gevels van de winkels: de oude huisjes worden donker en krijgen een gouden lichtrand tot er nieuwe gevels zijn */
+html.nacht .sh .gevel .gv{border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px var(--n-rand),0 14px 30px -18px rgba(95,227,255,.5)}
+html.nacht .sh .gevel .gv-beeld{filter:brightness(.62) saturate(.85) hue-rotate(-8deg)}
+html.nacht .sh .gevel .gv-wat{color:#fff}
+html.nacht .sh .gevel .gv-tel{color:var(--n-goud2)}
+html.nacht .sh .gevel .gv-beeld[src*="/nacht/"]{filter:none}
+/* Nieuwe nachtgevels van Nova (images/straat/nacht/): naam als lichtgevende tekst op de band, etalage als donker glas */
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-bord{top:24.5%;height:9.5%;color:#fff;font-weight:800;text-shadow:0 0 6px rgba(255,223,154,.9),0 0 18px rgba(242,203,116,.6),0 1px 2px rgba(0,0,0,.8)}
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-raam{background:radial-gradient(120% 90% at 50% 0%,rgba(95,227,255,.16) 0,rgba(6,11,24,.92) 60%);box-shadow:inset 0 0 0 1px rgba(242,203,116,.35)}
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-raam>span{box-shadow:0 0 0 1px rgba(255,255,255,.15),0 6px 14px -6px rgba(95,227,255,.5)}
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-deur{text-shadow:0 0 8px rgba(95,227,255,.8),0 1px 2px rgba(0,0,0,.8)}
+/* Binnen in een winkel: geen streepjesluifel meer */
+html.nacht .sh .binnen-kop .luifel{display:none}
+html.nacht .sh .binnen-kop{border-color:rgba(242,203,116,.35)!important;background:linear-gradient(180deg,#0F1A33,#0B1428)!important}
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-raam.loket b{color:#fff;text-shadow:0 0 8px rgba(242,203,116,.6)}
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-raam.toe{background:linear-gradient(180deg,rgba(40,52,80,.92),rgba(14,20,36,.95))}
+html.nacht .sh .gevel:has(.gv-beeld[src*="/nacht/"]) .gv-raam.toe b{background:rgba(6,11,24,.85);color:#fff;box-shadow:0 0 0 1px rgba(242,203,116,.4)}
+html.nacht .sh .gevel.dicht .gv-beeld[src*="/nacht/"]{filter:brightness(.55) saturate(.6)}
+/* Bedragen als munten van donker glas met een gekleurde lichtrand (geen pastel meer) */
+html.nacht .sh .sh-munt,html.nacht .wijzer .wz-munten .chip.munt{background:radial-gradient(circle at 50% 35%,#1B2C55 0,#0B1428 75%)!important;color:#fff!important;border:0!important;box-shadow:0 0 0 1.5px var(--n-goud),0 0 14px -2px rgba(242,203,116,.55)!important}
+html.nacht .sh .kies-geld a.sh-aan .sh-munt,html.nacht .wijzer .wz-munten .chip.munt[aria-current="true"]{box-shadow:0 0 0 3px var(--n-ijs),0 0 18px rgba(95,227,255,.7)!important}
+/* Geen streepjesluifels meer, ook niet bij de kraampjes */
+html.nacht .sh .luifel{display:none!important}
+html.nacht .sh .sh-munt *,html.nacht .wijzer .wz-munten .chip.munt *{color:#FFDF9A!important;opacity:1!important}

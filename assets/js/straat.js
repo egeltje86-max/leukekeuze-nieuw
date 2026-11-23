@@ -404,12 +404,18 @@
     if (g.ic) return rond(g.ic);
     return y ? '/images/sub/iconen/icoon-' + y.replace('/', '-') + '.webp' : novaRond('winkel-' + w.id);
   }
+  /* NACHT (voorbeeld 23-11-2026, Marius: 'ik wil heel de site anders, dit is te oudbollig'; koos een cadeauboulevard bij nacht in goud en ijsblauw).
+     Alleen met de klasse nacht op <html> (testlink ?proef=nacht). */
+  function nacht() { return /(^| )nacht( |$)/.test(document.documentElement.className); }
+  /* Winkels waarvan de nieuwe nachtgevel en -binnenkant al binnen zijn (images/straat/nacht/) */
+  var NACHT_KLAAR = { boekhandel: 1, boetiek: 1, cadeauloket: 1, cadeausuper: 1, christelijk: 1, elektronicazaak: 1, gamewinkel: 1, grappenmaker: 1, hobbywinkel: 1, kerstmarkt: 1, kiosk: 1, koffiehuis: 1, kookwinkel: 1, pakjeshuis: 1, parfumerie: 1, slijterij: 1, speelgoedwinkel: 1, spellenwinkel: 1, sportwinkel: 1, tuincentrum: 1, uitjesbureau: 1, woonwinkel: 1 };
+  function nb(id) { return nacht() && NACHT_KLAAR[id] ? NB + 'nacht/' : NB; }
   function getal(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
 
   /* Gevel van Nova: beeld met doorzichtig etalagevak; de code zet naam, aantal, cadeaus en deur erop */
   var GV_SIZES = '(min-width:1000px) 270px, (min-width:700px) 31vw, 46vw';
   function gvBeeld(id) {
-    return '<img class="gv-beeld" src="' + NB + 'gevel-' + id + '-klein.webp" srcset="' + NB + 'gevel-' + id + '-klein.webp 300w, ' + NB + 'gevel-' + id + '.webp 600w" sizes="' + GV_SIZES + '" alt="" loading="lazy" decoding="async">';
+    return '<img class="gv-beeld" src="' + nb(id) + 'gevel-' + id + '-klein.webp" srcset="' + nb(id) + 'gevel-' + id + '-klein.webp 300w, ' + nb(id) + 'gevel-' + id + '.webp 600w" sizes="' + GV_SIZES + '" alt="" loading="lazy" decoding="async">';
   }
   function gvBord(naam) { return '<span class="gv-bord' + (naam.length > 19 ? ' sh-lang' : '') + '">' + esc(naam) + '</span>'; }
   /* Wat voor winkel het is, in gewone woorden (21-11-2026, Marius: 'alles te klein, het is moeilijk te zien wat voor winkel het is').
@@ -637,8 +643,8 @@
       '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
       (keuze ? ' · <button type="button" class="link" data-sh-naar-kies>andere keuze</button> · <a href="#straat" data-sh-kies>alles weer tonen</a>' : '') + '</p></section>';
     var h = opt.voor ? '<a class="terug" href="/">‹ Naar de hele Cadeaustraat</a>' + kop :
-      boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + 'straat-hero-computer.webp">' +
-      '<img src="' + NB + 'straat-hero-telefoon.webp" alt="" fetchpriority="high"></picture>' +
+      boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + (nacht() ? 'straat-nacht-computer' : 'straat-hero-computer') + '.webp">' +
+      '<img src="' + NB + (nacht() ? 'straat-nacht-telefoon' : 'straat-hero-telefoon') + '.webp" alt="" fetchpriority="high"></picture>' +
       '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
       '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st) + naKies + kop;
     if (st.etalage.length) {
@@ -670,8 +676,8 @@
     for (var n = 1; n < lijst.length && buren.length < 2; n++) { var b = lijst[(Math.max(i, 0) + n) % lijst.length]; if (b !== x) buren.push(b); }
     var h = '<a class="terug" href="' + adres('', st.pr.wie, st.max) + '">‹ Terug naar de straat' + (st.pr.wie ? ' ' + esc(st.pr.tekst) : '') + '</a><div class="lampjes" aria-hidden="true"></div>' +
       '<section class="binnen-kop gevel' + (NOVA_GEVEL[w.id] ? ' nova' : '') + '" style="--k:' + w.k + '"><span class="luifel"></span>' +
-      (NOVA_GEVEL[w.id] ? '<span class="ik"><picture><source media="(min-width:700px)" srcset="' + NB + 'interieur-' + w.id + '.webp">' +
-        '<img src="' + NB + 'interieur-' + w.id + '-telefoon.webp" alt=""></picture><img class="embleem" src="' + novaRond('winkel-' + w.id) + '" alt=""></span>' : '') +
+      (NOVA_GEVEL[w.id] ? '<span class="ik"><picture><source media="(min-width:700px)" srcset="' + nb(w.id) + 'interieur-' + w.id + '.webp">' +
+        '<img src="' + nb(w.id) + 'interieur-' + w.id + '-telefoon.webp" alt=""></picture><img class="embleem" src="' + novaRond('winkel-' + w.id) + '" alt=""></span>' : '') +
       '<div class="pui">' +
       '<h1>' + esc(w.naam) + '</h1><p>' + esc(w.zin) + '</p>' +
       (keuze ? '<p class="filter">Je ziet alleen cadeaus <b>' + esc(keuze) + '</b> · <a href="' + adres(w.id, '', 0) + '">alles in deze winkel</a></p>' : '') +
@@ -886,7 +892,7 @@
   var WS_KLEUR = '#8F6620';
   function winkelKop(o, w) {
     var k = w ? w.k : (o.kleur || WS_KLEUR);
-    var ik = w ? '<span class="ik"><picture><source media="(min-width:700px)" srcset="' + NB + 'interieur-' + w.id + '.webp"><img src="' + NB + 'interieur-' + w.id + '-telefoon.webp" alt=""></picture>' +
+    var ik = w ? '<span class="ik"><picture><source media="(min-width:700px)" srcset="' + nb(w.id) + 'interieur-' + w.id + '.webp"><img src="' + nb(w.id) + 'interieur-' + w.id + '-telefoon.webp" alt=""></picture>' +
         '<img class="embleem" src="' + novaRond('winkel-' + w.id) + '" alt=""></span>'
       : '<span class="ik ik-leeg">' + (o.rond ? '<img class="embleem" src="' + o.rond + '" alt="" onerror="this.style.display=\'none\'">' : '') + '</span>';
     var label = (w && (!o.label || /^(Gelegenheid|Collectie)$/.test(o.label))) ? w.naam : (o.label || '');
