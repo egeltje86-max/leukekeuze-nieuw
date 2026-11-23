@@ -3061,3 +3061,82 @@ html body .wzh-rond.wzh-icoon, html body .srt-st-rond.srt-vt-ico, html body .rh-
   .gt-rozet span { font-size: 10px; }
   .gids-lijn img { width: 360px; }
 }
+
+/* ===== VONK FEEST (voorbeeld 23-11-2026, Marius: 'maak vonk mooier, uitnodigender, in de feeststemming'). Alleen als VONKF aan staat (?proef=vonkfeest).
+   Marineblauwe kop met het lichtsnoer van Nova en het VONK-cadeautje, het aftellen, keuzes als kaartjes met een rond plaatje. Geen animaties. ===== */
+.vf-kop { position: relative; overflow: hidden; text-align: center; color: #FFFFFF; padding: 0 0 28px;
+  background:
+    radial-gradient(2px 2px at 9% 62%, #F2CB74 50%, transparent 52%),
+    radial-gradient(2px 2px at 22% 84%, #FFFFFF 50%, transparent 52%),
+    radial-gradient(3px 3px at 88% 58%, #F2CB74 50%, transparent 52%),
+    radial-gradient(2px 2px at 76% 86%, #FFFFFF 50%, transparent 52%),
+    radial-gradient(2px 2px at 94% 30%, #FFFFFF 50%, transparent 52%),
+    radial-gradient(2px 2px at 5% 28%, #F2CB74 50%, transparent 52%),
+    radial-gradient(120% 90% at 50% 0%, #2C3B60 0%, #1F2B48 58%, #182239 100%); }
+.vf-snoer { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: max(100%, 860px); max-width: none; height: auto; pointer-events: none; }
+.vf-kop-binnen { position: relative; padding-top: 58px; }
+.vf-icoon { display: block; width: 76px; height: 76px; margin: 0 auto 12px; border-radius: 50%; box-shadow: 0 0 0 6px rgba(242,203,116,.16), 0 10px 26px rgba(0,0,0,.35); }
+.vf-label { margin: 0 0 6px; font: 800 12px/1.3 Manrope, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #F2CB74; }
+.vf-kop h1 { margin: 0 0 8px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(30px, 8.4vw, 46px); line-height: 1.12; color: #FFFFFF; text-wrap: balance; }
+.vf-zin { max-width: 32ch; margin: 0 auto; font-size: 16px; line-height: 1.5; color: #DCE0EA; }
+.vf-aftel { display: inline-flex; align-items: center; gap: 8px; margin: 16px auto 0; padding: 8px 15px; border-radius: 999px; background: rgba(242,203,116,.14); box-shadow: inset 0 0 0 1px rgba(242,203,116,.5); color: #F2CB74; font: 800 14px/1.3 Manrope, sans-serif; }
+.vf-aftel svg { width: 16px; height: 16px; flex: none; }
+.vf-pagina { max-width: 680px; margin: 0 auto; padding-top: 18px; }
+.vf-voortgang { display: flex; align-items: center; gap: 12px; margin: 0 2px 14px; }
+.vf-stap { flex: none; font: 800 13px/1 Manrope, sans-serif; color: #8F6620; }
+.vf-voortgang .vonk-stapjes { flex: 1; margin: 0; }
+.vf-voortgang .vonk-stapjes span { height: 6px; border-radius: 3px; background: #E9DFCD; }
+.vf-voortgang .vonk-stapjes span.aan { background: linear-gradient(90deg, #F2CB74, #B8862E); }
+.vf-vraag h2 { margin: 0 0 14px; font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.2; color: #141A2A; text-wrap: balance; }
+.vf-keuzes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.vf-keuze { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0; padding: 14px 8px 13px; border: 1px solid #E2D3B9; border-radius: 16px;
+  background: linear-gradient(180deg, #FFFFFF, #FBF5E9); color: #141A2A; text-align: center; text-decoration: none; box-shadow: 0 2px 8px rgba(20,26,42,.05); -webkit-tap-highlight-color: transparent; }
+.vf-keuze:hover { border-color: #B8862E; }
+.vf-keuze:focus-visible { outline: 3px solid #186D92; outline-offset: 2px; }
+.vf-keuze[aria-pressed="true"] { border-color: #B8862E; box-shadow: inset 0 0 0 2px #B8862E; }
+.vf-rond { display: grid; place-items: center; flex: none; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #1F2B48; }
+.vf-rond img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vf-alles { background: linear-gradient(135deg, #F2CB74, #B8862E); color: #1F2B48; }
+.vf-alles svg { width: 28px; height: 28px; }
+.vf-munt { flex-direction: column; gap: 0; align-content: center; background: var(--vf-bg, #FFFCF7); color: var(--vf-fg, #141A2A); box-shadow: inset 0 0 0 1.5px #D6B56A; }
+.vf-munt b { font: 800 17px/1.05 Manrope, sans-serif; }
+.vf-munt small { font: 700 11px/1.1 Manrope, sans-serif; }
+.vf-btot10 { --vf-bg: #DCF0E3; --vf-fg: #1B5534; }
+.vf-btot25 { --vf-bg: #D9E8F7; --vf-fg: #1A4270; }
+.vf-b25-50 { --vf-bg: #E8DFF6; --vf-fg: #46297A; }
+.vf-b50-100 { --vf-bg: #FADFCF; --vf-fg: #833414; }
+.vf-bboven100 { --vf-bg: #1F2B48; --vf-fg: #F2CB74; }
+.vf-l0-2 { --vf-bg: #FBE1EA; --vf-fg: #842648; }
+.vf-l3-5 { --vf-bg: #FBEFC6; --vf-fg: #634800; }
+.vf-l6-8 { --vf-bg: #D5EFEC; --vf-fg: #185551; }
+.vf-l9-12 { --vf-bg: #E0E4F9; --vf-fg: #2B3680; }
+.vf-tekst { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.vf-naam { font: 800 16px/1.2 Manrope, sans-serif; }
+.vf-onder { font-size: 13px; line-height: 1.3; color: #5F667A; }
+.vf-los { grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 12px; padding: 12px 14px; }
+.vf-los .vf-rond { width: 44px; height: 44px; }
+.vf-los .vf-alles svg { width: 22px; height: 22px; }
+.vf-los .vf-tekst { text-align: left; }
+.vf-pagina .vonk-tip { margin-top: 16px; }
+@media (min-width: 640px) {
+  .vf-keuzes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .vf-kop-binnen { padding-top: 70px; }
+  .vf-icoon { width: 88px; height: 88px; }
+}
+@media (max-width: 359px) {
+  .vf-rond { width: 56px; height: 56px; }
+  .vf-naam { font-size: 15px; }
+  .vf-onder { font-size: 12px; }
+}
+/* VONK FEEST: korter op de telefoon, en na de eerste vraag een smalle kop (icoon links, titel ernaast), zodat de keuzes meteen in beeld staan. */
+.vf-kop { padding-bottom: 22px; }
+.vf-kop-binnen { padding-top: 46px; }
+.vf-icoon { width: 64px; height: 64px; margin-bottom: 10px; }
+.vf-kop h1 { font-size: clamp(28px, 7.6vw, 44px); }
+.vf-zin { font-size: 15px; }
+.vf-klein { padding-bottom: 14px; text-align: left; }
+.vf-klein .vf-kop-binnen { display: flex; align-items: center; gap: 12px; padding-top: 42px; }
+.vf-klein .vf-icoon { width: 44px; height: 44px; margin: 0; box-shadow: 0 0 0 4px rgba(242,203,116,.16); }
+.vf-klein .vf-label { margin-bottom: 2px; font-size: 11px; }
+.vf-klein h1 { margin: 0; font-size: 22px; }
+@media (min-width: 640px) { .vf-kop-binnen { padding-top: 62px; } .vf-icoon { width: 80px; height: 80px; } .vf-klein .vf-kop-binnen { justify-content: center; padding-top: 56px; } .vf-klein .vf-icoon { width: 48px; height: 48px; } }

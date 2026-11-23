@@ -1252,6 +1252,31 @@ html.donker .gids-nu .gs-nu{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.32))}
 html.donker .gt-rozet{filter:drop-shadow(0 2px 3px rgba(0,0,0,0.5))}
 html.donker .gt-rozet span{color:#eee7da}
 html.donker .gids-slot .gs-slot{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.32))}
+html.donker .vf-kop{color:#FFFFFF;background:radial-gradient(2px 2px at 9% 62%, #F2CB74 50%, transparent 52%),
+    radial-gradient(2px 2px at 22% 84%, #FFFFFF 50%, transparent 52%),
+    radial-gradient(3px 3px at 88% 58%, #F2CB74 50%, transparent 52%),
+    radial-gradient(2px 2px at 76% 86%, #FFFFFF 50%, transparent 52%),
+    radial-gradient(2px 2px at 94% 30%, #FFFFFF 50%, transparent 52%),
+    radial-gradient(2px 2px at 5% 28%, #F2CB74 50%, transparent 52%),
+    radial-gradient(120% 90% at 50% 0%, #2C3B60 0%, #1F2B48 58%, #182239 100%)}
+html.donker .vf-icoon{box-shadow:0 0 0 6px rgba(242,203,116,0.035), 0 10px 26px rgba(0,0,0,0.6)}
+html.donker .vf-label{color:#f2cb74}
+html.donker .vf-kop h1{color:#ffffff}
+html.donker .vf-zin{color:#dce0ea}
+html.donker .vf-aftel{background:rgba(242,203,116,0.14);box-shadow:inset 0 0 0 1px rgba(242,203,116,0.11);color:#f2cb74}
+html.donker .vf-stap{color:#e7c893}
+html.donker .vf-voortgang .vonk-stapjes span{background:#232e47}
+html.donker .vf-voortgang .vonk-stapjes span.aan{background:linear-gradient(90deg, #F2CB74, #B8862E)}
+html.donker .vf-vraag h2{color:#eee7da}
+html.donker .vf-keuze{border:1px solid rgba(217,168,72,0.3);background:linear-gradient(180deg, #1c263c, #141c2f);color:#eee7da;box-shadow:0 2px 8px rgba(0,0,0,0.14)}
+html.donker .vf-keuze:hover{border-color:#b8862e}
+html.donker .vf-keuze:focus-visible{outline:3px solid #186d92}
+html.donker .vf-keuze[aria-pressed="true"]{border-color:#b8862e;box-shadow:inset 0 0 0 2px rgba(0,0,0,0.6)}
+html.donker .vf-rond{background:#223259}
+html.donker .vf-alles{background:linear-gradient(135deg, #F2CB74, #B8862E);color:#1F2B48}
+html.donker .vf-munt{background:var(--vf-bg, #1c263c);color:var(--vf-fg, #eee7da);box-shadow:inset 0 0 0 1.5px rgba(0,0,0,0.6)}
+html.donker .vf-onder{color:#a3aaba}
+html.donker .vf-klein .vf-icoon{box-shadow:0 0 0 4px rgba(242,203,116,0.035)}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}

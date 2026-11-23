@@ -286,6 +286,17 @@
       return localStorage.getItem('lkstrak2') !== 'uit';
     } catch (e) { return true; }
   })();
+  /* VONK FEEST (voorbeeld 23-11-2026, Marius: 'maak vonk mooier, uitnodigender, in de feeststemming'): een marineblauwe kop met het lichtsnoer
+     en het VONK-cadeautje, 'Wie ga je blij maken?', het aftellen tot pakjesavond of kerst, en elke keuze met het ronde plaatje van Nova
+     (persoon, moment) of een gekleurd rondje (leeftijd, bedrag). Zelfde vragen, zelfde adressen, zelfde uitslag.
+     Nu alleen via ?proef=vonkfeest (uit: ?proef=vonkfeest-uit); voor iedereen aan: window.LK_VONK_FEEST = true. */
+  var VONKF = window.LK_VONK_FEEST === true || (window.LK_VONK_FEEST !== false && (function () {
+    try {
+      var m = /[?&]proef=vonkfeest(-uit)?(&|$)/.exec(location.search);
+      if (m) { if (m[1]) localStorage.removeItem('lkvonkfeest'); else localStorage.setItem('lkvonkfeest', 'aan'); }
+      return localStorage.getItem('lkvonkfeest') === 'aan';
+    } catch (e) { return false; }
+  })());
   /* RIJTJES (voorbeeld 20-11-2026, Marius: 'ja doe' op 'per onderwerp een rijtje, net als bij de categorieën'): op Voor hem en Voor haar niet één
      lange gemengde lijst, maar eerst 'Onze favorieten' (vier uit de handgekozen top) en daaronder per onderwerp een rijtje van vier met 'Alle …'.
      Baymard: een overzichtspagina mag per soort een paar producten tonen, zolang de keuze van de soort (de rondjes) bovenaan blijft.
@@ -5272,10 +5283,45 @@
     var label = function (lijst, id) { var x = lijst.find(function (o) { return o.id === id; }); return x ? x.label : id; };
 
     function vraag(titel, opties, sleutel) {
+      if (VONKF) return vfVraag(titel, opties, sleutel);
       return '<div class="vonk-vraag"><h2>' + titel + '</h2><div class="keuzes">' + opties.map(function (o) {
         var nq = Object.assign({}, q); nq[sleutel] = o.id; delete nq.mix;
         return '<a class="keuze" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q[sleutel] === o.id) + '">' + esc(o.label) + '</a>';
       }).join('') + '</div></div>';
+    }
+    /* VONK FEEST: keuzes met een rond plaatje van Nova (persoon, moment) of een gekleurd rondje (leeftijd, bedrag). */
+    var VF_BEELD = { haar: 'voor-haar', hem: 'voor-hem', kind: 'voor-kinderen', tiener: 'voor-tieners', 'opa-oma': 'cad-opa-oma', collega: 'voor-collega',
+      sinterklaas: 'gel-sinterklaas', kerst: 'gel-kerst', verjaardag: 'gel-verjaardag', zomaar: 'col-originele-cadeaus' };
+    var VF_ONDER = { haar: 'Vriendin, moeder, zus', hem: 'Vriend, vader, broer', kind: 'Tot 12 jaar', tiener: '13 tot 18 jaar', 'opa-oma': 'Voor de grootouders',
+      collega: 'Lootje of bedankje', sinterklaas: 'Pakjesavond', kerst: 'Onder de boom', verjaardag: 'Taart en slingers', zomaar: 'Omdat het kan' };
+    function vfRond(sleutel, o) {
+      if (o.id === 'iedereen' || o.id === 'geen') return '<span class="vf-rond vf-alles">' + ic('vonk') + '</span>';
+      if (VF_BEELD[o.id]) return '<span class="vf-rond"><img src="/images/sub/rond/' + VF_BEELD[o.id] + '-klein.webp" alt="" width="56" height="56" decoding="async"></span>';
+      if (sleutel === 'leeftijd') return '<span class="vf-rond vf-munt vf-l' + esc(o.id) + '"><b>' + esc(o.id.replace('-', '–')) + '</b><small>jaar</small></span>';
+      if (sleutel === 'budget') { var mt = MUNT_TEKST[o.id] || ['', o.label]; return '<span class="vf-rond vf-munt vf-b' + esc(o.id) + '"><small>' + esc(mt[0]) + '</small><b>' + esc(mt[1]) + '</b></span>'; }
+      return '<span class="vf-rond vf-alles">' + ic('vonk') + '</span>';
+    }
+    function vfVraag(titel, opties, sleutel) {
+      var lijst = opties.slice().sort(function (x, y) { var l = function (o) { return o.id === 'iedereen' || o.id === 'geen' ? 1 : 0; }; return l(x) - l(y); });
+      if (sleutel === 'moment') { var nu = new Date(), sint = nu.getMonth() < 11 || (nu.getMonth() === 11 && nu.getDate() <= 5);
+        lijst.sort(function (x, y) { var r = function (o) { return o.id === 'iedereen' ? 9 : o.id === (sint ? 'sinterklaas' : 'kerst') ? 0 : o.id === (sint ? 'kerst' : 'sinterklaas') ? 1 : 2; }; return r(x) - r(y); }); }
+      return '<div class="vonk-vraag vf-vraag"><h2>' + titel + '</h2><div class="vf-keuzes">' + lijst.map(function (o) {
+        var nq = Object.assign({}, q); nq[sleutel] = o.id; delete nq.mix;
+        var los = o.id === 'iedereen' || o.id === 'geen';
+        var naam = o.label, onder = VF_ONDER[o.id] || '';
+        var VF_NAAM = { '0-2': 'Baby en dreumes', '3-5': 'Peuter en kleuter', '6-8': 'Groep 3 tot 5', '9-12': 'Groep 6 tot 8',
+          tot10: 'Kleinigheidje', tot25: 'Leuk cadeau', '25-50': 'Mooi cadeau', '50-100': 'Groot cadeau', boven100: 'Echt uitpakken' };
+        if ((sleutel === 'leeftijd' || sleutel === 'budget') && VF_NAAM[o.id]) { naam = VF_NAAM[o.id]; onder = ''; }
+        return '<a class="vf-keuze' + (los ? ' vf-los' : '') + '" href="' + maakAdres('/vonk', nq) + '" aria-pressed="' + (q[sleutel] === o.id) + '">' + vfRond(sleutel, o) +
+          '<span class="vf-tekst"><span class="vf-naam">' + esc(naam) + '</span>' + (onder ? '<span class="vf-onder">' + esc(onder) + '</span>' : '') + '</span></a>';
+      }).join('') + '</div></div>';
+    }
+    function vfKop(klein) {
+      return '<section class="vf-kop' + (klein ? ' vf-klein' : '') + '"><img class="vf-snoer" src="/images/straat/lichtsnoer.webp" alt="" width="1440" height="120" decoding="async">' +
+        '<div class="binnen vf-kop-binnen"><img class="vf-icoon" src="/images/vonk/vonk-icoon.webp" alt="" width="96" height="96" decoding="async">' +
+        (klein ? '<div><p class="vf-label">VONK · de cadeauhulp</p><h1>Wie ga je blij maken?</h1></div>' :
+          '<p class="vf-label">VONK · de cadeauhulp</p><h1>Wie ga je blij maken?</h1>' +
+          '<p class="vf-zin">Drie korte vragen. Daarna kiest VONK zes cadeaus die echt passen, voor in de schoen of onder de boom.</p>') + '</div></section>';
     }
     var terug = '';
     if (stap > 1 && stap < 4) {
@@ -5284,11 +5330,11 @@
     }
 
     var inhoud = '';
-    if (stap === 1) inhoud = vraag('Voor wie zoek je iets?', V.voor, 'voor') +
+    if (stap === 1) inhoud = vraag(VONKF ? 'Voor wie is het cadeau?' : 'Voor wie zoek je iets?', V.voor, 'voor') +
       '<p class="vonk-tip">' + ic('zoek') + '<span>Liever typen? Gebruik de zoekbalk bovenaan, bijv. <em>vader die vist, max €40</em>.</span></p>';
     if (stap === 1.5) inhoud = vraag('Hoe oud is het kind?', VONK_LEEFTIJD, 'leeftijd');
-    if (stap === 2) inhoud = vraag('Voor welk moment?', V.moment, 'moment');
-    if (stap === 3) inhoud = vraag('Wat is je budget?', BUDGET, 'budget');
+    if (stap === 2) inhoud = vraag(VONKF ? 'Voor welk feest?' : 'Voor welk moment?', V.moment, 'moment');
+    if (stap === 3) inhoud = vraag(VONKF ? 'Hoeveel wil je uitgeven?' : 'Wat is je budget?', BUDGET, 'budget');
 
     if (stap === 4) {
       var hobby = VONK_HOBBY.some(function (x) { return x.id === q.hobby; }) ? q.hobby : '';
@@ -5506,6 +5552,11 @@
     }
 
     var icoon = '<div class="vonk-icoon" aria-hidden="true"><img src="/images/vonk/vonk-icoon.webp" alt="" width="96" height="96" decoding="async"></div>';
+    if (VONKF && stap < 4) {
+      var nr = stappen.indexOf(stap) + 1;
+      var balkF = '<div class="vf-voortgang"><span class="vf-stap">Vraag ' + nr + ' van ' + stappen.length + '</span>' + balk + '</div>';
+      return vfKop(stap > 1) + '<div class="binnen"><div class="vonk-pagina vf-pagina">' + balkF + inhoud + terug + '</div></div>';
+    }
     return (stap === 4 ? '' : kop) + '<div class="binnen"><div class="vonk-pagina' + (stap === 4 ? ' vonk-pagina-uitslag" style="max-width:none' : '') + '">' + (stap < 4 ? icoon + balk : '') + inhoud + terug + '</div></div>';
   }
 
