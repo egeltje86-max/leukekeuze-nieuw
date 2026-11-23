@@ -289,14 +289,15 @@
   /* VONK FEEST (voorbeeld 23-11-2026, Marius: 'maak vonk mooier, uitnodigender, in de feeststemming'): een marineblauwe kop met het lichtsnoer
      en het VONK-cadeautje, 'Wie ga je blij maken?', het aftellen tot pakjesavond of kerst, en elke keuze met het ronde plaatje van Nova
      (persoon, moment) of een gekleurd rondje (leeftijd, bedrag). Zelfde vragen, zelfde adressen, zelfde uitslag.
-     Nu alleen via ?proef=vonkfeest (uit: ?proef=vonkfeest-uit); voor iedereen aan: window.LK_VONK_FEEST = true. */
-  var VONKF = window.LK_VONK_FEEST === true || (window.LK_VONK_FEEST !== false && (function () {
+     Live voor iedereen sinds 23-11-2026 (GO Marius). Uit: window.LK_VONK_FEEST = false. */
+  var VONKF = window.LK_VONK_FEEST !== false && (function () {
+    /* Live voor iedereen sinds 23-11-2026 10:12 (GO Marius: 'Go'). Zelf de oude VONK zien: ?proef=vonkfeest-uit (weer aan: ?proef=vonkfeest). */
     try {
       var m = /[?&]proef=vonkfeest(-uit)?(&|$)/.exec(location.search);
-      if (m) { if (m[1]) localStorage.removeItem('lkvonkfeest'); else localStorage.setItem('lkvonkfeest', 'aan'); }
-      return localStorage.getItem('lkvonkfeest') === 'aan';
-    } catch (e) { return false; }
-  })());
+      if (m) { if (m[1]) localStorage.setItem('lkvonkfeest', 'uit'); else localStorage.removeItem('lkvonkfeest'); }
+      return localStorage.getItem('lkvonkfeest') !== 'uit';
+    } catch (e) { return true; }
+  })();
   /* RIJTJES (voorbeeld 20-11-2026, Marius: 'ja doe' op 'per onderwerp een rijtje, net als bij de categorieën'): op Voor hem en Voor haar niet één
      lange gemengde lijst, maar eerst 'Onze favorieten' (vier uit de handgekozen top) en daaronder per onderwerp een rijtje van vier met 'Alle …'.
      Baymard: een overzichtspagina mag per soort een paar producten tonen, zolang de keuze van de soort (de rondjes) bovenaan blijft.
