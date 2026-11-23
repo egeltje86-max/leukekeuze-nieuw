@@ -1277,6 +1277,38 @@ html.donker .vf-alles{background:linear-gradient(135deg, #F2CB74, #B8862E);color
 html.donker .vf-munt{background:var(--vf-bg, #1c263c);color:var(--vf-fg, #eee7da);box-shadow:inset 0 0 0 1.5px rgba(0,0,0,0.6)}
 html.donker .vf-onder{color:#a3aaba}
 html.donker .vf-klein .vf-icoon{box-shadow:0 0 0 4px rgba(242,203,116,0.035)}
+html.donker .wzk-puzzel{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 6px 18px rgba(0,0,0,0.158)}
+html.donker .wzk-kop h3{color:#eee7da}
+html.donker .wzk-tel{color:#a3aaba}
+html.donker .wzk-tel b{color:#e7c893}
+html.donker .wzk-raster{border:1px solid rgba(217,168,72,0.3);background:#1c263c}
+html.donker .wzk-c{color:#eee7da;background:#1c263c;border-right:1px solid rgba(217,168,72,0.3);border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .wzk-c.gev{color:#e7c893}
+html.donker .wzk-lijnen line{stroke:#dfbb7d}
+html.donker .wzk-puzzel.oplos .wzk-lijnen line:not(.gev){stroke:#eee7da}
+html.donker .wzk-c.start{background:#f2cb74;color:#141A2A}
+html.donker .wzk-c.mis{background:#38201e}
+html.donker .wzk-puzzel.klaar.met-geheim .wzk-c:not(.gev){background:#223259;color:#f2cb74}
+html.donker .wzk-puzzel.oplos.met-geheim .wzk-c:not(.w){color:#dfbb7d}
+html.donker .wzk-hoe{color:#a3aaba}
+html.donker .wzk-lijst{color:#eee7da}
+html.donker .wzk-lijst li.weg{color:#999ca3}
+html.donker .wzk-geheim{color:#a3aaba}
+html.donker .wzk-zin{color:#eee7da}
+html.donker .wzk-mis{color:#e7c893}
+html.donker .wzk-boekregel{color:#eee7da}
+html.donker .wzk-boekregel svg{color:#dfbb7d}
+html.donker .wzk-boekregel a{color:#e7c893}
+html.donker .wzk-form{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
+html.donker .wzk-form label{color:#eee7da}
+html.donker .wzk-form label small{color:#a3aaba}
+html.donker .wzk-form input[type="text"],html.donker .wzk-form textarea,html.donker .wzk-form select{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker .wzk-vink input{accent-color:#dfbb7d}
+html.donker .wzk-melding{color:#db968f}
+html.donker .wzk-verder a{color:#e7c893}
+html.donker .wzk-vragen details{border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .wzk-vragen summary{color:#eee7da}
+html.donker .wzk-vragen details p{color:#eee7da}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
