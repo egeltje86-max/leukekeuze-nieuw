@@ -5849,7 +5849,7 @@
             'Bestel op tijd: een adventskalender die op 3 december binnenkomt, mist precies waar hij voor bedoeld is.'
           ] },
         { kop: 'De chocolade-klassiekers', tekst: 'Je kunt niet misgaan met chocolade. Dit zijn de bekende merken, van Tony’s tot Lindt.',
-          ids: ['bol-9300000186028245', 'bol-9300000187297428', 'bol-9300000237632552', 'dw-7622210598837'] },
+          ids: ['bol-9300000186028245', 'bol-9300000187297428', 'bol-9300000237632552', 'dw-7622202032967'] },
         { kop: 'Net even anders', tekst: 'Voor wie elk jaar al een chocoladekalender krijgt: jam, thee, popcorn, geurkaarsjes of een puzzelverhaal dat je in 24 dagen oplost.',
           ids: ['dw-4260282697312', 'dw-680275066859', 'mindf-6e1985bec2', 'wwk-2280887', '999g-999exi30'] },
         { kop: 'Voor kinderen', tekst: 'Elke ochtend een vakje voor het naar school gaan. Deze zijn gemaakt voor kleine handen.',
@@ -6034,7 +6034,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk waar ze tijd voor maakt: een avond op de bank, koken, puzzelen of iets creatiefs.", "Verwennen is altijd goed: iets voor in bad, een geurkaars of warme sloffen.", "Iets persoonlijks, zoals een mok met haar geboortebloem, maakt een klein cadeau groot.", "Een geur of een maat? Kies iets dat bijna iedereen past, of een set die ze kan delen."] },
         { kop: "Verwennen", tekst: "Voor in bad of onder de douche, om even tot rust te komen.", ids: ["dvzn-43cb3e6645", "cl-dk-scrub", "dvzn-e0769c29c2", "parfum-45dbbae7b4"] },
-        { kop: "Knus en warm", tekst: "Voor lange avonden op de bank.", ids: ["dvzn-29043e5ee8", "mega-e2312c9f50", "hema-84afebb566", "cl-medisana-mc600"] },
+        { kop: "Knus en warm", tekst: "Voor lange avonden op de bank.", ids: ["hema-efaa95f521", "dvzn-29043e5ee8", "hema-84afebb566", "cl-medisana-mc600"] },
         { kop: "Iets lekkers", tekst: "Om samen te eten, een cocktail te maken of thee te proeven.", ids: ["dvzn-801397", "dvzn-196608", "cl-shaker-recepten", "dk-cd1e8497b2"] },
         { kop: "Voor in huis", tekst: "Een fijne geur, zacht licht en een plantje dat nooit verwelkt.", ids: ["dvzn-158179", "cl-poes-leeslamp", "bol-9300000187249569", "parfum-ab22c2229e"] },
         { kop: "Zelf maken", tekst: "Voor wie graag iets met haar handen doet.", ids: ["dvzn-310643", "bol-9300000042460003", "dvzn-783693", "dvzn-221671"] },
@@ -6284,7 +6284,7 @@
         { kop: "Borrelpakketten", tekst: "Voor bij de borrel, de barbecue of een pastadiner: hapjes, sauzen en truffel.", ids: ["dk-00044934", "bp-l229", "cl-jackdaniels-bbq", "bol-9300000250399375"] },
         { kop: "Echte kerstpakketten", tekst: "Kant-en-klaar in een mooie doos: voor collega's, familie of vrienden.", ids: ["bol-9300000444859249", "bol-9300000195684144", "bol-9300000057001441", "bol-9300000442610569"] },
         { kop: "Voor je personeel of klanten", tekst: "Iets wat iedereen lust, zonder alcohol en onder de 25 euro, zodat je er makkelijk tien of twintig van bestelt. De brievenbuspakketten worden thuis bezorgd, ook bij wie thuiswerkt. Bestel ruim op tijd: bij grote aantallen kijk je bij de winkel of er genoeg op voorraad is.", ids: ["bol-9300000183768479", "bol-9300000240085621", "bol-9300000257112864", "bp-l303"] },
-        { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dk-00040239", "dk-00044932", "dk-00043581", "hema-8eff9a5ada"] },
+        { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dkam-11c55d9446", "dk-00044932", "dk-00043581", "hema-8eff9a5ada"] },
         { kop: "Samen thuis", tekst: "Een filmavond, iets voor de Formule 1-fan of een fondue.", ids: ["bol-9300000340258889", "cl-filmpakket", "dvzn-533927", "dvzn-801397"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>, <a href=\"/gids/kerstcadeau-moeder\">Kerstcadeau voor je moeder</a> en <a href=\"/gids/kerstcadeau-vader\">Kerstcadeau voor je vader</a>." },
@@ -6620,7 +6620,7 @@
       delen: [
         { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Denk aan wat ze in de winter graag doet: op de bank met een plaid, in bad, puzzelen of koken.', 'Iets dat op gaat valt bijna altijd goed: verzorging, iets lekkers of een geurkaars.', 'Persoonlijk raakt vaak meer dan duur: een mok met haar geboortebloem of een tegeltje met een foto.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
         { kop: 'Even verwennen', tekst: 'Verzorging en iets om even bij te komen.', ids: ['bloom-f6daaba72c', 'dk-00045266', 'cl-gr-gluhwein', 'parfum-45dbbae7b4'] },
-        { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['hema-efaa95f521', 'dvzn-640ca3d05d', 'bt-46901990228307', 'dvzn-e9a4c2cf2b'] },
+        { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['cg-magnetron-sloffen', 'hema-efaa95f521', 'bt-46901990228307', 'dvzn-e9a4c2cf2b'] },
         { kop: 'Kerstsfeer in huis', tekst: 'Een geurkaars, lichtjes of iets moois voor de kersttafel.', ids: ['lego-10370', 'dkam-4c55c33197', 'country-b8fd99e550', 'bp-p0061ke'] },
         { kop: 'Iets lekkers', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['dw-4000161100379', 'bol-9300000020446164', 'dk-00043581', 'westwing-1360b3fb47'] },
         { kop: 'Met een persoonlijk tintje', tekst: 'Een cadeau dat laat zien dat het echt voor háár is.', ids: ['cg-pers-monthflower-mug', 'mmf-63b16f5c97', 'dvzn-fcb853102a', 'dvzn-70adc8c50c'] },
