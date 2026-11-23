@@ -110,6 +110,25 @@
       h.className += ' donker'; document.write('<link rel="stylesheet" id="lk-donker" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-donker"]').content) + '>');
       var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', '#141C2F'); }
   } catch (e) {} })();</script>
+  <!-- NACHT / CADEAUBOULEVARD (testlink 23-11-2026, Marius: 'ik wil heel de site anders, dit is te oudbollig'): de cadeauboulevard bij nacht met de gevels,
+       binnenkanten en rondjes van Nova. Alleen met de testlink ?proef=nacht (blijft onthouden op dat apparaat; uit: ?proef=nacht-uit). Voor iedereen: window.LK_NACHT = true.
+       Zet de donkere versie aan en laadt daarna nacht.css en nacht.js (wissel van de rondjes). Code: blok NACHT in straat.js. -->
+  <meta name="lk-nacht" content="assets/css/nacht.css?v=216752433706430">
+  <meta name="lk-nacht-js" content="assets/js/nacht.js?v=150313274471501">
+  <script>(function () { try { var h = document.documentElement, q = location.search, ls = null, aan = false;
+    try { ls = window.localStorage; } catch (e) {}
+    var m = /[?&]proef=nacht(-uit)?\b/.exec(q);
+    try { if (m) { if (m[1]) ls.removeItem('lknacht'); else ls.setItem('lknacht', '1'); } aan = ls.getItem('lknacht') === '1'; } catch (e) { aan = !!(m && !m[1]); }
+    if (window.LK_NACHT === true) aan = true; if (window.LK_NACHT === false) aan = false;
+    if (!aan) return;
+    var w = '';
+    if (!/(^| )donker( |$)/.test(h.className)) { h.className += ' donker'; w += '<link rel="stylesheet" id="lk-donker" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-donker"]').content) + '>'; }
+    h.className += ' nacht';
+    w += '<link rel="stylesheet" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-nacht"]').content) + '>';
+    w += '<scr' + 'ipt src=' + JSON.stringify('/' + document.querySelector('meta[name="lk-nacht-js"]').content) + '></scr' + 'ipt>';
+    document.write(w);
+    var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute('content', '#060B18');
+  } catch (e) {} })();</script>
   <!-- VROEG-NOVA (13-11-2026, grote keuring): de klassen van de huisstijl (NOVA-001 t/m 009) staan nu al op de pagina voordat app.js binnen is.
        Eerder zette app.js ze pas: op een trage telefoon zag je de pagina dan eerst ongeveer een seconde in de oude stijl, en daarna versprong alles. Zelfde schakelaars als in app.js. -->
   <script>(function () { var c = '', i, n = [1, 2, 3, 5, 6, 7, 9]; for (i = 0; i < n.length; i++) if (window['LK_NOVA' + n[i]] !== false) c += ' nova' + n[i]; document.documentElement.className += c; })();</script>
@@ -261,7 +280,7 @@
   <script src="assets/js/data.js?v=177080654016218"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
   <script src="assets/js/gedeeld.js?v=40886362110320"></script>
-  <script src="assets/js/straat.js?v=142020597390107"></script>
+  <script src="assets/js/straat.js?v=42406514725526"></script>
   <script src="assets/js/app.js?v=29808353306724"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
