@@ -1,64 +1,56 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man. 14-11-2026: gids verlanglijstje-maken.",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man. 14-11-2026: gids verlanglijstje-maken. 23-11-2026 (Sitewacht, Marius: 'alles voor betere verkopen en meer klanten'): productpagina's die Google op plek 4 tot 10 toont maar waar niemand op klikt, kregen een titel die zegt wat wij extra geven: 'ons advies + prijs' en in de omschrijving voor wie het leuk is en voor wie niet. Zo heeft iemand die de productnaam zoekt een reden om naast de winkel ook ons aan te klikken. De prijs volgt altijd de echte prijs. Uitverkochte producten krijgen geen eigen titel meer (stond nog '€17,56 bij bol' bij een uitverkocht product).",
  "/p/bol-9300000252262265/": {
-  "titel": "Peekimo Interactieve Ketting (5-10 jaar) – €29,99 bij bol",
-  "omschrijving": "Peekimo: de ketting met een figuurtje dat op je reageert, met meer dan 100 reacties. Leuk cadeau voor kinderen van 5 tot 10. €29,99 bij bol, prijs gecontroleerd op {datum}."
- },
- "/p/bol-9300000275658288/": {
-  "titel": "ZURU Sticker Therapy Kawaii Kitties – €17,56 bij bol",
-  "omschrijving": "Sticker Therapy van ZURU: stickervellen met schattige katjes waarmee je zelf een plaatje maakt. €17,56 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Peekimo interactieve ketting (5-10 jaar): ons advies + prijs",
+  "omschrijving": "Is de Peekimo-ketting een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000281033787/": {
-  "titel": "Opa's Kieteltenen spel (vanaf 4 jaar) – €23,45 bij bol",
-  "omschrijving": "Opa's Kieteltenen: leg voorwerpen op opa zonder dat hij wakker schrikt en opspringt. Voor 2 tot 4 spelers vanaf 4 jaar. €23,45 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Opa's Kieteltenen spel (vanaf 4 jaar): ons advies + prijs",
+  "omschrijving": "Is Opa's Kieteltenen een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000280626381/": {
-  "titel": "SmartGames Kabouter Kiekeboe, houten denkspel (3+)",
-  "omschrijving": "Kabouter Kiekeboe van SmartGames: verstop de kabouters onder de bloempotten en los 48 opdrachten op. Vanaf 3 jaar. €24,99 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "SmartGames Kabouter Kiekeboe (3-7 jaar): ons advies + prijs",
+  "omschrijving": "Is Kabouter Kiekeboe een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000261530226/": {
-  "titel": "PAW Patrol Rabarber en Marshall interactief (3+) – €33,99",
-  "omschrijving": "PAW Patrol De Dinofilm: Marshall en dino Rabarber, die steeds harder leert brullen. Vanaf 3 jaar. €33,99 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "PAW Patrol Rabarber en Marshall: ons advies + prijs",
+  "omschrijving": "Is Rabarber en Marshall een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000269708102/": {
-  "titel": "Basketbal Duo Deurset met scorebord – €43,29 bij bol",
-  "omschrijving": "Basketbal Duo Deurset: een basketbalnetje voor aan de deur, met twee ballen en een scorebord met licht. €43,29 bij bol, prijs gecontroleerd op {datum}."
- },
- "/p/bol-9300000268348044/": {
-  "titel": "Yankee Candle geurstokjes Clean Cotton 100 ml – €22,67",
-  "omschrijving": "Yankee Candle Clean Cotton geurstokjes: de geur van schone was, tot zes weken lang, zonder vlam. Mooi klein cadeau. €22,67 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Basketbal Duo Deurset: ons advies + prijs",
+  "omschrijving": "Is de Basketbal Duo Deurset een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/hema-b06ddc03f9/": {
-  "titel": "HEMA kiekeboe-mok Sinterklaas: schoencadeautje van €6,99",
-  "omschrijving": "Een vrolijke mok waar Sinterklaas uit gluurt. Leuk voor in de schoen, met warme chocolademelk erin. €6,99 bij HEMA, prijs gecontroleerd op {datum}."
+  "titel": "HEMA kiekeboe-mok Sint: ons advies + prijs",
+  "omschrijving": "Is de kiekeboe-mok van HEMA een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij HEMA, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/gids/kerststal-kopen/": {
   "titel": "Kerststal kopen: van houten speelstal tot sfeervolle stal",
   "omschrijving": "Kerststal kopen? Houten kerststallen om mee te spelen voor kinderen, sfeervolle stallen voor in de kamer en kleine kerststalletjes. Met prijs en winkel erbij."
  },
  "/p/bol-9300000264879888/": {
-  "titel": "Disney Bullebeest bestuurbaar paard (3+) – €43,99 bij bol",
-  "omschrijving": "Bullebeest uit Toy Story 5 als bestuurbaar paard van ruim 30 cm: hij draaft, wiebelt en maakt geluid. Vanaf 3 jaar. €43,99 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Disney Bullebeest bestuurbaar paard: ons advies + prijs",
+  "omschrijving": "Is Bullebeest een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000197502206/": {
-  "titel": "Becky's kerstmok met warme chocolademix – €19,95",
-  "omschrijving": "Becky's kerstmok met chocolademelk en marshmallows: een gezellig wintercadeau voor collega, vriendin of in de schoen. €19,95 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Becky's kerstmok met chocolademix: ons advies + prijs",
+  "omschrijving": "Is Becky's kerstmok een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000285102377/": {
-  "titel": "Jump-It Wipeout! spel (vanaf 6 jaar) – €69,99 bij bol",
-  "omschrijving": "Jump-It Wipeout!: spring over de draaiende stang op muziek, in 3 snelheden. Lekker actief binnen spelen vanaf 6 jaar. €69,99 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Jump-It Wipeout! spel (vanaf 6 jaar): ons advies + prijs",
+  "omschrijving": "Is Jump-It Wipeout! een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000262196765/": {
-  "titel": "Disney Stitch Double Trouble interactief – €47 bij bol",
-  "omschrijving": "Stitch Double Trouble: een interactieve Stitch die danst, zingt, brabbelt en zelf over de grond kruipt als je op zijn hoofd drukt. €47 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Stitch Double Trouble interactief: ons advies + prijs",
+  "omschrijving": "Is Stitch Double Trouble een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000283555343/": {
-  "titel": "Kuromi rugzak met tekenschool (8-13 jaar) – €19,99",
-  "omschrijving": "Kuromi rugzak met tekenschool: een rugzak vol tekenspullen voor creatieve kinderen van 8 tot 13 jaar. €19,99 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "Kuromi rugzak met tekenschool (8-13 jaar): ons advies + prijs",
+  "omschrijving": "Is de Kuromi-rugzak een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/p/bol-9300000262218107/": {
-  "titel": "FurReal Riley de Koe interactief (4+) – €62,93 bij bol",
-  "omschrijving": "FurReal Riley de Koe kwispelt, loopt, knippert en loeit. Een interactieve knuffel voor dierenliefhebbers vanaf 4 jaar. €62,93 bij bol, prijs gecontroleerd op {datum}."
+  "titel": "FurReal Riley de Koe (vanaf 4 jaar): ons advies + prijs",
+  "omschrijving": "Is Riley de Koe een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
  },
  "/voor/kinderen/": {
   "titel": "Cadeau voor kinderen: speelgoed per leeftijd | LeukeKeuze",
@@ -297,5 +289,96 @@
  "/gids/weekendje-weg-cadeau/": {
   "titel": "Weekendje weg cadeau: 24 bijzondere overnachtingen en uitjes",
   "omschrijving": "Een weekendje weg cadeau geven: slapen in een molen, kerk of onder de sterren, op het ss Rotterdam of in een boomhut. Met prijs per nacht en hoe de cadeaubon werkt."
+ },
+ "/p/bol-9300000401315426/": {
+  "titel": "Becky's kerstmok roodborstje: ons advies + prijs",
+  "omschrijving": "Is Becky's kerstmok met roodborstje een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000256076078/": {
+  "titel": "Peppa Pig Klaar, Trappen Maar: ons advies + prijs",
+  "omschrijving": "Is Peppa Pig Klaar, Trappen Maar een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000285102376/": {
+  "titel": "Level Out balansbord-spel: ons advies + prijs",
+  "omschrijving": "Is Level Out een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/dk-00040236/": {
+  "titel": "Kruidenboter-pakket Dille & Kamille: ons advies + prijs",
+  "omschrijving": "Is het Kruidenboter-pakket een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij Dille & Kamille, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000160071756/": {
+  "titel": "Barbie standaard met 2 microfoons: ons advies + prijs",
+  "omschrijving": "Is de Barbie-microfoonstandaard een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000256526171/": {
+  "titel": "DC Robin motorfiets (vanaf 4 jaar): ons advies + prijs",
+  "omschrijving": "Is de Robin-motorfiets een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000264888846/": {
+  "titel": "Fast & Furious Garage Mayhem: ons advies + prijs",
+  "omschrijving": "Is Garage Mayhem een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000264938799/": {
+  "titel": "VTech Marble Rush Dragon Adventure: ons advies + prijs",
+  "omschrijving": "Is de Marble Rush Dragon-set een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000272008302/": {
+  "titel": "Dinoster Blast Wing Mega Robot: ons advies + prijs",
+  "omschrijving": "Is de Dinoster Mega Robot een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000277687709/": {
+  "titel": "Clementoni Toverdranken-set (vanaf 8 jaar): ons advies + prijs",
+  "omschrijving": "Is de Toverdranken-set een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000285102384/": {
+  "titel": "Gui Gui Fruity Glow slijm (vanaf 6 jaar): ons advies + prijs",
+  "omschrijving": "Is het Gui Gui-slijm een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000343476066/": {
+  "titel": "FEVEM lichtgevend tekenbord (vanaf 3 jaar): ons advies + prijs",
+  "omschrijving": "Is het lichtgevende tekenbord een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000378986938/": {
+  "titel": "De leukste agenda voor opa's en oma's 2027: ons advies + prijs",
+  "omschrijving": "Is deze agenda een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/dk-00044932/": {
+  "titel": "Appeltaart-pakket Dille & Kamille: ons advies + prijs",
+  "omschrijving": "Is het Appeltaart-pakket een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij Dille & Kamille, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/hema-6e2a617d71/": {
+  "titel": "HEMA kaasmessenset met parels: ons advies + prijs",
+  "omschrijving": "Is de kaasmessenset van HEMA een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij HEMA, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000009069730/": {
+  "titel": "Playgo Junior Pottenbak Studio (5-10 jaar): ons advies + prijs",
+  "omschrijving": "Is de Pottenbak Studio een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000190510575/": {
+  "titel": "Air Toobz buizenparcours: ons advies + prijs",
+  "omschrijving": "Is Air Toobz een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000245783364/": {
+  "titel": "Spidey Rescue-Webs brandweerwagen: ons advies + prijs",
+  "omschrijving": "Is de Spidey-brandweerwagen een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000269708160/": {
+  "titel": "Little Live Pets kuikentje Chirpy: ons advies + prijs",
+  "omschrijving": "Is Chirpy een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000285655656/": {
+  "titel": "Lekker Lava spel (vanaf 5 jaar): ons advies + prijs",
+  "omschrijving": "Is Lekker Lava een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000336635457/": {
+  "titel": "Pokémon Battle Disc Showdown: ons advies + prijs",
+  "omschrijving": "Is Battle Disc Showdown een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/p/bol-9300000320406800/": {
+  "titel": "Sinterklaas heeft de Rijmelaritis: ons advies + prijs",
+  "omschrijving": "Is dit boek een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
+ },
+ "/voor/haar/": {
+  "titel": "Cadeau voor haar: leuke ideeën voor je vrouw of vriendin"
  }
 }

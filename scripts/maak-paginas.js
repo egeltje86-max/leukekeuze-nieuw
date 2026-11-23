@@ -119,11 +119,13 @@ const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli',
 function seoDatum(d) { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? (+m[3]) + ' ' + MAANDEN[+m[2] - 1] : ''; }
 function maakPagina(info, lade, mega, aftel, zoekrij) {
   let h = SJ_UIT || SJABLOON;
-  const eigen = SEO[info.pad];
+  let eigen = SEO[info.pad];
+  /* 23-11-2026: een uitverkocht product krijgt geen met de hand geschreven Google-titel (die noemt een prijs en een winkel). */
+  if (eigen && info.prod && /\(uitverkocht\)/i.test(info.titel || '')) eigen = null;
   if (eigen) {
     info = Object.assign({}, info);
     if (eigen.titel) info.titel = eigen.titel;
-    if (eigen.omschrijving) { const d = seoDatum(info.datum); info.omschrijving = d ? eigen.omschrijving.replace('{datum}', d) : eigen.omschrijving.replace(/, prijs gecontroleerd op \{datum\}/, ''); }
+    if (eigen.omschrijving) { const d = seoDatum(info.datum); info.omschrijving = d ? eigen.omschrijving.replace('{datum}', d) : eigen.omschrijving.replace(/,? (?:prijs )?gecontroleerd op \{datum\}/, ''); }
     /* 12-11-2026: de met de hand geschreven titels noemden een vaste prijs (Peekimo: €29,99 terwijl hij €24,99 is).
        Een productprijs ('– €29,99', '€29,99 bij bol') volgt nu altijd de echte prijs van het product. */
     /* 18-11-2026: '20 ideeën' in een met de hand geschreven gidstitel volgt het echte aantal cadeaus in de gids (zelfde regel als gidsGetal in app.js). */
