@@ -56,7 +56,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#F7F3EC;font-fam
 `;
 function html(r) {
   const P = r.p.map((p, i) => `<div class="s prod${r.bg?' bgp':''}" id="p${i}">${i===0?'<div class="kk1">'+r.k1+'</div><div class="kk2">'+r.k2+'</div>':''}<div class="merk">${p.merk||r.merk}</div><div class="lijn"></div><div class="nr">${i + 1}</div><div class="prijs">${p.pr}</div><div class="kaart${p.vul ? ' vul' : ''}"><img src="${p.f}"></div><div class="soort">${p.n}</div><div class="sub">${p.s}</div><div class="voet">Alles op leukekeuze<b>.nl</b></div></div>`).join('\n');
-  return `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}${r.css||''}</style></head><body>
 <div class="s navy" id="kop" style="display:none"><div class="t1">${r.t1}</div><div class="t2">${r.t2}</div><div class="t3">${r.t3}</div><div class="rij">${r.p.map(p => '<span><img src="' + p.f + '"></span>').join('')}</div><div class="t4">Veeg door &rarr;</div></div>
 ${P}
 <div class="s navy${r.bg?' bgp':''}" id="eind"><div class="t1" style="top:470px">${r.eind1}</div><div class="t2" style="top:560px;font-size:104px;line-height:1.1">${r.eind3}</div><div class="t3 zoek" style="top:860px"><span class="zb"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#8F6620" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg><i>${r.zoek||"lamp"}</i><u></u></span></div><div class="t4" style="top:1090px">op leukekeuze.nl</div><div class="eindsub">${r.eindsub||"Alle cadeaus: link in bio"}</div><div class="klein">Prijzen gecontroleerd ${r.datum}</div></div>

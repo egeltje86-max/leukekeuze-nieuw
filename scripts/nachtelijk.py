@@ -8,7 +8,7 @@ taak 'LeukeKeuze zoekindex'), vanuit een kopie van de repo. Doet elke dag, in de
   6. het rapport in de repo zetten (keurkamer/nazorg/), zodat de piloot in de cloud het om 10:17 toepast, bouwt, controleert en live zet.
 Waarom 's ochtends (Marius 21-11-2026): 'doe dit 9 uur 's ochtends als nog niet veel gekocht wordt'.
 Gebruik: python scripts/nachtelijk.py   (vanuit de hoofdmap van de repo)"""
-import os, sys, subprocess, urllib.request, datetime, json, shutil, glob, time
+import os, sys, subprocess, urllib.request, datetime, json, shutil, glob, time, re
 sys.stdout.reconfigure(encoding='utf-8')
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
@@ -87,8 +87,13 @@ try:
     if '--test' not in sys.argv and os.path.exists(CMD) and time.time() - oud_voor > 20 * 3600:
         t0 = time.time()
         try:
-            r = subprocess.run(['cmd', '/c', CMD], cwd=BOLDIR, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=3600)
+            r = subprocess.run(['cmd', '/c', CMD], cwd=BOLDIR, stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=3600)
             code = r.returncode
+            # 23-11-2026: wat het script zegt (alleen zijn eigen meldingen, nooit gegevens) in het logboek, zodat we zien waarom het niet lukt.
+            # Het script vroeg op 21 en 22-11 om de gegevens, omdat ze niet in de Windows-kluis stonden (input() zonder toetsenbord = meteen klaar).
+            zegt = [x.strip() for x in ((r.stdout or '') + (r.stderr or '')).splitlines()
+                    if re.search(r'Eenmalig|weigert|Verbinding mislukt|Niet ingevuld|KLAAR in|Niet gelukt|bewaard|EOFError|Error|Traceback', x)]
+            if zegt: log('bol-script zegt:', ' | '.join(zegt[-4:])[:400])
         except subprocess.TimeoutExpired: code = 'tijdslimiet'
         n_na, oud_na = bol_stand()
         log('bol-feeds ververst:' if oud_na > oud_voor else 'bol-feeds NIET ververst (code %s), oude blijven:' % code,

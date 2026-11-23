@@ -56,6 +56,8 @@ for i, keus in KEUZE.items():
     if not x: over.append((i, 'kandidaat bestaat niet')); continue
     if not CODE.search(x['l']): over.append((i, 'geen partnercode')); continue
     if DOEL_LEEG(x['l']): over.append((i, 'de link heeft geen adres bij de winkel (winkelknop zou nergens uitkomen)')); continue
+    # 23-11-2026 (Marius): geen AliExpress, Yesgifts meer op de site
+    if re.search(r'aliexpress|yesgifts|c=15640\b', x['l'] + ' ' + str(x.get('w', '')), re.I): over.append((i, 'winkel die niet meer mag (AliExpress, Yesgifts)')); continue
     if keus['vak'] not in vak_ok: over.append((i, 'vak bestaat niet: ' + keus['vak'])); continue
     if not (float(x['p']) > 0): over.append((i, 'geen prijs')); continue
     fp = os.path.join(FOTOS, '%03d.bron' % int(i))

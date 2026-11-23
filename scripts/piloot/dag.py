@@ -67,10 +67,33 @@ if wacht and os.path.exists(wacht) and vers:
     if c == 3: rap['melden'].append('Nazorg gestopt: ' + str(rap['nazorg'].get('gestopt', '')))
     if rap['nazorg'] and rap['nazorg'].get('gemeld'): rap['melden'].append('%d meldingen van de nazorg (grote prijssprongen of bol niet weggehaald), zie het rapport.' % len(rap['nazorg']['gemeld']))
     if c == 0:
-        try: json.dump({'gemaakt': stempel, 'toegepast': datetime.datetime.now().isoformat(timespec='minutes')}, open(TOEGEPAST, 'w', encoding='utf-8'))
+        try:
+            try: tg = json.load(open(TOEGEPAST, encoding='utf-8'))
+            except Exception: tg = {}
+            tg.update({'gemaakt': stempel, 'toegepast': datetime.datetime.now().isoformat(timespec='minutes')})
+            json.dump(tg, open(TOEGEPAST, 'w', encoding='utf-8'))
         except Exception: pass
 elif not (wacht and os.path.exists(wacht)):
     stap('nazorg', True, 'geen nachtrapport gevonden, overgeslagen')
+
+# 2a. prijswacht (23-11-2026, opdracht Marius: 'prijzen moeten kloppen'): de laptop kijkt drie keer per dag de winkelpagina's na
+# (scripts/keurkamer/prijswacht.py) en zet wat anders is meteen op de site via assets/data/prijzen-nu.json. Hier gaat het vast in
+# correcties.json, met de grenzen van nazorg.py. Na de feeds, want de winkelpagina is de echte prijs.
+PW = os.path.join(ROOT, 'keurkamer', 'nazorg', 'prijswacht-laatste.json')
+try:
+    tg = json.load(open(TOEGEPAST, encoding='utf-8')) if os.path.exists(TOEGEPAST) else {}
+    st_pw = json.load(open(PW, encoding='utf-8')).get('gemaakt', '') if os.path.exists(PW) else ''
+    if st_pw and st_pw != tg.get('prijswacht') and (datetime.date.today() - datetime.date.fromisoformat(st_pw[:10])).days <= 2:
+        if not (wacht and os.path.exists(wacht) and vers):
+            c, t = run(['node', 'scripts/keurkamer/effectief-site.js']); stap('site-prijzen verzamelen', c == 0, t)
+        c, t = run([sys.executable, 'scripts/keurkamer/nazorg.py', PW]); stap('prijswacht toepassen', c in (0, 3), t)
+        try: rap['prijswacht'] = json.loads(t[t.index('{'):t.rindex('}') + 1])
+        except Exception: rap['prijswacht'] = {'ruw': t[-300:]}
+        if c == 0:
+            tg['prijswacht'] = st_pw; json.dump(tg, open(TOEGEPAST, 'w', encoding='utf-8'))
+        elif c == 3: rap['melden'].append('Prijswacht niet toegepast: ' + str(rap['prijswacht'].get('gestopt', '')))
+except Exception as e:
+    stap('prijswacht', False, str(e))
 
 # 2b. linktest (11-11-2026): de laptop klikt eens per 30 dagen de winkelknoppen na. Kapotte knoppen melden (twee dagen lang), niets zelf veranderen:
 # herstellen gaat volgens CLAUDE.md hoofdstuk 10 (winkel in TT_OMWEG en TT_TC, of het product op uitverkocht).
@@ -98,7 +121,8 @@ if c != 0:
 c, t = run(['git', 'status', '--porcelain']); veranderd = bool(t.strip())
 if not veranderd: klaar(0, 'Niets veranderd vandaag; controle schoon.')
 nz = rap['nazorg'] or {}
-zin = 'Piloot %s: %s prijzen bijgewerkt, %s uitverkocht van de lijsten, %s bij bol niet meer te koop, %s weer te koop; controle schoon' % (vandaag, nz.get('prijs', 0), nz.get('uitverkocht', 0), nz.get('bolWeg', 0), nz.get('terug', 0))
+pw = rap.get('prijswacht') or {}
+zin = 'Piloot %s: %s prijzen bijgewerkt, %s uitverkocht van de lijsten, %s bij bol niet meer te koop, %s weer te koop, prijswacht %s prijzen en %s weg; controle schoon' % (vandaag, nz.get('prijs', 0), nz.get('uitverkocht', 0), nz.get('bolWeg', 0), nz.get('terug', 0), pw.get('prijs', 0), pw.get('uitverkocht', 0))
 if arg('--niet-pushen'): klaar(0, zin + ' (niet gepusht, op verzoek).')
 # logboekregel vóór het vastleggen, zodat hij in dezelfde commit zit (controle Opus 8-11-2026)
 try:

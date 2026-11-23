@@ -90,7 +90,7 @@ def main():
         # dus altijd overnemen; een grote sprong wel melden (vaak is het goedkope aanbod weg en verkoopt nu een andere verkoper).
         if p.get('exact'):
             if nieuw > 1.5 * oud or nieuw < 0.5 * oud:
-                rap['gemeld'].append('%s: %s van %.2f naar %.2f (bol, overgenomen)' % (p['id'], p['titel'], oud, nieuw))
+                rap['gemeld'].append('%s: %s van %.2f naar %.2f (%s, overgenomen)' % (p['id'], p['titel'], oud, nieuw, p.get('bron') or 'bol'))
         elif nieuw > 2 * oud or nieuw < 0.5 * oud:
             # niet overgenomen, en dan ook geen verse controledatum: anders staat een oude prijs als 'vandaag gecontroleerd' op de site
             geweigerd.add(p['id'])

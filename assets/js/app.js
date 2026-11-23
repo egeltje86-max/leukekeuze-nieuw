@@ -3219,7 +3219,7 @@
     if (!p) return false;
     if (window.LK_DETAILS && window.LK_DETAILS[p.id]) return true;
     var D = window.LK_DETAILS_DEEL;
-    if (D && D[p.id]) { if (!p.detailsGeladen) { Object.assign(p, D[p.id]); p.detailsGeladen = true; } return true; }
+    if (D && D[p.id]) { if (!p.detailsGeladen) { Object.assign(p, D[p.id]); p.detailsGeladen = true; if (window.LK_PAS_PRIJZEN) window.LK_PAS_PRIJZEN.een(p); } return true; }
     return false;
   }
   function laadDetails(klaar) {
@@ -3229,7 +3229,8 @@
     var sc = document.createElement('script'); sc.src = '/assets/js/producten-details.js' + (v ? '?v=' + v : '');
     sc.onload = function () {
       var D = window.LK_DETAILS || {};
-      (window.LK_PRODUCTEN || []).forEach(function (p) { if (D[p.id]) Object.assign(p, D[p.id]); });
+      /* 23-11-2026 (PRIJSWACHT): de details hebben de controledatum van de bouw; een versere prijs van de prijswacht gaat voor. */
+      (window.LK_PRODUCTEN || []).forEach(function (p) { if (D[p.id]) { Object.assign(p, D[p.id]); if (window.LK_PAS_PRIJZEN) window.LK_PAS_PRIJZEN.een(p); } });
       klaar();
     };
     sc.onerror = function () { detailsBezig = false; };
@@ -4749,6 +4750,7 @@
   /* 17-11-2026: de Amazon Storefront (ideeënlijsten), met partnercode. Gebruikt op /tiktok, in het menu en op de homepage. */
   var AMZ_SHOP = 'https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21';
   var TIKTOK_REELS = [
+    { datum: '23 november', kop: 'Topper van de dag: een croissant met beentjes', tekst: 'De topper van vandaag is de croissant van Jellycat: een knuffel met een glimlach en beentjes. Daarna nog vijf: een lavalamp in de vorm van een raket, Mario Kart World voor de Switch 2, een Rubik\'s Cube die je leert hoe je hem oplost, Hitster Celebration voor het hele gezin en Rummikub in een blik voor op reis.', ids: ['sissyb-e9d1e8ef6e', 'dvzn-319838d8ed', 'cl-mkw', 'tt-dgsw-679cd9e678', 'massa-995c05e41b', 'bgs-f7d234d17e'], naar: '/zoek?q=jellycat', naarTekst: 'Alle Jellycat-knuffels' },
     { datum: '22 november', kop: 'Wat doet dít nou? Deel 2', tekst: 'Zes cadeaus onder € 20 waar iedereen eerst "huh?" zegt: een mediterende kat om in te knijpen, een kerstboom met een tunnel van lichtjes, een wierookhouder in de vorm van een cowboylaars, een spaarpot "Zwart geld" met slotje, een pingpongnetje dat je op de eettafel klemt en een game-controller van neon.', ids: ['cadeau-8c9432bedb', 'massa-ab23656f59', 'dvzn-d5b4cf8326', 'coppens-f4f52115ac', 'fitwin-06817af8b8', 'hema-521a727d68'] },
     { datum: '22 november', kop: 'De Tamagotchi wordt 30!', tekst: "Op 23 november 1996 kwam het eerste Tamagotchi-eitje uit in Japan. Hij is er nog steeds: de Original van toen, de Connection die contact maakt met die van een vriend of vriendin, de nieuwe Paradise met een zoomknop, Tamagotchi's voor fans van BTS en dino's, en knuffels en figuurtjes vanaf € 9,99.", ids: ['bol-9300000407615426', 'nedg-c987c4fbaa', 'nedg-80d4ae9d98', 'nedg-3ba95cb5ba', 'nedg-577c5da1d2', 'nedg-1086f9c88d'], naar: '/zoek?q=tamagotchi', naarTekst: "Alle Tamagotchi's bekijken" },
     { datum: '21 november', kop: 'Welterusten: 6 cadeaus voor in bed', tekst: 'Alles onder € 20: maan en sterren die oplichten op het plafond, een slaapmasker met een blauwe lucht, een warmtekussen in de vorm van een bassethond, een maanlamp die ook de lucht bevochtigt, een boekwinkeltje om te bouwen met een lampje erin en Bob de Minion als nachtlampje.', ids: ['hobbym-edeb21f133', 'cl-wolk-slaapmasker', 'dvzn-2a6f553405', 'myzenf-3d83dcc6e1', 'grotek-6da0c12381', 'dvzn-bb1222d1cd'], naar: '/c/wonen/verlichting', naarTekst: 'Meer lampjes en sfeerlicht' },
@@ -5942,10 +5944,10 @@
       intro: "Een klein cadeau voor een man zoeken: voor lootjes, voor een collega, je broer of gewoon als verrassing. Het mag niet veel kosten, maar wel leuk zijn. Mannen vinden een klein cadeau vaak het leukst als het past bij wat ze graag doen: een biertje, gamen, de Formule 1, iets lekkers of iets om om te lachen. Alles in deze gids kost 15 euro of minder; de prijs controleren we en de actuele prijs zie je bij de winkel. Hieronder staan 24 ideeën in zes soorten.",
       delen: [
         { kop: "Zo kies je een klein cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar zijn hobby: gamen, F1, darten, de barbecue of een biertje. Daar zit bijna altijd een leuk klein cadeau.", "Een grap werkt goed bij lootjes of een collega, zolang het niet gemeen is.", "Iets lekkers gaat altijd op: nougat, drop of goede koffiebonen.", "Doe er een kaartje of een gedichtje bij. Dat maakt een klein cadeau persoonlijk."] },
-        { kop: "Om te lachen", tekst: "Voor een man met gevoel voor humor.", ids: ["dvzn-1a61ae70d9", "cg-toilet-football", "dvzn-ebc9e55f71", "dvzn-7ed319ef34"] },
+        { kop: "Om te lachen", tekst: "Voor een man met gevoel voor humor.", ids: ["dvzn-1a61ae70d9", "cg-toilet-football", "dvzn-dcc8e0b22d", "dvzn-7ed319ef34"] },
         { kop: "Voor bij een biertje", tekst: "Een tegeltje met een knipoog, een flesopener of een tas voor zes flesjes.", ids: ["dvzn-c15dcffb40", "dvzn-0b435dbafd", "dvzn-5718c70e17", "dvzn-60b44dfc7a"] },
         { kop: "Voor de gamer en de F1-fan", tekst: "Van een controller van chocolade tot een LEGO-coureur.", ids: ["cg-chocolade-game-controller", "dvzn-660eedfb42", "legoshop-05f7335d75", "cl-pos-f1"] },
-        { kop: "Iets lekkers", tekst: "Nougat, drop, koffie of iets voor de barbecue.", ids: ["dw-4000161210283", "dw-8712514990242", "cl-hema-kerstbonen", "dk-00040236"] },
+        { kop: "Iets lekkers", tekst: "Nougat, drop, koffie of iets voor de barbecue.", ids: ["dw-4000161210283", "dw-5400265034324", "cl-hema-kerstbonen", "dk-00040236"] },
         { kop: "Spelletjes", tekst: "Kaartspellen voor een avond met vrienden of de familie.", ids: ["cl-flip7", "cl-lama", "bol-1004004005605390", "cl-uno"] },
         { kop: "Handig en knus", tekst: "Warme sokken, iets voor in de keuken of op het bureau.", ids: ["hema-a7c1cc7068", "dvzn-56f047311d", "dvzn-279882", "grotek-57e49bc6a4"] }
       ],
@@ -5957,7 +5959,7 @@
         { kop: "Zo kies je een klein cadeautje", tekst: "Vier dingen die helpen:", lijst: ["Iets om even te verwennen gaat bijna altijd op: een handcrème, een bodyscrub of iets voor in bad.", "Iets warms voor de winter, zoals huissokken of een warmtekussen, wordt echt gebruikt.", "Een lampje of lichtjes maken het thuis meteen gezellig.", "Doe er een kaartje of een gedichtje bij. Dat maakt een klein cadeau persoonlijk."] },
         { kop: "Even verwennen", tekst: "Een fijne geur, iets voor de huid of iets leuks voor in bad.", ids: ["dk-00045266", "dvzn-43cb3e6645", "cadeau-f102403119", "parfum-5519078921"] },
         { kop: "Warm en knus", tekst: "Voor koude avonden op de bank.", ids: ["hema-efaa95f521", "hema-84afebb566", "dvzn-2a6f553405", "dvzn-e9a4c2cf2b"] },
-        { kop: "Lampjes en sfeer", tekst: "Een leeslampje, lichtjes voor foto's of bloemen die nooit verwelken.", ids: ["cl-poes-leeslamp", "dvzn-8e1b865150", "dvzn-8301e7ef8f", "lego-40460"] },
+        { kop: "Lampjes en sfeer", tekst: "Een leeslampje, lichtjes voor foto's of bloemen die nooit verwelken.", ids: ["dvzn-99610b59d5", "dvzn-8e1b865150", "dvzn-8301e7ef8f", "lego-40460"] },
         { kop: "Met een knipoog", tekst: "Voor een vriendin of collega met gevoel voor humor.", ids: ["dvzn-fcb853102a", "dvzn-91be613ae8", "cl-kat-kurkentrekker", "dvzn-06e0c194cf"] },
         { kop: "Om van te genieten", tekst: "Voor bij de thee, iets lekkers of iets moois door de brievenbus.", ids: ["dvzn-995742", "cg-pers-monthflower-mug", "bp-l001", "cl-lindt-teddy"] },
         { kop: "Spelletjes en zelf maken", tekst: "Een kaartspel voor een avond met vriendinnen of zelf kaarsen maken.", ids: ["cl-flip7", "cl-lama", "amz-b09sg9bb7m", "cl-uno"] }
@@ -5968,8 +5970,8 @@
       intro: "Wat geef je voor 10 euro? Meer dan je denkt. Voor een tientje heb je een grappige pen, een spel, iets lekkers of iets om te verwennen. Handig bij lootjes trekken, voor een collega, in de schoen of als klein bedankje. Alles in deze gids kost 10 euro of minder; de prijs controleren we en de actuele prijs zie je bij de winkel. Hieronder staan 24 ideeën in zes soorten.",
       delen: [
         { kop: "Zo kies je een cadeau van 10 euro", tekst: "Vier dingen die helpen:", lijst: ["Kies iets dat je meteen snapt als je het uitpakt: grappig, lekker of handig.", "Bij lootjes: kijk op het verlanglijstje, of kies iets waar iedereen om kan lachen.", "Iets lekkers gaat altijd op, ook als je de ander niet goed kent.", "Let op verzendkosten: bestel je bij een winkel met meer cadeaus, dan bespaar je die vaak."] },
-        { kop: "Voor kinderen", tekst: "Kleine cadeautjes waar kinderen echt mee spelen, ook goed voor in de schoen.", ids: ["lego-60312", "dgsw-d95eba0a04", "nedg-1ed80cdff7", "dgsw-f2bf7aee25"] },
-        { kop: "Grappig", tekst: "Om om te lachen bij het uitpakken: voor lootjes of iemand die alles al heeft.", ids: ["dvzn-655af9bd06", "gadget-d090d8ccf9", "dvzn-1a61ae70d9", "dvzn-ebc9e55f71"] },
+        { kop: "Voor kinderen", tekst: "Kleine cadeautjes waar kinderen echt mee spelen, ook goed voor in de schoen.", ids: ["lego-60312", "dgsw-d95eba0a04", "nedg-1ed80cdff7", "mega-afda647e36"] },
+        { kop: "Grappig", tekst: "Om om te lachen bij het uitpakken: voor lootjes of iemand die alles al heeft.", ids: ["dvzn-655af9bd06", "gadget-d090d8ccf9", "dvzn-1a61ae70d9", "dvzn-dcc8e0b22d"] },
         { kop: "Iets lekkers", tekst: "Chocolade, pralines of stroopwafels: lekker voor iedereen.", ids: ["t2-hema-2a7e38607b", "hema-8eff9a5ada", "dk-00015052", "cl-chocmakers-liefde"] },
         { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets voor een voetenbadje.", ids: ["cl-gr-fortune", "cl-kneipp-voetbad", "hema-4f711f0ecd", "parfum-5519078921"] },
         { kop: "Voor op het werk", tekst: "Voor een collega: een mok, iets voor op het bureau of een spel voor de pauze.", ids: ["coolgi-098cedb937", "hobbym-cfe3d81cbf", "dvzn-279882", "dvzn-296965"] },
@@ -6036,7 +6038,7 @@
         { kop: "Verwennen", tekst: "Voor in bad of onder de douche, om even tot rust te komen.", ids: ["dvzn-43cb3e6645", "cl-dk-scrub", "dvzn-e0769c29c2", "parfum-45dbbae7b4"] },
         { kop: "Knus en warm", tekst: "Voor lange avonden op de bank.", ids: ["hema-efaa95f521", "dvzn-29043e5ee8", "hema-84afebb566", "cl-medisana-mc600"] },
         { kop: "Iets lekkers", tekst: "Om samen te eten, een cocktail te maken of thee te proeven.", ids: ["dvzn-801397", "dvzn-196608", "cl-shaker-recepten", "dk-cd1e8497b2"] },
-        { kop: "Voor in huis", tekst: "Een fijne geur, zacht licht en een plantje dat nooit verwelkt.", ids: ["dvzn-158179", "cl-poes-leeslamp", "bol-9300000187249569", "parfum-ab22c2229e"] },
+        { kop: "Voor in huis", tekst: "Een fijne geur, zacht licht en een plantje dat nooit verwelkt.", ids: ["dvzn-158179", "dvzn-99610b59d5", "bol-9300000187249569", "parfum-ab22c2229e"] },
         { kop: "Zelf maken", tekst: "Voor wie graag iets met haar handen doet.", ids: ["dvzn-310643", "bol-9300000042460003", "dvzn-783693", "dvzn-221671"] },
         { kop: "Iets persoonlijks", tekst: "Met haar naam, haar foto of haar eigen tekst.", ids: ["ptm-9", "cl-sp-fb-large", "cl-diy-neon", "bp-l087"] }
       ],
@@ -6064,7 +6066,7 @@
         { kop: "Voor hem", tekst: "Sokken in een ginfles, whiskyglazen, een foute trui of iets om te bouwen.", ids: ["dvzn-506744c169", "cg-rocking-whisky-glazen", "tt-bellatio-880a93e375", "bol-9300000237345417"] },
         { kop: "Voor kinderen en tieners", tekst: "Lampjes, een kersttrui en een knuffel.", ids: ["dvzn-995816", "lego-27b82426d9", "t2-nedgame-8b7f297dc1", "hema-8c25c71c2b"] },
         { kop: "Samen spelen met kerst", tekst: "Voor na het kerstdiner, met de hele familie.", ids: ["dvzn-4e9451d3df", "cl-30seconds", "999g-999bom01", "cl-flip7"] },
-        { kop: "Iets persoonlijks", tekst: "Met eigen foto's, of iets om ieder jaar weer neer te zetten.", ids: ["smartp-4849c81cba", "cl-instax12", "lego-8c8933b891", "country-0fd006d070"] }
+        { kop: "Iets persoonlijks", tekst: "Met eigen foto's, of iets om ieder jaar weer neer te zetten.", ids: ["smartp-4849c81cba", "bol-9300000303263562", "lego-8c8933b891", "country-0fd006d070"] }
       ],
       slot: "Lootjes trekken met de familie? Dat doe je gratis bij <a href=\"/lootjes-trekken\">Lootjes trekken</a>. Meer ideeën staan bij <a href=\"/c/cadeaus/kerst\">Kerstcadeaus</a>, <a href=\"/gids/kerstcadeau-voor-haar\">Kerstcadeau voor haar</a>, <a href=\"/gids/kerstcadeau-voor-hem\">Kerstcadeau voor hem</a> en <a href=\"/gids/kerstpakket-ideeen\">Kerstpakket ideeën</a>." },
     { slug: "cadeau-16-jaar", beeld: "dvzn-87965e50f5", vakken: ["voor/tieners"],
@@ -6074,7 +6076,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Vraag wat er op de verlanglijst staat: op deze leeftijd weten ze vaak precies wat ze willen.", "Een game? Vraag eerst welke spelcomputer er staat.", "Iets voor de kamer (een lamp, een deken) wordt elke dag gebruikt.", "Een geurtje of verzorging? Kies iets frisses dat bij de leeftijd past."] },
         { kop: "Lampen voor de kamer", tekst: "Voor sfeer op de slaapkamer.", ids: ["dvzn-87965e50f5", "dvzn-154853", "amz-b0bkv168nr", "dvzn-880877"] },
         { kop: "Gamen", tekst: "Voor wie altijd achter de console zit.", ids: ["cl-spiderman2", "cl-mario-party", "amz-b0cx9gt83j", "cl-cloud3s"] },
-        { kop: "Muziek en foto", tekst: "Oordopjes, een instant camera en licht voor selfies en filmpjes.", ids: ["cl-liberty", "cl-instax12", "dvzn-2b85566004", "dvzn-82c9fc5824"] },
+        { kop: "Muziek en foto", tekst: "Oordopjes, een instant camera en licht voor selfies en filmpjes.", ids: ["cl-liberty", "bol-9300000303263562", "dvzn-6109bcaff3", "dvzn-82c9fc5824"] },
         { kop: "Geur en verzorging", tekst: "Een lekkere mist of een eerste parfum.", ids: ["bol-9300000084268898", "cl-ariana-cloud", "cl-eilish", "parfum-80840d7cc9"] },
         { kop: "Spellen met vrienden", tekst: "Snel uit te leggen en altijd lachen.", ids: ["dgsw-f8d291bf6b", "999g-999wiz01b", "cl-uno", "dvzn-airhockey"] },
         { kop: "Knus en grappig", tekst: "Voor op de bank of in bed.", ids: ["hema-fff75ba577", "cl-capibara-warm", "nedg-7c1aa8ede0", "dvzn-4eb73fa3d5"] }
@@ -6087,7 +6089,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Vraag je partner wat ze graag doen: tuinieren, koken, puzzelen of een glas wijn.", "Kies liever iets moois dat opgaat dan iets voor in huis: smaak in huis is persoonlijk.", "Geef samen met je partner, dan voelt het minder spannend.", "Iets met een foto van de kleinkinderen doet het bij opa en oma altijd goed."] },
         { kop: "Voor bij de borrel", tekst: "Kaas, borrelhapjes of een whiskyset met glazen.", ids: ["dk-00044934", "bol-9300000245107849", "hobbym-cc513083ec", "cl-old-amsterdam"] },
         { kop: "Thee en koffie", tekst: "Mooi servies voor het kopje thee van elke dag.", ids: ["cl-12413", "cl-27618", "dk-00022235", "cl-26422"] },
-        { kop: "Voor de tuin", tekst: "Voor wie graag buiten is en vogels kijkt.", ids: ["dk-00041649", "dk-00041643", "cl-windgong", "dvzn-368715"] },
+        { kop: "Voor de tuin", tekst: "Voor wie graag buiten is en vogels kijkt.", ids: ["dk-00041649", "dk-00041643", "cl-windgong", "dvzn-641720"] },
         { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "westwing-1360b3fb47", "dk-00042761", "cl-svinando-cioccolata"] },
         { kop: "Puzzelen en spelen", tekst: "Voor rustige avonden of een spel met de familie.", ids: ["bgs-f7d234d17e", "invul-1e1c620b18", "999g-sch58877", "cl-lama"] },
         { kop: "Iets persoonlijks", tekst: "Met een foto, of iets om haar mee te verwennen.", ids: ["smartp-7b3879ec1c", "mmf-9ed87c2539", "cl-huisnummer-foto", "parfum-5519078921"] }
@@ -6154,7 +6156,7 @@
         { kop: "Oordopjes en koptelefoons", tekst: "Elektronica gaat rond Black Friday vaak in de aanbieding.", ids: ["cl-airpods5", "bol-9300000239314960", "bol-9300000139579323", "tf-107001396"] },
         { kop: "Gamen", tekst: "Een spelcomputer, een game of een extra controller.", ids: ["bol-9300000223645302", "cl-mkw", "cl-dualsense", "cl-minecraft"] },
         { kop: "LEGO", tekst: "Voor kinderen en voor volwassenen.", ids: ["lego-77243", "bol-9300000237345401", "bol-9300000131876375", "lego-10295"] },
-        { kop: "Muziek en foto", tekst: "Een speaker of een camera die meteen afdrukt.", ids: ["bol-9300000303263562", "bol-9300000252617200", "bol-9300000193746659", "cl-instax12"] },
+        { kop: "Muziek en foto", tekst: "Een speaker of een camera die meteen afdrukt.", ids: ["bol-9300000303263562", "bol-9300000252617200", "bol-9300000193746659", "bol-9300000113711298"] },
         { kop: "Geur en verzorging", tekst: "Mooie sets om cadeau te geven.", ids: ["cl-sdj-oil", "cl-laneige-lip", "parfum-6aae891b32", "parfum-80840d7cc9"] },
         { kop: "Voor in huis", tekst: "Voor wie van koffie, ijs of een gezellige avond houdt.", ids: ["cl-philips-2200", "bol-9300000239958237", "dvzn-995816", "hema-efaa95f521"] }
       ],
@@ -6193,7 +6195,7 @@
         { kop: "Voor de eigen kamer", tekst: "Lampjes en sterren aan het plafond.", ids: ["amz-b0gpf4v494", "dvzn-e572f57258", "hema-8c25c71c2b", "dvzn-b584c30354"] },
         { kop: "Spellen met vrienden", tekst: "Snel uitgelegd en altijd lachen.", ids: ["cl-exploding", "cl-hitster", "cl-flip7", "cl-beanboozled"] },
         { kop: "Bouwen en maken", tekst: "LEGO, een book nook of iets om zelf te maken.", ids: ["lego-77243", "cl-cb-midsummer", "dvzn-114084", "boeken-b4ca80eae9"] },
-        { kop: "Verwennen en grappig", tekst: "Kleine cadeautjes waar je meteen om moet lachen.", ids: ["dvzn-671060bdfd", "cl-treacle-scrub", "dvzn-ebc9e55f71", "superz-f16bbf44cc"] },
+        { kop: "Verwennen en grappig", tekst: "Kleine cadeautjes waar je meteen om moet lachen.", ids: ["dvzn-671060bdfd", "cl-treacle-scrub", "dvzn-dcc8e0b22d", "superz-f16bbf44cc"] },
         { kop: "Lezen en verzamelen", tekst: "Manga, een grappig boek of Pokémonkaarten.", ids: ["cl-demon-slayer-1", "cl-alex-tweelingbroer", "cl-pk-booster", "cl-pk-etb"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-12-jaar\">een kind van 12</a> en <a href=\"/gids/cadeau-14-jaar\">14 jaar</a>." },
@@ -6219,7 +6221,7 @@
         { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een cocktailset, een whiskykaraf of een heupfles met eigen tekst.", ids: ["cg-cocktail-shaker-set", "dvzn-332357", "smartp-11ee960dc1", "westwing-1360b3fb47"] },
         { kop: "Voor het eigen huis", tekst: "Een plank, een lamp of een popcornmachine voor een filmavond.", ids: ["dille-58dac9bd47", "t2-fiftiesstore-0200cce51e", "dvzn-530181", "tt-country-acc-40291bdfe5"] },
         { kop: "Samen doen", tekst: "Een uitje of een spel voor een avond met vrienden.", ids: ["dk-dd67a6f2bc", "dk-4c68d47ad3", "cl-hitster", "cl-wavelength"] },
-        { kop: "Om te lachen", tekst: "Voor de jarige met humor.", ids: ["dvzn-c15dcffb40", "cg-useless-box", "dvzn-ebc9e55f71", "dvzn-fcb853102a"] },
+        { kop: "Om te lachen", tekst: "Voor de jarige met humor.", ids: ["dvzn-c15dcffb40", "cg-useless-box", "dvzn-dcc8e0b22d", "dvzn-fcb853102a"] },
         { kop: "Om te verwennen", tekst: "Iets fijns voor jezelf, of een camera voor alle feestjes.", ids: ["dvzn-648493", "lego-10348", "bol-9300000303263562", "parfum-45dbbae7b4"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/gelegenheid/verjaardag\">Verjaardag</a>. Wordt iemand 40 of 50? Kijk bij <a href=\"/gids/cadeau-40-jaar\">Cadeau 40 jaar</a> en <a href=\"/gids/cadeau-50-jaar\">Cadeau 50 jaar</a>." },
@@ -6293,7 +6295,7 @@
       intro: "Wat geef je een kind van 1? Iets om mee te ontdekken. Rond de eerste verjaardag gaan veel kinderen staan en lopen, ze stapelen, stoppen dingen in een bak en halen ze er weer uit, en alles gaat nog in de mond. Kies daarom stevig speelgoed zonder kleine onderdelen: stapelbekers, een loopwagen, een eerste boekje of een knuffel. Hieronder staan 20 ideeën in vijf soorten.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kies speelgoed zonder kleine onderdelen. Alles gaat op deze leeftijd nog in de mond.", "Een loopwagen of duwkar helpt bij de eerste stapjes, en ze spelen er daarna nog lang mee.", "Kijk op de doos: speelgoed met '0+' of '12 maanden+' past.", "Ouders zijn vaak blij met iets dat niet piept of veel ruimte inneemt. Een boekje of een stapeltoren is altijd goed."] },
-        { kop: "Ontdekken en grijpen", tekst: "Rammelen, voelen en draaien: speelgoed om met de handen te ontdekken.", ids: ["cl-vtech-speeltafel", "cl-ld-vos", "dg-ac31dabc62", "cl-ld-driehoek"] },
+        { kop: "Ontdekken en grijpen", tekst: "Rammelen, voelen en draaien: speelgoed om met de handen te ontdekken.", ids: ["cl-vtech-speeltafel", "cl-hema-takkie", "dg-ac31dabc62", "cl-ld-driehoek"] },
         { kop: "Stapelen en sorteren", tekst: "Stapelen en weer omgooien. Klein en goedkoop, en ze spelen er lang mee.", ids: ["dk-00040686", "cl-fp-ringpiramide", "bol-9200000079252023", "cl-ld-stapelbekers"] },
         { kop: "Duwen en lopen", tekst: "Voor de eerste stapjes: een loopwagen om tegen te duwen, of een auto om op te zitten.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-bol-bobbycar", "cl-dolu-3in1"] },
         { kop: "Knuffels en badspeelgoed", tekst: "Iets zachts om mee te slapen, of iets leuks voor in bad.", ids: ["hema-84812eeeed", "bol-9300000111370441", "cl-steiff-trex", "cl-hema-knuffel"] },
@@ -6538,8 +6540,8 @@
         { kop: 'In de schoen (tot €10)', tekst: 'Klein, leuk en meteen te snappen.', ids: ['hema-ce48ea31d7', 'nedg-9ea779e8fa', 'dgsw-d99c9676ba', 'dvzn-655af9bd06'] },
         { kop: 'Voor kinderen', tekst: 'Iets om te bouwen, te ontdekken of om mee te spelen.', ids: ['dvzn-762707', 'lego-77243', 'dvzn-366531e682', 'cadeau-f11acf837b'] },
         { kop: 'Voor tieners', tekst: 'Een lamp van hun favoriete film of game, iets voor de selfie of een mok die verandert.', ids: ['dvzn-995816', 'dvzn-82c9fc5824', 'superz-f16bbf44cc', 'hema-efaa95f521'] },
-        { kop: 'Voor lootjes onder €15', tekst: 'Voor een collega, je zus of je oom: grappig of gezellig.', ids: ['dvzn-c15dcffb40', 'dvzn-ebc9e55f71', 'dvzn-2a6f553405', 'dvzn-8301e7ef8f'] },
-        { kop: 'Iets lekkers', tekst: 'Een chocoladeletter hoort erbij, net als nougat en drop.', ids: ['hema-0d1083eb14', 'bol-9300000402714971', 'dk-00042285', 'dw-8712514990242'] },
+        { kop: 'Voor lootjes onder €15', tekst: 'Voor een collega, je zus of je oom: grappig of gezellig.', ids: ['dvzn-c15dcffb40', 'dvzn-dcc8e0b22d', 'dvzn-2a6f553405', 'dvzn-8301e7ef8f'] },
+        { kop: 'Iets lekkers', tekst: 'Een chocoladeletter hoort erbij, net als nougat en drop.', ids: ['hema-0d1083eb14', 'bol-9300000402714971', 'dk-00042285', 'dw-5400265034324'] },
         { kop: 'Samen spelen op pakjesavond', tekst: 'Sjoelen met kruidnoten, een boek vol spelletjes of een kaartspel voor na het uitpakken.', ids: ['bol-9300000306377192', 'hema-90cecb0d49', 'dvzn-045d07751b', 'cl-flip7'] }
       ],
       slot: 'Meer ideeën: <a href="/collectie/schoencadeautjes">Schoencadeautjes</a>, <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a>, <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaas voor volwassenen</a> en <a href="/c/cadeaus/sinterklaas">alle sinterklaascadeaus</a>. Een gedicht maak je gratis met de <a href="/sint-rijmmachine/">Sint-rijmmachine</a>, lootjes trek je met <a href="/lootjes-trekken/">Lootjes trekken</a>.' },
@@ -6592,7 +6594,7 @@
       slot: 'Meer goedkope cadeaus vind je bij <a href="/c/cadeaus/onder-15">Cadeaus onder €15</a>. Alle kerstcadeaus staan bij <a href="/c/cadeaus/kerst">Kerst</a>.' },
     /* 14-11-2026 (GO Marius, zoekwoorden 'kerstcadeau vrouw' 8.100 en 'kerstcadeau man' 6.600 per maand): 24 cadeaus in zes soorten, met de hand gekozen. */
     /* 14-11-2026 (GO Marius, zoekwoord 'verlanglijstje maken' 8.100 per maand): uitleg hoe je op LeukeKeuze een verlanglijstje maakt en deelt. */
-    { slug: 'verlanglijstje-maken', beeld: 'cl-instax12', vakken: ['cadeaus/sinterklaas', 'cadeaus/kerst'],
+    { slug: 'verlanglijstje-maken', beeld: 'bol-9300000303263562', vakken: ['cadeaus/sinterklaas', 'cadeaus/kerst'],
       titel: 'Verlanglijstje maken: gratis, zonder account en delen via WhatsApp', kort: 'Zet cadeaus op je lijstje met het hartje en stuur het naar familie of vrienden. Zij kiezen een cadeau en bestellen het meteen bij de winkel.',
       intro: 'Een verlanglijstje maken op LeukeKeuze is gratis en je hebt geen account nodig. Je tikt op het hartje bij een cadeau dat je graag wilt hebben, en het staat op je lijstje. Daarna stuur je het lijstje via WhatsApp naar wie je wilt. Zij zien je cadeaus met foto en prijs, kiezen er een uit en bestellen het meteen bij de winkel. Handig voor Sinterklaas, Kerst, je verjaardag of als je lootjes trekt.',
       delen: [
@@ -6721,7 +6723,7 @@
         { kop: 'Voor kinderen die graag iets maken', tekst: 'Knutselsetjes zijn ideaal voor de schoen of als klein pakje: goedkoop, en ze zijn er na pakjesavond nog dagen zoet mee.',
           ids: ['bol-9300000071114106', 'bol-9300000169748883', 'bol-1004004007096491', 'hema-c81336bab1'] },
         { kop: 'Puzzels en spelletjes', tekst: 'Een puzzel of spelletje kun je meteen samen doen, als de pakjes open zijn.',
-          ids: ['cl-kpop', 'bol-9300000178728048', 'dgsw-ca1b884d94', 'bol-9300000221675724'] },
+          ids: ['cl-kpop', 'bol-9300000178728048', 'bol-9300000232180888', 'bol-9300000221675724'] },
         { kop: 'Voor de lootjes onder volwassenen en tieners', tekst: 'Een mok van hun favoriete serie of film, of iets lekkers: altijd raak.',
           ids: ['nedg-e1cd4db186', 'bol-9300000155871150', 'cl-beanboozled', 'bol-9300000255947352'] }
       ],
@@ -6743,7 +6745,7 @@
         { kop: 'Samen met de kleinkinderen', tekst: 'Spelletjes die opa en oma nog kennen van vroeger, en die kleinkinderen ook leuk vinden.',
           ids: ['bol-1004004000008403', 'bol-1004004011781804', 'bol-9200000108574427', 'bol-9300000132852206'] },
         { kop: 'Warm en gezellig de winter door', tekst: 'Voor lange winteravonden op de bank of in de stoel.',
-          ids: ['bol-9300000196514024', 'bol-9300000236851351', 'bol-9200000075452260', 'dvzn-662540'] },
+          ids: ['bol-9300000196514024', 'bol-9300000236851351', 'bol-9200000075452260', 'cl-clipon'] },
         { kop: 'Herinneringen en muziek', tekst: 'Foto’s van de kleinkinderen of muziek van vroeger: daar raken ze niet op uitgekeken.',
           ids: ['bol-9300000167329318', 'bol-9300000032182043', 'bol-9300000237380954', 'bol-9200000099487936'] }
       ],
@@ -6787,7 +6789,7 @@
         { kop: 'Met een knipoog', tekst: 'Voor op de afscheidsreceptie. Daar wordt om gelachen.',
           ids: ['dvzn-734300', 'amz-b0hgq4q3pd', 'bol-9300000234965416', 'bol-9300000385427142'] },
         { kop: 'Om te bewaren', tekst: 'Laat collega’s, familie en vrienden iets schrijven. Dat leest iemand later nog vaak terug.',
-          ids: ['amz-b0b3tdry1m', 'dvzn-662540', 'dvzn-452003', 'amz-9465708399'] },
+          ids: ['amz-b0b3tdry1m', 'cl-clipon', 'dvzn-452003', 'amz-9465708399'] },
         { kop: 'Voor de nieuwe hobby', tekst: 'Eindelijk tijd voor wat je altijd al wilde doen. Met deze cadeaus kan iemand meteen beginnen.',
           ids: ['bol-9300000171232502', 'bol-9200000018494649', 'bol-9200000056314395', 'bol-9300000057830180', 'bol-9300000007378766'] },
         { kop: 'Tip: geef er een afspraak bij', tekst: 'Het mooiste cadeau voor iemand met pensioen is soms gewoon tijd samen. Schrijf op een kaartje bij je cadeau een afspraak: samen fietsen, samen naar de vogels kijken of een dagje uit. Dan heeft het cadeau meteen een plan erbij.' }
@@ -6811,7 +6813,7 @@
         { kop: 'Iets om samen te doen', tekst: 'Een spel voor jullie twee of met vrienden, of mooie glazen om op iets te proosten.',
           ids: ['999g-999win01', 'cl-ttr-europe', 'cl-the-mind', 'dc-2163335415'] },
         { kop: 'Mooi voor in huis', tekst: 'Bloemen die nooit verwelken, een lamp die overdag zonlicht opslaat en een camera voor alle mooie momenten.',
-          ids: ['bol-9300000131876375', 'dvzn-530181', 'dvzn-647292', 'cl-instax12'] }
+          ids: ['bol-9300000131876375', 'dvzn-530181', 'dvzn-647292', 'bol-9300000303263562'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/haar">Cadeaus voor haar</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-haar">Kerstcadeau voor een vrouw</a>. Voor Valentijn is er <a href="/gids/valentijnscadeau-voor-haar">Valentijnscadeau voor haar</a>.' },
     { slug: 'cadeau-voor-moeder', beeld: 'cl-myka-mama', vakken: ['cadeaus/voor-haar', 'sieraden'],
@@ -6826,7 +6828,7 @@
             'Geef je met broers en zussen? Leg samen in voor één mooi cadeau.'
           ] },
         { kop: 'Iets persoonlijks', tekst: 'Een armband met de geboortestenen van haar kinderen, een fotoboek of een camera voor nieuwe herinneringen.',
-          ids: ['cl-myka-mama', 'cl-pf-hardcover', 'bp-l311', 'cl-instax12'] },
+          ids: ['cl-myka-mama', 'cl-pf-hardcover', 'bp-l311', 'bol-9300000303263562'] },
         { kop: 'Om even tot rust te komen', tekst: 'Warm, zacht en lekker ruikend: helemaal goed voor een avond op de bank.',
           ids: ['dk-00044258', 'cl-ww-trilogy', 'cl-beurer-fb12', 'cl-rit-sakura'] },
         { kop: 'Voor de keuken en bij de thee', tekst: 'Een kookboek dat ze echt gebruikt, goede koffie of iets lekkers om uit te delen.',
@@ -6888,7 +6890,7 @@
         { kop: 'Samen spelen', tekst: 'Een spel voor jullie twee, of voor de hele familie tijdens de feestdagen.',
           ids: ['cl-the-mind', 'cl-pictionary', 'cl-ttr-europe'] },
         { kop: 'Mooi voor in huis', tekst: 'Bloemen die blijven, een lamp op zonne-energie en een camera voor jullie mooiste momenten.',
-          ids: ['bol-9300000131876375', 'dvzn-530181', 'cl-instax12'] },
+          ids: ['bol-9300000131876375', 'dvzn-530181', 'bol-9300000303263562'] },
         { kop: 'Tip: geef er een herinnering bij', tekst: 'Zoek een oude foto van jullie twee op en stop die bij het cadeau, met een kaartje over wat jullie samen hebben meegemaakt. Daar wordt elke zus stil van, hoe klein het cadeau ook is.' }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/haar">Cadeaus voor haar</a> en in de gids <a href="/gids/cadeau-voor-vriendin">Cadeau voor je vriendin</a>. Zoek je iets voor je broer? Kijk bij <a href="/gids/cadeau-voor-broer">Cadeau voor je broer</a>.' },
@@ -7177,7 +7179,7 @@
     "black-friday-2026": { top: [["Veel gezocht", "cl-airpods5"], ["Voor de gamer", "bol-9300000223645302"], ["Klein cadeau", "lego-77243"]], faq: [["Wanneer is Black Friday 2026?", "Black Friday is op vrijdag 27 november 2026, de dag na Thanksgiving in Amerika. Veel winkels beginnen al eerder met aanbiedingen."], ["Wanneer is Cyber Monday 2026?", "Cyber Monday is op maandag 30 november 2026, de maandag na Black Friday. Dan gaan vooral online winkels en elektronica nog eens in de aanbieding."], ["Is de korting op Black Friday echt?", "Niet altijd. Een winkel moet als van-prijs de laagste prijs van de 30 dagen ervoor tonen (een Europese regel), maar vergelijk zelf ook even. Wij tonen alleen korting op een echte van-prijs, en bij elk cadeau staat wanneer wij de prijs hebben gecontroleerd."], ["Kan ik met Black Friday mijn Sinterklaas- en kerstcadeaus kopen?", "Ja. Black Friday valt ruim een week vóór pakjesavond en vier weken vóór kerst. Let wel op de levertijd als het cadeau vóór 5 december binnen moet zijn."]] },
     "cadeau-18-jaar": { top: [["Onze topkeuze", "bol-9300000303263562"], ["Onder de 10 euro", "dvzn-86c555b6d6"], ["Om de dag te vieren", "massa-9195e5bedc"]], faq: [["Wat geef je iemand die 18 wordt?", "Iets voor de nieuwe tijd die begint: iets voor het rijbewijs en de eerste auto, oordopjes of een Instax-camera, iets gezelligs voor op kamers, of een mok of shirt met 18 erop."], ["Wat geef je een jongen van 18?", "Een draadloze autolader, een JBL-speaker, Hitster, een powerbank of goede oordopjes."], ["Wat geef je een meisje van 18?", "Een Instax-camera, Sol de Janeiro, een neonlamp voor haar kamer, de teddy-hoodie van HEMA of AirPods."]] },
     "cadeau-zwangere-vrouw": { top: [["Onze topkeuze", "sp-zwangerschapsdagboek"], ["Om te verwennen", "joybuy-eab1c70854"], ["Met een knipoog", "t2-boekenwereld-b0e9d04a02"]], faq: [["Wat geef je een zwangere vrouw?", "Iets voor haar zelf: een dagboek om de zwangerschap te onthouden, verzorging die voor zwangere vrouwen gemaakt is, warme sloffen, een zachte hoodie of een mok met een grap."], ["Wat is een leuk cadeau voor een zwangere vriendin?", "Een mok \"Mama loading\", een sweater \"Mommy to be\", een zwangerschapsdagboek met haar eigen foto op de kaft of de body butter van Weleda."], ["Wat kun je beter niet geven aan een zwangere vrouw?", "Alcohol, en verzorging met sterke geuren of oliën die niet voor zwangere vrouwen gemaakt zijn. Twijfel je? Kies dan iets dat niets met eten of verzorging te maken heeft, zoals een dagboek of iets warms."]] },
-    "cadeau-13-jaar": { top: [["Onze topkeuze", "cl-minecraft"], ["Onder de 10 euro", "dvzn-ebc9e55f71"], ["Met vrienden", "cl-hitster"]], faq: [["Wat geef je een kind van 13 jaar?", "Iets dat niet kinderachtig is: een game zoals Minecraft, een lampje of sterrenprojector voor de eigen kamer, een spel als Hitster, LEGO Speed Champions of manga."], ["Wat is een leuk cadeau voor een jongen van 13?", "Een game of controller, LEGO Speed Champions, Pokémonkaarten, het Minecraft-lampje of een opblaasbare stoel in de vorm van een controller."], ["Wat is een leuk cadeau voor een meisje van 13?", "Een Stitch-projectielamp, bubble tea badparels, een kralenset voor vriendschapsarmbandjes, een book nook of een neonlamp voor haar kamer."]] },
+    "cadeau-13-jaar": { top: [["Onze topkeuze", "cl-minecraft"], ["Onder de 10 euro", "dvzn-dcc8e0b22d"], ["Met vrienden", "cl-hitster"]], faq: [["Wat geef je een kind van 13 jaar?", "Iets dat niet kinderachtig is: een game zoals Minecraft, een lampje of sterrenprojector voor de eigen kamer, een spel als Hitster, LEGO Speed Champions of manga."], ["Wat is een leuk cadeau voor een jongen van 13?", "Een game of controller, LEGO Speed Champions, Pokémonkaarten, het Minecraft-lampje of een opblaasbare stoel in de vorm van een controller."], ["Wat is een leuk cadeau voor een meisje van 13?", "Een Stitch-projectielamp, bubble tea badparels, een kralenset voor vriendschapsarmbandjes, een book nook of een neonlamp voor haar kamer."]] },
     "cadeau-14-jaar": { top: [["Onze topkeuze", "bol-9300000303263562"], ["Klein cadeau", "dvzn-7fa21f9ec9"], ["Voor de kamer", "dvzn-515371"]], faq: [["Wat geef je een tiener van 14 jaar?", "Iets voor muziek of foto’s (oordopjes, een speaker of een Instax), een game, verzorging die tieners zelf gebruiken of een lamp voor de eigen kamer."], ["Wat is een leuk cadeau voor een jongen van 14?", "Een PS5-controller, een JBL-speaker, Tetris in een blikje, de Minecraft-zwaardlamp of goede oordopjes."], ["Wat is een leuk cadeau voor een meisje van 14?", "Een Instax-camera, Sol de Janeiro, Laneige, een sterrenhemel-projector of de teddy-hoodie van HEMA."]] },
     "cadeau-30-jaar": { top: [["Onze topkeuze", "dk-dd67a6f2bc"], ["Onder de 10 euro", "massa-9195e5bedc"], ["Een goed glas", "dvzn-332357"]], faq: [["Wat geef je iemand die 30 wordt?", "Iets voor het eigen huis, een uitje om samen te doen, een cocktailset of whiskykaraf, of iets grappigs met 30 erop."], ["Wat geef je een vriend of vriendin die 30 wordt?", "Een avond samen (een uitje of een spel als Hitster), een geurkaars met 30 erop, een Instax voor alle feestjes of een tegeltje met een grap."], ["Hoeveel geef je uit aan een cadeau voor iemand van 30?", "Dat bepaal je zelf. Voor een vriend of collega kiezen veel mensen iets van 15 tot 30 euro; geef je met een groep, dan kan het meer zijn."]] },
     "cadeau-40-jaar": { top: [["Onze topkeuze", "cl-26772"], ["Een uitje", "dk-85478160d2"], ["Om te onthouden", "ptm-9"]], faq: [["Wat geef je iemand die 40 wordt?", "Een uitje zoals een rit in een Ferrari of een helikoptervlucht, LEGO voor volwassenen of een poster van de sterrenhemel op de dag van de geboorte."], ["Wat geef je een man van 40?", "Een whiskyset, een heupfles met eigen tekst, LEGO F1, een rit in een sportwagen of een koptelefoon van Teufel."], ["Wat geef je een vrouw van 40?", "Een geur of geurstokjes, een LEGO-bonsai of -bloemen, een theeproeverij of een fotoboek."]] },
@@ -8677,6 +8679,8 @@
     if ((window.LK_DEEL_MIS || gekozen) && !$('[data-filterpaneel].open', app) && !$('.lade.open')) { STIL = true; toon(); }
     try { window.dispatchEvent(new Event('lk-volledig')); } catch (e) {}
   }
+  /* 23-11-2026 (PRIJSWACHT): kwamen de verse prijzen (assets/data/prijzen-nu.json) pas binnen toen de pagina al stond, dan stil opnieuw tekenen. */
+  window.LK_HERTEKEN = function () { if (!start.gedaan || $('[data-filterpaneel].open', app) || $('.lade.open')) return; STIL = true; toon(); };
   window.addEventListener('lk-producten', volledig); window.addEventListener('lk-top', volledig);
   function klaarVoorStart() { if (!window.LK_PRODUCTEN && window.LK_PAK) zetPak(); return window.LK_PRODUCTEN && (window.LK_TOPKEUZE || Date.now() - T_START > 6000); }
   window.addEventListener('lk-pak', function () { if (klaarVoorStart()) start(); });

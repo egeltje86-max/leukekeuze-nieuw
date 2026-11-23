@@ -1,0 +1,450 @@
+{
+ "uitleg": "Elk product dat ooit in een fotoreel stond. Kies voor een nieuwe reel nooit een id uit deze lijst (Marius 23-11-2026: geen herhalingen, geen eentonige reels; kies ook niet steeds hetzelfde thema of hetzelfde soort product). Na elke reel: een regel bovenaan erbij (datum, kop, thema, ids). Reels van eind oktober tot 11 november staan hier niet in; kies bij twijfel producten met sinds vanaf 2026-11-16. Nakijken: node scripts/reels/gebruikt.js <id> ...",
+ "reels": [
+  {
+   "datum": "23 november 2026",
+   "kop": "Topper van de dag: een croissant met beentjes",
+   "thema": "topper van de dag, zes mensen",
+   "ids": [
+    "sissyb-e9d1e8ef6e",
+    "dvzn-319838d8ed",
+    "cl-mkw",
+    "tt-dgsw-679cd9e678",
+    "massa-995c05e41b",
+    "bgs-f7d234d17e"
+   ]
+  },
+  {
+   "datum": "22 november 2026",
+   "kop": "Geef geen spullen, geef een nacht",
+   "thema": "bijzonder overnachten (Vipio)",
+   "ids": [
+    "vipio-f1bc780274",
+    "vipio-2f1b44ec47",
+    "vipio-4c8d4882cb",
+    "vipio-f6037ea61c",
+    "vipio-0a60e15372",
+    "vipio-67aa4c5217"
+   ]
+  },
+  {
+   "datum": "22 november 2026",
+   "kop": "Wat doet dít nou? Deel 2",
+   "ids": [
+    "cadeau-8c9432bedb",
+    "massa-ab23656f59",
+    "dvzn-d5b4cf8326",
+    "coppens-f4f52115ac",
+    "fitwin-06817af8b8",
+    "hema-521a727d68"
+   ]
+  },
+  {
+   "datum": "22 november 2026",
+   "kop": "De Tamagotchi wordt 30!",
+   "ids": [
+    "bol-9300000407615426",
+    "nedg-c987c4fbaa",
+    "nedg-80d4ae9d98",
+    "nedg-3ba95cb5ba",
+    "nedg-577c5da1d2",
+    "nedg-1086f9c88d"
+   ]
+  },
+  {
+   "datum": "21 november 2026",
+   "kop": "Welterusten: 6 cadeaus voor in bed",
+   "ids": [
+    "hobbym-edeb21f133",
+    "cl-wolk-slaapmasker",
+    "dvzn-2a6f553405",
+    "myzenf-3d83dcc6e1",
+    "grotek-6da0c12381",
+    "dvzn-bb1222d1cd"
+   ]
+  },
+  {
+   "datum": "21 november 2026",
+   "kop": "Dit wil elke fan: Pokémon, Potter en lampjes",
+   "ids": [
+    "nedg-ed5180d3f3",
+    "dvzn-746890",
+    "dvzn-614881",
+    "nedg-76649e7ebb",
+    "cadeau-fbccab6a9f",
+    "fiftie-84e03e3983",
+    "nedg-3c15e2841c"
+   ]
+  },
+  {
+   "datum": "21 november 2026",
+   "kop": "Dit willen ze écht: 6 luxe toppers",
+   "ids": [
+    "dk-9393c6d57b",
+    "cl-dyson-supersonic",
+    "cl-airpods5",
+    "lego-42206",
+    "dk-904317b4e5",
+    "tf-107001609"
+   ]
+  },
+  {
+   "datum": "20 november 2026",
+   "kop": "Koopavond vanaf de bank: alles onder € 20",
+   "ids": [
+    "cg-pratende-flessenopener",
+    "dvzn-671060bdfd",
+    "cadeau-0a6bd54cbe",
+    "dvzn-a26cec5b63",
+    "superz-b4cbce8d5c",
+    "dvzn-f42a99b966"
+   ]
+  },
+  {
+   "datum": "20 november 2026",
+   "kop": "Lootje getrokken? Wie heb jij?",
+   "ids": [
+    "dvzn-4595133637",
+    "dvzn-aea1a3388a",
+    "grotek-6b88521a6e",
+    "cl-wasgij",
+    "hema-9af19e566a",
+    "dvzn-86c555b6d6"
+   ]
+  },
+  {
+   "datum": "19 november 2026",
+   "kop": "Van alles wat: zes mensen, zes cadeaus",
+   "ids": [
+    "dvzn-fefa9fc445",
+    "parfum-4b477c5c6c",
+    "housev-e62afe1fc1",
+    "megaga-d03d4974c4",
+    "cg-b2176baf5e",
+    "cadeau-eaff32d056"
+   ]
+  },
+  {
+   "datum": "19 november 2026",
+   "kop": "Voor tieners: anime en KPop",
+   "ids": [
+    "dvzn-323de59399",
+    "superz-0deb3f2e23",
+    "dgsw-8ac317da46",
+    "emp-5fdfb36835",
+    "superz-95040f06c2",
+    "superz-f6728a4cdc"
+   ]
+  },
+  {
+   "datum": "19 november 2026",
+   "kop": "Wat doet dít nou? Deel 2: 6 cadeaus onder € 15",
+   "ids": [
+    "dvzn-43cb3e6645",
+    "cg-hidden-safe-clock",
+    "cl-wijnacc-fles",
+    "dvzn-8a7b4143e9",
+    "cg-toilet-basketball",
+    "mega-a6823ad51f"
+   ]
+  },
+  {
+   "datum": "18 november 2026",
+   "kop": "Wat doet dít nou? 6 cadeaus onder € 15",
+   "ids": [
+    "cg-7fbf7836d1",
+    "dvzn-befe32d2ff",
+    "cg-a2fee2ef6d",
+    "dvzn-0486864a03",
+    "cg-913caa57b8",
+    "dvzn-56f047311d"
+   ]
+  },
+  {
+   "datum": "18 november 2026",
+   "kop": "Nieuw: de Hello Kitty-hoek",
+   "ids": [
+    "nedg-22009b572a",
+    "bol-9300000145384800",
+    "nedg-a3cd45cffc",
+    "emp-1111323c44",
+    "dvzn-83cb621761",
+    "amz-b0f8nh1d8c",
+    "emp-9856d43bce",
+    "emp-c150731016",
+    "dgsw-d246c1887c",
+    "nedg-6e0ef6b467"
+   ]
+  },
+  {
+   "datum": "17 november 2026",
+   "kop": "Net binnen: 10 nieuwe cadeaus",
+   "ids": [
+    "dvzn-88a9a4b2f6",
+    "massa-da20a7c4ab",
+    "dgsw-bd110d5515",
+    "megaga-208a1e8993",
+    "dvzn-f07c98d9de",
+    "nedg-aaef75274b",
+    "tensti-f2878e99ca",
+    "dvzn-97fb304293",
+    "bol-9300000156641539",
+    "cg-db4d6afc28"
+   ]
+  },
+  {
+   "datum": "17 november 2026",
+   "kop": "Nieuw: de Pokémon-hoek",
+   "ids": [
+    "nedg-9ea779e8fa",
+    "nedg-797a79ea8e",
+    "nedg-ecbc668ad4",
+    "nedg-4175fe9fd9",
+    "nedg-adb164ecbd",
+    "nedg-a10f0c326e",
+    "emp-029a340781",
+    "cl-pokopia",
+    "nedg-e3dfabf90c",
+    "nedg-13e07a300d"
+   ]
+  },
+  {
+   "datum": "17 november 2026",
+   "kop": "Gespot bij Ditverzinjeniet: alles onder € 15",
+   "ids": [
+    "dvzn-58068de5fa",
+    "dvzn-6791",
+    "dvzn-48bcf6ed40",
+    "dvzn-726291",
+    "dvzn-22f0aff1dc"
+   ]
+  },
+  {
+   "datum": "17 november 2026",
+   "kop": "Gespot bij HEMA: alles onder € 15",
+   "ids": [
+    "hema-36f500cd52",
+    "hema-e8aced2a21",
+    "hema-9c923e1a87",
+    "hema-32d780c657",
+    "hema-b059bba7b0"
+   ]
+  },
+  {
+   "datum": "16 november 2026",
+   "kop": "Lootje getrokken? 10 nieuwe cadeaus",
+   "ids": [
+    "nedg-4c81f01c66",
+    "bigsiz-4e5500270d",
+    "cadeau-b636db132b",
+    "gadget-7e31d86ce4",
+    "cadeau-bb87e54fa2",
+    "cadeau-c3439f355f",
+    "dvzn-cce4b58a90",
+    "cadeau-13138252a6",
+    "nedg-aa85125d5b",
+    "cadeau-c6c97ade65"
+   ]
+  },
+  {
+   "datum": "16 november 2026",
+   "kop": "Te mooi om aan te steken: 6 kaarsen met lef",
+   "ids": [
+    "megaga-6067071002",
+    "sissyb-5747d02176",
+    "ww-f8f6d12ecc",
+    "ww-fa986cf0c1",
+    "hema-2d64a8f6d4",
+    "joybuy-6516355e12",
+    "tt-dvzn-a93ae6dedc"
+   ]
+  },
+  {
+   "datum": "16 november 2026",
+   "kop": "Zonde om aan te steken: 5 gekke kaarsen",
+   "ids": [
+    "surpri-271f87fd8b",
+    "joybuy-6516355e12",
+    "sissyb-f809bf27f0",
+    "dvzn-770d60cf83",
+    "speelg-285ac4a6c8"
+   ]
+  },
+  {
+   "datum": "16 november 2026",
+   "kop": "Goedemorgen! Alles onder € 25",
+   "ids": [
+    "cl-mok-spiegelei",
+    "tt-dvzn-c0a7b1a834",
+    "dvzn-995742",
+    "dvzn-608847",
+    "dvzn-c15dcffb40"
+   ]
+  },
+  {
+   "datum": "15 november 2026",
+   "kop": "Knusse avond? Alles onder € 20",
+   "ids": [
+    "cl-poes-leeslamp",
+    "cl-heatable-hot",
+    "cl-hema-teddy",
+    "cg-xxl-warmwaterkruik",
+    "trendm-7d10a12abb"
+   ]
+  },
+  {
+   "datum": "15 november 2026",
+   "kop": "Pokémon bouwen! Mega en LEGO",
+   "ids": [
+    "cl-mc-charmander",
+    "cl-mc-pikachu",
+    "cl-mc-lapras",
+    "lego-72151",
+    "bol-9300000257600058"
+   ]
+  },
+  {
+   "datum": "15 november 2026",
+   "kop": "Schoen zetten? Alles onder € 10",
+   "ids": [
+    "dvzn-f8c667585b",
+    "dvzn-685253dc97",
+    "dvzn-2b383312f5",
+    "dvzn-553e02fbf0",
+    "dvzn-6beee4c0d4"
+   ]
+  },
+  {
+   "datum": "14 november 2026",
+   "kop": "5 lampjes om van te dromen",
+   "ids": [
+    "cadeau-786ef2dca5",
+    "cadeau-32797fb340",
+    "cadeau-1c5fc02b40",
+    "cadeau-d7158dab60",
+    "cadeau-b56544b12a"
+   ]
+  },
+  {
+   "datum": "14 november 2026",
+   "kop": "5 mooie lampjes tot € 35",
+   "ids": [
+    "amz-b0fcsxm3vp",
+    "dvzn-f8532c385d",
+    "cadeau-a30d8b9e4b",
+    "cadeau-89157ed70e",
+    "dvzn-e572f57258"
+   ]
+  },
+  {
+   "datum": "14 november 2026",
+   "kop": "5 verrassingen onder € 50",
+   "ids": [
+    "dvzn-557193",
+    "dvzn-779391",
+    "cg-b320632dae",
+    "dvzn-648493",
+    "dvzn-a4ed4f69b9"
+   ]
+  },
+  {
+   "datum": "14 november 2026",
+   "kop": "Sint is in het land, schoen zetten!",
+   "ids": [
+    "dgsw-73875b4eb0",
+    "nedg-1ed80cdff7",
+    "dvzn-1efc3c8d3d",
+    "dgsw-d88cc64fa3",
+    "cl-beyblade"
+   ]
+  },
+  {
+   "datum": "14 november 2026",
+   "kop": "5 toppers onder € 50",
+   "ids": [
+    "dvzn-995816",
+    "hema-efaa95f521",
+    "bol-9300000131876375",
+    "grotek-ac82c5461a",
+    "bol-9300000252617200"
+   ]
+  },
+  {
+   "datum": "13 november 2026",
+   "kop": "Schoen zetten, 5 tot € 10",
+   "ids": [
+    "dvzn-4d97c0ab44",
+    "dgsw-d99c9676ba",
+    "dvzn-655af9bd06",
+    "dvzn-3ee499eae7",
+    "hema-ce48ea31d7"
+   ]
+  },
+  {
+   "datum": "13 november 2026",
+   "kop": "5 lampjes voor gamers, tot € 20",
+   "ids": [
+    "dvzn-19948c60e9",
+    "dvzn-96ba2b1949",
+    "dvzn-633422",
+    "dvzn-e0d7171bb3",
+    "supz-8176d5f538"
+   ]
+  },
+  {
+   "datum": "13 november 2026",
+   "kop": "5 cadeautjes onder € 10",
+   "ids": [
+    "woewoe-7c880d8044",
+    "woewoe-2657e7b14e",
+    "woewoe-4f1087a474",
+    "woewoe-ff1c2aa222",
+    "woewoe-fc0b0c3d9d"
+   ]
+  },
+  {
+   "datum": "13 november 2026",
+   "kop": "5 knusse cadeaus onder € 25",
+   "ids": [
+    "dvzn-145895",
+    "tt-dvzn-65a776d941",
+    "cl-capibara-warm",
+    "dvzn-e5a1c9fee7",
+    "dvzn-fdd7c310b4"
+   ]
+  },
+  {
+   "datum": "12 november 2026",
+   "kop": "Lootje getrokken? 5 grappige cadeaus onder € 15",
+   "ids": [
+    "dvzn-1a61ae70d9",
+    "dvzn-7ed319ef34",
+    "dvzn-7670dc54f5",
+    "dvzn-326d5595a1",
+    "dvzn-a003b63b40"
+   ]
+  },
+  {
+   "datum": "12 november 2026",
+   "kop": "Grappige cadeaus voor tieners",
+   "ids": [
+    "dvzn-9688f84b76",
+    "dvzn-ebc9e55f71",
+    "dvzn-fcca193d6c",
+    "dvzn-4c1a69ab87",
+    "dgsw-f8d291bf6b"
+   ]
+  },
+  {
+   "datum": "12 november 2026",
+   "kop": "Grappige cadeaus voor kinderen",
+   "ids": [
+    "dvzn-8607c53284",
+    "dvzn-880ebf0fce",
+    "dgsw-a42a4b129c",
+    "dvzn-655af9bd06",
+    "dvzn-3ee499eae7"
+   ]
+  }
+ ]
+}

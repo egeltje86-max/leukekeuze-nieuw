@@ -30,11 +30,18 @@ E = json.load(open(bron, encoding='utf-8')); P = E['producten']
 vandaag = datetime.date.today().isoformat()
 uit = {'gemaakt': datetime.datetime.now().isoformat(timespec='minutes'), 'prijs': [], 'uitverkocht': [], 'nietInFeed': [], 'gecontroleerd': 0, 'bronnen': [], 'terug': []}
 
+# 23-11-2026: feeds waarvan de prijs afwijkt van de winkelpagina (verzendkosten erin, een regel per maat of formaat, of gewoon anders):
+# daar pas vanaf 10% verschil; de prijswacht (prijswacht.py) kijkt hun winkelpagina na.
+RUW = {'Decantalo', 'Droptelegram', 'MYKA', 'Kaartje2go', 'Westwing', 'Joybuy', 'Wijnkring', 'Dropwinkel'}
 def prijsverschil(pid, oud, nieuw, exact=False):
     try: oud = float(oud); nieuw = float(nieuw)
     except (TypeError, ValueError): return
     # 21-11-2026: bij bol is de feedregel precies het product van de link, dus elke afwijking telt (exact). Anders 10%.
-    if oud > 0 and ((exact and abs(nieuw - oud) >= 0.01) or abs(nieuw - oud) / oud >= 0.10):
+    # 23-11-2026 (Marius: 'veel erger dat de prijzen niet kloppen'): ook bij de partners telt elke afwijking. Met 10% bleven kleine
+    # prijswijzigingen staan (Cadeau.nl € 1 duurder, Nedgame € 10 goedkoper) terwijl de site 'gecontroleerd vandaag' zei.
+    # Alleen bij feeds die een andere prijs geven dan de winkel zelf (RUW) blijft 10%.
+    ruw = (P.get(pid) or {}).get('shop') in RUW
+    if oud > 0 and ((exact or not ruw) and abs(nieuw - oud) >= 0.01 or abs(nieuw - oud) / oud >= 0.10):
         r = {'id': pid, 'titel': P[pid]['titel'][:70], 'oud': oud, 'nieuw': round(nieuw, 2)}
         if exact: r['exact'] = True
         uit['prijs'].append(r)
