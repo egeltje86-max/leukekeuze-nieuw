@@ -1469,7 +1469,7 @@ window.LK_ZG_NAMEN = {"001_beauty-en-verzorging": "Beauty & verzorging", "002_bo
   var c = (window.LK_CATEGORIEEN || []).filter(function (x) { return x.slug === 'speelgoed' && !x.verborgen; })[0];
   var s = c && (c.subs || []).filter(function (x) { return x.slug === 'speelfiguren-voertuigen' && x.vakjes && !x.verborgen; })[0];
   if (!s || s.vakjes.some(function (v) { return v.slug === 'fidgets-tollen'; })) return;
-  s.vakjes.push({ slug: 'fidgets-tollen', naam: 'Fidgets & tollen', tekst: 'Pop-its, fidget spinners, friemelwormen en andere fidgets om je handen bezig te houden, en tollen om tegen elkaar te laten vechten, zoals Beyblade, Spinner Mad en de battle spinners van Pokémon.' });
+  s.vakjes.push({ slug: 'fidgets-tollen', naam: 'Fidgets, stressballen & tollen', tekst: 'Stressballen en knijpdieren, pop-its, fidget spinners, friemelwormen en andere fidgets om je handen bezig te houden, en tollen om tegen elkaar te laten vechten, zoals Beyblade, Spinner Mad en de battle spinners van Pokémon.' });
 })();
 /* ===== einde fidgets en tollen ===== */
 /* ===== 17-11-2026 POKÉMON-HOEK (wens Marius: 'ik wil een aparte Pokémon-hoek, er zijn veel Pokémon-fans, jong en oud; zorg dat het gesorteerd staat'):
