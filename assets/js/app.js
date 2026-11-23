@@ -6278,7 +6278,7 @@
         { kop: "Knus samen", tekst: "Voor de winteravonden op de bank, met z'n tweeën.", ids: ["dvzn-779391", "cl-hema-teddy", "cg-magnetron-sloffen", "bt-49287145423187"] },
         { kop: "Samen doen", tekst: "Een spel voor twee of een uitje: een avond samen als cadeau.", ids: ["bgs-f04e05c013", "bol-9300000227775720", "cl-escape2", "dk-1d0dec2fb3"] },
         { kop: "Iets moois voor in huis", tekst: "Een geurkaars, een bijzondere lamp of een tegeltje met de sterren van jullie dag.", ids: ["mmf-c68ebd1931", "cl-diy-neon", "dvzn-614881", "parfum-6aae891b32"] },
-        { kop: "Iets lekkers", tekst: "Pralines, marsepein of mooie glazen om samen te proosten.", ids: ["t2-hema-2a7e38607b", "westwing-1360b3fb47", "bol-9300000020446164", "dw-4000161100379"] },
+        { kop: "Iets lekkers", tekst: "Pralines, marsepein of mooie glazen om samen te proosten.", ids: ["t2-hema-2a7e38607b", "dc-2163335415", "bol-9300000020446164", "dw-4000161100379"] },
         { kop: "Voor haar hobby", tekst: "Haken, schilderen of plannen: iets voor haar vrije uurtjes.", ids: ["dvzn-915298", "cl-hema-agenda", "cl-sp-jaarplanner", "dvzn-494959"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/gids/kerstcadeau-voor-haar\">Kerstcadeau voor haar</a> en <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>. Voor hem: <a href=\"/gids/kerstcadeau-vriend\">Kerstcadeau voor je vriend</a>." },
@@ -6448,7 +6448,7 @@
         { kop: "Voor bij de borrel", tekst: "Kaas, borrelhapjes of een whiskyset met glazen.", ids: ["dk-00044934", "bol-9300000245107849", "hobbym-cc513083ec", "cl-old-amsterdam"] },
         { kop: "Thee en koffie", tekst: "Mooi servies voor het kopje thee van elke dag.", ids: ["cl-12413", "cl-27618", "dk-00022235", "cl-26422"] },
         { kop: "Voor de tuin", tekst: "Voor wie graag buiten is en vogels kijkt.", ids: ["dk-00041649", "dk-00041643", "cl-windgong", "dvzn-641720"] },
-        { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "westwing-1360b3fb47", "dk-00042761", "cl-svinando-cioccolata"] },
+        { kop: "Lekker aan tafel", tekst: "Iets lekkers om samen van te genieten.", ids: ["cl-dlh-kaaspakket", "dc-2163335415", "dk-00042761", "cl-svinando-cioccolata"] },
         { kop: "Puzzelen en spelen", tekst: "Voor rustige avonden of een spel met de familie.", ids: ["bgs-f7d234d17e", "invul-1e1c620b18", "999g-sch58877", "cl-lama"] },
         { kop: "Iets persoonlijks", tekst: "Met een foto, of iets om haar mee te verwennen.", ids: ["smartp-7b3879ec1c", "mmf-9ed87c2539", "cl-huisnummer-foto", "parfum-5519078921"] }
       ],
@@ -6499,7 +6499,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een grap over 50 jaar mag, zolang de jarige er zelf om kan lachen.", "Geef je met de hele familie of het werk? Kies dan iets groters, zoals een uitje of een goede fles.", "Iets om te onthouden blijft het langst: een fotoboek, een poster of een tegeltje met een foto.", "Kom je op het feest? Neem iets kleins mee voor erbij, zoals de quiz Hoera 50 jaar."] },
         { kop: "Abraham en Sarah", tekst: "Met een knipoog naar de 50.", ids: ["massa-d13af0c18e", "massa-8de12f27af", "fiftie-4f16994756", "dvzn-9c6e6309c6"] },
         { kop: "Voor het feest", tekst: "Een spel, LEGO-cijfers of een taart van marsepein.", ids: ["massa-b14fda081d", "legoshop-f13ef33683", "legoshop-8e65b8eaee", "dw-4000161470748"] },
-        { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een whiskyset of iets met een eigen tekst erop.", ids: ["cl-26772", "smartp-11ee960dc1", "smartp-48b3d1162c", "westwing-1360b3fb47"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een whiskyset of iets met een eigen tekst erop.", ids: ["cl-26772", "smartp-11ee960dc1", "smartp-48b3d1162c", "dc-2163335415"] },
         { kop: "Iets om te onthouden", tekst: "Een poster, een fotoboek of een tegeltje met een foto.", ids: ["ptm-9", "cl-pf-hardcover", "mmf-63b16f5c97", "cg-37e1269b65"] },
         { kop: "Samen erop uit", tekst: "Een uitje als cadeau: iets wat je nooit vergeet.", ids: ["dk-dd67a6f2bc", "dk-904317b4e5", "dk-78c5a18049", "dk-2cf3416932"] },
         { kop: "Om te verwennen", tekst: "Een fijne verzorgingsset, een geur of iets moois voor in huis.", ids: ["t2-cadeau-nl-6e2c684cbd", "lego-10348", "parfum-45dbbae7b4", "parfum-79e274528c"] }
@@ -6576,7 +6576,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Een grap over 30 jaar mag, zolang de jarige er zelf om kan lachen.", "Woont de jarige net op zichzelf? Iets voor het eigen huis wordt elke dag gebruikt.", "Iets om samen te doen is vaak het leukste cadeau: een uitje of een spel voor een avond met vrienden.", "Geef je met een groep? Dan kun je samen iets groters kiezen."] },
         { kop: "Om de dag te vieren", tekst: "Iets kleins voor op de verjaardag zelf.", ids: ["massa-9195e5bedc", "legoshop-f13ef33683", "cg-57a56fb762", "bloom-6d523c18f4"] },
-        { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een cocktailset, een whiskykaraf of een heupfles met eigen tekst.", ids: ["cg-cocktail-shaker-set", "dvzn-332357", "smartp-11ee960dc1", "westwing-1360b3fb47"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie champagneglazen, een cocktailset, een whiskykaraf of een heupfles met eigen tekst.", ids: ["cg-cocktail-shaker-set", "dvzn-332357", "smartp-11ee960dc1", "dc-2163335415"] },
         { kop: "Voor het eigen huis", tekst: "Een plank, een lamp of een popcornmachine voor een filmavond.", ids: ["dille-58dac9bd47", "t2-fiftiesstore-0200cce51e", "dvzn-530181", "tt-country-acc-40291bdfe5"] },
         { kop: "Samen doen", tekst: "Een uitje of een spel voor een avond met vrienden.", ids: ["dk-dd67a6f2bc", "dk-4c68d47ad3", "cl-hitster", "cl-wavelength"] },
         { kop: "Om te lachen", tekst: "Voor de jarige met humor.", ids: ["dvzn-c15dcffb40", "cg-useless-box", "dvzn-dcc8e0b22d", "dvzn-fcb853102a"] },
@@ -6602,7 +6602,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Heeft de jarige alles al? Kies iets dat op gaat of iets om samen te doen.", "Iets met de (klein)kinderen raakt bijna altijd: een foto, hun namen of een fotoboek.", "Kijk naar de hobby: de tuin, puzzelen, een borrel of muziek.", "Geef je met de familie? Dan kun je samen een uitje of iets groters kiezen."] },
         { kop: "Om de dag te vieren", tekst: "Een kaart die blijft zingen, een geurkaars of een marsepeintaart.", ids: ["cg-57a56fb762", "massa-9195e5bedc", "dw-4000161470748", "cadeau-21b87d357f"] },
-        { kop: "Voor bij een goed glas", tekst: "Mooie glazen, een whiskyset of een wijnset in een boek.", ids: ["westwing-1360b3fb47", "cl-26772", "cg-rocking-whisky-glazen", "dvzn-243456"] },
+        { kop: "Voor bij een goed glas", tekst: "Mooie glazen, een whiskyset of een wijnset in een boek.", ids: ["dc-2163335415", "cl-26772", "cg-rocking-whisky-glazen", "dvzn-243456"] },
         { kop: "Voor de tuin", tekst: "Voor wie graag naar de vogels kijkt of in de tuin bezig is.", ids: ["dvzn-794561", "dk-00007580", "cl-24943", "dk-00043982"] },
         { kop: "Puzzelen en spelen", tekst: "Voor de lange avonden en met de familie.", ids: ["dg-311a752fd8", "cl-wasgij", "999g-giggcqa", "bol-1004004000008403"] },
         { kop: "Iets om te onthouden", tekst: "Een fotoboek, een poster of een tegeltje met een foto.", ids: ["cl-pf-hardcover", "cg-37e1269b65", "mmf-63b16f5c97", "ptm-9"] },
@@ -6982,7 +6982,7 @@
         { kop: 'Even verwennen', tekst: 'Verzorging en iets om even bij te komen.', ids: ['bloom-f6daaba72c', 'dk-00045266', 'cl-gr-gluhwein', 'parfum-45dbbae7b4'] },
         { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['cg-magnetron-sloffen', 'hema-efaa95f521', 'bt-46901990228307', 'dvzn-e9a4c2cf2b'] },
         { kop: 'Kerstsfeer in huis', tekst: 'Een geurkaars, lichtjes of iets moois voor de kersttafel.', ids: ['lego-10370', 'dkam-4c55c33197', 'country-b8fd99e550', 'bp-p0061ke'] },
-        { kop: 'Iets lekkers', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['dw-4000161100379', 'bol-9300000020446164', 'dk-00043581', 'westwing-1360b3fb47'] },
+        { kop: 'Iets lekkers', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['dw-4000161100379', 'bol-9300000020446164', 'dk-00043581', 'dc-2163335415'] },
         { kop: 'Met een persoonlijk tintje', tekst: 'Een cadeau dat laat zien dat het echt voor háár is.', ids: ['cg-pers-monthflower-mug', 'mmf-63b16f5c97', 'dvzn-fcb853102a', 'dvzn-70adc8c50c'] },
         { kop: 'Om te maken of te spelen', tekst: 'Voor de vrije dagen tussen Kerst en oud en nieuw.', ids: ['t2-cadeau-nl-6e2c684cbd', 'lego-10348', 'cl-azul', 'amz-b09sg9bb7m'] }
       ],
@@ -7310,10 +7310,10 @@
         { kop: 'Vrolijke details', tekst: 'Een wiebelend geluksmannetje, een knipogende kattenklok of een vaas met kleur: kleine dingen die een huis eigen maken.',
           ids: ['westwing-0f62b95423', 't2-fiftiesstore-52c8a41b59', 't2-hema-52e407e77f'] },
         { kop: 'Om te proosten op het nieuwe huis', tekst: 'Mooie glazen of een karaf: het eerste feestje in het nieuwe huis kan beginnen.',
-          ids: ['westwing-1360b3fb47', 'decantalo-4c6ef11dc4', 'dc-2163335415'] }
+          ids: ['dc-2163335415', 'bol-9300000225911874', 'hema-986c321ef0'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/gelegenheid/housewarming">Housewarming</a> en <a href="/c/wonen">Wonen</a>.' },
-    { slug: 'cadeau-wijnliefhebber', drank: true, beeld: 'decantalo-4c6ef11dc4', vakken: ['eten-drinken/wijn', 'eten-drinken/bubbels', 'eten-drinken/drankaccessoires'],
+    { slug: 'cadeau-wijnliefhebber', drank: true, beeld: 'bol-9300000225911874', vakken: ['eten-drinken/wijn', 'eten-drinken/bubbels', 'eten-drinken/drankaccessoires'],
       titel: 'Cadeau voor een wijnliefhebber: van mooie fles tot Riedel-glazen', kort: 'Wijn geven zonder zelf kenner te zijn: veilige flessen, mooie glazen en luxe om uit te pakken.',
       intro: 'Een fles wijn geven aan iemand die er verstand van heeft: veel mensen vinden dat spannend. Niet nodig. Er zijn flessen waar vrijwel elke wijnliefhebber blij van wordt, en je hoeft er zelf geen kenner voor te zijn. De veiligste keuze is een Rioja Reserva uit Spanje: een klassieker die bij bijna iedereen goed valt. En wil je iets geven dat níét op gaat, kies dan mooie glazen of een karaf. Daar denkt iemand bij elk glas weer even aan je. Alle wijnen hieronder komen van een echte wijnwinkel, niet uit het supermarktschap.',
       delen: [
@@ -7329,7 +7329,7 @@
         { kop: 'Net iets specialer (€25 tot €35)', tekst: 'Voor een verjaardag of als bedankje dat net wat meer mag zijn.',
           ids: ['dc-2096174492', 'dc-1774276360', 'dc-2874880424'] },
         { kop: 'Cadeaus die niet op gaan', tekst: 'Goede glazen en een karaf maken elke fles beter. Riedel is hét merk waar wijnliefhebbers zelf naar kijken.',
-          ids: ['decantalo-4c6ef11dc4', 'dc-2163335415', 'dvzn-243456', 'bol-9300000405968428'] },
+          ids: ['bol-9300000225911874', 'dc-2163335415', 'dvzn-243456', 'bol-9300000405968428'] },
         { kop: 'Om echt uit te pakken', tekst: 'Champagne van een groot huis of een grote Italiaan: voor een jubileum, een pensioen of gewoon omdat het kan.',
           ids: ['dc-1665638250', 'dc-1652149584', 'dc-3004176108', 'dc-2620875218'] }
       ],
