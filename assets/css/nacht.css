@@ -105,3 +105,30 @@ html.nacht .srt-st-rond{width:84px;height:84px}
 html.nacht .srt-vt-rond{width:96px;height:96px}
 html.nacht .mini-tegel .mt-rond{flex-basis:56px;width:56px;height:56px}
 @media (max-width:359px){html.nacht .srt-st-rond{width:70px;height:70px}html.nacht .srt-vt-rond{width:80px;height:80px}}
+
+/* LEESBAAR EN VERFIJND (23-11-2026, Marius: 'zet alles netjes en maak het beter leesbaar, verfijn hem, maak hem mooier') */
+/* Kleine kopjes boven een winkel of blok: groter, licht goud in plaats van een donkere winkelkleur */
+html.nacht .sh .gang-kop small{font-size:13px;letter-spacing:.07em;color:#F2CB74!important;margin-bottom:2px}
+html.nacht .sh .gang-kop h2{color:#fff;font-size:24px;line-height:1.15}
+html.nacht .sh .kraam-van,html.nacht .sh .kraam-uitleg{color:#C9D1E3;font-size:15px}
+html.nacht .sh .binnen-kop p{color:#C9D1E3;font-size:15.5px}
+html.nacht .sh .binnen-kop h1{color:#fff}
+/* Productkaartjes: witte, grotere naam; de prijs als gouden prijskaartje (overal hetzelfde, goed te lezen) */
+html.nacht .sh .pk{padding:10px}
+html.nacht .sh .pk-t{color:#fff;font-size:16px;line-height:1.3;font-weight:700}
+html.nacht .sh .pk-w{color:#B9C2D6;font-size:13.5px}
+html.nacht .sh .pk-p{color:#FFDF9A;font-size:17px}
+html.nacht .sh .sh-binnen .pk-p,html.nacht .sh .top-etalage .pk-p,html.nacht .sh .kraam .pk-p{background:linear-gradient(180deg,#FFE3A0,#E2AE45);color:#1A1405!important;font-size:16.5px;padding:4px 12px 4px 17px;border-radius:5px 14px 14px 5px;box-shadow:0 0 14px -4px rgba(242,203,116,.55)}
+html.nacht .sh .sh-binnen .pk-p::before,html.nacht .sh .top-etalage .pk-p::before,html.nacht .sh .kraam .pk-p::before{background:#1A1405}
+/* 'Naar binnen bij ...': een duidelijke knop over de hele breedte in plaats van een losse gekleurde regel */
+html.nacht .sh .kraam .naar,html.nacht .sh .sh-binnen .naar,html.nacht .sh .top-etalage .naar{display:flex;justify-content:center;width:100%;min-height:48px;margin-top:6px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(242,203,116,.75);color:#FFDF9A!important;font-size:16px;text-decoration:none;background:rgba(242,203,116,.07)}
+html.nacht .sh .kraam .naar:hover,html.nacht .sh .sh-binnen .naar:hover,html.nacht .sh .top-etalage .naar:hover{background:rgba(242,203,116,.16);text-decoration:none}
+html.nacht .sh .kraam .gang-voet{flex-direction:column;align-items:stretch;gap:8px}
+/* Afdelingen in een winkel: lichte tekst en een gouden stip */
+html.nacht .sh .wegwijzer a{color:#fff;border-color:rgba(242,203,116,.35)!important;background:rgba(19,33,66,.85)}
+html.nacht .sh .wegwijzer a small{color:#C9D1E3}
+html.nacht .sh .wegwijzer a::before{background:#F2CB74!important}
+html.nacht .sh .wegwijzer a.ws-aan{background:linear-gradient(180deg,#FFE3A0,#E2AE45);color:#1A1405;border-color:transparent!important}
+html.nacht .sh .wegwijzer a.ws-aan small{color:#3A2C08}
+html.nacht .sh .wegwijzer-rij.sh-veeg-meer::after{background:linear-gradient(90deg,rgba(6,11,24,0),#060B18 62%)}
+html.nacht .sh h2{letter-spacing:-.005em}

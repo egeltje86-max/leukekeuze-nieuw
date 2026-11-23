@@ -4378,6 +4378,9 @@
   if (COMBI) document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-thema]'); if (!b) return;
     try { localStorage.setItem('lkthema', b.getAttribute('data-thema')); } catch (x) {}
+    /* cadeauboulevard (23-11-2026): 'Licht' geeft de oude lichte site, de andere keuzes de boulevard; wisselt dat, dan de pagina opnieuw laden */
+    try { var nv = localStorage.getItem('lknacht'), nAan = window.LK_NACHT !== false && nv !== '0' && !(nv !== '1' && b.getAttribute('data-thema') === 'licht');
+      if (nAan !== document.documentElement.classList.contains('nacht')) { location.reload(); return; } } catch (x3) {}
     themaZetten(); try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'weergave/' + b.getAttribute('data-thema'), title: 'Weergave', event: true }); } catch (x2) {}
   });
   function themaKnoppen() {

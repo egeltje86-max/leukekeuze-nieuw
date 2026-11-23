@@ -4,14 +4,14 @@
    node scripts/controle/donker.js scripts/controle/leesbaar-paden.txt [licht]   ('licht' = dezelfde controle op de lichte versie met de kop van COMBI) */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const paden = fs.readFileSync(process.argv[2], 'utf8').split('\n').map(x => x.trim()).filter(Boolean);
-const licht = process.argv[3] === 'licht';
+const licht = process.argv[3] === 'licht'; const nacht = process.argv[3] === 'nacht'; /* 'nacht' = de cadeauboulevard (23-11-2026) */
 const sj = fs.readFileSync(path.join(__dirname, '..', '..', 'sjabloon.html'), 'utf8'); const a = sj.indexOf('<meta name="lk-donker"'), b = sj.indexOf('</script>', a) + 9; const blok = sj.slice(a, b);
 (async () => {
   const br = await chromium.launch(); const gevonden = {};
   for (const w of [390, 1280]) {
     const ctx = await br.newContext({ viewport: { width: w, height: 900 }, colorScheme: licht ? 'light' : 'dark',
       userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' });
-    await ctx.addInitScript(() => { Object.defineProperty(navigator, 'webdriver', { get: () => false }); try { localStorage.setItem('lkcombi', '1'); localStorage.removeItem('lkthema'); } catch (e) {} });
+    await ctx.addInitScript((n) => { Object.defineProperty(navigator, 'webdriver', { get: () => false }); try { localStorage.setItem('lkcombi', '1'); localStorage.removeItem('lkthema'); if (n) localStorage.setItem('lknacht', '1'); } catch (e) {} }, nacht);
     /* een pagina van een oudere bouw heeft het stukje van COMBI nog niet: dan zetten we het erin */
     await ctx.route('**/*', async (route) => { const r = route.request(); if (r.resourceType() !== 'document') return route.continue(); const resp = await route.fetch(); let body = await resp.text();
       if (body.indexOf('name="lk-donker"') === -1) body = body.replace('</head>', blok + '\n</head>'); route.fulfill({ response: resp, body, headers: Object.assign({}, resp.headers(), { 'content-type': 'text/html; charset=utf-8' }) }); });
@@ -53,7 +53,7 @@ const sj = fs.readFileSync(path.join(__dirname, '..', '..', 'sjabloon.html'), 'u
     }
     await ctx.close();
   }
-  const k = Object.keys(gevonden); console.log(paden.length + ' pagina\'s x 2 breedtes (' + (licht ? 'licht' : 'donker') + '); slecht leesbaar:', k.length);
+  const k = Object.keys(gevonden); console.log(paden.length + ' pagina\'s x 2 breedtes (' + (nacht ? 'nacht' : licht ? 'licht' : 'donker') + '); slecht leesbaar:', k.length);
   for (const x of k) console.log(' ', gevonden[x].voorbeeld, '  <-', gevonden[x].waar.slice(0, 2).join(' ; ') + (gevonden[x].waar.length > 2 ? ' (+' + (gevonden[x].waar.length - 2) + ')' : ''));
   await br.close();
 })();
