@@ -6603,9 +6603,9 @@
         { kop: 'Voor in de schoen', tekst: 'Klein genoeg om in een schoen te passen, en toch iets om mee te spelen.',
           ids: ['dgsw-190e813ae6', 'bol-9200000088621923', 'bol-9300000039278002'] },
         { kop: 'Zelf maken en ontdekken (€5 tot €10)', tekst: 'Knutselen en proefjes doen: daar zijn ze na pakjesavond nog dagen mee bezig.',
-          ids: ['bol-9300000169748884', 'bol-9300000025044624', 'bol-9200000104835927', 'bol-9300000168680075'] },
+          ids: ['bol-9300000169748884', 'bol-9300000071114106', 'bol-9200000104835927', 'bol-9300000168680075'] },
         { kop: 'Boekjes en spelletjes (tot €10)', tekst: 'Een sinterklaasboekje om voor te lezen, of een spel om meteen samen te spelen.',
-          ids: ['cl-sinterklaas-voorlees', 'bol-9200000006380085', 'bol-9300000157956217'] }
+          ids: ['hema-90cecb0d49', 'bol-9200000006380085', 'bol-9300000157956217'] }
       ],
       slot: 'Meer kleine cadeautjes staan bij <a href="/c/cadeaus/sint-onder-15">Sinterklaas onder €15</a>. Alles voor pakjesavond vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>.' },
     { slug: 'speelgoed-van-het-jaar-2026', beeld: 'bol-9300000246863962', vakken: ['speelgoed', 'speelgoed/bord-kaartspellen', 'speelgoed/lego', 'speelgoed/autos-treinen-rc', 'speelgoed/baby-houten', 'cadeaus/voor-kinderen', 'cadeaus/sinterklaas'],
@@ -6633,13 +6633,13 @@
           ids: ['bol-9200000091821418', 'bol-9200000016853146', 'bol-9300000343902998', 'bol-9300000005044757'] }
       ],
       slot: 'Alle sinterklaascadeaus vind je bij <a href="/c/cadeaus/sinterklaas">Sinterklaas</a>. Zoek je iets voor een kind? Kijk dan bij <a href="/gids/sinterklaas-onder-10">Sinterklaascadeaus onder de €10</a>.' },
-    { slug: 'kerstcadeau-onder-25', beeld: 'bol-9300000238623285', vakken: ['cadeaus/kerst', 'cadeaus/onder-15', 'eten-drinken', 'wonen/kerst'], titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten. Van €10 tot €24.',
+    { slug: 'kerstcadeau-onder-25', beeld: 'hema-10bdca1c6e', vakken: ['cadeaus/kerst', 'cadeaus/onder-15', 'eten-drinken', 'wonen/kerst'], titel: 'Kerstcadeaus onder de €25', kort: 'Mooie cadeaus voor onder de boom die niet veel kosten. Van €10 tot €24.',
       intro: 'Met Kerst geef je vaak aan meer mensen tegelijk. Dan is het fijn als een cadeau niet te duur is, maar wel echt leuk om te krijgen. Deze cadeaus kosten allemaal minder dan 25 euro.',
       delen: [
         { kop: 'Lekkers voor onder de boom', tekst: 'Koffie, thee, chocolade of truffelsaus in een mooie verpakking. Altijd goed, voor iedereen.',
           ids: ['bol-9300000240085621', 'bol-9300000008252018', 'bol-9300000251768734', 'bol-9300000241393562', 'bol-9300000250399375'] },
         { kop: 'Gezellig in huis', tekst: 'Lichtjes, een kandelaar of kerstbekers: cadeaus waar je de hele decembermaand wat aan hebt.',
-          ids: ['bol-9300000229498501', 'dkam-13500706be', 'bol-9300000182787559', 'bol-9300000238623285'] },
+          ids: ['bol-9300000229498501', 'dkam-13500706be', 'hema-10bdca1c6e', 'dvzn-291755'] },
         { kop: 'Samen aan tafel', tekst: 'Een puzzel of spel voor de dagen tussen Kerst en Oud en Nieuw.',
           ids: ['bol-9300000172981367', 'bol-9300000133136276', 'bol-9300000375928006'] }
       ],
@@ -7282,7 +7282,7 @@
       ['Wat is een goed lootjesbedrag voor volwassenen?', 'De meeste families en vriendengroepen houden 10 tot 25 euro aan. Spreek het bedrag van tevoren af, dan is het voor iedereen eerlijk.'],
       ['Wat geef je een volwassene voor Sinterklaas?', 'Een spel voor na het uitpakken, iets lekkers van de Sint of iets handigs dat lang meegaat. Met een goed gedicht erbij wordt elk cadeau leuk.'],
       ['Hoort er bij volwassenen ook een surprise bij?', 'Bij lootjes trekken vaak wel, maar het hoeft niet. Spreek het samen af. Tips vind je in onze gids Surprise maken.']] },
-    'kerstcadeau-onder-25': { top: [['Onze topkeuze', 'bol-9300000241393562'], ['Gezelligst', 'bol-9300000238623285'], ['Om samen te doen', 'bol-9300000375928006']], faq: [
+    'kerstcadeau-onder-25': { top: [['Onze topkeuze', 'bol-9300000241393562'], ['Gezelligst', 'hema-10bdca1c6e'], ['Om samen te doen', 'bol-9300000375928006']], faq: [
       ['Wat koop je voor onder de 25 euro voor Kerst?', 'Iets lekkers in een mooie verpakking, iets gezelligs voor in huis, of een puzzel of spel voor de kerstdagen. Alles in deze gids blijft onder de 25 euro.'],
       ['Wat geef je iemand die je niet goed kent?', 'Iets dat op gaat: koffie, thee of chocolade. Dat valt bijna altijd goed en past in elk huis.'],
       ['Wanneer moet ik kerstcadeaus bestellen?', 'Liefst begin december. Vlak voor Kerst is het druk bij de bezorgers en zijn populaire cadeaus soms uitverkocht.']] },
