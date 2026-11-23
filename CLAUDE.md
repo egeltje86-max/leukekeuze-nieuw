@@ -28,6 +28,7 @@ Lees dit helemaal voordat je iets doet. Werk precies zo, niet anders.
   - **ERBIJ-LIJST** (groen): hij tikt aan wat **erbij** mag.
   - **WEG-LIJST** (rood): hij tikt aan wat **weg** mag. Rondes van 100, de drukste pagina's eerst, producten met korting staan er niet in.
 - **Nooit door elkaar:** eerst een hele reeks erbij-lijsten, daarna een reeks weg-lijsten (of andersom).
+- Elke lijst heeft onderaan in de balk de knoppen **'Alles aanvinken'** en **'Alles uitvinken'** (Marius 23-11-2026: 'laat me ook kunnen aanklikken keur alles goed bij de erbij-lijst of keur alles af bij de weglijst'); uitvinken vraagt één keer 'Zeker?'. Maker: scratchpad `alles-knop.py <maak.py>` zet ze in een bestaande maker.
 - Op weg-lijsten zet jij een goud label **"zonde?"** bij bijzondere of verrassende producten en toppers, zodat hij die niet per ongeluk weggooit.
 - Zegt hij "klaar", dan haal je zijn keuzes op met ArtifactData, en zet je meteen de volgende lijst klaar. Alles wat klaar is gaat in één bouw live (ongeveer elk half uur).
 - Er is een **Keurbord**-artifact met wat hij nu moet doen, wat er gebouwd wordt en wat live staat. Hou dat bij.
