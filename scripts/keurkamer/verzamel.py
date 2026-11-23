@@ -25,7 +25,7 @@ def netwerk(url):
     if 'partner.bol.com' in url: return 'bol'
     if 'amzn' in url or 'amazon.' in url: return 'amazon'
     if 'tradetracker' in url or re.search(r'[?&]tt=\d+_', url) or re.search(r'[?&]a=516846(&|$)', url) or re.search(r'^https?://partner\.', url): return 'tradetracker'
-    if re.match(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/', url) or 'aff.svinando' in url: return 'daisycon'
+    if re.match(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/', url) or 'aff.svinando' in url or re.search(r'[?&]wi=433339(&|$)', url): return 'daisycon'  # 23-11: ook eigen Daisycon-domeinen (rep2.fitwinkel.nl)
     if 'awin1.com' in url or 'zenaps' in url: return 'awin'
     if re.search(r'[?&]aff=LEUKEKEUZE', url): return 'dextercards'
     if 'hertog.nl' in url: return 'denhertog-direct'  # bewust direct (afspraak Marius)

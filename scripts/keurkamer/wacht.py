@@ -114,7 +114,7 @@ def netwerk(u):
     u = str(u or '')
     if 'partner.bol.com' in u or 'bol.com' in u: return 'bol'
     if re.search(r'tradetracker|[?&]tt=\d+_|a=516846|//partner\.', u): return 'tradetracker'
-    if re.search(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/|aff\.svinando', u): return 'daisycon'
+    if re.search(r'^https?://(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?/c/|aff\.svinando|[?&]wi=433339(&|$)', u): return 'daisycon'  # 23-11: ook eigen Daisycon-domeinen (rep2.fitwinkel.nl); anders vond de ochtendrun Fitwinkel nooit terug
     if 'awin1.com' in u: return 'awin'
     return 'direct'
 tt_live = {pid: p for pid, p in P.items() if (p.get('netwerk') or netwerk(p.get('url'))) in ('tradetracker', 'daisycon', 'awin')}
