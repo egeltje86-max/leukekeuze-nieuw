@@ -68,10 +68,12 @@
 /c/belevenissen/water-strand/
 /c/belevenissen/water-strand/blokarten-powerkiten/
 /c/belevenissen/water-strand/boottochten-zeilen/
+/c/belevenissen/water-strand/watersport/
 /c/belevenissen/workshops-escape-proeven/
 /c/belevenissen/workshops-escape-proeven/escape-rooms/
 /c/belevenissen/workshops-escape-proeven/proeven-eettours/
 /c/belevenissen/workshops-escape-proeven/puzzel-speurtochten/
+/c/belevenissen/workshops-escape-proeven/workshops/
 /c/belevenissen/workshops-proeven/
 /c/belevenissen/workshops-proeven/proeven-eettours/
 /c/boeken-media/
@@ -17651,3 +17653,4 @@
 /voor/tieners/spellen-puzzels/
 /voor/tieners/sport-darts/
 /winkels/
+/woordzoeker/

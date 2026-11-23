@@ -3140,3 +3140,68 @@ html body .wzh-rond.wzh-icoon, html body .srt-st-rond.srt-vt-ico, html body .rh-
 .vf-klein .vf-label { margin-bottom: 2px; font-size: 11px; }
 .vf-klein h1 { margin: 0; font-size: 22px; }
 @media (min-width: 640px) { .vf-kop-binnen { padding-top: 62px; } .vf-icoon { width: 80px; height: 80px; } .vf-klein .vf-kop-binnen { justify-content: center; padding-top: 56px; } .vf-klein .vf-icoon { width: 48px; height: 48px; } }
+
+/* ===== WOORDZOEKER (23-11-2026, /woordzoeker/: kant-en-klare woordzoekers en zelf maken; code: blok WOORDZOEKER in app.js) ===== */
+.wzk { padding-bottom: 32px; }
+.wzk .sectie { margin-top: 28px; }
+.wzk h2 { margin-bottom: 12px; }
+.wzk-themas { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.wzk-themas .chip { min-height: 44px; }
+.wzk-themas .chip small { font-weight: 500; opacity: .75; margin-left: 2px; }
+.wzk-puzzel { background: #FFFFFF; border: 1px solid #E5D7BE; border-radius: 18px; padding: 16px; box-shadow: 0 6px 18px rgba(20, 26, 42, .06); }
+.wzk-kop { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-bottom: 12px; }
+.wzk-kop h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; margin: 0; color: #141A2A; }
+.wzk-tel { margin: 0; font-size: 15px; color: #5F667A; }
+.wzk-tel b { color: #8F6620; }
+.wzk-raster { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); width: 100%; max-width: 560px; margin: 0 auto; border: 1px solid #E5D7BE; border-radius: 10px; overflow: hidden;
+  user-select: none; -webkit-user-select: none; touch-action: manipulation; background: #FFFFFF; }
+.wzk-c { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-family: Manrope, Arial, sans-serif; font-weight: 700;
+  font-size: calc(min(100vw - 64px, 560px) / var(--n) * .56); color: #141A2A; background: #FFFFFF; cursor: pointer;
+  border-right: 1px solid #F1E9DA; border-bottom: 1px solid #F1E9DA; transition: background-color .15s; }
+.wzk-puzzel.groot .wzk-c { font-size: calc(min(100vw - 64px, 560px) / var(--n) * .62); font-weight: 800; }
+.wzk-raster { position: relative; }
+.wzk-c.gev { color: #8F6620; }
+.wzk-lijnen { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.wzk-lijnen line { stroke: #B8862E; stroke-opacity: 0; stroke-width: .66; stroke-linecap: round; }
+.wzk-lijnen line.gev { stroke-opacity: .32; }
+.wzk-puzzel.oplos .wzk-lijnen line:not(.gev) { stroke: #1F2B48; stroke-opacity: .2; }
+.wzk-c.start { background: #F2CB74; color: #141A2A; }
+.wzk-c.mis { background: #F6D3D0; }
+.wzk-puzzel.klaar.met-geheim .wzk-c:not(.gev) { background: #1F2B48; color: #F2CB74; }
+.wzk-puzzel.oplos.met-geheim .wzk-c:not(.w) { color: #B8862E; text-decoration: underline; }
+.wzk-hoe { margin: 10px 0 0; font-size: 14px; color: #5F667A; text-align: center; }
+.wzk-lijst { list-style: none; margin: 14px 0 0; padding: 0; columns: 2; column-gap: 20px; font-size: 16px; line-height: 1.8; color: #141A2A; }
+.wzk-puzzel.groot .wzk-lijst { font-size: 18px; }
+.wzk-lijst li { break-inside: avoid; }
+.wzk-lijst li.weg { text-decoration: line-through; color: #8A8F9C; }
+.wzk-geheim { margin: 12px 0 0; font-size: 15px; color: #5F667A; }
+.wzk-zin { display: block; margin-top: 4px; color: #141A2A; }
+.wzk-zin[hidden] { display: none; }
+.wzk-mis { margin: 12px 0 0; font-size: 15px; color: #8F6620; }
+.wzk-knoppen { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.wzk-knoppen .knop { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
+.wzk-knoppen .knop svg { width: 20px; height: 20px; }
+.wzk-boekregel { display: flex; gap: 8px; align-items: flex-start; margin: 12px 4px 0; font-size: 15px; color: #141A2A; }
+.wzk-boekregel svg { width: 20px; height: 20px; flex: none; color: #B8862E; margin-top: 2px; }
+.wzk-boekregel a { color: #8F6620; font-weight: 700; }
+.wzk-form { display: grid; gap: 12px; background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 18px; padding: 16px; margin-bottom: 16px; }
+.wzk-form label { display: grid; gap: 6px; font-weight: 700; font-size: 15px; color: #141A2A; }
+.wzk-form label small { font-weight: 500; color: #5F667A; }
+.wzk-form input[type="text"], .wzk-form textarea, .wzk-form select { width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; font-weight: 500; padding: 10px 12px;
+  border: 1px solid #E5D7BE; border-radius: 12px; background: #FFFFFF; color: #141A2A; min-height: 44px; }
+.wzk-opties { display: grid; gap: 12px; }
+.wzk-form label.wzk-vink { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.wzk-vink input { width: 22px; height: 22px; accent-color: #B8862E; }
+.wzk-form .knop { min-height: 48px; justify-self: start; }
+.wzk-melding { margin: 0; color: #9A3B32; font-size: 15px; }
+.wzk-melding:empty { display: none; }
+.wzk-boeken > p { max-width: 65ch; }
+.wzk-verder { margin-top: 14px; font-size: 15px; }
+.wzk-verder a { color: #8F6620; font-weight: 700; }
+.wzk-vragen details { border-bottom: 1px solid #E5D7BE; padding: 12px 0; }
+.wzk-vragen summary { cursor: pointer; font-weight: 700; color: #141A2A; min-height: 28px; }
+.wzk-vragen details p { margin: 8px 0 0; color: #141A2A; max-width: 65ch; }
+@media (min-width: 720px) {
+  .wzk-lijst { columns: 3; }
+  .wzk-opties { grid-template-columns: 1fr 1.6fr auto; align-items: end; }
+}

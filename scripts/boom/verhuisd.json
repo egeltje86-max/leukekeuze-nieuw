@@ -586,6 +586,11 @@
    "workshops-escape-proeven",
    "puzzel-speurtochten"
   ],
+  "belevenissen/workshops-proeven/workshops": [
+   "belevenissen",
+   "workshops-escape-proeven",
+   "workshops"
+  ],
   "belevenissen/workshops-proeven/zelf-maken": [
    "belevenissen",
    "workshops-escape-proeven",
@@ -922,6 +927,9 @@
   "belevenissen/avontuur-snelheid/4x4-quad-motor": "belevenissen/snelheid-avontuur/4x4-quad-motor",
   "belevenissen/avontuur-snelheid/slipcursus": "belevenissen/snelheid-avontuur/slipcursus",
   "belevenissen/avontuur-snelheid/paragliden-helikoptervlucht": "belevenissen/in-de-lucht/paragliden-helikoptervlucht",
+  "belevenissen/water-strand/kano-sup": "belevenissen/water-strand/kano-sup",
+  "belevenissen/water-strand/waterskien-kitesurfen-flyboarden": "belevenissen/water-strand/waterskien-kitesurfen-flyboarden",
+  "belevenissen/water-strand/duiken": "belevenissen/water-strand/duiken",
   "belevenissen/uitjes-natuur/overnachten": "belevenissen/dagjes-uit-overnachten/overnachten",
   "belevenissen/uitjes-natuur/dagjes-uit": "belevenissen/dagjes-uit-overnachten/dagjes-uit",
   "belevenissen/uitjes-natuur/nog-meer-uitjes": "belevenissen/dagjes-uit-overnachten/nog-meer-uitjes",
@@ -930,6 +938,7 @@
   "belevenissen/uitjes-natuur/fietsen-steppen-scooteren": "belevenissen/natuur-dieren/fietsen-steppen-scooteren",
   "belevenissen/workshops-escape-proeven/escape-rooms": "belevenissen/escape-rooms-puzzeltochten/escape-rooms",
   "belevenissen/workshops-escape-proeven/puzzel-speurtochten": "belevenissen/escape-rooms-puzzeltochten/puzzel-speurtochten",
+  "belevenissen/workshops-escape-proeven/workshops": "belevenissen/workshops-proeven/workshops",
   "belevenissen/workshops-escape-proeven/zelf-maken": "belevenissen/workshops-proeven/zelf-maken",
   "belevenissen/workshops-escape-proeven/proeven-eettours": "belevenissen/workshops-proeven/proeven-eettours",
   "belevenissen/workshops-escape-proeven/fotograferen": "belevenissen/workshops-proeven/fotograferen",

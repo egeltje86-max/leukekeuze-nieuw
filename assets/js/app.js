@@ -1024,15 +1024,13 @@
     '/c/koken-tafelen': { titel: 'Wat zoek je?', top: ['koken-bakken', 'koffie-thee-zetten', 'mokken-glazen', 'tafelen-borrel'] },
     /* 9-11-2026 (GO Marius): Belevenissen. Eerst zijn zes favorieten, de rest onder 'Bekijk alle onderwerpen'. */
     '/c/belevenissen': { titel: 'Waar heb je zin in?', vast: [
-      ['auto', 'Droomauto rijden', '/c/belevenissen/snelheid-avontuur/droomauto-rijden', '🏎️'], ['lucht', 'Paragliden & helikopter', '/c/belevenissen/in-de-lucht', '🪂'],
-      ['fly', 'Flyboarden & waterskiën', '/c/belevenissen/water-strand/waterskien-kitesurfen-flyboarden', '🌊'], ['escape', 'Escape rooms', '/c/belevenissen/escape-rooms-puzzeltochten/escape-rooms', '🔐'],
+      ['auto', 'Rijden & racen', '/c/belevenissen/snelheid-avontuur/droomauto-rijden', '🏎️'], ['lucht', 'Paragliden & helikopter', '/c/belevenissen/in-de-lucht', '🪂'],
+      ['fly', 'Watersport', '/c/belevenissen/water-strand/watersport', '🌊'], ['escape', 'Escape rooms', '/c/belevenissen/escape-rooms-puzzeltochten/escape-rooms', '🔐'],
       ['puzzel', 'Puzzeltochten', '/c/belevenissen/escape-rooms-puzzeltochten/puzzel-speurtochten', '🧩'], ['slapen', 'Overnachten', '/c/belevenissen/dagjes-uit-overnachten/overnachten', '🛖'],
       ['boot', 'Boottochten & zeilen', '/c/belevenissen/water-strand/boottochten-zeilen', '⛵'], ['dieren', 'Dieren kijken', '/c/belevenissen/natuur-dieren/dieren-kijken-knuffelen', '🦭'],
-      ['modder', '4x4, quad & motor', '/c/belevenissen/snelheid-avontuur/4x4-quad-motor', '🚙'], ['slip', 'Slipcursus', '/c/belevenissen/snelheid-avontuur/slipcursus', '🛞'],
-      ['kano', 'Kano & SUP', '/c/belevenissen/water-strand/kano-sup', '🛶'], ['duik', 'Duiken', '/c/belevenissen/water-strand/duiken', '🤿'],
       ['strand', 'Blokarten & powerkiten', '/c/belevenissen/water-strand/blokarten-powerkiten', '🪁'], ['wandel', 'Wandeltochten', '/c/belevenissen/natuur-dieren/wandeltochten', '🥾'],
-      ['fiets', 'Fietsen, steppen & scooteren', '/c/belevenissen/natuur-dieren/fietsen-steppen-scooteren', '🚲'], ['maak', 'Zelf maken', '/c/belevenissen/workshops-proeven/zelf-maken', '🧀'],
-      ['proef', 'Proeven & eettours', '/c/belevenissen/workshops-proeven/proeven-eettours', '🍷'], ['foto', 'Fotograferen', '/c/belevenissen/workshops-proeven/fotograferen', '📷'],
+      ['fiets', 'Fietsen, steppen & scooteren', '/c/belevenissen/natuur-dieren/fietsen-steppen-scooteren', '🚲'], ['maak', 'Workshops', '/c/belevenissen/workshops-escape-proeven/workshops', '🧀'],
+      ['proef', 'Proeven & eettours', '/c/belevenissen/workshops-proeven/proeven-eettours', '🍷'],
       ['yoga', 'Yoga & ontspanning', '/c/belevenissen/workshops-proeven', '🧘'], ['dag', 'Dagjes uit', '/c/belevenissen/dagjes-uit-overnachten/dagjes-uit', '🗺️'],
       ['meer', 'Nog meer uitjes', '/c/belevenissen/dagjes-uit-overnachten/nog-meer-uitjes', '✨']] },
     '/c/christelijk': { titel: 'Wat zoek je?', top: ['bijbels-boeken', 'sieraden', 'wanddecoratie-teksten', 'kerst', 'doop-belijdenis-kinderen', 'bijbels-psalmboeken', 'boeken-muziek', 'voor-kinderen', 'doop-belijdenis'] },
@@ -1628,7 +1626,7 @@
   var BELEVENIS_TEGELS = [
     ['Droomauto rijden', 'snelheid-avontuur', 'droomauto-rijden', 'dk-9393c6d57b'],
     ['Paragliden', 'in-de-lucht', '', 'dk-d8f37a3161'],
-    ['Flyboard & waterski', 'water-strand', 'waterskien-kitesurfen-flyboarden', 'dk-da9d4b8898'],
+    ['Watersport', 'water-strand', 'watersport', 'dk-da9d4b8898'],
     ['Escape room', 'escape-rooms-puzzeltochten', 'escape-rooms', 'dk-f69947b4d7'],
     ['Puzzeltocht', 'escape-rooms-puzzeltochten', 'puzzel-speurtochten', 'dk-4c68d47ad3'],
     ['Overnachten', 'dagjes-uit-overnachten', 'overnachten', 'dk-35d0e56982']];
@@ -4762,6 +4760,7 @@
   /* 17-11-2026: de Amazon Storefront (ideeënlijsten), met partnercode. Gebruikt op /tiktok, in het menu en op de homepage. */
   var AMZ_SHOP = 'https://www.amazon.nl/shop/leukekeuze?tag=leukekeuze-21';
   var TIKTOK_REELS = [
+    { datum: '23 november', kop: 'Voetbalgek in huis? 6 cadeaus onder € 20', tekst: 'Voor iedereen die van voetbal houdt: een bal van zijn eigen club (Ajax, Feyenoord, PSV, Twente en meer), een voetbaldoeltje voor op de wc, een voetballamp voor de kinderkamer, een voetbal aan een koord om mee te oefenen, een bierpul "Niet storen! Ik kijk voetbal!" en een mini-tafelvoetbal voor op je bureau.', ids: ['dgsw-5f1d1ef72c', 'dgsw-35ae303df3', 'dgsw-4b942b51a8', 'dgsw-682a32fc6a', 'cg-toilet-football', 'dgsw-5c2312daba', 'fitwin-e415c046b1', 'dvzn-868decc4c6', 'mega-322134bc0a'] },
     { datum: '23 november', kop: 'Nog 12 nachtjes slapen: 6 Sint-cadeaus onder € 20', tekst: 'Voor iedereen op je lijstje: een warmtekussen in de vorm van een boze hotdog, een Minecraft-mok die verandert als je er iets warms in schenkt, een puzzel van een döner in een afhaaldoosje, een beker die je koffie zelf roert, een Astro Bot-lampje en een leeslampje in de vorm van een tulp.', ids: ['dvzn-34abc02c79', 'dvzn-82245ef037', 'dvzn-5e2b855171', 'dvzn-561478', 'dvzn-30de589c5d', 'dvzn-8e1b865150'], naar: '/c/cadeaus/sinterklaas', naarTekst: 'Alle Sinterklaascadeaus' },
     { datum: '23 november', kop: 'Topper van de dag: een croissant met beentjes', tekst: 'De topper van vandaag is de croissant van Jellycat: een knuffel met een glimlach en beentjes. Daarna nog vijf: een lavalamp in de vorm van een raket, Mario Kart World voor de Switch 2, een Rubik\'s Cube die je leert hoe je hem oplost, Hitster Celebration voor het hele gezin en Rummikub in een blik voor op reis.', ids: ['sissyb-e9d1e8ef6e', 'dvzn-319838d8ed', 'cl-mkw', 'tt-dgsw-679cd9e678', 'massa-995c05e41b', 'bgs-f7d234d17e'], naar: '/zoek?q=jellycat', naarTekst: 'Alle Jellycat-knuffels' },
     { datum: '22 november', kop: 'Wat doet dít nou? Deel 2', tekst: 'Zes cadeaus onder € 20 waar iedereen eerst "huh?" zegt: een mediterende kat om in te knijpen, een kerstboom met een tunnel van lichtjes, een wierookhouder in de vorm van een cowboylaars, een spaarpot "Zwart geld" met slotje, een pingpongnetje dat je op de eettafel klemt en een game-controller van neon.', ids: ['cadeau-8c9432bedb', 'massa-ab23656f59', 'dvzn-d5b4cf8326', 'coppens-f4f52115ac', 'fitwin-06817af8b8', 'hema-521a727d68'] },
@@ -4827,6 +4826,312 @@
         '<a class="knop knop-rand" href="' + AMZ_SHOP + '" target="_blank" rel="sponsored noopener">Onze lijsten op Amazon</a></div>' +
         '<p class="tt-klein">De prijs kan bij de winkel iets anders zijn dan in het filmpje. Op de pagina van elk cadeau staat wanneer wij de prijs hebben gecontroleerd.</p></section></div>';
   }
+  /* ================== WOORDZOEKER (23-11-2026, voorbeeld; Marius: 'ga je gang' op het voorstel 'gratis woordzoeker op leukekeuze.nl') ==================
+     /woordzoeker/: kant-en-klare woordzoekers om te printen of op de telefoon te spelen, en zelf een woordzoeker maken met eigen woorden.
+     Zoekwoorden (OpenSEO 23-11): 'woordzoeker' 27.100, 'woordzoeker maken' 14.800 (moeilijkheid 3), 'gratis woordzoeker' 2.400 per maand.
+     Net als in de puzzelboeken van Marius vormen bij de kant-en-klare puzzels de letters die overblijven een zin (precies zoveel vakjes blijven leeg).
+     Onder de puzzels zijn eigen boeken. Alles gebeurt in de browser: eigen woorden gaan nergens heen. Uit: window.LK_WOORDZOEKER = false. */
+  var WZK_RICHT = { makkelijk: [[0, 1], [1, 0]], normaal: [[0, 1], [1, 0], [1, 1], [-1, 1]], moeilijk: [[0, 1], [1, 0], [1, 1], [-1, 1], [0, -1], [-1, 0], [-1, -1], [1, -1]] };
+  var WZK_THEMA = [
+    { slug: 'sinterklaas', naam: 'Sinterklaas', n: 13, richt: 'normaal', seed: 31, seizoen: ['10-15', '12-05'], geheim: 'Hoor wie klopt daar kinderen', boek: 'amz-b0hsfwjl32',
+      hoofd: ['Sinterklaas', 'Amerigo', 'pakjesavond', 'pepernoten', 'kruidnoten', 'marsepein', 'schoorsteen', 'surprise', 'stoomboot', 'gedicht', 'schoen', 'wortel', 'mijter', 'staf', 'Piet', 'Spanje'],
+      extra: ['cadeau', 'liedje', 'taai-taai', 'baard', 'mantel', 'intocht', 'rijm', 'snoep', 'dak', 'zak', 'boek', 'letter', 'nacht', 'paard', 'roe'] },
+    { slug: 'kerst', naam: 'Kerst', n: 13, richt: 'normaal', seed: 47, geheim: 'Vrolijk kerstfeest', boek: 'amz-b0hsfwjl32',
+      hoofd: ['kerstboom', 'kerstman', 'rendier', 'sneeuw', 'engel', 'kerststal', 'herders', 'ster', 'kaars', 'piek', 'slinger', 'kerstbal', 'hulst', 'cadeau', 'advent', 'gourmet', 'kerstdiner'],
+      extra: ['krans', 'haard', 'winter', 'kerstlied', 'kalkoen', 'tafel', 'familie', 'lichtjes', 'kerstkaart', 'slee', 'noten', 'pakjes', 'kerk', 'stol', 'ezel', 'bel', 'roos', 'peper'] },
+    { slug: 'winter', naam: 'Winter', n: 12, richt: 'normaal', seed: 59, geheim: 'Lekker warm binnen', boek: 'amz-b0hsfwjl32',
+      hoofd: ['sneeuwpop', 'schaatsen', 'ijspegel', 'wanten', 'sjaal', 'muts', 'slee', 'vorst', 'hagel', 'haard', 'deken', 'chocomelk', 'snert', 'koek', 'zopie'],
+      extra: ['ijsbaan', 'kou', 'neus', 'wollen', 'sokken', 'trui', 'kruik', 'thee', 'rijp', 'dooi', 'storm', 'wind', 'winterjas'] },
+    { slug: 'dieren', naam: 'Dieren', sub: 'voor kinderen', n: 10, richt: 'makkelijk', seed: 13, geheim: 'Jij bent een kanjer', groot: true,
+      hoofd: ['konijn', 'paard', 'hond', 'eend', 'beer', 'kat', 'vis', 'koe', 'uil', 'muis', 'vos', 'schaap', 'geit', 'olifant'],
+      extra: ['giraf', 'zebra', 'leeuw', 'tijger', 'haas', 'egel', 'mol', 'slak', 'mier', 'kip', 'haan', 'varken', 'poes', 'ezel', 'koala', 'panda'] },
+    { slug: 'vroeger', naam: 'Van vroeger', sub: 'grote letters', n: 11, richt: 'makkelijk', seed: 23, geheim: 'Weet je nog', groot: true, boek: 'amz-b0hsm5vpdx',
+      hoofd: ['melkboer', 'kachel', 'wasdag', 'brommer', 'kermis', 'knikker', 'radio', 'tol', 'hoepel', 'platen', 'jukebox'],
+      extra: ['telefoon', 'klompen', 'Solex', 'petticoat', 'postzegel', 'leesplank', 'kolen', 'singles', 'fiets', 'hinkelen', 'elpee', 'kapstok', 'tobbe', 'opoe', 'kar', 'bok', 'vat', 'dop'] },
+    { slug: 'bijbel', naam: 'Uit de Bijbel', sub: 'grote letters', n: 13, richt: 'normaal', seed: 71, geheim: 'De Heer is mijn herder', bron: 'Psalm 23', groot: true, boek: 'amz-b0hsfrggcl',
+      hoofd: ['Noach', 'ark', 'Jozef', 'Mozes', 'David', 'Goliath', 'Jona', 'Maria', 'Jezus', 'herders', 'Pasen', 'Abraham', 'Ruth', 'Esther', 'Daniël', 'Elia', 'kerstverhaal', 'Bethlehem'],
+      extra: ['Isaak', 'Jakob', 'Samuel', 'Salomo', 'Petrus', 'Paulus', 'Lukas', 'Johannes', 'Jericho', 'Nazareth', 'Eden', 'Adam', 'Eva', 'Kaïn', 'Abel', 'Lot', 'Job', 'Ezra', 'Noömi', 'Hanna', 'zon'] }
+  ];
+  var WZK_BOEK = { 'amz-b0hsfwjl32': 'In <a href="/p/amz-b0hsfwjl32/">Kerst en Winter Woordzoekers</a> staan er 31, in grote letters.',
+    'amz-b0hsm5vpdx': 'In <a href="/p/amz-b0hsm5vpdx/">Weet je nog van vroeger?</a> staan er 80 over de jaren 50 tot 80, in grote letters.',
+    'amz-b0hsfrggcl': 'In <a href="/p/amz-b0hsfrggcl/">Bijbelse Woordzoekers</a> staan er 45, van Genesis tot Openbaring, in grote letters.' };
+  function wzkTelG(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Woordzoeker', event: true }); } catch (e) {} }
+  var WZK = {}; /* staat per puzzel op de pagina: { g, n, gelegd, gevonden, start, thema, seed, titel, geheim, bron, groot } */
+  function wzkRng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function wzkSchoon(w) { return String(w).normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z]/g, ''); }
+  function wzkBereik(d, L, n) { return [d < 0 ? L - 1 : 0, d > 0 ? n - L : n - 1]; }
+  function wzkPas(g, w, n, d, r0, c0) {
+    var nieuw = 0, cel = [];
+    for (var k = 0; k < w.length; k++) { var ix = (r0 + d[0] * k) * n + (c0 + d[1] * k), c = g[ix]; if (c && c !== w[k]) return null; if (!c) nieuw++; cel.push(ix); }
+    return { cel: cel, nieuw: nieuw };
+  }
+  function wzkProbeer(g, w, n, dirs, r, keer, ok) {
+    for (var t = 0; t < keer; t++) {
+      var d = dirs[Math.floor(r() * dirs.length)], br = wzkBereik(d[0], w.length, n), bc = wzkBereik(d[1], w.length, n);
+      if (br[1] < br[0] || bc[1] < bc[0]) continue;
+      var p = wzkPas(g, w, n, d, br[0] + Math.floor(r() * (br[1] - br[0] + 1)), bc[0] + Math.floor(r() * (bc[1] - bc[0] + 1)));
+      if (p && p.nieuw > 0 && (!ok || ok(p))) return p;
+    }
+    return null;
+  }
+  /* Elk woord mag maar op één plek staan (anders kan iemand het 'verkeerde' exemplaar aantikken en klopt de zin niet meer). */
+  function wzkUniek(g, n, gelegd) {
+    var D = WZK_RICHT.moeilijk;
+    return gelegd.every(function (x) {
+      var w = x.w, plekken = {};
+      for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) {
+        if (g[r * n + c] !== w[0]) continue;
+        for (var di = 0; di < D.length; di++) {
+          var d = D[di], cel = [], ok = true;
+          for (var k = 0; k < w.length && ok; k++) { var rr = r + d[0] * k, cc = c + d[1] * k; if (rr < 0 || rr >= n || cc < 0 || cc >= n || g[rr * n + cc] !== w[k]) ok = false; else cel.push(rr * n + cc); }
+          if (ok) plekken[cel.slice().sort(function (a, b) { return a - b; }).join(',')] = 1;
+        }
+      }
+      return Object.keys(plekken).length === 1;
+    });
+  }
+  /* Eigen woorden: leggen, de rest willekeurige letters (vaak gebruikte Nederlandse letters vaker). */
+  function wzkMaak(woorden, n, richt, seed) {
+    var u, poging = 0;
+    do { u = wzkMaak1(woorden, n, richt, seed + poging * 7919); poging++; } while (poging < 40 && !wzkUniek(u.g, n, u.gelegd));
+    return u;
+  }
+  function wzkMaak1(woorden, n, richt, seed) {
+    var r = wzkRng(seed), g = [], dirs = WZK_RICHT[richt] || WZK_RICHT.normaal, gelegd = [], mis = [];
+    for (var i = 0; i < n * n; i++) g.push('');
+    woorden.map(function (w) { return { w: wzkSchoon(w), toon: String(w).trim() }; }).filter(function (x) { return x.w.length >= 2; })
+      .sort(function (a, b) { return b.w.length - a.w.length; }).forEach(function (x) {
+        var p = x.w.length > n ? null : wzkProbeer(g, x.w, n, dirs, r, 800);
+        if (!p) { mis.push(x.toon); return; }
+        p.cel.forEach(function (ix, k) { g[ix] = x.w[k]; }); gelegd.push({ w: x.w, toon: x.toon, cel: p.cel });
+      });
+    var F = 'EEEEEEEEENNNNNNAAAAAARRRRRTTTTOOOOOIIIIIDDDDSSSSLLLGGGKKKVVMMHHUUBBPPWJZCF';
+    for (var j = 0; j < g.length; j++) if (!g[j]) g[j] = F[Math.floor(r() * F.length)];
+    return { g: g, n: n, gelegd: gelegd, mis: mis };
+  }
+  /* Kant-en-klaar: hoofdwoorden, dan extra woorden tot er precies zoveel vakjes leeg zijn als de geheime zin lang is. */
+  function wzkMaakGeheim(t, seed0) {
+    var n = t.n, L = wzkSchoon(t.geheim).length, dirs = WZK_RICHT[t.richt];
+    var hoofd = t.hoofd.slice().sort(function (a, b) { return wzkSchoon(b).length - wzkSchoon(a).length; });
+    for (var s = 0; s < 3000; s++) {
+      var seed = seed0 + s * 7919, r = wzkRng(seed), g = [], leeg = n * n, gelegd = [], fout = false;
+      for (var i = 0; i < n * n; i++) g.push('');
+      hoofd.forEach(function (tk) {
+        if (fout) return; var w = wzkSchoon(tk), p = wzkProbeer(g, w, n, dirs, r, 600);
+        if (!p) { fout = true; return; }
+        p.cel.forEach(function (ix, k) { g[ix] = w[k]; }); leeg -= p.nieuw; gelegd.push({ w: w, toon: tk, cel: p.cel });
+      });
+      if (fout || leeg < L) continue;
+      var ex = t.extra.slice(), over = [];
+      for (var a = ex.length - 1; a > 0; a--) { var b = Math.floor(r() * (a + 1)), x = ex[a]; ex[a] = ex[b]; ex[b] = x; }
+      ex.forEach(function (tk) {
+        if (leeg === L) { over.push(tk); return; }
+        var w = wzkSchoon(tk); if (w.length > n) return;
+        var p = wzkProbeer(g, w, n, dirs, r, 300, function (q) { return leeg - q.nieuw >= L; });
+        if (!p) { over.push(tk); return; }
+        p.cel.forEach(function (ix, k) { g[ix] = w[k]; }); leeg -= p.nieuw; gelegd.push({ w: w, toon: tk, cel: p.cel });
+      });
+      for (var o = 0; o < over.length && leeg > L; o++) { /* laatste stap: een woord dat precies de rest vult */
+        var w2 = wzkSchoon(over[o]), klaar = false;
+        for (var di = 0; di < dirs.length && !klaar; di++) {
+          var d = dirs[di], br = wzkBereik(d[0], w2.length, n), bc = wzkBereik(d[1], w2.length, n);
+          for (var r0 = br[0]; r0 <= br[1] && !klaar; r0++) for (var c0 = bc[0]; c0 <= bc[1] && !klaar; c0++) {
+            var p2 = wzkPas(g, w2, n, d, r0, c0);
+            if (p2 && p2.nieuw === leeg - L) { p2.cel.forEach(function (ix, k) { g[ix] = w2[k]; }); leeg -= p2.nieuw; gelegd.push({ w: w2, toon: over[o], cel: p2.cel }); klaar = true; }
+          }
+        }
+      }
+      if (leeg !== L) continue;
+      var gs = wzkSchoon(t.geheim), q = 0; for (var z = 0; z < g.length; z++) if (!g[z]) g[z] = gs[q++];
+      if (!wzkUniek(g, n, gelegd)) continue;
+      return { g: g, n: n, gelegd: gelegd, mis: [], seed: seed0 };
+    }
+    var nood = wzkMaak(t.hoofd, n, t.richt, seed0); nood.zonderGeheim = true; return nood; /* noodgeval: zonder geheime zin */
+  }
+  function wzkThemaNu() {
+    var md = new Date().toISOString().slice(5, 10), sint = WZK_THEMA[0];
+    return md >= sint.seizoen[0] && md <= sint.seizoen[1] ? 'sinterklaas' : 'kerst';
+  }
+  function wzkVolgorde() { var eerst = wzkThemaNu(); return WZK_THEMA.slice().sort(function (a, b) { return (b.slug === eerst) - (a.slug === eerst); }); }
+  /* Eén puzzel (scherm): kop, raster, woordenlijst, knoppen. id = 'a' (kant-en-klaar) of 'b' (zelf gemaakt). */
+  function wzkPuzzel(id, u, o) {
+    WZK[id] = { g: u.g, n: u.n, gelegd: u.gelegd, gevonden: {}, start: -1, thema: o.thema || '', seed: o.seed, titel: o.titel, geheim: o.geheim || '', bron: o.bron || '', groot: !!o.groot, woorden: o.woorden, richt: o.richt };
+    var inWoord = {}; u.gelegd.forEach(function (x) { x.cel.forEach(function (ix) { inWoord[ix] = 1; }); });
+    var cellen = u.g.map(function (c, i) { return '<span class="wzk-c' + (inWoord[i] ? ' w' : '') + '" data-wzk-c="' + i + '">' + c + '</span>'; }).join('');
+    var lijst = u.gelegd.slice().sort(function (a, b) { return a.w < b.w ? -1 : 1; })
+      .map(function (x) { return '<li data-wzk-w="' + x.w + '">' + esc(x.toon) + '</li>'; }).join('');
+    return '<div class="wzk-puzzel' + (o.groot ? ' groot' : '') + (o.geheim ? ' met-geheim' : '') + '" data-wzk="' + id + '" style="--n:' + u.n + '">' +
+      '<div class="wzk-kop"><h3>' + esc(o.titel) + '</h3><p class="wzk-tel" aria-live="polite">Gevonden: <b>0</b> van ' + u.gelegd.length + '</p></div>' +
+      '<div class="wzk-raster" role="img" aria-label="Woordzoeker van ' + u.n + ' bij ' + u.n + ' letters">' + cellen + wzkLijnen(u.n, u.gelegd) + '</div>' +
+      '<p class="wzk-hoe">Tik op de eerste letter van een woord en daarna op de laatste.</p>' +
+      '<ul class="wzk-lijst">' + lijst + '</ul>' +
+      (o.geheim ? '<p class="wzk-geheim">De letters die overblijven vormen een zin. Lees ze rij voor rij van links naar rechts.' +
+        '<span class="wzk-zin" hidden>De zin is: <b>' + esc(o.geheim) + '</b>' + (o.bron ? ' (' + esc(o.bron) + ')' : '') + '</span></p>' : '') +
+      (u.mis && u.mis.length ? '<p class="wzk-mis">Past niet in dit raster: ' + esc(u.mis.join(', ')) + '. Kies een groter raster of kortere woorden.</p>' : '') +
+      '<div class="wzk-knoppen"><button type="button" class="knop knop-goud" data-wzk-print="' + id + '">' + ic('printer') + 'Printen</button>' +
+        '<button type="button" class="knop knop-rand" data-wzk-nieuw="' + id + '">Andere puzzel</button>' +
+        '<button type="button" class="knop knop-rand" data-wzk-oplos="' + id + '" aria-pressed="false">Oplossing tonen</button></div>' +
+    '</div>';
+  }
+  /* Streep door elk woord (svg over het raster): gevonden woorden en de oplossing. */
+  function wzkLijnen(n, gelegd, alle) {
+    return '<svg class="wzk-lijnen" viewBox="0 0 ' + n + ' ' + n + '" preserveAspectRatio="none" aria-hidden="true">' + gelegd.map(function (x) {
+      var a = x.cel[0], b = x.cel[x.cel.length - 1];
+      return '<line data-wzk-l="' + x.w + '"' + (alle ? ' class="toon"' : '') + ' x1="' + (a % n + .5) + '" y1="' + (Math.floor(a / n) + .5) + '" x2="' + (b % n + .5) + '" y2="' + (Math.floor(b / n) + .5) + '"/>';
+    }).join('') + '</svg>';
+  }
+  function wzkKant(slug, seed) {
+    var t = WZK_THEMA.filter(function (x) { return x.slug === slug; })[0] || WZK_THEMA[0];
+    var u = wzkMaakGeheim(t, seed == null ? t.seed : seed);
+    return wzkPuzzel('a', u, { thema: t.slug, seed: u.seed, titel: 'Woordzoeker ' + t.naam + (t.sub ? ' (' + t.sub + ')' : ''), geheim: u.zonderGeheim ? '' : t.geheim, bron: t.bron, groot: t.groot }) +
+      (WZK_BOEK[t.boek] ? '<p class="wzk-boekregel">' + ic('cadeau') + '<span>Zin in meer? ' + WZK_BOEK[t.boek] + '</span></p>' : '');
+  }
+  function woordzoekerPagina() {
+    zetTitel('Woordzoeker maken en printen: gratis, ook met eigen woorden');
+    window.LK_SEO = 'Maak gratis een woordzoeker met je eigen woorden, of print een kant-en-klare: Sinterklaas, kerst, winter, dieren voor kinderen en in grote letters. Ook te spelen op je telefoon.';
+    var eerst = wzkThemaNu();
+    var keuzes = wzkVolgorde().map(function (t) {
+      return '<button type="button" class="chip" data-wzk-thema="' + t.slug + '" aria-pressed="' + (t.slug === eerst) + '">' + esc(t.naam) + (t.sub ? ' <small>' + esc(t.sub) + '</small>' : '') + '</button>';
+    }).join('');
+    var boeken = ['amz-b0hsfwjl32', 'amz-b0hsm5vpdx', 'amz-b0hsfrggcl', 'amz-b0hsm1d278'].map(function (id) { return LK.vind(id); })
+      .filter(function (p) { return p && p.status === 'goedgekeurd'; }).map(LK.productKaart).join('');
+    var vraag = function (v, a) { return '<details><summary>' + v + '</summary><p>' + a + '</p></details>'; };
+    return paginakop({ titel: 'Woordzoeker maken en printen', tekst: 'Gratis woordzoekers om te printen of op je telefoon te spelen, en je eigen woordzoeker maken met je eigen woorden. Handig voor een surprise, een verjaardag, de klas of een rustig moment met opa en oma.' }) +
+      '<div class="binnen wzk">' +
+        '<section class="sectie wzk-klaar"><h2>Kies een woordzoeker</h2><div class="wzk-themas" role="group" aria-label="Kies een onderwerp">' + keuzes + '</div>' +
+          '<div data-wzk-vak="a">' + wzkKant(eerst) + '</div></section>' +
+        '<section class="sectie wzk-zelf" id="zelf-maken"><h2>Zelf een woordzoeker maken</h2>' +
+          '<p>Typ je eigen woorden, bijvoorbeeld de hobby’s van degene voor wie de surprise is, of de woorden van deze week op school. Je woorden blijven op je eigen telefoon of computer.</p>' +
+          '<form class="wzk-form" data-wzk-form>' +
+            '<label>Titel <small>(mag leeg)</small><input type="text" name="titel" maxlength="40" placeholder="Bijvoorbeeld: Een puzzel voor Sanne"></label>' +
+            '<label>Woorden <small>(één per regel, of met komma’s)</small><textarea name="woorden" rows="6" placeholder="voetbal&#10;pizza&#10;vakantie&#10;Sanne"></textarea></label>' +
+            '<div class="wzk-opties"><label>Grootte<select name="n"><option value="10">Klein (10 bij 10)</option><option value="12" selected>Gemiddeld (12 bij 12)</option><option value="15">Groot (15 bij 15)</option></select></label>' +
+              '<label>Moeilijkheid<select name="richt"><option value="makkelijk">Makkelijk: van links naar rechts en van boven naar beneden</option><option value="normaal" selected>Normaal: ook schuin</option><option value="moeilijk">Moeilijk: ook achterstevoren</option></select></label>' +
+              '<label class="wzk-vink"><input type="checkbox" name="groot"> Grote letters</label></div>' +
+            '<button type="submit" class="knop knop-goud">Maak mijn woordzoeker</button><p class="wzk-melding" data-wzk-melding aria-live="polite"></p>' +
+          '</form><div data-wzk-vak="b"></div></section>' +
+        (boeken ? '<section class="sectie wzk-boeken"><h2>Puzzelt iemand graag?</h2>' +
+          '<p>Deze puzzelboeken maakte Marius van LeukeKeuze zelf: in grote, duidelijke letters, en bij de woordzoekers vormen de letters die overblijven een zin, net als hierboven. Een fijn cadeau voor opa en oma, of voor iedereen die graag puzzelt.</p>' +
+          '<div class="prodgrid">' + boeken + '</div>' +
+          '<p class="wzk-verder"><a href="/c/boeken-media/boeken/puzzelboeken">Alle puzzelboeken</a> · <a href="/c/spellen-puzzels/puzzels">Legpuzzels</a> · <a href="/voor/opa-oma">Cadeaus voor opa en oma</a></p></section>' : '') +
+        '<section class="sectie wzk-vragen"><h2>Vragen over de woordzoeker</h2>' +
+          vraag('Hoe maak ik een woordzoeker?', 'Typ je woorden bij ‘Zelf een woordzoeker maken’, kies hoe groot en hoe moeilijk, en tik op ‘Maak mijn woordzoeker’. Je ziet hem meteen en kunt hem printen of op het scherm spelen. Niet blij met hoe de woorden liggen? Tik op ‘Andere puzzel’.') +
+          vraag('Kan ik de woordzoeker printen?', 'Ja, tik op ‘Printen’. Je krijgt een blad met alleen de puzzel en de woorden. Staat ‘Oplossing tonen’ aan, dan komt de oplossing op een tweede blad.') +
+          vraag('Hoe speel ik op mijn telefoon?', 'Tik op de eerste letter van een woord en daarna op de laatste. Klopt het, dan kleurt het woord en wordt het in de lijst doorgestreept.') +
+          vraag('Wat betekenen de letters die overblijven?', 'Bij de kant-en-klare woordzoekers blijven precies zoveel letters over als er nodig zijn voor een zin. Lees ze rij voor rij van links naar rechts als je alle woorden hebt gevonden.') +
+          vraag('Mag ik de woordzoekers gebruiken in de klas of voor een surprise?', 'Ja, voor eigen gebruik mag je ze gratis printen en uitdelen, thuis, op school of in de vereniging.') +
+          vraag('Bewaren jullie mijn woorden?', 'Nee. De woordzoeker wordt op je eigen telefoon of computer gemaakt; je woorden worden nergens naartoe gestuurd.') +
+        '</section></div>';
+  }
+  /* Spelen: eerste letter, dan laatste letter. */
+  function wzkTel(id) {
+    var s = WZK[id], el = document.querySelector('[data-wzk="' + id + '"]'); if (!s || !el) return;
+    var n = Object.keys(s.gevonden).length, t = el.querySelector('.wzk-tel b'); if (t) t.textContent = n;
+    if (n === s.gelegd.length && !el.classList.contains('klaar')) {
+      el.classList.add('klaar');
+      var p = el.querySelector('.wzk-tel'); if (p) p.innerHTML = '<b>Alle ' + n + ' woorden gevonden!</b>' + (s.geheim ? ' Lees nu de letters die overblijven.' : '');
+      try { wzkTelG('woordzoeker/klaar/' + (s.thema || 'eigen')); } catch (e) {}
+    }
+  }
+  function wzkKlik(id, i) {
+    var s = WZK[id], el = document.querySelector('[data-wzk="' + id + '"]'); if (!s || !el) return;
+    var cel = function (k) { return el.querySelector('[data-wzk-c="' + k + '"]'); };
+    if (s.start < 0) { s.start = i; cel(i).classList.add('start'); return; }
+    var a = s.start; s.start = -1; cel(a).classList.remove('start');
+    if (a === i) return;
+    var n = s.n, ra = Math.floor(a / n), ca = a % n, rb = Math.floor(i / n), cb = i % n, dr = rb - ra, dc = cb - ca;
+    var stappen = Math.max(Math.abs(dr), Math.abs(dc));
+    var fout = function () { [a, i].forEach(function (k) { var c = cel(k); c.classList.add('mis'); setTimeout(function () { c.classList.remove('mis'); }, 450); }); };
+    if (!(dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc))) { fout(); return; }
+    var sr = dr / stappen, sc = dc / stappen, pad = [], woord = '';
+    for (var k = 0; k <= stappen; k++) { var ix = (ra + sr * k) * n + (ca + sc * k); pad.push(ix); woord += s.g[ix]; }
+    var omgekeerd = woord.split('').reverse().join('');
+    var x = s.gelegd.filter(function (y) { return !s.gevonden[y.w] && (y.w === woord || y.w === omgekeerd); })[0];
+    if (!x) { fout(); return; }
+    s.gevonden[x.w] = 1;
+    pad.forEach(function (k) { cel(k).classList.add('gev'); });
+    var li = el.querySelector('[data-wzk-w="' + x.w + '"]'); if (li) li.classList.add('weg');
+    var lijn = el.querySelector('[data-wzk-l="' + x.w + '"]'); if (lijn) lijn.classList.add('gev');
+    wzkTel(id);
+  }
+  /* Printen: alleen de puzzel op een eigen blad (en de oplossing op een tweede blad als die aan staat). */
+  function wzkPrint(id) {
+    var s = WZK[id]; if (!s) return;
+    var oplos = !!document.querySelector('[data-wzk="' + id + '"].oplos'), n = s.n;
+    var inWoord = {}; s.gelegd.forEach(function (x) { x.cel.forEach(function (ix) { inWoord[ix] = 1; }); });
+    var tabel = function (met) {
+      var h = '<div class="wzp-kader' + (s.groot ? ' groot' : '') + '" style="--n:' + n + '"><table class="wzp-raster">';
+      for (var r = 0; r < n; r++) { h += '<tr>'; for (var c = 0; c < n; c++) { var ix = r * n + c; h += '<td' + (met && !inWoord[ix] ? ' class="rest"' : '') + '>' + s.g[ix] + '</td>'; } h += '</tr>'; }
+      return h + '</table>' + (met ? wzkLijnen(n, s.gelegd, true) : '') + '</div>';
+    };
+    var woorden = s.gelegd.slice().sort(function (a, b) { return a.w < b.w ? -1 : 1; }).map(function (x) { return '<li>' + esc(x.toon) + '</li>'; }).join('');
+    var voet = '<p class="wzp-voet">Gratis woordzoeker van leukekeuze.nl/woordzoeker</p>';
+    var html = '<div class="wzp-blad"><h1>' + esc(s.titel) + '</h1>' + tabel(false) + '<ul class="wzp-woorden">' + woorden + '</ul>' +
+      (s.geheim ? '<p class="wzp-geheim">De letters die overblijven vormen een zin:</p><p class="wzp-lijn"></p>' : '') + voet + '</div>' +
+      (oplos ? '<div class="wzp-blad wzp-nieuw"><h1>Oplossing: ' + esc(s.titel) + '</h1>' + tabel(true) +
+        (s.geheim ? '<p class="wzp-geheim">De zin is: <b>' + esc(s.geheim) + '</b>' + (s.bron ? ' (' + esc(s.bron) + ')' : '') + '</p>' : '') + voet + '</div>' : '');
+    var vak = document.getElementById('wzk-printvak');
+    if (!vak) { vak = document.createElement('div'); vak.id = 'wzk-printvak'; document.body.appendChild(vak); }
+    if (!document.getElementById('wzk-printstijl')) {
+      var st = document.createElement('style'); st.id = 'wzk-printstijl';
+      st.textContent = '#wzk-printvak{display:none}' +
+        '@media print{@page{size:A4;margin:14mm}html.wzk-print body>*:not(#wzk-printvak){display:none!important}html.wzk-print,html.wzk-print body{background:#fff!important}' +
+        'html.wzk-print #wzk-printvak{display:block!important;color:#000!important;background:#fff!important;font-family:Manrope,Arial,sans-serif}' +
+        '.wzp-blad{break-inside:avoid}.wzp-nieuw{break-before:page}.wzp-blad h1{font-family:"Playfair Display",Georgia,serif;font-size:24pt;margin:0 0 8mm;color:#000!important;text-align:center}' +
+        '.wzp-kader{--c:11mm;position:relative;width:calc(var(--n) * var(--c));margin:0 auto 7mm}.wzp-kader.groot{--c:13mm}' +
+        '.wzp-raster{border-collapse:collapse;table-layout:fixed;width:100%}.wzp-raster td{height:var(--c);padding:0;text-align:center;vertical-align:middle;font-size:15pt;font-weight:700;border:0.3mm solid #999;color:#000!important;background:#fff!important}' +
+        '.wzp-kader.groot td{font-size:20pt}.wzp-raster td.rest{color:#000!important;font-weight:800;text-decoration:underline}' +
+        '.wzp-kader .wzk-lijnen{position:absolute;inset:0;width:100%;height:100%}.wzp-kader line{stroke:#000;stroke-opacity:.26;stroke-width:.64;stroke-linecap:round;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+        '.wzp-woorden{columns:3;column-gap:8mm;list-style:none;margin:0 0 6mm;padding:0;font-size:13pt;line-height:1.6;color:#000!important}.wzp-kader.groot+.wzp-woorden{font-size:16pt;columns:2}' +
+        '.wzp-geheim{font-size:12pt;margin:4mm 0 2mm;color:#000!important}.wzp-lijn{border-bottom:0.3mm solid #000;height:8mm;margin:0 0 6mm}.wzp-voet{font-size:9pt;color:#555!important;text-align:center;margin:0}}';
+      document.head.appendChild(st);
+    }
+    vak.innerHTML = html;
+    document.documentElement.classList.add('wzk-print');
+    var weg = function () { document.documentElement.classList.remove('wzk-print'); window.removeEventListener('afterprint', weg); };
+    window.addEventListener('afterprint', weg);
+    try { wzkTelG('woordzoeker/print/' + (s.thema || 'eigen') + (oplos ? '/oplossing' : '')); } catch (e) {}
+    setTimeout(function () { window.print(); setTimeout(weg, 1500); }, 60);
+  }
+  function wzkVervang(id, html) { var vak = document.querySelector('[data-wzk-vak="' + id + '"]'); if (vak) { vak.innerHTML = html; vulIconen(vak); } }
+  document.addEventListener('click', function (e) {
+    var c = e.target.closest('[data-wzk-c]'); if (c) { var p = c.closest('[data-wzk]'); if (p) wzkKlik(p.getAttribute('data-wzk'), +c.getAttribute('data-wzk-c')); return; }
+    var t = e.target.closest('[data-wzk-thema]');
+    if (t) {
+      document.querySelectorAll('[data-wzk-thema]').forEach(function (b) { b.setAttribute('aria-pressed', b === t ? 'true' : 'false'); });
+      wzkVervang('a', wzkKant(t.getAttribute('data-wzk-thema'))); try { wzkTelG('woordzoeker/thema/' + t.getAttribute('data-wzk-thema')); } catch (x) {} return;
+    }
+    var nw = e.target.closest('[data-wzk-nieuw]');
+    if (nw) {
+      var id = nw.getAttribute('data-wzk-nieuw'), s = WZK[id]; if (!s) return;
+      var seed = (s.seed || 1) + 1009;
+      if (id === 'a') wzkVervang('a', wzkKant(s.thema, seed));
+      else wzkVervang('b', wzkPuzzel('b', wzkMaak(s.woorden, s.n, s.richt, seed), { seed: seed, titel: s.titel, groot: s.groot, woorden: s.woorden, richt: s.richt }));
+      try { wzkTelG('woordzoeker/nieuw/' + (s.thema || 'eigen')); } catch (x) {} return;
+    }
+    var op = e.target.closest('[data-wzk-oplos]');
+    if (op) {
+      var pz = op.closest('[data-wzk]'), aan = !pz.classList.contains('oplos');
+      pz.classList.toggle('oplos', aan); op.setAttribute('aria-pressed', aan ? 'true' : 'false'); op.textContent = aan ? 'Oplossing verbergen' : 'Oplossing tonen';
+      var zin = pz.querySelector('.wzk-zin'); if (zin) zin.hidden = !aan; return;
+    }
+    var pr = e.target.closest('[data-wzk-print]'); if (pr) { wzkPrint(pr.getAttribute('data-wzk-print')); return; }
+  });
+  document.addEventListener('submit', function (e) {
+    var f = e.target.closest && e.target.closest('[data-wzk-form]'); if (!f) return;
+    e.preventDefault();
+    var meld = f.querySelector('[data-wzk-melding]');
+    var woorden = String(f.woorden.value || '').split(/[\n,;]+/).map(function (w) { return w.trim(); }).filter(function (w) { return wzkSchoon(w).length >= 2; });
+    var dubbel = {}; woorden = woorden.filter(function (w) { var k = wzkSchoon(w); if (dubbel[k]) return false; dubbel[k] = 1; return true; }).slice(0, 30);
+    if (woorden.length < 3) { meld.textContent = 'Typ minstens drie woorden van twee letters of meer.'; return; }
+    meld.textContent = '';
+    var n = +f.n.value || 12, richt = f.richt.value || 'normaal', groot = f.groot.checked, titel = String(f.titel.value || '').trim() || 'Mijn woordzoeker';
+    var seed = Math.floor(Math.random() * 1e9);
+    wzkVervang('b', wzkPuzzel('b', wzkMaak(woorden, n, richt, seed), { seed: seed, titel: titel, groot: groot, woorden: woorden, richt: richt }));
+    var vak = document.querySelector('[data-wzk-vak="b"]'); if (vak && vak.scrollIntoView) vak.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try { wzkTelG('woordzoeker/zelf/' + n + '-' + richt); } catch (x) {}
+  });
+
   function lootjes(q) {
     if (q.l) return lootUitslag(lootLees(q.l));
     if (q.g) return lootGroep(q);
@@ -7705,7 +8010,7 @@
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
       '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
       '<div class="lade-label">Cadeau-ideeën</div><div class="lade-links">' + collectiesVan('ideeen').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
-      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
+      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
   }
   /* Collecties in twee groepen: acties (kortingen) en cadeau-ideeën. Verborgen collecties blijven bereikbaar via hun adres. */
   var COLLECTIE_ACTIES = ['black-friday', 'aanbiedingen', 'kortingscodes'];
@@ -7958,6 +8263,7 @@
     else if (d[0] === 'sint-rijmmachine') html = rijmmachine();
     else if (d[0] === 'lootjes-trekken' && window.LK_LOOTJES !== false) html = lootjes(a.q);
     else if (d[0] === 'tiktok' && window.LK_TIKTOK !== false) html = tiktokPagina();
+    else if (d[0] === 'woordzoeker' && window.LK_WOORDZOEKER !== false) html = woordzoekerPagina();
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);

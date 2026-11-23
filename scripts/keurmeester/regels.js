@@ -83,7 +83,7 @@ const R = {
    Atelier Rebul (merk van familie; 'zet in een nieuwe top voor geur, kaarsen of verzorging eerst een cadeau van Atelier Rebul'),
    en wat echt verkocht is ('verkochte producten vooraan', 12/16/17-11-2026). */
 const ZACHT_VRIJ_MERK = /^atelier rebul\b/i;
-const VERKOCHT = new Set(['dvzn-995816', 'dvzn-c15dcffb40', 'cl-hema-heren-pyjama', 'hema-efaa95f521', 'bol-9300000302102741', 'dk-9393c6d57b', 'bol-9300000250399375']);
+const VERKOCHT = new Set(['dvzn-995816', 'dvzn-c15dcffb40', 'cl-hema-heren-pyjama', 'hema-efaa95f521', 'bol-9300000302102741', 'dk-9393c6d57b', 'bol-9300000250399375', 'nedg-10eb80382d']);
 /* Groepen (nieuwe indeling) die als bedankje of collegacadeau vanzelf passen: geeft geen aftrek, alleen bewijs voor het rapport. */
 const BEDANK_BEWIJS = /bedankt|dankjewel|dank je|thank|merci|top collega|beste collega|super collega|goud waard/i;
 
