@@ -132,3 +132,48 @@ html.nacht .sh .wegwijzer a.ws-aan{background:linear-gradient(180deg,#FFE3A0,#E2
 html.nacht .sh .wegwijzer a.ws-aan small{color:#3A2C08}
 html.nacht .sh .wegwijzer-rij.sh-veeg-meer::after{background:linear-gradient(90deg,rgba(6,11,24,0),#060B18 62%)}
 html.nacht .sh h2{letter-spacing:-.005em}
+
+/* IETS KLEINER (24-11-2026, Marius: 'maak de versie weer een stukje kleiner'): alles ongeveer 15% kleiner dan GROTER, de indeling blijft gelijk */
+html.nacht .sh .straat{gap:26px 0}
+html.nacht .sh .straat>.gevel{max-width:400px}
+@media (min-width:700px){html.nacht .sh .straat{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 22px}}
+@media (min-width:1000px){html.nacht .sh .straat{grid-template-columns:repeat(4,minmax(0,1fr))}}
+html.nacht .sh .gv-wat{font-size:20px}
+html.nacht .sh .gv-tel{font-size:15px}
+@media (min-width:700px){html.nacht .sh .gv-wat{font-size:20px}html.nacht .sh .gv-tel{font-size:15px}}
+html.nacht .sh .kies h2{font-size:20px}
+html.nacht .sh .kr{width:min(72px,18vw);height:min(72px,18vw)}
+html.nacht .sh .kn{font-size:14px}
+@media (min-width:700px){html.nacht .sh .kr{width:88px;height:88px}html.nacht .sh .kn{font-size:15px}}
+html.nacht .sh .sh-munt{width:min(56px,15vw);height:min(56px,15vw);font-size:15px}
+html.nacht .srij-rond{width:min(68px,17vw);height:min(68px,17vw)}
+html.nacht .srij-item{font-size:13.5px}
+html.nacht .srij-rij .srij-item{flex-basis:86px}
+html.nacht .srij-rij .srij-rond{width:72px;height:72px}
+@media (min-width:760px){html.nacht .srij .srij-item{flex:0 0 112px;font-size:14px}html.nacht .srij .srij-rond{width:86px;height:86px}}
+html.nacht .sh .gang-kop img{width:60px;height:60px}
+html.nacht .sh .gang-kop{gap:12px}
+html.nacht .sh .gang-kop h2{font-size:21px}
+html.nacht .sh .gang-kop small{font-size:12px}
+html.nacht .sh .binnen-kop.nova .embleem{width:82px;height:82px;bottom:-36px}
+html.nacht .sh .binnen-kop.nova .pui{padding-top:44px}
+@media (min-width:700px){html.nacht .sh .gang-kop img{width:72px;height:72px}html.nacht .sh .binnen-kop.nova .embleem{width:100px;height:100px;bottom:-44px}html.nacht .sh .binnen-kop.nova .pui{padding-top:54px}}
+html.nacht .srt-st-rond{width:74px;height:74px}
+html.nacht .srt-vt-rond{width:84px;height:84px}
+html.nacht .sh .pk{padding:8px}
+html.nacht .sh .pk-t{font-size:14.5px;line-height:1.28}
+html.nacht .sh .pk-w{font-size:12.5px}
+html.nacht .sh .pk-p{font-size:15px}
+html.nacht .sh .sh-binnen .pk-p,html.nacht .sh .top-etalage .pk-p,html.nacht .sh .kraam .pk-p{font-size:15px;padding:3px 10px 3px 15px}
+html.nacht .sh .kraam .naar,html.nacht .sh .sh-binnen .naar,html.nacht .sh .top-etalage .naar{min-height:44px;font-size:15px}
+html.nacht .sh .kraam-van,html.nacht .sh .kraam-uitleg{font-size:14px}
+/* Label 'Tot 5 december' viel bovenaan buiten de gevel (24-11-2026, Marius: 'het past niet eens'): binnen de rand zetten */
+html.nacht .sh .gv-label{top:10px;right:10px;font-size:max(12px,3.6cqw);padding:7px 12px;background:rgba(10,16,32,.88);border:1px solid rgba(242,203,116,.6);color:#FFDF9A}
+/* Twee winkels naast elkaar op de telefoon (24-11-2026, Marius: 'zet beter 2 naast elkaar, anders is de website zo lang') */
+@media (max-width:699px){
+html.nacht .sh .straat{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}
+html.nacht .sh .straat>.gevel{max-width:none}
+html.nacht .sh .gv-wat{font-size:16.5px;line-height:1.2}
+html.nacht .sh .gv-tel{font-size:13.5px}
+html.nacht .sh .gv-label{top:6px;right:6px;font-size:11px;padding:5px 8px}
+}
