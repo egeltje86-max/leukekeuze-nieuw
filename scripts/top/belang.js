@@ -3,8 +3,8 @@
 
    Zet in elke vaste top (picks.json) de eerste 36 opnieuw op volgorde: wat klanten echt zoeken en kopen eerst.
    Belang van een cadeau:
-   - verkocht via onze site (VERKOCHT in scripts/keurmeester/regels.js): +2 (Marius 21-11: één verkoop zegt niet dat iedereen het wil)
-   - kreeg al bezoek via Google of kliks (scripts/seo/google-houden.json): +1,5
+   - verkocht via onze site: telt NIET mee (Marius 24-11: 'je moet niet gelijk producten die 1 keer verkocht zijn bovenaan zetten'; één verkoop zegt niets)
+   - kreeg al bezoek via Google of kliks (scripts/seo/google-houden.json): +1,5 (niet voor producten die er alleen door een verkoop in staan)
    - zoekvolume in Google (keurkamer/data/vraag.json, gemaakt door scripts/seo/gezocht.js; zelfde weging): log10(volume) - 1,7, hooguit 3,5
      (1.000 per maand = 1,3; 10.000 = 2,3; 100.000 = 3,3)
    - in Toppers van nu (hype van dit jaar): +1
@@ -26,7 +26,7 @@ const PF = path.join(ROOT, 'scripts/top/picks.json');
 const picks = JSON.parse(fs.readFileSync(PF, 'utf8'));
 const TOPPERS = new Set(picks['/collectie/toppers-van-nu'] || []);
 const N = 36;
-function belang(id) { let s = 0; if (VERKOCHT.has(id)) s += 2; if (HOUD.has(id)) s += 1.5; if (TOPPERS.has(id)) s += 1;
+function belang(id) { let s = 0; if (HOUD.has(id) && !VERKOCHT.has(id)) s += 1.5; if (TOPPERS.has(id)) s += 1;
   const v = VR[id]; if (v) s += Math.max(0, Math.min(3.5, Math.log10(v) - 1.7)); return s; }
 const merk = p => String((p && (p.merk || p.titel.split(' ')[0])) || '').toLowerCase();
 let nTop = 0, nAnders = 0; const voorbeeld = [];
