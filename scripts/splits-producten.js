@@ -173,9 +173,13 @@ function splits() {
   /* Een getal in een tabelveld betekent 'zie de tabel'. Dat werkt alleen als die velden zelf nooit een getal zijn: dat bewaken we hier. */
   for (const l of lean) for (const k of VELD) if (typeof l[k] === 'number') throw new Error('splits-producten: veld ' + k + ' is een getal bij ' + l.id + '; haal het uit VELD');
   const ontsnap = (s) => "'" + s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(new RegExp(String.fromCharCode(0x2028), 'g'), '\\u2028').replace(new RegExp(String.fromCharCode(0x2029), 'g'), '\\u2029') + "'";
-  const json = '[' + kort.map(p => JSON.stringify(p)).join(',') + ']';
+  /* 24-11-2026 (sneller, Marius: 'minder zwaar, sneller'): naast producten-lean.js (alles, voor de controles, de keurkamers en de nachtrun) komt
+     producten-site.js: dezelfde lijst zonder de afgekeurde producten (ongeveer 4.900). Die laadt de site. Nergens op de site wordt een afgekeurd
+     product getoond of gebruikt (overal geldt status 'goedgekeurd'), en hun oude adressen sturen al door vanuit de gebouwde pagina's.
+     Uitverkochte producten (pagina 'lijkt hierop') en samengevoegde (doorsturen naar het product dat blijft) blijven erin. */
+  const schrijfLijst = (bestand, lijst) => { const json = '[' + lijst.map(p => JSON.stringify(p)).join(',') + ']';
   const letterlijk = ontsnap(json);
-  fs.writeFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_PRODUCTEN = JSON.parse(' + letterlijk + ');\n' +
+  fs.writeFileSync(path.join(ROOT, 'assets/js/' + bestand), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_PRODUCTEN = JSON.parse(' + letterlijk + ');\n' +
     '(function (L, T, V) { for (var i = 0; i < L.length; i++) { var p = L[i], k, v, j;\n' +
     '  if (p.pl !== undefined) { v = T[p.pl]; for (j = 0; j < 5; j++) if (v[j] !== null) p[["cat", "sub", "afd", "groep", "vak"][j]] = v[j]; delete p.pl; }\n' +
     '  for (j = 0; j < V.length; j++) { k = V[j]; if (typeof p[k] === "number") { v = T[p[k]]; p[k] = Array.isArray(v) ? v.slice() : (v && typeof v === "object" ? JSON.parse(JSON.stringify(v)) : v); } }\n' +
@@ -184,7 +188,9 @@ function splits() {
     /* 18-11-2026: welke vakjes een eigen bestand 'Meer in onze winkels' hebben (assets/zoek/w/). Zonder bestand vroeg de app het toch op (404). */
     'window.LK_ZOEKW = "' + zoekW() + '";\n' +
     /* Snelheid (31-10-2026): dit bestand laadt nu 'async' (zie sjabloon.html); de site wacht op dit seintje. */
-    'try { window.dispatchEvent(new Event("lk-producten")); } catch (e) { var ev = document.createEvent("Event"); ev.initEvent("lk-producten", false, false); window.dispatchEvent(ev); }\n');
+    'try { window.dispatchEvent(new Event("lk-producten")); } catch (e) { var ev = document.createEvent("Event"); ev.initEvent("lk-producten", false, false); window.dispatchEvent(ev); }\n'); };
+  schrijfLijst('producten-lean.js', kort);
+  schrijfLijst('producten-site.js', kort.filter((o, i) => lean[i].status !== 'afgekeurd'));
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-details.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_DETAILS = ' + JSON.stringify(det) + ';\n');
   return lean.length;
 }
