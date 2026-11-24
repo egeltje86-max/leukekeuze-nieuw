@@ -610,6 +610,7 @@
     if (!p.km || !KM_Z) return 0; kmAftrek(p, c);
     return (c.g ? p._km['zg.' + c.g] || 0 : 0) + (c.pe ? p._km['zp.' + c.pe] || 0 : 0) + (p._km['zx.' + (c.g || '') + '_' + (c.pe || '')] || 0);
   }
+  window.LK_NOVA_KMUIT = function (l, pad) { return kmUit(l, pad); }; /* DARK NOVA (proef): de straat gebruikt dezelfde keurmeester */
   function kmUit(l, pad) {
     var c = KM && kmCtx(pad); if (!c) return l;
     var log = window.LK_KM_LOG; /* alleen bij de controle (scripts/controle/keurmeester-kruip.js): wat valt hier weg? */
@@ -683,19 +684,29 @@
      topkeuze.js, gemaakt met scripts/seo/gezocht.js; per pagina 5 kandidaten, de eerste 3 die op de pagina staan tellen). Daarna de vaste
      top en de rest zoals altijd. Alleen bij 'Aanbevolen'. Uit: window.LK_GEZOCHT_UIT = true of ?proef=gezocht-uit (weer aan: ?proef=gezocht). */
   var GEZOCHT_UIT = (function () { try { var q = location.search; if (/proef=gezocht-uit/.test(q)) sessionStorage.setItem('lkgezocht-uit', '1'); else if (/proef=gezocht(&|$)/.test(q)) sessionStorage.removeItem('lkgezocht-uit'); return sessionStorage.getItem('lkgezocht-uit') === '1'; } catch (e) { return false; } })();
-  function gezochtEerst(l, sleutel) {
+  function gezochtEerst(l, sleutel, nc) {
     if (GEZOCHT_UIT || window.LK_GEZOCHT_UIT === true || !window.LK_GEZOCHT || !sleutel) return l;
     var ids = window.LK_GEZOCHT[String(sleutel).replace(/\/$/, '')];
     if (!ids || !ids.length) return l;
     var plek = {}; l.forEach(function (p, i) { plek[p.id] = i; });
-    var voor = [], gezien = {};
-    for (var i = 0; i < ids.length && voor.length < 3; i++) if (plek[ids[i]] !== undefined && !gezien[ids[i]]) { voor.push(l[plek[ids[i]]]); gezien[ids[i]] = 1; }
+    var voor = [], gezien = {}, kc = nc && KM && kmCtx(sleutel);
+    /* DARK NOVA (proef, alleen met de vlag): wat de keurmeester of de toelating naar achteren zette, haalt 'meest gezocht' niet meer naar voren */
+    var mag = function (p) { return !nc || (window.LK.nova.magVoor(p, nc) && !(kc && (kmAftrek(p, kc) > 0 || kmZacht(p, kc) > 0))); };
+    for (var i = 0; i < ids.length && voor.length < 3; i++) if (plek[ids[i]] !== undefined && !gezien[ids[i]] && mag(l[plek[ids[i]]])) { voor.push(l[plek[ids[i]]]); gezien[ids[i]] = 1; }
     if (!voor.length) return l;
     return voor.concat(l.filter(function (p) { return !gezien[p.id]; }));
   }
   function sorteer(lijst, hoe, sleutel) {
     var l = kmUit(lijst.slice(), sleutel);
-    if (!hoe || hoe === 'aanbevolen') { var m = metTopkeuze(l, sleutel); return gezochtEerst(bovenaan(m || mix(l), sleutel), sleutel); }
+    /* DARK NOVA · CADEAU-INDELING (proef 24-11-2026, standaard UIT; zie gedeeld.js): toelating vóór de volgorde, daarna spreiding in de eerste 12.
+       Bij een andere sortering (prijs, nieuw) blijft de keuze van de bezoeker gelden: alleen 'niet hier' gaat eraf. */
+    var NV = window.LK && window.LK.nova, nc = NV && NV.aan() && NV.ctx(sleutel);
+    if (nc) l = NV.filter(l, nc, window.LK_NOVA_LOG);
+    if (!hoe || hoe === 'aanbevolen') {
+      var m = metTopkeuze(l, sleutel), r = gezochtEerst(bovenaan(m || mix(l), sleutel), sleutel, nc);
+      if (nc) r = NV.spreid(NV.mensEerst(NV.filter(r, nc), nc), nc, window.LK_NOVA_LOG);
+      return r;
+    }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
     else if (hoe === 'prijs-af') l.sort(function (a, b) { return b.prijs - a.prijs; });
     else if (hoe === 'nieuw') l.sort(function (a, b) { return (b.sinds || '').localeCompare(a.sinds || '') || (LK.isNieuw(b) ? 1 : 0) - (LK.isNieuw(a) ? 1 : 0); });
