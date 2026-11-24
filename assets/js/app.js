@@ -2966,7 +2966,9 @@
   function bfOrde(p) {
     if (window.LK_BF_ORDE === false) return 0;
     var feest = (p.moment || []).some(function (m) { return m === 'sinterklaas' || m === 'kerst'; }) || (p.ookIn || []).some(function (v) { return /^cadeaus\/(sinterklaas|kerst|sint-onder-15)/.test(v); }) || p.afd === 'speelgoed' || p.afd === 'spellen-puzzels';
-    return (p.laag30 ? 0.12 : 0) + (feest ? 0.12 : 0) - (p.afd === 'elektronica' && !/gaming/.test(p.groep || '') ? 0.1 : 0);
+    /* Dark Nova (24-11-2026, GO Marius): meer dan 50% korting zonder eigen prijsbewijs krijgt geen actieplek (ook niet als eigen deal). */
+    var NVb = window.LK && window.LK.nova, nvLaag = NVb && NVb.aan() && NVb.toelaat(p, NVb.ctx('/collectie/black-friday')).u !== 'ok';
+    return (p.laag30 ? 0.12 : 0) + (feest ? 0.12 : 0) - (p.afd === 'elektronica' && !/gaming/.test(p.groep || '') ? 0.1 : 0) - (nvLaag ? 1.5 : 0);
   }
   function besteDeals(lijst) {
     /* 8-11-2026: de deals die Marius zelf koos (LK_TOPKEUZE['/collectie/black-friday']) komen bovenaan, nog steeds gemixt. */

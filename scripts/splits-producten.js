@@ -97,6 +97,12 @@ function splits() {
     const l = {}, d = {};
     for (const k of Object.keys(p)) (DETAILS.indexOf(k) === -1 ? l : d)[k] = p[k];
     /* WIJZER (11-11-2026): wat in een handgekozen top staat (de etalage) houdt in de lijst één korte zin 'waarom' (veld kort), voor op de kaart in de nieuwe opzet. */
+    /* Dark Nova (24-11-2026, GO Marius): bij baby- en peuterspeelgoed telt de minimumleeftijd in maanden uit de verkooptekst ('Vanaf 18 maanden') zwaarder dan [0,2].
+       Veld mnd: op de kaart 'vanaf 18 mnd' en op de babypagina's naar achteren vanaf 12 maanden (LK.nova in gedeeld.js). */
+    if (p.waarom && (!p.leeftijd || p.leeftijd[0] < 3) && /speelgoed|spellen-puzzels|kinderboeken/.test(String(p.cat || '') + ' ' + String(p.vak || '') + ' ' + String(p.afd || ''))) {
+      const mm = /vanaf (\d{1,2}) maanden|(\d{1,2}) ?maanden ?\+|\b(\d{1,2}) ?m\+/i.exec(p.waarom); const n = mm ? +(mm[1] || mm[2] || mm[3]) : 0;
+      if (n >= 6 && n <= 36) l.mnd = n;
+    }
     if (l.waarom && !p.favoriet && !p.eigen && !GIDS_IDS.has(p.id)) { d.waarom = l.waarom; if (ETALAGE_IDS.has(p.id)) l.kort = eersteZin(l.waarom); delete l.waarom; }
     /* Daisycon-product? Klein vlaggetje voor de lijsten (de link zelf staat in details). Zie daisyconLaag() in app.js. */
     if (/^https?:\/\/(lt45|fr135|bdt9|glp8|ds1|jdt8|rkn3|jf79)\.n[le]t?\/c\/|^https?:\/\/aff\.svinando\.be\/c\//.test(p.url || '')) l.dc = 1;

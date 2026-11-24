@@ -263,7 +263,7 @@
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + (p.sfeer ? ' sfeer' : '') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icoon('hart') + '</button>' +
       '<div class="info">' +
-        '<span class="shop">' + esc(p.shop) + '</span>' +
+        '<span class="shop">' + esc(p.shop) + (p.mnd ? ' · vanaf ' + p.mnd + ' mnd' : '') + '</span>' +
         '<h3><a href="/p/' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</a></h3>' +
         '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
         ruilRegel(p) +
@@ -306,8 +306,9 @@
         Verkochte toppers (Gouden Snaai, Lamborghini, hoodie, Pikachu-pen ...) houden hun plek. Black Friday (eigen deals van Marius) niet.
      3. 'Meest gezocht' zet niets meer vooraan wat de keurmeester of regel 1 naar achteren zette (in app.js, gezochtEerst). */
   var NOVA = (function () {
-    var AAN = (function () { try { var q = location.search; if (/[?&]proef=nova-uit(&|$)/.test(q)) sessionStorage.removeItem('lknova'); else if (/[?&]proef=nova(&|$)/.test(q)) sessionStorage.setItem('lknova', '1');
-      return window.LK_NOVA_CADEAU_INDELING === true || (window.LK_NOVA_CADEAU_INDELING !== false && sessionStorage.getItem('lknova') === '1'); } catch (e) { return window.LK_NOVA_CADEAU_INDELING === true; } })();
+    /* LIVE voor iedereen sinds 24-11-2026 (Marius: 'go doe alles wat nova zegt'). Zelf de oude volgorde zien: ?proef=nova-uit (in dat tabblad; weer aan: ?proef=nova). Helemaal uit: window.LK_NOVA_CADEAU_INDELING = false. */
+    var AAN = (function () { try { var q = location.search; if (/[?&]proef=nova-uit(&|$)/.test(q)) sessionStorage.setItem('lknova', '0'); else if (/[?&]proef=nova(&|$)/.test(q)) sessionStorage.removeItem('lknova');
+      return window.LK_NOVA_CADEAU_INDELING !== false && sessionStorage.getItem('lknova') !== '0'; } catch (e) { return window.LK_NOVA_CADEAU_INDELING !== false; } })();
     var BESCHERMD = { 'dvzn-995816': 1, 'cl-hema-heren-pyjama': 1, 'hema-efaa95f521': 1, 'bol-9300000302102741': 1, 'dk-9393c6d57b': 1, 'bol-9300000250399375': 1, 'nedg-10eb80382d': 1 };
     var APPARAAT = /\b(airfryer|broodrooster|tosti-? ?ijzer|waterkoker|blender|keukenmachine|staafmixer|koffiezetapparaat|koffiezetter|espresso-?(machine|apparaat)|koffiemachine|stofzuiger|strijkijzer|wafelijzer|contactgrill|frituurpan|slowcooker|melkopschuimer|sapcentrifuge|magnetron|heteluchtoven|ijsmachine|fondueset|fondue-set|gourmetstel|gourmetset|raclette|grillplaat|pannenkoekmaker|sous ?vide)\b/i;
     var GEREEDSCHAP = /\b(snoeischaar|heggenschaar|boormachine|accuboor|schroefmachine|schroevendraaier|decoupeerzaag|cirkelzaag|bitset|steeksleutel|waterpomptang|gereedschapsset|gereedschapskist|gereedschapskoffer)\b/i;
@@ -318,6 +319,8 @@
       ['starwars', /star wars|\byoda\b|grogu|mandalorian/i], ['kpop', /kpop|k-pop|demon hunters|huntrix|\bderpy\b/i], ['anime', /one piece|naruto|dragon ball|demon slayer|jujutsu|totoro|ghibli|\bluffy\b/i],
       ['squishmallow', /squishmallow/i], ['jellycat', /jellycat/i], ['lego', /\blego\b|\bduplo\b/i], ['f1', /\bf1\b|formule ?1|verstappen|red bull racing/i], ['tamagotchi', /tamagotchi/i],
       ['bluey', /bluey/i], ['pawpatrol', /paw patrol/i], ['barbie', /barbie/i], ['marvel', /marvel|spider-?man|avengers/i], ['disney', /disney|frozen/i], ['nijntje', /nijntje|miffy/i]];
+    var ONTV = [[/\b(mama|mam|mamma|mom|moeder|moedertje|schoonmoeder)\b/i, /moederdag|\bhaar\b/], [/\b(papa|pap|paps|vader|schoonvader)\b/i, /vaderdag|\bhem\b/],
+      [/\b(opa|oma|grootouders?|grootmoeder|grootvader)\b/i, /opa-oma|grootouder/], [/\b(baas|boss|manager)\b/i, /collega|afscheid/], [/\b(juf|meester|leerkracht)\b/i, /juf-meester/]];
     function frVan(p) { if (p._nfr !== undefined) return p._nfr; var t = (p.titel || '') + ' ' + (p.merk || ''); for (var i = 0; i < FR.length; i++) if (FR[i][1].test(t)) return (p._nfr = FR[i][0]); return (p._nfr = ''); }
     function merkVan(p) { return String(p.merk || '').toLowerCase().trim(); }
     function famVan(p) { var b = frVan(p) || merkVan(p) || String(p.titel || '').toLowerCase().split(/\s+/).slice(0, 2).join(' '); return b + '|' + (p.vak || p.groep || ''); }
@@ -342,11 +345,18 @@
     function toelaat(p, c) {
       if (!c || BESCHERMD[p.id]) return { u: 'ok' };
       var t = p.titel || '';
-      if (c.soort === 'eigen') return { u: 'ok' };
+      /* Eigen afdeling (Dark Nova 24-11): een apparaat of gereedschap hoort niet in de etalage van de hele afdeling (fondueset op plek 2 bij Koken & tafelen,
+         snoeischaar bij Tuin & klussen); in zijn eigen groep en vakje blijft hij gewoon staan. */
+      if (c.soort === 'eigen') return !c.groep && (APPARAAT.test(t) || GEREEDSCHAP.test(t)) ? { u: 'laag', r: 'apparaat of gereedschap op de hele afdeling' } : { u: 'ok' };
       if (isDier(p) && !/dier/.test(c.sub || '')) return { u: 'uit', r: 'voor het dier zelf' };
       if ((c.jong || c.sint) && GROF.test(t)) return { u: 'uit', r: 'grof of 18+ bij kinderen, tieners of Sinterklaas' };
       if (c.pe === 'baby' && ((p.leeftijd && p.leeftijd[0] >= 3) || /\b[3-9] ?\+|vanaf [3-9] jaar/i.test(t))) return { u: 'uit', r: 'speelgoed vanaf 3 jaar bij baby' };
+      if ((c.pe === 'baby' || /kraam|babyshower/.test(c.g)) && p.mnd >= 12) return { u: 'laag', r: 'peuterspeelgoed (vanaf ' + p.mnd + ' maanden)' };
       if (c.soort !== 'breed') return { u: 'ok' };
+      /* Black Friday (Dark Nova 24-11): meer dan 50% korting zonder eigen prijsbewijs (laag30) krijgt geen actieplek (Barbie Droomhuis); hij blijft wel op de pagina. */
+      if (c.bf && !p.laag30 && p.oudePrijs > p.prijs && p.prijs / p.oudePrijs <= 0.5) return { u: 'laag', r: 'korting boven 50% zonder prijsbewijs' };
+      /* Tekst voor één ontvanger (mama, papa, opa, oma, baas, juf) alleen vooraan in zijn eigen context (Dark Nova 24-11; bedankt-mok voor mama op Bedankt). */
+      for (var o = 0; o < ONTV.length; o++) if (ONTV[o][0].test(t) && !ONTV[o][1].test(c.g + ' ' + c.pe)) return { u: 'laag', r: 'tekst voor één ontvanger' };
       if (APPARAAT.test(t)) return { u: 'laag', r: 'keukenapparaat' };
       if (GEREEDSCHAP.test(t) || (p.afd === 'tuin-klussen' && /gereedschap|klussen|machines/.test(p.groep || ''))) return { u: 'laag', r: 'gereedschap' };
       if (!c.sint && /chocoladeletter|kruidnoten|pepernoten|sinterklaaskaart/i.test(t)) return { u: 'laag', r: 'Sinterklaasproduct buiten Sinterklaas' };

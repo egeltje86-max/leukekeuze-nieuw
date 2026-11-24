@@ -1164,3 +1164,12 @@ Marius: 'ik heb 1 keer wat gezegd over opzij schuiven en nu let je elke keer daa
 - **Gegevens voor Nova** (Marius: 'geef Nova toegang tot bol, Awin, TradeTracker en Daisycon'): nooit toegang of sleutels geven; wel een export `LeukeKeuze-netwerken-voor-Nova.xlsx` (verkopen, kliks per netwerk, programma's met commissie, alle cadeaus met netwerk). Maker: werkmap `novapak/maak.py`; bronnen op de laptop in `controlroom\nova-pak` (verdiensten.json, awin-kliks.json, bol-kliks.txt, daisy-kliks-uit.txt, extra.json).
 - **Verkopen 24-11** (TradeTracker, open): Minecraft-lampje Allay en warmtekussen basset (Ditverzinjeniet). Eén verkoop is geen reden om iets naar voren te zetten (§74).
 - bol telde op 24-11 54 kliks, waarvan 46 zonder product-id: in de gaten houden (kan weer automatisch zijn).
+
+## 86. Dark Nova live voor iedereen (24-11-2026 16:46, Marius: 'go doe alles wat nova zegt')
+- De proef van §85 (module `NOVA` in gedeeld.js, haken in `sorteer`/`gezochtEerst` in app.js en in straat.js) staat nu standaard **aan**. Zelf de oude volgorde zien: `?proef=nova-uit` (sessionStorage `lknova` = `0`; weer aan `?proef=nova`); helemaal uit: `window.LK_NOVA_CADEAU_INDELING = false`. Ook de bouw tekent met deze volgorde; de Google-set verandert niet (de vaste top blijft de eerste 36).
+- Bij de drie botsingen koos Marius voor Nova (dit gaat vóór eerdere keuzes van hem):
+  1. **Apparaat of gereedschap** (fondueset, snoeischaar, airfryer ...) staat op de hele afdeling (`/c/<afdeling>` zonder groep) achteraan; in zijn eigen groep en vakje gewoon.
+  2. **Tekst voor één ontvanger** (mama, papa, opa/oma, baas/manager, juf/meester in de titel) staat op een brede pagina achteraan, behalve in zijn eigen context (`ONTV` in de module: moederdag/haar, vaderdag/hem, opa-oma, collega/afscheid, juf-meester). Dus de bedankt-mok voor mama niet meer vooraan op Bedankt (keuze van 13-11 vervalt).
+  3. **Black Friday**: meer dan 50% korting zonder eigen prijsbewijs (`laag30`) staat achteraan (Barbie Droomhuis, ook eigen deals van Marius); hij blijft wel op de pagina.
+- **Leeftijd in maanden** (punt 'peuter, leeftijd tonen'): `splits-producten.js` haalt bij speelgoed, spellen en kinderboeken 'Vanaf 18 maanden' / '12 m+' uit de verkooptekst (veld `mnd`, 6 tot 36). Op de kaart staat 'vanaf 18 mnd' bij de winkelnaam (gedeeld.js en straat.js), en op Voor baby, kraam en babyshower staat alles vanaf 12 maanden achteraan.
+- Regeltests van Dark Nova: 16 van de 16 (`darknova/meet/regels.js` in de scratchpad van 24-11).
