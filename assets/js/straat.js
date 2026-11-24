@@ -660,7 +660,7 @@
        van de homepage. Wie iemand anders wil kiezen, vindt de keuze onder de winkels ('andere keuze' springt erheen). */
     var kh = opt.voor ? 'h1' : 'h2';
     var kop = '<section class="straat-kop" id="straat-kop"><' + kh + '>' + esc(st.pr.wie ? naam : 'Alle winkels') + (st.max ? ' <span>' + esc(tekstBedrag(st.max)) + '</span>' : '') + '</' + kh + '>' +
-      '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
+      '<p class="stand"><b>' + st.open.length + ' winkels open</b>' + (st.totaal > 150 ? '' : ' · ' + getal(st.totaal) + ' cadeaus') +
       (keuze ? ' · <button type="button" class="link" data-sh-naar-kies>andere keuze</button> · <a href="#straat" data-sh-kies>alles weer tonen</a>' : '') + '</p></section>';
     var h = opt.voor ? '<a class="terug" href="/">‹ Naar de hele Cadeaustraat</a>' + kop :
       boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + (nacht() ? 'straat-nacht-computer' : 'straat-hero-computer') + '.webp?v=2411">' +
@@ -919,7 +919,7 @@
     return '<section class="binnen-kop gevel nova ws-kop' + (w ? '' : ' ws-licht') + '" style="--k:' + k + '"><span class="luifel"></span>' + ik +
       '<div class="pui">' + (label ? '<p class="in-winkel">' + esc(label) + '</p>' : '') + '<h1>' + esc(o.h1) + '</h1>' +
       (o.tekst ? '<p>' + esc(String(o.tekst).replace(/\s*(Kies|Klik|Tik) (hieronder|een|op)[^.!?]*[.!?]/g, '').trim()) + '</p>' : '') +
-      '<p class="tel">' + getal(o.totaal) + ' cadeaus' + (o.van < 1e9 ? ' · vanaf ' + euro(o.van) : '') + '</p>' +
+      '<p class="tel">' + (o.totaal > 150 ? 'Met de hand uitgezocht' : getal(o.totaal) + ' cadeaus') + (o.van < 1e9 ? ' · vanaf ' + euro(o.van) : '') + '</p>' + /* 24-11-2026 (Nova): '3.201 cadeaus' voelt als een supermarkt, niet als een boutique */
       (w && w.let ? '<p class="let">' + esc(w.let) + '</p>' : '') +
       (w && w.extra && o.extra !== false ? '<div class="sh-extra">' + w.extra.map(function (e) { return '<a href="' + e[1] + '">' + (e[2] ? '<img src="' + novaRond(e[2]) + '" alt="">' : '') + esc(e[0]) + '</a>'; }).join('') + '</div>' : '') +
       '</div></section>';

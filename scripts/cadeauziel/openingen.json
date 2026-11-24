@@ -1,5 +1,5 @@
 {
-"_uitleg": "Operatie Cadeauziel fase 2 (Dark Nova, 24-11-2026, GO Marius): openingen per pagina (p) en per afdeling van een straatwinkel (s). Bron: cadeauziel-ranglijsten.json van Nova, snapshot 2026-11-24. Black Friday en Aanbiedingen niet (deals volgen de live prijs). Maken: node scripts/cadeauziel/maak.js",
+"_uitleg": "Operatie Cadeauziel fase 2 (Dark Nova, 24-11-2026, GO Marius): openingen per pagina (p) en per afdeling van een straatwinkel (s). Bron: cadeauziel-ranglijsten.json van Nova, snapshot 2026-11-24. Black Friday en Aanbiedingen niet (deals volgen de live prijs). Maken: node scripts/cadeauziel/maak.js 24-11-2026 (beoordeling Nova): op de pagina's van Eten & drinken staan bloemen, stenen en wierook achteraan in de opening (niet op Bloemen & rozen en Brievenbuscadeaus zelf).",
 "p": {
 "/c/wonen/verlichting": [
 "dvzn-995816",
@@ -2576,23 +2576,23 @@
 "bol-9300000257112864",
 "bol-9300000419074993",
 "dk-00044934",
-"surpro-af8f8ae72c",
 "dvzn-533927",
 "dk-00040236",
 "cl-olijfolie-proef",
 "dk-00043581",
-"cl-bp-pretty-pink",
-"bol-9300000181912357",
 "bol-9300000340258889",
 "bp-l015",
 "dkam-b1412ff2b5",
 "cl-filmpakket",
+"bol-9300000158510566",
+"bol-9300000165604293",
+"surpro-af8f8ae72c",
+"cl-bp-pretty-pink",
+"bol-9300000181912357",
 "bp-l087",
 "bp-l001",
 "cg-gouden-roos",
-"bol-9300000158510566",
 "surpro-3601199181",
-"bol-9300000165604293",
 "surpro-ef03a471bb"
 ],
 "/c/eten-drinken/chocolade-snoep": [
