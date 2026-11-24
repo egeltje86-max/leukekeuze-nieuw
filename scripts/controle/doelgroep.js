@@ -11,7 +11,7 @@ const ALCOK = /alcoholvrij|0[,.]0|kinderchampagne|mocktail|chocolade|thee|koffie
 const isAlc = p => ALC.test(p.titel) && !ALCOK.test(p.titel) && !/^(speelgoed|boeken-media)$/.test(p.afd) || /^eten-drinken\/(wijn|bier|sterke-drank|bubbels)$/.test(p.afd + '/' + p.groep);
 const REGELS = {
   kind: [[isAlc, 'alcohol bij kinderen'], [p => /\b(dames|heren|vrouwen|mannen|lingerie|\bbh\b|scheer|baard|eau de (parfum|toilette)|aftershave|tabak|sigaar|18\+)/i.test(p.titel), 'volwassen bij kinderen']],
-  tiener: [[isAlc, 'alcohol bij tieners'], [p => /\b(baby|peuter|dreumes|duplo|rammelaar|bijtring|kraam|knuffeldoekje|speen)\b/i.test(p.titel) || (p.leeftijd && p.leeftijd[1] <= 5), 'te jong voor tieners']],
+  tiener: [[isAlc, 'alcohol bij tieners'], [p => (/\b(baby|peuter|dreumes|duplo|rammelaar|bijtring|kraam|knuffeldoekje|speen)\b/i.test(p.titel) && !/eau de (parfum|toilette)|\bparfum\b/i.test(p.titel)) || (p.leeftijd && p.leeftijd[1] <= 5), 'te jong voor tieners']],
   baby: [[p => /\b(wijn|bier|parfum|game|playstation|switch|darts?)\b/i.test(p.titel) || isAlc(p), 'niet voor baby']],
   haar: [[p => /\b(heren|mannen|voor hem|baard|scheerapparaat|trimmer|aftershave|herenparfum|for men|pour homme|boxershort)\b/i.test(p.titel) && !/dames|unisex/i.test(p.titel), 'herenproduct bij voor haar']].map(x => [p => x[0](p) && !/venus|gillette venus/i.test(p.titel), x[1]]),
   hem: [[p => /\b(dames|vrouwen|voor haar|make-up|nagellak|lipstick|mascara|\bbh\b|for women|pour femme|damesparfum)\b/i.test(p.titel) && !/heren|unisex/i.test(p.titel), 'damesproduct bij voor hem']],

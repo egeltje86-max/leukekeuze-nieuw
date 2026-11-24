@@ -322,7 +322,7 @@ function leeftijdUitTitel(t) {
   if ((m = t.match(/vanaf\s*(\d{1,2})\s*jaar/i))) return [+m[1], 99];
   if ((m = t.match(/(\d{1,2})\s*(?:-|tot)\s*(\d{1,2})\s*maanden/i))) return [0, Math.max(1, Math.ceil(+m[2] / 12))];
   /* 'baby' alleen als het echt babyspeelgoed is: 'Schleich baby panda' of 'BABY born' zijn pas vanaf 3 jaar (controle 01-11-2026). */
-  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|\bbaby(?!liss|foot|born|-?born)/i.test(t) && !/lolly|snoep|kauwgom/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2]; /* 11-11-2026: 'Big Baby Pop' is een lolly, geen babycadeau */ /* 8-11-2026: 'BaByliss' en 'Babyfoot' zijn geen babyspeelgoed */
+  if (/vanaf\s*\d{1,2}\s*maanden|\b0\+|newborn|\bbaby(?!liss|foot|born|-?born)/i.test(t) && !/lolly|snoep|kauwgom|eau de (parfum|toilette)|\bparfum\b/i.test(t) && !MERK_LEEFTIJD.some((r) => r[0].test(t))) return [0, 2]; /* 24-11-2026: 'Cherry Baby' is een parfum van Sabrina Carpenter, geen babycadeau */ /* 11-11-2026: 'Big Baby Pop' is een lolly, geen babycadeau */ /* 8-11-2026: 'BaByliss' en 'Babyfoot' zijn geen babyspeelgoed */
   return null;
 }
 
@@ -436,7 +436,7 @@ function deel(p0) {
   /* Baby: label goed zetten. */
   /* 5-11-2026: 'kraam' alleen als los woord (niet marktkraam/ijskraam), 'geboorte' niet bij geboortesteen-sieraden voor volwassenen. */
   const babyTekst = /\bbaby|(?<![a-z])kraam|newborn|rammelaar|\b0\+|0-6 maanden|bijtring|speelkleed|romper|rompertje|slab(betje)?|swaddle|hydrofiel|geboorte(?!steen|bloem|jaar)|knuffeldoek|speendoek|box ?mobiel|zwanger|babyshower|luiertaart|babygym/i;
-  if (babyTekst.test(titel) && !/babyfoon|babyolie|\bbaby ?(born|annabell|pop)\b|babypop/i.test(titel) && p.cat !== 'christelijk') {
+  if (babyTekst.test(titel) && !/babyfoon|babyolie|\bbaby ?(born|annabell|pop)\b|babypop|eau de (parfum|toilette)|\bparfum\b/i.test(titel) && p.cat !== 'christelijk') {
     if (p.voor.indexOf('baby') === -1) p.voor.push('baby');
   }
   if (p.voor.indexOf('baby') !== -1 || oud === 'cadeaus/baby-kraam') {
