@@ -643,8 +643,8 @@
       '<p class="stand"><b>' + st.open.length + ' winkels open</b> · ' + getal(st.totaal) + ' cadeaus' +
       (keuze ? ' · <button type="button" class="link" data-sh-naar-kies>andere keuze</button> · <a href="#straat" data-sh-kies>alles weer tonen</a>' : '') + '</p></section>';
     var h = opt.voor ? '<a class="terug" href="/">‹ Naar de hele Cadeaustraat</a>' + kop :
-      boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + (nacht() ? 'straat-nacht-computer' : 'straat-hero-computer') + '.webp">' +
-      '<img src="' + NB + (nacht() ? 'straat-nacht-telefoon' : 'straat-hero-telefoon') + '.webp" alt="" fetchpriority="high"></picture>' +
+      boven + '<section class="welkom nova"><div class="sh-hero"><picture><source media="(min-width:700px)" srcset="' + NB + (nacht() ? 'straat-nacht-computer' : 'straat-hero-computer') + '.webp?v=2411">' +
+      '<img src="' + NB + (nacht() ? 'straat-nacht-telefoon' : 'straat-hero-telefoon') + '.webp?v=2411" alt="" fetchpriority="high"></picture>' +
       '<h1 class="straatbord"><small>Welkom in de</small>Cadeaustraat</h1></div><div class="lampjes" aria-hidden="true"></div>' +
       '<p>Kies voor wie je zoekt. De straat zet dan alleen de winkels en cadeaus voor die persoon klaar.</p></section>' + kiezer(st) + naKies + kop;
     if (st.etalage.length) {

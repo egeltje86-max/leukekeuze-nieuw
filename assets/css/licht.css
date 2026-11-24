@@ -3205,3 +3205,11 @@ html body .wzh-rond.wzh-icoon, html body .srt-st-rond.srt-vt-ico, html body .rh-
   .wzk-lijst { columns: 3; }
   .wzk-opties { grid-template-columns: 1fr 1.6fr auto; align-items: end; }
 }
+
+/* LICHTKNOP (24-11-2026): klein zonnetje of maantje in de kop; zon in de donkere boulevard (naar licht), maan in de lichte site (naar donker) */
+.lichtknop{background:none;border:0;cursor:pointer;opacity:.82;padding:0}
+.lichtknop:hover,.lichtknop:focus-visible{opacity:1}
+.lichtknop .lk-zon{display:none}
+html.nacht .lichtknop .lk-zon,html.donker .lichtknop .lk-zon{display:block}
+html.nacht .lichtknop .lk-maan,html.donker .lichtknop .lk-maan{display:none}
+html.nacht .lichtknop{color:#F2CB74}

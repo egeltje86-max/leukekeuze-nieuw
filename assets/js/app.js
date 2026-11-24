@@ -4383,6 +4383,17 @@
       if (nAan !== document.documentElement.classList.contains('nacht')) { location.reload(); return; } } catch (x3) {}
     themaZetten(); try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'weergave/' + b.getAttribute('data-thema'), title: 'Weergave', event: true }); } catch (x2) {}
   });
+  /* LICHTKNOP (24-11-2026, Marius: 'maak een makkelijke licht-knop op de site, subtiel, klein maar fijn'): zon/maan in de kop wisselt tussen de boulevard (donker) en de lichte site */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-lichtknop]'); if (!b) return;
+    var naarLicht = document.documentElement.classList.contains('nacht') || document.documentElement.classList.contains('donker');
+    try {
+      if (naarLicht) { localStorage.setItem('lkthema', 'licht'); localStorage.setItem('lknacht', '0'); }
+      else { localStorage.setItem('lkthema', 'donker'); localStorage.removeItem('lknacht'); }
+    } catch (x) {}
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'weergave/knop-' + (naarLicht ? 'licht' : 'donker'), title: 'Weergave', event: true }); } catch (x2) {}
+    setTimeout(function () { location.reload(); }, 80);
+  });
   function themaKnoppen() {
     if (!COMBI) return '';
     var k = themaKeuze(), knop = function (w, naam, uitleg) { return '<button type="button" data-thema="' + w + '" aria-pressed="' + (k === w ? 'true' : 'false') + '"><b>' + naam + '</b><small>' + uitleg + '</small></button>'; };
