@@ -943,7 +943,7 @@
         gangen = gangen.map(function (x) {
           if (x.top) return x;
           var nieuw = x.lijst.filter(function (p) { return !inEt[p.id]; });
-          return nieuw.length >= 4 ? Object.assign({}, x, { lijst: nieuw.concat(x.lijst.filter(function (p) { return inEt[p.id]; })) }) : x;
+          return nieuw.length ? Object.assign({}, x, { lijst: nieuw.concat(x.lijst.filter(function (p) { return inEt[p.id]; })) }) : x; /* 24-11: ook bij een kleine soort achteraan, nooit meer vooraan dubbel */
         });
       }
     }
