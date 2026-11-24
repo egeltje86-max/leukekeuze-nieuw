@@ -27,6 +27,8 @@ PRE.update({'Megagadgets': 'mega', 'Massamarkt': 'massa', 'Kantinewinkel': 'kw',
 PRE.update({'Looking Good Today': 'lgt', 'Westwing': 'ww', 'Pillowbuddies': 'pillow', 'eu.fragrance.com': 'eufr', 'invulboekjes.nl': 'invul', 'Make Me Famous': 'mmf'})
 # 22-11-2026 (ERBIJ-lijst keyboards): Bax Music (bax-shop.nl), TradeTracker campagne 1687
 PRE.update({'Bax Music': 'bax'})
+# 24-11-2026 (ERBIJ-lijst Awin): Nespresso en Yves Rocher
+PRE.update({'Nespresso': 'nesp', 'Yves Rocher': 'yr'})
 def DOEL_LEEG(l):
     """13-11-2026 (grote keuring): een partnerlink zonder adres bij de winkel (r=https://?channable=... in de feed van Massamarkt).
     De winkelknop komt dan nergens uit. Waar = de link noemt wel een doel, maar dat doel is leeg."""
