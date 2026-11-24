@@ -1,6 +1,6 @@
 {
  "uitleg": "Producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei niet op voorraad). Staan ze weer leverbaar in een feed, dan zet de controle ze vanzelf terug op de site. Wat met de hand op uitverkocht of afgekeurd staat, komt hier nooit in.",
- "bijgewerkt": "2026-11-23",
+ "bijgewerkt": "2026-11-24",
  "producten": {
   "bol-9200000091616642": {
    "datum": "2026-11-21",
@@ -2212,15 +2212,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/cooper-de-stem-robot-leren-programmeren/9300000240437043/",
    "titel": "Learning Resources Cooper: STEM-robot om te leren programmeren"
   },
-  "fitwin-40f541cc58": {
-   "datum": "2026-11-23",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-fitwinkel.json",
-   "shop": "Fitwinkel",
-   "url": "https://rep2.fitwinkel.nl/c/?si=12318&li=1555148&wi=433339&pid=5be9169d42fcb6772e1d2a4929984f7e&dl=products%2Fgarlando-f-zero-tafelvoetbal-grijs-eiken%3Fvariant%3D61881021759818&ws=",
-   "winkelUrl": "https://www.fitwinkel.nl/products/garlando-f-zero-tafelvoetbal-grijs-eiken?variant=61881021759818",
-   "titel": "Garlando F-Zero tafelvoetbal voor kinderen (grijs eiken)"
-  },
   "ww-nom52167203903": {
    "datum": "2026-11-23",
    "bron": "winkelpagina",
@@ -2247,6 +2238,397 @@
    "url": "https://tc.tradetracker.net/?c=36006&m=2065533&a=516846&r=&u=https%3A%2F%2Ffietsweb.nl%2Fproducts%2Flexibook-super-mario-wand-tafelnachtlampje",
    "winkelUrl": "https://fietsweb.nl/products/lexibook-super-mario-wand-tafelnachtlampje",
    "titel": "Lexibook Super Mario-nachtlampje voor wand en tafel"
+  },
+  "bol-9300000042831824": {
+   "datum": "2026-11-24",
+   "bron": "bol",
+   "reden": "niet op voorraad volgens bol",
+   "nr": "9300000042831824",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fleren-lezen-met-kluitman-pietje-pim-helpt-de-sint%2F9300000042831824%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/leren-lezen-met-kluitman-pietje-pim-helpt-de-sint/9300000042831824/",
+   "titel": "Leren lezen: Pietje Pim helpt de sint (Kluitman)"
+  },
+  "cl-buffalo-sjoel": {
+   "datum": "2026-11-24",
+   "bron": "bol",
+   "reden": "niet op voorraad volgens bol",
+   "nr": "9200000125065944",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbuffalo-sjoelbak-explorer-145-cm%2F9200000125065944%2F",
+   "titel": "Buffalo sjoelbak 145 cm"
+  },
+  "dk-00015663": {
+   "datum": "2026-11-24",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-dille.json",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=94cda91597d1032a74f84c9016cf513d&dl=gieter-zink-naturel-2-liter-00015663.html%3Fchannable%3D01240b736b7500303030313536363305&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/gieter-zink-naturel-2-liter-00015663.html",
+   "titel": "Zinken gieter, 2 liter"
+  },
+  "dw-680275066859": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dropwinkel",
+   "url": "https://bdt9.net/c/?si=18019&li=1781027&wi=433339&pid=f446ee84a40be3d495e581315e82849b&dl=p%2Fenglish-tea-shop-theeboek-adventskalender-50-gram&ws=",
+   "winkelUrl": "https://www.dropwinkel.eu/p/english-tea-shop-theeboek-adventskalender-50-gram",
+   "titel": "English Tea Shop thee-adventskalender (boek)"
+  },
+  "dw-4260282697312": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dropwinkel",
+   "url": "https://bdt9.net/c/?si=18019&li=1781027&wi=433339&pid=31423b2d979f8f2ec9bf148425304f63&dl=p%2Fontbijtpotjes-adventskalender-678-gram&ws=",
+   "winkelUrl": "https://www.dropwinkel.eu/p/ontbijtpotjes-adventskalender-678-gram",
+   "titel": "Nutella-adventskalender met ontbijtpotjes (678 gram)"
+  },
+  "inv-71f19c84ce": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Invicta",
+   "url": "https://bdt9.net/c/?si=18836&li=1811592&wi=433339&pid=f9026210f4374118253ad9ac07bf3ee5&dl=collections%2Fcruise%2Ftechnomarine-cruise-tm-121198-womens-quartz-watch-40mm%2F&ws=",
+   "winkelUrl": "https://bdt9.net/c/?si=18836&li=1811592&wi=433339&pid=f9026210f4374118253ad9ac07bf3ee5&dl=collections%2Fcruise%2Ftechnomarine-cruise-tm-121198-womens-quartz-watch-40mm%2F&ws=",
+   "titel": "TechnoMarine Cruise TM-121198 dameshorloge, wit met steentjes (40 mm)"
+  },
+  "cl-pos-f1": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "YourDecoration",
+   "url": "https://tc.tradetracker.net/?c=29448&m=1549969&a=516846&r=&u=https%3A%2F%2Fwww.yourdecoration.nl%2Fproducts%2Fposter-f1-max-verstappen-91-5x61cm-pp2512170%3Fchannable%3D012eac69640035323932353936363734353933367d",
+   "titel": "F1 poster Max Verstappen of Lando Norris"
+  },
+  "dgsw-e7e3188ef3": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Ftienerpoppen%2Foverige-tienerpoppen%2Fk-pop-demon-hunters-zingende-rumi%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tienerpoppen/overige-tienerpoppen/k-pop-demon-hunters-zingende-rumi/?utm_source=tradetracker&utm_medium=affiliate&utm_campaign=tradetracker",
+   "titel": "KPop Demon Hunters zingende pop Rumi"
+  },
+  "dk-00015052": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=90e7cae5cb37d62d04c0d7d753118907&dl=chocoladeletter-melk-00015052.html%3Fchannable%3D01240b736b7500303030313530353202&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/chocoladeletter-melk-00015052.html",
+   "titel": "Chocoladeletter S van Dille & Kamille (melk)"
+  },
+  "grotek-ac82c5461a": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Ftonecheer-booknook-charing-road-84-diy-modelbouw-knutselen",
+   "winkelUrl": "https://www.grotekadoshop.nl/tonecheer-booknook-charing-road-84-diy-modelbouw-knutselen",
+   "titel": "Book nook bouwpakket 84 Charing Cross Road"
+  },
+  "aerov-e1abf208cb": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Aerovito",
+   "url": "https://tc.tradetracker.net/?c=32009&m=2319797&a=516846&r=&u=https%3A%2F%2Fwww.aerovito.com%2Fproduct-page%2Fturbionaire-puck-caramel-aroma-diffuser",
+   "winkelUrl": "https://www.aerovito.com/product-page/turbionaire-puck-caramel-aroma-diffuser",
+   "titel": "Turbionaire Puck aromadiffuser caramel"
+  },
+  "bgs-5971fc880e": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Boardgameshop",
+   "url": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fsherlock-holmes-consulting-detective%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "winkelUrl": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fsherlock-holmes-consulting-detective%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "titel": "Sherlock Holmes Consulting Detective (bordspel)"
+  },
+  "bol-9300000271984777": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Boardgameshop",
+   "url": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fkrakel-orakel-nl%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "winkelUrl": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fkrakel-orakel-nl%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "titel": "Krakel Orakel"
+  },
+  "cl-rt-trein": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Frobotime-stoom-express-trein-diy-modelbouw-knutselen",
+   "titel": "Robotime houten stoomtrein"
+  },
+  "dgsw-45f5dedf44": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fknutselen%2Fschilderen-op-nummer%2Fravensburger-schilder-op-nr-paard-in-de-branding%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/knutselen/schilderen-op-nummer/ravensburger-schilder-op-nr-paard-in-de-branding/",
+   "titel": "Ravensburger schilderen op nummer: paard in de branding"
+  },
+  "dgsw-023910d43d": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fpoppenwagens%2Fbuggy-zwenkwiel-mabella-the-glam-crew%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fpoppenwagens%2Fbuggy-zwenkwiel-mabella-the-glam-crew%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Buggy Mabella met zwenkwielen (The Glam Crew)"
+  },
+  "dgsw-21b9c1b5db": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flego-speelgoed%2Flego-disney-princess%2Flego-disney-princess-43285-ariels-magische-minipaleis-169646%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flego-speelgoed%2Flego-disney-princess%2Flego-disney-princess-43285-ariels-magische-minipaleis-169646%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "LEGO Disney Princess Ariëls magische minipaleis (43285)"
+  },
+  "hema-65e29861e6": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.hema.nl/speelgoed-hobby/educatief-speelgoed",
+   "shop": "HEMA",
+   "url": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fspeelgoed-hobby%2Feducatief-speelgoed%2Finteractieve-giraf-10x20x14.8cm-15100210.html",
+   "winkelUrl": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fspeelgoed-hobby%2Feducatief-speelgoed%2Finteractieve-giraf-10x20x14.8cm-15100210.html",
+   "titel": "HEMA interactieve giraf"
+  },
+  "kl-57357688111428": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Kerstland",
+   "url": "https://glp8.net/c/?si=22097&li=1972295&wi=433339&pid=aa19cfd982f4a60e9d3ebff6f00ff5f2&dl=notenkraker-vurenhout-fsc-100-159211453.html&ws=",
+   "winkelUrl": "https://www.kerstland.nl/notenkraker-vurenhout-fsc-100-159211453.html",
+   "titel": "Houten notenkraker in champagnekleur (25 cm)"
+  },
+  "repeat-ca82717cc9": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "REPEAT cashmere",
+   "url": "https://tc.tradetracker.net/?c=19243&m=2099037&a=516846&r=&u=https%3A%2F%2Fwww.repeatcashmere.com%2Fnl%2Fgrofgebreide-kasjmier-kabeltrui-met-v-hals%2F104527-1731-40.html",
+   "winkelUrl": "https://www.repeatcashmere.com/nl/grofgebreide-kasjmier-kabeltrui-met-v-hals/104527-1731-40.html",
+   "titel": "REPEAT grof gebreide kasjmier kabeltrui"
+  },
+  "t2-grotekadoshop-22740292a6": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fa-brass-monocular-in-wooden-box-im-8",
+   "winkelUrl": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fa-brass-monocular-in-wooden-box-im-8",
+   "titel": "Messing telescoop in houten kist"
+  },
+  "vip-geinspireerd": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Viparfum",
+   "url": "https://partner.viparfum.nl/c?c=41597&m=2584631&a=516846&r=&u=https%3A%2F%2Fviparfum.nl%2Fproducts%2Fn11-inspired-by-baccarat-rouge-540",
+   "winkelUrl": "https://partner.viparfum.nl/c?c=41597&m=2584631&a=516846&r=&u=https%3A%2F%2Fviparfum.nl%2Fproducts%2Fn11-inspired-by-baccarat-rouge-540",
+   "titel": "Viparfum N11 eau de parfum (100 ml)"
+  },
+  "cg-c7cadef379": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "CoolGift",
+   "url": "https://www.coolgift.com/gadgets/?tt=2656_1728408_516846_&r=https%3A%2F%2Fwww.coolgift.com%2Fnl%2Fautomatische-sausroerder-stirr",
+   "winkelUrl": "https://www.coolgift.com/gadgets/?tt=2656_1728408_516846_&r=https%3A%2F%2Fwww.coolgift.com%2Fnl%2Fautomatische-sausroerder-stirr",
+   "titel": "Stirr: automatische sausroerder"
+  },
+  "cl-clemmy-kubus": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbabyspeelgoed%2Factivity%2Fclemmy-sensorische-activiteitenkubus%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Clementoni Clemmy sensorische activiteitenkubus"
+  },
+  "cl-ld-bootjes": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7539452%2Fs%2Fxi-2007436%2F",
+   "titel": "Little Dutch badbootjes (4 stuks)"
+  },
+  "cl-nijntje-toren": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7539459%2Fs%2Fxi-2007583%2F",
+   "titel": "Nijntje houten stapeltoren"
+  },
+  "cl-sd-muziek": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7538564%2Fs%2Fxi-s38939%2F",
+   "titel": "Juwelendoosje met muziek en ballerina"
+  },
+  "dgsw-2f67201ded": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flegpuzzels%2F1000-stukjes%2Fjumbo-puzzel-jan-van-haasteren-nog-een-rondje-zandvoort-1000%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/legpuzzels/1000-stukjes/jumbo-puzzel-jan-van-haasteren-nog-een-rondje-zandvoort-1000/",
+   "titel": "Jan van Haasteren Nog een rondje Zandvoort (1000 stukjes)"
+  },
+  "dgsw-057b9f420a": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fses-creative%2Fstrijkkralen%2Fses-beedz-art-strijkkralen-paarden-fantasie%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/ses-creative/strijkkralen/ses-beedz-art-strijkkralen-paarden-fantasie/",
+   "titel": "SES Beedz Art strijkkralen: fantasiepaarden"
+  },
+  "dgsw-0e7b6a029e": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Ffeestartikelen%2Fsint-en-piet%2Fboek-slaap-lekker-kleintje-sinterklaas%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/feestartikelen/sint-en-piet/boek-slaap-lekker-kleintje-sinterklaas/?utm_source=tradetracker&utm_medium=affiliate&utm_campaign=tradetracker",
+   "titel": "Slaap lekker, kleintje Sinterklaas (prentenboek)"
+  },
+  "grotek-75e646198f": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7593321%2Fs%2Fxi-amz144130%2F",
+   "winkelUrl": "https://www.grotekadoshop.nl/catalog/product/view/id/7593321/s/xi-amz144130/",
+   "titel": "Stralende kerstster met led en timer (76 cm)"
+  },
+  "grotek-17cc0144cb": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7539494%2Fs%2Fxi-2009436%2F",
+   "winkelUrl": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fcatalog%2Fproduct%2Fview%2Fid%2F7539494%2Fs%2Fxi-2009436%2F",
+   "titel": "Diamond painting Disney-prinsessen"
+  },
+  "hema-f2955585b4": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "HEMA",
+   "url": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fkoken-tafelen%2Fkoffie-thee-accessoires%2Fmokken%2Fcadeauset-mok-en-knuffel-280ml-keramiek--61102422.html",
+   "winkelUrl": "https://www.hema.nl/koken-tafelen/koffie-thee-accessoires/mokken/cadeauset-mok-en-knuffel-280ml-keramiek--61102422.html",
+   "titel": "HEMA cadeauset mok met knuffel"
+  },
+  "viparf-550c281a0f": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Viparfum",
+   "url": "https://partner.viparfum.nl/c?c=41597&m=2584631&a=516846&r=&u=https%3A%2F%2Fviparfum.nl%2Fproducts%2F3x100ml-parfum-set",
+   "winkelUrl": "https://viparfum.nl/products/3x100ml-parfum-set",
+   "titel": "Viparfum parfumset 3 x 100 ml naar keuze"
+  },
+  "bol-9200000088986607": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjumbo%2Fkinderspellen%2Fjumbo-spel-poepie-knor-2018%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fjumbo%2Fkinderspellen%2Fjumbo-spel-poepie-knor-2018%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Poepie Knor"
+  },
+  "cadeau-0b390061f8": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Cadeau.nl",
+   "url": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fminecraft-big-spaarvarken%2F%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fminecraft-big-spaarvarken%2F%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Minecraft spaarvarken (big)"
+  },
+  "cl-23145": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Countrylifestyle",
+   "url": "https://www.countrylifestyle.nl/lifestyle-webwinkel/?tt=8462_1479822_516846_&r=https%3A%2F%2Fwww.countrylifestyle.nl%2Faccessoires%2Fbeelden-en-ornamenten%2Fbeeld-gitaar-zwart",
+   "winkelUrl": "https://www.countrylifestyle.nl/accessoires/beelden-en-ornamenten/beeld-gitaar-zwart",
+   "titel": "Homebound beeld gitarist (zwart)"
+  },
+  "country-dcec20809a": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Countrylifestyle",
+   "url": "https://www.countrylifestyle.nl/lifestyle-webwinkel/?tt=8462_1479822_516846_&r=https%3A%2F%2Fwww.countrylifestyle.nl%2Faccessoires%2Fklokken%2Fklok-met-fotolijst-perth-zwart-metaal",
+   "winkelUrl": "https://www.countrylifestyle.nl/lifestyle-webwinkel/?tt=8462_1479822_516846_&r=https%3A%2F%2Fwww.countrylifestyle.nl%2Faccessoires%2Fklokken%2Fklok-met-fotolijst-perth-zwart-metaal",
+   "titel": "Klok met fotolijstjes (zwart metaal)"
+  },
+  "dk-00045310": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=233ded41f7ae0672ad0c62b7e29d2055&dl=mix-voor-feestspritz-met-sinaasappel-vijg-en-kaneel-18-gram-00045310.html%3Fchannable%3D01240b736b75003030303435333130ef&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/mix-voor-feestspritz-met-sinaasappel-vijg-en-kaneel-18-gram-00045310.html",
+   "titel": "Kruidenmix voor een feestspritz met sinaasappel, vijg en kaneel"
+  },
+  "dgsw-30019ebb4b": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fplaymobil%2Fanimals-en-friends%2Fplaymobil-72072-dierenverzorger-met-voertuig%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fplaymobil%2Fanimals-en-friends%2Fplaymobil-72072-dierenverzorger-met-voertuig%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Playmobil Animals & Friends dierenverzorger met voertuig (72072)"
+  },
+  "fashio-a9dad8b9d7": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Fashionize",
+   "url": "https://partner.fashionize.nl/c?c=29428&m=2416400&a=516846&r=&u=https%3A%2F%2Fwww.fashionize.nl%2Foorbellen-blaadje-roze-f577012%3Futm_source%3DTradetracker%26utm_medium%3DFeed",
+   "winkelUrl": "https://www.fashionize.nl/oorbellen-blaadje-roze-f577012?utm_source=Tradetracker&utm_medium=Feed",
+   "titel": "Blaadje-oorbellen met paarsroze kraaltjes"
+  },
+  "fiftie-8aa3d695c2": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Fiftiesstore",
+   "url": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fkit-cat-klock-solar-power-alarm-clock-with-famous-moving-eyes.html%3Fchannable%3D019179696400373633353158",
+   "winkelUrl": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fkit-cat-klock-solar-power-alarm-clock-with-famous-moving-eyes.html%3Fchannable%3D019179696400373633353158",
+   "titel": "Kit-Cat Klock wekker met bewegende ogen (zonne-energie)"
+  },
+  "grotek-029768550a": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Felektrische-warmtedeken-grijs-180x130cm-met-timer",
+   "winkelUrl": "https://www.grotekadoshop.nl/elektrische-warmtedeken-grijs-180x130cm-met-timer",
+   "titel": "Elektrische warmtedeken met timer (grijs, 180 x 130 cm)"
+  },
+  "grotek-a4333ddbda": {
+   "datum": "2026-11-24",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Ftone-cheer-booknook-cybercity-diy-modelbouw-knutselen",
+   "winkelUrl": "https://www.grotekadoshop.nl/tone-cheer-booknook-cybercity-diy-modelbouw-knutselen",
+   "titel": "Tone-Cheer book nook Cyber City"
   }
  }
 }
