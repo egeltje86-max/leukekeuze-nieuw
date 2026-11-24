@@ -290,7 +290,7 @@
   }
   function tekstBedrag(max) { return max ? 'tot € ' + max : ''; }
 
-  var CACHE = {};
+  var CACHE = {}, NV = window.LK && window.LK.nova && window.LK.nova.aan() ? window.LK.nova : null;
   function staat(wie, max) {
     var sleutel = wie + '|' + max + '|' + (window.LK_VOORWIE ? 1 : 0); if (CACHE[sleutel]) return CACHE[sleutel];
     var pr = persVan(wie), set = pr.slug ? setVan(pr) : null, ptop = pr.slug ? (K.TOP['/voor/' + pr.slug] || []) : [];
@@ -301,6 +301,10 @@
       w.gangen.forEach(function (g) {
         if (!gangWieOk(g.wie, wie)) return;
         var l = g.basis.filter(function (p) { return (!max || p.prijs <= max) && (!set || set[p.id]); });
+        if (NV && (g.ook || g.top)) { /* DARK NOVA (proef): een themagang (Sinterklaas, Kerst, schoen) volgt dezelfde toelating als de pagina zelf */
+          var gp = g.top || ('/c/' + g.ook); if (pr.slug) gp += (gp.indexOf('?') === -1 ? '?' : '&') + 'voor=' + pr.slug;
+          var gc = NV.ctx(gp); if (gc) { if (window.LK_NOVA_KMUIT) l = window.LK_NOVA_KMUIT(l, gp); l = NV.filter(l, gc); }
+        }
         if (set) { /* wat met de hand voor deze persoon gekozen is eerst */
           var voor = l.filter(function (p) { return pIdx[p.id] !== undefined; }).sort(function (x, y) { return pIdx[x.id] - pIdx[y.id]; });
           l = spreid(voor.concat(l.filter(function (p) { return pIdx[p.id] === undefined; })));
@@ -333,7 +337,13 @@
       if (p.drank || K.drank(p) || GROF.test(p.titel) || p.prijs < 3) return;
       ge[id] = 1; etalage.push(p);
     });
-    var uit = { pr: pr, max: max, open: open, dicht: dicht, totaal: Object.keys(alleUit).length, etalage: spreid(etalage) };
+    var et = spreid(etalage);
+    if (NV) { /* DARK NOVA (proef): de etalage van de straat krijgt dezelfde toelating en spreiding als de lijsten */
+      var ep = pr.slug ? '/voor/' + pr.slug : '/', ec = NV.ctx(ep);
+      if (window.LK_NOVA_KMUIT && pr.slug) et = window.LK_NOVA_KMUIT(et, ep);
+      et = NV.spreid(NV.filter(et, ec, window.LK_NOVA_LOG), ec, window.LK_NOVA_LOG);
+    }
+    var uit = { pr: pr, max: max, open: open, dicht: dicht, totaal: Object.keys(alleUit).length, etalage: et };
     CACHE[sleutel] = uit; return uit;
   }
 
@@ -928,6 +938,8 @@
       }
     }
     if (!gangen.length || (gangen.length === 1 && gangen[0].top)) return '';
+    var nvW = window.LK && window.LK.nova && window.LK.nova.aan() ? window.LK.nova : null, nvC = nvW && nvW.ctx(location.pathname + location.search);
+    if (nvC && (nvC.soort === 'breed' || nvC.soort === 'onderwerp')) gangen = gangen.map(function (x) { return x.top || x.een ? x : Object.assign({}, x, { lijst: nvW.varieer(x.lijst, 4) }); }); /* DARK NOVA (proef) */
     huidig = { afd: gangen };
     var h = (o.terug ? '<a class="terug" href="' + o.terug[0] + '">‹ ' + esc(o.terug[1]) + '</a>' : '') + '<div class="lampjes" aria-hidden="true"></div>' +
       winkelKop({ label: o.label, h1: o.h1, tekst: o.tekst, rond: o.rond, kleur: o.kleur, totaal: o.totaal || lijst.length, van: van, extra: o.extra }, w);

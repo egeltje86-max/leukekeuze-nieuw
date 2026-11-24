@@ -294,11 +294,123 @@
     return zin.length && zin.length <= 64 ? zin : '';
   }
 
+  /* DARK NOVA · CADEAU-INDELING (proef, 24-11-2026; rapport Dark Nova, opdracht Marius: 'bereid de algemene regels alvast lokaal voor,
+     wacht met publiceren op mijn uitdrukkelijke GO'). Standaard UIT: zonder de vlag verandert er niets.
+     Aan: window.LK_NOVA_CADEAU_INDELING = true, of ?proef=nova (blijft in dat tabblad; uit: ?proef=nova-uit).
+     Wat het doet (alleen als hij aan staat):
+     1. Toelating vóór promotie (toelaat): op brede pagina's (Voor wie, gelegenheden, collecties, /c/cadeaus, de straat)
+        geen spullen voor het dier zelf, geen grove of 18+-cadeaus bij kinderen/tieners/Sinterklaas, geen speelgoed vanaf 3 jaar bij baby;
+        keukenapparaten en gereedschap naar achteren (onderaan). In hun eigen afdeling blijft alles zoals het was.
+     2. Spreiding in de eerste 12 (spreid): hooguit 1 per familie (zelfde merk/figuur in hetzelfde vakje), 2 per figuur of merk,
+        2 per vakje, 3 per winkel en 3 per afdeling. Wat niet past schuift naar plek 13 en verder: er verdwijnt niets.
+        Verkochte toppers (Gouden Snaai, Lamborghini, hoodie, Pikachu-pen ...) houden hun plek. Black Friday (eigen deals van Marius) niet.
+     3. 'Meest gezocht' zet niets meer vooraan wat de keurmeester of regel 1 naar achteren zette (in app.js, gezochtEerst). */
+  var NOVA = (function () {
+    var AAN = (function () { try { var q = location.search; if (/[?&]proef=nova-uit(&|$)/.test(q)) sessionStorage.removeItem('lknova'); else if (/[?&]proef=nova(&|$)/.test(q)) sessionStorage.setItem('lknova', '1');
+      return window.LK_NOVA_CADEAU_INDELING === true || (window.LK_NOVA_CADEAU_INDELING !== false && sessionStorage.getItem('lknova') === '1'); } catch (e) { return window.LK_NOVA_CADEAU_INDELING === true; } })();
+    var BESCHERMD = { 'dvzn-995816': 1, 'cl-hema-heren-pyjama': 1, 'hema-efaa95f521': 1, 'bol-9300000302102741': 1, 'dk-9393c6d57b': 1, 'bol-9300000250399375': 1, 'nedg-10eb80382d': 1 };
+    var APPARAAT = /\b(airfryer|broodrooster|tosti-? ?ijzer|waterkoker|blender|keukenmachine|staafmixer|koffiezetapparaat|koffiezetter|espresso-?(machine|apparaat)|koffiemachine|stofzuiger|strijkijzer|wafelijzer|contactgrill|frituurpan|slowcooker|melkopschuimer|sapcentrifuge|magnetron|heteluchtoven|ijsmachine|fondueset|fondue-set|gourmetstel|gourmetset|raclette|grillplaat|pannenkoekmaker|sous ?vide)\b/i;
+    var GEREEDSCHAP = /\b(snoeischaar|heggenschaar|boormachine|accuboor|schroefmachine|schroevendraaier|decoupeerzaag|cirkelzaag|bitset|steeksleutel|waterpomptang|gereedschapsset|gereedschapskist|gereedschapskoffer)\b/i;
+    var MENS_DIER = /\b(mok|beker|sokken|tegeltje|puzzel|fotoalbum|handwarmer|poster|kalender|boek|sleutelhanger|lamp|kaars|t-shirt|trui|deurmat|kussen voor (jou|mensen))\b|vogelhuis|voederhuis|insectenhotel|egelhuis/i;
+    var GROF = /f[u*]ck|\bkut\b|lekker pik|pleur op|sexy as hell|ben je dronken|piemel|borstmok|\bbitch(es)?\b|middelvinger|shit happens|bullshit|\bjoint\b|18\+|cards against humanity|drinkspel|drankspel/i;
+    var FR = [['pokemon', /pok[eé]mon|pikachu|eevee|evoli/i], ['minecraft', /minecraft|creeper/i], ['harrypotter', /harry potter|zweinstein|hogwarts|gouden snaai|patronus|hedwig/i],
+      ['hellokitty', /hello kitty|kuromi|cinnamoroll|my melody|sanrio/i], ['stitch', /stitch/i], ['mario', /super mario|mario kart|\bmario\b|luigi|donkey kong/i],
+      ['starwars', /star wars|\byoda\b|grogu|mandalorian/i], ['kpop', /kpop|k-pop|demon hunters|huntrix|\bderpy\b/i], ['anime', /one piece|naruto|dragon ball|demon slayer|jujutsu|totoro|ghibli|\bluffy\b/i],
+      ['squishmallow', /squishmallow/i], ['jellycat', /jellycat/i], ['lego', /\blego\b|\bduplo\b/i], ['f1', /\bf1\b|formule ?1|verstappen|red bull racing/i], ['tamagotchi', /tamagotchi/i],
+      ['bluey', /bluey/i], ['pawpatrol', /paw patrol/i], ['barbie', /barbie/i], ['marvel', /marvel|spider-?man|avengers/i], ['disney', /disney|frozen/i], ['nijntje', /nijntje|miffy/i]];
+    function frVan(p) { if (p._nfr !== undefined) return p._nfr; var t = (p.titel || '') + ' ' + (p.merk || ''); for (var i = 0; i < FR.length; i++) if (FR[i][1].test(t)) return (p._nfr = FR[i][0]); return (p._nfr = ''); }
+    function merkVan(p) { return String(p.merk || '').toLowerCase().trim(); }
+    function famVan(p) { var b = frVan(p) || merkVan(p) || String(p.titel || '').toLowerCase().split(/\s+/).slice(0, 2).join(' '); return b + '|' + (p.vak || p.groep || ''); }
+    /* Context van een pagina. soort: 'breed' (Voor wie, gelegenheden, collecties, /c/cadeaus, de straat), 'onderwerp' (Voor wie > onderwerp), 'eigen' (/c/<afdeling>...) */
+    function ctx(pad) {
+      var t = String(pad == null ? '' : pad), i = t.indexOf('?'), pd = (i === -1 ? t : t.slice(0, i)).replace(/\/$/, ''), q = i === -1 ? '' : t.slice(i + 1);
+      var d = pd.split('/').filter(Boolean), c = { pad: pd, soort: '', pe: '', g: '', afd: '', bf: false, sint: false };
+      var vm = /(?:^|&)voor=([^&]+)/.exec(q); if (vm) c.pe = vm[1] === 'kind' ? 'kinderen' : vm[1];
+      if (!d.length) c.soort = 'breed';
+      else if (d[0] === 'voor') { c.pe = d[1] || ''; c.soort = !d[2] || /^(bedankje|afscheid-pensioen|lootjes)$/.test(d[2]) ? 'breed' : 'onderwerp'; c.sub = d[2] || ''; }
+      else if (d[0] === 'gelegenheid') { c.soort = 'breed'; c.g = d[1] || ''; if (d[2]) c.pe = d[2]; }
+      else if (d[0] === 'collectie') { c.soort = 'breed'; c.g = d[1] || ''; if (d[2]) c.pe = d[2]; c.bf = d[1] === 'black-friday'; }
+      else if (d[0] === 'c' && (d[1] === 'cadeaus' || d[1] === 'valentijn')) { c.soort = 'breed'; c.g = d[2] || d[1]; }
+      else if (d[0] === 'c') { c.soort = 'eigen'; c.afd = d[1] || ''; c.groep = d[2] || ''; c.vak = d[3] || ''; }
+      if (c.pe === 'kind') c.pe = 'kinderen'; if (c.pe === 'tiener') c.pe = 'tieners';
+      c.sint = /sinterklaas|schoencadeautjes|sint-onder-15|pakjesavond/.test(pd);
+      c.jong = /^(kinderen|tieners|baby)$/.test(c.pe) || /schoencadeautjes|\/kinderen$|\/tieners$/.test(pd);
+      return c.soort ? c : null;
+    }
+    function isDier(p) { return p.afd === 'dieren' && !MENS_DIER.test(p.titel || ''); }
+    /* Toelating: 'ok', 'laag' (naar onderaan) of 'uit' (niet op deze pagina), met de reden. */
+    function toelaat(p, c) {
+      if (!c || BESCHERMD[p.id]) return { u: 'ok' };
+      var t = p.titel || '';
+      if (c.soort === 'eigen') return { u: 'ok' };
+      if (isDier(p) && !/dier/.test(c.sub || '')) return { u: 'uit', r: 'voor het dier zelf' };
+      if ((c.jong || c.sint) && GROF.test(t)) return { u: 'uit', r: 'grof of 18+ bij kinderen, tieners of Sinterklaas' };
+      if (c.pe === 'baby' && ((p.leeftijd && p.leeftijd[0] >= 3) || /\b[3-9] ?\+|vanaf [3-9] jaar/i.test(t))) return { u: 'uit', r: 'speelgoed vanaf 3 jaar bij baby' };
+      if (c.soort !== 'breed') return { u: 'ok' };
+      if (APPARAAT.test(t)) return { u: 'laag', r: 'keukenapparaat' };
+      if (GEREEDSCHAP.test(t) || (p.afd === 'tuin-klussen' && /gereedschap|klussen|machines/.test(p.groep || ''))) return { u: 'laag', r: 'gereedschap' };
+      if (!c.sint && /chocoladeletter|kruidnoten|pepernoten|sinterklaaskaart/i.test(t)) return { u: 'laag', r: 'Sinterklaasproduct buiten Sinterklaas' };
+      return { u: 'ok' };
+    }
+    /* Lijst door de toelating: 'uit' eraf, 'laag' achteraan (in dezelfde volgorde). log = optioneel array voor de controle. */
+    function filter(l, c, log) {
+      if (!AAN || !c) return l;
+      var ok = [], laag = [];
+      l.forEach(function (p) { var x = toelaat(p, c); if (x.u === 'ok') ok.push(p); else { if (log) log.push([c.pad, p.id, x.u, x.r]); if (x.u === 'laag') laag.push(p); } });
+      return laag.length || ok.length !== l.length ? ok.concat(laag) : l;
+    }
+    /* Op /c/dieren zelf: eerst de cadeaus voor de mens die van dieren houdt (rapport Dark Nova). */
+    function mensEerst(l, c) {
+      if (!AAN || !c || c.pad !== '/c/dieren') return l;
+      var m = [], d = [], vk = {}; l.forEach(function (p) { if (!isDier(p) && m.length < 2 && !vk[p.vak]) { vk[p.vak] = 1; m.push(p); } else d.push(p); }); return m.concat(d); /* hooguit 2, elk uit een ander vakje */
+    }
+    /* Spreiding in de eerste 12. */
+    function spreid(l, c, log) {
+      if (!AAN || !c || c.bf || (c.soort !== 'breed' && c.soort !== 'onderwerp') || l.length < 14) return l;
+      var N = 12, breed = c.soort === 'breed', orig = {}; l.forEach(function (p, i) { if (orig[p.id] === undefined) orig[p.id] = i; });
+      /* Een afdeling of winkel telt alleen mee als hij niet de aard van de pagina is: minder dan 40% van de eerste 40 kandidaten
+         (bij Bedankt zijn lekkernijen het bedankje zelf, bij Voor kinderen is speelgoed de pagina). */
+      var afds = {}, shops = {}, k40 = l.slice(0, 40); k40.forEach(function (p) { afds[p.afd] = (afds[p.afd] || 0) + 1; shops[p.shop] = (shops[p.shop] || 0) + 1; });
+      var afdTel = breed && Object.keys(afds).length >= 4, klein = function (n) { return n < k40.length * 0.4; };
+      var T = { fam: {}, fr: {}, merk: {}, vak: {}, shop: {}, afd: {} }, uit = [], rest = l.slice();
+      function past(p) {
+        if (T.fam[famVan(p)]) return 'familie';
+        var fr = frVan(p), mk = merkVan(p);
+        if (fr && (T.fr[fr] || 0) >= (breed ? 2 : 3)) return 'figuur/merk ' + fr;
+        if (!breed) return '';
+        if (!fr && mk && (T.merk[mk] || 0) >= 2) return 'merk ' + mk;
+        if (p.vak && (T.vak[p.vak] || 0) >= 2) return 'vakje ' + p.vak;
+        if (p.shop && (T.shop[p.shop] || 0) >= 3 && klein(shops[p.shop] || 0)) return 'winkel ' + p.shop;
+        if (afdTel && (T.afd[p.afd] || 0) >= 3 && klein(afds[p.afd] || 0)) return 'afdeling ' + p.afd;
+        return '';
+      }
+      function tel(p) { var fr = frVan(p), mk = merkVan(p); T.fam[famVan(p)] = 1; if (fr) T.fr[fr] = (T.fr[fr] || 0) + 1; if (mk) T.merk[mk] = (T.merk[mk] || 0) + 1; if (p.vak) T.vak[p.vak] = (T.vak[p.vak] || 0) + 1; if (p.shop) T.shop[p.shop] = (T.shop[p.shop] || 0) + 1; T.afd[p.afd] = (T.afd[p.afd] || 0) + 1; }
+      while (uit.length < N && rest.length) {
+        var pos = uit.length, kies = -1, i, n = Math.min(rest.length, 80);
+        for (i = 0; i < n; i++) if (BESCHERMD[rest[i].id] && orig[rest[i].id] <= pos) { kies = i; break; }
+        if (kies < 0) for (i = 0; i < n; i++) { var w = past(rest[i]); if (!w) { kies = i; break; } else if (log && i === 0) log.push([c.pad, rest[i].id, 'later', w]); }
+        if (kies < 0) { kies = 0; if (log) log.push([c.pad, rest[0].id, 'versoepeld', 'te weinig andere kandidaten']); }
+        var p = rest.splice(kies, 1)[0]; uit.push(p); tel(p);
+      }
+      return uit.concat(rest);
+    }
+    /* In een soortrij (vier per soort) op een brede pagina: eerst vier verschillende families (niet vier Pokémon-boosterpakjes naast elkaar). */
+    function varieer(l, n) {
+      n = n || 4; if (!AAN || l.length <= n) return l;
+      var voor = [], na = [], gezien = {}, i;
+      for (i = 0; i < l.length; i++) { var f = famVan(l[i]); if (voor.length < n && !gezien[f] && i < 30) { gezien[f] = 1; voor.push(l[i]); } else na.push(l[i]); }
+      return voor.concat(na);
+    }
+    /* Mag 'meest gezocht' dit cadeau naar voren halen? Niet als de toelating het lager of eruit zet. */
+    function magVoor(p, c) { return !AAN || !c || toelaat(p, c).u === 'ok'; }
+    return { aan: function () { return AAN; }, ctx: ctx, toelaat: toelaat, filter: filter, spreid: spreid, mensEerst: mensEerst, magVoor: magVoor, varieer: varieer, familie: famVan, beschermd: BESCHERMD };
+  })();
+
   window.LK = {
     leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen, vergeetCache: vergeetCache,
     producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij, isNieuw: isNieuw,
     favorieten: favorieten, isFavoriet: isFavoriet, wisselFavoriet: wisselFavoriet,
-    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf
+    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf, nova: NOVA
   };
 })();
 
