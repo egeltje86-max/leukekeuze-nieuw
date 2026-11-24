@@ -167,7 +167,22 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   if (ld.length) h = zet(h, /<\/head>/, ld.map(x => '  <script type="application/ld+json">' + JSON.stringify(x).replace(/</g, '\\u003c') + '</script>').join('\n') + '\n</head>');
   if (info.geenIndex) h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <meta name="robots" content="noindex, follow">');
   /* De banner van de homepage alleen vooraf laden op de homepage zelf (scheelt ~90 kB op elke andere pagina, vooral op mobiel). */
-  if (info.pad !== '/') h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-[^"]*"[^>]*>/g, '');
+  /* 24-11-2026 (sneller): de oude homepage-banner staat niet meer in beeld, dus nergens meer vooraf laden. Wel het eerste grote beeld uit de bezoekersversie
+     (<template id="app-b">): een browser laadt beelden in een template pas als het script de template inwisselt, dus zonder dit kwam de banner van de
+     Cadeaustraat pas na ruim 8 seconden (trage 4G). */
+  h = h.replace(/\s*<link rel="preload" as="image" href="images\/banners\/banner-[^"]*"[^>]*>/g, '');
+  if (info.inhoudB) {
+    const pic = /<picture><source media="([^"]+)" srcset="([^"]+)"><img src="([^"]+)"/.exec(info.inhoudB);
+    let pre = '';
+    if (pic && info.inhoudB.indexOf(pic[0]) < 6000) {
+      const mq = pic[1], nmq = mq.replace('min-width:', 'max-width:').replace(/(\d+)px/, (m, n) => (n - 1) + 'px');
+      pre = '  <link rel="preload" as="image" href="' + pic[3] + '" media="' + nmq + '" fetchpriority="high">\n  <link rel="preload" as="image" href="' + pic[2] + '" media="' + mq + '">\n';
+    } else {
+      const img = /<img src="([^"]+\.(?:webp|jpg|png)[^"]*)"(?![^>]*loading="lazy")[^>]*>/.exec(info.inhoudB.replace(/<img src="[^"]*-klein\.webp"[^>]*>/g, ''));
+      if (img && !/logo|icoon/.test(img[1])) pre = '  <link rel="preload" as="image" href="' + img[1] + '" fetchpriority="high">\n';
+    }
+    if (pre) h = zet(h, /<\/head>/, pre + '</head>');
+  }
   /* 13-11-2026 (grote keuring): de homepage en de Voor wie-pagina's krijgen ook de nieuwe opzet van de proef WIJZER mee, in een <template>
      (onzichtbaar; zoekmachines en wie de oude opzet heeft merken er niets van). Wie de nieuwe opzet krijgt, ziet die daardoor meteen staan
      (het stukje script direct na <main> in sjabloon.html wisselt hem in). Eerder stond er seconden een half lege pagina en versprong alles daarna. */
