@@ -416,11 +416,39 @@
     return { aan: function () { return AAN; }, ctx: ctx, toelaat: toelaat, filter: filter, spreid: spreid, mensEerst: mensEerst, magVoor: magVoor, varieer: varieer, familie: famVan, beschermd: BESCHERMD };
   })();
 
+  /* OPERATIE CADEAUZIEL FASE 2 (24-11-2026, opdracht Dark Nova; Marius: 'plaats ze zoals er staat'). De opening (eerste 24) per pagina en per afdeling
+     van een straatwinkel, zoals Nova ze koos (assets/js/cadeauziel.js, gemaakt door scripts/cadeauziel/maak.js). Alleen voor bezoekers: de app roept dit
+     alleen aan in de winkelweergave en de straat (WIJZER b, kaal adres), dus zoekmachines en de Google-versie van de bouw houden de gewone volgorde.
+     Alleen volgorde: een cadeau dat niet (meer) in de lijst staat (uitverkocht, regel, ander bedrag) wordt overgeslagen, er komt nooit iets bij van een andere pagina.
+     Zelf vergelijken: ?proef=cadeauziel-uit (in dat tabblad; weer aan: ?proef=cadeauziel). Helemaal uit: window.LK_CADEAUZIEL_FASE2 = false. */
+  var CZ = (function () {
+    var AAN = (function () { try { var q = location.search; if (/[?&]proef=cadeauziel-uit(&|$)/.test(q)) sessionStorage.setItem('lkcz', '0'); else if (/[?&]proef=cadeauziel(&|$)/.test(q)) sessionStorage.removeItem('lkcz');
+      return window.LK_CADEAUZIEL_FASE2 !== false && sessionStorage.getItem('lkcz') !== '0'; } catch (e) { return window.LK_CADEAUZIEL_FASE2 !== false; } })();
+    function sleutel(pad) {
+      var p = String(pad || location.pathname), q = '';
+      var h = p.indexOf('?'); if (h !== -1) { q = p.slice(h); p = p.slice(0, h); }
+      p = p.replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
+      var v = /[?&]voor=([a-z-]+)/.exec(q); return v ? p + '?voor=' + v[1] : p;
+    }
+    function ids(pad) { var D = window.LK_CADEAUZIEL; return AAN && D && D.p ? D.p[sleutel(pad)] || null : null; }
+    function orde(l, lijstIds) {
+      if (!lijstIds || !lijstIds.length || !l || !l.length) return l;
+      var plek = {}; l.forEach(function (p, i) { if (plek[p.id] === undefined) plek[p.id] = i; });
+      var voor = [], g = {};
+      lijstIds.forEach(function (id) { var i = plek[id]; if (i !== undefined && !g[id]) { g[id] = 1; voor.push(l[i]); } });
+      if (!voor.length) return l;
+      return voor.concat(l.filter(function (p) { return !g[p.id]; }));
+    }
+    function pagina(l, pad) { return orde(l, ids(pad)); }
+    function schap(l, winkel, naam) { var D = window.LK_CADEAUZIEL; return AAN && D && D.s && D.s[winkel] ? orde(l, D.s[winkel][naam]) : l; }
+    return { aan: function () { return AAN && !!window.LK_CADEAUZIEL; }, ids: ids, orde: orde, pagina: pagina, schap: schap, sleutel: sleutel };
+  })();
+
   window.LK = {
     leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen, vergeetCache: vergeetCache,
     producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij, isNieuw: isNieuw,
     favorieten: favorieten, isFavoriet: isFavoriet, wisselFavoriet: wisselFavoriet,
-    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf, nova: NOVA
+    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf, nova: NOVA, cz: CZ
   };
 })();
 

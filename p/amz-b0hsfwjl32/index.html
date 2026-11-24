@@ -27,7 +27,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=43481290334758" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=210950831154740" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=146566160923201" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
   <link rel="stylesheet" href="assets/css/licht.css?v=114365066024980">
@@ -63,7 +63,7 @@
       if (!d || !d.p) return; N = d.p; var laat = alles();
       if (laat && window.LK_HERTEKEN) window.LK_HERTEKEN();
       if (document.readyState === 'loading') addEventListener('DOMContentLoaded', scherm); else scherm(); }).catch(function () {}); } catch (x) {} })();</script>
-  <script>(function () { var s = "assets/js/producten-site.js?v=150979977522194", t = "assets/js/topkeuze.js?v=11157366064939";
+  <script>(function () { var s = "assets/js/producten-site.js?v=101647073448304", t = "assets/js/topkeuze.js?v=65925139466357";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -281,9 +281,11 @@
   <script>window.LK_DETAILS_DEEL={"amz-b0hsfwjl32":{"url":"https://www.amazon.nl/dp/B0HSFWJL32?tag=leukekeuze-21","winkelUrl":"https://www.amazon.nl/dp/B0HSFWJL32","subVast":true,"gecontroleerd":"2026-11-23","herkomst":"piloot","advies":{"voor":"Iemand die in december graag rustig puzzelt; klein genoeg voor een lootje of in de schoen.","niet":"Wie veel puzzels wil voor het hele jaar: dit boek gaat over kerst en winter.","meer":[["Gratis woordzoekers om te printen","/woordzoeker/"],["Alle puzzelboeken","/c/boeken-media/boeken/puzzelboeken"]]},"waarom":"31 woordzoekers in grote letters over de kerstboom, het kerstdiner, de kerstmarkt, schaatsen, Sinterklaas en oud en nieuw. De letters die overblijven vormen een warme wens. Gemaakt door Marius van LeukeKeuze."}};</script>
   <script src="assets/js/data.js?v=146566160923201"></script>
   <script src="assets/js/teksten.js?v=248022023955020"></script>
-  <script src="assets/js/gedeeld.js?v=243169435444262"></script>
-  <script src="assets/js/straat.js?v=144258100030609"></script>
-  <script src="assets/js/app.js?v=43481290334758"></script>
+  <script src="assets/js/gedeeld.js?v=57725914775463"></script>
+  <script>/* CADEAUZIEL (24-11-2026, Dark Nova): de openingen per pagina, alleen waar de winkelweergave of de straat staat (niet op productpagina's, gidsen en zoeken). */
+    (function () { var s = "assets/js/cadeauziel.js?v=261797027031030"; if (!/^\/(p|gids|zoek|lootjes-trekken|sint-rijmmachine|woordzoeker|vonk|favorieten|tiktok)\//.test(location.pathname)) document.write('<script src="' + s + '"><\/script>'); })();</script>
+  <script src="assets/js/straat.js?v=232688408992220"></script>
+  <script src="assets/js/app.js?v=210950831154740"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

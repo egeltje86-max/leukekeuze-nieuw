@@ -2510,7 +2510,9 @@
     lijst = sorteer(lijst, q.sort, topPad);
     /* WINKELSTIJL (21-11-2026, Marius: 'elke categorie moet een winkel worden'): voor bezoekers is deze pagina een winkel in de Cadeaustraat,
        met dezelfde cadeaus in dezelfde volgorde. Alleen op het kale adres; met een filter, sortering of ?alles=1 de lijst zoals hij was. Zie straat.js. */
-    if (WIJZER === 'b' && window.LK_STRAAT_AFD && kaalAdres(q)) { var winkelHtml = window.LK_STRAAT_AFD.html(c, s, v, lijst, pad); if (winkelHtml) return winkelHtml; }
+    if (WIJZER === 'b' && window.LK_STRAAT_AFD && kaalAdres(q)) { var winkelHtml = window.LK_STRAAT_AFD.html(c, s, v, LK.cz.pagina(lijst, pad), pad); if (winkelHtml) return winkelHtml; } /* CADEAUZIEL (24-11-2026): de opening van Nova */
+    /* CADEAUZIEL (24-11-2026): 'Kerst voor hem' (/c/cadeaus/kerst?voor=hem) zonder andere keuze: de opening van Nova bovenaan de lijst */
+    if (WIJZER === 'b' && q.voor && !Object.keys(q).some(function (k) { return q[k] && k !== 'proef' && k !== 'voor'; })) lijst = LK.cz.pagina(lijst, pad + '?voor=' + q.voor);
     /* 3.0: 'Aanbevolen' regelt mix() zelf (beste eerst, gemixt) */
 
     /* Gekozen budget blijft staan als je naar een andere subcategorie klikt. */
@@ -2672,7 +2674,7 @@
     /* WINKELSTIJL: een onderwerp (/voor/haar/wonen-sfeer) is voor bezoekers een winkel in de straat voor haar, per soort cadeau. */
     if (WIJZER === 'b' && s && window.LK_STRAAT_LIJST && kaalAdres(q)) {
       var pkort = pe.kort.charAt(0).toLowerCase() + pe.kort.slice(1);
-      var wsOnd = window.LK_STRAAT_LIJST.html({ lijst: lijst, h1: s.naam + ' voor ' + naam, tekst: s.tekst || '', label: 'De straat ' + pkort,
+      var wsOnd = window.LK_STRAAT_LIJST.html({ lijst: LK.cz.pagina(lijst, pad), h1: s.naam + ' voor ' + naam, tekst: s.tekst || '', label: 'De straat ' + pkort,
         rond: s.beeld ? '/' + rondjeVan(s.beeld) : '', terug: ['/voor/' + pe.slug + '/', 'Terug naar de straat ' + pkort], alles: pad + '/?alles=1' });
       if (wsOnd) return wsOnd;
     }
@@ -3069,7 +3071,7 @@
         (g.korting && window.LK_CODE_OP_PRODUCT !== false ? codesNu().filter(function (c) { var v = new Date().toISOString().slice(0, 10); return c.opProduct && c.code && (!c.vanaf || c.vanaf <= v); }).map(function (c) {
           return '<p class="eerlijk-regel code-regel">' + ic('cadeau') + '<span>Extra bij ' + esc(c.winkel) + ': ' + esc(c.opProduct.replace(/^Black Week: /, '')) + '. <a href="/collectie/kortingscodes">Alle codes en voorwaarden</a></span></p>';
         }).join('') : '');
-      var wsVerz = window.LK_STRAAT_LIJST.html({ lijst: lijst, h1: pv ? g.naam + ' voor ' + voorNaam : g.naam, tekst: g.tekst || '', voor: wsVoor, boven: wsBoven, naEtalage: pv ? '' : mandjesBlok(g) + (g.slug === 'black-friday' ? bfWinkelsBlok('ws') : ''), kleur: g.kleur,
+      var wsVerz = window.LK_STRAAT_LIJST.html({ lijst: g.korting ? lijst : LK.cz.pagina(lijst, pad), h1: pv ? g.naam + ' voor ' + voorNaam : g.naam, tekst: g.tekst || '', voor: wsVoor, boven: wsBoven, naEtalage: pv ? '' : mandjesBlok(g) + (g.slug === 'black-friday' ? bfWinkelsBlok('ws') : ''), kleur: g.kleur,
         label: pv ? g.naam : (isGel ? 'Gelegenheid' : 'Collectie'), sleutels: [hoofdPad.slice(1)], rondNaam: (isGel ? 'gel-' : 'col-') + g.slug,
         terug: pv ? [hoofdPad + '/', 'Terug naar ' + g.naam] : ['/', 'Naar de Cadeaustraat'], alles: pad + '/?alles=1' });
       if (wsVerz) return wsVerz;
@@ -6661,7 +6663,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Geef iets om samen te doen: een fondue voor de kerstavond of een puzzel voor de dagen erna.", "Iets met de kinderen of kleinkinderen raakt bijna altijd: een foto op een tegeltje, een familieposter of een fotoboek.", "Ken je de smaak van je schoonouders nog niet goed? Kies iets wat opgaat, zoals iets lekkers of een geur voor in huis.", "Geef je samen met je broers of zussen? Dan kan het iets groters zijn, zoals een digitale fotolijst die jullie allemaal kunnen vullen."] },
         { kop: "Gezellig samen met de kerstdagen", tekst: "Voor de kerstavond aan tafel of een avondje muziek.", ids: ["dk-00022238", "dvzn-801397", "cl-lp-mariah", "bol-9300000165463791"] },
         { kop: "Samen puzzelen en spelen", tekst: "Voor de dagen tussen Kerst en oud en nieuw.", ids: ["dgsw-af39be86e2", "bol-1004004000008403", "999g-sch57989", "cadeau-23f791e50f"] },
-        { kop: "Iets lekkers", tekst: "Marsepein, bonbons, een appeltaartpakket of kaas.", ids: ["dw-4000161470748", "dk-00044932", "dw-4101730003029", "cadeau-8662e89ec8"] },
+        { kop: "Iets lekkers", tekst: "Marsepein, bonbons, een pakket om zelf kruidenboter te maken of kaas.", ids: ["dw-4000161470748", "dk-00040236", "dw-4101730003029", "cadeau-8662e89ec8"] },
         { kop: "Warm en knus", tekst: "Voor de koude avonden op de bank.", ids: ["cg-magnetron-sloffen", "coolgi-29be901732", "ex-inventum-hb185", "dk-00044258"] },
         { kop: "Voor in huis en tuin", tekst: "Een fijne geur in huis, iets voor de vogels, of kerstsfeer.", ids: ["countr-24ef57ce36", "cl-24943", "country-0fd006d070", "parfum-ab22c2229e"] },
         { kop: "Met de (klein)kinderen", tekst: "Een cadeau met jullie foto of namen erop.", ids: ["mmf-63b16f5c97", "cg-37e1269b65", "cl-pf-hardcover", "bol-9300000123980541"] }
@@ -6677,7 +6679,7 @@
         { kop: "Borrelpakketten", tekst: "Voor bij de borrel, de barbecue of een pastadiner: hapjes, sauzen en truffel.", ids: ["dk-00044934", "bp-l229", "cl-jackdaniels-bbq", "bol-9300000250399375"] },
         { kop: "Echte kerstpakketten", tekst: "Kant-en-klaar in een mooie doos: voor collega's, familie of vrienden.", ids: ["bol-9300000444859249", "bol-9300000195684144", "bol-9300000057001441", "bol-9300000442610569"] },
         { kop: "Voor je personeel of klanten", tekst: "Iets wat iedereen lust, zonder alcohol en onder de 25 euro, zodat je er makkelijk tien of twintig van bestelt. De brievenbuspakketten worden thuis bezorgd, ook bij wie thuiswerkt. Bestel ruim op tijd: bij grote aantallen kijk je bij de winkel of er genoeg op voorraad is.", ids: ["bol-9300000183768479", "bol-9300000240085621", "bol-9300000257112864", "bp-l303"] },
-        { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dkam-11c55d9446", "dk-00044932", "dk-00043581", "hema-8eff9a5ada"] },
+        { kop: "Bij de thee en koffie", tekst: "Thee, koekjes of iets om zelf te bakken.", ids: ["dkam-11c55d9446", "dkam-b1412ff2b5", "dk-00043581", "hema-8eff9a5ada"] },
         { kop: "Samen thuis", tekst: "Een filmavond, iets voor de Formule 1-fan of een fondue.", ids: ["bol-9300000340258889", "cl-filmpakket", "dvzn-533927", "dvzn-801397"] }
       ],
       slot: "Meer ideeën vind je bij <a href=\"/c/cadeaus/kerst\">alle kerstcadeaus</a>, <a href=\"/gids/kerstcadeau-moeder\">Kerstcadeau voor je moeder</a> en <a href=\"/gids/kerstcadeau-vader\">Kerstcadeau voor je vader</a>." },
@@ -7223,7 +7225,7 @@
         { kop: 'Om even tot rust te komen', tekst: 'Warm, zacht en lekker ruikend: helemaal goed voor een avond op de bank.',
           ids: ['dk-00044258', 'cl-ww-trilogy', 'cl-beurer-fb12', 'cl-rit-sakura'] },
         { kop: 'Voor de keuken en bij de thee', tekst: 'Een kookboek dat ze echt gebruikt, een doos fijne thee of iets lekkers om uit te delen.',
-          ids: ['bol-9300000258651028', 'bol-9300000257840777', 'dk-00044932', 'bol-9300000158510566'] },
+          ids: ['bol-9300000258651028', 'bol-9300000257840777', 'dkam-b1412ff2b5', 'bol-9300000158510566'] },
         { kop: 'Bloemen die blijven', tekst: 'Bloemen van LEGO om samen te bouwen, of droogbloemen die gewoon door de brievenbus passen.',
           ids: ['bol-9300000131876375', 'bp-l087', 'lego-40460'] }
       ],
@@ -7266,8 +7268,8 @@
           ids: ['cl-17724', 'cl-rohde', 'cl-beurer-fb12', 'bol-9200000075452260'] },
         { kop: 'Herinneringen', tekst: 'Een album om foto’s in te plakken of een fotolijst waar de familie zelf nieuwe foto’s naartoe stuurt.',
           ids: ['cl-pf-linnen', 'bol-9300000167329318'] },
-        { kop: 'Iets lekkers bij de koffie', tekst: 'Marsepein, boterkoek door de brievenbus, stroopwafels of een pakket om zelf appeltaart te bakken.',
-          ids: ['dw-4000161470748', 'bp-l303', 'dk-00044932', 'hema-8eff9a5ada'] }
+        { kop: 'Iets lekkers bij de koffie', tekst: 'Marsepein, boterkoek door de brievenbus, stroopwafels of een pakket om zelf koekmannetjes te bakken.',
+          ids: ['dw-4000161470748', 'bp-l303', 'dk-00043581', 'hema-8eff9a5ada'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/opa-oma">Cadeaus voor opa en oma</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-opa-oma">Kerstcadeau voor opa en oma</a>.' },
     { slug: 'cadeau-voor-zus', beeld: 'bol-9300000147583964', vakken: ['cadeaus/voor-haar'],
@@ -7728,9 +7730,9 @@
       ['Wat geef je je vriendin voor haar verjaardag?', 'Iets wat ze elke dag draagt, zoals een fijne ketting, een verwenmoment, of iets om samen te doen. Kijk naar waar ze het de laatste tijd over had.'],
       ['Wat geef je een vriendin die alles al heeft?', 'Een moment in plaats van spullen: een spel voor jullie twee, mooie glazen om op iets te proosten of LEGO-bloemen om samen te bouwen.'],
       ['Hoeveel geef je uit aan een cadeau voor je vriendin?', 'Dat bepaal je zelf. In deze gids lopen de ideeën van ongeveer 13 tot 80 euro, dus er is voor elk budget iets.']] },
-    'cadeau-voor-moeder': { top: [['Onze topkeuze', 'cl-myka-mama'], ['Beste koop', 'dk-00044932'], ['Om te verwennen', 'dk-00044258']], faq: [
+    'cadeau-voor-moeder': { top: [['Onze topkeuze', 'cl-myka-mama'], ['Beste koop', 'dkam-b1412ff2b5'], ['Om te verwennen', 'dk-00044258']], faq: [
       ['Wat geef je je moeder die niets nodig heeft?', 'Iets persoonlijks of een moment voor haarzelf: een armband met de geboortestenen van haar kinderen, een fotoboek, of een warme plaid en een geurkaars.'],
-      ['Wat is een origineel cadeau voor je moeder?', 'LEGO-bloemen om samen te bouwen, droogbloemen door de brievenbus of een pakket om samen appeltaart te bakken.'],
+      ['Wat is een origineel cadeau voor je moeder?', 'LEGO-bloemen om samen te bouwen, droogbloemen door de brievenbus of een mooi theepakket om samen van te genieten.'],
       ['Wanneer is het Moederdag?', 'Moederdag is in Nederland elk jaar op de tweede zondag van mei.'],
       ['Wat is een leuk verjaardagscadeau voor mama?', 'Iets waar ze zelf niet snel aan toe komt: een moment voor haarzelf met een verwenset of een warme plaid, iets lekkers, of iets persoonlijks met de namen of geboortestenen van haar kinderen.'],
       ['Wat geef je je moeder met Kerst?', 'Iets warms en gezelligs voor de donkere dagen, zoals een plaid, een geurkaars of iets lekkers bij de thee. Meer ideeën staan in de gids <a href="/gids/kerstcadeau-moeder">Kerstcadeau voor je moeder</a>.']] },

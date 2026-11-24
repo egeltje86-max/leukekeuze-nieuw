@@ -309,6 +309,7 @@
           var voor = l.filter(function (p) { return pIdx[p.id] !== undefined; }).sort(function (x, y) { return pIdx[x.id] - pIdx[y.id]; });
           l = spreid(voor.concat(l.filter(function (p) { return pIdx[p.id] === undefined; })));
         }
+        if (window.LK.cz) l = window.LK.cz.schap(l, w.id, g.naam); /* CADEAUZIEL (24-11-2026): de volgorde van Nova in deze afdeling */
         if (l.length < 2) return;
         gangen.push({ g: g, lijst: l });
         l.forEach(function (p) { alle[p.id] = p; });
@@ -342,6 +343,15 @@
       var ep = pr.slug ? '/voor/' + pr.slug : '/', ec = NV.ctx(ep);
       if (window.LK_NOVA_KMUIT && pr.slug) et = window.LK_NOVA_KMUIT(et, ep);
       et = NV.spreid(NV.filter(et, ec, window.LK_NOVA_LOG), ec, window.LK_NOVA_LOG);
+    }
+    var CZ = window.LK.cz, czIds = CZ && CZ.ids(pr.slug ? '/voor/' + pr.slug : (max ? '/#tot-' + max : '/'));
+    if (czIds) { /* CADEAUZIEL (24-11-2026): de etalage zoals Nova hem koos. Alleen cadeaus die door dezelfde regels komen als de etalage (bedrag, persoon, geen drank of grove grap). */
+      var inEt = {}; et.forEach(function (p) { inEt[p.id] = 1; });
+      var czC = NV ? NV.ctx(pr.slug ? '/voor/' + pr.slug : '/') : null;
+      var erbij = czIds.map(function (id) { return K.PER[id]; }).filter(function (p) {
+        return p && !inEt[p.id] && (!max || p.prijs <= max) && (!set || set[p.id]) && !p.drank && !K.drank(p) && !GROF.test(p.titel) && p.prijs >= 3 && (!czC || NV.filter([p], czC).length);
+      });
+      et = CZ.orde(et.concat(erbij), czIds);
     }
     var uit = { pr: pr, max: max, open: open, dicht: dicht, totaal: Object.keys(alleUit).length, etalage: et };
     CACHE[sleutel] = uit; return uit;
