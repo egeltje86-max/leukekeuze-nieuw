@@ -27,7 +27,7 @@ function versieVan(rel) {
   return BESTANDS_VERSIE[rel];
 }
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
-  .replace(/(assets\/(?:css\/(?:stijl|licht|straat|donker|nacht)\.css|js\/(?:data|producten-lean|gedeeld|straat|app|topkeuze|teksten|nacht)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
+  .replace(/(assets\/(?:css\/(?:stijl|licht|straat|donker|nacht)\.css|js\/(?:data|producten-lean|producten-site|gedeeld|straat|app|topkeuze|teksten|nacht)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 let SJ_UIT = ''; /* het sjabloon met de icoontjes van kop, menu en onderbalk er al in (zie verderop) */
 /* Veiligheidsslot (1-11-2026): staat er nog een half samengevoegd stuk (<<<<<<< / >>>>>>>) in het sjabloon of in de bronbestanden,
@@ -256,9 +256,12 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     Object.keys(o).forEach(k => { const m = /^\/c\/([^/]+\/[^/]+\/[^/]+)\/$/.exec(o[k]); if (m && !(gevuld[m[1]] >= 6)) o[k] = '/c/' + m[1].split('/').slice(0, 2).join('/') + '/'; });
     return o;
   });
-  const samen = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]));
+  /* 24-11-2026: de site laadt producten-site.js (zonder afgekeurde producten). Voor het doorsturen van hun oude adressen en de keuze voor Google
+     gebruikt de bouw daarom de volledige lijst uit producten-lean.js, net als eerst. */
+  const ALLE = (() => { const w = { dispatchEvent() {} }; new Function('window', 'document', 'Event', fs.readFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), 'utf8'))(w, { createEvent: () => ({ initEvent() {} }) }, function () {}); return w.LK_PRODUCTEN; })();
+  const samen = ALLE.filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]);
   /* Stap 8 (1-11-2026): uitverkochte en weggehaalde producten krijgen geen 404, maar sturen door naar hun vakje (oude links, pins, Google). */
-  const weg = await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'afgekeurd' && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]));
+  const weg = ALLE.filter(p => p.status === 'afgekeurd' && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]);
 
   /* Start bij de homepage en de categorieënpagina (die is nergens gelinkt, maar bestaat wel). */
   /* Sint-rijmmachine (7-11-2026): de pagina wordt ook los meegenomen (het blok op de homepage verdwijnt na 5 december). */
@@ -267,7 +270,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   /* Stap 3 indeling (6-11-2026): lijstpagina's tonen nog maar 24 kaarten, dus de kruipbeurt vindt niet meer elk product via een lijst.
      Daarom krijgt elk goedgekeurd product zijn pagina rechtstreeks (eerst 10.426 pagina's, zonder dit 7.057). */
   /* MINDER PRODUCTPAGINA'S IN GOOGLE (15-11-2026, GO Marius): zie scripts/seo/google-producten.js. */
-  const GOOGLE = require('./seo/google-producten.js').googleProducten(ROOT, await page.evaluate(() => (window.LK_PRODUCTEN || []).map(p => ({ id: p.id, status: p.status, favoriet: !!p.favoriet, samengevoegd: p.samengevoegd || '', sinds: p.sinds || '' }))));
+  const GOOGLE = require('./seo/google-producten.js').googleProducten(ROOT, ALLE.map(p => ({ id: p.id, status: p.status, favoriet: !!p.favoriet, samengevoegd: p.samengevoegd || '', sinds: p.sinds || '' })));
   console.log(GOOGLE ? 'productpagina\'s voor Google: ' + GOOGLE.size + ' (de rest noindex, wel op de site)' : 'productpagina\'s voor Google: allemaal');
   /* UITVERKOCHT (14-11-2026, GO Marius): uitverkochte producten houden hun pagina (met 'uitverkocht' en wat erop lijkt), niet in de sitemap. */
   for (const id of await page.evaluate(() => (window.LK_PRODUCTEN || []).filter(p => p.status === 'goedgekeurd' || p.status === 'uitverkocht').map(p => p.id))) {

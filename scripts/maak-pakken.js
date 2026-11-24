@@ -17,7 +17,7 @@ const PAKMAP = path.join(ROOT, 'assets', 'pak');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.xml': 'application/xml', '.txt': 'text/plain' };
 const SJ = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 const VERSIE = (SJ.match(/assets\/js\/app\.js\?v=(\d+)/) || [])[1] || String(Date.now());
-const KOP = '<script>(function () { var s = "assets/js/producten-lean.js';
+const KOP = '<script>(function () { var s = "assets/js/producten-site.js';
 if (SJ.indexOf('LK_LAAD_VOL') === -1) { console.log('pakken: het sjabloon kent nog geen pakken, overgeslagen'); return; }
 
 /* De producten zoals de site ze kent (uit producten-lean.js), zonder wat de bouwpagina eraan toevoegt. */

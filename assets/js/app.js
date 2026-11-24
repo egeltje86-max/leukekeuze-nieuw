@@ -3235,7 +3235,7 @@
   function laadDetails(klaar) {
     if (window.LK_DETAILS) { klaar(); return; }
     if (detailsBezig) return; detailsBezig = true;
-    var lean = $('script[src*="producten-lean.js"]'), v = lean ? (lean.getAttribute('src').split('?v=')[1] || '') : '';
+    var lean = $('script[src*="producten-site.js"]') || $('script[src*="producten-lean.js"]'), v = lean ? (lean.getAttribute('src').split('?v=')[1] || '') : '';
     var sc = document.createElement('script'); sc.src = '/assets/js/producten-details.js' + (v ? '?v=' + v : '');
     sc.onload = function () {
       var D = window.LK_DETAILS || {};
