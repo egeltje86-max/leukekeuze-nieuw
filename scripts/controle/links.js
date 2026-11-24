@@ -14,7 +14,7 @@ function doel(u) {
   let m;
   if ((m = /[?&]li=(\d+)/.exec(u)) && /[?&]si=\d+/.test(u)) return 'daisycon:' + m[1];
   if ((m = /tradetracker\.net\/\?c=(\d+)/.exec(u))) { const r = /[?&]r=([^&]+)/.exec(u); if (r) { const v = dec(dec(r[1])); const h = /^(?:https?:\/\/)?(?:www\.)?([^/?#]+)/.exec(v); if (h) return h[1].toLowerCase(); } return 'tt:' + m[1]; }
-  if (/awin1\.com/.test(u)) return 'awin:' + ((/[?&]m=(\d+)/.exec(u) || [])[1] || '?');
+  if (/awin1\.com/.test(u)) return 'awin:' + ((/[?&](?:m|awinmid)=(\d+)/.exec(u) || [])[1] || '?');
   for (const k of ['r', 'url', 'u', 'murl', 'ued']) {
     m = new RegExp('[?&]' + k + '=([^&]+)').exec(u);
     if (m) { let v = dec(dec(m[1])); const m2 = /murl=([^&]+)/.exec(v); if (m2) v = dec(m2[1]); if (!/^https?:/i.test(v)) continue; const h = /^(?:https?:\/\/)?(?:www\.)?([^/?#]+)/.exec(v); if (h) return h[1].toLowerCase(); }

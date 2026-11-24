@@ -7130,7 +7130,7 @@
         { kop: 'Kleine bedankjes (tot €20)', tekst: 'Iets lekkers of een klein plantje voor op het bureau. Niet te veel, wel attent.',
           ids: ['bol-9300000017147055', 'bol-9300000239566022', 'bp-l114', 'hobbym-c698125695'] },
         { kop: 'Voor op de werkplek', tekst: 'Praktisch en toch een cadeau: dingen waar iemand elke werkdag plezier van heeft.',
-          ids: ['joybuy-600d2858b0', 'gt-lexon-usb-lamp', 'dvzn-4652542799', 'dvzn-c15dcffb40'] },
+          ids: ['cg-d0e947b38d', 'gt-lexon-usb-lamp', 'dvzn-4652542799', 'dvzn-c15dcffb40'] },
         { kop: 'Afscheid met een knipoog', tekst: 'Gaat een collega weg? Een grappig cadeau maakt het afscheid luchtiger. Leuk om met het hele team te geven.',
           ids: ['dvzn-990557', 'amz-b0dcw33ywj', 'bol-9300000225912982', 'amz-b0g3hmpmjf'] }
       ],
