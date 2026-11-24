@@ -6421,7 +6421,7 @@
         { kop: "Voor bij een goed glas", tekst: "Whiskyglazen, een karaf of een set in een doos die klaar is om te geven.", ids: ["dvzn-63fc8fc0bd", "cadeau-aa0550d68e", "hobbym-cc513083ec", "dvzn-332357"] },
         { kop: "Voor de barbecue", tekst: "Voor de man die de baas is bij de barbecue.", ids: ["butchery-8ba201a540", "butchery-26811de868", "dvzn-1deadb3602", "cl-weber-kettle"] },
         { kop: "Darten, F1 en gamen", tekst: "Om te bouwen, te gooien of te spelen.", ids: ["legoshop-05f7335d75", "dvzn-533927", "bol-9300000163354878", "tf-465bd8d2c7"] },
-        { kop: "Handig om te hebben", tekst: "Een multitool en goed geluid: dingen die hij elke week gebruikt.", ids: ["cl-vx-huntsman", "cl-lm-skeletool", "fiftie-35cf30a631", "tf-106136001"] },
+        { kop: "Handig om te hebben", tekst: "Een multitool en goed geluid: dingen die hij elke week gebruikt.", ids: ["cl-vx-huntsman", "cl-lm-skeletool", "cl-emberton3", "cl-xm5"] },
         { kop: "Om te lachen", tekst: "Kleine grappen waar hij nog lang over praat.", ids: ["dvzn-c15dcffb40", "dvzn-a003b63b40", "cg-pratende-flessenopener", "dvzn-dcf2cec7a7"] },
         { kop: "Verzorging en warm", tekst: "Een geurtje, een scheerset, baardolie of warme sokken.", ids: ["cl-kingc-starter", "eufr-e624d8bb76", "hema-a7c1cc7068", "parfum-79e274528c"] }
       ],
@@ -6472,7 +6472,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Vraag wat er op de verlanglijst staat: op deze leeftijd weten ze vaak precies wat ze willen.", "Een game? Vraag eerst welke spelcomputer er staat.", "Iets voor de kamer (een lamp, een deken) wordt elke dag gebruikt.", "Een geurtje of verzorging? Kies iets frisses dat bij de leeftijd past."] },
         { kop: "Lampen voor de kamer", tekst: "Voor sfeer op de slaapkamer.", ids: ["dvzn-87965e50f5", "dvzn-154853", "amz-b0bkv168nr", "dvzn-880877"] },
         { kop: "Gamen", tekst: "Voor wie altijd achter de console zit.", ids: ["cl-spiderman2", "cl-mario-party", "amz-b0cx9gt83j", "cl-cloud3s"] },
-        { kop: "Muziek en foto", tekst: "Oordopjes, een instant camera en licht voor selfies en filmpjes.", ids: ["cl-liberty", "bol-9300000303263562", "dvzn-6109bcaff3", "dvzn-82c9fc5824"] },
+        { kop: "Muziek en foto", tekst: "Oordopjes, een instant camera en licht voor selfies en filmpjes.", ids: ["bol-9300000189466514", "bol-9300000303263562", "dvzn-6109bcaff3", "dvzn-82c9fc5824"] },
         { kop: "Geur en verzorging", tekst: "Een lekkere mist of een eerste parfum.", ids: ["bol-9300000084268898", "cl-ariana-cloud", "cl-eilish", "parfum-80840d7cc9"] },
         { kop: "Spellen met vrienden", tekst: "Snel uit te leggen en altijd lachen.", ids: ["dgsw-f8d291bf6b", "999g-999wiz01b", "cl-uno", "dvzn-airhockey"] },
         { kop: "Knus en grappig", tekst: "Voor op de bank of in bed.", ids: ["hema-fff75ba577", "cl-capibara-warm", "nedg-7c1aa8ede0", "dvzn-4eb73fa3d5"] }
@@ -6527,7 +6527,7 @@
         { kop: "Darten en voetbal", tekst: "Voor de sportieve broer, ook als hij alleen op de bank meekijkt.", ids: ["cl-winmau-neutron", "grotek-57e49bc6a4", "dvzn-868decc4c6", "cg-toilet-football"] },
         { kop: "Voor bij een biertje", tekst: "Een vilten tas voor zes flesjes, glazen met jullie foto of een flesopener die zijn biertjes telt.", ids: ["dvzn-5718c70e17", "smartp-1ed3987d88", "cg-pratende-flessenopener", "fiftie-b848fd6c6e"] },
         { kop: "Om te lachen", tekst: "Gekke cadeaus waar hij nog lang over praat.", ids: ["cg-useless-box", "dvzn-dcf2cec7a7", "dvzn-a003b63b40", "t2-cadeau-nl-31dfd27d21"] },
-        { kop: "Muziek en handig", tekst: "Goede oordopjes, een speaker of een oplaadbare zaklamp.", ids: ["tf-106136001", "tf-107001396", "bol-9300000252617200", "bol-9300000234717251"] }
+        { kop: "Muziek en handig", tekst: "Goede oordopjes, een speaker of een oplaadbare zaklamp.", ids: ["cl-xm5", "bol-9300000189466514", "bol-9300000252617200", "bol-9300000234717251"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/voor/hem\">Cadeaus voor hem</a> en <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Zoek je iets voor je zus? Kijk bij <a href=\"/gids/cadeau-voor-zus\">Cadeau voor je zus</a>." },
     { slug: "cadeau-50-jaar", beeld: "massa-8de12f27af", vakken: ["cadeaus/voor-hem", "cadeaus/voor-haar"],
@@ -6549,7 +6549,7 @@
       intro: "Black Friday 2026 is op vrijdag 27 november. Cyber Monday is op maandag 30 november. Veel winkels beginnen al eerder met aanbiedingen. Black Friday valt ruim een week vóór pakjesavond en vier weken vóór kerst, dus het is een goed moment om je cadeaus te kopen. Hieronder staan tips om een echte deal te herkennen en 24 cadeaus die rond Black Friday vaak goedkoper zijn, van LEGO tot AirPods. Wij werken de prijzen elke dag bij.",
       delen: [
         { kop: "Zo herken je een echte deal", tekst: "Vier dingen die helpen:", lijst: ["Maak vooraf een lijstje van wat je echt wilt kopen. Dan koop je geen dingen alleen omdat ze in de aanbieding zijn.", "Een winkel moet als van-prijs de laagste prijs van de 30 dagen ervoor tonen. Dat is een Europese regel. Kijk toch zelf ook even.", "Vergelijk de prijs met een andere winkel. Bij elk cadeau op LeukeKeuze staat wanneer wij de prijs hebben gecontroleerd.", "Koop je voor Sinterklaas? Let op de levertijd, zodat het cadeau vóór 5 december binnen is."] },
-        { kop: "Oordopjes en koptelefoons", tekst: "Elektronica gaat rond Black Friday vaak in de aanbieding.", ids: ["cl-airpods5", "bol-9300000239314960", "bol-9300000139579323", "tf-107001396"] },
+        { kop: "Oordopjes en koptelefoons", tekst: "Elektronica gaat rond Black Friday vaak in de aanbieding.", ids: ["cl-airpods5", "bol-9300000239314960", "cl-xm5", "bol-9300000229857582"] },
         { kop: "Gamen", tekst: "Een spelcomputer, een game of een extra controller.", ids: ["bol-9300000223645302", "cl-mkw", "cl-dualsense", "cl-minecraft"] },
         { kop: "LEGO", tekst: "Voor kinderen en voor volwassenen.", ids: ["lego-77243", "bol-9300000237345401", "bol-9300000131876375", "lego-10295"] },
         { kop: "Muziek en foto", tekst: "Een speaker of een camera die meteen afdrukt.", ids: ["bol-9300000303263562", "bol-9300000252617200", "bol-9300000193746659", "bol-9300000113711298"] },
@@ -6564,7 +6564,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Haalt de jarige zijn of haar rijbewijs? Dan is iets voor de eerste auto een leuk cadeau.", "Gaat de jarige op kamers? Kies iets handigs of gezelligs voor de eigen kamer.", "Muziek en foto’s zijn bij deze leeftijd bijna altijd raak.", "Geef je met de hele familie? Dan kun je samen iets groters kiezen, zoals AirPods of een Instax."] },
         { kop: "Om de dag te vieren", tekst: "Een kaars, een kaart die blijft zingen of een poster van de dag.", ids: ["massa-9195e5bedc", "cg-57a56fb762", "ptm-9", "dvzn-6e4b6990db"] },
         { kop: "Voor het rijbewijs en de eerste auto", tekst: "Voor wie net mag rijden.", ids: ["bol-9300000256481937", "dvzn-86c555b6d6", "bol-9300000124265945", "lgt-a800e3c953"] },
-        { kop: "Muziek en foto", tekst: "Oordopjes, een speaker of een camera voor alle mooie momenten.", ids: ["bol-9300000303263562", "bol-9300000252617200", "cl-airpods5", "tf-107001396"] },
+        { kop: "Muziek en foto", tekst: "Oordopjes, een speaker of een camera voor alle mooie momenten.", ids: ["bol-9300000303263562", "bol-9300000252617200", "cl-airpods5", "bol-9300000189466514"] },
         { kop: "Voor op kamers", tekst: "Licht, een deken met mouwen en een grote kruik voor koude avonden op kamers.", ids: ["coolgi-29be901732", "dvzn-b584c30354", "cl-diy-neon", "cg-xxl-warmwaterkruik"] },
         { kop: "Samen lachen", tekst: "Spellen voor op een feestje of met vrienden.", ids: ["cl-hitster", "cl-exploding", "cl-beanboozled", "dvzn-814850"] },
         { kop: "Om te verwennen", tekst: "Verzorging en iets warms voor thuis.", ids: ["bol-9300000060629305", "cl-laneige-lip", "hema-efaa95f521", "dvzn-dcd93d79e7"] }
@@ -6600,7 +6600,7 @@
       intro: "Met 14 is een kind echt een tiener. Muziek, vrienden, de eigen kamer en hoe je eruitziet worden belangrijk. Een cadeau van een bekend merk telt dan zwaar. Hieronder staan 24 ideeën in zes soorten, voor jongens en meisjes, van een minimicrofoon van 13 euro tot een Instax-camera.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Merken tellen op deze leeftijd: kies liever één goed ding dan drie kleine.", "Muziek en foto’s zijn bijna altijd raak: oordopjes, een speaker of een Instax.", "Verzorging? Kies iets dat tieners zelf gebruiken, zoals Sol de Janeiro of Laneige.", "Twijfel je? Vraag stiekem aan een vriend of vriendin wat er leeft."] },
-        { kop: "Muziek en foto", tekst: "Voor alle mooie momenten en de muziek erbij.", ids: ["bol-9300000303263562", "bol-9300000252617200", "tf-107001396", "dvzn-7fa21f9ec9"] },
+        { kop: "Muziek en foto", tekst: "Voor alle mooie momenten en de muziek erbij.", ids: ["bol-9300000303263562", "bol-9300000252617200", "bol-9300000173400085", "dvzn-7fa21f9ec9"] },
         { kop: "Gamen", tekst: "Een controller, een game of iets voor bij de console.", ids: ["cl-dualsense", "cl-legends-za", "dvzn-a4ed4f69b9", "amz-b0cp1927qy"] },
         { kop: "Verzorging en geur", tekst: "Wat tieners zelf gebruiken en op hun verlanglijstje zetten.", ids: ["bol-9300000060629305", "cl-laneige-lip", "cl-cosrx-snail", "parfum-80840d7cc9"] },
         { kop: "Voor de eigen kamer", tekst: "Licht en sfeer voor de kamer.", ids: ["dvzn-515371", "amz-b0fcsxm3vp", "dvzn-5dbf032a22", "dvzn-f5059f5782"] },
@@ -6631,7 +6631,7 @@
         { kop: "Iets om te bouwen", tekst: "LEGO en bouwpakketten voor volwassenen.", ids: ["lego-10348", "bol-9300000131876375", "legoshop-f91cb50b25", "cl-cb-midsummer"] },
         { kop: "Een uitje", tekst: "Iets wat je nooit vergeet.", ids: ["dk-85478160d2", "dk-904317b4e5", "dk-cd1e8497b2", "dk-3336fea059"] },
         { kop: "Iets om te onthouden", tekst: "Een poster, een fotoboek of een tegeltje.", ids: ["ptm-9", "ptm-15546", "cl-pf-hardcover", "mmf-9ed87c2539"] },
-        { kop: "Om te verwennen", tekst: "Een fijne geur, goede muziek of warme voeten.", ids: ["tf-106136001", "cg-magnetron-sloffen", "parfum-79e274528c", "parfum-ab22c2229e"] }
+        { kop: "Om te verwennen", tekst: "Een fijne geur, goede muziek of warme voeten.", ids: ["cl-xm5", "cg-magnetron-sloffen", "parfum-79e274528c", "parfum-ab22c2229e"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/gelegenheid/verjaardag\">Verjaardag</a>. Wordt iemand 50? Kijk bij <a href=\"/gids/cadeau-50-jaar\">Cadeau 50 jaar: Abraham en Sarah</a>." },
     { slug: "cadeau-60-jaar", beeld: "fs-crosley-tribute", vakken: ["cadeaus/opa-oma", "cadeaus/voor-hem", "cadeaus/voor-haar"],
@@ -6866,7 +6866,7 @@
         { kop: 'Voor de gamer', tekst: 'Een goede controller, een nieuwe game of een lamp die de kamer meteen cooler maakt.',
           ids: ['joybuy-6a6fbf11cb', 'cb-sonic-racing', 't2-nedgame-4639e1bcd1', 'tt-dvzn-d0fc92f962'] },
         { kop: 'Muziek en filmpjes maken', tekst: 'Oordopjes van een echt audiomerk, karaoke voor op een feestje of een instant camera voor foto’s die je meteen in handen hebt.',
-          ids: ['tf-107001396', 'hema-1976c559e6', 'bol-9300000303263562', 'fiftie-c634bd1714'] },
+          ids: ['bol-9300000189466514', 'hema-1976c559e6', 'bol-9300000303263562', 'fiftie-c634bd1714'] },
         { kop: 'Voor haar: stijl en zelf maken', tekst: 'Een gouden kettinkje met haar beginletter, armbandjes maken met vriendinnen, een make-upspiegel met licht of een verwenpakket.',
           ids: ['pry-zh2x', 'boeken-b4ca80eae9', 'dvzn-380a317e19', 'bol-9300000162839311'] },
         { kop: 'Handig (en stiekem cool)', tekst: 'Een piepklein cameraatje aan je sleutelbos, een activity tracker of een LEGO-auto voor op de kamer: praktisch, maar wel leuk om te krijgen.',
@@ -7032,7 +7032,7 @@
         { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Kijk naar zijn hobby: voetbal, F1, gamen, koken of de barbecue. Een cadeau dat daarbij past wordt gebruikt.', 'Een goede fles valt bijna altijd goed. Kies iets dat hij zelf niet snel koopt.', 'Grappig mag, zolang hij er zelf om kan lachen.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
         { kop: 'Voor bij een goed glas', tekst: 'Een whiskykaraf, glazen die schommelen of sokken in een whiskeyfles.', ids: ['dvzn-332357', 'dvzn-63fc8fc0bd', 'cg-rocking-whisky-glazen', 'hobbym-cc513083ec'] },
         { kop: 'Om te lachen', tekst: 'Voor de man die overal een grap van maakt.', ids: ['cl-kersttrui', 'dvzn-fef9e43e90', 'cg-useless-box', 'dvzn-0b435dbafd'] },
-        { kop: 'Gadgets en muziek', tekst: 'Handige en leuke snufjes.', ids: ['cg-b320632dae', 'tf-107000900', 'cl-atari-arcade', 'dvzn-a4ed4f69b9'] },
+        { kop: 'Gadgets en muziek', tekst: 'Handige en leuke snufjes.', ids: ['cg-b320632dae', 'cl-emberton3', 'cl-atari-arcade', 'dvzn-a4ed4f69b9'] },
         { kop: 'Bouwen en spelen', tekst: 'Voor de vrije dagen: LEGO voor volwassenen of een spel voor twee.', ids: ['lego-77243', 'lego-10363', 'lego-75438', '999g-999skt01'] },
         { kop: 'Voor de keuken en de barbecue', tekst: 'Voor de man die graag kookt of buiten grilt.', ids: ['dvzn-1deadb3602', 'butchery-8ba201a540', 'dvzn-9fa32eee7e', 'cl-hema-kerstbonen'] },
         { kop: 'Verzorging en warm', tekst: 'Een geurtje, baardolie of warme sloffen.', ids: ['dvzn-fdd7c310b4', 'eufr-e624d8bb76', 'hema-a7c1cc7068', 'parfum-79e274528c'] }
@@ -7092,7 +7092,7 @@
         { kop: 'De apparaten die iedereen wil', tekst: 'Zelf ijs en slush maken, oordopjes die iedereen draagt en foto’s die meteen uit de camera komen.',
           ids: ['tt-dvzn-54591406f8', 'cl-airpods5', 'bol-9300000303263562', 'bol-9300000239958237'] },
         { kop: 'Muziek mee, overal', tekst: 'Kleine speakers met groot geluid en oordopjes die het lawaai om je heen wegfilteren.',
-          ids: ['bol-9300000252617200', 'bol-9300000193746659', 'bol-9300000279417145', 'bol-9300000191626158'] },
+          ids: ['bol-9300000252617200', 'bol-9300000193746659', 'bol-9300000279417145', 'bol-9300000239314960'] },
         { kop: 'Bloemen die nooit verwelken', tekst: 'LEGO-bloemen zijn een hit bij volwassenen: rustig bouwen en daarna een mooi stuk decoratie.',
           ids: ['bol-9300000237345401', 'bol-9300000243481710', 'bol-9300000187249569', 'bol-9300000131876375'] },
         { kop: 'Beauty-hits van je tijdlijn', tekst: 'De lippenbalsem, lipolie en crèmes die je op TikTok steeds weer ziet. Een fijn verwencadeau.',
@@ -7251,7 +7251,7 @@
         { kop: 'Voor zijn hobby en ontspanning', tekst: 'Een mooi schaakbord, een dartset, een spel voor de familie of warme pantoffels voor de avond.',
           ids: ['bol-9300000271848241', 'bol-9300000163354878', 'cl-7wonders', 'bt-51963303362899'] },
         { kop: 'Om te dragen en te gebruiken', tekst: 'Een stoer horloge, een klassieke geur, een goede koptelefoon of een hoofdlamp voor buiten.',
-          ids: ['bol-9300000176286400', 'cl-le-male', 'tf-106136001', 'cl-flextail-helio'] }
+          ids: ['bol-9300000176286400', 'cl-le-male', 'cl-xm5', 'cl-flextail-helio'] }
       ],
       slot: 'Meer ideeën staan bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gelegenheid/vaderdag">Vaderdag</a>. Is het voor Kerst? Lees dan <a href="/gids/kerstcadeau-voor-hem">Kerstcadeau voor een man</a>.' },
     { slug: 'cadeau-voor-oma', beeld: 'cl-17724', vakken: ['cadeaus/opa-oma', 'wonen/kussens-plaids'],
@@ -7613,7 +7613,7 @@
     "cadeau-kind-10-jaar": { top: [["Onze topkeuze", "lego-77243"], ["Onder de 10 euro", "cl-pk-booster"], ["Voor het hele gezin", "cl-exploding"]], faq: [["Wat geef je een kind van 10 jaar?", "Iets dat niet kinderachtig is: LEGO Speed Champions of Technic, een knikkerbaan, een spel voor met vrienden, een proefjesdoos of een game."], ["Wat is een leuk cadeau voor een jongen van 10?", "LEGO Speed Champions, een bestuurbare auto, een voetbal, Pokémon of een game. Kijk vooral naar zijn hobby."], ["Wat is een leuk cadeau voor een meisje van 10?", "Iets om te maken zoals diamond painting of een pottenbakkerij, een proefjesdoos, een kaartspel of iets van haar favoriete game. Kijk vooral naar waar ze nu fan van is."], ["Hoeveel geef je uit aan een cadeau voor een kind van 10?", "Dat bepaal je zelf. Voor een klasgenootje kiezen veel mensen iets van 10 tot 15 euro, voor familie vaak meer. In deze gids staat van elk bedrag iets."]] },
     "cadeau-kind-11-jaar": { top: [["Onze topkeuze", "cl-minecraft"], ["Klein cadeau", "cl-the-mind"], ["Voor het hele gezin", "cl-exploding"]], faq: [["Wat geef je een kind van 11 jaar?", "Iets voor de eigen hobby: een game, LEGO Speed Champions, een kaartspel voor met vrienden, tekenspullen, een spannend boek of iets om buiten mee te sporten."], ["Wat is een leuk cadeau voor een jongen van 11?", "Een game, LEGO Speed Champions, een bestuurbare auto, een Nerf-blaster of een spannend boek. Kijk vooral naar zijn hobby."], ["Wat is een leuk cadeau voor een meisje van 11?", "Tekenspullen zoals Posca-stiften, FIMO-klei, een kaartspel, een boek of een game. Kijk vooral naar waar ze nu fan van is."], ["Hoeveel geef je uit aan een cadeau voor een kind van 11?", "Dat bepaal je zelf. Voor een klasgenootje kiezen veel mensen iets van 10 tot 15 euro, voor familie vaak meer. In deze gids staat van elk bedrag iets."]] },
     "cadeau-kind-12-jaar": { top: [["Onze topkeuze", "cl-minecraft"], ["Klein cadeau", "cl-lama"], ["Voor het hele gezin", "cl-exploding"]], faq: [["Wat geef je een kind van 12 jaar?", "Iets dat bij een bijna-tiener past: een game, een spel voor met vrienden zoals Hitster, manga, LEGO Speed Champions, tekenspullen of iets om buiten mee te sporten."], ["Wat is een leuk cadeau voor een jongen van 12?", "Een game of controller, LEGO Speed Champions, een bestuurbare auto, manga of een Nerf-blaster. Kijk vooral naar zijn hobby."], ["Wat is een leuk cadeau voor een meisje van 12?", "Tekenspullen, FIMO-klei, manga, een spel voor met vriendinnen zoals Hitster of een game. Kijk vooral naar waar ze nu fan van is."], ["Hoeveel geef je uit aan een cadeau voor een kind van 12?", "Dat bepaal je zelf. Voor een vriend of vriendin kiezen veel mensen iets van 15 tot 20 euro, voor familie vaak meer. In deze gids staat van elk bedrag iets."]] },
-    'kerstcadeau-tiener': { top: [['Onze topkeuze', 'tf-107001396'], ['Voor de gamer', 'joybuy-6a6fbf11cb'], ['Voor haar', 'pry-zh2x']], faq: [
+    'kerstcadeau-tiener': { top: [['Onze topkeuze', 'bol-9300000189466514'], ['Voor de gamer', 'joybuy-6a6fbf11cb'], ['Voor haar', 'pry-zh2x']], faq: [
       ['Wat geef je een tiener die alles al heeft?', 'Iets voor hun eigen kamer of hun hobby: een lamp, oordopjes van een bekend merk of iets voor het gamen. Of iets van een film of serie waar ze nu fan van zijn.'],
       ['Is geld geven aan een tiener een goed idee?', 'Veel tieners vinden geld prima, maar het voelt minder persoonlijk. Een tussenweg: een klein cadeau dat bij ze past, met wat geld erbij voor iets groters.'],
       ['Wat kost een goed kerstcadeau voor een tiener?', 'In deze gids lopen de cadeaus van 15 tot 79 euro. Rond de 25 tot 50 euro vind je al echte merkspullen, zoals oordopjes of een controller.']] },
