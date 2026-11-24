@@ -2872,6 +2872,7 @@
       if (g.labels && !(p.voor || []).some(function (v) { return g.labels.indexOf(v) !== -1; })) return false;
       if (g.kind && !kindCadeau(p)) return false; /* 11-11-2026: een collectie met alleen kindercadeaus (Schoencadeautjes) */
       if (g.winkels && g.winkels.indexOf(p.shop) === -1) return false; /* 18-11-2026: alleen winkels die zelf 'morgen in huis' zeggen (Nog op tijd voor pakjesavond) */
+      if (g.winkels && /met (je |eigen )?(naam|foto|tekst)|gegraveerd|graveren|gepersonaliseerd|personaliseer|eigen foto|naamketting|naambord|namen|portret van je|je eigen/i.test(p.titel || '') || (g.winkels && /^cg-pers/.test(p.id))) return false; /* 24-11-2026: met naam of foto duurt langer (CoolGift: 3 tot 9 werkdagen) */
       if (g.moment && (p.moment || []).indexOf(g.moment) === -1) return false;
       /* Uitdeelverpakkingen (tag 'uitdelen') kosten per stuk weinig, ook al is de hele doos duurder dan de maximale prijs. */
       if (g.maxPrijs && !(p.tags || []).includes('uitdelen') && !(typeof p.prijs === 'number' && p.prijs <= g.maxPrijs)) return false;
@@ -4715,28 +4716,30 @@
      5. Niet te veel van één soort (lootSoort): hooguit 3 lampjes, 2 spellen, 2 LEGO, 1 mok, 1 paar sloffen enz.
      6. Te weinig? Dan vult de oude bron aan (top van het feest, grappig, onder € 15, toppers, origineel) met dezelfde regels. */
   var LOOT_WOW = [
-    'dvzn-ebc9e55f71', 'dvzn-a8efee7908', 'mega-a6823ad51f', 'cl-rb-pokebal', 'dvzn-704963', 'dvzn-8301e7ef8f', 'dvzn-8e1b865150', 'dvzn-279882',
-    'dvzn-b2aa854352', 'dvzn-655af9bd06', 'dvzn-1a61ae70d9', 'dvzn-2ac54b6d6d', 'dvzn-0b435dbafd', 'coolgi-098cedb937', 'dvzn-4d97c0ab44', 'dvzn-96ba2b1949',
-    'hema-efaa95f521', 'dvzn-c15dcffb40', 'dvzn-6795', 'hema-9af19e566a', 'dgsw-5c2312daba', 'cadeau-32797fb340', 'dvzn-7fa21f9ec9', 'legoshop-05f7335d75',
-    'cl-capibara-warm', 'bol-9200000122182194', 'dvzn-8607c53284', 'dvzn-43cb3e6645', 'dvzn-8cd9a3bdbb', 'dvzn-6791', 'dgsw-dcba5f1bc9', 'lego-40460',
-    'cg-hidden-safe-clock', 'dvzn-284527', 'cg-toilet-basketball', 'dgsw-f8d291bf6b', 'cl-weerwolven', 'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon',
-    'dvzn-849140', 'cg-c472f3ec05', 'dvzn-f9a524b9f9', 't2-cadeau-nl-31dfd27d21', 'dvzn-29043e5ee8', 'dvzn-561478', 'cg-goudstaaf-deurstop', 'dvzn-633422',
-    'dvzn-9688f84b76', 'dvzn-b584c30354', 'cl-hitster', 'cl-exploding', 'dvzn-880ebf0fce', 'dvzn-5dbf032a22', 'cg-useless-box', 'dvzn-9fa32eee7e',
-    'dvzn-bb1222d1cd', 'dvzn-e0d7171bb3', 'dvzn-6aa21edc9a', 'mmf-63b16f5c97', 'cl-laneige-lip', 'amz-b0cp1927qy', 'dvzn-dcd93d79e7', 'amz-b0fcsxm3vp',
-    'amz-b0cx9gt83j', 'dvzn-df22fba87c', 'lego-77243', 'cg-b320632dae', 'dgsw-fc2899235e', 't2-nedgame-4639e1bcd1', 'parfum-45d8b68540', 'dvzn-995816',
-    'dvzn-4fa2e47d16', 'dvzn-403290', 'amz-b0851y4314', 'dvzn-614881', 'dvzn-1deadb3602', 'dvzn-746890', 'nedg-7c1aa8ede0', 'bol-9300000377799800',
-    'legoshop-f91cb50b25', 'dvzn-801397', 'dvzn-530181', 'dvzn-557193', 'dvzn-334815', 'dvzn-e572f57258', 't2-cadeau-nl-6e2c684cbd', 'dvzn-a4ed4f69b9',
-    'dvzn-195987', 'cl-wrebbit-hp-express', 'dvzn-814850', 'dvzn-436068', 'dvzn-779391', 'parfum-79e274528c', 'cl-vx-huntsman', 'bol-9300000060629305',
-    'bol-9300000183624857', 'bol-9300000236575345', 'dvzn-515371', 't2-fiftiesstore-0200cce51e', 'bol-9300000252617200', 'lego-10348', 'bol-9300000131876375', 'cl-atari-arcade',
-    'lego-72151', 'dgsw-labubu-big-into-energy', 'cl-azul', 'dvzn-0486864a03', 'cadeau-eaff32d056', 'dvzn-22f0aff1dc', 'dvzn-2bdaf68398', 'dvzn-86c555b6d6',
-    'nedg-9ea779e8fa', 'dgsw-8ac317da46', 'cg-913caa57b8', 'gadget-7e31d86ce4', 'cl-wolk-slaapmasker', 'dvzn-8a7b4143e9', 'dvzn-726291', 'hema-521a727d68',
-    'hema-32d780c657', 'cg-7fbf7836d1', 'coppens-f4f52115ac', 'dgsw-bd110d5515', 'dvzn-befe32d2ff', 'cadeau-13138252a6', 'nedg-aaef75274b', 'amz-b0gpf4v494',
-    'cadeau-8c9432bedb', 'dvzn-2a6f553405', 'dvzn-f42a99b966', 'dvzn-aea1a3388a', 'dvzn-56f047311d', 'dgsw-d246c1887c', 'dvzn-48bcf6ed40', 'dvzn-afce12f961',
-    'grotek-6da0c12381', 'parfum-4b477c5c6c', 'hobbym-edeb21f133', 'cadeau-0a6bd54cbe', 'dvzn-268544', 'cadeau-b636db132b', 'massa-da20a7c4ab', 'cg-b2176baf5e',
-    'cg-a2fee2ef6d', 'cadeau-fbccab6a9f', 'superz-0deb3f2e23', 'dvzn-671060bdfd', 'dvzn-34abc02c79', 'cg-pratende-flessenopener', 'nedg-22009b572a', 'bol-9300000156641539',
-    'nedg-a3cd45cffc', 'bol-9300000157550414', 'dvzn-5e2b855171', 'bol-9300000407615426', 'myzenf-3d83dcc6e1', 'nedg-76649e7ebb', 'dvzn-a26cec5b63', 'dvzn-fefa9fc445',
-    'megaga-d03d4974c4', 'dvzn-88a9a4b2f6', 'superz-f6728a4cdc', 'nedg-577c5da1d2', 'dvzn-323de59399', 'dvzn-83cb621761', 'emp-5fdfb36835', 'cg-kattendeurbel',
-    'nedg-e3dfabf90c', 'cl-30seconds', 'dgsw-43da623e7f', 'nedg-6e0ef6b467', 'badjas-458f974bf7'
+    'dvzn-a8efee7908', 'mega-a6823ad51f', 'cl-rb-pokebal', 'dvzn-704963', 'dvzn-8301e7ef8f', 'dvzn-8e1b865150', 'dvzn-279882', 'dvzn-b2aa854352',
+    'dvzn-655af9bd06', 'dvzn-1a61ae70d9', 'dvzn-2ac54b6d6d', 'dvzn-0b435dbafd', 'coolgi-098cedb937', 'dvzn-4d97c0ab44', 'hema-efaa95f521', 'dvzn-c15dcffb40',
+    'dvzn-6795', 'hema-9af19e566a', 'dgsw-5c2312daba', 'cadeau-32797fb340', 'dvzn-7fa21f9ec9', 'legoshop-05f7335d75', 'cl-capibara-warm', 'bol-9200000122182194',
+    'dvzn-8607c53284', 'dvzn-43cb3e6645', 'dvzn-8cd9a3bdbb', 'dvzn-6791', 'dgsw-dcba5f1bc9', 'lego-40460', 'cg-hidden-safe-clock', 'dvzn-284527',
+    'cg-toilet-basketball', 'dgsw-f8d291bf6b', 'cl-weerwolven', 'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon', 'dvzn-849140', 'cg-c472f3ec05',
+    'dvzn-f9a524b9f9', 't2-cadeau-nl-31dfd27d21', 'dvzn-29043e5ee8', 'dvzn-561478', 'cg-goudstaaf-deurstop', 'dvzn-633422', 'dvzn-9688f84b76', 'dvzn-b584c30354',
+    'cl-hitster', 'cl-exploding', 'dvzn-880ebf0fce', 'dvzn-5dbf032a22', 'cg-useless-box', 'dvzn-9fa32eee7e', 'dvzn-bb1222d1cd', 'dvzn-e0d7171bb3',
+    'dvzn-6aa21edc9a', 'mmf-63b16f5c97', 'cl-laneige-lip', 'amz-b0cp1927qy', 'dvzn-dcd93d79e7', 'amz-b0fcsxm3vp', 'amz-b0cx9gt83j', 'dvzn-df22fba87c',
+    'lego-77243', 'cg-b320632dae', 'dgsw-fc2899235e', 't2-nedgame-4639e1bcd1', 'parfum-45d8b68540', 'dvzn-995816', 'dvzn-4fa2e47d16', 'dvzn-403290',
+    'amz-b0851y4314', 'dvzn-614881', 'dvzn-1deadb3602', 'dvzn-746890', 'nedg-7c1aa8ede0', 'bol-9300000377799800', 'legoshop-f91cb50b25', 'dvzn-801397',
+    'dvzn-530181', 'dvzn-557193', 'dvzn-334815', 'dvzn-e572f57258', 't2-cadeau-nl-6e2c684cbd', 'dvzn-a4ed4f69b9', 'dvzn-195987', 'cl-wrebbit-hp-express',
+    'dvzn-814850', 'dvzn-436068', 'dvzn-779391', 'parfum-79e274528c', 'cl-vx-huntsman', 'bol-9300000060629305', 'bol-9300000236575345', 'dvzn-515371',
+    'bol-9300000252617200', 'lego-10348', 'bol-9300000131876375', 'cl-atari-arcade', 'lego-72151', 'dgsw-labubu-big-into-energy', 'cl-azul', 'dvzn-0486864a03',
+    'cadeau-eaff32d056', 'dvzn-22f0aff1dc', 'dvzn-2bdaf68398', 'dvzn-86c555b6d6', 'nedg-9ea779e8fa', 'dgsw-8ac317da46', 'cg-913caa57b8', 'gadget-7e31d86ce4',
+    'cl-wolk-slaapmasker', 'dvzn-8a7b4143e9', 'dvzn-726291', 'hema-521a727d68', 'hema-32d780c657', 'cg-7fbf7836d1', 'coppens-f4f52115ac', 'dgsw-bd110d5515',
+    'dvzn-befe32d2ff', 'cadeau-13138252a6', 'nedg-aaef75274b', 'amz-b0gpf4v494', 'cadeau-8c9432bedb', 'dvzn-2a6f553405', 'dvzn-f42a99b966', 'dvzn-aea1a3388a',
+    'dvzn-56f047311d', 'dgsw-d246c1887c', 'dvzn-48bcf6ed40', 'dvzn-afce12f961', 'grotek-6da0c12381', 'parfum-4b477c5c6c', 'hobbym-edeb21f133', 'cadeau-0a6bd54cbe',
+    'dvzn-268544', 'massa-da20a7c4ab', 'cg-b2176baf5e', 'cg-a2fee2ef6d', 'cadeau-fbccab6a9f', 'superz-0deb3f2e23', 'dvzn-671060bdfd', 'dvzn-34abc02c79',
+    'cg-pratende-flessenopener', 'nedg-22009b572a', 'bol-9300000156641539', 'nedg-a3cd45cffc', 'bol-9300000157550414', 'dvzn-5e2b855171', 'bol-9300000407615426', 'myzenf-3d83dcc6e1',
+    'nedg-76649e7ebb', 'dvzn-a26cec5b63', 'dvzn-fefa9fc445', 'megaga-d03d4974c4', 'dvzn-88a9a4b2f6', 'superz-f6728a4cdc', 'nedg-577c5da1d2', 'dvzn-323de59399',
+    'dvzn-83cb621761', 'emp-5fdfb36835', 'cg-kattendeurbel', 'nedg-e3dfabf90c', 'cl-30seconds', 'dgsw-43da623e7f', 'nedg-6e0ef6b467', 'badjas-458f974bf7',
+    'sissyb-db0d2580f6', 'sissyb-8223bb0b04', 'bol-9300000155138677', 'dgsw-c7416f7ea7', 'dgsw-8cf35062f6', 'dvzn-b9804588f7', 'dgsw-b955edca75', 'knufp-58e5742d80',
+    'knufp-ce77d9bc35', 'bol-9300000285102373', 'dgsw-78c80fef41', 'g999-209abf9b99', 'bgs-9468874c35', 'coolbl-9e1184c3a9', 'dgsw-54a01809b3', 'dgsw-d4414b0434',
+    'superz-cb3df466a2'
   ];
   /* 22-11-2026: meer kerst bij elk budget (twee derde van de groepen trekt nu voor Kerst); bij Kerst hooguit twee, bij Sint één. */
   var LOOT_THEMA = {

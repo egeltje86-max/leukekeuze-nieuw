@@ -1188,3 +1188,10 @@ Marius: 'ik heb 1 keer wat gezegd over opzij schuiven en nu let je elke keer daa
 - Alleen voor bezoekers (WIJZER b); Google houdt de gewone volgorde. Uit: `window.LK_CADEAUZIEL_FASE2 = false`; zelf vergelijken: `?proef=cadeauziel-uit` (weer aan `?proef=cadeauziel`).
 - Getest 24-11 op 390 px als bezoeker: de etalages beginnen met de keuze van Nova, 'Kerst voor hem' 12 van 12 gelijk, Black Friday ongewijzigd, niets zijwaarts, geen fouten.
 - Nieuwe ronde van Nova: `openingen.json` vervangen en `maak.js` draaien, dan bouwen.
+
+## 89. Beoordeling Nova 24-11-2026 (7,8/10) en wat we ermee doen
+Nova: 'het ontwerp is inmiddels sterker dan de inhoudelijke cadeau-indeling'. Let op: Nova bekijkt de site als programma en krijgt dus de versie voor Google (WIJZER 'a', de oude homepage); de Cadeaustraat is voor bezoekers wél live op /.
+- **Punt 1 (GO Marius 24-11):** wat geen eten is uit Eten & drinken naar een passend vakje (`vak` in correcties.json), bloemen en brievenbusbloemen pas vanaf plek 25 in de top van Cadeaupakketten en Eten & drinken (binnen de eerste 36, Google-set gelijk), en geen groot aantal ('3.201 cadeaus') meer in de kop van de winkels: boven 150 staat er 'Met de hand uitgezocht' (`winkelKop` en de stand van de straat in straat.js).
+- **Punt 2:** de eerste 12 tot 24 per pagina moeten 'wauw' zijn: dat doet Operatie Cadeauziel (§88); meten op 1 december.
+- **Punt 3 (te veel ingangen: zoekbalk, menu, gevels, ontvangers, filters, gidsen, acties): pas NA pakjesavond (6 december of later) oppakken** (Marius 24-11: 'onthoud dat we 3 na pakjesavond gaan doen'). Nu niets aan de vormgeving veranderen.
+- **Punt 4:** gewone winkelartikelen tussen de vondsten: WEG-rondes per soort, alleen als Marius wil tikken.
