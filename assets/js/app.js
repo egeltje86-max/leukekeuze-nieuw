@@ -7383,7 +7383,7 @@
         { kop: 'Rozen die nooit verwelken', tekst: 'Echte rozen door de brievenbus, of rozen van LEGO die je samen bouwt en die altijd blijven staan.',
           ids: ['lego-40460', 'bp-l087', 'bp-l001'] },
         { kop: 'Even helemaal verwend', tekst: 'Een warm bad, een zachte crème of een massage: kleine verwenmomenten om samen van te genieten.',
-          ids: ['dk-00031412', 'bol-9200000028156878', 'parfum-5519078921'] },
+          ids: ['cl-dk-scrub', 'bol-9200000028156878', 'parfum-5519078921'] },
         { kop: 'Tip: schrijf er een kaartje bij', tekst: 'Het cadeau is mooi, maar de woorden blijven het langst. Schrijf er een paar zinnen bij over wat je zo leuk aan haar vindt. Dat kaartje bewaart ze vaak nog jaren.' }
       ],
       slot: 'Meer romantische ideeën staan bij <a href="/c/valentijn">Liefde & Valentijn</a>. Zoek je iets voor hem? Lees dan <a href="/gids/valentijnscadeau-voor-hem">Valentijnscadeau voor hem</a>.' },
@@ -7686,7 +7686,7 @@
       ['Wat geef je een hondenliefhebber?', 'Iets voor de hond zelf, zoals stevig speelgoed, of iets voor het baasje, zoals een voerbak die mooi staat in huis.'],
       ['Mag ik hondensnoepjes cadeau geven?', 'Liever niet zonder het te vragen. Veel honden hebben een allergie of volgen een dieet. Speelgoed is altijd veilig.'],
       ['Welk speelgoed is goed voor een hond die alles kapot maakt?', 'Stevig rubber speelgoed, zoals van KONG. Pluche en stof zijn dan snel stuk.']] },
-    'valentijnscadeau-voor-haar': { top: [['Onze topkeuze', 'pry-k729'], ['Rozen die blijven', 'lego-40460'], ['Om te verwennen', 'dk-00031412']], faq: [
+    'valentijnscadeau-voor-haar': { top: [['Onze topkeuze', 'pry-k729'], ['Rozen die blijven', 'lego-40460'], ['Om te verwennen', 'cl-dk-scrub']], faq: [
       ['Wat geef je je vriendin voor Valentijn?', 'Een sieraad met een hartje, rozen die niet verwelken of een verwenmoment. Met een handgeschreven kaartje erbij zegt het meer dan een duur cadeau.'],
       ['Wanneer is het Valentijnsdag?', 'Elk jaar op 14 februari.'],
       ['Hoeveel geef je uit aan een valentijnscadeau?', 'Dat bepaal je zelf. In deze gids lopen de ideeën van ongeveer 10 tot 180 euro, dus er is voor elk budget iets.']] },
