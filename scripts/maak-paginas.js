@@ -64,6 +64,12 @@ function zet(html, re, nieuw) { if (!re.test(html)) throw new Error('niet gevond
 /* Structured data voor Google: de site met zoekvak (home), kruimelpad (alle pagina's) en product (productpagina's). */
 /* Merknamen per product (scripts/merken.json, uit de Productstudio-rondes), voor 'brand' in de Product-gegevens (Search Console, 28-10-2026). */
 const MERKEN = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'merken.json'), 'utf8')); } catch (e) { return {}; } })();
+/* Google-herstel (24-11-2026, GO Marius): EAN en merk uit de officiële bol-feeds (scripts/seo/productcodes.json, alleen het product van de link,
+   EAN met controlecijfer). Daarnaast het merk uit de productlijst zelf. Zo kan Google een product beter herkennen. 'Merkloos' en zo telt niet. */
+const PCODES = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'seo', 'productcodes.json'), 'utf8')).bol || {}; } catch (e) { return {}; } })();
+const LEAN_MERK = {};
+const GEEN_MERK = /^(merkloos|onbekend|huismerk|generic|geen merk|no brand|unbranded|diversen|-)$/i;
+const merkVoor = (id, leanMerk) => { const m = MERKEN[id] || (leanMerk && !GEEN_MERK.test(leanMerk) ? leanMerk : '') || (PCODES[id] && PCODES[id].merk) || ''; return m || undefined; };
 function maakLd(info, url) {
   const uit = [];
   if (info.pad === '/') uit.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'LeukeKeuze', url: SITE + '/',
@@ -89,7 +95,7 @@ function maakLd(info, url) {
   if (p && p.prijs > 0) {
     const beeld = info.beeld ? (/^https?:/.test(info.beeld) ? info.beeld : SITE + '/' + info.beeld.replace(/^\//, '')) : undefined;
     /* EAN (gtin13) als het product-id er een bevat, met controle van het laatste cijfer (31-10-2026). */
-    const ean = (p.id.match(/^(?:dw|kw|inv|dgsw|dvzn|tf|bt|drm|hema)-(\d{13})$/) || [])[1];
+    const ean = (p.id.match(/^(?:dw|kw|inv|dgsw|dvzn|tf|bt|drm|hema)-(\d{13})$/) || [])[1] || (PCODES[p.id] && PCODES[p.id].ean);
     const eanOk = ean && (10 - ean.split('').slice(0, 12).reduce((s, c, i) => s + (+c) * (i % 2 ? 3 : 1), 0) % 10) % 10 === +ean[12];
     uit.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.naam, gtin13: eanOk ? ean : undefined, brand: p.merk ? { '@type': 'Brand', name: p.merk } : undefined, description: p.tekst || undefined, image: beeld, url,
       /* GOOGLE-HERSTEL (19-11-2026, GO Marius 08:12): verkopersvermeldingen zijn volgens Google alleen voor pagina's waar je zelf koopt
@@ -259,6 +265,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   /* 24-11-2026: de site laadt producten-site.js (zonder afgekeurde producten). Voor het doorsturen van hun oude adressen en de keuze voor Google
      gebruikt de bouw daarom de volledige lijst uit producten-lean.js, net als eerst. */
   const ALLE = (() => { const w = { dispatchEvent() {} }; new Function('window', 'document', 'Event', fs.readFileSync(path.join(ROOT, 'assets/js/producten-lean.js'), 'utf8'))(w, { createEvent: () => ({ initEvent() {} }) }, function () {}); return w.LK_PRODUCTEN; })();
+  ALLE.forEach(p => { if (p.merk) LEAN_MERK[p.id] = p.merk; });
   const samen = ALLE.filter(p => p.status === 'samengevoegd' && p.samengevoegd).map(p => [p.id, p.samengevoegd]);
   /* Stap 8 (1-11-2026): uitverkochte en weggehaalde producten krijgen geen 404, maar sturen door naar hun vakje (oude links, pins, Google). */
   const weg = ALLE.filter(p => p.status === 'afgekeurd' && p.cat && p.sub).map(p => [p.id, p.cat, p.sub]);
@@ -363,7 +370,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     if (/:$/.test(oms)) oms = r.h1 + ' van LeukeKeuze: met de hand gekozen cadeaus, je koopt bij bekende winkels.';
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, h1: r.h1, gidsItems: r.gidsItems || null, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: MERKEN[r.prod.id] }) : r.prod, deel: r.deel, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, h1: r.h1, gidsItems: r.gidsItems || null, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: merkVoor(r.prod.id, (LEAN_MERK[r.prod.id] || '')) }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) || !!(GOOGLE && r.prod && r.prod.status === 'goedgekeurd' && !GOOGLE.has(r.prod.id)) });
   }
   await browser.close(); srv.close();

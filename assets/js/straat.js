@@ -949,6 +949,7 @@
         (x.naar && !x.top ? '<a class="naar" href="' + x.naar + '">' + (x.los ? 'Alles uit ' + esc(x.naam) : 'Alle ' + getal(x.lijst.length) + ' uit ' + esc(x.naam)) + ' ›</a>' : '') + '</div></section>';
       if (x.top && o.naEtalage) h += '<div class="ws-extra">' + o.naEtalage + '</div>';
     });
+    if (o.onder) h += '<div class="ws-extra ws-onder">' + o.onder + '</div>';
     if (o.alles) h += '<p class="alles-lijst"><a href="' + o.alles + '">Alle ' + getal(o.totaal || lijst.length) + ' cadeaus in één lijst, met sorteren en filteren ›</a></p>';
     h += '<a class="terug" href="/">‹ Terug naar de Cadeaustraat</a>';
     return '<div class="sh ws"><div class="sh-binnen" style="--k:' + (w ? w.k : (o.kleur || WS_KLEUR)) + '">' + h + '</div></div>';
@@ -963,6 +964,7 @@
       var vakken = (s.vakjes || []).filter(function (x) { return x.slug === v.slug || (hz && window.LK.zichtbaar().some(function (p) { return hz(p, c.slug, s.slug, x.slug); })); });
       o.eenLijst = true; o.label = s.naam; o.terug = ['/c/' + c.slug + '/' + s.slug + '/', 'Terug naar ' + s.naam]; o.etalage = false;
       o.tekst = v.tekst || ''; o.ic = v.beeld ? '/' + v.beeld : groepIcoon(c.slug, s.slug);
+      if (v.faq && window.LK_GIDSFAQ) o.onder = window.LK_GIDSFAQ(v); /* 24-11-2026: vragen onderaan het vakje (Google-herstel) */
       o.buren = vakken.map(function (x) { return { naam: x.naam, naar: '/c/' + c.slug + '/' + s.slug + '/' + x.slug + '/', aan: x.slug === v.slug }; });
     } else if (s) {
       o.terug = ['/c/' + c.slug + '/', 'Terug naar ' + c.naam]; o.label = c.naam; o.tekst = s.tekst || '';

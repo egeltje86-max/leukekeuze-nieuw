@@ -1,5 +1,5 @@
 {
- "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man. 14-11-2026: gids verlanglijstje-maken. 23-11-2026 (Sitewacht, Marius: 'alles voor betere verkopen en meer klanten'): productpagina's die Google op plek 4 tot 10 toont maar waar niemand op klikt, kregen een titel die zegt wat wij extra geven: 'ons advies + prijs' en in de omschrijving voor wie het leuk is en voor wie niet. Zo heeft iemand die de productnaam zoekt een reden om naast de winkel ook ons aan te klikken. De prijs volgt altijd de echte prijs. Uitverkochte producten krijgen geen eigen titel meer (stond nog '€17,56 bij bol' bij een uitverkocht product).",
+ "_uitleg": "9-11-2026 (GO Marius, Sitewacht): eigen Google-titel en -omschrijving voor pagina's die Google vaak toont maar waar weinig op geklikt wordt. Alleen wat in Google staat verandert; de pagina zelf niet. {datum} = laatste prijscontrole van het product. maak-paginas.js leest dit bestand. 12-11-2026: korte Google-titels voor de antwoordpagina's per leeftijd (de titel op de pagina was te lang en werd afgekapt). 12-11-2026: korte Google-titels voor de vier kerstgidsen (moeder, vader, vriend, vriendin). 14-11-2026: Google-titels voor de Sint-rijmmachine (zoekwoord sinterklaas gedicht) en Lootjes trekken. 14-11-2026: surprise-maken gericht op het zoekwoord surprise ideeën (9.900 per maand). 14-11-2026: kerstcadeau-voor-haar/-hem gericht op kerstcadeau vrouw/man. 14-11-2026: gids verlanglijstje-maken. 23-11-2026 (Sitewacht, Marius: 'alles voor betere verkopen en meer klanten'): productpagina's die Google op plek 4 tot 10 toont maar waar niemand op klikt, kregen een titel die zegt wat wij extra geven: 'ons advies + prijs' en in de omschrijving voor wie het leuk is en voor wie niet. Zo heeft iemand die de productnaam zoekt een reden om naast de winkel ook ons aan te klikken. De prijs volgt altijd de echte prijs. Uitverkochte producten krijgen geen eigen titel meer (stond nog '€17,56 bij bol' bij een uitverkocht product). 24-11-2026 (Google-herstel, GO Marius): nieuwe titels voor kerstcadeau-vader, afscheidscadeau-collega, cadeau-voor-moeder, surprise-maken, Cadeaupakketten en Pantoffels & sloffen, op de zoekwoorden waarvoor Google ze al op plek 55 tot 95 liet zien.",
  "/p/bol-9300000252262265/": {
   "titel": "Peekimo interactieve ketting (5-10 jaar): ons advies + prijs",
   "omschrijving": "Is de Peekimo-ketting een goed cadeau? Voor wie het leuk is en voor wie niet, de prijs (€0 bij bol, gecontroleerd op {datum}) en wat erop lijkt."
@@ -65,7 +65,7 @@
   "omschrijving": "Sinterklaascadeau voor een vrouw, moeder of zus: 20 ideeën om te verwennen, voor in huis of voor de lootjes. Bijna alles onder €30, met de prijs erbij."
  },
  "/gids/surprise-maken/": {
-  "titel": "Surprise ideeën: 25 leuke surprises + zo maak je ze",
+  "titel": "Surprise maken: 25 originele surprise ideeën + stappenplan",
   "omschrijving": "Surprise ideeën voor Sinterklaas: 25 ideeën per persoon, ideeën voor kinderen, een stappenplan in 6 stappen, snelle surprises zonder knutselen en tips voor het gedicht."
  },
  "/c/tuin-klussen/tuingereedschap/handgereedschap-tuin/": {
@@ -145,7 +145,7 @@
   "titel": "Kerstcadeau moeder: 24 ideeën om haar te verwennen"
  },
  "/gids/kerstcadeau-vader/": {
-  "titel": "Kerstcadeau vader: 24 ideeën voor de man die alles heeft"
+  "titel": "Kerstcadeau voor je vader of papa: 24 leuke ideeën voor Kerst 2026"
  },
  "/gids/kerstcadeau-vriendin/": {
   "titel": "Kerstcadeau vriendin: 24 ideeën om haar te verrassen"
@@ -247,7 +247,7 @@
   "omschrijving": "Cadeau voor een vrouw: 24 ideeën in zes soorten, van verwennen en knus tot champagne, iets voor in huis, zelf maken en iets persoonlijks. Met de prijs erbij."
  },
  "/gids/afscheidscadeau-collega/": {
-  "titel": "Afscheidscadeau collega: 24 ideeën voor een mooi afscheid",
+  "titel": "Afscheidscadeau collega: 24 ideeën, van afscheidsboek tot grappig cadeautje",
   "omschrijving": "Afscheidscadeau voor een collega: 24 ideeën, van een invulboek van het hele team en een mok met een knipoog tot iets lekkers en iets voor wie met pensioen gaat. Met de prijs erbij."
  },
  "/gids/kerstcadeau-ideeen/": {
@@ -384,5 +384,15 @@
  "/woordzoeker/": {
   "titel": "Woordzoeker maken: gratis met eigen woorden en printen",
   "omschrijving": "Maak gratis een woordzoeker met je eigen woorden, of print een kant-en-klare: Sinterklaas, kerst, winter, dieren voor kinderen en in grote letters. Ook te spelen op je telefoon."
+ },
+ "/gids/cadeau-voor-moeder/": {
+  "titel": "Cadeau voor moeder of mama: leuke ideeën voor haar verjaardag of Kerst"
+ },
+ "/collectie/cadeaupakketten/": {
+  "titel": "Cadeaupakket kopen: leuke cadeaupakketten en verwenpakketten"
+ },
+ "/c/mode-sieraden/schoenen-sloffen/pantoffels-sloffen/": {
+  "titel": "Pantoffels en sloffen cadeau voor dames, heren en kinderen",
+  "omschrijving": "Pantoffels en sloffen als cadeau: grappige dierensloffen voor kinderen, warme sloffen voor dames en heren en sloffen die je in de magnetron opwarmt. Met de hand gekozen, met de prijs erbij."
  }
 }
