@@ -10,6 +10,10 @@ const extra = process.argv[3] && process.argv[3] !== 'streng' ? new Set(JSON.par
 const STRENG = process.argv.indexOf('streng') !== -1;
 global.window = { dispatchEvent() {} }; global.Event = function () {}; global.document = { createEvent: () => ({ initEvent() {} }) };
 require(R + 'assets/js/producten-lean.js'); const M = {}; window.LK_PRODUCTEN.forEach(p => M[p.id] = p);
+/* 24-11-2026: wat de prijswacht vandaag als 'niet meer te koop' meldt (assets/data/prijzen-nu.json, w: 1), toont de site meteen niet meer.
+   Tel het hier dus ook als weg, anders belooft een gids 24 en toont hij er 23 zonder dat de controle het ziet. */
+try { const pn = JSON.parse(require('fs').readFileSync(R + 'assets/data/prijzen-nu.json', 'utf8')).p || {};
+  Object.keys(pn).forEach(id => { if (pn[id] && pn[id].w && M[id]) M[id] = Object.assign({}, M[id], { status: 'uitverkocht' }); }); } catch (e) {}
 const eind = i => { const p = M[i]; return p && p.samengevoegd ? p.samengevoegd : i; };
 /* 15-11-2026: drank (p.drank) telt in een gewone gids als weg; alleen een drankgids (drank: true, de gids voor een wijnliefhebber) mag drank tonen. */
 let DRANKGIDS = false;
