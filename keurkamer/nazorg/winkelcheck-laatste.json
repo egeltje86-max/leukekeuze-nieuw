@@ -1,19 +1,16 @@
 {
- "datum": "2026-11-24",
- "nagekeken": 727,
- "klopt": 286,
- "prijs": 49,
- "weg": 3,
- "onbekend": 384,
- "zonderAdres": 58,
- "twijfelWinkels": [
-  "De Grote Speelgoedwinkel"
- ],
+ "datum": "2026-11-25",
+ "nagekeken": 705,
+ "klopt": 342,
+ "prijs": 4,
+ "weg": 4,
+ "onbekend": 355,
+ "zonderAdres": 59,
+ "twijfelWinkels": [],
  "grotePrijssprong": [],
  "nietLeesbaar": [
-  "Decantalo: 265",
-  "Joybuy: 38",
-  "Wijnkring: 30",
-  "Kaartje2go: 24"
+  "Decantalo: 264",
+  "Joybuy: 32",
+  "Wijnkring: 30"
  ]
 }
