@@ -174,7 +174,7 @@ au_terug = set()
 # LEGO 79, 999 Games 46, Prydligt 43 ...), dus de koppeling klopt en ze krijgen weer elke dag een verse controle uit de feed.
 DC_PAD_OK = {'Doenkado', 'Bloompost', 'Butchery', 'Butchery.nl', 'Razer', 'Dille & Kamille', 'LEGO', '999Games', 'Prydligt', 'Kerstland',
              'Svinando', 'Bartogi', 'Teufel', 'Invicta', 'Fietsparadijs', 'Top4Running', 'WoodWick', 'Zadig & Voltaire', 'Dr. Martens',
-             "Nature's Gift", 'La Redoute', 'Vipio'}
+             "Nature's Gift", 'La Redoute', 'Vipio', 'Sif Jakobs'}
 def _dom(u):
     try: d = urllib.parse.urlsplit(u).netloc.lower()
     except Exception: return ''

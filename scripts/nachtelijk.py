@@ -68,6 +68,7 @@ FEED = {  # bestandsnaam: feed (NIET Mijn Hummeltje 16616: dropshipping, wens va
     'x-olijfolie': '&standard_id=4&language_code=nl&locale_id=1&program_id=20259',       # Olijfolie Concurrent, goedgekeurd 10-11-2026
     'x-majakoi': '&standard_id=1&language_code=nl&locale_id=1&program_id=15904',         # MaJa Koi (vijver/aquarium), goedgekeurd 10-11-2026
     'x-fitwinkel': '&standard_id=1&language_code=nl&locale_id=1&program_id=12318',       # Fitwinkel (sport), feedlink van Marius 19-11-2026
+    'x-sifjakobs': '&standard_id=7&language_code=en&locale_id=1&program_id=21808',       # Sif Jakobs (sieraden), feedlink van Marius 25-11-2026
 }
 # Grote feeds: alleen een deel bewaren (regex op titel of categorie, min- en maxprijs). Westwing: geen meubels, wel decoratie en cadeaus.
 FILTER = {
