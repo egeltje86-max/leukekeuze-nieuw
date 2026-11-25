@@ -421,7 +421,8 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     'c/cadeaus/adventskalenders': '/collectie/adventskalenders/', 'c/eten-drinken/adventskalenders': '/collectie/adventskalenders/', 'c/christelijk/onder-25': '/c/christelijk/'
   };
   /* 05-11-2026: oude adressen die Google nog kent en die 'Niet gevonden' gaven (sitecontrole). Zie scripts/boom/correcties.json. */
-  try { Object.assign(VERHUISD, JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/correcties.json'), 'utf8')).adressen || {}); } catch (e) {}
+  let HAND_ADRES = {};
+  try { HAND_ADRES = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/boom/correcties.json'), 'utf8')).adressen || {}; Object.assign(VERHUISD, HAND_ADRES); } catch (e) {}
   for (const [oudPad, nieuwPad] of Object.entries(vakVerhuis)) if (!VERHUISD[oudPad]) VERHUISD[oudPad] = nieuwPad;
   /* Samengevoegde producten (dubbel op de site): de oude productpagina stuurt door naar het product dat we hielden. */
   for (const [id, naar] of samen) if (!VERHUISD['p/' + id]) VERHUISD['p/' + id] = '/p/' + naar + '/';
@@ -441,7 +442,10 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
   for (const [oudPad, nieuwPad] of Object.entries(VERHUISD)) {
     const doel = path.join(ROOT, oudPad, 'index.html');
     const altijd = /^c\/(cadeaus|mode-beauty)\//.test(oudPad) || (/^c\//.test(oudPad) && !nuEcht.has(oudPad));
-    if (!altijd && fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
+    /* 25-11-2026: een vakje dat met de hand in correcties.json -> adressen staat en geen enkel cadeau meer toont (alleen uitverkochte
+       producten hielden de pagina in leven) stuurt toch door. Een pagina met cadeaus wordt nooit overschreven. */
+    const leegHand = !altijd && HAND_ADRES[oudPad] && /^c\//.test(oudPad) && fs.existsSync(doel) && !/class="(pk|prodkaart)/.test(fs.readFileSync(doel, 'utf8'));
+    if (!altijd && !leegHand && fs.existsSync(doel) && !/data-verhuisd/.test(fs.readFileSync(doel, 'utf8'))) continue; // nooit een echte pagina overschrijven
     fs.mkdirSync(path.dirname(doel), { recursive: true });
     fs.writeFileSync(doel, '<!doctype html>\n<html lang="nl" data-verhuisd><head><meta charset="utf-8">\n<title>Deze pagina is verhuisd | LeukeKeuze</title>\n' +
       '<link rel="canonical" href="' + SITE + nieuwPad + '">\n<meta http-equiv="refresh" content="0; url=' + nieuwPad + '">\n' +
