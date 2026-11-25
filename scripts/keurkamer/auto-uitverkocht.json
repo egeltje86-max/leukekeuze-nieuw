@@ -1,6 +1,6 @@
 {
  "uitleg": "Producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei niet op voorraad). Staan ze weer leverbaar in een feed, dan zet de controle ze vanzelf terug op de site. Wat met de hand op uitverkocht of afgekeurd staat, komt hier nooit in.",
- "bijgewerkt": "2026-11-24",
+ "bijgewerkt": "2026-11-25",
  "producten": {
   "bol-9200000091616642": {
    "datum": "2026-11-21",
@@ -2258,15 +2258,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbuffalo-sjoelbak-explorer-145-cm%2F9200000125065944%2F",
    "titel": "Buffalo sjoelbak 145 cm"
   },
-  "dk-00015663": {
-   "datum": "2026-11-24",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-dille.json",
-   "shop": "Dille & Kamille",
-   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=94cda91597d1032a74f84c9016cf513d&dl=gieter-zink-naturel-2-liter-00015663.html%3Fchannable%3D01240b736b7500303030313536363305&ws=",
-   "winkelUrl": "https://www.dille-kamille.nl/gieter-zink-naturel-2-liter-00015663.html",
-   "titel": "Zinken gieter, 2 liter"
-  },
   "dw-680275066859": {
    "datum": "2026-11-24",
    "bron": "winkelpagina",
@@ -2629,6 +2620,338 @@
    "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Ftone-cheer-booknook-cybercity-diy-modelbouw-knutselen",
    "winkelUrl": "https://www.grotekadoshop.nl/tone-cheer-booknook-cybercity-diy-modelbouw-knutselen",
    "titel": "Tone-Cheer book nook Cyber City"
+  },
+  "fitwin-40f541cc58": {
+   "datum": "2026-11-25",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-fitwinkel.json",
+   "shop": "Fitwinkel",
+   "url": "https://rep2.fitwinkel.nl/c/?si=12318&li=1555148&wi=433339&pid=5be9169d42fcb6772e1d2a4929984f7e&dl=products%2Fgarlando-f-zero-tafelvoetbal-grijs-eiken%3Fvariant%3D61881021759818&ws=",
+   "winkelUrl": "https://www.fitwinkel.nl/products/garlando-f-zero-tafelvoetbal-grijs-eiken?variant=61881021759818",
+   "titel": "Garlando F-Zero tafelvoetbal voor kinderen (grijs eiken)"
+  },
+  "joybuy-5ec8ad0448": {
+   "datum": "2026-11-25",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-joybuy.json",
+   "shop": "Joybuy",
+   "url": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=3b0f438339b332a12fbf2528c9b4b1bf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100006350108658%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fkerst-schattige-beer-cadeaudoosvormig-vloerkleed-deurmat%252F100006350108658%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=3b0f438339b332a12fbf2528c9b4b1bf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100006350108658%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fkerst-schattige-beer-cadeaudoosvormig-vloerkleed-deurmat%252F100006350108658%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
+   "titel": "Kerstkleed beer in een cadeaudoos (80 x 68 cm)"
+  },
+  "dk-00017721": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=cff90fb9915791df79d19d42e07386a1&dl=chocolade-kerststerren-8-stuks-ca-130-gram-00017721.html%3Fchannable%3D01240b736b7500303030313737323182&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/chocolade-kerststerren-8-stuks-ca-130-gram-00017721.html",
+   "titel": "Chocolade kerststerren (8 stuks)"
+  },
+  "dvzn-0da916de6c": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fstar-wars-projectiezaklamp%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fstar-wars-projectiezaklamp%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Star Wars projectiezaklamp"
+  },
+  "dgsw-b6218d357c": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbouwspeelgoed%2Fwetenschap%2Fnational-geo-kristal-lab%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbouwspeelgoed%2Fwetenschap%2Fnational-geo-kristal-lab%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "National Geographic kristallab: kweek je eigen kristal"
+  },
+  "dgsw-8f9f1bfbf3": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flegpuzzels%2Fvloerpuzzels%2Fvloerpuzzel-mega-nijntje-24-stuks%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/legpuzzels/vloerpuzzels/vloerpuzzel-mega-nijntje-24-stuks/",
+   "titel": "Nijntje mega vloerpuzzel (24 stukjes)"
+  },
+  "cl-bushmills": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=180b57f63956d93f0fec9ade6bdb52e1&dl=nl%2Fbushmills-original.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/bushmills-original.html#/54-formaat-70_cl/177-jaar-geen_jaar",
+   "titel": "Bushmills Original"
+  },
+  "cl-ld-bunny": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flittle-dutch%2Flittle-dutch-knuffel-baby-bunny-15-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flittle-dutch%2Flittle-dutch-knuffel-baby-bunny-15-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Little Dutch knuffel konijn (15 cm)"
+  },
+  "dc-2874880424": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/henri-bourgeois-sancerre-la-vigne-blanche.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=35f53f82a5a6e0d54e5c5aeb3eadea21&dl=nl%2Fhenri-bourgeois-sancerre-la-vigne-blanche.html%23%2F1-formaat-75_cl%2F231-jaar-2025&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/henri-bourgeois-sancerre-la-vigne-blanche.html",
+   "titel": "Henri Bourgeois Sancerre 2025"
+  },
+  "dk-00030926": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=fc872a9466a5e8f12e46e2c225f8087f&dl=potje-met-kerstboompje-00030926.html%3Fchannable%3D01240b736b75003030303330393236c6&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/potje-met-kerstboompje-00030926.html",
+   "titel": "Kweek je eigen kerstboom"
+  },
+  "dk-00044932": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=95f4607c73e8cc411986a7d1cbb0a951&dl=cadeaupakket-appeltaart-00044932.html%3Fchannable%3D01240b736b7500303030343439333213&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/cadeaupakket-appeltaart-00044932.html",
+   "titel": "Cadeaupakket 'Appeltaart' (Dille & Kamille)"
+  },
+  "dk-00031412": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=46cd11b39fa919a69d46c9729577737d&dl=massageolie-vijg-roos-100ml-00031412.html%3Fchannable%3D01240b736b75003030303331343132a1&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/massageolie-vijg-roos-100ml-00031412.html",
+   "titel": "Massageolie vijg en roos"
+  },
+  "dvzn-389378": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fautorace-pinball-spel%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/autorace-pinball-spel",
+   "titel": "Mini-flipperkast met racethema"
+  },
+  "dvzn-62ef2a06c2": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fcirkelzaag-pizzames%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fcirkelzaag-pizzames%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Pizzames in de vorm van een cirkelzaag"
+  },
+  "eufr-a34a928f8e": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "eu.fragrance.com",
+   "url": "https://tc.tradetracker.net/?c=39204&m=2433689&a=516846&r=&u=https%3A%2F%2Feu.fragrance.com%2Fnl-nl%2Fproducts%2Frituals-karma-giftset-120-ml-8570%3Futm_campaign%3D%257BaffiliateSiteName%257D%26utm_content%3D%26utm_source%3Dtradetracker_nl%26utm_medium%3Daffiliate%26utm_term%3D%26variant%3D56335079473537",
+   "winkelUrl": "https://eu.fragrance.com/nl-nl/products/rituals-karma-giftset-120-ml-8570?variant=56335079473537",
+   "titel": "Rituals The Ritual of Karma kleine giftset (120 ml)"
+  },
+  "lego-21353": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=e70a58285ee30771b5e2931ecd97d5fc&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416474657%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fthe-botanical-garden-21353&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/21353",
+   "titel": "LEGO botanische tuin (21353)"
+  },
+  "legoshop-329f1fe89e": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=7371d4b41108cfc310b9c2e19c50b1b6&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590186%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fbeach-fun-with-lilo-stitch-43280&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/beach-fun-with-lilo-stitch-43280",
+   "titel": "LEGO Disney Strandplezier met Lilo en Stitch (43280)"
+  },
+  "legoshop-b66dd9a08d": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=67790ace0c12473c718816aade36da53&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416470793%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fpolice-car-and-muscle-car-chase-60415&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/police-car-and-muscle-car-chase-60415",
+   "titel": "LEGO City Politiewagen en snelle autoachtervolging (60415)"
+  },
+  "legoshop-ba9006ada0": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8bbfaa7d0d5f09b6eea8ca1e2beab8d8&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416532579%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Frecord-player-with-flowers-31172&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/record-player-with-flowers-31172",
+   "titel": "LEGO Creator 3in1 Platenspeler met bloemen (31172)"
+  },
+  "legoshop-ee238b0dec": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=985f08c46b3b25de6d7132d514c8b247&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416593861%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fsanta-claus-keepsake-ornament-5009470&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/santa-claus-keepsake-ornament-5009470",
+   "titel": "LEGO Kerstman kerstversiering"
+  },
+  "smartp-0b86321706": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Smartphoto",
+   "url": "https://www.smartphoto.nl/foto_tt?tt=4903_1195836_516846_&r=https%3A%2F%2Fwww.smartphoto.nl%2Ffotocadeaus%2Fchocolade%2Fchocolade-vormen%3Fpvc%3DChocoPhotoHeartShaped",
+   "winkelUrl": "https://www.smartphoto.nl/fotocadeaus/chocolade/chocolade-vormen?pvc=ChocoPhotoHeartShaped",
+   "titel": "Chocolade hart met eigen foto"
+  },
+  "sissyb-2eafdefabc": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Sissy-Boy",
+   "url": "https://rkn3.net/c/?si=14446&li=1623085&wi=433339&pid=561334a3b35d4214004abe78794a37ca&dl=rode-kerstkaars-00064081-116.html&ws=",
+   "winkelUrl": "https://www.sissy-boy.com/rode-kerstkaars-00064081-116.html",
+   "titel": "Kerstkaars in de vorm van een rode kerstbal"
+  },
+  "smartp-7b3879ec1c": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Smartphoto",
+   "url": "https://www.smartphoto.nl/foto_tt?tt=4903_1195836_516846_&r=https%3A%2F%2Fwww.smartphoto.nl%2Ffotocadeaus%2Fchocolade%2Fchocolade-met-foto-set%3Fpvc%3DChocoPhotoRectangleSet24",
+   "winkelUrl": "https://www.smartphoto.nl/fotocadeaus/chocolade/chocolade-met-foto-set?pvc=ChocoPhotoRectangleSet24",
+   "titel": "Chocolade met eigen foto (24 stuks)"
+  },
+  "smartp-d7c0f300e2": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Smartphoto",
+   "url": "https://www.smartphoto.nl/foto_tt?tt=4903_1195836_516846_&r=https%3A%2F%2Fwww.smartphoto.nl%2Ffotocadeaus%2Fchocolade%2Fchocolade_telegram%3Fpvc%3DChocoTelegram28",
+   "winkelUrl": "https://www.smartphoto.nl/fotocadeaus/chocolade/chocolade_telegram?pvc=ChocoTelegram28",
+   "titel": "Chocoladetelegram met eigen tekst (28 stukjes)"
+  },
+  "cl-jd-honey-l": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/jack-daniel-s-honey.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=c2a697924bf996ff665f4ae32ef1055b&dl=nl%2Fjack-daniel-s-honey.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/jack-daniel-s-honey.html#/54-formaat-70_cl/177-jaar-geen_jaar",
+   "titel": "Jack Daniel's Tennessee Honey likeur"
+  },
+  "cl-stal-compleet-30": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Bellatio",
+   "url": "https://partner.bellatio-kerstversiering.nl/c?c=31217&m=1639683&a=516846&r=&u=https%3A%2F%2Fwww.bellatio-kerstversiering.nl%2Fproduct%2F10438909%2Ffeeric-christmas-compleet-kerststalletje-h30-cm-polyresin.html",
+   "titel": "Feeric compleet kerststalletje 30 cm"
+  },
+  "cl-jd-fire": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/jfijack-daniel-s-fire.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=29ac188aa0b3f153eaa9dd9ea159ec10&dl=nl%2Fjfijack-daniel-s-fire.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/jfijack-daniel-s-fire.html#/54-formaat-70_cl/177-jaar-geen_jaar",
+   "titel": "Jack Daniel's Tennessee Fire"
+  },
+  "dc-1440337887": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/ardbeg-uigeadail.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=c600b17e09600c61a7ce8fb5484d03ef&dl=nl%2Fardbeg-uigeadail.html%23%2F33-formaat-geschenk%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/ardbeg-uigeadail.html",
+   "titel": "Ardbeg Uigeadail whisky in geschenkdoos"
+  },
+  "dc-2535747447": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/armagnac-dartigalongue.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=d776b4581f06ed9a9124b7d5c6bb0597&dl=nl%2Farmagnac-dartigalongue.html%23%2F54-formaat-70_cl%2F156-jaar-1990&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/armagnac-dartigalongue.html",
+   "titel": "Armagnac Dartigalongue, kies het jaar (70 cl)"
+  },
+  "dc-2721578131": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/dievole-chianti-classico.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=237d759931bb277c18cc82ba8250b844&dl=nl%2Fdievole-chianti-classico.html%23%2F1-formaat-75_cl%2F213-jaar-2023&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/dievole-chianti-classico.html",
+   "titel": "Dievole Chianti Classico 2023"
+  },
+  "dgsw-d259b10b34": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flegpuzzels%2F1000-stukjes%2Fpuzzel-coca-cola-kersttruck-1000-stukjes%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/legpuzzels/1000-stukjes/puzzel-coca-cola-kersttruck-1000-stukjes/",
+   "titel": "Trefl puzzel Coca-Cola kersttruck (1000 stukjes)"
+  },
+  "legoshop-8c1da21845": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=ed2c02dbdf50d9bdaad027ef48e39031&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588545%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Frocking-plants-11506&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/rocking-plants-11506",
+   "titel": "LEGO Botanicals schommelende plantjes (11506)"
+  },
+  "legoshop-aea06060ec": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=ef4f2910df0e4d228b9571725d068e6a&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416668737%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fyeti-keepsake-ornament-5010810&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/yeti-keepsake-ornament-5010810",
+   "titel": "LEGO kerstversiering yeti met ijslolly"
+  },
+  "cl-jean-villare": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Svinando",
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=5c29c5d421579339fee5944fb0f735ed&dl=champagne-jean-de-villare-grande-reserve&ws=",
+   "winkelUrl": "https://www.svinando.nl/champagne-jean-de-villare-grande-reserve",
+   "titel": "Champagne Jean de Villaré Grande Réserve"
+  },
+  "dgsw-93528a1fd5": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbuitenspeelgoed%2Fbuitenspellen%2Fbasketbal-basket-met-score-teller-%252B-licht-en-geluid%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/buitenspeelgoed/buitenspellen/basketbal-basket-met-score-teller-%2B-licht-en-geluid/",
+   "titel": "Basketbalnetje met scoreteller, licht en geluid"
+  },
+  "coolbl-c74669f04c": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Coolblue",
+   "url": "https://www.awin1.com/pclick.php?p=46061301428&a=3110079&m=85161",
+   "winkelUrl": "https://www.coolblue.nl/product/972447/lego-art-keith-haring-dansende-figuren-31216.html",
+   "titel": "LEGO Art Keith Haring dansende figuren (31216)"
+  },
+  "eufr-996cf6f516": {
+   "datum": "2026-11-25",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "eu.fragrance.com",
+   "url": "https://tc.tradetracker.net/?c=39204&m=2433689&a=516846&r=&u=https%3A%2F%2Feu.fragrance.com%2Fnl-nl%2Fproducts%2Fsol-de-janeiro-delicia-drench-jet-set-cheirosa-59-170-ml-2117%3Futm_campaign%3D%257BaffiliateSiteName%257D%26utm_content%3D%26utm_source%3Dtradetracker_nl%26utm_medium%3Daffiliate%26utm_term%3D%26variant%3D56463949758849",
+   "winkelUrl": "https://eu.fragrance.com/nl-nl/products/sol-de-janeiro-delicia-drench-jet-set-cheirosa-59-170-ml-2117",
+   "titel": "Sol de Janeiro Delícia Drench Jet Set (mist, bodybutter en douche-olie)"
   }
  }
 }
