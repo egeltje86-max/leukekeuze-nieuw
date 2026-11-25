@@ -6745,7 +6745,7 @@
       intro: "Wat geef je een kind van 2? Iets om mee te bouwen, te rijden of te doen alsof. Een kind van 2 rent, klimt, praat in korte zinnetjes en speelt graag na wat het ziet: koken, de pop verzorgen, met een auto rijden. Grote bouwblokken zoals DUPLO, een loopfiets, een babypop of een stevig boekje passen goed. Hieronder staan 19 ideeën in vijf soorten.",
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kies grote onderdelen: DUPLO in plaats van gewone LEGO.", "Een loopfiets is een cadeau waar een kind jaren plezier van heeft, en het leert er later makkelijker door fietsen.", "Doen alsof is op deze leeftijd het leukste spel: een babypop, een keukentje of een gereedschapsset.", "Geef je een boekje? Kies er een met grote plaatjes en weinig tekst."] },
-        { kop: "Bouwen met grote blokken", tekst: "DUPLO en houten blokken: groot genoeg voor kleine handjes.", ids: ["cl-duplo-10421", "dk-00040686", "cl-duplo-10475", "cl-duplo-10459"] },
+        { kop: "Bouwen met grote blokken", tekst: "DUPLO en houten blokken: groot genoeg voor kleine handjes.", ids: ["cl-duplo-10421", "dk-00040686", "lego-10473", "cl-duplo-10459"] },
         { kop: "Duwen, rijden en lopen", tekst: "Een loopfiets of loopwagen: een cadeau waar ze jaren mee spelen.", ids: ["cl-vtech-sorteerwagen", "cl-bol-janod-ezel", "cl-puky-lino", "cl-cf-1jaar"] },
         { kop: "Poppen en knuffels", tekst: "Een pop om te verzorgen of een knuffel om mee te slapen.", ids: ["hema-d2cd56c14b", "cl-steiff-trex", "cl-hema-knuffel", "cl-nijntje-ld"] },
         { kop: "Boekjes", tekst: "Voorlezen is op deze leeftijd een van de leukste dingen. Stevige boekjes met grote plaatjes.", ids: ["cl-nijntje", "cl-rupsje-nooitgenoeg", "cl-dikkie-dik-bad"] },
@@ -6758,7 +6758,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Doen alsof is het leukste spel op deze leeftijd: een keukentje, dokterskoffer of dierenartsset.", "Speelgoed met kleine onderdelen kan vanaf 3 jaar, maar let op als er jongere broertjes of zusjes zijn.", "Kies iets dat het kind zelf kan, zonder hulp. Dan blijft het leuk.", "Een step of loopfiets is een cadeau voor jaren."] },
         { kop: "Doen alsof", tekst: "Koken, dokter spelen of de pop verzorgen: spelen wat grote mensen doen.", ids: ["cl-k-miele", "cl-bb-nacht", "cl-k-hape-fornuis", "bol-9200000091570802"] },
-        { kop: "Bouwen", tekst: "Iets bouwen en daarna mee spelen.", ids: ["bol-9300000224716751", "cl-brio-bluey", "cl-duplo-10421", "cl-duplo-10475"] },
+        { kop: "Bouwen", tekst: "Iets bouwen en daarna mee spelen.", ids: ["bol-9300000224716751", "cl-brio-bluey", "cl-duplo-10421", "cl-duplo-10447"] },
         { kop: "Dieren en dino's", tekst: "Dieren en dino's van Schleich: stevig, echt en voor jaren.", ids: ["dg-73874cdb55", "cl-sl-stal", "bol-9300000263559033", "bol-9200000088621923"] },
         { kop: "Buiten", tekst: "Voor het kind dat niet stil kan zitten.", ids: ["cl-gl-goup", "cl-ba-retro", "bol-9300000220460976", "cl-pustefix"] },
         { kop: "Kleuren en kleien", tekst: "Kleuren, tekenen en kleien: iets maken om te laten zien.", ids: ["bol-9300000343476066", "cl-pd-8", "cl-ses-myfirst", "bol-9200000088209209"] },
