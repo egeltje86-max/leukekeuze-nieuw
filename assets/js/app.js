@@ -2941,7 +2941,7 @@
   var BF_DATUM = '22 november 2026', BF_EIND = '2026-11-30';
   var BF_WINKELS = [
     { w: 'Ditverzinjeniet', zin: 'Black Week: 15% korting met code BLACK15, ook op aanbiedingen', tot: '2026-11-30', l: 'https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=' + encodeURIComponent('https://www.ditverzinjeniet.nl/themas/black-friday') },
-    { w: 'HEMA', zin: 'Black Friday bij HEMA: kortingen tot wel 50%', l: 'https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=' + encodeURIComponent('https://www.hema.nl/black-friday') },
+    { w: 'HEMA', zin: 'Black Friday deals 2026: ontdek alle acties bij HEMA', l: 'https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=' + encodeURIComponent('https://www.hema.nl/black-friday') },
     { w: 'Cadeau.nl', zin: 'Black Week: cadeaus met korting', l: 'https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=' + encodeURIComponent('https://www.cadeau.nl/sale/') },
     { w: 'YourSurprise', zin: 'Black Friday Deals: tot 30% korting op cadeaus met naam of foto', l: 'https://www.yoursurprise.nl/tradetracker?tt=546_250583_516846_&r=' + encodeURIComponent('https://www.yoursurprise.nl/black-friday') },
     { w: 'Parfumania', zin: 'Black Friday Deals op parfum, elke dag nieuwe deals', l: 'https://jf79.net/c/?si=16384&li=1704728&wi=433339&ws=blackfriday&dl=' + encodeURIComponent('Black-Friday-Deals!/-c-2783.html') },
