@@ -92,7 +92,7 @@ const uit = []; const ok = (naam, goed, extra) => { uit.push((goed ? 'GOED  ' : 
 
   // 5. KIESHULP (VONK)
   { const { c, p } = await nieuw(); await open(p, '/vonk/');
-    const stap = await p.evaluate(() => ({ kop: (document.querySelector('#app h1') || {}).textContent, keuzes: [...document.querySelectorAll('#app [data-vonk-keus], #app .vonk a, #app .keuzes a, #app .vonk-keuzes a, #app .vonk button, #app main button, #app section button')].map(x => x.textContent.replace(/\s+/g, ' ').trim().slice(0, 22)).slice(0, 12) }));
+    const stap = await p.evaluate(() => ({ kop: (document.querySelector('#app h1') || {}).textContent, keuzes: [...document.querySelectorAll('#app [data-vonk-keus], #app .vonk a, #app .keuzes a, #app .vonk-keuzes a, #app a.vf-keuze')].map(x => x.textContent.replace(/\s+/g, ' ').trim().slice(0, 22)).slice(0, 12) }));
     ok('kieshulp opent met keuzes', stap.keuzes.length > 2, JSON.stringify(stap).slice(0, 300));
     await open(p, '/vonk/?voor=haar&moment=verjaardag&budget=tot25');
     const v1 = await p.evaluate(() => ({ kaarten: [...document.querySelectorAll('#app article.prodkaart [data-fav]')].map(x => x.getAttribute('data-fav')), prijzen: [...document.querySelectorAll('#app article.prodkaart [data-fav]')].map(x => (window.LK.vind(x.getAttribute('data-fav')) || {}).prijs), weg: document.querySelectorAll('#app [data-vonk-weg]').length, goedk: document.querySelectorAll('#app [data-vonk-goedkoper]').length }));

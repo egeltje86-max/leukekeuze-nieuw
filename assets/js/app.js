@@ -696,6 +696,13 @@
     if (!voor.length) return l;
     return voor.concat(l.filter(function (p) { return !gezien[p.id]; }));
   }
+  /* 26-11-2026: de knop 'Toon N cadeaus' in het filterscherm telt na wat sorteer() eraf haalt (keurmeester en de toelating van Dark Nova),
+     zodat het aantal op de knop gelijk is aan de lijst die je daarna ziet. */
+  function telNa(l, sleutel) {
+    l = kmUit(l, sleutel);
+    var NV = window.LK && window.LK.nova, nc = NV && NV.aan() && NV.ctx(sleutel);
+    return nc ? NV.filter(l, nc) : l;
+  }
   function sorteer(lijst, hoe, sleutel) {
     var l = kmUit(lijst.slice(), sleutel);
     /* DARK NOVA · CADEAU-INDELING (proef 24-11-2026, standaard UIT; zie gedeeld.js): toelating vóór de volgorde, daarna spreiding in de eerste 12.
@@ -2503,7 +2510,8 @@
     if (!drankPlek && window.LK_DRANK_OVERAL !== true) basis = basis.filter(function (p) { return !p.drank || (v && p.afd === c.slug && p.groep === s.slug && p.vak === v.slug); });
     BASIS = basis;
     /* 26-11-2026: de knop 'Toon N cadeaus' telt ook wat de keurmeester van deze pagina haalt, zodat het aantal klopt met de lijst. */
-    TEL = function (nq) { return kmUit(basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }), pad + (nq.voor ? '?voor=' + nq.voor : '')).length; };
+    TEL = function (nq) { var l = kmUit(basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }), pad + (nq.voor ? '?voor=' + nq.voor : ''));
+      return telNa(l, (nq.voor && window.LK_TOPVAST && window.LK_TOPVAST[pad + '?voor=' + nq.voor]) ? pad + '?voor=' + nq.voor : pad).length; };
     var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen) && extraFilter(p, q); });
     lijst = kmUit(lijst, pad + (q.voor ? '?voor=' + q.voor : '')); /* CADEAUKEURMEESTER */
     /* 13-11-2026 (Marius: 'elke tegel apart uitzoeken'): 'Kerst voor hem' (/c/cadeaus/kerst?voor=hem) heeft een eigen, met de hand gekozen top. */
@@ -2670,7 +2678,7 @@
     if (nietOp.length) alles = alles.filter(function (p) { return nietOp.indexOf(p.id) === -1; });
     alles = kmUit(alles, pad); /* CADEAUKEURMEESTER: past niet bij deze persoon of dit onderwerp */
     BASIS = alles;
-    TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
+    TEL = function (nq) { return telNa(alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }), pad).length; };
     var lijst = sorteer(alles.filter(function (p) { return binnenPrijs(p, q.prijs) && knopFilter(p, q, knoppen) && extraFilter(p, q); }), q.sort, pad);
     /* WINKELSTIJL: een onderwerp (/voor/haar/wonen-sfeer) is voor bezoekers een winkel in de straat voor haar, per soort cadeau. */
     if (WIJZER === 'b' && s && window.LK_STRAAT_LIJST && kaalAdres(q)) {
@@ -3070,7 +3078,7 @@
     var hoofdPad = pad; if (pv) pad = pad + '/' + pv.slug;
     zetTitel(pv ? (g.seoKort || g.naam) + ' voor ' + voorNaam + (g.seoKort ? '' : ': cadeau-ideeën') : (g.seoTitel || g.naam));
     BASIS = alles;
-    TEL = function (nq) { return alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
+    TEL = function (nq) { return telNa(alles.filter(function (p) { return binnenPrijs(p, nq.prijs) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }), pad).length; };
     var voorKnopjes = '';
     if (!g.labels && g.vakken && !g.korting && !g.codes) {
       var vk = (g.voorWie || GELEGENHEID_VOOR).map(function (slug) {
