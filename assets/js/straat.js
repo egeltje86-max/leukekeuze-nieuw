@@ -1034,7 +1034,7 @@
     var st = staat(wie, 0); huidig = { st: st };
     return '<div class="sh">' + straat(st, { voor: true }).replace(/href="#/g, 'href="/#') + '</div>';
   }
-  return { render: render, meer: meer, kmeer: kmeer, adres: leesAdres, afd: afdPagina, voor: voorPagina, lijst: lijstPagina };
+  return { render: render, meer: meer, kmeer: kmeer, adres: leesAdres, afd: afdPagina, voor: voorPagina, lijst: lijstPagina, kaart: kaart };
   }
 
   var S = null, TITEL0 = '';
@@ -1077,6 +1077,7 @@
   /* app.js vraagt hier de homepage op (home()). Leeg = de oude homepage. */
   window.LK_STRAAT_HOME = {
     aan: aan,
+    kaart: function (p) { return S && S.kaart ? S.kaart(p) : ''; }, /* 25-11-2026: het Black Friday-bord bovenaan de homepage gebruikt dezelfde kaartjes */
     html: function () {
       if (!aan() || !window.LK_PRODUCTEN || !(window.LK && window.LK.productKaart)) return '';
       if (window.LK_DEEL) { /* SNEL: nog maar een deel van de lijst (pak van een andere pagina); de straat heeft alles nodig */

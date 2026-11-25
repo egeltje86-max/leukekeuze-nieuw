@@ -2084,12 +2084,12 @@
       '</div>' +
     '</section>';
   }
-  function seizoenBlok() {
+  function seizoenBlok(zonderBf) {
     var s = INST.seizoen; if (!s) return '';
     var d = new Date(), nu = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
     var per = (s.periodes || []).filter(function (p) { return p.vanaf <= p.tot ? (nu >= p.vanaf && nu <= p.tot) : (nu >= p.vanaf || nu <= p.tot); })[0];
     if (!per) return '';
-    var kaarten = per.kaarten.map(function (k) { return s.kaarten[k]; }).filter(Boolean);
+    var kaarten = per.kaarten.filter(function (k) { return !(zonderBf && k === 'bf'); }).map(function (k) { return s.kaarten[k]; }).filter(Boolean); /* 25-11-2026: het Black Friday-bord staat al bovenaan (Marius: 'anders staat het er 2 keer') */
     if (!kaarten.length) return '';
     var kaart = function (a, groot) {
       return '<a class="actie seizoen-kaart ' + (groot ? 'groot' : 'klein') + '" href="' + esc(a.naar) + '">' +
@@ -2962,6 +2962,46 @@
         return '<a class="bfw-kaart" href="' + esc(x.l) + '" target="_blank" rel="sponsored nofollow noopener"><strong>' + esc(x.w) + '</strong><span class="bfw-zin">' + esc(x.zin) + '</span>' +
           (x.tot ? '<span class="bfw-tot">t/m ' + esc(datumNl(x.tot)) + '</span>' : '') + '<span class="bfw-ga">Naar de deals ›</span></a>';
       }).join('') + '</div></section>';
+  }
+  /* BLACK FRIDAY-BORD (25-11-2026, Marius: 'zet bovenaan de pagina een reclamebord met lampjes die verwijst naar Black Friday, we gaan er nu hard
+     op inzetten'; 'met ronde lampjes geheel om de zijkant heen die knipperen'; 'zet het met categorie vol met producten die onder de Black Friday-deals
+     vallen; na Black Friday verwijderen we dit weer, dus het mag erg overdreven en bomvol'). Alleen op de homepage, bovenaan, tot en met BF_EIND.
+     Het bord gaat naar /collectie/black-friday; daaronder per categorie een rij om te vegen met deals uit diezelfde collectie (zelfde regels: korting
+     minstens 20% op een verse van-prijs, geen drank), in de volgorde van 'Beste deals'. De seizoenskaart Black Friday staat dan niet ook nog in het midden.
+     Uit: window.LK_BF_BORD = false. */
+  function bfBordAan() { return window.LK_BF_BORD !== false && new Date().toISOString().slice(0, 10) <= BF_EIND; }
+  function bfBord() {
+    if (!bfBordAan()) return '';
+    var g = window.LK_COLLECTIE && window.LK_COLLECTIE('black-friday'); if (!g) return '';
+    var nu = new Date().toISOString().slice(0, 10);
+    var l = sorteer(verzamelLijst(g), 'beste', '/collectie/black-friday').filter(function (p) { return p.beeld && !GROF_T.test(p.titel || ''); });
+    var dag = Math.round((Date.parse('2026-11-27') - Date.parse(nu)) / 864e5);
+    var tel = dag > 1 ? 'Nog ' + dag + ' dagen' : dag === 1 ? 'Morgen is het zover' : dag === 0 ? 'Vandaag is het Black Friday' : nu < '2026-11-30' ? 'Nu: Black Weekend' : 'Vandaag: Cyber Monday';
+    var lamp = '<span class="bfb-lamp" aria-hidden="true"></span><span class="bfb-lamp v" aria-hidden="true"></span>';
+    var h = '<section class="bfb" data-tel-bron="bf-bord" aria-label="Black Friday">' +
+      '<a class="bfb-bord" href="/collectie/black-friday" data-tel="bf-bord">' + lamp +
+      '<span class="bfb-klein">Vrijdag 27 november · Cyber Monday 30/11</span>' +
+      '<strong class="bfb-titel"><span>Black</span> <span>Friday</span></strong>' +
+      '<span class="bfb-tel">' + esc(tel) + '</span>' +
+      '<span class="bfb-zin">' + getal(l.length) + ' cadeaus met korting bij onze winkels, op één plek. Alleen prijzen van deze week.</span>' +
+      '<span class="bfb-knop">Bekijk alle deals ›</span></a>';
+    var K = window.LK_STRAAT_HOME && window.LK_STRAAT_HOME.kaart; if (!K || l.length < 6) return h + '</section>';
+    var gezien = {}, rij = function (titel, lijst, naar, n) {
+      var r = lijst.filter(function (p) { return !gezien[p.id]; }).slice(0, 10); if (r.length < 4) return '';
+      r.forEach(function (p) { gezien[p.id] = 1; });
+      return '<div class="bfb-groep"><div class="bfb-kop"><h2>' + esc(titel) + '</h2><a href="' + esc(naar) + '">Alle ' + getal(n) + ' ›</a></div>' +
+        '<div class="sh-schap bfb-rij">' + r.map(K).join('') + '</div></div>';
+    };
+    h += rij('Topdeals van dit moment', l, '/collectie/black-friday', l.length);
+    var per = {};
+    l.forEach(function (p) { if (p.afd && window.LK_CAT(p.afd)) (per[p.afd] = per[p.afd] || []).push(p); });
+    var VOOR = { speelgoed: 3, 'spellen-puzzels': 2, elektronica: 1 };
+    Object.keys(per).sort(function (a, b) { return (VOOR[b] || 0) - (VOOR[a] || 0) || per[b].length - per[a].length; }).forEach(function (a) {
+      if (per[a].length < 6) return;
+      h += rij(window.LK_CAT(a).naam + ' in de Black Friday', per[a], '/collectie/black-friday?afd=' + encodeURIComponent(a), per[a].length);
+    });
+    h += bfWinkelsBlok('home');
+    return h + '<a class="bfb-alles" href="/collectie/black-friday">Alle ' + getal(l.length) + ' Black Friday-deals bekijken ›</a></section>';
   }
   /* 18-11-2026 (GO Marius, onderzoek koopgedrag): in de Black Friday-week kopen mensen al voor Sinterklaas en Kerst (65% van wie speelgoed koopt,
      NielsenIQ) en ze wantrouwen kortingen (68%). Dus bij 'beste deals': een echte prijsdaling uit onze eigen geschiedenis (laag30) en speelgoed en
@@ -4374,8 +4414,8 @@
   if (COMBI) {
     /* alleen op de homepage; de straat voor een persoon (/voor/haar) houdt zijn eigen opzet */
     var opHome = function (f) { return function () { return location.pathname === '/' || location.pathname === '' ? f() : ''; }; };
-    window.LK_STRAAT_BOVEN = opHome(function () { return '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; });
-    window.LK_STRAAT_NA_KIES = opHome(function () { var r = rijmBlok('home'); return (r ? '<div class="cb-rijm">' + r + '</div>' : '') + '<div class="cb-blok cb-seizoen">' + seizoenBlok() + '</div>'; });
+    window.LK_STRAAT_BOVEN = opHome(function () { return bfBord() + '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; });
+    window.LK_STRAAT_NA_KIES = opHome(function () { var r = rijmBlok('home'); return (r ? '<div class="cb-rijm">' + r + '</div>' : '') + '<div class="cb-blok cb-seizoen">' + seizoenBlok(bfBordAan()) + '</div>'; });
     /* Wat met de straat van de homepage was verdwenen en goed werkte (Marius 22-11-2026: 'blijven opletten dat er geen dingen verloren gaan die goed zijn'):
        het blok Belevenissen met de Lamborghini-race (best verdienende cadeau), de topwinkels, de eigen kleurboeken en 'zo werkt het'. */
     window.LK_STRAAT_NA_ETALAGE = opHome(function () { return '<div class="cb-blok">' + belevenisBalk() + '</div>'; });

@@ -208,7 +208,7 @@ function schaduwWaarde(v, p) {
 
 /* Onderdelen die een tekening of een eigen kleur hebben en in het donker precies zo blijven (de gevels van Nova met hun bordjes, de muntjes met bedragen,
    de drie aftellers): hun kleuren worden ongewijzigd overgenomen, zodat de voorrang tussen de regels gelijk blijft. */
-const BEHOUD = /\.straatbord|\.bfw-|\.gv\b(?!-)|\.gv-(bord|deur|raam|label|beeld)\b|\.sh-munt|\.aftel3|\.a3\b|\.a3-/;
+const BEHOUD = /\.bfb-(bord|lamp|klein|titel|tel|zin|knop|alles)|\.straatbord|\.bfw-|\.gv\b(?!-)|\.gv-(bord|deur|raam|label|beeld)\b|\.sh-munt|\.aftel3|\.a3\b|\.a3-/;
 function prefix(sel) {
   return splitsTop(sel, ',').map(s => {
     s = s.trim(); if (!s) return s;

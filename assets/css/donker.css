@@ -1501,6 +1501,36 @@ html.donker .bh-balk-tekst strong{color:#ffffff}
 html.donker .bh-balk-tekst span{color:#e9e2d4}
 html.donker .bh-balk-pijl{color:#f2cb74}
 html.donker .bh-balk:hover{border-color:#f2cb74}
+html.donker .sh .bfb-bord{color:#FFFFFF;background:radial-gradient(ellipse 90% 70% at 50% 0%,#3A2508 0%,#120D06 55%,#08080C 100%);border:3px solid #B8862E;box-shadow:0 0 0 3px #08080C,0 0 0 5px #8F6620,0 14px 34px -12px rgba(0,0,0,.6),0 0 40px -8px rgba(255,200,61,.45)}
+html.donker .sh .bfb-bord:focus-visible{outline:3px solid #F2CB74}
+html.donker .sh .bfb-lamp{background:radial-gradient(circle at 25% 50%,#5A4520 0 4px,transparent 4.6px) top/52px 14px round no-repeat,
+    radial-gradient(circle at 75% 50%,#5A4520 0 4px,transparent 4.6px) top/52px 14px round no-repeat,
+    radial-gradient(circle at 25% 50%,#5A4520 0 4px,transparent 4.6px) bottom/52px 14px round no-repeat,
+    radial-gradient(circle at 75% 50%,#5A4520 0 4px,transparent 4.6px) bottom/52px 14px round no-repeat}
+html.donker .sh .bfb-lamp::before,html.donker .sh .bfb-lamp::after{filter:drop-shadow(0 0 3px #FFC83D) drop-shadow(0 0 7px rgba(255,170,40,.8))}
+html.donker .sh .bfb-lamp::before{background:radial-gradient(circle at 25% 50%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) top/52px 14px round no-repeat,
+    radial-gradient(circle at 25% 50%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) bottom/52px 14px round no-repeat}
+html.donker .sh .bfb-lamp::after{background:radial-gradient(circle at 75% 50%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) top/52px 14px round no-repeat,
+    radial-gradient(circle at 75% 50%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) bottom/52px 14px round no-repeat}
+html.donker .sh .bfb-lamp.v{background:radial-gradient(circle at 50% 25%,#5A4520 0 4px,transparent 4.6px) left/14px 52px no-repeat round,
+    radial-gradient(circle at 50% 75%,#5A4520 0 4px,transparent 4.6px) left/14px 52px no-repeat round,
+    radial-gradient(circle at 50% 25%,#5A4520 0 4px,transparent 4.6px) right/14px 52px no-repeat round,
+    radial-gradient(circle at 50% 75%,#5A4520 0 4px,transparent 4.6px) right/14px 52px no-repeat round}
+html.donker .sh .bfb-lamp.v::before{background:radial-gradient(circle at 50% 25%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) left/14px 52px no-repeat round,
+    radial-gradient(circle at 50% 25%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) right/14px 52px no-repeat round}
+html.donker .sh .bfb-lamp.v::after{background:radial-gradient(circle at 50% 75%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) left/14px 52px no-repeat round,
+    radial-gradient(circle at 50% 75%,#FFFBE6 0 2px,#FFD34D 2.6px 4px,transparent 4.6px) right/14px 52px no-repeat round}
+html.donker .sh .bfb-klein{color:#F2CB74}
+html.donker .sh .bfb-titel{color:#FFF3F0;text-shadow:0 0 4px #FFFFFF,0 0 10px #FF4B3E,0 0 22px #FF2A1F,0 0 44px #E0140B}
+html.donker .sh .bfb-titel span:last-child{color:#FFF6DA;text-shadow:0 0 4px #FFFFFF,0 0 10px #FFC83D,0 0 22px #FFB01F,0 0 44px #E08A00}
+html.donker .sh .bfb-tel{background:#E0140B;color:#FFFFFF;box-shadow:0 0 18px -2px rgba(224,20,11,.8)}
+html.donker .sh .bfb-zin{color:#F7F3EC}
+html.donker .sh .bfb-knop{background:#F2CB74;color:#141A2A;box-shadow:0 6px 18px -6px rgba(242,203,116,.8)}
+html.donker .sh .bfb-bord:hover .bfb-knop{background:#FFD98A}
+html.donker .sh .bfb-kop{border-left:5px solid #e0140b}
+html.donker .sh .bfb-kop h2{color:#eee7da}
+html.donker .sh .bfb-kop a{color:#e7c893}
+html.donker .sh .bfb-alles{background:#08080C;color:#F2CB74;border:2px solid #B8862E}
 /* ---- uit de <style>-blokken in app.js ---- */
 html.donker .rijm-z{color:var(--rz-ink)}
 html.donker .rijm-z .rz-eyebrow{color:#eccc9c}
