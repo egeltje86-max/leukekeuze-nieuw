@@ -2502,7 +2502,8 @@
     var drankPlek = c.slug === 'dranken' || (c.slug === 'eten-drinken' && s && DRANK_GROEP[s.slug]);
     if (!drankPlek && window.LK_DRANK_OVERAL !== true) basis = basis.filter(function (p) { return !p.drank || (v && p.afd === c.slug && p.groep === s.slug && p.vak === v.slug); });
     BASIS = basis;
-    TEL = function (nq) { return basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }).length; };
+    /* 26-11-2026: de knop 'Toon N cadeaus' telt ook wat de keurmeester van deze pagina haalt, zodat het aantal klopt met de lijst. */
+    TEL = function (nq) { return kmUit(basis.filter(function (p) { return binnenPrijs(p, nq.prijs) && voorFilter(p, nq.voor) && knopFilter(p, nq, knoppen) && extraFilter(p, nq); }), pad + (nq.voor ? '?voor=' + nq.voor : '')).length; };
     var lijst = basis.filter(function (p) { return binnenPrijs(p, q.prijs) && voorFilter(p, q.voor) && knopFilter(p, q, knoppen) && extraFilter(p, q); });
     lijst = kmUit(lijst, pad + (q.voor ? '?voor=' + q.voor : '')); /* CADEAUKEURMEESTER */
     /* 13-11-2026 (Marius: 'elke tegel apart uitzoeken'): 'Kerst voor hem' (/c/cadeaus/kerst?voor=hem) heeft een eigen, met de hand gekozen top. */
