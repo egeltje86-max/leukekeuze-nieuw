@@ -1310,6 +1310,8 @@ html.donker .wzk-vragen details{border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker .wzk-vragen summary{color:#eee7da}
 html.donker .wzk-vragen details p{color:#eee7da}
 html.donker.nacht .lichtknop{color:#f2cb74}
+html.donker .gi-advies{color:#c3c8d4}
+html.donker .gi-advies b{color:#eee7da}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
