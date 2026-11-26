@@ -921,7 +921,7 @@
     return '<section class="binnen-kop gevel nova ws-kop' + (w ? '' : ' ws-licht') + '" style="--k:' + k + '"><span class="luifel"></span>' + ik +
       '<div class="pui">' + (label ? '<p class="in-winkel">' + esc(label) + '</p>' : '') + '<h1>' + esc(o.h1) + '</h1>' +
       (o.tekst ? '<p>' + esc(String(o.tekst).replace(/\s*(Kies|Klik|Tik) (hieronder|een|op)[^.!?]*[.!?]/g, '').trim()) + '</p>' : '') +
-      '<p class="tel">' + (o.totaal > 150 ? 'Met de hand uitgezocht' : getal(o.totaal) + ' cadeaus') + (o.van < 1e9 ? ' · vanaf ' + euro(o.van) : '') + '</p>' + /* 24-11-2026 (Nova): '3.201 cadeaus' voelt als een supermarkt, niet als een boutique */
+      '<p class="tel">' + (o.totaal > 150 ? 'Uitgezocht om te geven' : getal(o.totaal) + ' cadeaus') + (o.van < 1e9 ? ' · vanaf ' + euro(o.van) : '') + '</p>' + /* 24-11-2026 (Nova): '3.201 cadeaus' voelt als een supermarkt, niet als een boutique */
       (w && w.let ? '<p class="let">' + esc(w.let) + '</p>' : '') +
       (w && w.extra && o.extra !== false ? '<div class="sh-extra">' + w.extra.map(function (e) { return '<a href="' + e[1] + '">' + (e[2] ? '<img src="' + novaRond(e[2]) + '" alt="">' : '') + esc(e[0]) + '</a>'; }).join('') + '</div>' : '') +
       '</div></section>';

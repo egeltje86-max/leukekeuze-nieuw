@@ -369,7 +369,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
       oms = r.h1 + ': ' + r.aantal + ' met de hand gekozen ' + (r.aantal === 1 ? 'product' : 'producten') + ', zoals ' +
         r.namen.slice(0, -1).join(', ') + (r.namen.length > 1 ? ' en ' : '') + r.namen[r.namen.length - 1] + '. Je koopt bij bekende winkels.';
     }
-    oms = oms || r.tekst || 'Met de hand uitgekozen cadeaus en producten. Kies op moment, persoon of budget en koop bij bekende winkels.';
+    oms = oms || r.tekst || 'Uitgezochte cadeaus en producten van bekende winkels. Kies op moment, persoon of budget en koop bij bekende winkels.';
     /* Nakijkbeurt 6-11-2026: korte producttekst? Vul de omschrijving voor Google aan met prijs en winkel. */
     if (r.prod && r.prod.prijs && oms.length < 90 && oms.indexOf('€') === -1) oms = oms.replace(/\s+$/, '') + ' Nu €' + Number(r.prod.prijs).toFixed(2).replace('.', ',') + ' bij ' + r.prod.winkel + '. Met de hand gekozen door LeukeKeuze.';
     /* Nakijkbeurt 8-11-2026: te korte of afgebroken omschrijvingen (bijv. 'beheerd door:') netjes aanvullen. */

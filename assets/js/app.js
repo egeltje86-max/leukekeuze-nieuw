@@ -3969,7 +3969,7 @@
     var pf = prijsFilter(q.prijs);
     var titel = q.q ? 'Resultaten voor “' + q.q + '”' : (q.prijs && q.prijs !== 'alle' ? 'Cadeaus ' + pf.label.toLowerCase().replace('€50+', 'vanaf €50') : 'Alle cadeaus');
     zetTitel(q.q ? 'Zoeken: ' + q.q : titel);
-    window.LK_SEO = 'Zoek in ruim 10.000 met de hand gekozen cadeaus van bekende winkels: op naam, voor wie het is of op budget.'; /* 8-11-2026: anders pakte de bouw de tekst van een willekeurig product */
+    window.LK_SEO = 'Zoek in ruim 9.000 uitgezochte cadeaus van bekende winkels: op naam, voor wie het is of op budget.'; /* 8-11-2026: anders pakte de bouw de tekst van een willekeurig product */
     var catTips = paginaTips(tipWoorden);
     /* 12-11-2026: is het zoekwoord de naam van een gelegenheid of collectie ('housewarming', 'origineel cadeau') en vinden we zelf (bijna) niets,
        dan tonen we de cadeaus van die pagina in plaats van iets wat er toevallig op lijkt. */
@@ -6039,25 +6039,28 @@
   var INFO = {
     'hoe-werkt-het': ['Hoe werkt LeukeKeuze?',
       '<p>LeukeKeuze is geen webwinkel. Wij zoeken mooie cadeaus en producten uit bij bekende winkels en zetten ze overzichtelijk bij elkaar.</p>' +
-      '<h2>1. Wij kiezen met de hand</h2><p>Elk product wordt eerst door ons bekeken. Pas als we het goed vinden, komt het op de site.</p>' +
+      '<h2>1. Wij zoeken uit</h2><p>Een groot deel van de cadeaus kiest Marius zelf uit lijsten met foto en prijs. Een ander deel vindt een automatische hulp met vaste regels, en Marius keurt het daarna. We testen de producten niet zelf; de uitleg komt van de winkel en de fabrikant. <a href="/info/over-ons">Meer over hoe we kiezen</a>.</p>' +
       '<h2>2. Jij zoekt op jouw manier</h2><p>Per categorie, per budget, met de zoekbalk of met VONK. Met het hartje bewaar je wat je leuk vindt.</p>' +
       '<h2>3. Je koopt bij de winkel</h2><p>Met de knop “Bekijk bij …” ga je naar de winkel. Daar bestel en betaal je. Bezorging, garantie en retour regel je met die winkel.</p>' +
       '<h2>Wat verdienen wij eraan?</h2><p>Koop je iets via onze link, dan krijgen wij soms een kleine vergoeding van de winkel. Jij betaalt daardoor niets extra.</p>'],
     'over-ons': ['Over LeukeKeuze',
       '<p>Hoi, ik ben Marius uit Dordrecht. Ik maak LeukeKeuze naast mijn werk in de keuken. Het idee is simpel: een cadeau zoeken kost vaak veel tijd. Je klikt door honderden webwinkels en weet aan het eind nog steeds niet wat je moet kiezen. LeukeKeuze moet dat makkelijker maken.</p>' +
-      '<h2>Wat je hier vindt</h2><p>Op LeukeKeuze staan cadeaus en producten die ik met de hand heb uitgekozen. Ze zijn geordend op <a href="/c/cadeaus">voor wie</a>, op <a href="/c/cadeaus/onder-15">budget</a> en op onderwerp, van <a href="/c/christelijk">christelijke cadeaus</a> tot <a href="/c/hobby/rc-auto-s">bestuurbare auto\'s</a>. In de <a href="/gids">cadeaugidsen</a> zet ik per gelegenheid de beste ideeën op een rij, en met <a href="/vonk">VONK</a> vind je in een paar klikken iets passends.</p>' +
-      '<h2>Hoe ik producten kies</h2><ul>' +
-      '<li>Elk product bekijk ik eerst zelf: foto, prijs, omschrijving en de winkel.</li>' +
-      '<li>Liever een goed product dan tien bijna dezelfde. Andere kleuren van hetzelfde product zet ik er niet allemaal op.</li>' +
-      '<li>Ik let op een mix van goedkoop en duurder, zodat er voor elk budget iets is.</li>' +
-      '<li>Bij elk product schrijf ik in gewone woorden waarom het een goed cadeau is.</li>' +
-      '<li>Producten die niet meer leverbaar zijn of niet meer kloppen, haal ik weg.</li></ul>' +
-      '<h2>Eerlijk over geld</h2><p>LeukeKeuze is geen webwinkel. Je koopt altijd bij de winkel zelf, zoals bol of een andere bekende webwinkel. Koop je iets via een link op deze site, dan krijg ik soms een kleine vergoeding van die winkel (via partnerprogramma’s zoals Daisycon en bol). Jij betaalt daardoor niets extra. Die vergoeding bepaalt niet welke producten erop komen: ik kies wat ik zelf een goed cadeau vind. Meer daarover lees je bij <a href="/info/hoe-werkt-het">Hoe werkt het?</a></p>' +
-      '<h2>Contact</h2><p>Een tip, een fout gezien of een vraag? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Mijn gegevens staan ook in het <a href="/info/colofon">colofon</a>.</p>' +
-      '<h2 lang="en">About (English)</h2><p lang="en">LeukeKeuze is a Dutch gift-finder website run by Marius from Dordrecht, the Netherlands. Every product is hand-picked and described in plain Dutch. We do not sell anything ourselves; visitors buy directly from the shop. Some links are affiliate links (e.g. Daisycon, bol.com), which may earn us a small commission at no extra cost to the visitor.</p>' + CONCEPT],
+      '<h2>Wat je hier vindt</h2><p>Op LeukeKeuze staan cadeaus en producten van bekende winkels, uitgezocht om te geven. Ze zijn geordend op <a href="/c/cadeaus">voor wie</a>, op <a href="/c/cadeaus/onder-15">budget</a> en op onderwerp, van <a href="/c/christelijk">christelijke cadeaus</a> tot <a href="/c/hobby/rc-auto-s">bestuurbare auto\'s</a>. In de <a href="/gids">cadeaugidsen</a> zet ik per gelegenheid de beste ideeën op een rij, en met <a href="/vonk">VONK</a> vind je in een paar klikken iets passends.</p>' +
+      /* 26-11-2026 (Operatie AI-vindbaarheid 001, GO Marius): eerlijk over hoe de cadeaus op de site komen; niet meer 'elk product bekijk ik zelf'. */
+      '<h2>Hoe de cadeaus op de site komen</h2><ul>' +
+      '<li>Een groot deel kies ik zelf uit lijsten met foto, prijs en uitleg van de winkel. Ik tik aan wat erbij mag en wat weg moet.</li>' +
+      '<li>Een ander deel vindt mijn automatische hulp in de productlijsten van de winkels. Die zoekt met vaste regels (geen troep, geen dubbele, de juiste leeftijd, geen grove grappen bij kinderen) en ik keur het daarna. Wat ik niet goed vind, haal ik weg.</li>' +
+      '<li>Ik test de producten niet zelf. Wat er bij een product staat, komt van de winkel en de fabrikant. De uitleg en het advies (voor wie, en wanneer liever niet) schrijf ik met hulp van AI, op basis van die gegevens.</li>' +
+      '<li>Liever een goed product dan tien bijna dezelfde, en een mix van goedkoop en duurder.</li>' +
+      '<li>Prijs en voorraad worden elke dag nagekeken bij de winkel. Bij elk product staat de datum van de laatste controle. Wat niet meer te koop is, haal ik weg.</li></ul>' +
+      '<h2>Eerlijk over geld</h2><p>LeukeKeuze is geen webwinkel. Je koopt altijd bij de winkel zelf, zoals bol of een andere bekende webwinkel. Koop je iets via een link op deze site, dan krijg ik soms een kleine vergoeding van die winkel (via bol, Amazon, Awin, Daisycon en TradeTracker). Jij betaalt daardoor niets extra. Die vergoeding bepaalt niet welke producten erop komen. Wel kan een cadeau dat vaak gekocht wordt wat hoger in een lijst staan. Meer daarover lees je bij <a href="/info/hoe-werkt-het">Hoe werkt het?</a></p>' +
+      '<h2>Fout gezien?</h2><p>Klopt een prijs niet, is een product weg of staat er iets verkeerds? Mail het naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>, het liefst met de link van de pagina. Ik pas het binnen twee werkdagen aan of haal het product weg.</p>' +
+      '<h2>Contact</h2><p>Een tip of een vraag? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Mijn gegevens staan ook in het <a href="/info/colofon">colofon</a>.</p>' +
+      '<h2 lang="en">About (English)</h2><p lang="en">LeukeKeuze is a Dutch gift-finder website run by Marius from Dordrecht, the Netherlands. Many products are chosen by Marius from lists with photo and price; others are found by an automated helper using fixed rules and then reviewed. We do not test products ourselves: descriptions are based on information from the shop and the manufacturer, written with the help of AI. Prices and stock are checked daily. We do not sell anything ourselves; visitors buy directly from the shop. Links may be affiliate links (bol, Amazon, Awin, Daisycon, TradeTracker), which may earn us a small commission at no extra cost to the visitor. Spotted a mistake? E-mail leukekeuze.nl@gmail.com.</p>' + CONCEPT],
     'contact': ['Contact',
       '<p>Vragen over een bestelling? Neem dan contact op met de winkel waar je het product hebt gekocht. Die regelt bezorging en retour.</p>' +
       '<p>Vragen of tips voor LeukeKeuze zelf? Mail ons op: <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a></p>' +
+      '<h2>Fout gezien?</h2><p>Klopt een prijs niet, is een product weg of staat er iets verkeerds? Mail het naar hetzelfde adres, het liefst met de link van de pagina. We passen het binnen twee werkdagen aan of halen het product weg.</p>' +
       '<p>Wie de site maakt en het adres vind je in het <a href="/info/colofon">colofon</a>.</p>' + CONCEPT],
     'colofon': ['Colofon (Imprint)',
       '<p>Deze website wordt gemaakt en beheerd door:</p>' +
