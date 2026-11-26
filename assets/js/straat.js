@@ -332,7 +332,7 @@
     var VOLG = {
       '': [],
       haar: ['woonwinkel', 'parfumerie', 'koffiehuis', 'boetiek', 'spellenwinkel', 'boekhandel', 'hobbywinkel', 'cadeausuper', 'kookwinkel', 'elektronicazaak', 'gamewinkel'],
-      hem: ['gamewinkel', 'elektronicazaak', 'sportwinkel', 'koffiehuis', 'parfumerie', 'hobbywinkel', 'spellenwinkel', 'woonwinkel', 'boetiek', 'cadeausuper', 'boekhandel', 'kookwinkel'],
+      hem: ['elektronicazaak', 'sportwinkel', 'koffiehuis', 'parfumerie', 'gamewinkel', 'hobbywinkel', 'spellenwinkel', 'woonwinkel', 'boetiek', 'cadeausuper', 'boekhandel', 'kookwinkel'],
       kind: ['speelgoedwinkel', 'gamewinkel', 'spellenwinkel', 'hobbywinkel', 'woonwinkel', 'boekhandel', 'cadeausuper', 'koffiehuis', 'boetiek', 'sportwinkel', 'elektronicazaak'],
       tiener: ['gamewinkel', 'woonwinkel', 'elektronicazaak', 'parfumerie', 'boetiek', 'spellenwinkel', 'hobbywinkel', 'cadeausuper', 'koffiehuis', 'speelgoedwinkel', 'sportwinkel'],
       'opa-oma': ['spellenwinkel', 'koffiehuis', 'woonwinkel', 'boekhandel', 'tuincentrum', 'hobbywinkel', 'cadeausuper', 'parfumerie', 'kookwinkel'],
