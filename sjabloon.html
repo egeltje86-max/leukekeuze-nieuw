@@ -102,6 +102,8 @@
   <meta name="lk-donker" content="assets/css/donker.css?v=470988663602">
   <!-- LIVE voor iedereen sinds 22-11-2026 09:18 (Marius: 'Dit is fantastisch go'). Zelf de lichte kop van 21-11 zien: ?proef=combi-uit (blijft onthouden; weer aan: ?proef=combi).
        Helemaal uit: window.LK_COMBI = false. -->
+  <!-- IEDEREEN LICHT (26-11-2026, Marius: 'iedereen moet die lichte versie zien'): wie eerder donker of de boulevard koos, krijgt eenmalig weer licht (lkthema en lknacht gewist). Daarna kan iemand zelf weer donker kiezen met de maan. -->
+  <script>(function () { try { var ls = window.localStorage; if (ls.getItem('lklicht2611') !== '1') { ls.removeItem('lknacht'); ls.setItem('lkthema', 'licht'); ls.setItem('lklicht2611', '1'); } } catch (e) {} })();</script>
   <script>(function () { try { var h = document.documentElement, q = location.search, ls = null, uit = false;
     try { ls = window.localStorage; } catch (e) {}
     var m = /[?&]proef=combi(-uit)?\b/.exec(q);
