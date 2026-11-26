@@ -322,10 +322,34 @@
       return { w: w, gangen: gangen, aantal: ps.length, van: ps.reduce(function (m, p) { return Math.min(m, p.prijs); }, 1e9), raam: raam, open: open };
     });
     var open = winkels.filter(function (x) { return x.open; }), dicht = winkels.filter(function (x) { return !x.open; });
+    /* VOLGORDE PER PERSOON (26-11-2026, Marius: 'als je op voor haar en voor hem en voor wie dan ook klikt, zet de grappige cadeaus
+       bovenaan en de belevenissen, en zoek uit welke je het beste voor onze site bovenaan kan zetten'). Eerst de Grappenmaker en het
+       Uitjesbureau, dan de seizoenswinkels (Sint, Kerst), dan per persoon wat het meest verkoopt en gezocht wordt: eigen verkopen
+       (belevenis, HEMA-hoodie en -pyjama, lampjes en warmtekussens van Ditverzinjeniet, 3D-pen, truffels), TikTok (goedkoop, knus,
+       lampjes, tieners) en de verlanglijstjes van Lootjestrekken (vrouwen: verzorging, boek, keuken; mannen: drank, verzorging,
+       gereedschap, kookboek, geur; opa en oma: puzzels, vogelhuisjes, boek). Een winkel die hier niet staat komt erachter, op aantal.
+       Oude volgorde (seizoen, dan aantal): window.LK_STRAAT_VOLGORDE = false. */
+    var VOLG = {
+      '': [],
+      haar: ['woonwinkel', 'parfumerie', 'koffiehuis', 'boetiek', 'spellenwinkel', 'boekhandel', 'hobbywinkel', 'cadeausuper', 'kookwinkel', 'elektronicazaak', 'gamewinkel'],
+      hem: ['gamewinkel', 'elektronicazaak', 'sportwinkel', 'koffiehuis', 'parfumerie', 'hobbywinkel', 'spellenwinkel', 'woonwinkel', 'boetiek', 'cadeausuper', 'boekhandel', 'kookwinkel'],
+      kind: ['speelgoedwinkel', 'gamewinkel', 'spellenwinkel', 'hobbywinkel', 'woonwinkel', 'boekhandel', 'cadeausuper', 'koffiehuis', 'boetiek', 'sportwinkel', 'elektronicazaak'],
+      tiener: ['gamewinkel', 'woonwinkel', 'elektronicazaak', 'parfumerie', 'boetiek', 'spellenwinkel', 'hobbywinkel', 'cadeausuper', 'koffiehuis', 'speelgoedwinkel', 'sportwinkel'],
+      'opa-oma': ['spellenwinkel', 'koffiehuis', 'woonwinkel', 'boekhandel', 'tuincentrum', 'hobbywinkel', 'cadeausuper', 'parfumerie', 'kookwinkel'],
+      collega: ['cadeausuper', 'koffiehuis', 'woonwinkel', 'spellenwinkel', 'parfumerie', 'hobbywinkel', 'boekhandel', 'elektronicazaak', 'kookwinkel'],
+      baby: ['speelgoedwinkel', 'boetiek', 'woonwinkel', 'boekhandel', 'cadeausuper']
+    };
+    var VOOR = ['grappenmaker', 'uitjesbureau'];
+    function rang(w) {
+      if (window.LK_STRAAT_VOLGORDE === false) return w.seizoen ? 0 : 1000;
+      var i = VOOR.indexOf(w.id); if (i !== -1) return i;
+      if (w.seizoen) return 10 + WINKELS.indexOf(w);
+      var l = VOLG[wie] || [], j = l.indexOf(w.id); return j !== -1 ? 100 + j : 1000;
+    }
     if (wie || max) open.sort(function (a, b) {
-      var sa = a.w.seizoen ? 1 : 0, sb = b.w.seizoen ? 1 : 0;
-      if (sa !== sb) return sb - sa;
-      if (sa && sb) return WINKELS.indexOf(a.w) - WINKELS.indexOf(b.w);
+      var ra = rang(a.w), rb = rang(b.w);
+      if (ra !== rb) return ra - rb;
+      if (a.w.seizoen && b.w.seizoen) return WINKELS.indexOf(a.w) - WINKELS.indexOf(b.w);
       return b.aantal - a.aantal;
     });
     /* De etalage bovenaan: de beste cadeaus uit de handgekozen top van deze persoon */
