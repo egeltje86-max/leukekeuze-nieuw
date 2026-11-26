@@ -504,9 +504,11 @@
     var kort = p.oudePrijs > p.prijs ? Math.round((1 - p.prijs / p.oudePrijs) * 100) : 0;
     var echt = kort && p.laag30 && window.LK_ECHT_LAGER !== false;
     return '<a class="pk" href="/p/' + esc(p.id) + '/" data-sh-blad="' + esc(p.id) + '">' + /* een link: werkt ook al voordat de site helemaal geladen is */
-      '<span class="pk-foto"><img loading="lazy" src="' + K.klein(p) + '" alt="">' + (kort >= 5 ? '<span class="pk-korting' + (echt ? ' echt' : '') + '">' + (echt ? 'Echt lager ' : '') + '-' + kort + '%</span>' : '') + '</span>' +
-      '<span class="pk-t">' + esc(p.titel) + '</span>' +
-      '<span class="pk-p">' + euro(p.prijs) + '</span>' + (kort ? '<s class="pk-oud">' + euro(p.oudePrijs) + '</s>' : '') +
+      /* 26-11-2026: tussen de onderdelen een spatie (in de flexkaart onzichtbaar) en de foto met de naam als alt, zodat programma's die de pagina
+         uitlezen naam, prijs en winkel niet aan elkaar plakken; de oude prijs heet voor hen 'was', zodat hij niet als losse prijs telt. */
+      '<span class="pk-foto"><img loading="lazy" src="' + K.klein(p) + '" alt="' + esc(p.titel) + '">' + (kort >= 5 ? '<span class="pk-korting' + (echt ? ' echt' : '') + '">' + (echt ? 'Echt lager ' : '') + '-' + kort + '%</span>' : '') + '</span> ' +
+      '<span class="pk-t">' + esc(p.titel) + '</span> ' +
+      '<span class="pk-p">' + euro(p.prijs) + '</span> ' + (kort ? '<s class="pk-oud"><span class="sr-only">was </span>' + euro(p.oudePrijs) + '</s> ' : '') +
       '<span class="pk-w">bij ' + esc(p.shop || '') + (p.mnd ? ' · vanaf ' + p.mnd + ' mnd' : '') + '</span></a>';
   }
 
