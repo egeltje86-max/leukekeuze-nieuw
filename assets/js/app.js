@@ -8605,7 +8605,10 @@
       try { r = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch (e) {}
       var g = /chatgpt|openai/.test(u + ' ' + r) ? 'chatgpt'
         : /perplexity/.test(u + r) ? 'perplexity'
-        : /copilot|bing/.test(u + r) ? 'bing'
+        /* 26-11-2026 (Operatie AI-vindbaarheid 001): Claude en Copilot apart, zodat Copilot niet meer onder de gewone zoekmachine Bing telt. */
+        : /claude\.ai|anthropic/.test(u + ' ' + r) ? 'claude'
+        : /copilot/.test(u + r) ? 'copilot'
+        : /bing/.test(u + r) ? 'bing'
         : /gemini/.test(u + r) ? 'gemini'
         : /google/.test(u + r) ? 'google'
         : /pinterest|pin\.it/.test(u + r) ? 'pinterest'
@@ -8615,6 +8618,12 @@
         : /leukekeuze\.nl$/.test(r) ? 'intern'
         : u ? 'overig' : r ? 'overig' : 'direct';
       try { sessionStorage.setItem('lkvia', g); } catch (e) {}
+      /* 26-11-2026: eenmaal per bezoek de bron met de eerste pagina (binnen/<bron>, titel = de pagina), alleen voor AI-bronnen en zoekmachines.
+         Geen bezoekersnummer, niets bewaard buiten dit tabblad. Uit: window.LK_BINNEN_TEL = false. */
+      if (window.LK_BINNEN_TEL !== false && /^(chatgpt|perplexity|claude|copilot|gemini|google|bing)$/.test(g)) (function tel(n) {
+        if (!window.goatcounter || !window.goatcounter.count) { if (n < 6) setTimeout(function () { tel(n + 1); }, 1500); return; }
+        try { window.goatcounter.count({ path: 'binnen/' + g, title: location.pathname, event: true }); } catch (e) {}
+      })(0);
       return g;
     })();
     /* WIJZER (proef): tellen hoe vaak een Voor wie-pagina gezien is, hoe vaak daar op een product getikt is en hoe vaak dat bezoek naar een winkel ging. */
