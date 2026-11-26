@@ -1,6 +1,6 @@
 {
  "uitleg": "Producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei niet op voorraad). Staan ze weer leverbaar in een feed, dan zet de controle ze vanzelf terug op de site. Wat met de hand op uitverkocht of afgekeurd staat, komt hier nooit in.",
- "bijgewerkt": "2026-11-25",
+ "bijgewerkt": "2026-11-26",
  "producten": {
   "bol-9200000091616642": {
    "datum": "2026-11-21",
@@ -2621,24 +2621,6 @@
    "winkelUrl": "https://www.grotekadoshop.nl/tone-cheer-booknook-cybercity-diy-modelbouw-knutselen",
    "titel": "Tone-Cheer book nook Cyber City"
   },
-  "fitwin-40f541cc58": {
-   "datum": "2026-11-25",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-fitwinkel.json",
-   "shop": "Fitwinkel",
-   "url": "https://rep2.fitwinkel.nl/c/?si=12318&li=1555148&wi=433339&pid=5be9169d42fcb6772e1d2a4929984f7e&dl=products%2Fgarlando-f-zero-tafelvoetbal-grijs-eiken%3Fvariant%3D61881021759818&ws=",
-   "winkelUrl": "https://www.fitwinkel.nl/products/garlando-f-zero-tafelvoetbal-grijs-eiken?variant=61881021759818",
-   "titel": "Garlando F-Zero tafelvoetbal voor kinderen (grijs eiken)"
-  },
-  "joybuy-5ec8ad0448": {
-   "datum": "2026-11-25",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-joybuy.json",
-   "shop": "Joybuy",
-   "url": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=3b0f438339b332a12fbf2528c9b4b1bf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100006350108658%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fkerst-schattige-beer-cadeaudoosvormig-vloerkleed-deurmat%252F100006350108658%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
-   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=3b0f438339b332a12fbf2528c9b4b1bf&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D100006350108658%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fkerst-schattige-beer-cadeaudoosvormig-vloerkleed-deurmat%252F100006350108658%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
-   "titel": "Kerstkleed beer in een cadeaudoos (80 x 68 cm)"
-  },
   "dk-00017721": {
    "datum": "2026-11-25",
    "bron": "winkelpagina",
@@ -2952,6 +2934,456 @@
    "url": "https://tc.tradetracker.net/?c=39204&m=2433689&a=516846&r=&u=https%3A%2F%2Feu.fragrance.com%2Fnl-nl%2Fproducts%2Fsol-de-janeiro-delicia-drench-jet-set-cheirosa-59-170-ml-2117%3Futm_campaign%3D%257BaffiliateSiteName%257D%26utm_content%3D%26utm_source%3Dtradetracker_nl%26utm_medium%3Daffiliate%26utm_term%3D%26variant%3D56463949758849",
    "winkelUrl": "https://eu.fragrance.com/nl-nl/products/sol-de-janeiro-delicia-drench-jet-set-cheirosa-59-170-ml-2117",
    "titel": "Sol de Janeiro Delícia Drench Jet Set (mist, bodybutter en douche-olie)"
+  },
+  "bol-9300000050712928": {
+   "datum": "2026-11-26",
+   "bron": "bol",
+   "reden": "niet op voorraad volgens bol",
+   "nr": "9300000050712928",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdior-sauvage-elixir-60-ml-eau-de-parfum-herenparfum%2F9300000050712928%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/dior-sauvage-elixir-60-ml-eau-de-parfum-herenparfum/9300000050712928/",
+   "titel": "Dior Sauvage Elixir (60 ml)"
+  },
+  "bol-9300000244357239": {
+   "datum": "2026-11-26",
+   "bron": "bol",
+   "reden": "niet op voorraad volgens bol",
+   "nr": "9300000244357239",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fx%2F9300000244357239%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/x/9300000244357239/",
+   "titel": "Tristar mini-raclette voor 2 personen"
+  },
+  "bol-9300000243834114": {
+   "datum": "2026-11-26",
+   "bron": "bol",
+   "reden": "niet op voorraad volgens bol",
+   "nr": "9300000243834114",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbluey-heeler-familie-knuffelset-bluey-bingo-bandit-chilli-pluche-knuffels%2F9300000243834114%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/bluey-heeler-familie-knuffelset-bluey-bingo-bandit-chilli-pluche-knuffels/9300000243834114/",
+   "titel": "Bluey Heeler Familie Knuffelset"
+  },
+  "sif-43d8e72b4d": {
+   "datum": "2026-11-26",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=2402c19e033d0013cfcbde0867251b8a&dl=products%2Fring-belluno-uno%3Fvariant%3D53114559824215&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/ring-belluno-uno?variant=53114559824215",
+   "titel": "Sif Jakobs ring Belluno Uno (zilver, witte zirkonia)"
+  },
+  "sif-3b913424c6": {
+   "datum": "2026-11-26",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=4d8445afa12e317023fffff54524b727&dl=products%2Fring-fusion%3Fvariant%3D55429454627159&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/ring-fusion?variant=55429454627159",
+   "titel": "Sif Jakobs ring Fusion (SJ Metal)"
+  },
+  "sif-984825a39d": {
+   "datum": "2026-11-26",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=f4989d45e48f2a398506d02f1b3d1467&dl=products%2Fbracelet-pearl-02%3Fvariant%3D55429312610647&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/bracelet-pearl-02?variant=55429312610647",
+   "titel": "Sif Jakobs armband Pearl 02 (goud)"
+  },
+  "sif-959c7fb27e": {
+   "datum": "2026-11-26",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=d61664006db594be1671150ddd317c1d&dl=products%2Fbracelet-capizzi-due%3Fvariant%3D48933211603287&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/bracelet-capizzi-due?variant=48933211603287",
+   "titel": "Sif Jakobs armband Capizzi Due Piccolo (zilver)"
+  },
+  "dk-00015663": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=94cda91597d1032a74f84c9016cf513d&dl=gieter-zink-naturel-2-liter-00015663.html%3Fchannable%3D01240b736b7500303030313536363305&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/gieter-zink-naturel-2-liter-00015663.html",
+   "titel": "Zinken gieter, 2 liter"
+  },
+  "bol-9300000259069428": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fravensburger%2Fspellen%2Fravensburger-spel-minecraft-digging-down%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fravensburger%2Fspellen%2Fravensburger-spel-minecraft-digging-down%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Minecraft Digging Down"
+  },
+  "dvzn-154243": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmok-met-tekst-another-8-hours-pretending-to-work-materiaal-keramiek-33-cl-mok-met-tekst-koffie-mok-grappige-cadeau-vaatwasser-bestendig-humor%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/mok-met-tekst-another-8-hours-pretending-to-work-materiaal-keramiek-33-cl-mok-met-tekst-koffie-mok-grappige-cadeau-vaatwasser-bestendig-humor",
+   "titel": "Mok: Another 8 hours pretending to work"
+  },
+  "dgsw-c39793165b": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fspeelgoedauto%2Fmonster-jam-164-2-pack-marvel%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fspeelgoedauto%2Fmonster-jam-164-2-pack-marvel%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Monster Jam Marvel monstertrucks (2 stuks)"
+  },
+  "dgsw-5de25b3bb5": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fstitch%2Fskippybal-stitch-50-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fstitch%2Fskippybal-stitch-50-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Skippybal Stitch (50 cm)"
+  },
+  "dvzn-01747a5574": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Frocket-lavalamp-zilver-met-rode-lava%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/rocket-lavalamp-zilver-met-rode-lava",
+   "titel": "Raket-lavalamp zilver met rode lava"
+  },
+  "ww-f3bc1d3d25": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Westwing",
+   "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=c083774fc23ae79c7c9f1310ab333ca8&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.490494236629352098834239%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fbellure-candle-holder-brass-finish-en-26fev37960.html%253Fsimple%253DDEQ26FEV37960-333525&ws=",
+   "winkelUrl": "https://www.westwing.nl/bellure-candle-holder-brass-finish-en-26fev37960.html?simple=DEQ26FEV37960-333525",
+   "titel": "Kaarshouder Bellure, goud"
+  },
+  "dgsw-5a33342415": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fmeisjes%2Fgabbys-dollhouse%2Fgabbys-dollhouse-dagboek-diamond-painting%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/meisjes/gabbys-dollhouse/gabbys-dollhouse-dagboek-diamond-painting/",
+   "titel": "Totum Gabby's Dollhouse dagboek met diamond painting"
+  },
+  "massa-29ef026ba4": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (410)",
+   "shop": "Massamarkt",
+   "url": "https://www.massamarkt.nl/markt/?tt=24596_1013186_516846_&r=https%3A%2F%2Fwww.massamarkt.nl%2Fparaplu-steden-6ass-design.html%3Fchannable%3D003a25736b7500313434383034f3%26cl2%3Dstandaard%26cl3%3Dzomer%26cl4%3Dzero_sales%26utm_source%3DTradetracker%26utm_medium%3Dcpc%26utm_content%3D144804",
+   "winkelUrl": "https://www.massamarkt.nl/paraplu-steden-6ass-design.html",
+   "titel": "Paraplu met een stadsgezicht (je krijgt één van zes ontwerpen)"
+  },
+  "dvzn-771bc63da3": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmok-met-tekst-boo-materiaal-keramiek-33-cl-mok-met-tekst-koffie-mok-grappige-cadeau-vaatwasser-bestendig-humor-mok-met-grappige-tekst%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/mok-met-tekst-boo-materiaal-keramiek-33-cl-mok-met-tekst-koffie-mok-grappige-cadeau-vaatwasser-bestendig-humor-mok-met-grappige-tekst",
+   "titel": "Mok Boo! met spookje"
+  },
+  "dvzn-fa62560311": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmok-met-tekst-you-re-so-fake-materiaal-keramiek-33-cl-mok-met-tekst-koffie-mok-grappige-cadeau-vaatwasser-bestendig-humor-mok-met-grappige-te%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/mok-met-tekst-you-re-so-fake-materiaal-keramiek-33-cl-mok-met-tekst-koffie-mok-grappige-cadeau-vaatwasser-bestendig-humor-mok-met-grappige-te",
+   "titel": "Mok You're so fake, even China denied they made you"
+  },
+  "cadeau-a33d43fefa": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Cadeau.nl",
+   "url": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fdisney-winnie-de-poeh-3d-mok%2F%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.cadeau.nl/disney-winnie-de-poeh-3d-mok/",
+   "titel": "Disney Winnie de Poeh 3D-mok"
+  },
+  "cl-duplo-10475": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=132e8889fa5a35f82ec2754104a56667&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581004%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252F3-in-1-construction-vehicles-10475&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/3-in-1-construction-vehicles-10475",
+   "titel": "LEGO Duplo 3-in-1 bouwvoertuigen (10475)"
+  },
+  "cl-gr-gluhwein": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fgift-republic-gluhwein-badbommen-372045",
+   "titel": "Gift Republic Glühwein bruisballen"
+  },
+  "cl-gr-unicorn": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fgift-republic-eenhoorn-badbommen-372253",
+   "titel": "Gift Republic eenhoorn bruisballen"
+  },
+  "cl-lp-suzan-freek": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Fiftiesstore",
+   "url": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fsuzan-freek-dromen-in-kleur-coloured-vinyl.html%3Fchannable%3D0191796964003530393739c1",
+   "titel": "Suzan & Freek – Dromen in kleur (LP)"
+  },
+  "dgsw-1442f3f6ae": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fbekende-tv-figuren%2Fpokemon%2Fpokemon-rugtas-3d-pikachu-groot-40x30x15-cm%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/bekende-tv-figuren/pokemon/pokemon-rugtas-3d-pikachu-groot-40x30x15-cm/?utm_source=tradetracker&utm_medium=affiliate&utm_campaign=tradetracker",
+   "titel": "Pokémon 3D-rugtas Pikachu"
+  },
+  "dk-00042929": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=f73ca8b785c39888f413837db0bb69af&dl=hondenbot-van-textiel-recycled-katoen-gestreept-00042929.html%3Fchannable%3D01240b736b750030303034323932395a&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/hondenbot-van-textiel-recycled-katoen-gestreept-00042929.html",
+   "titel": "Hondenbot van gestreept textiel"
+  },
+  "dk-00044934": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=2495e936ecd690d1afe79678503e1661&dl=cadeaupakket-borrel-00044934.html%3Fchannable%3D01240b736b7500303030343439333415&ws=",
+   "winkelUrl": "https://www.dille-kamille.nl/cadeaupakket-borrel-00044934.html",
+   "titel": "Cadeaupakket 'Borrel' (Dille & Kamille)"
+  },
+  "dvzn-452003": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmok-end-of-an-era%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/mok-end-of-an-era",
+   "titel": "Mok: End of an Era (Taylor Swift)"
+  },
+  "dvzn-639895": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fpizza-puzzel-500-stukjes%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/pizza-puzzel-500-stukjes",
+   "titel": "Pizza puzzel (500 stukjes)"
+  },
+  "dvzn-7fa21f9ec9": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmini-microfoon-usb-c%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmini-microfoon-usb-c%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Minimicrofoon voor je telefoon (USB-C)"
+  },
+  "yourd-62ca508a5c": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "YourDecoration",
+   "url": "https://tc.tradetracker.net/?c=29448&m=1549969&a=516846&r=&u=https%3A%2F%2Fwww.yourdecoration.nl%2Fproducts%2Fposter-one-piece-wanted-ace-38x52cm-gbydco258%3Fchannable%3D012eac69640034323538333233333136373535388e",
+   "winkelUrl": "https://www.yourdecoration.nl/products/poster-one-piece-wanted-ace-38x52cm-gbydco258",
+   "titel": "Poster One Piece Wanted Ace (38 x 52 cm)"
+  },
+  "grotek-b9c2122537": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fgift-republic-douche-discolamp-372716",
+   "winkelUrl": "https://www.grotekadoshop.nl/gift-republic-douche-discolamp-372716",
+   "titel": "Douche-discolamp"
+  },
+  "hema-22014fd170": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.hema.nl/school-kantoor/elektronica",
+   "shop": "HEMA",
+   "url": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fschool-kantoor%2Felektronica%2Fgaming-keyboard-38440002.html",
+   "winkelUrl": "https://www.hema.nl/school-kantoor/elektronica/gaming-keyboard-38440002.html",
+   "titel": "HEMA gaming-toetsenbord"
+  },
+  "grotek-60e07f5cce": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fharry-potter-hogwarts-express-3d-houten-puzzel-bouwpakket-modelbouw",
+   "winkelUrl": "https://www.grotekadoshop.nl/harry-potter-hogwarts-express-3d-houten-puzzel-bouwpakket-modelbouw",
+   "titel": "Harry Potter Zweinsteinexpres, 3D-puzzel van hout (524 stukjes)"
+  },
+  "lego-10471": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=aa942e048f8aa204d7af4a82bfa1c4bc&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581002%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fblue-police-motorcycle-10471&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/10471",
+   "titel": "LEGO DUPLO blauwe politiemotor (10471)"
+  },
+  "smartp-94a99049e0": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Smartphoto",
+   "url": "https://www.smartphoto.nl/foto_tt?tt=4903_1195836_516846_&r=https%3A%2F%2Fwww.smartphoto.nl%2Fkalenders-en-agendas%2Fadventskalenders%2Fadventskalender-chocolade%3Fpvc%3DAdventCalendarBoxFunkyLetters",
+   "winkelUrl": "https://www.smartphoto.nl/kalenders-en-agendas/adventskalenders/adventskalender-chocolade?pvc=AdventCalendarBoxFunkyLetters",
+   "titel": "Adventskalender Merry & Bright met chocolade"
+  },
+  "dkam-11c55d9446": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=9eaf3c91105b3f34c8dc69b84017f5bb&dl=melangeerset-voor-kruideninfusies-biologisch-00045076.html%3Fchannable%3D01240b736b75003030303435303736b7&ws=",
+   "winkelUrl": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=9eaf3c91105b3f34c8dc69b84017f5bb&dl=melangeerset-voor-kruideninfusies-biologisch-00045076.html%3Fchannable%3D01240b736b75003030303435303736b7&ws=",
+   "titel": "Melangeerset voor kruidenthee (biologisch)"
+  },
+  "dkam-4c55c33197": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Dille & Kamille",
+   "url": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=f05c99b5160d1b22e121213895cb4e5a&dl=geurkaars-winterspecerijen-140-gram-00045043.html%3Fchannable%3D01240b736b7500303030343530343333&ws=",
+   "winkelUrl": "https://lt45.net/c/?si=7059&li=1483700&wi=433339&pid=f05c99b5160d1b22e121213895cb4e5a&dl=geurkaars-winterspecerijen-140-gram-00045043.html%3Fchannable%3D01240b736b7500303030343530343333&ws=",
+   "titel": "Dille & Kamille geurkaars winterspecerijen"
+  },
+  "ys-3d794159ff": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: SoldOut",
+   "shop": "YourSurprise",
+   "url": "https://www.yoursurprise.nl/tradetracker?tt=546_250583_516846_&r=https%3A%2F%2Fwww.yoursurprise.nl%2Fchocolade-en-snoep%2Fchocolade-cadeau%2Fadventskalenders-chocolade%2Flindt-lindor-assorti-mix-adventkalender%3Fartikelcode%3D398065%3Fartikelcode%3D398065%26utm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3D398065",
+   "winkelUrl": "https://www.yoursurprise.nl/tradetracker?tt=546_250583_516846_&r=https%3A%2F%2Fwww.yoursurprise.nl%2Fchocolade-en-snoep%2Fchocolade-cadeau%2Fadventskalenders-chocolade%2Flindt-lindor-assorti-mix-adventkalender%3Fartikelcode%3D398065%3Fartikelcode%3D398065%26utm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3D398065",
+   "titel": "Lindt Lindor adventskalender met naam en foto"
+  },
+  "cl-duplo-10456": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8cd43c1413936a8a3cea6a9695e0aff9&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526200%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmcqueens-visit-to-docs-garage-10456&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/mcqueens-visit-to-docs-garage-10456",
+   "titel": "LEGO Duplo Cars: McQueen bij Docs garage (10456)"
+  },
+  "cl-chianti-classico": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/uggiano-roccialta-chianti-classico-docg.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=14b2e58e22652f13deaac9dea4efa058&dl=nl%2Fuggiano-roccialta-chianti-classico-docg.html%23%2F1-formaat-75_cl%2F216-jaar-2022&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/uggiano-roccialta-chianti-classico-docg.html#/1-formaat-75_cl/216-jaar-2022",
+   "titel": "Chianti Classico Roccialta (Uggiano)"
+  },
+  "dc-1133437611": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/tequila-herradura-reposado.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=3c4bae6983251da226771eaf16036066&dl=nl%2Ftequila-herradura-reposado.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/tequila-herradura-reposado.html",
+   "titel": "Herradura Reposado tequila"
+  },
+  "dc-1149637404": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/nikka-yoichi-10-years.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=d8bdedbdddd5df21f25733385ac120ce&dl=nl%2Fnikka-yoichi-10-years.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/nikka-yoichi-10-years.html",
+   "titel": "Nikka Yoichi single malt Japanse whisky"
+  },
+  "dc-1190137818": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/roger-groult-doyen-d-age.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=5e73d897581834551efee3e3ed23a5ff&dl=nl%2Froger-groult-doyen-d-age.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/roger-groult-doyen-d-age.html",
+   "titel": "Calvados Roger Groult Doyen d'Âge"
+  },
+  "dc-2496846556": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/mombasa-club-lemon-edition.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=b9ee50f007fc6f2e029e518b334523d4&dl=nl%2Fmombasa-club-lemon-edition.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/mombasa-club-lemon-edition.html",
+   "titel": "Mombasa Club Lemon Edition gin"
+  },
+  "dc-2901775309": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=41010135171c5f877083cadf45070ca5&dl=nl%2Ftaittinger-comtes-de-champagne-blanc-de-blancs.html%23%2F1-formaat-75_cl%2F105-jaar-2014&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/taittinger-comtes-de-champagne-blanc-de-blancs.html",
+   "titel": "Taittinger Comtes de Champagne Blanc de Blancs 2014"
+  },
+  "dc-1093238457": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.decantalo.nl/nl/ron-plantation-20th-aniversary.html",
+   "shop": "Decantalo",
+   "url": "https://bdt9.net/c/?si=18645&li=1810322&wi=433339&pid=9041f5c22bb0f19929cce817bc9655d3&dl=nl%2Fron-plantation-20th-aniversary.html%23%2F54-formaat-70_cl%2F177-jaar-geen_jaar&ws=",
+   "winkelUrl": "https://www.decantalo.com/nl/ron-plantation-20th-aniversary.html",
+   "titel": "Plantation 20th Anniversary rum"
+  },
+  "dgsw-f9f9aeeaa4": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fschool%2Flunchboxen-en-schoolbekers%2Fschoolbekers%2Fdopper-funky-fuchsia%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/school/lunchboxen-en-schoolbekers/schoolbekers/dopper-funky-fuchsia/",
+   "titel": "Dopper Original drinkfles (Funky Fuchsia)"
+  },
+  "eufr-eaaf6c41e3": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "eu.fragrance.com",
+   "url": "https://tc.tradetracker.net/?c=39204&m=2433689&a=516846&r=&u=https%3A%2F%2Feu.fragrance.com%2Fnl-nl%2Fproducts%2Farmani-si-giftset-150-ml-3946%3Futm_campaign%3D%257BaffiliateSiteName%257D%26utm_content%3D%26utm_source%3Dtradetracker_nl%26utm_medium%3Daffiliate%26utm_term%3D%26variant%3D56334554759553",
+   "winkelUrl": "https://eu.fragrance.com/nl-nl/products/armani-si-giftset-150-ml-3946?variant=56334554759553",
+   "titel": "Giorgio Armani Sì cadeauset (150 ml)"
+  },
+  "dvzn-ce796768ef": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fmok-met-tekst-my-level-of-sarcasm%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/mok-met-tekst-my-level-of-sarcasm?utm_campaign=tt_feed_all",
+   "titel": "Mok \"My level of sarcasm\""
+  },
+  "t2-fiftiesstore-8d17a474cb": {
+   "datum": "2026-11-26",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Fiftiesstore",
+   "url": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fcoffee-cup-takeaway-porcelain-set-of-4.html%3Fchannable%3D0191796964003633373037ac",
+   "winkelUrl": "https://www.fiftiesstore.nl/retro/?tt=16663_2168887_516846_&r=https%3A%2F%2Fwww.fiftiesstore.nl%2Fcoffee-cup-takeaway-porcelain-set-of-4.html%3Fchannable%3D0191796964003633373037ac",
+   "titel": "Porseleinen koffiekopjes in takeaway-vorm (set van 4)"
   }
  }
 }
