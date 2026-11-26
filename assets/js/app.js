@@ -4432,7 +4432,7 @@
     window.LK_STRAAT_NA_ETALAGE = opHome(function () { return '<div class="cb-blok">' + belevenisBalk() + '</div>'; });
     window.LK_STRAAT_ONDER = opHome(function () { return '<div class="cb-blok">' + winkelTopBlok() + eigenKaart() + zoWerktBlok() + '</div>'; });
   }
-  function themaKeuze() { try { return localStorage.getItem('lkthema') || 'auto'; } catch (e) { return 'auto'; } }
+  function themaKeuze() { try { return localStorage.getItem('lkthema') || 'licht'; } catch (e) { return 'licht'; } } /* 26-11-2026: standaard licht */
   var MQ_DONKER = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
   function themaZetten() {
     if (!COMBI) return;
@@ -4450,7 +4450,8 @@
     var b = e.target.closest && e.target.closest('[data-thema]'); if (!b) return;
     try { localStorage.setItem('lkthema', b.getAttribute('data-thema')); } catch (x) {}
     /* cadeauboulevard (23-11-2026): 'Licht' geeft de oude lichte site, de andere keuzes de boulevard; wisselt dat, dan de pagina opnieuw laden */
-    try { var nv = localStorage.getItem('lknacht'), nAan = window.LK_NACHT !== false && nv !== '0' && !(nv !== '1' && b.getAttribute('data-thema') === 'licht');
+    try { var nv = localStorage.getItem('lknacht'), nAan = window.LK_NACHT === true || (window.LK_NACHT !== false && nv === '1' && b.getAttribute('data-thema') !== 'licht');
+      if (b.getAttribute('data-thema') === 'licht') localStorage.setItem('lknacht', '0');
       if (nAan !== document.documentElement.classList.contains('nacht')) { location.reload(); return; } } catch (x3) {}
     themaZetten(); try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'weergave/' + b.getAttribute('data-thema'), title: 'Weergave', event: true }); } catch (x2) {}
   });
@@ -4460,7 +4461,7 @@
     var naarLicht = document.documentElement.classList.contains('nacht') || document.documentElement.classList.contains('donker');
     try {
       if (naarLicht) { localStorage.setItem('lkthema', 'licht'); localStorage.setItem('lknacht', '0'); }
-      else { localStorage.setItem('lkthema', 'donker'); localStorage.removeItem('lknacht'); }
+      else { localStorage.setItem('lkthema', 'donker'); localStorage.setItem('lknacht', '1'); }
     } catch (x) {}
     try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'weergave/knop-' + (naarLicht ? 'licht' : 'donker'), title: 'Weergave', event: true }); } catch (x2) {}
     setTimeout(function () { location.reload(); }, 80);
