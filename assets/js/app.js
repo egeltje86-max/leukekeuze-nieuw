@@ -6420,7 +6420,7 @@
         { kop: "Voor kinderen", tekst: "Kleine cadeautjes waar kinderen echt mee spelen, ook goed voor in de schoen.", ids: ["lego-60312", "dgsw-d95eba0a04", "nedg-1ed80cdff7", "mega-afda647e36"] },
         { kop: "Grappig", tekst: "Om om te lachen bij het uitpakken: voor lootjes of iemand die alles al heeft.", ids: ["dvzn-655af9bd06", "gadget-d090d8ccf9", "dvzn-1a61ae70d9", "dvzn-dcc8e0b22d"] },
         { kop: "Iets lekkers", tekst: "Chocolade, pralines of stroopwafels: lekker voor iedereen.", ids: ["t2-hema-2a7e38607b", "hema-8eff9a5ada", "dk-00030960", "cl-chocmakers-liefde"] },
-        { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets voor een voetenbadje.", ids: ["cl-gr-fortune", "cl-kneipp-voetbad", "hema-4f711f0ecd", "parfum-5519078921"] },
+        { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets lekkers voor in bad.", ids: ["cl-gr-fortune", "yr-fe8189d697", "hema-4f711f0ecd", "parfum-5519078921"] },
         { kop: "Voor op het werk", tekst: "Voor een collega: een mok, iets voor op het bureau of een spel voor de pauze.", ids: ["coolgi-098cedb937", "hobbym-cfe3d81cbf", "dvzn-279882", "dvzn-296965"] },
         { kop: "Spelletjes", tekst: "Een kaartspel of klein spel om samen te spelen, thuis of onderweg.", ids: ["cl-uno", "dvzn-49bb2362fd", "dgsw-fa7e6f4f87", "bol-9200000132162995"] }
       ],

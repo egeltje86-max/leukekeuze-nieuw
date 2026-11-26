@@ -37,7 +37,9 @@ def klaar(code, zin):
     print('PILOOT: ' + zin); sys.exit(code)
 
 # 1. nieuwste code
-c, t = run(['git', 'fetch', '-q', 'origin']); stap('ophalen', c == 0, t)
+# 26-11-2026: alleen main ophalen. Een kale 'git fetch origin' haalde in de ondiepe kloon de hele
+# geschiedenis van alle takken binnen (14 GB, schijf bijna vol, run liep vast).
+c, t = run(['git', 'fetch', '-q', 'origin', '+refs/heads/main:refs/remotes/origin/main']); stap('ophalen', c == 0, t)
 c, t = run(['git', 'merge-base', '--is-ancestor', 'origin/main', 'HEAD'])
 if c != 0:
     c, t = run(['git', 'merge', 'origin/main', '--no-edit', '-q']); stap('main erin mergen', c == 0, t)
@@ -131,7 +133,10 @@ try:
 except Exception: pass
 run(['git', 'add', '-A'])
 c, t = run(['git', 'commit', '-q', '-m', zin + '\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>']); stap('vastleggen', c == 0, t)
-c, t = run(['git', 'push', '-q', 'origin', 'HEAD:main', 'HEAD:verbouwing-boom']); stap('live zetten', c == 0, t)
+c, t = run(['git', 'push', '-q', 'origin', 'HEAD:main']); stap('live zetten', c == 0, t)
 if c != 0: klaar(2, zin + ', maar pushen mislukte: ' + t.strip().splitlines()[-1][:160])
 rap['live'] = True
+# 26-11-2026: werktak apart. Mislukt dit (bijv. ondiepe kloon kan niet bewijzen dat het een gewone
+# vooruitstap is), dan staat de site toch live; alleen een notitie, geen fout.
+c2, t2 = run(['git', 'push', '-q', 'origin', 'HEAD:verbouwing-boom']); stap('werktak bijwerken', c2 == 0, t2)
 klaar(0, zin + ', live gezet.' + (' MELDEN: ' + ' '.join(rap['melden']) if rap['melden'] else ''))
