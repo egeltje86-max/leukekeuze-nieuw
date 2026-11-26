@@ -66,7 +66,7 @@
       if (laat && window.LK_HERTEKEN) window.LK_HERTEKEN();
       if (document.readyState === 'loading') addEventListener('DOMContentLoaded', scherm); else scherm(); }).catch(function () {}); } catch (x) {} })();</script>
   <script>window.LK_PAKPAD="assets/pak/c--cadeaus--grappig.js?v=243605249460931";</script>
-  <script>(function () { var s = "assets/js/producten-site.js?v=122562247214913", t = "assets/js/topkeuze.js?v=263641381884754";
+  <script>(function () { var s = "assets/js/producten-site.js?v=226775442187523", t = "assets/js/topkeuze.js?v=276350726303646";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
