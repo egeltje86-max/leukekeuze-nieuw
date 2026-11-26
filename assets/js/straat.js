@@ -377,6 +377,7 @@
       });
       et = CZ.orde(et.concat(erbij), czIds);
     }
+    if (window.LK.lampErin) et = window.LK.lampErin(et); /* FANLAMPJES HOGER (proef 26-11-2026, zie gedeeld.js) */
     var uit = { pr: pr, max: max, open: open, dicht: dicht, totaal: Object.keys(alleUit).length, etalage: et };
     CACHE[sleutel] = uit; return uit;
   }

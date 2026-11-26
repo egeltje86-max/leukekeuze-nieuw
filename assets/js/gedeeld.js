@@ -416,6 +416,34 @@
     return { aan: function () { return AAN; }, ctx: ctx, toelaat: toelaat, filter: filter, spreid: spreid, mensEerst: mensEerst, magVoor: magVoor, varieer: varieer, familie: famVan, beschermd: BESCHERMD };
   })();
 
+  /* FANLAMPJES HOGER (proef 26-11-2026, Marius: 'zet alle producten van deze soort hoger maar zorg dat het niet overheerst'; 'doe maar voor test').
+     Aanleiding: het Minecraft-lampje Allay is twee keer verkocht (24 en 26-11), en eerder de Harry Potter Gouden Snaai-lamp.
+     Een lampje van een game, film of serie (Minecraft, Harry Potter, Stitch, Mario, Pokémon …, tot € 40) dat al op de pagina staat, komt op plek 4, 11 en 19
+     van de lijst: hooguit drie in de eerste 24, waarvan hooguit twee van Minecraft. Er komt nooit iets bij dat niet al op de pagina stond.
+     Alleen bij 'Aanbevolen', in de etalage van de straat en in de afdelingen van een straatwinkel. Uit om te vergelijken: ?proef=lampjes-uit (weer aan: ?proef=lampjes);
+     helemaal uit: window.LK_FANLAMP = false. Meten: kliks klik/<winkel>/<id> op deze lampjes vóór en na 26-11. */
+  var FANLAMP_AAN = (function () { try { var q = location.search; if (/[?&]proef=lampjes-uit(&|$)/.test(q)) localStorage.setItem('lkfanlamp', '0'); else if (/[?&]proef=lampjes(&|$)/.test(q)) localStorage.removeItem('lkfanlamp');
+    return window.LK_FANLAMP !== false && localStorage.getItem('lkfanlamp') !== '0'; } catch (e) { return window.LK_FANLAMP !== false; } })();
+  var FL_LAMP = /\b(lamp|lampje|nachtlampje|nachtlamp|leeslampje|leeslamp|boeklampje|bureaulamp|neonlamp|lichtje)\b|lampje\b|lamp\b/i;
+  var FL_FAN = /minecraft|harry potter|zweinstein|snaai|patronus|hedwig|stitch|super mario|\bmario\b|pok[eé]mon|pikachu|sonic|zelda|playstation|game ?boy|nintendo|bluey|star wars|marvel|among us|fortnite|hello kitty|kuromi/i;
+  function fanLamp(p) { return !!(p && p.titel && p.prijs <= 40 && FL_LAMP.test(p.titel) && FL_FAN.test(p.titel) && !/tuinlamp|zonne-?energie/i.test(p.titel) && !p.stil); }
+  function lampErin(l) {
+    if (!FANLAMP_AAN || !l || l.length < 12) return l;
+    var r = l.slice(), PLEK = [3, 10, 18], max = Math.min(24, r.length), al = 0, mc = 0, i;
+    for (i = 0; i < max; i++) if (fanLamp(r[i])) { al++; if (/minecraft/i.test(r[i].titel)) mc++; }
+    if (al >= 3) return r;
+    PLEK.forEach(function (plek) {
+      if (al >= 3 || plek >= r.length) return;
+      if (fanLamp(r[plek])) return;
+      for (var j = plek + 1; j < r.length; j++) {
+        var p = r[j]; if (!fanLamp(p)) continue;
+        if (/minecraft/i.test(p.titel)) { if (mc >= 2) continue; mc++; }
+        r.splice(j, 1); r.splice(plek, 0, p); al++; return;
+      }
+    });
+    return r;
+  }
+
   /* OPERATIE CADEAUZIEL FASE 2 (24-11-2026, opdracht Dark Nova; Marius: 'plaats ze zoals er staat'). De opening (eerste 24) per pagina en per afdeling
      van een straatwinkel, zoals Nova ze koos (assets/js/cadeauziel.js, gemaakt door scripts/cadeauziel/maak.js). Alleen voor bezoekers: de app roept dit
      alleen aan in de winkelweergave en de straat (WIJZER b, kaal adres), dus zoekmachines en de Google-versie van de bouw houden de gewone volgorde.
@@ -439,8 +467,8 @@
       if (!voor.length) return l;
       return voor.concat(l.filter(function (p) { return !g[p.id]; }));
     }
-    function pagina(l, pad) { return orde(l, ids(pad)); }
-    function schap(l, winkel, naam) { var D = window.LK_CADEAUZIEL; return AAN && D && D.s && D.s[winkel] ? orde(l, D.s[winkel][naam]) : l; }
+    function pagina(l, pad) { return lampErin(orde(l, ids(pad))); }
+    function schap(l, winkel, naam) { var D = window.LK_CADEAUZIEL; return lampErin(AAN && D && D.s && D.s[winkel] ? orde(l, D.s[winkel][naam]) : l); }
     return { aan: function () { return AAN && !!window.LK_CADEAUZIEL; }, ids: ids, orde: orde, pagina: pagina, schap: schap, sleutel: sleutel };
   })();
 
@@ -448,7 +476,7 @@
     leesKeuringen: leesKeuringen, bewaarKeuringen: bewaarKeuringen, vergeetCache: vergeetCache,
     producten: producten, zichtbaar: zichtbaar, vind: vind, hoortBij: hoortBij, isNieuw: isNieuw,
     favorieten: favorieten, isFavoriet: isFavoriet, wisselFavoriet: wisselFavoriet,
-    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf, nova: NOVA, cz: CZ
+    esc: esc, euro: euro, icoon: icoon, productBeeld: productBeeld, productKaart: productKaart, zachtAf: zachtAf, nova: NOVA, cz: CZ, lampErin: lampErin, fanLamp: fanLamp
   };
 })();
 
