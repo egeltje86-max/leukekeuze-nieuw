@@ -27,7 +27,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=14672515736810" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=82129129162585" fetchpriority="high">
   <link rel="preload" as="script" href="assets/js/data.js?v=96390379261180" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
   <link rel="stylesheet" href="assets/css/licht.css?v=114365066024980">
@@ -104,7 +104,7 @@
     try { if (m) { if (m[1]) ls.setItem('lkcombi', '0'); else ls.removeItem('lkcombi'); } uit = ls.getItem('lkcombi') === '0'; } catch (e) { uit = !!(m && m[1]); }
     if (window.LK_COMBI === false || (window.LK_COMBI !== true && uit)) return;
     h.className = h.className.replace(/(^| )(sh-kop|sh-thuis)(?= |$)/g, '') + ' combi';
-    var t = /[?&]thema=(licht|donker|auto)\b/.exec(q), k = t ? t[1] : 'auto';
+    var t = /[?&]thema=(licht|donker|auto)\b/.exec(q), k = t ? t[1] : 'licht'; /* 26-11-2026: standaard licht (Marius), Automatisch alleen als iemand het kiest */
     try { if (t) ls.setItem('lkthema', t[1]); k = ls.getItem('lkthema') || k; } catch (e) {}
     if (k === 'donker' || (k === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) {
       h.className += ' donker'; document.write('<link rel="stylesheet" id="lk-donker" href=' + JSON.stringify('/' + document.querySelector('meta[name="lk-donker"]').content) + '>');
@@ -112,14 +112,14 @@
   } catch (e) {} })();</script>
   <!-- NACHT / CADEAUBOULEVARD (testlink 23-11-2026, Marius: 'ik wil heel de site anders, dit is te oudbollig'): de cadeauboulevard bij nacht met de gevels,
        binnenkanten en rondjes van Nova. VOOR IEDEREEN AAN sinds 23-11-2026 (Marius: 'zet live als die klaar is'). Zelf de oude site zien: ?proef=nacht-uit (blijft onthouden; weer aan: ?proef=nacht).
-       Wie in het menu bij Weergave zelf 'Licht' koos, krijgt de oude lichte site. Helemaal uit: window.LK_NACHT = false.
+       UIT als standaard sinds 26-11-2026 (Marius: 'zet oude versie aan, ik denk dat het mensen afschrikt, vooral oudere mensen; die houden van gezelligheid, chic, oud'): alleen aan voor wie hem zelf kiest (maan in de kop of ?proef=nacht, lknacht = 1). Voor iedereen aan: window.LK_NACHT = true.
        Zet de donkere versie aan en laadt daarna nacht.css en nacht.js (wissel van de rondjes). Code: blok NACHT in straat.js. -->
   <meta name="lk-nacht" content="assets/css/nacht.css?v=29087338344376">
   <meta name="lk-nacht-js" content="assets/js/nacht.js?v=150313274471501">
   <script>(function () { try { var h = document.documentElement, q = location.search, ls = null, aan = false;
     try { ls = window.localStorage; } catch (e) {}
     var m = /[?&]proef=nacht(-uit)?\b/.exec(q);
-    try { if (m) ls.setItem('lknacht', m[1] ? '0' : '1'); var v = ls.getItem('lknacht'); aan = v !== '0' && !(v !== '1' && ls.getItem('lkthema') === 'licht'); } catch (e) { aan = !(m && m[1]); }
+    try { if (m) ls.setItem('lknacht', m[1] ? '0' : '1'); var v = ls.getItem('lknacht'); aan = v === '1'; } catch (e) { aan = !!(m && !m[1]); }
     if (window.LK_NACHT === true) aan = true; if (window.LK_NACHT === false) aan = false;
     if (!aan) return;
     var w = '';
@@ -285,7 +285,7 @@
   <script>/* CADEAUZIEL (24-11-2026, Dark Nova): de openingen per pagina, alleen waar de winkelweergave of de straat staat (niet op productpagina's, gidsen en zoeken). */
     (function () { var s = "assets/js/cadeauziel.js?v=141199049671032"; if (!/^\/(p|gids|zoek|lootjes-trekken|sint-rijmmachine|woordzoeker|vonk|favorieten|tiktok)\//.test(location.pathname)) document.write('<script src="' + s + '"><\/script>'); })();</script>
   <script src="assets/js/straat.js?v=212241667152389"></script>
-  <script src="assets/js/app.js?v=14672515736810"></script>
+  <script src="assets/js/app.js?v=82129129162585"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
