@@ -263,9 +263,11 @@
       '<div class="beeld' + (p.voorbeeld || !p.beeld ? '' : ' echt') + (p.sfeer ? ' sfeer' : '') + '">' + productBeeld(p) + label + '</div>' +
       '<button class="hartje" type="button" data-fav="' + esc(p.id) + '" aria-pressed="' + fav + '" aria-label="' + (fav ? 'Haal van je verlanglijstje' : 'Zet op je verlanglijstje') + '">' + icoon('hart') + '</button>' +
       '<div class="info">' +
-        '<span class="shop">' + esc(p.shop) + (p.mnd ? ' · vanaf ' + p.mnd + ' mnd' : '') + '</span>' +
+        /* 26-11-2026 (Operatie AI-vindbaarheid): spatie na de winkelnaam en 'was' (alleen voor uitleesprogramma's) voor de oude prijs,
+           zodat een programma winkel, naam en prijzen niet aan elkaar plakt of de oude prijs als losse prijs leest. Zichtbaar verandert er niets. */
+        '<span class="shop">' + esc(p.shop) + (p.mnd ? ' · vanaf ' + p.mnd + ' mnd' : '') + '</span> ' +
         '<h3><a href="/p/' + esc(p.id) + '">' + esc(zachtAf(p.titel)) + '</a></h3>' +
-        '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
+        '<div class="prijs">' + euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud"><span class="sr-only">was </span>' + euro(p.oudePrijs) + '</s>' : '') + '</div>' +
         ruilRegel(p) +
         (p.kleuren > 1 ? '<span class="kleuren"><i></i><i></i><i></i>' + p.kleuren + ' ' + (p.keuzeMeervoud || 'kleuren') + '</span>' : '') +
         /* 2.0: alleen bij onze favorieten één korte, echte reden (de eerste zin van 'waarom wij dit kozen'). */

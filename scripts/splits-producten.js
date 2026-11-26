@@ -198,6 +198,10 @@ function splits() {
   schrijfLijst('producten-lean.js', kort);
   schrijfLijst('producten-site.js', kort.filter((o, i) => lean[i].status !== 'afgekeurd'));
   fs.writeFileSync(path.join(ROOT, 'assets/js/producten-details.js'), '/* Gemaakt door scripts/splits-producten.js uit producten.js – niet met de hand bewerken. */\nwindow.LK_DETAILS = ' + JSON.stringify(det) + ';\n');
+  /* GIDS ADVIES (26-11-2026, Operatie AI-vindbaarheid 001): 'voor wie' en 'liever niet als' van de cadeaus in de gidsen, apart, alleen op /gids/ geladen
+     (sjabloon.html). Zo staat het advies in de gebouwde gids (ook zonder JavaScript) zonder dat elke pagina het grote detailbestand nodig heeft. */
+  const ga = {}; lean.forEach(l => { const d = det[l.id]; if (!l.status && GIDS_IDS.has(l.id) && d && d.advies && (d.advies.voor || d.advies.niet)) ga[l.id] = [d.advies.voor || '', d.advies.niet || '']; });
+  fs.writeFileSync(path.join(ROOT, 'assets/js/gidsadvies.js'), '/* Gemaakt door scripts/splits-producten.js – niet met de hand bewerken. */\nwindow.LK_GIDS_ADVIES_DATA = ' + JSON.stringify(ga) + ';\n');
   return lean.length;
 }
 if (require.main === module) console.log(splits(), 'producten gesplitst');

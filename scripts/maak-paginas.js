@@ -27,7 +27,7 @@ function versieVan(rel) {
   return BESTANDS_VERSIE[rel];
 }
 fs.writeFileSync(path.join(ROOT, 'sjabloon.html'), fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8')
-  .replace(/(assets\/(?:css\/(?:stijl|licht|straat|donker|nacht)\.css|js\/(?:data|producten-lean|producten-site|gedeeld|straat|app|topkeuze|teksten|nacht|cadeauziel)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
+  .replace(/(assets\/(?:css\/(?:stijl|licht|straat|donker|nacht)\.css|js\/(?:data|producten-lean|producten-site|gedeeld|straat|app|topkeuze|teksten|nacht|cadeauziel|gidsadvies)\.js))(\?v=\d+)?"/g, function (m, rel) { return rel + '?v=' + versieVan(rel) + '"'; }));
 const SJABLOON = fs.readFileSync(path.join(ROOT, 'sjabloon.html'), 'utf8');
 let SJ_UIT = ''; /* het sjabloon met de icoontjes van kop, menu en onderbalk er al in (zie verderop) */
 /* Veiligheidsslot (1-11-2026): staat er nog een half samengevoegd stuk (<<<<<<< / >>>>>>>) in het sjabloon of in de bronbestanden,
@@ -87,6 +87,10 @@ function maakLd(info, url) {
     uit.push({ '@context': 'https://schema.org', '@type': 'ItemList', name: info.h1 || info.titel, numberOfItems: info.gidsItems.length,
       itemListElement: info.gidsItems.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam, url: SITE + String(x.naar || '').replace(/\/?$/, '/') })) });
   }
+  /* 26-11-2026 (Operatie AI-vindbaarheid 001): lijstpagina's krijgen een ItemList met de eerste cadeaus, precies zoals ze op de pagina staan. Uit: LK_LIJST_LD=0. */
+  if (!info.gidsItems && info.lijstItems && info.lijstItems.length >= 3 && process.env.LK_LIJST_LD !== '0')
+    uit.push({ '@context': 'https://schema.org', '@type': 'ItemList', name: info.h1 || info.titel, numberOfItems: info.lijstItems.length,
+      itemListElement: info.lijstItems.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam, url: SITE + String(x.naar || '').replace(/\/?$/, '/') })) });
   const k = (info.kruimel || []).filter(x => x.naam);
   if (info.prod && k.length && k[k.length - 1].naar) k.push({ naam: info.prod.naam, naar: '' });
   if (k.length > 1) uit.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: k.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.naam,
@@ -332,7 +336,9 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
         tekst: prodTekst || ps[0] || '', seo: window.LK_SEO || '', kruimel, prod, deel, h1: h1.trim(), namen, beeld: img ? img.getAttribute('src') : '', datum,
         gidsGetal: pad.indexOf('/gids/') === 0 && window.LK_GIDS_GETAL ? window.LK_GIDS_GETAL : null, /* 18-11-2026: [beloofd in de titel, echt getoond], voor de Google-titel */
         /* 22-11-2026 (GIDSEN 3.0, beter vindbaar voor ChatGPT en andere zoekers): de cadeaus van een gids, voor de ItemList-gegevens. */
-        gidsItems: /^\/gids\/[^/]+\/$/.test(pad) ? Array.from(document.querySelectorAll('#app .gidsitem h3 a')).slice(0, 40).map(a => ({ naam: a.textContent.replace(/[\u00AD\u200B]/g, '').trim(), naar: a.getAttribute('href') })) : null
+        gidsItems: /^\/gids\/[^/]+\/$/.test(pad) ? Array.from(document.querySelectorAll('#app .gidsitem h3 a')).slice(0, 40).map(a => ({ naam: a.textContent.replace(/[\u00AD\u200B]/g, '').trim(), naar: a.getAttribute('href') })) : null,
+        /* 26-11-2026 (Operatie AI-vindbaarheid 001): de eerste 24 cadeaus van een lijstpagina, voor een ItemList in de gegevens (zelfde volgorde als op de pagina). */
+        lijstItems: /^\/(c|voor|gelegenheid|collectie)\//.test(pad) ? Array.from(document.querySelectorAll('#app .prodkaart h3 a')).slice(0, 24).map(a => ({ naam: a.textContent.replace(/[\u00AD\u200B]/g, '').trim(), naar: a.getAttribute('href') })) : null
       };
       /* 13-11-2026: dezelfde pagina in de nieuwe opzet van de proef WIJZER (alleen de homepage en de Voor wie-pagina's hebben die). */
       /* 21-11-2026 WINKELSTIJL: ook elke afdeling, groep, soort, gelegenheid en collectie heeft voor bezoekers een eigen opzet (een winkel in de straat). */

@@ -7954,6 +7954,17 @@
     return '<a class="gidskaart" href="/gids/' + g.slug + '">' + '<span class="gidsbeeld">' + (eerste ? LK.productBeeld(eerste) : '') + '</span>' +
       '<span><strong>' + esc(gidsTitel(g)) + '</strong><small>' + esc(gidsGetal(g, gidsKort(g))) + '</small></span></a>';
   }
+  /* GIDS ADVIES (26-11-2026, Operatie AI-vindbaarheid 001 van Nova, eis 'voor wie en eventuele nadelen'): onder de uitleg één korte regel uit
+     het eigen cadeau-advies van de productpagina (correcties.json -> advies: voor / niet). Er wordt niets nieuw geschreven; zonder advies geen regel.
+     Uit: window.LK_GIDS_ADVIES = false. */
+  function gidsAdvies(p) {
+    if (window.LK_GIDS_ADVIES === false) return '';
+    var a = p.advies || (window.LK_GIDS_ADVIES_DATA && window.LK_GIDS_ADVIES_DATA[p.id] && { voor: window.LK_GIDS_ADVIES_DATA[p.id][0], niet: window.LK_GIDS_ADVIES_DATA[p.id][1] });
+    if (!a) return '';
+    var v = String(a.voor || '').trim(), n = String(a.niet || '').trim();
+    if (!v && !n) return '';
+    return '<p class="gi-advies">' + (v ? '<span><b>Voor wie:</b> ' + esc(v) + '</span>' : '') + (n ? '<span><b>Liever niet als:</b> ' + esc(n) + '</span>' : '') + '</p>';
+  }
   /* Gidsen 2.0: één cadeau als rij met foto, winkel, naam, de uitleg 'waarom' (uit de productgegevens), prijs en een knop. */
   function gidsItem(p, i) {
     var fav = LK.isFavoriet(p.id), naar = '/p/' + esc(p.id);
@@ -7963,7 +7974,8 @@
       '<div class="gi-info"><span class="shop">' + esc(p.shop) + '</span>' +
         '<h3><a href="' + naar + '">' + esc(LK.zachtAf(p.titel)) + '</a></h3>' + /* 13-11-2026: lange woorden netjes afbreken, net als op de productkaart */
         (p.waarom ? '<p class="gi-waarom">' + esc(p.waarom) + '</p>' : '') +
-        '<div class="gi-onder"><span class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud">' + LK.euro(p.oudePrijs) + '</s>' : '') + '</span>' +
+        gidsAdvies(p) +
+        '<div class="gi-onder"><span class="prijs">' + LK.euro(p.prijs) + (p.oudePrijs > p.prijs ? ' <s class="oud"><span class="sr-only">was </span>' + LK.euro(p.oudePrijs) + '</s>' : '') + '</span>' +
         '<a class="gi-knop" href="' + naar + '">Bekijk' + ic('rechts') + '</a></div>' +
       '</div></article>';
   }
