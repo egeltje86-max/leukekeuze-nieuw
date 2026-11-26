@@ -3445,6 +3445,8 @@
             (p.verzendNoot ? '<li>' + ic('info') + '<span>' + esc(p.verzendNoot) + '</span></li>' : '') +
             (ookIn.length ? '<li>' + ic('cadeau') + '<span>Ook te vinden bij: ' + ookIn.join(', ') + '</span></li>' : '') +
             (p.voorbeeld ? '<li>' + ic('info') + '<span>Dit is een voorbeeldproduct om de site te testen. De foto is een sfeerbeeld.</span></li>' : '') +
+            /* 26-11-2026 (NOVA-SEO-001, GO Marius): een fout melden kan op de plek waar je hem ziet. Gewone maillink met de naam en het adres van het product erin. Uit: window.LK_FOUT_MELDEN = false. */
+            (window.LK_FOUT_MELDEN !== false && !p.voorbeeld ? '<li>' + ic('info') + '<span>Klopt er iets niet, zoals de prijs of de uitleg? <a href="mailto:leukekeuze.nl@gmail.com?subject=' + encodeURIComponent('Fout gezien: ' + p.titel) + '&amp;body=' + encodeURIComponent('Pagina: https://leukekeuze.nl/p/' + p.id + '/\n\nWat klopt er niet?\n') + '">Meld het ons</a>.</span></li>' : '') +
           '</ul>' +
         '</div>' +
       '</div>' +
@@ -6052,7 +6054,7 @@
       '<li>Een ander deel vindt mijn automatische hulp in de productlijsten van de winkels. Die zoekt met vaste regels (geen troep, geen dubbele, de juiste leeftijd, geen grove grappen bij kinderen) en ik keur het daarna. Wat ik niet goed vind, haal ik weg.</li>' +
       '<li>Ik test de producten niet zelf. Wat er bij een product staat, komt van de winkel en de fabrikant. De uitleg en het advies (voor wie, en wanneer liever niet) schrijf ik met hulp van AI, op basis van die gegevens.</li>' +
       '<li>Liever een goed product dan tien bijna dezelfde, en een mix van goedkoop en duurder.</li>' +
-      '<li>Prijs en voorraad worden elke dag nagekeken bij de winkel. Bij elk product staat de datum van de laatste controle. Wat niet meer te koop is, haal ik weg.</li></ul>' +
+      '<li>Prijs en voorraad kijken we elke dag na bij de winkels waar dat kan. Bij elk product staat de datum van de laatste controle; is die ouder dan een week, dan staat er \'ca.\' bij de prijs. Wat niet meer te koop is, haal ik weg.</li></ul>' +
       '<h2>Eerlijk over geld</h2><p>LeukeKeuze is geen webwinkel. Je koopt altijd bij de winkel zelf, zoals bol of een andere bekende webwinkel. Koop je iets via een link op deze site, dan krijg ik soms een kleine vergoeding van die winkel (via bol, Amazon, Awin, Daisycon en TradeTracker). Jij betaalt daardoor niets extra. Die vergoeding bepaalt niet welke producten erop komen. Wel kan een cadeau dat vaak gekocht wordt wat hoger in een lijst staan. Meer daarover lees je bij <a href="/info/hoe-werkt-het">Hoe werkt het?</a></p>' +
       '<h2>Fout gezien?</h2><p>Klopt een prijs niet, is een product weg of staat er iets verkeerds? Mail het naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>, het liefst met de link van de pagina. Ik pas het binnen twee werkdagen aan of haal het product weg.</p>' +
       '<h2>Contact</h2><p>Een tip of een vraag? Mail naar <a href="mailto:leukekeuze.nl@gmail.com">leukekeuze.nl@gmail.com</a>. Mijn gegevens staan ook in het <a href="/info/colofon">colofon</a>.</p>' +
