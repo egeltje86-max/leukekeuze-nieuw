@@ -376,7 +376,7 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
     if (/:$/.test(oms)) oms = r.h1 + ' van LeukeKeuze: met de hand gekozen cadeaus, je koopt bij bekende winkels.';
     else if (oms.length < 70) oms = oms.replace(/\s+$/, '') + (r.prod ? ' Met de hand gekozen door LeukeKeuze.' : ' Met de hand gekozen cadeaus, je koopt bij bekende winkels.');
     if (oms.length > 160) oms = oms.slice(0, 157).replace(/\s+\S*$/, '') + '…';
-    paginas.push({ pad, titel: r.titel, h1: r.h1, gidsItems: r.gidsItems || null, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: merkVoor(r.prod.id, (LEAN_MERK[r.prod.id] || '')) }) : r.prod, deel: r.deel, datum: r.datum,
+    paginas.push({ pad, titel: r.titel, h1: r.h1, gidsItems: r.gidsItems || null, lijstItems: r.lijstItems || null, inhoud: r.inhoud, inhoudB: r.inhoudB || '', omschrijving: oms, gidsGetal: r.gidsGetal || null, kruimel: r.kruimel, prod: r.prod ? Object.assign({}, r.prod, { merk: merkVoor(r.prod.id, (LEAN_MERK[r.prod.id] || '')) }) : r.prod, deel: r.deel, datum: r.datum,
       beeld: pad.indexOf('/p/') === 0 ? r.beeld : deelBeeld(pad), beeldMaat: pad.indexOf('/p/') !== 0 && !!deelBeeld(pad), geenIndex: GEEN_INDEX.test(pad) || r.leeg || DUN(pad, r.aantal) || !!(GOOGLE && r.prod && r.prod.status === 'goedgekeurd' && !GOOGLE.has(r.prod.id)) });
   }
   await browser.close(); srv.close();
