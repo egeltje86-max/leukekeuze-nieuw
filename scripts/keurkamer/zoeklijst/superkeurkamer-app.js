@@ -582,7 +582,9 @@
       '<span>' + euro(k.min) + ' tot ' + euro(k.max) + '</span>' + (k.vol ? '<span>' + tal(k.vol) + ' keer per maand gezocht</span>' : '') + '</div>' +
       (k.doel ? '<div class="si-balk"><i style="width:' + pct + '%"></i></div>' : '') +
       (k.tip ? '<p class="si-tip">💡 ' + esc(k.tip) + '</p>' : '') +
-      '<p class="si-woorden">Zoekt op: ' + k.zoek.map(function (w) { return '<b>' + esc(w.trim()) + '</b>'; }).join(' · ') + (k.niet && k.niet.length ? '<br><small>Niet: ' + k.niet.map(function (w) { return esc(w.trim()); }).join(', ') + '</small>' : '') + '</p>' +
+      '<p class="si-woorden">Zoekt op: ' + k.zoek.map(function (w) { return '<b>' + esc(w.trim()) + '</b>'; }).join(' · ') +
+        (k.ook && k.ook.length ? '<br>En ook een van: ' + k.ook.map(function (w) { return '<b>' + esc(w.trim()) + '</b>'; }).join(' · ') : '') +
+        (k.winkels && k.winkels.length ? '<br>Alleen bij: ' + k.winkels.map(esc).join(', ') : '') + (k.niet && k.niet.length ? '<br><small>Niet: ' + k.niet.map(function (w) { return esc(w.trim()); }).join(', ') + '</small>' : '') + '</p>' +
       '<button class="chip' + (staat.z && staat.z.slim ? ' aan' : '') + '" data-a="slim">' + (staat.z && staat.z.slim ? '✓ Slim zoeken staat aan' : 'Slim zoeken aanzetten') + '</button></div>';
   }
   function catKaart(x) {

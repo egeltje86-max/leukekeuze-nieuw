@@ -90,7 +90,7 @@ C('Speelgoed', [
         B('Speelgoedauto\'s & garages', 'speelgoedauto|garage speelgoed|parkeergarage|autogarage|takelwagen speelgoed|brandweerauto speelgoed|vrachtwagen speelgoed|tractor speelgoed', 'auto onderdelen'),
         B('Hot Wheels & Matchbox', 'hot wheels|matchbox|majorette|siku'),
         B('Racebanen', 'racebaan|carrera|scalextric|autobaan'),
-        B('Treinen', 'brio|houten trein|treinbaan|speelgoedtrein|treinset', 'modeltrein|märklin|marklin'),
+        B('Treinen', ' brio|brio |houten trein|treinbaan|speelgoedtrein|treinset|trein set', 'modeltrein|märklin|marklin|wijn|reserva|cabrio|xylofoon|brioche'),
         B('Bestuurbare auto\'s voor kinderen', 'bestuurbare auto|rc auto kind|radiografisch|afstandsbestuurbaar|rc stunt|rc truck', 'nitro|brandstof|1:5|1:8|1:10|accu los|reserve'),
         B('Playmobil', 'playmobil'),
         B('Actiefiguren & superhelden', 'actiefiguur|action figure|actiefiguren|superheld figuur|spider-man figuur|batman figuur|transformers|power rangers|wwe'),
@@ -151,7 +151,7 @@ C('Spellen, puzzels & boeken', [
         B('Catan & strategie', 'catan|carcassonne|ticket to ride|7 wonders|wingspan|azul|splendor|pandemie|cascadia|kingdomino|everdell'),
         B('Spellen voor twee', 'duel|voor 2 spelers|twee spelers|patchwork|jaipur|lost cities|7 wonders duel'),
         B('Coöperatieve spellen', 'coöperatief|cooperatief|samen spelen spel|pandemic|the crew|the mind'),
-        B('Quizspellen', 'triviant|quizspel|quiz spel|quiz|trivial pursuit|weet jij het|wie is het|30 seconds|30 seconden|rappen|ken je dat|vragenspel', 'paperback|hardback|kaarten hond|mind quiz'),
+        B('Quizspellen', 'triviant|quizspel|quiz spel|quiz|trivial pursuit|weet jij het|wie is het|30 seconds|30 seconden|ken je dat|vragenspel', 'paperback|hardback|kaarten hond|mind quiz'),
         B('Escape- en detectivespellen', 'escape room spel|exit het spel|unlock|deckscape|detective spel|moordspel|murder mystery'),
     ], mn=10, mx=150, niet='uitbreiding|expansion|sleeves|insert|engelstalig|english edition'),
     P('Kaart- & partyspellen', [
@@ -373,7 +373,7 @@ C('Knus & sfeer', [
         B('Grappige pantoffels', 'pantoffel|slof|sloffen|slippers', 'babyslof|baby slof|inlegzool|teenslipper|badslipper|zwembad', ook='grappig|gek|popcorn|voor twee|pizza|avocado|banaan|haai|frietjes|friet|taco|sushi|donut|hamburger|bier|wortel|kip |tenen|monster|ufo|pluche|knuffel'),
         B('Pantoffels voor dames', 'pantoffels dames|dames pantoffel|damespantoffel|dames slof|sloffen dames'),
         B('Pantoffels voor heren', 'pantoffels heren|heren pantoffel|herenpantoffel|heren slof|sloffen heren'),
-        B('Kinderpantoffels', 'kinderpantoffel|kinder pantoffel|kindersloffen|pantoffels kinderen'),
+        B('Kinderpantoffels', 'pantoffel|slof|sloffen', 'babyslof|baby slof|dames|heren|volwassen', ook='kind|kinder|jongen|meisje|kids|junior|peuter'),
         B('Huissokken', 'huissok|huissokken|anti-slip sok|bedsok|bedsokken'),
         B('Babyslofjes', 'babyslof|baby slof|slofjes baby|babyslofjes'),
     ], mn=5, mx=90),
@@ -542,7 +542,7 @@ C('Sieraden & accessoires', [
     P('Armbanden & bedels', [
         B('Armbanden voor dames', 'armband dames|damesarmband|zilveren armband|gouden armband|schakelarmband|bangle'),
         B('Armbanden voor heren', 'herenarmband|heren armband|armband heren|leren armband heren|kralenarmband heren'),
-        B('Bedels & bedelarmbanden', 'bedel|bedelarmband|charm|pandora'),
+        B('Bedels & bedelarmbanden', 'bedel|bedelarmband| charm |charms|pandora', 'charmander|mega construx|game|ps5|xbox|playstation|switch'),
         B('Armbanden met naam', 'armband met naam|naamarmband|armband graveren|armband met tekst'),
         B('Sieradendozen', 'sieradendoos|sieradenkistje|sieradenbox|sieradenhouder|juwelendoos|sieradenstandaard'),
     ], mn=8, mx=400, niet=SIER_NIET + '|horlogeband|zweetband|polsband ziekenhuis|armband hond'),
@@ -570,7 +570,7 @@ C('Sieraden & accessoires', [
 # ---------------------------------------------------------------- 8 WONEN & KEUKEN
 C('Wonen & keuken', [
     P('Mokken & bekers', [
-        B('Mokken met tekst', 'mok met tekst|mok met spreuk|mok met quote|beker met tekst|mok \''),
+        B('Mokken met tekst', 'mok|beker', 'met naam -|keramiek - a|mama|papa|opa|oma|moeder|vader', ook='met tekst|spreuk|quote|grappig|collega|baas|maandag|weekend|world\'s best|warme meuk|koffie eerst|tekst|shitshow|manager|teamleider|juf |meester'),
         B('Grappige mokken', 'grappige mok|mok grappig|3d mok|mok in de vorm|mok met ogen|warmtegevoelige mok|magische mok|kleur veranderende mok'),
         B('Mokken met naam of foto', 'mok met naam|mok met foto|fotomok|gepersonaliseerde mok|naammok'),
         B('Mokken van films & games', 'harry potter mok|star wars mok|minecraft mok|disney mok|marvel mok|mario mok|playstation mok|friends mok|stitch mok'),
@@ -591,8 +591,6 @@ C('Wonen & keuken', [
         B('Messen & messensets', 'koksmes|messenset|messenblok|santoku|keukenmes|vleesmes'),
         B('Snijplanken', 'snijplank|hakblok|broodplank'),
         B('Fondue, gourmet & raclette', 'fondue|gourmetset|raclette|steengrill|teppanyaki'),
-        B('Bakken', 'bakvorm|bakset|taartvorm|uitsteekvormen|cupcake|bakboek set|deegroller|bakmat'),
-        B('Servies & borden', 'servies|ontbijtbord|serviesset|kom set|schaal set|dinerbord'),
         B('Theepotten & koffie zetten', 'theepot|theeglas|french press|cafetière|percolator|moka pot|melkopschuimer|koffiemolen'),
         B('Keukengadgets', 'keukengadget|keuken gadget|pizzasnijder|avocado|eiersnijder|kruidenmolen|knoflookpers|grappige keuken'),
         B('Schorten & ovenwanten', 'schort|keukenschort|ovenwant|pannenlap|bbq schort|barbecueschort|keukenset textiel', 'met voornaam|met naam -|verfschort|werkschort|kapperscape|kappersschort|tuinschort'),
@@ -621,7 +619,7 @@ C('Wonen & keuken', [
     P('Spaarpotten', [
         B('Spaarpotten voor kinderen', 'spaarpot kind|spaarpot kinderen|spaarpot dier|kinderspaarpot|spaarvarken'),
         B('Grappige spaarpotten', 'spaarpot|spaarvarken|geldkluis|spaarkist', 'met voornaam|met naam|keramiek - a', ook='grappig|in de vorm|met geluid|stelende|kat |hond|monster|panda|dino|varken|kluis|piggy|bankje|mario|minecraft|stitch|pokemon|tetris|teller|digitaal'),
-        B('Spaarpotten met naam', 'spaarpot met naam|naam spaarpot|spaarpot graveren'),
+        B('Spaarpotten met naam', 'spaarpot|spaarvarken', '', ook='met naam|graveren|gepersonaliseerd|eigen naam|met foto|bedrukken'),
         B('Kluisjes & geldkistjes', 'kluis kind|kluisje|geldkistje|spaarkluis|digitale spaarpot'),
     ], mn=4, mx=80),
     P('Kerstversiering', [
@@ -646,9 +644,7 @@ C('Gadgets & elektronica', [
         B('Gadgets voor bier en borrel', 'bier gadget|biergadget|bierhelm|bierschieter|flessen schieter|shotglas spel'),
     ], mn=5, mx=120),
     P('Handige gadgets', [
-        B('Powerbanks & opladers', 'powerbank|draadloze oplader|oplaadstation|magsafe|snellader'),
         B('AirTags & trackers', 'airtag|tracker sleutel|keyfinder|smart tag|chipolo|tile mate'),
-        B('Telefoonhouders & accessoires', 'telefoonhouder|selfiestick|telefoonstatief|ringlamp|gimbal'),
         B('Tablets & e-readers', 'ipad|e-reader|ereader|kobo|kindle|galaxy tab|lenovo tab|kindertablet|tablet |tablet-', 'hoes|screenprotector|tekentablet|tabletten|tabletworld|bruistablet|reinigingstablet|vaatwastablet|houder|standaard|toetsenbord|stylus|pen |kabel|lader', 60, 900),
         B('Slimme speakers & slim wonen', 'slimme speaker|google nest|echo dot|alexa|slimme lamp|philips hue|slim stopcontact'),
         B('Handige gadgets voor in huis', 'handig gadget|handige gadget|oplaadbaar|draagbaar|mini ventilator|usb gadget'),
@@ -699,7 +695,7 @@ C('Hobby & creatief', [
         B('Macramé & weven', 'macramé|macrame|weefraam|weven set|tufting'),
     ], mn=5, mx=400),
     P('Zelf maken', [
-        B('Kaarsen maken', 'kaarsen maken|kaarsenmaakset|kaars maken|kaarsen gieten'),
+        B('Kaarsen maken', 'kaarsen maken|kaarsenmaakset|kaars maken|kaarsen gieten|maak je eigen kaars|candle making|kaarsenwas|kaarsvet|kaarsen pakket|kaarsen set maken', 'kaarsenbord|plateau|schaal|kaarsenhouder'),
         B('Zeep maken', 'zeep maken|zeepmaakset|zeep gieten|zeep set maken|maak je eigen zeep|bruisballen maken|lippenbalsem maken|badbommen maken|kaarsen maken|kaarsenmaakset|parfum maken', 'workshop|zeepsnijder'),
         B('Sieraden maken', 'sieraden maken volwassen|sieraden maken set|kralen rijgen|edelstenen kralen|armbanden maken set'),
         B('Klei & pottenbakken', 'pottenbakken|boetseren|klei volwassen|draaischijf|polymeerklei|fimo'),
@@ -779,7 +775,6 @@ C('Sport, buiten & dier', [
         B('Elektrische fietsen', 'elektrische fiets|e-bike|ebike|fatbike', 'onderdeel|accu los|lader|slot'),
         B('Steps', 'step |stunt step|stuntstep|autoped|microstep|micro step', 'elektrisch|e-step'),
         B('Skateboards & waveboards', 'skateboard|waveboard|longboard|penny board|cruiserboard'),
-        B('Fietsaccessoires', 'fietsbel|fietslampje|fietsmand|fietstas|fietscomputer|fietshelm'),
     ], mn=10, mx=3000),
     P('Tuin & vogels', [
         B('Vogelhuisjes', 'vogelhuisje|nestkast|vogelhuis'),
@@ -794,14 +789,11 @@ C('Sport, buiten & dier', [
         B('BBQ-accessoires', 'bbq gereedschap|bbq set|barbecue set|bbq tang|grillborstel|vleesthermometer|bbq accessoires'),
         B('Barbecues', 'barbecue|bbq |kamado|houtskoolbarbecue|tafelbarbecue|weber|gasbarbecue|elektrische barbecue|big green egg|pizzaoven', mx=2500, mn=60, niet='rooksnipper|pellets|warmhoudrek|pan |montage|recepten|boek|hardback|paperback|saus|rub|kruiden|schort|hoes|beschermhoes|rooster los|briketten|houtskool zak|aanmaak|thermometer|tang|borstel|spies|reiniger|grill pan|vervang|onderdeel|brander|plaat los|gasslang|drukregelaar'),
         B('Pizzaovens', 'pizzaoven|pizza oven|pizzasteen|ooni'),
-        B('Vuurkorven & vuurschalen', 'vuurkorf|vuurschaal|vuurtafel|terrashaard|fire pit'),
         B('Kampvuurkoken & dutch oven', 'dutch oven|kampvuur pan|popcorn kampvuur|marshmallow|tosti ijzer kampvuur'),
     ], mn=10, mx=1000),
     P('Hond & kat', [
         B('Hondenspeelgoed', 'hondenspeelgoed|hondenspeeltje|speelgoed hond|kauwspeelgoed|hondenbal|snuffelmat', 'knuffel kind'),
         B('Kattenspeelgoed', 'kattenspeelgoed|kattenspeeltje|speelgoed kat|krabplank|kattenhengel|laserpen kat'),
-        B('Manden & kussens', 'hondenmand|hondenkussen|kattenmand|kattenhuis|hondenbed'),
-        B('Krabpalen', 'krabpaal|krabton|kattenkrabpaal'),
         B('Huisdier met naam of foto', 'huisdierportret|portret van je hond|portret van je kat|hondenpenning|naampenning|halsband met naam'),
         B('Snacks & verwennen', 'hondensnack|kattensnack|hondenkoekjes|kattensnoepjes|adventskalender hond|adventskalender kat'),
     ], mn=3, mx=200),
@@ -846,7 +838,7 @@ def maak(uit):
             for bi, b in enumerate(p['blokken'], 1):
                 n += 1
                 k = {'id': '%s%02d' % (pid, bi), 'ouder': pid, 'volgorde': bi, 'naam': b['naam'], 'zoek': b['zoek'], 'niet': b['niet'],
-                     'min': b['min'], 'max': b['max'], 'doel': b['doel'], 'prio': 'B', 'tip': b['tip'], 'voor': []}
+                     'min': b['min'], 'max': b['max'], 'doel': b['doel'], 'prio': '', 'tip': b['tip'], 'voor': []}
                 if b['ook']:
                     k['ook'] = b['ook']
                 if b['winkels']:

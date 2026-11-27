@@ -564,7 +564,7 @@ WEG_WINKELS = ('aliexpress', 'yesgifts', 'laredoute', 'kadoversturen', 'animalsg
                'speelgoedpostorder', 'bandanawinkel', 'bigsizeshirts', 'spaarpottenwinkel', 'fashionstore', 'piercings', 'koppverlag')
 ALTIJD_NIET = ('vervangende', 'reserveonderdeel', 'navulling', 'refill', 'bevestigingsmateriaal', 'bewegingssensor', 'stopcontact', 'babyfoon', 'muggen',
                'penis', 'piemel', 'milf', 'sexy', 'erotisch', 'erotiek', 'tieten', 'vibrator', 'kutkerst', 'seksspel',   # grof: niet op een cadeausite
-               'tepelpiercing', 'navelpiercing', 'armbrust', 'kruisboog', 'crossbow', 'vlindermes', 'stiletto', 'boksbeugel', 'werpster', 'springmes')   # 27-11-2026: wapens en piercings
+               'satisfyer', 'tepelpiercing', 'navelpiercing', 'armbrust', 'kruisboog', 'crossbow', 'vlindermes', 'stiletto', 'boksbeugel', 'werpster', 'springmes')   # 27-11-2026: wapens en piercings
 
 
 def soort_van(cat):
