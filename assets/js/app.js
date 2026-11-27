@@ -5546,7 +5546,7 @@
   function kpLd(faq) {
     return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(function (f) { return { '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }; }) }).replace(/</g, '\\u003c') + '</script>';
   }
-  var KP_OOK = '<section class="sectie kp-ook"><h2>Nog meer voor pakjesavond en kerst</h2><p class="wzk-verder"><a href="/woordzoeker/">Woordzoeker printen</a> · <a href="/dobbelspel/">Dobbelspel met cadeautjes</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a> · <a href="/lootjes-trekken/">Lootjes trekken</a></p></section>';
+  var KP_OOK = '<section class="sectie kp-ook"><h2>Nog meer voor pakjesavond en kerst</h2><p class="wzk-verder"><a href="/woordzoeker/">Woordzoeker printen</a> · <a href="/dobbelspel/">Dobbelspel met cadeautjes</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a> · <a href="/lootjes-trekken/">Lootjes trekken</a> · <a href="/kerstwensen/">Kerstwensen</a></p></section>';
   function kleurplatenPagina(slug) {
     var hk = (location.hash || '').slice(1);
     if (hk && kpVind(hk)) setTimeout(function () { var el = document.getElementById(hk); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' }); }, 80);
@@ -5589,6 +5589,268 @@
         '<section class="sectie wzk-vragen"><h2>Vragen over de kleurplaten</h2>' + faq.map(kpVraag).join('') + kpLd(faq) + '</section>' +
       '</div>';
   }
+
+  /* ================== KERSTWENSEN (27-11-2026, keuze Marius: '1'): /kerstwensen/ ==================
+     Wensen per soort om te kopiëren of via WhatsApp te sturen, met kerstkaarten van Kaartje2go eronder.
+     Zoekwoorden (OpenSEO 27-11): kerstwensen 9.900, kerstwensen 2026 9.900, warme kerstwensen 5.400, kerstkaart tekst 4.400,
+     liefdevolle 3.600, korte/lieve/originele/bijzondere kerstwensen elk 2.400, grappige 1.600, kerst en nieuwjaarswensen 2026 8.100.
+     Alle wensen zelf geschreven (niet overgenomen van andere sites). Bijbelteksten uit de Statenvertaling.
+     Een wens erbij: zet hem in de lijst van zijn soort. Een kaart erbij: het id in 'kaarten'. Uit: window.LK_KERSTWENSEN = false. */
+  var KW_SOORT = [
+    { slug: 'kort', naam: 'Kort', titel: 'Korte kerstwensen', tekst: 'Voor een kaart met weinig ruimte, een appje of onder een foto.', wensen: [
+      'Fijne kerstdagen en een gelukkig 2027!',
+      'Warme kerstgroeten van ons allemaal.',
+      'Een knusse kerst en een gezond nieuw jaar.',
+      'Liefs uit ons huis naar het jouwe.',
+      'Gezellige dagen en een sprankelend 2027.',
+      'Fijne feestdagen, met veel lichtjes en weinig haast.',
+      'Vrolijk kerstfeest en een mooi nieuw jaar!',
+      'Een kerst vol warmte, een jaar vol geluk.',
+      'Rust, lichtjes en lekker eten: fijne kerst!',
+      'Geniet van de dagen, en van elkaar.',
+      'Proost op een mooi 2027!',
+      'Een dikke kerstknuffel voor jou!',
+      'Zalig kerstfeest en een voorspoedig nieuwjaar.',
+      'Hele fijne kerst, van harte.'
+    ] },
+    { slug: 'warm', naam: 'Warm en lief', titel: 'Warme en lieve kerstwensen', tekst: 'Voor de mensen die je echt iets wilt zeggen: familie, vrienden of je liefste.', wensen: [
+      'We wensen je warme kerstdagen met de mensen die je lief zijn, en een nieuw jaar waarin je vaak mag lachen.',
+      'Moge het licht van de kerstboom ook in je hart branden, nu en in het nieuwe jaar.',
+      'Dank je wel voor alle mooie momenten dit jaar. We hopen dat er in 2027 nog veel bij komen. Fijne kerst!',
+      'Ik wens je dagen vol warmte: een kop chocolademelk, een goed gesprek en mensen om je heen die je blij maken.',
+      'Wat fijn dat jij in ons leven bent. Hele warme kerstgroeten en alle liefs voor het nieuwe jaar.',
+      'Even geen haast, alleen kaarslicht, lekker eten en elkaar. Dat wensen we je deze kerst.',
+      'Een kerst vol kleine geluksmomentjes en een nieuw jaar dat goed voor je is.',
+      'Ook al zijn we niet bij elkaar, in gedachten zitten we gewoon naast je bij de kerstboom. Fijne feestdagen!',
+      'We hopen dat je deze dagen kunt genieten van alles wat je lief is. Een warme knuffel van ons.',
+      'Voor jou: een kerst met heel veel licht, en een 2027 met heel veel liefde.',
+      'Mogen de kerstdagen je rust geven en het nieuwe jaar nieuwe energie.',
+      'Een warme kerst, een zachte deken en de mensen van wie je houdt. Meer is niet nodig. Fijne feestdagen!',
+      'Kaarsjes aan, telefoon uit en tijd voor elkaar: dat wensen we je deze kerst.',
+      'Bedankt voor je vriendschap, je steun en je lach. Ik wens je een prachtige kerst.',
+      'Lieve schat, de mooiste kerst is de kerst met jou. Ik hou van je.',
+      'Met jou is elke dag een beetje kerst. Fijne feestdagen, mijn lief.'
+    ] },
+    { slug: 'grappig', naam: 'Grappig', titel: 'Grappige kerstwensen', tekst: 'Voor wie van een lach houdt. Zonder grove grappen, dus ook voor op de kaart naar je tante.', wensen: [
+      'Ik wilde je iets duurs geven, maar dit kaartje was in de aanbieding. Fijne kerst!',
+      'Moge je bord vol zijn, je glas nooit leeg en je broek met elastiek. Fijne kerst!',
+      'Alvast sorry voor de kilo’s die eraan komen. Fijne feestdagen!',
+      'Kerst: drie dagen eten, op de bank liggen en zeggen dat je volgend jaar gezonder gaat leven. Geniet ervan!',
+      'De Kerstman belde. Hij vroeg of je dit jaar lief bent geweest. Ik heb maar niks gezegd. Fijne kerst!',
+      'Ik wens je een kerst zonder kerstliedjes in je hoofd. Hoewel… dat lukt toch niet. Fijne feestdagen!',
+      'Mijn goede voornemens voor 2027? Precies dezelfde als die voor 2026. Fijne kerst en een gelukkig nieuwjaar!',
+      'Gourmetten, kerstbrunch, kerstdiner, restjes. Zet je schrap en eet smakelijk!',
+      'Lampjes in de knoop? Dan is het weer kerst. Veel succes en fijne feestdagen!',
+      'Fijne kerst! En onthoud: calorieën tellen niet tussen 24 december en 1 januari.',
+      'Dit jaar geen trui met een rendier aan? Dan doe je het niet goed. Een foute kerst gewenst!',
+      'Ik wilde een gedichtje voor je schrijven, maar mijn rijm was op. Dus: fijne kerst!',
+      'Vraagt de familie weer naar je liefdesleven? Wijs naar de boom en roep: kijk, een ster! Fijne kerst!',
+      'De kerstboom staat, de naalden liggen. Tot in juli. Fijne feestdagen!',
+      'Fijne kerst! Ik heb je cadeau al uitgezocht. Nu nog kopen.'
+    ] },
+    { slug: 'origineel', naam: 'Origineel', titel: 'Originele en bijzondere kerstwensen', tekst: 'Net even anders dan ‘fijne feestdagen’. Voor wie iets persoonlijks wil schrijven.', wensen: [
+      'Dit jaar wens ik je geen pakjes, maar momenten: een slappe lach, een lange wandeling, een avond zonder wekker.',
+      'Moge 2027 je verrassen zoals een cadeautje dat je niet had verwacht.',
+      'Een ster om naar te kijken, een kaars om bij te zitten en iemand om mee te praten. Fijne kerst.',
+      'Ik wens je een kerst die naar dennen ruikt, naar kaneel smaakt en voelt als thuiskomen.',
+      'Dat je in het nieuwe jaar vaker ‘ja’ zegt tegen dingen die je blij maken.',
+      'Voor het nieuwe jaar: 365 nieuwe kansen, 52 weekenden en 12 volle manen. Maak er iets moois van.',
+      'Laten we de lichtjes dit jaar niet alleen in de boom hangen, maar ook in elkaars dagen.',
+      'Met kerst tellen niet de cadeaus onder de boom, maar de mensen eromheen. Fijn dat jij er een van bent.',
+      'Ik wens je de rust van een besneeuwd bos en de warmte van een open haard.',
+      'Een nieuw jaar is een leeg schrift. Ik hoop dat je er mooie dingen in schrijft.',
+      'Vrede op de wereld is een grote wens. Vrede in je hoofd is al een mooi begin. Fijne kerst.',
+      'Kerst is pas echt kerst als jij erbij bent. Daarom deze kaart: ik mis je, en ik wens je het allerbeste.'
+    ] },
+    { slug: 'familie', naam: 'Familie', titel: 'Kerstwensen voor familie', tekst: 'Voor je ouders, opa en oma, broer of zus, schoonfamilie of de kleinkinderen.', wensen: [
+      'Lieve papa en mama, dank jullie wel voor alles. Fijne kerst en een gezond 2027!',
+      'Lieve opa en oma, kerst is het gezelligst bij jullie. Veel liefs en een gezond nieuw jaar.',
+      'Lieve zus, wat ben ik blij dat jij mijn zus bent. Fijne kerst en op naar een mooi 2027.',
+      'Lieve broer, we zien elkaar te weinig. Laten we dat in 2027 vaker doen. Fijne feestdagen!',
+      'Voor de liefste familie: fijne kerst, een goede jaarwisseling en tot snel aan de lange tafel.',
+      'Lieve schoonouders, dank jullie wel voor het warme welkom, elk jaar weer. Fijne kerst!',
+      'Wat fijn dat we elkaar weer zien met kerst. Wij nemen het toetje mee!',
+      'Lieve kleinkinderen, opa en oma wensen jullie een kerst vol cadeautjes, chocolademelk en pret. Dikke kus!',
+      'Al wonen we ver uit elkaar, met kerst voelt de afstand kleiner. Een warme knuffel voor jullie allemaal.',
+      'Lieve oom en tante, fijne kerst en een heel gezond en gelukkig nieuw jaar.',
+      'Voor het hele gezin: een knusse kerst en een nieuw jaar vol mooie herinneringen.'
+    ] },
+    { slug: 'vrienden', naam: 'Vrienden', titel: 'Kerstwensen voor vrienden', tekst: 'Voor je beste vriend of vriendin, of de hele vriendengroep in de app.', wensen: [
+      'Op naar nog een jaar vol koffie, kletsen en lachen. Fijne kerst, lieve vriendin!',
+      'Vrienden zijn de familie die je zelf kiest. Ik heb goed gekozen. Fijne kerst!',
+      'Fijne kerst! En bedankt voor alle appjes, borrels en goede gesprekken dit jaar.',
+      'Wat een jaar. Gelukkig had ik jou erbij. Fijne feestdagen en op naar 2027!',
+      'Ik wens je een kerst met heel veel lekker eten, en een nieuw jaar met nog meer etentjes samen.',
+      'Fijne kerst, maatje! Laten we in 2027 die plannen eindelijk eens uitvoeren.',
+      'Voor de vriend die altijd klaarstaat: een hele fijne kerst, en een jaar waarin jij ook eens verwend wordt.',
+      'Kerst zonder jou kan ook, maar is wel een stuk saaier. Fijne dagen en tot snel!',
+      'Gezellige feestdagen! Zullen we in januari de kerstkilo’s er samen af wandelen?',
+      'Proost op onze vriendschap en op alles wat nog komt. Fijne kerst!',
+      'Op afstand, maar altijd dichtbij. Fijne kerst, vriend.',
+      'Lieve vrienden, dank jullie wel voor dit jaar. Op naar nog veel meer avonden zoals die van ons.'
+    ] },
+    { slug: 'zakelijk', naam: 'Collega’s en zakelijk', titel: 'Kerstwensen voor collega’s en zakelijk', tekst: 'Voor een collega, het hele team, klanten of medewerkers. Bij zakelijke wensen staat ‘u’, je kunt er ook ‘je’ van maken.', wensen: [
+      'Fijne kerst, en bedankt voor de fijne samenwerking dit jaar!',
+      'Dank je wel voor je hulp, je humor en de koffie op de juiste momenten. Fijne feestdagen!',
+      'Rust lekker uit, je hebt het verdiend. Fijne kerst en tot in 2027.',
+      'Met jou als collega gaat de week een stuk sneller voorbij. Fijne feestdagen en een goed nieuw jaar!',
+      'Laptop dicht, telefoon uit. Fijne kerst en een mooie jaarwisseling!',
+      'Aan het hele team: dank jullie wel voor dit jaar. Fijne feestdagen en op naar een sterk 2027.',
+      'Wij danken u voor het vertrouwen en de prettige samenwerking dit jaar. Wij wensen u fijne feestdagen en een succesvol 2027.',
+      'Graag bedanken wij u voor een mooi jaar. Wij wensen u en uw dierbaren gezellige kerstdagen en een gezond nieuw jaar.',
+      'Met dank voor uw vertrouwen wensen wij u warme feestdagen en een voorspoedig 2027.',
+      'Wij kijken terug op een fijne samenwerking en kijken uit naar het nieuwe jaar. Prettige feestdagen!',
+      'Aan al onze klanten: bedankt dat jullie er dit jaar waren. Fijne kerst en tot in 2027!',
+      'Aan onze medewerkers: dank jullie wel voor jullie inzet dit jaar. Geniet van de feestdagen, jullie hebben het verdiend.',
+      'Fijne feestdagen, namens het hele team van [naam bedrijf]. Vanaf maandag 4 januari 2027 staan we weer voor u klaar.'
+    ] },
+    { slug: 'christelijk', naam: 'Christelijk', titel: 'Christelijke kerstwensen', tekst: 'Met een Bijbeltekst of over de geboorte van Jezus. De Bijbelteksten komen uit de Statenvertaling.', kaarten: ['k2g-277096', 'k2g-290630', 'k2g-239145', 'k2g-289881'], wensen: [
+      'Ere zij God in de hoogste hemelen, en vrede op aarde. (Lucas 2:14) Gezegende kerstdagen!',
+      'Want een Kind is ons geboren, een Zoon is ons gegeven. (Jesaja 9:5) Wij wensen je een gezegend kerstfeest.',
+      'Immanuël: God met ons. Dat je die belofte mag voelen, deze kerst en in het nieuwe jaar.',
+      'Het Licht schijnt in de duisternis. (Johannes 1:5) We wensen je een kerst vol licht en een gezegend 2027.',
+      'Moge de vrede van het kerstkind in je hart en in je huis zijn. Zalig kerstfeest.',
+      'Gods zegen voor de kerstdagen en voor elke dag van het nieuwe jaar.',
+      'In een eenvoudige stal begon het grootste wonder. We wensen je een gezegende kerst.',
+      'Dat de ster van Bethlehem je de weg wijst, ook in het nieuwe jaar. Gezegende feestdagen!',
+      'We vieren dat God naar ons toe kwam. Warme en gezegende kerstgroeten.',
+      'Hoop, vrede en liefde: het mooiste geschenk lag in een kribbe. Zalig kerstfeest.',
+      'Een gezegend kerstfeest en een nieuw jaar in Zijn licht.',
+      'Moge het Licht van de wereld je omringen, nu en in 2027.',
+      'Jezus is jarig! Fijne kerst en heel veel liefs.'
+    ] },
+    { slug: 'nieuwjaar', naam: 'Kerst en nieuwjaar', titel: 'Kerst- en nieuwjaarswensen 2027', tekst: 'Voor een kaart die kerst en nieuwjaar in één keer doet, of voor de appjes rond de jaarwisseling.', wensen: [
+      'Fijne kerstdagen en een gezond, gelukkig en liefdevol 2027!',
+      'Op naar 2027: een jaar met meer tijd, meer lachen en minder haast.',
+      'Ik wens je voor het nieuwe jaar vooral gezondheid. De rest komt dan vanzelf.',
+      'Gelukkig nieuwjaar! Moge 2027 net zo mooi worden als jij hoopt.',
+      'Een goede jaarwisseling en een nieuw jaar vol mooie plannen die echt uitkomen.',
+      'Bedankt voor 2026. Op naar een jaar met nog meer mooie momenten samen.',
+      'Moge het nieuwe jaar je brengen wat je nodig hebt, en een beetje van wat je wilt.',
+      'Fijne kerst en een gelukkig nieuwjaar, van ons allemaal!',
+      '2027: nieuwe kansen, nieuwe dromen en hopelijk eindelijk die vakantie. Gelukkig nieuwjaar!',
+      'Voor het nieuwe jaar: een goede gezondheid, lieve mensen om je heen en elke dag iets om naar uit te kijken.',
+      'Een warme kerst en een sprankelende jaarwisseling. Tot in 2027!',
+      'Oliebollen, bubbels en om twaalf uur een dikke knuffel. Gelukkig nieuwjaar!'
+    ] },
+    { slug: 'rijm', naam: 'Rijmpjes', titel: 'Kerstgedichtjes en rijmpjes', tekst: 'Korte rijmpjes voor op de kaart. Tik op kopiëren, dan krijg je ze met de regels netjes onder elkaar.', wensen: [
+      'De kaarsjes branden, de boom staat klaar,\ngezellig samen, het mooiste van het jaar.\nIk wens je kerst vol warmte en licht\nen een nieuw jaar met een lach op je gezicht.',
+      'Een ster in de nacht, een lichtje in huis:\nvoor jou en de jouwen een fijne kerst thuis!',
+      'De kerstballen glimmen, de sneeuw valt neer,\nik wens je geluk, en nog veel meer!',
+      'De tafel is gedekt, het eten staat klaar,\nproost op elkaar en op een prachtig nieuw jaar!',
+      'Rendieren op het dak, de Kerstman op pad:\nik wens je een kerst zoals je die nog nooit had!',
+      'Buiten is het koud, maar binnen is het warm.\nFijne kerst, en zit lekker arm in arm.',
+      'Een nieuw jaar staat al voor de deur,\nik wens je dagen vol licht en kleur.',
+      'Sneeuwvlokjes dwarrelen zacht naar beneden,\nik wens je een kerst vol liefde en vrede.',
+      'Met kerst zijn we het liefst bij elkaar.\nFijne dagen en een gelukkig nieuw jaar!',
+      'Oliebollen, bubbels, een toost om twaalf uur:\nik wens je een nieuw jaar vol liefde en avontuur!'
+    ] },
+    { slug: 'steun', naam: 'Als het moeilijk is', titel: 'Kerstwensen voor wie het moeilijk heeft', tekst: 'Voor iemand die een dierbare mist, ziek is of het zwaar heeft. Kies liever een rustige wens dan een vrolijke.', kaarten: ['kaartj-2d7f5a74b4', 'kaartj-8702aa8af3'], wensen: [
+      'Deze kerst zal anders zijn dan anders. We denken aan je en wensen je veel sterkte.',
+      'De lege stoel aan tafel valt met kerst extra op. Weet dat we aan jullie denken.',
+      'Er zijn geen goede woorden, wel een warme gedachte. Veel sterkte tijdens de feestdagen.',
+      'Een lichtje voor jou, in deze donkere dagen. We zijn er als je ons nodig hebt.',
+      'Je hoeft deze dagen niet vrolijk te zijn. Doe wat goed voelt. We denken aan je.',
+      'We steken met kerst een kaarsje aan voor [naam], en voor jou. Heel veel sterkte.',
+      'Ik wens je rust, en mensen om je heen die je laten voelen dat je niet alleen bent.',
+      'Kerst kan zwaar zijn als je iemand mist. Mijn deur staat open, ook voor een kop koffie zonder woorden.',
+      'Ik hoop dat het nieuwe jaar je wat lichter maakt. Een warme knuffel.',
+      'Veel sterkte en beterschap tijdens de feestdagen. We hopen dat 2027 een gezonder jaar wordt.'
+    ] },
+    { slug: 'engels', naam: 'Engels', titel: 'Engelse kerstwensen', tekst: 'Voor familie of vrienden in het buitenland, of gewoon omdat het mooi klinkt.', wensen: [
+      'Merry Christmas and a Happy New Year!',
+      'Wishing you peace, joy and love this Christmas.',
+      'Warm wishes for a cosy Christmas and a wonderful 2027.',
+      'Merry Christmas from our home to yours.',
+      'Season’s greetings and best wishes for the new year.',
+      'Eat, drink and be merry: Merry Christmas!',
+      'Sending love and Christmas cheer your way.',
+      'Thank you for a great year. Merry Christmas and all the best for 2027!'
+    ] }
+  ];
+  /* Kerstkaarten van Kaartje2go voor iedereen (de christelijke en de sterkte-kaarten staan bij hun eigen soort). */
+  var KW_KAARTEN = ['kaartj-42fead4d88', 'kaartj-1042f9d60b', 'kaartj-297d787222', 'kaartj-06813f9203', 'kaartj-894de4a575', 'kaartj-104d71c9ba', 'kaartj-93a9a33a52', 'kaartj-28233a8f91'];
+  function kwTel(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Kerstwensen', event: true }); } catch (e) {} }
+  function kwAantal() { return KW_SOORT.reduce(function (n, s) { return n + s.wensen.length; }, 0); }
+  function kwWens(s, w, i) {
+    var html = esc(w).replace(/\n/g, '<br>');
+    return '<li class="kw-wens"><p data-kw-tekst>' + html + '</p><div class="kw-knoppen">' +
+      '<button type="button" class="kw-knop" data-kw-kopieer="' + s.slug + '" aria-label="Kopieer deze kerstwens"><span>Kopieer</span></button>' +
+      '<a class="kw-knop kw-wa" href="https://wa.me/?text=' + encodeURIComponent(w) + '" target="_blank" rel="noopener" data-kw-wa="' + s.slug + '" aria-label="Stuur deze kerstwens via WhatsApp">' + ic('whatsapp') + '<span>WhatsApp</span></a>' +
+      '</div></li>';
+  }
+  function kerstwensenPagina() {
+    var n = kwAantal();
+    var hk = (location.hash || '').slice(1);
+    if (hk && KW_SOORT.some(function (s) { return s.slug === hk; })) setTimeout(function () { var el = document.getElementById(hk); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }); }, 80);
+    zetTitel('Kerstwensen 2026: ' + n + ' teksten voor je kerstkaart');
+    var intro = n + ' kerstwensen voor je kerstkaart of een appje: kort, warm, grappig, christelijk, zakelijk en voor kerst en nieuwjaar. Tik op een wens om hem te kopiëren, of stuur hem meteen via WhatsApp.';
+    window.LK_SEO = intro;
+    var faq = [
+      ['Wat schrijf je op een kerstkaart?', 'Begin met de naam (‘Lieve Sanne,’), schrijf één of twee zinnen die bij die persoon passen en sluit af met je naam. Een herinnering aan iets wat jullie dit jaar samen deden maakt een gewone wens meteen persoonlijk.'],
+      ['Wat is een korte kerstwens?', 'Bijvoorbeeld: ‘Fijne kerstdagen en een gelukkig 2027!’ of ‘Een kerst vol warmte, een jaar vol geluk.’ Hierboven staan er nog veel meer bij ‘Korte kerstwensen’.'],
+      ['Wat zet je op een zakelijke kerstkaart?', 'Bedank voor de samenwerking of het vertrouwen, wens fijne feestdagen en een goed nieuw jaar en zet de naam van je bedrijf eronder. Schrijf ‘u’ aan klanten die je niet tutoyeert. Voorbeelden staan bij ‘Kerstwensen voor collega’s en zakelijk’.'],
+      ['Wanneer moet je kerstkaarten posten?', 'Post ze liefst ruim een week voor kerst, dan zijn ze op tijd. Kijk voor de laatste datum op de site van PostNL. Decemberzegels van 2026 kun je gebruiken van 9 november 2026 tot en met 2 januari 2027.'],
+      ['Schrijf je Kerstmis en kerst met een hoofdletter?', 'Kerstmis schrijf je met een hoofdletter. Kerst schrijf je met een kleine letter, net als samenstellingen zoals kerstboom, kerstavond en kerstkaart.'],
+      ['Mag ik deze kerstwensen gebruiken?', 'Ja. Je mag ze gratis gebruiken op je eigen kaarten, in een appje of op sociale media, en ze aanpassen zoals je wilt.']
+    ];
+    var kaart = function (ids, max) { return kpProducten(ids, max); };
+    var cadeaus = kpProducten(((window.LK_TOPVAST || {})['/c/cadeaus/kerst'] || []), 8);
+    var algemeen = kaart(KW_KAARTEN, 8);
+    return paginakop({ titel: 'Kerstwensen 2026', tekst: intro, kruimel: [{ tekst: 'Kerst', naar: '/c/cadeaus/kerst' }, { tekst: 'Kerstwensen' }] }) +
+      '<div class="binnen kw">' + gidsKop('kerst', true) +
+        '<nav class="kw-soorten" aria-label="Kies een soort kerstwens">' + KW_SOORT.map(function (s) {
+          return '<a class="chip" href="/kerstwensen/#' + s.slug + '" data-kw-naar="' + s.slug + '">' + esc(s.naam) + ' <small>' + s.wensen.length + '</small></a>';
+        }).join('') + '</nav>' +
+        KW_SOORT.map(function (s, i) {
+          var k = s.kaarten ? kaart(s.kaarten, 4) : '';
+          return (i === 3 && algemeen ? '<section class="sectie kw-kaarten"><h2>Kerstkaarten om je wens op te zetten</h2><p>Bij Kaartje2go kies je een kaart, typ je je eigen tekst erin en sturen zij hem voor je op.</p><div class="prodgrid">' + algemeen + '</div></section>' : '') +
+            '<section class="sectie kw-soort" id="' + s.slug + '"><h2>' + esc(s.titel) + '</h2><p>' + esc(s.tekst) + '</p>' +
+            '<ul class="kw-lijst">' + s.wensen.map(function (w, j) { return kwWens(s, w, j); }).join('') + '</ul>' +
+            (k ? '<h3 class="kw-kaartkop">Kaarten die hierbij passen</h3><div class="prodgrid">' + k + '</div>' : '') +
+            '</section>';
+        }).join('') +
+        '<section class="sectie kw-tips"><h2>Zo maak je je kerstkaart persoonlijk</h2><ul>' +
+          '<li><strong>Begin met de naam.</strong> ‘Lieve opa’ of ‘Hoi Tim’ leest meteen warmer dan alleen een wens.</li>' +
+          '<li><strong>Noem één ding van dit jaar.</strong> Een uitje, een verhuizing, een nieuwe baan: één zin is genoeg.</li>' +
+          '<li><strong>Kies een wens die bij de persoon past.</strong> Grappig voor je beste vriend, rustig voor iemand die het moeilijk heeft.</li>' +
+          '<li><strong>Zet je naam eronder.</strong> Bij een gezin: alle namen, of ‘de familie De Vries’.</li>' +
+        '</ul></section>' +
+        (cadeaus ? '<section class="sectie kw-cadeaus"><h2>Nog een kerstcadeau nodig?</h2><p>Een paar cadeaus uit onze kersttop. Er komen er elke week nieuwe bij.</p><div class="prodgrid">' + cadeaus + '</div>' +
+          '<p class="wzk-verder"><a href="/c/cadeaus/kerst">Alle kerstcadeaus</a> · <a href="/gids/kerstcadeau-voor-haar/">Kerstcadeau voor haar</a> · <a href="/gids/kerstcadeau-voor-hem/">Kerstcadeau voor hem</a> · <a href="/gids/kerstcadeau-collega/">Voor een collega</a> · <a href="/gids/kerstcadeau-onder-25/">Onder € 25</a> · <a href="/gids/secret-santa/">Secret Santa</a></p></section>' : '') +
+        '<section class="sectie kp-ook"><h2>Meer voor de kerst</h2><p class="wzk-verder"><a href="/lootjes-trekken/">Lootjes trekken</a> · <a href="/kleurplaten/kerst/">Kerstkleurplaten</a> · <a href="/woordzoeker/">Woordzoeker</a> · <a href="/dobbelspel/">Dobbelspel met cadeautjes</a></p></section>' +
+        '<section class="sectie wzk-vragen"><h2>Vragen over kerstwensen</h2>' + faq.map(kpVraag).join('') + kpLd(faq) + '</section>' +
+      '</div>';
+  }
+  function kwKopieerTekst(tekst, klaar) {
+    var oud = function () {
+      try { var t = document.createElement('textarea'); t.value = tekst; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select(); var ok = document.execCommand('copy'); document.body.removeChild(t); klaar(ok); } catch (e) { klaar(false); }
+    };
+    try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(tekst).then(function () { klaar(true); }, oud); else oud(); } catch (e) { oud(); }
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('.kw')) return;
+    var naar = e.target.closest('[data-kw-naar]');
+    if (naar) {
+      var doel = document.getElementById(naar.getAttribute('data-kw-naar'));
+      if (doel && doel.scrollIntoView) { e.preventDefault(); e.stopPropagation(); doel.scrollIntoView({ behavior: 'smooth', block: 'start' }); kwTel('kerstwensen/naar/' + naar.getAttribute('data-kw-naar')); }
+      return;
+    }
+    var kop = e.target.closest('[data-kw-kopieer]');
+    if (kop) {
+      var p = kop.closest('.kw-wens').querySelector('[data-kw-tekst]');
+      var tekst = p ? (p.innerText || p.textContent) : '';
+      kwKopieerTekst(tekst, function (ok) {
+        if (ok) { kop.classList.add('ok'); var sp = kop.querySelector('span'); if (sp) sp.textContent = 'Gekopieerd'; setTimeout(function () { kop.classList.remove('ok'); if (sp) sp.textContent = 'Kopieer'; }, 1800); }
+        else { try { var r = document.createRange(); r.selectNodeContents(p); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } catch (x) {} }
+        if (typeof rijmToast === 'function') rijmToast(ok ? 'Kerstwens gekopieerd' : 'Kopiëren lukt niet: de tekst is geselecteerd');
+      });
+      kwTel('kerstwensen/kopieer/' + kop.getAttribute('data-kw-kopieer'));
+      return;
+    }
+    var wa = e.target.closest('[data-kw-wa]');
+    if (wa) kwTel('kerstwensen/whatsapp/' + wa.getAttribute('data-kw-wa'));
+  }, true);
 
   /* ---------- printen: alleen de kleurplaat (of je eigen ingekleurde versie) op A4 ---------- */
   function kpPrint(id, src) {
@@ -8726,7 +8988,7 @@
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
       '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
       '<div class="lade-label">Cadeau-ideeën</div><div class="lade-links">' + collectiesVan('ideeen').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
-      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/dobbelspel/', 'Dobbelspel met cadeautjes') + link('/kleurplaten/', 'Gratis kleurplaten') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
+      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/dobbelspel/', 'Dobbelspel met cadeautjes') + link('/kleurplaten/', 'Gratis kleurplaten') + link('/kerstwensen/', 'Kerstwensen') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
   }
   /* Collecties in twee groepen: acties (kortingen) en cadeau-ideeën. Verborgen collecties blijven bereikbaar via hun adres. */
   var COLLECTIE_ACTIES = ['black-friday', 'aanbiedingen', 'kortingscodes'];
@@ -8982,6 +9244,7 @@
     else if (d[0] === 'woordzoeker' && window.LK_WOORDZOEKER !== false) html = woordzoekerPagina();
     else if (d[0] === 'dobbelspel' && window.LK_DOBBELSPEL !== false) html = dobbelPagina();
     else if (d[0] === 'kleurplaten' && window.LK_KLEURPLATEN !== false) html = kleurplatenPagina(d[1]);
+    else if (d[0] === 'kerstwensen' && window.LK_KERSTWENSEN !== false) html = kerstwensenPagina();
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);
