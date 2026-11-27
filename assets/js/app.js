@@ -5646,8 +5646,9 @@
       var x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
       var d = x.getImageData(0, 0, w, h).data, n = w * h, lum = new Uint8Array(n), muur = new Uint8Array(n);
       for (var i = 0, j = 0; i < n; i++, j += 4) { var l = (d[j] * 3 + d[j + 1] * 6 + d[j + 2]) / 10; lum[i] = l; muur[i] = l < 170 ? 1 : 0; }
+      kpKader(muur, w, h);
       var kl = new Uint32Array(n); kl.fill(0xFFFFFFFF);
-      KPC.w = w; KPC.h = h; KPC.lum = lum; KPC.muur = muur; KPC.kl = kl; KPC.x = x; KPC.data = x.createImageData(w, h);
+      KPC.w = w; KPC.h = h; KPC.lum = lum; KPC.muur = muur; KPC.dicht = kpDicht(muur, w, h, 3); KPC.kl = kl; KPC.x = x; KPC.data = x.createImageData(w, h);
       kpTeken(); s.querySelector('[data-kp-laden]').hidden = true;
     };
     img.src = '/images/kleurplaten/' + id + '.png';
@@ -5667,36 +5668,88 @@
     KPC.x.putImageData(KPC.data, 0, 0);
   }
   function kpHex(h) { var r = parseInt(h.slice(1, 3), 16), g = parseInt(h.slice(3, 5), 16), b = parseInt(h.slice(5, 7), 16); return (0xFF000000 | (b << 16) | (g << 8) | r) >>> 0; }
-  function kpVul(px, py) {
-    var w = KPC.w, h = KPC.h, muur = KPC.muur, kl = KPC.kl;
-    var x0 = Math.round(px), y0 = Math.round(py), start = -1;
-    /* tik je net op een lijn, zoek dan het dichtstbijzijnde vlak */
-    for (var r = 0; r <= 8 && start < 0; r++) for (var dy = -r; dy <= r && start < 0; dy++) for (var dx = -r; dx <= r; dx++) {
-      var xx = x0 + dx, yy = y0 + dy; if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
-      if (!muur[yy * w + xx]) { start = yy * w + xx; break; }
+  /* 27-11-2026 (Marius: 'het kleurt gelijk alles'): de vlakken lekten in elkaar over door kleine openingen in de lijnen en via de witte rand om de tekening.
+     Nu: (1) alles buiten de tekening is muur (waarde 2, niet kleurbaar); (2) we zoeken het vlak op een versie waarin de lijnen 3 pixels dikker zijn
+     (kpDicht), zodat gaatjes tot ongeveer 6 pixels dicht zijn; daarna loopt de kleur weer door tot de echte lijn. Gemeten op alle 34 platen:
+     het grootste vlak ging van 50-90% van de plaat naar meestal 10-25% (de lucht of de achtergrond). */
+  function kpKader(muur, w, h) {
+    var x0 = w, x1 = -1, y0 = h, y1 = -1, hmax = Math.floor(h * 0.965); /* onderaan staat de voetregel 'kleurplaat van leukekeuze.nl' */
+    for (var y = 0; y < hmax; y++) for (var x = 0, p = y * w; x < w; x++, p++) if (muur[p] === 1) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    if (x1 < 0) return;
+    for (var q = 0; q < w * h; q++) { var qx = q % w, qy = (q - qx) / w; if (qx < x0 || qx > x1 || qy < y0 || qy > y1) { if (!muur[q]) muur[q] = 2; } }
+  }
+  function kpDicht(muur, w, h, r) {
+    var n = w * h, a = new Uint8Array(n), b = new Uint8Array(n), x, y, p, tel;
+    for (y = 0; y < h; y++) {
+      var rij = y * w; tel = 0;
+      for (x = 0; x < Math.min(r, w); x++) if (muur[rij + x]) tel++;
+      for (x = 0; x < w; x++) { if (x + r < w && muur[rij + x + r]) tel++; if (x - r - 1 >= 0 && muur[rij + x - r - 1]) tel--; a[rij + x] = tel > 0 ? 1 : 0; }
     }
-    if (start < 0) return;
-    var nieuw = kpHex(KPC.kleur);
-    var gezien = new Uint8Array(w * h), stapel = [start], vlak = [];
-    gezien[start] = 1;
+    for (x = 0; x < w; x++) {
+      tel = 0;
+      for (y = 0; y < Math.min(r, h); y++) if (a[y * w + x]) tel++;
+      for (y = 0; y < h; y++) { if (y + r < h && a[(y + r) * w + x]) tel++; if (y - r - 1 >= 0 && a[(y - r - 1) * w + x]) tel--; b[y * w + x] = tel > 0 ? 1 : 0; }
+    }
+    return b;
+  }
+  function kpZoek(x0, y0, w, h, rooster, max) {
+    for (var r = 0; r <= max; r++) for (var dy = -r; dy <= r; dy++) for (var dx = -r; dx <= r; dx++) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue;
+      var xx = x0 + dx, yy = y0 + dy; if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
+      if (!rooster[yy * w + xx]) return yy * w + xx;
+    }
+    return -1;
+  }
+  function kpStroom(start, w, h, muur, gezien, grens) {
+    var stapel = [start], vlak = []; gezien[start] = 1;
     while (stapel.length) {
       var p = stapel.pop(); vlak.push(p);
+      if (grens && vlak.length > grens) return null;
       var x = p % w;
       if (x > 0 && !gezien[p - 1] && !muur[p - 1]) { gezien[p - 1] = 1; stapel.push(p - 1); }
       if (x < w - 1 && !gezien[p + 1] && !muur[p + 1]) { gezien[p + 1] = 1; stapel.push(p + 1); }
       if (p >= w && !gezien[p - w] && !muur[p - w]) { gezien[p - w] = 1; stapel.push(p - w); }
       if (p < w * (h - 1) && !gezien[p + w] && !muur[p + w]) { gezien[p + w] = 1; stapel.push(p + w); }
     }
-    /* de kleur loopt 2 pixels onder de lijn door, zodat er geen wit randje blijft */
-    var rand = [];
-    for (var k = 0; k < vlak.length; k++) {
-      var q = vlak[k], qx = q % w;
-      for (var ey = -2; ey <= 2; ey++) for (var ex = -2; ex <= 2; ex++) {
-        var nx = qx + ex, nq = q + ey * w + ex; if (nx < 0 || nx >= w || nq < 0 || nq >= w * h) continue;
-        if (muur[nq] && !gezien[nq]) { gezien[nq] = 1; rand.push(nq); }
+    return vlak;
+  }
+  function kpVul(px, py) {
+    var w = KPC.w, h = KPC.h, muur = KPC.muur, dicht = KPC.dicht, kl = KPC.kl, n = w * h;
+    var x0 = Math.max(0, Math.min(w - 1, Math.round(px))), y0 = Math.max(0, Math.min(h - 1, Math.round(py))), tik = y0 * w + x0;
+    if (muur[tik] === 2) return; /* naast de tekening: niets doen */
+    var gezien = new Uint8Array(n), vlak = null;
+    if (!muur[tik] && dicht[tik]) {
+      /* een smal stukje (streepje van een sjaal, puntje van een mandala): gewoon vullen, maar nooit meer dan een kwart van de plaat */
+      vlak = kpStroom(tik, w, h, muur, gezien, n / 4);
+      if (!vlak) gezien = new Uint8Array(n);
+    }
+    if (!vlak) {
+      var start = !dicht[tik] ? tik : kpZoek(x0, y0, w, h, dicht, 10);
+      if (start < 0 || muur[start] === 2) { start = kpZoek(x0, y0, w, h, muur, 8); if (start < 0) return; vlak = kpStroom(start, w, h, muur, gezien, 0); }
+      else {
+        vlak = kpStroom(start, w, h, dicht, gezien, 0);
+        /* terug tot aan de echte lijn: 4 stapjes de 'dikke' rand in, maar nooit door een echte lijn */
+        var rand = vlak.slice();
+        for (var stap = 0; stap < 4 && rand.length; stap++) {
+          var volgende = [];
+          for (var k = 0; k < rand.length; k++) {
+            var q = rand[k], qx = q % w, buren = [qx > 0 ? q - 1 : -1, qx < w - 1 ? q + 1 : -1, q - w, q + w];
+            for (var bi = 0; bi < 4; bi++) { var nb = buren[bi]; if (nb < 0 || nb >= n || gezien[nb] || muur[nb]) continue; gezien[nb] = 1; volgende.push(nb); vlak.push(nb); }
+          }
+          rand = volgende;
+        }
       }
     }
-    var alle = vlak.concat(rand), oud = new Uint32Array(alle.length), idx = new Int32Array(alle);
+    /* de kleur loopt 2 pixels onder de lijn door, zodat er geen wit randje blijft */
+    var onder = [];
+    for (var i = 0; i < vlak.length; i++) {
+      var v = vlak[i], vx = v % w;
+      for (var ey = -2; ey <= 2; ey++) for (var ex = -2; ex <= 2; ex++) {
+        var nx = vx + ex, nq = v + ey * w + ex; if (nx < 0 || nx >= w || nq < 0 || nq >= n) continue;
+        if (muur[nq] === 1 && !gezien[nq]) { gezien[nq] = 1; onder.push(nq); }
+      }
+    }
+    var alle = vlak.concat(onder), nieuw = kpHex(KPC.kleur), oud = new Uint32Array(alle.length), idx = new Int32Array(alle);
     for (var m = 0; m < alle.length; m++) { oud[m] = kl[alle[m]]; kl[alle[m]] = nieuw; }
     KPC.undo.push([idx, oud]); if (KPC.undo.length > 6) KPC.undo.shift();
     if (!KPC.gekleurd) { KPC.gekleurd = true; kpTel('kleurplaten/ingekleurd/' + KPC.id); }
