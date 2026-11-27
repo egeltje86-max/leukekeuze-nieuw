@@ -242,7 +242,7 @@
       d.kenmerken.map(function (k) { return '<button class="chip' + (km.indexOf(k[0]) !== -1 ? ' aan' : '') + '" data-k="' + esc(k[0]) + '">' + esc(k[0]) + ' <small>' + tal(k[1]) + '</small></button>'; }).join('') + '</div>' : '';
     $('#hoofd').innerHTML =
       '<div class="kruimel">' + kruimel + '</div>' +
-      '<div class="titel-rij"><h2>' + esc(titel) + '</h2><span>' + tal(d.totaal) + (d.totaal !== d.basis ? ' van ' + tal(d.basis) : '') + ' producten' + (d.verborgen ? ' · ' + tal(d.verborgen) + ' die we al hebben niet getoond' : '') + '</span></div>' +
+      '<div class="titel-rij"><h2>' + esc(titel) + '</h2><span>' + tal(d.totaal) + (d.totaal !== d.basis ? ' van ' + tal(d.basis) : '') + ' producten' + (d.verborgen ? ' · ' + tal(d.verborgen) + ' die je eerder weggooide niet getoond' : '') + '</span></div>' +
       rondjes +
       '<div class="gereedschap">' +
         '<label class="zoekveld"><span aria-hidden="true">🔍</span><input id="fq" placeholder="Zoek in ' + esc(titel) + '" value="' + esc(f.q || '') + '"></label>' +
@@ -658,7 +658,7 @@
         (d.partners || []).slice().sort(function (a, b) { return String(a.naam).localeCompare(String(b.naam), 'nl', { sensitivity: 'base' }); }).map(function (p) { return '<option value="' + esc(p.id) + '"' + (z.partner === p.id ? ' selected' : '') + '>' + esc(p.naam) + ' (' + tal(p.n) + ')</option>'; }).join('');
       var wat = (z.slim && k.zoek ? '<b>' + esc(k.naam) + '</b>' + (d.woorden && d.woorden.length ? ' + ' : '') : '') + (d.woorden && d.woorden.length ? '<b>' + esc(d.woorden.join(' + ')) + '</b>' : '') + (d.merk ? (d.woorden && d.woorden.length ? ' van merk ' : 'merk ') + '<b>' + esc(z.merk) + '</b>' : '');
       res.innerHTML = d.leeg && !z.slim ? '<div class="leeg-melding">Typ een zoekwoord (minimaal 3 letters) of een merk.</div>'
-        : '<div class="zoek-info">' + tal(d.totaal) + ' producten gevonden' + (wat ? ' voor ' + wat : '') + (d.verborgen ? ' (nog niet op de site; ' + tal(d.verborgen) + ' die we al hebben niet getoond)' : '') + '</div>' +
+        : '<div class="zoek-info">' + tal(d.totaal) + ' producten gevonden' + (wat ? ' voor ' + wat : '') + (d.verborgen ? ' (' + tal(d.verborgen) + ' die je eerder weggooide niet getoond)' : '') + '</div>' +
           (d.producten.length ? '<div class="raster" id="zRaster">' + d.producten.map(zoekKaart).join('') + '</div><div class="meer" id="zMeer"></div>'
             : '<div class="leeg-melding">Niets gevonden.' + (z.merk ? ' Klopt het merk? Kies een voorstel in het merkvak.' : ' Probeer een ander woord, bijvoorbeeld enkelvoud (muts in plaats van mutsen).') + '</div>');
       res.style.minHeight = '';

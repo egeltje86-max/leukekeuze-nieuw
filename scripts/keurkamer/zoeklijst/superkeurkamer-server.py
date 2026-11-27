@@ -12,6 +12,7 @@ sys.path.insert(0, HIER)
 from indeler import plat
 import sqlite3
 from zoekindex import DB, zoekwoorden
+import fotoscore
 
 DATA = os.path.join(KAMER, 'data')
 APP = os.path.join(KAMER, 'app')
@@ -49,7 +50,8 @@ SITE_JS = os.environ.get('SKK_SITE', r'C:\Users\egelt\Documents\LeukeKeuze-Zoeki
 # Bron: de live productlijst van de site (elk half uur vers, kopie in data/site-cache) plus de nachtelijke kopie hierboven.
 SITE_LIVE = os.environ.get('SKK_LIVE', 'https://leukekeuze.nl')
 SITE_CACHE = os.path.join(DATA, 'site-cache')
-SITE = {'sleutel': None, 'gecheckt': 0, 'versie': 0, 'titels': set(), 'urls': set(), 'hash': set(), 'lego': set()}
+SITE = {'sleutel': None, 'gecheckt': 0, 'versie': 0, 'titels': set(), 'urls': set(), 'hash': set(), 'lego': set(),
+        'wtitels': set(), 'wurls': set(), 'whash': set(), 'wlego': set()}
 PARAM_DIEP = ('r', 'u', 'ued', 'murl', 'dl', 'url', 'desturl', 'redirect')
 LEGO_NR = re.compile(r'\b(\d{5})\b')
 VELD = re.compile(r"""["']?(id|titel|url|winkelUrl)["']?\s*:\s*("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')""")
@@ -131,60 +133,74 @@ def lees_waarde(v):
         return v[1:-1]
 
 
+OBJ = re.compile(r'\{"id":"((?:[^"\\]|\\.)*)","titel":"((?:[^"\\]|\\.)*)"')
+
+
+def _objecten(tekst):
+    """id -> titel uit producten-lean.js / producten-site.js (JSON.parse('...'): elke backslash staat er dubbel)."""
+    uit = {}
+    for m in OBJ.finditer(tekst.replace('\\\\', '\\')):
+        try:
+            uit[m.group(1)] = json.loads('"' + m.group(2) + '"')
+        except Exception:
+            uit[m.group(1)] = m.group(2)
+    return uit
+
+
+def _sets(ids, titels, det):
+    ti, ur, ha, le = set(), set(), set(), set()
+    for i in ids:
+        t = titels.get(i, '')
+        k = titel_kern(t)
+        if k:
+            ti.add(k)
+        le |= lego_nrs(t)
+        h = i.rsplit('-', 1)[-1]
+        if re.fullmatch(r'[0-9a-f]{10}', h):
+            ha.add(h)
+        d = det.get(i) or {}
+        ur |= url_kernen((d.get('url') or '').replace('\\/', '/'), (d.get('winkelUrl') or '').replace('\\/', '/'))
+    return ti, ur, ha, le
+
+
 def site_index():
-    """Wat al op leukekeuze.nl staat of stond: titels, winkelpagina's, link-codes en LEGO-nummers."""
+    """27-11-2026 (marktlijst voor de nieuwe site): wat NU op leukekeuze.nl staat krijgt het label 'Al op de site' (Marius kiest
+    voor de nieuwe site opnieuw, ook uit wat er al staat); wat hij heeft WEGGEGOOID (afgekeurd) laat de Superkeurkamer niet meer zien.
+    Nu = producten-site.js (de lijst zonder afgekeurde producten); weggegooid = producten-lean.js min producten-site.js."""
     with SLOT:
         if SITE['sleutel'] and time.time() - SITE['gecheckt'] < 60:
             return SITE
         SITE['gecheckt'] = time.time()
         lean, t1 = haal_live('producten-lean.js')
-        det, t2 = haal_live('producten-details.js')
-        try:
-            t0 = os.path.getmtime(SITE_JS)
-        except OSError:
-            t0 = 0
-        sleutel = (t0, t1, t2)
+        nu_js, t3 = haal_live('producten-site.js')
+        det_js, t2 = haal_live('producten-details.js')
+        sleutel = (t1, t2, t3)
         if SITE['sleutel'] == sleutel:
             return SITE
-        # de lijst van de site staat in JSON.parse('...'): daar staat elke backslash dubbel
-        teksten = [lean.replace('\\\\', '\\'), det]
-        if t0:
-            try:
-                teksten.append(open(SITE_JS, encoding='utf-8').read())
-            except OSError:
-                pass
-        titels, urls, hashes, lego = set(), set(), set(), set()
-        for tekst in teksten:
-            for m in VELD.finditer(tekst):
-                naam, v = m.group(1), lees_waarde(m.group(2))
-                if not isinstance(v, str) or not v:
-                    continue
-                if naam == 'id':
-                    h = v.rsplit('-', 1)[-1]
-                    if re.fullmatch(r'[0-9a-f]{10}', h):
-                        hashes.add(h)
-                elif naam == 'titel':
-                    k = titel_kern(v)
-                    if k:
-                        titels.add(k)
-                    lego |= lego_nrs(v)
-                else:
-                    urls |= url_kernen(v.replace('\\/', '/'))
-        SITE.update(sleutel=sleutel, versie=SITE['versie'] + 1, titels=titels, urls=urls, hash=hashes, lego=lego)
+        alle, nu = _objecten(lean), _objecten(nu_js)
+        try:
+            det = json.loads(det_js[det_js.index('{'):det_js.rstrip().rstrip(';').rindex('}') + 1])
+        except Exception:
+            det = {}
+        if not nu:                      # producten-site.js niet te krijgen: niets verbergen, alles krijgt het label
+            nu, alle = alle, alle
+        nt, nu_u, nh, nl = _sets(list(nu), nu, det)
+        wt, wu, wh, wl = _sets([i for i in alle if i not in nu], alle, det)
+        SITE.update(sleutel=sleutel, versie=SITE['versie'] + 1, titels=nt, urls=nu_u, hash=nh, lego=nl,
+                    wtitels=wt - nt, wurls=wu - nu_u, whash=wh - nh, wlego=wl - nl)
     return SITE
 
 
 def op_site(t, u, l=None):
-    """Staat dit product al op de site (of stond het er en is het weggehaald)? Op naam, winkelpagina, link-code of LEGO-nummer."""
+    """'nu' = staat op de site (label), 'weg' = Marius gooide het weg (niet tonen), '' = nieuw.
+    Op naam, winkelpagina, link-code of LEGO-nummer."""
     s = site_index()
-    if titel_kern(t) in s['titels']:
-        return True
-    if url_kernen(u, l) & s['urls']:
-        return True
-    if link_hash(l) in s['hash'] or link_hash(u) in s['hash']:
-        return True
-    nrs = lego_nrs(t)
-    return bool(nrs and nrs & s['lego'])
+    tk, uk, hs, nrs = titel_kern(t), url_kernen(u, l), {link_hash(l), link_hash(u)} - {''}, lego_nrs(t)
+    if tk in s['titels'] or uk & s['urls'] or hs & s['hash'] or (nrs and nrs & s['lego']):
+        return 'nu'
+    if tk in s.get('wtitels', ()) or uk & s.get('wurls', set()) or hs & s.get('whash', set()) or (nrs and nrs & s.get('wlego', set())):
+        return 'weg'
+    return ''
 
 
 def op_site_p(p):
@@ -233,7 +249,7 @@ def filter_producten(d, q):
     lo = float(q.get('min', ['0'])[0] or 0)
     hi = float(q.get('max', ['0'])[0] or 0)
     site_index()
-    basis = [p for p in d['producten'] if p['g'][:len(pad)] == pad and not op_site_p(p)]   # 16-11-2026: alleen wat we nog niet hebben
+    basis = [p for p in d['producten'] if p['g'][:len(pad)] == pad and op_site_p(p) != 'weg']   # 27-11-2026: alleen wat hij weggooide niet
     uit = []
     for p in basis:
         if zoek and not all(w in p['_z'] for w in zoek):
@@ -292,14 +308,14 @@ def api_producten(q):
     pagina = int(q.get('pagina', ['1'])[0] or 1)
     per = 60
     stuk = uit[(pagina - 1) * per: pagina * per]
-    return {'totaal': len(uit), 'basis': len(basis), 'verborgen': sum(1 for p in d['producten'] if p['g'][:len(pad)] == pad and p.get('_os', (0, False))[1]), 'pagina': pagina, 'paginas': max(1, -(-len(uit) // per)),
+    return {'totaal': len(uit), 'basis': len(basis), 'verborgen': sum(1 for p in d['producten'] if p['g'][:len(pad)] == pad and p.get('_os', (0, ''))[1] == 'weg'), 'pagina': pagina, 'paginas': max(1, -(-len(uit) // per)),
             'kinderen': kinderen,
             'kenmerken': [[k, n] for k, n in km.most_common(16) if n < len(uit) or len(uit) < 4],
             'merken': [[k, n] for k, n in mk.most_common(40)],
             'korting': sum(1 for p in uit if p['o']), 'populair': sum(1 for p in uit if p['pop']),
             'producten': [{k: v for k, v in p.items() if k not in ('_z', '_os')} | {'gekozen': p['key'] in gekozen,
                          'inCat': bool(actief) and actief in cats_van.get(p['key'], []),
-                         'opsite': False} for p in stuk]}
+                         'opsite': p.get('_os', (0, ''))[1] == 'nu'} for p in stuk]}
 
 
 CATA = {'tijd': None, 'feed': {}}
@@ -421,7 +437,7 @@ def api_kies(body):
             # hetzelfde product al gekozen bij een andere winkel? (zelfde naam)
             k = titel_kern(x['titel'])
             uit['dubbel'] = sorted({y['winkel'] for y in lijst['producten'] if y is not x and y['key'] != x['key'] and titel_kern(y['titel']) == k})
-            uit['opsite'] = op_site(x['titel'], x.get('winkelurl'))
+            uit['opsite'] = op_site(x['titel'], x.get('winkelurl')) == 'nu'
         return uit
 
 
@@ -459,7 +475,7 @@ def api_lijst():
                 x['in_feed'] = True
             else:
                 x['in_feed'] = False
-        x['opsite'] = op_site(x.get('titel'), x.get('winkelurl'))
+        x['opsite'] = op_site(x.get('titel'), x.get('winkelurl')) == 'nu'
     return lijst
 
 
@@ -543,8 +559,12 @@ FIJN = ('ditverzinjeniet', 'cadeau', 'coolgift', 'hema', 'dillekamille', 'degrot
 LAAG = ('aliexpress', 'joybuy', 'dealdonkey', 'favoshop', 'wiwantit', 'domoticahouse', 'myzenful', 'bandanawinkel', 'bigsizeshirts', 'speelgoedpostorder',
         'handpoppenwinkel', 'pazzox', '1dagactie', 'vevor', 'homixa', 'woonkampioen', 'coppenswarenhuis', 'timarco', 'maxistock', 'warentuin')
 SLIM_CACHE = OrderedDict()
+# 27-11-2026: winkels die dicht zijn (verhuisd naar Daily at Home, links dood), geen losse cadeaus verkopen of 403 geven: nooit tonen
+WEG_WINKELS = ('aliexpress', 'yesgifts', 'laredoute', 'kadoversturen', 'animalsgiftshop', 'cartoonmegastore', 'surpriseswinkel', 'handpoppenwinkel',
+               'speelgoedpostorder', 'bandanawinkel', 'bigsizeshirts', 'spaarpottenwinkel', 'fashionstore', 'piercings', 'koppverlag')
 ALTIJD_NIET = ('vervangende', 'reserveonderdeel', 'navulling', 'refill', 'bevestigingsmateriaal', 'bewegingssensor', 'stopcontact', 'babyfoon', 'muggen',
-               'penis', 'piemel', 'milf', 'sexy', 'erotisch', 'erotiek', 'tieten', 'vibrator', 'kutkerst', 'seksspel')   # grof: niet op een cadeausite
+               'penis', 'piemel', 'milf', 'sexy', 'erotisch', 'erotiek', 'tieten', 'vibrator', 'kutkerst', 'seksspel',   # grof: niet op een cadeausite
+               'tepelpiercing', 'navelpiercing', 'armbrust', 'kruisboog', 'crossbow', 'vlindermes', 'stiletto', 'boksbeugel', 'werpster', 'springmes')   # 27-11-2026: wapens en piercings
 
 
 def soort_van(cat):
@@ -554,7 +574,63 @@ def soort_van(cat):
     return next((k for k in cats_laden()['cats'] if k['id'] == cat and k.get('zoek')), None)
 
 
-def api_zoek(q):
+FIJN_S, LAAG_S = set(FIJN), set(LAAG)
+MERKLOOS = {'merkloos', 'onbekend', 'no brand', 'geen merk', 'generic', 'huismerk', 'nvt', 'n.v.t.', ''}
+
+
+def kwaliteit(r, zoek, ook):
+    """27-11-2026 (Marius: 'de mooiste en beste producten als eerste, met de mooiste foto's'): een cijfer per product.
+    r = (id, pid, winkel, t, u, l, f, st, pop, m, p). Goede cadeauwinkel, op voorraad, mooie foto, de soort staat in de naam
+    (niet alleen in de afdeling), een merk, een nette naam (niet lang, niet in hoofdletters, geen rij streepjes)."""
+    pid, t, f, st, pop, m = r[1], r[3] or '', r[6], r[7], r[8], r[9]
+    s = 3.0 if pid in FIJN_S else (-4.0 if pid in LAAG_S else 0.0)
+    if pid == 'bol':
+        s += 1
+    if not st:
+        s -= 8
+    if not f:
+        s -= 10
+    tl = ' ' + plat(t) + ' '
+    if any(z in tl for z in zoek) and (not ook or any(o in tl for o in ook)):
+        s += 2
+    else:
+        s -= 3                          # de soort staat alleen in de afdeling of het merk, niet in de naam
+    if pop:
+        s += 1
+    if plat(m or '').strip() not in MERKLOOS:
+        s += 0.5
+    n = len(t)
+    s -= 2 if n > 140 else 1 if n > 110 else 0
+    if n < 12:
+        s -= 1
+    letters = [ch for ch in t if ch.isalpha()]
+    if letters and sum(ch.isupper() for ch in letters) / len(letters) > 0.6:
+        s -= 1
+    if t.count(' - ') + t.count(' | ') + t.count(', ') >= 4:
+        s -= 1
+    try:
+        fs = fotoscore.score(f)
+    except Exception:
+        fs = None
+    if fs is not None:
+        s += -6 if fs < 0 else 4 * fs - 1
+    return s
+
+
+def spreid(rijen, cijfers, n=300):
+    """De beste eerst, maar niet twintig keer achter elkaar dezelfde winkel: elke volgende van dezelfde winkel telt iets minder."""
+    orde = sorted(range(len(rijen)), key=lambda i: -cijfers[i])
+    top, staart = orde[:n], orde[n:]
+    uit, tel = [], Counter()
+    while top:
+        j = max(range(len(top)), key=lambda x: cijfers[top[x]] - 0.4 * tel[rijen[top[x]][1]])
+        i = top.pop(j)
+        tel[rijen[i][1]] += 1
+        uit.append(i)
+    return [rijen[i] for i in uit + staart]
+
+
+def api_zoek(q, fotos_vragen=True):
     woorden = zoekwoorden(q.get('q', [''])[0])
     cat = q.get('cat', [''])[0]
     waar, args = [], []
@@ -565,6 +641,9 @@ def api_zoek(q):
         ja = [x for x in (fts_term(t) for t in soort['zoek']) if x]
         nee = [x for x in (fts_term(t) for t in list(soort.get('niet', [])) + list(ALTIJD_NIET)) if x]
         expr = '(' + ' OR '.join(ja) + ')'
+        ook = [x for x in (fts_term(t) for t in soort.get('ook', [])) if x]
+        if ook:
+            expr = '(' + expr + ' AND (' + ' OR '.join(ook) + '))'
         if woorden:
             expr = '(' + expr + ' AND ' + ' AND '.join('"%s"' % w.replace('"', '') for w in woorden) + ')'
         if nee:
@@ -575,6 +654,10 @@ def api_zoek(q):
         waar.append('p.id IN (SELECT rowid FROM z WHERE z MATCH ?)')
         args.append(' AND '.join('"%s"' % w.replace('"', '') for w in woorden))
     pid = q.get('partner', [''])[0]
+    waar.append('p.pid NOT IN (%s)' % ','.join("'%s'" % x for x in WEG_WINKELS))
+    if soort and soort.get('winkels'):
+        waar.append('p.pid IN (%s)' % ','.join('?' * len(soort['winkels'])))
+        args += list(soort['winkels'])
     if q.get('korting', [''])[0] == '1':
         waar.append('p.o > 0')
     if q.get('pop', [''])[0] == '1':
@@ -619,9 +702,21 @@ def api_zoek(q):
         # 16-11-2026 (Marius: 'als ik ga kijken moeten er alleen spullen staan die we nog niet hebben'):
         # eerst alles wat past, op volgorde; dan weg wat al op de site staat of stond; dan pas de bladzijde.
         site_index()
-        kand = c.execute('SELECT p.id, p.pid, p.winkel, p.t, p.u, p.l FROM p WHERE %s ORDER BY %s' % (basis, orde), args + oargs).fetchall()
-        vrij = [r for r in kand if not op_site(r[3], r[4], r[5])]
+        kand = c.execute('SELECT p.id, p.pid, p.winkel, p.t, p.u, p.l, p.f, p.st, p.pop, p.m, p.p FROM p WHERE %s ORDER BY %s' % (basis, orde), args + oargs).fetchall()
+        # 27-11-2026: wat Marius weggooide niet tonen; wat nu op de site staat wel, met het label 'Al op de site'
+        status = {r[0]: op_site(r[3], r[4], r[5]) for r in kand}
+        vrij = [r for r in kand if status[r[0]] != 'weg']
         verborgen = len(kand) - len(vrij)
+        if soort and sort == 'beste':
+            zk = [' ' + plat(x).strip() if x.startswith(' ') else plat(x).strip() for x in soort['zoek']]
+            zk = [x + ' ' if t.endswith(' ') else x for x, t in zip(zk, soort['zoek'])]
+            ok_ = [plat(x).strip() for x in soort.get('ook', [])]
+            vrij = spreid(vrij, [kwaliteit(r, zk, ok_) for r in vrij])
+            if fotos_vragen:
+                try:
+                    fotoscore.vraag([r[6] for r in vrij[:60] if r[6]])
+                except Exception:
+                    pass
         tel = Counter((r[1], r[2]) for r in vrij)
         partners = [(a, b, n) for (a, b), n in tel.most_common(80)]
         sel = [r[0] for r in vrij if not pid or r[1] == pid]
@@ -660,7 +755,7 @@ def api_zoek(q):
         uit.append({'partner': r[0], 'winkel': r[1], 'key': r[2], 't': r[3], 'm': r[4], 'p': r[5], 'o': r[6], 'pct': r[7], 'f': r[8],
                     'u': r[9], 'l': r[10], 'g': json.loads(r[11]), 'k': [k for k in r[12].split('|') if k], 'pop': r[13], 'st': r[14],
                     'v': r[15], 'gekozen': bool(x), 'inCat': bool(x and cat in x.get('categorieen', [])),
-                    'opsite': False, 'ean': r[16],
+                    'opsite': status.get(r[0]) == 'nu', 'ean': r[16],
                     'ook': sorted([{'winkel': w, 'p': op} for opid, w, op in ook.get(r[16], []) if opid != r[0]], key=lambda y: y['p'])[:4],
                     'min30': (pinfo.get(r[2]) or {}).get('min30'), 'sinds': (pinfo.get(r[2]) or {}).get('sinds')})
     return {'totaal': totaal, 'verborgen': verborgen, 'pagina': pagina, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
@@ -866,4 +961,5 @@ if __name__ == '__main__':
     if '--geen-browser' not in sys.argv:
         threading.Timer(1.0, lambda: webbrowser.open(url)).start()
     threading.Thread(target=lambda: (api_merken({'q': ['xx']}), site_index()), daemon=True).start()   # merkenlijst alvast klaarzetten
+    fotoscore.start()   # 27-11-2026: foto's van de eerste producten van een blok op de achtergrond nakijken (mooiste eerst)
     srv.serve_forever()
