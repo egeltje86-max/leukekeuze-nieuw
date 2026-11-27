@@ -1,16 +1,20 @@
 {
- "datum": "2026-11-26",
- "nagekeken": 709,
- "klopt": 339,
- "prijs": 7,
- "weg": 11,
- "onbekend": 352,
- "zonderAdres": 66,
+ "datum": "2026-11-27",
+ "nagekeken": 683,
+ "klopt": 290,
+ "prijs": 15,
+ "weg": 1,
+ "onbekend": 376,
+ "zonderAdres": 49,
  "twijfelWinkels": [],
- "grotePrijssprong": [],
+ "grotePrijssprong": [
+  "ww-vod70130736634: Glazen kersthanger speculaaskoekje van 14.99 naar 6.99"
+ ],
  "nietLeesbaar": [
-  "Decantalo: 259",
+  "Decantalo: 241",
   "Joybuy: 32",
-  "Wijnkring: 30"
+  "Kaartje2go: 31",
+  "Wijnkring: 29",
+  "Trendmax: 17"
  ]
 }
