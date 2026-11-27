@@ -115,5 +115,44 @@
 "twijfel": [],
 "opSite": 232,
 "seconden": 740
+},
+{
+"tijd": "2026-11-26T12:30",
+"deel": "0",
+"nagekeken": 3451,
+"gelezen": 2443,
+"klopt": 2394,
+"prijs": 40,
+"weg": 7,
+"groteSprong": 2,
+"twijfel": [],
+"opSite": 47,
+"seconden": 675
+},
+{
+"tijd": "2026-11-26T16:30",
+"deel": "1",
+"nagekeken": 3504,
+"gelezen": 2685,
+"klopt": 2606,
+"prijs": 51,
+"weg": 27,
+"groteSprong": 1,
+"twijfel": [],
+"opSite": 107,
+"seconden": 798
+},
+{
+"tijd": "2026-11-26T20:30",
+"deel": "2",
+"nagekeken": 3468,
+"gelezen": 2466,
+"klopt": 2405,
+"prijs": 42,
+"weg": 18,
+"groteSprong": 1,
+"twijfel": [],
+"opSite": 132,
+"seconden": 692
 }
 ]

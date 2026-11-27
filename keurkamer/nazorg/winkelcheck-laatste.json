@@ -1,15 +1,15 @@
 {
- "datum": "2026-11-25",
- "nagekeken": 705,
- "klopt": 342,
- "prijs": 4,
- "weg": 4,
- "onbekend": 355,
- "zonderAdres": 59,
+ "datum": "2026-11-26",
+ "nagekeken": 709,
+ "klopt": 339,
+ "prijs": 7,
+ "weg": 11,
+ "onbekend": 352,
+ "zonderAdres": 66,
  "twijfelWinkels": [],
  "grotePrijssprong": [],
  "nietLeesbaar": [
-  "Decantalo: 264",
+  "Decantalo: 259",
   "Joybuy: 32",
   "Wijnkring: 30"
  ]

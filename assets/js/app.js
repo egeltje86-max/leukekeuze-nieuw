@@ -712,6 +712,7 @@
     if (!hoe || hoe === 'aanbevolen') {
       var m = metTopkeuze(l, sleutel), r = gezochtEerst(bovenaan(m || mix(l), sleutel), sleutel, nc);
       if (nc) r = NV.spreid(NV.mensEerst(NV.filter(r, nc), nc), nc, window.LK_NOVA_LOG);
+      if (LK.lampErin) r = LK.lampErin(r); /* FANLAMPJES HOGER (proef 26-11-2026, zie gedeeld.js) */
       return r;
     }
     if (hoe === 'prijs-op') l.sort(function (a, b) { return a.prijs - b.prijs; });
@@ -4772,7 +4773,7 @@
     'dvzn-655af9bd06', 'dvzn-1a61ae70d9', 'dvzn-2ac54b6d6d', 'dvzn-0b435dbafd', 'coolgi-098cedb937', 'dvzn-4d97c0ab44', 'hema-efaa95f521', 'dvzn-c15dcffb40',
     'dvzn-6795', 'hema-9af19e566a', 'dgsw-5c2312daba', 'cadeau-32797fb340', 'dvzn-7fa21f9ec9', 'legoshop-05f7335d75', 'cl-capibara-warm', 'bol-9200000122182194',
     'dvzn-8607c53284', 'dvzn-43cb3e6645', 'dvzn-8cd9a3bdbb', 'dvzn-6791', 'dgsw-dcba5f1bc9', 'lego-40460', 'cg-hidden-safe-clock', 'dvzn-284527',
-    'cg-toilet-basketball', 'dgsw-f8d291bf6b', 'cl-weerwolven', 'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon', 'dvzn-849140', 'cg-c472f3ec05',
+    'cg-toilet-basketball', 'dgsw-f8d291bf6b', '999g-999wrw01', 'hema-8c25c71c2b', 'superz-f16bbf44cc', 'cl-diy-neon', 'dvzn-849140', 'cg-c472f3ec05',
     'dvzn-f9a524b9f9', 't2-cadeau-nl-31dfd27d21', 'dvzn-29043e5ee8', 'dvzn-561478', 'cg-goudstaaf-deurstop', 'dvzn-633422', 'dvzn-9688f84b76', 'dvzn-b584c30354',
     'cl-hitster', 'cl-exploding', 'dvzn-880ebf0fce', 'dvzn-5dbf032a22', 'cg-useless-box', 'dvzn-9fa32eee7e', 'dvzn-bb1222d1cd', 'dvzn-e0d7171bb3',
     'dvzn-6aa21edc9a', 'mmf-63b16f5c97', 'cl-laneige-lip', 'amz-b0cp1927qy', 'dvzn-dcd93d79e7', 'amz-b0fcsxm3vp', 'amz-b0cx9gt83j', 'dvzn-df22fba87c',
@@ -4795,7 +4796,7 @@
   ];
   /* 22-11-2026: meer kerst bij elk budget (twee derde van de groepen trekt nu voor Kerst); bij Kerst hooguit twee, bij Sint één. */
   var LOOT_THEMA = {
-    s: ['cl-jvh-sint', 'dvzn-871551', 'hema-b06ddc03f9'],
+    s: ['cl-jvh-sint', 'hema-b06ddc03f9'],
     k: ['dgsw-5a269fe458', 'hema-e8aced2a21', 'hema-36f500cd52', 'massa-ab23656f59', 'dvzn-fef9e43e90', 'smartp-4849c81cba', 'cl-25949',
         'dvzn-4e9451d3df', 'bell-e9cd4a0a33', 'lego-27b82426d9', 'sissyb-2eafdefabc']
   };
@@ -6160,7 +6161,7 @@
         { kop: 'Spellen voor na het uitpakken', tekst: 'Zijn de pakjes open? Dan is een spel een mooie manier om de avond af te sluiten.',
           ids: ['bol-9300000179094379', 'bol-9300000173882144', 'bol-9200000099303512', 'grotek-9175fbf9b7'] },
         { kop: 'Voor je vader (€15 tot €35)', tekst: 'Vaders hebben vaak al alles. Kies dan iets voor zijn vaste gewoontes: zijn koffie, zijn biertje, zijn verzorging of iets lekkers.',
-          ids: ['cl-pap-vertel-eens', 'dvzn-868decc4c6', 'cl-rit-homme', 'cl-tony-sintbundel3'] }
+          ids: ['cl-pap-vertel-eens', 'dvzn-dab07fd10d', 'cl-rit-homme', 'cl-tony-sintbundel3'] }
       ],
       slot: 'Meer ideeën vind je bij <a href="/voor/hem">Cadeaus voor hem</a> en <a href="/gids/sinterklaas-voor-volwassenen">Sinterklaascadeaus voor volwassenen</a>. Maak je ook een surprise? Kijk dan bij <a href="/gids/surprise-maken">Surprise maken</a>.' },
     { slug: 'sinterklaascadeau-vrouw', beeld: 'dvzn-29043e5ee8', vakken: ['cadeaus/sinterklaas', 'cadeaus/voor-haar', 'cadeaus/sint-onder-15', 'geuren-verzorging/cadeausets'],
@@ -6411,7 +6412,7 @@
       delen: [
         { kop: "Zo kies je een klein cadeautje", tekst: "Vier dingen die helpen:", lijst: ["Iets om even te verwennen gaat bijna altijd op: een handcrème, een bodyscrub of iets voor in bad.", "Iets warms voor de winter, zoals huissokken of een warmtekussen, wordt echt gebruikt.", "Een lampje of lichtjes maken het thuis meteen gezellig.", "Doe er een kaartje of een gedichtje bij. Dat maakt een klein cadeau persoonlijk."] },
         { kop: "Even verwennen", tekst: "Een fijne geur, iets voor de huid of iets leuks voor in bad.", ids: ["dk-00045266", "dvzn-43cb3e6645", "cadeau-f102403119", "parfum-5519078921"] },
-        { kop: "Warm en knus", tekst: "Voor koude avonden op de bank.", ids: ["hema-efaa95f521", "hema-84afebb566", "dvzn-2a6f553405", "dvzn-e9a4c2cf2b"] },
+        { kop: "Warm en knus", tekst: "Voor koude avonden op de bank.", ids: ["hema-efaa95f521", "hema-84afebb566", "dvzn-2a6f553405", "dvzn-e47370c6a2"] },
         { kop: "Lampjes en sfeer", tekst: "Een leeslampje, lichtjes voor foto's of bloemen die nooit verwelken.", ids: ["dvzn-99610b59d5", "dvzn-8e1b865150", "dvzn-8301e7ef8f", "lego-40460"] },
         { kop: "Met een knipoog", tekst: "Voor een vriendin of collega met gevoel voor humor.", ids: ["dvzn-fcb853102a", "dvzn-91be613ae8", "cl-kat-kurkentrekker", "dvzn-06e0c194cf"] },
         { kop: "Om van te genieten", tekst: "Voor bij de thee, iets lekkers of iets moois door de brievenbus.", ids: ["dvzn-995742", "cg-pers-monthflower-mug", "bp-l001", "cl-lindt-teddy"] },
@@ -6426,7 +6427,7 @@
         { kop: "Voor kinderen", tekst: "Kleine cadeautjes waar kinderen echt mee spelen, ook goed voor in de schoen.", ids: ["lego-60312", "dgsw-d95eba0a04", "nedg-1ed80cdff7", "mega-afda647e36"] },
         { kop: "Grappig", tekst: "Om om te lachen bij het uitpakken: voor lootjes of iemand die alles al heeft.", ids: ["dvzn-655af9bd06", "gadget-d090d8ccf9", "dvzn-1a61ae70d9", "dvzn-dcc8e0b22d"] },
         { kop: "Iets lekkers", tekst: "Chocolade, pralines of stroopwafels: lekker voor iedereen.", ids: ["t2-hema-2a7e38607b", "hema-8eff9a5ada", "dk-00030960", "cl-chocmakers-liefde"] },
-        { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets voor een voetenbadje.", ids: ["cl-gr-fortune", "cl-kneipp-voetbad", "hema-4f711f0ecd", "parfum-5519078921"] },
+        { kop: "Verwennen", tekst: "Een handcrème, een bruisbal of iets lekkers voor in bad.", ids: ["cl-gr-fortune", "yr-fe8189d697", "hema-4f711f0ecd", "parfum-5519078921"] },
         { kop: "Voor op het werk", tekst: "Voor een collega: een mok, iets voor op het bureau of een spel voor de pauze.", ids: ["coolgi-098cedb937", "hobbym-cfe3d81cbf", "dvzn-279882", "dvzn-296965"] },
         { kop: "Spelletjes", tekst: "Een kaartspel of klein spel om samen te spelen, thuis of onderweg.", ids: ["cl-uno", "dvzn-49bb2362fd", "dgsw-fa7e6f4f87", "bol-9200000132162995"] }
       ],
@@ -6441,7 +6442,7 @@
         { kop: "Iets lekkers", tekst: "Truffels, chocolade, boterkoek door de brievenbus of Italiaanse warme chocolade.", ids: ["bol-9300000224227519", "bol-9200000117297651", "bp-l303", "cl-svinando-cioccolata"] },
         { kop: "Verwennen en knus", tekst: "Een fijne geur in de douche, warme sloffen of iets leuks voor in bad.", ids: ["cg-eenhoorn-sloffen", "dvzn-43cb3e6645", "cl-gr-gin", "parfum-18c6d9dd8c"] },
         { kop: "Iets moois voor in huis", tekst: "Bloemen die nooit verwelken, een mini-zentuin of een lampje om bij te lezen.", ids: ["lego-40460", "dvzn-810911", "dvzn-582187", "dvzn-5a4a71bc8a"] },
-        { kop: "Spellen", tekst: "Kaartspellen die je met het hele gezin of met vrienden speelt.", ids: ["bol-9200000073803176", "bol-1004004005605390", "cl-weerwolven", "dgsw-f8d291bf6b"] }
+        { kop: "Spellen", tekst: "Kaartspellen die je met het hele gezin of met vrienden speelt.", ids: ["bol-9200000073803176", "bol-1004004005605390", "999g-999wrw01", "dgsw-f8d291bf6b"] }
       ],
       slot: "Minder te besteden? Kijk bij <a href=\"/gids/cadeau-10-euro\">Cadeau van 10 euro</a>. Meer ideeën vind je bij <a href=\"/c/cadeaus/onder-15\">alle cadeaus onder €15</a> en <a href=\"/c/cadeaus/grappig\">grappige cadeaus</a>." },
     { slug: "cadeau-voor-opa", beeld: "dg-311a752fd8", vakken: ["cadeaus/opa-oma"],
@@ -6463,7 +6464,7 @@
       delen: [
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar zijn hobby: gamen, darten, F1, de barbecue of een biertje.", "Iets om samen te doen geeft jullie een extra avond of dag samen.", "Nog niet lang samen? Kies iets kleins en leuks. Iets heel persoonlijks kan dan te veel voelen.", "Een geurtje? Kies er een die hij nog niet heeft."] },
         { kop: "Samen doen", tekst: "Een spel, een uitje of een nacht weg: tijd samen als cadeau.", ids: ["dk-dd67a6f2bc", "cl-ttr-europe", "dk-2cf3416932", "cl-hitster"] },
-        { kop: "Voor bij een goed glas", tekst: "Whiskyglazen, een bierpul of iets om een cocktail rokerig te maken.", ids: ["dvzn-648493", "cg-rocking-whisky-glazen", "dvzn-208667", "dvzn-868decc4c6"] },
+        { kop: "Voor bij een goed glas", tekst: "Whiskyglazen, een bierpul of iets om een cocktail rokerig te maken.", ids: ["dvzn-648493", "cg-rocking-whisky-glazen", "dvzn-208667", "dvzn-dab07fd10d"] },
         { kop: "Gadgets", tekst: "Handig, grappig of gewoon heel gaaf om te hebben.", ids: ["cg-b320632dae", "cg-useless-box", "cl-atari-arcade", "tt-dvzn-d0fc92f962"] },
         { kop: "Om te lachen", tekst: "Voor de vriend die overal een grap van maakt.", ids: ["dvzn-c15dcffb40", "dvzn-0b435dbafd", "cg-toilet-football", "dvzn-9fa32eee7e"] },
         { kop: "Iets persoonlijks", tekst: "Iets van jullie twee: de sterrenhemel van jullie dag, jullie plek of een gegraveerde heupfles.", ids: ["ptm-9", "ptm-15546", "smartp-11ee960dc1", "dvzn-70adc8c50c"] },
@@ -6554,7 +6555,7 @@
       delen: [
         { kop: "Zo kies je een cadeau van 25 euro", tekst: "Vier dingen die helpen:", lijst: ["Kies iets dat ze niet snel zelf kopen: dat voelt als een echt cadeau.", "Let op de verzendkosten: die komen er bij sommige winkels nog bij.", "Lootjes of een spel bij een feestje? Spreek het bedrag van tevoren af.", "Wordt een cadeau duurder dan 25 euro, dan halen we het hier vanzelf weg."] },
         { kop: "Voor haar", tekst: "Sloffen, een mini-stijltang, een kookboek of een mooie schaal.", ids: ["dvzn-a1d0a53414", "dvzn-922f9ce250", "bol-9300000124200796", "dille-63032ca960"] },
-        { kop: "Voor hem", tekst: "Gin-sokken, een whiskyglas met eigen tekst of iets voor bij het voetbal.", ids: ["dvzn-506744c169", "smartp-48b3d1162c", "dvzn-868decc4c6", "cg-ijsblok-bierkoeler"] },
+        { kop: "Voor hem", tekst: "Gin-sokken, een whiskyglas met eigen tekst of iets voor bij het voetbal.", ids: ["dvzn-506744c169", "smartp-48b3d1162c", "dvzn-4863c18136", "cg-ijsblok-bierkoeler"] },
         { kop: "Voor tieners", tekst: "Lampjes, een grote beker en een spelcomputer aan je sleutelbos.", ids: ["dvzn-82c9fc5824", "gadget-e762958c34", "amz-b0cx9gt83j", "dvzn-6aa21edc9a"] },
         { kop: "Voor kinderen", tekst: "Om te bouwen, te spelen en voor bij het slapen.", ids: ["dgsw-6b47c22e1d", "dvzn-cf771f14a8", "dvzn-762707", "grotek-32bd78a6c3"] },
         { kop: "Voor een collega", tekst: "Voor op het bureau of voor de vrijdagmiddag.", ids: ["dvzn-339379", "dvzn-147958", "dvzn-362282", "dvzn-fcb853102a"] },
@@ -6581,7 +6582,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Kijk naar zijn hobby: daar zit bijna altijd het beste cadeau.", "Grappig mag, zolang hij er zelf om kan lachen.", "Samen met je andere broers of zussen geven? Dan kun je iets groters kiezen.", "Een game? Vraag eerst welke spelcomputer hij heeft."] },
         { kop: "Gamen", tekst: "Voor de broer die altijd achter de console zit.", ids: ["cl-dualsense", "dvzn-a4ed4f69b9", "cg-chocolade-game-controller", "dvzn-9688f84b76"] },
         { kop: "LEGO en F1", tekst: "Om te bouwen, of voor aan de muur.", ids: ["lego-77243", "legoshop-f91cb50b25", "legoshop-05f7335d75", "lego-77257"] },
-        { kop: "Darten en voetbal", tekst: "Voor de sportieve broer, ook als hij alleen op de bank meekijkt.", ids: ["cl-winmau-neutron", "grotek-57e49bc6a4", "dvzn-868decc4c6", "cg-toilet-football"] },
+        { kop: "Darten en voetbal", tekst: "Voor de sportieve broer, ook als hij alleen op de bank meekijkt.", ids: ["cl-winmau-neutron", "grotek-57e49bc6a4", "dvzn-4863c18136", "cg-toilet-football"] },
         { kop: "Voor bij een biertje", tekst: "Een vilten tas voor zes flesjes, glazen met jullie foto of een flesopener die zijn biertjes telt.", ids: ["dvzn-5718c70e17", "smartp-1ed3987d88", "cg-pratende-flessenopener", "fiftie-b848fd6c6e"] },
         { kop: "Om te lachen", tekst: "Gekke cadeaus waar hij nog lang over praat.", ids: ["cg-useless-box", "dvzn-dcf2cec7a7", "dvzn-a003b63b40", "t2-cadeau-nl-31dfd27d21"] },
         { kop: "Muziek en handig", tekst: "Goede oordopjes, een speaker of een oplaadbare zaklamp.", ids: ["cl-xm5", "bol-9300000189466514", "bol-9300000252617200", "bol-9300000234717251"] }
@@ -6661,7 +6662,7 @@
         { kop: "Gamen", tekst: "Een controller, een game of iets voor bij de console.", ids: ["cl-dualsense", "cl-legends-za", "dvzn-a4ed4f69b9", "amz-b0cp1927qy"] },
         { kop: "Verzorging en geur", tekst: "Wat tieners zelf gebruiken en op hun verlanglijstje zetten.", ids: ["bol-9300000060629305", "cl-laneige-lip", "cl-cosrx-snail", "parfum-80840d7cc9"] },
         { kop: "Voor de eigen kamer", tekst: "Licht en sfeer voor de kamer.", ids: ["dvzn-515371", "amz-b0fcsxm3vp", "dvzn-5dbf032a22", "dvzn-f5059f5782"] },
-        { kop: "Spellen en lachen", tekst: "Voor met vrienden of op een feestje.", ids: ["cl-wavelength", "cl-weerwolven", "cg-useless-box", "dvzn-814850"] },
+        { kop: "Spellen en lachen", tekst: "Voor met vrienden of op een feestje.", ids: ["cl-wavelength", "999g-999wrw01", "cg-useless-box", "dvzn-814850"] },
         { kop: "Warm en lekker", tekst: "Iets warms voor thuis, zoals een deken van Zweinstein.", ids: ["hema-efaa95f521", "dvzn-dcd93d79e7", "cl-hp-beanie", "nedg-7c1aa8ede0"] }
       ],
       slot: "Meer ideeën staan bij <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-13-jaar\">13 jaar</a> en <a href=\"/gids/cadeau-18-jaar\">18 jaar</a>." },
@@ -6698,7 +6699,7 @@
         { kop: "Zo kies je het goede cadeau", tekst: "Vier dingen die helpen:", lijst: ["Heeft de jarige alles al? Kies iets dat op gaat of iets om samen te doen.", "Iets met de (klein)kinderen raakt bijna altijd: een foto, hun namen of een fotoboek.", "Kijk naar de hobby: de tuin, puzzelen, een borrel of muziek.", "Geef je met de familie? Dan kun je samen een uitje of iets groters kiezen."] },
         { kop: "Om de dag te vieren", tekst: "Een kaart die blijft zingen, een geurkaars of een marsepeintaart.", ids: ["cg-57a56fb762", "massa-9195e5bedc", "dw-4000161470748", "cadeau-21b87d357f"] },
         { kop: "Voor bij een goed glas", tekst: "Mooie glazen, een whiskyset of een wijnset in een boek.", ids: ["dc-2163335415", "cl-26772", "cg-rocking-whisky-glazen", "dvzn-243456"] },
-        { kop: "Voor de tuin", tekst: "Voor wie graag naar de vogels kijkt of in de tuin bezig is.", ids: ["dvzn-794561", "dk-00007580", "cl-24943", "dk-00043982"] },
+        { kop: "Voor de tuin", tekst: "Voor wie graag naar de vogels kijkt of in de tuin bezig is.", ids: ["dvzn-794561", "dk-00007580", "cl-24943", "grotek-f441549887"] },
         { kop: "Puzzelen en spelen", tekst: "Voor de lange avonden en met de familie.", ids: ["dg-311a752fd8", "cl-wasgij", "999g-giggcqa", "bol-1004004000008403"] },
         { kop: "Iets om te onthouden", tekst: "Een fotoboek, een poster of een tegeltje met een foto.", ids: ["cl-pf-hardcover", "cg-37e1269b65", "mmf-63b16f5c97", "ptm-9"] },
         { kop: "Een uitje of iets voor thuis", tekst: "Een rondvaart, een theeproeverij of een radio met bluetooth.", ids: ["dk-c4e8d984dc", "dk-cd1e8497b2", "fs-crosley-tribute", "coolgi-29be901732"] }
@@ -6971,7 +6972,7 @@
         { kop: 'Licht als het donker wordt', tekst: 'Een hoofdlamp is handiger dan een zaklamp: je hebt je handen vrij. Een lamp die je met zonlicht of een slinger kunt opladen, heeft geen batterijen nodig.',
           ids: ['cl-bd-astro', 'cl-flextail-helio', 'cl-kampeerlantaarn', 'bol-9300000234717251'] },
         { kop: 'EHBO en warmte', tekst: 'Een goede EHBO-set hoort in elk huis, ook zonder noodsituatie. Een nooddeken weegt bijna niets en houdt je warm als de verwarming uitvalt.',
-          ids: ['bol-9300000340502828', 'dvzn-6a0d467ccc'] },
+          ids: ['bol-9300000340502828', 'hema-804b7f818c'] },
         { kop: 'Kant-en-klaar noodpakket kopen of zelf samenstellen?', tekst: 'Een kant-en-klaar pakket is makkelijk: je hebt meteen een tas met de basis. Maar let op. Volgens de Consumentenbond en Kassa missen veel pakketten juist water, hygiënespullen en contant geld, en zitten er soms gadgets in die je nooit gebruikt. Sommige pakketten kosten honderden euro’s. Mijn advies: koop een eenvoudig basispakket of stel het zelf samen, en geef je geld vooral uit aan een goede noodradio, een waterfilter en een fijne hoofdlamp.',
           ids: ['bol-9300000235206215', 'bol-9300000256294004', 'dvzn-456925', 'bol-9300000258718720'] },
         { kop: 'Zo houd je je noodpakket op orde', tekst: 'Een noodpakket dat al jaren in de kast staat, werkt niet altijd meer. Doe dit twee keer per jaar, bijvoorbeeld als de klok verzet wordt:',
@@ -7075,7 +7076,7 @@
       delen: [
         { kop: 'Zo kies je het goede cadeau', tekst: 'Vier dingen die helpen:', lijst: ['Denk aan wat ze in de winter graag doet: op de bank met een plaid, in bad, puzzelen of koken.', 'Iets dat op gaat valt bijna altijd goed: verzorging, iets lekkers of een geurkaars.', 'Persoonlijk raakt vaak meer dan duur: een mok met haar geboortebloem of een tegeltje met een foto.', 'Bestel op tijd: rond Kerst duren pakketjes vaak langer.'] },
         { kop: 'Even verwennen', tekst: 'Verzorging en iets om even bij te komen.', ids: ['bloom-f6daaba72c', 'dk-00045266', 'cadeau-f102403119', 'parfum-45dbbae7b4'] },
-        { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['cg-magnetron-sloffen', 'hema-efaa95f521', 'bt-46901990228307', 'dvzn-e9a4c2cf2b'] },
+        { kop: 'Warm en knus', tekst: 'Voor de koude avonden op de bank.', ids: ['cg-magnetron-sloffen', 'hema-efaa95f521', 'bt-46901990228307', 'dvzn-e47370c6a2'] },
         { kop: 'Kerstsfeer in huis', tekst: 'Een geurkaars, lichtjes of iets moois voor de kersttafel.', ids: ['lego-10370', 'dk-00045045', 'country-b8fd99e550', 'bp-p0061ke'] },
         { kop: 'Iets lekkers', tekst: 'Voor bij de koffie of om samen te proosten.', ids: ['dw-4000161100379', 'bol-9300000020446164', 'dk-00043581', 'dc-2163335415'] },
         { kop: 'Met een persoonlijk tintje', tekst: 'Een cadeau dat laat zien dat het echt voor háár is.', ids: ['cg-pers-monthflower-mug', 'mmf-63b16f5c97', 'dvzn-fcb853102a', 'dvzn-70adc8c50c'] },
@@ -7302,7 +7303,7 @@
             'Geef er een moment bij: samen een spel spelen of samen proeven.'
           ] },
         { kop: 'Voor bij de borrel', tekst: 'Mooie whiskyglazen, een rookset om er iets bijzonders van te maken, of een bierpul voor bij het voetbal.',
-          ids: ['cg-rocking-whisky-glazen', 'dvzn-648493', 'dvzn-868decc4c6', 'bol-9300000015405237'] },
+          ids: ['cg-rocking-whisky-glazen', 'dvzn-648493', 'dvzn-dab07fd10d', 'bol-9300000015405237'] },
         { kop: 'Voor de keuken en de barbecue', tekst: 'Dingen die hij elke week gebruikt, en die net wat beter zijn dan wat hij al heeft.',
           ids: ['bol-9300000083266771', 'dvzn-859756', 'bol-9300000258651028'] },
         { kop: 'Voor zijn hobby en ontspanning', tekst: 'Een mooi schaakbord, een dartset, een spel voor de familie of warme pantoffels voor de avond.',
@@ -7440,7 +7441,7 @@
             'Sloopt de hond alles? Kies dan stevig speelgoed van rubber in plaats van pluche.'
           ] },
         { kop: 'Om mee te spelen', tekst: 'Van de onverwoestbare KONG tot een likmat die de hond een kwartier rustig houdt.',
-          ids: ['bol-9200000046271441', 'ww-oyo16356203242', 'dvzn-474812'] },
+          ids: ['bol-9200000046271441', 'dvzn-115085', 'dvzn-474812'] },
         { kop: 'Voor het hondenbad', tekst: 'Wassen wordt bijna leuk: een spa-setje, een badborstel en zelfs een bruisbal speciaal voor honden.',
           ids: ['dvzn-443774', 'dvzn-421666', 'dvzn-833231'] },
         { kop: 'De hond overal in huis', tekst: 'Een deken met een portret van de eigen hond, een kruik in de vorm van een hond of een deurmat met een bulldog: voor wie zijn hond overal wil zien.',
