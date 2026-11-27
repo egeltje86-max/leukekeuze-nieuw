@@ -5225,6 +5225,212 @@
     try { wzkTelG('woordzoeker/zelf/' + n + '-' + richt); } catch (x) {}
   });
 
+  /* ================== DOBBELSPEL (27-11-2026, onderzoek OpenSEO op verzoek van Marius: 'gebruik de credits voor alles wat de verkoop versnelt') ==================
+     /dobbelspel/: het dobbelspel met cadeautjes (Sinterklaas, kerst, met kinderen): spelregels, een online dobbelsteen die bij elke worp de opdracht zegt,
+     een wekker voor ronde 2, de regels om te printen en kleine cadeautjes voor het spel.
+     Zoekwoorden (OpenSEO 27-11, moeilijkheid 0): 'dobbelspel sinterklaas' 2.900, 'sinterklaas dobbelspel' 1.900, 'dobbelspel cadeautjes' 1.600,
+     'dobbelspel kerst' 1.300, 'dobbelspel regels' 880, 'dobbelspel spelregels' 720, 'online dobbelsteen' 8.100 per maand.
+     Alles gebeurt in de browser, er wordt niets bewaard. Uit: window.LK_DOBBELSPEL = false. */
+  var DBS_SOORT = [
+    { slug: 'sint', naam: 'Sinterklaas', r1: 'Gooi je een 6? Pak een cadeautje van de stapel in het midden.', r2: [
+      'Geef één van je cadeautjes aan de speler links van je.',
+      'Geef één van je cadeautjes aan de speler rechts van je.',
+      'Ruil een cadeautje met wie je maar wilt.',
+      'Pak een cadeautje van iemand anders.',
+      'Iedereen geeft al zijn cadeautjes door naar links.',
+      'Zing een stukje van een Sinterklaasliedje en pak daarna een cadeautje van iemand anders.'] },
+    { slug: 'kerst', naam: 'Kerst', r1: 'Gooi je een 6? Pak een cadeautje van de stapel onder de boom.', r2: [
+      'Geef één van je cadeautjes aan de speler links van je.',
+      'Geef één van je cadeautjes aan de speler rechts van je.',
+      'Ruil een cadeautje met wie je maar wilt.',
+      'Pak een cadeautje van iemand anders.',
+      'Iedereen geeft al zijn cadeautjes door naar rechts.',
+      'Wens iemand een vrolijk kerstfeest en ruil daarna een cadeautje met diegene.'] },
+    { slug: 'kind', naam: 'Met kinderen', r1: 'Gooi je een 1 of een 6? Pak een cadeautje van de stapel.', r2: [
+      'Geef één van je cadeautjes aan de speler links van je.',
+      'Geef één van je cadeautjes aan de speler rechts van je.',
+      'Ruil een cadeautje met wie je maar wilt.',
+      'Iedereen geeft één cadeautje door naar links.',
+      'Doe een gek dansje. Daarna is de volgende aan de beurt.',
+      'Pak een cadeautje van iemand die er meer heeft dan jij.'] }
+  ];
+  var DBS_KIDS = ['dgsw-d8c8bc0090', 'dvzn-b9953da47a', 'massa-9d56c090d1', 'dgsw-e4be97d6a7', 'bol-9300000265640005', 'dgsw-190e813ae6', 'woewoe-4f1087a474', 'wizard-19345262cc',
+    'dgsw-8430b81635', 'nedg-87c83b4e62', 'massa-cd7dd6d607', 'dvzn-655af9bd06', 'woewoe-ff1c2aa222', 'dvzn-479347', 'cl-hw-monster', 'dvzn-3ee499eae7'];
+  var DBS_GROOT = ['hema-d4cadde6d1', 'joybuy-6516355e12', 'dvzn-1a61ae70d9', 'dvzn-0486864a03', 'cl-uno', 'cadeau-f393d5a062', 'dgsw-c704b700de', 'dgsw-5a269fe458',
+    'dkam-4ad5b1cc61', 'warent-fa4d46219c', 'massa-db1c6e3be0', 'dvzn-a8efee7908', 'cadeau-eaff32d056', 'grotek-9235126f56', 'hema-8eff9a5ada'];
+  var DBS = { soort: '', ronde: 1, worpen: 0, rollen: false, wekker: null, eind: 0, rest: 600, duur: 10 };
+  function dbsTel(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Dobbelspel', event: true }); } catch (e) {} }
+  function dbsNu() { var md = new Date().toISOString().slice(5, 10); return md >= '10-15' && md <= '12-05' ? 'sint' : 'kerst'; }
+  function dbsVind(slug) { return DBS_SOORT.filter(function (s) { return s.slug === slug; })[0] || DBS_SOORT[0]; }
+  function dbsCadeaus(ids, max) {
+    return ids.map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd' && !p.stil && !p.drank && +p.prijs > 0 && +p.prijs <= 8; })
+      .slice(0, max).map(LK.productKaart).join('');
+  }
+  function dbsSteen(v) {
+    var h = ''; for (var i = 1; i <= 9; i++) h += '<i class="d' + i + '"></i>';
+    return '<span class="dbs-steen" data-v="' + v + '" aria-hidden="true">' + h + '</span>';
+  }
+  function dbsLijst(s) { return '<ol class="dbs-opdr">' + s.r2.map(function (t, i) { return '<li data-dbs-o="' + (i + 1) + '"><b>' + (i + 1) + '</b><span>' + esc(t) + '</span></li>'; }).join('') + '</ol>'; }
+  function dbsRegels(s) {
+    return '<div class="dbs-regels" data-dbs-regels>' +
+      '<div class="dbs-ronde"><h3>Ronde 1: de stapel</h3><p>' + esc(s.r1) + ' Speel door tot de stapel op is.</p></div>' +
+      '<div class="dbs-ronde"><h3>Ronde 2: met de wekker</h3><p>Zet de wekker op 10 of 15 minuten. Om de beurt gooien; elk getal is een opdracht:</p>' + dbsLijst(s) +
+      '<p>Gaat de wekker af? Wat je dan voor je hebt liggen, mag je houden. Pak maar uit!</p></div></div>';
+  }
+  function dobbelPagina() {
+    zetTitel('Dobbelspel met cadeautjes: spelregels en online dobbelsteen');
+    window.LK_SEO = 'Zo speel je het dobbelspel met cadeautjes: spelregels voor Sinterklaas, kerst en met kinderen, een gratis online dobbelsteen die de opdracht zegt, een wekker, regels om te printen en cadeautjes tot € 8.';
+    var eerst = DBS.soort || dbsNu(), s = dbsVind(eerst);
+    DBS.soort = eerst; DBS.ronde = 1; DBS.worpen = 0;
+    var keuzes = DBS_SOORT.slice().sort(function (a, b) { return (b.slug === eerst) - (a.slug === eerst); }).map(function (x) {
+      return '<button type="button" class="chip" data-dbs-soort="' + x.slug + '" aria-pressed="' + (x.slug === eerst) + '">' + esc(x.naam) + '</button>';
+    }).join('');
+    var minuten = [5, 10, 15, 20].map(function (m) { return '<button type="button" class="chip" data-dbs-min="' + m + '" aria-pressed="' + (m === 10) + '">' + m + ' min</button>'; }).join('');
+    var kids = dbsCadeaus(DBS_KIDS, 8), groot = dbsCadeaus(DBS_GROOT, 8);
+    var vraag = function (v, a) { return [v, a]; };
+    var faq = [
+      vraag('Hoe werkt het dobbelspel met cadeautjes?', 'Iedereen neemt een paar ingepakte cadeautjes mee en legt ze op één stapel. In ronde 1 pak je een cadeautje als je een 6 gooit, tot de stapel op is. In ronde 2 zet je een wekker op 10 of 15 minuten en hoort bij elk getal een opdracht: doorgeven, ruilen of pakken. Gaat de wekker af, dan mag je houden wat je hebt.'),
+      vraag('Hoeveel cadeautjes neemt iedereen mee?', 'Meestal 3 tot 5 per persoon, van ongeveer 2 tot 5 euro per stuk. Spreek het van tevoren af, dan is het eerlijk. Met minder dan zes spelers kun je beter ieder 4 of 5 cadeautjes nemen, anders is ronde 1 snel voorbij.'),
+      vraag('Hoe lang duurt het dobbelspel?', 'Ronde 1 duurt meestal 10 tot 20 minuten, afhankelijk van hoeveel cadeautjes er zijn. Ronde 2 duurt zo lang als je de wekker zet; 10 of 15 minuten is genoeg voor veel lol.'),
+      vraag('Kan het dobbelspel ook met kinderen?', 'Ja. Kies hierboven ‘Met kinderen’: dan pak je in ronde 1 al een cadeautje bij een 1 of een 6, en in ronde 2 wordt er niet gestolen maar vooral doorgegeven en geruild. Spreek af dat niemand zonder cadeautje eindigt: wie er geen heeft, krijgt er aan het eind één van degene met de meeste.'),
+      vraag('Ik heb geen dobbelsteen. Wat nu?', 'Gebruik de online dobbelsteen op deze pagina. Tik op ‘Gooi’ en je ziet meteen het getal en de opdracht die erbij hoort. Leg de telefoon midden op tafel of geef hem door.'),
+      vraag('Mag je cadeautjes openmaken tijdens het spel?', 'Nee, pas als de wekker van ronde 2 afgaat. Dat maakt het spannend: je weet nooit of je het leuke cadeautje weggeeft of het rare houdt.')
+    ];
+    var ld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(function (f) { return { '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }; }) };
+    return paginakop({ titel: 'Dobbelspel met cadeautjes', tekst: 'De spelregels voor Sinterklaas, kerst en met kinderen, met een online dobbelsteen die bij elke worp de opdracht zegt en een wekker voor ronde 2. Gratis, ook op je telefoon.', kruimel: [{ tekst: 'Dobbelspel' }] }) +
+      '<div class="binnen dbs">' +
+        '<section class="sectie dbs-spel" aria-label="Online dobbelsteen">' +
+          '<div class="dbs-keuze" role="group" aria-label="Kies het spel">' + keuzes + '</div>' +
+          '<div class="dbs-kaart">' +
+            '<div class="dbs-rondes" role="group" aria-label="Welke ronde?"><button type="button" class="chip" data-dbs-ronde="1" aria-pressed="true">Ronde 1: de stapel</button><button type="button" class="chip" data-dbs-ronde="2" aria-pressed="false">Ronde 2: met de wekker</button></div>' +
+            '<button type="button" class="dbs-gooi" data-dbs-gooi aria-label="Gooi de dobbelsteen">' + dbsSteen(6) + '<span class="dbs-gooitekst">Gooi</span></button>' +
+            '<p class="dbs-uitslag" data-dbs-uitslag aria-live="polite">Tik op de dobbelsteen om te gooien.</p>' +
+            '<div class="dbs-wekker" data-dbs-wekker hidden><p class="dbs-tijd" data-dbs-tijd aria-live="off">10:00</p>' +
+              '<div class="dbs-min" role="group" aria-label="Hoe lang?">' + minuten + '</div>' +
+              '<div class="dbs-wknop"><button type="button" class="knop knop-goud" data-dbs-start>Start de wekker</button><button type="button" class="knop knop-rand" data-dbs-reset>Opnieuw</button></div></div>' +
+          '</div>' +
+          '<div data-dbs-regelvak>' + dbsRegels(s) + '</div>' +
+          '<div class="wzk-knoppen"><button type="button" class="knop knop-rand" data-dbs-print>' + ic('printer') + 'Spelregels printen</button></div>' +
+        '</section>' +
+        '<section class="sectie dbs-tekst"><h2>Zo speel je het dobbelspel</h2>' +
+          '<ol class="dbs-stappen">' +
+            '<li><b>Spreek een bedrag af.</b> Bijvoorbeeld 3 tot 5 cadeautjes per persoon van ongeveer 2 tot 5 euro.</li>' +
+            '<li><b>Pak alles in</b> en leg de cadeautjes op één stapel in het midden. Een rare of grappige ertussen maakt het leuker.</li>' +
+            '<li><b>Ronde 1:</b> om de beurt gooien. Wie een 6 gooit, pakt een cadeautje van de stapel. Op is op.</li>' +
+            '<li><b>Ronde 2:</b> zet de wekker. Nu hoort bij elk getal een opdracht: doorgeven, ruilen of pakken (zie de lijst hierboven).</li>' +
+            '<li><b>Tijd om:</b> wat je voor je hebt, mag je houden en uitpakken.</li>' +
+          '</ol>' +
+          '<p>Tip: speel je met weinig mensen, laat dan in ronde 1 ook een 1 tellen. En wie aan het eind niets heeft, krijgt één cadeautje van degene met de meeste. Zo gaat niemand met lege handen naar huis.</p>' +
+        '</section>' +
+        (kids ? '<section class="sectie dbs-cadeaus"><h2>Cadeautjes voor het dobbelspel: kinderen</h2><p>Kleine cadeautjes tot ongeveer 8 euro waar kinderen blij van worden, met de prijs van vandaag.</p><div class="prodgrid">' + kids + '</div>' +
+          '<p class="wzk-verder"><a href="/collectie/schoencadeautjes">Alle schoencadeautjes</a> · <a href="/c/cadeaus/sinterklaas?prijs=r0-10">Sinterklaas tot € 10</a></p></section>' : '') +
+        (groot ? '<section class="sectie dbs-cadeaus"><h2>Cadeautjes voor het dobbelspel: volwassenen</h2><p>Grappig, lekker of handig, en allemaal tot ongeveer 8 euro.</p><div class="prodgrid">' + groot + '</div>' +
+          '<p class="wzk-verder"><a href="/collectie/kleine-cadeautjes">Kleine cadeautjes</a> · <a href="/collectie/grappige-cadeaus">Grappige cadeaus</a> · <a href="/c/cadeaus/kerst?prijs=tot10">Kerst tot € 10</a></p></section>' : '') +
+        '<section class="sectie dbs-tekst"><h2>Meer spelletjes voor pakjesavond en kerst</h2>' +
+          '<ul class="dbs-stappen dbs-meer">' +
+            '<li><b>Pakjes doorgeven op muziek.</b> Zet een liedje aan en geef één cadeautje door in de kring. Stopt de muziek, dan mag wie het vasthoudt het openmaken.</li>' +
+            '<li><b>Raad wat erin zit.</b> Voelen, schudden en ruiken mag, kijken niet. Wie goed raadt voor hij uitpakt, krijgt een handje pepernoten.</li>' +
+            '<li><b>Voor wie is dit gedicht?</b> Lees een gedicht voor zonder de naam erin. Wie het eerst raadt voor wie het is, mag het volgende voorlezen.</li>' +
+            '<li><b>Pepernoten zoeken.</b> Verstop een zak pepernoten in de kamer. Wie de meeste vindt, mag als eerste gooien bij het dobbelspel.</li>' +
+            '<li><b>Woordzoeker-race.</b> Print voor iedereen dezelfde <a href="/woordzoeker/">woordzoeker</a>. Wie het eerst alle woorden heeft, wint.</li>' +
+          '</ul></section>' +
+        '<section class="sectie dbs-ook"><h2>Nog meer voor pakjesavond en kerst</h2><p class="wzk-verder"><a href="/lootjes-trekken/">Lootjes trekken via WhatsApp</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a> · <a href="/woordzoeker/">Woordzoeker printen</a> · <a href="/gids/secret-santa">Secret Santa</a></p></section>' +
+        '<section class="sectie wzk-vragen dbs-vragen"><h2>Vragen over het dobbelspel</h2>' +
+          faq.map(function (f) { return '<details><summary>' + esc(f[0]) + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join('') +
+          '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>' +
+        '</section></div>';
+  }
+  function dbsZet(sel, attr, val) { document.querySelectorAll(sel).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute(attr) === String(val) ? 'true' : 'false'); }); }
+  function dbsUitslag(v) {
+    var s = dbsVind(DBS.soort), u = document.querySelector('[data-dbs-uitslag]'); if (!u) return;
+    var t;
+    if (DBS.ronde === 1) {
+      var pak = v === 6 || (DBS.soort === 'kind' && v === 1);
+      t = '<b>' + v + '</b> ' + (pak ? 'Pak een cadeautje van de stapel!' : 'Helaas, de volgende is aan de beurt.');
+    } else t = '<b>' + v + '</b> ' + esc(s.r2[v - 1]);
+    u.innerHTML = t;
+    document.querySelectorAll('[data-dbs-o]').forEach(function (li) { li.classList.toggle('nu', DBS.ronde === 2 && +li.getAttribute('data-dbs-o') === v); });
+  }
+  function dbsGooi() {
+    if (DBS.rollen) return; DBS.rollen = true;
+    var steen = document.querySelector('[data-dbs-gooi] .dbs-steen'), knop = document.querySelector('[data-dbs-gooi]'); if (!steen) { DBS.rollen = false; return; }
+    var r = function () { try { var a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] % 6 + 1; } catch (e) { return Math.floor(Math.random() * 6) + 1; } };
+    var v = r(), stap = 0, rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    knop.classList.add('rolt');
+    var klaar = function () { steen.setAttribute('data-v', v); knop.classList.remove('rolt'); DBS.rollen = false; DBS.worpen++; dbsUitslag(v); if (DBS.worpen === 1 || DBS.worpen % 25 === 0) dbsTel('dobbelspel/gooi/' + DBS.soort + '/ronde-' + DBS.ronde); };
+    if (rustig) { klaar(); return; }
+    (function flits() { steen.setAttribute('data-v', (stap % 6) + 1); if (++stap < 8) setTimeout(flits, 70); else klaar(); })();
+  }
+  function dbsToonTijd() { var t = document.querySelector('[data-dbs-tijd]'); if (!t) return false; var s = Math.max(0, Math.round(DBS.rest)); t.textContent = Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); return true; }
+  function dbsStop() { if (DBS.wekker) { clearInterval(DBS.wekker); DBS.wekker = null; } var b = document.querySelector('[data-dbs-start]'); if (b) b.textContent = DBS.rest > 0 && DBS.rest < DBS.duur * 60 ? 'Verder' : 'Start de wekker'; }
+  function dbsTik() {
+    DBS.rest = (DBS.eind - Date.now()) / 1000;
+    if (!dbsToonTijd()) { dbsStop(); return; }
+    if (DBS.rest <= 0) {
+      dbsStop(); DBS.rest = 0; dbsToonTijd();
+      var u = document.querySelector('[data-dbs-uitslag]'); if (u) u.innerHTML = '<b>Tijd is om!</b> Wat je voor je hebt, mag je houden. Pak maar uit!';
+      var w = document.querySelector('[data-dbs-wekker]'); if (w) w.classList.add('op');
+      try { if (navigator.vibrate) navigator.vibrate([300, 120, 300, 120, 600]); } catch (e) {}
+      try { var C = window.AudioContext || window.webkitAudioContext; if (C) { var c = new C(); [0, .35, .7].forEach(function (t) { var o = c.createOscillator(), g = c.createGain(); o.frequency.value = 880; g.gain.value = .18; o.connect(g); g.connect(c.destination); o.start(c.currentTime + t); o.stop(c.currentTime + t + .22); }); } } catch (e) {}
+      dbsTel('dobbelspel/wekker-af/' + DBS.duur);
+    }
+  }
+  function dbsPrint() {
+    var s = dbsVind(DBS.soort);
+    var html = '<div class="dbp-blad"><h1>Dobbelspel ' + esc(s.naam) + '</h1>' +
+      '<h2>Ronde 1: de stapel</h2><p>' + esc(s.r1) + ' Speel door tot de stapel op is.</p>' +
+      '<h2>Ronde 2: met de wekker</h2><p>Zet de wekker op 10 of 15 minuten en gooi om de beurt:</p><ol>' + s.r2.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>' +
+      '<p>Gaat de wekker af? Wat je voor je hebt liggen, mag je houden. Pak maar uit!</p>' +
+      '<p class="dbp-voet">Online dobbelsteen en wekker: leukekeuze.nl/dobbelspel</p></div>';
+    var vak = document.getElementById('wzk-printvak');
+    if (!vak) { vak = document.createElement('div'); vak.id = 'wzk-printvak'; document.body.appendChild(vak); }
+    if (!document.getElementById('dbs-printstijl')) {
+      var st = document.createElement('style'); st.id = 'dbs-printstijl';
+      st.textContent = '#wzk-printvak{display:none}@media print{@page{size:A4;margin:16mm}html.wzk-print body>*:not(#wzk-printvak){display:none!important}html.wzk-print,html.wzk-print body{background:#fff!important}' +
+        'html.wzk-print #wzk-printvak{display:block!important;color:#000!important;background:#fff!important;font-family:Manrope,Arial,sans-serif}' +
+        '.dbp-blad h1{font-family:"Playfair Display",Georgia,serif;font-size:28pt;margin:0 0 8mm;text-align:center;color:#000!important}.dbp-blad h2{font-size:17pt;margin:8mm 0 3mm;color:#000!important}' +
+        '.dbp-blad p,.dbp-blad li{font-size:15pt;line-height:1.5;color:#000!important}.dbp-blad ol{padding-left:10mm}.dbp-blad li{margin:0 0 3mm;padding-left:2mm}.dbp-voet{font-size:10pt!important;color:#555!important;text-align:center;margin-top:12mm}}';
+      document.head.appendChild(st);
+    }
+    vak.innerHTML = html;
+    document.documentElement.classList.add('wzk-print');
+    var weg = function () { document.documentElement.classList.remove('wzk-print'); window.removeEventListener('afterprint', weg); };
+    window.addEventListener('afterprint', weg);
+    dbsTel('dobbelspel/print/' + DBS.soort);
+    setTimeout(function () { window.print(); setTimeout(weg, 1500); }, 60);
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('.dbs')) return;
+    if (e.target.closest('[data-dbs-gooi]')) { dbsGooi(); return; }
+    var so = e.target.closest('[data-dbs-soort]');
+    if (so) {
+      DBS.soort = so.getAttribute('data-dbs-soort'); dbsZet('[data-dbs-soort]', 'data-dbs-soort', DBS.soort);
+      var vak = document.querySelector('[data-dbs-regelvak]'); if (vak) vak.innerHTML = dbsRegels(dbsVind(DBS.soort));
+      var u = document.querySelector('[data-dbs-uitslag]'); if (u) u.textContent = 'Tik op de dobbelsteen om te gooien.';
+      dbsTel('dobbelspel/soort/' + DBS.soort); return;
+    }
+    var ro = e.target.closest('[data-dbs-ronde]');
+    if (ro) {
+      DBS.ronde = +ro.getAttribute('data-dbs-ronde'); dbsZet('[data-dbs-ronde]', 'data-dbs-ronde', DBS.ronde);
+      var w = document.querySelector('[data-dbs-wekker]'); if (w) w.hidden = DBS.ronde !== 2;
+      var u2 = document.querySelector('[data-dbs-uitslag]'); if (u2) u2.textContent = DBS.ronde === 2 ? 'Zet de wekker aan en gooi om de beurt.' : 'Tik op de dobbelsteen om te gooien.';
+      document.querySelectorAll('[data-dbs-o]').forEach(function (li) { li.classList.remove('nu'); });
+      return;
+    }
+    var mi = e.target.closest('[data-dbs-min]');
+    if (mi) { dbsStop(); DBS.duur = +mi.getAttribute('data-dbs-min'); DBS.rest = DBS.duur * 60; dbsZet('[data-dbs-min]', 'data-dbs-min', DBS.duur); dbsToonTijd(); dbsStop(); var w2 = document.querySelector('[data-dbs-wekker]'); if (w2) w2.classList.remove('op'); return; }
+    var st = e.target.closest('[data-dbs-start]');
+    if (st) {
+      if (DBS.wekker) { DBS.rest = (DBS.eind - Date.now()) / 1000; dbsStop(); st.textContent = 'Verder'; return; }
+      if (DBS.rest <= 0) DBS.rest = DBS.duur * 60;
+      DBS.eind = Date.now() + DBS.rest * 1000; DBS.wekker = setInterval(dbsTik, 250); st.textContent = 'Pauze';
+      var w3 = document.querySelector('[data-dbs-wekker]'); if (w3) w3.classList.remove('op');
+      dbsTel('dobbelspel/wekker/' + DBS.duur); return;
+    }
+    if (e.target.closest('[data-dbs-reset]')) { dbsStop(); DBS.rest = DBS.duur * 60; dbsToonTijd(); dbsStop(); var w4 = document.querySelector('[data-dbs-wekker]'); if (w4) w4.classList.remove('op'); return; }
+    if (e.target.closest('[data-dbs-print]')) { dbsPrint(); return; }
+  });
+
   function lootjes(q) {
     if (q.l) return lootUitslag(lootLees(q.l));
     if (q.g) return lootGroep(q);
@@ -6941,7 +7147,7 @@
       slot: "Veel meer staat bij <a href=\"/voor/kinderen\">Cadeaus voor kinderen</a> en <a href=\"/voor/tieners\">Cadeaus voor tieners</a>. Iets jonger of ouder? Kijk bij <a href=\"/gids/cadeau-kind-11-jaar\">een kind van 11</a> en <a href=\"/gids/cadeau-13-jaar\">13 jaar</a>." },
     { slug: 'kerstcadeau-tiener', beeld: 'tt-dvzn-d0fc92f962', vakken: ['cadeaus/kerst', 'speelgoed/hypes-trends', 'elektronica/gaming', 'sieraden/kettingen', 'voor/tieners'],
       titel: 'Kerstcadeau voor een tiener: ideeën die niet kinderachtig zijn', kort: 'Voor je zoon, dochter, neef of kleinkind van 12 tot 18. Van €15 tot €79.',
-      intro: 'Tieners zijn misschien wel de lastigste groep om een kerstcadeau voor te vinden. Speelgoed is kinderachtig, maar voor een duur cadeau zoals een telefoon geef je ze liever geld. De truc: geef iets dat bij hún wereld past, dus muziek, gamen, hun eigen kamer of hun stijl. En let op merken, want die tellen op die leeftijd zwaar. Alles hieronder is door tieners zelf goedgekeurd: het zijn de dingen die ze nu echt gebruiken en op verlanglijstjes zetten. Twijfel je? Vraag stiekem even aan een vriend of vriendin wat er leeft.',
+      intro: 'Tieners zijn misschien wel de lastigste groep om een kerstcadeau voor te vinden. Speelgoed is kinderachtig, maar voor een duur cadeau zoals een telefoon geef je ze liever geld. De truc: geef iets dat bij hún wereld past, dus muziek, gamen, hun eigen kamer of hun stijl. En let op merken, want die tellen op die leeftijd zwaar. We kozen dingen die bij hun wereld passen: muziek, gamen, hun eigen kamer en verzorging. Twijfel je? Vraag stiekem even aan een vriend of vriendin wat er leeft.',
       delen: [
         { kop: 'Zo scoor je bij een tiener', tekst: 'Vier regels die het verschil maken:',
           lijst: [
@@ -8166,7 +8372,7 @@
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
       '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
       '<div class="lade-label">Cadeau-ideeën</div><div class="lade-links">' + collectiesVan('ideeen').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
-      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
+      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/dobbelspel/', 'Dobbelspel met cadeautjes') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
   }
   /* Collecties in twee groepen: acties (kortingen) en cadeau-ideeën. Verborgen collecties blijven bereikbaar via hun adres. */
   var COLLECTIE_ACTIES = ['black-friday', 'aanbiedingen', 'kortingscodes'];
@@ -8420,6 +8626,7 @@
     else if (d[0] === 'lootjes-trekken' && window.LK_LOOTJES !== false) html = lootjes(a.q);
     else if (d[0] === 'tiktok' && window.LK_TIKTOK !== false) html = tiktokPagina();
     else if (d[0] === 'woordzoeker' && window.LK_WOORDZOEKER !== false) html = woordzoekerPagina();
+    else if (d[0] === 'dobbelspel' && window.LK_DOBBELSPEL !== false) html = dobbelPagina();
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);

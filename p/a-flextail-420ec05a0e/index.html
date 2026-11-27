@@ -27,10 +27,10 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=273396344936231" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=96390379261180" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=67001041649181" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=49812388603261" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
-  <link rel="stylesheet" href="assets/css/licht.css?v=167316671721184">
+  <link rel="stylesheet" href="assets/css/licht.css?v=59533327161952">
   <link rel="stylesheet" href="assets/css/straat.css?v=8768198015214">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
@@ -63,7 +63,7 @@
       if (!d || !d.p) return; N = d.p; var laat = alles();
       if (laat && window.LK_HERTEKEN) window.LK_HERTEKEN();
       if (document.readyState === 'loading') addEventListener('DOMContentLoaded', scherm); else scherm(); }).catch(function () {}); } catch (x) {} })();</script>
-  <script>(function () { var s = "assets/js/producten-site.js?v=61720900972520", t = "assets/js/topkeuze.js?v=276350726303646";
+  <script>(function () { var s = "assets/js/producten-site.js?v=226861016500909", t = "assets/js/topkeuze.js?v=276350726303646";
     function zet(src, prio, klaar, mis) { var e = document.createElement('script'); e.src = src; e.async = true; if (prio) e.setAttribute('fetchpriority', prio); if (klaar) e.onload = klaar; if (mis) e.onerror = mis; document.head.appendChild(e); }
     function laad() { if (laad.k) return; laad.k = 1; zet(s, 'low'); zet(t, 'low', function () { try { window.dispatchEvent(new Event('lk-top')); } catch (x) {} }); }
     window.LK_LAAD_VOL = laad;
@@ -95,7 +95,7 @@
        Eerst alleen met ?proef=combi, nu voor iedereen (zie hieronder): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
        en een donkere versie die de instelling van de telefoon of computer volgt (keuze in het menu: Automatisch, Licht of Donker; ook ?thema=donker|licht|auto).
        Het donkere bestand laadt alleen als de donkere versie aan staat. -->
-  <meta name="lk-donker" content="assets/css/donker.css?v=200324963594206">
+  <meta name="lk-donker" content="assets/css/donker.css?v=277450427641937">
   <!-- LIVE voor iedereen sinds 22-11-2026 09:18 (Marius: 'Dit is fantastisch go'). Zelf de lichte kop van 21-11 zien: ?proef=combi-uit (blijft onthouden; weer aan: ?proef=combi).
        Helemaal uit: window.LK_COMBI = false. -->
   <!-- IEDEREEN LICHT (26-11-2026, Marius: 'iedereen moet die lichte versie zien'): wie eerder donker of de boulevard koos, krijgt eenmalig weer licht (lkthema en lknacht gewist). Daarna kan iemand zelf weer donker kiezen met de maan. -->
@@ -281,13 +281,13 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"a-flextail-420ec05a0e":{"url":"https://www.awin1.com/cread.php?awinmid=60295&awinaffid=3110079&ued=https%3A%2F%2Fwww.flextail.com%2Fproducts%2Fzero-power-metal-5000-worlds-slimmest-power-bank%3Fvariant%3D50206065950967","winkelUrl":"https://www.awin1.com/cread.php?awinmid=60295&awinaffid=3110079&ued=https%3A%2F%2Fwww.flextail.com%2Fproducts%2Fzero-power-metal-5000-worlds-slimmest-power-bank%3Fvariant%3D50206065950967","subVast":true,"gecontroleerd":"2026-11-06","herkomst":"ontdek","uitverkochtSinds":"2026-11-05","waarom":"Een heel dunne powerbank van ongeveer 7 millimeter. Makkelijk mee te nemen."}};</script>
-  <script src="assets/js/data.js?v=96390379261180"></script>
+  <script src="assets/js/data.js?v=49812388603261"></script>
   <script src="assets/js/teksten.js?v=75701365470467"></script>
   <script src="assets/js/gedeeld.js?v=132795808371279"></script>
   <script>/* CADEAUZIEL (24-11-2026, Dark Nova): de openingen per pagina, alleen waar de winkelweergave of de straat staat (niet op productpagina's, gidsen en zoeken). */
-    (function () { var s = "assets/js/cadeauziel.js?v=141199049671032"; if (!/^\/(p|gids|zoek|lootjes-trekken|sint-rijmmachine|woordzoeker|vonk|favorieten|tiktok)\//.test(location.pathname)) document.write('<script src="' + s + '"><\/script>'); })();</script>
+    (function () { var s = "assets/js/cadeauziel.js?v=141199049671032"; if (!/^\/(p|gids|zoek|lootjes-trekken|sint-rijmmachine|woordzoeker|dobbelspel|vonk|favorieten|tiktok)\//.test(location.pathname)) document.write('<script src="' + s + '"><\/script>'); })();</script>
   <script src="assets/js/straat.js?v=119249749887733"></script>
-  <script src="assets/js/app.js?v=273396344936231"></script>
+  <script src="assets/js/app.js?v=67001041649181"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

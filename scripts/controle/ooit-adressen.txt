@@ -920,6 +920,7 @@
 /collectie/toppers-van-nu/hem/
 /collectie/toppers-van-nu/kinderen/
 /collectie/toppers-van-nu/tieners/
+/dobbelspel/
 /gelegenheid/
 /gelegenheid/afscheid-pensioen/
 /gelegenheid/afscheid-pensioen/collega/

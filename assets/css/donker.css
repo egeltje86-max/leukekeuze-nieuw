@@ -1309,6 +1309,25 @@ html.donker .wzk-verder a{color:#e7c893}
 html.donker .wzk-vragen details{border-bottom:1px solid rgba(217,168,72,0.3)}
 html.donker .wzk-vragen summary{color:#eee7da}
 html.donker .wzk-vragen details p{color:#eee7da}
+html.donker .dbs-kaart{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 6px 18px rgba(0,0,0,0.158)}
+html.donker .dbs-gooi{color:#eee7da}
+html.donker .dbs-gooi:focus-visible{outline:3px solid #b8862e}
+html.donker .dbs-steen{background:#1c263c;border:2px solid #b8862e;box-shadow:0 8px 0 rgba(229,215,190,0.22), 0 12px 24px rgba(0,0,0,0.266)}
+html.donker .dbs-steen i{background:#223259}
+html.donker .dbs-gooitekst{background:#b8862e;color:#141A2A}
+html.donker .dbs-uitslag{color:#eee7da}
+html.donker .dbs-uitslag b{background:#223259;color:#f2cb74}
+html.donker .dbs-wekker{border-top:1px solid rgba(217,168,72,0.3)}
+html.donker .dbs-tijd{color:#eee7da}
+html.donker .dbs-wekker.op .dbs-tijd{color:#db968f}
+html.donker .dbs-ronde{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
+html.donker .dbs-ronde h3{color:#eee7da}
+html.donker .dbs-ronde p{color:#eee7da}
+html.donker .dbs-opdr li{color:#eee7da}
+html.donker .dbs-opdr li b{background:#141c2f;border:1px solid rgba(217,168,72,0.3);color:#e7c893}
+html.donker .dbs-opdr li.nu{background:#f2cb74;color:#141A2A}
+html.donker .dbs-opdr li.nu b{background:#223259;border-color:#2e406b;color:#f2cb74}
+html.donker .dbs-stappen{color:#eee7da}
 html.donker.nacht .lichtknop{color:#f2cb74}
 html.donker .gi-advies{color:#c3c8d4}
 html.donker .gi-advies b{color:#eee7da}
