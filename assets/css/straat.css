@@ -426,3 +426,8 @@ html.combi body .aftel3 .a3-kerst{background:radial-gradient(120% 140% at 50% 0%
 .sh .bfb .bfw{margin:0}
 @media (max-width:380px){.sh .bfb-bord{padding:32px 22px 28px}.sh .bfb-zin{font-size:15px}}
 @media (prefers-reduced-motion:reduce){.sh .bfb-lamp::before,.sh .bfb-lamp::after,.sh .bfb-titel{animation:none}}
+/* CATEGORIEËN BOVENAAN DE STRAAT (27-11-2026, keuze Marius) */
+html.combi .sh .cb-cat{margin:16px 0 8px}
+html.combi .sh .cb-cat h2{font-family:'Playfair Display',Georgia,serif;font-size:24px;line-height:1.2;margin:0 0 4px;color:#141A2A}
+html.combi .sh .cb-cat p{margin:0 0 12px;color:#5F667A;font-size:15px}
+@media (min-width:760px){html.combi .sh .cb-cat{text-align:center}html.combi .sh .cb-cat .srij-baan{justify-content:center}}

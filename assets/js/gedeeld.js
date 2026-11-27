@@ -500,7 +500,7 @@
      elk in zijn eigen donkere kleur en elk een link. Een feest dat voorbij is valt weg. */
   if (/(^| )combi( |$)/.test(document.documentElement.className)) {
     var feesten = [[Date.UTC(jaar, 10, 27), 'bf', 'Black Friday', '/collectie/black-friday', Date.UTC(jaar, 10, 20)],
-      [sint, 'sint', 'Pakjesavond', '/c/cadeaus/sinterklaas', start], [kerst, 'kerst', 'Kerst', '/c/cadeaus/kerst', start]].filter(function (f) { return nu >= f[4] && nu <= f[0]; });
+      [sint, 'sint', 'Pakjesavond', '/c/cadeaus/sinterklaas', start], [kerst, 'kerst', 'Kerst', '/c/cadeaus/kerst', start]].filter(function (f) { return nu >= f[4] && nu <= f[0] && (f[1] !== 'bf' || window.LK_BF_TONEN === true); }); /* 27-11-2026: Black Friday weg (Marius) */
     if (!feesten.length) return;
     var a3 = document.createElement('div'); a3.className = 'aftel aftel3'; a3.setAttribute('data-aftel', ''); a3.setAttribute('role', 'navigation'); a3.setAttribute('aria-label', 'Aftellen');
     a3.innerHTML = feesten.map(function (f) {
@@ -516,7 +516,7 @@
   if (el.tagName !== 'A') { var a1 = document.createElement('a'); a1.setAttribute('data-aftel', ''); a1.hidden = true; el.parentNode.replaceChild(a1, el); el = a1; }
   /* Stap 1 indeling (6-11-2026, GO Marius): van 20 t/m 27 november is Black Friday de boodschap (27-11-2026). Daarna weer Sinterklaas, vanaf 6 december Kerst. */
   var bf = Date.UTC(jaar, 10, 27), bfStart = Date.UTC(jaar, 10, 20);
-  if (nu >= bfStart && nu <= bf) {
+  if (window.LK_BF_TONEN === true && nu >= bfStart && nu <= bf) {
     thema = 'bf'; n = Math.round((bf - nu) / dag); link = '/collectie/black-friday';
     tekst = n === 0 ? '<span class="aftel-zin">Vandaag is het <b>Black Friday!</b></span>'
       : n === 1 ? '<span class="aftel-zin">Morgen is het <b>Black Friday!</b></span>'

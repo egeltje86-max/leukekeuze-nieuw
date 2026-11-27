@@ -1993,13 +1993,7 @@
     /* 20-11-2026 (Marius: 'zullen we die omdraaien, de categorieën eerst; ik vind de categorieën het mooist ingedeeld'): eerst alle 15 categorieën
        (kleine rondjes, vier naast elkaar, als zestiende 'Alle producten'), daaronder 'Voor wie'. Daarvoor stond 'Voor wie' bovenaan.
        De categorieën staan sinds 17-11-2026 op de homepage (Marius: 'je kan geen categorieën kiezen, het is te lastig, ik kom er niet bij'). */
-    var wzCat = '<nav class="srij srij-raster" aria-label="Categorieën"><div class="srij-baan">' +
-        CATS.map(function (c) {
-          return '<a class="srij-item" href="/c/' + c.slug + '"><span class="srij-rond" aria-hidden="true"><img src="' + esc(c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" decoding="async" width="64" height="64"></span>' +
-            '<span class="srij-naam">' + esc(c.naam).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }) + '</span></a>';
-        }).join('') +
-        '<a class="srij-item alles" href="/categorieen"><span class="srij-rond" aria-hidden="true"><img src="images/sub/rond/h-alle-categorieen-klein.webp" alt="" decoding="async" width="64" height="64"></span><span class="srij-naam">Alle producten</span></a>' +
-      '</div></nav>';
+    var wzCat = catRondjes();
     return '<div class="binnen wzh wijzer">' +
       '<section class="sectie eerste wzh-vraag wzh-cat" data-tel="categorie">' + soortWissel('cadeau') + '<h1>Kies een categorie</h1><p class="wzh-sub">Tik op een rondje. Je ziet meteen onze mooiste cadeaus.</p>' + wzCat + '</section>' +
       '<section class="sectie wzh-wie" data-tel="voor-wie"><h2 class="wzh-cat-kop">Of kies voor wie het is</h2>' +
@@ -2097,7 +2091,7 @@
     var d = new Date(), nu = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
     var per = (s.periodes || []).filter(function (p) { return p.vanaf <= p.tot ? (nu >= p.vanaf && nu <= p.tot) : (nu >= p.vanaf || nu <= p.tot); })[0];
     if (!per) return '';
-    var kaarten = per.kaarten.filter(function (k) { return !(zonderBf && k === 'bf'); }).map(function (k) { return s.kaarten[k]; }).filter(Boolean); /* 25-11-2026: het Black Friday-bord staat al bovenaan (Marius: 'anders staat het er 2 keer') */
+    var kaarten = per.kaarten.filter(function (k) { return !((zonderBf || BF_WEG) && k === 'bf'); }).map(function (k) { return s.kaarten[k]; }).filter(Boolean); /* 25-11-2026: het Black Friday-bord staat al bovenaan (Marius: 'anders staat het er 2 keer') */
     if (!kaarten.length) return '';
     var kaart = function (a, groot) {
       return '<a class="actie seizoen-kaart ' + (groot ? 'groot' : 'klein') + '" href="' + esc(a.naar) + '">' +
@@ -2979,7 +2973,10 @@
      Het bord gaat naar /collectie/black-friday; daaronder per categorie een rij om te vegen met deals uit diezelfde collectie (zelfde regels: korting
      minstens 20% op een verse van-prijs, geen drank), in de volgorde van 'Beste deals'. De seizoenskaart Black Friday staat dan niet ook nog in het midden.
      Uit: window.LK_BF_BORD = false. */
-  function bfBordAan() { return window.LK_BF_BORD !== false && new Date().toISOString().slice(0, 10) <= BF_EIND; }
+  /* 27-11-2026 (Marius: 'haal black friday maar weg, daar gaan we toch niemand voor vinden'): geen Black Friday-bord, -teller, -seizoenkaart of -regel in de gidsen meer.
+     De pagina's /collectie/black-friday en /gids/black-friday-2026 blijven bestaan (Google). Weer aan: window.LK_BF_TONEN = true. */
+  var BF_WEG = window.LK_BF_TONEN !== true;
+  function bfBordAan() { return !BF_WEG && window.LK_BF_BORD !== false && new Date().toISOString().slice(0, 10) <= BF_EIND; }
   function bfBord() {
     if (!bfBordAan()) return '';
     var g = window.LK_COLLECTIE && window.LK_COLLECTIE('black-friday'); if (!g) return '';
@@ -4418,6 +4415,17 @@
      Komen alle 3 van Amazon, dan gaan ze met één knop in het Amazon-winkelmandje; anders heeft elk cadeau zijn eigen knop.
      Op deze pagina verdwijnt de onderbalk (focusmodus), zodat hij niet over het formulier of het gedicht valt. */
   var RIJM_URL = 'https://oivhdejsvmsudfrulwsn.supabase.co/functions/v1/sint-rijm';
+  /* De 15 categorieën als kleine rondjes (vier naast elkaar, als zestiende 'Alle producten'). Gebruikt op de WIJZER-homepage en,
+     sinds 27-11-2026, bovenaan de Cadeaustraat (keuze Marius na de cijfers: sinds de straat kwamen er minder bezoekers bij de categorieën). */
+  function catRondjes() {
+    return '<nav class="srij srij-raster" aria-label="Categorieën"><div class="srij-baan">' +
+        CATS.map(function (c) {
+          return '<a class="srij-item" href="/c/' + c.slug + '"><span class="srij-rond" aria-hidden="true"><img src="' + esc(c.rond || 'images/categorieen/rond/cat-' + c.slug + '.webp') + '" alt="" decoding="async" width="64" height="64"></span>' +
+            '<span class="srij-naam">' + esc(c.naam).replace(SRT_AF_RE, function (w) { return SRT_AF[w.toLowerCase()] ? zetAf(w, SRT_AF[w.toLowerCase()]) : w; }) + '</span></a>';
+        }).join('') +
+        '<a class="srij-item alles" href="/categorieen"><span class="srij-rond" aria-hidden="true"><img src="images/sub/rond/h-alle-categorieen-klein.webp" alt="" decoding="async" width="64" height="64"></span><span class="srij-naam">Alle producten</span></a>' +
+      '</div></nav>';
+  }
   /* ===== COMBI en DONKER (22-11-2026, voorbeeld voor Marius, alleen met ?proef=combi; zie sjabloon.html) =====
      Marius: 'dat oude moest wel behouden blijven en er moeten donkere tinten terug komen'; 'het mag meer een combinatie zijn van de 2'; 'het moet een dynamische pagina worden'.
      Boven de straat weer 'Kies wat je zoekt' (cadeau of product), onder 'Voor wie zoek je?' de balken lootjes en rijmmachine.
@@ -4426,7 +4434,9 @@
   if (COMBI) {
     /* alleen op de homepage; de straat voor een persoon (/voor/haar) houdt zijn eigen opzet */
     var opHome = function (f) { return function () { return location.pathname === '/' || location.pathname === '' ? f() : ''; }; };
-    window.LK_STRAAT_BOVEN = opHome(function () { return bfBord() + '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; });
+    /* 27-11-2026 (keuze Marius: 'Categorieën weer bovenaan'): de 15 categorieën staan weer bovenaan de homepage, de straat eronder.
+       Cijfers 13-19 nov tegen 22-26 nov: bezoeken aan categoriepagina's van 29 naar 17 per dag, kliks vanaf de homepage van 0,7 naar 0 per dag. */
+    window.LK_STRAAT_BOVEN = opHome(function () { return bfBord() + '<section class="cb-cat" data-tel="categorie"><h2>Kies een categorie</h2><p>Tik op een rondje en je ziet meteen onze mooiste cadeaus. Of zoek hieronder in de Cadeaustraat.</p>' + catRondjes() + '</section>' + '<div class="cb-wissel">' + soortWissel('cadeau') + '</div>'; });
     window.LK_STRAAT_NA_KIES = opHome(function () { var r = rijmBlok('home'); return (r ? '<div class="cb-rijm">' + r + '</div>' : '') + '<div class="cb-blok cb-seizoen">' + seizoenBlok(bfBordAan()) + '</div>'; });
     /* Wat met de straat van de homepage was verdwenen en goed werkte (Marius 22-11-2026: 'blijven opletten dat er geen dingen verloren gaan die goed zijn'):
        het blok Belevenissen met de Lamborghini-race (best verdienende cadeau), de topwinkels, de eigen kleurboeken en 'zo werkt het'. */
@@ -8770,7 +8780,7 @@
     if (/noodpakket|kinderbijbel/.test(g.slug)) return '';
     var nu = new Date().toISOString().slice(0, 10), r = [];
     var kerstGids = /kerst|advent/.test(g.slug), liefde = /valentijn|samen|trouwdag|kraam|babyshower|housewarming|afscheid|pensioen/.test(g.slug);
-    if (nu <= '2026-11-30' && g.slug !== 'black-friday-2026' && !liefde) r.push('Black Friday is op vrijdag 27 november, Cyber Monday op maandag 30 november. Veel van onze winkels hebben nu al acties: <a href="/collectie/black-friday">bekijk de deals</a>.');
+    if (!BF_WEG && nu <= '2026-11-30' && g.slug !== 'black-friday-2026' && !liefde) r.push('Black Friday is op vrijdag 27 november, Cyber Monday op maandag 30 november. Veel van onze winkels hebben nu al acties: <a href="/collectie/black-friday">bekijk de deals</a>.');
     if (nu <= '2026-12-05' && !kerstGids && !liefde) r.push('Pakjesavond is op zaterdag 5 december. Bestel liefst uiterlijk donderdag 3 december; ben je laat, kijk dan bij <a href="/collectie/op-tijd-voor-pakjesavond">Nog op tijd voor pakjesavond</a>.');
     if (nu <= '2026-12-24' && (kerstGids || nu > '2026-12-05') && !liefde) r.push('Kerst is op vrijdag 25 en zaterdag 26 december. Bestel ruim op tijd: rond kerst bezorgen winkels vaak een dag later.');
     if (!r.length) return '';
