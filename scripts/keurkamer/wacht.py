@@ -70,7 +70,17 @@ for pid, a in AU.items():
     if a.get('bron') == 'bol' and a.get('nr') and pid not in P: au_bol.setdefault(str(a['nr']), []).append(pid)
 gevonden = set(); terug_gezien = set()
 feeds = sorted(glob.glob(os.path.join(BOL, 'product-feed_*-v2.csv.gz')))
-uit['bolFeeds'] = {'aantal': len(feeds), 'oudste': min((feed_datum(f) for f in feeds), default=''), 'nieuwste': max((feed_datum(f) for f in feeds), default=''), 'producten': sum(len(v) for v in bol_ids.values())}
+# 27-11-2026: het bol-script ververst 21 van de 26 feeds; vijf grote (boeken digitaal/onderwijs/internationaal, cadeaukaarten, mda)
+# bewust niet. Die bleven 19-11, dus 'oudste' was altijd ruim 3 dagen en bol zonder aanbod werd nooit weggehaald of teruggezet.
+# Nu telt 'oudste' alleen de feeds die met de rest mee ververst worden (hooguit 2 dagen ouder dan de nieuwste).
+_fd = {f: feed_datum(f) for f in feeds}
+_nieuwste = max(_fd.values(), default='')
+try: _grens = (datetime.date.fromisoformat(_nieuwste) - datetime.timedelta(days=2)).isoformat()
+except ValueError: _grens = ''
+_vers = [f for f in feeds if _fd[f] >= _grens]
+uit['bolFeeds'] = {'aantal': len(feeds), 'vers': len(_vers), 'oudste': min((_fd[f] for f in _vers), default=''), 'nieuwste': _nieuwste,
+                   'oudsteAlle': min(_fd.values(), default=''), 'nietVerversd': sorted(os.path.basename(f) for f in feeds if f not in _vers),
+                   'producten': sum(len(v) for v in bol_ids.values())}
 if feeds and bol_ids:
     for f in feeds:
         print('bol-feed', os.path.basename(f), flush=True); uit['bronnen'].append(os.path.basename(f)); fdat = feed_datum(f)

@@ -17,7 +17,7 @@ import json, os, sys, datetime
 HIER = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HIER))
 COR_PAD = os.path.join(ROOT, 'scripts', 'boom', 'correcties.json')
 AU_PAD = os.path.join(ROOT, 'scripts', 'keurkamer', 'auto-uitverkocht.json')
-BOL_MIN_FEEDS = 20        # zoveel bol-feedbestanden moeten er zijn (er zijn er 26)
+BOL_MIN_FEEDS = 20        # zoveel verse bol-feedbestanden moeten er zijn (26 in totaal, 21 worden elke dag ververst)
 BOL_MAX_OUD = 3           # dagen: oudere bol-feeds zeggen niets over 'nu'
 BOL_MIN_GEVONDEN = 0.85   # minder bol-producten teruggevonden = feeds onvolledig, dan niets weghalen
 BOL_MAX_WEG = 0.04        # meer dan 4% van de bol-producten ineens weg = verdacht, dan niets weghalen (alleen melden)
@@ -61,7 +61,7 @@ def main():
     if bolweg:
         n_bol = bf.get('producten') or 1
         reden = ''
-        if (bf.get('aantal') or 0) < BOL_MIN_FEEDS: reden = 'maar %s bol-feeds gevonden' % bf.get('aantal')
+        if (bf.get('vers', bf.get('aantal')) or 0) < BOL_MIN_FEEDS: reden = 'maar %s verse bol-feeds gevonden' % bf.get('vers', bf.get('aantal'))
         elif oud > BOL_MAX_OUD: reden = 'bol-feeds zijn %d dagen oud' % oud
         elif (bf.get('gevonden') or 0) < BOL_MIN_GEVONDEN * n_bol: reden = 'maar %s van %s bol-producten in de feeds' % (bf.get('gevonden'), n_bol)
         elif len(bolweg) > max(20, BOL_MAX_WEG * n_bol): reden = 'ineens %d bol-producten zonder aanbod: lijkt een feedfout' % len(bolweg)
