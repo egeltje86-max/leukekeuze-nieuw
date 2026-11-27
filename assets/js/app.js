@@ -5082,7 +5082,7 @@
   function woordzoekerPagina() {
     zetTitel('Woordzoeker maken en printen: gratis, ook met eigen woorden');
     window.LK_SEO = 'Maak gratis een woordzoeker met je eigen woorden, of print een kant-en-klare: Sinterklaas, kerst, winter, dieren voor kinderen en in grote letters. Ook te spelen op je telefoon.';
-    var eerst = wzkThemaNu();
+    var hw = (location.hash || '').slice(1), eerst = WZK_THEMA.some(function (t) { return t.slug === hw; }) ? hw : wzkThemaNu(); /* #kerst in het adres (27-11-2026, voor pins) */
     var keuzes = wzkVolgorde().map(function (t) {
       return '<button type="button" class="chip" data-wzk-thema="' + t.slug + '" aria-pressed="' + (t.slug === eerst) + '">' + esc(t.naam) + (t.sub ? ' <small>' + esc(t.sub) + '</small>' : '') + '</button>';
     }).join('');
@@ -5280,7 +5280,7 @@
   function dobbelPagina() {
     zetTitel('Dobbelspel met cadeautjes: spelregels en online dobbelsteen');
     window.LK_SEO = 'Zo speel je het dobbelspel met cadeautjes: spelregels voor Sinterklaas, kerst en met kinderen, een gratis online dobbelsteen die de opdracht zegt, een wekker, regels om te printen en cadeautjes tot € 8.';
-    var eerst = DBS.soort || dbsNu(), s = dbsVind(eerst);
+    var hh = (location.hash || '').slice(1), eerst = DBS.soort || (['sint', 'kerst', 'kind'].indexOf(hh) !== -1 ? hh : dbsNu()), s = dbsVind(eerst); /* #kerst of #kind in het adres (27-11-2026, voor pins) */
     DBS.soort = eerst; DBS.ronde = 1; DBS.worpen = 0;
     var keuzes = DBS_SOORT.slice().sort(function (a, b) { return (b.slug === eerst) - (a.slug === eerst); }).map(function (x) {
       return '<button type="button" class="chip" data-dbs-soort="' + x.slug + '" aria-pressed="' + (x.slug === eerst) + '">' + esc(x.naam) + '</button>';

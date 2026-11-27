@@ -2979,7 +2979,7 @@ html body .footer p, html body .footer a, html body .footer li a, html body .foo
 html body .footer li a:hover, html body .footer li a:focus-visible { color: #8F6620; }
 html body .footer .logo { color: #0A1020; }
 html body .footer-yara { border-top-color: #E5D7BE; }
-html body .footer-yara .binnen { color: #8F6620; }
+html body .footer-yara .binnen { color: #7A5518; } /* 27-11-2026: was #8F6620, contrast 4,3 op crème (Lighthouse) */
 html body .footer-onder { border-top-color: #E5D7BE; }
 html body .footer-onder .binnen { color: #4A5063; }
 /* donkere paginakop (bijv. Lootjes trekken) */
