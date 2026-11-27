@@ -421,5 +421,25 @@
  },
  "/gids/kerstcadeau-tiener/": {
   "titel": "Kerstcadeau tiener: ideeën die niet kinderachtig zijn"
+ },
+ "/kleurplaten/": {
+  "titel": "Kleurplaten: gratis printen of online kleuren (Sinterklaas, kerst)",
+  "omschrijving": "Gratis kleurplaten van Sinterklaas, kerst, winter en dino’s. Print ze op A4 of kleur ze meteen in op je telefoon of tablet. Van makkelijk tot mandala’s voor volwassenen."
+ },
+ "/kleurplaten/sinterklaas/": {
+  "titel": "Kleurplaten Sinterklaas: 12 gratis om te printen of online te kleuren",
+  "omschrijving": "12 gratis Sinterklaas-kleurplaten: Sint, de stoomboot, het paard op het dak, schoen zetten, Piet en een mandala. Print ze op A4 of kleur ze in op je telefoon."
+ },
+ "/kleurplaten/kerst/": {
+  "titel": "Kleurplaten kerst: kerstman, kerstboom en meer, gratis printen",
+  "omschrijving": "12 gratis kerstkleurplaten: de kerstman, de slee met rendieren, een kerstboom, een sneeuwpop, de kerststal, een kerstkaart en een mandala. Print op A4 of kleur online."
+ },
+ "/kleurplaten/winter/": {
+  "titel": "Kleurplaten winter: schaatsen, sneeuw en een sneeuwvlok-mandala",
+  "omschrijving": "Gratis winterkleurplaten: schaatsen bij een Hollandse molen, sneeuwballen gooien, een ijsbeer met een pinguïn en een sneeuwvlok-mandala. Print op A4 of kleur online."
+ },
+ "/kleurplaten/dino/": {
+  "titel": "Kleurplaten dino: 6 gratis om te printen of online te kleuren",
+  "omschrijving": "Zes gratis dino-kleurplaten uit onze eigen kleurboeken: een dino op de fiets in Amsterdam, op ski’s, als astronaut en in een maanwagen. Print op A4 of kleur online."
  }
 }

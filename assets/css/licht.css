@@ -3264,3 +3264,45 @@ html.nacht .lichtknop{color:#F2CB74}
 .gi-advies { margin: 6px 0 0; font-size: 13px; line-height: 1.45; color: var(--tekst-2); display: grid; gap: 2px; }
 .gi-advies span { display: block; overflow-wrap: anywhere; } /* niet afkappen: het advies is kort (meestal 50, hooguit 145 tekens) en half gelezen zegt het niets */
 .gi-advies b { color: var(--tekst); font-weight: 700; }
+
+/* ================== KLEURPLATEN (27-11-2026): /kleurplaten/ en /kleurplaten/<thema>/, printen en online kleuren ================== */
+.kp-themas { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 6px; }
+.kp-themas .chip small { opacity: .7; font-weight: 600; }
+.kp-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+@media (max-width: 599px) { .kp-raster { grid-template-columns: 1fr 1fr; gap: 10px; } }
+.kp-kaart { background: #FFFFFF; border: 1px solid #E5D7BE; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; box-shadow: 0 2px 10px rgba(20, 26, 42, .05); }
+.kp-foto { appearance: none; border: 0; padding: 0; margin: 0; background: #FFFFFF; display: block; width: 100%; cursor: pointer; border-bottom: 1px solid #EFE6D6; }
+.kp-foto img { width: 100%; height: auto; display: block; }
+.kp-foto:focus-visible { outline: 3px solid #B8862E; outline-offset: -3px; }
+.kp-info { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.kp-info h3 { font-family: Manrope, Arial, sans-serif; font-size: 15px; line-height: 1.3; font-weight: 700; margin: 0; color: #141A2A; }
+.kp-niveau { font-size: 13px; color: #5F667A; margin: 0; display: flex; align-items: center; gap: 6px; }
+.kp-niveau::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #5BAA5F; flex: none; }
+.kp-niveau.kp-gemiddeld::before { background: #B8862E; }
+.kp-niveau.kp-moeilijk::before { background: #1F2B48; }
+.kp-knoppen { margin-top: auto; display: grid; gap: 6px; }
+.kp-knoppen .knop { width: 100%; min-height: 44px; justify-content: center; font-size: 14px; padding-left: 8px; padding-right: 8px; }
+.kp-uitleg { display: flex; gap: 8px; align-items: flex-start; color: #5F667A; font-size: 14px; margin-top: 12px; }
+.kp-uitleg svg { flex: none; width: 18px; height: 18px; margin-top: 2px; }
+.kp-thema .sectie-kop h2 a { color: inherit; text-decoration: none; }
+html.kp-open, html.kp-open body { overflow: hidden; }
+.kp-scherm { position: fixed; inset: 0; z-index: 2000; background: #FFFCF7; display: flex; flex-direction: column;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+.kp-scherm[hidden] { display: none; }
+.kp-balk { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 8px 8px 16px; border-bottom: 1px solid #E5D7BE; }
+.kp-balk h2 { font-family: Manrope, Arial, sans-serif; font-size: 16px; line-height: 1.3; margin: 0; color: #141A2A; min-width: 0; }
+.kp-sluit { appearance: none; border: 0; background: transparent; width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: #141A2A; flex: none; }
+.kp-sluit svg { width: 22px; height: 22px; }
+.kp-doek { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; align-items: center; justify-content: center; background: #F2EEE6; padding: 8px; position: relative; }
+.kp-doek canvas { max-width: 100%; max-height: 100%; width: auto; height: auto; background: #FFFFFF; box-shadow: 0 2px 12px rgba(20, 26, 42, .12); touch-action: manipulation; cursor: pointer; display: block; }
+.kp-doek.groot { display: block; }
+.kp-doek.groot canvas { width: 220%; max-width: none; max-height: none; }
+@media (min-width: 900px) { .kp-doek.groot canvas { width: 120%; } }
+.kp-laden { position: absolute; inset: auto 0 45% 0; text-align: center; color: #5F667A; margin: 0; }
+.kp-palet { display: flex; gap: 8px; overflow-x: auto; padding: 10px 12px 6px; scrollbar-width: thin; }
+.kp-kleur { appearance: none; flex: none; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFFFFF; background: var(--k); box-shadow: 0 0 0 1px #C9C2B4; cursor: pointer; font: 700 11px Manrope, Arial, sans-serif; color: #5F667A; padding: 0; }
+.kp-kleur[aria-pressed="true"] { box-shadow: 0 0 0 3px #1F2B48; transform: scale(1.08); }
+.kp-gum { background: #FFFFFF; }
+.kp-acties { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 12px 12px; }
+.kp-acties .knop { flex: 1 1 auto; min-height: 44px; justify-content: center; }
+@media (min-width: 900px) { .kp-palet, .kp-acties { justify-content: center; } .kp-acties .knop { flex: 0 0 auto; } }

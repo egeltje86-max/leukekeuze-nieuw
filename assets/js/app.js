@@ -5107,6 +5107,7 @@
           '<p>Deze puzzelboeken maakte Marius van LeukeKeuze zelf: in grote, duidelijke letters, en bij de woordzoekers vormen de letters die overblijven een zin, net als hierboven. Een fijn cadeau voor opa en oma, of voor iedereen die graag puzzelt.</p>' +
           '<div class="prodgrid">' + boeken + '</div>' +
           '<p class="wzk-verder"><a href="/c/boeken-media/boeken/puzzelboeken">Alle puzzelboeken</a> · <a href="/c/spellen-puzzels/puzzels">Legpuzzels</a> · <a href="/voor/opa-oma">Cadeaus voor opa en oma</a></p></section>' : '') +
+        '<section class="sectie kp-ook"><h2>Nog meer om te printen</h2><p class="wzk-verder"><a href="/kleurplaten/">Gratis kleurplaten</a> · <a href="/dobbelspel/">Dobbelspel met cadeautjes</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a></p></section>' +
         '<section class="sectie wzk-vragen"><h2>Vragen over de woordzoeker</h2>' +
           vraag('Hoe maak ik een woordzoeker?', 'Typ je woorden bij ‘Zelf een woordzoeker maken’, kies hoe groot en hoe moeilijk, en tik op ‘Maak mijn woordzoeker’. Je ziet hem meteen en kunt hem printen of op het scherm spelen. Niet blij met hoe de woorden liggen? Tik op ‘Andere puzzel’.') +
           vraag('Kan ik de woordzoeker printen?', 'Ja, tik op ‘Printen’. Je krijgt een blad met alleen de puzzel en de woorden. Staat ‘Oplossing tonen’ aan, dan komt de oplossing op een tweede blad.') +
@@ -5334,7 +5335,7 @@
             '<li><b>Pepernoten zoeken.</b> Verstop een zak pepernoten in de kamer. Wie de meeste vindt, mag als eerste gooien bij het dobbelspel.</li>' +
             '<li><b>Woordzoeker-race.</b> Print voor iedereen dezelfde <a href="/woordzoeker/">woordzoeker</a>. Wie het eerst alle woorden heeft, wint.</li>' +
           '</ul></section>' +
-        '<section class="sectie dbs-ook"><h2>Nog meer voor pakjesavond en kerst</h2><p class="wzk-verder"><a href="/lootjes-trekken/">Lootjes trekken via WhatsApp</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a> · <a href="/woordzoeker/">Woordzoeker printen</a> · <a href="/gids/secret-santa">Secret Santa</a></p></section>' +
+        '<section class="sectie dbs-ook"><h2>Nog meer voor pakjesavond en kerst</h2><p class="wzk-verder"><a href="/lootjes-trekken/">Lootjes trekken via WhatsApp</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a> · <a href="/woordzoeker/">Woordzoeker printen</a> · <a href="/kleurplaten/">Kleurplaten printen</a> · <a href="/gids/secret-santa">Secret Santa</a></p></section>' +
         '<section class="sectie wzk-vragen dbs-vragen"><h2>Vragen over het dobbelspel</h2>' +
           faq.map(function (f) { return '<details><summary>' + esc(f[0]) + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join('') +
           '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>' +
@@ -5430,6 +5431,306 @@
     if (e.target.closest('[data-dbs-reset]')) { dbsStop(); DBS.rest = DBS.duur * 60; dbsToonTijd(); dbsStop(); var w4 = document.querySelector('[data-dbs-wekker]'); if (w4) w4.classList.remove('op'); return; }
     if (e.target.closest('[data-dbs-print]')) { dbsPrint(); return; }
   });
+
+  /* ================== KLEURPLATEN (27-11-2026, onderzoek OpenSEO: 'kleurplaat sinterklaas' en 'kleurplaat kerst' elk 12.100 per maand, moeilijkheid 0) ==================
+     /kleurplaten/ en /kleurplaten/<thema>/: gratis kleurplaten om te printen (A4) of op de telefoon in te kleuren (tik op een vlak).
+     Sinterklaas, kerst en winter getekend door Nova (opdracht 27-11, levering 27-11), dino uit de eigen kleurboeken van Marius (proefje met link naar het boek).
+     Beelden: images/kleurplaten/<id>.png (A4, zwart-wit) en <id>-klein.webp. Inkleuren gebeurt in de browser; er wordt niets bewaard of verstuurd.
+     Uit: window.LK_KLEURPLATEN = false. */
+  var KP_THEMA = [
+    { slug: 'sinterklaas', naam: 'Sinterklaas', titel: 'Kleurplaten Sinterklaas', kort: 'Sint, de stoomboot, het paard op het dak, je schoen zetten en meer',
+      tekst: 'Twaalf gratis Sinterklaas-kleurplaten: van een makkelijke mijter voor kleuters tot een drukke intocht en een mandala voor de groten. Print ze op A4 of kleur ze meteen in op je telefoon of tablet. Leuk om bij je schoen te leggen.',
+      platen: [
+        ['sint-01-sinterklaas', 'Vriendelijke Sinterklaas met zijn mijter, baard en staf', 'makkelijk'],
+        ['sint-07-mijter-en-staf', 'Een mijter, een staf en pepernoten', 'makkelijk'],
+        ['sint-04-schoen-zetten', 'Een schoen met een wortel bij de open haard', 'makkelijk'],
+        ['sint-02-paard-op-het-dak', 'Het paard van Sinterklaas op het dak bij de schoorsteen', 'gemiddeld'],
+        ['sint-03-stoomboot', 'De stoomboot van Sinterklaas in de haven', 'gemiddeld'],
+        ['sint-05-piet-met-pakjes', 'Piet met een zak vol pakjes', 'makkelijk'],
+        ['sint-08-cadeaus', 'Cadeaus met strikken en een chocoladeletter S', 'makkelijk'],
+        ['sint-06-pepernoten', 'Kinderen die pepernoten vangen', 'gemiddeld'],
+        ['sint-10-surprise', 'Een kartonnen dino-surprise met een gedicht', 'gemiddeld'],
+        ['sint-09-sint-over-de-daken', 'Sinterklaas te paard over de daken van grachtenhuisjes', 'moeilijk'],
+        ['sint-11-intocht', 'Sinterklaas zwaait vanaf de stoomboot naar kinderen op de kade', 'moeilijk'],
+        ['sint-12-mandala', 'Sinterklaasmandala met mijters, staven, pepernoten en sterren', 'moeilijk']
+      ],
+      top: '/collectie/schoencadeautjes', topKop: 'Leuk voor in de schoen', topTekst: 'Kleine cadeautjes tot ongeveer 10 euro waar kinderen blij van worden, met de prijs van vandaag.', topMeer: ['/collectie/schoencadeautjes', 'Alle schoencadeautjes'],
+      faq: [
+        ['Zijn deze Sinterklaas-kleurplaten gratis?', 'Ja. Je mag ze gratis printen en gebruiken, thuis, op school, in de klas of bij de opvang.'],
+        ['Hoe print ik een kleurplaat?', 'Tik bij de kleurplaat op ‘Printen’. Je krijgt een A4 met alleen de kleurplaat erop, zonder de rest van de pagina.'],
+        ['Kan ik ook op de telefoon of tablet kleuren?', 'Ja. Tik op ‘Online kleuren’, kies een kleur en tik op een vlak: dat kleurt meteen helemaal in. Met de gum maak je een vlak weer wit, en je kunt je kleurplaat bewaren of printen.'],
+        ['Welke kleurplaat past bij welke leeftijd?', 'Makkelijk is voor kinderen van ongeveer 4 tot 6 jaar: grote vlakken. Gemiddeld is voor 6 tot 10 jaar. Moeilijk heeft veel kleine vlakken, voor oudere kinderen en volwassenen.'],
+        ['Kan ik de kleurplaat bij mijn schoen leggen?', 'Zeker. Een mooie tekening voor Sinterklaas hoort bij schoen zetten, samen met een wortel voor het paard.']
+      ] },
+    { slug: 'kerst', naam: 'Kerst', titel: 'Kleurplaten kerst', kort: 'De kerstman, de kerstboom, een sneeuwpop, de kerststal en meer',
+      tekst: 'Twaalf gratis kerstkleurplaten: de kerstman, zijn slee met rendieren, een kerstboom, een sneeuwpop, de kerststal en een kerstbal en mandala voor volwassenen. Er is ook een kerstkaart om zelf in te kleuren. Print ze op A4 of kleur ze in op je telefoon of tablet.',
+      platen: [
+        ['kerst-01-kerstman', 'De kerstman met een zak cadeaus', 'makkelijk'],
+        ['kerst-03-kerstboom', 'Een kerstboom met ballen, een ster en cadeaus', 'makkelijk'],
+        ['kerst-04-sneeuwpop', 'Een sneeuwpop met een hoed, een sjaal en een wortelneus', 'makkelijk'],
+        ['kerst-05-rendier', 'Een rendier met een kerstmuts', 'makkelijk'],
+        ['kerst-02-arrenslee', 'De kerstman vliegt met zijn slee en rendieren door de lucht', 'moeilijk'],
+        ['kerst-07-kerststal', 'De kerststal met Maria, Jozef, het kindje, een os en een ezel', 'gemiddeld'],
+        ['kerst-06-peperkoekhuisje', 'Een peperkoekhuisje met snoep en zuurstokken', 'gemiddeld'],
+        ['kerst-08-open-haard', 'Een open haard met kerstsokken, kaarsen en een slapende kat', 'gemiddeld'],
+        ['kerst-09-dieren-in-de-sneeuw', 'Een egel, een vos en een uil met mutsjes in de sneeuw', 'gemiddeld'],
+        ['kerst-12-kerstkaart', 'Een kerstkaart om te vouwen met ‘Fijne feestdagen’', 'gemiddeld'],
+        ['kerst-10-kerstbal', 'Een kerstbal vol fijne patronen', 'moeilijk'],
+        ['kerst-11-mandala', 'Kerstmandala met sterren, hulst en klokjes', 'moeilijk']
+      ],
+      top: '/voor/kinderen/knutselen', topKop: 'Kleuren met echte potloden en stiften', topTekst: 'Teken- en knutselspullen van goede merken, met de prijs van vandaag.', topMeer: ['/voor/kinderen/knutselen', 'Alle knutselcadeaus'],
+      faq: [
+        ['Zijn deze kerstkleurplaten gratis?', 'Ja. Je mag ze gratis printen en gebruiken, thuis, op school, in de klas of bij de opvang.'],
+        ['Hoe maak ik de kerstkaart?', 'Print de kerstkaart op A4, kleur hem in en vouw het blad dubbel met de tekst aan de voorkant. Aan de binnenkant schrijf je je eigen wens.'],
+        ['Kan ik ook op de telefoon of tablet kleuren?', 'Ja. Tik op ‘Online kleuren’, kies een kleur en tik op een vlak. Je kunt je kleurplaat daarna bewaren of printen.'],
+        ['Zijn er ook kerstkleurplaten voor volwassenen?', 'Ja: de kerstbal en de kerstmandala hebben veel kleine vlakken. Die zijn fijn om rustig met potloden of fijne stiften in te kleuren.'],
+        ['Welke kleurplaat past bij welke leeftijd?', 'Makkelijk is voor ongeveer 4 tot 6 jaar, gemiddeld voor 6 tot 10 jaar en moeilijk voor oudere kinderen en volwassenen.']
+      ] },
+    { slug: 'winter', naam: 'Winter', titel: 'Kleurplaten winter', kort: 'Schaatsen bij de molen, sneeuwballen, een ijsbeer en een sneeuwvlok',
+      tekst: 'Gratis winterkleurplaten voor de hele winter: schaatsen op het ijs bij een Hollandse molen, kinderen die met sneeuwballen gooien, een ijsbeer met een pinguïn en een sneeuwvlok-mandala. Print ze op A4 of kleur ze in op je telefoon of tablet.',
+      platen: [
+        ['winter-01-schaatsen', 'Schaatsers op het ijs bij een Hollandse molen', 'gemiddeld'],
+        ['winter-02-sneeuwballen', 'Kinderen die sneeuwballen gooien', 'makkelijk'],
+        ['winter-03-ijsbeer-en-pinguin', 'Een ijsbeer en een pinguïn op een ijsschots', 'makkelijk'],
+        ['winter-04-sneeuwvlok-mandala', 'Een mandala in de vorm van een sneeuwvlok', 'moeilijk']
+      ],
+      top: '/voor/kinderen/knutselen', topKop: 'Kleuren met echte potloden en stiften', topTekst: 'Teken- en knutselspullen van goede merken, met de prijs van vandaag.', topMeer: ['/voor/kinderen/knutselen', 'Alle knutselcadeaus'],
+      faq: [
+        ['Zijn deze winterkleurplaten gratis?', 'Ja. Je mag ze gratis printen en gebruiken, thuis, op school of in de klas.'],
+        ['Kan ik ook op de telefoon of tablet kleuren?', 'Ja. Tik op ‘Online kleuren’, kies een kleur en tik op een vlak. Je kunt je kleurplaat daarna bewaren of printen.']
+      ] },
+    { slug: 'dino', naam: "Dino's", titel: 'Kleurplaten dino', kort: 'Dino’s op reis en in de ruimte, uit onze eigen kleurboeken',
+      tekst: 'Zes gratis dino-kleurplaten uit de eigen kleurboeken van Marius van LeukeKeuze: een dino op de fiets in Amsterdam, op ski’s in de bergen, als astronaut en in een maanwagen. Print ze op A4 of kleur ze in op je telefoon of tablet. Wil je er meer? In elk boek staan er 40.',
+      platen: [
+        ['dino-astronaut', 'Een dino als astronaut in zijn ruimtepak', 'makkelijk'],
+        ['dino-fiets-amsterdam', 'Een dino op de fiets in Amsterdam, met tulpen in het mandje', 'moeilijk'],
+        ['dino-maanwagen', 'Een dino rijdt in een maanwagen op de maan', 'gemiddeld'],
+        ['dino-skien', 'Een dino aan het skiën in de bergen', 'gemiddeld'],
+        ['dino-raket', 'Een dino kijkt naar de lancering van een raket', 'gemiddeld'],
+        ['dino-parijs', 'Een dino schildert de Eiffeltoren in Parijs', 'moeilijk']
+      ],
+      boeken: true, top: '/voor/kinderen/knutselen', topKop: 'Kleuren met echte potloden en stiften', topTekst: 'Teken- en knutselspullen van goede merken, met de prijs van vandaag.', topMeer: ['/voor/kinderen/knutselen', 'Alle knutselcadeaus'],
+      faq: [
+        ['Zijn deze dino-kleurplaten gratis?', 'Ja. Het zijn zes bladzijden uit de kleurboeken Dinos on Vacation en Space Dinos. Je mag ze gratis printen voor eigen gebruik, thuis of in de klas.'],
+        ['Waar vind ik meer dino-kleurplaten?', 'In elk kleurboek van Marius staan 40 dino-kleurplaten, voor kinderen van 4 tot 8 jaar. Je vindt ze hieronder.'],
+        ['Kan ik ook op de telefoon of tablet kleuren?', 'Ja. Tik op ‘Online kleuren’, kies een kleur en tik op een vlak. Je kunt je kleurplaat daarna bewaren of printen.']
+      ] }
+  ];
+  var KP_NIVEAU = { makkelijk: 'Makkelijk · 4 tot 6 jaar', gemiddeld: 'Gemiddeld · 6 tot 10 jaar', moeilijk: 'Moeilijk · 10+ en volwassenen' };
+  var KP_KLEUREN = ['#E53935', '#FB8C00', '#FDD835', '#9CCC65', '#2E7D32', '#4DD0E1', '#81D4FA', '#1E88E5', '#283593', '#8E24AA', '#F48FB1', '#F8D6B8', '#D7A27A', '#8D6E63', '#9E9E9E', '#37474F', '#D4AF37', '#FFFFFF'];
+  var KP_DINO_BOEK = { 'dino-fiets-amsterdam': 'amz-b0hn1xkg2s', 'dino-skien': 'amz-b0hn1xkg2s', 'dino-parijs': 'amz-b0hn1xkg2s', 'dino-astronaut': 'amz-b0hmjp8cbl', 'dino-maanwagen': 'amz-b0hmjp8cbl', 'dino-raket': 'amz-b0hmjp8cbl' };
+  function kpTel(pad) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: 'Kleurplaten', event: true }); } catch (e) {} }
+  function kpVolgorde() {
+    var md = new Date().toISOString().slice(5, 10), sint = md >= '10-15' && md <= '12-05', kerst = md > '12-05' || md <= '01-06';
+    var v = sint ? ['sinterklaas', 'kerst', 'winter', 'dino'] : kerst ? ['kerst', 'winter', 'dino', 'sinterklaas'] : ['dino', 'winter', 'kerst', 'sinterklaas'];
+    return v.map(function (s) { return KP_THEMA.filter(function (t) { return t.slug === s; })[0]; });
+  }
+  function kpVind(id) {
+    for (var i = 0; i < KP_THEMA.length; i++) for (var j = 0; j < KP_THEMA[i].platen.length; j++) if (KP_THEMA[i].platen[j][0] === id) return { t: KP_THEMA[i], p: KP_THEMA[i].platen[j] };
+    return null;
+  }
+  function kpKaart(t, p) {
+    var titel = 'Kleurplaat ' + t.naam.toLowerCase().replace("dino's", 'dino') + ': ' + p[1].charAt(0).toLowerCase() + p[1].slice(1);
+    return '<article class="kp-kaart" id="' + p[0] + '">' +
+      '<button type="button" class="kp-foto" data-kp-open="' + p[0] + '" aria-label="Online kleuren: ' + esc(p[1]) + '"><img src="/images/kleurplaten/' + p[0] + '-klein.webp" alt="' + esc(titel) + '" width="420" height="' + (t.slug === 'dino' ? 544 : 594) + '" loading="lazy" decoding="async"></button>' +
+      '<div class="kp-info"><h3>' + esc(p[1]) + '</h3><p class="kp-niveau kp-' + p[2] + '">' + esc(KP_NIVEAU[p[2]]) + '</p>' +
+      '<div class="kp-knoppen"><button type="button" class="knop knop-goud" data-kp-open="' + p[0] + '">Online kleuren</button>' +
+      '<button type="button" class="knop knop-rand" data-kp-print="' + p[0] + '">' + ic('printer') + 'Printen</button></div></div></article>';
+  }
+  function kpProducten(ids, max) {
+    return (ids || []).map(function (id) { return LK.vind(id); }).filter(function (p) { return p && p.status === 'goedgekeurd' && !p.stil && !p.drank && +p.prijs > 0; })
+      .slice(0, max).map(LK.productKaart).join('');
+  }
+  function kpBoeken() { var e = INST.eigen; return e && e.ids ? kpProducten(e.ids, 6) : ''; }
+  function kpVraag(f) { return '<details><summary>' + esc(f[0]) + '</summary><p>' + esc(f[1]) + '</p></details>'; }
+  function kpLd(faq) {
+    return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(function (f) { return { '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }; }) }).replace(/</g, '\\u003c') + '</script>';
+  }
+  var KP_OOK = '<section class="sectie kp-ook"><h2>Nog meer voor pakjesavond en kerst</h2><p class="wzk-verder"><a href="/woordzoeker/">Woordzoeker printen</a> · <a href="/dobbelspel/">Dobbelspel met cadeautjes</a> · <a href="/sint-rijmmachine/">Sinterklaasgedicht maken</a> · <a href="/lootjes-trekken/">Lootjes trekken</a></p></section>';
+  function kleurplatenPagina(slug) {
+    var hk = (location.hash || '').slice(1);
+    if (hk && kpVind(hk)) setTimeout(function () { var el = document.getElementById(hk); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' }); }, 80);
+    if (slug) {
+      var t = KP_THEMA.filter(function (x) { return x.slug === slug; })[0];
+      if (!t) return nietGevonden();
+      zetTitel(t.titel + ': gratis printen of online kleuren');
+      window.LK_SEO = t.tekst;
+      var top = kpProducten((window.LK_TOPVAST || {})[t.top] || [], 8);
+      var anderen = kpVolgorde().filter(function (x) { return x.slug !== t.slug; }).map(function (x) { return '<a href="/kleurplaten/' + x.slug + '/">' + esc(x.titel) + '</a>'; }).join(' · ');
+      return paginakop({ titel: t.titel, tekst: t.tekst, kruimel: [{ tekst: 'Kleurplaten', naar: '/kleurplaten/' }, { tekst: t.naam }] }) +
+        '<div class="binnen kp" data-kp-thema="' + t.slug + '">' +
+          '<section class="sectie"><div class="kp-raster">' + t.platen.map(function (p) { return kpKaart(t, p); }).join('') + '</div>' +
+            '<p class="kp-uitleg">' + ic('printer') + '<span>Printen geeft een A4 met alleen de kleurplaat. Online kleuren werkt op je telefoon, tablet en computer: kies een kleur en tik op een vlak.</span></p></section>' +
+          (t.boeken ? '<section class="sectie kp-boeken"><h2>Meer dino’s kleuren</h2><p>In elk kleurboek van Marius staan 40 dino-kleurplaten, voor kinderen van 4 tot 8 jaar.</p><div class="prodgrid">' + kpBoeken() + '</div></section>' : '') +
+          (top ? '<section class="sectie kp-cadeaus"><h2>' + esc(t.topKop) + '</h2><p>' + esc(t.topTekst) + '</p><div class="prodgrid">' + top + '</div><p class="wzk-verder"><a href="' + t.topMeer[0] + '">' + esc(t.topMeer[1]) + '</a></p></section>' : '') +
+          '<section class="sectie kp-ook"><h2>Meer kleurplaten</h2><p class="wzk-verder">' + anderen + ' · <a href="/kleurplaten/">Alle kleurplaten</a></p></section>' +
+          KP_OOK +
+          '<section class="sectie wzk-vragen"><h2>Vragen over de ' + esc(t.titel.toLowerCase()) + '</h2>' + t.faq.map(kpVraag).join('') + kpLd(t.faq) + '</section>' +
+        '</div>';
+    }
+    zetTitel('Kleurplaten: gratis printen of online kleuren');
+    window.LK_SEO = 'Gratis kleurplaten van Sinterklaas, kerst, winter en dino’s. Print ze op A4 of kleur ze meteen in op je telefoon of tablet. Makkelijk voor kleuters, moeilijk voor volwassenen.';
+    var faq = [
+      ['Zijn de kleurplaten gratis?', 'Ja. Alle kleurplaten op deze pagina mag je gratis printen en gebruiken, thuis, op school, in de klas of bij de opvang.'],
+      ['Hoe print ik een kleurplaat?', 'Tik bij de kleurplaat op ‘Printen’. Je krijgt een A4 met alleen de kleurplaat erop.'],
+      ['Hoe werkt online kleuren?', 'Tik op ‘Online kleuren’, kies een kleur en tik op een vlak: dat kleurt meteen helemaal in. Met de gum maak je een vlak weer wit, met ‘Terug’ haal je de laatste stap weg. Je kunt je kleurplaat daarna bewaren of printen.'],
+      ['Welke kleurplaat past bij welke leeftijd?', 'Makkelijk is voor kinderen van ongeveer 4 tot 6 jaar: grote vlakken. Gemiddeld is voor 6 tot 10 jaar. Moeilijk heeft veel kleine vlakken, voor oudere kinderen en volwassenen.'],
+      ['Zijn er ook kleurplaten voor volwassenen?', 'Ja: de mandala’s, de kerstbal en de drukke platen (Sinterklaas over de daken, de intocht, de slee met rendieren) hebben veel kleine vlakken.']
+    ];
+    return paginakop({ titel: 'Kleurplaten', tekst: 'Gratis kleurplaten van Sinterklaas, kerst, winter en dino’s. Print ze op A4 of kleur ze meteen in op je telefoon of tablet. Van makkelijk voor kleuters tot mandala’s voor volwassenen.' }) +
+      '<div class="binnen kp">' +
+        '<nav class="kp-themas" aria-label="Kies een onderwerp">' + kpVolgorde().map(function (t) { return '<a class="chip" href="/kleurplaten/' + t.slug + '/">' + esc(t.naam) + ' <small>' + t.platen.length + '</small></a>'; }).join('') + '</nav>' +
+        kpVolgorde().map(function (t) {
+          return '<section class="sectie kp-thema"><div class="sectie-kop"><div><h2><a href="/kleurplaten/' + t.slug + '/">' + esc(t.titel) + '</a></h2><p>' + esc(t.kort) + '</p></div><a class="meer" href="/kleurplaten/' + t.slug + '/">Alle ' + t.platen.length + ' ' + ic('pijl') + '</a></div>' +
+            '<div class="kp-raster">' + t.platen.map(function (p) { return kpKaart(t, p); }).join('') + '</div></section>';
+        }).join('') +
+        '<section class="sectie kp-boeken"><h2>De kleurboeken van Marius</h2><p>Zelf bedacht en gemaakt: kleurboeken met 40 dino-kleurplaten, voor kinderen van 4 tot 8 jaar.</p><div class="prodgrid">' + kpBoeken() + '</div></section>' +
+        KP_OOK +
+        '<section class="sectie wzk-vragen"><h2>Vragen over de kleurplaten</h2>' + faq.map(kpVraag).join('') + kpLd(faq) + '</section>' +
+      '</div>';
+  }
+
+  /* ---------- printen: alleen de kleurplaat (of je eigen ingekleurde versie) op A4 ---------- */
+  function kpPrint(id, src) {
+    var vak = document.getElementById('wzk-printvak');
+    if (!vak) { vak = document.createElement('div'); vak.id = 'wzk-printvak'; document.body.appendChild(vak); }
+    if (!document.getElementById('kp-printstijl')) {
+      var st = document.createElement('style'); st.id = 'kp-printstijl';
+      st.textContent = '#wzk-printvak{display:none}@media print{@page{size:A4;margin:8mm}html.wzk-print body>*:not(#wzk-printvak){display:none!important}html.wzk-print,html.wzk-print body{background:#fff!important}' +
+        'html.wzk-print #wzk-printvak{display:block!important;background:#fff!important}.kpp-blad{display:flex;align-items:center;justify-content:center;height:279mm}.kpp-blad img{max-width:100%;max-height:279mm;display:block}}';
+      document.head.appendChild(st);
+    }
+    vak.innerHTML = '<div class="kpp-blad"><img alt="" src="' + (src || '/images/kleurplaten/' + id + '.png') + '"></div>';
+    document.documentElement.classList.add('wzk-print');
+    var weg = function () { document.documentElement.classList.remove('wzk-print'); window.removeEventListener('afterprint', weg); };
+    window.addEventListener('afterprint', weg);
+    kpTel('kleurplaten/print/' + id + (src ? '/ingekleurd' : ''));
+    var img = vak.querySelector('img'), klaar = false;
+    var go = function () { if (klaar) return; klaar = true; window.print(); setTimeout(weg, 1500); };
+    if (img.complete) setTimeout(go, 60); else { img.onload = function () { setTimeout(go, 60); }; setTimeout(go, 2500); }
+  }
+
+  /* ---------- online kleuren: vulemmer op een canvas ---------- */
+  var KPC = null;
+  function kpScherm() {
+    var s = document.getElementById('kp-scherm');
+    if (s) return s;
+    s = document.createElement('div'); s.id = 'kp-scherm'; s.className = 'kp-scherm'; s.hidden = true;
+    s.setAttribute('role', 'dialog'); s.setAttribute('aria-modal', 'true'); s.setAttribute('aria-labelledby', 'kp-titel');
+    s.innerHTML = '<div class="kp-balk"><h2 id="kp-titel"></h2><button type="button" class="kp-sluit" data-kp-sluit aria-label="Sluiten">' + ic('sluit') + '</button></div>' +
+      '<div class="kp-doek" data-kp-doek><canvas data-kp-canvas></canvas><p class="kp-laden" data-kp-laden>Kleurplaat laden…</p></div>' +
+      '<div class="kp-palet" role="group" aria-label="Kies een kleur">' + KP_KLEUREN.map(function (k, i) {
+        return '<button type="button" class="kp-kleur' + (k === '#FFFFFF' ? ' kp-gum' : '') + '" data-kp-kleur="' + k + '" style="--k:' + k + '" aria-pressed="' + (i === 0) + '" aria-label="' + (k === '#FFFFFF' ? 'Gum (wit)' : 'Kleur ' + k) + '">' + (k === '#FFFFFF' ? 'gum' : '') + '</button>';
+      }).join('') + '</div>' +
+      '<div class="kp-acties"><button type="button" class="knop knop-rand" data-kp-terug>Terug</button><button type="button" class="knop knop-rand" data-kp-zoom>Groter</button>' +
+      '<button type="button" class="knop knop-rand" data-kp-wis>Opnieuw</button><button type="button" class="knop knop-goud" data-kp-bewaar>Bewaren</button><button type="button" class="knop knop-goud" data-kp-printnu>' + ic('printer') + 'Printen</button></div>';
+    document.body.appendChild(s);
+    return s;
+  }
+  function kpOpen(id) {
+    var v = kpVind(id); if (!v) return;
+    var s = kpScherm();
+    s.querySelector('#kp-titel').textContent = v.p[1];
+    s.hidden = false; document.documentElement.classList.add('kp-open');
+    var doek = s.querySelector('[data-kp-doek]'); doek.classList.remove('groot'); s.querySelector('[data-kp-zoom]').textContent = 'Groter';
+    s.querySelector('[data-kp-laden]').hidden = false;
+    try { history.pushState({ kp: 1 }, ''); } catch (e) {}
+    var kleur = (KPC && KPC.kleur) || KP_KLEUREN[0];
+    KPC = { id: id, kleur: kleur, undo: [], gekleurd: false };
+    s.querySelectorAll('[data-kp-kleur]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-kp-kleur') === kleur ? 'true' : 'false'); });
+    var img = new Image();
+    img.onload = function () {
+      if (!KPC || KPC.id !== id) return;
+      var w = 1240, h = Math.round(img.naturalHeight * w / img.naturalWidth);
+      var c = s.querySelector('[data-kp-canvas]'); c.width = w; c.height = h;
+      var x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+      var d = x.getImageData(0, 0, w, h).data, n = w * h, lum = new Uint8Array(n), muur = new Uint8Array(n);
+      for (var i = 0, j = 0; i < n; i++, j += 4) { var l = (d[j] * 3 + d[j + 1] * 6 + d[j + 2]) / 10; lum[i] = l; muur[i] = l < 170 ? 1 : 0; }
+      var kl = new Uint32Array(n); kl.fill(0xFFFFFFFF);
+      KPC.w = w; KPC.h = h; KPC.lum = lum; KPC.muur = muur; KPC.kl = kl; KPC.x = x; KPC.data = x.createImageData(w, h);
+      kpTeken(); s.querySelector('[data-kp-laden]').hidden = true;
+    };
+    img.src = '/images/kleurplaten/' + id + '.png';
+    kpTel('kleurplaten/kleur/' + id);
+  }
+  function kpSluit(viaTerug) {
+    var s = document.getElementById('kp-scherm'); if (!s || s.hidden) return;
+    s.hidden = true; document.documentElement.classList.remove('kp-open'); KPC = KPC ? { kleur: KPC.kleur } : null;
+    if (!viaTerug && history.state && history.state.kp) { try { history.back(); } catch (e) {} }
+  }
+  function kpTeken() {
+    var w = KPC.w, h = KPC.h, n = w * h, lum = KPC.lum, kl = KPC.kl, o = KPC.data.data;
+    for (var i = 0, j = 0; i < n; i++, j += 4) {
+      var c = kl[i], f = lum[i] / 255;
+      o[j] = (c & 255) * f; o[j + 1] = ((c >>> 8) & 255) * f; o[j + 2] = ((c >>> 16) & 255) * f; o[j + 3] = 255;
+    }
+    KPC.x.putImageData(KPC.data, 0, 0);
+  }
+  function kpHex(h) { var r = parseInt(h.slice(1, 3), 16), g = parseInt(h.slice(3, 5), 16), b = parseInt(h.slice(5, 7), 16); return (0xFF000000 | (b << 16) | (g << 8) | r) >>> 0; }
+  function kpVul(px, py) {
+    var w = KPC.w, h = KPC.h, muur = KPC.muur, kl = KPC.kl;
+    var x0 = Math.round(px), y0 = Math.round(py), start = -1;
+    /* tik je net op een lijn, zoek dan het dichtstbijzijnde vlak */
+    for (var r = 0; r <= 8 && start < 0; r++) for (var dy = -r; dy <= r && start < 0; dy++) for (var dx = -r; dx <= r; dx++) {
+      var xx = x0 + dx, yy = y0 + dy; if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
+      if (!muur[yy * w + xx]) { start = yy * w + xx; break; }
+    }
+    if (start < 0) return;
+    var nieuw = kpHex(KPC.kleur);
+    var gezien = new Uint8Array(w * h), stapel = [start], vlak = [];
+    gezien[start] = 1;
+    while (stapel.length) {
+      var p = stapel.pop(); vlak.push(p);
+      var x = p % w;
+      if (x > 0 && !gezien[p - 1] && !muur[p - 1]) { gezien[p - 1] = 1; stapel.push(p - 1); }
+      if (x < w - 1 && !gezien[p + 1] && !muur[p + 1]) { gezien[p + 1] = 1; stapel.push(p + 1); }
+      if (p >= w && !gezien[p - w] && !muur[p - w]) { gezien[p - w] = 1; stapel.push(p - w); }
+      if (p < w * (h - 1) && !gezien[p + w] && !muur[p + w]) { gezien[p + w] = 1; stapel.push(p + w); }
+    }
+    /* de kleur loopt 2 pixels onder de lijn door, zodat er geen wit randje blijft */
+    var rand = [];
+    for (var k = 0; k < vlak.length; k++) {
+      var q = vlak[k], qx = q % w;
+      for (var ey = -2; ey <= 2; ey++) for (var ex = -2; ex <= 2; ex++) {
+        var nx = qx + ex, nq = q + ey * w + ex; if (nx < 0 || nx >= w || nq < 0 || nq >= w * h) continue;
+        if (muur[nq] && !gezien[nq]) { gezien[nq] = 1; rand.push(nq); }
+      }
+    }
+    var alle = vlak.concat(rand), oud = new Uint32Array(alle.length), idx = new Int32Array(alle);
+    for (var m = 0; m < alle.length; m++) { oud[m] = kl[alle[m]]; kl[alle[m]] = nieuw; }
+    KPC.undo.push([idx, oud]); if (KPC.undo.length > 6) KPC.undo.shift();
+    if (!KPC.gekleurd) { KPC.gekleurd = true; kpTel('kleurplaten/ingekleurd/' + KPC.id); }
+    kpTeken();
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target; if (!t.closest) return;
+    var op = t.closest('[data-kp-open]'); if (op) { kpOpen(op.getAttribute('data-kp-open')); return; }
+    var pr = t.closest('[data-kp-print]'); if (pr) { kpPrint(pr.getAttribute('data-kp-print')); return; }
+    if (!t.closest('#kp-scherm')) return;
+    if (t.closest('[data-kp-sluit]')) { kpSluit(false); return; }
+    var kb = t.closest('[data-kp-kleur]');
+    if (kb && KPC) { KPC.kleur = kb.getAttribute('data-kp-kleur'); document.querySelectorAll('[data-kp-kleur]').forEach(function (b) { b.setAttribute('aria-pressed', b === kb ? 'true' : 'false'); }); return; }
+    if (!KPC || !KPC.kl) return;
+    var cv = t.closest('[data-kp-canvas]');
+    if (cv) { var b = cv.getBoundingClientRect(); kpVul((e.clientX - b.left) * KPC.w / b.width, (e.clientY - b.top) * KPC.h / b.height); return; }
+    if (t.closest('[data-kp-terug]')) { var u = KPC.undo.pop(); if (u) { for (var i = 0; i < u[0].length; i++) KPC.kl[u[0][i]] = u[1][i]; kpTeken(); } return; }
+    if (t.closest('[data-kp-wis]')) { KPC.kl.fill(0xFFFFFFFF); KPC.undo = []; kpTeken(); return; }
+    var zm = t.closest('[data-kp-zoom]');
+    if (zm) { var d = document.querySelector('[data-kp-doek]'), aan = !d.classList.contains('groot'); d.classList.toggle('groot', aan); zm.textContent = aan ? 'Kleiner' : 'Groter'; if (aan) { d.scrollLeft = (d.scrollWidth - d.clientWidth) / 2; d.scrollTop = (d.scrollHeight - d.clientHeight) / 3; } return; }
+    var c = document.querySelector('[data-kp-canvas]');
+    if (t.closest('[data-kp-bewaar]')) {
+      c.toBlob(function (bl) {
+        if (!bl) return;
+        var a = document.createElement('a'); a.href = URL.createObjectURL(bl); a.download = 'kleurplaat-' + KPC.id + '.png';
+        document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+        kpTel('kleurplaten/bewaar/' + KPC.id);
+      }, 'image/png');
+      return;
+    }
+    if (t.closest('[data-kp-printnu]')) { kpPrint(KPC.id, KPC.gekleurd ? c.toDataURL('image/png') : ''); return; }
+  });
+  window.addEventListener('popstate', function () { var s = document.getElementById('kp-scherm'); if (s && !s.hidden) kpSluit(true); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') kpSluit(false); });
 
   function lootjes(q) {
     if (q.l) return lootUitslag(lootLees(q.l));
@@ -8372,7 +8673,7 @@
       '<div class="lade-label">Gelegenheden</div><div class="lade-links">' + window.LK_GELEGENHEDEN_NU().map(function (g) { return link(g.naar || '/gelegenheid/' + g.slug, g.naam); }).join('') + '</div>' +
       '<div class="lade-label">Acties</div><div class="lade-links">' + collectiesVan('acties').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
       '<div class="lade-label">Cadeau-ideeën</div><div class="lade-links">' + collectiesVan('ideeen').map(function (c) { return link('/collectie/' + c.slug, c.naam); }).join('') + '</div>' +
-      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/dobbelspel/', 'Dobbelspel met cadeautjes') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
+      '<div class="lade-label">Meer</div><div class="lade-extra">' + link('/vonk', 'VONK cadeauzoeker') + link('/gids', 'Cadeaugidsen') + link('/winkels', 'Onze winkels') + link('/woordzoeker/', 'Gratis woordzoeker') + link('/dobbelspel/', 'Dobbelspel met cadeautjes') + link('/kleurplaten/', 'Gratis kleurplaten') + link('/favorieten', 'Mijn lijstje') + link('/info/hoe-werkt-het', 'Hoe werkt het?') + '</div>' + themaKnoppen();
   }
   /* Collecties in twee groepen: acties (kortingen) en cadeau-ideeën. Verborgen collecties blijven bereikbaar via hun adres. */
   var COLLECTIE_ACTIES = ['black-friday', 'aanbiedingen', 'kortingscodes'];
@@ -8627,6 +8928,7 @@
     else if (d[0] === 'tiktok' && window.LK_TIKTOK !== false) html = tiktokPagina();
     else if (d[0] === 'woordzoeker' && window.LK_WOORDZOEKER !== false) html = woordzoekerPagina();
     else if (d[0] === 'dobbelspel' && window.LK_DOBBELSPEL !== false) html = dobbelPagina();
+    else if (d[0] === 'kleurplaten' && window.LK_KLEURPLATEN !== false) html = kleurplatenPagina(d[1]);
     else if (d[0] === 'favorieten') html = favorieten();
     else if (d[0] === 'lijst') html = gedeeldeLijst(a.q);
     else if (d[0] === 'info') html = info(d[1]);
