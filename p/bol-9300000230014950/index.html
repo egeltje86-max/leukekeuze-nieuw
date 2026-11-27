@@ -27,11 +27,11 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-600-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-500-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="preload" as="script" href="assets/js/app.js?v=226320561935478" fetchpriority="high">
-  <link rel="preload" as="script" href="assets/js/data.js?v=49812388603261" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/app.js?v=265758256050689" fetchpriority="high">
+  <link rel="preload" as="script" href="assets/js/data.js?v=57951685923459" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/stijl.css?v=262573359707277">
-  <link rel="stylesheet" href="assets/css/licht.css?v=245885268206972">
-  <link rel="stylesheet" href="assets/css/straat.css?v=8768198015214">
+  <link rel="stylesheet" href="assets/css/licht.css?v=14388926989079">
+  <link rel="stylesheet" href="assets/css/straat.css?v=40408718180354">
   <!-- Snelheid (31-10-2026): de grote productlijst laadt los van de pagina (async, lage prioriteit): de tekst en foto's staan al in de HTML.
        app.js start pas als de lijst er is (seintje 'lk-producten' aan het eind van het bestand). -->
   <!-- Snelheid (12-11-2026, GO Marius): dit stukje staat nu in de kop. Onderaan de pagina begon de lijst pas te laden als data.js en teksten.js
@@ -95,7 +95,7 @@
        Eerst alleen met ?proef=combi, nu voor iedereen (zie hieronder): de kop zoals hij was (aftellen, menu, logo, hartje, onderbalk) met de winkels eronder,
        en een donkere versie die de instelling van de telefoon of computer volgt (keuze in het menu: Automatisch, Licht of Donker; ook ?thema=donker|licht|auto).
        Het donkere bestand laadt alleen als de donkere versie aan staat. -->
-  <meta name="lk-donker" content="assets/css/donker.css?v=250304832173431">
+  <meta name="lk-donker" content="assets/css/donker.css?v=166425883944506">
   <!-- LIVE voor iedereen sinds 22-11-2026 09:18 (Marius: 'Dit is fantastisch go'). Zelf de lichte kop van 21-11 zien: ?proef=combi-uit (blijft onthouden; weer aan: ?proef=combi).
        Helemaal uit: window.LK_COMBI = false. -->
   <!-- IEDEREEN LICHT (26-11-2026, Marius: 'iedereen moet die lichte versie zien'): wie eerder donker of de boulevard koos, krijgt eenmalig weer licht (lkthema en lknacht gewist). Daarna kan iemand zelf weer donker kiezen met de maan. -->
@@ -151,7 +151,7 @@
   <!-- Toegankelijkheid (31-10-2026): met de tab-toets meteen naar de inhoud springen. Onzichtbaar tot je ernaartoe tabt. -->
   <a class="spring" href="#app">Naar de inhoud</a>
 
-  <div class="aftel aftel3" data-aftel="" role="navigation" aria-label="Aftellen"><a class="a3 a3-bf" href="/collectie/black-friday/"><span class="a3-r"><small>Vandaag is het</small></span><b>Black Friday</b></a><a class="a3 a3-sint" href="/c/cadeaus/sinterklaas/"><span class="a3-r"><span class="a3-getal">8</span><small>dagen tot</small></span><b>Pakjesavond</b></a><a class="a3 a3-kerst" href="/c/cadeaus/kerst/"><span class="a3-r"><span class="a3-getal">28</span><small>dagen tot</small></span><b>Kerst</b></a></div>
+  <div class="aftel aftel3" data-aftel="" role="navigation" aria-label="Aftellen"><a class="a3 a3-sint" href="/c/cadeaus/sinterklaas/"><span class="a3-r"><span class="a3-getal">8</span><small>dagen tot</small></span><b>Pakjesavond</b></a><a class="a3 a3-kerst" href="/c/cadeaus/kerst/"><span class="a3-r"><span class="a3-getal">28</span><small>dagen tot</small></span><b>Kerst</b></a></div>
 
   <div class="topbalk">
     <div class="binnen">
@@ -281,13 +281,13 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script>window.LK_DETAILS_DEEL={"bol-9300000230014950":{"url":"https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpuzzelplaneet-superleuke-sudoku-s%2F9300000230014950%2F","winkelUrl":"https://www.bol.com/nl/nl/p/puzzelplaneet-superleuke-sudoku-s/9300000230014950/","subVast":true,"gecontroleerd":"2026-11-27","wil":50,"advies":{"voor":"Kinderen die van cijferpuzzels houden.","niet":"Het kind niet van rekenen houdt.","alt":["cg-puzzlebox-heart","cl-het-ultieme-geheim"],"meer":[["Sinterklaascadeaus","/c/cadeaus/sinterklaas/"]]},"waarom":"Puzzelplaneet: een blok met sudoku's met vrolijke tekeningen voor kinderen van 8 tot 10 jaar, met bladen om uit te scheuren."}};</script>
-  <script src="assets/js/data.js?v=49812388603261"></script>
+  <script src="assets/js/data.js?v=57951685923459"></script>
   <script src="assets/js/teksten.js?v=75701365470467"></script>
-  <script src="assets/js/gedeeld.js?v=132795808371279"></script>
+  <script src="assets/js/gedeeld.js?v=181936749620588"></script>
   <script>/* CADEAUZIEL (24-11-2026, Dark Nova): de openingen per pagina, alleen waar de winkelweergave of de straat staat (niet op productpagina's, gidsen en zoeken). */
     (function () { var s = "assets/js/cadeauziel.js?v=141199049671032"; if (!/^\/(p|gids|zoek|lootjes-trekken|sint-rijmmachine|woordzoeker|dobbelspel|vonk|favorieten|tiktok)\//.test(location.pathname)) document.write('<script src="' + s + '"><\/script>'); })();</script>
   <script src="assets/js/straat.js?v=119249749887733"></script>
-  <script src="assets/js/app.js?v=226320561935478"></script>
+  <script src="assets/js/app.js?v=265758256050689"></script>
   <!-- Bezoekersteller: GoatCounter (Nederlands, gratis, zonder cookies, bewaart geen persoonsgegevens).
        Telt de eerste pagina zelf; elke volgende pagina binnen de site telt app.js via 'lk-route'. -->
   <script data-goatcounter="https://leukekeuze.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

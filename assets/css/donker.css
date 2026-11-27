@@ -1350,6 +1350,15 @@ html.donker .kp-laden{color:#a3aaba}
 html.donker .kp-kleur{border:3px solid #33405e;background:var(--k);box-shadow:0 0 0 1px rgba(201,194,180,0.22);color:#5F667A}
 html.donker .kp-kleur[aria-pressed="true"]{box-shadow:0 0 0 3px rgba(0,0,0,0.6)}
 html.donker .kp-gum{background:#1c263c}
+html.donker .kw-soort > p{color:#a3aaba}
+html.donker .kw-wens{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker .kw-wens p{color:#eee7da}
+html.donker .kw-knop{border:1px solid rgba(217,168,72,0.3);background:#1c263c;color:#eee7da}
+html.donker .kw-knop:hover{border-color:#b8862e}
+html.donker .kw-knop.ok{background:#223259;border-color:#2e406b;color:#ffffff}
+html.donker .kw-wa{color:#a6f2ca}
+html.donker .kw-kaartkop{color:#eee7da}
+html.donker .kw-tips li{color:#eee7da}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
@@ -1571,6 +1580,8 @@ html.donker .sh .bfb-kop{border-left:5px solid #e0140b}
 html.donker .sh .bfb-kop h2{color:#eee7da}
 html.donker .sh .bfb-kop a{color:#e7c893}
 html.donker .sh .bfb-alles{background:#08080C;color:#F2CB74;border:2px solid #B8862E}
+html.donker.combi .sh .cb-cat h2{color:#eee7da}
+html.donker.combi .sh .cb-cat p{color:#a3aaba}
 /* ---- uit de <style>-blokken in app.js ---- */
 html.donker .rijm-z{color:var(--rz-ink)}
 html.donker .rijm-z .rz-eyebrow{color:#eccc9c}
