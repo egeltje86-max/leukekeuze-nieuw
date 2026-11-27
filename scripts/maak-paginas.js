@@ -369,6 +369,18 @@ function maakPagina(info, lade, mega, aftel, zoekrij) {
       oms = r.h1 + ': ' + r.aantal + ' met de hand gekozen ' + (r.aantal === 1 ? 'product' : 'producten') + ', zoals ' +
         r.namen.slice(0, -1).join(', ') + (r.namen.length > 1 ? ' en ' : '') + r.namen[r.namen.length - 1] + '. Je koopt bij bekende winkels.';
     }
+    /* 27-11-2026 (onderzoek OpenSEO): 75 pagina's (gelegenheid x persoon, collecties) hadden dezelfde nietszeggende omschrijving
+       ('Met de hand gekozen cadeaus voor hem, voor een verjaardag. Met de hand gekozen cadeaus, je koopt bij bekende winkels.').
+       Nu: het aantal en de eerste cadeaus van de pagina zelf, zodat elke pagina een eigen omschrijving heeft. */
+    if (!oms && /^\/(gelegenheid|collectie|voor)\//.test(pad) && r.aantal > 2 && r.namen.length) {
+      const t0 = String(r.tekst || '');
+      if (t0.length < 90 || /^Met de hand gekozen cadeaus voor /.test(t0)) {
+        const kort = n => n.length > 45 ? n.slice(0, 45).replace(/\s+\S*$/, '') : n;
+        let zo = [];
+        for (const n of r.namen.map(kort)) { if ((r.h1 + zo.join(', ') + n).length > 105) break; zo.push(n); }
+        oms = r.h1 + ': ' + r.aantal + ' cadeaus' + (zo.length ? ', zoals ' + zo.slice(0, -1).join(', ') + (zo.length > 1 ? ' en ' : '') + zo[zo.length - 1] : '') + '. Met prijs en winkel erbij.';
+      }
+    }
     oms = oms || r.tekst || 'Uitgezochte cadeaus en producten van bekende winkels. Kies op moment, persoon of budget en koop bij bekende winkels.';
     /* Nakijkbeurt 6-11-2026: korte producttekst? Vul de omschrijving voor Google aan met prijs en winkel. */
     if (r.prod && r.prod.prijs && oms.length < 90 && oms.indexOf('€') === -1) oms = oms.replace(/\s+$/, '') + ' Nu €' + Number(r.prod.prijs).toFixed(2).replace('.', ',') + ' bij ' + r.prod.winkel + '. Met de hand gekozen door LeukeKeuze.';

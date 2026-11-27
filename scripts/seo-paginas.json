@@ -106,40 +106,40 @@
   "omschrijving": "Hamilton Ventura (32 mm, unisex): het kleinere driehoekige horloge met zwarte leren band, de klassieker die Elvis beroemd maakte. Bij Timeshop24."
  },
  "/gids/cadeau-kind-1-jaar/": {
-  "titel": "Cadeau kind van 1 jaar: 20 ideeën voor een dreumes"
+  "titel": "Cadeau jongen of meisje 1 jaar: 20 ideeën voor een dreumes"
  },
  "/gids/cadeau-kind-2-jaar/": {
-  "titel": "Cadeau kind van 2 jaar: 19 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 2 jaar: 19 leuke ideeën"
  },
  "/gids/cadeau-kind-3-jaar/": {
-  "titel": "Cadeau kind van 3 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 3 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-4-jaar/": {
-  "titel": "Cadeau kind van 4 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 4 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-5-jaar/": {
-  "titel": "Cadeau kind van 5 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 5 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-6-jaar/": {
-  "titel": "Cadeau kind van 6 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 6 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-7-jaar/": {
-  "titel": "Cadeau kind van 7 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 7 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-8-jaar/": {
-  "titel": "Cadeau kind van 8 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 8 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-9-jaar/": {
-  "titel": "Cadeau kind van 9 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 9 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-10-jaar/": {
-  "titel": "Cadeau kind van 10 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 10 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-11-jaar/": {
-  "titel": "Cadeau kind van 11 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 11 jaar: 24 leuke ideeën"
  },
  "/gids/cadeau-kind-12-jaar/": {
-  "titel": "Cadeau kind van 12 jaar: 24 ideeën voor jongen en meisje"
+  "titel": "Cadeau jongen of meisje 12 jaar: 24 leuke ideeën"
  },
  "/gids/kerstcadeau-moeder/": {
   "titel": "Kerstcadeau moeder: 24 ideeën om haar te verwennen"
@@ -171,8 +171,8 @@
   "omschrijving": "Maak gratis een grappig en persoonlijk Sinterklaasgedicht. Vul een paar dingen in en Sint rijmt het voor je, met een cadeau dat erbij past. Kopiëren, printen of delen via WhatsApp."
  },
  "/lootjes-trekken/": {
-  "titel": "Lootjes trekken: gratis online, via WhatsApp",
-  "omschrijving": "Lootjes trekken voor Sinterklaas of kerst: gratis, zonder account en zonder e-mail. Iedereen krijgt zijn eigen linkje via WhatsApp, met cadeautips binnen het budget."
+  "titel": "Lootjes trekken & Secret Santa: gratis online via WhatsApp",
+  "omschrijving": "Lootjes trekken voor Sinterklaas of Secret Santa met kerst: gratis, zonder account. Iedereen krijgt een eigen linkje via WhatsApp, met cadeautips."
  },
  "/gids/kerstcadeau-voor-haar/": {
   "titel": "Kerstcadeau vrouw: 24 ideeën om haar blij te maken",
@@ -382,8 +382,8 @@
   "titel": "Cadeau voor haar: leuke ideeën voor je vrouw of vriendin"
  },
  "/woordzoeker/": {
-  "titel": "Woordzoeker maken: gratis met eigen woorden en printen",
-  "omschrijving": "Maak gratis een woordzoeker met je eigen woorden, of print een kant-en-klare: Sinterklaas, kerst, winter, dieren voor kinderen en in grote letters. Ook te spelen op je telefoon."
+  "titel": "Woordzoeker maken en printen: gratis, ook voor kerst",
+  "omschrijving": "Maak gratis een woordzoeker met je eigen woorden of print een kant-en-klare: kerst, Sinterklaas, winter, dieren en grote letters. Ook op je telefoon."
  },
  "/gids/cadeau-voor-moeder/": {
   "titel": "Cadeau voor moeder of mama: leuke ideeën voor haar verjaardag of Kerst"
@@ -394,5 +394,13 @@
  "/c/mode-sieraden/schoenen-sloffen/pantoffels-sloffen/": {
   "titel": "Pantoffels en sloffen cadeau voor dames, heren en kinderen",
   "omschrijving": "Pantoffels en sloffen als cadeau: grappige dierensloffen voor kinderen, warme sloffen voor dames en heren en sloffen die je in de magnetron opwarmt. Met de hand gekozen, met de prijs erbij."
+ },
+ "/gids/secret-santa/": {
+  "titel": "Secret Santa: zo werkt het, met 24 cadeaus tot €25",
+  "omschrijving": "Secret Santa is lootjes trekken voor kerst. Zo organiseer je het gratis via WhatsApp, met 24 cadeaus van 10, 15 en 25 euro."
+ },
+ "/gids/cadeau-voor-man-die-alles-heeft/": {
+  "titel": "Cadeau voor een man die alles al heeft: 24 ideeën",
+  "omschrijving": "Hij heeft alles al? Kies iets om te beleven, iets lekkers of iets mooiers dan wat hij heeft: 24 ideeën, van een grap tot een rit in een Lamborghini."
  }
 }

@@ -1006,6 +1006,7 @@
 /gids/cadeau-voetballer/
 /gids/cadeau-voor-broer/
 /gids/cadeau-voor-collega/
+/gids/cadeau-voor-man-die-alles-heeft/
 /gids/cadeau-voor-man/
 /gids/cadeau-voor-moeder/
 /gids/cadeau-voor-oma/
@@ -1043,6 +1044,7 @@
 /gids/kraamcadeau/
 /gids/noodpakket-checklist/
 /gids/schoencadeautjes/
+/gids/secret-santa/
 /gids/sfeerlicht-donkere-avonden/
 /gids/sinterklaas-onder-10/
 /gids/sinterklaas-onder-15/
