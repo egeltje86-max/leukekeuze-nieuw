@@ -1331,6 +1331,25 @@ html.donker .dbs-stappen{color:#eee7da}
 html.donker.nacht .lichtknop{color:#f2cb74}
 html.donker .gi-advies{color:#c3c8d4}
 html.donker .gi-advies b{color:#eee7da}
+html.donker .kp-kaart{background:#1c263c;border:1px solid rgba(217,168,72,0.3);box-shadow:0 2px 10px rgba(0,0,0,0.14)}
+html.donker .kp-foto{background:#1c263c;border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .kp-foto:focus-visible{outline:3px solid #b8862e}
+html.donker .kp-info h3{color:#eee7da}
+html.donker .kp-niveau{color:#a3aaba}
+html.donker .kp-niveau::before{background:#5baa5f}
+html.donker .kp-niveau.kp-gemiddeld::before{background:#b8862e}
+html.donker .kp-niveau.kp-moeilijk::before{background:#223259}
+html.donker .kp-uitleg{color:#a3aaba}
+html.donker .kp-scherm{background:#1c263c}
+html.donker .kp-balk{border-bottom:1px solid rgba(217,168,72,0.3)}
+html.donker .kp-balk h2{color:#eee7da}
+html.donker .kp-sluit{color:#eee7da}
+html.donker .kp-doek{background:#232e47}
+html.donker .kp-doek canvas{background:#1c263c;box-shadow:0 2px 12px rgba(0,0,0,0.266)}
+html.donker .kp-laden{color:#a3aaba}
+html.donker .kp-kleur{border:3px solid #33405e;background:var(--k);box-shadow:0 0 0 1px rgba(201,194,180,0.22);color:#5F667A}
+html.donker .kp-kleur[aria-pressed="true"]{box-shadow:0 0 0 3px rgba(0,0,0,0.6)}
+html.donker .kp-gum{background:#1c263c}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
