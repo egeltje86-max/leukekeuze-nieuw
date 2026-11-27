@@ -1,5 +1,5 @@
 // Gebruik: node scripts/reels/maakB.js <map met reel.json en c0.jpg ...>. reel.json: naam, k1, hook, eind1, eind3, zoek, eindsub, datum, p[{f, n, s, pr, gloed}].
-// Reelstijl B 'donker podium met gloed' (gekozen door Marius 26-11-2026). node maakB.js
+// Reelstijl B 'donker podium met gloed' (gekozen door Marius 26-11-2026). node maakB.js Sinds 27-11-2026 (Marius: "er moet overal leukekeuze.nl op staan") staat op elke productfoto een gouden label leukekeuze.nl.
 const {chromium}=require('playwright');const fs=require('fs');const {execSync}=require('child_process');
 const D=process.argv[2]||process.cwd();const R=JSON.parse(fs.readFileSync(D+'/reel.json','utf8'));const F=process.env.LK_FONTS||(__dirname+'/../../assets/fonts/');
 const ff=`@font-face{font-family:M;src:url(${F}manrope-800-latin.woff2);font-weight:800}@font-face{font-family:M;src:url(${F}manrope-700-latin.woff2);font-weight:700}`;
@@ -7,7 +7,7 @@ const css=`*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;over
 .bg{position:absolute;inset:0}.foto{position:absolute;left:90px;right:90px;top:560px;height:860px;border-radius:40px;overflow:hidden}
 .foto img{width:100%;height:100%;object-fit:cover;transform-origin:50% 50%}
 .k1{position:absolute;top:300px;left:0;right:0;text-align:center;color:#F2CB74;font-weight:800;font-size:40px;letter-spacing:8px}
-.k2{position:absolute;top:360px;left:40px;right:40px;text-align:center;color:#fff;font-weight:800;font-size:92px;line-height:1}
+.k2{position:absolute;top:360px;left:40px;right:40px;text-align:center;color:#fff;font-weight:800;font-size:80px;line-height:1}
 .t{position:absolute;top:330px;left:40px;right:40px;text-align:center;color:#fff;font-weight:800;font-size:88px;line-height:1}
 .s{position:absolute;top:440px;left:60px;right:60px;text-align:center;color:rgba(255,255,255,.78);font-weight:700;font-size:40px}
 .pr{position:absolute;top:1445px;left:0;right:0;text-align:center;color:#fff;font-weight:800;font-size:100px}
@@ -16,6 +16,7 @@ function scene(p,i){const g=p.gloed;const hook=i===0;
  return `<div class="bg" style="background:radial-gradient(ellipse at 50% 50%,${g.replace('rgb','rgba').replace(')',',.38)')} 0,#0b1022 52%,#05070f 100%)"></div>
  <div class="foto" style="box-shadow:0 0 130px 34px ${g.replace('rgb','rgba').replace(')',',.5)')}"><img id="im" src="${p.f}"></div>
  ${hook?`<div class="k1">${R.k1.toUpperCase()}</div><div class="k2">${R.hook}</div>`:`<div class="t"><span style="color:#F2CB74">${i+1}</span> ${p.n}</div><div class="s">${p.s}</div>`}
+ <div style="position:absolute;top:1372px;left:0;right:0;text-align:center"><span style="display:inline-block;background:#F2CB74;color:#0b1022;font-weight:800;font-size:42px;padding:12px 38px;border-radius:40px;box-shadow:0 6px 24px rgba(0,0,0,.45)">leukekeuze.nl</span></div>
  <div class="pr" id="pr" style="text-shadow:0 0 34px ${g}">${p.pr}</div>`;}
 function eind(){return `<div class="bg" style="background:radial-gradient(ellipse at 50% 45%,#22345f 0,#0b1022 55%,#05070f 100%)"></div>
  <div style="position:absolute;top:520px;left:0;right:0;text-align:center;color:#F2CB74;font-weight:800;font-size:40px;letter-spacing:8px">${R.eind1.toUpperCase()}</div>
