@@ -2,13 +2,13 @@
 # en zonder Claude-abonnement. Doet hetzelfde als de piloot die eerst in de cloud van Claude draaide:
 # scripts/piloot/dag.py = het ochtendrapport van de laptop toepassen (prijzen, uitverkocht), bouwen, alle controles,
 # en alleen bij een schone controle live zetten. Niet schoon? Dan faalt deze taak en stuurt GitHub Marius een mail.
-# Tijden: 10:17 en (inhaalbeurt) 13:17 Nederlandse wintertijd = 09:17 en 12:17 UTC.
+# Tijden: 10:47 en (inhaalbeurt) 13:47 Nederlandse wintertijd = 09:47 en 12:47 UTC (een half uur na de oude cloud-piloot, zodat ze elkaar niet in de weg zitten).
 name: Piloot dagelijks
 
 on:
   schedule:
-    - cron: '17 9 * * *'
-    - cron: '17 12 * * *'
+    - cron: '47 9 * * *'
+    - cron: '47 12 * * *'
   workflow_dispatch:
     inputs:
       inhaal:
