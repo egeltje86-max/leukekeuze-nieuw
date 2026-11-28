@@ -15,10 +15,10 @@ import json, sys, datetime
 BOOM = []
 
 
-def B(naam, zoek, niet='', mn=None, mx=None, tip='', doel=6, ook='', winkels=''):
+def B(naam, zoek, niet='', mn=None, mx=None, tip='', doel=6, ook='', winkels='', volg=None):
     """ook = tweede groep woorden waarvan er OOK een in moet staan (franchise x soort: 'hello kitty' + 'knuffel|pluche')."""
     return {'naam': naam, 'zoek': [w for w in zoek.split('|') if w], 'niet': [w for w in niet.split('|') if w],
-            'ook': [w for w in ook.split('|') if w], 'winkels': [w for w in winkels.split('|') if w], 'min': mn, 'max': mx, 'tip': tip, 'doel': doel}
+            'ook': [w for w in ook.split('|') if w], 'winkels': [w for w in winkels.split('|') if w], 'min': mn, 'max': mx, 'tip': tip, 'doel': doel, 'volg': volg}
 
 
 def P(naam, blokken, mn=3, mx=250, niet='', winkels=''):
@@ -41,15 +41,15 @@ def C(naam, paginas):
 # ---------------------------------------------------------------- 1 SPEELGOED
 C('Speelgoed', [
     P('Baby & peuter', [
-        B('Rammelaars & bijtringen', 'rammelaar|bijtring|bijtspeelgoed|grijpring|knisperboekje|knisper'),
+        B('Rammelaars & bijtringen', 'rammelaar|bijtring|bijtspeelgoed|grijpring|knisper'),   # 28-11-2026: boekjes naar Babyboekjes
         B('Speelkleden & babygyms', 'babygym|speelkleed|speelmat baby|activity gym|play gym|speeltapijt', 'yoga|puzzelmat'),
         B('Activiteitenspeelgoed', 'activiteitenkubus|activity cube|activiteitencentrum|motoriekspeelgoed|motoriek|activiteitenbord|busy board|kralenspiraal|kralenframe'),
         B('Stapelen & sorteren', 'stapeltoren|stapelbekers|stapelringen|vormenstoof|vormensorteerder|sorteerdoos|stapelblokken|stapelspel baby', 'stapelstoel'),
         B('Loopwagens & duwspeelgoed', 'loopwagen|loopkar|duwkar|duwspeelgoed|trekfiguur|trekdier|loopfiets|loopauto', 'fietsdrager|bolderkar'),
-        B('Badspeelgoed', 'badspeelgoed|badeend|badboek|badspeel|bath toy|badfiguren'),
+        B('Badspeelgoed', 'badspeelgoed|badeend|badspeel|bath toy|badfiguren'),
         B('Houten speelgoed', 'houten speelgoed|houten puzzel|houten trein|houten auto|houten blokken|houten speel', 'meubel|kast'),
         B('Muziek voor de kleintjes', 'xylofoon|babypiano|baby piano|muziekdoosje|rammelei|trommeltje|muziekspeelgoed baby|speeldoos'),
-    ], mn=5, mx=120),
+    ], mn=5, mx=120, niet='boek|bijbel'),   # 28-11-2026 (Marius): boekjes horen bij Babyboekjes, niet tussen het speelgoed
     P('LEGO & bouwen', [
         B('LEGO City', 'lego city'), B('LEGO Friends', 'lego friends'), B('LEGO Technic', 'lego technic'),
         B('LEGO Star Wars', 'lego star wars'), B('LEGO Harry Potter', 'lego harry potter'), B('LEGO Minecraft', 'lego minecraft'),
@@ -216,6 +216,9 @@ C('Spellen, puzzels & boeken', [
         B('Doe- en stickerboeken', 'doeboek|stickerboek|kijk en zoek|zoekboek|geluidenboek|flapjesboek'),
         B('Weetboeken & encyclopedieën', 'encyclopedie|weetboek|informatieboek|wereldatlas kind|dinoboek|ruimteboek'),
         B('Kinderbijbels', 'kinderbijbel|peuterbijbel|bijbel voor kinderen'),
+        # 28-11-2026 (Marius: 'ik zie geen categorie babyboekjes'): achteraan voor vaste ids, maar bovenaan getoond (volg=0)
+        B('Babyboekjes', 'knisperboek|knisperbijbel|badboek|stoffen boekje|buggyboek|voelboek|babyboekje|baby boekje|speelboekje|bijtboekje|kiekeboeboekje|zwart-wit boekje',
+          'boekenlegger|invulboek|dagboek|ontbijt|zwangerschap|kookboek', mn=4, mx=60, tip='Knisper-, bad-, stoffen, buggy- en voelboekjes', volg=0),
     ], mn=4, mx=50),
 ])
 
@@ -837,7 +840,8 @@ def maak(uit):
             cats.append({'id': pid, 'naam': p['naam'], 'ouder': cid, 'volgorde': pi})
             for bi, b in enumerate(p['blokken'], 1):
                 n += 1
-                k = {'id': '%s%02d' % (pid, bi), 'ouder': pid, 'volgorde': bi, 'naam': b['naam'], 'zoek': b['zoek'], 'niet': b['niet'],
+                k = {'id': '%s%02d' % (pid, bi), 'ouder': pid, 'volgorde': bi if b.get('volg') is None else b['volg'],   # volg: eerder tonen zonder de ids te verschuiven
+                     'naam': b['naam'], 'zoek': b['zoek'], 'niet': b['niet'],
                      'min': b['min'], 'max': b['max'], 'doel': b['doel'], 'prio': '', 'tip': b['tip'], 'voor': []}
                 if b['ook']:
                     k['ook'] = b['ook']
