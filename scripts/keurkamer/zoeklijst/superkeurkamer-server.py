@@ -13,6 +13,7 @@ from indeler import plat
 import sqlite3
 from zoekindex import DB, zoekwoorden
 import fotoscore
+import keurhulp as KH   # 28-11-2026: stoplicht, commissie, prijs per eenheid, trend, eindcontrole, NOVA
 
 DATA = os.path.join(KAMER, 'data')
 APP = os.path.join(KAMER, 'app')
@@ -191,6 +192,16 @@ def site_index():
     return SITE
 
 
+def site_titels():
+    """28-11-2026: (titels die nu op de site staan, titels die Marius van de site haalde) voor het cadeau-stoplicht."""
+    lean, _ = haal_live('producten-lean.js')
+    nu_js, _ = haal_live('producten-site.js')
+    alle, nu = _objecten(lean), _objecten(nu_js)
+    if not nu:
+        return list(alle.values()), []
+    return list(nu.values()), [t for i, t in alle.items() if i not in nu]
+
+
 def op_site(t, u, l=None):
     """'nu' = staat op de site (label), 'weg' = Marius gooide het weg (niet tonen), '' = nieuw.
     Op naam, winkelpagina, link-code of LEGO-nummer."""
@@ -357,6 +368,7 @@ def api_partners():
         p['fotoslecht'] = p['id'] in slecht and p.get('n', 0) > 0
         p['feeddatum'], p['feedoud'] = feed_datum(p['id'])
         p['cadeau'] = p['id'] in cadeau
+        p['com'] = KH.commissie(p['id'])
     return lijst
 
 
@@ -437,6 +449,7 @@ def api_kies(body):
         lijst['bijgewerkt'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
         lijst['uitleg'] = 'Nieuwe productlijst voor LeukeKeuze, apart gehouden. Gaat pas naar de site na overleg met Marius.'
         bewaar(LIJST, lijst)
+        nova_straks()
         uit = {'gekozen': gekozen, 'inCat': in_cat, 'aantal': len(lijst['producten'])}
         if weg:
             uit['weg'] = weg
@@ -483,7 +496,18 @@ def api_lijst():
             else:
                 x['in_feed'] = False
         x['opsite'] = op_site(x.get('titel'), x.get('winkelurl')) == 'nu'
+    hulp_erbij(lijst['producten'])
     return lijst
+
+
+def hulp_erbij(ps):
+    """28-11-2026: stoplicht, commissie en prijs per eenheid bij gekozen producten."""
+    KH.model(site_titels)
+    for x in ps:
+        x['sl'] = KH.stoplicht(x.get('titel'))
+        x['com'] = KH.commissie(x.get('partner'), x.get('prijs'))
+        x['pe'] = KH.per_eenheid(x.get('titel'), x.get('prijs'))
+    return ps
 
 
 # ---------- Mijn categorieën ----------
@@ -798,11 +822,27 @@ def _api_zoek(q, fotos_vragen=True):
         status = {r[0]: op_site(r[3], r[4], r[5]) for r in kand}
         vrij = [r for r in kand if status[r[0]] != 'weg']
         verborgen = len(kand) - len(vrij)
+        SL, TR = {}, {}
+        KH.model(site_titels)
+        prs = sorted(r[10] for r in vrij if r[10] and r[10] > 0 and r[7])
+        mediaan = prs[len(prs) // 2] if len(prs) >= 8 else None
         if soort and sort == 'beste':
             zk = [' ' + plat(x).strip() if x.startswith(' ') else plat(x).strip() for x in soort['zoek']]
             zk = [x + ' ' if t.endswith(' ') else x for x, t in zip(zk, soort['zoek'])]
             ok_ = [plat(x).strip() for x in soort.get('ook', [])]
-            vrij = spreid(vrij, [kwaliteit(r, zk, ok_) for r in vrij])
+            cijfers = [kwaliteit(r, zk, ok_) for r in vrij]
+            # 28-11-2026: het cadeau-stoplicht en wat veel gezocht wordt tellen mee; rood zakt naar onderen. Commissie telt niet mee.
+            tr_all = KH.trend_blok(vrij)
+            for i, r in enumerate(vrij):
+                sl = KH.stoplicht(r[3])
+                SL[r[0]] = sl
+                TR[r[0]] = tr_all[i]
+                if sl.get('c') is not None:
+                    cijfers[i] += (sl['c'] - 55) / 12.0
+                if sl.get('k') == 'rood':
+                    cijfers[i] -= 4
+                cijfers[i] += KH.trend_punten(tr_all[i])
+            vrij = spreid(vrij, cijfers)
             if fotos_vragen:
                 try:
                     fotoscore.vraag([r[6] for r in vrij[:60] if r[6]])
@@ -857,11 +897,22 @@ def _api_zoek(q, fotos_vragen=True):
                     'min30': (pinfo.get(r[2]) or {}).get('min30'), 'sinds': (pinfo.get(r[2]) or {}).get('sinds'),
                     'andere': [{'partner': y[1], 'winkel': y[2], 'key': y[11], 'p': y[10], 'st': bool(y[7]), 'gekozen': y[11] in lijst}
                                for y in andere.get(r[17], [])]})
+        y = uit[-1]
+        y['sl'] = SL.get(r[17]) or KH.stoplicht(r[3])
+        if r[17] in TR:
+            trw = TR[r[17]]
+        else:
+            tw = KH.trend_woorden(r[3], r[4])
+            trw = max(tw, key=lambda z: z[2]) if tw else None
+        y['tr'] = KH.trend_label(trw)
+        y['com'] = KH.commissie(r[0], r[5])
+        y['pe'] = KH.per_eenheid(r[3], r[5])
+        y['po'] = KH.prijs_oordeel(r[5], mediaan)
         a = uit[-1]['andere']
         g = [y for y in a if y['st'] and y['p'] and y['p'] < (uit[-1]['p'] or 0) - 0.005]
         if g:
             uit[-1]['goedkoper'] = g[0]
-    return {'totaal': totaal, 'samen': samen, 'verborgen': verborgen, 'pagina': pagina, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
+    return {'totaal': totaal, 'samen': samen, 'verborgen': verborgen, 'pagina': pagina, 'mediaan': mediaan, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
             'partners': [{'id': a, 'naam': b, 'n': n} for a, b, n in partners], 'producten': uit}
 
 
@@ -943,6 +994,7 @@ def api_wissel(body):
             lijst['producten'][lijst['producten'].index(x)] = n
         lijst['bijgewerkt'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
         bewaar(LIJST, lijst)
+        nova_straks()
         return {'ok': True, 'aantal': len(lijst['producten']), 'nieuw': n['key'], 'winkel': n['winkel'], 'prijs': n['prijs'], 'oud': x}
 
 
@@ -1031,6 +1083,100 @@ def foto_ophalen(url):
     return b, soort
 
 
+# ---------- 28-11-2026: eindcontrole per pagina en NOVA ----------
+def blokken_onder(cid):
+    """De soorten (blokken) onder een categorie of pagina, met hun pad. Een blok zelf geeft alleen zichzelf."""
+    cats = cats_laden()['cats']
+    per = {k['id']: k for k in cats}
+    kind = {}
+    for k in cats:
+        kind.setdefault(k.get('ouder'), []).append(k)
+
+    def pad(i):
+        uit, k = [], per.get(i)
+        while k:
+            uit.insert(0, k['naam'])
+            k = per.get(k.get('ouder'))
+        return ' > '.join(uit)
+    uit = []
+
+    def loop(i):
+        k = per.get(i)
+        if not k:
+            return
+        if k.get('zoek') or not kind.get(i):
+            uit.append(dict(k, pad=pad(i)))
+        for c in sorted(kind.get(i, []), key=lambda c: c.get('volgorde', 0)):
+            loop(c['id'])
+    loop(cid)
+    return uit
+
+
+def api_nakijken(q):
+    cid = q.get('cat', [''])[0]
+    blokken = blokken_onder(cid)
+    if not blokken:
+        return {'fout': 'Categorie niet gevonden'}
+    lijst = api_lijst()['producten']
+    uit = KH.nakijken(blokken, lijst, zelfde_sleutels, fotoscore.score)
+    uit['producten'] = {x['key']: {'titel': x.get('titel'), 'foto': x.get('foto'), 'prijs': x.get('prijs'), 'winkel': x.get('winkel'),
+                                   'partner': x.get('partner'), 'categorieen': x.get('categorieen', [])}
+                        for x in lijst if set(x.get('categorieen', [])) & {b['id'] for b in blokken}}
+    return uit
+
+
+NOVA = {'timer': None, 'laatst': None}
+
+
+def nova_nu():
+    try:
+        cats = cats_laden()['cats']
+        lijst = api_lijst()['producten']
+        alle = [b for b in blokken_onder_alle(cats)]
+        mld = KH.nakijken(alle, lijst, zelfde_sleutels, fotoscore.score)
+        NOVA['laatst'] = KH.nova_export(cats, lijst, mld)
+    except Exception as e:
+        NOVA['laatst'] = {'fout': str(e)[:200]}
+    return NOVA['laatst']
+
+
+def blokken_onder_alle(cats):
+    kind = {}
+    for k in cats:
+        kind.setdefault(k.get('ouder'), []).append(k)
+    return [b for top in kind.get(None, []) for b in blokken_onder(top['id'])]
+
+
+def nova_straks():
+    """Een minuut na de laatste keuze het bestand voor Nova vernieuwen (niet bij elke klik)."""
+    if NOVA['timer']:
+        NOVA['timer'].cancel()
+    NOVA['timer'] = threading.Timer(60, nova_nu)
+    NOVA['timer'].daemon = True
+    NOVA['timer'].start()
+
+
+def api_nova_status():
+    map_, drive = KH.nova_map()
+    return {'map': map_, 'drive': drive, 'sleutel': KH.nova_sleutel_er(), 'laatst': NOVA['laatst'], 'oordeel': KH.nova_oordeel_lezen()}
+
+
+def api_nova_vraag(body):
+    cid = body.get('cat', '')
+    blokken = blokken_onder(cid)
+    if not blokken:
+        return {'fout': 'Categorie niet gevonden'}
+    lijst = api_lijst()['producten']
+    ids = {b['id'] for b in blokken}
+    ps = [x for x in lijst if set(x.get('categorieen', [])) & ids]
+    if not ps:
+        return {'fout': 'Op deze pagina is nog niets gekozen'}
+    mld = KH.nakijken(blokken, lijst, zelfde_sleutels, fotoscore.score)
+    teksten = [b['naam'] + ': ' + m['tekst'] for b in mld['blokken'] for m in b['meldingen'] if m['ernst'] != 'info']
+    naam = blokken[0]['pad'].rsplit(' > ', 1)[0] if len(blokken) > 1 else blokken[0]['pad']
+    return KH.nova_vraag(naam, ps, teksten)
+
+
 def api_export():
     """Alles wat in een categorie staat klaarzetten voor Claude: mijn keuzes\\naar-de-site.json"""
     c = cats_laden()['cats']
@@ -1082,7 +1228,12 @@ class Hand(SimpleHTTPRequestHandler):
             if u.path == '/api/producten':
                 return self.stuur(api_producten(q))
             if u.path == '/api/lijst':
-                return self.stuur(api_lijst() if q.get('prijzen') else laad_json(LIJST, {'producten': []}))
+                if q.get('prijzen'):
+                    return self.stuur(api_lijst())
+                l = laad_json(LIJST, {'producten': []})
+                if q.get('hulp'):
+                    hulp_erbij(l['producten'])
+                return self.stuur(l)
             if u.path == '/api/cats':
                 return self.stuur(api_cats())
             if u.path == '/api/zoek':
@@ -1091,6 +1242,10 @@ class Hand(SimpleHTTPRequestHandler):
                 return self.stuur(api_waar(q))
             if u.path == '/api/merken':
                 return self.stuur(api_merken(q))
+            if u.path == '/api/nakijken':
+                return self.stuur(api_nakijken(q))
+            if u.path == '/api/nova':
+                return self.stuur(api_nova_status())
             if u.path == '/foto':
                 b, soort = foto_ophalen(q.get('u', [''])[0])
                 if not b:
@@ -1127,6 +1282,10 @@ class Hand(SimpleHTTPRequestHandler):
                 return self.stuur(api_herstel(body))
             if u.path == '/api/export':
                 return self.stuur(api_export())
+            if u.path == '/api/nova':
+                return self.stuur(nova_nu())
+            if u.path == '/api/nova-vraag':
+                return self.stuur(api_nova_vraag(body))
         except Exception as e:
             return self.stuur({'fout': str(e)}, 500)
         self.stuur({'fout': 'onbekend'}, 404)
@@ -1150,6 +1309,6 @@ if __name__ == '__main__':
     print('Superkeurkamer draait op', url, '(dit venster open laten; sluiten = keurkamer uit)')
     if '--geen-browser' not in sys.argv:
         threading.Timer(1.0, lambda: webbrowser.open(url)).start()
-    threading.Thread(target=lambda: (api_merken({'q': ['xx']}), site_index()), daemon=True).start()   # merkenlijst alvast klaarzetten
+    threading.Thread(target=lambda: (api_merken({'q': ['xx']}), site_index(), KH.model(site_titels), nova_nu()), daemon=True).start()   # merkenlijst, stoplicht en Nova-bestand alvast klaarzetten
     fotoscore.start()   # 27-11-2026: foto's van de eerste producten van een blok op de achtergrond nakijken (mooiste eerst)
     srv.serve_forever()

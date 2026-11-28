@@ -27,6 +27,44 @@
     var namen = a.slice(0, 2).map(function (y) { return esc(y.winkel) + ' ' + euro(y.p) + (y.st ? '' : ' (uitverkocht)'); }).join(', ');
     return '<div class="ook-bij">Goedkoopste van ' + (a.length + 1) + ' winkels. Ook bij ' + namen + (a.length > 2 ? ' en nog ' + (a.length - 2) : '') + '</div>';
   }
+  /* 28-11-2026 (Marius: 'alle 6'): stoplicht, trend, prijs per eenheid, prijs voor deze soort en commissie op elke kaart */
+  function comTekst(c, kort) {
+    if (!c) return '';
+    var pct = c.pct ? (c.pct[0] && c.pct[0] !== c.pct[1] ? String(c.pct[0]).replace('.', ',') + '–' + String(c.pct[1]).replace('.', ',') : String(c.pct[1] || c.pct[0]).replace('.', ',')) + '%' : '';
+    if (!pct && c.gemeten) pct = String(c.gemeten.pct).replace('.', ',') + '% gemeten';
+    if (c.eur && !kort) return '± ' + (c.eur[0] !== c.eur[1] ? euro(c.eur[0]) + '–' + euro(c.eur[1]) : euro(c.eur[1])) + ' commissie (' + pct + ')';
+    if (pct) return pct + ' commissie';
+    if (c.gemeten) return String(c.gemeten.pct).replace('.', ',') + '% verdiend';
+    return '';
+  }
+  function comUitleg(c) {
+    if (!c) return 'Commissie onbekend (Daisycon geeft dat niet door; kijk in je Daisycon-account).';
+    var u = [];
+    if (c.pct) u.push('Volgens ' + (c.netwerk || 'het netwerk') + (c.bron === 'schatting' ? ' (schatting)' : '') + ': ' + comTekst(c, true) + ', over de prijs zonder btw.');
+    if (c.uitleg) u.push(c.uitleg.charAt(0).toUpperCase() + c.uitleg.slice(1) + '.');
+    if (c.gemeten) u.push('Wat we echt verdienden: ' + String(c.gemeten.pct).replace('.', ',') + '% van de bestelling (' + c.gemeten.verkopen + ' verkopen).');
+    u.push('Alleen ter info: commissie telt niet mee in de volgorde.');
+    return u.join(' ');
+  }
+  function slUitleg(sl) {
+    if (!sl || !sl.k) return '';
+    var t = sl.k === 'groen' ? 'Lijkt op wat je eerder koos.' : sl.k === 'oranje' ? 'Twijfel.' : 'Lijkt op wat je weggooide.';
+    if (sl.r) t = (sl.k === 'rood' ? 'Meestal geen cadeau: ' : 'Let op, meestal geen cadeau: ') + sl.r + '. ' + (sl.k === 'oranje' ? 'Maar het lijkt wel op wat je koos.' : '');
+    if (sl.voor && sl.voor.length) t += ' Telt mee: ' + sl.voor.join(', ') + '.';
+    if (sl.tegen && sl.tegen.length) t += ' Telt tegen: ' + sl.tegen.join(', ') + '.';
+    return t;
+  }
+  function hulpRegel(p) {
+    var sl = p.sl, uit = [];
+    if (sl && sl.k) uit.push('<span class="sl sl-' + sl.k + '" title="' + esc(slUitleg(sl)) + '"><i></i>' + (sl.c != null ? sl.c : '') + (sl.r && sl.k === 'rood' ? ' · ' + esc(sl.r) : '') + '</span>');
+    if (p.tr) uit.push('<span class="tr' + (p.tr.sterk ? ' sterk' : '') + '" title="' + esc('Wordt in Google ongeveer ' + tal(p.tr.vol) + ' keer per maand gezocht: \'' + p.tr.kw + '\'') + '">' + (p.tr.sterk ? '🔥 Veel gezocht' : 'Gezocht') + '</span>');
+    if (p.po) uit.push('<span class="po ' + p.po + '" title="Vergeleken met het midden van de prijzen in deze soort">' + (p.po === 'laag' ? 'Voordelig voor deze soort' : 'Prijzig voor deze soort') + '</span>');
+    var twee = [];
+    if (p.pe) twee.push('<span>' + esc(p.pe) + '</span>');
+    var ct = comTekst(p.com);
+    twee.push('<span class="com" title="' + esc(comUitleg(p.com)) + '">' + (ct ? esc(ct) : 'commissie onbekend') + '</span>');
+    return (uit.length ? '<div class="hulp">' + uit.join('') + '</div>' : '') + '<div class="hulp2">' + twee.join('') + '</div>';
+  }
   function wissel(oud, waar, klaar) {
     var d = waar.split('|');
     post('/api/wissel', { oud: oud, partner: d[0], key: d.slice(1).join('|') }).then(function (r) {
@@ -182,7 +220,7 @@
           (p.foto ? '<img src="' + esc(p.foto) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML=\'<span class=letter>' + esc(p.naam[0]) + '</span>\'">' : '<span class="letter">' + esc(p.naam[0]) + '</span>') +
           (p.fotoslecht ? '<span class="pk-foto">⚠ Foto\'s laden niet</span>' : p.feedoud && p.n ? '<span class="pk-foto">⚠ Feed oud (' + esc(p.feeddatum) + ')</span>' : '') +
         '</div><div class="pk-tekst"><h3>' + esc(p.naam) + '</h3>' +
-        (p.n ? '<div class="pk-meta"><span><b>' + tal(p.n) + '</b> producten</span>' + (p.korting ? '<span class="k"><b class="k">' + tal(p.korting) + '</b> afgeprijsd</span>' : '') + (p.populair ? '<span>★ ' + tal(p.populair) + ' populair</span>' : '') + '</div>' +
+        (p.n ? '<div class="pk-meta"><span><b>' + tal(p.n) + '</b> producten</span>' + (p.korting ? '<span class="k"><b class="k">' + tal(p.korting) + '</b> afgeprijsd</span>' : '') + (p.populair ? '<span>★ ' + tal(p.populair) + ' populair</span>' : '') + (comTekst(p.com, true) ? '<span class="pk-com" title="' + esc(comUitleg(p.com)) + '">💶 ' + esc(comTekst(p.com, true)) + '</span>' : '') + '</div>' +
           '<div class="pk-afd">' + (p.afdelingen || []).filter(function (a) { return !/^(Overig|Zonder|Kleine afdelingen)/.test(a[0]); }).slice(0, 5).map(function (a) { return '<span>' + esc(a[0]) + '</span>'; }).join('') + '</div>'
           : '<div class="pk-meta">' + esc(p.leeg || 'Nog geen producten') + '</div>') +
         '<div class="pk-voet"><span class="status ' + (st || '') + '">' + (STATUS[st] || 'Nog niet bekeken') + '</span>' +
@@ -548,7 +586,7 @@
   function toonCats(id) {
     staat.pid = null;
     var oudZoek = $('#cZoek'), y = window.scrollY;
-    Promise.all([get('/api/cats'), get('/api/lijst')]).then(function (res) {
+    Promise.all([get('/api/cats'), get('/api/lijst?hulp=1')]).then(function (res) {
       staat.cats = res[0].cats;
       if (!id && staat.actief && catVan(staat.actief)) { location.replace('#/cat/' + staat.actief); return; }
       if (id && catVan(id) && staat.actief !== id) { staat.actief = id; try { localStorage.setItem('skk-actief', id); } catch (e) {} }
@@ -598,7 +636,7 @@
       h.innerHTML =
         '<div class="kruimel"><a href="#/cat">Mijn categorieën</a>' + pad.map(function (c) { return ' › <a href="#/cat/' + c.id + '">' + esc(c.naam) + '</a>'; }).join('') + '</div>' +
         '<div class="titel-rij"><h2>' + esc(k.naam) + '</h2><span>' + tal(erin.length) + (k.doel ? ' van ongeveer ' + k.doel : '') + ' gekozen</span></div>' + soortInfo(k, erin.length) +
-        '<div class="cat-acties"><button class="chip" data-a="sub">+ Subcategorie</button><button class="chip" data-a="naam">✎ Naam wijzigen</button>' +
+        '<div class="cat-acties"><button class="chip nakijk" data-a="nakijken">🔎 Keur ' + (subs.length ? 'deze pagina' : 'deze soort') + ' na</button><button class="chip nova" data-a="nova">✨ Nova</button><button class="chip" data-a="sub">+ Subcategorie</button><button class="chip" data-a="naam">✎ Naam wijzigen</button>' +
           '<button class="chip" data-a="omhoog" title="Naar boven">↑</button><button class="chip" data-a="omlaag" title="Naar beneden">↓</button>' +
           '<button class="chip weg" data-a="weg">🗑 Verwijderen</button></div>' +
         (subs.length ? '<div class="rondjes">' + subs.map(function (s) {
@@ -617,6 +655,8 @@
         var b = e.target.closest('[data-a]'); if (!b) return;
         var a = b.dataset.a;
         if (a === 'slim') { staat.z.slim = staat.z.slim ? '' : '1'; if (!staat.z.slim && !staat.z.q) staat.z.q = k.naam; if (staat.z.slim) staat.z.q = ''; var zb = $('#zBalk'); if (zb) zb.remove(); tekenCat(); return; }
+        if (a === 'nakijken') return nakijkVenster(k);
+        if (a === 'nova') return novaVenster(k);
         if (a === 'sub') return nieuweCat(k.id);
         if (a === 'naam') return invoerVenster('Naam wijzigen', 'Nieuwe naam voor ' + k.naam + ':', k.naam, 'Bewaren', function (n) { catActie({ actie: 'hernoem', id: k.id, naam: n }, function () { toonCats(k.id); }); });
         if (a === 'omhoog' || a === 'omlaag') return catActie({ actie: a, id: k.id }, function () { toonCats(k.id); });
@@ -636,7 +676,80 @@
       goedkoperOpKaarten('cErin', k);
       tekenZoek();
     };
-    if (lijstData) teken(lijstData); else get('/api/lijst').then(teken);
+    if (lijstData) teken(lijstData); else get('/api/lijst?hulp=1').then(teken);
+  }
+  /* 28-11-2026: 'Keur deze pagina na' (eindcontrole per categorie) */
+  var ERNST = { fout: ['Doen', 'fout'], let: ['Even kijken', 'let'], info: ['Ter info', 'info'] };
+  function nakijkVenster(k) {
+    var m = $('#modal');
+    m.innerHTML = '<div class="notitie-venster nakijk-venster"><button class="sluit" aria-label="Sluiten">✕</button><h3>Nakijken: ' + esc(k.naam) + '</h3><div class="laden" style="padding:30px">Bezig met nakijken…</div></div>';
+    m.hidden = false;
+    m.onclick = function (e) { if (e.target === m || e.target.closest('.sluit')) { m.hidden = true; m.innerHTML = ''; } };
+    get('/api/nakijken?cat=' + encodeURIComponent(k.id)).then(function (d) {
+      if (d.fout) { m.querySelector('.laden').textContent = d.fout; return; }
+      var t = d.telling || {}, P = d.producten || {};
+      var blokken = (d.blokken || []).filter(function (b) { return b.n || (b.meldingen || []).some(function (x) { return x.ernst !== 'info'; }); });
+      var html = '<p>' + (t.fout ? '<b class="e-fout">' + t.fout + ' om te doen</b> · ' : '<b class="e-ok">Niets dat echt moet</b> · ') + (t.let || 0) + ' om even naar te kijken · ' + (t.info || 0) + ' ter info. ' +
+        'Er gaat niets vanzelf weg: jij kiest.</p>' +
+        '<label class="nk-filter"><input type="checkbox" id="nkInfo"> Ook "ter info" tonen</label>';
+      html += blokken.map(function (b) {
+        var ms = b.meldingen.slice().sort(function (x, y) { return 'fli'.indexOf(x.ernst[0]) - 'fli'.indexOf(y.ernst[0]); });
+        return '<div class="nk-blok"><h4>' + esc(b.naam) + ' <small>' + b.n + (b.doel ? ' van ~' + b.doel : '') + ' gekozen · <a href="#/cat/' + esc(b.id) + '">open</a></small></h4>' +
+          (ms.length ? ms.map(function (x) {
+            return '<div class="nk-m e-' + x.ernst + '"' + (x.ernst === 'info' ? ' data-info' : '') + '><span class="nk-ernst">' + ERNST[x.ernst][0] + '</span><span class="nk-tekst">' + esc(x.tekst) + '</span>' +
+              (x.keys.length ? '<div class="nk-prods">' + x.keys.slice(0, 12).map(function (key) {
+                var p = P[key]; if (!p) return '';
+                return '<div class="nk-p" data-key="' + esc(key) + '" data-blok="' + esc(b.id) + '">' + beeld(p.foto, p.titel) + '<span title="' + esc(p.titel) + '">' + esc(p.titel) + '</span><small>' + esc(p.winkel || '') + ' · ' + euro(p.prijs) + '</small><button class="nk-uit">✕ Uit ' + esc(b.naam) + '</button></div>';
+              }).join('') + '</div>' : '') + '</div>';
+          }).join('') : '<div class="nk-m e-ok"><span class="nk-ernst">Goed</span><span class="nk-tekst">Geen opmerkingen.</span></div>') + '</div>';
+      }).join('');
+      var v = m.querySelector('.nakijk-venster');
+      v.innerHTML = '<button class="sluit" aria-label="Sluiten">✕</button><h3>Nakijken: ' + esc(k.naam) + '</h3>' + html;
+      var zetInfo = function () { var aan = $('#nkInfo').checked; v.querySelectorAll('[data-info]').forEach(function (el) { el.hidden = !aan; }); };
+      $('#nkInfo').addEventListener('change', zetInfo); zetInfo();
+      v.addEventListener('click', function (e) {
+        var b = e.target.closest('.nk-uit'); if (!b) return;
+        var el = b.closest('.nk-p'), key = el.dataset.key, blok = el.dataset.blok, p = P[key];
+        post('/api/kies', { partner: p.partner, key: key, cat: blok }).then(function (r) {
+          if (r.fout) return melding(r.fout);
+          $('#lijstTeller').textContent = tal(r.aantal);
+          v.querySelectorAll('.nk-p[data-key="' + key + '"][data-blok="' + blok + '"]').forEach(function (x) { x.classList.add('weg'); x.querySelector('.nk-uit').textContent = 'Eruit'; x.querySelector('.nk-uit').disabled = true; });
+          melding('Uit ' + (catVan(blok) ? catVan(blok).naam : 'de soort') + ' gehaald');
+          get('/api/cats').then(function (c) { staat.cats = c.cats; tekenCatBoom(); });
+          staat.naNakijken = true;
+        });
+      });
+      m.onclick = function (e) { if (e.target === m || e.target.closest('.sluit')) { m.hidden = true; m.innerHTML = ''; if (staat.naNakijken) { staat.naNakijken = false; tekenCat(); } } };
+    });
+  }
+  /* 28-11-2026: Nova kijkt mee (bestand in Google Drive, en met een eigen OpenAI-sleutel ook hier in de keurkamer) */
+  function novaVenster(k) {
+    var m = $('#modal');
+    m.innerHTML = '<div class="notitie-venster nova-venster"><button class="sluit" aria-label="Sluiten">✕</button><h3>✨ Nova kijkt mee</h3><div class="laden" style="padding:30px">Laden…</div></div>';
+    m.hidden = false;
+    m.onclick = function (e) { if (e.target === m || e.target.closest('.sluit')) { m.hidden = true; m.innerHTML = ''; } };
+    get('/api/nova').then(function (d) {
+      var v = m.querySelector('.nova-venster'), l = d.laatst || {};
+      v.innerHTML = '<button class="sluit" aria-label="Sluiten">✕</button><h3>✨ Nova kijkt mee</h3>' +
+        '<p>Al je keuzes staan per pagina in een bestand ' + (d.drive ? 'in <b>Google Drive</b>' : 'op je laptop (Google Drive niet gevonden)') + ':<br><code>' + esc(d.map) + '\\keuzes-per-pagina.md</code><br>' +
+        (l.n != null ? 'Laatst bijgewerkt met <b>' + tal(l.n) + '</b> keuzes. ' : (l.fout ? 'Fout bij bijwerken: ' + esc(l.fout) + '. ' : '')) +
+        'Het bestand wordt vanzelf bijgewerkt, een minuut na je laatste keuze.</p>' +
+        '<p>Vraag Nova in ChatGPT: <i>"Lees in mijn Google Drive de map LeukeKeuze voor Nova › Superkeurkamer, bestand keuzes-per-pagina, en beoordeel de pagina ' + esc(k.naam) + '."</i> ' +
+        'Zet Nova haar oordeel als <code>nova-oordeel.md</code> in die map, dan zie je het hier.</p>' +
+        '<div class="mknoppen"><button class="knop wit" id="nvNu">Bestand nu bijwerken</button>' +
+          (d.sleutel ? '<button class="knop goud" id="nvVraag">Vraag Nova om ' + esc(k.naam) + ' te beoordelen</button>' : '') + '</div>' +
+        (d.sleutel ? '' : '<p class="nv-klein">Wil je dat Nova hier zelf meekijkt, zonder te kopiëren? Dubbelklik op <b>NOVA koppelen.cmd</b> in de map <i>programma</i> van de Superkeurkamer en plak je eigen OpenAI-sleutel. Die gaat in de Windows-kluis; Claude ziet hem nooit. Het gebruikt je eigen OpenAI-tegoed.</p>') +
+        '<div id="nvAntwoord"></div>' +
+        (d.oordeel ? '<h4>Laatste oordeel van Nova <small>(' + esc(d.oordeel.bestand) + ', ' + esc(d.oordeel.datum) + ')</small></h4><div class="nv-tekst">' + esc(d.oordeel.tekst) + '</div>' : '');
+      $('#nvNu').addEventListener('click', function () { var b = this; b.disabled = true; b.textContent = 'Bezig…'; post('/api/nova', {}).then(function (r) { b.disabled = false; b.textContent = 'Bestand nu bijwerken'; melding(r.fout ? 'Fout: ' + r.fout : 'Bestand voor Nova bijgewerkt (' + tal(r.n) + ' keuzes)'); }); });
+      if ($('#nvVraag')) $('#nvVraag').addEventListener('click', function () {
+        var b = this; b.disabled = true; b.textContent = 'Nova leest… (kan een minuut duren)';
+        post('/api/nova-vraag', { cat: k.id }).then(function (r) {
+          b.disabled = false; b.textContent = 'Vraag Nova om ' + k.naam + ' te beoordelen';
+          $('#nvAntwoord').innerHTML = r.fout ? '<p class="e-fout">' + esc(r.fout) + '</p>' : '<h4>Nova over ' + esc(k.naam) + '</h4><div class="nv-tekst">' + esc(r.tekst) + '</div>';
+        });
+      });
+    });
   }
   /* Zoeklijst (14-11-2026): uitleg bij een soort: voor wie, prijs, hoeveel we zoeken, tip, en de slimme zoekwoorden. */
   var VOOR_NAAM = { kind: 'kinderen', tiener: 'tieners', haar: 'haar', hem: 'hem', 'opa-oma': 'opa en oma', collega: 'collega\'s', baby: 'baby', iedereen: 'iedereen' };
@@ -651,6 +764,7 @@
       '<p class="si-woorden">Zoekt op: ' + k.zoek.map(function (w) { return '<b>' + esc(w.trim()) + '</b>'; }).join(' · ') +
         (k.ook && k.ook.length ? '<br>En ook een van: ' + k.ook.map(function (w) { return '<b>' + esc(w.trim()) + '</b>'; }).join(' · ') : '') +
         (k.winkels && k.winkels.length ? '<br>Alleen bij: ' + k.winkels.map(esc).join(', ') : '') + (k.niet && k.niet.length ? '<br><small>Niet: ' + k.niet.map(function (w) { return esc(w.trim()); }).join(', ') + '</small>' : '') + '</p>' +
+      '<p class="si-legenda"><span class="sl sl-groen"><i></i></span> lijkt op wat je koos · <span class="sl sl-oranje"><i></i></span> twijfel · <span class="sl sl-rood"><i></i></span> lijkt op wat je weggooit of is meestal geen cadeau (staat onderaan). Ga met je muis op het bolletje voor de reden.</p>' +
       '<button class="chip' + (staat.z && staat.z.slim ? ' aan' : '') + '" data-a="slim">' + (staat.z && staat.z.slim ? '✓ Slim zoeken staat aan' : 'Slim zoeken aanzetten') + '</button></div>';
   }
   function catKaart(x) {
@@ -658,7 +772,7 @@
     return '<article class="prod gekozen" data-key="' + esc(x.key) + '"><div class="labels">' + (pct ? '<span class="lab k">-' + pct + '%</span>' : '') + (x.populair ? '<span class="lab p">★ Populair</span>' : '') + '</div>' +
       '<div class="prod-beeld" data-zoom>' + beeld(x.foto, x.titel) + '</div>' +
       '<div class="prod-tekst"><span class="prod-merk">' + esc(x.winkel) + (x.merk ? ' · ' + esc(x.merk) : '') + '</span><span class="prod-titel" title="' + esc(x.titel) + '">' + esc(x.titel) + '</span>' +
-      '<span class="prijs' + (pct ? ' k' : '') + '"><b>' + euro(x.prijs) + '</b>' + (pct ? '<s>' + euro(x.oud) + '</s>' : '') + '</span>' +
+      '<span class="prijs' + (pct ? ' k' : '') + '"><b>' + euro(x.prijs) + '</b>' + (pct ? '<s>' + euro(x.oud) + '</s>' : '') + '</span>' + hulpRegel({ sl: x.sl, com: x.com, pe: x.pe }) +
       '<button class="kies" data-uit>✕ Uit deze categorie</button></div></article>';
   }
   function zoekQuery() {
@@ -747,7 +861,7 @@
         (p.v > 1 ? '<span class="lab v">' + p.v + ' varianten</span>' : '') + (p.gekozen && !p.inCat ? '<span class="lab v">Al in je lijst</span>' : '') + (p.opsite ? '<span class="lab s">Al op de site</span>' : '') + '</div>' +
       '<div class="prod-beeld" data-zoom>' + beeld(p.f, p.t) + '</div>' +
       '<div class="prod-tekst"><span class="prod-merk">' + esc(p.winkel) + (p.m ? ' · ' + esc(p.m) : '') + '</span><span class="prod-titel" title="' + esc(p.t) + '">' + esc(p.t) + '</span>' +
-        '<span class="prijs' + (p.o ? ' k' : '') + '"><b>' + euro(p.p) + '</b>' + (p.o ? '<s>' + euro(p.o) + '</s>' : '') + '</span>' + andereRegel(p) +
+        '<span class="prijs' + (p.o ? ' k' : '') + '"><b>' + euro(p.p) + '</b>' + (p.o ? '<s>' + euro(p.o) + '</s>' : '') + '</span>' + hulpRegel(p) + andereRegel(p) +
         '<button class="kies" data-in>' + (p.inCat ? '✓ In ' + esc(k.naam) : '+ In ' + esc(k.naam)) + '</button>' +
       '</div></article>';
   }
@@ -805,7 +919,7 @@
     Promise.all([get('/api/lijst?prijzen=1'), get('/api/cats')]).then(function (res) {
       var l = res[0]; staat.cats = res[1].cats; staat.lijstRuw = {}; (l.producten || []).forEach(function (x) { staat.lijstRuw[x.key] = x; });
       var P = l.producten || [];
-      staat.producten = P.map(function (x) { return { key: x.key, partner: x.partner, t: x.titel, m: x.merk, p: x.prijs, o: x.oud, f: x.foto, l: x.link, u: x.winkelurl, g: x.groep, k: x.kenmerken, pop: x.populair, gekozen: true, notitie: x.notitie, pct: x.oud ? Math.round(100 * (x.oud - x.prijs) / x.oud) : 0, st: 1, v: 1, winkel: x.winkel, cats: x.categorieen || [], nu: x.prijs_nu, inFeed: x.in_feed, opsite: x.opsite }; });
+      staat.producten = P.map(function (x) { return { key: x.key, partner: x.partner, t: x.titel, m: x.merk, p: x.prijs, o: x.oud, f: x.foto, l: x.link, u: x.winkelurl, g: x.groep, k: x.kenmerken, pop: x.populair, gekozen: true, notitie: x.notitie, pct: x.oud ? Math.round(100 * (x.oud - x.prijs) / x.oud) : 0, st: 1, v: 1, winkel: x.winkel, cats: x.categorieen || [], nu: x.prijs_nu, inFeed: x.in_feed, opsite: x.opsite, sl: x.sl, com: x.com, pe: x.pe }; });
       var winkels = {}; staat.producten.forEach(function (p) { winkels[p.winkel] = 1; });
       var blokken = [];
       var loop = function (ouder, d) {
@@ -853,7 +967,7 @@
       '<div class="prod-beeld" data-zoom>' + beeld(p.f, p.t) + '</div>' +
       '<div class="prod-tekst"><span class="prod-merk">' + esc(p.winkel) + (p.m ? ' · ' + esc(p.m) : '') + '</span><span class="prod-titel" title="' + esc(p.t) + '">' + esc(p.t) + '</span>' +
         '<span class="prijs' + (p.o ? ' k' : '') + '"><b>' + euro(p.p) + '</b>' + (p.o ? '<s>' + euro(p.o) + '</s>' : '') + '</span>' +
-        (p.nu != null && Math.abs(p.nu - p.p) >= 0.01 ? '<span class="prijs-nu ' + (p.nu < p.p ? 'lager' : 'hoger') + '">Prijs nu ' + euro(p.nu) + (p.nu < p.p ? ' ↓' : ' ↑') + '</span>' : '') +
+        hulpRegel(p) + (p.nu != null && Math.abs(p.nu - p.p) >= 0.01 ? '<span class="prijs-nu ' + (p.nu < p.p ? 'lager' : 'hoger') + '">Prijs nu ' + euro(p.nu) + (p.nu < p.p ? ' ↓' : ' ↑') + '</span>' : '') +
         '<input class="notitie" placeholder="Notitie (bv. voor Sinterklaas)" value="' + esc(p.notitie || '') + '">' +
         '<button class="kies" data-weg>✕ Uit mijn lijst</button>' +
       '</div></article>';
