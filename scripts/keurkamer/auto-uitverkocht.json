@@ -1,6 +1,6 @@
 {
  "uitleg": "Producten die de dagelijkse controle zelf op uitverkocht zette (bol had geen aanbod meer, of de feed zei niet op voorraad). Staan ze weer leverbaar in een feed, dan zet de controle ze vanzelf terug op de site. Wat met de hand op uitverkocht of afgekeurd staat, komt hier nooit in.",
- "bijgewerkt": "2026-11-27",
+ "bijgewerkt": "2026-11-28",
  "producten": {
   "bol-9200000091616642": {
    "datum": "2026-11-21",
@@ -452,16 +452,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/barbour-carlton-beanie-hat-dark-green/9300000186857929/",
    "titel": "Barbour wollen muts Carlton"
   },
-  "bol-9300000177497152": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000177497152",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbarbie-cutie-reveal-color-dream-barbiepop-dalmatier%2F9300000177497152%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/barbie-cutie-reveal-color-dream-barbiepop-dalmatier/9300000177497152/",
-   "titel": "Barbie Cutie Reveal Color Dream - dalmatiër"
-  },
   "bol-9200000052055968": {
    "datum": "2026-11-21",
    "bron": "bol",
@@ -612,16 +602,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/learning-resources-educatief-hot-dots-leren-lezen-en-rekenen-set/9300000235099556/",
    "titel": "Hot Dots: thuis leren lezen en rekenen"
   },
-  "bol-9300000260987805": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000260987805",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbresser-youngster-lcd-microscoop-afneembare-handmicroscoop-optische-en-digitale-vergroting%2F9300000260987805%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/bresser-youngster-lcd-microscoop-afneembare-handmicroscoop-optische-en-digitale-vergroting/9300000260987805/",
-   "titel": "Bresser Youngster LCD-microscoop"
-  },
   "bol-9300000166820750": {
    "datum": "2026-11-21",
    "bron": "bol",
@@ -722,16 +702,6 @@
    "winkelUrl": "",
    "titel": "Nenuco soft babypop met geluid (30 cm)"
   },
-  "cl-gabby-kamer": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000177675462",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgabby-s-poppenhuis-cakey-s-balkoon-8-delige-speelset-met-speelgoedfiguren-accessoires-voor-het-poppenhuis%2F9300000177675462%2F",
-   "winkelUrl": "",
-   "titel": "Gabby's Dollhouse kamer-speelset"
-  },
   "cl-sq-jackalope": {
    "datum": "2026-11-21",
    "bron": "bol",
@@ -781,16 +751,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcarrera-go-sonic-racebaan%2F9300000152475717%2F",
    "winkelUrl": "",
    "titel": "Carrera GO!!! racebaan Sonic vs. Shadow"
-  },
-  "cl-exost-rally": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000228659121",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fexost-pro-rally-xtr-bestuurbare-auto-incl-oplaadbare-batterij-high-speed%2F9300000228659121%2F",
-   "winkelUrl": "",
-   "titel": "Exost Pro RC Rally XTR (1:14)"
   },
   "cl-nikko-truck": {
    "datum": "2026-11-21",
@@ -1012,16 +972,6 @@
    "winkelUrl": "",
    "titel": "Yamaha FG800 / FS800 akoestische gitaar"
   },
-  "cl-boss-katana": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9200000123115683",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fboss-katana-mini-gitaarversterker-zwart%2F9200000123115683%2F",
-   "winkelUrl": "",
-   "titel": "Boss Katana Mini versterker"
-  },
   "cl-walking-pad": {
    "datum": "2026-11-21",
    "bron": "bol",
@@ -1102,26 +1052,6 @@
    "winkelUrl": "",
    "titel": "Klassieke houten slee 110 cm"
   },
-  "cl-kadax-stuur": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000236904954",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fkadax-zigi-zet-kunststof-slee-met-stuur-en-claxon-91-x-45-x-37-cm-kinderslee-stabiele-en-veilige-bobslee-rodel-van-kunststof-zigi-zet-glijslee%2F9300000236904954%2F",
-   "winkelUrl": "",
-   "titel": "Slee met stuur en claxon"
-  },
-  "cl-bd-boor": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9200000080453130",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fblack-decker-accuboormachine-7-2v-lithium-draadloos%2F9200000080453130%2F",
-   "winkelUrl": "",
-   "titel": "Black+Decker accuboormachine 7,2V"
-  },
   "cl-oa-duo": {
    "datum": "2026-11-21",
    "bron": "bol",
@@ -1151,16 +1081,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F3d-print-3d-pen-starterspakket-kinderen-combideal-met-filament-pakket-9-kleuren-rood%2F9300000179601184%2F",
    "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F3d-print-3d-pen-starterspakket-kinderen-combideal-met-filament-pakket-9-kleuren-rood%2F9300000179601184%2F",
    "titel": "3D&Print 3D-pen starterspakket met 9 extra kleuren"
-  },
-  "bol-9300000153485321": {
-   "datum": "2026-11-21",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000153485321",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbontempi-electronic-keyboard-roll-up%2F9300000153485321%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/bontempi-electronic-keyboard-roll-up/9300000153485321/",
-   "titel": "Bontempi oprolbare piano (37 toetsen)"
   },
   "cl-lcd": {
    "datum": "2026-11-21",
@@ -2335,16 +2255,6 @@
    "winkelUrl": "https://eu.fragrance.com/nl-nl/products/sol-de-janeiro-delicia-drench-jet-set-cheirosa-59-170-ml-2117",
    "titel": "Sol de Janeiro Delícia Drench Jet Set (mist, bodybutter en douche-olie)"
   },
-  "bol-9300000050712928": {
-   "datum": "2026-11-26",
-   "bron": "bol",
-   "reden": "niet op voorraad volgens bol",
-   "nr": "9300000050712928",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdior-sauvage-elixir-60-ml-eau-de-parfum-herenparfum%2F9300000050712928%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/dior-sauvage-elixir-60-ml-eau-de-parfum-herenparfum/9300000050712928/",
-   "titel": "Dior Sauvage Elixir (60 ml)"
-  },
   "bol-9300000244357239": {
    "datum": "2026-11-26",
    "bron": "bol",
@@ -3069,16 +2979,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/x/1004004007092873/",
    "titel": "SES zelf zeepjes gieten met glitter"
   },
-  "bol-9200000087593676": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9200000087593676",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flucardi-dames-14-karaat-geelgouden-hanger-kruis-met-kristal-hanger-14-karaat-goud-geelgoud%2F9200000087593676%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/lucardi-dames-14-karaat-geelgouden-hanger-kruis-met-kristal-hanger-14-karaat-goud-geelgoud/9200000087593676/",
-   "titel": "Kruishanger 14 karaat goud (Lucardi)"
-  },
   "bol-9200000104236190": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3149,16 +3049,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/pokemon-legends-z-a/9300000183040640/",
    "titel": "Pokémon Legends: Z-A (Nintendo Switch)"
   },
-  "bol-9300000377702823": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000377702823",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcalvin-klein-euphoria-women-giftset-225-ml-edp-spray-100ml-body-lotion-100ml-edp-spray-15ml-edp-spray-10ml%2F9300000377702823%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/calvin-klein-euphoria-women-giftset-225-ml-edp-spray-100ml-body-lotion-100ml-edp-spray-15ml-edp-spray-10ml/9300000377702823/",
-   "titel": "Calvin Klein Euphoria cadeauset (3 delen)"
-  },
   "bol-9300000194706847": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3168,16 +3058,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fburberry-hero-giftset-100-ml-eau-de-parfum-spray-10-ml-eau-de-parfum-tasspray-cadeauset-voor-heren%2F9300000194706847%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/burberry-hero-giftset-100-ml-eau-de-parfum-spray-10-ml-eau-de-parfum-tasspray-cadeauset-voor-heren/9300000194706847/",
    "titel": "Burberry Hero cadeauset met tasspray"
-  },
-  "bol-9300000110090153": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000110090153",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ftony-chocolonely-melk-roos-framboos-chocoladereep-cadeau-liefde-reep-chocolade-hart-chocolade-geschenk-chocoladecadeaus-1-x-180-gram%2F9300000110090153%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/tony-chocolonely-melk-roos-framboos-chocoladereep-cadeau-liefde-reep-chocolade-hart-chocolade-geschenk-chocoladecadeaus-1-x-180-gram/9300000110090153/",
-   "titel": "Tony's Chocolonely Lief: hartjesreep melk-roos-framboos"
   },
   "bol-9300000257840777": {
    "datum": "2026-11-27",
@@ -3228,26 +3108,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpaperblanks%2F9300000272130223%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/paperblanks/9300000272130223/",
    "titel": "Paperblanks agenda 2027 New York Rose (18 maanden)"
-  },
-  "bol-9300000159335565": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000159335565",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsalomon-xa-pro-3d-v9-gtx-gore-tex-heren-wandelschoenen-trail-running-schoenen-472701-maat-eu-43-1-3-uk-9%2F9300000159335565%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/salomon-xa-pro-3d-v9-gtx-gore-tex-heren-wandelschoenen-trail-running-schoenen-472701-maat-eu-43-1-3-uk-9/9300000159335565/",
-   "titel": "Salomon XA Pro 3D V9 Gore-Tex wandelschoenen heren"
-  },
-  "bol-9300000340513473": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000340513473",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fadvents-kalender-horse-club-2026-winter-wonderland-ride%2F9300000340513473%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/advents-kalender-horse-club-2026-winter-wonderland-ride/9300000340513473/",
-   "titel": "Schleich Horse Club adventskalender 2026"
   },
   "bol-9300000184508105": {
    "datum": "2026-11-27",
@@ -3449,16 +3309,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/uno-extreme-mattel-games-vernieuwde-versie-kaartspel/9300000020893712/",
    "titel": "UNO Extreme"
   },
-  "bol-9300000247823252": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000247823252",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fmarvel-spidey-and-his-amazing-friends-dance-n-rescue-spidey-25cm%2F9300000247823252%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/marvel-spidey-and-his-amazing-friends-dance-n-rescue-spidey-25cm/9300000247823252/",
-   "titel": "Spidey and His Amazing Friends Dansende Spidey"
-  },
   "bol-9300000002496991": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3488,26 +3338,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbluey-bluey-s-avonturenvliegtuig-speelset-openklapbaar-vliegtuig-incl-piloot-bluey-speelfiguur%2F9300000285102379%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/bluey-bluey-s-avonturenvliegtuig-speelset-openklapbaar-vliegtuig-incl-piloot-bluey-speelfiguur/9300000285102379/",
    "titel": "Bluey Avonturenvliegtuig"
-  },
-  "bol-9300000220047815": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000220047815",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbuki-wereldbol-dag-en-nacht%2F9300000220047815%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/buki-wereldbol-dag-en-nacht/9300000220047815/",
-   "titel": "Buki Wereldbol Dag en Nacht"
-  },
-  "bol-9300000264938792": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000264938792",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fvtech-scan-leer-kassa%2F9300000264938792%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/vtech-scan-leer-kassa/9300000264938792/",
-   "titel": "VTech Scan & Leer Kassa"
   },
   "bol-9300000269832334": {
    "datum": "2026-11-27",
@@ -3539,16 +3369,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/cookie-dough-pepernoten-peppernuts-holland/9300000164390595/",
    "titel": "Peppernuts Holland cookie dough kruidnoten"
   },
-  "bol-9300000239540734": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000239540734",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnivea-care-moments-of-joy-geschenkset-sinterklaas-en-kerst-cadeau-kerstcadeau-met-body-milk-douchegel-en-creme-cadeauset-verjaardag%2F9300000239540734%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/nivea-care-moments-of-joy-geschenkset-sinterklaas-en-kerst-cadeau-kerstcadeau-met-body-milk-douchegel-en-creme-cadeauset-verjaardag/9300000239540734/",
-   "titel": "NIVEA Moments of Joy geschenkset"
-  },
   "bol-9300000300909481": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3569,16 +3389,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/disney-en-pixar-toy-story-space-ranger-laserhandschoen-polslanceerder-rollenspel-met-licht-en-geluid/9300000256526150/",
    "titel": "Toy Story 5 Command Blaster (rollenspel)"
   },
-  "bol-9200000099483858": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9200000099483858",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsophie-de-giraf-muziekdoosje-stars-glow-in-the-dark%2F9200000099483858%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/sophie-de-giraf-muziekdoosje-stars-glow-in-the-dark/9200000099483858/",
-   "titel": "Sophie de giraf muziekdoosje “Stars”"
-  },
   "bol-9300000235206215": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3588,16 +3398,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsntials-survival-kit-80-delig-ontworpen-door-ervaring-xl-noodpakket-voor-thuis-overleven-ramp-stroomuitval-ehbo-kit-handboek-powerbankl-waterfilter-80-delig%2F9300000235206215%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/sntials-survival-kit-80-delig-ontworpen-door-ervaring-xl-noodpakket-voor-thuis-overleven-ramp-stroomuitval-ehbo-kit-handboek-powerbankl-waterfilter-80-delig/9300000235206215/",
    "titel": "SNTIALS noodpakket XL (100 delen)"
-  },
-  "bol-9300000233709985": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000233709985",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fthuys-noodpakket-rampenrugzak-oorlog-compleet-pakket-wees-voorbereid%2F9300000233709985%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/thuys-noodpakket-rampenrugzak-oorlog-compleet-pakket-wees-voorbereid/9300000233709985/",
-   "titel": "Thuys noodpakket-rugzak, compleet"
   },
   "bol-9300000396963936": {
    "datum": "2026-11-27",
@@ -3679,26 +3479,6 @@
    "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpandora-594234c01-18-zilver-gerhodineerd-roze-strik-16-18-20-cm-armband-18-cm%2F9300000268529825%2F",
    "titel": "Pandora armband met roze strik (18 cm)"
   },
-  "bol-9200000008610220": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9200000008610220",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fazzaro-chrome-eau-de-toilette-spray-50-ml%2F9200000008610220%2F",
-   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fazzaro-chrome-eau-de-toilette-spray-50-ml%2F9200000008610220%2F",
-   "titel": "Azzaro Chrome eau de toilette"
-  },
-  "bol-9300000070618871": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000070618871",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnerf-elite-2-0-motoblitz-cs-10-blaster%2F9300000070618871%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/nerf-elite-2-0-motoblitz-cs-10-blaster/9300000070618871/",
-   "titel": "Nerf Elite 2.0 Motoblitz automatische blaster"
-  },
   "bol-9300000193114181": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3739,26 +3519,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/playmobil-great-castle-knights-lion-bouwspel-183-stukken-veelkleurig-kinderen/9300000248617903/",
    "titel": "PLAYMOBIL Knights groot ridderkasteel (72112)"
   },
-  "bol-9300000197038930": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000197038930",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fmondo-motors-rc-bestuurbare-auto-audi-s1-e-tron-schaal-1-10%2F9300000197038930%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/mondo-motors-rc-bestuurbare-auto-audi-s1-e-tron-schaal-1-10/9300000197038930/",
-   "titel": "Mondo bestuurbare Audi S1 e-tron (1:10)"
-  },
-  "bol-9300000319684995": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000319684995",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjellycat-knuffels-bartholomew-bear-daffodil-outfit-beer-in-narcis-bloemen-outfit-teddybeer-knuffelbeer-knuffel-31-cm-geschikt-voor-alle-leeftijden%2F9300000319684995%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/jellycat-knuffels-bartholomew-bear-daffodil-outfit-beer-in-narcis-bloemen-outfit-teddybeer-knuffelbeer-knuffel-31-cm-geschikt-voor-alle-leeftijden/9300000319684995/",
-   "titel": "Jellycat Blossom konijn Petal beige (31 cm)"
-  },
   "bol-9200000130396617": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3768,16 +3528,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsylvanian-families-5449-meubelstartset%2F9200000130396617%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/sylvanian-families-5449-meubelstartset/9200000130396617/",
    "titel": "Sylvanian Families klassieke meubelset (5449)"
-  },
-  "bol-9300000247982483": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000247982483",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbarbie-weekend-escape-house-poppenhuis-met-pop-10-accessoires-4-speelruimtes-en-een-katje%2F9300000247982483%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/barbie-weekend-escape-house-poppenhuis-met-pop-10-accessoires-4-speelruimtes-en-een-katje/9300000247982483/",
-   "titel": "Barbie Weekend Escape-huis met pop"
   },
   "bol-9300000174278833": {
    "datum": "2026-11-27",
@@ -3829,16 +3579,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/vtech-5-in-1-muzikale-babygym-interactief-speelgoed/9300000225854966/",
    "titel": "VTech 5-in-1 muzikale babygym"
   },
-  "bol-9300000040234647": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000040234647",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ftomy-bubbels-en-bakken-keuken-badspeelgoed%2F9300000040234647%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/tomy-bubbels-en-bakken-keuken-badspeelgoed/9300000040234647/",
-   "titel": "TOMY badkeuken Bubbels en Bakken"
-  },
   "bol-9300000001942005": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -3858,16 +3598,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjanod-magnetische-doe-het-zelf-loopwagen-brico-kids%2F9200000092972308%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/janod-magnetische-doe-het-zelf-loopwagen-brico-kids/9200000092972308/",
    "titel": "Janod loopwagen met gereedschap Brico'Kids"
-  },
-  "bol-9300000127897587": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000127897587",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fplus-plus-learn-to-build-dinosaurs-constructiespeelgoed-set-met-bouwstenen-600-delige-bouwset-bouwspeelgoed-vanaf-5-jaar%2F9300000127897587%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/plus-plus-learn-to-build-dinosaurs-constructiespeelgoed-set-met-bouwstenen-600-delige-bouwset-bouwspeelgoed-vanaf-5-jaar/9300000127897587/",
-   "titel": "Plus-Plus Learn to Build dino's (600 stukjes)"
   },
   "cl-bol-smoby-rookie": {
    "datum": "2026-11-27",
@@ -3922,15 +3652,6 @@
    "shop": "bol",
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpolly-pocket-dolfijnen-redden-en-spelen-compacte-speelset%2F9300000185388463%2F",
    "titel": "Polly Pocket Dolfijnen redden speelset"
-  },
-  "cl-pm-advent": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000144063465",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fplaymobil-adventskalender-politie-museumdiefstal-71347%2F9300000144063465%2F",
-   "titel": "PLAYMOBIL adventskalender Politie museumdiefstal (71347)"
   },
   "cl-tf-cyber": {
    "datum": "2026-11-27",
@@ -4085,15 +3806,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhugo-boss-heren-armband-nylon-hbj1580797-19cm%2F9300000261963732%2F",
    "titel": "BOSS gevlochten herenarmband"
   },
-  "cl-lveb": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9200000010044724",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flancome-la-vie-est-belle-30-ml-eau-de-parfum-damesparfum%2F9200000010044724%2F",
-   "titel": "Lancôme La Vie est Belle"
-  },
   "cl-ysl-libre": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4178,16 +3890,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/boemerang-glow-in-the-dark/9300000109343881/",
    "titel": "Boemerang die in het donker oplicht"
   },
-  "bol-9300000384740916": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet in de bol-feed",
-   "nr": "9300000384740916",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fscrib3d-p1-3d-printing-pen-met-lcd-scherm-incl-3-pla-filamenten-sjabloongids-adapter%2F9300000384740916%2F",
-   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fscrib3d-p1-3d-printing-pen-met-lcd-scherm-incl-3-pla-filamenten-sjabloongids-adapter%2F9300000384740916%2F",
-   "titel": "Scrib3D P1: 3D-pen met schermpje, 3 kleuren en sjablonen"
-  },
   "bol-9300000407615426": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4228,60 +3930,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/liverpool-f-c-dekbedovertrek-eenpersoons-geschikt-voor-dekbed-140-x-200-cm-lfc-you-ll-never-walk-alone/9300000266242024/",
    "titel": "Liverpool FC-dekbedovertrek (140 x 200)"
   },
-  "cl-posca-4": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet op voorraad volgens bol",
-   "nr": "9300000227716022",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Funi-posca-markers-pc3m-set-zachte-kleuren-4-stuk%2F9300000227716022%2F",
-   "titel": "Uni Posca PC-3M verfstiften, 4 zachte kleuren"
-  },
-  "joybuy-85e6bb0c9c": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-joybuy.json",
-   "shop": "Joybuy",
-   "url": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=f2d9b2f46ea7ac8e4e4072f750cad380&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D102288381%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Ffeeric-winter-in-parisgeurcadeauset-boomdiffuser-en%252F102288381%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
-   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=f2d9b2f46ea7ac8e4e4072f750cad380&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D102288381%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Ffeeric-winter-in-parisgeurcadeauset-boomdiffuser-en%252F102288381%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
-   "titel": "Feeric geurset Winter in Paris"
-  },
-  "joybuy-f0da97b96f": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-joybuy.json",
-   "shop": "Joybuy",
-   "url": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=0eb90aa0518c572e13f330acef286f31&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D101237011%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fnespresso-original-delonghi-en510b-lattissima-one%252F101237011%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
-   "winkelUrl": "https://glp8.net/c/?si=20823&li=1893166&wi=433339&pid=0eb90aa0518c572e13f330acef286f31&dl=c%2F1418078%2F3874152%2F32330%3Fprodsku%3D101237011%26u%3Dhttps%253A%252F%252Fwww.joybuy.nl%252FlandingPage%252Fdp%252Fnespresso-original-delonghi-en510b-lattissima-one%252F101237011%253FsiteCode%253DNL-Site%26intsrc%3DCATF_33029%26subId1%3D%25DCI%25%26SharedId%3D%25MEDIA_ID%25&ws=",
-   "titel": "De'Longhi Nespresso Lattissima One (zwart)"
-  },
-  "legoshop-fb0d7fd894": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8b7d43556867327aa3889bcc09ee7a45&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588741%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fapxgp-team-race-car-from-f1-the-movie-77252&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/apxgp-team-race-car-from-f1-the-movie-77252",
-   "titel": "LEGO Speed Champions APXGP racewagen uit F1 The Movie (77252)"
-  },
-  "bol-9300000237345458": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=0ae87cd169f6fa26565fca451bf67690&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581024%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmonster-jam-grave-digger-fire-and-ice-42219&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=0ae87cd169f6fa26565fca451bf67690&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581024%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmonster-jam-grave-digger-fire-and-ice-42219&ws=",
-   "titel": "LEGO Technic Monster Jam Grave Digger Vuur en IJs"
-  },
-  "legoshop-9d0feabaa2": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=c9f51e51d5f62a8baa15b8e3a8671cda&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526378%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fdinosaur-fossils-triceratops-skull-76969&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=c9f51e51d5f62a8baa15b8e3a8671cda&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526378%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fdinosaur-fossils-triceratops-skull-76969&ws=",
-   "titel": "LEGO dinosaurusfossiel: Triceratops-schedel"
-  },
   "legoshop-a348291506": {
    "datum": "2026-11-27",
    "bron": "feed",
@@ -4290,312 +3938,6 @@
    "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=677a16e0a539ce7a3275d14dca505d25&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590061%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fhanging-golden-pothos-11512&ws=",
    "winkelUrl": "https://www.lego.com/nl-nl/product/hanging-golden-pothos-11512",
    "titel": "LEGO Botanicals hangende drakenklimop (11512)"
-  },
-  "legoshop-5cf3edc301": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=6f91fcec12a1718472f1eb29224bb393&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588557%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fnew-york-city-the-big-apple-21066&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/new-york-city-the-big-apple-21066",
-   "titel": "LEGO Architecture New York City – The Big Apple (21066)"
-  },
-  "legoshop-ac2c83e7cb": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=e44b29f03e931829b347787d023e743b&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590205%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Flotso-43306&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/lotso-43306",
-   "titel": "LEGO Disney Toy Story Lotso (43306)"
-  },
-  "lego-10295": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=f8a9dd963c7eb66bf4c6c01bbfab5053&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416332964%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fporsche-911-10295&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/10295",
-   "titel": "LEGO Icons Porsche 911 (10295)"
-  },
-  "legoshop-78a436ee69": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=fe613f247658e8a95398beae637b26e1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590902%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Flondon-bus-40953&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/london-bus-40953",
-   "titel": "LEGO Londense bus (40953)"
-  },
-  "legoshop-c8551592f0": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=d4a00bda884b7f341ae2babb5c15f955&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585526%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fzombie-dungeon-21587&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/zombie-dungeon-21587",
-   "titel": "LEGO Minecraft zombiekerker (21587)"
-  },
-  "legoshop-cb33fbdfaa": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=5d0416d81b63f8c5c4dd89bf8d32582e&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585510%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252F3-in-1-construction-site-and-vehicles-10476&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/3-in-1-construction-site-and-vehicles-10476",
-   "titel": "LEGO DUPLO 3-in-1 bouwplaats en voertuigen (10476)"
-  },
-  "legoshop-c4dbd2a8d1": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=cb87b827d74a1f534c969bdf16022334&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526376%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fdinosaur-fossils-tyrannosaurus-rex-76968&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/dinosaur-fossils-tyrannosaurus-rex-76968",
-   "titel": "LEGO Jurassic World dinosaurusfossielen: Tyrannosaurus rex (76968)"
-  },
-  "legoshop-7152d90188": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=940e6c81596339c98613cd3e0dbb6267&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581059%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fnya-vs-mutation-monster-spinner-71849&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/nya-vs-mutation-monster-spinner-71849",
-   "titel": "LEGO NINJAGO Nya vs. mutatiemonster in spinner (71849)"
-  },
-  "legoshop-76b3f10721": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=88837d03d10a65aa07f7ed4122b4e1a9&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590892%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fsupply-llama-fishstick-figures-40881&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/supply-llama-fishstick-figures-40881",
-   "titel": "LEGO BrickHeadz Fortnite Supply Llama en Fishstick (40881)"
-  },
-  "legoshop-2edef7f6a9": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=2cd359dbfb09dd05bd9902ed8ea56e97&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416589598%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fgustav-klimt-the-kiss-31221&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/gustav-klimt-the-kiss-31221",
-   "titel": "LEGO Art Gustav Klimt: De kus (31221)"
-  },
-  "legoshop-09134514d8": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=bd1c7c7a970f36d1c86489f22f6596d1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590207%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Falien-with-pizza-planet-rocket-ride-43307&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=bd1c7c7a970f36d1c86489f22f6596d1&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590207%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Falien-with-pizza-planet-rocket-ride-43307&ws=",
-   "titel": "LEGO Toy Story: alien met Pizza Planet-raket (43307)"
-  },
-  "legoshop-a86f1abba1": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=551935ba8666527adef86522c43b2419&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588727%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fsupply-drop-77080&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/supply-drop-77080",
-   "titel": "LEGO Fortnite Supply Drop (77080)"
-  },
-  "lego-42684": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8d08928bc7f21afd108545190f901048&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581028%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Funicorn-dream-cafe-42684&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/42684",
-   "titel": "LEGO Friends eenhoorn droomcafé (42684)"
-  },
-  "legoshop-0a482d74a8": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=e1786ab7b6696cf21b8a275709991272&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585647%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fairport-fire-truck-60499&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/airport-fire-truck-60499",
-   "titel": "LEGO City Luchthaven brandweertruck (60499)"
-  },
-  "legoshop-52e66f09c1": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=bf5788daee78d4f745e6dcc09c92c484&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585568%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ffloral-art-decor-painting-31390&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/floral-art-decor-painting-31390",
-   "titel": "LEGO Creator 3in1 Bloemenschilderij (31390)"
-  },
-  "bol-9300000237345467": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=d068bf9961d2c9ae66dc648ba997fa29&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585582%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fheartlake-city-bunny-hotel-42679&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=d068bf9961d2c9ae66dc648ba997fa29&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585582%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fheartlake-city-bunny-hotel-42679&ws=",
-   "titel": "LEGO Friends konijnenhotel in Heartlake City (42679)"
-  },
-  "lego-76477": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=b0583349b32cbb91571cdf0ecdb26549&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590369%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fnorbert-hagrids-baby-dragon-76477&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/76477",
-   "titel": "LEGO Harry Potter Norbert, de babydraak van Hagrid (76477)"
-  },
-  "lego-10370": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=070017605eb2c0ccb366c3427e060a61&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416509288%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fpoinsettia-10370&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/10370",
-   "titel": "LEGO kerstster (10370)"
-  },
-  "legoshop-4e1799121b": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8590251cae87e8ea6ec0c083f384d126&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588680%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fdoctor-doom-bust-76345&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/doctor-doom-bust-76345",
-   "titel": "LEGO Marvel Doctor Doom-buste (76345)"
-  },
-  "legoshop-d750f5af45": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=297abd81f8ba22ddfc7bfeb9078b7802&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416536251%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fup-house-43217&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/up-house-43217",
-   "titel": "LEGO Disney Huis uit de film Up (43217)"
-  },
-  "legoshop-00844d8327": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=9f92a44ddd2e807984fbccd941e1611a&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526976%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fcyclone-vs-metal-sonic-77002&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/cyclone-vs-metal-sonic-77002",
-   "titel": "LEGO Sonic Cyclone vs. Metal Sonic (77002)"
-  },
-  "legoshop-dc17624678": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8ddc7ff8ee9080397cba7129017b0b17&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526208%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fplayground-fun-with-bluey-and-chloe-11201&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/playground-fun-with-bluey-and-chloe-11201",
-   "titel": "LEGO Bluey en Chloé in de speeltuin (11201)"
-  },
-  "legoshop-04fc37dfd6": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=88768808a5d8e98bc0fc7dd46c33d6dc&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416533325%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ft-rex-river-escape-76975&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/t-rex-river-escape-76975",
-   "titel": "LEGO Jurassic World T. rex rivierontsnapping (76975)"
-  },
-  "legoshop-d7b3c8d2cc": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=7a275053a45e63ae7083e4a3389089ba&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416589977%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fjasmines-jewellery-box-43295&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/jasmines-jewellery-box-43295",
-   "titel": "LEGO Disney Jasmines sieradendoos (43295)"
-  },
-  "legoshop-3320eeaf7e": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=e1dd157b6eeb59ed1f4f421d4439a2c6&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590597%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fkylian-mbappe-soccer-highlights-43013&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=e1dd157b6eeb59ed1f4f421d4439a2c6&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590597%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fkylian-mbappe-soccer-highlights-43013&ws=",
-   "titel": "LEGO Kylian Mbappé – voetbalhoogtepunten (43013)"
-  },
-  "legoshop-84b99ee8dc": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=838374ce0555c780706101533261981c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416594444%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fshrek-donkey-puss-in-boots-72423&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/shrek-donkey-puss-in-boots-72423",
-   "titel": "LEGO Shrek, Ezel en de Gelaarsde Kat (72423)"
-  },
-  "bol-9300000225873781": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=c9fdf8677e2d9075440cea2eed9729ec&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416634544%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ftiny-desert-garden-5010093&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=c9fdf8677e2d9075440cea2eed9729ec&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416634544%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ftiny-desert-garden-5010093&ws=",
-   "titel": "LEGO mini-woestijntuin"
-  },
-  "lego-10375": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=64e4b0d55cad874c9398d3d34b11087b&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416549094%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fhow-to-train-your-dragon-toothless-10375&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/10375",
-   "titel": "LEGO Hoe tem je een draak: Tandloos (10375)"
-  },
-  "legoshop-14c2843265": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=11bef0c0c0145263f22b72e5aaf1288e&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588666%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmech-battle-spider-man-vs-doc-ock-76338&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/mech-battle-spider-man-vs-doc-ock-76338",
-   "titel": "LEGO Marvel Mechaduel: Spider-Man vs. Doc Ock (76338)"
-  },
-  "cl-duplo-10459": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=f01bccde0cc22723cc087a082af6fc91&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526206%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fblueys-family-house-with-memory-game-10459&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/blueys-family-house-with-memory-game-10459",
-   "titel": "LEGO Duplo huis van Bluey met geheugenspel (10459)"
-  },
-  "legoshop-03c7a37339": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=17fc520ead43372f44cce639cc146d0e&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416529404%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fthe-goonies-21363&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/the-goonies-21363",
-   "titel": "LEGO Ideas De Goonies (21363)"
-  },
-  "bol-9300000262068683": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=69c3444c34c8523054207c7fbd12308c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416589538%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Focarina-of-time-the-final-battle-77093&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/ocarina-of-time-the-final-battle-77093",
-   "titel": "LEGO The Legend of Zelda: Ocarina of Time (77093)"
-  },
-  "legoshop-fdbe3b2f56": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=2ca745e704c901778a62fbc104f28cbb&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590609%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fsoccer-ball-43019&ws=",
-   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=2ca745e704c901778a62fbc104f28cbb&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590609%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fsoccer-ball-43019&ws=",
-   "titel": "LEGO voetbal om te bouwen (43019)"
-  },
-  "legoshop-20dce8601e": {
-   "datum": "2026-11-27",
-   "bron": "feed",
-   "reden": "niet op voorraad volgens x-lego.json",
-   "shop": "LEGO",
-   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=44f5debdd501cc9592bb4da6e56eb032&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416606054%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmini-hogwarts-castle-40975&ws=",
-   "winkelUrl": "https://www.lego.com/nl-nl/product/mini-hogwarts-castle-40975",
-   "titel": "LEGO Harry Potter mini-kasteel Zweinstein (40975)"
   },
   "ww-4fa24a8244": {
    "datum": "2026-11-27",
@@ -4606,16 +3948,6 @@
    "winkelUrl": "https://www.westwing.nl/decorative-candle-holder-tristy-en-25hou50011.html?simple=DEQ25HOU50011-178513",
    "titel": "Decoratieve kaarshouder Tristy, zilver"
   },
-  "bol-9300000185035535": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000185035535",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgarzini-toilettas-heren-toilettas-mannen-leder-ophangbaar-toiletzak-heren-bruin%2F9300000185035535%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/garzini-toilettas-heren-toilettas-mannen-leder-ophangbaar-toiletzak-heren-bruin/9300000185035535/",
-   "titel": "Garzini toilettas voor heren met haak (bruin)"
-  },
   "lego-42235": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4625,16 +3957,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flego-technic-ferrari-488-pista-auto-speelgoed-voor-kinderen-en-decoratie-42235%2F9300000265640021%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/lego-technic-ferrari-488-pista-auto-speelgoed-voor-kinderen-en-decoratie-42235/9300000265640021/",
    "titel": "LEGO Technic Ferrari 488 Pista (42235)"
-  },
-  "bol-9300000146100740": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000146100740",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcaluwe-artisan-book-of-chocolates-doos-385-gram%2F9300000146100740%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/caluwe-artisan-book-of-chocolates-doos-385-gram/9300000146100740/",
-   "titel": "Caluwé Book of Chocolates (385 gram)"
   },
   "bol-9200000130057541": {
    "datum": "2026-11-27",
@@ -4655,16 +3977,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fphilips-tak4200pk-on-ear-draadloze-opvouwbare-hoofdtelefoon-voor-kinderen-45-uur-afspeeltijd-beperkt-volume-audio-delen-laadkabel-meegeleverd-ambiant-verlichting-licht-roze-wit%2F9300000274036926%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/philips-tak4200pk-on-ear-draadloze-opvouwbare-hoofdtelefoon-voor-kinderen-45-uur-afspeeltijd-beperkt-volume-audio-delen-laadkabel-meegeleverd-ambiant-verlichting-licht-roze-wit/9300000274036926/",
    "titel": "Philips draadloze kinderkoptelefoon (opvouwbaar)"
-  },
-  "bol-9300000237905400": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000237905400",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Felho-cosy-bird-house-18cm-vogelhuisje-voor-tuin-of-balkon-geschikt-voor-meer-dan-11-soorten-100-gerecycled-plastic-l17-6-x-b18-x-h23-cm-paddenstoel-beige%2F9300000237905400%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/elho-cosy-bird-house-18cm-vogelhuisje-voor-tuin-of-balkon-geschikt-voor-meer-dan-11-soorten-100-gerecycled-plastic-l17-6-x-b18-x-h23-cm-paddenstoel-beige/9300000237905400/",
-   "titel": "Elho Cosy vogelhuisje (18 cm)"
   },
   "bol-9300000256133316": {
    "datum": "2026-11-27",
@@ -4826,16 +4138,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/gabby-s-poppenhuis-diamond-painting-canvas-30x30-cm/9300000260123719/",
    "titel": "Diamond painting Gabby's Poppenhuis (30 x 30 cm)"
   },
-  "bol-9300000256526145": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000256526145",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdisney-en-pixar-toy-story-5-actiefiguur-van-30-cm-vliegstand-hi-tech-editie-buzz-lightyear-met-vleugelactivering-en-meer-dan-35-geluiden-frans-editie%2F9300000256526145%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/disney-en-pixar-toy-story-5-actiefiguur-van-30-cm-vliegstand-hi-tech-editie-buzz-lightyear-met-vleugelactivering-en-meer-dan-35-geluiden-frans-editie/9300000256526145/",
-   "titel": "Toy Story 5 Buzz Lightyear Hi-Tech (30 cm)"
-  },
   "bol-9200000027701889": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4846,26 +4148,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/victorinox-spartan-zakmes-12-functies-transparant-blauw/9200000027701889/",
    "titel": "Victorinox Spartan Zwitsers zakmes (12 functies)"
   },
-  "cb-fr165": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000167888717",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgarmin-forerunner-165-hardloophorloge-black-slate-grey%2F9300000167888717%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/garmin-forerunner-165-hardloophorloge-black-slate-grey/9300000167888717/",
-   "titel": "Garmin Forerunner 165 hardloophorloge"
-  },
-  "bol-9300000178970619": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000178970619",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fturtle-beach-stealth-600p-gen3-draadloos-multiplatform-gaming-headset-wit%2F9300000178970619%2F",
-   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fturtle-beach-stealth-600p-gen3-draadloos-multiplatform-gaming-headset-wit%2F9300000178970619%2F",
-   "titel": "Turtle Beach Stealth 600 Gen 3 draadloos – kies je console"
-  },
   "bol-9300000198110486": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4875,26 +4157,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ffortnite-desk-headphone-stand-with-light-30-cm%2F9300000198110486%2F",
    "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ffortnite-desk-headphone-stand-with-light-30-cm%2F9300000198110486%2F",
    "titel": "Fortnite headset-standaard met licht en oplaadpoorten"
-  },
-  "cb-ghost-yotei": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000230684434",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fghost-of-yotei-ps5%2F9300000230684434%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/ghost-of-yotei-ps5/9300000230684434/",
-   "titel": "Ghost of Yōtei (PS5)"
-  },
-  "bol-9300000130858604": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000130858604",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Felgato-stream-deck-universal-controller-daw-controllers%2F9300000130858604%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/elgato-stream-deck-universal-controller-daw-controllers/9300000130858604/",
-   "titel": "Elgato Stream Deck+ met draaiknoppen"
   },
   "bol-9300000045691632": {
    "datum": "2026-11-27",
@@ -4916,16 +4178,6 @@
    "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fviktor-rolf-spicebomb-50-ml-eau-de-toilette-herenparfum%2F9200000025884525%2F",
    "titel": "Viktor & Rolf Spicebomb"
   },
-  "bol-9300000224313782": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000224313782",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcalvin-klein-one-200-ml-eau-de-toilette-unisex%2F9300000224313782%2F",
-   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcalvin-klein-one-200-ml-eau-de-toilette-unisex%2F9300000224313782%2F",
-   "titel": "Calvin Klein CK One eau de toilette (200 ml)"
-  },
   "bol-9300000184731300": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4936,16 +4188,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/wilson-blade-v3-ls-2024-padel-racket/9300000184731300/",
    "titel": "Wilson Blade V3 LS padelracket"
   },
-  "bol-9200000086849977": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9200000086849977",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdragon-fly-stuntvlieger-bise-115-zwart-wit-roze-blauw-petrol%2F9200000086849977%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/dragon-fly-stuntvlieger-bise-115-zwart-wit-roze-blauw-petrol/9200000086849977/",
-   "titel": "Dragon Fly stuntvlieger Bise (115 cm)"
-  },
   "bol-9300000221675746": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -4955,16 +4197,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fses-creative-14445-mijn-eerste-vingerverf-creeren-knutselset-voor-kinderen-vanaf-1-jaar-inclusief-verf-en-kleurkaarten-perfect-voor-kleine-kunstenaars%2F9300000221675746%2F",
    "winkelUrl": "https://www.bol.com/nl/nl/p/ses-creative-14445-mijn-eerste-vingerverf-creeren-knutselset-voor-kinderen-vanaf-1-jaar-inclusief-verf-en-kleurkaarten-perfect-voor-kleine-kunstenaars/9300000221675746/",
    "titel": "SES My First vingerverf megaset met 20 kaarten"
-  },
-  "bol-9300000177675794": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000177675794",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpaw-patrol-paw-patroller%2F9300000177675794%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/paw-patrol-paw-patroller/9300000177675794/",
-   "titel": "PAW Patrol transformerende PAW Patroller"
   },
   "bol-9300000160146522": {
    "datum": "2026-11-27",
@@ -4986,34 +4218,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/lego-dc-batmantm-batman-forevertm-batmobiletm-76304/9300000227400253/",
    "titel": "LEGO Batman Forever Batmobile (76304)"
   },
-  "bol-9300000227400277": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000227400277",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flego-technic-lamborghini-revuelto-supersportwagen-42214%2F9300000227400277%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/lego-technic-lamborghini-revuelto-supersportwagen-42214/9300000227400277/",
-   "titel": "LEGO Technic Lamborghini Revuelto (42214)"
-  },
-  "cl-sq-hula": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000154750831",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsquishmallows-disney-lilo-stitch-hula-stitch-10-25-centimeter%2F9300000154750831%2F",
-   "titel": "Squishmallows Hula Stitch (25 cm)"
-  },
-  "cl-paw-tafel": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000144928850",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpaw-patrol-zand-en-watertafel%2F9300000144928850%2F",
-   "titel": "PAW Patrol zand- en watertafel"
-  },
   "cl-wasgij-destiny": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -5023,25 +4227,6 @@
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fwasgij-destiny-31-levering-aan-huis-1000-stukjes%2F9300000256044333%2F",
    "titel": "Wasgij Destiny 31: Levering aan huis! (1000 stukjes)"
   },
-  "cl-switch2-sports": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000449558972",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnintendo-switch-2-2026-nintendo-switch-sports-resort-voordeelbundel-3-maanden-ni%2F9300000449558972%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/nintendo-switch-2-2026-nintendo-switch-sports-resort-voordeelbundel-3-maanden-ni/9300000449558972/",
-   "titel": "Nintendo Switch 2 + Switch Sports Resort"
-  },
-  "cl-swarovski-infinity": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9200000127121040",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fswarovski-infinity-dames-armband-metaal-zilverkleurig%2F9200000127121040%2F",
-   "titel": "Swarovski Infinity armband"
-  },
   "cl-armani-myway": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -5050,33 +4235,6 @@
    "shop": "bol",
    "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgiorgio-armani-my-way-30-ml-eau-de-parfum-damesparfum%2F9300000008494979%2F",
    "titel": "Armani My Way 30 ml"
-  },
-  "cl-valentino-donna": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000082257324",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fvalentino-donna-born-in-roma-coral-fantasy-30-ml-eau-de-parfum-spray-damesparfum%2F9300000082257324%2F",
-   "titel": "Valentino Donna Born in Roma Coral Fantasy 30 ml"
-  },
-  "cl-stronger": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9200000078963045",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Femporio-armani-stronger-with-you-30-ml-eau-de-toilette-herenparfum%2F9200000078963045%2F",
-   "titel": "Armani Stronger With You 30 ml"
-  },
-  "cl-cerave-creme": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000012002239",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcerave-moisturizing-cream-bodycreme-droge-tot-zeer-droge-huid-177-ml%2F9300000012002239%2F",
-   "titel": "CeraVe Hydraterende Crème"
   },
   "cl-kneipp-voetbad": {
    "datum": "2026-11-27",
@@ -5124,15 +4282,6 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/ooni-karu-12-hout-of-houtskool-gestookte-pizzaoven/9200000133031064/",
    "titel": "Ooni Karu 12 pizzaoven"
   },
-  "cl-lp-dark-side": {
-   "datum": "2026-11-27",
-   "bron": "bol",
-   "reden": "niet meer in de bol-feed",
-   "nr": "9300000159997891",
-   "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fthe-dark-side-of-the-moon%2F9300000159997891%2F",
-   "titel": "Pink Floyd – The Dark Side Of The Moon (LP)"
-  },
   "bol-9300000410368326": {
    "datum": "2026-11-27",
    "bron": "bol",
@@ -5163,15 +4312,1320 @@
    "winkelUrl": "https://www.bol.com/nl/nl/p/fc-twente-lunchtas/9300000252331775/",
    "titel": "FC Twente-lunchtas"
   },
-  "bol-9300000044728492": {
-   "datum": "2026-11-27",
+  "bol-9300000044924300": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet op voorraad volgens bol",
+   "nr": "9300000044924300",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fchocolat-guylian-zeevruchten-box-125-gr%2F9300000044924300%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/chocolat-guylian-zeevruchten-box-125-gr/9300000044924300/",
+   "titel": "Guylian zeevruchten pralines (125 g)"
+  },
+  "sif-43d8e72b4d": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=2402c19e033d0013cfcbde0867251b8a&dl=products%2Fring-belluno-uno%3Fvariant%3D53114559824215&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/ring-belluno-uno?variant=53114559824215",
+   "titel": "Sif Jakobs ring Belluno Uno (zilver, witte zirkonia)"
+  },
+  "sif-3b913424c6": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=4d8445afa12e317023fffff54524b727&dl=products%2Fring-fusion%3Fvariant%3D55429454627159&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/ring-fusion?variant=55429454627159",
+   "titel": "Sif Jakobs ring Fusion (SJ Metal)"
+  },
+  "sif-984825a39d": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=f4989d45e48f2a398506d02f1b3d1467&dl=products%2Fbracelet-pearl-02%3Fvariant%3D55429312610647&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/bracelet-pearl-02?variant=55429312610647",
+   "titel": "Sif Jakobs armband Pearl 02 (goud)"
+  },
+  "sif-959c7fb27e": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-sifjakobs.json",
+   "shop": "Sif Jakobs",
+   "url": "https://glp8.net/c/?si=21808&li=1919317&wi=433339&pid=d61664006db594be1671150ddd317c1d&dl=products%2Fbracelet-capizzi-due%3Fvariant%3D48933211603287&ws=",
+   "winkelUrl": "https://sifjakobs.com/products/bracelet-capizzi-due?variant=48933211603287",
+   "titel": "Sif Jakobs armband Capizzi Due Piccolo (zilver)"
+  },
+  "fitwin-bfe35dc019": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-fitwinkel.json",
+   "shop": "Fitwinkel",
+   "url": "https://rep2.fitwinkel.nl/c/?si=12318&li=1555148&wi=433339&pid=50113bbecd921d77d795e4ccda2e648d&dl=products%2Fgarlando-f-mini-2-in-1-tafelvoetbal-en-airhockey&ws=",
+   "winkelUrl": "https://www.fitwinkel.nl/products/garlando-f-mini-2-in-1-tafelvoetbal-en-airhockey",
+   "titel": "Garlando F-Mini: tafelvoetbal en airhockey in één"
+  },
+  "lego-21376": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=748dcafc27c6058446b4b528d8586f5f&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590353%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Forange-cat-21376&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/21376",
+   "titel": "LEGO Ideas Oranje kat (21376)"
+  },
+  "lego-10348": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=2d06886d83219caa7412121ca0856606&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526168%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fjapanese-red-maple-bonsai-tree-10348&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/japanese-red-maple-bonsai-tree-10348",
+   "titel": "LEGO Japanse esdoorn bonsaiboompje (10348)"
+  },
+  "lego-77257": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=bf44650cdcff32a885749e7d66d03510&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416588752%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmclaren-w1-77257&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/77257",
+   "titel": "LEGO Speed Champions McLaren W1 (77257)"
+  },
+  "cl-duplo-10913": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=f4fd463fcbb974b5f98a240c63818d83&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416288646%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fbrick-box-10913&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/brick-box-10913",
+   "titel": "LEGO Duplo opbergdoos met blokken (10913)"
+  },
+  "lego-40955": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=095c6f40a59b5d3c56ff5c3a08b223fa&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590906%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmaersk-dual-fuel-container-vessel-40955&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/40955",
+   "titel": "LEGO Maersk containerschip (40955)"
+  },
+  "bol-9300000262068686": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=677a16e0a539ce7a3275d14dca505d25&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590061%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fhanging-golden-pothos-11512&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/hanging-golden-pothos-11512",
+   "titel": "LEGO Botanicals Hangende Drakenklimop"
+  },
+  "lego-10473": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=1fe9ea20ee893d313047c733252b11e2&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585506%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ffire-truck-with-hose-and-firefighter-10473&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/10473",
+   "titel": "LEGO DUPLO brandweertruck met slang (10473)"
+  },
+  "legoshop-0a9aeb11fa": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=464fd0eee334f34db96f226ffda4f2d7&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416529414%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fmario-kart-piranha-plant-power-up-pursuit-72044&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/mario-kart-piranha-plant-power-up-pursuit-72044",
+   "titel": "LEGO Super Mario Mario Kart Achtervolging met de Piranha Plant (72044)"
+  },
+  "bol-9300000266727694": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=91e7ad94ce850d0906846312d6b96b2a&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585681%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Flloyds-dragon-mech-battle-pack-71862&ws=",
+   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=91e7ad94ce850d0906846312d6b96b2a&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585681%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Flloyds-dragon-mech-battle-pack-71862&ws=",
+   "titel": "LEGO NINJAGO Lloyds drakenmecha strijdpakket"
+  },
+  "legoshop-f79c676342": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=b85dab884c5aaedf384a07792d3f5d59&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585556%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ffloral-decor-perfume-bottle-31383&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/floral-decor-perfume-bottle-31383",
+   "titel": "LEGO Creator 3-in-1 parfumfles met bloemen (31383)"
+  },
+  "legoshop-7fe3cc2a0e": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=b10c402d7a0d2c5b36fb552d89503ebf&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590922%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ftoy-story-40860&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/toy-story-40860",
+   "titel": "LEGO BrickHeadz Toy Story (40860)"
+  },
+  "bol-9300000237345419": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=662553792927aa1442a02f0bca9c6ad7&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581054%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ftractor-60498&ws=",
+   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=662553792927aa1442a02f0bca9c6ad7&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581054%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ftractor-60498&ws=",
+   "titel": "LEGO City Tractor"
+  },
+  "bol-9300000237345461": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=d9468c585fdcc0b7e66d46928201f18f&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416589960%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fthe-aristocats-adorable-marie-43286&ws=",
+   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=d9468c585fdcc0b7e66d46928201f18f&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416589960%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fthe-aristocats-adorable-marie-43286&ws=",
+   "titel": "LEGO Disney De Aristokatten: Marie"
+  },
+  "legoshop-a80ecdee52": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=c192e2006a32adfaa76b1f58f2b194aa&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416526999%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Faston-martin-aramco-f1-amr24-race-car-77245&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/aston-martin-aramco-f1-amr24-race-car-77245",
+   "titel": "LEGO Speed Champions Aston Martin Aramco F1 AMR24 (77245)"
+  },
+  "bol-9300000237345490": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=a18076bd6223f309611c0d8d94dc0d7c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585603%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fanimal-vet-clinic-42696&ws=",
+   "winkelUrl": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=a18076bd6223f309611c0d8d94dc0d7c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585603%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fanimal-vet-clinic-42696&ws=",
+   "titel": "LEGO Friends Huisdierenkliniek"
+  },
+  "legoshop-a42d9affc0": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=e11cc0fcc378f610df08addf193cba73&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416529121%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fdeath-star-75419&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/death-star-75419",
+   "titel": "LEGO Star Wars Death Star (75419)"
+  },
+  "lego-31393": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=8db1ad88f56c91ac0ae3f53be9b4fc04&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590195%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fforest-animals-gray-wolf-31393&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/31393",
+   "titel": "LEGO Creator 3in1 grijze wolf (31393)"
+  },
+  "lego-10477": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=f1883ec5d2644f42f706c9daa34494aa&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416581006%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252F3-in-1-creative-cute-pets-10477&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/10477",
+   "titel": "LEGO DUPLO 3-in-1 creatieve huisdieren (10477)"
+  },
+  "bol-9300000131876375": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=5bbcafea4219ecd81dc045df0d08db18&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416426495%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fwildflower-bouquet-10313&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/wildflower-bouquet-10313",
+   "titel": "LEGO wilde bloemen boeket (10313)"
+  },
+  "lego-10954": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=0952efec7fd3f9b9883bd2530ecc4316&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416332183%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fnumber-train-learn-to-count-10954&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/10954",
+   "titel": "LEGO DUPLO getallentrein – leren tellen (10954)"
+  },
+  "legoshop-a2e348bbf5": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=37e29df9f4786f576da3f4f7988c41fd&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416590611%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Ffifa-world-cup-official-trophy-43020&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/fifa-world-cup-official-trophy-43020",
+   "titel": "LEGO Editions Officiële FIFA World Cup-trofee (43020)"
+  },
+  "lego-5010081": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=96bd57d71bc4dedac7d45b12d3f98adb&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416633270%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fnike-jr-streetgato-x-lego-collection-big-kids-shoes-5010081&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/nike-jr-streetgato-x-lego-collection-big-kids-shoes-5010081",
+   "titel": "Nike x LEGO sneakers voor kinderen – kies je model"
+  },
+  "bol-9300000237345525": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=5f43d201b2f817eb38976a69f9d17c03&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416530085%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fholiday-express-train-10361&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/holiday-express-train-10361",
+   "titel": "LEGO Icons feestelijke kersttrein (10361)"
+  },
+  "lego-77241": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=c32b9b81e23d3c138f2257859de1b033&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416532585%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252F2-fast-2-furious-honda-s2000-77241&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/77241",
+   "titel": "LEGO Speed Champions 2 Fast 2 Furious Honda S2000 (77241)"
+  },
+  "cl-duplo-10479": {
+   "datum": "2026-11-28",
+   "bron": "feed",
+   "reden": "niet op voorraad volgens x-lego.json",
+   "shop": "LEGO",
+   "url": "https://bdt9.net/c/?si=18488&li=1798521&wi=433339&pid=33506171df639e099575555bb4d8b84c&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1539136.506416585514%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.lego.com%252Fnl-nl%252Fproduct%252Fcolorful-creative-box-10479&ws=",
+   "winkelUrl": "https://www.lego.com/nl-nl/product/colorful-creative-box-10479",
+   "titel": "LEGO Duplo kleurrijke creatieve doos (10479)"
+  },
+  "ww-icd94784677475": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Westwing",
+   "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=b9687352941691d673b31602361efcee&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.4904912662266734820768369%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fchistams-ball-lonely-fawn-en-26icd94784.html%253Fsimple%253DDEQ26ICD94784-677475&ws=",
+   "winkelUrl": "https://www.westwing.nl/chistams-ball-lonely-fawn-en-26icd94784.html?simple=DEQ26ICD94784-677475",
+   "titel": "Glazen kerstbal met hertje"
+  },
+  "ww-vod78521184667": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Westwing",
+   "url": "https://jdt8.net/c/?si=17294&li=1749537&wi=433339&pid=646833107e59f03fa2b6b7a8f385a6bc&dl=link%3Fid%3Dp5Zs8TJlngw%26offerid%3D1982171.490492452730736559164306%26type%3D15%26murl%3Dhttps%253A%252F%252Fwww.westwing.nl%252Fornament-glass-amsterdam-canal-house-h9cm-en-25vod78521.html%253Fsimple%253DDEQ25VOD78521-184667&ws=",
+   "winkelUrl": "https://www.westwing.nl/ornament-glass-amsterdam-canal-house-h9cm-en-25vod78521.html?simple=DEQ25VOD78521-184667",
+   "titel": "Mondgeblazen kerstornament Amsterdams grachtenpand"
+  },
+  "bol-9300000271848241": {
+   "datum": "2026-11-28",
    "bron": "bol",
    "reden": "niet meer in de bol-feed",
-   "nr": "9300000044728492",
+   "nr": "9300000271848241",
    "shop": "bol",
-   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fniederegger-marsepein-klassiek-variaties-200g%2F9300000044728492%2F",
-   "winkelUrl": "https://www.bol.com/nl/nl/p/niederegger-marsepein-klassiek-variaties-200g/9300000044728492/",
-   "titel": "Niederegger marsepein, klassieke variaties (200 g)"
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fravendi-dominion-luxe-handgemaakte-houten-2-in-1-schaak-en-damspel-set-walnoot-en-esdoornhout-decoratief-schaakbord-met-magnetische-schaak-en-damstukken-30x30-cm-schaken-en-dammen-schaakspel-met-luxe-opbergsysteem-ideaal-cadeau%2F9300000271848241%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/ravendi-dominion-luxe-handgemaakte-houten-2-in-1-schaak-en-damspel-set-walnoot-en-esdoornhout-decoratief-schaakbord-met-magnetische-schaak-en-damstukken-30x30-cm-schaken-en-dammen-schaakspel-met-luxe-opbergsysteem-ideaal-cadeau/9300000271848241/",
+   "titel": "Handgemaakt schaak- en dambord van walnoot- en esdoornhout"
+  },
+  "bol-9200000104809384": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000104809384",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Floberon-kerststalfiguren-set-van-11-christi-bont%2F9200000104809384%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/loberon-kerststalfiguren-set-van-11-christi-bont/9200000104809384/",
+   "titel": "Loberon kerststalfiguren Christi, 11-delig"
+  },
+  "bol-9300000377799800": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000377799809",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpokemon-tcg-30th-anniversary-mini-tin-mewtwo%2F9300000377799809%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/pokemon-tcg-30th-anniversary-mini-tin-mewtwo/9300000377799809/",
+   "titel": "Pokémon-kaarten: 30th Anniversary mini-tin – kies je tin"
+  },
+  "bol-9200000095092313": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000095092313",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fravensburger-harry-potter-doolhof-bordspel%2F9200000095092313%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/ravensburger-harry-potter-doolhof-bordspel/9200000095092313/",
+   "titel": "Harry Potter Labyrinth (bordspel)"
+  },
+  "bol-9300000265687252": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000265687252",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpaco-rabanne-invictus-giftset-175-ml%2F9300000265687252%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/paco-rabanne-invictus-giftset-175-ml/9300000265687252/",
+   "titel": "Rabanne Invictus cadeauset"
+  },
+  "bol-9200000127709459": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000127709459",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdouwe-egberts-koffiebonen-variatiepakket-4x-500-gram%2F9200000127709459%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/douwe-egberts-koffiebonen-variatiepakket-4x-500-gram/9200000127709459/",
+   "titel": "Douwe Egberts koffiebonen proefpakket (4 x 500 gram)"
+  },
+  "bol-9200000106945924": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000106945924",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Filly-koffie-colombia-250-g-bonen%2F9200000106945924%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/illy-koffie-colombia-250-g-bonen/9200000106945924/",
+   "titel": "illy koffiebonen Colombia (6 x 250 gram)"
+  },
+  "bol-9300000180243930": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000180243930",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flittle-dutch-houten-muziekmobiel-forest-friends%2F9300000180243930%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/little-dutch-houten-muziekmobiel-forest-friends/9300000180243930/",
+   "titel": "Little Dutch houten muziekmobiel Forest Friends"
+  },
+  "bol-9300000017407527": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000017407527",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flook-o-look-candy-hamburger-snoep-cadeau%2F9300000017407527%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/look-o-look-candy-hamburger-snoep-cadeau/9300000017407527/",
+   "titel": "Look-O-Look snoepburger"
+  },
+  "bol-9300000161785976": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000161785976",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsmoby-winkel-met-wagentje%2F9300000161785976%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/smoby-winkel-met-wagentje/9300000161785976/",
+   "titel": "Smoby speelgoedwinkel met kassa en winkelkar"
+  },
+  "bol-9300000031135703": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000031135703",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fschmidt-spirit-de-kerststal-1000-stukjes%2F9300000031135703%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/schmidt-spirit-de-kerststal-1000-stukjes/9300000031135703/",
+   "titel": "Puzzel kerststal (1000 stukjes)"
+  },
+  "bol-9300000075413777": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000075413777",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fblond-amsterdam-specials-love-chocolade-fondue%2F9300000075413777%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/blond-amsterdam-specials-love-chocolade-fondue/9300000075413777/",
+   "titel": "Blond Amsterdam chocoladefondue “Love”"
+  },
+  "bol-9300000152351739": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000152351739",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fclementoni-crazy-chic-make-up-studio-make-up-set-voor-kinderen-met-led-ringlamp-vanaf-10-jaar%2F9300000152351739%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/clementoni-crazy-chic-make-up-studio-make-up-set-voor-kinderen-met-led-ringlamp-vanaf-10-jaar/9300000152351739/",
+   "titel": "Clementoni Crazy Chic make-upstudio met ledringlamp"
+  },
+  "bol-9300000084268898": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000084268898",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsol-de-janeiro-brazilian-crush-cheirosa-62-hair-and-body-fragrance-mist-90-ml%2F9300000084268898%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/sol-de-janeiro-brazilian-crush-cheirosa-62-hair-and-body-fragrance-mist-90-ml/9300000084268898/",
+   "titel": "Sol de Janeiro Cheirosa 62 haar- en bodymist (90 ml)"
+  },
+  "bol-9300000190213547": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000190213547",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fx%2F9300000190213547%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/x/9300000190213547/",
+   "titel": "TI SENTO zilveren oorringen met zirkonia"
+  },
+  "bol-9300000233149251": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000233149251",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fx%2F9300000233149251%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/x/9300000233149251/",
+   "titel": "Diesel schakelarmband Metamorph"
+  },
+  "bol-9300000361763981": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000361763981",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fx%2F9300000361763981%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/x/9300000361763981/",
+   "titel": "Houten kerststal Luminaro (FSC-hout, 35 cm)"
+  },
+  "bol-9200000121253565": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000121253565",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fblond-amsterdam-even-bijkletsen-fondue-set%2F9200000121253565%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/blond-amsterdam-even-bijkletsen-fondue-set/9200000121253565/",
+   "titel": "Blond Amsterdam fondueset Even Bijkletsen"
+  },
+  "bol-9300000250375692": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000250375692",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsmall-foot-houten-poppenstapelbed%2F9300000250375692%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/small-foot-houten-poppenstapelbed/9300000250375692/",
+   "titel": "Small Foot Houten Poppenstapelbed"
+  },
+  "bol-9300000269708102": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000269708102",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbasketbal-duo-deurset-met-led-verlichting-incl-twee-mini-basketballen-en-pomp-elektronische-score%2F9300000269708102%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/basketbal-duo-deurset-met-led-verlichting-incl-twee-mini-basketballen-en-pomp-elektronische-score/9300000269708102/",
+   "titel": "Basketbal Duo Deurset"
+  },
+  "bol-9300000132862057": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000132862057",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbaby-born-trike-poppenfietsset%2F9300000132862057%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/baby-born-trike-poppenfietsset/9300000132862057/",
+   "titel": "BABY born Driewieler"
+  },
+  "bol-9300000262196762": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000262196762",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flittle-live-pets-my-magical-dragon-skye-interactieve-pluchen-knuffel%2F9300000262196762%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/little-live-pets-my-magical-dragon-skye-interactieve-pluchen-knuffel/9300000262196762/",
+   "titel": "Little Live Pets My Magical Dragon Skye Interactieve Knuffel"
+  },
+  "bol-9300000220559003": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000220559003",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ftarget-schieten-zwevende-balletjes%2F9300000220559003%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/target-schieten-zwevende-balletjes/9300000220559003/",
+   "titel": "Target Schieten Zwevende Balletjes"
+  },
+  "bol-9300000247823047": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000247823047",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnerf-marvel-wolverine-blaster%2F9300000247823047%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/nerf-marvel-wolverine-blaster/9300000247823047/",
+   "titel": "Nerf Marvel Wolverine blaster"
+  },
+  "bol-9300000195236644": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000195236644",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fcharlie-lichtgewicht-10-inch-loopfiets-met-handvat%2F9300000195236644%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/charlie-lichtgewicht-10-inch-loopfiets-met-handvat/9300000195236644/",
+   "titel": "Chillafish Charlie Loopfiets"
+  },
+  "bol-9300000247982477": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000247982477",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ffisher-price-4-in-1-knuffel-en-kruip-eend%2F9300000247982477%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/fisher-price-4-in-1-knuffel-en-kruip-eend/9300000247982477/",
+   "titel": "Fisher-Price 4-in-1 Knuffel en Kruip Eend"
+  },
+  "bol-9300000243834114": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000243834114",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbluey-heeler-familie-knuffelset-bluey-bingo-bandit-chilli-pluche-knuffels%2F9300000243834114%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/bluey-heeler-familie-knuffelset-bluey-bingo-bandit-chilli-pluche-knuffels/9300000243834114/",
+   "titel": "Bluey Heeler Familie Knuffelset"
+  },
+  "bol-9300000170493371": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000170493371",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flittle-dutch-baby-pop-noa%2F9300000170493371%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/little-dutch-baby-pop-noa/9300000170493371/",
+   "titel": "Little Dutch babypop Noa"
+  },
+  "bol-9300000306392325": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000306392325",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2F999-games-kattenkwaad-hilarisch-familiespel-ben-je-klaar-voor-de-de-ultieme-katastrofe%2F9300000306392325%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/999-games-kattenkwaad-hilarisch-familiespel-ben-je-klaar-voor-de-de-ultieme-katastrofe/9300000306392325/",
+   "titel": "Kattenkwaad (familiespel)"
+  },
+  "bol-9300000164663740": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000164663740",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fferrero-nutella-adventskalender-528g%2F9300000164663740%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/ferrero-nutella-adventskalender-528g/9300000164663740/",
+   "titel": "Nutella adventskalender"
+  },
+  "bol-9300000137571954": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000137571954",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsylvanian-families-5703-koninklijke-prinsesssenset-5-fluweelzachte-speelfiguren%2F9300000137571954%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/sylvanian-families-5703-koninklijke-prinsesssenset-5-fluweelzachte-speelfiguren/9300000137571954/",
+   "titel": "Sylvanian Families koninklijke prinsessenset (5703)"
+  },
+  "bol-9300000189465337": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000189465337",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnerf-fortnite-half-tone-hero%2F9300000189465337%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/nerf-fortnite-half-tone-hero/9300000189465337/",
+   "titel": "Nerf Fortnite Half Tone Hero"
+  },
+  "bol-9200000018034252": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000018034252",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgiorgio-armani-acqua-di-gioia-50-ml-eau-de-parfum-damesparfum%2F9200000018034252%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/giorgio-armani-acqua-di-gioia-50-ml-eau-de-parfum-damesparfum/9200000018034252/",
+   "titel": "Armani Acqua di Gioia eau de parfum (50 ml)"
+  },
+  "bol-9200000107192474": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000107192474",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fkai-wasabi-black-nakiri-16-5cm%2F9200000107192474%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/kai-wasabi-black-nakiri-16-5cm/9200000107192474/",
+   "titel": "Kai Wasabi Black nakirimes (16,5 cm)"
+  },
+  "bol-9300000182977575": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000182977575",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsoundcore-boom-2-outdoor-speaker-80w-subwoofer-bassup-2-0-24h-playtime-ipx7-waterproof-floatable-rgb-lights-usb-c-custom-eq-bluetooth-5-3-portable-for-outdoors-camping-beach-and-backyard-groen%2F9300000182977575%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsoundcore-boom-2-outdoor-speaker-80w-subwoofer-bassup-2-0-24h-playtime-ipx7-waterproof-floatable-rgb-lights-usb-c-custom-eq-bluetooth-5-3-portable-for-outdoors-camping-beach-and-backyard-groen%2F9300000182977575%2F",
+   "titel": "Soundcore Boom 2 buitenspeaker met lichtjes"
+  },
+  "bol-9300000001876068": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000001876068",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Farozzi-gaming-tafel-arena-wit%2F9300000001876068%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Farozzi-gaming-tafel-arena-wit%2F9300000001876068%2F",
+   "titel": "Arozzi Arena gaming bureau (160 cm, wit) met muismat"
+  },
+  "bol-9300000009699366": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000009699366",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpdp-victrix-gambit-tournament-xbox-controller-xbox-series-x-s-xbox-one-wit%2F9300000009699366%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/pdp-victrix-gambit-tournament-xbox-controller-xbox-series-x-s-xbox-one-wit/9300000009699366/",
+   "titel": "PDP Victrix Gambit toernooicontroller (Xbox/pc)"
+  },
+  "bol-9300000140118077": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000140118077",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fatari-legends-flashback-console-100-ingebouwde-spellen-2-controllers-hdmi%2F9300000140118077%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/atari-legends-flashback-console-100-ingebouwde-spellen-2-controllers-hdmi/9300000140118077/",
+   "titel": "Atari Legends Flashback met 100 spellen"
+  },
+  "bol-9200000027003436": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000027003436",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnarciso-rodriguez-for-her-50ml-eau-de-parfum%2F9200000027003436%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnarciso-rodriguez-for-her-50ml-eau-de-parfum%2F9200000027003436%2F",
+   "titel": "Narciso Rodriguez For Her"
+  },
+  "bol-9200000131480152": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000131480152",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhugo-boss-alive-eau-de-parfum-spray-30-ml%2F9200000131480152%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhugo-boss-alive-eau-de-parfum-spray-30-ml%2F9200000131480152%2F",
+   "titel": "Hugo Boss Alive eau de parfum"
+  },
+  "bol-9200000024638982": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000024638982",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhermes-terre-d-hermes-50ml-eau-de-toilette%2F9200000024638982%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhermes-terre-d-hermes-50ml-eau-de-toilette%2F9200000024638982%2F",
+   "titel": "Hermès Terre d'Hermès eau de toilette"
+  },
+  "bol-9300000151157925": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000151157925",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjean-paul-gaultier-le-male-elixer-eau-de-parfum-125-ml-herenparfum%2F9300000151157925%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjean-paul-gaultier-le-male-le-parfum-intense-75-ml-eau-de-parfum-herenparfum%2F9300000006278507%2F",
+   "titel": "Jean Paul Gaultier Le Male Elixir (125 ml)"
+  },
+  "bol-9300000225966664": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000225966664",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fnerf-loadout-arctic-zerostriker-blaster-en-24-n1-darts%2F9300000225966664%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/nerf-loadout-arctic-zerostriker-blaster-en-24-n1-darts/9300000225966664/",
+   "titel": "Nerf Loadout Arctic Zerostriker met 24 darts"
+  },
+  "bol-9300000228069372": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000228069372",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Faquabeads-ontwerp-studio%2F9300000228069372%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/aquabeads-ontwerp-studio/9300000228069372/",
+   "titel": "Aquabeads ontwerpstudio in tas (1400 parels)"
+  },
+  "bol-9200000106241766": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000106241766",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ffaber-castell-kleurpotloden-castle-blik-60-stuks-met-accessoires-fc-115894%2F9200000106241766%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/faber-castell-kleurpotloden-castle-blik-60-stuks-met-accessoires-fc-115894/9200000106241766/",
+   "titel": "Faber-Castell kleurpotloden in blik (60 stuks)"
+  },
+  "bol-9200000096164369": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000096164369",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flena-jumbo-knutselkoffer-800-onderdelen-hobbypakket%2F9200000096164369%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/lena-jumbo-knutselkoffer-800-onderdelen-hobbypakket/9200000096164369/",
+   "titel": "Lena jumbo-knutselkoffer met 800 onderdelen"
+  },
+  "bol-9300000226847206": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000226847206",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ftransformers-age-of-the-primes-the-thirteen-star-optimus-prime-actiefiguur-van-38-cm-8%2F9300000226847206%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/transformers-age-of-the-primes-the-thirteen-star-optimus-prime-actiefiguur-van-38-cm-8/9300000226847206/",
+   "titel": "Transformers Age of the Primes Optimus Prime (verzamelfiguur)"
+  },
+  "bol-9300000175725335": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000175725335",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flego-technic-mercedes-benz-g-500-professional-line-auto-bouwpakket-voor-volwasse%2F9300000175725335%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/lego-technic-mercedes-benz-g-500-professional-line-auto-bouwpakket-voor-volwasse/9300000175725335/",
+   "titel": "LEGO Technic Mercedes-Benz G 500 (42177)"
+  },
+  "cl-polly-schaap": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000222631549",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpolly-pocket-cozy-dreamland-compact%2F9300000222631549%2F",
+   "titel": "Polly Pocket Dromenland schaap"
+  },
+  "cl-pm-piratenschip": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000162765350",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fplaymobil-pirates-piratenschip-71418%2F9300000162765350%2F",
+   "titel": "PLAYMOBIL Pirates piratenschip (71418)"
+  },
+  "cl-mario-luigi": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000264891379",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsuper-mario-galaxy-film-6-cm-figuur-met-motor-met-terugtrekmechanisme-luigi%2F9300000264891379%2F",
+   "titel": "Super Mario Galaxy film: Luigi met motor"
+  },
+  "cl-v-anna": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000123867339",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frubie-s-verkleedjurk-anna-frozen-ii-paars-2-delig-mt-104%2F9200000123867339%2F",
+   "titel": "Disney Frozen Anna verkleedjurk"
+  },
+  "cl-janod-mozaiek": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000268407111",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjanod-atelier-ronde-stickers-huisdieren%2F9300000268407111%2F",
+   "titel": "Janod mozaïek knutselset"
+  },
+  "cl-ko-kristal": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000007240536",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fkosmos-experimenteerset-grow-crystals-junior%2F9300000007240536%2F",
+   "titel": "KOSMOS kristallen kweken"
+  },
+  "cl-ld-xylofoon": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000262460624",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Flittle-dutch-xylofoon-krokodil-fsc-safari-friends%2F9300000262460624%2F",
+   "titel": "Little Dutch xylofoon krokodil"
+  },
+  "cl-brawl": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000277687781",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fclementoni-puzzel-180-stukjes-brawl-stars-design-2-kinderpuzzel-legpuzzel-vanaf-7-jaar%2F9300000277687781%2F",
+   "titel": "Clementoni Brawl Stars puzzel (180 stukjes)"
+  },
+  "cl-xm5": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000187649792",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsony-wh-1000xm5-draadloze-koptelefoon-met-noise-cancelling-smoky-pink-roze%2F9300000187649792%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/sony-wh-1000xm5-draadloze-koptelefoon-met-noise-cancelling-smoky-pink-roze/9300000187649792/",
+   "titel": "Sony WH-1000XM5 – kies je kleur"
+  },
+  "cl-sonos-roam2": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000179989135",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsonos-roam-2-draagbare-smart-speaker-wifi-bluetooth-waterdicht-ip67-tot-10-uur-b%2F9300000179989135%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/sonos-roam-2-draagbare-smart-speaker-wifi-bluetooth-waterdicht-ip67-tot-10-uur-b/9300000179989135/",
+   "titel": "Sonos Roam 2 – kies je kleur"
+  },
+  "cl-dualsense-edge": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000222945147",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsony-ps5-dualsense-edge-draadloze-controller-midnight-black%2F9300000222945147%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/sony-ps5-dualsense-edge-draadloze-controller-midnight-black/9300000222945147/",
+   "titel": "PS5 DualSense Edge pro-controller"
+  },
+  "cl-fit4": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000229295842",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhuawei-watch-fit-4-zwart-fluorelastomeer-horlogeband-ultra-slank-design-geavance%2F9300000229295842%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/huawei-watch-fit-4-zwart-fluorelastomeer-horlogeband-ultra-slank-design-geavance/9300000229295842/",
+   "titel": "Huawei Watch Fit 4"
+  },
+  "cl-fjr-tabhat": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000041387784",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ffjallraven-tab-hat-unisex-muts-dark-grey%2F9300000041387784%2F",
+   "titel": "Fjällräven Tab Hat muts"
+  },
+  "cl-rohde": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000093000081",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frohde-pantoffels-bruin%2F9200000093000081%2F",
+   "titel": "Rohde pantoffels"
+  },
+  "cl-puma-palermo": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000229886194",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpuma-palermo-team-light-blue%2F9300000229886194%2F",
+   "titel": "PUMA Palermo"
+  },
+  "cl-goddess": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000158721418",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fburberry-goddess-eau-de-parfum-30ml-spray%2F9300000158721418%2F",
+   "titel": "Burberry Goddess 30 ml"
+  },
+  "cl-paradoxe": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000120755043",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fprada-paradoxe-eau-de-parfum-recargable-30ml-vaporizador%2F9300000120755043%2F",
+   "titel": "Prada Paradoxe 30 ml"
+  },
+  "cl-rit-sakura": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000242918324",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frituals-the-ritual-of-sakura-trial-giftset%2F9300000242918324%2F",
+   "winkelUrl": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frituals-the-ritual-of-sakura-trial-giftset%2F9300000242918324%2F",
+   "titel": "Rituals The Ritual of Sakura proefset (3 delen)"
+  },
+  "cl-grace-cole": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000156595539",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgrace-cole-toasted-praline-geschenkset-starlight-1-set%2F9300000156595539%2F",
+   "titel": "Grace Cole Toasted Praline geschenkset"
+  },
+  "cl-sdj-oil": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000253943836",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsol-de-janeiro-delicia-drench-shower-oil%2F9300000253943836%2F",
+   "titel": "Sol de Janeiro Delicia Drench Shower Oil"
+  },
+  "cl-bolero-24": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000084588121",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbolero-instant-limonade-proefpakket-24-smaken%2F9200000084588121%2F",
+   "titel": "Bolero proefpakket top 24 smaken"
+  },
+  "cl-piko-station": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000130863124",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpiko-h0-61923-h0-5-delige-stationsset%2F9300000130863124%2F",
+   "titel": "Piko stationsset (5-delig)"
+  },
+  "cl-pannenkoekslee": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000261764637",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgroene-pannenkoekslee-met-gratis-sneeuwbalmaker-slee-glijmat-winterspeelgoed-sneeuwballen-ijspret-sneeuwspeelgoed%2F9300000261764637%2F",
+   "titel": "Pannenkoekslee met sneeuwbalmaker"
+  },
+  "bol-9300000228440181": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000228440181",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fpoogi-glow-chillafish-poogi-kids-versie-met-led%2F9300000228440181%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/poogi-glow-chillafish-poogi-kids-versie-met-led/9300000228440181/",
+   "titel": "Chillafish pogostick met lichtjes voor kinderen (vanaf 5 jaar)"
+  },
+  "bol-9300000094076886": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000094076886",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fsol-de-janeiro-brazilian-crush-cheirosa-71-hair-and-body-fragrance-mist-90-ml%2F9300000094076886%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/sol-de-janeiro-brazilian-crush-cheirosa-71-hair-and-body-fragrance-mist-90-ml/9300000094076886/",
+   "titel": "Sol de Janeiro Cheirosa 71 haar- en bodymist (90 ml)"
+  },
+  "bol-9300000155138677": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000155138677",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fschylling-funky-pup-needoh%2F9300000155138677%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/schylling-funky-pup-needoh/9300000155138677/",
+   "titel": "NeeDoh Funky Pup knijphondje"
+  },
+  "bol-9200000115942094": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000115942094",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fjean-paul-gaultier-le-beau-75-ml-eau-de-toilette-spray-herenparfum%2F9200000115942094%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/jean-paul-gaultier-le-beau-75-ml-eau-de-toilette-spray-herenparfum/9200000115942094/",
+   "titel": "Jean Paul Gaultier Le Beau eau de toilette (75 ml)"
+  },
+  "bol-9300000152303254": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000152303254",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fherenparfum-afnan-edp-100-ml-9-pm-gift-set-eau-de-parfum-100-ml-shower-gel-200-ml-deospray-250-ml%2F9300000152303254%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/herenparfum-afnan-edp-100-ml-9-pm-gift-set-eau-de-parfum-100-ml-shower-gel-200-ml-deospray-250-ml/9300000152303254/",
+   "titel": "Afnan 9pm cadeauset (100 ml + douchegel + deo)"
+  },
+  "bol-9200000083978341": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000083978341",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fripstik-air-pro-razor-special-camo-blauw%2F9200000083978341%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/ripstik-air-pro-razor-special-camo-blauw/9200000083978341/",
+   "titel": "Razor RipStik Air Pro (casterboard)"
+  },
+  "bol-9300000253371023": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000253371023",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fliverpool-fc-darts-case-official-licensed-black-lfc-w2-crest%2F9300000253371023%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/liverpool-fc-darts-case-official-licensed-black-lfc-w2-crest/9300000253371023/",
+   "titel": "Liverpool FC-dartskoffer (officieel)"
+  },
+  "bol-9300000163435792": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000163435792",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fdelacre-chocolade-delicatesse-limited-edition-feestelijke-koekjes-voor-kerst-485g%2F9300000163435792%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/delacre-chocolade-delicatesse-limited-edition-feestelijke-koekjes-voor-kerst-485g/9300000163435792/",
+   "titel": "Delacre Délices chocolade, feestelijke koekjesdoos (485 g)"
+  },
+  "bol-9300000242247267": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000242247267",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fchocolate-candy-set-galler-rawetes-cube-40-pcs%2F9300000242247267%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/chocolate-candy-set-galler-rawetes-cube-40-pcs/9300000242247267/",
+   "titel": "Galler Rawetes, 40 chocolaatjes in 10 smaken (200 g)"
+  },
+  "bol-9300000183136372": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9300000183136372",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Faesop-reverence-aromatique-hand-wash%2F9300000183136372%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/aesop-reverence-aromatique-hand-wash/9300000183136372/",
+   "titel": "Aesop Reverence handzeep (500 ml)"
+  },
+  "bol-9200000103861041": {
+   "datum": "2026-11-28",
+   "bron": "bol",
+   "reden": "niet meer in de bol-feed",
+   "nr": "9200000103861041",
+   "shop": "bol",
+   "url": "https://partner.bol.com/click/click?t=url&s=1545784&f=txl&name=LeukeKeuze&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fchanel-la-creme-main-texture-riche-50-ml-handcreme-texture-riche-50ml%2F9200000103861041%2F",
+   "winkelUrl": "https://www.bol.com/nl/nl/p/chanel-la-creme-main-texture-riche-50-ml-handcreme-texture-riche-50ml/9200000103861041/",
+   "titel": "Chanel La Crème Main handcrème (50 ml)"
+  },
+  "cadeau-bf72ab0c3e": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Cadeau.nl",
+   "url": "https://www.cadeau.nl/kado/?tt=28442_1744030_516846_&r=https%3A%2F%2Fwww.cadeau.nl%2Fbierdopjes-dartbord%2F%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.cadeau.nl/bierdopjes-dartbord/?utm_campaign=tt_feed_all",
+   "titel": "Bierdopjes-dartbord"
+  },
+  "cg-gloeilamp-vaas-set-van-6": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "CoolGift",
+   "url": "https://www.coolgift.com/gadgets/?tt=2656_1728408_516846_&r=https%3A%2F%2Fwww.coolgift.com%2Fnl%2Fgloeilamp-vaas-set-van-6",
+   "winkelUrl": "https://www.coolgift.com/nl/gloeilamp-vaas-set-van-6",
+   "titel": "Gloeilampvaasjes (set van 6)"
+  },
+  "cl-hema-camera": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: komt uit op https://www.hema.nl/school-kantoor/elektronica/fotografie",
+   "shop": "HEMA",
+   "url": "https://partner.hema.nl/c?c=25436&m=1096437&a=516846&r=&u=https%3A%2F%2Fwww.hema.nl%2Fschool-kantoor%2Felektronica%2Ffotografie%2Fonderwatercamera-luipaard-60300375.html",
+   "titel": "HEMA onderwatercamera"
+  },
+  "cl-laurent-perrier": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Svinando",
+   "url": "https://aff.svinando.be/c/?si=22015&li=1930420&wi=433339&pid=17053aa413afa3bf1b26ae570b3ad6d6&dl=laurent-perrier-champagne-la-cuvee-brut&ws=",
+   "winkelUrl": "https://www.svinando.nl/laurent-perrier-champagne-la-cuvee-brut",
+   "titel": "Laurent-Perrier La Cuvée Brut"
+  },
+  "dvzn-378014": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fspecht-snoeischaar%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/specht-snoeischaar",
+   "titel": "Snoeischaar specht"
+  },
+  "dvzn-4fa2e47d16": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fdisney-stitch-wekker%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fdisney-stitch-wekker%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Stitch wekker met nachtlampje"
+  },
+  "dvzn-533927": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fcadeaubox-formule-1%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/cadeaubox-formule-1",
+   "titel": "Cadeaubox Formule 1"
+  },
+  "dvzn-e47370c6a2": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Froze-kruik-met-ogen%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Froze-kruik-met-ogen%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Roze kruik met ogen"
+  },
+  "dvzn-fcb853102a": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fgood-day-bad-day-wijnglas%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2Fgood-day-bad-day-wijnglas%3Futm_campaign%3Dtt_feed_all",
+   "titel": "Wijnglas Good Day, Bad Day"
+  },
+  "grotek-8e0e011d6f": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fgift-republic-feestelijke-wierook-peperkoekhuis-372661",
+   "winkelUrl": "https://www.grotekadoshop.nl/gift-republic-feestelijke-wierook-peperkoekhuis-372661",
+   "titel": "Gift Republic wierook peperkoekhuis"
+  },
+  "grotek-a5294a2680": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Grote Kadoshop",
+   "url": "https://grotekadoshop.nl/kado?tt=34778_1932305_516846_&r=https%3A%2F%2Fwww.grotekadoshop.nl%2Fgift-republic-hoe-je-verdomme-over-de-hele-wereld-kunt-vloeken-372336",
+   "winkelUrl": "https://www.grotekadoshop.nl/gift-republic-hoe-je-verdomme-over-de-hele-wereld-kunt-vloeken-372336",
+   "titel": "Boek: hoe je vloekt over de hele wereld"
+  },
+  "warent-80aecbf2b8": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Warentuin",
+   "url": "https://www.warentuin.nl/tuincentrum/?tt=17057_2041935_516846_&r=https%3A%2F%2Fwww.warentuin.nl%2Fornament-l93-fc-pokemon-eevee-hallmark",
+   "winkelUrl": "https://www.warentuin.nl/ornament-l93-fc-pokemon-eevee-hallmark",
+   "titel": "Hallmark Pokémon-kersthanger Eevee"
+  },
+  "bol-9300000256044324": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flegpuzzels%2F500-stukjes%2Fjumbo-puzzel-jan-van-haasteren-de-dierentuin-500xl%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flegpuzzels%2F500-stukjes%2Fjumbo-puzzel-jan-van-haasteren-de-dierentuin-500xl%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Jan van Haasteren De Dierentuin, extra grote stukjes (500 XL)"
+  },
+  "dgsw-477065851a": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flittle-dutch%2Flittle-dutch-wiebeldier-vos-forest-friends%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/little-dutch/little-dutch-wiebeldier-vos-forest-friends/",
+   "titel": "Little Dutch wiebeldier vos"
+  },
+  "eufr-12728a3d49": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "eu.fragrance.com",
+   "url": "https://tc.tradetracker.net/?c=39204&m=2433689&a=516846&r=&u=https%3A%2F%2Feu.fragrance.com%2Fnl-nl%2Fproducts%2Fjuliette-has-a-gun-not-a-perfume-eau-de-parfum-spray-93%3Futm_campaign%3D%257BaffiliateSiteName%257D%26utm_content%3D%26utm_source%3Dtradetracker_nl%26utm_medium%3Daffiliate%26utm_term%3D%26variant%3D56335906537857",
+   "winkelUrl": "https://eu.fragrance.com/nl-nl/products/juliette-has-a-gun-not-a-perfume-eau-de-parfum-spray-93?variant=56335906537857",
+   "titel": "Juliette Has A Gun Not A Perfume eau de parfum (50 ml)"
+  },
+  "bol-9300000174108120": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Ffisher-price%2Fbrilliant-basics%2Ffisher-price-doktersset%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Ffisher-price%2Fbrilliant-basics%2Ffisher-price-doktersset%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "titel": "Fisher-Price Doktersset"
+  },
+  "dgsw-24bf9b52cc": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Fses-creative%2Fhobby-en-knutselen%2Fses-unicorn-diamond-painting-sieradendoosjes%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/ses-creative/hobby-en-knutselen/ses-unicorn-diamond-painting-sieradendoosjes/",
+   "titel": "SES diamond painting: sieradendoosjes met eenhoorn"
+  },
+  "dgsw-d81fc27c2e": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: niet op voorraad",
+   "shop": "De Grote Speelgoedwinkel",
+   "url": "https://www.degrotespeelgoedwinkel.nl/tradetracker/?tt=3055_2434431_516846_&r=https%3A%2F%2Fwww.degrotespeelgoedwinkel.nl%2Flegpuzzels%2F200-stukjes%2Fwasgij-puzzel-wasgij-junior-beestenboel-240%2F%3Futm_source%3Dtradetracker%26utm_medium%3Daffiliate%26utm_campaign%3Dtradetracker",
+   "winkelUrl": "https://www.degrotespeelgoedwinkel.nl/legpuzzels/200-stukjes/wasgij-puzzel-wasgij-junior-beestenboel-240/",
+   "titel": "Wasgij Junior Beestenboel (240 stukjes)"
+  },
+  "fashio-684debeb3c": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: pagina bestaat niet meer (404)",
+   "shop": "Fashionize",
+   "url": "https://partner.fashionize.nl/c?c=29428&m=2416400&a=516846&r=&u=https%3A%2F%2Fwww.fashionize.nl%2Foorbellen-classy-zwart-f575486%3Futm_source%3DTradetracker%26utm_medium%3DFeed",
+   "winkelUrl": "https://www.fashionize.nl/oorbellen-classy-zwart-f575486?utm_source=Tradetracker&utm_medium=Feed",
+   "titel": "Kanten oorbellen met zwarte druppel (goudkleurig)"
+  },
+  "warent-7b450926d6": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Warentuin",
+   "url": "https://www.warentuin.nl/tuincentrum/?tt=17057_2041935_516846_&r=https%3A%2F%2Fwww.warentuin.nl%2Fbook-nook-christmas-street-robotime",
+   "winkelUrl": "https://www.warentuin.nl/book-nook-christmas-street-robotime",
+   "titel": "Robotime book nook kerststraat"
+  },
+  "999g-999win02": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Boardgameshop",
+   "url": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fwingspan-uitbreiding-europa%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "winkelUrl": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fwingspan-uitbreiding-europa%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "titel": "Wingspan uitbreiding: Europa"
+  },
+  "bol-9300000256044332": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Boardgameshop",
+   "url": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fhitster-battle-of-the-generations%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "winkelUrl": "https://boardgameshop.nl/goodtimes/?tt=40488_2520696_516846_&r=https%3A%2F%2Fboardgameshop.nl%2Fproduct%2Fhitster-battle-of-the-generations%2F%3Futm_source%3DTradeTracker%26utm_campaign%3Daffiliate%26utm_medium%3Dcps%26utm_term%3Dadtribes",
+   "titel": "Hitster Battle of the Generations"
+  },
+  "cg-rainbow-in-my-room": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "CoolGift",
+   "url": "https://www.coolgift.com/gadgets/?tt=2656_1728408_516846_&r=https%3A%2F%2Fwww.coolgift.com%2Fnl%2Frainbow-in-my-room",
+   "winkelUrl": "https://www.coolgift.com/nl/rainbow-in-my-room",
+   "titel": "Regenboogprojector voor de kinderkamer"
+  },
+  "dvzn-531544": {
+   "datum": "2026-11-28",
+   "bron": "winkelpagina",
+   "reden": "niet op voorraad volgens winkelpagina: winkel zegt: OutOfStock",
+   "shop": "Ditverzinjeniet",
+   "url": "https://www.ditverzinjeniet.nl/tradetracker/?tt=2219_1736161_516846_&r=https%3A%2F%2Fwww.ditverzinjeniet.nl%2F7-in-1-multitool-pen-met-flesopener%3Futm_campaign%3Dtt_feed_all",
+   "winkelUrl": "https://www.ditverzinjeniet.nl/7-in-1-multitool-pen-met-flesopener",
+   "titel": "7-in-1 multitool pen"
   }
  }
 }
