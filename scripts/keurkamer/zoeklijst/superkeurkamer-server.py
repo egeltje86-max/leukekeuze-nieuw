@@ -240,7 +240,7 @@ def partner(pid):
 
 def filter_producten(d, q):
     pad = json.loads(q.get('pad', ['[]'])[0] or '[]')
-    zoek = plat(q.get('q', [''])[0]).split()
+    zoek = zoekwoorden(q.get('q', [''])[0]) or plat(q.get('q', [''])[0]).split()   # 28-11-2026: 'bijtringen' vindt ook 'bijtring'
     korting = q.get('korting', [''])[0] == '1'
     pop = q.get('pop', [''])[0] == '1'
     voorraad = q.get('voorraad', [''])[0] == '1'
@@ -278,6 +278,13 @@ def api_producten(q):
     if not d:
         return {'fout': 'Partner niet gevonden'}
     pad, basis, uit = filter_producten(d, q)
+    verbreed = ''
+    if pad and q.get('q', [''])[0].strip() and not uit:
+        # 28-11-2026: niets in deze groep? dan in de hele winkel zoeken (en dat zeggen)
+        q2 = dict(q); q2['pad'] = ['[]']
+        _, _, uit2 = filter_producten(d, q2)
+        if uit2:
+            verbreed, uit, pad = pad[-1], uit2, []
     sort = q.get('sort', ['aanbevolen'])[0]
     if sort == 'korting':
         uit.sort(key=lambda p: (-p['pct'], p['p']))
@@ -308,7 +315,7 @@ def api_producten(q):
     pagina = int(q.get('pagina', ['1'])[0] or 1)
     per = 60
     stuk = uit[(pagina - 1) * per: pagina * per]
-    return {'totaal': len(uit), 'basis': len(basis), 'verborgen': sum(1 for p in d['producten'] if p['g'][:len(pad)] == pad and p.get('_os', (0, ''))[1] == 'weg'), 'pagina': pagina, 'paginas': max(1, -(-len(uit) // per)),
+    return {'verbreed': verbreed, 'totaal': len(uit), 'basis': len(basis), 'verborgen': sum(1 for p in d['producten'] if p['g'][:len(pad)] == pad and p.get('_os', (0, ''))[1] == 'weg'), 'pagina': pagina, 'paginas': max(1, -(-len(uit) // per)),
             'kinderen': kinderen,
             'kenmerken': [[k, n] for k, n in km.most_common(16) if n < len(uit) or len(uit) < 4],
             'merken': [[k, n] for k, n in mk.most_common(40)],
@@ -631,6 +638,34 @@ def spreid(rijen, cijfers, n=300):
 
 
 def api_zoek(q, fotos_vragen=True):
+    uit = _api_zoek(q, fotos_vragen)
+    # 28-11-2026: typ je iets binnen een soort en vindt hij daar niets, dan zoeken we in alle partners (en zeggen we dat)
+    if q.get('slim', [''])[0] == '1' and zoekwoorden(q.get('q', [''])[0]) and not uit.get('totaal') and not uit.get('fout'):
+        q2 = {k: v for k, v in q.items() if k not in ('slim', 'min', 'max')}
+        uit2 = _api_zoek(q2, fotos_vragen)
+        if uit2.get('totaal'):
+            uit2['buiten_soort'] = True
+            return uit2
+    return uit
+
+
+def api_waar(q):
+    """28-11-2026: bij welke winkels staat dit woord (voor de partnerpagina): per winkel het aantal en een foto."""
+    woorden = zoekwoorden(q.get('q', [''])[0])
+    if not woorden or not os.path.exists(DB):
+        return {'woorden': woorden, 'winkels': []}
+    c = sqlite3.connect('file:' + DB + '?mode=ro', uri=True)
+    try:
+        rijen = c.execute('SELECT p.pid, p.winkel, count(*), max(CASE WHEN p.pop = 1 THEN p.f ELSE \'\' END), max(p.f) FROM p '
+                          'WHERE p.id IN (SELECT rowid FROM z WHERE z MATCH ?) AND p.pid NOT IN (%s) GROUP BY p.pid ORDER BY count(*) DESC LIMIT 60'
+                          % ','.join("'%s'" % x for x in WEG_WINKELS),
+                          (' AND '.join('"%s"' % w.replace('"', '') for w in woorden),)).fetchall()
+    finally:
+        c.close()
+    return {'woorden': woorden, 'winkels': [{'id': a, 'naam': b, 'n': n, 'foto': f1 or f2} for a, b, n, f1, f2 in rijen]}
+
+
+def _api_zoek(q, fotos_vragen=True):
     woorden = zoekwoorden(q.get('q', [''])[0])
     cat = q.get('cat', [''])[0]
     waar, args = [], []
@@ -903,6 +938,8 @@ class Hand(SimpleHTTPRequestHandler):
                 return self.stuur(api_cats())
             if u.path == '/api/zoek':
                 return self.stuur(api_zoek(q))
+            if u.path == '/api/waar':
+                return self.stuur(api_waar(q))
             if u.path == '/api/merken':
                 return self.stuur(api_merken(q))
             if u.path == '/foto':

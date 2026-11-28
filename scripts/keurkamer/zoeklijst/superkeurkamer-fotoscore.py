@@ -18,6 +18,7 @@ SLOT = threading.RLock()
 SCORES = {}
 _geladen = [False]
 _vies = [0]
+_mt = [0.0]
 RIJ = queue.Queue()
 _bezig = set()
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36'
@@ -42,10 +43,29 @@ def bewaar(nu=False):
     with SLOT:
         if not _vies[0] or (not nu and _vies[0] < 50):
             return
+        _van_schijf()
         tmp = PAD + '.tmp'
         json.dump(SCORES, open(tmp, 'w', encoding='utf-8'), separators=(',', ':'))
         os.replace(tmp, PAD)
+        _mt[0] = os.path.getmtime(PAD)
         _vies[0] = 0
+
+
+def _van_schijf():
+    # 28-11-2026: server en losse run schrijven hetzelfde bestand; neem eerst over wat de ander al nakeek
+    with SLOT:
+        try:
+            mt = os.path.getmtime(PAD)
+        except OSError:
+            return
+        if mt == _mt[0]:
+            return
+        try:
+            for k, v in json.load(open(PAD, encoding='utf-8')).items():
+                SCORES.setdefault(k, v)
+        except Exception:
+            return
+        _mt[0] = mt
 
 
 def cijfer(data):
@@ -139,6 +159,7 @@ def start(n=6):
         while True:
             time.sleep(20)
             try:
+                _van_schijf()
                 bewaar(True)
             except Exception:
                 pass

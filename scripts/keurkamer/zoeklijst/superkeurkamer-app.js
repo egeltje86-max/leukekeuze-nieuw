@@ -95,7 +95,7 @@
         '</div></div></section>' +
       '<div class="binnen home-raam"><div class="home-links">' +
         '<div class="balk">' +
-          '<label class="zoekveld"><span aria-hidden="true">🔍</span><input id="pz" placeholder="Zoek een partner of soort (bv. Coolblue, mutsen, wijn)" value="' + esc(staat.zoek) + '"></label>' +
+          '<label class="zoekveld"><span aria-hidden="true">🔍</span><input id="pz" placeholder="Zoek een winkel of product (bv. Coolblue, bijtring, wijn)" value="' + esc(staat.zoek) + '"></label>' +
           '<select class="kiezer" id="pn"><option value="">Alle netwerken</option>' + Object.keys(netw).sort().map(function (n) { return '<option' + (staat.netwerk === n ? ' selected' : '') + '>' + esc(n) + '</option>'; }).join('') + '</select>' +
           '<select class="kiezer" id="ps">' +
             [['naam', 'A tot Z'], ['n', 'Meeste producten'], ['korting', 'Meeste korting'], ['gekozen', 'Meeste gekozen']].map(function (o) { return '<option value="' + o[0] + '"' + (staat.sorteer === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') +
@@ -105,13 +105,34 @@
           [['alles', 'Alle partners'], ['cadeau', '🎁 Cadeaus & gadgets'], ['nieuw', 'Nog niet op de site'], ['site', 'Al op de site'], ['bekijken', 'Nog niet bekeken'], ['plek', 'Krijgt een plek'], ['geen', 'Nog geen producten']]
             .map(function (t) { return '<button class="tab' + (staat.tab === t[0] ? ' aan' : '') + '" data-t="' + t[0] + '">' + t[1] + ' <b>' + tal(tel(t[0])) + '</b></button>'; }).join('') +
         '</div>' +
+        '<div id="pw"></div>' +
         '<div class="partners" id="pl" style="margin-top:18px"></div>' +
       '</div>' + paneelHtml() + '</div>';
-    tekenKaarten(); tekenPaneel();
-    $('#pz').addEventListener('input', function (e) { staat.zoek = e.target.value; tekenKaarten(); });
+    tekenKaarten(); tekenPaneel(); tekenWaar();
+    var tw;
+    $('#pz').addEventListener('input', function (e) { staat.zoek = e.target.value; tekenKaarten(); clearTimeout(tw); tw = setTimeout(zoekWaar, 350); });
+    $('#pw').addEventListener('click', function (e) { if (e.target.closest('[data-waar]')) staat.startQ = staat.zoek.trim(); });
     $('#pn').addEventListener('change', function (e) { staat.netwerk = e.target.value; tekenHome(); });
     $('#ps').addEventListener('change', function (e) { staat.sorteer = e.target.value; tekenKaarten(); });
     $('#pt').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) { staat.tab = b.dataset.t; tekenHome(); } });
+  }
+  // 28-11-2026: typ je een product (bijtring, muts), dan zie je bij welke winkels het staat; een klik opent de winkel met dat woord
+  function zoekWaar() {
+    var q = (staat.zoek || '').trim();
+    if (q.length < 3) { staat.waar = null; tekenWaar(); return; }
+    get('/api/waar?q=' + encodeURIComponent(q)).then(function (d) { if ((staat.zoek || '').trim() !== q) return; staat.waar = d; tekenWaar(); tekenKaarten(); });
+  }
+  function tekenWaar() {
+    var box = $('#pw'); if (!box) return;
+    var w = staat.waar, q = (staat.zoek || '').trim();
+    if (!w || q.length < 3 || !(w.winkels || []).length) { box.innerHTML = ''; return; }
+    box.innerHTML = '<h3 class="sectiekop" style="margin-top:18px">‘' + esc(q) + '’ vind je bij deze winkels <small>' + tal(w.winkels.length) + '</small></h3>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px">' + w.winkels.map(function (x) {
+        return '<a href="#/p/' + esc(x.id) + '" data-waar style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:#fff;border:1px solid #E5D7BE;border-radius:12px;color:#13224A;text-decoration:none">' +
+          (x.foto ? '<img src="' + esc(x.foto) + '" alt="" loading="lazy" referrerpolicy="no-referrer" style="width:52px;height:52px;object-fit:contain;border-radius:8px;background:#fff;flex:none" onerror="this.remove()">' : '') +
+          '<span style="min-width:0"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(x.naam) + '</b><small style="color:#5B6275">' + tal(x.n) + ' met ‘' + esc(q) + '’</small></span></a>';
+      }).join('') + '</div>' +
+      '<h3 class="sectiekop" style="margin-top:22px">Winkels</h3>';
   }
   function tekenKaarten() {
     var l = filterPartners();
@@ -129,7 +150,7 @@
         '<div class="pk-voet"><span class="status ' + (st || '') + '">' + (STATUS[st] || 'Nog niet bekeken') + '</span>' +
           (p.gekozen ? '<span class="gekozen-tel">✓ ' + tal(p.gekozen) + ' gekozen</span>' : '') + '</div>' +
         '</div></a>';
-    }).join('') : '<div class="leeg-melding">Geen partners gevonden.</div>';
+    }).join('') : (staat.waar && (staat.waar.winkels || []).length ? '<div class="leeg-melding klein">Geen winkel met die naam; zie hierboven welke winkels het hebben.</div>' : '<div class="leeg-melding">Geen partners gevonden.</div>');
   }
 
   /* ---------------- partner ---------------- */
@@ -139,6 +160,8 @@
     staat.pad = pad; staat.pagina = 1;
     if (nieuw) {
       staat.pid = pid; staat.f = { sort: 'aanbevolen' };
+      if (staat.startQ) staat.f.q = staat.startQ;
+      staat.startQ = '';
       app.innerHTML = '<div class="laden">' + 'Mini-winkel openen…' + '</div>';
       Promise.all([get('/api/partner?id=' + encodeURIComponent(pid)), laadCats()]).then(function (res) {
         var d = res[0];
@@ -243,6 +266,7 @@
     $('#hoofd').innerHTML =
       '<div class="kruimel">' + kruimel + '</div>' +
       '<div class="titel-rij"><h2>' + esc(titel) + '</h2><span>' + tal(d.totaal) + (d.totaal !== d.basis ? ' van ' + tal(d.basis) : '') + ' producten' + (d.verborgen ? ' · ' + tal(d.verborgen) + ' die je eerder weggooide niet getoond' : '') + '</span></div>' +
+      (d.verbreed ? '<div class="zoek-info" style="color:#8F6620;margin:4px 0 12px">In <b>' + esc(d.verbreed) + '</b> staat niets met <b>' + esc(f.q || '') + '</b>. Dit vond ik in de hele winkel:</div>' : '') +
       rondjes +
       '<div class="gereedschap">' +
         '<label class="zoekveld"><span aria-hidden="true">🔍</span><input id="fq" placeholder="Zoek in ' + esc(titel) + '" value="' + esc(f.q || '') + '"></label>' +
@@ -494,7 +518,8 @@
         var k = catVan(id);
         // je zoekopdracht blijft staan als je van categorie wisselt; alleen de eerste keer zoeken we op de naam
         if (k && k.zoek) staat.z = { q: '', slim: '1', min: k.min != null ? String(k.min) : '', max: k.max != null ? String(k.max) : '', sort: 'beste' };   // zoeklijst 14-11-2026
-        else if (!staat.z || (!staat.z.q && !staat.z.merk)) staat.z = { q: k ? k.naam : '', sort: 'beste' };
+        else if (k && catKinderen(k.id).length) staat.z = { q: '', sort: 'beste' };   // 28-11-2026: een pagina met soorten: niet op de naam ('Baby & peuter') zoeken
+        else staat.z = { q: k ? k.naam : '', sort: 'beste' };
         staat.catId = id;
       }
       app.innerHTML = '<section class="pkop"><div class="binnen"><div><h1>Mijn categorieën</h1>' +
@@ -545,8 +570,8 @@
         (erin.length ? '<div class="raster" id="cErin">' + erin.map(function (x) { return catKaart(x); }).join('') + '</div>'
           : '<div class="leeg-melding klein">Nog niets. Zoek hieronder en klik op <b>+ In ' + esc(k.naam) + '</b>.</div>') +
         '<h3 class="sectiekop">Producten zoeken voor ' + esc(k.naam) + ' <small>in alle partners</small></h3>' +
-        '<div id="cZoek"></div>';
-      if (oudZoek && oudZoek.querySelector('#zBalk')) $('#cZoek').replaceWith(oudZoek);
+        '<div id="cZoek" data-cat="' + esc(k.id) + '"></div>';
+      if (oudZoek && oudZoek.querySelector('#zBalk') && oudZoek.getAttribute('data-cat') === k.id) $('#cZoek').replaceWith(oudZoek);   // 28-11-2026: alleen het zoekvak van dezelfde soort hergebruiken
       window.scrollTo(0, y);
       var sb = h.querySelector('.soort-info [data-a="slim"]');
       if (sb) sb.addEventListener('click', function () { staat.z.slim = staat.z.slim ? '' : '1'; staat.z.q = staat.z.slim ? '' : k.naam; var zb = $('#zBalk'); if (zb) zb.parentNode.innerHTML = ''; tekenCat(); });
@@ -658,9 +683,10 @@
       staat.zoekRes = d.producten;
       $('#zp').innerHTML = '<option value="">Alle partners' + (d.partners && d.partners.length ? ' (' + d.partners.length + ')' : '') + '</option>' +
         (d.partners || []).slice().sort(function (a, b) { return String(a.naam).localeCompare(String(b.naam), 'nl', { sensitivity: 'base' }); }).map(function (p) { return '<option value="' + esc(p.id) + '"' + (z.partner === p.id ? ' selected' : '') + '>' + esc(p.naam) + ' (' + tal(p.n) + ')</option>'; }).join('');
-      var wat = (z.slim && k.zoek ? '<b>' + esc(k.naam) + '</b>' + (d.woorden && d.woorden.length ? ' + ' : '') : '') + (d.woorden && d.woorden.length ? '<b>' + esc(d.woorden.join(' + ')) + '</b>' : '') + (d.merk ? (d.woorden && d.woorden.length ? ' van merk ' : 'merk ') + '<b>' + esc(z.merk) + '</b>' : '');
-      res.innerHTML = d.leeg && !z.slim ? '<div class="leeg-melding">Typ een zoekwoord (minimaal 3 letters) of een merk.</div>'
-        : '<div class="zoek-info">' + tal(d.totaal) + ' producten gevonden' + (wat ? ' voor ' + wat : '') + (d.verborgen ? ' (' + tal(d.verborgen) + ' die je eerder weggooide niet getoond)' : '') + '</div>' +
+      var wat = (z.slim && k.zoek && !d.buiten_soort ? '<b>' + esc(k.naam) + '</b>' + (d.woorden && d.woorden.length ? ' + ' : '') : '') + (d.woorden && d.woorden.length ? '<b>' + esc(d.woorden.join(' + ')) + '</b>' : '') + (d.merk ? (d.woorden && d.woorden.length ? ' van merk ' : 'merk ') + '<b>' + esc(z.merk) + '</b>' : '');
+      res.innerHTML = d.leeg && !z.slim ? '<div class="leeg-melding">' + (catKinderen(k.id).length ? 'Kies hierboven een soort, of typ zelf wat je zoekt (minimaal 3 letters).' : 'Typ een zoekwoord (minimaal 3 letters) of een merk.') + '</div>'
+        : (d.buiten_soort ? '<div class="zoek-info" style="color:#8F6620">Binnen <b>' + esc(k.naam) + '</b> vond ik niets met <b>' + esc((d.woorden || []).join(' + ')) + '</b>. Dit vond ik in alle partners:</div>' : '') +
+          '<div class="zoek-info">' + tal(d.totaal) + ' producten gevonden' + (wat ? ' voor ' + wat : '') + (d.verborgen ? ' (' + tal(d.verborgen) + ' die je eerder weggooide niet getoond)' : '') + '</div>' +
           (d.producten.length ? '<div class="raster" id="zRaster">' + d.producten.map(zoekKaart).join('') + '</div><div class="meer" id="zMeer"></div>'
             : '<div class="leeg-melding">Niets gevonden.' + (z.merk ? ' Klopt het merk? Kies een voorstel in het merkvak.' : ' Probeer een ander woord, bijvoorbeeld enkelvoud (muts in plaats van mutsen).') + '</div>');
       res.style.minHeight = '';
