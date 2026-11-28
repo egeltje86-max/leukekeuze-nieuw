@@ -41,7 +41,7 @@ function runLos(naam, script, args) {
   return ok;
 }
 runLos('oudeAdressen', 'ooit.js', [R]); // 12-11-2026: elk adres dat ooit in de sitemap stond bestaat nog of stuurt door (Google: geen 404's)
-runLos('gidsen', 'gidsen.js', [R, 'streng']); // 13-11-2026: geen gids met een verdwenen favoriet, plaatje of een rij met minder dan twee cadeaus
+runLos('gidsen', 'gidsen.js', process.env.LK_GIDS_ZACHT === '1' ? [R] : [R, 'streng']); // 28-11-2026: LK_GIDS_ZACHT=1 (piloot zonder Claude): een gat in een gids houdt de bouw niet tegen, de pagina laat het cadeau zelf weg // 13-11-2026: geen gids met een verdwenen favoriet, plaatje of een rij met minder dan twee cadeaus
 fs.writeFileSync(path.join(UITMAP, 'controle-' + datum + '.json'), JSON.stringify(uit, null, 1));
 fs.writeFileSync(path.join(UITMAP, 'controle-laatste.json'), JSON.stringify(uit, null, 1));
 console.log('CONTROLE', datum, uit.schoon ? 'SCHOON' : 'NIET SCHOON', Object.entries(uit.onderdelen).map(([k, v]) => k + ':' + (v.ok ? 'ok' : 'FOUT')).join(' '));
