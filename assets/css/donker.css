@@ -1359,6 +1359,12 @@ html.donker .kw-knop.ok{background:#223259;border-color:#2e406b;color:#ffffff}
 html.donker .kw-wa{color:#a6f2ca}
 html.donker .kw-kaartkop{color:#eee7da}
 html.donker .kw-tips li{color:#eee7da}
+html.donker .alle-namen details{background:#1c263c;border:1px solid rgba(217,168,72,0.3)}
+html.donker .alle-namen summary{color:#eee7da}
+html.donker .alle-namen summary::after{color:#e7c893}
+html.donker .alle-namen li{border-top:1px solid rgba(217,168,72,0.3)}
+html.donker .alle-namen li a{color:#eee7da}
+html.donker .alle-namen li a:hover{color:#e7c893}
 /* ---- uit assets/css/straat.css ---- */
 html.donker .sh{color:#eee7da}
 html.donker .sh .welkom h1{color:#eee7da}
