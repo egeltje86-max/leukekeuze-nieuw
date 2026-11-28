@@ -494,14 +494,16 @@
   var nu = vandaagNL(), jaar = new Date(nu).getUTCFullYear();
   var sint = Date.UTC(jaar, 11, 5), kerst = Date.UTC(jaar, 11, 25), dag = 864e5;
   var start = Date.UTC(jaar, 9, 1);          /* vanaf 1 oktober tonen */
-  if (nu < start || nu > Date.UTC(jaar, 11, 26)) return;
+  /* 28-11-2026: buiten het seizoen de gebouwde aftellers weghalen (anders bleven na kerst de getallen van de laatste bouwdag staan). */
+  function weg() { if (el.parentNode) el.parentNode.removeChild(el); document.documentElement.classList.remove('met-aftel'); }
+  if (nu < start || nu > Date.UTC(jaar, 11, 26)) { weg(); return; }
   var thema, n, tekst, link;
   /* COMBI (22-11-2026, voorbeeld; Marius: 'ik mis ook nog zoveel dagen tot Black Friday, Sinterklaas en kerst'): drie aftellers naast elkaar,
      elk in zijn eigen donkere kleur en elk een link. Een feest dat voorbij is valt weg. */
   if (/(^| )combi( |$)/.test(document.documentElement.className)) {
     var feesten = [[Date.UTC(jaar, 10, 27), 'bf', 'Black Friday', '/collectie/black-friday', Date.UTC(jaar, 10, 20)],
       [sint, 'sint', 'Pakjesavond', '/c/cadeaus/sinterklaas', start], [kerst, 'kerst', 'Kerst', '/c/cadeaus/kerst', start]].filter(function (f) { return nu >= f[4] && nu <= f[0] && (f[1] !== 'bf' || window.LK_BF_TONEN === true); }); /* 27-11-2026: Black Friday weg (Marius) */
-    if (!feesten.length) return;
+    if (!feesten.length) { weg(); return; }
     var a3 = document.createElement('div'); a3.className = 'aftel aftel3'; a3.setAttribute('data-aftel', ''); a3.setAttribute('role', 'navigation'); a3.setAttribute('aria-label', 'Aftellen');
     a3.innerHTML = feesten.map(function (f) {
       var d = Math.round((f[0] - nu) / dag);

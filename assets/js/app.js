@@ -8775,7 +8775,7 @@
     var G = [
       { id: 'sinterklaas', naam: 'Sinterklaas', zin: 'Schoencadeautjes, lootjes, surprises en het gedicht.', re: /sinterklaas|schoencadeautjes|surprise/ },
       { id: 'kerst', naam: 'Kerst', zin: 'Voor onder de boom, voor het team, Secret Santa en de adventskalender.', re: /kerst|advent|secret-santa/ },
-      { id: 'trends', naam: 'Black Friday en trends', zin: 'Wat nu gewild is, en hoe je een echte deal herkent.', re: /black-friday|hypes|virale|speelgoed-van-het-jaar|trends|sfeerlicht/ },
+      { id: 'trends', naam: nu <= '2026-11-30' ? 'Black Friday en trends' : 'Trends van nu', zin: nu <= '2026-11-30' ? 'Wat nu gewild is, en hoe je een echte deal herkent.' : 'Wat nu gewild is: hypes, virale cadeaus en Speelgoed van het Jaar.', re: /black-friday|hypes|virale|speelgoed-van-het-jaar|trends|sfeerlicht/ },
       { id: 'kind', naam: 'Per leeftijd', zin: 'Van 1 jaar tot 60: voor jongens en meisjes, tieners en volwassenen.', re: /cadeau-kind-|cadeau-\d+-jaar$/ },
       { id: 'persoon', naam: 'Per persoon', zin: 'Voor je moeder, vader, vriend, zus, opa of collega.', re: /cadeau-voor-|zwangere|schoonouders/ },
       { id: 'bedrag', naam: 'Per bedrag', zin: 'Kleine cadeaus en lootjes van 10, 15, 25 of 50 euro.', re: /euro|klein-cadeau/ },
@@ -8785,6 +8785,8 @@
     if (!sintEerst) G.push(G.shift());
     G.forEach(function (x) { x.l = []; });
     gidsUniek().forEach(function (g) { for (var i = 0; i < G.length; i++) if (G[i].re.test(g.slug)) { G[i].l.push(g); return; } });
+    /* 28-11-2026: na Black Friday staat die gids achteraan in zijn groep. */
+    if (nu > '2026-11-30') G.forEach(function (x) { x.l.sort(function (a, b) { return (/black-friday/.test(a.slug) ? 1 : 0) - (/black-friday/.test(b.slug) ? 1 : 0); }); });
     return G.filter(function (x) { return x.l.length; });
   }
   /* Een rij van 4 foto's bovenaan: uit verschillende delen, niet de drie van 'Snel kiezen'. */

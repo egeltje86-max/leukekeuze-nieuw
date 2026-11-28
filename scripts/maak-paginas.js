@@ -14,6 +14,8 @@ require('./splits-producten.js')(); // producten.js -> producten-lean.js + produ
 /* DONKERE VERSIE (22-11-2026): assets/css/donker.css opnieuw maken uit de stijlbestanden (scripts/donker/maak.js), vóór de versienummers. */
 try { require('./donker/maak.js'); } catch (e) { console.log('donker.css niet gemaakt: ' + e.message); }
 /* Sint-rijmmachine (7-11-2026): cadeaulijst met alle producten voor de serverfunctie 'sint-rijm' (data/rijm-catalogus.json). */
+/* 28-11-2026: llms.txt volgt het seizoen (Black Friday weg na 30-11, pakjesavond na 5-12, kerst erbij vanaf 6-12). */
+try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'seo/llms-seizoen.js')], { stdio: 'inherit' }); } catch (e) { console.log('llms-seizoen mislukt: ' + e.message); }
 try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'rijmmachine/maak-rijm-catalogus.js'), path.join(__dirname, '../data/rijm-catalogus.json')], { stdio: 'inherit' }); } catch (e) { console.error('rijm-catalogus niet gelukt:', e.message); }
 /* Sneller voor wie vaker komt (14-11-2026, Marius: 'de website laad traag'): het nummer achter elk bestand komt nu uit de inhoud van dat
    bestand zelf. Een telefoon haalt dus alleen opnieuw op wat echt veranderd is; eerst kreeg alles bij elke update een nieuw nummer
