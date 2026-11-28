@@ -1,0 +1,66 @@
+# Automatische piloot op GitHub (28-11-2026). Draait gratis op GitHub (openbaar project), ook als de laptop uit staat
+# en zonder Claude-abonnement. Doet hetzelfde als de piloot die eerst in de cloud van Claude draaide:
+# scripts/piloot/dag.py = het ochtendrapport van de laptop toepassen (prijzen, uitverkocht), bouwen, alle controles,
+# en alleen bij een schone controle live zetten. Niet schoon? Dan faalt deze taak en stuurt GitHub Marius een mail.
+# Tijden: 10:17 en (inhaalbeurt) 13:17 Nederlandse wintertijd = 09:17 en 12:17 UTC.
+name: Piloot dagelijks
+
+on:
+  schedule:
+    - cron: '17 9 * * *'
+    - cron: '17 12 * * *'
+  workflow_dispatch:
+    inputs:
+      inhaal:
+        description: 'Alleen een inhaalbeurt (doet alleen iets bij een nieuw ochtendrapport)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: piloot
+  cancel-in-progress: false
+
+jobs:
+  piloot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 30
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Playwright (buiten het project, zodat het niet mee in git gaat)
+        run: |
+          mkdir -p "$HOME/pw" && cd "$HOME/pw" && npm init -y >/dev/null && npm install --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+          echo "NODE_PATH=$HOME/pw/node_modules" >> "$GITHUB_ENV"
+      - name: Git-naam
+        run: |
+          git config user.name "LeukeKeuze piloot"
+          git config user.email "piloot@leukekeuze.nl"
+      - name: Piloot draaien
+        id: dag
+        run: |
+          UUR=$(TZ=Europe/Amsterdam date +%H)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "${{ inputs.inhaal }}" = "true" ]; then EXTRA=--inhaal; else EXTRA=; fi
+          elif [ "$UUR" -ge 12 ]; then EXTRA=--inhaal; else EXTRA=; fi
+          set +e
+          python3 scripts/piloot/dag.py $EXTRA | tee "$RUNNER_TEMP/piloot-uit.txt"
+          CODE=${PIPESTATUS[0]}
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          grep '^PILOOT:' "$RUNNER_TEMP/piloot-uit.txt" | tail -1 >> "$GITHUB_STEP_SUMMARY"
+          if grep -q '^PILOOT:.*live gezet' "$RUNNER_TEMP/piloot-uit.txt"; then echo "live=1" >> "$GITHUB_OUTPUT"; fi
+          exit $CODE
+      - name: Website uploaden starten
+        if: success() && steps.dag.outputs.live == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main

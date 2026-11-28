@@ -133,7 +133,16 @@ try:
 except Exception: pass
 run(['git', 'add', '-A'])
 c, t = run(['git', 'commit', '-q', '-m', zin + '\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>']); stap('vastleggen', c == 0, t)
-c, t = run(['git', 'push', '-q', 'origin', 'HEAD:main']); stap('live zetten', c == 0, t)
+# 28-11-2026: de prijswacht op de laptop en de pins pushen ook naar main. Is main intussen verder, dan eerst
+# samenvoegen (alleen hun gegevensbestanden, geen gebouwde pagina's) en opnieuw proberen, hooguit 3 keer.
+for poging in range(3):
+    c, t = run(['git', 'push', '-q', 'origin', 'HEAD:main'])
+    if c == 0: break
+    run(['git', 'fetch', '-q', 'origin', '+refs/heads/main:refs/remotes/origin/main'])
+    cm, tm = run(['git', 'merge', 'origin/main', '--no-edit', '-q'])
+    if cm != 0:
+        run(['git', 'merge', '--abort']); t = tm; break
+stap('live zetten', c == 0, t)
 if c != 0: klaar(2, zin + ', maar pushen mislukte: ' + t.strip().splitlines()[-1][:160])
 rap['live'] = True
 # 26-11-2026: werktak apart. Mislukt dit (bijv. ondiepe kloon kan niet bewijzen dat het een gewone
