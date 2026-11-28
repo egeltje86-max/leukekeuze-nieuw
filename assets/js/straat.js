@@ -536,7 +536,7 @@
       '<span class="pk-w">bij ' + esc(p.shop || '') + (p.mnd ? ' · vanaf ' + p.mnd + ' mnd' : '') + '</span></a>';
   }
 
-  var PER_KEER = 4, MAX_IN_GANG = 12;
+  var PER_KEER = 4, MAX_IN_GANG = 16, STAP = 12; /* 28-11-2026 (Marius: '4 laten zien is te kort, laat er 12 zien'): eerst 4, daarna 12 per klik (was 4, tot 12). */
   function prijsPar(max) { return max === 50 ? 'r0-50' : 'tot' + max; } /* ?prijs=tot50 betekent in de oude lijst €25-50 (LK_PRIJS_OUD); r0-50 = tot €50 */
   /* Doorgaan naar de volledige collectie: persoon en bedrag gaan mee, zoals de gewone site ze kent (?voor=, ?prijs=tot..) */
   function metKeuze(naar, st) {
@@ -666,7 +666,7 @@
         '<div><small>' + esc(w.naam) + (w.label ? ' · ' + esc(w.label) : '') + '</small><h2>' + esc(WAT[w.id] || w.naam) + '</h2>' +
         '<span class="kraam-van">' + getal(k.x.aantal) + ' cadeaus, vanaf ' + euro(k.x.van) + '</span></div></div>' +
         '<div class="sh-schap" data-sh-schap="r' + n + '">' + k.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
-        '<div class="gang-voet">' + (k.lijst.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="r' + n + '">Laat er nog ' + Math.min(PER_KEER, k.lijst.length - PER_KEER) + ' zien</button>' : '') +
+        '<div class="gang-voet">' + (k.lijst.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="r' + n + '">Laat er nog ' + Math.min(STAP, Math.min(k.lijst.length, MAX_IN_GANG) - PER_KEER) + ' zien</button>' : '') +
         '<a class="naar" href="' + adres(w.id, st.pr.wie, st.max) + '">Naar binnen bij ' + esc(w.naam) + ' ›</a></div></section>';
     }).join('');
     h += '<div class="lampjes" aria-hidden="true"></div><h2 class="straat-titel">Kijk ook in deze winkels</h2>';
@@ -697,7 +697,7 @@
       h += '<section class="gang top-etalage"><div class="gang-kop"><img src="' + novaRond(st.pr.ic) + '" alt="" loading="lazy">' +
         '<div><small>De etalage</small><h2>' + esc(st.pr.wie ? 'Onze beste cadeaus ' + st.pr.tekst : 'Onze beste cadeaus van dit moment') + (st.max ? ' ' + esc(tekstBedrag(st.max)) : '') + '</h2></div></div>' +
         '<div class="sh-schap" data-sh-schap="top">' + st.etalage.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
-        '<div class="gang-voet">' + (st.etalage.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="top">Laat er nog ' + Math.min(PER_KEER, st.etalage.length - PER_KEER) + ' zien</button>' : '') +
+        '<div class="gang-voet">' + (st.etalage.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="top">Laat er nog ' + Math.min(STAP, Math.min(st.etalage.length, MAX_IN_GANG) - PER_KEER) + ' zien</button>' : '') +
         '</div></section>'; /* 22-11-2026 (Marius: 'ik heb niet gevraagd om een knop naar alle cadeaus'): geen link 'Alle cadeaus voor …' meer; je bent al in de straat voor die persoon */
     }
     h += haak('LK_STRAAT_NA_ETALAGE');
@@ -741,7 +741,7 @@
       h += '<section class="gang" id="gang-' + n + '"><div class="gang-kop"><img src="' + gangIcoon(w, y) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
         '<div><small>Afdeling ' + (n + 1) + '</small><h2>' + afbr(y.g.naam) + '</h2></div></div>' +
         '<div class="sh-schap" data-sh-schap="' + n + '">' + y.lijst.slice(0, PER_KEER).map(kaart).join('') + '</div>' +
-        '<div class="gang-voet">' + (y.lijst.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="' + n + '">Laat er nog ' + Math.min(PER_KEER, y.lijst.length - PER_KEER) + ' zien</button>' : '') +
+        '<div class="gang-voet">' + (y.lijst.length > PER_KEER ? '<button class="sh-meer" type="button" data-sh-meer="' + n + '">Laat er nog ' + Math.min(STAP, Math.min(y.lijst.length, MAX_IN_GANG) - PER_KEER) + ' zien</button>' : '') +
         '<a class="naar" href="' + naar + '">Alles uit deze afdeling ›</a></div></section>';
     });
     if (buren.length) h += '<section class="sh-verder"><h2>Verder in de straat</h2><div class="straat">' + buren.map(function (y) { return gevel(y, st); }).join('') + '</div>';
@@ -887,7 +887,7 @@
     rek.forEach(function (x, n) {
       h += '<section class="gang" id="gang-' + n + '"><div class="gang-kop"><img src="' + novaRond(x.r.ic) + '" alt="" loading="lazy"><div><small>Rek ' + (n + 1) + '</small><h2>' + afbr(x.r.naam) + '</h2></div></div>' +
         '<div class="sh-schap" data-sh-schap="k' + n + '">' + x.gidsen.slice(0, PER_KEER).map(gidsKaart).join('') + '</div>' +
-        (x.gidsen.length > PER_KEER ? '<div class="gang-voet"><button class="sh-meer" type="button" data-sh-kmeer="' + n + '">Laat er nog ' + Math.min(PER_KEER, x.gidsen.length - PER_KEER) + ' zien</button></div>' : '') + '</section>';
+        (x.gidsen.length > PER_KEER ? '<div class="gang-voet"><button class="sh-meer" type="button" data-sh-kmeer="' + n + '">Laat er nog ' + Math.min(STAP, x.gidsen.length - PER_KEER) + ' zien</button></div>' : '') + '</section>';
     });
     h += '<a class="terug" href="' + adres('', st.pr.wie, st.max) + '">‹ Terug naar het begin van de straat</a>';
     return h;
@@ -960,7 +960,7 @@
     var gangen = [];
     if (o.eenLijst) gangen.push({ naam: o.h1, lijst: lijst, ic: o.ic || '', een: true });
     else {
-      if (o.etalage !== false && lijst.length >= 12) gangen.push({ naam: 'Onze beste keuzes', lijst: lijst.slice(0, 12), ic: o.rond || '', top: true });
+      if (o.etalage !== false && lijst.length >= 12) gangen.push({ naam: 'Onze beste keuzes', lijst: lijst.slice(0, MAX_IN_GANG), ic: o.rond || '', top: true });
       (o.delen || []).forEach(function (d) { if (d.lijst && d.lijst.length >= (d.min || 3)) gangen.push(d); });
       /* 22-11-2026: wat al in de etalage staat, staat in zijn soort achteraan, zodat je in elke soort eerst cadeaus ziet die je nog niet zag.
          Er gaat niets weg: het aantal per soort blijft gelijk. */
@@ -993,7 +993,7 @@
       h += '<section class="gang' + (x.top ? ' ws-etalage' : '') + '" id="gang-' + n + '"><div class="gang-kop">' + (x.ic ? '<img src="' + x.ic + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' : '') +
         '<div>' + (klein ? '<small>' + esc(klein) + '</small>' : '') + '<h2>' + afbr(x.naam) + '</h2></div></div>' +
         '<div class="sh-schap" data-sh-schap="a' + n + '">' + x.lijst.slice(0, perKeer).map(kaart).join('') + '</div>' +
-        '<div class="gang-voet">' + (x.lijst.length > perKeer && perKeer < max ? '<button class="sh-meer" type="button" data-sh-meer="a' + n + '" data-sh-max="' + (x.een ? 'alles' : '') + '">Laat er nog ' + Math.min(perKeer, Math.min(x.lijst.length, max) - perKeer) + ' zien</button>' : '') +
+        '<div class="gang-voet">' + (x.lijst.length > perKeer && perKeer < max ? '<button class="sh-meer" type="button" data-sh-meer="a' + n + '" data-sh-max="' + (x.een ? 'alles' : '') + '">Laat er nog ' + Math.min(x.een ? perKeer : STAP, Math.min(x.lijst.length, max) - perKeer) + ' zien</button>' : '') +
         (x.naar && !x.top ? '<a class="naar" href="' + x.naar + '">' + (x.los ? 'Alles uit ' + esc(x.naam) : 'Alle ' + getal(x.lijst.length) + ' uit ' + esc(x.naam)) + ' ›</a>' : '') + '</div></section>';
       if (x.top && o.naEtalage) h += '<div class="ws-extra">' + o.naEtalage + '</div>';
     });
@@ -1038,7 +1038,7 @@
   function meer(m) {
     var n = m.getAttribute('data-sh-meer');
     if (/^a\d+$/.test(n) && huidig && huidig.afd) {
-      var alles = m.getAttribute('data-sh-max') === 'alles', amax = alles ? 1e9 : MAX_IN_GANG, astap = alles ? 12 : PER_KEER;
+      var alles = m.getAttribute('data-sh-max') === 'alles', amax = alles ? 1e9 : MAX_IN_GANG, astap = alles ? 12 : STAP;
       var al = huidig.afd[+n.slice(1)].lijst, as = document.querySelector('[data-sh-schap="' + n + '"]'), anu = as.children.length;
       as.insertAdjacentHTML('beforeend', al.slice(anu, Math.min(anu + astap, amax)).map(kaart).join(''));
       var aover = Math.min(al.length, amax) - as.children.length;
@@ -1046,16 +1046,16 @@
       return;
     }
     var lijst = n === 'top' ? huidig.st.etalage : /^r\d+$/.test(n) ? KRAAM[+n.slice(1)] : huidig.x.gangen[+n].lijst, schap = document.querySelector('[data-sh-schap="' + n + '"]');
-    var nu = schap.children.length, erbij = lijst.slice(nu, Math.min(nu + PER_KEER, MAX_IN_GANG));
+    var nu = schap.children.length, erbij = lijst.slice(nu, Math.min(nu + STAP, MAX_IN_GANG));
     schap.insertAdjacentHTML('beforeend', erbij.map(kaart).join(''));
     var over = Math.min(lijst.length, MAX_IN_GANG) - schap.children.length;
-    if (over > 0) m.textContent = 'Laat er nog ' + Math.min(PER_KEER, over) + ' zien'; else m.remove();
+    if (over > 0) m.textContent = 'Laat er nog ' + Math.min(STAP, over) + ' zien'; else m.remove();
   }
   function kmeer(km) {
     var kn = +km.getAttribute('data-sh-kmeer'), kl2 = huidig.kiosk[kn].gidsen, ks = document.querySelector('[data-sh-schap="k' + kn + '"]'), nu0 = ks.children.length;
-    ks.insertAdjacentHTML('beforeend', kl2.slice(nu0, nu0 + PER_KEER).map(gidsKaart).join(''));
+    ks.insertAdjacentHTML('beforeend', kl2.slice(nu0, nu0 + STAP).map(gidsKaart).join(''));
     var over0 = kl2.length - ks.children.length;
-    if (over0 > 0) km.textContent = 'Laat er nog ' + Math.min(PER_KEER, over0) + ' zien'; else km.parentNode.remove();
+    if (over0 > 0) km.textContent = 'Laat er nog ' + Math.min(STAP, over0) + ' zien'; else km.parentNode.remove();
   }
   /* WINKELSTIJL voor de Voor wie-pagina's (voorbeeld): /voor/haar is de straat voor haar. De links naar de winkels gaan naar de straat op de homepage. */
   function voorPagina(wie) {
