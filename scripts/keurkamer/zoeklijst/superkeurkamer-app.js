@@ -12,7 +12,45 @@
   function euro(n) { return '€ ' + Number(n || 0).toFixed(2).replace('.', ','); }
   function tal(n) { return Number(n || 0).toLocaleString('nl-NL'); }
   function get(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { return r.json(); }); }
+  document.head.insertAdjacentHTML('beforeend', '<style>' +
+    '.ook-bij{font-size:12.5px;color:#4A6B3A;background:#EEF5E8;border-radius:8px;padding:5px 8px;margin:4px 0 6px;line-height:1.35}' +
+    '.goedkoper{font-size:13px;color:#8A2B1E;background:#FDECE8;border:1px solid #F2B8AC;border-radius:8px;padding:6px 8px;margin:4px 0 6px;line-height:1.35}' +
+    '.knop-wissel{display:block;width:100%;margin-top:6px;min-height:36px;border-radius:8px;border:0;background:#8A2B1E;color:#fff;font-weight:700;cursor:pointer}' +
+    '</style>');
   function post(url, data) { return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then(function (r) { return r.json(); }); }
+  /* 28-11-2026 (Marius: 'waarom zie ik niet automatisch de goedkoopste'): hetzelfde product bij meer winkels */
+  function andereRegel(p) {
+    if (p.goedkoper) return '<div class="goedkoper">Goedkoper bij <b>' + esc(p.goedkoper.winkel) + '</b>: ' + euro(p.goedkoper.p) +
+      '<button class="knop-wissel" data-wissel="' + esc(p.goedkoper.partner) + '|' + esc(p.goedkoper.key) + '">Neem de goedkoopste</button></div>';
+    var a = (p.andere || []);
+    if (!a.length) return '';
+    var namen = a.slice(0, 2).map(function (y) { return esc(y.winkel) + ' ' + euro(y.p) + (y.st ? '' : ' (uitverkocht)'); }).join(', ');
+    return '<div class="ook-bij">Goedkoopste van ' + (a.length + 1) + ' winkels. Ook bij ' + namen + (a.length > 2 ? ' en nog ' + (a.length - 2) : '') + '</div>';
+  }
+  function wissel(oud, waar, klaar) {
+    var d = waar.split('|');
+    post('/api/wissel', { oud: oud, partner: d[0], key: d.slice(1).join('|') }).then(function (r) {
+      if (r.fout) return melding(r.fout);
+      melding('Gewisseld: nu bij ' + r.winkel + ' voor ' + euro(r.prijs));
+      if (klaar) klaar(r);
+    });
+  }
+  function goedkoperOpKaarten(rasterId, k) {
+    var r = $('#' + rasterId); if (!r) return;
+    var keys = Array.prototype.map.call(r.querySelectorAll('.prod[data-key]'), function (el) { return el.dataset.key; });
+    if (!keys.length) return;
+    post('/api/goedkoper', { keys: keys }).then(function (d) {
+      Object.keys(d.goedkoper || {}).forEach(function (key) {
+        var g = d.goedkoper[key];
+        r.querySelectorAll('.prod[data-key="' + key + '"] .prod-tekst').forEach(function (t) {
+          if (t.querySelector('.goedkoper')) return;
+          var b = t.querySelector('button.kies');
+          var div = document.createElement('div'); div.innerHTML = andereRegel({ goedkoper: g });
+          t.insertBefore(div.firstChild, b);
+        });
+      });
+    });
+  }
   function melding(t, terug, lang) {
     var m = $('#melding');
     m.innerHTML = '<span>' + esc(t) + '</span>' + (terug ? '<button type="button" class="m-terug">Ongedaan maken</button>' : '');
@@ -590,9 +628,12 @@
       if (ce) ce.addEventListener('click', function (e) {
         var el = e.target.closest('.prod'); if (!el) return;
         var x = erin.find(function (y) { return y.key === el.dataset.key; });
+        var w = e.target.closest('[data-wissel]');
+        if (w) return wissel(x.key, w.dataset.wissel, function () { tekenCat(); get('/api/cats').then(function (c) { staat.cats = c.cats; tekenCatBoom(); }); });
         if (e.target.closest('[data-uit]')) return post('/api/kies', { partner: x.partner, key: x.key, cat: k.id }).then(function (r) { $('#lijstTeller').textContent = tal(r.aantal); melding('Uit ' + k.naam + ' gehaald'); tekenCat(); get('/api/cats').then(function (c) { staat.cats = c.cats; tekenCatBoom(); }); });
         if (e.target.closest('[data-zoom]')) detailLijst({ t: x.titel, m: x.merk, p: x.prijs, o: x.oud, f: x.foto, u: x.winkelurl, l: x.link, g: x.groep, winkel: x.winkel });
       });
+      goedkoperOpKaarten('cErin', k);
       tekenZoek();
     };
     if (lijstData) teken(lijstData); else get('/api/lijst').then(teken);
@@ -663,6 +704,8 @@
       var el = e.target.closest('.prod');
       if (!el) { if (e.target.closest('#zMeerBtn')) { staat.z.pagina = (staat.z.pagina || 1) + 1; tekenZoek(true); } return; }
       var p = (staat.zoekRes || []).find(function (y) { return y.key === el.dataset.key; }); if (!p) return;
+      var w = e.target.closest('[data-wissel]');
+      if (w) return wissel(p.key, w.dataset.wissel, function () { tekenCat(); });
       if (e.target.closest('[data-in]')) return inCat(p);
       if (e.target.closest('[data-zoom]')) return detailZoek(p);
     });
@@ -686,7 +729,7 @@
       var wat = (z.slim && k.zoek && !d.buiten_soort ? '<b>' + esc(k.naam) + '</b>' + (d.woorden && d.woorden.length ? ' + ' : '') : '') + (d.woorden && d.woorden.length ? '<b>' + esc(d.woorden.join(' + ')) + '</b>' : '') + (d.merk ? (d.woorden && d.woorden.length ? ' van merk ' : 'merk ') + '<b>' + esc(z.merk) + '</b>' : '');
       res.innerHTML = d.leeg && !z.slim ? '<div class="leeg-melding">' + (catKinderen(k.id).length ? 'Kies hierboven een soort, of typ zelf wat je zoekt (minimaal 3 letters).' : 'Typ een zoekwoord (minimaal 3 letters) of een merk.') + '</div>'
         : (d.buiten_soort ? '<div class="zoek-info" style="color:#8F6620">Binnen <b>' + esc(k.naam) + '</b> vond ik niets met <b>' + esc((d.woorden || []).join(' + ')) + '</b>. Dit vond ik in alle partners:</div>' : '') +
-          '<div class="zoek-info">' + tal(d.totaal) + ' producten gevonden' + (wat ? ' voor ' + wat : '') + (d.verborgen ? ' (' + tal(d.verborgen) + ' die je eerder weggooide niet getoond)' : '') + '</div>' +
+          '<div class="zoek-info">' + tal(d.totaal) + ' producten gevonden' + (wat ? ' voor ' + wat : '') + (d.verborgen ? ' (' + tal(d.verborgen) + ' die je eerder weggooide niet getoond)' : '') + (d.samen ? '. Hetzelfde product bij meer winkels staat er één keer, de goedkoopste die op voorraad is (' + tal(d.samen) + ' dubbele weggelaten)' : '') + '</div>' +
           (d.producten.length ? '<div class="raster" id="zRaster">' + d.producten.map(zoekKaart).join('') + '</div><div class="meer" id="zMeer"></div>'
             : '<div class="leeg-melding">Niets gevonden.' + (z.merk ? ' Klopt het merk? Kies een voorstel in het merkvak.' : ' Probeer een ander woord, bijvoorbeeld enkelvoud (muts in plaats van mutsen).') + '</div>');
       res.style.minHeight = '';
@@ -704,7 +747,7 @@
         (p.v > 1 ? '<span class="lab v">' + p.v + ' varianten</span>' : '') + (p.gekozen && !p.inCat ? '<span class="lab v">Al in je lijst</span>' : '') + (p.opsite ? '<span class="lab s">Al op de site</span>' : '') + '</div>' +
       '<div class="prod-beeld" data-zoom>' + beeld(p.f, p.t) + '</div>' +
       '<div class="prod-tekst"><span class="prod-merk">' + esc(p.winkel) + (p.m ? ' · ' + esc(p.m) : '') + '</span><span class="prod-titel" title="' + esc(p.t) + '">' + esc(p.t) + '</span>' +
-        '<span class="prijs' + (p.o ? ' k' : '') + '"><b>' + euro(p.p) + '</b>' + (p.o ? '<s>' + euro(p.o) + '</s>' : '') + '</span>' +
+        '<span class="prijs' + (p.o ? ' k' : '') + '"><b>' + euro(p.p) + '</b>' + (p.o ? '<s>' + euro(p.o) + '</s>' : '') + '</span>' + andereRegel(p) +
         '<button class="kies" data-in>' + (p.inCat ? '✓ In ' + esc(k.naam) : '+ In ' + esc(k.naam)) + '</button>' +
       '</div></article>';
   }
@@ -726,6 +769,7 @@
         if (ce) ce.innerHTML = erin.map(catKaart).join('');
         else if (erin.length) { var lm = document.querySelector('#cHoofd .leeg-melding.klein'); if (lm) { lm.outerHTML = '<div class="raster" id="cErin">' + erin.map(catKaart).join('') + '</div>'; tekenCatErinKlik(k, erin); } }
         if ($('#cErin')) tekenCatErinKlik(k, erin);
+        goedkoperOpKaarten('cErin', k);
       });
     });
   }
@@ -733,6 +777,8 @@
     var ce = $('#cErin'); if (!ce || ce.dataset.klik) return; ce.dataset.klik = 1;
     ce.addEventListener('click', function (e) {
       var el = e.target.closest('.prod'); if (!el) return;
+      var w = e.target.closest('[data-wissel]');
+      if (w) return wissel(el.dataset.key, w.dataset.wissel, function () { tekenCat(); });
       if (e.target.closest('[data-uit]')) { var x = { key: el.dataset.key }; var z = (staat.zoekRes || []).find(function (y) { return y.key === x.key; });
         get('/api/lijst').then(function (l) { var y = (l.producten || []).find(function (q) { return q.key === x.key; }); if (!y) return;
           post('/api/kies', { partner: y.partner, key: y.key, cat: k.id }).then(function (r) { $('#lijstTeller').textContent = tal(r.aantal); melding('Uit ' + k.naam + ' gehaald'); if (z) { z.inCat = false; } tekenCat(); get('/api/cats').then(function (c) { staat.cats = c.cats; tekenCatBoom(); }); }); }); }

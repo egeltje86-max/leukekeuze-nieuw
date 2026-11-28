@@ -637,6 +637,60 @@ def spreid(rijen, cijfers, n=300):
     return [rijen[i] for i in uit + staart]
 
 
+# 28-11-2026 (Marius: 'waarom zie ik niet automatisch de goedkoopste'): hetzelfde product bij meer winkels = één kaart.
+def zelfde_sleutels(t, e):
+    """Sleutels waarmee twee producten hetzelfde zijn: dezelfde barcode, of precies dezelfde (lange) naam."""
+    uit = []
+    e = re.sub(r'\D', '', e or '').lstrip('0')
+    if len(e) >= 7:
+        uit.append('e' + e)
+    k = titel_kern(t)
+    if len(k) >= 15 and len(k.split()) >= 3:
+        uit.append('t' + k)
+    return uit
+
+
+def samenvoegen(rijen, gekozen):
+    """rijen (id, pid, winkel, t, u, l, f, st, pop, m, p, key, e) in volgorde. Per groep één kaart:
+    die je al koos, anders de goedkoopste die op voorraad is. Geeft (kaarten in volgorde, {id: [andere rijen]})."""
+    ouder = {}
+
+    def wortel(x):
+        while ouder.get(x, x) != x:
+            ouder[x] = ouder.get(ouder[x], ouder[x])
+            x = ouder[x]
+        return x
+    eerst = {}
+    for r in rijen:
+        for s in zelfde_sleutels(r[3], r[12]):
+            if s in eerst:
+                a, b = wortel(r[0]), wortel(eerst[s])
+                if a != b:
+                    ouder[a] = b
+            else:
+                eerst[s] = r[0]
+    groepen = OrderedDict()
+    for r in rijen:
+        groepen.setdefault(wortel(r[0]), []).append(r)
+    uit, andere = [], {}
+
+    def prijs(r):
+        return r[10] if r[10] and r[10] > 0 else 1e9
+    for g in groepen.values():
+        if len(g) == 1:
+            uit.append(g[0])
+            continue
+        gek = [r for r in g if r[11] in gekozen]
+        if gek:
+            kop = gek[0]
+        else:
+            op = [r for r in g if r[7] and r[10] and r[10] > 0]
+            kop = min(op or g, key=prijs)
+        uit.append(kop)
+        andere[kop[0]] = sorted((r for r in g if r is not kop), key=prijs)
+    return uit, andere
+
+
 def api_zoek(q, fotos_vragen=True):
     uit = _api_zoek(q, fotos_vragen)
     # 28-11-2026: typ je iets binnen een soort en vindt hij daar niets, dan zoeken we in alle partners (en zeggen we dat)
@@ -737,7 +791,9 @@ def _api_zoek(q, fotos_vragen=True):
         # 16-11-2026 (Marius: 'als ik ga kijken moeten er alleen spullen staan die we nog niet hebben'):
         # eerst alles wat past, op volgorde; dan weg wat al op de site staat of stond; dan pas de bladzijde.
         site_index()
-        kand = c.execute('SELECT p.id, p.pid, p.winkel, p.t, p.u, p.l, p.f, p.st, p.pop, p.m, p.p FROM p WHERE %s ORDER BY %s' % (basis, orde), args + oargs).fetchall()
+        heeft_e = any(r[1] == 'e' for r in c.execute('PRAGMA table_info(p)'))
+        kand = c.execute('SELECT p.id, p.pid, p.winkel, p.t, p.u, p.l, p.f, p.st, p.pop, p.m, p.p, p.key, %s FROM p WHERE %s ORDER BY %s'
+                         % ('p.e' if heeft_e else "''", basis, orde), args + oargs).fetchall()
         # 27-11-2026: wat Marius weggooide niet tonen; wat nu op de site staat wel, met het label 'Al op de site'
         status = {r[0]: op_site(r[3], r[4], r[5]) for r in kand}
         vrij = [r for r in kand if status[r[0]] != 'weg']
@@ -754,14 +810,20 @@ def _api_zoek(q, fotos_vragen=True):
                     pass
         tel = Counter((r[1], r[2]) for r in vrij)
         partners = [(a, b, n) for (a, b), n in tel.most_common(80)]
-        sel = [r[0] for r in vrij if not pid or r[1] == pid]
+        andere, samen = {}, 0
+        if pid:
+            sel = [r[0] for r in vrij if r[1] == pid]
+        else:
+            gekozen_keys = {x['key'] for x in laad_json(LIJST, {'producten': []})['producten']}
+            kaarten, andere = samenvoegen(vrij, gekozen_keys)
+            samen = len(vrij) - len(kaarten)
+            sel = [r[0] for r in kaarten]
         totaal = len(sel)
         pagina = int(q.get('pagina', ['1'])[0] or 1)
-        heeft_e = any(r[1] == 'e' for r in c.execute('PRAGMA table_info(p)'))
         ids = sel[(pagina - 1) * 60: pagina * 60]
         rijen = []
         if ids:
-            rij = {r[0]: r[1:] for r in c.execute('SELECT p.id, pid, winkel, key, t, m, p, o, pct, f, u, l, g, k, pop, st, v%s FROM p WHERE p.id IN (%s)'
+            rij = {r[0]: r[1:] + (r[0],) for r in c.execute('SELECT p.id, pid, winkel, key, t, m, p, o, pct, f, u, l, g, k, pop, st, v%s FROM p WHERE p.id IN (%s)'
                                                     % (", e" if heeft_e else ", ''", ','.join('?' * len(ids))), ids)}
             rijen = [rij[i] for i in ids if i in rij]
         # zelfde product (zelfde barcode) bij andere winkels: prijs vergelijken
@@ -792,9 +854,96 @@ def _api_zoek(q, fotos_vragen=True):
                     'v': r[15], 'gekozen': bool(x), 'inCat': bool(x and cat in x.get('categorieen', [])),
                     'opsite': status.get(r[0]) == 'nu', 'ean': r[16],
                     'ook': sorted([{'winkel': w, 'p': op} for opid, w, op in ook.get(r[16], []) if opid != r[0]], key=lambda y: y['p'])[:4],
-                    'min30': (pinfo.get(r[2]) or {}).get('min30'), 'sinds': (pinfo.get(r[2]) or {}).get('sinds')})
-    return {'totaal': totaal, 'verborgen': verborgen, 'pagina': pagina, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
+                    'min30': (pinfo.get(r[2]) or {}).get('min30'), 'sinds': (pinfo.get(r[2]) or {}).get('sinds'),
+                    'andere': [{'partner': y[1], 'winkel': y[2], 'key': y[11], 'p': y[10], 'st': bool(y[7]), 'gekozen': y[11] in lijst}
+                               for y in andere.get(r[17], [])]})
+        a = uit[-1]['andere']
+        g = [y for y in a if y['st'] and y['p'] and y['p'] < (uit[-1]['p'] or 0) - 0.005]
+        if g:
+            uit[-1]['goedkoper'] = g[0]
+    return {'totaal': totaal, 'samen': samen, 'verborgen': verborgen, 'pagina': pagina, 'paginas': max(1, -(-totaal // 60)), 'woorden': woorden, 'merk': merk,
             'partners': [{'id': a, 'naam': b, 'n': n} for a, b, n in partners], 'producten': uit}
+
+
+GOEDKOPER_CACHE = {}
+
+
+def api_goedkoper(body):
+    """28-11-2026: voor gekozen producten (keys): hetzelfde product bij een andere winkel, goedkoper en op voorraad?"""
+    keys = [k for k in (body.get('keys') or []) if isinstance(k, str)][:300]
+    lijst = {x['key']: x for x in laad_json(LIJST, {'producten': []})['producten']}
+    if not keys or not os.path.exists(DB):
+        return {'goedkoper': {}}
+    mt = os.path.getmtime(DB)
+    uit = {}
+    c = sqlite3.connect('file:' + DB + '?mode=ro', uri=True)
+    try:
+        heeft_e = any(r[1] == 'e' for r in c.execute('PRAGMA table_info(p)'))
+        weg = ','.join("'%s'" % x for x in WEG_WINKELS)
+        for k in keys:
+            x = lijst.get(k)
+            if not x:
+                continue
+            ck = (mt, k, x.get('prijs'))
+            if ck in GOEDKOPER_CACHE:
+                if GOEDKOPER_CACHE[ck]:
+                    uit[k] = GOEDKOPER_CACHE[ck]
+                continue
+            eigen = set(zelfde_sleutels(x.get('titel'), x.get('ean')))
+            kand = []
+            e = re.sub(r'\D', '', x.get('ean') or '').lstrip('0')
+            if heeft_e and len(e) >= 7:
+                kand += c.execute('SELECT pid, winkel, key, t, p, st, e FROM p WHERE (e = ? OR e = ?) AND pid NOT IN (%s)' % weg,
+                                  (e, (x.get('ean') or '').strip())).fetchall()
+            woorden = [w for w in titel_kern(x.get('titel')).split() if len(w) >= 3][:7]
+            if len(woorden) >= 2:
+                expr = ' AND '.join('"%s"' % w for w in woorden)
+                try:
+                    kand += c.execute('SELECT p.pid, p.winkel, p.key, p.t, p.p, p.st, %s FROM p WHERE p.id IN (SELECT rowid FROM z WHERE z MATCH ?) AND p.pid NOT IN (%s) LIMIT 400'
+                                      % ('p.e' if heeft_e else "''", weg), (expr,)).fetchall()
+                except sqlite3.Error:
+                    pass
+            beste = None
+            for pid, winkel, key, t, pr, st, ee in kand:
+                if key == k or not st or not pr or pr >= (x.get('prijs_nu') or x.get('prijs') or 0) - 0.005:
+                    continue
+                if not eigen & set(zelfde_sleutels(t, ee)):
+                    continue
+                if not beste or pr < beste['p']:
+                    beste = {'partner': pid, 'winkel': winkel, 'key': key, 'p': pr}
+            GOEDKOPER_CACHE[ck] = beste
+            if len(GOEDKOPER_CACHE) > 5000:
+                GOEDKOPER_CACHE.clear()
+            if beste:
+                uit[k] = beste
+    finally:
+        c.close()
+    return {'goedkoper': uit}
+
+
+def api_wissel(body):
+    """28-11-2026: een gekozen product vervangen door hetzelfde product bij een goedkopere winkel (categorieën blijven)."""
+    with SLOT:
+        lijst = laad_json(LIJST, {'producten': []})
+        x = next((y for y in lijst['producten'] if y['key'] == body.get('oud')), None)
+        if not x:
+            return {'fout': 'Dit product staat niet (meer) in je lijst'}
+        n = product_uit_partner(body.get('partner', ''), body.get('key', ''))
+        if not n:
+            return {'fout': 'Het goedkopere product is niet gevonden'}
+        al = next((y for y in lijst['producten'] if y['key'] == n['key']), None)
+        if al:
+            al['categorieen'] = sorted(set(al.get('categorieen', [])) | set(x.get('categorieen', [])))
+            lijst['producten'].remove(x)
+        else:
+            for veld in ('categorieen', 'bron', 'notitie', 'gekozen_op'):
+                if veld in x:
+                    n[veld] = x[veld]
+            n['gewisseld_van'] = {'key': x['key'], 'winkel': x.get('winkel'), 'prijs': x.get('prijs')}
+            lijst['producten'][lijst['producten'].index(x)] = n
+        lijst['bijgewerkt'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+        bewaar(LIJST, lijst)
+        return {'ok': True, 'aantal': len(lijst['producten']), 'nieuw': n['key'], 'winkel': n['winkel'], 'prijs': n['prijs'], 'oud': x}
 
 
 MERKEN = {'tijd': 0, 'lijst': []}
@@ -970,6 +1119,10 @@ class Hand(SimpleHTTPRequestHandler):
                 return self.stuur(api_notitie_partner(body))
             if u.path == '/api/cats':
                 return self.stuur(api_cats_post(body))
+            if u.path == '/api/goedkoper':
+                return self.stuur(api_goedkoper(body))
+            if u.path == '/api/wissel':
+                return self.stuur(api_wissel(body))
             if u.path == '/api/herstel':
                 return self.stuur(api_herstel(body))
             if u.path == '/api/export':
