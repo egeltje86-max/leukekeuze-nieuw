@@ -3325,3 +3325,17 @@ html.kp-open, html.kp-open body { overflow: hidden; }
 .kw-kaartkop { font-family: Manrope, Arial, sans-serif; font-size: 16px; margin: 18px 0 10px; color: #141A2A; }
 .kw-tips ul { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; max-width: 65ch; }
 .kw-tips li { color: #141A2A; line-height: 1.5; }
+
+/* ===== ALLE NAMEN (28-11-2026): onderaan een soort de namen van alle cadeaus op een rij, ingeklapt (alleNamenVoor in app.js) ===== */
+.alle-namen details { background: #FFFCF7; border: 1px solid #E5D7BE; border-radius: 16px; padding: 0 16px; }
+.alle-namen summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; gap: 8px; font-family: Manrope, Arial, sans-serif; font-weight: 700; font-size: 16px; color: #141A2A; list-style: none; }
+.alle-namen summary::-webkit-details-marker { display: none; }
+.alle-namen summary::after { content: "+"; margin-left: auto; font-size: 22px; line-height: 1; color: #8F6620; }
+.alle-namen details[open] summary::after { content: "–"; }
+.alle-namen ul { list-style: none; margin: 0 0 12px; padding: 0; columns: 1; column-gap: 28px; }
+.alle-namen li { break-inside: avoid; border-top: 1px solid #E5D7BE; }
+.alle-namen li a { display: block; padding: 10px 0; min-height: 44px; box-sizing: border-box; color: #141A2A; text-decoration: none; font-size: 15px; line-height: 1.4; overflow-wrap: anywhere; }
+.alle-namen li a:hover { color: #8F6620; text-decoration: underline; }
+@media (min-width: 760px) { .alle-namen ul { columns: 2; } }
+@media (min-width: 1100px) { .alle-namen ul { columns: 3; } }
+.ws .alle-namen { margin-top: 18px; }

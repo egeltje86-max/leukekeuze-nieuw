@@ -1024,6 +1024,8 @@
       o.delen = (c.subs || []).filter(function (x) { return !x.verborgen; }).map(function (x) { return { naam: x.naam, naar: pad + x.slug + '/', ic: groepIcoon(c.slug, x.slug) || (x.beeld ? '/' + x.beeld : ''), lijst: hz ? lijst.filter(function (p) { return hz(p, c.slug, x.slug); }) : [] }; });
     }
     o.sleutels = sleutels; o.rond = (c.rond ? '/' + c.rond : '');
+    /* ALLE NAMEN (28-11-2026): onderaan een soort of groep de namen van alle cadeaus op een rij, ingeklapt (zie alleNamenVoor in app.js) */
+    if (window.LK_ALLE_NAMEN_VOOR) o.onder = (o.onder || '') + window.LK_ALLE_NAMEN_VOOR(c, s, v, lijst);
     var w = winkelVan(sleutels); if (w && !o.label) o.label = w.naam; else if (w && !v && s) o.label = w.naam + ' · ' + c.naam;
     return winkelWeergave(o);
   }

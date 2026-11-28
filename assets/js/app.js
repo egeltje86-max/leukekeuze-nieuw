@@ -2479,6 +2479,25 @@
   /* ---------- Categorie & subcategorie ---------- */
   /* Een pagina zonder filter, sortering of andere keuze in het adres (alleen ?proef= mag) */
   function kaalAdres(q) { return !Object.keys(q || {}).some(function (k) { return q[k] && k !== 'proef'; }); }
+  /* ALLE NAMEN (28-11-2026, GO Marius 'go allebei'): onderaan een soort (vakje) een gewone lijst met de namen van alle cadeaus in die soort,
+     ingeklapt. Op 961 productpagina's linkte geen enkele pagina van de site (de lijst toont er eerst 24, de rest pas na 'Laat er nog … zien'),
+     dus Google vond ze moeilijk. Geen nieuwe adressen. Op een groep met soorten alleen de cadeaus die in geen enkele soort van die groep staan
+     (bijv. uit een weggehaald vakje); op een groep zonder soorten alles; op een afdeling niets. Geen stille producten, geen drank buiten de drankplek
+     (de lijst is dezelfde als op de pagina). Ook in de winkelweergave (straat.js, o.onder). Uit: window.LK_ALLE_NAMEN = false. */
+  function alleNamenVoor(c, s, v, lijst) {
+    if (window.LK_ALLE_NAMEN === false || !s || !lijst || !lijst.length) return '';
+    var l = lijst, naam = (v || s).naam;
+    if (!v && s.vakjes && s.vakjes.length) {
+      l = lijst.filter(function (p) { return !s.vakjes.some(function (x) { return LK.hoortBij(p, c.slug, s.slug, x.slug); }); });
+      if (!l.length) return '';
+    }
+    if (l.length < 2 && v) return '';
+    var titel = v || !(s.vakjes && s.vakjes.length) ? 'Alle ' + getal(l.length) + ' cadeaus in ' + naam + ' op een rij' : 'Nog ' + getal(l.length) + ' andere cadeaus in ' + naam;
+    return '<section class="sectie alle-namen" aria-label="Alle cadeaus op een rij"><details><summary>' + esc(titel) + '</summary><ul>' +
+      l.map(function (p) { return '<li><a href="/p/' + esc(p.id) + '/">' + esc(p.titel) + '</a></li>'; }).join('') + '</ul></details></section>';
+  }
+  window.LK_ALLE_NAMEN_VOOR = alleNamenVoor;
+
   function categorie(slug, subSlug, vakSlug, q) {
     var c = window.LK_CAT(slug);
     if (!c) return nietGevonden();
@@ -2612,6 +2631,7 @@
       (horlogeVak ? winkelSectie('mode-sieraden', 'horloges/' + v.slug, q.prijs, q.merk) :
        v && v.oud ? winkelSectie(v.oud.split('/')[0], v.oud.split('/')[1], q.prijs) : s && s.vakjes ? '' : winkelSectie(c.slug, s && s.slug, q.prijs)) +
       (gids ? '<section class="sectie gids" aria-label="Tips">' + gids.map(function (g) { return '<h2>' + esc(g.kop) + '</h2><p>' + esc(g.tekst) + '</p>'; }).join('') + '</section>' : '') +
+      (kaalAdres(q) ? alleNamenVoor(c, s, v, lijst) : '') +
       /* Stap 3 indeling: de winkels van deze afdeling als tekstlinks (eerst 24 grote kaarten: ruim 6.000 px op een telefoon). */
       /* 9-11-2026 (Marius: "ze hoeven geen winkel te kiezen"): het rijtje 'Winkels voor …' staat er niet meer. */
       (true || s || !winkelsMet(c.slug).length ? '' : '<section class="sectie verder"><h2>Winkels voor ' + esc(c.naam.toLowerCase()) + '</h2><nav class="tekstlinks" aria-label="Winkels">' + winkelsMet(c.slug).map(function (w) {
