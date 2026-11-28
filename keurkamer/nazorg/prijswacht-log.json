@@ -219,5 +219,18 @@
 "twijfel": [],
 "opSite": 23,
 "seconden": 2600
+},
+{
+"tijd": "2026-11-28T20:30",
+"deel": "2",
+"nagekeken": 3500,
+"gelezen": 2479,
+"klopt": 2430,
+"prijs": 33,
+"weg": 14,
+"groteSprong": 2,
+"twijfel": [],
+"opSite": 65,
+"seconden": 2429
 }
 ]
