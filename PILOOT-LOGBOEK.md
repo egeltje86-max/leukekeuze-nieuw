@@ -43,3 +43,4 @@ Elke regel is één dagelijkse run. Meer details staan in de commit van die dag.
 - 2026-11-25 11:05: Piloot 2026-11-25: 672 prijzen bijgewerkt, 6 uitverkocht van de lijsten, 0 bij bol niet meer te koop, 1 weer te koop, prijswacht 46 prijzen en 31 weg; controle schoon, live gezet.
 - 2026-11-26 10:58: Piloot 2026-11-26: 686 prijzen bijgewerkt, 18 uitverkocht van de lijsten, 0 bij bol niet meer te koop, 2 weer te koop, prijswacht 189 prijzen en 32 weg; controle schoon, live gezet.
 - 2026-11-27 10:34: Controle NIET schoon (seowacht, gidsen). Niets live gezet; de agent kijkt ernaar.
+- 2026-11-28 10:58: Controle NIET schoon (seowacht: sitemap +87 / -106 door 82 bol-cadeaus zonder aanbod, 91 weer te koop en 25 LEGO uitverkocht volgens de LEGO-feed; gidsen: 5 fouten, met de hand hersteld in kind-6-jaar en cadeau-voor-vriendin). Na GO van Marius opnieuw gebouwd met LK_SEO_GO=1: controle schoon, live gezet.
