@@ -2,6 +2,19 @@
  "uitleg": "Elk product dat ooit in een fotoreel stond. Kies voor een nieuwe reel nooit een id uit deze lijst (Marius 23-11-2026: geen herhalingen, geen eentonige reels; kies ook niet steeds hetzelfde thema of hetzelfde soort product). Na elke reel: een regel bovenaan erbij (datum, kop, thema, ids). Reels van eind oktober tot 11 november staan hier niet in; kies bij twijfel producten met sinds vanaf 2026-11-16. Nakijken: node scripts/reels/gebruikt.js <id> ...",
  "reels": [
   {
+   "datum": "28 november 2026",
+   "kop": "Zaterdag = cadeaudag: nog 7 nachtjes tot pakjesavond",
+   "thema": "zaterdag lokkertje, zes mensen, Sint",
+   "ids": [
+    "dgsw-9d003033da",
+    "dvzn-797f418c07",
+    "dvzn-dab07fd10d",
+    "dgsw-fc2899235e",
+    "dvzn-284527",
+    "dvzn-045d07751b"
+   ]
+  },
+  {
    "datum": "27 november 2026",
    "kop": "Voor de Minecraft-fan: bouw je eigen lamp",
    "thema": "Minecraft-lampen, fan",
